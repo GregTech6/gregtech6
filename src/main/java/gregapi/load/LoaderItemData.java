@@ -1,0 +1,1747 @@
+package gregapi.load;
+
+import static gregapi.data.CS.*;
+
+import gregapi.data.ANY;
+import gregapi.data.CS.BlocksGT;
+import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.data.OD;
+import gregapi.data.OP;
+import gregapi.util.OM;
+import gregapi.util.ST;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
+/**
+ * @author Gregorius Techneticies
+ * 
+ * Loads the ItemData for several Items.
+ * This happens during the InitPhase, or if GregTech is installed within the PreInitPhase, since GregTech loads after all the Mods mentioned here, unlike the API.
+ */
+public class LoaderItemData implements Runnable {
+	@Override public String toString() {return "Item Data Loader";}
+	
+	@Override
+	public void run() {
+		OM.data(MD.AETHER, "skyrootChest"					, 1,   W, MT.Skyroot			,  U * 8);
+		OM.data(MD.BTL, "weedwoodChest"						, 1,   W, MT.Weedwood			,  U * 8);
+		
+    	OM.reg(OP.glass, MT.UNUSED.Reinforced		, ST.mkic("reinforcedGlass", 1));
+        OM.reg("paperResearchFragment"				, ST.make(MD.TC, "ItemResource", 1, 9));
+    	OM.reg(OP.circuit, MT.Basic					, ST.mkic("electronicCircuit", 1));
+    	OM.reg(OP.circuit, MT.Advanced				, ST.mkic("advancedCircuit", 1));
+    	OM.reg(OP.battery, MT.Basic					, ST.mkic("reBattery", 1));
+    	OM.reg(OP.battery, MT.Basic					, ST.mkic("chargedReBattery", 1, W));
+    	OM.reg(OP.battery, MT.Advanced				, ST.mkic("advBattery", 1, W));
+    	OM.reg("calclavia:BATTERY"					, ST.mkic("reBattery", 1));
+    	OM.reg("calclavia:BATTERY"					, ST.mkic("chargedReBattery", 1, W));
+	    OM.reg("itemCertusQuartz"					, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 1));
+    	OM.reg("itemCertusQuartz"					, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10));
+    	OM.reg("itemNetherQuartz"					, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11));
+    	OM.reg(OD.craftingQuartz					, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 1));
+    	OM.reg(OD.craftingQuartz					, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10));
+    	OM.reg(OD.craftingQuartz					, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11));
+		OM.reg(OD.craftingWireCopper				, ST.mkic("insulatedCopperCableItem", 1));
+		OM.reg(OD.craftingWireGold					, ST.mkic("insulatedGoldCableItem", 1));
+		OM.reg(OD.craftingWireIron					, ST.mkic("insulatedIronCableItem", 1));
+		OM.reg(OD.craftingWireTin					, ST.mkic("insulatedTinCableItem", 1));
+    	
+    	
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "vines", 1, 0));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower1", 1, 1));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower1", 1, 2));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower1", 1, 3));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower1", 1, 4));
+		OM.reg("listAllmushroom"					, ST.make(MD.EBXL, "flower1", 1, 6));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower1", 1, 7));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 0));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 1));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 2));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 3));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 4));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 5));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 6));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 7));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 8));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1, 9));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1,11));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1,12));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1,13));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1,14));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower2", 1,15));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 0));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 1));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 2));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 3));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 4));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 5));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 6));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 7));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 8));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1, 9));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1,10));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1,11));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1,12));
+		OM.reg(OD.flower							, ST.make(MD.EBXL, "flower3", 1,13));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 0));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 1));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 2));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 3));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 4));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 5));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 6));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 7));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 8));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1, 9));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1,10));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1,11));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1,12));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1,13));
+		OM.reg(OD.flower							, ST.make(MD.ERE, "flowerSeeds", 1,14));
+		OM.reg("foodChocolatebar"					, ST.make(MD.EBXL, "extrabiomes.food", 1, 0));
+		OM.reg("foodChocolatestrawberry"			, ST.make(MD.EBXL, "extrabiomes.crop", 1, 1));
+		OM.reg("cropStrawberry"						, ST.make(MD.EBXL, "extrabiomes.crop", 1, 0));
+		OM.reg("seedStrawberry"						, ST.make(MD.EBXL, "extrabiomes.seed", 1, 0));
+		OM.reg("cropKelp"							, ST.make(MD.BoP, "coral1", 1, 11));
+		OM.reg("cropAlgae"							, ST.make(MD.BoP, "coral2", 1, 8));
+		OM.reg("cropFlax"							, ST.make(MD.BoP, "foliage", 1, 3));
+		OM.reg("cropIvy"							, ST.make(MD.BoP, "foliage", 1, 7));
+		OM.reg("cropPinecone"						, ST.make(MD.BoP, "misc", 1, 13));
+		OM.reg("cropGrapeRed"						, ST.make(MD.HaC, "grapeItem", 1));
+		OM.reg("listAllmushroom"					, ST.make(MD.BoP, "mushrooms", 1, 0));
+		OM.reg("listAllmushroom"					, ST.make(MD.BoP, "mushrooms", 1, 1));
+		OM.reg("listAllmushroom"					, ST.make(MD.BoP, "mushrooms", 1, 2));
+		OM.reg("listAllmushroom"					, ST.make(MD.BoP, "mushrooms", 1, 3));
+		OM.reg("listAllmushroom"					, ST.make(MD.BoP, "mushrooms", 1, 4));
+		OM.reg("listAllmushroom"					, ST.make(MD.BoP, "mushrooms", 1, 5));
+		for (int i = 0; i < 16; i++) {
+		OM.reg("listAllmushroom"					, ST.make(MD.BOTA, "mushroom", 1, i));
+		OM.reg(DYE_OREDICTS_MIXABLE[i]				, ST.make(MD.BOTA, "dye", 1, 15-i));
+		}
+		OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], ST.make(MD.TCFM, "FMResource", 1, 1));
+		OM.reg("cropAppleRed"						, ST.make(Items.apple, 1, 0));
+		OM.reg("cropMelon"							, ST.make(Items.melon, 1, 0));
+		OM.reg("cropPumpkin"						, ST.make(Blocks.pumpkin, 1, 0));
+		OM.reg("cropHops"							, ST.mkic("hops", 1));
+		OM.reg("cropCoffee"							, ST.mkic("coffeeBeans", 1));
+		OM.reg("cropLemon"							, ST.make(MD.FR, "fruits", 1, 3));
+		OM.reg("cropChilipepper"					, ST.make(MD.MaCr, "magicalcrops_CropProduce", 1, 2));
+		OM.reg("cropTomato"							, ST.make(MD.MaCr, "magicalcrops_CropProduce", 1, 8));
+		OM.reg("cropGrape"							, ST.make(MD.MaCr, "magicalcrops_CropProduce", 1, 4));
+		OM.reg("cropTea"							, ST.make(MD.GaSu, "teaLeaves", 1, 0));
+		OM.reg("cropHeartberry"						, ST.make(MD.ERE, "heartBerries", 1, 0));
+		OM.reg("cropBambooshoot"					, ST.make(MD.ERE, "materials", 1, 11));
+		OM.reg("cropTurnip"							, ST.make(MD.ERE, "turnips", 1, 0));
+		OM.reg("cropDarkFruit"						, ST.make(MD.ERE, "food", 1, 11));
+		OM.reg("cropSwampberry"						, ST.make(MD.ERE, "food", 1, 14));
+		OM.reg("cropCabbage"						, ST.make(MD.ERE, "food", 1, 15));
+		OM.reg("cropPricklyPair"					, ST.make(MD.ERE, "food", 1, 17));
+		OM.reg("cropPapaya"							, ST.make(MD.BINNIE_TREE, "food", 1, 40));
+		OM.reg("cropCurrants"						, ST.make(MD.BINNIE_TREE, "food", 1, 41));
+		OM.reg("cropCurrants"						, ST.make(MD.BINNIE_TREE, "food", 1, 42));
+		OM.reg("cropBlackberry"						, ST.make(MD.BINNIE_TREE, "food", 1, 43));
+		OM.reg("cropRaspberry"						, ST.make(MD.BINNIE_TREE, "food", 1, 44));
+		OM.reg("cropBlueberry"						, ST.make(MD.BINNIE_TREE, "food", 1, 45));
+		OM.reg("cropCranberry"						, ST.make(MD.BINNIE_TREE, "food", 1, 46));
+		OM.reg("cropJuniper"						, ST.make(MD.BINNIE_TREE, "food", 1, 47));
+		OM.reg("cropGooseberry"						, ST.make(MD.BINNIE_TREE, "food", 1, 48));
+		OM.reg("cropRaspberry"						, ST.make(MD.BINNIE_TREE, "food", 1, 49));
+		OM.reg("cropCoconut"						, ST.make(MD.BINNIE_TREE, "food", 1, 50));
+		OM.reg("cropCashew"							, ST.make(MD.BINNIE_TREE, "food", 1, 51));
+		OM.reg("cropAvocado"						, ST.make(MD.BINNIE_TREE, "food", 1, 52));
+		OM.reg("cropNutmeg"							, ST.make(MD.BINNIE_TREE, "food", 1, 53));
+		OM.reg("cropAllspice"						, ST.make(MD.BINNIE_TREE, "food", 1, 54));
+		OM.reg("cropChilipepper"					, ST.make(MD.BINNIE_TREE, "food", 1, 55));
+		OM.reg("cropStarAnise"						, ST.make(MD.BINNIE_TREE, "food", 1, 56));
+		OM.reg("cropMango"							, ST.make(MD.BINNIE_TREE, "food", 1, 57));
+		OM.reg("cropStarfruit"						, ST.make(MD.BINNIE_TREE, "food", 1, 58));
+		OM.reg("cropCandlenut"						, ST.make(MD.BINNIE_TREE, "food", 1, 59));
+		OM.reg("foodApplejuice"						, ST.make(MD.BINNIE, "containerGlass", 1,256));
+		OM.reg("foodApricotjuice"					, ST.make(MD.BINNIE, "containerGlass", 1,257));
+		OM.reg("foodBananajuice"					, ST.make(MD.BINNIE, "containerGlass", 1,258));
+		OM.reg("foodCherryjuice"					, ST.make(MD.BINNIE, "containerGlass", 1,259));
+		OM.reg("foodElderberryjuice"				, ST.make(MD.BINNIE, "containerGlass", 1,260));
+		OM.reg("foodLemonjuice"						, ST.make(MD.BINNIE, "containerGlass", 1,261));
+		OM.reg("foodLimejuice"						, ST.make(MD.BINNIE, "containerGlass", 1,262));
+		OM.reg("foodOrangejuice"					, ST.make(MD.BINNIE, "containerGlass", 1,263));
+		OM.reg("foodPeachjuice"						, ST.make(MD.BINNIE, "containerGlass", 1,264));
+		OM.reg("foodPlumjuice"						, ST.make(MD.BINNIE, "containerGlass", 1,265));
+		OM.reg("foodCarrotjuice"					, ST.make(MD.BINNIE, "containerGlass", 1,266));
+		OM.reg("foodTomatojuice"					, ST.make(MD.BINNIE, "containerGlass", 1,267));
+		OM.reg("foodCranberryjuice"					, ST.make(MD.BINNIE, "containerGlass", 1,268));
+		OM.reg("foodGrapefruitjuice"				, ST.make(MD.BINNIE, "containerGlass", 1,269));
+		OM.reg("foodOliveoil"						, ST.make(MD.BINNIE, "containerGlass", 1,270));
+		OM.reg("foodAnanasjuice"					, ST.make(MD.BINNIE, "containerGlass", 1,271));
+		OM.reg("foodPearjuice"						, ST.make(MD.BINNIE, "containerGlass", 1,272));
+		OM.reg("foodGrapejuice"						, ST.make(MD.BINNIE, "containerGlass", 1,273));
+		OM.reg("foodGrapejuice"						, ST.make(MD.BINNIE, "containerGlass", 1,274));
+		OM.reg("foodApplecider"						, ST.make(MD.BINNIE, "containerGlass", 1,384));
+		OM.reg("foodApricotwine"					, ST.make(MD.BINNIE, "containerGlass", 1,385));
+		OM.reg("foodBananawine"						, ST.make(MD.BINNIE, "containerGlass", 1,386));
+		OM.reg("foodCherrywine"						, ST.make(MD.BINNIE, "containerGlass", 1,387));
+		OM.reg("foodElderberrywine"					, ST.make(MD.BINNIE, "containerGlass", 1,388));
+		OM.reg("foodPeachcider"						, ST.make(MD.BINNIE, "containerGlass", 1,389));
+		OM.reg("foodPearcider"						, ST.make(MD.BINNIE, "containerGlass", 1,390));
+		OM.reg("foodPlumwine"						, ST.make(MD.BINNIE, "containerGlass", 1,391));
+		OM.reg("foodCarrotwine"						, ST.make(MD.BINNIE, "containerGlass", 1,392));
+		OM.reg("foodGrapewine"						, ST.make(MD.BINNIE, "containerGlass", 1,393));
+		OM.reg("foodGrapewine"						, ST.make(MD.BINNIE, "containerGlass", 1,394));
+		OM.reg("foodWine"							, ST.make(MD.BINNIE, "containerGlass", 1,395));
+		OM.reg("foodAgavewine"						, ST.make(MD.BINNIE, "containerGlass", 1,396));
+		OM.reg("foodCitruswine"						, ST.make(MD.BINNIE, "containerGlass", 1,398));
+		OM.reg("foodCranberrywine"					, ST.make(MD.BINNIE, "containerGlass", 1,399));
+		OM.reg("foodPineapplecider"					, ST.make(MD.BINNIE, "containerGlass", 1,400));
+		OM.reg("foodTomatowine"						, ST.make(MD.BINNIE, "containerGlass", 1,401));
+		OM.reg("foodWine"							, ST.make(MD.BINNIE, "containerGlass", 1,402));
+		OM.reg("foodAle"							, ST.make(MD.BINNIE, "containerGlass", 1,403));
+		OM.reg("foodBeer"							, ST.make(MD.BINNIE, "containerGlass", 1,404));
+		OM.reg("foodBeer"							, ST.make(MD.BINNIE, "containerGlass", 1,405));
+		OM.reg("foodBeer"							, ST.make(MD.BINNIE, "containerGlass", 1,406));
+		OM.reg("foodBeer"							, ST.make(MD.BINNIE, "containerGlass", 1,407));
+		OM.reg("foodBeer"							, ST.make(MD.BINNIE, "containerGlass", 1,408));
+		OM.reg("foodVodka"							, ST.make(MD.BINNIE, "containerGlass", 1,513));
+		OM.reg("foodRum"							, ST.make(MD.BINNIE, "containerGlass", 1,514));
+		OM.reg("foodRum"							, ST.make(MD.BINNIE, "containerGlass", 1,515));
+		OM.reg("foodWhiskey"						, ST.make(MD.BINNIE, "containerGlass", 1,516));
+		OM.reg("foodBourbon"						, ST.make(MD.BINNIE, "containerGlass", 1,517));
+		OM.reg("foodWhiskey"						, ST.make(MD.BINNIE, "containerGlass", 1,518));
+		OM.reg("foodWhiskey"						, ST.make(MD.BINNIE, "containerGlass", 1,519));
+		OM.reg("foodWine"							, ST.make(MD.BINNIE, "containerGlass", 1,520));
+		OM.reg("foodTequila"						, ST.make(MD.BINNIE, "containerGlass", 1,521));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,522));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,523));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,524));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,525));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,526));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,527));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,528));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,529));
+		OM.reg("foodBrandy"							, ST.make(MD.BINNIE, "containerGlass", 1,530));
+		OM.reg("foodCachaca"						, ST.make(MD.BINNIE, "containerGlass", 1,531));
+		OM.reg("foodGin"							, ST.make(MD.BINNIE, "containerGlass", 1,532));
+		OM.reg("foodLiquor"							, ST.make(MD.BINNIE, "containerGlass", 1,533));
+		OM.reg("foodLiquor"							, ST.make(MD.BINNIE, "containerGlass", 1,534));
+		OM.reg("foodLiquor"							, ST.make(MD.BINNIE, "containerGlass", 1,535));
+		OM.reg("foodLiquor"							, ST.make(MD.BINNIE, "containerGlass", 1,536));
+		OM.reg("foodLiquor"							, ST.make(MD.BINNIE, "containerGlass", 1,537));
+		OM.reg("foodLiquor"							, ST.make(MD.BINNIE, "containerGlass", 1,538));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,640));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,641));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,642));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,643));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,644));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,645));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,646));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,647));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,648));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,649));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,650));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,651));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,652));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,653));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,654));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,655));
+		OM.reg("foodLiqueur"						, ST.make(MD.BINNIE, "containerGlass", 1,656));
+		OM.reg("foodTitanraw"						, ST.make(MD.ERE, "food", 1, 12));
+		OM.reg("foodTitancooked"					, ST.make(MD.ERE, "food", 1, 13));
+		OM.reg("cropBambooshoot"					, ST.make(MD.Bamboo, "blockbambooshoot", 1, 0));
+		OM.reg(OD.logWood							, ST.make(MD.Bamboo, "sakuraLog", 1, W));
+		OM.reg("seedRice"							, ST.make(MD.Bamboo, "seedrice", 1, 0));
+		OM.reg("dustRice"							, ST.make(MD.Bamboo, "rawrice", 1, 0));
+		OM.reg("cropSoybean"						, ST.make(MD.Bamboo, "itembean", 1, 0));
+		OM.reg("foodCustard"						, ST.make(MD.MaCu, "food", 1, 3));
+		OM.reg("seedCanola"							, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 0));
+		OM.reg("seedThistle"						, ST.make(MD.GrC_Milk, "grcmilk.SeedThistle", 1, 0));
+		OM.reg("seedCabbage"						, ST.make(MD.ERE, "cabbageSeeds", 1, 0));
+		OM.reg("seedDarkFruit"						, ST.make(MD.ERE, "materials", 1, 33));
+		OM.reg("seedWheat"							, ST.make(Items.wheat_seeds, 1, 0));
+		OM.reg("seedMelon"							, ST.make(Items.melon_seeds, 1, 0));
+		OM.reg("seedPumpkin"						, ST.make(Items.pumpkin_seeds, 1, 0));
+		OM.reg("seedCamellia"						, ST.make(MD.GaSu, "camelliaSeeds", 1, 0));
+		OM.reg("seedWitherShrub"					, ST.make(MD.GaNe, "witherShrubSeeds", 1, 0));
+		OM.reg("seedGhost"							, ST.make(MD.GaNe, "ghostSeeds", 1, 0));
+		OM.reg("seedQuartzBerry"					, ST.make(MD.GaNe, "quarzBerrySeeds", 1, 0));
+		OM.reg("seedHellBush"						, ST.make(MD.GaNe, "hellBushSeeds", 1, 0));
+		OM.reg("listAllegg"							, ST.make(Items.egg, 1, 0));
+		OM.reg("listAllbeefraw"						, ST.make(Items.beef, 1, 0));
+		OM.reg("listAllbeefcooked"					, ST.make(Items.cooked_beef, 1, 0));
+		OM.reg("listAllporkraw"						, ST.make(Items.porkchop, 1, 0));
+		OM.reg("listAllporkcooked"					, ST.make(Items.cooked_porkchop, 1, 0));
+		OM.reg("listAllchickenraw"					, ST.make(Items.chicken, 1, 0));
+		OM.reg("listAllchickencooked"				, ST.make(Items.cooked_chicken, 1, 0));
+		for (int i = 0, j = (MD.MaCu.mLoaded?64:3); i <= j; i++)
+		OM.reg("listAllfishraw"						, ST.make(Items.fish, 1, i));
+		OM.reg("listAllfishcooked"					, ST.make(Items.cooked_fished, 1, 0));
+		OM.reg("listAllfishcooked"					, ST.make(Items.cooked_fished, 1, 1));
+		OM.reg("listAllmushroom"					, ST.make(Blocks.brown_mushroom, 1, W));
+		OM.reg("listAllmushroom"					, ST.make(Blocks.red_mushroom, 1, W));
+		OM.reg("paperEmpty"							, ST.make(Items.paper, 1, W));
+		OM.reg("paperMap"							, ST.make(Items.map, 1, W));
+		OM.reg("paperMap"							, ST.make(Items.filled_map, 1, W));
+		OM.reg("bookEmpty"							, ST.make(Items.book, 1, W));
+		OM.reg("bookWritable"						, ST.make(Items.writable_book, 1, W));
+		OM.reg("bookWritten"						, ST.make(Items.written_book, 1, W));
+		OM.reg("bookEnchanted"						, ST.make(Items.enchanted_book, 1, W));
+		OM.reg(OD.craftingFirestarter				, ST.make(Items.fire_charge, 1, W));
+		OM.reg(OD.craftingFirestarter				, ST.make(Items.flint_and_steel, 1, W));
+		OM.reg("bucketWater"						, ST.make(Items.water_bucket, 1, W));
+		OM.reg("bucketLava"							, ST.make(Items.lava_bucket, 1, W));
+		OM.reg("bucketMilk"							, ST.make(Items.milk_bucket, 1, W));
+		OM.reg("bottleMilk"							, ST.make(MD.MFR, "milkbottle", 1, 0));
+		OM.reg("glowstone"							, ST.make(Blocks.glowstone, 1, W));
+		OM.reg("dirt"								, ST.make(Blocks.dirt, 1, W));
+		OM.reg("sand"								, ST.make(Blocks.sand, 1, W));
+		OM.reg("gravel"								, ST.make(Blocks.gravel, 1, W));
+		OM.reg("soulsand"							, ST.make(Blocks.soul_sand, 1, W));
+		OM.reg(OD.itemGrassTall						, ST.make(Blocks.tallgrass, 1, 1));
+		OM.reg(OD.itemGrassTall						, ST.make(Blocks.tallgrass, 1, 2));
+		OM.reg(OD.itemGhastTear						, ST.make(Items.ghast_tear, 1, W));
+		OM.reg(OD.itemCompass						, ST.make(Items.compass, 1, W));
+		OM.reg(OD.itemClay							, ST.make(Items.clay_ball, 1, W));
+		OM.reg(OD.itemFlint							, ST.make(Items.flint, 1, W));
+		OM.reg(OD.itemPearl							, ST.make(MD.MaCu, "pearls", 1, W));
+		OM.reg(OD.itemFeather						, ST.make(Items.feather, 1, W));
+		OM.reg(OD.itemFeather						, ST.make(MD.TF, "item.tfFeather", 1, W));
+		OM.reg(OD.itemLeather						, ST.make(Items.leather, 1, W));
+		OM.reg(OD.itemLeatherTreated				, ST.make(MD.TG, "TechgunsAmmo", 1, 109));
+		OM.reg(OD.itemLeatherHardened				, ST.make(MD.HaC, "hardenedleatherItem", 1));
+		OM.reg(OD.itemLeatherImpregnated			, ST.make(MD.WTCH, "ingredient", 1, 72));
+		OM.reg(OD.itemLeather						, ST.make(MD.ERE, "materials", 1, 49));
+		OM.reg(OD.itemLeather						, ST.make(MD.MoCr, "hide", 1, 0));
+		OM.reg(OD.itemFur							, ST.make(MD.MoCr, "fur", 1, 0));
+		OM.reg(OD.itemFur							, ST.make(MD.TF, "item.arcticFur", 1, 0));
+		OM.reg(OD.itemFur							, ST.make(MD.TF, "item.alphaFur", 1, 0));
+		OM.reg(OD.itemString						, ST.make(Items.string, 1, W));
+		OM.reg(OD.itemString						, ST.make(MD.MaCu, "crafting", 1, 0));
+		OM.reg(OD.itemMoss							, ST.make(MD.CHSL, "ballomoss", 1, 0));
+		OM.reg(OD.itemMoss							, ST.make(MD.ERE, "materials", 1, 34));
+		OM.reg(OD.itemMoss							, ST.make(MD.BTL, "plantDrop", 1, 29));
+		OM.reg(OD.itemMoss							, ST.make(MD.BTL, "plantDrop", 1, 30));
+		OM.reg(OD.itemMoss							, ST.make(MD.BoP, "moss", 1, 0));
+		OM.reg("gt:autocrafterinfinite"				, ST.make(MD.PE, "item.pe_philosophers_stone", 1, W));
+		OM.reg("gt:autocrafterinfinite"				, ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));
+		OM.reg("container1000water"					, ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));
+		OM.reg("gt:autocrafterinfinite"				, ST.make(MD.GaEn, "infiniteBucket", 1, W));
+		OM.reg("container1000water"					, ST.make(MD.GaEn, "infiniteBucket", 1, W));
+		OM.reg("container1000water"					, ST.make(MD.ERE, "bambucketWater", 1, W));
+		OM.reg("container1000milk"					, ST.make(MD.ERE, "bambucketMilk", 1, W));
+		OM.reg("container1000honey"					, ST.make(MD.ERE, "bambucketHoney", 1, W));
+		OM.reg("container1000honey"					, ST.make(MD.ERE, "bucketHoney", 1, W));
+		OM.reg(OD.itemResin							, ST.make(MD.ERE, "materials", 1, 41));
+		OM.reg(OD.logWood							, ST.make(MD.TC, "blockMagicalLog", 1, 4));
+		OM.reg(OD.logWood							, ST.make(MD.TC, "blockMagicalLog", 1, 5));
+		OM.reg(OD.logWood							, ST.make(MD.TC, "blockMagicalLog", 1, 8));
+		OM.reg(OD.logWood							, ST.make(MD.TC, "blockMagicalLog", 1, 9));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "log1", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "log2", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "log_elbow_baldcypress", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "log_elbow_rainbow_eucalyptus", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "cornerlog_oak", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "cornerlog_fir", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "cornerlog_redwood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "cornerlog_baldcypress", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.EBXL, "cornerlog_rainboweucalyptus", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.MoCr, "MoCLog", 1, 0));
+		OM.reg(OD.logWood							, ST.make(MD.MoCr, "MoCLog", 1, 1));
+		OM.reg(OD.plankWood							, ST.make(MD.MoCr, "MoCWoodPlank", 1, 0));
+		OM.reg(OD.plankWood							, ST.make(MD.MoCr, "MoCWoodPlank", 1, 1));
+		OM.reg(OD.stairWood							, ST.make(MD.BTL, "weedwoodPlankStairs", 1, 0));
+		OM.reg(OD.slabWood							, ST.make(MD.BTL, "Weedwood Planks Slab", 1, 0));
+		OM.reg("seedAspectrus"						, ST.make(MD.BTL, "aspectrusSeeds", 1, 0));
+		OM.reg("seedPurplePear"						, ST.make(MD.BTL, "middleFruitSeeds", 1, 0));
+		OM.reg(OD.craftingChest						, ST.make(MD.BTL, "weedwoodChest", 1, W));
+		OM.reg("foodMuttonraw"						, ST.make(MD.GaSu, "mutton_raw", 1, 0));
+		OM.reg("foodMuttonraw"						, ST.make(MD.EtFu, "mutton_raw", 1, 0));
+		OM.reg("foodMuttoncooked"					, ST.make(MD.GaSu, "mutton_cooked", 1, 0));
+		OM.reg("foodMuttoncooked"					, ST.make(MD.EtFu, "mutton_cooked", 1, 0));
+		OM.reg("foodRabbitraw"						, ST.make(MD.EtFu, "rabbit_raw", 1, 0));
+		OM.reg("foodRabbitcooked"					, ST.make(MD.EtFu, "rabbit_cooked", 1, 0));
+		OM.reg("container1000rubbertreesap"			, ST.make(MD.IHL, "bucket_fluidRubberTreeSap", 1, 0));
+		OM.reg("container1000spruceresin"			, ST.make(MD.IHL, "bucket_SpruceResin", 1, 0));
+		OM.reg("foodCheese"							, ST.make(MD.GC, "item.cheeseCurd", 1, W));
+		OM.reg("foodCheese"							, ST.make(MD.AA, "itemFood", 1, 0));
+		OM.reg("foodCarrotjuice"					, ST.make(MD.AA, "itemFood", 1, 2));
+		OM.reg("foodBaconcooked"					, ST.make(MD.AA, "itemFood", 1,20));
+		OM.reg("slimeballRice"						, ST.make(MD.AA, "itemMisc", 1,12));
+		OM.reg("blockClay"							, ST.make(Blocks.clay, 1, W));
+		OM.reg(OD.craftingBook						, ST.make(Items.book, 1, W));
+		OM.reg(OD.craftingBook						, ST.make(Items.writable_book, 1, W));
+		OM.reg(OD.craftingBook						, ST.make(Items.written_book, 1, W));
+		OM.reg(OD.craftingBook						, ST.make(Items.enchanted_book, 1, W));
+		OM.reg(OD.craftingChest						, ST.make(Blocks.chest, 1, W));
+		OM.reg(OD.craftingChest						, ST.make(Blocks.trapped_chest, 1, W));
+		OM.reg(OD.enderChest						, ST.make(Blocks.ender_chest, 1, W));
+		OM.reg(OD.enderChest						, ST.make(MD.GaEn, "anchoredEnderChest", 1, 0));
+		OM.reg(OD.enderChest						, ST.make(MD.GaEn, "enderBag", 1, 0));
+		OM.reg(OD.craftingFurnace					, ST.make(Blocks.furnace, 1, W));
+		OM.reg(OD.craftingFurnace					, ST.make(Blocks.lit_furnace, 1, W));
+		OM.reg(OD.craftingWorkBench					, ST.make(Blocks.crafting_table, 1, W));
+		OM.reg(OD.craftingWorkBench					, ST.make(MD.BC_FACTORY, "autoWorkbenchBlock", 1, 0));
+		OM.reg(OD.craftingRedstoneTorch				, ST.make(Blocks.redstone_torch, 1, W));
+		OM.reg(OD.craftingRedstoneTorch				, ST.make(Blocks.unlit_redstone_torch, 1, W));
+		OM.reg(OD.craftingPiston					, ST.make(Blocks.piston, 1, W));
+		OM.reg(OD.craftingPiston					, ST.make(Blocks.sticky_piston, 1, W));
+		OM.reg(OD.craftingAnvil						, ST.make(Blocks.anvil, 1, 0));
+		OM.reg(OD.craftingAnvil						, ST.make(MD.RC, "anvil", 1, 0));
+		OM.reg(OD.craftingHardenedClay				, ST.make(Blocks.hardened_clay, 1, W));
+		OM.reg(OD.craftingHardenedClay				, ST.make(Blocks.stained_hardened_clay, 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "Fir Sapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_acaciaSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_ashSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_autumnOrangeSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_autumnYellowSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_beechSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_canopySapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_deadSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_decBushSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_evgBushSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_greatOakSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_ironwoodSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_japaneseMapleSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_mangroveSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_palmSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_poplarSapling", 1, W));
+		OM.reg(OP.treeSapling						, ST.make(MD.HiL, "tile.hl_redwoodSapling", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_acaciaLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_ashLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_autumnOrangeLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_autumnYellowLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_canopyLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_firLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_ironwoodLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_japaneseMapleLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_mangroveLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_palmLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_poplarLeaves", 1, W));
+		OM.reg(OP.treeLeaves						, ST.make(MD.HiL, "tile.hl_redwoodLeaves", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_acaciaWood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_ashWood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_canopyWood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_firWood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_japaneseMapleWood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_mangroveWood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_palmWood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_poplarWood", 1, W));
+		OM.reg(OD.logWood							, ST.make(MD.HiL, "tile.hl_redwoodWood", 1, W));
+		OM.reg(OD.flower							, ST.make(MD.HiL, "tile.hl_blueFlower", 1, W));
+		OM.reg(OD.flower							, ST.make(MD.HiL, "tile.hl_lavender", 1, W));
+		OM.reg(OD.flower							, ST.make(MD.HiL, "tile.hl_whiteFlower", 1, W));
+		OM.reg(OD.flower							, ST.make(MD.HiL, "tile.hl_cotton", 1, W));
+		OM.reg("cropBerry"							, ST.make(MD.HiL, "hl_berries", 1, W));
+		OM.reg("cropBerry"							, ST.make(MD.AETHER, "enchantedBerry", 1, 0));
+		OM.reg("cropStrawberry"						, ST.make(MD.AETHER, "rainbowStrawberry", 1, 0));
+		OM.reg("cropWyndberry"						, ST.make(MD.AETHER, "wyndberry", 1, 0));
+		OM.reg("cropBlueberry"						, ST.make(MD.AETHER, "blueBerry", 1, 0));
+		OM.reg("cropOrange"							, ST.make(MD.AETHER, "orange", 1, 0));
+		OM.reg("listAllegg"							, ST.make(MD.AETHER, "moaEgg", 1, W));
+		OM.reg(OD.slimeball							, ST.make(MD.AETHER, "swetJelly", 1, 0));
+		OM.reg(OD.slimeball							, ST.make(MD.AETHER, "swetJelly", 1, 1));
+		OM.reg(OD.slimeball							, ST.make(MD.AETHER, "swetJelly", 1, 2));
+		OM.reg(OD.slimeballSwet						, ST.make(MD.AETHER, "swetJelly", 1, 0));
+		OM.reg(OD.slimeballSwet						, ST.make(MD.AETHER, "swetJelly", 1, 1));
+		OM.reg(OD.slimeballSwet						, ST.make(MD.AETHER, "swetJelly", 1, 2));
+		OM.reg(OD.itemFeather						, ST.make(MD.AETHER, "goldenFeather", 1, 0));
+		OM.reg(OD.craftingChest						, ST.make(MD.AETHER, "skyrootChest", 1, W));
+		OM.reg(OP.ingot.dat(MT.WaxBee)				, ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 0));
+		OM.reg(OP.ingot.dat(MT.WaxBee)				, ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 1));
+		OM.reg(OP.ingot.dat(MT.WaxBee)				, ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 2));
+		OM.reg(OP.ingot.dat(MT.Butter)				, ST.make(MD.GrC_Milk, "grcmilk.Butter", 1, 0));
+		OM.reg(OP.ingot.dat(MT.ButterSalted)		, ST.make(MD.GrC_Milk, "grcmilk.Butter", 1, 1));
+		OM.reg(OP.ingot.dat(MT.ButterSalted)		, ST.make(MD.HaC, "butterItem", 1, 0));
+		OM.reg(OP.blockSolid, MT.Obsidian			, ST.make(MD.TC, "blockCosmeticSolid", 1, 0));
+		OM.reg(OP.blockSolid, MT.Obsidian			, ST.make(MD.TC, "blockCosmeticSolid", 1, 1));
+		OM.reg(OP.gemFlawed, MT.Diamond				, ST.make(MD.FZ, "diamond_shard", 1, W));
+		OM.reg(OP.circuit.dat(MT.Basic)				, ST.mkic("electronicCircuit", 1));
+		OM.reg(OP.circuit.dat(MT.Advanced)			, ST.mkic("advancedCircuit", 1));
+		OM.reg("cropHemp"							, ST.make(MD.IE, "material", 1, 3));
+		OM.reg(OP.plate.dat(MT.WoodSealed)			, ST.make(MD.IE, "treatedWood", 1, 1));
+		OM.reg(OP.plate.dat(MT.WoodSealed)			, ST.make(MD.IE, "treatedWood", 1, 2));
+		OM.reg(OP.dust.dat(MT.NaCl)					, ST.make(MD.MaCu, "materials", 1, 12));
+		OM.reg(OP.dust.dat(MT.Obsidian)				, ST.make(MD.IC2, "item.itemObsidianDust", 1, 0));
+		OM.reg(OP.dust.dat(MT.Wheat)				, ST.make(MD.IC2, "item.itemFlour", 1, 0));
+		OM.reg("cropTea"							, ST.make(MD.IC2, "item.itemTeaLeaf", 1, 0));
+		
+		OM.reg(OD.record							, ST.make(MD.MFR, "record.blank", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.RoC, "rotarycraft_item_disk", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BoP, "record_corruption", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BoP, "record_wanderer", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.MoCr, "recordshuffle", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BOTA, "recordGaia1", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BOTA, "recordGaia2", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "record16612", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordAstatos", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordHagDance", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordWaterlogged", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordAncient", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordOnwards", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordStuckInTheMud", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordWanderingWisps", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordBeneathAGreenSky", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordChristmasOnTheMarsh", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordDJWightsMixtape", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordLonelyFire", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordBetweenYouAndMe", 1, 0));
+		OM.reg(OD.record							, ST.make(MD.BTL, "recordTheExplorer", 1, 0));
+		
+		
+		OM.reg(OP.dustSmall.dat(MT.Fe)				, ST.make(MD.BINNIE_BEE, "misc", 1, 6));
+		OM.reg(OP.dustSmall.dat(MT.Au)				, ST.make(MD.BINNIE_BEE, "misc", 1, 7));
+		OM.reg(OP.dustSmall.dat(MT.Ag)				, ST.make(MD.BINNIE_BEE, "misc", 1, 8));
+		OM.reg(OP.dustSmall.dat(MT.Pt)				, ST.make(MD.BINNIE_BEE, "misc", 1, 9));
+		OM.reg(OP.dustSmall.dat(MT.Cu)				, ST.make(MD.BINNIE_BEE, "misc", 1,10));
+		OM.reg(OP.dustSmall.dat(MT.Sn)				, ST.make(MD.BINNIE_BEE, "misc", 1,11));
+		OM.reg(OP.dustSmall.dat(MT.Ni)				, ST.make(MD.BINNIE_BEE, "misc", 1,12));
+		OM.reg(OP.dustSmall.dat(MT.Pb)				, ST.make(MD.BINNIE_BEE, "misc", 1,13));
+		OM.reg(OP.dustSmall.dat(MT.Zn)				, ST.make(MD.BINNIE_BEE, "misc", 1,14));
+		OM.reg(OP.dustSmall.dat(MT.Ti)				, ST.make(MD.BINNIE_BEE, "misc", 1,15));
+		OM.reg(OP.dustSmall.dat(MT.W)				, ST.make(MD.BINNIE_BEE, "misc", 1,16));
+		OM.reg(OP.dustSmall.dat(MT.U_238)			, ST.make(MD.BINNIE_BEE, "misc", 1,17));
+		OM.reg(OP.dustSmall.dat(MT.Coal)			, ST.make(MD.BINNIE_BEE, "misc", 1,18));
+		OM.reg(OP.dustSmall.dat(MT.Clay)			, ST.make(MD.BINNIE_BEE, "misc", 1,26));
+		OM.reg(OP.dustSmall.dat(MT.Yellorium)		, ST.make(MD.BINNIE_BEE, "misc", 1,27));
+		OM.reg(OP.dustSmall.dat(MT.Blutonium)		, ST.make(MD.BINNIE_BEE, "misc", 1,28));
+		OM.reg(OP.dustSmall.dat(MT.Cyanite)			, ST.make(MD.BINNIE_BEE, "misc", 1,29));
+		
+		OM.data(MD.BINNIE_BEE, "misc"								, 1,   1, MT.Diamond			, U9);
+		OM.data(MD.BINNIE_BEE, "misc"								, 1,   2, ANY.Emerald			, U9);
+		OM.data(MD.BINNIE_BEE, "misc"								, 1,   3, MT.Ruby				, U9);
+		OM.data(MD.BINNIE_BEE, "misc"								, 1,   4, ANY.Sapphire			, U9);
+		OM.data(MD.BINNIE_BEE, "misc"								, 1,   5, MT.Lapis				, U4);
+		OM.data(MD.BINNIE_BOTANY, "encylopedia"						, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.BINNIE_BOTANY, "encylopediaIron"					, 1,   W, MT.Paper				, U*3, ANY.Fe, U);
+		OM.data(MD.BC_BUILDERS, "blueprintItem"						, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.BC_BUILDERS, "templateItem"						, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.BC_ROBOTICS, "redstone_board"					, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.BC, "mapLocation"								, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.BC, "list"										, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.IE, "tool"										, 1,   3, MT.Paper				, U*3);
+		OM.data(MD.AA, "itemBooklet"								, 1,   W, MT.Paper				, U);
+		OM.data(MD.RC, "routing.table"								, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.FR, "catalogue"									, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.FR, "researchNote"								, 1,   W, MT.Paper				, U);
+		OM.data(MD.FR, "letters"									, 1,   W, MT.Paper				, U);
+		OM.data(MD.FR, "stamps"										, 1,   W, MT.Paper				, U9);
+		OM.data(MD.TE, "diagram"									, 1,   W, MT.Paper				, U*2);
+		OM.data(MD.TF, "item.emptyMagicMap"							, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.TF, "item.emptyMazeMap"							, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.TF, "item.emptyOreMap"							, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.TF, "item.magicMap"								, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.TF, "item.mazeMap"								, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.TF, "item.oreMap"								, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.WTCH, "ingredient"								, 1,  46, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "ingredient"								, 1,  47, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "ingredient"								, 1,  48, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "ingredient"								, 1,  49, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "ingredient"								, 1,  81, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "ingredient"								, 1, 106, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "ingredient"								, 1, 107, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "ingredient"								, 1, 127, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "ingredient"								, 1, 140, MT.Paper				, U);
+		OM.data(MD.WTCH, "ingredient"								, 1, 141, MT.Paper				, U);
+		OM.data(MD.WTCH, "ingredient"								, 1, 142, MT.Paper				, U);
+		OM.data(MD.WTCH, "ingredient"								, 1, 143, MT.Paper				, U);
+		OM.data(MD.WTCH, "ingredient"								, 1, 144, MT.Paper				, U);
+		OM.data(MD.WTCH, "ingredient"								, 1, 145, MT.Paper				, U);
+		OM.data(MD.WTCH, "ingredient"								, 1, 146, MT.Paper				, U);
+		OM.data(MD.WTCH, "ingredient"								, 1, 160, MT.Paper				, U);
+		OM.data(MD.WTCH, "biomenote"								, 1,   W, MT.Paper				, U);
+		OM.data(MD.WTCH, "bookbiomes2"								, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "cauldronbook"								, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.WTCH, "vampirebook"								, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.HOWL, "lycanthropeBook"							, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.BbLC, "item.SlottedBook"							, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.BbLC, "item.BiblioRedBook"						, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.BbLC, "item.TesterItem"							, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.BbLC, "item.RecipeBook"							, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.BbLC, "item.StockroomCatalog"					, 1,   W, MT.Paper				, U*10);
+		OM.data(MD.BbLC, "item.BigBook"								, 1,   W, MT.Paper				, U*11);
+		OM.data(MD.BbLC, "item.AtlasBook"							, 1,   W, MT.Paper				, U*17);
+		OM.data(MD.OB, "infoBook"									, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.OC, "item"										, 1,  98, MT.Paper				, U*3);
+		OM.data(MD.HQM, "quest_book"								, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.TC, "ItemResearchNotes"							, 1,   W, MT.Paper				, U);
+		OM.data(MD.MoCr, "scrollofsale"								, 1,   W, MT.Paper				, U);
+		OM.data(MD.MoCr, "scrollofowner"							, 1,   W, MT.Paper				, U);
+		OM.data(MD.MoCr, "scrolloffreedom"							, 1,   W, MT.Paper				, U);
+		OM.data(MD.RoC, "rotarycraft_item_handbook"					, 1,   W, MT.Paper				, U*6);
+		OM.data(MD.ReC, "reactorcraft_item_book"					, 1,   W, MT.Paper				, U*6);
+		OM.data(MD.ElC, "electricraft_item_book"					, 1,   W, MT.Paper				, U*6);
+		OM.data(MD.CrC, "chromaticraft_item_help"					, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.CrC, "chromaticraft_item_fragment"				, 1,   W, MT.Paper				, U);
+		OM.data(MD.PR_EXPANSION, "projectred.expansion.plan"		, 1,   W, MT.Paper				, U);
+		OM.data(MD.LOSTBOOKS, "randomBook"							, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.WARPBOOK, "warpbook"								, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.WARPBOOK, "warppage"								, 1,   W, MT.Paper				, U);
+		OM.data(MD.BOTA, "lexicon"									, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.MNTL, "mantleBook"								, 1,   W, MT.Paper				, U*3);
+		OM.data(MD.TiC, "manualBook"								, 1,   W, MT.Paper				, U);
+		OM.data(MD.CC, "printout"									, 1,   0, MT.Paper				, U);
+		OM.data(MD.CC, "printout"									, 1,   1, MT.Paper				, U*2);
+		OM.data(MD.CC, "printout"									, 1,   2, MT.Paper				, U);
+		OM.data(MD.GC, "item.schematic"								, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.GC_PLANETS, "item.schematic"						, 1,   W, MT.Paper				, U*8);
+		OM.data(MD.GC_GALAXYSPACE, "item.ItemSchematics"			, 1,   W, MT.Paper				, U*8);
+		
+		for (byte i = 0; i < 16; i++) OM.reg(OP.dyeMixable.mNameInternal + DYE_OREDICTS_POST[i], ST.make(Items.dye, 1, i));
+		
+		OM.reg(OP.stone, MT.GraniteBlack						, ST.make(MD.PFAA, "strongStone", 1,  3)); // actually Gray
+		
+		if (MD.UB.mLoaded) {
+			for (String tName : new String [] {"sedimentaryStone"}) {
+				OM.reg(OP.stone, MT.Limestone					, ST.make(MD.UB, tName, 1,  0));
+				OM.reg(OP.stone, MT.Chalk						, ST.make(MD.UB, tName, 1,  1));
+				OM.reg(OP.stone, MT.Shale						, ST.make(MD.UB, tName, 1,  2));
+				OM.reg(OP.stone, MT.Siltstone					, ST.make(MD.UB, tName, 1,  3));
+				OM.reg(OP.stone, MT.Lignite  					, ST.make(MD.UB, tName, 1,  4));
+				OM.reg(OP.stone, MT.Dolomite 					, ST.make(MD.UB, tName, 1,  5));
+				OM.reg(OP.stone, MT.Greywacke					, ST.make(MD.UB, tName, 1,  6));
+				OM.reg(OP.stone, MT.Chert						, ST.make(MD.UB, tName, 1,  7));
+				OM.reg(OP.stone, MT.Limestone					, ST.make(MD.UB, tName, 1,  8));
+				OM.reg(OP.stone, MT.Chalk						, ST.make(MD.UB, tName, 1,  9));
+				OM.reg(OP.stone, MT.Shale						, ST.make(MD.UB, tName, 1, 10));
+				OM.reg(OP.stone, MT.Siltstone					, ST.make(MD.UB, tName, 1, 11));
+				OM.reg(OP.stone, MT.Lignite  					, ST.make(MD.UB, tName, 1, 12));
+				OM.reg(OP.stone, MT.Dolomite 					, ST.make(MD.UB, tName, 1, 13));
+				OM.reg(OP.stone, MT.Greywacke					, ST.make(MD.UB, tName, 1, 14));
+				OM.reg(OP.stone, MT.Chert						, ST.make(MD.UB, tName, 1, 15));
+			}
+			
+			for (String tName : new String [] {"igneousStone", "igneousStoneBrick", "igneousCobblestone"}) {
+				OM.reg(OP.stone, MT.GraniteRed					, ST.make(MD.UB, tName, 1,  0));
+				OM.reg(OP.stone, MT.GraniteBlack				, ST.make(MD.UB, tName, 1,  1));
+				OM.reg(OP.stone, MT.Rhyolite					, ST.make(MD.UB, tName, 1,  2));
+				OM.reg(OP.stone, MT.Andesite					, ST.make(MD.UB, tName, 1,  3));
+				OM.reg(OP.stone, MT.Gabbro						, ST.make(MD.UB, tName, 1,  4));
+				OM.reg(OP.stone, MT.Basalt						, ST.make(MD.UB, tName, 1,  5));
+				OM.reg(OP.stone, MT.Komatiite					, ST.make(MD.UB, tName, 1,  6));
+				OM.reg(OP.stone, MT.Dacite						, ST.make(MD.UB, tName, 1,  7));
+				OM.reg(OP.stone, MT.GraniteRed					, ST.make(MD.UB, tName, 1,  8));
+				OM.reg(OP.stone, MT.GraniteBlack				, ST.make(MD.UB, tName, 1,  9));
+				OM.reg(OP.stone, MT.Rhyolite					, ST.make(MD.UB, tName, 1, 10));
+				OM.reg(OP.stone, MT.Andesite					, ST.make(MD.UB, tName, 1, 11));
+				OM.reg(OP.stone, MT.Gabbro						, ST.make(MD.UB, tName, 1, 12));
+				OM.reg(OP.stone, MT.Basalt						, ST.make(MD.UB, tName, 1, 13));
+				OM.reg(OP.stone, MT.Komatiite					, ST.make(MD.UB, tName, 1, 14));
+				OM.reg(OP.stone, MT.Dacite						, ST.make(MD.UB, tName, 1, 15));
+			}
+			
+			for (String tName : new String [] {"metamorphicStone", "metamorphicCobblestone", "metamorphicStoneBrick"}) {
+				OM.reg(OP.stone, MT.Gneiss						, ST.make(MD.UB, tName, 1,  0));
+				OM.reg(OP.stone, MT.Eclogite					, ST.make(MD.UB, tName, 1,  1));
+				OM.reg(OP.stone, MT.Marble						, ST.make(MD.UB, tName, 1,  2));
+				OM.reg(OP.stone, MT.Quartzite					, ST.make(MD.UB, tName, 1,  3));
+				OM.reg(OP.stone, MT.Blueschist					, ST.make(MD.UB, tName, 1,  4));
+				OM.reg(OP.stone, MT.Greenschist					, ST.make(MD.UB, tName, 1,  5));
+				OM.reg(OP.stone, MT.Soapstone					, ST.make(MD.UB, tName, 1,  6));
+				OM.reg(OP.stone, MT.Migmatite					, ST.make(MD.UB, tName, 1,  7));
+				OM.reg(OP.stone, MT.Gneiss						, ST.make(MD.UB, tName, 1,  8));
+				OM.reg(OP.stone, MT.Eclogite					, ST.make(MD.UB, tName, 1,  9));
+				OM.reg(OP.stone, MT.Marble						, ST.make(MD.UB, tName, 1, 10));
+				OM.reg(OP.stone, MT.Quartzite					, ST.make(MD.UB, tName, 1, 11));
+				OM.reg(OP.stone, MT.Blueschist					, ST.make(MD.UB, tName, 1, 12));
+				OM.reg(OP.stone, MT.Greenschist					, ST.make(MD.UB, tName, 1, 13));
+				OM.reg(OP.stone, MT.Soapstone					, ST.make(MD.UB, tName, 1, 14));
+				OM.reg(OP.stone, MT.Migmatite					, ST.make(MD.UB, tName, 1, 15));
+			}
+		}
+		
+		if (MD.ERE.mLoaded) {
+			OM.reg(OP.stone, MT.Umber							, ST.make(MD.ERE, "umberstone"					, 1, 2));
+			OM.reg(OP.stone, MT.Umber							, ST.make(MD.ERE, "umberstone"					, 1, 3));
+			OM.reg(OP.stone, MT.Umber							, ST.make(MD.ERE, "umberstone"					, 1, 4));
+			OM.reg(OP.stone, MT.Umber							, ST.make(MD.ERE, "umberstone"					, 1, 5));
+			OM.reg(OP.stone, MT.Umber							, ST.make(MD.ERE, "umberstone"					, 1, 6));
+			OM.reg(OP.stone, MT.Gneiss							, ST.make(MD.ERE, "gneiss"						, 1, 0));
+			OM.reg(OP.stone, MT.Gneiss							, ST.make(MD.ERE, "gneiss"						, 1, 1));
+			OM.reg(OP.stone, MT.Gneiss							, ST.make(MD.ERE, "gneiss"						, 1, 2));
+			OM.reg(OP.stone, MT.Gneiss							, ST.make(MD.ERE, "gneiss"						, 1, 3));
+			OM.reg(OP.stone, MT.Gneiss							, ST.make(MD.ERE, "gneiss"						, 1, 4));
+			OM.reg(OP.stone, MT.Gneiss							, ST.make(MD.ERE, "gneiss"						, 1, 5));
+		}
+		
+		if (MD.AETHER.mLoaded) {
+			OM.reg(OP.stone, MT.Holystone						, ST.make(MD.AETHER, "holystone"				, 1, 0));
+			OM.reg(OP.stone, MT.Holystone						, ST.make(MD.AETHER, "holystone"				, 1, 1));
+			OM.reg(OP.stone, MT.Holystone						, ST.make(MD.AETHER, "holystone"				, 1, 2));
+			OM.reg(OP.stone, MT.Holystone						, ST.make(MD.AETHER, "holystone"				, 1, 3));
+			OM.reg(OP.stone, MT.Holystone						, ST.make(MD.AETHER, "holystoneBrick"			, 1, 0));
+			OM.reg(OP.stone, MT.Holystone						, ST.make(MD.AETHER, "holystoneKeystone"		, 1, 0));
+			OM.reg(OP.stone, MT.Holystone						, ST.make(MD.AETHER, "holystoneHeadstone"		, 1, 0));
+			OM.reg(OP.stone, MT.Holystone						, ST.make(MD.AETHER, "holystoneHighlight"		, 1, 0));
+		}
+		
+		if (MD.GC.mLoaded) {
+			BlocksGT.sDontGenerateOresIn.add(ST.make(MD.GC, "tile.moonBlock", 1, 5));
+			
+			OM.reg(OP.stone, MT.MoonRock						, ST.make(MD.GC, "tile.moonBlock"				, 1, 4));
+			OM.reg(OP.stone, MT.MoonTurf						, ST.make(MD.GC, "tile.moonBlock"				, 1, 5));
+		}
+		if (MD.GC_PLANETS.mLoaded) {
+			BlocksGT.sDontGenerateOresIn.add(ST.make(MD.GC_PLANETS, "tile.mars", 1, 5));
+			
+			OM.reg(OP.stone, MT.MarsRock						, ST.make(MD.GC_PLANETS, "tile.mars"			, 1, 4));
+			OM.reg(OP.stone, MT.MarsSand						, ST.make(MD.GC_PLANETS, "tile.mars"			, 1, 5));
+			OM.reg(OP.stone, MT.MarsRock						, ST.make(MD.GC_PLANETS, "tile.mars"			, 1, 6));
+			OM.reg(OP.stone, MT.MarsRock						, ST.make(MD.GC_PLANETS, "tile.mars"			, 1, 9));
+			
+			OM.reg(OP.stone, MT.SpaceRock						, ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"	, 1, 0));
+			OM.reg(OP.stone, MT.SpaceRock						, ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"	, 1, 1));
+			OM.reg(OP.stone, MT.SpaceRock						, ST.make(MD.GC_PLANETS, "tile.asteroidsBlock"	, 1, 2));
+		}
+		
+		OM.reg(OP.stone, MT.Redrock								, ST.make(MD.EBXL, "terrain_blocks1"	, 1, 0));
+		OM.reg(OP.stone, MT.Redrock								, ST.make(MD.EBXL, "terrain_blocks1"	, 1, 1));
+		OM.reg(OP.stone, MT.Redrock								, ST.make(MD.EBXL, "terrain_blocks1"	, 1, 2));
+//		OM.reg(OP.stone, MT.CrackedSand							, ST.make(MD.EBXL, "terrain_blocks2"	, 1, 0));
+		OM.reg(OP.stone, MT.Basalt								, ST.make(MD.IC2, "blockBasalt"			, 1, 0));
+		OM.reg(OP.stone, MT.Basalt								, ST.make(MD.RC, "brick.abyssal"		, 1, W));
+		OM.reg(OP.stone, MT.Marble								, ST.make(MD.RC, "brick.quarried"		, 1, W));
+		OM.reg(OP.blockSolid, MT.Obsidian						, ST.make(Blocks.obsidian				, 1, W));
+		OM.reg(OP.stoneMossy									, ST.make(Blocks.mossy_cobblestone		, 1, W));
+		OM.reg(OP.stoneCobble									, ST.make(Blocks.mossy_cobblestone		, 1, W));
+		OM.reg(OP.stoneCobble									, ST.make(Blocks.cobblestone			, 1, W));
+		OM.reg(OP.stoneSmooth									, ST.make(Blocks.stone					, 1, W));
+		OM.reg(OP.stoneBricks									, ST.make(Blocks.stonebrick				, 1, W));
+		OM.reg(OP.stoneMossy									, ST.make(Blocks.stonebrick				, 1, 1));
+		OM.reg(OP.stoneCracked									, ST.make(Blocks.stonebrick				, 1, 2));
+		OM.reg(OP.stoneChiseled									, ST.make(Blocks.stonebrick				, 1, 3));
+		OM.reg(OP.stone, MT.Bedrock								, ST.make(Blocks.bedrock				, 1, W));
+		OM.reg(OP.stone, MT.Sand								, ST.make(Blocks.sandstone				, 1, W));
+		OM.reg(OP.stone, MT.Netherrack							, ST.make(Blocks.netherrack				, 1, W));
+		OM.reg(OP.stone, MT.NetherBrick							, ST.make(Blocks.nether_brick			, 1, W));
+		OM.reg(OP.stone, MT.Endstone							, ST.make(Blocks.end_stone				, 1, W));
+		
+		OM.data(MD.LycM_Demon, "demoncrystal"				, 1,   W, MT.Glowstone			, U*4);
+		
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   0, MT.HSLA				, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   1, MT.Sn					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   2, MT.Ni					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   3, MT.Al					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   4, MT.Cu					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   5, MT.Ag					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   6, MT.Au					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   7, MT.Pt					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,   8, MT.HSLA				, 2*U16, ANY.W	, 2* U16, MT.Ag					, 2* U16, MT.Au					, 1* U16, MT.Redstone			, 1* U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  16, MT.HSLA				, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  17, MT.Sn					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  18, MT.Ni					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  19, MT.Al					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  20, MT.Cu					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  21, MT.Ag					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  22, MT.Au					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  23, MT.Pt					, 3*U16);
+		OM.data(MD.ElC, "electricraft_item_wire"			, 1,  24, MT.HSLA				, 2*U16, ANY.W	, 2* U16, MT.Ag					, 2* U16, MT.Au					, 1* U16, MT.Redstone			, 1* U16);
+		
+		OM.data(MD.ElC, "electricraft_item_placer"			, 1,   1, MT.HSLA				, 96* U9, MT.Au					,  U * 8, MT.Ni					,  U * 1, MT.Cu					,  U * 1, MT.Sn					,  U * 1);
+		OM.data(MD.ElC, "electricraft_item_placer"			, 1,   2, MT.HSLA				,  U * 7, MT.Au					,  U * 8, MT.Ag					,  U * 2, MT.Cu					,  U * 2);
+		OM.data(MD.ElC, "electricraft_item_placer"			, 1,   3, MT.HSLA				,  U * 1, MT.Coal				,  U2);
+		OM.data(MD.ElC, "electricraft_item_placer"			, 1,   4, MT.HSLA				,  3* U4, MT.Cu					,  3* U4);
+		OM.data(MD.ElC, "electricraft_item_placer"			, 1,   6, MT.Diamond			, 1* U16, MT.Redstone			,36* U16, MT.EnderPearl			, 1* U16, MT.Au					, 9* U16);
+		OM.data(MD.ElC, "electricraft_item_placer"			, 1,   7, MT.HSLA				,  U *11, MT.Ag					, 6* U16, MT.Redstone			,  4* U3, MT.Glass				,  3* U8);
+		OM.data(MD.ElC, "electricraft_item_placer"			, 1,   9, MT.HSLA				,  U * 6, MT.InductiveAlloy		,  U * 2);
+		OM.data(MD.ElC, "electricraft_item_placer"			, 1,  10, MT.HSLA				,  U * 5, MT.Au					,  U * 4, MT.Cu					,  U * 4);
+		
+		
+		OM.data(MD.RoC, "rotarycraft_block_deco"			, 1,   3, MT.HSLA				,  U	, MT.Obsidian			,  9* U4);
+		OM.data(MD.RoC, "rotarycraft_block_decotank"		, 1,   0, MT.HSLA				,  U	, MT.Glass				,15* U32);
+		OM.data(MD.RoC, "rotarycraft_item_screwdriver"		, 1,   0, MT.HSLA				,  U	, ANY.Wood		,  3* U2);
+		OM.data(MD.RoC, "rotarycraft_item_meter"			, 1,   0, MT.HSLA				,  U * 3, MT.Redstone			,  U * 1, ANY.Wood		,  U * 3);
+		OM.data(MD.RoC, "rotarycraft_item_spring"			, 1,   W, MT.HSLA				,  U * 4);
+		OM.data(MD.RoC, "rotarycraft_item_ultrasound"		, 1,   W, MT.HSLA				,  U *13, MT.Redstone			, 13* U3, ANY.Wood		,  U * 8, MT.Glass				,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_motion"			, 1,   W, MT.HSLA				,  U *22, MT.Redstone			, 25* U3, MT.Au					,  U * 1, ANY.Wood		,  U * 8, MT.Glass				,3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_vacuum"			, 1,   W, MT.HSLA				, 87* U9);
+		OM.data(MD.RoC, "rotarycraft_item_stungun"			, 1,   W, MT.HSLA				,  U *12, MT.Redstone			, 11* U3, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_gravelgun"		, 1,   W, MT.HSLA				, 57* U9, MT.Redstone			,  U * 1, ANY.Stone		,  U * 7, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_fireball"			, 1,   W, MT.HSLA				,  U *16, MT.Redstone			,  U * 3, MT.Au					,  U * 1, MT.Blaze				,  U * 1, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_nvg"				, 1,   W, MT.HSLA				,  U * 8, MT.EnderEye			,  U * 2, MT.Redstone			,  2* U3, MT.Glass				,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_handcraft"		, 1,   0, MT.HSLA				,  U * 2, MT.Au					,  U * 2, ANY.Wood		,  U * 4);
+		OM.data(MD.RoC, "rotarycraft_item_railgun"			, 1,   0, MT.HSLA				,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_key"				, 1,   0, MT.HSLA				,  U * 3);
+		OM.data(MD.RoC, "rotarycraft_item_shell"			, 1,   0, MT.HSLA				,  U4); // +  U16 AmmoniumNitrate
+		OM.data(MD.RoC, "rotarycraft_item_target"			, 1,   0, MT.HSLA				,  U * 4, MT.EnderPearl			,  U * 1, MT.Redstone			,  U * 1, MT.Lapis				,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_tileselector"		, 1,   0, MT.HSLA				,  U * 4, MT.EnderPearl			,  U * 1, MT.Redstone			,  U * 1, MT.Lapis				,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_iogoggles"		, 1,   W, MT.HSLA				,  U * 3, MT.EnderPearl			,  U * 1, MT.Redstone			,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_jetpack"			, 1,   W, MT.HSLA				,552* U9, MT.Redstone			,  U * 4, MT.Au					,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_bedpack"			, 1,   W, MT.HSLA				,552* U9, MT.Redstone			,  U * 4, MT.Au					,  U * 2, MT.Bedrock_HSLA_Alloy	,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_strongcoil"		, 1,   W, MT.HSLA				,  U * 8, MT.Diamond			,  U * 2, MT.Bedrock			,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_pump"				, 1,   W, MT.HSLA				,337* U24,MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_jump"				, 1,   W, MT.HSLA				,204* U9);
+		OM.data(MD.RoC, "rotarycraft_item_fuel"				, 1,   0, MT.HSLA				,  U * 7, MT.Glass				,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_disk"				, 1,   0, MT.HSLA				,  U4, MT.Redstone			,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_craftpattern"		, 1,   0, MT.HSLA				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_grafter"			, 1,   W, MT.HSLA				,  U * 7, ANY.Wood		,  U2);
+		
+		
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   0, MT.HSLA				,251* U24,MT.Au					,  U * 5, MT.Glass				, 9* U16, MT.AluminiumAlloy		,  U * 2); // Upgrade Performance Engine
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   1, MT.HSLA				, 33* U9, MT.Redstone			,  U * 3, MT.Au					,  U * 2); // Upgrade Redstone Cooling
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   2, MT.HSLA				,  U * 7, MT.Au					,  U * 4, MT.InductiveAlloy		,  U * 2); // Upgrade Magnetic Coil
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   3, MT.HSLA				,  U * 5, MT.Redstone			,  2* U3, ANY.W	,  U * 1, MT.InductiveAlloy		,  U * 3); // Upgrade Flux Conductance
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   4, MT.HSLA				,  U * 2, ANY.W	,  U * 4, MT.Bedrock_HSLA_Alloy	,  U * 1); // Upgrade Thermal Stability
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   5, MT.HSLA				, 37* U8, MT.SpringSteel		,  U * 4, MT.Bedrock			,  U2); // Upgrade Torsion Resistance
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   6, MT.HSLA				,885* U9, MT.Bedrock			,  U * 4, MT.Redstone			,  U * 6, MT.Au					,  U * 4, MT.InductiveAlloy		,  U * 6); // Upgrade Afterburner
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   7, MT.HSLA				,  U *18, MT.Redstone			,  2* U3, MT.Au					,  U * 8, MT.InductiveAlloy		,  U * 2, MT.SpringSteel		,  U * 6, ANY.W	,  U * 1, MT.SteelMagnetic		,  U * 2); // Upgrade Resonance Stability
+		OM.data(MD.RoC, "rotarycraft_item_upgrade"			, 1,   8, MT.HSLA				,  U * 4, MT.Electrum			,  U * 2, ANY.W	,  U * 2, MT.Enderium			,  U * 1); // Flux Amplitude Upgrade
+		
+		
+		OM.data(MD.RoC, "rotarycraft_item_engine"			, 1,   0, MT.HSLA				,  U * 7, MT.Redstone			,  U * 2); // DC Engine
+		OM.data(MD.RoC, "rotarycraft_item_engine"			, 1,   3, MT.HSLA				,171* U9, MT.Redstone			,  U * 1, MT.Au					,  U * 2); // Gasoline Engine
+		
+		
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   0, ANY.W					,  U * 1, ANY.Glowstone	,  U * 4, MT.Obsidian			,  U *54); // Heat Ray Barrel
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   1, MT.Diamond			,  U * 4); // Lens
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   2, MT.HSLA				,  U * 1, MT.Redstone			,  2* U3, MT.Au					,  U * 1); // Power Module
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   3, MT.NetherStar			,  U * 1, MT.Redstone			,  U * 1,ANY.Glowstone	,  U *12, MT.Blaze				,  U * 2); // Heat Ray Core
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   4, MT.HSLA				,  U * 5, MT.Au					,  U * 8, MT.Redstone			,  U * 1); // Linear Induction Motor
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   5, MT.HSLA				,  U * 3); // Propeller Blade
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   6, MT.HSLA				, 69* U9); // Hub
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   7, MT.Glass				,  U * 3); // Mirror
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   8, MT.HSLA				,  U * 5, MT.Au					,  U * 8); // Generator
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,   9, MT.HSLA				,  U *41, MT.Au					,  U *65, MT.Redstone			, 26* U3); // Railgun Accelerator
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,  10, MT.HSLA				,  U * 9); // Turret Base
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,  11, MT.HSLA				,  U *21, MT.Diamond			,  U * 1, MT.Au					,  U * 9, MT.Redstone			, 16* U3); // Turret Aiming Unit
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,  12, MT.HSLA				,633* U9, ANY.W	,  U * 4); // Compound Turbine
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,  13, MT.HSLA				,  U *65, MT.Bedrock			,  U *16, MT.Diamond			,  U *16); // Bedrock Tension Coil
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,  14, MT.HSLA				,  5* U4); // Chain Link
+		OM.data(MD.RoC, "rotarycraft_item_misccraft"		, 1,  15, MT.Bedrock_HSLA_Alloy	,  U * 7); // Bedrock Drill
+		
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   0, MT.HSLA				, 15* U9); // Impeller
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   1, MT.HSLA				, 87* U9); // Compressor
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   2, MT.HSLA				,303* U9); // Turbine
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   3, MT.HSLA				,  U * 5); // Diffuser
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   4, MT.HSLA				,  U *12, MT.Redstone			,  U * 2, MT.Au					,  U * 1); // Combustor
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   5, MT.HSLA				,  U * 4); // Cylinder
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   6, MT.HSLA				, 33* U8, MT.Au					,  U * 3, MT.Glass				, 9* U16); // Radiator
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   7, MT.HSLA				, 13* U4, MT.Glass				,  3* U8); // Condenser
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   8, MT.HSLA				,  U * 1, MT.Au					,  U * 4); // Gold Coil
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,   9, ANY.Wood		,  U * 5); // Wood Gear
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  10, ANY.Stone		,  5* U2); // Stone Gear
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  11, MT.Diamond			,  5* U8); // Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  12, MT.HSLA				,  5* U8, MT.Bedrock			,  U2); // Bedrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  13, MT.HSLA				,  U * 6, MT.SpringSteel		,  U * 3); // PaddlePanel
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  14, MT.HSLA				,  U * 3); // Shaft Core
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  15, MT.HSLA				,  U * 5, MT.Redstone			,  U * 1, MT.Au					,  U * 1); // Ignition Unit
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  16, MT.Diamond			,  U * 3); // Diamond Shaft Core
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  17, MT.HSLA				,201* U9, ANY.W	,  U * 4); // Compound Compressor
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  18, MT.AluminiumAlloy		,  U * 4); // Aluminium Alloy Cylinder
+		OM.data(MD.RoC, "rotarycraft_item_enginecraft"		, 1,  19, MT.HSLA				,  U * 9, MT.Redstone			,  U * 2, MT.Au					,  U * 1, MT.InductiveAlloy		,  U * 3); // HT Combustor
+		
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,   3, MT.HSLA				,  U * 1); // Mount
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,   4, MT.HSLA				, 15* U9); // Gear
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,   5, MT.HSLA				, 48* U9); // 2x Gear
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,   6, MT.HSLA				,114* U9); // 4x Gear
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,   7, MT.HSLA				,180* U9); // 8x Gear
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,   8, MT.HSLA				,246* U9); // 16x Gear
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,   9, MT.HSLA				,  U9); // HSLA Scrap
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,  10, ANY.Fe		,  U * 1); // Iron Scrap
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,  11, MT.HSLA				, 15* U9, ANY.Wood		,  U * 8); // Wood Flywheel Core
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,  12, MT.HSLA				, 15* U9, ANY.Stone		,  U * 8); // Stone Flywheel Core
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,  13, MT.HSLA				, 15* U9, ANY.Fe		,  U * 8); // Iron Flywheel Core
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,  14, MT.HSLA				, 15* U9, MT.Au					,  U * 8); // Gold Flywheel Core
+		OM.data(MD.RoC, "rotarycraft_item_shaftcraft"		, 1,  15, MT.HSLA				, 33* U9); // Worm Gear
+		
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   0, ANY.Wood		,  U *11); // 2x Wood Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   1, ANY.Wood		,  U *23); // 4x Wood Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   2, ANY.Wood		,  U *35); // 8x Wood Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   3, ANY.Wood		,  U *47); // 16x Wood Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   4, ANY.Stone		,  U * 7); // 2x Stone Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   5, ANY.Stone		,  U *16); // 4x Stone Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   6, ANY.Stone		,  U *25); // 8x Stone Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   7, ANY.Stone		,  U *34); // 16x Stone Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   8, MT.Diamond			, 13* U4); // 2x Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,   9, MT.Diamond			, 34* U4); // 4x Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,  10, MT.Diamond			, 57* U4); // 8x Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,  11, MT.Diamond			, 78* U4); // 16x Diamond Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,  12, MT.HSLA				,  7* U4, MT.Bedrock			,  U * 3); // 2x Bedrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,  13, MT.HSLA				, 16* U4, MT.Bedrock			,  U * 8); // 4x Bedrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,  14, MT.HSLA				, 25* U4, MT.Bedrock			,  U *13); // 8x Bedrock Gear
+		OM.data(MD.RoC, "rotarycraft_item_gearunits"		, 1,  15, MT.HSLA				, 34* U4, MT.Bedrock			,  U *18); // 16x Bedrock Gear
+		
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   0, MT.HSLA				,  U * 7); // Drill
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   1, MT.HSLA				,  U * 1, MT.Diamond			,  U * 3, MT.Bedrock			,  U * 3, MT.Obsidian			,  U *18); // Pressure Head
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   2, MT.HSLA				,  U *10, MT.Redstone			,  4*U  , MT.Au					,  U * 1); // Radar Unit
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   3, MT.HSLA				,  U * 4, MT.Redstone			, 11* U3, ANY.Wood		,  U * 8); // Sonar Unit
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   4, MT.HSLA				,  U * 1, MT.Redstone			,  2* U3); // Circuit Board
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   5, MT.HSLA				,  U * 5, MT.Redstone			,  2* U3, MT.Glass				,  3* U8); // Screen
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   6, MT.HSLA				, 51* U9); // Mixer
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   7, MT.HSLA				, 51* U9); // Saw
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   8, MT.HSLA				,  U * 3); // Shaft Bearing
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,   9, MT.HSLA				,  U8, MT.Leather			,  U * 1); // Belt
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,  10, MT.HSLA				,  U4); // Ball Bearing
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,  11, MT.HSLA				,  U *12); // Brake Disk
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,  12, MT.HSLA				,  U *33); // Tension Coil
+		OM.data(MD.RoC, "rotarycraft_item_borecraft"		, 1,  15, MT.HSLA				,  U4, MT.Bedrock			,  U * 1); // Bedrock Shaft Unit
+		
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,   0/* Bedrock Breaker				*/	, MT.HSLA				,  U * 4, ANY.W	,  U * 2, MT.Diamond			,  U * 2, MT.Obsidian			,  U * 9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,   4/* Bevel Gears					*/	, MT.HSLA				, 29*U12);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,   6/* Shaft Junction				*/	, MT.HSLA				, 29* U6);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,   7/* Fermenter					*/	, MT.HSLA				, 51* U9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,   8/* Floodlight					*/	, MT.HSLA				,  U * 2, MT.Obsidian			,  U * 9, ANY.Glowstone	,  U * 4, MT.Glass				,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,   9/* Clutch						*/	, MT.HSLA				,  U * 2, MT.Redstone			,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  10/* Dynamometer					*/	, MT.HSLA				,  7* U4, MT.Redstone			,  1* U6, MT.Glass				, 3* U32);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  11/* Grinder						*/	, MT.HSLA				,  U *18);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  12/* Heat Ray						*/	, MT.HSLA				,  U * 3, MT.NetherStar			,  U * 1, ANY.W	,  U * 1, MT.Diamond			,  U * 4, ANY.Glowstone	,  U *16, MT.Blaze				,  U * 2, MT.Redstone			,  5* U3, MT.Au					,  U * 1, MT.Obsidian			,  U *81);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  13/* Lubricant Hose				*/	, ANY.Wood		,  3* U8, MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  14/* Boring Machine				*/	, MT.HSLA				,174* U9, MT.Redstone			,  2* U3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  15/* Light Bridge					*/	, MT.HSLA				,  U * 4, MT.Diamond			,  U * 1, MT.Au					,  U * 2, MT.Glass				,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  16/* Pump							*/	, MT.HSLA				,163* U24,MT.Glass				,15* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  17/* Liquid Pipe					*/	, MT.HSLA				,  3* U8, MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  18/* Reservoir					*/	, MT.HSLA				,  U * 7);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  19/* Aerosolizer					*/	, MT.HSLA				,303* U9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  20/* Extractor					*/	, MT.HSLA				,114* U9, ANY.Stone		,  U * 1, MT.Netherrack			,  U * 1, ANY.Wood		,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  21/* Pulse jet Furnace			*/	, MT.HSLA				,721* U24,MT.Redstone			,  U * 2, MT.Au					,  U * 1, MT.Obsidian			,  U *18, MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  22/* Compactor					*/	, MT.HSLA				,318* U9, MT.Diamond			,  U *12, MT.Bedrock			,  U *12, MT.Obsidian			,  U *72);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  23/* Fan							*/	, MT.HSLA				, 43* U9, ANY.Wood		,  U * 5);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  24/* Fuel Line					*/	, MT.Obsidian			, 27* U8, MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  25/* Fractation Unit				*/	, MT.HSLA				, 60* U9, MT.Au					,  U * 6, MT.Obsidian			, 27* U8, MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  26/* Ground Penetrating Radar		*/	, MT.HSLA				,  U *22, MT.Au					,  U * 1, MT.Redstone			, 16* U3, MT.Glass				,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  27/* Obsidian Factory				*/	, MT.HSLA				,113* U12,MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  28/* Pile Driver					*/	, MT.HSLA				,312* U9, ANY.Fe		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  29/* Item Vacuum					*/	, MT.HSLA				, 51* U9, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  30/* Firework Display				*/	, MT.HSLA				,  U * 6, MT.Redstone			,  U * 2, MT.EnderEye			,  U * 1, ANY.Stone		,  U * 7);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  31/* Sprinkler					*/	, MT.HSLA				,49* U96, MT.Glass				, 3* U64);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  32/* Wood Cutter					*/	, MT.HSLA				,195* U9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  33/* Spawner Controller			*/	, MT.HSLA				,  U * 3, MT.Redstone			,  2* U3, MT.Au					,  U * 1, ANY.Glowstone	,  U * 8, MT.Obsidian			,  U *18);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  34/* Player Detector				*/	, MT.HSLA				,  U *11, MT.Redstone			,  U * 4, MT.Au					,  U * 2, MT.Obsidian			,  U *36, MT.Lapis				,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  35/* Heater						*/	, MT.HSLA				,  U *18, ANY.W	,  U * 1, MT.Redstone			,  U * 2, MT.Au					,  U * 1, ANY.Fe		,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  36/* Bait Box						*/	, MT.HSLA				,  U * 5, ANY.Fe		,  U * 3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  37/* Auto Breeder					*/	, MT.HSLA				,  U * 5);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  38/* Engine Control Unit			*/	, MT.HSLA				,  U * 1, MT.Redstone			,  5* U3, MT.Au					,  U2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  39/* Smoke Detector				*/	, MT.Redstone			,  U * 4, ANY.Wood		,  U * 8, ANY.Stone		,  U2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  40/* Mob Radar					*/	, MT.HSLA				,210* U9, MT.Redstone			, 16* U3, MT.Glass				,  3* U8, MT.Au					,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  41/* Coil Winder					*/	, MT.HSLA				,102* U9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  43/* TNT Cannon					*/	, MT.HSLA				, 81* U9, MT.Redstone			, 31* U3, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  44/* Sonic Weapon					*/	, MT.HSLA				,195* U9, MT.Redstone			, 44* U3, ANY.Wood		,  U *32);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  45/* Blast Furnace Brick			*/	, MT.Redstone			,  U * 1, ANY.Stone		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  46/* Force Field					*/	, MT.HSLA				,  U * 2, MT.NetherStar			,  U * 1, MT.Diamond			,  U * 3, MT.Au					,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  47/* Music Box					*/	, MT.HSLA				,  U4, MT.Redstone			, 5* U12, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  48/* Liquid Spiller				*/	, MT.HSLA				, 35* U8, MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  49/* Chunk Loader					*/	, MT.HSLA				,  U *13, MT.NetherStar			,  U * 2, MT.Bedrock			,  U *20);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  50/* Mob Harvester				*/	, MT.HSLA				,  U * 9, MT.Redstone			,  U * 1, MT.Au					,  U * 1, MT.EnderPearl			,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  52/* Projector					*/	, MT.HSLA				,  U * 7, MT.Redstone			,  2* U3, ANY.Glowstone	,  U * 4, MT.Glass				,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  53/* Railgun						*/	, MT.HSLA				,  U *71, MT.Au					,  U *74, MT.Redstone			, 42* U3, MT.Diamond			,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  54/* Silver Iodide Cannon			*/	, MT.HSLA				,  U * 7, MT.Redstone			,  2* U3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  55/* Item Refresher				*/	, MT.HSLA				,  U * 4, MT.Lapis				,  U * 4, MT.EnderPearl			,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  56/* Freeze Gun					*/	, MT.HSLA				,156* U9, MT.Ice				,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  57/* Cave Scanner					*/	, MT.HSLA				,  U *12, MT.Redstone			, 13* U3, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  58/* Scaleable Chest				*/	, MT.HSLA				,  U * 8, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  59/* Firestarter					*/	, MT.HSLA				,  U *12, MT.Redstone			,  U * 2, MT.Au					,  U * 5, MT.Obsidian			,  U *36);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  60/* Magnetizing Unit				*/	, MT.HSLA				,  U * 7, MT.Redstone			,  U * 1, MT.Au					,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  61/* Containment Field			*/	, MT.HSLA				,  U * 2, MT.NetherStar			,  U * 1, MT.Diamond			,  U * 3, MT.Au					,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  62/* CCTV Screen					*/	, MT.HSLA				,  U *13, MT.Redstone			,  4* U3, MT.Glass				,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  63/* Steel Purifier				*/	, MT.HSLA				,  U * 7, MT.Redstone			,  U * 1, ANY.Fe		,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  64/* Laser Gun					*/	, MT.HSLA				,327* U9, MT.NetherStar			,  U * 1, ANY.W	,  U * 1, MT.Diamond			,  U * 5, MT.Redstone			, 21* U3, MT.Au					,  U *10, ANY.Glowstone	,  U *16, MT.Blaze				,  U * 2, MT.Obsidian			,  U *54);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  65/* Item Cannon					*/	, MT.HSLA				,219* U9, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  66/* Landmine						*/	, MT.HSLA				,  U * 7, MT.Redstone			,  U * 3, MT.Au					,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  67/* Friction Heater				*/	, MT.HSLA				,  U * 7);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  68/* Block Cannon					*/	, MT.HSLA				,141* U9, MT.Redstone			,  4* U3, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  69/* Bucket Filler				*/	, MT.HSLA				, 44* U8, MT.Glass				,12* U16, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  70/* Solar Mirror					*/	, MT.HSLA				, 42* U9, MT.Redstone			,  2* U3, MT.Glass				,  U * 3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  71/* Solar Mirror					*/	, MT.HSLA				, 45* U8, MT.Glass				, 9* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  72/* Aerial Camera				*/	, MT.HSLA				,  U * 7, MT.Redstone			,  5* U3, MT.Glass				,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  73/* Self Detruct Mechanism		*/	, MT.HSLA				,  U * 6, MT.Redstone			,  2* U3);
+//		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  74/* Cooling Fin					*/	); // yep no value, too different Recipes, which have nothing in common
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  75/* Worktable					*/	, MT.HSLA				,  U * 2, MT.Redstone			,  U * 1, ANY.Wood		,  U * 4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  78/* Display Screen				*/	, MT.HSLA				,  U * 6, MT.Redstone			,  2* U3, ANY.Si	,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  79/* Bright Lamp					*/	, MT.HSLA				,  U * 4, ANY.Glowstone	,  U * 4, MT.Glass				,  U * 4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  80/* EMP Machine					*/	, MT.HSLA				,  U * 9, MT.NetherStar			,  U * 1, MT.Diamond			,  U * 9, MT.Au					,  U *16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  81/* Block Ram					*/	, MT.HSLA				,102* U9, MT.Bedrock_HSLA_Alloy	,  U * 1, ANY.Stone		,  U * 4, ANY.Wood		,  U * 3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  82/* Beam Mirror					*/	, MT.HSLA				,  U * 2, MT.Glass				,  U * 3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  83/* Multidirectional Clutch		*/	, MT.HSLA				,102* U9, MT.Redstone			,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  84/* Terraformer					*/	, MT.HSLA				,  U *15, MT.Redstone			,  4* U3, MT.Glass				,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  85/* Sorting Machine				*/	, MT.HSLA				,  U * 5, MT.Redstone			,  2* U3, ANY.Fe		,  U * 5, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  86/* Fuel Enchancer				*/	, MT.HSLA				, 51* U9, MT.Au					,  U * 2, MT.Glass				,  6* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  87/* Arrow Gun					*/	, MT.HSLA				,  U * 8, ANY.Stone		,  U * 7, MT.Redstone			,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  88/* Friction Boiler				*/	, MT.HSLA				,145* U24,MT.Glass				,35* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  89/* Steam Turbine				*/	, MT.HSLA				,348* U9, MT.Diamond			,  U * 3, MT.Glass				,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  90/* Fertilizer					*/	, MT.HSLA				,65* U12, ANY.Wood		,  U * 8, MT.Glass				, 6* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  91/* Rock Melter					*/	, MT.HSLA				,141* U9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  92/* Electric Generator			*/	, MT.HSLA				,150* U9, MT.Au					,  U * 9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  93/* Electric Motor				*/	, MT.HSLA				,  U * 8, MT.Diamond			,  U * 3, MT.Au					,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  94/* Valve Pipe					*/	, MT.HSLA				,  U * 1, MT.Redstone			,  9* U2, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  95/* Bypass Pipe					*/	, MT.Sand				,  6* U4, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  96/* Separation Pipe				*/	, MT.HSLA				,  U * 1, MT.Lapis				,  9* U2, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  97/* Dew Point Aggregator			*/	, MT.HSLA				, 69* U9, MT.Glass				,  6* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  98/* Air Pressure Gun				*/	, MT.HSLA				,105* U9, MT.Redstone			, 11* U3, ANY.Wood		,  U * 8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1,  99/* Sonic Borer					*/	, MT.HSLA				,361* U24,ANY.Fe		,  3* U8, MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 100/* Fuel Powered Engine			*/	, MT.HSLA				,  U *40, ANY.W	,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 101/* Filling Station				*/	, MT.HSLA				, 73* U6, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 102/* Belt Hub						*/	, MT.HSLA				, 41* U6);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 103/* Van De Graaff Generator		*/	, MT.HSLA				,515* U24,MT.Leather			,  U * 1, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 104/* Defoliation Machine			*/	, MT.HSLA				,163* U24, MT.Glass				, 9* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 105/* Lava Smeltery				*/	, MT.HSLA				,  U *18, ANY.Stone		,  U *24);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 106/* Liquid Distillery			*/	, MT.HSLA				, 87* U9,ANY.Fe		,  U * 2, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 107/* Suction Pipe					*/	, MT.NetherBrick		,  6* U4, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 108/* Rotational Dynamo			*/	, MT.HSLA				, 57* U9, MT.Ag					,  U * 1, MT.Redstone			,  U * 3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 109/* Magnetostatic Engine			*/	, MT.HSLA				,  U * 2, MT.Diamond			,  U * 3, MT.Ag					,  U * 2, MT.Pb					,  U * 2, MT.Cu					,  U * 1, MT.Au					,  U * 1, MT.Redstone			,  U * 2);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 110/* Fluid Crystallizer			*/	, MT.HSLA				, 60* U9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 111/* Shaft Power Bus Controller	*/	, MT.HSLA				,  U *17, MT.Redstone			,  2* U3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 112/* Shaft Power Bus				*/	, MT.HSLA				,65* U16, MT.Leather			,  U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 113/* Particle Display				*/	, MT.HSLA				,  7* U6, MT.Redstone			, 5* U12, ANY.Stone		,  7* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 114/* Ground Sprinkler				*/	, MT.HSLA				, 42* U9, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 115/* Grindstone					*/	, MT.HSLA				,  U * 7, ANY.Stone		,  U * 1);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 116/* Pneumatic Item Pump			*/	, MT.HSLA				,101* U192,MT.Glass				,3* U128);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 118/* Refrigeration Unit			*/	, MT.HSLA				,204* U9, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 119/* Fluid Compression Chamber	*/	, MT.HSLA				,141* U9);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 120/* AutoCrafting Unit			*/	, MT.HSLA				,  U * 8, MT.Redstone			,  2* U3, ANY.Wood		,  U * 4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 121/* Composter					*/	, MT.HSLA				,  U * 3);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 122/* Anti-Air Gun					*/	, MT.HSLA				,521* U12,MT.Diamond			,  U * 1, MT.Au					,  U * 9, MT.Redstone			, 16* U3, MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 123/* Pipe Pump					*/	, MT.HSLA				,101* U12,MT.Glass				,  3* U4);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 124/* Chain Drive					*/	, MT.HSLA				, 23* U6);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 125/* Centrifuge					*/	, MT.HSLA				,168* U9, MT.Glass				,  3* U8);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 126/* Bedrock Pipe					*/	, MT.Bedrock_HSLA_Alloy	,  3* U8, MT.Glass				, 3* U16);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 127/* Drying Bed					*/	, MT.HSLA				,  U * 7);
+		OM.data(MD.RoC, "rotarycraft_item_machine"	, 1, 128/* Liquefaction Machine			*/	, MT.HSLA				, 96* U9, MT.Glass				,  3* U4);
+		
+		
+		OM.data(MD.BC, "woodenGearItem"						, 1,   0, ANY.Wood				,  U * 2);
+		OM.data(MD.BC, "stoneGearItem"						, 1,   0, ANY.Wood				,  U * 2, ANY.Stone				,  U * 4);
+		if (MD.IE.mLoaded) {
+		OM.data(MD.BC, "ironGearItem"						, 1,   0, ANY.Fe				,  U * 4);
+		OM.data(MD.BC, "goldGearItem"						, 1,   0, MT.Au					,  U * 4);
+		} else {
+		OM.data(MD.BC, "ironGearItem"						, 1,   0, ANY.Stone				,  U * 4, ANY.Fe				,  U * 4);
+		OM.data(MD.BC, "goldGearItem"						, 1,   0, ANY.Fe				,  U * 4, MT.Au					,  U * 4);
+		}
+		OM.data(MD.BC, "diamondGearItem"					, 1,   0, MT.Au					,  U * 4, MT.Diamond			,  U * 4);
+		
+		OM.data(MD.BC_FACTORY, "tankBlock"					, 1,   W, MT.Glass				,  U * 8);
+		
+		
+		OM.data(MD.OB, "tank"								, 1,   W, MT.Obsidian			,  U *18, MT.Glass				,15* U16);
+		
+		
+		OM.data(MD.EIO, "blockTank"							, 1,   0, ANY.Fe				, 11* U2, MT.Glass				,  U * 1);
+		OM.data(MD.EIO, "blockTank"							, 1,   1, MT.ObsidianSteel			, 44* U3);
+		OM.data(MD.EIO, "blockDarkIronBars"					, 1,   W, MT.ObsidianSteel			,  8* U3);
+		
+		
+		if (MD.IE.mLoaded) {
+		OM.data(MD.FR, "gearTin"							, 1,   0, MT.Sn					,  U * 4);
+		OM.data(MD.FR, "gearCopper"							, 1,   0, ANY.Cu				,  U * 4);
+		OM.data(MD.FR, "gearBronze"							, 1,   0, MT.Bronze				,  U * 4);
+		} else if (MD.BC.mLoaded) {
+		OM.data(MD.FR, "gearTin"							, 1,   0, ANY.Stone				,  U * 4, MT.Sn					,  U * 4);
+		OM.data(MD.FR, "gearCopper"							, 1,   0, ANY.Stone				,  U * 4, ANY.Cu				,  U * 4);
+		OM.data(MD.FR, "gearBronze"							, 1,   0, ANY.Stone				,  U * 4, MT.Bronze				,  U * 4);
+		} else {
+		OM.data(MD.FR, "gearTin"							, 1,   0, ANY.Stone				,  U * 1, MT.Sn					,  U * 4);
+		OM.data(MD.FR, "gearCopper"							, 1,   0, ANY.Stone				,  U * 1, ANY.Cu				,  U * 4);
+		OM.data(MD.FR, "gearBronze"							, 1,   0, ANY.Stone				,  U * 1, MT.Bronze				,  U * 4);
+		}
+		
+		
+		OM.data(MD.FRMB, "miscResources"					, 1,  18, MT.InfusedAir			,  U4);
+		OM.data(MD.FRMB, "miscResources"					, 1,  19, MT.InfusedWater		,  U4);
+		OM.data(MD.FRMB, "miscResources"					, 1,  20, MT.InfusedFire		,  U4);
+		OM.data(MD.FRMB, "miscResources"					, 1,  21, MT.InfusedEarth		,  U4);
+		OM.data(MD.FRMB, "miscResources"					, 1,  22, MT.InfusedOrder		,  U4);
+		OM.data(MD.FRMB, "miscResources"					, 1,  23, MT.InfusedEntropy		,  U4);
+		
+		
+		OM.data(MD.TE, "material"							, 1,   0, ANY.Fe				,  U * 2, MT.Redstone			,  U * 1, MT.Glass			,  U * 2);
+		OM.data(MD.TE, "material"							, 1,   1, MT.Au					,  U * 1, MT.Redstone			,  U * 2);
+		OM.data(MD.TE, "material"							, 1,   2, MT.Ag					,  U * 1, MT.Redstone			,  U * 2);
+		OM.data(MD.TE, "material"							, 1,   3, MT.Electrum			,  U * 1, MT.Redstone			,  U * 2);
+		
+		
+		if (MD.IE.mLoaded) {
+		OM.data(MD.TE_FOUNDATION, "material"				, 1,  12, ANY.Fe				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1,  13, MT.Au					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 128, ANY.Cu				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 129, MT.Sn					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 130, MT.Ag					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 131, MT.Pb					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 132, MT.Ni					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 133, MT.Pt					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 134, MT.Mithril			,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 135, MT.Electrum			,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 136, MT.Invar				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 137, MT.Bronze				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 138, MT.Signalum			,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 139, MT.Lumium				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 140, MT.Enderium			,  U * 4);
+		} else {
+		OM.data(MD.TE_FOUNDATION, "material"				, 1,  12, ANY.Fe				,  U * 5);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1,  13, ANY.Fe				,  U * 1, MT.Au					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 128, ANY.Fe				,  U * 1, ANY.Cu				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 129, ANY.Fe				,  U * 1, MT.Sn					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 130, ANY.Fe				,  U * 1, MT.Ag					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 131, ANY.Fe				,  U * 1, MT.Pb					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 132, ANY.Fe				,  U * 1, MT.Ni					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 133, ANY.Fe				,  U * 1, MT.Pt					,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 134, ANY.Fe				,  U * 1, MT.Mithril			,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 135, ANY.Fe				,  U * 1, MT.Electrum			,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 136, ANY.Fe				,  U * 1, MT.Invar				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 137, ANY.Fe				,  U * 1, MT.Bronze				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 138, ANY.Fe				,  U * 1, MT.Signalum			,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 139, ANY.Fe				,  U * 1, MT.Lumium				,  U * 4);
+		OM.data(MD.TE_FOUNDATION, "material"				, 1, 140, ANY.Fe				,  U * 1, MT.Enderium			,  U * 4);
+		}
+		
+		
+		OM.data(MD.ExU, "drum"								, 1,   0, ANY.Fe				,  U *17);
+		OM.data(MD.ExU, "drum"								, 1,   1, ANY.Fe				,  U * 7, MT.Au					,  U * 4, MT.Bedrockium			, U * 6);
+		OM.data(MD.ExU, "spike_base"						, 1,   0, ANY.Fe				,  18*U4);
+		OM.data(MD.ExU, "spike_base_gold"					, 1,   0, MT.Au					,  27*U4);
+		OM.data(MD.ExU, "spike_base_diamond"				, 1,   0, MT.Diamond			,  15*U4, MT.Au					, 81*U16);
+		
+		
+		OM.data(MD.FZ, "daybarrel"							, 1,   W, ANY.Wood				,113* U2);
+		OM.data(MD.FZ, "chainLink"							, 1,   W, MT.DarkIron			,  U3, MT.Ag					,  U15);
+		OM.data(MD.FZ, "shortChain"							, 1,   W, MT.DarkIron			,  U * 3, MT.Ag					,  3*U5);
+		OM.data(MD.FZ, "darkIronChain"						, 1,   W, MT.DarkIron			,  U *15, MT.Ag					,  U * 3);
+		OM.data(MD.FZ, "servo/sprocket"						, 1,   W, MT.DarkIron			,  U * 2, MT.Ag					,  U2);
+		OM.data(MD.FZ, "ArtifactForge"						, 1,   W, MT.DarkIron			,  U *31);
+		OM.data(MD.FZ, "FzBlock"							, 1,  27, MT.DarkIron			,  U8, MT.Pb					,  U4);
+		
+		
+		OM.data(MD.JABBA, "barrel"							, 1,   W, ANY.Wood				,129* U2);
+		
+		
+		OM.data(MD.IE, "woodenDevice"						, 1,   6, MT.WoodSealed			, 13* U2);
+		OM.data(MD.IE, "metalDevice2"						, 1,   7, ANY.Fe				,  U * 8);
+		OM.data(MD.IE, "metalDecoration2"					, 1,   0, MT.Al					,  U * 1);
+		OM.data(MD.IE, "metalDecoration2"					, 1,   1, MT.Pb					,  U * 1);
+		OM.data(MD.IE, "metalDecoration2"					, 1,   2, ANY.Steel				,  U * 1);
+		OM.data(MD.IE, "metalDecoration2"					, 1,  10, ANY.Fe				,  U * 1);
+		OM.data(MD.IE, "woodenStairs"						, 1,   0, MT.WoodSealed			,  2* U3);
+		OM.data(MD.IE, "woodenStairs1"						, 1,   0, MT.WoodSealed			,  2* U3);
+		OM.data(MD.IE, "woodenStairs2"						, 1,   0, MT.WoodSealed			,  2* U3);
+		OM.data(MD.IE, "woodenDecoration"					, 1,   1, MT.WoodSealed			,  3* U2);
+		OM.data(MD.IE, "woodenDecoration"					, 1,   2, MT.WoodSealed			,  U2);
+		OM.data(MD.IE, "woodenDecoration"					, 1,   4, MT.WoodSealed			,  U * 1);
+		OM.data(MD.IE, "woodenDecoration"					, 1,   5, MT.WoodSealed			,  5* U4);
+		OM.data(MD.IE, "storageSlab"						, 1,   0, MT.Cu					,  9* U2);
+		OM.data(MD.IE, "storageSlab"						, 1,   1, MT.Al					,  9* U2);
+		OM.data(MD.IE, "storageSlab"						, 1,   2, MT.Pb					,  9* U2);
+		OM.data(MD.IE, "storageSlab"						, 1,   3, MT.Ag					,  9* U2);
+		OM.data(MD.IE, "storageSlab"						, 1,   4, MT.Ni					,  9* U2);
+		OM.data(MD.IE, "storageSlab"						, 1,   5, MT.Constantan			,  9* U2);
+		OM.data(MD.IE, "storageSlab"						, 1,   6, MT.Electrum			,  9* U2);
+		OM.data(MD.IE, "storageSlab"						, 1,   7, MT.Steel				,  9* U2);
+		
+		
+		OM.data(MD.MaCu, "tanks"							, 1,   0, ANY.Cu				,  U * 4, ANY.Wood				,  U * 4, MT.Glass				,  U * 1);
+		OM.data(MD.MaCu, "tanks"							, 1,   1, MT.Al					,  U * 4, MT.Glass				,  U * 4);
+		OM.data(MD.MaCu, "tanks"							, 1,   5, MT.Al					,  U * 4, ANY.Stone				,  U * 4);
+		OM.data(MD.MaCu, "tanks"							, 1,   6, MT.Ti					,  U * 4, MT.NetherQuartz		,  U *16);
+		OM.data(MD.MaCu, "tanks"							, 1,   7, MT.Ti					,  U * 8, MT.Al					,  U *54, ANY.Fe				,  U * 4, MT.NetherQuartz	,  U *18);
+		
+		
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   0, MT.Lapis				,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   1, MT.Sn					,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   2, ANY.Fe				,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   3, ANY.Cu				,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   4, MT.Bronze				,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   5, MT.Ag					,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   6, MT.Au					, 28* U9, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   7, MT.NetherQuartz		,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   8, MT.Diamond			,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,   9, MT.Pt					,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,  10, ANY.Emerald			,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "upgrade.radius"					, 1,  11, ANY.Stone				,  U * 3, MT.Plastic			,  U * 3, MT.Redstone			,  U * 2, MT.Au				,  U9);
+		OM.data(MD.MFR, "syringe.empty"						, 1,   0, ANY.Fe				,  U * 1, MT.Plastic			,  U * 4, MT.Rubber				,  U * 1);
+		OM.data(MD.MFR, "syringe.health"					, 1,   0, ANY.Fe				,  U * 1, MT.Plastic			,  U * 4, MT.Rubber				,  U * 1);
+		OM.data(MD.MFR, "syringe.growth"					, 1,   0, ANY.Fe				,  U * 1, MT.Plastic			,  U * 4, MT.Rubber				,  U * 1);
+		OM.data(MD.MFR, "syringe.cure"						, 1,   0, ANY.Fe				,  U * 1, MT.Plastic			,  U * 4, MT.Rubber				,  U * 1);
+		OM.data(MD.MFR, "syringe.slime"						, 1,   0, ANY.Fe				,  U * 1, MT.Plastic			,  U * 4, MT.Rubber				,  U * 1);
+		OM.data(MD.MFR, "syringe.zombie"					, 1,   0, ANY.Fe				,  U * 1, MT.Plastic			,  U * 4, MT.Rubber				,  U * 1);
+		OM.data(MD.MFR, "needlegun.ammo.empty"				, 1,   0, ANY.Fe				,  U4, MT.Plastic				,  7* U4);
+		OM.data(MD.MFR, "needlegun.ammo.fire"				, 1,   0, ANY.Fe				,  U4, MT.Plastic				,  7* U4);
+		OM.data(MD.MFR, "needlegun.ammo.lava"				, 1,   0, ANY.Fe				,  U4, MT.Plastic				,  7* U4);
+		OM.data(MD.MFR, "needlegun.ammo.pierce"				, 1,   0, ANY.Fe				,  U4, MT.Plastic				,  7* U4);
+		OM.data(MD.MFR, "needlegun.ammo.standard"			, 1,   0, ANY.Fe				,  U4, MT.Plastic				,  7* U4);
+		OM.data(MD.MFR, "needlegun.ammo.anvil"				, 1,   0, ANY.Fe				,  U4, MT.Plastic				,  7* U4);
+		OM.data(MD.MFR, "needlegun.ammo.sewage"				, 1,   0, ANY.Fe				,  U4, MT.Plastic				,  7* U4);
+		OM.data(MD.MFR, "needlegun.ammo.sludge"				, 1,   0, ANY.Fe				,  U4, MT.Plastic				,  7* U4);
+		OM.data(MD.MFR, "record.blank"						, 1,   0, MT.Plastic			,  U * 8, MT.Paper				,  U * 1);
+		OM.data(MD.MFR, "ruler"								, 1,   0, MT.Plastic			,  U * 2, MT.Paper				,  U * 1);
+		OM.data(MD.MFR, "straw"								, 1,   0, MT.Plastic			,  U * 4);
+		OM.data(MD.MFR, "tank"								, 1,   0, MT.Plastic			,  U * 7);
+		OM.data(MD.MFR, "plastic.bag"						, 1,   0, MT.Plastic			,  U * 2);
+		OM.data(MD.MFR, "plastic.cup"						, 1,   0, MT.Plastic			, 3* U16);
+		OM.dat2(MD.MFR, "plastic.helm"						, 1,   0, MT.Plastic			,  U * 5);
+		OM.dat2(MD.MFR, "plastic.chest"						, 1,   0, MT.Plastic			,  U * 8);
+		OM.dat2(MD.MFR, "plastic.legs"						, 1,   0, MT.Plastic			,  U * 7);
+		OM.dat2(MD.MFR, "plastic.boots"						, 1,   0, MT.Plastic			,  U * 4);
+		OM.dat2(MD.MFR, "hammer"							, 1,   0, MT.Plastic			,  U * 3, ANY.Wood		,  U * 1);
+		
+		
+		OM.data(MD.RC, "part.gear"							, 1,   3, MT.Sn					,  U * 2);
+		OM.data(MD.RC, "part.gear"							, 1,   0, MT.Sn					,  U * 2, MT.Au					,  4* U9);
+		OM.data(MD.RC, "part.gear"							, 1,   1, MT.Sn					,  U * 2, ANY.Fe		,  U * 4);
+		OM.data(MD.RC, "part.gear"							, 1,   2, MT.Sn					,  U * 2, ANY.Steel	,  U * 4);
+		OM.data(MD.RC, "anvil", 1, 0																, ANY.Steel	,  U *30);
+		OM.data(MD.RC, "anvil", 1, 1																, ANY.Steel	,  U *20);
+		OM.data(MD.RC, "anvil", 1, 2																, ANY.Steel	,  U *10);
+		
+		
+		OM.dat2(MD.RoC, "rotarycraft_item_bedsword"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 2, MT.HSLA				,  U * 1);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedpick"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 3, MT.HSLA				,  U * 2);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedshovel"		, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 1, MT.HSLA				,  U * 2);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedaxe"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 3, MT.HSLA				,  U * 2);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedhoe"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 2, MT.HSLA				,  U * 2);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedgrafter"		, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 1, MT.HSLA				,  U * 2);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedsaw"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 2, MT.HSLA				,  U * 3);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedsickle"		, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 3, MT.HSLA				,  U * 1);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedshears"		, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 2);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedhelm"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 5);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedchest"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 8);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedlegs"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 7);
+		OM.dat2(MD.RoC, "rotarycraft_item_bedboots"			, 1,   W, MT.Bedrock_HSLA_Alloy	,  U * 4);
+		
+		
+		OM.dat2(MD.EBXL, "extrabiomes.logturner"			, 1,   W, ANY.Wood		,  5* U2);
+		
+		
+		OM.data(MD.UB, "fossilPiece"						, 1,   W, MT.Bone				,  U * 1);
+		
+		
+		OM.data(MD.EtFu, "red_sandstone"					, 1,   W, MT.Sand				,  U * 1);
+		OM.data(MD.EtFu, "crying_obsidian"					, 1,   W, MT.Obsidian			,  U * 9, MT.Lapis, U * 1);
+		OM.data(MD.EtFu, "rabbit_raw"						, 1,   W, MT.MeatRaw			,  U * 2, MT.Bone, U4);
+		OM.data(MD.EtFu, "rabbit_cooked"					, 1,   W, MT.MeatCooked			,  U * 2, MT.Bone, U4);
+		OM.data(MD.EtFu, "mutton_raw"						, 1,   W, MT.MeatRaw			,  U * 2, MT.Bone, U4);
+		OM.data(MD.EtFu, "mutton_cooked"					, 1,   W, MT.MeatCooked			,  U * 2, MT.Bone, U4);
+		
+		OM.data(MD.GaSu, "mutton_raw"						, 1,   W, MT.MeatRaw			,  U * 2, MT.Bone, U4);
+		OM.data(MD.GaSu, "mutton_cooked"					, 1,   W, MT.MeatCooked			,  U * 2, MT.Bone, U4);
+		
+		
+		OM.dat2(MD.TF, "item.giantPick"						, 1,   0, ANY.Stone				,  U*192, ANY.Wood, U*128);
+		OM.dat2(MD.TF, "item.giantSword"					, 1,   0, ANY.Stone				,  U*128, ANY.Wood, U* 64);
+		OM.data(MD.TF, "tile.GiantLog"						, 1,   W, ANY.Wood				,  U *128, MT.Bark, U* 16);
+		OM.data(MD.TF, "tile.GiantCobble"					, 1,   W, ANY.Stone				,  U *64);
+		OM.data(MD.TF, "tile.GiantObsidian"					, 1,   W, MT.Obsidian			,  U *576);
+		OM.dat2(MD.TF, "item.minotaurAxe"					, 1,   0, MT.Diamond			,  U * 4, ANY.Wood, OP.stick.mAmount * 2);
+		OM.data(MD.TF, "item.armorShards"					, 1,   0, MT.Knightmetal		,  U9);
+		OM.data(MD.TF, "item.shardCluster"					, 1,   0, MT.Knightmetal		,  U);
+		OM.data(MD.TF, "item.knightmetalRing"				, 1,   0, MT.Knightmetal		,  U * 4);
+		OM.dat2(MD.TF, "item.chainBlock"					, 1,   0, MT.Knightmetal		,  U *16);
+		
+		
+		OM.data(MD.ERE, "fireBloom"							, 1,   W, MT.Blaze				,  U9);
+		OM.data(MD.ERE, "redGem"							, 1,   W, MT.Redstone			,  U * 8);
+		OM.data(MD.ERE, "glowGemBlock"						, 1,   W, MT.Redstone			,  U3* 2);
+		OM.data(MD.ERE, "amber"								, 1,   W, MT.Amber				,  U);
+		OM.data(MD.ERE, "wallErebus"						, 1,   8, MT.Amber				,  U);
+		OM.data(MD.ERE, "amberBrickStairs"					, 1,   W, MT.Amber				,  U);
+		OM.data(MD.ERE, "door_amber"						, 1,   W, MT.Amber				,  U * 2);
+		OM.data(MD.ERE, "materials"							, 1,  42, MT.Amber				,  U * 1);
+		OM.data(MD.ERE, "materials"							, 1,  62, ANY.Fe				,  U * 7);
+		OM.data(MD.ERE, "materials"							, 1,  63, ANY.Fe				,  U * 7);
+		OM.data(MD.ERE, "food"								, 1,  16, ANY.Fe				,  U * 7);
+		OM.data(MD.ERE, "idols"								, 1,   1, ANY.Fe				,  U *36);
+		OM.data(MD.ERE, "idols"								, 1,   5, ANY.Fe				,  U *72);
+		OM.data(MD.ERE, "idols"								, 1,   2, MT.Au					,  U *36);
+		OM.data(MD.ERE, "idols"								, 1,   6, MT.Au					,  U *72);
+		OM.data(MD.ERE, "idols"								, 1,   3, MT.Jade				,  U *36);
+		OM.data(MD.ERE, "idols"								, 1,   7, MT.Jade				,  U *72);
+		OM.data(MD.ERE, "materials"							, 1,  56, MT.Jade				,  U9);
+		OM.data(MD.ERE, "materials"							, 1,  27, MT.Paper				,  U * 2);
+		OM.data(MD.ERE, "materials"							, 1,   2, MT.Bone				,  U * 1);
+		OM.data(MD.ERE, "materials"							, 1,   0, MT.Bone				,  U * 1);
+		OM.data(MD.ERE, "materials"							, 1,  16, MT.Bone				,  U * 9);
+		OM.data(MD.ERE, "reinExo"							, 1,   0, MT.Bone				,  U *36);
+		
+		
+		OM.data(MD.BTL, "bronzeCircleBrick"					, 1,   0, MT.Bronze				,  U * 1);
+		OM.data(MD.BTL, "silverCircleBrick"					, 1,   0, MT.Ag					,  U * 1);
+		OM.data(MD.BTL, "goldCircleBrick"					, 1,   0, MT.Au					,  U * 1);
+		OM.data(MD.BTL, "walkway"							, 1,   W, MT.Weedwood			,  U3* 4);
+		OM.data(MD.BTL, "weedwoodPlanksButton"				, 1,   W, MT.Weedwood			,  U * 1);
+		OM.data(MD.BTL, "weedwoodPlanksPressurePlate"		, 1,   W, MT.Weedwood			,  U * 2);
+		OM.data(MD.BTL, "weedwoodSign"						, 1,   W, MT.Weedwood			,  U6*13);
+		OM.data(MD.BTL, "weedwoodPlanksFenceGate"			, 1,   W, MT.Weedwood			,  U * 4);
+		OM.data(MD.BTL, "mossBedItem"						, 1,   W, MT.Weedwood			,  U * 3);
+		OM.data(MD.BTL, "weedwoodTrapDoor"					, 1,   W, MT.Weedwood			,  U * 3);
+		OM.data(MD.BTL, "weedwoodCraftingTable"				, 1,   W, MT.Weedwood			,  U * 4);
+		OM.data(MD.BTL, "weedwoodRowboat"					, 1,   W, MT.Weedwood			,  U * 5);
+		OM.data(MD.BTL, "door_weedwood"						, 1,   W, MT.Weedwood			,  U * 6);
+		OM.data(MD.BTL, "weedwoodChest"						, 1,   W, MT.Weedwood			,  U * 8);
+		OM.data(MD.BTL, "weedwoodJukebox"					, 1,   W, MT.Weedwood			,  U * 8, MT.Valonite, U);
+		
+		
+		OM.data(MD.AETHER, "skyrootSignItem"				, 1,   W, MT.Skyroot			,  U6*13);
+		OM.data(MD.AETHER, "skyrootFenceGate"				, 1,   W, MT.Skyroot			,  U * 4);
+		OM.data(MD.AETHER, "skyrootBedItem"					, 1,   W, MT.Skyroot			,  U * 3);
+		OM.data(MD.AETHER, "skyrootTrapDoor"				, 1,   W, MT.Skyroot			,  U * 3);
+		OM.data(MD.AETHER, "skyrootCraftingTable"			, 1,   W, MT.Skyroot			,  U * 4);
+		OM.data(MD.AETHER, "skyrootDoorItem"				, 1,   W, MT.Skyroot			,  U * 6);
+		OM.data(MD.AETHER, "skyrootBookshelf"				, 1,   W, MT.Skyroot			,  U * 6, MT.Paper, U * 9);
+		OM.data(MD.AETHER, "skyrootChest"					, 1,   W, MT.Skyroot			,  U * 8);
+		
+		
+		OM.data(MD.HaC, "turkeyrawItem"						, 1,   W, MT.MeatRaw			,  U * 3, MT.Bone,  U4);
+		OM.data(MD.HaC, "turkeycookedItem"					, 1,   W, MT.MeatCooked			,  U * 3, MT.Bone,  U4);
+		OM.data(MD.HaC, "rabbitrawItem"						, 1,   W, MT.MeatRaw			,  U * 1, MT.Bone,  U4);
+		OM.data(MD.HaC, "rabbitcookedItem"					, 1,   W, MT.MeatCooked			,  U * 1, MT.Bone,  U4);
+		OM.data(MD.HaC, "venisonrawItem"					, 1,   W, MT.MeatRaw			,  U * 2, MT.Bone,  U9);
+		OM.data(MD.HaC, "venisoncookedItem"					, 1,   W, MT.MeatCooked			,  U * 2, MT.Bone,  U9);
+		
+		
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  25, ANY.Stone				,  U * 6);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  27, ANY.Iron				,  U * 6);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  30, ANY.Iron				,  U * 1, MT.Flint,  U2);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  33, MT.ObsidianSteel		,  U * 6);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  34, MT.ObsidianSteel		,  U * 1, MT.NetherQuartz,  U * 1);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  37, MT.C					,  U2   , MT.Blaze,  U2);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  61, MT.C					,  U * 1);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  99, MT.NetherQuartz		,  U * 3);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  57, ANY.Cu				,  U4);
+		OM.data(MD.TG, "TechgunsAmmo"						, 1,  86, MT.Au					,  U);
+		
+		
+		OM.data(MD.AE, "item.ItemMultiMaterial"				, 1,  10, MT.CertusQuartz		,  U2);
+		OM.data(MD.AE, "item.ItemMultiMaterial"				, 1,  11, MT.NetherQuartz		,  U2);
+		OM.data(MD.AE, "item.ItemMultiMaterial"				, 1,  12, MT.Fluix				,  U2);
+		OM.data(MD.AE, "item.ItemMultiMaterial"				, 1,  13, ANY.Fe				,  U * 9);
+		OM.data(MD.AE, "item.ItemMultiMaterial"				, 1,  14, ANY.Fe				,  U * 9);
+		OM.data(MD.AE, "item.ItemMultiMaterial"				, 1,  15, ANY.Fe				,  U * 9);
+		OM.data(MD.AE, "item.ItemMultiMaterial"				, 1,  19, ANY.Fe				,  U * 9);
+		OM.data(MD.AE, "tile.BlockFluix"					, 1,   W, MT.Fluix				,  U * 4);
+		OM.data(MD.AE, "tile.BlockQuartz"					, 1,   W, MT.CertusQuartz		,  U * 4);
+		OM.data(MD.AE, "tile.BlockQuartzPillar"				, 1,   W, MT.CertusQuartz		,  U * 4);
+		OM.data(MD.AE, "tile.BlockQuartzChiseled"			, 1,   W, MT.CertusQuartz		,  U * 4);
+		OM.data(MD.AE, "tile.FluixStairBlock"				, 1,   W, MT.Fluix				,  U * 6);
+		OM.data(MD.AE, "tile.QuartzStairBlock"				, 1,   W, MT.CertusQuartz		,  U * 6);
+		OM.data(MD.AE, "tile.QuartzPillarStairBlock"		, 1,   W, MT.CertusQuartz		,  U * 6);
+		OM.data(MD.AE, "tile.ChiseledQuartzStairBlock"		, 1,   W, MT.CertusQuartz		,  U * 6);
+		OM.data(MD.AE, "tile.FluixSlabBlock"				, 1,   W, MT.Fluix				,  U * 2);
+		OM.data(MD.AE, "tile.QuartzSlabBlock"				, 1,   W, MT.CertusQuartz		,  U * 2);
+		OM.data(MD.AE, "tile.QuartzPillarSlabBlock"			, 1,   W, MT.CertusQuartz		,  U * 2);
+		OM.data(MD.AE, "tile.ChiseledQuartzSlabBlock"		, 1,   W, MT.CertusQuartz		,  U * 2);
+		
+		
+		OM.data(MD.AA, "blockMisc"							, 1,   0, MT.BlackQuartz		,  U * 2);
+		OM.data(MD.AA, "blockMisc"							, 1,   1, MT.BlackQuartz		,  U * 4);
+		OM.data(MD.AA, "blockMisc"							, 1,   2, MT.BlackQuartz		,  U * 4);
+		OM.data(MD.AA, "blockPillarQuartzSlab"				, 1,   0, MT.BlackQuartz		,  U * 1);
+		OM.data(MD.AA, "blockChiseledQuartzSlab"			, 1,   0, MT.BlackQuartz		,  U * 2);
+		OM.data(MD.AA, "blockQuartzSlab"					, 1,   0, MT.BlackQuartz		,  U * 2);
+		OM.data(MD.AA, "blockPillarQuartzStair"				, 1,   0, MT.BlackQuartz		,  U * 2);
+		OM.data(MD.AA, "blockChiseledQuartzStair"			, 1,   0, MT.BlackQuartz		,  U * 4);
+		OM.data(MD.AA, "blockQuartzStair"					, 1,   0, MT.BlackQuartz		,  U * 4);
+		OM.data(MD.AA, "blockPillarQuartzWall"				, 1,   0, MT.BlackQuartz		,  U * 2);
+		OM.data(MD.AA, "blockChiseledQuartzWall"			, 1,   0, MT.BlackQuartz		,  U * 4);
+		OM.data(MD.AA, "blockQuartzWall"					, 1,   0, MT.BlackQuartz		,  U * 4);
+		OM.data(MD.AA, "blockTestifiBucksWhiteWall"			, 1,   0, MT.NetherQuartz		,  U * 4);
+		OM.data(MD.AA, "blockTestifiBucksWhiteFence"		, 1,   0, MT.NetherQuartz		,  U * 4);
+		OM.data(MD.AA, "blockTestifiBucksWhiteStairs"		, 1,   0, MT.NetherQuartz		,  U * 4);
+		OM.data(MD.AA, "blockTestifiBucksWhiteSlab"			, 1,   0, MT.NetherQuartz		,  U * 2);
+		OM.data(MD.AA, "blockTestifiBucksGreenWall"			, 1,   0, MT.NetherQuartz		,  U * 4);
+		OM.data(MD.AA, "blockTestifiBucksGreenFence"		, 1,   0, MT.NetherQuartz		,  U * 4);
+		OM.data(MD.AA, "blockTestifiBucksGreenStairs"		, 1,   0, MT.NetherQuartz		,  U * 4);
+		OM.data(MD.AA, "blockTestifiBucksGreenSlab"			, 1,   0, MT.NetherQuartz		,  U * 2);
+		OM.data(MD.AA, "blockMisc"							, 1,   6, MT.EnderPearl			,  U * 4);
+		OM.data(MD.AA, "itemMisc"							, 1,  10, MT.Coal				,  U8);
+		OM.data(MD.AA, "itemMisc"							, 1,  11, MT.Charcoal			,  U8);
+		
+		
+		OM.data(MD.BOTA, "quartzSlabManaHalf"				, 1,   W, MT.ManaQuartz			,  U * 2);
+		OM.data(MD.BOTA, "quartzSlabManaFull"				, 1,   W, MT.ManaQuartz			,  U * 4);
+		OM.data(MD.BOTA, "quartzTypeMana"					, 1,   W, MT.ManaQuartz			,  U * 4);
+		OM.data(MD.BOTA, "quartzStairsMana"					, 1,   W, MT.ManaQuartz			,  U * 6);
+		OM.data(MD.BOTA, "quartzSlabDarkHalf"				, 1,   W, MT.SmokeyQuartz		,  U * 2);
+		OM.data(MD.BOTA, "quartzSlabDarkFull"				, 1,   W, MT.SmokeyQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzTypeDark"					, 1,   W, MT.SmokeyQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzStairsDark"					, 1,   W, MT.SmokeyQuartz		,  U * 6);
+		OM.data(MD.BOTA, "quartzSlabBlazeHalf"				, 1,   W, MT.BlazeQuartz		,  U * 2);
+		OM.data(MD.BOTA, "quartzSlabBlazeFull"				, 1,   W, MT.BlazeQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzTypeBlaze"					, 1,   W, MT.BlazeQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzStairsBlaze"				, 1,   W, MT.BlazeQuartz		,  U * 6);
+		OM.data(MD.BOTA, "quartzSlabLavenderHalf"			, 1,   W, MT.LavenderQuartz		,  U * 2);
+		OM.data(MD.BOTA, "quartzSlabLavenderFull"			, 1,   W, MT.LavenderQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzTypeLavender"				, 1,   W, MT.LavenderQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzStairsLavender"				, 1,   W, MT.LavenderQuartz		,  U * 6);
+		OM.data(MD.BOTA, "quartzSlabRedHalf"				, 1,   W, MT.RedQuartz			,  U * 2);
+		OM.data(MD.BOTA, "quartzSlabRedFull"				, 1,   W, MT.RedQuartz			,  U * 4);
+		OM.data(MD.BOTA, "quartzTypeRed"					, 1,   W, MT.RedQuartz			,  U * 4);
+		OM.data(MD.BOTA, "quartzStairsRed"					, 1,   W, MT.RedQuartz			,  U * 6);
+		OM.data(MD.BOTA, "quartzSlabElfHalf"				, 1,   W, MT.ElvenQuartz		,  U * 2);
+		OM.data(MD.BOTA, "quartzSlabElfFull"				, 1,   W, MT.ElvenQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzTypeElf"					, 1,   W, MT.ElvenQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzStairsElf"					, 1,   W, MT.ElvenQuartz		,  U * 6);
+		OM.data(MD.BOTA, "quartzSlabSunnyHalf"				, 1,   W, MT.SunnyQuartz		,  U * 2);
+		OM.data(MD.BOTA, "quartzSlabSunnyFull"				, 1,   W, MT.SunnyQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzTypeSunny"					, 1,   W, MT.SunnyQuartz		,  U * 4);
+		OM.data(MD.BOTA, "quartzStairsSunny"				, 1,   W, MT.SunnyQuartz		,  U * 6);
+		OM.data(MD.BOTA, "livingrock"						, 1,   W, MT.Livingrock			,  U * 1);
+		OM.data(MD.BOTA, "livingrock0SlabFull"				, 1,   W, MT.Livingrock			,  U * 1);
+		OM.data(MD.BOTA, "livingrock1SlabFull"				, 1,   W, MT.Livingrock			,  U * 1);
+		OM.data(MD.BOTA, "livingrock0Wall"					, 1,   W, MT.Livingrock			,  U * 1);
+		OM.data(MD.BOTA, "livingrock0Stairs"				, 1,   W, MT.Livingrock			,  U2* 3);
+		OM.data(MD.BOTA, "livingrock1Stairs"				, 1,   W, MT.Livingrock			,  U2* 3);
+		OM.data(MD.BOTA, "livingrock0Slab"					, 1,   W, MT.Livingrock			,  U2);
+		OM.data(MD.BOTA, "livingrock1Slab"					, 1,   W, MT.Livingrock			,  U2);
+		
+		
+//		OM.data(MD.TCFM, "WandCaps"							, 1,   0, MT.Alchemical			,  5* U9);
+		OM.data(MD.TCFM, "WandCaps"							, 1,   1, MT.Vinteum			,  5* U9);
+		OM.data(MD.TCFM, "WandCaps"							, 1,   2, MT.Terrasteel			,  5* U9);
+		OM.data(MD.TCFM, "WandCaps"							, 1,   3, MT.Manasteel			,  5* U9);
+		OM.data(MD.TCFM, "WandCaps"							, 1,   4, MT.Manasteel			,  5* U9);
+		OM.data(MD.TCFM, "WandCaps"							, 1,   5, MT.ElvenElementium	,  5* U9);
+		OM.data(MD.TCFM, "WandCaps"							, 1,   6, MT.ElvenElementium	,  5* U9);
+		
+		
+		OM.data(MD.TC, "WandCap"							, 1,   0, ANY.Fe				,  5* U9);
+		OM.data(MD.TC, "WandCap"							, 1,   1, MT.Au					,  5* U9);
+		OM.data(MD.TC, "WandCap"							, 1,   2, MT.Thaumium			,  5* U9);
+		OM.data(MD.TC, "WandCap"							, 1,   3, ANY.Cu				,  5* U9);
+		OM.data(MD.TC, "WandCap"							, 1,   4, MT.Ag					,  5* U9);
+		OM.data(MD.TC, "WandCap"							, 1,   5, MT.Ag					,  5* U9);
+		OM.data(MD.TC, "WandCap"							, 1,   6, MT.Thaumium			,  5* U9);
+		OM.data(MD.TC, "WandCap"							, 1,   7, MT.VoidMetal			,  5* U9);
+		OM.data(MD.TC, "WandCap"							, 1,   8, MT.VoidMetal			,  5* U9);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   0, MT.Au					,  U	);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   1, MT.Au					,  4* U9);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   2, MT.Au					,  U	, MT.Leather, U * 3);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   3, MT.Au					,  4* U9, MT.InfusedAir		, U4);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   4, MT.Au					,  4* U9, MT.InfusedEarth	, U4);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   5, MT.Au					,  4* U9, MT.InfusedFire	, U4);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   6, MT.Au					,  4* U9, MT.InfusedWater	, U4);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   7, MT.Au					,  4* U9, MT.InfusedOrder	, U4);
+		OM.data(MD.TC, "ItemBaubleBlanks"					, 1,   8, MT.Au					,  4* U9, MT.InfusedEntropy	, U4);
+		OM.data(MD.TC, "blockCandle"						, 1,   W, MT.Tallow				,  2* U3);
+		OM.data(MD.TC, "ItemGolemPlacer"					, 1,   0, MT.Wheat				,  U * 9);
+		OM.data(MD.TC, "ItemGolemPlacer"					, 1,   1, MT.Greatwood			,  U * 8);
+		OM.data(MD.TC, "ItemGolemPlacer"					, 1,   2, MT.Tallow				,  U * 9);
+		OM.data(MD.TC, "ItemGolemPlacer"					, 1,   3, MT.Ceramic			,  U * 4);
+		OM.data(MD.TC, "ItemGolemPlacer"					, 1,   4, MT.MeatRotten			,  U * 9);
+		OM.data(MD.TC, "ItemGolemPlacer"					, 1,   5, ANY.Stone				,  U * 1);
+		OM.data(MD.TC, "ItemGolemPlacer"					, 1,   6, ANY.Fe				,  U * 9);
+		OM.data(MD.TC, "ItemGolemPlacer"					, 1,   7, MT.Thaumium			,  U * 9);
+		
+		
+		OM.data(MD.ZTONES, "minicoal"						, 1,   W, MT.Coal				,  U8);
+		OM.data(MD.ZTONES, "minicharcoal"					, 1,   W, MT.Charcoal			,  U8);
+		
+		
+		OM.data(MD.CHSL, "tallow"							, 1,   W, MT.Tallow				,  U * 9);
+		
+		
+		OM.data(MD.FM, "MeteorChips"						, 1,   W, MT.Meteorite			,  U * 1);
+		OM.data(MD.FM, "KreknoChip"							, 1,   W, MT.Kreknorite			,  U * 1);
+		
+		
+		if (ST.valid(ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone", 1, 0))) {
+		OM.data(MD.GC_GALAXYSPACE, "dungeonglowstone"		, 1,   0, MT.GlowstoneCeres		, U*4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   0, MT.Co					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   1, MT.Mg					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   2, MT.Ni					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   3, MT.Cu					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "futureglass"			, 1,   W, MT.Glass				,    U , ANY.Steel,3*U16);
+		OM.data(MD.GC_GALAXYSPACE, "futureglasses"			, 1,   W, MT.Glass				,    U , ANY.Steel,3*U16);
+		OM.data(MD.GC_GALAXYSPACE, "item.steelPole"			, 1,   W, ANY.Steel				,  3*U2);
+		OM.data(MD.GC_GALAXYSPACE, "item.BasicItems"		, 1,   4, MT.Dolomite			,  6*U );
+		OM.data(MD.GC_GALAXYSPACE, "item.BasicItems"		, 1,   8, MT.Fe2O3				,  5*U );
+		OM.data(MD.GC_GALAXYSPACE, "item.BasicItems"		, 1,  16, MT.OREMATS.Uraninite	,  1*U );
+		} else {
+		OM.data(MD.GC_GALAXYSPACE, "ceresglowstone"			, 1,   W, MT.GlowstoneCeres		, U*4);
+		OM.data(MD.GC_GALAXYSPACE, "ioglowstone"			, 1,   W, MT.GlowstoneIo		, U*4);
+		OM.data(MD.GC_GALAXYSPACE, "enceladusglowstone"		, 1,   W, MT.GlowstoneEnceladus	, U*4);
+		OM.data(MD.GC_GALAXYSPACE, "proteusglowstone"		, 1,   W, MT.GlowstoneProteus	, U*4);
+		OM.data(MD.GC_GALAXYSPACE, "plutoglowstone"			, 1,   W, MT.GlowstonePluto		, U*4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   0, MT.Pb					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   1, MT.Adamantite			,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   2, MT.Co					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   3, MT.Mg					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   4, MT.Mithril			,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   5, MT.Ni					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   6, MT.Oriharukon			,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   7, MT.Pt					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   8, MT.W					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "decometalsblock"		, 1,   9, MT.Cu					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC_GALAXYSPACE, "futureglass"			, 1,   W, MT.Glass				,    U , MT.Desh, U16);
+		OM.data(MD.GC_GALAXYSPACE, "futureglasses"			, 1,   W, MT.Glass				,    U , MT.Desh, U16);
+		}
+		
+		OM.data(MD.GC, "tile.gcBlockCore"					, 1,   3, MT.Sn					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC, "tile.gcBlockCore"					, 1,   4, MT.Sn					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC, "tile.wallGC"						, 1,   0, MT.Sn					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC, "tile.wallGC"						, 1,   1, MT.Sn					,    U4, ANY.Stone,   U4);
+		OM.data(MD.GC, "tile.tinStairs1"					, 1,   W, MT.Sn					,  3*U8, ANY.Stone, 3*U8);
+		OM.data(MD.GC, "tile.tinStairs2"					, 1,   W, MT.Sn					,  3*U8, ANY.Stone, 3*U8);
+		OM.data(MD.GC, "slabGCHalf"							, 1,   0, MT.Sn					,    U8, ANY.Stone,   U8);
+		OM.data(MD.GC, "slabGCHalf"							, 1,   1, MT.Sn					,    U8, ANY.Stone,   U8);
+		
+		OM.data(MD.GC, "item.oilCanisterPartial"			, 1,   W, MT.Sn					, 19*U2, ANY.Steel, U, MT.Glass, U);
+		OM.data(MD.GC, "item.canister"						, 1,   0, MT.Sn					,  7*U2);
+		OM.data(MD.GC, "item.canister"						, 1,   1, ANY.Cu				,  7*U2);
+		OM.data(MD.GC, "item.meteoricIronRaw"				, 1,   W, MT.MeteoricIron		,  U * 1);
+		OM.data(MD.GC, "tile.cheeseBlock"					, 1,   W, MT.Cheese				,  U * 8);
+		OM.data(MD.GC, "item.null"							, 1,   0, MT.MeteoricIron		,  U3);
+		OM.data(MD.GC, "item.null"							, 1,   1, MT.MeteoricIron		,  U3);
+		OM.data(MD.GC, "item.heavyPlating"					, 1,   0, ANY.Steel				,  U * 1, MT.Al, U * 1, MT.Bronze, U * 1);
+		OM.data(MD.GC, "item.spaceship"						, 1,   W, ANY.Steel				,  U *39, MT.Al, U *31, MT.Bronze, U *31);
+		
+		OM.data(MD.GC_PLANETS, "item.carbonFragments"		, 1,   0, MT.Charcoal			,  U8);
+		OM.data(MD.GC_PLANETS, "tile.denseIce"				, 1,   W, MT.Ice				,  U * 4);
+		OM.data(MD.GC_PLANETS, "item.null"					, 1,   0, MT.Desh				,  U * 1);
+		OM.data(MD.GC_PLANETS, "item.null"					, 1,   3, ANY.Steel				,  U * 1, MT.Al, U * 1, MT.Bronze, U * 1, MT.MeteoricIron, U * 1);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,   0, ANY.Steel				,  U *45, MT.Al, U *37, MT.Bronze, U *37, MT.MeteoricIron, U *18);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,   1, ANY.Steel				,  U *45, MT.Al, U *37, MT.Bronze, U *37, MT.MeteoricIron, U *18);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,   2, ANY.Steel				,  U *45, MT.Al, U *37, MT.Bronze, U *37, MT.MeteoricIron, U *18);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,   3, ANY.Steel				,  U *45, MT.Al, U *37, MT.Bronze, U *37, MT.MeteoricIron, U *18);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,   4, ANY.Steel				,  U *45, MT.Al, U *37, MT.Bronze, U *37, MT.MeteoricIron, U *18);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,  11, ANY.Steel				,  U *37, MT.Al, U *29, MT.Bronze, U *29, MT.MeteoricIron, U * 6);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,  12, ANY.Steel				,  U *37, MT.Al, U *29, MT.Bronze, U *29, MT.MeteoricIron, U * 6);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,  13, ANY.Steel				,  U *37, MT.Al, U *29, MT.Bronze, U *29, MT.MeteoricIron, U * 6);
+		OM.data(MD.GC_PLANETS, "item.spaceshipTier2"		, 1,  14, ANY.Steel				,  U *37, MT.Al, U *29, MT.Bronze, U *29, MT.MeteoricIron, U * 6);
+		OM.data(MD.GC_PLANETS, "item.itemBasicAsteroids"	, 1,   0, ANY.Steel				,  U * 1, MT.Al, U * 1, MT.Bronze, U * 1, MT.MeteoricIron, U * 1, MT.Desh, U * 1);
+		OM.data(MD.GC_PLANETS, "item.itemTier3Rocket"		, 1,   W, ANY.Steel				,  U *37, MT.Al, U *37, MT.Bronze, U *37, MT.MeteoricIron, U *41, MT.Desh, U *33);
+		
+		
+		OM.data(ST.mkic("ironFence", 1)						, ANY.Fe				,  U2);
+		OM.data(ST.mkic("ironFurnace", 1)					, ANY.Fe				,  U * 5);
+		OM.data(ST.mkic("crop", 1)							, ANY.Wood				,  U * 1);
+		if (MD.IC2C.mLoaded) {
+		OM.data(ST.mkic("smallIronDust", 1)					, MT.Fe					,  U2);
+		} else {
+		OM.data(ST.mkic("Uran238", 1)						, MT.U_238				,  U * 1);
+		OM.data(ST.mkic("smallUran235", 1)					, MT.U_235				,  U9);
+		OM.data(ST.mkic("Uran235", 1)						, MT.U_235				,  U * 1);
+		OM.data(ST.mkic("smallPlutonium", 1)				, MT.Pu					,  U9);
+		OM.data(ST.mkic("Plutonium", 1)						, MT.Pu					,  U * 1);
+		}
+		
+		
+		OM.dat2(ST.make(Items.wooden_sword, 1, 0)					, ANY.Wood		,  U * 2 + U2);
+		OM.dat2(ST.make(Items.wooden_pickaxe, 1, 0)					, ANY.Wood		,  U * 3 + U	);
+		OM.dat2(ST.make(Items.wooden_shovel, 1, 0)					, ANY.Wood		,  U * 1 + U	);
+		OM.dat2(ST.make(Items.wooden_axe, 1, 0)						, ANY.Wood		,  U * 3 + U	);
+		OM.dat2(ST.make(Items.wooden_hoe, 1, 0)						, ANY.Wood		,  U * 2 + U	);
+		OM.dat2(ST.make(Items.stone_sword, 1, 0)					, ANY.Stone		,  U * 2, ANY.Wood, U2);
+		OM.dat2(ST.make(Items.stone_pickaxe, 1, 0)					, ANY.Stone		,  U * 3, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.stone_shovel, 1, 0)					, ANY.Stone		,  U * 1, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.stone_axe, 1, 0)						, ANY.Stone		,  U * 3, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.stone_hoe, 1, 0)						, ANY.Stone		,  U * 2, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.iron_sword, 1, 0)						, ANY.Fe		,  U * 2, ANY.Wood, U2);
+		OM.dat2(ST.make(Items.iron_pickaxe, 1, 0)					, ANY.Fe		,  U * 3, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.iron_shovel, 1, 0)					, ANY.Fe		,  U * 1, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.iron_axe, 1, 0)						, ANY.Fe		,  U * 3, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.iron_hoe, 1, 0)						, ANY.Fe		,  U * 2, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.golden_sword, 1, 0)					, MT.Au					,  U * 2, ANY.Wood, U2);
+		OM.dat2(ST.make(Items.golden_pickaxe, 1, 0)					, MT.Au					,  U * 3, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.golden_shovel, 1, 0)					, MT.Au					,  U * 1, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.golden_axe, 1, 0)						, MT.Au					,  U * 3, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.golden_hoe, 1, 0)						, MT.Au					,  U * 2, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.diamond_sword, 1, 0)					, MT.Diamond			,  U * 2, ANY.Wood, U2);
+		OM.dat2(ST.make(Items.diamond_pickaxe, 1, 0)				, MT.Diamond			,  U * 3, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.diamond_shovel, 1, 0)					, MT.Diamond			,  U * 1, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.diamond_axe, 1, 0)					, MT.Diamond			,  U * 3, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.diamond_hoe, 1, 0)					, MT.Diamond			,  U * 2, ANY.Wood, U	);
+		OM.dat2(ST.make(Items.leather_helmet, 1, 0)					, MT.Leather			,  U * 5);
+		OM.dat2(ST.make(Items.leather_chestplate, 1, 0)				, MT.Leather			,  U * 8);
+		OM.dat2(ST.make(Items.leather_leggings, 1, 0)				, MT.Leather			,  U * 7);
+		OM.dat2(ST.make(Items.leather_boots, 1, 0)					, MT.Leather			,  U * 4);
+		OM.dat2(ST.make(Items.chainmail_helmet, 1, 0)				, ANY.Steel				,  5* U4);
+		OM.dat2(ST.make(Items.chainmail_chestplate, 1, 0)			, ANY.Steel				,  8* U4);
+		OM.dat2(ST.make(Items.chainmail_leggings, 1, 0)				, ANY.Steel				,  7* U4);
+		OM.dat2(ST.make(Items.chainmail_boots, 1, 0)				, ANY.Steel				,  4* U4);
+		OM.dat2(ST.make(Items.iron_helmet, 1, 0)					, ANY.Fe				,  U * 5);
+		OM.dat2(ST.make(Items.iron_chestplate, 1, 0)				, ANY.Fe				,  U * 8);
+		OM.dat2(ST.make(Items.iron_leggings, 1, 0)					, ANY.Fe				,  U * 7);
+		OM.dat2(ST.make(Items.iron_boots, 1, 0)						, ANY.Fe				,  U * 4);
+		OM.dat2(ST.make(Items.golden_helmet, 1, 0)					, MT.Au					,  U * 5);
+		OM.dat2(ST.make(Items.golden_chestplate, 1, 0)				, MT.Au					,  U * 8);
+		OM.dat2(ST.make(Items.golden_leggings, 1, 0)				, MT.Au					,  U * 7);
+		OM.dat2(ST.make(Items.golden_boots, 1, 0)					, MT.Au					,  U * 4);
+		OM.dat2(ST.make(Items.diamond_helmet, 1, 0)					, MT.Diamond			,  U * 5);
+		OM.dat2(ST.make(Items.diamond_chestplate, 1, 0)				, MT.Diamond			,  U * 8);
+		OM.dat2(ST.make(Items.diamond_leggings, 1, 0)				, MT.Diamond			,  U * 7);
+		OM.dat2(ST.make(Items.diamond_boots, 1, 0)					, MT.Diamond			,  U * 4);
+		OM.dat2(ST.make(Items.shears, 1, 0)							, ANY.Fe				,  U * 2);
+		OM.dat2(ST.make(Items.saddle, 1, W)							, ANY.Steel				,  U * 2, MT.Leather, U * 6);
+		OM.dat2(ST.make(Items.iron_horse_armor, 1, W)				, ANY.Fe				,  U * 8, MT.Leather, U * 6);
+		OM.dat2(ST.make(Items.golden_horse_armor, 1, W)				, MT.Au					,  U * 8, MT.Leather, U * 6);
+		OM.dat2(ST.make(Items.diamond_horse_armor, 1, W)			, MT.Diamond			,  U * 8, MT.Leather, U * 6);
+		OM.data(ST.make(Items.flint, 1, W)							, MT.Flint				,  U2);
+		OM.data(ST.make(Blocks.ice, 1, W)							, MT.Ice				,  U * 1);
+		OM.data(ST.make(Blocks.packed_ice, 1, W)					, MT.Ice				,  U * 2);
+		OM.data(ST.make(Items.snowball, 1, W)						, MT.Snow				,  U4);
+		OM.data(ST.make(Blocks.snow, 1, W)							, MT.Snow				,  U * 1);
+		OM.data(ST.make(Blocks.snow_layer, 1, W)					, MT.Snow				,	  -1);
+		OM.data(ST.make(Blocks.redstone_lamp, 1, W)					, ANY.Glowstone			,  U * 4, MT.Redstone, U * 4);
+		OM.data(ST.make(Blocks.lit_redstone_lamp, 1, W)				, ANY.Glowstone			,  U * 4, MT.Redstone, U * 4);
+		OM.data(ST.make(Items.bone						, 1, W)		, MT.Bone				,  U * 3);
+		OM.data(ST.make(Items.clay_ball					, 1, W)		, MT.Clay				,  U * 1);
+		OM.data(ST.make(Blocks.clay						, 1, W)		, MT.Clay				,  U * 4);
+		OM.data(ST.make(Blocks.hardened_clay			, 1, W)		, MT.Ceramic			,  U * 4);
+		OM.data(ST.make(Blocks.stained_hardened_clay	, 1, W)		, MT.Ceramic			,  U * 4);
+		OM.data(ST.make(Blocks.flower_pot				, 1, W)		, MT.Ceramic			,  U * 3);
+		OM.data(ST.make(Items.flower_pot				, 1, W)		, MT.Ceramic			,  U * 3);
+		OM.data(ST.make(Items.brick						, 1, W)		, MT.Ceramic			,  U * 1);
+		OM.data(ST.make(Blocks.brick_block				, 1, W)		, MT.Ceramic			,  U * 4);
+		OM.data(ST.make(Blocks.double_stone_slab		, 1, 4)		, MT.Ceramic			,  U * 4);
+		OM.data(ST.make(Blocks.brick_stairs				, 1, W)		, MT.Ceramic			,  U * 6);
+		OM.data(ST.make(Blocks.stone_slab				, 1, 4)		, MT.Ceramic			,  U * 2);
+		OM.data(ST.make(Blocks.quartz_block				, 1, W)		, MT.NetherQuartz		,  U * 4);
+		OM.data(ST.make(Blocks.double_stone_slab		, 1, 7)		, MT.NetherQuartz		,  U * 4);
+		OM.data(ST.make(Blocks.quartz_stairs			, 1, W)		, MT.NetherQuartz		,  U * 6);
+		OM.data(ST.make(Blocks.stone_slab				, 1, 7)		, MT.NetherQuartz		,  U * 2);
+		OM.data(ST.make(Items.firework_charge			, 1, W)		, MT.Gunpowder			,  U * 1);
+		OM.data(ST.make(Items.fireworks					, 1, W)		, MT.Gunpowder			,  U * 1);
+		OM.data(ST.make(Items.book, 1, W)							, MT.Paper				,  U * 3);
+		OM.data(ST.make(Items.written_book, 1, W)					, MT.Paper				,  U * 3);
+		OM.data(ST.make(Items.writable_book, 1, W)					, MT.Paper				,  U * 3);
+		OM.data(ST.make(Items.enchanted_book, 1, W)					, MT.Paper				,  U * 3);
+		OM.data(ST.make(Items.map, 1, W)							, MT.Paper				,  U * 8);
+		OM.data(ST.make(Items.filled_map, 1, W)						, MT.Paper				,  U * 8);
+		OM.data(ST.make(Items.golden_apple, 1, 1)					, MT.Au					,  OP.blockIngot.mAmount * 8);
+		OM.data(ST.make(Items.golden_apple, 1, 0)					, MT.Au					,  OP.ingot.mAmount * 8);
+		OM.data(ST.make(Items.golden_carrot, 1, 0)					, MT.Au					,  OP.nugget.mAmount * 8);
+		OM.data(ST.make(Items.speckled_melon, 1, 0)					, MT.Au					,  OP.nugget.mAmount * 8);
+		OM.data(ST.make(Items.bucket, 1, W)							, ANY.Fe		,  U * 3);
+		OM.data(ST.make(Items.minecart, 1, 0)						, ANY.Fe		,  U * 5);
+		OM.data(ST.make(Items.iron_door, 1, W)						, ANY.Fe		,  U * 2);
+		OM.data(ST.make(Items.cauldron, 1, W)						, ANY.Fe		,  U * 7);
+		OM.data(ST.make(Blocks.iron_bars, 1, W)						, ANY.Fe		,  3* U8);
+		OM.data(ST.make(Blocks.light_weighted_pressure_plate, 1, W)	, MT.Au			,  U * 2);
+		OM.data(ST.make(Blocks.heavy_weighted_pressure_plate, 1, W)	, ANY.Fe		,  U * 2);
+		OM.data(ST.make(Blocks.anvil, 1, 0)							, ANY.Fe		,  U *30);
+		OM.data(ST.make(Blocks.anvil, 1, 1)							, ANY.Fe		,  U *20);
+		OM.data(ST.make(Blocks.anvil, 1, 2)							, ANY.Fe		,  U *10);
+		OM.data(ST.make(Blocks.hopper, 1, W)						, ANY.Fe		,  U * 5 , ANY.Wood, U * 8);
+		OM.data(ST.make(Blocks.tripwire_hook, 1, W)					, ANY.Fe		,  OP.ring.mAmount * 2, ANY.Wood, U);
+		OM.data(ST.make(Blocks.stained_glass		, 1, W)			, MT.Glass		,  U	);
+		OM.data(ST.make(Blocks.glass				, 1, W)			, MT.Glass		,  U	);
+		OM.data(ST.make(Blocks.stained_glass_pane	, 1, W)			, MT.Glass		,  3*U8);
+		OM.data(ST.make(Blocks.glass_pane			, 1, W)			, MT.Glass		,  3*U8);
+		OM.data(ST.make(Items.clock, 1, W)							, MT.Au			,  U * 4, MT.Redstone, U);
+		OM.data(ST.make(Items.compass, 1, W)						, ANY.Fe		,  U * 4, MT.Redstone, U);
+		OM.data(ST.make(Items.leather, 1, W)						, MT.Leather	,  U * 1);
+		OM.data(ST.make(Blocks.beacon, 1, W)						, MT.NetherStar	,  U * 1, OM.stack(MT.Obsidian, U *27), OM.stack(MT.Glass, U * 5));
+		OM.data(ST.make(Blocks.enchanting_table, 1, W)				, MT.Diamond	,  U * 2, OM.stack(MT.Obsidian, U *36), OM.stack(MT.Paper, U * 3));
+		OM.data(ST.make(Blocks.ender_chest, 1, W)					, MT.EnderEye	,  U * 1, MT.Obsidian, U *72);
+		OM.data(ST.make(Blocks.bookshelf, 1, W)						, MT.Paper		,  U * 9, ANY.Wood, U * 6);
+		OM.data(ST.make(Blocks.lever, 1, W)							, ANY.Stone		,  U * 1, ANY.Wood, U2);
+		OM.data(ST.make(Blocks.sand, 1, 0)							, MT.Sand		,  U * 1);
+		OM.data(ST.make(Blocks.sand, 1, 1)							, MT.Sand		,  2* U3, MT.Fe2O3, U3);
+		OM.data(ST.make(Blocks.sandstone, 1, W)						, MT.Sand		,  U * 1);
+		OM.data(ST.make(Blocks.stone_slab, 1, 0)					, ANY.Stone		,  U2);
+		OM.data(ST.make(Blocks.stone_slab, 1, 8)					, ANY.Stone		,  U2);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 0)				, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 8)				, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.stone_slab, 1, 1)					, MT.Sand		,  U2);
+		OM.data(ST.make(Blocks.stone_slab, 1, 9)					, MT.Sand		,  U2);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 1)				, MT.Sand		,  U * 1);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 9)				, MT.Sand		,  U * 1);
+		OM.data(ST.make(Blocks.stone_slab, 1,  2)					, ANY.Wood		,  U2);
+		OM.data(ST.make(Blocks.stone_slab, 1, 10)					, ANY.Wood		,  U2);
+		OM.data(ST.make(Blocks.double_stone_slab, 1,  2)			, ANY.Wood		,  U * 1);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 10)			, ANY.Wood		,  U * 1);
+		OM.data(ST.make(Blocks.stone_slab, 1,  3)					, ANY.Stone		,  U2);
+		OM.data(ST.make(Blocks.stone_slab, 1, 11)					, ANY.Stone		,  U2);
+		OM.data(ST.make(Blocks.double_stone_slab, 1,  3)			, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 11)			, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.stone_slab, 1,  5)					, ANY.Stone		,  U2);
+		OM.data(ST.make(Blocks.stone_slab, 1, 13)					, ANY.Stone		,  U2);
+		OM.data(ST.make(Blocks.double_stone_slab, 1,  5)			, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.double_stone_slab, 1, 13)			, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.stone, 1, W)							, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.furnace, 1, W)						, ANY.Stone		,  U * 8);
+		OM.data(ST.make(Blocks.lit_furnace, 1, W)					, ANY.Stone		,  U * 8);
+		OM.data(ST.make(Blocks.stonebrick, 1, W)					, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.cobblestone, 1, W)					, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.mossy_cobblestone, 1, W)				, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.stone_button, 1, W)					, ANY.Stone		,  U * 1);
+		OM.data(ST.make(Blocks.stone_pressure_plate, 1, W)			, ANY.Stone		,  U * 2);
+		OM.data(ST.make(Blocks.ladder, 1, W)						, ANY.Wood		,  U * 1);
+		OM.data(ST.make(Blocks.wooden_button, 1, W)					, ANY.Wood		,  U * 1);
+		OM.data(ST.make(Blocks.wooden_pressure_plate, 1, W)			, ANY.Wood		,  U * 2);
+		OM.data(ST.make(Blocks.fence, 1, W)							, ANY.Wood		,  3* U2);
+		OM.data(ST.make(Items.bowl, 1, W)							, ANY.Wood		,  U * 1);
+		OM.data(ST.make(Items.sign, 1, W)							, ANY.Wood		,  U * 2);
+		OM.data(ST.make(Items.wooden_door, 1, W)					, ANY.Wood		,  U * 2);
+		OM.data(ST.make(Blocks.chest, 1, W)							, ANY.Wood		,  U * 8);
+		OM.data(ST.make(Blocks.trapped_chest, 1, W)					, ANY.Wood		,  U * 9, ANY.Fe, OP.ring.mAmount * 2);
+		OM.data(ST.make(Blocks.unlit_redstone_torch, 1, W)			, ANY.Wood		,  U2, MT.Redstone, U);
+		OM.data(ST.make(Blocks.redstone_torch, 1, W)				, ANY.Wood		,  U2, MT.Redstone, U);
+		OM.data(ST.make(Blocks.noteblock, 1, W)						, ANY.Wood		,  U * 8, MT.Redstone, U);
+		OM.data(ST.make(Blocks.jukebox, 1, W)						, ANY.Wood		,  U * 8, MT.Diamond, U);
+		OM.data(ST.make(Blocks.crafting_table, 1, W)				, ANY.Wood		,  U * 4);
+		OM.data(ST.make(Blocks.piston, 1, W)						, ANY.Stone				,  U * 4, ANY.Wood, U * 3);
+		OM.data(ST.make(Blocks.sticky_piston, 1, W)					, ANY.Stone				,  U * 4, ANY.Wood, U * 3);
+		OM.data(ST.make(Blocks.dispenser, 1, W)						, ANY.Stone				,  U * 7, MT.Redstone, U);
+		OM.data(ST.make(Blocks.dropper, 1, W)						, ANY.Stone				,  U * 7, MT.Redstone, U);
+		OM.data(ST.make(Items.porkchop, 1, W)						, MT.MeatRaw			,  U * 2, MT.Bone, U9);
+		OM.data(ST.make(Items.beef, 1, W)							, MT.MeatRaw			,  U * 2, MT.Bone, U9);
+		OM.data(ST.make(Items.chicken, 1, W)						, MT.MeatRaw			,  U * 2, MT.Bone, U9);
+		OM.data(ST.make(Items.rotten_flesh, 1, W)					, MT.MeatRotten			,  U * 2, MT.Bone, U9);
+		OM.data(ST.make(Items.cooked_fished, 1, W)					, MT.FishCooked			,  U * 2, MT.Bone, U9);
+		OM.data(ST.make(Items.cooked_porkchop, 1, W)				, MT.MeatCooked			,  U * 2, MT.Bone, U9);
+		OM.data(ST.make(Items.cooked_beef, 1, W)					, MT.MeatCooked			,  U * 2, MT.Bone, U9);
+		OM.data(ST.make(Items.cooked_chicken, 1, W)					, MT.MeatCooked			,  U * 2, MT.Bone, U9);
+		OM.data(ST.make(Items.fish, 1, 0)							, MT.FishRaw			,  U * 2, MT.Bone, U9, MT.FishOil, U * 2);
+		OM.data(ST.make(Items.fish, 1, 1)							, MT.FishRaw			,  U * 2, MT.Bone, U9, MT.FishOil, U * 4);
+		OM.data(ST.make(Items.fish, 1, 2)							, MT.FishRaw			,  U * 2, MT.Bone, U9, MT.FishOil, U * 1);
+		OM.data(ST.make(Items.fish, 1, 3)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U * 1);
+		if (MD.MaCu.mLoaded && MD.ENCHIRIDION.mLoaded) {
+		OM.data(ST.make(Items.fish, 1, 4)							, MT.FishRaw			,  U * 2, MT.Bone, U9, MT.FishOil, U * 2, ANY.Glowstone, U72);
+		OM.data(ST.make(Items.fish, 1, 5)							, MT.FishRaw			,  U * 1, MT.Bone, U9, MT.FishOil, U * 1, MT.Blaze, U);
+		OM.data(ST.make(Items.fish, 1, 6)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U3);
+		OM.data(ST.make(Items.fish, 1, 7)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2);
+		OM.data(ST.make(Items.fish, 1, 8)							, MT.FishRaw			,  U * 4, MT.Bone, U2, MT.FishOil, U * 7);
+		OM.data(ST.make(Items.fish, 1, 9)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U4);
+		OM.data(ST.make(Items.fish, 1,10)							, MT.FishRaw			,  U * 2, MT.Bone, U9, MT.FishOil, U4);
+		OM.data(ST.make(Items.fish, 1,11)							, MT.FishRaw			,  U * 2, MT.Bone, U9, MT.FishOil, U * 4, MT.Gunpowder,  U9);
+		OM.data(ST.make(Items.fish, 1,12)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U40);
+		OM.data(ST.make(Items.fish, 1,13)							, MT.FishRaw			,  U * 3, MT.Bone, U3, MT.FishOil, U * 2);
+		OM.data(ST.make(Items.fish, 1,14)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U * 3);
+		OM.data(ST.make(Items.fish, 1,15)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U * 2);
+		OM.data(ST.make(Items.fish, 1,16)							, MT.FishRaw			,  U * 3, MT.Bone, U3, MT.FishOil, U * 6);
+		OM.data(ST.make(Items.fish, 1,17)							, MT.FishRaw			,  U * 2, MT.Bone, U3, MT.FishOil, U * 6);
+		OM.data(ST.make(Items.fish, 1,18)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U * 1);
+		OM.data(ST.make(Items.fish, 1,19)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U * 1);
+		OM.data(ST.make(Items.fish, 1,20)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U2);
+		OM.data(ST.make(Items.fish, 1,21)							, MT.FishRaw			,  U * 3, MT.FishOil, U * 5);
+		OM.data(ST.make(Items.fish, 1,22)							, MT.FishOil, U * 5);
+		OM.data(ST.make(Items.fish, 1,23)							, MT.FishOil, U * 5);
+		OM.data(ST.make(Items.fish, 1,24)							, MT.FishRaw			,  U2, MT.Bone, U9, MT.FishOil, U * 1, MT.Au, U72);
+		OM.data(ST.make(Items.fish, 1,25)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U100);
+		OM.data(ST.make(Items.fish, 1,26)							, MT.FishRaw			,  U * 3, MT.Bone, U3, MT.FishOil, U * 5);
+		OM.data(ST.make(Items.fish, 1,27)							, MT.FishRaw			,  U2, MT.Bone, U9, MT.FishOil, U10);
+		OM.data(ST.make(Items.fish, 1,28)							, MT.FishRaw			,  U2, MT.Bone, U9, MT.FishOil, U * 1, MT.Lapis,  U9);
+		OM.data(ST.make(Items.fish, 1,29)							, MT.FishRaw			,  U * 3, MT.Bone, U3, MT.FishOil, U * 3);
+		OM.data(ST.make(Items.fish, 1,30)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U2);
+		OM.data(ST.make(Items.fish, 1,31)							, MT.FishRaw			,  U * 2, MT.Bone, U3, MT.FishOil, U * 4);
+		OM.data(ST.make(Items.fish, 1,32)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U * 2);
+		OM.data(ST.make(Items.fish, 1,33)							, MT.FishRaw			,  U2, MT.Bone, U9, MT.FishOil, U * 1);
+		OM.data(ST.make(Items.fish, 1,34)							, MT.FishRotten			,  U * 2, MT.Bone, U3, MT.FishOil, U * 1);
+		OM.data(ST.make(Items.fish, 1,35)							, MT.Bone, U * 6);
+		OM.data(ST.make(Items.fish, 1,36)							, MT.FishRaw			,  U * 2, MT.Bone, U3, MT.FishOil, U * 4);
+		OM.data(ST.make(Items.fish, 1,37)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U * 3);
+		OM.data(ST.make(Items.fish, 1,38)							, MT.FishRaw			,  U * 1, MT.Bone, U9, MT.FishOil, U * 1, MT.Redstone,  U4);
+		OM.data(ST.make(Items.fish, 1,39)							, MT.FishRaw			,  U * 2, MT.Bone, U9, MT.FishOil, U * 2);
+		OM.data(ST.make(Items.fish, 1,40)							, MT.FishRaw			,  U * 1, MT.Bone, U9, MT.FishOil, U * 1);
+		OM.data(ST.make(Items.fish, 1,41)							, MT.FishRaw			,  U * 1, MT.Bone, U9, MT.FishOil, U2);
+		OM.data(ST.make(Items.fish, 1,42)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U20);
+		OM.data(ST.make(Items.fish, 1,43)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U * 1);
+		OM.data(ST.make(Items.fish, 1,44)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U * 3);
+		OM.data(ST.make(Items.fish, 1,45)							, MT.FishRaw			,  U * 2, MT.Bone, U3, MT.FishOil, U * 4);
+		OM.data(ST.make(Items.fish, 1,46)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U * 3);
+		OM.data(ST.make(Items.fish, 1,47)							, MT.FishRaw			,  U * 2, MT.Bone, U3, MT.FishOil, U * 5);
+		OM.data(ST.make(Items.fish, 1,48)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U20);
+		OM.data(ST.make(Items.fish, 1,49)							, MT.FishRaw			,  U2, MT.Bone, U3, MT.FishOil, U * 2);
+		OM.data(ST.make(Items.fish, 1,50)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Fe, U72);
+		OM.data(ST.make(Items.fish, 1,51)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Au, U72);
+		OM.data(ST.make(Items.fish, 1,52)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Cu, U72);
+		OM.data(ST.make(Items.fish, 1,53)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Al2O3, U72);
+		OM.data(ST.make(Items.fish, 1,54)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.TiO2, U72);
+		OM.data(ST.make(Items.fish, 1,55)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Mg, U72);
+		OM.data(ST.make(Items.fish, 1,56)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Ag, U72);
+		OM.data(ST.make(Items.fish, 1,57)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Pb, U72);
+		OM.data(ST.make(Items.fish, 1,58)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Sn, U72);
+		OM.data(ST.make(Items.fish, 1,59)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Pt, U72);
+		OM.data(ST.make(Items.fish, 1,60)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Ni, U72);
+		OM.data(ST.make(Items.fish, 1,61)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Co, U72);
+		OM.data(ST.make(Items.fish, 1,62)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Ardite, U72);
+		OM.data(ST.make(Items.fish, 1,63)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Os, U72);
+		OM.data(ST.make(Items.fish, 1,64)							, MT.FishRaw			,  U * 1, MT.Bone, U3, MT.FishOil, U2, MT.Zn, U72);
+		}
+		OM.data(ST.make(Items.fish, 1, W)							, MT.FishRaw			,  U * 2, MT.Bone, U9, MT.FishOil, U * 1);
+	}
+}

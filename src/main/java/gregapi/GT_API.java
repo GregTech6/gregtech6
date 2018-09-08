@@ -1,0 +1,720 @@
+package gregapi;
+
+import static gregapi.data.CS.*;
+
+import java.io.File;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import cpw.mods.fml.common.LoadController;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.ModContainer;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLModIdMappingEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.event.FMLServerStoppedEvent;
+import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import enviromine.EnviroPotion;
+import gregapi.api.Abstract_Mod;
+import gregapi.api.Abstract_Proxy;
+import gregapi.block.ToolCompat;
+import gregapi.block.prefixblock.PrefixBlockFallingEntity;
+import gregapi.block.prefixblock.PrefixBlockTileEntity;
+import gregapi.code.ArrayListNoNulls;
+import gregapi.code.HashSetNoNulls;
+import gregapi.code.ItemStackContainer;
+import gregapi.compat.ICompat;
+import gregapi.compat.buildcraft.ICompatBC;
+import gregapi.compat.computercraft.ICompatCC;
+import gregapi.compat.forestry.ICompatFR;
+import gregapi.compat.galacticraft.ICompatGC;
+import gregapi.compat.industrialcraft.ICompatIC2;
+import gregapi.compat.industrialcraft.ICompatIC2EUItem;
+import gregapi.compat.thaumcraft.ICompatTC;
+import gregapi.config.Config;
+import gregapi.config.ConfigCategories;
+import gregapi.cover.CoverRegistry;
+import gregapi.cover.ICover;
+import gregapi.cover.covers.CoverRedstoneRepeater;
+import gregapi.cover.covers.CoverRedstoneTorch;
+import gregapi.data.AM;
+import gregapi.data.BI;
+import gregapi.data.CS.ConfigsGT;
+import gregapi.data.CS.DirectoriesGT;
+import gregapi.data.CS.IconsGT;
+import gregapi.data.CS.ModIDs;
+import gregapi.data.CS.PotionsGT;
+import gregapi.data.FL;
+import gregapi.data.IL;
+import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.data.OP;
+import gregapi.data.RM;
+import gregapi.data.TD;
+import gregapi.dummies.DummyWorld;
+import gregapi.enchants.Enchantment_EnderDamage;
+import gregapi.enchants.Enchantment_Radioactivity;
+import gregapi.enchants.Enchantment_SlimeDamage;
+import gregapi.enchants.Enchantment_WerewolfDamage;
+import gregapi.item.ItemFluidDisplay;
+import gregapi.item.ItemIntegratedCircuit;
+import gregapi.lang.LanguageHandler;
+import gregapi.load.LoaderOreDictReRegistrations;
+import gregapi.log.LogBuffer;
+import gregapi.log.LoggerPlayerActivity;
+import gregapi.network.NetworkHandler;
+import gregapi.network.packets.PacketBlockError;
+import gregapi.network.packets.PacketBlockEvent;
+import gregapi.network.packets.PacketConfig;
+import gregapi.network.packets.PacketDeathPoint;
+import gregapi.network.packets.PacketItemStackChat;
+import gregapi.network.packets.PacketPrefix;
+import gregapi.network.packets.PacketSound;
+import gregapi.network.packets.covers.PacketSyncDataByteAndIDsAndCovers;
+import gregapi.network.packets.covers.PacketSyncDataByteArrayAndIDsAndCovers;
+import gregapi.network.packets.covers.PacketSyncDataIDsAndCovers;
+import gregapi.network.packets.covers.PacketSyncDataIntegerAndIDsAndCovers;
+import gregapi.network.packets.covers.PacketSyncDataLongAndIDsAndCovers;
+import gregapi.network.packets.covers.PacketSyncDataShortAndIDsAndCovers;
+import gregapi.network.packets.covervisuals.PacketSyncDataByteAndCoverVisuals;
+import gregapi.network.packets.covervisuals.PacketSyncDataByteArrayAndCoverVisuals;
+import gregapi.network.packets.covervisuals.PacketSyncDataCoverVisuals;
+import gregapi.network.packets.covervisuals.PacketSyncDataIntegerAndCoverVisuals;
+import gregapi.network.packets.covervisuals.PacketSyncDataLongAndCoverVisuals;
+import gregapi.network.packets.covervisuals.PacketSyncDataShortAndCoverVisuals;
+import gregapi.network.packets.data.PacketSyncDataByte;
+import gregapi.network.packets.data.PacketSyncDataByteArray;
+import gregapi.network.packets.data.PacketSyncDataInteger;
+import gregapi.network.packets.data.PacketSyncDataLong;
+import gregapi.network.packets.data.PacketSyncDataName;
+import gregapi.network.packets.data.PacketSyncDataShort;
+import gregapi.network.packets.ids.PacketSyncDataByteAndIDs;
+import gregapi.network.packets.ids.PacketSyncDataByteArrayAndIDs;
+import gregapi.network.packets.ids.PacketSyncDataIDs;
+import gregapi.network.packets.ids.PacketSyncDataIntegerAndIDs;
+import gregapi.network.packets.ids.PacketSyncDataLongAndIDs;
+import gregapi.network.packets.ids.PacketSyncDataShortAndIDs;
+import gregapi.old.Textures;
+import gregapi.oredict.OreDictManager;
+import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.OreDictPrefix;
+import gregapi.recipes.AdvancedCrafting1ToY;
+import gregapi.recipes.AdvancedCraftingShaped;
+import gregapi.recipes.AdvancedCraftingShapeless;
+import gregapi.recipes.AdvancedCraftingTool;
+import gregapi.recipes.AdvancedCraftingXToY;
+import gregapi.render.ITexture;
+import gregapi.render.TextureSet;
+import gregapi.tileentity.energy.EnergyCompat;
+import gregapi.util.CR;
+import gregapi.util.ST;
+import gregapi.util.UT;
+import gregapi.worldgen.GT6WorldGenerator;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemPickaxe;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.oredict.RecipeSorter;
+
+/**
+ * @author Gregorius Techneticies
+ * 
+ * This loads before the compatible Mods, except Micdoodlecore. GT_API_Post loads after all compatible Mods.
+ */
+@Mod(modid=ModIDs.GAPI, name="Greg-API", version="GT6-MC1710", dependencies="required-before:"+ModIDs.GAPI_POST+"; after:"+ModIDs.MD8+"; before:"+ModIDs.IC2+"; before:"+ModIDs.IC2C+"; before:"+ModIDs.NC+"; before:"+ModIDs.IHL+"; before:"+ModIDs.FMB+"; before:"+ModIDs.BAUBLES+"; before:"+ModIDs.GaSu+"; before:"+ModIDs.GaNe+"; before:"+ModIDs.GaEn+"; before:"+ModIDs.WdSt+"; before:"+ModIDs.CrGu+"; before:"+ModIDs.COFH_API+"; before:"+ModIDs.COFH_API_ENERGY+"; before:"+ModIDs.CC+"; before:"+ModIDs.OC+"; before:"+ModIDs.DE+"; before:"+ModIDs.FR+"; before:"+ModIDs.FRMB+"; before:"+ModIDs.BINNIE+"; before:"+ModIDs.BINNIE_BEE+"; before:"+ModIDs.BINNIE_TREE+"; before:"+ModIDs.BINNIE_GENETICS+"; before:"+ModIDs.BINNIE_BOTANY+"; before:"+ModIDs.IE+"; before:"+ModIDs.UB+"; before:"+ModIDs.COG+"; before:"+ModIDs.PFAA+"; before:"+ModIDs.ARS+"; before:"+ModIDs.TC+"; before:"+ModIDs.TCFM+"; before:"+ModIDs.BOTA+"; before:"+ModIDs.WTCH+"; before:"+ModIDs.HOWL+"; before:"+ModIDs.MoCr+"; before:"+ModIDs.GoG+"; before:"+ModIDs.LycM+"; before:"+ModIDs.LycM_Arctic+"; before:"+ModIDs.LycM_Demon+"; before:"+ModIDs.LycM_Desert+"; before:"+ModIDs.LycM_Forest+"; before:"+ModIDs.LycM_Fresh+"; before:"+ModIDs.LycM_Inferno+"; before:"+ModIDs.LycM_Jungle+"; before:"+ModIDs.LycM_Mountain+"; before:"+ModIDs.LycM_Plains+"; before:"+ModIDs.LycM_Salt+"; before:"+ModIDs.LycM_Shadow+"; before:"+ModIDs.LycM_Swamp+"; before:"+ModIDs.RC+"; before:"+ModIDs.BP+"; before:"+ModIDs.PR+"; before:"+ModIDs.PR_EXPANSION+"; before:"+ModIDs.PR_INTEGRATION+"; before:"+ModIDs.PR_TRANSMISSION+"; before:"+ModIDs.PR_TRANSPORT+"; before:"+ModIDs.PE+"; before:"+ModIDs.AE+"; before:"+ModIDs.MO+"; before:"+ModIDs.TE_FOUNDATION+"; before:"+ModIDs.TE_DYNAMICS+"; before:"+ModIDs.TE+"; before:"+ModIDs.ZTONES+"; before:"+ModIDs.CHSL+"; before:"+ModIDs.EtFu+"; before:"+ModIDs.BbLC+"; before:"+ModIDs.CARP+"; before:"+ModIDs.BETTER_RECORDS+"; before:"+ModIDs.TF+"; before:"+ModIDs.ERE+"; before:"+ModIDs.MFR+"; before:"+ModIDs.PnC+"; before:"+ModIDs.ExU+"; before:"+ModIDs.ExS+"; before:"+ModIDs.EIO+"; before:"+ModIDs.RT+"; before:"+ModIDs.AA+"; before:"+ModIDs.HaC+"; before:"+ModIDs.CookBook+"; before:"+ModIDs.APC+"; before:"+ModIDs.ENVM+"; before:"+ModIDs.MaCr+"; before:"+ModIDs.BC_TRANSPORT+"; before:"+ModIDs.BC_SILICON+"; before:"+ModIDs.BC_FACTORY+"; before:"+ModIDs.BC_ENERGY+"; before:"+ModIDs.BC_ROBOTICS+"; before:"+ModIDs.BC+"; before:"+ModIDs.BC_BUILDERS+"; before:"+ModIDs.MgC+"; before:"+ModIDs.BR+"; before:"+ModIDs.HBM+"; before:"+ModIDs.DRGN+"; before:"+ModIDs.ElC+"; before:"+ModIDs.CrC+"; before:"+ModIDs.ReC+"; before:"+ModIDs.RoC+"; before:"+ModIDs.Mek+"; before:"+ModIDs.Mek_Tools+"; before:"+ModIDs.Mek_Generators+"; before:"+ModIDs.GC+"; before:"+ModIDs.GC_PLANETS+"; before:"+ModIDs.GC_GALAXYSPACE+"; before:"+ModIDs.VULPES+"; before:"+ModIDs.GC_ADV_ROCKETRY+"; before:"+ModIDs.BTL+"; before:"+ModIDs.AETHER+"; before:"+ModIDs.ATUM+"; before:"+ModIDs.EBXL+"; before:"+ModIDs.BoP+"; before:"+ModIDs.HiL+"; before:"+ModIDs.ATG+"; before:"+ModIDs.RTG+"; before:"+ModIDs.RWG+"; before:"+ModIDs.MYST+"; before:"+ModIDs.WARPBOOK+"; before:"+ModIDs.LOSTBOOKS+"; before:"+ModIDs.EUREKA+"; before:"+ModIDs.ENCHIRIDION+"; before:"+ModIDs.ENCHIRIDION2+"; before:"+ModIDs.SmAc+"; before:"+ModIDs.HQM+"; before:"+ModIDs.JABBA+"; before:"+ModIDs.MaCu+"; before:"+ModIDs.PdC+"; before:"+ModIDs.Bamboo+"; before:"+ModIDs.GrC+"; before:"+ModIDs.GrC_Apples+"; before:"+ModIDs.GrC_Bamboo+"; before:"+ModIDs.GrC_Bees+"; before:"+ModIDs.GrC_Cellar+"; before:"+ModIDs.GrC_Fish+"; before:"+ModIDs.GrC_Grapes+"; before:"+ModIDs.GrC_Hops+"; before:"+ModIDs.GrC_Milk+"; before:"+ModIDs.GrC_Rice+"; before:"+ModIDs.BWM+"; before:"+ModIDs.OMT+"; before:"+ModIDs.TG+"; before:"+ModIDs.FM+"; before:"+ModIDs.FZ+"; before:"+ModIDs.MNTL+"; before:"+ModIDs.OB+"; before:"+ModIDs.TiC+"; before:"+ModIDs.WR_CBE_C+"; before:"+ModIDs.WR_CBE_A+"; before:"+ModIDs.WR_CBE_L+"; before:inventorytweaks; before:ironbackpacks; before:journeymap; before:LogisticsPipes; before:LunatriusCore; before:NEIAddons; before:NEIAddons|Developer; before:NEIAddons|AppEng; before:NEIAddons|Botany; before:NEIAddons|Forestry; before:NEIAddons|CraftingTables; before:NEIAddons|ExNihilo; before:neiintegration; before:openglasses; before:simplyjetpacks; before:Stackie; before:StevesCarts; before:TiCTooltips; before:worldedit; before:McMultipart; before:OpenPeripheralCore; before:OpenPeripheralIntegration; before:OpenPeripheral; ")
+public class GT_API extends Abstract_Mod {
+	@SidedProxy(modId = ModIDs.GAPI, clientSide = "gregapi.GT_API_Proxy_Client", serverSide = "gregapi.GT_API_Proxy_Server")
+	public static GT_API_Proxy api_proxy;
+	
+	public static final Collection<Map<ItemStackContainer, ?>> STACKMAPS = new ArrayListNoNulls();
+	
+	/** Used to register Icons. It is not necessary to make those into Lists */
+	public static Set<Runnable> sBlockIconload = new HashSetNoNulls(), sItemIconload = new HashSetNoNulls();
+	/** The Icon Registers from Blocks and Items. They will get set right before the corresponding Icon Load Phase as executed in the Runnable List above. */
+	@SideOnly(Side.CLIENT)
+	public static IIconRegister sBlockIcons, sItemIcons;
+	
+	private LoggerPlayerActivity mPlayerLogger;
+	
+	public GT_API() {
+		GAPI = this;
+		
+		// A bunch of Code that is there to statically initialise the Database in the right order.
+		BI.BAROMETER.toString();
+		MT.NULL.toString();
+		AM.Hydrogen.toString();
+		OP.ore.toString();
+		
+		Textures.BlockIcons.VOID.toString();
+		Textures.ItemIcons.VOID.toString();
+		
+		try {
+			DW = new DummyWorld();
+		} catch(Throwable e) {
+			ERR.println("======================================================================================================");
+			ERR.println("WARNING, DUMMY WORLD COULD NOT BE CREATED, SOME RECIPE RELATED THINGS MAY NOT FUNCTION PROPERLY NOW!!!");
+			ERR.println("======================================================================================================");
+			e.printStackTrace(ERR);
+			ERR.println("======================================================================================================");
+		}
+		
+		IconsGT.INDEX_BLOCK_GAS			= TextureSet.addToAll(MD.GT.mID, F, "gas");
+		IconsGT.INDEX_BLOCK_PLASMA		= TextureSet.addToAll(MD.GT.mID, F, "plasma");
+		IconsGT.INDEX_BLOCK_MOLTEN		= TextureSet.addToAll(MD.GT.mID, F, "molten");
+		IconsGT.INDEX_BLOCK_PIPE_SIDE	= TextureSet.addToAll(MD.GT.mID, F, "pipeSide");
+		
+		OP.pipeTiny			.addTextureSet(MD.GT, F);
+		OP.pipeSmall		.addTextureSet(MD.GT, F);
+		OP.pipeMedium		.addTextureSet(MD.GT, F);
+		OP.pipeLarge		.addTextureSet(MD.GT, F);
+		OP.pipeHuge			.addTextureSet(MD.GT, F);
+		OP.pipeQuadruple	.addTextureSet(MD.GT, F);
+		OP.pipeNonuple		.addTextureSet(MD.GT, F);
+		
+		OP.wire				.addTextureSet(MD.GT, F);
+		OP.foil				.addTextureSet(MD.GT, F);
+		
+		// It is VERY important that those are registered first. Otherwise GregTech would output its own Storage Blocks.
+		OreDictManager.INSTANCE.setTarget_(OP.blockSolid	, MT.Obsidian	, ST.make(Blocks.obsidian		, 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockIngot	, MT.Fe			, ST.make(Blocks.iron_block		, 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockIngot	, MT.Au			, ST.make(Blocks.gold_block		, 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockGem		, MT.Diamond	, ST.make(Blocks.diamond_block	, 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockGem		, MT.Emerald	, ST.make(Blocks.emerald_block	, 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockGem		, MT.Lapis		, ST.make(Blocks.lapis_block	, 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockGem		, MT.Coal		, ST.make(Blocks.coal_block		, 1, 0), T, F, T);
+		OreDictManager.INSTANCE.setTarget_(OP.blockDust		, MT.Redstone	, ST.make(Blocks.redstone_block	, 1, 0), T, F, T);
+		
+		// Fixing missing Container Items.
+		Items.mushroom_stew.setContainerItem(Items.bowl);
+		Items.potionitem.setContainerItem(Items.glass_bottle);
+		Items.experience_bottle.setContainerItem(Items.glass_bottle);
+		
+		// Fixing Max Stacksizes that don't make sense.
+		Items.cake.setMaxStackSize(64);
+		Items.wooden_door.setMaxStackSize(8);
+		Items.iron_door.setMaxStackSize(8);
+		
+		// Fixing some Adventure Mode things.
+    	Blocks.bed.setHarvestLevel("axe", 0);
+    	Blocks.sponge.setHarvestLevel("axe", 0);
+    	Blocks.hay_block.setHarvestLevel("axe", 0);
+    	Blocks.tnt.setHarvestLevel("pickaxe", 0);
+    	Blocks.monster_egg.setHarvestLevel("pickaxe", 0);
+    	Blocks.obsidian.setHarvestLevel("pickaxe", 3);
+    	
+    	UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
+    	UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
+    	
+    	Set tSet = (Set)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
+    	tSet.add(Blocks.bed);
+    	tSet.add(Blocks.hay_block);
+    	tSet.add(Blocks.sponge);
+    	
+    	tSet = (Set)UT.Reflection.getFieldContent(ItemPickaxe.class, "field_150915_c", T, T);
+    	tSet.add(Blocks.monster_egg);
+    	tSet.add(Blocks.tnt);
+	}
+	
+	@Mod.EventHandler
+	public void onPreLoad(FMLPreInitializationEvent aEvent) {
+		DirectoriesGT.CONFIG = aEvent.getModConfigurationDirectory();
+		
+		DirectoriesGT.CONFIG_GT = new File(DirectoriesGT.CONFIG, "GregTech");
+		if (!DirectoriesGT.CONFIG_GT.exists()) DirectoriesGT.CONFIG_GT = new File(DirectoriesGT.CONFIG, "gregtech");
+		
+		DirectoriesGT.CONFIG_RECIPES = new File(DirectoriesGT.CONFIG, "Recipes");
+		if (!DirectoriesGT.CONFIG_RECIPES.exists()) DirectoriesGT.CONFIG_RECIPES = new File(DirectoriesGT.CONFIG, "recipes");
+		
+		DirectoriesGT.MINECRAFT = DirectoriesGT.CONFIG.getParentFile();
+		
+		DirectoriesGT.LOGS = new File(DirectoriesGT.MINECRAFT, "logs");
+		
+		onModPreInit(aEvent);
+	}
+	
+	@Mod.EventHandler
+	public void onLoad(FMLInitializationEvent aEvent) {
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && !tMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
+			tMaterial.mOreProcessingMultiplier = UT.Code.bindStack(ConfigsGT.OREPROCESSING.get(ConfigCategories.Materials.oreprocessingoutputmultiplier, tMaterial.mNameInternal, 1));
+			tMaterial.mToolQuality = (byte)ConfigsGT.MATERIAL.get(tMaterial.mNameInternal, "ToolQuality", tMaterial.mToolQuality);
+			if (tMaterial.mToolTypes > 0) {
+				tMaterial.mToolSpeed = (float)ConfigsGT.MATERIAL.get(tMaterial.mNameInternal, "ToolSpeed", tMaterial.mToolSpeed);
+				tMaterial.mToolDurability = ConfigsGT.MATERIAL.get(tMaterial.mNameInternal, "ToolDurability", tMaterial.mToolDurability);
+				tMaterial.mHandleMaterial = OreDictMaterial.get(ConfigsGT.MATERIAL.get(tMaterial.mNameInternal, "ToolHandle", tMaterial.mHandleMaterial.mNameInternal));
+			}
+		}
+		
+		onModInit(aEvent);
+	}
+	
+//  @SubscribeEvent
+//  @Mod.EventHandler
+//  public void loadComplete(FMLLoadCompleteEvent aEvent) {
+//		Why the fuck doesn't this work!?! Who can actually receive this Event? Both annotations won't work...
+//  }
+	
+	@Override public String getModID() {return MD.GAPI.mID;}
+	@Override public String getModName() {return MD.GAPI.mName;}
+	@Override public String getModNameForLog() {return "GT_API";}
+	@Override public Abstract_Proxy getProxy() {return api_proxy;}
+	
+	@Mod.EventHandler public void onPostLoad		(FMLPostInitializationEvent	aEvent) {onModPostInit(aEvent);}
+	@Mod.EventHandler public void onServerStarting	(FMLServerStartingEvent		aEvent) {onModServerStarting(aEvent);}
+	@Mod.EventHandler public void onServerStarted	(FMLServerStartedEvent		aEvent) {onModServerStarted(aEvent);}
+	@Mod.EventHandler public void onServerStopping	(FMLServerStoppingEvent		aEvent) {onModServerStopping(aEvent);}
+	@Mod.EventHandler public void onServerStopped	(FMLServerStoppedEvent		aEvent) {onModServerStopped(aEvent);}
+	
+	@Mod.EventHandler
+	public void onIDChangingEvent(FMLModIdMappingEvent aEvent) {
+		OUT.println(getModNameForLog() + ": Remapping all the ItemStackMaps due to ID Map change.");
+		OUT.println(getModNameForLog() + ": Those damn Items should have a consistent Hashcode, but noooo, ofcourse they break Basic Code Conventions! Thanks Forge and Mojang!");
+		for (Map tMap : STACKMAPS) UT.Code.reMap(tMap);
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onIDChanging(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+	}
+	
+	@SuppressWarnings("resource")
+	@Override
+	public void onModPreInit2(FMLPreInitializationEvent aEvent) {
+		try {
+			OUT.println(getModNameForLog() + ": Sorting Greg-API to the start of the Mod List for further processing.");
+			LoadController tLoadController = ((LoadController)UT.Reflection.getFieldContent(Loader.instance(), "modController", T, T));
+			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList(tModList.size());
+			ModContainer tGregTech = null;
+			for (short i = 0; i < tModList.size(); i++) {
+				ModContainer tMod = tModList.get(i);
+				if (tMod.getModId().equalsIgnoreCase(MD.GAPI.mID)) tGregTech = tMod; else tNewModsList.add(tMod);
+			}
+			if (tGregTech != null) tNewModsList.add(0, tGregTech);
+			UT.Reflection.getField(tLoadController, "activeModList", T, T).set(tLoadController, tNewModsList);
+		} catch(Throwable e) {
+			if (D1) e.printStackTrace(ERR);
+		}
+		
+		File
+		tFile = new File(DirectoriesGT.CONFIG_GT, "IDs.cfg");
+		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "ids.cfg");
+		Config.sConfigFileIDs = new Configuration(tFile); Config.sConfigFileIDs.save();
+		
+		tFile = new File(DirectoriesGT.CONFIG_GT, "GregTech.cfg");
+		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "gregtech.cfg");
+		Configuration tMainConfig = new Configuration(tFile);
+		
+		tFile = new File(DirectoriesGT.CONFIG_GT, "Stacksizes.cfg");
+		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "stacksizes.cfg");
+		Configuration tStackConfig = new Configuration(tFile);
+		
+		tFile = new File(DirectoriesGT.LOGS, "gregtech.log");
+		if (!tFile.exists()) try {tFile.createNewFile();} catch(Throwable e) {/*Do nothing*/}
+		
+		List<String>
+		tList = ((LogBuffer)OUT).mBufferedLog;
+		try {
+			OUT = new PrintStream(tFile);
+		} catch (Throwable e) {
+			OUT = System.out;
+		}
+		
+		for (String tString : tList) OUT.println(tString);
+		
+		if (tMainConfig.get("general", "LoggingErrors", T).getBoolean(T)) {
+			tList = ((LogBuffer)ERR).mBufferedLog;
+			ERR = OUT;
+			for (String tString : tList) ERR.println(tString);
+		} else {
+			OUT.println("**********************************************************************");
+			OUT.println("* WARNING: ERROR LOGGING HAS BEEN DISABLED FOR THIS LOG FILE         *");
+			OUT.println("**********************************************************************");
+		}
+		
+		tFile = new File(DirectoriesGT.CONFIG_GT, "materiallist.log");
+		if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/*Do nothing*/}}
+		try {
+			MAT_LOG = new PrintStream(tFile);
+			MAT_LOG.println("**********************************************************************");
+			MAT_LOG.println("* This is the complete List of usable GregTech Materials             *");
+			MAT_LOG.println("**********************************************************************");
+		} catch (Throwable e) {/*Do nothing*/}
+		
+		tFile = new File(DirectoriesGT.LOGS, "oredict.log");
+		if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/*Do nothing*/}}
+		try {
+			tList = ((LogBuffer)ORD).mBufferedLog;
+			ORD = new PrintStream(tFile);
+			ORD.println("**********************************************************************");
+			ORD.println("* This is the complete Log of the GregTech OreDictionary Handler     *");/*
+			ORD.println("* Everything in the OreDict goes through it sometimes causing Errors *");
+			ORD.println("* These Errors are getting logged aswell as properly registered Ores *");
+			ORD.println("* If you see something fishy going on in this Log, such as improper  *");
+			ORD.println("* Items being registered, then mention it to the corresponding Mod   *");
+			ORD.println("* In case it mentions GregTech itself improperly registering Stuff   *");
+			ORD.println("* then please contact me about that immediatly                       *");
+			ORD.println("*                                                                    *");
+			ORD.println("* In case of something being 'ignored properly', that one isnt a Bug *");*/
+			ORD.println("**********************************************************************");
+			for (String tString : tList) ORD.println(tString);
+		} catch (Throwable e) {/*Do nothing*/}
+		
+		if (tMainConfig.get("general", "LoggingPlayerActivity", !CODE_CLIENT).getBoolean(!CODE_CLIENT)) {
+			tFile = new File(DirectoriesGT.LOGS, "playeractivity_"+(System.currentTimeMillis()/60000)+".log");
+			if (!tFile.exists()) {try {tFile.createNewFile();} catch (Throwable e) {/*Do nothing*/}}
+			try {mPlayerLogger = new LoggerPlayerActivity(new PrintStream(tFile));} catch (Throwable e) {/*Do nothing*/}
+		}
+		
+		D1 = tMainConfig.get("general", "Debug1", F).getBoolean(F);
+		D2 = tMainConfig.get("general", "Debug2", F).getBoolean(F);
+		D3 = tMainConfig.get("general", "Debug3", F).getBoolean(F);
+		
+		if (D1) {
+			tList = ((LogBuffer)DEB).mBufferedLog;
+			DEB = OUT;
+			for (String tString : tList) DEB.println(tString);
+		}
+		
+		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (!tPrefix.contains(TD.Prefix.PREFIX_UNUSED)) {
+			int tDefault = tMainConfig.get("stacksizes", tPrefix.mNameInternal+"_"+tPrefix.mDefaultStackSize, tPrefix.mDefaultStackSize).getInt();
+			tPrefix.setConfigStacksize(tStackConfig.get("stacksizes", tPrefix.mNameInternal+"_"+tDefault, tDefault).getInt());
+		}
+		
+		tMainConfig.removeCategory(tMainConfig.getCategory("stacksizes"));
+		
+		SURVIVAL_INTO_ADVENTURE_MODE			= tMainConfig.get("general", "forceAdventureMode"				, F).getBoolean(F);
+		ADVENTURE_MODE_KIT						= tMainConfig.get("general", "AdventureModeStartingKit"			, !MD.GT.mLoaded).getBoolean(!MD.GT.mLoaded);
+		HUNGER_BY_INVENTORY_WEIGHT				= tMainConfig.get("general", "AFK_Hunger"						,  MD.GT.mLoaded).getBoolean( MD.GT.mLoaded);
+		INVENTORY_UNIFICATION					= tMainConfig.get("general", "InventoryUnification"				, T).getBoolean(T);
+		XP_ORB_COMBINING						= tMainConfig.get("general", "XP_Orb_Combining"					, T).getBoolean(T);
+		CONFIG_HARDNESS_MULTIPLIER_SAND			= tMainConfig.get("general", "HardnessMultiplier_Sand"			, 1).getDouble(1);
+		CONFIG_HARDNESS_MULTIPLIER_ROCK			= tMainConfig.get("general", "HardnessMultiplier_Rock"			, 1).getDouble(1);
+		CONFIG_HARDNESS_MULTIPLIER_ORES			= tMainConfig.get("general", "HardnessMultiplier_Ores"			, 1).getDouble(1);
+		ITEM_DESPAWN_TIME						= tMainConfig.get("general", "ItemDespawnTime"					,6000).getInt(6000);
+		TREE_GROWTH_TIME						= tMainConfig.get("general", "Tree_Growth_Time"					, 1).getInt(1);
+		ENTITY_CRAMMING							= tMainConfig.get("general", "MaxEqualEntitiesAtOneSpot"		, 3).getInt(3);
+		DRINKS_ALWAYS_DRINKABLE					= tMainConfig.get("general", "drinks_always_drinkable"			, F).getBoolean(F);
+		EMIT_EU_AS_RF							= tMainConfig.get("general", "Emit_EU_as_RF_from_Blocks"		, F).getBoolean(F);
+		NERFED_WOOD								= tMainConfig.get("general", "WoodNeedsSawForCrafting"			, T).getBoolean(T);
+		FAST_LEAF_DECAY							= tMainConfig.get("general", "FastLeafDecay"					, T).getBoolean(T);
+		CONSTANT_ENERGY							= tMainConfig.get("general", "UninterruptedEnergyRequirement"	, T).getBoolean(T);
+		FOOD_OVERDOSE_DEATH						= tMainConfig.get("general", "DeathByOverdosingCertainFoods"	, T).getBoolean(T);
+		SPAWN_ZONE_MOB_PROTECTION				= tMainConfig.get("general", "PreventMobSpawnsCloseToSpawn"		, T).getBoolean(T);
+		TOOL_SOUNDS								= tMainConfig.get("general", "sound_tools"						, T).getBoolean(T);
+		UT.Sounds.MULTITHREADED					= tMainConfig.get("general", "sound_multi_threading"			, F).getBoolean(F);
+		
+		ENABLE_ADDING_IC2_MACERATOR_RECIPES		= tMainConfig.get("ic2", "EnableAddingMaceratorRecipes"			, T).getBoolean(T);
+		ENABLE_ADDING_IC2_EXTRACTOR_RECIPES		= tMainConfig.get("ic2", "EnableAddingExtractorRecipes"			, T).getBoolean(T);
+		ENABLE_ADDING_IC2_COMPRESSOR_RECIPES	= tMainConfig.get("ic2", "EnableAddingCompressorRecipes"		, T).getBoolean(T);
+		ENABLE_ADDING_IC2_OREWASHER_RECIPES		= tMainConfig.get("ic2", "EnableAddingOreWasherRecipes"			, T).getBoolean(T);
+		ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES	= tMainConfig.get("ic2", "EnableAddingThermalCentrifugeRecipes"	, T).getBoolean(T);
+		
+		if (MD.IC2C.mLoaded) {
+		DISABLE_ALL_IC2_MACERATOR_RECIPES		= F;
+		ENABLE_ADDING_IC2_MACERATOR_RECIPES 	= T;
+		DISABLE_ALL_IC2_EXTRACTOR_RECIPES		= F;
+		ENABLE_ADDING_IC2_EXTRACTOR_RECIPES		= T;
+		DISABLE_ALL_IC2_COMPRESSOR_RECIPES		= F;
+		ENABLE_ADDING_IC2_COMPRESSOR_RECIPES 	= T;
+		DISABLE_ALL_IC2_OREWASHER_RECIPES		= F;
+		ENABLE_ADDING_IC2_OREWASHER_RECIPES 	= F;
+		DISABLE_ALL_IC2_CENTRIFUGE_RECIPES		= F;
+		ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES	= F;
+		} else if (MD.IC2.mLoaded) {
+		DISABLE_ALL_IC2_MACERATOR_RECIPES		= tMainConfig.get("ic2", "DisableAllMaceratorRecipes"			, F).getBoolean(F);
+		if (DISABLE_ALL_IC2_MACERATOR_RECIPES) ENABLE_ADDING_IC2_MACERATOR_RECIPES = F;
+		DISABLE_ALL_IC2_EXTRACTOR_RECIPES		= tMainConfig.get("ic2", "DisableAllExtractorRecipes"			, F).getBoolean(F);
+		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES) ENABLE_ADDING_IC2_EXTRACTOR_RECIPES = F;
+		DISABLE_ALL_IC2_COMPRESSOR_RECIPES		= tMainConfig.get("ic2", "DisableAllCompressorRecipes"			, F).getBoolean(F);
+		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES) ENABLE_ADDING_IC2_COMPRESSOR_RECIPES = F;
+		DISABLE_ALL_IC2_OREWASHER_RECIPES		= tMainConfig.get("ic2", "DisableAllOreWasherRecipes"			, F).getBoolean(F);
+		if (DISABLE_ALL_IC2_OREWASHER_RECIPES) ENABLE_ADDING_IC2_OREWASHER_RECIPES = F;
+		DISABLE_ALL_IC2_CENTRIFUGE_RECIPES		= tMainConfig.get("ic2", "DisableAllThermalCentrifugeRecipes"	, F).getBoolean(F);
+		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES) ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES = F;
+		} else {
+		DISABLE_ALL_IC2_MACERATOR_RECIPES		= F;
+		ENABLE_ADDING_IC2_MACERATOR_RECIPES 	= F;
+		DISABLE_ALL_IC2_EXTRACTOR_RECIPES		= F;
+		ENABLE_ADDING_IC2_EXTRACTOR_RECIPES		= F;
+		DISABLE_ALL_IC2_COMPRESSOR_RECIPES		= F;
+		ENABLE_ADDING_IC2_COMPRESSOR_RECIPES 	= F;
+		DISABLE_ALL_IC2_OREWASHER_RECIPES		= F;
+		ENABLE_ADDING_IC2_OREWASHER_RECIPES 	= F;
+		DISABLE_ALL_IC2_CENTRIFUGE_RECIPES		= F;
+		ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES	= F;
+		}
+		
+		if (tMainConfig.get("general", "disable_STDOUT"				, F).getBoolean(F)) System.out.close();
+		if (tMainConfig.get("general", "disable_STDERR"				, F).getBoolean(F)) System.err.close();
+		if (tMainConfig.get("general", "hardermobspawners"			, T).getBoolean(T)) Blocks.mob_spawner.setHardness(500.0F);
+		if (tMainConfig.get("general", "blastresistantmobspawners"	, T).getBoolean(T)) Blocks.mob_spawner.setResistance(6000000.0F);
+		
+		FIRE_EXPLOSIONS						= tMainConfig.get("machines", "explosions_by_fire"			, T).getBoolean(F);
+		RAIN_EXPLOSIONS						= tMainConfig.get("machines", "explosions_by_rain"			, T).getBoolean(F);
+		WATER_EXPLOSIONS					= tMainConfig.get("machines", "explosions_by_water"			, T).getBoolean(F);
+		THUNDER_EXPLOSIONS					= tMainConfig.get("machines", "explosions_by_thunder"		, T).getBoolean(F);
+		OVERCHARGE_EXPLOSIONS				= tMainConfig.get("machines", "explosions_by_overload"		, T).getBoolean(F);
+		
+		// TODO: Currently defaulting to false, remove that later
+		FIRE_EXPLOSIONS						= F;
+		RAIN_EXPLOSIONS						= F;
+		WATER_EXPLOSIONS					= F;
+		THUNDER_EXPLOSIONS					= F;
+		OVERCHARGE_EXPLOSIONS				= F;
+		
+		if (CONFIG_HARDNESS_MULTIPLIER_SAND <= 0.0) CONFIG_HARDNESS_MULTIPLIER_SAND = 1.0;
+		if (CONFIG_HARDNESS_MULTIPLIER_ROCK <= 0.0) CONFIG_HARDNESS_MULTIPLIER_ROCK = 1.0;
+		if (CONFIG_HARDNESS_MULTIPLIER_ORES <= 0.0) CONFIG_HARDNESS_MULTIPLIER_ORES = 1.0;
+		
+		HARDNESS_MULTIPLIER_SAND = CONFIG_HARDNESS_MULTIPLIER_SAND;
+		HARDNESS_MULTIPLIER_ROCK = CONFIG_HARDNESS_MULTIPLIER_ROCK;
+		HARDNESS_MULTIPLIER_ORES = CONFIG_HARDNESS_MULTIPLIER_ORES;
+		
+		if (tMainConfig.get("compat", "IC2Classic"			, T).getBoolean(T)) ICompat.COMPAT_CLASSES.add((ICompat)UT.Reflection.callConstructor("gregapi.compat.industrialcraft.CompatIC2C", 0, null, D2));
+		if (tMainConfig.get("compat", "IC2EnergyItems"		, T).getBoolean(T)) ICompat.COMPAT_CLASSES.add(COMPAT_EU_ITEM	= (ICompatIC2EUItem	)UT.Reflection.callConstructor("gregapi.compat.industrialcraft.CompatIC2EUItem"	, 0, null, D2));
+		if (tMainConfig.get("compat", "IndustrialCraft2"	, T).getBoolean(T)) ICompat.COMPAT_CLASSES.add(COMPAT_IC2		= (ICompatIC2		)UT.Reflection.callConstructor("gregapi.compat.industrialcraft.CompatIC2"		, 0, null, D2));
+		if (tMainConfig.get("compat", "ThaumCraft"			, T).getBoolean(T)) ICompat.COMPAT_CLASSES.add(COMPAT_TC		= (ICompatTC		)UT.Reflection.callConstructor("gregapi.compat.thaumcraft.CompatTC"				, 0, null, D2));
+		if (tMainConfig.get("compat", "BuildCraft"			, T).getBoolean(T)) ICompat.COMPAT_CLASSES.add(COMPAT_BC		= (ICompatBC		)UT.Reflection.callConstructor("gregapi.compat.buildcraft.CompatBC"				, 0, null, D2));
+		if (tMainConfig.get("compat", "ComputerCraft"		, T).getBoolean(T)) ICompat.COMPAT_CLASSES.add(COMPAT_CC		= (ICompatCC		)UT.Reflection.callConstructor("gregapi.compat.computercraft.CompatCC"			, 0, null, D2));
+		if (tMainConfig.get("compat", "Forestry"			, T).getBoolean(T)) ICompat.COMPAT_CLASSES.add(COMPAT_FR		= (ICompatFR		)UT.Reflection.callConstructor("gregapi.compat.forestry.CompatFR"				, 0, null, D2));
+		if (tMainConfig.get("compat", "GalactiCraft"		, T).getBoolean(T)) ICompat.COMPAT_CLASSES.add(COMPAT_GC		= (ICompatGC		)UT.Reflection.callConstructor("gregapi.compat.galacticraft.CompatGC"			, 0, null, D2));
+		
+		tMainConfig.save();
+		tStackConfig.save();
+		
+		ConfigsGT.CLIENT 					= new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");
+		
+		SHOW_HIDDEN_ITEMS					= ConfigsGT.CLIENT.get("visibility"	, "HiddenGTItems"			, F);
+		SHOW_HIDDEN_MATERIALS				= ConfigsGT.CLIENT.get("visibility"	, "HiddenGTMaterials"		, F);
+		SHOW_HIDDEN_PREFIXES				= ConfigsGT.CLIENT.get("visibility"	, "HiddenGTPrefixes"		, F);
+		SHOW_MICROBLOCKS					= ConfigsGT.CLIENT.get("visibility"	, "MicroBlocks"				, F);
+		SHOW_ORE_BLOCK_PREFIXES				= ConfigsGT.CLIENT.get("visibility"	, "OreBlocks"				, F);
+		SHOW_INTERNAL_NAMES					= ConfigsGT.CLIENT.get("visibility"	, "InternalNames"			, F);
+		SHOW_CHEM_FORMULAS					= ConfigsGT.CLIENT.get("visibility"	, "ChemTooltips"			, T);
+		
+		ITexture.Util.GT_ALPHA_BLENDING		= ConfigsGT.CLIENT.get("general"	, "useGTAlphaBlending"		, ITexture.Util.GT_ALPHA_BLENDING);
+		ITexture.Util.MC_ALPHA_BLENDING		= ConfigsGT.CLIENT.get("general"	, "useMCAlphaBlending"		, ITexture.Util.MC_ALPHA_BLENDING);
+		
+		ConfigsGT.SPECIAL					= new Config("Other.cfg");
+		ConfigsGT.RECIPES					= new Config("Recipes.cfg");
+		ConfigsGT.MACHINES					= new Config("Machines.cfg");
+		ConfigsGT.WORLDGEN					= new Config("WorldGenerationNew.cfg");
+		ConfigsGT.MATERIAL					= new Config("Materials.cfg");
+		ConfigsGT.OVERPOWERED				= new Config("Overpowered.cfg");
+		ConfigsGT.OREPROCESSING				= new Config("OreProcessing.cfg");
+		
+		GT6WorldGenerator.PFAA = (ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AutoDetectPFAA", T) && MD.PFAA.mLoaded);
+		
+		// Register Crafting Recipe Classes.
+		RecipeSorter.register("gregtech:shaped"			, AdvancedCraftingShaped.class				, net.minecraftforge.oredict.RecipeSorter.Category.SHAPED		, "after:minecraft:shaped before:minecraft:shapeless");
+		RecipeSorter.register("gregtech:shapeless"		, AdvancedCraftingShapeless.class			, net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS	, "after:minecraft:shapeless");
+		RecipeSorter.register("gregtech:1ToY"			, AdvancedCrafting1ToY.class				, net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS	, "after:gregtech:shapeless");
+		RecipeSorter.register("gregtech:XToY"			, AdvancedCraftingXToY.class				, net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS	, "after:gregtech:1ToY");
+		RecipeSorter.register("gregtech:tool"			, AdvancedCraftingTool.class				, net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS	, "after:gregtech:1ToY");
+		// A Default Packet Handler for some of the already existing Code. Yes, all those Packets are generalised special cases in order to save on Bandwidth.
+		// [        +127] = PacketConfig
+		// [        +126] = PacketPrefix
+		// [        +125] = PacketItemStackChat
+		// [+112 to +119] = PacketBlockEvent
+		// [+104 to +111] = PacketBlockError
+		// [+ 72 to + 79] = PacketDeathPoint
+		// [-120 to + 71] = PacketSyncData
+		// [-128 to -121] = PacketSound
+		NW_API = new NetworkHandler(MD.GAPI.mID, "GAPI", new PacketConfig(), new PacketPrefix(), new PacketItemStackChat()
+		, new PacketBlockEvent							( 0), new PacketBlockEvent							( 1), new PacketBlockEvent							( 2), new PacketBlockEvent							( 3), new PacketBlockEvent							( 4), new PacketBlockEvent							( 5), new PacketBlockEvent							( 6), new PacketBlockEvent							( 7)
+		, new PacketBlockError							( 0), new PacketBlockError							( 1), new PacketBlockError							( 2), new PacketBlockError							( 3), new PacketBlockError							( 4), new PacketBlockError							( 5), new PacketBlockError							( 6), new PacketBlockError							( 7)
+		, new PacketDeathPoint							( 0), new PacketDeathPoint							( 1), new PacketDeathPoint							( 2), new PacketDeathPoint							( 3), new PacketDeathPoint							( 4), new PacketDeathPoint							( 5), new PacketDeathPoint							( 6), new PacketDeathPoint							( 7)
+		, new PacketSound								( 0), new PacketSound								( 1), new PacketSound								( 2), new PacketSound								( 3), new PacketSound								( 4), new PacketSound								( 5), new PacketSound								( 6), new PacketSound								( 7)
+		, new PacketSyncDataName						( 0), new PacketSyncDataName						( 1), new PacketSyncDataName						( 2), new PacketSyncDataName						( 3), new PacketSyncDataName						( 4), new PacketSyncDataName						( 5), new PacketSyncDataName						( 6), new PacketSyncDataName						( 7)
+		, new PacketSyncDataByte						( 0), new PacketSyncDataByte						( 1), new PacketSyncDataByte						( 2), new PacketSyncDataByte						( 3), new PacketSyncDataByte						( 4), new PacketSyncDataByte						( 5), new PacketSyncDataByte						( 6), new PacketSyncDataByte						( 7)
+		, new PacketSyncDataShort						( 0), new PacketSyncDataShort						( 1), new PacketSyncDataShort						( 2), new PacketSyncDataShort						( 3), new PacketSyncDataShort						( 4), new PacketSyncDataShort						( 5), new PacketSyncDataShort						( 6), new PacketSyncDataShort						( 7)
+		, new PacketSyncDataInteger						( 0), new PacketSyncDataInteger						( 1), new PacketSyncDataInteger						( 2), new PacketSyncDataInteger						( 3), new PacketSyncDataInteger						( 4), new PacketSyncDataInteger						( 5), new PacketSyncDataInteger						( 6), new PacketSyncDataInteger						( 7)
+		, new PacketSyncDataLong						( 0), new PacketSyncDataLong						( 1), new PacketSyncDataLong						( 2), new PacketSyncDataLong						( 3), new PacketSyncDataLong						( 4), new PacketSyncDataLong						( 5), new PacketSyncDataLong						( 6), new PacketSyncDataLong						( 7)
+		, new PacketSyncDataByteArray					( 0), new PacketSyncDataByteArray					( 1), new PacketSyncDataByteArray					( 2), new PacketSyncDataByteArray					( 3), new PacketSyncDataByteArray					( 4), new PacketSyncDataByteArray					( 5), new PacketSyncDataByteArray					( 6), new PacketSyncDataByteArray					( 7)
+		, new PacketSyncDataIDs							( 0), new PacketSyncDataIDs							( 1), new PacketSyncDataIDs							( 2), new PacketSyncDataIDs							( 3), new PacketSyncDataIDs							( 4), new PacketSyncDataIDs							( 5), new PacketSyncDataIDs							( 6), new PacketSyncDataIDs							( 7)
+		, new PacketSyncDataByteAndIDs					( 0), new PacketSyncDataByteAndIDs					( 1), new PacketSyncDataByteAndIDs					( 2), new PacketSyncDataByteAndIDs					( 3), new PacketSyncDataByteAndIDs					( 4), new PacketSyncDataByteAndIDs					( 5), new PacketSyncDataByteAndIDs					( 6), new PacketSyncDataByteAndIDs					( 7)
+		, new PacketSyncDataShortAndIDs					( 0), new PacketSyncDataShortAndIDs					( 1), new PacketSyncDataShortAndIDs					( 2), new PacketSyncDataShortAndIDs					( 3), new PacketSyncDataShortAndIDs					( 4), new PacketSyncDataShortAndIDs					( 5), new PacketSyncDataShortAndIDs					( 6), new PacketSyncDataShortAndIDs					( 7)
+		, new PacketSyncDataIntegerAndIDs				( 0), new PacketSyncDataIntegerAndIDs				( 1), new PacketSyncDataIntegerAndIDs				( 2), new PacketSyncDataIntegerAndIDs				( 3), new PacketSyncDataIntegerAndIDs				( 4), new PacketSyncDataIntegerAndIDs				( 5), new PacketSyncDataIntegerAndIDs				( 6), new PacketSyncDataIntegerAndIDs				( 7)
+		, new PacketSyncDataLongAndIDs					( 0), new PacketSyncDataLongAndIDs					( 1), new PacketSyncDataLongAndIDs					( 2), new PacketSyncDataLongAndIDs					( 3), new PacketSyncDataLongAndIDs					( 4), new PacketSyncDataLongAndIDs					( 5), new PacketSyncDataLongAndIDs					( 6), new PacketSyncDataLongAndIDs					( 7)
+		, new PacketSyncDataByteArrayAndIDs				( 0), new PacketSyncDataByteArrayAndIDs				( 1), new PacketSyncDataByteArrayAndIDs				( 2), new PacketSyncDataByteArrayAndIDs				( 3), new PacketSyncDataByteArrayAndIDs				( 4), new PacketSyncDataByteArrayAndIDs				( 5), new PacketSyncDataByteArrayAndIDs				( 6), new PacketSyncDataByteArrayAndIDs				( 7)
+		, new PacketSyncDataIDsAndCovers				( 0), new PacketSyncDataIDsAndCovers				( 1), new PacketSyncDataIDsAndCovers				( 2), new PacketSyncDataIDsAndCovers				( 3), new PacketSyncDataIDsAndCovers				( 4), new PacketSyncDataIDsAndCovers				( 5), new PacketSyncDataIDsAndCovers				( 6), new PacketSyncDataIDsAndCovers				( 7)
+		, new PacketSyncDataByteAndIDsAndCovers			( 0), new PacketSyncDataByteAndIDsAndCovers			( 1), new PacketSyncDataByteAndIDsAndCovers			( 2), new PacketSyncDataByteAndIDsAndCovers			( 3), new PacketSyncDataByteAndIDsAndCovers			( 4), new PacketSyncDataByteAndIDsAndCovers			( 5), new PacketSyncDataByteAndIDsAndCovers			( 6), new PacketSyncDataByteAndIDsAndCovers			( 7)
+		, new PacketSyncDataShortAndIDsAndCovers		( 0), new PacketSyncDataShortAndIDsAndCovers		( 1), new PacketSyncDataShortAndIDsAndCovers		( 2), new PacketSyncDataShortAndIDsAndCovers		( 3), new PacketSyncDataShortAndIDsAndCovers		( 4), new PacketSyncDataShortAndIDsAndCovers		( 5), new PacketSyncDataShortAndIDsAndCovers		( 6), new PacketSyncDataShortAndIDsAndCovers		( 7)
+		, new PacketSyncDataIntegerAndIDsAndCovers		( 0), new PacketSyncDataIntegerAndIDsAndCovers		( 1), new PacketSyncDataIntegerAndIDsAndCovers		( 2), new PacketSyncDataIntegerAndIDsAndCovers		( 3), new PacketSyncDataIntegerAndIDsAndCovers		( 4), new PacketSyncDataIntegerAndIDsAndCovers		( 5), new PacketSyncDataIntegerAndIDsAndCovers		( 6), new PacketSyncDataIntegerAndIDsAndCovers		( 7)
+		, new PacketSyncDataLongAndIDsAndCovers			( 0), new PacketSyncDataLongAndIDsAndCovers			( 1), new PacketSyncDataLongAndIDsAndCovers			( 2), new PacketSyncDataLongAndIDsAndCovers			( 3), new PacketSyncDataLongAndIDsAndCovers			( 4), new PacketSyncDataLongAndIDsAndCovers			( 5), new PacketSyncDataLongAndIDsAndCovers			( 6), new PacketSyncDataLongAndIDsAndCovers			( 7)
+		, new PacketSyncDataByteArrayAndIDsAndCovers	( 0), new PacketSyncDataByteArrayAndIDsAndCovers	( 1), new PacketSyncDataByteArrayAndIDsAndCovers	( 2), new PacketSyncDataByteArrayAndIDsAndCovers	( 3), new PacketSyncDataByteArrayAndIDsAndCovers	( 4), new PacketSyncDataByteArrayAndIDsAndCovers	( 5), new PacketSyncDataByteArrayAndIDsAndCovers	( 6), new PacketSyncDataByteArrayAndIDsAndCovers	( 7)
+		, new PacketSyncDataCoverVisuals				( 0), new PacketSyncDataCoverVisuals				( 1), new PacketSyncDataCoverVisuals				( 2), new PacketSyncDataCoverVisuals				( 3), new PacketSyncDataCoverVisuals				( 4), new PacketSyncDataCoverVisuals				( 5), new PacketSyncDataCoverVisuals				( 6), new PacketSyncDataCoverVisuals				( 7)
+		, new PacketSyncDataByteAndCoverVisuals			( 0), new PacketSyncDataByteAndCoverVisuals			( 1), new PacketSyncDataByteAndCoverVisuals			( 2), new PacketSyncDataByteAndCoverVisuals			( 3), new PacketSyncDataByteAndCoverVisuals			( 4), new PacketSyncDataByteAndCoverVisuals			( 5), new PacketSyncDataByteAndCoverVisuals			( 6), new PacketSyncDataByteAndCoverVisuals			( 7)
+		, new PacketSyncDataShortAndCoverVisuals		( 0), new PacketSyncDataShortAndCoverVisuals		( 1), new PacketSyncDataShortAndCoverVisuals		( 2), new PacketSyncDataShortAndCoverVisuals		( 3), new PacketSyncDataShortAndCoverVisuals		( 4), new PacketSyncDataShortAndCoverVisuals		( 5), new PacketSyncDataShortAndCoverVisuals		( 6), new PacketSyncDataShortAndCoverVisuals		( 7)
+		, new PacketSyncDataIntegerAndCoverVisuals		( 0), new PacketSyncDataIntegerAndCoverVisuals		( 1), new PacketSyncDataIntegerAndCoverVisuals		( 2), new PacketSyncDataIntegerAndCoverVisuals		( 3), new PacketSyncDataIntegerAndCoverVisuals		( 4), new PacketSyncDataIntegerAndCoverVisuals		( 5), new PacketSyncDataIntegerAndCoverVisuals		( 6), new PacketSyncDataIntegerAndCoverVisuals		( 7)
+		, new PacketSyncDataLongAndCoverVisuals			( 0), new PacketSyncDataLongAndCoverVisuals			( 1), new PacketSyncDataLongAndCoverVisuals			( 2), new PacketSyncDataLongAndCoverVisuals			( 3), new PacketSyncDataLongAndCoverVisuals			( 4), new PacketSyncDataLongAndCoverVisuals			( 5), new PacketSyncDataLongAndCoverVisuals			( 6), new PacketSyncDataLongAndCoverVisuals			( 7)
+		, new PacketSyncDataByteArrayAndCoverVisuals	( 0), new PacketSyncDataByteArrayAndCoverVisuals	( 1), new PacketSyncDataByteArrayAndCoverVisuals	( 2), new PacketSyncDataByteArrayAndCoverVisuals	( 3), new PacketSyncDataByteArrayAndCoverVisuals	( 4), new PacketSyncDataByteArrayAndCoverVisuals	( 5), new PacketSyncDataByteArrayAndCoverVisuals	( 6), new PacketSyncDataByteArrayAndCoverVisuals	( 7)
+		);
+		NW_AP2 = new NetworkHandler(MD.GAPI.mID, "GAP2"
+		, new PacketSyncDataByte						( 0), new PacketSyncDataByte						( 1), new PacketSyncDataByte						( 2), new PacketSyncDataByte						( 3), new PacketSyncDataByte						( 4), new PacketSyncDataByte						( 5), new PacketSyncDataByte						( 6), new PacketSyncDataByte						( 7)
+		, new PacketSyncDataShort						( 0), new PacketSyncDataShort						( 1), new PacketSyncDataShort						( 2), new PacketSyncDataShort						( 3), new PacketSyncDataShort						( 4), new PacketSyncDataShort						( 5), new PacketSyncDataShort						( 6), new PacketSyncDataShort						( 7)
+		, new PacketSyncDataInteger						( 0), new PacketSyncDataInteger						( 1), new PacketSyncDataInteger						( 2), new PacketSyncDataInteger						( 3), new PacketSyncDataInteger						( 4), new PacketSyncDataInteger						( 5), new PacketSyncDataInteger						( 6), new PacketSyncDataInteger						( 7)
+		, new PacketSyncDataLong						( 0), new PacketSyncDataLong						( 1), new PacketSyncDataLong						( 2), new PacketSyncDataLong						( 3), new PacketSyncDataLong						( 4), new PacketSyncDataLong						( 5), new PacketSyncDataLong						( 6), new PacketSyncDataLong						( 7)
+		, new PacketSyncDataByteArray					( 0), new PacketSyncDataByteArray					( 1), new PacketSyncDataByteArray					( 2), new PacketSyncDataByteArray					( 3), new PacketSyncDataByteArray					( 4), new PacketSyncDataByteArray					( 5), new PacketSyncDataByteArray					( 6), new PacketSyncDataByteArray					( 7)
+		, new PacketSyncDataIDs							( 0), new PacketSyncDataIDs							( 1), new PacketSyncDataIDs							( 2), new PacketSyncDataIDs							( 3), new PacketSyncDataIDs							( 4), new PacketSyncDataIDs							( 5), new PacketSyncDataIDs							( 6), new PacketSyncDataIDs							( 7)
+		, new PacketSyncDataByteAndIDs					( 0), new PacketSyncDataByteAndIDs					( 1), new PacketSyncDataByteAndIDs					( 2), new PacketSyncDataByteAndIDs					( 3), new PacketSyncDataByteAndIDs					( 4), new PacketSyncDataByteAndIDs					( 5), new PacketSyncDataByteAndIDs					( 6), new PacketSyncDataByteAndIDs					( 7)
+		, new PacketSyncDataShortAndIDs					( 0), new PacketSyncDataShortAndIDs					( 1), new PacketSyncDataShortAndIDs					( 2), new PacketSyncDataShortAndIDs					( 3), new PacketSyncDataShortAndIDs					( 4), new PacketSyncDataShortAndIDs					( 5), new PacketSyncDataShortAndIDs					( 6), new PacketSyncDataShortAndIDs					( 7)
+		, new PacketSyncDataIntegerAndIDs				( 0), new PacketSyncDataIntegerAndIDs				( 1), new PacketSyncDataIntegerAndIDs				( 2), new PacketSyncDataIntegerAndIDs				( 3), new PacketSyncDataIntegerAndIDs				( 4), new PacketSyncDataIntegerAndIDs				( 5), new PacketSyncDataIntegerAndIDs				( 6), new PacketSyncDataIntegerAndIDs				( 7)
+		, new PacketSyncDataLongAndIDs					( 0), new PacketSyncDataLongAndIDs					( 1), new PacketSyncDataLongAndIDs					( 2), new PacketSyncDataLongAndIDs					( 3), new PacketSyncDataLongAndIDs					( 4), new PacketSyncDataLongAndIDs					( 5), new PacketSyncDataLongAndIDs					( 6), new PacketSyncDataLongAndIDs					( 7)
+		, new PacketSyncDataByteArrayAndIDs				( 0), new PacketSyncDataByteArrayAndIDs				( 1), new PacketSyncDataByteArrayAndIDs				( 2), new PacketSyncDataByteArrayAndIDs				( 3), new PacketSyncDataByteArrayAndIDs				( 4), new PacketSyncDataByteArrayAndIDs				( 5), new PacketSyncDataByteArrayAndIDs				( 6), new PacketSyncDataByteArrayAndIDs				( 7)
+		, new PacketSyncDataIDsAndCovers				( 0), new PacketSyncDataIDsAndCovers				( 1), new PacketSyncDataIDsAndCovers				( 2), new PacketSyncDataIDsAndCovers				( 3), new PacketSyncDataIDsAndCovers				( 4), new PacketSyncDataIDsAndCovers				( 5), new PacketSyncDataIDsAndCovers				( 6), new PacketSyncDataIDsAndCovers				( 7)
+		, new PacketSyncDataByteAndIDsAndCovers			( 0), new PacketSyncDataByteAndIDsAndCovers			( 1), new PacketSyncDataByteAndIDsAndCovers			( 2), new PacketSyncDataByteAndIDsAndCovers			( 3), new PacketSyncDataByteAndIDsAndCovers			( 4), new PacketSyncDataByteAndIDsAndCovers			( 5), new PacketSyncDataByteAndIDsAndCovers			( 6), new PacketSyncDataByteAndIDsAndCovers			( 7)
+		, new PacketSyncDataShortAndIDsAndCovers		( 0), new PacketSyncDataShortAndIDsAndCovers		( 1), new PacketSyncDataShortAndIDsAndCovers		( 2), new PacketSyncDataShortAndIDsAndCovers		( 3), new PacketSyncDataShortAndIDsAndCovers		( 4), new PacketSyncDataShortAndIDsAndCovers		( 5), new PacketSyncDataShortAndIDsAndCovers		( 6), new PacketSyncDataShortAndIDsAndCovers		( 7)
+		, new PacketSyncDataIntegerAndIDsAndCovers		( 0), new PacketSyncDataIntegerAndIDsAndCovers		( 1), new PacketSyncDataIntegerAndIDsAndCovers		( 2), new PacketSyncDataIntegerAndIDsAndCovers		( 3), new PacketSyncDataIntegerAndIDsAndCovers		( 4), new PacketSyncDataIntegerAndIDsAndCovers		( 5), new PacketSyncDataIntegerAndIDsAndCovers		( 6), new PacketSyncDataIntegerAndIDsAndCovers		( 7)
+		, new PacketSyncDataLongAndIDsAndCovers			( 0), new PacketSyncDataLongAndIDsAndCovers			( 1), new PacketSyncDataLongAndIDsAndCovers			( 2), new PacketSyncDataLongAndIDsAndCovers			( 3), new PacketSyncDataLongAndIDsAndCovers			( 4), new PacketSyncDataLongAndIDsAndCovers			( 5), new PacketSyncDataLongAndIDsAndCovers			( 6), new PacketSyncDataLongAndIDsAndCovers			( 7)
+		, new PacketSyncDataByteArrayAndIDsAndCovers	( 0), new PacketSyncDataByteArrayAndIDsAndCovers	( 1), new PacketSyncDataByteArrayAndIDsAndCovers	( 2), new PacketSyncDataByteArrayAndIDsAndCovers	( 3), new PacketSyncDataByteArrayAndIDsAndCovers	( 4), new PacketSyncDataByteArrayAndIDsAndCovers	( 5), new PacketSyncDataByteArrayAndIDsAndCovers	( 6), new PacketSyncDataByteArrayAndIDsAndCovers	( 7)
+		, new PacketSyncDataCoverVisuals				( 0), new PacketSyncDataCoverVisuals				( 1), new PacketSyncDataCoverVisuals				( 2), new PacketSyncDataCoverVisuals				( 3), new PacketSyncDataCoverVisuals				( 4), new PacketSyncDataCoverVisuals				( 5), new PacketSyncDataCoverVisuals				( 6), new PacketSyncDataCoverVisuals				( 7)
+		, new PacketSyncDataByteAndCoverVisuals			( 0), new PacketSyncDataByteAndCoverVisuals			( 1), new PacketSyncDataByteAndCoverVisuals			( 2), new PacketSyncDataByteAndCoverVisuals			( 3), new PacketSyncDataByteAndCoverVisuals			( 4), new PacketSyncDataByteAndCoverVisuals			( 5), new PacketSyncDataByteAndCoverVisuals			( 6), new PacketSyncDataByteAndCoverVisuals			( 7)
+		, new PacketSyncDataShortAndCoverVisuals		( 0), new PacketSyncDataShortAndCoverVisuals		( 1), new PacketSyncDataShortAndCoverVisuals		( 2), new PacketSyncDataShortAndCoverVisuals		( 3), new PacketSyncDataShortAndCoverVisuals		( 4), new PacketSyncDataShortAndCoverVisuals		( 5), new PacketSyncDataShortAndCoverVisuals		( 6), new PacketSyncDataShortAndCoverVisuals		( 7)
+		, new PacketSyncDataIntegerAndCoverVisuals		( 0), new PacketSyncDataIntegerAndCoverVisuals		( 1), new PacketSyncDataIntegerAndCoverVisuals		( 2), new PacketSyncDataIntegerAndCoverVisuals		( 3), new PacketSyncDataIntegerAndCoverVisuals		( 4), new PacketSyncDataIntegerAndCoverVisuals		( 5), new PacketSyncDataIntegerAndCoverVisuals		( 6), new PacketSyncDataIntegerAndCoverVisuals		( 7)
+		, new PacketSyncDataLongAndCoverVisuals			( 0), new PacketSyncDataLongAndCoverVisuals			( 1), new PacketSyncDataLongAndCoverVisuals			( 2), new PacketSyncDataLongAndCoverVisuals			( 3), new PacketSyncDataLongAndCoverVisuals			( 4), new PacketSyncDataLongAndCoverVisuals			( 5), new PacketSyncDataLongAndCoverVisuals			( 6), new PacketSyncDataLongAndCoverVisuals			( 7)
+		, new PacketSyncDataByteArrayAndCoverVisuals	( 0), new PacketSyncDataByteArrayAndCoverVisuals	( 1), new PacketSyncDataByteArrayAndCoverVisuals	( 2), new PacketSyncDataByteArrayAndCoverVisuals	( 3), new PacketSyncDataByteArrayAndCoverVisuals	( 4), new PacketSyncDataByteArrayAndCoverVisuals	( 5), new PacketSyncDataByteArrayAndCoverVisuals	( 6), new PacketSyncDataByteArrayAndCoverVisuals	( 7)
+		);
+		// Registering the TileEntity used for Meta-Generated Blocks to store the 32000 variations.
+		GameRegistry.registerTileEntity(PrefixBlockTileEntity.class, "gt.MetaBlockTileEntity");
+		// Creating and loading the Lang File.
+		if (CODE_CLIENT) {
+			tFile = new File(DirectoriesGT.MINECRAFT, "GregTech.lang");
+			if (!tFile.exists()) tFile = new File(DirectoriesGT.MINECRAFT, "gregtech.lang");
+			LanguageHandler.sLangFile = new Configuration(tFile);
+		} else {
+			sBlockIconload.clear();
+			sBlockIconload = null;
+			sItemIconload.clear();
+			sItemIconload = null;
+		}
+		// Creating and loading the Unification Config.
+		OreDictManager.INSTANCE.mUnificationConfig = new Config("Unification.cfg");
+		// Initialising the Re-Registrations.
+		new LoaderOreDictReRegistrations().run();
+		// Register the Falling MetaBlock Entity.
+		EntityRegistry.registerModEntity(PrefixBlockFallingEntity.class, "gt.MetaBlockFallingEntity", 0, this, 160, 1, T);
+		// Initialise Enchantments.
+		new Enchantment_WerewolfDamage();
+		new Enchantment_EnderDamage();
+		new Enchantment_Radioactivity();
+		new Enchantment_SlimeDamage();
+		// Initialises the Fluid Display Item.
+		IL.Display_Fluid.set(new ItemFluidDisplay());
+		// Initialises the Integrated Circuit Item.
+		IL.Circuit_Selector.set(new ItemIntegratedCircuit("gt.integrated_circuit", "Selector Tag"));
+		// Register the GUI Handler.
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, api_proxy);
+		// Fixing vanilla Oak Plank Slab Recipe.
+		CR.remove(ST.make(Blocks.planks, 1, 0), ST.make(Blocks.planks, 1, 1), ST.make(Blocks.planks, 1, 2));
+		CR.shaped(ST.make(Blocks.wooden_slab, 6, 0), CR.NONE, "WWW", 'W', ST.make(Blocks.planks, 1, 0));
+		// Preventing a Water Dupe by registering this Recipe early so it won't be overridden
+		RM.Canner.addRecipe1(T, 16, 16, ST.make(Items.glass_bottle, 1, 0), FL.Water.make(250), NF, ST.make(Items.potionitem, 1, 0));
+		RM.Canner.addRecipe1(T, 16, 16, ST.make(Items.potionitem, 1, 0), ST.make(Items.glass_bottle, 1, 0));
+		
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPreLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+	}
+	
+	@Override
+	public void onModInit2(FMLInitializationEvent aEvent) {
+// TODO	team.chisel.carving.Carving.chisel.getGroup("cobblestone").setOreName(null);
+		
+		OUT.println(getModNameForLog() + ": Doing a lot of the OreDictionary work (populating HashMaps for enabling faster access to Data and parsing Stuff). This will take a while. Like a LOT of time.");
+		OUT.println(getModNameForLog() + ": If it seriously takes more than a hour then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
+		OreDictManager.INSTANCE.enableRegistrations();
+		OUT.println(getModNameForLog() + ": Finished a lot of the OreDictionary work.");
+		
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+	}
+	
+	@Override
+	public void onModPostInit2(FMLPostInitializationEvent aEvent) {
+		if (MD.IC2.mLoaded) {
+			PotionsGT.ID_RADIATION = ic2.core.IC2Potion.radiation.id;
+		}
+		if (MD.ENVM.mLoaded) {
+			PotionsGT.ID_DEHYDRATION = EnviroPotion.dehydration.id;
+			PotionsGT.ID_FROSTBITE = EnviroPotion.frostbite.id;
+			PotionsGT.ID_HEATSTROKE = EnviroPotion.heatstroke.id;
+			PotionsGT.ID_HYPOTHERMIA = EnviroPotion.hypothermia.id;
+			PotionsGT.ID_INSANITY = EnviroPotion.insanity.id;
+		}
+		
+		EnergyCompat.checkAvailabilities();
+		ToolCompat.checkAvailabilities();
+		
+		OUT.println(getModNameForLog() + ": Doing a lot of more OreDictionary work (Registering Recipes). This will take a while. Like a LOT of time.");
+		OUT.println(getModNameForLog() + ": If it seriously takes more than a hour then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
+		OreDictManager.INSTANCE.onPostLoad();
+		OUT.println(getModNameForLog() + ": Finished another batch of the OreDictionary work.");
+		
+		ICover tCover = new CoverRedstoneTorch();
+		CoverRegistry.put(ST.make(Blocks.redstone_torch, 1, 0), tCover);
+		CoverRegistry.put(ST.make(Blocks.unlit_redstone_torch, 1, 0), tCover);
+		CoverRegistry.put(ST.make(Items.repeater, 1, 0), new CoverRedstoneRepeater());
+		
+		OreDictPrefix.applyAllStackSizes();
+		
+//		Doesn't fucking work, the Chisel API is pure garbage...
+//		if (MD.CHSL.mLoaded) {
+//			if (MD.EtFu.mLoaded) {
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "granite|" +MD.EtFu.mID+":stone|1");
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "diorite|" +MD.EtFu.mID+":stone|3");
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "andesite|"+MD.EtFu.mID+":stone|5");
+//			}
+//			if (MD.BOTA.mLoaded) {
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "granite|" +MD.BOTA.mID+":stone|3");
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "diorite|" +MD.BOTA.mID+":stone|2");
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "andesite|"+MD.BOTA.mID+":stone|0");
+//			}
+//			if (MD.GT.mLoaded) {
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "granite|" +MD.GT.mID+":gt.stone.granite|0");
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "diorite|" +MD.GT.mID+":gt.stone.diorite|0");
+//				FMLInterModComms.sendRuntimeMessage(GAPI, "ChiselAPI|Carving", "variation:add", "andesite|"+MD.GT.mID+":gt.stone.andesite|0");
+//			}
+//		}
+		
+		// Saving the Lang File.
+		LanguageHandler.save();
+		
+		if (mPlayerLogger != null) new Thread(mPlayerLogger).start();
+		
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPostLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+		
+		OUT.println(getModNameForLog() + ": Dumping Material List for the Config Folder");
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && !tMaterial.contains(TD.Properties.INVALID_MATERIAL)) MAT_LOG.println(tMaterial.mNameInternal);
+	}
+	
+	@Override
+	public void onModServerStarting2(FMLServerStartingEvent aEvent) {
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStarting(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+	}
+	
+	@Override
+	public void onModServerStarted2(FMLServerStartedEvent aEvent) {
+		for (Map tMap : STACKMAPS) UT.Code.reMap(tMap);
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStarted(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+	}
+	
+	@Override
+	public void onModServerStopping2(FMLServerStoppingEvent aEvent) {
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStopping(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+	}
+	
+	@Override
+	public void onModServerStopped2(FMLServerStoppedEvent aEvent) {
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStopped(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+	}
+}

@@ -1,0 +1,118 @@
+package gregtech.items.tools.electric;
+
+import static gregapi.data.CS.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+import gregapi.data.CS.SFX;
+import gregapi.data.MT;
+import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.behaviors.Behavior_Tool;
+import gregapi.item.multiitem.tools.ToolStats;
+import gregapi.old.Textures;
+import gregapi.render.IIconContainer;
+import gregtech.items.behaviors.Behavior_Place_Dynamite;
+import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+
+public class GT_Tool_Drill_LV extends ToolStats {
+	public static final List<String> mEffectiveList = Arrays.asList(
+		EntityCaveSpider.class.getName(),
+		EntitySpider.class.getName(),
+		"EntityTFHedgeSpider",
+		"EntityTFKingSpider",
+		"EntityTFSwarmSpider",
+		"EntityTFTowerBroodling"
+	);
+	
+	@Override
+	public float getNormalDamageAgainstEntity(float aOriginalDamage, Entity aEntity, ItemStack aStack, EntityPlayer aPlayer) {
+		String tName = aEntity.getClass().getName();
+		tName = tName.substring(tName.lastIndexOf(".")+1);
+		return mEffectiveList.contains(tName)?aOriginalDamage*2:aOriginalDamage;
+	}
+	
+	@Override
+	public int getToolDamagePerBlockBreak() {
+		return 200;
+	}
+	
+	@Override
+	public int getToolDamagePerDropConversion() {
+		return 100;
+	}
+	
+	@Override
+	public int getToolDamagePerContainerCraft() {
+		return 100;
+	}
+	
+	@Override
+	public int getToolDamagePerEntityAttack() {
+		return 400;
+	}
+	
+	@Override
+	public int getBaseQuality() {
+		return 0;
+	}
+	
+	@Override
+	public float getBaseDamage() {
+		return 1.5F;
+	}
+	
+	@Override
+	public float getSpeedMultiplier() {
+		return 1.0F;
+	}
+	
+	@Override
+	public float getMaxDurabilityMultiplier() {
+		return 1.0F;
+	}
+	
+	@Override
+	public String getCraftingSound() {
+		return SFX.IC_WRENCH;
+	}
+	
+	@Override public boolean canCollect()													{return T;}
+	
+	@Override
+	public boolean isMiningTool() {
+		return F;
+	}
+	
+	@Override
+	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
+		String tTool = aBlock.getHarvestTool(aMetaData);
+		return tTool != null && tTool.equalsIgnoreCase(TOOL_drill);
+	}
+	
+	@Override
+	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
+		return !aIsToolHead ? Textures.ItemIcons.TIP_ELECTRIC_DRILL : Textures.ItemIcons.HANDLE_ELECTRIC_DRILL;
+	}
+	
+	@Override
+	public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
+		return !aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.StainlessSteel).mRGBaSolid;
+	}
+	
+	@Override
+	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_drill, SFX.IC_WRENCH, 100, !canBlock()));
+		aItem.addItemBehavior(aID, Behavior_Place_Dynamite.INSTANCE);
+	}
+	
+	@Override
+	public String getDeathMessage() {
+		return "[VICTIM] needed help with a few holes and [KILLER] gladly helped";
+	}
+}

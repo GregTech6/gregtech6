@@ -1,0 +1,202 @@
+package gregapi.recipes.handlers;
+
+import static gregapi.data.CS.*;
+
+import gregapi.code.ICondition;
+import gregapi.data.OP;
+import gregapi.data.TD;
+import gregapi.oredict.OreDictItemData;
+import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.OreDictPrefix;
+import gregapi.recipes.IRecipeMapHandler;
+import gregapi.recipes.Recipe.RecipeMap;
+import gregapi.util.OM;
+import gregapi.util.ST;
+import gregapi.util.UT;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+
+/**
+ * @author Gregorius Techneticies
+ */
+public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
+	protected ICondition mCondition;
+	protected final OreDictPrefix[] mInputPrefixes, mOutputPrefixes;
+	protected final byte[] mInputAmounts, mOutputAmounts;
+	protected final ItemStack mAdditionalInput, mAdditionalOutput;
+	protected final FluidStack mFluidInputPerUnit, mFluidOutputPerUnit;
+	protected final long mUnitsInputted, mUnitsOutputted, mEUt, mDuration, mMultiplier;
+	protected final boolean mAllowToGenerateAllRecipesAtOnce;
+	
+	protected long[] mChances = ZL_LONG;
+	
+	protected boolean mAlreadyAddedAllRecipes = F, mOutputPulverizedRemains = F, mFlatFluidCosts = F;
+	
+	public RecipeMapHandlerPrefix(OreDictPrefix aInputPrefix, long aInputAmount, FluidStack aFluidInputPerUnit, long aEUt, long aDuration, long aMultiplier, FluidStack aFluidOutputPerUnit, OreDictPrefix aOutputPrefix, long aOutputAmount, ItemStack aAdditionalInput, ItemStack aAdditionalOutput, boolean aAllowToGenerateAllRecipesAtOnce, boolean aOutputPulverizedRemains, boolean aFlatFluidCosts, ICondition aCondition) {
+		mAllowToGenerateAllRecipesAtOnce = aAllowToGenerateAllRecipesAtOnce;
+		mFlatFluidCosts		= aFlatFluidCosts;
+		mFluidInputPerUnit	= aFluidInputPerUnit;
+		mFluidOutputPerUnit	= aFluidOutputPerUnit;
+		mCondition			= (aCondition == null ? ICondition.TRUE : aCondition);
+		mInputPrefixes		= new OreDictPrefix[] {aInputPrefix};
+		mInputAmounts		= new byte[] {UT.Code.bindStack(aInputAmount)};
+		mOutputPrefixes		= aOutputPrefix == null ? ZL_OREDICTPREFIX : new OreDictPrefix[] {aOutputPrefix};
+		mOutputAmounts		= new byte[] {UT.Code.bindStack(aOutputAmount)};
+		mAdditionalOutput	= aAdditionalOutput;
+		mAdditionalInput	= aAdditionalInput;
+		mMultiplier			= aMultiplier;
+		mDuration 			= aDuration;
+		mEUt				= aEUt;
+		long
+		tUnitsProcessed		= 0;
+		for (int i = 0; i < mInputPrefixes.length; i++) tUnitsProcessed += mInputPrefixes[i].mAmount * mInputAmounts[i];
+		mUnitsInputted		= tUnitsProcessed;
+		tUnitsProcessed		= 0;
+		for (int i = 0; i < mOutputPrefixes.length; i++) tUnitsProcessed += mOutputPrefixes[i].mAmount * mOutputAmounts[i];
+		mUnitsOutputted		= tUnitsProcessed;
+		mOutputPulverizedRemains = (aOutputPulverizedRemains && mUnitsInputted-mUnitsOutputted >= OP.dustDiv72.mAmount);
+	}
+	
+	public RecipeMapHandlerPrefix(OreDictPrefix aInputPrefix1, long aInputAmount1, OreDictPrefix aInputPrefix2, long aInputAmount2, FluidStack aFluidInputPerUnit, long aEUt, long aDuration, long aMultiplier, FluidStack aFluidOutputPerUnit, OreDictPrefix aOutputPrefix1, long aOutputAmount1, OreDictPrefix aOutputPrefix2, long aOutputAmount2, ItemStack aAdditionalInput, ItemStack aAdditionalOutput, boolean aAllowToGenerateAllRecipesAtOnce, boolean aOutputPulverizedRemains, boolean aFlatFluidCosts, ICondition aCondition) {
+		mAllowToGenerateAllRecipesAtOnce = aAllowToGenerateAllRecipesAtOnce;
+		mFlatFluidCosts		= aFlatFluidCosts;
+		mFluidInputPerUnit	= aFluidInputPerUnit;
+		mFluidOutputPerUnit	= aFluidOutputPerUnit;
+		mCondition			= (aCondition == null ? ICondition.TRUE : aCondition);
+		mInputPrefixes		= aInputPrefix2 == null ? new OreDictPrefix[] {aInputPrefix1} : new OreDictPrefix[] {aInputPrefix1, aInputPrefix2};
+		mInputAmounts		= aInputPrefix2 == null ? new byte[] {UT.Code.bindStack(aInputAmount1)} : new byte[] {UT.Code.bindStack(aInputAmount1), UT.Code.bindStack(aInputAmount2)};
+		mOutputPrefixes		= aOutputPrefix2 == null ? aOutputPrefix1 == null ? ZL_OREDICTPREFIX : new OreDictPrefix[] {aOutputPrefix1} : new OreDictPrefix[] {aOutputPrefix1, aOutputPrefix2};
+		mOutputAmounts		= aOutputPrefix2 == null ? new byte[] {UT.Code.bindStack(aOutputAmount1)} : new byte[] {UT.Code.bindStack(aOutputAmount1), UT.Code.bindStack(aOutputAmount2)};
+		mAdditionalOutput	= aAdditionalOutput;
+		mAdditionalInput	= aAdditionalInput;
+		mMultiplier			= aMultiplier;
+		mDuration 			= aDuration;
+		mEUt				= aEUt;
+		long
+		tUnitsProcessed		= 0;
+		for (int i = 0; i < mInputPrefixes.length; i++) tUnitsProcessed += mInputPrefixes[i].mAmount * mInputAmounts[i];
+		mUnitsInputted		= tUnitsProcessed;
+		tUnitsProcessed		= 0;
+		for (int i = 0; i < mOutputPrefixes.length; i++) tUnitsProcessed += mOutputPrefixes[i].mAmount * mOutputAmounts[i];
+		mUnitsOutputted		= tUnitsProcessed;
+		mOutputPulverizedRemains = (aOutputPulverizedRemains && mUnitsInputted-mUnitsOutputted >= OP.dustDiv72.mAmount);
+	}
+	
+	public RecipeMapHandlerPrefix(OreDictPrefix[] aInputPrefixes, long[] aInputAmount, FluidStack aFluidInputPerUnit, long aEUt, long aDuration, long aMultiplier, FluidStack aFluidOutputPerUnit, OreDictPrefix[] aOutputPrefixes, long[] aOutputAmount, ItemStack aAdditionalInput, ItemStack aAdditionalOutput, boolean aAllowToGenerateAllRecipesAtOnce, boolean aOutputPulverizedRemains, boolean aFlatFluidCosts, ICondition aCondition) {
+		mAllowToGenerateAllRecipesAtOnce = aAllowToGenerateAllRecipesAtOnce;
+		mFlatFluidCosts		= aFlatFluidCosts;
+		mFluidInputPerUnit	= aFluidInputPerUnit;
+		mFluidOutputPerUnit	= aFluidOutputPerUnit;
+		mCondition			= (aCondition == null ? ICondition.TRUE : aCondition);
+		mInputPrefixes		= aInputPrefixes;
+		mInputAmounts		= new byte[mInputPrefixes.length];
+		for (int i = 0; i < mInputAmounts.length; i++) mInputAmounts[i] = UT.Code.bindStack(aInputAmount[i]);
+		mOutputPrefixes		= aOutputPrefixes;
+		mOutputAmounts		= new byte[mOutputPrefixes.length];
+		for (int i = 0; i < mOutputAmounts.length; i++) mOutputAmounts[i] = UT.Code.bindStack(aOutputAmount[i]);
+		mAdditionalOutput	= aAdditionalOutput;
+		mAdditionalInput	= aAdditionalInput;
+		mMultiplier			= aMultiplier;
+		mDuration 			= aDuration;
+		mEUt				= aEUt;
+		long
+		tUnitsProcessed		= 0;
+		for (int i = 0; i < mInputPrefixes.length; i++) tUnitsProcessed += mInputPrefixes[i].mAmount * mInputAmounts[i];
+		mUnitsInputted		= tUnitsProcessed;
+		tUnitsProcessed		= 0;
+		for (int i = 0; i < mOutputPrefixes.length; i++) tUnitsProcessed += mOutputPrefixes[i].mAmount * mOutputAmounts[i];
+		mUnitsOutputted		= tUnitsProcessed;
+		mOutputPulverizedRemains = (aOutputPulverizedRemains && mUnitsInputted-mUnitsOutputted >= OP.dustDiv72.mAmount);
+	}
+	
+	@Override
+	public boolean addRecipesUsing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+		if (isDone()) return F;
+		if (ST.equal(aStack, mAdditionalInput)) return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		return aData != null && aData.hasValidMaterialData() && UT.Code.contains(aData.mPrefix, mInputPrefixes) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
+	}
+	
+	@Override
+	public boolean addRecipesProducing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+		if (isDone()) return F;
+		if (ST.equal(aStack, mAdditionalOutput)) return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		return aData != null && aData.hasValidMaterialData() && (UT.Code.contains(aData.mPrefix, mOutputPrefixes) || (mOutputPulverizedRemains && aData.mPrefix == OP.dust)) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
+	}
+	
+	@Override
+	public boolean containsInput(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+		if (isDone()) return F;
+		return addRecipesUsing(aMap, aStack, aData);
+	}
+	
+	@Override
+	public boolean addRecipesUsing(RecipeMap aMap, Fluid aFluid) {
+		if (isDone()) return F;
+		return mFluidInputPerUnit != null && mFluidInputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+	}
+	
+	@Override
+	public boolean addRecipesProducing(RecipeMap aMap, Fluid aFluid) {
+		if (isDone()) return F;
+		return mFluidOutputPerUnit != null && mFluidOutputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+	}
+	
+	@Override
+	public boolean containsInput(RecipeMap aMap, Fluid aFluid) {
+		return mFluidInputPerUnit != null && mFluidInputPerUnit.getFluid() == aFluid;
+	}
+	
+	@Override
+	public boolean addAllRecipes(RecipeMap aMap) {
+		return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+	}
+	
+	public boolean addAllRecipesInternal(RecipeMap aMap) {
+		if (isDone()) return F;
+		for (OreDictMaterial tMaterial : mInputPrefixes[0].mRegisteredMaterials) addRecipeForMaterial(aMap, tMaterial);
+		mAlreadyAddedAllRecipes = T;
+		return T;
+	}
+	
+	public RecipeMapHandlerPrefix chances(long... aChances) {
+		mChances = aChances;
+		return this;
+	}
+	
+	@Override
+	public boolean isDone() {
+		return mAlreadyAddedAllRecipes;
+	}
+	
+	@Override
+	public boolean onAddedToMap(RecipeMap aMap) {
+		if (mFluidInputPerUnit != null) aMap.mMaxFluidInputSize = Math.max(mFlatFluidCosts ? mFluidInputPerUnit.amount : mFluidInputPerUnit.amount * 4, aMap.mMaxFluidInputSize);
+		return T;
+	}
+	
+	public boolean addRecipeForMaterial(RecipeMap aMap, OreDictMaterial aMaterial) {
+		if (!mCondition.isTrue(aMaterial) || aMaterial.contains(TD.Properties.INVALID_MATERIAL)) return F;
+		
+		ItemStack[] tInputs = new ItemStack[mInputPrefixes.length + (ST.valid(mAdditionalInput) ? 1 : 0)];
+		if (ST.valid(mAdditionalInput)) tInputs[tInputs.length-1] = mAdditionalInput;
+		for (int i = 0; i < mInputPrefixes.length; i++) if (ST.invalid(tInputs[i] = mInputPrefixes[i].mat(aMaterial, mInputAmounts[i]))) return F;
+		
+		OreDictMaterial tMaterial = getOutputMaterial(aMaterial);
+		
+		ItemStack[] tOutputs = new ItemStack[mOutputPrefixes.length + (mOutputPulverizedRemains ? 1 : 0) + (ST.valid(mAdditionalOutput) ? 1 : 0)];
+		for (int i = 0; i < mOutputPrefixes.length; i++) if (ST.invalid(tOutputs[i] = mOutputPrefixes[i].mat(tMaterial, mOutputAmounts[i]))) return F;
+		if (mOutputPulverizedRemains) tOutputs[mOutputPrefixes.length] = OM.pulverize(aMaterial, mUnitsInputted-mUnitsOutputted);
+		if (ST.valid(mAdditionalOutput)) tOutputs[tOutputs.length-1] = mAdditionalOutput;
+		
+		return aMap.addRecipeX(F,T,F,F,T, mEUt, mDuration<=0?Math.max(1, getCosts(aMaterial)):mDuration, mChances, tInputs, mFlatFluidCosts ? mFluidInputPerUnit : UT.Fluids.mul(mFluidInputPerUnit, aMaterial.mToolQuality+1), mFlatFluidCosts ? mFluidOutputPerUnit : UT.Fluids.mul(mFluidOutputPerUnit, aMaterial.mToolQuality+1), tOutputs) != null;
+	}
+	
+	public OreDictMaterial getOutputMaterial(OreDictMaterial aMaterial) {
+		return aMaterial;
+	}
+	
+	public long getCosts(OreDictMaterial aMaterial) {
+		return UT.Code.units(mUnitsInputted, U, mMultiplier+mMultiplier*aMaterial.mToolQuality, T);
+	}
+}

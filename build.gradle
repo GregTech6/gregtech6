@@ -1,0 +1,108 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+group= "com.gregoriust.gregtech"
+archivesBaseName = "gregtech_1.7.10"
+version = "6.08.05"
+
+minecraft {
+    version = "1.7.10-10.13.4.1492-1.7.10"
+    runDir = "assets"
+}
+
+dependencies {
+    compile fileTree(dir: 'lib', include: '*.jar')
+}
+
+repositories {
+    maven {
+        name = "gt"
+        url = "http://gregtech.overminddl1.com/"
+    }
+    maven {
+        name = "forge"
+        url = "http://files.minecraftforge.net/maven"
+    }
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+}
+
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        include 'pack.mcmeta'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+        exclude 'pack.mcmeta'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}
+
+task sourceJar(type: Jar) {
+    manifest {}
+    classifier = 'sources'
+    from sourceSets.main.allSource
+    include 'gregapi/**'
+}
+
+task devJar(type: Jar) {
+    manifest {}
+    classifier = 'dev'
+    from sourceSets.main.output
+}
+
+task coreJar(type: Jar) {
+    dependsOn jar
+    manifest {}
+    classifier = 'core'
+    from sourceSets.main.output
+    exclude('gregtech/**')
+}
+
+reobf {
+    reobf(coreJar) {
+	spec -> spec.classpath = sourceSets.main.compileClasspath
+    }
+}
+
+artifacts {
+    archives devJar, sourceJar, coreJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://maven.gregtech.overminddl1.com/upload") {
+                authentication(userName: mavenUsername, password: mavenPassword)
+            }
+            pom*.whenConfigured {
+                pom -> pom.dependencies.clear()
+            }
+        }
+    }
+}

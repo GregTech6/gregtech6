@@ -1,0 +1,44 @@
+package gregapi.item.prefixitem;
+
+import static gregapi.data.CS.*;
+
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import cpw.mods.fml.common.Optional;
+import gregapi.code.ModData;
+import gregapi.data.CS.ModIDs;
+import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.OreDictPrefix;
+import gregapi.util.UT;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
+
+/**
+ * @author Gregorius Techneticies
+ */
+@Optional.InterfaceList(value = {
+@Optional.Interface(iface = "baubles.api.IBauble", modid = ModIDs.BAUBLES)
+})
+public class PrefixItemRing extends PrefixItem implements IBauble {
+	public PrefixItemRing(ModData aMod, String aNameInternal, OreDictPrefix aPrefix) {
+		this(aMod.mID, aMod.mID, aNameInternal, aPrefix, OreDictMaterial.MATERIAL_ARRAY);
+	}
+	
+	public PrefixItemRing(String aModIDOwner, String aModIDTextures, String aNameInternal, OreDictPrefix aPrefix, OreDictMaterial... aMaterialList) {
+		super(aModIDOwner, aModIDTextures, aNameInternal, aPrefix, aMaterialList);
+	}
+	
+	@Override
+	public void onWornTick(ItemStack aStack, EntityLivingBase aPlayer) {
+		if (aPlayer.ticksExisted % 120 == 0 && !UT.Entities.isInvincible(aPlayer)) {
+			UT.Entities.applyRadioactivity(aPlayer, UT.Entities.getRadioactivityLevel(aStack), aStack.stackSize);
+		}
+	}
+	
+	@Optional.Method(modid = ModIDs.BAUBLES)
+	@Override public BaubleType getBaubleType(ItemStack aStack) {return BaubleType.RING;}
+	@Override public void onEquipped(ItemStack aStack, EntityLivingBase aPlayer) {/**/}
+	@Override public void onUnequipped(ItemStack aStack, EntityLivingBase aPlayer) {/**/}
+	@Override public boolean canEquip(ItemStack aStack, EntityLivingBase aPlayer) {return T;/*aStack != null && aStack.stackSize == 1;*/}
+	@Override public boolean canUnequip(ItemStack aStack, EntityLivingBase aPlayer) {return T;}
+}

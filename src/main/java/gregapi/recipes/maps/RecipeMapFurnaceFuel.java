@@ -1,0 +1,59 @@
+package gregapi.recipes.maps;
+
+import static gregapi.data.CS.*;
+
+import java.util.Collection;
+
+import gregapi.data.FL;
+import gregapi.data.TD;
+import gregapi.oredict.OreDictItemData;
+import gregapi.oredict.OreDictMaterialStack;
+import gregapi.random.IHasWorldAndCoords;
+import gregapi.recipes.Recipe;
+import gregapi.recipes.Recipe.RecipeMap;
+import gregapi.util.OM;
+import gregapi.util.ST;
+import gregapi.util.UT;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+
+/**
+ * @author Gregorius Techneticies
+ */
+public class RecipeMapFurnaceFuel extends RecipeMap {
+	public RecipeMapFurnaceFuel(Collection<Recipe> aRecipeList, String aUnlocalizedName, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs) {
+		super(aRecipeList, aUnlocalizedName, aNameLocal + " (1 Smelt = 5000 Units)", aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs);
+	}
+	
+	@Override
+	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {
+		Recipe rRecipe = super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
+		if (aInputs == null || aInputs.length < 1 || ST.invalid(aInputs[0]) || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
+		if (rRecipe == null) {
+			long tFuelValue = ST.fuel(aInputs[0]);
+			OreDictItemData tData = OM.anydata_(aInputs[0]);
+			if (tFuelValue > 0 && !UT.Fluids.containsFluid(aInputs[0], FL.Lava.make(0), T) && !OM.materialcontains(tData, TD.Properties.FLAMMABLE, TD.Properties.EXPLOSIVE)) {
+				ItemStack tContainer = ST.container(aInputs[0], T);
+				if (tContainer == null) {
+					OreDictMaterialStack tMaterial = null;
+					if (tData != null) {
+						for (OreDictMaterialStack aMaterial : tData.getAllMaterialStacks()) {
+							if (tMaterial == null || tMaterial.mAmount <= 0)
+								tMaterial = OM.stack(aMaterial.mMaterial.mTargetBurning.mMaterial, UT.Code.units(aMaterial.mAmount, U, aMaterial.mMaterial.mTargetBurning.mAmount, F));
+							else if (tMaterial.mMaterial == aMaterial.mMaterial.mTargetBurning.mMaterial)
+								tMaterial.mAmount += UT.Code.units(aMaterial.mAmount, U, aMaterial.mMaterial.mTargetBurning.mAmount, F);
+						}
+					}
+					rRecipe = new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {OM.dust(tMaterial)}, null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
+				} else {
+					rRecipe = new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {tContainer}, null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
+				}
+				rRecipe.mCanBeBuffered = (aInputs[0].getTagCompound() == null);
+				if (rRecipe.mCanBeBuffered) addRecipe(rRecipe, F, F, T);
+			}
+		}
+		return rRecipe;
+	}
+	
+	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return null != findRecipe(null, null, T, Long.MAX_VALUE, null, ZL_FS, aStack);}
+}

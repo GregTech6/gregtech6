@@ -1,0 +1,73 @@
+package gregtech.tileentity.sensors;
+
+import static gregapi.data.CS.*;
+
+import gregapi.data.LH;
+import gregapi.old.Textures;
+import gregapi.render.IIconContainer;
+import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.machines.MultiTileEntitySensorTE;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+
+/**
+ * @author Gregorius Techneticies
+ */
+public class MultiTileEntityStackometer extends MultiTileEntitySensorTE {
+	static {LH.add("gt.tooltip.sensor.stackometer", "Measures the precise amount of Stacks");}
+	@Override public String getSensorDescription() {return LH.get("gt.tooltip.sensor.stackometer");}
+	
+	@Override
+	public long getCurrentValue(DelegatorTileEntity<TileEntity> aDelegator) {
+		if (aDelegator.mTileEntity instanceof IInventory) {
+			long rAmount = 0;
+			if (aDelegator.mTileEntity instanceof ISidedInventory) {
+				int[] tSlots = ((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(aDelegator.mSideOfTileEntity);
+				if (tSlots == null || tSlots.length <= 0) try {tSlots = ((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(SIDE_ANY);} catch(Throwable e) {tSlots = null;}
+				if (tSlots != null && tSlots.length >  0) {
+					for (int i : tSlots) {
+						ItemStack tStack = ((IInventory)aDelegator.mTileEntity).getStackInSlot(i);
+						if (tStack != null && tStack.stackSize > 0) rAmount++;
+					}
+					return rAmount;
+				}
+			}
+			for (int i = 0, j = ((IInventory)aDelegator.mTileEntity).getSizeInventory(); i < j; i++) {
+				ItemStack tStack = ((IInventory)aDelegator.mTileEntity).getStackInSlot(i);
+				if (tStack != null && tStack.stackSize > 0) rAmount++;
+			}
+			return rAmount;
+		}
+		return 0;
+	}
+	
+	@Override
+	public long getCurrentMax(DelegatorTileEntity<TileEntity> aDelegator) {
+		if (aDelegator.mTileEntity instanceof IInventory) {
+			if (aDelegator.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(aDelegator.mSideOfTileEntity).length;
+			return ((IInventory)aDelegator.mTileEntity).getSizeInventory();
+		}
+		return 0;
+	}
+	
+	@Override public short[] getSymbolColor() {return CA_WHITE;}
+	@Override public IIconContainer getSymbolIcon() {return null;}
+	@Override public IIconContainer getTextureFront() {return sTextureFront;}
+	@Override public IIconContainer getTextureBack () {return sTextureBack;}
+	@Override public IIconContainer getTextureSide () {return sTextureSide;}
+	@Override public IIconContainer getOverlayFront() {return sOverlayFront;}
+	@Override public IIconContainer getOverlayBack () {return sOverlayBack;}
+	@Override public IIconContainer getOverlaySide () {return sOverlaySide;}
+	
+	public static IIconContainer
+	sTextureFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/stackometer/colored/front"),
+	sTextureBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/stackometer/colored/back"),
+	sTextureSide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/stackometer/colored/side"),
+	sOverlayFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/stackometer/overlay/front"),
+	sOverlayBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/stackometer/overlay/back"),
+	sOverlaySide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/stackometer/overlay/side");
+	
+	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.stackometer";}
+}

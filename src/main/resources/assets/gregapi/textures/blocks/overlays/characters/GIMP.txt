@@ -1,0 +1,7 @@
+Irregularity:
+Tool = Airbrush
+Color = Black
+Opacity = 100
+Brush: Chalk 02
+Size = 100
+3 Clicks in the middle

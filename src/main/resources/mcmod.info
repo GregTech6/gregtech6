@@ -1,0 +1,15 @@
+[{
+  "modid": "gregtech",
+  "name": "GregTech",
+  "description": "Taking the World to a whole new Level of complexity!",
+  "mcversion": "1.7.10",
+  "version": "6.08",
+  "logoFile": "/assets/logo.png",
+  "url": "https://gregtech.overminddl1.com/",
+  "updateUrl": "https://gregtech.overminddl1.com/1.7.10",
+  "authors": ["Gregorius Techneticies"],
+  "credits": "OvermindDL1 for Code and Website Hosting, Estebes for some Code, Mr. Brain for some Crop Textures, Bear989 for Testing",
+  "parent": "",
+  "screenshots": ["https://gregtech.overminddl1.com/gallery"],
+  "dependencies": []
+}]

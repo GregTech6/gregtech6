@@ -1,0 +1,39 @@
+package gregapi.recipes.maps;
+
+import static gregapi.data.CS.*;
+
+import java.util.Collection;
+
+import gregapi.recipes.Recipe;
+import gregapi.recipes.Recipe.RecipeMap;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+
+/**
+ * @author Gregorius Techneticies
+ */
+public class RecipeMapFuel extends RecipeMap {
+	public RecipeMapFuel(Collection<Recipe> aRecipeList, String aUnlocalizedName, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs) {
+		super(aRecipeList, aUnlocalizedName, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs);
+	}
+	
+	public Recipe addFuel(ItemStack aInput, ItemStack aOutput, long aFuelValueInEU) {
+		return addFuel(aInput, aOutput, null, null, 10000, aFuelValueInEU);
+	}
+	
+	public Recipe addFuel(ItemStack aInput, ItemStack aOutput, long aChance, long aFuelValueInEU) {
+		return addFuel(aInput, aOutput, null, null, aChance, aFuelValueInEU);
+	}
+	
+	public Recipe addFuel(FluidStack aFluidInput, FluidStack aFluidOutput, long aFuelValueInEU) {
+		return addFuel(null, null, aFluidInput, aFluidOutput, 10000, aFuelValueInEU);
+	}
+	
+	public Recipe addFuel(ItemStack aInput, ItemStack aOutput, FluidStack aFluidInput, FluidStack aFluidOutput, long aFuelValueInEU) {
+		return addFuel(aInput, aOutput, aFluidInput, aFluidOutput, 10000, aFuelValueInEU);
+	}
+	
+	public Recipe addFuel(ItemStack aInput, ItemStack aOutput, FluidStack aFluidInput, FluidStack aFluidOutput, long aChance, long aFuelValueInEU) {
+		return addRecipe(T, new ItemStack[] {aInput}, new ItemStack[] {aOutput}, null, new long[] {aChance}, new FluidStack[] {aFluidInput}, new FluidStack[] {aFluidOutput}, 0, 0, aFuelValueInEU);
+	}
+}

@@ -1,0 +1,118 @@
+package gregtech.items.tools.machine;
+
+import static gregapi.data.CS.*;
+
+import gregapi.data.CS.SFX;
+import gregapi.data.MT;
+import gregapi.data.OP;
+import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.behaviors.Behavior_Tool;
+import gregapi.item.multiitem.tools.ToolStats;
+import gregapi.render.IIconContainer;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+
+public class GT_Tool_SoftHammer extends ToolStats {
+	@Override
+	public int getToolDamagePerBlockBreak() {
+		return 50;
+	}
+	
+	@Override
+	public int getToolDamagePerDropConversion() {
+		return 100;
+	}
+	
+	@Override
+	public int getToolDamagePerContainerCraft() {
+		return 800;
+	}
+	
+	@Override
+	public int getToolDamagePerEntityAttack() {
+		return 200;
+	}
+	
+	@Override
+	public int getBaseQuality() {
+		return 0;
+	}
+	
+	@Override
+	public float getBaseDamage() {
+		return 3.0F;
+	}
+	
+	@Override
+	public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity) {
+		return aOriginalHurtResistance * 2;
+	}
+	
+	@Override
+	public float getSpeedMultiplier() {
+		return 0.1F;
+	}
+	
+	@Override
+	public float getMaxDurabilityMultiplier() {
+		return 8.0F;
+	}
+	
+	@Override
+	public String getCraftingSound() {
+		return SFX.IC_TRAMPOLINE;
+	}
+	
+	@Override
+	public String getEntityHitSound() {
+		return SFX.IC_TRAMPOLINE;
+	}
+	
+	@Override
+	public String getMiningSound() {
+		return SFX.IC_TRAMPOLINE;
+	}
+	
+	@Override
+	public boolean canBlock() {
+		return true;
+	}
+	
+	@Override
+	public boolean isMiningTool() {
+		return false;
+	}
+	
+	@Override
+	public boolean isWeapon() {
+		return true;
+	}
+	
+	@Override
+	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
+		String tTool = aBlock.getHarvestTool(aMetaData);
+		return tTool != null && tTool.equalsIgnoreCase(TOOL_softhammer) || aBlock.getMaterial() == Material.redstoneLight;
+	}
+	
+	@Override
+	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
+		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Rubber).mTextureSetsItems.get(OP.toolHeadHammer.mIconIndexItem) : MultiItemTool.getSecondaryMaterial(aStack, MT.Wood).mTextureSetsItems.get(OP.stick.mIconIndexItem);
+	}
+	
+	@Override
+	public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
+		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Rubber).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.Wood).mRGBaSolid;
+	}
+	
+	@Override
+	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_softhammer, SFX.IC_TRAMPOLINE, 100, !canBlock()));
+	}
+	
+	@Override
+	public String getDeathMessage() {
+		return "[VICTIM] got hammered to death by [KILLER]";
+	}
+}

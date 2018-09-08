@@ -1,0 +1,111 @@
+package gregtech.blocks.tree;
+
+import static gregapi.data.CS.*;
+
+import java.util.List;
+
+import gregapi.block.IBlockToolable;
+import gregapi.block.ToolCompat;
+import gregapi.block.multitileentity.MultiTileEntityRegistry;
+import gregapi.block.tree.BlockBaseLogFlammable;
+import gregapi.data.CS.BlocksGT;
+import gregapi.data.IL;
+import gregapi.data.LH;
+import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.old.Textures;
+import gregapi.util.OM;
+import gregapi.util.ST;
+import gregapi.util.UT;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class BlockTreeLogB extends BlockBaseLogFlammable implements IBlockToolable {
+	public BlockTreeLogB(String aUnlocalised) {
+		super(null, aUnlocalised, Material.wood, soundTypeWood, 4, Textures.BlockIcons.LOGS_B);
+		
+		LH.add(getUnlocalizedName()+ ".0.name", "Hazel Log");
+		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Log");
+		LH.add(getUnlocalizedName()+ ".8.name", "Hazel Log");
+		LH.add(getUnlocalizedName()+".12.name", "Hazel Log");
+		OM.reg(ST.make(this, 1, 0), "logWood");
+		OM.reg(ST.make(this, 1, 4), "logWood");
+		OM.reg(ST.make(this, 1, 8), "logWood");
+		OM.reg(ST.make(this, 1,12), "logWood");
+		
+		LH.add(getUnlocalizedName()+ ".1.name", "Cinnamon Log");
+		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Log");
+		LH.add(getUnlocalizedName()+ ".9.name", "Cinnamon Log");
+		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Log");
+		OM.reg(ST.make(this, 1, 1), "logWood");
+		OM.reg(ST.make(this, 1, 5), "logWood");
+		OM.reg(ST.make(this, 1, 9), "logWood");
+		OM.reg(ST.make(this, 1,13), "logWood");
+		
+		LH.add(getUnlocalizedName()+ ".2.name", "Log");
+		LH.add(getUnlocalizedName()+ ".6.name", "Log");
+		LH.add(getUnlocalizedName()+".10.name", "Log");
+		LH.add(getUnlocalizedName()+".14.name", "Log");
+		OM.reg(ST.make(this, 1, 2), "logWood");
+		OM.reg(ST.make(this, 1, 6), "logWood");
+		OM.reg(ST.make(this, 1,10), "logWood");
+		OM.reg(ST.make(this, 1,14), "logWood");
+		
+		LH.add(getUnlocalizedName()+ ".3.name", "Rainbowood Log");
+		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Log");
+		LH.add(getUnlocalizedName()+".11.name", "Rainbowood Log");
+		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Log");
+		OM.reg(ST.make(this, 1, 3), "logWood");
+		OM.reg(ST.make(this, 1, 7), "logWood");
+		OM.reg(ST.make(this, 1,11), "logWood");
+		OM.reg(ST.make(this, 1,15), "logWood");
+	}
+	
+	@Override
+	public int getLeavesRangeSide(byte aMetaData) {
+		switch(aMetaData & 3) {
+		case 0: return 3;
+		case 1: return 3;
+		case 2: return 3; // TODO
+		case 3: return 3;
+		}
+		return 3;
+	}
+	
+	@Override
+	public int getLeavesRangeYPos(byte aMetaData) {
+		switch(aMetaData & 3) {
+		case 0: return 2;
+		case 1: return 3;
+		case 2: return 3; // TODO
+		case 3: return 3;
+		}
+		return 3;
+	}
+	
+	@Override public int getLeavesRangeYNeg(byte aMetaData) {return 0;}
+	
+	@Override
+	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
+		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
+			if (aWorld.isRemote) return 0;
+			byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+			aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamB, aMeta, 3);
+			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, (aMeta & 3) == 1 ? ST.make(MD.HaC, "cinnamonItem", 1, IL.Food_Cinnamon.get(1)) : OM.dust(MT.Bark), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
+			return 1000;
+		}
+		if (SIDES_HORIZONTAL[aSide] && aTool.equals(TOOL_drill) && aWorld.getBlockMetadata(aX, aY, aZ) == 3) {
+			if (aWorld.isRemote) return 0;
+			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
+			if (tRegistry != null) {
+				tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, (short)32760, UT.NBT.make(null, NBT_FACING, aSide), T, T);
+				return aTool.equals(TOOL_axe) ? 500 : 1000;
+			}
+		}
+		return ToolCompat.onToolClick(this, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
+	}
+}
