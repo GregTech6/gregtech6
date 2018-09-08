@@ -94,6 +94,13 @@ artifacts {
     archives devJar, sourceJar, coreJar
 }
 
+if(! hasProperty("mavenUsername")){
+    ext.mavenUsername=""
+}
+if(! hasProperty("mavenPassword")){
+    ext.mavenPassword=""
+}
+
 uploadArchives {
     repositories {
         mavenDeployer {
