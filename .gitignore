@@ -1,6 +1,6 @@
 # Ignore huge files and download on demand instead of storing it inside git...
-libs/*.jar
-libs/*.zip
+libs/*
+lib/*
 
 # Build system files
 .gradle/*
@@ -11,17 +11,30 @@ out/*
 # Eclipse files:
 eclipse
 !eclipse/.metadata/org.eclipse.debug.core/.launches/*
-.settings/org.eclipse.jdt.core.prefs
+.settings/*
 
 # IDEA files:
+.idea/*
 .classpath
 .project
-gffs.iml
-gffs.ipr
-gffs.iws
+*.iml
+*.ipr
+*.iws
 
 # Kate files:
 *.kate-swp
  
 # Random Files
 random/*
+.directory
+.post.txt
+build.sh
+copygt6.sh
+postbuild
+postupload
+prebuild
+preupload
+refresh
+updateforge
+upload.sh
+forge-1.7.10-10.13.4.1614-1.7.10-changelog.txt
