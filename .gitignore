@@ -10,7 +10,6 @@ out/*
 
 # Eclipse files:
 eclipse
-!eclipse/.metadata/org.eclipse.debug.core/.launches/*
 .settings/*
 
 # IDEA files:
