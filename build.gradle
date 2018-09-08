@@ -59,6 +59,9 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
         exclude 'pack.mcmeta'
+        exclude 'LICENSE'
+        exclude 'COPYING'
+        exclude 'COPYING.LESSER'
     }
 }
 
