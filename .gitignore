@@ -1,21 +1,21 @@
 # Ignore huge files and download on demand instead of storing it inside git...
-/libs/
-/lib/
+libs/
+lib/
 
 # Build system files
-/.gradle/
-/build/
-/bin/
-/out/
+.gradle/
+build/
+bin/
+out/
 
 # Eclipse files:
-eclipse
-/.settings/*
+eclipse/
+.settings/
 
 # IDEA files:
-/.idea/
-/.classpath
-/.project
+.idea/
+.classpath
+.project
 *.iml
 *.ipr
 *.iws
@@ -24,7 +24,7 @@ eclipse
 *.kate-swp
  
 # Random Files
-random/*
+random/
 .directory
 .post.txt
 build.sh
