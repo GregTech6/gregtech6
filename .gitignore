@@ -9,7 +9,7 @@ bin/*
 out/*
 
 # Eclipse files:
-eclipse/*
+eclipse
 .settings/*
 
 # IDEA files:
