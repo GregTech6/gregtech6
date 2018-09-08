@@ -50,6 +50,9 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
         include 'pack.mcmeta'
+        include 'LICENSE'
+        include 'COPYING'
+        include 'COPYING.LESSER'
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
 
