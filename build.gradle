@@ -124,6 +124,7 @@ dependencies {
 	// up above...
 	compile "dan200.computercraft:ComputerCraft:1.75"
 	compile "openblocks:OpenBlocks:1.7.10-1.6-1.7.10:deobf"
+	compile "openmods:OpenModsLib:1.7.10-0.10:deobf"
 	compile "ic2:IC2Classic:1.2.1.8:dev"
 }
 
