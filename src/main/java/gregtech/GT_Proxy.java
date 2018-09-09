@@ -231,14 +231,22 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	}
 	@SubscribeEvent
 	public void onTerrainGenEvent(DecorateBiomeEvent.Decorate aEvent) {
-		if (aEvent.world.provider.dimensionId == 0 && (!MD.RTG.mLoaded || !(aEvent.world.provider.terrainType instanceof rtg.world.WorldTypeRTG))) {
+		if (aEvent.world.provider.dimensionId == 0) {
+			if (MD.RTG.mLoaded) {
+				String tClassName = UT.Reflection.getLowercaseClass(aEvent.world.provider.terrainType);
+				if ("WorldProviderSurfaceRTG".equalsIgnoreCase(tClassName) || "WorldTypeRTG".equalsIgnoreCase(tClassName)) return;
+			}
 			if (GENERATE_STREETS && (UT.Code.inside(-48, 47, aEvent.chunkX) || UT.Code.inside(-48, 47, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
 			if (GENERATE_BIOMES  && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
 		}
 	}
 	@SubscribeEvent
 	public void onTerrainGenEvent(PopulateChunkEvent.Populate aEvent) {
-		if (aEvent.world.provider.dimensionId == 0 && (!MD.RTG.mLoaded || !(aEvent.world.provider.terrainType instanceof rtg.world.WorldTypeRTG))) {
+		if (aEvent.world.provider.dimensionId == 0) {
+			if (MD.RTG.mLoaded) {
+				String tClassName = UT.Reflection.getLowercaseClass(aEvent.world.provider.terrainType);
+				if ("WorldProviderSurfaceRTG".equalsIgnoreCase(tClassName) || "WorldTypeRTG".equalsIgnoreCase(tClassName)) return;
+			}
 			if (GENERATE_STREETS && (UT.Code.inside(-48, 47, aEvent.chunkX) || UT.Code.inside(-48, 47, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
 			if (GENERATE_BIOMES  && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
 		}

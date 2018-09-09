@@ -57,7 +57,7 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 			mToBlacklist = null;
 		}
 		
-		if (MD.AA.mLoaded) Crops.instance.registerBaseSeed(ST.make(MD.AA, "itemCoffeeBeans", 1, W), Crops.instance.getCropCard(Ic2Items.coffeeBeans), 1, 1, 1, 1);
+		if (MD.AA.mLoaded) Crops.instance.registerBaseSeed(ST.make(MD.AA, "itemCoffeeBeans", 1, W), Crops.instance.getCropCard("IC2", "Coffee"), 1, 1, 1, 1);
 	}
 	
 	@Override
@@ -141,3 +141,4 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 	@Override public Object makeOutput(NBTTagCompound aNBT, ItemStack... aStacks) {return new RecipeOutput(aNBT, aStacks);}
 	@Override public boolean isReactorItem(ItemStack aStack) {try {return ST.valid(aStack) && aStack.getItem() instanceof ic2.api.reactor.IReactorComponent;} catch (Throwable e) {/*Do nothing*/} return F;}
 }
+

@@ -10,12 +10,12 @@
 
 # Eclipse files:
 /eclipse/
-/.settings/*
+/.settings/
 
 # IDEA files:
 /.idea/
-/.classpath
-/.project
+.classpath
+.project
 *.iml
 *.ipr
 *.iws
@@ -24,7 +24,7 @@
 *.kate-swp
  
 # Random Files
-random/*
+/random/
 .directory
 .post.txt
 build.sh
@@ -37,3 +37,4 @@ refresh
 updateforge
 upload.sh
 forge-1.7.10-10.13.4.1614-1.7.10-changelog.txt
+
