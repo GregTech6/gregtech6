@@ -88,6 +88,7 @@ apply plugin: 'forge'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
+compileJava.options.bootClasspath = org.gradle.internal.jvm.Jvm.current().getJre().getHomeDir().toString() +"/lib/rt.jar"
 
 group= "com.gregoriust.gregtech"
 archivesBaseName = "gregtech_1.7.10"
