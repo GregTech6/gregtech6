@@ -40,24 +40,67 @@ repositories {
 		name = "forge"
 		url = "https://files.minecraftforge.net/maven"
 	}
+	//// No official maven'y storage for:
+	//// - Baubles
+	//// - MicdoodleCore
+	//// - GalacticraftCore
+	//// - Galacticraft-Planets
+	//// - Thaumcraft
+	//// - EnviroMine
+	//// - Botania
+	//// - Railcraft
+	//// - twilightforest
+	//// - appliedenergistics2
+	//// - CoFHLib
+	//// - ComputerCraft
+	//// - RTG
+	//// - OpenBlocks
+	//// - IC2Classic
+	//// Main storage for forestry_1.7.10
+	//maven {
+	//	name = "ic2"
+	//	url = "http://maven.ic2.player.to/"
+	//}
+	//// Main storage for buildcraft
+	//ivy {
+	//	name "BuildCraft"
+	//	artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision](-[classifier]).[ext]"
+	//}
+	//// Main storage for CodeChickenCore, NotEnoughItems
+	//// CodeChickenLib is in the Forge maven
+	//maven {
+	//	name = "chickenbones"
+	//	url = "http://chickenbones.net/maven/"
+	//}
+	//// Main storage for AppleCore
+	//maven {
+	//	name = "Apple"
+	//	url "http://www.ryanliptak.com/maven/"
+	//}
+	//// Main storage for OpenComputers
+	//maven {
+	//	name = "OC repo"
+	//	url = "http://maven.cil.li/"
+	//}
 }
 
 apply plugin: 'forge'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
+compileJava.options.bootClasspath = org.gradle.internal.jvm.Jvm.current().getJre().getHomeDir().toString() +"/lib/rt.jar"
+
 group= "com.gregoriust.gregtech"
 archivesBaseName = "gregtech_1.7.10"
 version = "6.09.00"
 
 minecraft {
-	version = "1.7.10-10.13.4.1492-1.7.10"
+	version = "1.7.10-10.13.4.1614-1.7.10"
 	runDir = "assets"
 }
 
 dependencies {
-	compile fileTree(dir: 'lib', include: '*.jar')
-	compile fileTree(dir: 'libs', include: '*.jar')
+	//compile fileTree(dir: 'libs', include: '*.jar')
 	compile "net.sengir.forestry:forestry_1.7.10:4.2.16.64:dev"
 	compile "com.mod-buildcraft:buildcraft:7.1.23:dev"
 	compile "com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf"
@@ -76,11 +119,13 @@ dependencies {
 	compile "cofh:CoFHLib:1.7.10R3.0.3:dev"
 	compile "applecore:AppleCore:1.7.10-3.1.1:deobf"
 	compile "li.cil.oc:OpenComputers:MC1.7.10-1.7.2.1204:dev"
-	// This ComputerCraft thing is *SUCH* a hack, but ComputerCraft is... not right...
-	// This only works because of CodeChickenCore Magic being included up above...
+	// This ComputerCraft thing is *SUCH* a hack, but ComputerCraft is... not
+	// right...  This only works because of CodeChickenCore Magic being included
+	// up above...
 	compile "dan200.computercraft:ComputerCraft:1.75"
-	compile "org.teamrtg.RTG:RTG:1.7.10-1.1.1.7:dev"
 	compile "openblocks:OpenBlocks:1.7.10-1.6-1.7.10:deobf"
+	compile "openmods:OpenModsLib:1.7.10-0.10:deobf"
+	compile "ic2:IC2Classic:1.2.1.8:dev"
 }
 
 processResources {
@@ -128,7 +173,7 @@ task coreJar(type: Jar) {
 
 reobf {
 	reobf(coreJar) {
-	spec -> spec.classpath = sourceSets.main.compileClasspath
+		spec -> spec.classpath = sourceSets.main.compileClasspath
 	}
 }
 
@@ -136,10 +181,10 @@ artifacts {
 	archives devJar, sourceJar, coreJar
 }
 
-if (!hasProperty("mavenUsername")) {
+if(!hasProperty("mavenUsername")){
 	ext.mavenUsername=""
 }
-if (!hasProperty("mavenPassword")) {
+if(!hasProperty("mavenPassword")){
 	ext.mavenPassword=""
 }
 

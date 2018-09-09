@@ -141,3 +141,4 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 	@Override public Object makeOutput(NBTTagCompound aNBT, ItemStack... aStacks) {return new RecipeOutput(aNBT, aStacks);}
 	@Override public boolean isReactorItem(ItemStack aStack) {try {return ST.valid(aStack) && aStack.getItem() instanceof ic2.api.reactor.IReactorComponent;} catch (Throwable e) {/*Do nothing*/} return F;}
 }
+

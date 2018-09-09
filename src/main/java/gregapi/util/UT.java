@@ -2172,7 +2172,7 @@ public class UT {
 		public static void checkAvailabilities() {
 			if (CHECK_ALL) {
 				try {
-					Class tClass = cofh.api.transport.IItemConduit.class;
+					Class tClass = cofh.api.transport.IItemDuct.class;
 					tClass.getCanonicalName();
 					TE_CHECK = T;
 				} catch(Throwable e) {/**/}
@@ -2188,7 +2188,7 @@ public class UT {
 		public static boolean isConnectableNonInventoryPipe(Object aTileEntity, int aSide) {
 			if (aTileEntity == null) return F;
 			checkAvailabilities();
-			if (TE_CHECK) if (aTileEntity instanceof cofh.api.transport.IItemConduit) return T;
+			if (TE_CHECK) if (aTileEntity instanceof cofh.api.transport.IItemDuct) return T;
 			if (BC_CHECK) if (aTileEntity instanceof buildcraft.api.transport.IInjectable) return ((buildcraft.api.transport.IInjectable)aTileEntity).canInjectItems(FORGE_DIR[aSide]);
 			return F;
 		}
@@ -2205,14 +2205,14 @@ public class UT {
 			
 			if (aTileEntity2 != null) {
 				checkAvailabilities();
-				if (TE_CHECK && aTileEntity2 instanceof cofh.api.transport.IItemConduit) {
+				if (TE_CHECK && aTileEntity2 instanceof cofh.api.transport.IItemDuct) {
 					for (int i = 0; i < aGrabSlots.length; i++) {
 						ItemStack aStack = aTileEntity1.getStackInSlot(aGrabSlots[i]);
 						if (ST.listed(aFilter, aStack, T, aInvertFilter)) {
 							if (isAllowedToTakeFromSlot(aTileEntity1, aGrabSlots[i], aGrabFrom, aStack)) {
 								if (Math.max(aMinMoveAtOnce, aMinTargetStackSize) <= aStack.stackSize) {
 									ItemStack tStack = ST.amount(Math.min(aStack.stackSize, Math.min(aMaxMoveAtOnce, aMaxTargetStackSize)), aStack);
-									ItemStack rStack = ((cofh.api.transport.IItemConduit)aTileEntity2).insertItem(FORGE_DIR[aPutTo], ST.copy(tStack), F/*T*/);
+									ItemStack rStack = ((cofh.api.transport.IItemDuct)aTileEntity2).insertItem(FORGE_DIR[aPutTo], ST.copy(tStack));
 									byte tMovedItemCount = (byte)(tStack.stackSize - (rStack == null ? 0 : rStack.stackSize));
 									if (tMovedItemCount >= 1/*Math.max(aMinMoveAtOnce, aMinTargetStackSize)*/) {
 										//((cofh.api.transport.IItemConduit)aTileEntity2).insertItem(FORGE_DIR[aPutTo], copyAmount(tMovedItemCount, tStack), F);
