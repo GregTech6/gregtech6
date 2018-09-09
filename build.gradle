@@ -19,7 +19,7 @@ apply plugin: 'forge'
 
 group= "com.gregoriust.gregtech"
 archivesBaseName = "gregtech_1.7.10"
-version = "6.08.05"
+version = "6.09.00"
 
 minecraft {
     version = "1.7.10-10.13.4.1492-1.7.10"
