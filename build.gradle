@@ -56,7 +56,7 @@ repositories {
 	//// - RTG
 	//// - OpenBlocks
 	//// - IC2Classic
-	//// Main storage for industrialcraft-2 and forestry_1.7.10
+	//// Main storage for forestry_1.7.10
 	//maven {
 	//	name = "ic2"
 	//	url = "http://maven.ic2.player.to/"
@@ -101,7 +101,6 @@ minecraft {
 dependencies {
 	compile fileTree(dir: 'libs', include: '*.jar')
 	compile "net.sengir.forestry:forestry_1.7.10:4.2.16.64:dev"
-	compile "net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev"
 	compile "com.mod-buildcraft:buildcraft:7.1.23:dev"
 	compile "com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf"
 	compile "micdoodle8.mods:MicdoodleCore:1.7-3.0.12.504:Dev"

@@ -27,7 +27,6 @@ import ic2.api.recipe.RecipeInputItemStack;
 import ic2.api.recipe.RecipeInputOreDict;
 import ic2.api.recipe.RecipeOutput;
 import ic2.core.Ic2Items;
-import ic2.core.crop.IC2Crops;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -58,7 +57,7 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 			mToBlacklist = null;
 		}
 		
-		if (MD.AA.mLoaded) Crops.instance.registerBaseSeed(ST.make(MD.AA, "itemCoffeeBeans", 1, W), IC2Crops.cropCoffee, 1, 1, 1, 1);
+		if (MD.AA.mLoaded) Crops.instance.registerBaseSeed(ST.make(MD.AA, "itemCoffeeBeans", 1, W), Crops.instance.getCropCard(Ic2Items.coffeeBeans), 1, 1, 1, 1);
 	}
 	
 	@Override
