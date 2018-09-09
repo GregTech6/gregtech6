@@ -642,7 +642,7 @@ public class GT_API extends Abstract_Mod {
 	@Override
 	public void onModPostInit2(FMLPostInitializationEvent aEvent) {
 		if (MD.IC2.mLoaded) {
-			PotionsGT.ID_RADIATION = ic2.core.IC2Potion.radiation.id;
+			PotionsGT.ID_RADIATION = ic2.api.info.Info.POTION_RADIATION.id;
 		}
 		if (MD.ENVM.mLoaded) {
 			PotionsGT.ID_DEHYDRATION = EnviroPotion.dehydration.id;
