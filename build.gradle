@@ -1,114 +1,158 @@
 buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-    }
+	repositories {
+		mavenCentral()
+		maven {
+			name = "forge"
+			url = "http://files.minecraftforge.net/maven"
+		}
+		maven {
+			name = "sonatype"
+			url = "https://oss.sonatype.org/content/repositories/snapshots/"
+		}
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+	}
+}
+
+apply plugin: 'eclipse'
+eclipse {
+	classpath {
+		downloadJavadoc = true
+		downloadSources = true
+	}
+}
+
+apply plugin: 'idea'
+idea{
+	module {
+		downloadJavadoc = true
+		downloadSources = true
+	}
+}
+
+repositories {
+	maven {
+		name = "gt"
+		url = "https://gregtech.overminddl1.com/"
+	}
+	maven {
+		name = "forge"
+		url = "https://files.minecraftforge.net/maven"
+	}
 }
 
 apply plugin: 'forge'
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 group= "com.gregoriust.gregtech"
 archivesBaseName = "gregtech_1.7.10"
 version = "6.09.00"
 
 minecraft {
-    version = "1.7.10-10.13.4.1492-1.7.10"
-    runDir = "assets"
+	version = "1.7.10-10.13.4.1492-1.7.10"
+	runDir = "assets"
 }
 
 dependencies {
-    compile fileTree(dir: 'lib', include: '*.jar')
+	compile fileTree(dir: 'lib', include: '*.jar')
+	compile fileTree(dir: 'libs', include: '*.jar')
+	compile "net.sengir.forestry:forestry_1.7.10:4.2.16.64:dev"
+	compile "net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev"
+	compile "com.mod-buildcraft:buildcraft:7.1.23:dev"
+	compile "com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf"
+	compile "micdoodle8.mods:MicdoodleCore:1.7-3.0.12.504:Dev"
+	compile "micdoodle8.mods:GalacticraftCore:1.7-3.0.12.504:Dev"
+	compile "micdoodle8.mods:Galacticraft-Planets:1.7-3.0.12.504:Dev"
+	compile "codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev"
+	compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
+	compile "codechicken:NotEnoughItems:1.7.10-1.0.5.120:dev"
+	compile "thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev"
+	compile "enviromine:EnviroMine:1.3.124:deobf"
+	compile "vazkii.botania:Botania:r1.8-250:deobf"
+	compile "mods.railcraft:Railcraft_1.7.10:9.12.3.0:dev"
+	compile "twilightforest:twilightforest:1.7.10-2.3.8dev:dev"
+	compile "appeng:appliedenergistics2:rv3-beta-6:dev"
+	compile "cofh:CoFHLib:1.7.10R3.0.3:dev"
+	compile "applecore:AppleCore:1.7.10-3.1.1:deobf"
+	compile "li.cil.oc:OpenComputers:MC1.7.10-1.7.2.1204:dev"
+	// This ComputerCraft thing is *SUCH* a hack, but ComputerCraft is... not right...
+	// This only works because of CodeChickenCore Magic being included up above...
+	compile "dan200.computercraft:ComputerCraft:1.75"
+	compile "org.teamrtg.RTG:RTG:1.7.10-1.1.1.7:dev"
+	compile "openblocks:OpenBlocks:1.7.10-1.6-1.7.10:deobf"
 }
-
-repositories {
-    maven {
-        name = "gt"
-        url = "http://gregtech.overminddl1.com/"
-    }
-    maven {
-        name = "forge"
-        url = "http://files.minecraftforge.net/maven"
-    }
-    maven {
-        name = "ic2"
-        url = "http://maven.ic2.player.to/"
-    }
-}
-
 
 processResources {
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-        include 'pack.mcmeta'
-        include 'LICENSE'
-        include 'COPYING'
-        include 'COPYING.LESSER'
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-        exclude 'pack.mcmeta'
-        exclude 'LICENSE'
-        exclude 'COPYING'
-        exclude 'COPYING.LESSER'
-    }
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mcmod.info'
+		include 'pack.mcmeta'
+		include 'LICENSE'
+		include 'COPYING'
+		include 'COPYING.LESSER'
+		expand 'version':project.version, 'mcversion':project.minecraft.version
+	}
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
+		exclude 'pack.mcmeta'
+		exclude 'LICENSE'
+		exclude 'COPYING'
+		exclude 'COPYING.LESSER'
+	}
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.13'
+	gradleVersion = '2.13'
 }
 
 task sourceJar(type: Jar) {
-    manifest {}
-    classifier = 'sources'
-    from sourceSets.main.allSource
-    include 'gregapi/**'
+	manifest {}
+	classifier = 'sources'
+	from sourceSets.main.allSource
+	include 'gregapi/**'
 }
 
 task devJar(type: Jar) {
-    manifest {}
-    classifier = 'dev'
-    from sourceSets.main.output
+	manifest {}
+	classifier = 'dev'
+	from sourceSets.main.output
 }
 
 task coreJar(type: Jar) {
-    dependsOn jar
-    manifest {}
-    classifier = 'core'
-    from sourceSets.main.output
-    exclude('gregtech/**')
+	dependsOn jar
+	manifest {}
+	classifier = 'core'
+	from sourceSets.main.output
+	exclude('gregtech/**')
 }
 
 reobf {
-    reobf(coreJar) {
+	reobf(coreJar) {
 	spec -> spec.classpath = sourceSets.main.compileClasspath
-    }
+	}
 }
 
 artifacts {
-    archives devJar, sourceJar, coreJar
+	archives devJar, sourceJar, coreJar
+}
+
+if (!hasProperty("mavenUsername")) {
+	ext.mavenUsername=""
+}
+if (!hasProperty("mavenPassword")) {
+	ext.mavenPassword=""
 }
 
 uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "http://maven.gregtech.overminddl1.com/upload") {
-                authentication(userName: mavenUsername, password: mavenPassword)
-            }
-            pom*.whenConfigured {
-                pom -> pom.dependencies.clear()
-            }
-        }
-    }
+	repositories {
+		mavenDeployer {
+			repository(url: "http://maven.gregtech.overminddl1.com/upload") {
+				authentication(userName: mavenUsername, password: mavenPassword)
+			}
+			pom*.whenConfigured {
+				pom -> pom.dependencies.clear()
+			}
+		}
+	}
 }
