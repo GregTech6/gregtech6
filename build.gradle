@@ -55,6 +55,7 @@ repositories {
 	//// - ComputerCraft
 	//// - RTG
 	//// - OpenBlocks
+	//// - IC2Classic
 	//// Main storage for industrialcraft-2 and forestry_1.7.10
 	//maven {
 	//	name = "ic2"
@@ -124,6 +125,7 @@ dependencies {
 	compile "dan200.computercraft:ComputerCraft:1.75"
 	compile "org.teamrtg.RTG:RTG:1.7.10-1.1.1.7:dev"
 	compile "openblocks:OpenBlocks:1.7.10-1.6-1.7.10:deobf"
+	compile "ic2:IC2Classic:1.2.1.8:dev"
 }
 
 processResources {
