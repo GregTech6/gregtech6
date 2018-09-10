@@ -181,10 +181,10 @@ artifacts {
 	archives devJar, sourceJar, coreJar
 }
 
-if(!hasProperty("mavenUsername")){
+if (!hasProperty("mavenUsername")) {
 	ext.mavenUsername=""
 }
-if(!hasProperty("mavenPassword")){
+if (!hasProperty("mavenPassword")) {
 	ext.mavenPassword=""
 }
 
