@@ -135,6 +135,7 @@ processResources {
 		include 'LICENSE'
 		include 'COPYING'
 		include 'COPYING.LESSER'
+		include 'logos/*'
 		expand 'version':project.version, 'mcversion':project.minecraft.version
 	}
 	from(sourceSets.main.resources.srcDirs) {
@@ -143,6 +144,7 @@ processResources {
 		exclude 'LICENSE'
 		exclude 'COPYING'
 		exclude 'COPYING.LESSER'
+		exclude 'logos/*'
 	}
 }
 
