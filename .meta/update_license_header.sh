@@ -13,8 +13,8 @@ fi
 
 echo "Adding header to: $1"
 
-cp "$SOURCE_DIR/LICENSE.header" "~$1.tmp"
-echo "" >> "~$1.tmp"
-awk '/^package/{i++}i' "$1" >> "~$1.tmp"
-mv "~$1.tmp" "$1"
+cp "$SOURCE_DIR/LICENSE.header" "$1.tmp"
+echo "" >> "$1.tmp"
+awk '/^package/{i++}i' "$1" >> "$1.tmp"
+mv "$1.tmp" "$1"
 
