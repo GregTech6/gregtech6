@@ -1,41 +1,29 @@
-# Ignore huge files and download on demand instead of storing it inside git...
-/libs/
-/lib/
+/*
 
-# Build system files
-/.gradle/
-/build/
-/bin/
-/out/
-/assets/
+# folders
+!/.meta
+!/gradle
+!/src
 
-# Eclipse files:
-/eclipse/
-/.settings/
+# git files
+!/.gitattributes
+!/.gitignore
 
-# IDEA files:
-/.idea/
-.classpath
-.project
-*.iml
-*.ipr
-*.iws
+# legal
+!/COPYING*
+!/CREDITS*
+!/LICENSE*
+!/MinecraftForge-*
+
+# information
+!/README.md
+
+# build
+!/gradlew*
+!/build.gradle
+
+
+# Files to always ignore
 
 # Kate files:
 *.kate-swp
- 
-# Random Files
-/random/
-.directory
-.post.txt
-build.sh
-copygt6.sh
-postbuild
-postupload
-prebuild
-preupload
-refresh
-updateforge
-upload.sh
-forge-1.7.10-10.13.4.1614-1.7.10-changelog.txt
-
