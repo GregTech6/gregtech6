@@ -36,7 +36,7 @@ public class StoneLayerOres {
 	public OreDictMaterial mMaterial;
 	/** The Material Amount will determine the chance in the form of an X of U Chance. */
 	public long mChance;
-	public ArrayList<String> mBiomes = new ArrayList();
+	public ArrayList<String> mBiomes = new ArrayList<>();
 	
 	public StoneLayerOres(OreDictMaterial aMaterial, long aChance, int aMinY, int aMaxY) {
 		mMaterial = (aMaterial == null || aMaterial.mID < 0 ? MT.Empty : aMaterial);

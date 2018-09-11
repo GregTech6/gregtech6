@@ -23,10 +23,10 @@ package gregapi.code;
  * @author Gregorius Techneticies
  */
 public interface ICondition<O> {
-	public static final ICondition TRUE = new True();
-	public static final ICondition FALSE = new False();
-	public static final ICondition NULL = new Null();
-	public static final ICondition NOTNULL = new NotNull();
+	public static final ICondition<?> TRUE = new True<>();
+	public static final ICondition<?> FALSE = new False<>();
+	public static final ICondition<?> NULL = new Null<>();
+	public static final ICondition<?> NOTNULL = new NotNull<>();
 	
 	/**
 	 * @param aObject the Object to check the Condition on
@@ -52,6 +52,7 @@ public interface ICondition<O> {
 	public static class Or<O> implements ICondition<O> {
 		private final ICondition<O>[] mConditions;
 		
+		@SafeVarargs
 		public Or(ICondition<O>... aConditions) {
 			mConditions = aConditions;
 		}
@@ -66,6 +67,7 @@ public interface ICondition<O> {
 	public static class Nor<O> implements ICondition<O> {
 		private final ICondition<O>[] mConditions;
 		
+		@SafeVarargs
 		public Nor(ICondition<O>... aConditions) {
 			mConditions = aConditions;
 		}
@@ -80,6 +82,7 @@ public interface ICondition<O> {
 	public static class And<O> implements ICondition<O> {
 		private final ICondition<O>[] mConditions;
 		
+		@SafeVarargs
 		public And(ICondition<O>... aConditions) {
 			mConditions = aConditions;
 		}
@@ -94,6 +97,7 @@ public interface ICondition<O> {
 	public static class Nand<O> implements ICondition<O> {
 		private final ICondition<O>[] mConditions;
 		
+		@SafeVarargs
 		public Nand(ICondition<O>... aConditions) {
 			mConditions = aConditions;
 		}

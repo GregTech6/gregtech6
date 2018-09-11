@@ -63,8 +63,8 @@ public class CoverTextureMulti extends AbstractCoverDefault {
 	
 	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), mSound == null ? SFX.IC_WRENCH : mSound, 1.0F, -1.0F, aData.mTileEntity.getCoords());}
 	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), mSound == null ? SFX.MC_BREAK : mSound, 1.0F, -1.0F, aTileEntity.getCoords());}
-	@Override public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List aList, Entity aEntity) {if (mHasCollide) super.getCollisions(aCoverSide, aData, aAABB, aList, aEntity);}
+	@Override public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {if (mHasCollide) super.getCollisions(aCoverSide, aData, aAABB, aList, aEntity);}
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return mTextures[aData.mVisuals[aSide]%mTextures.length];}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
-	@Override public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {super.addToolTips(aList, aStack, aF3_H); if (mTextures.length > 1) aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));}
+	@Override public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {super.addToolTips(aList, aStack, aF3_H); if (mTextures.length > 1) aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));}
 }

@@ -93,15 +93,15 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN	+ LH.get("gt.tooltip.pump.1"));
 		LH.addEnergyToolTips(this, aList, mEnergyType, null, LH.get(LH.FACE_BACK), null);
 		aList.add(Chat.ORANGE + LH.get("gt.tooltip.pump.2"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
-	public LinkedList<ChunkCoordinates> mPumpList = new LinkedList();
-	public HashSetNoNulls<Block> mPumpedFluids = new HashSetNoNulls();
+	public LinkedList<ChunkCoordinates> mPumpList = new LinkedList<>();
+	public HashSetNoNulls<Block> mPumpedFluids = new HashSetNoNulls<>();
 	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
@@ -127,7 +127,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	}
 	
 	private void scanForFluid(ChunkCoordinates aCoords, int aX, int aZ) {
-		mPumpList = new LinkedList();
+		mPumpList = new LinkedList<>();
 		mPumpedFluids.clear();
 		
 		int tDir = 0;
@@ -148,12 +148,12 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			tDir = (((IFluidBlock)aBlock).getFluid().getDensity() < 0 ? -1 : +1);
 		} else return;
 		
-		List<ChunkCoordinates> tNeedsToBeChecked = new ArrayListNoNulls(F, aCoords);
-		Set<ChunkCoordinates> tAlreadyAdded = new HashSetNoNulls(F, aCoords);
+		List<ChunkCoordinates> tNeedsToBeChecked = new ArrayListNoNulls<>(F, aCoords);
+		Set<ChunkCoordinates> tAlreadyAdded = new HashSetNoNulls<>(F, aCoords);
 		mPumpList.add(aCoords);
 		
 		while (!tNeedsToBeChecked.isEmpty()) {
-			List<ChunkCoordinates> tWillBeCheckedNextTime = new ArrayList();
+			List<ChunkCoordinates> tWillBeCheckedNextTime = new ArrayList<>();
 			for (ChunkCoordinates tPos : tNeedsToBeChecked) {
 				if (tPos.posX < aX + 64) addToList(tPos.posX + 1, tPos.posY, tPos.posZ, tWillBeCheckedNextTime, tAlreadyAdded);
 				if (tPos.posX > aX - 64) addToList(tPos.posX - 1, tPos.posY, tPos.posZ, tWillBeCheckedNextTime, tAlreadyAdded);

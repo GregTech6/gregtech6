@@ -40,7 +40,7 @@ public class ObjectStack<E> {
 	
 	@Override
 	public boolean equals(Object aCompared) {
-		return aCompared instanceof ObjectStack && ((ObjectStack)aCompared).mObject == mObject;
+		return aCompared instanceof ObjectStack && ((ObjectStack<?>)aCompared).mObject == mObject;
 	}
 	
 	@Override

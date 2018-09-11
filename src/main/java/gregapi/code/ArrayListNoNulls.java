@@ -40,6 +40,7 @@ public class ArrayListNoNulls<E> extends ArrayList<E> {
 		super(aCapacity);
 	}
 	
+	@SafeVarargs
 	public ArrayListNoNulls(boolean aDummyParameter, E... aArray) {
 		super(Arrays.asList(aArray));
 		for (int i = 0; i < size(); i++) if (get(i) == null) remove(i--);

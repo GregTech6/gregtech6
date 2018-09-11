@@ -97,7 +97,7 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
     public static interface IMTE_GetLightOpacity					extends IMultiTileEntity {public int getLightOpacity();}
 	public static interface IMTE_GetBlocksMovement					extends IMultiTileEntity {public boolean getBlocksMovement();}
 	public static interface IMTE_ShouldSideBeRendered				extends IMultiTileEntity {public boolean shouldSideBeRendered(byte aSide);}
-	public static interface IMTE_AddCollisionBoxesToList			extends IMultiTileEntity {public void addCollisionBoxesToList(AxisAlignedBB aAABB, List aList, Entity aEntity);}
+	public static interface IMTE_AddCollisionBoxesToList			extends IMultiTileEntity {public void addCollisionBoxesToList(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity);}
 	public static interface IMTE_GetCollisionBoundingBoxFromPool	extends IMultiTileEntity {public AxisAlignedBB getCollisionBoundingBoxFromPool();}
 	public static interface IMTE_GetSelectedBoundingBoxFromPool		extends IMultiTileEntity {public AxisAlignedBB getSelectedBoundingBoxFromPool();}
 	public static interface IMTE_UpdateTick							extends IMultiTileEntity {public void updateTick(Random aRandom);}
@@ -234,12 +234,12 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	
 	public static interface IMTE_AddToolTips extends IMultiTileEntity {
 		/** Adds ToolTips to the Item. */
-		public void addToolTips(List aList, ItemStack aStack, boolean aF3_H);
+		public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H);
 	}
 	
 	public static interface IMTE_GetSubItems extends IMultiTileEntity {
 		/** Adds to the Creative Tab. return false to prevent it from being added. */
-		public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID);
+		public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID);
 	}
 	
 	public static interface IMTE_OnRegistration extends IMultiTileEntity {

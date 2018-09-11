@@ -43,7 +43,6 @@ import gregapi.block.IBlockToolable;
 import gregapi.block.metatype.BlockStones;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
-import gregapi.code.ItemStackContainer;
 import gregapi.config.ConfigCategories;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
@@ -96,8 +95,8 @@ import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.fluids.Fluid;
 
 public abstract class GT_Proxy extends Abstract_Proxy {
-	public final HashSetNoNulls<String> mSupporterListSilver = new HashSetNoNulls();
-	public final HashSetNoNulls<String> mSupporterListGold = new HashSetNoNulls();
+	public final HashSetNoNulls<String> mSupporterListSilver = new HashSetNoNulls<>();
+	public final HashSetNoNulls<String> mSupporterListGold = new HashSetNoNulls<>();
 	
 	public String mMessage = "";
 	
@@ -116,7 +115,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		super.onProxyBeforePreInit(aMod, aEvent);
 		new Thread(new Runnable() {@Override public void run() {
 		String[]
-		tSupporterListGoldDefault = new String[] {"Bear989Sr", "ElectroBot", "Ilirith", "Ngar", "Vash505", "stephen_2015", "mrgreenacid", "DarkYuan", "tyra_oa", "seregheru", "Sovereignty89", "TheWorstPHO", "e99999", "PrivateDijon", "djflippy", "TOFUFreak", "SweetyLizard", "repo_alt", "ihategravel22", "WindowsBunny", "abestone2", "crepes_r_us", "adamcirillo", "Buuz135", "123mcprorot123", "Schlaibi", "MarconosII", "k0jul", "Trilexcom", "laurynasl", "Axlegear", "mtimmerije", "FPSaddiction", "Yabdat", "Goshen", "InsaneyHaney", "KrotanHill", "buizerd007", "Lehran", "GrandKaiser", "kei_kouma", "Mehrin", "leagris", "BloodyAsp", "kehaan", "Mine_Sasha", "DarthUmbris"},
+		tSupporterListGoldDefault = new String[] {"Bear989Sr", "ElectroBot", "Ilirith", "Ngar", "Vash505", "stephen_2015", "mrgreenacid", "Asturrial", "DarkYuan", "tyra_oa", "seregheru", "Sovereignty89", "TheWorstPHO", "e99999", "PrivateDijon", "djflippy", "TOFUFreak", "SweetyLizard", "repo_alt", "ihategravel22", "WindowsBunny", "abestone2", "crepes_r_us", "adamcirillo", "Buuz135", "123mcprorot123", "Schlaibi", "MarconosII", "k0jul", "Trilexcom", "laurynasl", "Axlegear", "mtimmerije", "FPSaddiction", "Yabdat", "Goshen", "InsaneyHaney", "KrotanHill", "buizerd007", "Lehran", "GrandKaiser", "kei_kouma", "Mehrin", "leagris", "BloodyAsp", "kehaan", "Mine_Sasha", "DarthUmbris"},
 		tSupporterListSilverDefault = new String[] {"Bear989jr", "ultrasn0wz", "NanoHeart_", "Briareos1981", "XxinsanityxX", "Bladezz88", "Spungebubb", "estebes", "cmclouser", "ArchonCerulean", "Ray_CZ", "stepgoku", "phone1246", "msmilkshake", "Xyic0re", "FenixElite", "Nohicom", "pitchcherry", "MatthieuLeDieu", "Nicholas_Manuel", "Stijn_A", "negersvend", "jorstar", "Ralacroix", "ManuCortex", "Raganork", "TexanMD", "Morehatz", "MiniKatalyst", "Thanatos_00", "Goshen_Ithilien", "TheSkera", "LuxusDarkangel", "Ashleee", "Pit_of_Darkness", "DoughnutDev", "GeekTechMedia", "Heph", "Mileaos2", "CodingWithClass", "UltraPeeks", "boredi", "Lushiita", "Moothox", "fry_lad", "cdaser", "renadi", "hanakocz", "GeoStyx", "Beardedflea", "MysteryDump", "Flaver4", "x_Fame", "Azuxul", "manf", "Bimgo", "leagris", "IAmMinecrafter02", "Cerous", "Devilin_Pixy", "Bkarlsson87", "BadAlchemy", "CaballoCraft", "melanclock", "Resursator", "demanzke", "AndrewAmmerlaan", "Deathlycraft", "Jirajha", "Axlegear", "kei_kouma", "Dracion", "dungi", "Dorfschwein", "Zero Tw0", "mattiagraz85", "sebastiank30", "Plem", "invultri", "grillo126", "malcanteth", "Malevolence_", "Nicholas_Manuel", "Sirbab", "kehaan", "bpgames123", "semig0d", "9000bowser", "Sovereignty89", "Kris1432", "xander_cage_", "XanderT", "samuraijp", "bsaa", "SpwnX", "tworf", "Kadah", "kanni", "Stute", "Hegik", "Onlyme", "t3hero", "Hotchi", "jagoly", "Nullav"/*, "nallar"*/, "BH5432", "Sibmer", "inceee", "foxxx0", "Hartok", "TMSama", "Shlnen", "Carsso", "zessirb", "meep310", "Seldron", "yttr1um", "hohounk", "freebug", "Sylphio", "jmarler", "Saberawr", "r00teniy", "Neonbeta", "yinscape", "voooon24", "Quintine", "peach774", "lepthymo", "bildeman", "Kremnari", "Aerosalo", "OndraSter", "oscares91", "crdl_pls", "Daxx367x2", "EGERTRONx", "aka13_404", "Abouttabs", "Johnstaal", "djshiny99", "megatronp", "DZCreeper", "Kane_Hart", "Truculent", "vidplace7", "simon6689", "MomoNasty", "UnknownXLV", "goreacraft", "Fluttermine", "Daddy_Cecil", "MrMaleficus", "TigersFangs", "cublikefoot", "chainman564", "NikitaBuker", "Misha999777", "25FiveDetail", "AntiCivilBoy", "michaelbrady"/*, "xXxIceFirexXx"*/, "Asutoro", "Speedynutty68", "GarretSidzaka", "HallowCharm977", "mastermind1919", "The_Hypersonic", "diamondguy2798", "zF4ll3nPr3d4t0r", "CrafterOfMines57", "XxELIT3xSNIP3RxX", "SuterusuKusanagi", "xavier0014", "Ultimaheart4", "Ultimabunny4", "adamros", "alexbegt"};
 		
 		if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) {
@@ -289,7 +288,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		}
 	}
 	
-	private static final HashSetNoNulls<String> CHECKED_PLAYERS = new HashSetNoNulls();
+	private static final HashSetNoNulls<String> CHECKED_PLAYERS = new HashSetNoNulls<>();
 	
 	@SubscribeEvent
 	public void onPlayerInteraction(PlayerInteractEvent aEvent) {
@@ -372,7 +371,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						if (aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
 						return;
 					}
-					List<String> tChatReturn = new ArrayListNoNulls();
+					List<String> tChatReturn = new ArrayListNoNulls<>();
 					long tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, aStack.getItemDamage()*10000, 1, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 					UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 					if (tDamage > 0) {
@@ -393,7 +392,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
 			if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
 				if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
-					aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, ((ItemStackContainer)new ArrayListNoNulls(OP.arrowGtWood.mRegisteredItems).get(RNGSUS)).toStack()));
+					aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, new ArrayListNoNulls<>(OP.arrowGtWood.mRegisteredItems).get(RNGSUS).toStack()));
 					aEvent.entity.setDead();
 				}
 			}
@@ -457,7 +456,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		}
 	}
 	
-	public ArrayListNoNulls<EntityOcelot> mOcelots = new ArrayListNoNulls();
+	public ArrayListNoNulls<EntityOcelot> mOcelots = new ArrayListNoNulls<>();
 	
 	@SubscribeEvent
 	public void onEntityConstructingEvent(EntityConstructing aEvent) {
@@ -482,19 +481,19 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		}
 	}
 	
-	public Fluid addAutogeneratedLiquid(OreDictMaterial aMaterial, Set<String>... aFluidList) {return UT.Fluids.createLiquid(aMaterial, aFluidList);}
-	public Fluid addAutogeneratedLiquid(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return UT.Fluids.createPlasma(aMaterial, aTexture, aFluidList);}
-	public Fluid addAutogeneratedGas(OreDictMaterial aMaterial, Set<String>... aFluidList) {return UT.Fluids.createGas(aMaterial, aFluidList);}
-	public Fluid addAutogeneratedGas(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return UT.Fluids.createGas(aMaterial, aTexture, aFluidList);}
-	public Fluid addAutogeneratedMolten(OreDictMaterial aMaterial, Set<String>... aFluidList) {return UT.Fluids.createMolten(aMaterial, aFluidList);}
-	public Fluid addAutogeneratedMolten(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return UT.Fluids.createMolten(aMaterial, aTexture, aFluidList);}
-	public Fluid addAutogeneratedVapor(OreDictMaterial aMaterial, Set<String>... aFluidList) {return UT.Fluids.createVapour(aMaterial, aFluidList);}
-	public Fluid addAutogeneratedVaporized(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return UT.Fluids.createVapour(aMaterial, aTexture, aFluidList);}
-	public Fluid addAutogeneratedPlasma(OreDictMaterial aMaterial, Set<String>... aFluidList) {return UT.Fluids.createPlasma(aMaterial, aFluidList);}
-	public Fluid addAutogeneratedPlasma(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return UT.Fluids.createPlasma(aMaterial, aTexture, aFluidList);}
-	public Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, Set<String>... aFluidList) {return UT.Fluids.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFluidList);}	
-	public Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, Set<String>... aFluidList) {return UT.Fluids.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
-	public Fluid addFluid(String aName, IIconContainer aTexture, String aLocalized, OreDictMaterial aMaterial, short[] aRGBa, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, Set<String>... aFluidList) {return UT.Fluids.create(aName, aTexture, aLocalized, aMaterial, aRGBa, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
+	public Fluid addAutogeneratedLiquid(OreDictMaterial aMaterial, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createLiquid(aMaterial, aFluidList);}
+	public Fluid addAutogeneratedLiquid(OreDictMaterial aMaterial, IIconContainer aTexture, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createPlasma(aMaterial, aTexture, aFluidList);}
+	public Fluid addAutogeneratedGas(OreDictMaterial aMaterial, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createGas(aMaterial, aFluidList);}
+	public Fluid addAutogeneratedGas(OreDictMaterial aMaterial, IIconContainer aTexture, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createGas(aMaterial, aTexture, aFluidList);}
+	public Fluid addAutogeneratedMolten(OreDictMaterial aMaterial, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createMolten(aMaterial, aFluidList);}
+	public Fluid addAutogeneratedMolten(OreDictMaterial aMaterial, IIconContainer aTexture, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createMolten(aMaterial, aTexture, aFluidList);}
+	public Fluid addAutogeneratedVapor(OreDictMaterial aMaterial, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createVapour(aMaterial, aFluidList);}
+	public Fluid addAutogeneratedVaporized(OreDictMaterial aMaterial, IIconContainer aTexture, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createVapour(aMaterial, aTexture, aFluidList);}
+	public Fluid addAutogeneratedPlasma(OreDictMaterial aMaterial, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createPlasma(aMaterial, aFluidList);}
+	public Fluid addAutogeneratedPlasma(OreDictMaterial aMaterial, IIconContainer aTexture, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createPlasma(aMaterial, aTexture, aFluidList);}
+	public Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFluidList);}	
+	public Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
+	public Fluid addFluid(String aName, IIconContainer aTexture, String aLocalized, OreDictMaterial aMaterial, short[] aRGBa, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.create(aName, aTexture, aLocalized, aMaterial, aRGBa, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
 	
 	public boolean downloadSupporterListSilverFromMain() {
 		try {

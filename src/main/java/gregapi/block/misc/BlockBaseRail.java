@@ -85,7 +85,8 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_RAILSPEED) + LH.Chat.GREEN + (mSpeed/0.4F) + "x");
 	}
 	
@@ -113,7 +114,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(this);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
 	@Override public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess aWorld, int aX, int aY, int aZ) {return canCreatureSpawn(aWorld.getBlockMetadata(aX, aY, aZ));}
-	@Override public void getSubBlocks(Item aItem, CreativeTabs par2CreativeTabs, List aList) {aList.add(ST.make(aItem, 1, 0));}
+	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs par2CreativeTabs, @SuppressWarnings("rawtypes") List aList) {aList.add(ST.make(aItem, 1, 0));}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return ((mPowerRail||mDetectorRail?(aMeta&8)!=0:aMeta>=6)?mIconSecondary:mIconPrimary).getIcon(0);}
 	@Override public boolean isSealed(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}
 	@Override public Block getBlock() {return this;}
@@ -204,7 +205,8 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
     private void func_150054_a(World aWorld, int aX, int aY, int aZ, int aMetaData) {
         boolean flag = (aMetaData & 8) != 0;
         boolean flag1 = F;
-        List list = aWorld.getEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875));
+        @SuppressWarnings("unchecked")
+		List<EntityMinecart> list = aWorld.getEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875));
         
         if (!list.isEmpty()) flag1 = T;
         if (flag1 && !flag) {
@@ -234,9 +236,11 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
     @Override
 	public int getComparatorInputOverride(World aWorld, int aX, int aY, int aZ, int aSide) {
         if (mDetectorRail && (aWorld.getBlockMetadata(aX, aY, aZ) & 8) > 0) {
-            List list = aWorld.getEntitiesWithinAABB(EntityMinecartCommandBlock.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875));
-            if (list.size() > 0) return ((EntityMinecartCommandBlock)list.get(0)).func_145822_e().func_145760_g();
-            List list1 = aWorld.selectEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875), IEntitySelector.selectInventories);
+            @SuppressWarnings("unchecked")
+			List<EntityMinecartCommandBlock> list = aWorld.getEntitiesWithinAABB(EntityMinecartCommandBlock.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875));
+            if (list.size() > 0) return list.get(0).func_145822_e().func_145760_g();
+            @SuppressWarnings("unchecked")
+			List<EntityMinecart> list1 = aWorld.selectEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875), IEntitySelector.selectInventories);
             if (list1.size() > 0) return Container.calcRedstoneFromInventory((IInventory)list1.get(0));
         }
         return 0;

@@ -137,7 +137,7 @@ public interface ICover {
 	/**
 	 * Tooltip List for this Cover Type.
 	 */
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H);
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H);
 	
 	/**
 	 * Called when some Entity walks over this Cover.
@@ -188,7 +188,7 @@ public interface ICover {
 	public float[] getCoverBounds(byte aCoverSide, CoverData aData);
 	public float[] getHolderBounds(byte aCoverSide, CoverData aData);
 	
-	public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List aList, Entity aEntity);
+	public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity);
 	
 	public static final float[][] BOXES_COVERS  = new float[][] {{PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[14], PX_N[ 0]}, {PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]}, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]}, {PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]}, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]}, {PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]}};
 	public static final float[][] BOXES_HOLDERS = new float[][] {{PX_P[ 7], PX_P[ 0], PX_P[ 7], PX_N[ 7], PX_N[ 8], PX_N[ 7]}, {PX_P[ 7], PX_P[ 8], PX_P[ 7], PX_N[ 7], PX_N[ 0], PX_N[ 7]}, {PX_P[ 7], PX_P[ 7], PX_P[ 0], PX_N[ 7], PX_N[ 7], PX_N[ 8]}, {PX_P[ 7], PX_P[ 7], PX_P[ 8], PX_N[ 7], PX_N[ 7], PX_N[ 0]}, {PX_P[ 0], PX_P[ 7], PX_P[ 7], PX_N[ 8], PX_N[ 7], PX_N[ 7]}, {PX_P[ 8], PX_P[ 7], PX_P[ 7], PX_N[ 0], PX_N[ 7], PX_N[ 7]}};

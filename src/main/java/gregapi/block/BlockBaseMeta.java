@@ -45,5 +45,5 @@ public abstract class BlockBaseMeta extends BlockBaseSealable {
 	}
 	
 	@Override public IIcon getIcon(int aSide, int aMeta) {return mIcons[aMeta % mIcons.length].getIcon(0);}
-	@Override public void getSubBlocks(Item aItem, CreativeTabs aTab, List aList) {for (int i = 0; i < mMaxMeta; i++) aList.add(ST.make(aItem, 1, i));}
+	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {for (int i = 0; i < mMaxMeta; i++) aList.add(ST.make(aItem, 1, i));}
 }

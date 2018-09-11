@@ -68,15 +68,15 @@ public class CoverPump extends AbstractCoverAttachment {
 	public void onTickPre(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && !aData.mStopped && SERVER_TIME % 20 == 5 && aData.mTileEntity instanceof IFluidHandler) {
 			if (aData.mVisuals[aSide]==0) {
-				UT.Fluids.move(new DelegatorTileEntity(aData.mTileEntity, aSide), aData.mTileEntity.getAdjacentTank(aSide), mThroughput);
+				UT.Fluids.move(new DelegatorTileEntity<>(aData.mTileEntity, aSide), aData.mTileEntity.getAdjacentTank(aSide), mThroughput);
 			} else {
-				UT.Fluids.move(aData.mTileEntity.getAdjacentTank(aSide), new DelegatorTileEntity(aData.mTileEntity, aSide), mThroughput);
+				UT.Fluids.move(aData.mTileEntity.getAdjacentTank(aSide), new DelegatorTileEntity<>(aData.mTileEntity, aSide), mThroughput);
 			}
 		}
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(LH.Chat.CYAN + "Transfers " + mThroughput + " L/sec");
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));

@@ -105,7 +105,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
         public void generatePermutations() {
     		if (permutated) return;
     		
-            ArrayList<ItemStack> tDisplayStacks = new ArrayListNoNulls();
+            ArrayList<ItemStack> tDisplayStacks = new ArrayListNoNulls<>();
             for (ItemStack tStack : items) if (ST.valid(tStack)) {
                 if (ST.meta(tStack) == W) {
                     List<ItemStack> permutations = ItemList.itemMap.get(tStack.getItem());
@@ -131,8 +131,8 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	public class CachedDefaultRecipe extends CachedRecipe {
 		public final Recipe mRecipe;
 		
-		public final List<PositionedStack>	mOutputs	= new ArrayListNoNulls();
-		public final List<PositionedStack>	mInputs		= new ArrayListNoNulls();
+		public final List<PositionedStack>	mOutputs	= new ArrayListNoNulls<>();
+		public final List<PositionedStack>	mInputs		= new ArrayListNoNulls<>();
 		
 		@Override
 		public List<PositionedStack> getIngredients() {
@@ -473,7 +473,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aResult);
 			
-			ArrayList<ItemStack> tResults = new ArrayListNoNulls();
+			ArrayList<ItemStack> tResults = new ArrayListNoNulls<>();
 			tResults.add(aResult);
 			tResults.add(OM.get_(aResult));
 			
@@ -503,7 +503,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				}
 			}
 			
-			ArrayList<Recipe> tRecipes = new ArrayListNoNulls();
+			ArrayList<Recipe> tRecipes = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeMap.getNEIRecipes(tResults.toArray(ZL_IS))) if (!tRecipes.contains(tRecipe)) tRecipes.add(tRecipe);
 			for (Recipe tRecipe : tRecipes) arecipes.add(new CachedDefaultRecipe(tRecipe));
 		} catch(Throwable e) {
@@ -517,7 +517,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aInput);
 			
-			ArrayList<ItemStack> tInputs = new ArrayListNoNulls();
+			ArrayList<ItemStack> tInputs = new ArrayListNoNulls<>();
 			tInputs.add(aInput);
 			tInputs.add(OreDictManager.INSTANCE.getStack_(F, aInput));
 			
@@ -543,7 +543,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				}
 			}
 			
-			ArrayList<Recipe> tRecipes = new ArrayListNoNulls();
+			ArrayList<Recipe> tRecipes = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeMap.getNEIUsages(tInputs.toArray(ZL_IS))) if (!tRecipes.contains(tRecipe)) tRecipes.add(tRecipe);
 			for (Recipe tRecipe : tRecipes) arecipes.add(new CachedDefaultRecipe(tRecipe));
 		} catch(Throwable e) {

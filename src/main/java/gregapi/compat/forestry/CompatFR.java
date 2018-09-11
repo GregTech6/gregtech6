@@ -38,7 +38,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class CompatFR extends CompatBase implements ICompatFR, IFarmable {
-	public static ItemStackSet<ItemStackContainer> mWindfalls = new ItemStackSet();
+	public static ItemStackSet<ItemStackContainer> mWindfalls = new ItemStackSet<>();
 	
 	@Override
 	public void onPostLoad(FMLPostInitializationEvent aEvent) {

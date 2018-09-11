@@ -52,7 +52,7 @@ public class Slot_Normal extends Slot {
 	}
 	
 	public List<String> getTooltip(EntityPlayer aPlayer, boolean aF3_H) {
-		ArrayListNoNulls<String> rList = new ArrayListNoNulls();
+		ArrayListNoNulls<String> rList = new ArrayListNoNulls<>();
 		for (int i = 0; i < mToolTips.length; i++) {
 			if (mToolTipColors[i] == null) mToolTipColors[i] = LH.Chat.GRAY;
 			rList.add(mToolTipColors[i] + LH.get(mToolTips[i]));

@@ -91,13 +91,14 @@ public class ItemBase extends Item implements IItemProjectile, IItemUpdatable, I
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		if (getMaxDamage() > 0 && !getHasSubtypes()) aList.add((aStack.getMaxDamage() - getDamage(aStack)) + " / " + aStack.getMaxDamage());
 		if (mTooltip != null) aList.add(LanguageHandler.translate(mTooltip, mTooltip));
 		addAdditionalToolTips(aList, aStack, aF3_H);
 	}
 	
-	protected void addAdditionalToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	protected void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		//
 	}
 	

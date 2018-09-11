@@ -45,6 +45,7 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity instanceof MultiTileEntityPipeFluid) || ((MultiTileEntityPipeFluid)aData.mTileEntity).mTanks.length != 1;}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void onTickPost(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && !aData.mStopped && aTimer > 2 && aData.mTileEntity instanceof MultiTileEntityPipeFluid) {
 			FluidTankGT tTank = ((MultiTileEntityPipeFluid)aData.mTileEntity).mTanks[0];
@@ -62,7 +63,7 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(LH.Chat.CYAN + "Releases Fluids when Pipe is full.");
 		aList.add(LH.Chat.ORANGE + "Liquids require Tank in front!");

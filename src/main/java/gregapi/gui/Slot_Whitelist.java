@@ -30,7 +30,7 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class Slot_Whitelist extends Slot_Normal {
-	private ItemStackSet<ItemStackContainer> mWhiteList = new ItemStackSet();
+	private ItemStackSet<ItemStackContainer> mWhiteList = new ItemStackSet<>();
 	
 	public Slot_Whitelist(ITileEntityInventoryGUI aInventory, int aIndex, int aX, int aY, ItemStack... aValidStacks) {
 		super(aInventory, aIndex, aX, aY);

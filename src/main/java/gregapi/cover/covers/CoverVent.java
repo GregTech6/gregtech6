@@ -66,7 +66,7 @@ public class CoverVent extends AbstractCoverAttachment {
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		if (MD.GC.mLoaded) aList.add(LH.Chat.ORANGE + "Doesn't work on other Planets!");
 	}

@@ -48,7 +48,7 @@ public class Drops_SmallOre extends Drops {
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, short aMetaData, TileEntity aTileEntity, int aFortune, boolean aSilkTouch) {
-		ArrayList<ItemStack> rList = new ArrayListNoNulls();
+		ArrayList<ItemStack> rList = new ArrayListNoNulls<>();
 		OreDictMaterial aMaterial = aBlock.getMetaMaterial(aMetaData);
 		if (aMaterial != null) aMaterial = aMaterial.mTargetCrushing.mMaterial;
 		
@@ -67,7 +67,7 @@ public class Drops_SmallOre extends Drops {
 				if (tStack != null && tRandom.nextInt(aSilkTouch?5000:10000) <= aFortune) {
 					rList.add(tStack);
 				} else {
-					ArrayList<ItemStack> tSelector = new ArrayListNoNulls();
+					ArrayList<ItemStack> tSelector = new ArrayListNoNulls<>();
 					tStack = OP.gemExquisite.mat(aMaterial, OP.gem.mat(aMaterial, 1), 1);
 					if (tStack != null) for (int i = 0, j = (aSilkTouch? 3: 1); i < j; i++) tSelector.add(tStack);
 					tStack = OP.gemFlawless.mat(aMaterial, OP.gem.mat(aMaterial, 1), 1);

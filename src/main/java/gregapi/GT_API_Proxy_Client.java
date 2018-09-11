@@ -248,7 +248,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		}
 	}
 	
-	public static final List<short[]> sRainbow = new ArrayListNoNulls(), sPosR = new ArrayListNoNulls(), sPosG = new ArrayListNoNulls(), sPosB = new ArrayListNoNulls(), sPosA = new ArrayListNoNulls(), sNegR = new ArrayListNoNulls(), sNegG = new ArrayListNoNulls(), sNegB = new ArrayListNoNulls(), sNegA = new ArrayListNoNulls();
+	public static final List<short[]> sRainbow = new ArrayListNoNulls<>(), sPosR = new ArrayListNoNulls<>(), sPosG = new ArrayListNoNulls<>(), sPosB = new ArrayListNoNulls<>(), sPosA = new ArrayListNoNulls<>(), sNegR = new ArrayListNoNulls<>(), sNegG = new ArrayListNoNulls<>(), sNegB = new ArrayListNoNulls<>(), sNegA = new ArrayListNoNulls<>();
 	
 	@SubscribeEvent
 	public void onTextureStitchedPre(TextureStitchEvent.Pre aEvent) {
@@ -368,7 +368,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (tData.mPrefix.contains(TD.Prefix.NEEDS_SHARPENING	)) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_SHARPENING));
 					if (tData.mPrefix.contains(TD.Prefix.NEEDS_HANDLE		)) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_HANDLE) + LH.Chat.WHITE + tData.mMaterial.mMaterial.mHandleMaterial.getLocal());
 					
-					ArrayListNoNulls<Integer> tShapelessAmounts = new ArrayListNoNulls();
+					ArrayListNoNulls<Integer> tShapelessAmounts = new ArrayListNoNulls<>();
 					for (AdvancedCrafting1ToY tHandler : tData.mPrefix.mShapelessManagersSingle	) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(1);
 					for (AdvancedCraftingXToY tHandler : tData.mPrefix.mShapelessManagers		) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(tHandler.mInputCount);
 					if (!tShapelessAmounts.isEmpty()) {
@@ -467,7 +467,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				if (!SHOW_MICROBLOCKS && NEI) for (ItemStack aStack : new ItemStack[] {ST.make(MD.FMB, "microblock", 1, W), ST.make(MD.ExU, "microblocks", 1, W), ST.make(MD.AE, "item.ItemFacade", 1, W)}) if (ST.valid(aStack)) {
 					ST.hide(aStack);
 					
-					List<ItemStack> tList = new ArrayListNoNulls();
+					List<ItemStack> tList = new ArrayListNoNulls<>();
 					aStack.getItem().getSubItems(aStack.getItem(), CreativeTabs.tabAllSearch, tList);
 					for (ItemStack tStack : tList) ST.hide(tStack);
 				}

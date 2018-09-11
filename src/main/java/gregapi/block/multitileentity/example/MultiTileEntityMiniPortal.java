@@ -94,14 +94,15 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addToolTips(@SuppressWarnings("rawtypes") List aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(sToolTipFunction1));
 		aList.add(Chat.CYAN		+ LH.get(sToolTipFunction2));
 		addToolTips2(aList, aStack, aF3_H);
 		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_CHUNKLOADER));
 	}
 	
-	public void addToolTips2(List aList, ItemStack aStack, boolean aF3_H) {/**/}
+	public void addToolTips2(List<String> aList, ItemStack aStack, boolean aF3_H) {/**/}
 	
 	@Override
 	public void onTickFirst(boolean aIsServerSide) {
@@ -317,7 +318,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	
 	@Override
 	public DelegatorTileEntity<TileEntity> getDelegateTileEntity(byte aSide) {
-		if (mTarget == null) return new DelegatorTileEntity(this, aSide);
+		if (mTarget == null) return new DelegatorTileEntity<TileEntity>(this, aSide);
 		return mTarget.getAdjacentTileEntity(OPPOSITES[aSide]);
 	}
 	

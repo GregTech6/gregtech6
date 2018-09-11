@@ -58,7 +58,7 @@ public interface ITagDataContainer<C> {
 	 * This simple Class is an example on how to implement the Functions of this Interface
 	 */
 	public static final class BasicTagDataContainer implements ITagDataContainer<BasicTagDataContainer> {
-		private final Set<TagData> mTags = new HashSetNoNulls();
+		private final Set<TagData> mTags = new HashSetNoNulls<>();
 		
 		@Override
 		public boolean contains(TagData aTag) {

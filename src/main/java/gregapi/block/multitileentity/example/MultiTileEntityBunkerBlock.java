@@ -61,7 +61,8 @@ public class MultiTileEntityBunkerBlock extends TileEntityBase05Paintable implem
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addToolTips(@SuppressWarnings("rawtypes") List aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE + LH.get(LH.OWNER_CONTROLLED));
 	}
 	

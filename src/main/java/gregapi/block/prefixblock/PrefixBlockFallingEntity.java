@@ -95,6 +95,7 @@ public class PrefixBlockFallingEntity extends EntityFallingBlock {
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	protected void fall(float p_70069_1_) {
 		int i = MathHelper.ceiling_float_int(p_70069_1_ - 1.0F);
 		if (i > 0) for (Entity tEntity : new ArrayListNoNulls<Entity>(worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox))) {

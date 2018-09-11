@@ -19,8 +19,6 @@
 
 package gregtech;
 
-
-
 public class GT_Server extends GT_Proxy {
-	//
+	// Will this ever get used actually? Can't think of Serverside Only Stuff that isn't also in Singleplayer
 }

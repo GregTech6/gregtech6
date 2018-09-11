@@ -180,21 +180,21 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override public DelegatorTileEntity<IInventory			> getAdjacentInventory		(byte aSide) {return getAdjacentInventory(aSide, T, F);}
 	@Override public DelegatorTileEntity<ISidedInventory	> getAdjacentSidedInventory	(byte aSide) {return getAdjacentSidedInventory(aSide, T, F);}
 	@Override public DelegatorTileEntity<IFluidHandler		> getAdjacentTank			(byte aSide) {return getAdjacentTank(aSide, T, F);}
-	@Override public DelegatorTileEntity<IInventory			> getAdjacentInventory		(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity(tDelegator.mTileEntity instanceof IInventory		?(IInventory		)tDelegator.mTileEntity:null, tDelegator);}
-	@Override public DelegatorTileEntity<ISidedInventory	> getAdjacentSidedInventory	(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity(tDelegator.mTileEntity instanceof ISidedInventory	?(ISidedInventory	)tDelegator.mTileEntity:null, tDelegator);}
-	@Override public DelegatorTileEntity<IFluidHandler		> getAdjacentTank			(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity(tDelegator.mTileEntity instanceof IFluidHandler		?(IFluidHandler		)tDelegator.mTileEntity:null, tDelegator);}
+	@Override public DelegatorTileEntity<IInventory			> getAdjacentInventory		(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof IInventory		?(IInventory		)tDelegator.mTileEntity:null, tDelegator);}
+	@Override public DelegatorTileEntity<ISidedInventory	> getAdjacentSidedInventory	(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof ISidedInventory	?(ISidedInventory	)tDelegator.mTileEntity:null, tDelegator);}
+	@Override public DelegatorTileEntity<IFluidHandler		> getAdjacentTank			(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof IFluidHandler	?(IFluidHandler		)tDelegator.mTileEntity:null, tDelegator);}
 	
 	@Override
 	public DelegatorTileEntity<TileEntity> getAdjacentTileEntity(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {
 		TileEntity tTileEntity = getTileEntityAtSideAndDistance(aSide, 1);
-		if (tTileEntity == null) return new DelegatorTileEntity(null, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide]);
-		if (aNotConnectToDelegators && tTileEntity instanceof ITileEntityCanDelegate && ((ITileEntityCanDelegate)tTileEntity).isExtender(aSide)) return new DelegatorTileEntity(null, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide]);
+		if (tTileEntity == null) return new DelegatorTileEntity<>(null, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide]);
+		if (aNotConnectToDelegators && tTileEntity instanceof ITileEntityCanDelegate && ((ITileEntityCanDelegate)tTileEntity).isExtender(aSide)) return new DelegatorTileEntity<>(null, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide]);
 		if (aAllowDelegates && tTileEntity instanceof ITileEntityDelegating) return ((ITileEntityDelegating)tTileEntity).getDelegateTileEntity(OPPOSITES[aSide]);
-		return new DelegatorTileEntity(tTileEntity, tTileEntity.getWorldObj(), tTileEntity.xCoord, tTileEntity.yCoord, tTileEntity.zCoord, OPPOSITES[aSide]);
+		return new DelegatorTileEntity<>(tTileEntity, tTileEntity.getWorldObj(), tTileEntity.xCoord, tTileEntity.yCoord, tTileEntity.zCoord, OPPOSITES[aSide]);
 	}
 	
 	public List<DelegatorTileEntity<TileEntity>> allAdjacentTileEntities(boolean aAllowDelegates, boolean aNotConnectToDelegators) {
-		ArrayListNoNulls<DelegatorTileEntity<TileEntity>> rDelegates = new ArrayListNoNulls();
+		ArrayListNoNulls<DelegatorTileEntity<TileEntity>> rDelegates = new ArrayListNoNulls<>();
 		for (byte tSide : ALL_SIDES_VALID) {
 			DelegatorTileEntity<TileEntity> tDelegate = getAdjacentTileEntity(tSide, aAllowDelegates, aNotConnectToDelegators);
 			if (tDelegate.mTileEntity != null) rDelegates.add(tDelegate);
@@ -637,8 +637,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return F;}
 	public long getEnergyStored(TagData aEnergyType, byte aSide) {return 0;}
 	public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return 0;}
-	public Collection<TagData> getEnergyTypes(byte aSide) {return Collections.EMPTY_LIST;}
-	public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return Collections.EMPTY_LIST;}
+	public Collection<TagData> getEnergyTypes(byte aSide) {return Collections.emptyList();}
+	public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return Collections.emptyList();}
 	
 	public boolean isEnergyEmittingTo   (TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && getSurfaceSizeAttachable(aSide) > 0;}
 	public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F) && getSurfaceSizeAttachable(aSide) > 0;}
@@ -840,23 +840,23 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public AxisAlignedBB box(float[] aBox) {return AxisAlignedBB.getBoundingBox(xCoord+aBox[0], yCoord+aBox[1], zCoord+aBox[2], xCoord+aBox[3], yCoord+aBox[4], zCoord+aBox[5]);}
 	public AxisAlignedBB box() {return AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord+1, yCoord+1, zCoord+1);}
 	
-	public boolean box(AxisAlignedBB aAABB, List aList, double aMinX, double aMinY, double aMinZ, double aMaxX, double aMaxY, double aMaxZ) {
+	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, double aMinX, double aMinY, double aMinZ, double aMaxX, double aMaxY, double aMaxZ) {
 		AxisAlignedBB tBox = box(aMinX, aMinY, aMinZ, aMaxX, aMaxY, aMaxZ);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
-	public boolean box(AxisAlignedBB aAABB, List aList, double[] aBox) {
+	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, double[] aBox) {
 		AxisAlignedBB tBox = box(aBox[0], aBox[1], aBox[2], aBox[3], aBox[4], aBox[5]);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
-	public boolean box(AxisAlignedBB aAABB, List aList, float[] aBox) {
+	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, float[] aBox) {
 		AxisAlignedBB tBox = box(aBox[0], aBox[1], aBox[2], aBox[3], aBox[4], aBox[5]);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
-	public boolean box(AxisAlignedBB aAABB, List aList) {
+	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList) {
 		AxisAlignedBB tBox = box(0, 0, 0, 1, 1, 1);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
-	public boolean box(AxisAlignedBB aBox, AxisAlignedBB aAABB, List aList) {
+	public boolean box(AxisAlignedBB aBox, AxisAlignedBB aAABB, List<AxisAlignedBB> aList) {
 		return aBox != null && aBox.intersectsWith(aAABB) && aList.add(aBox);
 	}
 	

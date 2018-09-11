@@ -44,7 +44,7 @@ public class CoverFilterFluid extends AbstractCoverAttachment {
 	public CoverFilterFluid() {}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		FluidStack tFluid = UT.Fluids.load(aStack.getTagCompound(), "gt.filter.fluid");
 		if (tFluid != null && tFluid.getFluid() != null) aList.add(LH.Chat.CYAN + UT.Fluids.name(tFluid, T));
 		aList.add(LH.Chat.ORANGE + "Not NBT sensitive!");

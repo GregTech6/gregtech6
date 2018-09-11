@@ -34,28 +34,29 @@ public class HashSetNoNulls<E> extends AbstractSet<E> {
     private static final Object OBJECT = new Object();
     
     public HashSetNoNulls() {
-        map = new HashMap();
+        map = new HashMap<>();
     }
     
     public HashSetNoNulls(Collection<? extends E> c) {
-        map = new HashMap(Math.max((int) (c.size()/.75f) + 1, 16));
+        map = new HashMap<>(Math.max((int) (c.size()/.75f) + 1, 16));
         addAll(c);
     }
     
+	@SafeVarargs
 	public HashSetNoNulls(boolean aDummyParameter, E... aArray) {
 		this(Arrays.asList(aArray));
 	}
 	
     public HashSetNoNulls(int initialCapacity, float loadFactor) {
-        map = new HashMap(initialCapacity, loadFactor);
+        map = new HashMap<>(initialCapacity, loadFactor);
     }
     
     public HashSetNoNulls(int initialCapacity) {
-        map = new HashMap(initialCapacity);
+        map = new HashMap<>(initialCapacity);
     }
     
     HashSetNoNulls(int initialCapacity, float loadFactor, boolean dummy) {
-        map = new LinkedHashMap(initialCapacity, loadFactor);
+        map = new LinkedHashMap<>(initialCapacity, loadFactor);
     }
     
     @Override

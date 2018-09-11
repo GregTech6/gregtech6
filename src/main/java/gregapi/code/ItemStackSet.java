@@ -38,27 +38,28 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
     private static final Object OBJECT = new Object();
     
     public ItemStackSet() {
-        map = new HashMap();
+        map = new HashMap<>();
         GT_API.STACKMAPS.add(map);
     }
     
     public ItemStackSet(Collection<? extends E> c) {
-        map = new HashMap(Math.max((int) (c.size()/.75f) + 1, 16));
+        map = new HashMap<>(Math.max((int) (c.size()/.75f) + 1, 16));
         addAll(c);
         GT_API.STACKMAPS.add(map);
     }
     
     public ItemStackSet(int initialCapacity, float loadFactor) {
-        map = new HashMap(initialCapacity, loadFactor);
+        map = new HashMap<>(initialCapacity, loadFactor);
         GT_API.STACKMAPS.add(map);
     }
     
     public ItemStackSet(int initialCapacity) {
-        map = new HashMap(initialCapacity);
+        map = new HashMap<>(initialCapacity);
         GT_API.STACKMAPS.add(map);
     }
     
-    @Override
+	@Override
+    @SuppressWarnings("unchecked")
 	public Iterator<E> iterator() {
         return (Iterator<E>)map.keySet().iterator();
     }

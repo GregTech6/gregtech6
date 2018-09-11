@@ -44,8 +44,8 @@ import net.minecraft.item.ItemStack;
  */
 public class MultiTileEntityMiniPortalEndOfTime extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalEndOfTime>
-	sListEndOfTimeSide = new ArrayListNoNulls(),
-	sListWorldSide  = new ArrayListNoNulls();
+	sListEndOfTimeSide = new ArrayListNoNulls<>(),
+	sListWorldSide  = new ArrayListNoNulls<>();
 	
 	static {
 		LH.add("gt.tileentity.portal.endoftime.tooltip.1", "Only works between the Last Millenium and the Overworld with a x128 Distance Factor!");
@@ -54,7 +54,7 @@ public class MultiTileEntityMiniPortalEndOfTime extends MultiTileEntityMiniPorta
 	}
 	
 	@Override
-	public void addToolTips2(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips2(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.endoftime.tooltip.1"));
 		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.endoftime.tooltip.2"));
 		aList.add(Chat.ORANGE	+ LH.get("gt.tileentity.portal.endoftime.tooltip.3"));

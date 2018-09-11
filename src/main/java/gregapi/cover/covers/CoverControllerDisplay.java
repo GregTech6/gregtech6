@@ -86,7 +86,7 @@ public class CoverControllerDisplay extends AbstractCoverAttachmentController {
 	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}
 	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
-	@Override public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {super.addToolTips(aList, aStack, aF3_H); aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));}
+	@Override public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {super.addToolTips(aList, aStack, aF3_H); aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));}
 	
 	public static final ITexture[][] sTextures = new ITexture[][] {{
 		  BlockTextureDefault.get("machines/covers/statusdisplay/bottom/1_off", T)

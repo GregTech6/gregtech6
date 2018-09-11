@@ -35,6 +35,7 @@ import net.minecraftforge.fluids.IFluidTank;
  * 
  * Class containing all known Fluid Names
  */
+@SuppressWarnings("unchecked")
 public enum FL {
 	  Error						("error")
 	, UUM						("ic2uumatter"												, SIMPLE, LIQUID)

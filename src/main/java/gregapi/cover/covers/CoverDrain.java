@@ -105,7 +105,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(LH.Chat.CYAN + "Collects Fluid Blocks (if not against Gravity)");
 		aList.add(LH.Chat.CYAN + "Collects Rainwater (not in Dry or Cold Areas)");

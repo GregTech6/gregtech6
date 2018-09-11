@@ -136,7 +136,7 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 		return T;
 	}
 	
-	private ItemStackSet<ItemStackContainer> mToBlacklist = new ItemStackSet();
+	private ItemStackSet<ItemStackContainer> mToBlacklist = new ItemStackSet<>();
 	
 	@Override
 	public boolean blacklist(ItemStack aBlacklisted) {
