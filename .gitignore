@@ -40,3 +40,4 @@
 # Some old scripts in resources...
 !/src/main/resources/**/*.bat
 !/src/main/resources/**/*.txt
+/bin/
