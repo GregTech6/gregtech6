@@ -561,6 +561,7 @@ public class ContainerCommon extends Container {
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	protected Slot addSlotToContainer(Slot aSlot) {
 		if (aSlot == null) return null;
 		aSlot.slotNumber = inventorySlots.size();
@@ -579,7 +580,8 @@ public class ContainerCommon extends Container {
 	}
 	
 	@Override
-	public List getInventory() {
+	@SuppressWarnings("unchecked")
+	public List<ItemStack> getInventory() {
 		try {
 			return super.getInventory();
 		} catch(Throwable e) {
@@ -598,6 +600,7 @@ public class ContainerCommon extends Container {
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void detectAndSendChanges() {
 		try {
 			for (int i = 0; i < inventorySlots.size(); ++i) {

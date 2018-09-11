@@ -101,7 +101,8 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
 		if (tTileEntityContainer == null) {aList.add("INVALID ITEM! THIS IS A BUG IF ACQUIRED IN A LEGIT WAY!"); return;}
 		if (tTileEntityContainer.mTileEntity instanceof IMTE_AddToolTips) try {((IMTE_AddToolTips)tTileEntityContainer.mTileEntity).addToolTips(aList, aStack, aF3_H);} catch(Throwable e) {e.printStackTrace(ERR);}
@@ -140,7 +141,8 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item aItem, CreativeTabs aTab, List aList) {
+	@SuppressWarnings("unchecked")
+	public void getSubItems(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {
 		if (aTab instanceof CreativeTab) {
 			for (MultiTileEntityClassContainer tClass : mBlock.mMultiTileEntityRegistry.mRegistrations) if (!tClass.mHidden || SHOW_HIDDEN_ITEMS) if (((CreativeTab)aTab).mMetaData == tClass.mCreativeTabID) if (!(tClass.mCanonicalTileEntity instanceof IMTE_GetSubItems) || ((IMTE_GetSubItems)tClass.mCanonicalTileEntity).getSubItems(mBlock, aItem, aTab, aList, tClass.mID)) aList.add(mBlock.mMultiTileEntityRegistry.getItem(tClass.mID));
 		} else {
@@ -255,7 +257,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	@Override
 	public OreDictItemData getOreDictItemData(ItemStack aStack) {
 		OreDictItemData rData = OM.data(aStack);
-		ArrayListNoNulls<OreDictItemData> rList = new ArrayListNoNulls(F, rData);
+		ArrayListNoNulls<OreDictItemData> rList = new ArrayListNoNulls<>(F, rData);
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof ITileEntityCoverable) {
 			CoverData tCoverData = ((ITileEntityCoverable)tTileEntityContainer.mTileEntity).getCoverData();
@@ -443,7 +445,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	public Collection<TagData> getEnergyTypes(ItemStack aStack) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemEnergy) return ((IItemEnergy)tTileEntityContainer.mTileEntity).getEnergyTypes(aStack);
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 	@Override
 	public long doEnergyInjection(TagData aEnergyType, ItemStack aStack, long aSize, long aAmount, IInventory aInventory, World aWorld, int aX, int aY, int aZ, boolean aDoInject) {

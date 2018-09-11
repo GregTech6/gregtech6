@@ -103,7 +103,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
 	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return isSideSolid(aMeta, aSide);}
-	@Override public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List aList, boolean aF3_H) {/**/}
+	@Override public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {/**/}
 	@Override public float getExplosionResistance(int aMeta) {return 10.0F;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.block.mDefaultStackSize);}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}

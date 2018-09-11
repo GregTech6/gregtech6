@@ -46,7 +46,8 @@ public class ItemBlockBase extends ItemBlock {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		super.addInformation(aStack, aPlayer, aList, aF3_H);
 		short aMeta = ST.meta(aStack);
 		mPlaceable.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);

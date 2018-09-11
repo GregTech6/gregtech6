@@ -225,10 +225,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent public void onWorldLoad(WorldEvent.Load aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	
-	public  static final List<ITileEntityServerTickPre	> SERVER_TICK_PRE					= new ArrayListNoNulls(), SERVER_TICK_PR2 = new ArrayListNoNulls();
-	public  static final List<ITileEntityServerTickPost	> SERVER_TICK_POST					= new ArrayListNoNulls(), SERVER_TICK_PO2T = new ArrayListNoNulls();
-	public  static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES		= new ArrayListNoNulls();
-	private static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES_2	= new ArrayListNoNulls();
+	public  static final List<ITileEntityServerTickPre	> SERVER_TICK_PRE					= new ArrayListNoNulls<>(), SERVER_TICK_PR2 = new ArrayListNoNulls<>();
+	public  static final List<ITileEntityServerTickPost	> SERVER_TICK_POST					= new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
+	public  static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES		= new ArrayListNoNulls<>();
+	private static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES_2	= new ArrayListNoNulls<>();
 	
 	@SubscribeEvent
 	public void onServerTick(ServerTickEvent aEvent) {
@@ -236,7 +236,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			if (aEvent.phase == Phase.START) {
 				if (SERVER_TIME++ == 0) {
 			    	OUT.println("GT_API: Unificating outputs of all known Recipe Types.");
-			    	HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls(10000);
+			    	HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
 			    	
 			    	if (MD.IC2.mLoaded) try {
 			    	OUT.println("GT_API: IC2 Machines");
@@ -296,13 +296,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				    }
 				    
 			        OUT.println("GT_API: Cleaning up all OreDict Crafting Recipes, which have an empty List in them, since they are never meeting any Condition.");
-			        List tList = CraftingManager.getInstance().getRecipeList();
+					@SuppressWarnings("unchecked")
+					List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
 			        for (int i = 0; i < tList.size(); i++) {
 			        	Object tRecipe = tList.get(i);
 			        	if (tRecipe instanceof ShapedOreRecipe) {
 			        		Object[] tInput = ((ShapedOreRecipe)tRecipe).getInput();
 			        		for (int j = 0; j < tInput.length; j++) {
-			        			if (tInput[j] instanceof List && ((List)tInput[j]).isEmpty()) {
+			        			if (tInput[j] instanceof List && ((List<?>)tInput[j]).isEmpty()) {
 //			        				DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
 			        				tList.remove(i--);
 			        				break;
@@ -311,7 +312,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			        	} else if (tRecipe instanceof ShapelessOreRecipe) {
 			        		ArrayList<Object> tInput = ((ShapelessOreRecipe)tRecipe).getInput();
 			        		for (int j = 0; j < tInput.size(); j++) {
-			        			if (tInput.get(j) instanceof List && ((List)tInput.get(j)).isEmpty()) {
+			        			if (tInput.get(j) instanceof List && ((List<?>)tInput.get(j)).isEmpty()) {
 //			        				DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
 			        				tList.remove(i--);
 			        				break;
@@ -393,7 +394,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent
 	public void onWorldTick(WorldTickEvent aEvent) {
 		if (aEvent.side.isServer() && aEvent.phase == Phase.END) {
-			ArrayListNoNulls<EntityXPOrb> tOrbs = (XP_ORB_COMBINING && SERVER_TIME % 40 == 31 ? new ArrayListNoNulls(128) : null);
+			ArrayListNoNulls<EntityXPOrb> tOrbs = (XP_ORB_COMBINING && SERVER_TIME % 40 == 31 ? new ArrayListNoNulls<EntityXPOrb>(128) : null);
 			
 			for (int i = 0; i < aEvent.world.loadedEntityList.size(); i++) {
 				Entity aEntity = (Entity)aEvent.world.loadedEntityList.get(i);
@@ -437,8 +438,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					}
 				} else if (aEntity instanceof EntityLivingBase) {
 				   	if (ENTITY_CRAMMING > 0 && SERVER_TIME % 50 == 0 && !(aEntity instanceof EntityPlayer) && ((EntityLivingBase)aEntity).canBePushed() && ((EntityLivingBase)aEntity).getHealth() > 0) {
-			 			List tList = aEntity.worldObj.getEntitiesWithinAABBExcludingEntity(aEntity, aEntity.boundingBox.expand(0.2, 0.0, 0.2));
-			 			Class tClass = aEntity.getClass();
+			 			List<?> tList = aEntity.worldObj.getEntitiesWithinAABBExcludingEntity(aEntity, aEntity.boundingBox.expand(0.2, 0.0, 0.2));
+			 			Class<? extends Entity> tClass = aEntity.getClass();
 			 			int aEntityCount = 1;
 			 			if (tList != null) for (int j = 0; j < tList.size(); j++) if (tList.get(j) != null && tList.get(j).getClass() == tClass) aEntityCount++;
 			 			if (aEntityCount > ENTITY_CRAMMING) aEntity.attackEntityFrom(DamageSource.inWall, aEntityCount - ENTITY_CRAMMING);
@@ -614,7 +615,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		Chunk tChunk = aEvent.player.worldObj.getChunkFromChunkCoords(aEvent.chunk.chunkXPos, aEvent.chunk.chunkZPos);
 		if (tChunk != null && tChunk.isTerrainPopulated) {
 			byte tIterations = 8;
-			HashSetNoNulls<Object> tSet = new HashSetNoNulls();
+			HashSetNoNulls<Object> tSet = new HashSetNoNulls<>();
 			while (tIterations-->0) try {
 				for (Object tTileEntity : tChunk.chunkTileEntityMap.values()) if (tTileEntity instanceof ITileEntitySynchronising) if (tSet.add(tTileEntity)) ((ITileEntitySynchronising)tTileEntity).sendUpdateToPlayer(aEvent.player);
 				tIterations = 0;
@@ -765,7 +766,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						return;
 					}
 					if (IL.RC_Crowbar_Iron.equal(aStack, T, T) || IL.RC_Crowbar_Steel.equal(aStack, T, T) || IL.RC_Crowbar_Thaumium.equal(aStack, T, T) || IL.RC_Crowbar_Voidmetal.equal(aStack, T, T)) {
-						List<String> tChatReturn = new ArrayListNoNulls();
+						List<String> tChatReturn = new ArrayListNoNulls<>();
 						long tDamage = IBlockToolable.Util.onToolClick(TOOL_crowbar, Long.MAX_VALUE, 2, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
@@ -777,7 +778,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						return;
 					}
 					if (IL.FR_Scoop.equal(aStack, T, T)) {
-						List<String> tChatReturn = new ArrayListNoNulls();
+						List<String> tChatReturn = new ArrayListNoNulls<>();
 						long tDamage = IBlockToolable.Util.onToolClick(TOOL_scoop, Long.MAX_VALUE, 0, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
@@ -816,7 +817,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				return;
 			}
 			if (aEvent.block instanceof IBlockPlacable) {
-				if (BlocksGT.stoneToBrokenOres.containsValue(aEvent.block) || BlocksGT.stoneToNormalOres.containsValue(aEvent.block) || BlocksGT.stoneToSmallOres.containsValue(aEvent.block)) {
+				if (BlocksGT.stoneToBrokenOres.containsValue((IBlockPlacable)aEvent.block) || BlocksGT.stoneToNormalOres.containsValue((IBlockPlacable)aEvent.block) || BlocksGT.stoneToSmallOres.containsValue((IBlockPlacable)aEvent.block)) {
 					aEvent.newSpeed /= HARDNESS_MULTIPLIER_ORES;
 					return;
 				}
@@ -896,7 +897,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 	}
 	
-	public static List<EntityPlayerMP> mNewPlayers = new ArrayListNoNulls();
+	public static List<EntityPlayerMP> mNewPlayers = new ArrayListNoNulls<>();
 	
 	@SubscribeEvent
 	public void onLivingDeath(LivingDeathEvent aEvent) {

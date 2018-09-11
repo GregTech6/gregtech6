@@ -56,7 +56,7 @@ public class TD {
 		public static final TagData WIRE_LASER								= TagData.createTagData("CONNECTORS.WIRE_LASER", "Laser Wire");
 		
 		/** Contains all known Energy Tags, which are related to Item Transport. */
-		public static final List<TagData> ALL_ITEM_TRANSPORT				= new ArrayListNoNulls(F, PNEUMATIC_ITEM);
+		public static final List<TagData> ALL_ITEM_TRANSPORT				= new ArrayListNoNulls<>(F, PNEUMATIC_ITEM);
 	}
 	
 	/** For Energy Systems. You can create your own kind of Energy too of course, but I have added some Defaults in order to make things simpler. */
@@ -185,32 +185,32 @@ public class TD {
 		/** Energy Tag for Perditio Vis. In MilliVis Units. 10 = 1 CentiVis. 1000 = 1 Full Vis. */
 		public static final TagData VIS_PERDITIO							= TagData.createTagData("ENERGY.VIS_PERDITIO", "Perditio", "Perditio Vis", LH.Chat.BLACK);
 		/** Set of Energy Tags which are of the Vis Type. In MilliVis Units. 10 = 1 CentiVis. 1000 = 1 Full Vis. The Acronym "VIS" stands for "Very Interesting Stuff" */
-		public static final List<TagData> VIS								= new ArrayListNoNulls(F, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO);
+		public static final List<TagData> VIS								= new ArrayListNoNulls<>(F, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO);
 		
 		/** Contains all known Energy Tags. */
-		public static final List<TagData> ALL								= new ArrayListNoNulls(F, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO, STEAM, MJ, RF, AU, QU, MU, LU, HU, CU, KU, RU, EU, NU, TU);
+		public static final List<TagData> ALL								= new ArrayListNoNulls<>(F, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO, STEAM, MJ, RF, AU, QU, MU, LU, HU, CU, KU, RU, EU, NU, TU);
 		/** Contains all known Energy Tags, which can be converted to or from RF. */
-		public static final List<TagData> ALL_RF							= new ArrayListNoNulls(F, MJ, RF, KU);
+		public static final List<TagData> ALL_RF							= new ArrayListNoNulls<>(F, MJ, RF, KU);
 		/** Contains all known Energy Tags, which are worth exactly 1 EU. */
-		public static final List<TagData> ALL_EU							= new ArrayListNoNulls(F, AU, QU, MU, LU, KU, RU, EU, HU, NU, CU);
+		public static final List<TagData> ALL_EU							= new ArrayListNoNulls<>(F, AU, QU, MU, LU, KU, RU, EU, HU, NU, CU);
 		/** Contains all known Energy Tags, which are kinetic. */
-		public static final List<TagData> ALL_KINETIC						= new ArrayListNoNulls(F, KU, RU);
+		public static final List<TagData> ALL_KINETIC						= new ArrayListNoNulls<>(F, KU, RU);
 		/** Contains all known Energy Tags, which are electric. */
-		public static final List<TagData> ALL_ELECTRIC						= new ArrayListNoNulls(F, EU);
+		public static final List<TagData> ALL_ELECTRIC						= new ArrayListNoNulls<>(F, EU);
 		/** Contains all known Energy Tags, which are weak to Water, such as electricity. */
-		public static final List<TagData> ALL_WEAK_TO_WATER					= new ArrayListNoNulls(F, EU, HU);
+		public static final List<TagData> ALL_WEAK_TO_WATER					= new ArrayListNoNulls<>(F, EU, HU);
 		/** Contains all known Energy Tags, which are weak to Thunder, such as electricity. */
-		public static final List<TagData> ALL_WEAK_TO_THUNDER				= new ArrayListNoNulls(F, EU);
+		public static final List<TagData> ALL_WEAK_TO_THUNDER				= new ArrayListNoNulls<>(F, EU);
 		/** Contains all known Energy Tags, which are weak to Fire, such as electricity. */
-		public static final List<TagData> ALL_WEAK_TO_FIRE					= new ArrayListNoNulls(F, EU, CU);
+		public static final List<TagData> ALL_WEAK_TO_FIRE					= new ArrayListNoNulls<>(F, EU, CU);
 		/** Contains all known Energy Tags, which have a limited consumption of Packets. */
-		public static final List<TagData> ALL_COMSUMPTION_LIMITED			= new ArrayListNoNulls(F, EU, RF, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO);
+		public static final List<TagData> ALL_COMSUMPTION_LIMITED			= new ArrayListNoNulls<>(F, EU, RF, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO);
 		/** Contains all known Energy Tags, which use cause Explosions when the Machines are overloaded. */
-		public static final List<TagData> ALL_EXPLODING						= new ArrayListNoNulls(F, AU, QU, MU, LU, KU, RU, EU, HU, NU, MJ, STEAM);
+		public static final List<TagData> ALL_EXPLODING						= new ArrayListNoNulls<>(F, AU, QU, MU, LU, KU, RU, EU, HU, NU, MJ, STEAM);
 		/** Contains all known Energy Tags, which use alternating positive and negative Energy. Used in the Basic Machines to determine if Progress can be made. */
-		public static final List<TagData> ALL_ALTERNATING					= new ArrayListNoNulls(F, KU);
+		public static final List<TagData> ALL_ALTERNATING					= new ArrayListNoNulls<>(F, KU);
 		/** Contains all known Energy Tags, which have an irrelevant packet Size. Used in TileEntityBase1 to check if the Energy can be accepted even with a too low Size. */
-		public static final List<TagData> ALL_SIZE_IRRELEVANT				= new ArrayListNoNulls(F, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO, STEAM, MJ, RF, HU, CU, NU, QU, TU);
+		public static final List<TagData> ALL_SIZE_IRRELEVANT				= new ArrayListNoNulls<>(F, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO, STEAM, MJ, RF, HU, CU, NU, QU, TU);
 	}
 	
 	/** For Prefixes */
@@ -361,7 +361,7 @@ public class TD {
 		public static final TagData PLATINUM_GROUP							= TagData.createTagData("ATOMIC.PLATINUM_GROUP", "Platinum Group");
 		
 		/** Contains all known Atomic Tags. */
-		public static final List<TagData> ALL								= new ArrayListNoNulls(Arrays.asList(ELEMENT, PARTICLE, MOLECULE, ANTIMATTER, METAL, ALKALI_METAL, ALKALINE_EARTH_METAL, LANTHANIDE, ACTINIDE, TRANSITION_METAL, POST_TRANSITION_METAL, METALLOID, NONMETAL, POLYATOMIC_NONMETAL, DIATOMIC_NONMETAL, NOBLE_GAS));
+		public static final List<TagData> ALL								= new ArrayListNoNulls<>(Arrays.asList(ELEMENT, PARTICLE, MOLECULE, ANTIMATTER, METAL, ALKALI_METAL, ALKALINE_EARTH_METAL, LANTHANIDE, ACTINIDE, TRANSITION_METAL, POST_TRANSITION_METAL, METALLOID, NONMETAL, POLYATOMIC_NONMETAL, DIATOMIC_NONMETAL, NOBLE_GAS));
 	}
 	
 	/** General Material Properties */
@@ -438,9 +438,9 @@ public class TD {
 		public static final TagData DONT_SHOW_THIS_COMPONENT				= TagData.createTagData("PROPERTIES.DONT_SHOW_THIS_COMPONENT", "Not shown as Component");
 		
 		/** Contains all known Property Tags. */
-		public static final List<TagData> ALL								= new ArrayListNoNulls(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, LIGHTING, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, HAS_COLOR, AUTO_BLACKLIST, AUTO_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG, UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT));
+		public static final List<TagData> ALL								= new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, LIGHTING, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, HAS_COLOR, AUTO_BLACKLIST, AUTO_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG, UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT));
 		/** Contains all relevant Property Tags. */
-		public static final List<TagData> ALL_RELEVANTS						= new ArrayListNoNulls(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF));
+		public static final List<TagData> ALL_RELEVANTS						= new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF));
 	}
 	
 	/** Describing the kind of binding the Compound Material is having */
@@ -500,8 +500,8 @@ public class TD {
 		public static final TagData WASHING_MERCURY							= TagData.createTagData("PROCESSING.WASHING_MERCURY", "Mercury Washable");
 		public static final TagData PULVERIZING_CINNABAR					= TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Pulverisation Byproduct");
 		
-		public static final List<TagData> ALL_MACHINES						= new ArrayListNoNulls(Arrays.asList(CRYSTALLISABLE, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
-		public static final List<TagData> ALL_ORES							= new ArrayListNoNulls(Arrays.asList(CRYSTALLISABLE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));
+		public static final List<TagData> ALL_MACHINES						= new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, FURNACE, SMITHABLE, MELTING, MORTAR, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
+		public static final List<TagData> ALL_ORES							= new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));
 	}
 	
 	/** For Materials and the Item Generator */

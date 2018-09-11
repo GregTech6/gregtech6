@@ -42,8 +42,8 @@ import net.minecraft.item.ItemStack;
  */
 public class MultiTileEntityMiniPortalNether extends MultiTileEntityMiniPortal implements IMTE_RandomDisplayTick {
 	public static List<MultiTileEntityMiniPortalNether>
-	sListNetherSide = new ArrayListNoNulls(),
-	sListWorldSide  = new ArrayListNoNulls();
+	sListNetherSide = new ArrayListNoNulls<>(),
+	sListWorldSide  = new ArrayListNoNulls<>();
 	
 	static {
 		LH.add("gt.tileentity.portal.nether.tooltip.1", "Only works between the Nether and the Overworld with a x8 Distance Factor!");
@@ -51,7 +51,7 @@ public class MultiTileEntityMiniPortalNether extends MultiTileEntityMiniPortal i
 	}
 	
 	@Override
-	public void addToolTips2(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips2(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.nether.tooltip.1"));
 		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.nether.tooltip.2"));
 		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_IGNITE_FIRE));

@@ -26,8 +26,8 @@ import cpw.mods.fml.common.Loader;
 /**
  * @author Gregorius Techneticies
  */
-public final class ModData implements ICondition<ITagDataContainer> {
-	public static final Set<ModData> MODS = new HashSetNoNulls();
+public final class ModData implements ICondition<ITagDataContainer<?>> {
+	public static final Set<ModData> MODS = new HashSetNoNulls<>();
 	
 	public boolean mLoaded;
 	
@@ -46,7 +46,7 @@ public final class ModData implements ICondition<ITagDataContainer> {
 	}
 	
 	@Override
-	public boolean isTrue(ITagDataContainer aObject) {
+	public boolean isTrue(ITagDataContainer<?> aObject) {
 		return mLoaded;
 	}
 	

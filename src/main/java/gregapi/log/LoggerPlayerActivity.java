@@ -32,7 +32,7 @@ import net.minecraftforge.event.world.BlockEvent;
  * @author Gregorius Techneticies
  */
 public class LoggerPlayerActivity implements Runnable {
-    private ArrayList<String> mBufferedPlayerActivity = new ArrayList();
+    private ArrayList<String> mBufferedPlayerActivity = new ArrayList<>();
     
 	public static PrintStream mLog = null;
 	
@@ -56,7 +56,7 @@ public class LoggerPlayerActivity implements Runnable {
 		while (true) {try {
 			if (mLog == null) return;
 			ArrayList<String> tList = mBufferedPlayerActivity;
-			mBufferedPlayerActivity = new ArrayList();
+			mBufferedPlayerActivity = new ArrayList<>();
 			String tLastOutput = "";
 			for (int i = 0, j = tList.size(); i < j; i++) {
 				if (!tLastOutput.equals(tList.get(i))) mLog.println(tList.get(i));

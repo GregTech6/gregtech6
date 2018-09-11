@@ -112,7 +112,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_INPUTS_MONKEY_WRENCH));
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 		super.addToolTips(aList, aStack, aF3_H);
@@ -248,7 +248,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	}
 	
 	protected ArrayList<ItemStack> recipeContent() {
-		ArrayList<ItemStack> tList = new ArrayList();
+		ArrayList<ItemStack> tList = new ArrayList<>();
 		for (int i : SLOTS_CRAFTING) {
 			if (slotHas(i)) {
 				boolean temp = F;
@@ -543,7 +543,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

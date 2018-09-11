@@ -87,7 +87,7 @@ public class GT_API_Post extends Abstract_Mod {
 		try {
 			OUT.println(getModNameForLog() + ": Sorting Greg-API-Post to the end of the Mod List for further processing.");
 			LoadController tLoadController = ((LoadController)UT.Reflection.getFieldContent(Loader.instance(), "modController", T, T));
-			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList(tModList.size());
+			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList<>(tModList.size());
 			ModContainer tGregTech = null;
 			for (short i = 0; i < tModList.size(); i++) {
 				ModContainer tMod = tModList.get(i);

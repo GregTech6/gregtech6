@@ -69,7 +69,8 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		Fluid aFluid = FluidRegistry.getFluid(ST.meta(aStack));
 		if (aFluid == null) {
@@ -256,7 +257,8 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item aItem, CreativeTabs aTab, List aList) {
+	@SuppressWarnings("unchecked")
+	public void getSubItems(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {
 		if (D1) for (int i = 0, j = FluidRegistry.getMaxID(); i <= j; i++) {
 			Fluid tFluid = UT.Fluids.fluid(i);
 			if (tFluid != null && !FluidsGT.FLUID_RENAMINGS.containsKey(tFluid.getName()) && !FL.Error.is(tFluid)) {

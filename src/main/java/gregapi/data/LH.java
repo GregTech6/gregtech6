@@ -225,10 +225,10 @@ public class LH {
 	
 	public static final String getToolTipEfficiency(long aEfficiency) {aEfficiency = Math.abs(aEfficiency); return Chat.YELLOW + get(EFFICIENCY) + ": " + Chat.WHITE + percent(aEfficiency) + "%";}
 	
-	public static final void addToolTipsEfficiency(List aList, ItemStack aStack, boolean aF3_H, TE_Behavior_Energy_Converter aConverter) {
+	public static final void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H, TE_Behavior_Energy_Converter aConverter) {
 		addToolTipsEfficiency(aList, aStack, aF3_H, aConverter.mEnergyIN, aConverter.mEnergyOUT, aConverter.mMultiplier);
 	}
-	public static final void addToolTipsEfficiency(List aList, ItemStack aStack, boolean aF3_H, TE_Behavior_Energy_Stats aEnergyIN, TE_Behavior_Energy_Stats aEnergyOUT, long aMultiplier) {
+	public static final void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H, TE_Behavior_Energy_Stats aEnergyIN, TE_Behavior_Energy_Stats aEnergyOUT, long aMultiplier) {
 		if (TD.Energy.ALL_EU.contains(aEnergyIN.mType)) {
 			if (TD.Energy.ALL_EU.contains(aEnergyOUT.mType)) {
 				aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec, aEnergyOUT.mRec*aMultiplier, F)));
@@ -243,7 +243,7 @@ public class LH {
 		}
 	}
 	
-	public static final void addToolTipsEfficiency(List aList, ItemStack aStack, boolean aF3_H, TE_Behavior_Energy_Stats aEnergyIN, TE_Behavior_Energy_Stats aEnergyOUT, TE_Behavior_Energy_Stats aEnergyOUT2, long aMultiplier) {
+	public static final void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H, TE_Behavior_Energy_Stats aEnergyIN, TE_Behavior_Energy_Stats aEnergyOUT, TE_Behavior_Energy_Stats aEnergyOUT2, long aMultiplier) {
 		if (TD.Energy.ALL_EU.contains(aEnergyIN.mType)) {
 			if (TD.Energy.ALL_EU.contains(aEnergyOUT.mType)) {
 				aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec, aEnergyOUT.mRec, F)));
@@ -261,7 +261,7 @@ public class LH {
 		}
 	}
 	
-	public static final void addEnergyToolTips(ITileEntityEnergy aTileEntity, List aToolTips, TagData aEnergyTypeIN, TagData aEnergyTypeOUT, String aSidesIN, String aSidesOUT) {
+	public static final void addEnergyToolTips(ITileEntityEnergy aTileEntity, List<String> aToolTips, TagData aEnergyTypeIN, TagData aEnergyTypeOUT, String aSidesIN, String aSidesOUT) {
 		if (aEnergyTypeIN != null) {
 		aToolTips.add(Chat.GREEN	+ LH.get(LH.ENERGY_INPUT)			+ ": " + Chat.WHITE + aTileEntity.getEnergySizeInputRecommended (aEnergyTypeIN , SIDE_ANY) + " " + aEnergyTypeIN .getChatFormat()	+ aEnergyTypeIN .getLocalisedNameShort()	+ Chat.WHITE + "/t ("+aTileEntity.getEnergySizeInputMin (aEnergyTypeIN , SIDE_ANY)+" to "+aTileEntity.getEnergySizeInputMax (aEnergyTypeIN , SIDE_ANY)+(UT.Code.stringInvalid(aSidesIN )?"":", "+aSidesIN )+")");
 		aToolTips.add(getToolTipRedstoneFluxAccept(aEnergyTypeIN));

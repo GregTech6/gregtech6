@@ -281,38 +281,38 @@ public class UT {
 		public static FluidStack mul(FluidStack aFluid, long aMultiplier) {return aFluid == null ? null : amount(aFluid, aFluid.amount * aMultiplier);}
 		public static FluidStack mul(FluidStack aFluid, long aMultiplier, long aDivider, boolean aRoundUp) {return aFluid == null ? null : amount(aFluid, Code.units(aFluid.amount, aDivider, aMultiplier, aRoundUp));}
 		
-		public static long fill (DelegatorTileEntity aDelegator, FluidStack aFluid, boolean aDoFill) {return aDelegator != null && aDelegator.mTileEntity instanceof IFluidHandler && aFluid != null ? fill_(aDelegator, aFluid, aDoFill) : 0;}
-		public static long fill_(DelegatorTileEntity aDelegator, FluidStack aFluid, boolean aDoFill) {return fill_((IFluidHandler)aDelegator.mTileEntity, aDelegator.mSideOfTileEntity, aFluid, aDoFill);}
+		public static long fill (@SuppressWarnings("rawtypes") DelegatorTileEntity aDelegator, FluidStack aFluid, boolean aDoFill) {return aDelegator != null && aDelegator.mTileEntity instanceof IFluidHandler && aFluid != null ? fill_(aDelegator, aFluid, aDoFill) : 0;}
+		public static long fill_(@SuppressWarnings("rawtypes") DelegatorTileEntity aDelegator, FluidStack aFluid, boolean aDoFill) {return fill_((IFluidHandler)aDelegator.mTileEntity, aDelegator.mSideOfTileEntity, aFluid, aDoFill);}
 		public static long fill (IFluidHandler aFluidHandler, byte aSide, FluidStack aFluid, boolean aDoFill) {return aFluidHandler != null && aFluid != null ? fill_(aFluidHandler, aSide, aFluid, aDoFill) : 0;}
 		public static long fill_(IFluidHandler aFluidHandler, byte aSide, FluidStack aFluid, boolean aDoFill) {return aFluidHandler.fill(FORGE_DIR[aSide], aFluid, aDoFill);}
 		public static long fill (IFluidHandler aFluidHandler, byte[] aSides, FluidStack aFluid, boolean aDoFill) {return aFluidHandler != null && aFluid != null ? fill_(aFluidHandler, aSides, aFluid, aDoFill) : 0;}
 		public static long fill_(IFluidHandler aFluidHandler, byte[] aSides, FluidStack aFluid, boolean aDoFill) {for (byte tSide : aSides) {long rFilled = aFluidHandler.fill(FORGE_DIR[tSide], aFluid, aDoFill); if (rFilled > 0) return rFilled;} return 0;}
 		
-		public static boolean fillAll (DelegatorTileEntity aDelegator, FluidStack aFluid, boolean aDoFill) {return aDelegator != null && aDelegator.mTileEntity instanceof IFluidHandler && aFluid != null && fillAll_(aDelegator, aFluid, aDoFill);}
-		public static boolean fillAll_(DelegatorTileEntity aDelegator, FluidStack aFluid, boolean aDoFill) {return fillAll_((IFluidHandler)aDelegator.mTileEntity, aDelegator.mSideOfTileEntity, aFluid, aDoFill);}
+		public static boolean fillAll (@SuppressWarnings("rawtypes") DelegatorTileEntity aDelegator, FluidStack aFluid, boolean aDoFill) {return aDelegator != null && aDelegator.mTileEntity instanceof IFluidHandler && aFluid != null && fillAll_(aDelegator, aFluid, aDoFill);}
+		public static boolean fillAll_(@SuppressWarnings("rawtypes") DelegatorTileEntity aDelegator, FluidStack aFluid, boolean aDoFill) {return fillAll_((IFluidHandler)aDelegator.mTileEntity, aDelegator.mSideOfTileEntity, aFluid, aDoFill);}
 		public static boolean fillAll (IFluidHandler aFluidHandler, byte aSide, FluidStack aFluid, boolean aDoFill) {return aFluidHandler != null && aFluid != null && fillAll_(aFluidHandler, aSide, aFluid, aDoFill);}
 		public static boolean fillAll_(IFluidHandler aFluidHandler, byte aSide, FluidStack aFluid, boolean aDoFill) {return aFluidHandler.fill(FORGE_DIR[aSide], aFluid, F) == aFluid.amount && (!aDoFill || aFluidHandler.fill(FORGE_DIR[aSide], aFluid, T) > 0);}
 		public static boolean fillAll (IFluidHandler aFluidHandler, byte[] aSides, FluidStack aFluid, boolean aDoFill) {return aFluidHandler != null && aFluid != null && fillAll_(aFluidHandler, aSides, aFluid, aDoFill);}
 		public static boolean fillAll_(IFluidHandler aFluidHandler, byte[] aSides, FluidStack aFluid, boolean aDoFill) {for (byte tSide : aSides) if (aFluidHandler.fill(FORGE_DIR[tSide], aFluid, F) == aFluid.amount && (!aDoFill || aFluidHandler.fill(FORGE_DIR[tSide], aFluid, T) > 0)) return T; return F;}
 		
-		public static long move (DelegatorTileEntity aFrom, DelegatorTileEntity aTo) {return move (aFrom, aTo, Integer.MAX_VALUE);}
-		public static long move_(DelegatorTileEntity aFrom, DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
-		public static long move (DelegatorTileEntity aFrom, DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aFrom.mTileEntity instanceof IFluidHandler && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
-		public static long move_(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; FluidStack tDrained = ((IFluidHandler)aFrom.mTileEntity).drain(aFrom.getForgeSideOfTileEntity(), UT.Code.bindInt(aMaxMoved), F); if (tDrained == null || tDrained.amount <= 0) return 0; tDrained.amount = Code.bindInt(UT.Fluids.fill_(aTo, tDrained.copy(), T)); if (tDrained.amount <= 0) return 0; ((IFluidHandler)aFrom.mTileEntity).drain(aFrom.getForgeSideOfTileEntity(), tDrained, T); return tDrained.amount;}
-		public static long move (DelegatorTileEntity aFrom, DelegatorTileEntity aTo, FluidStack aMoved) {return aFrom != null && aFrom.mTileEntity instanceof IFluidHandler && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMoved) : 0;}
-		public static long move_(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, FluidStack aMoved) {if (aMoved == null || aMoved.amount <= 0) return 0; FluidStack tDrained = ((IFluidHandler)aFrom.mTileEntity).drain(aFrom.getForgeSideOfTileEntity(), aMoved, F); if (tDrained == null || tDrained.amount <= 0) return 0; tDrained.amount = Code.bindInt(UT.Fluids.fill_(aTo, tDrained.copy(), T)); if (tDrained.amount <= 0) return 0; ((IFluidHandler)aFrom.mTileEntity).drain(aFrom.getForgeSideOfTileEntity(), tDrained, T); return tDrained.amount;}
-		public static long move (IFluidTank aFrom, DelegatorTileEntity aTo) {return move (aFrom, aTo, Integer.MAX_VALUE);}
-		public static long move_(IFluidTank aFrom, DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
-		public static long move (IFluidTank aFrom, DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
-		public static long move_(IFluidTank aFrom, DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; FluidStack tDrained = aFrom.drain(UT.Code.bindInt(aMaxMoved), F); if (tDrained == null || tDrained.amount <= 0) return 0; tDrained.amount = Code.bindInt(UT.Fluids.fill_(aTo, tDrained.copy(), T)); if (tDrained.amount <= 0) return 0; aFrom.drain(tDrained.amount, T); return tDrained.amount;}
-		public static long move (IFluidTank[] aFrom, DelegatorTileEntity aTo) {return move (aFrom, aTo, Integer.MAX_VALUE);}
-		public static long move_(IFluidTank[] aFrom, DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
-		public static long move (IFluidTank[] aFrom, DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
-		public static long move_(IFluidTank[] aFrom, DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; long rAmount = 0; for (IFluidTank tFrom : aFrom) if (tFrom != null) rAmount += move_(tFrom, aTo, aMaxMoved); return rAmount;}
-		public static long move (Iterable aFrom, DelegatorTileEntity aTo) {return move (aFrom, aTo, Integer.MAX_VALUE);}
-		public static long move_(Iterable aFrom, DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
-		public static long move (Iterable aFrom, DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
-		public static long move_(Iterable aFrom, DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; long rAmount = 0; for (Object tFrom : aFrom) if (tFrom instanceof IFluidTank) rAmount += move_((IFluidTank)tFrom, aTo, aMaxMoved); return rAmount;}
+		public static long move (@SuppressWarnings("rawtypes") DelegatorTileEntity aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move (aFrom, aTo, Integer.MAX_VALUE);}
+		public static long move_(@SuppressWarnings("rawtypes") DelegatorTileEntity aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
+		public static long move (@SuppressWarnings("rawtypes") DelegatorTileEntity aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aFrom.mTileEntity instanceof IFluidHandler && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
+		public static long move_(@SuppressWarnings("rawtypes") DelegatorTileEntity aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; FluidStack tDrained = ((IFluidHandler)aFrom.mTileEntity).drain(aFrom.getForgeSideOfTileEntity(), UT.Code.bindInt(aMaxMoved), F); if (tDrained == null || tDrained.amount <= 0) return 0; tDrained.amount = Code.bindInt(UT.Fluids.fill_(aTo, tDrained.copy(), T)); if (tDrained.amount <= 0) return 0; ((IFluidHandler)aFrom.mTileEntity).drain(aFrom.getForgeSideOfTileEntity(), tDrained, T); return tDrained.amount;}
+		public static long move (@SuppressWarnings("rawtypes") DelegatorTileEntity aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, FluidStack aMoved) {return aFrom != null && aFrom.mTileEntity instanceof IFluidHandler && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMoved) : 0;}
+		public static long move_(@SuppressWarnings("rawtypes") DelegatorTileEntity aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, FluidStack aMoved) {if (aMoved == null || aMoved.amount <= 0) return 0; FluidStack tDrained = ((IFluidHandler)aFrom.mTileEntity).drain(aFrom.getForgeSideOfTileEntity(), aMoved, F); if (tDrained == null || tDrained.amount <= 0) return 0; tDrained.amount = Code.bindInt(UT.Fluids.fill_(aTo, tDrained.copy(), T)); if (tDrained.amount <= 0) return 0; ((IFluidHandler)aFrom.mTileEntity).drain(aFrom.getForgeSideOfTileEntity(), tDrained, T); return tDrained.amount;}
+		public static long move (IFluidTank aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move (aFrom, aTo, Integer.MAX_VALUE);}
+		public static long move_(IFluidTank aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
+		public static long move (IFluidTank aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
+		public static long move_(IFluidTank aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; FluidStack tDrained = aFrom.drain(UT.Code.bindInt(aMaxMoved), F); if (tDrained == null || tDrained.amount <= 0) return 0; tDrained.amount = Code.bindInt(UT.Fluids.fill_(aTo, tDrained.copy(), T)); if (tDrained.amount <= 0) return 0; aFrom.drain(tDrained.amount, T); return tDrained.amount;}
+		public static long move (IFluidTank[] aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move (aFrom, aTo, Integer.MAX_VALUE);}
+		public static long move_(IFluidTank[] aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
+		public static long move (IFluidTank[] aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
+		public static long move_(IFluidTank[] aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; long rAmount = 0; for (IFluidTank tFrom : aFrom) if (tFrom != null) rAmount += move_(tFrom, aTo, aMaxMoved); return rAmount;}
+		public static long move (@SuppressWarnings("rawtypes") Iterable aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move (aFrom, aTo, Integer.MAX_VALUE);}
+		public static long move_(@SuppressWarnings("rawtypes") Iterable aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
+		public static long move (@SuppressWarnings("rawtypes") Iterable aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
+		public static long move_(@SuppressWarnings("rawtypes") Iterable aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; long rAmount = 0; for (Object tFrom : aFrom) if (tFrom instanceof IFluidTank) rAmount += move_((IFluidTank)tFrom, aTo, aMaxMoved); return rAmount;}
 		
 		
 		public static String configName(FluidStack aFluid) {
@@ -348,8 +348,8 @@ public class UT {
 			return rStacks;
 		}
 		
-		public static final Map<ItemStackContainer, FluidContainerData> sFilled2Data = new ItemStackMap();
-		public static final Map<ItemStackContainer, Map<String, FluidContainerData>> sEmpty2Fluid2Data = new ItemStackMap();
+		public static final Map<ItemStackContainer, FluidContainerData> sFilled2Data = new ItemStackMap<>();
+		public static final Map<ItemStackContainer, Map<String, FluidContainerData>> sEmpty2Fluid2Data = new ItemStackMap<>();
 		
 		public static void setFluidContainerData(FluidContainerData aData) {
 			setFluidContainerData(aData, F, F);
@@ -359,7 +359,7 @@ public class UT {
 			ItemStackContainer tFilled = new ItemStackContainer(aData.filledContainer), tEmpty = new ItemStackContainer(aData.emptyContainer);
 			if (aOverrideFluid || !sFilled2Data.containsKey(tFilled)) sFilled2Data.put(tFilled, aData);
 			Map<String, FluidContainerData> tFluidToData = sEmpty2Fluid2Data.get(tEmpty);
-			if (tFluidToData == null) sEmpty2Fluid2Data.put(tEmpty, tFluidToData = new HashMap());
+			if (tFluidToData == null) sEmpty2Fluid2Data.put(tEmpty, tFluidToData = new HashMap<>());
 			String tFluidName = aData.fluid.getFluid().getName();
 			if (aOverrideItem || !tFluidToData.containsKey(tFluidName)) tFluidToData.put(tFluidName, aData);
 		}
@@ -493,24 +493,26 @@ public class UT {
 		/** Saves a FluidStack properly. */
 		public static NBTTagCompound save_(FluidStack aFluid) {return aFluid.writeToNBT(NBT.make());}
 		
-		public static Fluid createLiquid(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createLiquid(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_MOLTEN), aFluidList);}
-		public static Fluid createLiquid(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create(aMaterial.mNameInternal.toLowerCase(), aTexture, aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaLiquid, STATE_LIQUID, 1000, aMaterial.mMeltingPoint <= 0 ? 1000 : aMaterial.mMeltingPoint < 300 ? Math.min(300, aMaterial.mBoilingPoint - 1) : aMaterial.mMeltingPoint, null, null, 0, aFluidList);}
 		
-		public static Fluid createMolten(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createMolten(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_MOLTEN), aFluidList);}
-		public static Fluid createMolten(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create("molten."+aMaterial.mNameInternal.toLowerCase(), aTexture, "Molten " + aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaLiquid, STATE_LIQUID, L, aMaterial.mMeltingPoint <= 0 ? 1000 : aMaterial.mMeltingPoint < 300 ? Math.min(300, aMaterial.mBoilingPoint - 1) : aMaterial.mMeltingPoint, null, null, 0, aFluidList).setLuminosity(10);}
+		@SafeVarargs public static Fluid createLiquid(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createLiquid(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_MOLTEN), aFluidList);}
+		@SafeVarargs public static Fluid createLiquid(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create(aMaterial.mNameInternal.toLowerCase(), aTexture, aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaLiquid, STATE_LIQUID, 1000, aMaterial.mMeltingPoint <= 0 ? 1000 : aMaterial.mMeltingPoint < 300 ? Math.min(300, aMaterial.mBoilingPoint - 1) : aMaterial.mMeltingPoint, null, null, 0, aFluidList);}
 		
-		public static Fluid createGas(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createGas(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_GAS), aFluidList);}
-		public static Fluid createGas(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create(aMaterial.mNameInternal.toLowerCase(), aTexture, aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaGas, STATE_GASEOUS, 1000, aMaterial.mBoilingPoint <= 0 ? 3000 : aMaterial.mBoilingPoint < 300 ? Math.min(300, aMaterial.mPlasmaPoint - 1) : aMaterial.mBoilingPoint, null, null, 0, aFluidList);}
+		@SafeVarargs public static Fluid createMolten(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createMolten(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_MOLTEN), aFluidList);}
+		@SafeVarargs public static Fluid createMolten(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create("molten."+aMaterial.mNameInternal.toLowerCase(), aTexture, "Molten " + aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaLiquid, STATE_LIQUID, L, aMaterial.mMeltingPoint <= 0 ? 1000 : aMaterial.mMeltingPoint < 300 ? Math.min(300, aMaterial.mBoilingPoint - 1) : aMaterial.mMeltingPoint, null, null, 0, aFluidList).setLuminosity(10);}
 		
-		public static Fluid createVapour(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createVapour(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_GAS), aFluidList);}
-		public static Fluid createVapour(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create("vapor."+aMaterial.mNameInternal.toLowerCase(), aTexture, "Vaporized " + aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaGas, STATE_GASEOUS, 8*L, aMaterial.mBoilingPoint <= 0 ? 3000 : aMaterial.mBoilingPoint < 300 ? Math.min(300, aMaterial.mPlasmaPoint - 1) : aMaterial.mBoilingPoint, null, null, 0, aFluidList);}
+		@SafeVarargs public static Fluid createGas(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createGas(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_GAS), aFluidList);}
+		@SafeVarargs public static Fluid createGas(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create(aMaterial.mNameInternal.toLowerCase(), aTexture, aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaGas, STATE_GASEOUS, 1000, aMaterial.mBoilingPoint <= 0 ? 3000 : aMaterial.mBoilingPoint < 300 ? Math.min(300, aMaterial.mPlasmaPoint - 1) : aMaterial.mBoilingPoint, null, null, 0, aFluidList);}
 		
-		public static Fluid createPlasma(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createPlasma(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_PLASMA), aFluidList);}
-		public static Fluid createPlasma(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create("plasma."+aMaterial.mNameInternal.toLowerCase(), aTexture, aMaterial.mNameLocal + " Plasma", aMaterial, aMaterial.mRGBaPlasma, STATE_PLASMA, L*L, aMaterial.mPlasmaPoint <= 0 ? 10000 : Math.max(300, aMaterial.mPlasmaPoint), null, null, 0, aFluidList);}
+		@SafeVarargs public static Fluid createVapour(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createVapour(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_GAS), aFluidList);}
+		@SafeVarargs public static Fluid createVapour(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create("vapor."+aMaterial.mNameInternal.toLowerCase(), aTexture, "Vaporized " + aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaGas, STATE_GASEOUS, 8*L, aMaterial.mBoilingPoint <= 0 ? 3000 : aMaterial.mBoilingPoint < 300 ? Math.min(300, aMaterial.mPlasmaPoint - 1) : aMaterial.mBoilingPoint, null, null, 0, aFluidList);}
 		
-		public static Fluid create(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, Set<String>... aFluidList) {return create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, null, null, 0, aFluidList);}
-		public static Fluid create(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, Set<String>... aFluidList) {return create(aName, new Textures.BlockIcons.CustomIcon("fluids/" + aName.toLowerCase()), aLocalized, aMaterial, null, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
+		@SafeVarargs public static Fluid createPlasma(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createPlasma(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_PLASMA), aFluidList);}
+		@SafeVarargs public static Fluid createPlasma(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create("plasma."+aMaterial.mNameInternal.toLowerCase(), aTexture, aMaterial.mNameLocal + " Plasma", aMaterial, aMaterial.mRGBaPlasma, STATE_PLASMA, L*L, aMaterial.mPlasmaPoint <= 0 ? 10000 : Math.max(300, aMaterial.mPlasmaPoint), null, null, 0, aFluidList);}
 		
+		@SafeVarargs public static Fluid create(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, Set<String>... aFluidList) {return create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, null, null, 0, aFluidList);}
+		@SafeVarargs public static Fluid create(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, Set<String>... aFluidList) {return create(aName, new Textures.BlockIcons.CustomIcon("fluids/" + aName.toLowerCase()), aLocalized, aMaterial, null, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
+		
+		@SafeVarargs
 		public static Fluid create(String aName, IIconContainer aTexture, String aLocalized, OreDictMaterial aMaterial, short[] aRGBa, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, Set<String>... aFluidList) {
 			aName = aName.toLowerCase();
 			Fluid rFluid = new FluidGT(aName, aTexture, aRGBa == null ? UNCOLOURED : aRGBa, aTemperatureK, aState == 2 || aState == 3);
@@ -551,9 +553,9 @@ public class UT {
 	}
 	
 	public static class Books {
-		public static final Map<String, ItemStack> BOOK_MAP = new HashMap();
-		public static final List<String> BOOK_LIST = new ArrayListNoNulls();
-		public static final List<String> MATERIAL_DICTIONARIES = new ArrayListNoNulls();
+		public static final Map<String, ItemStack> BOOK_MAP = new HashMap<>();
+		public static final List<String> BOOK_LIST = new ArrayListNoNulls<>();
+		public static final List<String> MATERIAL_DICTIONARIES = new ArrayListNoNulls<>();
 		
 		public static ItemStack getWrittenBook(String aMapping) {
 			return getWrittenBook(aMapping, null);
@@ -609,7 +611,7 @@ public class UT {
 		
 		public static ItemStack createMaterialDictionary(OreDictMaterial aMat, ItemStack aDefaultBook, ItemStack aDefaultLargeBook) {
 			String tPage = "";
-			List<String> tBook = new ArrayListNoNulls();
+			List<String> tBook = new ArrayListNoNulls<>();
 			boolean temp = F;
 			int tCounter = 0;
 			
@@ -755,7 +757,7 @@ public class UT {
 			
 			Map<OreDictMaterial, Long> tMap;
 			
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmelting	.mMaterial == aMat && tMat.mTargetSmelting		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetSmelting		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmelting	.mMaterial == aMat && tMat.mTargetSmelting		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetSmelting		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to smelt for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -772,7 +774,7 @@ public class UT {
 			
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBurning		.mMaterial == aMat && tMat.mTargetBurning		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetBurning		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBurning		.mMaterial == aMat && tMat.mTargetBurning		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetBurning		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to burn for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -789,7 +791,7 @@ public class UT {
 		 	
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetPulver		.mMaterial == aMat && tMat.mTargetPulver		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetPulver		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetPulver		.mMaterial == aMat && tMat.mTargetPulver		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetPulver		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to pulverise for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -806,7 +808,7 @@ public class UT {
 			
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBending		.mMaterial == aMat && tMat.mTargetBending		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetBending		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBending		.mMaterial == aMat && tMat.mTargetBending		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetBending		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to bend for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -823,7 +825,7 @@ public class UT {
 			
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCompressing	.mMaterial == aMat && tMat.mTargetCompressing	.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCompressing	.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCompressing	.mMaterial == aMat && tMat.mTargetCompressing	.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCompressing	.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to compress for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -840,7 +842,7 @@ public class UT {
 			
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCrushing	.mMaterial == aMat && tMat.mTargetCrushing		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCrushing		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCrushing	.mMaterial == aMat && tMat.mTargetCrushing		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCrushing		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to crush for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -857,7 +859,7 @@ public class UT {
 			
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCutting		.mMaterial == aMat && tMat.mTargetCutting		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCutting		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCutting		.mMaterial == aMat && tMat.mTargetCutting		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCutting		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to cut for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -874,7 +876,7 @@ public class UT {
 			
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetForging		.mMaterial == aMat && tMat.mTargetForging		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetForging		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetForging		.mMaterial == aMat && tMat.mTargetForging		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetForging		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to forge for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -891,7 +893,7 @@ public class UT {
 			
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmashing	.mMaterial == aMat && tMat.mTargetSmashing		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetSmashing		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmashing	.mMaterial == aMat && tMat.mTargetSmashing		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetSmashing		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to smash for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -908,7 +910,7 @@ public class UT {
 			
 		 	//----------
 		 	
-			tMap = new HashMap(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetWorking		.mMaterial == aMat && tMat.mTargetWorking		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetWorking		.mAmount);
+			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetWorking		.mMaterial == aMat && tMat.mTargetWorking		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetWorking		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to use in other ways for getting "+aMat.getLocal()+"\n===================\n";
 			tCounter = 0;
@@ -1111,6 +1113,7 @@ public class UT {
 			return negative?"-"+tString:tString;
 		}
 		
+		@SafeVarargs
 		public static <E> boolean contains(E aTarget, E... aArray) {
 			if (aArray != null) for (E tValue : aArray) if (tValue == aTarget || (tValue != null && aTarget != null && tValue.equals(aTarget))) return T;
 			return F;
@@ -1121,6 +1124,7 @@ public class UT {
 			return F;
 		}
 		
+		@SafeVarargs
 		public static <E> boolean containsSomething(E... aArray) {
 			if (aArray != null) for (Object tObject : aArray) if (tObject != null) return T;
 			return F;
@@ -1131,26 +1135,30 @@ public class UT {
 			return rArray;
 		}
 		
+		@SafeVarargs
 		public static <E> E[] makeArray(E[] rArray, E... aArray) {
 			for (int i = 0; i < rArray.length && i < aArray.length; i++) rArray[i] = aArray[i];
 			return rArray;
 		}
 		
+		@SafeVarargs
 		public static <E> long getNonNulls(E... aArray) {
 			long rAmount = 0;
 			if (aArray != null) for (Object tObject : aArray) if (tObject != null) rAmount++;
 			return rAmount;
 		}
 		
+		@SafeVarargs
 		public static <E> ArrayList<E> getWithoutNulls(E... aArray) {
-			if (aArray == null) return new ArrayListNoNulls();
-			ArrayList<E> rList = new ArrayListNoNulls(Arrays.asList(aArray));
+			if (aArray == null) return new ArrayListNoNulls<>();
+			ArrayList<E> rList = new ArrayListNoNulls<>(Arrays.asList(aArray));
 			return rList;
 		}
 		
+		@SafeVarargs
 		public static <E> ArrayList<E> getWithoutTrailingNulls(E... aArray) {
-			if (aArray == null) return new ArrayList(1);
-			ArrayList<E> rList = new ArrayList(Arrays.asList(aArray));
+			if (aArray == null) return new ArrayList<>(1);
+			ArrayList<E> rList = new ArrayList<>(Arrays.asList(aArray));
 			for (int i = rList.size() - 1; i >= 0 && rList.get(i) == null;) rList.remove(i--);
 			return rList;
 		}
@@ -1190,7 +1198,7 @@ public class UT {
 			return VMIN[VMIN.length-1];
 		}
 		
-		public static boolean haveOneCommonElement(Iterable aCollection1, Collection aCollection2) {
+		public static boolean haveOneCommonElement(Iterable<?> aCollection1, Collection<?> aCollection2) {
 			if (aCollection1 == aCollection2) return T;
 			for (Object tObject : aCollection1) if (aCollection2.contains(tObject)) return T;
 			return F;
@@ -1198,7 +1206,7 @@ public class UT {
 		
 		/** re-maps all Keys of a Map after the Keys were weakened. */
 		public static <X, Y> Map<X, Y> reMap(Map<X, Y> aMap) {
-			Map<X, Y> tMap = new HashMap();
+			Map<X, Y> tMap = new HashMap<>();
 			tMap.putAll(aMap);
 			aMap.clear();
 			aMap.putAll(tMap);
@@ -1206,19 +1214,21 @@ public class UT {
 		}
 		
 		/** Why the fuck do neither Java nor Guava have a Function to do this? */
+		@SuppressWarnings("rawtypes")
 		public static <X, Y extends Comparable> LinkedHashMap<X,Y> sortByValuesAcending(Map<X,Y> aMap) {
-			List<Map.Entry<X,Y>> tEntrySet = new LinkedList(aMap.entrySet());
-			Collections.sort(tEntrySet, new Comparator<Map.Entry<X,Y>>() {@Override public int compare(Entry<X, Y> aValue1, Entry<X, Y> aValue2) {return aValue1.getValue().compareTo(aValue2.getValue());}});
-			LinkedHashMap<X,Y> rMap = new LinkedHashMap();
+			List<Map.Entry<X,Y>> tEntrySet = new LinkedList<>(aMap.entrySet());
+			Collections.sort(tEntrySet, new Comparator<Map.Entry<X,Y>>() {@SuppressWarnings("unchecked") @Override public int compare(Entry<X, Y> aValue1, Entry<X, Y> aValue2) {return aValue1.getValue().compareTo(aValue2.getValue());}});
+			LinkedHashMap<X,Y> rMap = new LinkedHashMap<>();
 			for (Map.Entry<X,Y> tEntry : tEntrySet) rMap.put(tEntry.getKey(), tEntry.getValue());
 			return rMap;
 		}
 		
 		/** Why the fuck do neither Java nor Guava have a Function to do this? */
+		@SuppressWarnings("rawtypes")
 		public static <X, Y extends Comparable> LinkedHashMap<X,Y> sortByValuesDescending(Map<X,Y> aMap) {
-			List<Map.Entry<X,Y>> tEntrySet = new LinkedList(aMap.entrySet());
-			Collections.sort(tEntrySet, new Comparator<Map.Entry<X,Y>>() {@Override public int compare(Entry<X, Y> aValue1, Entry<X, Y> aValue2) {return -aValue1.getValue().compareTo(aValue2.getValue());}});
-			LinkedHashMap<X,Y> rMap = new LinkedHashMap();
+			List<Map.Entry<X,Y>> tEntrySet = new LinkedList<>(aMap.entrySet());
+			Collections.sort(tEntrySet, new Comparator<Map.Entry<X,Y>>() {@SuppressWarnings("unchecked") @Override public int compare(Entry<X, Y> aValue1, Entry<X, Y> aValue2) {return -aValue1.getValue().compareTo(aValue2.getValue());}});
+			LinkedHashMap<X,Y> rMap = new LinkedHashMap<>();
 			for (Map.Entry<X,Y> tEntry : tEntrySet) rMap.put(tEntry.getKey(), tEntry.getValue());
 			return rMap;
 		}
@@ -1235,6 +1245,7 @@ public class UT {
 			return aList.get(RNGSUS.nextInt(aList.size()));
 		}
 		
+		@SafeVarargs
 		public static <E> E select(long aIndex, E aReplacement, E... aArray) {
 			if (aArray == null || aArray.length <= 0) return aReplacement;
 			if (aArray.length <= aIndex) return aArray[aArray.length - 1];
@@ -1242,6 +1253,7 @@ public class UT {
 			return aArray[(int)aIndex];
 		}
 		
+		@SafeVarargs
 		public static <E> E select(E aReplacement, E... aArray) {
 			if (aArray == null || aArray.length <= 0) return aReplacement;
 			return aArray[RNGSUS.nextInt(aArray.length)];
@@ -1251,7 +1263,7 @@ public class UT {
 			return inList(aObject, Arrays.asList(aObjects));
 		}
 		
-		public static boolean inList(Object aObject, Collection aObjects) {
+		public static boolean inList(Object aObject, Collection<?> aObjects) {
 			if (aObjects == null) return F;
 			return aObjects.contains(aObject);
 		}
@@ -1695,7 +1707,7 @@ public class UT {
 		
 		public static ItemStack set(ItemStack aStack, NBTTagCompound aNBT) {
 			if (aNBT == null || aNBT.hasNoTags()) {aStack.setTagCompound(null); return aStack;}
-			ArrayList<String> tTagsToRemove = new ArrayListNoNulls();
+			ArrayList<String> tTagsToRemove = new ArrayListNoNulls<>();
 			for (Object tKey : aNBT.func_150296_c()) {
 				NBTBase tValue = aNBT.getTag((String)tKey);
 				if (tValue == null || (tValue instanceof NBTTagCompound && ((NBTTagCompound)tValue).hasNoTags()) || (tValue instanceof NBTPrimitive && ((NBTPrimitive)tValue).func_150291_c() == 0) || (tValue instanceof NBTTagString && Code.stringInvalid(((NBTTagString)tValue).func_150285_a_()))) tTagsToRemove.add((String)tKey);
@@ -2067,7 +2079,7 @@ public class UT {
 			return rField;
 		}
 		
-		public static Field getField(Class aObject, String aField) {
+		public static Field getField(Class<?> aObject, String aField) {
 			Field rField = null;
 			try {
 				rField = aObject.getDeclaredField(aField);
@@ -2076,7 +2088,7 @@ public class UT {
 			return rField;
 		}
 		
-		public static Method getMethod(Class aObject, String aMethod, Class<?>... aParameterTypes) {
+		public static Method getMethod(Class<?> aObject, String aMethod, Class<?>... aParameterTypes) {
 			Method rMethod = null;
 			try {
 				rMethod = aObject.getMethod(aMethod, aParameterTypes);
@@ -2096,7 +2108,7 @@ public class UT {
 
 		public static Field getField(Object aObject, String aField, boolean aPrivate, boolean aLogErrors) {
 			try {
-				Field tField = (aObject instanceof Class)?((Class)aObject).getDeclaredField(aField):(aObject instanceof String)?Class.forName((String)aObject).getDeclaredField(aField):aObject.getClass().getDeclaredField(aField);
+				Field tField = (aObject instanceof Class)?((Class<?>)aObject).getDeclaredField(aField):(aObject instanceof String)?Class.forName((String)aObject).getDeclaredField(aField):aObject.getClass().getDeclaredField(aField);
 				if (aPrivate) tField.setAccessible(T);
 				return tField;
 			} catch (Throwable e) {
@@ -2107,7 +2119,7 @@ public class UT {
 		
 		public static Object getFieldContent(Object aObject, String aField, boolean aPrivate, boolean aLogErrors) {
 			try {
-				Field tField = (aObject instanceof Class)?((Class)aObject).getDeclaredField(aField):(aObject instanceof String)?Class.forName((String)aObject).getDeclaredField(aField):aObject.getClass().getDeclaredField(aField);
+				Field tField = (aObject instanceof Class)?((Class<?>)aObject).getDeclaredField(aField):(aObject instanceof String)?Class.forName((String)aObject).getDeclaredField(aField):aObject.getClass().getDeclaredField(aField);
 				if (aPrivate) tField.setAccessible(T);
 				return tField.get(aObject instanceof Class || aObject instanceof String ? null : aObject);
 			} catch (Throwable e) {
@@ -2129,7 +2141,7 @@ public class UT {
 				Class<?>[] tParameterTypes = new Class<?>[aParameters.length];
 				for (byte i = 0; i < aParameters.length; i++) {
 					if (aParameters[i] instanceof Class) {
-						tParameterTypes[i] = (Class)aParameters[i];
+						tParameterTypes[i] = (Class<?>)aParameters[i];
 						aParameters[i] = null;
 					} else {
 						tParameterTypes[i] = aParameters[i].getClass();
@@ -2145,7 +2157,7 @@ public class UT {
 					}
 				}
 				
-				Method tMethod = (aObject instanceof Class)?((Class)aObject).getMethod(aMethod, tParameterTypes):aObject.getClass().getMethod(aMethod, tParameterTypes);
+				Method tMethod = (aObject instanceof Class)?((Class<?>)aObject).getMethod(aMethod, tParameterTypes):aObject.getClass().getMethod(aMethod, tParameterTypes);
 				if (aPrivate) tMethod.setAccessible(T);
 				return tMethod.invoke(aObject, aParameters);
 			} catch (Throwable e) {
@@ -2158,10 +2170,10 @@ public class UT {
 			try {return callConstructor(Class.forName(aClass), aConstructorIndex, aReplacementObject, aLogErrors, aParameters);} catch (Throwable e) {if (aLogErrors) e.printStackTrace(ERR);} return aReplacementObject;
 		}
 		
-		public static Object callConstructor(Class aClass, int aConstructorIndex, Object aReplacementObject, boolean aLogErrors, Object... aParameters) {
+		public static Object callConstructor(Class<?> aClass, int aConstructorIndex, Object aReplacementObject, boolean aLogErrors, Object... aParameters) {
 			if (aConstructorIndex < 0) {
 				try {
-					for (Constructor tConstructor : aClass.getConstructors()) {
+					for (Constructor<?> tConstructor : aClass.getConstructors()) {
 						try {
 							return tConstructor.newInstance(aParameters);
 						} catch (Throwable e) {/*Do nothing*/}
@@ -2191,12 +2203,12 @@ public class UT {
 		public static void checkAvailabilities() {
 			if (CHECK_ALL) {
 				try {
-					Class tClass = cofh.api.transport.IItemDuct.class;
+					Class<?> tClass = cofh.api.transport.IItemDuct.class;
 					tClass.getCanonicalName();
 					TE_CHECK = T;
 				} catch(Throwable e) {/**/}
 				try {
-					Class tClass = buildcraft.api.transport.IInjectable.class;
+					Class<?> tClass = buildcraft.api.transport.IInjectable.class;
 					tClass.getCanonicalName();
 					BC_CHECK = T;
 				} catch(Throwable e) {/**/}
@@ -2216,6 +2228,7 @@ public class UT {
 		 * Moves Stack from Inv-Slot to Pipe
 		 * @return the Amount of moved Items
 		 */
+		@SuppressWarnings("rawtypes")
 		public static byte moveStackIntoPipe(IInventory aTileEntity1, Object aTarget, int[] aGrabSlots, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
 			if (aTileEntity1 == null || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMaxMoveAtOnce <= 0 || aMinMoveAtOnce > aMaxMoveAtOnce) return 0;
 			
@@ -2384,6 +2397,7 @@ public class UT {
 		/**
 		 * This is only because I needed an additional Parameter for the Double Chest Check.
 		 */
+		@SuppressWarnings("rawtypes")
 		private static byte moveOneItemStack(IInventory aTileEntity1, Object aTarget, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce, boolean aDoCheckChests) {
 			if (aTileEntity1 == null || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMaxMoveAtOnce <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMinMoveAtOnce > aMaxMoveAtOnce) return 0;
 			
@@ -2459,6 +2473,7 @@ public class UT {
 		 * Moves Stack from Inv-Side to Inv-Slot.
 		 * @return the Amount of moved Items
 		 */
+		@SuppressWarnings("rawtypes")
 		public static byte moveOneItemStackIntoSlot(Object aTileEntity1, Object aTarget, byte aGrabFrom, int aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
 			if (aTileEntity1 == null || !(aTileEntity1 instanceof IInventory) || aPutTo < 0 || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMaxMoveAtOnce <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMinMoveAtOnce > aMaxMoveAtOnce) return 0;
 			
@@ -2634,7 +2649,7 @@ public class UT {
 	
 	public static class Sounds {
 		public static boolean MULTITHREADED = F;
-		public static List<PlayedSound> sPlayedSounds = new ArrayListNoNulls();
+		public static List<PlayedSound> sPlayedSounds = new ArrayListNoNulls<>();
 		
 		public static boolean play(String aSoundName, int aTimeUntilNextSound, float aSoundStrength) {
 			if (!CODE_CLIENT || cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer()) return F;
@@ -2756,7 +2771,7 @@ public class UT {
 		}
 		
 		/** Sends Messages to a Player */
-		public static void sendchat(Object aPlayer, List aChatMessages, boolean aSkipFirst) {
+		public static void sendchat(Object aPlayer, @SuppressWarnings("rawtypes") List aChatMessages, boolean aSkipFirst) {
 			if (aChatMessages != null && aPlayer instanceof EntityPlayerMP) for (Object aMessage : aChatMessages) if (aSkipFirst) aSkipFirst=F; else ((EntityPlayerMP)aPlayer).addChatComponentMessage(aMessage instanceof IChatComponent ? (IChatComponent)aMessage : new ChatComponentText(aMessage.toString()));
 		}
 		
@@ -2770,7 +2785,7 @@ public class UT {
 			if (aPlayer instanceof EntityPlayer) for (IChatComponent aMessage : aChatMessages) ((EntityPlayer)aPlayer).addChatComponentMessage(aMessage);
 		}
 		
-		public static void chat(Object aPlayer, List aChatMessages, boolean aSkipFirst) {
+		public static void chat(Object aPlayer, @SuppressWarnings("rawtypes") List aChatMessages, boolean aSkipFirst) {
 			if (aPlayer == null) aPlayer = GT_API.api_proxy.getThePlayer();
 			if (aChatMessages != null && aPlayer instanceof EntityPlayer) for (Object aMessage : aChatMessages) if (aSkipFirst) aSkipFirst=F; else ((EntityPlayer)aPlayer).addChatComponentMessage(aMessage instanceof IChatComponent ? (IChatComponent)aMessage : new ChatComponentText(aMessage.toString()));
 		}
@@ -3116,9 +3131,10 @@ public class UT {
 		@Deprecated public static ItemStack remove(ItemStack... aRecipe) {return CR.remove(aRecipe);}
 	}
 	
-	public static synchronized boolean removeSimpleIC2MachineRecipe(ItemStack aInput, Map aRecipeList, ItemStack aOutput) {
+	public static synchronized boolean removeSimpleIC2MachineRecipe(ItemStack aInput, @SuppressWarnings("rawtypes") Map aRecipeList, ItemStack aOutput) {
 		if (!MD.IC2.mLoaded || (ST.invalid(aInput) && ST.invalid(aOutput)) || aRecipeList == null || aRecipeList.isEmpty()) return F;
 		boolean rReturn = F;
+		@SuppressWarnings("unchecked")
 		Iterator<Map.Entry<IRecipeInput, RecipeOutput>> tIterator = aRecipeList.entrySet().iterator();
 		aOutput = OM.get_(aOutput);
 		while (tIterator.hasNext()) {
@@ -3156,7 +3172,8 @@ public class UT {
 		return T;
 	}
 	
-	public static boolean addSimpleIC2MachineRecipe(ItemStack aInput, Map aRecipeList, NBTTagCompound aNBT, Object... aOutput) {
+	@SuppressWarnings("unchecked")
+	public static boolean addSimpleIC2MachineRecipe(ItemStack aInput, @SuppressWarnings("rawtypes") Map aRecipeList, NBTTagCompound aNBT, Object... aOutput) {
 		if (!MD.IC2.mLoaded || ST.invalid(aInput) || aOutput.length == 0 || aRecipeList == null) return F;
 		OreDictItemData tOreName = OM.association_(aInput);
 		if (tOreName != null) {

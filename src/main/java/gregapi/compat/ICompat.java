@@ -33,7 +33,7 @@ import gregapi.code.ArrayListNoNulls;
 
 
 public interface ICompat {
-	public static final Collection<ICompat> COMPAT_CLASSES = new ArrayListNoNulls();
+	public static final Collection<ICompat> COMPAT_CLASSES = new ArrayListNoNulls<>();
 	
 	public void onPreLoad			(FMLPreInitializationEvent aEvent);
 	public void onLoad				(FMLInitializationEvent aEvent);

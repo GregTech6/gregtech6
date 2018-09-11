@@ -21,10 +21,12 @@ package gregapi.code;
 
 /**
  * @author Gregorius Techneticies
+ * 
+ * Very unfinished!
  */
 public interface IMath<O> {
-	public static final IMath ZERO = new Val(0L);
-	public static final IMath ONE  = new Val(1L);
+	public static final IMath<?> ZERO = new Val<>(0L);
+	public static final IMath<?> ONE  = new Val<>(1L);
 	
 	/**
 	 * @param aObject the Object to check the Maths on.
@@ -66,6 +68,7 @@ public interface IMath<O> {
 	
 	public static class Sum<O> implements IMath<O> {
 		private final IMath<O>[] mValues;
+		@SafeVarargs
 		public Sum(IMath<O>... aValues) {mValues = aValues;}
 		
 		@Override
@@ -85,6 +88,7 @@ public interface IMath<O> {
 	
 	public static class Mul<O> implements IMath<O> {
 		private final IMath<O>[] mValues;
+		@SafeVarargs
 		public Mul(IMath<O>... aValues) {mValues = aValues;}
 		
 		@Override

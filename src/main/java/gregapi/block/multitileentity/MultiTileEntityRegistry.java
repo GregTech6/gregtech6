@@ -86,14 +86,14 @@ import net.minecraftforge.client.MinecraftForgeClient;
  * ================================================================================================================================================
  */
 public class MultiTileEntityRegistry {
-	private static final HashMap<String, MultiTileEntityRegistry> NAMED_REGISTRIES = new HashMap();
-	private static final ItemStackMap<ItemStackContainer, MultiTileEntityRegistry> REGISTRIES = new ItemStackMap();
-	private static final HashSetNoNulls<Class> sRegisteredTileEntities = new HashSetNoNulls();
-	private final HashSetNoNulls<Class> mRegisteredTileEntities = new HashSetNoNulls();
+	private static final HashMap<String, MultiTileEntityRegistry> NAMED_REGISTRIES = new HashMap<>();
+	private static final ItemStackMap<ItemStackContainer, MultiTileEntityRegistry> REGISTRIES = new ItemStackMap<>();
+	private static final HashSetNoNulls<Class<?>> sRegisteredTileEntities = new HashSetNoNulls<>();
+	private final HashSetNoNulls<Class<?>> mRegisteredTileEntities = new HashSetNoNulls<>();
 	
-	public HashMap<Short, CreativeTabs> mCreativeTabs = new HashMap();
-	public Map<Short, MultiTileEntityClassContainer> mRegistry = new HashMap();
-	public List<MultiTileEntityClassContainer> mRegistrations = new ArrayListNoNulls();
+	public HashMap<Short, CreativeTabs> mCreativeTabs = new HashMap<>();
+	public Map<Short, MultiTileEntityClassContainer> mRegistry = new HashMap<>();
+	public List<MultiTileEntityClassContainer> mRegistrations = new ArrayListNoNulls<>();
 	
 	public final String mNameInternal;
 	public final MultiTileEntityBlockInternal mBlock;
@@ -248,6 +248,6 @@ public class MultiTileEntityRegistry {
 		return rContainer;
 	}
 	
-	public static void onServerLoad(File aSaveLocation) {for (Class tClass : sRegisteredTileEntities) if (IMTE_OnServerLoad.class.isAssignableFrom(tClass)) try {((IMTE_OnServerLoad)tClass.newInstance()).onServerLoad(aSaveLocation);} catch (Throwable e) {e.printStackTrace(ERR);}}
-	public static void onServerSave(File aSaveLocation) {for (Class tClass : sRegisteredTileEntities) if (IMTE_OnServerSave.class.isAssignableFrom(tClass)) try {((IMTE_OnServerSave)tClass.newInstance()).onServerSave(aSaveLocation);} catch (Throwable e) {e.printStackTrace(ERR);}}
+	public static void onServerLoad(File aSaveLocation) {for (Class<?> tClass : sRegisteredTileEntities) if (IMTE_OnServerLoad.class.isAssignableFrom(tClass)) try {((IMTE_OnServerLoad)tClass.newInstance()).onServerLoad(aSaveLocation);} catch (Throwable e) {e.printStackTrace(ERR);}}
+	public static void onServerSave(File aSaveLocation) {for (Class<?> tClass : sRegisteredTileEntities) if (IMTE_OnServerSave.class.isAssignableFrom(tClass)) try {((IMTE_OnServerSave)tClass.newInstance()).onServerSave(aSaveLocation);} catch (Throwable e) {e.printStackTrace(ERR);}}
 }

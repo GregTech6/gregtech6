@@ -90,7 +90,7 @@ public class ItemIntegratedCircuit extends ItemBase {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addAdditionalToolTips(aList, aStack, aF3_H);
 		aList.add(LanguageHandler.get(getUnlocalizedName() + ".configuration", "Configuration: ") + getConfigurationString(getDamage(aStack)));
 	}
@@ -102,7 +102,8 @@ public class ItemIntegratedCircuit extends ItemBase {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public final void getSubItems(Item var1, CreativeTabs aCreativeTab, List aList) {
+	@SuppressWarnings("unchecked")
+	public final void getSubItems(Item var1, CreativeTabs aCreativeTab, @SuppressWarnings("rawtypes") List aList) {
 		aList.add(ST.make(this, 1, 0));
 	}
 	

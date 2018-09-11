@@ -44,8 +44,8 @@ import net.minecraft.item.ItemStack;
  */
 public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalAether>
-	sListAetherSide = new ArrayListNoNulls(),
-	sListWorldSide  = new ArrayListNoNulls();
+	sListAetherSide = new ArrayListNoNulls<>(),
+	sListWorldSide  = new ArrayListNoNulls<>();
 	
 	static {
 		LH.add("gt.tileentity.portal.aether.tooltip.1", "Only works between the Aether and the Overworld!");
@@ -54,7 +54,7 @@ public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 	}
 	
 	@Override
-	public void addToolTips2(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips2(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.aether.tooltip.1"));
 		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.aether.tooltip.2"));
 		aList.add(Chat.ORANGE	+ LH.get("gt.tileentity.portal.aether.tooltip.3"));

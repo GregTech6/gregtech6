@@ -281,6 +281,7 @@ public class RM {
 		if (ST.invalid(aInput)) return F;
 		ItemStack tPyrotheum = OP.dust.mat(MT.Pyrotheum, 1);
 		if (ST.valid(tPyrotheum)) CR.remove(aInput, tPyrotheum);
+		@SuppressWarnings("unchecked")
 		Iterator<Entry<ItemStack, ItemStack>> tIterator = FurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
 		boolean temp = F;
 		while (tIterator.hasNext()) if (ST.equal(aInput, tIterator.next().getKey(), T)) {
@@ -291,6 +292,7 @@ public class RM {
 	}
 	public static boolean rem_smelting(ItemStack aInput, ItemStack aOutput) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
+		@SuppressWarnings("unchecked")
 		Iterator<Entry<ItemStack, ItemStack>> tIterator = FurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
 		boolean temp = F;
 		while (tIterator.hasNext()) {

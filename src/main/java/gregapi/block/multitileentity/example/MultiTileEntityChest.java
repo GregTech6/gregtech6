@@ -195,14 +195,16 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	@SuppressWarnings("unchecked")
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList, short aID) {
 		if (!SHOW_HIDDEN_MATERIALS && mMaterial.mHidden) return F;
 		if (D1 || "lootchest".equalsIgnoreCase(mTextureName)) for (String tLoot : new String[] {"mineshaftCorridor", "pyramidDesertyChest", "pyramidJungleChest", "pyramidJungleDispenser", "strongholdCorridor", "strongholdLibrary", "strongholdCrossing", "villageBlacksmith", "bonusChest", "dungeonChest"}) aList.add(aBlock.mMultiTileEntityRegistry.getItem(aID, UT.NBT.makeString("gt.dungeonloot", tLoot)));
 		return T;
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addToolTips(@SuppressWarnings("rawtypes") List aList, ItemStack aStack, boolean aF3_H) {
 		if (aStack.getTagCompound() != null && aStack.getTagCompound().hasKey("gt.dungeonloot")) aList.add("Dungeon Loot: "+aStack.getTagCompound().getString("gt.dungeonloot"));
 	}
 	
@@ -264,7 +266,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@SideOnly(Side.CLIENT)
 	public static class MultiTileEntityRendererChest extends TileEntitySpecialRenderer {
 		private static final MultiTileEntityModelChest sModel = new MultiTileEntityModelChest();
-		public final Map<String, ResourceLocation[]> mResources = new HashMap();
+		public final Map<String, ResourceLocation[]> mResources = new HashMap<>();
 		
 		@Override
 		public void renderTileEntityAt(TileEntity aTileEntity, double aX, double aY, double aZ, float aPartialTick) {

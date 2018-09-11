@@ -143,7 +143,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		for (boolean temp = T; temp;) {temp = F; for (ResearchItem tResearch : tCategory.research.values()) if (tResearch.displayColumn == aX && tResearch.displayRow == aY) {aX += (aX>0?+5:-5); aY += (aY>0?+5:-5); temp = T;}}
 		
 		ResearchItem rResearch = new ResearchItem(aResearch, aCategory, (AspectList)getAspectList(aAspects), aX, aY, aComplexity, aIcon);
-		ArrayList<ResearchPage> tPages = new ArrayListNoNulls(aPages.length);
+		ArrayList<ResearchPage> tPages = new ArrayListNoNulls<>(aPages.length);
 		LH.add("tc.research_name."+aResearch, aName);
 		LH.add("tc.research_text."+aResearch, "[GT] " + aText);
 		for (Object tPage : aPages) if (tPage != null) {
@@ -163,7 +163,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		if ((aType & RESEARCH_TYPE_FREE			) != 0)	rResearch.setStub();
 		
 		if (aParentResearches != null) {
-			ArrayList<String> tParentResearches = new ArrayListNoNulls();
+			ArrayList<String> tParentResearches = new ArrayListNoNulls<>();
 			for (String tParent : aParentResearches) if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.researches, aResearch, T)) tParentResearches.add(tParent);
 			if (tParentResearches.size() > 0) {
 				rResearch.setParents(tParentResearches.toArray(ZL_STRING));

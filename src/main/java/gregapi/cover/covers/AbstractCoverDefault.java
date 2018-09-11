@@ -69,7 +69,7 @@ public abstract class AbstractCoverDefault implements ICover {
 	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), SFX.MC_BREAK, 1.0F, -1.0F, aTileEntity.getCoords());}
 	@Override public void onBlockUpdate(byte aCoverSide, CoverData aData) {/**/}
 	@Override public void onStoppedUpdate(byte aCoverSide, CoverData aData, boolean aStopped) {/**/}
-	@Override public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {aList.add(LH.Chat.DGRAY + LH.get(LH.COVER_TOOLTIP));}
+	@Override public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {aList.add(LH.Chat.DGRAY + LH.get(LH.COVER_TOOLTIP));}
 	@Override public byte getRedstoneIn(byte aCoverSide, CoverData aData) {return UT.Code.bind4(aData.mTileEntity.getWorld().getIndirectPowerLevelTo(aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), aCoverSide));}
 	@Override public byte getRedstoneOutWeak(byte aCoverSide, CoverData aData, byte aDefaultRedstone) {return aDefaultRedstone;}
 	@Override public byte getRedstoneOutStrong(byte aCoverSide, CoverData aData, byte aDefaultRedstone) {return aDefaultRedstone;}
@@ -80,7 +80,7 @@ public abstract class AbstractCoverDefault implements ICover {
 	@Override public float[] getCoverBounds(byte aCoverSide, CoverData aData) {return BOXES_COVERS[aCoverSide];}
 	@Override public float[] getHolderBounds(byte aCoverSide, CoverData aData) {return BOXES_HOLDERS[aCoverSide];}
 	
-	@Override public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List aList, Entity aEntity) {aData.box(aAABB, aList, getCoverBounds(aCoverSide, aData));}
+	@Override public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {aData.box(aAABB, aList, getCoverBounds(aCoverSide, aData));}
 	
 	@Override public boolean interceptConnect(byte aCoverSide, CoverData aData) {return F;}
 	@Override public boolean interceptDisconnect(byte aCoverSide, CoverData aData) {return F;}

@@ -46,7 +46,7 @@ public class GT6WorldGenerator {
 		public final List<WorldgenObject> mGenNormal;
 		public final List<WorldgenOresLarge> mGenLargeOres;
 		
-		public WorldGenContainer(List aGenNormal, List aGenLargeOres, int aDimType, World aWorld, int aX, int aZ) {
+		public WorldGenContainer(List<WorldgenObject> aGenNormal, List<WorldgenOresLarge> aGenLargeOres, int aDimType, World aWorld, int aX, int aZ) {
 			mMinX = aX; mMinZ = aZ; mMaxX = aX + 15; mMaxZ = aZ + 15;
 			mDimType = aDimType;
 			mWorld = aWorld;
@@ -55,13 +55,14 @@ public class GT6WorldGenerator {
 			mRandom = WD.random(aWorld, aX >> 4, aZ >> 4);
 		}
 		
+		@SuppressWarnings("unchecked")
 		@Override
 		public void run() {
 			if (!mGenNormal.isEmpty()) {
 				Chunk tChunk = mWorld.getChunkFromBlockCoords(mMinX+7, mMinZ+7);
 				if (tChunk == null) return;
 				BiomeGenBase[][] tBiomes = new BiomeGenBase[16][16];
-				HashSetNoNulls<String> tBiomeNames = new HashSetNoNulls();
+				HashSetNoNulls<String> tBiomeNames = new HashSetNoNulls<>();
 				for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
 					tBiomes[i][j] = tChunk.getBiomeGenForWorldCoords(i, j, mWorld.provider.worldChunkMgr);
 					if (tBiomes[i][j] == null) {
@@ -77,7 +78,7 @@ public class GT6WorldGenerator {
 				
 				if (mGenLargeOres != null) {
 					int tMaxWeight = 0;
-					List<WorldgenOresLarge> tList = new ArrayListNoNulls();
+					List<WorldgenOresLarge> tList = new ArrayListNoNulls<>();
 					
 					for (WorldgenOresLarge tWorldGen : mGenLargeOres) if (tWorldGen.enabled(mWorld, mDimType)) {tMaxWeight += tWorldGen.mWeight; tList.add(tWorldGen);}
 					
@@ -102,7 +103,7 @@ public class GT6WorldGenerator {
 		}
 	}
 	
-	private static final List<Runnable> LIST = new ArrayListNoNulls();
+	private static final List<Runnable> LIST = new ArrayListNoNulls<>();
 	private static boolean LOCK = F;
 	public static boolean PFAA = F;
 	

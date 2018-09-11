@@ -115,7 +115,7 @@ public class GT_Mod extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
 	public static GT_Proxy gregtechproxy;
 	public static int MIN_IC2 = 827, MAX_IC2 = Integer.MAX_VALUE;
-	public static String MAJOR_VERSION = "608";
+	public static String MAJOR_VERSION = "609";
 	
 	public GT_Mod() {
 		GT = this;
@@ -127,7 +127,7 @@ public class GT_Mod extends Abstract_Mod {
 		try {
 			OUT.println(getModNameForLog() + ": Sorting GregTech to the end of the Mod List for further processing.");
 			LoadController tLoadController = ((LoadController)UT.Reflection.getFieldContent(Loader.instance(), "modController", T, T));
-			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList(tModList.size());
+			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList<>(tModList.size());
 			ModContainer tGregTech = null;
 			for (short i = 0; i < tModList.size(); i++) {
 				ModContainer tMod = tModList.get(i);
@@ -161,7 +161,7 @@ public class GT_Mod extends Abstract_Mod {
 			OUT.println(getModNameForLog() + ": Removing all original Scrapbox Drops.");
 			try {
 				UT.Reflection.getField("ic2.core.item.ItemScrapbox$Drop", "topChance", T, T).set(null, 0);
-				((List)UT.Reflection.getFieldContent(UT.Reflection.getFieldContent("ic2.api.recipe.Recipes", "scrapboxDrops", T, T), "drops", T, T)).clear();
+				((List<?>)UT.Reflection.getFieldContent(UT.Reflection.getFieldContent("ic2.api.recipe.Recipes", "scrapboxDrops", T, T), "drops", T, T)).clear();
 			} catch(Throwable e) {
 				if (D1) e.printStackTrace(ERR);
 			}
@@ -242,13 +242,13 @@ public class GT_Mod extends Abstract_Mod {
 		
 		// Doing all the Recipe Additions.
 		
-		ArrayListNoNulls<Thread> tThreadList = new ArrayListNoNulls(F
+		ArrayListNoNulls<Thread> tThreadList = new ArrayListNoNulls<>(F
 		, new Thread(new Loader_Recipes_Extruder())
 		);
 		
 		for (Thread tThread : tThreadList) tThread.start();
 		
-		ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls(F,
+		ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
 			new Loader_Recipes_Woods(), // has to be before Vanilla!
 			new Loader_Recipes_Vanilla(), // has to be after Woods!
 			new Loader_Recipes_Temporary(),
@@ -390,8 +390,8 @@ public class GT_Mod extends Abstract_Mod {
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
 				for (IOreDictConfigurationComponent tAlloy : aMaterial.mAlloyCreationRecipes) {
 					boolean temp = T;
-					ArrayListNoNulls<ItemStack> tDusts = new ArrayListNoNulls(), tIngots = new ArrayListNoNulls();
-					ArrayListNoNulls<Long> tMeltingPoints = new ArrayListNoNulls();
+					ArrayListNoNulls<ItemStack> tDusts = new ArrayListNoNulls<>(), tIngots = new ArrayListNoNulls<>();
+					ArrayListNoNulls<Long> tMeltingPoints = new ArrayListNoNulls<>();
 					for (OreDictMaterialStack tMaterial : tAlloy.getUndividedComponents()) {
 						tMeltingPoints.add(tMaterial.mMaterial.mMeltingPoint);
 						if (!tDusts.add(OM.dustOrIngot(tMaterial.mMaterial, tMaterial.mAmount))) {temp = F; break;}

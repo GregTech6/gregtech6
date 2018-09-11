@@ -272,6 +272,7 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 	public short mProgressBar = 0;
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
 		for (ICrafting tUpdate : (List<ICrafting>)crafters) {

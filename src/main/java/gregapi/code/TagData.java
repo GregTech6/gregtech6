@@ -33,14 +33,16 @@ import gregapi.lang.LanguageHandler;
  * Useful for tagging things. It could Tag anything.
  * Better than Strings for tagging Stuff since you can do an == Check rather than needing to use equals.
  */
+@SuppressWarnings("rawtypes")
 public final class TagData implements ICondition<ITagDataContainer> {
-	private static final List<TagData> TAGS_INTERNAL = new ArrayList();
-	public static final List<TagData> TAGS = new ArrayList();
+	private static final List<TagData> TAGS_INTERNAL = new ArrayList<>();
+	public static final List<TagData> TAGS = new ArrayList<>();
 	
 	public final int mTagID;
 	public final String mName;
 	public String mChatFormat = "";
 	
+	@SuppressWarnings("unchecked")
 	public final ICondition<ITagDataContainer> NOT = new ICondition.Not(this);
 	
 	public final List<TagData> AS_LIST = Collections.unmodifiableList(Arrays.asList(this));

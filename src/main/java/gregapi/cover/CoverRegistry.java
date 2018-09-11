@@ -31,7 +31,7 @@ import net.minecraft.nbt.NBTTagCompound;
  * @author Gregorius Techneticies
  */
 public class CoverRegistry {
-	public static ItemStackMap<ItemStackContainer, ICover> COVERS = new ItemStackMap();
+	public static ItemStackMap<ItemStackContainer, ICover> COVERS = new ItemStackMap<>();
 	
 	public static ICover get(short aID, short aMetaData) {
 		return COVERS.get(aID, aMetaData);

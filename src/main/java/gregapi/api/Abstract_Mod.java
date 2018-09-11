@@ -41,7 +41,7 @@ import gregapi.util.UT;
  * Can also be used for GT-API based Mods such as Addons ;)
  */
 public abstract class Abstract_Mod {
-	public static final List<Abstract_Mod> MODS_USING_GT_API = new ArrayListNoNulls();
+	public static final List<Abstract_Mod> MODS_USING_GT_API = new ArrayListNoNulls<>();
 	
 	/** Contains the amount of GT API Mods. Better than doing a constant List size check. */
 	public static int sModCountUsingGTAPI = 0;
@@ -54,7 +54,7 @@ public abstract class Abstract_Mod {
 	sFinalized				= 0;
 	
 	/** List of all Configuration Files for Auto-Saving. */
-	public static final List<Runnable> sConfigs = new ArrayListNoNulls();
+	public static final List<Runnable> sConfigs = new ArrayListNoNulls<>();
 	
 	// ------------------------------ non-static stuff ------------------------------
 	
@@ -77,17 +77,17 @@ public abstract class Abstract_Mod {
 	
 	/** Event Lists where you can hook into the loading order of the Code, without having to care much about regular Mod load order. Note, that these Lists will be cleared and then set to null, right after they got executed once, in order to clean up some RAM. */
 	public List<Runnable>
-	mBeforePreInit			= new ArrayListNoNulls(), mAfterPreInit			= new ArrayListNoNulls(),
-	mBeforeInit				= new ArrayListNoNulls(), mAfterInit			= new ArrayListNoNulls(),
-	mBeforePostInit			= new ArrayListNoNulls(), mAfterPostInit		= new ArrayListNoNulls(),
-	mFinalize				= new ArrayListNoNulls();
+	mBeforePreInit			= new ArrayListNoNulls<>(), mAfterPreInit        = new ArrayListNoNulls<>(),
+	mBeforeInit				= new ArrayListNoNulls<>(), mAfterInit           = new ArrayListNoNulls<>(),
+	mBeforePostInit			= new ArrayListNoNulls<>(), mAfterPostInit       = new ArrayListNoNulls<>(),
+	mFinalize				= new ArrayListNoNulls<>();
 	
 	/** Event Lists where you can hook into the loading order of the Code, without having to care much about regular Mod load order. */
 	public final List<Runnable>
-	mBeforeServerStarting	= new ArrayListNoNulls(), mAfterServerStarting	= new ArrayListNoNulls(),
-	mBeforeServerStarted	= new ArrayListNoNulls(), mAfterServerStarted	= new ArrayListNoNulls(),
-	mBeforeServerStopping	= new ArrayListNoNulls(), mAfterServerStopping	= new ArrayListNoNulls(),
-	mBeforeServerStopped	= new ArrayListNoNulls(), mAfterServerStopped	= new ArrayListNoNulls();
+	mBeforeServerStarting	= new ArrayListNoNulls<>(), mAfterServerStarting = new ArrayListNoNulls<>(),
+	mBeforeServerStarted	= new ArrayListNoNulls<>(), mAfterServerStarted  = new ArrayListNoNulls<>(),
+	mBeforeServerStopping	= new ArrayListNoNulls<>(), mAfterServerStopping = new ArrayListNoNulls<>(),
+	mBeforeServerStopped	= new ArrayListNoNulls<>(), mAfterServerStopped  = new ArrayListNoNulls<>();
 	
 	public Abstract_Mod() {
 		sModCountUsingGTAPI++;

@@ -156,6 +156,6 @@ public class BlockMetaType extends BlockBaseMeta {
 	@Override public int getLightOpacity() {return mBlock == this ? LIGHT_OPACITY_MAX : LIGHT_OPACITY_WATER;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.stone.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));}
 	@Override public Item getItemDropped(int par1, Random par2Random, int par3) {return Item.getItemFromBlock(mBlock == this ? mBlock : mBlock.mSlabs[0]);}
-	@Override public void getSubBlocks(Item aItem, CreativeTabs aTab, List aList) {if (mBlock == this || mBlock.mSlabs[0] == this) super.getSubBlocks(aItem, aTab, aList);}
+	@Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {if (mBlock == this || mBlock.mSlabs[0] == this) super.getSubBlocks(aItem, aTab, aList);}
 	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(mBlock == this ? mBlock : mBlock.mSlabs[0]);}
 }

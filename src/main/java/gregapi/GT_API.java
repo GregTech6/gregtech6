@@ -143,6 +143,7 @@ import gregapi.util.CR;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.worldgen.GT6WorldGenerator;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
@@ -162,16 +163,17 @@ public class GT_API extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GAPI, clientSide = "gregapi.GT_API_Proxy_Client", serverSide = "gregapi.GT_API_Proxy_Server")
 	public static GT_API_Proxy api_proxy;
 	
-	public static final Collection<Map<ItemStackContainer, ?>> STACKMAPS = new ArrayListNoNulls();
+	public static final Collection<Map<ItemStackContainer, ?>> STACKMAPS = new ArrayListNoNulls<>();
 	
 	/** Used to register Icons. It is not necessary to make those into Lists */
-	public static Set<Runnable> sBlockIconload = new HashSetNoNulls(), sItemIconload = new HashSetNoNulls();
+	public static Set<Runnable> sBlockIconload = new HashSetNoNulls<>(), sItemIconload = new HashSetNoNulls<>();
 	/** The Icon Registers from Blocks and Items. They will get set right before the corresponding Icon Load Phase as executed in the Runnable List above. */
 	@SideOnly(Side.CLIENT)
 	public static IIconRegister sBlockIcons, sItemIcons;
 	
 	private LoggerPlayerActivity mPlayerLogger;
 	
+	@SuppressWarnings("unchecked")
 	public GT_API() {
 		GAPI = this;
 		
@@ -241,12 +243,12 @@ public class GT_API extends Abstract_Mod {
     	UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
     	UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
     	
-    	Set tSet = (Set)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
+		Set<Block> tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
     	tSet.add(Blocks.bed);
     	tSet.add(Blocks.hay_block);
     	tSet.add(Blocks.sponge);
     	
-    	tSet = (Set)UT.Reflection.getFieldContent(ItemPickaxe.class, "field_150915_c", T, T);
+    	tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemPickaxe.class, "field_150915_c", T, T);
     	tSet.add(Blocks.monster_egg);
     	tSet.add(Blocks.tnt);
 	}
@@ -304,7 +306,7 @@ public class GT_API extends Abstract_Mod {
 	public void onIDChangingEvent(FMLModIdMappingEvent aEvent) {
 		OUT.println(getModNameForLog() + ": Remapping all the ItemStackMaps due to ID Map change.");
 		OUT.println(getModNameForLog() + ": Those damn Items should have a consistent Hashcode, but noooo, ofcourse they break Basic Code Conventions! Thanks Forge and Mojang!");
-		for (Map tMap : STACKMAPS) UT.Code.reMap(tMap);
+		for (Map<ItemStackContainer, ?> tMap : STACKMAPS) UT.Code.reMap(tMap);
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onIDChanging(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 	}
 	
@@ -314,7 +316,7 @@ public class GT_API extends Abstract_Mod {
 		try {
 			OUT.println(getModNameForLog() + ": Sorting Greg-API to the start of the Mod List for further processing.");
 			LoadController tLoadController = ((LoadController)UT.Reflection.getFieldContent(Loader.instance(), "modController", T, T));
-			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList(tModList.size());
+			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList<>(tModList.size());
 			ModContainer tGregTech = null;
 			for (short i = 0; i < tModList.size(); i++) {
 				ModContainer tMod = tModList.get(i);
@@ -723,7 +725,7 @@ public class GT_API extends Abstract_Mod {
 	
 	@Override
 	public void onModServerStarted2(FMLServerStartedEvent aEvent) {
-		for (Map tMap : STACKMAPS) UT.Code.reMap(tMap);
+		for (Map<ItemStackContainer, ?> tMap : STACKMAPS) UT.Code.reMap(tMap);
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStarted(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 	}
 	

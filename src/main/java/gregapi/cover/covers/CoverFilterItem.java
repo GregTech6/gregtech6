@@ -43,7 +43,7 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 	public CoverFilterItem() {}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		ItemStack tStack = ST.load(aStack.getTagCompound(), "gt.filter.item");
 		if (ST.valid(tStack)) aList.add(LH.Chat.CYAN + tStack.getDisplayName());
 		aList.add(LH.Chat.ORANGE + "Not NBT sensitive!");

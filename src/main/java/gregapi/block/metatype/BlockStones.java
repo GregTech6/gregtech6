@@ -77,6 +77,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	TILES = 10, STILE = 11;
 	
 	public final OreDictMaterial mMaterial;
+	@SuppressWarnings("rawtypes")
 	public final ItemStackSet[] mEqualBlocks = {new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(),};
 	
 	public BlockStones(Class<? extends ItemBlock> aItemClass, Material aVanillaMaterial, SoundType aVanillaSoundType, String aName, String aDefaultLocalised, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, IIconContainer[] aIcons) {
@@ -197,6 +198,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void run() {
 		RM.pack(rockGt.mat(mMaterial, 4), ST.make(this, 1, COBBL));
 		
@@ -318,6 +320,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 		if (aEvent.mOreDictName.equals(DYE_OREDICTS_LENS[DYE_INDEX_White])) {
 			for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[SMOTH]) {
@@ -452,7 +455,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		}
 	}
 	
-	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls(F, ST.make(this, 1, mBlock == this && aMeta == 0 ? 1 : aMeta));}
+	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls<>(F, ST.make(this, 1, mBlock == this && aMeta == 0 ? 1 : aMeta));}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return SEALABLE[aMeta] && super.isSealable(aMeta, aSide);}
 	@Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return aWorld.getBlockMetadata(aX, aY, aZ) == RSTBR ? 15 : 0;}
 	@Override public boolean shouldCheckWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mBlock == this && aWorld.getBlockMetadata(aX, aY, aZ) != RSTBR;}

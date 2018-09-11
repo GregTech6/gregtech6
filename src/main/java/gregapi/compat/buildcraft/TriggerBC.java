@@ -19,6 +19,8 @@
 
 package gregapi.compat.buildcraft;
 
+import static gregapi.data.CS.*;
+
 import java.util.Collection;
 
 import buildcraft.api.statements.IStatement;
@@ -61,7 +63,7 @@ public abstract class TriggerBC implements ITriggerExternal, ITriggerProvider {
 	@Override public IStatement rotateLeft() {return null;}
 	@Override public boolean isTriggerActive(TileEntity aTarget, ForgeDirection aSide, IStatementContainer aSource, IStatementParameter[] aParameters) {return isApplicable(aTarget, UT.Code.side(aSide)) ? isActive(aTarget, UT.Code.side(aSide), aSource, aParameters) : false;}
 	@Override public Collection<ITriggerInternal> getInternalTriggers(IStatementContainer container) {return null;}
-	@Override public Collection<ITriggerExternal> getExternalTriggers(ForgeDirection aSide, TileEntity aTarget) {return isApplicable(aTarget, UT.Code.side(aSide)) ? new ArrayListNoNulls(false, this) : null;}
+	@Override public Collection<ITriggerExternal> getExternalTriggers(ForgeDirection aSide, TileEntity aTarget) {return isApplicable(aTarget, UT.Code.side(aSide)) ? new ArrayListNoNulls<ITriggerExternal>(F, this) : null;}
 	
 	public abstract boolean isActive(TileEntity aTarget, byte aSideOfTileEntity, IStatementContainer aSource, IStatementParameter[] aParameters);
 	public abstract boolean isApplicable(TileEntity aTarget, byte aSideOfTileEntity);

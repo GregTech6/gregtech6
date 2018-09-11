@@ -174,23 +174,23 @@ public class CoverData {
 	public AxisAlignedBB box(float[] aBox) {return AxisAlignedBB.getBoundingBox(mTileEntity.getX()+aBox[0], mTileEntity.getY()+aBox[1], mTileEntity.getZ()+aBox[2], mTileEntity.getX()+aBox[3], mTileEntity.getY()+aBox[4], mTileEntity.getZ()+aBox[5]);}
 	public AxisAlignedBB box() {return AxisAlignedBB.getBoundingBox(mTileEntity.getX(), mTileEntity.getY(), mTileEntity.getZ(), mTileEntity.getX()+1, mTileEntity.getY()+1, mTileEntity.getZ()+1);}
 	
-	public boolean box(AxisAlignedBB aAABB, List aList, double aMinX, double aMinY, double aMinZ, double aMaxX, double aMaxY, double aMaxZ) {
+	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, double aMinX, double aMinY, double aMinZ, double aMaxX, double aMaxY, double aMaxZ) {
 		AxisAlignedBB tBox = box(aMinX, aMinY, aMinZ, aMaxX, aMaxY, aMaxZ);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
-	public boolean box(AxisAlignedBB aAABB, List aList, double[] aBox) {
+	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, double[] aBox) {
 		AxisAlignedBB tBox = box(aBox[0], aBox[1], aBox[2], aBox[3], aBox[4], aBox[5]);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
-	public boolean box(AxisAlignedBB aAABB, List aList, float[] aBox) {
+	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, float[] aBox) {
 		AxisAlignedBB tBox = box(aBox[0], aBox[1], aBox[2], aBox[3], aBox[4], aBox[5]);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
-	public boolean box(AxisAlignedBB aAABB, List aList) {
+	public boolean box(AxisAlignedBB aAABB, List<AxisAlignedBB> aList) {
 		AxisAlignedBB tBox = box(0, 0, 0, 1, 1, 1);
 		return tBox.intersectsWith(aAABB) && aList.add(tBox);
 	}
-	public boolean box(AxisAlignedBB aBox, AxisAlignedBB aAABB, List aList) {
+	public boolean box(AxisAlignedBB aBox, AxisAlignedBB aAABB, List<AxisAlignedBB> aList) {
 		return aBox != null && aBox.intersectsWith(aAABB) && aList.add(aBox);
 	}
 }

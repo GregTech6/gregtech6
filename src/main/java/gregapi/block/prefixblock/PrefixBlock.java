@@ -92,7 +92,7 @@ import net.minecraftforge.event.ForgeEventFactory;
  */
 public class PrefixBlock extends Block implements Runnable, ITileEntityProvider, IBlockSyncData, IRenderedBlock, IBlockToolable, IPrefixBlock {
 	/** There are quite some odd timings in the Block breaking Code which require the TileEntity to be buffered. */
-	public static final ThreadLocal<PrefixBlockTileEntity> TEMP_TILEENTITY = new ThreadLocal();
+	public static final ThreadLocal<PrefixBlockTileEntity> TEMP_TILEENTITY = new ThreadLocal<>();
 	
 	public Drops mDrops;
 	public boolean mRegisterToOreDict = T;
@@ -594,7 +594,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	
 	@Override public int getRenderBlockPass() {return ITexture.Util.MC_ALPHA_BLENDING?1:0;}
 	@Override public final ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aUnusableMetaData, int aFortune) {return mDrops.getDrops(this, aWorld, aX, aY, aZ, aFortune, F);}
-	@Override public void getSubBlocks(Item aItem, CreativeTabs aCreativeTab, List aList) {aItem.getSubItems(aItem, aCreativeTab, aList);}
+	@Override public void getSubBlocks(Item aItem, CreativeTabs aCreativeTab, @SuppressWarnings("rawtypes") List aList) {aItem.getSubItems(aItem, aCreativeTab, aList);}
 	/** Where I come from, we set the TileEntities ourselves instead of letting a Handler do it. */
 	@Override public final TileEntity createNewTileEntity(World aWorld, int aMeta) {return null;}
 	/** Where I come from, we set the TileEntities ourselves instead of letting a Handler do it. */
