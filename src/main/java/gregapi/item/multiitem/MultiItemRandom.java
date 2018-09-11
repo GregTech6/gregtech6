@@ -88,9 +88,9 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	public final BitSet mVisibleItems = new BitSet(32767);
 	public final IIcon[][] mIconList = new IIcon[32767][1];
 	
-	public final HashMap<Short, IFoodStat> mFoodStats = new HashMap();
-	public final HashMap<Short, IItemEnergy> mElectricStats = new HashMap();
-	public final HashMap<Short, Short> mBurnValues = new HashMap();
+	public final HashMap<Short, IFoodStat> mFoodStats = new HashMap<>();
+	public final HashMap<Short, IItemEnergy> mElectricStats = new HashMap<>();
+	public final HashMap<Short, Short> mBurnValues = new HashMap<>();
 	
 	/**
 	 * Creates the Item using these Parameters.
@@ -134,6 +134,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	 * @param aRandomData The OreDict Names you want to give the Item. Also used for TC Aspects and some other things.
 	 * @return An ItemStack containing the newly created Item.
 	 */
+	@SuppressWarnings("unchecked")
 	public final ItemStack addItem(int aID, String aEnglish, String aToolTip, Object... aRandomData) {
 		if (aToolTip == null) aToolTip = "";
 		if (mAllowedToAddItems && aID >= 0 && aID < 32767 && aID != W) {
@@ -144,7 +145,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 				LH.add(getUnlocalizedName(rStack) + ".name", aEnglish);
 				LH.add(getUnlocalizedName(rStack) + ".tooltip", aToolTip);
 			}
-			List<TC_AspectStack> tAspects = new ArrayListNoNulls();
+			List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 			// Important Stuff to do first
 			for (Object tRandomData : aRandomData) if (tRandomData instanceof TagData) {
 				if (tRandomData == TD.Creative.HIDDEN			) {mVisibleItems.set(aID, F); continue;}
@@ -154,7 +155,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 			for (Object tRandomData : aRandomData) if (tRandomData != null) {
 				boolean tUseOreDict = T;
 				if (tRandomData instanceof ItemStackSet) {
-					((ItemStackSet)tRandomData).add(rStack);
+					((ItemStackSet<?>)tRandomData).add(rStack);
 					continue;
 				}
 				if (tRandomData instanceof TagData) {
@@ -362,7 +363,8 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item aItem, CreativeTabs aCreativeTab, List aList) {
+	@SuppressWarnings("unchecked")
+	public void getSubItems(Item aItem, CreativeTabs aCreativeTab, @SuppressWarnings("rawtypes") List aList) {
 		if (aItem == this) for (int i = 0, j = mEnabledItems.length(); i < j; i++) if (mVisibleItems.get(i) || (SHOW_HIDDEN_ITEMS && mEnabledItems.get(i))) {
 			IItemEnergy tStats = mElectricStats.get((short)i);
 			if (tStats == null || tStats instanceof EnergyStatDebug) {
@@ -430,7 +432,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		IFoodStat tStat = mFoodStats.get((short)getDamage(aStack));
 		if (tStat != null) tStat.addAdditionalToolTips(this, aList, aStack, aF3_H);
 	}

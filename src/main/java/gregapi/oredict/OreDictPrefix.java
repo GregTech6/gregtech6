@@ -58,42 +58,43 @@ import thaumcraft.api.aspects.IEssentiaContainerItem;
 /**
  * @author Gregorius Techneticies
  */
-public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataContainer<OreDictPrefix>, ICondition<ITagDataContainer> {
+public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataContainer<OreDictPrefix>, ICondition<ITagDataContainer<?>> {
 	/** This List is sorted by the length of the Prefixes. */
-	public static final List<OreDictPrefix> VALUES_SORTED = new ArrayListNoNulls();
+	public static final List<OreDictPrefix> VALUES_SORTED = new ArrayListNoNulls<>();
 	/** This is to prevent smaller Prefixes from breaking larger ones by just starting with the same few Characters the larger one starts with. */
-	private static final List<OreDictPrefix> VALUES_SORTED_INTERNAL = new ArrayListNoNulls();
+	private static final List<OreDictPrefix> VALUES_SORTED_INTERNAL = new ArrayListNoNulls<>();
 	/** The List of all Values in the order they have been added. not really sorted at all. */
-	public static final List<OreDictPrefix> VALUES = new ArrayListNoNulls();
+	public static final List<OreDictPrefix> VALUES = new ArrayListNoNulls<>();
 	/** The Map containing all Prefixes by their Name. */
-	public static final Map<String, OreDictPrefix> sPrefixes = new HashMap();
+	public static final Map<String, OreDictPrefix> sPrefixes = new HashMap<>();
 	/** The Map containing all Prefixes by their Name. */
-	public static final Map<String, OreDictPrefix> sParsed = new HashMap();
+	public static final Map<String, OreDictPrefix> sParsed = new HashMap<>();
 	
-	private final Set<TagData> mTags = new HashSetNoNulls();
-	private final Set<OreDictMaterial> mItemGeneratorBlackList = new HashSetNoNulls(), mIgnoredRegistrations = new HashSetNoNulls(), mItemGeneratorForced = new HashSetNoNulls();
-	private final Set<IOreDictListenerEvent> mListenersOre = new HashSetNoNulls();
-	public final Set<IOreDictListenerItem> mListenersItem = new HashSetNoNulls();
+	private final Set<TagData> mTags = new HashSetNoNulls<>();
+	private final Set<OreDictMaterial> mItemGeneratorBlackList = new HashSetNoNulls<>(), mIgnoredRegistrations = new HashSetNoNulls<>(), mItemGeneratorForced = new HashSetNoNulls<>();
+	private final Set<IOreDictListenerEvent> mListenersOre = new HashSetNoNulls<>();
+	public final Set<IOreDictListenerItem> mListenersItem = new HashSetNoNulls<>();
 	public final String mNameInternal;
 	public OreDictPrefix mTargetRegistration = this;
 	public CreativeTabs mCreativeTab = null;
 	
 	public ItemStack mContainerItem = null;
+	@SuppressWarnings("rawtypes")
 	private ICondition mCondition = ICondition.TRUE;
 	/** The Indices of the Icons inside the Texture Sets. -1 if it doesn't have a Set */
 	public int mIconIndexBlock = -1, mIconIndexItem = -1;
 	public byte mConfigStackSize = 64, mDefaultStackSize = 64, mMinimumStackSize = 1, mState = STATE_SOLID;
 	public long mAmount = -1;
-	public List<AdvancedCrafting1ToY> mShapelessManagersSingle = new ArrayListNoNulls();
-	public List<AdvancedCraftingXToY> mShapelessManagers = new ArrayListNoNulls();
+	public List<AdvancedCrafting1ToY> mShapelessManagersSingle = new ArrayListNoNulls<>();
+	public List<AdvancedCraftingXToY> mShapelessManagers = new ArrayListNoNulls<>();
 	public float mHeatDamage = 0.0F;
 	public String mNameLocal, mMaterialPre, mMaterialPost, mNameCategory, mNameTextureSet;
 	/** List of Prefixes which are familiar to this Prefix. Like "dust" having "dustSmall" and "dustTiny" and vice versa. Note that this per Default also contains the Prefix itself inside this Set. */
-	public final Set<OreDictPrefix> mFamiliarPrefixes = new HashSetNoNulls();
+	public final Set<OreDictPrefix> mFamiliarPrefixes = new HashSetNoNulls<>();
 	/** Secondary Materials of this Prefix. OreDictMaterialStacks are In Material Units */
-	public final List<OreDictMaterialStack> mByProducts = new ArrayListNoNulls();
+	public final List<OreDictMaterialStack> mByProducts = new ArrayListNoNulls<>();
 	/** List of ThaumCraft Aspects. */
-	public final List<TC_AspectStack> mAspects = new ArrayListNoNulls(1);
+	public final List<TC_AspectStack> mAspects = new ArrayListNoNulls<>(1);
 	
 	public static OreDictPrefix createPrefix(String aName) {
 		if (GAPI.mStartedInit) throw new IllegalStateException("Prefixes have to be initialised in PreInit or earlier!");
@@ -314,7 +315,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		return this;
 	}
 	
-	public OreDictPrefix setCondition(ICondition aCondition) {
+	public OreDictPrefix setCondition(@SuppressWarnings("rawtypes") ICondition aCondition) {
 		mCondition = aCondition==null?ICondition.FALSE:aCondition;
 		return this;
 	}
@@ -345,22 +346,24 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		return this;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public boolean isGeneratingItem(OreDictMaterial aMaterial) {
 		return aMaterial != null && (mItemGeneratorForced.contains(aMaterial) || (!mItemGeneratorBlackList.contains(aMaterial) && mCondition.isTrue(aMaterial)));
 	}
 	
+	@SuppressWarnings("unchecked")
 	public boolean canGenerateItem(OreDictMaterial aMaterial) {
 		return aMaterial != null && (mItemGeneratorForced.contains(aMaterial) || mCondition.isTrue(aMaterial));
 	}
 	
-	private final List<OreDictRegistrationContainer> mRegistrations = new ArrayListNoNulls();
+	private final List<OreDictRegistrationContainer> mRegistrations = new ArrayListNoNulls<>();
 	
 	public OreDictPrefix addListener(IOreDictListenerEvent aListener) {
 		if (GAPI.mStartedPostInit) addListenerInternal(aListener); else mBufferedListeners.add(aListener);
 		return this;
 	}
 	
-	private final Set<IOreDictListenerEvent> mBufferedListeners = new HashSetNoNulls();
+	private final Set<IOreDictListenerEvent> mBufferedListeners = new HashSetNoNulls<>();
 	private void addListenerInternal(IOreDictListenerEvent aListener) {
 		if (mListenersOre.add(aListener)) for (OreDictRegistrationContainer tEvent : mRegistrations) aListener.onOreRegistration(tEvent);
 	}
@@ -443,7 +446,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		if (aEvent.mMaterial == MT.NULL) {
 			if (!contains(TD.Prefix.MATERIAL_BASED)) {
 				if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom)) {
-		    	    List<TC_AspectStack> tAspects = new ArrayListNoNulls();
+		    	    List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 		    	    for (TC_AspectStack tAspect : mAspects) tAspect.addToAspectList(tAspects);
 		    	    COMPAT_TC.registerThaumcraftAspectsToItem(ST.amount(1, aEvent.mStack), tAspects, aEvent.mOreDictName);
 	    	    }
@@ -458,7 +461,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 			if (!mIgnoredRegistrations.contains(aEvent.mMaterial)) {
 				if (!aEvent.mMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
 					if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom)) {
-			    	    List<TC_AspectStack> tAspects = new ArrayListNoNulls();
+			    	    List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 			    	    for (TC_AspectStack tAspect : mAspects) tAspect.addToAspectList(tAspects);
 			    	    if (mAmount >= U || mAmount < 0) for (TC_AspectStack tAspect : aEvent.mMaterial.mAspects) tAspect.addToAspectList(tAspects);
 			    	    COMPAT_TC.registerThaumcraftAspectsToItem(ST.amount(1, aEvent.mStack), tAspects, aEvent.mOreDictName);
@@ -477,9 +480,9 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	}
 	
 	/** List of all valid Items, which are registered for this Prefix. */
-	public final ItemStackSet<ItemStackContainer> mRegisteredItems = new ItemStackSet();
-	public final List<Item> mRegisteredPrefixItems = new ArrayListNoNulls();
-	public final Set<OreDictMaterial> mRegisteredMaterials = new HashSetNoNulls();
+	public final ItemStackSet<ItemStackContainer> mRegisteredItems = new ItemStackSet<>();
+	public final List<Item> mRegisteredPrefixItems = new ArrayListNoNulls<>();
+	public final Set<OreDictMaterial> mRegisteredMaterials = new HashSetNoNulls<>();
 	/** This is used to determine if any of the ItemStacks belongs to this Prefix. */
 	public boolean contains(ItemStack... aStacks) {
 		if (aStacks == null) return F;
@@ -534,9 +537,9 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	}
 	
 	@Override
-	public boolean isTrue(ITagDataContainer aMaterial) {
+	public boolean isTrue(ITagDataContainer<?> aMaterial) {
 		return aMaterial instanceof OreDictMaterial && canGenerateItem((OreDictMaterial)aMaterial);
 	}
-	
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public final ICondition<ITagDataContainer> NOT = new ICondition.Not(this);
 }

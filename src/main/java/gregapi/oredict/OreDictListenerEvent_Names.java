@@ -32,7 +32,7 @@ import gregapi.code.ArrayListNoNulls;
  * Used to process Non-Material based OreDict Stuff faster, like a String switch/case kind of a deal.
  */
 public abstract class OreDictListenerEvent_Names implements IOreDictListenerEvent {
-	private final HashMap<String, List<IOreDictListenerEvent>> NAME_EVENTS = new HashMap();
+	private final HashMap<String, List<IOreDictListenerEvent>> NAME_EVENTS = new HashMap<>();
 	
 	public OreDictListenerEvent_Names(OreDictPrefix aPrefix) {
 		addAllListeners();
@@ -50,7 +50,7 @@ public abstract class OreDictListenerEvent_Names implements IOreDictListenerEven
 	public boolean addListener(Object aOreDictName, IOreDictListenerEvent aListener) {
 		aOreDictName = aOreDictName.toString();
 		List<IOreDictListenerEvent> tList = NAME_EVENTS.get(aOreDictName);
-		if (tList == null) NAME_EVENTS.put((String)aOreDictName, tList = new ArrayListNoNulls());
+		if (tList == null) NAME_EVENTS.put((String)aOreDictName, tList = new ArrayListNoNulls<>());
 		if (!tList.add(aListener)) throw new UnknownError("Unknown Error: " + aOreDictName + "  -  " + aListener.toString());
 		return T;
 	}

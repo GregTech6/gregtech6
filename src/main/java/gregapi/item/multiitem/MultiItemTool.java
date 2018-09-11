@@ -77,7 +77,7 @@ import net.minecraftforge.event.world.BlockEvent;
  * gregapi.data.CS.ToolsGT.sMetaTool.getToolWithStats(CS.ToolIDs.WRENCH, 1, MT.Bismuth, MT.Bismuth, null);
  */
 public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGTContainerTool {
-	public final HashMap<Short, IToolStats> mToolStats = new HashMap();
+	public final HashMap<Short, IToolStats> mToolStats = new HashMap<>();
 	
 	public static ChunkCoordinates LAST_TOOL_COORDS_BEFORE_DAMAGE = null;
 	
@@ -110,12 +110,12 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			mToolStats.put((short)(aID+1), aToolStats);
 			aToolStats.onStatsAddedToTool(this, aID);
 			ItemStack rStack = ST.make(this, 1, aID);
-			List<TC_AspectStack> tAspects = new ArrayListNoNulls();
+			List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 			for (Object tRandomParameter : aRandomParameters) {
 				if (tRandomParameter instanceof TC_AspectStack)
 					((TC_AspectStack)tRandomParameter).addToAspectList(tAspects);
 				else if (tRandomParameter instanceof ItemStackSet)
-					((ItemStackSet)tRandomParameter).add(rStack.copy());
+					((ItemStackSet<?>)tRandomParameter).add(rStack.copy());
 				else
 					OM.reg(tRandomParameter, rStack);
 			}
@@ -266,7 +266,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public final void getSubItems(Item var1, CreativeTabs aCreativeTab, List aList) {
+	@SuppressWarnings("unchecked")
+	public final void getSubItems(Item var1, CreativeTabs aCreativeTab, @SuppressWarnings("rawtypes") List aList) {
 		for (int i = 0; i < 32766; i+=2) if (getToolStats(ST.make(this, 1, i)) != null) {
 			ItemStack tStack = ST.make(this, 1, i);
 			isItemStackUsable(tStack);
@@ -275,7 +276,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		long tMaxDamage = getToolMaxDamage(aStack), tDamage = getToolDamage(aStack);
 		OreDictMaterial tMaterial = getPrimaryMaterial(aStack, MT.NULL);
 		IToolStats tStats = getToolStats(aStack);
@@ -519,7 +520,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			return F;
 		}
 		OreDictMaterial aMaterial = getPrimaryMaterial(aStack, MT.NULL);
-		HashMap<Integer, Integer> tMap = new HashMap(), tResult = new HashMap();
+		HashMap<Integer, Integer> tMap = new HashMap<>(), tResult = new HashMap<>();
 		for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentTools) {
 			tMap.put(tEnchantment.mObject.effectId, tEnchantment.amountInt());
 			if (tEnchantment.mObject == Enchantment.fortune) tMap.put(Enchantment.looting.effectId, tEnchantment.amountInt());

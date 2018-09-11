@@ -80,7 +80,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	 * Utility to quickly add a whole set of Item Pipes.
 	 * May use up to 100 IDs, even if it is just 6 right now!
 	 */
-	public static void addItemPipes(int aID, int aCreativeTabID, long aStepSize, int aInvSize, boolean aRecipe, boolean aBlocking, MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aBlock, Class aClass, OreDictMaterial aMat) {
+	public static void addItemPipes(int aID, int aCreativeTabID, long aStepSize, int aInvSize, boolean aRecipe, boolean aBlocking, MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aBlock, Class<? extends TileEntity> aClass, OreDictMaterial aMat) {
 		OM.reg_(OP.pipeMedium				, aMat, aRegistry.add(aMat.getLocal() + " Item Pipe"						, "Item Pipes", aID+ 2, aCreativeTabID, aClass, aMat.mToolQuality, 64, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[ 8], NBT_PIPESIZE, aStepSize	  , NBT_INV_SIZE, aInvSize  , NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh"       , 'P', OP.plateCurved.dat(aMat)}:ZL_OBJECT));
 		OM.reg_(OP.pipeLarge				, aMat, aRegistry.add("Large " + aMat.getLocal() + " Item Pipe"				, "Item Pipes", aID+ 3, aCreativeTabID, aClass, aMat.mToolQuality, 32, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[12], NBT_PIPESIZE, aStepSize /   2, NBT_INV_SIZE, aInvSize*2, NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh", "PPP", 'P', OP.plateCurved.dat(aMat)}:ZL_OBJECT));
 		OM.reg_(OP.pipeHuge					, aMat, aRegistry.add("Huge " + aMat.getLocal() + " Item Pipe"				, "Item Pipes", aID+ 4, aCreativeTabID, aClass, aMat.mToolQuality, 16, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[16], NBT_PIPESIZE, aStepSize /   4, NBT_INV_SIZE, aInvSize*4, NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh", "PPP", 'P', OP.plateDouble.dat(aMat)}:ZL_OBJECT));
@@ -113,7 +113,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get(LH.PIPE_STATS_STEPSIZE) + mStepSize);
 		aList.add(Chat.CYAN + LH.get(LH.PIPE_STATS_BANDWIDTH) + getPipeCapacity());
 		super.addToolTips(aList, aStack, aF3_H);
@@ -170,7 +170,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 		} else if (SERVER_TIME % 10 == 0) {
 			if (oLastReceivedFrom == mLastReceivedFrom) {
 				boolean tUpdate = F;
-				ArrayList<ITileEntityItemPipe> tPipeList = new ArrayListNoNulls();
+				ArrayList<ITileEntityItemPipe> tPipeList = new ArrayListNoNulls<>();
 				for (boolean temp = T; temp && UT.Code.containsSomething(getInventory()) && pipeCapacityCheck();) {
 					temp = F;
 					tPipeList.clear();
@@ -245,7 +245,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {ItemStack[] rStack = super.getDefaultInventory(aNBT); ACCESSIBLE_SLOTS = new int[rStack.length]; for (int i = 0; i < ACCESSIBLE_SLOTS.length; i++) ACCESSIBLE_SLOTS[i] = i; return rStack;}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

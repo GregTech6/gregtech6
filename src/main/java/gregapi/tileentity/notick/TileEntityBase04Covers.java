@@ -494,14 +494,14 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 	public abstract ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered);
 	
 	@Override
-	public final void addCollisionBoxesToList(AxisAlignedBB aAABB, List aList, Entity aEntity) {
+	public final void addCollisionBoxesToList(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		if (addDefaultCollisionBoxToList()) box(getCollisionBoundingBoxFromPool(), aAABB, aList);
 		if (hasCovers()) for (byte tSide : ALL_SIDES_VALID) if (mCovers.mBehaviours[tSide] != null) mCovers.mBehaviours[tSide].getCollisions(tSide, mCovers, aAABB, aList, aEntity);
 		addCollisionBoxesToList2(aAABB, aList, aEntity);
 	}
 	
 	public boolean addDefaultCollisionBoxToList() {return T;}
-	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List aList, Entity aEntity) {/**/}
+	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {/**/}
 	
 	// GUI Stuff
 	@SideOnly(Side.CLIENT)

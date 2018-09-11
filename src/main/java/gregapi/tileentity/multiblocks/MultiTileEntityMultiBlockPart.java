@@ -464,10 +464,10 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	
 	@Override
 	public Collection<TagData> getEnergyTypes(byte aSide) {
-		if ((mMode & NO_ENERGY) == NO_ENERGY) return Collections.EMPTY_LIST;
+		if ((mMode & NO_ENERGY) == NO_ENERGY) return Collections.emptyList();
 		ITileEntityMultiBlockController tTileEntity = getTarget(T);
 		if (tTileEntity instanceof IMultiBlockEnergy) return ((IMultiBlockEnergy)tTileEntity).getEnergyTypes(this, aSide);
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 	
 	@Override
@@ -591,7 +591,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {
 		ITileEntityMultiBlockController tTileEntity = getTarget(T);
 		if (tTileEntity instanceof IMultiBlockEnergyDataCapacitor) return ((IMultiBlockEnergyDataCapacitor)tTileEntity).getEnergyCapacitorTypes(this, aSide);
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 	
 	// Useless Garbage :P

@@ -89,6 +89,7 @@ public class PacketItemStackChat implements IPacket {
     }
     
 	@Override
+	@SuppressWarnings("unchecked")
 	public void process(IBlockAccess aWorld, INetworkHandler aNetworkHandler) {
 		DISPLAY_TEMP_TOOLTIP = F;
 		List<String> tList = mStack.getTooltip(GT_API.api_proxy.getThePlayer(), F);

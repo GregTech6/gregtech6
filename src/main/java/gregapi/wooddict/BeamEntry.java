@@ -36,7 +36,7 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class BeamEntry {
-	public final Set<WoodEntry> mWoodEntries = new HashSetNoNulls();
+	public final Set<WoodEntry> mWoodEntries = new HashSetNoNulls<>();
 	public ItemStack mBeam, mStick;
 	public int mPlankCountHand, mPlankCountSaw, mPlankCountBuzz, mStickCountSaw, mStickCountLathe, mCharcoalCount, mCreosoteAmount;
 	public PlankEntry mPlankEntry;

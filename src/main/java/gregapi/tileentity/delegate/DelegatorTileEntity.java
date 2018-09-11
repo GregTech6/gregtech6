@@ -69,7 +69,7 @@ public final class DelegatorTileEntity<T> implements IHasWorld, IHasCoords {
 		}
 	}
 	
-	public DelegatorTileEntity(T aTileEntity, DelegatorTileEntity aDelegator) {
+	public DelegatorTileEntity(T aTileEntity, DelegatorTileEntity<?> aDelegator) {
 		mTileEntity = aTileEntity;
 		mWorld = aDelegator.mWorld;
 		mX = aDelegator.mX;
@@ -112,10 +112,10 @@ public final class DelegatorTileEntity<T> implements IHasWorld, IHasCoords {
 	
 	public boolean hasCollisionBox() {return mWorld != null && WD.hasCollide(mWorld, mX, mY, mZ);}
 	
-	public boolean equalCoords(DelegatorTileEntity aOther) {return aOther.mX == mX && aOther.mY == mY && aOther.mZ == mZ;}
-	public boolean equalSideAndCoords(DelegatorTileEntity aOther) {return aOther.mSideOfTileEntity == mSideOfTileEntity && equalCoords(aOther);}
-	public boolean equalSideWorldAndCoords(DelegatorTileEntity aOther) {return aOther.mWorld == mWorld && equalSideAndCoords(aOther);}
-	public boolean equalSideTileEntityAndCoords(DelegatorTileEntity aOther) {return aOther.mTileEntity == mTileEntity && equalSideAndCoords(aOther);}
+	public boolean equalCoords(DelegatorTileEntity<?> aOther) {return aOther.mX == mX && aOther.mY == mY && aOther.mZ == mZ;}
+	public boolean equalSideAndCoords(DelegatorTileEntity<?> aOther) {return aOther.mSideOfTileEntity == mSideOfTileEntity && equalCoords(aOther);}
+	public boolean equalSideWorldAndCoords(DelegatorTileEntity<?> aOther) {return aOther.mWorld == mWorld && equalSideAndCoords(aOther);}
+	public boolean equalSideTileEntityAndCoords(DelegatorTileEntity<?> aOther) {return aOther.mTileEntity == mTileEntity && equalSideAndCoords(aOther);}
 	
 	public boolean exists() {return mTileEntity instanceof ITileEntityUnloadable ? !((ITileEntityUnloadable)mTileEntity).isDead() : mTileEntity != null && !((TileEntity)mTileEntity).isInvalid() && mWorld != null && mWorld.blockExists(mX, mY, mZ);}
 	

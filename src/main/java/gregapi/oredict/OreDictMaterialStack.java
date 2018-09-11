@@ -139,7 +139,7 @@ public final class OreDictMaterialStack implements Cloneable {
 	}
 	
 	public static List<OreDictMaterialStack> loadList(NBTTagCompound aNBT) {
-		ArrayListNoNulls<OreDictMaterialStack> rList = new ArrayListNoNulls();
+		ArrayListNoNulls<OreDictMaterialStack> rList = new ArrayListNoNulls<>();
 		if (aNBT == null) return rList;
 		for (int i = 0, j = aNBT.getInteger("size"); i < j; i++) {
 			OreDictMaterialStack tStack = load(""+i, aNBT);

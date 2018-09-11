@@ -34,8 +34,8 @@ public class OreDictConfigurationComponent implements IOreDictConfigurationCompo
 	
 	public OreDictConfigurationComponent(long aCommonDivider, OreDictMaterialStack... aComponents) {
 		mCommonDivider = aCommonDivider;
-		mList = new ArrayListNoNulls(F, (Object[])aComponents);
-		mDividedList = new ArrayListNoNulls();
+		mList = new ArrayListNoNulls<>(F, aComponents);
+		mDividedList = new ArrayListNoNulls<>();
 		for (OreDictMaterialStack tMaterial : mList) mDividedList.add(OM.stack(tMaterial.mMaterial, tMaterial.mAmount / mCommonDivider));
 	}
 	

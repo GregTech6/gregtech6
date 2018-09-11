@@ -37,7 +37,7 @@ import net.minecraftforge.common.IExtendedEntityProperties;
  * @author Gregorius Techneticies
  */
 public class EntityFoodTracker implements IExtendedEntityProperties {
-	public static ArrayListNoNulls<EntityFoodTracker> TICK_LIST = new ArrayListNoNulls();
+	public static ArrayListNoNulls<EntityFoodTracker> TICK_LIST = new ArrayListNoNulls<>();
 	
 	public byte mAlcohol = 0, mCaffeine = 0, mDehydration = 0, mSugar = 0, mFat = 0;
 	public final EntityLivingBase mEntity;

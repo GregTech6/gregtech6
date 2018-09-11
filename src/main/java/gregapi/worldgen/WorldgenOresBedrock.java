@@ -55,14 +55,17 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	public final byte mFlowerMeta;
 	
 	public static boolean CAN_GENERATE_BEDROCK_ORE = T;
-	
-	public WorldgenOresBedrock(String aName, boolean aDefault, int aProbability, OreDictMaterial aPrimary, List... aLists) {
+
+	@SafeVarargs
+	public WorldgenOresBedrock(String aName, boolean aDefault, int aProbability, OreDictMaterial aPrimary, List<WorldgenObject>... aLists) {
 		this(aName, aDefault, T, aProbability, aPrimary, aLists);
 	}
-	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, List... aLists) {
+	@SafeVarargs
+	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, List<WorldgenObject>... aLists) {
 		this(aName, aDefault, aIndicatorRocks, aProbability, aPrimary, null, 0, aLists);
 	}
-	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, Block aFlower, long aFlowerMeta, List... aLists) {
+	@SafeVarargs
+	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, Block aFlower, long aFlowerMeta, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mProbability		= Math.max(1,			ConfigsGT.WORLDGEN.get(mCategory, "Probability"			, aProbability));
 		mMaterial			= OreDictMaterial.get(	ConfigsGT.WORLDGEN.get(mCategory, "Ore"					, aPrimary.mNameInternal));

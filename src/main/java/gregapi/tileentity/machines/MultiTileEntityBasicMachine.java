@@ -259,7 +259,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal) + (mParallel > 1 ? " (up to "+mParallel+"x processed per run)" : ""));
 		
 		if (mCheapOverclocking)
@@ -280,7 +280,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
-	public void addToolTipsSided(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsSided(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		String tSideNames = ""; boolean temp = F;
 		if (mEnergyTypeAccepted != TD.Energy.TU) {
 		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mEnergyInputs])	{tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}

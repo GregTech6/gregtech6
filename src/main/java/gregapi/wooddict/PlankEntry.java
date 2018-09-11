@@ -40,8 +40,8 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class PlankEntry {
-	public final Set<WoodEntry> mWoodEntries = new HashSetNoNulls();
-	public final Set<BeamEntry> mBeamEntries = new HashSetNoNulls();
+	public final Set<WoodEntry> mWoodEntries = new HashSetNoNulls<>();
+	public final Set<BeamEntry> mBeamEntries = new HashSetNoNulls<>();
 	public ItemStack mPlank, mSlab, mStair, mStick;
 	public OreDictMaterial mMaterialPlank = MT.Wood;
 	public int mPlankIconIndex, mStickCountHand = 1, mStickCountSaw = 2, mStickCountLathe = 2;

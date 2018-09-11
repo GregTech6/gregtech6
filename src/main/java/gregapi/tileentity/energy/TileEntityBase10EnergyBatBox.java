@@ -80,7 +80,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	static {LH.add("gt.tooltip.energybattery.3", "Mode 1 - 15 = Emit up to 1 - 15 Packets if enough Energy Storages");}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		addToolTipsEnergy(aList, aStack, aF3_H);
 		aList.add(Chat.DGRAY + LH.get("gt.tooltip.energybattery.1"));
 		aList.add(Chat.DGRAY + LH.get("gt.tooltip.energybattery.2"));
@@ -88,7 +88,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
-	public void addToolTipsEnergy(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		LH.addEnergyToolTips(this, aList, mEnergyType, mEnergyType, getLocalisedInputSide(), getLocalisedOutputSide());
 	}
 	

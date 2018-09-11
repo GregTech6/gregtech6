@@ -39,14 +39,15 @@ import net.minecraft.world.chunk.Chunk;
 public abstract class WorldgenObject {
 	public boolean mEnabled, mInvalid = F;
 	public final String mName, mCategory;
-	public final Map<Integer, Boolean> mDimEnabled = new HashMap();
+	public final Map<Integer, Boolean> mDimEnabled = new HashMap<>();
 	
-	public WorldgenObject(String aName, boolean aDefault, List[] aLists) {
+	@SafeVarargs
+	public WorldgenObject(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		if (UT.Code.stringInvalid(aName)) throw new IllegalArgumentException("The Name has to be not null and is also not allowed to be an empty String");
 		mName = aName;
 		mCategory = "worldgenerator."+mName;
 		mEnabled = ConfigsGT.WORLDGEN.get(mCategory, "Enabled", aDefault);
-		for (List aList : aLists) aList.add(this);
+		for (List<WorldgenObject> aList : aLists) aList.add(this);
 	}
 	
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {

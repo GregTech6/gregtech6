@@ -42,7 +42,7 @@ public class GT_BaseCrop extends CropCard {
 	private int mTier = 0, mMaxSize = 0, mAfterHarvestSize = 0, mHarvestSize = 0, mStats[] = new int[5];
 	private ItemStack mDrop = null, mSpecialDrops[] = null;
 	
-	public static ArrayList<GT_BaseCrop> sCropList = new ArrayListNoNulls();
+	public static ArrayList<GT_BaseCrop> sCropList = new ArrayListNoNulls<>();
 	
 	/**
 	 * To create new Crops

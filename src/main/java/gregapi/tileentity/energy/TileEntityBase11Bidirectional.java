@@ -66,7 +66,7 @@ public abstract class TileEntityBase11Bidirectional extends TileEntityBase10Ener
 	@Override public String getLocalisedOutputSide() {return LH.get(LH.FACE_ANYBUT_FRONT);}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_SET_DIRECTION_MONKEY_WRENCH));
 	}

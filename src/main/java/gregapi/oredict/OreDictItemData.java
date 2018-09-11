@@ -90,7 +90,7 @@ public class OreDictItemData {
 		mPrefix = null;
 		mBlackListed = T;
 		
-		ArrayList<OreDictMaterialStack> aList = new ArrayListNoNulls(), rList = new ArrayListNoNulls();
+		ArrayList<OreDictMaterialStack> aList = new ArrayListNoNulls<>(), rList = new ArrayListNoNulls<>();
 		
 		for (OreDictItemData tData : aData) if (tData != null) {
 			if (tData.hasValidMaterialData() && tData.mMaterial.mAmount > 0) aList.add(tData.mMaterial.clone());
@@ -132,7 +132,7 @@ public class OreDictItemData {
 	
 	/** Utility Function for getting a List containing both, the Main Material and all the Byproduct Materials. The Amount is in Material Units (U). */
 	public List<OreDictMaterialStack> getAllMaterialStacks() {
-		ArrayListNoNulls<OreDictMaterialStack> rList = new ArrayListNoNulls(mByProducts.length + 1);
+		ArrayListNoNulls<OreDictMaterialStack> rList = new ArrayListNoNulls<>(mByProducts.length + 1);
 		if (hasValidMaterialData()) rList.add(mMaterial);
 		rList.addAll(Arrays.asList(mByProducts));
 		return rList;

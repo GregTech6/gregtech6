@@ -56,13 +56,13 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>, ICondition<OreDictMaterial> {
-	public static final Map<String, OreDictMaterial> MATERIAL_MAP = new HashMap();
+	public static final Map<String, OreDictMaterial> MATERIAL_MAP = new HashMap<>();
 	/** The Amount of the Stack represents how many Liters make up one Unit. */
-	public static final Map<String, OreDictMaterialStack> FLUID_MAP = new HashMap();
+	public static final Map<String, OreDictMaterialStack> FLUID_MAP = new HashMap<>();
 	public static final OreDictMaterial[] MATERIAL_ARRAY = new OreDictMaterial[32767];
-	public static final Set<OreDictMaterial> ALLOYS = new HashSetNoNulls();
+	public static final Set<OreDictMaterial> ALLOYS = new HashSetNoNulls<>();
 	public static int sHashID = 0;
-	private static final Set<String> INVALID_STRINGS_TO_START_A_MATERIAL_NAME = new HashSetNoNulls(Arrays.asList("Mul", "Div", "Rich", "Poor", "Raw", "Impure", "Pure", "Dirty", "Refined", "Tiny", "Small", "Normal", "Medium", "Large", "Huge", "Dense", "Alloy", "Head", "Tool", "Helmet", "Chestplate", "Leggings", "Boots", "Centrifuged", "Purified", "Quintuple", "Quadruple", "Triple", "Double", "Hot", "Chipped", "Flawed", "Flawless", "Exquisite", "Gt", "Long", "Plasma", "Gas", "Liquid", "Solid", "Gem", "Dust", "Ingot", "Plate", "Block", "Leaves", "Sapling", "Mossy", "Brick", "Crack", "Chisel", "Broken", "Compact", "Curve", "Mixed", "Mixable"));
+	private static final Set<String> INVALID_STRINGS_TO_START_A_MATERIAL_NAME = new HashSetNoNulls<>(Arrays.asList("Mul", "Div", "Rich", "Poor", "Raw", "Impure", "Pure", "Dirty", "Refined", "Tiny", "Small", "Normal", "Medium", "Large", "Huge", "Dense", "Alloy", "Head", "Tool", "Helmet", "Chestplate", "Leggings", "Boots", "Centrifuged", "Purified", "Quintuple", "Quadruple", "Triple", "Double", "Hot", "Chipped", "Flawed", "Flawless", "Exquisite", "Gt", "Long", "Plasma", "Gas", "Liquid", "Solid", "Gem", "Dust", "Ingot", "Plate", "Block", "Leaves", "Sapling", "Mossy", "Brick", "Crack", "Chisel", "Broken", "Compact", "Curve", "Mixed", "Mixable"));
 	
 	/**
 	 * If a Material with the same Name but without ID (-1) exists it will be replaced automatically, regardless of registration order.
@@ -235,19 +235,19 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** The Texture Sets for the Materials. */
 	public List<IIconContainer> mTextureSetsBlock = TextureSet.SET_NONE[0].mList, mTextureSetsItems = TextureSet.SET_NONE[1].mList;
 	/** List of ThaumCraft Aspects. */
-	public final List<TC_AspectStack> mAspects = new ArrayListNoNulls(1);
+	public final List<TC_AspectStack> mAspects = new ArrayListNoNulls<>(1);
 	/** The List of Components this Material is made of */
 	public IOreDictConfigurationComponent mComponents = null;
 	/** The List of Materials this Material should register as too. This is for adding itself automatically to "OreDictionary List"-Materials such as "AnyCopper" or "AnyBronze" for example */
-	public final Set<OreDictMaterial> mReRegistrations = new HashSetNoNulls(), mToThis = new HashSetNoNulls();
+	public final Set<OreDictMaterial> mReRegistrations = new HashSetNoNulls<>(), mToThis = new HashSetNoNulls<>();
 	/** The List of Materials this Material is outputting as Byproducts.*/
-	public final List<OreDictMaterial> mByProducts = new ArrayListNoNulls();
+	public final List<OreDictMaterial> mByProducts = new ArrayListNoNulls<>();
 	/** The List of Materials which have this as Alloy Component.*/
-	public final Set<OreDictMaterial> mAlloyComponentReferences = new HashSetNoNulls();
+	public final Set<OreDictMaterial> mAlloyComponentReferences = new HashSetNoNulls<>();
 	/** The List of Alloy Recipes which can create this Material. */
-	public final List<IOreDictConfigurationComponent> mAlloyCreationRecipes = new ArrayListNoNulls();
+	public final List<IOreDictConfigurationComponent> mAlloyCreationRecipes = new ArrayListNoNulls<>();
 	/** List of Achievements you get for creating an instance of this Material. */
-	public final List<Achievement> mAchievementsForCreation = new ArrayListNoNulls();
+	public final List<Achievement> mAchievementsForCreation = new ArrayListNoNulls<>();
 	/** Contains the most useful Prefix made of 1 Unit for this Material. */
 	public OreDictPrefix mPriorityPrefix = null;
 	/** The Material which is the target for Re-Registration. */
@@ -272,9 +272,9 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** References to this Materials Fluid States. The amount of the FluidStack equals one Material Unit. It is usually either 144 or 1000, but other amounts are possible. Use "Util.translateUnits" for easy Math. */
 	public FluidStack mLiquid, mGas, mPlasma;
 	/** The Tags for this Material */
-	private final Set<TagData> mTags = new HashSetNoNulls();
+	private final Set<TagData> mTags = new HashSetNoNulls<>();
 	/** Stores the Tool and Armor Enchants */
-	public final List<ObjectStack<Enchantment>> mEnchantmentTools = new ArrayListNoNulls(1), mEnchantmentArmors = new ArrayListNoNulls(1);
+	public final List<ObjectStack<Enchantment>> mEnchantmentTools = new ArrayListNoNulls<>(1), mEnchantmentArmors = new ArrayListNoNulls<>(1);
 	
 	private OreDictMaterial(short aID, String aNameInternal, String aNameLocal) {
 		mID = aID;
@@ -915,12 +915,12 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	public OreDictMaterial addEnchantmentForTools(Enchantment aEnchantment, int aEnchantmentLevel) {
-		mEnchantmentTools.add(new ObjectStack(aEnchantment, aEnchantmentLevel));
+		mEnchantmentTools.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
 		return this;
 	}
 	
 	public OreDictMaterial addEnchantmentForArmors(Enchantment aEnchantment, int aEnchantmentLevel) {
-		mEnchantmentArmors.add(new ObjectStack(aEnchantment, aEnchantmentLevel));
+		mEnchantmentArmors.add(new ObjectStack<>(aEnchantment, aEnchantmentLevel));
 		return this;
 	}
 	
@@ -1067,7 +1067,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return mHashID;
 	}
 	
-	public final List<IOreDictListenerItem> mListenersItem = new ArrayListNoNulls();
+	public final List<IOreDictListenerItem> mListenersItem = new ArrayListNoNulls<>();
 	
 	public boolean addListener(IOreDictListenerItem aListener) {
 		if (mListenersItem.contains(aListener)) return false;
@@ -1076,7 +1076,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	/** List of all valid Items, which are registered for this Material. */
-	public final ItemStackSet<ItemStackContainer> mRegisteredItems = new ItemStackSet();
+	public final ItemStackSet<ItemStackContainer> mRegisteredItems = new ItemStackSet<>();
 	/** This is used to determine if any of the ItemStacks belongs to this Material. */
 	public boolean contains(ItemStack... aStacks) {
 		if (aStacks == null) return F;
@@ -1105,6 +1105,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	public OreDictMaterial put(TagData... aObjects) {return add(aObjects);}
+	@SuppressWarnings("rawtypes")
 	public OreDictMaterial put(Object... aObjects) {
 		if (aObjects != null) for (Object aObject : aObjects) if (aObject != null) {
 			if (aObject.getClass().isArray()) {
@@ -1158,6 +1159,6 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public boolean isTrue(OreDictMaterial aObject) {
 		return aObject == this;
 	}
-	
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public final ICondition<ITagDataContainer> NOT = new ICondition.Not(this);
 }

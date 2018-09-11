@@ -110,6 +110,7 @@ import twilightforest.TwilightForestMod;
  */
 public class WD {
 	public static ItemStack suck(World aWorld, double aX, double aY, double aZ) {return suck(aWorld, aX, aY, aZ, 1, 1, 1);}
+	@SuppressWarnings("unchecked")
 	public static ItemStack suck(World aWorld, double aX, double aY, double aZ, double aL, double aH, double aW) {
 		for (EntityItem tItem : (ArrayList<EntityItem>)aWorld.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+aL, aY+aH, aZ+aW))) {
 			if (!tItem.isDead) {
@@ -225,6 +226,7 @@ public class WD {
 				aPlayer.theItemInWorldManager.setWorld(tTargetWorld);
 				MinecraftServer.getServer().getConfigurationManager().updateTimeAndWeatherForPlayer(aPlayer, tTargetWorld);
 				MinecraftServer.getServer().getConfigurationManager().syncPlayerInventory(aPlayer);
+				@SuppressWarnings("rawtypes")
 				Iterator tIterator = aPlayer.getActivePotionEffects().iterator();
 				while (tIterator.hasNext()) {
 					PotionEffect potioneffect = (PotionEffect)tIterator.next();
@@ -267,13 +269,13 @@ public class WD {
 	/** to get a TileEntity properly, according to my additional Interfaces. Normally you should set aLoadUnloadedChunks to false, unless you have already checked these Coordinates, or you want to load Chunks */
 	public static DelegatorTileEntity<TileEntity> te(World aWorld, ChunkCoordinates aCoords, byte aSide, boolean aLoadUnloadedChunks) {
 		TileEntity aTileEntity = te(aWorld, aCoords, aLoadUnloadedChunks);
-		return aTileEntity instanceof ITileEntityDelegating ? ((ITileEntityDelegating)aTileEntity).getDelegateTileEntity(aSide) : new DelegatorTileEntity(aTileEntity, aWorld, aCoords, aSide);
+		return aTileEntity instanceof ITileEntityDelegating ? ((ITileEntityDelegating)aTileEntity).getDelegateTileEntity(aSide) : new DelegatorTileEntity<>(aTileEntity, aWorld, aCoords, aSide);
 	}
 	
 	/** to get a TileEntity properly, according to my additional Interfaces. Normally you should set aLoadUnloadedChunks to false, unless you have already checked these Coordinates, or you want to load Chunks */
 	public static DelegatorTileEntity<TileEntity> te(World aWorld, int aX, int aY, int aZ, byte aSide, boolean aLoadUnloadedChunks) {
 		TileEntity aTileEntity = te(aWorld, aX, aY, aZ, aLoadUnloadedChunks);
-		return aTileEntity instanceof ITileEntityDelegating ? ((ITileEntityDelegating)aTileEntity).getDelegateTileEntity(aSide) : new DelegatorTileEntity(aTileEntity, aWorld, aX, aY, aZ, aSide);
+		return aTileEntity instanceof ITileEntityDelegating ? ((ITileEntityDelegating)aTileEntity).getDelegateTileEntity(aSide) : new DelegatorTileEntity<>(aTileEntity, aWorld, aX, aY, aZ, aSide);
 	}
 	
 	/** to get a TileEntity properly, according to my additional Interfaces. Normally you should set aLoadUnloadedChunks to false, unless you have already checked these Coordinates, or you want to load Chunks */
@@ -436,6 +438,7 @@ public class WD {
 	public static boolean floor(World aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock.isSideSolid(aWorld, aX, aY, aZ, FORGE_DIR[SIDE_UP]) || floor(aBlock);}
 	public static boolean floor(Block aBlock) {return aBlock.isOpaqueCube() || aBlock instanceof BlockSlab || aBlock instanceof BlockStairs || aBlock instanceof BlockMetaType;}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	public static boolean ore(Block aBlock, short aMetaData) {return (aBlock instanceof IBlockPlacable && (BlocksGT.stoneToBrokenOres.containsValue(aBlock) || BlocksGT.stoneToNormalOres.containsValue(aBlock) || BlocksGT.stoneToSmallOres.containsValue(aBlock)) || OM.prefixcontains(ST.make(aBlock, 1, aMetaData), TD.Prefix.ORE));}
 	public static boolean ore_stone(Block aBlock, short aMetaData) {return ore(aBlock, aMetaData) || stone(aBlock, aMetaData);}
 	
@@ -584,7 +587,7 @@ public class WD {
 	public static long scan(ArrayList<String> aList, EntityPlayer aPlayer, World aWorld, int aScanLevel, int aX, int aY, int aZ, byte aSide, float aClickX, float aClickY, float aClickZ) {
 		if (aList == null) return 0;
 		
-		ArrayList<String> rList = new ArrayListNoNulls();
+		ArrayList<String> rList = new ArrayListNoNulls<>();
 		long rEUAmount = 0;
 		
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);

@@ -92,7 +92,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (mTanks[0].getFluidAmount() > 0) {
 			aList.add(mTanks[0].getFluidAmount() + " L of " + UT.Fluids.name(mTanks[0].getFluid(), T) + " (" + (UT.Fluids.gas(mTanks[0].getFluid()) ? "Gaseous" : "Liquid") + "; Max: "+mTanks[0].getCapacity()+" L)");
 			if ((mMode & B[1]) != 0) aList.add(Chat.CYAN + "Sealed (" + mSealedTime + ")");

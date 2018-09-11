@@ -74,7 +74,7 @@ public class RecipeMapScannerVisuals extends RecipeMap {
 		mMappings.put(new ItemStackContainer(Items.flower_pot, 1, W), ST.make(Blocks.flower_pot, 1, 0));
 	}
 	
-	public final ItemStackMap<ItemStackContainer, ItemStack> mMappings = new ItemStackMap();
+	public final ItemStackMap<ItemStackContainer, ItemStack> mMappings = new ItemStackMap<>();
 	
 	@Override
 	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {

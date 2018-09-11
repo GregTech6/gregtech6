@@ -32,7 +32,7 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class WoodEntry {
-	public final Set<SaplingEntry> mSaplingEntries = new HashSetNoNulls();
+	public final Set<SaplingEntry> mSaplingEntries = new HashSetNoNulls<>();
 	public ItemStack mLog, mBark, mStick;
 	public int mPlankCountHand, mPlankCountSaw, mPlankCountBuzz, mStickCountSaw, mStickCountLathe, mCharcoalCount, mCreosoteAmount;
 	public BeamEntry mBeamEntry;

@@ -21,9 +21,7 @@ package gregapi.old;
 
 import static gregapi.data.CS.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -45,7 +43,7 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	public boolean mChargeProvider;
 	public double mArmorAbsorbtionPercentage;
 	
-    public static Map jumpChargeMap = new HashMap();
+//	public static Map jumpChargeMap = new HashMap<>();
     
 	public GT_EnergyArmor_Item(int aID, String aUnlocalized, String aEnglish, int aCharge, int aTransfer, int aTier, int aDamageEnergyCost, int aSpecials, double aArmorAbsorbtionPercentage, boolean aChargeProvider, int aType, int aArmorIndex) {
 		super(ArmorMaterial.DIAMOND, aArmorIndex, aType);
@@ -88,7 +86,8 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
     }
     
 	@Override
-    public void addInformation(ItemStack aStack, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+    public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		aList.add("Tier: " + mTier);
 		if ((mSpecials &    1) != 0) aList.add("Rebreather");
 		if ((mSpecials &    2) != 0) aList.add("Inertia Damper");
@@ -237,7 +236,8 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item aItem, CreativeTabs var2, List var3) {
+//	@SuppressWarnings("unchecked")
+    public void getSubItems(Item aItem, CreativeTabs var2, @SuppressWarnings("rawtypes") List var3) {
         //ItemStack tCharged = ST.make(this, 1, 0), tUncharged = ST.make(this, 1, getMaxDamage());
         //GT_ModHandler.chargeElectricItem(tCharged, Integer.MAX_VALUE, Integer.MAX_VALUE, true, false);
         //var3.add(tCharged);

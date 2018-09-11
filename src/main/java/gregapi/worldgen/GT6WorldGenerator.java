@@ -44,9 +44,9 @@ public class GT6WorldGenerator {
 		public final World mWorld;
 		public final Random mRandom;
 		public final List<WorldgenObject> mGenNormal;
-		public final List<WorldgenOresLarge> mGenLargeOres;
+		public final List<WorldgenObject> mGenLargeOres;
 		
-		public WorldGenContainer(List<WorldgenObject> aGenNormal, List<WorldgenOresLarge> aGenLargeOres, int aDimType, World aWorld, int aX, int aZ) {
+		public WorldGenContainer(List<WorldgenObject> aGenNormal, List<WorldgenObject> aGenLargeOres, int aDimType, World aWorld, int aX, int aZ) {
 			mMinX = aX; mMinZ = aZ; mMaxX = aX + 15; mMaxZ = aZ + 15;
 			mDimType = aDimType;
 			mWorld = aWorld;
@@ -80,7 +80,7 @@ public class GT6WorldGenerator {
 					int tMaxWeight = 0;
 					List<WorldgenOresLarge> tList = new ArrayListNoNulls<>();
 					
-					for (WorldgenOresLarge tWorldGen : mGenLargeOres) if (tWorldGen.enabled(mWorld, mDimType)) {tMaxWeight += tWorldGen.mWeight; tList.add(tWorldGen);}
+					for (WorldgenObject tWorldGen : mGenLargeOres) if (tWorldGen.enabled(mWorld, mDimType)) {tMaxWeight += ((WorldgenOresLarge)tWorldGen).mWeight; tList.add((WorldgenOresLarge)tWorldGen);}
 					
 					if (tMaxWeight > 0 && !tList.isEmpty()) for (int tX=-32; tX<=32; tX+=16) for (int tZ=-32; tZ<=32; tZ+=16) {
 						int tChunkX = mMinX+tX, tChunkZ = mMinZ+tZ;

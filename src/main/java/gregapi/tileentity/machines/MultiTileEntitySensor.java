@@ -85,7 +85,7 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 	static {LH.add("gt.tooltip.sensor.screwdrive.modes"		, "Use Screwdriver on anything else to switch Modes.");}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ getSensorDescription());
 		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT));
 		aList.add(Chat.DGRAY	+ LH.get("gt.tooltip.sensor.screwdrive.buttons"));

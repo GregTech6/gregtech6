@@ -62,7 +62,7 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
     }
     
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_SET_CONNECTIONS_PRE) + LH.get(TOOL_LOCALISER_PREFIX + getFacingTool(), "Unknown") + LH.get(LH.TOOL_TO_SET_CONNECTIONS_POST));
 	}
 	

@@ -43,6 +43,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 /**
  * @author Gregorius Techneticies
  */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class AdvancedCrafting1ToY implements ICraftingRecipeGT {
 	public final ICondition mCondition;
 	public final OreDictPrefix mInput, mOutput;

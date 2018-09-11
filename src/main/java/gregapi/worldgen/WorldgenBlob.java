@@ -45,7 +45,8 @@ public abstract class WorldgenBlob extends WorldgenObject {
 	public final Collection<String> mBiomeList;
 	public final boolean mAllowToGenerateinVoid;
 	
-	public WorldgenBlob(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List... aLists) {
+	@SafeVarargs
+	public WorldgenBlob(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mBlock			= aBlock==null?Blocks.cobblestone:aBlock;
 		mBlockMeta		= Math.min(Math.max(aBlockMeta, 0), 15);
@@ -54,13 +55,13 @@ public abstract class WorldgenBlob extends WorldgenObject {
 		mSize			= ConfigsGT.WORLDGEN.get(mCategory, "Size"			, aSize);
 		mMinY			= ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"		, aMinY);
 		mMaxY			= ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"		, aMaxY);
-		if (aBiomeList == null) mBiomeList = new ArrayListNoNulls(); else mBiomeList = aBiomeList;
+		if (aBiomeList == null) mBiomeList = new ArrayListNoNulls<>(); else mBiomeList = aBiomeList;
 		mAllowToGenerateinVoid = aAllowToGenerateinVoid;
 	}
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if ((mBiomeList.isEmpty() || mBiomeList.contains(aBiomes[7][7])) && (mProbability <= 1 || aRandom.nextInt(mProbability) == 0)) {
+		if ((mBiomeList.isEmpty() || mBiomeList.contains(aBiomes[7][7].toString())) && (mProbability <= 1 || aRandom.nextInt(mProbability) == 0)) {
 			for (int i = 0; i < mAmount; i++) {
 				int tX = aMinX + aRandom.nextInt(16), tY = mMinY + aRandom.nextInt(mMaxY - mMinY), tZ = aMinZ + aRandom.nextInt(16);
 				if (mAllowToGenerateinVoid || !aWorld.getBlock(tX, tY, tZ).isAir(aWorld, tX, tY, tZ)) {

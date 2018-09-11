@@ -29,6 +29,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
+@SuppressWarnings("rawtypes")
 public class RecipeMapHandlerPrefixForging extends RecipeMapHandlerPrefix {
 	public RecipeMapHandlerPrefixForging(OreDictPrefix aInputPrefix, long aInputAmount, FluidStack aFluidInputPerUnit, long aEUt, long aDuration, long aMultiplier, FluidStack aFluidOutputPerUnit, OreDictPrefix aOutputPrefix, long aOutputAmount, ItemStack aAdditionalInput, ItemStack aAdditionalOutput, boolean aAllowToGenerateAllRecipesAtOnce, boolean aOutputPulverizedRemains, boolean aFlatFluidCosts, ICondition aCondition) {
 		super(aInputPrefix, aInputAmount, aFluidInputPerUnit, aEUt, aDuration, aMultiplier, aFluidOutputPerUnit, aOutputPrefix, aOutputAmount, aAdditionalInput, aAdditionalOutput, aAllowToGenerateAllRecipesAtOnce, aOutputPulverizedRemains, aFlatFluidCosts, aCondition);

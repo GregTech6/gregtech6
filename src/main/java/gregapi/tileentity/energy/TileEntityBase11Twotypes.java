@@ -43,13 +43,13 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
 	}
     
 	@Override
-	public void addToolTipsEnergy(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTipsEnergy(aList, aStack, aF3_H);
 		mEnergyOUT2.addToolTips(aList, aStack, aF3_H, getLocalisedOutputSide2(), T);
 	}
 	
 	@Override
-	public void addToolTipsEfficiency(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		LH.addToolTipsEfficiency(aList, aStack, aF3_H, mConverter.mEnergyIN, mConverter.mEnergyOUT, mEnergyOUT2, mConverter.mMultiplier);
 	}
 	
@@ -65,7 +65,7 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
     
 	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? mConverter.mEnergyOUT.isType(aEnergyType) || mEnergyOUT2.isType(aEnergyType) : mConverter.mEnergyIN.isType(aEnergyType);}
 	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && (SIDES_INVALID[aSide] || (mConverter.mEnergyOUT.isType(aEnergyType) ? isOutput(aSide) : isOutput2(aSide)));}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls(F, mConverter.mEnergyIN.mType, mConverter.mEnergyOUT.mType, mEnergyOUT2.mType);}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mConverter.mEnergyIN.mType, mConverter.mEnergyOUT.mType, mEnergyOUT2.mType);}
 	
 	@Override public boolean isInput  (byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean isOutput (byte aSide) {return aSide == mFacing;}

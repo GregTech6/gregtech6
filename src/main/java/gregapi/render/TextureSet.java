@@ -35,11 +35,11 @@ import net.minecraft.util.ResourceLocation;
  * @author Gregorius Techneticies
  */
 public class TextureSet {
-	public static final List<TextureSet> INSTANCES_ITEM = new ArrayListNoNulls();
-	public static final List<TextureSet> INSTANCES_BLOCK = new ArrayListNoNulls();
-	public static final List<String> FILENAMES_ITEM = new ArrayListNoNulls();
-	public static final List<String> FILENAMES_BLOCK = new ArrayListNoNulls();
-	public final List<IIconContainer> mList = new ArrayListNoNulls();
+	public static final List<TextureSet> INSTANCES_ITEM = new ArrayListNoNulls<>();
+	public static final List<TextureSet> INSTANCES_BLOCK = new ArrayListNoNulls<>();
+	public static final List<String> FILENAMES_ITEM = new ArrayListNoNulls<>();
+	public static final List<String> FILENAMES_BLOCK = new ArrayListNoNulls<>();
+	public final List<IIconContainer> mList = new ArrayListNoNulls<>();
 	
 	private final boolean mIsItem;
 	private final String mNameSet;

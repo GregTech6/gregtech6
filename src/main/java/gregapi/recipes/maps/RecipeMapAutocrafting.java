@@ -59,8 +59,8 @@ public class RecipeMapAutocrafting extends RecipeMap {
 		super(aRecipeList, aUnlocalizedName, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs);
 	}
 	
-	public static final List<IRecipe> ALLOWED_RECIPES = new ArrayListNoNulls();
-	public static final List<IRecipe> RECENT_RECIPES = new ArrayListNoNulls();
+	public static final List<IRecipe> ALLOWED_RECIPES = new ArrayListNoNulls<>();
+	public static final List<IRecipe> RECENT_RECIPES = new ArrayListNoNulls<>();
 	
 	@Override
 	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {
@@ -108,8 +108,8 @@ public class RecipeMapAutocrafting extends RecipeMap {
 		
 		if (ST.invalid(tOutput)) return null; 
 		
-		ArrayListNoNulls<ItemStack> tInputs = new ArrayListNoNulls();
-		ArrayListNoNulls<ItemStack> tOutputs = new ArrayListNoNulls(F, tOutput);
+		ArrayListNoNulls<ItemStack> tInputs = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> tOutputs = new ArrayListNoNulls<>(F, tOutput);
 		
 		for (ItemStack tPlan : tBlueprint) if (tPlan != null) {
 			boolean temp = T;

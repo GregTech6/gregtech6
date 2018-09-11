@@ -40,7 +40,8 @@ public class WorldgenOresSmall extends WorldgenObject {
 	public final short mMinY, mMaxY, mAmount;
 	public final OreDictMaterial mMaterial;
 	
-	public WorldgenOresSmall(String aName, boolean aDefault, int aMinY, int aMaxY, int aAmount, OreDictMaterial aPrimary, List... aLists) {
+	@SafeVarargs
+	public WorldgenOresSmall(String aName, boolean aDefault, int aMinY, int aMaxY, int aAmount, OreDictMaterial aPrimary, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mMinY				= (short)					ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"	, aMinY);
 		mMaxY				= (short)Math.max(mMinY+1, 	ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"	, aMaxY));

@@ -31,7 +31,7 @@ import net.minecraft.item.ItemStack;
 
 public abstract class TileEntityBase11Bipolar extends TileEntityBase10EnergyConverter implements ITileEntityAdjacentOnOff {
 	@Override
-	public void addToolTipsEfficiency(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (TD.Energy.ALL_EU.contains(mConverter.mEnergyIN.mType)) {
 			if (TD.Energy.ALL_EU.contains(mConverter.mEnergyOUT.mType)) {
 				aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, mConverter.mEnergyIN.mRec, mConverter.mEnergyOUT.mRec*2, F)));

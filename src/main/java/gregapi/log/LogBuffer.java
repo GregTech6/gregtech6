@@ -31,7 +31,7 @@ import gregapi.code.ArrayListNoNulls;
  * GT_Log doesn't exist anymore and the Logs are now inside CS.java
  */
 public class LogBuffer extends PrintStream {
-    public final List<String> mBufferedLog = new ArrayListNoNulls();
+    public final List<String> mBufferedLog = new ArrayListNoNulls<>();
     
 	@SuppressWarnings("resource")
 	public LogBuffer() {

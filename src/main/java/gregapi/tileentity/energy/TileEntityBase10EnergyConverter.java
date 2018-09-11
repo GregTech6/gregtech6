@@ -84,18 +84,18 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		addToolTipsEnergy(aList, aStack, aF3_H);
 		addToolTipsEfficiency(aList, aStack, aF3_H);
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
-	public void addToolTipsEnergy(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		mConverter.mEnergyIN .addToolTips(aList, aStack, aF3_H, getLocalisedInputSide (), F);
 		mConverter.mEnergyOUT.addToolTips(aList, aStack, aF3_H, getLocalisedOutputSide(), T);
 	}
 	
-	public void addToolTipsEfficiency(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		LH.addToolTipsEfficiency(aList, aStack, aF3_H, mConverter);
 	}
 	
@@ -149,7 +149,7 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	@Override public long getEnergySizeInputMin				(TagData aEnergyType, byte aSide) {return mConverter.mEnergyIN .sizeMin(aEnergyType);}
 	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mConverter.mEnergyIN .sizeRec(aEnergyType);}
 	@Override public long getEnergySizeInputMax				(TagData aEnergyType, byte aSide) {return mConverter.mEnergyIN .sizeMax(aEnergyType);}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls(F, mConverter.mEnergyIN.mType, mConverter.mEnergyOUT.mType);}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mConverter.mEnergyIN.mType, mConverter.mEnergyOUT.mType);}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	

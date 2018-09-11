@@ -67,7 +67,7 @@ public class FoodStatDrink extends FoodStat {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(Item aItem, List aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(Item aItem, List<String> aList, ItemStack aStack, boolean aF3_H) {
 		String tTooltip = LH.get("gt.drink." + mFluid, "");
 		if (UT.Code.stringValid(tTooltip)) aList.add(tTooltip);
 		super.addAdditionalToolTips(aItem, aList, aStack, aF3_H);

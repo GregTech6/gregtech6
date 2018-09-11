@@ -37,7 +37,8 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class WorldgenStone extends WorldgenBlob {
-	public WorldgenStone(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List... aLists) {
+	@SafeVarargs
+	public WorldgenStone(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aBlock, aBlockMeta, aAmount, aSize, aProbability, aMinY, aMaxY, aBiomeList, aAllowToGenerateinVoid, aLists);
 	}
 	
@@ -53,6 +54,7 @@ public class WorldgenStone extends WorldgenBlob {
 		return (tTargetedBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) || tTargetedBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) || tTargetedBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack)) && aWorld.setBlock(aX, aY, aZ, mBlock, mBlockMeta, 0);
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	private boolean overrideBlock(IBlockExtendedMetaData aBlock, World aWorld, int aX, int aY, int aZ) {
 		if (!BlocksGT.stoneOverridable.contains(aBlock)) return F;
 		short aID = aBlock.getExtendedMetaData(aWorld, aX, aY, aZ);

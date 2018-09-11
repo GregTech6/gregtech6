@@ -52,7 +52,7 @@ public class RecipeMapHammer extends RecipeMapSpecialSingleInput {
 	public List<Recipe> getNEIAllRecipes() {
 		List<Recipe> rList = super.getNEIAllRecipes();
 		if (mBufferedDynamicRecipes == null) {
-			mBufferedDynamicRecipes = new ArrayListNoNulls();
+			mBufferedDynamicRecipes = new ArrayListNoNulls<>();
 			for (OreDictMaterial tMaterial : OP.crushed.mRegisteredMaterials) {
 				for (ItemStackContainer tStack : tMaterial.mRegisteredItems) {
 					mBufferedDynamicRecipes.add(getRecipeFor(tStack.toStack()));

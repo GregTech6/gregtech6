@@ -39,6 +39,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
+@SuppressWarnings("rawtypes")
 public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
 	protected ICondition mCondition;
 	protected final OreDictPrefix[] mInputPrefixes, mOutputPrefixes;
@@ -194,6 +195,7 @@ public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
 		return T;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public boolean addRecipeForMaterial(RecipeMap aMap, OreDictMaterial aMaterial) {
 		if (!mCondition.isTrue(aMaterial) || aMaterial.contains(TD.Properties.INVALID_MATERIAL)) return F;
 		

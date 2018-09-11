@@ -64,6 +64,7 @@ public class ExplosionGT extends Explosion {
 		if (aWorld instanceof WorldServer) {
 			tExplosion.doExplosionB(F);
 			if (!aSmoking) tExplosion.affectedBlockPositions.clear();
+			@SuppressWarnings("rawtypes")
 			Iterator tIterator = aWorld.playerEntities.iterator();
 			while (tIterator.hasNext()) {
 				EntityPlayer tPlayer = (EntityPlayer)tIterator.next();
@@ -83,12 +84,14 @@ public class ExplosionGT extends Explosion {
 	}
 	
 	private World mWorld;
-	private Map field_77288_k = new HashMap();
+	@SuppressWarnings("rawtypes")
+	private Map field_77288_k = new HashMap<>();
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void doExplosionA() {
 		float tSize = explosionSize;
-		HashSet tPositions = new HashSet();
+		HashSet<ChunkPosition> tPositions = new HashSet<>();
 		for (int i = 0; i < 16; ++i) for (int j = 0; j < 16; ++j) for (int k = 0; k < 16; ++k) {
 			if (i == 0 || i == 15 || j == 0 || j == 15 || k == 0 || k == 15) {
 				double tIncX = i / 7.5F - 1, tIncY = j / 7.5F - 1, tIncZ = k / 7.5F - 1;
@@ -112,6 +115,7 @@ public class ExplosionGT extends Explosion {
 		}
 		affectedBlockPositions.addAll(tPositions);
 		tSize *= 2;
+		@SuppressWarnings("rawtypes")
 		List tEntities = mWorld.getEntitiesWithinAABBExcludingEntity(exploder, AxisAlignedBB.getBoundingBox(UT.Code.roundDown(explosionX - tSize - 1), UT.Code.roundDown(explosionY - tSize - 1), UT.Code.roundDown(explosionZ - tSize - 1), UT.Code.roundDown(explosionX + tSize + 1), UT.Code.roundDown(explosionY + tSize + 1), UT.Code.roundDown(explosionZ + tSize + 1)));
 		net.minecraftforge.event.ForgeEventFactory.onExplosionDetonate(mWorld, this, tEntities, tSize);
 		Vec3 tVec3 = Vec3.createVectorHelper(explosionX, explosionY, explosionZ);
@@ -143,6 +147,7 @@ public class ExplosionGT extends Explosion {
 		mWorld.playSoundEffect(explosionX, explosionY, explosionZ, SFX.MC_EXPLODE, 4, (1 + (mWorld.rand.nextFloat() - mWorld.rand.nextFloat()) * 0.2F) * 0.7F);
 		mWorld.spawnParticle(explosionSize >= 2 && isSmoking ? "hugeexplosion" : "largeexplode", explosionX, explosionY, explosionZ, 1, 0, 0);
 		if (isSmoking) {
+			@SuppressWarnings("rawtypes")
 			Iterator tIterator = affectedBlockPositions.iterator();
 			while (tIterator.hasNext()) {
 				final ChunkPosition tPos = (ChunkPosition)tIterator.next();
@@ -173,6 +178,7 @@ public class ExplosionGT extends Explosion {
 			}
 		}
 		if (isFlaming) {
+			@SuppressWarnings("rawtypes")
 			Iterator tIterator = affectedBlockPositions.iterator();
 			while (tIterator.hasNext()) {
 				final ChunkPosition tPos = (ChunkPosition)tIterator.next();
@@ -184,6 +190,7 @@ public class ExplosionGT extends Explosion {
 		}
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@Override public Map func_77277_b() {return field_77288_k;}
 	@Override public EntityLivingBase getExplosivePlacedBy() {return exploder == null ? null : (exploder instanceof EntityTNTPrimed ? ((EntityTNTPrimed)exploder).getTntPlacedBy() : (exploder instanceof EntityLivingBase ? (EntityLivingBase)exploder : null));}
 }

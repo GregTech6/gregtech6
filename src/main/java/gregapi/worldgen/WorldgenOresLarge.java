@@ -43,17 +43,19 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenOresLarge extends WorldgenObject {
-	public static ArrayList<WorldgenOresLarge> sList = new ArrayListNoNulls();
+	public static ArrayList<WorldgenOresLarge> sList = new ArrayListNoNulls<>();
 	public final int mWeight;
 	public final short mMinY, mMaxY, mDensity, mSize;
 	public final OreDictMaterial mTop, mBottom, mBetween, mSpread;
 	public final boolean mIndicatorRocks;
 	
-	public WorldgenOresLarge(String aName, boolean aDefault, int aMinY, int aMaxY, int aWeight, int aDensity, int aSize, OreDictMaterial aTop, OreDictMaterial aBottom, OreDictMaterial aBetween, OreDictMaterial aSpread, List... aLists) {
+	@SafeVarargs
+	public WorldgenOresLarge(String aName, boolean aDefault, int aMinY, int aMaxY, int aWeight, int aDensity, int aSize, OreDictMaterial aTop, OreDictMaterial aBottom, OreDictMaterial aBetween, OreDictMaterial aSpread, List<WorldgenObject>... aLists) {
 		this(aName, aDefault, T, aMinY, aMaxY, aWeight, aDensity, aSize, aTop, aBottom, aBetween, aSpread, aLists);
 	}
 	
-	public WorldgenOresLarge(String aName, boolean aDefault, boolean aIndicatorRocks, int aMinY, int aMaxY, int aWeight, int aDensity, int aSize, OreDictMaterial aTop, OreDictMaterial aBottom, OreDictMaterial aBetween, OreDictMaterial aSpread, List... aLists) {
+	@SafeVarargs
+	public WorldgenOresLarge(String aName, boolean aDefault, boolean aIndicatorRocks, int aMinY, int aMaxY, int aWeight, int aDensity, int aSize, OreDictMaterial aTop, OreDictMaterial aBottom, OreDictMaterial aBetween, OreDictMaterial aSpread, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mMinY				= (short)					ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"		, aMinY);
 		mMaxY				= (short)Math.max(mMinY+5, 	ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"		, aMaxY));

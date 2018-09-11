@@ -79,7 +79,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	 * Utility to quickly add a whole set of Electric Wires.
 	 * May use up to 50 IDs, even if it is just 11 right now!
 	 */
-	public static void addElectricWires(int aID, int aCreativeTabID, long aVoltage, long aAmperage, long aLossWire, long aLossCable, boolean aContactDamageWire, boolean aContactDamageCable, boolean aCable, MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aBlock, Class aClass, OreDictMaterial aMat) {
+	public static void addElectricWires(int aID, int aCreativeTabID, long aVoltage, long aAmperage, long aLossWire, long aLossCable, boolean aContactDamageWire, boolean aContactDamageCable, boolean aCable, MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aBlock, Class<? extends TileEntity> aClass, OreDictMaterial aMat) {
 		OM.reg_(OP.wireGt01				, aMat, aRegistry.add( "1x " + aMat.getLocal() + " Wire"					, "Electric Wires"			, aID   , aCreativeTabID, aClass, aMat.mToolQuality, 64, aBlock		, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS,   2.0F, NBT_RESISTANCE,   2.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER,   0, NBT_DIAMETER, PX_P[ 2], NBT_PIPESIZE, aVoltage, NBT_PIPEBANDWIDTH, aAmperage   , NBT_CONTACTDAMAGE, aContactDamageWire, NBT_PIPELOSS, aLossWire)));
 		OM.reg_(OP.wireGt02				, aMat, aRegistry.add( "2x " + aMat.getLocal() + " Wire"					, "Electric Wires"			, aID+ 1, aCreativeTabID, aClass, aMat.mToolQuality, 32, aBlock		, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS,   2.0F, NBT_RESISTANCE,   2.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER,   0, NBT_DIAMETER, PX_P[ 4], NBT_PIPESIZE, aVoltage, NBT_PIPEBANDWIDTH, aAmperage* 2, NBT_CONTACTDAMAGE, aContactDamageWire, NBT_PIPELOSS, aLossWire)));
 		OM.reg_(OP.wireGt04				, aMat, aRegistry.add( "4x " + aMat.getLocal() + " Wire"					, "Electric Wires"			, aID+ 3, aCreativeTabID, aClass, aMat.mToolQuality, 16, aBlock		, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS,   2.0F, NBT_RESISTANCE,   2.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER,   0, NBT_DIAMETER, PX_P[ 6], NBT_PIPESIZE, aVoltage, NBT_PIPEBANDWIDTH, aAmperage* 4, NBT_CONTACTDAMAGE, aContactDamageWire, NBT_PIPELOSS, aLossWire)));
@@ -122,7 +122,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN 	+ LH.get(LH.WIRE_STATS_VOLTAGE) + mVoltage + " " + TD.Energy.EU.getLocalisedNameShort() + " (" + VN[UT.Code.tierMin(mVoltage)] + ")");
 		aList.add(Chat.CYAN 	+ LH.get(LH.WIRE_STATS_AMPERAGE) + mAmperage);
 		aList.add(Chat.CYAN 	+ LH.get(LH.WIRE_STATS_LOSS) + mLoss + " " + TD.Energy.EU.getLocalisedNameShort() + "/m");
@@ -238,7 +238,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	@Override public OreDictMaterial getEnergyConductorInsulation() {switch(mRenderType) {case 1: case 2: return MT.Rubber; default: return MT.NULL;}}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

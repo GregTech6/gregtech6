@@ -55,7 +55,7 @@ public abstract class TileEntityBase10FacingDouble extends TileEntityBase09Facin
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_SET_FACING_PRE) + LH.get(TOOL_LOCALISER_PREFIX + TOOL_monkeywrench, "Monkey Wrench") + LH.get(LH.TOOL_TO_SET_FACING_POST));
 	}
 	

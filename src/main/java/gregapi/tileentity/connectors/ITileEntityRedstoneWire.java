@@ -41,7 +41,7 @@ public interface ITileEntityRedstoneWire extends ITileEntityConnector {
 	
 	public static class Util {
 		public static void doRedstoneUpdate(ITileEntityRedstoneWire aTileEntity, int aRedstoneID) {
-			HashSetNoNulls<ITileEntityRedstoneWire> tSetUpdating = new HashSetNoNulls(F, aTileEntity), tSetNext = new HashSetNoNulls();
+			HashSetNoNulls<ITileEntityRedstoneWire> tSetUpdating = new HashSetNoNulls<>(F, aTileEntity), tSetNext = new HashSetNoNulls<>();
 			while (!tSetUpdating.isEmpty()) {
 				for (ITileEntityRedstoneWire tTileEntity : tSetUpdating) for (byte tSide : ALL_SIDES_VALID) if (tTileEntity.canEmitRedstoneToWire(tSide, aRedstoneID)) {
 					DelegatorTileEntity<TileEntity> tDelegator = tTileEntity.getAdjacentTileEntity(tSide);

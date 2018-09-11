@@ -101,7 +101,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (mTank.getFluidAmount() > 0) {
 			aList.add(Chat.CYAN + mTank.getFluidAmount() + " L of " + UT.Fluids.name(mTank.getFluid(), T) + " (" + (UT.Fluids.gas(mTank.getFluid()) ? "Gaseous" : "Liquid") + "; Max: "+mTank.getCapacity()+" L)");
 			if (mTank.getFluidAmount() >= 250 && isDrinkable()) {

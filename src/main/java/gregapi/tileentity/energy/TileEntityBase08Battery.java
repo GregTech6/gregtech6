@@ -103,12 +103,12 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.WHITE + Math.min(mCapacity, mEnergy) + " / " + mCapacity + " " + mType.getChatFormat() + mType.getLocalisedNameShort() + LH.Chat.WHITE + " - Size: " + mSize + EnumChatFormatting.GRAY);
 	}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		aList.add(aBlock.mMultiTileEntityRegistry.getItem(aID));
 		aList.add(setEnergyStored(mType, aBlock.mMultiTileEntityRegistry.getItem(aID), mCapacity));
 		return F;
@@ -221,7 +221,7 @@ public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable 
 	@Override public long getEnergySizeOutputRecommended(TagData aEnergyType, ItemStack aStack) {return aEnergyType == mType || aEnergyType == null ? mSize : 0;}
 	@Override public long getEnergySizeInputMax(TagData aEnergyType, ItemStack aStack) {return aEnergyType == mType || aEnergyType == null ? mSize * 2 : 0;}
 	@Override public long getEnergySizeOutputMax(TagData aEnergyType, ItemStack aStack) {return aEnergyType == mType || aEnergyType == null ? mSize * 2 : 0;}
-	@Override public Collection<TagData> getEnergyTypes(ItemStack aStack) {return new HashSetNoNulls(F, mType);}
+	@Override public Collection<TagData> getEnergyTypes(ItemStack aStack) {return new HashSetNoNulls<>(F, mType);}
 	@Override public boolean isEnergyType(TagData aEnergyType, ItemStack aStack, boolean aEmitting) {return (aEnergyType == mType || aEnergyType == null);}
 	@Override public boolean canEnergyInjection (TagData aEnergyType, ItemStack aStack, long aSize) {return (aEnergyType == mType || aEnergyType == null) && aStack.stackSize == 1 && aSize <= getEnergySizeInputMax (aEnergyType, aStack) && aSize >= getEnergySizeInputMin (aEnergyType, aStack);}
 	@Override public boolean canEnergyExtraction(TagData aEnergyType, ItemStack aStack, long aSize) {return (aEnergyType == mType || aEnergyType == null) && aStack.stackSize == 1 && aSize <= getEnergySizeOutputMax(aEnergyType, aStack) && aSize >= getEnergySizeOutputMin(aEnergyType, aStack);}

@@ -96,7 +96,7 @@ public class FoodStatLink implements IFoodStat {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(Item aItem, List aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(Item aItem, List<String> aList, ItemStack aStack, boolean aF3_H) {
 		mStats.addAdditionalToolTips(aItem, aList, aStack, aF3_H);
 	}
 }

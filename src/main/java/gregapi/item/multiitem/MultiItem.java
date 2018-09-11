@@ -66,9 +66,9 @@ import net.minecraftforge.fluids.FluidStack;
 , @Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.item.IItemElectric", modid = ModIDs.GC)
 })
 public abstract class MultiItem extends ItemBase implements IItemEnergy {
-	public final HashMap<Short, ArrayList<IBehavior<MultiItem>>> mItemBehaviors = new HashMap();
+	public final HashMap<Short, ArrayList<IBehavior<MultiItem>>> mItemBehaviors = new HashMap<>();
 	
-	public final HashMap<Short, Long[]> mFluidContainerStats = new HashMap();
+	public final HashMap<Short, Long[]> mFluidContainerStats = new HashMap<>();
 	
 	/**
 	 * Creates the Item using these Parameters.
@@ -94,7 +94,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		if (aMetaValue < 0 || aMetaValue >= 32766 || aBehavior == null) return this;
 		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)aMetaValue);
 		if (tList == null) {
-			tList = new ArrayListNoNulls();
+			tList = new ArrayListNoNulls<>();
 			mItemBehaviors.put((short)aMetaValue, tList);
 		}
 		tList.add(aBehavior);
@@ -238,7 +238,8 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	}
 	
 	@Override
-	public final void addInformation(ItemStack aStack, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public final void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		isItemStackUsable(aStack);
 		
 		String tKey = getUnlocalizedName(aStack) + ".tooltip", tString = LanguageHandler.translate(tKey, tKey);
@@ -495,7 +496,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	@Override
 	public Collection<TagData> getEnergyTypes(ItemStack aStack) {
 		IItemEnergy tStats = getEnergyStats(aStack);
-		if (tStats == null) return Collections.EMPTY_LIST;
+		if (tStats == null) return Collections.emptyList();
 		return tStats.getEnergyTypes(aStack);
 	}
 	

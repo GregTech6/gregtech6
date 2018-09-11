@@ -86,7 +86,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (mOwnable) aList.add(Chat.ORANGE + LH.get(LH.OWNER_CONTROLLED));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -215,7 +215,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return mContactDamage && !mFoamDried ? box(PX_P[2], PX_P[2], PX_P[2], PX_N[2], PX_N[2], PX_N[2]) : super.getCollisionBoundingBoxFromPool();}
 	
 	@Override
-	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List aList, Entity aEntity) {
+	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		if (!addDefaultCollisionBoxToList()) {
 			byte tSide; 																																																				box(aAABB, aList,   (1.0F-mDiameter)/2.0F	,   (1.0F-mDiameter)/2.0F	,   (1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	);
 			if (connected(tSide = SIDE_X_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList, 0-tLength					,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	);}

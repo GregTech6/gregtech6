@@ -283,7 +283,7 @@ public class ST {
 	public static Block block(ModData aModID, String aBlock) {return block(make(aModID, aBlock, 1, null));}
 	public static Block block(ModData aModID, String aBlock, Block aReplacement) {Block rBlock = block(aModID, aBlock); return rBlock == NB ? aReplacement : rBlock;}
 	
-	private static final Map<String, ItemStack> sIC2ItemMap = new HashMap();
+	private static final Map<String, ItemStack> sIC2ItemMap = new HashMap<>();
 	public static ItemStack mkic(String aItem, long aAmount, ItemStack aReplacement) {if (UT.Code.stringInvalid(aItem) || !GAPI_POST.mStartedPreInit) return null; if (!sIC2ItemMap.containsKey(aItem)) try {ItemStack tStack = IC2Items.getItem(aItem); sIC2ItemMap.put(aItem, tStack); if (tStack == null && D1 && MD.IC2.mLoaded) ERR.println(aItem + " is not found in the IC2 Items!");} catch (Throwable e) {/*Do nothing*/} return amount(aAmount, sIC2ItemMap.get(aItem), aReplacement);}
 	public static ItemStack mkic(String aItem, long aAmount, long aMeta, ItemStack aReplacement) {ItemStack rStack = mkic(aItem, aAmount, aReplacement); if (rStack == null) return null; meta(rStack, aMeta); return rStack;}
 	public static ItemStack mkic(String aItem, long aAmount, long aMeta) {return mkic(aItem, aAmount, aMeta, null);}

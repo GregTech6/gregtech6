@@ -126,7 +126,7 @@ public class FoodStatFluid implements IFoodStat {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(Item aItem, List aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(Item aItem, List<String> aList, ItemStack aStack, boolean aF3_H) {
 		IFoodStat rStats = null;
 		FluidStack tFluid = UT.Fluids.getFluidForFilledItem(aStack, T);
 		if (tFluid != null) rStats = DrinksGT.REGISTER.get(tFluid.getFluid().getName());

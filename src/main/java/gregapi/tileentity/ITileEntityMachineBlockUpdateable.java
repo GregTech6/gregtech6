@@ -42,7 +42,7 @@ public interface ITileEntityMachineBlockUpdateable {
 	/** Utility for the Multi-Block-Updates */
 	public static class Util {
 		/** The List of Blocks, which can conduct Machine Block Updates */
-	    public static final Map<Block, Integer> MACHINE_BLOCKS = new HashMap();
+	    public static final Map<Block, Integer> MACHINE_BLOCKS = new HashMap<>();
 	    
 		/**
 		 * Causes a Machineblock Update
@@ -106,7 +106,7 @@ public interface ITileEntityMachineBlockUpdateable {
 			
 			@Override
 			public void run() {
-				try {stepToUpdateMachine(mWorld, mCoords, new HashSetNoNulls(F, mCoords));} catch(Throwable e) {/**/}
+				try {stepToUpdateMachine(mWorld, mCoords, new HashSetNoNulls<>(F, mCoords));} catch(Throwable e) {/**/}
 			}
 			
 			private void stepToUpdateMachine(World aWorld, ChunkCoordinates aCoords, HashSetNoNulls<ChunkCoordinates> aSet) {

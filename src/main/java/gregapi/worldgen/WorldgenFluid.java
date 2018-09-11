@@ -34,7 +34,8 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class WorldgenFluid extends WorldgenBlob {
-	public WorldgenFluid(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List... aLists) {
+	@SafeVarargs
+	public WorldgenFluid(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aBlock, aBlockMeta, aAmount, aSize, aProbability, aMinY, aMaxY, aBiomeList, aAllowToGenerateinVoid, aLists);
 	}
 	

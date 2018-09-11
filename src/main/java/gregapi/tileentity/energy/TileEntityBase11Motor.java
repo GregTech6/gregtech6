@@ -65,7 +65,7 @@ public abstract class TileEntityBase11Motor extends TileEntityBase10EnergyConver
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_SET_DIRECTION_MONKEY_WRENCH));
 	}

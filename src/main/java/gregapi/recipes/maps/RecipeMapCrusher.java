@@ -53,8 +53,8 @@ public class RecipeMapCrusher extends RecipeMapSpecialSingleInput {
 	public List<Recipe> getNEIAllRecipes() {
 		List<Recipe> rList = super.getNEIAllRecipes();
 		if (mBufferedDynamicRecipes == null) {
-			mBufferedDynamicRecipes = new ArrayListNoNulls();
-			HashSetNoNulls<OreDictMaterial> tSet = new HashSetNoNulls();
+			mBufferedDynamicRecipes = new ArrayListNoNulls<>();
+			HashSetNoNulls<OreDictMaterial> tSet = new HashSetNoNulls<>();
 			tSet.addAll(OP.dust.mRegisteredMaterials);
 			tSet.addAll(OP.crushed.mRegisteredMaterials);
 			for (OreDictMaterial tMaterial : tSet) {

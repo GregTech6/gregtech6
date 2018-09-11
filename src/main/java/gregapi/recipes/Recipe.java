@@ -61,16 +61,16 @@ import net.minecraftforge.fluids.IFluidTank;
 public class Recipe {
 	public static class RecipeMap implements Runnable {
 		/** RecipeMap-HashMap so that Machines can store their corresponding Recipe Lists as String NBT. */
-		public static final Map<String, RecipeMap> RECIPE_MAPS = new HashMap();
+		public static final Map<String, RecipeMap> RECIPE_MAPS = new HashMap<>();
 		
 		/** List of Recipe Map Handlers. They will dynamically add regular Recipes when needed. */
-		public final List<IRecipeMapHandler> mRecipeMapHandlers = new ArrayListNoNulls();
+		public final List<IRecipeMapHandler> mRecipeMapHandlers = new ArrayListNoNulls<>();
 		/** List of Machines that can perform/use the Recipes of this Map. */
-		public final List<ItemStack> mRecipeMachineList = new ArrayListNoNulls();
+		public final List<ItemStack> mRecipeMachineList = new ArrayListNoNulls<>();
 		/** HashMap of Recipes based on their Items */
-		public final Map<ItemStackContainer, Collection<Recipe>> mRecipeItemMap = new ItemStackMap();
+		public final Map<ItemStackContainer, Collection<Recipe>> mRecipeItemMap = new ItemStackMap<>();
 		/** HashMap of Recipes based on their Fluids */
-		public final Map<String, Collection<Recipe>> mRecipeFluidMap = new HashMap();
+		public final Map<String, Collection<Recipe>> mRecipeFluidMap = new HashMap<>();
 		/** The List of all Recipes */
 		public final Collection<Recipe> mRecipeList;
 		/** String used as an unlocalised Name. */
@@ -109,7 +109,7 @@ public class Recipe {
 			mNEIAllowed = aNEIAllowed;
 			mShowVoltageAmperageInNEI = aShowVoltageAmperageInNEI;
 			mNeedsOutputs = aNeedsOutputs;
-			mRecipeList = (aRecipeList == null ? new HashSetNoNulls() : aRecipeList);
+			mRecipeList = (aRecipeList == null ? new HashSetNoNulls<Recipe>() : aRecipeList);
 			mNameInternal = aNameInternal;
 			mNameLocal = aNameLocal;
 			mNameLocalUnderscored = mNameLocal.replaceAll(" ", "_");
@@ -372,7 +372,7 @@ public class Recipe {
 			for (FluidStack aFluid : aRecipe.mFluidInputs) if (aFluid != null) {
 				mMaxFluidInputSize = Math.max(mMaxFluidInputSize, aFluid.amount);
 				Collection<Recipe> tList = mRecipeFluidMap.get(aFluid.getFluid().getName());
-				if (tList == null) mRecipeFluidMap.put(aFluid.getFluid().getName(), tList = new HashSet(1));
+				if (tList == null) mRecipeFluidMap.put(aFluid.getFluid().getName(), tList = new HashSet<>(1));
 				tList.add(aRecipe);
 			}
 			return addToItemMap(aRecipe);
@@ -536,7 +536,7 @@ public class Recipe {
 				if (tHandler.isDone()) tIterator.remove();
 				if (System.currentTimeMillis() - tTimeBefore > 60000) break;
 			}
-			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls();
+			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeList) if (tRecipe.mEnabled && !tRecipe.mHidden) rList.add(tRecipe);
 			return rList;
 		}
@@ -551,7 +551,7 @@ public class Recipe {
 					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, aOutput, tData);
 				}
 			}
-			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls();
+			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeList) if (tRecipe.mEnabled && !tRecipe.mHidden) {
 				for (ItemStack aOutput : aOutputs) if (aOutput != null) {
 					if (IL.Display_Fluid.equal(aOutput, T, T)) {
@@ -584,7 +584,7 @@ public class Recipe {
 					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, aInput, tData);
 				}
 			}
-			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls();
+			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeList) if (tRecipe.mEnabled && !tRecipe.mHidden) {
 				for (ItemStack aInput : aInputs) if (aInput != null) {
 					if (IL.Display_Fluid.equal(aInput, T, T)) {
@@ -611,7 +611,7 @@ public class Recipe {
 			for (ItemStack aStack : aRecipe.mInputs) if (aStack != null) {
 				ItemStackContainer tStack = new ItemStackContainer(aStack);
 				Collection<Recipe> tList = mRecipeItemMap.get(tStack);
-				if (tList == null) mRecipeItemMap.put(tStack, tList = new HashSet(1));
+				if (tList == null) mRecipeItemMap.put(tStack, tList = new HashSet<>(1));
 				tList.add(aRecipe);
 			}
 			return aRecipe;
@@ -862,7 +862,7 @@ public class Recipe {
 			}
 			
 			if (aDuration >= 32) {
-				ArrayList<ItemStack> tList = new ArrayListNoNulls(Arrays.asList(aInputs));
+				ArrayList<ItemStack> tList = new ArrayListNoNulls<>(Arrays.asList(aInputs));
 				tList.addAll(Arrays.asList(aOutputs));
 				
 				for (byte i = (byte)Math.min(tList.isEmpty()?1000:64, aDuration / 16); i > 1; i--) if (aDuration / i >= 16) {

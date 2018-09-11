@@ -68,7 +68,7 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		// No Tooltips for this
 	}
 	
@@ -129,6 +129,6 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 	@Override public boolean allowCovers(byte aSide) {return F;}
 	@Override public byte getDefaultSide() {return SIDE_BACK;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
-	@Override public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {return F;}
+	@Override public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {return F;}
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 }

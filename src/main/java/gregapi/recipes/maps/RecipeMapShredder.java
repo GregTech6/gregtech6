@@ -51,7 +51,7 @@ public class RecipeMapShredder extends RecipeMapSpecialSingleInput {
 	public List<Recipe> getNEIAllRecipes() {
 		List<Recipe> rList = super.getNEIAllRecipes();
 		if (mBufferedDynamicRecipes == null) {
-			mBufferedDynamicRecipes = new ArrayListNoNulls();
+			mBufferedDynamicRecipes = new ArrayListNoNulls<>();
 			for (OreDictMaterial tMaterial : OP.dust.mRegisteredMaterials) {
 				for (ItemStackContainer tStack : tMaterial.mRegisteredItems) {
 					mBufferedDynamicRecipes.add(getRecipeFor(tStack.toStack()));
@@ -81,7 +81,7 @@ public class RecipeMapShredder extends RecipeMapSpecialSingleInput {
 	protected Recipe getRecipeFor(ItemStack aInput) {
 		OreDictItemData aData = OM.anydata(aInput);
 		if (aData == null || (aData.mMaterial != null && aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER)) || (aData.mPrefix != null && (UT.Fluids.getFluidForFilledItem(aInput, T) != null || aData.mPrefix.containsAny(TD.Prefix.DUST_BASED, TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_DIRTY) || !aData.mPrefix.contains(TD.Prefix.RECYCLABLE)))) return null;
-		List<OreDictMaterialStack> tList = new ArrayListNoNulls();
+		List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 		for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) if (tMaterial.mMaterial.mTargetPulver.mAmount > 0) OM.stack(UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetPulver.mAmount, F), tMaterial.mMaterial.mTargetPulver.mMaterial).addToList(tList);
 		if (tList.isEmpty()) return null;
 		ItemStack[] tOutputs = new ItemStack[Math.min(tList.size(), mOutputItemsCount)];

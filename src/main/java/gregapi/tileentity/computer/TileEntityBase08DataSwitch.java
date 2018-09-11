@@ -62,7 +62,7 @@ public abstract class TileEntityBase08DataSwitch extends TileEntityBase07Paintab
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.data.switch.tooltip.1"));
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.data.switch.tooltip.2"));
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.data.switch.tooltip.3"));

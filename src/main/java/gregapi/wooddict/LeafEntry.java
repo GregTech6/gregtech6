@@ -29,7 +29,7 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class LeafEntry {
-	public final Set<SaplingEntry> mSaplingEntries = new HashSetNoNulls();
+	public final Set<SaplingEntry> mSaplingEntries = new HashSetNoNulls<>();
 	public ItemStack mLeaf;
 	
 	public LeafEntry(ItemStack aLeaf) {

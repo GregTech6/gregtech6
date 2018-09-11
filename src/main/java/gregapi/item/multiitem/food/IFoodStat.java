@@ -48,5 +48,5 @@ public interface IFoodStat {
 	
 	public void onEaten(Item aItem, ItemStack aStack, EntityPlayer aPlayer, boolean aConsumeItem);
 	
-	public void addAdditionalToolTips(Item aItem, List aList, ItemStack aStack, boolean aF3_H);
+	public void addAdditionalToolTips(Item aItem, List<String> aList, ItemStack aStack, boolean aF3_H);
 }

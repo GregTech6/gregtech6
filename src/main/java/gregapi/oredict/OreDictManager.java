@@ -70,29 +70,29 @@ public final class OreDictManager {
 	public static final OreDictManager INSTANCE = new OreDictManager();
 	
 	/** Those Listeners can also be registered at certain Prefixes in order to only get their Events */
-	private final Set<IOreDictListenerEvent> mGlobalOreDictListeners = new HashSetNoNulls();
-	private final Set<OreDictRegistrationContainer> mGlobalRegistrations = new HashSetNoNulls();
+	private final Set<IOreDictListenerEvent> mGlobalOreDictListeners = new HashSetNoNulls<>();
+	private final Set<OreDictRegistrationContainer> mGlobalRegistrations = new HashSetNoNulls<>();
 	
 	/** These Listeners always get notified if an Item gets a recyclable ItemData Tag attached to it. */
-	private final Set<IOreDictRecyclableListener> mRecyclableOreDictListeners = new HashSetNoNulls();
-	private final Set<OreDictRecyclingContainer> mRecyclableRegistrations = new HashSetNoNulls();
+	private final Set<IOreDictRecyclableListener> mRecyclableOreDictListeners = new HashSetNoNulls<>();
+	private final Set<OreDictRecyclingContainer> mRecyclableRegistrations = new HashSetNoNulls<>();
 	
 	/** Put OreDict Strings which should be registered as something else, right here using addReRegistration */
-	private final Map<String, Collection<String>> mReRegistrationMappings = new HashMap();
+	private final Map<String, Collection<String>> mReRegistrationMappings = new HashMap<>();
 	/** Assign Item Data to certain OreDict Strings for recycling and similar. Used for plankWood and slabWood for example.*/
-	private final Map<String, OreDictItemData> mStringToItemDataMappings = new HashMap();
-	private final Map<String, Collection<OreDictMaterial>> mVisibilityTriggers = new HashMap();
+	private final Map<String, OreDictItemData> mStringToItemDataMappings = new HashMap<>();
+	private final Map<String, Collection<OreDictMaterial>> mVisibilityTriggers = new HashMap<>();
 	
 	/** Lists all Names (with their Prefixes) which don't have a Material assigned to them. */
-	private final Set<String> mUnknownMaterials = new HashSetNoNulls();
+	private final Set<String> mUnknownMaterials = new HashSetNoNulls<>();
 	/** Lists all Names which don't have a Prefix assigned to them. */
-	private final Set<String> mUnknownNames = new HashSetNoNulls();
+	private final Set<String> mUnknownNames = new HashSetNoNulls<>();
 	/** Lists all Names which get automatically blacklisted. */
-	private final Set<String> mAutoBlackListedNames = new HashSetNoNulls();
+	private final Set<String> mAutoBlackListedNames = new HashSetNoNulls<>();
 	/** Lists all Mods whiches Items get automatically blacklisted. Needed for TerraFirmaCraft. */
-	private final Set<String> mAutoBlackListedMods = new HashSetNoNulls();
+	private final Set<String> mAutoBlackListedMods = new HashSetNoNulls<>();
 	/** Lists all Names which are definitely not unknown. */
-	private final Set<String> mKnownNames = new HashSetNoNulls(F
+	private final Set<String> mKnownNames = new HashSetNoNulls<>(F
 	, "slimeballRice", "buttonWood"
 	, "holystone", "darkStone", "whiteStone", "brightStone", "lavastone"
 	, "mycelium", "podzol", "grass", "soulSand", "taintedSoil"
@@ -109,11 +109,11 @@ public final class OreDictManager {
 	, "hempBrick", "hempBlock", "savehempBrick", "savehempBlock", "saveplatedHempBrick", "saveplatedHempBlock", "platedHempBrick", "platedHempBlock", "platedHemp", "savehemp", "saveplatedHemp"
 	);
 	/** Lists all Names which should not be processed due to technical Issues. */
-	private final Set<String> mIgnoredNames = new HashSetNoNulls(F, "oreNetherQuartz", "oreBasalticMineralSand", "oreLifeCrystal", "cropMaplesyrup", "oreTritanium", "oreDuranium", "plateLapis", "shardEntropy", "shardAir", "shardWater", "shardEarth", "shardFire", "shardOrder", "greggy_greg_do_please_kindly_stuff_a_sock_in_it");
+	private final Set<String> mIgnoredNames = new HashSetNoNulls<>(F, "oreNetherQuartz", "oreBasalticMineralSand", "oreLifeCrystal", "cropMaplesyrup", "oreTritanium", "oreDuranium", "plateLapis", "shardEntropy", "shardAir", "shardWater", "shardEarth", "shardFire", "shardOrder", "greggy_greg_do_please_kindly_stuff_a_sock_in_it");
 	/** Lists all Names which have already been registered. Used for the OreDict Listeners, so that certain Recipes (such as Crafting) don't get registered twice.*/
-	private final Set<String> mAlreadyRegisteredNames = new HashSetNoNulls();
+	private final Set<String> mAlreadyRegisteredNames = new HashSetNoNulls<>();
 	/** Used to check if Recipe Outputs accidentally contain uncopied OreDict Items. */
-	private final Set<ItemStack> mAllRegisteredOres = new HashSetNoNulls();
+	private final Set<ItemStack> mAllRegisteredOres = new HashSetNoNulls<>();
 	
 	/** The Unification Config File */
 	public Config mUnificationConfig;
@@ -136,7 +136,7 @@ public final class OreDictManager {
 		if (GAPI.mStartedPostInit) addListenerInternal(aListener); else mBufferedListeners1.add(aListener);
 	}
 	
-	private Set<IOreDictListenerEvent> mBufferedListeners1 = new HashSetNoNulls();
+	private Set<IOreDictListenerEvent> mBufferedListeners1 = new HashSetNoNulls<>();
 	private void addListenerInternal(IOreDictListenerEvent aListener) {
 		if (mGlobalOreDictListeners.add(aListener)) for (OreDictRegistrationContainer tEvent : mGlobalRegistrations) aListener.onOreRegistration(tEvent);
 	}
@@ -149,7 +149,7 @@ public final class OreDictManager {
 		if (GAPI.mStartedPostInit) addListenerInternal(aListener); else mBufferedListeners2.add(aListener);
 	}
 	
-	private Set<IOreDictRecyclableListener> mBufferedListeners2 = new HashSetNoNulls();
+	private Set<IOreDictRecyclableListener> mBufferedListeners2 = new HashSetNoNulls<>();
 	private void addListenerInternal(IOreDictRecyclableListener aListener) {
 		if (mRecyclableOreDictListeners.add(aListener)) for (OreDictRecyclingContainer tEvent : mRecyclableRegistrations) aListener.onRecycleableRegistration(new OreDictRecyclingContainer(tEvent));
 	}
@@ -211,7 +211,7 @@ public final class OreDictManager {
 		addKnownName(aAdditionalName);
 		if (aOreToReRegister.toString().equals(aAdditionalName.toString())) return F;
 		Collection<String> tNames = mReRegistrationMappings.get(aOreToReRegister.toString());
-		if (tNames == null) mReRegistrationMappings.put(aOreToReRegister.toString(), tNames = new HashSetNoNulls());
+		if (tNames == null) mReRegistrationMappings.put(aOreToReRegister.toString(), tNames = new HashSetNoNulls<>());
 		if (tNames.add(aAdditionalName.toString())) {
 			// You thought I would not have this Line, to make it possible to add Re-Registrations for already registered things, didn't you?
 			for (ItemStack tOreStack : OreDictionary.getOres(aOreToReRegister.toString(), F)) registerOreSafe(aAdditionalName, tOreStack);
@@ -229,7 +229,7 @@ public final class OreDictManager {
 	public boolean addVisibilityTrigger(Object aName, OreDictMaterial aMaterial) {
 		addKnownName(aName);
 		Collection<OreDictMaterial> tNames = mVisibilityTriggers.get(aName.toString());
-		if (tNames == null) mVisibilityTriggers.put(aName.toString(), tNames = new HashSetNoNulls());
+		if (tNames == null) mVisibilityTriggers.put(aName.toString(), tNames = new HashSetNoNulls<>());
 		if (tNames.add(aMaterial)) {
 			for (ItemStack tOreStack : OreDictionary.getOres(aName.toString(), F)) if (!(tOreStack.getItem() instanceof IPrefixItem)) aMaterial.mHidden = F;
 			return T;
@@ -254,11 +254,11 @@ public final class OreDictManager {
 	}
 	
 	public Collection<String> getUnknownMaterials() {
-		return new ArrayListNoNulls(mUnknownMaterials);
+		return new ArrayListNoNulls<>(mUnknownMaterials);
 	}
 	
 	public Collection<String> getUnknownNames() {
-		return new ArrayListNoNulls(mUnknownNames);
+		return new ArrayListNoNulls<>(mUnknownNames);
 	}
 	
 	private static class OreDictEventContainer {
@@ -271,7 +271,7 @@ public final class OreDictManager {
 		}
 	}
 	
-	private List<OreDictEventContainer> mBufferedRegistrations = new ArrayListNoNulls();
+	private List<OreDictEventContainer> mBufferedRegistrations = new ArrayListNoNulls<>();
 	
 	/** Call from the GT_API Object in order to enable the Prefix/Material processing. */
 	public void enableRegistrations() {
@@ -418,9 +418,9 @@ public final class OreDictManager {
 	// A lot of the Code was copy-pasted from the old OreDictUnificator //
 	// ================================================================ //
 	
-	private final Map<String, ItemStack> sName2StackMap = new HashMap();
-	private final Map<ItemStackContainer, OreDictItemData> sItemStack2DataMap = new ItemStackMap();
-	private final ItemStackSet<ItemStackContainer> sNoUnificationSet = new ItemStackSet();
+	private final Map<String, ItemStack> sName2StackMap = new HashMap<>();
+	private final Map<ItemStackContainer, OreDictItemData> sItemStack2DataMap = new ItemStackMap<>();
+	private final ItemStackSet<ItemStackContainer> sNoUnificationSet = new ItemStackSet<>();
 	private int isRegisteringOre = 0, isAddingOre = 0;
 	
 	/**
@@ -727,7 +727,7 @@ public final class OreDictManager {
     /** @return a Copy of the OreDictionary.getOres() List */
     public static List<ItemStack> getOres(Object aOreName, boolean aTransformWildcardBlocksTo16) {
     	String aName = aOreName==null?"":aOreName.toString();
-    	List<ItemStack> rList = new ArrayListNoNulls(), tList;
+    	List<ItemStack> rList = new ArrayListNoNulls<>(), tList;
     	if (UT.Code.stringValid(aName)) {
     		if (aTransformWildcardBlocksTo16) {
         		tList = OreDictionary.getOres(aName, F);

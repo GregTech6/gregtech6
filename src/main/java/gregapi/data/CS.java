@@ -69,7 +69,6 @@ import gregapi.render.IconContainerCopied;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.worldgen.WorldgenObject;
-import gregapi.worldgen.WorldgenOresLarge;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
@@ -788,7 +787,7 @@ public class CS {
 	
 	/** Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
-	public static final List<WorldgenOresLarge>
+	public static final List<WorldgenObject>
 	  ORE_OVERWORLD		= new ArrayListNoNulls<>()
 	, ORE_PFAA			= new ArrayListNoNulls<>()
 	, ORE_NETHER		= new ArrayListNoNulls<>()
