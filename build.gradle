@@ -28,9 +28,15 @@ task eclipseForgeWorkspace(type: Copy) {
 	into "eclipse/.metadata"
 }
 
+import org.apache.tools.ant.taskdefs.condition.Os
 task eclipseForgeProject << {
 	if(!(new File("eclipse/Minecraft")).exists()) {
-		ant.symlink(resource: "../", link: "eclipse/Minecraft")
+		if(!Os.isFamily(Os.FAMILY_WINDOWS)) {
+			ant.symlink(resource: "../", link: "eclipse/Minecraft")
+		} else {
+			println("WINDOWS:  Before loading this workspace with Eclipse, manually run this in an Elevated/Admin command prompt:")
+			println("mklink /D " + (new File("").absolutePath) + "/eclipse/Minecraft " + (new File("").absolutePath))
+		}
 	}
 }
 eclipseForgeProject.dependsOn(eclipseForgeWorkspace)
