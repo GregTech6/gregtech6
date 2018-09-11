@@ -24,13 +24,14 @@ eclipse {
 }
 
 task eclipseForgeWorkspace(type: Copy) {
-	mkdir "eclipse"
-	from ".meta/eclipse"
-	into "eclipse"
+	from ".meta/eclipse/.metadata"
+	into "eclipse/.metadata"
 }
 
 task eclipseForgeProject << {
-	ant.symlink(resource: "../", link: "eclipse/Minecraft")
+	if(!(new File("eclipse/Minecraft")).exists()) {
+		ant.symlink(resource: "../", link: "eclipse/Minecraft")
+	}
 }
 eclipseForgeProject.dependsOn(eclipseForgeWorkspace)
 
