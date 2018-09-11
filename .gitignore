@@ -1,29 +1,42 @@
-/*
+# Blacklist everything by default
+*
 
-# folders
-!/.meta
-!/gradle
-!/src
+# Whitelist directories (directories with no tracked files don't get committed regardless)
+!**/
 
-# git files
-!/.gitattributes
 !/.gitignore
+!/.gitattributes
 
-# legal
-!/COPYING*
-!/CREDITS*
+# License files
 !/LICENSE*
-!/MinecraftForge-*
+!/COPYING*
+!/MinecraftForge-Credits.txt
+!/MinecraftForge-License.txt
+!/CREDITS-fml.txt
 
-# information
+# Documentation files
 !/README.md
 
-# build
-!/gradlew*
+# Build files
 !/build.gradle
+!/gradlew
+!/gradlew.bat
+!/gradle/wrapper/gradle-wrapper.jar
+!/gradle/wrapper/gradle-wrapper.properties
 
+# Meta project files
+!/.meta/**/*
 
-# Files to always ignore
+# Source
+!/src/main/java/**/*.java
 
-# Kate files:
-*.kate-swp
+# Assets
+!/src/main/resources/**/*.png
+!/src/main/resources/**/*.mcmeta
+!/src/main/resources/**/*.lang
+!/src/main/resources/**/mcmod.info
+!/src/main/resources/**/LICENSE*
+!/src/main/resources/**/COPYING*
+# Some old scripts in resources...
+!/src/main/resources/**/*.bat
+!/src/main/resources/**/*.txt
