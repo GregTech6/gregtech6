@@ -23,6 +23,20 @@ eclipse {
 	}
 }
 
+task eclipseForgeWorkspace(type: Copy) {
+	from ".meta/eclipse/.metadata"
+	into "eclipse/.metadata"
+}
+
+task eclipseForgeProject << {
+	if(!(new File("eclipse/Minecraft")).exists()) {
+		ant.symlink(resource: "../", link: "eclipse/Minecraft")
+	}
+}
+eclipseForgeProject.dependsOn(eclipseForgeWorkspace)
+
+tasks.eclipse.dependsOn(eclipseForgeProject)
+
 apply plugin: 'idea'
 idea{
 	module {
