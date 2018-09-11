@@ -1,42 +1,42 @@
-# Ignore huge files and download on demand instead of storing it inside git...
-/libs/
-/lib/
+# Blacklist everything by default
+*
 
-# Build system files
-/.gradle/
-/build/
-/bin/
-/out/
-/assets/
+# Whitelist directories (directories with no tracked files don't get committed regardless)
+!**/
 
-# Eclipse files:
-/eclipse/
-/.settings/
-*.hprof
+!/.gitignore
+!/.gitattributes
 
-# IDEA files:
-/.idea/
-.classpath
-.project
-*.iml
-*.ipr
-*.iws
+# License files
+!/LICENSE*
+!/COPYING*
+!/MinecraftForge-Credits.txt
+!/MinecraftForge-License.txt
+!/CREDITS-fml.txt
 
-# Kate files:
-*.kate-swp
- 
-# Random Files
-/random/
-.directory
-.post.txt
-build.sh
-copygt6.sh
-postbuild
-postupload
-prebuild
-preupload
-refresh
-updateforge
-upload.sh
-forge-1.7.10-10.13.4.1614-1.7.10-changelog.txt
+# Documentation files
+!/README.md
 
+# Build files
+!/build.gradle
+!/gradlew
+!/gradlew.bat
+!/gradle/wrapper/gradle-wrapper.jar
+!/gradle/wrapper/gradle-wrapper.properties
+
+# Meta project files
+!/.meta/**/*
+
+# Source
+!/src/main/java/**/*.java
+
+# Assets
+!/src/main/resources/**/*.png
+!/src/main/resources/**/*.mcmeta
+!/src/main/resources/**/*.lang
+!/src/main/resources/**/mcmod.info
+!/src/main/resources/**/LICENSE*
+!/src/main/resources/**/COPYING*
+# Some old scripts in resources...
+!/src/main/resources/**/*.bat
+!/src/main/resources/**/*.txt
