@@ -32,8 +32,8 @@ import net.minecraftforge.event.world.BlockEvent;
  * @author Gregorius Techneticies
  */
 public class LoggerPlayerActivity implements Runnable {
-    private ArrayList<String> mBufferedPlayerActivity = new ArrayList<>();
-    
+	private ArrayList<String> mBufferedPlayerActivity = new ArrayList<>();
+	
 	public static PrintStream mLog = null;
 	
 	public LoggerPlayerActivity(PrintStream aLog) {

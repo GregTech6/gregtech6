@@ -34,7 +34,7 @@ public class DamageSourceSpike extends DamageSource {
 	}
 	
 	@Override
-    public IChatComponent func_151519_b(EntityLivingBase aTarget) {
+	public IChatComponent func_151519_b(EntityLivingBase aTarget) {
 		return new ChatComponentText(EnumChatFormatting.RED+aTarget.getCommandSenderName()+EnumChatFormatting.WHITE + " was impaled by a Spike!");
-    }
+	}
 }

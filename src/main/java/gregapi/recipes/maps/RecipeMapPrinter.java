@@ -123,11 +123,11 @@ public class RecipeMapPrinter extends RecipeMap {
 				if (UT.Code.stringValid(UT.NBT.getBookTitle(tData)) && UT.Code.stringValid(UT.NBT.getBookAuthor(tData))) {
 					NBTTagList tPages = tData.getTagList("pages", 8);
 					if (tPages == null || tPages.tagCount() < 1) {
-				    	String aMapping = UT.NBT.getBookMapping(tData);
-				    	if (UT.Code.stringValid(aMapping)) {
-				    		ItemStack tBook = UT.Books.getWrittenBook(aMapping, NI);
-				    		if (tBook != null && tBook.hasTagCompound()) tPages = tBook.getTagCompound().getTagList("pages", 8);
-				    	}
+						String aMapping = UT.NBT.getBookMapping(tData);
+						if (UT.Code.stringValid(aMapping)) {
+							ItemStack tBook = UT.Books.getWrittenBook(aMapping, NI);
+							if (tBook != null && tBook.hasTagCompound()) tPages = tBook.getTagCompound().getTagList("pages", 8);
+						}
 					}
 					boolean tUseManyPages = (tPages != null && tPages.tagCount() > 50);
 					rRecipe = new Recipe(F, F, F, new ItemStack[] {ST.amount(tUseManyPages?6:3, tPaper), ST.amount(0, tUSB)}, new ItemStack[] {tUseManyPages?IL.Paper_Printed_Pages_Many.get(1):IL.Paper_Printed_Pages.get(1)}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, tUseManyPages?1:2, T)}, null, tUseManyPages?1024:512, 16, 0);
@@ -164,7 +164,7 @@ public class RecipeMapPrinter extends RecipeMap {
 			if (tOutput != null) return addRecipe(new Recipe(T, new ItemStack[] {ST.amount_(8, aInputs[0])}, new ItemStack[] {tOutput}, null, null, new FluidStack[] {new FluidStack(aFluids[0].getFluid(), (int)L)}, null, 256, 2, 0), F, F, T);
 			
 			tOutput = GT_ModHandler.getAllRecipeOutput(aTileEntity==null?null:aTileEntity.getWorld(), aInputs[0], IL.DYE_ONLY_ITEMS[aDye.mIndex].get(1));
-			if (tOutput != null) return addRecipe(new Recipe(T, new ItemStack[] {ST.amount_(1, aInputs[0])}, new ItemStack[] {tOutput}, null, null, new FluidStack[] {new FluidStack(aFluids[0].getFluid(), (int)L)}, null,  32, 2, 0), F, F, T);
+			if (tOutput != null) return addRecipe(new Recipe(T, new ItemStack[] {ST.amount_(1, aInputs[0])}, new ItemStack[] {tOutput}, null, null, new FluidStack[] {new FluidStack(aFluids[0].getFluid(), (int)L)}, null,	 32, 2, 0), F, F, T);
 		}*/
 		return rRecipe;
 	}

@@ -36,18 +36,18 @@ import net.minecraft.world.World;
 public class Behavior_WrittenBook extends AbstractBehaviorDefault {
 	public static final Behavior_WrittenBook INSTANCE = new Behavior_WrittenBook();
 	
-    @Override
+	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
-    	String aMapping = UT.NBT.getBookMapping(aStack);
-    	if (UT.Code.stringValid(aMapping)) {
-    		aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping, ST.make(Items.written_book, 1, 0)));
-    	} else {
-    		if (UT.Code.stringValid(UT.NBT.getBookTitle(aStack))) aPlayer.displayGUIBook(ST.make(Items.written_book, 1, 0, aStack.getTagCompound()));
-        }
-    	return super.onItemRightClick(aItem, aStack, aWorld, aPlayer);
-    }
-    
+		String aMapping = UT.NBT.getBookMapping(aStack);
+		if (UT.Code.stringValid(aMapping)) {
+			aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping, ST.make(Items.written_book, 1, 0)));
+		} else {
+			if (UT.Code.stringValid(UT.NBT.getBookTitle(aStack))) aPlayer.displayGUIBook(ST.make(Items.written_book, 1, 0, aStack.getTagCompound()));
+		}
+		return super.onItemRightClick(aItem, aStack, aWorld, aPlayer);
+	}
+	
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		String tTitle = UT.NBT.getBookTitle(aStack);

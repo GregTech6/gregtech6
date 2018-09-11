@@ -69,8 +69,8 @@ public class WorldgenOresBedrock extends WorldgenObject {
 		super(aName, aDefault, aLists);
 		mProbability		= Math.max(1,			ConfigsGT.WORLDGEN.get(mCategory, "Probability"			, aProbability));
 		mMaterial			= OreDictMaterial.get(	ConfigsGT.WORLDGEN.get(mCategory, "Ore"					, aPrimary.mNameInternal));
-		mIndicatorRocks		= 						ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"		, aIndicatorRocks);
-		mIndicatorFlowers	= 						ConfigsGT.WORLDGEN.get(mCategory, "IndicatorFlowers"	, aFlower != null && aFlower != NB);
+		mIndicatorRocks		=						ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"		, aIndicatorRocks);
+		mIndicatorFlowers	=						ConfigsGT.WORLDGEN.get(mCategory, "IndicatorFlowers"	, aFlower != null && aFlower != NB);
 		
 		if (mIndicatorFlowers && (aFlower == null || aFlower == NB)) {
 			mFlower = Blocks.yellow_flower;
@@ -149,13 +149,13 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			for (int tY = 1; tY < 7; tY++) for (int tX = -tDistances[tY]; tX <= tDistances[tY]; tX++) for (int tZ = -tDistances[tY]; tZ <= tDistances[tY]; tZ++) {
 				WD.removeBedrock(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ);
 				switch(aRandom.nextInt(6)) {
-				case 0: 		WD.setOre(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial); break;
+				case 0:			WD.setOre(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial); break;
 				case 1: case 2:	WD.setSmallOre(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ, mMaterial); break;
 				}
 			}
 			for (int tX = -2; tX <= 2; tX++) for (int tZ = -2; tZ <= 2; tZ++) {
 				switch(aRandom.nextInt(6)) {
-				case 0: 		BlocksGT.oreBedrock			.placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, (byte)6, mMaterial.mID, null, F, T); break;
+				case 0:			BlocksGT.oreBedrock			.placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, (byte)6, mMaterial.mID, null, F, T); break;
 				case 1: case 2:	BlocksGT.oreSmallBedrock	.placeBlock(aWorld, aMinX+8+tX, 0, aMinZ+8+tZ, (byte)6, mMaterial.mID, null, F, T); break;
 				}
 			}

@@ -76,10 +76,10 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	
 	@Override
 	public void addItems() {
-		make(    0, "Wild Bumblebee"			, "");
-		make(   10, "Captive Bumblebee"			, "Is used to enprisonment");
-		make(   20, "Common Bumblebee"			, "Works hard for its Family");
-		make(   30, "Cultivated Bumblebee"		, "Drinks Wine while watching Oprah");
+		make(	 0, "Wild Bumblebee"			, "");
+		make(	10, "Captive Bumblebee"			, "Is used to enprisonment");
+		make(	20, "Common Bumblebee"			, "Works hard for its Family");
+		make(	30, "Cultivated Bumblebee"		, "Drinks Wine while watching Oprah");
 		
 		make(  100, "Surfing Bumblebee"			, "Too chill to work regularily");
 		make(  110, "Swimming Bumblebee"		, "");
@@ -394,7 +394,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		, tPlayer = (aAttacked instanceof EntityPlayer)
 		;
 		switch(aMetaData / 100) {
-		default: return !tSkeleton && !tSnowGolem && !tIronGolem && aAttacked.attackEntityFrom(DamageSources.getBumbleDamage(), (1+((aMetaData / 10) % 10))  );
+		default: return !tSkeleton && !tSnowGolem && !tIronGolem && aAttacked.attackEntityFrom(DamageSources.getBumbleDamage(), (1+((aMetaData / 10) % 10))	 );
 		case   9: return !tSkeleton && !tSnowGolem && !tIronGolem && aAttacked.attackEntityFrom(DamageSources.getBumbleDamage(), (1+((aMetaData / 10) % 10))*2);
 		case   6: return !tSkeleton && !tSnowGolem && !tIronGolem && aAttacked.attackEntityFrom(DamageSources.getBumbleDamage(), (1+((aMetaData / 10) % 10))*4);
 		case   8: return F;
@@ -428,9 +428,9 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	@Override
 	public int bumbleProductChance(ItemStack aBumbleBee, short aMetaData, int aProductIndex) {
 		switch((aMetaData / 10) % 10) {
-		case  0: return  2500;
-		case  1: return  5000;
-		case  2: return  7500;
+		case  0: return	 2500;
+		case  1: return	 5000;
+		case  2: return	 7500;
 		case  3: return 10000;
 		default: return 10000;
 		}
@@ -461,7 +461,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 			} else {
 				aList.add(LH.Chat.CYAN + "Humidity: " + LH.Chat.WHITE + Util.getHumidityMin(aBumbleTag) + " to " + Util.getHumidityMax(aBumbleTag) + LH.Chat.RED + "   Temp: " + LH.Chat.WHITE + Util.getTemperatureMin(aBumbleTag) + "K to " + Util.getTemperatureMax(aBumbleTag) + "K");
 				aList.add(LH.Chat.GREEN + "Offspring: " + LH.Chat.WHITE + Util.getOffspring(aBumbleTag) + LH.Chat.ORANGE + "   Life: " + LH.Chat.WHITE + Util.getLifeSpan(aBumbleTag) + " ticks");
-				aList.add(LH.Chat.YELLOW + "Eff: " + LH.Chat.WHITE + LH.percent(Util.getWorkForce(aBumbleTag)) + "%" + LH.Chat.RED + "   Aggro: " + LH.Chat.WHITE + LH.percent(Util.getAggressiveness(aBumbleTag)) + "%");
+				aList.add(LH.Chat.YELLOW + "Eff: " + LH.Chat.WHITE + LH.percent(Util.getWorkForce(aBumbleTag)) + "%" + LH.Chat.RED + "	 Aggro: " + LH.Chat.WHITE + LH.percent(Util.getAggressiveness(aBumbleTag)) + "%");
 				if (Util.getDayActive(aBumbleTag)) {
 					if (Util.getNightActive(aBumbleTag)) {
 						aList.add(LH.Chat.RAINBOW + "Doesn't take breaks");
@@ -529,8 +529,8 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		for (String tFluid : FluidsGT.HONEY) if (UT.Fluids.exists(tFluid))
 		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {UT.Fluids.make(tFluid, 10)}	, null, 64, 16, 0);
 		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {FL.Honeydew.make(10)}		, null, 64, 16, 0);
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null		, null,  1, 16, 0);
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null		, null,  1, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null		, null,	 1, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null		, null,	 1, 16, 0);
 		}
 		
 		addItem(aSpeciesID+0, aName + " Drone"				, aTooltip, "gt:bumbledrone"	, TC.stack(TC.BESTIA , 1));

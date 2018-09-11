@@ -42,9 +42,9 @@ import net.minecraftforge.common.config.Property;
  * @author Gregorius Techneticies
  */
 public class LanguageHandler {
-    public static Configuration sLangFile;
-    
-    private static final HashMap<String, String> TEMPMAP = new HashMap<>(), BUFFERMAP = new HashMap<>();
+	public static Configuration sLangFile;
+	
+	private static final HashMap<String, String> TEMPMAP = new HashMap<>(), BUFFERMAP = new HashMap<>();
 	private static boolean mWritingEnabled = F, mUseFile = F;
 	
 	public static void save() {

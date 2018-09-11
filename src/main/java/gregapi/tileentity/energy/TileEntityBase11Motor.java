@@ -38,23 +38,23 @@ public abstract class TileEntityBase11Motor extends TileEntityBase10EnergyConver
 	
 	public TE_Behavior_Energy_Converter mConRevert = null;
 	
-    @Override
+	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
-    	super.readFromNBT2(aNBT);
-        if (aNBT.hasKey(NBT_VISUAL)) mConverter.mFast = aNBT.getBoolean(NBT_VISUAL);
-    }
-    
-    @Override
+		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_VISUAL)) mConverter.mFast = aNBT.getBoolean(NBT_VISUAL);
+	}
+	
+	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
-    	super.writeToNBT2(aNBT);
-        UT.NBT.setBoolean(aNBT, NBT_REVERSED, mCounterClockwise);
-        UT.NBT.setBoolean(aNBT, NBT_VISUAL, mConverter.mFast);
-    }
-    
+		super.writeToNBT2(aNBT);
+		UT.NBT.setBoolean(aNBT, NBT_REVERSED, mCounterClockwise);
+		UT.NBT.setBoolean(aNBT, NBT_VISUAL, mConverter.mFast);
+	}
+	
 	@Override
 	public void readEnergyConverter(NBTTagCompound aNBT) {
-        if (aNBT.hasKey(NBT_REVERSED)) mCounterClockwise = aNBT.getBoolean(NBT_REVERSED);
-        long tMultiplier = (aNBT.hasKey(NBT_MULTIPLIER) ? aNBT.getLong(NBT_MULTIPLIER) : 1);
+		if (aNBT.hasKey(NBT_REVERSED)) mCounterClockwise = aNBT.getBoolean(NBT_REVERSED);
+		long tMultiplier = (aNBT.hasKey(NBT_MULTIPLIER) ? aNBT.getLong(NBT_MULTIPLIER) : 1);
 		if (mCounterClockwise) {
 			mConRevert	= new TE_Behavior_Energy_Converter(this, aNBT, mStorage, mEnergyIN, mEnergyOUT, tMultiplier, aNBT.getBoolean(NBT_WASTE_ENERGY), F);
 			mConverter	= new TE_Behavior_Energy_Converter(this, aNBT, mStorage, mEnergyIN, mEnergyOUT, tMultiplier, aNBT.getBoolean(NBT_WASTE_ENERGY), T);
@@ -95,18 +95,18 @@ public abstract class TileEntityBase11Motor extends TileEntityBase10EnergyConver
 		return 0;
 	}
 	
-    @Override
-    public boolean onTickCheck(long aTimer) {
-    	return super.onTickCheck(aTimer) || mCounterClockwise != oCounterClockwise || mConverter.mFast != oFast;
-    }
-    
 	@Override
-    public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-    	super.onTickResetChecks(aTimer, aIsServerSide);
-    	oCounterClockwise = mCounterClockwise;
+	public boolean onTickCheck(long aTimer) {
+		return super.onTickCheck(aTimer) || mCounterClockwise != oCounterClockwise || mConverter.mFast != oFast;
+	}
+	
+	@Override
+	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
+		super.onTickResetChecks(aTimer, aIsServerSide);
+		oCounterClockwise = mCounterClockwise;
 		oFast = mConverter.mFast;
-    }
-    
+	}
+	
 	@Override public byte getVisualData() {return (byte)(super.getVisualData() | (mCounterClockwise?4:0) | (mConverter.mFast?8:0));}
 	@Override public void setVisualData(byte aData) {super.setVisualData((byte)(aData & 3)); mCounterClockwise = ((aData & 4) != 0); mConverter.mFast = ((aData & 8) != 0);}
 }

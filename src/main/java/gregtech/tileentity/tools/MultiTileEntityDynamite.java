@@ -96,7 +96,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		if (isClientSide()) return 0;
 		
 		if (aTool.equals(TOOL_igniter		) && mCountDown == 0 && WD.oxygen(worldObj, xCoord, yCoord, zCoord)	) {mCountDown = 100; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_TNT_IGNITE	, 1.0F, 0.5F, getCoords()); return 10000;}
-		if (aTool.equals(TOOL_extinguisher	) && mCountDown != 0												) {mCountDown =   0; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_FIZZ		, 1.0F, 0.5F, getCoords()); return 10000;}
+		if (aTool.equals(TOOL_extinguisher	) && mCountDown != 0												) {mCountDown =	  0; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_FIZZ		, 1.0F, 0.5F, getCoords()); return 10000;}
 		return 0;
 	}
 	
@@ -174,8 +174,8 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	@Override public float getSurfaceSize			(byte aSide) {return 0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 0.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return 0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
 	@Override public boolean isSideSolid2			(byte aSide) {return F;}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	@Override public boolean useSidePlacementRotation		() {return T;}

@@ -55,7 +55,7 @@ public class RecipeMapHandlerMaterial implements IRecipeMapHandler {
 		mInputMaterial		= aInputMaterial;
 		mOutputMaterial		= aOutputMaterial;
 		mAdditionalInput	= aAdditionalInput;
-		mDuration 			= aDuration;
+		mDuration			= aDuration;
 		mEUt				= aEUt;
 	}
 	

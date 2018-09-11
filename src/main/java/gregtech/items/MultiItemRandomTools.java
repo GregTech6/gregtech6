@@ -70,10 +70,10 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		int tLastID = 0;
 		IBehavior<MultiItem> tBehaviour;
 		
-		IL.Ceramic_Jug_Raw.set(					addItem(tLastID =   996, "Raw Clay Jug"					, "Put in Furnace to harden it"		, new OreDictItemData(MT.Clay, U*6), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
-		IL.Measuring_Pot_Raw.set(				addItem(tLastID =   997, "Raw Measuring Pot"			, "Put in Furnace to harden it"		, new OreDictItemData(MT.Clay, U*4), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
-		IL.Food_Can_Empty.set(					addItem(tLastID =   998, "Empty Food Can"				, "Used for canning Food"			, new OreDictItemData(MT.TinAlloy, OP.plateCurved.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.FABRICO, 1)));
-		IL.Spray_Empty.set(						addItem(tLastID =   999, "Empty Spray Can"				, "Used for making Sprays"			, new OreDictItemData(MT.Sn, OP.plateCurved.mAmount, MT.Redstone, OP.dust.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.MOTUS, 1)));
+		IL.Ceramic_Jug_Raw.set(					addItem(tLastID =	996, "Raw Clay Jug"					, "Put in Furnace to harden it"		, new OreDictItemData(MT.Clay, U*6), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
+		IL.Measuring_Pot_Raw.set(				addItem(tLastID =	997, "Raw Measuring Pot"			, "Put in Furnace to harden it"		, new OreDictItemData(MT.Clay, U*4), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
+		IL.Food_Can_Empty.set(					addItem(tLastID =	998, "Empty Food Can"				, "Used for canning Food"			, new OreDictItemData(MT.TinAlloy, OP.plateCurved.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.FABRICO, 1)));
+		IL.Spray_Empty.set(						addItem(tLastID =	999, "Empty Spray Can"				, "Used for making Sprays"			, new OreDictItemData(MT.Sn, OP.plateCurved.mAmount, MT.Redstone, OP.dust.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.MOTUS, 1)));
 		
 		CR.shaped(IL.Ceramic_Jug_Raw	.get(1), CR.DEF_NCC		, "kCR", "C C", "CCC", 'C', "itemClay", 'R', OreDictToolNames.rollingpin);
 		CR.shaped(IL.Measuring_Pot_Raw	.get(1), CR.DEF_NCC		, "CkC", "CCR"	   , 'C', "itemClay", 'R', OreDictToolNames.rollingpin);
@@ -392,21 +392,21 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 	@Override
 	public ItemStack getContainerItem(ItemStack aStack) {
 		int aMeta = ST.meta(aStack);
-		if (aMeta >=  1000 && aMeta <=  1999) return ST.make(this, 1,   999);
-		if (aMeta >   2000 && aMeta <=  2099) return ST.make(this, 1,  2000);
-		if (aMeta >   2100 && aMeta <=  2199) return ST.make(this, 1,  2100);
-		if (aMeta >   2200 && aMeta <=  2299) return ST.make(this, 1,  2200);
-		if (aMeta >   2300 && aMeta <=  2399) return ST.make(this, 1,  2300);
-		if (aMeta >   2400 && aMeta <=  2499) return ST.make(this, 1,  2400);
-		if (aMeta >   2500 && aMeta <=  2599) return ST.make(this, 1,  2500);
-		if (aMeta >   2600 && aMeta <=  2699) return ST.make(this, 1,  2600);
-		if (aMeta >   2700 && aMeta <=  2799) return ST.make(this, 1,  2700);
-		if (aMeta >   2800 && aMeta <=  2899) return ST.make(this, 1,  2800);
-		if (aMeta >   2900 && aMeta <=  2999) return ST.make(this, 1,  2900);
-		if (aMeta ==  5005 || aMeta ==  5008) return ST.make(this, 1, aMeta - 1);
-		if (aMeta ==  5006 || aMeta ==  5009) return ST.make(this, 1, aMeta - 2);
-		if (aMeta ==  5011) return ST.make(this, 1,  5013);
-		if (aMeta ==  5012) return ST.make(this, 1,  5010);
+		if (aMeta >=  1000 && aMeta <=	1999) return ST.make(this, 1,	999);
+		if (aMeta >	  2000 && aMeta <=	2099) return ST.make(this, 1,  2000);
+		if (aMeta >	  2100 && aMeta <=	2199) return ST.make(this, 1,  2100);
+		if (aMeta >	  2200 && aMeta <=	2299) return ST.make(this, 1,  2200);
+		if (aMeta >	  2300 && aMeta <=	2399) return ST.make(this, 1,  2300);
+		if (aMeta >	  2400 && aMeta <=	2499) return ST.make(this, 1,  2400);
+		if (aMeta >	  2500 && aMeta <=	2599) return ST.make(this, 1,  2500);
+		if (aMeta >	  2600 && aMeta <=	2699) return ST.make(this, 1,  2600);
+		if (aMeta >	  2700 && aMeta <=	2799) return ST.make(this, 1,  2700);
+		if (aMeta >	  2800 && aMeta <=	2899) return ST.make(this, 1,  2800);
+		if (aMeta >	  2900 && aMeta <=	2999) return ST.make(this, 1,  2900);
+		if (aMeta ==  5005 || aMeta ==	5008) return ST.make(this, 1, aMeta - 1);
+		if (aMeta ==  5006 || aMeta ==	5009) return ST.make(this, 1, aMeta - 2);
+		if (aMeta ==  5011) return ST.make(this, 1,	 5013);
+		if (aMeta ==  5012) return ST.make(this, 1,	 5010);
 //		if (aMeta == 32401) return ST.make(this, 1, aMeta - 1);
 		return super.getContainerItem(aStack);
 	}

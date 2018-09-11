@@ -66,11 +66,11 @@ public class WorldgenStructure extends WorldgenObject {
 		mMinY				= Math.max(5,			ConfigsGT.WORLDGEN.get(mCategory, "MinY"			, aMinY));
 		mMaxY				= Math.max(mMinY,		ConfigsGT.WORLDGEN.get(mCategory, "MaxY"			, aMaxY));
 		mRoomChance			= Math.max(1,			ConfigsGT.WORLDGEN.get(mCategory, "RoomChance"		, aRoomChance));
-		mPortalNether		= 						ConfigsGT.WORLDGEN.get(mCategory, "PortalNether"	, aPortalNether);
-		mPortalEnd			= 						ConfigsGT.WORLDGEN.get(mCategory, "PortalEnd"		, aPortalEnd);
-		mPortalTwilight		= 						ConfigsGT.WORLDGEN.get(mCategory, "PortalTwilight"	, aPortalTwilight);
-		mPortalMyst			= 						ConfigsGT.WORLDGEN.get(mCategory, "PortalMyst"		, aPortalMyst);
-		mZPM				= 						ConfigsGT.WORLDGEN.get(mCategory, "ZPMs"			, T);
+		mPortalNether		=						ConfigsGT.WORLDGEN.get(mCategory, "PortalNether"	, aPortalNether);
+		mPortalEnd			=						ConfigsGT.WORLDGEN.get(mCategory, "PortalEnd"		, aPortalEnd);
+		mPortalTwilight		=						ConfigsGT.WORLDGEN.get(mCategory, "PortalTwilight"	, aPortalTwilight);
+		mPortalMyst			=						ConfigsGT.WORLDGEN.get(mCategory, "PortalMyst"		, aPortalMyst);
+		mZPM				=						ConfigsGT.WORLDGEN.get(mCategory, "ZPMs"			, T);
 	}
 	
 	public WorldgenStructure() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F);}
@@ -110,13 +110,13 @@ public class WorldgenStructure extends WorldgenObject {
 		ItemStack[] tKeyStacks = new ItemStack[tKeyIDs.length];
 		for (int i = 0; i < tKeyIDs.length; i++) tKeyStacks[i] = IL.KEYS[aRandom.nextInt(IL.KEYS.length)].getWithNameAndNBT(1, "Key #"+(i+1), UT.NBT.makeLong(NBT_KEY, tKeyIDs[i]));
 		
-		aMinX -= (tRoomLayout   .length / 2) * 16;
+		aMinX -= (tRoomLayout	.length / 2) * 16;
 		aMinZ -= (tRoomLayout[0].length / 2) * 16;
 		
 		for (int i = 0; i < tRoomLayout.length; i++) for (int j = 0; j < tRoomLayout[i].length; j++) aWorld.setBlock(aMinX+8+i*16, 254, aMinZ+8+j*16, NB, 0, 3);
 		
 		for (int i = 0, j = 0, k = -1, l = 0; k >= -2 && l < 10000; l++) {
-			i = 1+aRandom.nextInt(tRoomLayout   .length-2);
+			i = 1+aRandom.nextInt(tRoomLayout	.length-2);
 			j = 1+aRandom.nextInt(tRoomLayout[i].length-2);
 			if (tRoomLayout[i][j] == 0) {tRoomLayout[i][j] = (byte)k--;}
 		}
@@ -125,7 +125,7 @@ public class WorldgenStructure extends WorldgenObject {
 		
 		for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] != 0) {
 			int a = i, b = j;
-			while (a != tRoomLayout   .length/2) {a+=(a>(tRoomLayout   .length/2)?-1:+1); if (tRoomLayout[a][b] == 0) tRoomLayout[a][b] = -128; else break;}
+			while (a != tRoomLayout	  .length/2) {a+=(a>(tRoomLayout   .length/2)?-1:+1); if (tRoomLayout[a][b] == 0) tRoomLayout[a][b] = -128; else break;}
 			while (b != tRoomLayout[a].length/2) {b+=(b>(tRoomLayout[a].length/2)?-1:+1); if (tRoomLayout[a][b] == 0) tRoomLayout[a][b] = -128; else break;}
 		}
 		
@@ -136,26 +136,26 @@ public class WorldgenStructure extends WorldgenObject {
 		while (temp) {
 			temp = F;
 			for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] == -128) {
-				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i  ][j+1] == 0) continue;
-				if (tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i  ][j+1] != 0) continue;
+				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i	 ][j+1] == 0) continue;
+				if (tRoomLayout[i+1][j	] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i	 ][j+1] != 0) continue;
 				
 				int tConnectionCount = 0;
 				for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
 				
 				if (tConnectionCount <= 1) {tRoomLayout[i][j] = 0; temp = T; continue;}
 				
-				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i+1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i+1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i-1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i-1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i+1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i+1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i-1][j	] != 0 && tRoomLayout[i-1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i-1][j	] != 0 && tRoomLayout[i-1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
 			}
 		}
 		temp = T;
 		while (temp) {
 			temp = F;
 			for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] == -128) {
-				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i  ][j+1] == 0) continue;
-				if (tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i  ][j+1] != 0) continue;
+				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i	 ][j+1] == 0) continue;
+				if (tRoomLayout[i+1][j	] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i	 ][j+1] != 0) continue;
 				
 				int tConnectionCount = 0;
 				for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
@@ -172,14 +172,14 @@ public class WorldgenStructure extends WorldgenObject {
 				if (tConnectionCount == 5) {
 					if (tRoomLayout[i+1][j-1] == 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i+1][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
 					if (tRoomLayout[i-1][j-1] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i-1][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-					if (tRoomLayout[i-1][j+1] == 0 && tRoomLayout[i  ][j+1] == 0 && tRoomLayout[i+1][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-					if (tRoomLayout[i-1][j-1] == 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i+1][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+					if (tRoomLayout[i-1][j+1] == 0 && tRoomLayout[i	 ][j+1] == 0 && tRoomLayout[i+1][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+					if (tRoomLayout[i-1][j-1] == 0 && tRoomLayout[i	 ][j-1] == 0 && tRoomLayout[i+1][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
 				}
 				
-				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i+1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i+1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i-1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i-1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i+1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i+1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i-1][j	] != 0 && tRoomLayout[i-1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i-1][j	] != 0 && tRoomLayout[i-1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
 			}
 		}
 		

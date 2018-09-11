@@ -57,7 +57,7 @@ public class WorldgenLogDry extends WorldgenObject {
 			switch(aRandom.nextInt(3)) {
 			case 0:
 				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY-1, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
-											WD.set(aWorld, tX  , tY  , tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
+											WD.set(aWorld, tX  , tY	 , tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
 											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
 											WD.set(aWorld, tX  , tY+2, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
 				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);

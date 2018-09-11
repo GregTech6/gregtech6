@@ -60,320 +60,320 @@ import net.minecraftforge.common.util.FakePlayerFactory;
 
 public class EntityArrow_Material extends EntityProjectile {
 	private int mHitBlockX = -1;
-    private int mHitBlockY = -1;
-    private int mHitBlockZ = -1;
-    private Block mHitBlock = NB;
-    private int mHitBlockMeta = 0;
-    private boolean inGround = false;
-    private int mTicksAlive = 0;
-    private int ticksInAir = 0;
-    private int mKnockback = 0;
-    
-    private ItemStack mArrow = null;
-    
-    public EntityArrow_Material(World aWorld) {
-        super(aWorld);
-    }
-    
-    public EntityArrow_Material(World aWorld, double aX, double aY, double aZ) {
-        super(aWorld, aX, aY, aZ);
-    }
-    
-    public EntityArrow_Material(World aWorld, EntityLivingBase aEntity, float aSpeed) {
-        super(aWorld, aEntity, aSpeed);
-    }
-    
-    public EntityArrow_Material(EntityArrow aArrow, ItemStack aStack) {
-        super(aArrow.worldObj);
-        shootingEntity = aArrow.shootingEntity;
-        NBTTagCompound tNBT = UT.NBT.make();
-        aArrow.writeToNBT(tNBT);
-        readFromNBT(tNBT);
-        setProjectileStack(aStack);
-    }
-    
-    @Override
+	private int mHitBlockY = -1;
+	private int mHitBlockZ = -1;
+	private Block mHitBlock = NB;
+	private int mHitBlockMeta = 0;
+	private boolean inGround = false;
+	private int mTicksAlive = 0;
+	private int ticksInAir = 0;
+	private int mKnockback = 0;
+	
+	private ItemStack mArrow = null;
+	
+	public EntityArrow_Material(World aWorld) {
+		super(aWorld);
+	}
+	
+	public EntityArrow_Material(World aWorld, double aX, double aY, double aZ) {
+		super(aWorld, aX, aY, aZ);
+	}
+	
+	public EntityArrow_Material(World aWorld, EntityLivingBase aEntity, float aSpeed) {
+		super(aWorld, aEntity, aSpeed);
+	}
+	
+	public EntityArrow_Material(EntityArrow aArrow, ItemStack aStack) {
+		super(aArrow.worldObj);
+		shootingEntity = aArrow.shootingEntity;
+		NBTTagCompound tNBT = UT.NBT.make();
+		aArrow.writeToNBT(tNBT);
+		readFromNBT(tNBT);
+		setProjectileStack(aStack);
+	}
+	
+	@Override
 	public void onUpdate() {
-        onEntityUpdate();
-        if (mArrow == null && !worldObj.isRemote) {
-        	setDead();
-        	return;
-        }
-        
-        Entity tShootingEntity = shootingEntity;
-        
-        if (prevRotationPitch == 0.0F && prevRotationYaw == 0.0F) {
-            float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
-            prevRotationYaw = rotationYaw = (float)(Math.atan2(motionX, motionZ) * 180.0D / Math.PI);
-            prevRotationPitch = rotationPitch = (float)(Math.atan2(motionY, f) * 180.0D / Math.PI);
-        }
-        
-        if (mTicksAlive++ == 3000) setDead();
-        
-        Block tBlock = worldObj.getBlock(mHitBlockX, mHitBlockY, mHitBlockZ);
-        
-        if (tBlock.getMaterial() != Material.air) {
-            tBlock.setBlockBoundsBasedOnState(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ);
-            AxisAlignedBB axisalignedbb = tBlock.getCollisionBoundingBoxFromPool(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ);
-            if (axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(posX, posY, posZ))) inGround = true;
-        }
-        
-        if (arrowShake > 0) arrowShake--;
-        
-        if (inGround) {
-            int j = worldObj.getBlockMetadata(mHitBlockX, mHitBlockY, mHitBlockZ);
-            if (tBlock != mHitBlock || j != mHitBlockMeta) {
-                inGround = false;
-                motionX *= (rand.nextFloat() * 0.2F);
-                motionY *= (rand.nextFloat() * 0.2F);
-                motionZ *= (rand.nextFloat() * 0.2F);
-                mTicksAlive = 0;
-                ticksInAir = 0;
-            }
-        } else {
-            ticksInAir++;
-            Vec3 vec31 = Vec3.createVectorHelper(posX, posY, posZ);
-            Vec3 vec3 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
-            MovingObjectPosition tVector = worldObj.func_147447_a(vec31, vec3, false, true, false);
-            vec31 = Vec3.createVectorHelper(posX, posY, posZ);
-            vec3 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
-            
-            if (tVector != null) vec3 = Vec3.createVectorHelper(tVector.hitVec.xCoord, tVector.hitVec.yCoord, tVector.hitVec.zCoord);
-            
-            Entity tHitEntity = null;
-            List tAllPotentiallyHitEntities = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
-            double tSmallestDistance = Double.MAX_VALUE;
-            
-            for (int i = 0; i < tAllPotentiallyHitEntities.size(); ++i) {
-                Entity entity1 = (Entity)tAllPotentiallyHitEntities.get(i);
-                
-                if (entity1.canBeCollidedWith() && (entity1 != tShootingEntity || ticksInAir >= 5)) {
-                    AxisAlignedBB axisalignedbb1 = entity1.boundingBox.expand(0.3, 0.3, 0.3);
-                    MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec31, vec3);
-                    
-                    if (movingobjectposition1 != null) {
-                        double tDistance = vec31.distanceTo(movingobjectposition1.hitVec);
-                        
-                        if (tDistance < tSmallestDistance) {
-                            tHitEntity = entity1;
-                            tSmallestDistance = tDistance;
-                        }
-                    }
-                }
-            }
-            
-            if (tHitEntity != null) tVector = new MovingObjectPosition(tHitEntity);
-            
-            if (tVector != null && tHitEntity != null && tHitEntity instanceof EntityPlayer) {
-                if (((EntityPlayer)tHitEntity).capabilities.disableDamage || (tShootingEntity instanceof EntityPlayer && !((EntityPlayer)tShootingEntity).canAttackPlayer((EntityPlayer)tHitEntity))) tVector = null;
-            }
-            
-            if (tVector != null) {
-                if (tHitEntity != null) {
-                	OreDictItemData tData = OM.anydata(mArrow);
-                	
-                    float
-                    tMagicDamage = tHitEntity instanceof EntityLivingBase?EnchantmentHelper.func_152377_a(mArrow, ((EntityLivingBase)tHitEntity).getCreatureAttribute()):0,
-                    tDamage = MathHelper.ceiling_double_int(MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ) * (getDamage() + (tData != null && tData.mMaterial != null ? (tData.mMaterial.mMaterial.mToolQuality / 2.0F) - 1: 0)));
-                    
-                    if (getIsCritical()) tDamage += rand.nextInt((int)(tDamage / 2.0 + 2.0));
-                    
-                    int
-                    tFireDamage = (isBurning()?5:0) + 4 * EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow),
-                    tKnockback = mKnockback + EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback.effectId, mArrow),
-                    tHitTimer = -1;
-                    
-                    int[] tDamages = onHitEntity(tHitEntity, tShootingEntity==null?this:tShootingEntity, mArrow==null?ST.make(Items.arrow, 1, 0):mArrow, (int)(tDamage*2), (int)(tMagicDamage*2), tKnockback, tFireDamage, tHitTimer);
-                    
-                    if (tDamages != null) {
-                        tDamage = tDamages[0] / 2.0F;
-                        tMagicDamage = tDamages[1] / 2.0F;
-                        tKnockback = tDamages[2];
-                        tFireDamage = tDamages[3];
-                        tHitTimer = tDamages[4];
-                        
-                        if (tFireDamage > 0 && !(tHitEntity instanceof EntityEnderman)) tHitEntity.setFire(tFireDamage);
-                        
-                        if (!(tHitEntity instanceof EntityPlayer) && EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, mArrow) > 0) {
-                        	EntityPlayer tPlayer = null;
-                            if (worldObj instanceof WorldServer) tPlayer = FakePlayerFactory.get((WorldServer)worldObj, new GameProfile(new UUID(0, 0), tShootingEntity instanceof EntityLivingBase?((EntityLivingBase)tShootingEntity).getCommandSenderName():"Arrow"));
-                            if (tPlayer != null) {
-                            	tPlayer.inventory.currentItem = 0;
-                            	tPlayer.inventory.setInventorySlotContents(0, getArrowItem());
-                            	tShootingEntity = tPlayer;
-                            	tPlayer.setDead();
-                            }
-                        }
-                        
-                        DamageSource tDamageSource = DamageSource.causeArrowDamage(this, tShootingEntity==null?this:tShootingEntity);
-                        
-                        if (tDamage + tMagicDamage > 0 && tHitEntity.attackEntityFrom(tDamageSource, tDamage + tMagicDamage)) {
-                            if (tHitEntity instanceof EntityLivingBase) {
-                                if (tHitTimer >= 0) tHitEntity.hurtResistantTime = tHitTimer;
-                                
-                                if (tHitEntity instanceof EntityCreeper && EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow) > 0) ((EntityCreeper)tHitEntity).func_146079_cb();
-                                
-                                EntityLivingBase tHitLivingEntity = (EntityLivingBase)tHitEntity;
-                                
-                                if (!worldObj.isRemote) tHitLivingEntity.setArrowCountInEntity(tHitLivingEntity.getArrowCountInEntity() + 1);
-                                
-                                if (tKnockback > 0) {
-                                    float tKnockbackDivider = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
-                                    if (tKnockbackDivider > 0.0F) tHitLivingEntity.addVelocity(motionX * tKnockback * 0.6000000238418579D / tKnockbackDivider, 0.1D, motionZ * tKnockback * 0.6000000238418579D / tKnockbackDivider);
-                                }
-                                
-                                Enchantments.applyBullshitA(tHitLivingEntity																	, tShootingEntity==null?this:tShootingEntity	, mArrow);
-                                Enchantments.applyBullshitB(tShootingEntity instanceof EntityLivingBase?(EntityLivingBase)tShootingEntity:null	, tHitLivingEntity								, mArrow);
-                                
-                                if (tShootingEntity != null && tHitLivingEntity != tShootingEntity && tHitLivingEntity instanceof EntityPlayer && tShootingEntity instanceof EntityPlayerMP) {
-                                    ((EntityPlayerMP)tShootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
-                                }
-                            }
-                            
-                            if (tShootingEntity instanceof EntityPlayer && tMagicDamage > 0.0F) ((EntityPlayer)tShootingEntity).onEnchantmentCritical(tHitEntity);
-                            
-                            if (!(tHitEntity instanceof EntityEnderman) || ((EntityEnderman)tHitEntity).getActivePotionEffect(Potion.weakness) != null) {
-                                if (tFireDamage > 0) tHitEntity.setFire(tFireDamage);
-                                playSound("random.bowhit", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
-                            	setDead();
-                            }
-                        } else {
-                            motionX *= -0.10000000149011612D;
-                            motionY *= -0.10000000149011612D;
-                            motionZ *= -0.10000000149011612D;
-                            rotationYaw += 180.0F;
-                            prevRotationYaw += 180.0F;
-                            ticksInAir = 0;
-                        }
-                    }
-                } else {
-                    mHitBlockX = tVector.blockX;
-                    mHitBlockY = tVector.blockY;
-                    mHitBlockZ = tVector.blockZ;
-                    mHitBlock = worldObj.getBlock(mHitBlockX, mHitBlockY, mHitBlockZ);
-                    mHitBlockMeta = worldObj.getBlockMetadata(mHitBlockX, mHitBlockY, mHitBlockZ);
-                    motionX = ((float)(tVector.hitVec.xCoord - posX));
-                    motionY = ((float)(tVector.hitVec.yCoord - posY));
-                    motionZ = ((float)(tVector.hitVec.zCoord - posZ));
-                    float f2 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-                    posX -= motionX / f2 * 0.05000000074505806D;
-                    posY -= motionY / f2 * 0.05000000074505806D;
-                    posZ -= motionZ / f2 * 0.05000000074505806D;
-                    playSound("random.bowhit", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
-                    inGround = true;
-                    arrowShake = 7;
-                    setIsCritical(false);
-                    
-                    if (mHitBlock.getMaterial() != Material.air) mHitBlock.onEntityCollidedWithBlock(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, this);
-                    
-                    if (!worldObj.isRemote && EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow) > 2) WD.burn(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, true, false);
-                    
-                    if (breaksOnImpact()) setDead();
-                }
-            }
-            
-            if (getIsCritical()) for (int i = 0; i < 4; ++i) worldObj.spawnParticle("crit", posX + motionX * i / 4.0D, posY + motionY * i / 4.0D, posZ + motionZ * i / 4.0D, -motionX, -motionY + 0.2D, -motionZ);
-            
-            posX += motionX; posY += motionY; posZ += motionZ;
-            
-            rotationYaw = (float)(Math.atan2(motionX, motionZ) * 180.0D / Math.PI);
-            
-            for (rotationPitch = (float)(Math.atan2(motionY, MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ)) * 180.0D / Math.PI); rotationPitch - prevRotationPitch < -180.0F; prevRotationPitch -= 360.0F) {/**/}
-            
-            while (rotationPitch	- prevRotationPitch	>= 180.0F) prevRotationPitch += 360.0F;
-            while (rotationYaw		- prevRotationYaw	< -180.0F) prevRotationYaw -= 360.0F;
-            while (rotationYaw		- prevRotationYaw	>= 180.0F) prevRotationYaw += 360.0F;
-            
-            rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
-            rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
-            float tFrictionMultiplier = 0.99F;
-            
-            if (isInWater()) {
-                for (int l = 0; l < 4; ++l) worldObj.spawnParticle("bubble", posX - motionX * 0.25, posY - motionY * 0.25, posZ - motionZ * 0.25, motionX, motionY, motionZ);
-                tFrictionMultiplier = 0.8F;
-            }
-            
-            if (isWet()) extinguish();
-            
-            motionX *= tFrictionMultiplier;
-            motionY *= tFrictionMultiplier;
-            motionZ *= tFrictionMultiplier;
-            motionY -= 0.05F;
-            setPosition(posX, posY, posZ);
-            func_145775_I();
-        }
-    }
-    
-    @Override
+		onEntityUpdate();
+		if (mArrow == null && !worldObj.isRemote) {
+			setDead();
+			return;
+		}
+		
+		Entity tShootingEntity = shootingEntity;
+		
+		if (prevRotationPitch == 0.0F && prevRotationYaw == 0.0F) {
+			float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
+			prevRotationYaw = rotationYaw = (float)(Math.atan2(motionX, motionZ) * 180.0D / Math.PI);
+			prevRotationPitch = rotationPitch = (float)(Math.atan2(motionY, f) * 180.0D / Math.PI);
+		}
+		
+		if (mTicksAlive++ == 3000) setDead();
+		
+		Block tBlock = worldObj.getBlock(mHitBlockX, mHitBlockY, mHitBlockZ);
+		
+		if (tBlock.getMaterial() != Material.air) {
+			tBlock.setBlockBoundsBasedOnState(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ);
+			AxisAlignedBB axisalignedbb = tBlock.getCollisionBoundingBoxFromPool(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ);
+			if (axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(posX, posY, posZ))) inGround = true;
+		}
+		
+		if (arrowShake > 0) arrowShake--;
+		
+		if (inGround) {
+			int j = worldObj.getBlockMetadata(mHitBlockX, mHitBlockY, mHitBlockZ);
+			if (tBlock != mHitBlock || j != mHitBlockMeta) {
+				inGround = false;
+				motionX *= (rand.nextFloat() * 0.2F);
+				motionY *= (rand.nextFloat() * 0.2F);
+				motionZ *= (rand.nextFloat() * 0.2F);
+				mTicksAlive = 0;
+				ticksInAir = 0;
+			}
+		} else {
+			ticksInAir++;
+			Vec3 vec31 = Vec3.createVectorHelper(posX, posY, posZ);
+			Vec3 vec3 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
+			MovingObjectPosition tVector = worldObj.func_147447_a(vec31, vec3, false, true, false);
+			vec31 = Vec3.createVectorHelper(posX, posY, posZ);
+			vec3 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
+			
+			if (tVector != null) vec3 = Vec3.createVectorHelper(tVector.hitVec.xCoord, tVector.hitVec.yCoord, tVector.hitVec.zCoord);
+			
+			Entity tHitEntity = null;
+			List tAllPotentiallyHitEntities = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
+			double tSmallestDistance = Double.MAX_VALUE;
+			
+			for (int i = 0; i < tAllPotentiallyHitEntities.size(); ++i) {
+				Entity entity1 = (Entity)tAllPotentiallyHitEntities.get(i);
+				
+				if (entity1.canBeCollidedWith() && (entity1 != tShootingEntity || ticksInAir >= 5)) {
+					AxisAlignedBB axisalignedbb1 = entity1.boundingBox.expand(0.3, 0.3, 0.3);
+					MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec31, vec3);
+					
+					if (movingobjectposition1 != null) {
+						double tDistance = vec31.distanceTo(movingobjectposition1.hitVec);
+						
+						if (tDistance < tSmallestDistance) {
+							tHitEntity = entity1;
+							tSmallestDistance = tDistance;
+						}
+					}
+				}
+			}
+			
+			if (tHitEntity != null) tVector = new MovingObjectPosition(tHitEntity);
+			
+			if (tVector != null && tHitEntity != null && tHitEntity instanceof EntityPlayer) {
+				if (((EntityPlayer)tHitEntity).capabilities.disableDamage || (tShootingEntity instanceof EntityPlayer && !((EntityPlayer)tShootingEntity).canAttackPlayer((EntityPlayer)tHitEntity))) tVector = null;
+			}
+			
+			if (tVector != null) {
+				if (tHitEntity != null) {
+					OreDictItemData tData = OM.anydata(mArrow);
+					
+					float
+					tMagicDamage = tHitEntity instanceof EntityLivingBase?EnchantmentHelper.func_152377_a(mArrow, ((EntityLivingBase)tHitEntity).getCreatureAttribute()):0,
+					tDamage = MathHelper.ceiling_double_int(MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ) * (getDamage() + (tData != null && tData.mMaterial != null ? (tData.mMaterial.mMaterial.mToolQuality / 2.0F) - 1: 0)));
+					
+					if (getIsCritical()) tDamage += rand.nextInt((int)(tDamage / 2.0 + 2.0));
+					
+					int
+					tFireDamage = (isBurning()?5:0) + 4 * EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow),
+					tKnockback = mKnockback + EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback.effectId, mArrow),
+					tHitTimer = -1;
+					
+					int[] tDamages = onHitEntity(tHitEntity, tShootingEntity==null?this:tShootingEntity, mArrow==null?ST.make(Items.arrow, 1, 0):mArrow, (int)(tDamage*2), (int)(tMagicDamage*2), tKnockback, tFireDamage, tHitTimer);
+					
+					if (tDamages != null) {
+						tDamage = tDamages[0] / 2.0F;
+						tMagicDamage = tDamages[1] / 2.0F;
+						tKnockback = tDamages[2];
+						tFireDamage = tDamages[3];
+						tHitTimer = tDamages[4];
+						
+						if (tFireDamage > 0 && !(tHitEntity instanceof EntityEnderman)) tHitEntity.setFire(tFireDamage);
+						
+						if (!(tHitEntity instanceof EntityPlayer) && EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, mArrow) > 0) {
+							EntityPlayer tPlayer = null;
+							if (worldObj instanceof WorldServer) tPlayer = FakePlayerFactory.get((WorldServer)worldObj, new GameProfile(new UUID(0, 0), tShootingEntity instanceof EntityLivingBase?((EntityLivingBase)tShootingEntity).getCommandSenderName():"Arrow"));
+							if (tPlayer != null) {
+								tPlayer.inventory.currentItem = 0;
+								tPlayer.inventory.setInventorySlotContents(0, getArrowItem());
+								tShootingEntity = tPlayer;
+								tPlayer.setDead();
+							}
+						}
+						
+						DamageSource tDamageSource = DamageSource.causeArrowDamage(this, tShootingEntity==null?this:tShootingEntity);
+						
+						if (tDamage + tMagicDamage > 0 && tHitEntity.attackEntityFrom(tDamageSource, tDamage + tMagicDamage)) {
+							if (tHitEntity instanceof EntityLivingBase) {
+								if (tHitTimer >= 0) tHitEntity.hurtResistantTime = tHitTimer;
+								
+								if (tHitEntity instanceof EntityCreeper && EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow) > 0) ((EntityCreeper)tHitEntity).func_146079_cb();
+								
+								EntityLivingBase tHitLivingEntity = (EntityLivingBase)tHitEntity;
+								
+								if (!worldObj.isRemote) tHitLivingEntity.setArrowCountInEntity(tHitLivingEntity.getArrowCountInEntity() + 1);
+								
+								if (tKnockback > 0) {
+									float tKnockbackDivider = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
+									if (tKnockbackDivider > 0.0F) tHitLivingEntity.addVelocity(motionX * tKnockback * 0.6000000238418579D / tKnockbackDivider, 0.1D, motionZ * tKnockback * 0.6000000238418579D / tKnockbackDivider);
+								}
+								
+								Enchantments.applyBullshitA(tHitLivingEntity																	, tShootingEntity==null?this:tShootingEntity	, mArrow);
+								Enchantments.applyBullshitB(tShootingEntity instanceof EntityLivingBase?(EntityLivingBase)tShootingEntity:null	, tHitLivingEntity								, mArrow);
+								
+								if (tShootingEntity != null && tHitLivingEntity != tShootingEntity && tHitLivingEntity instanceof EntityPlayer && tShootingEntity instanceof EntityPlayerMP) {
+									((EntityPlayerMP)tShootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
+								}
+							}
+							
+							if (tShootingEntity instanceof EntityPlayer && tMagicDamage > 0.0F) ((EntityPlayer)tShootingEntity).onEnchantmentCritical(tHitEntity);
+							
+							if (!(tHitEntity instanceof EntityEnderman) || ((EntityEnderman)tHitEntity).getActivePotionEffect(Potion.weakness) != null) {
+								if (tFireDamage > 0) tHitEntity.setFire(tFireDamage);
+								playSound("random.bowhit", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
+								setDead();
+							}
+						} else {
+							motionX *= -0.10000000149011612D;
+							motionY *= -0.10000000149011612D;
+							motionZ *= -0.10000000149011612D;
+							rotationYaw += 180.0F;
+							prevRotationYaw += 180.0F;
+							ticksInAir = 0;
+						}
+					}
+				} else {
+					mHitBlockX = tVector.blockX;
+					mHitBlockY = tVector.blockY;
+					mHitBlockZ = tVector.blockZ;
+					mHitBlock = worldObj.getBlock(mHitBlockX, mHitBlockY, mHitBlockZ);
+					mHitBlockMeta = worldObj.getBlockMetadata(mHitBlockX, mHitBlockY, mHitBlockZ);
+					motionX = ((float)(tVector.hitVec.xCoord - posX));
+					motionY = ((float)(tVector.hitVec.yCoord - posY));
+					motionZ = ((float)(tVector.hitVec.zCoord - posZ));
+					float f2 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
+					posX -= motionX / f2 * 0.05000000074505806D;
+					posY -= motionY / f2 * 0.05000000074505806D;
+					posZ -= motionZ / f2 * 0.05000000074505806D;
+					playSound("random.bowhit", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
+					inGround = true;
+					arrowShake = 7;
+					setIsCritical(false);
+					
+					if (mHitBlock.getMaterial() != Material.air) mHitBlock.onEntityCollidedWithBlock(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, this);
+					
+					if (!worldObj.isRemote && EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow) > 2) WD.burn(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, true, false);
+					
+					if (breaksOnImpact()) setDead();
+				}
+			}
+			
+			if (getIsCritical()) for (int i = 0; i < 4; ++i) worldObj.spawnParticle("crit", posX + motionX * i / 4.0D, posY + motionY * i / 4.0D, posZ + motionZ * i / 4.0D, -motionX, -motionY + 0.2D, -motionZ);
+			
+			posX += motionX; posY += motionY; posZ += motionZ;
+			
+			rotationYaw = (float)(Math.atan2(motionX, motionZ) * 180.0D / Math.PI);
+			
+			for (rotationPitch = (float)(Math.atan2(motionY, MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ)) * 180.0D / Math.PI); rotationPitch - prevRotationPitch < -180.0F; prevRotationPitch -= 360.0F) {/**/}
+			
+			while (rotationPitch	- prevRotationPitch	>= 180.0F) prevRotationPitch += 360.0F;
+			while (rotationYaw		- prevRotationYaw	< -180.0F) prevRotationYaw -= 360.0F;
+			while (rotationYaw		- prevRotationYaw	>= 180.0F) prevRotationYaw += 360.0F;
+			
+			rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
+			rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
+			float tFrictionMultiplier = 0.99F;
+			
+			if (isInWater()) {
+				for (int l = 0; l < 4; ++l) worldObj.spawnParticle("bubble", posX - motionX * 0.25, posY - motionY * 0.25, posZ - motionZ * 0.25, motionX, motionY, motionZ);
+				tFrictionMultiplier = 0.8F;
+			}
+			
+			if (isWet()) extinguish();
+			
+			motionX *= tFrictionMultiplier;
+			motionY *= tFrictionMultiplier;
+			motionZ *= tFrictionMultiplier;
+			motionY -= 0.05F;
+			setPosition(posX, posY, posZ);
+			func_145775_I();
+		}
+	}
+	
+	@Override
 	public void writeEntityToNBT(NBTTagCompound aNBT) {
-    	super.writeEntityToNBT(aNBT);
-        aNBT.setShort("xTile", (short)mHitBlockX);
-        aNBT.setShort("yTile", (short)mHitBlockY);
-        aNBT.setShort("zTile", (short)mHitBlockZ);
-        aNBT.setShort("life", (short)mTicksAlive);
-        aNBT.setByte("inTile", (byte)Block.getIdFromBlock(mHitBlock));
-        aNBT.setByte("inData", (byte)mHitBlockMeta);
-        aNBT.setByte("shake", (byte)arrowShake);
-        aNBT.setByte("inGround", (byte)(inGround ? 1 : 0));
-        aNBT.setByte("pickup", (byte)canBePickedUp);
-        aNBT.setDouble("damage", getDamage());
-        aNBT.setTag("mArrow", ST.save(mArrow));
-    }
-    
-    @Override
+		super.writeEntityToNBT(aNBT);
+		aNBT.setShort("xTile", (short)mHitBlockX);
+		aNBT.setShort("yTile", (short)mHitBlockY);
+		aNBT.setShort("zTile", (short)mHitBlockZ);
+		aNBT.setShort("life", (short)mTicksAlive);
+		aNBT.setByte("inTile", (byte)Block.getIdFromBlock(mHitBlock));
+		aNBT.setByte("inData", (byte)mHitBlockMeta);
+		aNBT.setByte("shake", (byte)arrowShake);
+		aNBT.setByte("inGround", (byte)(inGround ? 1 : 0));
+		aNBT.setByte("pickup", (byte)canBePickedUp);
+		aNBT.setDouble("damage", getDamage());
+		aNBT.setTag("mArrow", ST.save(mArrow));
+	}
+	
+	@Override
 	public void readEntityFromNBT(NBTTagCompound aNBT) {
-    	super.readEntityFromNBT(aNBT);
-        mHitBlockX = aNBT.getShort("xTile");
-        mHitBlockY = aNBT.getShort("yTile");
-        mHitBlockZ = aNBT.getShort("zTile");
-        mTicksAlive = aNBT.getShort("life");
-        mHitBlock = Block.getBlockById(aNBT.getByte("inTile") & 255);
-        mHitBlockMeta = aNBT.getByte("inData") & 255;
-        arrowShake = aNBT.getByte("shake") & 255;
-        inGround = aNBT.getByte("inGround") == 1;
-        setDamage(aNBT.getDouble("damage"));
-        canBePickedUp = aNBT.getByte("pickup");
-        mArrow = ST.load(aNBT, "mArrow");
-    }
-    
-    @Override
+		super.readEntityFromNBT(aNBT);
+		mHitBlockX = aNBT.getShort("xTile");
+		mHitBlockY = aNBT.getShort("yTile");
+		mHitBlockZ = aNBT.getShort("zTile");
+		mTicksAlive = aNBT.getShort("life");
+		mHitBlock = Block.getBlockById(aNBT.getByte("inTile") & 255);
+		mHitBlockMeta = aNBT.getByte("inData") & 255;
+		arrowShake = aNBT.getByte("shake") & 255;
+		inGround = aNBT.getByte("inGround") == 1;
+		setDamage(aNBT.getDouble("damage"));
+		canBePickedUp = aNBT.getByte("pickup");
+		mArrow = ST.load(aNBT, "mArrow");
+	}
+	
+	@Override
 	public void onCollideWithPlayer(EntityPlayer aPlayer) {
-        if (!worldObj.isRemote && inGround && arrowShake <= 0 && canBePickedUp == 1 && aPlayer.inventory.addItemStackToInventory(getArrowItem())) {
-            playSound("random.pop", 0.2F, ((rand.nextFloat() - rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-            aPlayer.onItemPickup(this, 1);
-            setDead();
-        }
-    }
-    
-    /**
-     * @param aHitEntity the hit Entity
-     * @param aShootingEntity the shooting Entity
-     * @param aArrow the Arrow Item, might be a vanilla Arrow if the Client has not synched the Item.
-     * @param aRegularDamage Damage in Half Hearts
-     * @param aMagicDamage Magic Damage in Half Hearts
-     * @param aKnockback Knockback Level
-     * @param aFireDamage Fire Damage
-     * @return null if this is not damaging the Entity, otherwise see the return value below.
-     */
-    public int[] onHitEntity(Entity aHitEntity, Entity aShootingEntity, ItemStack aArrow, int aRegularDamage, int aMagicDamage, int aKnockback, int aFireDamage, int aHitTimer) {
-    	return new int[] {aRegularDamage, aMagicDamage, aKnockback, aFireDamage, aHitTimer};
-    }
-    
-    @Override
+		if (!worldObj.isRemote && inGround && arrowShake <= 0 && canBePickedUp == 1 && aPlayer.inventory.addItemStackToInventory(getArrowItem())) {
+			playSound("random.pop", 0.2F, ((rand.nextFloat() - rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+			aPlayer.onItemPickup(this, 1);
+			setDead();
+		}
+	}
+	
+	/**
+	 * @param aHitEntity the hit Entity
+	 * @param aShootingEntity the shooting Entity
+	 * @param aArrow the Arrow Item, might be a vanilla Arrow if the Client has not synched the Item.
+	 * @param aRegularDamage Damage in Half Hearts
+	 * @param aMagicDamage Magic Damage in Half Hearts
+	 * @param aKnockback Knockback Level
+	 * @param aFireDamage Fire Damage
+	 * @return null if this is not damaging the Entity, otherwise see the return value below.
+	 */
+	public int[] onHitEntity(Entity aHitEntity, Entity aShootingEntity, ItemStack aArrow, int aRegularDamage, int aMagicDamage, int aKnockback, int aFireDamage, int aHitTimer) {
+		return new int[] {aRegularDamage, aMagicDamage, aKnockback, aFireDamage, aHitTimer};
+	}
+	
+	@Override
 	public void setProjectileStack(ItemStack aStack) {
-    	mArrow = ST.update(ST.amount(1, aStack), worldObj, UT.Code.roundDown(posX), UT.Code.roundDown(posY), UT.Code.roundDown(posZ));
-    }
-    
-    public ItemStack getArrowItem() {
-    	return ST.copy(mArrow);
-    }
-    
-    public boolean breaksOnImpact() {
-    	return false;
-    }
-    
-    @Override
+		mArrow = ST.update(ST.amount(1, aStack), worldObj, UT.Code.roundDown(posX), UT.Code.roundDown(posY), UT.Code.roundDown(posZ));
+	}
+	
+	public ItemStack getArrowItem() {
+		return ST.copy(mArrow);
+	}
+	
+	public boolean breaksOnImpact() {
+		return false;
+	}
+	
+	@Override
 	public void setKnockbackStrength(int aKnockback) {
-        mKnockback = aKnockback;
-    }
+		mKnockback = aKnockback;
+	}
 }

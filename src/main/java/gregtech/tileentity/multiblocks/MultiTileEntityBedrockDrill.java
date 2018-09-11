@@ -109,7 +109,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 			} else {
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -1, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
 			}
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i,  0, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i,	0, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
 		}
 		return tSuccess && tBedrock;
 	}

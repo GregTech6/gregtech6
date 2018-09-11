@@ -58,12 +58,12 @@ public class WorldgenLogRotten extends WorldgenObject {
 			switch(aRandom.nextInt(3)) {
 			case 0:
 				if (aRandom.nextBoolean())				WD.set(aWorld, tX  , tY-1, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
-														WD.set(aWorld, tX  , tY  , tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
+														WD.set(aWorld, tX  , tY	 , tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
 														WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
 														WD.set(aWorld, tX  , tY+2, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
-				if (tY < 62 || aRandom.nextBoolean()) 	WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
-				if (tY < 61) 							WD.set(aWorld, tX  , tY+4, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
-				if (tY < 60 && aRandom.nextBoolean()) 	WD.set(aWorld, tX  , tY+5, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
+				if (tY < 62 || aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
+				if (tY < 61)							WD.set(aWorld, tX  , tY+4, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
+				if (tY < 60 && aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+5, tZ  , BlocksGT.Log1, PILLARS_Y[1], 2);
 				return T;
 			case 1:
 				if (aRandom.nextBoolean())				WD.set(aWorld, tX-2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[1], 2);

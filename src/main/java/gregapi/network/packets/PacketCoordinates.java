@@ -68,10 +68,10 @@ public abstract class PacketCoordinates implements IPacket {
 	
 	@Override
 	public final ByteArrayDataOutput encode() {
-        ByteArrayDataOutput rOut = ByteStreams.newDataOutput(8);
-        if ((mDecoderType&1)!=0) rOut.writeShort(mX); else rOut.writeInt  (mX);
-        if ((mDecoderType&2)!=0) rOut.writeByte (mY); else rOut.writeShort(mY);
-        if ((mDecoderType&4)!=0) rOut.writeShort(mZ); else rOut.writeInt  (mZ);
+		ByteArrayDataOutput rOut = ByteStreams.newDataOutput(8);
+		if ((mDecoderType&1)!=0) rOut.writeShort(mX); else rOut.writeInt  (mX);
+		if ((mDecoderType&2)!=0) rOut.writeByte (mY); else rOut.writeShort(mY);
+		if ((mDecoderType&4)!=0) rOut.writeShort(mZ); else rOut.writeInt  (mZ);
 		return encode2(rOut);
 	}
 	

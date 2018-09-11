@@ -35,10 +35,10 @@ public class BlockTextureDefault implements ITexture {
 	private final IIconContainer mIconContainer;
 	
 	/**
-	 *  DO NOT MANIPULATE THE VALUES INSIDE THIS ARRAY!!!
-	 *  
-	 *  Just set this variable to another different Array instead.
-	 *  Otherwise some colored things will get Problems.
+	 *	DO NOT MANIPULATE THE VALUES INSIDE THIS ARRAY!!!
+	 *	
+	 *	Just set this variable to another different Array instead.
+	 *	Otherwise some colored things will get Problems.
 	 */
 	public short[] fRGBa;
 	
@@ -208,37 +208,37 @@ public class BlockTextureDefault implements ITexture {
 	@Override
 	public void renderXPos(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, int aBrightness, boolean aChangedBlockBounds) {
 		for (int i = 0, j = mIconContainer.getIconPasses(); i < j; i++)
-    	ITexture.Util.renderSide(SIDE_X_POS, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
+		ITexture.Util.renderSide(SIDE_X_POS, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
 	}
 	
 	@Override
 	public void renderXNeg(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, int aBrightness, boolean aChangedBlockBounds) {
 		for (int i = 0, j = mIconContainer.getIconPasses(); i < j; i++)
-	    ITexture.Util.renderSide(SIDE_X_NEG, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
+		ITexture.Util.renderSide(SIDE_X_NEG, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
 	}
 	
 	@Override
 	public void renderYPos(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, int aBrightness, boolean aChangedBlockBounds) {
 		for (int i = 0, j = mIconContainer.getIconPasses(); i < j; i++)
-	    ITexture.Util.renderSide(SIDE_Y_POS, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
+		ITexture.Util.renderSide(SIDE_Y_POS, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
 	}
 	
 	@Override
 	public void renderYNeg(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, int aBrightness, boolean aChangedBlockBounds) {
 		for (int i = 0, j = mIconContainer.getIconPasses(); i < j; i++)
-	    ITexture.Util.renderSide(SIDE_Y_NEG, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
+		ITexture.Util.renderSide(SIDE_Y_NEG, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
 	}
 	
 	@Override
 	public void renderZPos(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, int aBrightness, boolean aChangedBlockBounds) {
 		for (int i = 0, j = mIconContainer.getIconPasses(); i < j; i++)
-	    ITexture.Util.renderSide(SIDE_Z_POS, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
+		ITexture.Util.renderSide(SIDE_Z_POS, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
 	}
 	
 	@Override
 	public void renderZNeg(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, int aBrightness, boolean aChangedBlockBounds) {
 		for (int i = 0, j = mIconContainer.getIconPasses(); i < j; i++)
-	    ITexture.Util.renderSide(SIDE_Z_NEG, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
+		ITexture.Util.renderSide(SIDE_Z_NEG, mIconContainer.getIcon(i), mIconContainer.isUsingColorModulation(i)?fRGBa:mIconContainer.getIconColor(i), mAllowAlpha, mUseConstantBrightness, mEnableAO, aRenderer, aBlock, aX, aY, aZ, mUseOwnBrightness?mBrightness:aBrightness, aChangedBlockBounds);
 	}
 	
 	public short[] getRGBA() {

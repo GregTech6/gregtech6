@@ -34,17 +34,17 @@ public interface IHasWorld {
 	public World getWorld();
 	
 	public boolean isServerSide();
-    public boolean isClientSide();
-    
-    public int rng(int aRange);
-    public int getRandomNumber(int aRange);
-    
+	public boolean isClientSide();
+	
+	public int rng(int aRange);
+	public int getRandomNumber(int aRange);
+	
 	public TileEntity getTileEntity(int aX, int aY, int aZ);
 	public TileEntity getTileEntity(ChunkCoordinates aCoords);
 	
-    public Block getBlock(int aX, int aY, int aZ);
-    public Block getBlock(ChunkCoordinates aCoords);
-    
+	public Block getBlock(int aX, int aY, int aZ);
+	public Block getBlock(ChunkCoordinates aCoords);
+	
 	public byte getMetaData(int aX, int aY, int aZ);
 	public byte getMetaData(ChunkCoordinates aCoords);
 	
@@ -63,6 +63,6 @@ public interface IHasWorld {
 	public boolean getAir(int aX, int aY, int aZ);
 	public boolean getAir(ChunkCoordinates aCoords);
 	
-    public BiomeGenBase getBiome(int aX, int aZ);
-    public BiomeGenBase getBiome(ChunkCoordinates aCoords);
+	public BiomeGenBase getBiome(int aX, int aZ);
+	public BiomeGenBase getBiome(ChunkCoordinates aCoords);
 }

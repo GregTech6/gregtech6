@@ -87,15 +87,15 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], OM.dust(MT.LightBlue));
 		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Brown], OM.dust(MT.Brown));
 		
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta], OM.dust(MT.Magenta));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], OM.dust(MT.White));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], OM.dust(MT.LightBlue));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Brown], OM.dust(MT.Brown));
-    	
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta], OM.dust(MT.Magenta));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], OM.dust(MT.White));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], OM.dust(MT.LightBlue));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Brown], OM.dust(MT.Brown));
+		
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});
 		CR.shapeless(OM.dust(MT.Magenta), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 2)});
@@ -105,18 +105,18 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		CR.shapeless(OM.dust(MT.LightBlue), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 6)});
 		CR.shapeless(OM.dust(MT.Brown), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 7)});
 		
-    	RM.pulverizing(ST.make(this, 1, 0), OM.dust(MT.Wheat));
-    	RM.pulverizing(ST.make(this, 1, 1), OM.dust(MT.Wheat));
-    	
-    	if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
-    	RM.ic2_extractor(ST.make(this, 1, 0), OM.dust(MT.Yellow));
-    	RM.ic2_extractor(ST.make(this, 1, 1), OM.dust(MT.Yellow));
-    	RM.ic2_extractor(ST.make(this, 1, 2), OM.dust(MT.Magenta, U * 2));
-    	RM.ic2_extractor(ST.make(this, 1, 3), OM.dust(MT.Yellow, U * 2));
-    	RM.ic2_extractor(ST.make(this, 1, 4), OM.dust(MT.Pink, U * 2));
-    	RM.ic2_extractor(ST.make(this, 1, 5), OM.dust(MT.White, U * 2));
-    	RM.ic2_extractor(ST.make(this, 1, 6), OM.dust(MT.LightBlue, U * 2));
-    	RM.ic2_extractor(ST.make(this, 1, 7), OM.dust(MT.Brown, U * 2));
-    	}
+		RM.pulverizing(ST.make(this, 1, 0), OM.dust(MT.Wheat));
+		RM.pulverizing(ST.make(this, 1, 1), OM.dust(MT.Wheat));
+		
+		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
+		RM.ic2_extractor(ST.make(this, 1, 0), OM.dust(MT.Yellow));
+		RM.ic2_extractor(ST.make(this, 1, 1), OM.dust(MT.Yellow));
+		RM.ic2_extractor(ST.make(this, 1, 2), OM.dust(MT.Magenta, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 3), OM.dust(MT.Yellow, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 4), OM.dust(MT.Pink, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 5), OM.dust(MT.White, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 6), OM.dust(MT.LightBlue, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 7), OM.dust(MT.Brown, U * 2));
+		}
 	}
 }

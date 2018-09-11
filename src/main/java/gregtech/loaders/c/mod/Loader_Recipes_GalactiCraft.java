@@ -117,18 +117,18 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 				}
 			}
 			
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_1  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_1  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units( 900, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_2  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_2  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(1800, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_3  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_3  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(2700, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_1	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_1  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units( 900, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_2	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_2  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(1800, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_3	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_3  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(2700, 2700, 250, T))}, ZL_FS, 64, 16, 0);
 		}
 		if (MD.GC_PLANETS.mLoaded) {
 			OUT.println("GT_Mod: Doing Galacticraft Planets Recipes.");
 			CR.remout(MD.GC_PLANETS, "item.carbonFragments");
 			
-			RM.Hammer		.addRecipe1(T,  16,   16, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), OM.dust(MT.Ice, 4*U));
-			RM.Squeezer		.addRecipe1(T,  16,  256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
-			RM.Juicer		.addRecipe1(T,  16,  256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
-			RM.Compressor	.addRecipe1(T, 256,   32, ST.make(Blocks.packed_ice, 2, W), ST.make(MD.GC_PLANETS, "tile.denseIce", 1, 0));
+			RM.Hammer		.addRecipe1(T,	16,	  16, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), OM.dust(MT.Ice, 4*U));
+			RM.Squeezer		.addRecipe1(T,	16,	 256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
+			RM.Juicer		.addRecipe1(T,	16,	 256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
+			RM.Compressor	.addRecipe1(T, 256,	  32, ST.make(Blocks.packed_ice, 2, W), ST.make(MD.GC_PLANETS, "tile.denseIce", 1, 0));
 			
 			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.compressed.mat(MT.MeteoricIron	, 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
 			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.plate		.mat(MT.MeteoricIron	, 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
@@ -199,9 +199,9 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 				RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), UT.Fluids.mul(tDye, 1, 16, T), NF, ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i));
 			}
 			
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_4  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_4  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(3500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_5  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_5  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4000, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_6  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_6  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_4	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_4  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(3500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_5	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_5  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4000, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_6	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_6  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
 			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_Env.wild(1)}, new ItemStack[] {IL.GC_OxyTank_Env.get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units( 500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
 		}
 	}

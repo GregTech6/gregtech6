@@ -60,31 +60,31 @@ public class Enchantment_SlimeDamage extends EnchantmentDamage {
 		INSTANCE = this;
 	}
 	
-    @Override
+	@Override
 	public int getMinEnchantability(int aLevel) {
-        return 5 + (aLevel - 1) * 8;
-    }
-    
-    @Override
+		return 5 + (aLevel - 1) * 8;
+	}
+	
+	@Override
 	public int getMaxEnchantability(int aLevel) {
-        return this.getMinEnchantability(aLevel) + 20;
-    }
-    
-    @Override
+		return this.getMinEnchantability(aLevel) + 20;
+	}
+	
+	@Override
 	public int getMaxLevel() {
-        return 5;
-    }
-    
-    @Override
+		return 5;
+	}
+	
+	@Override
 	public void func_151367_b(EntityLivingBase aHurtEntity, Entity aDamagingEntity, int aLevel) {
-        if (UT.Entities.isSlimeCreature(aHurtEntity)) {
-        	aHurtEntity.addPotionEffect(new PotionEffect(Potion.weakness.id	, aLevel * 200, (int)UT.Code.bind(1, 5, (5*aLevel) / 7)));
-        	aHurtEntity.addPotionEffect(new PotionEffect(Potion.poison.id	, aLevel * 200, (int)UT.Code.bind(1, 5, (5*aLevel) / 7)));
-        }
-    }
-    
-    @Override
+		if (UT.Entities.isSlimeCreature(aHurtEntity)) {
+			aHurtEntity.addPotionEffect(new PotionEffect(Potion.weakness.id	, aLevel * 200, (int)UT.Code.bind(1, 5, (5*aLevel) / 7)));
+			aHurtEntity.addPotionEffect(new PotionEffect(Potion.poison.id	, aLevel * 200, (int)UT.Code.bind(1, 5, (5*aLevel) / 7)));
+		}
+	}
+	
+	@Override
 	public String getName() {
-        return "enchantment.damage.slime";
-    }
+		return "enchantment.damage.slime";
+	}
 }

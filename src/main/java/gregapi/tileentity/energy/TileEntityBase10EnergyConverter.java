@@ -142,7 +142,7 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	
 	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return (aEmitting?mConverter.mEnergyOUT:mConverter.mEnergyIN).isType(aEnergyType);}
 	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || (!mStopped && (mConverter.mWasteEnergy || (mConverter.mEmitsEnergy == mConverter.mCanEmitEnergy)))) &&	(SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return																															(SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return																															(SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo	(aEnergyType, aSide, aTheoretical);}
 	@Override public long getEnergySizeOutputMin			(TagData aEnergyType, byte aSide) {return mConverter.mEnergyOUT.sizeMin(aEnergyType);}
 	@Override public long getEnergySizeOutputRecommended	(TagData aEnergyType, byte aSide) {return mConverter.mEnergyOUT.sizeRec(aEnergyType);}
 	@Override public long getEnergySizeOutputMax			(TagData aEnergyType, byte aSide) {return mConverter.mEnergyOUT.sizeMax(aEnergyType);}

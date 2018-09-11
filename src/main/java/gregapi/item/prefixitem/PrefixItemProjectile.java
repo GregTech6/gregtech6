@@ -97,30 +97,30 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 		return null;
 	}
 	
-    @Override
-    public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
-    	super.onLeftClickEntity(aStack, aPlayer, aEntity);
-    	if (aEntity instanceof EntityLivingBase) {
-    		if (mStabbing) {
-                UT.Enchantments.applyBullshitA((EntityLivingBase)aEntity, aPlayer, aStack);
-                UT.Enchantments.applyBullshitB(aPlayer, aEntity, aStack);
-    		}
-    		if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
+	@Override
+	public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
+		super.onLeftClickEntity(aStack, aPlayer, aEntity);
+		if (aEntity instanceof EntityLivingBase) {
+			if (mStabbing) {
+				UT.Enchantments.applyBullshitA((EntityLivingBase)aEntity, aPlayer, aStack);
+				UT.Enchantments.applyBullshitB(aPlayer, aEntity, aStack);
+			}
+			if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
 			if (aStack.stackSize <= 0) aPlayer.destroyCurrentEquippedItem();
 			return F;
-    	}
-    	return F;
-    }
-    
+		}
+		return F;
+	}
+	
 	@Override
 	public void updateItemStack(ItemStack aStack) {
 		super.updateItemStack(aStack);
-    	short aMetaData = ST.meta(aStack);
+		short aMetaData = ST.meta(aStack);
 		if (UT.Code.exists(aMetaData, mMaterialList) && !mMaterialList[aMetaData].mEnchantmentTools.isEmpty()) {
-        	NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
-        	if (!tNBT.getBoolean("gt.u")) {
-	    		tNBT.setBoolean("gt.u", T);
-	    		UT.NBT.set(aStack, tNBT);
+			NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
+			if (!tNBT.getBoolean("gt.u")) {
+				tNBT.setBoolean("gt.u", T);
+				UT.NBT.set(aStack, tNBT);
 				for (ObjectStack<Enchantment> tEnchantment : mMaterialList[aMetaData].mEnchantmentTools) {
 					if (tEnchantment.mObject == Enchantment.fortune) {
 						UT.NBT.addEnchantment(aStack, Enchantment.looting, tEnchantment.mAmount);
@@ -128,34 +128,34 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 						UT.NBT.addEnchantment(aStack, tEnchantment.mObject, tEnchantment.mAmount);
 					}
 				}
-	    	}
+			}
 		}
 	}
 	
 	public ItemStack onDispense(IBlockSource aSource, ItemStack aStack) {
-        World aWorld = aSource.getWorld();
-        IPosition tPosition = BlockDispenser.func_149939_a(aSource);
-        EnumFacing tFacing = BlockDispenser.func_149937_b(aSource.getBlockMetadata());
-        EntityProjectile tProjectile = getProjectile(mProjectileType, aStack, aWorld, tPosition.getX(), tPosition.getY(), tPosition.getZ());
-        if (tProjectile != null) {
-            tProjectile.setThrowableHeading(tFacing.getFrontOffsetX(), (tFacing.getFrontOffsetY() + 0.1F), tFacing.getFrontOffsetZ(), mSpeedMultiplier * 1.10F, mPrecision);
-            tProjectile.setProjectileStack(ST.amount(1, aStack));
-            tProjectile.canBePickedUp = 1;
-            aWorld.spawnEntityInWorld(tProjectile);
-            if (aStack.stackSize < 100) aStack.stackSize--;
-            return aStack;
-        }
+		World aWorld = aSource.getWorld();
+		IPosition tPosition = BlockDispenser.func_149939_a(aSource);
+		EnumFacing tFacing = BlockDispenser.func_149937_b(aSource.getBlockMetadata());
+		EntityProjectile tProjectile = getProjectile(mProjectileType, aStack, aWorld, tPosition.getX(), tPosition.getY(), tPosition.getZ());
+		if (tProjectile != null) {
+			tProjectile.setThrowableHeading(tFacing.getFrontOffsetX(), (tFacing.getFrontOffsetY() + 0.1F), tFacing.getFrontOffsetZ(), mSpeedMultiplier * 1.10F, mPrecision);
+			tProjectile.setProjectileStack(ST.amount(1, aStack));
+			tProjectile.canBePickedUp = 1;
+			aWorld.spawnEntityInWorld(tProjectile);
+			if (aStack.stackSize < 100) aStack.stackSize--;
+			return aStack;
+		}
 		
-        // Default Item Dropping.
-        EnumFacing enumfacing = BlockDispenser.func_149937_b(aSource.getBlockMetadata());
-        IPosition iposition = BlockDispenser.func_149939_a(aSource);
-        ItemStack itemstack1 = aStack.splitStack(1);
-        BehaviorDefaultDispenseItem.doDispense(aSource.getWorld(), itemstack1, 6, enumfacing, iposition);
+		// Default Item Dropping.
+		EnumFacing enumfacing = BlockDispenser.func_149937_b(aSource.getBlockMetadata());
+		IPosition iposition = BlockDispenser.func_149939_a(aSource);
+		ItemStack itemstack1 = aStack.splitStack(1);
+		BehaviorDefaultDispenseItem.doDispense(aSource.getWorld(), itemstack1, 6, enumfacing, iposition);
 		return aStack;
-    }
+	}
 	
 	public static class MetaItemDispense extends BehaviorProjectileDispense {
-        @Override public ItemStack dispenseStack(IBlockSource aSource, ItemStack aStack) {return ((PrefixItemProjectile)aStack.getItem()).onDispense(aSource, aStack);}
-        @Override protected IProjectile getProjectileEntity(World aWorld, IPosition aPosition) {return null;}
+		@Override public ItemStack dispenseStack(IBlockSource aSource, ItemStack aStack) {return ((PrefixItemProjectile)aStack.getItem()).onDispense(aSource, aStack);}
+		@Override protected IProjectile getProjectileEntity(World aWorld, IPosition aPosition) {return null;}
 	}
 }

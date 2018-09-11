@@ -50,7 +50,7 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 	public static ModData MOD_DATA = new ModData(MOD_ID, MOD_NAME);
 	
 	@cpw.mods.fml.common.SidedProxy(modId = MOD_ID, clientSide = "gregapi.api.example.Example_Proxy_Client", serverSide = "gregapi.api.example.Example_Proxy_Server")
-    public static gregapi.api.Abstract_Proxy PROXY;
+	public static gregapi.api.Abstract_Proxy PROXY;
 	
 	@Override public String getModID() {return MOD_ID;}
 	@Override public String getModName() {return MOD_NAME;}
@@ -82,7 +82,7 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 		// If you want to make yourself a new OreDict Material. Please look up proper IDs. So replace 32766 with a Number inside YOUR own ID Range. (you can look that up in gregapi.oredict.OreDictMaterial.java)
 		final gregapi.oredict.OreDictMaterial tExamplium = gregapi.oredict.OreDictMaterial.createMaterial(32766, "Examplium", "Examplium"); // Creates a Material called "Examplium".
 		tExamplium.setTextures(gregapi.render.TextureSet.SET_METALLIC); // gives this Material the Metallic Texture Set.
-		tExamplium.setRGBa(100, 100, 200,   0); // Sets the RGBa Color of the Material. In this case some random blue Color.
+		tExamplium.setRGBa(100, 100, 200,	0); // Sets the RGBa Color of the Material. In this case some random blue Color.
 		tExamplium.put(gregapi.data.TD.Processing.SMITHABLE); // This Material is smithable like regular Metal things.
 		tExamplium.put(gregapi.data.TD.Processing.MELTING); // This Material can melt.
 		tExamplium.put(gregapi.data.TD.Processing.FURNACE); // This Material can be molten in a regular Furnace.
@@ -104,7 +104,7 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 		
 		// If you want to make your Prefix a Block
 		// Creates the generic Block for the new Prefix. Assets go into "/assets/insert_your_modid_here/textures/blocks/materialicons". And yes, every TextureSet for every Material Type has its own Folder.
-		new gregapi.block.prefixblock.PrefixBlock_(MOD_ID, MOD_ID, "example.meta.block.exampleprefix", tExamplePrefix, null, null, null, null, net.minecraft.block.material.Material.rock, net.minecraft.block.Block.soundTypeStone, gregapi.data.CS.TOOL_pickaxe, 1.5F, 4.5F,   0,   0, 999, 0, 0, 0, 1, 1, 1, false, false, false, false, true, true, true, true, true, true, false, true, true, true, gregapi.oredict.OreDictMaterial.MATERIAL_ARRAY); 
+		new gregapi.block.prefixblock.PrefixBlock_(MOD_ID, MOD_ID, "example.meta.block.exampleprefix", tExamplePrefix, null, null, null, null, net.minecraft.block.material.Material.rock, net.minecraft.block.Block.soundTypeStone, gregapi.data.CS.TOOL_pickaxe, 1.5F, 4.5F,	 0,	  0, 999, 0, 0, 0, 1, 1, 1, false, false, false, false, true, true, true, true, true, true, false, true, true, true, gregapi.oredict.OreDictMaterial.MATERIAL_ARRAY); 
 		
 		// You may think that you don't want to add all the PrefixItems for all the Materials, since you only need certain ones yourself and don't want a clutter like the one GregTech itself causes.
 		// No Problem, you can add single Items too, if you just need those.
@@ -113,15 +113,15 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 		new gregapi.item.multiitem.MultiItemRandom(MOD_ID, "example.multiitem.resources") {@Override public void addItems() {
 		// Did you know that you can use a variable from outside this Block by just making it "final"? I didn't, but now I know more and use tExamplium, even though it wouldn't be accessible otherwise.
 		// And yes you can use all the 32766 possible Meta-IDs of this Item.
-		addItem(    0, "Tiny Pile of Examplium Dust"	, "", gregapi.data.OP.dustTiny	.dat(tExamplium));
-		addItem(    1, "Small Pile of Examplium Dust"	, "", gregapi.data.OP.dustSmall	.dat(tExamplium));
-		addItem(    2, "Examplium Dust"					, "", gregapi.data.OP.dust		.dat(tExamplium));
-		addItem(    3, "Examplium Nugget"				, "", gregapi.data.OP.nugget	.dat(tExamplium));
-		addItem(    4, "Examplium Chunk"				, "", gregapi.data.OP.chunkGt	.dat(tExamplium));
-		addItem(    5, "Examplium Ingot"				, "", gregapi.data.OP.ingot		.dat(tExamplium));
-		addItem(    6, "Examplium Plate"				, "", gregapi.data.OP.plate		.dat(tExamplium));
-		addItem(    7, "Examplium Rod"					, "", gregapi.data.OP.stick		.dat(tExamplium));
-		addItem(    8, "Examplium Ring"					, "", gregapi.data.OP.ring		.dat(tExamplium));
+		addItem(	0, "Tiny Pile of Examplium Dust"	, "", gregapi.data.OP.dustTiny	.dat(tExamplium));
+		addItem(	1, "Small Pile of Examplium Dust"	, "", gregapi.data.OP.dustSmall	.dat(tExamplium));
+		addItem(	2, "Examplium Dust"					, "", gregapi.data.OP.dust		.dat(tExamplium));
+		addItem(	3, "Examplium Nugget"				, "", gregapi.data.OP.nugget	.dat(tExamplium));
+		addItem(	4, "Examplium Chunk"				, "", gregapi.data.OP.chunkGt	.dat(tExamplium));
+		addItem(	5, "Examplium Ingot"				, "", gregapi.data.OP.ingot		.dat(tExamplium));
+		addItem(	6, "Examplium Plate"				, "", gregapi.data.OP.plate		.dat(tExamplium));
+		addItem(	7, "Examplium Rod"					, "", gregapi.data.OP.stick		.dat(tExamplium));
+		addItem(	8, "Examplium Ring"					, "", gregapi.data.OP.ring		.dat(tExamplium));
 		
 		// Here would be a right place to add Crafting Recipes or Machine Recipes using your new Items.
 		
@@ -159,7 +159,7 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 		// Makes an Examplium Chest out of your Example Material.
 		// Note: the Crafting Recipe only works in conjunction with GT since you don't have the Stick, Ring and Plate PrefixItems.
 		tExampleRegistry.add(tExamplium.getLocal() + " Chest", "Chests", 0, 0, gregapi.block.multitileentity.example.MultiTileEntityChest.class, 0, 16, tMetalBlock, gregapi.util.UT.NBT.make(null, gregapi.data.CS.NBT_MATERIAL, tExamplium, gregapi.data.CS.NBT_INV_SIZE, 54, gregapi.data.CS.NBT_TEXTURE, "metalchest", gregapi.data.CS.NBT_HARDNESS, 6.0F, gregapi.data.CS.NBT_RESISTANCE, 6.0F, gregapi.data.CS.NBT_COLOR, gregapi.util.UT.Code.getRGBInt(tExamplium.fRGBaSolid)), "sPw", "RSR", "PPP", 'P', gregapi.data.OP.plate.dat(tExamplium), 'R', gregapi.data.OP.ring.dat(tExamplium), 'S', gregapi.data.OP.stick.dat(tExamplium));
-        
+		
 		// Take the Machine Block from the Set, that you initialised above in @PreInit.
 		gregapi.block.multitileentity.MultiTileEntityBlock tMachineBlock = gregapi.block.multitileentity.MultiTileEntityBlock.getOrCreate(MOD_ID, "machine", gregapi.block.MaterialMachines.instance, net.minecraft.block.Block.soundTypeMetal, gregapi.data.CS.TOOL_wrench, 0, 0, 15, false, false);
 		// Makes a vanilla Furnace out of your Example Material.
@@ -173,9 +173,9 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 		// This Recipe will turn an Iron Ingot into an Examplium Ingot at 64 Units per Tick for 128 Ticks.
 		tRecipeMap.addRecipe1(true, 64, 128, gregapi.util.OM.ingot(gregapi.data.MT.Fe			), gregapi.util.OM.ingot(tExamplium));
 		// This Recipe will turn a Wrought Iron Ingot into an Examplium Ingot at 64 Units per Tick for 96 Ticks. So a slightly cheaper variant
-		tRecipeMap.addRecipe1(true, 64,  96, gregapi.util.OM.ingot(gregapi.data.MT.WroughtIron	), gregapi.util.OM.ingot(tExamplium));
+		tRecipeMap.addRecipe1(true, 64,	 96, gregapi.util.OM.ingot(gregapi.data.MT.WroughtIron	), gregapi.util.OM.ingot(tExamplium));
 		// This Recipe will turn a Steel Ingot into an Examplium Ingot at 64 Units per Tick for 64 Ticks. So a cheaper variant
-		tRecipeMap.addRecipe1(true, 64,  64, gregapi.util.OM.ingot(gregapi.data.MT.Steel		), gregapi.util.OM.ingot(tExamplium));
+		tRecipeMap.addRecipe1(true, 64,	 64, gregapi.util.OM.ingot(gregapi.data.MT.Steel		), gregapi.util.OM.ingot(tExamplium));
 		
 		// Makes an Examplium Furnace out of Iron.
 		// Note: the Crafting Recipe only works in conjunction with GT since you don't have all the PrefixItems.

@@ -80,7 +80,7 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.leaves.getBlockHardness(aWorld, aX, aY, aZ);}
 	@Override public float getExplosionResistance(int aMeta) {return Blocks.leaves.getExplosionResistance(null);}
 	@Override public boolean renderAsNormalBlock() {return F;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return F;}
@@ -99,13 +99,13 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 		if (!aWorld.isRemote && !WD.oxygen(aWorld, aX, aY, aZ)) {aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 201+RNGSUS.nextInt(100)); return;}
 	}
 	
-    @Override
+	@Override
 	@SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {
-        Block aBlock = aWorld.getBlock(aX, aY, aZ);
-        return !(aBlock.isOpaqueCube() || (Blocks.leaves.isOpaqueCube() && aBlock instanceof BlockBaseLeaves));
-    }
-    
+	public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {
+		Block aBlock = aWorld.getBlock(aX, aY, aZ);
+		return !(aBlock.isOpaqueCube() || (Blocks.leaves.isOpaqueCube() && aBlock instanceof BlockBaseLeaves));
+	}
+	
 	@Override
 	public void beginLeavesDecay(World aWorld, int aX, int aY, int aZ) {
 		if (aWorld.isRemote) return;

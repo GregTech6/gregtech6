@@ -48,7 +48,7 @@ public class Loader_Books implements Runnable {
 		  "This Manual will explain the Functionality of the Punch Cards, once they are fully implemented. And no, they won't be like the IRL Punch Cards. This is just a current Idea Collection."
 		, "(i1&&i2)?o1=15:o1=0;=10"
 		, "ignore all Whitespace Characters, use Long for saving the Numbers"
-		, "&& || ^^ & | ^ ! ++ -- + - % / // * ** << >> >>> < > <= >= == !=  ~ ( ) ?: , ; ;= ;=X; = i0 i1 i2 i3 i4 i5 o0 o1 o2 o3 o4 o5 v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 A B C D E F"
+		, "&& || ^^ & | ^ ! ++ -- + - % / // * ** << >> >>> < > <= >= == !=	 ~ ( ) ?: , ; ;= ;=X; = i0 i1 i2 i3 i4 i5 o0 o1 o2 o3 o4 o5 v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 A B C D E F"
 		, "'0' = false, 'everything but 0' = true, '!' turns '0' into '1' and everything else into '0'"
 		, "',' is just a separator for multiple executed Codes in a row."
 		, "';' means that the Program waits until the next tick before continuing. ';=10' and ';=10;' both mean that it will wait 10 Ticks instead of 1. And ';=0' or anything < 0 will default to 0."
@@ -429,7 +429,7 @@ public class Loader_Books implements Runnable {
 			for (IOreDictConfigurationComponent tComponents : tMat.mAlloyCreationRecipes) {
 				tPage="Alloy:\n"+tMat.getLocal()+"\n===================\nMelting: "+tMat.mMeltingPoint+" K\nBoiling: "+tMat.mBoilingPoint+" K\n===================\nComponents per "+tComponents.getCommonDivider() + "\n";
 				for (OreDictMaterialStack tMaterial : tComponents.getUndividedComponents()) tPage += (tMaterial.mAmount / U)+" "+tMaterial.mMaterial.getLocal()+"\n";
-			 	tBook.add(tPage);
+				tBook.add(tPage);
 			}
 		}
 		
@@ -441,7 +441,7 @@ public class Loader_Books implements Runnable {
 		
 		for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) {
 			if (tMat != null && !tMat.mHidden && tMat.contains(TD.Atomic.ELEMENT) && !tMat.contains(TD.Atomic.ANTIMATTER)) {
-			 	tBook.add(tMat.getLocal()+"\n"+tMat.mProtons+"/"+tMat.mNeutrons+"\n===================\nID: "+(tMat.mID<0?"NONE":tMat.mID)+"\nMelting: "+tMat.mMeltingPoint+" K\nBoiling: "+tMat.mBoilingPoint+" K\nPlasma: "+tMat.mPlasmaPoint+" K\n===================\nDensity:\n"+tMat.mGramPerCubicCentimeter+" g/cm3\n"+tMat.getWeight(U)+" kg/unit\n===================\n");
+				tBook.add(tMat.getLocal()+"\n"+tMat.mProtons+"/"+tMat.mNeutrons+"\n===================\nID: "+(tMat.mID<0?"NONE":tMat.mID)+"\nMelting: "+tMat.mMeltingPoint+" K\nBoiling: "+tMat.mBoilingPoint+" K\nPlasma: "+tMat.mPlasmaPoint+" K\n===================\nDensity:\n"+tMat.mGramPerCubicCentimeter+" g/cm3\n"+tMat.getWeight(U)+" kg/unit\n===================\n");
 			}
 		}
 		

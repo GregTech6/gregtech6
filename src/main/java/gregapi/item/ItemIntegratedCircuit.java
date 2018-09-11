@@ -53,31 +53,31 @@ public class ItemIntegratedCircuit extends ItemBase {
 		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC, "GhG", "SSS", "GwG", 'G', OP.gearGtSmall.dat(ANY.Iron), 'S', OP.stick.dat(ANY.Iron));
 		CR.shapeless(ST.make(this, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, W)});
 		
-		CR.shaped(ST.make(this, 1, 1), CR.DEF, "d  ", " P ", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 2), CR.DEF, " d ", " P ", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 3), CR.DEF, "  d", " P ", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 4), CR.DEF, "   ", " Pd", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 5), CR.DEF, "   ", " P ", "  d", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 1), CR.DEF, "d  ", " P ", "	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 2), CR.DEF, " d ", " P ", "	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 3), CR.DEF, "  d", " P ", "	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 4), CR.DEF, "   ", " Pd", "	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 5), CR.DEF, "   ", " P ", "	d", 'P', ST.make(this, 1, W));
 		CR.shaped(ST.make(this, 1, 6), CR.DEF, "   ", " P ", " d ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 7), CR.DEF, "   ", " P ", "d  ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1, 8), CR.DEF, "   ", "dP ", "   ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 7), CR.DEF, "   ", " P ", "d	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 8), CR.DEF, "   ", "dP ", "	 ", 'P', ST.make(this, 1, W));
 		
-		CR.shaped(ST.make(this, 1, 9), CR.DEF, "P d", "   ", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,10), CR.DEF, "P  ", "  d", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,11), CR.DEF, "P  ", "   ", "  d", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,12), CR.DEF, "P  ", "   ", " d ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,13), CR.DEF, "  P", "   ", "  d", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,14), CR.DEF, "  P", "   ", " d ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,15), CR.DEF, "  P", "   ", "d  ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,16), CR.DEF, "  P", "d  ", "   ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,17), CR.DEF, "   ", "   ", "d P", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,18), CR.DEF, "   ", "d  ", "  P", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,19), CR.DEF, "d  ", "   ", "  P", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,20), CR.DEF, " d ", "   ", "  P", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,21), CR.DEF, "d  ", "   ", "P  ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,22), CR.DEF, " d ", "   ", "P  ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,23), CR.DEF, "  d", "   ", "P  ", 'P', ST.make(this, 1, W));
-		CR.shaped(ST.make(this, 1,24), CR.DEF, "   ", "  d", "P  ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1, 9), CR.DEF, "P d", "	  ", "	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,10), CR.DEF, "P  ", "	 d", "	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,11), CR.DEF, "P  ", "	  ", "	d", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,12), CR.DEF, "P  ", "	  ", " d ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,13), CR.DEF, "  P", "	  ", "	d", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,14), CR.DEF, "  P", "	  ", " d ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,15), CR.DEF, "  P", "	  ", "d	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,16), CR.DEF, "  P", "d  ", "	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,17), CR.DEF, "   ", "	  ", "d P", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,18), CR.DEF, "   ", "d  ", "	P", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,19), CR.DEF, "d  ", "	  ", "	P", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,20), CR.DEF, " d ", "	  ", "	P", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,21), CR.DEF, "d  ", "	  ", "P	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,22), CR.DEF, " d ", "	  ", "P	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,23), CR.DEF, "  d", "	  ", "P	 ", 'P', ST.make(this, 1, W));
+		CR.shaped(ST.make(this, 1,24), CR.DEF, "   ", "	 d", "P	 ", 'P', ST.make(this, 1, W));
 		
 		for (byte i = 0; i < 16; i++) CoverRegistry.put(ST.make(this, 1, i), new CoverSelectorTag(i));
 	}

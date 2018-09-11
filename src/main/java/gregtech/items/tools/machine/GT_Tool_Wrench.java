@@ -51,7 +51,7 @@ public class GT_Tool_Wrench extends ToolStats {
 		return aEntity instanceof EntityIronGolem || mEffectiveList.contains(tName) || tName.contains("Golem") ? aOriginalDamage*2 : aOriginalDamage;
 	}
 	
-	@Override public int getToolDamagePerBlockBreak()										{return  50;}
+	@Override public int getToolDamagePerBlockBreak()										{return	 50;}
 	@Override public int getToolDamagePerContainerCraft()									{return 800;}
 	@Override public int getToolDamagePerEntityAttack()										{return 200;}
 	@Override public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity) {return aOriginalHurtResistance * 2;}

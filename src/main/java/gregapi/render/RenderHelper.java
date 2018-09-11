@@ -39,7 +39,7 @@ import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
 public class RenderHelper {
-	public static RenderItem   mRenderItem   = new RenderItem();
+	public static RenderItem   mRenderItem	 = new RenderItem();
 	public static RenderBlocks mRenderBlocks = new RenderBlocks();
 	
 	public static void renderItemIntoGUI(FontRenderer aFontRenderer, TextureManager aTextureManager, ItemStack aStack, int aX, int aY, boolean aEffect) {

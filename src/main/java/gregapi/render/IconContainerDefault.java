@@ -32,27 +32,27 @@ public class IconContainerDefault implements IIconContainer {
 	public final short[] mRGBa;
 	
 	public IconContainerDefault(IIcon aIcon, short[] aRGBa, ResourceLocation aTextureFile) {
-    	mIcon = aIcon; mRGBa = aRGBa; mTextureFile = aTextureFile;
+		mIcon = aIcon; mRGBa = aRGBa; mTextureFile = aTextureFile;
 	}
 	
 	public IconContainerDefault(IIcon aIcon, short[] aRGBa, boolean aIsBlockTexture) {
-    	mIcon = aIcon; mRGBa = aRGBa; mTextureFile = (aIsBlockTexture ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
+		mIcon = aIcon; mRGBa = aRGBa; mTextureFile = (aIsBlockTexture ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
 	}
 	
 	public IconContainerDefault(IIcon aIcon, short[] aRGBa) {
-    	mIcon = aIcon; mRGBa = aRGBa; mTextureFile = TextureMap.locationBlocksTexture;
+		mIcon = aIcon; mRGBa = aRGBa; mTextureFile = TextureMap.locationBlocksTexture;
 	}
 	
 	public IconContainerDefault(IIcon aIcon, ResourceLocation aTextureFile) {
-    	mIcon = aIcon; mRGBa = UNCOLOURED; mTextureFile = aTextureFile;
+		mIcon = aIcon; mRGBa = UNCOLOURED; mTextureFile = aTextureFile;
 	}
 	
 	public IconContainerDefault(IIcon aIcon, boolean aIsBlockTexture) {
-    	mIcon = aIcon; mRGBa = UNCOLOURED; mTextureFile = (aIsBlockTexture ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
+		mIcon = aIcon; mRGBa = UNCOLOURED; mTextureFile = (aIsBlockTexture ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
 	}
 	
 	public IconContainerDefault(IIcon aIcon) {
-    	mIcon = aIcon; mRGBa = UNCOLOURED; mTextureFile = TextureMap.locationBlocksTexture;
+		mIcon = aIcon; mRGBa = UNCOLOURED; mTextureFile = TextureMap.locationBlocksTexture;
 	}
 	
 	@Override

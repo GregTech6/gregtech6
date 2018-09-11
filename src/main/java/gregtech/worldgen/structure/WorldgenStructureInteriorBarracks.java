@@ -41,7 +41,7 @@ public class WorldgenStructureInteriorBarracks extends WorldgenStructure {
 		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) if ((tX <= 4 || tX >= 11) && (tZ <= 4 || tZ >= 11)) {
 			setBlock(aWorld, aChunkX+tX, aData.mOffsetY+1, aChunkZ+tZ, Blocks.carpet, aData.mColorInversed, 2);
 		}
-		for (int tY = 1; tY <=  6; tY++) {
+		for (int tY = 1; tY <=	6; tY++) {
 			for (int tX = 1; tX <= 14; tX++) if (tX <= 3 || tX >= 12) {
 				setRandomBricks(aWorld, aChunkX+tX, aData.mOffsetY+tY, aChunkZ+ 5, aData, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG], aRandom);
 				setRandomBricks(aWorld, aChunkX+tX, aData.mOffsetY+tY, aChunkZ+10, aData, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS], aRandom);

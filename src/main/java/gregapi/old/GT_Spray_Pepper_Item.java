@@ -55,16 +55,16 @@ public class GT_Spray_Pepper_Item extends GT_Tool_Item {
 	*/
 	
 	@Override
-    public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
+	public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
 		super.onItemUseFirst(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, hitX, hitY, hitZ);
 		if (aWorld.isRemote) {
-    		return false;
-    	}
-    	Block aBlock = aWorld.getBlock(aX, aY, aZ);
-    	if (aBlock == null) return false;
-//    	byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
-//    	TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-    	
-    	return false;
-    }
+			return false;
+		}
+		Block aBlock = aWorld.getBlock(aX, aY, aZ);
+		if (aBlock == null) return false;
+//		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+//		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+		
+		return false;
+	}
 }

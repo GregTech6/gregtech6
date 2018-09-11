@@ -126,7 +126,7 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 			case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 6], PX_N[12], PX_N[ 0], PX_N[ 6]); return T;
 			case SIDE_Y_POS: box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]); return T;
 			case SIDE_Y_NEG: box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]); return T;
-			default        : box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]); return T;
+			default		   : box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]); return T;
 			}
 		case 1:
 			box(aBlock, PX_P[ 4], PX_P[ 4], PX_P[ 4], PX_N[ 4], PX_N[ 8], PX_N[ 4]);
@@ -153,7 +153,7 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 		case SIDE_X_NEG: return box(PX_P[ 2], PX_P[ 0], PX_P[ 7], PX_N[12], PX_N[ 0], PX_N[ 7]);
 		case SIDE_Y_POS: return box(PX_P[ 7], PX_P[ 0], PX_P[ 7], PX_N[ 7], PX_N[ 0], PX_N[ 7]);
 		case SIDE_Y_NEG: return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]);
-		default        : return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]);
+		default		   : return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]);
 		}
 	}
 	
@@ -166,7 +166,7 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 		case SIDE_X_NEG: return box(PX_P[ 0], PX_P[ 0], PX_P[ 6], PX_N[12], PX_N[ 0], PX_N[ 6]);
 		case SIDE_Y_POS: return box(PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);
 		case SIDE_Y_NEG: return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]);
-		default        : return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]);
+		default		   : return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]);
 		}
 	}
 	
@@ -179,15 +179,15 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 		case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 6], PX_N[12], PX_N[ 0], PX_N[ 6]); return;
 		case SIDE_Y_POS: box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]); return;
 		case SIDE_Y_NEG: box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]); return;
-		default        : box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]); return;
+		default		   : box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[ 8], PX_N[ 2]); return;
 		}
 	}
 	
 	@Override public float getSurfaceSize			(byte aSide) {return 0;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 0;}
 	@Override public float getSurfaceDistance		(byte aSide) {return 0;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
 	@Override public boolean isSideSolid2			(byte aSide) {return F;}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	@Override public boolean attachCoversFirst		(byte aSide) {return F;}

@@ -95,13 +95,13 @@ public class Loader_Recipes_OpenModularTurrets implements Runnable {
 		
 		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
 		RM.Mixer.addRecipeX(T, 16, 512, new ItemStack[] {OP.dust.mat(tMat, 4), OP.dust.mat(MT.Redstone, 4), OP.dust		.mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
-		RM.Mixer.addRecipeX(T, 16, 128, new ItemStack[] {OP.dust.mat(tMat, 1), OP.dust.mat(MT.Redstone, 1), OP.dustSmall.mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable",  8, 0));
+		RM.Mixer.addRecipeX(T, 16, 128, new ItemStack[] {OP.dust.mat(tMat, 1), OP.dust.mat(MT.Redstone, 1), OP.dustSmall.mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable",	 8, 0));
 		}
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("itemClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer.addRecipeX(T, 16, 512, new ItemStack[] {ST.amount(4, aEvent.mStack), OP.dust.mat(MT.Redstone, 4), OP.dust		.mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
-			RM.Mixer.addRecipeX(T, 16, 128, new ItemStack[] {aEvent.mStack				, OP.dust.mat(MT.Redstone, 1), OP.dustSmall	.mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable",  8, 0));
+			RM.Mixer.addRecipeX(T, 16, 128, new ItemStack[] {aEvent.mStack				, OP.dust.mat(MT.Redstone, 1), OP.dustSmall	.mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable",	 8, 0));
 		}});
 		addListener("blockClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer.addRecipeX(T, 16, 512, new ItemStack[] {aEvent.mStack				, OP.dust.mat(MT.Redstone, 4), OP.dust		.mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable", 32, 0));

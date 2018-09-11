@@ -66,10 +66,10 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 	
 	@Override
 	public void onPostLoad(FMLPostInitializationEvent aEvent) {
-    	for (Object tOre : BlocksGT.stoneToSmallOres .values()) valuable((Block)tOre, 2);
-    	for (Object tOre : BlocksGT.stoneToNormalOres.values()) valuable((Block)tOre, 3);
-    	for (Object tOre : BlocksGT.stoneToBrokenOres.values()) valuable((Block)tOre, 3);
-    	
+		for (Object tOre : BlocksGT.stoneToSmallOres .values()) valuable((Block)tOre, 2);
+		for (Object tOre : BlocksGT.stoneToNormalOres.values()) valuable((Block)tOre, 3);
+		for (Object tOre : BlocksGT.stoneToBrokenOres.values()) valuable((Block)tOre, 3);
+		
 		if (mToBlacklist != null) {
 			for (ItemStackContainer tStack : mToBlacklist) ic2.api.recipe.Recipes.recyclerBlacklist.add((IRecipeInput)makeInput(tStack.toStack()));
 			mToBlacklist.clear();
@@ -114,11 +114,11 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 	}
 	
 	@Override
-    public ItemStack recycler(ItemStack aInput, int aScrapChance) {
-    	if (aInput == null || aScrapChance != 0 || ic2.api.recipe.Recipes.recyclerBlacklist.contains(aInput)) return null;
+	public ItemStack recycler(ItemStack aInput, int aScrapChance) {
+		if (aInput == null || aScrapChance != 0 || ic2.api.recipe.Recipes.recyclerBlacklist.contains(aInput)) return null;
 		return ic2.api.recipe.Recipes.recyclerWhitelist.isEmpty() || ic2.api.recipe.Recipes.recyclerWhitelist.contains(aInput)?IL.IC2_Scrap.get(1):null;
-    }
-    
+	}
+	
 	@Override
 	public ItemStack scrapbox(ItemStack aBox) {
 		return ic2.api.recipe.Recipes.scrapboxDrops.getDrop(aBox, F);

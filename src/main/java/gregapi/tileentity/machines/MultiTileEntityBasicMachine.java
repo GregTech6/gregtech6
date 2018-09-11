@@ -99,7 +99,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, IFluidHandler {
 	public boolean mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
 	public byte mEnergyInputs = 0, mOutputBlocked = 0, mMode = 0;
-	public byte mItemInputs  = 0, mItemOutputs  = 0, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
+	public byte mItemInputs	 = 0, mItemOutputs	= 0, mItemAutoInput	 = SIDE_UNDEFINED, mItemAutoOutput	= SIDE_UNDEFINED;
 	public byte mFluidInputs = 0, mFluidOutputs = 0, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
 	public int mParallel = 1;
@@ -208,7 +208,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					mTexturesMaterial = tCanonicalTileEntity.mTexturesMaterial;
 					mTexturesInactive = tCanonicalTileEntity.mTexturesInactive;
 					mTexturesRunning  = tCanonicalTileEntity.mTexturesRunning;
-					mTexturesActive   = tCanonicalTileEntity.mTexturesActive;
+					mTexturesActive	  = tCanonicalTileEntity.mTexturesActive;
 				} else {
 					mTexturesMaterial = mTexturesInactive = mTexturesRunning = mTexturesActive = L6_IICONCONTAINER;
 				}
@@ -425,7 +425,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
 		super.onTickResetChecks(aTimer, aIsServerSide);
 		oRunning = mRunning;
-		oActive  = mActive;
+		oActive	 = mActive;
 	}
 	
 	@Override

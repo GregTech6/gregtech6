@@ -127,7 +127,7 @@ public class Behavior_Spray_Foam extends AbstractBehaviorDefault {
 		} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 		
 		
-		if (IL.IC2_Scaffold	    .equal(aBlock)) return aUses >= 10 && MultiTileEntityCFoam.setBlock(aWorld, aX, aY, aZ, aDelegator.mSideOfTileEntity, aPlayer, aStack, DYES[mColor], mOwned) ? 10 : 0;
+		if (IL.IC2_Scaffold		.equal(aBlock)) return aUses >= 10 && MultiTileEntityCFoam.setBlock(aWorld, aX, aY, aZ, aDelegator.mSideOfTileEntity, aPlayer, aStack, DYES[mColor], mOwned) ? 10 : 0;
 		if (IL.IC2_Scaffold_Iron.equal(aBlock)) return aUses >= 10 && aWorld.setBlock(aX, aY, aZ, IL.IC2_Foam_Reinforced.block(), 0, 3) ? 10 : 0;
 		
 		aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];

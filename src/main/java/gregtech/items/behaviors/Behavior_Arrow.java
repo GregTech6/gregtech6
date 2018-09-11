@@ -42,7 +42,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class Behavior_Arrow extends AbstractBehaviorDefault {
-	public static Behavior_Arrow DEFAULT_WOODEN  = new Behavior_Arrow(EntityArrow_Material.class, 1.00F, 6.0F);
+	public static Behavior_Arrow DEFAULT_WOODEN	 = new Behavior_Arrow(EntityArrow_Material.class, 1.00F, 6.0F);
 	public static Behavior_Arrow DEFAULT_PLASTIC = new Behavior_Arrow(EntityArrow_Material.class, 1.50F, 6.0F);
 	
 	private final int mLevel;

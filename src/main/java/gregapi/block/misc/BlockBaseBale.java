@@ -42,7 +42,7 @@ public abstract class BlockBaseBale extends BlockBaseMeta {
 		
 	}
 	
-    @Override public String getHarvestTool(int aMeta) {return TOOL_sword;}
+	@Override public String getHarvestTool(int aMeta) {return TOOL_sword;}
 	@Override public int damageDropped(int aMeta) {return aMeta & PILLAR_DATA;}
 	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ) & PILLAR_DATA;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.hay_block.getBlockHardness(aWorld, aX, aY, aZ);}

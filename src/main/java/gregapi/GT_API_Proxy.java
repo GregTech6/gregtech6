@@ -225,9 +225,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent public void onWorldLoad(WorldEvent.Load aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	
-	public  static final List<ITileEntityServerTickPre	> SERVER_TICK_PRE					= new ArrayListNoNulls<>(), SERVER_TICK_PR2 = new ArrayListNoNulls<>();
-	public  static final List<ITileEntityServerTickPost	> SERVER_TICK_POST					= new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
-	public  static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES		= new ArrayListNoNulls<>();
+	public	static final List<ITileEntityServerTickPre	> SERVER_TICK_PRE					= new ArrayListNoNulls<>(), SERVER_TICK_PR2 = new ArrayListNoNulls<>();
+	public	static final List<ITileEntityServerTickPost	> SERVER_TICK_POST					= new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
+	public	static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES		= new ArrayListNoNulls<>();
 	private static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES_2	= new ArrayListNoNulls<>();
 	
 	@SubscribeEvent
@@ -235,92 +235,92 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (aEvent.side.isServer()) {
 			if (aEvent.phase == Phase.START) {
 				if (SERVER_TIME++ == 0) {
-			    	OUT.println("GT_API: Unificating outputs of all known Recipe Types.");
-			    	HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
-			    	
-			    	if (MD.IC2.mLoaded) try {
-			    	OUT.println("GT_API: IC2 Machines");
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.cannerBottle				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.centrifuge				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.compressor				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.extractor					.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.macerator					.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerCutting		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerExtruding		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerRolling		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.matterAmplifier			.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.oreWashing				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-			    	} catch(Throwable e) {/**/}
-			    	
-			    	OUT.println("GT_API: Dungeon Loot");
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST			).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST				).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER	).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-			    	OUT.println("GT_API: Smelting");
-			    	for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
-			    	OUT.println("GT_API: Crafting Recipes");
-			        for (Object tRecipe : CraftingManager.getInstance().getRecipeList()) if (tRecipe instanceof IRecipe) tStacks.add(((IRecipe)tRecipe).getRecipeOutput());
-				    
-				    for (ItemStack tOutput : tStacks) {
-				    	if (OreDictManager.INSTANCE.isOreDictItem(tOutput)) {
-				    		FMLLog.severe("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
-				    		if (CS.CODE_CLIENT) {
-					    		FMLLog.severe("A Recipe used an OreDict Item as Output directly, without copying it before!!! This is a typical CallByReference/CallByValue Error");
-					    		FMLLog.severe("Said Item will be renamed to make the invalid Recipe visible, so that you can report it properly.");
-					    		FMLLog.severe("Please check all Recipes outputting this Item, and report the Recipes to their Owner.");
-					    		FMLLog.severe("The Owner of the ==>RECIPE<==, NOT the Owner of the Item, which has been mentioned above!!!");
-					    		FMLLog.severe("And ONLY Recipes which are ==>OUTPUTTING<== the Item, sorry but I don't want failed Bug Reports.");
-					    		FMLLog.severe("GregTech just reports this Error to you, so you can report it to the Mod causing the Problem.");
-					    		FMLLog.severe("Even though I make that Bug visible, I can not and will not fix that for you, that's for the causing Mod to fix.");
-					    		FMLLog.severe("And speaking of failed Reports:");
-					    		FMLLog.severe("Both IC2 and GregTech CANNOT be the CAUSE of this Problem, so don't report it to either of them.");
-					    		FMLLog.severe("I REPEAT, BOTH, IC2 and GregTech CANNOT be the source of THIS BUG. NO MATTER WHAT.");
-					    		FMLLog.severe("Asking in the IC2 Forums, which Mod is causing that, won't help anyone, since it is not possible to determine, which Mod it is.");
-					    		FMLLog.severe("If it would be possible, then I would have had added the Mod which is causing it to the Message already. But it is not possible.");
-					    		FMLLog.severe("Sorry, but this Error is serious enough to justify this Wall-O-Text and the partially allcapsed Language.");
-					    		FMLLog.severe("Also it is a Ban Reason on the IC2-Forums to seriously post this Text. We all know about its existence.");
-					    		
-					    		tOutput.setStackDisplayName("ERROR!");
-					    		UT.NBT.setBoolean(UT.NBT.getNBT(tOutput), "gt.err.oredict.output", T);
-				    		}
-				    	} else {
-					    	OM.set(tOutput);
-				    	}
-				    }
-				    
-			        OUT.println("GT_API: Cleaning up all OreDict Crafting Recipes, which have an empty List in them, since they are never meeting any Condition.");
+					OUT.println("GT_API: Unificating outputs of all known Recipe Types.");
+					HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
+					
+					if (MD.IC2.mLoaded) try {
+					OUT.println("GT_API: IC2 Machines");
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.cannerBottle				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.centrifuge				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.compressor				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.extractor					.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.macerator					.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerCutting		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerExtruding		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerRolling		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.matterAmplifier			.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.oreWashing				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					} catch(Throwable e) {/**/}
+					
+					OUT.println("GT_API: Dungeon Loot");
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST			).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST				).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER	).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					OUT.println("GT_API: Smelting");
+					for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
+					OUT.println("GT_API: Crafting Recipes");
+					for (Object tRecipe : CraftingManager.getInstance().getRecipeList()) if (tRecipe instanceof IRecipe) tStacks.add(((IRecipe)tRecipe).getRecipeOutput());
+					
+					for (ItemStack tOutput : tStacks) {
+						if (OreDictManager.INSTANCE.isOreDictItem(tOutput)) {
+							FMLLog.severe("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
+							if (CS.CODE_CLIENT) {
+								FMLLog.severe("A Recipe used an OreDict Item as Output directly, without copying it before!!! This is a typical CallByReference/CallByValue Error");
+								FMLLog.severe("Said Item will be renamed to make the invalid Recipe visible, so that you can report it properly.");
+								FMLLog.severe("Please check all Recipes outputting this Item, and report the Recipes to their Owner.");
+								FMLLog.severe("The Owner of the ==>RECIPE<==, NOT the Owner of the Item, which has been mentioned above!!!");
+								FMLLog.severe("And ONLY Recipes which are ==>OUTPUTTING<== the Item, sorry but I don't want failed Bug Reports.");
+								FMLLog.severe("GregTech just reports this Error to you, so you can report it to the Mod causing the Problem.");
+								FMLLog.severe("Even though I make that Bug visible, I can not and will not fix that for you, that's for the causing Mod to fix.");
+								FMLLog.severe("And speaking of failed Reports:");
+								FMLLog.severe("Both IC2 and GregTech CANNOT be the CAUSE of this Problem, so don't report it to either of them.");
+								FMLLog.severe("I REPEAT, BOTH, IC2 and GregTech CANNOT be the source of THIS BUG. NO MATTER WHAT.");
+								FMLLog.severe("Asking in the IC2 Forums, which Mod is causing that, won't help anyone, since it is not possible to determine, which Mod it is.");
+								FMLLog.severe("If it would be possible, then I would have had added the Mod which is causing it to the Message already. But it is not possible.");
+								FMLLog.severe("Sorry, but this Error is serious enough to justify this Wall-O-Text and the partially allcapsed Language.");
+								FMLLog.severe("Also it is a Ban Reason on the IC2-Forums to seriously post this Text. We all know about its existence.");
+								
+								tOutput.setStackDisplayName("ERROR!");
+								UT.NBT.setBoolean(UT.NBT.getNBT(tOutput), "gt.err.oredict.output", T);
+							}
+						} else {
+							OM.set(tOutput);
+						}
+					}
+					
+					OUT.println("GT_API: Cleaning up all OreDict Crafting Recipes, which have an empty List in them, since they are never meeting any Condition.");
 					@SuppressWarnings("unchecked")
 					List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
-			        for (int i = 0; i < tList.size(); i++) {
-			        	Object tRecipe = tList.get(i);
-			        	if (tRecipe instanceof ShapedOreRecipe) {
-			        		Object[] tInput = ((ShapedOreRecipe)tRecipe).getInput();
-			        		for (int j = 0; j < tInput.length; j++) {
-			        			if (tInput[j] instanceof List && ((List<?>)tInput[j]).isEmpty()) {
-//			        				DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
-			        				tList.remove(i--);
-			        				break;
-			        			}
-			        		}
-			        	} else if (tRecipe instanceof ShapelessOreRecipe) {
-			        		ArrayList<Object> tInput = ((ShapelessOreRecipe)tRecipe).getInput();
-			        		for (int j = 0; j < tInput.size(); j++) {
-			        			if (tInput.get(j) instanceof List && ((List<?>)tInput.get(j)).isEmpty()) {
-//			        				DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
-			        				tList.remove(i--);
-			        				break;
-			        			}
-			        		}
-			        	}
-			        }
-			        
+					for (int i = 0; i < tList.size(); i++) {
+						Object tRecipe = tList.get(i);
+						if (tRecipe instanceof ShapedOreRecipe) {
+							Object[] tInput = ((ShapedOreRecipe)tRecipe).getInput();
+							for (int j = 0; j < tInput.length; j++) {
+								if (tInput[j] instanceof List && ((List<?>)tInput[j]).isEmpty()) {
+//									DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
+									tList.remove(i--);
+									break;
+								}
+							}
+						} else if (tRecipe instanceof ShapelessOreRecipe) {
+							ArrayList<Object> tInput = ((ShapelessOreRecipe)tRecipe).getInput();
+							for (int j = 0; j < tInput.size(); j++) {
+								if (tInput.get(j) instanceof List && ((List<?>)tInput.get(j)).isEmpty()) {
+//									DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
+									tList.remove(i--);
+									break;
+								}
+							}
+						}
+					}
+					
 					OreDictManager.INSTANCE.fixStacksizes();
 				}
 				
@@ -437,13 +437,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 					}
 				} else if (aEntity instanceof EntityLivingBase) {
-				   	if (ENTITY_CRAMMING > 0 && SERVER_TIME % 50 == 0 && !(aEntity instanceof EntityPlayer) && ((EntityLivingBase)aEntity).canBePushed() && ((EntityLivingBase)aEntity).getHealth() > 0) {
-			 			List<?> tList = aEntity.worldObj.getEntitiesWithinAABBExcludingEntity(aEntity, aEntity.boundingBox.expand(0.2, 0.0, 0.2));
-			 			Class<? extends Entity> tClass = aEntity.getClass();
-			 			int aEntityCount = 1;
-			 			if (tList != null) for (int j = 0; j < tList.size(); j++) if (tList.get(j) != null && tList.get(j).getClass() == tClass) aEntityCount++;
-			 			if (aEntityCount > ENTITY_CRAMMING) aEntity.attackEntityFrom(DamageSource.inWall, aEntityCount - ENTITY_CRAMMING);
-				 	}
+					if (ENTITY_CRAMMING > 0 && SERVER_TIME % 50 == 0 && !(aEntity instanceof EntityPlayer) && ((EntityLivingBase)aEntity).canBePushed() && ((EntityLivingBase)aEntity).getHealth() > 0) {
+						List<?> tList = aEntity.worldObj.getEntitiesWithinAABBExcludingEntity(aEntity, aEntity.boundingBox.expand(0.2, 0.0, 0.2));
+						Class<? extends Entity> tClass = aEntity.getClass();
+						int aEntityCount = 1;
+						if (tList != null) for (int j = 0; j < tList.size(); j++) if (tList.get(j) != null && tList.get(j).getClass() == tClass) aEntityCount++;
+						if (aEntityCount > ENTITY_CRAMMING) aEntity.attackEntityFrom(DamageSource.inWall, aEntityCount - ENTITY_CRAMMING);
+					}
 				}
 			}
 			
@@ -452,9 +452,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				if (aOrb.xpValue <= 0) {aOrb.xpValue = 0; aOrb.setDead(); continue;}
 				for (EntityXPOrb tOrb : tOrbs) if (aOrb != tOrb && !tOrb.isDead && tOrb.xpValue > 0 && tOrb.xpValue < Short.MAX_VALUE && aOrb.getDistanceSqToEntity(tOrb) <= 3) {
 					aOrb.xpOrbAge = Math.min(aOrb.xpOrbAge, tOrb.xpOrbAge);
-					if (aOrb.xpValue +  tOrb.xpValue > Short.MAX_VALUE) {
+					if (aOrb.xpValue +	tOrb.xpValue > Short.MAX_VALUE) {
 						tOrb.xpValue -= (Short.MAX_VALUE - aOrb.xpValue);
-						aOrb.xpValue  =  Short.MAX_VALUE;
+						aOrb.xpValue  =	 Short.MAX_VALUE;
 						break;
 					}
 					aOrb.xpValue += tOrb.xpValue;
@@ -501,7 +501,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							UT.Entities.chat(aEvent.player, "We know you could have chosen any other Kit.");
 							UT.Entities.chat(aEvent.player, "And are proud that you chose ours as the best.");
 							ST.drop(aEvent.player, ST.make(Items.flint, 12, 0));
-							ST.drop(aEvent.player, ST.make(Items.stick,  8, 0));
+							ST.drop(aEvent.player, ST.make(Items.stick,	 8, 0));
 							ST.drop(aEvent.player, IL.Grass_Dry.get(8));
 							ST.drop(aEvent.player, IL.Bottle_Purple_Drink.get(6));
 							switch (RNGSUS.nextInt(4)) {
@@ -570,31 +570,31 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 									case 3:	UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bean, your Inventory starts to get full.")); break;
 									}
 								} else if ("Bear989jr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-				  					UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, UT.NBT.addEnchantment(ST.make(Items.cookie, 1, 0, "Jr. Cookie"), Enchantment_WerewolfDamage.INSTANCE, 1), F);
-					  				UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Have a Jr. Cookie. Please tell Fatass to clean his Inventory, or kill him with it."));
-					  			} else if ("andyafw92".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-					  				UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bean989Sr's Inventory is nasty again, would you please remind him to clean it?"));
-					  			} else if ("CrazyJ1984".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-					  				ItemStack tArrow = ST.update(OP.arrowGtWood.mat(MT.Craponite, 1), aEvent.player);
-					  				if (ST.valid(tArrow)) {
-					  					UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, tArrow, F);
-					  					UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " I'm not trying to tell you what to do, but please don't hurt Bear with this."));
-					  				} else {
-					  					UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " I'm not trying to tell you what to do, but please don't hurt Bear."));
-					  				}
-					  			} else if ("GregoriusT".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-				  					UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, ST.update(OP.arrowGtWood.mat(MT.Tc, 1), aEvent.player), F);
-				  					UT.Entities.chat(tPlayer, new ChatComponentText(LH.Chat.BOLD + "You have received an Arrow"));
-						  		} else if ("Ilirith".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-					  				UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Could you tell Bean989Sr very gently, that his Inventory is a fucking mess again?"));
-					  			} else if ("Shadowkn1ght18".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-				  					UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Here is your special Message to make you tell Bean989Sr to clean his Inventory."));
-				  				} else {
-					  				UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " There is this fella called Bean989Sr, his Inventory being a mess. Would you please remind him to clean it?"));
-					  			}
+									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, UT.NBT.addEnchantment(ST.make(Items.cookie, 1, 0, "Jr. Cookie"), Enchantment_WerewolfDamage.INSTANCE, 1), F);
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Have a Jr. Cookie. Please tell Fatass to clean his Inventory, or kill him with it."));
+								} else if ("andyafw92".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bean989Sr's Inventory is nasty again, would you please remind him to clean it?"));
+								} else if ("CrazyJ1984".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
+									ItemStack tArrow = ST.update(OP.arrowGtWood.mat(MT.Craponite, 1), aEvent.player);
+									if (ST.valid(tArrow)) {
+										UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, tArrow, F);
+										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " I'm not trying to tell you what to do, but please don't hurt Bear with this."));
+									} else {
+										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " I'm not trying to tell you what to do, but please don't hurt Bear."));
+									}
+								} else if ("GregoriusT".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
+									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, ST.update(OP.arrowGtWood.mat(MT.Tc, 1), aEvent.player), F);
+									UT.Entities.chat(tPlayer, new ChatComponentText(LH.Chat.BOLD + "You have received an Arrow"));
+								} else if ("Ilirith".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Could you tell Bean989Sr very gently, that his Inventory is a fucking mess again?"));
+								} else if ("Shadowkn1ght18".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Here is your special Message to make you tell Bean989Sr to clean his Inventory."));
+								} else {
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " There is this fella called Bean989Sr, his Inventory being a mess. Would you please remind him to clean it?"));
+								}
 							}
 						}
-			  		}
+					}
 					
 					for (int i = 0; i < 4; i++) if ((tStack = aEvent.player.inventory.armorInventory[i]) != null) {
 						if (!UT.Entities.isInvincible(aEvent.player)) {
@@ -961,9 +961,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public void onCheckSpawnEvent(LivingSpawnEvent.CheckSpawn aEvent) {
 		if (aEvent.getResult() == Result.DENY || aEvent.world.provider.dimensionId != 0 || aEvent.y <= 50) return;
 		if (GENERATE_BIOMES) {
-			if (UT.Code.inside(-96,  95, (int)aEvent.x) && UT.Code.inside(-96,  95, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
+			if (UT.Code.inside(-96,	 95, (int)aEvent.x) && UT.Code.inside(-96,	95, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
 		} else if (GENERATE_NEXUS) {
-			if (UT.Code.inside(  0,  48, (int)aEvent.x) && UT.Code.inside(-64, -16, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
+			if (UT.Code.inside(	 0,	 48, (int)aEvent.x) && UT.Code.inside(-64, -16, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
 		}
 		if (GENERATE_STREETS && (UT.Code.inside(-48, 48, (int)aEvent.x) || UT.Code.inside(-48, 48, (int)aEvent.z))) {aEvent.setResult(Result.DENY); return;}
 		if (SPAWN_ZONE_MOB_PROTECTION && UT.Code.inside(-144, 144, ((int)aEvent.x)-aEvent.world.getWorldInfo().getSpawnX()) && UT.Code.inside(-144, 144, ((int)aEvent.z)-aEvent.world.getWorldInfo().getSpawnZ()) && WD.opq(aEvent.world, (int)aEvent.x, 0, (int)aEvent.z, F, F)) {aEvent.setResult(Result.DENY); return;}

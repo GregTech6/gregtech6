@@ -61,19 +61,19 @@ import net.minecraftforge.fluids.FluidStack;
 public class Loader_Recipes_Handlers implements Runnable {
 	@Override
 	public void run() {OUT.println("GT_Mod: Doing Recipe Map Handlers.");
-		RM.Sifting		.add(new RecipeMapHandlerPrefix(pebbles							, 1, null, 0, NF,  16, 0,   512, NF, dust				, 3, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Sifting		.add(new RecipeMapHandlerPrefix(pebbles							, 1, null, 0, NF,  16, 0,	512, NF, dust				, 3, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(rockGt							, 1, null, 0, NF,  16, 0,    16, NF, dustSmall			, 1, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(rawOreChunk						, 1, null, 0, NF,  16, 0,    64, NF, crushedTiny		, 3, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(chunk							, 1, null, 0, NF,  16, 0,   128, NF, rubble				, 1, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(rubble							, 1, null, 0, NF,  16, 0,   128, NF, pebbles			, 1, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(rockGt							, 1, null, 0, NF,  16, 0,	 16, NF, dustSmall			, 1, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(rawOreChunk						, 1, null, 0, NF,  16, 0,	 64, NF, crushedTiny		, 3, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(chunk							, 1, null, 0, NF,  16, 0,	128, NF, rubble				, 1, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(rubble							, 1, null, 0, NF,  16, 0,	128, NF, pebbles			, 1, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemLegendary					, 1, null, 0, NF,  16, 0,   256, NF, gemExquisite		, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemExquisite					, 1, null, 0, NF,  16, 0,   256, NF, gemFlawless		, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemFlawless						, 1, null, 0, NF,  16, 0,   256, NF, gem				, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(gem								, 1, null, 0, NF,  16, 0,   256, NF, gemFlawed			, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemFlawed						, 1, null, 0, NF,  16, 0,   256, NF, gemChipped			, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemChipped						, 1, null, 0, NF,  16, 0,   256, NF, null				, 0, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemLegendary					, 1, null, 0, NF,  16, 0,	256, NF, gemExquisite		, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemExquisite					, 1, null, 0, NF,  16, 0,	256, NF, gemFlawless		, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemFlawless						, 1, null, 0, NF,  16, 0,	256, NF, gem				, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(gem								, 1, null, 0, NF,  16, 0,	256, NF, gemFlawed			, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemFlawed						, 1, null, 0, NF,  16, 0,	256, NF, gemChipped			, 2, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Crusher		.add(new RecipeMapHandlerPrefix(gemChipped						, 1, null, 0, NF,  16, 0,	256, NF, null				, 0, null		, 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		
 		if (!MD.QT.mLoaded) {
 		gemExquisite	.addListener(new OreProcessing_CraftFrom( 2, null, new String[][] {{"h" ,  "X"}}, gemLegendary	, null, null, null, null, ANTIMATTER.NOT));
@@ -84,50 +84,50 @@ public class Loader_Recipes_Handlers implements Runnable {
 		dustSmall		.addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"h" ,  "X"}}, gemChipped	, null, null, null, null, ANTIMATTER.NOT));
 		}
 		
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(rockGt							, 1, null, 0, NF,  16, 0,    16, NF, dustSmall			, 1, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(crushedPurified					, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(crushedPurifiedTiny				, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(crushedCentrifuged				, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny			, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(cleanGravel						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(dirtyGravel						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(crystalline						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(crystal							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(reduced							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(clump							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(scrapGt							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(chunkGt							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(nugget							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(plateTiny						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(plateGemTiny					, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(round							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(screw							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(bolt							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(wireFine						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(toolHeadArrow					, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(toolHeadRawArrow				, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemChipped						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR)));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemFlawed						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gemChipped.NOT))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(gem								, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gemFlawed.NOT))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemFlawless						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gem.NOT))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemExquisite					, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gemFlawless.NOT))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemLegendary					, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gemExquisite.NOT))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(stick							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(stickLong						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(ingot							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(plate							, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
-		RM.Mortar		.add(new RecipeMapHandlerPrefix(plateGem						, 1, null, 0, NF,  16, 0,    16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(rockGt							, 1, null, 0, NF,  16, 0,	 16, NF, dustSmall			, 1, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(crushedPurified					, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(crushedPurifiedTiny				, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(crushedCentrifuged				, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny			, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(cleanGravel						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(dirtyGravel						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(crystalline						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(crystal							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(reduced							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(clump							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(scrapGt							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(chunkGt							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(nugget							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(plateTiny						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(plateGemTiny					, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(round							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(screw							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(bolt							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(wireFine						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(toolHeadArrow					, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(toolHeadRawArrow				, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemChipped						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemFlawed						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gemChipped.NOT))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(gem								, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gemFlawed.NOT))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemFlawless						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gem.NOT))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemExquisite					, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gemFlawless.NOT))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(gemLegendary					, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, gemExquisite.NOT))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(stick							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(stickLong						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(ingot							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, T, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(plate							, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
+		RM.Mortar		.add(new RecipeMapHandlerPrefix(plateGem						, 1, null, 0, NF,  16, 0,	 16, NF, null				, 0, null		, 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
 		
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(chunk							, 1, null, 0, NF,  16, 0,   256, NF, dust				, 2, dustTiny	, 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(rubble							, 1, null, 0, NF,  16, 0,   256, NF, dust				, 2, dustTiny	, 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(pebbles							, 1, null, 0, NF,  16, 0,   256, NF, dust				, 2, dustTiny	, 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(cluster							, 1, null, 0, NF,  16, 0,   256, NF, dust				, 2, dustTiny	, 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushed							, 1, null, 0, NF,  16, 0,   256, NF, dust				, 1, dustDiv72	, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedPurified					, 1, null, 0, NF,  16, 0,   256, NF, dust				, 1, dustDiv72	,18, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedCentrifuged				, 1, null, 0, NF,  16, 0,   256, NF, dust				, 1, dustDiv72	,27, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedTiny						, 1, null, 0, NF,  16, 0,   256, NF, dustDiv72			, 9, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedPurifiedTiny				, 1, null, 0, NF,  16, 0,   256, NF, dustDiv72			,10, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny			, 1, null, 0, NF,  16, 0,   256, NF, dustDiv72			,11, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(chunk							, 1, null, 0, NF,  16, 0,	256, NF, dust				, 2, dustTiny	, 1, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(rubble							, 1, null, 0, NF,  16, 0,	256, NF, dust				, 2, dustTiny	, 1, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(pebbles							, 1, null, 0, NF,  16, 0,	256, NF, dust				, 2, dustTiny	, 1, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(cluster							, 1, null, 0, NF,  16, 0,	256, NF, dust				, 2, dustTiny	, 1, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushed							, 1, null, 0, NF,  16, 0,	256, NF, dust				, 1, dustDiv72	, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedPurified					, 1, null, 0, NF,  16, 0,	256, NF, dust				, 1, dustDiv72	,18, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedCentrifuged				, 1, null, 0, NF,  16, 0,	256, NF, dust				, 1, dustDiv72	,27, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedTiny						, 1, null, 0, NF,  16, 0,	256, NF, dustDiv72			, 9, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedPurifiedTiny				, 1, null, 0, NF,  16, 0,	256, NF, dustDiv72			,10, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder		.add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny			, 1, null, 0, NF,  16, 0,	256, NF, dustDiv72			,11, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		
 		RM.Compressor	.add(new RecipeMapHandlerPrefix(dust							, 1, NF,  16, 0,   256, NF, plateGem		, 1, NI, NI, T, F, F, new Nor(gemLegendary, gemExquisite, gemFlawless, bouleGt, MT.Ice, ANTIMATTER, LAYERED, COATED)));
 		RM.Compressor	.add(new RecipeMapHandlerPrefix(compressed						, 9, NF,  16, 0,   256, NF, plateDense		, 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT)));
@@ -137,11 +137,11 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Compressor	.add(new RecipeMapHandlerPrefix(blockSolid						, 1, NF,  16, 0,   256, NF, plateDense		, 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT)));
 		RM.Compressor	.add(new RecipeMapHandlerPrefix(ingot							, 1, NF,  16, 0,   256, NF, compressed		, 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT)));
 		
-		RM.Press		.add(new RecipeMapHandlerPrefix(toolHeadArrow					, 1, NF,  16,16,      0, NF, arrowGtWood	, 1, OP.arrowGtWood		.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press		.add(new RecipeMapHandlerPrefix(toolHeadArrow					, 1, NF,  16,16,      0, NF, arrowGtPlastic	, 1, OP.arrowGtPlastic	.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press		.add(new RecipeMapHandlerPrefix(round							, 1, NF,  16,16,      0, NF, bulletGtSmall	, 1, OP.bulletGtSmall	.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press		.add(new RecipeMapHandlerPrefix(round							, 2, NF,  16,32,      0, NF, bulletGtMedium	, 1, OP.bulletGtMedium	.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press		.add(new RecipeMapHandlerPrefix(round							, 3, NF,  16,64,      0, NF, bulletGtLarge	, 1, OP.bulletGtLarge	.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press		.add(new RecipeMapHandlerPrefix(toolHeadArrow					, 1, NF,  16,16,	  0, NF, arrowGtWood	, 1, OP.arrowGtWood		.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press		.add(new RecipeMapHandlerPrefix(toolHeadArrow					, 1, NF,  16,16,	  0, NF, arrowGtPlastic	, 1, OP.arrowGtPlastic	.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press		.add(new RecipeMapHandlerPrefix(round							, 1, NF,  16,16,	  0, NF, bulletGtSmall	, 1, OP.bulletGtSmall	.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press		.add(new RecipeMapHandlerPrefix(round							, 2, NF,  16,32,	  0, NF, bulletGtMedium	, 1, OP.bulletGtMedium	.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press		.add(new RecipeMapHandlerPrefix(round							, 3, NF,  16,64,	  0, NF, bulletGtLarge	, 1, OP.bulletGtLarge	.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
 		
 		RM.RollingMill	.add(new RecipeMapHandlerPrefix(compressed						, 1, NF,  16, 0,   256, NF, plate			, 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		RM.RollingMill	.add(new RecipeMapHandlerPrefix(plateCurved						, 1, NF,  16, 0,   256, NF, plate			, 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
@@ -167,65 +167,65 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		RM.RollFormer	.add(new RecipeMapHandlerPrefix(plate							, 1, NF,  16, 0,   256, NF, railGt			, 4, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						, 2, NF,  16, 0,    64, NF, wireGt02		, 1, ST.tag( 2), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						, 4, NF,  16, 0,    64, NF, wireGt04		, 1, ST.tag( 4), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						, 8, NF,  16, 0,    64, NF, wireGt08		, 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						,12, NF,  16, 0,    64, NF, wireGt12		, 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						,16, NF,  16, 0,    64, NF, wireGt16		, 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt02						, 2, NF,  16, 0,    64, NF, wireGt04		, 1, ST.tag( 4), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt02						, 4, NF,  16, 0,    64, NF, wireGt08		, 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt02						, 6, NF,  16, 0,    64, NF, wireGt12		, 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt02						, 8, NF,  16, 0,    64, NF, wireGt16		, 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt04						, 2, NF,  16, 0,    64, NF, wireGt08		, 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt04						, 3, NF,  16, 0,    64, NF, wireGt12		, 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt04						, 4, NF,  16, 0,    64, NF, wireGt16		, 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt08						, 2, NF,  16, 0,    64, NF, wireGt16		, 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						, 2, NF,  16, 0,	64, NF, wireGt02		, 1, ST.tag( 2), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						, 4, NF,  16, 0,	64, NF, wireGt04		, 1, ST.tag( 4), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						, 8, NF,  16, 0,	64, NF, wireGt08		, 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						,12, NF,  16, 0,	64, NF, wireGt12		, 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt01						,16, NF,  16, 0,	64, NF, wireGt16		, 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt02						, 2, NF,  16, 0,	64, NF, wireGt04		, 1, ST.tag( 4), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt02						, 4, NF,  16, 0,	64, NF, wireGt08		, 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt02						, 6, NF,  16, 0,	64, NF, wireGt12		, 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt02						, 8, NF,  16, 0,	64, NF, wireGt16		, 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt04						, 2, NF,  16, 0,	64, NF, wireGt08		, 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt04						, 3, NF,  16, 0,	64, NF, wireGt12		, 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt04						, 4, NF,  16, 0,	64, NF, wireGt16		, 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom			.add(new RecipeMapHandlerPrefix(wireGt08						, 2, NF,  16, 0,	64, NF, wireGt16		, 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
 		
-		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 2, NF,  16, 0,    64, NF, ingotDouble		, 1, ST.tag( 2), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 3, NF,  16, 0,    64, NF, ingotTriple		, 1, ST.tag( 3), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 4, NF,  16, 0,    64, NF, ingotQuadruple	, 1, ST.tag( 4), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 5, NF,  16, 0,    64, NF, ingotQuintuple	, 1, ST.tag( 5), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 9, NF,  16, 0,    64, NF, blockSolid		, 1, ST.tag( 9), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(casingSmall						, 2, NF,  16, 0,    64, NF, plate			, 1, ST.tag( 2), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(bolt							, 4, NF,  16, 0,    64, NF, stick			, 1, ST.tag( 4), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(bolt							, 8, NF,  16, 0,    64, NF, stickLong		, 1, ST.tag( 8), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(stick							, 2, NF,  16, 0,    64, NF, stickLong		, 1, ST.tag( 2), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 2, NF,  16, 0,	64, NF, ingotDouble		, 1, ST.tag( 2), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 3, NF,  16, 0,	64, NF, ingotTriple		, 1, ST.tag( 3), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 4, NF,  16, 0,	64, NF, ingotQuadruple	, 1, ST.tag( 4), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 5, NF,  16, 0,	64, NF, ingotQuintuple	, 1, ST.tag( 5), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(ingot							, 9, NF,  16, 0,	64, NF, blockSolid		, 1, ST.tag( 9), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(casingSmall						, 2, NF,  16, 0,	64, NF, plate			, 1, ST.tag( 2), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(bolt							, 4, NF,  16, 0,	64, NF, stick			, 1, ST.tag( 4), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(bolt							, 8, NF,  16, 0,	64, NF, stickLong		, 1, ST.tag( 8), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(stick							, 2, NF,  16, 0,	64, NF, stickLong		, 1, ST.tag( 2), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plateCurved						, 4, ring			, 1, NF,  16, 0,    64, NF, rotor					, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plate							, 6, stickLong		, 2, NF,  16, 0,    64, NF, casingMachine			, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plateDouble						, 6, stickLong		, 2, NF,  16, 0,    64, NF, casingMachineDouble		, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plateQuadruple					, 6, stickLong		, 2, NF,  16, 0,    64, NF, casingMachineQuadruple	, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plateDense						, 6, stickLong		, 2, NF,  16, 0,    64, NF, casingMachineDense		, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plate							, 6, stick			, 4, NF,  16, 0,    64, NF, casingMachine			, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plateDouble						, 6, stick			, 4, NF,  16, 0,    64, NF, casingMachineDouble		, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plateQuadruple					, 6, stick			, 4, NF,  16, 0,    64, NF, casingMachineQuadruple	, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.Welder		.add(new RecipeMapHandlerPrefix(plateDense						, 6, stick			, 4, NF,  16, 0,    64, NF, casingMachineDense		, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plateCurved						, 4, ring			, 1, NF,  16, 0,	64, NF, rotor					, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plate							, 6, stickLong		, 2, NF,  16, 0,	64, NF, casingMachine			, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plateDouble						, 6, stickLong		, 2, NF,  16, 0,	64, NF, casingMachineDouble		, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plateQuadruple					, 6, stickLong		, 2, NF,  16, 0,	64, NF, casingMachineQuadruple	, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plateDense						, 6, stickLong		, 2, NF,  16, 0,	64, NF, casingMachineDense		, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plate							, 6, stick			, 4, NF,  16, 0,	64, NF, casingMachine			, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plateDouble						, 6, stick			, 4, NF,  16, 0,	64, NF, casingMachineDouble		, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plateQuadruple					, 6, stick			, 4, NF,  16, 0,	64, NF, casingMachineQuadruple	, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.Welder		.add(new RecipeMapHandlerPrefix(plateDense						, 6, stick			, 4, NF,  16, 0,	64, NF, casingMachineDense		, 1, null		, 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		
-		RM.Lathe		.add(new RecipeMapHandlerPrefix(bolt												, 1, NF,  16, 0,    64, NF, screw									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)));
-		RM.Lathe		.add(new RecipeMapHandlerPrefix(nugget												, 1, NF,  16, 0,    64, NF, round									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
-		RM.Lathe		.add(new RecipeMapHandlerPrefix(plateGem											, 1, NF,  16, 0,    64, NF, lens									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)));
-		RM.Lathe		.add(new RecipeMapHandlerPrefix(ingot												, 1, NF,  16, 0,    64, NF, stick									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
-		RM.Lathe		.add(new RecipeMapHandlerPrefix(gemChipped											, 1, NF,  16, 0,    64, NF, bolt									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
-		RM.Lathe		.add(new RecipeMapHandlerPrefix(gemFlawed											, 1, NF,  16, 0,    64, NF, bolt									, 3, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
+		RM.Lathe		.add(new RecipeMapHandlerPrefix(bolt												, 1, NF,  16, 0,	64, NF, screw									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)));
+		RM.Lathe		.add(new RecipeMapHandlerPrefix(nugget												, 1, NF,  16, 0,	64, NF, round									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
+		RM.Lathe		.add(new RecipeMapHandlerPrefix(plateGem											, 1, NF,  16, 0,	64, NF, lens									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)));
+		RM.Lathe		.add(new RecipeMapHandlerPrefix(ingot												, 1, NF,  16, 0,	64, NF, stick									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
+		RM.Lathe		.add(new RecipeMapHandlerPrefix(gemChipped											, 1, NF,  16, 0,	64, NF, bolt									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
+		RM.Lathe		.add(new RecipeMapHandlerPrefix(gemFlawed											, 1, NF,  16, 0,	64, NF, bolt									, 3, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
 		
 		RM.Sharpening	.add(new RecipeMapHandlerPrefix(nugget												, 1, NF,  16, 0,   256, NF, round									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
 		RM.Sharpening	.add(new RecipeMapHandlerPrefix(plateGem											, 1, NF,  16, 0,   256, NF, lens									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
 		RM.Sharpening	.add(new RecipeMapHandlerPrefix(ingot												, 1, NF,  16, 0,   256, NF, stick									, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
 		RM.Sharpening	.add(new RecipeMapHandlerPrefix(gemChipped											, 1, NF,  16, 0,   256, NF, toolHeadArrow							, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)).chances(10000, 7500));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(rockGt												, 1, NF,  16, 0,    64, NF, toolHeadArrow							, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, STONE)).chances(10000, 7500));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawArrow									, 1, NF,  16, 0,    64, NF, toolHeadArrow							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawSaw										, 1, NF,  16, 0,    64, NF, toolHeadSaw								, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawChisel									, 1, NF,  16, 0,    64, NF, toolHeadChisel							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawSword									, 1, NF,  16, 0,    64, NF, toolHeadSword							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawPickaxe									, 1, NF,  16, 0,    64, NF, toolHeadPickaxe							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawShovel									, 1, NF,  16, 0,    64, NF, toolHeadShovel							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawSpade									, 1, NF,  16, 0,    64, NF, toolHeadSpade							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawUniversalSpade							, 1, NF,  16, 0,    64, NF, toolHeadUniversalSpade					, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawAxe										, 1, NF,  16, 0,    64, NF, toolHeadAxe								, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawAxeDouble								, 1, NF,  16, 0,    64, NF, toolHeadAxeDouble						, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawHoe										, 1, NF,  16, 0,    64, NF, toolHeadHoe								, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawSense									, 1, NF,  16, 0,    64, NF, toolHeadSense							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
-		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawPlow										, 1, NF,  16, 0,    64, NF, toolHeadPlow							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(rockGt												, 1, NF,  16, 0,	64, NF, toolHeadArrow							, 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, STONE)).chances(10000, 7500));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawArrow									, 1, NF,  16, 0,	64, NF, toolHeadArrow							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawSaw										, 1, NF,  16, 0,	64, NF, toolHeadSaw								, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawChisel									, 1, NF,  16, 0,	64, NF, toolHeadChisel							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawSword									, 1, NF,  16, 0,	64, NF, toolHeadSword							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawPickaxe									, 1, NF,  16, 0,	64, NF, toolHeadPickaxe							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawShovel									, 1, NF,  16, 0,	64, NF, toolHeadShovel							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawSpade									, 1, NF,  16, 0,	64, NF, toolHeadSpade							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawUniversalSpade							, 1, NF,  16, 0,	64, NF, toolHeadUniversalSpade					, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawAxe										, 1, NF,  16, 0,	64, NF, toolHeadAxe								, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawAxeDouble								, 1, NF,  16, 0,	64, NF, toolHeadAxeDouble						, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawHoe										, 1, NF,  16, 0,	64, NF, toolHeadHoe								, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawSense									, 1, NF,  16, 0,	64, NF, toolHeadSense							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Sharpening	.add(new RecipeMapHandlerPrefix(toolHeadRawPlow										, 1, NF,  16, 0,	64, NF, toolHeadPlow							, 1, NI, NI, T, T, F, ANTIMATTER.NOT));
 		
 		lens					.addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"X ", " f"}}, plateGem					, null, null, null, null, new And(ANTIMATTER.NOT, COATED.NOT)));
 		stick					.addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"X ", " f"}}, ingot						, null, null, null, null, new And(ANTIMATTER.NOT, COATED.NOT)));
@@ -245,67 +245,67 @@ public class Loader_Recipes_Handlers implements Runnable {
 		toolHeadSense			.addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"X ", " f"}}, toolHeadRawSense			, null, null, null, null, ANTIMATTER.NOT));
 		toolHeadPlow			.addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"X ", " f"}}, toolHeadRawPlow			, null, null, null, null, ANTIMATTER.NOT));
 		
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						, 1, FL.Steam.make(   25600), 0,    800, 0, FL.DistW.make( 120), gemChipped				, 1, ST.tag(0), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						, 2, FL.Steam.make(   51200), 0,   1600, 0, FL.DistW.make( 240), gemFlawed				, 1, ST.tag(1), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						, 4, FL.Steam.make(  102400), 0,   3200, 0, FL.DistW.make( 480), gem					, 1, ST.tag(2), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						, 8, FL.Steam.make(  204800), 0,   6400, 0, FL.DistW.make( 960), gemFlawless			, 1, ST.tag(3), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						,16, FL.Steam.make(  409600), 0,  12800, 0, FL.DistW.make(1920), gemExquisite			, 1, ST.tag(4), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						,32, FL.Steam.make(  819200), 0,  25600, 0, FL.DistW.make(3840), gemLegendary			, 1, ST.tag(5), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						, 1, FL.Steam.make(	  25600), 0,	800, 0, FL.DistW.make( 120), gemChipped				, 1, ST.tag(0), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						, 2, FL.Steam.make(	  51200), 0,   1600, 0, FL.DistW.make( 240), gemFlawed				, 1, ST.tag(1), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						, 4, FL.Steam.make(	 102400), 0,   3200, 0, FL.DistW.make( 480), gem					, 1, ST.tag(2), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						, 8, FL.Steam.make(	 204800), 0,   6400, 0, FL.DistW.make( 960), gemFlawless			, 1, ST.tag(3), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						,16, FL.Steam.make(	 409600), 0,  12800, 0, FL.DistW.make(1920), gemExquisite			, 1, ST.tag(4), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dustSmall						,32, FL.Steam.make(	 819200), 0,  25600, 0, FL.DistW.make(3840), gemLegendary			, 1, ST.tag(5), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
 		
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 1, FL.Steam.make(  102400), 0,   3200, 0, FL.DistW.make( 480), gemChipped				, 4, ST.tag(0), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 1, FL.Steam.make(  102400), 0,   3200, 0, FL.DistW.make( 480), gemFlawed				, 2, ST.tag(1), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 1, FL.Steam.make(  102400), 0,   3200, 0, FL.DistW.make( 480), gem					, 1, ST.tag(2), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 2, FL.Steam.make(  204800), 0,   6400, 0, FL.DistW.make( 960), gemFlawless			, 1, ST.tag(3), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 4, FL.Steam.make(  409600), 0,  12800, 0, FL.DistW.make(1920), gemExquisite			, 1, ST.tag(4), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
-		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 8, FL.Steam.make(  819200), 0,  25600, 0, FL.DistW.make(3840), gemLegendary			, 1, ST.tag(5), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 1, FL.Steam.make(	 102400), 0,   3200, 0, FL.DistW.make( 480), gemChipped				, 4, ST.tag(0), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 1, FL.Steam.make(	 102400), 0,   3200, 0, FL.DistW.make( 480), gemFlawed				, 2, ST.tag(1), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 1, FL.Steam.make(	 102400), 0,   3200, 0, FL.DistW.make( 480), gem					, 1, ST.tag(2), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 2, FL.Steam.make(	 204800), 0,   6400, 0, FL.DistW.make( 960), gemFlawless			, 1, ST.tag(3), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 4, FL.Steam.make(	 409600), 0,  12800, 0, FL.DistW.make(1920), gemExquisite			, 1, ST.tag(4), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
+		RM.Autoclave	.add(new RecipeMapHandlerPrefix(dust							, 8, FL.Steam.make(	 819200), 0,  25600, 0, FL.DistW.make(3840), gemLegendary			, 1, ST.tag(5), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
 		
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(arrowGtWood						, 1, NF,  16,16,     0, NF, toolHeadArrow			, 1, NI, arrowGtWood	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(arrowGtPlastic					, 1, NF,  16,16,     0, NF, toolHeadArrow			, 1, NI, arrowGtPlastic	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(bulletGtSmall					, 1, NF,  16,16,     0, NF, round					, 1, NI, bulletGtSmall	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(bulletGtMedium					, 1, NF,  16,16,     0, NF, round					, 2, NI, bulletGtMedium	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(bulletGtLarge					, 1, NF,  16,16,     0, NF, round					, 3, NI, bulletGtLarge	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(arrowGtWood						, 1, NF,  16,16,	 0, NF, toolHeadArrow			, 1, NI, arrowGtWood	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(arrowGtPlastic					, 1, NF,  16,16,	 0, NF, toolHeadArrow			, 1, NI, arrowGtPlastic	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(bulletGtSmall					, 1, NF,  16,16,	 0, NF, round					, 1, NI, bulletGtSmall	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(bulletGtMedium					, 1, NF,  16,16,	 0, NF, round					, 2, NI, bulletGtMedium	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(bulletGtLarge					, 1, NF,  16,16,	 0, NF, round					, 3, NI, bulletGtLarge	.mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
 		
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtDust						, 1, NF,  16,16,     0, NF, dust					,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtGem						, 1, NF,  16,16,     0, NF, gem						,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtIngot					, 1, NF,  16,16,     0, NF, ingot					,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtPlate					, 1, NF,  16,16,     0, NF, plate					,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtPlateGem					, 1, NF,  16,16,     0, NF, plateGem				,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtDust						, 1, NF,  16,16,	 0, NF, dust					,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtGem						, 1, NF,  16,16,	 0, NF, gem						,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtIngot					, 1, NF,  16,16,	 0, NF, ingot					,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtPlate					, 1, NF,  16,16,	 0, NF, plate					,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crateGtPlateGem					, 1, NF,  16,16,	 0, NF, plateGem				,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
 		
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockDust						, 1, NF,  16,16,     0, NF, dust					, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockGem						, 1, NF,  16,16,     0, NF, gem						, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockIngot						, 1, NF,  16,16,     0, NF, ingot					, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockPlate						, 1, NF,  16,16,     0, NF, plate					, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockPlateGem					, 1, NF,  16,16,     0, NF, plateGem				, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crushed							, 1, NF,  16,16,     0, NF, crushedTiny				, 9, NI, NI, F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crushedPurified					, 1, NF,  16,16,     0, NF, crushedPurifiedTiny		, 9, NI, NI, F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crushedCentrifuged				, 1, NF,  16,16,     0, NF, crushedCentrifugedTiny	, 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockDust						, 1, NF,  16,16,	 0, NF, dust					, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockGem						, 1, NF,  16,16,	 0, NF, gem						, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockIngot						, 1, NF,  16,16,	 0, NF, ingot					, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockPlate						, 1, NF,  16,16,	 0, NF, plate					, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(blockPlateGem					, 1, NF,  16,16,	 0, NF, plateGem				, 9, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crushed							, 1, NF,  16,16,	 0, NF, crushedTiny				, 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crushedPurified					, 1, NF,  16,16,	 0, NF, crushedPurifiedTiny		, 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator	.add(new RecipeMapHandlerPrefix(crushedCentrifuged				, 1, NF,  16,16,	 0, NF, crushedCentrifugedTiny	, 9, NI, NI, F, F, F, ANTIMATTER.NOT));
 		
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dustSmall						,64, NF,  16,16,     0, NF, crateGtDust				, 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dust							,16, NF,  16,16,     0, NF, crateGtDust				, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(gem								,16, NF,  16,16,     0, NF, crateGtGem				, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(chunkGt							,64, NF,  16,16,     0, NF, crateGtIngot			, 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(ingot							,16, NF,  16,16,     0, NF, crateGtIngot			, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plate							,16, NF,  16,16,     0, NF, crateGtPlate			, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plateGem						,16, NF,  16,16,     0, NF, crateGtPlateGem			, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dustSmall						,64, NF,  16,16,	 0, NF, crateGtDust				, 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dust							,16, NF,  16,16,	 0, NF, crateGtDust				, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(gem								,16, NF,  16,16,	 0, NF, crateGtGem				, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(chunkGt							,64, NF,  16,16,	 0, NF, crateGtIngot			, 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(ingot							,16, NF,  16,16,	 0, NF, crateGtIngot			, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plate							,16, NF,  16,16,	 0, NF, crateGtPlate			, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plateGem						,16, NF,  16,16,	 0, NF, crateGtPlateGem			, 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dustSmall						,64, NF,  16,16,     0, NF, crateGtDust				, 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dust							,16, NF,  16,16,     0, NF, crateGtDust				, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(gem								,16, NF,  16,16,     0, NF, crateGtGem				, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(chunkGt							,64, NF,  16,16,     0, NF, crateGtIngot			, 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(ingot							,16, NF,  16,16,     0, NF, crateGtIngot			, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plate							,16, NF,  16,16,     0, NF, crateGtPlate			, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plateGem						,16, NF,  16,16,     0, NF, crateGtPlateGem			, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dustSmall						,64, NF,  16,16,	 0, NF, crateGtDust				, 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dust							,16, NF,  16,16,	 0, NF, crateGtDust				, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(gem								,16, NF,  16,16,	 0, NF, crateGtGem				, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(chunkGt							,64, NF,  16,16,	 0, NF, crateGtIngot			, 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(ingot							,16, NF,  16,16,	 0, NF, crateGtIngot			, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plate							,16, NF,  16,16,	 0, NF, crateGtPlate			, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plateGem						,16, NF,  16,16,	 0, NF, crateGtPlateGem			, 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dustSmall						,36, NF,  16,16,     0, NF, blockDust				, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dust							, 9, NF,  16,16,     0, NF, blockDust				, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(gem								, 9, NF,  16,16,     0, NF, blockGem				, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(chunkGt							,36, NF,  16,16,     0, NF, blockIngot				, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(ingot							, 9, NF,  16,16,     0, NF, blockIngot				, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plate							, 9, NF,  16,16,     0, NF, blockPlate				, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plateGem						, 9, NF,  16,16,     0, NF, blockPlateGem			, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(crushedTiny						, 9, NF,  16,16,     0, NF, crushed					, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(crushedPurifiedTiny				, 9, NF,  16,16,     0, NF, crushedPurified			, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator	.add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny			, 9, NF,  16,16,     0, NF, crushedCentrifuged		, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dustSmall						,36, NF,  16,16,	 0, NF, blockDust				, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(dust							, 9, NF,  16,16,	 0, NF, blockDust				, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(gem								, 9, NF,  16,16,	 0, NF, blockGem				, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(chunkGt							,36, NF,  16,16,	 0, NF, blockIngot				, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(ingot							, 9, NF,  16,16,	 0, NF, blockIngot				, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plate							, 9, NF,  16,16,	 0, NF, blockPlate				, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(plateGem						, 9, NF,  16,16,	 0, NF, blockPlateGem			, 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(crushedTiny						, 9, NF,  16,16,	 0, NF, crushed					, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(crushedPurifiedTiny				, 9, NF,  16,16,	 0, NF, crushedPurified			, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator	.add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny			, 9, NF,  16,16,	 0, NF, crushedCentrifuged		, 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
 		
 		
 		GameRegistry.addRecipe(new AdvancedCrafting1ToY(crushed						, crushedTiny				, 9, F));
@@ -370,18 +370,18 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		for (int i = 0; i < 4; i++) if (tFluids[i] != null) {
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(blockSolid			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 7 * 16, 1000, T), 32, tMultiplier[i] * 7 * 16, 0, NF, plate			, 8, NI, NI, T, T, F, tConditionM));
-		RM.Cutter		.add(new RecipeMapHandlerPrefix(stickLong			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, stick			, 2, NI, NI, F, T, F, tConditionM));
+		RM.Cutter		.add(new RecipeMapHandlerPrefix(stickLong			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]	  * 16, 1000, T), 32, tMultiplier[i]	 * 16, 0, NF, stick			, 2, NI, NI, F, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(stick				, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, bolt			, 4, NI, NI, F, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(plate				, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, plateTiny		, 8, NI, NI, F, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(plateGem			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, plateGemTiny	, 8, NI, NI, F, T, F, tConditionM));
-		RM.Cutter		.add(new RecipeMapHandlerPrefix(gemChipped			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, plateGemTiny	, 2, NI, NI, F, T, F, tConditionM));
+		RM.Cutter		.add(new RecipeMapHandlerPrefix(gemChipped			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]	  * 16, 1000, T), 32, tMultiplier[i]	 * 16, 0, NF, plateGemTiny	, 2, NI, NI, F, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(gemFlawed			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 2 * 16, 1000, T), 32, tMultiplier[i] * 2 * 16, 0, NF, plateGemTiny	, 4, NI, NI, F, T, F, tConditionM));
-		RM.Cutter		.add(new RecipeMapHandlerPrefix(gem					, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 96, tMultiplier[i]     * 16, 0, NF, plateGem		, 1, NI, NI, T, T, F, tConditionM));
-		RM.Cutter		.add(new RecipeMapHandlerPrefix(gemFlawless			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 96, tMultiplier[i]     * 16, 0, NF, plateGem		, 2, NI, NI, F, T, F, tConditionM));
+		RM.Cutter		.add(new RecipeMapHandlerPrefix(gem					, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]	  * 16, 1000, T), 96, tMultiplier[i]	 * 16, 0, NF, plateGem		, 1, NI, NI, T, T, F, tConditionM));
+		RM.Cutter		.add(new RecipeMapHandlerPrefix(gemFlawless			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]	  * 16, 1000, T), 96, tMultiplier[i]	 * 16, 0, NF, plateGem		, 2, NI, NI, F, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(gemExquisite		, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 96, tMultiplier[i] * 3 * 16, 0, NF, plateGem		, 4, NI, NI, F, T, F, tConditionM));
-		RM.Cutter		.add(new RecipeMapHandlerPrefix(gemLegendary 		, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 7 * 16, 1000, T), 96, tMultiplier[i] * 7 * 16, 0, NF, plateGem		, 8, NI, NI, F, T, F, tConditionM));
+		RM.Cutter		.add(new RecipeMapHandlerPrefix(gemLegendary		, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 7 * 16, 1000, T), 96, tMultiplier[i] * 7 * 16, 0, NF, plateGem		, 8, NI, NI, F, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(bouleGt				, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, plateGem		, 4, NI, NI, T, T, F, tConditionM));
-		RM.Cutter		.add(new RecipeMapHandlerPrefix(ingotDouble			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, ingot			, 2, NI, NI, T, T, F, tConditionM));
+		RM.Cutter		.add(new RecipeMapHandlerPrefix(ingotDouble			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]	  * 16, 1000, T), 32, tMultiplier[i]	 * 16, 0, NF, ingot			, 2, NI, NI, T, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(ingotTriple			, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 2 * 16, 1000, T), 32, tMultiplier[i] * 2 * 16, 0, NF, ingot			, 3, NI, NI, F, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(ingotQuadruple		, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, ingot			, 4, NI, NI, F, T, F, tConditionM));
 		RM.Cutter		.add(new RecipeMapHandlerPrefix(ingotQuintuple		, 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, ingot			, 5, NI, NI, F, T, F, tConditionM));
@@ -407,69 +407,69 @@ public class Loader_Recipes_Handlers implements Runnable {
 		OreDictManager.INSTANCE.triggerVisibility("ingotThaumium");
 		OreDictManager.INSTANCE.triggerVisibility("ingotArdite");
 		for (OreDictMaterial tMat : ANY.Iron.mToThis)
-		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.Mana_TE		.make( 250)		,   0, 144, NF, MT.Thaumium				, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Ag						, FL.Mana_TE		.make( 125)		,   0, 144, NF, MT.AstralSilver			, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Au						, FL.Mana_TE		.make( 125)		,   0, 144, NF, MT.Midasium				, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Pt						, FL.Mana_TE		.make( 125)		,   0, 144, NF, MT.Mithril				, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Pb						, FL.Mana_TE		.make(  50)		,   0, 144, NF, MT.Au					, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Ni						, FL.Mana_TE		.make(  50)		,   0, 144, NF, MT.Ardite				, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.NetherQuartz			, FL.Mana_TE		.make(  50)		,   0, 144, NF, MT.CertusQuartz			, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.Mana_TE		.make( 250)		,	0, 144, NF, MT.Thaumium				, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Ag						, FL.Mana_TE		.make( 125)		,	0, 144, NF, MT.AstralSilver			, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Au						, FL.Mana_TE		.make( 125)		,	0, 144, NF, MT.Midasium				, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Pt						, FL.Mana_TE		.make( 125)		,	0, 144, NF, MT.Mithril				, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Pb						, FL.Mana_TE		.make(	50)		,	0, 144, NF, MT.Au					, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.Ni						, FL.Mana_TE		.make(	50)		,	0, 144, NF, MT.Ardite				, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(MT.NetherQuartz			, FL.Mana_TE		.make(	50)		,	0, 144, NF, MT.CertusQuartz			, NI, T, tConditionP));
 		}
 		
 		for (OreDictMaterial tMat : ANY.Fe.mToThis) {
 		RM.Freezer		.add(new RecipeMapHandlerMaterial(tMat						, NF								, 128, 144, NF, MT.FrozenIron			, NI, T, tConditionP));
 		RM.Polarizer	.add(new RecipeMapHandlerMaterial(tMat						, NF								,  16, 144, NF, MT.IronMagnetic			, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, MT.Au				.liquid(U9, T)	,   0, 144, NF, MT.GildedIron			, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.FieryBlood		.make(   L)		,   0, 144, NF, MT.FierySteel			, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.FieryTears		.make(   L)		,   0, 144, NF, MT.FierySteel			, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, MT.Au				.liquid(U9, T)	,	0, 144, NF, MT.GildedIron			, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.FieryBlood		.make(	 L)		,	0, 144, NF, MT.FierySteel			, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.FieryTears		.make(	 L)		,	0, 144, NF, MT.FierySteel			, NI, T, tConditionP));
 		}
 		for (OreDictMaterial tMat : ANY.Steel.mToThis) {
 		RM.Polarizer	.add(new RecipeMapHandlerMaterial(tMat						, NF								,  16, 144, NF, MT.SteelMagnetic		, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, MT.Zn				.liquid(U9, T)	,   0, 144, NF, MT.SteelGalvanized		, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.FieryBlood		.make(   L)		,   0, 144, NF, MT.FierySteel			, NI, T, tConditionP));
-		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.FieryTears		.make(   L)		,   0, 144, NF, MT.FierySteel			, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, MT.Zn				.liquid(U9, T)	,	0, 144, NF, MT.SteelGalvanized		, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.FieryBlood		.make(	 L)		,	0, 144, NF, MT.FierySteel			, NI, T, tConditionP));
+		RM.Bath			.add(new RecipeMapHandlerMaterial(tMat						, FL.FieryTears		.make(	 L)		,	0, 144, NF, MT.FierySteel			, NI, T, tConditionP));
 		}
 		
 		tConditionP = SIMPLIFIABLE;
 		
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Teslatite				, NF								,   0,   1, NF, MT.Nikolite				, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Nikolite				, NF								,   0,   1, NF, MT.Teslatite			, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Redstonia				, NF								,   0,   1, NF, MT.Redstone				, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Palis					, NF								,   0,   1, NF, MT.Lapis				, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Diamantine				, NF								,   0,   1, NF, MT.Diamond				, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.VoidCrystal			, NF								,   0,   1, NF, MT.Coal					, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.AnnealedCopper			, NF								,   0,   1, NF, MT.Cu					, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.NeodymiumMagnetic		, NF								,   0,   1, NF, MT.Nd					, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.AstralSilver			, NF								,   0,   1, NF, MT.Ag					, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Midasium				, NF								,   0,   1, NF, MT.Au					, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Mithril				, NF								,   0,   1, NF, MT.Pt					, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.TungstenSintered		, NF								,   0,   1, NF, MT.W					, NI, T, tConditionP));
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Os						, NF								,   0,   1, NF, MT.FakeOsmium			, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Teslatite				, NF								,	0,	 1, NF, MT.Nikolite				, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Nikolite				, NF								,	0,	 1, NF, MT.Teslatite			, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Redstonia				, NF								,	0,	 1, NF, MT.Redstone				, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Palis					, NF								,	0,	 1, NF, MT.Lapis				, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Diamantine				, NF								,	0,	 1, NF, MT.Diamond				, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.VoidCrystal			, NF								,	0,	 1, NF, MT.Coal					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.AnnealedCopper			, NF								,	0,	 1, NF, MT.Cu					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.NeodymiumMagnetic		, NF								,	0,	 1, NF, MT.Nd					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.AstralSilver			, NF								,	0,	 1, NF, MT.Ag					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Midasium				, NF								,	0,	 1, NF, MT.Au					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Mithril				, NF								,	0,	 1, NF, MT.Pt					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.TungstenSintered		, NF								,	0,	 1, NF, MT.W					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(MT.Os						, NF								,	0,	 1, NF, MT.FakeOsmium			, NI, T, tConditionP));
 		
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.WroughtIron, MT.MeteoricIron, MT.IronMagnetic, MT.Meteorite, MT.PigIron, MT.IronCompressed, MT.Thaumium, MT.Enori})
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Fe					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Fe					, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.HSLA, MT.MeteoricSteel, MT.SteelMagnetic, MT.Knightmetal})
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Steel				, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Steel				, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Betweenstone, MT.Pitstone, MT.Umber, MT.Gravel, MT.Diorite, MT.Redrock, MT.GraniteBlack, MT.GraniteRed, MT.Granite, MT.Limestone, MT.Marble, MT.Basalt, MT.Gabbro, MT.Concrete, MT.Eclogite, MT.Shale, MT.Andesite, MT.Dacite, MT.Chert, MT.Blueschist, MT.Epidote, MT.Migmatite, MT.Quartzite, MT.Gneiss, MT.Greenschist, MT.Greywacke, MT.Komatiite, MT.Kimberlite, MT.Siltstone, MT.Rhyolite, MT.MoonRock, MT.MoonTurf, MT.MarsRock, MT.MarsSand, MT.SpaceRock, MT.Livingrock, MT.Holystone})
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Stone				, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Stone				, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Ash.mToThis) if (tMaterial != MT.Ash)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Ash					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Ash					, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Emerald.mToThis) if (tMaterial != MT.Emerald)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Emerald				, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Emerald				, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Sapphire.mToThis) if (tMaterial != MT.Sapphire)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Sapphire				, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Sapphire				, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) if (tMaterial != MT.Wood)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Wood					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Wood					, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Wax.mToThis) if (tMaterial != MT.Wax)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Wax					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Wax					, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Glowstone.mToThis) if (tMaterial != MT.Glowstone)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Glowstone			, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Glowstone			, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Clay.mToThis) if (tMaterial != MT.Clay)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Clay					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Clay					, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.W.mToThis) if (tMaterial != MT.W)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.W					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.W					, NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Si.mToThis) if (tMaterial != MT.Si)
-		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,   0,   1, NF, MT.Si					, NI, T, tConditionP));
+		RM.Generifier	.add(new RecipeMapHandlerMaterial(tMaterial					, NF								,	0,	 1, NF, MT.Si					, NI, T, tConditionP));
 		
 		for (OreDictPrefix tInput : OreDictPrefix.VALUES) if (tInput.contains(TD.Prefix.EXTRUDER_FODDER)) {
 			addExtruderRecipe(tInput, ingot						, T, IL.Shape_Extruder_Ingot			.get(0));

@@ -46,18 +46,18 @@ import net.minecraftforge.fluids.IFluidTank;
 public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityBasicMachine implements IMultiBlockFluidHandler, IMultiBlockInventory, IMultiBlockEnergy {
 	public boolean mStructureChanged = F, mStructureOkay = F;
 	
-    @Override
+	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
-    	super.readFromNBT2(aNBT);
-        if (aNBT.hasKey(NBT_STATE+".str")) mStructureOkay = aNBT.getBoolean(NBT_STATE+".str");
-    }
-    
-    @Override
+		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_STATE+".str")) mStructureOkay = aNBT.getBoolean(NBT_STATE+".str");
+	}
+	
+	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
-    	super.writeToNBT2(aNBT);
-    	UT.NBT.setBoolean(aNBT, NBT_STATE+".str", mStructureOkay);
-    }
-    
+		super.writeToNBT2(aNBT);
+		UT.NBT.setBoolean(aNBT, NBT_STATE+".str", mStructureOkay);
+	}
+	
 	@Override
 	public long onToolClickMultiBlock(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ, ChunkCoordinates aFrom) {
 		return onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);

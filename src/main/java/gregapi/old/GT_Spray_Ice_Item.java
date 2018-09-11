@@ -50,35 +50,35 @@ public class GT_Spray_Ice_Item extends GT_Tool_Item {
 	*/
 	/*
 	@Override
-    public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
-    	super.onItemUseFirst(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, hitX, hitY, hitZ);
-    	if (aWorld.isRemote) {
-    		return false;
-    	}
-    	
+	public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
+		super.onItemUseFirst(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, hitX, hitY, hitZ);
+		if (aWorld.isRemote) {
+			return false;
+		}
+		
 		aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
-    	Block aBlock = aWorld.getBlock(aX, aY, aZ);
-    	if (aBlock == null) return false;
-    	byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
-//    	TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-    	
-    	if (aBlock == Blocks.water || aBlock == Blocks.flowing_water) {
-    		if (aMeta == 0 && GT_ModHandler.damageOrDechargeItem(aStack, 1, 1000, aPlayer)) {
-    			UT.Sounds.send(aWorld, SFX.IC_SPRAY, 1.0F, -1, aX, aY, aZ);
-        		aWorld.setBlock(aX, aY, aZ, Blocks.ice, 0, 3);
-    			return true;
-    		}
-    		return false;
-    	}
-    	
-    	if (aBlock == Blocks.lava || aBlock == Blocks.flowing_lava) {
-    		if (aMeta == 0 && GT_ModHandler.damageOrDechargeItem(aStack, 1, 1000, aPlayer)) {
-    			UT.Sounds.send(aWorld, SFX.IC_SPRAY, 1.0F, -1, aX, aY, aZ);
-        		aWorld.setBlock(aX, aY, aZ, Blocks.obsidian, 0, 3);
-    			return true;
-    		}
-    		return false;
-    	}
-    	return false;
-    }*/
+		Block aBlock = aWorld.getBlock(aX, aY, aZ);
+		if (aBlock == null) return false;
+		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+//		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+		
+		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water) {
+			if (aMeta == 0 && GT_ModHandler.damageOrDechargeItem(aStack, 1, 1000, aPlayer)) {
+				UT.Sounds.send(aWorld, SFX.IC_SPRAY, 1.0F, -1, aX, aY, aZ);
+				aWorld.setBlock(aX, aY, aZ, Blocks.ice, 0, 3);
+				return true;
+			}
+			return false;
+		}
+		
+		if (aBlock == Blocks.lava || aBlock == Blocks.flowing_lava) {
+			if (aMeta == 0 && GT_ModHandler.damageOrDechargeItem(aStack, 1, 1000, aPlayer)) {
+				UT.Sounds.send(aWorld, SFX.IC_SPRAY, 1.0F, -1, aX, aY, aZ);
+				aWorld.setBlock(aX, aY, aZ, Blocks.obsidian, 0, 3);
+				return true;
+			}
+			return false;
+		}
+		return false;
+	}*/
 }

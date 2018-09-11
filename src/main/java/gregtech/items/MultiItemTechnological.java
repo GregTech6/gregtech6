@@ -79,37 +79,37 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Controller.set(				addItem(tLastID =  1025, "Cover Controller"					, "Turns Redstone into ON/OFF State for Covers"		, new CoverControllerCovers()							, TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
 		IL.Cover_Shutter.set(					addItem(tLastID =  1026, "Shutter Cover"					, "Connects and Disconnects Pipes"					, new CoverShutter()									, TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
 		
-		CR.shaped(IL.Cover_Blank					.get(1), CR.DEF_REV, "Sh" , "Pd"        , 'P', OP.plate.dat(MT.Al), 'S', OP.screw.dat(MT.Al));
-		CR.shaped(IL.Cover_Crafting					.get(1), CR.DEF_REV,  "C" ,  "Q"        , 'Q', IL.Cover_Blank, 'C', ST.make(Blocks.crafting_table, 1, W));
-		CR.shaped(IL.Cover_Machine_Display			.get(1), CR.DEF_REV, "LLB", "CQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.lever, 1, W), 'L', OP.wireGt01.dat(MT.Lumium));
-		CR.shaped(IL.Cover_Auto_Switch				.get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.lever, 1, W));
-		CR.shaped(IL.Cover_Energy_Display			.get(1), CR.DEF_REV, "CLB", "WQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', MT.DATA.WIRES_01[1], 'L', OP.wireGt01.dat(MT.Lumium));
-		CR.shaped(IL.Cover_Redstone_Switch			.get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', OD.craftingRedstoneTorch);
-		CR.shaped(IL.Cover_Auto_Switch_Redstone		.get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[2], 'B', ST.make(Blocks.lever, 1, W));
+		CR.shaped(IL.Cover_Blank					.get(1), CR.DEF_REV, "Sh" , "Pd"		, 'P', OP.plate.dat(MT.Al), 'S', OP.screw.dat(MT.Al));
+		CR.shaped(IL.Cover_Crafting					.get(1), CR.DEF_REV,  "C" ,	 "Q"		, 'Q', IL.Cover_Blank, 'C', ST.make(Blocks.crafting_table, 1, W));
+		CR.shaped(IL.Cover_Machine_Display			.get(1), CR.DEF_REV, "LLB", "CQW"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.lever, 1, W), 'L', OP.wireGt01.dat(MT.Lumium));
+		CR.shaped(IL.Cover_Auto_Switch				.get(1), CR.DEF_REV, "BW" , "CQ"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.lever, 1, W));
+		CR.shaped(IL.Cover_Energy_Display			.get(1), CR.DEF_REV, "CLB", "WQW"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', MT.DATA.WIRES_01[1], 'L', OP.wireGt01.dat(MT.Lumium));
+		CR.shaped(IL.Cover_Redstone_Switch			.get(1), CR.DEF_REV, "BW" , "CQ"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', OD.craftingRedstoneTorch);
+		CR.shaped(IL.Cover_Auto_Switch_Redstone		.get(1), CR.DEF_REV, "BW" , "CQ"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[2], 'B', ST.make(Blocks.lever, 1, W));
 		CR.shaped(IL.Cover_Redstone_Selector		.get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', ST.make(Items.comparator, 1, W), 'X', IL.Circuit_Selector.wild(1));
 		CR.shaped(IL.Cover_Manual_Selector			.get(1), CR.DEF_REV, " C ", "WQX", " B ", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[2], 'B', ST.make(Blocks.stone_button, 1, W), 'X', IL.Circuit_Selector.wild(1));
-		CR.shaped(IL.Cover_Auto_Switch_01_Minute	.get(1), CR.DEF_REV, "BWd", "CQ "       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[5], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Auto_Switch_05_Minute	.get(1), CR.DEF_REV, "BW ", "CQd"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[4], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
+		CR.shaped(IL.Cover_Auto_Switch_01_Minute	.get(1), CR.DEF_REV, "BWd", "CQ "		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[5], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
+		CR.shaped(IL.Cover_Auto_Switch_05_Minute	.get(1), CR.DEF_REV, "BW ", "CQd"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[4], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
 		CR.shaped(IL.Cover_Auto_Switch_10_Minute	.get(1), CR.DEF_REV, "BW ", "CQ ", "  d", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[3], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
 		CR.shaped(IL.Cover_Auto_Switch_20_Minute	.get(1), CR.DEF_REV, "BW" , "CQ" , " d" , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
 		CR.shaped(IL.Cover_Auto_Switch_30_Minute	.get(1), CR.DEF_REV, "BW" , "CQ" , "d " , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Scale_Energy				.get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', MT.DATA.WIRES_01[1]);
-		CR.shaped(IL.Cover_Detector_Possible		.get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W));
-		CR.shaped(IL.Cover_Detector_Passively		.get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Detector_Actively		.get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W), 'X', ST.make(Items.repeater, 1, W));
-		CR.shaped(IL.Cover_Scale_Progress			.get(1), CR.DEF_REV, "WQW", "BCB"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', OP.gearGtSmall.dat(MT.Brass));
-		CR.shaped(IL.Cover_Detector_Success			.get(1), CR.DEF_REV, "WQW", "BCX"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', OD.craftingRedstoneTorch);
+		CR.shaped(IL.Cover_Scale_Energy				.get(1), CR.DEF_REV, "WQW", "BCB"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', MT.DATA.WIRES_01[1]);
+		CR.shaped(IL.Cover_Detector_Possible		.get(1), CR.DEF_REV, "WQW", "BCB"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W));
+		CR.shaped(IL.Cover_Detector_Passively		.get(1), CR.DEF_REV, "WQW", "BCB"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.repeater, 1, W));
+		CR.shaped(IL.Cover_Detector_Actively		.get(1), CR.DEF_REV, "WQW", "BCX"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W), 'X', ST.make(Items.repeater, 1, W));
+		CR.shaped(IL.Cover_Scale_Progress			.get(1), CR.DEF_REV, "WQW", "BCB"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', OP.gearGtSmall.dat(MT.Brass));
+		CR.shaped(IL.Cover_Detector_Success			.get(1), CR.DEF_REV, "WQW", "BCX"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', OD.craftingRedstoneTorch);
 		CR.shaped(IL.Cover_Drain					.get(1), CR.DEF_REV, "RRR", "RwR", "RRR", 'R', OP.stick.dat(ANY.Iron));
-		CR.shaped(IL.Cover_Redstone_Emitter			.get(1), CR.DEF_REV, "BQB", "WXW"       , 'Q', IL.Cover_Blank, 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', ST.make(Items.comparator, 1, W));
+		CR.shaped(IL.Cover_Redstone_Emitter			.get(1), CR.DEF_REV, "BQB", "WXW"		, 'Q', IL.Cover_Blank, 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', ST.make(Items.comparator, 1, W));
 		CR.shaped(IL.Cover_Vent						.get(1), CR.DEF_REV, "RRR", "RXR", "RRR", 'R', OP.stick.dat(ANY.Iron), 'X', OP.rotor.dat(ANY.Iron));
 		CR.shaped(IL.Cover_Filter_Item				.get(1), CR.DEF_REV, " Z ", "ZQZ", " Z ", 'Q', IL.Cover_Blank, 'Z', OP.foil.dat(MT.Zn));
 		CR.shaped(IL.Cover_Filter_Fluid				.get(1), CR.DEF_REV, "Z Z", " Q ", "Z Z", 'Q', IL.Cover_Blank, 'Z', OP.foil.dat(MT.Zn));
-		CR.shaped(IL.Cover_Controller				.get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W));
+		CR.shaped(IL.Cover_Controller				.get(1), CR.DEF_REV, "BW" , "CQ"		, 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W));
 		CR.shaped(IL.Cover_Shutter					.get(1), CR.DEF_REV, "TwT", "PQP", "TdT", 'Q', IL.Cover_Blank, 'P', OP.plate.dat(MT.StainlessSteel), 'T', OP.screw.dat(MT.StainlessSteel));
 		
 		IL.Cover_Pressure_Valve.set(			addItem(tLastID =  2000, "Pressure Valve"					, ""												, new CoverPressureValve()								, TC.stack(TC.MACHINA, 1), TC.stack(TC.AER, 1), TC.stack(TC.VACUOS, 1)));
 		
-		CR.shaped(IL.Cover_Pressure_Valve			.get(1), CR.DEF_REV, "TCT", "wPd"       , 'C', OP.plateCurved.dat(MT.Brass), 'P', OP.plate.dat(MT.Brass), 'T', OP.screw.dat(MT.Brass));
+		CR.shaped(IL.Cover_Pressure_Valve			.get(1), CR.DEF_REV, "TCT", "wPd"		, 'C', OP.plateCurved.dat(MT.Brass), 'P', OP.plate.dat(MT.Brass), 'T', OP.screw.dat(MT.Brass));
 		
 		
 		
@@ -148,42 +148,42 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Shape_Extruder_Foil.set(				addItem(tLastID = 10029, "Extruder Shape (Foil)"					, "Extruder Shape for making Foils"						, TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_Extruder_Plate_Tiny.set(		addItem(tLastID = 10030, "Extruder Shape (Tiny Plate)"				, "Extruder Shape for making Tiny Plates"				, TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		
-		CR.shaped(IL.Shape_Extruder_Ingot			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Empty);
+		CR.shaped(IL.Shape_Extruder_Ingot			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_Extruder_Empty);
 		CR.shaped(IL.Shape_Extruder_Plate_Tiny		.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Empty);
-		CR.shaped(IL.Shape_Extruder_Plate_Curved	.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_Extruder_Empty);
-		CR.shaped(IL.Shape_Extruder_Rod				.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_Extruder_Empty);
-		CR.shaped(IL.Shape_Extruder_Foil			.get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_Extruder_Empty);
-		CR.shaped(IL.Shape_Extruder_Ring			.get(1), CR.DEF_REV, "   ", " P ", " x ", 'P', IL.Shape_Extruder_Empty);
+		CR.shaped(IL.Shape_Extruder_Plate_Curved	.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_Extruder_Empty);
+		CR.shaped(IL.Shape_Extruder_Rod				.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_Extruder_Empty);
+		CR.shaped(IL.Shape_Extruder_Foil			.get(1), CR.DEF_REV, "	 ", " P ", "  x", 'P', IL.Shape_Extruder_Empty);
+		CR.shaped(IL.Shape_Extruder_Ring			.get(1), CR.DEF_REV, "	 ", " P ", " x ", 'P', IL.Shape_Extruder_Empty);
 		
-		CR.shaped(IL.Shape_Extruder_Bolt			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Rod);
+		CR.shaped(IL.Shape_Extruder_Bolt			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_Extruder_Rod);
 		CR.shaped(IL.Shape_Extruder_Wire			.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Rod);
-		CR.shaped(IL.Shape_Extruder_Rod_Long		.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_Extruder_Rod);
+		CR.shaped(IL.Shape_Extruder_Rod_Long		.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_Extruder_Rod);
 		
-		CR.shaped(IL.Shape_Extruder_Block			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Ingot);
+		CR.shaped(IL.Shape_Extruder_Block			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_Extruder_Ingot);
 		CR.shaped(IL.Shape_Extruder_Pickaxe			.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Ingot);
-		CR.shaped(IL.Shape_Extruder_Hammer			.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_Extruder_Ingot);
-		CR.shaped(IL.Shape_Extruder_Hoe				.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_Extruder_Ingot);
+		CR.shaped(IL.Shape_Extruder_Hammer			.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_Extruder_Ingot);
+		CR.shaped(IL.Shape_Extruder_Hoe				.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_Extruder_Ingot);
 		
-		CR.shaped(IL.Shape_Extruder_Gear			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Ring);
+		CR.shaped(IL.Shape_Extruder_Gear			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_Extruder_Ring);
 		CR.shaped(IL.Shape_Extruder_Gear_Small		.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Ring);
-		CR.shaped(IL.Shape_Extruder_Bottle			.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_Extruder_Ring);
-		CR.shaped(IL.Shape_Extruder_Cell			.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_Extruder_Ring);
-		CR.shaped(IL.Shape_Extruder_CCC				.get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_Extruder_Ring);
+		CR.shaped(IL.Shape_Extruder_Bottle			.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_Extruder_Ring);
+		CR.shaped(IL.Shape_Extruder_Cell			.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_Extruder_Ring);
+		CR.shaped(IL.Shape_Extruder_CCC				.get(1), CR.DEF_REV, "	 ", " P ", "  x", 'P', IL.Shape_Extruder_Ring);
 		
-		CR.shaped(IL.Shape_Extruder_Axe				.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Tiny);
+		CR.shaped(IL.Shape_Extruder_Axe				.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Tiny);
 		CR.shaped(IL.Shape_Extruder_Shovel			.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Tiny);
-		CR.shaped(IL.Shape_Extruder_File			.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Tiny);
-		CR.shaped(IL.Shape_Extruder_Sword			.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_Extruder_Plate_Tiny);
-		CR.shaped(IL.Shape_Extruder_Saw				.get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_Extruder_Plate_Tiny);
+		CR.shaped(IL.Shape_Extruder_File			.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Tiny);
+		CR.shaped(IL.Shape_Extruder_Sword			.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_Extruder_Plate_Tiny);
+		CR.shaped(IL.Shape_Extruder_Saw				.get(1), CR.DEF_REV, "	 ", " P ", "  x", 'P', IL.Shape_Extruder_Plate_Tiny);
 		
-		CR.shaped(IL.Shape_Extruder_Plate			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Foil);
+		CR.shaped(IL.Shape_Extruder_Plate			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_Extruder_Foil);
 		CR.shaped(IL.Shape_Extruder_Casing			.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Foil);
 		
-		CR.shaped(IL.Shape_Extruder_Pipe_Tiny		.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Curved);
+		CR.shaped(IL.Shape_Extruder_Pipe_Tiny		.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Curved);
 		CR.shaped(IL.Shape_Extruder_Pipe_Small		.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Curved);
-		CR.shaped(IL.Shape_Extruder_Pipe_Medium		.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Curved);
-		CR.shaped(IL.Shape_Extruder_Pipe_Large		.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_Extruder_Plate_Curved);
-		CR.shaped(IL.Shape_Extruder_Pipe_Huge		.get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_Extruder_Plate_Curved);
+		CR.shaped(IL.Shape_Extruder_Pipe_Medium		.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_Extruder_Plate_Curved);
+		CR.shaped(IL.Shape_Extruder_Pipe_Large		.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_Extruder_Plate_Curved);
+		CR.shaped(IL.Shape_Extruder_Pipe_Huge		.get(1), CR.DEF_REV, "	 ", " P ", "  x", 'P', IL.Shape_Extruder_Plate_Curved);
 		
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Empty.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Extruder_Plate.get(1)), (byte)45);
@@ -254,42 +254,42 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Shape_SimpleEx_Foil.set(				addItem(tLastID = 10229, "Low Heat Extruder Shape (Foil)"					, "Extruder Shape for making Foils"						, TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 		IL.Shape_SimpleEx_Plate_Tiny.set(		addItem(tLastID = 10230, "Low Heat Extruder Shape (Tiny Plate)"				, "Extruder Shape for making Tiny Plates"				, TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 2)));
 
-		CR.shaped(IL.Shape_SimpleEx_Ingot			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Empty);
+		CR.shaped(IL.Shape_SimpleEx_Ingot			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_SimpleEx_Empty);
 		CR.shaped(IL.Shape_SimpleEx_Plate_Tiny		.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Empty);
-		CR.shaped(IL.Shape_SimpleEx_Plate_Curved	.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_SimpleEx_Empty);
-		CR.shaped(IL.Shape_SimpleEx_Rod				.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_SimpleEx_Empty);
-		CR.shaped(IL.Shape_SimpleEx_Foil			.get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_SimpleEx_Empty);
-		CR.shaped(IL.Shape_SimpleEx_Ring			.get(1), CR.DEF_REV, "   ", " P ", " x ", 'P', IL.Shape_SimpleEx_Empty);
+		CR.shaped(IL.Shape_SimpleEx_Plate_Curved	.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_SimpleEx_Empty);
+		CR.shaped(IL.Shape_SimpleEx_Rod				.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_SimpleEx_Empty);
+		CR.shaped(IL.Shape_SimpleEx_Foil			.get(1), CR.DEF_REV, "	 ", " P ", "  x", 'P', IL.Shape_SimpleEx_Empty);
+		CR.shaped(IL.Shape_SimpleEx_Ring			.get(1), CR.DEF_REV, "	 ", " P ", " x ", 'P', IL.Shape_SimpleEx_Empty);
 		
-		CR.shaped(IL.Shape_SimpleEx_Bolt			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Rod);
+		CR.shaped(IL.Shape_SimpleEx_Bolt			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_SimpleEx_Rod);
 		CR.shaped(IL.Shape_SimpleEx_Wire			.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Rod);
-		CR.shaped(IL.Shape_SimpleEx_Rod_Long		.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_SimpleEx_Rod);
+		CR.shaped(IL.Shape_SimpleEx_Rod_Long		.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_SimpleEx_Rod);
 		
-		CR.shaped(IL.Shape_SimpleEx_Block			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Ingot);
+		CR.shaped(IL.Shape_SimpleEx_Block			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_SimpleEx_Ingot);
 		CR.shaped(IL.Shape_SimpleEx_Pickaxe			.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Ingot);
-		CR.shaped(IL.Shape_SimpleEx_Hammer			.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_SimpleEx_Ingot);
-		CR.shaped(IL.Shape_SimpleEx_Hoe				.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_SimpleEx_Ingot);
+		CR.shaped(IL.Shape_SimpleEx_Hammer			.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_SimpleEx_Ingot);
+		CR.shaped(IL.Shape_SimpleEx_Hoe				.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_SimpleEx_Ingot);
 		
-		CR.shaped(IL.Shape_SimpleEx_Gear			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Ring);
+		CR.shaped(IL.Shape_SimpleEx_Gear			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_SimpleEx_Ring);
 		CR.shaped(IL.Shape_SimpleEx_Gear_Small		.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Ring);
-		CR.shaped(IL.Shape_SimpleEx_Bottle			.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_SimpleEx_Ring);
-		CR.shaped(IL.Shape_SimpleEx_Cell			.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_SimpleEx_Ring);
-		CR.shaped(IL.Shape_SimpleEx_CCC				.get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_SimpleEx_Ring);
+		CR.shaped(IL.Shape_SimpleEx_Bottle			.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_SimpleEx_Ring);
+		CR.shaped(IL.Shape_SimpleEx_Cell			.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_SimpleEx_Ring);
+		CR.shaped(IL.Shape_SimpleEx_CCC				.get(1), CR.DEF_REV, "	 ", " P ", "  x", 'P', IL.Shape_SimpleEx_Ring);
 		
-		CR.shaped(IL.Shape_SimpleEx_Axe				.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Tiny);
+		CR.shaped(IL.Shape_SimpleEx_Axe				.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Tiny);
 		CR.shaped(IL.Shape_SimpleEx_Shovel			.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Tiny);
-		CR.shaped(IL.Shape_SimpleEx_File			.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Tiny);
-		CR.shaped(IL.Shape_SimpleEx_Sword			.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_SimpleEx_Plate_Tiny);
-		CR.shaped(IL.Shape_SimpleEx_Saw				.get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_SimpleEx_Plate_Tiny);
+		CR.shaped(IL.Shape_SimpleEx_File			.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Tiny);
+		CR.shaped(IL.Shape_SimpleEx_Sword			.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_SimpleEx_Plate_Tiny);
+		CR.shaped(IL.Shape_SimpleEx_Saw				.get(1), CR.DEF_REV, "	 ", " P ", "  x", 'P', IL.Shape_SimpleEx_Plate_Tiny);
 		
-		CR.shaped(IL.Shape_SimpleEx_Plate			.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Foil);
+		CR.shaped(IL.Shape_SimpleEx_Plate			.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_SimpleEx_Foil);
 		CR.shaped(IL.Shape_SimpleEx_Casing			.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Foil);
 		
-		CR.shaped(IL.Shape_SimpleEx_Pipe_Tiny		.get(1), CR.DEF_REV, "x  ", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Curved);
+		CR.shaped(IL.Shape_SimpleEx_Pipe_Tiny		.get(1), CR.DEF_REV, "x	 ", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Curved);
 		CR.shaped(IL.Shape_SimpleEx_Pipe_Small		.get(1), CR.DEF_REV, " x ", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Curved);
-		CR.shaped(IL.Shape_SimpleEx_Pipe_Medium		.get(1), CR.DEF_REV, "  x", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Curved);
-		CR.shaped(IL.Shape_SimpleEx_Pipe_Large		.get(1), CR.DEF_REV, "   ", " Px", "   ", 'P', IL.Shape_SimpleEx_Plate_Curved);
-		CR.shaped(IL.Shape_SimpleEx_Pipe_Huge		.get(1), CR.DEF_REV, "   ", " P ", "  x", 'P', IL.Shape_SimpleEx_Plate_Curved);
+		CR.shaped(IL.Shape_SimpleEx_Pipe_Medium		.get(1), CR.DEF_REV, "	x", " P ", "   ", 'P', IL.Shape_SimpleEx_Plate_Curved);
+		CR.shaped(IL.Shape_SimpleEx_Pipe_Large		.get(1), CR.DEF_REV, "	 ", " Px", "   ", 'P', IL.Shape_SimpleEx_Plate_Curved);
+		CR.shaped(IL.Shape_SimpleEx_Pipe_Huge		.get(1), CR.DEF_REV, "	 ", " P ", "  x", 'P', IL.Shape_SimpleEx_Plate_Curved);
 		
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Empty.get(1)), (byte)55);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_SimpleEx_Plate.get(1)), (byte)55);
@@ -333,10 +333,10 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Shape_Foodmold_Baguette.set(			addItem(tLastID = 10803, "Food Grade Mold (Baguette)"		, "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
 		IL.Shape_Foodmold_Cylinder.set(			addItem(tLastID = 10804, "Food Grade Mold (Cylinder)"		, "", TC.stack(TC.FABRICO, 2), TC.stack(TC.METALLUM, 1)));
 		
-		CR.shaped(IL.Shape_Foodmold_Bun				.get(1), CR.DEF_REV, "h  ", " P ", "   ", 'P', IL.Shape_Foodmold_Empty);
+		CR.shaped(IL.Shape_Foodmold_Bun				.get(1), CR.DEF_REV, "h	 ", " P ", "   ", 'P', IL.Shape_Foodmold_Empty);
 		CR.shaped(IL.Shape_Foodmold_Bread			.get(1), CR.DEF_REV, " h ", " P ", "   ", 'P', IL.Shape_Foodmold_Empty);
-		CR.shaped(IL.Shape_Foodmold_Baguette		.get(1), CR.DEF_REV, "  h", " P ", "   ", 'P', IL.Shape_Foodmold_Empty);
-		CR.shaped(IL.Shape_Foodmold_Cylinder		.get(1), CR.DEF_REV, "   ", " Ph", "   ", 'P', IL.Shape_Foodmold_Empty);
+		CR.shaped(IL.Shape_Foodmold_Baguette		.get(1), CR.DEF_REV, "	h", " P ", "   ", 'P', IL.Shape_Foodmold_Empty);
+		CR.shaped(IL.Shape_Foodmold_Cylinder		.get(1), CR.DEF_REV, "	 ", " Ph", "   ", 'P', IL.Shape_Foodmold_Empty);
 		
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Empty.get(1)), (byte)45);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Shape_Foodmold_Bun.get(1)), (byte)45);
@@ -423,14 +423,14 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.SENSORS[i].set(						addItem(12140+i, "Compact Sensor ("+VN[i]+")"				, "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.SENSUS, 1+i)));
 		}
 		
-		CR.shaped(IL.MOTORS[0].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.bolt     .dat(MT.IronMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'R', OP.stick.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[0]);
-		CR.shaped(IL.MOTORS[0].get(1), CR.DEF		, "CWR", "WIW", "PWC", 'I', OP.bolt     .dat(MT.SteelMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'R', OP.stick.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[0]);
-		CR.shaped(IL.MOTORS[1].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.IronMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[1]), 'R', OP.stick.dat(MT.DATA.Electric_T[1]), 'W', OP.wireGt01.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[1]);
-		CR.shaped(IL.MOTORS[1].get(1), CR.DEF		, "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.SteelMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[1]), 'R', OP.stick.dat(MT.DATA.Electric_T[1]), 'W', OP.wireGt01.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[1]);
-		CR.shaped(IL.MOTORS[2].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.SteelMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[2]), 'R', OP.stick.dat(MT.DATA.Electric_T[2]), 'W', OP.wireGt02.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[2]);
-		CR.shaped(IL.MOTORS[3].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.SteelMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[3]), 'R', OP.stick.dat(MT.DATA.Electric_T[3]), 'W', OP.wireGt02.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[3]);
-		CR.shaped(IL.MOTORS[4].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.NeodymiumMagnetic)	, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[4]), 'R', OP.stick.dat(MT.DATA.Electric_T[4]), 'W', OP.wireGt04.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[4]);
-		CR.shaped(IL.MOTORS[5].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick    .dat(MT.NeodymiumMagnetic)	, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[5]), 'R', OP.stick.dat(MT.DATA.Electric_T[5]), 'W', OP.wireGt04.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[5]);
+		CR.shaped(IL.MOTORS[0].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.bolt		.dat(MT.IronMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'R', OP.stick.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[0]);
+		CR.shaped(IL.MOTORS[0].get(1), CR.DEF		, "CWR", "WIW", "PWC", 'I', OP.bolt		.dat(MT.SteelMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'R', OP.stick.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[0]);
+		CR.shaped(IL.MOTORS[1].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick	.dat(MT.IronMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[1]), 'R', OP.stick.dat(MT.DATA.Electric_T[1]), 'W', OP.wireGt01.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[1]);
+		CR.shaped(IL.MOTORS[1].get(1), CR.DEF		, "CWR", "WIW", "PWC", 'I', OP.stick	.dat(MT.SteelMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[1]), 'R', OP.stick.dat(MT.DATA.Electric_T[1]), 'W', OP.wireGt01.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[1]);
+		CR.shaped(IL.MOTORS[2].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick	.dat(MT.SteelMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[2]), 'R', OP.stick.dat(MT.DATA.Electric_T[2]), 'W', OP.wireGt02.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[2]);
+		CR.shaped(IL.MOTORS[3].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick	.dat(MT.SteelMagnetic)		, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[3]), 'R', OP.stick.dat(MT.DATA.Electric_T[3]), 'W', OP.wireGt02.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[3]);
+		CR.shaped(IL.MOTORS[4].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick	.dat(MT.NeodymiumMagnetic)	, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[4]), 'R', OP.stick.dat(MT.DATA.Electric_T[4]), 'W', OP.wireGt04.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[4]);
+		CR.shaped(IL.MOTORS[5].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stick	.dat(MT.NeodymiumMagnetic)	, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[5]), 'R', OP.stick.dat(MT.DATA.Electric_T[5]), 'W', OP.wireGt04.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[5]);
 		CR.shaped(IL.MOTORS[6].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)	, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[6]), 'R', OP.stick.dat(MT.DATA.Electric_T[6]), 'W', OP.wireGt08.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[6]);
 		CR.shaped(IL.MOTORS[7].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)	, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[7]), 'R', OP.stick.dat(MT.DATA.Electric_T[7]), 'W', OP.wireGt12.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[7]);
 		CR.shaped(IL.MOTORS[8].get(1), CR.DEF_REV	, "CWR", "WIW", "PWC", 'I', OP.stickLong.dat(MT.NeodymiumMagnetic)	, 'P', OP.plateCurved.dat(MT.DATA.Electric_T[8]), 'R', OP.stick.dat(MT.DATA.Electric_T[8]), 'W', OP.wireGt16.dat(MT.AnnealedCopper), 'C', MT.DATA.CABLES_01[8]);
@@ -643,10 +643,10 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Circuit_Part_EnderPearl.set(			addItem(tLastID = 30198, "Circuit Part (Enderpearl)"		, "Needs to be placed on a Circuit Plate"			, TC.stack(TC.ALIENIS, 1)));
 		IL.Circuit_Part_EnderEye.set(			addItem(tLastID = 30199, "Circuit Part (Ender Eye)"			, "Needs to be placed on a Circuit Plate"			, TC.stack(TC.ALIENIS, 1)));
 		
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Cu				, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_Basic		.get(9));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.AnnealedCopper	, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_Basic		.get(9));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Cu				, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_Basic		.get(9));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.AnnealedCopper	, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_Basic		.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Cu				, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_Basic		.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.AnnealedCopper	, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_Basic		.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Cu				, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_Basic		.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.AnnealedCopper	, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_Basic		.get(9));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Cu				, 1), OP.dustTiny.mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 1)}, IL.Circuit_Part_Basic		.get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.AnnealedCopper	, 1), OP.dustTiny.mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 1)}, IL.Circuit_Part_Basic		.get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Cu				, 1), OP.dustTiny.mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 1)}, IL.Circuit_Part_Basic		.get(1));
@@ -671,15 +671,15 @@ public class MultiItemTechnological extends MultiItemRandom {
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Mithril			, 1), OP.wireFine.mat(MT.Signalum	, 1), OP.plateGemTiny.mat(MT.Si				, 1)}, IL.Circuit_Part_Magic		.get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Mithril			, 1), OP.wireFine.mat(MT.Signalum	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 1)}, IL.Circuit_Part_Magic		.get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Enderium			, 1), OP.wireFine.mat(MT.Signalum	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 1)}, IL.Circuit_Part_Enderium		.get(1));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Signalum			, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_Signalum		.get(9));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Signalum			, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_Signalum		.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Signalum			, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_Signalum		.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Signalum			, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_Signalum		.get(9));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Signalum			, 1), OP.dustTiny.mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 1)}, IL.Circuit_Part_Signalum		.get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.wireFine.mat(MT.Signalum			, 1), OP.dustTiny.mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 1)}, IL.Circuit_Part_Signalum		.get(1));
 
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderPearl	, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_EnderPearl	.get(9));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderPearl	, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_EnderPearl	.get(9));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderEye		, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_EnderEye		.get(9));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderEye		, 9), OP.dust    .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_EnderEye		.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderPearl	, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_EnderPearl	.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderPearl	, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_EnderPearl	.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderEye		, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 9)}, IL.Circuit_Part_EnderEye		.get(9));
+		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderEye		, 9), OP.dust	 .mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 9)}, IL.Circuit_Part_EnderEye		.get(9));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderPearl	, 1), OP.dustTiny.mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 1)}, IL.Circuit_Part_EnderPearl	.get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderPearl	, 1), OP.dustTiny.mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy	, 1)}, IL.Circuit_Part_EnderPearl	.get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, new ItemStack[] {OP.plateGemTiny.mat(MT.EnderEye		, 1), OP.dustTiny.mat(MT.Redstone	, 1), OP.plateGemTiny.mat(MT.Si				, 1)}, IL.Circuit_Part_EnderEye		.get(1));
@@ -696,14 +696,14 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Circuit_Board_Enderium.set(			addItem(tLastID = 30213, "Circuit Board (Enderium)"			, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1)));
 		IL.Circuit_Board_Signalum.set(			addItem(tLastID = 30215, "Circuit Board (Signalum)"			, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1)));
 		
-		IL.Circuit_Board_BC_Redstone.set(		addItem(tLastID = 30280, "Circuit Board (BC Redstone)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U))));
-		IL.Circuit_Board_BC_Iron.set(			addItem(tLastID = 30281, "Circuit Board (BC Iron)"			, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(ANY.Fe, 4*U))));
-		IL.Circuit_Board_BC_Gold.set(			addItem(tLastID = 30282, "Circuit Board (BC Gold)"			, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.Au, 4*U))));
-		IL.Circuit_Board_BC_Diamond.set(		addItem(tLastID = 30283, "Circuit Board (BC Diamond)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.Diamond, 4*U))));
-		IL.Circuit_Board_BC_Ender.set(			addItem(tLastID = 30284, "Circuit Board (BC Ender)"			, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.EnderPearl, 4*U))));
+		IL.Circuit_Board_BC_Redstone.set(		addItem(tLastID = 30280, "Circuit Board (BC Redstone)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U))));
+		IL.Circuit_Board_BC_Iron.set(			addItem(tLastID = 30281, "Circuit Board (BC Iron)"			, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(ANY.Fe, 4*U))));
+		IL.Circuit_Board_BC_Gold.set(			addItem(tLastID = 30282, "Circuit Board (BC Gold)"			, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.Au, 4*U))));
+		IL.Circuit_Board_BC_Diamond.set(		addItem(tLastID = 30283, "Circuit Board (BC Diamond)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.Diamond, 4*U))));
+		IL.Circuit_Board_BC_Ender.set(			addItem(tLastID = 30284, "Circuit Board (BC Ender)"			, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.EnderPearl, 4*U))));
 		IL.Circuit_Board_BC_Quartz.set(			addItem(tLastID = 30285, "Circuit Board (BC Quartz)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,5*U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U))));
-		IL.Circuit_Board_BC_Comparator.set(		addItem(tLastID = 30286, "Circuit Board (BC Comparator)"	, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone,16*U))));
-		IL.Circuit_Board_BC_Emerald.set(		addItem(tLastID = 30287, "Circuit Board (BC Emerald)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(ANY.Emerald, 4*U))));
+		IL.Circuit_Board_BC_Comparator.set(		addItem(tLastID = 30286, "Circuit Board (BC Comparator)"	, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone,16*U))));
+		IL.Circuit_Board_BC_Emerald.set(		addItem(tLastID = 30287, "Circuit Board (BC Emerald)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(ANY.Emerald, 4*U))));
 		
 		IL.Circuit_Board_HSLA_Circuit.set(		addItem(tLastID = 30298, "Circuit Board (HSLA Circuit)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.RoC.mLoaded ? null : TD.Creative.HIDDEN));
 		IL.Circuit_Board_Power_Module.set(		addItem(tLastID = 30299, "Circuit Board (Power Module)"		, "Needs to be soldered properly"					, TC.stack(TC.FABRICO, 1), MD.RoC.mLoaded ? null : TD.Creative.HIDDEN));
@@ -745,14 +745,14 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Circuit_Enderium.set(				addItem(tLastID = 30313, "Circuit (Enderium)"				, "Computes simple Data somewhere else"				, OP.circuit.dat(MT.Enderium)));
 		IL.Circuit_Signalum.set(				addItem(tLastID = 30315, "Circuit (Signalum)"				, "Computes simple Logic"							, OP.circuit.dat(MT.Signalum)));
 		
-		IL.Circuit_BC_Redstone.set(				addItem(tLastID = 30380, "Circuit (BC Redstone)"			, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 1), TC.stack(TC.POTENTIA, 3), TC.stack(TC.MACHINA, 1)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U))));
-		IL.Circuit_BC_Iron.set(					addItem(tLastID = 30381, "Circuit (BC Iron)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 2), TC.stack(TC.METALLUM, 4)								, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(ANY.Fe, 4*U))));
-		IL.Circuit_BC_Gold.set(					addItem(tLastID = 30382, "Circuit (BC Gold)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 3), TC.stack(TC.LUCRUM, 2), TC.stack(TC.METALLUM, 2)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.Au, 4*U))));
-		IL.Circuit_BC_Diamond.set(				addItem(tLastID = 30383, "Circuit (BC Diamond)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 4), TC.stack(TC.LUCRUM, 2), TC.stack(TC.VITREUS, 2)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.Diamond, 4*U))));
-		IL.Circuit_BC_Ender.set(				addItem(tLastID = 30384, "Circuit (BC Ender)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 3), TC.stack(TC.ALIENIS, 4)								, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.EnderPearl, 4*U))));
+		IL.Circuit_BC_Redstone.set(				addItem(tLastID = 30380, "Circuit (BC Redstone)"			, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 1), TC.stack(TC.POTENTIA, 3), TC.stack(TC.MACHINA, 1)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U))));
+		IL.Circuit_BC_Iron.set(					addItem(tLastID = 30381, "Circuit (BC Iron)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 2), TC.stack(TC.METALLUM, 4)								, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(ANY.Fe, 4*U))));
+		IL.Circuit_BC_Gold.set(					addItem(tLastID = 30382, "Circuit (BC Gold)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 3), TC.stack(TC.LUCRUM, 2), TC.stack(TC.METALLUM, 2)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.Au, 4*U))));
+		IL.Circuit_BC_Diamond.set(				addItem(tLastID = 30383, "Circuit (BC Diamond)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 4), TC.stack(TC.LUCRUM, 2), TC.stack(TC.VITREUS, 2)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.Diamond, 4*U))));
+		IL.Circuit_BC_Ender.set(				addItem(tLastID = 30384, "Circuit (BC Ender)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 3), TC.stack(TC.ALIENIS, 4)								, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(MT.EnderPearl, 4*U))));
 		IL.Circuit_BC_Quartz.set(				addItem(tLastID = 30385, "Circuit (BC Quartz)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 2), TC.stack(TC.POTENTIA, 2), TC.stack(TC.VITREUS, 2)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,5*U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U))));
-		IL.Circuit_BC_Comparator.set(			addItem(tLastID = 30386, "Circuit (BC Comparator)"			, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 2), TC.stack(TC.MACHINA, 4)								, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone,16*U))));
-		IL.Circuit_BC_Emerald.set(				addItem(tLastID = 30387, "Circuit (BC Emerald)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 4), TC.stack(TC.LUCRUM, 2), TC.stack(TC.VITREUS, 2)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,  U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(ANY.Emerald, 4*U))));
+		IL.Circuit_BC_Comparator.set(			addItem(tLastID = 30386, "Circuit (BC Comparator)"			, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 2), TC.stack(TC.MACHINA, 4)								, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone,16*U))));
+		IL.Circuit_BC_Emerald.set(				addItem(tLastID = 30387, "Circuit (BC Emerald)"				, "Made for tweaking Recipes"						, MD.BC_SILICON.mLoaded ? null : TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 4), TC.stack(TC.LUCRUM, 2), TC.stack(TC.VITREUS, 2)		, new OreDictItemData(OM.stack(MT.Signalum, U), OM.stack(ANY.SiO2,	U), OM.stack(MT.Plastic, U), OM.stack(MT.Redstone, 4*U), OM.stack(ANY.Emerald, 4*U))));
 		
 		RM.Bath.addRecipe1(T, F, F, F, T, 0, 64, IL.Circuit_Board_Basic			.get(1), MT.Pb				.liquid(U, T), NF, IL.Circuit_Basic			.get(1));
 		RM.Bath.addRecipe1(T, F, F, F, T, 0, 64, IL.Circuit_Board_Basic			.get(1), MT.Sn				.liquid(U, T), NF, IL.Circuit_Basic			.get(1));

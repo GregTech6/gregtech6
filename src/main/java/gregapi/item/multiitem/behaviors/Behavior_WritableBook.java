@@ -36,13 +36,13 @@ import net.minecraft.world.World;
 public class Behavior_WritableBook extends AbstractBehaviorDefault {
 	public static final Behavior_WritableBook INSTANCE = new Behavior_WritableBook();
 	
-    @Override
+	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
-    	aPlayer.displayGUIBook(ST.make(Items.writable_book, 1, 0, aStack.getTagCompound()));
-    	return super.onItemRightClick(aItem, aStack, aWorld, aPlayer);
-    }
-    
+		aPlayer.displayGUIBook(ST.make(Items.writable_book, 1, 0, aStack.getTagCompound()));
+		return super.onItemRightClick(aItem, aStack, aWorld, aPlayer);
+	}
+	
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		String tTitle = UT.NBT.getBookTitle(aStack);

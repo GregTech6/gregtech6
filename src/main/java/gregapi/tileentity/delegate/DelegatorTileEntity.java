@@ -38,13 +38,13 @@ import net.minecraftforge.common.util.ForgeDirection;
  * @author Gregorius Techneticies
  */
 public final class DelegatorTileEntity<T> implements IHasWorld, IHasCoords {
-    /** the TileEntity. This should be an instance of TileEntity. */
+	/** the TileEntity. This should be an instance of TileEntity. */
 	public final T mTileEntity;
 	/** the Coordinates the TileEntity has, or should have in case mTileEntity is null. */
 	public final int mX, mY, mZ;
 	/** the World Object the TileEntity has, or should have in case mTileEntity is null. */
 	public final World mWorld;
-    /** the Side of the Delegate responsible for handling. So a TE-Tesseract alike can go a curve. */
+	/** the Side of the Delegate responsible for handling. So a TE-Tesseract alike can go a curve. */
 	public final byte mSideOfTileEntity;
 
 	public DelegatorTileEntity(DelegatorTileEntity<T> aDelegator) {
@@ -124,17 +124,17 @@ public final class DelegatorTileEntity<T> implements IHasWorld, IHasCoords {
 	@Override public int getY() {return mY;}
 	@Override public int getZ() {return mZ;}
 	@Override public int getOffsetX (byte aSide) {return mX + OFFSETS_X[aSide];}
-    @Override public int getOffsetY (byte aSide) {return mY + OFFSETS_Y[aSide];}
-    @Override public int getOffsetZ (byte aSide) {return mZ + OFFSETS_Z[aSide];}
+	@Override public int getOffsetY (byte aSide) {return mY + OFFSETS_Y[aSide];}
+	@Override public int getOffsetZ (byte aSide) {return mZ + OFFSETS_Z[aSide];}
 	@Override public int getOffsetX (byte aSide, int aMultiplier) {return mX + OFFSETS_X[aSide] * aMultiplier;}
-    @Override public int getOffsetY (byte aSide, int aMultiplier) {return mY + OFFSETS_Y[aSide] * aMultiplier;}
-    @Override public int getOffsetZ (byte aSide, int aMultiplier) {return mZ + OFFSETS_Z[aSide] * aMultiplier;}
+	@Override public int getOffsetY (byte aSide, int aMultiplier) {return mY + OFFSETS_Y[aSide] * aMultiplier;}
+	@Override public int getOffsetZ (byte aSide, int aMultiplier) {return mZ + OFFSETS_Z[aSide] * aMultiplier;}
 	@Override public int getOffsetXN(byte aSide) {return mX - OFFSETS_X[aSide];}
-    @Override public int getOffsetYN(byte aSide) {return mY - OFFSETS_Y[aSide];}
-    @Override public int getOffsetZN(byte aSide) {return mZ - OFFSETS_Z[aSide];}
+	@Override public int getOffsetYN(byte aSide) {return mY - OFFSETS_Y[aSide];}
+	@Override public int getOffsetZN(byte aSide) {return mZ - OFFSETS_Z[aSide];}
 	@Override public int getOffsetXN(byte aSide, int aMultiplier) {return mX - OFFSETS_X[aSide] * aMultiplier;}
-    @Override public int getOffsetYN(byte aSide, int aMultiplier) {return mY - OFFSETS_Y[aSide] * aMultiplier;}
-    @Override public int getOffsetZN(byte aSide, int aMultiplier) {return mZ - OFFSETS_Z[aSide] * aMultiplier;}
+	@Override public int getOffsetYN(byte aSide, int aMultiplier) {return mY - OFFSETS_Y[aSide] * aMultiplier;}
+	@Override public int getOffsetZN(byte aSide, int aMultiplier) {return mZ - OFFSETS_Z[aSide] * aMultiplier;}
 	@Override public ChunkCoordinates getCoords() {return new ChunkCoordinates(mX, mY, mZ);}
 	@Override public ChunkCoordinates getOffset (byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetX (aSide, aMultiplier), getOffsetY (aSide, aMultiplier), getOffsetZ (aSide, aMultiplier));}
 	@Override public ChunkCoordinates getOffsetN(byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetXN(aSide, aMultiplier), getOffsetYN(aSide, aMultiplier), getOffsetZN(aSide, aMultiplier));}

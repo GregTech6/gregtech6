@@ -41,16 +41,16 @@ public interface IItemProjectile {
 		public EntityProjectile(World aWorld) {
 			super(aWorld);
 		}
-	    public EntityProjectile(World aWorld, double aX, double aY, double aZ) {
-	        super(aWorld, aX, aY, aZ);
-	    }
-	    public EntityProjectile(World aWorld, EntityLivingBase aShootingEntity, EntityLivingBase aWhateverThatIs, float aSpeed, float aPrecision) {
-	        super(aWorld, aShootingEntity, aWhateverThatIs, aSpeed, aPrecision);
-	    }
-	    public EntityProjectile(World aWorld, EntityLivingBase aShootingEntity, float aSpeed) {
-	    	super(aWorld, aShootingEntity, aSpeed);
-	    }
-	    
+		public EntityProjectile(World aWorld, double aX, double aY, double aZ) {
+			super(aWorld, aX, aY, aZ);
+		}
+		public EntityProjectile(World aWorld, EntityLivingBase aShootingEntity, EntityLivingBase aWhateverThatIs, float aSpeed, float aPrecision) {
+			super(aWorld, aShootingEntity, aWhateverThatIs, aSpeed, aPrecision);
+		}
+		public EntityProjectile(World aWorld, EntityLivingBase aShootingEntity, float aSpeed) {
+			super(aWorld, aShootingEntity, aSpeed);
+		}
+		
 		public abstract void setProjectileStack(ItemStack aStack);
 	}
 }

@@ -44,7 +44,7 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	public double mArmorAbsorbtionPercentage;
 	
 //	public static Map jumpChargeMap = new HashMap<>();
-    
+	
 	public GT_EnergyArmor_Item(int aID, String aUnlocalized, String aEnglish, int aCharge, int aTransfer, int aTier, int aDamageEnergyCost, int aSpecials, double aArmorAbsorbtionPercentage, boolean aChargeProvider, int aType, int aArmorIndex) {
 		super(ArmorMaterial.DIAMOND, aArmorIndex, aType);
 		setMaxStackSize(1);
@@ -61,7 +61,7 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 		mArmorAbsorbtionPercentage = aArmorAbsorbtionPercentage;
 		
 		
-        MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@Override
@@ -80,19 +80,19 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	}
 	
 	@Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister aIconRegister) {
-        this.itemIcon = aIconRegister.registerIcon(RES_PATH_ITEM + getUnlocalizedName());
-    }
-    
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister aIconRegister) {
+		this.itemIcon = aIconRegister.registerIcon(RES_PATH_ITEM + getUnlocalizedName());
+	}
+	
 	@Override
 	@SuppressWarnings("unchecked")
-    public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		aList.add("Tier: " + mTier);
-		if ((mSpecials &    1) != 0) aList.add("Rebreather");
-		if ((mSpecials &    2) != 0) aList.add("Inertia Damper");
-		if ((mSpecials &    4) != 0) aList.add("Food Replicator");
-		if ((mSpecials &    8) != 0) aList.add("Medicine Module");
+		if ((mSpecials &	1) != 0) aList.add("Rebreather");
+		if ((mSpecials &	2) != 0) aList.add("Inertia Damper");
+		if ((mSpecials &	4) != 0) aList.add("Food Replicator");
+		if ((mSpecials &	8) != 0) aList.add("Medicine Module");
 		if ((mSpecials &   16) != 0) aList.add("Lamp");
 		if ((mSpecials &   32) != 0) aList.add("Solarpanel");
 		if ((mSpecials &   64) != 0) aList.add("Extinguisher Module");
@@ -100,100 +100,100 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 		if ((mSpecials &  256) != 0) aList.add("Speed Booster");
 		if ((mSpecials &  512) != 0) aList.add("Invisibility Field");
 		if ((mSpecials & 1024) != 0) aList.add("Infinite Charge");
-    }
+	}
 	
-    private static void setCharge(ItemStack aStack) {
+	private static void setCharge(ItemStack aStack) {
 		NBTTagCompound tNBT = aStack.getTagCompound();
 		if (tNBT == null) tNBT = UT.NBT.make();
 		tNBT.setInteger("charge", 1000000000);
-        aStack.setTagCompound(tNBT);
-    }
-    
-    @Override
+		aStack.setTagCompound(tNBT);
+	}
+	
+	@Override
 	public void onArmorTick(World aWorld, EntityPlayer aPlayer, ItemStack aStack) {/*
 		if (mSpecials == 0) return;
 		
 		if (!aPlayer.worldObj.isRemote && (mSpecials & 1) != 0) {
-	        int var4 = aPlayer.getAir();
-            if (GT_ModHandler.canUseElectricItem(aStack, 1000) && var4 < 50) {
-            	aPlayer.setAir(var4 + 250);
-            	GT_ModHandler.useElectricItem(aStack, 1000, aPlayer);
-            }
+			int var4 = aPlayer.getAir();
+			if (GT_ModHandler.canUseElectricItem(aStack, 1000) && var4 < 50) {
+				aPlayer.setAir(var4 + 250);
+				GT_ModHandler.useElectricItem(aStack, 1000, aPlayer);
+			}
 		}
 		
 		if (!aPlayer.worldObj.isRemote && (mSpecials & 4) != 0) {
-            if (GT_ModHandler.canUseElectricItem(aStack, 50000) && aPlayer.getFoodStats().needFood()) {
-            	aPlayer.getFoodStats().addStats(1, 0.0F);
-                GT_ModHandler.useElectricItem(aStack, 50000, aPlayer);
-            }
+			if (GT_ModHandler.canUseElectricItem(aStack, 50000) && aPlayer.getFoodStats().needFood()) {
+				aPlayer.getFoodStats().addStats(1, 0.0F);
+				GT_ModHandler.useElectricItem(aStack, 50000, aPlayer);
+			}
 		}
 		
 		if ((mSpecials & 8) != 0) {
-            if (GT_ModHandler.canUseElectricItem(aStack, 10000) && aPlayer.isPotionActive(Potion.poison)) {
-            	UT.Entities.removePotion(aPlayer, Potion.poison.id);
-                GT_ModHandler.useElectricItem(aStack, 10000, aPlayer);
-            }
-            if (GT_ModHandler.canUseElectricItem(aStack, 100000) && aPlayer.isPotionActive(Potion.wither)) {
-            	UT.Entities.removePotion(aPlayer, Potion.wither.id);
-                GT_ModHandler.useElectricItem(aStack, 100000, aPlayer);
-            }
+			if (GT_ModHandler.canUseElectricItem(aStack, 10000) && aPlayer.isPotionActive(Potion.poison)) {
+				UT.Entities.removePotion(aPlayer, Potion.poison.id);
+				GT_ModHandler.useElectricItem(aStack, 10000, aPlayer);
+			}
+			if (GT_ModHandler.canUseElectricItem(aStack, 100000) && aPlayer.isPotionActive(Potion.wither)) {
+				UT.Entities.removePotion(aPlayer, Potion.wither.id);
+				GT_ModHandler.useElectricItem(aStack, 100000, aPlayer);
+			}
 		}
 
 		if ((mSpecials & 64) != 0) {
-            aPlayer.setFire(0);
+			aPlayer.setFire(0);
 		}
 		
 		if (!aPlayer.worldObj.isRemote && (mSpecials & 128) != 0) {
-            float var6 = jumpChargeMap.containsKey(aPlayer) ? ((Float)jumpChargeMap.get(aPlayer)).floatValue() : 1.0F;
+			float var6 = jumpChargeMap.containsKey(aPlayer) ? ((Float)jumpChargeMap.get(aPlayer)).floatValue() : 1.0F;
 
-            if (GT_ModHandler.canUseElectricItem(aStack, 1000) && aPlayer.onGround && var6 < 1.0F) {
-                var6 = 1.0F;
-                GT_ModHandler.useElectricItem(aStack, 1000, aPlayer);
-            }
+			if (GT_ModHandler.canUseElectricItem(aStack, 1000) && aPlayer.onGround && var6 < 1.0F) {
+				var6 = 1.0F;
+				GT_ModHandler.useElectricItem(aStack, 1000, aPlayer);
+			}
 
-            if (aPlayer.motionY >= 0.0D && var6 > 0.0F && !aPlayer.isInWater()) {
-                if (GT_ModHandler.getJumpKeyDown(aPlayer) && GT_ModHandler.getBoostKeyDown(aPlayer)) {
-                    if (var6 == 1.0F) {
-                    	aPlayer.motionX *= 3.5D;
-                    	aPlayer.motionZ *= 3.5D;
-                    }
+			if (aPlayer.motionY >= 0.0D && var6 > 0.0F && !aPlayer.isInWater()) {
+				if (GT_ModHandler.getJumpKeyDown(aPlayer) && GT_ModHandler.getBoostKeyDown(aPlayer)) {
+					if (var6 == 1.0F) {
+						aPlayer.motionX *= 3.5D;
+						aPlayer.motionZ *= 3.5D;
+					}
 
-                    aPlayer.motionY += (var6 * 0.3F);
-                    var6 = (float)(var6 * 0.75D);
-                } else if (var6 < 1.0F) {
-                    var6 = 0.0F;
-                }
-            }
+					aPlayer.motionY += (var6 * 0.3F);
+					var6 = (float)(var6 * 0.75D);
+				} else if (var6 < 1.0F) {
+					var6 = 0.0F;
+				}
+			}
 
-            jumpChargeMap.put(aPlayer, Float.valueOf(var6));
+			jumpChargeMap.put(aPlayer, Float.valueOf(var6));
 		}
 
 		if ((mSpecials & 256) != 0) {
-            if (GT_ModHandler.canUseElectricItem(aStack, 100) && aPlayer.isSprinting() && (aPlayer.onGround && Math.abs(aPlayer.motionX) + Math.abs(aPlayer.motionZ) > 0.10000000149011612D || aPlayer.isInWater())) {
-                GT_ModHandler.useElectricItem(aStack, 100, aPlayer);
-                float var7 = 0.22F;
-                
-                if (aPlayer.isInWater()) {
-                    GT_ModHandler.useElectricItem(aStack, 100, aPlayer);
-                    var7 = 0.1F;
-                    
-                    
-                    if (aPlayer.motionY > 0) {
-                    	aPlayer.motionY += 0.10000000149011612D;
-                    }
-                }
-                
-                if (var7 > 0.0F) {
-                	aPlayer.moveFlying(0.0F, 1.0F, var7);
-                }
-            }
+			if (GT_ModHandler.canUseElectricItem(aStack, 100) && aPlayer.isSprinting() && (aPlayer.onGround && Math.abs(aPlayer.motionX) + Math.abs(aPlayer.motionZ) > 0.10000000149011612D || aPlayer.isInWater())) {
+				GT_ModHandler.useElectricItem(aStack, 100, aPlayer);
+				float var7 = 0.22F;
+				
+				if (aPlayer.isInWater()) {
+					GT_ModHandler.useElectricItem(aStack, 100, aPlayer);
+					var7 = 0.1F;
+					
+					
+					if (aPlayer.motionY > 0) {
+						aPlayer.motionY += 0.10000000149011612D;
+					}
+				}
+				
+				if (var7 > 0.0F) {
+					aPlayer.moveFlying(0.0F, 1.0F, var7);
+				}
+			}
 		}
 		
 		if ((mSpecials & 512) != 0) {
-            if (GT_ModHandler.canUseElectricItem(aStack, 10000)) {
-            	GT_ModHandler.useElectricItem(aStack, 10000, aPlayer);
-                aPlayer.addPotionEffect(new PotionEffect(Potion.invisibility.getId(), 25, 1, true));
-            }
+			if (GT_ModHandler.canUseElectricItem(aStack, 10000)) {
+				GT_ModHandler.useElectricItem(aStack, 10000, aPlayer);
+				aPlayer.addPotionEffect(new PotionEffect(Potion.invisibility.getId(), 25, 1, true));
+			}
 		}
 		
 		if (!aPlayer.worldObj.isRemote && (mSpecials & (16|32)) != 0) {
@@ -230,20 +230,20 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	*/}
 	
 	@Override
-    public boolean getShareTag() {
-        return true;
-    }
+	public boolean getShareTag() {
+		return true;
+	}
 	
 	@Override
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 //	@SuppressWarnings("unchecked")
-    public void getSubItems(Item aItem, CreativeTabs var2, @SuppressWarnings("rawtypes") List var3) {
-        //ItemStack tCharged = ST.make(this, 1, 0), tUncharged = ST.make(this, 1, getMaxDamage());
-        //GT_ModHandler.chargeElectricItem(tCharged, Integer.MAX_VALUE, Integer.MAX_VALUE, true, false);
-        //var3.add(tCharged);
-        //var3.add(tUncharged);
-    }
-    
+	public void getSubItems(Item aItem, CreativeTabs var2, @SuppressWarnings("rawtypes") List var3) {
+		//ItemStack tCharged = ST.make(this, 1, 0), tUncharged = ST.make(this, 1, getMaxDamage());
+		//GT_ModHandler.chargeElectricItem(tCharged, Integer.MAX_VALUE, Integer.MAX_VALUE, true, false);
+		//var3.add(tCharged);
+		//var3.add(tUncharged);
+	}
+	
 	public boolean canProvideEnergy(ItemStack aStack) {
 		if ((mSpecials & 1024) != 0) setCharge(aStack);
 		return mChargeProvider;
@@ -275,62 +275,62 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	}
 	
 	@Override
-    public int getItemEnchantability() {
-        return 0;
-    }
+	public int getItemEnchantability() {
+		return 0;
+	}
 	
 	@Override
-    public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-        return false;
-    }
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
 	
 	@Override
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-        return false;
-    }
+	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
+		return false;
+	}
 	
-    // @ForgeSubscribe
-    public void onEntityLivingFallEvent(LivingFallEvent var1) {/*
-        if (!var1.entity.worldObj.isRemote && var1.entity instanceof EntityPlayer) {
-            EntityPlayer var2 = (EntityPlayer)var1.entity;
-            for (int i = 0; i < 4; i++) {
-	            ItemStack var3 = var2.inventory.armorInventory[i];
-	            if (var3 != null && var3.getItem() == this && (mSpecials & 2) != 0) {
-	                int var4 = (int)var1.distance - 3;
-	                int var5 = (this.mDamageEnergyCost * var4) / 4;
-	                if (var5 <= GT_ModHandler.dischargeElectricItem(var3, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true, true)) {
-	                    GT_ModHandler.dischargeElectricItem(var3, var5, Integer.MAX_VALUE, true, false, true);
-	                    var1.setCanceled(true);
-	                    break;
-	                }
-	            }
-            }
-        }
-    */}
-    /*
+	// @ForgeSubscribe
+	public void onEntityLivingFallEvent(LivingFallEvent var1) {/*
+		if (!var1.entity.worldObj.isRemote && var1.entity instanceof EntityPlayer) {
+			EntityPlayer var2 = (EntityPlayer)var1.entity;
+			for (int i = 0; i < 4; i++) {
+				ItemStack var3 = var2.inventory.armorInventory[i];
+				if (var3 != null && var3.getItem() == this && (mSpecials & 2) != 0) {
+					int var4 = (int)var1.distance - 3;
+					int var5 = (this.mDamageEnergyCost * var4) / 4;
+					if (var5 <= GT_ModHandler.dischargeElectricItem(var3, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true, true)) {
+						GT_ModHandler.dischargeElectricItem(var3, var5, Integer.MAX_VALUE, true, false, true);
+						var1.setCanceled(true);
+						break;
+					}
+				}
+			}
+		}
+	*/}
+	/*
 	@Override
-    public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase var1, ItemStack var2, DamageSource var3, double var4, int var6) {
-    	return new ISpecialArmor.ArmorProperties((var3 == DamageSource.fall && (mSpecials & 2) != 0)?10:0, getBaseAbsorptionRatio() * mArmorAbsorbtionPercentage, mDamageEnergyCost > 0 ? 25 * GT_ModHandler.dischargeElectricItem(var2, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true, true) / mDamageEnergyCost : 0);
-    }
-	
-	@Override
-    public int getArmorDisplay(EntityPlayer var1, ItemStack var2, int var3) {
-        return (int)Math.round(20.0D * getBaseAbsorptionRatio() * mArmorAbsorbtionPercentage);
-    }
+	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase var1, ItemStack var2, DamageSource var3, double var4, int var6) {
+		return new ISpecialArmor.ArmorProperties((var3 == DamageSource.fall && (mSpecials & 2) != 0)?10:0, getBaseAbsorptionRatio() * mArmorAbsorbtionPercentage, mDamageEnergyCost > 0 ? 25 * GT_ModHandler.dischargeElectricItem(var2, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true, true) / mDamageEnergyCost : 0);
+	}
 	
 	@Override
-    public void damageArmor(EntityLivingBase var1, ItemStack var2, DamageSource var3, int var4, int var5) {
-        //GT_ModHandler.dischargeElectricItem(var2, var4 * mDamageEnergyCost, Integer.MAX_VALUE, true, false, true);
-    }
+	public int getArmorDisplay(EntityPlayer var1, ItemStack var2, int var3) {
+		return (int)Math.round(20.0D * getBaseAbsorptionRatio() * mArmorAbsorbtionPercentage);
+	}
 	
-    private double getBaseAbsorptionRatio() {
-    	if (mArmorAbsorbtionPercentage <= 0) return 0.00;
-        switch (armorType) {
-            case  0: return 0.15;
-            case  1: return 0.40;
-            case  2: return 0.30;
-            case  3: return 0.15;
-            default: return 0.00;
-        }
-    }*/
+	@Override
+	public void damageArmor(EntityLivingBase var1, ItemStack var2, DamageSource var3, int var4, int var5) {
+		//GT_ModHandler.dischargeElectricItem(var2, var4 * mDamageEnergyCost, Integer.MAX_VALUE, true, false, true);
+	}
+	
+	private double getBaseAbsorptionRatio() {
+		if (mArmorAbsorbtionPercentage <= 0) return 0.00;
+		switch (armorType) {
+			case  0: return 0.15;
+			case  1: return 0.40;
+			case  2: return 0.30;
+			case  3: return 0.15;
+			default: return 0.00;
+		}
+	}*/
 }

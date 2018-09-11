@@ -145,7 +145,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override public ChunkCoordinates getOffset (byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetX (aSide, aMultiplier), getOffsetY (aSide, aMultiplier), getOffsetZ (aSide, aMultiplier));}
 	@Override public ChunkCoordinates getOffsetN(byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetXN(aSide, aMultiplier), getOffsetYN(aSide, aMultiplier), getOffsetZN(aSide, aMultiplier));}
 	@Override public boolean isServerSide() {return worldObj == null ? cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer() : !worldObj.isRemote;}
-	@Override public boolean isClientSide() {return worldObj == null ? cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isClient() :  worldObj.isRemote;}
+	@Override public boolean isClientSide() {return worldObj == null ? cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isClient() :	worldObj.isRemote;}
 	@Override public boolean openGUI(EntityPlayer aPlayer) {return openGUI(aPlayer, 0);}
 	@Override public boolean openGUI(EntityPlayer aPlayer, int aID) {if (aPlayer == null) return F; aPlayer.openGui(GAPI, aID, worldObj, xCoord, yCoord, zCoord); return T;}
 	@Override public int getRandomNumber(int aRange) {return RNGSUS.nextInt(aRange);}
@@ -640,9 +640,9 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public Collection<TagData> getEnergyTypes(byte aSide) {return Collections.emptyList();}
 	public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return Collections.emptyList();}
 	
-	public boolean isEnergyEmittingTo   (TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && getSurfaceSizeAttachable(aSide) > 0;}
+	public boolean isEnergyEmittingTo	(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && getSurfaceSizeAttachable(aSide) > 0;}
 	public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F) && getSurfaceSizeAttachable(aSide) > 0;}
-	public synchronized long doEnergyExtraction(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return aSize != 0 && isEnergyEmittingTo   (aEnergyType, aSide, F) ? TD.Energy.ALL_SIZE_IRRELEVANT.contains(aEnergyType) || Math.abs(aSize) >= getEnergySizeOutputMin(aEnergyType, aSide) ? doExtract(aEnergyType, aSide, aSize, aAmount, aDoExtract) : 0 : 0;}
+	public synchronized long doEnergyExtraction(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return aSize != 0 && isEnergyEmittingTo	  (aEnergyType, aSide, F) ? TD.Energy.ALL_SIZE_IRRELEVANT.contains(aEnergyType) || Math.abs(aSize) >= getEnergySizeOutputMin(aEnergyType, aSide) ? doExtract(aEnergyType, aSide, aSize, aAmount, aDoExtract) : 0 : 0;}
 	public synchronized long doEnergyInjection (TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject ) {return aSize != 0 && isEnergyAcceptingFrom(aEnergyType, aSide, F) ? TD.Energy.ALL_SIZE_IRRELEVANT.contains(aEnergyType) || Math.abs(aSize) >= getEnergySizeInputMin (aEnergyType, aSide) ? doInject (aEnergyType, aSide, aSize, aAmount, aDoInject ) : aAmount : 0;}
 	public long getEnergyOffered(TagData aEnergyType, byte aSide, long aSize) {return 0;}
 	public long getEnergySizeOutputRecommended(TagData aEnergyType, byte aSide) {return 0;}
@@ -762,7 +762,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	// Fire Stuff
 	
 	public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return aDefault ? 150 : 0;}
-	public int getFlammability   (byte aSide, boolean aDefault) {return aDefault ? 150 : 0;}
+	public int getFlammability	 (byte aSide, boolean aDefault) {return aDefault ? 150 : 0;}
 	public void setOnFire() {WD.burn(worldObj, getCoords(), F, F);}
 	public boolean setToFire() {return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.fire, 0, 3);}
 	public boolean setToAir () {return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air , 0, 3);}

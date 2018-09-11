@@ -115,7 +115,7 @@ public class WorldgenStructureExteriorPistonDoor extends WorldgenStructure {
 		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) {
 			setSmoothBlock(aWorld, aChunkX+ 0, aData.mOffsetY+3, aChunkZ+ 6, aData, aRandom);
 			setSmoothBlock(aWorld, aChunkX+ 0, aData.mOffsetY+3, aChunkZ+ 9, aData, aRandom);
-			for (int tX =  1; tX <=  4; tX++) {
+			for (int tX =  1; tX <=	 4; tX++) {
 				setSmoothBlock(aWorld, aChunkX+tX, aData.mOffsetY+0, aChunkZ+ 6, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+tX, aData.mOffsetY+0, aChunkZ+ 7, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+tX, aData.mOffsetY+0, aChunkZ+ 8, aData, aRandom);
@@ -206,14 +206,14 @@ public class WorldgenStructureExteriorPistonDoor extends WorldgenStructure {
 				setSmoothBlock(aWorld, aChunkX+ 4, aData.mOffsetY+tY, aChunkZ+13, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+ 4, aData.mOffsetY+tY, aChunkZ+12, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+ 5, aData.mOffsetY+tY, aChunkZ+11, aData, aRandom);
-				if (tY >= 3) {                                  
+				if (tY >= 3) {									
 				setSmoothBlock(aWorld, aChunkX+ 6, aData.mOffsetY+tY, aChunkZ+11, aData, aRandom);
-				if (tY >= 4) {                                  
+				if (tY >= 4) {									
 				setSmoothBlock(aWorld, aChunkX+ 7, aData.mOffsetY+tY, aChunkZ+11, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+ 8, aData.mOffsetY+tY, aChunkZ+11, aData, aRandom);
-				}                                                
+				}												 
 				setSmoothBlock(aWorld, aChunkX+ 9, aData.mOffsetY+tY, aChunkZ+11, aData, aRandom);
-				}                                                
+				}												 
 				setSmoothBlock(aWorld, aChunkX+10, aData.mOffsetY+tY, aChunkZ+11, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+11, aData.mOffsetY+tY, aChunkZ+12, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+11, aData.mOffsetY+tY, aChunkZ+13, aData, aRandom);
@@ -275,7 +275,7 @@ public class WorldgenStructureExteriorPistonDoor extends WorldgenStructure {
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0) {
 			setSmoothBlock(aWorld, aChunkX+ 6, aData.mOffsetY+3, aChunkZ+ 0, aData, aRandom);
 			setSmoothBlock(aWorld, aChunkX+ 9, aData.mOffsetY+3, aChunkZ+ 0, aData, aRandom);
-			for (int tZ =  1; tZ <=  4; tZ++) {
+			for (int tZ =  1; tZ <=	 4; tZ++) {
 				setSmoothBlock(aWorld, aChunkX+ 6, aData.mOffsetY+0, aChunkZ+tZ, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+ 7, aData.mOffsetY+0, aChunkZ+tZ, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+ 8, aData.mOffsetY+0, aChunkZ+tZ, aData, aRandom);
@@ -286,14 +286,14 @@ public class WorldgenStructureExteriorPistonDoor extends WorldgenStructure {
 				setSmoothBlock(aWorld, aChunkX+ 4, aData.mOffsetY+tY, aChunkZ+ 2, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+ 4, aData.mOffsetY+tY, aChunkZ+ 3, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+ 5, aData.mOffsetY+tY, aChunkZ+ 4, aData, aRandom);
-				if (tY >= 3) {                                  
+				if (tY >= 3) {									
 				setSmoothBlock(aWorld, aChunkX+ 6, aData.mOffsetY+tY, aChunkZ+ 4, aData, aRandom);
-				if (tY >= 4) {                                  
+				if (tY >= 4) {									
 				setSmoothBlock(aWorld, aChunkX+ 7, aData.mOffsetY+tY, aChunkZ+ 4, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+ 8, aData.mOffsetY+tY, aChunkZ+ 4, aData, aRandom);
-				}                                                
+				}												 
 				setSmoothBlock(aWorld, aChunkX+ 9, aData.mOffsetY+tY, aChunkZ+ 4, aData, aRandom);
-				}                                                
+				}												 
 				setSmoothBlock(aWorld, aChunkX+10, aData.mOffsetY+tY, aChunkZ+ 4, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+11, aData.mOffsetY+tY, aChunkZ+ 1, aData, aRandom);
 				setSmoothBlock(aWorld, aChunkX+11, aData.mOffsetY+tY, aChunkZ+ 2, aData, aRandom);

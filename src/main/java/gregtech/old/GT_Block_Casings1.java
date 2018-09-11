@@ -25,8 +25,8 @@ import net.minecraft.util.IIcon;
 
 public class GT_Block_Casings1 extends GT_Block_Casings_Abstract {
 	public GT_Block_Casings1() {
-        super("gt.blockcasings", MaterialMachines.instance);
-//      for (byte i = 0; i < 16; i++) Textures.BlockIcons.CASING_BLOCKS[i] = new BlockTextureCopied(this, 6, i);
+		super("gt.blockcasings", MaterialMachines.instance);
+//		for (byte i = 0; i < 16; i++) Textures.BlockIcons.CASING_BLOCKS[i] = new BlockTextureCopied(this, 6, i);
 		LH.add(getUnlocalizedName()+ ".0.name", "ULV Machine Casing");
 		LH.add(getUnlocalizedName()+ ".1.name", "LV Machine Casing");
 		LH.add(getUnlocalizedName()+ ".2.name", "MV Machine Casing");
@@ -64,8 +64,8 @@ public class GT_Block_Casings1 extends GT_Block_Casings_Abstract {
 		return null;
 	}
 	/*
-    @Override
-    public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {
-        return aWorld.getBlockMetadata(aX, aY, aZ) > 9 ? super.colorMultiplier(aWorld, aX, aY, aZ) : (Dyes.MACHINE_METAL.mRGBa[0] << 16) | (Dyes.MACHINE_METAL.mRGBa[1] << 8) | Dyes.MACHINE_METAL.mRGBa[2];
-    }*/
+	@Override
+	public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {
+		return aWorld.getBlockMetadata(aX, aY, aZ) > 9 ? super.colorMultiplier(aWorld, aX, aY, aZ) : (Dyes.MACHINE_METAL.mRGBa[0] << 16) | (Dyes.MACHINE_METAL.mRGBa[1] << 8) | Dyes.MACHINE_METAL.mRGBa[2];
+	}*/
 }

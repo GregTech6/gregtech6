@@ -108,7 +108,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		mEnergy = aNBT.getLong(NBT_ENERGY);
-    	if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
+		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperature = aNBT.getLong(NBT_TEMPERATURE);
 		if (aNBT.hasKey(NBT_TEMPERATURE+".old")) oTemperature = aNBT.getLong(NBT_TEMPERATURE+".old");
 		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
@@ -192,7 +192,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 				setToAir();
 				return;
-			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && oTemperature <  tMaterial.mMaterial.mMeltingPoint) {
+			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && oTemperature <	tMaterial.mMaterial.mMeltingPoint) {
 				int tSize = mContent.size();
 				mContent.remove(i--);
 				OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(mContent);
@@ -293,7 +293,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		
 		if (mTemperature > getTemperatureMax(SIDE_INSIDE)) {
 			UT.Sounds.send(SFX.MC_FIZZ, this);
-			if (mTemperature >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, (mTemperature - 300) / 25.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
+			if (mTemperature >=	 320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, (mTemperature - 300) / 25.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 			for (int j = 0, k = UT.Code.bindInt(mTemperature / 25); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
 			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
 			return;
@@ -654,8 +654,8 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override public float getSurfaceSize			(byte aSide) {return 1.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 1.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return 0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return !SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return !SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return !SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return !SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return !SIDES_TOP[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	

@@ -68,8 +68,8 @@ public class MultiTileEntityBathingPotTableWood extends MultiTileEntityBathingPo
 	@Override public float getSurfaceSize			(byte aSide) {return 1.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 1.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return 0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	@Override public boolean attachCoversFirst		(byte aSide) {return F;}

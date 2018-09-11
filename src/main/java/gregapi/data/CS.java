@@ -154,10 +154,10 @@ public class CS {
 	
 	/** The Voltage Tiers. */
 	public static final long[]
-	VMIN	= { 1, 16,  64,  256, 1024,  4096, 16384,  65536,  262144, 1048576,  4194304, 16777216,  67108864,  268435456, 1073741824L,  4294967296L},
-	VREC	= { 8, 32, 128,  512, 2048,  8192, 32768, 131072,  524288, 2097152,  8388608, 33554432, 134217728,  536870912, 2147483648L,  8589934592L},
+	VMIN	= { 1, 16,	64,	 256, 1024,	 4096, 16384,  65536,  262144, 1048576,	 4194304, 16777216,	 67108864,	268435456, 1073741824L,	 4294967296L},
+	VREC	= { 8, 32, 128,	 512, 2048,	 8192, 32768, 131072,  524288, 2097152,	 8388608, 33554432, 134217728,	536870912, 2147483648L,	 8589934592L},
 	VMAX	= {16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576, 4194304, 16777216, 67108864, 268435456, 1073741824, 4294967296L, 17179869184L},
-	V		= { 8, 32, 128,  512, 2048,  8192, 32768, 131072,  524288, 2097152,  8388608, 33554432, 134217728,  536870912, 2147483648L,  8589934592L};
+	V		= { 8, 32, 128,	 512, 2048,	 8192, 32768, 131072,  524288, 2097152,	 8388608, 33554432, 134217728,	536870912, 2147483648L,	 8589934592L};
 	
 	/** The short Names for the Voltages */
 	public static final String[] VN = new String[] {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "PUV1", "PUV2", "PUV3", "PUV4", "PUV5", "\u03A9V", "\u03A9V"};
@@ -307,56 +307,56 @@ public class CS {
 	  CA_WHITE				= new short[] {255, 255, 255, 255}
 	, CA_GRAY_192			= new short[] {192, 192, 192, 255}
 	, CA_GRAY_128			= new short[] {128, 128, 128, 255}
-	, CA_GRAY_64			= new short[] { 64,  64,  64, 255}
-	, CA_GRAY_32			= new short[] { 32,  32,  32, 255}
-	, CA_RED_255			= new short[] {255,   0,   0, 255}
-	, CA_RED_192			= new short[] {192,   0,   0, 255}
-	, CA_RED_128			= new short[] {128,   0,   0, 255}
-	, CA_RED_64				= new short[] { 64,   0,   0, 255}
-	, CA_RED_32				= new short[] { 32,   0,   0, 255}
-	, CA_GREEN_255			= new short[] {  0, 255,   0, 255}
-	, CA_GREEN_192			= new short[] {  0, 192,   0, 255}
-	, CA_GREEN_128			= new short[] {  0, 128,   0, 255}
-	, CA_GREEN_64			= new short[] {  0,  64,   0, 255}
-	, CA_GREEN_32			= new short[] {  0,  32,   0, 255}
-	, CA_BLUE_255			= new short[] {  0,   0, 255, 255}
-	, CA_BLUE_192			= new short[] {  0,   0, 192, 255}
-	, CA_BLUE_128			= new short[] {  0,   0, 128, 255}
-	, CA_BLUE_64			= new short[] {  0,   0,  64, 255}
-	, CA_BLUE_32			= new short[] {  0,   0,  32, 255}
+	, CA_GRAY_64			= new short[] { 64,	 64,  64, 255}
+	, CA_GRAY_32			= new short[] { 32,	 32,  32, 255}
+	, CA_RED_255			= new short[] {255,	  0,   0, 255}
+	, CA_RED_192			= new short[] {192,	  0,   0, 255}
+	, CA_RED_128			= new short[] {128,	  0,   0, 255}
+	, CA_RED_64				= new short[] { 64,	  0,   0, 255}
+	, CA_RED_32				= new short[] { 32,	  0,   0, 255}
+	, CA_GREEN_255			= new short[] {	 0, 255,   0, 255}
+	, CA_GREEN_192			= new short[] {	 0, 192,   0, 255}
+	, CA_GREEN_128			= new short[] {	 0, 128,   0, 255}
+	, CA_GREEN_64			= new short[] {	 0,	 64,   0, 255}
+	, CA_GREEN_32			= new short[] {	 0,	 32,   0, 255}
+	, CA_BLUE_255			= new short[] {	 0,	  0, 255, 255}
+	, CA_BLUE_192			= new short[] {	 0,	  0, 192, 255}
+	, CA_BLUE_128			= new short[] {	 0,	  0, 128, 255}
+	, CA_BLUE_64			= new short[] {	 0,	  0,  64, 255}
+	, CA_BLUE_32			= new short[] {	 0,	  0,  32, 255}
 	, CA_LIGHT_BLUE_255		= new short[] {128, 128, 255, 255}
-	, CA_LIGHT_BLUE_192		= new short[] { 96,  96, 192, 255}
-	, CA_LIGHT_BLUE_128		= new short[] { 64,  64, 128, 255}
-	, CA_LIGHT_BLUE_64		= new short[] { 32,  32,  64, 255}
-	, CA_LIGHT_BLUE_32		= new short[] { 16,  16,  32, 255}
+	, CA_LIGHT_BLUE_192		= new short[] { 96,	 96, 192, 255}
+	, CA_LIGHT_BLUE_128		= new short[] { 64,	 64, 128, 255}
+	, CA_LIGHT_BLUE_64		= new short[] { 32,	 32,  64, 255}
+	, CA_LIGHT_BLUE_32		= new short[] { 16,	 16,  32, 255}
 	, CA_YELLOW_255			= new short[] {255, 255,   0, 255}
 	, CA_YELLOW_192			= new short[] {192, 192,   0, 255}
 	, CA_YELLOW_128			= new short[] {128, 128,   0, 255}
-	, CA_YELLOW_64			= new short[] { 64,  64,   0, 255}
-	, CA_YELLOW_32			= new short[] { 32,  32,   0, 255}
+	, CA_YELLOW_64			= new short[] { 64,	 64,   0, 255}
+	, CA_YELLOW_32			= new short[] { 32,	 32,   0, 255}
 	, CA_LIGHT_YELLOW_255	= new short[] {255, 255, 128, 255}
 	, CA_LIGHT_YELLOW_192	= new short[] {192, 192,  96, 255}
 	, CA_LIGHT_YELLOW_128	= new short[] {128, 128,  64, 255}
-	, CA_LIGHT_YELLOW_64	= new short[] { 64,  64,  32, 255}
-	, CA_LIGHT_YELLOW_32	= new short[] { 32,  32,  16, 255}
+	, CA_LIGHT_YELLOW_64	= new short[] { 64,	 64,  32, 255}
+	, CA_LIGHT_YELLOW_32	= new short[] { 32,	 32,  16, 255}
 	;
 	
 	public static final short[]
 	DYE_None			= {255, 255, 255, 255},
-	DYE_Black			= { 32,  32,  32, 255},
-	DYE_Red				= {255,   0,   0, 255},
-	DYE_Green			= {  0, 255,   0, 255},
-	DYE_Brown			= { 96,  64,   0, 255},
-	DYE_Blue			= {  0,   0, 255, 255},
-	DYE_Purple			= {128,   0, 128, 255},
-	DYE_Cyan			= {  0, 255, 255, 255},
+	DYE_Black			= { 32,	 32,  32, 255},
+	DYE_Red				= {255,	  0,   0, 255},
+	DYE_Green			= {	 0, 255,   0, 255},
+	DYE_Brown			= { 96,	 64,   0, 255},
+	DYE_Blue			= {	 0,	  0, 255, 255},
+	DYE_Purple			= {128,	  0, 128, 255},
+	DYE_Cyan			= {	 0, 255, 255, 255},
 	DYE_LightGray		= {192, 192, 192, 255},
 	DYE_Gray			= {128, 128, 128, 255},
 	DYE_Pink			= {255, 192, 192, 255},
 	DYE_Lime			= {128, 255, 128, 255},
 	DYE_Yellow			= {255, 255,   0, 255},
 	DYE_LightBlue		= {128, 128, 255, 255},
-	DYE_Magenta			= {255,   0, 255, 255},
+	DYE_Magenta			= {255,	  0, 255, 255},
 	DYE_Orange			= {255, 128,   0, 255},
 	DYE_White			= {255, 255, 255, 255};
 	
@@ -441,8 +441,8 @@ public class CS {
 									SIDE_Y_POS	= 1, SIDE_TOP		= 1, SIDE_UP		= 1,
 									SIDE_Z_NEG	= 2, SIDE_NORTH		= 2, // Also a Side with a stupidly mirrored Texture
 									SIDE_Z_POS	= 3, SIDE_SOUTH		= 3,
-									SIDE_X_NEG	= 4, SIDE_WEST 		= 4,
-									SIDE_X_POS	= 5, SIDE_EAST 		= 5, // Also a Side with a stupidly mirrored Texture
+									SIDE_X_NEG	= 4, SIDE_WEST		= 4,
+									SIDE_X_POS	= 5, SIDE_EAST		= 5, // Also a Side with a stupidly mirrored Texture
 									SIDE_ANY	= 6, SIDE_UNKNOWN	= 6, SIDE_INVALID = 6, SIDE_INSIDE = 6, SIDE_UNDEFINED = 6;
 	
 	/**
@@ -564,10 +564,10 @@ public class CS {
 											ALL_SIDES_MIDDLE_DOWN		= new byte[]	{6,0,2,3,4,5,1},
 											ALL_SIDES_VALID				= new byte[]	{0,1,2,3,4,5},
 											ALL_SIDES_VALID_FIRST[]		= new byte[][] {{0,1,2,3,4,5  },{1,0,2,3,4,5  },{2,0,1,3,4,5  },{3,0,1,2,4,5  },{4,0,1,2,3,5  },{5,0,1,2,3,4  },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_ONLY[]		= new byte[][] {{0            },{1            },{2            },{3            },{4            },{5            },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_BUT[]		= new byte[][] {{  1,2,3,4,5  },{0  ,2,3,4,5  },{0,1  ,3,4,5  },{0,1,2  ,4,5  },{0,1,2,3  ,5  },{0,1,2,3,4    },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_BUT_AXIS[]	= new byte[][] {{    2,3,4,5  },{    2,3,4,5  },{0,1    ,4,5  },{0,1    ,4,5  },{0,1,2,3      },{0,1,2,3      },{0,1,2,3,4,5  }},
-											ALL_SIDES_THIS_AND_ANY[]	= new byte[][] {{0          ,6},{1          ,6},{2          ,6},{3          ,6},{4          ,6},{5          ,6},{0,1,2,3,4,5,6}},
+											ALL_SIDES_VALID_ONLY[]		= new byte[][] {{0			  },{1			  },{2			  },{3			  },{4			  },{5			  },{0,1,2,3,4,5  }},
+											ALL_SIDES_VALID_BUT[]		= new byte[][] {{  1,2,3,4,5  },{0	,2,3,4,5  },{0,1  ,3,4,5  },{0,1,2	,4,5  },{0,1,2,3  ,5  },{0,1,2,3,4	  },{0,1,2,3,4,5  }},
+											ALL_SIDES_VALID_BUT_AXIS[]	= new byte[][] {{	 2,3,4,5  },{	 2,3,4,5  },{0,1	,4,5  },{0,1	,4,5  },{0,1,2,3	  },{0,1,2,3	  },{0,1,2,3,4,5  }},
+											ALL_SIDES_THIS_AND_ANY[]	= new byte[][] {{0			,6},{1			,6},{2			,6},{3			,6},{4			,6},{5			,6},{0,1,2,3,4,5,6}},
 											ALL_SIDES_VERTICAL			= new byte[]	{0,1},
 											ALL_SIDES_BOTTOM			= new byte[]	{0},
 											ALL_SIDES_TOP				= new byte[]	{1},
@@ -1406,7 +1406,7 @@ public class CS {
 		
 		public static final Set<Object> stoneOverridable = new HashSetNoNulls<>(F);
 		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.dirt, Blocks.grass, Blocks.mycelium, Blocks.clay, Blocks.snow);
-		public static final Set<Object> plantableGreens  = new HashSetNoNulls<Object>(F, Blocks.dirt, Blocks.grass, Blocks.farmland);
+		public static final Set<Object> plantableGreens	 = new HashSetNoNulls<Object>(F, Blocks.dirt, Blocks.grass, Blocks.farmland);
 		
 		/** Blocks to not generate Ores in. */
 		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = new ItemStackSet<>();
@@ -1469,51 +1469,51 @@ public class CS {
 	
 	/** Contains the IDs for my Book Shelf Stuff. */
 	public static class BooksGT {
-		//   0 = null
-		//   1 = Book/Written Book/Writable Book/Default
-		//   2 = Enchanted Book
-		//   3 = Black, 4 = White, 5 = Red, 6 = Green, 7 = Blue, 8 = Cyan, 9 = Magenta, 10 = Yellow, 48 = Orange, 49 = Purple
-		//  11 = Material Dictionary
-		//  12 = GT Book
-		//  13 = Thaumonomicon
-		//  14 = Crimson Rites
-		//  15 = Stone Tablets
-		//  16 = Maps
-		//  17 = Crafting
-		//  18 = Scrolls
-		//  19 = Rails
-		//  20 = Wolves
-		//  21 = Witches
-		//  22 = Brewing
-		//  23 = Vampires
-		//  24 = Reika
-		//  25 = Default Folder, 26 = Red Folder, 27 = Green Folder, 28 = Blue Folder
-		//  29 = Clipboard
-		//  30 = Records
-		//  31 = Printing Plates
-		//  32 = Catalogues
-		//  33 = Letters
-		//  34 = Frame
-		//  35 = Floppy Disk
-		//  36 = VHS Tape
-		//  37 = ID Card
-		//  38 = AE Press
-		//  39 = FZ Manual
-		//  40 = OC Manual
-		//  41 = IE Manual
-		//  42 = Lexica Botania
-		//  43 = Metallic Tablet Computer
-		//  44 = Golden Tablet Computer
-		//  45 = Extruder Shapes
-		//  46 = AE Cells
-		//  47 = AE Handhelds
-		//  48 = Orange, 49 = Purple
-		//  50 = Division Sigil
-		//  51 = XL Letters, 52 = XXL Letters
-		//  53 = Dusty Books
-		//  54 = Hard Drives
-		//  55 = Simple Extruder Shapes
-		//  56 = Thaumometer
+		//	 0 = null
+		//	 1 = Book/Written Book/Writable Book/Default
+		//	 2 = Enchanted Book
+		//	 3 = Black, 4 = White, 5 = Red, 6 = Green, 7 = Blue, 8 = Cyan, 9 = Magenta, 10 = Yellow, 48 = Orange, 49 = Purple
+		//	11 = Material Dictionary
+		//	12 = GT Book
+		//	13 = Thaumonomicon
+		//	14 = Crimson Rites
+		//	15 = Stone Tablets
+		//	16 = Maps
+		//	17 = Crafting
+		//	18 = Scrolls
+		//	19 = Rails
+		//	20 = Wolves
+		//	21 = Witches
+		//	22 = Brewing
+		//	23 = Vampires
+		//	24 = Reika
+		//	25 = Default Folder, 26 = Red Folder, 27 = Green Folder, 28 = Blue Folder
+		//	29 = Clipboard
+		//	30 = Records
+		//	31 = Printing Plates
+		//	32 = Catalogues
+		//	33 = Letters
+		//	34 = Frame
+		//	35 = Floppy Disk
+		//	36 = VHS Tape
+		//	37 = ID Card
+		//	38 = AE Press
+		//	39 = FZ Manual
+		//	40 = OC Manual
+		//	41 = IE Manual
+		//	42 = Lexica Botania
+		//	43 = Metallic Tablet Computer
+		//	44 = Golden Tablet Computer
+		//	45 = Extruder Shapes
+		//	46 = AE Cells
+		//	47 = AE Handhelds
+		//	48 = Orange, 49 = Purple
+		//	50 = Division Sigil
+		//	51 = XL Letters, 52 = XXL Letters
+		//	53 = Dusty Books
+		//	54 = Hard Drives
+		//	55 = Simple Extruder Shapes
+		//	56 = Thaumometer
 		// 255 = Stone (this one is supposed to just fill the Shelf)
 		public static final ITexture[] BOOK_TEXTURES_BACK = new ITexture[256];
 		public static final ITexture[] BOOK_TEXTURES_SIDE = new ITexture[256];
@@ -1639,8 +1639,8 @@ public class CS {
 		, TE_FOUNDATION		= "ThermalFoundation"
 		, TE_DYNAMICS		= "ThermalDynamics"
 		
-		, AE 				= "appliedenergistics2"
-		, MO 				= "mo"
+		, AE				= "appliedenergistics2"
+		, MO				= "mo"
 		
 		, TFC				= "terrafirmacraft"
 		
@@ -1845,7 +1845,7 @@ public class CS {
 		, IC_MACHINE_KA_CHING	= MD.IC2.mID.toLowerCase() + ":" + "machines.KaChing"
 		, IC_MACHINE_MAGNETIZER	= MD.IC2.mID.toLowerCase() + ":" + "machines.MagnetizerLoop"
 		
-	   	, MISSING = null;
+		, MISSING = null;
 	}
 	
 	/** File Paths and Resource Paths */
@@ -1858,11 +1858,11 @@ public class CS {
 	, TEX_DIR_ENTITY			= TEX_DIR + "entity/"
 	, TEX_DIR_ASPECTS			= TEX_DIR + "aspects/"
 	
-	, RES_PATH					= MD.GT.mID  + ":" + TEX_DIR
-	, RES_PATH_GUI				= MD.GT.mID  + ":" + TEX_DIR_GUI
-	, RES_PATH_ITEM				= MD.GT.mID  + ":"
-	, RES_PATH_BLOCK			= MD.GT.mID  + ":"
-	, RES_PATH_ENTITY			= MD.GT.mID  + ":" + TEX_DIR_ENTITY
+	, RES_PATH					= MD.GT.mID	 + ":" + TEX_DIR
+	, RES_PATH_GUI				= MD.GT.mID	 + ":" + TEX_DIR_GUI
+	, RES_PATH_ITEM				= MD.GT.mID	 + ":"
+	, RES_PATH_BLOCK			= MD.GT.mID	 + ":"
+	, RES_PATH_ENTITY			= MD.GT.mID	 + ":" + TEX_DIR_ENTITY
 	, RES_PATH_API_ITEM			= MD.GAPI.mID + ":"
 	, RES_PATH_API_BLOCK		= MD.GAPI.mID + ":"
 	, RES_PATH_ASPECTS			= MD.GAPI.mID + ":" + TEX_DIR_ASPECTS

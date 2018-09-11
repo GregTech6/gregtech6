@@ -49,14 +49,14 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 	public void onTickPost(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && !aData.mStopped && aTimer > 2 && aData.mTileEntity instanceof MultiTileEntityPipeFluid) {
 			FluidTankGT tTank = ((MultiTileEntityPipeFluid)aData.mTileEntity).mTanks[0];
-		    if (tTank.isFull()) {
+			if (tTank.isFull()) {
 				DelegatorTileEntity<IFluidHandler> tDelegator = aData.mTileEntity.getAdjacentTank(aSide);
 				if (tDelegator.mTileEntity != null) {
 					UT.Fluids.move(tTank, tDelegator);
 				} else if (UT.Fluids.gas(tTank.getFluid()) && !tDelegator.hasCollisionBox()) {
-				   	UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_FIZZ, 1.0F, 1.0F, aData.mTileEntity.getCoords());
-				   	try {for (Entity tEntity : (ArrayList<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(Entity.class, aData.box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, UT.Fluids.temperature(tTank.getFluid()), 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
-				   	GarbageGT.trash(tTank);
+					UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_FIZZ, 1.0F, 1.0F, aData.mTileEntity.getCoords());
+					try {for (Entity tEntity : (ArrayList<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(Entity.class, aData.box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, UT.Fluids.temperature(tTank.getFluid()), 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+					GarbageGT.trash(tTank);
 				}
 			}
 		}

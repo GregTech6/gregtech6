@@ -90,7 +90,7 @@ public class GT_BaseCrop extends CropCard {
 	}
 	
 	@Override
-    public String[] attributes() {
+	public String[] attributes() {
 		return mAttributes;
 	}
 	
@@ -100,14 +100,14 @@ public class GT_BaseCrop extends CropCard {
 	}
 	
 	@Override
-    public final boolean canGrow(ICropTile aCrop) {
-        return aCrop.getSize()  < maxSize();
-    }
+	public final boolean canGrow(ICropTile aCrop) {
+		return aCrop.getSize()	< maxSize();
+	}
 	
 	@Override
-    public final boolean canBeHarvested(ICropTile aCrop) {
-        return aCrop.getSize() >= mHarvestSize;
-    }
+	public final boolean canBeHarvested(ICropTile aCrop) {
+		return aCrop.getSize() >= mHarvestSize;
+	}
 	
 	@Override
 	public boolean canCross(ICropTile aCrop) {
@@ -115,10 +115,10 @@ public class GT_BaseCrop extends CropCard {
 	}
 	
 	@Override
-    public int stat(int n) {
+	public int stat(int n) {
 		if (n < 0 || n >= mStats.length) return 0;
 		return mStats[n];
-    }
+	}
 	
 	@Override
 	public String name() {
@@ -144,12 +144,12 @@ public class GT_BaseCrop extends CropCard {
 		return ST.copy(mDrop);
 	}
 	
-    @Override
-    public boolean rightclick(ICropTile aCrop, EntityPlayer aPlayer) {
-    	if (!canBeHarvested(aCrop)) return false;
-    	return aCrop.harvest(aPlayer==null?false:aPlayer instanceof EntityPlayerMP);
-    }
-    
+	@Override
+	public boolean rightclick(ICropTile aCrop, EntityPlayer aPlayer) {
+		if (!canBeHarvested(aCrop)) return false;
+		return aCrop.harvest(aPlayer==null?false:aPlayer instanceof EntityPlayerMP);
+	}
+	
 	@Override
 	public int getOptimalHavestSize(ICropTile crop) {
 		return maxSize();

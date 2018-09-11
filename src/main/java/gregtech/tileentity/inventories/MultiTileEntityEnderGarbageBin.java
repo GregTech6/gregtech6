@@ -101,8 +101,8 @@ public class MultiTileEntityEnderGarbageBin extends TileEntityBase07Paintable im
 	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?0.0F:PX_P[ 1];}
 	@Override public float getSurfaceSize			(byte aSide) {return SIDES_TOP[aSide]?1.0F:PX_P[14];}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return getSurfaceSize(aSide);}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	

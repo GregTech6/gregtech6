@@ -37,14 +37,14 @@ public class GT_Circuit_RedstoneMeter extends GT_CircuitryBehavior {
 	
 	@Override
 	public void validateParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		if (aCircuitData[0] <  0) aCircuitData[0] =  0;
+		if (aCircuitData[0] <  0) aCircuitData[0] =	 0;
 		if (aCircuitData[0] > 15) aCircuitData[0] = 15;
-		if (aCircuitData[1] <  0) aCircuitData[1] =  0;
+		if (aCircuitData[1] <  0) aCircuitData[1] =	 0;
 		if (aCircuitData[1] > 15) aCircuitData[1] = 15;
 		if (aCircuitData[1] < aCircuitData[0]) aCircuitData[1] = aCircuitData[0];
-		if (aCircuitData[2] <  0) aCircuitData[2] =  0;
-		if (aCircuitData[2] >  1) aCircuitData[2] =  1;
-		if (aCircuitData[3] <  0) aCircuitData[3] =  0;
+		if (aCircuitData[2] <  0) aCircuitData[2] =	 0;
+		if (aCircuitData[2] >  1) aCircuitData[2] =	 1;
+		if (aCircuitData[3] <  0) aCircuitData[3] =	 0;
 		if (aCircuitData[3] > 15) aCircuitData[3] = 15;
 	}
 	

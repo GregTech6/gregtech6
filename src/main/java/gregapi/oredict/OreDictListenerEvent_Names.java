@@ -51,7 +51,7 @@ public abstract class OreDictListenerEvent_Names implements IOreDictListenerEven
 		aOreDictName = aOreDictName.toString();
 		List<IOreDictListenerEvent> tList = NAME_EVENTS.get(aOreDictName);
 		if (tList == null) NAME_EVENTS.put((String)aOreDictName, tList = new ArrayListNoNulls<>());
-		if (!tList.add(aListener)) throw new UnknownError("Unknown Error: " + aOreDictName + "  -  " + aListener.toString());
+		if (!tList.add(aListener)) throw new UnknownError("Unknown Error: " + aOreDictName + "	-  " + aListener.toString());
 		return T;
 	}
 	public boolean addListener(Object aOreDictName1, Object aOreDictName2, IOreDictListenerEvent aListener) {

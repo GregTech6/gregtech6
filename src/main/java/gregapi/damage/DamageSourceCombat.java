@@ -35,7 +35,7 @@ public class DamageSourceCombat extends EntityDamageSource {
 	}
 	
 	@Override
-    public IChatComponent func_151519_b(EntityLivingBase aTarget) {
+	public IChatComponent func_151519_b(EntityLivingBase aTarget) {
 		return mDeathMessage == null ? super.func_151519_b(aTarget) : mDeathMessage;
-    }
+	}
 }

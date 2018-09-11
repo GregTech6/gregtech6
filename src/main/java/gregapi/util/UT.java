@@ -524,7 +524,7 @@ public class UT {
 			switch (aState) {
 			case STATE_SOLID:			rFluid.setViscosity(10000); break;
 			case STATE_LIQUID:			rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
-			case STATE_GASEOUS:			rFluid.setViscosity(  200); rFluid.setDensity(  -100); FluidsGT.GAS.add(aName); break;
+			case STATE_GASEOUS:			rFluid.setViscosity(  200); rFluid.setDensity(	-100); FluidsGT.GAS.add(aName); break;
 			case STATE_PLASMA:			rFluid.setViscosity(   10); rFluid.setDensity(-10000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
 			case 4:						rFluid.setViscosity( 1000); break;
 			}
@@ -602,7 +602,7 @@ public class UT {
 					ERR.println("WARNING: String for Page of written Book too long! -> " + aPages[i]);
 			}
 			rNBT.setTag("pages", tNBTList);
-			if (aLogging) OUT.println("NOTE: Added Book to Book List  -  Mapping: '"+aMapping+"'  -  Name: '"+aTitle+"'  -  Author: '"+aAuthor+"'");
+			if (aLogging) OUT.println("NOTE: Added Book to Book List  -	 Mapping: '"+aMapping+"'  -	 Name: '"+aTitle+"'	 -	Author: '"+aAuthor+"'");
 			NBT.set(rStack, rNBT);
 			BOOK_MAP.put(aMapping, ST.copy(rStack));
 			BOOK_LIST.add(aMapping);
@@ -772,8 +772,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBurning		.mMaterial == aMat && tMat.mTargetBurning		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetBurning		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to burn for getting "+aMat.getLocal()+"\n===================\n";
@@ -788,9 +788,9 @@ public class UT {
 			}
 			
 			if (temp) {tBook.add(tPage); temp=F;}
-		 	
-		 	//----------
-		 	
+			
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetPulver		.mMaterial == aMat && tMat.mTargetPulver		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetPulver		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to pulverise for getting "+aMat.getLocal()+"\n===================\n";
@@ -806,8 +806,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetBending		.mMaterial == aMat && tMat.mTargetBending		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetBending		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to bend for getting "+aMat.getLocal()+"\n===================\n";
@@ -823,8 +823,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCompressing	.mMaterial == aMat && tMat.mTargetCompressing	.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCompressing	.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to compress for getting "+aMat.getLocal()+"\n===================\n";
@@ -840,8 +840,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCrushing	.mMaterial == aMat && tMat.mTargetCrushing		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCrushing		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to crush for getting "+aMat.getLocal()+"\n===================\n";
@@ -857,8 +857,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetCutting		.mMaterial == aMat && tMat.mTargetCutting		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetCutting		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to cut for getting "+aMat.getLocal()+"\n===================\n";
@@ -874,8 +874,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetForging		.mMaterial == aMat && tMat.mTargetForging		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetForging		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to forge for getting "+aMat.getLocal()+"\n===================\n";
@@ -891,8 +891,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetSmashing	.mMaterial == aMat && tMat.mTargetSmashing		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetSmashing		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to smash for getting "+aMat.getLocal()+"\n===================\n";
@@ -908,8 +908,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			tMap = new HashMap<>(); for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (tMat.mTargetRegistration == tMat && tMat != aMat && tMat.mTargetWorking		.mMaterial == aMat && tMat.mTargetWorking		.mAmount > 0 && !tMat.getLocal().equals(aMat.getLocal())) tMap.put(tMat, tMat.mTargetWorking		.mAmount);
 			tMap = Code.sortByValuesDescending(tMap);
 			tPage = "Resources to use in other ways for getting "+aMat.getLocal()+"\n===================\n";
@@ -925,8 +925,8 @@ public class UT {
 			
 			if (temp) {tBook.add(tPage); temp=F;}
 			
-		 	//----------
-		 	
+			//----------
+			
 			for (IOreDictConfigurationComponent tConfig : aMat.mAlloyCreationRecipes) {
 				tPage="Alloy:\n"+aMat.getLocal()+"\n===================\nMelting: "+aMat.mMeltingPoint+" K\nBoiling: "+aMat.mBoilingPoint+" K\n===================\nComponents per "+tConfig.getCommonDivider() + "\n";
 				for (OreDictMaterialStack tMt2 : tConfig.getUndividedComponents()) tPage += (tMt2.mAmount / U)+" "+tMt2.mMaterial.getLocal()+"\n";
@@ -934,15 +934,15 @@ public class UT {
 				break;
 			}
 			
-		 	//----------
-		 	
+			//----------
+			
 			for (OreDictMaterial tMat : aMat.mAlloyComponentReferences) {
 				for (IOreDictConfigurationComponent tConfig : tMat.mAlloyCreationRecipes) {
 					for (OreDictMaterialStack tMatStack : tConfig.getUndividedComponents()) {
 						if (tMatStack.mMaterial == aMat) {
 							tPage="Alloy:\n"+tMat.getLocal()+"\n===================\nMelting: "+tMat.mMeltingPoint+" K\nBoiling: "+tMat.mBoilingPoint+" K\n===================\nComponents per "+tConfig.getCommonDivider() + "\n";
 							for (OreDictMaterialStack tMt2 : tConfig.getUndividedComponents()) tPage += (tMt2.mAmount / U)+" "+tMt2.mMaterial.getLocal()+"\n";
-						 	tBook.add(tPage);
+							tBook.add(tPage);
 							break;
 						}
 					}
@@ -1032,12 +1032,12 @@ public class UT {
 		}
 		
 		public static byte toByteS(short aValue, int aIndex) {return (byte)(aValue >> (aIndex<<3));}
-		public static byte toByteI(int   aValue, int aIndex) {return (byte)(aValue >> (aIndex<<3));}
-		public static byte toByteL(long  aValue, int aIndex) {return (byte)(aValue >> (aIndex<<3));}
+		public static byte toByteI(int	 aValue, int aIndex) {return (byte)(aValue >> (aIndex<<3));}
+		public static byte toByteL(long	 aValue, int aIndex) {return (byte)(aValue >> (aIndex<<3));}
 		
 		public static short combine(byte aValue1, byte aValue2)																						{return (short)	((0xff & aValue1) | aValue2 << 8);}
-		public static int   combine(byte aValue1, byte aValue2, byte aValue3, byte aValue4)															{return			 (0xff & aValue1) | (0xff & aValue2) << 8 | (0xff & aValue3) << 16 | aValue4 << 24;}
-		public static long  combine(byte aValue1, byte aValue2, byte aValue3, byte aValue4, byte aValue5, byte aValue6, byte aValue7, byte aValue8)	{return	((long)aValue1 & 0xff) | ((long)aValue2 & 0xff) << 8 | ((long)aValue3 & 0xff) << 16 | ((long)aValue4 & 0xff) << 24 | ((long)aValue5 & 0xff) << 32 | ((long)aValue6 & 0xff) << 40 | ((long)aValue7 & 0xff) << 48 | (long)aValue8 << 56;}
+		public static int	combine(byte aValue1, byte aValue2, byte aValue3, byte aValue4)															{return			 (0xff & aValue1) | (0xff & aValue2) << 8 | (0xff & aValue3) << 16 | aValue4 << 24;}
+		public static long	combine(byte aValue1, byte aValue2, byte aValue3, byte aValue4, byte aValue5, byte aValue6, byte aValue7, byte aValue8)	{return	((long)aValue1 & 0xff) | ((long)aValue2 & 0xff) << 8 | ((long)aValue3 & 0xff) << 16 | ((long)aValue4 & 0xff) << 24 | ((long)aValue5 & 0xff) << 32 | ((long)aValue6 & 0xff) << 40 | ((long)aValue7 & 0xff) << 48 | (long)aValue8 << 56;}
 		
 		public static long getBits(boolean... aBits) {
 			long rBits = 0;
@@ -1083,7 +1083,7 @@ public class UT {
 			if (aData == null) return new byte[aOffset];
 			byte[] rData = new byte[aOffset+16];
 			for (int i = 0; i < 8; i++) {
-				rData[aOffset+  i] = toByteL(aData.getMostSignificantBits(), i);
+				rData[aOffset+	i] = toByteL(aData.getMostSignificantBits(), i);
 				rData[aOffset+8+i] = toByteL(aData.getLeastSignificantBits(), i);
 			}
 			return rData;
@@ -1323,16 +1323,16 @@ public class UT {
 			return Math.max(aMin, Math.min(aMax, aBoundValue));
 		}
 		
-		public static byte	bind1		(long aBoundValue) {return (byte)	Math.max(0, Math.min(         1, aBoundValue));}
-		public static byte	bind2		(long aBoundValue) {return (byte)	Math.max(0, Math.min(         3, aBoundValue));}
-		public static byte	bind3		(long aBoundValue) {return (byte)	Math.max(0, Math.min(         7, aBoundValue));}
-		public static byte	bind4		(long aBoundValue) {return (byte)	Math.max(0, Math.min(        15, aBoundValue));}
-		public static byte	bind5		(long aBoundValue) {return (byte)	Math.max(0, Math.min(        31, aBoundValue));}
-		public static byte	bind6		(long aBoundValue) {return (byte)	Math.max(0, Math.min(        63, aBoundValue));}
-		public static byte	bind7		(long aBoundValue) {return (byte)	Math.max(0, Math.min(       127, aBoundValue));}
-		public static short	bind8		(long aBoundValue) {return (short)	Math.max(0, Math.min(       255, aBoundValue));}
-		public static short	bind15		(long aBoundValue) {return (short)	Math.max(0, Math.min(     32767, aBoundValue));}
-		public static int	bind16		(long aBoundValue) {return (int)	Math.max(0, Math.min(     65535, aBoundValue));}
+		public static byte	bind1		(long aBoundValue) {return (byte)	Math.max(0, Math.min(		  1, aBoundValue));}
+		public static byte	bind2		(long aBoundValue) {return (byte)	Math.max(0, Math.min(		  3, aBoundValue));}
+		public static byte	bind3		(long aBoundValue) {return (byte)	Math.max(0, Math.min(		  7, aBoundValue));}
+		public static byte	bind4		(long aBoundValue) {return (byte)	Math.max(0, Math.min(		 15, aBoundValue));}
+		public static byte	bind5		(long aBoundValue) {return (byte)	Math.max(0, Math.min(		 31, aBoundValue));}
+		public static byte	bind6		(long aBoundValue) {return (byte)	Math.max(0, Math.min(		 63, aBoundValue));}
+		public static byte	bind7		(long aBoundValue) {return (byte)	Math.max(0, Math.min(		127, aBoundValue));}
+		public static short	bind8		(long aBoundValue) {return (short)	Math.max(0, Math.min(		255, aBoundValue));}
+		public static short	bind15		(long aBoundValue) {return (short)	Math.max(0, Math.min(	  32767, aBoundValue));}
+		public static int	bind16		(long aBoundValue) {return (int)	Math.max(0, Math.min(	  65535, aBoundValue));}
 		public static int	bind24		(long aBoundValue) {return (int)	Math.max(0, Math.min(  16777215, aBoundValue));}
 		public static int	bind31		(long aBoundValue) {return (int)	Math.max(0, Math.min(2147483647, aBoundValue));}
 		public static int	bindInt		(long aBoundValue) {return (int)	Math.max(Integer.MIN_VALUE, Math.min(Integer.MAX_VALUE, aBoundValue));}
@@ -1371,8 +1371,8 @@ public class UT {
 		}
 		
 		public static short getR(int aColors) {return (short)((aColors >>> 16) & 255);}
-		public static short getG(int aColors) {return (short)((aColors >>>  8) & 255);}
-		public static short getB(int aColors) {return (short) (aColors         & 255);}
+		public static short getG(int aColors) {return (short)((aColors >>>	8) & 255);}
+		public static short getB(int aColors) {return (short) (aColors		   & 255);}
 		public static short getA(int aColors) {return (short)((aColors >>> 24) & 255);}
 		
 		@SideOnly(Side.CLIENT)
@@ -1481,7 +1481,7 @@ public class UT {
 		public static float[] getFacingCoordsClicked(byte aSide, float aHitX, float aHitY, float aHitZ) {
 			switch (aSide) {
 			case  0: return new float[] {Math.min(0.99F, Math.max(0,  aHitX)), Math.min(0.99F, Math.max(0,1-aHitZ))};
-			case  1: return new float[] {Math.min(0.99F, Math.max(0,  aHitX)), Math.min(0.99F, Math.max(0,  aHitZ))};
+			case  1: return new float[] {Math.min(0.99F, Math.max(0,  aHitX)), Math.min(0.99F, Math.max(0,	aHitZ))};
 			case  2: return new float[] {Math.min(0.99F, Math.max(0,1-aHitX)), Math.min(0.99F, Math.max(0,1-aHitY))};
 			case  3: return new float[] {Math.min(0.99F, Math.max(0,  aHitX)), Math.min(0.99F, Math.max(0,1-aHitY))};
 			case  4: return new float[] {Math.min(0.99F, Math.max(0,  aHitZ)), Math.min(0.99F, Math.max(0,1-aHitY))};
@@ -1565,7 +1565,7 @@ public class UT {
 				else if (aTags[i] instanceof FluidStack)		aNBT.setTag(		aTags[i-1].toString(), Fluids.save((FluidStack)	aTags[i]));
 				else if (aTags[i] instanceof OreDictMaterial)	aNBT.setString(		aTags[i-1].toString(), ((OreDictMaterial)		aTags[i]).mNameInternal);
 				else if (aTags[i] instanceof RecipeMap)			aNBT.setString(		aTags[i-1].toString(), ((RecipeMap)				aTags[i]).mNameInternal);
-				else 											aNBT.setString(		aTags[i-1].toString(), aTags[i].toString());
+				else											aNBT.setString(		aTags[i-1].toString(), aTags[i].toString());
 			}
 			return aNBT;
 		}

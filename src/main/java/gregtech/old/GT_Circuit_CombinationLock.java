@@ -40,17 +40,17 @@ public class GT_Circuit_CombinationLock extends GT_CircuitryBehavior {
 	
 	@Override
 	public void validateParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		if (aCircuitData[0] <  1) aCircuitData[0] =  1;
-		if (aCircuitData[1] <  0) aCircuitData[1] =  0;
-		if (aCircuitData[2] <  0) aCircuitData[2] =  0;
-		if (aCircuitData[3] <  0) aCircuitData[3] =  0;
+		if (aCircuitData[0] <  1) aCircuitData[0] =	 1;
+		if (aCircuitData[1] <  0) aCircuitData[1] =	 0;
+		if (aCircuitData[2] <  0) aCircuitData[2] =	 0;
+		if (aCircuitData[3] <  0) aCircuitData[3] =	 0;
 		if (aCircuitData[0] > 15) aCircuitData[0] = 15;
 		if (aCircuitData[1] > 15) aCircuitData[1] = 15;
 		if (aCircuitData[2] > 15) aCircuitData[2] = 15;
 		if (aCircuitData[3] > 15) aCircuitData[3] = 15;
-		if (aCircuitData[4] <  0) aCircuitData[4] =  0;
-		if (aCircuitData[4] >  3) aCircuitData[4] =  3;
-		if (aCircuitData[5] <  0) aCircuitData[5] =  0;
+		if (aCircuitData[4] <  0) aCircuitData[4] =	 0;
+		if (aCircuitData[4] >  3) aCircuitData[4] =	 3;
+		if (aCircuitData[5] <  0) aCircuitData[5] =	 0;
 	}
 	
 	@Override

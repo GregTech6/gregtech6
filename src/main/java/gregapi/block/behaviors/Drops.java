@@ -51,19 +51,19 @@ public class Drops {
 	}
 	
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, int aFortune, boolean aSilkTouch) {
-	    TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
 		if (aTileEntity == null) {
 			aTileEntity = PrefixBlock.TEMP_TILEENTITY.get();
-    		if (aTileEntity == null || aTileEntity.xCoord != aX || aTileEntity.yCoord != aY || aTileEntity.zCoord != aZ) {
-    	        return getDrops(aBlock, aWorld, aX, aY, aZ, (short)0, null, 0, F);
-    		}
+			if (aTileEntity == null || aTileEntity.xCoord != aX || aTileEntity.yCoord != aY || aTileEntity.zCoord != aZ) {
+				return getDrops(aBlock, aWorld, aX, aY, aZ, (short)0, null, 0, F);
+			}
 		}
-        return getDrops(aBlock, aWorld, aX, aY, aZ, aBlock.getMetaDataValue(aTileEntity), aTileEntity, aFortune, aSilkTouch);
-    }
+		return getDrops(aBlock, aWorld, aX, aY, aZ, aBlock.getMetaDataValue(aTileEntity), aTileEntity, aFortune, aSilkTouch);
+	}
 	
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, short aMetaData, TileEntity aTileEntity, int aFortune, boolean aSilkTouch) {
-	    ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
-	    rList.add(ST.make(aSilkTouch?mDropSilkTouch:mDropNormal, 1, aMetaData, aTileEntity instanceof PrefixBlockTileEntity?((PrefixBlockTileEntity)aTileEntity).mItemNBT:null));
-        return rList;
-    }
+		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
+		rList.add(ST.make(aSilkTouch?mDropSilkTouch:mDropNormal, 1, aMetaData, aTileEntity instanceof PrefixBlockTileEntity?((PrefixBlockTileEntity)aTileEntity).mItemNBT:null));
+		return rList;
+	}
 }

@@ -392,10 +392,10 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot			, MT.Peat					, ST.make(MD.FR, "peat", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingotDouble	, MT.PeatBituminous			, ST.make(MD.FR, "bituminousPeat", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot			, MT.WaxBee					, ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Pyrotheum				, ST.make(MD.TE_FOUNDATION, "material", 1,  512));
-		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Cryotheum				, ST.make(MD.TE_FOUNDATION, "material", 1,  513));
-		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Aerotheum				, ST.make(MD.TE_FOUNDATION, "material", 1,  514));
-		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Petrotheum				, ST.make(MD.TE_FOUNDATION, "material", 1,  515));
+		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Pyrotheum				, ST.make(MD.TE_FOUNDATION, "material", 1,	512));
+		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Cryotheum				, ST.make(MD.TE_FOUNDATION, "material", 1,	513));
+		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Aerotheum				, ST.make(MD.TE_FOUNDATION, "material", 1,	514));
+		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Petrotheum				, ST.make(MD.TE_FOUNDATION, "material", 1,	515));
 		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Blizz					, ST.make(MD.TE_FOUNDATION, "material", 1, 1025));
 		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Blitz					, ST.make(MD.TE_FOUNDATION, "material", 1, 1027));
 		OreDictManager.INSTANCE.setTarget(OP.dust			, MT.Basalz					, ST.make(MD.TE_FOUNDATION, "material", 1, 1029));

@@ -70,8 +70,8 @@ public interface IPacket {
 		
 		@Override
 		public ByteArrayDataOutput encode() {
-	        ByteArrayDataOutput tOut = ByteStreams.newDataOutput(4);
-	        tOut.writeUTF(mTransmittedData);
+			ByteArrayDataOutput tOut = ByteStreams.newDataOutput(4);
+			tOut.writeUTF(mTransmittedData);
 			return tOut;
 		}
 		

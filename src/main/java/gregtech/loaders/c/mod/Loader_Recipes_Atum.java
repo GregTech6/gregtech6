@@ -51,11 +51,11 @@ public class Loader_Recipes_Atum implements Runnable {
 		}
 		
 		for (FluidStack tWater : new FluidStack[] {FL.Water.make(125), FL.DistW.make(125)})
-		RM.Bath			.addRecipe1(T,  0,   16, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), tWater, NF, ST.make(Items.paper, 1, 0));
-		RM.Shredder		.addRecipe1(T, 16,   16, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), IL.Remains_Plant.get(1));
-		RM.Loom			.addRecipe2(T, 16,   16, ST.tag(0), ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), ST.make(Items.paper, 1, 0));
-		RM.Squeezer		.addRecipe1(T, 16,   16,  4000, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), NF, FL.Juice_Reed.make(100), IL.Remains_Plant.get(1));
-		RM.Juicer		.addRecipe1(T, 16,   16,  5000, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), NF, FL.Juice_Reed.make(75), IL.Remains_Plant.get(1));
+		RM.Bath			.addRecipe1(T,	0,	 16, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), tWater, NF, ST.make(Items.paper, 1, 0));
+		RM.Shredder		.addRecipe1(T, 16,	 16, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), IL.Remains_Plant.get(1));
+		RM.Loom			.addRecipe2(T, 16,	 16, ST.tag(0), ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), ST.make(Items.paper, 1, 0));
+		RM.Squeezer		.addRecipe1(T, 16,	 16,  4000, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), NF, FL.Juice_Reed.make(100), IL.Remains_Plant.get(1));
+		RM.Juicer		.addRecipe1(T, 16,	 16,  5000, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), NF, FL.Juice_Reed.make(75), IL.Remains_Plant.get(1));
 		RM.pulverizing(ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), IL.Remains_Plant.get(1), T);
 		RM.biomass(ST.make(MD.ATUM, "item.papyrusPlant", 8, 0), 64);
 		
@@ -63,10 +63,10 @@ public class Loader_Recipes_Atum implements Runnable {
 		
 		RM.Mortar.addRecipe1(T, 16, 64, ST.make(MD.ATUM, "item.stoneChunk", 1, W), OM.dust(MT.Limestone, U));
 		
-		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1,  6), ST.make(MD.ATUM, "item.loot", 1,  4), OP.gem.mat(MT.BlueSapphire, 2));
-		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1,  8), ST.make(MD.ATUM, "item.loot", 1,  4), OP.gem.mat(MT.Ruby, 2));
-		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1, 10), ST.make(MD.ATUM, "item.loot", 1,  4), OP.gem.mat(MT.Emerald, 2));
-		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1, 12), ST.make(MD.ATUM, "item.loot", 1,  4), OP.gem.mat(MT.Diamond, 2));
+		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1,  6), ST.make(MD.ATUM, "item.loot", 1,	 4), OP.gem.mat(MT.BlueSapphire, 2));
+		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1,  8), ST.make(MD.ATUM, "item.loot", 1,	 4), OP.gem.mat(MT.Ruby, 2));
+		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1, 10), ST.make(MD.ATUM, "item.loot", 1,	 4), OP.gem.mat(MT.Emerald, 2));
+		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1, 12), ST.make(MD.ATUM, "item.loot", 1,	 4), OP.gem.mat(MT.Diamond, 2));
 		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1, 38), ST.make(MD.ATUM, "item.loot", 1, 36), OP.gem.mat(MT.BlueSapphire, 1));
 		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1, 40), ST.make(MD.ATUM, "item.loot", 1, 36), OP.gem.mat(MT.Ruby, 1));
 		RM.Unboxinator.addRecipe1(F, 16, 16, ST.make(MD.ATUM, "item.loot", 1, 42), ST.make(MD.ATUM, "item.loot", 1, 36), OP.gem.mat(MT.Emerald, 1));
@@ -87,23 +87,23 @@ public class Loader_Recipes_Atum implements Runnable {
 		
 		new OreDictListenerEvent_Names(OP.crop) {@Override public void addAllListeners() {
 		addListener("cropFlax", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-		RM.Loom			.addRecipe2(T, 16,   16, ST.tag(3), ST.amount(3, aEvent.mStack), ST.make(MD.ATUM, "item.linen", 1));
+		RM.Loom			.addRecipe2(T, 16,	 16, ST.tag(3), ST.amount(3, aEvent.mStack), ST.make(MD.ATUM, "item.linen", 1));
 		}});
 		}};
 		
-		RM.Loom			.addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.ATUM, "item.linen", 5), ST.make(MD.ATUM, "item.wandererHelmet", 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.tag(5), ST.make(MD.ATUM, "item.linen", 8), ST.make(MD.ATUM, "item.wandererChest", 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.tag(6), ST.make(MD.ATUM, "item.linen", 7), ST.make(MD.ATUM, "item.wandererLegs", 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.tag(7), ST.make(MD.ATUM, "item.linen", 4), ST.make(MD.ATUM, "item.wandererBoots", 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.tag(4), ST.make(MD.ATUM, "item.linen", 5), ST.make(MD.ATUM, "item.wandererHelmet", 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.tag(5), ST.make(MD.ATUM, "item.linen", 8), ST.make(MD.ATUM, "item.wandererChest", 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.tag(6), ST.make(MD.ATUM, "item.linen", 7), ST.make(MD.ATUM, "item.wandererLegs", 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.tag(7), ST.make(MD.ATUM, "item.linen", 4), ST.make(MD.ATUM, "item.wandererBoots", 1));
 		
-		RM.Loom			.addRecipe2(T, 16,  128, ST.make(Items.iron_helmet		, 1, 0), ST.make(MD.ATUM, "item.wandererHelmet"	, 1), ST.make(MD.ATUM, "item.desertHelmet"	, 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.make(Items.iron_chestplate	, 1, 0), ST.make(MD.ATUM, "item.wandererChest"	, 1), ST.make(MD.ATUM, "item.desertChest"	, 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.make(Items.iron_leggings	, 1, 0), ST.make(MD.ATUM, "item.wandererLegs"	, 1), ST.make(MD.ATUM, "item.desertLegs"		, 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.make(Items.iron_boots		, 1, 0), ST.make(MD.ATUM, "item.wandererBoots"	, 1), ST.make(MD.ATUM, "item.desertBoots"	, 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.make(Items.iron_helmet		, 1, 0), ST.make(MD.ATUM, "item.wandererHelmet"	, 1), ST.make(MD.ATUM, "item.desertHelmet"	, 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.make(Items.iron_chestplate	, 1, 0), ST.make(MD.ATUM, "item.wandererChest"	, 1), ST.make(MD.ATUM, "item.desertChest"	, 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.make(Items.iron_leggings	, 1, 0), ST.make(MD.ATUM, "item.wandererLegs"	, 1), ST.make(MD.ATUM, "item.desertLegs"		, 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.make(Items.iron_boots		, 1, 0), ST.make(MD.ATUM, "item.wandererBoots"	, 1), ST.make(MD.ATUM, "item.desertBoots"	, 1));
 		
-		RM.Loom			.addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.ATUM, "item.clothScrap", 5), ST.make(MD.ATUM, "item.mummyHelmet", 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.tag(5), ST.make(MD.ATUM, "item.clothScrap", 8), ST.make(MD.ATUM, "item.mummyChest", 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.tag(6), ST.make(MD.ATUM, "item.clothScrap", 7), ST.make(MD.ATUM, "item.mummyLegs", 1));
-		RM.Loom			.addRecipe2(T, 16,  128, ST.tag(7), ST.make(MD.ATUM, "item.clothScrap", 4), ST.make(MD.ATUM, "item.mummyBoots", 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.tag(4), ST.make(MD.ATUM, "item.clothScrap", 5), ST.make(MD.ATUM, "item.mummyHelmet", 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.tag(5), ST.make(MD.ATUM, "item.clothScrap", 8), ST.make(MD.ATUM, "item.mummyChest", 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.tag(6), ST.make(MD.ATUM, "item.clothScrap", 7), ST.make(MD.ATUM, "item.mummyLegs", 1));
+		RM.Loom			.addRecipe2(T, 16,	128, ST.tag(7), ST.make(MD.ATUM, "item.clothScrap", 4), ST.make(MD.ATUM, "item.mummyBoots", 1));
 	}}
 }

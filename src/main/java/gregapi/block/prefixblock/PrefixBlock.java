@@ -616,7 +616,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override public boolean isBeaconBase(IBlockAccess aWorld, int aX, int aY, int aZ, int aBeaconX, int aBeaconY, int aBeaconZ) {return mBeaconBase;}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return mOpaque;}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return mNormalCube;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return mNormalCube;}
 	@Override public boolean hasTileEntity(int aMeta) {return T;}
 	@Override public boolean renderAsNormalBlock() {return T;}
 	@Override public final boolean isOpaqueCube() {return mOpaque;}
@@ -678,10 +678,10 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		return F;
 	}
 	
-	@Override public void receiveDataByte				(IBlockAccess aWorld, int aX, int aY, int aZ, byte   aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataShort				(IBlockAccess aWorld, int aX, int aY, int aZ, short  aData, INetworkHandler aNetworkHandler) {setExtendedMetaData(aWorld, aX, aY, aZ, aData);}
-	@Override public void receiveDataInteger			(IBlockAccess aWorld, int aX, int aY, int aZ, int    aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataLong				(IBlockAccess aWorld, int aX, int aY, int aZ, long   aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataByte				(IBlockAccess aWorld, int aX, int aY, int aZ, byte	 aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataShort				(IBlockAccess aWorld, int aX, int aY, int aZ, short	 aData, INetworkHandler aNetworkHandler) {setExtendedMetaData(aWorld, aX, aY, aZ, aData);}
+	@Override public void receiveDataInteger			(IBlockAccess aWorld, int aX, int aY, int aZ, int	 aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataLong				(IBlockAccess aWorld, int aX, int aY, int aZ, long	 aData, INetworkHandler aNetworkHandler) {/**/}
 	@Override public void receiveDataByteArray			(IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler) {/**/}
 	@Override public void receiveDataName				(IBlockAccess aWorld, int aX, int aY, int aZ, String aData, INetworkHandler aNetworkHandler) {if (UT.Code.stringValid(aData)) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof PrefixBlockTileEntity) {if (((PrefixBlockTileEntity)aTileEntity).mItemNBT == null) ((PrefixBlockTileEntity)aTileEntity).mItemNBT = UT.NBT.make(); ((PrefixBlockTileEntity)aTileEntity).mItemNBT.setTag("display", UT.NBT.makeString(((PrefixBlockTileEntity)aTileEntity).mItemNBT.getCompoundTag("display"), "Name", aData));}}}
 }

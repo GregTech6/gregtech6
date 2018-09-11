@@ -91,7 +91,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_JUICER_USAGE));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT) 	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 	}
 	
 	@Override
@@ -119,7 +119,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	protected boolean canOutput(Recipe aRecipe) {
 		for (int i = 0; i < mTanks.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanks[i].getFluidAmount() != 0) {
 			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!UT.Fluids.equal(mTanks[i].getFluid(), aRecipe.mFluidOutputs[i], F) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || aRecipe.mFluidOutputs[i].getFluid().getDensity(aRecipe.mFluidOutputs[i]) < 0 || mTanks[i].getFluidAmount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
-			   	return F;
+				return F;
 			}
 		}
 		return T;
@@ -254,11 +254,11 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: return SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  2: return SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  1: return SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  3: return SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  4: return SIDE_TOP	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop    , mRGBa), BlockTextureDefault.get(sOverlayTop    )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
+		case  0: return SIDE_X_POS	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  2: return SIDE_X_NEG	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  1: return SIDE_Z_POS	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  3: return SIDE_Z_NEG	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  4: return SIDE_TOP	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop	  , mRGBa), BlockTextureDefault.get(sOverlayTop	   )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
 		case  5:
 			if (mDisplay <= 0 || SIDE_TOP != aSide) return null;
 			Fluid tFluid = UT.Fluids.fluid(mDisplay-1);
@@ -288,8 +288,8 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	@Override public float getSurfaceSize			(byte aSide) {return SIDES_VERTICAL[aSide]?0.5F:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_VERTICAL[aSide]?0.5F:0.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?PX_P[12]:PX_P[2];}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
 	@Override public boolean isSideSolid2			(byte aSide) {return F;}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	@Override public boolean attachCoversFirst		(byte aSide) {return F;}

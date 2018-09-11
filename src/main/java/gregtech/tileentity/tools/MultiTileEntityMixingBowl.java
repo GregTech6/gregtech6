@@ -107,7 +107,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MIXINGBOWL_USAGE));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT) 	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
 	
@@ -116,7 +116,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0 || isClientSide()) return rReturn;
 		if (SIDES_TOP[aSide] && aTool.equals(TOOL_mixer)) {
-			ItemStack[] tInputItems  = new ItemStack[] {slot(0), slot(1), slot(2), slot(3), slot(4), slot(5)};
+			ItemStack[] tInputItems	 = new ItemStack[] {slot(0), slot(1), slot(2), slot(3), slot(4), slot(5)};
 			Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], NI, mTanksInput, tInputItems);
 			if (tRecipe != null) {
 				if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
@@ -215,7 +215,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 		}
 		for (int i = 0; i < mTanksOutput.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanksOutput[i].getFluidAmount() != 0) {
 			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!UT.Fluids.equal(mTanksOutput[i].getFluid(), aRecipe.mFluidOutputs[i], F) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || aRecipe.mFluidOutputs[i].getFluid().getDensity(aRecipe.mFluidOutputs[i]) < 0 || !UT.Fluids.simple(aRecipe.mFluidOutputs[i]) || mTanksOutput[i].getFluidAmount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
-			   	return F;
+				return F;
 			}
 		}
 		return T;
@@ -232,7 +232,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 				if (!UT.Entities.isPlayer(aPlayer)) return T;
 				if (ToolsGT.contains(TOOL_mixer, aStack)) return F;
 				
-				ItemStack[] tInputItems  = new ItemStack[] {slot(0), slot(1), slot(2), slot(3), slot(4), slot(5)};
+				ItemStack[] tInputItems	 = new ItemStack[] {slot(0), slot(1), slot(2), slot(3), slot(4), slot(5)};
 				Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], NI, mTanksInput, tInputItems);
 				if (tRecipe != null) {
 					if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
@@ -405,11 +405,11 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: return SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  2: return SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  1: return SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  3: return SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  4: return SIDE_TOP	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop    , mRGBa), BlockTextureDefault.get(sOverlayTop    )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
+		case  0: return SIDE_X_POS	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  2: return SIDE_X_NEG	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  1: return SIDE_Z_POS	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  3: return SIDE_Z_NEG	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  4: return SIDE_TOP	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop	  , mRGBa), BlockTextureDefault.get(sOverlayTop	   )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
 		case  5:
 			if (mDisplay == 0 || SIDE_TOP != aSide) return null;
 			if (mDisplay < -1) {
@@ -443,8 +443,8 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 	@Override public float getSurfaceSize			(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?PX_N[ 8]:0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	@Override public boolean attachCoversFirst		(byte aSide) {return F;}

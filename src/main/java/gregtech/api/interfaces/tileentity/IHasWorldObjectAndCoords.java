@@ -78,9 +78,9 @@ public interface IHasWorldObjectAndCoords {
 	public boolean getAirAtSideAndDistance(byte aSide, int aDistance);
 	public BiomeGenBase getBiome();
 	public BiomeGenBase getBiome(int aX, int aZ);
-	public int   getOffsetX(byte aSide, int aMultiplier);
+	public int	 getOffsetX(byte aSide, int aMultiplier);
 	public short getOffsetY(byte aSide, int aMultiplier);
-	public int   getOffsetZ(byte aSide, int aMultiplier);
+	public int	 getOffsetZ(byte aSide, int aMultiplier);
 	public boolean isDead();
 	public void sendBlockEvent(byte aID, byte aValue);
 	public long getTimer();

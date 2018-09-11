@@ -49,11 +49,11 @@ public class GT_SolderingTool_Item extends GT_Tool_Item {
 	}
 	
 	@Override
-    public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
+	public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
 		super.onItemUseFirst(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, hitX, hitY, hitZ);
 		if (aWorld.isRemote) {
-    		return false;
-    	}
-    	return false;
-    }
+			return false;
+		}
+		return false;
+	}
 }

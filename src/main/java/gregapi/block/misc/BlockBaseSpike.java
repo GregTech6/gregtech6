@@ -94,7 +94,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 30;}
 	@Override public float getExplosionResistance(int aMeta) {return 5;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return (aMeta & 7) < 6 && aMeta == aSide;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return F;}
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean useGravity(int aMeta) {return (aMeta & 7) == 7;}
@@ -135,12 +135,12 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {
 		switch(aWorld.getBlockMetadata(aX, aY, aZ) & 7) {
-		case SIDE_X_POS: return AxisAlignedBB.getBoundingBox(aX+0.4, aY    , aZ    , aX+1  , aY+1  , aZ+1  );
-		case SIDE_Y_POS: return AxisAlignedBB.getBoundingBox(aX    , aY+0.4, aZ    , aX+1  , aY+1  , aZ+1  );
-		case SIDE_Z_POS: return AxisAlignedBB.getBoundingBox(aX    , aY    , aZ+0.4, aX+1  , aY+1  , aZ+1  );
-		case SIDE_X_NEG: return AxisAlignedBB.getBoundingBox(aX    , aY    , aZ    , aX+0.6, aY+1  , aZ+1  );
-		case SIDE_Y_NEG: return AxisAlignedBB.getBoundingBox(aX    , aY    , aZ    , aX+1  , aY+0.6, aZ+1  );
-		case SIDE_Z_NEG: return AxisAlignedBB.getBoundingBox(aX    , aY    , aZ    , aX+1  , aY+1  , aZ+0.6);
+		case SIDE_X_POS: return AxisAlignedBB.getBoundingBox(aX+0.4, aY	   , aZ	   , aX+1  , aY+1  , aZ+1  );
+		case SIDE_Y_POS: return AxisAlignedBB.getBoundingBox(aX	   , aY+0.4, aZ	   , aX+1  , aY+1  , aZ+1  );
+		case SIDE_Z_POS: return AxisAlignedBB.getBoundingBox(aX	   , aY	   , aZ+0.4, aX+1  , aY+1  , aZ+1  );
+		case SIDE_X_NEG: return AxisAlignedBB.getBoundingBox(aX	   , aY	   , aZ	   , aX+0.6, aY+1  , aZ+1  );
+		case SIDE_Y_NEG: return AxisAlignedBB.getBoundingBox(aX	   , aY	   , aZ	   , aX+1  , aY+0.6, aZ+1  );
+		case SIDE_Z_NEG: return AxisAlignedBB.getBoundingBox(aX	   , aY	   , aZ	   , aX+1  , aY+1  , aZ+0.6);
 		default: return AxisAlignedBB.getBoundingBox(aX+0.125, aY+0.125, aZ+0.125, aX+0.875, aY+0.875, aZ+0.875);
 		}
 	}

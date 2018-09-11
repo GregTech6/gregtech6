@@ -53,21 +53,21 @@ public class Behavior_Tool extends AbstractBehaviorDefault {
 		long tDamage = IBlockToolable.Util.onToolClick(mToolName, Long.MAX_VALUE, (aItem instanceof MultiItemTool ? ((MultiItemTool)aItem).getHarvestLevel(aStack, mToolName) : 1), aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer!=null&&aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);
 		if (tDamage > 0) {
-    		if (mDamage > 0) if (aPlayer == null || !UT.Entities.hasInfiniteItems(aPlayer)) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(tDamage, 10000, mDamage, T), aPlayer);
-    		if (mSoundName != null) UT.Sounds.send(aWorld, mSoundName, 1.0F, 1.0F, aX, aY, aZ);
-    		return !aWorld.isRemote;
-    	}
-    	return F;
+			if (mDamage > 0) if (aPlayer == null || !UT.Entities.hasInfiniteItems(aPlayer)) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(tDamage, 10000, mDamage, T), aPlayer);
+			if (mSoundName != null) UT.Sounds.send(aWorld, mSoundName, 1.0F, 1.0F, aX, aY, aZ);
+			return !aWorld.isRemote;
+		}
+		return F;
 	}
 	
 	@Override
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-    	return mOnItemUseReturn;
+		return mOnItemUseReturn;
 	}
 	
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
-		aList.add(LH.Chat.DGRAY + LH.get(TOOL_LOCALISER_PREFIX + mToolName, "Unknown") + "   " + LH.Chat.GRAY + LH.get(TOOL_TOOLTIP_PREFIX + mToolName, ""));
+		aList.add(LH.Chat.DGRAY + LH.get(TOOL_LOCALISER_PREFIX + mToolName, "Unknown") + "	 " + LH.Chat.GRAY + LH.get(TOOL_TOOLTIP_PREFIX + mToolName, ""));
 		return aList;
 	}
 }

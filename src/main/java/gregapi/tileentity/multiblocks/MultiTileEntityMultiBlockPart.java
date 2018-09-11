@@ -100,7 +100,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	, ONLY_ITEM_OUT			= ~NO_ITEM_OUT
 	, ONLY_ITEM_IN			= ~NO_ITEM_IN
 	, ONLY_ITEM_FLUID_OUT	= ~(NO_ITEM_OUT | NO_FLUID_OUT)
-	, ONLY_ITEM_FLUID_IN	= ~(NO_ITEM_IN  | NO_FLUID_IN)
+	, ONLY_ITEM_FLUID_IN	= ~(NO_ITEM_IN	| NO_FLUID_IN)
 	
 	, ONLY_ENERGY			= ~NO_ENERGY
 	, ONLY_FLUID			= ~NO_FLUID
@@ -142,7 +142,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		if (mDesign != 0) aNBT.setByte(NBT_DESIGN, (byte)mDesign);
-		if (mMode   != 0) aNBT.setByte(NBT_MODE, mMode);
+		if (mMode	!= 0) aNBT.setByte(NBT_MODE, mMode);
 		if (mTargetPos != null) {
 		UT.NBT.setBoolean(aNBT, NBT_TARGET, T);
 		UT.NBT.setNumber(aNBT, NBT_TARGET_X, mTargetPos.posX);

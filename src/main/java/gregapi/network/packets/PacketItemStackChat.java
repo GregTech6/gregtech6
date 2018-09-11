@@ -59,18 +59,18 @@ public class PacketItemStackChat implements IPacket {
 	
 	@Override
 	public ByteArrayDataOutput encode() {
-        ByteArrayDataOutput aData = ByteStreams.newDataOutput();
+		ByteArrayDataOutput aData = ByteStreams.newDataOutput();
 		aData.writeShort(ST.id(mStack));
 		aData.writeByte(mStack.stackSize);
 		aData.writeShort(ST.meta(mStack));
-        NBTTagCompound tNBT = mStack.getTagCompound();
-        if (tNBT == null) aData.writeShort(-1); else {
-        	try {
-        		byte[] tData = CompressedStreamTools.compress(tNBT);
-                aData.writeShort(tData.length);
-                aData.write(tData);
-        	} catch (IOException e) {e.printStackTrace(ERR);}
-        }
+		NBTTagCompound tNBT = mStack.getTagCompound();
+		if (tNBT == null) aData.writeShort(-1); else {
+			try {
+				byte[] tData = CompressedStreamTools.compress(tNBT);
+				aData.writeShort(tData.length);
+				aData.write(tData);
+			} catch (IOException e) {e.printStackTrace(ERR);}
+		}
 		return aData;
 	}
 	
@@ -79,15 +79,15 @@ public class PacketItemStackChat implements IPacket {
 		return new PacketItemStackChat(ST.make(Item.getItemById(aData.readShort()), aData.readByte(), aData.readShort(), readNBTTagCompoundFromBuffer(aData)));
 	}
 	
-    public NBTTagCompound readNBTTagCompoundFromBuffer(ByteArrayDataInput aData) {
-        short tLength = aData.readShort();
-        if (tLength <= 0) return null;
-        byte[] tData = new byte[tLength];
-        aData.readFully(tData);
-        try {return CompressedStreamTools.func_152457_a(tData, new NBTSizeTracker(2097152L));} catch (IOException e) {e.printStackTrace(ERR);}
-        return null;
-    }
-    
+	public NBTTagCompound readNBTTagCompoundFromBuffer(ByteArrayDataInput aData) {
+		short tLength = aData.readShort();
+		if (tLength <= 0) return null;
+		byte[] tData = new byte[tLength];
+		aData.readFully(tData);
+		try {return CompressedStreamTools.func_152457_a(tData, new NBTSizeTracker(2097152L));} catch (IOException e) {e.printStackTrace(ERR);}
+		return null;
+	}
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	public void process(IBlockAccess aWorld, INetworkHandler aNetworkHandler) {

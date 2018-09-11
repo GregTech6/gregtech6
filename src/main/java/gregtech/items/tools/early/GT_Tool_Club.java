@@ -42,12 +42,12 @@ import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_Club extends GT_Tool_HardHammer {
-	@Override public int getToolDamagePerBlockBreak()										{return  50;}
+	@Override public int getToolDamagePerBlockBreak()										{return	 50;}
 	@Override public int getToolDamagePerDropConversion()									{return 100;}
 	@Override public int getToolDamagePerContainerCraft()									{return 800;}
-	@Override public int getToolDamagePerEntityAttack()										{return  50;}
+	@Override public int getToolDamagePerEntityAttack()										{return	 50;}
 	@Override public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity) {return (aOriginalHurtResistance * 3) / 2;}
-	@Override public float getSpeedMultiplier() 											{return 0.5F;}
+	@Override public float getSpeedMultiplier()												{return 0.5F;}
 	@Override public String getCraftingSound()												{return SFX.MC_DIG_ROCK;}
 	@Override public String getBreakingSound()												{return SFX.MC_BREAK;}
 	@Override public boolean canBlock()														{return T;}

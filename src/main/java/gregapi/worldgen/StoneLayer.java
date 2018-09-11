@@ -61,8 +61,8 @@ public class StoneLayer {
 		this(aStone, aMetaStone, aCobble, aMetaCobble, aCobble, aMetaCobble, aMaterial, aOres);
 	}
 	public StoneLayer(Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, Block aMossy, long aMetaMossy, OreDictMaterial aMaterial, StoneLayerOres... aOres) {
-		mStone  = (aStone  == null || aStone  == NB ? Blocks.stone : aStone);
-		mMossy  = (aMossy  == null || aMossy  == NB ? mStone : aMossy);
+		mStone	= (aStone  == null || aStone  == NB ? Blocks.stone : aStone);
+		mMossy	= (aMossy  == null || aMossy  == NB ? mStone : aMossy);
 		mCobble = (aCobble == null || aCobble == NB ? mStone : aCobble);
 		mMetaStone = UT.Code.bind4(aMetaStone);
 		mMetaMossy = UT.Code.bind4(aMetaMossy);

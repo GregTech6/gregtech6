@@ -29,7 +29,7 @@ import net.minecraft.item.ItemStack;
  */
 public interface IOreDictListenerItem {
 	public ItemStack onTickWorld		(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, EntityItem aItem);
-    public ItemStack onClickRight		(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, EntityPlayer aPlayer);
+	public ItemStack onClickRight		(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, EntityPlayer aPlayer);
 	public void onTickPlayer			(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, EntityPlayer aPlayer, int aIndex);
 	public void onTickInventory			(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, IInventory aInventory, int aIndex);
 	

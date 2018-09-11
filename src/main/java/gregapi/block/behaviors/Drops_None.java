@@ -39,5 +39,5 @@ public class Drops_None extends Drops {
 	@Override
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, short aMetaData, TileEntity aTileEntity, int aFortune, boolean aSilkTouch) {
 		return new ArrayListNoNulls<>();
-    }
+	}
 }

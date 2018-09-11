@@ -40,10 +40,10 @@ public class PacketConfig implements IPacket {
 	
 	@Override
 	public ByteArrayDataOutput encode() {
-        ByteArrayDataOutput rOut = ByteStreams.newDataOutput();
-        rOut.writeDouble(CONFIG_HARDNESS_MULTIPLIER_SAND);
-        rOut.writeDouble(CONFIG_HARDNESS_MULTIPLIER_ROCK);
-        rOut.writeDouble(CONFIG_HARDNESS_MULTIPLIER_ORES);
+		ByteArrayDataOutput rOut = ByteStreams.newDataOutput();
+		rOut.writeDouble(CONFIG_HARDNESS_MULTIPLIER_SAND);
+		rOut.writeDouble(CONFIG_HARDNESS_MULTIPLIER_ROCK);
+		rOut.writeDouble(CONFIG_HARDNESS_MULTIPLIER_ORES);
 		return rOut;
 	}
 	

@@ -25,8 +25,8 @@ import net.minecraft.util.IIcon;
 
 public class GT_Block_Casings4 extends GT_Block_Casings_Abstract {
 	public GT_Block_Casings4() {
-        super("gt.blockcasings4", MaterialMachines.instance);
-//      for (byte i = 0; i < 16; i++) Textures.BlockIcons.CASING_BLOCKS[i+48] = new BlockTextureCopied(this, 6, i);
+		super("gt.blockcasings4", MaterialMachines.instance);
+//		for (byte i = 0; i < 16; i++) Textures.BlockIcons.CASING_BLOCKS[i+48] = new BlockTextureCopied(this, 6, i);
 		LH.add(getUnlocalizedName()+ ".0.name", "Robust Tungstensteel Casing"); 
 		LH.add(getUnlocalizedName()+ ".1.name", "Clean Stainless Steel Casing");
 		LH.add(getUnlocalizedName()+ ".2.name", "Stable Titanium Casing"); 

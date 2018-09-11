@@ -54,32 +54,32 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 	protected int mDisplayedNumber = 0, oDisplayedNumber = 0, mSetNumber = 0;
 	protected byte mRedstone = 0;
 	
-    @Override
+	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
-    	super.readFromNBT2(aNBT);
-        if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
-        if (aNBT.hasKey(NBT_VISUAL)) mDisplayedNumber = UT.Code.unsignS(aNBT.getShort(NBT_VISUAL));
-        if (aNBT.hasKey(NBT_VALUE)) mSetNumber = UT.Code.unsignS(aNBT.getShort(NBT_VALUE)); else mSetNumber = mDisplayedNumber;
-        if (aNBT.hasKey(NBT_CONNECTION)) mSecondFacing = aNBT.getByte(NBT_CONNECTION);
-        if (aNBT.hasKey(NBT_REDSTONE)) mRedstone = aNBT.getByte(NBT_REDSTONE);
-    }
-    
-    @Override
+		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
+		if (aNBT.hasKey(NBT_VISUAL)) mDisplayedNumber = UT.Code.unsignS(aNBT.getShort(NBT_VISUAL));
+		if (aNBT.hasKey(NBT_VALUE)) mSetNumber = UT.Code.unsignS(aNBT.getShort(NBT_VALUE)); else mSetNumber = mDisplayedNumber;
+		if (aNBT.hasKey(NBT_CONNECTION)) mSecondFacing = aNBT.getByte(NBT_CONNECTION);
+		if (aNBT.hasKey(NBT_REDSTONE)) mRedstone = aNBT.getByte(NBT_REDSTONE);
+	}
+	
+	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
-    	super.writeToNBT2(aNBT);
-        aNBT.setShort(NBT_VISUAL, (short)mDisplayedNumber);
-        aNBT.setShort(NBT_VALUE, (short)mSetNumber);
-        aNBT.setByte(NBT_MODE, mMode);
-        aNBT.setByte(NBT_REDSTONE, mRedstone);
-    }
-    
-    @Override
-    public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-        aNBT.setShort(NBT_VALUE, (short)mSetNumber);
-        aNBT.setByte(NBT_MODE, mMode);
-    	return aNBT;
-    }
-    
+		super.writeToNBT2(aNBT);
+		aNBT.setShort(NBT_VISUAL, (short)mDisplayedNumber);
+		aNBT.setShort(NBT_VALUE, (short)mSetNumber);
+		aNBT.setByte(NBT_MODE, mMode);
+		aNBT.setByte(NBT_REDSTONE, mRedstone);
+	}
+	
+	@Override
+	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
+		aNBT.setShort(NBT_VALUE, (short)mSetNumber);
+		aNBT.setByte(NBT_MODE, mMode);
+		return aNBT;
+	}
+	
 	static {LH.add("gt.tooltip.sensor.screwdrive.buttons"	, "Use Screwdriver on Buttons to enable Averaging Mode.");}
 	static {LH.add("gt.tooltip.sensor.screwdrive.display"	, "Use Screwdriver on Display toggle Hexadecimal Display.");}
 	static {LH.add("gt.tooltip.sensor.screwdrive.modes"		, "Use Screwdriver on anything else to switch Modes.");}
@@ -103,18 +103,18 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 		return 0;
 	}
 	
-    @Override
-    public boolean onTickCheck(long aTimer) {
-    	mDisplayedNumber = UT.Code.bind16(mDisplayedNumber);
-    	return super.onTickCheck(aTimer) || Math.abs(mDisplayedNumber - oDisplayedNumber) > (SERVER_TIME % 20 == 0 ? 0 : 49);
-    }
-    
 	@Override
-    public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-    	super.onTickResetChecks(aTimer, aIsServerSide);
-    	oDisplayedNumber = mDisplayedNumber;
-    }
-    
+	public boolean onTickCheck(long aTimer) {
+		mDisplayedNumber = UT.Code.bind16(mDisplayedNumber);
+		return super.onTickCheck(aTimer) || Math.abs(mDisplayedNumber - oDisplayedNumber) > (SERVER_TIME % 20 == 0 ? 0 : 49);
+	}
+	
+	@Override
+	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
+		super.onTickResetChecks(aTimer, aIsServerSide);
+		oDisplayedNumber = mDisplayedNumber;
+	}
+	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		if (aSendAll) return getClientDataPacketByteArray(T, UT.Code.toByteS((short)mDisplayedNumber, 0), UT.Code.toByteS((short)mDisplayedNumber, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getDirectionData(), mMode);
@@ -139,7 +139,7 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 	}
 	
 	@Override
-    public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
+	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return 7;
 	}
 	
@@ -247,13 +247,13 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[SIDE_X_NEG==mFacing?14: 0], PX_P[SIDE_Y_NEG==mFacing?14: 0], PX_P[SIDE_Z_NEG==mFacing?14: 0], PX_N[SIDE_X_POS==mFacing?14: 0], PX_N[SIDE_Y_POS==mFacing?14: 0], PX_N[SIDE_Z_POS==mFacing?14: 0]);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDE_X_NEG==mFacing?14: 0], PX_P[SIDE_Y_NEG==mFacing?14: 0], PX_P[SIDE_Z_NEG==mFacing?14: 0], PX_N[SIDE_X_POS==mFacing?14: 0], PX_N[SIDE_Y_POS==mFacing?14: 0], PX_N[SIDE_Z_POS==mFacing?14: 0]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,  PX_P[SIDE_X_NEG==mFacing?14: 0], PX_P[SIDE_Y_NEG==mFacing?14: 0], PX_P[SIDE_Z_NEG==mFacing?14: 0], PX_N[SIDE_X_POS==mFacing?14: 0], PX_N[SIDE_Y_POS==mFacing?14: 0], PX_N[SIDE_Z_POS==mFacing?14: 0]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,	 PX_P[SIDE_X_NEG==mFacing?14: 0], PX_P[SIDE_Y_NEG==mFacing?14: 0], PX_P[SIDE_Z_NEG==mFacing?14: 0], PX_N[SIDE_X_POS==mFacing?14: 0], PX_N[SIDE_Y_POS==mFacing?14: 0], PX_N[SIDE_Z_POS==mFacing?14: 0]);}
 	
-	@Override public float getSurfaceSize    		(byte aSide) {return ALONG_AXIS[aSide][mFacing]?1.0F:0.0F;}
+	@Override public float getSurfaceSize			(byte aSide) {return ALONG_AXIS[aSide][mFacing]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return ALONG_AXIS[aSide][mFacing]?1.0F:0.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return aSide==mFacing?PX_N[2]:0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return aSide==OPPOSITES[mFacing];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return aSide==OPPOSITES[mFacing];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return aSide==OPPOSITES[mFacing];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return aSide==OPPOSITES[mFacing];}
 	@Override public boolean isSideSolid2			(byte aSide) {return aSide==OPPOSITES[mFacing];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	@Override public boolean isObstructingBlockAt	(byte aSide) {return aSide==OPPOSITES[mFacing];}

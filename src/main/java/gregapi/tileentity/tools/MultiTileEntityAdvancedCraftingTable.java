@@ -454,7 +454,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
 		if (aSlot < 16) {
-			if (mFilter16) for (int i =  0; i < 16; i++) if (ST.equalTools(aStack, slot(i), F)) return aSlot == i;
+			if (mFilter16) for (int i =	 0; i < 16; i++) if (ST.equalTools(aStack, slot(i), F)) return aSlot == i;
 			return T;
 		}
 		if (aSlot >= 35 && aSlot < 71) {
@@ -516,7 +516,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	
 	@SideOnly(Side.CLIENT)
 	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new ContainerClientDefault(	new ContainerCommonDefault(aPlayer.inventory, this, 35, 36)) : new MultiTileEntityGUIClientAdvancedCraftingTable(aPlayer.inventory, this);}
-	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ?								new ContainerCommonDefault(aPlayer.inventory, this, 35, 36)  : new MultiTileEntityGUICommonAdvancedCraftingTable(aPlayer.inventory, this);}
+	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ?								new ContainerCommonDefault(aPlayer.inventory, this, 35, 36)	 : new MultiTileEntityGUICommonAdvancedCraftingTable(aPlayer.inventory, this);}
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
@@ -556,37 +556,37 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		
 		@Override
 		public int addSlots(InventoryPlayer aInventoryPlayer) {
-			addSlotToContainer(new Slot_Normal(mTileEntity,  0,   7,  8));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  1,  25,  8));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  2,  43,  8));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  3,  61,  8));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  4,   7, 26));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  5,  25, 26));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  6,  43, 26));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  7,  61, 26));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  8,   7, 44));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  9,  25, 44));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 10,  43, 44));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 11,  61, 44));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 12,   7, 62));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 13,  25, 62));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 14,  43, 62));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 15,  61, 62));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 0,	  7,  8));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 1,	 25,  8));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 2,	 43,  8));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 3,	 61,  8));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 4,	  7, 26));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 5,	 25, 26));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 6,	 43, 26));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 7,	 61, 26));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 8,	  7, 44));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 9,	 25, 44));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 10,	 43, 44));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 11,	 61, 44));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 12,	  7, 62));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 13,	 25, 62));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 14,	 43, 62));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 15,	 61, 62));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity, 16,  80,  8));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 17,  98,  8));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 16,	 80,  8));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 17,	 98,  8));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 18, 116,  8));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 19, 134,  8));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 20, 152,  8));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity, 21,  80, 28));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 22,  98, 28));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 21,	 80, 28));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 22,	 98, 28));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 23, 116, 28));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 24,  80, 46));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 25,  98, 46));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 24,	 80, 46));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 25,	 98, 46));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 26, 116, 46));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 27,  80, 64));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 28,  98, 64));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 27,	 80, 64));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 28,	 98, 64));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 29, 116, 64));
 			
 			addSlotToContainer(new Slot_Normal(mTileEntity, 33, 153, 28).setTooltip(LH.ADVCRAFTING_DROP_SLOT, LH.Chat.WHITE));

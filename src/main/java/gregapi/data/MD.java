@@ -67,8 +67,8 @@ public class MD {
 	, TE_FOUNDATION		= new ModData(ModIDs.TE_FOUNDATION		, "Thermal Foundation")
 	, TE_DYNAMICS		= new ModData(ModIDs.TE_DYNAMICS		, "Thermal Dynamics")
 	
-	, AE 				= new ModData(ModIDs.AE					, "Applied Energistics")
-	, MO 				= new ModData(ModIDs.MO					, "Matter Overdrive")
+	, AE				= new ModData(ModIDs.AE					, "Applied Energistics")
+	, MO				= new ModData(ModIDs.MO					, "Matter Overdrive")
 	
 	, TFC				= new ModData(ModIDs.TFC				, "TerraFirmaCraft")
 	

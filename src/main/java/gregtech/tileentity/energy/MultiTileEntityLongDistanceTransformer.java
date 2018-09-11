@@ -250,7 +250,7 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 	}
 	
 	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || checkTarget()) &&	(SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return										(SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return										(SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo	(aEnergyType, aSide, aTheoretical);}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls(F, mEnergyTypeAccepted, mEnergyTypeEmitted);}
 	
 	@Override public double getDemandedEnergy() {return checkTarget() ? super.getDemandedEnergy() : 0;}

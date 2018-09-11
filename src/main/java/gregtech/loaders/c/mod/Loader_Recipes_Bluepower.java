@@ -42,6 +42,6 @@ public class Loader_Recipes_Bluepower implements Runnable {
 		CR.shaped(ST.make(MD.BP, "silicon_wafer"	, 4, 0), CR.DEF_REV_NCC, "X ", " s", 'X', OP.plateGem.dat(ANY.Si));
 		CR.shaped(ST.make(MD.BP, "red_doped_wafer"	, 4, 0), CR.DEF_REV_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.RedstoneAlloy));
 		CR.shaped(ST.make(MD.BP, "blue_doped_wafer"	, 4, 0), CR.DEF_REV_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.TeslatineAlloy));
-		CR.shaped(ST.make(MD.BP, "blue_doped_wafer"	, 4, 0), CR.DEF_NCC    , "X ", " s", 'X', OP.plateGem.dat(MT.NikolineAlloy));
+		CR.shaped(ST.make(MD.BP, "blue_doped_wafer"	, 4, 0), CR.DEF_NCC	   , "X ", " s", 'X', OP.plateGem.dat(MT.NikolineAlloy));
 	}}
 }

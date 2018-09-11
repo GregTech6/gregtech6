@@ -74,7 +74,7 @@ public class Loader_Recipes_BiomesOPlenty implements Runnable {
 		RM.Hammer		.addRecipe1(T, 16, 16, IL.BoP_Celestial_Block.get(1), IL.BoP_Celestial.get(4));
 		RM.Crusher		.addRecipe1(T, 16, 16, IL.BoP_Celestial_Block.get(1), IL.BoP_Celestial.get(4));
 		
-		RM.Hammer		.addRecipe1(T, 16,  16, IL.BoP_Hard_Ice.get(1), OM.dust(MT.Ice, 2*U));
+		RM.Hammer		.addRecipe1(T, 16,	16, IL.BoP_Hard_Ice.get(1), OM.dust(MT.Ice, 2*U));
 		RM.Squeezer		.addRecipe1(T, 16, 128, IL.BoP_Hard_Ice.get(1), NF, FL.Ice.make(2000), NI);
 		RM.Juicer		.addRecipe1(T, 16, 128, IL.BoP_Hard_Ice.get(1), NF, FL.Ice.make(2000), NI);
 		

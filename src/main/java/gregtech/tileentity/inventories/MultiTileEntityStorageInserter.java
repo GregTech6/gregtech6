@@ -50,9 +50,9 @@ public class MultiTileEntityStorageInserter extends TileEntityBase07Paintable im
 		for (int i = 0; i <= 6 && checkColumn(aPlayer, tX, --tY, tZ, tList, tOnlyHand); i++) if (i == 6) return T;
 		for (int i = 0; i < 50 && UT.Code.containsBoolean(T, tDirectionsToGo); i++) {
 			if (tOnlyHand && aPlayer.inventory.getCurrentItem() == null) break;
-			if (tDirectionsToGo[0] && checkColumn(aPlayer, tX+i, tY, tZ  , tList, tOnlyHand)) tDirectionsToGo[0] = F;
+			if (tDirectionsToGo[0] && checkColumn(aPlayer, tX+i, tY, tZ	 , tList, tOnlyHand)) tDirectionsToGo[0] = F;
 			if (tOnlyHand && aPlayer.inventory.getCurrentItem() == null) break;
-			if (tDirectionsToGo[1] && checkColumn(aPlayer, tX-i, tY, tZ  , tList, tOnlyHand)) tDirectionsToGo[1] = F;
+			if (tDirectionsToGo[1] && checkColumn(aPlayer, tX-i, tY, tZ	 , tList, tOnlyHand)) tDirectionsToGo[1] = F;
 			if (tOnlyHand && aPlayer.inventory.getCurrentItem() == null) break;
 			if (tDirectionsToGo[2] && checkColumn(aPlayer, tX  , tY, tZ+i, tList, tOnlyHand)) tDirectionsToGo[2] = F;
 			if (tOnlyHand && aPlayer.inventory.getCurrentItem() == null) break;

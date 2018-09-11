@@ -281,8 +281,8 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 	@Override public float getSurfaceSize			(byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[14]:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[14]:0.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return aSide==mFacing?PX_N[1]:0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
 	@Override public boolean isSideSolid2			(byte aSide) {return F;}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	@Override public boolean isObstructingBlockAt	(byte aSide) {return F;}

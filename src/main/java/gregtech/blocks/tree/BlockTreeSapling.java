@@ -175,7 +175,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 				placeTree(aWorld, aX+i, tMaxHeight+2, aZ+j, BlocksGT.Leaves, 11);
 				placeTree(aWorld, aX+i, tMaxHeight+1, aZ+j, BlocksGT.Leaves, 11);
 				if (i != 0 || j != 0) {
-					placeTree(aWorld, aX+i, tMaxHeight  , aZ+j, BlocksGT.Leaves, 11);
+					placeTree(aWorld, aX+i, tMaxHeight	, aZ+j, BlocksGT.Leaves, 11);
 					placeTree(aWorld, aX+i, tMaxHeight-1, aZ+j, BlocksGT.Leaves, 11);
 				}
 			}
@@ -221,7 +221,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 					placeTree(aWorld, aX+i, tMaxHeight-2, aZ+j, BlocksGT.Leaves, 13);
 					placeTree(aWorld, aX+i, tMaxHeight-3, aZ+j, BlocksGT.Leaves, 13);
 				}
-				placeTree(aWorld, aX+i, tMaxHeight  , aZ+j, BlocksGT.Leaves, 13);
+				placeTree(aWorld, aX+i, tMaxHeight	, aZ+j, BlocksGT.Leaves, 13);
 				placeTree(aWorld, aX+i, tMaxHeight+1, aZ+j, BlocksGT.Leaves, 13);
 			}
 			return T;
@@ -249,7 +249,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 					placeTree(aWorld, aX+i, tMaxHeight-2, aZ+j, BlocksGT.Leaves, 15);
 					placeTree(aWorld, aX+i, tMaxHeight-3, aZ+j, BlocksGT.Leaves, 15);
 				}
-				placeTree(aWorld, aX+i, tMaxHeight  , aZ+j, BlocksGT.Leaves, 15);
+				placeTree(aWorld, aX+i, tMaxHeight	, aZ+j, BlocksGT.Leaves, 15);
 				placeTree(aWorld, aX+i, tMaxHeight+1, aZ+j, BlocksGT.Leaves, 15);
 			}
 			

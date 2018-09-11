@@ -57,67 +57,67 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 	public int[] mValues = new int[1];
 	public int mIndex = 0, mCurrentValue = 0, mCurrentMax = 0;
 	
-    @Override
-	public void readFromNBT2(NBTTagCompound aNBT) {
-    	super.readFromNBT2(aNBT);
-    	mCurrentMax = aNBT.getInteger("gt.sensor.max");
-    	mCurrentValue = aNBT.getInteger("gt.sensor.value");
-        mIndex = aNBT.getInteger("gt.sensor.index");
-        mValues = aNBT.getIntArray("gt.sensor.array");
-        if (mValues.length < 1) mValues = new int[1];
-    }
-    
-    @Override
-	public void writeToNBT2(NBTTagCompound aNBT) {
-    	super.writeToNBT2(aNBT);
-    	UT.NBT.setNumber(aNBT, "gt.sensor.max", mCurrentMax);
-        UT.NBT.setNumber(aNBT, "gt.sensor.value", mCurrentValue);
-        UT.NBT.setNumber(aNBT, "gt.sensor.index", mIndex);
-        aNBT.setIntArray("gt.sensor.array", mValues);
-    }
-    
-    @Override
-    public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-    	aNBT = super.writeItemNBT2(aNBT);
-    	if (mIndex != 0) aNBT.setInteger("gt.sensor.index", mIndex);
-    	if (mValues.length > 1) aNBT.setIntArray("gt.sensor.array", new int[mValues.length]);
-    	return aNBT;
-    }
-    
 	@Override
-    public void onTick2(long aTimer, boolean aIsServerSide) {
-    	if (aIsServerSide && (getTickRate() < 2 || aTimer % getTickRate() == 0)) {
-    		mIndex = ((mIndex + 1) % mValues.length);
-    		mDisplayedNumber = mSetNumber = UT.Code.bind16(mSetNumber);
-    		
-    		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mSecondFacing);
-    		mValues[mIndex] = UT.Code.bindInt(getCurrentValue(tDelegator));
-    		mCurrentValue = (mValues.length == 1 ? mValues[0] : UT.Code.averageInts(mValues));
-    		mCurrentMax = UT.Code.bindInt(getCurrentMax(tDelegator));
-    		byte tRedstone = mRedstone;
-    		
-    		switch (mMode & 127) {
-    		case MODE_DISPLAY	: mDisplayedNumber = UT.Code.bindInt(mCurrentValue); break;
-    		case MODE_GREATER	: tRedstone = (byte)(mCurrentValue >  mSetNumber?15:0); break;
-    		case MODE_EQUAL		: tRedstone = (byte)(mCurrentValue == mSetNumber?15:0); break;
-    		case MODE_SMALLER	: tRedstone = (byte)(mCurrentValue <  mSetNumber?15:0); break;
-    		case MODE_SCALE		: tRedstone = (byte)UT.Code.scale(mCurrentValue, mSetNumber, 15, F); break;
-    		case MODE_PERCENT	: tRedstone = (byte)UT.Code.scale(mDisplayedNumber = (mCurrentMax > 0 ? UT.Code.bindInt((mCurrentValue * 100L) / mCurrentMax) : 0), 100L, 15, F); break;
-    		case MODE_FULL		: tRedstone = (byte)(mCurrentValue >= mCurrentMax?15: 0); break;
-    		case MODE_NOT_FULL	: tRedstone = (byte)(mCurrentValue >= mCurrentMax? 0:15); break;
-    		}
-    		
-    		tRedstone = UT.Code.bind4(tRedstone);
-    		
-    		if (tRedstone != mRedstone) {
-    			mRedstone = tRedstone;
-    			causeBlockUpdate();
-    		}
-    		
-    		mDisplayedNumber = UT.Code.unsignS((short)mDisplayedNumber);
-    	}
-    }
-    
+	public void readFromNBT2(NBTTagCompound aNBT) {
+		super.readFromNBT2(aNBT);
+		mCurrentMax = aNBT.getInteger("gt.sensor.max");
+		mCurrentValue = aNBT.getInteger("gt.sensor.value");
+		mIndex = aNBT.getInteger("gt.sensor.index");
+		mValues = aNBT.getIntArray("gt.sensor.array");
+		if (mValues.length < 1) mValues = new int[1];
+	}
+	
+	@Override
+	public void writeToNBT2(NBTTagCompound aNBT) {
+		super.writeToNBT2(aNBT);
+		UT.NBT.setNumber(aNBT, "gt.sensor.max", mCurrentMax);
+		UT.NBT.setNumber(aNBT, "gt.sensor.value", mCurrentValue);
+		UT.NBT.setNumber(aNBT, "gt.sensor.index", mIndex);
+		aNBT.setIntArray("gt.sensor.array", mValues);
+	}
+	
+	@Override
+	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
+		aNBT = super.writeItemNBT2(aNBT);
+		if (mIndex != 0) aNBT.setInteger("gt.sensor.index", mIndex);
+		if (mValues.length > 1) aNBT.setIntArray("gt.sensor.array", new int[mValues.length]);
+		return aNBT;
+	}
+	
+	@Override
+	public void onTick2(long aTimer, boolean aIsServerSide) {
+		if (aIsServerSide && (getTickRate() < 2 || aTimer % getTickRate() == 0)) {
+			mIndex = ((mIndex + 1) % mValues.length);
+			mDisplayedNumber = mSetNumber = UT.Code.bind16(mSetNumber);
+			
+			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mSecondFacing);
+			mValues[mIndex] = UT.Code.bindInt(getCurrentValue(tDelegator));
+			mCurrentValue = (mValues.length == 1 ? mValues[0] : UT.Code.averageInts(mValues));
+			mCurrentMax = UT.Code.bindInt(getCurrentMax(tDelegator));
+			byte tRedstone = mRedstone;
+			
+			switch (mMode & 127) {
+			case MODE_DISPLAY	: mDisplayedNumber = UT.Code.bindInt(mCurrentValue); break;
+			case MODE_GREATER	: tRedstone = (byte)(mCurrentValue >  mSetNumber?15:0); break;
+			case MODE_EQUAL		: tRedstone = (byte)(mCurrentValue == mSetNumber?15:0); break;
+			case MODE_SMALLER	: tRedstone = (byte)(mCurrentValue <  mSetNumber?15:0); break;
+			case MODE_SCALE		: tRedstone = (byte)UT.Code.scale(mCurrentValue, mSetNumber, 15, F); break;
+			case MODE_PERCENT	: tRedstone = (byte)UT.Code.scale(mDisplayedNumber = (mCurrentMax > 0 ? UT.Code.bindInt((mCurrentValue * 100L) / mCurrentMax) : 0), 100L, 15, F); break;
+			case MODE_FULL		: tRedstone = (byte)(mCurrentValue >= mCurrentMax?15: 0); break;
+			case MODE_NOT_FULL	: tRedstone = (byte)(mCurrentValue >= mCurrentMax? 0:15); break;
+			}
+			
+			tRedstone = UT.Code.bind4(tRedstone);
+			
+			if (tRedstone != mRedstone) {
+				mRedstone = tRedstone;
+				causeBlockUpdate();
+			}
+			
+			mDisplayedNumber = UT.Code.unsignS((short)mDisplayedNumber);
+		}
+	}
+	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aSide == mFacing) {
@@ -134,8 +134,8 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber+= 16; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
 						}
 						if (tCoords[1] >= PX_P[12] && tCoords[1] <= PX_P[14]) {
-							if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber--   ; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
-							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber++   ; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
+							if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber--	  ; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
+							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber++	  ; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
 						}
 					} else {
 						if (tCoords[1] >= PX_P[ 6] && tCoords[1] <= PX_P[ 8]) {
@@ -147,8 +147,8 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber+= 10; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
 						}
 						if (tCoords[1] >= PX_P[12] && tCoords[1] <= PX_P[14]) {
-							if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber--   ; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
-							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber++   ; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
+							if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber--	  ; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
+							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber++	  ; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
 						}
 					}
 				}

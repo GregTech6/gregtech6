@@ -156,7 +156,7 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 								decrStackSize(tPrincessSlot, 1);
 							}
 						} else {
-							if (mLife %  300 == 150 && rng(10000) < Util.getAggressiveness(tRoyalTag)) {
+							if (mLife %	 300 == 150 && rng(10000) < Util.getAggressiveness(tRoyalTag)) {
 								try {for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-2, -2, -2, +3, +3, +3))) attackEntity(tEntity);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 							}
 							if (mLife % 1200 == 600 && rng(10000) < Util.getWorkForce(tRoyalTag) && checkWork(tRoyalTag)) {
@@ -380,28 +380,28 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 		
 		@Override
 		public int addSlots(InventoryPlayer aInventoryPlayer) {
-			addSlotToContainer(new Slot_Normal(mTileEntity,  0,  44,  8).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  1,  62,  8).setCanPut(F).setCanTake(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  2,  80,  8).setCanPut(F).setCanTake(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  3,  98,  8).setCanPut(F).setCanTake(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  4, 116,  8).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 0,	 44,  8).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 1,	 62,  8).setCanPut(F).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 2,	 80,  8).setCanPut(F).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 3,	 98,  8).setCanPut(F).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 4, 116,  8).setCanPut(F));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity,  5,  44, 26).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  6,  62, 26).setCanPut(F).setCanTake(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  7,  80, 26).setCanTake(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  8,  98, 26).setCanPut(F).setCanTake(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  9, 116, 26).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 5,	 44, 26).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 6,	 62, 26).setCanPut(F).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 7,	 80, 26).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 8,	 98, 26).setCanPut(F).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 9, 116, 26).setCanPut(F));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity, 10,  44, 44).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 11,  62, 44).setCanPut(F).setCanTake(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 12,  80, 44).setCanTake(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 13,  98, 44).setCanPut(F).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 10,	 44, 44).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 11,	 62, 44).setCanPut(F).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 12,	 80, 44).setCanTake(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 13,	 98, 44).setCanPut(F).setCanTake(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 14, 116, 44).setCanPut(F));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity, 15,  44, 62).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 16,  62, 62).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 17,  80, 62).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 18,  98, 62).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 15,	 44, 62).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 16,	 62, 62).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 17,	 80, 62).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 18,	 98, 62).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 19, 116, 62).setCanPut(F));
 			
 			return super.addSlots(aInventoryPlayer);
@@ -418,28 +418,28 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 		
 		@Override
 		public int addSlots(InventoryPlayer aInventoryPlayer) {
-			addSlotToContainer(new Slot_Normal(mTileEntity,  0,  44,  8).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  1,  62,  8).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  2,  80,  8).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  3,  98,  8).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  4, 116,  8).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 0,	 44,  8).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 1,	 62,  8).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 2,	 80,  8).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 3,	 98,  8).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 4, 116,  8).setCanPut(F));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity,  5,  44, 26).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  6,  62, 26).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  7,  80, 26));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  8,  98, 26).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity,  9, 116, 26).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 5,	 44, 26).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 6,	 62, 26).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 7,	 80, 26));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 8,	 98, 26).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity,	 9, 116, 26).setCanPut(F));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity, 10,  44, 44).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 11,  62, 44).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 12,  80, 44));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 13,  98, 44).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 10,	 44, 44).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 11,	 62, 44).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 12,	 80, 44));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 13,	 98, 44).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 14, 116, 44).setCanPut(F));
 			
-			addSlotToContainer(new Slot_Normal(mTileEntity, 15,  44, 62).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 16,  62, 62).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 17,  80, 62).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, 18,  98, 62).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 15,	 44, 62).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 16,	 62, 62).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 17,	 80, 62).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, 18,	 98, 62).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, 19, 116, 62).setCanPut(F));
 			
 			return super.addSlots(aInventoryPlayer);

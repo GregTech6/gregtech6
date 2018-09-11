@@ -29,11 +29,11 @@ public interface IRedstoneCircuitBlock {
 	/**
 	 * The Output Direction the Circuit Block is Facing
 	 */
-    public byte getOutputFacing();
+	public byte getOutputFacing();
 	
-    /**
-     * sets Output Redstone State at Side
-     */
+	/**
+	 * sets Output Redstone State at Side
+	 */
 	public boolean setRedstone(byte aStrength, byte aSide);
 	
 	/**

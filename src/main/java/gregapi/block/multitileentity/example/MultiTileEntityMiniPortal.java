@@ -126,7 +126,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 							causeBlockUpdate();
 						}
 						xRedstone[tSide] = -1;
-						wRedstone[tSide] =  0;
+						wRedstone[tSide] =	0;
 					} else {
 						if (wRedstone[tSide] >= 100) {
 							if (mRedstone[tSide] != 0) {
@@ -140,7 +140,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 					
 					if (xComparator[tSide] >= 0) {
 						if (mComparator[tSide] != xComparator[tSide]) {
-							mComparator[tSide]  = xComparator[tSide];
+							mComparator[tSide]	= xComparator[tSide];
 							causeBlockUpdate();
 						}
 						xComparator[tSide] = -1;
@@ -148,7 +148,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 					} else {
 						if (wComparator[tSide] >= 100) {
 							if (mComparator[tSide] != 0) {
-								mComparator[tSide]  = 0;
+								mComparator[tSide]	= 0;
 								causeBlockUpdate();
 							}
 						} else {
@@ -161,7 +161,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 						causeBlockUpdate();
 					}
 					if (mComparator[tSide] != 0) {
-						mComparator[tSide]  = 0;
+						mComparator[tSide]	= 0;
 						causeBlockUpdate();
 					}
 				}
@@ -177,7 +177,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 			// Scan Redstone
 			if (mTarget != null) {
 				for (byte tSide : ALL_SIDES_VALID) {
-					mTarget.xRedstone  [OPPOSITES[tSide]] = (byte)UT.Code.bind_(mTarget.xRedstone  [OPPOSITES[tSide]], 15, getRedstoneIncoming  (tSide));
+					mTarget.xRedstone  [OPPOSITES[tSide]] = (byte)UT.Code.bind_(mTarget.xRedstone  [OPPOSITES[tSide]], 15, getRedstoneIncoming	(tSide));
 					mTarget.xComparator[OPPOSITES[tSide]] = (byte)UT.Code.bind_(mTarget.xComparator[OPPOSITES[tSide]], 15, getComparatorIncoming(tSide));
 				}
 			}
@@ -224,7 +224,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 				if (mTarget == null) {
 					aChatReturn.add("No Target");
 				} else {
-					aChatReturn.add("X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
+					aChatReturn.add("X: " + mTarget.xCoord + "	 Y: " + mTarget.yCoord + "	 Z: " + mTarget.zCoord);
 				}
 			}
 			return 1;

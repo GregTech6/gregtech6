@@ -184,7 +184,7 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *   'b' = OreDictToolNames.blade
+	 *	 'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
@@ -213,7 +213,7 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *   'b' = OreDictToolNames.blade
+	 *	 'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
@@ -242,7 +242,7 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *   'b' = OreDictToolNames.blade
+	 *	 'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill

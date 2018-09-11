@@ -54,11 +54,11 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 	@Override
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		FluidStack mFluid = UT.Fluids.getFluidForFilledItem(aStack, T);
-        MovingObjectPosition tTarget = WD.getMOP(aWorld, aPlayer, mFluid == null);
-        if (tTarget == null || tTarget.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK) return aStack;
-        int tX = tTarget.blockX, tY = tTarget.blockY, tZ = tTarget.blockZ;
+		MovingObjectPosition tTarget = WD.getMOP(aWorld, aPlayer, mFluid == null);
+		if (tTarget == null || tTarget.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK) return aStack;
+		int tX = tTarget.blockX, tY = tTarget.blockY, tZ = tTarget.blockZ;
 		ItemStack tBucket = ST.make(Items.bucket, 1, 0);
-        
+		
 		if (mFluid == null) {
 			Block tFluidBlock = aWorld.getBlock(tX, tY, tZ);
 			if (tFluidBlock == BlocksGT.Ocean) {
@@ -89,7 +89,7 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 			}
 		}
 		aPlayer.clearItemInUse();
-        return processBucket(tBucket, aStack, mFluid != null);
+		return processBucket(tBucket, aStack, mFluid != null);
 	}
 	
 	@Override

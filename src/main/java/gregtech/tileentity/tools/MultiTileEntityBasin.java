@@ -54,7 +54,7 @@ public class MultiTileEntityBasin extends MultiTileEntityMold {
 	@Override
 	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD) + " " + getMoldRecipe(0).mNameLocal);
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT) 	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_MELTDOWN) + " (" + getMoldMaxTemperature() + " K)");
 		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_CONTACT));
@@ -188,8 +188,8 @@ public class MultiTileEntityBasin extends MultiTileEntityMold {
 	@Override public float getSurfaceSize			(byte aSide) {return 1.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 1.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return 0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	

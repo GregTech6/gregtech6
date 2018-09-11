@@ -66,11 +66,11 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public short getMultiTileEntityRegistryID();
 	/** Called by the Registry with the default NBT Parameters and the two IDs you have to save, when the TileEntity is created. aNBT may be null, take that into account if you decide to call the regular readFromNBT Function from here. */
 	public void initFromNBT(NBTTagCompound aNBT, short aMTEID, short aMTERegistry);
-    /** Writes eventual Item Data to the NBT. */
-    public NBTTagCompound writeItemNBT(NBTTagCompound aNBT);
-    /** Sets the Item Display Name. Use null to reset it. */
-    public void setCustomName(String aName);
-    public String getCustomName();
+	/** Writes eventual Item Data to the NBT. */
+	public NBTTagCompound writeItemNBT(NBTTagCompound aNBT);
+	/** Sets the Item Display Name. Use null to reset it. */
+	public void setCustomName(String aName);
+	public String getCustomName();
 	
 	public void setShouldRefresh(boolean aShouldRefresh);
 	
@@ -78,12 +78,12 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_OnNeighborChange					extends IMultiTileEntity {public void onNeighborChange(IBlockAccess aWorld, int aTileX, int aTileY, int aTileZ);}
 	public static interface IMTE_OnNeighborBlockChange				extends IMultiTileEntity {public void onNeighborBlockChange(World aWorld, Block aBlock);}
 	public static interface IMTE_OnBlockExploded					extends IMultiTileEntity {public void onExploded(Explosion aExplosion);}
-    public static interface IMTE_GetPickBlock						extends IMultiTileEntity {public ItemStack getPickBlock(MovingObjectPosition aTarget);}
-    public static interface IMTE_BreakBlock							extends IMultiTileEntity {/** return true to prevent the TileEntity from being removed. */public boolean breakBlock();}
-    public static interface IMTE_GetStackFromBlock					extends IMultiTileEntity {public ItemStack getStackFromBlock(byte aSide);}
-    public static interface IMTE_GetFlammability					extends IMultiTileEntity {public int getFlammability(byte aSide, boolean aDefault);}
-    public static interface IMTE_GetFireSpreadSpeed					extends IMultiTileEntity {public int getFireSpreadSpeed(byte aSide, boolean aDefault);}
-    public static interface IMTE_IsFireSource						extends IMultiTileEntity {public boolean isFireSource(byte aSide);}
+	public static interface IMTE_GetPickBlock						extends IMultiTileEntity {public ItemStack getPickBlock(MovingObjectPosition aTarget);}
+	public static interface IMTE_BreakBlock							extends IMultiTileEntity {/** return true to prevent the TileEntity from being removed. */public boolean breakBlock();}
+	public static interface IMTE_GetStackFromBlock					extends IMultiTileEntity {public ItemStack getStackFromBlock(byte aSide);}
+	public static interface IMTE_GetFlammability					extends IMultiTileEntity {public int getFlammability(byte aSide, boolean aDefault);}
+	public static interface IMTE_GetFireSpreadSpeed					extends IMultiTileEntity {public int getFireSpreadSpeed(byte aSide, boolean aDefault);}
+	public static interface IMTE_IsFireSource						extends IMultiTileEntity {public boolean isFireSource(byte aSide);}
 	public static interface IMTE_CanEntityDestroy					extends IMultiTileEntity {public boolean canEntityDestroy(Entity aEntity);}
 	public static interface IMTE_OnToolClick						extends IMultiTileEntity {public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ);}
 	public static interface IMTE_GetMaterialAtSide					extends IMultiTileEntity {public OreDictMaterialStack getMaterialAtSide(byte aSide);}
@@ -91,10 +91,10 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_GetDrops							extends IMultiTileEntity {public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch);}
 	public static interface IMTE_GetBlockHardness					extends IMultiTileEntity {public float getBlockHardness();}
 	public static interface IMTE_GetPlayerRelativeBlockHardness		extends IMultiTileEntity {public float getPlayerRelativeBlockHardness(EntityPlayer aPlayer, float aOriginal);}
-    public static interface IMTE_GetExplosionResistance				extends IMultiTileEntity {public float getExplosionResistance(Entity aExploder, double aExplosionX, double aExplosionY, double aExplosionZ); public float getExplosionResistance();}
-    public static interface IMTE_IsSideSolid						extends IMultiTileEntity {public boolean isSideSolid(byte aSide);}
-    public static interface IMTE_IsBeaconBase						extends IMultiTileEntity {public boolean isBeaconBase(int aBeaconX, int aBeaconY, int aBeaconZ);}
-    public static interface IMTE_GetLightOpacity					extends IMultiTileEntity {public int getLightOpacity();}
+	public static interface IMTE_GetExplosionResistance				extends IMultiTileEntity {public float getExplosionResistance(Entity aExploder, double aExplosionX, double aExplosionY, double aExplosionZ); public float getExplosionResistance();}
+	public static interface IMTE_IsSideSolid						extends IMultiTileEntity {public boolean isSideSolid(byte aSide);}
+	public static interface IMTE_IsBeaconBase						extends IMultiTileEntity {public boolean isBeaconBase(int aBeaconX, int aBeaconY, int aBeaconZ);}
+	public static interface IMTE_GetLightOpacity					extends IMultiTileEntity {public int getLightOpacity();}
 	public static interface IMTE_GetBlocksMovement					extends IMultiTileEntity {public boolean getBlocksMovement();}
 	public static interface IMTE_ShouldSideBeRendered				extends IMultiTileEntity {public boolean shouldSideBeRendered(byte aSide);}
 	public static interface IMTE_AddCollisionBoxesToList			extends IMultiTileEntity {public void addCollisionBoxesToList(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity);}

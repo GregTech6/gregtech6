@@ -87,7 +87,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_SIFTER_USAGE));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT) 	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 	}
 	
 	@Override
@@ -250,7 +250,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		if (aSendAll)								return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
-		if (mDisplayedInput  != oDisplayedInput )	return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1));
+		if (mDisplayedInput	 != oDisplayedInput )	return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1));
 		if (mDisplayedOutput != oDisplayedOutput)	return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1));
 		return getClientDataPacketByte(aSendAll, mState);
 	}
@@ -321,17 +321,17 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					mTextureInput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
 				} else if (mDisplayedInput < 0) {
 					switch(mDisplayedInput) {
-					case  -1: mTextureInput  = BlockTextureCopied.get(Blocks.gravel			, SIDE_ANY, 0); break;
-					case  -2: mTextureInput  = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 0); break;
-					case  -3: mTextureInput  = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 1); break;
-					case  -4: mTextureInput  = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 2); break;
-					case  -5: mTextureInput  = BlockTextureCopied.get(Blocks.sand			, SIDE_ANY, 0); break;
-					case  -6: mTextureInput  = BlockTextureCopied.get(Blocks.sand			, SIDE_ANY, 1); break;
-					case  -7: mTextureInput  = BlockTextureCopied.get(Blocks.grass			, SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
-					case  -8: mTextureInput  = BlockTextureCopied.get(Blocks.mycelium		, SIDE_ANY, 0); break;
-					case  -9: mTextureInput  = BlockTextureCopied.get(Blocks.soul_sand		, SIDE_ANY, 0); break;
-					case -10: mTextureInput  = BlockTextureCopied.get(BlocksGT.Diggables	, SIDE_ANY, 0); break;
-					case -11: mTextureInput  = BlockTextureCopied.get(BlocksGT.Sands		, SIDE_ANY, 0); break;
+					case  -1: mTextureInput	 = BlockTextureCopied.get(Blocks.gravel			, SIDE_ANY, 0); break;
+					case  -2: mTextureInput	 = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 0); break;
+					case  -3: mTextureInput	 = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 1); break;
+					case  -4: mTextureInput	 = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 2); break;
+					case  -5: mTextureInput	 = BlockTextureCopied.get(Blocks.sand			, SIDE_ANY, 0); break;
+					case  -6: mTextureInput	 = BlockTextureCopied.get(Blocks.sand			, SIDE_ANY, 1); break;
+					case  -7: mTextureInput	 = BlockTextureCopied.get(Blocks.grass			, SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
+					case  -8: mTextureInput	 = BlockTextureCopied.get(Blocks.mycelium		, SIDE_ANY, 0); break;
+					case  -9: mTextureInput	 = BlockTextureCopied.get(Blocks.soul_sand		, SIDE_ANY, 0); break;
+					case -10: mTextureInput	 = BlockTextureCopied.get(BlocksGT.Diggables	, SIDE_ANY, 0); break;
+					case -11: mTextureInput	 = BlockTextureCopied.get(BlocksGT.Sands		, SIDE_ANY, 0); break;
 					}
 				}
 			}
@@ -373,8 +373,8 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	@Override public float getSurfaceSize			(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?PX_N[ 4]:0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
 	@Override public boolean isSideSolid2			(byte aSide) {return F;}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	

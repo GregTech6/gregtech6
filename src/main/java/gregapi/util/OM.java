@@ -412,34 +412,34 @@ public class OM {
 	
 	public static ItemStack gem(OreDictMaterial aMaterial, long aMaterialAmount) {
 		if (aMaterialAmount < U4 || aMaterial == null) return null;
-									if (aMaterialAmount >= U * 72                                                           )	{ItemStack rStack = OP.blockGem		.mat(aMaterial, UT.Code.bindStack( aMaterialAmount   /(U*9))); if (rStack != null) return rStack;}
-		if (aMaterialAmount >= U )	if (aMaterialAmount >= U * 32 || (((aMaterialAmount %  U   <= aMaterialAmount % (U2 )))))	{ItemStack rStack = OP.gem			.mat(aMaterial, UT.Code.bindStack( aMaterialAmount   / U   )); if (rStack != null) return rStack;}
+									if (aMaterialAmount >= U * 72															)	{ItemStack rStack = OP.blockGem		.mat(aMaterial, UT.Code.bindStack( aMaterialAmount	 /(U*9))); if (rStack != null) return rStack;}
+		if (aMaterialAmount >= U )	if (aMaterialAmount >= U * 32 || (((aMaterialAmount %  U   <= aMaterialAmount % (U2 )))))	{ItemStack rStack = OP.gem			.mat(aMaterial, UT.Code.bindStack( aMaterialAmount	 / U   )); if (rStack != null) return rStack;}
 		if (aMaterialAmount >= U2)	if (aMaterialAmount >= U * 16 || (((aMaterialAmount % (U2) <= aMaterialAmount % (U4 )))))	{ItemStack rStack = OP.gemFlawed	.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*2)/ U   )); if (rStack != null) return rStack;}
 		return OP.gemChipped.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*4)/U));
 	}
 	
 	public static ItemStack dust(OreDictMaterial aMaterial, long aMaterialAmount) {
 		if (aMaterialAmount < U72 || aMaterial == null) return null;
-									if (aMaterialAmount >= U * 72                                                           )	{ItemStack rStack = OP.blockDust	.mat(aMaterial, UT.Code.bindStack( aMaterialAmount   /(U*9))); if (rStack != null) return rStack;}
-		if (aMaterialAmount >= U )	if (aMaterialAmount >= U * 16 || (( aMaterialAmount % U == 0                          )))	{ItemStack rStack = OP.dust			.mat(aMaterial, UT.Code.bindStack( aMaterialAmount   / U   )); if (rStack != null) return rStack;}
-		if (aMaterialAmount >= U4)	if (aMaterialAmount >= U *  8 || (((aMaterialAmount % (U4) <= aMaterialAmount % (U9 )))))	{ItemStack rStack = OP.dustSmall	.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*4)/ U   )); if (rStack != null) return rStack;}
-		if (aMaterialAmount >= U9)	if (aMaterialAmount >= U      || (((aMaterialAmount % (U9) <= aMaterialAmount % (U72)))))	{ItemStack rStack = OP.dustTiny		.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*9)/ U   )); if (rStack != null) return rStack;}
+									if (aMaterialAmount >= U * 72															)	{ItemStack rStack = OP.blockDust	.mat(aMaterial, UT.Code.bindStack( aMaterialAmount	 /(U*9))); if (rStack != null) return rStack;}
+		if (aMaterialAmount >= U )	if (aMaterialAmount >= U * 16 || (( aMaterialAmount % U == 0						  )))	{ItemStack rStack = OP.dust			.mat(aMaterial, UT.Code.bindStack( aMaterialAmount	 / U   )); if (rStack != null) return rStack;}
+		if (aMaterialAmount >= U4)	if (aMaterialAmount >= U *	8 || (((aMaterialAmount % (U4) <= aMaterialAmount % (U9 )))))	{ItemStack rStack = OP.dustSmall	.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*4)/ U   )); if (rStack != null) return rStack;}
+		if (aMaterialAmount >= U9)	if (aMaterialAmount >= U	  || (((aMaterialAmount % (U9) <= aMaterialAmount % (U72)))))	{ItemStack rStack = OP.dustTiny		.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*9)/ U   )); if (rStack != null) return rStack;}
 		return OP.dustDiv72.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*72)/U));
 	}
 	
 	public static ItemStack ingot(OreDictMaterial aMaterial, long aMaterialAmount) {
 		if (aMaterialAmount < U9 || aMaterial == null) return null;
-									if (aMaterialAmount >= U * 72                                                           )	{ItemStack rStack = OP.blockIngot	.mat(aMaterial, UT.Code.bindStack( aMaterialAmount   /(U*9))); if (rStack != null) return rStack;}
-		if (aMaterialAmount >= U )	if (aMaterialAmount >= U * 16 || (( aMaterialAmount % U == 0                          )))	{ItemStack rStack = OP.ingot		.mat(aMaterial, UT.Code.bindStack( aMaterialAmount   / U   )); if (rStack != null) return rStack;}
-		if (aMaterialAmount >= U4)	if (aMaterialAmount >= U *  8 || (((aMaterialAmount % (U4) <= aMaterialAmount % (U9 )))))	{ItemStack rStack = OP.chunkGt		.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*4)/ U   )); if (rStack != null) return rStack;}
+									if (aMaterialAmount >= U * 72															)	{ItemStack rStack = OP.blockIngot	.mat(aMaterial, UT.Code.bindStack( aMaterialAmount	 /(U*9))); if (rStack != null) return rStack;}
+		if (aMaterialAmount >= U )	if (aMaterialAmount >= U * 16 || (( aMaterialAmount % U == 0						  )))	{ItemStack rStack = OP.ingot		.mat(aMaterial, UT.Code.bindStack( aMaterialAmount	 / U   )); if (rStack != null) return rStack;}
+		if (aMaterialAmount >= U4)	if (aMaterialAmount >= U *	8 || (((aMaterialAmount % (U4) <= aMaterialAmount % (U9 )))))	{ItemStack rStack = OP.chunkGt		.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*4)/ U   )); if (rStack != null) return rStack;}
 		return OP.nugget.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*9)/U));
 	}
 	
 	public static ItemStack solid(OreDictMaterial aMaterial, long aMaterialAmount) {
 		if (aMaterialAmount *  9 < U || aMaterial == null) return null;
-									if (aMaterialAmount >= U * 72                                                           )	{ItemStack rStack = OP.blockSolid	.mat(aMaterial, UT.Code.bindStack( aMaterialAmount   /(U*9))); if (rStack != null) return rStack;}
-		if (aMaterialAmount >= U )	if (aMaterialAmount >= U * 16 || (( aMaterialAmount % U == 0                          )))	{ItemStack rStack = OP.ingot		.mat(aMaterial, UT.Code.bindStack( aMaterialAmount   / U   )); if (rStack != null) return rStack;}
-		if (aMaterialAmount >= U4)	if (aMaterialAmount >= U *  8 || (((aMaterialAmount % (U4) <= aMaterialAmount % (U9 )))))	{ItemStack rStack = OP.chunkGt		.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*4)/ U   )); if (rStack != null) return rStack;}
+									if (aMaterialAmount >= U * 72															)	{ItemStack rStack = OP.blockSolid	.mat(aMaterial, UT.Code.bindStack( aMaterialAmount	 /(U*9))); if (rStack != null) return rStack;}
+		if (aMaterialAmount >= U )	if (aMaterialAmount >= U * 16 || (( aMaterialAmount % U == 0						  )))	{ItemStack rStack = OP.ingot		.mat(aMaterial, UT.Code.bindStack( aMaterialAmount	 / U   )); if (rStack != null) return rStack;}
+		if (aMaterialAmount >= U4)	if (aMaterialAmount >= U *	8 || (((aMaterialAmount % (U4) <= aMaterialAmount % (U9 )))))	{ItemStack rStack = OP.chunkGt		.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*4)/ U   )); if (rStack != null) return rStack;}
 		return OP.nugget.mat(aMaterial, UT.Code.bindStack((aMaterialAmount*9)/U));
 	}
 	

@@ -97,10 +97,10 @@ public class RecipeMapReplicator extends RecipeMap {
 			if (aMaterial.mPriorityPrefix != null) tOutput = aMaterial.mPriorityPrefix.mat(aMaterial, 1);
 			if (ST.invalid(tOutput)) {
 				if (ST.invalid(tOutput = OP.gem			.mat(aMaterial, 1)) && ST.invalid(tOutput = OP.plateGem	.mat(aMaterial, 1))
-				&&  ST.invalid(tOutput = OP.ingot		.mat(aMaterial, 1)) && ST.invalid(tOutput = OP.plate	.mat(aMaterial, 1))
-				&&  ST.invalid(tOutput = OP.nugget		.mat(aMaterial, 9)) && ST.invalid(tOutput = OP.chunkGt	.mat(aMaterial, 4))
-				&&  ST.invalid(tOutput = OP.dust		.mat(aMaterial, 1)) && ST.invalid(tOutput = OP.dustTiny	.mat(aMaterial, 9))
-				&&  ST.invalid(tOutput = OP.dustSmall	.mat(aMaterial, 4)) && ST.invalid(tOutput = OP.stick	.mat(aMaterial, 2))) {
+				&&	ST.invalid(tOutput = OP.ingot		.mat(aMaterial, 1)) && ST.invalid(tOutput = OP.plate	.mat(aMaterial, 1))
+				&&	ST.invalid(tOutput = OP.nugget		.mat(aMaterial, 9)) && ST.invalid(tOutput = OP.chunkGt	.mat(aMaterial, 4))
+				&&	ST.invalid(tOutput = OP.dust		.mat(aMaterial, 1)) && ST.invalid(tOutput = OP.dustTiny	.mat(aMaterial, 9))
+				&&	ST.invalid(tOutput = OP.dustSmall	.mat(aMaterial, 4)) && ST.invalid(tOutput = OP.stick	.mat(aMaterial, 2))) {
 					FluidStack tFluidOutput = aMaterial.liquid(U, F);
 					if (FL.Error.is(tFluidOutput)) tFluidOutput = aMaterial.gas(U, F);
 					if (FL.Error.is(tFluidOutput)) tFluidOutput = aMaterial.plasma(U, F);

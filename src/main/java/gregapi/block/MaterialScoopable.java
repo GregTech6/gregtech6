@@ -33,8 +33,8 @@ public class MaterialScoopable extends Material {
 		setImmovableMobility();
 	}
 	
-    @Override
+	@Override
 	public boolean isOpaque() {
-        return F;
-    }
+		return F;
+	}
 }

@@ -38,18 +38,18 @@ public class WorldgenStructureInteriorPortalEnd extends WorldgenStructure {
 				setBlock(aWorld, aChunkX+tX, aData.mOffsetY+2, aChunkZ+tZ, Blocks.glowstone, 0, 3);
 			}
 		}
-		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY  , aChunkZ+ 6, Blocks.end_portal_frame, 4, 2);
-		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY  , aChunkZ+ 6, Blocks.end_portal_frame, 4, 2);
-		setBlock(aWorld, aChunkX+ 9, aData.mOffsetY  , aChunkZ+ 7, Blocks.end_portal_frame, 5, 2);
-		setBlock(aWorld, aChunkX+ 9, aData.mOffsetY  , aChunkZ+ 8, Blocks.end_portal_frame, 5, 2);
-		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY  , aChunkZ+ 9, Blocks.end_portal_frame, 6, 2);
-		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY  , aChunkZ+ 9, Blocks.end_portal_frame, 6, 2);
-		setBlock(aWorld, aChunkX+ 6, aData.mOffsetY  , aChunkZ+ 7, Blocks.end_portal_frame, 7, 2);
-		setBlock(aWorld, aChunkX+ 6, aData.mOffsetY  , aChunkZ+ 8, Blocks.end_portal_frame, 7, 2);
-		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY  , aChunkZ+ 7, Blocks.end_portal, 0, 2);
-		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY  , aChunkZ+ 8, Blocks.end_portal, 0, 2);
-		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY  , aChunkZ+ 7, Blocks.end_portal, 0, 2);
-		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY  , aChunkZ+ 8, Blocks.end_portal, 0, 2);
+		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY	 , aChunkZ+ 6, Blocks.end_portal_frame, 4, 2);
+		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY	 , aChunkZ+ 6, Blocks.end_portal_frame, 4, 2);
+		setBlock(aWorld, aChunkX+ 9, aData.mOffsetY	 , aChunkZ+ 7, Blocks.end_portal_frame, 5, 2);
+		setBlock(aWorld, aChunkX+ 9, aData.mOffsetY	 , aChunkZ+ 8, Blocks.end_portal_frame, 5, 2);
+		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY	 , aChunkZ+ 9, Blocks.end_portal_frame, 6, 2);
+		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY	 , aChunkZ+ 9, Blocks.end_portal_frame, 6, 2);
+		setBlock(aWorld, aChunkX+ 6, aData.mOffsetY	 , aChunkZ+ 7, Blocks.end_portal_frame, 7, 2);
+		setBlock(aWorld, aChunkX+ 6, aData.mOffsetY	 , aChunkZ+ 8, Blocks.end_portal_frame, 7, 2);
+		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY	 , aChunkZ+ 7, Blocks.end_portal, 0, 2);
+		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY	 , aChunkZ+ 8, Blocks.end_portal, 0, 2);
+		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY	 , aChunkZ+ 7, Blocks.end_portal, 0, 2);
+		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY	 , aChunkZ+ 8, Blocks.end_portal, 0, 2);
 		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY-1, aChunkZ+ 7, Blocks.end_stone, 0, 2);
 		setBlock(aWorld, aChunkX+ 7, aData.mOffsetY-1, aChunkZ+ 8, Blocks.end_stone, 0, 2);
 		setBlock(aWorld, aChunkX+ 8, aData.mOffsetY-1, aChunkZ+ 7, Blocks.end_stone, 0, 2);

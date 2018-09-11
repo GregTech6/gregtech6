@@ -66,7 +66,7 @@ public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
 		mAdditionalOutput	= aAdditionalOutput;
 		mAdditionalInput	= aAdditionalInput;
 		mMultiplier			= aMultiplier;
-		mDuration 			= aDuration;
+		mDuration			= aDuration;
 		mEUt				= aEUt;
 		long
 		tUnitsProcessed		= 0;
@@ -91,7 +91,7 @@ public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
 		mAdditionalOutput	= aAdditionalOutput;
 		mAdditionalInput	= aAdditionalInput;
 		mMultiplier			= aMultiplier;
-		mDuration 			= aDuration;
+		mDuration			= aDuration;
 		mEUt				= aEUt;
 		long
 		tUnitsProcessed		= 0;
@@ -118,7 +118,7 @@ public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
 		mAdditionalOutput	= aAdditionalOutput;
 		mAdditionalInput	= aAdditionalInput;
 		mMultiplier			= aMultiplier;
-		mDuration 			= aDuration;
+		mDuration			= aDuration;
 		mEUt				= aEUt;
 		long
 		tUnitsProcessed		= 0;

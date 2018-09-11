@@ -35,8 +35,8 @@ public class BlockStonesGT extends BlockStones {
 	public final boolean mWitherProof;
 	
 	public BlockStonesGT(String aName, OreDictMaterial aMaterial, float aResistanceMultiplier, float aHardnessMultiplier, int aHarvestLevel, boolean aWitherProof) {
-        super(null, null, null, aName, aMaterial.getLocal(), aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, null);
-        mWitherProof = aWitherProof;
+		super(null, null, null, aName, aMaterial.getLocal(), aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, null);
+		mWitherProof = aWitherProof;
 	}
 	
 	@Override
@@ -50,7 +50,7 @@ public class BlockStonesGT extends BlockStones {
 	}
 	
 	@Override
-    public boolean canEntityDestroy(IBlockAccess aWorld, int aX, int aY, int aZ, Entity aEntity) {
-        return aEntity instanceof EntityWither ? !mWitherProof : T;
-    }
+	public boolean canEntityDestroy(IBlockAccess aWorld, int aX, int aY, int aZ, Entity aEntity) {
+		return aEntity instanceof EntityWither ? !mWitherProof : T;
+	}
 }

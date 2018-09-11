@@ -51,9 +51,9 @@ public class PacketPrefix implements IPacket {
 	
 	@Override
 	public ByteArrayDataOutput encode() {
-        ByteArrayDataOutput rOut = ByteStreams.newDataOutput();
-        rOut.writeUTF(mPrefix.mNameInternal);
-        rOut.writeByte(mPrefix.mConfigStackSize);
+		ByteArrayDataOutput rOut = ByteStreams.newDataOutput();
+		rOut.writeUTF(mPrefix.mNameInternal);
+		rOut.writeByte(mPrefix.mConfigStackSize);
 		return rOut;
 	}
 	

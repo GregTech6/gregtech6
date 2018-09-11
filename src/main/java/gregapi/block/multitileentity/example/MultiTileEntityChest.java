@@ -321,8 +321,8 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			mLid.rotationPointZ = 15;
 			mKnob = (new ModelRenderer(this, 0, 0)).setTextureSize(64, 64);
 			mKnob.addBox(-1, -2, -15, 2, 4, 1, 0);
-			mKnob.rotationPointX =  8;
-			mKnob.rotationPointY =  7;
+			mKnob.rotationPointX =	8;
+			mKnob.rotationPointY =	7;
 			mKnob.rotationPointZ = 15;
 			mBottom = (new ModelRenderer(this, 0, 19)).setTextureSize(64, 64);
 			mBottom.addBox(0, 0, 0, 14, 10, 14, 0);

@@ -217,15 +217,15 @@ public interface ITileEntityEnergy extends gregapi.tileentity.ITileEntityEnergy 
 	
 	/** Utility for the Energy Networks */
 	public static class Util {
-	    /**
-	     * Emits Energy to all the Blocks adjacent to an Output Side.
-	     * Also compatible with IC2 TileEntities when electric and RF TileEntities when RedstoneFlux.
-	     * @param aEnergyType The Type of Energy to be emitted
-	     * @param aSize The Minimum Transfer Rate of Energy (like Voltage for example). This can be negative too in case it has a direction for example (clockwise/counterclockwise)
-	     * @param aAmount The Amount of Packets in size of aSize to be emitted (like Amperage for example)
-	     * @param aEmitter The TileEntity which emits the Energy.
-	     * @return the amount of used Energy Packets.
-	     */
+		/**
+		 * Emits Energy to all the Blocks adjacent to an Output Side.
+		 * Also compatible with IC2 TileEntities when electric and RF TileEntities when RedstoneFlux.
+		 * @param aEnergyType The Type of Energy to be emitted
+		 * @param aSize The Minimum Transfer Rate of Energy (like Voltage for example). This can be negative too in case it has a direction for example (clockwise/counterclockwise)
+		 * @param aAmount The Amount of Packets in size of aSize to be emitted (like Amperage for example)
+		 * @param aEmitter The TileEntity which emits the Energy.
+		 * @return the amount of used Energy Packets.
+		 */
 		public static final long emitEnergyToNetwork(TagData aEnergyType, long aSize, long aAmount, gregapi.tileentity.ITileEntityEnergy aEmitter) {
 			long rUsedAmount = 0;
 			for (byte tSide : ALL_SIDES_VALID) if (aEmitter.isEnergyEmittingTo(aEnergyType, tSide, F)) {
@@ -235,43 +235,43 @@ public interface ITileEntityEnergy extends gregapi.tileentity.ITileEntityEnergy 
 			return rUsedAmount;
 		}
 		
-	    /**
-	     * Emits Energy to the adjacent Block.
-	     * Also compatible with IC2 TileEntities when electric and RF TileEntities when RedstoneFlux.
-	     * @param aEnergyType The Type of Energy to be emitted
-	     * @param aSideOutOf The Side of the TileEntity to output Energy out of.
-	     * @param aSize The Minimum Transfer Rate of Energy (like Voltage for example). This can be negative too in case it has a direction for example (clockwise/counterclockwise)
-	     * @param aAmount The Amount of Packets in size of aSize to be emitted (like Amperage for example)
-	     * @param aEmitter The TileEntity which emits the Energy.
-	     * @return the amount of used Energy Packets.
-	     */
+		/**
+		 * Emits Energy to the adjacent Block.
+		 * Also compatible with IC2 TileEntities when electric and RF TileEntities when RedstoneFlux.
+		 * @param aEnergyType The Type of Energy to be emitted
+		 * @param aSideOutOf The Side of the TileEntity to output Energy out of.
+		 * @param aSize The Minimum Transfer Rate of Energy (like Voltage for example). This can be negative too in case it has a direction for example (clockwise/counterclockwise)
+		 * @param aAmount The Amount of Packets in size of aSize to be emitted (like Amperage for example)
+		 * @param aEmitter The TileEntity which emits the Energy.
+		 * @return the amount of used Energy Packets.
+		 */
 		public static final long emitEnergyToSide(TagData aEnergyType, byte aSideOutOf, long aSize, long aAmount, TileEntity aEmitter) {
 			DelegatorTileEntity<TileEntity> tDelegator = aEmitter instanceof IHasWorldAndCoords ? ((IHasWorldAndCoords)aEmitter).getAdjacentTileEntity(aSideOutOf) : WD.te(aEmitter.getWorldObj(), aEmitter.xCoord+OFFSETS_X[aSideOutOf], aEmitter.yCoord+OFFSETS_Y[aSideOutOf], aEmitter.zCoord+OFFSETS_Z[aSideOutOf], OPPOSITES[aSideOutOf], F);
 			return insertEnergyInto(aEnergyType, tDelegator.mSideOfTileEntity, aSize, aAmount, aEmitter, tDelegator.mTileEntity);
 		}
 		
-	    /**
-	     * Inserts Energy into the TileEntity.
-	     * Also compatible with IC2 TileEntities when electric and RF TileEntities when RedstoneFlux.
-	     * @param aEnergyType The Type of Energy to be emitted
-	     * @param aSideInto The Side of the receiving TileEntity to insert the Energy into.
-	     * @param aSize The Minimum Transfer Rate of Energy (like Voltage for example). This can be negative too in case it has a direction for example (clockwise/counterclockwise)
-	     * @param aAmount The Amount of Packets in size of aSize to be emitted (like Amperage for example)
-	     * @param aEmitter The TileEntity which emits the Energy. May be null!
-	     * @param aReceiver The TileEntity which receives the Energy.
-	     * @return the amount of used Energy Packets.
-	     */
+		/**
+		 * Inserts Energy into the TileEntity.
+		 * Also compatible with IC2 TileEntities when electric and RF TileEntities when RedstoneFlux.
+		 * @param aEnergyType The Type of Energy to be emitted
+		 * @param aSideInto The Side of the receiving TileEntity to insert the Energy into.
+		 * @param aSize The Minimum Transfer Rate of Energy (like Voltage for example). This can be negative too in case it has a direction for example (clockwise/counterclockwise)
+		 * @param aAmount The Amount of Packets in size of aSize to be emitted (like Amperage for example)
+		 * @param aEmitter The TileEntity which emits the Energy. May be null!
+		 * @param aReceiver The TileEntity which receives the Energy.
+		 * @return the amount of used Energy Packets.
+		 */
 		public static final long insertEnergyInto(TagData aEnergyType, byte aSideInto, long aSize, long aAmount, Object aEmitter, TileEntity aReceiver) {
 			if (aReceiver == null) return 0;
 			long rUsedAmount = 0;
 			if (aAmount > rUsedAmount) {
 				if (aReceiver instanceof ITileEntityEnergy) {
 					rUsedAmount+=((ITileEntityEnergy)aReceiver).doEnergyInjection(aEnergyType, aSideInto, aSize, aAmount-rUsedAmount, T);
-		    	} else if (aReceiver instanceof gregapi.tileentity.ITileEntityEnergy) {
+				} else if (aReceiver instanceof gregapi.tileentity.ITileEntityEnergy) {
 					rUsedAmount+=((gregapi.tileentity.ITileEntityEnergy)aReceiver).doEnergyInjection(aEnergyType, aSideInto, aSize, aAmount-rUsedAmount, T);
-			    } else {
-		    		rUsedAmount+=EnergyCompat.insertEnergyInto(aEnergyType, aSideInto, aSize, aAmount-rUsedAmount, aEmitter, aReceiver);
-		    	}
+				} else {
+					rUsedAmount+=EnergyCompat.insertEnergyInto(aEnergyType, aSideInto, aSize, aAmount-rUsedAmount, aEmitter, aReceiver);
+				}
 			}
 			return rUsedAmount;
 		}

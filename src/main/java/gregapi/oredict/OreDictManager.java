@@ -123,7 +123,7 @@ public final class OreDictManager {
 	private OreDictManager() {
 		mIsRunningInIterationMode = T;
 		for (String tOreName : OreDictionary.getOreNames()) for (ItemStack tOreStack : OreDictionary.getOres(tOreName, F)) onOreRegistration1(new OreRegisterEvent(tOreName, tOreStack));
-	    for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) onFluidContainerRegistration(new FluidContainerRegisterEvent(tData));
+		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) onFluidContainerRegistration(new FluidContainerRegisterEvent(tData));
 		mIsRunningInIterationMode = F;
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -290,38 +290,38 @@ public final class OreDictManager {
 	
 	/** Fluid Containers are not unificatable at all. Also I set Water Bottles to contain 0L of Water. */
 	@SubscribeEvent
-    public void onFluidContainerRegistration(FluidContainerRegisterEvent aFluidEvent) {
+	public void onFluidContainerRegistration(FluidContainerRegisterEvent aFluidEvent) {
 		if (aFluidEvent.data.filledContainer.getItem() == Items.potionitem && ST.meta(aFluidEvent.data.filledContainer) == 0) aFluidEvent.data.fluid.amount = 0;
 		addToBlacklist(aFluidEvent.data.emptyContainer);
 		UT.Fluids.setFluidContainerData(aFluidEvent.data, F, F);
-    }
+	}
 	
 	@SubscribeEvent
-    public void onOreRegistration1(OreRegisterEvent aEvent) {
+	public void onOreRegistration1(OreRegisterEvent aEvent) {
 		ModContainer tContainer = Loader.instance().activeModContainer();
-    	String aModID = tContainer==null||mIsRunningInIterationMode?"UNKNOWN":tContainer.getModId();
-    	
-    	if (GT != null) {
-        	// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
-    		// Note: This has been fixed on TC Side, so I can remove it in later MC versions.
-        	if (aModID.equals(MD.TC.mID) && aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
-        	// Needed to fix a RotaryCraft value thing. Those are actually small piles of Dust.
-        	// I had to do this instead of convincing Reika, because it is only a GT balance Issue, that wouldn't exist without GT.
-        	// Basically those two things are outputted 4 times too much (1 Plank = 1 Pulp and not 4) and therefore would be small Piles of Dust and not regular ones.
-        	if (aModID.equals(MD.RoC.mID) && (aEvent.Name.equalsIgnoreCase("pulpWood") || aEvent.Name.equalsIgnoreCase("dustWood") || aEvent.Name.equalsIgnoreCase("dustWheat"))) {
-        		ItemStack tTargetStack = null, tFoundStack = null;
-        		// This iteration works btw only because RotaryCraft registers Stuff in PostInit instead of PreInit like it would be supposed to.
-        		for (ItemStack tStack : OreDictionary.getOres(aEvent.Name, F)) if (ST.equal(tStack, aEvent.Ore)) tFoundStack = tStack; else tTargetStack = tStack;
-        		if (tTargetStack != null) {
-            		ST.set(tFoundStack, tTargetStack);
-            		ST.set(aEvent.Ore, tTargetStack);
-        		}
-        		return;
-        	}
-    	}
-    	
-//    	GT_Log.ore.println(aModID + " -> " + aEvent.Name);
-    	
+		String aModID = tContainer==null||mIsRunningInIterationMode?"UNKNOWN":tContainer.getModId();
+		
+		if (GT != null) {
+			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
+			// Note: This has been fixed on TC Side, so I can remove it in later MC versions.
+			if (aModID.equals(MD.TC.mID) && aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
+			// Needed to fix a RotaryCraft value thing. Those are actually small piles of Dust.
+			// I had to do this instead of convincing Reika, because it is only a GT balance Issue, that wouldn't exist without GT.
+			// Basically those two things are outputted 4 times too much (1 Plank = 1 Pulp and not 4) and therefore would be small Piles of Dust and not regular ones.
+			if (aModID.equals(MD.RoC.mID) && (aEvent.Name.equalsIgnoreCase("pulpWood") || aEvent.Name.equalsIgnoreCase("dustWood") || aEvent.Name.equalsIgnoreCase("dustWheat"))) {
+				ItemStack tTargetStack = null, tFoundStack = null;
+				// This iteration works btw only because RotaryCraft registers Stuff in PostInit instead of PreInit like it would be supposed to.
+				for (ItemStack tStack : OreDictionary.getOres(aEvent.Name, F)) if (ST.equal(tStack, aEvent.Ore)) tFoundStack = tStack; else tTargetStack = tStack;
+				if (tTargetStack != null) {
+					ST.set(tFoundStack, tTargetStack);
+					ST.set(aEvent.Ore, tTargetStack);
+				}
+				return;
+			}
+		}
+		
+//		GT_Log.ore.println(aModID + " -> " + aEvent.Name);
+		
 		aEvent.Ore.stackSize = 1;
 		
 		mAllRegisteredOres.add(aEvent.Ore);
@@ -364,8 +364,8 @@ public final class OreDictManager {
 		
 		addItemData_(aEvent.Ore, OreDictItemData.copy(mStringToItemDataMappings.get(aEvent.Name)));
 		
-    	boolean aNotAlreadyRegisteredName = mAlreadyRegisteredNames.add(aEvent.Name);
-    	
+		boolean aNotAlreadyRegisteredName = mAlreadyRegisteredNames.add(aEvent.Name);
+		
 		if (aPrefix == null) {
 			if (addKnownName(aEvent.Name)) mUnknownNames.add(aEvent.Name);
 		} else {
@@ -668,80 +668,80 @@ public final class OreDictManager {
 		return F;
 	}
 	
-    public static void registerOreSafe(Object aName, ItemStack aStack) {
-    	try {
-    		OreDictionary.registerOre(aName.toString(), aStack);
-    	} catch(Throwable e) {
-    		e.printStackTrace(ERR);
-    	}
-    }
-    
-    public boolean registerOre(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
-    	if (ST.invalid(aStack)) return F;
-    	return registerOre_(aPrefix, aMaterial, aStack);
-    }
-    public boolean registerOre_(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
-    	return registerOre_(aPrefix.mNameInternal + aMaterial.mNameInternal, aStack);
-    }
-    
-    public boolean registerOre(Object aName, ItemStack aStack) {
-    	if (UT.Code.stringInvalid(aName) || ST.invalid(aStack)) return F;
-    	return registerOre_(aName, aStack);
-    }
-    public boolean registerOre_(Object aName, ItemStack aStack) {
-    	if (Abstract_Mod.sStartedPostInit > 0) throw new IllegalStateException("Late OreDict Registration using GT OreDict Utility. Only @Init and @PreInit are allowed for this when you use this Function instead of the Forge one.");
-    	String tName = aName.toString();
-    	if (UT.Code.stringInvalid(tName)) return F;
-    	addKnownName(tName);
-    	List<ItemStack> tList = getOres(tName, F);
-    	for (int i = 0; i < tList.size(); i++) if (ST.equal(tList.get(i), aStack, T)) return F;
-    	isRegisteringOre++;
-    	OreDictionary.registerOre(tName, ST.amount(1, aStack));
-    	isRegisteringOre--;
-    	return T;
-    }
+	public static void registerOreSafe(Object aName, ItemStack aStack) {
+		try {
+			OreDictionary.registerOre(aName.toString(), aStack);
+		} catch(Throwable e) {
+			e.printStackTrace(ERR);
+		}
+	}
 	
-    public boolean isRegisteringOres() {
-    	return isRegisteringOre > 0;
-    }
-    public boolean isAddingOres() {
-    	return isAddingOre > 0;
-    }
-    
-    private void registerUnificationEntries() {
-    	for (OreDictItemData tPrefixMaterial : sItemStack2DataMap.values()) tPrefixMaterial.mUnificationTarget = null;
+	public boolean registerOre(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
+		if (ST.invalid(aStack)) return F;
+		return registerOre_(aPrefix, aMaterial, aStack);
+	}
+	public boolean registerOre_(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
+		return registerOre_(aPrefix.mNameInternal + aMaterial.mNameInternal, aStack);
+	}
+	
+	public boolean registerOre(Object aName, ItemStack aStack) {
+		if (UT.Code.stringInvalid(aName) || ST.invalid(aStack)) return F;
+		return registerOre_(aName, aStack);
+	}
+	public boolean registerOre_(Object aName, ItemStack aStack) {
+		if (Abstract_Mod.sStartedPostInit > 0) throw new IllegalStateException("Late OreDict Registration using GT OreDict Utility. Only @Init and @PreInit are allowed for this when you use this Function instead of the Forge one.");
+		String tName = aName.toString();
+		if (UT.Code.stringInvalid(tName)) return F;
+		addKnownName(tName);
+		List<ItemStack> tList = getOres(tName, F);
+		for (int i = 0; i < tList.size(); i++) if (ST.equal(tList.get(i), aStack, T)) return F;
+		isRegisteringOre++;
+		OreDictionary.registerOre(tName, ST.amount(1, aStack));
+		isRegisteringOre--;
+		return T;
+	}
+	
+	public boolean isRegisteringOres() {
+		return isRegisteringOre > 0;
+	}
+	public boolean isAddingOres() {
+		return isAddingOre > 0;
+	}
+	
+	private void registerUnificationEntries() {
+		for (OreDictItemData tPrefixMaterial : sItemStack2DataMap.values()) tPrefixMaterial.mUnificationTarget = null;
 		for (OreDictRegistrationContainer tEvent : mGlobalRegistrations) {
 			if (tEvent.mPrefix != null && tEvent.mMaterial != null && tEvent.mPrefix.contains(TD.Prefix.UNIFICATABLE) && !tEvent.mMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
 				addAssociation_(tEvent.mPrefix, tEvent.mMaterial, tEvent.mStack);
 				setTarget_(tEvent.mPrefix, tEvent.mMaterial, tEvent.mStack, !(tEvent.mStack.getItem() instanceof IPrefixItem) && !tEvent.mModName.equals(MD.GAPI_POST.mID) && mUnificationConfig.get("specialunificationtargets." + tEvent.mModName, tEvent.mEvent.Name, F), T);
 			}
 		}
-    	Recipe.reInit();
-    }
-    
-    /** @return a Copy of the OreDictionary.getOres() List */
-    public static List<ItemStack> getOres(OreDictPrefix aPrefix, OreDictMaterial aMaterial, boolean aTransformWildcardBlocksTo16) {
-    	return getOres(aPrefix.mNameInternal + aMaterial.mNameInternal, aTransformWildcardBlocksTo16);
-    }
-    
-    /** @return a Copy of the OreDictionary.getOres() List */
-    public static List<ItemStack> getOres(Object aOreName, boolean aTransformWildcardBlocksTo16) {
-    	String aName = aOreName==null?"":aOreName.toString();
-    	List<ItemStack> rList = new ArrayListNoNulls<>(), tList;
-    	if (UT.Code.stringValid(aName)) {
-    		if (aTransformWildcardBlocksTo16) {
-        		tList = OreDictionary.getOres(aName, F);
-        		for (ItemStack tStack : tList) {
-        			if (ST.meta(tStack) == W && ST.block(tStack) != NB) {
-        				for (int i = 0; i < 16; i++) rList.add(ST.make(tStack.getItem(), 1, i));
-        			} else {
-        				rList.add(tStack);
-        			}
-        		}
-    		} else {
-    			rList.addAll(OreDictionary.getOres(aName, F));
-    		}
-    	}
-    	return rList;
-    }
+		Recipe.reInit();
+	}
+	
+	/** @return a Copy of the OreDictionary.getOres() List */
+	public static List<ItemStack> getOres(OreDictPrefix aPrefix, OreDictMaterial aMaterial, boolean aTransformWildcardBlocksTo16) {
+		return getOres(aPrefix.mNameInternal + aMaterial.mNameInternal, aTransformWildcardBlocksTo16);
+	}
+	
+	/** @return a Copy of the OreDictionary.getOres() List */
+	public static List<ItemStack> getOres(Object aOreName, boolean aTransformWildcardBlocksTo16) {
+		String aName = aOreName==null?"":aOreName.toString();
+		List<ItemStack> rList = new ArrayListNoNulls<>(), tList;
+		if (UT.Code.stringValid(aName)) {
+			if (aTransformWildcardBlocksTo16) {
+				tList = OreDictionary.getOres(aName, F);
+				for (ItemStack tStack : tList) {
+					if (ST.meta(tStack) == W && ST.block(tStack) != NB) {
+						for (int i = 0; i < 16; i++) rList.add(ST.make(tStack.getItem(), 1, i));
+					} else {
+						rList.add(tStack);
+					}
+				}
+			} else {
+				rList.addAll(OreDictionary.getOres(aName, F));
+			}
+		}
+		return rList;
+	}
 }

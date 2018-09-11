@@ -165,6 +165,6 @@ public class EnergyStat implements IItemEnergy {
 	@Override public long getEnergySizeOutputMax(TagData aEnergyType, ItemStack aStack) {return aEnergyType == mType || aEnergyType == null ? mSize * 2 : 0;}
 	@Override public Collection<TagData> getEnergyTypes(ItemStack aStack) {return new HashSetNoNulls<>(F, mType);}
 	@Override public boolean isEnergyType(TagData aEnergyType, ItemStack aStack, boolean aEmitting) {return (aEnergyType == mType || aEnergyType == null) && (aEmitting ? mCanDecharge : mCanCharge);}
-	@Override public boolean canEnergyInjection (TagData aEnergyType, ItemStack aStack, long aSize) {return mCanCharge   && (aEnergyType == mType || aEnergyType == null) && aStack.stackSize == 1 && aSize <= getEnergySizeInputMax (aEnergyType, aStack) && aSize >= getEnergySizeInputMin (aEnergyType, aStack);}
+	@Override public boolean canEnergyInjection (TagData aEnergyType, ItemStack aStack, long aSize) {return mCanCharge	 && (aEnergyType == mType || aEnergyType == null) && aStack.stackSize == 1 && aSize <= getEnergySizeInputMax (aEnergyType, aStack) && aSize >= getEnergySizeInputMin (aEnergyType, aStack);}
 	@Override public boolean canEnergyExtraction(TagData aEnergyType, ItemStack aStack, long aSize) {return mCanDecharge && (aEnergyType == mType || aEnergyType == null) && aStack.stackSize == 1 && aSize <= getEnergySizeOutputMax(aEnergyType, aStack) && aSize >= getEnergySizeOutputMin(aEnergyType, aStack);}
 }

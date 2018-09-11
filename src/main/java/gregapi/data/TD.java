@@ -463,7 +463,7 @@ public class TD {
 	
 	/** For Material Processing */
 	public static class Processing {
-		/** If this Material is not recyclable in the IC2 Recycler or similar. This means it is blacklisted automatically.  */
+		/** If this Material is not recyclable in the IC2 Recycler or similar. This means it is blacklisted automatically.	*/
 		public static final TagData UNRECYCLABLE							= TagData.createTagData("PROCESSING.UNRECYCLABLE", "Not Recyclable");
 		/** If this Material is decomposable by a Centrifuge. Requires Compounds.DECOMPOSABLE too */
 		public static final TagData CENTRIFUGE								= TagData.createTagData("PROCESSING.CENTRIFUGABLE", "Centrifugable");

@@ -48,5 +48,5 @@ public abstract class BlockBasePlanks extends BlockMetaType {
 	@Override public float getExplosionResistance(int aMeta) {return Blocks.planks.getExplosionResistance(null) * mResistanceMultiplier;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.plank.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));}
 	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
-    @Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 }

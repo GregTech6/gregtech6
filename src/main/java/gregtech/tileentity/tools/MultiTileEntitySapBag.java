@@ -132,7 +132,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 		case SIDE_Z_NEG: box(aBlock, PX_P[ 5], PX_P[ 0], PX_P[ 0], PX_N[ 5], PX_N[ 9], PX_N[10]); return T;
 		case SIDE_Z_POS: box(aBlock, PX_P[ 5], PX_P[ 0], PX_P[10], PX_N[ 5], PX_N[ 9], PX_N[ 0]); return T;
 		case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 5], PX_N[10], PX_N[ 9], PX_N[ 5]); return T;
-		default        : box(aBlock, PX_P[10], PX_P[ 0], PX_P[ 5], PX_N[ 0], PX_N[ 9], PX_N[ 5]); return T;
+		default		   : box(aBlock, PX_P[10], PX_P[ 0], PX_P[ 5], PX_N[ 0], PX_N[ 9], PX_N[ 5]); return T;
 		}
 	}
 	
@@ -164,7 +164,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 		case SIDE_Z_NEG: return box(PX_P[ 5], PX_P[ 0], PX_P[ 0], PX_N[ 5], PX_N[ 9], PX_N[10]);
 		case SIDE_Z_POS: return box(PX_P[ 5], PX_P[ 0], PX_P[10], PX_N[ 5], PX_N[ 9], PX_N[ 0]);
 		case SIDE_X_NEG: return box(PX_P[ 0], PX_P[ 0], PX_P[ 5], PX_N[10], PX_N[ 9], PX_N[ 5]);
-		default        : return box(PX_P[10], PX_P[ 0], PX_P[ 5], PX_N[ 0], PX_N[ 9], PX_N[ 5]);
+		default		   : return box(PX_P[10], PX_P[ 0], PX_P[ 5], PX_N[ 0], PX_N[ 9], PX_N[ 5]);
 		}
 	}
 	
@@ -174,7 +174,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 		case SIDE_Z_NEG: box(aBlock, PX_P[ 5], PX_P[ 0], PX_P[ 0], PX_N[ 5], PX_N[ 9], PX_N[10]); break;
 		case SIDE_Z_POS: box(aBlock, PX_P[ 5], PX_P[ 0], PX_P[10], PX_N[ 5], PX_N[ 9], PX_N[ 0]); break;
 		case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 5], PX_N[10], PX_N[ 9], PX_N[ 5]); break;
-		default        : box(aBlock, PX_P[10], PX_P[ 0], PX_P[ 5], PX_N[ 0], PX_N[ 9], PX_N[ 5]); break;
+		default		   : box(aBlock, PX_P[10], PX_P[ 0], PX_P[ 5], PX_N[ 0], PX_N[ 9], PX_N[ 5]); break;
 		}
 	}
 	
@@ -186,8 +186,8 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 	@Override public float getSurfaceSize			(byte aSide) {return 0;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 0;}
 	@Override public float getSurfaceDistance		(byte aSide) {return 0;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
 	@Override public boolean isSideSolid2			(byte aSide) {return F;}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	@Override public boolean attachCoversFirst		(byte aSide) {return F;}

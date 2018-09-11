@@ -133,9 +133,9 @@ public interface IItemBumbleBee {
 			setHumidityMax(rBumbleTag, aBiome.rainfall + 0.05F + aRandom.nextInt(21)/100.0F);
 			setTemperatureMin(rBumbleTag, aTemperature - 5 - aRandom.nextInt(11));
 			setTemperatureMax(rBumbleTag, aTemperature + 5 + aRandom.nextInt(11));
-			setOffspring		(rBumbleTag,    1+aRandom.nextInt(     4));
-			setWorkForce		(rBumbleTag,    1+aRandom.nextInt( 10000));
-			setAggressiveness	(rBumbleTag,  100+aRandom.nextInt(  9901));
+			setOffspring		(rBumbleTag,	1+aRandom.nextInt(	   4));
+			setWorkForce		(rBumbleTag,	1+aRandom.nextInt( 10000));
+			setAggressiveness	(rBumbleTag,  100+aRandom.nextInt(	9901));
 			setLifeSpan			(rBumbleTag, 1200+aRandom.nextInt(142801));
 			if (aHasSky) {
 				setOutsideActive(rBumbleTag, T);
@@ -169,8 +169,8 @@ public interface IItemBumbleBee {
 		public static long getTemperatureMin	(NBTTagCompound aBumbleTag)	{return aBumbleTag.getLong("mintemp");}
 		public static long getTemperatureMax	(NBTTagCompound aBumbleTag)	{return aBumbleTag.getLong("maxtemp");}
 		public static long getOffspring			(NBTTagCompound aBumbleTag)	{return UT.Code.bindStack(aBumbleTag.getLong("offspring"));}
-		public static long getAggressiveness	(NBTTagCompound aBumbleTag)	{return UT.Code.bind(  100,  10000, aBumbleTag.getLong("aggro"));}
-		public static long getWorkForce			(NBTTagCompound aBumbleTag)	{return UT.Code.bind(    1,  10000, aBumbleTag.getLong("work"));}
+		public static long getAggressiveness	(NBTTagCompound aBumbleTag)	{return UT.Code.bind(  100,	 10000, aBumbleTag.getLong("aggro"));}
+		public static long getWorkForce			(NBTTagCompound aBumbleTag)	{return UT.Code.bind(	 1,	 10000, aBumbleTag.getLong("work"));}
 		public static long getLifeSpan			(NBTTagCompound aBumbleTag)	{return UT.Code.bind( 1200, 144000, aBumbleTag.getLong("life"));}
 		public static boolean getRainproof		(NBTTagCompound aBumbleTag)	{return aBumbleTag.getBoolean("rain");}
 		public static boolean getStormproof		(NBTTagCompound aBumbleTag)	{return aBumbleTag.getBoolean("storm");}

@@ -46,13 +46,13 @@ public class Behavior_TripwireCutting extends AbstractBehaviorDefault {
 		if (aPlayer.worldObj.isRemote) return F;
 		if (aWorld.getBlock(aX, aY, aZ) == Blocks.tripwire) {
 			if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
-		        int aMeta = aWorld.getBlockMetadata(aX, aY, aZ) | 8;
+				int aMeta = aWorld.getBlockMetadata(aX, aY, aZ) | 8;
 				aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMeta, 4);
-		        if (Blocks.tripwire.removedByPlayer(aWorld, aPlayer, aX, aY, aZ, T)) {
-		        	Blocks.tripwire.onBlockDestroyedByPlayer(aWorld, aX, aY, aZ, aMeta);
-		        	Blocks.tripwire.harvestBlock(aWorld, aPlayer, aX, aY, aZ, aMeta);
-		        	UT.Sounds.send(aWorld, SFX.MC_SHEARS, 1.0F, 1.0F, aX, aY, aZ);
-		        }
+				if (Blocks.tripwire.removedByPlayer(aWorld, aPlayer, aX, aY, aZ, T)) {
+					Blocks.tripwire.onBlockDestroyedByPlayer(aWorld, aX, aY, aZ, aMeta);
+					Blocks.tripwire.harvestBlock(aWorld, aPlayer, aX, aY, aZ, aMeta);
+					UT.Sounds.send(aWorld, SFX.MC_SHEARS, 1.0F, 1.0F, aX, aY, aZ);
+				}
 			}
 			return T;
 		}

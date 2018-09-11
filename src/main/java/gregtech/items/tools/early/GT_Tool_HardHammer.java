@@ -66,8 +66,8 @@ public class GT_Tool_HardHammer extends ToolStats {
 		return aEntity instanceof EntityIronGolem || mEffectiveList.contains(tName) || tName.contains("golem") ? aOriginalDamage*2 : aOriginalDamage;
 	}
 	
-	@Override public int getToolDamagePerBlockBreak()										{return  25;}
-	@Override public int getToolDamagePerDropConversion()									{return  50;}
+	@Override public int getToolDamagePerBlockBreak()										{return	 25;}
+	@Override public int getToolDamagePerDropConversion()									{return	 50;}
 	@Override public int getToolDamagePerContainerCraft()									{return 400;}
 	@Override public int getToolDamagePerEntityAttack()										{return 200;}
 	@Override public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity)	{return aOriginalHurtResistance * 2;}

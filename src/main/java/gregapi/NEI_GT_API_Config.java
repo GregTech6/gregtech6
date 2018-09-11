@@ -33,18 +33,18 @@ public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI {
 	
 	@Override
 	public void loadConfig() {
-        sIsAdded = F;
-        
-        for (RecipeMap tMap : RecipeMap.RECIPE_MAPS.values()) if (tMap.mNEIAllowed) new NEI_RecipeMap(tMap);
-        
-        if (CODE_CLIENT) {
-        	codechicken.nei.api.API.registerGuiOverlay(MultiTileEntityGUIClientAdvancedCraftingTable.class, "crafting", 55, 22);
-        	codechicken.nei.api.API.registerGuiOverlayHandler(MultiTileEntityGUIClientAdvancedCraftingTable.class, new codechicken.nei.recipe.DefaultOverlayHandler(55, 22), "crafting");
-        }
-    	
-        NEI = T;
-        
-        sIsAdded = T;
+		sIsAdded = F;
+		
+		for (RecipeMap tMap : RecipeMap.RECIPE_MAPS.values()) if (tMap.mNEIAllowed) new NEI_RecipeMap(tMap);
+		
+		if (CODE_CLIENT) {
+			codechicken.nei.api.API.registerGuiOverlay(MultiTileEntityGUIClientAdvancedCraftingTable.class, "crafting", 55, 22);
+			codechicken.nei.api.API.registerGuiOverlayHandler(MultiTileEntityGUIClientAdvancedCraftingTable.class, new codechicken.nei.recipe.DefaultOverlayHandler(55, 22), "crafting");
+		}
+		
+		NEI = T;
+		
+		sIsAdded = T;
 	}
 	
 	@Override

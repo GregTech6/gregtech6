@@ -57,7 +57,7 @@ public class MultiTileEntityBatteryAdvEU8 extends TileEntityBase08Battery {
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[ 8], PX_N[ 5]);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[ 8], PX_N[ 5]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,  PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[ 8], PX_N[ 5]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,	 PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[ 8], PX_N[ 5]);}
 	
 	@Override public byte getDisplayScaleMax() {return 4;}
 	

@@ -87,7 +87,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	@Override
 	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_DUSTFUNNEL));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT) 	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_OUTPUTS_MONKEY_WRENCH));
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
@@ -124,7 +124,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 				if (!slotHas(0)) {
 					DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(SIDE_TOP);
 					UT.Inventories.moveOneItemStack(tTileEntity.mTileEntity, this, tTileEntity.mSideOfTileEntity, SIDE_TOP);
-		   		}
+				}
 			}
 		}
 	}
@@ -242,8 +242,8 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	@Override public float getSurfaceSize			(byte aSide) {return SIDES_TOP[aSide]?PX_P[16]:SIDES_BOTTOM[aSide]?PX_P[12-2*mMode]:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_TOP[aSide]?PX_P[12]:PX_P[12-2*mMode];}
 	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_HORIZONTAL[aSide]?PX_P[2+mMode]:0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	

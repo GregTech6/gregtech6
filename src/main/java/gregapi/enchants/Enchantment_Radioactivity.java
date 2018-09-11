@@ -53,38 +53,38 @@ public class Enchantment_Radioactivity extends EnchantmentDamage {
 		INSTANCE = this;
 	}
 	
-    @Override
+	@Override
 	public int getMinEnchantability(int aLevel) {
-        return Integer.MAX_VALUE;
-    }
-    
-    @Override
+		return Integer.MAX_VALUE;
+	}
+	
+	@Override
 	public int getMaxEnchantability(int aLevel) {
-        return 0;
-    }
-    
-    @Override
+		return 0;
+	}
+	
+	@Override
 	public int getMaxLevel() {
-        return 5;
-    }
-    
-    @Override
+		return 5;
+	}
+	
+	@Override
 	public boolean canApply(ItemStack par1ItemStack) {
-        return false;
-    }
-    
-    @Override
-    public boolean isAllowedOnBooks() {
-        return false;
-    }
-    
-    @Override
+		return false;
+	}
+	
+	@Override
+	public boolean isAllowedOnBooks() {
+		return false;
+	}
+	
+	@Override
 	public void func_151367_b(EntityLivingBase aHurtEntity, Entity aDamagingEntity, int aLevel) {
-        UT.Entities.applyRadioactivity(aHurtEntity, aLevel, 1);
-    }
-    
-    @Override
+		UT.Entities.applyRadioactivity(aHurtEntity, aLevel, 1);
+	}
+	
+	@Override
 	public String getName() {
-        return "enchantment.damage.radioactivity";
-    }
+		return "enchantment.damage.radioactivity";
+	}
 }

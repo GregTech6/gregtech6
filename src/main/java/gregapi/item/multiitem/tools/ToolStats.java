@@ -68,7 +68,7 @@ public abstract class ToolStats implements IToolStats {
 	@Override public int getToolDamagePerDropConversion()									{return 100;}
 	@Override public int getToolDamagePerContainerCraft()									{return 100;}
 	@Override public int getToolDamagePerEntityAttack()										{return 100;}
-	@Override public int getBaseQuality()													{return   0;}
+	@Override public int getBaseQuality()													{return	  0;}
 	@Override public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity)	{return aOriginalHurtResistance;}
 	@Override public float getBaseDamage()													{return 1.0F;}
 	@Override public float getSpeedMultiplier()												{return 1.0F;}

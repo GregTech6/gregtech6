@@ -108,7 +108,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey("gt.mold")) mShape = aNBT.getInteger("gt.mold");
 		if (aNBT.hasKey(NBT_MODE)) mUseRedstone = aNBT.getBoolean(NBT_MODE);
-    	if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
+		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
 		if (aNBT.hasKey(NBT_CONNECTION)) mAutoPullDirections = aNBT.getByte(NBT_CONNECTION);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperature = aNBT.getLong(NBT_TEMPERATURE);
 		mContent = OreDictMaterialStack.load(NBT_MATERIALS, aNBT);
@@ -138,7 +138,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD_SELECT));
 		else
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD) + " " + getMoldRecipe(mShape).mNameLocal);
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT) 	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_MELTDOWN) + " (" + getMoldMaxTemperature() + " K)");
 		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_CONTACT));
@@ -503,12 +503,12 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 	}
 	
 	protected static final float[][] MOLD_BOUNDS = {
-		  {PX_P[ 1], PX_P[ 2], PX_P[ 1], PX_N[ 1], PX_N[ 1]	      , PX_N[ 1]}
-		, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[15]	      , PX_N[ 0]}
+		  {PX_P[ 1], PX_P[ 2], PX_P[ 1], PX_N[ 1], PX_N[ 1]		  , PX_N[ 1]}
+		, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[15]		  , PX_N[ 0]}
 		, {PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[12]+0.001F, PX_N[ 0]}
-		, {PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[12]	      , PX_N[ 0]}
+		, {PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[12]		  , PX_N[ 0]}
 		, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[12]+0.001F, PX_N[ 0]}
-		, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[12]       , PX_N[14]}
+		, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[12]		  , PX_N[14]}
 		
 		, {PX_P[ 6], PX_P[ 4], PX_P[ 0], PX_P[ 7], PX_P[ 6], PX_P[ 2]}
 		, {PX_P[ 9], PX_P[ 4], PX_P[ 0], PX_P[10], PX_P[ 6], PX_P[ 2]}
@@ -524,31 +524,31 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 		, {PX_P[14], PX_P[ 6], PX_P[ 6], PX_P[16], PX_P[ 7], PX_P[10]}
 		
 		, {PX_P[ 2]							, PX_P[ 0], PX_P[ 2]						, PX_N[ 2] - 4 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 4 * PX_P[12] / 5.0F}
-		, {PX_P[ 2]							, PX_P[ 0], PX_P[ 2] +     PX_P[12] / 5.0F	, PX_N[ 2] - 4 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
+		, {PX_P[ 2]							, PX_P[ 0], PX_P[ 2] +	   PX_P[12] / 5.0F	, PX_N[ 2] - 4 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
 		, {PX_P[ 2]							, PX_P[ 0], PX_P[ 2] + 2 * PX_P[12] / 5.0F	, PX_N[ 2] - 4 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 2 * PX_P[12] / 5.0F}
 		, {PX_P[ 2]							, PX_P[ 0], PX_P[ 2] + 3 * PX_P[12] / 5.0F	, PX_N[ 2] - 4 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] -	 PX_P[12] / 5.0F}
 		, {PX_P[ 2]							, PX_P[ 0], PX_P[ 2] + 4 * PX_P[12] / 5.0F	, PX_N[ 2] - 4 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2]							}
 		
 		, {PX_P[ 2] +	 PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2]							, PX_N[ 2] - 3 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 4 * PX_P[12] / 5.0F}
-		, {PX_P[ 2] +	 PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] +     PX_P[12] / 5.0F, PX_N[ 2] - 3 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
+		, {PX_P[ 2] +	 PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] +	   PX_P[12] / 5.0F, PX_N[ 2] - 3 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
 		, {PX_P[ 2] +	 PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_N[ 2] - 3 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 2 * PX_P[12] / 5.0F}
 		, {PX_P[ 2] +	 PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_N[ 2] - 3 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] -	 PX_P[12] / 5.0F}
 		, {PX_P[ 2] +	 PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_N[ 2] - 3 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2]							}
 		
 		, {PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2]							, PX_N[ 2] - 2 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 4 * PX_P[12] / 5.0F}
-		, {PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] +     PX_P[12] / 5.0F, PX_N[ 2] - 2 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
+		, {PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] +		PX_P[12] / 5.0F, PX_N[ 2] - 2 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_N[ 2] - 2 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 2 * PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_N[ 2] - 2 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] -	 PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_N[ 2] - 2 * PX_P[12] / 5.0F, PX_N[13], PX_N[ 2]							}
 		
 		, {PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2]							, PX_N[ 2] -	 PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 4 * PX_P[12] / 5.0F}
-		, {PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] +     PX_P[12] / 5.0F, PX_N[ 2] -	 PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
+		, {PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] +		PX_P[12] / 5.0F, PX_N[ 2] -	 PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_N[ 2] -	 PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] - 2 * PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_N[ 2] -	 PX_P[12] / 5.0F, PX_N[13], PX_N[ 2] -	 PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_N[ 2] -	 PX_P[12] / 5.0F, PX_N[13], PX_N[ 2]							}
 		
 		, {PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2]							, PX_N[ 2]							, PX_N[13], PX_N[ 2] - 4 * PX_P[12] / 5.0F}
-		, {PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] +     PX_P[12] / 5.0F, PX_N[ 2]							, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
+		, {PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] +		PX_P[12] / 5.0F, PX_N[ 2]							, PX_N[13], PX_N[ 2] - 3 * PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 2 * PX_P[12] / 5.0F, PX_N[ 2]							, PX_N[13], PX_N[ 2] - 2 * PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 3 * PX_P[12] / 5.0F, PX_N[ 2]							, PX_N[13], PX_N[ 2] -	 PX_P[12] / 5.0F}
 		, {PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_P[ 0], PX_P[ 2] + 4 * PX_P[12] / 5.0F, PX_N[ 2]							, PX_N[13], PX_N[ 2]							}
@@ -609,8 +609,8 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 	@Override public float getSurfaceSize			(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?PX_P[10]:0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	
@@ -716,39 +716,39 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 		
 		for (int i = 0; i < 3; i++) {
 			TEMP_MOLD_RECIPES.put(
-			B[i  + 0]|B[i  + 1]|B[i  + 2]|
-			B[i  + 5]|B[i  + 6]|B[i  + 7]|
-			B[i  +10]|B[i  +11]|B[i  +12]|
-			B[i  +15]|B[i  +16]|B[i  +17]|
-			B[i  +20]|B[i  +21]|B[i  +22]
+			B[i	 + 0]|B[i  + 1]|B[i	 + 2]|
+			B[i	 + 5]|B[i  + 6]|B[i	 + 7]|
+			B[i	 +10]|B[i  +11]|B[i	 +12]|
+			B[i	 +15]|B[i  +16]|B[i	 +17]|
+			B[i	 +20]|B[i  +21]|B[i	 +22]
 			, OP.ingot);
 			
 			TEMP_MOLD_RECIPES.put(
-			B[i  + 0]|B[i  + 1]|B[i  + 2]|
-			B[i  + 5]|B[i  + 6]|
-			B[i  +10]|B[i  +11]|
-			B[i  +15]|B[i  +16]|
-			B[i  +20]|B[i  +21]|B[i  +22]
+			B[i	 + 0]|B[i  + 1]|B[i	 + 2]|
+			B[i	 + 5]|B[i  + 6]|
+			B[i	 +10]|B[i  +11]|
+			B[i	 +15]|B[i  +16]|
+			B[i	 +20]|B[i  +21]|B[i	 +22]
 			, OP.toolHeadRawAxeDouble);
 			
 			TEMP_MOLD_RECIPES.put(
-			B[i  + 0]|B[i  + 1]|B[i  + 2]|
-			B[i  + 5]|B[i  + 6]|B[i  + 7]|
-			B[i  +10]|		  B[i  +12]|
-			B[i  +15]|B[i  +16]|B[i  +17]|
-			B[i  +20]|B[i  +21]|B[i  +22]
+			B[i	 + 0]|B[i  + 1]|B[i	 + 2]|
+			B[i	 + 5]|B[i  + 6]|B[i	 + 7]|
+			B[i	 +10]|		  B[i  +12]|
+			B[i	 +15]|B[i  +16]|B[i	 +17]|
+			B[i	 +20]|B[i  +21]|B[i	 +22]
 			, OP.toolHeadHammer);
 			
 			TEMP_MOLD_RECIPES.put(
-			B[i  + 0]|
-			B[i  + 5]|
-			B[i  +10]|
-			B[i  +15]|
-			B[i  +20]
+			B[i	 + 0]|
+			B[i	 + 5]|
+			B[i	 +10]|
+			B[i	 +15]|
+			B[i	 +20]
 			, OP.stick);
 			
 			TEMP_MOLD_RECIPES.put(
-			B[i  + 0]|B[i  + 1]|B[i  + 2]|
+			B[i	 + 0]|B[i  + 1]|B[i	 + 2]|
 					  B[i  + 6]|
 					  B[i  +11]|
 					  B[i  +16]|
@@ -756,25 +756,25 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 			, OP.toolHeadRawChisel);
 			
 			TEMP_MOLD_RECIPES.put(
-			B[i  + 0]|B[i  + 1]|B[i  + 2]|
-			B[i  + 5]|B[i  + 6]|B[i  + 7]|
-			B[i  +10]|B[i  +11]|B[i  +12]|
+			B[i	 + 0]|B[i  + 1]|B[i	 + 2]|
+			B[i	 + 5]|B[i  + 6]|B[i	 + 7]|
+			B[i	 +10]|B[i  +11]|B[i	 +12]|
 					  B[i  +16]|
 					  B[i  +21]
 			, OP.toolHeadFile);
 			
 			TEMP_MOLD_RECIPES.put(
 					  B[i  + 1]|
-			B[i  + 5]|B[i  + 6]|B[i  + 7]|
-			B[i  +10]|B[i  +11]|B[i  +12]|
-			B[i  +15]|B[i  +16]|B[i  +17]|
-			B[i  +20]|B[i  +21]|B[i  +22]
+			B[i	 + 5]|B[i  + 6]|B[i	 + 7]|
+			B[i	 +10]|B[i  +11]|B[i	 +12]|
+			B[i	 +15]|B[i  +16]|B[i	 +17]|
+			B[i	 +20]|B[i  +21]|B[i	 +22]
 			, OP.toolHeadRawSword);
 			
 			for (int j = 0; j < 4; j++) {
 				TEMP_MOLD_RECIPES.put(
-							  B[i  +j*5+ 1]|B[i  +j*5+ 2]|
-				B[i  +j*5+ 5]|B[i  +j*5+ 6]|B[i  +j*5+ 7]
+							  B[i  +j*5+ 1]|B[i	 +j*5+ 2]|
+				B[i	 +j*5+ 5]|B[i  +j*5+ 6]|B[i	 +j*5+ 7]
 				, OP.toolHeadRawHoe);
 			}
 			
@@ -782,65 +782,65 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 				TEMP_MOLD_RECIPES.put(
 							  B[i  +j*5+ 1]|
 							  B[i  +j*5+ 6]|
-				B[i  +j*5+10]|B[i  +j*5+11]|B[i  +j*5+12]
+				B[i	 +j*5+10]|B[i  +j*5+11]|B[i	 +j*5+12]
 				, OP.toolHeadRawArrow);
 				
 				TEMP_MOLD_RECIPES.put(
-				B[i  +j*5+ 0]|B[i  +j*5+ 1]|B[i  +j*5+ 2]|
-				B[i  +j*5+ 5]|B[i  +j*5+ 6]|B[i  +j*5+ 7]|
-				B[i  +j*5+10]
+				B[i	 +j*5+ 0]|B[i  +j*5+ 1]|B[i	 +j*5+ 2]|
+				B[i	 +j*5+ 5]|B[i  +j*5+ 6]|B[i	 +j*5+ 7]|
+				B[i	 +j*5+10]
 				, OP.toolHeadRawAxe);
 				
 				TEMP_MOLD_RECIPES.put(
-				B[i  +j*5+ 0]|B[i  +j*5+ 1]|
-				B[i  +j*5+ 5]|B[i  +j*5+ 6]
+				B[i	 +j*5+ 0]|B[i  +j*5+ 1]|
+				B[i	 +j*5+ 5]|B[i  +j*5+ 6]
 				, OP.chunkGt);
 				
 				TEMP_MOLD_RECIPES.put(
-				B[i  +j*5+ 0]|B[i  +j*5+ 1]|B[i  +j*5+ 2]|
-				B[i  +j*5+ 5]|			  B[i  +j*5+ 7]|
-				B[i  +j*5+10]|B[i  +j*5+11]|B[i  +j*5+12]
+				B[i	 +j*5+ 0]|B[i  +j*5+ 1]|B[i	 +j*5+ 2]|
+				B[i	 +j*5+ 5]|			  B[i  +j*5+ 7]|
+				B[i	 +j*5+10]|B[i  +j*5+11]|B[i	 +j*5+12]
 				, OP.ring);
 				
 				TEMP_MOLD_RECIPES.put(
-				B[i  +j*5+ 0]|B[i  +j*5+ 1]|B[i  +j*5+ 2]|
-				B[i  +j*5+ 5]|B[i  +j*5+ 6]|B[i  +j*5+ 7]|
-				B[i  +j*5+10]|B[i  +j*5+11]|B[i  +j*5+12]
+				B[i	 +j*5+ 0]|B[i  +j*5+ 1]|B[i	 +j*5+ 2]|
+				B[i	 +j*5+ 5]|B[i  +j*5+ 6]|B[i	 +j*5+ 7]|
+				B[i	 +j*5+10]|B[i  +j*5+11]|B[i	 +j*5+12]
 				, OP.plateTiny);
 				
 				TEMP_MOLD_RECIPES.put(
-				B[i  +j*5+ 0]|
-				B[i  +j*5+ 5]
+				B[i	 +j*5+ 0]|
+				B[i	 +j*5+ 5]
 				, OP.bolt);
 			}
 			
 			for (int j = 0; j < 2; j++) {
 				TEMP_MOLD_RECIPES.put(
 							  B[i  +j*5+ 1]|
-				B[i  +j*5+ 5]|B[i  +j*5+ 6]|B[i  +j*5+ 7]|
-				B[i  +j*5+10]|B[i  +j*5+11]|B[i  +j*5+12]|
-				B[i  +j*5+15]|B[i  +j*5+16]|B[i  +j*5+17]
+				B[i	 +j*5+ 5]|B[i  +j*5+ 6]|B[i	 +j*5+ 7]|
+				B[i	 +j*5+10]|B[i  +j*5+11]|B[i	 +j*5+12]|
+				B[i	 +j*5+15]|B[i  +j*5+16]|B[i	 +j*5+17]
 				, OP.toolHeadRawShovel);
 				
 				TEMP_MOLD_RECIPES.put(
-				B[i  +j*5+ 0]|B[i  +j*5+ 1]|B[i  +j*5+ 2]|
-				B[i  +j*5+ 5]|B[i  +j*5+ 6]|B[i  +j*5+ 7]|
-				B[i  +j*5+10]|B[i  +j*5+11]|B[i  +j*5+12]|
-				B[i  +j*5+15]|			  B[i  +j*5+17]
+				B[i	 +j*5+ 0]|B[i  +j*5+ 1]|B[i	 +j*5+ 2]|
+				B[i	 +j*5+ 5]|B[i  +j*5+ 6]|B[i	 +j*5+ 7]|
+				B[i	 +j*5+10]|B[i  +j*5+11]|B[i	 +j*5+12]|
+				B[i	 +j*5+15]|			  B[i  +j*5+17]
 				, OP.toolHeadRawSpade);
 				
 				TEMP_MOLD_RECIPES.put(
 							  B[i  +j*5+ 1]|
-				B[i  +j*5+ 5]|B[i  +j*5+ 6]|B[i  +j*5+ 7]|
-				B[i  +j*5+10]|B[i  +j*5+11]|
-				B[i  +j*5+15]|B[i  +j*5+16]|B[i  +j*5+17]
+				B[i	 +j*5+ 5]|B[i  +j*5+ 6]|B[i	 +j*5+ 7]|
+				B[i	 +j*5+10]|B[i  +j*5+11]|
+				B[i	 +j*5+15]|B[i  +j*5+16]|B[i	 +j*5+17]
 				, OP.toolHeadRawUniversalSpade);
 				
 				TEMP_MOLD_RECIPES.put(
-				B[i  +j*5+ 0]|
-				B[i  +j*5+ 5]|
-				B[i  +j*5+10]|
-				B[i  +j*5+15]
+				B[i	 +j*5+ 0]|
+				B[i	 +j*5+ 5]|
+				B[i	 +j*5+10]|
+				B[i	 +j*5+15]
 				, OP.toolHeadScrewdriver);
 			}
 		}
@@ -848,25 +848,25 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 		for (int i = 0; i < 4; i++) {
 			TEMP_MOLD_RECIPES.put(
 					  B[i  + 1]|
-			B[i  + 5]|
-			B[i  +10]|
-			B[i  +15]|
+			B[i	 + 5]|
+			B[i	 +10]|
+			B[i	 +15]|
 					  B[i  +21]
 			, OP.toolHeadRawPickaxe);
 			
 			TEMP_MOLD_RECIPES.put(
-			B[i  + 0]|B[i  + 1]|
-			B[i  + 5]|B[i  + 6]|
-			B[i  +10]|B[i  +11]|
-			B[i  +15]|B[i  +16]|
-			B[i  +20]|B[i  +21]
+			B[i	 + 0]|B[i  + 1]|
+			B[i	 + 5]|B[i  + 6]|
+			B[i	 +10]|B[i  +11]|
+			B[i	 +15]|B[i  +16]|
+			B[i	 +20]|B[i  +21]
 			, OP.toolHeadRawSaw);
 			
 			TEMP_MOLD_RECIPES.put(
-			B[i  + 0]|B[i  + 1]|
-			B[i  + 5]|B[i  + 6]|
-			B[i  +10]|B[i  +11]|
-			B[i  +15]|B[i  +16]|
+			B[i	 + 0]|B[i  + 1]|
+			B[i	 + 5]|B[i  + 6]|
+			B[i	 +10]|B[i  +11]|
+			B[i	 +15]|B[i  +16]|
 					  B[i  +21]
 			, OP.toolHeadRawSense);
 			

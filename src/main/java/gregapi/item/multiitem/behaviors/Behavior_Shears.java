@@ -47,9 +47,9 @@ public class Behavior_Shears extends AbstractBehaviorDefault {
 		if (aEntity instanceof IShearable) {
 			if (aPlayer.worldObj.isRemote) return T;
 			if (((IShearable)aEntity).isShearable(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ) && (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer))) {
-	            for(ItemStack tStack : ((IShearable)aEntity).onSheared(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ, EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, aStack))) {
-	            	UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
-	            }
+				for(ItemStack tStack : ((IShearable)aEntity).onSheared(aStack, aPlayer.worldObj, (int)aEntity.posX, (int)aEntity.posY, (int)aEntity.posZ, EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, aStack))) {
+					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+				}
 				return T;
 			}
 		}

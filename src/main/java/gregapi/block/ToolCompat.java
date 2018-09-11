@@ -251,10 +251,10 @@ public class ToolCompat {
 			
 			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
 			if (IC_WRENCHABLE && aTileEntity instanceof IWrenchable) {
-		   		if (((IWrenchable)aTileEntity).wrenchCanSetFacing(aEntityPlayer, aTargetSide)) {
-			   		((IWrenchable)aTileEntity).setFacing(aTargetSide);
-		   			return 10000;
-		   		}
+				if (((IWrenchable)aTileEntity).wrenchCanSetFacing(aEntityPlayer, aTargetSide)) {
+					((IWrenchable)aTileEntity).setFacing(aTargetSide);
+					return 10000;
+				}
 				if (((IWrenchable)aTileEntity).wrenchCanRemove(aEntityPlayer)) {
 					int tDamage = Math.max(10000, (int)(30000 / ((IWrenchable)aTileEntity).getWrenchDropRate()));
 					ArrayList<ItemStack> tDrops = aBlock.getDrops(aWorld, aX, aY, aZ, aMeta, 0);

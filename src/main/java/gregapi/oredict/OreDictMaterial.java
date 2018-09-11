@@ -76,7 +76,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 * I have to use an ID based System, as Item MetaData is the only proper way to differentiate between Items reliably within all Mods.
 	 * 
 	 * <BR><BR> My ID Range, do not touch unless you are me.
-	 * <BR>[    0: 9999] Gregorius Techneticies (And this API)
+	 * <BR>[	0: 9999] Gregorius Techneticies (And this API)
 	 * 
 	 * <BR><BR>The large Ranges (given to people, who I expect to add many new Materials)
 	 * 
@@ -267,7 +267,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	mTargetBurning		= OM.stack(this, 0), // The remaining Material when being burned. Used for getting the Ashes.
 	mTargetBending		= OM.stack(this, U),
 	mTargetCompressing	= OM.stack(this, U);
-	/**  */
+	/**	 */
 	public long mLiquidUnit = U, mGasUnit = U, mPlasmaUnit = U;
 	/** References to this Materials Fluid States. The amount of the FluidStack equals one Material Unit. It is usually either 144 or 1000, but other amounts are possible. Use "Util.translateUnits" for easy Math. */
 	public FluidStack mLiquid, mGas, mPlasma;
@@ -1040,13 +1040,13 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public double getWeight(long aAmount) {
 		// Extended Math:
 		// 9 Material-Units = 1 Cubic Meter.
-		// 1000 g    = 1 kg
+		// 1000 g	 = 1 kg
 		// 1000 cm^3 = 1 dm^3
 		// 1000 dm^3 = 1  m^3
 		// ( g/cm^3 * aAmount * 1000 * 1000) / (Material-Unit * 9 * 1000)
-		// ( g/ m^3 * aAmount              ) / (Material-Unit * 9 * 1000)
-		// (kg/ m^3 * aAmount              ) / (Material-Unit * 9       )
-		// (kg/ m^3 * aAmount * 0.111111111) /  Material-Unit
+		// ( g/ m^3 * aAmount			   ) / (Material-Unit * 9 * 1000)
+		// (kg/ m^3 * aAmount			   ) / (Material-Unit * 9		)
+		// (kg/ m^3 * aAmount * 0.111111111) /	Material-Unit
 		return (mGramPerCubicCentimeter * 111.111111 * aAmount) / U;
 	}
 	

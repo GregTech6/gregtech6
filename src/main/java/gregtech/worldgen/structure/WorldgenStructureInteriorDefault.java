@@ -54,14 +54,14 @@ public class WorldgenStructureInteriorDefault extends WorldgenStructure {
 		
 		NBTTagList
 		tInventory = new NBTTagList();
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.stick			.mat(MT.StainlessSteel	, 32+aRandom.nextInt(33))), "s", (short)     aRandom.nextInt(36) ));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.ingot			.mat(MT.StainlessSteel	, 32+aRandom.nextInt(33))), "s", (short)     aRandom.nextInt(36) ));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.plate			.mat(MT.StainlessSteel	, 32+aRandom.nextInt(33))), "s", (short)     aRandom.nextInt(36) ));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.plateCurved	.mat(MT.StainlessSteel	, 16+aRandom.nextInt(49))), "s", (short)     aRandom.nextInt(36) ));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.screw			.mat(MT.StainlessSteel	, 16+aRandom.nextInt(49))), "s", (short)     aRandom.nextInt(36) ));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.ring			.mat(MT.StainlessSteel	,  8+aRandom.nextInt(25))), "s", (short)     aRandom.nextInt(36) ));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gearGt			.mat(MT.StainlessSteel	,  1+aRandom.nextInt( 4))), "s", (short)     aRandom.nextInt(36) ));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gearGtSmall	.mat(MT.StainlessSteel	,  8+aRandom.nextInt(25))), "s", (short)     aRandom.nextInt(36) ));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.stick			.mat(MT.StainlessSteel	, 32+aRandom.nextInt(33))), "s", (short)	 aRandom.nextInt(36) ));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.ingot			.mat(MT.StainlessSteel	, 32+aRandom.nextInt(33))), "s", (short)	 aRandom.nextInt(36) ));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.plate			.mat(MT.StainlessSteel	, 32+aRandom.nextInt(33))), "s", (short)	 aRandom.nextInt(36) ));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.plateCurved	.mat(MT.StainlessSteel	, 16+aRandom.nextInt(49))), "s", (short)	 aRandom.nextInt(36) ));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.screw			.mat(MT.StainlessSteel	, 16+aRandom.nextInt(49))), "s", (short)	 aRandom.nextInt(36) ));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.ring			.mat(MT.StainlessSteel	,  8+aRandom.nextInt(25))), "s", (short)	 aRandom.nextInt(36) ));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gearGt			.mat(MT.StainlessSteel	,  1+aRandom.nextInt( 4))), "s", (short)	 aRandom.nextInt(36) ));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gearGtSmall	.mat(MT.StainlessSteel	,  8+aRandom.nextInt(25))), "s", (short)	 aRandom.nextInt(36) ));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.stick			.mat(MT.Bronze			, 32+aRandom.nextInt(33))), "s", (short)( 36+aRandom.nextInt(36))));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.ingot			.mat(MT.Bronze			, 32+aRandom.nextInt(33))), "s", (short)( 36+aRandom.nextInt(36))));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.plate			.mat(MT.Bronze			, 32+aRandom.nextInt(33))), "s", (short)( 36+aRandom.nextInt(36))));
@@ -97,9 +97,9 @@ public class WorldgenStructureInteriorDefault extends WorldgenStructure {
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.plate			.mat(MT.Steel, 32+aRandom.nextInt(33))), "s", (short)aRandom.nextInt(16)));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.plateCurved	.mat(MT.Steel, 16+aRandom.nextInt(49))), "s", (short)aRandom.nextInt(16)));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.screw			.mat(MT.Steel, 16+aRandom.nextInt(49))), "s", (short)aRandom.nextInt(16)));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.ring			.mat(MT.Steel,  8+aRandom.nextInt(25))), "s", (short)aRandom.nextInt(16)));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gearGt			.mat(MT.Steel,  1+aRandom.nextInt( 4))), "s", (short)aRandom.nextInt(16)));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gearGtSmall	.mat(MT.Steel,  8+aRandom.nextInt(25))), "s", (short)aRandom.nextInt(16)));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.ring			.mat(MT.Steel,	8+aRandom.nextInt(25))), "s", (short)aRandom.nextInt(16)));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gearGt			.mat(MT.Steel,	1+aRandom.nextInt( 4))), "s", (short)aRandom.nextInt(16)));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gearGtSmall	.mat(MT.Steel,	8+aRandom.nextInt(25))), "s", (short)aRandom.nextInt(16)));
 		aData.mRegistry.mBlock.placeBlock			(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 4, SIDE_UNKNOWN, (short) 5011, UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
 		aData.mRegistry.mBlock.placeBlock			(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 4, SIDE_UNKNOWN, (short)32738, UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		

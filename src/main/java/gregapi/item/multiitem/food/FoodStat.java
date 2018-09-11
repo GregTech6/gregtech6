@@ -128,12 +128,12 @@ public class FoodStat implements IFoodStat {
 	
 	@Override
 	public void onEaten(Item aItem, ItemStack aStack, EntityPlayer aPlayer, boolean aConsumeItem) {
-        if (!UT.Entities.hasInfiniteItems(aPlayer) && aConsumeItem) {
-        	aStack.stackSize--;
-            ItemStack tStack = OM.get(ST.copy(mEmptyContainer));
-            if (tStack == null && mAutoDetectEmpty) tStack = ST.container(aStack, F);
-            if (tStack != null && !aPlayer.inventory.addItemStackToInventory(tStack)) aPlayer.dropPlayerItemWithRandomChoice(tStack, T);
-        }
+		if (!UT.Entities.hasInfiniteItems(aPlayer) && aConsumeItem) {
+			aStack.stackSize--;
+			ItemStack tStack = OM.get(ST.copy(mEmptyContainer));
+			if (tStack == null && mAutoDetectEmpty) tStack = ST.container(aStack, F);
+			if (tStack != null && !aPlayer.inventory.addItemStackToInventory(tStack)) aPlayer.dropPlayerItemWithRandomChoice(tStack, T);
+		}
 		aPlayer.worldObj.playSoundAtEntity(aPlayer, "random.burp", 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F);
 		if (!aPlayer.worldObj.isRemote) {
 			if (mExtinguish) aPlayer.extinguish();

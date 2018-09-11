@@ -348,8 +348,8 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(PX_P[SIDES_AXIS_X[mFacing]?2:0], 0, PX_P[SIDES_AXIS_Z[mFacing]?2:0], PX_N[SIDES_AXIS_X[mFacing]?2:0], 1, PX_N[SIDES_AXIS_Z[mFacing]?2:0]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?2:0], 0, PX_P[SIDES_AXIS_Z[mFacing]?2:0], PX_N[SIDES_AXIS_X[mFacing]?2:0], 1, PX_N[SIDES_AXIS_Z[mFacing]?2:0]);}
 	
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean isSideSolid2			(byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean allowCovers			(byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean isShelfFace			(byte aSide) {return  ALONG_AXIS[aSide][mFacing];}

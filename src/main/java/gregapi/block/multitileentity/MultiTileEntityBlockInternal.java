@@ -73,28 +73,28 @@ public class MultiTileEntityBlockInternal extends Block implements IRenderedBloc
 		for (MultiTileEntityClassContainer tClassContainer : mMultiTileEntityRegistry.mRegistry.values()) if (tClassContainer.mCanonicalTileEntity instanceof IMTE_RegisterIcons) ((IMTE_RegisterIcons)tClassContainer.mCanonicalTileEntity).registerIcons(aIconRegister);
 	}
 	
-    @Override public final int getRenderBlockPass() {return ITexture.Util.MC_ALPHA_BLENDING?1:0;}
+	@Override public final int getRenderBlockPass() {return ITexture.Util.MC_ALPHA_BLENDING?1:0;}
 	@Override public final int getRenderType() {return RendererBlockTextured.INSTANCE==null?super.getRenderType():RendererBlockTextured.INSTANCE.mRenderID;}
 	@Override public final String getUnlocalizedName() {return mMultiTileEntityRegistry.mNameInternal;}
 	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mMultiTileEntityRegistry.mNameInternal + ".name");}
 	
 	@Override
 	public boolean placeBlock(World aWorld, int aX, int aY, int aZ, byte aSide, short aMetaData, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
-    	Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
-        MultiTileEntityContainer aMTEContainer = mMultiTileEntityRegistry.getNewTileEntityContainer(aWorld, aX, aY, aZ, aMetaData, aNBT);
-        if (aMTEContainer != null && aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
-        	((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(F);
-        	WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
+		Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
+		MultiTileEntityContainer aMTEContainer = mMultiTileEntityRegistry.getNewTileEntityContainer(aWorld, aX, aY, aZ, aMetaData, aNBT);
+		if (aMTEContainer != null && aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
+			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(F);
+			WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
 			WD.set(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, 0, F);
-            ((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
-            WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
-            if (!aWorld.isRemote && aCauseBlockUpdates) {
-            	aWorld.notifyBlockChange(aX, aY, aZ, tReplacedBlock);
-                aWorld.func_147453_f(aX, aY, aZ, aMTEContainer.mBlock);
-            }
-            aWorld.func_147451_t(aX, aY, aZ);
-        	return T;
-        }
+			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
+			WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
+			if (!aWorld.isRemote && aCauseBlockUpdates) {
+				aWorld.notifyBlockChange(aX, aY, aZ, tReplacedBlock);
+				aWorld.func_147453_f(aX, aY, aZ, aMTEContainer.mBlock);
+			}
+			aWorld.func_147451_t(aX, aY, aZ);
+			return T;
+		}
 		return F;
 	}
 }

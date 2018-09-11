@@ -49,18 +49,18 @@ import net.minecraft.world.World;
 public abstract class TileEntityBase09Connector extends TileEntityBase08Directional implements ITileEntityConnector, IMTE_OnPlaced, IMTE_AddToolTips {
 	protected byte mConnections = 0;
 	
-    @Override
+	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
-    	super.readFromNBT2(aNBT);
-        if (aNBT.hasKey(NBT_CONNECTION)) mConnections = (byte)(aNBT.getByte(NBT_CONNECTION) & 63);
-    }
-    
-    @Override
+		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_CONNECTION)) mConnections = (byte)(aNBT.getByte(NBT_CONNECTION) & 63);
+	}
+	
+	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
-    	super.writeToNBT2(aNBT);
-    	UT.NBT.setNumber(aNBT, NBT_CONNECTION, mConnections);
-    }
-    
+		super.writeToNBT2(aNBT);
+		UT.NBT.setNumber(aNBT, NBT_CONNECTION, mConnections);
+	}
+	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_SET_CONNECTIONS_PRE) + LH.get(TOOL_LOCALISER_PREFIX + getFacingTool(), "Unknown") + LH.get(LH.TOOL_TO_SET_CONNECTIONS_POST));

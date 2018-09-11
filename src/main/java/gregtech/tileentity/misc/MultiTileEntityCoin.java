@@ -257,7 +257,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		if (aSendAll) {
 			byte[] tPacket = new byte[82];
-			for (int i = 0; i < 32; i++) tPacket[i   ] = UT.Code.toByteS((short)UT.Code.getBits(mShape[0][i/2]), i%2);
+			for (int i = 0; i < 32; i++) tPacket[i	 ] = UT.Code.toByteS((short)UT.Code.getBits(mShape[0][i/2]), i%2);
 			for (int i = 0; i < 32; i++) tPacket[i+32] = UT.Code.toByteS((short)UT.Code.getBits(mShape[1][i/2]), i%2);
 			for (int i = 0; i < 16; i++) tPacket[i+64] = mCoinStackSizes[i];
 			tPacket[80] = UT.Code.toByteS(mMaterial.mID, 0);
@@ -269,7 +269,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		for (int i = 0; i < 16; i++) mShape[0][i] = UT.Code.getBitsS(UT.Code.combine(aData[   i*2], aData[ 1+i*2]));
+		for (int i = 0; i < 16; i++) mShape[0][i] = UT.Code.getBitsS(UT.Code.combine(aData[	  i*2], aData[ 1+i*2]));
 		for (int i = 0; i < 16; i++) mShape[1][i] = UT.Code.getBitsS(UT.Code.combine(aData[32+i*2], aData[33+i*2]));
 		for (int i = 0; i < 16; i++) mCoinStackSizes[i] = aData[i+64];
 		short tMaterial = UT.Code.combine(aData[80], aData[81]);
@@ -374,12 +374,12 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 				
 				box(aBlock, 
 				   (aRenderPass			/1024)/4.0F				+DIST *((aRenderPass%256)/16)
-				,(mShape[0][(aRenderPass% 256)/16][aRenderPass%16]?DIST  :0)
+				,(mShape[0][(aRenderPass% 256)/16][aRenderPass%16]?DIST	 :0)
 				+(mShape[1][(aRenderPass% 256)/16][aRenderPass%16]?DIST*2:0)
 				, ((aRenderPass%1024)	/ 256)/4.0F				+DIST * (aRenderPass% 16)
 				,  (aRenderPass			/1024)/4.0F		+DIST	+DIST *((aRenderPass%256)/16)
 				, Math.max(0.0625F, mCoinStackSizes[aRenderPass/256]/(float)COIN_STACKSIZE)
-				-(mShape[0][(aRenderPass% 256)/16][aRenderPass%16]?DIST  :0)
+				-(mShape[0][(aRenderPass% 256)/16][aRenderPass%16]?DIST	 :0)
 				-(mShape[1][(aRenderPass% 256)/16][aRenderPass%16]?DIST*2:0)
 				, ((aRenderPass%1024)	/ 256)/4.0F		+DIST	+DIST * (aRenderPass% 16)
 				);
@@ -407,7 +407,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 			, PX_P[aRenderPass%16]
 			, PX_P[1+(aRenderPass/16)]
 			, PX_P[9]
-			-(mShape[0][(aRenderPass%256)/16][aRenderPass%16]?DIST  :0)
+			-(mShape[0][(aRenderPass%256)/16][aRenderPass%16]?DIST	:0)
 			-(mShape[1][(aRenderPass%256)/16][aRenderPass%16]?DIST*2:0)
 			, PX_P[1+(aRenderPass%16)]
 			);
@@ -437,8 +437,8 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 			switch(aSide) {
 			case SIDE_X_NEG: if (aX >  0 && aHeight <= 3-(mShape[0][aX-1][aZ  ]?1:0)-(mShape[1][aX-1][aZ  ]?2:0)) return null; break;
 			case SIDE_X_POS: if (aX < 15 && aHeight <= 3-(mShape[0][aX+1][aZ  ]?1:0)-(mShape[1][aX+1][aZ  ]?2:0)) return null; break;
-			case SIDE_Z_NEG: if (aZ >  0 && aHeight <= 3-(mShape[0][aX  ][aZ-1]?1:0)-(mShape[1][aX  ][aZ-1]?2:0)) return null; break;
-			case SIDE_Z_POS: if (aZ < 15 && aHeight <= 3-(mShape[0][aX  ][aZ+1]?1:0)-(mShape[1][aX  ][aZ+1]?2:0)) return null; break;
+			case SIDE_Z_NEG: if (aZ >  0 && aHeight <= 3-(mShape[0][aX	][aZ-1]?1:0)-(mShape[1][aX	][aZ-1]?2:0)) return null; break;
+			case SIDE_Z_POS: if (aZ < 15 && aHeight <= 3-(mShape[0][aX	][aZ+1]?1:0)-(mShape[1][aX	][aZ+1]?2:0)) return null; break;
 			}
 		}
 		return mTextures[aSide];

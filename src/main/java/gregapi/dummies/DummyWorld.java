@@ -104,16 +104,16 @@ public class DummyWorld extends World {
 	}
 	
 	@Override
-    public float getSunBrightnessFactor(float p_72967_1_) {
-    	return 1.0F;
-    }
-    
+	public float getSunBrightnessFactor(float p_72967_1_) {
+		return 1.0F;
+	}
+	
 	@Override
-    public BiomeGenBase getBiomeGenForCoords(int aX, int aZ) {
+	public BiomeGenBase getBiomeGenForCoords(int aX, int aZ) {
 		if (aX >= 16 && aZ >= 16 && aX < 32 && aZ < 32) return BiomeGenBase.plains;
-        return BiomeGenBase.ocean;
-    }
-    
+		return BiomeGenBase.ocean;
+	}
+	
 	@Override
 	public int getFullBlockLightValue(int aX, int aY, int aZ) {
 		return 10;

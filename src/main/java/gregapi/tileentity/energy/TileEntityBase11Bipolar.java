@@ -43,16 +43,16 @@ public abstract class TileEntityBase11Bipolar extends TileEntityBase10EnergyConv
 		}
 	}
 	
-    @Override
-    public void doConversion(long aTimer) {
+	@Override
+	public void doConversion(long aTimer) {
 		mActivity.mActive = mConverter.doBipolar(aTimer, this, mFacing, OPPOSITES[mFacing]);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;
 			mStorage.mEnergy = 0;
 		}
-    }
-    
+	}
+	
 	@Override public boolean isInput (byte aSide) {return !ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean isOutput(byte aSide) {return  ALONG_AXIS[aSide][mFacing];}
 	@Override public String getLocalisedInputSide () {return LH.get(LH.FACE_ANYBUT_FRONT_BACK);}

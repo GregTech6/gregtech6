@@ -85,12 +85,12 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public int getHarvestLevel(int aMeta) {return 0;}
 	@Override public boolean isToolEffective(String aType, int aMeta) {return T;}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return T;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return F;}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}
 	@Override public int damageDropped(int aMeta) {return aMeta;}
 	@Override public int quantityDropped(Random par1Random) {return 1;}
 	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ);}
-    @Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public Item getItemDropped(int par1, Random aRandom, int par3) {return Item.getItemFromBlock(this);}
 	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(this);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}

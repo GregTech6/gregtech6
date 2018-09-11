@@ -102,14 +102,14 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public int getHarvestLevel(int aMeta) {return mHarvestLevel;}
 	@Override public boolean isToolEffective(String aType, int aMeta) {return getHarvestTool(aMeta).equals(aType);}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return F;}
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}
 	@Override public int damageDropped(int aMeta) {return 0;}
 	@Override public int quantityDropped(Random par1Random) {return 1;}
 	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return 0;}
-    @Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public Item getItemDropped(int par1, Random par2Random, int par3) {return Item.getItemFromBlock(this);}
 	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(this);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
@@ -127,8 +127,8 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}
 	
-    protected boolean func_150058_a(World aWorld, int aX, int aY, int aZ, int p_150058_5_, boolean p_150058_6_, int p_150058_7_) {
-        if (p_150058_7_ >= 8) return F;
+	protected boolean func_150058_a(World aWorld, int aX, int aY, int aZ, int p_150058_5_, boolean p_150058_6_, int p_150058_7_) {
+		if (p_150058_7_ >= 8) return F;
 		int j1 = p_150058_5_ & 7;
 		boolean flag1 = T;
 		switch (j1) {
@@ -140,142 +140,142 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		case 5: if (p_150058_6_) {++aZ; ++aY; flag1 = F;} else --aZ; j1 = 0; break;
 		}
 		return func_150057_a(aWorld, aX, aY, aZ, p_150058_6_, p_150058_7_, j1) || (flag1 && func_150057_a(aWorld, aX, aY - 1, aZ, p_150058_6_, p_150058_7_, j1));
-    }
-    
-    protected boolean func_150057_a(World aWorld, int aX, int aY, int aZ, boolean p_150057_5_, int p_150057_6_, int p_150057_7_) {
-        if (aWorld.getBlock(aX, aY, aZ) == this) {
-            int j1 = aWorld.getBlockMetadata(aX, aY, aZ);
-            int k1 = j1 & 7;
-            
-            if (p_150057_7_ == 1 && (k1 == 0 || k1 == 4 || k1 == 5)) return F;
-            if (p_150057_7_ == 0 && (k1 == 1 || k1 == 2 || k1 == 3)) return F;
-            
-            if ((j1 & 8) != 0) {
-                if (aWorld.isBlockIndirectlyGettingPowered(aX, aY, aZ)) return T;
-                return func_150058_a(aWorld, aX, aY, aZ, j1, p_150057_5_, p_150057_6_ + 1);
-            }
-        }
-        return F;
-    }
-    
-    @Override
+	}
+	
+	protected boolean func_150057_a(World aWorld, int aX, int aY, int aZ, boolean p_150057_5_, int p_150057_6_, int p_150057_7_) {
+		if (aWorld.getBlock(aX, aY, aZ) == this) {
+			int j1 = aWorld.getBlockMetadata(aX, aY, aZ);
+			int k1 = j1 & 7;
+			
+			if (p_150057_7_ == 1 && (k1 == 0 || k1 == 4 || k1 == 5)) return F;
+			if (p_150057_7_ == 0 && (k1 == 1 || k1 == 2 || k1 == 3)) return F;
+			
+			if ((j1 & 8) != 0) {
+				if (aWorld.isBlockIndirectlyGettingPowered(aX, aY, aZ)) return T;
+				return func_150058_a(aWorld, aX, aY, aZ, j1, p_150057_5_, p_150057_6_ + 1);
+			}
+		}
+		return F;
+	}
+	
+	@Override
 	protected void func_150048_a(World aWorld, int aX, int aY, int aZ, int p_150048_5_, int p_150048_6_, Block aBlock) {
-    	if (mPowerRail) {
-            boolean flag = aWorld.isBlockIndirectlyGettingPowered(aX, aY, aZ);
-            flag = flag || func_150058_a(aWorld, aX, aY, aZ, p_150048_5_, T, 0) || func_150058_a(aWorld, aX, aY, aZ, p_150048_5_, F, 0);
-            boolean flag1 = F;
-            if (flag && (p_150048_5_ & 8) == 0) {
-                aWorld.setBlockMetadataWithNotify(aX, aY, aZ, p_150048_6_ | 8, 3);
-                flag1 = T;
-            } else if (!flag && (p_150048_5_ & 8) != 0) {
-                aWorld.setBlockMetadataWithNotify(aX, aY, aZ, p_150048_6_, 3);
-                flag1 = T;
-            }
-            if (flag1) {
-                aWorld.notifyBlocksOfNeighborChange(aX, aY - 1, aZ, this);
-                if (p_150048_6_ == 2 || p_150048_6_ == 3 || p_150048_6_ == 4 || p_150048_6_ == 5) {
-                    aWorld.notifyBlocksOfNeighborChange(aX, aY + 1, aZ, this);
-                }
-            }
-    	}
-    }
-    
-    @Override public int tickRate(World aWorld) {return 20;}
-    @Override public boolean canProvidePower() {return mDetectorRail;}
-    
-    @Override
+		if (mPowerRail) {
+			boolean flag = aWorld.isBlockIndirectlyGettingPowered(aX, aY, aZ);
+			flag = flag || func_150058_a(aWorld, aX, aY, aZ, p_150048_5_, T, 0) || func_150058_a(aWorld, aX, aY, aZ, p_150048_5_, F, 0);
+			boolean flag1 = F;
+			if (flag && (p_150048_5_ & 8) == 0) {
+				aWorld.setBlockMetadataWithNotify(aX, aY, aZ, p_150048_6_ | 8, 3);
+				flag1 = T;
+			} else if (!flag && (p_150048_5_ & 8) != 0) {
+				aWorld.setBlockMetadataWithNotify(aX, aY, aZ, p_150048_6_, 3);
+				flag1 = T;
+			}
+			if (flag1) {
+				aWorld.notifyBlocksOfNeighborChange(aX, aY - 1, aZ, this);
+				if (p_150048_6_ == 2 || p_150048_6_ == 3 || p_150048_6_ == 4 || p_150048_6_ == 5) {
+					aWorld.notifyBlocksOfNeighborChange(aX, aY + 1, aZ, this);
+				}
+			}
+		}
+	}
+	
+	@Override public int tickRate(World aWorld) {return 20;}
+	@Override public boolean canProvidePower() {return mDetectorRail;}
+	
+	@Override
 	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {
-        if (mDetectorRail && !aWorld.isRemote) {
-            int l = aWorld.getBlockMetadata(aX, aY, aZ);
-            if ((l & 8) == 0) func_150054_a(aWorld, aX, aY, aZ, l);
-        }
-    }
-    
-    @Override
+		if (mDetectorRail && !aWorld.isRemote) {
+			int l = aWorld.getBlockMetadata(aX, aY, aZ);
+			if ((l & 8) == 0) func_150054_a(aWorld, aX, aY, aZ, l);
+		}
+	}
+	
+	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-        if (mDetectorRail && !aWorld.isRemote) {
-            int l = aWorld.getBlockMetadata(aX, aY, aZ);
-            if ((l & 8) != 0) func_150054_a(aWorld, aX, aY, aZ, l);
-        }
-    }
-    
-    @Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (aWorld.getBlockMetadata(aX, aY, aZ) & 8) != 0 ? 15 : 0 : 0;}
-    @Override public int isProvidingStrongPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (aWorld.getBlockMetadata(aX, aY, aZ) & 8) == 0 ? 0 : (aSide == 1 ? 15 : 0) : 0;}
-    
-    private void func_150054_a(World aWorld, int aX, int aY, int aZ, int aMetaData) {
-        boolean flag = (aMetaData & 8) != 0;
-        boolean flag1 = F;
-        @SuppressWarnings("unchecked")
+		if (mDetectorRail && !aWorld.isRemote) {
+			int l = aWorld.getBlockMetadata(aX, aY, aZ);
+			if ((l & 8) != 0) func_150054_a(aWorld, aX, aY, aZ, l);
+		}
+	}
+	
+	@Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (aWorld.getBlockMetadata(aX, aY, aZ) & 8) != 0 ? 15 : 0 : 0;}
+	@Override public int isProvidingStrongPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (aWorld.getBlockMetadata(aX, aY, aZ) & 8) == 0 ? 0 : (aSide == 1 ? 15 : 0) : 0;}
+	
+	private void func_150054_a(World aWorld, int aX, int aY, int aZ, int aMetaData) {
+		boolean flag = (aMetaData & 8) != 0;
+		boolean flag1 = F;
+		@SuppressWarnings("unchecked")
 		List<EntityMinecart> list = aWorld.getEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875));
-        
-        if (!list.isEmpty()) flag1 = T;
-        if (flag1 && !flag) {
-            aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMetaData | 8, 3);
-            aWorld.notifyBlocksOfNeighborChange(aX, aY, aZ, this);
-            aWorld.notifyBlocksOfNeighborChange(aX, aY - 1, aZ, this);
-            aWorld.markBlockRangeForRenderUpdate(aX, aY, aZ, aX, aY, aZ);
-        }
-        if (!flag1 && flag) {
-            aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMetaData & 7, 3);
-            aWorld.notifyBlocksOfNeighborChange(aX, aY, aZ, this);
-            aWorld.notifyBlocksOfNeighborChange(aX, aY - 1, aZ, this);
-            aWorld.markBlockRangeForRenderUpdate(aX, aY, aZ, aX, aY, aZ);
-        }
-        if (flag1) aWorld.scheduleBlockUpdate(aX, aY, aZ, this, tickRate(aWorld));
-        aWorld.func_147453_f(aX, aY, aZ, this);
-    }
-    
-    @Override
+		
+		if (!list.isEmpty()) flag1 = T;
+		if (flag1 && !flag) {
+			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMetaData | 8, 3);
+			aWorld.notifyBlocksOfNeighborChange(aX, aY, aZ, this);
+			aWorld.notifyBlocksOfNeighborChange(aX, aY - 1, aZ, this);
+			aWorld.markBlockRangeForRenderUpdate(aX, aY, aZ, aX, aY, aZ);
+		}
+		if (!flag1 && flag) {
+			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMetaData & 7, 3);
+			aWorld.notifyBlocksOfNeighborChange(aX, aY, aZ, this);
+			aWorld.notifyBlocksOfNeighborChange(aX, aY - 1, aZ, this);
+			aWorld.markBlockRangeForRenderUpdate(aX, aY, aZ, aX, aY, aZ);
+		}
+		if (flag1) aWorld.scheduleBlockUpdate(aX, aY, aZ, this, tickRate(aWorld));
+		aWorld.func_147453_f(aX, aY, aZ, this);
+	}
+	
+	@Override
 	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
-        super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
-        if (mDetectorRail) func_150054_a(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_, p_149726_1_.getBlockMetadata(p_149726_2_, p_149726_3_, p_149726_4_));
-    }
-    
-    @Override public boolean hasComparatorInputOverride() {return mDetectorRail;}
-    
-    @Override
+		super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+		if (mDetectorRail) func_150054_a(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_, p_149726_1_.getBlockMetadata(p_149726_2_, p_149726_3_, p_149726_4_));
+	}
+	
+	@Override public boolean hasComparatorInputOverride() {return mDetectorRail;}
+	
+	@Override
 	public int getComparatorInputOverride(World aWorld, int aX, int aY, int aZ, int aSide) {
-        if (mDetectorRail && (aWorld.getBlockMetadata(aX, aY, aZ) & 8) > 0) {
-            @SuppressWarnings("unchecked")
+		if (mDetectorRail && (aWorld.getBlockMetadata(aX, aY, aZ) & 8) > 0) {
+			@SuppressWarnings("unchecked")
 			List<EntityMinecartCommandBlock> list = aWorld.getEntitiesWithinAABB(EntityMinecartCommandBlock.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875));
-            if (list.size() > 0) return list.get(0).func_145822_e().func_145760_g();
-            @SuppressWarnings("unchecked")
+			if (list.size() > 0) return list.get(0).func_145822_e().func_145760_g();
+			@SuppressWarnings("unchecked")
 			List<EntityMinecart> list1 = aWorld.selectEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875), IEntitySelector.selectInventories);
-            if (list1.size() > 0) return Container.calcRedstoneFromInventory((IInventory)list1.get(0));
-        }
-        return 0;
-    }
-    
-    @Override
+			if (list1.size() > 0) return Container.calcRedstoneFromInventory((IInventory)list1.get(0));
+		}
+		return 0;
+	}
+	
+	@Override
 	public void onMinecartPass(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
-        if (mPowerRail) {
-        	int tRailMeta = aWorld.getBlockMetadata(aX, aY, aZ);
-            double tMotion = Math.sqrt(aCart.motionX * aCart.motionX + aCart.motionZ * aCart.motionZ);
-        	if ((tRailMeta & 8) != 0) {
-                if (tMotion > 0.01) {
-                    aCart.motionX += aCart.motionX / tMotion * 0.06;
-                    aCart.motionZ += aCart.motionZ / tMotion * 0.06;
-                } else {
-                	tRailMeta &= 7;
-    				if (tRailMeta == 1) {
-    	                     if (aWorld.getBlock(aX-1, aY, aZ).isNormalCube(aWorld, aX-1, aY, aZ)) aCart.motionX = +0.02;
-    	            	else if (aWorld.getBlock(aX+1, aY, aZ).isNormalCube(aWorld, aX+1, aY, aZ)) aCart.motionX = -0.02;
-    				} else if (tRailMeta == 0) {
-    	                     if (aWorld.getBlock(aX, aY, aZ-1).isNormalCube(aWorld, aX, aY, aZ-1)) aCart.motionZ = +0.02;
-    	                else if (aWorld.getBlock(aX, aY, aZ+1).isNormalCube(aWorld, aX, aY, aZ+1)) aCart.motionZ = -0.02;
-    				}
-                }
-        	} else {
-                if (tMotion < 0.03) {
-                    aCart.motionX  = 0;
-                    aCart.motionY  = 0;
-                    aCart.motionZ  = 0;
-                } else {
-                	aCart.motionX /= 2;
-                    aCart.motionY  = 0;
-                    aCart.motionZ /= 2;
-                }
-        	}
-        }
-    }
+		if (mPowerRail) {
+			int tRailMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+			double tMotion = Math.sqrt(aCart.motionX * aCart.motionX + aCart.motionZ * aCart.motionZ);
+			if ((tRailMeta & 8) != 0) {
+				if (tMotion > 0.01) {
+					aCart.motionX += aCart.motionX / tMotion * 0.06;
+					aCart.motionZ += aCart.motionZ / tMotion * 0.06;
+				} else {
+					tRailMeta &= 7;
+					if (tRailMeta == 1) {
+							 if (aWorld.getBlock(aX-1, aY, aZ).isNormalCube(aWorld, aX-1, aY, aZ)) aCart.motionX = +0.02;
+						else if (aWorld.getBlock(aX+1, aY, aZ).isNormalCube(aWorld, aX+1, aY, aZ)) aCart.motionX = -0.02;
+					} else if (tRailMeta == 0) {
+							 if (aWorld.getBlock(aX, aY, aZ-1).isNormalCube(aWorld, aX, aY, aZ-1)) aCart.motionZ = +0.02;
+						else if (aWorld.getBlock(aX, aY, aZ+1).isNormalCube(aWorld, aX, aY, aZ+1)) aCart.motionZ = -0.02;
+					}
+				}
+			} else {
+				if (tMotion < 0.03) {
+					aCart.motionX  = 0;
+					aCart.motionY  = 0;
+					aCart.motionZ  = 0;
+				} else {
+					aCart.motionX /= 2;
+					aCart.motionY  = 0;
+					aCart.motionZ /= 2;
+				}
+			}
+		}
+	}
 }

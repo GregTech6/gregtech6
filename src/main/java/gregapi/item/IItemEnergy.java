@@ -42,10 +42,10 @@ public interface IItemEnergy {
 	// for tampering with the charge of an Object.
 	// 
 	// The World and Coordinate Parameters are there in case something should happen when tampering with the Item.
-	//   This could be used for remote re-chargable Items.
+	//	 This could be used for remote re-chargable Items.
 	// The Inventory Parameters are for the Inventory the Item is inside.
-	//   If it is inside a Player, then please always add the Player Inventory.
-	//   If this is inside a TileEntity, then you are not required to add the IInventory, even if it has an Inventory.
+	//	 If it is inside a Player, then please always add the Player Inventory.
+	//	 If this is inside a TileEntity, then you are not required to add the IInventory, even if it has an Inventory.
 	
 	/**
 	 * You do not have to check for this Function, this is only for things like Slot insertion Conditions and similar.

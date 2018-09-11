@@ -233,24 +233,24 @@ public class GT_API extends Abstract_Mod {
 		Items.iron_door.setMaxStackSize(8);
 		
 		// Fixing some Adventure Mode things.
-    	Blocks.bed.setHarvestLevel("axe", 0);
-    	Blocks.sponge.setHarvestLevel("axe", 0);
-    	Blocks.hay_block.setHarvestLevel("axe", 0);
-    	Blocks.tnt.setHarvestLevel("pickaxe", 0);
-    	Blocks.monster_egg.setHarvestLevel("pickaxe", 0);
-    	Blocks.obsidian.setHarvestLevel("pickaxe", 3);
-    	
-    	UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
-    	UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
-    	
+		Blocks.bed.setHarvestLevel("axe", 0);
+		Blocks.sponge.setHarvestLevel("axe", 0);
+		Blocks.hay_block.setHarvestLevel("axe", 0);
+		Blocks.tnt.setHarvestLevel("pickaxe", 0);
+		Blocks.monster_egg.setHarvestLevel("pickaxe", 0);
+		Blocks.obsidian.setHarvestLevel("pickaxe", 3);
+		
+		UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
+		UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
+		
 		Set<Block> tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
-    	tSet.add(Blocks.bed);
-    	tSet.add(Blocks.hay_block);
-    	tSet.add(Blocks.sponge);
-    	
-    	tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemPickaxe.class, "field_150915_c", T, T);
-    	tSet.add(Blocks.monster_egg);
-    	tSet.add(Blocks.tnt);
+		tSet.add(Blocks.bed);
+		tSet.add(Blocks.hay_block);
+		tSet.add(Blocks.sponge);
+		
+		tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemPickaxe.class, "field_150915_c", T, T);
+		tSet.add(Blocks.monster_egg);
+		tSet.add(Blocks.tnt);
 	}
 	
 	@Mod.EventHandler
@@ -285,11 +285,11 @@ public class GT_API extends Abstract_Mod {
 		onModInit(aEvent);
 	}
 	
-//  @SubscribeEvent
-//  @Mod.EventHandler
-//  public void loadComplete(FMLLoadCompleteEvent aEvent) {
+//	@SubscribeEvent
+//	@Mod.EventHandler
+//	public void loadComplete(FMLLoadCompleteEvent aEvent) {
 //		Why the fuck doesn't this work!?! Who can actually receive this Event? Both annotations won't work...
-//  }
+//	}
 	
 	@Override public String getModID() {return MD.GAPI.mID;}
 	@Override public String getModName() {return MD.GAPI.mName;}
@@ -360,7 +360,7 @@ public class GT_API extends Abstract_Mod {
 			for (String tString : tList) ERR.println(tString);
 		} else {
 			OUT.println("**********************************************************************");
-			OUT.println("* WARNING: ERROR LOGGING HAS BEEN DISABLED FOR THIS LOG FILE         *");
+			OUT.println("* WARNING: ERROR LOGGING HAS BEEN DISABLED FOR THIS LOG FILE		  *");
 			OUT.println("**********************************************************************");
 		}
 		
@@ -369,7 +369,7 @@ public class GT_API extends Abstract_Mod {
 		try {
 			MAT_LOG = new PrintStream(tFile);
 			MAT_LOG.println("**********************************************************************");
-			MAT_LOG.println("* This is the complete List of usable GregTech Materials             *");
+			MAT_LOG.println("* This is the complete List of usable GregTech Materials			  *");
 			MAT_LOG.println("**********************************************************************");
 		} catch (Throwable e) {/*Do nothing*/}
 		
@@ -379,14 +379,14 @@ public class GT_API extends Abstract_Mod {
 			tList = ((LogBuffer)ORD).mBufferedLog;
 			ORD = new PrintStream(tFile);
 			ORD.println("**********************************************************************");
-			ORD.println("* This is the complete Log of the GregTech OreDictionary Handler     *");/*
+			ORD.println("* This is the complete Log of the GregTech OreDictionary Handler	  *");/*
 			ORD.println("* Everything in the OreDict goes through it sometimes causing Errors *");
 			ORD.println("* These Errors are getting logged aswell as properly registered Ores *");
 			ORD.println("* If you see something fishy going on in this Log, such as improper  *");
-			ORD.println("* Items being registered, then mention it to the corresponding Mod   *");
-			ORD.println("* In case it mentions GregTech itself improperly registering Stuff   *");
-			ORD.println("* then please contact me about that immediatly                       *");
-			ORD.println("*                                                                    *");
+			ORD.println("* Items being registered, then mention it to the corresponding Mod	  *");
+			ORD.println("* In case it mentions GregTech itself improperly registering Stuff	  *");
+			ORD.println("* then please contact me about that immediatly						  *");
+			ORD.println("*																	  *");
 			ORD.println("* In case of something being 'ignored properly', that one isnt a Bug *");*/
 			ORD.println("**********************************************************************");
 			for (String tString : tList) ORD.println(tString);
@@ -444,13 +444,13 @@ public class GT_API extends Abstract_Mod {
 		
 		if (MD.IC2C.mLoaded) {
 		DISABLE_ALL_IC2_MACERATOR_RECIPES		= F;
-		ENABLE_ADDING_IC2_MACERATOR_RECIPES 	= T;
+		ENABLE_ADDING_IC2_MACERATOR_RECIPES		= T;
 		DISABLE_ALL_IC2_EXTRACTOR_RECIPES		= F;
 		ENABLE_ADDING_IC2_EXTRACTOR_RECIPES		= T;
 		DISABLE_ALL_IC2_COMPRESSOR_RECIPES		= F;
-		ENABLE_ADDING_IC2_COMPRESSOR_RECIPES 	= T;
+		ENABLE_ADDING_IC2_COMPRESSOR_RECIPES	= T;
 		DISABLE_ALL_IC2_OREWASHER_RECIPES		= F;
-		ENABLE_ADDING_IC2_OREWASHER_RECIPES 	= F;
+		ENABLE_ADDING_IC2_OREWASHER_RECIPES		= F;
 		DISABLE_ALL_IC2_CENTRIFUGE_RECIPES		= F;
 		ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES	= F;
 		} else if (MD.IC2.mLoaded) {
@@ -466,13 +466,13 @@ public class GT_API extends Abstract_Mod {
 		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES) ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES = F;
 		} else {
 		DISABLE_ALL_IC2_MACERATOR_RECIPES		= F;
-		ENABLE_ADDING_IC2_MACERATOR_RECIPES 	= F;
+		ENABLE_ADDING_IC2_MACERATOR_RECIPES		= F;
 		DISABLE_ALL_IC2_EXTRACTOR_RECIPES		= F;
 		ENABLE_ADDING_IC2_EXTRACTOR_RECIPES		= F;
 		DISABLE_ALL_IC2_COMPRESSOR_RECIPES		= F;
-		ENABLE_ADDING_IC2_COMPRESSOR_RECIPES 	= F;
+		ENABLE_ADDING_IC2_COMPRESSOR_RECIPES	= F;
 		DISABLE_ALL_IC2_OREWASHER_RECIPES		= F;
-		ENABLE_ADDING_IC2_OREWASHER_RECIPES 	= F;
+		ENABLE_ADDING_IC2_OREWASHER_RECIPES		= F;
 		DISABLE_ALL_IC2_CENTRIFUGE_RECIPES		= F;
 		ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES	= F;
 		}
@@ -515,7 +515,7 @@ public class GT_API extends Abstract_Mod {
 		tMainConfig.save();
 		tStackConfig.save();
 		
-		ConfigsGT.CLIENT 					= new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");
+		ConfigsGT.CLIENT					= new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");
 		
 		SHOW_HIDDEN_ITEMS					= ConfigsGT.CLIENT.get("visibility"	, "HiddenGTItems"			, F);
 		SHOW_HIDDEN_MATERIALS				= ConfigsGT.CLIENT.get("visibility"	, "HiddenGTMaterials"		, F);
@@ -545,9 +545,9 @@ public class GT_API extends Abstract_Mod {
 		RecipeSorter.register("gregtech:XToY"			, AdvancedCraftingXToY.class				, net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS	, "after:gregtech:1ToY");
 		RecipeSorter.register("gregtech:tool"			, AdvancedCraftingTool.class				, net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS	, "after:gregtech:1ToY");
 		// A Default Packet Handler for some of the already existing Code. Yes, all those Packets are generalised special cases in order to save on Bandwidth.
-		// [        +127] = PacketConfig
-		// [        +126] = PacketPrefix
-		// [        +125] = PacketItemStackChat
+		// [		+127] = PacketConfig
+		// [		+126] = PacketPrefix
+		// [		+125] = PacketItemStackChat
 		// [+112 to +119] = PacketBlockEvent
 		// [+104 to +111] = PacketBlockError
 		// [+ 72 to + 79] = PacketDeathPoint

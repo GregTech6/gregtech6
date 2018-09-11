@@ -44,9 +44,9 @@ public class WorldgenOresSmall extends WorldgenObject {
 	public WorldgenOresSmall(String aName, boolean aDefault, int aMinY, int aMaxY, int aAmount, OreDictMaterial aPrimary, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mMinY				= (short)					ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"	, aMinY);
-		mMaxY				= (short)Math.max(mMinY+1, 	ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"	, aMaxY));
+		mMaxY				= (short)Math.max(mMinY+1,	ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"	, aMaxY));
 		mAmount				= (short)Math.max(1,		ConfigsGT.WORLDGEN.get(mCategory, "Amount"		, aAmount));
-		mMaterial			= 							ConfigsGT.WORLDGEN.get(mCategory, "Ore"			, aPrimary);
+		mMaterial			=							ConfigsGT.WORLDGEN.get(mCategory, "Ore"			, aPrimary);
 		
 		if (mEnabled && mMaterial.mID > 0) OreDictManager.INSTANCE.triggerVisibility("ore"+mMaterial.mNameInternal);
 		

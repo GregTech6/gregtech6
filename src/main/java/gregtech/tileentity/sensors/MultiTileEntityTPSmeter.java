@@ -39,13 +39,13 @@ public class MultiTileEntityTPSmeter extends MultiTileEntitySensorTE {
 	public long mTime = System.currentTimeMillis(), mCurrentTime = 2000;
 	
 	@Override
-    public void onTick2(long aTimer, boolean aIsServerSide) {
+	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide && (getTickRate() < 2 || aTimer % getTickRate() == 0)) {
 			long tTime = mTime;
 			mTime = System.currentTimeMillis();
 			mCurrentTime = (mTime - tTime > 0 ? (getTickRate() * 100000) / (mTime - tTime) : 2000);
 		}
-    	super.onTick2(aTimer, aIsServerSide);
+		super.onTick2(aTimer, aIsServerSide);
 	}
 	
 	@Override

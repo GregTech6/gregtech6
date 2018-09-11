@@ -93,7 +93,7 @@ public class Loader_Recipes_Railcraft implements Runnable {
 			CR.shaped(ST.make(MD.RC, "machine.alpha"			, 1,  8), tBits														, "IPI"				, "PCP"					, "IPI"					, 'P', OD.craftingPiston								, 'I', tIngot.dat(ANY.Fe), 'C', ST.make(Blocks.crafting_table, 1, W));
 			CR.shaped(ST.make(MD.RC, "machine.alpha"			, 1,  9), tBits														, " I "				, " T "					, " D "					, 'I', ST.make(Blocks.iron_bars, 1, W)					, 'T', ST.make(MD.RC, "machine.beta", 1, 4), 'D', ST.make(Blocks.dispenser, 1, W));
 			CR.shaped(ST.make(MD.RC, "machine.alpha"			, 1, 10), tBits														, " I "				, "RTR"					, " D "					, 'I', ST.make(Blocks.iron_bars, 1, W)					, 'T', ST.make(MD.RC, "machine.beta", 1, 4), 'D', ST.make(Blocks.dispenser, 1, W), 'R', OD.itemRedstone);
-			CR.shaped(ST.make(MD.RC, "machine.alpha"			, 1, 10), DEF			 											, "RTR"																, 'R', OD.itemRedstone									, 'T', ST.make(MD.RC, "machine.alpha", 1, 9));
+			CR.shaped(ST.make(MD.RC, "machine.alpha"			, 1, 10), DEF														, "RTR"																, 'R', OD.itemRedstone									, 'T', ST.make(MD.RC, "machine.alpha", 1, 9));
 			CR.shaped(ST.make(MD.RC, "machine.alpha"			, 1, 11), tBits														, "PCP"				, "CSC"					, "PCP"					, 'P', OD.plankAnyWood									, 'S', OP.plate.dat(ANY.Steel), 'C', ST.make(Items.golden_carrot, 1, 0));
 			CR.shaped(ST.make(MD.RC, "machine.alpha"			, 1, 13), tBits														, "IOI"				, "GEG"					, "IOI"					, 'I', tIngot.dat(MT.Au)								, 'G', DYE_OREDICTS[DYE_INDEX_Cyan], 'E', OP.gem.dat(MT.EnderPearl), 'O', OP.blockSolid.dat(MT.Obsidian));
 			CR.shaped(ST.make(MD.RC, "machine.alpha"			, 6, 14), tBits														, "PPP"				, "ISI"					, "PPP"					, 'P', OD.plankAnyWood									, 'I', tIngot.dat(ANY.Fe), 'S', "slimeball");
@@ -128,7 +128,7 @@ public class Loader_Recipes_Railcraft implements Runnable {
 			CR.remout(MD.RC, "part.bleached.clay");
 			CR.remout(IL.RC_Concrete.get(1));
 			
-			RM.Drying.addRecipe1(T, 16,  16, IL.RC_Rebar.get(1), FL.Concrete.make(L), FL.DistW.make(8), IL.RC_Concrete.get(2));
+			RM.Drying.addRecipe1(T, 16,	 16, IL.RC_Rebar.get(1), FL.Concrete.make(L), FL.DistW.make(8), IL.RC_Concrete.get(2));
 			
 			
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
@@ -144,22 +144,22 @@ public class Loader_Recipes_Railcraft implements Runnable {
 			}};
 			
 			
-			RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Al				,  6), IL.RC_Rail_Standard.get( 1));
-			RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Fe				,  3), IL.RC_Rail_Standard.get( 1));
-			RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.WroughtIron		,  2), IL.RC_Rail_Standard.get( 1));
-			RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.MeteoricIron		,  3), IL.RC_Rail_Standard.get( 2));
-			RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Bronze			,  4), IL.RC_Rail_Standard.get( 1));
-			RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.HSLA				,  3), IL.RC_Rail_Standard.get( 2));
-			RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.Steel				,  3), IL.RC_Rail_Standard.get( 2));
-			RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.MeteoricSteel		,  1), IL.RC_Rail_Standard.get( 1));
-			RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.StainlessSteel	,  1), IL.RC_Rail_Standard.get( 1));
-			RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.Ti				,  3), IL.RC_Rail_Standard.get( 4));
-			RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.W					,  3), IL.RC_Rail_Standard.get( 4));
-			RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.TungstenSintered	,  3), IL.RC_Rail_Standard.get( 4));
-			RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.Meteorite			,  1), IL.RC_Rail_Reinforced.get( 1));
-			RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.ObsidianSteel		,  1), IL.RC_Rail_Reinforced.get( 1));
-			RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.TungstenSteel		,  1), IL.RC_Rail_Reinforced.get( 2));
-			RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.TungstenCarbide	,  1), IL.RC_Rail_Reinforced.get( 2));
+			RM.RollFormer.addRecipe1(T, 16,	 16, OP.railGt.mat(MT.Al				,  6), IL.RC_Rail_Standard.get( 1));
+			RM.RollFormer.addRecipe1(T, 16,	 16, OP.railGt.mat(MT.Fe				,  3), IL.RC_Rail_Standard.get( 1));
+			RM.RollFormer.addRecipe1(T, 16,	 16, OP.railGt.mat(MT.WroughtIron		,  2), IL.RC_Rail_Standard.get( 1));
+			RM.RollFormer.addRecipe1(T, 16,	 16, OP.railGt.mat(MT.MeteoricIron		,  3), IL.RC_Rail_Standard.get( 2));
+			RM.RollFormer.addRecipe1(T, 16,	 16, OP.railGt.mat(MT.Bronze			,  4), IL.RC_Rail_Standard.get( 1));
+			RM.RollFormer.addRecipe1(T, 16,	 32, OP.railGt.mat(MT.HSLA				,  3), IL.RC_Rail_Standard.get( 2));
+			RM.RollFormer.addRecipe1(T, 16,	 32, OP.railGt.mat(MT.Steel				,  3), IL.RC_Rail_Standard.get( 2));
+			RM.RollFormer.addRecipe1(T, 16,	 32, OP.railGt.mat(MT.MeteoricSteel		,  1), IL.RC_Rail_Standard.get( 1));
+			RM.RollFormer.addRecipe1(T, 16,	 16, OP.railGt.mat(MT.StainlessSteel	,  1), IL.RC_Rail_Standard.get( 1));
+			RM.RollFormer.addRecipe1(T, 16,	 64, OP.railGt.mat(MT.Ti				,  3), IL.RC_Rail_Standard.get( 4));
+			RM.RollFormer.addRecipe1(T, 16,	 64, OP.railGt.mat(MT.W					,  3), IL.RC_Rail_Standard.get( 4));
+			RM.RollFormer.addRecipe1(T, 16,	 64, OP.railGt.mat(MT.TungstenSintered	,  3), IL.RC_Rail_Standard.get( 4));
+			RM.RollFormer.addRecipe1(T, 64,	 32, OP.railGt.mat(MT.Meteorite			,  1), IL.RC_Rail_Reinforced.get( 1));
+			RM.RollFormer.addRecipe1(T, 64,	 32, OP.railGt.mat(MT.ObsidianSteel		,  1), IL.RC_Rail_Reinforced.get( 1));
+			RM.RollFormer.addRecipe1(T, 64,	 32, OP.railGt.mat(MT.TungstenSteel		,  1), IL.RC_Rail_Reinforced.get( 2));
+			RM.RollFormer.addRecipe1(T, 64,	 32, OP.railGt.mat(MT.TungstenCarbide	,  1), IL.RC_Rail_Reinforced.get( 2));
 			
 			RM.RollFormer.addRecipe1(T, 16, 100, OP.stick.mat(MT.Al					,  3), IL.RC_Rebar.get( 1));
 			RM.RollFormer.addRecipe1(T, 16, 200, OP.stick.mat(MT.Fe					,  3), IL.RC_Rebar.get( 2));

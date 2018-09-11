@@ -92,7 +92,7 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD_COINAGE));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD_SELECT) + " (Doesn't work right now)");
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT) 	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 	}
 	
 	@Override
@@ -247,8 +247,8 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 	@Override public float getSurfaceSize			(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?PX_N[ 4]:0.0F;}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	

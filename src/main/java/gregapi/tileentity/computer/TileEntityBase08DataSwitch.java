@@ -41,18 +41,18 @@ import net.minecraft.nbt.NBTTagCompound;
 public abstract class TileEntityBase08DataSwitch extends TileEntityBase07Paintable implements IMTE_AddToolTips, ITileEntityUSBPort, ITileEntitySwitchableMode {
 	public byte mMode = 0;
 	
-    @Override
+	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
-    	super.readFromNBT2(aNBT);
-    	if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
-    }
-    
-    @Override
+		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
+	}
+	
+	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
-    	super.writeToNBT2(aNBT);
-    	if (mMode != 0) aNBT.setByte(NBT_MODE, mMode);
-    }
-    
+		super.writeToNBT2(aNBT);
+		if (mMode != 0) aNBT.setByte(NBT_MODE, mMode);
+	}
+	
 	static {
 		LH.add("gt.multitileentity.data.switch.tooltip.1", "Use adjacent to Machines that require USB Sticks to select Recipes");
 		LH.add("gt.multitileentity.data.switch.tooltip.2", "Add USB Cable to Slot where USB Stick in the Recipe would go");

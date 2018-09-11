@@ -60,7 +60,7 @@ public class MultiItemBooks extends MultiItemRandom {
 		@SuppressWarnings("unused")
 		int tLastID = 0;
 		for (int i = 0; i < 8; i++) {
-			BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID =      i, "Book"		, "", "bookWritten", TC.stack(TC.COGNITO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3))), (byte)(3+i));
+			BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID =		i, "Book"		, "", "bookWritten", TC.stack(TC.COGNITO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3))), (byte)(3+i));
 			BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 1000+i, "Large Book"	, "", "bookWritten", TC.stack(TC.COGNITO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6))), (byte)(3+i));
 		}
 		
@@ -70,14 +70,14 @@ public class MultiItemBooks extends MultiItemRandom {
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32002, "Material Dictionary"		, "Contains Data about a Material"	, "bookWritten", TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3))), (byte)11);
 		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(addItem(tLastID = 32003, "Material Dictionary"		, "Contains Data about a Material"	, "bookWritten", TD.Creative.HIDDEN, TC.stack(TC.COGNITO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6))), (byte)11);
 		
-		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
-		CR.shapeless(ST.make(this, 1,     1), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
-		CR.shapeless(ST.make(this, 1,     2), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
-		CR.shapeless(ST.make(this, 1,     3), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Green]});
-		CR.shapeless(ST.make(this, 1,     4), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Blue]});
-		CR.shapeless(ST.make(this, 1,     5), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Cyan]});
-		CR.shapeless(ST.make(this, 1,     6), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
-		CR.shapeless(ST.make(this, 1,     7), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
+		CR.shapeless(ST.make(this, 1,	  0), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
+		CR.shapeless(ST.make(this, 1,	  1), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
+		CR.shapeless(ST.make(this, 1,	  2), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
+		CR.shapeless(ST.make(this, 1,	  3), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Green]});
+		CR.shapeless(ST.make(this, 1,	  4), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Blue]});
+		CR.shapeless(ST.make(this, 1,	  5), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Cyan]});
+		CR.shapeless(ST.make(this, 1,	  6), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
+		CR.shapeless(ST.make(this, 1,	  7), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
 		
 		CR.shapeless(ST.make(this, 1,  1000), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages_Many.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
 		CR.shapeless(ST.make(this, 1,  1001), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages_Many.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
@@ -88,14 +88,14 @@ public class MultiItemBooks extends MultiItemRandom {
 		CR.shapeless(ST.make(this, 1,  1006), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages_Many.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
 		CR.shapeless(ST.make(this, 1,  1007), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages_Many.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
 		
-		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
-		CR.shapeless(ST.make(this, 1,     1), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
-		CR.shapeless(ST.make(this, 1,     2), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
-		CR.shapeless(ST.make(this, 1,     3), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Green]});
-		CR.shapeless(ST.make(this, 1,     4), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Blue]});
-		CR.shapeless(ST.make(this, 1,     5), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Cyan]});
-		CR.shapeless(ST.make(this, 1,     6), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
-		CR.shapeless(ST.make(this, 1,     7), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
+		CR.shapeless(ST.make(this, 1,	  0), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
+		CR.shapeless(ST.make(this, 1,	  1), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
+		CR.shapeless(ST.make(this, 1,	  2), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
+		CR.shapeless(ST.make(this, 1,	  3), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Green]});
+		CR.shapeless(ST.make(this, 1,	  4), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Blue]});
+		CR.shapeless(ST.make(this, 1,	  5), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Cyan]});
+		CR.shapeless(ST.make(this, 1,	  6), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
+		CR.shapeless(ST.make(this, 1,	  7), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
 		
 		CR.shapeless(ST.make(this, 1,  1000), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
 		CR.shapeless(ST.make(this, 1,  1001), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
@@ -107,24 +107,24 @@ public class MultiItemBooks extends MultiItemRandom {
 		CR.shapeless(ST.make(this, 1,  1007), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
 	}
 	
-    @Override
+	@Override
 	public WeightedRandomChestContent getChestGenBase(ChestGenHooks aChestGenHook, Random aRandom, WeightedRandomChestContent aOriginal) {
-    	if (aOriginal.theItemId.hasTagCompound()) return aOriginal;
-    	if (ST.meta(aOriginal.theItemId) == 32002 || ST.meta(aOriginal.theItemId) == 32003) return new WeightedRandomChestContent(ST.book(UT.Books.MATERIAL_DICTIONARIES.get(aRandom.nextInt(UT.Books.MATERIAL_DICTIONARIES.size()))), aOriginal.theMinimumChanceToGenerateItem, aOriginal.theMaximumChanceToGenerateItem, aOriginal.itemWeight);
-        return aOriginal;
-    }
-    
-    @Override
+		if (aOriginal.theItemId.hasTagCompound()) return aOriginal;
+		if (ST.meta(aOriginal.theItemId) == 32002 || ST.meta(aOriginal.theItemId) == 32003) return new WeightedRandomChestContent(ST.book(UT.Books.MATERIAL_DICTIONARIES.get(aRandom.nextInt(UT.Books.MATERIAL_DICTIONARIES.size()))), aOriginal.theMinimumChanceToGenerateItem, aOriginal.theMaximumChanceToGenerateItem, aOriginal.itemWeight);
+		return aOriginal;
+	}
+	
+	@Override
 	public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
-    	String aMapping = UT.NBT.getBookMapping(aStack);
-    	if (UT.Code.stringValid(aMapping)) {
-    		aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping, ST.make(Items.written_book, 1, 0)));
-    	} else {
-    		if (UT.Code.stringValid(UT.NBT.getBookTitle(aStack))) aPlayer.displayGUIBook(ST.make(Items.written_book, 1, 0, aStack.getTagCompound()));
-    	}
-    	return super.onItemRightClick(aStack, aWorld, aPlayer);
-    }
-    
+		String aMapping = UT.NBT.getBookMapping(aStack);
+		if (UT.Code.stringValid(aMapping)) {
+			aPlayer.displayGUIBook(UT.Books.getWrittenBook(aMapping, ST.make(Items.written_book, 1, 0)));
+		} else {
+			if (UT.Code.stringValid(UT.NBT.getBookTitle(aStack))) aPlayer.displayGUIBook(ST.make(Items.written_book, 1, 0, aStack.getTagCompound()));
+		}
+		return super.onItemRightClick(aStack, aWorld, aPlayer);
+	}
+	
 	@Override
 	public void addAdditionalToolTips(List aList, ItemStack aStack, boolean aF3_H) {
 		super.addAdditionalToolTips(aList, aStack, aF3_H);

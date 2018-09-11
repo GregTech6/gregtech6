@@ -36,12 +36,12 @@ import net.minecraft.nbt.NBTTagCompound;
 public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyConverter implements ITileEntityAdjacentOnOff {
 	public TE_Behavior_Energy_Stats mEnergyOUT2 = null;
 	
-    @Override
+	@Override
 	public void readEnergyBehavior(NBTTagCompound aNBT) {
-    	super.readEnergyBehavior(aNBT);
-    	mEnergyOUT2	= new TE_Behavior_Energy_Stats(this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED_2) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED_2)) : TD.Energy.QU, mStorage, aNBT.getLong(NBT_OUTPUT) / 2, aNBT.getLong(NBT_OUTPUT), aNBT.getLong(NBT_OUTPUT) * 2);
+		super.readEnergyBehavior(aNBT);
+		mEnergyOUT2	= new TE_Behavior_Energy_Stats(this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED_2) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED_2)) : TD.Energy.QU, mStorage, aNBT.getLong(NBT_OUTPUT) / 2, aNBT.getLong(NBT_OUTPUT), aNBT.getLong(NBT_OUTPUT) * 2);
 	}
-    
+	
 	@Override
 	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTipsEnergy(aList, aStack, aF3_H);
@@ -53,16 +53,16 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
 		LH.addToolTipsEfficiency(aList, aStack, aF3_H, mConverter.mEnergyIN, mConverter.mEnergyOUT, mEnergyOUT2, mConverter.mMultiplier);
 	}
 	
-    @Override
-    public void doConversion(long aTimer) {
+	@Override
+	public void doConversion(long aTimer) {
 		mActivity.mActive = mConverter.doTwinType(aTimer, this, mFacing, OPPOSITES[mFacing], mEnergyOUT2);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;
 			mStorage.mEnergy = 0;
 		}
-    }
-    
+	}
+	
 	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? mConverter.mEnergyOUT.isType(aEnergyType) || mEnergyOUT2.isType(aEnergyType) : mConverter.mEnergyIN.isType(aEnergyType);}
 	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && (SIDES_INVALID[aSide] || (mConverter.mEnergyOUT.isType(aEnergyType) ? isOutput(aSide) : isOutput2(aSide)));}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mConverter.mEnergyIN.mType, mConverter.mEnergyOUT.mType, mEnergyOUT2.mType);}

@@ -457,7 +457,7 @@ public class ST {
 	}
 	
 	public static boolean valid(Object aStack) {
-		return   aStack instanceof ItemStack  && ((ItemStack)aStack).stackSize >= 0 && ((ItemStack)aStack).getItem() != null;
+		return	 aStack instanceof ItemStack  && ((ItemStack)aStack).stackSize >= 0 && ((ItemStack)aStack).getItem() != null;
 	}
 	
 	public static boolean invalid(Object aStack) {

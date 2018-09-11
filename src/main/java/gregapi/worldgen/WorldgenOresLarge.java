@@ -58,15 +58,15 @@ public class WorldgenOresLarge extends WorldgenObject {
 	public WorldgenOresLarge(String aName, boolean aDefault, boolean aIndicatorRocks, int aMinY, int aMaxY, int aWeight, int aDensity, int aSize, OreDictMaterial aTop, OreDictMaterial aBottom, OreDictMaterial aBetween, OreDictMaterial aSpread, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mMinY				= (short)					ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"		, aMinY);
-		mMaxY				= (short)Math.max(mMinY+5, 	ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"		, aMaxY));
+		mMaxY				= (short)Math.max(mMinY+5,	ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"		, aMaxY));
 		mWeight				= (short)Math.max(1,		ConfigsGT.WORLDGEN.get(mCategory, "RandomWeight"	, aWeight));
 		mDensity			= (short)					ConfigsGT.WORLDGEN.get(mCategory, "Density"			, aDensity);
 		mSize				= (short)Math.max(1,		ConfigsGT.WORLDGEN.get(mCategory, "Size"			, aSize));
-		mIndicatorRocks		= 							ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"	, aIndicatorRocks);
-		mTop				= 							ConfigsGT.WORLDGEN.get(mCategory, "OreTop"			, aTop);
-		mBottom				= 							ConfigsGT.WORLDGEN.get(mCategory, "OreBottom"		, aBottom);
-		mBetween			= 							ConfigsGT.WORLDGEN.get(mCategory, "OreBetween"		, aBetween);
-		mSpread				= 							ConfigsGT.WORLDGEN.get(mCategory, "OreSpread"		, aSpread);
+		mIndicatorRocks		=							ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"	, aIndicatorRocks);
+		mTop				=							ConfigsGT.WORLDGEN.get(mCategory, "OreTop"			, aTop);
+		mBottom				=							ConfigsGT.WORLDGEN.get(mCategory, "OreBottom"		, aBottom);
+		mBetween			=							ConfigsGT.WORLDGEN.get(mCategory, "OreBetween"		, aBetween);
+		mSpread				=							ConfigsGT.WORLDGEN.get(mCategory, "OreSpread"		, aSpread);
 		
 		if (mEnabled) {
 			if (mTop		.mID > 0) OreDictManager.INSTANCE.triggerVisibility("ore"+mTop		.mNameInternal);

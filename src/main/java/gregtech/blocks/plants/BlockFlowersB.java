@@ -80,11 +80,11 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
 		
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
-    	RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
-    	
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
+		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
+		
 		CR.shaped(ST.make(Items.stick, 2, 0), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 0));
 		CR.shaped(ST.make(Items.stick, 2, 0), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 0));
 		CR.shaped(ST.make(Items.stick, 2, 0), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 1));
@@ -97,14 +97,14 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 4)});
 		CR.shapeless(OM.dust(MT.Purple), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 5)});
 		
-    	if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
-    	RM.ic2_extractor(ST.make(this, 1, 0), ST.make(Items.stick, 2, 0));
-    	RM.ic2_extractor(ST.make(this, 1, 1), ST.make(Items.stick, 2, 0));
-    	RM.ic2_extractor(ST.make(this, 1, 2), OM.dust(MT.Yellow, U * 2));
-    	RM.ic2_extractor(ST.make(this, 1, 3), OM.dust(MT.Pink, U * 2));
-    	RM.ic2_extractor(ST.make(this, 1, 4), OM.dust(MT.Yellow, U * 2));
-    	RM.ic2_extractor(ST.make(this, 1, 5), OM.dust(MT.Purple, U * 2));
-    	}
+		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
+		RM.ic2_extractor(ST.make(this, 1, 0), ST.make(Items.stick, 2, 0));
+		RM.ic2_extractor(ST.make(this, 1, 1), ST.make(Items.stick, 2, 0));
+		RM.ic2_extractor(ST.make(this, 1, 2), OM.dust(MT.Yellow, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 3), OM.dust(MT.Pink, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 4), OM.dust(MT.Yellow, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 5), OM.dust(MT.Purple, U * 2));
+		}
 	}
 	
 	@Override

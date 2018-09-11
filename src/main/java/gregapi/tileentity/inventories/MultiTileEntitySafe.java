@@ -47,18 +47,18 @@ import net.minecraftforge.common.ChestGenHooks;
 public abstract class MultiTileEntitySafe extends TileEntityBase09FacingSingle implements IMTE_GetPlayerRelativeBlockHardness, IMTE_GetSubItems {
 	public String mDungeonLootName = "";
 	
-    @Override
+	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
-    	super.readFromNBT2(aNBT);
-        if (aNBT.hasKey("gt.dungeonloot")) mDungeonLootName = aNBT.getString("gt.dungeonloot");
-    }
-    
-    @Override
+		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey("gt.dungeonloot")) mDungeonLootName = aNBT.getString("gt.dungeonloot");
+	}
+	
+	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
-    	super.writeToNBT2(aNBT);
-    	if (UT.Code.stringValid(mDungeonLootName)) aNBT.setString("gt.dungeonloot", mDungeonLootName);
-    }
-    
+		super.writeToNBT2(aNBT);
+		if (UT.Code.stringValid(mDungeonLootName)) aNBT.setString("gt.dungeonloot", mDungeonLootName);
+	}
+	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (aStack.getTagCompound() != null && aStack.getTagCompound().hasKey("gt.dungeonloot")) aList.add("Dungeon Loot: "+aStack.getTagCompound().getString("gt.dungeonloot"));
@@ -72,22 +72,22 @@ public abstract class MultiTileEntitySafe extends TileEntityBase09FacingSingle i
 		}
 	}
 	
-    @Override
+	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-    	if (aSide != mFacing) return F;
+		if (aSide != mFacing) return F;
 		if (isServerSide() && isUseableByPlayerGUI(aPlayer)) {
 			generateDungeonLoot();
 			openGUI(aPlayer);
 		}
 		return T;
 	}
-    
-    @Override
-    public boolean breakBlock() {
+	
+	@Override
+	public boolean breakBlock() {
 		generateDungeonLoot();
-    	return super.breakBlock();
-    }
-    
+		return super.breakBlock();
+	}
+	
 	@Override
 	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		if (!SHOW_HIDDEN_MATERIALS && mMaterial.mHidden) return F;
@@ -95,12 +95,12 @@ public abstract class MultiTileEntitySafe extends TileEntityBase09FacingSingle i
 		return T;
 	}
 	
-    @Override
+	@Override
 	public boolean onPlaced(ItemStack aStack, EntityPlayer aPlayer, MultiTileEntityContainer aMTEContainer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		super.onPlaced(aStack, aPlayer, aMTEContainer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ);
-    	aWorld.playSoundEffect(aX+0.5, aY+0.5, aZ+0.5, Blocks.anvil.stepSound.func_150496_b(), (Blocks.anvil.stepSound.getVolume()+1)/2, Blocks.anvil.stepSound.getPitch()*0.8F);
+		aWorld.playSoundEffect(aX+0.5, aY+0.5, aZ+0.5, Blocks.anvil.stepSound.func_150496_b(), (Blocks.anvil.stepSound.getVolume()+1)/2, Blocks.anvil.stepSound.getPitch()*0.8F);
 		return F;
-    }
+	}
 	
 	@Override public boolean allowCovers(byte aSide) {return aSide != mFacing;}
 	

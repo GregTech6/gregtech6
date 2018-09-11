@@ -146,7 +146,7 @@ public class Loader_Tools implements Runnable {
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.POCKET_CHISEL				, "Pocket Multitool (Chisel)"		, "Be slow/careful with it on Servers because Ping!"	, new GT_Tool_Pocket_Chisel(ToolsGT.POCKET_MULTITOOL)		.setMaterialAmount(199*U18									), OreDictToolNames.chisel																													, TC.stack(TC.INSTRUMENTUM	, 6), TC.stack(TC.FABRICO		, 3), TC.stack(TC.ORDO			, 3)								), TOOL_chisel);
 		
 		for (int i = 0; i < 8; i++) ItemsGT.addNEIRedirect(
-			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+  i      *2),
+			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+	 i		*2),
 			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+((i+1)%8)*2),
 			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+((i+2)%8)*2),
 			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+((i+3)%8)*2),
@@ -185,22 +185,22 @@ public class Loader_Tools implements Runnable {
 		}
 		
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Syrmorite, MT.Plastic, MT.Al, MT.Cr, MT.StainlessSteel})
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, tMaterial			, tMaterial			), CR.DEF_MIR	, "  S", " I ", "S f", 'I', OP.ingot.dat(tMaterial), 'S', OP.stick.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, tMaterial			, tMaterial			), CR.DEF_MIR	, "	 S", " I ", "S f", 'I', OP.ingot.dat(tMaterial), 'S', OP.stick.dat(tMaterial));
 		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) if (tMaterial != MT.Wood) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, tMaterial			, tMaterial			), CR.DEF_MIR	, "  S", " I ", "S f", 'I', OP.plank.dat(tMaterial), 'S', OP.stick.dat(tMaterial));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, tMaterial			, tMaterial			), CR.DEF_MIR	, "  S", " I ", "S k", 'I', OP.plank.dat(tMaterial), 'S', OP.stick.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, tMaterial			, tMaterial			), CR.DEF_MIR	, "	 S", " I ", "S f", 'I', OP.plank.dat(tMaterial), 'S', OP.stick.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, tMaterial			, tMaterial			), CR.DEF_MIR	, "	 S", " I ", "S k", 'I', OP.plank.dat(tMaterial), 'S', OP.stick.dat(tMaterial));
 		}
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, MT.Wood			, MT.Wood			), CR.DEF_MIR	, "  S", " I ", "S f", 'I', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, MT.Wood			, MT.Wood			), CR.DEF_MIR	, "  S", " I ", "S k", 'I', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, MT.Wood			, MT.Wood			), CR.DEF_MIR	, "	 S", " I ", "S f", 'I', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN		, MT.Wood			, MT.Wood			), CR.DEF_MIR	, "	 S", " I ", "S k", 'I', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
 		
 		for (Object[] tHandle : new Object[][] {{MT.Wood, OP.stick.dat(ANY.Wood)}, {MT.PetrifiedWood, OP.stick.dat(MT.PetrifiedWood)}, {MT.Lime, "bamboo"}, {MT.Bone, ST.make(Items.bone, 1, W)}, {MT.Plastic, OP.stick.dat(MT.Plastic)}}) {
 		
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "SF"               , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , "FS"        , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , " S"        , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF		,  "F" ,  "S"        , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE			, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF		, "FFF", " S "       , 'S', tHandle[1], 'F', OD.itemFlint);
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SWORD				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF		,  "F" ,  "F" ,  "S" , 'S', tHandle[1], 'F', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "SF"				 , 'S', tHandle[1], 'F', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , "FS"		 , 'S', tHandle[1], 'F', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , " S"		 , 'S', tHandle[1], 'F', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF		,  "F" ,  "S"		 , 'S', tHandle[1], 'F', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE			, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF		, "FFF", " S "		 , 'S', tHandle[1], 'F', OD.itemFlint);
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SWORD				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF		,  "F" ,  "F" ,	 "S" , 'S', tHandle[1], 'F', OD.itemFlint);
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB				, MT.Flint			, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, " FF", "FFF", "SF ", 'S', tHandle[1], 'F', OD.itemFlint);
 		
 		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) if (tMaterial != MT.Wood) {
@@ -216,18 +216,18 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SOFTHAMMER			, MT.Plastic		, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', OP.plate.dat(MT.Plastic));
 		
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Netherrack, MT.NetherBrick, MT.Endstone, MT.PetrifiedWood}) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , "FS"        , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , " S"        , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF		,  "F" ,  "S"        , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE			, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF		, "FFF", " S "       , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , "FS"		 , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , " S"		 , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF		,  "F" ,  "S"		 , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE			, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF		, "FFF", " S "		 , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, " FF", "FFF", "SF ", 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER			, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
 		}
 		for (OreDictMaterial tRock : ANY.Stone.mToThis) {
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , "FS"        , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , " S"        , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF		,  "F" ,  "S"        , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
-		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE			, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF		, "FFF", " S "       , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , "FS"		 , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HOE				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF" , " S"		 , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.SHOVEL				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF		,  "F" ,  "S"		 , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.PICKAXE			, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF		, "FFF", " S "		 , 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB				, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, " FF", "FFF", "SF ", 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER			, tRock				, (OreDictMaterial)tHandle[0]	), CR.DEF_MIR	, "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', OP.rockGt.dat(tRock));
 		}
@@ -235,31 +235,31 @@ public class Loader_Tools implements Runnable {
 		
 		final String tCategory = ConfigCategories.Recipes.gregtechtools + ".";
 		
-		toolHeadConstructionPickaxe	.addListener(new OreProcessing_Tool(CONSTRUCTION_PICK		, tCategory + "ConstructionPickaxe"		,T,F,0,0, null							, null																						, new String[][] {{"PIP", "f h"       }, {"CGC", "f  "       }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
-		toolHeadPickaxe				.addListener(new OreProcessing_Tool(PICKAXE					, tCategory + "Pickaxe"					,T,F,0,0, null							, null																						, new String[][] {{"PII", "f h"       }, {"CGG", "f  "       }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
-		toolHeadShovel				.addListener(new OreProcessing_Tool(SHOVEL					, tCategory + "Shovel"					,T,F,0,0, null							, null																						, new String[][] {{"fPh"              }, {"fC "              }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
-		toolHeadSpade				.addListener(new OreProcessing_Tool(SPADE					, tCategory + "Spade"					,T,F,0,0, null							, null																						, new String[][] {{"fPh", " s "       }, {"fC ", " s "       }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
-		toolHeadUniversalSpade		.addListener(new OreProcessing_Tool(UNIVERSALSPADE			, tCategory + "UniversalSpade"			,F,F,0,0, null							, new String[][] {{ "AT",  "Sd"       }}													, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
-		toolHeadHoe					.addListener(new OreProcessing_Tool(HOE						, tCategory + "Hoe"						,T,F,0,0, null							, null																						, new String[][] {{"PIh", "f  "       }, {"CG ", "f  "       }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
-		toolHeadAxe					.addListener(new OreProcessing_Tool(AXE						, tCategory + "Axe"						,T,F,0,0, null							, null																						, new String[][] {{"PIh", "P  ", "f  "}, {"CG ", "C  ", "f  "}}	, null			, null, null, null								, null, ANTIMATTER.NOT));
-		toolHeadAxeDouble			.addListener(new OreProcessing_Tool(DOUBLE_AXE				, tCategory + "DoubleAxe"				,T,F,0,0, null							, null																						, new String[][] {{"PIP", "P P", "f h"}, {"CGC", "C C", "f  "}}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
-		toolHeadSense				.addListener(new OreProcessing_Tool(SENSE					, tCategory + "Sense"					,T,F,0,0, null							, null																						, new String[][] {{"PPI", "f h"       }, {"CCG", "f  "       }}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
-		toolHeadPlow				.addListener(new OreProcessing_Tool(PLOW					, tCategory + "Plow"					,T,F,0,0, null							, null																						, new String[][] {{"PPP", "PPP", "f h"}, {"CCC", "CCC", "f  "}}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
-		toolHeadFile				.addListener(new OreProcessing_Tool(FILE					, tCategory + "File"					,T,F,0,0, null							, new String[][] {{ "P" ,  "P" ,  "H" }, { "C" ,  "C" ,  "H" }}								, new String[][] {{" P ", " P "       }, {" C ", " C "       }}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
-		toolHeadChisel				.addListener(new OreProcessing_Tool(CHISEL					, tCategory + "Chisel"					,T,F,0,0, null							, null																						, new String[][] {{"hPf", " S "       }, {"Cf" , "S "        }}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
-		toolHeadScrewdriver			.addListener(new OreProcessing_Tool(SCREWDRIVER				, tCategory + "Screwdriver"				,T,F,0,0, null							, null																						, new String[][] {{"hS" , "Sf"        }}						, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
-		toolHeadSaw					.addListener(new OreProcessing_Tool(SAW						, tCategory + "Saw"						,T,F,0,0, null							, null																						, new String[][] {{"PP" , "fh"        }, {"CC" , "f "        }}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadConstructionPickaxe	.addListener(new OreProcessing_Tool(CONSTRUCTION_PICK		, tCategory + "ConstructionPickaxe"		,T,F,0,0, null							, null																						, new String[][] {{"PIP", "f h"		  }, {"CGC", "f	 "		 }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
+		toolHeadPickaxe				.addListener(new OreProcessing_Tool(PICKAXE					, tCategory + "Pickaxe"					,T,F,0,0, null							, null																						, new String[][] {{"PII", "f h"		  }, {"CGG", "f	 "		 }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
+		toolHeadShovel				.addListener(new OreProcessing_Tool(SHOVEL					, tCategory + "Shovel"					,T,F,0,0, null							, null																						, new String[][] {{"fPh"			  }, {"fC "				 }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
+		toolHeadSpade				.addListener(new OreProcessing_Tool(SPADE					, tCategory + "Spade"					,T,F,0,0, null							, null																						, new String[][] {{"fPh", " s "		  }, {"fC ", " s "		 }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
+		toolHeadUniversalSpade		.addListener(new OreProcessing_Tool(UNIVERSALSPADE			, tCategory + "UniversalSpade"			,F,F,0,0, null							, new String[][] {{ "AT",  "Sd"		  }}													, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadHoe					.addListener(new OreProcessing_Tool(HOE						, tCategory + "Hoe"						,T,F,0,0, null							, null																						, new String[][] {{"PIh", "f  "		  }, {"CG ", "f	 "		 }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
+		toolHeadAxe					.addListener(new OreProcessing_Tool(AXE						, tCategory + "Axe"						,T,F,0,0, null							, null																						, new String[][] {{"PIh", "P  ", "f	 "}, {"CG ", "C	 ", "f	"}}	, null			, null, null, null								, null, ANTIMATTER.NOT));
+		toolHeadAxeDouble			.addListener(new OreProcessing_Tool(DOUBLE_AXE				, tCategory + "DoubleAxe"				,T,F,0,0, null							, null																						, new String[][] {{"PIP", "P P", "f h"}, {"CGC", "C C", "f	"}}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadSense				.addListener(new OreProcessing_Tool(SENSE					, tCategory + "Sense"					,T,F,0,0, null							, null																						, new String[][] {{"PPI", "f h"		  }, {"CCG", "f	 "		 }}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadPlow				.addListener(new OreProcessing_Tool(PLOW					, tCategory + "Plow"					,T,F,0,0, null							, null																						, new String[][] {{"PPP", "PPP", "f h"}, {"CCC", "CCC", "f	"}}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadFile				.addListener(new OreProcessing_Tool(FILE					, tCategory + "File"					,T,F,0,0, null							, new String[][] {{ "P" ,  "P" ,  "H" }, { "C" ,  "C" ,	 "H" }}								, new String[][] {{" P ", " P "		  }, {" C ", " C "		 }}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadChisel				.addListener(new OreProcessing_Tool(CHISEL					, tCategory + "Chisel"					,T,F,0,0, null							, null																						, new String[][] {{"hPf", " S "		  }, {"Cf" , "S "		 }}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadScrewdriver			.addListener(new OreProcessing_Tool(SCREWDRIVER				, tCategory + "Screwdriver"				,T,F,0,0, null							, null																						, new String[][] {{"hS" , "Sf"		  }}						, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadSaw					.addListener(new OreProcessing_Tool(SAW						, tCategory + "Saw"						,T,F,0,0, null							, null																						, new String[][] {{"PP" , "fh"		  }, {"CC" , "f "		 }}	, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
 		toolHeadWrench				.addListener(new OreProcessing_Tool(PINCERS					, tCategory + "Pincers"					,F,F,0,0, null							, new String[][] {{"XhX", " T ", "SdS"}}													, null															, plateCurved	, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
 		toolHeadWrench				.addListener(new OreProcessing_Tool(WRENCH					, tCategory + "Wrench"					,F,F,0,0, null							, new String[][] {{"PhP", "PPP", " P "}, {"CfC", "CCC", " C "}}								, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
 		toolHeadWrench				.addListener(new OreProcessing_Tool(MONKEY_WRENCH			, tCategory + "MonkeyWrench"			,F,F,0,0, null							, new String[][] {{"PPd", "hPP", "PPT"}, {"CCd", "fCC", "CCT"}}								, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
 		toolHeadWrench				.addListener(new OreProcessing_Tool(BENDING_CYLINDER		, tCategory + "BendingCylinder"			,F,F,0,0, null							, new String[][] {{"sfh", "III", "III"}}													, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
-		toolHeadWrench				.addListener(new OreProcessing_Tool(BENDING_CYLINDER_SMALL	, tCategory + "BendingCylinderSmall"	,F,F,0,0, null							, new String[][] {{"sfh", "III", "   "}}													, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
+		toolHeadWrench				.addListener(new OreProcessing_Tool(BENDING_CYLINDER_SMALL	, tCategory + "BendingCylinderSmall"	,F,F,0,0, null							, new String[][] {{"sfh", "III", "	 "}}													, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, typemin(2))));
 		toolHeadWrench				.addListener(new OreProcessing_Tool(CROWBAR					, tCategory + "Crowbar"					,F,F,0,0, null							, new String[][] {{"hVS", "VSV", "SVf"}}													, null															, null			, null, null, DYE_OREDICTS[DYE_INDEX_Blue]		, null, ANTIMATTER.NOT));
 		toolHeadWrench				.addListener(new OreProcessing_Tool(PLUNGER					, tCategory + "Plunger"					,F,F,0,0, null							, new String[][] {{"xVV", " SV", "S f"}}													, null															, null			, null, null, plate.dat(MT.Rubber)				, null, ANTIMATTER.NOT));
 		toolHeadPickaxe				.addListener(new OreProcessing_Tool(SCOOP					, tCategory + "Scoop"					,F,F,0,0, null							, new String[][] {{"SVS", "SSS", "xSh"}}													, null															, null			, null, null, ST.make(Blocks.wool, 1, W)		, null, ANTIMATTER.NOT));
-		toolHeadSword				.addListener(new OreProcessing_Tool(SWORD					, tCategory + "Sword"					,T,F,0,0, null							, null																						, new String[][] {{" P ", "fPh"       }, {" C ", "fC "       }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
-		toolHeadSword				.addListener(new OreProcessing_Tool(KNIFE					, tCategory + "Knife"					,F,F,0,0, null							, new String[][] {{"fP" , "hH"        }, {"fC" , "hH"        }}								, null															, null			, null, null, null								, null, ANTIMATTER.NOT));
-		toolHeadSword				.addListener(new OreProcessing_Tool(BUTCHERYKNIFE			, tCategory + "ButcheryKnife"			,F,F,0,0, null							, new String[][] {{"fPP", "hPP", "  H"}, {"fCC", " CC", "  H"}}								, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, WOOD.NOT, BOUNCY.NOT, STRETCHY.NOT, typemin(2))));
+		toolHeadSword				.addListener(new OreProcessing_Tool(SWORD					, tCategory + "Sword"					,T,F,0,0, null							, null																						, new String[][] {{" P ", "fPh"		  }, {" C ", "fC "		 }}	, null			, null, null, null								, null, ANTIMATTER.NOT));
+		toolHeadSword				.addListener(new OreProcessing_Tool(KNIFE					, tCategory + "Knife"					,F,F,0,0, null							, new String[][] {{"fP" , "hH"		  }, {"fC" , "hH"		 }}								, null															, null			, null, null, null								, null, ANTIMATTER.NOT));
+		toolHeadSword				.addListener(new OreProcessing_Tool(BUTCHERYKNIFE			, tCategory + "ButcheryKnife"			,F,F,0,0, null							, new String[][] {{"fPP", "hPP", "	H"}, {"fCC", " CC", "  H"}}								, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, WOOD.NOT, BOUNCY.NOT, STRETCHY.NOT, typemin(2))));
 		toolHeadSword				.addListener(new OreProcessing_Tool(WIRECUTTER				, tCategory + "WireCutter"				,F,F,0,0, null							, new String[][] {{"PfP", "hPd", "STS"}, {"CfC", "hCd", "STS"}}								, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, WOOD.NOT, BOUNCY.NOT, STRETCHY.NOT, typemin(2))));
 		toolHeadSword				.addListener(new OreProcessing_Tool(BRANCHCUTTER			, tCategory + "BranchCutter"			,F,F,0,0, null							, new String[][] {{"PfP", "PdP", "STS"}, {"CfC", "CdC", "STS"}}								, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, WOOD.NOT, BOUNCY.NOT, STRETCHY.NOT, typemin(2))));
 		toolHeadSword				.addListener(new OreProcessing_Tool(SCISSORS				, tCategory + "Scissors"				,F,F,0,0, null							, new String[][] {{"PfP", " T ", "OdO"}, {"CfC", " T ", "OdO"}}								, null															, null			, null, null, null								, null, new And(ANTIMATTER.NOT, WOOD.NOT, BOUNCY.NOT, STRETCHY.NOT, typemin(2))));

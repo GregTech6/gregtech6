@@ -53,11 +53,11 @@ public class Behavior_Place_Torch extends AbstractBehaviorDefault {
 						}
 						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 					}
-			    	return T;
+					return T;
 				}
-		    	return F;
+				return F;
 			}
 		}
-    	return F;
+		return F;
 	}
 }

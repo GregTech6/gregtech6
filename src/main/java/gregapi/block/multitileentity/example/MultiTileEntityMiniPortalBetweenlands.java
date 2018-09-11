@@ -45,7 +45,7 @@ import net.minecraft.item.ItemStack;
 public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalBetweenlands>
 	sListBetweenlandsSide = new ArrayListNoNulls<>(),
-	sListWorldSide  = new ArrayListNoNulls<>();
+	sListWorldSide	= new ArrayListNoNulls<>();
 	
 	static {
 		LH.add("gt.tileentity.portal.betweenlands.tooltip.1", "Only works between the Betweenlands and the Overworld!");
@@ -122,7 +122,7 @@ public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPo
 			ItemStack aStack = aPlayer.inventory.getCurrentItem();
 			if (ST.valid(aStack) && aStack.stackSize > 0 && IL.BTL_Swamp_Talisman.equal(aStack, F, T)) {
 				setPortalActive();
-				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
+				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "	Y: " + mTarget.yCoord + "	Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
 				
 			}

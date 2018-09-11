@@ -54,10 +54,10 @@ public class Loader_Recipes_Erebus implements Runnable {
 		RM.Mortar		.addRecipe1(T, 16,128		, ST.make(MD.ERE, "materials"			, 1,16), IL.Dye_Bonemeal.get(8));
 		
 		RM.Crusher		.addRecipe1(T, 16, 64		, ST.make(MD.ERE, "oreEncrustedDiamond"	, 1, 0), ST.make(MD.ERE, "encrustedDiamond", 2*MT.Diamond.mOreMultiplier*MT.Diamond.mOreProcessingMultiplier, 0), OM.dust(MT.VolcanicAsh));
-		RM.Hammer		.addRecipe1(T, 16, 16,  7500, ST.make(MD.ERE, "oreEncrustedDiamond"	, 1, 0), ST.make(MD.ERE, "encrustedDiamond", 2*MT.Diamond.mOreMultiplier*MT.Diamond.mOreProcessingMultiplier, 0));
+		RM.Hammer		.addRecipe1(T, 16, 16,	7500, ST.make(MD.ERE, "oreEncrustedDiamond"	, 1, 0), ST.make(MD.ERE, "encrustedDiamond", 2*MT.Diamond.mOreMultiplier*MT.Diamond.mOreProcessingMultiplier, 0));
 		
 		RM.Crusher		.addRecipe1(T, 16, 64		, ST.make(MD.ERE, "umberstone"			, 1, 1), OP.rockGt.mat(MT.Umber, 4));
-		RM.Hammer		.addRecipe1(T, 16, 16,  7000, ST.make(MD.ERE, "umberstone"			, 1, 1), OP.rockGt.mat(MT.Umber, 4));
+		RM.Hammer		.addRecipe1(T, 16, 16,	7000, ST.make(MD.ERE, "umberstone"			, 1, 1), OP.rockGt.mat(MT.Umber, 4));
 		
 		RM.Crusher		.addRecipe1(T, 16, 64		, ST.make(MD.ERE, "volcanicRock"		, 1, 0), OM.dust(MT.VolcanicAsh));
 		RM.Hammer		.addRecipe1(T, 16, 16		, ST.make(MD.ERE, "volcanicRock"		, 1, 0), OM.dust(MT.VolcanicAsh));
@@ -93,16 +93,16 @@ public class Loader_Recipes_Erebus implements Runnable {
 		
 		RM.Squeezer		.addRecipe1(T, 16, 16,	ST.make(MD.ERE, "weepingBlue"	, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.ERE, "materials", 2,26));
 		RM.Juicer		.addRecipe1(T, 16, 16,	ST.make(MD.ERE, "weepingBlue"	, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], ST.make(MD.ERE, "materials", 2,26));
-	    RM.ic2_extractor(						ST.make(MD.ERE, "weepingBlue"	, 1, 0), ST.make(MD.ERE, "materials", 2,26));
-	    
+		RM.ic2_extractor(						ST.make(MD.ERE, "weepingBlue"	, 1, 0), ST.make(MD.ERE, "materials", 2,26));
+		
 		RM.Squeezer		.addRecipe1(T, 16, 16,	ST.make(MD.ERE, "waterFlower"	, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], ST.make(Items.dye, 2, DYE_INDEX_Pink));
 		RM.Juicer		.addRecipe1(T, 16, 16,	ST.make(MD.ERE, "waterFlower"	, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], ST.make(Items.dye, 2, DYE_INDEX_Pink));
-	    RM.ic2_extractor(						ST.make(MD.ERE, "waterFlower"	, 1, 0), ST.make(Items.dye, 3, DYE_INDEX_Pink));
-	    
+		RM.ic2_extractor(						ST.make(MD.ERE, "waterFlower"	, 1, 0), ST.make(Items.dye, 3, DYE_INDEX_Pink));
+		
 		RM.Squeezer		.addRecipe1(T, 16, 16,	ST.make(MD.ERE, "pricklyPair"	, 1, W), NF, FL.Juice_Cactus.make(100), IL.Dye_Cactus.get(2));
 		RM.Juicer		.addRecipe1(T, 16, 16,	ST.make(MD.ERE, "pricklyPair"	, 1, W), NF, FL.Juice_Cactus.make(100), IL.Dye_Cactus.get(2));
-	    RM.ic2_extractor(						ST.make(MD.ERE, "pricklyPair"	, 1, W), IL.Dye_Cactus.get(2));
-	    
+		RM.ic2_extractor(						ST.make(MD.ERE, "pricklyPair"	, 1, W), IL.Dye_Cactus.get(2));
+		
 		RM.Squeezer		.addRecipe1(T, 16, 16,	ST.make(MD.ERE, "materials"		, 1,22), NF, FL.Potion_Poison_2.make(750), ZL_IS);
 		RM.Juicer		.addRecipe1(T, 16, 16,	ST.make(MD.ERE, "materials"		, 1,22), NF, FL.Potion_Poison_2.make(750), ZL_IS);
 		
@@ -118,7 +118,7 @@ public class Loader_Recipes_Erebus implements Runnable {
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("stoneGneiss", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Crusher	.addRecipe1(T, 16, 64		, aEvent.mStack, OP.rockGt.mat(MT.Gneiss, 4));
-			RM.Hammer	.addRecipe1(T, 16, 64,  7000, aEvent.mStack, OP.rockGt.mat(MT.Gneiss, 4));
+			RM.Hammer	.addRecipe1(T, 16, 64,	7000, aEvent.mStack, OP.rockGt.mat(MT.Gneiss, 4));
 		}});
 		}};
 	}}

@@ -82,52 +82,52 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		}
 	}
 	
-    @Override
+	@Override
 	public TemplateRecipeHandler newInstance() {
-    	return new NEI_RecipeMap(mRecipeMap);
-    }
-    
-    public class FixedPositionedStack extends PositionedStack {
+		return new NEI_RecipeMap(mRecipeMap);
+	}
+	
+	public class FixedPositionedStack extends PositionedStack {
 		public boolean permutated = F;
 		public final int mChance, mMaxChance;
 		
-        public FixedPositionedStack(Object object, int x, int y) {
+		public FixedPositionedStack(Object object, int x, int y) {
 			this(object, x, y, 0, 0);
 		}
-        
-        public FixedPositionedStack(Object object, int x, int y, int aChance, int aMaxChance) {
+		
+		public FixedPositionedStack(Object object, int x, int y, int aChance, int aMaxChance) {
 			super(object, x-sOffsetX, y-sOffsetY, T);
 			mMaxChance = aMaxChance;
 			mChance = aChance;
 		}
-        
-    	@Override
-        public void generatePermutations() {
-    		if (permutated) return;
-    		
-            ArrayList<ItemStack> tDisplayStacks = new ArrayListNoNulls<>();
-            for (ItemStack tStack : items) if (ST.valid(tStack)) {
-                if (ST.meta(tStack) == W) {
-                    List<ItemStack> permutations = ItemList.itemMap.get(tStack.getItem());
-                    if (!permutations.isEmpty()) {
-                        for(ItemStack stack : permutations) tDisplayStacks.add(ST.amount(tStack.stackSize, stack));
-                    } else {
-                        ItemStack base = ST.make(tStack.getItem(), tStack.stackSize, 0);
-                        base.stackTagCompound = tStack.stackTagCompound;
-                        tDisplayStacks.add(base);
-                    }
-                } else {
-                    tDisplayStacks.add(ST.copy(tStack));
-                }
-            }
-            
-            items = tDisplayStacks.toArray(new ItemStack[0]);
-            if (items.length == 0) items = new ItemStack[] {ST.make(Blocks.fire, 1, 0)};
-            permutated = T;
-            setPermutationToRender(0);
-        }
-    }
-    
+		
+		@Override
+		public void generatePermutations() {
+			if (permutated) return;
+			
+			ArrayList<ItemStack> tDisplayStacks = new ArrayListNoNulls<>();
+			for (ItemStack tStack : items) if (ST.valid(tStack)) {
+				if (ST.meta(tStack) == W) {
+					List<ItemStack> permutations = ItemList.itemMap.get(tStack.getItem());
+					if (!permutations.isEmpty()) {
+						for(ItemStack stack : permutations) tDisplayStacks.add(ST.amount(tStack.stackSize, stack));
+					} else {
+						ItemStack base = ST.make(tStack.getItem(), tStack.stackSize, 0);
+						base.stackTagCompound = tStack.stackTagCompound;
+						tDisplayStacks.add(base);
+					}
+				} else {
+					tDisplayStacks.add(ST.copy(tStack));
+				}
+			}
+			
+			items = tDisplayStacks.toArray(new ItemStack[0]);
+			if (items.length == 0) items = new ItemStack[] {ST.make(Blocks.fire, 1, 0)};
+			permutated = T;
+			setPermutationToRender(0);
+		}
+	}
+	
 	public class CachedDefaultRecipe extends CachedRecipe {
 		public final Recipe mRecipe;
 		
@@ -136,8 +136,8 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		
 		@Override
 		public List<PositionedStack> getIngredients() {
-	        return getCycledIngredients(cycleticks / 10, this.mInputs);
-	    }
+			return getCycledIngredients(cycleticks / 10, this.mInputs);
+		}
 		
 		@Override
 		public PositionedStack getResult() {
@@ -154,264 +154,264 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			
 			int tStartIndex = 0;
 			
-	        switch (mRecipeMap.mInputItemsCount) {
-	        case  0:
-	        	break;
-	        case  1:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
-	        	break;
-	        case  2:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
-	        	break;
-	        case  3:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
-	        	break;
-	        case  4:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
-	        	break;
-	        case  5:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
-	        	break;
-	        case  6:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
-	        	break;
-	        case  7:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
-	        	break;
-	        case  8:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
-	        	break;
-	        case  9:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 43)); tStartIndex++;
-	        	break;
-	        case 10:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 61)); tStartIndex++;
-	        	break;
-	        case 11:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 61)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 61)); tStartIndex++;
-	        	break;
-	        default:
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,  7)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 43)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 61)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 61)); tStartIndex++;
-	            if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 61)); tStartIndex++;
-	        	break;
-	        }
-	        
-            if (aRecipe.mSpecialItems != null) mInputs.add(new FixedPositionedStack(aRecipe.mSpecialItems,  80, 43));
-            if (!mRecipeMap.mRecipeMachineList.isEmpty()) mInputs.add(new FixedPositionedStack(mRecipeMap.mRecipeMachineList, 152, 83));
-            
-	        tStartIndex = 0;
-	        
-	        switch (mRecipeMap.mOutputItemsCount) {
-	        case  0:
-	        	break;
-	        case  1:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case  2:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case  3:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case  4:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case  5:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case  6:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case  7:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case  8:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case  9:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case 10:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        case 11:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        default:
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,  7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	            if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
-	        	break;
-	        }
-	        
-	        for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(UT.Fluids.display(aRecipe.mFluidInputs [i], T, F),  53 - (i%3)*18, 63 - (i/3)*18));
-	        for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(UT.Fluids.display(aRecipe.mFluidOutputs[i], T, F), 107 + (i%3)*18, 63 - (i/3)*18));
+			switch (mRecipeMap.mInputItemsCount) {
+			case  0:
+				break;
+			case  1:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
+				break;
+			case  2:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
+				break;
+			case  3:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>6? 7:25))); tStartIndex++;
+				break;
+			case  4:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
+				break;
+			case  5:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
+				break;
+			case  6:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3? 7:16))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, (mRecipeMap.mInputFluidCount>3?25:34))); tStartIndex++;
+				break;
+			case  7:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
+				break;
+			case  8:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
+				break;
+			case  9:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 43)); tStartIndex++;
+				break;
+			case 10:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 61)); tStartIndex++;
+				break;
+			case 11:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 61)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 61)); tStartIndex++;
+				break;
+			default:
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53,	7)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 25)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 43)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 17, 61)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 35, 61)); tStartIndex++;
+				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 61)); tStartIndex++;
+				break;
+			}
+			
+			if (aRecipe.mSpecialItems != null) mInputs.add(new FixedPositionedStack(aRecipe.mSpecialItems,	80, 43));
+			if (!mRecipeMap.mRecipeMachineList.isEmpty()) mInputs.add(new FixedPositionedStack(mRecipeMap.mRecipeMachineList, 152, 83));
+			
+			tStartIndex = 0;
+			
+			switch (mRecipeMap.mOutputItemsCount) {
+			case  0:
+				break;
+			case  1:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case  2:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case  3:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, (mRecipeMap.mOutputFluidCount>6? 7:25), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case  4:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case  5:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case  6:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, (mRecipeMap.mOutputFluidCount>3? 7:16), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, (mRecipeMap.mOutputFluidCount>3?25:34), aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case  7:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case  8:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case  9:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case 10:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			case 11:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			default:
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143,	7, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 25, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 43, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 107, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 125, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
+				break;
+			}
+			
+			for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(UT.Fluids.display(aRecipe.mFluidInputs [i], T, F),  53 - (i%3)*18, 63 - (i/3)*18));
+			for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(UT.Fluids.display(aRecipe.mFluidOutputs[i], T, F), 107 + (i%3)*18, 63 - (i/3)*18));
 		}
 	}
 	
 	static {
-	    GuiContainerManager.addInputHandler(new GT_RectHandler());
-	    GuiContainerManager.addTooltipHandler(new GT_RectHandler());
+		GuiContainerManager.addInputHandler(new GT_RectHandler());
+		GuiContainerManager.addTooltipHandler(new GT_RectHandler());
 	}
-    
-    public static class GT_RectHandler implements IContainerInputHandler, IContainerTooltipHandler {
-        @Override
-        public boolean mouseClicked(GuiContainer gui, int mousex, int mousey, int button) {
-            if (canHandle(gui)) {
-                if (button == 0) return transferRect(gui, F);
-                if (button == 1) return transferRect(gui, T);
-            }
-            return F;
-        }
-        
-        @Override
-        public boolean lastKeyTyped(GuiContainer gui, char keyChar, int keyCode) {
-        	return F;
-        }
-        
+	
+	public static class GT_RectHandler implements IContainerInputHandler, IContainerTooltipHandler {
+		@Override
+		public boolean mouseClicked(GuiContainer gui, int mousex, int mousey, int button) {
+			if (canHandle(gui)) {
+				if (button == 0) return transferRect(gui, F);
+				if (button == 1) return transferRect(gui, T);
+			}
+			return F;
+		}
+		
+		@Override
+		public boolean lastKeyTyped(GuiContainer gui, char keyChar, int keyCode) {
+			return F;
+		}
+		
 		public boolean canHandle(GuiContainer gui) {
-            return gui instanceof ContainerClient && UT.Code.stringValid(((ContainerClient)gui).mNEI);
-        }
-        
-        @Override
-        public List<String> handleTooltip(GuiContainer gui, int mousex, int mousey, List<String> currenttip) {
-        	if (canHandle(gui) && currenttip.isEmpty() && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1]))) currenttip.add("Recipes");
-            return currenttip;
-        }
-        
-        private boolean transferRect(GuiContainer gui, boolean usage) {
-            return canHandle(gui) && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1])) && (usage ? GuiUsageRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]) : GuiCraftingRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]));
-        }
-        
+			return gui instanceof ContainerClient && UT.Code.stringValid(((ContainerClient)gui).mNEI);
+		}
+		
+		@Override
+		public List<String> handleTooltip(GuiContainer gui, int mousex, int mousey, List<String> currenttip) {
+			if (canHandle(gui) && currenttip.isEmpty() && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1]))) currenttip.add("Recipes");
+			return currenttip;
+		}
+		
+		private boolean transferRect(GuiContainer gui, boolean usage) {
+			return canHandle(gui) && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1])) && (usage ? GuiUsageRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]) : GuiCraftingRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]));
+		}
+		
 		@Override
 		public List<String> handleItemDisplayName(GuiContainer gui, ItemStack itemstack, List<String> currenttip) {
 			return currenttip;
@@ -456,7 +456,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		public void onMouseDragged(GuiContainer gui, int mousex, int mousey, int button, long heldTime) {
 			//
 		}
-    }
+	}
 	
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results) {
@@ -558,12 +558,12 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	
 	@Override
 	public void drawBackground(int recipe) {
-        GL11.glColor4f(1, 1, 1, 1);
-        GuiDraw.changeTexture(RES_PATH_GUI+"machines/NEI.png");
-        GuiDraw.drawTexturedModalRect(-5, -16, 0, 0, 176, 166);
-        GuiDraw.changeTexture(getGuiTexture());
-        GuiDraw.drawTexturedModalRect(-5, -8, 0, 3, 176,  79);
-    }
+		GL11.glColor4f(1, 1, 1, 1);
+		GuiDraw.changeTexture(RES_PATH_GUI+"machines/NEI.png");
+		GuiDraw.drawTexturedModalRect(-5, -16, 0, 0, 176, 166);
+		GuiDraw.changeTexture(getGuiTexture());
+		GuiDraw.drawTexturedModalRect(-5, -8, 0, 3, 176,  79);
+	}
 	
 	public static void drawText(int aX, int aY, String aString, int aColor) {
 		Minecraft.getMinecraft().fontRenderer.drawString(aString, aX, aY, aColor);
@@ -584,28 +584,28 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		return UT.Code.stringValid(mRecipeMap.mGUIPath) ? mRecipeMap.mGUIPath : RES_PATH_GUI + mRecipeMap.mNameInternal + ".png";
 	}
 	
-    @Override
-    public List<String> handleItemTooltip(GuiRecipe gui, ItemStack aStack, List<String> currenttip, int aRecipeIndex) {
-    	CachedRecipe tObject = arecipes.get(aRecipeIndex);
-    	if (tObject instanceof CachedDefaultRecipe) {
-    		CachedDefaultRecipe tRecipe = (CachedDefaultRecipe)tObject;
-    		for (PositionedStack tStack : tRecipe.mOutputs) if (aStack == tStack.item) {
-    			if (tStack instanceof FixedPositionedStack && ((FixedPositionedStack)tStack).mChance > 0 && ((FixedPositionedStack)tStack).mChance != ((FixedPositionedStack)tStack).mMaxChance) {
-        			long tChance = UT.Code.units(((FixedPositionedStack)tStack).mChance, ((FixedPositionedStack)tStack).mMaxChance, 10000, F);
-    				currenttip.add(1, LH.Chat.BLINKING_CYAN + "Chance: " + (tChance / 100) + "." + ((tChance % 100)<10?"0"+(tChance % 100):(tChance % 100)) + "%" + (tStack.item.stackSize>1?" each":""));
-    			}
-    			break;
-    		}
-    		for (PositionedStack tStack : tRecipe.mInputs) if (aStack == tStack.item) {
-    			if (!gregapi.data.IL.Display_Fluid.equal(tStack.item, T, T)) {
-    				if (tStack.item.stackSize == 0) currenttip.add(1, LH.Chat.BLINKING_CYAN + "Does not get consumed in the process");
-    			}
-    			break;
-    		}
-    	}
-        return currenttip;
-    }
-    
+	@Override
+	public List<String> handleItemTooltip(GuiRecipe gui, ItemStack aStack, List<String> currenttip, int aRecipeIndex) {
+		CachedRecipe tObject = arecipes.get(aRecipeIndex);
+		if (tObject instanceof CachedDefaultRecipe) {
+			CachedDefaultRecipe tRecipe = (CachedDefaultRecipe)tObject;
+			for (PositionedStack tStack : tRecipe.mOutputs) if (aStack == tStack.item) {
+				if (tStack instanceof FixedPositionedStack && ((FixedPositionedStack)tStack).mChance > 0 && ((FixedPositionedStack)tStack).mChance != ((FixedPositionedStack)tStack).mMaxChance) {
+					long tChance = UT.Code.units(((FixedPositionedStack)tStack).mChance, ((FixedPositionedStack)tStack).mMaxChance, 10000, F);
+					currenttip.add(1, LH.Chat.BLINKING_CYAN + "Chance: " + (tChance / 100) + "." + ((tChance % 100)<10?"0"+(tChance % 100):(tChance % 100)) + "%" + (tStack.item.stackSize>1?" each":""));
+				}
+				break;
+			}
+			for (PositionedStack tStack : tRecipe.mInputs) if (aStack == tStack.item) {
+				if (!gregapi.data.IL.Display_Fluid.equal(tStack.item, T, T)) {
+					if (tStack.item.stackSize == 0) currenttip.add(1, LH.Chat.BLINKING_CYAN + "Does not get consumed in the process");
+				}
+				break;
+			}
+		}
+		return currenttip;
+	}
+	
 	@Override
 	public void drawExtras(int aRecipeIndex) {
 		long tEUt		= ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mEUt;

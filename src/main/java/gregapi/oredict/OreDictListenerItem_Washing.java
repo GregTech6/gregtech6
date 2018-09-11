@@ -52,7 +52,7 @@ public class OreDictListenerItem_Washing extends OreDictListenerItem {
 	}
 	
 	@Override
-    public ItemStack onTickWorld(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, EntityItem aItem) {
+	public ItemStack onTickWorld(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, EntityItem aItem) {
 		if (aMaterial != null) {
 			int tX = UT.Code.roundDown(aItem.posX), tY = UT.Code.roundDown(aItem.posY-0.25), tZ = UT.Code.roundDown(aItem.posZ);
 			Block tBlock = aItem.worldObj.getBlock(tX, tY, tZ);
@@ -72,8 +72,8 @@ public class OreDictListenerItem_Washing extends OreDictListenerItem {
 				}
 			}
 		}
-        return aStack;
-    }
+		return aStack;
+	}
 	
 	@Override
 	public String getListenerToolTip(ItemStack aStack) {

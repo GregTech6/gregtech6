@@ -27,13 +27,13 @@ import net.minecraft.world.IBlockAccess;
  */
 public interface IBlockSyncData {
 	/** If you have something that causes a Crash here, the Connection gets terminated. */
-	public void receiveDataByte				(IBlockAccess aWorld, int aX, int aY, int aZ, byte   aData, INetworkHandler aNetworkHandler);
+	public void receiveDataByte				(IBlockAccess aWorld, int aX, int aY, int aZ, byte	 aData, INetworkHandler aNetworkHandler);
 	/** If you have something that causes a Crash here, the Connection gets terminated. */
-	public void receiveDataShort			(IBlockAccess aWorld, int aX, int aY, int aZ, short  aData, INetworkHandler aNetworkHandler);
+	public void receiveDataShort			(IBlockAccess aWorld, int aX, int aY, int aZ, short	 aData, INetworkHandler aNetworkHandler);
 	/** If you have something that causes a Crash here, the Connection gets terminated. */
-	public void receiveDataInteger			(IBlockAccess aWorld, int aX, int aY, int aZ, int    aData, INetworkHandler aNetworkHandler);
+	public void receiveDataInteger			(IBlockAccess aWorld, int aX, int aY, int aZ, int	 aData, INetworkHandler aNetworkHandler);
 	/** If you have something that causes a Crash here, the Connection gets terminated. */
-	public void receiveDataLong				(IBlockAccess aWorld, int aX, int aY, int aZ, long   aData, INetworkHandler aNetworkHandler);
+	public void receiveDataLong				(IBlockAccess aWorld, int aX, int aY, int aZ, long	 aData, INetworkHandler aNetworkHandler);
 	/** If you have something that causes a Crash here, the Connection gets terminated. */
 	public void receiveDataByteArray		(IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler);
 	/** If you have something that causes a Crash here, the Connection gets terminated. */
@@ -41,43 +41,43 @@ public interface IBlockSyncData {
 	
 	public static interface IBlockSyncDataAndIDs extends IBlockSyncData {
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveData				(IBlockAccess aWorld, int aX, int aY, int aZ              , INetworkHandler aNetworkHandler, short aID1, short aID2);
+		public void receiveData				(IBlockAccess aWorld, int aX, int aY, int aZ			  , INetworkHandler aNetworkHandler, short aID1, short aID2);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataByte			(IBlockAccess aWorld, int aX, int aY, int aZ, byte   aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
+		public void receiveDataByte			(IBlockAccess aWorld, int aX, int aY, int aZ, byte	 aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataShort		(IBlockAccess aWorld, int aX, int aY, int aZ, short  aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
+		public void receiveDataShort		(IBlockAccess aWorld, int aX, int aY, int aZ, short	 aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataInteger		(IBlockAccess aWorld, int aX, int aY, int aZ, int    aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
+		public void receiveDataInteger		(IBlockAccess aWorld, int aX, int aY, int aZ, int	 aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataLong			(IBlockAccess aWorld, int aX, int aY, int aZ, long   aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
+		public void receiveDataLong			(IBlockAccess aWorld, int aX, int aY, int aZ, long	 aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
 		public void receiveDataByteArray	(IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler, short aID1, short aID2);
 	}
 	
 	public static interface IBlockSyncDataAndCoversAndIDs extends IBlockSyncDataAndIDs {
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveData				(IBlockAccess aWorld, int aX, int aY, int aZ              , INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
+		public void receiveData				(IBlockAccess aWorld, int aX, int aY, int aZ			  , INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataByte			(IBlockAccess aWorld, int aX, int aY, int aZ, byte   aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
+		public void receiveDataByte			(IBlockAccess aWorld, int aX, int aY, int aZ, byte	 aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataShort		(IBlockAccess aWorld, int aX, int aY, int aZ, short  aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
+		public void receiveDataShort		(IBlockAccess aWorld, int aX, int aY, int aZ, short	 aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataInteger		(IBlockAccess aWorld, int aX, int aY, int aZ, int    aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
+		public void receiveDataInteger		(IBlockAccess aWorld, int aX, int aY, int aZ, int	 aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataLong			(IBlockAccess aWorld, int aX, int aY, int aZ, long   aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
+		public void receiveDataLong			(IBlockAccess aWorld, int aX, int aY, int aZ, long	 aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
 		public void receiveDataByteArray	(IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler, short aID1, short aID2, short[] aCoverIDs, short[] aCoverMetas, short[] aCoverVisuals);
 		
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveData				(IBlockAccess aWorld, int aX, int aY, int aZ              , INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
+		public void receiveData				(IBlockAccess aWorld, int aX, int aY, int aZ			  , INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataByte			(IBlockAccess aWorld, int aX, int aY, int aZ, byte   aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
+		public void receiveDataByte			(IBlockAccess aWorld, int aX, int aY, int aZ, byte	 aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataShort		(IBlockAccess aWorld, int aX, int aY, int aZ, short  aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
+		public void receiveDataShort		(IBlockAccess aWorld, int aX, int aY, int aZ, short	 aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataInteger		(IBlockAccess aWorld, int aX, int aY, int aZ, int    aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
+		public void receiveDataInteger		(IBlockAccess aWorld, int aX, int aY, int aZ, int	 aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
-		public void receiveDataLong			(IBlockAccess aWorld, int aX, int aY, int aZ, long   aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
+		public void receiveDataLong			(IBlockAccess aWorld, int aX, int aY, int aZ, long	 aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
 		/** If you have something that causes a Crash here, the Connection gets terminated. */
 		public void receiveDataByteArray	(IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler, short[] aCoverVisuals, boolean[] aVisualsToSync);
 	}

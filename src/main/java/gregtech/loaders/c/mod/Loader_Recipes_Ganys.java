@@ -46,9 +46,9 @@ public class Loader_Recipes_Ganys implements Runnable {
 			RM.ic2_extractor(						ST.make(MD.EtFu, "slime", 1, 0), ST.make(Items.slime_ball, 9, 0));
 			RM.Squeezer.addRecipe1(T, 16, 16,		ST.make(MD.EtFu, "rose", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ZL_IS);
 			RM.Juicer.addRecipe1(T, 16, 16,			ST.make(MD.EtFu, "rose", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red], ZL_IS);
-		    RM.ic2_extractor(						ST.make(MD.EtFu, "rose", 1, 0), ST.make(Items.dye, 2, DYE_INDEX_Red));
-		    RM.Squeezer.addRecipe1(T, 16, 16,		ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
-		    RM.Drying.addRecipe1(T, 16, 16,			ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
+			RM.ic2_extractor(						ST.make(MD.EtFu, "rose", 1, 0), ST.make(Items.dye, 2, DYE_INDEX_Red));
+			RM.Squeezer.addRecipe1(T, 16, 16,		ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
+			RM.Drying.addRecipe1(T, 16, 16,			ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.Hammer.addRecipe1(T, 16, 16,			ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(Blocks.sand, 1, 1));
 			RM.Crusher.addRecipe1(T, 16, 16,		ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(Blocks.sand, 1, 1));
 			RM.sawing(16, 16, F, 100,				ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(MD.EtFu, "red_sandstone_slab", 1, 0));
@@ -73,7 +73,7 @@ public class Loader_Recipes_Ganys implements Runnable {
 				RM.generify(tEtFuturumPurpur, tChiselPurpur);
 				CR.shapeless(tChiselPurpur, CR.DEF, new Object[] {tEtFuturumPurpur});
 				CR.shapeless(tEtFuturumPurpur, CR.DEF, new Object[] {tChiselPurpur});
-				CR.shaped(ST.make(MD.EtFu, "purpur_stairs", 4, 0), CR.DEF_MIR, new Object[] {"P  ", "PP ", "PPP", 'P', ST.make(MD.CHSL, "purpur", 1, W)});
+				CR.shaped(ST.make(MD.EtFu, "purpur_stairs", 4, 0), CR.DEF_MIR, new Object[] {"P	 ", "PP ", "PPP", 'P', ST.make(MD.CHSL, "purpur", 1, W)});
 				CR.shaped(ST.make(MD.EtFu, "purpur_slab", 6, 0), CR.DEF_MIR, new Object[] {"PPP", 'P', ST.make(MD.CHSL, "purpur", 1, W)});
 			}
 		}

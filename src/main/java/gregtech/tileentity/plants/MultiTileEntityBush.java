@@ -312,8 +312,8 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 		box(aBlock, PX_P[0], PX_P[0], PX_P[0], PX_N[0], PX_N[0], PX_N[0]);
 	}
 	
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
 	@Override public boolean isSideSolid2			(byte aSide) {return F;}
 	@Override public boolean isSealable2			(byte aSide) {return F;}
 	@Override public boolean allowCovers			(byte aSide) {return F;}

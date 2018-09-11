@@ -88,14 +88,14 @@ public class MultiTileEntityLaserBuildcraft extends TileEntityBase10EnergyConver
 	
 	@Override public float getSurfaceSize			(byte aSide) {return aSide == OPPOSITES[mFacing]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return aSide == OPPOSITES[mFacing]?1.0F:0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return aSide ==           mFacing ?0.5F:0.0F;}
+	@Override public float getSurfaceDistance		(byte aSide) {return aSide ==			mFacing ?0.5F:0.0F;}
 	@Override public boolean isSideSolid2			(byte aSide) {return aSide == OPPOSITES[mFacing];}
 	@Override public boolean isSurfaceOpaque2		(byte aSide) {return aSide == OPPOSITES[mFacing];}
 	@Override public boolean allowCovers			(byte aSide) {return aSide == OPPOSITES[mFacing];}
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(			PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool()  {return box(			PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock)   {box(aBlock, PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool()	 {return box(			PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)	 {box(aBlock, PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {

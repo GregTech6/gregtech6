@@ -42,8 +42,8 @@ public interface ITileEntityMachineBlockUpdateable {
 	/** Utility for the Multi-Block-Updates */
 	public static class Util {
 		/** The List of Blocks, which can conduct Machine Block Updates */
-	    public static final Map<Block, Integer> MACHINE_BLOCKS = new HashMap<>();
-	    
+		public static final Map<Block, Integer> MACHINE_BLOCKS = new HashMap<>();
+		
 		/**
 		 * Causes a Machineblock Update
 		 * This update will cause surrounding MultiBlock Machines to update their Configuration.
@@ -67,7 +67,7 @@ public interface ITileEntityMachineBlockUpdateable {
 		 */
 		public static boolean registerMachineBlock(Block aBlock, int aMeta) {
 			if (aBlock == null) return F;
-	        if (COMPAT_TC != null) COMPAT_TC.registerPortholeBlacklistedBlock(aBlock);
+			if (COMPAT_TC != null) COMPAT_TC.registerPortholeBlacklistedBlock(aBlock);
 			MACHINE_BLOCKS.put(aBlock, aMeta);
 			return T;
 		}
@@ -77,7 +77,7 @@ public interface ITileEntityMachineBlockUpdateable {
 		 */
 		public static boolean registerMachineBlock(Block aBlock, boolean... aMeta) {
 			if (aBlock == null || aMeta == null || aMeta.length == 0) return F;
-	        if (COMPAT_TC != null) COMPAT_TC.registerPortholeBlacklistedBlock(aBlock);
+			if (COMPAT_TC != null) COMPAT_TC.registerPortholeBlacklistedBlock(aBlock);
 			int rMeta = 0;
 			for (byte i = 0; i < aMeta.length && i < 16; i++) if (aMeta[i]) rMeta |= B[i];
 			MACHINE_BLOCKS.put(aBlock, rMeta);

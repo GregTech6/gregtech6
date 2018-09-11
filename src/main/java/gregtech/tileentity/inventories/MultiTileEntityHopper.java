@@ -232,8 +232,8 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	@Override public float getSurfaceDistance		(byte aSide) {return 0.0F;}
 	@Override public float getSurfaceSize			(byte aSide) {return SIDES_TOP[aSide]?PX_N[0]:PX_N[8];}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_TOP[aSide]?PX_N[2]:PX_N[8];}
-	@Override public boolean isSurfaceSolid  		(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2 		(byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean allowCovers			(byte aSide) {return F;}
 	

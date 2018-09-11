@@ -120,12 +120,12 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity((byte)(aRenderPass - 1), F, F);
 			float tDiameter = getConnectorDiameter((byte)(aRenderPass - 1), tDelegator), tLength = getConnectorLength((byte)(aRenderPass - 1), tDelegator);
 			switch(aRenderPass - 1) {
-			case SIDE_X_NEG: box(aBlock, 0-tLength					,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	); return T;
-			case SIDE_Y_NEG: box(aBlock,   (1.0F-tDiameter)/2.0F	, 0-tLength					,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	); return T;
-			case SIDE_Z_NEG: box(aBlock,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 0-tLength					, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	); return T;
-			case SIDE_X_POS: box(aBlock, 1-(1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1+tLength					, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	); return T;
-			case SIDE_Y_POS: box(aBlock,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1+tLength					, 1-(1.0F-tDiameter)/2.0F	); return T;
-			case SIDE_Z_POS: box(aBlock,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1+tLength					); return T;
+			case SIDE_X_NEG: box(aBlock, 0-tLength					,	(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	); return T;
+			case SIDE_Y_NEG: box(aBlock,   (1.0F-tDiameter)/2.0F	, 0-tLength					,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	); return T;
+			case SIDE_Z_NEG: box(aBlock,   (1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 0-tLength					, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	); return T;
+			case SIDE_X_POS: box(aBlock, 1-(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1+tLength					, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	); return T;
+			case SIDE_Y_POS: box(aBlock,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1+tLength					, 1-(1.0F-tDiameter)/2.0F	); return T;
+			case SIDE_Z_POS: box(aBlock,   (1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1+tLength					); return T;
 			}
 		}
 		return F;
@@ -203,9 +203,9 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	@Override public float getSurfaceSize			(byte aSide) {return mFoamDried ? 1.0F : mDiameter;}
 	@Override public float getSurfaceSizeAttachable	(byte aSide) {return mDiameter;}
 	@Override public float getSurfaceDistance		(byte aSide) {return mFoamDried || connected(aSide)?0.0F:(1.0F-mDiameter)/2.0F;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return mFoamDried ||  mDiameter == 1.0F;}
+	@Override public boolean isSurfaceSolid			(byte aSide) {return mFoamDried ||	mDiameter == 1.0F;}
 	@Override public boolean isSurfaceOpaque2		(byte aSide) {return mFoamDried || (mDiameter == 1.0F && !mTransparent);}
-	@Override public boolean isSideSolid2			(byte aSide) {return mFoamDried ||  mDiameter == 1.0F;}
+	@Override public boolean isSideSolid2			(byte aSide) {return mFoamDried ||	mDiameter == 1.0F;}
 	@Override public boolean isSealable2			(byte aSide) {return mFoamDried;}
 	@Override public boolean usePipePlacementMode	(byte aSide) {return T;}
 	@Override public boolean hasFoam				(byte aSide) {return mFoam;}
@@ -217,13 +217,13 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	@Override
 	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		if (!addDefaultCollisionBoxToList()) {
-			byte tSide; 																																																				box(aAABB, aList,   (1.0F-mDiameter)/2.0F	,   (1.0F-mDiameter)/2.0F	,   (1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	);
-			if (connected(tSide = SIDE_X_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList, 0-tLength					,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	);}
-			if (connected(tSide = SIDE_Y_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList,   (1.0F-tDiameter)/2.0F	, 0-tLength					,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	);}
-			if (connected(tSide = SIDE_Z_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 0-tLength					, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	);}
-			if (connected(tSide = SIDE_X_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList, 1-(1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1+tLength					, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	);}
-			if (connected(tSide = SIDE_Y_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1+tLength					, 1-(1.0F-tDiameter)/2.0F	);}
-			if (connected(tSide = SIDE_Z_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList,   (1.0F-tDiameter)/2.0F	,   (1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1+tLength					);}
+			byte tSide;																																																					box(aAABB, aList,	(1.0F-mDiameter)/2.0F	,	(1.0F-mDiameter)/2.0F	,	(1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	, 1-(1.0F-mDiameter)/2.0F	);
+			if (connected(tSide = SIDE_X_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList, 0-tLength					,	(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	);}
+			if (connected(tSide = SIDE_Y_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList,	(1.0F-tDiameter)/2.0F	, 0-tLength					,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	);}
+			if (connected(tSide = SIDE_Z_NEG)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList,	(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 0-tLength					, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	);}
+			if (connected(tSide = SIDE_X_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList, 1-(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1+tLength					, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	);}
+			if (connected(tSide = SIDE_Y_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1+tLength					, 1-(1.0F-tDiameter)/2.0F	);}
+			if (connected(tSide = SIDE_Z_POS)) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[2] : 0;	box(aAABB, aList,	(1.0F-tDiameter)/2.0F	,	(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1-(1.0F-tDiameter)/2.0F	, 1+tLength					);}
 		}
 	}
 	
