@@ -12,6 +12,7 @@
 # Eclipse files:
 /eclipse/
 /.settings/
+*.hprof
 
 # IDEA files:
 /.idea/

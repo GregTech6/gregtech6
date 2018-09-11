@@ -23,6 +23,19 @@ eclipse {
 	}
 }
 
+task eclipseForgeWorkspace(type: Copy) {
+	mkdir "eclipse"
+	from ".meta/eclipse"
+	into "eclipse"
+}
+
+task eclipseForgeProject << {
+	ant.symlink(resource: "../", link: "eclipse/Minecraft")
+}
+eclipseForgeProject.dependsOn(eclipseForgeWorkspace)
+
+tasks.eclipse.dependsOn(eclipseForgeProject)
+
 apply plugin: 'idea'
 idea{
 	module {
