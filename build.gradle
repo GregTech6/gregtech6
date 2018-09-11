@@ -131,28 +131,10 @@ dependencies {
 processResources {
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
-		include 'pack.mcmeta'
-		include 'LICENSE'
-		include 'LICENSE.logos'
-		include 'LICENSE.assets'
-		include 'COPYING'
-		include 'COPYING.logos'
-		include 'COPYING.assets'
-		include 'COPYING.LESSER'
-		include 'logos/*'
 		expand 'version':project.version, 'mcversion':project.minecraft.version
 	}
 	from(sourceSets.main.resources.srcDirs) {
 		exclude 'mcmod.info'
-		exclude 'pack.mcmeta'
-		exclude 'LICENSE'
-		exclude 'LICENSE.logos'
-		exclude 'LICENSE.assets'
-		exclude 'COPYING'
-		exclude 'COPYING.logos'
-		exclude 'COPYING.assets'
-		exclude 'COPYING.LESSER'
-		exclude 'logos/*'
 	}
 }
 
