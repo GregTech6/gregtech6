@@ -5,7 +5,7 @@ SOURCE_DIR=`dirname $0`
 export LICENSE_HEADER="$(cat "$SOURCE_DIR/LICENSE.header")"
 
 if [ -z "$1" ]; then
-	find "$SOURCE_DIR/../src/main/java" -iname "*.java" -exec "$SOURCE_DIR/format_source_files.sh" {} \;
+	find "$SOURCE_DIR/../src/main/java" -iname "*.java" -exec "$SOURCE_DIR/format_source_file.sh" {} \;
 else
 	for f in "${@}"; do
 	 	"$SOURCE_DIR"/format_source_files.sh "$f"
@@ -13,3 +13,4 @@ else
 fi
 
 echo "Done formatting Source Files"
+
