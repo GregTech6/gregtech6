@@ -1,12 +1,13 @@
 #!/bin/sh
 
 SOURCE_DIR=`dirname $0`
+TAB=$(printf '\t')
 
 [ -z "$LICENSE_HEADER" ] && export LICENSE_HEADER="$(cat "$SOURCE_DIR/LICENSE.header")"
 
 ORIGINAL_HEADER="$(sed '/^package/Q' "$1")"
 
-if [ "$LICENSE_HEADER" = "$ORIGINAL_HEADER" ] && ! grep -q '^    ' "$1"; then
+if [ "$LICENSE_HEADER" = "$ORIGINAL_HEADER" ] && ! grep -Eq "(^    |[^$TAB]$TAB)" "$1"; then
 	echo "Already formatted: $1"
 	exit 0
 else
@@ -18,7 +19,9 @@ else
 	# Remove anything above the `^package` line and append rest to tmp
 	awk '/^package/{i++}i' "$1" >> "$1.tmp"
 	# Convert 4-leading-spaces to tabs and write to original file
-	unexpand --tabs=4 "$1.tmp" > "$1"
+	# Specify --first-only as some systems don't default to that as the man page says it should
+	expand --tabs=4 "$1.tmp" | unexpand --first-only --tabs=4 > "$1"
 	# And finally remove the tmp file
 	rm "$1.tmp"
 fi
+
