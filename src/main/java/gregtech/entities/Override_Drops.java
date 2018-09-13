@@ -437,8 +437,8 @@ public class Override_Drops {
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?Items.cooked_porkchop:Items.porkchop, 1, 0));
 		} else if (aClass.equalsIgnoreCase("MoCEntityDeer")) {
 			tReplaceIron = T;
-			ItemStack tRaw		= IL.TF_Venison_Raw		.get(1, ST.make(MD.HaC, "venisonrawItem"	, 1, 0));
-			ItemStack tCooked	= IL.TF_Venison_Cooked	.get(1, ST.make(MD.HaC, "venisoncookedItem"	, 1, 0));
+			ItemStack tRaw      = IL.TF_Venison_Raw     .get(1, ST.make(MD.HaC, "venisonrawItem"    , 1, 0));
+			ItemStack tCooked   = IL.TF_Venison_Cooked  .get(1, ST.make(MD.HaC, "venisoncookedItem" , 1, 0));
 			if (tRaw != null && tCooked != null) {
 				int tAmount = 1+RNGSUS.nextInt(3);
 				if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);

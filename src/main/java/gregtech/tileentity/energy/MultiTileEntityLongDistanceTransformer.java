@@ -179,10 +179,10 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 		if (aBlock instanceof BlockLongDistWire) {
 			mThroughput = VMAX[((BlockLongDistWire)aBlock).mTiers[aMetaData]];
 			HashSetNoNulls<ChunkCoordinates>
-			tNewChecks	= new HashSetNoNulls<>(),
-			tOldChecks	= new HashSetNoNulls<>(F, getCoords()),
-			tToCheck	= new HashSetNoNulls<>(F, getOffsetN(mFacing, 1)),
-			tWires		= new HashSetNoNulls<>();
+			tNewChecks  = new HashSetNoNulls<>(),
+			tOldChecks  = new HashSetNoNulls<>(F, getCoords()),
+			tToCheck    = new HashSetNoNulls<>(F, getOffsetN(mFacing, 1)),
+			tWires      = new HashSetNoNulls<>();
 			
 			mDistance = -1;
 			while (!tToCheck.isEmpty()) {
@@ -249,8 +249,8 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 		return tConsumed;
 	}
 	
-	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || checkTarget()) &&	(SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return										(SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo	(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || checkTarget()) &&  (SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return                                     (SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mEnergyTypeAccepted, mEnergyTypeEmitted);}
 	
 	@Override public double getDemandedEnergy() {return checkTarget() ? super.getDemandedEnergy() : 0;}
@@ -269,9 +269,9 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 	public String getLocalisedInputSide () {return LH.get(LH.FACE_FRONT);}
 	public String getLocalisedOutputSide() {return LH.get(LH.FACE_BACK);}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyTypeEmitted : aEnergyType == mEnergyTypeAccepted;}
-	@Override public long getEnergySizeOutputRecommended	(TagData aEnergyType, byte aSide) {return mOutput;}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mInput;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyTypeEmitted : aEnergyType == mEnergyTypeAccepted;}
+	@Override public long getEnergySizeOutputRecommended    (TagData aEnergyType, byte aSide) {return mOutput;}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
 	public boolean isInput (byte aSide) {return aSide == mFacing;}
 	public boolean isOutput(byte aSide) {return aSide == OPPOSITES[mFacing];}
 	

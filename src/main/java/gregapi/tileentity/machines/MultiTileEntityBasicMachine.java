@@ -77,21 +77,21 @@ import net.minecraftforge.fluids.IFluidTank;
  * 
  * In order to create a Basic Machine (Steel Shredder in this example), I use the following NBT Parameters in my MultiTileEntity System:
  * 
- * NBT_MATERIAL						= MT.Steel
- * NBT_HARDNESS						= 6.0F
- * NBT_RESISTANCE					= 6.0F
- * NBT_COLOR						= UT.Code.getRGBInt(MT.Steel.mRGBaSolid)
- * NBT_INPUT						= 128
- * NBT_GUI							= RES_PATH_GUI+"machines/Shredder"
- * NBT_TEXTURE						= "shredder"
- * NBT_ENERGY_ACCEPTED				= TD.Energy.RU
- * NBT_RECIPEMAP					= RecipeMap.sShredderRecipes
- * NBT_EFFICIENCY					= 10000
- * NBT_INV_SIDE_INPUT				= SIDE_BITS[SIDE_TOP]
- * NBT_INV_SIDE_AUTO_INPUT			= SIDE_TOP
- * NBT_INV_SIDE_OUTPUT				= SIDE_BITS[SIDE_BOTTOM]
- * NBT_INV_SIDE_AUTO_OUTPUT			= SIDE_BOTTOM
- * NBT_ENERGY_ACCEPTED_SIDES		= SIDE_BITS[SIDE_LEFT]|SIDE_BITS[SIDE_RIGHT]
+ * NBT_MATERIAL                     = MT.Steel
+ * NBT_HARDNESS                     = 6.0F
+ * NBT_RESISTANCE                   = 6.0F
+ * NBT_COLOR                        = UT.Code.getRGBInt(MT.Steel.mRGBaSolid)
+ * NBT_INPUT                        = 128
+ * NBT_GUI                          = RES_PATH_GUI+"machines/Shredder"
+ * NBT_TEXTURE                      = "shredder"
+ * NBT_ENERGY_ACCEPTED              = TD.Energy.RU
+ * NBT_RECIPEMAP                    = RecipeMap.sShredderRecipes
+ * NBT_EFFICIENCY                   = 10000
+ * NBT_INV_SIDE_INPUT               = SIDE_BITS[SIDE_TOP]
+ * NBT_INV_SIDE_AUTO_INPUT          = SIDE_TOP
+ * NBT_INV_SIDE_OUTPUT              = SIDE_BITS[SIDE_BOTTOM]
+ * NBT_INV_SIDE_AUTO_OUTPUT         = SIDE_BOTTOM
+ * NBT_ENERGY_ACCEPTED_SIDES        = SIDE_BITS[SIDE_LEFT]|SIDE_BITS[SIDE_RIGHT]
  */
 @Optional.InterfaceList(value = {
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
@@ -99,7 +99,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, IFluidHandler {
 	public boolean mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
 	public byte mEnergyInputs = 0, mOutputBlocked = 0, mMode = 0;
-	public byte mItemInputs	 = 0, mItemOutputs	= 0, mItemAutoInput	 = SIDE_UNDEFINED, mItemAutoOutput	= SIDE_UNDEFINED;
+	public byte mItemInputs  = 0, mItemOutputs  = 0, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
 	public byte mFluidInputs = 0, mFluidOutputs = 0, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
 	public int mParallel = 1;
@@ -208,7 +208,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					mTexturesMaterial = tCanonicalTileEntity.mTexturesMaterial;
 					mTexturesInactive = tCanonicalTileEntity.mTexturesInactive;
 					mTexturesRunning  = tCanonicalTileEntity.mTexturesRunning;
-					mTexturesActive	  = tCanonicalTileEntity.mTexturesActive;
+					mTexturesActive   = tCanonicalTileEntity.mTexturesActive;
 				} else {
 					mTexturesMaterial = mTexturesInactive = mTexturesRunning = mTexturesActive = L6_IICONCONTAINER;
 				}
@@ -269,13 +269,13 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		addToolTipsSided(aList, aStack, aF3_H);
 		
 		if (mRequiresIgnition)
-		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_IGNITE_FIRE));
+		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_IGNITE_FIRE));
 		
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_AUTO_INPUTS_MONKEY_WRENCH));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_AUTO_INPUTS_MONKEY_WRENCH));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -283,21 +283,21 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public void addToolTipsSided(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		String tSideNames = ""; boolean temp = F;
 		if (mEnergyTypeAccepted != TD.Energy.TU) {
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mEnergyInputs])	{tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mEnergyInputs])    {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
 		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, tSideNames, null);
 		}
 		tSideNames = ""; temp = F;
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs])		{tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
-		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN	+ LH.get(LH.ITEM_INPUT)		+ ": " + Chat.WHITE + tSideNames);
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs])      {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.ITEM_INPUT)     + ": " + Chat.WHITE + tSideNames);
 		tSideNames = ""; temp = F;
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemOutputs])		{tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
-		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED		+ LH.get(LH.ITEM_OUTPUT)	+ ": " + Chat.WHITE + tSideNames);
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemOutputs])     {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.ITEM_OUTPUT)    + ": " + Chat.WHITE + tSideNames);
 		tSideNames = ""; temp = F;
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidInputs])		{tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
-		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN	+ LH.get(LH.FLUID_INPUT)	+ ": " + Chat.WHITE + tSideNames);
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidInputs])     {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.FLUID_INPUT)    + ": " + Chat.WHITE + tSideNames);
 		tSideNames = ""; temp = F;
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidOutputs])	{tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
-		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED		+ LH.get(LH.FLUID_OUTPUT)	+ ": " + Chat.WHITE + tSideNames);
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidOutputs])    {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.FLUID_OUTPUT)   + ": " + Chat.WHITE + tSideNames);
 	}
 	
 	public long onToolClick3(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ, ChunkCoordinates aFrom) {
@@ -411,8 +411,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			
 			if (mTimer % 600 == 5) doDefaultStructuralChecks();
 			
-			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i						, UT.Fluids.display(mTanksInput [i].getFluid(), T, T));
-			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length	, UT.Fluids.display(mTanksOutput[i].getFluid(), T, T));
+			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i                       , UT.Fluids.display(mTanksInput [i].getFluid(), T, T));
+			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length  , UT.Fluids.display(mTanksOutput[i].getFluid(), T, T));
 		}
 	}
 	
@@ -425,7 +425,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
 		super.onTickResetChecks(aTimer, aIsServerSide);
 		oRunning = mRunning;
-		oActive	 = mActive;
+		oActive  = mActive;
 	}
 	
 	@Override
@@ -448,11 +448,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		return tConsumed;
 	}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
-	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mEnergyInputs] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public long getEnergySizeInputMin				(TagData aEnergyType, byte aSide) {return mInputMin;}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mInput;}
-	@Override public long getEnergySizeInputMax				(TagData aEnergyType, byte aSide) {return mInputMax;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mEnergyInputs] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return mInputMin;}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
+	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return mInputMax;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
 	// Inventory Stuff
@@ -909,8 +909,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override public boolean canSave(int aSlot) {return !IL.Display_Fluid.equal(slot(aSlot), T, T);}
 	@Override public boolean hasWork() {return mMaxProgress > 0;}
-	@Override public long getProgressValue(byte aSide) {return mSuccessful ? getProgressMax(aSide) :	mMinEnergy < 1 ? mProgress		: mProgress		/ mMinEnergy + (mProgress		% mMinEnergy == 0 ? 0 : 1) ;}
-	@Override public long getProgressMax  (byte aSide) {return Math.max(1,								mMinEnergy < 1 ? mMaxProgress	: mMaxProgress	/ mMinEnergy + (mMaxProgress	% mMinEnergy == 0 ? 0 : 1));}
+	@Override public long getProgressValue(byte aSide) {return mSuccessful ? getProgressMax(aSide) :    mMinEnergy < 1 ? mProgress      : mProgress     / mMinEnergy + (mProgress       % mMinEnergy == 0 ? 0 : 1) ;}
+	@Override public long getProgressMax  (byte aSide) {return Math.max(1,                              mMinEnergy < 1 ? mMaxProgress   : mMaxProgress  / mMinEnergy + (mMaxProgress    % mMinEnergy == 0 ? 0 : 1));}
 	
 	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0;}
 	@Override public boolean getStateRunningPassively() {return mRunning;}

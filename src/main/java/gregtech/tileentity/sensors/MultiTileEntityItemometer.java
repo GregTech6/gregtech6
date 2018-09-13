@@ -81,12 +81,12 @@ public class MultiTileEntityItemometer extends MultiTileEntitySensorTE {
 	@Override public IIconContainer getOverlaySide () {return sOverlaySide;}
 	
 	public static IIconContainer
-	sTextureFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/colored/front"),
-	sTextureBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/colored/back"),
-	sTextureSide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/colored/side"),
-	sOverlayFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/overlay/front"),
-	sOverlayBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/overlay/back"),
-	sOverlaySide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/overlay/side");
+	sTextureFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/colored/front"),
+	sTextureBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/colored/back"),
+	sTextureSide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/colored/side"),
+	sOverlayFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/overlay/front"),
+	sOverlayBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/overlay/back"),
+	sOverlaySide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/itemometer/overlay/side");
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.itemometer";}
 }

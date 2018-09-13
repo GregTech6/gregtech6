@@ -119,12 +119,12 @@ public class WorldgenNexus extends WorldgenObject {
 			}
 		}
 		
-//		WD.set(aChunk, 5, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
-//		WD.set(aChunk, 6, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
-//		WD.set(aChunk, 7, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
-//		WD.set(aChunk, 8, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
-//		WD.set(aChunk, 9, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
-//		WD.set(aChunk,10, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 5, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 6, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 7, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 8, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 9, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk,10, mHeight+1,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
 		WD.set(aChunk, 5, mHeight+2,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
 		WD.set(aChunk, 6, mHeight+2,15, NB, 0);
 		WD.set(aChunk, 7, mHeight+2,15, NB, 0);
@@ -150,10 +150,10 @@ public class WorldgenNexus extends WorldgenObject {
 		WD.set(aChunk, 9, mHeight+5,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
 		WD.set(aChunk,10, mHeight+5,15, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
 		
-//		WD.set(aChunk, 6, mHeight+1,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
-//		WD.set(aChunk, 7, mHeight+1,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
-//		WD.set(aChunk, 8, mHeight+1,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
-//		WD.set(aChunk, 9, mHeight+1,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 6, mHeight+1,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 7, mHeight+1,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 8, mHeight+1,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
+//      WD.set(aChunk, 9, mHeight+1,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
 		WD.set(aChunk, 6, mHeight+2,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
 		WD.set(aChunk, 9, mHeight+2,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);
 		WD.set(aChunk, 6, mHeight+3,14, GENERATE_STREETS?BlocksGT.CFoam:Blocks.stained_hardened_clay, DYE_INDEX_Gray);

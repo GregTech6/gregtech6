@@ -98,13 +98,13 @@ public class MultiTileEntityEnderGarbageBin extends TileEntityBase07Paintable im
 		return SIDES_BOTTOM_HORIZONTAL[aSide] ? 0 : fill(FORGE_DIR[aSide], aFluid, aDoFill);
 	}
 	
-	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?0.0F:PX_P[ 1];}
-	@Override public float getSurfaceSize			(byte aSide) {return SIDES_TOP[aSide]?1.0F:PX_P[14];}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return getSurfaceSize(aSide);}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_TOP[aSide]?0.0F:PX_P[ 1];}
+	@Override public float getSurfaceSize           (byte aSide) {return SIDES_TOP[aSide]?1.0F:PX_P[14];}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return getSurfaceSize(aSide);}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}

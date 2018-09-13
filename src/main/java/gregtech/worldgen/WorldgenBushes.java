@@ -68,7 +68,7 @@ public class WorldgenBushes extends WorldgenObject {
 			int tStage = aRandom.nextInt(4);
 			ItemStack tBerry = UT.Code.select(new ItemStackContainer(IL.Food_Candleberry.get(1)), BushesGT.MAP.keySet().toArray(ZL_ISC)).toStack();
 			
-			tRegistry.mBlock.placeBlock(aWorld, tX	, tY+1, tZ	, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(null, NBT_FACING, SIDE_UNDEFINED, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, tX  , tY+1, tZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(null, NBT_FACING, SIDE_UNDEFINED, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
 			
 			if (WD.easyRep(aWorld, tX+1, tY+1, tZ  )) tRegistry.mBlock.placeBlock(aWorld, tX+1, tY+1, tZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(null, NBT_FACING, SIDE_X_NEG, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
 			if (WD.easyRep(aWorld, tX-1, tY+1, tZ  )) tRegistry.mBlock.placeBlock(aWorld, tX-1, tY+1, tZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(null, NBT_FACING, SIDE_X_POS, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);

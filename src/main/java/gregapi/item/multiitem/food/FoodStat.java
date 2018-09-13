@@ -161,11 +161,11 @@ public class FoodStat implements IFoodStat {
 			}
 			EntityFoodTracker tTracker = EntityFoodTracker.get(aPlayer);
 			if (tTracker != null) {
-				if (mAlcohol		!= 0) tTracker.changeAlcohol(mAlcohol);
-				if (mCaffeine		!= 0) tTracker.changeCaffeine(mCaffeine);
-				if (mDehydration	!= 0) tTracker.changeDehydration(mDehydration);
-				if (mSugar			!= 0) tTracker.changeSugar(mSugar);
-				if (mFat			!= 0) tTracker.changeFat(mFat);
+				if (mAlcohol        != 0) tTracker.changeAlcohol(mAlcohol);
+				if (mCaffeine       != 0) tTracker.changeCaffeine(mCaffeine);
+				if (mDehydration    != 0) tTracker.changeDehydration(mDehydration);
+				if (mSugar          != 0) tTracker.changeSugar(mSugar);
+				if (mFat            != 0) tTracker.changeFat(mFat);
 			}
 		}
 	}

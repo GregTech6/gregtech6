@@ -48,10 +48,10 @@ public abstract class Abstract_Mod {
 	
 	/** Contains the amount of Phases the GT API Mods have already ran through. */
 	public static int
-	sStartedPreInit			= 0, sFinishedPreInit			= 0,
-	sStartedInit			= 0, sFinishedInit				= 0,
-	sStartedPostInit		= 0, sFinishedPostInit			= 0,
-	sFinalized				= 0;
+	sStartedPreInit         = 0, sFinishedPreInit           = 0,
+	sStartedInit            = 0, sFinishedInit              = 0,
+	sStartedPostInit        = 0, sFinishedPostInit          = 0,
+	sFinalized              = 0;
 	
 	/** List of all Configuration Files for Auto-Saving. */
 	public static final List<Runnable> sConfigs = new ArrayListNoNulls<>();
@@ -63,31 +63,31 @@ public abstract class Abstract_Mod {
 	
 	/** Contains the Phases the Mod has already ran through. */
 	public boolean
-	mStartedPreInit			= F, mFinishedPreInit			= F,
-	mStartedInit			= F, mFinishedInit				= F,
-	mStartedPostInit		= F, mFinishedPostInit			= F,
-	mFinalized				= F;
+	mStartedPreInit         = F, mFinishedPreInit           = F,
+	mStartedInit            = F, mFinishedInit              = F,
+	mStartedPostInit        = F, mFinishedPostInit          = F,
+	mFinalized              = F;
 	
 	/** Contains the amount of Server Start/Stop Phases the Mod has already ran through. */
 	public int
-	mStartedServerStarting	= 0, mFinishedServerStarting	= 0,
-	mStartedServerStarted	= 0, mFinishedServerStarted		= 0,
-	mStartedServerStopping	= 0, mFinishedServerStopping	= 0,
-	mStartedServerStopped	= 0, mFinishedServerStopped		= 0;
+	mStartedServerStarting  = 0, mFinishedServerStarting    = 0,
+	mStartedServerStarted   = 0, mFinishedServerStarted     = 0,
+	mStartedServerStopping  = 0, mFinishedServerStopping    = 0,
+	mStartedServerStopped   = 0, mFinishedServerStopped     = 0;
 	
 	/** Event Lists where you can hook into the loading order of the Code, without having to care much about regular Mod load order. Note, that these Lists will be cleared and then set to null, right after they got executed once, in order to clean up some RAM. */
 	public List<Runnable>
-	mBeforePreInit			= new ArrayListNoNulls<>(), mAfterPreInit		 = new ArrayListNoNulls<>(),
-	mBeforeInit				= new ArrayListNoNulls<>(), mAfterInit			 = new ArrayListNoNulls<>(),
-	mBeforePostInit			= new ArrayListNoNulls<>(), mAfterPostInit		 = new ArrayListNoNulls<>(),
-	mFinalize				= new ArrayListNoNulls<>();
+	mBeforePreInit          = new ArrayListNoNulls<>(), mAfterPreInit        = new ArrayListNoNulls<>(),
+	mBeforeInit             = new ArrayListNoNulls<>(), mAfterInit           = new ArrayListNoNulls<>(),
+	mBeforePostInit         = new ArrayListNoNulls<>(), mAfterPostInit       = new ArrayListNoNulls<>(),
+	mFinalize               = new ArrayListNoNulls<>();
 	
 	/** Event Lists where you can hook into the loading order of the Code, without having to care much about regular Mod load order. */
 	public final List<Runnable>
-	mBeforeServerStarting	= new ArrayListNoNulls<>(), mAfterServerStarting = new ArrayListNoNulls<>(),
-	mBeforeServerStarted	= new ArrayListNoNulls<>(), mAfterServerStarted	 = new ArrayListNoNulls<>(),
-	mBeforeServerStopping	= new ArrayListNoNulls<>(), mAfterServerStopping = new ArrayListNoNulls<>(),
-	mBeforeServerStopped	= new ArrayListNoNulls<>(), mAfterServerStopped	 = new ArrayListNoNulls<>();
+	mBeforeServerStarting   = new ArrayListNoNulls<>(), mAfterServerStarting = new ArrayListNoNulls<>(),
+	mBeforeServerStarted    = new ArrayListNoNulls<>(), mAfterServerStarted  = new ArrayListNoNulls<>(),
+	mBeforeServerStopping   = new ArrayListNoNulls<>(), mAfterServerStopping = new ArrayListNoNulls<>(),
+	mBeforeServerStopped    = new ArrayListNoNulls<>(), mAfterServerStopped  = new ArrayListNoNulls<>();
 	
 	public Abstract_Mod() {
 		sModCountUsingGTAPI++;

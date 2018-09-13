@@ -68,12 +68,12 @@ public class MultiTileEntityProgressmeter extends MultiTileEntitySensorTE {
 	@Override public IIconContainer getOverlaySide () {return sOverlaySide;}
 	
 	public static IIconContainer
-	sTextureFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/colored/front"),
-	sTextureBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/colored/back"),
-	sTextureSide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/colored/side"),
-	sOverlayFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/overlay/front"),
-	sOverlayBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/overlay/back"),
-	sOverlaySide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/overlay/side");
+	sTextureFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/colored/front"),
+	sTextureBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/colored/back"),
+	sTextureSide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/colored/side"),
+	sOverlayFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/overlay/front"),
+	sOverlayBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/overlay/back"),
+	sOverlaySide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/progressmeter/overlay/side");
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.progressmeter";}
 }

@@ -80,34 +80,34 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public byte mMode = 0;
 	
 	public static final byte
-	  EVERYTHING			= 0
+	  EVERYTHING            = 0
 	
-	, NO_ENERGY_OUT			= 1
-	, NO_ENERGY_IN			= 2
-	, NO_FLUID_OUT			= 4
-	, NO_FLUID_IN			= 8
-	, NO_ITEM_OUT			= 16
-	, NO_ITEM_IN			= 32
+	, NO_ENERGY_OUT         = 1
+	, NO_ENERGY_IN          = 2
+	, NO_FLUID_OUT          = 4
+	, NO_FLUID_IN           = 8
+	, NO_ITEM_OUT           = 16
+	, NO_ITEM_IN            = 32
 	
-	, NO_ENERGY				= NO_ENERGY_IN | NO_ENERGY_OUT
-	, NO_FLUID				= NO_FLUID_IN  | NO_FLUID_OUT
-	, NO_ITEM				= NO_ITEM_IN   | NO_ITEM_OUT
+	, NO_ENERGY             = NO_ENERGY_IN | NO_ENERGY_OUT
+	, NO_FLUID              = NO_FLUID_IN  | NO_FLUID_OUT
+	, NO_ITEM               = NO_ITEM_IN   | NO_ITEM_OUT
 	
-	, ONLY_ENERGY_OUT		= ~NO_ENERGY_OUT
-	, ONLY_ENERGY_IN		= ~NO_ENERGY_IN
-	, ONLY_FLUID_OUT		= ~NO_FLUID_OUT
-	, ONLY_FLUID_IN			= ~NO_FLUID_IN
-	, ONLY_ITEM_OUT			= ~NO_ITEM_OUT
-	, ONLY_ITEM_IN			= ~NO_ITEM_IN
-	, ONLY_ITEM_FLUID_OUT	= ~(NO_ITEM_OUT | NO_FLUID_OUT)
-	, ONLY_ITEM_FLUID_IN	= ~(NO_ITEM_IN	| NO_FLUID_IN)
+	, ONLY_ENERGY_OUT       = ~NO_ENERGY_OUT
+	, ONLY_ENERGY_IN        = ~NO_ENERGY_IN
+	, ONLY_FLUID_OUT        = ~NO_FLUID_OUT
+	, ONLY_FLUID_IN         = ~NO_FLUID_IN
+	, ONLY_ITEM_OUT         = ~NO_ITEM_OUT
+	, ONLY_ITEM_IN          = ~NO_ITEM_IN
+	, ONLY_ITEM_FLUID_OUT   = ~(NO_ITEM_OUT | NO_FLUID_OUT)
+	, ONLY_ITEM_FLUID_IN    = ~(NO_ITEM_IN  | NO_FLUID_IN)
 	
-	, ONLY_ENERGY			= ~NO_ENERGY
-	, ONLY_FLUID			= ~NO_FLUID
-	, ONLY_ITEM				= ~NO_ITEM
-	, ONLY_ITEM_FLUID		= ~(NO_ITEM | NO_FLUID)
+	, ONLY_ENERGY           = ~NO_ENERGY
+	, ONLY_FLUID            = ~NO_FLUID
+	, ONLY_ITEM             = ~NO_ITEM
+	, ONLY_ITEM_FLUID       = ~(NO_ITEM | NO_FLUID)
 	
-	, NOTHING				= ~EVERYTHING
+	, NOTHING               = ~EVERYTHING
 	;
 	
 	@Override
@@ -142,7 +142,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		if (mDesign != 0) aNBT.setByte(NBT_DESIGN, (byte)mDesign);
-		if (mMode	!= 0) aNBT.setByte(NBT_MODE, mMode);
+		if (mMode   != 0) aNBT.setByte(NBT_MODE, mMode);
 		if (mTargetPos != null) {
 		UT.NBT.setBoolean(aNBT, NBT_TARGET, T);
 		UT.NBT.setNumber(aNBT, NBT_TARGET_X, mTargetPos.posX);

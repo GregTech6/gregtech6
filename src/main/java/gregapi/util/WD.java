@@ -350,8 +350,8 @@ public class WD {
 	
 	public static Block block(World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks) {return aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ) ? aWorld.getBlock(aX, aY, aZ) : NB;}
 	public static Block block(World aWorld, int aX, int aY, int aZ) {return aWorld.getBlock(aX, aY, aZ);}
-	public static byte	meta (World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks) {return aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ) ? UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ)) : 0;}
-	public static byte	meta (World aWorld, int aX, int aY, int aZ) {return UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ));}
+	public static byte  meta (World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks) {return aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ) ? UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ)) : 0;}
+	public static byte  meta (World aWorld, int aX, int aY, int aZ) {return UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ));}
 	
 	public static boolean set(World aWorld, int aX, int aY, int aZ, Block aBlock, long aMeta, long aFlags) {
 		return set(aWorld, aX, aY, aZ, aBlock, Code.bind4(aMeta), (byte)aFlags, aBlock.isOpaqueCube());
@@ -515,11 +515,11 @@ public class WD {
 		byte aMetaData = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
 		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
 		if (BlocksGT.stoneToNormalOres.containsKey(new ItemStackContainer(aBlock, 1, aMetaData))) return T;
-		if (Blocks.stone		!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone		)) return T;
-		if (Blocks.gravel		!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel		)) return T;
-		if (Blocks.sand			!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand			)) return T;
-		if (Blocks.netherrack	!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack	)) return T;
-		if (Blocks.end_stone	!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone	)) return T;
+		if (Blocks.stone        != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone        )) return T;
+		if (Blocks.gravel       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel       )) return T;
+		if (Blocks.sand         != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand         )) return T;
+		if (Blocks.netherrack   != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack   )) return T;
+		if (Blocks.end_stone    != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone    )) return T;
 		return F;
 	}
 	
@@ -535,11 +535,11 @@ public class WD {
 		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
 		IBlockPlacable tBlock = BlocksGT.stoneToNormalOres.get(new ItemStackContainer(aBlock, 1, aMetaData));
 		if (tBlock == null) {
-		if (Blocks.stone		!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone		)) tBlock = BlocksGT.ore; else
-		if (Blocks.gravel		!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel		)) tBlock = BlocksGT.oreGravel; else
-		if (Blocks.sand			!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand			)) tBlock = BlocksGT.oreSand; else
-		if (Blocks.netherrack	!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack	)) tBlock = BlocksGT.oreNetherrack; else
-		if (Blocks.end_stone	!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone	)) tBlock = BlocksGT.oreEndstone;
+		if (Blocks.stone        != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone        )) tBlock = BlocksGT.ore; else
+		if (Blocks.gravel       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel       )) tBlock = BlocksGT.oreGravel; else
+		if (Blocks.sand         != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand         )) tBlock = BlocksGT.oreSand; else
+		if (Blocks.netherrack   != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack   )) tBlock = BlocksGT.oreNetherrack; else
+		if (Blocks.end_stone    != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone    )) tBlock = BlocksGT.oreEndstone;
 		}
 		return tBlock != null && tBlock.placeBlock(aWorld, aX, aY, aZ, (byte)6, aID, null, F, T);
 	}
@@ -556,11 +556,11 @@ public class WD {
 		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
 		IBlockPlacable tBlock = BlocksGT.stoneToSmallOres.get(new ItemStackContainer(aBlock, 1, aMetaData));
 		if (tBlock == null) {
-		if (Blocks.stone		!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone		)) tBlock = BlocksGT.oreSmall; else
-		if (Blocks.gravel		!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel		)) tBlock = BlocksGT.oreSmallGravel; else
-		if (Blocks.sand			!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand			)) tBlock = BlocksGT.oreSmallSand; else
-		if (Blocks.netherrack	!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack	)) tBlock = BlocksGT.oreSmallNetherrack; else
-		if (Blocks.end_stone	!= aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone	)) tBlock = BlocksGT.oreSmallEndstone;
+		if (Blocks.stone        != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone        )) tBlock = BlocksGT.oreSmall; else
+		if (Blocks.gravel       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel       )) tBlock = BlocksGT.oreSmallGravel; else
+		if (Blocks.sand         != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand         )) tBlock = BlocksGT.oreSmallSand; else
+		if (Blocks.netherrack   != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack   )) tBlock = BlocksGT.oreSmallNetherrack; else
+		if (Blocks.end_stone    != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone    )) tBlock = BlocksGT.oreSmallEndstone;
 		}
 		return tBlock != null && tBlock.placeBlock(aWorld, aX, aY, aZ, (byte)6, aID, null, F, T);
 	}
@@ -596,7 +596,7 @@ public class WD {
 		
 		rList.add("--- X: " + aX + " Y: " + aY + " Z: " + aZ + " ---");
 		try {
-			rList.add("Name: " + (aTileEntity instanceof IInventory && Code.stringValid(((IInventory)aTileEntity).getInventoryName()) ? ((IInventory)aTileEntity).getInventoryName() : aBlock.getUnlocalizedName()) + "	 MetaData: " + aMeta);
+			rList.add("Name: " + (aTileEntity instanceof IInventory && Code.stringValid(((IInventory)aTileEntity).getInventoryName()) ? ((IInventory)aTileEntity).getInventoryName() : aBlock.getUnlocalizedName()) + "  MetaData: " + aMeta);
 			float tResistance = aBlock.getExplosionResistance(aPlayer, aWorld, aX, aY, aZ, aPlayer.posX, aPlayer.posY, aPlayer.posZ);
 			rList.add("Hardness: " + aBlock.getBlockHardness(aWorld, aX, aY, aZ) + "  Blast Resistance: " + tResistance + (tResistance < 16 ? " (TNT Blastable)" : " (TNT Proof)"));
 			int tHarvestLevel = aBlock.getHarvestLevel(aMeta);
@@ -687,7 +687,7 @@ public class WD {
 				try {if (aTileEntity instanceof ic2.api.reactor.IReactor) {
 					rEUAmount+=V[4];
 					rList.add("Heat: " + ((ic2.api.reactor.IReactor)aTileEntity).getHeat() + "/" + ((ic2.api.reactor.IReactor)aTileEntity).getMaxHeat()
-							+ "	 HEM: " + ((ic2.api.reactor.IReactor)aTileEntity).getHeatEffectModifier() + "  Base IC2-EU Output: " + ((ic2.api.reactor.IReactor)aTileEntity).getReactorEUEnergyOutput());
+							+ "  HEM: " + ((ic2.api.reactor.IReactor)aTileEntity).getHeatEffectModifier() + "  Base IC2-EU Output: " + ((ic2.api.reactor.IReactor)aTileEntity).getReactorEUEnergyOutput());
 				}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.tile.IWrenchable) {
 					rEUAmount+=V[3];

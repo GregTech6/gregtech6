@@ -57,10 +57,10 @@ public class MultiTileEntityBumbleHive extends TileEntityBase07Paintable impleme
 	@Override public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return 300;}
 	@Override public int getFlammability(byte aSide, boolean aDefault) {return 300;}
 	
-	@Override public boolean isSurfaceSolid		(byte aSide) {return T;}
-	@Override public boolean isSurfaceOpaque2	(byte aSide) {return T;}
-	@Override public boolean isSideSolid2		(byte aSide) {return T;}
-	@Override public boolean allowCovers		(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid     (byte aSide) {return T;}
+	@Override public boolean isSurfaceOpaque2   (byte aSide) {return T;}
+	@Override public boolean isSideSolid2       (byte aSide) {return T;}
+	@Override public boolean allowCovers        (byte aSide) {return F;}
 	
 	@Override public boolean canEntityDestroy(Entity aEntity) {return !(aEntity instanceof EntityDragon);}
 	

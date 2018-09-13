@@ -77,12 +77,12 @@ public class MultiTileEntityWeightometerSuperHeavy extends MultiTileEntitySensor
 	@Override public IIconContainer getOverlaySide () {return sOverlaySide;}
 	
 	public static IIconContainer
-	sTextureFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/colored/front"),
-	sTextureBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/colored/back"),
-	sTextureSide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/colored/side"),
-	sOverlayFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/overlay/front"),
-	sOverlayBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/overlay/back"),
-	sOverlaySide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/overlay/side");
+	sTextureFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/colored/front"),
+	sTextureBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/colored/back"),
+	sTextureSide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/colored/side"),
+	sOverlayFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/overlay/front"),
+	sOverlayBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/overlay/back"),
+	sOverlaySide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/superheavyweightometer/overlay/side");
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.superheavyweightometer";}
 }

@@ -35,10 +35,10 @@ public class BlockTextureDefault implements ITexture {
 	private final IIconContainer mIconContainer;
 	
 	/**
-	 *	DO NOT MANIPULATE THE VALUES INSIDE THIS ARRAY!!!
-	 *	
-	 *	Just set this variable to another different Array instead.
-	 *	Otherwise some colored things will get Problems.
+	 *  DO NOT MANIPULATE THE VALUES INSIDE THIS ARRAY!!!
+	 *  
+	 *  Just set this variable to another different Array instead.
+	 *  Otherwise some colored things will get Problems.
 	 */
 	public short[] fRGBa;
 	

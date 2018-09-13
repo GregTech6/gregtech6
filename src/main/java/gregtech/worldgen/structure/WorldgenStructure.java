@@ -61,17 +61,17 @@ public class WorldgenStructure extends WorldgenObject {
 	@SafeVarargs
 	public WorldgenStructure(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalMyst, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mProbability		= Math.max(1,			ConfigsGT.WORLDGEN.get(mCategory, "Probability"		, aProbability));
-		mMinSize			= Math.max(2,			ConfigsGT.WORLDGEN.get(mCategory, "MinSize"			, aMinSize));
-		mMaxSize			= Math.max(mMinSize,	ConfigsGT.WORLDGEN.get(mCategory, "MaxSize"			, aMaxSize));
-		mMinY				= Math.max(5,			ConfigsGT.WORLDGEN.get(mCategory, "MinY"			, aMinY));
-		mMaxY				= Math.max(mMinY,		ConfigsGT.WORLDGEN.get(mCategory, "MaxY"			, aMaxY));
-		mRoomChance			= Math.max(1,			ConfigsGT.WORLDGEN.get(mCategory, "RoomChance"		, aRoomChance));
-		mPortalNether		=						ConfigsGT.WORLDGEN.get(mCategory, "PortalNether"	, aPortalNether);
-		mPortalEnd			=						ConfigsGT.WORLDGEN.get(mCategory, "PortalEnd"		, aPortalEnd);
-		mPortalTwilight		=						ConfigsGT.WORLDGEN.get(mCategory, "PortalTwilight"	, aPortalTwilight);
-		mPortalMyst			=						ConfigsGT.WORLDGEN.get(mCategory, "PortalMyst"		, aPortalMyst);
-		mZPM				=						ConfigsGT.WORLDGEN.get(mCategory, "ZPMs"			, T);
+		mProbability        = Math.max(1,           ConfigsGT.WORLDGEN.get(mCategory, "Probability"     , aProbability));
+		mMinSize            = Math.max(2,           ConfigsGT.WORLDGEN.get(mCategory, "MinSize"         , aMinSize));
+		mMaxSize            = Math.max(mMinSize,    ConfigsGT.WORLDGEN.get(mCategory, "MaxSize"         , aMaxSize));
+		mMinY               = Math.max(5,           ConfigsGT.WORLDGEN.get(mCategory, "MinY"            , aMinY));
+		mMaxY               = Math.max(mMinY,       ConfigsGT.WORLDGEN.get(mCategory, "MaxY"            , aMaxY));
+		mRoomChance         = Math.max(1,           ConfigsGT.WORLDGEN.get(mCategory, "RoomChance"      , aRoomChance));
+		mPortalNether       =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalNether"    , aPortalNether);
+		mPortalEnd          =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalEnd"       , aPortalEnd);
+		mPortalTwilight     =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalTwilight"  , aPortalTwilight);
+		mPortalMyst         =                       ConfigsGT.WORLDGEN.get(mCategory, "PortalMyst"      , aPortalMyst);
+		mZPM                =                       ConfigsGT.WORLDGEN.get(mCategory, "ZPMs"            , T);
 	}
 	
 	public WorldgenStructure() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F);}
@@ -100,10 +100,10 @@ public class WorldgenStructure extends WorldgenObject {
 		boolean[] tGeneratedKeys = new boolean[5];
 		
 		boolean
-		  tDidntPortalNether	= (mPortalNether							&& (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_NETHER))
-		, tDidntPortalEnd		= (mPortalEnd								&& (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END))
-		, tDidntPortalTwilight	= (mPortalTwilight	&& MD.TF.mLoaded		&& (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == TwilightForestMod.dimensionID))
-		, tDidntPortalMyst		= (mPortalMyst		&& MD.MYST.mLoaded		);
+		  tDidntPortalNether    = (mPortalNether                            && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_NETHER))
+		, tDidntPortalEnd       = (mPortalEnd                               && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END))
+		, tDidntPortalTwilight  = (mPortalTwilight  && MD.TF.mLoaded        && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == TwilightForestMod.dimensionID))
+		, tDidntPortalMyst      = (mPortalMyst      && MD.MYST.mLoaded      );
 		
 		long[] tKeyIDs = new long[tGeneratedKeys.length];
 		tKeyIDs[0] = System.nanoTime();
@@ -111,13 +111,13 @@ public class WorldgenStructure extends WorldgenObject {
 		ItemStack[] tKeyStacks = new ItemStack[tKeyIDs.length];
 		for (int i = 0; i < tKeyIDs.length; i++) tKeyStacks[i] = IL.KEYS[aRandom.nextInt(IL.KEYS.length)].getWithNameAndNBT(1, "Key #"+(i+1), UT.NBT.makeLong(NBT_KEY, tKeyIDs[i]));
 		
-		aMinX -= (tRoomLayout	.length / 2) * 16;
+		aMinX -= (tRoomLayout   .length / 2) * 16;
 		aMinZ -= (tRoomLayout[0].length / 2) * 16;
 		
 		for (int i = 0; i < tRoomLayout.length; i++) for (int j = 0; j < tRoomLayout[i].length; j++) aWorld.setBlock(aMinX+8+i*16, 254, aMinZ+8+j*16, NB, 0, 3);
 		
 		for (int i = 0, j = 0, k = -1, l = 0; k >= -2 && l < 10000; l++) {
-			i = 1+aRandom.nextInt(tRoomLayout	.length-2);
+			i = 1+aRandom.nextInt(tRoomLayout   .length-2);
 			j = 1+aRandom.nextInt(tRoomLayout[i].length-2);
 			if (tRoomLayout[i][j] == 0) {tRoomLayout[i][j] = (byte)k--;}
 		}
@@ -126,7 +126,7 @@ public class WorldgenStructure extends WorldgenObject {
 		
 		for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] != 0) {
 			int a = i, b = j;
-			while (a != tRoomLayout	  .length/2) {a+=(a>(tRoomLayout   .length/2)?-1:+1); if (tRoomLayout[a][b] == 0) tRoomLayout[a][b] = -128; else break;}
+			while (a != tRoomLayout   .length/2) {a+=(a>(tRoomLayout   .length/2)?-1:+1); if (tRoomLayout[a][b] == 0) tRoomLayout[a][b] = -128; else break;}
 			while (b != tRoomLayout[a].length/2) {b+=(b>(tRoomLayout[a].length/2)?-1:+1); if (tRoomLayout[a][b] == 0) tRoomLayout[a][b] = -128; else break;}
 		}
 		
@@ -137,26 +137,26 @@ public class WorldgenStructure extends WorldgenObject {
 		while (temp) {
 			temp = F;
 			for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] == -128) {
-				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i	 ][j+1] == 0) continue;
-				if (tRoomLayout[i+1][j	] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i	 ][j+1] != 0) continue;
+				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i  ][j+1] == 0) continue;
+				if (tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i  ][j+1] != 0) continue;
 				
 				int tConnectionCount = 0;
 				for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
 				
 				if (tConnectionCount <= 1) {tRoomLayout[i][j] = 0; temp = T; continue;}
 				
-				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i+1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i+1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i-1][j	] != 0 && tRoomLayout[i-1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i-1][j	] != 0 && tRoomLayout[i-1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i+1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i+1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i-1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i-1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
 			}
 		}
 		temp = T;
 		while (temp) {
 			temp = F;
 			for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] == -128) {
-				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i	 ][j+1] == 0) continue;
-				if (tRoomLayout[i+1][j	] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i	 ][j+1] != 0) continue;
+				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i  ][j+1] == 0) continue;
+				if (tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i  ][j+1] != 0) continue;
 				
 				int tConnectionCount = 0;
 				for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
@@ -173,14 +173,14 @@ public class WorldgenStructure extends WorldgenObject {
 				if (tConnectionCount == 5) {
 					if (tRoomLayout[i+1][j-1] == 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i+1][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
 					if (tRoomLayout[i-1][j-1] == 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i-1][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-					if (tRoomLayout[i-1][j+1] == 0 && tRoomLayout[i	 ][j+1] == 0 && tRoomLayout[i+1][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-					if (tRoomLayout[i-1][j-1] == 0 && tRoomLayout[i	 ][j-1] == 0 && tRoomLayout[i+1][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+					if (tRoomLayout[i-1][j+1] == 0 && tRoomLayout[i  ][j+1] == 0 && tRoomLayout[i+1][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+					if (tRoomLayout[i-1][j-1] == 0 && tRoomLayout[i  ][j-1] == 0 && tRoomLayout[i+1][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
 				}
 				
-				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i+1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i+1][j	] != 0 && tRoomLayout[i+1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i-1][j	] != 0 && tRoomLayout[i-1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
-				if (tRoomLayout[i-1][j	] != 0 && tRoomLayout[i-1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i+1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i+1][j  ] != 0 && tRoomLayout[i+1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i-1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i-1][j+1] != 0 && tRoomLayout[i  ][j+1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j-1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
+				if (tRoomLayout[i-1][j  ] != 0 && tRoomLayout[i-1][j-1] != 0 && tRoomLayout[i  ][j-1] != 0 && tRoomLayout[i+1][j  ] == 0 && tRoomLayout[i  ][j+1] == 0) {tRoomLayout[i][j] = 0; temp = T; continue;}
 			}
 		}
 		
@@ -207,15 +207,15 @@ public class WorldgenStructure extends WorldgenObject {
 						// Piston Door + a Portal Room.
 						WorldgenStructureExteriorPistonDoor.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
 						if (aRandom.nextBoolean()) {
-								 if (tDidntPortalEnd		&& WorldgenStructureInteriorPortalEnd		.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalEnd = F;
-							else if (tDidntPortalMyst		&& WorldgenStructureInteriorPortalMyst		.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalMyst = F;
-							else if (tDidntPortalTwilight	&& WorldgenStructureInteriorPortalTwilight	.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalTwilight = F;
-							else if (tDidntPortalNether		&& WorldgenStructureInteriorPortalNether	.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalNether = F;
+								 if (tDidntPortalEnd        && WorldgenStructureInteriorPortalEnd       .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalEnd = F;
+							else if (tDidntPortalMyst       && WorldgenStructureInteriorPortalMyst      .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalMyst = F;
+							else if (tDidntPortalTwilight   && WorldgenStructureInteriorPortalTwilight  .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalTwilight = F;
+							else if (tDidntPortalNether     && WorldgenStructureInteriorPortalNether    .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalNether = F;
 						} else {
-								 if (tDidntPortalNether		&& WorldgenStructureInteriorPortalNether	.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalNether = F;
-							else if (tDidntPortalTwilight	&& WorldgenStructureInteriorPortalTwilight	.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalTwilight = F;
-							else if (tDidntPortalEnd		&& WorldgenStructureInteriorPortalEnd		.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalEnd = F;
-							else if (tDidntPortalMyst		&& WorldgenStructureInteriorPortalMyst		.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalMyst = F;
+								 if (tDidntPortalNether     && WorldgenStructureInteriorPortalNether    .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalNether = F;
+							else if (tDidntPortalTwilight   && WorldgenStructureInteriorPortalTwilight  .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalTwilight = F;
+							else if (tDidntPortalEnd        && WorldgenStructureInteriorPortalEnd       .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalEnd = F;
+							else if (tDidntPortalMyst       && WorldgenStructureInteriorPortalMyst      .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalMyst = F;
 						}
 						break;
 					case 2:
@@ -336,33 +336,33 @@ public class WorldgenStructure extends WorldgenObject {
 		}
 	}
 	
-	public static boolean setRandomBricks	(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, 3+aRandom.nextInt(3), 2);}
-	public static boolean setStandardBrick	(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.BRICK, 2);}
-	public static boolean setRedstoneBrick	(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.RSTBR, 3);}
-	public static boolean setCrackedBrick	(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.CRACK, 2);}
-	public static boolean setMossyBrick		(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.MBRIK, 2);}
-	public static boolean setChiseledStone	(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.CHISL, 2);}
-	public static boolean setStoneTiles		(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.TILES, 2);}
-	public static boolean setSmallTiles		(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.STILE, 2);}
-	public static boolean setSmallBricks	(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.SBRIK, 2);}
-	public static boolean setSmoothBlock	(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.SMOTH, 2);}
-	public static boolean setAirBlock		(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, NB, 0, 2);}
+	public static boolean setRandomBricks   (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, 3+aRandom.nextInt(3), 2);}
+	public static boolean setStandardBrick  (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.BRICK, 2);}
+	public static boolean setRedstoneBrick  (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.RSTBR, 3);}
+	public static boolean setCrackedBrick   (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.CRACK, 2);}
+	public static boolean setMossyBrick     (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.MBRIK, 2);}
+	public static boolean setChiseledStone  (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.CHISL, 2);}
+	public static boolean setStoneTiles     (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.TILES, 2);}
+	public static boolean setSmallTiles     (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.STILE, 2);}
+	public static boolean setSmallBricks    (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.SBRIK, 2);}
+	public static boolean setSmoothBlock    (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aSecondary : aPrimary, BlockStones.SMOTH, 2);}
+	public static boolean setAirBlock       (World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, NB, 0, 2);}
 	
-	public static boolean setRandomBricks	(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, 3+aRandom.nextInt(3), 2);}
-	public static boolean setStandardBrick	(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.BRICK, 2);}
-	public static boolean setRedstoneBrick	(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.RSTBR, 3);}
-	public static boolean setCrackedBrick	(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.CRACK, 2);}
-	public static boolean setMossyBrick		(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.MBRIK, 2);}
-	public static boolean setChiseledStone	(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.CHISL, 2);}
-	public static boolean setStoneTiles		(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.TILES, 2);}
-	public static boolean setSmallTiles		(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.STILE, 2);}
-	public static boolean setSmallBricks	(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.SBRIK, 2);}
-	public static boolean setSmoothBlock	(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.SMOTH, 2);}
-	public static boolean setAirBlock		(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, NB, 0, 2);}
+	public static boolean setRandomBricks   (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, 3+aRandom.nextInt(3), 2);}
+	public static boolean setStandardBrick  (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.BRICK, 2);}
+	public static boolean setRedstoneBrick  (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.RSTBR, 3);}
+	public static boolean setCrackedBrick   (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.CRACK, 2);}
+	public static boolean setMossyBrick     (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.MBRIK, 2);}
+	public static boolean setChiseledStone  (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.CHISL, 2);}
+	public static boolean setStoneTiles     (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.TILES, 2);}
+	public static boolean setSmallTiles     (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.STILE, 2);}
+	public static boolean setSmallBricks    (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.SBRIK, 2);}
+	public static boolean setSmoothBlock    (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mOffsetY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.SMOTH, 2);}
+	public static boolean setAirBlock       (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, NB, 0, 2);}
 	
-	public static boolean setGlass			(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.Glass, aData.mColor, 2);}
-	public static boolean setGlowGlass		(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.GlowGlass, aData.mColor, 2);}
-	public static boolean setColored		(World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.Concrete, aData.mColor, 2);}
+	public static boolean setGlass          (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.Glass, aData.mColor, 2);}
+	public static boolean setGlowGlass      (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.GlowGlass, aData.mColor, 2);}
+	public static boolean setColored        (World aWorld, int aX, int aY, int aZ, StructureData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.Concrete, aData.mColor, 2);}
 	
 	public static boolean setLampBlock(World aWorld, int aX, int aY, int aZ, StructureData aData, Block aPrimary, Block aSecondary, Random aRandom, int aGenerateRedstoneBrick) {
 		aData.mLightUpdateCoords.add(new ChunkCoordinates(aX, aY, aZ));

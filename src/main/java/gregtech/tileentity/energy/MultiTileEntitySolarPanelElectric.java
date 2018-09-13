@@ -100,12 +100,12 @@ public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSin
 		mActive = ((aData & 1) != 0);
 	}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting && aEnergyType == mEnergyTypeEmitted;}
-	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == mFacing && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
-	@Override public long getEnergyOffered					(TagData aEnergyType, byte aSide, long aSize) {return mEnergy;}
-	@Override public long getEnergySizeOutputMin			(TagData aEnergyType, byte aSide) {return mOutput / 8;}
-	@Override public long getEnergySizeOutputMax			(TagData aEnergyType, byte aSide) {return mOutput;}
-	@Override public long getEnergySizeOutputRecommended	(TagData aEnergyType, byte aSide) {return mOutput;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting && aEnergyType == mEnergyTypeEmitted;}
+	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == mFacing && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
+	@Override public long getEnergyOffered                  (TagData aEnergyType, byte aSide, long aSize) {return mEnergy;}
+	@Override public long getEnergySizeOutputMin            (TagData aEnergyType, byte aSide) {return mOutput / 8;}
+	@Override public long getEnergySizeOutputMax            (TagData aEnergyType, byte aSide) {return mOutput;}
+	@Override public long getEnergySizeOutputRecommended    (TagData aEnergyType, byte aSide) {return mOutput;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
 	@Override public double getOfferedEnergy() {return mEmitsEnergy?0:mEnergy;}

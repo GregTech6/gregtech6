@@ -46,7 +46,7 @@ import net.minecraft.item.ItemStack;
 public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalAtum>
 	sListAtumSide = new ArrayListNoNulls<>(),
-	sListWorldSide	= new ArrayListNoNulls<>();
+	sListWorldSide  = new ArrayListNoNulls<>();
 	
 	static {
 		LH.add("gt.tileentity.portal.atum.tooltip.1", "Only works between the Atum Desert and the Overworld!");
@@ -56,9 +56,9 @@ public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
 	
 	@Override
 	public void addToolTips2(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.atum.tooltip.1"));
-		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.atum.tooltip.2"));
-		aList.add(Chat.ORANGE	+ LH.get("gt.tileentity.portal.atum.tooltip.3"));
+		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.atum.tooltip.1"));
+		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.atum.tooltip.2"));
+		aList.add(Chat.ORANGE   + LH.get("gt.tileentity.portal.atum.tooltip.3"));
 	}
 	
 	@Override
@@ -123,7 +123,7 @@ public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
 			ItemStack aStack = aPlayer.inventory.getCurrentItem();
 			if (ST.valid(aStack) && aStack.stackSize > 0 && IL.ATUM_Scarab.equal(aStack, F, T)) {
 				setPortalActive();
-				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "	Y: " + mTarget.yCoord + "	Z: " + mTarget.zCoord);
+				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
 				
 			}

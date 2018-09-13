@@ -166,9 +166,9 @@ public enum IL implements IItemContainer {
 	Module_Stone_Generator,
 	Compass_North, Compass_Face, Compass_Center, Compass_Spawn, Compass_Death,
 	Credit_Iron,
-//	Credit_Copper, Credit_Silver, Credit_Gold, Credit_Platinum, Credit_Osmium,
-//	Credit_Greg_Copper, Credit_Greg_Cupronickel, Credit_Greg_Silver, Credit_Greg_Gold, Credit_Greg_Platinum, Credit_Greg_Osmium, Credit_Greg_Naquadah, Credit_Greg_Neutronium,
-//	Coin_Gold_Ancient, Coin_Doge, Coin_Chocolate,
+//  Credit_Copper, Credit_Silver, Credit_Gold, Credit_Platinum, Credit_Osmium,
+//  Credit_Greg_Copper, Credit_Greg_Cupronickel, Credit_Greg_Silver, Credit_Greg_Gold, Credit_Greg_Platinum, Credit_Greg_Osmium, Credit_Greg_Naquadah, Credit_Greg_Neutronium,
+//  Coin_Gold_Ancient, Coin_Doge, Coin_Chocolate,
 	Cell_Universal_Fluid,
 	Cell_Empty, Cell_Water, Cell_Lava, Cell_Air, Cell_CFoam, Cell_UUM,
 	// If you want the filled Variants, just fill them using the Fluid Container Registry.
@@ -421,7 +421,7 @@ public enum IL implements IItemContainer {
 	public IItemContainer set(Item aItem) {
 		mHasNotBeenSet = F;
 		if (aItem == null) {
-//			new Exception().printStackTrace(GT_Log.deb);
+//          new Exception().printStackTrace(GT_Log.deb);
 			return this;
 		}
 		mStack = ST.amount(1, ST.make(aItem, 1, 0));
@@ -431,7 +431,7 @@ public enum IL implements IItemContainer {
 	public IItemContainer set(Item aItem, long aMeta) {
 		mHasNotBeenSet = F;
 		if (aItem == null) {
-//			new Exception().printStackTrace(GT_Log.deb);
+//          new Exception().printStackTrace(GT_Log.deb);
 			return this;
 		}
 		mStack = ST.amount(1, ST.make(aItem, 1, aMeta));
@@ -442,7 +442,7 @@ public enum IL implements IItemContainer {
 	public IItemContainer set(ItemStack aStack) {
 		mHasNotBeenSet = F;
 		if (ST.invalid(aStack)) {
-//			new Exception().printStackTrace(GT_Log.deb);
+//          new Exception().printStackTrace(GT_Log.deb);
 			return this;
 		}
 		mStack = ST.amount(1, aStack);
@@ -452,7 +452,7 @@ public enum IL implements IItemContainer {
 	public IItemContainer set(Item aItem, OreDictItemData aData, Object... aOreDict) {
 		mHasNotBeenSet = F;
 		if (aItem == null) {
-//			new Exception().printStackTrace(GT_Log.deb);
+//          new Exception().printStackTrace(GT_Log.deb);
 			return this;
 		}
 		ItemStack aStack = ST.make(aItem, 1, 0);
@@ -465,7 +465,7 @@ public enum IL implements IItemContainer {
 	public IItemContainer set(ItemStack aStack, OreDictItemData aData, Object... aOreDict) {
 		mHasNotBeenSet = F;
 		if (ST.invalid(aStack)) {
-//			new Exception().printStackTrace(DEB);
+//          new Exception().printStackTrace(DEB);
 			return this;
 		}
 		mStack = ST.amount(1, aStack);

@@ -86,10 +86,10 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_DUSTFUNNEL));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_OUTPUTS_MONKEY_WRENCH));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_DUSTFUNNEL));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_OUTPUTS_MONKEY_WRENCH));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
 	
 	@Override
@@ -203,14 +203,14 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	}
 	
 	public static IIconContainer
-	sTextureTop		= new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/colored/top"),
-	sTextureSides	= new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/colored/sides"),
-	sTextureBottom	= new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/colored/bottom"),
-	sTextureHole	= new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/colored/hole"),
-	sOverlayTop		= new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/overlay/top"),
-	sOverlaySides	= new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/overlay/sides"),
-	sOverlayBottom	= new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/overlay/bottom"),
-	sOverlayHole	= new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/overlay/hole");
+	sTextureTop     = new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/colored/top"),
+	sTextureSides   = new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/colored/sides"),
+	sTextureBottom  = new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/colored/bottom"),
+	sTextureHole    = new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/colored/hole"),
+	sOverlayTop     = new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/overlay/top"),
+	sOverlaySides   = new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/overlay/sides"),
+	sOverlayBottom  = new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/overlay/bottom"),
+	sOverlayHole    = new Textures.BlockIcons.CustomIcon("machines/tools/dust_funnel/overlay/hole");
 	
 	private ITexture mTextureSides, mTextureBottom, mTextureInput;
 	
@@ -219,17 +219,17 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 		if (aRenderPass == 0 && aSide == 0) {
 			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
 			
-			mTextureSides		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlaySides));
-			mTextureBottom		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
+			mTextureSides       = BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides   , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlaySides));
+			mTextureBottom      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
 			
 			if (mDust == 0) {
-				mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop		, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayTop)	, BlockTextureDefault.get(sTextureHole	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+				mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop       , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayTop)  , BlockTextureDefault.get(sTextureHole  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
 			} else {
 				if (UT.Code.exists(mDust, OreDictMaterial.MATERIAL_ARRAY)) {
 					OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDust];
-					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING))					, BlockTextureDefault.get(sTextureHole	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING))                   , BlockTextureDefault.get(sTextureHole  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
 				} else {
-					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F)																	, BlockTextureDefault.get(sTextureHole	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F)                                                                 , BlockTextureDefault.get(sTextureHole  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
 				}
 			}
 		}
@@ -239,13 +239,13 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return SIDES_TOP[aSide]?PX_P[16]:SIDES_BOTTOM[aSide]?PX_P[12-2*mMode]:0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_TOP[aSide]?PX_P[12]:PX_P[12-2*mMode];}
-	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_HORIZONTAL[aSide]?PX_P[2+mMode]:0.0F;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return SIDES_TOP[aSide]?PX_P[16]:SIDES_BOTTOM[aSide]?PX_P[12-2*mMode]:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_TOP[aSide]?PX_P[12]:PX_P[12-2*mMode];}
+	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_HORIZONTAL[aSide]?PX_P[2+mMode]:0.0F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	// Inventory Stuff
 	@Override public void adjacentInventoryUpdated(byte aSide, IInventory aTileEntity) {if (SIDES_VERTICAL[aSide]) updateInventory();}

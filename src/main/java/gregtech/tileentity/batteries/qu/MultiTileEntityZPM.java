@@ -71,7 +71,7 @@ public class MultiTileEntityZPM extends TileEntityBase08Battery implements IMTE_
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box( PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[ 4], PX_N[ 4]);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box( PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[ 4], PX_N[ 4]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock	, PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[ 4], PX_N[ 4]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock  , PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[ 4], PX_N[ 4]);}
 	
 	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return aDefault;}
 	@Override public byte getDisplayScaleMax() {return 15;}

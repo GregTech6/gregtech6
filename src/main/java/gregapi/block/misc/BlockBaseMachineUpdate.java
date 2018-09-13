@@ -40,7 +40,7 @@ public abstract class BlockBaseMachineUpdate extends BlockBaseMeta {
 		ITileEntityMachineBlockUpdateable.Util.registerMachineBlock(this, aBitMask);
 	}
 	
-	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ)							{if (ITileEntityMachineBlockUpdateable.Util.isMachineBlock(this, aWorld.getBlockMetadata(aX, aY, aZ)	)) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, new ChunkCoordinates(aX, aY, aZ), this, UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ)), F);}
-	@Override public void breakBlock(World aWorld, int aX, int aY, int aZ, Block aBlock, int aMetaData)	{if (ITileEntityMachineBlockUpdateable.Util.isMachineBlock(this, aMetaData								)) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, new ChunkCoordinates(aX, aY, aZ), this, UT.Code.bind4(aMetaData), T);}
+	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ)                           {if (ITileEntityMachineBlockUpdateable.Util.isMachineBlock(this, aWorld.getBlockMetadata(aX, aY, aZ)    )) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, new ChunkCoordinates(aX, aY, aZ), this, UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ)), F);}
+	@Override public void breakBlock(World aWorld, int aX, int aY, int aZ, Block aBlock, int aMetaData) {if (ITileEntityMachineBlockUpdateable.Util.isMachineBlock(this, aMetaData                              )) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, new ChunkCoordinates(aX, aY, aZ), this, UT.Code.bind4(aMetaData), T);}
 	@Override public int getMobilityFlag() {return 2;}
 }

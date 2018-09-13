@@ -59,8 +59,8 @@ public class PacketSyncDataShortAndCoverVisuals extends PacketSyncDataShort {
 	
 	private PacketSyncDataShortAndCoverVisuals(int aX, int aY, int aZ, short aData, ByteArrayDataInput aCovers) {
 		super(aX, aY, aZ, aData);
-		mCoverVisuals	= new short[] {0,0,0,0,0,0};
-		mVisualsToSync	= new boolean[] {F,F,F,F,F,F};
+		mCoverVisuals   = new short[] {0,0,0,0,0,0};
+		mVisualsToSync  = new boolean[] {F,F,F,F,F,F};
 		for (byte i = 0, j = aCovers.readByte(); i < 6; i++) if ((j & (1 << i)) != 0) {mVisualsToSync[i] = T; mCoverVisuals[i] = aCovers.readShort();}
 	}
 	

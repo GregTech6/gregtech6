@@ -74,13 +74,13 @@ public class GT_API_Post extends Abstract_Mod {
 	@Override public String getModNameForLog() {return "GT_API_POST";}
 	@Override public Abstract_Proxy getProxy() {return null;}
 	
-	@Mod.EventHandler public final void onPreLoad			(FMLPreInitializationEvent	aEvent) {onModPreInit(aEvent);}
-	@Mod.EventHandler public final void onLoad				(FMLInitializationEvent		aEvent) {onModInit(aEvent);}
-	@Mod.EventHandler public final void onPostLoad			(FMLPostInitializationEvent	aEvent) {onModPostInit(aEvent);}
-	@Mod.EventHandler public final void onServerStarting	(FMLServerStartingEvent		aEvent) {onModServerStarting(aEvent);}
-	@Mod.EventHandler public final void onServerStarted		(FMLServerStartedEvent		aEvent) {onModServerStarted(aEvent);}
-	@Mod.EventHandler public final void onServerStopping	(FMLServerStoppingEvent		aEvent) {onModServerStopping(aEvent);}
-	@Mod.EventHandler public final void onServerStopped		(FMLServerStoppedEvent		aEvent) {onModServerStopped(aEvent);}
+	@Mod.EventHandler public final void onPreLoad           (FMLPreInitializationEvent  aEvent) {onModPreInit(aEvent);}
+	@Mod.EventHandler public final void onLoad              (FMLInitializationEvent     aEvent) {onModInit(aEvent);}
+	@Mod.EventHandler public final void onPostLoad          (FMLPostInitializationEvent aEvent) {onModPostInit(aEvent);}
+	@Mod.EventHandler public final void onServerStarting    (FMLServerStartingEvent     aEvent) {onModServerStarting(aEvent);}
+	@Mod.EventHandler public final void onServerStarted     (FMLServerStartedEvent      aEvent) {onModServerStarted(aEvent);}
+	@Mod.EventHandler public final void onServerStopping    (FMLServerStoppingEvent     aEvent) {onModServerStopping(aEvent);}
+	@Mod.EventHandler public final void onServerStopped     (FMLServerStoppedEvent      aEvent) {onModServerStopped(aEvent);}
 	
 	@Override
 	public void onModPreInit2(FMLPreInitializationEvent aEvent) {
@@ -111,25 +111,25 @@ public class GT_API_Post extends Abstract_Mod {
 		new LoaderUnificationTargets().run();
 		
 		if (MD.MET.mLoaded) {
-			MT.OREMATS.Bauxite		.addOreByProducts(MT.Alduorite		);
-			MT.OREMATS.Chalcopyrite	.addOreByProducts(MT.Infuscolium	);
-			MT.OREMATS.Scheelite	.addOreByProducts(MT.Rubracium		);
-			MT.OREMATS.Pentlandite	.addOreByProducts(MT.Meutoite		);
-			MT.OREMATS.Magnesite	.addOreByProducts(MT.Lemurite		);
-			MT.OREMATS.Stibnite		.addOreByProducts(MT.Ceruclase		);
-			MT.TiO2					.addOreByProducts(MT.Atlarus		);
-			MT.OREMATS.Garnierite	.addOreByProducts(MT.Oureclase		);
-			MT.OREMATS.Cooperite	.addOreByProducts(MT.Kalendrite		);
-			MT.OREMATS.Ilmenite		.addOreByProducts(MT.Orichalcum		);
-			MT.OREMATS.Sphalerite	.addOreByProducts(MT.Carmot			);
-			MT.OREMATS.Cinnabar		.addOreByProducts(MT.Sanguinite		);
-			MT.OREMATS.Malachite	.addOreByProducts(MT.Vyroxeres		);
-			MT.MnO2					.addOreByProducts(MT.Eximite		);
-			MT.OREMATS.Cobaltite	.addOreByProducts(MT.Prometheum		);
-			MT.OREMATS.Cassiterite	.addOreByProducts(MT.Ignatius		);
-			MT.OREMATS.Wolframite	.addOreByProducts(MT.Vulcanite		);
-			MT.Fe2O3				.addOreByProducts(MT.DeepIron		);
-			MT.OREMATS.Magnetite	.addOreByProducts(MT.ShadowIron		);
+			MT.OREMATS.Bauxite      .addOreByProducts(MT.Alduorite      );
+			MT.OREMATS.Chalcopyrite .addOreByProducts(MT.Infuscolium    );
+			MT.OREMATS.Scheelite    .addOreByProducts(MT.Rubracium      );
+			MT.OREMATS.Pentlandite  .addOreByProducts(MT.Meutoite       );
+			MT.OREMATS.Magnesite    .addOreByProducts(MT.Lemurite       );
+			MT.OREMATS.Stibnite     .addOreByProducts(MT.Ceruclase      );
+			MT.TiO2                 .addOreByProducts(MT.Atlarus        );
+			MT.OREMATS.Garnierite   .addOreByProducts(MT.Oureclase      );
+			MT.OREMATS.Cooperite    .addOreByProducts(MT.Kalendrite     );
+			MT.OREMATS.Ilmenite     .addOreByProducts(MT.Orichalcum     );
+			MT.OREMATS.Sphalerite   .addOreByProducts(MT.Carmot         );
+			MT.OREMATS.Cinnabar     .addOreByProducts(MT.Sanguinite     );
+			MT.OREMATS.Malachite    .addOreByProducts(MT.Vyroxeres      );
+			MT.MnO2                 .addOreByProducts(MT.Eximite        );
+			MT.OREMATS.Cobaltite    .addOreByProducts(MT.Prometheum     );
+			MT.OREMATS.Cassiterite  .addOreByProducts(MT.Ignatius       );
+			MT.OREMATS.Wolframite   .addOreByProducts(MT.Vulcanite      );
+			MT.Fe2O3                .addOreByProducts(MT.DeepIron       );
+			MT.OREMATS.Magnetite    .addOreByProducts(MT.ShadowIron     );
 		}
 		if (MD.Mek.mLoaded) {
 			MT.OREMATS.Galena.addOreByProducts(MT.FakeOsmium);
@@ -153,7 +153,7 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.Am.addOreByProducts(MT.Blutonium);
 		}
 		if (MD.AE.mLoaded) {
-			OP.gem	.disableItemGeneration(MT.CertusQuartz, MT.Fluix);
+			OP.gem  .disableItemGeneration(MT.CertusQuartz, MT.Fluix);
 			OP.dust .disableItemGeneration(MT.CertusQuartz, MT.Fluix);
 		}
 		if (MD.AA.mLoaded) {
@@ -168,21 +168,21 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		// Atum violates the "Items have to be created in preInit" Rule...
 		if (MD.ATUM.mLoaded) {
-			IL.ATUM_Scarab		.set(ST.make(MD.ATUM, "item.scarab"	, 1, 0), new OreDictItemData(MT.Au, 4*U, MT.Diamond, U));
-			IL.ATUM_Limestone	.set(ST.make(MD.ATUM, "tile.stone"	, 1, 0), OP.stone.dat(MT.Limestone));
-			IL.ATUM_Limecobble	.set(ST.make(MD.ATUM, "tile.cobble"	, 1, 0), OP.stone.dat(MT.Limestone));
+			IL.ATUM_Scarab      .set(ST.make(MD.ATUM, "item.scarab" , 1, 0), new OreDictItemData(MT.Au, 4*U, MT.Diamond, U));
+			IL.ATUM_Limestone   .set(ST.make(MD.ATUM, "tile.stone"  , 1, 0), OP.stone.dat(MT.Limestone));
+			IL.ATUM_Limecobble  .set(ST.make(MD.ATUM, "tile.cobble" , 1, 0), OP.stone.dat(MT.Limestone));
 			
-			OM.reg("cropDate"				, ST.make(MD.ATUM, "item.date", 1, 0));
-			OM.reg("cropFlax"				, ST.make(MD.ATUM, "item.flax", 1, 0));
-			OM.reg("seedFlax"				, ST.make(MD.ATUM, "item.flaxSeeds", 1, 0));
-			OM.reg("itemPelt"				, ST.make(MD.ATUM, "item.wolfPelt", 1, 0));
-			OM.reg(OP.dust, MT.Ectoplasm	, ST.make(MD.ATUM, "item.ectoplasm", 1, 0));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.ironOre"		, 1, 0), OP.oreLimestone.dat(MT.Fe			));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.goldOre"		, 1, 0), OP.oreLimestone.dat(MT.Au			));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.redstoneOre"	, 1, 0), OP.oreLimestone.dat(MT.Redstone	));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.lapisOre"		, 1, 0), OP.oreLimestone.dat(MT.Lapis		));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.coalOre"		, 1, 0), OP.oreLimestone.dat(MT.Coal		));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.diamondOre"		, 1, 0), OP.oreLimestone.dat(MT.Diamond		));
+			OM.reg("cropDate"               , ST.make(MD.ATUM, "item.date", 1, 0));
+			OM.reg("cropFlax"               , ST.make(MD.ATUM, "item.flax", 1, 0));
+			OM.reg("seedFlax"               , ST.make(MD.ATUM, "item.flaxSeeds", 1, 0));
+			OM.reg("itemPelt"               , ST.make(MD.ATUM, "item.wolfPelt", 1, 0));
+			OM.reg(OP.dust, MT.Ectoplasm    , ST.make(MD.ATUM, "item.ectoplasm", 1, 0));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.ironOre"        , 1, 0), OP.oreLimestone.dat(MT.Fe          ));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.goldOre"        , 1, 0), OP.oreLimestone.dat(MT.Au          ));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.redstoneOre"    , 1, 0), OP.oreLimestone.dat(MT.Redstone    ));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.lapisOre"       , 1, 0), OP.oreLimestone.dat(MT.Lapis       ));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.coalOre"        , 1, 0), OP.oreLimestone.dat(MT.Coal        ));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.ATUM, "tile.diamondOre"     , 1, 0), OP.oreLimestone.dat(MT.Diamond     ));
 			
 			OM.data(MD.ATUM, "item.stoneChunk", 1, 0, MT.Limestone, U);
 			OM.data(MD.ATUM, "tile.sand", 1, W, MT.Sand, U);
@@ -195,117 +195,117 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.ATUM, "tile.thinFramedStainedGlass", 1, W, MT.Glass, 3*U8);
 			OM.data(MD.ATUM, "tile.thinCrystalStainedGlass", 1, W, MT.Glass, 3*U8);
 			
-			OM.data(MD.ATUM, "item.loot", 1,  2, MT.Ag	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,  3, MT.Ag	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,  4, MT.Au	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,  5, MT.Au	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,  6, MT.Au	, 2*U, MT.BlueSapphire	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,  7, MT.Au	, 2*U, MT.BlueSapphire	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,  8, MT.Au	, 2*U, MT.Ruby			, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,  9, MT.Au	, 2*U, MT.Ruby			, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1, 10, MT.Au	, 2*U, MT.Emerald		, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1, 11, MT.Au	, 2*U, MT.Emerald		, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1, 12, MT.Au	, 2*U, MT.Diamond		, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1, 13, MT.Au	, 2*U, MT.Diamond		, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1, 34, MT.Ag	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 35, MT.Ag	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 36, MT.Au	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 37, MT.Au	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 38, MT.Au	,	U, MT.BlueSapphire	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 39, MT.Au	,	U, MT.BlueSapphire	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 40, MT.Au	,	U, MT.Ruby			,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 41, MT.Au	,	U, MT.Ruby			,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 42, MT.Au	,	U, MT.Emerald		,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 43, MT.Au	,	U, MT.Emerald		,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 44, MT.Au	,	U, MT.Diamond		,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 45, MT.Au	,	U, MT.Diamond		,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 66, MT.Ag	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 67, MT.Ag	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 68, MT.Au	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 69, MT.Au	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 70, MT.Au	,	U, MT.BlueSapphire	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 71, MT.Au	,	U, MT.BlueSapphire	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 72, MT.Au	,	U, MT.Ruby			,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 73, MT.Au	,	U, MT.Ruby			,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 74, MT.Au	,	U, MT.Emerald		,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 75, MT.Au	,	U, MT.Emerald		,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 76, MT.Au	,	U, MT.Diamond		,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 77, MT.Au	,	U, MT.Diamond		,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 98, MT.Ag	,	U);
-			OM.data(MD.ATUM, "item.loot", 1, 99, MT.Ag	,	U);
-			OM.data(MD.ATUM, "item.loot", 1,100, MT.Au	,	U);
-			OM.data(MD.ATUM, "item.loot", 1,101, MT.Au	,	U);
-			OM.data(MD.ATUM, "item.loot", 1,102, MT.Au	,	U, MT.BlueSapphire	,	U);
-			OM.data(MD.ATUM, "item.loot", 1,103, MT.Au	,	U, MT.BlueSapphire	,	U);
-			OM.data(MD.ATUM, "item.loot", 1,104, MT.Au	,	U, MT.Ruby			,	U);
-			OM.data(MD.ATUM, "item.loot", 1,105, MT.Au	,	U, MT.Ruby			,	U);
-			OM.data(MD.ATUM, "item.loot", 1,106, MT.Au	,	U, MT.Emerald		,	U);
-			OM.data(MD.ATUM, "item.loot", 1,107, MT.Au	,	U, MT.Emerald		,	U);
-			OM.data(MD.ATUM, "item.loot", 1,108, MT.Au	,	U, MT.Diamond		,	U);
-			OM.data(MD.ATUM, "item.loot", 1,109, MT.Au	,	U, MT.Diamond		,	U);
-			OM.data(MD.ATUM, "item.loot", 1,130, MT.Ag	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,131, MT.Ag	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,132, MT.Au	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,133, MT.Au	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,134, MT.Au	, 2*U, MT.BlueSapphire	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,135, MT.Au	, 2*U, MT.BlueSapphire	, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,136, MT.Au	, 2*U, MT.Ruby			, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,137, MT.Au	, 2*U, MT.Ruby			, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,138, MT.Au	, 2*U, MT.Emerald		, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,139, MT.Au	, 2*U, MT.Emerald		, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,140, MT.Au	, 2*U, MT.Diamond		, 2*U);
-			OM.data(MD.ATUM, "item.loot", 1,141, MT.Au	, 2*U, MT.Diamond		, 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,  2, MT.Ag  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,  3, MT.Ag  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,  4, MT.Au  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,  5, MT.Au  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,  6, MT.Au  , 2*U, MT.BlueSapphire  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,  7, MT.Au  , 2*U, MT.BlueSapphire  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,  8, MT.Au  , 2*U, MT.Ruby          , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,  9, MT.Au  , 2*U, MT.Ruby          , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1, 10, MT.Au  , 2*U, MT.Emerald       , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1, 11, MT.Au  , 2*U, MT.Emerald       , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1, 12, MT.Au  , 2*U, MT.Diamond       , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1, 13, MT.Au  , 2*U, MT.Diamond       , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1, 34, MT.Ag  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 35, MT.Ag  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 36, MT.Au  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 37, MT.Au  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 38, MT.Au  ,   U, MT.BlueSapphire  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 39, MT.Au  ,   U, MT.BlueSapphire  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 40, MT.Au  ,   U, MT.Ruby          ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 41, MT.Au  ,   U, MT.Ruby          ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 42, MT.Au  ,   U, MT.Emerald       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 43, MT.Au  ,   U, MT.Emerald       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 44, MT.Au  ,   U, MT.Diamond       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 45, MT.Au  ,   U, MT.Diamond       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 66, MT.Ag  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 67, MT.Ag  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 68, MT.Au  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 69, MT.Au  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 70, MT.Au  ,   U, MT.BlueSapphire  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 71, MT.Au  ,   U, MT.BlueSapphire  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 72, MT.Au  ,   U, MT.Ruby          ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 73, MT.Au  ,   U, MT.Ruby          ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 74, MT.Au  ,   U, MT.Emerald       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 75, MT.Au  ,   U, MT.Emerald       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 76, MT.Au  ,   U, MT.Diamond       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 77, MT.Au  ,   U, MT.Diamond       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 98, MT.Ag  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1, 99, MT.Ag  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,100, MT.Au  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,101, MT.Au  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,102, MT.Au  ,   U, MT.BlueSapphire  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,103, MT.Au  ,   U, MT.BlueSapphire  ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,104, MT.Au  ,   U, MT.Ruby          ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,105, MT.Au  ,   U, MT.Ruby          ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,106, MT.Au  ,   U, MT.Emerald       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,107, MT.Au  ,   U, MT.Emerald       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,108, MT.Au  ,   U, MT.Diamond       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,109, MT.Au  ,   U, MT.Diamond       ,   U);
+			OM.data(MD.ATUM, "item.loot", 1,130, MT.Ag  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,131, MT.Ag  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,132, MT.Au  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,133, MT.Au  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,134, MT.Au  , 2*U, MT.BlueSapphire  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,135, MT.Au  , 2*U, MT.BlueSapphire  , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,136, MT.Au  , 2*U, MT.Ruby          , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,137, MT.Au  , 2*U, MT.Ruby          , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,138, MT.Au  , 2*U, MT.Emerald       , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,139, MT.Au  , 2*U, MT.Emerald       , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,140, MT.Au  , 2*U, MT.Diamond       , 2*U);
+			OM.data(MD.ATUM, "item.loot", 1,141, MT.Au  , 2*U, MT.Diamond       , 2*U);
 		}
 		
 		// And Project Red violates that Rule aswell...
 		if (MD.PR.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.ingot	, MT.RedAlloy					, ST.make(MD.PR, "projectred.core.part", 1, 10));
-			OreDictManager.INSTANCE.setTarget(OP.ingot	, MT.ElectrotineAlloy			, ST.make(MD.PR, "projectred.core.part", 1, 55));
-			OreDictManager.INSTANCE.setTarget(OP.dust	, MT.Electrotine				, ST.make(MD.PR, "projectred.core.part", 1, 56));
+			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , ST.make(MD.PR, "projectred.core.part", 1, 10));
+			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.ElectrotineAlloy           , ST.make(MD.PR, "projectred.core.part", 1, 55));
+			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Electrotine                , ST.make(MD.PR, "projectred.core.part", 1, 56));
 		}
 		
 		// Okay I should not have wondered about Blue Power doing the same garbage considering Project Red...
 		if (MD.BP.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.ingot	, MT.RedAlloy					, ST.make(MD.BP, "red_alloy_ingot", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.ingot	, MT.BlueAlloy					, ST.make(MD.BP, "blue_alloy_ingot", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.ingot	, MT.PurpleAlloy				, ST.make(MD.BP, "purple_alloy_ingot", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.dust	, MT.Teslatite					, ST.make(MD.BP, "teslatite_dust", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.dust	, MT.UNUSED.InfusedTeslatite	, ST.make(MD.BP, "infused_teslatite_dust", 1, 0));
-			OM.reg("seedFlax"															, ST.make(MD.BP, "flax_seeds", 1, 0));
-			OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple]								, ST.make(MD.BP, "indigo_dye", 1, 0));
-			OM.reg("cropIndigo"															, ST.make(MD.BP, "indigo_flower", 1, 0));
-			OM.reg(OP.dustTiny.dat(MT.Zn)												, ST.make(MD.BP, "zinc_tiny_dust", 1, 0));
-			OM.reg(OP.crushed.dat(MT.Zn)												, ST.make(MD.BP, "zinc_ore_crushed", 1, 0));
-			OM.reg(OP.crushedPurified.dat(MT.Zn)										, ST.make(MD.BP, "zinc_ore_purified", 1, 0));
-			OM.reg(OP.boule.dat(MT.Si)													, ST.make(MD.BP, "silicon_boule", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , ST.make(MD.BP, "red_alloy_ingot", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.BlueAlloy                  , ST.make(MD.BP, "blue_alloy_ingot", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.PurpleAlloy                , ST.make(MD.BP, "purple_alloy_ingot", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Teslatite                  , ST.make(MD.BP, "teslatite_dust", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.UNUSED.InfusedTeslatite    , ST.make(MD.BP, "infused_teslatite_dust", 1, 0));
+			OM.reg("seedFlax"                                                           , ST.make(MD.BP, "flax_seeds", 1, 0));
+			OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple]                               , ST.make(MD.BP, "indigo_dye", 1, 0));
+			OM.reg("cropIndigo"                                                         , ST.make(MD.BP, "indigo_flower", 1, 0));
+			OM.reg(OP.dustTiny.dat(MT.Zn)                                               , ST.make(MD.BP, "zinc_tiny_dust", 1, 0));
+			OM.reg(OP.crushed.dat(MT.Zn)                                                , ST.make(MD.BP, "zinc_ore_crushed", 1, 0));
+			OM.reg(OP.crushedPurified.dat(MT.Zn)                                        , ST.make(MD.BP, "zinc_ore_purified", 1, 0));
+			OM.reg(OP.boule.dat(MT.Si)                                                  , ST.make(MD.BP, "silicon_boule", 1, 0));
 		}
 		
 		// Yay for Chickenbones doing it wrong, I guess...
 		if (MD.WR_CBE_C.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.stick	, MT.Obsidian					, ST.make(MD.WR_CBE_C, "obsidianStick", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.stick  , MT.Obsidian                   , ST.make(MD.WR_CBE_C, "obsidianStick", 1, 0));
 		}
 		
 		// Oh look, Matter Overdrive does this shit too...
 		if (MD.MO.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.gem	, MT.Dilithium					, ST.make(MD.MO, "dilithium_crystal", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.dust	, MT.TritaniumAlloy				, ST.make(MD.MO, "tritanium_dust", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.nugget	, MT.TritaniumAlloy				, ST.make(MD.MO, "tritanium_nugget", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.ingot	, MT.TritaniumAlloy				, ST.make(MD.MO, "tritanium_ingot", 1, 0));
-			OreDictManager.INSTANCE.setTarget(OP.plate	, MT.TritaniumAlloy				, ST.make(MD.MO, "tritanium_plate", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.gem    , MT.Dilithium                  , ST.make(MD.MO, "dilithium_crystal", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.TritaniumAlloy             , ST.make(MD.MO, "tritanium_dust", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.nugget , MT.TritaniumAlloy             , ST.make(MD.MO, "tritanium_nugget", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.TritaniumAlloy             , ST.make(MD.MO, "tritanium_ingot", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.plate  , MT.TritaniumAlloy             , ST.make(MD.MO, "tritanium_plate", 1, 0));
 		}
 		
 		// ThermalExpansion gets on this ShitList too I guess...
 		if (MD.TE.mLoaded) {
-			OM.data(MD.TE, "Tank"	, 1,   1, ANY.Cu		,  U * 1, MT.Glass	,  U * 4);
-			OM.data(MD.TE, "Tank"	, 1,   2, MT.Invar		,  U * 4, ANY.Cu	,  U * 1, MT.Glass	,  U * 4);
-			OM.data(MD.TE, "Tank"	, 1,   3, MT.Invar		,  U * 4, ANY.Cu	,  U * 1, MT.Glass	,  U * 4);
-			OM.data(MD.TE, "Tank"	, 1,   4, MT.Enderium	,  U * 4, MT.Invar	,  U * 4, ANY.Cu	,  U * 1, MT.Glass	,  U * 4);
+			OM.data(MD.TE, "Tank"   , 1,   1, ANY.Cu        ,  U * 1, MT.Glass  ,  U * 4);
+			OM.data(MD.TE, "Tank"   , 1,   2, MT.Invar      ,  U * 4, ANY.Cu    ,  U * 1, MT.Glass  ,  U * 4);
+			OM.data(MD.TE, "Tank"   , 1,   3, MT.Invar      ,  U * 4, ANY.Cu    ,  U * 1, MT.Glass  ,  U * 4);
+			OM.data(MD.TE, "Tank"   , 1,   4, MT.Enderium   ,  U * 4, MT.Invar  ,  U * 4, ANY.Cu    ,  U * 1, MT.Glass  ,  U * 4);
 		}
 		
 		// Wow, Ars Magica too is on this List, at least for its Blocks...
 		if (MD.ARS.mLoaded) {
-			IL.ARS_Cerublossom	.set(ST.make(MD.ARS, "blueOrchid", 1, 0), null, "flowerCerublossom");
-			IL.ARS_DesertNova	.set(ST.make(MD.ARS, "desertNova", 1, 0), null, "flowerDesertNova");
+			IL.ARS_Cerublossom  .set(ST.make(MD.ARS, "blueOrchid", 1, 0), null, "flowerCerublossom");
+			IL.ARS_DesertNova   .set(ST.make(MD.ARS, "desertNova", 1, 0), null, "flowerDesertNova");
 		}
 		
 		// Cooking for Blockheads is here too!...
@@ -317,12 +317,12 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.GoG.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.chunkGt, MT.Fe, ST.make(MD.GoG, "item.GrimoireOfGaia.Shard", 1, 0));
 			OreDictManager.INSTANCE.setTarget(OP.chunkGt, MT.Au, ST.make(MD.GoG, "item.GrimoireOfGaia.Shard", 1, 1));
-			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"		, 1, 2, MT.Diamond		,  U4);
-			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"		, 1, 3, MT.Emerald		,  U4);
-			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"		, 1, 4, MT.NetherStar	,  U4);
-			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"		, 1, 5, MT.EnderPearl	,  U4);
-			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"		, 1, 6, MT.Blaze		,  U8);
-			OM.data(MD.GoG, "item.GrimoireOfGaia.Fragment"	, 1, 0, MT.Emerald		,  U8);
+			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"     , 1, 2, MT.Diamond      ,  U4);
+			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"     , 1, 3, MT.Emerald      ,  U4);
+			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"     , 1, 4, MT.NetherStar   ,  U4);
+			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"     , 1, 5, MT.EnderPearl   ,  U4);
+			OM.data(MD.GoG, "item.GrimoireOfGaia.Shard"     , 1, 6, MT.Blaze        ,  U8);
+			OM.data(MD.GoG, "item.GrimoireOfGaia.Fragment"  , 1, 0, MT.Emerald      ,  U8);
 		}
 		
 		// Seems like it isn't "better" in all aspects.
@@ -335,11 +335,11 @@ public class GT_API_Post extends Abstract_Mod {
 	@Override
 	public void onModPostInit2(FMLPostInitializationEvent aEvent) {
 		OUT.println(getModNameForLog() + ": Checking IC2 Recipe Lists.");
-		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES	) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
-		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES	) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
-		if (DISABLE_ALL_IC2_MACERATOR_RECIPES	) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
-		if (DISABLE_ALL_IC2_OREWASHER_RECIPES	) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
-		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES	) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
+		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES  ) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
+		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES   ) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
+		if (DISABLE_ALL_IC2_MACERATOR_RECIPES   ) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
+		if (DISABLE_ALL_IC2_OREWASHER_RECIPES   ) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
+		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES  ) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
 		
 		OUT.println(getModNameForLog() + ": Registering things that are considered Flowers by Bumblebees.");
 		if (MD.BoP.mLoaded) {
@@ -376,46 +376,46 @@ public class GT_API_Post extends Abstract_Mod {
 				}
 			}
 			if ("enchantment.Cold Touch".equalsIgnoreCase(tEnchant.getName())) {
-				MT.Ice					.addEnchantmentForTools(tEnchant, 1);
-				MT.Snow					.addEnchantmentForTools(tEnchant, 1);
-				MT.FrozenIron			.addEnchantmentForTools(tEnchant, 2);
-				MT.Blizz				.addEnchantmentForTools(tEnchant, 3);
-				MT.Frezarite			.addEnchantmentForTools(tEnchant, 4);
-				MT.InfusedWater			.addEnchantmentForTools(tEnchant, 4);
-				MT.Cryotheum			.addEnchantmentForTools(tEnchant, 5);
+				MT.Ice                  .addEnchantmentForTools(tEnchant, 1);
+				MT.Snow                 .addEnchantmentForTools(tEnchant, 1);
+				MT.FrozenIron           .addEnchantmentForTools(tEnchant, 2);
+				MT.Blizz                .addEnchantmentForTools(tEnchant, 3);
+				MT.Frezarite            .addEnchantmentForTools(tEnchant, 4);
+				MT.InfusedWater         .addEnchantmentForTools(tEnchant, 4);
+				MT.Cryotheum            .addEnchantmentForTools(tEnchant, 5);
 			}
 			if ("enchantment.frost_walker".equalsIgnoreCase(tEnchant.getName())) {
-				MT.Ice					.addEnchantmentForArmors(tEnchant, 1);
-				MT.Snow					.addEnchantmentForArmors(tEnchant, 1);
-				MT.FrozenIron			.addEnchantmentForArmors(tEnchant, 1);
-				MT.Blizz				.addEnchantmentForArmors(tEnchant, 1);
-				MT.Frezarite			.addEnchantmentForArmors(tEnchant, 1);
-				MT.InfusedWater			.addEnchantmentForArmors(tEnchant, 1);
-				MT.Cryotheum			.addEnchantmentForArmors(tEnchant, 1);
+				MT.Ice                  .addEnchantmentForArmors(tEnchant, 1);
+				MT.Snow                 .addEnchantmentForArmors(tEnchant, 1);
+				MT.FrozenIron           .addEnchantmentForArmors(tEnchant, 1);
+				MT.Blizz                .addEnchantmentForArmors(tEnchant, 1);
+				MT.Frezarite            .addEnchantmentForArmors(tEnchant, 1);
+				MT.InfusedWater         .addEnchantmentForArmors(tEnchant, 1);
+				MT.Cryotheum            .addEnchantmentForArmors(tEnchant, 1);
 			}
 			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(tEnchant.getName())) {
 				for (OreDictMaterial tMat : ANY.Emerald.mToThis) tMat.addEnchantmentForTools(tEnchant, 5);
 				for (OreDictMaterial tMat : ANY.Sapphire.mToThis) tMat.addEnchantmentForTools(tEnchant, 3);
-				MT.Spinel				.addEnchantmentForTools(tEnchant, 3);
-				MT.BalasRuby			.addEnchantmentForTools(tEnchant, 3);
-				MT.Almandine			.addEnchantmentForTools(tEnchant, 2);
-				MT.Grossular			.addEnchantmentForTools(tEnchant, 2);
-				MT.Pyrope				.addEnchantmentForTools(tEnchant, 2);
-				MT.Spessartine			.addEnchantmentForTools(tEnchant, 2);
-				MT.Andradite			.addEnchantmentForTools(tEnchant, 2);
-				MT.Uvarovite			.addEnchantmentForTools(tEnchant, 2);
-				MT.Topaz				.addEnchantmentForTools(tEnchant, 5);
-				MT.BlueTopaz			.addEnchantmentForTools(tEnchant, 5);
-				MT.Tanzanite			.addEnchantmentForTools(tEnchant, 4);
-				MT.Alexandrite			.addEnchantmentForTools(tEnchant, 5);
-				MT.Opal					.addEnchantmentForTools(tEnchant, 4);
-				MT.Jasper				.addEnchantmentForTools(tEnchant, 2);
-				MT.Olivine				.addEnchantmentForTools(tEnchant, 2);
-				MT.Amethyst				.addEnchantmentForTools(tEnchant, 3);
-				MT.Dioptase				.addEnchantmentForTools(tEnchant, 3);
-				MT.Jade					.addEnchantmentForTools(tEnchant, 7);
-				MT.Craponite			.addEnchantmentForTools(tEnchant, 1);
-				MT.EnderAmethyst		.addEnchantmentForTools(tEnchant, 5);
+				MT.Spinel               .addEnchantmentForTools(tEnchant, 3);
+				MT.BalasRuby            .addEnchantmentForTools(tEnchant, 3);
+				MT.Almandine            .addEnchantmentForTools(tEnchant, 2);
+				MT.Grossular            .addEnchantmentForTools(tEnchant, 2);
+				MT.Pyrope               .addEnchantmentForTools(tEnchant, 2);
+				MT.Spessartine          .addEnchantmentForTools(tEnchant, 2);
+				MT.Andradite            .addEnchantmentForTools(tEnchant, 2);
+				MT.Uvarovite            .addEnchantmentForTools(tEnchant, 2);
+				MT.Topaz                .addEnchantmentForTools(tEnchant, 5);
+				MT.BlueTopaz            .addEnchantmentForTools(tEnchant, 5);
+				MT.Tanzanite            .addEnchantmentForTools(tEnchant, 4);
+				MT.Alexandrite          .addEnchantmentForTools(tEnchant, 5);
+				MT.Opal                 .addEnchantmentForTools(tEnchant, 4);
+				MT.Jasper               .addEnchantmentForTools(tEnchant, 2);
+				MT.Olivine              .addEnchantmentForTools(tEnchant, 2);
+				MT.Amethyst             .addEnchantmentForTools(tEnchant, 3);
+				MT.Dioptase             .addEnchantmentForTools(tEnchant, 3);
+				MT.Jade                 .addEnchantmentForTools(tEnchant, 7);
+				MT.Craponite            .addEnchantmentForTools(tEnchant, 1);
+				MT.EnderAmethyst        .addEnchantmentForTools(tEnchant, 5);
 			}
 		}
 		
@@ -433,11 +433,11 @@ public class GT_API_Post extends Abstract_Mod {
 	
 	@Override
 	public void onModServerStarting2(FMLServerStartingEvent aEvent) {
-		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES	) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
-		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES	) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
-		if (DISABLE_ALL_IC2_MACERATOR_RECIPES	) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
-		if (DISABLE_ALL_IC2_OREWASHER_RECIPES	) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
-		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES	) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
+		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES  ) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
+		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES   ) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
+		if (DISABLE_ALL_IC2_MACERATOR_RECIPES   ) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
+		if (DISABLE_ALL_IC2_OREWASHER_RECIPES   ) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
+		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES  ) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
 	}
 	
 	@Override public void onModServerStarted2(FMLServerStartedEvent aEvent) {/**/}

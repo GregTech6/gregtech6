@@ -162,13 +162,13 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDE_X_NEG==mFacing?15:SIDE_X_POS==mFacing?0:1], PX_P[SIDE_Y_NEG==mFacing?15:SIDE_Y_POS==mFacing?0:1], PX_P[SIDE_Z_NEG==mFacing?15:SIDE_Z_POS==mFacing?0:1], PX_N[SIDE_X_POS==mFacing?15:SIDE_X_NEG==mFacing?0:1], PX_N[SIDE_Y_POS==mFacing?15:SIDE_Y_NEG==mFacing?0:1], PX_N[SIDE_Z_POS==mFacing?15:SIDE_Z_NEG==mFacing?0:1]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[SIDE_X_NEG==mFacing?15:SIDE_X_POS==mFacing?0:1], PX_P[SIDE_Y_NEG==mFacing?15:SIDE_Y_POS==mFacing?0:1], PX_P[SIDE_Z_NEG==mFacing?15:SIDE_Z_POS==mFacing?0:1], PX_N[SIDE_X_POS==mFacing?15:SIDE_X_NEG==mFacing?0:1], PX_N[SIDE_Y_POS==mFacing?15:SIDE_Y_NEG==mFacing?0:1], PX_N[SIDE_Z_POS==mFacing?15:SIDE_Z_NEG==mFacing?0:1]);}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[15]:0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[15]:0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return aSide==mFacing?PX_N[1]:0.0F;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return F;}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[15]:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[15]:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return aSide==mFacing?PX_N[1]:0.0F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	

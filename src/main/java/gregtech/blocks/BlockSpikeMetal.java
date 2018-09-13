@@ -82,12 +82,12 @@ public class BlockSpikeMetal extends BlockBaseSpike {
 				if (UT.Entities.isSlimeCreature((EntityLivingBase)aEntity))
 				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 20.0F : 10.0F);
 				else if (!(aEntity instanceof EntityIronGolem || aEntity instanceof EntitySkeleton))
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?	2.0F :	1.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?  2.0F :  1.0F);
 			} else {
 				if (((EntityLivingBase)aEntity).getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD)
 				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 20.0F : 10.0F);
 				else if (!(aEntity instanceof EntityIronGolem || aEntity instanceof EntitySkeleton || aEntity instanceof EntitySlime))
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?	2.0F :	1.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?  2.0F :  1.0F);
 			}
 		}
 	}

@@ -60,7 +60,7 @@ public class GT_Spray_Ice_Item extends GT_Tool_Item {
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
 		if (aBlock == null) return false;
 		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
-//		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+//      TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
 		
 		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water) {
 			if (aMeta == 0 && GT_ModHandler.damageOrDechargeItem(aStack, 1, 1000, aPlayer)) {

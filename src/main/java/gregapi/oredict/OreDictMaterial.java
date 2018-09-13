@@ -76,7 +76,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 * I have to use an ID based System, as Item MetaData is the only proper way to differentiate between Items reliably within all Mods.
 	 * 
 	 * <BR><BR> My ID Range, do not touch unless you are me.
-	 * <BR>[	0: 9999] Gregorius Techneticies (And this API)
+	 * <BR>[    0: 9999] Gregorius Techneticies (And this API)
 	 * 
 	 * <BR><BR>The large Ranges (given to people, who I expect to add many new Materials)
 	 * 
@@ -256,18 +256,18 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public OreDictMaterial mHandleMaterial = this;
 	/** The Targets for certain kinds of Processing for this Material */
 	public OreDictMaterialStack
-	mTargetCrushing		= OM.stack(this, U),
-	mTargetPulver		= OM.stack(this, U),
-	mTargetSmelting		= OM.stack(this, U),
-	mTargetSolidifying	= OM.stack(this, U),
-	mTargetSmashing		= OM.stack(this, U),
-	mTargetCutting		= OM.stack(this, U),
-	mTargetWorking		= OM.stack(this, U),
-	mTargetForging		= OM.stack(this, U),
-	mTargetBurning		= OM.stack(this, 0), // The remaining Material when being burned. Used for getting the Ashes.
-	mTargetBending		= OM.stack(this, U),
-	mTargetCompressing	= OM.stack(this, U);
-	/**	 */
+	mTargetCrushing     = OM.stack(this, U),
+	mTargetPulver       = OM.stack(this, U),
+	mTargetSmelting     = OM.stack(this, U),
+	mTargetSolidifying  = OM.stack(this, U),
+	mTargetSmashing     = OM.stack(this, U),
+	mTargetCutting      = OM.stack(this, U),
+	mTargetWorking      = OM.stack(this, U),
+	mTargetForging      = OM.stack(this, U),
+	mTargetBurning      = OM.stack(this, 0), // The remaining Material when being burned. Used for getting the Ashes.
+	mTargetBending      = OM.stack(this, U),
+	mTargetCompressing  = OM.stack(this, U);
+	/**  */
 	public long mLiquidUnit = U, mGasUnit = U, mPlasmaUnit = U;
 	/** References to this Materials Fluid States. The amount of the FluidStack equals one Material Unit. It is usually either 144 or 1000, but other amounts are possible. Use "Util.translateUnits" for easy Math. */
 	public FluidStack mLiquid, mGas, mPlasma;
@@ -422,14 +422,14 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		double tDivider = 0.0D, tProtons = 0.0D, tElectrons = 0.0D, tNeutrons = 0.0D, tMass = 0.0D, tGramPerCubicCentimeter = 0.0D, tMeltingPoint = 0.0D, tBoilingPoint = 0.0D, tPlasmaPoint = 0.0D;
 		for (OreDictMaterialStack tMaterial : aComponents.getComponents()) tDivider += tMaterial.mAmount;
 		for (OreDictMaterialStack tMaterial : aComponents.getComponents()) {
-			tProtons				+= (tMaterial.mMaterial.mProtons				* tMaterial.mAmount) / UD;
-			tElectrons				+= (tMaterial.mMaterial.mElectrons				* tMaterial.mAmount) / UD;
-			tNeutrons				+= (tMaterial.mMaterial.mNeutrons				* tMaterial.mAmount) / UD;
-			tMass					+= (tMaterial.mMaterial.mMass					* tMaterial.mAmount) / UD;
-			tGramPerCubicCentimeter	+= (tMaterial.mMaterial.mGramPerCubicCentimeter	* tMaterial.mAmount) / UD;
-			tMeltingPoint			+= (tMaterial.mMaterial.mMeltingPoint			* tMaterial.mAmount) / tDivider;
-			tBoilingPoint			+= (tMaterial.mMaterial.mBoilingPoint			* tMaterial.mAmount) / tDivider;
-			tPlasmaPoint			+= (tMaterial.mMaterial.mPlasmaPoint			* tMaterial.mAmount) / tDivider;
+			tProtons                += (tMaterial.mMaterial.mProtons                * tMaterial.mAmount) / UD;
+			tElectrons              += (tMaterial.mMaterial.mElectrons              * tMaterial.mAmount) / UD;
+			tNeutrons               += (tMaterial.mMaterial.mNeutrons               * tMaterial.mAmount) / UD;
+			tMass                   += (tMaterial.mMaterial.mMass                   * tMaterial.mAmount) / UD;
+			tGramPerCubicCentimeter += (tMaterial.mMaterial.mGramPerCubicCentimeter * tMaterial.mAmount) / UD;
+			tMeltingPoint           += (tMaterial.mMaterial.mMeltingPoint           * tMaterial.mAmount) / tDivider;
+			tBoilingPoint           += (tMaterial.mMaterial.mBoilingPoint           * tMaterial.mAmount) / tDivider;
+			tPlasmaPoint            += (tMaterial.mMaterial.mPlasmaPoint            * tMaterial.mAmount) / tDivider;
 		}
 		mProtons = (long)tProtons;
 		mElectrons = (long)tElectrons;
@@ -579,32 +579,32 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	
 	public OreDictMaterial setAllToTheOutputOf(OreDictMaterial aMaterial) {
 		if (aMaterial == null) aMaterial = this;
-		setPulver		(aMaterial.mTargetPulver		.mMaterial, aMaterial.mTargetPulver			.mAmount);
-		setSmelting		(aMaterial.mTargetSmelting		.mMaterial, aMaterial.mTargetSmelting		.mAmount);
-		setSolidifying	(aMaterial.mTargetSolidifying	.mMaterial, aMaterial.mTargetSolidifying	.mAmount);
-		setSmashing		(aMaterial.mTargetSmashing		.mMaterial, aMaterial.mTargetSmashing		.mAmount);
-		setCutting		(aMaterial.mTargetCutting		.mMaterial, aMaterial.mTargetCutting		.mAmount);
-		setWorking		(aMaterial.mTargetWorking		.mMaterial, aMaterial.mTargetWorking		.mAmount);
-		setForging		(aMaterial.mTargetForging		.mMaterial, aMaterial.mTargetForging		.mAmount);
-		setBurning		(aMaterial.mTargetBurning		.mMaterial, aMaterial.mTargetBurning		.mAmount);
-		setBending		(aMaterial.mTargetBending		.mMaterial, aMaterial.mTargetBending		.mAmount);
-		setCompressing	(aMaterial.mTargetCompressing	.mMaterial, aMaterial.mTargetCompressing	.mAmount);
+		setPulver       (aMaterial.mTargetPulver        .mMaterial, aMaterial.mTargetPulver         .mAmount);
+		setSmelting     (aMaterial.mTargetSmelting      .mMaterial, aMaterial.mTargetSmelting       .mAmount);
+		setSolidifying  (aMaterial.mTargetSolidifying   .mMaterial, aMaterial.mTargetSolidifying    .mAmount);
+		setSmashing     (aMaterial.mTargetSmashing      .mMaterial, aMaterial.mTargetSmashing       .mAmount);
+		setCutting      (aMaterial.mTargetCutting       .mMaterial, aMaterial.mTargetCutting        .mAmount);
+		setWorking      (aMaterial.mTargetWorking       .mMaterial, aMaterial.mTargetWorking        .mAmount);
+		setForging      (aMaterial.mTargetForging       .mMaterial, aMaterial.mTargetForging        .mAmount);
+		setBurning      (aMaterial.mTargetBurning       .mMaterial, aMaterial.mTargetBurning        .mAmount);
+		setBending      (aMaterial.mTargetBending       .mMaterial, aMaterial.mTargetBending        .mAmount);
+		setCompressing  (aMaterial.mTargetCompressing   .mMaterial, aMaterial.mTargetCompressing    .mAmount);
 		return this;
 	}
 	
 	public OreDictMaterial setAllToTheOutputOf(OreDictMaterial aMaterial, long aMultiplier, long aDivider) {
 		if (aMaterial == null) aMaterial = this;
-		setPulver		(aMaterial.mTargetPulver		.mMaterial, (aMaterial.mTargetPulver		.mAmount * aMultiplier) / aDivider);
-		setSmelting		(aMaterial.mTargetSmelting		.mMaterial, (aMaterial.mTargetSmelting		.mAmount * aMultiplier) / aDivider);
-		setSolidifying	(aMaterial.mTargetSolidifying	.mMaterial, (aMaterial.mTargetSolidifying	.mAmount * aMultiplier) / aDivider);
-		setSmashing		(aMaterial.mTargetSmashing		.mMaterial, (aMaterial.mTargetSmashing		.mAmount * aMultiplier) / aDivider);
-		setCutting		(aMaterial.mTargetCutting		.mMaterial, (aMaterial.mTargetCutting		.mAmount * aMultiplier) / aDivider);
-		setWorking		(aMaterial.mTargetWorking		.mMaterial, (aMaterial.mTargetWorking		.mAmount * aMultiplier) / aDivider);
-		setForging		(aMaterial.mTargetForging		.mMaterial, (aMaterial.mTargetForging		.mAmount * aMultiplier) / aDivider);
-		setBurning		(aMaterial.mTargetBurning		.mMaterial, (aMaterial.mTargetBurning		.mAmount * aMultiplier) / aDivider);
-		setBending		(aMaterial.mTargetBending		.mMaterial, (aMaterial.mTargetBending		.mAmount * aMultiplier) / aDivider);
-		setCompressing	(aMaterial.mTargetCompressing	.mMaterial, (aMaterial.mTargetCompressing	.mAmount * aMultiplier) / aDivider);
-		setCrushing		(aMaterial.mTargetCrushing		.mMaterial, (aMaterial.mTargetCrushing		.mAmount * aMultiplier) / aDivider);
+		setPulver       (aMaterial.mTargetPulver        .mMaterial, (aMaterial.mTargetPulver        .mAmount * aMultiplier) / aDivider);
+		setSmelting     (aMaterial.mTargetSmelting      .mMaterial, (aMaterial.mTargetSmelting      .mAmount * aMultiplier) / aDivider);
+		setSolidifying  (aMaterial.mTargetSolidifying   .mMaterial, (aMaterial.mTargetSolidifying   .mAmount * aMultiplier) / aDivider);
+		setSmashing     (aMaterial.mTargetSmashing      .mMaterial, (aMaterial.mTargetSmashing      .mAmount * aMultiplier) / aDivider);
+		setCutting      (aMaterial.mTargetCutting       .mMaterial, (aMaterial.mTargetCutting       .mAmount * aMultiplier) / aDivider);
+		setWorking      (aMaterial.mTargetWorking       .mMaterial, (aMaterial.mTargetWorking       .mAmount * aMultiplier) / aDivider);
+		setForging      (aMaterial.mTargetForging       .mMaterial, (aMaterial.mTargetForging       .mAmount * aMultiplier) / aDivider);
+		setBurning      (aMaterial.mTargetBurning       .mMaterial, (aMaterial.mTargetBurning       .mAmount * aMultiplier) / aDivider);
+		setBending      (aMaterial.mTargetBending       .mMaterial, (aMaterial.mTargetBending       .mAmount * aMultiplier) / aDivider);
+		setCompressing  (aMaterial.mTargetCompressing   .mMaterial, (aMaterial.mTargetCompressing   .mAmount * aMultiplier) / aDivider);
+		setCrushing     (aMaterial.mTargetCrushing      .mMaterial, (aMaterial.mTargetCrushing      .mAmount * aMultiplier) / aDivider);
 		return this;
 	}
 	
@@ -829,17 +829,17 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		mTextureSetsItems = aStatsToCopy.mTextureSetsItems;
 		mTextureSetsBlock = aStatsToCopy.mTextureSetsBlock;
 		for (byte i = 0; i < 4; i++) {
-			mRGBa		[i] = aStatsToCopy.mRGBa[i];
-			mRGBaSolid	[i] = aStatsToCopy.mRGBaSolid[i];
-			mRGBaLiquid	[i] = aStatsToCopy.mRGBaLiquid[i];
-			mRGBaGas	[i] = aStatsToCopy.mRGBaGas[i];
-			mRGBaPlasma	[i] = aStatsToCopy.mRGBaPlasma[i];
+			mRGBa       [i] = aStatsToCopy.mRGBa[i];
+			mRGBaSolid  [i] = aStatsToCopy.mRGBaSolid[i];
+			mRGBaLiquid [i] = aStatsToCopy.mRGBaLiquid[i];
+			mRGBaGas    [i] = aStatsToCopy.mRGBaGas[i];
+			mRGBaPlasma [i] = aStatsToCopy.mRGBaPlasma[i];
 			
-			fRGBa		[i] = aStatsToCopy.fRGBa[i];
-			fRGBaSolid	[i] = aStatsToCopy.fRGBaSolid[i];
-			fRGBaLiquid	[i] = aStatsToCopy.fRGBaLiquid[i];
-			fRGBaGas	[i] = aStatsToCopy.fRGBaGas[i];
-			fRGBaPlasma	[i] = aStatsToCopy.fRGBaPlasma[i];
+			fRGBa       [i] = aStatsToCopy.fRGBa[i];
+			fRGBaSolid  [i] = aStatsToCopy.fRGBaSolid[i];
+			fRGBaLiquid [i] = aStatsToCopy.fRGBaLiquid[i];
+			fRGBaGas    [i] = aStatsToCopy.fRGBaGas[i];
+			fRGBaPlasma [i] = aStatsToCopy.fRGBaPlasma[i];
 		}
 		return this;
 	}
@@ -855,11 +855,11 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	public OreDictMaterial stealStatsElement(OreDictMaterial aStatsToCopy) {
-		mProtons				= aStatsToCopy.mProtons;
-		mElectrons				= aStatsToCopy.mElectrons;
-		mNeutrons				= aStatsToCopy.mNeutrons;
-		mMass					= aStatsToCopy.mMass;
-		mGramPerCubicCentimeter	= aStatsToCopy.mGramPerCubicCentimeter;
+		mProtons                = aStatsToCopy.mProtons;
+		mElectrons              = aStatsToCopy.mElectrons;
+		mNeutrons               = aStatsToCopy.mNeutrons;
+		mMass                   = aStatsToCopy.mMass;
+		mGramPerCubicCentimeter = aStatsToCopy.mGramPerCubicCentimeter;
 		return this;
 	}
 	
@@ -1040,13 +1040,13 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public double getWeight(long aAmount) {
 		// Extended Math:
 		// 9 Material-Units = 1 Cubic Meter.
-		// 1000 g	 = 1 kg
+		// 1000 g    = 1 kg
 		// 1000 cm^3 = 1 dm^3
 		// 1000 dm^3 = 1  m^3
 		// ( g/cm^3 * aAmount * 1000 * 1000) / (Material-Unit * 9 * 1000)
-		// ( g/ m^3 * aAmount			   ) / (Material-Unit * 9 * 1000)
-		// (kg/ m^3 * aAmount			   ) / (Material-Unit * 9		)
-		// (kg/ m^3 * aAmount * 0.111111111) /	Material-Unit
+		// ( g/ m^3 * aAmount              ) / (Material-Unit * 9 * 1000)
+		// (kg/ m^3 * aAmount              ) / (Material-Unit * 9       )
+		// (kg/ m^3 * aAmount * 0.111111111) /  Material-Unit
 		return (mGramPerCubicCentimeter * 111.111111 * aAmount) / U;
 	}
 	

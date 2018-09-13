@@ -145,7 +145,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override public ChunkCoordinates getOffset (byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetX (aSide, aMultiplier), getOffsetY (aSide, aMultiplier), getOffsetZ (aSide, aMultiplier));}
 	@Override public ChunkCoordinates getOffsetN(byte aSide, int aMultiplier) {return new ChunkCoordinates(getOffsetXN(aSide, aMultiplier), getOffsetYN(aSide, aMultiplier), getOffsetZN(aSide, aMultiplier));}
 	@Override public boolean isServerSide() {return worldObj == null ? cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer() : !worldObj.isRemote;}
-	@Override public boolean isClientSide() {return worldObj == null ? cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isClient() :	worldObj.isRemote;}
+	@Override public boolean isClientSide() {return worldObj == null ? cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isClient() :  worldObj.isRemote;}
 	@Override public boolean openGUI(EntityPlayer aPlayer) {return openGUI(aPlayer, 0);}
 	@Override public boolean openGUI(EntityPlayer aPlayer, int aID) {if (aPlayer == null) return F; aPlayer.openGui(GAPI, aID, worldObj, xCoord, yCoord, zCoord); return T;}
 	@Override public int getRandomNumber(int aRange) {return RNGSUS.nextInt(aRange);}
@@ -176,13 +176,13 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override public boolean getAirAtSideAndDistance(byte aSide, int aDistance) {return getAir(getOffsetX(aSide, aDistance), getOffsetY(aSide, aDistance), getOffsetZ(aSide, aDistance));}
 	@Override public TileEntity getTileEntityOffset(int aX, int aY, int aZ) {return getTileEntity(xCoord+aX, yCoord+aY, zCoord+aZ);}
 	@Override public TileEntity getTileEntityAtSideAndDistance(byte aSide, int aDistance) {return getTileEntity(getOffsetX(aSide, aDistance), getOffsetY(aSide, aDistance), getOffsetZ(aSide, aDistance));}
-	@Override public DelegatorTileEntity<TileEntity			> getAdjacentTileEntity		(byte aSide) {return getAdjacentTileEntity(aSide, T, F);}
-	@Override public DelegatorTileEntity<IInventory			> getAdjacentInventory		(byte aSide) {return getAdjacentInventory(aSide, T, F);}
-	@Override public DelegatorTileEntity<ISidedInventory	> getAdjacentSidedInventory	(byte aSide) {return getAdjacentSidedInventory(aSide, T, F);}
-	@Override public DelegatorTileEntity<IFluidHandler		> getAdjacentTank			(byte aSide) {return getAdjacentTank(aSide, T, F);}
-	@Override public DelegatorTileEntity<IInventory			> getAdjacentInventory		(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof IInventory		?(IInventory		)tDelegator.mTileEntity:null, tDelegator);}
-	@Override public DelegatorTileEntity<ISidedInventory	> getAdjacentSidedInventory	(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof ISidedInventory	?(ISidedInventory	)tDelegator.mTileEntity:null, tDelegator);}
-	@Override public DelegatorTileEntity<IFluidHandler		> getAdjacentTank			(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof IFluidHandler	?(IFluidHandler		)tDelegator.mTileEntity:null, tDelegator);}
+	@Override public DelegatorTileEntity<TileEntity         > getAdjacentTileEntity     (byte aSide) {return getAdjacentTileEntity(aSide, T, F);}
+	@Override public DelegatorTileEntity<IInventory         > getAdjacentInventory      (byte aSide) {return getAdjacentInventory(aSide, T, F);}
+	@Override public DelegatorTileEntity<ISidedInventory    > getAdjacentSidedInventory (byte aSide) {return getAdjacentSidedInventory(aSide, T, F);}
+	@Override public DelegatorTileEntity<IFluidHandler      > getAdjacentTank           (byte aSide) {return getAdjacentTank(aSide, T, F);}
+	@Override public DelegatorTileEntity<IInventory         > getAdjacentInventory      (byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof IInventory      ?(IInventory        )tDelegator.mTileEntity:null, tDelegator);}
+	@Override public DelegatorTileEntity<ISidedInventory    > getAdjacentSidedInventory (byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof ISidedInventory ?(ISidedInventory   )tDelegator.mTileEntity:null, tDelegator);}
+	@Override public DelegatorTileEntity<IFluidHandler      > getAdjacentTank           (byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide, aAllowDelegates, aNotConnectToDelegators); return new DelegatorTileEntity<>(tDelegator.mTileEntity instanceof IFluidHandler   ?(IFluidHandler     )tDelegator.mTileEntity:null, tDelegator);}
 	
 	@Override
 	public DelegatorTileEntity<TileEntity> getAdjacentTileEntity(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators) {
@@ -640,9 +640,9 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public Collection<TagData> getEnergyTypes(byte aSide) {return Collections.emptyList();}
 	public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return Collections.emptyList();}
 	
-	public boolean isEnergyEmittingTo	(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && getSurfaceSizeAttachable(aSide) > 0;}
+	public boolean isEnergyEmittingTo   (TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && getSurfaceSizeAttachable(aSide) > 0;}
 	public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F) && getSurfaceSizeAttachable(aSide) > 0;}
-	public synchronized long doEnergyExtraction(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return aSize != 0 && isEnergyEmittingTo	  (aEnergyType, aSide, F) ? TD.Energy.ALL_SIZE_IRRELEVANT.contains(aEnergyType) || Math.abs(aSize) >= getEnergySizeOutputMin(aEnergyType, aSide) ? doExtract(aEnergyType, aSide, aSize, aAmount, aDoExtract) : 0 : 0;}
+	public synchronized long doEnergyExtraction(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return aSize != 0 && isEnergyEmittingTo   (aEnergyType, aSide, F) ? TD.Energy.ALL_SIZE_IRRELEVANT.contains(aEnergyType) || Math.abs(aSize) >= getEnergySizeOutputMin(aEnergyType, aSide) ? doExtract(aEnergyType, aSide, aSize, aAmount, aDoExtract) : 0 : 0;}
 	public synchronized long doEnergyInjection (TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject ) {return aSize != 0 && isEnergyAcceptingFrom(aEnergyType, aSide, F) ? TD.Energy.ALL_SIZE_IRRELEVANT.contains(aEnergyType) || Math.abs(aSize) >= getEnergySizeInputMin (aEnergyType, aSide) ? doInject (aEnergyType, aSide, aSize, aAmount, aDoInject ) : aAmount : 0;}
 	public long getEnergyOffered(TagData aEnergyType, byte aSide, long aSize) {return 0;}
 	public long getEnergySizeOutputRecommended(TagData aEnergyType, byte aSide) {return 0;}
@@ -655,25 +655,25 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	// A Default implementation of the MultiBlock Energy behaviour.
 	
-	public boolean isEnergyType							(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aEmitting) {return isEnergyType(aEnergyType, aSide, aEmitting);}
-	public boolean isEnergyCapacitorType				(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return isEnergyCapacitorType(aEnergyType, aSide);}
-	public long getEnergyStored							(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergyStored(aEnergyType, aSide);}
-	public long getEnergyCapacity						(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergyCapacity(aEnergyType, aSide);}
-	public Collection<TagData> getEnergyTypes			(MultiTileEntityMultiBlockPart aPart, byte aSide) {return getEnergyTypes(aSide);}
-	public Collection<TagData> getEnergyCapacitorTypes	(MultiTileEntityMultiBlockPart aPart, byte aSide) {return getEnergyCapacitorTypes(aSide);}
+	public boolean isEnergyType                         (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aEmitting) {return isEnergyType(aEnergyType, aSide, aEmitting);}
+	public boolean isEnergyCapacitorType                (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return isEnergyCapacitorType(aEnergyType, aSide);}
+	public long getEnergyStored                         (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergyStored(aEnergyType, aSide);}
+	public long getEnergyCapacity                       (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergyCapacity(aEnergyType, aSide);}
+	public Collection<TagData> getEnergyTypes           (MultiTileEntityMultiBlockPart aPart, byte aSide) {return getEnergyTypes(aSide);}
+	public Collection<TagData> getEnergyCapacitorTypes  (MultiTileEntityMultiBlockPart aPart, byte aSide) {return getEnergyCapacitorTypes(aSide);}
 	
-	public boolean isEnergyAcceptingFrom				(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	public boolean isEnergyEmittingTo					(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
-	public long doEnergyInjection						(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {return doEnergyInjection(aEnergyType, aSide, aSize, aAmount, aDoInject);}
-	public long doEnergyExtraction						(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return doEnergyExtraction(aEnergyType, aSide, aSize, aAmount, aDoExtract);}
-	public long getEnergyOffered						(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize) {return getEnergyOffered(aEnergyType, aSide, aSize);}
-	public long getEnergySizeOutputRecommended			(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeOutputRecommended(aEnergyType, aSide);}
-	public long getEnergySizeOutputMin					(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeOutputMin(aEnergyType, aSide);}
-	public long getEnergySizeOutputMax					(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeOutputMax(aEnergyType, aSide);}
-	public long getEnergyDemanded						(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize) {return getEnergyDemanded(aEnergyType, aSide, aSize);}
-	public long getEnergySizeInputRecommended			(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeInputRecommended(aEnergyType, aSide);}
-	public long getEnergySizeInputMin					(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeInputMin(aEnergyType, aSide);}
-	public long getEnergySizeInputMax					(MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeInputMax(aEnergyType, aSide);}
+	public boolean isEnergyAcceptingFrom                (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	public boolean isEnergyEmittingTo                   (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
+	public long doEnergyInjection                       (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {return doEnergyInjection(aEnergyType, aSide, aSize, aAmount, aDoInject);}
+	public long doEnergyExtraction                      (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return doEnergyExtraction(aEnergyType, aSide, aSize, aAmount, aDoExtract);}
+	public long getEnergyOffered                        (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize) {return getEnergyOffered(aEnergyType, aSide, aSize);}
+	public long getEnergySizeOutputRecommended          (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeOutputRecommended(aEnergyType, aSide);}
+	public long getEnergySizeOutputMin                  (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeOutputMin(aEnergyType, aSide);}
+	public long getEnergySizeOutputMax                  (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeOutputMax(aEnergyType, aSide);}
+	public long getEnergyDemanded                       (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize) {return getEnergyDemanded(aEnergyType, aSide, aSize);}
+	public long getEnergySizeInputRecommended           (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeInputRecommended(aEnergyType, aSide);}
+	public long getEnergySizeInputMin                   (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeInputMin(aEnergyType, aSide);}
+	public long getEnergySizeInputMax                   (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeInputMax(aEnergyType, aSide);}
 	
 	// A Default implementation for RF Stuff, so I don't have to implement those Interfaces manually every time I make an RF Emitter or Acceptor.
 	
@@ -736,19 +736,19 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		return T;
 	}
 	
-	public boolean isFireProof				(byte aSide) {return F;}
-	public boolean isRainProof				(byte aSide) {return F;}
-	public boolean isWaterProof				(byte aSide) {return F;}
-	public boolean isThunderProof			(byte aSide) {return F;}
+	public boolean isFireProof              (byte aSide) {return F;}
+	public boolean isRainProof              (byte aSide) {return F;}
+	public boolean isWaterProof             (byte aSide) {return F;}
+	public boolean isThunderProof           (byte aSide) {return F;}
 	
 	// A Default implementation of the Surface behaviour.
 	
-	public float getSurfaceSize				(byte aSide) {return 1;}
-	public float getSurfaceSizeAttachable	(byte aSide) {return getSurfaceSize(aSide);}
-	public float getSurfaceDistance			(byte aSide) {return 0;}
-	public boolean isSurfaceSolid			(byte aSide) {return isSurfaceOpaque(aSide);}
-	public boolean isSurfaceOpaque			(byte aSide) {return T;}
-	public boolean isSealable				(byte aSide) {return F;}
+	public float getSurfaceSize             (byte aSide) {return 1;}
+	public float getSurfaceSizeAttachable   (byte aSide) {return getSurfaceSize(aSide);}
+	public float getSurfaceDistance         (byte aSide) {return 0;}
+	public boolean isSurfaceSolid           (byte aSide) {return isSurfaceOpaque(aSide);}
+	public boolean isSurfaceOpaque          (byte aSide) {return T;}
+	public boolean isSealable               (byte aSide) {return F;}
 	public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box();}
 	/** Old Coordinate containing Variant of onCoordinateChange, use only if you really need the Coordinates, as there is also a No-Parameter variant in use for some TileEntity Types! */
 	public void onCoordinateChange(World aWorld, int aOldX, int aOldY, int aOldZ) {onCoordinateChange();}
@@ -762,7 +762,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	// Fire Stuff
 	
 	public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return aDefault ? 150 : 0;}
-	public int getFlammability	 (byte aSide, boolean aDefault) {return aDefault ? 150 : 0;}
+	public int getFlammability   (byte aSide, boolean aDefault) {return aDefault ? 150 : 0;}
 	public void setOnFire() {WD.burn(worldObj, getCoords(), F, F);}
 	public boolean setToFire() {return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.fire, 0, 3);}
 	public boolean setToAir () {return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air , 0, 3);}
@@ -820,7 +820,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	// Quick Fix for newly added Functionality
 	
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {return null;}
-	public FluidStack nozzleDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {return tapDrain(aSide, aMaxDrain, aDoDrain);}	
+	public FluidStack nozzleDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {return tapDrain(aSide, aMaxDrain, aDoDrain);}   
 	
 	// Useful to check if a Player or any other Entity is actually allowed to access or interact with this Block.
 	

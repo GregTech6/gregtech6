@@ -84,12 +84,12 @@ public class BlockSpikeFancy extends BlockBaseSpike {
 				if (((EntityLivingBase)aEntity).getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)
 				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 20.0F : 10.0F);
 				else if (!(aEntity instanceof EntityIronGolem || aEntity instanceof EntitySkeleton || aEntity instanceof EntitySlime))
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?	2.0F :	1.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?  2.0F :  1.0F);
 			} else {
 				if (UT.Entities.isEnderCreature((EntityLivingBase)aEntity) || UT.Entities.isWereCreature((EntityLivingBase)aEntity))
 				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ? 20.0F : 10.0F);
 				else if (!(aEntity instanceof EntityIronGolem || aEntity instanceof EntitySkeleton || aEntity instanceof EntitySlime))
-				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?	2.0F :	1.0F);
+				aEntity.attackEntityFrom(DamageSources.getSpikeDamage(), (aMeta & 7) < 6 ?  2.0F :  1.0F);
 			}
 		}
 	}

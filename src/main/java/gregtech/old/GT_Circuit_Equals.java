@@ -36,7 +36,7 @@ public class GT_Circuit_Equals extends GT_CircuitryBehavior {
 	
 	@Override
 	public void validateParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		if (aCircuitData[0] <  0) aCircuitData[0] =	 0;
+		if (aCircuitData[0] <  0) aCircuitData[0] =  0;
 		if (aCircuitData[0] > 15) aCircuitData[0] = 15;
 		if (aCircuitData[1] < 0) aCircuitData[3] = 0;
 		if (aCircuitData[1] > 1) aCircuitData[3] = 1;

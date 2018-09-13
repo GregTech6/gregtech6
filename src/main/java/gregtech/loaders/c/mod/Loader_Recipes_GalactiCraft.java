@@ -59,19 +59,19 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, new ItemStack[] {tStack, OP.compressed.mat(MT.Al, 1), OP.compressed.mat(MT.Bronze, 1)}, ST.make(MD.GC, "item.heavyPlating", 1, 0));
 			}
 			
-			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 0),	CR.DEF_REM_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Fe		), 'D', OP.plateDense.dat(ANY.Fe	));
-			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 1),	CR.DEF_REM_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Steel	), 'D', OP.plateDense.dat(ANY.Steel	));
+			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 0),  CR.DEF_REM_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Fe      ), 'D', OP.plateDense.dat(ANY.Fe    ));
+			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 1),  CR.DEF_REM_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Steel   ), 'D', OP.plateDense.dat(ANY.Steel ));
 			
 			List<ItemStack>
-			  tListA = OreDictionary.getOres("gt:complateCopper"		), tListA1 = OreDictionary.getOres("compressedCopper"		)
-			, tListB = OreDictionary.getOres("gt:complateTin"			), tListB1 = OreDictionary.getOres("compressedTin"			)
-			, tListC = OreDictionary.getOres("gt:complateAluminium"		), tListC1 = OreDictionary.getOres("compressedAluminum"		), tListC2 = OreDictionary.getOres("compressedAluminium")
-			, tListD = OreDictionary.getOres("gt:complateSteel"			), tListD1 = OreDictionary.getOres("compressedSteel"		)
-			, tListE = OreDictionary.getOres("gt:complateBronze"		), tListE1 = OreDictionary.getOres("compressedBronze"		)
-			, tListF = OreDictionary.getOres("gt:complateIron"			), tListF1 = OreDictionary.getOres("compressedIron"			)
-			, tListG = OreDictionary.getOres("gt:complateMeteoricIron"	), tListG1 = OreDictionary.getOres("compressedMeteoricIron"	)
-			, tListH = OreDictionary.getOres("gt:complateDesh"			), tListH1 = OreDictionary.getOres("compressedDesh"			), tListH2 = OreDictionary.getOres("stickDesh"), tListH3 = OreDictionary.getOres("ingotDesh")
-			, tListI = OreDictionary.getOres("gt:complateTitanium"		), tListI1 = OreDictionary.getOres("compressedTitanium"		)
+			  tListA = OreDictionary.getOres("gt:complateCopper"        ), tListA1 = OreDictionary.getOres("compressedCopper"       )
+			, tListB = OreDictionary.getOres("gt:complateTin"           ), tListB1 = OreDictionary.getOres("compressedTin"          )
+			, tListC = OreDictionary.getOres("gt:complateAluminium"     ), tListC1 = OreDictionary.getOres("compressedAluminum"     ), tListC2 = OreDictionary.getOres("compressedAluminium")
+			, tListD = OreDictionary.getOres("gt:complateSteel"         ), tListD1 = OreDictionary.getOres("compressedSteel"        )
+			, tListE = OreDictionary.getOres("gt:complateBronze"        ), tListE1 = OreDictionary.getOres("compressedBronze"       )
+			, tListF = OreDictionary.getOres("gt:complateIron"          ), tListF1 = OreDictionary.getOres("compressedIron"         )
+			, tListG = OreDictionary.getOres("gt:complateMeteoricIron"  ), tListG1 = OreDictionary.getOres("compressedMeteoricIron" )
+			, tListH = OreDictionary.getOres("gt:complateDesh"          ), tListH1 = OreDictionary.getOres("compressedDesh"         ), tListH2 = OreDictionary.getOres("stickDesh"), tListH3 = OreDictionary.getOres("ingotDesh")
+			, tListI = OreDictionary.getOres("gt:complateTitanium"      ), tListI1 = OreDictionary.getOres("compressedTitanium"     )
 			;
 			
 			Item
@@ -118,25 +118,25 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 				}
 			}
 			
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_1	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_1  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units( 900, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_2	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_2  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(1800, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_3	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_3  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(2700, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_1  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_1  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units( 900, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_2  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_2  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(1800, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_3  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_3  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(2700, 2700, 250, T))}, ZL_FS, 64, 16, 0);
 		}
 		if (MD.GC_PLANETS.mLoaded) {
 			OUT.println("GT_Mod: Doing Galacticraft Planets Recipes.");
 			CR.remout(MD.GC_PLANETS, "item.carbonFragments");
 			
-			RM.Hammer		.addRecipe1(T,	16,	  16, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), OM.dust(MT.Ice, 4*U));
-			RM.Squeezer		.addRecipe1(T,	16,	 256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
-			RM.Juicer		.addRecipe1(T,	16,	 256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
-			RM.Compressor	.addRecipe1(T, 256,	  32, ST.make(Blocks.packed_ice, 2, W), ST.make(MD.GC_PLANETS, "tile.denseIce", 1, 0));
+			RM.Hammer       .addRecipe1(T,  16,   16, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), OM.dust(MT.Ice, 4*U));
+			RM.Squeezer     .addRecipe1(T,  16,  256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
+			RM.Juicer       .addRecipe1(T,  16,  256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
+			RM.Compressor   .addRecipe1(T, 256,   32, ST.make(Blocks.packed_ice, 2, W), ST.make(MD.GC_PLANETS, "tile.denseIce", 1, 0));
 			
-			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.compressed.mat(MT.MeteoricIron	, 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
-			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.plate		.mat(MT.MeteoricIron	, 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
-			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.plate		.mat(MT.MeteoricSteel	, 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
-			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.plate		.mat(MT.Meteorite		, 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
-			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC_PLANETS, "item.null", 1, 3), OP.plate		.mat(MT.Desh			, 1), ST.make(MD.GC_PLANETS, "item.itemBasicAsteroids", 1, 0));
-			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC_PLANETS, "item.null", 1, 3), OP.compressed.mat(MT.Desh			, 1), ST.make(MD.GC_PLANETS, "item.itemBasicAsteroids", 1, 0));
+			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.compressed.mat(MT.MeteoricIron    , 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
+			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.plate     .mat(MT.MeteoricIron    , 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
+			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.plate     .mat(MT.MeteoricSteel   , 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
+			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC, "item.heavyPlating", 1, 0), OP.plate     .mat(MT.Meteorite       , 1), ST.make(MD.GC_PLANETS, "item.null", 1, 3));
+			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC_PLANETS, "item.null", 1, 3), OP.plate     .mat(MT.Desh            , 1), ST.make(MD.GC_PLANETS, "item.itemBasicAsteroids", 1, 0));
+			RM.Press.addRecipe2(T, 16, 512, ST.make(MD.GC_PLANETS, "item.null", 1, 3), OP.compressed.mat(MT.Desh            , 1), ST.make(MD.GC_PLANETS, "item.itemBasicAsteroids", 1, 0));
 		}
 		if (MD.VULPES.mLoaded) {
 			OUT.println("GT_Mod: Doing LibVulpes Recipes.");
@@ -153,10 +153,10 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 			RM.sawing(16, 16, F, 50, OP.plateGemTiny.mat(MT.Si, 2), ST.make(MD.GC_ADV_ROCKETRY, "wafer", 1, 0));
 			RM.sawing(16, 16, F, 50, ST.make(MD.GC_ADV_ROCKETRY, "circuitplate", 1, 0), ST.make(MD.GC_ADV_ROCKETRY, "circuitIC", 4, 0));
 			RM.sawing(16, 16, F, 50, ST.make(MD.GC_ADV_ROCKETRY, "circuitplate", 1, 1), ST.make(MD.GC_ADV_ROCKETRY, "circuitIC", 4, 2));
-			RM.RollBender.addRecipe1(T, 16, 128, OP.sheetGt.mat(MT.Fe		, 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 0));
-			RM.RollBender.addRecipe1(T, 16, 256, OP.sheetGt.mat(MT.Steel	, 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 1));
-			RM.RollBender.addRecipe1(T, 16, 512, OP.sheetGt.mat(MT.Al		, 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 2));
-			RM.RollBender.addRecipe1(T, 64, 512, OP.sheetGt.mat(MT.Ti		, 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 3));
+			RM.RollBender.addRecipe1(T, 16, 128, OP.sheetGt.mat(MT.Fe       , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 0));
+			RM.RollBender.addRecipe1(T, 16, 256, OP.sheetGt.mat(MT.Steel    , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 1));
+			RM.RollBender.addRecipe1(T, 16, 512, OP.sheetGt.mat(MT.Al       , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 2));
+			RM.RollBender.addRecipe1(T, 64, 512, OP.sheetGt.mat(MT.Ti       , 2), ST.make(MD.GC_ADV_ROCKETRY, "pressureTank", 1, 3));
 		}
 		if (MD.GC_GALAXYSPACE.mLoaded) {
 			OUT.println("GT_Mod: Doing Galaxy Space Recipes.");
@@ -174,23 +174,23 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 				CR.remout(MD.GC_GALAXYSPACE, "item.BasicItems", 11);
 				CR.shapeless(ST.make(MD.GC_GALAXYSPACE, "item.BasicItems", 1, 11), new Object[] {IL.Pill_Iodine});
 			} else {
-				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneCeres		, 4*U), ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"		, 1, W));
-				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneIo			, 4*U), ST.make(MD.GC_GALAXYSPACE, "ioglowstone"		, 1, W));
-				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneEnceladus	, 4*U), ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone"	, 1, W));
-				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneProteus		, 4*U), ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"	, 1, W));
-				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstonePluto		, 4*U), ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"		, 1, W));
+				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneCeres       , 4*U), ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"     , 1, W));
+				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneIo          , 4*U), ST.make(MD.GC_GALAXYSPACE, "ioglowstone"        , 1, W));
+				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneEnceladus   , 4*U), ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone" , 1, W));
+				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneProteus     , 4*U), ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"   , 1, W));
+				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstonePluto       , 4*U), ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"     , 1, W));
 				
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"		, 1, W), OP.plate.mat(MT.GlowstoneCeres		, 4));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "ioglowstone"			, 1, W), OP.plate.mat(MT.GlowstoneIo		, 4));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone"	, 1, W), OP.plate.mat(MT.GlowstoneEnceladus	, 4));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"		, 1, W), OP.plate.mat(MT.GlowstoneProteus	, 4));
-				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"		, 1, W), OP.plate.mat(MT.GlowstonePluto		, 4));
+				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"        , 1, W), OP.plate.mat(MT.GlowstoneCeres     , 4));
+				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "ioglowstone"           , 1, W), OP.plate.mat(MT.GlowstoneIo        , 4));
+				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone"    , 1, W), OP.plate.mat(MT.GlowstoneEnceladus , 4));
+				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"      , 1, W), OP.plate.mat(MT.GlowstoneProteus   , 4));
+				RM.sawing(16, 64, F, 25, ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"        , 1, W), OP.plate.mat(MT.GlowstonePluto     , 4));
 				
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"		, 1, W), ST.make(Blocks.glowstone, 1, 0));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "ioglowstone"		, 1, W), ST.make(Blocks.glowstone, 1, 0));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone"	, 1, W), ST.make(Blocks.glowstone, 1, 0));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"	, 1, W), ST.make(Blocks.glowstone, 1, 0));
-				RM.generify(ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"		, 1, W), ST.make(Blocks.glowstone, 1, 0));
+				RM.generify(ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"     , 1, W), ST.make(Blocks.glowstone, 1, 0));
+				RM.generify(ST.make(MD.GC_GALAXYSPACE, "ioglowstone"        , 1, W), ST.make(Blocks.glowstone, 1, 0));
+				RM.generify(ST.make(MD.GC_GALAXYSPACE, "enceladusglowstone" , 1, W), ST.make(Blocks.glowstone, 1, 0));
+				RM.generify(ST.make(MD.GC_GALAXYSPACE, "proteusglowstone"   , 1, W), ST.make(Blocks.glowstone, 1, 0));
+				RM.generify(ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"     , 1, W), ST.make(Blocks.glowstone, 1, 0));
 			}
 			
 			CR.remout(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, W));
@@ -200,9 +200,9 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 				RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), UT.Fluids.mul(tDye, 1, 16, T), NF, ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i));
 			}
 			
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_4	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_4  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(3500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_5	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_5  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4000, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_6	 .wild(1)}, new ItemStack[] {IL.GC_OxyTank_6  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_4  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_4  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(3500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_5  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_5  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4000, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_6  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_6  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
 			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_Env.wild(1)}, new ItemStack[] {IL.GC_OxyTank_Env.get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units( 500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
 		}
 	}

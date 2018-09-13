@@ -82,18 +82,18 @@ public class Behavior_Cropnalyzer extends AbstractBehaviorDefault {
 				rEUAmount = V[3];
 			}
 			rList.add("Type -- Name: " + LH.get(((ic2.api.crops.ICropTile)tTileEntity).getCrop().displayName())
-					+ "	  Growth: " + ((ic2.api.crops.ICropTile)tTileEntity).getGrowth()
-					+ "	  Gain: " + ((ic2.api.crops.ICropTile)tTileEntity).getGain()
-					+ "	  Resistance: " + ((ic2.api.crops.ICropTile)tTileEntity).getResistance()
+					+ "   Growth: " + ((ic2.api.crops.ICropTile)tTileEntity).getGrowth()
+					+ "   Gain: " + ((ic2.api.crops.ICropTile)tTileEntity).getGain()
+					+ "   Resistance: " + ((ic2.api.crops.ICropTile)tTileEntity).getResistance()
 					);
 			rList.add("Plant -- Fertilizer: " + ((ic2.api.crops.ICropTile)tTileEntity).getNutrientStorage()
-					+ "	  Water: " + ((ic2.api.crops.ICropTile)tTileEntity).getHydrationStorage()
-					+ "	  Weed-Ex: " + ((ic2.api.crops.ICropTile)tTileEntity).getWeedExStorage()
-			//		+ "	  Scan-Level: " + ((ic2.api.crops.ICropTile)tTileEntity).getScanLevel()
+					+ "   Water: " + ((ic2.api.crops.ICropTile)tTileEntity).getHydrationStorage()
+					+ "   Weed-Ex: " + ((ic2.api.crops.ICropTile)tTileEntity).getWeedExStorage()
+			//      + "   Scan-Level: " + ((ic2.api.crops.ICropTile)tTileEntity).getScanLevel()
 					);
 			rList.add("Environment -- Nutrients: " + ((ic2.api.crops.ICropTile)tTileEntity).getNutrients()
-					+ "	  Humidity: " + ((ic2.api.crops.ICropTile)tTileEntity).getHumidity()
-					+ "	  Air-Quality: " + ((ic2.api.crops.ICropTile)tTileEntity).getAirQuality()
+					+ "   Humidity: " + ((ic2.api.crops.ICropTile)tTileEntity).getHumidity()
+					+ "   Air-Quality: " + ((ic2.api.crops.ICropTile)tTileEntity).getAirQuality()
 					);
 			String tString = "";
 			for (String tAttribute : ((ic2.api.crops.ICropTile)tTileEntity).getCrop().attributes()) tString += ", " + tAttribute;

@@ -92,7 +92,7 @@ public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 		return SFX.IC_DRILL_HARD;
 	}
 	
-	@Override public boolean canCollect()													{return F;}
+	@Override public boolean canCollect()                                                   {return F;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {

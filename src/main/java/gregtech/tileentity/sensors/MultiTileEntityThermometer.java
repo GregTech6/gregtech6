@@ -55,7 +55,7 @@ public class MultiTileEntityThermometer extends MultiTileEntitySensorTE {
 	
 	@Override
 	public long getCurrentMax(DelegatorTileEntity<TileEntity> aDelegator) {
-		if (aDelegator.mTileEntity instanceof ITileEntityTemperature) return ((ITileEntityTemperature)aDelegator.mTileEntity).getTemperatureMax	 (aDelegator.mSideOfTileEntity);
+		if (aDelegator.mTileEntity instanceof ITileEntityTemperature) return ((ITileEntityTemperature)aDelegator.mTileEntity).getTemperatureMax  (aDelegator.mSideOfTileEntity);
 		try {
 			if (aDelegator.mTileEntity instanceof IReactor) return ((IReactor)aDelegator.mTileEntity).getMaxHeat() / 5;
 			if (aDelegator.mTileEntity instanceof IReactorChamber) {
@@ -76,12 +76,12 @@ public class MultiTileEntityThermometer extends MultiTileEntitySensorTE {
 	@Override public IIconContainer getOverlaySide () {return sOverlaySide;}
 	
 	public static IIconContainer
-	sTextureFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/colored/front"),
-	sTextureBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/colored/back"),
-	sTextureSide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/colored/side"),
-	sOverlayFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/overlay/front"),
-	sOverlayBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/overlay/back"),
-	sOverlaySide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/overlay/side");
+	sTextureFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/colored/front"),
+	sTextureBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/colored/back"),
+	sTextureSide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/colored/side"),
+	sOverlayFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/overlay/front"),
+	sOverlayBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/overlay/back"),
+	sOverlaySide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/thermometer/overlay/side");
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.thermometer";}
 }

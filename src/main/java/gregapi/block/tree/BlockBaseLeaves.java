@@ -80,7 +80,7 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.leaves.getBlockHardness(aWorld, aX, aY, aZ);}
 	@Override public float getExplosionResistance(int aMeta) {return Blocks.leaves.getExplosionResistance(null);}
 	@Override public boolean renderAsNormalBlock() {return F;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return F;}

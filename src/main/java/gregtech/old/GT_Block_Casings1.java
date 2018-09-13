@@ -26,7 +26,7 @@ import net.minecraft.util.IIcon;
 public class GT_Block_Casings1 extends GT_Block_Casings_Abstract {
 	public GT_Block_Casings1() {
 		super("gt.blockcasings", MaterialMachines.instance);
-//		for (byte i = 0; i < 16; i++) Textures.BlockIcons.CASING_BLOCKS[i] = new BlockTextureCopied(this, 6, i);
+//      for (byte i = 0; i < 16; i++) Textures.BlockIcons.CASING_BLOCKS[i] = new BlockTextureCopied(this, 6, i);
 		LH.add(getUnlocalizedName()+ ".0.name", "ULV Machine Casing");
 		LH.add(getUnlocalizedName()+ ".1.name", "LV Machine Casing");
 		LH.add(getUnlocalizedName()+ ".2.name", "MV Machine Casing");

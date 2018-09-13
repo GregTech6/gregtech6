@@ -29,18 +29,18 @@ import gregapi.code.ICondition;
  * A Collection of Classes, which check for certain Material Conditions.
  */
 public class OreDictMaterialCondition {
-	public static ICondition<OreDictMaterial> fullpulver()						{return FullPulver.INSTANCE;}
-	public static ICondition<OreDictMaterial> fullforge()						{return FullForge.INSTANCE;}
-	public static ICondition<OreDictMaterial> meltmin	(long aMeltingPoint)	{return new MeltingPointMin(aMeltingPoint);}
-	public static ICondition<OreDictMaterial> meltmax	(long aMeltingPoint)	{return new MeltingPointMax(aMeltingPoint);}
-	public static ICondition<OreDictMaterial> boilmin	(long aBoilingPoint)	{return new BoilingPointMin(aBoilingPoint);}
-	public static ICondition<OreDictMaterial> boilmax	(long aBoilingPoint)	{return new BoilingPointMax(aBoilingPoint);}
-	public static ICondition<OreDictMaterial> plasmin	(long aPlasmaPoint)		{return new PlasmaPointMin(aPlasmaPoint);}
-	public static ICondition<OreDictMaterial> plasmax	(long aPlasmaPoint)		{return new PlasmaPointMax(aPlasmaPoint);}
-	public static ICondition<OreDictMaterial> qualmin	(long aMinQuality)		{return new QualityMin(aMinQuality);}
-	public static ICondition<OreDictMaterial> qualmax	(long aMaxQuality)		{return new QualityMax(aMaxQuality);}
-	public static ICondition<OreDictMaterial> typemin	(long aMinQuality)		{return new TypeMin(aMinQuality);}
-	public static ICondition<OreDictMaterial> typemax	(long aMaxQuality)		{return new TypeMax(aMaxQuality);}
+	public static ICondition<OreDictMaterial> fullpulver()                      {return FullPulver.INSTANCE;}
+	public static ICondition<OreDictMaterial> fullforge()                       {return FullForge.INSTANCE;}
+	public static ICondition<OreDictMaterial> meltmin   (long aMeltingPoint)    {return new MeltingPointMin(aMeltingPoint);}
+	public static ICondition<OreDictMaterial> meltmax   (long aMeltingPoint)    {return new MeltingPointMax(aMeltingPoint);}
+	public static ICondition<OreDictMaterial> boilmin   (long aBoilingPoint)    {return new BoilingPointMin(aBoilingPoint);}
+	public static ICondition<OreDictMaterial> boilmax   (long aBoilingPoint)    {return new BoilingPointMax(aBoilingPoint);}
+	public static ICondition<OreDictMaterial> plasmin   (long aPlasmaPoint)     {return new PlasmaPointMin(aPlasmaPoint);}
+	public static ICondition<OreDictMaterial> plasmax   (long aPlasmaPoint)     {return new PlasmaPointMax(aPlasmaPoint);}
+	public static ICondition<OreDictMaterial> qualmin   (long aMinQuality)      {return new QualityMin(aMinQuality);}
+	public static ICondition<OreDictMaterial> qualmax   (long aMaxQuality)      {return new QualityMax(aMaxQuality);}
+	public static ICondition<OreDictMaterial> typemin   (long aMinQuality)      {return new TypeMin(aMinQuality);}
+	public static ICondition<OreDictMaterial> typemax   (long aMaxQuality)      {return new TypeMax(aMaxQuality);}
 	
 	private static class FullPulver implements ICondition<OreDictMaterial> {
 		public static final FullPulver INSTANCE = new FullPulver();

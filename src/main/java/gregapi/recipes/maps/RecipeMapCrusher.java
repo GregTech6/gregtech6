@@ -90,8 +90,8 @@ public class RecipeMapCrusher extends RecipeMapSpecialSingleInput {
 		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreMultiplier * aData.mMaterial.mMaterial.mOreProcessingMultiplier * (aData.mPrefix.contains(TD.Prefix.DENSE_ORE) ? 2 : 1);
 		
 		if (aData.mPrefix == orePoor) {
-			ItemStack tOutput = OP.crushedTiny			.mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F));
-			if (tOutput == null) tOutput = OP.dustTiny	.mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F));
+			ItemStack tOutput = OP.crushedTiny          .mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F));
+			if (tOutput == null) tOutput = OP.dustTiny  .mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F));
 			return tOutput == null ? null : new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInput)}, new ItemStack[] {tOutput}, null, null, ZL_FS, ZL_FS, Math.max(1, 16*tOutput.stackSize*Math.max(1, aData.mMaterial.mMaterial.mToolQuality+1)), 16, 0);
 		}
 		if (aData.mPrefix == oreSmall || aData.mPrefix == oreRich || aData.mPrefix == oreNormal) {

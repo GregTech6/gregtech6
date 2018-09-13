@@ -85,7 +85,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public int getHarvestLevel(int aMeta) {return 0;}
 	@Override public boolean isToolEffective(String aType, int aMeta) {return T;}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return T;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}
 	@Override public int damageDropped(int aMeta) {return aMeta;}
 	@Override public int quantityDropped(Random par1Random) {return 1;}

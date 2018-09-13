@@ -58,14 +58,14 @@ public class MultiTileEntityCup extends TileEntityBase10FluidContainerSyncSmall 
 	}
 	
 	public static IIconContainer
-	sTextureSides		= new Textures.BlockIcons.CustomIcon("machines/tanks/cup/colored/sides"),
-	sTextureInsides		= new Textures.BlockIcons.CustomIcon("machines/tanks/cup/colored/insides"),
-	sTextureTop			= new Textures.BlockIcons.CustomIcon("machines/tanks/cup/colored/top"),
-	sTextureBottom		= new Textures.BlockIcons.CustomIcon("machines/tanks/cup/colored/bottom"),
-	sOverlaySides		= new Textures.BlockIcons.CustomIcon("machines/tanks/cup/overlay/sides"),
-	sOverlayInsides		= new Textures.BlockIcons.CustomIcon("machines/tanks/cup/overlay/insides"),
-	sOverlayTop			= new Textures.BlockIcons.CustomIcon("machines/tanks/cup/overlay/top"),
-	sOverlayBottom		= new Textures.BlockIcons.CustomIcon("machines/tanks/cup/overlay/bottom");
+	sTextureSides       = new Textures.BlockIcons.CustomIcon("machines/tanks/cup/colored/sides"),
+	sTextureInsides     = new Textures.BlockIcons.CustomIcon("machines/tanks/cup/colored/insides"),
+	sTextureTop         = new Textures.BlockIcons.CustomIcon("machines/tanks/cup/colored/top"),
+	sTextureBottom      = new Textures.BlockIcons.CustomIcon("machines/tanks/cup/colored/bottom"),
+	sOverlaySides       = new Textures.BlockIcons.CustomIcon("machines/tanks/cup/overlay/sides"),
+	sOverlayInsides     = new Textures.BlockIcons.CustomIcon("machines/tanks/cup/overlay/insides"),
+	sOverlayTop         = new Textures.BlockIcons.CustomIcon("machines/tanks/cup/overlay/top"),
+	sOverlayBottom      = new Textures.BlockIcons.CustomIcon("machines/tanks/cup/overlay/bottom");
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {

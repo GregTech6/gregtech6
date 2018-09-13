@@ -49,7 +49,7 @@ public class MultiTileEntityResinHoleRubber extends MultiTileEntityTreeHole {
 					if (getBlockAtSideAndDistance(SIDE_TOP, i) != BlocksGT.LogA && getMetaDataAtSideAndDistance(SIDE_TOP, i) != 0) break;
 					tTreeHeight++;
 				}
-				if (checkLeaves(xCoord, tTreeHeight	 , zCoord)) tLeavesCount++;
+				if (checkLeaves(xCoord, tTreeHeight  , zCoord)) tLeavesCount++;
 				if (checkLeaves(xCoord, tTreeHeight+1, zCoord)) tLeavesCount++;
 				for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) if (i != 0 || j != 0) {
 					if (checkLeaves(xCoord+i, tTreeHeight-1, zCoord+j)) tLeavesCount++;

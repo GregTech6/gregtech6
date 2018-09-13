@@ -99,15 +99,15 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		} else {
 			aList.add(Chat.CYAN + "Max: " + mTanks[0].getCapacity() + " L");
 		}
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
-		if (mGasProof		) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
-		if (mAcidProof		) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
-		if (mPlasmaProof	) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_MELTDOWN) + " (" + mMaterial.mMeltingPoint + " K)");
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
+		if (mGasProof       ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
+		if (mAcidProof      ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
+		if (mPlasmaProof    ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + mMaterial.mMeltingPoint + " K)");
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
 	
 	@Override

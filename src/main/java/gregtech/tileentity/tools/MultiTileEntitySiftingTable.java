@@ -85,9 +85,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_SIFTER_USAGE));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_SIFTER_USAGE));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
 	}
 	
 	@Override
@@ -99,38 +99,38 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 			ItemStack tStack = slot(0);
 			if (ST.valid(tStack)) {
 				mState |= B[0];
-				if (ST.equal(tStack, ST.make(Blocks.gravel		, 1, W))) {mDisplayedInput = -1;} else
-				if (ST.equal(tStack, ST.make(Blocks.dirt		, 1, 0))) {mDisplayedInput = -2;} else
-				if (ST.equal(tStack, ST.make(Blocks.dirt		, 1, 1))) {mDisplayedInput = -3;} else
-				if (ST.equal(tStack, ST.make(Blocks.dirt		, 1, 2))) {mDisplayedInput = -4;} else
-				if (ST.equal(tStack, ST.make(Blocks.sand		, 1, 0))) {mDisplayedInput = -5;} else
-				if (ST.equal(tStack, ST.make(Blocks.sand		, 1, 1))) {mDisplayedInput = -6;} else
-				if (ST.equal(tStack, ST.make(Blocks.grass		, 1, W))) {mDisplayedInput = -7;} else
-				if (ST.equal(tStack, ST.make(Blocks.mycelium	, 1, W))) {mDisplayedInput = -8;} else
-				if (ST.equal(tStack, ST.make(Blocks.soul_sand	, 1, W))) {mDisplayedInput = -9;} else
-				if (ST.equal(tStack, ST.make(BlocksGT.Diggables	, 1, W))) {mDisplayedInput =-10;} else
-				if (ST.equal(tStack, ST.make(BlocksGT.Sands		, 1, W))) {mDisplayedInput =-11;} else
-				if (IL.EtFu_Gravel					.equal(tStack, F, T)) {mDisplayedInput = -1;} else
-				if (IL.EtFu_Dirt					.equal(tStack, F, T)) {mDisplayedInput = -3;} else
-				if (IL.BoP_Mud						.equal(tStack, F, T)) {mDisplayedInput =-10;} else
-				if (IL.BoP_Quicksand				.equal(tStack, F, T)) {mDisplayedInput = -5;} else
-				if (IL.BoP_Sand_Hard				.equal(tStack, F, T)) {mDisplayedInput = -5;} else
-				if (IL.BoP_Grass_Endstone			.equal(tStack, F, T)) {mDisplayedInput = -7;} else
-				if (IL.BoP_Grass_Loamy				.equal(tStack, F, T)) {mDisplayedInput = -7;} else
-				if (IL.BoP_Grass_Long				.equal(tStack, F, T)) {mDisplayedInput = -7;} else
-				if (IL.BoP_Grass_Netherrack			.equal(tStack, F, T)) {mDisplayedInput = -7;} else
-				if (IL.BoP_Grass_Origin				.equal(tStack, F, T)) {mDisplayedInput = -7;} else
-				if (IL.BoP_Grass_Sandy				.equal(tStack, F, T)) {mDisplayedInput = -7;} else
-				if (IL.BoP_Grass_Silty				.equal(tStack, F, T)) {mDisplayedInput = -7;} else
-				if (IL.BoP_Grass_Smoldering			.equal(tStack, F, T)) {mDisplayedInput = -7;} else
-				if (IL.BoP_Coarse_Loamy				.equal(tStack, F, T)) {mDisplayedInput = -3;} else
-				if (IL.BoP_Coarse_Sandy				.equal(tStack, F, T)) {mDisplayedInput = -3;} else
-				if (IL.BoP_Coarse_Silty				.equal(tStack, F, T)) {mDisplayedInput = -3;} else
-				if (IL.BoP_Dirt_Hard				.equal(tStack, F, T)) {mDisplayedInput = -3;} else
-				if (IL.BoP_Dirt_Dried				.equal(tStack, F, T)) {mDisplayedInput = -3;} else
-				if (IL.BoP_Dirt_Loamy				.equal(tStack, F, T)) {mDisplayedInput = -2;} else
-				if (IL.BoP_Dirt_Sandy				.equal(tStack, F, T)) {mDisplayedInput = -2;} else
-				if (IL.BoP_Dirt_Silty				.equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (ST.equal(tStack, ST.make(Blocks.gravel      , 1, W))) {mDisplayedInput = -1;} else
+				if (ST.equal(tStack, ST.make(Blocks.dirt        , 1, 0))) {mDisplayedInput = -2;} else
+				if (ST.equal(tStack, ST.make(Blocks.dirt        , 1, 1))) {mDisplayedInput = -3;} else
+				if (ST.equal(tStack, ST.make(Blocks.dirt        , 1, 2))) {mDisplayedInput = -4;} else
+				if (ST.equal(tStack, ST.make(Blocks.sand        , 1, 0))) {mDisplayedInput = -5;} else
+				if (ST.equal(tStack, ST.make(Blocks.sand        , 1, 1))) {mDisplayedInput = -6;} else
+				if (ST.equal(tStack, ST.make(Blocks.grass       , 1, W))) {mDisplayedInput = -7;} else
+				if (ST.equal(tStack, ST.make(Blocks.mycelium    , 1, W))) {mDisplayedInput = -8;} else
+				if (ST.equal(tStack, ST.make(Blocks.soul_sand   , 1, W))) {mDisplayedInput = -9;} else
+				if (ST.equal(tStack, ST.make(BlocksGT.Diggables , 1, W))) {mDisplayedInput =-10;} else
+				if (ST.equal(tStack, ST.make(BlocksGT.Sands     , 1, W))) {mDisplayedInput =-11;} else
+				if (IL.EtFu_Gravel                  .equal(tStack, F, T)) {mDisplayedInput = -1;} else
+				if (IL.EtFu_Dirt                    .equal(tStack, F, T)) {mDisplayedInput = -3;} else
+				if (IL.BoP_Mud                      .equal(tStack, F, T)) {mDisplayedInput =-10;} else
+				if (IL.BoP_Quicksand                .equal(tStack, F, T)) {mDisplayedInput = -5;} else
+				if (IL.BoP_Sand_Hard                .equal(tStack, F, T)) {mDisplayedInput = -5;} else
+				if (IL.BoP_Grass_Endstone           .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.BoP_Grass_Loamy              .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.BoP_Grass_Long               .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.BoP_Grass_Netherrack         .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.BoP_Grass_Origin             .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.BoP_Grass_Sandy              .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.BoP_Grass_Silty              .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.BoP_Grass_Smoldering         .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.BoP_Coarse_Loamy             .equal(tStack, F, T)) {mDisplayedInput = -3;} else
+				if (IL.BoP_Coarse_Sandy             .equal(tStack, F, T)) {mDisplayedInput = -3;} else
+				if (IL.BoP_Coarse_Silty             .equal(tStack, F, T)) {mDisplayedInput = -3;} else
+				if (IL.BoP_Dirt_Hard                .equal(tStack, F, T)) {mDisplayedInput = -3;} else
+				if (IL.BoP_Dirt_Dried               .equal(tStack, F, T)) {mDisplayedInput = -3;} else
+				if (IL.BoP_Dirt_Loamy               .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.BoP_Dirt_Sandy               .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.BoP_Dirt_Silty               .equal(tStack, F, T)) {mDisplayedInput = -2;} else
 				{
 					OreDictItemData tData = OM.data_(tStack);
 					if (tData == null || tData.mMaterial == null) {
@@ -142,38 +142,38 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 			}
 			for (int i = 1; i < 13; i++) if (ST.valid(tStack = slot(i))) {
 				mState |= B[1];
-				if (ST.equal(tStack, ST.make(Blocks.gravel		, 1, W))) {mDisplayedOutput = -1;} else
-				if (ST.equal(tStack, ST.make(Blocks.dirt		, 1, 0))) {mDisplayedOutput = -2;} else
-				if (ST.equal(tStack, ST.make(Blocks.dirt		, 1, 1))) {mDisplayedOutput = -3;} else
-				if (ST.equal(tStack, ST.make(Blocks.dirt		, 1, 2))) {mDisplayedOutput = -4;} else
-				if (ST.equal(tStack, ST.make(Blocks.sand		, 1, 0))) {mDisplayedOutput = -5;} else
-				if (ST.equal(tStack, ST.make(Blocks.sand		, 1, 1))) {mDisplayedOutput = -6;} else
-				if (ST.equal(tStack, ST.make(Blocks.grass		, 1, W))) {mDisplayedOutput = -7;} else
-				if (ST.equal(tStack, ST.make(Blocks.mycelium	, 1, W))) {mDisplayedOutput = -8;} else
-				if (ST.equal(tStack, ST.make(Blocks.soul_sand	, 1, W))) {mDisplayedOutput = -9;} else
-				if (ST.equal(tStack, ST.make(BlocksGT.Diggables	, 1, W))) {mDisplayedOutput =-10;} else
-				if (ST.equal(tStack, ST.make(BlocksGT.Sands		, 1, W))) {mDisplayedOutput =-11;} else
-				if (IL.EtFu_Gravel					.equal(tStack, F, T)) {mDisplayedOutput = -1;} else
-				if (IL.EtFu_Dirt					.equal(tStack, F, T)) {mDisplayedOutput = -3;} else
-				if (IL.BoP_Mud						.equal(tStack, F, T)) {mDisplayedOutput =-10;} else
-				if (IL.BoP_Quicksand				.equal(tStack, F, T)) {mDisplayedOutput = -5;} else
-				if (IL.BoP_Sand_Hard				.equal(tStack, F, T)) {mDisplayedOutput = -5;} else
-				if (IL.BoP_Grass_Endstone			.equal(tStack, F, T)) {mDisplayedOutput = -7;} else
-				if (IL.BoP_Grass_Loamy				.equal(tStack, F, T)) {mDisplayedOutput = -7;} else
-				if (IL.BoP_Grass_Long				.equal(tStack, F, T)) {mDisplayedOutput = -7;} else
-				if (IL.BoP_Grass_Netherrack			.equal(tStack, F, T)) {mDisplayedOutput = -7;} else
-				if (IL.BoP_Grass_Origin				.equal(tStack, F, T)) {mDisplayedOutput = -7;} else
-				if (IL.BoP_Grass_Sandy				.equal(tStack, F, T)) {mDisplayedOutput = -7;} else
-				if (IL.BoP_Grass_Silty				.equal(tStack, F, T)) {mDisplayedOutput = -7;} else
-				if (IL.BoP_Grass_Smoldering			.equal(tStack, F, T)) {mDisplayedOutput = -7;} else
-				if (IL.BoP_Coarse_Loamy				.equal(tStack, F, T)) {mDisplayedOutput = -3;} else
-				if (IL.BoP_Coarse_Sandy				.equal(tStack, F, T)) {mDisplayedOutput = -3;} else
-				if (IL.BoP_Coarse_Silty				.equal(tStack, F, T)) {mDisplayedOutput = -3;} else
-				if (IL.BoP_Dirt_Hard				.equal(tStack, F, T)) {mDisplayedOutput = -3;} else
-				if (IL.BoP_Dirt_Dried				.equal(tStack, F, T)) {mDisplayedOutput = -3;} else
-				if (IL.BoP_Dirt_Loamy				.equal(tStack, F, T)) {mDisplayedOutput = -2;} else
-				if (IL.BoP_Dirt_Sandy				.equal(tStack, F, T)) {mDisplayedOutput = -2;} else
-				if (IL.BoP_Dirt_Silty				.equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (ST.equal(tStack, ST.make(Blocks.gravel      , 1, W))) {mDisplayedOutput = -1;} else
+				if (ST.equal(tStack, ST.make(Blocks.dirt        , 1, 0))) {mDisplayedOutput = -2;} else
+				if (ST.equal(tStack, ST.make(Blocks.dirt        , 1, 1))) {mDisplayedOutput = -3;} else
+				if (ST.equal(tStack, ST.make(Blocks.dirt        , 1, 2))) {mDisplayedOutput = -4;} else
+				if (ST.equal(tStack, ST.make(Blocks.sand        , 1, 0))) {mDisplayedOutput = -5;} else
+				if (ST.equal(tStack, ST.make(Blocks.sand        , 1, 1))) {mDisplayedOutput = -6;} else
+				if (ST.equal(tStack, ST.make(Blocks.grass       , 1, W))) {mDisplayedOutput = -7;} else
+				if (ST.equal(tStack, ST.make(Blocks.mycelium    , 1, W))) {mDisplayedOutput = -8;} else
+				if (ST.equal(tStack, ST.make(Blocks.soul_sand   , 1, W))) {mDisplayedOutput = -9;} else
+				if (ST.equal(tStack, ST.make(BlocksGT.Diggables , 1, W))) {mDisplayedOutput =-10;} else
+				if (ST.equal(tStack, ST.make(BlocksGT.Sands     , 1, W))) {mDisplayedOutput =-11;} else
+				if (IL.EtFu_Gravel                  .equal(tStack, F, T)) {mDisplayedOutput = -1;} else
+				if (IL.EtFu_Dirt                    .equal(tStack, F, T)) {mDisplayedOutput = -3;} else
+				if (IL.BoP_Mud                      .equal(tStack, F, T)) {mDisplayedOutput =-10;} else
+				if (IL.BoP_Quicksand                .equal(tStack, F, T)) {mDisplayedOutput = -5;} else
+				if (IL.BoP_Sand_Hard                .equal(tStack, F, T)) {mDisplayedOutput = -5;} else
+				if (IL.BoP_Grass_Endstone           .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.BoP_Grass_Loamy              .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.BoP_Grass_Long               .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.BoP_Grass_Netherrack         .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.BoP_Grass_Origin             .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.BoP_Grass_Sandy              .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.BoP_Grass_Silty              .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.BoP_Grass_Smoldering         .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.BoP_Coarse_Loamy             .equal(tStack, F, T)) {mDisplayedOutput = -3;} else
+				if (IL.BoP_Coarse_Sandy             .equal(tStack, F, T)) {mDisplayedOutput = -3;} else
+				if (IL.BoP_Coarse_Silty             .equal(tStack, F, T)) {mDisplayedOutput = -3;} else
+				if (IL.BoP_Dirt_Hard                .equal(tStack, F, T)) {mDisplayedOutput = -3;} else
+				if (IL.BoP_Dirt_Dried               .equal(tStack, F, T)) {mDisplayedOutput = -3;} else
+				if (IL.BoP_Dirt_Loamy               .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.BoP_Dirt_Sandy               .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.BoP_Dirt_Silty               .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
 				{
 					OreDictItemData tData = OM.data_(tStack);
 					if (tData == null || tData.mMaterial == null) {
@@ -249,9 +249,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		if (aSendAll)								return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
-		if (mDisplayedInput	 != oDisplayedInput )	return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1));
-		if (mDisplayedOutput != oDisplayedOutput)	return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1));
+		if (aSendAll)                               return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
+		if (mDisplayedInput  != oDisplayedInput )   return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1));
+		if (mDisplayedOutput != oDisplayedOutput)   return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1));
 		return getClientDataPacketByte(aSendAll, mState);
 	}
 	
@@ -291,14 +291,14 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	}
 	
 	public static IIconContainer
-	sTextureLegs	= new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/legs"),
-	sTextureGrid	= new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/grid"),
-	sTextureBorder	= new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/border"),
-	sTexturePlate	= new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/plate"),
-	sOverlayLegs	= new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/legs"),
-	sOverlayGrid	= new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/grid"),
-	sOverlayBorder	= new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/border"),
-	sOverlayPlate	= new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/plate");
+	sTextureLegs    = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/legs"),
+	sTextureGrid    = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/grid"),
+	sTextureBorder  = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/border"),
+	sTexturePlate   = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/colored/plate"),
+	sOverlayLegs    = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/legs"),
+	sOverlayGrid    = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/grid"),
+	sOverlayBorder  = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/border"),
+	sOverlayPlate   = new Textures.BlockIcons.CustomIcon("machines/tools/sifting_table/overlay/plate");
 	
 	private ITexture mTextureLegs, mTextureGrid, mTextureBorder, mTexturePlate, mTextureInput, mTextureOutput;
 	
@@ -307,10 +307,10 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		if (aRenderPass == 0 && aSide == 0) {
 			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
 			
-			mTextureLegs		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
-			mTextureGrid		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureGrid	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayGrid));
-			mTextureBorder		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureBorder	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBorder));
-			mTexturePlate		= BlockTextureMulti.get(BlockTextureDefault.get(sTexturePlate	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayPlate));
+			mTextureLegs        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
+			mTextureGrid        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureGrid    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayGrid));
+			mTextureBorder      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBorder  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBorder));
+			mTexturePlate       = BlockTextureMulti.get(BlockTextureDefault.get(sTexturePlate   , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayPlate));
 			
 			mTextureInput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
 			mTextureOutput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
@@ -321,17 +321,17 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					mTextureInput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
 				} else if (mDisplayedInput < 0) {
 					switch(mDisplayedInput) {
-					case  -1: mTextureInput	 = BlockTextureCopied.get(Blocks.gravel			, SIDE_ANY, 0); break;
-					case  -2: mTextureInput	 = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 0); break;
-					case  -3: mTextureInput	 = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 1); break;
-					case  -4: mTextureInput	 = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 2); break;
-					case  -5: mTextureInput	 = BlockTextureCopied.get(Blocks.sand			, SIDE_ANY, 0); break;
-					case  -6: mTextureInput	 = BlockTextureCopied.get(Blocks.sand			, SIDE_ANY, 1); break;
-					case  -7: mTextureInput	 = BlockTextureCopied.get(Blocks.grass			, SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
-					case  -8: mTextureInput	 = BlockTextureCopied.get(Blocks.mycelium		, SIDE_ANY, 0); break;
-					case  -9: mTextureInput	 = BlockTextureCopied.get(Blocks.soul_sand		, SIDE_ANY, 0); break;
-					case -10: mTextureInput	 = BlockTextureCopied.get(BlocksGT.Diggables	, SIDE_ANY, 0); break;
-					case -11: mTextureInput	 = BlockTextureCopied.get(BlocksGT.Sands		, SIDE_ANY, 0); break;
+					case  -1: mTextureInput  = BlockTextureCopied.get(Blocks.gravel         , SIDE_ANY, 0); break;
+					case  -2: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 0); break;
+					case  -3: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 1); break;
+					case  -4: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 2); break;
+					case  -5: mTextureInput  = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 0); break;
+					case  -6: mTextureInput  = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 1); break;
+					case  -7: mTextureInput  = BlockTextureCopied.get(Blocks.grass          , SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
+					case  -8: mTextureInput  = BlockTextureCopied.get(Blocks.mycelium       , SIDE_ANY, 0); break;
+					case  -9: mTextureInput  = BlockTextureCopied.get(Blocks.soul_sand      , SIDE_ANY, 0); break;
+					case -10: mTextureInput  = BlockTextureCopied.get(BlocksGT.Diggables    , SIDE_ANY, 0); break;
+					case -11: mTextureInput  = BlockTextureCopied.get(BlocksGT.Sands        , SIDE_ANY, 0); break;
 					}
 				}
 			}
@@ -342,17 +342,17 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					mTextureOutput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
 				} else if (mDisplayedOutput < 0) {
 					switch(mDisplayedOutput) {
-					case  -1: mTextureOutput = BlockTextureCopied.get(Blocks.gravel			, SIDE_ANY, 0); break;
-					case  -2: mTextureOutput = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 0); break;
-					case  -3: mTextureOutput = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 1); break;
-					case  -4: mTextureOutput = BlockTextureCopied.get(Blocks.dirt			, SIDE_ANY, 2); break;
-					case  -5: mTextureOutput = BlockTextureCopied.get(Blocks.sand			, SIDE_ANY, 0); break;
-					case  -6: mTextureOutput = BlockTextureCopied.get(Blocks.sand			, SIDE_ANY, 1); break;
-					case  -7: mTextureOutput = BlockTextureCopied.get(Blocks.grass			, SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
-					case  -8: mTextureOutput = BlockTextureCopied.get(Blocks.mycelium		, SIDE_ANY, 0); break;
-					case  -9: mTextureOutput = BlockTextureCopied.get(Blocks.soul_sand		, SIDE_ANY, 0); break;
-					case -10: mTextureOutput = BlockTextureCopied.get(BlocksGT.Diggables	, SIDE_ANY, 0); break;
-					case -11: mTextureOutput = BlockTextureCopied.get(BlocksGT.Sands		, SIDE_ANY, 0); break;
+					case  -1: mTextureOutput = BlockTextureCopied.get(Blocks.gravel         , SIDE_ANY, 0); break;
+					case  -2: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 0); break;
+					case  -3: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 1); break;
+					case  -4: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 2); break;
+					case  -5: mTextureOutput = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 0); break;
+					case  -6: mTextureOutput = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 1); break;
+					case  -7: mTextureOutput = BlockTextureCopied.get(Blocks.grass          , SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
+					case  -8: mTextureOutput = BlockTextureCopied.get(Blocks.mycelium       , SIDE_ANY, 0); break;
+					case  -9: mTextureOutput = BlockTextureCopied.get(Blocks.soul_sand      , SIDE_ANY, 0); break;
+					case -10: mTextureOutput = BlockTextureCopied.get(BlocksGT.Diggables    , SIDE_ANY, 0); break;
+					case -11: mTextureOutput = BlockTextureCopied.get(BlocksGT.Sands        , SIDE_ANY, 0); break;
 					}
 				}
 			}
@@ -370,13 +370,13 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 4], PX_N[ 0]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 4], PX_N[ 0]);}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?PX_N[ 4]:0.0F;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return F;}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_TOP[aSide]?PX_N[ 4]:0.0F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	// Inventory Stuff
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[13];}

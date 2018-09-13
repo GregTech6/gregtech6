@@ -43,7 +43,7 @@ import net.minecraft.item.ItemStack;
 public class MultiTileEntityMiniPortalEnd extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalEnd>
 	sListEndSide = new ArrayListNoNulls<>(),
-	sListWorldSide	= new ArrayListNoNulls<>();
+	sListWorldSide  = new ArrayListNoNulls<>();
 	
 	static {
 		LH.add("gt.tileentity.portal.end.tooltip.1", "Only works between the End and the Overworld with a x128 Distance Factor!");
@@ -53,9 +53,9 @@ public class MultiTileEntityMiniPortalEnd extends MultiTileEntityMiniPortal {
 	
 	@Override
 	public void addToolTips2(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.end.tooltip.1"));
-		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.end.tooltip.2"));
-		aList.add(Chat.ORANGE	+ LH.get("gt.tileentity.portal.end.tooltip.3"));
+		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.end.tooltip.1"));
+		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.end.tooltip.2"));
+		aList.add(Chat.ORANGE   + LH.get("gt.tileentity.portal.end.tooltip.3"));
 	}
 	
 	@Override
@@ -120,7 +120,7 @@ public class MultiTileEntityMiniPortalEnd extends MultiTileEntityMiniPortal {
 			ItemStack aStack = aPlayer.inventory.getCurrentItem();
 			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemEnderEye", aStack)) {
 				setPortalActive();
-				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "	Y: " + mTarget.yCoord + "	Z: " + mTarget.zCoord);
+				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
 				
 			}

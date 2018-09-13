@@ -92,18 +92,18 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.CONVERTS_FROM_X)		+ " 1 L " + UT.Fluids.name(FluidRegistry.WATER, T) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + UT.Fluids.name(FL.Steam.make(0), true) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
+		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " 1 L " + UT.Fluids.name(FluidRegistry.WATER, T) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + UT.Fluids.name(FL.Steam.make(0), true) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
-		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_INPUT)			+ ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)						+ " " + mEnergyTypeAccepted.getChatFormat()	+ mEnergyTypeAccepted.getLocalisedNameShort()	+ Chat.WHITE + "/t ("+LH.get(LH.FACE_ANY)+")");
-		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_CAPACITY)		+ ": " + Chat.WHITE + mCapacity										+ " " + mEnergyTypeAccepted.getChatFormat()	+ mEnergyTypeAccepted.getLocalisedNameShort()	+ Chat.WHITE);
-		aList.add(Chat.RED		+ LH.get(LH.ENERGY_OUTPUT)			+ ": " + Chat.WHITE + UT.Code.units(mOutput, 10000, mEfficiency, F)	+ " " + TD.Energy.STEAM.getChatFormat()		+ TD.Energy.STEAM.getLocalisedNameLong()		+ Chat.WHITE + "/t ("+LH.get(LH.FACE_TOP)+")");
-		aList.add(Chat.RED		+ LH.get(LH.ENERGY_CAPACITY)		+ ": " + Chat.WHITE + mCapacity										+ " " + TD.Energy.STEAM.getChatFormat()		+ TD.Energy.STEAM.getLocalisedNameLong()		+ Chat.WHITE);
-		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_WATER_PURE));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_FUNNEL_TO_TANK));
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_EXPLOSION_STEAM));
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_MELTDOWN));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DECALCIFY_CHISEL));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)                        + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE + "/t ("+LH.get(LH.FACE_ANY)+")");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                     + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE);
+		aList.add(Chat.RED      + LH.get(LH.ENERGY_OUTPUT)          + ": " + Chat.WHITE + UT.Code.units(mOutput, 10000, mEfficiency, F) + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE + "/t ("+LH.get(LH.FACE_TOP)+")");
+		aList.add(Chat.RED      + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                     + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE);
+		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_WATER_PURE));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TO_TANK));
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_EXPLOSION_STEAM));
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DECALCIFY_CHISEL));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

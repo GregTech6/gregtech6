@@ -98,16 +98,16 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.CONVERTS_FROM_X)		+ " " + STEAM_PER_WATER + " L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_TO_Y) + " " + (STEAM_PER_WATER / STEAM_PER_EU) + " " + mEnergyTypeEmitted.getLocalisedNameShort());
+		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " " + STEAM_PER_WATER + " L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_TO_Y) + " " + (STEAM_PER_WATER / STEAM_PER_EU) + " " + mEnergyTypeEmitted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
-		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_INPUT)			+ ": " + Chat.WHITE + UT.Code.units(mOutput*STEAM_PER_EU, mEfficiency*2, 10000, F) + " - " + UT.Code.units(mOutput*2*STEAM_PER_EU, mEfficiency, 10000, F)	+ " " + TD.Energy.STEAM.getChatFormat()		+ TD.Energy.STEAM.getLocalisedNameLong()		+ Chat.WHITE + "/t ("+LH.get(LH.FACE_BACK)+")");
-		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_CAPACITY)		+ ": " + Chat.WHITE + mTanks[0].getCapacity()												+ " " + TD.Energy.STEAM.getChatFormat()		+ TD.Energy.STEAM.getLocalisedNameLong()		+ Chat.WHITE);
-		aList.add(Chat.RED		+ LH.get(LH.ENERGY_OUTPUT)			+ ": " + Chat.WHITE + (mOutput/2) + " - " + (mOutput*2)										+ " " + mEnergyTypeEmitted.getChatFormat()	+ mEnergyTypeEmitted.getLocalisedNameShort()	+ Chat.WHITE + "/t ("+LH.get(LH.FACE_FRONT)+")");
-		aList.add(Chat.RED		+ LH.get(LH.ENERGY_CAPACITY)		+ ": " + Chat.WHITE + mCapacity																+ " " + mEnergyTypeEmitted.getChatFormat()	+ mEnergyTypeEmitted.getLocalisedNameShort()	+ Chat.WHITE);
-		aList.add(Chat.ORANGE	+ LH.get(LH.EMITS_USED_STEAM) + " ("+LH.get(LH.FACE_SIDES)+", 80%)");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + UT.Code.units(mOutput*STEAM_PER_EU, mEfficiency*2, 10000, F) + " - " + UT.Code.units(mOutput*2*STEAM_PER_EU, mEfficiency, 10000, F)   + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE + "/t ("+LH.get(LH.FACE_BACK)+")");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mTanks[0].getCapacity()                                               + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE);
+		aList.add(Chat.RED      + LH.get(LH.ENERGY_OUTPUT)          + ": " + Chat.WHITE + (mOutput/2) + " - " + (mOutput*2)                                     + " " + mEnergyTypeEmitted.getChatFormat()  + mEnergyTypeEmitted.getLocalisedNameShort()    + Chat.WHITE + "/t ("+LH.get(LH.FACE_FRONT)+")");
+		aList.add(Chat.RED      + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                                             + " " + mEnergyTypeEmitted.getChatFormat()  + mEnergyTypeEmitted.getLocalisedNameShort()    + Chat.WHITE);
+		aList.add(Chat.ORANGE   + LH.get(LH.EMITS_USED_STEAM) + " ("+LH.get(LH.FACE_SIDES)+", 80%)");
 		aList.add(LH.getToolTipRedstoneFluxEmit(mEnergyTypeEmitted));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -115,7 +115,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (mActive && aTimer%(32-mState)==0) {
 			mPiston+=1; mPiston&=3;
-		//	if (!aIsServerSide && (mPiston&2)==0) UT.Sounds.play(SFX.MC_FIZZ, 5, 0.25F, 0.5F, getCoords());
+		//  if (!aIsServerSide && (mPiston&2)==0) UT.Sounds.play(SFX.MC_FIZZ, 5, 0.25F, 0.5F, getCoords());
 		}
 		
 		if (aIsServerSide) {
@@ -212,10 +212,10 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	
 	@Override public byte getVisualData() {return (byte)((mPiston&3) | (mActive?4:0) | (mState << 3));}
 	
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return ALONG_AXIS[aSide][mFacing]?0.5F:0.25F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return ALONG_AXIS[aSide][mFacing];}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return ALONG_AXIS[aSide][mFacing];}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return ALONG_AXIS[aSide][mFacing]?0.5F:0.25F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	@Override public boolean getStateRunningPossible() {return T;}
 	@Override public boolean getStateRunningPassively() {return mActive;}
@@ -247,9 +247,9 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch (aRenderPass) {
-		case 0: box(aBlock, PX_P[						  1], PX_P[						  1], PX_P[						  1], PX_N[						  1], PX_N[						  1], PX_N[						  1]); return T;
-		case 1: box(aBlock, PX_P[						  0], PX_P[						  0], PX_P[						  0], PX_N[SIDES_AXIS_X[mFacing]?14: 0], PX_N[SIDES_AXIS_Y[mFacing]?14: 0], PX_N[SIDES_AXIS_Z[mFacing]?14: 0]); return T;
-		case 2: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?14: 0], PX_P[SIDES_AXIS_Y[mFacing]?14: 0], PX_P[SIDES_AXIS_Z[mFacing]?14: 0], PX_N[						  0], PX_N[						  0], PX_N[						  0]); return T;
+		case 0: box(aBlock, PX_P[                         1], PX_P[                       1], PX_P[                       1], PX_N[                       1], PX_N[                       1], PX_N[                       1]); return T;
+		case 1: box(aBlock, PX_P[                         0], PX_P[                       0], PX_P[                       0], PX_N[SIDES_AXIS_X[mFacing]?14: 0], PX_N[SIDES_AXIS_Y[mFacing]?14: 0], PX_N[SIDES_AXIS_Z[mFacing]?14: 0]); return T;
+		case 2: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?14: 0], PX_P[SIDES_AXIS_Y[mFacing]?14: 0], PX_P[SIDES_AXIS_Z[mFacing]?14: 0], PX_N[                        0], PX_N[                       0], PX_N[                       0]); return T;
 		case 3: box(aBlock, PX_P[SIDES_AXIS_Y[mFacing]? 0: 6], PX_P[SIDES_AXIS_Z[mFacing]? 0: 6], PX_P[SIDES_AXIS_X[mFacing]? 0: 6], PX_N[SIDES_AXIS_Y[mFacing]? 0: 6], PX_N[SIDES_AXIS_Z[mFacing]? 0: 6], PX_N[SIDES_AXIS_X[mFacing]? 0: 6]); return T;
 		case 4: box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 0: 6], PX_P[SIDES_AXIS_X[mFacing]? 0: 6], PX_P[SIDES_AXIS_Y[mFacing]? 0: 6], PX_N[SIDES_AXIS_Z[mFacing]? 0: 6], PX_N[SIDES_AXIS_X[mFacing]? 0: 6], PX_N[SIDES_AXIS_Y[mFacing]? 0: 6]); return T;
 		case 5: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 4], PX_P[SIDES_AXIS_Y[mFacing]? 0: 4], PX_P[SIDES_AXIS_Z[mFacing]? 0: 4], PX_N[SIDES_AXIS_X[mFacing]? 0: 4], PX_N[SIDES_AXIS_Y[mFacing]? 0: 4], PX_N[SIDES_AXIS_Z[mFacing]? 0: 4]); return T;
@@ -361,7 +361,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		@Override
 		public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
 			if (tileentity != null) {
-//				render(tileentity.progress, tileentity.orientation, tileentity.getBaseTexture(), tileentity.getChamberTexture(), tileentity.getTrunkTexture(tileentity.getEnergyStage()), x, y, z);
+//              render(tileentity.progress, tileentity.orientation, tileentity.getBaseTexture(), tileentity.getChamberTexture(), tileentity.getTrunkTexture(tileentity.getEnergyStage()), x, y, z);
 			}
 		}
 

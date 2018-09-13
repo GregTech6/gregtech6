@@ -39,18 +39,18 @@ public class Enchantment_WerewolfDamage extends EnchantmentDamage {
 	public Enchantment_WerewolfDamage() {
 		super(Config.addIDConfig(ConfigCategories.IDs.enchantments, "Werebane", 12), 2, -1);
 		LH.add(getName(), "Werebane");
-		MT.Ir				.addEnchantmentForTools(this, 6);
-		MT.Ag				.addEnchantmentForTools(this, 4);
-		MT.Electrum			.addEnchantmentForTools(this, 3);
-		MT.BlackBronze		.addEnchantmentForTools(this, 2);
-		MT.BlackSteel		.addEnchantmentForTools(this, 2);
-		MT.RedSteel			.addEnchantmentForTools(this, 3);
-		MT.BlueSteel		.addEnchantmentForTools(this, 1);
-		MT.SterlingSilver	.addEnchantmentForTools(this, 4);
-		MT.AstralSilver		.addEnchantmentForTools(this, 5);
-		MT.VibraniumSilver	.addEnchantmentForTools(this,10);
-		MT.Craponite		.addEnchantmentForTools(this,10);
-		MT.Tc				.addEnchantmentForTools(this,10);
+		MT.Ir               .addEnchantmentForTools(this, 6);
+		MT.Ag               .addEnchantmentForTools(this, 4);
+		MT.Electrum         .addEnchantmentForTools(this, 3);
+		MT.BlackBronze      .addEnchantmentForTools(this, 2);
+		MT.BlackSteel       .addEnchantmentForTools(this, 2);
+		MT.RedSteel         .addEnchantmentForTools(this, 3);
+		MT.BlueSteel        .addEnchantmentForTools(this, 1);
+		MT.SterlingSilver   .addEnchantmentForTools(this, 4);
+		MT.AstralSilver     .addEnchantmentForTools(this, 5);
+		MT.VibraniumSilver  .addEnchantmentForTools(this,10);
+		MT.Craponite        .addEnchantmentForTools(this,10);
+		MT.Tc               .addEnchantmentForTools(this,10);
 		INSTANCE = this;
 	}
 	

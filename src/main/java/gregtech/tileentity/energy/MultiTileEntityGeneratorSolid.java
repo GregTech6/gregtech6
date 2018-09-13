@@ -88,16 +88,16 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES)		+ ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES)        + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		LH.addEnergyToolTips(this, aList, null, mEnergyTypeEmitted, null, LH.get(LH.FACE_TOP));
-		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_AIR_IN_FRONT));
-		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_EMPTY_ASHES) + " (" + LH.get(LH.FACE_FRONT) + ")");
-		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_IGNITE_FIRE) + " (" + LH.get(LH.FACE_FRONT) + ")");
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INVENTORY) + " (" + LH.get(LH.FACE_FRONT) + ")");
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_FIRE) + " ("+(FLAME_RANGE+1)+"m)");
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_CONTACT) + " (" + LH.get(LH.FACE_TOP) + ")");
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_REMOVE_SHOVEL));
+		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_AIR_IN_FRONT));
+		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_EMPTY_ASHES) + " (" + LH.get(LH.FACE_FRONT) + ")");
+		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_IGNITE_FIRE) + " (" + LH.get(LH.FACE_FRONT) + ")");
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INVENTORY) + " (" + LH.get(LH.FACE_FRONT) + ")");
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_FIRE) + " ("+(FLAME_RANGE+1)+"m)");
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT) + " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_REMOVE_SHOVEL));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -184,9 +184,9 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_igniter		) && (aSide == mFacing || aPlayer == null)) {mBurning = T; return 10000;}
-		if (aTool.equals(TOOL_extinguisher	) && (aSide == mFacing || aPlayer == null)) {mBurning = F; return 10000;}
-		if (aTool.equals(TOOL_shovel		) &&  aSide == mFacing && slotHas(1)) {
+		if (aTool.equals(TOOL_igniter       ) && (aSide == mFacing || aPlayer == null)) {mBurning = T; return 10000;}
+		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {mBurning = F; return 10000;}
+		if (aTool.equals(TOOL_shovel        ) &&  aSide == mFacing && slotHas(1)) {
 			long rDamage = 1000 * slot(1).stackSize;
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, slot(1), worldObj, xCoord, yCoord, zCoord);
 			slot(1, null);

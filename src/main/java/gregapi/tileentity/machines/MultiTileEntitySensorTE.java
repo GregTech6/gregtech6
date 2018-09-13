@@ -40,16 +40,16 @@ import net.minecraft.tileentity.TileEntity;
  */
 public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor implements ITileEntityComputerizable {
 	public static final byte
-	  MODE_COUNT	= 8
+	  MODE_COUNT    = 8
 	  
-	, MODE_DISPLAY	= 0
-	, MODE_PERCENT	= 1
-	, MODE_GREATER	= 2
-	, MODE_EQUAL	= 3
-	, MODE_SMALLER	= 4
-	, MODE_SCALE	= 5
-	, MODE_FULL		= 6
-	, MODE_NOT_FULL	= 7
+	, MODE_DISPLAY  = 0
+	, MODE_PERCENT  = 1
+	, MODE_GREATER  = 2
+	, MODE_EQUAL    = 3
+	, MODE_SMALLER  = 4
+	, MODE_SCALE    = 5
+	, MODE_FULL     = 6
+	, MODE_NOT_FULL = 7
 	;
 	
 	public static final int MAX_AVERAGING_VALUES = Short.MAX_VALUE;
@@ -97,14 +97,14 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 			byte tRedstone = mRedstone;
 			
 			switch (mMode & 127) {
-			case MODE_DISPLAY	: mDisplayedNumber = UT.Code.bindInt(mCurrentValue); break;
-			case MODE_GREATER	: tRedstone = (byte)(mCurrentValue >  mSetNumber?15:0); break;
-			case MODE_EQUAL		: tRedstone = (byte)(mCurrentValue == mSetNumber?15:0); break;
-			case MODE_SMALLER	: tRedstone = (byte)(mCurrentValue <  mSetNumber?15:0); break;
-			case MODE_SCALE		: tRedstone = (byte)UT.Code.scale(mCurrentValue, mSetNumber, 15, F); break;
-			case MODE_PERCENT	: tRedstone = (byte)UT.Code.scale(mDisplayedNumber = (mCurrentMax > 0 ? UT.Code.bindInt((mCurrentValue * 100L) / mCurrentMax) : 0), 100L, 15, F); break;
-			case MODE_FULL		: tRedstone = (byte)(mCurrentValue >= mCurrentMax?15: 0); break;
-			case MODE_NOT_FULL	: tRedstone = (byte)(mCurrentValue >= mCurrentMax? 0:15); break;
+			case MODE_DISPLAY   : mDisplayedNumber = UT.Code.bindInt(mCurrentValue); break;
+			case MODE_GREATER   : tRedstone = (byte)(mCurrentValue >  mSetNumber?15:0); break;
+			case MODE_EQUAL     : tRedstone = (byte)(mCurrentValue == mSetNumber?15:0); break;
+			case MODE_SMALLER   : tRedstone = (byte)(mCurrentValue <  mSetNumber?15:0); break;
+			case MODE_SCALE     : tRedstone = (byte)UT.Code.scale(mCurrentValue, mSetNumber, 15, F); break;
+			case MODE_PERCENT   : tRedstone = (byte)UT.Code.scale(mDisplayedNumber = (mCurrentMax > 0 ? UT.Code.bindInt((mCurrentValue * 100L) / mCurrentMax) : 0), 100L, 15, F); break;
+			case MODE_FULL      : tRedstone = (byte)(mCurrentValue >= mCurrentMax?15: 0); break;
+			case MODE_NOT_FULL  : tRedstone = (byte)(mCurrentValue >= mCurrentMax? 0:15); break;
 			}
 			
 			tRedstone = UT.Code.bind4(tRedstone);
@@ -134,8 +134,8 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber+= 16; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
 						}
 						if (tCoords[1] >= PX_P[12] && tCoords[1] <= PX_P[14]) {
-							if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber--	  ; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
-							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber++	  ; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
+							if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber--   ; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
+							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber++   ; playClick(); mSetNumber = UT.Code.bind16(mSetNumber); return T;}
 						}
 					} else {
 						if (tCoords[1] >= PX_P[ 6] && tCoords[1] <= PX_P[ 8]) {
@@ -147,8 +147,8 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber+= 10; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
 						}
 						if (tCoords[1] >= PX_P[12] && tCoords[1] <= PX_P[14]) {
-							if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber--	  ; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
-							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber++	  ; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
+							if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber--   ; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
+							if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {oDisplayedNumber = Short.MIN_VALUE; mSetNumber++   ; playClick(); mSetNumber = (int)UT.Code.bind(0, 9999, mSetNumber); return T;}
 						}
 					}
 				}
@@ -211,12 +211,12 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 	public IIconContainer getCharacterIcon(int aIndex) {
 		if (aIndex == 0) {
 			switch(mMode & 127) {
-			case MODE_FULL		: return BI.CHAR_EQUAL;
-			case MODE_NOT_FULL	: return BI.CHAR_SMALLER;
-			case MODE_GREATER	: return BI.CHAR_GREATER;
-			case MODE_EQUAL		: return BI.CHAR_EQUAL;
-			case MODE_SMALLER	: return BI.CHAR_SMALLER;
-			case MODE_SCALE		: return BI.CHAR_SCALE;
+			case MODE_FULL      : return BI.CHAR_EQUAL;
+			case MODE_NOT_FULL  : return BI.CHAR_SMALLER;
+			case MODE_GREATER   : return BI.CHAR_GREATER;
+			case MODE_EQUAL     : return BI.CHAR_EQUAL;
+			case MODE_SMALLER   : return BI.CHAR_SMALLER;
+			case MODE_SCALE     : return BI.CHAR_SCALE;
 			default: return mMode < 0 ? BI.CHAR_HEX : BI.decimalDigit(mDisplayedNumber, 4);
 			}
 		}
@@ -251,15 +251,15 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 	public static final String[] METHODS = {"getval", "getmax"}, ARGS = {"void", "void"}, HELPS = {"gets the value the sensor is reading for the object it is connected to", "gets the maximum value the sensor has for the object it is connected to"};
 	public static final Class<?>[] RETURNS = {int.class, int.class};
 	
-	@Override public String		getComputerizableName		(DelegatorTileEntity<TileEntity> aDelegator) {return "gt_sensor";}
-	@Override public String[]	allComputerizableArgs		(DelegatorTileEntity<TileEntity> aDelegator) {return ARGS;}
-	@Override public String[]	allComputerizableHelps		(DelegatorTileEntity<TileEntity> aDelegator) {return HELPS;}
-	@Override public String[]	allComputerizableMethods	(DelegatorTileEntity<TileEntity> aDelegator) {return METHODS;}
-	@Override public Class<?>[]	allComputerizableReturns	(DelegatorTileEntity<TileEntity> aDelegator) {return RETURNS;}
-	@Override public String		getComputerizableArgs		(DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex) {return ARGS[aFunctionIndex];}
-	@Override public String		getComputerizableHelp		(DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex) {return HELPS[aFunctionIndex];}
-	@Override public String		getComputerizableMethod		(DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex) {return METHODS[aFunctionIndex];}
-	@Override public Class<?>	getComputerizableReturn		(DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex) {return RETURNS[aFunctionIndex];}
+	@Override public String     getComputerizableName       (DelegatorTileEntity<TileEntity> aDelegator) {return "gt_sensor";}
+	@Override public String[]   allComputerizableArgs       (DelegatorTileEntity<TileEntity> aDelegator) {return ARGS;}
+	@Override public String[]   allComputerizableHelps      (DelegatorTileEntity<TileEntity> aDelegator) {return HELPS;}
+	@Override public String[]   allComputerizableMethods    (DelegatorTileEntity<TileEntity> aDelegator) {return METHODS;}
+	@Override public Class<?>[] allComputerizableReturns    (DelegatorTileEntity<TileEntity> aDelegator) {return RETURNS;}
+	@Override public String     getComputerizableArgs       (DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex) {return ARGS[aFunctionIndex];}
+	@Override public String     getComputerizableHelp       (DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex) {return HELPS[aFunctionIndex];}
+	@Override public String     getComputerizableMethod     (DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex) {return METHODS[aFunctionIndex];}
+	@Override public Class<?>   getComputerizableReturn     (DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex) {return RETURNS[aFunctionIndex];}
 	
 	@Override
 	public Object[] callComputerizableMethod(DelegatorTileEntity<TileEntity> aDelegator, int aFunctionIndex, Object[] aArguments) {

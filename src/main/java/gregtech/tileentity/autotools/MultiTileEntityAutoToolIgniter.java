@@ -71,8 +71,8 @@ public class MultiTileEntityAutoToolIgniter extends TileEntityBase09FacingSingle
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_IGNITER));
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_QUALITY)		+ ": " + Chat.WHITE + mQuality);
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_IGNITER));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_QUALITY)        + ": " + Chat.WHITE + mQuality);
 		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, LH.get(LH.FACE_ANYBUT_FRONT), null);
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -129,9 +129,9 @@ public class MultiTileEntityAutoToolIgniter extends TileEntityBase09FacingSingle
 	@Override public boolean setStateOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}
 	@Override public boolean getStateOnOff() {return !mStopped;}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
-	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && aSide != mFacing && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mInput;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && aSide != mFacing && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}

@@ -48,7 +48,7 @@ public class Loader_Books implements Runnable {
 		  "This Manual will explain the Functionality of the Punch Cards, once they are fully implemented. And no, they won't be like the IRL Punch Cards. This is just a current Idea Collection."
 		, "(i1&&i2)?o1=15:o1=0;=10"
 		, "ignore all Whitespace Characters, use Long for saving the Numbers"
-		, "&& || ^^ & | ^ ! ++ -- + - % / // * ** << >> >>> < > <= >= == !=	 ~ ( ) ?: , ; ;= ;=X; = i0 i1 i2 i3 i4 i5 o0 o1 o2 o3 o4 o5 v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 A B C D E F"
+		, "&& || ^^ & | ^ ! ++ -- + - % / // * ** << >> >>> < > <= >= == !=  ~ ( ) ?: , ; ;= ;=X; = i0 i1 i2 i3 i4 i5 o0 o1 o2 o3 o4 o5 v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 A B C D E F"
 		, "'0' = false, 'everything but 0' = true, '!' turns '0' into '1' and everything else into '0'"
 		, "',' is just a separator for multiple executed Codes in a row."
 		, "';' means that the Program waits until the next tick before continuing. ';=10' and ';=10;' both mean that it will wait 10 Ticks instead of 1. And ';=0' or anything < 0 will default to 0."
@@ -258,119 +258,119 @@ public class Loader_Books implements Runnable {
 		, "Witches\n===================\nWitches drop Empty Bottles, Sticks, Redstone, Glowstone, Sugar, Spider Eyes, Gunpowder and Potions. This makes them a valuable Mob to farm and also a way to get Glowstone and Potions without the Nether."
 		});
 		
-//		The Wither is a tough mob to fight.
-//		Having more health than the Ender Dragon or iron golems, the Wither can be quite hard to fight if one is not prepared and taken the necessary precautions.
-//		First of all, Withers do not naturally spawn.
-//		You must get 4 soul sand from a Nether fortress and 3 wither skeleton skulls.
-//		Wither skeleton skulls are dropped by wither skeletons when killed, however, they have only a 2.5% chance of dropping it.
-//		You should use a looting enchantment sword if possible.
-//		Once you get your three skulls and four soul sand, find a place to spawn the wither.
-//		To spawn the wither, one needs to place the soul sand in a t-shaped arrangement (exactly like an iron golem's iron block arrangement).
-//		Then, the three wither skulls are placed on the top of each of the three soul sand blocks that are on the top layer.
-//		Beware however, once you place the last wither skeleton skull to complete the wither spawning arrangement, the wither will start to spawn.
-//		We will come back to this spawning process later. 
-//		Supplies needed to fight the wither depend on strategy.
-//		The most strategic way requires these items:
-//		A full set of diamond armor (with a high protection enchantment, thorns may be useful but is not necessary),
-//		A sword with either sharpness or smite (fire aspect does not work on the wither),
-//		A bow with Power IV or V, punch, and infinity, Obviously an arrow (or many if you don't have the infinity enchantment),
-//		some instant health II splash potions, some strength II potions, and one or two enchanted golden apples.
-//		You will see how all of these will help in the following combat strategy.
-//		Again, this is one of the infinitely possible combat strategies there are for fighting the wither.
-//		Make sure you are an ample distance from your house before spawning the wither.
-//		This mob has the potential to be incredibly destructive.
-//		When you make the arrangement for spawning the wither correctly as said above, you should see a mob appear that is black and has three heads.
-//		Also you will notice a boss health bar much similar to the Ender Dragon's health bar.
-//		You will also see the bar gradually filling up.
-//		At this time, get your sword, bow, apples, and potions in hand and equip your armor.
-//		You don't have much time.
-//		Run away as fast as you can and be a good distance away from the wither as the health bar fills up.
-//		When the bar is full, the wither lets out an explosion that destroys some of the terrain around it.
-//		You are now ready to start fighting. The wither attacks any mob that is not undead.
-//		When the wither starts to search for prey, it will look for any mob that meets its criteria for killing.
-//		Your strategy right now should be to use your bow and shoot arrows at him.
-//		If you hit him, he might see you and charge at you.
-//		He will shoot blue and black colored skulls that look like one of his many heads.
-//		If these projectiles hit you, they will deal a good amount of damage.
-//		Damage done is dependent on the difficulty.
-//		On normal, if one is hit with a wither skull, the wither effect may be inflicted.
-//		Wither is basically the same as poison except you can be killed if your health bar is low and turns your health bar black for its duration so it is slightly hard to see how much health you have.
-//		These skulls will deal terrain damage if they hit the ground.
-//		The rare, blue skull is prone to destroying blocks with a much higher block resistance, including obsidian.
-//		Continue to follow the pattern of shoot, flee, and repeat.
-//		Keep doing this to decrease his health.
-//		Use the health potions when necessary.
-//		When the health reaches half, you will notice a somewhat of a force field around it.
-//		The force field causes the wither to take less damage and makes it immune to arrows.
-//		At this point, your bow is rendered useless.
-//		Consume a golden apple and a strength potion and you have no choice but to charge in.
-//		That way, the Wither is within melee range.
-//		The wither will do no damage to you while you have regen from the apple.
-//		You will also do much more damage because of the strength potion.
-//		Hopefully, You can kill the wither in one go with the apple and potion.
-//		It should be enough.
-//		If you are successful in killing the wither, the wither will explode.
-//		The wither drops a small amount of experience and a single Nether star.
-//		This Netherstar can be used to make a most desired beacon block.
+//      The Wither is a tough mob to fight.
+//      Having more health than the Ender Dragon or iron golems, the Wither can be quite hard to fight if one is not prepared and taken the necessary precautions.
+//      First of all, Withers do not naturally spawn.
+//      You must get 4 soul sand from a Nether fortress and 3 wither skeleton skulls.
+//      Wither skeleton skulls are dropped by wither skeletons when killed, however, they have only a 2.5% chance of dropping it.
+//      You should use a looting enchantment sword if possible.
+//      Once you get your three skulls and four soul sand, find a place to spawn the wither.
+//      To spawn the wither, one needs to place the soul sand in a t-shaped arrangement (exactly like an iron golem's iron block arrangement).
+//      Then, the three wither skulls are placed on the top of each of the three soul sand blocks that are on the top layer.
+//      Beware however, once you place the last wither skeleton skull to complete the wither spawning arrangement, the wither will start to spawn.
+//      We will come back to this spawning process later. 
+//      Supplies needed to fight the wither depend on strategy.
+//      The most strategic way requires these items:
+//      A full set of diamond armor (with a high protection enchantment, thorns may be useful but is not necessary),
+//      A sword with either sharpness or smite (fire aspect does not work on the wither),
+//      A bow with Power IV or V, punch, and infinity, Obviously an arrow (or many if you don't have the infinity enchantment),
+//      some instant health II splash potions, some strength II potions, and one or two enchanted golden apples.
+//      You will see how all of these will help in the following combat strategy.
+//      Again, this is one of the infinitely possible combat strategies there are for fighting the wither.
+//      Make sure you are an ample distance from your house before spawning the wither.
+//      This mob has the potential to be incredibly destructive.
+//      When you make the arrangement for spawning the wither correctly as said above, you should see a mob appear that is black and has three heads.
+//      Also you will notice a boss health bar much similar to the Ender Dragon's health bar.
+//      You will also see the bar gradually filling up.
+//      At this time, get your sword, bow, apples, and potions in hand and equip your armor.
+//      You don't have much time.
+//      Run away as fast as you can and be a good distance away from the wither as the health bar fills up.
+//      When the bar is full, the wither lets out an explosion that destroys some of the terrain around it.
+//      You are now ready to start fighting. The wither attacks any mob that is not undead.
+//      When the wither starts to search for prey, it will look for any mob that meets its criteria for killing.
+//      Your strategy right now should be to use your bow and shoot arrows at him.
+//      If you hit him, he might see you and charge at you.
+//      He will shoot blue and black colored skulls that look like one of his many heads.
+//      If these projectiles hit you, they will deal a good amount of damage.
+//      Damage done is dependent on the difficulty.
+//      On normal, if one is hit with a wither skull, the wither effect may be inflicted.
+//      Wither is basically the same as poison except you can be killed if your health bar is low and turns your health bar black for its duration so it is slightly hard to see how much health you have.
+//      These skulls will deal terrain damage if they hit the ground.
+//      The rare, blue skull is prone to destroying blocks with a much higher block resistance, including obsidian.
+//      Continue to follow the pattern of shoot, flee, and repeat.
+//      Keep doing this to decrease his health.
+//      Use the health potions when necessary.
+//      When the health reaches half, you will notice a somewhat of a force field around it.
+//      The force field causes the wither to take less damage and makes it immune to arrows.
+//      At this point, your bow is rendered useless.
+//      Consume a golden apple and a strength potion and you have no choice but to charge in.
+//      That way, the Wither is within melee range.
+//      The wither will do no damage to you while you have regen from the apple.
+//      You will also do much more damage because of the strength potion.
+//      Hopefully, You can kill the wither in one go with the apple and potion.
+//      It should be enough.
+//      If you are successful in killing the wither, the wither will explode.
+//      The wither drops a small amount of experience and a single Nether star.
+//      This Netherstar can be used to make a most desired beacon block.
 		
 		//-----
 		
 		tBook.clear();
 		tBook.add("This Manual is about common and uncommon Tools and how to use them. It contains a List of every normal Tool that you might not know the true purpose of.");
 		
-		tBook.add("Swords"				+"\n===================\nIt's a Sword, it deals Damage and cuts things. It can harvest Leaves, Webs and Wool Blocks.");
-		tBook.add("Knifes"				+"\n===================\nThey cut Food, Sticks, Rubber, Saplings into Sticks, Bark of a Tree, and similar things and are a somewhat usable early weapon. It can harvest all the things a Sword can harvest too.");
-		tBook.add("Butchery Knifes"		+"\n===================\nHas a Looting Modifier on it per Default, but has a slow swing and low Damage.");
+		tBook.add("Swords"              +"\n===================\nIt's a Sword, it deals Damage and cuts things. It can harvest Leaves, Webs and Wool Blocks.");
+		tBook.add("Knifes"              +"\n===================\nThey cut Food, Sticks, Rubber, Saplings into Sticks, Bark of a Tree, and similar things and are a somewhat usable early weapon. It can harvest all the things a Sword can harvest too.");
+		tBook.add("Butchery Knifes"     +"\n===================\nHas a Looting Modifier on it per Default, but has a slow swing and low Damage.");
 		
-		tBook.add("Clubs"				+"\n===================\nSometimes kindof expensive, but it works like a Hammer and deals lots of Damage, while having a larger cooldown time after a hit. It can break Rocky Blocks, but it will crush them.");
+		tBook.add("Clubs"               +"\n===================\nSometimes kindof expensive, but it works like a Hammer and deals lots of Damage, while having a larger cooldown time after a hit. It can break Rocky Blocks, but it will crush them.");
 		
-		tBook.add("Axes"				+"\n===================\nGood in chopping down Trees, bad in chopping down Planks or other wooden things.");
-		tBook.add("Double Axes"			+"\n===================\nStill good for chopping on Trees, but also very effective as a Weapon and has 50% more Durability than the normal Axe, while requiring 66.666% more Material to create.");
-		tBook.add("Saws"				+"\n===================\nBad for chopping Trees, but can easily cut wooden things like Planks.");
-		tBook.add("Chainsaws"			+"\n===================\nGood for pretty much all purposes, can chop Trees, saw Planks and is a very nice Weapon. It can specifically be used to spam click Creepers to death easily.");
-		tBook.add("Buzzsaws"			+"\n===================\nThis Type of Saw is dedicated to Hand Crafting and cannot harvest any Blocks. It is cheaper to use this than a Chainsaw for crafting purposes.");
+		tBook.add("Axes"                +"\n===================\nGood in chopping down Trees, bad in chopping down Planks or other wooden things.");
+		tBook.add("Double Axes"         +"\n===================\nStill good for chopping on Trees, but also very effective as a Weapon and has 50% more Durability than the normal Axe, while requiring 66.666% more Material to create.");
+		tBook.add("Saws"                +"\n===================\nBad for chopping Trees, but can easily cut wooden things like Planks.");
+		tBook.add("Chainsaws"           +"\n===================\nGood for pretty much all purposes, can chop Trees, saw Planks and is a very nice Weapon. It can specifically be used to spam click Creepers to death easily.");
+		tBook.add("Buzzsaws"            +"\n===================\nThis Type of Saw is dedicated to Hand Crafting and cannot harvest any Blocks. It is cheaper to use this than a Chainsaw for crafting purposes.");
 		
-		tBook.add("Pickaxes"			+"\n===================\nMines Blocks like a normal Pickaxe usually does.");
-		tBook.add("Construction Picks"	+"\n===================\nIt mines man-made Blocks much faster, but is slow on Natural Rocks.");
-		tBook.add("Gem tipped Pickaxes"	+"\n===================\nIn an exchange for a lot of Durability, you can put flawed Gems onto your Raw Steel Pickaxe Head, to give it the Quality of a Gem Tool. Amber, Sapphires and Diamonds are best for this.");
-		tBook.add("JackHammers"			+"\n===================\nThis thing mines Blocks and crushes them like a Hammer at an insane Speed. Not much to say about it.");
-		tBook.add("Mining Drills"		+"\n===================\nIt can mine and shovel things at once and is the perfect universal mining Tool.");
+		tBook.add("Pickaxes"            +"\n===================\nMines Blocks like a normal Pickaxe usually does.");
+		tBook.add("Construction Picks"  +"\n===================\nIt mines man-made Blocks much faster, but is slow on Natural Rocks.");
+		tBook.add("Gem tipped Pickaxes" +"\n===================\nIn an exchange for a lot of Durability, you can put flawed Gems onto your Raw Steel Pickaxe Head, to give it the Quality of a Gem Tool. Amber, Sapphires and Diamonds are best for this.");
+		tBook.add("JackHammers"         +"\n===================\nThis thing mines Blocks and crushes them like a Hammer at an insane Speed. Not much to say about it.");
+		tBook.add("Mining Drills"       +"\n===================\nIt can mine and shovel things at once and is the perfect universal mining Tool.");
 		
-		tBook.add("Shovels"				+"\n===================\nMines Blocks like a normal Shovel usually does.");
-		tBook.add("Spades"				+"\n===================\nA Spade has conditional Silk-Touch for certain Blocks, such as Dirt, Grass, Mycelium, Clay, Mud, Snow and Podzol, but it is slower than a normal Shovel and doesn't work on Sand.");
-		tBook.add("Plows"				+"\n===================\nThe Plow harvests a 3x3x3 Area of Snow Layers and similar Blocks at once.");
-		tBook.add("Universal Spades"	+"\n===================\nShovel, Saw, Sword and Crowbar at once. Very versatile, but that goes at the cost of Durability and Speed.");
+		tBook.add("Shovels"             +"\n===================\nMines Blocks like a normal Shovel usually does.");
+		tBook.add("Spades"              +"\n===================\nA Spade has conditional Silk-Touch for certain Blocks, such as Dirt, Grass, Mycelium, Clay, Mud, Snow and Podzol, but it is slower than a normal Shovel and doesn't work on Sand.");
+		tBook.add("Plows"               +"\n===================\nThe Plow harvests a 3x3x3 Area of Snow Layers and similar Blocks at once.");
+		tBook.add("Universal Spades"    +"\n===================\nShovel, Saw, Sword and Crowbar at once. Very versatile, but that goes at the cost of Durability and Speed.");
 		
-		tBook.add("Hammers"				+"\n===================\nCrushing Blocks and Smithery are the most common usages of this Tool. It doesn't do much else, but it can be used in Combat.");
-		tBook.add("Soft Hammers"		+"\n===================\nThese Hammers are mainly used to turn Machines ON and OFF. They can even turn Redstone Lamps and certain Rails ON without having to have a Redstone Signal close to them.");
-		tBook.add("Wrenches"			+"\n===================\nAdjusts the primary Facing of most Machines, sometimes it can be used to toggle Modes aswell.");
-		tBook.add("Monkey Wrenches"		+"\n===================\nAdjusts the secondary Facing of most Machines, often it can be used to toggle Modes aswell.");
-		tBook.add("Electric Wrenches"	+"\n===================\nThey are a combination of the normal Wrench and the Monkey Wrench and can easily switch between them via Modes. Sneak Rightclick on a non-wrenchable Block to switch.");
+		tBook.add("Hammers"             +"\n===================\nCrushing Blocks and Smithery are the most common usages of this Tool. It doesn't do much else, but it can be used in Combat.");
+		tBook.add("Soft Hammers"        +"\n===================\nThese Hammers are mainly used to turn Machines ON and OFF. They can even turn Redstone Lamps and certain Rails ON without having to have a Redstone Signal close to them.");
+		tBook.add("Wrenches"            +"\n===================\nAdjusts the primary Facing of most Machines, sometimes it can be used to toggle Modes aswell.");
+		tBook.add("Monkey Wrenches"     +"\n===================\nAdjusts the secondary Facing of most Machines, often it can be used to toggle Modes aswell.");
+		tBook.add("Electric Wrenches"   +"\n===================\nThey are a combination of the normal Wrench and the Monkey Wrench and can easily switch between them via Modes. Sneak Rightclick on a non-wrenchable Block to switch.");
 		
-		tBook.add("Files"				+"\n===================\nSharpens things and can comically harvest Iron Bars way faster than anything else.");
-		tBook.add("Chisels"				+"\n===================\nCan put Molds into Shape and change the looks of some Stones.");
-		tBook.add("Bending Cylinders"	+"\n===================\nTurns Plates into Curved Plates and is used for similar Metal Working procedures");
+		tBook.add("Files"               +"\n===================\nSharpens things and can comically harvest Iron Bars way faster than anything else.");
+		tBook.add("Chisels"             +"\n===================\nCan put Molds into Shape and change the looks of some Stones.");
+		tBook.add("Bending Cylinders"   +"\n===================\nTurns Plates into Curved Plates and is used for similar Metal Working procedures");
 		
-		tBook.add("Crowbars"			+"\n===================\nOpens Crates and can be used on Rails and Minecarts");
-		tBook.add("Pincers"				+"\n===================\nUsed to pick up hot things from Molds and Basins, so you don't have to wait for them to cool down before picking them up.");
-		tBook.add("Plungers"			+"\n===================\nEmpties Pipes and Fluid Tanks by either voiding the Fluid or dropping the ItemStack that is stuck in them. Works on Thaumic Conduits aswell.");
-		tBook.add("Scoops"				+"\n===================\nCatches Butterflies, Bees and Bumblebees, also needed to harvest Bumble Hives and Bee Hives.");
+		tBook.add("Crowbars"            +"\n===================\nOpens Crates and can be used on Rails and Minecarts");
+		tBook.add("Pincers"             +"\n===================\nUsed to pick up hot things from Molds and Basins, so you don't have to wait for them to cool down before picking them up.");
+		tBook.add("Plungers"            +"\n===================\nEmpties Pipes and Fluid Tanks by either voiding the Fluid or dropping the ItemStack that is stuck in them. Works on Thaumic Conduits aswell.");
+		tBook.add("Scoops"              +"\n===================\nCatches Butterflies, Bees and Bumblebees, also needed to harvest Bumble Hives and Bee Hives.");
 		
-		tBook.add("Hoes"				+"\n===================\nThey till the ground, what do you expect? I'm not gonna explain vanilla Tools in great detail.");
+		tBook.add("Hoes"                +"\n===================\nThey till the ground, what do you expect? I'm not gonna explain vanilla Tools in great detail.");
 		tBook.add("Branch Cutters\nTrimmers"+"\n===================\nCuts Saplings out of Leaves with high precision, like a Grafter.");
-//		tBook.add("Sickles"				+"\n===================\n");
-		tBook.add("Senses"				+"\n===================\nHarvests a 3x3x3 Area of Crops, Flowers and Tall Grass.");
+//      tBook.add("Sickles"             +"\n===================\n");
+		tBook.add("Senses"              +"\n===================\nHarvests a 3x3x3 Area of Crops, Flowers and Tall Grass.");
 		
-		tBook.add("Rolling Pins"		+"\n===================\nFlattens Dough and Clay for cooking and crafting purposes.");
-		tBook.add("Scissors"			+"\n===================\nCan cut Tripwires on Rightclick, shear Sheep and harvest Wool-ish/Cloth-ish Blocks.");
-		tBook.add("Screwdrivers"		+"\n===================\nDrives Screws and such. The most common usage is adjusting Modes on Blocks and Covers. They can rotate Comparators and Repeaters.");
-		tBook.add("Wire Cutters"		+"\n===================\nThey harvest Wires. Another usage is to adjust Wires and in some cases Covers aswell.");
-		tBook.add("Hand Mixers"			+"\n===================\nThese are just so you don't consume your Hunger Bar when operating the Mixing Bowl.");
-		tBook.add("Hand Drills"			+"\n===================\nThose Drill Holes in Surfaces. If you have Dynamite Sticks or Iron/Steel Rods with you, you can stick the Dynamite into Walls or reinforce Bricks and Concrete.");
-		tBook.add("Flint and Tinder"	+"\n===================\nSets things on Fire and can light anything that requires ignition. But it might take a few tries to do so.");
-		tBook.add("Magnifying Glasses"	+"\n===================\nWith this you can look at the Details of a LOT of things in GregTech, just put a Lens of any kind on a Stick and you are good to go for a long time.");
+		tBook.add("Rolling Pins"        +"\n===================\nFlattens Dough and Clay for cooking and crafting purposes.");
+		tBook.add("Scissors"            +"\n===================\nCan cut Tripwires on Rightclick, shear Sheep and harvest Wool-ish/Cloth-ish Blocks.");
+		tBook.add("Screwdrivers"        +"\n===================\nDrives Screws and such. The most common usage is adjusting Modes on Blocks and Covers. They can rotate Comparators and Repeaters.");
+		tBook.add("Wire Cutters"        +"\n===================\nThey harvest Wires. Another usage is to adjust Wires and in some cases Covers aswell.");
+		tBook.add("Hand Mixers"         +"\n===================\nThese are just so you don't consume your Hunger Bar when operating the Mixing Bowl.");
+		tBook.add("Hand Drills"         +"\n===================\nThose Drill Holes in Surfaces. If you have Dynamite Sticks or Iron/Steel Rods with you, you can stick the Dynamite into Walls or reinforce Bricks and Concrete.");
+		tBook.add("Flint and Tinder"    +"\n===================\nSets things on Fire and can light anything that requires ignition. But it might take a few tries to do so.");
+		tBook.add("Magnifying Glasses"  +"\n===================\nWith this you can look at the Details of a LOT of things in GregTech, just put a Lens of any kind on a Stick and you are good to go for a long time.");
 		
-		tBook.add("Pocket Multitool"	+"\n===================\nA Multi-Tool that can be switched to the most common purposes. See it as a Swiss Army Knife.");
+		tBook.add("Pocket Multitool"    +"\n===================\nA Multi-Tool that can be switched to the most common purposes. See it as a Swiss Army Knife.");
 		
 		UT.Books.createWrittenBook("Manual_Tools", "Tool Index", "GITF (Gregorius Industrial Tool Factory)", ST.make(ItemsGT.BOOKS, 1, tBook.size()>50?32001:32000), tBook.toArray(ZL_STRING));
 		
@@ -378,44 +378,44 @@ public class Loader_Books implements Runnable {
 		tBook.clear();
 		tBook.add("This is the Manual of the Smelting Crucible and related Objects. It will explain how to use the Smelting Crucible and the Molds properly, so that you can start smelting things which cannot me molten inside a regular Furnace.");
 		tBook.add("If you need to know how heavy an Object is or what Materials it consists out of, just use the good old vanilla F3+H Method to enable advanced Tooltips, so you can see the most relevant Data about the Object.");
-		tBook.add("Step 1: Heat Source"	+"\n===================\nYou need a Heat Source in order to heat up your Crucible to the desired Temperature. Possible Heat Sources include Burning Boxes, Electric Heaters, Laser Heaters and Arc Heaters.");
-		tBook.add("Step 2: Crucible"	+"\n===================\nThe choice of Crucible Material is very important. The Crucible can melt too at a certain Temperature, which is usually higher than the actual Melting Point of the Crucible itself.");
-		tBook.add("Step 2: Crucible"	+"\n===================\nNow place the Crucible of your choice at the Output Facing of the Heat Source. The Burning Box for example only emits to its Top Side, so you need to place the Crucible above it.");
-		tBook.add("Step 3: The Molds"	+"\n===================\nYou probably want to cast the molten Metal into a Shape, so you need to place a Mold horizontally adjacent to the Crucible. As you may have noticed the Mold itself doesn't have a Shape.");
-		tBook.add("Step 3: The Molds"	+"\n===================\nThis is why you need a Chisel in order to chisel the proper Shape into the Mold by using it in World. The most important Shapes are Listed in the last Pages of this Book.");
-		tBook.add("Step 3: The Molds"	+"\n===================\nIf you somehow fail to put a correct Shape into the Mold, the End Result will be as many Nuggets as you have chiseled out places.");
-		tBook.add("Step 4: Smelting"	+"\n===================\nNow we get to smelting. Just throw the things you want to smelt into the Crucible, or use a Hopper above the Crucible to fill it. And turn up the Heat until you reach the melting Point.");
-		tBook.add("Step 4: Smelting"	+"\n===================\nUnless your Heat Source has some kind of Temperature regulation, you may need to shut it off once the Temperature reaches the Melting Point or else you will vaporate the Metals or worse.");
-		tBook.add("Step 5: Shaping"		+"\n===================\nNow just click the Side of the top of the Mold where the Crucible is next to, in order to fill it with its Metals. Warning: The Mold itself can melt too if it is made of the wrong Material.");
-		tBook.add("Step 5: Shaping"		+"\n===================\nWait for the Metal to cool down, but note that you should not touch or take out the Metal while it is hot or else you will burn yourself unless you wear a Hazmat Suit or something.");
-		tBook.add("Mold Shapes"			+"\n===================\nThe following is a List of Shapes you can chisel the Mold into. The position of the Shape on the Mold is NOT important, you can rotate and mirror it too\nX = Chiseled\nO = Not Chiseled");
-		tBook.add("Ingot"				+"\n===================\nXXXOO\nXXXOO\nXXXOO\nXXXOO\nXXXOO\n===================\n1.000 Units required");
-		tBook.add("Chunk"				+"\n===================\nXXOOO\nXXOOO\nOOOOO\nOOOOO\nOOOOO\n===================\n0.250 Units required");
-		tBook.add("Plate"				+"\n===================\nXXXXX\nXXXXX\nXXXXX\nXXXXX\nXXXXX\n===================\n1.000 Units required");
-		tBook.add("Tiny Plate"			+"\n===================\nOOOOO\nOXXXO\nOXXXO\nOXXXO\nOOOOO\n===================\n0.111 Units required");
-		tBook.add("Bolt"				+"\n===================\nXXOOO\nOOOOO\nOOOOO\nOOOOO\nOOOOO\n===================\n0.125 Units required");
-		tBook.add("Rod"					+"\n===================\nOOOOO\nOOOOO\nXXXXX\nOOOOO\nOOOOO\n===================\n0.500 Units required");
-		tBook.add("Long Rod"			+"\n===================\nXOOOO\nOXOOO\nOOXOO\nOOOXO\nOOOOX\n===================\n1.000 Units required");
-		tBook.add("Item Casing"			+"\n===================\nXXXOX\nXXXOX\nXXXOX\nOOOOX\nXXXOO\n===================\n0.500 Units required");
-		tBook.add("Ring"				+"\n===================\nOOOOO\nOXXXO\nOXOXO\nOXXXO\nOOOOO\n===================\n0.250 Units required");
-		tBook.add("Gear"				+"\n===================\nXOXOX\nOXXXO\nXXOXX\nOXXXO\nXOXOX\n===================\n4.000 Units required");
-		tBook.add("Small Gear"			+"\n===================\nOXOXO\nXXXXX\nOXOXO\nXXXXX\nOXOXO\n===================\n1.000 Units required");
-		tBook.add("Sword"				+"\n===================\nOOXOO\nOXXXO\nOXXXO\nOXXXO\nOXXXO\n===================\n2.000 Units required");
-		tBook.add("Pickaxe"				+"\n===================\nOOOOO\nOXXXO\nXOOOX\nOOOOO\nOOOOO\n===================\n3.000 Units required");
-		tBook.add("Spade"				+"\n===================\nOXXXO\nOXXXO\nOXXXO\nOXOXO\nOOOOO\n===================\n1.000 Units required");
-		tBook.add("Shovel"				+"\n===================\nOOXOO\nOXXXO\nOXXXO\nOXXXO\nOOOOO\n===================\n1.000 Units required");
-		tBook.add("Universal Spade"		+"\n===================\nOOXOO\nOXXXO\nOXXOO\nOXXXO\nOOOOO\n===================\n1.000 Units required");
-		tBook.add("Axe"					+"\n===================\nOOOOO\nOXXXO\nOXXXO\nOXOOO\nOOOOO\n===================\n3.000 Units required");
-		tBook.add("Double Axe"			+"\n===================\nOOOOO\nXXXXX\nXXXXX\nXOOOX\nOOOOO\n===================\n5.000 Units required");
-		tBook.add("Saw"					+"\n===================\nOOOOO\nXXXXX\nXXXXX\nOOOOO\nOOOOO\n===================\n2.000 Units required");
-		tBook.add("Hammer"				+"\n===================\nXXXOO\nXXXOO\nXOXOO\nXXXOO\nXXXOO\n===================\n6.000 Units required");
-		tBook.add("File"				+"\n===================\nOXXXO\nOXXXO\nOXXXO\nOOXOO\nOOXOO\n===================\n1.500 Units required");
-		tBook.add("Screwdriver"			+"\n===================\nOOOOO\nOOXOO\nOOXOO\nOOXOO\nOOXOO\n===================\n1.000 Units required");
-		tBook.add("Chisel"				+"\n===================\nOXXXO\nOOXOO\nOOXOO\nOOXOO\nOOXOO\n===================\n1.500 Units required");
-		tBook.add("Arrow"				+"\n===================\nOOOOO\nOOXOO\nOOXOO\nOXXXO\nOOOOO\n===================\n0.250 Units required");
-		tBook.add("Hoe"					+"\n===================\nOOOOO\nOOXXO\nOXXXO\nOOOOO\nOOOOO\n===================\n2.000 Units required");
-		tBook.add("Sense/Scythe"		+"\n===================\nOOOOO\nOXXXX\nXXXXX\nOOOOO\nOOOOO\n===================\n3.000 Units required");
-		tBook.add("Plow"				+"\n===================\nXXXXX\nXXXXX\nXXXXX\nXXXXX\nOOXOO\n===================\n6.000 Units required");
+		tBook.add("Step 1: Heat Source" +"\n===================\nYou need a Heat Source in order to heat up your Crucible to the desired Temperature. Possible Heat Sources include Burning Boxes, Electric Heaters, Laser Heaters and Arc Heaters.");
+		tBook.add("Step 2: Crucible"    +"\n===================\nThe choice of Crucible Material is very important. The Crucible can melt too at a certain Temperature, which is usually higher than the actual Melting Point of the Crucible itself.");
+		tBook.add("Step 2: Crucible"    +"\n===================\nNow place the Crucible of your choice at the Output Facing of the Heat Source. The Burning Box for example only emits to its Top Side, so you need to place the Crucible above it.");
+		tBook.add("Step 3: The Molds"   +"\n===================\nYou probably want to cast the molten Metal into a Shape, so you need to place a Mold horizontally adjacent to the Crucible. As you may have noticed the Mold itself doesn't have a Shape.");
+		tBook.add("Step 3: The Molds"   +"\n===================\nThis is why you need a Chisel in order to chisel the proper Shape into the Mold by using it in World. The most important Shapes are Listed in the last Pages of this Book.");
+		tBook.add("Step 3: The Molds"   +"\n===================\nIf you somehow fail to put a correct Shape into the Mold, the End Result will be as many Nuggets as you have chiseled out places.");
+		tBook.add("Step 4: Smelting"    +"\n===================\nNow we get to smelting. Just throw the things you want to smelt into the Crucible, or use a Hopper above the Crucible to fill it. And turn up the Heat until you reach the melting Point.");
+		tBook.add("Step 4: Smelting"    +"\n===================\nUnless your Heat Source has some kind of Temperature regulation, you may need to shut it off once the Temperature reaches the Melting Point or else you will vaporate the Metals or worse.");
+		tBook.add("Step 5: Shaping"     +"\n===================\nNow just click the Side of the top of the Mold where the Crucible is next to, in order to fill it with its Metals. Warning: The Mold itself can melt too if it is made of the wrong Material.");
+		tBook.add("Step 5: Shaping"     +"\n===================\nWait for the Metal to cool down, but note that you should not touch or take out the Metal while it is hot or else you will burn yourself unless you wear a Hazmat Suit or something.");
+		tBook.add("Mold Shapes"         +"\n===================\nThe following is a List of Shapes you can chisel the Mold into. The position of the Shape on the Mold is NOT important, you can rotate and mirror it too\nX = Chiseled\nO = Not Chiseled");
+		tBook.add("Ingot"               +"\n===================\nXXXOO\nXXXOO\nXXXOO\nXXXOO\nXXXOO\n===================\n1.000 Units required");
+		tBook.add("Chunk"               +"\n===================\nXXOOO\nXXOOO\nOOOOO\nOOOOO\nOOOOO\n===================\n0.250 Units required");
+		tBook.add("Plate"               +"\n===================\nXXXXX\nXXXXX\nXXXXX\nXXXXX\nXXXXX\n===================\n1.000 Units required");
+		tBook.add("Tiny Plate"          +"\n===================\nOOOOO\nOXXXO\nOXXXO\nOXXXO\nOOOOO\n===================\n0.111 Units required");
+		tBook.add("Bolt"                +"\n===================\nXXOOO\nOOOOO\nOOOOO\nOOOOO\nOOOOO\n===================\n0.125 Units required");
+		tBook.add("Rod"                 +"\n===================\nOOOOO\nOOOOO\nXXXXX\nOOOOO\nOOOOO\n===================\n0.500 Units required");
+		tBook.add("Long Rod"            +"\n===================\nXOOOO\nOXOOO\nOOXOO\nOOOXO\nOOOOX\n===================\n1.000 Units required");
+		tBook.add("Item Casing"         +"\n===================\nXXXOX\nXXXOX\nXXXOX\nOOOOX\nXXXOO\n===================\n0.500 Units required");
+		tBook.add("Ring"                +"\n===================\nOOOOO\nOXXXO\nOXOXO\nOXXXO\nOOOOO\n===================\n0.250 Units required");
+		tBook.add("Gear"                +"\n===================\nXOXOX\nOXXXO\nXXOXX\nOXXXO\nXOXOX\n===================\n4.000 Units required");
+		tBook.add("Small Gear"          +"\n===================\nOXOXO\nXXXXX\nOXOXO\nXXXXX\nOXOXO\n===================\n1.000 Units required");
+		tBook.add("Sword"               +"\n===================\nOOXOO\nOXXXO\nOXXXO\nOXXXO\nOXXXO\n===================\n2.000 Units required");
+		tBook.add("Pickaxe"             +"\n===================\nOOOOO\nOXXXO\nXOOOX\nOOOOO\nOOOOO\n===================\n3.000 Units required");
+		tBook.add("Spade"               +"\n===================\nOXXXO\nOXXXO\nOXXXO\nOXOXO\nOOOOO\n===================\n1.000 Units required");
+		tBook.add("Shovel"              +"\n===================\nOOXOO\nOXXXO\nOXXXO\nOXXXO\nOOOOO\n===================\n1.000 Units required");
+		tBook.add("Universal Spade"     +"\n===================\nOOXOO\nOXXXO\nOXXOO\nOXXXO\nOOOOO\n===================\n1.000 Units required");
+		tBook.add("Axe"                 +"\n===================\nOOOOO\nOXXXO\nOXXXO\nOXOOO\nOOOOO\n===================\n3.000 Units required");
+		tBook.add("Double Axe"          +"\n===================\nOOOOO\nXXXXX\nXXXXX\nXOOOX\nOOOOO\n===================\n5.000 Units required");
+		tBook.add("Saw"                 +"\n===================\nOOOOO\nXXXXX\nXXXXX\nOOOOO\nOOOOO\n===================\n2.000 Units required");
+		tBook.add("Hammer"              +"\n===================\nXXXOO\nXXXOO\nXOXOO\nXXXOO\nXXXOO\n===================\n6.000 Units required");
+		tBook.add("File"                +"\n===================\nOXXXO\nOXXXO\nOXXXO\nOOXOO\nOOXOO\n===================\n1.500 Units required");
+		tBook.add("Screwdriver"         +"\n===================\nOOOOO\nOOXOO\nOOXOO\nOOXOO\nOOXOO\n===================\n1.000 Units required");
+		tBook.add("Chisel"              +"\n===================\nOXXXO\nOOXOO\nOOXOO\nOOXOO\nOOXOO\n===================\n1.500 Units required");
+		tBook.add("Arrow"               +"\n===================\nOOOOO\nOOXOO\nOOXOO\nOXXXO\nOOOOO\n===================\n0.250 Units required");
+		tBook.add("Hoe"                 +"\n===================\nOOOOO\nOOXXO\nOXXXO\nOOOOO\nOOOOO\n===================\n2.000 Units required");
+		tBook.add("Sense/Scythe"        +"\n===================\nOOOOO\nOXXXX\nXXXXX\nOOOOO\nOOOOO\n===================\n3.000 Units required");
+		tBook.add("Plow"                +"\n===================\nXXXXX\nXXXXX\nXXXXX\nXXXXX\nOOXOO\n===================\n6.000 Units required");
 		
 		UT.Books.createWrittenBook("Manual_Smeltery", "Smelting Crucible Manual", "GMWI (Gregorius Metal Working Industries)", ST.make(ItemsGT.BOOKS, 1, tBook.size()>50?32001:32000), tBook.toArray(ZL_STRING));
 		

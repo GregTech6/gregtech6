@@ -69,11 +69,11 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	;
 	
 	public static final byte
-	STONE =	 0, SMOTH =	 7,
-	COBBL =	 1, MCOBL =	 2,
-	BRICK =	 3, CRACK =	 4, MBRIK =	 5, SBRIK = 12, QBRIK = 15,
-	CHISL =	 6, WINDA = 13, WINDB = 14,
-	RNFBR =	 8, RSTBR =	 9,
+	STONE =  0, SMOTH =  7,
+	COBBL =  1, MCOBL =  2,
+	BRICK =  3, CRACK =  4, MBRIK =  5, SBRIK = 12, QBRIK = 15,
+	CHISL =  6, WINDA = 13, WINDB = 14,
+	RNFBR =  8, RSTBR =  9,
 	TILES = 10, STILE = 11;
 	
 	public final OreDictMaterial mMaterial;
@@ -144,8 +144,8 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			OM.reg_(OP.stone, mMaterial, ST.make(this, 1, QBRIK));
 		}
 		
-		OM.reg_(OP.cobblestone	, ST.make(this, 1, COBBL));
-		OM.reg_(OP.stone		, ST.make(this, 1, STONE));
+		OM.reg_(OP.cobblestone  , ST.make(this, 1, COBBL));
+		OM.reg_(OP.stone        , ST.make(this, 1, STONE));
 		
 		for (int i = 0; i < mMaxMeta; i++) mEqualBlocks[i].add(ST.make(this, 1, i));
 	}
@@ -207,32 +207,32 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[STONE]) {
 		if (FL.Mana_TE.exists())
-		RM.Bath			.addRecipe1(T,	0, 16					, tStack.toStack(), FL.Mana_TE.make(1), NF, ST.make(this, 1, CHISL));
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, COBBL));
-		RM.Crusher		.addRecipe1(T, 16,	25+mHarvestLevel* 25, tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.Bath         .addRecipe1(T,  0, 16                   , tStack.toStack(), FL.Mana_TE.make(1), NF, ST.make(this, 1, CHISL));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.Crusher      .addRecipe1(T, 16,  25+mHarvestLevel* 25, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, SMOTH));
 		CR.shaped(ST.make(this, 4, BRICK), CR.DEF_NAC, "XX", "XX", 'X', tStack.toStack());
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[COBBL]) {
 		if (FL.Mana_TE.exists())
-		RM.Bath			.addRecipe1(T,	0, 16					, tStack.toStack(), FL.Mana_TE.make(1), NF, ST.make(this, 1, MCOBL));
-		RM.Hammer		.addRecipe1(T, 16, 16,	8000			, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
-		RM.Crusher		.addRecipe1(T, 16,	25+mHarvestLevel* 25, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
+		RM.Bath         .addRecipe1(T,  0, 16                   , tStack.toStack(), FL.Mana_TE.make(1), NF, ST.make(this, 1, MCOBL));
+		RM.Hammer       .addRecipe1(T, 16, 16,  8000            , tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
+		RM.Crusher      .addRecipe1(T, 16,  25+mHarvestLevel* 25, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
 		RM.generify(tStack.toStack(), ST.make(Blocks.cobblestone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[MCOBL]) {
-		RM.Hammer		.addRecipe1(T, 16, 16,	8000			, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
-		RM.Crusher		.addRecipe1(T, 16,	25+mHarvestLevel* 25, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
+		RM.Hammer       .addRecipe1(T, 16, 16,  8000            , tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
+		RM.Crusher      .addRecipe1(T, 16,  25+mHarvestLevel* 25, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
 		RM.generify(tStack.toStack(), ST.make(Blocks.mossy_cobblestone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[BRICK]) {
 		if (FL.Mana_TE.exists())
-		RM.Bath			.addRecipe1(T,	0, 16					, tStack.toStack(), FL.Mana_TE.make(1), NF, ST.make(this, 1, MBRIK));
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, CRACK));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Bath         .addRecipe1(T,  0, 16                   , tStack.toStack(), FL.Mana_TE.make(1), NF, ST.make(this, 1, MBRIK));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		CR.shaped(ST.make(this, 1, CRACK), CR.DEF_NAC, "h" , "X" , 'X', tStack.toStack());
@@ -240,79 +240,79 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		CR.shaped(ST.make(this, 1, RSTBR), CR.DEF_NAC, "Dh", "X ", 'X', tStack.toStack(), 'D', OD.itemRedstone);
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[CRACK]) {
-		RM.Hammer		.addRecipe1(T, 16, 16,	7000			, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.Hammer       .addRecipe1(T, 16, 16,  7000            , tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 1));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[MBRIK]) {
-		RM.Hammer		.addRecipe1(T, 16, 16,	7000			, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.Hammer       .addRecipe1(T, 16, 16,  7000            , tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 2));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[CHISL]) {
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, COBBL));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stonebrick, 1, 3));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[SMOTH]) {
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, COBBL));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, COBBL));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, COBBL));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		CR.shaped(ST.make(this, 1, CHISL), CR.DEF_NAC, "y" , "X" , 'X', tStack.toStack());
 		CR.shaped(ST.make(this, 4, BRICK), CR.DEF_NAC, "XX", "XX", 'X', tStack.toStack());
 		CR.shaped(ST.make(this, 2, TILES), CR.DEF_NAC, "X" , "X" , 'X', tStack.toStack());
-		CR.shaped(ST.make(this, 2, STILE), CR.DEF_NAC, "XX"		 , 'X', tStack.toStack());
+		CR.shaped(ST.make(this, 2, STILE), CR.DEF_NAC, "XX"      , 'X', tStack.toStack());
 		CR.shaped(ST.make(this, 2, SBRIK), CR.DEF_NAC, "X ", " X", 'X', tStack.toStack());
 		CR.shaped(ST.make(this, 2, WINDA), CR.DEF_NAC, " X", "X ", 'X', tStack.toStack());
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[RNFBR]) {
-		RM.Hammer		.addRecipe1(T, 16, 16,	7000			, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
-		RM.Crusher		.addRecipe1(T, 16, 200+mHarvestLevel*200, tStack.toStack(), ST.make(this, 1, COBBL), OM.dust(MT.Fe, OP.stick.mAmount));
+		RM.Hammer       .addRecipe1(T, 16, 16,  7000            , tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
+		RM.Crusher      .addRecipe1(T, 16, 200+mHarvestLevel*200, tStack.toStack(), ST.make(this, 1, COBBL), OM.dust(MT.Fe, OP.stick.mAmount));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[RSTBR]) {
-		RM.Hammer		.addRecipe1(T, 16, 16,	7000			, tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK), OM.dust(MT.Redstone));
+		RM.Hammer       .addRecipe1(T, 16, 16,  7000            , tStack.toStack(), OP.rockGt.mat(mMaterial, 4));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK), OM.dust(MT.Redstone));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[TILES]) {
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, CRACK));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		CR.shapeless(ST.make(this, 1, QBRIK), CR.DEF_NAC, new Object[] {tStack.toStack()});
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[STILE]) {
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, CRACK));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[SBRIK]) {
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, CRACK));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[WINDA]) {
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, CRACK));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		CR.shapeless(ST.make(this, 1, WINDB), CR.DEF_NAC, new Object[] {tStack.toStack()});
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[WINDB]) {
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, CRACK));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		CR.shapeless(ST.make(this, 1, WINDA), CR.DEF_NAC, new Object[] {tStack.toStack()});
 		}
 		for (ItemStackContainer tStack : (ItemStackSet<ItemStackContainer>)mEqualBlocks[QBRIK]) {
-		RM.Hammer		.addRecipe1(T, 16, 16					, tStack.toStack(), ST.make(this, 1, CRACK));
-		RM.Crusher		.addRecipe1(T, 16,	50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Hammer       .addRecipe1(T, 16, 16                   , tStack.toStack(), ST.make(this, 1, CRACK));
+		RM.Crusher      .addRecipe1(T, 16,  50+mHarvestLevel* 50, tStack.toStack(), ST.make(this, 1, CRACK));
 		RM.generify(tStack.toStack(), ST.make(Blocks.stone, 1, 0));
 		RM.add_smelting(tStack.toStack(), ST.make(this, 1, STONE));
 		CR.shapeless(ST.make(this, 1, TILES), CR.DEF_NAC, new Object[] {tStack.toStack()});
@@ -372,14 +372,14 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	@Override
 	public int getItemStackLimit(ItemStack aStack) {
 		switch (ST.meta(aStack)) {
-		case  0: return UT.Code.bindStack(OP.stone				.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
-		case  1: return UT.Code.bindStack(OP.stoneCobble		.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
-		case  2: return UT.Code.bindStack(OP.stoneMossy			.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
-		case  4: return UT.Code.bindStack(OP.stoneCracked		.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
-		case  5: return UT.Code.bindStack(OP.stoneMossyBricks	.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
-		case  6: return UT.Code.bindStack(OP.stoneChiseled		.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
-		case  7: return UT.Code.bindStack(OP.stonePolished		.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
-		default: return UT.Code.bindStack(OP.stoneBricks		.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
+		case  0: return UT.Code.bindStack(OP.stone              .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
+		case  1: return UT.Code.bindStack(OP.stoneCobble        .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
+		case  2: return UT.Code.bindStack(OP.stoneMossy         .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
+		case  4: return UT.Code.bindStack(OP.stoneCracked       .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
+		case  5: return UT.Code.bindStack(OP.stoneMossyBricks   .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
+		case  6: return UT.Code.bindStack(OP.stoneChiseled      .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
+		case  7: return UT.Code.bindStack(OP.stonePolished      .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
+		default: return UT.Code.bindStack(OP.stoneBricks        .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
 		}
 	}
 	
@@ -435,7 +435,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {
 		switch(aWorld.getBlockMetadata(aX, aY, aZ)) {
 		case RNFBR: return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * mHardnessMultiplier * 2;
-		default	  : return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * mHardnessMultiplier;
+		default   : return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * mHardnessMultiplier;
 		}
 	}
 	
@@ -443,7 +443,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	public float getExplosionResistance(int aMeta) {
 		switch(aMeta) {
 		case RNFBR: return Blocks.stone.getExplosionResistance(null) * mResistanceMultiplier * 2;
-		default	  : return Blocks.stone.getExplosionResistance(null) * mResistanceMultiplier;
+		default   : return Blocks.stone.getExplosionResistance(null) * mResistanceMultiplier;
 		}
 	}
 	

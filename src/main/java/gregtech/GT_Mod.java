@@ -145,14 +145,14 @@ public class GT_Mod extends Abstract_Mod {
 		
 		OUT.println(getModNameForLog() + ": Setting Configs");
 		
-		gregtechproxy.mSkeletonsShootGTArrows			= tMainConfig.get("general", "SkeletonsShootGTArrows"		, 16).getInt(16);
-		gregtechproxy.mFlintChance						= tMainConfig.get("general", "FlintAndSteelChance"			, 30).getInt(30);
-		gregtechproxy.mDisableVanillaOres				= tMainConfig.get("general", "DisableVanillaOres"			, T).getBoolean(T);
-		gregtechproxy.mDisableIC2Ores					= tMainConfig.get("general", "DisableIC2Ores"				, T).getBoolean(T);
-		gregtechproxy.mIncreaseDungeonLoot				= tMainConfig.get("general", "IncreaseDungeonLoot"			, T).getBoolean(T);
-		gregtechproxy.mNerfedVanillaTools				= tMainConfig.get("general", "SmallerVanillaToolDurability"	, T).getBoolean(T);
+		gregtechproxy.mSkeletonsShootGTArrows           = tMainConfig.get("general", "SkeletonsShootGTArrows"       , 16).getInt(16);
+		gregtechproxy.mFlintChance                      = tMainConfig.get("general", "FlintAndSteelChance"          , 30).getInt(30);
+		gregtechproxy.mDisableVanillaOres               = tMainConfig.get("general", "DisableVanillaOres"           , T).getBoolean(T);
+		gregtechproxy.mDisableIC2Ores                   = tMainConfig.get("general", "DisableIC2Ores"               , T).getBoolean(T);
+		gregtechproxy.mIncreaseDungeonLoot              = tMainConfig.get("general", "IncreaseDungeonLoot"          , T).getBoolean(T);
+		gregtechproxy.mNerfedVanillaTools               = tMainConfig.get("general", "SmallerVanillaToolDurability" , T).getBoolean(T);
 		
-		BlockOcean.SPREAD_TO_AIR						= tMainConfig.get("general", "OceanBlocksSpreadToAir"		, T).getBoolean(T);
+		BlockOcean.SPREAD_TO_AIR                        = tMainConfig.get("general", "OceanBlocksSpreadToAir"       , T).getBoolean(T);
 		
 		OUT.println(getModNameForLog() + ": Saving Main Config");
 		tMainConfig.save();
@@ -170,31 +170,31 @@ public class GT_Mod extends Abstract_Mod {
 			COMPAT_IC2.scrapbox(200.0F, IL.IC2_Scrap.get(1));
 		}
 		
-		EntityRegistry.registerModEntity(EntityArrow_Material.class	, "GT_Entity_Arrow"			, 1, GT, 160, 1, T);
-		EntityRegistry.registerModEntity(EntityArrow_Potion.class	, "GT_Entity_Arrow_Potion"	, 2, GT, 160, 1, T);
+		EntityRegistry.registerModEntity(EntityArrow_Material.class , "GT_Entity_Arrow"         , 1, GT, 160, 1, T);
+		EntityRegistry.registerModEntity(EntityArrow_Potion.class   , "GT_Entity_Arrow_Potion"  , 2, GT, 160, 1, T);
 		
 		for (OreDictMaterial tWood : ANY.Wood.mToThis) OP.plate.disableItemGeneration(tWood);
-		OP.ingot		.disableItemGeneration(MT.Butter, MT.ButterSalted, MT.Chocolate, MT.Cheese, MT.MeatRaw, MT.MeatCooked, MT.FishRaw, MT.FishCooked, MT.Tofu, MT.SoylentGreen);
-		OP.gemChipped	.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gemFlawed	.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gem			.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gemFlawless	.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gemExquisite	.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
-		OP.gemLegendary	.disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.ingot        .disableItemGeneration(MT.Butter, MT.ButterSalted, MT.Chocolate, MT.Cheese, MT.MeatRaw, MT.MeatCooked, MT.FishRaw, MT.FishCooked, MT.Tofu, MT.SoylentGreen);
+		OP.gemChipped   .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gemFlawed    .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gem          .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gemFlawless  .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gemExquisite .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
+		OP.gemLegendary .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		
 		
 		OUT.println("GT_Mod: Register Other Stuff.");
 		
-		RM.pulverizing(ST.make(Blocks.cobblestone	, 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.stone			, 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.gravel		, 1, W), ST.make(Items.flint, 1, 0), OP.dustSmall.mat(MT.Flint, 1), 10, F);
-		RM.pulverizing(ST.make(Blocks.furnace		, 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.lit_furnace	, 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
-		RM.pulverizing(ST.make(Items.bone			, 1, W), IL.Dye_Bonemeal.get(2), IL.Dye_Bonemeal.get(1), 50, T);
-		RM.pulverizing(ST.make(Items.blaze_rod		, 1, W), ST.make(Items.blaze_powder, 3, 0), ST.make(Items.blaze_powder, 1, 0), 50, T);
-		RM.pulverizing(ST.make(Blocks.pumpkin		, 1, W), ST.make(Items.pumpkin_seeds, 4, 0), null, 0, F);
-		RM.pulverizing(ST.make(Items.melon			, 1, W), ST.make(Items.melon_seeds, 1, 0), null, 0, F);
-		RM.pulverizing(ST.make(Blocks.wool			, 1, W), ST.make(Items.string, 2, 0), ST.make(Items.string, 1, 0), 50, F);
+		RM.pulverizing(ST.make(Blocks.cobblestone   , 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
+		RM.pulverizing(ST.make(Blocks.stone         , 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);
+		RM.pulverizing(ST.make(Blocks.gravel        , 1, W), ST.make(Items.flint, 1, 0), OP.dustSmall.mat(MT.Flint, 1), 10, F);
+		RM.pulverizing(ST.make(Blocks.furnace       , 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
+		RM.pulverizing(ST.make(Blocks.lit_furnace   , 1, W), ST.make(Blocks.sand, 6, 0), null, 0, F);
+		RM.pulverizing(ST.make(Items.bone           , 1, W), IL.Dye_Bonemeal.get(2), IL.Dye_Bonemeal.get(1), 50, T);
+		RM.pulverizing(ST.make(Items.blaze_rod      , 1, W), ST.make(Items.blaze_powder, 3, 0), ST.make(Items.blaze_powder, 1, 0), 50, T);
+		RM.pulverizing(ST.make(Blocks.pumpkin       , 1, W), ST.make(Items.pumpkin_seeds, 4, 0), null, 0, F);
+		RM.pulverizing(ST.make(Items.melon          , 1, W), ST.make(Items.melon_seeds, 1, 0), null, 0, F);
+		RM.pulverizing(ST.make(Blocks.wool          , 1, W), ST.make(Items.string, 2, 0), ST.make(Items.string, 1, 0), 50, F);
 		
 		new Loader_Fluids().run();
 		new Loader_Tools().run();
@@ -207,9 +207,9 @@ public class GT_Mod extends Abstract_Mod {
 		new Loader_Ores().run();
 		new Loader_Others().run();
 		
-//		new Loader_CircuitBehaviors().run();
-//		new Loader_CoverBehaviors().run();
-//		new Loader_Sonictron().run();
+//      new Loader_CircuitBehaviors().run();
+//      new Loader_CoverBehaviors().run();
+//      new Loader_Sonictron().run();
 	}
 	
 	@Override
@@ -328,63 +328,63 @@ public class GT_Mod extends Abstract_Mod {
 		if (tBlock != NB) {tBlock.setHarvestLevel("scoop", 0); GT_Tool_Scoop.sBeeHiveMaterial = tBlock.getMaterial();}
 		
 		OUT.println(getModNameForLog() + ": Adding Fake Recipes for NEI");
-//		if (IL.FR_Tree_Sapling	.get(1) != null)	RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Tree_Sapling	.getWildcard(1)}								, new ItemStack[] {IL.FR_Tree_Sapling	.getWithName(1, "Scanned Sapling"		)}, null													, new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
-//		if (IL.FR_Butterfly		.get(1) != null)	RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Butterfly		.getWildcard(1)}								, new ItemStack[] {IL.FR_Butterfly		.getWithName(1, "Scanned Butterfly"		)}, null													, new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
-//		if (IL.FR_Larvae		.get(1) != null)	RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Larvae		.getWildcard(1)}								, new ItemStack[] {IL.FR_Larvae			.getWithName(1, "Scanned Larvae"		)}, null													, new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
-//		if (IL.FR_Serum			.get(1) != null)	RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Serum			.getWildcard(1)}								, new ItemStack[] {IL.FR_Serum			.getWithName(1, "Scanned Serum"			)}, null													, new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
-//		if (IL.FR_Caterpillar	.get(1) != null)	RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Caterpillar	.getWildcard(1)}								, new ItemStack[] {IL.FR_Caterpillar	.getWithName(1, "Scanned Caterpillar"	)}, null													, new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
-//		if (IL.FR_PollenFertile	.get(1) != null)	RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_PollenFertile	.getWildcard(1)}								, new ItemStack[] {IL.FR_PollenFertile	.getWithName(1, "Scanned Pollen"		)}, null													, new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
-//		if (IL.IC2_Crop_Seeds	.get(1) != null)	RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.IC2_Crop_Seeds	.getWildcard(1)}								, new ItemStack[] {IL.IC2_Crop_Seeds	.getWithName(1, "Scanned Seeds"			)}, null													, null, null, 160,	8, 0);
-//													RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {ST.make(Items.written_book, 1, W)}							, new ItemStack[] {IL.Tool_DataStick	.getWithName(1, "Scanned Book Data"		)}, IL.Tool_DataStick.getWithName(1, "Stick to save it to")	, null, null, 128, 32, 0);
-//													RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {ST.make(Items.filled_map, 1, W)}								, new ItemStack[] {IL.Tool_DataStick	.getWithName(1, "Scanned Map Data"		)}, IL.Tool_DataStick.getWithName(1, "Stick to save it to")	, null, null, 128, 32, 0);
-//													RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.Tool_DataOrb		.getWithName(1, "Orb to overwrite")}			, new ItemStack[] {IL.Tool_DataOrb		.getWithName(1, "Copy of the Orb"		)}, IL.Tool_DataOrb.getWithName(0, "Orb to copy")			, null, null, 512, 32, 0);
-//													RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.Tool_DataStick	.getWithName(1, "Stick to overwrite")}			, new ItemStack[] {IL.Tool_DataStick	.getWithName(1, "Copy of the Stick"		)}, IL.Tool_DataStick.getWithName(0, "Stick to copy")		, null, null, 128, 32, 0);
+//      if (IL.FR_Tree_Sapling  .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Tree_Sapling  .getWildcard(1)}                                , new ItemStack[] {IL.FR_Tree_Sapling   .getWithName(1, "Scanned Sapling"       )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
+//      if (IL.FR_Butterfly     .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Butterfly     .getWildcard(1)}                                , new ItemStack[] {IL.FR_Butterfly      .getWithName(1, "Scanned Butterfly"     )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
+//      if (IL.FR_Larvae        .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Larvae        .getWildcard(1)}                                , new ItemStack[] {IL.FR_Larvae         .getWithName(1, "Scanned Larvae"        )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
+//      if (IL.FR_Serum         .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Serum         .getWildcard(1)}                                , new ItemStack[] {IL.FR_Serum          .getWithName(1, "Scanned Serum"         )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
+//      if (IL.FR_Caterpillar   .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Caterpillar   .getWildcard(1)}                                , new ItemStack[] {IL.FR_Caterpillar    .getWithName(1, "Scanned Caterpillar"   )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
+//      if (IL.FR_PollenFertile .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_PollenFertile .getWildcard(1)}                                , new ItemStack[] {IL.FR_PollenFertile  .getWithName(1, "Scanned Pollen"        )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
+//      if (IL.IC2_Crop_Seeds   .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.IC2_Crop_Seeds   .getWildcard(1)}                                , new ItemStack[] {IL.IC2_Crop_Seeds    .getWithName(1, "Scanned Seeds"         )}, null                                                    , null, null, 160,  8, 0);
+//                                                  RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {ST.make(Items.written_book, 1, W)}                          , new ItemStack[] {IL.Tool_DataStick    .getWithName(1, "Scanned Book Data"     )}, IL.Tool_DataStick.getWithName(1, "Stick to save it to") , null, null, 128, 32, 0);
+//                                                  RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {ST.make(Items.filled_map, 1, W)}                                , new ItemStack[] {IL.Tool_DataStick    .getWithName(1, "Scanned Map Data"      )}, IL.Tool_DataStick.getWithName(1, "Stick to save it to") , null, null, 128, 32, 0);
+//                                                  RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.Tool_DataOrb     .getWithName(1, "Orb to overwrite")}            , new ItemStack[] {IL.Tool_DataOrb      .getWithName(1, "Copy of the Orb"       )}, IL.Tool_DataOrb.getWithName(0, "Orb to copy")           , null, null, 512, 32, 0);
+//                                                  RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.Tool_DataStick   .getWithName(1, "Stick to overwrite")}          , new ItemStack[] {IL.Tool_DataStick    .getWithName(1, "Copy of the Stick"     )}, IL.Tool_DataStick.getWithName(0, "Stick to copy")       , null, null, 128, 32, 0);
 		
 		for (IItemContainer tBee : new IItemContainer[] {IL.FR_Bee_Drone, IL.FR_Bee_Princess, IL.FR_Bee_Queen}) if (tBee.exists()) {
 		for (String tFluid : FluidsGT.HONEY) if (UT.Fluids.exists(tFluid))
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {tBee.wild(1)}, new ItemStack[] {tBee.getWithName(1, "Scanned Bee")}, null, null, new FluidStack[] {UT.Fluids.make(tFluid, 50)}	, null, 64, 16, 0);
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {tBee.wild(1)}, new ItemStack[] {tBee.getWithName(1, "Scanned Bee")}, null, null, new FluidStack[] {FL.Honeydew.make(50)}		, null, 64, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {tBee.wild(1)}, new ItemStack[] {tBee.getWithName(1, "Scanned Bee")}, null, null, new FluidStack[] {UT.Fluids.make(tFluid, 50)} , null, 64, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {tBee.wild(1)}, new ItemStack[] {tBee.getWithName(1, "Scanned Bee")}, null, null, new FluidStack[] {FL.Honeydew.make(50)}       , null, 64, 16, 0);
 		}
 		for (IItemContainer tPlant : new IItemContainer[] {IL.FR_Tree_Sapling, IL.IC2_Crop_Seeds}) if (tPlant.exists()) {
 		RM.Plantalyzer.addFakeRecipe(F, new ItemStack[] {tPlant.wild(1)}, new ItemStack[] {tPlant.getWithName(1, "Scanned Plant")}, null, null, null, null, 64, 16, 0);
 		}
 		
 		for (ItemStack tStack : OreDictManager.getOres("bookWritten", F))
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {tStack, IL.USB_Stick_1.get(1)}												, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Book"					), tStack}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.Paper_Printed_Pages.get(1), IL.USB_Stick_1.get(1)}						, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Book"					), IL.Paper_Printed_Pages.get(1)}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.Paper_Printed_Pages_Many.get(1), IL.USB_Stick_1.get(1)}					, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing large scanned Book"			), IL.Paper_Printed_Pages_Many.get(1)}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {tStack, IL.USB_Stick_1.get(1)}                                              , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Book"                  ), tStack}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.Paper_Printed_Pages.get(1), IL.USB_Stick_1.get(1)}                       , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Book"                  ), IL.Paper_Printed_Pages.get(1)}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.Paper_Printed_Pages_Many.get(1), IL.USB_Stick_1.get(1)}                  , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing large scanned Book"            ), IL.Paper_Printed_Pages_Many.get(1)}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
 		for (ItemStack tStack : OreDictManager.getOres("gt:canvas", F))
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {tStack, IL.USB_Stick_1.get(1)}												, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Block"					), tStack}, null, null, ZL_FS, ZL_FS, 64, 16, 0);
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.crafting_table, 1, 0, "ANY BLOCK"), IL.USB_Stick_1.get(1)}	, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Block"					), ST.make(Blocks.crafting_table, 1, 0, "ANY BLOCK")}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {ST.make(Items.filled_map, 1, W), IL.USB_Stick_1.get(1)}						, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Map"					), ST.make(Items.filled_map, 1, W)}, null, null, ZL_FS, ZL_FS, 64, 16, 0);
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.Paper_Blueprint_Used.get(1), IL.USB_Stick_1.get(1)}						, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Blueprint"				), IL.Paper_Blueprint_Used.get(1)}, null, null, ZL_FS, ZL_FS, 64, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {tStack, IL.USB_Stick_1.get(1)}                                              , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Block"                 ), tStack}, null, null, ZL_FS, ZL_FS, 64, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.crafting_table, 1, 0, "ANY BLOCK"), IL.USB_Stick_1.get(1)}   , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Block"                 ), ST.make(Blocks.crafting_table, 1, 0, "ANY BLOCK")}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {ST.make(Items.filled_map, 1, W), IL.USB_Stick_1.get(1)}                     , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Map"                   ), ST.make(Items.filled_map, 1, W)}, null, null, ZL_FS, ZL_FS, 64, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.Paper_Blueprint_Used.get(1), IL.USB_Stick_1.get(1)}                      , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Blueprint"             ), IL.Paper_Blueprint_Used.get(1)}, null, null, ZL_FS, ZL_FS, 64, 16, 0);
 		if (IL.GC_Schematic_1.exists())
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.GC_Schematic_1.wild(1), IL.USB_Stick_1.get(1)}							, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Schematics"			), IL.GC_Schematic_1.wild(1)}, null, null, ZL_FS, ZL_FS, 1024, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.GC_Schematic_1.wild(1), IL.USB_Stick_1.get(1)}                           , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Schematics"            ), IL.GC_Schematic_1.wild(1)}, null, null, ZL_FS, ZL_FS, 1024, 16, 0);
 		if (IL.GC_Schematic_2.exists())
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.GC_Schematic_2.wild(1), IL.USB_Stick_1.get(1)}							, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Schematics"			), IL.GC_Schematic_2.wild(1)}, null, null, ZL_FS, ZL_FS, 1024, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.GC_Schematic_2.wild(1), IL.USB_Stick_1.get(1)}                           , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Schematics"            ), IL.GC_Schematic_2.wild(1)}, null, null, ZL_FS, ZL_FS, 1024, 16, 0);
 		if (IL.GC_Schematic_3.exists())
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.GC_Schematic_3.wild(1), IL.USB_Stick_1.get(1)}							, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Schematics"			), IL.GC_Schematic_3.wild(1)}, null, null, ZL_FS, ZL_FS, 1024, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.GC_Schematic_3.wild(1), IL.USB_Stick_1.get(1)}                           , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Schematics"            ), IL.GC_Schematic_3.wild(1)}, null, null, ZL_FS, ZL_FS, 1024, 16, 0);
 		if (IL.IE_Blueprint_Projectiles_Common.exists())
-		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.IE_Blueprint_Projectiles_Common.wild(1), IL.USB_Stick_1.get(1)}			, new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Engineer's Blueprint"	), IL.IE_Blueprint_Projectiles_Common.wild(1)}, null, null, ZL_FS, ZL_FS, 1024, 16, 0);
+		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {IL.IE_Blueprint_Projectiles_Common.wild(1), IL.USB_Stick_1.get(1)}          , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Engineer's Blueprint"  ), IL.IE_Blueprint_Projectiles_Common.wild(1)}, null, null, ZL_FS, ZL_FS, 1024, 16, 0);
 		
 		RM.Printer.addRecipe1(T, 16, 256, ST.make(Items.book, 1, W), DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], NF, ST.book("Manual_Printer", ST.make(Items.written_book, 1, 0)));
 		
 		for (ItemStack tStack : OreDictManager.getOres("gt:canvas", F))
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {tStack								, IL.USB_Stick_1.getWithName(0, "Containing scanned Block"					)}, new ItemStack[] {tStack										}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T)}, ZL_FS,	 64, 16, 0);
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {IL.Paper_Punch_Card_Empty.get(1)	, IL.USB_Stick_1.getWithName(0, "Containing scanned Punchcard"				)}, new ItemStack[] {IL.Paper_Punch_Card_Encoded.get(1)			}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T)}, ZL_FS,	 32, 16, 0);
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {IL.Paper_Blueprint_Empty.get(1)	, IL.USB_Stick_1.getWithName(0, "Containing scanned Blueprint"				)}, new ItemStack[] {IL.Paper_Blueprint_Used.get(1)				}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_White], 1, 9, T)}, ZL_FS,	 32, 16, 0);
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 1, W)			, IL.USB_Stick_1.getWithName(0, "Containing scanned Blueprint"				)}, new ItemStack[] {IL.Paper_Blueprint_Used.get(1)				}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Blue ], 1, 1, T)}, ZL_FS,	128, 16, 0);
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 3, W)			, IL.USB_Stick_1.getWithName(0, "Containing scanned Book"					)}, new ItemStack[] {IL.Paper_Printed_Pages.get(1)				}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 2, T)}, ZL_FS,	512, 16, 0);
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 6, W)			, IL.USB_Stick_1.getWithName(0, "Containing large scanned Book"				)}, new ItemStack[] {IL.Paper_Printed_Pages_Many.get(1)			}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 1, T)}, ZL_FS, 1024, 16, 0);
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.map, 1, W)			, IL.USB_Stick_1.getWithName(0, "Containing scanned Map"					)}, new ItemStack[] {ST.make(Items.filled_map, 1, 0)			}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T)}, ZL_FS,	 64, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {tStack                             , IL.USB_Stick_1.getWithName(0, "Containing scanned Block"                  )}, new ItemStack[] {tStack                                     }, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T)}, ZL_FS,   64, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {IL.Paper_Punch_Card_Empty.get(1)   , IL.USB_Stick_1.getWithName(0, "Containing scanned Punchcard"              )}, new ItemStack[] {IL.Paper_Punch_Card_Encoded.get(1)         }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T)}, ZL_FS,   32, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {IL.Paper_Blueprint_Empty.get(1)    , IL.USB_Stick_1.getWithName(0, "Containing scanned Blueprint"              )}, new ItemStack[] {IL.Paper_Blueprint_Used.get(1)             }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_White], 1, 9, T)}, ZL_FS,   32, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 1, W)         , IL.USB_Stick_1.getWithName(0, "Containing scanned Blueprint"              )}, new ItemStack[] {IL.Paper_Blueprint_Used.get(1)             }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Blue ], 1, 1, T)}, ZL_FS,  128, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 3, W)         , IL.USB_Stick_1.getWithName(0, "Containing scanned Book"                   )}, new ItemStack[] {IL.Paper_Printed_Pages.get(1)              }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 2, T)}, ZL_FS,  512, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 6, W)         , IL.USB_Stick_1.getWithName(0, "Containing large scanned Book"             )}, new ItemStack[] {IL.Paper_Printed_Pages_Many.get(1)         }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 1, T)}, ZL_FS, 1024, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.map, 1, W)           , IL.USB_Stick_1.getWithName(0, "Containing scanned Map"                    )}, new ItemStack[] {ST.make(Items.filled_map, 1, 0)            }, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Yellow], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Magenta], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Cyan], 1, 9, T), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, 9, T)}, ZL_FS,   64, 16, 0);
 		if (IL.GC_Schematic_1.exists())
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 8, W)			, IL.USB_Stick_1.getWithName(0, "Containing scanned Schematics"				)}, new ItemStack[] {IL.GC_Schematic_1.wild(1)					}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, ZL_FS, 2048, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 8, W)         , IL.USB_Stick_1.getWithName(0, "Containing scanned Schematics"             )}, new ItemStack[] {IL.GC_Schematic_1.wild(1)                  }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, ZL_FS, 2048, 16, 0);
 		if (IL.GC_Schematic_2.exists())
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 8, W)			, IL.USB_Stick_1.getWithName(0, "Containing scanned Schematics"				)}, new ItemStack[] {IL.GC_Schematic_2.wild(1)					}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, ZL_FS, 2048, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 8, W)         , IL.USB_Stick_1.getWithName(0, "Containing scanned Schematics"             )}, new ItemStack[] {IL.GC_Schematic_2.wild(1)                  }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, ZL_FS, 2048, 16, 0);
 		if (IL.GC_Schematic_3.exists())
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 8, W)			, IL.USB_Stick_1.getWithName(0, "Containing scanned Schematics"				)}, new ItemStack[] {IL.GC_Schematic_3.wild(1)					}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, ZL_FS, 2048, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 8, W)         , IL.USB_Stick_1.getWithName(0, "Containing scanned Schematics"             )}, new ItemStack[] {IL.GC_Schematic_3.wild(1)                  }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, ZL_FS, 2048, 16, 0);
 		if (IL.IE_Blueprint_Projectiles_Common.exists())
-		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 3, W)			, IL.USB_Stick_1.getWithName(0, "Containing scanned Engineer's Blueprint"	)}, new ItemStack[] {IL.IE_Blueprint_Projectiles_Common.wild(1)	}, null, null, new FluidStack[] {																																															 UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Blue ], 3, 1, T)}, ZL_FS, 2048, 16, 0);
+		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 3, W)         , IL.USB_Stick_1.getWithName(0, "Containing scanned Engineer's Blueprint"   )}, new ItemStack[] {IL.IE_Blueprint_Projectiles_Common.wild(1) }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Blue ], 3, 1, T)}, ZL_FS, 2048, 16, 0);
 		
 		if (CODE_CLIENT) {
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
@@ -432,7 +432,7 @@ public class GT_Mod extends Abstract_Mod {
 				ItemStack tStack = aStack.toStack();
 				if (ST.valid(tStack) && ST.block(aStack) == NB && !(tStack.getItem() instanceof PrefixItem) && !(tStack.getItem() instanceof PrefixBlockItem)) {
 					short[] tRGB = UT.Code.color(tStack);
-					if (tRGB != null && tRGB != UNCOLOURED) ORD.println(tUnknown.mNameInternal + "	-  RGB: " + tRGB[0]+", "+tRGB[1]+", "+tRGB[2] + "  -  " + ST.names(tStack));
+					if (tRGB != null && tRGB != UNCOLOURED) ORD.println(tUnknown.mNameInternal + "  -  RGB: " + tRGB[0]+", "+tRGB[1]+", "+tRGB[2] + "  -  " + ST.names(tStack));
 				}
 			}
 		}
@@ -560,11 +560,11 @@ public class GT_Mod extends Abstract_Mod {
 	@Override public String getModNameForLog() {return "GT_Mod";}
 	@Override public Abstract_Proxy getProxy() {return gregtechproxy;}
 	
-	@Mod.EventHandler public void onPreLoad			(FMLPreInitializationEvent	aEvent) {onModPreInit(aEvent);}
-	@Mod.EventHandler public void onLoad			(FMLInitializationEvent		aEvent) {onModInit(aEvent);}
-	@Mod.EventHandler public void onPostLoad		(FMLPostInitializationEvent	aEvent) {onModPostInit(aEvent);}
-	@Mod.EventHandler public void onServerStarting	(FMLServerStartingEvent		aEvent) {onModServerStarting(aEvent);}
-	@Mod.EventHandler public void onServerStarted	(FMLServerStartedEvent		aEvent) {onModServerStarted(aEvent);}
-	@Mod.EventHandler public void onServerStopping	(FMLServerStoppingEvent		aEvent) {onModServerStopping(aEvent);}
-	@Mod.EventHandler public void onServerStopped	(FMLServerStoppedEvent		aEvent) {onModServerStopped(aEvent);}
+	@Mod.EventHandler public void onPreLoad         (FMLPreInitializationEvent  aEvent) {onModPreInit(aEvent);}
+	@Mod.EventHandler public void onLoad            (FMLInitializationEvent     aEvent) {onModInit(aEvent);}
+	@Mod.EventHandler public void onPostLoad        (FMLPostInitializationEvent aEvent) {onModPostInit(aEvent);}
+	@Mod.EventHandler public void onServerStarting  (FMLServerStartingEvent     aEvent) {onModServerStarting(aEvent);}
+	@Mod.EventHandler public void onServerStarted   (FMLServerStartedEvent      aEvent) {onModServerStarted(aEvent);}
+	@Mod.EventHandler public void onServerStopping  (FMLServerStoppingEvent     aEvent) {onModServerStopping(aEvent);}
+	@Mod.EventHandler public void onServerStopped   (FMLServerStoppedEvent      aEvent) {onModServerStopped(aEvent);}
 }

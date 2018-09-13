@@ -85,12 +85,12 @@ public abstract class TileEntityBase03MultiTileEntities extends TileEntityBase02
 	}
 	
 	@Override
-	public IPacket getClientDataPacket(boolean aSendAll)								{return aSendAll ? new PacketSyncDataIDs				(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID()				) : null;}
-	public IPacket getClientDataPacketByte(boolean aSendAll, byte aByte)				{return aSendAll ? new PacketSyncDataByteAndIDs			(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByte			) : new PacketSyncDataByte		(getCoords(), aByte			);}
-	public IPacket getClientDataPacketShort(boolean aSendAll, short aShort)				{return aSendAll ? new PacketSyncDataShortAndIDs		(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aShort		) : new PacketSyncDataShort		(getCoords(), aShort		);}
-	public IPacket getClientDataPacketInteger(boolean aSendAll, int aInteger)			{return aSendAll ? new PacketSyncDataIntegerAndIDs		(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aInteger		) : new PacketSyncDataInteger	(getCoords(), aInteger		);}
-	public IPacket getClientDataPacketLong(boolean aSendAll, long aLong)				{return aSendAll ? new PacketSyncDataLongAndIDs			(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aLong			) : new PacketSyncDataLong		(getCoords(), aLong			);}
-	public IPacket getClientDataPacketByteArray(boolean aSendAll, byte... aByteArray)	{return aSendAll ? new PacketSyncDataByteArrayAndIDs	(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByteArray	) : new PacketSyncDataByteArray	(getCoords(), aByteArray	);}
+	public IPacket getClientDataPacket(boolean aSendAll)                                {return aSendAll ? new PacketSyncDataIDs                (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID()                ) : null;}
+	public IPacket getClientDataPacketByte(boolean aSendAll, byte aByte)                {return aSendAll ? new PacketSyncDataByteAndIDs         (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByte         ) : new PacketSyncDataByte      (getCoords(), aByte         );}
+	public IPacket getClientDataPacketShort(boolean aSendAll, short aShort)             {return aSendAll ? new PacketSyncDataShortAndIDs        (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aShort        ) : new PacketSyncDataShort     (getCoords(), aShort        );}
+	public IPacket getClientDataPacketInteger(boolean aSendAll, int aInteger)           {return aSendAll ? new PacketSyncDataIntegerAndIDs      (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aInteger      ) : new PacketSyncDataInteger   (getCoords(), aInteger      );}
+	public IPacket getClientDataPacketLong(boolean aSendAll, long aLong)                {return aSendAll ? new PacketSyncDataLongAndIDs         (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aLong         ) : new PacketSyncDataLong      (getCoords(), aLong         );}
+	public IPacket getClientDataPacketByteArray(boolean aSendAll, byte... aByteArray)   {return aSendAll ? new PacketSyncDataByteArrayAndIDs    (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByteArray    ) : new PacketSyncDataByteArray (getCoords(), aByteArray    );}
 	
 	@Override
 	public final void initFromNBT(NBTTagCompound aNBT, short aMTEID, short aMTERegistry) {

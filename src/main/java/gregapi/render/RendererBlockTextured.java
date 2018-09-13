@@ -65,12 +65,12 @@ public class RendererBlockTextured implements ISimpleBlockRenderingHandler, IIte
 					if (((IRenderedBlock)aBlock).usesRenderPass(i, aStack)) {
 						Tessellator.instance.startDrawingQuads();
 						if (((IRenderedBlock)aBlock).setBlockBounds(i, aStack)) {tNeedsToSetBounds = T; aRenderer.setRenderBoundsFromBlock(aBlock);} else {if (tNeedsToSetBounds) aBlock.setBlockBounds(0, 0, 0, 1, 1, 1); aRenderer.setRenderBoundsFromBlock(aBlock); tNeedsToSetBounds = F;}
-						Tessellator.instance.setNormal( 0, -1,	0); renderNegativeYFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_Y_NEG, aStack), !tNeedsToSetBounds, T, aBlock);
-						Tessellator.instance.setNormal( 0,	1,	0); renderPositiveYFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_Y_POS, aStack), !tNeedsToSetBounds, T, aBlock);
-						Tessellator.instance.setNormal( 0,	0, -1); renderNegativeZFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_Z_NEG, aStack), !tNeedsToSetBounds, T, aBlock);
-						Tessellator.instance.setNormal( 0,	0,	1); renderPositiveZFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_Z_POS, aStack), !tNeedsToSetBounds, T, aBlock);
-						Tessellator.instance.setNormal(-1,	0,	0); renderNegativeXFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_X_NEG, aStack), !tNeedsToSetBounds, T, aBlock);
-						Tessellator.instance.setNormal( 1,	0,	0); renderPositiveXFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_X_POS, aStack), !tNeedsToSetBounds, T, aBlock);
+						Tessellator.instance.setNormal( 0, -1,  0); renderNegativeYFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_Y_NEG, aStack), !tNeedsToSetBounds, T, aBlock);
+						Tessellator.instance.setNormal( 0,  1,  0); renderPositiveYFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_Y_POS, aStack), !tNeedsToSetBounds, T, aBlock);
+						Tessellator.instance.setNormal( 0,  0, -1); renderNegativeZFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_Z_NEG, aStack), !tNeedsToSetBounds, T, aBlock);
+						Tessellator.instance.setNormal( 0,  0,  1); renderPositiveZFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_Z_POS, aStack), !tNeedsToSetBounds, T, aBlock);
+						Tessellator.instance.setNormal(-1,  0,  0); renderNegativeXFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_X_NEG, aStack), !tNeedsToSetBounds, T, aBlock);
+						Tessellator.instance.setNormal( 1,  0,  0); renderPositiveXFacing(null, aRenderer, aBlock, 0, 0, 0, ((IRenderedBlock)aBlock).getTexture(i, SIDE_X_POS, aStack), !tNeedsToSetBounds, T, aBlock);
 						Tessellator.instance.draw();
 					}
 				}
@@ -79,12 +79,12 @@ public class RendererBlockTextured implements ISimpleBlockRenderingHandler, IIte
 					if (tRenderer.usesRenderPass(i, SIDES_ITEM_RENDER)) {
 						Tessellator.instance.startDrawingQuads();
 						if (tRenderer.setBlockBounds(aBlock, i, SIDES_ITEM_RENDER)) {tNeedsToSetBounds = T; aRenderer.setRenderBoundsFromBlock(aBlock);} else {if (tNeedsToSetBounds) aBlock.setBlockBounds(0, 0, 0, 1, 1, 1); aRenderer.setRenderBoundsFromBlock(aBlock); tNeedsToSetBounds = F;}
-						Tessellator.instance.setNormal( 0, -1,	0); renderNegativeYFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_Y_NEG, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
-						Tessellator.instance.setNormal( 0,	1,	0); renderPositiveYFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_Y_POS, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
-						Tessellator.instance.setNormal( 0,	0, -1); renderNegativeZFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_Z_NEG, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
-						Tessellator.instance.setNormal( 0,	0,	1); renderPositiveZFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_Z_POS, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
-						Tessellator.instance.setNormal(-1,	0,	0); renderNegativeXFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_X_NEG, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
-						Tessellator.instance.setNormal( 1,	0,	0); renderPositiveXFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_X_POS, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
+						Tessellator.instance.setNormal( 0, -1,  0); renderNegativeYFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_Y_NEG, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
+						Tessellator.instance.setNormal( 0,  1,  0); renderPositiveYFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_Y_POS, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
+						Tessellator.instance.setNormal( 0,  0, -1); renderNegativeZFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_Z_NEG, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
+						Tessellator.instance.setNormal( 0,  0,  1); renderPositiveZFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_Z_POS, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
+						Tessellator.instance.setNormal(-1,  0,  0); renderNegativeXFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_X_NEG, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
+						Tessellator.instance.setNormal( 1,  0,  0); renderPositiveXFacing(null, aRenderer, aBlock, 0, 0, 0, tRenderer.getTexture(aBlock, i, SIDE_X_POS, SIDES_ITEM_RENDER), !tNeedsToSetBounds, T, tRenderer);
 						Tessellator.instance.draw();
 					}
 				}

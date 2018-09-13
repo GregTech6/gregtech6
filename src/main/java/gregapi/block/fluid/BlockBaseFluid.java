@@ -109,15 +109,15 @@ public class BlockBaseFluid extends BlockFluidFinite {
 			return;
 		}
 		
-		if (displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlockToAir(aX	 , aY, aZ-1);
-		if (displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlockToAir(aX	 , aY, aZ+1);
-		if (displaceIfPossible(aWorld, aX-1, aY, aZ	 )) aWorld.setBlockToAir(aX-1, aY, aZ  );
-		if (displaceIfPossible(aWorld, aX+1, aY, aZ	 )) aWorld.setBlockToAir(aX+1, aY, aZ  );
+		if (displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlockToAir(aX  , aY, aZ-1);
+		if (displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlockToAir(aX  , aY, aZ+1);
+		if (displaceIfPossible(aWorld, aX-1, aY, aZ  )) aWorld.setBlockToAir(aX-1, aY, aZ  );
+		if (displaceIfPossible(aWorld, aX+1, aY, aZ  )) aWorld.setBlockToAir(aX+1, aY, aZ  );
 		
 		int tTotal = quantaRemaining, tCount = 1;
 		
-		int north = getQuantaValueBelow(aWorld, aX	, aY, aZ-1, quantaRemaining-1);
-		int south = getQuantaValueBelow(aWorld, aX	, aY, aZ+1, quantaRemaining-1);
+		int north = getQuantaValueBelow(aWorld, aX  , aY, aZ-1, quantaRemaining-1);
+		int south = getQuantaValueBelow(aWorld, aX  , aY, aZ+1, quantaRemaining-1);
 		int west  = getQuantaValueBelow(aWorld, aX-1, aY, aZ  , quantaRemaining-1);
 		int east  = getQuantaValueBelow(aWorld, aX+1, aY, aZ  , quantaRemaining-1);
 		
@@ -138,22 +138,22 @@ public class BlockBaseFluid extends BlockFluidFinite {
 		if (north >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew; --tRemainder;} tCount--;
-			if (tNew != north) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ-1, this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX	, aY, aZ-1, this, tickRate);} else aWorld.setBlockToAir(aX	, aY, aZ-1);
+			if (tNew != north) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ-1, this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX  , aY, aZ-1, this, tickRate);} else aWorld.setBlockToAir(aX  , aY, aZ-1);
 		}
 		if (south >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew; --tRemainder;} tCount--;
-			if (tNew != south) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ+1, this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX	, aY, aZ+1, this, tickRate);} else aWorld.setBlockToAir(aX	, aY, aZ+1);
+			if (tNew != south) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX  , aY, aZ+1, this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX  , aY, aZ+1, this, tickRate);} else aWorld.setBlockToAir(aX  , aY, aZ+1);
 		}
 		if (west >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew ; --tRemainder;} tCount--;
-			if (tNew != west ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX-1, aY, aZ	 , this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX-1, aY, aZ  , this, tickRate);} else aWorld.setBlockToAir(aX-1, aY, aZ  );
+			if (tNew != west ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX-1, aY, aZ  , this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX-1, aY, aZ  , this, tickRate);} else aWorld.setBlockToAir(aX-1, aY, aZ  );
 		}
 		if (east >= 0) {
 			int tNew = tSpread;
 			if (tRemainder == tCount || tRemainder > 1 && aRandom.nextInt(tCount - tRemainder) != 0) {++tNew ; --tRemainder;} tCount--;
-			if (tNew != east ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX+1, aY, aZ	 , this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX+1, aY, aZ  , this, tickRate);} else aWorld.setBlockToAir(aX+1, aY, aZ  );
+			if (tNew != east ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX+1, aY, aZ  , this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX+1, aY, aZ  , this, tickRate);} else aWorld.setBlockToAir(aX+1, aY, aZ  );
 		}
 		WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainder > 0 ? tSpread : tSpread - 1, 2);
 	}

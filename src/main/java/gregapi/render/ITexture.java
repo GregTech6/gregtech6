@@ -287,10 +287,10 @@ public interface ITexture {
 		
 		public static void renderFixedNegativeYFacing(IIcon aIcon, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ) {
 			if (aRenderer.hasOverrideBlockTexture()) aIcon = aRenderer.overrideBlockTexture;
-		//	double tMaxX1 = aIcon.getInterpolatedU(aRenderer.renderMaxX * 16.0);
-		//	double tMinX1 = aIcon.getInterpolatedU(aRenderer.renderMinX * 16.0);
-		//	double tMaxZ1 = aIcon.getInterpolatedV(aRenderer.renderMinZ * 16.0);
-		//	double tMinZ1 = aIcon.getInterpolatedV(aRenderer.renderMaxZ * 16.0);
+		//  double tMaxX1 = aIcon.getInterpolatedU(aRenderer.renderMaxX * 16.0);
+		//  double tMinX1 = aIcon.getInterpolatedU(aRenderer.renderMinX * 16.0);
+		//  double tMaxZ1 = aIcon.getInterpolatedV(aRenderer.renderMinZ * 16.0);
+		//  double tMinZ1 = aIcon.getInterpolatedV(aRenderer.renderMaxZ * 16.0);
 			
 			double tMaxX1 = aIcon.getInterpolatedU(aRenderer.renderMaxX * 16.0);
 			double tMinX1 = aIcon.getInterpolatedU(aRenderer.renderMinX * 16.0);

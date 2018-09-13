@@ -191,18 +191,18 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, mRecipes.mOutputFluidCount>3?25:34).setCanPut(F));
 			break;
 		case  7:
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,	7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,  7).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107, 43).setCanPut(F));
 			break;
 		case  8:
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,	7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,  7).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 25).setCanPut(F));
@@ -210,9 +210,9 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125, 43).setCanPut(F));
 			break;
 		case  9:
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,	7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,  7).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 25).setCanPut(F));
@@ -221,9 +221,9 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 43).setCanPut(F));
 			break;
 		case 10:
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,	7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,  7).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 25).setCanPut(F));
@@ -233,9 +233,9 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 61).setCanPut(F));
 			break;
 		case 11:
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,	7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,  7).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 25).setCanPut(F));
@@ -246,9 +246,9 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 61).setCanPut(F));
 			break;
 		default:
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,	7).setCanPut(F));
-			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,	7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125,  7).setCanPut(F));
+			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143,  7).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 107, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 125, 25).setCanPut(F));
 			addSlotToContainer(new Slot_Normal(mTileEntity, tIndex++, 143, 25).setCanPut(F));
@@ -263,7 +263,7 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 		
 		addSlotToContainer(mRecipes.getSpecialSlot(mTileEntity, tIndex++, 80, 43));
 		
-		for (int i = 0; i < mRecipes.mInputFluidCount ; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++,	53 - (i%3)*18, 63 - (i/3)*18).setTooltip("You can extract using a Tap or Nozzle", LH.Chat.WHITE));
+		for (int i = 0; i < mRecipes.mInputFluidCount ; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++,  53 - (i%3)*18, 63 - (i/3)*18).setTooltip("You can extract using a Tap or Nozzle", LH.Chat.WHITE));
 		for (int i = 0; i < mRecipes.mOutputFluidCount; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++, 107 + (i%3)*18, 63 - (i/3)*18).setTooltip("You can extract using a Tap or Nozzle", LH.Chat.WHITE));
 		
 		return super.addSlots(aPlayerInventory);

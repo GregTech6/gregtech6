@@ -197,12 +197,12 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	}
 	
 	public static final IIconContainer
-	sTextureBush		= new Textures.BlockIcons.CustomIcon("machines/plants/bush/colored/bush"),
-	sTextureBerry		= new Textures.BlockIcons.CustomIcon("machines/plants/bush/colored/berries"),
-	sTextureImmature	= new Textures.BlockIcons.CustomIcon("machines/plants/bush/colored/berries_immature"),
-	sOverlayBush		= new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/bush"),
-	sOverlayBerry		= new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/berries"),
-	sOverlayImmature	= new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/berries_immature");
+	sTextureBush        = new Textures.BlockIcons.CustomIcon("machines/plants/bush/colored/bush"),
+	sTextureBerry       = new Textures.BlockIcons.CustomIcon("machines/plants/bush/colored/berries"),
+	sTextureImmature    = new Textures.BlockIcons.CustomIcon("machines/plants/bush/colored/berries_immature"),
+	sOverlayBush        = new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/bush"),
+	sOverlayBerry       = new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/berries"),
+	sOverlayImmature    = new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/berries_immature");
 	
 	private ITexture mTexture;
 	
@@ -216,9 +216,9 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 				} else {
 					switch(mStage) {
 					case 0: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0x009000), BlockTextureDefault.get(sOverlayBush)); break;
-					case 1: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0x009000), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureImmature	, 0xff9090), BlockTextureDefault.get(sOverlayImmature)); break;
-					case 2: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0x009000), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureBerry		, 0x80ff80), BlockTextureDefault.get(sOverlayBerry)); break;
-					case 3: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0x009000), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureBerry		, tData.mMaterial.mMaterial.fRGBaSolid), BlockTextureDefault.get(sOverlayBerry)); break;
+					case 1: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0x009000), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureImmature   , 0xff9090), BlockTextureDefault.get(sOverlayImmature)); break;
+					case 2: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0x009000), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureBerry      , 0x80ff80), BlockTextureDefault.get(sOverlayBerry)); break;
+					case 3: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0x009000), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureBerry      , tData.mMaterial.mMaterial.fRGBaSolid), BlockTextureDefault.get(sOverlayBerry)); break;
 					}
 				}
 			} else {
@@ -229,9 +229,9 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 				} else {
 					switch(mStage) {
 					case 0: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, tBerryColor[0]), BlockTextureDefault.get(sOverlayBush)); break;
-					case 1: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, tBerryColor[0]), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureImmature	, tBerryColor[1]), BlockTextureDefault.get(sOverlayImmature)); break;
-					case 2: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, tBerryColor[0]), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureBerry	, tBerryColor[2]), BlockTextureDefault.get(sOverlayBerry)); break;
-					case 3: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, tBerryColor[0]), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureBerry	, tBerryColor[3]), BlockTextureDefault.get(sOverlayBerry)); break;
+					case 1: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, tBerryColor[0]), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureImmature , tBerryColor[1]), BlockTextureDefault.get(sOverlayImmature)); break;
+					case 2: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, tBerryColor[0]), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureBerry    , tBerryColor[2]), BlockTextureDefault.get(sOverlayBerry)); break;
+					case 3: mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, tBerryColor[0]), BlockTextureDefault.get(sOverlayBush), BlockTextureDefault.get(sTextureBerry    , tBerryColor[3]), BlockTextureDefault.get(sOverlayBerry)); break;
 					}
 				}
 			}
@@ -312,13 +312,13 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 		box(aBlock, PX_P[0], PX_P[0], PX_P[0], PX_N[0], PX_N[0], PX_N[0]);
 	}
 	
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return F;}
-	@Override public boolean isSealable2			(byte aSide) {return F;}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
-	@Override public boolean attachCoversFirst		(byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt	(byte aSide) {return SIDES_INVALID[mFacing];}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return F;}
+	@Override public boolean isSealable2            (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
+	@Override public boolean isObstructingBlockAt   (byte aSide) {return SIDES_INVALID[mFacing];}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public boolean isLeaves() {return T;}
 	

@@ -223,8 +223,8 @@ public class EntityArrow_Material extends EntityProjectile {
 									if (tKnockbackDivider > 0.0F) tHitLivingEntity.addVelocity(motionX * tKnockback * 0.6000000238418579D / tKnockbackDivider, 0.1D, motionZ * tKnockback * 0.6000000238418579D / tKnockbackDivider);
 								}
 								
-								Enchantments.applyBullshitA(tHitLivingEntity																	, tShootingEntity==null?this:tShootingEntity	, mArrow);
-								Enchantments.applyBullshitB(tShootingEntity instanceof EntityLivingBase?(EntityLivingBase)tShootingEntity:null	, tHitLivingEntity								, mArrow);
+								Enchantments.applyBullshitA(tHitLivingEntity                                                                    , tShootingEntity==null?this:tShootingEntity    , mArrow);
+								Enchantments.applyBullshitB(tShootingEntity instanceof EntityLivingBase?(EntityLivingBase)tShootingEntity:null  , tHitLivingEntity                              , mArrow);
 								
 								if (tShootingEntity != null && tHitLivingEntity != tShootingEntity && tHitLivingEntity instanceof EntityPlayer && tShootingEntity instanceof EntityPlayerMP) {
 									((EntityPlayerMP)tShootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
@@ -281,9 +281,9 @@ public class EntityArrow_Material extends EntityProjectile {
 			
 			for (rotationPitch = (float)(Math.atan2(motionY, MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ)) * 180.0D / Math.PI); rotationPitch - prevRotationPitch < -180.0F; prevRotationPitch -= 360.0F) {/**/}
 			
-			while (rotationPitch	- prevRotationPitch	>= 180.0F) prevRotationPitch += 360.0F;
-			while (rotationYaw		- prevRotationYaw	< -180.0F) prevRotationYaw -= 360.0F;
-			while (rotationYaw		- prevRotationYaw	>= 180.0F) prevRotationYaw += 360.0F;
+			while (rotationPitch    - prevRotationPitch >= 180.0F) prevRotationPitch += 360.0F;
+			while (rotationYaw      - prevRotationYaw   < -180.0F) prevRotationYaw -= 360.0F;
+			while (rotationYaw      - prevRotationYaw   >= 180.0F) prevRotationYaw += 360.0F;
 			
 			rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
 			rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;

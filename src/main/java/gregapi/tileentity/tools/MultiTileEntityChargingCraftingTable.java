@@ -49,10 +49,10 @@ public class MultiTileEntityChargingCraftingTable extends MultiTileEntityAdvance
 		return rReturn;
 	}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting;}
-	@Override public long getEnergySizeInputMin				(TagData aEnergyType, byte aSide) {return 1;}
-	@Override public long getEnergySizeInputMax				(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting;}
+	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return 1;}
+	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.ALL;}
 	
 	@Override

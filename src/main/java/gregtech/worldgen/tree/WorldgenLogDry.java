@@ -57,25 +57,25 @@ public class WorldgenLogDry extends WorldgenObject {
 			if (!aChunk.getBlock(tX&15, tY+1, tZ&15).isAir(aWorld, tX, tY+1, tZ)) return F;
 			switch(aRandom.nextInt(3)) {
 			case 0:
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY-1, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
-											WD.set(aWorld, tX  , tY	 , tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY-1, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
+											WD.set(aWorld, tX  , tY  , tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
 											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
 											WD.set(aWorld, tX  , tY+2, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[0], 2);
 				return T;
 			case 1:
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX-2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[0], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX-2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[0], 2);
 											WD.set(aWorld, tX-1, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[0], 2);
 											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_X[0], 2);
 											WD.set(aWorld, tX+1, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[0], 2);
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX+2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[0], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX+2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[0], 2);
 				return T;
 			case 2:
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+1, tZ-2, BlocksGT.Log1, PILLARS_Z[0], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+1, tZ-2, BlocksGT.Log1, PILLARS_Z[0], 2);
 											WD.set(aWorld, tX  , tY+1, tZ-1, BlocksGT.Log1, PILLARS_Z[0], 2);
 											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Z[0], 2);
 											WD.set(aWorld, tX  , tY+1, tZ+1, BlocksGT.Log1, PILLARS_Z[0], 2);
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+1, tZ+2, BlocksGT.Log1, PILLARS_Z[0], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+1, tZ+2, BlocksGT.Log1, PILLARS_Z[0], 2);
 				return T;
 			}
 		}

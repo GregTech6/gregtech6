@@ -64,9 +64,9 @@ public class MultiTileEntityCokeOven extends TileEntityBase10MultiBlockMachine {
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.cokeoven.1"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.cokeoven.2"));
+		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.cokeoven.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.cokeoven.2"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

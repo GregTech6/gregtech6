@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 public class GT_Block_Casings2 extends GT_Block_Casings_Abstract {
 	public GT_Block_Casings2() {
 		super("gt.blockcasings2", MaterialMachines.instance);
-//		for (byte i = 0; i < 16; i++) Textures.BlockIcons.CASING_BLOCKS[i+16] = new BlockTextureCopied(this, 6, i);
+//      for (byte i = 0; i < 16; i++) Textures.BlockIcons.CASING_BLOCKS[i+16] = new BlockTextureCopied(this, 6, i);
 		LH.add(getUnlocalizedName()+ ".0.name", "Solid Steel Machine Casing");
 		LH.add(getUnlocalizedName()+ ".1.name", "Frost Proof Machine Casing");
 		LH.add(getUnlocalizedName()+ ".2.name", "Bronze Gear Box Casing");

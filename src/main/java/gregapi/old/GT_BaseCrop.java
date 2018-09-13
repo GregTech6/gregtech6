@@ -64,7 +64,7 @@ public class GT_BaseCrop extends CropCard {
 			mSpecialDrops = aSpecialDrops;
 			mTier = Math.max(1, aTier);
 			mMaxSize = Math.max(3, aMaxSize);
-//			mGrowthSpeed = aGrowthSpeed>0?aGrowthSpeed:mTier*300;
+//          mGrowthSpeed = aGrowthSpeed>0?aGrowthSpeed:mTier*300;
 			mHarvestSize = Math.min(Math.max(aHarvestSize, 2), mMaxSize);
 			mAfterHarvestSize = Math.min(Math.max(aAfterHarvestSize, 1), mMaxSize-1);
 			mStats[0] = aStatChemical;
@@ -101,7 +101,7 @@ public class GT_BaseCrop extends CropCard {
 	
 	@Override
 	public final boolean canGrow(ICropTile aCrop) {
-		return aCrop.getSize()	< maxSize();
+		return aCrop.getSize()  < maxSize();
 	}
 	
 	@Override

@@ -58,14 +58,14 @@ public class MultiTileEntityJug extends TileEntityBase10FluidContainerSyncSmall 
 	}
 	
 	public static IIconContainer
-	sTextureSides		= new Textures.BlockIcons.CustomIcon("machines/tanks/jug/colored/sides"),
-	sTextureInsides		= new Textures.BlockIcons.CustomIcon("machines/tanks/jug/colored/insides"),
-	sTextureTop			= new Textures.BlockIcons.CustomIcon("machines/tanks/jug/colored/top"),
-	sTextureBottom		= new Textures.BlockIcons.CustomIcon("machines/tanks/jug/colored/bottom"),
-	sOverlaySides		= new Textures.BlockIcons.CustomIcon("machines/tanks/jug/overlay/sides"),
-	sOverlayInsides		= new Textures.BlockIcons.CustomIcon("machines/tanks/jug/overlay/insides"),
-	sOverlayTop			= new Textures.BlockIcons.CustomIcon("machines/tanks/jug/overlay/top"),
-	sOverlayBottom		= new Textures.BlockIcons.CustomIcon("machines/tanks/jug/overlay/bottom");
+	sTextureSides       = new Textures.BlockIcons.CustomIcon("machines/tanks/jug/colored/sides"),
+	sTextureInsides     = new Textures.BlockIcons.CustomIcon("machines/tanks/jug/colored/insides"),
+	sTextureTop         = new Textures.BlockIcons.CustomIcon("machines/tanks/jug/colored/top"),
+	sTextureBottom      = new Textures.BlockIcons.CustomIcon("machines/tanks/jug/colored/bottom"),
+	sOverlaySides       = new Textures.BlockIcons.CustomIcon("machines/tanks/jug/overlay/sides"),
+	sOverlayInsides     = new Textures.BlockIcons.CustomIcon("machines/tanks/jug/overlay/insides"),
+	sOverlayTop         = new Textures.BlockIcons.CustomIcon("machines/tanks/jug/overlay/top"),
+	sOverlayBottom      = new Textures.BlockIcons.CustomIcon("machines/tanks/jug/overlay/bottom");
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {

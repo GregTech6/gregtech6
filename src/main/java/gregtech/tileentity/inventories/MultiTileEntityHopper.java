@@ -93,15 +93,15 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get("gt.multitileentity.hopper.tooltip.1") + getSizeInventory());
+		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.1") + getSizeInventory());
 		if (mMode > 0)
-		aList.add(Chat.CYAN		+ LH.get("gt.multitileentity.hopper.tooltip.2") + mMode);
+		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.2") + mMode);
 		if (mExactMode)
-		aList.add(Chat.CYAN		+ LH.get("gt.multitileentity.hopper.tooltip.3"));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_MONKEY_WRENCH));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
+		aList.add(Chat.CYAN     + LH.get("gt.multitileentity.hopper.tooltip.3"));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_MONKEY_WRENCH));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -231,13 +231,13 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
-	@Override public float getSurfaceDistance		(byte aSide) {return 0.0F;}
-	@Override public float getSurfaceSize			(byte aSide) {return SIDES_TOP[aSide]?PX_N[0]:PX_N[8];}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_TOP[aSide]?PX_N[2]:PX_N[8];}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return 0.0F;}
+	@Override public float getSurfaceSize           (byte aSide) {return SIDES_TOP[aSide]?PX_N[0]:PX_N[8];}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_TOP[aSide]?PX_N[2]:PX_N[8];}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_TOP[aSide];}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(getSizeInventory());}
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return aSide != mFacing;}
@@ -250,8 +250,8 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	
 	@Override public byte getDefaultSide() {return SIDE_BOTTOM;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}
-	@Override public boolean useSidePlacementRotation		() {return T;}
-	@Override public boolean useInversePlacementRotation	() {return T;}
+	@Override public boolean useSidePlacementRotation       () {return T;}
+	@Override public boolean useInversePlacementRotation    () {return T;}
 	
 	@Override public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {return SIDES_TOP[mFacing] ? 2 : 3;}
 	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return T;}

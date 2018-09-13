@@ -67,12 +67,12 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "A very big Note: The Bronze Blast Furnace does NOT need Steam Power. Even though it should be very obvious, since it is Coal powered and Pipes don't even connect to it, I needed to mention this, because some people actually tried that."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.BONUS_CHEST				, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.DUNGEON_CHEST				, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.STRONGHOLD_CROSSING		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 20));
+		addLoot(ChestGenHooks.BONUS_CHEST               , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.DUNGEON_CHEST             , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING       , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  20));
 		tStack = null;
 		}
 		
@@ -88,12 +88,12 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "Also interessting are Industrial Electrolyzer and Industrial Centrifuge. They are capable of seperating the components of several Dusts or Liquids. The Centrifuge can work with pumped Lava to produce several nice Metals from it."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.BONUS_CHEST				, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST				, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR		, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.STRONGHOLD_CROSSING		, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 15));
+		addLoot(ChestGenHooks.BONUS_CHEST               , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST             , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING       , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  15));
 		tStack = null;
 		}
 		
@@ -107,12 +107,12 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "6. Do not let your Machines explode. If that happens, the Machine will overcharge the adjacent Wiring, what will cause all connected Machines to explode, unless they can receive 8192EU/p."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.BONUS_CHEST				, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR		, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.STRONGHOLD_CROSSING		, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 20));
+		addLoot(ChestGenHooks.BONUS_CHEST               , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING       , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  20));
 		tStack = null;
 		}
 		
@@ -124,10 +124,10 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "If you are low on Materials, but really need a Cover, then just take your Screwdriver and unscrew the outer hull of the Machine, turn it around, screw it back on and viola, you got a Cover for free."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 10));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  10));
 		tStack = null;
 		}
 		
@@ -146,10 +146,10 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "The Button Panel is the best choice of Inputting Redstone Signals. Depending on which Button you press it outputs a Signal from 0-15. With a Controller Cover, or a Rubber Hammer, you can make the Buttons sticky."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST	, GT_Utility.copy(tStack)							, 1, 1,	  3));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST	, GT_Utility.copy(tStack)							, 1, 1,	  5));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 20));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST  , GT_Utility.copy(tStack)                           , 1, 1,   3));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST  , GT_Utility.copy(tStack)                           , 1, 1,   5));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  20));
 		tStack = null;
 		}
 		
@@ -168,10 +168,10 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "Timer: This Gate is very useful. It pulses every X Ticks, and unlike it's extremly crappy Counterpart of Redpower it is CONSISTENT. It doesn't just loose its Timing, as soon as someone uses a Bed or Logs out. Also much more things can be configured."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST	, GT_Utility.copy(tStack)							, 1, 1,	  3));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST	, GT_Utility.copy(tStack)							, 1, 1,	  5));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 20));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST  , GT_Utility.copy(tStack)                           , 1, 1,   3));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST  , GT_Utility.copy(tStack)                           , 1, 1,   5));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  20));
 		tStack = null;
 		}
 		
@@ -201,9 +201,9 @@ public class Loader_CraftingRecipes implements Runnable {
 				, " ... the Shutter can also be used to make Pipe Connections One-Way, when being set in the third or fourth Mode to allow only Input or only Output."
 			});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	  5));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,   5));
 		tStack = null;
 		}
 		
@@ -242,10 +242,10 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "Tearstalks. This Plant drops the probably rarest Item of all. Ghast Tears. These Tears are extremly rare, I guess even more rare than Nether Stars as they can't just be farmed, well, until now."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST	, GT_Utility.copy(tStack)							, 1, 1,	  3));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST	, GT_Utility.copy(tStack)							, 1, 1,	  5));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 10));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST  , GT_Utility.copy(tStack)                           , 1, 1,   3));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST  , GT_Utility.copy(tStack)                           , 1, 1,   5));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  10));
 		tStack = null;
 		}
 		
@@ -259,10 +259,10 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "In case of Steam, the Machine will be able to output it, but only if it is inside the regular Tank (when I happen to add Steam based Solar for example). The internal Steam Energy Tank can't output Steam."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.BONUS_CHEST				, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 10));
+		addLoot(ChestGenHooks.BONUS_CHEST               , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  10));
 		tStack = null;
 		}
 		
@@ -276,8 +276,8 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "Do not insert Eggs. Just don't."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  1));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 10));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  10));
 		tStack = null;
 		}
 		
@@ -303,10 +303,10 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "A Turbine needs to have a 3x3 of Air Blocks in front of it, to Function properly, keep that in mind."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 10));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  10));
 		tStack = null;
 		}
 		
@@ -329,10 +329,10 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "It might be useful to use the Screwdriver on the Output Hatches to determine what is outputted where. Another Hint: You need exactly 2 Thermal Boilers to run a Steam Turbine properly."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 10));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  10));
 		tStack = null;
 		}
 		
@@ -346,9 +346,9 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "You can put a Conveyor Cover onto the Pipe to suck Items out of an Inventory, when using Import Mode. To measure how much of the Capactiy is being used, use the Active Machine Detector."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 10));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  10));
 		tStack = null;
 		}
 		
@@ -377,9 +377,9 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "Red Granite: Very hard Rock, and kind of valuable, as it contains traces of Sphalerite, Cinnabar and Tetrahedrite. Not to mention, that this is Granite as well."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST			, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR		, GT_Utility.copy(tStack)							, 1, 1,	  2));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)							, 1, 1,	 10));
+		addLoot(ChestGenHooks.DUNGEON_CHEST         , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR        , GT_Utility.copy(tStack)                           , 1, 1,   2));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                           , 1, 1,  10));
 		tStack = null;
 		}
 		
@@ -400,8 +400,8 @@ public class Loader_CraftingRecipes implements Runnable {
 				, "10. Copying Maps: Just put an empty Map into Slot 1, some Black Ink into Slot 2 and the Map you wanna copy into the Copy Slot. That might be an Ink more expensive than just copying it by Hand, but in case you need it automated it is very useful."
 				});
 		if (tStack != null) {
-		addLoot(ChestGenHooks.DUNGEON_CHEST				, GT_Utility.copy(tStack)								, 1, 1,	  2);
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY		, GT_Utility.copy(tStack)								, 1, 1,	 10);
+		addLoot(ChestGenHooks.DUNGEON_CHEST             , GT_Utility.copy(tStack)                               , 1, 1,   2);
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY        , GT_Utility.copy(tStack)                               , 1, 1,  10);
 		tStack = null;
 		}
 		*/
@@ -452,10 +452,10 @@ public class Loader_CraftingRecipes implements Runnable {
 			if (CR.remout(ST.mkic("nanoSaber", 1))) CR.shaped(ST.mkic("nanoSaber", 1), DEF, "PI ", "PI ", "CLC", 'L', OP.battery.dat(MT.Master), 'I', ST.mkic("iridiumPlate", 1), 'P', OP.plate.dat(MT.Pt), 'C', OD_CIRCUITS[5]);
 		}
 		
-		if (CR.remout(ST.mkic("diamondDrill"	, 1)))	CR.shaped(ST.mkic("diamondDrill"	, 1), DEF, " D ", "DMD", "TAT", 'M', ST.mkic("miningDrill", 1, W), 'D', OP.gem.dat(MT.TECH.DiamondIndustrial), 'T', OP.plate.dat(MT.Ti), 'A', OD_CIRCUITS[3]);
-		if (CR.remout(ST.mkic("miningDrill"		, 1)))	CR.shaped(ST.mkic("miningDrill"		, 1), DEF, " S ", "SCS", "SBS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
-		if (CR.remout(ST.mkic("chainsaw"		, 1)))	CR.shaped(ST.mkic("chainsaw"		, 1), DEF, "BS ", "SCS", " SS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
-		if (CR.remout(ST.mkic("electricHoe"		, 1)))	CR.shaped(ST.mkic("electricHoe"		, 1), DEF, "SS ", " C ", " B ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
-		if (CR.remout(ST.mkic("electricTreetap"	, 1)))	CR.shaped(ST.mkic("electricTreetap"	, 1), DEF, " B ", "SCS", "S	 ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
+		if (CR.remout(ST.mkic("diamondDrill"    , 1)))  CR.shaped(ST.mkic("diamondDrill"    , 1), DEF, " D ", "DMD", "TAT", 'M', ST.mkic("miningDrill", 1, W), 'D', OP.gem.dat(MT.TECH.DiamondIndustrial), 'T', OP.plate.dat(MT.Ti), 'A', OD_CIRCUITS[3]);
+		if (CR.remout(ST.mkic("miningDrill"     , 1)))  CR.shaped(ST.mkic("miningDrill"     , 1), DEF, " S ", "SCS", "SBS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
+		if (CR.remout(ST.mkic("chainsaw"        , 1)))  CR.shaped(ST.mkic("chainsaw"        , 1), DEF, "BS ", "SCS", " SS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
+		if (CR.remout(ST.mkic("electricHoe"     , 1)))  CR.shaped(ST.mkic("electricHoe"     , 1), DEF, "SS ", " C ", " B ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
+		if (CR.remout(ST.mkic("electricTreetap" , 1)))  CR.shaped(ST.mkic("electricTreetap" , 1), DEF, " B ", "SCS", "S  ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
 	}
 }

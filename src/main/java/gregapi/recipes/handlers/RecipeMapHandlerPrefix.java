@@ -55,78 +55,78 @@ public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
 	
 	public RecipeMapHandlerPrefix(OreDictPrefix aInputPrefix, long aInputAmount, FluidStack aFluidInputPerUnit, long aEUt, long aDuration, long aMultiplier, FluidStack aFluidOutputPerUnit, OreDictPrefix aOutputPrefix, long aOutputAmount, ItemStack aAdditionalInput, ItemStack aAdditionalOutput, boolean aAllowToGenerateAllRecipesAtOnce, boolean aOutputPulverizedRemains, boolean aFlatFluidCosts, ICondition aCondition) {
 		mAllowToGenerateAllRecipesAtOnce = aAllowToGenerateAllRecipesAtOnce;
-		mFlatFluidCosts		= aFlatFluidCosts;
-		mFluidInputPerUnit	= aFluidInputPerUnit;
-		mFluidOutputPerUnit	= aFluidOutputPerUnit;
-		mCondition			= (aCondition == null ? ICondition.TRUE : aCondition);
-		mInputPrefixes		= new OreDictPrefix[] {aInputPrefix};
-		mInputAmounts		= new byte[] {UT.Code.bindStack(aInputAmount)};
-		mOutputPrefixes		= aOutputPrefix == null ? ZL_OREDICTPREFIX : new OreDictPrefix[] {aOutputPrefix};
-		mOutputAmounts		= new byte[] {UT.Code.bindStack(aOutputAmount)};
-		mAdditionalOutput	= aAdditionalOutput;
-		mAdditionalInput	= aAdditionalInput;
-		mMultiplier			= aMultiplier;
-		mDuration			= aDuration;
-		mEUt				= aEUt;
+		mFlatFluidCosts     = aFlatFluidCosts;
+		mFluidInputPerUnit  = aFluidInputPerUnit;
+		mFluidOutputPerUnit = aFluidOutputPerUnit;
+		mCondition          = (aCondition == null ? ICondition.TRUE : aCondition);
+		mInputPrefixes      = new OreDictPrefix[] {aInputPrefix};
+		mInputAmounts       = new byte[] {UT.Code.bindStack(aInputAmount)};
+		mOutputPrefixes     = aOutputPrefix == null ? ZL_OREDICTPREFIX : new OreDictPrefix[] {aOutputPrefix};
+		mOutputAmounts      = new byte[] {UT.Code.bindStack(aOutputAmount)};
+		mAdditionalOutput   = aAdditionalOutput;
+		mAdditionalInput    = aAdditionalInput;
+		mMultiplier         = aMultiplier;
+		mDuration           = aDuration;
+		mEUt                = aEUt;
 		long
-		tUnitsProcessed		= 0;
+		tUnitsProcessed     = 0;
 		for (int i = 0; i < mInputPrefixes.length; i++) tUnitsProcessed += mInputPrefixes[i].mAmount * mInputAmounts[i];
-		mUnitsInputted		= tUnitsProcessed;
-		tUnitsProcessed		= 0;
+		mUnitsInputted      = tUnitsProcessed;
+		tUnitsProcessed     = 0;
 		for (int i = 0; i < mOutputPrefixes.length; i++) tUnitsProcessed += mOutputPrefixes[i].mAmount * mOutputAmounts[i];
-		mUnitsOutputted		= tUnitsProcessed;
+		mUnitsOutputted     = tUnitsProcessed;
 		mOutputPulverizedRemains = (aOutputPulverizedRemains && mUnitsInputted-mUnitsOutputted >= OP.dustDiv72.mAmount);
 	}
 	
 	public RecipeMapHandlerPrefix(OreDictPrefix aInputPrefix1, long aInputAmount1, OreDictPrefix aInputPrefix2, long aInputAmount2, FluidStack aFluidInputPerUnit, long aEUt, long aDuration, long aMultiplier, FluidStack aFluidOutputPerUnit, OreDictPrefix aOutputPrefix1, long aOutputAmount1, OreDictPrefix aOutputPrefix2, long aOutputAmount2, ItemStack aAdditionalInput, ItemStack aAdditionalOutput, boolean aAllowToGenerateAllRecipesAtOnce, boolean aOutputPulverizedRemains, boolean aFlatFluidCosts, ICondition aCondition) {
 		mAllowToGenerateAllRecipesAtOnce = aAllowToGenerateAllRecipesAtOnce;
-		mFlatFluidCosts		= aFlatFluidCosts;
-		mFluidInputPerUnit	= aFluidInputPerUnit;
-		mFluidOutputPerUnit	= aFluidOutputPerUnit;
-		mCondition			= (aCondition == null ? ICondition.TRUE : aCondition);
-		mInputPrefixes		= aInputPrefix2 == null ? new OreDictPrefix[] {aInputPrefix1} : new OreDictPrefix[] {aInputPrefix1, aInputPrefix2};
-		mInputAmounts		= aInputPrefix2 == null ? new byte[] {UT.Code.bindStack(aInputAmount1)} : new byte[] {UT.Code.bindStack(aInputAmount1), UT.Code.bindStack(aInputAmount2)};
-		mOutputPrefixes		= aOutputPrefix2 == null ? aOutputPrefix1 == null ? ZL_OREDICTPREFIX : new OreDictPrefix[] {aOutputPrefix1} : new OreDictPrefix[] {aOutputPrefix1, aOutputPrefix2};
-		mOutputAmounts		= aOutputPrefix2 == null ? new byte[] {UT.Code.bindStack(aOutputAmount1)} : new byte[] {UT.Code.bindStack(aOutputAmount1), UT.Code.bindStack(aOutputAmount2)};
-		mAdditionalOutput	= aAdditionalOutput;
-		mAdditionalInput	= aAdditionalInput;
-		mMultiplier			= aMultiplier;
-		mDuration			= aDuration;
-		mEUt				= aEUt;
+		mFlatFluidCosts     = aFlatFluidCosts;
+		mFluidInputPerUnit  = aFluidInputPerUnit;
+		mFluidOutputPerUnit = aFluidOutputPerUnit;
+		mCondition          = (aCondition == null ? ICondition.TRUE : aCondition);
+		mInputPrefixes      = aInputPrefix2 == null ? new OreDictPrefix[] {aInputPrefix1} : new OreDictPrefix[] {aInputPrefix1, aInputPrefix2};
+		mInputAmounts       = aInputPrefix2 == null ? new byte[] {UT.Code.bindStack(aInputAmount1)} : new byte[] {UT.Code.bindStack(aInputAmount1), UT.Code.bindStack(aInputAmount2)};
+		mOutputPrefixes     = aOutputPrefix2 == null ? aOutputPrefix1 == null ? ZL_OREDICTPREFIX : new OreDictPrefix[] {aOutputPrefix1} : new OreDictPrefix[] {aOutputPrefix1, aOutputPrefix2};
+		mOutputAmounts      = aOutputPrefix2 == null ? new byte[] {UT.Code.bindStack(aOutputAmount1)} : new byte[] {UT.Code.bindStack(aOutputAmount1), UT.Code.bindStack(aOutputAmount2)};
+		mAdditionalOutput   = aAdditionalOutput;
+		mAdditionalInput    = aAdditionalInput;
+		mMultiplier         = aMultiplier;
+		mDuration           = aDuration;
+		mEUt                = aEUt;
 		long
-		tUnitsProcessed		= 0;
+		tUnitsProcessed     = 0;
 		for (int i = 0; i < mInputPrefixes.length; i++) tUnitsProcessed += mInputPrefixes[i].mAmount * mInputAmounts[i];
-		mUnitsInputted		= tUnitsProcessed;
-		tUnitsProcessed		= 0;
+		mUnitsInputted      = tUnitsProcessed;
+		tUnitsProcessed     = 0;
 		for (int i = 0; i < mOutputPrefixes.length; i++) tUnitsProcessed += mOutputPrefixes[i].mAmount * mOutputAmounts[i];
-		mUnitsOutputted		= tUnitsProcessed;
+		mUnitsOutputted     = tUnitsProcessed;
 		mOutputPulverizedRemains = (aOutputPulverizedRemains && mUnitsInputted-mUnitsOutputted >= OP.dustDiv72.mAmount);
 	}
 	
 	public RecipeMapHandlerPrefix(OreDictPrefix[] aInputPrefixes, long[] aInputAmount, FluidStack aFluidInputPerUnit, long aEUt, long aDuration, long aMultiplier, FluidStack aFluidOutputPerUnit, OreDictPrefix[] aOutputPrefixes, long[] aOutputAmount, ItemStack aAdditionalInput, ItemStack aAdditionalOutput, boolean aAllowToGenerateAllRecipesAtOnce, boolean aOutputPulverizedRemains, boolean aFlatFluidCosts, ICondition aCondition) {
 		mAllowToGenerateAllRecipesAtOnce = aAllowToGenerateAllRecipesAtOnce;
-		mFlatFluidCosts		= aFlatFluidCosts;
-		mFluidInputPerUnit	= aFluidInputPerUnit;
-		mFluidOutputPerUnit	= aFluidOutputPerUnit;
-		mCondition			= (aCondition == null ? ICondition.TRUE : aCondition);
-		mInputPrefixes		= aInputPrefixes;
-		mInputAmounts		= new byte[mInputPrefixes.length];
+		mFlatFluidCosts     = aFlatFluidCosts;
+		mFluidInputPerUnit  = aFluidInputPerUnit;
+		mFluidOutputPerUnit = aFluidOutputPerUnit;
+		mCondition          = (aCondition == null ? ICondition.TRUE : aCondition);
+		mInputPrefixes      = aInputPrefixes;
+		mInputAmounts       = new byte[mInputPrefixes.length];
 		for (int i = 0; i < mInputAmounts.length; i++) mInputAmounts[i] = UT.Code.bindStack(aInputAmount[i]);
-		mOutputPrefixes		= aOutputPrefixes;
-		mOutputAmounts		= new byte[mOutputPrefixes.length];
+		mOutputPrefixes     = aOutputPrefixes;
+		mOutputAmounts      = new byte[mOutputPrefixes.length];
 		for (int i = 0; i < mOutputAmounts.length; i++) mOutputAmounts[i] = UT.Code.bindStack(aOutputAmount[i]);
-		mAdditionalOutput	= aAdditionalOutput;
-		mAdditionalInput	= aAdditionalInput;
-		mMultiplier			= aMultiplier;
-		mDuration			= aDuration;
-		mEUt				= aEUt;
+		mAdditionalOutput   = aAdditionalOutput;
+		mAdditionalInput    = aAdditionalInput;
+		mMultiplier         = aMultiplier;
+		mDuration           = aDuration;
+		mEUt                = aEUt;
 		long
-		tUnitsProcessed		= 0;
+		tUnitsProcessed     = 0;
 		for (int i = 0; i < mInputPrefixes.length; i++) tUnitsProcessed += mInputPrefixes[i].mAmount * mInputAmounts[i];
-		mUnitsInputted		= tUnitsProcessed;
-		tUnitsProcessed		= 0;
+		mUnitsInputted      = tUnitsProcessed;
+		tUnitsProcessed     = 0;
 		for (int i = 0; i < mOutputPrefixes.length; i++) tUnitsProcessed += mOutputPrefixes[i].mAmount * mOutputAmounts[i];
-		mUnitsOutputted		= tUnitsProcessed;
+		mUnitsOutputted     = tUnitsProcessed;
 		mOutputPulverizedRemains = (aOutputPulverizedRemains && mUnitsInputted-mUnitsOutputted >= OP.dustDiv72.mAmount);
 	}
 	

@@ -142,14 +142,14 @@ public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements I
 	@Override public byte getVisualData() {return (byte)((mFoamDried ? 1 : 0)|(mOwnable ? 2 : 0));}
 	@Override public void setVisualData(byte aData) {mFoamDried = ((aData & 1) != 0); mOwnable = ((aData & 2) != 0);}
 	
-	@Override public boolean isSurfaceSolid			(byte aSide) {return mFoamDried;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return mFoamDried;}
-	@Override public boolean isSideSolid2			(byte aSide) {return mFoamDried;}
-	@Override public boolean isSealable2			(byte aSide) {return mFoamDried;}
-	@Override public boolean hasFoam				(byte aSide) {return T;}
-	@Override public boolean driedFoam				(byte aSide) {return mFoamDried;}
-	@Override public boolean ownedFoam				(byte aSide) {return mOwnable;}
-	@Override public boolean applyFoam				(byte aSide, Entity aPlayer, short[] aCFoamRGB, byte aVanillaColor, boolean aOwnable) {return F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return mFoamDried;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return mFoamDried;}
+	@Override public boolean isSideSolid2           (byte aSide) {return mFoamDried;}
+	@Override public boolean isSealable2            (byte aSide) {return mFoamDried;}
+	@Override public boolean hasFoam                (byte aSide) {return T;}
+	@Override public boolean driedFoam              (byte aSide) {return mFoamDried;}
+	@Override public boolean ownedFoam              (byte aSide) {return mOwnable;}
+	@Override public boolean applyFoam              (byte aSide, Entity aPlayer, short[] aCFoamRGB, byte aVanillaColor, boolean aOwnable) {return F;}
 	@Override public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {return F;}
 	@Override public boolean addDefaultCollisionBoxToList() {return T;}
 	@Override public boolean canDrop(int aInventorySlot) {return F;}

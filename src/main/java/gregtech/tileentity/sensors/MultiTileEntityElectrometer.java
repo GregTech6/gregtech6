@@ -55,9 +55,9 @@ public class MultiTileEntityElectrometer extends MultiTileEntitySensorTE {
 			if (tTileEntity != null) {
 				NodeStats tStats = EnergyNet.instance.getNodeStats(tTileEntity);
 				if (tStats != null) {
-					if (tTileEntity instanceof IEnergyConductor	) return (long)tStats.getEnergyOut();
-					if (tTileEntity instanceof IEnergyEmitter	) return (long)tStats.getEnergyOut();
-					if (tTileEntity instanceof IEnergyAcceptor	) return (long)tStats.getEnergyIn();
+					if (tTileEntity instanceof IEnergyConductor ) return (long)tStats.getEnergyOut();
+					if (tTileEntity instanceof IEnergyEmitter   ) return (long)tStats.getEnergyOut();
+					if (tTileEntity instanceof IEnergyAcceptor  ) return (long)tStats.getEnergyIn();
 				}
 			}
 		}
@@ -70,9 +70,9 @@ public class MultiTileEntityElectrometer extends MultiTileEntitySensorTE {
 		
 		if (EnergyCompat.IC_ENERGY) {
 			TileEntity tTileEntity = aDelegator.mTileEntity instanceof IEnergyTile || EnergyNet.instance == null ? aDelegator.mTileEntity : EnergyNet.instance.getTileEntity(aDelegator.mWorld, aDelegator.mX, aDelegator.mY, aDelegator.mZ);
-			if (tTileEntity instanceof IEnergyConductor	) return (long)((IEnergyConductor)tTileEntity).getConductorBreakdownEnergy();
-			if (tTileEntity instanceof IEnergySink		) return V[((IEnergySink)tTileEntity).getSinkTier()];
-			if (tTileEntity instanceof IEnergySource	) return V[((IEnergySource)tTileEntity).getSourceTier()];
+			if (tTileEntity instanceof IEnergyConductor ) return (long)((IEnergyConductor)tTileEntity).getConductorBreakdownEnergy();
+			if (tTileEntity instanceof IEnergySink      ) return V[((IEnergySink)tTileEntity).getSinkTier()];
+			if (tTileEntity instanceof IEnergySource    ) return V[((IEnergySource)tTileEntity).getSourceTier()];
 		}
 		return 0;
 	}
@@ -87,12 +87,12 @@ public class MultiTileEntityElectrometer extends MultiTileEntitySensorTE {
 	@Override public IIconContainer getOverlaySide () {return sOverlaySide;}
 	
 	public static IIconContainer
-	sTextureFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/colored/front"),
-	sTextureBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/colored/back"),
-	sTextureSide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/colored/side"),
-	sOverlayFront	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/overlay/front"),
-	sOverlayBack	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/overlay/back"),
-	sOverlaySide	= new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/overlay/side");
+	sTextureFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/colored/front"),
+	sTextureBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/colored/back"),
+	sTextureSide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/colored/side"),
+	sOverlayFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/overlay/front"),
+	sOverlayBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/overlay/back"),
+	sOverlaySide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/electrometer/overlay/side");
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.electrometer";}
 }

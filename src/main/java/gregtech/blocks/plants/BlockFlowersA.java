@@ -72,29 +72,29 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	
 	@Override
 	public void run() {
-		RM.Mortar	.addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wheat));
-		RM.Mortar	.addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wheat));
+		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wheat));
+		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wheat));
 		
-		RM.Shredder	.addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wheat));
-		RM.Shredder	.addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wheat));
+		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wheat));
+		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wheat));
 		
-		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
-		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
-		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta], OM.dust(MT.Magenta));
-		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
-		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
-		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], OM.dust(MT.White));
-		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], OM.dust(MT.LightBlue));
-		RM.Squeezer	.addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Brown], OM.dust(MT.Brown));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta], OM.dust(MT.Magenta));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], OM.dust(MT.White));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], OM.dust(MT.LightBlue));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Brown], OM.dust(MT.Brown));
 		
-		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
-		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
-		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta], OM.dust(MT.Magenta));
-		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
-		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
-		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], OM.dust(MT.White));
-		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], OM.dust(MT.LightBlue));
-		RM.Juicer	.addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Brown], OM.dust(MT.Brown));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Wheat));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta], OM.dust(MT.Magenta));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_White], OM.dust(MT.White));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], OM.dust(MT.LightBlue));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 7), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Brown], OM.dust(MT.Brown));
 		
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});

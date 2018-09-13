@@ -112,9 +112,9 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 			aList.add(Chat.CYAN + "Max: " + mTank.getCapacity() + " L");
 		}
 		aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_HEATPROOF) + LH.Chat.WHITE + mTemperatureMax + LH.Chat.RED + " K");
-		if (mGasProof		) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
-		if (mAcidProof		) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
-		if (mPlasmaProof	) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
+		if (mGasProof       ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
+		if (mAcidProof      ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
+		if (mPlasmaProof    ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
 	}
 	
 	@Override

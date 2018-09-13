@@ -62,7 +62,7 @@ public class GT_Tool_Plunger extends ToolStats {
 		return SFX.IC_TRAMPOLINE;
 	}
 	
-	@Override public boolean canCollect()													{return T;}
+	@Override public boolean canCollect()                                                   {return T;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {

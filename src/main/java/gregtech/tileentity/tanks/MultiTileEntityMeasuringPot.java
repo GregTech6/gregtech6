@@ -54,14 +54,14 @@ public class MultiTileEntityMeasuringPot extends TileEntityBase10FluidContainerS
 	}
 	
 	public static IIconContainer
-	sTextureSides		= new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/colored/sides"),
-	sTextureInsides		= new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/colored/insides"),
-	sTextureTop			= new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/colored/top"),
-	sTextureBottom		= new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/colored/bottom"),
-	sOverlaySides		= new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/overlay/sides"),
-	sOverlayInsides		= new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/overlay/insides"),
-	sOverlayTop			= new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/overlay/top"),
-	sOverlayBottom		= new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/overlay/bottom");
+	sTextureSides       = new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/colored/sides"),
+	sTextureInsides     = new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/colored/insides"),
+	sTextureTop         = new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/colored/top"),
+	sTextureBottom      = new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/colored/bottom"),
+	sOverlaySides       = new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/overlay/sides"),
+	sOverlayInsides     = new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/overlay/insides"),
+	sOverlayTop         = new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/overlay/top"),
+	sOverlayBottom      = new Textures.BlockIcons.CustomIcon("machines/tanks/measuring_pot/overlay/bottom");
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {

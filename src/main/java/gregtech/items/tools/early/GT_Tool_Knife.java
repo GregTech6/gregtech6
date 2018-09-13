@@ -66,7 +66,7 @@ public class GT_Tool_Knife extends GT_Tool_Sword {
 		return 1.0F;
 	}
 	
-	@Override public boolean canCollect()													{return T;}
+	@Override public boolean canCollect()                                                   {return T;}
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {

@@ -123,133 +123,133 @@ public class Loader_OreProcessing implements Runnable {
 		
 		}};
 		
-		plate						.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
-		plateDouble					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDouble, blockPlate, blockSolid, blockIngot, blockDust));
-		plateTriple					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockPlate, blockSolid, blockIngot, casingMachineDouble, blockDust));
-		plateQuadruple				.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockIngot, blockPlate, blockSolid, casingMachineQuadruple, blockDust));
-		plateQuintuple				.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineQuadruple, blockIngot, blockPlate, blockSolid, blockDust));
-		plateDense					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDense, blockSolid, blockPlate, blockIngot, blockDust));
-		plateCurved					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachine, blockSolid, blockPlate, blockIngot, blockDust));
-		plateGem					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockGem, blockPlateGem, blockDust));
-		sheetGt						.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
-		foil						.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, foil));
+		plate                       .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
+		plateDouble                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDouble, blockPlate, blockSolid, blockIngot, blockDust));
+		plateTriple                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockPlate, blockSolid, blockIngot, casingMachineDouble, blockDust));
+		plateQuadruple              .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockIngot, blockPlate, blockSolid, casingMachineQuadruple, blockDust));
+		plateQuintuple              .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineQuadruple, blockIngot, blockPlate, blockSolid, blockDust));
+		plateDense                  .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDense, blockSolid, blockPlate, blockIngot, blockDust));
+		plateCurved                 .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachine, blockSolid, blockPlate, blockIngot, blockDust));
+		plateGem                    .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockGem, blockPlateGem, blockDust));
+		sheetGt                     .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
+		foil                        .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, foil));
 		
-		scrapGt						.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		rockGt						.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dust						.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustSmall					.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustTiny					.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustImpure					.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustPure					.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustRefined					.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		rawOreChunk					.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		chunk						.addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
-		rubble						.addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
-		pebbles						.addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
-		cluster						.addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
-		crushed						.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedTiny					.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedPurified				.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedPurifiedTiny			.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedCentrifuged			.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedCentrifugedTiny		.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		scrapGt                     .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		rockGt                      .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		dust                        .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		dustSmall                   .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		dustTiny                    .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		dustImpure                  .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		dustPure                    .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		dustRefined                 .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		rawOreChunk                 .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		chunk                       .addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
+		rubble                      .addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
+		pebbles                     .addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
+		cluster                     .addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
+		crushed                     .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		crushedTiny                 .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		crushedPurified             .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		crushedPurifiedTiny         .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		crushedCentrifuged          .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		crushedCentrifugedTiny      .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
 		
-		rawOreChunk					.addListener(new OreProcessing_Maceration(crushedTiny	, 3, ANTIMATTER.NOT));
-		chunk						.addListener(new OreProcessing_Maceration(dust			, 2, ANTIMATTER.NOT));
-		rubble						.addListener(new OreProcessing_Maceration(dust			, 2, ANTIMATTER.NOT));
-		pebbles						.addListener(new OreProcessing_Maceration(dust			, 2, ANTIMATTER.NOT));
-		cluster						.addListener(new OreProcessing_Maceration(dust			, 2, ANTIMATTER.NOT));
-		crushed						.addListener(new OreProcessing_Maceration(dust			, 1, ANTIMATTER.NOT));
-		crushedTiny					.addListener(new OreProcessing_Maceration(dustTiny		, 1, ANTIMATTER.NOT));
-		crushedPurified				.addListener(new OreProcessing_Maceration(dust			, 1, ANTIMATTER.NOT));
-		crushedPurifiedTiny			.addListener(new OreProcessing_Maceration(dustTiny		, 1, ANTIMATTER.NOT));
-		crushedCentrifuged			.addListener(new OreProcessing_Maceration(dustTiny		,11, ANTIMATTER.NOT));
-		crushedCentrifugedTiny		.addListener(new OreProcessing_Maceration(dustTiny		, 1, ANTIMATTER.NOT));
+		rawOreChunk                 .addListener(new OreProcessing_Maceration(crushedTiny   , 3, ANTIMATTER.NOT));
+		chunk                       .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
+		rubble                      .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
+		pebbles                     .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
+		cluster                     .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
+		crushed                     .addListener(new OreProcessing_Maceration(dust          , 1, ANTIMATTER.NOT));
+		crushedTiny                 .addListener(new OreProcessing_Maceration(dustTiny      , 1, ANTIMATTER.NOT));
+		crushedPurified             .addListener(new OreProcessing_Maceration(dust          , 1, ANTIMATTER.NOT));
+		crushedPurifiedTiny         .addListener(new OreProcessing_Maceration(dustTiny      , 1, ANTIMATTER.NOT));
+		crushedCentrifuged          .addListener(new OreProcessing_Maceration(dustTiny      ,11, ANTIMATTER.NOT));
+		crushedCentrifugedTiny      .addListener(new OreProcessing_Maceration(dustTiny      , 1, ANTIMATTER.NOT));
 		
-		chemtube					.addListener(new OreProcessing_GlassTube(-1, ANTIMATTER.NOT));
+		chemtube                    .addListener(new OreProcessing_GlassTube(-1, ANTIMATTER.NOT));
 		
-		plantGtBerry				.addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
-		plantGtTwig					.addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
-		plantGtFiber				.addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
-		plantGtWart					.addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
-		plantGtBlossom				.addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
+		plantGtBerry                .addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
+		plantGtTwig                 .addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
+		plantGtFiber                .addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
+		plantGtWart                 .addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
+		plantGtBlossom              .addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
 		
-		dye							.addListener(new OreProcessing_Dye());
+		dye                         .addListener(new OreProcessing_Dye());
 		
 		String tCategory = ConfigCategories.Recipes.gregtechrecipes + ".";
 		
 		if (!MD.QT.mLoaded) {
-		ingotDouble					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2ingotDouble"		, new String[][] {{ "h" ,  "I" ,  "I" }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		ingotTriple					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2ingotTriple"		, new String[][] {{ "h" ,  "I" ,  "X" }}, ingotDouble		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		ingotQuadruple				.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2ingotQuadruple"	, new String[][] {{ "h" ,  "I" ,  "X" }}, ingotTriple		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		ingotQuintuple				.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2ingotQuintuple"	, new String[][] {{ "h" ,  "I" ,  "X" }}, ingotQuadruple	, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateTiny					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "chunkGt2plateTiny"		, new String[][] {{ "h" ,  "X"		  }}, chunkGt			, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plate						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "plateCurved2plate"		, new String[][] {{ "h" ,  "X"		  }}, plateCurved		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, SMITHABLE)));
-		plate						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plate"				, new String[][] {{ "h" ,  "X"		  }}, ingotDouble		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateDouble					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plateDouble"		, new String[][] {{ "h" ,  "X"		  }}, ingotTriple		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateTriple					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plateTriple"		, new String[][] {{ "h" ,  "X"		  }}, ingotQuadruple	, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateQuadruple				.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plateQuadruple"	, new String[][] {{ "h" ,  "X"		  }}, ingotQuintuple	, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateDouble					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plateDouble"		, new String[][] {{ "h" ,  "P" ,  "P" }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateTriple					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "plates2plateTriple"		, new String[][] {{ "h" ,  "P" ,  "X" }}, plateDouble		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateQuadruple				.addListener(new OreProcessing_CraftFrom( 1, tCategory + "plates2plateQuadruple"	, new String[][] {{ "h" ,  "P" ,  "X" }}, plateTriple		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateQuintuple				.addListener(new OreProcessing_CraftFrom( 1, tCategory + "plates2plateQuintuple"	, new String[][] {{ "h" ,  "P" ,  "X" }}, plateQuadruple	, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		plateCurved					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "plate2plateCurved"		, new String[][] {{ "h" ,  "P" ,  "z" }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, SMITHABLE)));
-		ring						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "stick2ring"				, new String[][] {{"hS" , " o"		  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, SMITHABLE)));
-		spring						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "stick2spring"				, new String[][] {{"zXh"			  }}, stickLong			, null			, null			, null							, null							, new And(ANTIMATTER.NOT, SMITHABLE)));
-		springSmall					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "wire2springSmall"			, new String[][] {{"oXh"			  }}, wireGt01			, null			, null			, null							, null							, new And(ANTIMATTER.NOT, SMITHABLE)));
-		springSmall					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "stick2springSmall"		, new String[][] {{"oSh"			  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, SMITHABLE)));
-		foil						.addListener(new OreProcessing_CraftFrom( 2, tCategory + "plate2foil"				, new String[][] {{"hPz"			  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, SMITHABLE)));
-		casingSmall					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "plate2casingSmall"		, new String[][] {{"h P"			  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		stickLong					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "sticks2stickLong"			, new String[][] {{"ShS"			  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		rotor						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "rotor"					, new String[][] {{"YhY", "TXf", "YdY"}}, ring				, plateCurved	, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		toolHeadBuzzSaw				.addListener(new OreProcessing_CraftFrom( 1, tCategory + "toolHeadBuzzSaw"			, new String[][] {{"wPh", "P P", "fPx"}}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		toolHeadBuzzSaw				.addListener(new OreProcessing_CraftFrom( 1, tCategory + "toolHeadBuzzSaw"			, new String[][] {{"wCh", "C C", "fCx"}}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
+		ingotDouble                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2ingotDouble"       , new String[][] {{ "h" ,  "I" ,  "I" }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		ingotTriple                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2ingotTriple"       , new String[][] {{ "h" ,  "I" ,  "X" }}, ingotDouble       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		ingotQuadruple              .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2ingotQuadruple"    , new String[][] {{ "h" ,  "I" ,  "X" }}, ingotTriple       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		ingotQuintuple              .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2ingotQuintuple"    , new String[][] {{ "h" ,  "I" ,  "X" }}, ingotQuadruple    , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateTiny                   .addListener(new OreProcessing_CraftFrom( 1, tCategory + "chunkGt2plateTiny"        , new String[][] {{ "h" ,  "X"        }}, chunkGt           , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plate                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "plateCurved2plate"        , new String[][] {{ "h" ,  "X"        }}, plateCurved       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, SMITHABLE)));
+		plate                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plate"             , new String[][] {{ "h" ,  "X"        }}, ingotDouble       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateDouble                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plateDouble"       , new String[][] {{ "h" ,  "X"        }}, ingotTriple       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateTriple                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plateTriple"       , new String[][] {{ "h" ,  "X"        }}, ingotQuadruple    , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateQuadruple              .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plateQuadruple"    , new String[][] {{ "h" ,  "X"        }}, ingotQuintuple    , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateDouble                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingots2plateDouble"       , new String[][] {{ "h" ,  "P" ,  "P" }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateTriple                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "plates2plateTriple"       , new String[][] {{ "h" ,  "P" ,  "X" }}, plateDouble       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateQuadruple              .addListener(new OreProcessing_CraftFrom( 1, tCategory + "plates2plateQuadruple"    , new String[][] {{ "h" ,  "P" ,  "X" }}, plateTriple       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateQuintuple              .addListener(new OreProcessing_CraftFrom( 1, tCategory + "plates2plateQuintuple"    , new String[][] {{ "h" ,  "P" ,  "X" }}, plateQuadruple    , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		plateCurved                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "plate2plateCurved"        , new String[][] {{ "h" ,  "P" ,  "z" }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, SMITHABLE)));
+		ring                        .addListener(new OreProcessing_CraftFrom( 1, tCategory + "stick2ring"               , new String[][] {{"hS" , " o"        }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, SMITHABLE)));
+		spring                      .addListener(new OreProcessing_CraftFrom( 1, tCategory + "stick2spring"             , new String[][] {{"zXh"              }}, stickLong         , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, SMITHABLE)));
+		springSmall                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "wire2springSmall"         , new String[][] {{"oXh"              }}, wireGt01          , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, SMITHABLE)));
+		springSmall                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "stick2springSmall"        , new String[][] {{"oSh"              }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, SMITHABLE)));
+		foil                        .addListener(new OreProcessing_CraftFrom( 2, tCategory + "plate2foil"               , new String[][] {{"hPz"              }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, SMITHABLE)));
+		casingSmall                 .addListener(new OreProcessing_CraftFrom( 1, tCategory + "plate2casingSmall"        , new String[][] {{"h P"              }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		stickLong                   .addListener(new OreProcessing_CraftFrom( 1, tCategory + "sticks2stickLong"         , new String[][] {{"ShS"              }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		rotor                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "rotor"                    , new String[][] {{"YhY", "TXf", "YdY"}}, ring              , plateCurved   , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		toolHeadBuzzSaw             .addListener(new OreProcessing_CraftFrom( 1, tCategory + "toolHeadBuzzSaw"          , new String[][] {{"wPh", "P P", "fPx"}}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		toolHeadBuzzSaw             .addListener(new OreProcessing_CraftFrom( 1, tCategory + "toolHeadBuzzSaw"          , new String[][] {{"wCh", "C C", "fCx"}}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
 		}
 		
-		gearGt						.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"XYX", "YfY", "XYX"}}, rockGt			, stone			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, STONE, MT.Stone.NOT, MT.Bedrock.NOT)));
-		gearGt						.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"XYX", "YfY", "XYX"}}, stick				, stone			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, STONE, MT.Stone.NOT, MT.Bedrock.NOT)));
-		gearGt						.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"XYX", "YwY", "XYX"}}, stick				, plate			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
-		gearGt						.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"XYX", "YsY", "XYX"}}, stick				, plank			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, WOOD)));
-		gearGtSmall					.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"X " , " s"		  }}, plank				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, WOOD)));
-		casingMachine				.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"YXX", "XwX", "XXY"}}, plate				, stickLong		, null			, null							, null							, ANTIMATTER.NOT));
-		casingMachineDouble			.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"YXX", "XwX", "XXY"}}, plateDouble		, stickLong		, null			, null							, null							, ANTIMATTER.NOT));
-		casingMachineQuadruple		.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"YXX", "XwX", "XXY"}}, plateQuadruple	, stickLong		, null			, null							, null							, ANTIMATTER.NOT));
-		casingMachineDense			.addListener(new OreProcessing_CraftFrom( 1, null									, new String[][] {{"YXX", "XwX", "XXY"}}, plateDense		, stickLong		, null			, null							, null							, ANTIMATTER.NOT));
-		stickLong					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "gem2stickLong"			, new String[][] {{"sf" , " X"		  }}, gemFlawless		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		stickLong					.addListener(new OreProcessing_CraftFrom( 2, tCategory + "gem2stickLong"			, new String[][] {{"sf" , " X"		  }}, gemExquisite		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		stickLong					.addListener(new OreProcessing_CraftFrom( 4, tCategory + "gem2stickLong"			, new String[][] {{"sf" , " X"		  }}, gemLegendary		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		stick						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingot2stick"				, new String[][] {{"f " , " I"		  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		stick						.addListener(new OreProcessing_CraftFrom( 2, tCategory + "stickLong2stick"			, new String[][] {{"s " , " X"		  }}, stickLong			, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		stick						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "gem2stick"				, new String[][] {{"s " , "fX"		  }}, gem				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		stick						.addListener(new OreProcessing_CraftFrom( 2, tCategory + "gem2stick"				, new String[][] {{"s " , "fX"		  }}, gemFlawless		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		stick						.addListener(new OreProcessing_CraftFrom( 4, tCategory + "gem2stick"				, new String[][] {{"s " , "fX"		  }}, gemExquisite		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		stick						.addListener(new OreProcessing_CraftFrom( 8, tCategory + "gem2stick"				, new String[][] {{"s " , "fX"		  }}, gemLegendary		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		bolt						.addListener(new OreProcessing_CraftFrom( 2, tCategory + "stick2bolt"				, new String[][] {{"s " , " S"		  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		screw						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "bolt2screw"				, new String[][] {{"fX" , "X "		  }}, bolt				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		round						.addListener(new OreProcessing_CraftFrom( 1, tCategory + "chunk2round"				, new String[][] {{"f " , " X"		  }}, chunkGt			, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		wireFine					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "foil2wireFine"			, new String[][] {{"Xx"				  }}, foil				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		wireGt01					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "plate2wire"				, new String[][] {{"Px"				  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		plateTiny					.addListener(new OreProcessing_CraftFrom( 8, tCategory + "plate2plateTiny"			, new String[][] {{"s " , " P"		  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT, MT.Paper.NOT)));
-		plateGemTiny				.addListener(new OreProcessing_CraftFrom( 8, tCategory + "plate2plateTiny"			, new String[][] {{"s " , " C"		  }}, null				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		plateGemTiny				.addListener(new OreProcessing_CraftFrom( 2, tCategory + "gem2plateGem"				, new String[][] {{"s " , " X"		  }}, gemChipped		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		plateGemTiny				.addListener(new OreProcessing_CraftFrom( 4, tCategory + "gem2plateGem"				, new String[][] {{"s " , " X"		  }}, gemFlawed			, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		plateGemTiny				.addListener(new OreProcessing_CraftFrom( 8, tCategory + "gem2plateGem"				, new String[][] {{"s " , " X"		  }}, gem				, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		plateGem					.addListener(new OreProcessing_CraftFrom( 1, tCategory + "gem2plateGem"				, new String[][] {{"s " , " X"		  }}, gemFlawless		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		plateGem					.addListener(new OreProcessing_CraftFrom( 3, tCategory + "gem2plateGem"				, new String[][] {{"s " , " X"		  }}, gemExquisite		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		plateGem					.addListener(new OreProcessing_CraftFrom( 7, tCategory + "gem2plateGem"				, new String[][] {{"s " , " X"		  }}, gemLegendary		, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		plateGem					.addListener(new OreProcessing_CraftFrom( 3, tCategory + "boule2plateGem"			, new String[][] {{"s " , " X"		  }}, bouleGt			, null			, null			, null							, null							, new And(ANTIMATTER.NOT, COATED.NOT)));
-		minecartWheels				.addListener(new OreProcessing_CraftFrom( 1, tCategory + "minecartWheels"			, new String[][] {{" h ", "XSX", " w "}}, ring				, null			, null			, null							, null							, ANTIMATTER.NOT));
+		gearGt                      .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"XYX", "YfY", "XYX"}}, rockGt            , stone         , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, STONE, MT.Stone.NOT, MT.Bedrock.NOT)));
+		gearGt                      .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"XYX", "YfY", "XYX"}}, stick             , stone         , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, STONE, MT.Stone.NOT, MT.Bedrock.NOT)));
+		gearGt                      .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"XYX", "YwY", "XYX"}}, stick             , plate         , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		gearGt                      .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"XYX", "YsY", "XYX"}}, stick             , plank         , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, WOOD)));
+		gearGtSmall                 .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"X " , " s"        }}, plank             , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, WOOD)));
+		casingMachine               .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"YXX", "XwX", "XXY"}}, plate             , stickLong     , null          , null                          , null                          , ANTIMATTER.NOT));
+		casingMachineDouble         .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"YXX", "XwX", "XXY"}}, plateDouble       , stickLong     , null          , null                          , null                          , ANTIMATTER.NOT));
+		casingMachineQuadruple      .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"YXX", "XwX", "XXY"}}, plateQuadruple    , stickLong     , null          , null                          , null                          , ANTIMATTER.NOT));
+		casingMachineDense          .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"YXX", "XwX", "XXY"}}, plateDense        , stickLong     , null          , null                          , null                          , ANTIMATTER.NOT));
+		stickLong                   .addListener(new OreProcessing_CraftFrom( 1, tCategory + "gem2stickLong"            , new String[][] {{"sf" , " X"        }}, gemFlawless       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		stickLong                   .addListener(new OreProcessing_CraftFrom( 2, tCategory + "gem2stickLong"            , new String[][] {{"sf" , " X"        }}, gemExquisite      , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		stickLong                   .addListener(new OreProcessing_CraftFrom( 4, tCategory + "gem2stickLong"            , new String[][] {{"sf" , " X"        }}, gemLegendary      , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		stick                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "ingot2stick"              , new String[][] {{"f " , " I"        }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		stick                       .addListener(new OreProcessing_CraftFrom( 2, tCategory + "stickLong2stick"          , new String[][] {{"s " , " X"        }}, stickLong         , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		stick                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "gem2stick"                , new String[][] {{"s " , "fX"        }}, gem               , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		stick                       .addListener(new OreProcessing_CraftFrom( 2, tCategory + "gem2stick"                , new String[][] {{"s " , "fX"        }}, gemFlawless       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		stick                       .addListener(new OreProcessing_CraftFrom( 4, tCategory + "gem2stick"                , new String[][] {{"s " , "fX"        }}, gemExquisite      , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		stick                       .addListener(new OreProcessing_CraftFrom( 8, tCategory + "gem2stick"                , new String[][] {{"s " , "fX"        }}, gemLegendary      , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		bolt                        .addListener(new OreProcessing_CraftFrom( 2, tCategory + "stick2bolt"               , new String[][] {{"s " , " S"        }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		screw                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "bolt2screw"               , new String[][] {{"fX" , "X "        }}, bolt              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		round                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "chunk2round"              , new String[][] {{"f " , " X"        }}, chunkGt           , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		wireFine                    .addListener(new OreProcessing_CraftFrom( 1, tCategory + "foil2wireFine"            , new String[][] {{"Xx"               }}, foil              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		wireGt01                    .addListener(new OreProcessing_CraftFrom( 1, tCategory + "plate2wire"               , new String[][] {{"Px"               }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		plateTiny                   .addListener(new OreProcessing_CraftFrom( 8, tCategory + "plate2plateTiny"          , new String[][] {{"s " , " P"        }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, MT.Paper.NOT)));
+		plateGemTiny                .addListener(new OreProcessing_CraftFrom( 8, tCategory + "plate2plateTiny"          , new String[][] {{"s " , " C"        }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		plateGemTiny                .addListener(new OreProcessing_CraftFrom( 2, tCategory + "gem2plateGem"             , new String[][] {{"s " , " X"        }}, gemChipped        , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		plateGemTiny                .addListener(new OreProcessing_CraftFrom( 4, tCategory + "gem2plateGem"             , new String[][] {{"s " , " X"        }}, gemFlawed         , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		plateGemTiny                .addListener(new OreProcessing_CraftFrom( 8, tCategory + "gem2plateGem"             , new String[][] {{"s " , " X"        }}, gem               , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		plateGem                    .addListener(new OreProcessing_CraftFrom( 1, tCategory + "gem2plateGem"             , new String[][] {{"s " , " X"        }}, gemFlawless       , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		plateGem                    .addListener(new OreProcessing_CraftFrom( 3, tCategory + "gem2plateGem"             , new String[][] {{"s " , " X"        }}, gemExquisite      , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		plateGem                    .addListener(new OreProcessing_CraftFrom( 7, tCategory + "gem2plateGem"             , new String[][] {{"s " , " X"        }}, gemLegendary      , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		plateGem                    .addListener(new OreProcessing_CraftFrom( 3, tCategory + "boule2plateGem"           , new String[][] {{"s " , " X"        }}, bouleGt           , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		minecartWheels              .addListener(new OreProcessing_CraftFrom( 1, tCategory + "minecartWheels"           , new String[][] {{" h ", "XSX", " w "}}, ring              , null          , null          , null                          , null                          , ANTIMATTER.NOT));
 		
-		arrowGtWood					.addListener(new OreProcessing_Shapeless( 1, tCategory + "arrowsWooden"				, new Object[] {toolHeadArrow, arrowGtWood.dat(MT.Empty)	}, ANTIMATTER.NOT));
-		arrowGtPlastic				.addListener(new OreProcessing_Shapeless( 1, tCategory + "arrowsPlastic"			, new Object[] {toolHeadArrow, arrowGtPlastic.dat(MT.Empty)	}, ANTIMATTER.NOT));
-		cableGt01					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {wireGt01, plate.dat(MT.Rubber)											}, ANTIMATTER.NOT));
-		cableGt02					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {wireGt02, plate.dat(MT.Rubber)											}, ANTIMATTER.NOT));
-		chemtube					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {dustTiny, chemtube.mat(MT.Empty, 1)									}, (ICondition<OreDictMaterial>)ICondition.TRUE));
-		dustTiny					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {chemtube																}, meltmin(DEF_ENV_TEMP)));
-		toolHeadRawUniversalSpade	.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadShovel		, OreDictToolNames.file, OreDictToolNames.saw		}, new And(ANTIMATTER.NOT, COATED.NOT)));
-		toolHeadRawUniversalSpade	.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadSpade		, OreDictToolNames.file, OreDictToolNames.saw		}, new And(ANTIMATTER.NOT, COATED.NOT)));
-		toolHeadConstructionPickaxe	.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadRawPickaxe	, OreDictToolNames.file, OreDictToolNames.hammer	}, new And(ANTIMATTER.NOT, COATED.NOT)));
-		toolHeadPickaxeGem			.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadRawPickaxe.dat(ANY.Steel), gemFlawed, gemFlawed, OreDictToolNames.file, OreDictToolNames.hammer, OreDictToolNames.saw}, ANTIMATTER.NOT));
+		arrowGtWood                 .addListener(new OreProcessing_Shapeless( 1, tCategory + "arrowsWooden"             , new Object[] {toolHeadArrow, arrowGtWood.dat(MT.Empty)    }, ANTIMATTER.NOT));
+		arrowGtPlastic              .addListener(new OreProcessing_Shapeless( 1, tCategory + "arrowsPlastic"            , new Object[] {toolHeadArrow, arrowGtPlastic.dat(MT.Empty) }, ANTIMATTER.NOT));
+		cableGt01                   .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {wireGt01, plate.dat(MT.Rubber)                                         }, ANTIMATTER.NOT));
+		cableGt02                   .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {wireGt02, plate.dat(MT.Rubber)                                         }, ANTIMATTER.NOT));
+		chemtube                    .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {dustTiny, chemtube.mat(MT.Empty, 1)                                    }, (ICondition<OreDictMaterial>)ICondition.TRUE));
+		dustTiny                    .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {chemtube                                                               }, meltmin(DEF_ENV_TEMP)));
+		toolHeadRawUniversalSpade   .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadShovel     , OreDictToolNames.file, OreDictToolNames.saw       }, new And(ANTIMATTER.NOT, COATED.NOT)));
+		toolHeadRawUniversalSpade   .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadSpade      , OreDictToolNames.file, OreDictToolNames.saw       }, new And(ANTIMATTER.NOT, COATED.NOT)));
+		toolHeadConstructionPickaxe .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadRawPickaxe , OreDictToolNames.file, OreDictToolNames.hammer    }, new And(ANTIMATTER.NOT, COATED.NOT)));
+		toolHeadPickaxeGem          .addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadRawPickaxe.dat(ANY.Steel), gemFlawed, gemFlawed, OreDictToolNames.file, OreDictToolNames.hammer, OreDictToolNames.saw}, ANTIMATTER.NOT));
 		
 		IOreDictListenerEvent tProcessor = new OreProcessing_Ore();
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(ORE) && tPrefix != oreBedrock && tPrefix != orePoor && tPrefix != oreSmall && tPrefix != oreRich && tPrefix != oreNormal) tPrefix.addListener(tProcessor);
@@ -345,8 +345,8 @@ public class Loader_OreProcessing implements Runnable {
 			int aIndex = 0; while (aIndex < 16) {if (DYE_OREDICTS[aIndex].equals(aEvent.mOreDictName)) break; aIndex++;}
 			
 			if (aIndex < 16 && ST.container(aEvent.mStack, T) == null) {
-				GT_ModHandler.addAlloySmelterRecipe(dust.mat(MT.Glass, 8)		, aEvent.mStack, ST.make(Blocks.stained_glass, 8, 15-aIndex), 200, 8, F);
-				GT_ModHandler.addAlloySmelterRecipe(ST.make(Blocks.glass, 8, W)	, aEvent.mStack, ST.make(Blocks.stained_glass, 8, 15-aIndex), 200, 8, F);
+				GT_ModHandler.addAlloySmelterRecipe(dust.mat(MT.Glass, 8)       , aEvent.mStack, ST.make(Blocks.stained_glass, 8, 15-aIndex), 200, 8, F);
+				GT_ModHandler.addAlloySmelterRecipe(ST.make(Blocks.glass, 8, W) , aEvent.mStack, ST.make(Blocks.stained_glass, 8, 15-aIndex), 200, 8, F);
 			}
 		}
 	}
@@ -381,13 +381,13 @@ public class Loader_OreProcessing implements Runnable {
 			tDust = dust.mat(aMaterial, tGem, 1),
 			tCleaned = crushedPurified.mat(aMaterial, tDust, 1),
 			tCrushed = crushed.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier)),
-			tPrimaryByProduct	= null, tPrimaryByProductSmall		= null, tPrimaryByProductTiny	= null,
-			tSecondaryByProduct	= null, tSecondaryByProductSmall	= null, tSecondaryByProductTiny	= null,
-			tTertiaryByProduct	= null, tTertiaryByProductSmall		= null, tTertiaryByProductTiny	= null;
+			tPrimaryByProduct   = null, tPrimaryByProductSmall      = null, tPrimaryByProductTiny   = null,
+			tSecondaryByProduct = null, tSecondaryByProductSmall    = null, tSecondaryByProductTiny = null,
+			tTertiaryByProduct  = null, tTertiaryByProductSmall     = null, tTertiaryByProductTiny  = null;
 			
 			if (aMaterial == MT.Gneiss || aMaterial == MT.PetrifiedWood) {
-				RM.Crusher	.addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 4)));
-				RM.Hammer	.addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 3)));
+				RM.Crusher  .addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 4)));
+				RM.Hammer   .addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 3)));
 			}
 			
 			if (tSmeltInto == null) tSmeltInto = OM.gem(aMaterial.mTargetSmelting);
@@ -662,9 +662,9 @@ public class Loader_OreProcessing implements Runnable {
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (aEvent.mNotAlreadyRegisteredName && mCondition.isTrue(aEvent.mMaterial) && (mCategoryName == null || ConfigsGT.RECIPES.get(mCategoryName, aEvent.mMaterial.mNameInternal, T))) {
 				for (int i = 0; i < mRecipes.length; i++) if (mRecipes[i] != null && mRecipes[i].length > 0) {
-						 if (mRecipes[i].length == 1)	CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack))	, RECIPE_BITS, new Object[] {mRecipes[i][0]									, 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
-					else if (mRecipes[i].length == 2)	CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack))	, RECIPE_BITS, new Object[] {mRecipes[i][0], mRecipes[i][1]					, 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
-					else								CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack))	, RECIPE_BITS, new Object[] {mRecipes[i][0], mRecipes[i][1], mRecipes[i][2]	, 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
+						 if (mRecipes[i].length == 1)   CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack))  , RECIPE_BITS, new Object[] {mRecipes[i][0]                                 , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
+					else if (mRecipes[i].length == 2)   CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack))  , RECIPE_BITS, new Object[] {mRecipes[i][0], mRecipes[i][1]                 , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
+					else                                CR.shaped(aEvent.mPrefix.mat(aEvent.mMaterial, mOutputAmount, ST.amount(mOutputAmount, aEvent.mStack))  , RECIPE_BITS, new Object[] {mRecipes[i][0], mRecipes[i][1], mRecipes[i][2] , 'G', gem.dat(aEvent.mMaterial), 'I', aEvent.mMaterial==MT.Wood?OD.plankWood:ingot.dat(aEvent.mMaterial), 'P', aEvent.mMaterial==MT.Wood?OD.plankWood:plate.dat(aEvent.mMaterial), 'C', plateGem.dat(aEvent.mMaterial), 'S', stick.dat(aEvent.mMaterial), 'T', screw.dat(aEvent.mMaterial), 'N', nugget.dat(aEvent.mMaterial), 'V', mSpecialObject1==null?plate.dat(aEvent.mMaterial):mSpecialObject1, 'W', mSpecialObject2==null?plate.dat(aEvent.mMaterial):mSpecialObject2, 'X', (mSpecialPrefix1==null?plate:mSpecialPrefix1).dat(aEvent.mMaterial), 'Y', (mSpecialPrefix2==null?plate:mSpecialPrefix2).dat(aEvent.mMaterial), 'Z', (mSpecialPrefix3==null?plate:mSpecialPrefix3).dat(aEvent.mMaterial), 'H', stick.dat(aEvent.mMaterial.mHandleMaterial)});
 				}
 			}
 		}

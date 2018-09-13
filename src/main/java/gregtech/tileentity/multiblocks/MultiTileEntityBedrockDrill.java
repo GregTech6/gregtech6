@@ -109,7 +109,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 			} else {
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -1, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
 			}
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i,	0, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i,  0, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
 		}
 		return tSuccess && tBedrock;
 	}
@@ -123,12 +123,12 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.bedrockdrill.1"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.bedrockdrill.2"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.bedrockdrill.3"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.bedrockdrill.4"));
-		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "1024 to 4096 " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort() + Chat.WHITE + "/t");
+		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.bedrockdrill.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.bedrockdrill.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.bedrockdrill.3"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.bedrockdrill.4"));
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "1024 to 4096 " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort() + Chat.WHITE + "/t");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -153,12 +153,12 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 					OreDictMaterial tMaterial = rng(32) == 0 ? UT.Code.select(mList.get(tSelector), mList.get(tSelector).mByProducts) : mList.get(tSelector);
 					if (worldObj.provider.dimensionId == DIM_NETHER) {
 						slot(0, ST.make((Block)BlocksGT.oreBrokenNetherrack, 1, tMaterial.mID));
-// TODO				} else if (WD.dimERE(worldObj)) {
-// TODO					slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
+// TODO             } else if (WD.dimERE(worldObj)) {
+// TODO                 slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
 					} else if (WD.dimATUM(worldObj)) {
 						slot(0, ST.make((Block)BlocksGT.oreBrokenAtumLimestone, 1, tMaterial.mID));
-// TODO				} else if (WD.dimBTL(worldObj)) {
-// TODO					slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
+// TODO             } else if (WD.dimBTL(worldObj)) {
+// TODO                 slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
 					} else if (mType <= 0 || mType > BlocksGT.stones.length) {
 						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
 					} else {

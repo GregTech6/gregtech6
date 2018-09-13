@@ -65,12 +65,12 @@ public class BlockMetaType extends BlockBaseMeta {
 		mHardnessMultiplier = aHardnessMultiplier;
 		mResistanceMultiplier = aResistanceMultiplier;
 		mSlabs = new BlockMetaType[] {
-		  makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_DOWN	, this)
-		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_UP		, this)
-		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_NORTH	, this)
-		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_SOUTH	, this)
-		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_WEST	, this)
-		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_EAST	, this)
+		  makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_DOWN    , this)
+		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_UP      , this)
+		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_NORTH   , this)
+		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_SOUTH   , this)
+		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_WEST    , this)
+		, makeSlab(aItemClass, aVanillaMaterial, aSoundType, aNameInternal, aDefaultLocalised, aMaterial, aResistanceMultiplier / 2, aHardnessMultiplier / 2, aHarvestLevel, mMaxMeta, aIcons, SIDE_EAST    , this)
 		, null};
 		mSlabs[SIDE_INVALID] = mSlabs[SIDE_DOWN];
 		ST.hide(mSlabs[SIDE_UP]);
@@ -149,8 +149,8 @@ public class BlockMetaType extends BlockBaseMeta {
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * mHardnessMultiplier;}
 	@Override public float getExplosionResistance(int aMeta) {return Blocks.stone.getExplosionResistance(null) * mResistanceMultiplier;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return mBlock == this || mSide == aSide;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return mBlock == this;}
-	@Override public boolean isNormalCube()	 {return mBlock == this;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return mBlock == this;}
+	@Override public boolean isNormalCube()  {return mBlock == this;}
 	@Override public boolean isOpaqueCube() {return mBlock == this;}
 	@Override public boolean renderAsNormalBlock() {return mBlock == this;}
 	@Override public int getLightOpacity() {return mBlock == this ? LIGHT_OPACITY_MAX : LIGHT_OPACITY_WATER;}

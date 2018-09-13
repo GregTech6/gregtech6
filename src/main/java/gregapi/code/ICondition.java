@@ -137,8 +137,8 @@ public interface ICondition<O> {
 		}
 	}
 	
-	static class True <O>	implements ICondition<O> {True ()	{/**/} @Override public boolean isTrue(O aObject) {return true ;}}
-	static class False<O>	implements ICondition<O> {False()	{/**/} @Override public boolean isTrue(O aObject) {return false;}}
-	static class Null <O>	implements ICondition<O> {Null()	{/**/} @Override public boolean isTrue(O aObject) {return aObject == null;}}
-	static class NotNull<O>	implements ICondition<O> {NotNull()	{/**/} @Override public boolean isTrue(O aObject) {return aObject != null;}}
+	static class True <O>   implements ICondition<O> {True ()   {/**/} @Override public boolean isTrue(O aObject) {return true ;}}
+	static class False<O>   implements ICondition<O> {False()   {/**/} @Override public boolean isTrue(O aObject) {return false;}}
+	static class Null <O>   implements ICondition<O> {Null()    {/**/} @Override public boolean isTrue(O aObject) {return aObject == null;}}
+	static class NotNull<O> implements ICondition<O> {NotNull() {/**/} @Override public boolean isTrue(O aObject) {return aObject != null;}}
 }

@@ -98,13 +98,13 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_CUTTER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_MONKEY_WRENCH));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_HINT_USE_SNEAK));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_CUTTER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_MONKEY_WRENCH));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_HINT_USE_SNEAK));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -278,16 +278,16 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDE_X_NEG==mFacing?14:SIDE_X_POS==mFacing?0:4], PX_P[SIDE_Y_NEG==mFacing?14:SIDE_Y_POS==mFacing?0:4], PX_P[SIDE_Z_NEG==mFacing?14:SIDE_Z_POS==mFacing?0:4], PX_N[SIDE_X_POS==mFacing?14:SIDE_X_NEG==mFacing?0:4], PX_N[SIDE_Y_POS==mFacing?14:SIDE_Y_NEG==mFacing?0:4], PX_N[SIDE_Z_POS==mFacing?14:SIDE_Z_NEG==mFacing?0:4]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[SIDE_X_NEG==mFacing?14:SIDE_X_POS==mFacing?0:4], PX_P[SIDE_Y_NEG==mFacing?14:SIDE_Y_POS==mFacing?0:4], PX_P[SIDE_Z_NEG==mFacing?14:SIDE_Z_POS==mFacing?0:4], PX_N[SIDE_X_POS==mFacing?14:SIDE_X_NEG==mFacing?0:4], PX_N[SIDE_Y_POS==mFacing?14:SIDE_Y_NEG==mFacing?0:4], PX_N[SIDE_Z_POS==mFacing?14:SIDE_Z_NEG==mFacing?0:4]);}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[14]:0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[14]:0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return aSide==mFacing?PX_N[1]:0.0F;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return F;}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt	(byte aSide) {return F;}
-	@Override public boolean useSidePlacementRotation		() {return T;}
-	@Override public boolean useInversePlacementRotation	() {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[14]:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return ALONG_AXIS[aSide][mFacing]?PX_P[14]:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return aSide==mFacing?PX_N[1]:0.0F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
+	@Override public boolean useSidePlacementRotation       () {return T;}
+	@Override public boolean useInversePlacementRotation    () {return F;}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean canDrop(int aInventorySlot) {return F;}

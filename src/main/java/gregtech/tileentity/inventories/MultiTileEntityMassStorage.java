@@ -494,8 +494,8 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			if (aTileEntity instanceof MultiTileEntityMassStorage && ((MultiTileEntityMassStorage)aTileEntity).slotHas(1) && ((MultiTileEntityMassStorage)aTileEntity).isFaceVisible()) {
 				MultiTileEntityMassStorage tTileEntity = ((MultiTileEntityMassStorage)aTileEntity);
 				
-//				boolean tBlend = glGetBoolean(GL_BLEND);
-//				boolean tLight = glGetBoolean(GL_LIGHTING);
+//              boolean tBlend = glGetBoolean(GL_BLEND);
+//              boolean tLight = glGetBoolean(GL_LIGHTING);
 				int tTexIndex = glGetInteger(GL_TEXTURE_BINDING_2D);
 				
 				glDisable(GL_BLEND);
@@ -527,8 +527,8 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 				
 				OpenGlHelper.glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, 1, 0);
 				
-//				if (tBlend) glEnable(GL_BLEND		); else glDisable(GL_BLEND		);
-//				if (tLight) glEnable(GL_LIGHTING	); else glDisable(GL_LIGHTING	);
+//              if (tBlend) glEnable(GL_BLEND       ); else glDisable(GL_BLEND      );
+//              if (tLight) glEnable(GL_LIGHTING    ); else glDisable(GL_LIGHTING   );
 				
 				glDisable(GL_BLEND);
 				glEnable(GL_LIGHTING);

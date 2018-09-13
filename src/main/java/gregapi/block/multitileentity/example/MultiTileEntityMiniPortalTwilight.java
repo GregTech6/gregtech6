@@ -46,7 +46,7 @@ import net.minecraft.item.ItemStack;
 public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalTwilight>
 	sListTwilightSide = new ArrayListNoNulls<>(),
-	sListWorldSide	= new ArrayListNoNulls<>();
+	sListWorldSide  = new ArrayListNoNulls<>();
 	
 	static {
 		LH.add("gt.tileentity.portal.twilight.tooltip.1", "Only works between the Twilight Forest and the Overworld!");
@@ -56,9 +56,9 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 	
 	@Override
 	public void addToolTips2(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.twilight.tooltip.1"));
-		aList.add(Chat.CYAN		+ LH.get("gt.tileentity.portal.twilight.tooltip.2"));
-		aList.add(Chat.ORANGE	+ LH.get("gt.tileentity.portal.twilight.tooltip.3"));
+		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.twilight.tooltip.1"));
+		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.twilight.tooltip.2"));
+		aList.add(Chat.ORANGE   + LH.get("gt.tileentity.portal.twilight.tooltip.3"));
 	}
 	
 	@Override
@@ -123,7 +123,7 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 			ItemStack aStack = aPlayer.inventory.getCurrentItem();
 			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemDiamond", aStack)) {
 				setPortalActive();
-				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "	Y: " + mTarget.yCoord + "	Z: " + mTarget.zCoord);
+				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
 				worldObj.addWeatherEffect(new EntityLightningBolt(worldObj, xCoord, yCoord, zCoord));
 			}

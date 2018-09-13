@@ -44,9 +44,9 @@ public class MultiTileEntityGregOLantern extends TileEntityBase09FacingSingle im
 	@Override public float getExplosionResistance() {return Blocks.lit_pumpkin.getExplosionResistance(null);}
 	@Override public float getBlockHardness() {return Blocks.lit_pumpkin.getBlockHardness(null, 0, 0, 0);}
 	
-	@Override public boolean isSurfaceSolid			(byte aSide) {return T;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return T;}
-	@Override public boolean isSideSolid2			(byte aSide) {return T;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return T;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return T;}
+	@Override public boolean isSideSolid2           (byte aSide) {return T;}
 	
 	@Override public boolean canDrop(int aSlot) {return F;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}

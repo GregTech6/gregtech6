@@ -81,12 +81,12 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	 * May use up to 100 IDs, even if it is just 6 right now!
 	 */
 	public static void addItemPipes(int aID, int aCreativeTabID, long aStepSize, int aInvSize, boolean aRecipe, boolean aBlocking, MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aBlock, Class<? extends TileEntity> aClass, OreDictMaterial aMat) {
-		OM.reg_(OP.pipeMedium				, aMat, aRegistry.add(aMat.getLocal() + " Item Pipe"						, "Item Pipes", aID+ 2, aCreativeTabID, aClass, aMat.mToolQuality, 64, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[ 8], NBT_PIPESIZE, aStepSize	  , NBT_INV_SIZE, aInvSize	, NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh"		  , 'P', OP.plateCurved.dat(aMat)}:ZL_OBJECT));
-		OM.reg_(OP.pipeLarge				, aMat, aRegistry.add("Large " + aMat.getLocal() + " Item Pipe"				, "Item Pipes", aID+ 3, aCreativeTabID, aClass, aMat.mToolQuality, 32, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[12], NBT_PIPESIZE, aStepSize /	 2, NBT_INV_SIZE, aInvSize*2, NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh", "PPP", 'P', OP.plateCurved.dat(aMat)}:ZL_OBJECT));
-		OM.reg_(OP.pipeHuge					, aMat, aRegistry.add("Huge " + aMat.getLocal() + " Item Pipe"				, "Item Pipes", aID+ 4, aCreativeTabID, aClass, aMat.mToolQuality, 16, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[16], NBT_PIPESIZE, aStepSize /	 4, NBT_INV_SIZE, aInvSize*4, NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh", "PPP", 'P', OP.plateDouble.dat(aMat)}:ZL_OBJECT));
-		OM.reg_(OP.pipeRestrictiveMedium	, aMat, aRegistry.add("Restrictive " + aMat.getLocal() + " Item Pipe"		, "Item Pipes", aID+ 5, aCreativeTabID, aClass, aMat.mToolQuality, 64, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[ 8], NBT_PIPESIZE, aStepSize * 100, NBT_INV_SIZE, aInvSize	, NBT_OPAQUE, T), aRecipe?new Object[]{" h ", "RPR", " R ", 'P', OP.pipeMedium.dat(aMat), 'R', OP.ring.dat(ANY.Steel)}:ZL_OBJECT));
-		OM.reg_(OP.pipeRestrictiveLarge		, aMat, aRegistry.add("Restrictive Large " + aMat.getLocal() + " Item Pipe"	, "Item Pipes", aID+ 6, aCreativeTabID, aClass, aMat.mToolQuality, 32, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[12], NBT_PIPESIZE, aStepSize *	50, NBT_INV_SIZE, aInvSize*2, NBT_OPAQUE, T), aRecipe?new Object[]{"hR ", "RPR", " R ", 'P', OP.pipeLarge.dat(aMat), 'R', OP.ring.dat(ANY.Steel)}:ZL_OBJECT));
-		OM.reg_(OP.pipeRestrictiveHuge		, aMat, aRegistry.add("Restrictive Huge " + aMat.getLocal() + " Item Pipe"	, "Item Pipes", aID+ 7, aCreativeTabID, aClass, aMat.mToolQuality, 16, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[16], NBT_PIPESIZE, aStepSize *	25, NBT_INV_SIZE, aInvSize*4, NBT_OPAQUE, T), aRecipe?new Object[]{" h ", "RPR", "RRR", 'P', OP.pipeHuge.dat(aMat), 'R', OP.ring.dat(ANY.Steel)}:ZL_OBJECT));
+		OM.reg_(OP.pipeMedium               , aMat, aRegistry.add(aMat.getLocal() + " Item Pipe"                        , "Item Pipes", aID+ 2, aCreativeTabID, aClass, aMat.mToolQuality, 64, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[ 8], NBT_PIPESIZE, aStepSize      , NBT_INV_SIZE, aInvSize  , NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh"       , 'P', OP.plateCurved.dat(aMat)}:ZL_OBJECT));
+		OM.reg_(OP.pipeLarge                , aMat, aRegistry.add("Large " + aMat.getLocal() + " Item Pipe"             , "Item Pipes", aID+ 3, aCreativeTabID, aClass, aMat.mToolQuality, 32, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[12], NBT_PIPESIZE, aStepSize /   2, NBT_INV_SIZE, aInvSize*2, NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh", "PPP", 'P', OP.plateCurved.dat(aMat)}:ZL_OBJECT));
+		OM.reg_(OP.pipeHuge                 , aMat, aRegistry.add("Huge " + aMat.getLocal() + " Item Pipe"              , "Item Pipes", aID+ 4, aCreativeTabID, aClass, aMat.mToolQuality, 16, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 0, NBT_DIAMETER, PX_P[16], NBT_PIPESIZE, aStepSize /   4, NBT_INV_SIZE, aInvSize*4, NBT_OPAQUE, T), aRecipe?new Object[]{"PPP", "wzh", "PPP", 'P', OP.plateDouble.dat(aMat)}:ZL_OBJECT));
+		OM.reg_(OP.pipeRestrictiveMedium    , aMat, aRegistry.add("Restrictive " + aMat.getLocal() + " Item Pipe"       , "Item Pipes", aID+ 5, aCreativeTabID, aClass, aMat.mToolQuality, 64, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[ 8], NBT_PIPESIZE, aStepSize * 100, NBT_INV_SIZE, aInvSize  , NBT_OPAQUE, T), aRecipe?new Object[]{" h ", "RPR", " R ", 'P', OP.pipeMedium.dat(aMat), 'R', OP.ring.dat(ANY.Steel)}:ZL_OBJECT));
+		OM.reg_(OP.pipeRestrictiveLarge     , aMat, aRegistry.add("Restrictive Large " + aMat.getLocal() + " Item Pipe" , "Item Pipes", aID+ 6, aCreativeTabID, aClass, aMat.mToolQuality, 32, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[12], NBT_PIPESIZE, aStepSize *  50, NBT_INV_SIZE, aInvSize*2, NBT_OPAQUE, T), aRecipe?new Object[]{"hR ", "RPR", " R ", 'P', OP.pipeLarge.dat(aMat), 'R', OP.ring.dat(ANY.Steel)}:ZL_OBJECT));
+		OM.reg_(OP.pipeRestrictiveHuge      , aMat, aRegistry.add("Restrictive Huge " + aMat.getLocal() + " Item Pipe"  , "Item Pipes", aID+ 7, aCreativeTabID, aClass, aMat.mToolQuality, 16, aBlock, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[16], NBT_PIPESIZE, aStepSize *  25, NBT_INV_SIZE, aInvSize*4, NBT_OPAQUE, T), aRecipe?new Object[]{" h ", "RPR", "RRR", 'P', OP.pipeHuge.dat(aMat), 'R', OP.ring.dat(ANY.Steel)}:ZL_OBJECT));
 	}
 	
 	@Override
@@ -127,14 +127,14 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
 			if (FACE_CONNECTED[aTargetSide][mDisabledInputs]) {
 				if (FACE_CONNECTED[aTargetSide][mDisabledOutputs]) {
-					mDisabledInputs	 ^= B[aTargetSide];
+					mDisabledInputs  ^= B[aTargetSide];
 					mDisabledOutputs ^= B[aTargetSide];
 				} else {
 					mDisabledOutputs ^= B[aTargetSide];
 				}
 			} else {
 				if (FACE_CONNECTED[aTargetSide][mDisabledOutputs]) {
-					mDisabledInputs	 ^= B[aTargetSide];
+					mDisabledInputs  ^= B[aTargetSide];
 					mDisabledOutputs ^= B[aTargetSide];
 				} else {
 					mDisabledOutputs ^= B[aTargetSide];
@@ -249,21 +249,21 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
-	@Override public boolean canEmitItemsTo					(byte aSide, Object aSender) {return (aSender != this || aSide != mLastReceivedFrom) && connected(aSide);}
-	@Override public boolean canAcceptItemsFrom				(byte aSide, Object aSender) {return connected(aSide);}
+	@Override public boolean canEmitItemsTo                 (byte aSide, Object aSender) {return (aSender != this || aSide != mLastReceivedFrom) && connected(aSide);}
+	@Override public boolean canAcceptItemsFrom             (byte aSide, Object aSender) {return connected(aSide);}
 	
-	@Override public boolean canConnect						(byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {return (aDelegator.mTileEntity instanceof ISidedInventory ? aDelegator.mTileEntity instanceof ITileEntityCanDelegate || ((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(aDelegator.mSideOfTileEntity).length > 0 : (aDelegator.mTileEntity instanceof IInventory && ((IInventory)aDelegator.mTileEntity).getSizeInventory() > 0)) || UT.Inventories.isConnectableNonInventoryPipe(aDelegator.mTileEntity, aDelegator.mSideOfTileEntity);}
+	@Override public boolean canConnect                     (byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {return (aDelegator.mTileEntity instanceof ISidedInventory ? aDelegator.mTileEntity instanceof ITileEntityCanDelegate || ((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(aDelegator.mSideOfTileEntity).length > 0 : (aDelegator.mTileEntity instanceof IInventory && ((IInventory)aDelegator.mTileEntity).getSizeInventory() > 0)) || UT.Inventories.isConnectableNonInventoryPipe(aDelegator.mTileEntity, aDelegator.mSideOfTileEntity);}
 	
-	@Override public long getProgressValue					(byte aSide) {return getPipeContent()*64;}
-	@Override public long getProgressMax					(byte aSide) {return getMaxPipeCapacity()*64;}
+	@Override public long getProgressValue                  (byte aSide) {return getPipeContent()*64;}
+	@Override public long getProgressMax                    (byte aSide) {return getMaxPipeCapacity()*64;}
 	
-	@Override public ITexture getTextureSide				(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexSide		(aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return tBase;}}
-	@Override public ITexture getTextureConnected			(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexConnected	(aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return tBase;}}
+	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexSide      (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return tBase;}}
+	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexConnected (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return tBase;}}
 	
-	@Override public int getIconIndexSide					(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return IconsGT.INDEX_BLOCK_PIPE_SIDE;}
-	@Override public int getIconIndexConnected				(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return aDiameter<0.37F?OP.pipeTiny.mIconIndexBlock:aDiameter<0.49F?OP.pipeSmall.mIconIndexBlock:aDiameter<0.74F?OP.pipeMedium.mIconIndexBlock:aDiameter<0.99F?OP.pipeLarge.mIconIndexBlock:OP.pipeHuge.mIconIndexBlock;}
+	@Override public int getIconIndexSide                   (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return IconsGT.INDEX_BLOCK_PIPE_SIDE;}
+	@Override public int getIconIndexConnected              (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return aDiameter<0.37F?OP.pipeTiny.mIconIndexBlock:aDiameter<0.49F?OP.pipeSmall.mIconIndexBlock:aDiameter<0.74F?OP.pipeMedium.mIconIndexBlock:aDiameter<0.99F?OP.pipeLarge.mIconIndexBlock:OP.pipeHuge.mIconIndexBlock;}
 	
-	@Override public Collection<TagData> getConnectorTypes	(byte aSide) {return TD.Connectors.PNEUMATIC_ITEM.AS_LIST;}
+	@Override public Collection<TagData> getConnectorTypes  (byte aSide) {return TD.Connectors.PNEUMATIC_ITEM.AS_LIST;}
 	
 	@Override public String getFacingTool() {return TOOL_wrench;}
 	@Override public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {return super.isUsingWrenchingOverlay(aStack, aSide) || ToolsGT.contains(TOOL_monkeywrench, aStack);}

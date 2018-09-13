@@ -89,9 +89,9 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_JUICER_USAGE));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_JUICER_USAGE));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
 	}
 	
 	@Override
@@ -238,33 +238,33 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	}
 	
 	public static IIconContainer
-	sTextureSides		= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/sides"),
-	sTextureInsides		= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/insides"),
-	sTextureTop			= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/top"),
-	sTextureBottom		= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/bottom"),
-	sTextureMiddleTop	= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/middletop"),
-	sTextureMiddleSide	= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/middleside"),
-	sOverlaySides		= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/sides"),
-	sOverlayInsides		= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/insides"),
-	sOverlayTop			= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/top"),
-	sOverlayBottom		= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/bottom"),
-	sOverlayMiddleTop	= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/middletop"),
-	sOverlayMiddleSide	= new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/middleside");
+	sTextureSides       = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/sides"),
+	sTextureInsides     = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/insides"),
+	sTextureTop         = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/top"),
+	sTextureBottom      = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/bottom"),
+	sTextureMiddleTop   = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/middletop"),
+	sTextureMiddleSide  = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/colored/middleside"),
+	sOverlaySides       = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/sides"),
+	sOverlayInsides     = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/insides"),
+	sOverlayTop         = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/top"),
+	sOverlayBottom      = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/bottom"),
+	sOverlayMiddleTop   = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/middletop"),
+	sOverlayMiddleSide  = new Textures.BlockIcons.CustomIcon("machines/tools/juicer/overlay/middleside");
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: return SIDE_X_POS	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  2: return SIDE_X_NEG	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  1: return SIDE_Z_POS	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  3: return SIDE_Z_NEG	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  4: return SIDE_TOP	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop	  , mRGBa), BlockTextureDefault.get(sOverlayTop	   )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
+		case  0: return SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  2: return SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  1: return SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  3: return SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  4: return SIDE_TOP    == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop    , mRGBa), BlockTextureDefault.get(sOverlayTop    )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
 		case  5:
 			if (mDisplay <= 0 || SIDE_TOP != aSide) return null;
 			Fluid tFluid = UT.Fluids.fluid(mDisplay-1);
 			return tFluid == null ? BlockTextureCopied.get(Blocks.water, SIDE_ANY, 0, UNCOLOURED, F, F, F) : BlockTextureFluid.get(UT.Fluids.make(tFluid, 1000));
-		case  6: return SIDE_TOP	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleTop, mRGBa), BlockTextureDefault.get(sOverlayMiddleTop)):SIDE_BOTTOM == aSide ? null : BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleSide, mRGBa), BlockTextureDefault.get(sOverlayMiddleSide));
-		case  7: return SIDE_TOP	== aSide?BI.nei():null;
+		case  6: return SIDE_TOP    == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleTop, mRGBa), BlockTextureDefault.get(sOverlayMiddleTop)):SIDE_BOTTOM == aSide ? null : BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleSide, mRGBa), BlockTextureDefault.get(sOverlayMiddleSide));
+		case  7: return SIDE_TOP    == aSide?BI.nei():null;
 		}
 		return null;
 	}
@@ -285,15 +285,15 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[12], PX_N[ 2]);}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return SIDES_VERTICAL[aSide]?0.5F:0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_VERTICAL[aSide]?0.5F:0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?PX_P[12]:PX_P[2];}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return F;}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
-	@Override public boolean attachCoversFirst		(byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt	(byte aSide) {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return SIDES_VERTICAL[aSide]?0.5F:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_VERTICAL[aSide]?0.5F:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_TOP[aSide]?PX_P[12]:PX_P[2];}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
+	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	
 	// Inventory Stuff

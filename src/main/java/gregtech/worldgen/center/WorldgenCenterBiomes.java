@@ -115,9 +115,9 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							for (int k = 1; k < mHeight-5; k++) WD.set(aChunk, i, k, j, Blocks.mossy_cobblestone, 0);
 						}
 						
-						WD.set(aChunk,	4, mHeight+1,  4, NB, aRandom.nextInt(2));
+						WD.set(aChunk,  4, mHeight+1,  4, NB, aRandom.nextInt(2));
 						WD.set(aChunk, 12, mHeight+1,  4, NB, aRandom.nextInt(2));
-						WD.set(aChunk,	4, mHeight+1, 12, NB, aRandom.nextInt(2));
+						WD.set(aChunk,  4, mHeight+1, 12, NB, aRandom.nextInt(2));
 						WD.set(aChunk, 12, mHeight+1, 12, NB, aRandom.nextInt(2));
 						
 						new WorldGenTrees(F, 4+aRandom.nextInt(3), 1, 1, F).generate(aWorld, aRandom, aMinX+ 4, mHeight+1, aMinZ+ 4);
@@ -138,9 +138,9 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							WD.set(aChunk, i, mHeight-5, j, Blocks.dirt, 0);
 							for (int k = 1; k < mHeight-5; k++) WD.set(aChunk, i, k, j, k < 32 ? BlocksGT.Kimberlite : BlocksGT.Quartzite, aRandom.nextBoolean()?2:0);
 						}
-						WD.set(aChunk,	6, mHeight+1,  6, Blocks.pumpkin, 0);
+						WD.set(aChunk,  6, mHeight+1,  6, Blocks.pumpkin, 0);
 						WD.set(aChunk, 10, mHeight+1,  6, Blocks.pumpkin, 0);
-						WD.set(aChunk,	6, mHeight+1, 10, Blocks.pumpkin, 0);
+						WD.set(aChunk,  6, mHeight+1, 10, Blocks.pumpkin, 0);
 						WD.set(aChunk, 10, mHeight+1, 10, Blocks.pumpkin, 0);
 						
 						new WorldGenTrees(F, 4+aRandom.nextInt(3), 0, 0, F).generate(aWorld, aRandom, aMinX+ 4, mHeight+1, aMinZ+ 4);
@@ -161,9 +161,9 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							WD.set(aChunk, i, mHeight-6, j, BlocksGT.Diggables, 1);
 							for (int k = 1; k < mHeight-6; k++) WD.set(aChunk, i, k, j, k < 32 ? BlocksGT.Limestone : BlocksGT.Marble, aRandom.nextBoolean()?2:0);
 							switch(aRandom.nextInt(60)) {
-							case  0: case  1: case	2: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)), F, T); break;
-							case  3: case  4: case	5: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, null, F, T); break;
-							case  6: case  7: case	8: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32756, null, F, T); break;
+							case  0: case  1: case  2: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)), F, T); break;
+							case  3: case  4: case  5: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32757, null, F, T); break;
+							case  6: case  7: case  8: if (tRegistry != null) tRegistry.mBlock.placeBlock(aWorld, aMinX+i, mHeight+1, aMinZ+j, SIDE_UNKNOWN, (short)32756, null, F, T); break;
 							case  9: case 10: case 11: case 12: case 13: case 14: WD.set(aChunk, i, mHeight+1, j, Blocks.tallgrass, 1); break;
 							case 15: WD.set(aChunk, i, mHeight+1, j, Blocks.yellow_flower, 0); break;
 							case 16: WD.set(aChunk, i, mHeight+1, j, Blocks.red_flower, 0); break;
@@ -194,9 +194,9 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							for (int k = 1; k < mHeight-5; k++) WD.set(aChunk, i, k, j, Blocks.hardened_clay, 0);
 						}
 						for (int i = 1; i <= 3; i++) {
-							WD.set(aChunk,	4, mHeight+i,  4, Blocks.cactus, 0);
+							WD.set(aChunk,  4, mHeight+i,  4, Blocks.cactus, 0);
 							WD.set(aChunk, 12, mHeight+i,  4, Blocks.cactus, 0);
-							WD.set(aChunk,	4, mHeight+i, 12, Blocks.cactus, 0);
+							WD.set(aChunk,  4, mHeight+i, 12, Blocks.cactus, 0);
 							WD.set(aChunk, 12, mHeight+i, 12, Blocks.cactus, 0);
 						}
 					} else {
@@ -226,9 +226,9 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							for (int k = 1; k < mHeight-5; k++) WD.set(aChunk, i, k, j, k < 32 ? BlocksGT.GraniteRed : BlocksGT.GraniteBlack, aRandom.nextBoolean()?2:0);
 							if (aRandom.nextInt(8) == 0) WD.set(aChunk, i, mHeight+1, j, BlocksGT.Glowtus, aRandom.nextInt(16));
 						}
-						WD.set(aChunk,	4, mHeight+1,  4, Blocks.waterlily, 0);
+						WD.set(aChunk,  4, mHeight+1,  4, Blocks.waterlily, 0);
 						WD.set(aChunk, 12, mHeight+1,  4, Blocks.waterlily, 0);
-						WD.set(aChunk,	4, mHeight+1, 12, Blocks.waterlily, 0);
+						WD.set(aChunk,  4, mHeight+1, 12, Blocks.waterlily, 0);
 						WD.set(aChunk, 12, mHeight+1, 12, Blocks.waterlily, 0);
 					} else {
 						Arrays.fill(aChunk.getBiomeArray(), (byte)BiomeGenBase.jungle.biomeID);

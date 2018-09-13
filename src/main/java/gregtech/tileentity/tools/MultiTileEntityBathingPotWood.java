@@ -55,27 +55,27 @@ public class MultiTileEntityBathingPotWood extends MultiTileEntityBathingPot {
 	
 	@SuppressWarnings("hiding")
 	public static IIconContainer
-	sTextureSides		= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/sides"),
-	sTextureInsides		= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/insides"),
-	sTextureTop			= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/top"),
-	sTextureBottom		= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/bottom"),
-	sTextureTableBottom	= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/tablebottom"),
-	sTextureTableSide	= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/tableside"),
-	sOverlaySides		= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/sides"),
-	sOverlayInsides		= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/insides"),
-	sOverlayTop			= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/top"),
-	sOverlayBottom		= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/bottom"),
-	sOverlayTableBottom	= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/tablebottom"),
-	sOverlayTableSide	= new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/tableside");
+	sTextureSides       = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/sides"),
+	sTextureInsides     = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/insides"),
+	sTextureTop         = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/top"),
+	sTextureBottom      = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/bottom"),
+	sTextureTableBottom = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/tablebottom"),
+	sTextureTableSide   = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/colored/tableside"),
+	sOverlaySides       = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/sides"),
+	sOverlayInsides     = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/insides"),
+	sOverlayTop         = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/top"),
+	sOverlayBottom      = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/bottom"),
+	sOverlayTableBottom = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/tablebottom"),
+	sOverlayTableSide   = new Textures.BlockIcons.CustomIcon("machines/tools/bathing_pot_wood/overlay/tableside");
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: return SIDE_X_POS	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  2: return SIDE_X_NEG	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  1: return SIDE_Z_POS	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  3: return SIDE_Z_NEG	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
-		case  4: return SIDE_TOP	== aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop	  , mRGBa), BlockTextureDefault.get(sOverlayTop	   )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
+		case  0: return SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  2: return SIDE_X_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_X_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  1: return SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  3: return SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
+		case  4: return SIDE_TOP    == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop    , mRGBa), BlockTextureDefault.get(sOverlayTop    )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
 		case  5:
 			if (mDisplay == 0 || SIDE_TOP != aSide) return null;
 			if (mDisplay < -1) {
@@ -85,8 +85,8 @@ public class MultiTileEntityBathingPotWood extends MultiTileEntityBathingPot {
 			}
 			if (UT.Code.exists(mDisplay, OreDictMaterial.MATERIAL_ARRAY)) return BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mDisplay], OP.blockDust, OreDictMaterial.MATERIAL_ARRAY[mDisplay].contains(TD.Properties.GLOWING));
 			return BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_128, F);
-		case  6: return SIDE_TOP	== aSide?BI.nei():null;
-		case  7: return SIDE_TOP	!= aSide?SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTableBottom, mRGBa), BlockTextureDefault.get(sOverlayTableBottom)):BlockTextureMulti.get(BlockTextureDefault.get(sTextureTableSide, mRGBa), BlockTextureDefault.get(sOverlayTableSide)):null;
+		case  6: return SIDE_TOP    == aSide?BI.nei():null;
+		case  7: return SIDE_TOP    != aSide?SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTableBottom, mRGBa), BlockTextureDefault.get(sOverlayTableBottom)):BlockTextureMulti.get(BlockTextureDefault.get(sTextureTableSide, mRGBa), BlockTextureDefault.get(sOverlayTableSide)):null;
 		}
 		return null;
 	}

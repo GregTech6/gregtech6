@@ -92,22 +92,22 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 	}
 	
 	private static final String
-	sToolTipExclusive			= "gt.tileentity.extender.tooltip.exclusive",
-	sToolTipFunctionInv			= "gt.tileentity.extender.tooltip.inv",
-	sToolTipFunctionTank		= "gt.tileentity.extender.tooltip.tank",
-	sToolTipFunctionRedstone	= "gt.tileentity.extender.tooltip.redstone",
-	sToolTipFunctionOther		= "gt.tileentity.extender.tooltip.other",
-	sToolTipFunctionControl		= "gt.tileentity.extender.tooltip.control",
-	sToolTipFunctionAll			= "gt.tileentity.extender.tooltip.all";
+	sToolTipExclusive           = "gt.tileentity.extender.tooltip.exclusive",
+	sToolTipFunctionInv         = "gt.tileentity.extender.tooltip.inv",
+	sToolTipFunctionTank        = "gt.tileentity.extender.tooltip.tank",
+	sToolTipFunctionRedstone    = "gt.tileentity.extender.tooltip.redstone",
+	sToolTipFunctionOther       = "gt.tileentity.extender.tooltip.other",
+	sToolTipFunctionControl     = "gt.tileentity.extender.tooltip.control",
+	sToolTipFunctionAll         = "gt.tileentity.extender.tooltip.all";
 	
 	static {
-		LH.add(sToolTipExclusive		, "Cannot be attached to other Extenders!");
-		LH.add(sToolTipFunctionInv		, "Relays Inventories");
-		LH.add(sToolTipFunctionTank		, "Relays Tanks");
-		LH.add(sToolTipFunctionRedstone	, "Relays Redstone");
-		LH.add(sToolTipFunctionOther	, "Relays Misc Functions");
-		LH.add(sToolTipFunctionControl	, "Relays Control Functions");
-		LH.add(sToolTipFunctionAll		, "Relays everything");
+		LH.add(sToolTipExclusive        , "Cannot be attached to other Extenders!");
+		LH.add(sToolTipFunctionInv      , "Relays Inventories");
+		LH.add(sToolTipFunctionTank     , "Relays Tanks");
+		LH.add(sToolTipFunctionRedstone , "Relays Redstone");
+		LH.add(sToolTipFunctionOther    , "Relays Misc Functions");
+		LH.add(sToolTipFunctionControl  , "Relays Control Functions");
+		LH.add(sToolTipFunctionAll      , "Relays everything");
 	}
 	
 	@Override
@@ -115,11 +115,11 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 		if ((mModes & MODE_ALL) == MODE_ALL) {
 			aList.add(Chat.CYAN + LH.get(sToolTipFunctionAll));
 		} else {
-			if ((mModes & MODE_INV		) == MODE_INV		) aList.add(Chat.CYAN + LH.get(sToolTipFunctionInv));
-			if ((mModes & MODE_TANK		) == MODE_TANK		) aList.add(Chat.CYAN + LH.get(sToolTipFunctionTank));
-			if ((mModes & MODE_REDSTONE	) == MODE_REDSTONE	) aList.add(Chat.CYAN + LH.get(sToolTipFunctionRedstone));
-			if ((mModes & MODE_CONTROL	) == MODE_CONTROL	) aList.add(Chat.CYAN + LH.get(sToolTipFunctionControl));
-			if ((mModes & MODE_OTHER	) == MODE_OTHER		) aList.add(Chat.CYAN + LH.get(sToolTipFunctionOther));
+			if ((mModes & MODE_INV      ) == MODE_INV       ) aList.add(Chat.CYAN + LH.get(sToolTipFunctionInv));
+			if ((mModes & MODE_TANK     ) == MODE_TANK      ) aList.add(Chat.CYAN + LH.get(sToolTipFunctionTank));
+			if ((mModes & MODE_REDSTONE ) == MODE_REDSTONE  ) aList.add(Chat.CYAN + LH.get(sToolTipFunctionRedstone));
+			if ((mModes & MODE_CONTROL  ) == MODE_CONTROL   ) aList.add(Chat.CYAN + LH.get(sToolTipFunctionControl));
+			if ((mModes & MODE_OTHER    ) == MODE_OTHER     ) aList.add(Chat.CYAN + LH.get(sToolTipFunctionOther));
 		}
 		aList.add(Chat.ORANGE + LH.get(sToolTipExclusive));
 		super.addToolTips(aList, aStack, aF3_H);

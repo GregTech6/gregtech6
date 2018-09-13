@@ -43,7 +43,7 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	public boolean mChargeProvider;
 	public double mArmorAbsorbtionPercentage;
 	
-//	public static Map jumpChargeMap = new HashMap<>();
+//  public static Map jumpChargeMap = new HashMap<>();
 	
 	public GT_EnergyArmor_Item(int aID, String aUnlocalized, String aEnglish, int aCharge, int aTransfer, int aTier, int aDamageEnergyCost, int aSpecials, double aArmorAbsorbtionPercentage, boolean aChargeProvider, int aType, int aArmorIndex) {
 		super(ArmorMaterial.DIAMOND, aArmorIndex, aType);
@@ -89,10 +89,10 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	@SuppressWarnings("unchecked")
 	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		aList.add("Tier: " + mTier);
-		if ((mSpecials &	1) != 0) aList.add("Rebreather");
-		if ((mSpecials &	2) != 0) aList.add("Inertia Damper");
-		if ((mSpecials &	4) != 0) aList.add("Food Replicator");
-		if ((mSpecials &	8) != 0) aList.add("Medicine Module");
+		if ((mSpecials &    1) != 0) aList.add("Rebreather");
+		if ((mSpecials &    2) != 0) aList.add("Inertia Damper");
+		if ((mSpecials &    4) != 0) aList.add("Food Replicator");
+		if ((mSpecials &    8) != 0) aList.add("Medicine Module");
 		if ((mSpecials &   16) != 0) aList.add("Lamp");
 		if ((mSpecials &   32) != 0) aList.add("Solarpanel");
 		if ((mSpecials &   64) != 0) aList.add("Extinguisher Module");
@@ -220,8 +220,8 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 					}
 				} else {
 					if ((mSpecials & 16) != 0 && tTargetDechargeItem != null && GT_ModHandler.canUseElectricItem(tTargetDechargeItem, 10)) {
-						if (aPlayer.worldObj.getBlock	((int)aPlayer.posX, (int)aPlayer.posY+1, (int)aPlayer.posZ) == Blocks.air)
-							aPlayer.worldObj.setBlock	((int)aPlayer.posX, (int)aPlayer.posY+1, (int)aPlayer.posZ, GregTech_API.sBlockList[3]);
+						if (aPlayer.worldObj.getBlock   ((int)aPlayer.posX, (int)aPlayer.posY+1, (int)aPlayer.posZ) == Blocks.air)
+							aPlayer.worldObj.setBlock   ((int)aPlayer.posX, (int)aPlayer.posY+1, (int)aPlayer.posZ, GregTech_API.sBlockList[3]);
 						GT_ModHandler.useElectricItem(tTargetDechargeItem, 10, aPlayer);
 					}
 				//}
@@ -236,7 +236,7 @@ public class GT_EnergyArmor_Item extends ItemArmor /*implements ISpecialArmor*/ 
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-//	@SuppressWarnings("unchecked")
+//  @SuppressWarnings("unchecked")
 	public void getSubItems(Item aItem, CreativeTabs var2, @SuppressWarnings("rawtypes") List var3) {
 		//ItemStack tCharged = ST.make(this, 1, 0), tUncharged = ST.make(this, 1, getMaxDamage());
 		//GT_ModHandler.chargeElectricItem(tCharged, Integer.MAX_VALUE, Integer.MAX_VALUE, true, false);

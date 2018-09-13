@@ -90,9 +90,9 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD_COINAGE));
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD_SELECT) + " (Doesn't work right now)");
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_MOLD_COINAGE));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_MOLD_SELECT) + " (Doesn't work right now)");
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
 	}
 	
 	@Override
@@ -198,14 +198,14 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 	}
 	
 	public static IIconContainer
-	sTextureTop		= new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/colored/top"),
-	sTextureBottom	= new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/colored/bottom"),
-	sTextureSide	= new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/colored/side"),
-	sTextureHole	= new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/colored/hole"),
-	sOverlayTop		= new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/overlay/top"),
-	sOverlayBottom	= new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/overlay/bottom"),
-	sOverlaySide	= new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/overlay/side"),
-	sOverlayHole	= new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/overlay/hole");
+	sTextureTop     = new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/colored/top"),
+	sTextureBottom  = new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/colored/bottom"),
+	sTextureSide    = new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/colored/side"),
+	sTextureHole    = new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/colored/hole"),
+	sOverlayTop     = new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/overlay/top"),
+	sOverlayBottom  = new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/overlay/bottom"),
+	sOverlaySide    = new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/overlay/side"),
+	sOverlayHole    = new Textures.BlockIcons.CustomIcon("machines/tools/mold_coinage/overlay/hole");
 	
 	private ITexture mTextureHole, mTextureSides[] = new ITexture[3], mTextureContent;
 	
@@ -214,10 +214,10 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 		if (aRenderPass == 0 && aSide == 0) {
 			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
 			
-			mTextureHole	 = BlockTextureMulti.get(BlockTextureDefault.get(sTextureHole		, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
-			mTextureSides[0] = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom		, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
-			mTextureSides[1] = BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop		, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayTop));
-			mTextureSides[2] = BlockTextureMulti.get(BlockTextureDefault.get(sTextureSide		, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlaySide));
+			mTextureHole     = BlockTextureMulti.get(BlockTextureDefault.get(sTextureHole       , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+			mTextureSides[0] = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom     , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
+			mTextureSides[1] = BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop        , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayTop));
+			mTextureSides[2] = BlockTextureMulti.get(BlockTextureDefault.get(sTextureSide       , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlaySide));
 			if (mDisplayedMetal != 0 && UT.Code.exists(mDisplayedMetal, OreDictMaterial.MATERIAL_ARRAY)) {
 				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedMetal];
 				mTextureContent = BlockTextureDefault.get(tMaterial, OP.blockSolid.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
@@ -244,13 +244,13 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 4], PX_N[ 0]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 4], PX_N[ 0]);}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return SIDES_TOP[aSide]?PX_N[ 4]:0.0F;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_TOP[aSide]?PX_N[ 4]:0.0F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	// Inventory Stuff
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
@@ -261,8 +261,8 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ACCESSIBLE_SLOTS;}
 	
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {OreDictItemData tData = OM.anyassociation(aStack		); return tData != null && tData.mPrefix == OP.plateTiny;}
-	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {OreDictItemData tData = OM.anyassociation(slot(aSlot)	); return tData == null || tData.mPrefix != OP.plateTiny;}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {OreDictItemData tData = OM.anyassociation(aStack     ); return tData != null && tData.mPrefix == OP.plateTiny;}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {OreDictItemData tData = OM.anyassociation(slot(aSlot)    ); return tData == null || tData.mPrefix != OP.plateTiny;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.mold.coins";}
 }

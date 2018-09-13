@@ -102,11 +102,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public final ItemStack addTool(int aID, String aEnglish, String aToolTip, IToolStats aToolStats, Object... aRandomParameters) {
 		if (aToolTip == null) aToolTip = "";
 		if (aID >= 0 && aID < 32766 && aID % 2 == 0) {
-			LH.add(getUnlocalizedName() + "." +	 aID	+ ".name"		, aEnglish);
-			LH.add(getUnlocalizedName() + "." +	 aID	+ ".tooltip"	, aToolTip);
-			LH.add(getUnlocalizedName() + "." + (aID+1) + ".name"		, aEnglish + " (Empty)");
-			LH.add(getUnlocalizedName() + "." + (aID+1) + ".tooltip"	, "You need to recharge it");
-			mToolStats.put((short) aID	 , aToolStats);
+			LH.add(getUnlocalizedName() + "." +  aID    + ".name"       , aEnglish);
+			LH.add(getUnlocalizedName() + "." +  aID    + ".tooltip"    , aToolTip);
+			LH.add(getUnlocalizedName() + "." + (aID+1) + ".name"       , aEnglish + " (Empty)");
+			LH.add(getUnlocalizedName() + "." + (aID+1) + ".tooltip"    , "You need to recharge it");
+			mToolStats.put((short) aID   , aToolStats);
 			mToolStats.put((short)(aID+1), aToolStats);
 			aToolStats.onStatsAddedToTool(this, aID);
 			ItemStack rStack = ST.make(this, 1, aID);

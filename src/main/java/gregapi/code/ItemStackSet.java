@@ -80,11 +80,11 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 	}
 	
 	public boolean contains(ItemStack aObject, boolean aWildCard) {
-		return map.containsKey(new ItemStackContainer(aObject)) || (aWildCard && map.containsKey(new ItemStackContainer(aObject			, W)));
+		return map.containsKey(new ItemStackContainer(aObject)) || (aWildCard && map.containsKey(new ItemStackContainer(aObject         , W)));
 	}
 	
 	public boolean contains(ItemStackContainer aObject, boolean aWildCard) {
-		return map.containsKey(						  aObject ) || (aWildCard && map.containsKey(new ItemStackContainer(aObject.mItem, 1, W)));
+		return map.containsKey(                       aObject ) || (aWildCard && map.containsKey(new ItemStackContainer(aObject.mItem, 1, W)));
 	}
 	
 	public boolean add(ItemStack aStack) {

@@ -47,189 +47,189 @@ public class Loader_Ores implements Runnable {
 	@Override
 	public void run() {
 		OUT.println("GT_Mod: Register Ore Blocks.");
-		BlocksGT.oreBedrock					= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.bedrock"			, OP.oreBedrock				, null, null, new Drops_None()			, BlockTextureCopied.get(Blocks.bedrock			, 0), Material.rock, Block.soundTypePiston	, TOOL_pickaxe,-1,3600000F,9999,9999,9999,0,0,0,1,1,1,F,F,T,T,T,T,F,F,F,F,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallBedrock			= new PrefixBlock_(MD.GT, "gt.meta.ore.small.bedrock"			, OP.oreSmall				, null, null, new Drops_None()			, BlockTextureCopied.get(Blocks.bedrock			, 0), Material.rock, Block.soundTypePiston	, TOOL_pickaxe,-1,3600000F,9999,9999,9999,0,0,0,1,1,1,F,F,T,T,T,T,F,F,F,F,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreBedrock                 = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.bedrock"          , OP.oreBedrock             , null, null, new Drops_None()          , BlockTextureCopied.get(Blocks.bedrock         , 0), Material.rock, Block.soundTypePiston  , TOOL_pickaxe,-1,3600000F,9999,9999,9999,0,0,0,1,1,1,F,F,T,T,T,T,F,F,F,F,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallBedrock            = new PrefixBlock_(MD.GT, "gt.meta.ore.small.bedrock"           , OP.oreSmall               , null, null, new Drops_None()          , BlockTextureCopied.get(Blocks.bedrock         , 0), Material.rock, Block.soundTypePiston  , TOOL_pickaxe,-1,3600000F,9999,9999,9999,0,0,0,1,1,1,F,F,T,T,T,T,F,F,F,F,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
 		
-		BlocksGT.oreBroken					= new PrefixBlock_(MD.GT, "gt.meta.ore.broken.default"			, OP.oreVanillastone		, null									, BlockTextureCopied.get(Blocks.cobblestone		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 0.50F, 0.50F,	 -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreBrokenSandstone			= new PrefixBlock_(MD.GT, "gt.meta.ore.broken.sandstone"		, OP.oreSandstone			, null									, BlockTextureCopied.get(Blocks.sandstone		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 0.30F, 0.40F,	 -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreBrokenNetherrack		= new PrefixBlock_(MD.GT, "gt.meta.ore.broken.netherrack"		, OP.oreNetherrack			, null									, BlockTextureCopied.get(Blocks.netherrack		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 0.20F, 0.20F,	 -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreBrokenEndstone			= new PrefixBlock_(MD.GT, "gt.meta.ore.broken.endstone"			, OP.oreEndstone			, null									, BlockTextureCopied.get(Blocks.end_stone		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 0.50F, 1.00F,	 -1,   0, T,T, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreBroken                  = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.default"          , OP.oreVanillastone        , null                                  , BlockTextureCopied.get(Blocks.cobblestone     , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.50F, 0.50F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreBrokenSandstone         = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.sandstone"        , OP.oreSandstone           , null                                  , BlockTextureCopied.get(Blocks.sandstone       , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.30F, 0.40F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreBrokenNetherrack        = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.netherrack"       , OP.oreNetherrack          , null                                  , BlockTextureCopied.get(Blocks.netherrack      , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.20F, 0.20F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreBrokenEndstone          = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.endstone"         , OP.oreEndstone            , null                                  , BlockTextureCopied.get(Blocks.end_stone       , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.50F, 1.00F,  -1,   0, T,T, OreDictMaterial.MATERIAL_ARRAY);
 		
-		BlocksGT.ore						= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.default"			, OP.oreVanillastone		, null									, BlockTextureCopied.get(Blocks.stone			, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 1.00F, 1.00F,	  0,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSandstone				= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.sandstone"		, OP.oreSandstone			, null									, BlockTextureCopied.get(Blocks.sandstone		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 0.60F, 0.80F,	  0,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreNetherrack				= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.netherrack"		, OP.oreNetherrack			, null									, BlockTextureCopied.get(Blocks.netherrack		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 0.50F, 0.50F,	  0,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreEndstone				= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.endstone"			, OP.oreEndstone			, null									, BlockTextureCopied.get(Blocks.end_stone		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 1.00F, 2.00F,	  0,   0, F,T, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreGravel					= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.gravel"			, OP.oreGravel				, null									, BlockTextureCopied.get(Blocks.gravel			, 0), Material.sand, Block.soundTypeGravel	, TOOL_shovel	, 0.60F, 0.80F,	  0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSand					= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.sand"				, OP.oreSand				, null									, BlockTextureCopied.get(Blocks.sand			, 0), Material.sand, Block.soundTypeSand	, TOOL_shovel	, 0.40F, 0.60F,	  0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreRedSand					= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.redsand"			, OP.oreRedSand				, null									, BlockTextureCopied.get(Blocks.sand			, 1), Material.sand, Block.soundTypeSand	, TOOL_shovel	, 0.40F, 0.60F,	  0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.ore                        = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.default"          , OP.oreVanillastone        , null                                  , BlockTextureCopied.get(Blocks.stone           , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 1.00F, 1.00F,   0,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSandstone               = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.sandstone"        , OP.oreSandstone           , null                                  , BlockTextureCopied.get(Blocks.sandstone       , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.60F, 0.80F,   0,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreNetherrack              = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.netherrack"       , OP.oreNetherrack          , null                                  , BlockTextureCopied.get(Blocks.netherrack      , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.50F, 0.50F,   0,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreEndstone                = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.endstone"         , OP.oreEndstone            , null                                  , BlockTextureCopied.get(Blocks.end_stone       , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 1.00F, 2.00F,   0,   0, F,T, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreGravel                  = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.gravel"           , OP.oreGravel              , null                                  , BlockTextureCopied.get(Blocks.gravel          , 0), Material.sand, Block.soundTypeGravel  , TOOL_shovel   , 0.60F, 0.80F,   0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSand                    = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.sand"             , OP.oreSand                , null                                  , BlockTextureCopied.get(Blocks.sand            , 0), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,   0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreRedSand                 = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.redsand"          , OP.oreRedSand             , null                                  , BlockTextureCopied.get(Blocks.sand            , 1), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,   0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		
-		BlocksGT.oreSmall					= new PrefixBlock_(MD.GT, "gt.meta.ore.small.default"			, OP.oreSmall				, new Drops_SmallOre(MT.Stone)			, BlockTextureCopied.get(Blocks.stone			, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 1.00F, 1.00F,	 -1,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallSandstone			= new PrefixBlock_(MD.GT, "gt.meta.ore.small.sandstone"			, OP.oreSmall				, new Drops_SmallOre(MT.Sand)			, BlockTextureCopied.get(Blocks.sandstone		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 0.60F, 0.80F,	 -1,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallNetherrack			= new PrefixBlock_(MD.GT, "gt.meta.ore.small.netherrack"		, OP.oreSmall				, new Drops_SmallOre(MT.Netherrack)		, BlockTextureCopied.get(Blocks.netherrack		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 0.50F, 0.50F,	 -1,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallEndstone			= new PrefixBlock_(MD.GT, "gt.meta.ore.small.endstone"			, OP.oreSmall				, new Drops_SmallOre(MT.Endstone)		, BlockTextureCopied.get(Blocks.end_stone		, 0), Material.rock, Block.soundTypeStone	, TOOL_pickaxe	, 1.00F, 2.00F,	 -1,   0, F,T, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallGravel				= new PrefixBlock_(MD.GT, "gt.meta.ore.small.gravel"			, OP.oreSmall				, new Drops_SmallOre(MT.Gravel)			, BlockTextureCopied.get(Blocks.gravel			, 0), Material.sand, Block.soundTypeGravel	, TOOL_shovel	, 0.60F, 0.80F,	 -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallSand				= new PrefixBlock_(MD.GT, "gt.meta.ore.small.sand"				, OP.oreSmall				, new Drops_SmallOre(MT.Sand)			, BlockTextureCopied.get(Blocks.sand			, 0), Material.sand, Block.soundTypeSand	, TOOL_shovel	, 0.40F, 0.60F,	 -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallRedSand			= new PrefixBlock_(MD.GT, "gt.meta.ore.small.redsand"			, OP.oreSmall				, new Drops_SmallOre(MT.Sand)			, BlockTextureCopied.get(Blocks.sand			, 1), Material.sand, Block.soundTypeSand	, TOOL_shovel	, 0.40F, 0.60F,	 -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmall                   = new PrefixBlock_(MD.GT, "gt.meta.ore.small.default"           , OP.oreSmall               , new Drops_SmallOre(MT.Stone)          , BlockTextureCopied.get(Blocks.stone           , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 1.00F, 1.00F,  -1,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallSandstone          = new PrefixBlock_(MD.GT, "gt.meta.ore.small.sandstone"         , OP.oreSmall               , new Drops_SmallOre(MT.Sand)           , BlockTextureCopied.get(Blocks.sandstone       , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.60F, 0.80F,  -1,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallNetherrack         = new PrefixBlock_(MD.GT, "gt.meta.ore.small.netherrack"        , OP.oreSmall               , new Drops_SmallOre(MT.Netherrack)     , BlockTextureCopied.get(Blocks.netherrack      , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.50F, 0.50F,  -1,   0, F,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallEndstone           = new PrefixBlock_(MD.GT, "gt.meta.ore.small.endstone"          , OP.oreSmall               , new Drops_SmallOre(MT.Endstone)       , BlockTextureCopied.get(Blocks.end_stone       , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 1.00F, 2.00F,  -1,   0, F,T, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallGravel             = new PrefixBlock_(MD.GT, "gt.meta.ore.small.gravel"            , OP.oreSmall               , new Drops_SmallOre(MT.Gravel)         , BlockTextureCopied.get(Blocks.gravel          , 0), Material.sand, Block.soundTypeGravel  , TOOL_shovel   , 0.60F, 0.80F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallSand               = new PrefixBlock_(MD.GT, "gt.meta.ore.small.sand"              , OP.oreSmall               , new Drops_SmallOre(MT.Sand)           , BlockTextureCopied.get(Blocks.sand            , 0), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallRedSand            = new PrefixBlock_(MD.GT, "gt.meta.ore.small.redsand"           , OP.oreSmall               , new Drops_SmallOre(MT.Sand)           , BlockTextureCopied.get(Blocks.sand            , 1), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		
-		((PrefixBlock)BlocksGT.ore				).mDrops = new Drops((PrefixBlock)BlocksGT.oreBroken				, (PrefixBlock)BlocksGT.ore				);
-		((PrefixBlock)BlocksGT.oreSandstone		).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenSandstone		, (PrefixBlock)BlocksGT.oreSandstone	);
-		((PrefixBlock)BlocksGT.oreNetherrack	).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenNetherrack		, (PrefixBlock)BlocksGT.oreNetherrack	);
-		((PrefixBlock)BlocksGT.oreEndstone		).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenEndstone		, (PrefixBlock)BlocksGT.oreEndstone		);
+		((PrefixBlock)BlocksGT.ore              ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBroken                , (PrefixBlock)BlocksGT.ore             );
+		((PrefixBlock)BlocksGT.oreSandstone     ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenSandstone       , (PrefixBlock)BlocksGT.oreSandstone    );
+		((PrefixBlock)BlocksGT.oreNetherrack    ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenNetherrack      , (PrefixBlock)BlocksGT.oreNetherrack   );
+		((PrefixBlock)BlocksGT.oreEndstone      ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenEndstone        , (PrefixBlock)BlocksGT.oreEndstone     );
 		
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.stone			, 1, 0), BlocksGT.ore					);
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.netherrack		, 1, 0), BlocksGT.oreNetherrack			);
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.end_stone		, 1, 0), BlocksGT.oreEndstone			);
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.gravel			, 1, 0), BlocksGT.oreGravel				);
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sandstone		, 1, 0), BlocksGT.oreSandstone			);
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sand			, 1, 0), BlocksGT.oreSand				);
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sand			, 1, 1), BlocksGT.oreRedSand			);
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.stone          , 1, 0), BlocksGT.ore                   );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.netherrack     , 1, 0), BlocksGT.oreNetherrack         );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.end_stone      , 1, 0), BlocksGT.oreEndstone           );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.gravel         , 1, 0), BlocksGT.oreGravel             );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sandstone      , 1, 0), BlocksGT.oreSandstone          );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sand           , 1, 0), BlocksGT.oreSand               );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sand           , 1, 1), BlocksGT.oreRedSand            );
 		
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.stone			, 1, 0), BlocksGT.oreBroken				);
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.netherrack		, 1, 0), BlocksGT.oreBrokenNetherrack	);
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.end_stone		, 1, 0), BlocksGT.oreBrokenEndstone		);
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.gravel			, 1, 0), BlocksGT.oreGravel				);
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sandstone		, 1, 0), BlocksGT.oreBrokenSandstone	);
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sand			, 1, 0), BlocksGT.oreSand				);
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sand			, 1, 1), BlocksGT.oreRedSand			);
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.stone          , 1, 0), BlocksGT.oreBroken             );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.netherrack     , 1, 0), BlocksGT.oreBrokenNetherrack   );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.end_stone      , 1, 0), BlocksGT.oreBrokenEndstone     );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.gravel         , 1, 0), BlocksGT.oreGravel             );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sandstone      , 1, 0), BlocksGT.oreBrokenSandstone    );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sand           , 1, 0), BlocksGT.oreSand               );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sand           , 1, 1), BlocksGT.oreRedSand            );
 		
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.stone			, 1, 0), BlocksGT.oreSmall				);
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.gravel			, 1, 0), BlocksGT.oreSmallGravel		);
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.netherrack		, 1, 0), BlocksGT.oreSmallNetherrack	);
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.end_stone		, 1, 0), BlocksGT.oreSmallEndstone		);
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sandstone		, 1, 0), BlocksGT.oreSmallSandstone		);
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand			, 1, 0), BlocksGT.oreSmallSand			);
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand			, 1, 1), BlocksGT.oreSmallRedSand		);
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.stone           , 1, 0), BlocksGT.oreSmall              );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.gravel          , 1, 0), BlocksGT.oreSmallGravel        );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.netherrack      , 1, 0), BlocksGT.oreSmallNetherrack    );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.end_stone       , 1, 0), BlocksGT.oreSmallEndstone      );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sandstone       , 1, 0), BlocksGT.oreSmallSandstone     );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand            , 1, 0), BlocksGT.oreSmallSand          );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand            , 1, 1), BlocksGT.oreSmallRedSand       );
 		
-		BlocksGT.stoneOverridable.add(BlocksGT.ore					);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreNetherrack		);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreEndstone			);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBroken			);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenNetherrack	);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenEndstone	);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmall				);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallGravel		);
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallNetherrack	);
+		BlocksGT.stoneOverridable.add(BlocksGT.ore                  );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreNetherrack        );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreEndstone          );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBroken            );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenNetherrack  );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenEndstone    );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmall             );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallGravel       );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallNetherrack   );
 		
 		//====================================================================================================//
 		
-		BlocksGT.oreMud						= new PrefixBlock_(MD.GT, "gt.meta.ore.normal.mud"				, OP.oreMud					, null									, BlockTextureCopied.get(BlocksGT.Diggables		, 0), Material.ground,Block.soundTypeGravel	, TOOL_shovel	, 0.30F, 0.50F,	  0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
-		BlocksGT.oreSmallMud				= new PrefixBlock_(MD.GT, "gt.meta.ore.small.mud"				, OP.oreSmall				, new Drops_SmallOre(null)				, BlockTextureCopied.get(BlocksGT.Diggables		, 0), Material.ground,Block.soundTypeGravel	, TOOL_shovel	, 0.30F, 0.50F,	 -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreMud                     = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.mud"              , OP.oreMud                 , null                                  , BlockTextureCopied.get(BlocksGT.Diggables     , 0), Material.ground,Block.soundTypeGravel , TOOL_shovel   , 0.30F, 0.50F,   0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
+		BlocksGT.oreSmallMud                = new PrefixBlock_(MD.GT, "gt.meta.ore.small.mud"               , OP.oreSmall               , new Drops_SmallOre(null)              , BlockTextureCopied.get(BlocksGT.Diggables     , 0), Material.ground,Block.soundTypeGravel , TOOL_shovel   , 0.30F, 0.50F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.Diggables	, 1, 0), BlocksGT.oreMud				);
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.Diggables	, 1, 0), BlocksGT.oreMud				);
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(BlocksGT.Diggables		, 1, 0), BlocksGT.oreSmallMud			);
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.Diggables    , 1, 0), BlocksGT.oreMud                );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.Diggables    , 1, 0), BlocksGT.oreMud                );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(BlocksGT.Diggables     , 1, 0), BlocksGT.oreSmallMud           );
 		
 		//====================================================================================================//
 		
 		if (MD.UB.mLoaded) {
-		RM.generify(ST.make(MD.UB, "igneousStone"			, 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.UB, "metamorphicStone"		, 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.UB, "sedimentaryStone"		, 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.UB, "igneousCobblestone"		, 1, W), ST.make(Blocks.cobblestone, 1, 0));
-		RM.generify(ST.make(MD.UB, "metamorphicCobblestone"	, 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.UB, "igneousStone"           , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.UB, "metamorphicStone"       , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.UB, "sedimentaryStone"       , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.UB, "igneousCobblestone"     , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.UB, "metamorphicCobblestone" , 1, W), ST.make(Blocks.cobblestone, 1, 0));
 		}
 		
 		OreDictPrefix[] tPrefix;
 		OreDictMaterial[] tDrops;
 		
-		tPrefix	= new OreDictPrefix[] {OP.oreVanillagranite, OP.oreBlackgranite, OP.oreVanillastone, OP.oreAndesite, OP.oreVanillastone, OP.oreBasalt, OP.oreKomatiite, OP.oreVanillastone};
-		tDrops	= new OreDictMaterial[] {MT.Granite, MT.GraniteBlack, MT.Rhyolite, MT.Andesite, MT.Gabbro, MT.Basalt, MT.Komatiite, MT.Dacite};
+		tPrefix = new OreDictPrefix[] {OP.oreVanillagranite, OP.oreBlackgranite, OP.oreVanillastone, OP.oreAndesite, OP.oreVanillastone, OP.oreBasalt, OP.oreKomatiite, OP.oreVanillastone};
+		tDrops  = new OreDictMaterial[] {MT.Granite, MT.GraniteBlack, MT.Rhyolite, MT.Andesite, MT.Gabbro, MT.Basalt, MT.Komatiite, MT.Dacite};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "igneousStone", i, i+8, "igneousCobblestone", i, "ub.igneous."+i, tPrefix[i], tDrops[i]);
 		
-		tPrefix	= new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreQuartzite, OP.oreBlueschist, OP.oreGreenschist, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops	= new OreDictMaterial[] {MT.Gneiss, MT.Eclogite, MT.Marble, MT.Quartzite, MT.Blueschist, MT.Greenschist, MT.Soapstone, MT.Migmatite};
+		tPrefix = new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreQuartzite, OP.oreBlueschist, OP.oreGreenschist, OP.oreVanillastone, OP.oreVanillastone};
+		tDrops  = new OreDictMaterial[] {MT.Gneiss, MT.Eclogite, MT.Marble, MT.Quartzite, MT.Blueschist, MT.Greenschist, MT.Soapstone, MT.Migmatite};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "metamorphicStone", i, i+8, "metamorphicCobblestone", i, "ub.metamorphic."+i, tPrefix[i], tDrops[i]);
 		
-		tPrefix	= new OreDictPrefix[] {OP.oreLimestone, OP.oreVanillastone, OP.oreShale, OP.oreSiltstone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops	= new OreDictMaterial[] {MT.Limestone, MT.Chalk, MT.Shale, MT.Siltstone, MT.Lignite, MT.Dolomite, MT.Greywacke, MT.Chert};
+		tPrefix = new OreDictPrefix[] {OP.oreLimestone, OP.oreVanillastone, OP.oreShale, OP.oreSiltstone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
+		tDrops  = new OreDictMaterial[] {MT.Limestone, MT.Chalk, MT.Shale, MT.Siltstone, MT.Lignite, MT.Dolomite, MT.Greywacke, MT.Chert};
 		for (int i = 0; i < 8; i++) rockset(MD.UB, "sedimentaryStone", i, i+8, "sedimentaryStone", i, "ub.sedimentary."+i, tPrefix[i], tDrops[i]);
 		
 		if (MD.PFAA.mLoaded) {
-		RM.generify(ST.make(MD.PFAA, "weakStone"			, 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "mediumStone"			, 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "strongStone"			, 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "veryStrongStone"		, 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "weakRubble"			, 1, W), ST.make(Blocks.gravel, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "mediumCobble"			, 1, W), ST.make(Blocks.cobblestone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "strongCobble"			, 1, W), ST.make(Blocks.cobblestone, 1, 0));
-		RM.generify(ST.make(MD.PFAA, "veryStrongCobble"		, 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "weakStone"            , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "mediumStone"          , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "strongStone"          , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "veryStrongStone"      , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "weakRubble"           , 1, W), ST.make(Blocks.gravel, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "mediumCobble"         , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "strongCobble"         , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.PFAA, "veryStrongCobble"     , 1, W), ST.make(Blocks.cobblestone, 1, 0));
 		}
 		
-		tPrefix	= new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreShale};
-		tDrops	= new OreDictMaterial[] {MT.Stone, MT.Stone, MT.Stone, MT.Stone, MT.Shale};
+		tPrefix = new OreDictPrefix[] {OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreShale};
+		tDrops  = new OreDictMaterial[] {MT.Stone, MT.Stone, MT.Stone, MT.Stone, MT.Shale};
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "weakStone", i, i, "weakRubble", i, "pfaa.weak."+i, tPrefix[i], tDrops[i], 0.5F, 0.5F, 0, F, F, T);
 		
-		tPrefix	= new OreDictPrefix[] {OP.oreLimestone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops	= new OreDictMaterial[] {MT.Limestone, MT.Stone, MT.Stone, MT.Stone, MT.Stone};
+		tPrefix = new OreDictPrefix[] {OP.oreLimestone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
+		tDrops  = new OreDictMaterial[] {MT.Limestone, MT.Stone, MT.Stone, MT.Stone, MT.Stone};
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "mediumStone", i, i, "mediumCobble", i, "pfaa.medium."+i, tPrefix[i], tDrops[i], 1.0F, 1.0F, 0, F, F, T);
 		
-		tPrefix	= new OreDictPrefix[] {OP.oreAndesite, OP.oreBasalt, OP.oreVanillastone, OP.oreBlackgranite, OP.oreVanillastone, OP.oreMarble, OP.oreVanillastone, OP.oreVanillastone, OP.oreSandstone, OP.oreSandstone};
-		tDrops	= new OreDictMaterial[] {MT.Andesite, MT.Basalt, MT.Gneiss, MT.GraniteBlack, MT.Greenschist, MT.Marble, MT.Stone, MT.Rhyolite, MT.Sand, MT.Sand};
+		tPrefix = new OreDictPrefix[] {OP.oreAndesite, OP.oreBasalt, OP.oreVanillastone, OP.oreBlackgranite, OP.oreVanillastone, OP.oreMarble, OP.oreVanillastone, OP.oreVanillastone, OP.oreSandstone, OP.oreSandstone};
+		tDrops  = new OreDictMaterial[] {MT.Andesite, MT.Basalt, MT.Gneiss, MT.GraniteBlack, MT.Greenschist, MT.Marble, MT.Stone, MT.Rhyolite, MT.Sand, MT.Sand};
 		for (int i = 0; i <10; i++) rockset(MD.PFAA, "strongStone", i, i, "strongCobble", i, "pfaa.strong."+i, tPrefix[i], tDrops[i], 1.5F, 1.5F, 1, F, F, T);
 		
-		tPrefix	= new OreDictPrefix[] {OP.oreDiorite, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreQuartzite};
-		tDrops	= new OreDictMaterial[] {MT.Diorite, MT.Gabbro, MT.Stone, MT.Stone, MT.Quartzite};
+		tPrefix = new OreDictPrefix[] {OP.oreDiorite, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone, OP.oreQuartzite};
+		tDrops  = new OreDictMaterial[] {MT.Diorite, MT.Gabbro, MT.Stone, MT.Stone, MT.Quartzite};
 		for (int i = 0; i < 5; i++) rockset(MD.PFAA, "veryStrongStone", i, i, "veryStrongCobble", i, "pfaa.verystrong."+i, tPrefix[i], tDrops[i], 2.0F, 2.0F, 2, F, F, T);
 		
 		
-		rockset(MD.CHSL, "granite"						, 0, "chisel.granite"		, OP.oreVanillagranite		, MT.Granite);
-		rockset(MD.CHSL, "diorite"						, 0, "chisel.diorite"		, OP.oreDiorite				, MT.Diorite);
-		rockset(MD.CHSL, "andesite"						, 0, "chisel.andesite"		, OP.oreAndesite			, MT.Andesite);
+		rockset(MD.CHSL, "granite"                      , 0, "chisel.granite"       , OP.oreVanillagranite      , MT.Granite);
+		rockset(MD.CHSL, "diorite"                      , 0, "chisel.diorite"       , OP.oreDiorite             , MT.Diorite);
+		rockset(MD.CHSL, "andesite"                     , 0, "chisel.andesite"      , OP.oreAndesite            , MT.Andesite);
 		
-		rockset(MD.CHSL, "marble"						, 0, "chisel.marble"		, OP.oreMarble				, MT.Marble);
-		rockset(MD.CHSL, "limestone"					, 0, "chisel.limestone"		, OP.oreLimestone			, MT.Limestone);
+		rockset(MD.CHSL, "marble"                       , 0, "chisel.marble"        , OP.oreMarble              , MT.Marble);
+		rockset(MD.CHSL, "limestone"                    , 0, "chisel.limestone"     , OP.oreLimestone           , MT.Limestone);
 		
-		rockset(MD.EtFu, "stone"						, 1, "etfu.granite"			, OP.oreVanillagranite		, MT.Granite);
-		rockset(MD.EtFu, "stone"						, 3, "etfu.diorite"			, OP.oreDiorite				, MT.Diorite);
-		rockset(MD.EtFu, "stone"						, 5, "etfu.andesite"		, OP.oreAndesite			, MT.Andesite);
+		rockset(MD.EtFu, "stone"                        , 1, "etfu.granite"         , OP.oreVanillagranite      , MT.Granite);
+		rockset(MD.EtFu, "stone"                        , 3, "etfu.diorite"         , OP.oreDiorite             , MT.Diorite);
+		rockset(MD.EtFu, "stone"                        , 5, "etfu.andesite"        , OP.oreAndesite            , MT.Andesite);
 		
-		rockset(MD.BoP, "rocks"							, 0, "bop.limestone"		, OP.oreLimestone			, MT.Limestone);
-		rockset(MD.BoP, "rocks"							, 2, "bop.siltstone"		, OP.oreSiltstone			, MT.Siltstone);
-		rockset(MD.BoP, "rocks"							, 4, "bop.shale"			, OP.oreShale				, MT.Shale);
+		rockset(MD.BoP, "rocks"                         , 0, "bop.limestone"        , OP.oreLimestone           , MT.Limestone);
+		rockset(MD.BoP, "rocks"                         , 2, "bop.siltstone"        , OP.oreSiltstone           , MT.Siltstone);
+		rockset(MD.BoP, "rocks"                         , 4, "bop.shale"            , OP.oreShale               , MT.Shale);
 		
-		rockset(MD.GaSu, "basalt"						, 0, "gasu.basalt"			, OP.oreBasalt				, MT.Basalt);
+		rockset(MD.GaSu, "basalt"                       , 0, "gasu.basalt"          , OP.oreBasalt              , MT.Basalt);
 		
-		rockset(MD.RC, "cube"							, 6, "rc.abyssal"			, OP.oreBasalt				, MT.Basalt);
-		rockset(MD.RC, "cube"							, 7, "rc.quarried"			, OP.oreMarble				, MT.Marble);
+		rockset(MD.RC, "cube"                           , 6, "rc.abyssal"           , OP.oreBasalt              , MT.Basalt);
+		rockset(MD.RC, "cube"                           , 7, "rc.quarried"          , OP.oreMarble              , MT.Marble);
 		
 		if (MD.AETHER.mLoaded) {
-		rockset(MD.AETHER, "holystone"					, 1, "aether.holystone"		, OP.oreHolystone			, MT.Holystone);
+		rockset(MD.AETHER, "holystone"                  , 1, "aether.holystone"     , OP.oreHolystone           , MT.Holystone);
 		}
 		if (MD.ERE.mLoaded) {
-		rockset(MD.ERE, "umberstone", 0, 0, "umberstone", 1, "erebus.umberstone"	, OP.oreUmberstone			, MT.Umber);
-		rockset(MD.ERE, "umberGravel"					, 0, "erebus.umbergravel"	, OP.oreUmberstone			, MT.Umber, 1, 1, 0, T, F, F);
+		rockset(MD.ERE, "umberstone", 0, 0, "umberstone", 1, "erebus.umberstone"    , OP.oreUmberstone          , MT.Umber);
+		rockset(MD.ERE, "umberGravel"                   , 0, "erebus.umbergravel"   , OP.oreUmberstone          , MT.Umber, 1, 1, 0, T, F, F);
 		}
 		if (MD.BTL.mLoaded) {
-		rockset(MD.BTL, "betweenstone"					, 0, "btl.betweenstone"		, OP.oreBetweenstone		, MT.Betweenstone);
-		rockset(MD.BTL, "pitstone"						, 0, "btl.pitstone"			, OP.orePitstone			, MT.Pitstone);
+		rockset(MD.BTL, "betweenstone"                  , 0, "btl.betweenstone"     , OP.oreBetweenstone        , MT.Betweenstone);
+		rockset(MD.BTL, "pitstone"                      , 0, "btl.pitstone"         , OP.orePitstone            , MT.Pitstone);
 		}
 		if (MD.GC.mLoaded) {
-		rockset(MD.GC, "tile.moonBlock"					, 3, "gc.moon.dirt"			, OP.oreMoon				, MT.MoonRock);
-		rockset(MD.GC, "tile.moonBlock"					, 4, "gc.moon.rock"			, OP.oreMoon				, MT.MoonRock);
+		rockset(MD.GC, "tile.moonBlock"                 , 3, "gc.moon.dirt"         , OP.oreMoon                , MT.MoonRock);
+		rockset(MD.GC, "tile.moonBlock"                 , 4, "gc.moon.rock"         , OP.oreMoon                , MT.MoonRock);
 		}
 		if (MD.GC_PLANETS.mLoaded) {
-		rockset(MD.GC_PLANETS, "tile.mars", 9, 9, "tile.mars", 4, "gc.mars.rock"	, OP.oreMars				, MT.MarsRock);
-		rockset(MD.GC_PLANETS, "tile.mars"				, 6, "gc.mars.dirt"			, OP.oreMars				, MT.MarsRock);
+		rockset(MD.GC_PLANETS, "tile.mars", 9, 9, "tile.mars", 4, "gc.mars.rock"    , OP.oreMars                , MT.MarsRock);
+		rockset(MD.GC_PLANETS, "tile.mars"              , 6, "gc.mars.dirt"         , OP.oreMars                , MT.MarsRock);
 		
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"	, 0, "gc.asteroids.dark"	, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"	, 1, "gc.asteroids.gray"	, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"	, 2, "gc.asteroids.light"	, OP.oreSpace				, MT.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"    , 0, "gc.asteroids.dark"    , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"    , 1, "gc.asteroids.gray"    , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_PLANETS, "tile.asteroidsBlock"    , 2, "gc.asteroids.light"   , OP.oreSpace               , MT.SpaceRock);
 		}
 		
 		/* Doesn't work so I won't waste Block IDs until I get it to work.
 		if (MD.GC_GALAXYSPACE.mLoaded) {
-		rockset(MD.GC_GALAXYSPACE, "mercuryblocks"		, 2, "gs.mercury.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ceresblocks"		, 1, "gs.ceres.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "deimosblocks"		, 1, "gs.deimos.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ioblocks"			, 2, "gs.io.rock"			, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "oberonblocks"		, 2, "gs.oberon.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "proteusblocks"		, 2, "gs.proteus.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "tritonblocks"		, 2, "gs.triton.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "mirandablocks"		, 2, "gs.miranda.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "venusblocks"		, 1, "gs.venus.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "phobosblocks"		, 2, "gs.phobos.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "ganymedeblocks"		, 1, "gs.ganymede.rock"		, OP.oreSpace				, MT.SpaceRock);
-		rockset(MD.GC_GALAXYSPACE, "barnardaEsubgrunt"	, 0, "gs.barnarda.e.rock"	, OP.oreSpace				, MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "mercuryblocks"      , 2, "gs.mercury.rock"      , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "ceresblocks"        , 1, "gs.ceres.rock"        , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "deimosblocks"       , 1, "gs.deimos.rock"       , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "ioblocks"           , 2, "gs.io.rock"           , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "oberonblocks"       , 2, "gs.oberon.rock"       , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "proteusblocks"      , 2, "gs.proteus.rock"      , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "tritonblocks"       , 2, "gs.triton.rock"       , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "mirandablocks"      , 2, "gs.miranda.rock"      , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "venusblocks"        , 1, "gs.venus.rock"        , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "phobosblocks"       , 2, "gs.phobos.rock"       , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "ganymedeblocks"     , 1, "gs.ganymede.rock"     , OP.oreSpace               , MT.SpaceRock);
+		rockset(MD.GC_GALAXYSPACE, "barnardaEsubgrunt"  , 0, "gs.barnarda.e.rock"   , OP.oreSpace               , MT.SpaceRock);
 		}*/
 		
 		if (MD.CHSL.mLoaded) {
@@ -320,9 +320,9 @@ public class Loader_Ores implements Runnable {
 		}
 		
 		PrefixBlock
-		tOre1 = new PrefixBlock_(MD.GT, "gt.meta.ore.normal."+aName, aPrefix		, aMod.mLoaded ? null						: ((PrefixBlock)BlocksGT.ore		).mDrops, BlockTextureCopied.get(aRock	, aMetaA==W?0:aMetaA), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness	 , aBaseResistance	,  0, aHarvestLevelMinimum, aGravity	, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY),
-		tOre2 = new PrefixBlock_(MD.GT, "gt.meta.ore.broken."+aName, aPrefix		, aMod.mLoaded ? null						: ((PrefixBlock)BlocksGT.oreBroken	).mDrops, BlockTextureCopied.get(aCobble, aMeta ==W?0:aMeta ), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness/2, aBaseResistance/2, -1, aHarvestLevelMinimum, T		, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY),
-		tOre3 = new PrefixBlock_(MD.GT, "gt.meta.ore.small." +aName, OP.oreSmall	, aMod.mLoaded ? new Drops_SmallOre(aDrops)	: ((PrefixBlock)BlocksGT.oreSmall	).mDrops, BlockTextureCopied.get(aRock	, aMetaA==W?0:aMetaA), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness	 , aBaseResistance	, -1, aHarvestLevelMinimum, aGravity	, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
+		tOre1 = new PrefixBlock_(MD.GT, "gt.meta.ore.normal."+aName, aPrefix        , aMod.mLoaded ? null                       : ((PrefixBlock)BlocksGT.ore        ).mDrops, BlockTextureCopied.get(aRock  , aMetaA==W?0:aMetaA), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness  , aBaseResistance  ,  0, aHarvestLevelMinimum, aGravity    , aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY),
+		tOre2 = new PrefixBlock_(MD.GT, "gt.meta.ore.broken."+aName, aPrefix        , aMod.mLoaded ? null                       : ((PrefixBlock)BlocksGT.oreBroken  ).mDrops, BlockTextureCopied.get(aCobble, aMeta ==W?0:aMeta ), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness/2, aBaseResistance/2, -1, aHarvestLevelMinimum, T       , aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY),
+		tOre3 = new PrefixBlock_(MD.GT, "gt.meta.ore.small." +aName, OP.oreSmall    , aMod.mLoaded ? new Drops_SmallOre(aDrops) : ((PrefixBlock)BlocksGT.oreSmall   ).mDrops, BlockTextureCopied.get(aRock  , aMetaA==W?0:aMetaA), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness  , aBaseResistance  , -1, aHarvestLevelMinimum, aGravity    , aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
 		
 		if (aMod.mLoaded) {
 			if (aStoneOverrideable) {

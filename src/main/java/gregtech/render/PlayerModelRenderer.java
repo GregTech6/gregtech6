@@ -46,18 +46,18 @@ public class PlayerModelRenderer extends RenderPlayer {
 	
 	private ResourceLocation getResource(String aPlayer) {
 		aPlayer = aPlayer.toLowerCase();
-		if (aPlayer.equalsIgnoreCase("GregoriusT"))		return mResources[3];
-		if (aPlayer.equalsIgnoreCase("Mine_Sasha"))		return mResources[4];
-		if (aPlayer.equalsIgnoreCase("Mr_Brain"))		return mResources[2];
-		if (aPlayer.equalsIgnoreCase("Friedi4321"))		return mResources[0];
-		if (mSupporterListGold.contains(aPlayer))		return mResources[4];
-		if (mSupporterListSilver.contains(aPlayer))		return mResources[1];
+		if (aPlayer.equalsIgnoreCase("GregoriusT"))     return mResources[3];
+		if (aPlayer.equalsIgnoreCase("Mine_Sasha"))     return mResources[4];
+		if (aPlayer.equalsIgnoreCase("Mr_Brain"))       return mResources[2];
+		if (aPlayer.equalsIgnoreCase("Friedi4321"))     return mResources[0];
+		if (mSupporterListGold.contains(aPlayer))       return mResources[4];
+		if (mSupporterListSilver.contains(aPlayer))     return mResources[1];
 		return null;
 	}
 	
 	public void receiveRenderSpecialsEvent(RenderPlayerEvent.Specials.Pre aEvent) {
 		AbstractClientPlayer aPlayer = (AbstractClientPlayer)aEvent.entityPlayer;
-//		if (UT.Entities.getFullInvisibility(aPlayer)) {aEvent.setCanceled(true); return;}
+//      if (UT.Entities.getFullInvisibility(aPlayer)) {aEvent.setCanceled(true); return;}
 		float aPartialTicks = aEvent.partialRenderTick;
 		
 		if (aPlayer.isInvisible() || aPlayer.getActivePotionEffect(Potion.invisibility) != null) return;

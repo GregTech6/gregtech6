@@ -99,7 +99,7 @@ public class GT_Tool_Screwdriver extends ToolStats {
 	
 	@Override
 	public String getCraftingSound() {
-		return SFX.IC_WRENCH;
+		return SFX.GT_WRENCH;
 	}
 	
 	@Override
@@ -125,7 +125,7 @@ public class GT_Tool_Screwdriver extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_screwdriver, SFX.IC_WRENCH, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_screwdriver, SFX.GT_WRENCH, 100, !canBlock()));
 	}
 	
 	@Override

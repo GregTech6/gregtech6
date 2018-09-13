@@ -43,13 +43,13 @@ public interface ITileEntity extends IHasWorldAndCoords, ITileEntityUnloadable {
 	 * YOU MUST HAVE THIS INSIDE YOUR BLOCK CODE!!!
 	 * 
 	 * public void onNeighborChange(IBlockAccess aWorld, int aX, int aY, int aZ, int aTileX, int aTileY, int aTileZ) {
-	 *	   TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-	 *	   if (tTileEntity instanceof ITileEntity) ((ITileEntity)tTileEntity).onAdjacentBlockChange(aTileX, aTileY, aTileZ);
+	 *     TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+	 *     if (tTileEntity instanceof ITileEntity) ((ITileEntity)tTileEntity).onAdjacentBlockChange(aTileX, aTileY, aTileZ);
 	 * }
 	 * 
 	 * public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {
-	 *	   TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-	 *	   if (tTileEntity instanceof ITileEntity) ((ITileEntity)tTileEntity).onAdjacentBlockChange(aX, aY, aZ);
+	 *     TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+	 *     if (tTileEntity instanceof ITileEntity) ((ITileEntity)tTileEntity).onAdjacentBlockChange(aX, aY, aZ);
 	 * }
 	 */
 	public void onAdjacentBlockChange(int aTileX, int aTileY, int aTileZ);

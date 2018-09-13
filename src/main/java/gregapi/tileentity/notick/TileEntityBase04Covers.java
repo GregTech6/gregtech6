@@ -236,12 +236,12 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 		return 0;
 	}
 	
-	@Override public IPacket getClientDataPacket(boolean aSendAll)								{return aSendAll ? hasCovers() ? new PacketSyncDataIDsAndCovers				(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID()				, mCovers) : new PacketSyncDataIDs				(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID()				) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataCoverVisuals				(getCoords()				, mCovers) : null;}
-	@Override public IPacket getClientDataPacketByte(boolean aSendAll, byte aByte)				{return aSendAll ? hasCovers() ? new PacketSyncDataByteAndIDsAndCovers		(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByte			, mCovers) : new PacketSyncDataByteAndIDs		(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByte			) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataByteAndCoverVisuals		(getCoords(), aByte			, mCovers) : new PacketSyncDataByte			(getCoords(), aByte			);}
-	@Override public IPacket getClientDataPacketShort(boolean aSendAll, short aShort)			{return aSendAll ? hasCovers() ? new PacketSyncDataShortAndIDsAndCovers		(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aShort		, mCovers) : new PacketSyncDataShortAndIDs		(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aShort		) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataShortAndCoverVisuals		(getCoords(), aShort		, mCovers) : new PacketSyncDataShort		(getCoords(), aShort		);}
-	@Override public IPacket getClientDataPacketInteger(boolean aSendAll, int aInteger)			{return aSendAll ? hasCovers() ? new PacketSyncDataIntegerAndIDsAndCovers	(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aInteger		, mCovers) : new PacketSyncDataIntegerAndIDs	(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aInteger		) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataIntegerAndCoverVisuals	(getCoords(), aInteger		, mCovers) : new PacketSyncDataInteger		(getCoords(), aInteger		);}
-	@Override public IPacket getClientDataPacketLong(boolean aSendAll, long aLong)				{return aSendAll ? hasCovers() ? new PacketSyncDataLongAndIDsAndCovers		(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aLong			, mCovers) : new PacketSyncDataLongAndIDs		(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aLong			) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataLongAndCoverVisuals		(getCoords(), aLong			, mCovers) : new PacketSyncDataLong			(getCoords(), aLong			);}
-	@Override public IPacket getClientDataPacketByteArray(boolean aSendAll, byte... aByteArray)	{return aSendAll ? hasCovers() ? new PacketSyncDataByteArrayAndIDsAndCovers	(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByteArray	, mCovers) : new PacketSyncDataByteArrayAndIDs	(getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByteArray	) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataByteArrayAndCoverVisuals	(getCoords(), aByteArray	, mCovers) : new PacketSyncDataByteArray	(getCoords(), aByteArray	);}
+	@Override public IPacket getClientDataPacket(boolean aSendAll)                              {return aSendAll ? hasCovers() ? new PacketSyncDataIDsAndCovers             (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID()                , mCovers) : new PacketSyncDataIDs              (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID()                ) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataCoverVisuals              (getCoords()                , mCovers) : null;}
+	@Override public IPacket getClientDataPacketByte(boolean aSendAll, byte aByte)              {return aSendAll ? hasCovers() ? new PacketSyncDataByteAndIDsAndCovers      (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByte         , mCovers) : new PacketSyncDataByteAndIDs       (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByte         ) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataByteAndCoverVisuals       (getCoords(), aByte         , mCovers) : new PacketSyncDataByte         (getCoords(), aByte         );}
+	@Override public IPacket getClientDataPacketShort(boolean aSendAll, short aShort)           {return aSendAll ? hasCovers() ? new PacketSyncDataShortAndIDsAndCovers     (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aShort        , mCovers) : new PacketSyncDataShortAndIDs      (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aShort        ) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataShortAndCoverVisuals      (getCoords(), aShort        , mCovers) : new PacketSyncDataShort        (getCoords(), aShort        );}
+	@Override public IPacket getClientDataPacketInteger(boolean aSendAll, int aInteger)         {return aSendAll ? hasCovers() ? new PacketSyncDataIntegerAndIDsAndCovers   (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aInteger      , mCovers) : new PacketSyncDataIntegerAndIDs    (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aInteger      ) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataIntegerAndCoverVisuals    (getCoords(), aInteger      , mCovers) : new PacketSyncDataInteger      (getCoords(), aInteger      );}
+	@Override public IPacket getClientDataPacketLong(boolean aSendAll, long aLong)              {return aSendAll ? hasCovers() ? new PacketSyncDataLongAndIDsAndCovers      (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aLong         , mCovers) : new PacketSyncDataLongAndIDs       (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aLong         ) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataLongAndCoverVisuals       (getCoords(), aLong         , mCovers) : new PacketSyncDataLong         (getCoords(), aLong         );}
+	@Override public IPacket getClientDataPacketByteArray(boolean aSendAll, byte... aByteArray) {return aSendAll ? hasCovers() ? new PacketSyncDataByteArrayAndIDsAndCovers (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByteArray    , mCovers) : new PacketSyncDataByteArrayAndIDs  (getCoords(), getMultiTileEntityRegistryID(), getMultiTileEntityID(), aByteArray    ) : hasCovers() && mCovers.requiresSync() ? new PacketSyncDataByteArrayAndCoverVisuals  (getCoords(), aByteArray    , mCovers) : new PacketSyncDataByteArray    (getCoords(), aByteArray    );}
 	
 	public void checkCoverValidity() {
 		if (worldObj != null && isServerSide() && hasCovers()) for (byte tSide : ALL_SIDES_VALID) if (!allowCovers(tSide)) {
@@ -253,10 +253,10 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 		}
 	}
 	
-	@Override public boolean isFireProof		(byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
-	@Override public boolean isRainProof		(byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
-	@Override public boolean isWaterProof		(byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
-	@Override public boolean isThunderProof		(byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
+	@Override public boolean isFireProof        (byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
+	@Override public boolean isRainProof        (byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
+	@Override public boolean isWaterProof       (byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
+	@Override public boolean isThunderProof     (byte aSide) {return hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers);}
 	
 	public boolean allowCovers(byte aSide) {
 		return T;
@@ -449,10 +449,10 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 	public byte isProvidingWeakPower2(byte aSide) {return 0;}
 	public byte isProvidingStrongPower2(byte aSide) {return 0;}
 	
-	@Override public final boolean isSideSolid		(byte aSide) {return (hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isSolid	(aSide, mCovers)) || isSideSolid2(aSide);}
-	@Override public final boolean isSurfaceOpaque	(byte aSide) {return (hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque	(aSide, mCovers)) || isSurfaceOpaque2(aSide);}
-	public boolean isSideSolid2		(byte aSide) {return isSurfaceSolid(aSide);}
-	public boolean isSurfaceOpaque2	(byte aSide) {return T;}
+	@Override public final boolean isSideSolid      (byte aSide) {return (hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isSolid   (aSide, mCovers)) || isSideSolid2(aSide);}
+	@Override public final boolean isSurfaceOpaque  (byte aSide) {return (hasCovers() && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque  (aSide, mCovers)) || isSurfaceOpaque2(aSide);}
+	public boolean isSideSolid2     (byte aSide) {return isSurfaceSolid(aSide);}
+	public boolean isSurfaceOpaque2 (byte aSide) {return T;}
 	
 	private int mInternalRenderPasses = 0;
 	

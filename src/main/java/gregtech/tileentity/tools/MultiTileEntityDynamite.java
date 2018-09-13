@@ -79,12 +79,12 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.TOOLTIP_BLASTPOWER) + Chat.WHITE + mMaxExplosionResistance);
-		aList.add(Chat.CYAN		+ LH.get(LH.TOOLTIP_BLASTRANGE) + Chat.WHITE + "3x3x3");
+		aList.add(Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTPOWER) + Chat.WHITE + mMaxExplosionResistance);
+		aList.add(Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTRANGE) + Chat.WHITE + "3x3x3");
 		if (mFortune > 0)
-		aList.add(Chat.CYAN		+ LH.get(LH.TOOLTIP_BLASTFORTUNE) + Chat.WHITE + mFortune);
-		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_IGNITE_FIRE) + " (" + LH.get(LH.FACE_FRONT) + ")");
-		aList.add(Chat.RED		+ LH.get(LH.TOOLTIP_EXPLOSIVE));
+		aList.add(Chat.CYAN     + LH.get(LH.TOOLTIP_BLASTFORTUNE) + Chat.WHITE + mFortune);
+		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_IGNITE_FIRE) + " (" + LH.get(LH.FACE_FRONT) + ")");
+		aList.add(Chat.RED      + LH.get(LH.TOOLTIP_EXPLOSIVE));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -95,8 +95,8 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_igniter		) && mCountDown == 0 && WD.oxygen(worldObj, xCoord, yCoord, zCoord)	) {mCountDown = 100; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_TNT_IGNITE	, 1.0F, 0.5F, getCoords()); return 10000;}
-		if (aTool.equals(TOOL_extinguisher	) && mCountDown != 0												) {mCountDown =	  0; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_FIZZ		, 1.0F, 0.5F, getCoords()); return 10000;}
+		if (aTool.equals(TOOL_igniter       ) && mCountDown == 0 && WD.oxygen(worldObj, xCoord, yCoord, zCoord) ) {mCountDown = 100; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_TNT_IGNITE , 1.0F, 0.5F, getCoords()); return 10000;}
+		if (aTool.equals(TOOL_extinguisher  ) && mCountDown != 0                                                ) {mCountDown =   0; updateClientData(); UT.Sounds.send(worldObj, SFX.MC_FIZZ       , 1.0F, 0.5F, getCoords()); return 10000;}
 		return 0;
 	}
 	
@@ -142,18 +142,18 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	}
 	
 	public static final IIconContainer
-	sTextureFront		= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored/front"),
-	sTextureBack		= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored/back"),
-	sTextureSide		= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored/side"),
-	sOverlayFront		= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay/front"),
-	sOverlayBack		= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay/back"),
-	sOverlaySide		= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay/side"),
-	sTextureFrontActive	= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored_active/front"),
-	sTextureBackActive	= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored_active/back"),
-	sTextureSideActive	= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored_active/side"),
-	sOverlayFrontActive	= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay_active/front"),
-	sOverlayBackActive	= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay_active/back"),
-	sOverlaySideActive	= new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay_active/side");
+	sTextureFront       = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored/front"),
+	sTextureBack        = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored/back"),
+	sTextureSide        = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored/side"),
+	sOverlayFront       = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay/front"),
+	sOverlayBack        = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay/back"),
+	sOverlaySide        = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay/side"),
+	sTextureFrontActive = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored_active/front"),
+	sTextureBackActive  = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored_active/back"),
+	sTextureSideActive  = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/colored_active/side"),
+	sOverlayFrontActive = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay_active/front"),
+	sOverlayBackActive  = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay_active/back"),
+	sOverlaySideActive  = new Textures.BlockIcons.CustomIcon("machines/tools/dynamite/overlay_active/side");
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
@@ -171,15 +171,15 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	@Override public void onExploded(Explosion aExplosion) {mDontDrop = T; super.onExploded(aExplosion); explode();}
 	@Override public boolean remoteActivate() {if (mCountDown > 20 || mCountDown == 0) {mCountDown = 20; updateClientData();} return F;}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return 0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return 0.0F;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return F;}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
-	@Override public boolean useSidePlacementRotation		() {return T;}
-	@Override public boolean useInversePlacementRotation	() {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return 0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return 0.0F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean useSidePlacementRotation       () {return T;}
+	@Override public boolean useInversePlacementRotation    () {return F;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	

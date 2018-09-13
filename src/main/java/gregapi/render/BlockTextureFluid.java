@@ -38,10 +38,10 @@ public class BlockTextureFluid implements ITexture {
 	private final IIcon mIcon;
 	
 	/**
-	 *	DO NOT MANIPULATE THE VALUES INSIDE THIS ARRAY!!!
-	 *	
-	 *	Just set this variable to another different Array instead.
-	 *	Otherwise some coloured things will get Problems.
+	 *  DO NOT MANIPULATE THE VALUES INSIDE THIS ARRAY!!!
+	 *  
+	 *  Just set this variable to another different Array instead.
+	 *  Otherwise some coloured things will get Problems.
 	 */
 	public short[] mRGBa;
 	
@@ -101,9 +101,9 @@ public class BlockTextureFluid implements ITexture {
 	
 	@Override
 	public void renderXPos(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, int aBrightness, boolean aChangedBlockBounds) {
-//		aRenderer.flipTexture = !aRenderer.flipTexture;
+//      aRenderer.flipTexture = !aRenderer.flipTexture;
 		ITexture.Util.renderSide(SIDE_X_POS, getIcon(5), mRGBa, mAllowAlpha, mLuminosity > aBrightness, T, aRenderer, aBlock, aX, aY, aZ, Math.max(mLuminosity, aBrightness), aChangedBlockBounds);
-//		aRenderer.flipTexture = !aRenderer.flipTexture;
+//      aRenderer.flipTexture = !aRenderer.flipTexture;
 	}
 	
 	@Override
@@ -128,9 +128,9 @@ public class BlockTextureFluid implements ITexture {
 	
 	@Override
 	public void renderZNeg(RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, int aBrightness, boolean aChangedBlockBounds) {
-//		aRenderer.flipTexture = !aRenderer.flipTexture;
+//      aRenderer.flipTexture = !aRenderer.flipTexture;
 		ITexture.Util.renderSide(SIDE_Z_NEG, getIcon(2), mRGBa, mAllowAlpha, mLuminosity > aBrightness, T, aRenderer, aBlock, aX, aY, aZ, Math.max(mLuminosity, aBrightness), aChangedBlockBounds);
-//		aRenderer.flipTexture = !aRenderer.flipTexture;
+//      aRenderer.flipTexture = !aRenderer.flipTexture;
 	}
 	
 	@Override

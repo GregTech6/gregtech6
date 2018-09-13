@@ -102,7 +102,7 @@ public class GT_Tool_Pincers extends ToolStats {
 		return F;
 	}
 	
-	@Override public boolean canCollect()													{return T;}
+	@Override public boolean canCollect()                                                   {return T;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {

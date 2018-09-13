@@ -94,7 +94,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN	+ LH.get("gt.tooltip.pump.1"));
+		aList.add(Chat.CYAN + LH.get("gt.tooltip.pump.1"));
 		LH.addEnergyToolTips(this, aList, mEnergyType, null, LH.get(LH.FACE_BACK), null);
 		aList.add(Chat.ORANGE + LH.get("gt.tooltip.pump.2"));
 		super.addToolTips(aList, aStack, aF3_H);
@@ -310,9 +310,9 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		}
 	}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyType;}
-	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && (SIDES_INVALID[aSide] || aSide == OPPOSITES[mFacing]) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mInput;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyType;}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && (SIDES_INVALID[aSide] || aSide == OPPOSITES[mFacing]) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyType.AS_LIST;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}

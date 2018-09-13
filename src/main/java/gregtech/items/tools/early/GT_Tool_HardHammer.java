@@ -65,19 +65,19 @@ public class GT_Tool_HardHammer extends ToolStats {
 		return aEntity instanceof EntityIronGolem || mEffectiveList.contains(tName) || tName.contains("golem") ? aOriginalDamage*2 : aOriginalDamage;
 	}
 	
-	@Override public int getToolDamagePerBlockBreak()										{return	 25;}
-	@Override public int getToolDamagePerDropConversion()									{return	 50;}
-	@Override public int getToolDamagePerContainerCraft()									{return 400;}
-	@Override public int getToolDamagePerEntityAttack()										{return 200;}
-	@Override public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity)	{return aOriginalHurtResistance * 2;}
-	@Override public float getBaseDamage()													{return 5.0F;}
-	@Override public float getSpeedMultiplier()												{return 0.75F;}
-	@Override public float getExhaustionPerAttack(Entity aEntity)							{return 0.6F;}
-	@Override public String getCraftingSound()												{return SFX.MC_ANVIL_LAND;}
-	@Override public String getBreakingSound()												{return SFX.MC_ANVIL_BREAK;}
-	@Override public boolean canBlock()														{return T;}
-	@Override public boolean isWeapon()														{return T;}
-	@Override public boolean isMiningTool()													{return T;}
+	@Override public int getToolDamagePerBlockBreak()                                       {return  25;}
+	@Override public int getToolDamagePerDropConversion()                                   {return  50;}
+	@Override public int getToolDamagePerContainerCraft()                                   {return 400;}
+	@Override public int getToolDamagePerEntityAttack()                                     {return 200;}
+	@Override public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity) {return aOriginalHurtResistance * 2;}
+	@Override public float getBaseDamage()                                                  {return 5.0F;}
+	@Override public float getSpeedMultiplier()                                             {return 0.75F;}
+	@Override public float getExhaustionPerAttack(Entity aEntity)                           {return 0.6F;}
+	@Override public String getCraftingSound()                                              {return SFX.MC_ANVIL_LAND;}
+	@Override public String getBreakingSound()                                              {return SFX.MC_ANVIL_BREAK;}
+	@Override public boolean canBlock()                                                     {return T;}
+	@Override public boolean isWeapon()                                                     {return T;}
+	@Override public boolean isMiningTool()                                                 {return T;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
@@ -130,8 +130,8 @@ public class GT_Tool_HardHammer extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_hammer		, SFX.MC_ANVIL_LAND, 100, T));
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_prospector	, SFX.MC_ANVIL_USE ,  10, T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_hammer        , SFX.MC_ANVIL_LAND, 100, T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_prospector    , SFX.MC_ANVIL_USE ,  10, T));
 	}
 	
 	@Override

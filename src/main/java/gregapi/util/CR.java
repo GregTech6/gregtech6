@@ -184,7 +184,7 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *	 'b' = OreDictToolNames.blade
+	 *   'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
@@ -213,7 +213,7 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *	 'b' = OreDictToolNames.blade
+	 *   'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
@@ -242,7 +242,7 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *	 'b' = OreDictToolNames.blade
+	 *   'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
@@ -320,26 +320,26 @@ public class CR {
 				
 				for (char c : s.toCharArray()) {
 					switch(c) {
-					case 'b': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.blade					); break;
-					case 'c': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.crowbar					); break;
-					case 'd': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.screwdriver				); break;
-					case 'e': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.drill					); break;
-					case 'f': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.file						); break;
-					case 'h': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.hammer					); break;
-					case 'i': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.solderingiron			); break;
-					case 'j': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.solderingmetal			); break;
-					case 'k': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.knife					); break;
-					case 'l': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.magnifyingglass			); break;
-					case 'n': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.monkeywrench				); break;
-					case 'o': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.bendingcylindersmall		); break;
-					case 'p': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.drawplate				); break;
-					case 'q': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.scissors					); break;
-					case 'r': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.softhammer				); break;
-					case 's': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.saw						); break;
-					case 'w': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.wrench					); break;
-					case 'x': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.wirecutter				); break;
-					case 'y': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.chisel					); break;
-					case 'z': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.bendingcylinder			); break;
+					case 'b': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.blade                    ); break;
+					case 'c': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.crowbar                  ); break;
+					case 'd': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.screwdriver              ); break;
+					case 'e': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.drill                    ); break;
+					case 'f': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.file                     ); break;
+					case 'h': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.hammer                   ); break;
+					case 'i': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.solderingiron            ); break;
+					case 'j': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.solderingmetal           ); break;
+					case 'k': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.knife                    ); break;
+					case 'l': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.magnifyingglass          ); break;
+					case 'n': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.monkeywrench             ); break;
+					case 'o': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.bendingcylindersmall     ); break;
+					case 'p': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.drawplate                ); break;
+					case 'q': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.scissors                 ); break;
+					case 'r': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.softhammer               ); break;
+					case 's': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.saw                      ); break;
+					case 'w': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.wrench                   ); break;
+					case 'x': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.wirecutter               ); break;
+					case 'y': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.chisel                   ); break;
+					case 'z': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.bendingcylinder          ); break;
 					}
 				}
 			}
@@ -673,8 +673,8 @@ public class CR {
 			}
 			if (!ST.equal(OM.get(tRecipe.getRecipeOutput()), aOutput, aIgnoreNBT)) continue;
 			if (aDontRemoveDyeingRecipes) {
-				if (tRecipe instanceof ShapedOreRecipe		) {boolean temp = F; for (Object tObject : ((ShapedOreRecipe	)tRecipe).getInput()) if (OREDICT_DYE_LISTS.contains(tObject)) {temp = T; break;} if (temp) continue;}
-				if (tRecipe instanceof ShapelessOreRecipe	) {boolean temp = F; for (Object tObject : ((ShapelessOreRecipe	)tRecipe).getInput()) if (OREDICT_DYE_LISTS.contains(tObject)) {temp = T; break;} if (temp) continue;}
+				if (tRecipe instanceof ShapedOreRecipe      ) {boolean temp = F; for (Object tObject : ((ShapedOreRecipe    )tRecipe).getInput()) if (OREDICT_DYE_LISTS.contains(tObject)) {temp = T; break;} if (temp) continue;}
+				if (tRecipe instanceof ShapelessOreRecipe   ) {boolean temp = F; for (Object tObject : ((ShapelessOreRecipe )tRecipe).getInput()) if (OREDICT_DYE_LISTS.contains(tObject)) {temp = T; break;} if (temp) continue;}
 			}
 			tList.remove(i--);
 			rReturn = T;

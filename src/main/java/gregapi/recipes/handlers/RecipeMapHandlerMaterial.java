@@ -49,14 +49,14 @@ public class RecipeMapHandlerMaterial implements IRecipeMapHandler {
 	
 	public RecipeMapHandlerMaterial(OreDictMaterial aInputMaterial, FluidStack aFluidInputPerUnit, long aEUt, long aDuration, FluidStack aFluidOutputPerUnit, OreDictMaterial aOutputMaterial, ItemStack aAdditionalInput, boolean aAllowToGenerateAllRecipesAtOnce, ICondition aCondition) {
 		mAllowToGenerateAllRecipesAtOnce = aAllowToGenerateAllRecipesAtOnce;
-		mFluidInputPerUnit	= aFluidInputPerUnit;
-		mFluidOutputPerUnit	= aFluidOutputPerUnit;
-		mCondition			= (aCondition == null ? ICondition.TRUE : aCondition);
-		mInputMaterial		= aInputMaterial;
-		mOutputMaterial		= aOutputMaterial;
-		mAdditionalInput	= aAdditionalInput;
-		mDuration			= aDuration;
-		mEUt				= aEUt;
+		mFluidInputPerUnit  = aFluidInputPerUnit;
+		mFluidOutputPerUnit = aFluidOutputPerUnit;
+		mCondition          = (aCondition == null ? ICondition.TRUE : aCondition);
+		mInputMaterial      = aInputMaterial;
+		mOutputMaterial     = aOutputMaterial;
+		mAdditionalInput    = aAdditionalInput;
+		mDuration           = aDuration;
+		mEUt                = aEUt;
 	}
 	
 	@Override

@@ -58,7 +58,7 @@ public class ItemBlockBase extends ItemBlock {
 				byte tCount = 0;
 				for (byte tSide : ALL_SIDES_VALID) if (mPlaceable.isSealable(aMeta, tSide)) tCount++;
 				if (tCount >= 6) {
-					aList.add(LH.Chat.GREEN	 + LH.get(LH.TOOLTIP_SEALABLE_ANY));
+					aList.add(LH.Chat.GREEN  + LH.get(LH.TOOLTIP_SEALABLE_ANY));
 				} else if (field_150939_a.isOpaqueCube()) {
 					aList.add(LH.Chat.ORANGE + LH.get(LH.TOOLTIP_SEALABLE_BUGGED));
 				} else if (tCount > 0) {

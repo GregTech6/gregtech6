@@ -68,7 +68,7 @@ public abstract class TileEntityBase11Bidirectional extends TileEntityBase10Ener
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_SET_DIRECTION_MONKEY_WRENCH));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_SET_DIRECTION_MONKEY_WRENCH));
 	}
 	
 	@Override

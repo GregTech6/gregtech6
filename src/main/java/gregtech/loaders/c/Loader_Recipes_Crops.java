@@ -47,35 +47,35 @@ import net.minecraft.item.ItemStack;
 public class Loader_Recipes_Crops implements Runnable {
 	@Override public void run() {OUT.println("GT_Mod: Doing GT Recipes for Crops Stuff.");
 		for (OreDictMaterial tMat : ANY.FlourGrains.mToThis) {
-			RM.biomass(OP.dust		.mat(tMat, 9), 64);
-			RM.biomass(OP.blockDust	.mat(tMat, 1), 64);
+			RM.biomass(OP.dust      .mat(tMat, 9), 64);
+			RM.biomass(OP.blockDust .mat(tMat, 1), 64);
 		}
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		
 		addListener(new OreDictListenerEvent_TwoNames("flowerCerublossom", "flowerDesertNova") {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
-			RM.Mixer	.addRecipeX(T, 16, 16, new ItemStack[] {aStack1, aStack2, OM.dust(MT.ArcaneAsh), OM.dust(MT.Vinteum)}, OM.dust(MT.VinteumPurified));
+			RM.Mixer    .addRecipeX(T, 16, 16, new ItemStack[] {aStack1, aStack2, OM.dust(MT.ArcaneAsh), OM.dust(MT.Vinteum)}, OM.dust(MT.VinteumPurified));
 		}});
 		addListener("flowerCerublossom", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Squeezer	.addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 2), IL.Remains_Plant.get(1));
-			RM.Juicer	.addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 1), IL.Remains_Plant.get(1));
+			RM.Squeezer .addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 2), IL.Remains_Plant.get(1));
+			RM.Juicer   .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 1), IL.Remains_Plant.get(1));
 			RM.ic2_extractor(aEvent.mStack, dust.mat(MT.Blue, 3));
 		}});
 		addListener("flowerDesertNova", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Squeezer	.addRecipe1(T, 16, 16, 7000, aEvent.mStack, NF, FL.Juice_Cactus.make(100), IL.Dye_Cactus.get(2));
-			RM.Juicer	.addRecipe1(T, 16, 16, 9000, aEvent.mStack, NF, FL.Juice_Cactus.make( 75), IL.Dye_Cactus.get(2));
+			RM.Squeezer .addRecipe1(T, 16, 16, 7000, aEvent.mStack, NF, FL.Juice_Cactus.make(100), IL.Dye_Cactus.get(2));
+			RM.Juicer   .addRecipe1(T, 16, 16, 9000, aEvent.mStack, NF, FL.Juice_Cactus.make( 75), IL.Dye_Cactus.get(2));
 			RM.ic2_extractor(aEvent.mStack, IL.Dye_Cactus.get(3));
 		}});
 		addListener("flowerCinderpearl", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
-			RM.Shredder	.addRecipe1(T, 16, 16, aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
-			RM.Mortar	.addRecipe1(T, 16, 16, aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
+			RM.Shredder .addRecipe1(T, 16, 16, aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
+			RM.Mortar   .addRecipe1(T, 16, 16, aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
 			RM.ic2_extractor(aEvent.mStack, ST.make(Items.blaze_powder, 1, 0));
 		}});
 		addListener("flowerShimmerleaf", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Squeezer	.addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, MT.Hg.liquid(U, F), IL.Remains_Plant.get(1));
-			RM.Juicer	.addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, MT.Hg.liquid(U, F), IL.Remains_Plant.get(1));
+			RM.Squeezer .addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, MT.Hg.liquid(U, F), IL.Remains_Plant.get(1));
+			RM.Juicer   .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, MT.Hg.liquid(U, F), IL.Remains_Plant.get(1));
 		}});
 		
 		
@@ -122,11 +122,11 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener("cropRice", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Drying		.addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Rice.make(250), ZL_IS);
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Rice.make(250), ZL_IS);
-			RM.Shredder		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rice), IL.Grass.get(1));
-			RM.Mortar		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rice, U2), IL.Grass.get(1));
+			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Rice.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Rice.make(250), ZL_IS);
+			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rice), IL.Grass.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rice, U2), IL.Grass.get(1));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Rice), IL.Grass.get(1), 0.8F);
 			RM.biomass(ST.amount(9, aEvent.mStack), 64);
 			RM.compact(aEvent.mStack, 9, IL.Bale_Rice.get(1));
@@ -138,11 +138,11 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener("cropOats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Drying		.addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Grain.make(250), ZL_IS);
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Grain.make(250), ZL_IS);
-			RM.Shredder		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Oat), IL.Grass.get(1));
-			RM.Mortar		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Oat, U2), IL.Grass.get(1));
+			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Grain.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Grain.make(250), ZL_IS);
+			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Oat), IL.Grass.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Oat, U2), IL.Grass.get(1));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Oat), IL.Grass.get(1), 0.8F);
 			RM.biomass(ST.amount(9, aEvent.mStack), 64);
 			RM.compact(aEvent.mStack, 9, IL.Bale_Oats.get(1));
@@ -154,11 +154,11 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener("cropBarley", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Drying		.addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Grain.make(250), ZL_IS);
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Grain.make(250), ZL_IS);
-			RM.Shredder		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Barley), IL.Grass.get(1));
-			RM.Mortar		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Barley, U2), IL.Grass.get(1));
+			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Grain.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Grain.make(250), ZL_IS);
+			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Barley), IL.Grass.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Barley, U2), IL.Grass.get(1));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Barley), IL.Grass.get(1), 0.8F);
 			RM.biomass(ST.amount(9, aEvent.mStack), 64);
 			RM.compact(aEvent.mStack, 9, IL.Bale_Barley.get(1));
@@ -170,11 +170,11 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener("cropRye", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Drying		.addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Rye.make(250), ZL_IS);
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Rye.make(250), ZL_IS);
-			RM.Shredder		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rye), IL.Grass.get(1));
-			RM.Mortar		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rye, U2), IL.Grass.get(1));
+			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Rye.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Rye.make(250), ZL_IS);
+			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rye), IL.Grass.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Rye, U2), IL.Grass.get(1));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Rye), IL.Grass.get(1), 0.8F);
 			RM.biomass(ST.amount(9, aEvent.mStack), 64);
 			RM.compact(aEvent.mStack, 9, IL.Bale_Rye.get(1));
@@ -186,11 +186,11 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener("cropWheat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Drying		.addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Wheat.make(250), ZL_IS);
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Wheat.make(250), ZL_IS);
-			RM.Shredder		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Wheat), IL.Grass.get(1));
-			RM.Mortar		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Wheat, U2), IL.Grass.get(1));
+			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Wheat.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Wheat.make(250), ZL_IS);
+			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Wheat), IL.Grass.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Wheat, U2), IL.Grass.get(1));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Wheat), IL.Grass.get(1), 0.8F);
 			RM.biomass(ST.amount(9, aEvent.mStack), 64);
 			RM.compact(aEvent.mStack, 9, IL.Bale_Wheat.get(1));
@@ -204,87 +204,87 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		addListener(new String[] {"seedSoybean", "seedCoffee", "seedCrop", "seedThistle", "seedFlower", "seedWitherShrub", "seedGhost", "seedQuartzBerry", "seedHellBush"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(2), ZL_IS);
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(2), ZL_IS);
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(2), ZL_IS);
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(2), ZL_IS);
 		}});
 		addListener("seedMelon", "seedStrawberry", "seedTurnip", "seedBeet", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(3), ZL_IS);
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(3), ZL_IS);
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(3), ZL_IS);
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(3), ZL_IS);
 		}});
 		addListener(new String[] {"seedRice", "seedApple", "seedGrape", "seedCabbage", "seedPurplePear"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(4), ZL_IS);
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(4), ZL_IS);
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(4), ZL_IS);
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(4), ZL_IS);
 		}});
 		addListener(new String[] {"seedWheat", "seedBarley", "seedOats", "seedRye", "seedCamellia"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(5), ZL_IS);
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(5), ZL_IS);
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(5), ZL_IS);
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(5), ZL_IS);
 		}});
 		addListener("seedPumpkin", "seedDarkFruit", "seedAspectrus", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(6), ZL_IS);
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(6), ZL_IS);
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(6), ZL_IS);
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(6), ZL_IS);
 		}});
 		addListener("seedCotton", "seedHemp", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.lube(5), ZL_IS);
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.lube(5), ZL_IS);
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.lube(5), ZL_IS);
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.lube(5), ZL_IS);
 		}});
 		addListener("seedFlax", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.lube(10), ZL_IS);
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.lube(10), ZL_IS);
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.lube(10), ZL_IS);
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.lube(10), ZL_IS);
 		}});
 		addListener("seedCanola", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			if (FL.Oil_Canola.exists()) {
-			RM.Squeezer		.addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.Oil_Canola.make(14), IL.Remains_Plant.get(1));
-			RM.Juicer		.addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.Oil_Canola.make(12), IL.Remains_Plant.get(1));
+			RM.Squeezer     .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.Oil_Canola.make(14), IL.Remains_Plant.get(1));
+			RM.Juicer       .addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.Oil_Canola.make(12), IL.Remains_Plant.get(1));
 			} else {
-			RM.Squeezer		.addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(7), IL.Remains_Plant.get(1));
-			RM.Juicer		.addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.lube(6), IL.Remains_Plant.get(1));
+			RM.Squeezer     .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(7), IL.Remains_Plant.get(1));
+			RM.Juicer       .addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.lube(6), IL.Remains_Plant.get(1));
 			}
 		}});
 		addListener("seedSunflower", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
-			RM.Squeezer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Sunflower.make(100), ZL_IS);
-			RM.Juicer	.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Sunflower.make( 75), ZL_IS);
+			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Sunflower.make(100), ZL_IS);
+			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Sunflower.make( 75), ZL_IS);
 		}});
 		
 		
 		
 		addListener("cropHemp", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Loom			.addRecipe2(T, 16, 16, ST.tag(10), ST.amount(4, aEvent.mStack), IL.Rope.get(1));
-			RM.Loom			.addRecipe2(T, 16, 16, ST.tag( 0), ST.amount(9, aEvent.mStack), ST.make(Blocks.wool, 1, 0));
-			RM.Loom			.addRecipe2(T, 16, 16, ST.tag( 1), ST.amount(3, aEvent.mStack), ST.make(Items.string, 1, 0));
-			RM.Squeezer		.addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, FL.lube(15), IL.Remains_Plant.get(1));
-			RM.Juicer		.addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(10), IL.Remains_Plant.get(1));
+			RM.Loom         .addRecipe2(T, 16, 16, ST.tag(10), ST.amount(4, aEvent.mStack), IL.Rope.get(1));
+			RM.Loom         .addRecipe2(T, 16, 16, ST.tag( 0), ST.amount(9, aEvent.mStack), ST.make(Blocks.wool, 1, 0));
+			RM.Loom         .addRecipe2(T, 16, 16, ST.tag( 1), ST.amount(3, aEvent.mStack), ST.make(Items.string, 1, 0));
+			RM.Squeezer     .addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, FL.lube(15), IL.Remains_Plant.get(1));
+			RM.Juicer       .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(10), IL.Remains_Plant.get(1));
 		}});
 		addListener("cropFlax", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Loom			.addRecipe2(T, 16, 16, ST.tag( 0), ST.amount(4, aEvent.mStack), ST.make(Blocks.wool, 1, 0));
-			RM.Loom			.addRecipe2(T, 16, 16, ST.tag( 1), ST.amount(2, aEvent.mStack), ST.make(Items.string, 1, 0));
-			RM.Squeezer		.addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(30), IL.Remains_Plant.get(1));
-			RM.Juicer		.addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.lube(20), IL.Remains_Plant.get(1));
+			RM.Loom         .addRecipe2(T, 16, 16, ST.tag( 0), ST.amount(4, aEvent.mStack), ST.make(Blocks.wool, 1, 0));
+			RM.Loom         .addRecipe2(T, 16, 16, ST.tag( 1), ST.amount(2, aEvent.mStack), ST.make(Items.string, 1, 0));
+			RM.Squeezer     .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(30), IL.Remains_Plant.get(1));
+			RM.Juicer       .addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.lube(20), IL.Remains_Plant.get(1));
 		}});
 		addListener("cropCanola", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (FL.Oil_Canola.exists()) {
-			RM.Squeezer		.addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.Oil_Canola.make(140), IL.Remains_Plant.get(1));
-			RM.Juicer		.addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.Oil_Canola.make(120), IL.Remains_Plant.get(1));
+			RM.Squeezer     .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.Oil_Canola.make(140), IL.Remains_Plant.get(1));
+			RM.Juicer       .addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.Oil_Canola.make(120), IL.Remains_Plant.get(1));
 			} else {
-			RM.Squeezer		.addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(70), IL.Remains_Plant.get(1));
-			RM.Juicer		.addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.lube(60), IL.Remains_Plant.get(1));
+			RM.Squeezer     .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(70), IL.Remains_Plant.get(1));
+			RM.Juicer       .addRecipe1(T, 16, 16, 4000, aEvent.mStack, NF, FL.lube(60), IL.Remains_Plant.get(1));
 			}
 		}});
 		addListener("cropIvy", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Squeezer		.addRecipe1(T, 16, 16, 7000, aEvent.mStack, NF, FL.Potion_Poison_1.make(500), IL.Remains_Plant.get(1));
-			RM.Juicer		.addRecipe1(T, 16, 16, 8000, aEvent.mStack, NF, FL.Potion_Poison_1.make(250), IL.Remains_Plant.get(1));
-			RM.Distillery	.addRecipe1(T, 16, 48, aEvent.mStack, FL.Potion_Awkward.make(750), FL.Potion_Poison_1.make(750), ZL_IS);
+			RM.Squeezer     .addRecipe1(T, 16, 16, 7000, aEvent.mStack, NF, FL.Potion_Poison_1.make(500), IL.Remains_Plant.get(1));
+			RM.Juicer       .addRecipe1(T, 16, 16, 8000, aEvent.mStack, NF, FL.Potion_Poison_1.make(250), IL.Remains_Plant.get(1));
+			RM.Distillery   .addRecipe1(T, 16, 48, aEvent.mStack, FL.Potion_Awkward.make(750), FL.Potion_Poison_1.make(750), ZL_IS);
 		}});
 		addListener("cropCandle", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Squeezer		.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Juice.make(25), OP.dustSmall.mat(MT.WaxPlant, 1));
-			RM.Juicer		.addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Juice.make(20), OP.dustSmall.mat(MT.WaxPlant, 1));
+			RM.Squeezer     .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Juice.make(25), OP.dustSmall.mat(MT.WaxPlant, 1));
+			RM.Juicer       .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Juice.make(20), OP.dustSmall.mat(MT.WaxPlant, 1));
 			RM.ae_grinder(4, aEvent.mStack, OP.dustSmall.mat(MT.WaxPlant, 2), OP.dustSmall.mat(MT.WaxPlant, 1), 0.5F, OP.dustSmall.mat(MT.WaxPlant, 1), 0.5F);
 		}});
 		addListener("cropCandleberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -396,10 +396,10 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		
 		addListener("cropCorn", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Corn.make(250), ZL_IS);
-			RM.Mixer		.addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Corn.make(250), ZL_IS);
-			RM.Shredder		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn));
-			RM.Mortar		.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn, U2));
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Corn.make(250), ZL_IS);
+			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.Water.make(250), FL.Mash_Corn.make(250), ZL_IS);
+			RM.Shredder     .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn));
+			RM.Mortar       .addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.Corn, U2));
 			RM.ae_grinder(4, aEvent.mStack, OM.dust(MT.Corn));
 			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0, 0, 4, 0);
 		}});
@@ -793,24 +793,24 @@ public class Loader_Recipes_Crops implements Runnable {
 		crop.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			OreDictItemData tData = OM.data(aEvent.mStack);
 			if (tData == null || !tData.hasValidPrefixMaterialData()) {
-			RM.Shredder		.addRecipe1(T, 16, 16, 9000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
-			RM.Mortar		.addRecipe1(T, 16, 16, 4500, aEvent.mStack, IL.Remains_Plant.get(1));
+			RM.Shredder     .addRecipe1(T, 16, 16, 9000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, 4500, aEvent.mStack, IL.Remains_Plant.get(1));
 			}
 		}});
 		flower.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			OreDictItemData tData = OM.data(aEvent.mStack);
 			if (tData == null || !tData.hasValidPrefixMaterialData()) {
-			RM.Shredder		.addRecipe1(T, 16, 16, 4000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
-			RM.Mortar		.addRecipe1(T, 16, 16, 2000, aEvent.mStack, IL.Remains_Plant.get(1));
+			RM.Shredder     .addRecipe1(T, 16, 16, 4000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, 2000, aEvent.mStack, IL.Remains_Plant.get(1));
 			}
 		}});
 		treeLeaves.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Shredder		.addRecipe1(T, 16, 16, 6000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
-			RM.Mortar		.addRecipe1(T, 16, 16, 3000, aEvent.mStack, IL.Remains_Plant.get(1));
+			RM.Shredder     .addRecipe1(T, 16, 16, 6000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(1));
+			RM.Mortar       .addRecipe1(T, 16, 16, 3000, aEvent.mStack, IL.Remains_Plant.get(1));
 		}});
 		treeSapling.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Shredder		.addRecipe1(T, 16, 16, 6000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(2));
-			RM.Mortar		.addRecipe1(T, 16, 16, 3000, aEvent.mStack, IL.Remains_Plant.get(2));
+			RM.Shredder     .addRecipe1(T, 16, 16, 6000, ST.amount(1, aEvent.mStack), IL.Remains_Plant.get(2));
+			RM.Mortar       .addRecipe1(T, 16, 16, 3000, aEvent.mStack, IL.Remains_Plant.get(2));
 		}});
 	}
 }

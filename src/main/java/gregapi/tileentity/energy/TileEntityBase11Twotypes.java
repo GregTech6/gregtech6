@@ -39,7 +39,7 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
 	@Override
 	public void readEnergyBehavior(NBTTagCompound aNBT) {
 		super.readEnergyBehavior(aNBT);
-		mEnergyOUT2	= new TE_Behavior_Energy_Stats(this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED_2) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED_2)) : TD.Energy.QU, mStorage, aNBT.getLong(NBT_OUTPUT) / 2, aNBT.getLong(NBT_OUTPUT), aNBT.getLong(NBT_OUTPUT) * 2);
+		mEnergyOUT2 = new TE_Behavior_Energy_Stats(this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED_2) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED_2)) : TD.Energy.QU, mStorage, aNBT.getLong(NBT_OUTPUT) / 2, aNBT.getLong(NBT_OUTPUT), aNBT.getLong(NBT_OUTPUT) * 2);
 	}
 	
 	@Override
@@ -63,8 +63,8 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
 		}
 	}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? mConverter.mEnergyOUT.isType(aEnergyType) || mEnergyOUT2.isType(aEnergyType) : mConverter.mEnergyIN.isType(aEnergyType);}
-	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && (SIDES_INVALID[aSide] || (mConverter.mEnergyOUT.isType(aEnergyType) ? isOutput(aSide) : isOutput2(aSide)));}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? mConverter.mEnergyOUT.isType(aEnergyType) || mEnergyOUT2.isType(aEnergyType) : mConverter.mEnergyIN.isType(aEnergyType);}
+	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && (SIDES_INVALID[aSide] || (mConverter.mEnergyOUT.isType(aEnergyType) ? isOutput(aSide) : isOutput2(aSide)));}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mConverter.mEnergyIN.mType, mConverter.mEnergyOUT.mType, mEnergyOUT2.mType);}
 	
 	@Override public boolean isInput  (byte aSide) {return !ALONG_AXIS[aSide][mFacing];}

@@ -45,6 +45,6 @@ public class ContainerClientDefault extends ContainerClient {
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
-		if (mContainer.mSlotCount != 16 && mContainer.mSlotCount <= 27) fontRendererObj.drawString(mContainer.mTileEntity.getInventoryNameGUI(), 8,	 4, 4210752);
+		if (mContainer.mSlotCount != 16 && mContainer.mSlotCount <= 27) fontRendererObj.drawString(mContainer.mTileEntity.getInventoryNameGUI(), 8,  4, 4210752);
 	}
 }

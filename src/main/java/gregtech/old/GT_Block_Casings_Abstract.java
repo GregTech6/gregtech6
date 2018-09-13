@@ -69,7 +69,7 @@ public abstract class GT_Block_Casings_Abstract extends BlockBaseSealable {
 	}
 	
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return false;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return true;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return true;}
 	@Override public boolean renderAsNormalBlock() {return true;}
 	@Override public boolean isOpaqueCube() {return true;}
 	

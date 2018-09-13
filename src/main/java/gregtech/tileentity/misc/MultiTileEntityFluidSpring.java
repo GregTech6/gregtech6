@@ -135,9 +135,9 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	@Override public float getExplosionResistance() {return Blocks.bedrock.getExplosionResistance(null);}
 	@Override public float getBlockHardness() {return -1;}
 	
-	@Override public boolean isSurfaceSolid			(byte aSide) {return T;}
-	@Override public boolean isSurfaceOpaque		(byte aSide) {return T;}
-	@Override public boolean isSideSolid			(byte aSide) {return T;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return T;}
+	@Override public boolean isSurfaceOpaque        (byte aSide) {return T;}
+	@Override public boolean isSideSolid            (byte aSide) {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.fluid.spring";}
 }

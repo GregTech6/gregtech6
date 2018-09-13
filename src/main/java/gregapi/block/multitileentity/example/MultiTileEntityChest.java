@@ -233,11 +233,11 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(minX, minY, minZ, maxX, maxY, maxZ);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, minX, minY, minZ, maxX, maxY, maxZ);}
 	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock, minX, minY, minZ, maxX, maxY, maxZ); return true;}
-	@Override public float getSurfaceSize			(byte aSide) {return 0.875F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 0.875F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return aSide > 1 ? 0.0625F : aSide == 1 ? 0.125F : 0;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque		(byte aSide) {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return 0.875F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0.875F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return aSide > 1 ? 0.0625F : aSide == 1 ? 0.125F : 0;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque        (byte aSide) {return F;}
 	
 	@Override public Object getGUIClient(int aGUIID, EntityPlayer aPlayer) {return new ContainerClientChest(aPlayer.inventory, this);}
 	@Override public Object getGUIServer(int aGUIID, EntityPlayer aPlayer) {return new ContainerCommonChest(aPlayer.inventory, this);}
@@ -321,8 +321,8 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			mLid.rotationPointZ = 15;
 			mKnob = (new ModelRenderer(this, 0, 0)).setTextureSize(64, 64);
 			mKnob.addBox(-1, -2, -15, 2, 4, 1, 0);
-			mKnob.rotationPointX =	8;
-			mKnob.rotationPointY =	7;
+			mKnob.rotationPointX =  8;
+			mKnob.rotationPointY =  7;
 			mKnob.rotationPointZ = 15;
 			mBottom = (new ModelRenderer(this, 0, 19)).setTextureSize(64, 64);
 			mBottom.addBox(0, 0, 0, 14, 10, 14, 0);

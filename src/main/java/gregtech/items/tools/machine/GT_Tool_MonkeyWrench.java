@@ -44,7 +44,7 @@ public class GT_Tool_MonkeyWrench extends GT_Tool_Wrench {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_monkeywrench, SFX.IC_WRENCH, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_monkeywrench, SFX.GT_WRENCH, 100, !canBlock()));
 	}
 	
 	@Override

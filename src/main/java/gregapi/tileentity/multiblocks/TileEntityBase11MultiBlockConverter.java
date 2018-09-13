@@ -72,13 +72,13 @@ public abstract class TileEntityBase11MultiBlockConverter extends TileEntityBase
 	
 	public void readEnergyBehavior(NBTTagCompound aNBT) {
 		long tInput = aNBT.getLong(NBT_INPUT), tOutput = aNBT.getLong(NBT_OUTPUT);
-		mStorage	= new TE_Behavior_Energy_Capacitor	(this, aNBT, tInput * 2);
-		mEnergyIN	= new TE_Behavior_Energy_Stats		(this, aNBT, aNBT.hasKey(NBT_ENERGY_ACCEPTED) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED)) : TD.Energy.QU	, mStorage, tInput <= 16 ? 1 : tInput / 2, tInput, tInput * 2);
-		mEnergyOUT	= new TE_Behavior_Energy_Stats		(this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED ) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED )) : mEnergyIN.mType, mStorage, tOutput / 2, tOutput, tOutput * 2);
+		mStorage    = new TE_Behavior_Energy_Capacitor  (this, aNBT, tInput * 2);
+		mEnergyIN   = new TE_Behavior_Energy_Stats      (this, aNBT, aNBT.hasKey(NBT_ENERGY_ACCEPTED) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED)) : TD.Energy.QU   , mStorage, tInput <= 16 ? 1 : tInput / 2, tInput, tInput * 2);
+		mEnergyOUT  = new TE_Behavior_Energy_Stats      (this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED ) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED )) : mEnergyIN.mType, mStorage, tOutput / 2, tOutput, tOutput * 2);
 	}
 	
 	public void readEnergyConverter(NBTTagCompound aNBT) {
-		mConverter	= new TE_Behavior_Energy_Converter	(this, aNBT, mStorage, mEnergyIN, mEnergyOUT, aNBT.hasKey(NBT_MULTIPLIER) ? aNBT.getLong(NBT_MULTIPLIER) : 1, aNBT.getBoolean(NBT_WASTE_ENERGY), F);
+		mConverter  = new TE_Behavior_Energy_Converter  (this, aNBT, mStorage, mEnergyIN, mEnergyOUT, aNBT.hasKey(NBT_MULTIPLIER) ? aNBT.getLong(NBT_MULTIPLIER) : 1, aNBT.getBoolean(NBT_WASTE_ENERGY), F);
 	}
 	
 	public void writeEnergyBehavior(NBTTagCompound aNBT) {
@@ -147,15 +147,15 @@ public abstract class TileEntityBase11MultiBlockConverter extends TileEntityBase
 		}
 	}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyOUT.mType : aEnergyType == mEnergyIN.mType;}
-	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || (!mStopped && (mConverter.mWasteEnergy || (mConverter.mEmitsEnergy == mConverter.mCanEmitEnergy)))) &&	(SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return																															(SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo	(aEnergyType, aSide, aTheoretical);}
-	@Override public long getEnergySizeOutputMin			(TagData aEnergyType, byte aSide) {return mEnergyOUT.sizeMin(aEnergyType);}
-	@Override public long getEnergySizeOutputRecommended	(TagData aEnergyType, byte aSide) {return mEnergyOUT.sizeRec(aEnergyType);}
-	@Override public long getEnergySizeOutputMax			(TagData aEnergyType, byte aSide) {return mEnergyOUT.sizeMax(aEnergyType);}
-	@Override public long getEnergySizeInputMin				(TagData aEnergyType, byte aSide) {return mEnergyIN .sizeMin(aEnergyType);}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mEnergyIN .sizeRec(aEnergyType);}
-	@Override public long getEnergySizeInputMax				(TagData aEnergyType, byte aSide) {return mEnergyIN .sizeMax(aEnergyType);}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyOUT.mType : aEnergyType == mEnergyIN.mType;}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || (!mStopped && (mConverter.mWasteEnergy || (mConverter.mEmitsEnergy == mConverter.mCanEmitEnergy)))) && (SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return                                                                                                                         (SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
+	@Override public long getEnergySizeOutputMin            (TagData aEnergyType, byte aSide) {return mEnergyOUT.sizeMin(aEnergyType);}
+	@Override public long getEnergySizeOutputRecommended    (TagData aEnergyType, byte aSide) {return mEnergyOUT.sizeRec(aEnergyType);}
+	@Override public long getEnergySizeOutputMax            (TagData aEnergyType, byte aSide) {return mEnergyOUT.sizeMax(aEnergyType);}
+	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return mEnergyIN .sizeMin(aEnergyType);}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mEnergyIN .sizeRec(aEnergyType);}
+	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return mEnergyIN .sizeMax(aEnergyType);}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mEnergyIN.mType, mEnergyOUT.mType);}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}

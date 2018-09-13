@@ -133,10 +133,10 @@ public class MultiTileEntityLongDistancePipelineItem extends TileEntityBase09Fac
 		if (aBlock instanceof BlockLongDistPipe) {
 			if (((BlockLongDistPipe)aBlock).mTemperatures[aMetaData] >= 0) return;
 			HashSetNoNulls<ChunkCoordinates>
-			tNewChecks	= new HashSetNoNulls<>(),
-			tOldChecks	= new HashSetNoNulls<>(F, getCoords()),
-			tToCheck	= new HashSetNoNulls<>(F, getOffsetN(mFacing, 1)),
-			tWires		= new HashSetNoNulls<>();
+			tNewChecks  = new HashSetNoNulls<>(),
+			tOldChecks  = new HashSetNoNulls<>(F, getCoords()),
+			tToCheck    = new HashSetNoNulls<>(F, getOffsetN(mFacing, 1)),
+			tWires      = new HashSetNoNulls<>();
 			
 			while (!tToCheck.isEmpty()) {
 				for (ChunkCoordinates aCoords : tToCheck) {

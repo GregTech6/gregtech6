@@ -61,10 +61,10 @@ public class CoverControllerDisplay extends AbstractCoverAttachmentController {
 	public void onTickPost(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide) {
 			short rVisuals = (short)(aData.mVisuals[aSide] & ~1023);
-			if (aData.mTileEntity instanceof ITileEntityRunningPossible ) {rVisuals |= B[5]; if (((ITileEntityRunningPossible )aData.mTileEntity).getStateRunningPossible	()) rVisuals |= B[0];}
-			if (aData.mTileEntity instanceof ITileEntityRunningPassively) {rVisuals |= B[6]; if (((ITileEntityRunningPassively)aData.mTileEntity).getStateRunningPassively	()) rVisuals |= B[1];}
-			if (aData.mTileEntity instanceof ITileEntityRunningActively ) {rVisuals |= B[7]; if (((ITileEntityRunningActively )aData.mTileEntity).getStateRunningActively	()) rVisuals |= B[2];}
-			if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff ) {rVisuals |= B[8]; if (((ITileEntitySwitchableOnOff )aData.mTileEntity).getStateOnOff				()) rVisuals |= B[3];}
+			if (aData.mTileEntity instanceof ITileEntityRunningPossible ) {rVisuals |= B[5]; if (((ITileEntityRunningPossible )aData.mTileEntity).getStateRunningPossible   ()) rVisuals |= B[0];}
+			if (aData.mTileEntity instanceof ITileEntityRunningPassively) {rVisuals |= B[6]; if (((ITileEntityRunningPassively)aData.mTileEntity).getStateRunningPassively  ()) rVisuals |= B[1];}
+			if (aData.mTileEntity instanceof ITileEntityRunningActively ) {rVisuals |= B[7]; if (((ITileEntityRunningActively )aData.mTileEntity).getStateRunningActively   ()) rVisuals |= B[2];}
+			if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff ) {rVisuals |= B[8]; if (((ITileEntitySwitchableOnOff )aData.mTileEntity).getStateOnOff             ()) rVisuals |= B[3];}
 			// There is still space for a fifth indicator/switch with B[9] and B[4].
 			aData.visual(aSide, rVisuals);
 		}

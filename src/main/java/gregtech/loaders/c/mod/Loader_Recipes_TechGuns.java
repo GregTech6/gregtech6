@@ -50,12 +50,12 @@ public class Loader_Recipes_TechGuns implements Runnable {
 		
 		CR.shapeless(ST.make(MD.TG, "TechgunsAmmo", 4, 0), CR.DEF_NAC_NCC, new Object[] {OP.dustSmall.dat(MT.Gunpowder), OP.rockGt.dat(ANY.Stone), OP.rockGt.dat(ANY.Stone), OP.rockGt.dat(ANY.Stone)});
 		
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 57), CR.DEF_NAC_NCC, new Object[] {"X  ", "	 x", 'X', OP.wireGt01.dat(ANY.Cu)});
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 57), CR.DEF_NAC_NCC, new Object[] {"X  ", "  x", 'X', OP.wireGt01.dat(ANY.Cu)});
 		
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,	 1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(MT.Pb));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,	 1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,	 7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(MT.Pb));
-		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,	 7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(ANY.Iron));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  1), CR.DEF_NCC, "X ", 'X', OP.bulletGtSmall.dat(ANY.Iron));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(MT.Pb));
+		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1,  7), CR.DEF_NCC, "X ", 'X', OP.bulletGtMedium.dat(ANY.Iron));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "X ", 'X', OP.bulletGtLarge.dat(MT.Pb));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 19), CR.DEF_NCC, "X ", 'X', OP.bulletGtLarge.dat(ANY.Iron));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(MT.Pb));
@@ -64,36 +64,36 @@ public class Loader_Recipes_TechGuns implements Runnable {
 		RM.pack(ST.make(MD.TG, "TechgunsAmmo", 4, 7), 4, ST.make(MD.TG, "TechgunsAmmo", 1, 88));
 		RM.unpack(ST.make(MD.TG, "TechgunsAmmo", 1, 88), ST.make(MD.TG, "TechgunsAmmo", 4, 7));
 		
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), OP.bulletGtLarge	.mat(MT.Pb, 2));
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), OP.bulletGtMedium	.mat(MT.Pb, 8));
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), OP.bulletGtMedium	.mat(MT.Pb, 3));
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,	 2), OP.bulletGtSmall	.mat(MT.Pb, 3));
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,	 5), OP.bulletGtSmall	.mat(MT.Pb, 2));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), OP.bulletGtLarge   .mat(MT.Pb, 2));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), OP.bulletGtMedium  .mat(MT.Pb, 8));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), OP.bulletGtMedium  .mat(MT.Pb, 3));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,  2), OP.bulletGtSmall   .mat(MT.Pb, 3));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,  5), OP.bulletGtSmall   .mat(MT.Pb, 2));
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) {
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), OP.bulletGtLarge	.mat(tMat, 2));
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), OP.bulletGtMedium	.mat(tMat, 8));
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), OP.bulletGtMedium	.mat(tMat, 3));
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,	 2), OP.bulletGtSmall	.mat(tMat, 3));
-		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,	 5), OP.bulletGtSmall	.mat(tMat, 2));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), OP.bulletGtLarge   .mat(tMat, 2));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), OP.bulletGtMedium  .mat(tMat, 8));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), OP.bulletGtMedium  .mat(tMat, 3));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,  2), OP.bulletGtSmall   .mat(tMat, 3));
+		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,  5), OP.bulletGtSmall   .mat(tMat, 2));
 		}
 		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1, 24), ST.make(MD.TG, "TechgunsAmmo", 1, 23), ST.make(MD.TG, "TechgunsAmmo", 3, 22));
 		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), ST.make(MD.TG, "TechgunsAmmo", 2, 19));
-		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), ST.make(MD.TG, "TechgunsAmmo", 8,	 7));
+		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), ST.make(MD.TG, "TechgunsAmmo", 8,  7));
 		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), ST.make(MD.TG, "TechgunsAmmo", 2, 88));
-		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), ST.make(MD.TG, "TechgunsAmmo", 3,	 7));
-		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,  2), ST.make(MD.TG, "TechgunsAmmo", 3,	 1));
-		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,  5), ST.make(MD.TG, "TechgunsAmmo", 2,	 1));
+		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), ST.make(MD.TG, "TechgunsAmmo", 3,  7));
+		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,  2), ST.make(MD.TG, "TechgunsAmmo", 3,  1));
+		RM.boxunbox(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,  5), ST.make(MD.TG, "TechgunsAmmo", 2,  1));
 		
 		ItemsGT.addNEIRedirects(ST.make(MD.TG, "TechgunsAmmo", 1, 24), ST.make(MD.TG, "TechgunsAmmo", 1, 23), ST.make(MD.TG, "TechgunsAmmo", 1, 22));
 		ItemsGT.addNEIRedirects(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), ST.make(MD.TG, "TechgunsAmmo", 1, 19));
 		ItemsGT.addNEIRedirects(ST.make(MD.TG, "TechgunsAmmo", 1, 13), ST.make(MD.TG, "TechgunsAmmo", 1, 12), ST.make(MD.TG, "TechgunsAmmo", 1, 21), ST.make(MD.TG, "TechgunsAmmo", 1, 20), ST.make(MD.TG, "TechgunsAmmo", 1,  7));
-		ItemsGT.addNEIRedirects(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,  5), ST.make(MD.TG, "TechgunsAmmo", 1,	 3), ST.make(MD.TG, "TechgunsAmmo", 1,	2), ST.make(MD.TG, "TechgunsAmmo", 1,  1));
+		ItemsGT.addNEIRedirects(ST.make(MD.TG, "TechgunsAmmo", 1,  6), ST.make(MD.TG, "TechgunsAmmo", 1,  5), ST.make(MD.TG, "TechgunsAmmo", 1,  3), ST.make(MD.TG, "TechgunsAmmo", 1,  2), ST.make(MD.TG, "TechgunsAmmo", 1,  1));
 		
 		RM.Lightning.addRecipe2(T, 16, 800, ST.tag(0), ST.make(MD.TG, "TechgunsAmmo", 1, 16), ST.make(MD.TG, "TechgunsAmmo", 1, 15));
 		
-		RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TG, "TechgunsAmmo", 1, 29), FL.Air			.make(16000), NF, ST.make(MD.TG, "TechgunsAmmo", 1, 28));
-		RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TG, "TechgunsAmmo", 1, 29), FL.Air_Nether	.make(16000), NF, ST.make(MD.TG, "TechgunsAmmo", 1, 28));
-		RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TG, "TechgunsAmmo", 1, 29), FL.Air_End		.make(16000), NF, ST.make(MD.TG, "TechgunsAmmo", 1, 28));
+		RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TG, "TechgunsAmmo", 1, 29), FL.Air           .make(16000), NF, ST.make(MD.TG, "TechgunsAmmo", 1, 28));
+		RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TG, "TechgunsAmmo", 1, 29), FL.Air_Nether    .make(16000), NF, ST.make(MD.TG, "TechgunsAmmo", 1, 28));
+		RM.Canner.addRecipe1(T, 16, 16, ST.make(MD.TG, "TechgunsAmmo", 1, 29), FL.Air_End       .make(16000), NF, ST.make(MD.TG, "TechgunsAmmo", 1, 28));
 		
 		RM.Loom.addRecipe2(T, 16, 16, ST.make(Blocks.wool, 4, W), ST.make(Items.leather, 1, W), ST.make(MD.TG, "TechgunsAmmo", 3, 39));
 		

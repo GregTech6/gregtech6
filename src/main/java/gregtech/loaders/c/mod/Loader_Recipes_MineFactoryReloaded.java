@@ -56,19 +56,19 @@ public class Loader_Recipes_MineFactoryReloaded implements Runnable {
 				}});
 			}
 			addListener(new OreDictListenerEvent_TwoNames("listAllwheats", OP.dust.dat(ANY.Wood)) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
-				RM.Mixer	.addRecipeX(T, 16,	512, new ItemStack[] {ST.amount(8, aStack1), aStack2, OM.dust(MT.Bone, U*4), OM.dust(MT.S, U*4)}, IL.MFR_Fertilizer.get(48));
+				RM.Mixer    .addRecipeX(T, 16,  512, new ItemStack[] {ST.amount(8, aStack1), aStack2, OM.dust(MT.Bone, U*4), OM.dust(MT.S, U*4)}, IL.MFR_Fertilizer.get(48));
 			}});
 			addListener(new OreDictListenerEvent_TwoNames("listAllwheats", OP.dustSmall.dat(ANY.Wood)) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
-				RM.Mixer	.addRecipeX(T, 16,	128, new ItemStack[] {ST.amount(2, aStack1), aStack2, OM.dust(MT.Bone	  ), OM.dust(MT.S	  )}, IL.MFR_Fertilizer.get(12));
+				RM.Mixer    .addRecipeX(T, 16,  128, new ItemStack[] {ST.amount(2, aStack1), aStack2, OM.dust(MT.Bone     ), OM.dust(MT.S     )}, IL.MFR_Fertilizer.get(12));
 			}});
 			addListener("itemClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 				for (byte i = 0; i < 16; i++) for (FluidStack tDye : DYE_FLUIDS[i])
-				RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(Items.clay_ball, 1, W), tDye, NF, ST.make(MD.MFR, "ceramicdye", 4, 15-i));
+				RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.clay_ball, 1, W), tDye, NF, ST.make(MD.MFR, "ceramicdye", 4, 15-i));
 			}});
 			}};
 			
-			RM.Coagulator	.addRecipe0(T,	0, 2048, FL.Sewage.make(2000), NF, IL.MFR_Fertilizer.get(1));
-			RM.Coagulator	.addRecipe0(T,	0,	256, FL.Slime_Pink.make(100), NF, OP.nugget.mat(MT.MeatRaw, 1));
+			RM.Coagulator   .addRecipe0(T,  0, 2048, FL.Sewage.make(2000), NF, IL.MFR_Fertilizer.get(1));
+			RM.Coagulator   .addRecipe0(T,  0,  256, FL.Slime_Pink.make(100), NF, OP.nugget.mat(MT.MeatRaw, 1));
 		}
 	}
 }

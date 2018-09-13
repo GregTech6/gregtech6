@@ -37,10 +37,10 @@ public class GT_Circuit_Pulser extends GT_CircuitryBehavior {
 	
 	@Override
 	public void validateParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		if (aCircuitData[0] <  1) aCircuitData[0] =	 1;
-		if (aCircuitData[1] <  0) aCircuitData[1] =	 0;
+		if (aCircuitData[0] <  1) aCircuitData[0] =  1;
+		if (aCircuitData[1] <  0) aCircuitData[1] =  0;
 		if (aCircuitData[1] > 16) aCircuitData[1] = 16;
-		if (aCircuitData[4] <  0) aCircuitData[4] =	 0;
+		if (aCircuitData[4] <  0) aCircuitData[4] =  0;
 	}
 	
 	@Override
@@ -79,7 +79,7 @@ public class GT_Circuit_Pulser extends GT_CircuitryBehavior {
 	public String getDataDisplay(int[] aCircuitData, int aCircuitDataIndex) {
 		if (aCircuitDataIndex == 1) {
 			if (aCircuitData[aCircuitDataIndex] == 16) return "HIGHEST";
-			if (aCircuitData[aCircuitDataIndex] ==	0) return "LOWEST";
+			if (aCircuitData[aCircuitDataIndex] ==  0) return "LOWEST";
 		}
 		return aCircuitDataIndex>1?"":null;
 	}

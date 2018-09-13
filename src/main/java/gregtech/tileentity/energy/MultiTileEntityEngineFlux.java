@@ -92,8 +92,8 @@ public class MultiTileEntityEngineFlux extends TileEntityBase09FacingSingle impl
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, mEnergyTypeEmitted, LH.get(LH.FACE_BACK), LH.get(LH.FACE_FRONT));
 		addToolTipsEfficiency(aList, aStack, aF3_H);
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -182,10 +182,10 @@ public class MultiTileEntityEngineFlux extends TileEntityBase09FacingSingle impl
 	
 	@Override public byte getVisualData() {return (byte)((mPiston&3) | (mActive?4:0) | (mState << 3));}
 	
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return ALONG_AXIS[aSide][mFacing]?0.5F:1.0F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return ALONG_AXIS[aSide][mFacing];}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return ALONG_AXIS[aSide][mFacing];}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return ALONG_AXIS[aSide][mFacing]?0.5F:1.0F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
@@ -211,11 +211,11 @@ public class MultiTileEntityEngineFlux extends TileEntityBase09FacingSingle impl
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyTypeEmitted : aEnergyType == mEnergyTypeAccepted;}
-	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && aSide == OPPOSITES[mFacing] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == mFacing && super.isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mInput;}
-	@Override public long getEnergySizeOutputRecommended	(TagData aEnergyType, byte aSide) {return mOutput;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyTypeEmitted : aEnergyType == mEnergyTypeAccepted;}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && aSide == OPPOSITES[mFacing] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == mFacing && super.isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
+	@Override public long getEnergySizeOutputRecommended    (TagData aEnergyType, byte aSide) {return mOutput;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mEnergyTypeEmitted, mEnergyTypeAccepted);}
 	
 	@Override
@@ -226,9 +226,9 @@ public class MultiTileEntityEngineFlux extends TileEntityBase09FacingSingle impl
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch (aRenderPass) {
-		case 0: box(aBlock, PX_P[						  1], PX_P[						  1], PX_P[						  1], PX_N[						  1], PX_N[						  1], PX_N[						  1]); return T;
-		case 1: box(aBlock, PX_P[						  0], PX_P[						  0], PX_P[						  0], PX_N[SIDES_AXIS_X[mFacing]?14: 0], PX_N[SIDES_AXIS_Y[mFacing]?14: 0], PX_N[SIDES_AXIS_Z[mFacing]?14: 0]); return T;
-		case 2: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?14: 0], PX_P[SIDES_AXIS_Y[mFacing]?14: 0], PX_P[SIDES_AXIS_Z[mFacing]?14: 0], PX_N[						  0], PX_N[						  0], PX_N[						  0]); return T;
+		case 0: box(aBlock, PX_P[                         1], PX_P[                       1], PX_P[                       1], PX_N[                       1], PX_N[                       1], PX_N[                       1]); return T;
+		case 1: box(aBlock, PX_P[                         0], PX_P[                       0], PX_P[                       0], PX_N[SIDES_AXIS_X[mFacing]?14: 0], PX_N[SIDES_AXIS_Y[mFacing]?14: 0], PX_N[SIDES_AXIS_Z[mFacing]?14: 0]); return T;
+		case 2: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?14: 0], PX_P[SIDES_AXIS_Y[mFacing]?14: 0], PX_P[SIDES_AXIS_Z[mFacing]?14: 0], PX_N[                        0], PX_N[                       0], PX_N[                       0]); return T;
 		case 3: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 4], PX_P[SIDES_AXIS_Y[mFacing]? 0: 4], PX_P[SIDES_AXIS_Z[mFacing]? 0: 4], PX_N[SIDES_AXIS_X[mFacing]? 0: 4], PX_N[SIDES_AXIS_Y[mFacing]? 0: 4], PX_N[SIDES_AXIS_Z[mFacing]? 0: 4]); return T;
 		case 4: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 3], PX_P[SIDES_AXIS_Y[mFacing]? 0: 3], PX_P[SIDES_AXIS_Z[mFacing]? 0: 3], PX_N[SIDES_AXIS_X[mFacing]? 0: 3], PX_N[SIDES_AXIS_Y[mFacing]? 0: 3], PX_N[SIDES_AXIS_Z[mFacing]? 0: 3]); return T;
 		}

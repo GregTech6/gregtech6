@@ -81,7 +81,7 @@ public class MultiTileEntityWireLaser extends TileEntityBase10ConnectorRendered 
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEnergyType == TD.Energy.LU;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.LU.AS_LIST;}
 	
-	@Override public boolean isEnergyEmittingTo	  (TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && canEmitEnergyTo	(aSide);}
+	@Override public boolean isEnergyEmittingTo   (TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, T) && canEmitEnergyTo    (aSide);}
 	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F) && canAcceptEnergyFrom(aSide);}
 	@Override public synchronized long doEnergyExtraction(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return 0;}
 	@Override public synchronized long doEnergyInjection (TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject ) {return aSize != 0 && isEnergyAcceptingFrom(aEnergyType, aSide, F) ?  aDoInject ? transferLaser(aSide, aSize, aAmount, -1, new HashSetNoNulls<TileEntity>(F, this)) : aAmount : 0;}
@@ -102,15 +102,15 @@ public class MultiTileEntityWireLaser extends TileEntityBase10ConnectorRendered 
 	@Override public OreDictMaterial getEnergyConductorMaterial() {return mMaterial;}
 	@Override public OreDictMaterial getEnergyConductorInsulation() {return MT.NULL;}
 	
-	public boolean canEmitEnergyTo							(byte aSide) {return connected(aSide);}
-	public boolean canAcceptEnergyFrom						(byte aSide) {return connected(aSide);}
+	public boolean canEmitEnergyTo                          (byte aSide) {return connected(aSide);}
+	public boolean canAcceptEnergyFrom                      (byte aSide) {return connected(aSide);}
 	
-	@Override public ITexture getTextureSide				(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureMulti.get(BlockTextureDefault.get(Textures.BlockIcons.FIBER_WIRE, mRGBa), BlockTextureDefault.get(Textures.BlockIcons.FIBER_WIRE_OVERLAY));}
-	@Override public ITexture getTextureConnected			(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureMulti.get(BlockTextureDefault.get(Textures.BlockIcons.FIBER_WIRE, mRGBa), BlockTextureDefault.get(Textures.BlockIcons.FIBER_WIRE_OVERLAY));}
+	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureMulti.get(BlockTextureDefault.get(Textures.BlockIcons.FIBER_WIRE, mRGBa), BlockTextureDefault.get(Textures.BlockIcons.FIBER_WIRE_OVERLAY));}
+	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureMulti.get(BlockTextureDefault.get(Textures.BlockIcons.FIBER_WIRE, mRGBa), BlockTextureDefault.get(Textures.BlockIcons.FIBER_WIRE_OVERLAY));}
 	
-	@Override public Collection<TagData> getConnectorTypes	(byte aSide) {return TD.Connectors.WIRE_LASER.AS_LIST;}
+	@Override public Collection<TagData> getConnectorTypes  (byte aSide) {return TD.Connectors.WIRE_LASER.AS_LIST;}
 	
-	@Override public String getFacingTool					() {return TOOL_cutter;}
+	@Override public String getFacingTool                   () {return TOOL_cutter;}
 	
-	@Override public String getTileEntityName				() {return "gt.multitileentity.connector.wire.laser";}
+	@Override public String getTileEntityName               () {return "gt.multitileentity.connector.wire.laser";}
 }

@@ -47,15 +47,15 @@ public class MultiTileEntityLockerCharging extends MultiTileEntityLocker impleme
 		return rReturn;
 	}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting;}
-	@Override public long getEnergySizeInputMin				(TagData aEnergyType, byte aSide) {return 1;}
-	@Override public long getEnergySizeInputMax				(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting;}
+	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return 1;}
+	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.ALL;}
 	
-	@Override public boolean getStateRunningPassively	() {return UT.Code.containsSomething(getInventory());}
-	@Override public boolean getStateRunningPossible	() {return UT.Code.containsSomething(getInventory());}
-	@Override public boolean getStateRunningActively	() {for (int i = 0; i < 4; i++) if (!IItemEnergy.Utility.full(slot(i), T)) return F; return UT.Code.containsSomething(getInventory());}
+	@Override public boolean getStateRunningPassively   () {return UT.Code.containsSomething(getInventory());}
+	@Override public boolean getStateRunningPossible    () {return UT.Code.containsSomething(getInventory());}
+	@Override public boolean getStateRunningActively    () {for (int i = 0; i < 4; i++) if (!IItemEnergy.Utility.full(slot(i), T)) return F; return UT.Code.containsSomething(getInventory());}
 	@Override public boolean getStateRunningSuccessfully() {for (int i = 0; i < 4; i++) if (!IItemEnergy.Utility.full(slot(i), T)) return F; return UT.Code.containsSomething(getInventory());}
 	
 	@Override

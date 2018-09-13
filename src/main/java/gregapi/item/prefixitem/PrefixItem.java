@@ -143,8 +143,8 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	public IIcon getIconFromDamageForRenderPass(int aMetaData, int aRenderPass) {
 		if (mPrefix.mIconIndexItem >= 0) {
 			if (UT.Code.exists(aMetaData, mMaterialList) && mMaterialList[aMetaData].mTextureSetsItems != null)
-			return mMaterialList[aMetaData]	.mTextureSetsItems.get(mPrefix.mIconIndexItem).getIcon(aRenderPass);
-			return MT.NULL					.mTextureSetsItems.get(mPrefix.mIconIndexItem).getIcon(aRenderPass);
+			return mMaterialList[aMetaData] .mTextureSetsItems.get(mPrefix.mIconIndexItem).getIcon(aRenderPass);
+			return MT.NULL                  .mTextureSetsItems.get(mPrefix.mIconIndexItem).getIcon(aRenderPass);
 		}
 		return null;
 	}

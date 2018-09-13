@@ -74,8 +74,8 @@ public class GT_Tool_BranchCutter extends ToolStats {
 		return 0.25F;
 	}
 	
-	@Override public boolean canCollect()													{return T;}
-	@Override public boolean isGrafter()													{return T;}
+	@Override public boolean canCollect()                                                   {return T;}
+	@Override public boolean isGrafter()                                                    {return T;}
 	
 	@Override
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {

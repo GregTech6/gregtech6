@@ -85,9 +85,9 @@ public class MultiTileEntityLocker extends TileEntityBase09FacingSingle implemen
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(getSizeInventory());}
 	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {if (ST.valid(aStack)) try {return aStack.getItem().isValidArmor(aStack, 3-aSlot, null);} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
-	@Override public boolean getStateRunningPassively	() {return UT.Code.containsSomething(getInventory());}
-	@Override public boolean getStateRunningPossible	() {return UT.Code.containsSomething(getInventory());}
-	@Override public boolean getStateRunningActively	() {return UT.Code.containsSomething(getInventory());}
+	@Override public boolean getStateRunningPassively   () {return UT.Code.containsSomething(getInventory());}
+	@Override public boolean getStateRunningPossible    () {return UT.Code.containsSomething(getInventory());}
+	@Override public boolean getStateRunningActively    () {return UT.Code.containsSomething(getInventory());}
 	@Override public boolean getStateRunningSuccessfully() {return UT.Code.containsSomething(getInventory());}
 	
 	@Override

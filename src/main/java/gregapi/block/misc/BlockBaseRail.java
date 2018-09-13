@@ -102,7 +102,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public int getHarvestLevel(int aMeta) {return mHarvestLevel;}
 	@Override public boolean isToolEffective(String aType, int aMeta) {return getHarvestTool(aMeta).equals(aType);}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}

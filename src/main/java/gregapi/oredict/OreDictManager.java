@@ -100,11 +100,11 @@ public final class OreDictManager {
 	, "antiBlock", "transdimBlock"
 	, "carpet", "pendant"
 	, "tyrian", "redstoneCrystal", "arcaneAsh", "camoPaste", "burntQuartz", "KangarooPaw", "redstoneRoot", "pigment", "diamondShard", "eternalLifeEssence", "honeyDrop", "grubBee", "salmonRaw", "stringFluxed", "aquaRegia", "sludge", "lexicaBotania", "resourceTaint", "chainLink", "sulfuricAcid", "scribingTools", "bacon", "redalloyBundled", "bluestoneInsulated", "infusedteslatiteInsulated", "bluestoneBundled", "redalloyInsulated", "infusedteslatiteBundled", "universalCable", "laserReceptor", "laserEmitter", "laserFocus", "laserMirror", "mobEgg"
-//	, "torchRedstoneActive"
+//  , "torchRedstoneActive"
 	, "awesomeiteHammer", "awesomeCore"
 	, "bPlaceholder", "bVial", "bRedString", "bEnderAirBottle", "bFlask", "brDeviceCyaniteProcessor", "prbackpack"
-//	, "stonebrick", "stoneAndesiteBricks", "stoneDioriteChiseled", "stoneAndesiteChiseled", "stoneDioritePolished", "stoneAndesitePolished", "stoneDioriteBricks", "stoneBasaltChiseled", "stoneGraniteChiseled", "stoneBasaltBricks", "stoneBasaltPolished", "stoneGraniteBricks", "stoneGranitePolished"
-//	, "stoneBrown", "stonePink", "stoneGreen", "stoneWhite", "stoneMagenta", "stoneBlue", "stoneOrange", "stonePurple", "stoneGray", "stoneYellow", "stoneLime", "stoneCyan", "stoneLightBlue", "stoneLightGray"
+//  , "stonebrick", "stoneAndesiteBricks", "stoneDioriteChiseled", "stoneAndesiteChiseled", "stoneDioritePolished", "stoneAndesitePolished", "stoneDioriteBricks", "stoneBasaltChiseled", "stoneGraniteChiseled", "stoneBasaltBricks", "stoneBasaltPolished", "stoneGraniteBricks", "stoneGranitePolished"
+//  , "stoneBrown", "stonePink", "stoneGreen", "stoneWhite", "stoneMagenta", "stoneBlue", "stoneOrange", "stonePurple", "stoneGray", "stoneYellow", "stoneLime", "stoneCyan", "stoneLightBlue", "stoneLightGray"
 	, "diamondNugget", "gaiaIngot", "pebble", "treatedStick", "universalReactant", "matterDustRefined", "sourceVegetableOil", "matterDust", "drawerBasic"
 	, "hempBrick", "hempBlock", "savehempBrick", "savehempBlock", "saveplatedHempBrick", "saveplatedHempBlock", "platedHempBrick", "platedHempBlock", "platedHemp", "savehemp", "saveplatedHemp"
 	);
@@ -320,7 +320,7 @@ public final class OreDictManager {
 			}
 		}
 		
-//		GT_Log.ore.println(aModID + " -> " + aEvent.Name);
+//      GT_Log.ore.println(aModID + " -> " + aEvent.Name);
 		
 		aEvent.Ore.stackSize = 1;
 		

@@ -30,8 +30,8 @@ import gregapi.code.TagData;
  * A Collection of Classes, which check for certain Prefix Conditions.
  */
 public class OreDictPrefixCondition {
-	public static ICondition<OreDictPrefix> tag		(TagData... aTags)		{return new TagDataContainsAll(aTags);}
-	public static ICondition<OreDictPrefix> tagnor	(TagData... aTags)		{return new TagDataContainsNone(aTags);}
+	public static ICondition<OreDictPrefix> tag     (TagData... aTags)      {return new TagDataContainsAll(aTags);}
+	public static ICondition<OreDictPrefix> tagnor  (TagData... aTags)      {return new TagDataContainsNone(aTags);}
 	
 	private static class TagDataContainsAll implements ICondition<OreDictPrefix> {
 		private final TagData[] mTags;

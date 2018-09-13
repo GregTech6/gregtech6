@@ -51,16 +51,16 @@ public class GT_Tool_Wrench extends ToolStats {
 		return aEntity instanceof EntityIronGolem || mEffectiveList.contains(tName) || tName.contains("Golem") ? aOriginalDamage*2 : aOriginalDamage;
 	}
 	
-	@Override public int getToolDamagePerBlockBreak()										{return	 50;}
-	@Override public int getToolDamagePerContainerCraft()									{return 800;}
-	@Override public int getToolDamagePerEntityAttack()										{return 200;}
+	@Override public int getToolDamagePerBlockBreak()                                       {return  50;}
+	@Override public int getToolDamagePerContainerCraft()                                   {return 800;}
+	@Override public int getToolDamagePerEntityAttack()                                     {return 200;}
 	@Override public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity) {return aOriginalHurtResistance * 2;}
-	@Override public float getBaseDamage()													{return 5.0F;}
-	@Override public float getExhaustionPerAttack(Entity aEntity)							{return 0.6F;}
-	@Override public String getCraftingSound()												{return SFX.IC_WRENCH;}
-	@Override public String getMiningSound()												{return SFX.IC_WRENCH;}
-	@Override public boolean canCollect()													{return T;}
-	@Override public boolean isWrench()														{return T;}
+	@Override public float getBaseDamage()                                                  {return 5.0F;}
+	@Override public float getExhaustionPerAttack(Entity aEntity)                           {return 0.6F;}
+	@Override public String getCraftingSound()                                              {return SFX.GT_WRENCH;}
+	@Override public String getMiningSound()                                                {return SFX.GT_WRENCH;}
+	@Override public boolean canCollect()                                                   {return T;}
+	@Override public boolean isWrench()                                                     {return T;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
@@ -80,7 +80,7 @@ public class GT_Tool_Wrench extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_wrench, SFX.IC_WRENCH, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_wrench, SFX.GT_WRENCH, 100, !canBlock()));
 	}
 	
 	@Override

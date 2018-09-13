@@ -126,10 +126,10 @@ public class MultiTileEntityMassStorageStandard extends MultiTileEntityMassStora
 		if (aSide == mFacing) {
 			if (slot(1).stackSize >= mMaxStorage) switch(aRenderPass) {
 			case 1: return null;
-			case 2: return BlockTextureDefault.get(BI.CHAR_1		, CA_RED_255, F, T, T, T);
-			case 3: return BlockTextureDefault.get(BI.CHAR_0		, CA_RED_255, F, T, T, T);
-			case 4: return BlockTextureDefault.get(BI.CHAR_0		, CA_RED_255, F, T, T, T);
-			case 5: return BlockTextureDefault.get(BI.CHAR_PERCENT	, CA_RED_255, F, T, T, T);
+			case 2: return BlockTextureDefault.get(BI.CHAR_1        , CA_RED_255, F, T, T, T);
+			case 3: return BlockTextureDefault.get(BI.CHAR_0        , CA_RED_255, F, T, T, T);
+			case 4: return BlockTextureDefault.get(BI.CHAR_0        , CA_RED_255, F, T, T, T);
+			case 5: return BlockTextureDefault.get(BI.CHAR_PERCENT  , CA_RED_255, F, T, T, T);
 			case 6: return null;
 			}
 			return BlockTextureDefault.get(BI.decimalDigit(slot(1).stackSize, 6-aRenderPass), CA_WHITE, F, T, T, T);

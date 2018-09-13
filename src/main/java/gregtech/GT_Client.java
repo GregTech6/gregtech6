@@ -259,9 +259,9 @@ public class GT_Client extends GT_Proxy {
 			GL11.glPushMatrix();
 			tessellator.startDrawingQuads();
 			tessellator.addVertexWithUV(-1, -1, -0.5F, 4-aPlayer.rotationYaw/64, 4+aPlayer.rotationPitch/64);
-			tessellator.addVertexWithUV( 1, -1, -0.5F,	-aPlayer.rotationYaw/64, 4+aPlayer.rotationPitch/64);
-			tessellator.addVertexWithUV( 1,	 1, -0.5F,	-aPlayer.rotationYaw/64,   aPlayer.rotationPitch/64);
-			tessellator.addVertexWithUV(-1,	 1, -0.5F, 4-aPlayer.rotationYaw/64,   aPlayer.rotationPitch/64);
+			tessellator.addVertexWithUV( 1, -1, -0.5F,  -aPlayer.rotationYaw/64, 4+aPlayer.rotationPitch/64);
+			tessellator.addVertexWithUV( 1,  1, -0.5F,  -aPlayer.rotationYaw/64,   aPlayer.rotationPitch/64);
+			tessellator.addVertexWithUV(-1,  1, -0.5F, 4-aPlayer.rotationYaw/64,   aPlayer.rotationPitch/64);
 			tessellator.draw();
 			GL11.glPopMatrix();
 			GL11.glColor4f(1, 1, 1, 1);
@@ -272,7 +272,7 @@ public class GT_Client extends GT_Proxy {
 	
 	@SubscribeEvent
 	public void receiveRenderEvent(RenderPlayerEvent.Pre aEvent) {
-//		if (UT.Entities.getFullInvisibility(aEvent.entityPlayer)) {aEvent.setCanceled(true); return;}
+//      if (UT.Entities.getFullInvisibility(aEvent.entityPlayer)) {aEvent.setCanceled(true); return;}
 	}
 	
 	@SubscribeEvent

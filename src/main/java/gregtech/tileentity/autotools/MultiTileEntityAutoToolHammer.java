@@ -72,8 +72,8 @@ public class MultiTileEntityAutoToolHammer extends TileEntityBase09FacingSingle 
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_AUTOHAMMER));
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_QUALITY)		+ ": " + Chat.WHITE + mQuality);
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_AUTOHAMMER));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_QUALITY)        + ": " + Chat.WHITE + mQuality);
 		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, LH.get(LH.FACE_BACK), null);
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -150,10 +150,10 @@ public class MultiTileEntityAutoToolHammer extends TileEntityBase09FacingSingle 
 	@Override public byte getDefaultSide() {return SIDE_DOWN;}
 	@Override public byte getVisualData() {return mSendSound;}
 	
-	@Override public boolean isEnergyType					(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
-	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == OPPOSITES[mFacing] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public long getEnergySizeInputMin				(TagData aEnergyType, byte aSide) {return mInput / 8;}
-	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mInput;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == OPPOSITES[mFacing] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return mInput / 8;}
+	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}

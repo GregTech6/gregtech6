@@ -54,14 +54,14 @@ public class ContainerClientBasicMachine extends ContainerClient {
 				int tSize = (mRecipes.mProgressBarDirection % 4 < 2 ? 20 : 18), tProgress = (int)UT.Code.scale(((ContainerCommonBasicMachine)mContainer).mProgressBar, 0, Short.MAX_VALUE, tSize * UT.Code.unsignB(mRecipes.mProgressBarAmount), F) % (tSize+1);
 				
 				switch (mRecipes.mProgressBarDirection) {
-				case 0:								drawTexturedModalRect(x + 78					, y + 24					, 176					, 0					, tProgress	, 18		); break;
-				case 1:								drawTexturedModalRect(x + 78 + 20 - tProgress	, y + 24					, 176 + 20 - tProgress	, 0					, tProgress	, 18		); break;
-				case 2:								drawTexturedModalRect(x + 78					, y + 24					, 176					, 0					, 20		, tProgress	); break;
-				case 3:								drawTexturedModalRect(x + 78					, y + 24 + 18 - tProgress	, 176					, 18 - tProgress	, 20		, tProgress	); break;
-				case 4: tProgress = 20 - tProgress;	drawTexturedModalRect(x + 78					, y + 24					, 176					, 0					, tProgress	, 18		); break;
-				case 5: tProgress = 20 - tProgress;	drawTexturedModalRect(x + 78 + 20 - tProgress	, y + 24					, 176 + 20 - tProgress	, 0					, tProgress	, 18		); break;
-				case 6: tProgress = 18 - tProgress;	drawTexturedModalRect(x + 78					, y + 24					, 176					, 0					, 20		, tProgress	); break;
-				case 7: tProgress = 18 - tProgress;	drawTexturedModalRect(x + 78					, y + 24 + 18 - tProgress	, 176					, 18 - tProgress	, 20		, tProgress	); break;
+				case 0:                             drawTexturedModalRect(x + 78                    , y + 24                    , 176                   , 0                 , tProgress , 18        ); break;
+				case 1:                             drawTexturedModalRect(x + 78 + 20 - tProgress   , y + 24                    , 176 + 20 - tProgress  , 0                 , tProgress , 18        ); break;
+				case 2:                             drawTexturedModalRect(x + 78                    , y + 24                    , 176                   , 0                 , 20        , tProgress ); break;
+				case 3:                             drawTexturedModalRect(x + 78                    , y + 24 + 18 - tProgress   , 176                   , 18 - tProgress    , 20        , tProgress ); break;
+				case 4: tProgress = 20 - tProgress; drawTexturedModalRect(x + 78                    , y + 24                    , 176                   , 0                 , tProgress , 18        ); break;
+				case 5: tProgress = 20 - tProgress; drawTexturedModalRect(x + 78 + 20 - tProgress   , y + 24                    , 176 + 20 - tProgress  , 0                 , tProgress , 18        ); break;
+				case 6: tProgress = 18 - tProgress; drawTexturedModalRect(x + 78                    , y + 24                    , 176                   , 0                 , 20        , tProgress ); break;
+				case 7: tProgress = 18 - tProgress; drawTexturedModalRect(x + 78                    , y + 24 + 18 - tProgress   , 176                   , 18 - tProgress    , 20        , tProgress ); break;
 				}
 			}
 		}

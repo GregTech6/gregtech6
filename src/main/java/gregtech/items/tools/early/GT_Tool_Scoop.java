@@ -79,7 +79,7 @@ public class GT_Tool_Scoop extends ToolStats {
 		return 1.0F;
 	}
 	
-	@Override public boolean canCollect()													{return T;}
+	@Override public boolean canCollect()                                                   {return T;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {

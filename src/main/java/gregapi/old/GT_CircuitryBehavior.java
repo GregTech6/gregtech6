@@ -42,7 +42,7 @@ public abstract class GT_CircuitryBehavior {
 	 * @param aIndex 0 - 1023 are my own Indices, so use other Numbers!
 	 */
 	public GT_CircuitryBehavior(int aIndex) {
-//		GregTech_API.sCircuitryBehaviors.put(aIndex, this);
+//      GregTech_API.sCircuitryBehaviors.put(aIndex, this);
 	}
 	
 	/**

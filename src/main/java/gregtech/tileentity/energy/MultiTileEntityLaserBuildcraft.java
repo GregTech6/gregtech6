@@ -86,16 +86,16 @@ public class MultiTileEntityLaserBuildcraft extends TileEntityBase10EnergyConver
 	@Override public String getLocalisedInputSide () {return LH.get(LH.FACE_BACK);}
 	@Override public String getLocalisedOutputSide() {return LH.get(LH.FACE_FRONT);}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return aSide == OPPOSITES[mFacing]?1.0F:0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return aSide == OPPOSITES[mFacing]?1.0F:0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return aSide ==			mFacing ?0.5F:0.0F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return aSide == OPPOSITES[mFacing];}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return aSide == OPPOSITES[mFacing];}
-	@Override public boolean allowCovers			(byte aSide) {return aSide == OPPOSITES[mFacing];}
+	@Override public float getSurfaceSize           (byte aSide) {return aSide == OPPOSITES[mFacing]?1.0F:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return aSide == OPPOSITES[mFacing]?1.0F:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return aSide ==           mFacing ?0.5F:0.0F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return aSide == OPPOSITES[mFacing];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return aSide == OPPOSITES[mFacing];}
+	@Override public boolean allowCovers            (byte aSide) {return aSide == OPPOSITES[mFacing];}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(			PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool()	 {return box(			PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock)	 {box(aBlock, PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(           PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool()  {return box(           PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)   {box(aBlock, PX_P[mFacing==SIDE_X_NEG?8:0], PX_P[mFacing==SIDE_Y_NEG?8:0], PX_P[mFacing==SIDE_Z_NEG?8:0], PX_N[mFacing==SIDE_X_POS?8:0], PX_N[mFacing==SIDE_Y_POS?8:0], PX_N[mFacing==SIDE_Z_POS?8:0]);}
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
@@ -115,7 +115,7 @@ public class MultiTileEntityLaserBuildcraft extends TileEntityBase10EnergyConver
 		case 2: box(aBlock, mFacing==SIDE_X_NEG?-0.99F:PX_P[5], mFacing==SIDE_Y_NEG?-0.99F:PX_P[5], mFacing==SIDE_Z_NEG?-0.99F:PX_P[5], mFacing==SIDE_X_POS?+1.99F:PX_N[5], mFacing==SIDE_Y_POS?+1.99F:PX_N[5], mFacing==SIDE_Z_POS?+1.99F:PX_N[5]); return T;
 		case 3: box(aBlock, mFacing==SIDE_X_NEG?-0.99F:PX_P[6], mFacing==SIDE_Y_NEG?-0.99F:PX_P[6], mFacing==SIDE_Z_NEG?-0.99F:PX_P[6], mFacing==SIDE_X_POS?+1.99F:PX_N[6], mFacing==SIDE_Y_POS?+1.99F:PX_N[6], mFacing==SIDE_Z_POS?+1.99F:PX_N[6]); return T;
 		case 4: box(aBlock, mFacing==SIDE_X_NEG?-0.99F:PX_P[7], mFacing==SIDE_Y_NEG?-0.99F:PX_P[7], mFacing==SIDE_Z_NEG?-0.99F:PX_P[7], mFacing==SIDE_X_POS?+1.99F:PX_N[7], mFacing==SIDE_Y_POS?+1.99F:PX_N[7], mFacing==SIDE_Z_POS?+1.99F:PX_N[7]); return T;
-//		case 3: box(aBlock, mFacing==SIDE_X_POS?+1.99F:PIXELS_NEG[6], mFacing==SIDE_Y_POS?+1.99F:PIXELS_NEG[6], mFacing==SIDE_Z_POS?+1.99F:PIXELS_NEG[6], mFacing==SIDE_X_NEG?-0.99F:PIXELS_POS[6], mFacing==SIDE_Y_NEG?-0.99F:PIXELS_POS[6], mFacing==SIDE_Z_NEG?-0.99F:PIXELS_POS[6]); return T;
+//      case 3: box(aBlock, mFacing==SIDE_X_POS?+1.99F:PIXELS_NEG[6], mFacing==SIDE_Y_POS?+1.99F:PIXELS_NEG[6], mFacing==SIDE_Z_POS?+1.99F:PIXELS_NEG[6], mFacing==SIDE_X_NEG?-0.99F:PIXELS_POS[6], mFacing==SIDE_Y_NEG?-0.99F:PIXELS_POS[6], mFacing==SIDE_Z_NEG?-0.99F:PIXELS_POS[6]); return T;
 		}
 		return F;
 	}

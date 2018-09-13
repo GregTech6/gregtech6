@@ -52,71 +52,71 @@ import thaumcraft.api.research.ResearchPage;
 
 public class CompatTC extends CompatBase implements ICompatTC {
 	public CompatTC() {
-		TC.AER				.mAspect = Aspect.AIR;
-		TC.ALIENIS			.mAspect = Aspect.ELDRITCH;
-		TC.AQUA				.mAspect = Aspect.WATER;
-		TC.ARBOR			.mAspect = Aspect.TREE;
-		TC.AURAM			.mAspect = Aspect.AURA;
-		TC.BESTIA			.mAspect = Aspect.BEAST;
-		TC.COGNITO			.mAspect = Aspect.MIND;
-		TC.CORPUS			.mAspect = Aspect.FLESH;
-		TC.EXAMINIS			.mAspect = Aspect.UNDEAD;
-		TC.FABRICO			.mAspect = Aspect.CRAFT;
-		TC.FAMES			.mAspect = Aspect.HUNGER;
-		TC.GELUM			.mAspect = Aspect.COLD;
-		TC.GRANUM			.mAspect = Aspect.PLANT;
-		TC.HERBA			.mAspect = Aspect.PLANT;
-		TC.HUMANUS			.mAspect = Aspect.MAN;
-		TC.IGNIS			.mAspect = Aspect.FIRE;
-		TC.INSTRUMENTUM		.mAspect = Aspect.TOOL;
-		TC.ITER				.mAspect = Aspect.TRAVEL;
-		TC.LIMUS			.mAspect = Aspect.SLIME;
-		TC.LUCRUM			.mAspect = Aspect.GREED;
-		TC.LUX				.mAspect = Aspect.LIGHT;
-		TC.MACHINA			.mAspect = Aspect.MECHANISM;
-		TC.MESSIS			.mAspect = Aspect.CROP;
-		TC.METALLUM			.mAspect = Aspect.METAL;
-		TC.METO				.mAspect = Aspect.HARVEST;
-		TC.MORTUUS			.mAspect = Aspect.DEATH;
-		TC.MOTUS			.mAspect = Aspect.MOTION;
-		TC.ORDO				.mAspect = Aspect.ORDER;
-		TC.PANNUS			.mAspect = Aspect.CLOTH;
-		TC.PERDITIO			.mAspect = Aspect.ENTROPY;
-		TC.PERFODIO			.mAspect = Aspect.MINE;
-		TC.PERMUTATIO		.mAspect = Aspect.EXCHANGE;
-		TC.POTENTIA			.mAspect = Aspect.ENERGY;
-		TC.PRAECANTIO		.mAspect = Aspect.MAGIC;
-		TC.SANO				.mAspect = Aspect.HEAL;
-		TC.SENSUS			.mAspect = Aspect.SENSES;
-		TC.SPIRITUS			.mAspect = Aspect.SOUL;
-		TC.TELUM			.mAspect = Aspect.WEAPON;
-		TC.TERRA			.mAspect = Aspect.EARTH;
-		TC.TEMPESTAS		.mAspect = Aspect.WEATHER;
-		TC.TENEBRAE			.mAspect = Aspect.DARKNESS;
-		TC.TUTAMEN			.mAspect = Aspect.ARMOR;
-		TC.VACUOS			.mAspect = Aspect.VOID;
-		TC.VENENUM			.mAspect = Aspect.POISON;
-		TC.VICTUS			.mAspect = Aspect.LIFE;
-		TC.VINCULUM			.mAspect = Aspect.TRAP;
-		TC.VITIUM			.mAspect = Aspect.TAINT;
-		TC.VITREUS			.mAspect = Aspect.CRYSTAL;
-		TC.VOLATUS			.mAspect = Aspect.FLIGHT;
+		TC.AER              .mAspect = Aspect.AIR;
+		TC.ALIENIS          .mAspect = Aspect.ELDRITCH;
+		TC.AQUA             .mAspect = Aspect.WATER;
+		TC.ARBOR            .mAspect = Aspect.TREE;
+		TC.AURAM            .mAspect = Aspect.AURA;
+		TC.BESTIA           .mAspect = Aspect.BEAST;
+		TC.COGNITO          .mAspect = Aspect.MIND;
+		TC.CORPUS           .mAspect = Aspect.FLESH;
+		TC.EXAMINIS         .mAspect = Aspect.UNDEAD;
+		TC.FABRICO          .mAspect = Aspect.CRAFT;
+		TC.FAMES            .mAspect = Aspect.HUNGER;
+		TC.GELUM            .mAspect = Aspect.COLD;
+		TC.GRANUM           .mAspect = Aspect.PLANT;
+		TC.HERBA            .mAspect = Aspect.PLANT;
+		TC.HUMANUS          .mAspect = Aspect.MAN;
+		TC.IGNIS            .mAspect = Aspect.FIRE;
+		TC.INSTRUMENTUM     .mAspect = Aspect.TOOL;
+		TC.ITER             .mAspect = Aspect.TRAVEL;
+		TC.LIMUS            .mAspect = Aspect.SLIME;
+		TC.LUCRUM           .mAspect = Aspect.GREED;
+		TC.LUX              .mAspect = Aspect.LIGHT;
+		TC.MACHINA          .mAspect = Aspect.MECHANISM;
+		TC.MESSIS           .mAspect = Aspect.CROP;
+		TC.METALLUM         .mAspect = Aspect.METAL;
+		TC.METO             .mAspect = Aspect.HARVEST;
+		TC.MORTUUS          .mAspect = Aspect.DEATH;
+		TC.MOTUS            .mAspect = Aspect.MOTION;
+		TC.ORDO             .mAspect = Aspect.ORDER;
+		TC.PANNUS           .mAspect = Aspect.CLOTH;
+		TC.PERDITIO         .mAspect = Aspect.ENTROPY;
+		TC.PERFODIO         .mAspect = Aspect.MINE;
+		TC.PERMUTATIO       .mAspect = Aspect.EXCHANGE;
+		TC.POTENTIA         .mAspect = Aspect.ENERGY;
+		TC.PRAECANTIO       .mAspect = Aspect.MAGIC;
+		TC.SANO             .mAspect = Aspect.HEAL;
+		TC.SENSUS           .mAspect = Aspect.SENSES;
+		TC.SPIRITUS         .mAspect = Aspect.SOUL;
+		TC.TELUM            .mAspect = Aspect.WEAPON;
+		TC.TERRA            .mAspect = Aspect.EARTH;
+		TC.TEMPESTAS        .mAspect = Aspect.WEATHER;
+		TC.TENEBRAE         .mAspect = Aspect.DARKNESS;
+		TC.TUTAMEN          .mAspect = Aspect.ARMOR;
+		TC.VACUOS           .mAspect = Aspect.VOID;
+		TC.VENENUM          .mAspect = Aspect.POISON;
+		TC.VICTUS           .mAspect = Aspect.LIFE;
+		TC.VINCULUM         .mAspect = Aspect.TRAP;
+		TC.VITIUM           .mAspect = Aspect.TAINT;
+		TC.VITREUS          .mAspect = Aspect.CRYSTAL;
+		TC.VOLATUS          .mAspect = Aspect.FLIGHT;
 		
-		TC.STRONTIO			.mAspect = new Aspect("strontio"	, 0xeec2b3, new Aspect[] {Aspect.MIND, Aspect.ENTROPY}		, new ResourceLocation(RES_PATH_ASPECTS + "STRONTIO.png"), 1);
-		TC.NEBRISUM			.mAspect = new Aspect("nebrisum"	, 0xeeee7e, new Aspect[] {Aspect.MINE, Aspect.GREED}		, new ResourceLocation(RES_PATH_ASPECTS + "NEBRISUM.png"), 1);
-		TC.ELECTRUM			.mAspect = new Aspect("electrum"	, 0xc0eeee, new Aspect[] {Aspect.ENERGY, Aspect.MECHANISM}	, new ResourceLocation(RES_PATH_ASPECTS + "ELECTRUM.png"), 1);
-		TC.MAGNETO			.mAspect = new Aspect("magneto"		, 0xc0c0c0, new Aspect[] {Aspect.METAL, Aspect.TRAVEL}		, new ResourceLocation(RES_PATH_ASPECTS + "MAGNETO.png"), 1);
-		TC.RADIO			.mAspect = new Aspect("radio"		, 0xc0ffc0, new Aspect[] {Aspect.LIGHT, Aspect.ENERGY}		, new ResourceLocation(RES_PATH_ASPECTS + "RADIO.png"), 1);
-//		TC.REFLEXIO			.mAspect = new Aspect("reflexio"	, 0xf0f0f0, new Aspect[] {Aspect.ENERGY, Aspect.EXCHANGE}	, new ResourceLocation(RES_PATH_ASPECTS + "REFLEXIO.png"), 1);
+		TC.STRONTIO         .mAspect = new Aspect("strontio"    , 0xeec2b3, new Aspect[] {Aspect.MIND, Aspect.ENTROPY}      , new ResourceLocation(RES_PATH_ASPECTS + "STRONTIO.png"), 1);
+		TC.NEBRISUM         .mAspect = new Aspect("nebrisum"    , 0xeeee7e, new Aspect[] {Aspect.MINE, Aspect.GREED}        , new ResourceLocation(RES_PATH_ASPECTS + "NEBRISUM.png"), 1);
+		TC.ELECTRUM         .mAspect = new Aspect("electrum"    , 0xc0eeee, new Aspect[] {Aspect.ENERGY, Aspect.MECHANISM}  , new ResourceLocation(RES_PATH_ASPECTS + "ELECTRUM.png"), 1);
+		TC.MAGNETO          .mAspect = new Aspect("magneto"     , 0xc0c0c0, new Aspect[] {Aspect.METAL, Aspect.TRAVEL}      , new ResourceLocation(RES_PATH_ASPECTS + "MAGNETO.png"), 1);
+		TC.RADIO            .mAspect = new Aspect("radio"       , 0xc0ffc0, new Aspect[] {Aspect.LIGHT, Aspect.ENERGY}      , new ResourceLocation(RES_PATH_ASPECTS + "RADIO.png"), 1);
+//      TC.REFLEXIO         .mAspect = new Aspect("reflexio"    , 0xf0f0f0, new Aspect[] {Aspect.ENERGY, Aspect.EXCHANGE}   , new ResourceLocation(RES_PATH_ASPECTS + "REFLEXIO.png"), 1);
 		
-		TC.REFLEXIO			.mAspect = Aspect.EXCHANGE;
+		TC.REFLEXIO         .mAspect = Aspect.EXCHANGE;
 		
-		LH.add("tc.aspect.strontio"	, "Stupidness, Incompetence");
-		LH.add("tc.aspect.nebrisum"	, "Cheatiness, Raiding, Hoarding");
-		LH.add("tc.aspect.electrum"	, "Electricity, Lightning");
-		LH.add("tc.aspect.magneto"	, "Magnetism, Attraction");
-		LH.add("tc.aspect.radio"	, "Radiation");
-//		LH.add("tc.aspect.reflexio"	, "Reflection");
+		LH.add("tc.aspect.strontio" , "Stupidness, Incompetence");
+		LH.add("tc.aspect.nebrisum" , "Cheatiness, Raiding, Hoarding");
+		LH.add("tc.aspect.electrum" , "Electricity, Lightning");
+		LH.add("tc.aspect.magneto"  , "Magnetism, Attraction");
+		LH.add("tc.aspect.radio"    , "Radiation");
+//      LH.add("tc.aspect.reflexio" , "Reflection");
 	}
 	
 	@Override
@@ -147,20 +147,20 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		LH.add("tc.research_name."+aResearch, aName);
 		LH.add("tc.research_text."+aResearch, "[GT] " + aText);
 		for (Object tPage : aPages) if (tPage != null) {
-			if (tPage instanceof String						) {tPages.add(new ResearchPage((String							)tPage)); continue;}
-			if (tPage instanceof IRecipe					) {tPages.add(new ResearchPage((IRecipe							)tPage)); continue;}
-			if (tPage instanceof IArcaneRecipe				) {tPages.add(new ResearchPage((IArcaneRecipe					)tPage)); continue;}
-			if (tPage instanceof CrucibleRecipe				) {tPages.add(new ResearchPage((CrucibleRecipe					)tPage)); continue;}
-			if (tPage instanceof InfusionRecipe				) {tPages.add(new ResearchPage((InfusionRecipe					)tPage)); continue;}
-			if (tPage instanceof InfusionEnchantmentRecipe	) {tPages.add(new ResearchPage((InfusionEnchantmentRecipe		)tPage)); continue;}
+			if (tPage instanceof String                     ) {tPages.add(new ResearchPage((String                          )tPage)); continue;}
+			if (tPage instanceof IRecipe                    ) {tPages.add(new ResearchPage((IRecipe                         )tPage)); continue;}
+			if (tPage instanceof IArcaneRecipe              ) {tPages.add(new ResearchPage((IArcaneRecipe                   )tPage)); continue;}
+			if (tPage instanceof CrucibleRecipe             ) {tPages.add(new ResearchPage((CrucibleRecipe                  )tPage)); continue;}
+			if (tPage instanceof InfusionRecipe             ) {tPages.add(new ResearchPage((InfusionRecipe                  )tPage)); continue;}
+			if (tPage instanceof InfusionEnchantmentRecipe  ) {tPages.add(new ResearchPage((InfusionEnchantmentRecipe       )tPage)); continue;}
 		}
-		if ((aType & RESEARCH_TYPE_AUTOUNLOCK	) != 0) rResearch.setAutoUnlock();
-		if ((aType & RESEARCH_TYPE_SECONDARY	) != 0) rResearch.setSecondary();
-		if ((aType & RESEARCH_TYPE_SPECIAL		) != 0) rResearch.setSpecial();
-		if ((aType & RESEARCH_TYPE_VIRTUAL		) != 0)	rResearch.setVirtual();
-		if ((aType & RESEARCH_TYPE_HIDDEN		) != 0) rResearch.setHidden();
-		if ((aType & RESEARCH_TYPE_ROUND		) != 0) rResearch.setRound();
-		if ((aType & RESEARCH_TYPE_FREE			) != 0)	rResearch.setStub();
+		if ((aType & RESEARCH_TYPE_AUTOUNLOCK   ) != 0) rResearch.setAutoUnlock();
+		if ((aType & RESEARCH_TYPE_SECONDARY    ) != 0) rResearch.setSecondary();
+		if ((aType & RESEARCH_TYPE_SPECIAL      ) != 0) rResearch.setSpecial();
+		if ((aType & RESEARCH_TYPE_VIRTUAL      ) != 0) rResearch.setVirtual();
+		if ((aType & RESEARCH_TYPE_HIDDEN       ) != 0) rResearch.setHidden();
+		if ((aType & RESEARCH_TYPE_ROUND        ) != 0) rResearch.setRound();
+		if ((aType & RESEARCH_TYPE_FREE         ) != 0) rResearch.setStub();
 		
 		if (aParentResearches != null) {
 			ArrayList<String> tParentResearches = new ArrayListNoNulls<>();

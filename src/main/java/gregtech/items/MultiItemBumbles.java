@@ -76,91 +76,91 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	
 	@Override
 	public void addItems() {
-		make(	 0, "Wild Bumblebee"			, "");
-		make(	10, "Captive Bumblebee"			, "Is used to enprisonment");
-		make(	20, "Common Bumblebee"			, "Works hard for its Family");
-		make(	30, "Cultivated Bumblebee"		, "Drinks Wine while watching Oprah");
+		make(    0, "Wild Bumblebee"            , "");
+		make(   10, "Captive Bumblebee"         , "Is used to enprisonment");
+		make(   20, "Common Bumblebee"          , "Works hard for its Family");
+		make(   30, "Cultivated Bumblebee"      , "Drinks Wine while watching Oprah");
 		
-		make(  100, "Surfing Bumblebee"			, "Too chill to work regularily");
-		make(  110, "Swimming Bumblebee"		, "");
-		make(  120, "Diving Bumblebee"			, "Not gonna jump into Green Water");
-		make(  130, "Subnautic Bumblebee"		, "Its Wings became Air Tanks");
+		make(  100, "Surfing Bumblebee"         , "Too chill to work regularily");
+		make(  110, "Swimming Bumblebee"        , "");
+		make(  120, "Diving Bumblebee"          , "Not gonna jump into Green Water");
+		make(  130, "Subnautic Bumblebee"       , "Its Wings became Air Tanks");
 		
-		make(  200, "Apprentice Bumblebee"		, "");
-		make(  210, "Magician Bumblebee"		, "");
-		make(  220, "Wizard Bumblebee"			, "");
-		make(  230, "Dumblebee"					, "");
+		make(  200, "Apprentice Bumblebee"      , "");
+		make(  210, "Magician Bumblebee"        , "");
+		make(  220, "Wizard Bumblebee"          , "");
+		make(  230, "Dumblebee"                 , "");
 		
-		make(  300, "Nether Bumblebee"			, "");
-		make(  310, "Hellish Bumblebee"			, "");
-		make(  320, "Impish Bumblebee"			, "");
-		make(  330, "Demonic Bumblebee"			, "");
+		make(  300, "Nether Bumblebee"          , "");
+		make(  310, "Hellish Bumblebee"         , "");
+		make(  320, "Impish Bumblebee"          , "");
+		make(  330, "Demonic Bumblebee"         , "");
 		
-		make(  400, "End Bumblebee"				, "The End is nigh!");
-		make(  410, "Void Bumblebee"			, "Voids parts of its work for no reason");
-		make(  420, "Alienated Bumblebee"		, "Doesn't feel comfortable with Society");
-		make(  430, "Nihilistic Bumblebee"		, "Who cares? Nothing matters.");
+		make(  400, "End Bumblebee"             , "The End is nigh!");
+		make(  410, "Void Bumblebee"            , "Voids parts of its work for no reason");
+		make(  420, "Alienated Bumblebee"       , "Doesn't feel comfortable with Society");
+		make(  430, "Nihilistic Bumblebee"      , "Who cares? Nothing matters.");
 		
-		make(  500, "Stoned Bumblebee"			, "Duuuude, I'm so damn biiig");
-		make(  510, "Rocking Bumblebee"			, "");
-		make(  520, "Hard Rock Bumblebee"		, "");
-		make(  530, "Bumbelvis"					, "Has left the Building");
+		make(  500, "Stoned Bumblebee"          , "Duuuude, I'm so damn biiig");
+		make(  510, "Rocking Bumblebee"         , "");
+		make(  520, "Hard Rock Bumblebee"       , "");
+		make(  530, "Bumbelvis"                 , "Has left the Building");
 		
-		make(  600, "Jungle Bumblebee"			, "");
-		make(  610, "Jungle Bumblebee (T2)"		, "If anyone has good Ideas about Names, tell Greg");
-		make(  620, "Jungle Bumblebee (T3)"		, "If anyone has good Ideas about Names, tell Greg");
-		make(  630, "Jungle Bumblebee (T4)"		, "If anyone has good Ideas about Names, tell Greg");
+		make(  600, "Jungle Bumblebee"          , "");
+		make(  610, "Jungle Bumblebee (T2)"     , "If anyone has good Ideas about Names, tell Greg");
+		make(  620, "Jungle Bumblebee (T3)"     , "If anyone has good Ideas about Names, tell Greg");
+		make(  630, "Jungle Bumblebee (T4)"     , "If anyone has good Ideas about Names, tell Greg");
 		
-		make(  700, "Frosty Bumblebee"			, "");
-		make(  710, "North Pole Bumblebee"		, "");
-		make(  720, "Bumble Elf"				, "");
-		make(  730, "Bumble Claus"				, "Ho Ho Ho!");
+		make(  700, "Frosty Bumblebee"          , "");
+		make(  710, "North Pole Bumblebee"      , "");
+		make(  720, "Bumble Elf"                , "");
+		make(  730, "Bumble Claus"              , "Ho Ho Ho!");
 		
-		make(  800, "Bumbleshroom"				, "");
-		make(  810, "Bumble Toad"				, "");
-		make(  820, "Bumble Bro"				, "It's a me! Bumblio!");
-		make(  830, "Bumble Peach"				, "Is in another Castle!");
+		make(  800, "Bumbleshroom"              , "");
+		make(  810, "Bumble Toad"               , "");
+		make(  820, "Bumble Bro"                , "It's a me! Bumblio!");
+		make(  830, "Bumble Peach"              , "Is in another Castle!");
 		
-		make(  900, "Sandy Bumblebee"			, "");
-		make(  910, "Sandy Bumblebee (T2)"		, "If anyone has good Ideas about Names, tell Greg");
-		make(  920, "Sandy Bumblebee (T3)"		, "If anyone has good Ideas about Names, tell Greg");
-		make(  930, "Sandy Bumblebee (T4)"		, "If anyone has good Ideas about Names, tell Greg");
+		make(  900, "Sandy Bumblebee"           , "");
+		make(  910, "Sandy Bumblebee (T2)"      , "If anyone has good Ideas about Names, tell Greg");
+		make(  920, "Sandy Bumblebee (T3)"      , "If anyone has good Ideas about Names, tell Greg");
+		make(  930, "Sandy Bumblebee (T4)"      , "If anyone has good Ideas about Names, tell Greg");
 		
 		// Normal + Rock = Clay
-		make(10000, "Creative Bumblebee"		, "Interested in Pottery");
-		make(10010, "Builder Bumblebee"			, "Also known as Bumblebob the Builder");
-		make(10020, "Masonic Bumblebee"			, "Is free to build Brick Walls");
-		make(10030, "Illuminumblebee"			, "Nothing suspicious around here");
+		make(10000, "Creative Bumblebee"        , "Interested in Pottery");
+		make(10010, "Builder Bumblebee"         , "Also known as Bumblebob the Builder");
+		make(10020, "Masonic Bumblebee"         , "Is free to build Brick Walls");
+		make(10030, "Illuminumblebee"           , "Nothing suspicious around here");
 		
 		// Normal + Water = Sticky
-		make(10100, "Industrial Bumblebee"		, "Revolutionises Comb Production");
-		make(10110, "Overseer Bumblebee"		, "Effectively orders around the Workforce");
-		make(10120, "Bumble Tycoon"				, "Taking over the Bumblebeesiness");
-		make(10130, "Monopolistic Bumblebee"	, "Owns everything and everyone");
+		make(10100, "Industrial Bumblebee"      , "Revolutionises Comb Production");
+		make(10110, "Overseer Bumblebee"        , "Effectively orders around the Workforce");
+		make(10120, "Bumble Tycoon"             , "Taking over the Bumblebeesiness");
+		make(10130, "Monopolistic Bumblebee"    , "Owns everything and everyone");
 		
 		// Normal + Sandy = Royal
-		make(10200, "Bumbleknight"				, "For the King of Bumble Castle!");
-		make(10210, "Colonial Bumblebee"		, "For the Queen of Bumbleland!");
-		make(10220, "Royal Bumblebee"			, "Member of the Royal Family");
-		make(10230, "Bumblemonarch"				, "Ruling over the Bumblecountry");
+		make(10200, "Bumbleknight"              , "For the King of Bumble Castle!");
+		make(10210, "Colonial Bumblebee"        , "For the Queen of Bumbleland!");
+		make(10220, "Royal Bumblebee"           , "Member of the Royal Family");
+		make(10230, "Bumblemonarch"             , "Ruling over the Bumblecountry");
 		
 		// Nether + End = Satanic
-		make(10300, "Bumblegoth"				, "Hangs around in dark places");
-		make(10310, "Occult Bumblebee"			, "Practices occult Rituals");
-		make(10320, "Antichristumblebee"		, "Screw Bumblebeesus!");
-		make(10330, "Satanic Bumblebee"			, "Heil Bumblesatan!");
+		make(10300, "Bumblegoth"                , "Hangs around in dark places");
+		make(10310, "Occult Bumblebee"          , "Practices occult Rituals");
+		make(10320, "Antichristumblebee"        , "Screw Bumblebeesus!");
+		make(10330, "Satanic Bumblebee"         , "Heil Bumblesatan!");
 		
 		// Rock + Water = Amnesic / Lubricant
-		make(10400, "Forgetful Bumblebee"		, "What was I supposed to do again? It slipped my mind.");
-		make(10410, "Amnesic Bumblebee"			, "Who are you? And who am I even?");
-		make(10420, "Bumbleheimers"				, "Could you get me some Honey? Thanks. Could you get me some Honey?");
-		make(10430, "Bumble in Black"			, "You did not see anything unusual. I did not wiggle my Butt.");
+		make(10400, "Forgetful Bumblebee"       , "What was I supposed to do again? It slipped my mind.");
+		make(10410, "Amnesic Bumblebee"         , "Who are you? And who am I even?");
+		make(10420, "Bumbleheimers"             , "Could you get me some Honey? Thanks. Could you get me some Honey?");
+		make(10430, "Bumble in Black"           , "You did not see anything unusual. I did not wiggle my Butt.");
 		
 		// Jungle + Sandy = Soldier (Damages anything, even Skeletons, makes Bone Combs)
-		make(10500, "Private Bumble"			, "Reporting for Duty!");
-		make(10510, "Lt. Bumbleson"				, "Yes Sir!");
-		make(10520, "Colonel Bumble O'Beeill"	, "Leading the Team");
-		make(10530, "General Bumblemond"		, "In charge of the Bumblyene Mountain Base");
+		make(10500, "Private Bumble"            , "Reporting for Duty!");
+		make(10510, "Lt. Bumbleson"             , "Yes Sir!");
+		make(10520, "Colonel Bumble O'Beeill"   , "Leading the Team");
+		make(10530, "General Bumblemond"        , "In charge of the Bumblyene Mountain Base");
 		
 		// Jungle + Water = Swamp
 		// Rock + Sandy = Red Sand?
@@ -172,23 +172,23 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	@Override
 	public ItemStack bumbleProductStack(ItemStack aBumbleBee, short aMetaData, long aStacksize, int aProductIndex) {
 		switch(aMetaData / 100) {
-		case   0: return IL.Comb_Honey		.get(aStacksize);
-		case   1: return IL.Comb_Water		.get(aStacksize);
-		case   2: return IL.Comb_Magic		.get(aStacksize);
-		case   3: return IL.Comb_Nether		.get(aStacksize);
-		case   4: return IL.Comb_End		.get(aStacksize);
-		case   5: return IL.Comb_Rock		.get(aStacksize);
-		case   6: return IL.Comb_Jungle		.get(aStacksize);
-		case   7: return IL.Comb_Frozen		.get(aStacksize);
-		case   8: return IL.Comb_Shroom		.get(aStacksize);
-		case   9: return IL.Comb_Sandy		.get(aStacksize);
-		case 100: return IL.Comb_Clay		.get(aStacksize);
-		case 101: return IL.Comb_Sticky		.get(aStacksize);
-		case 102: return IL.Comb_Royal		.get(aStacksize);
-		case 103: return IL.Comb_Soul		.get(aStacksize);
-		case 104: return IL.Comb_Amnesic	.get(aStacksize);
-		case 105: return IL.Comb_Military	.get(aStacksize);
-		default : return IL.Comb_Honey		.get(aStacksize);
+		case   0: return IL.Comb_Honey      .get(aStacksize);
+		case   1: return IL.Comb_Water      .get(aStacksize);
+		case   2: return IL.Comb_Magic      .get(aStacksize);
+		case   3: return IL.Comb_Nether     .get(aStacksize);
+		case   4: return IL.Comb_End        .get(aStacksize);
+		case   5: return IL.Comb_Rock       .get(aStacksize);
+		case   6: return IL.Comb_Jungle     .get(aStacksize);
+		case   7: return IL.Comb_Frozen     .get(aStacksize);
+		case   8: return IL.Comb_Shroom     .get(aStacksize);
+		case   9: return IL.Comb_Sandy      .get(aStacksize);
+		case 100: return IL.Comb_Clay       .get(aStacksize);
+		case 101: return IL.Comb_Sticky     .get(aStacksize);
+		case 102: return IL.Comb_Royal      .get(aStacksize);
+		case 103: return IL.Comb_Soul       .get(aStacksize);
+		case 104: return IL.Comb_Amnesic    .get(aStacksize);
+		case 105: return IL.Comb_Military   .get(aStacksize);
+		default : return IL.Comb_Honey      .get(aStacksize);
 		}
 	}
 	
@@ -394,7 +394,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		, tPlayer = (aAttacked instanceof EntityPlayer)
 		;
 		switch(aMetaData / 100) {
-		default: return !tSkeleton && !tSnowGolem && !tIronGolem && aAttacked.attackEntityFrom(DamageSources.getBumbleDamage(), (1+((aMetaData / 10) % 10))	 );
+		default: return !tSkeleton && !tSnowGolem && !tIronGolem && aAttacked.attackEntityFrom(DamageSources.getBumbleDamage(), (1+((aMetaData / 10) % 10))  );
 		case   9: return !tSkeleton && !tSnowGolem && !tIronGolem && aAttacked.attackEntityFrom(DamageSources.getBumbleDamage(), (1+((aMetaData / 10) % 10))*2);
 		case   6: return !tSkeleton && !tSnowGolem && !tIronGolem && aAttacked.attackEntityFrom(DamageSources.getBumbleDamage(), (1+((aMetaData / 10) % 10))*4);
 		case   8: return F;
@@ -428,9 +428,9 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	@Override
 	public int bumbleProductChance(ItemStack aBumbleBee, short aMetaData, int aProductIndex) {
 		switch((aMetaData / 10) % 10) {
-		case  0: return	 2500;
-		case  1: return	 5000;
-		case  2: return	 7500;
+		case  0: return  2500;
+		case  1: return  5000;
+		case  2: return  7500;
 		case  3: return 10000;
 		default: return 10000;
 		}
@@ -461,7 +461,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 			} else {
 				aList.add(LH.Chat.CYAN + "Humidity: " + LH.Chat.WHITE + Util.getHumidityMin(aBumbleTag) + " to " + Util.getHumidityMax(aBumbleTag) + LH.Chat.RED + "   Temp: " + LH.Chat.WHITE + Util.getTemperatureMin(aBumbleTag) + "K to " + Util.getTemperatureMax(aBumbleTag) + "K");
 				aList.add(LH.Chat.GREEN + "Offspring: " + LH.Chat.WHITE + Util.getOffspring(aBumbleTag) + LH.Chat.ORANGE + "   Life: " + LH.Chat.WHITE + Util.getLifeSpan(aBumbleTag) + " ticks");
-				aList.add(LH.Chat.YELLOW + "Eff: " + LH.Chat.WHITE + LH.percent(Util.getWorkForce(aBumbleTag)) + "%" + LH.Chat.RED + "	 Aggro: " + LH.Chat.WHITE + LH.percent(Util.getAggressiveness(aBumbleTag)) + "%");
+				aList.add(LH.Chat.YELLOW + "Eff: " + LH.Chat.WHITE + LH.percent(Util.getWorkForce(aBumbleTag)) + "%" + LH.Chat.RED + "   Aggro: " + LH.Chat.WHITE + LH.percent(Util.getAggressiveness(aBumbleTag)) + "%");
 				if (Util.getDayActive(aBumbleTag)) {
 					if (Util.getNightActive(aBumbleTag)) {
 						aList.add(LH.Chat.RAINBOW + "Doesn't take breaks");
@@ -513,34 +513,34 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	@Override public boolean bumbleEqual(ItemStack aBumbleBeeA, short aMetaDataA, ItemStack aBumbleBeeB, short aMetaDataB) {return aBumbleBeeA.getItem() == aBumbleBeeB.getItem() && aMetaDataA / 10 == aMetaDataB / 10;}
 	@Override public byte bumbleType(ItemStack aBumbleBee) {return (byte)(ST.meta(aBumbleBee) % 10);}
 	
-	@Override public ItemStack bumbleDrone		(ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10);}
-	@Override public ItemStack bumblePrincess	(ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 1);}
-	@Override public ItemStack bumbleQueen		(ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 2);}
-	@Override public ItemStack bumbleDead		(ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 4);}
-	@Override public ItemStack bumbleDrone_		(ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 5);}
-	@Override public ItemStack bumblePrincess_	(ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 6);}
-	@Override public ItemStack bumbleQueen_		(ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 7);}
-	@Override public ItemStack bumbleDead_		(ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 9);}
+	@Override public ItemStack bumbleDrone      (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10);}
+	@Override public ItemStack bumblePrincess   (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 1);}
+	@Override public ItemStack bumbleQueen      (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 2);}
+	@Override public ItemStack bumbleDead       (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 4);}
+	@Override public ItemStack bumbleDrone_     (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 5);}
+	@Override public ItemStack bumblePrincess_  (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 6);}
+	@Override public ItemStack bumbleQueen_     (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 7);}
+	@Override public ItemStack bumbleDead_      (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 9);}
 	
 	@Override public int getDefaultStackLimit(ItemStack aStack) {return 64;}
 	
 	public void make(int aSpeciesID, String aName, String aTooltip) {
 		for (int i : new int[] {0, 1, 4}) {
 		for (String tFluid : FluidsGT.HONEY) if (UT.Fluids.exists(tFluid))
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {UT.Fluids.make(tFluid, 10)}	, null, 64, 16, 0);
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {FL.Honeydew.make(10)}		, null, 64, 16, 0);
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null		, null,	 1, 16, 0);
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null		, null,	 1, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {UT.Fluids.make(tFluid, 10)}  , null, 64, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {FL.Honeydew.make(10)}        , null, 64, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null     , null,  1, 16, 0);
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null     , null,  1, 16, 0);
 		}
 		
-		addItem(aSpeciesID+0, aName + " Drone"				, aTooltip, "gt:bumbledrone"	, TC.stack(TC.BESTIA , 1));
-		addItem(aSpeciesID+1, aName + " Princess"			, aTooltip, "gt:bumbleprincess"	, TC.stack(TC.BESTIA , 2));
-		addItem(aSpeciesID+2, aName + " Queen"				, aTooltip, "gt:bumblequeen"	, TC.stack(TC.BESTIA , 2), TD.Creative.HIDDEN);
-		addItem(aSpeciesID+4, aName + " (Dead)"				, aTooltip, "gt:bumbledead"		, TC.stack(TC.MORTUUS, 1), TD.Creative.HIDDEN);
-		addItem(aSpeciesID+5, aName + " Drone (Scanned)"	, aTooltip, "gt:bumbledrone"	, TC.stack(TC.BESTIA , 1), TC.stack(TC.COGNITO, 1), new OreDictItemData(MT.Paper, U9));
-		addItem(aSpeciesID+6, aName + " Princess (Scanned)"	, aTooltip, "gt:bumbleprincess"	, TC.stack(TC.BESTIA , 2), TC.stack(TC.COGNITO, 1), new OreDictItemData(MT.Paper, U9));
-		addItem(aSpeciesID+7, aName + " Queen (Scanned)"	, aTooltip, "gt:bumblequeen"	, TC.stack(TC.BESTIA , 2), TC.stack(TC.COGNITO, 1), new OreDictItemData(MT.Paper, U9), TD.Creative.HIDDEN);
-		addItem(aSpeciesID+9, aName + " (Dead & Scanned)"	, aTooltip, "gt:bumbledead"		, TC.stack(TC.MORTUUS, 1), TC.stack(TC.COGNITO, 1), new OreDictItemData(MT.Paper, U9), TD.Creative.HIDDEN);
+		addItem(aSpeciesID+0, aName + " Drone"              , aTooltip, "gt:bumbledrone"    , TC.stack(TC.BESTIA , 1));
+		addItem(aSpeciesID+1, aName + " Princess"           , aTooltip, "gt:bumbleprincess" , TC.stack(TC.BESTIA , 2));
+		addItem(aSpeciesID+2, aName + " Queen"              , aTooltip, "gt:bumblequeen"    , TC.stack(TC.BESTIA , 2), TD.Creative.HIDDEN);
+		addItem(aSpeciesID+4, aName + " (Dead)"             , aTooltip, "gt:bumbledead"     , TC.stack(TC.MORTUUS, 1), TD.Creative.HIDDEN);
+		addItem(aSpeciesID+5, aName + " Drone (Scanned)"    , aTooltip, "gt:bumbledrone"    , TC.stack(TC.BESTIA , 1), TC.stack(TC.COGNITO, 1), new OreDictItemData(MT.Paper, U9));
+		addItem(aSpeciesID+6, aName + " Princess (Scanned)" , aTooltip, "gt:bumbleprincess" , TC.stack(TC.BESTIA , 2), TC.stack(TC.COGNITO, 1), new OreDictItemData(MT.Paper, U9));
+		addItem(aSpeciesID+7, aName + " Queen (Scanned)"    , aTooltip, "gt:bumblequeen"    , TC.stack(TC.BESTIA , 2), TC.stack(TC.COGNITO, 1), new OreDictItemData(MT.Paper, U9), TD.Creative.HIDDEN);
+		addItem(aSpeciesID+9, aName + " (Dead & Scanned)"   , aTooltip, "gt:bumbledead"     , TC.stack(TC.MORTUUS, 1), TC.stack(TC.COGNITO, 1), new OreDictItemData(MT.Paper, U9), TD.Creative.HIDDEN);
 		
 		ItemsGT.addNEIRedirect(ST.make(this, 1, aSpeciesID+0), ST.make(this, 1, aSpeciesID+2));
 		ItemsGT.addNEIRedirect(ST.make(this, 1, aSpeciesID+1), ST.make(this, 1, aSpeciesID+2));
@@ -612,10 +612,10 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister aIconRegister) {
-		PRINCESS	= aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/overlay_princess");
-		QUEEN		= aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/overlay_queen");
-		SCANNED		= aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/overlay_scanned");
-		DEAD		= aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/overlay_dead");
+		PRINCESS    = aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/overlay_princess");
+		QUEEN       = aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/overlay_queen");
+		SCANNED     = aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/overlay_scanned");
+		DEAD        = aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/overlay_dead");
 		
 		for (short aMeta = 0, tMaxMeta = (short)mEnabledItems.length(); aMeta < tMaxMeta; aMeta+=10) if (mEnabledItems.get(aMeta)) {
 			mIconList[aMeta][0] = aIconRegister.registerIcon(mModID + ":" + getUnlocalizedName() + "/" + aMeta);

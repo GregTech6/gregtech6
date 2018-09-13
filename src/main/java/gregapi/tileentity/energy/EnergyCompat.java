@@ -76,9 +76,9 @@ public class EnergyCompat {
 	
 	public static boolean isElectricRFReceiver(TileEntity aReceiver) {
 		if (aReceiver == null) return F;
-		if (MD.OMT	.mLoaded && aReceiver.getClass().getName().startsWith("openmodularturrets"				)) return T;
-		if (MD.TG	.mLoaded && aReceiver.getClass().getName().startsWith("techguns"						)) return T;
-		if (MD.IE	.mLoaded && aReceiver.getClass().getName().startsWith("blusunrize.immersiveengineering"	)) return T;
+		if (MD.OMT  .mLoaded && aReceiver.getClass().getName().startsWith("openmodularturrets"              )) return T;
+		if (MD.TG   .mLoaded && aReceiver.getClass().getName().startsWith("techguns"                        )) return T;
+		if (MD.IE   .mLoaded && aReceiver.getClass().getName().startsWith("blusunrize.immersiveengineering" )) return T;
 		return F;
 	}
 	

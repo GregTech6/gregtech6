@@ -71,7 +71,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 	@Override public float getExplosionResistance(int aMeta) {return Blocks.sapling.getExplosionResistance(null);}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return T;}
 	@Override public boolean renderAsNormalBlock() {return F;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return F;}

@@ -159,33 +159,33 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
-	public boolean canEmitRedstoneToVanilla					(byte aSide) {return aSide != mReceived && connected(aSide) && !(getAdjacentTileEntity(aSide).mTileEntity instanceof ITileEntityRedstoneWire);}
-	public boolean canAcceptRedstoneFromVanilla				(byte aSide) {return connected(aSide);}
+	public boolean canEmitRedstoneToVanilla                 (byte aSide) {return aSide != mReceived && connected(aSide) && !(getAdjacentTileEntity(aSide).mTileEntity instanceof ITileEntityRedstoneWire);}
+	public boolean canAcceptRedstoneFromVanilla             (byte aSide) {return connected(aSide);}
 	
-	@Override public boolean canEmitRedstoneToWire			(byte aSide, int aRedstoneID) {return aRedstoneID == REDSTONE_ID && connected(aSide);}
-	@Override public boolean canAcceptRedstoneFromWire		(byte aSide, int aRedstoneID) {return aRedstoneID == REDSTONE_ID && connected(aSide);}
+	@Override public boolean canEmitRedstoneToWire          (byte aSide, int aRedstoneID) {return aRedstoneID == REDSTONE_ID && connected(aSide);}
+	@Override public boolean canAcceptRedstoneFromWire      (byte aSide, int aRedstoneID) {return aRedstoneID == REDSTONE_ID && connected(aSide);}
 	
-	@Override public long getRedstoneLoss					(int aRedstoneID) {return aRedstoneID == REDSTONE_ID ? mLoss : MAX_RANGE;}
-	@Override public long getRedstoneValue					(byte aSide, int aRedstoneID) {return aRedstoneID == REDSTONE_ID ? mRedstone		 : 0;}
-	@Override public long getRedstoneMinusLoss				(byte aSide, int aRedstoneID) {return aRedstoneID == REDSTONE_ID ? mRedstone - mLoss : 0;}
+	@Override public long getRedstoneLoss                   (int aRedstoneID) {return aRedstoneID == REDSTONE_ID ? mLoss : MAX_RANGE;}
+	@Override public long getRedstoneValue                  (byte aSide, int aRedstoneID) {return aRedstoneID == REDSTONE_ID ? mRedstone         : 0;}
+	@Override public long getRedstoneMinusLoss              (byte aSide, int aRedstoneID) {return aRedstoneID == REDSTONE_ID ? mRedstone - mLoss : 0;}
 	
-	@Override public boolean canConnect						(byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {return T;}
+	@Override public boolean canConnect                     (byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {return T;}
 	
-	@Override public long getProgressValue					(byte aSide) {return (1000*mRedstone)/MAX_RANGE;}
-	@Override public long getProgressMax					(byte aSide) {return 16000;}
+	@Override public long getProgressValue                  (byte aSide) {return (1000*mRedstone)/MAX_RANGE;}
+	@Override public long getProgressMax                    (byte aSide) {return 16000;}
 	
-	@Override public byte setStateMode						(byte aMode) {mMode = aMode; return mMode;}
-	@Override public byte getStateMode						() {return mMode;}
+	@Override public byte setStateMode                      (byte aMode) {mMode = aMode; return mMode;}
+	@Override public byte getStateMode                      () {return mMode;}
 	
-	@Override public Collection<TagData> getConnectorTypes	(byte aSide) {return TD.Connectors.WIRE_REDSTONE.AS_LIST;}
+	@Override public Collection<TagData> getConnectorTypes  (byte aSide) {return TD.Connectors.WIRE_REDSTONE.AS_LIST;}
 	
-	@Override public String getFacingTool					() {return TOOL_cutter;}
+	@Override public String getFacingTool                   () {return TOOL_cutter;}
 	
-	@Override public ITexture getTextureSide				(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.INSULATION_FULL, isPainted()?mRGBa:UT.Code.getRGBInt(96, 64, 64));}
-	@Override public ITexture getTextureConnected			(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureMulti.get(BlockTextureDefault.get(mMaterial, getIconIndexConnected(aSide, aConnections, aDiameter, aRenderPass), mIsGlowing), BlockTextureDefault.get(aDiameter<0.37F?Textures.BlockIcons.INSULATION_TINY:aDiameter<0.49F?Textures.BlockIcons.INSULATION_SMALL:aDiameter<0.74F?Textures.BlockIcons.INSULATION_MEDIUM:aDiameter<0.99F?Textures.BlockIcons.INSULATION_LARGE:Textures.BlockIcons.INSULATION_HUGE, isPainted()?mRGBa:UT.Code.getRGBInt(96, 64, 64)));}
+	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.INSULATION_FULL, isPainted()?mRGBa:UT.Code.getRGBInt(96, 64, 64));}
+	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureMulti.get(BlockTextureDefault.get(mMaterial, getIconIndexConnected(aSide, aConnections, aDiameter, aRenderPass), mIsGlowing), BlockTextureDefault.get(aDiameter<0.37F?Textures.BlockIcons.INSULATION_TINY:aDiameter<0.49F?Textures.BlockIcons.INSULATION_SMALL:aDiameter<0.74F?Textures.BlockIcons.INSULATION_MEDIUM:aDiameter<0.99F?Textures.BlockIcons.INSULATION_LARGE:Textures.BlockIcons.INSULATION_HUGE, isPainted()?mRGBa:UT.Code.getRGBInt(96, 64, 64)));}
 	
-	@Override public int getIconIndexSide					(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return OP.wire.mIconIndexBlock;}
-	@Override public int getIconIndexConnected				(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return OP.wire.mIconIndexBlock;}
+	@Override public int getIconIndexSide                   (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return OP.wire.mIconIndexBlock;}
+	@Override public int getIconIndexConnected              (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return OP.wire.mIconIndexBlock;}
 	
-	@Override public String getTileEntityName				() {return "gt.multitileentity.connector.wire.redstone.insulated";}
+	@Override public String getTileEntityName               () {return "gt.multitileentity.connector.wire.redstone.insulated";}
 }

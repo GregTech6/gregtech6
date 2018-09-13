@@ -96,7 +96,7 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -174,24 +174,24 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 	
 	public abstract boolean checkStructure2();
 	
-	@Override protected IFluidTank getFluidTankFillable		(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return getFluidTankFillable2(aSide, aFluidToFill);}
-	@Override protected IFluidTank getFluidTankDrainable	(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return getFluidTankDrainable2(aSide, aFluidToDrain);}
-	@Override protected IFluidTank[] getFluidTanks			(MultiTileEntityMultiBlockPart aPart, byte aSide) {return getFluidTanks2(aSide);}
+	@Override protected IFluidTank getFluidTankFillable     (MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return getFluidTankFillable2(aSide, aFluidToFill);}
+	@Override protected IFluidTank getFluidTankDrainable    (MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return getFluidTankDrainable2(aSide, aFluidToDrain);}
+	@Override protected IFluidTank[] getFluidTanks          (MultiTileEntityMultiBlockPart aPart, byte aSide) {return getFluidTanks2(aSide);}
 	
-	public int[] getAccessibleSlotsFromSide					(MultiTileEntityMultiBlockPart aPart, byte aSide) {return getAccessibleSlotsFromSide2(aSide);}
-	public boolean canInsertItem							(MultiTileEntityMultiBlockPart aPart, int aSlot, ItemStack aStack, byte aSide) {return canInsertItem2(aSlot, aStack, aSide);}
-	public boolean canExtractItem							(MultiTileEntityMultiBlockPart aPart, int aSlot, ItemStack aStack, byte aSide) {return canExtractItem2(aSlot, aStack, aSide);}
-	public int getSizeInventory								(MultiTileEntityMultiBlockPart aPart) {return getSizeInventory();}
-	public ItemStack getStackInSlot							(MultiTileEntityMultiBlockPart aPart, int aSlot) {return getStackInSlot(aSlot);}
-	public ItemStack decrStackSize							(MultiTileEntityMultiBlockPart aPart, int aSlot, int aDecrement) {return decrStackSize(aSlot, aDecrement);}
-	public ItemStack getStackInSlotOnClosing				(MultiTileEntityMultiBlockPart aPart, int aSlot) {return getStackInSlotOnClosing(aSlot);}
-	public void setInventorySlotContents					(MultiTileEntityMultiBlockPart aPart, int aSlot, ItemStack aStack) {setInventorySlotContents(aSlot, aStack);}
-	public String getInventoryName							(MultiTileEntityMultiBlockPart aPart) {return getInventoryName();}
-	public boolean hasCustomInventoryName					(MultiTileEntityMultiBlockPart aPart) {return hasCustomInventoryName();}
-	public int getInventoryStackLimit						(MultiTileEntityMultiBlockPart aPart) {return getInventoryStackLimit();}
-	public void markDirty									(MultiTileEntityMultiBlockPart aPart) {markDirty();}
-	public boolean isUseableByPlayer						(MultiTileEntityMultiBlockPart aPart, EntityPlayer aPlayer) {return isUseableByPlayer(aPlayer);}
-	public void openInventory								(MultiTileEntityMultiBlockPart aPart) {openInventory();}
-	public void closeInventory								(MultiTileEntityMultiBlockPart aPart) {closeInventory();}
-	public boolean isItemValidForSlot						(MultiTileEntityMultiBlockPart aPart, int aSlot, ItemStack aStack) {return isItemValidForSlot(aSlot, aStack);}
+	public int[] getAccessibleSlotsFromSide                 (MultiTileEntityMultiBlockPart aPart, byte aSide) {return getAccessibleSlotsFromSide2(aSide);}
+	public boolean canInsertItem                            (MultiTileEntityMultiBlockPart aPart, int aSlot, ItemStack aStack, byte aSide) {return canInsertItem2(aSlot, aStack, aSide);}
+	public boolean canExtractItem                           (MultiTileEntityMultiBlockPart aPart, int aSlot, ItemStack aStack, byte aSide) {return canExtractItem2(aSlot, aStack, aSide);}
+	public int getSizeInventory                             (MultiTileEntityMultiBlockPart aPart) {return getSizeInventory();}
+	public ItemStack getStackInSlot                         (MultiTileEntityMultiBlockPart aPart, int aSlot) {return getStackInSlot(aSlot);}
+	public ItemStack decrStackSize                          (MultiTileEntityMultiBlockPart aPart, int aSlot, int aDecrement) {return decrStackSize(aSlot, aDecrement);}
+	public ItemStack getStackInSlotOnClosing                (MultiTileEntityMultiBlockPart aPart, int aSlot) {return getStackInSlotOnClosing(aSlot);}
+	public void setInventorySlotContents                    (MultiTileEntityMultiBlockPart aPart, int aSlot, ItemStack aStack) {setInventorySlotContents(aSlot, aStack);}
+	public String getInventoryName                          (MultiTileEntityMultiBlockPart aPart) {return getInventoryName();}
+	public boolean hasCustomInventoryName                   (MultiTileEntityMultiBlockPart aPart) {return hasCustomInventoryName();}
+	public int getInventoryStackLimit                       (MultiTileEntityMultiBlockPart aPart) {return getInventoryStackLimit();}
+	public void markDirty                                   (MultiTileEntityMultiBlockPart aPart) {markDirty();}
+	public boolean isUseableByPlayer                        (MultiTileEntityMultiBlockPart aPart, EntityPlayer aPlayer) {return isUseableByPlayer(aPlayer);}
+	public void openInventory                               (MultiTileEntityMultiBlockPart aPart) {openInventory();}
+	public void closeInventory                              (MultiTileEntityMultiBlockPart aPart) {closeInventory();}
+	public boolean isItemValidForSlot                       (MultiTileEntityMultiBlockPart aPart, int aSlot, ItemStack aStack) {return isItemValidForSlot(aSlot, aStack);}
 }

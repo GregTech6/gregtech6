@@ -41,7 +41,7 @@ public class WorldgenStructureInteriorBarracks extends WorldgenStructure {
 		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) if ((tX <= 4 || tX >= 11) && (tZ <= 4 || tZ >= 11)) {
 			setBlock(aWorld, aChunkX+tX, aData.mOffsetY+1, aChunkZ+tZ, Blocks.carpet, aData.mColorInversed, 2);
 		}
-		for (int tY = 1; tY <=	6; tY++) {
+		for (int tY = 1; tY <=  6; tY++) {
 			for (int tX = 1; tX <= 14; tX++) if (tX <= 3 || tX >= 12) {
 				setRandomBricks(aWorld, aChunkX+tX, aData.mOffsetY+tY, aChunkZ+ 5, aData, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG], aRandom);
 				setRandomBricks(aWorld, aChunkX+tX, aData.mOffsetY+tY, aChunkZ+10, aData, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS], aRandom);
@@ -107,26 +107,26 @@ public class WorldgenStructureInteriorBarracks extends WorldgenStructure {
 		NBTTagList
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[0]) {aData.mGeneratedKeys[0] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[0]), "s", (short)aRandom.nextInt(28)));}
-		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+ 4, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 3010, UT.NBT.make(null, "gt.dungeonloot"		, UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[0]), T, T);
-		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 7110, UT.NBT.make(null, "gt.dungeonloot.front"	, UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
+		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+ 4, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 3010, UT.NBT.make(null, "gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[0]), T, T);
+		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 7110, UT.NBT.make(null, "gt.dungeonloot.front"    , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
 		if (aRandom.nextBoolean()) setCoins(aWorld, aChunkX+ 4, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[1]) {aData.mGeneratedKeys[1] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[1]), "s", (short)aRandom.nextInt(28)));}
-		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+ 4, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 3010, UT.NBT.make(null, "gt.dungeonloot"		, UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[1]), T, T);
-		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 7110, UT.NBT.make(null, "gt.dungeonloot.front"	, UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
+		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+ 4, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 3010, UT.NBT.make(null, "gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[1]), T, T);
+		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 7110, UT.NBT.make(null, "gt.dungeonloot.front"    , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
 		if (aRandom.nextBoolean()) setCoins(aWorld, aChunkX+ 4, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[3]) {aData.mGeneratedKeys[3] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[3]), "s", (short)aRandom.nextInt(28)));}
-		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+11, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 3010, UT.NBT.make(null, "gt.dungeonloot"		, UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[3]), T, T);
-		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 7110, UT.NBT.make(null, "gt.dungeonloot.front"	, UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
+		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+11, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 3010, UT.NBT.make(null, "gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[3]), T, T);
+		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 7110, UT.NBT.make(null, "gt.dungeonloot.front"    , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
 		if (aRandom.nextBoolean()) setCoins(aWorld, aChunkX+11, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[4]) {aData.mGeneratedKeys[4] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[4]), "s", (short)aRandom.nextInt(28)));}
-		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+11, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 3010, UT.NBT.make(null, "gt.dungeonloot"		, UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[4]), T, T);
-		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 7110, UT.NBT.make(null, "gt.dungeonloot.front"	, UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
+		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+11, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 3010, UT.NBT.make(null, "gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[4]), T, T);
+		aData.mRegistry.mBlock.placeBlock(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 7110, UT.NBT.make(null, "gt.dungeonloot.front"    , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
 		if (aRandom.nextBoolean()) setCoins(aWorld, aChunkX+11, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
 		
 		return T;

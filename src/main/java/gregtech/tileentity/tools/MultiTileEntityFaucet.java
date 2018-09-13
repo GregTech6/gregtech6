@@ -79,10 +79,10 @@ public class MultiTileEntityFaucet extends TileEntityBase09FacingSingle implemen
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT));
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_MELTDOWN) + " (" + getMoldMaxTemperature() + " K)");
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_AUTO_INPUTS_MONKEY_WRENCH));
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + getMoldMaxTemperature() + " K)");
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_AUTO_INPUTS_MONKEY_WRENCH));
 	}
 	
 	@Override
@@ -172,21 +172,21 @@ public class MultiTileEntityFaucet extends TileEntityBase09FacingSingle implemen
 		case 0:
 			switch(mFacing) {
 			case SIDE_Z_NEG: box(aBlock, PX_P[ 6], PX_P[ 1], PX_P[ 0], PX_N[ 6], PX_N[14], PX_N[12]); return T;
-			default		: box(aBlock, PX_P[ 6], PX_P[ 1], PX_P[12], PX_N[ 6], PX_N[14], PX_N[ 0]); return T;
+			default     : box(aBlock, PX_P[ 6], PX_P[ 1], PX_P[12], PX_N[ 6], PX_N[14], PX_N[ 0]); return T;
 			case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 1], PX_P[ 6], PX_N[12], PX_N[14], PX_N[ 6]); return T;
 			case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 1], PX_P[ 6], PX_N[ 0], PX_N[14], PX_N[ 6]); return T;
 			}
 		case 1:
 			switch(mFacing) {
 			case SIDE_Z_NEG: box(aBlock, PX_P[ 5], PX_P[ 2], PX_P[ 0], PX_N[10], PX_N[10], PX_N[12]); return T;
-			default		: box(aBlock, PX_P[ 5], PX_P[ 2], PX_P[12], PX_N[10], PX_N[10], PX_N[ 0]); return T;
+			default     : box(aBlock, PX_P[ 5], PX_P[ 2], PX_P[12], PX_N[10], PX_N[10], PX_N[ 0]); return T;
 			case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 2], PX_P[ 5], PX_N[12], PX_N[10], PX_N[10]); return T;
 			case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 2], PX_P[ 5], PX_N[ 0], PX_N[10], PX_N[10]); return T;
 			}
 		case 2:
 			switch(mFacing) {
 			case SIDE_Z_NEG: box(aBlock, PX_P[10], PX_P[ 2], PX_P[ 0], PX_N[ 5], PX_N[10], PX_N[12]); return T;
-			default		: box(aBlock, PX_P[10], PX_P[ 2], PX_P[12], PX_N[ 5], PX_N[10], PX_N[ 0]); return T;
+			default     : box(aBlock, PX_P[10], PX_P[ 2], PX_P[12], PX_N[ 5], PX_N[10], PX_N[ 0]); return T;
 			case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 2], PX_P[10], PX_N[12], PX_N[10], PX_N[ 5]); return T;
 			case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 2], PX_P[10], PX_N[ 0], PX_N[10], PX_N[ 5]); return T;
 			}
@@ -207,7 +207,7 @@ public class MultiTileEntityFaucet extends TileEntityBase09FacingSingle implemen
 	public AxisAlignedBB getSelectedBoundingBoxFromPool() {
 		switch(mFacing) {
 		case SIDE_Z_NEG: return box(PX_P[ 5], PX_P[ 1], PX_P[ 0], PX_N[ 5], PX_N[10], PX_N[12]);
-		default		   : return box(PX_P[ 5], PX_P[ 1], PX_P[12], PX_N[ 5], PX_N[10], PX_N[ 0]);
+		default        : return box(PX_P[ 5], PX_P[ 1], PX_P[12], PX_N[ 5], PX_N[10], PX_N[ 0]);
 		case SIDE_X_NEG: return box(PX_P[ 0], PX_P[ 1], PX_P[ 5], PX_N[12], PX_N[10], PX_N[ 5]);
 		case SIDE_X_POS: return box(PX_P[12], PX_P[ 1], PX_P[ 5], PX_N[ 0], PX_N[10], PX_N[ 5]);
 		}
@@ -217,7 +217,7 @@ public class MultiTileEntityFaucet extends TileEntityBase09FacingSingle implemen
 	public void setBlockBoundsBasedOnState(Block aBlock) {
 		switch(mFacing) {
 		case SIDE_Z_NEG: box(aBlock, PX_P[ 5], PX_P[ 1], PX_P[ 0], PX_N[ 5], PX_N[10], PX_N[12]); break;
-		default		   : box(aBlock, PX_P[ 5], PX_P[ 1], PX_P[12], PX_N[ 5], PX_N[10], PX_N[ 0]); break;
+		default        : box(aBlock, PX_P[ 5], PX_P[ 1], PX_P[12], PX_N[ 5], PX_N[10], PX_N[ 0]); break;
 		case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 1], PX_P[ 5], PX_N[12], PX_N[10], PX_N[ 5]); break;
 		case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 1], PX_P[ 5], PX_N[ 0], PX_N[10], PX_N[ 5]); break;
 		}
@@ -228,18 +228,18 @@ public class MultiTileEntityFaucet extends TileEntityBase09FacingSingle implemen
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return 0;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return 0;}
-	@Override public float getSurfaceDistance		(byte aSide) {return 0;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return F;}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
-	@Override public boolean attachCoversFirst		(byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt	(byte aSide) {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return 0;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0;}
+	@Override public float getSurfaceDistance       (byte aSide) {return 0;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
+	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
-	@Override public boolean useSidePlacementRotation		() {return T;}
-	@Override public boolean useInversePlacementRotation	() {return T;}
+	@Override public boolean useSidePlacementRotation       () {return T;}
+	@Override public boolean useInversePlacementRotation    () {return T;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public byte getDefaultSide() {return SIDE_BACK;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}

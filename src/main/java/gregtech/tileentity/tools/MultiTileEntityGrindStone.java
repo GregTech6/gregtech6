@@ -77,10 +77,10 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_GRINDSTONE_INIT));
-		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_GRINDSTONE_USAGE));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT) + " (" + LH.get(LH.FACE_ANYBUT_SIDES) + ")");
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_GRINDSTONE_INIT));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_GRINDSTONE_USAGE));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT) + " (" + LH.get(LH.FACE_ANYBUT_SIDES) + ")");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -172,14 +172,14 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 	}
 	
 	public static IIconContainer
-	sTextureLegs	= new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/legs"),
-	sTextureAxle	= new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/axle"),
-	sTextureStone	= new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/stone"),
-	sTextureBottom	= new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/bottom"),
-	sOverlayLegs	= new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/legs"),
-	sOverlayAxle	= new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/axle"),
-	sOverlayStone	= new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/stone"),
-	sOverlayBottom	= new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/bottom");
+	sTextureLegs    = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/legs"),
+	sTextureAxle    = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/axle"),
+	sTextureStone   = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/stone"),
+	sTextureBottom  = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/bottom"),
+	sOverlayLegs    = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/legs"),
+	sOverlayAxle    = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/axle"),
+	sOverlayStone   = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/stone"),
+	sOverlayBottom  = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/bottom");
 	
 	private ITexture mTextureLegs, mTextureAxle, mTextureStone, mTextureBottom;
 	
@@ -188,10 +188,10 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 		if (aRenderPass == 0 && aSide == 0) {
 			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
 			
-			mTextureLegs		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
-			mTextureAxle		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureAxle	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayAxle));
-			mTextureStone		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureStone	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayStone));
-			mTextureBottom		= BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom	, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
+			mTextureLegs        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
+			mTextureAxle        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureAxle    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayAxle));
+			mTextureStone       = BlockTextureMulti.get(BlockTextureDefault.get(sTextureStone   , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayStone));
+			mTextureBottom      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
 		}
 		
 		if (aRenderPass == 0) return mStone!=0&&SIDES_TOP[aSide]?BI.nei():null;
@@ -207,13 +207,13 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[2], PX_P[0], PX_P[2], PX_N[2], PX_N[1], PX_N[2]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[2], PX_P[0], PX_P[2], PX_N[2], PX_N[1], PX_N[2]);}
 	
-	@Override public float getSurfaceSize			(byte aSide) {return SIDES_BOTTOM[aSide]?1.0F:0.0F;}
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return SIDES_BOTTOM[aSide]?1.0F:0.0F;}
-	@Override public float getSurfaceDistance		(byte aSide) {return 0.0F;}
-	@Override public boolean isSurfaceSolid			(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean isSideSolid2			(byte aSide) {return SIDES_BOTTOM[aSide];}
-	@Override public boolean allowCovers			(byte aSide) {return F;}
+	@Override public float getSurfaceSize           (byte aSide) {return SIDES_BOTTOM[aSide]?1.0F:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_BOTTOM[aSide]?1.0F:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return 0.0F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_BOTTOM[aSide];}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	

@@ -92,7 +92,7 @@ public class GT_Tool_MiningDrill_LV extends ToolStats {
 		return SFX.IC_DRILL_SOFT;
 	}
 	
-	@Override public boolean canCollect()													{return T;}
+	@Override public boolean canCollect()                                                   {return T;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {

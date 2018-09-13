@@ -95,10 +95,10 @@ public class GT_Tool_Crowbar extends ToolStats {
 		return SFX.MC_BREAK;
 	}
 	
-	@Override public boolean canCollect()													{return T;}
-	@Override public boolean canBlock()														{return T;}
-	@Override public boolean isCrowbar()													{return T;}
-	@Override public boolean isWeapon()														{return T;}
+	@Override public boolean canCollect()                                                   {return T;}
+	@Override public boolean canBlock()                                                     {return T;}
+	@Override public boolean isCrowbar()                                                    {return T;}
+	@Override public boolean isWeapon()                                                     {return T;}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {

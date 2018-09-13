@@ -47,10 +47,10 @@ public class MultiTileEntityBatteryLU32 extends TileEntityBase08Battery {
 		new Textures.BlockIcons.CustomIcon("machines/batteries/lu/32/sides"),
 	};
 	
-	@Override public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock	, PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[10], PX_N[ 5]); return T;}
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box											( PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[10], PX_N[ 5]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box											( PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[10], PX_N[ 5]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock												, PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[10], PX_N[ 5]);}
+	@Override public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock    , PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[10], PX_N[ 5]); return T;}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box                                            ( PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[10], PX_N[ 5]);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box                                            ( PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[10], PX_N[ 5]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock                                              , PX_P[ 5], PX_P[ 0], PX_P[ 5], PX_N[ 5], PX_N[10], PX_N[ 5]);}
 	
 	@Override public byte getDisplayScaleMax() {return 127;}
 	

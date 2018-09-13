@@ -42,7 +42,7 @@ public class WorldgenStructureInteriorPool extends WorldgenStructure {
 			} else {
 				setRandomBricks(aWorld, aChunkX+tX, aData.mOffsetY-3, aChunkZ+tZ, aData, aRandom);
 				setColored(aWorld, aChunkX+tX, aData.mOffsetY-2, aChunkZ+tZ, aData, aRandom);
-				setBlock(aWorld, aChunkX+tX, aData.mOffsetY	 , aChunkZ+tZ, Blocks.water, 0, 2);
+				setBlock(aWorld, aChunkX+tX, aData.mOffsetY  , aChunkZ+tZ, Blocks.water, 0, 2);
 				setBlock(aWorld, aChunkX+tX, aData.mOffsetY-1, aChunkZ+tZ, Blocks.water, 0, 2);
 				if (aRandom.nextBoolean()) setBlock(aWorld, aChunkX+tX, aData.mOffsetY+1, aChunkZ+tZ, BlocksGT.Glowtus, aRandom.nextInt(16), 0);
 			}

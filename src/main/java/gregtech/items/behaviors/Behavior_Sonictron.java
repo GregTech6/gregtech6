@@ -64,8 +64,8 @@ public class Behavior_Sonictron extends AbstractBehaviorDefault {
 	
 	@Override
 	public void onUpdate(MultiItem aItem, ItemStack aStack, World aWorld, Entity aPlayer, int aTimer, boolean aIsInHand) {
-		int	tTickTimer		= getTickTimer(aStack),
-			tCurrentIndex	= getCurrentIndex(aStack);
+		int tTickTimer      = getTickTimer(aStack),
+			tCurrentIndex   = getCurrentIndex(aStack);
 			
 		if (tTickTimer++%2==0&&tCurrentIndex>-1) {
 			//ItemStack[] tInventory = getNBTInventory(aStack);

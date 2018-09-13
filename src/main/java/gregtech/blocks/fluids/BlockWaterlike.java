@@ -81,18 +81,18 @@ public abstract class BlockWaterlike extends BlockFluidClassic {
 		// check adjacent block levels if non-source
 		if (quantaRemaining < quantaPerBlock) {
 			int y2 = aY - densityDir;
-			if (aWorld.getBlock(aX	, y2, aZ  ) instanceof BlockWaterlike ||
+			if (aWorld.getBlock(aX  , y2, aZ  ) instanceof BlockWaterlike ||
 				aWorld.getBlock(aX-1, y2, aZ  ) instanceof BlockWaterlike ||
 				aWorld.getBlock(aX+1, y2, aZ  ) instanceof BlockWaterlike ||
-				aWorld.getBlock(aX	, y2, aZ-1) instanceof BlockWaterlike ||
-				aWorld.getBlock(aX	, y2, aZ+1) instanceof BlockWaterlike) {
+				aWorld.getBlock(aX  , y2, aZ-1) instanceof BlockWaterlike ||
+				aWorld.getBlock(aX  , y2, aZ+1) instanceof BlockWaterlike) {
 				expQuanta = quantaPerBlock - 1;
 			} else {
 				int maxQuanta = -100;
 				maxQuanta = getLargerQuanta(aWorld, aX-1, aY, aZ  , maxQuanta);
 				maxQuanta = getLargerQuanta(aWorld, aX+1, aY, aZ  , maxQuanta);
-				maxQuanta = getLargerQuanta(aWorld, aX	, aY, aZ-1, maxQuanta);
-				maxQuanta = getLargerQuanta(aWorld, aX	, aY, aZ+1, maxQuanta);
+				maxQuanta = getLargerQuanta(aWorld, aX  , aY, aZ-1, maxQuanta);
+				maxQuanta = getLargerQuanta(aWorld, aX  , aY, aZ+1, maxQuanta);
 				expQuanta = maxQuanta - 1;
 			}
 			if (expQuanta != quantaRemaining) {
@@ -122,8 +122,8 @@ public abstract class BlockWaterlike extends BlockFluidClassic {
 			boolean flowTo[] = getOptimalFlowDirections(aWorld, aX, aY, aZ);
 			if (flowTo[0]) flowIntoBlock(aWorld, aX-1, aY, aZ  , flowMeta);
 			if (flowTo[1]) flowIntoBlock(aWorld, aX+1, aY, aZ  , flowMeta);
-			if (flowTo[2]) flowIntoBlock(aWorld, aX	 , aY, aZ-1, flowMeta);
-			if (flowTo[3]) flowIntoBlock(aWorld, aX	 , aY, aZ+1, flowMeta);
+			if (flowTo[2]) flowIntoBlock(aWorld, aX  , aY, aZ-1, flowMeta);
+			if (flowTo[3]) flowIntoBlock(aWorld, aX  , aY, aZ+1, flowMeta);
 		}
 	}
 	
@@ -148,14 +148,14 @@ public abstract class BlockWaterlike extends BlockFluidClassic {
 			}
 		}
 		if (aWorld.getBlock(aX, aY+1, aZ) instanceof BlockWaterlike && (
-			isBlockSolid(aWorld, aX	 , aY  , aZ-1, SIDE_Z_NEG) ||
-			isBlockSolid(aWorld, aX	 , aY  , aZ+1, SIDE_Z_POS) ||
-			isBlockSolid(aWorld, aX-1, aY  , aZ	 , SIDE_X_NEG) ||
-			isBlockSolid(aWorld, aX+1, aY  , aZ	 , SIDE_X_POS) ||
-			isBlockSolid(aWorld, aX	 , aY+1, aZ-1, SIDE_Z_NEG) ||
-			isBlockSolid(aWorld, aX	 , aY+1, aZ+1, SIDE_Z_POS) ||
-			isBlockSolid(aWorld, aX-1, aY+1, aZ	 , SIDE_X_NEG) ||
-			isBlockSolid(aWorld, aX+1, aY+1, aZ	 , SIDE_X_POS))) {
+			isBlockSolid(aWorld, aX  , aY  , aZ-1, SIDE_Z_NEG) ||
+			isBlockSolid(aWorld, aX  , aY  , aZ+1, SIDE_Z_POS) ||
+			isBlockSolid(aWorld, aX-1, aY  , aZ  , SIDE_X_NEG) ||
+			isBlockSolid(aWorld, aX+1, aY  , aZ  , SIDE_X_POS) ||
+			isBlockSolid(aWorld, aX  , aY+1, aZ-1, SIDE_Z_NEG) ||
+			isBlockSolid(aWorld, aX  , aY+1, aZ+1, SIDE_Z_POS) ||
+			isBlockSolid(aWorld, aX-1, aY+1, aZ  , SIDE_X_NEG) ||
+			isBlockSolid(aWorld, aX+1, aY+1, aZ  , SIDE_X_POS))) {
 			rVector = rVector.normalize().addVector(0, -6, 0);
 		}
 		return rVector.normalize();

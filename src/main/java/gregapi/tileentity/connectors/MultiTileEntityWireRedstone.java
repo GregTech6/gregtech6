@@ -76,15 +76,15 @@ public class MultiTileEntityWireRedstone extends MultiTileEntityWireRedstoneInsu
 		return mIsGlowing ? LIGHT_OPACITY_NONE : super.getLightOpacity();
 	}
 	
-	@Override public int getLightValue						() {return mIsGlowing ? mState : 0;}
+	@Override public int getLightValue                      () {return mIsGlowing ? mState : 0;}
 	
-	@Override public ITexture getTextureSide				(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(mMaterial, getIconIndexSide		(aSide, aConnections, aDiameter, aRenderPass), mState > 0, mRGBa);}
-	@Override public ITexture getTextureConnected			(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(mMaterial, getIconIndexConnected	(aSide, aConnections, aDiameter, aRenderPass), mState > 0, mRGBa);}
-	@Override public ITexture getTextureCFoam				(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.CFOAM_FRESH		, mRGBa, mIsGlowing && mState > 0);}
-	@Override public ITexture getTextureCFoamDry			(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.CFOAM_HARDENED	, mRGBa, mIsGlowing && mState > 0);}
+	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(mMaterial, getIconIndexSide       (aSide, aConnections, aDiameter, aRenderPass), mState > 0, mRGBa);}
+	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(mMaterial, getIconIndexConnected  (aSide, aConnections, aDiameter, aRenderPass), mState > 0, mRGBa);}
+	@Override public ITexture getTextureCFoam               (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.CFOAM_FRESH       , mRGBa, mIsGlowing && mState > 0);}
+	@Override public ITexture getTextureCFoamDry            (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.CFOAM_HARDENED    , mRGBa, mIsGlowing && mState > 0);}
 	
-	@Override public int getIconIndexSide					(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return OP.wire.mIconIndexBlock;}
-	@Override public int getIconIndexConnected				(byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return OP.wire.mIconIndexBlock;}
+	@Override public int getIconIndexSide                   (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return OP.wire.mIconIndexBlock;}
+	@Override public int getIconIndexConnected              (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return OP.wire.mIconIndexBlock;}
 	
-	@Override public String getTileEntityName				() {return "gt.multitileentity.connector.wire.redstone";}
+	@Override public String getTileEntityName               () {return "gt.multitileentity.connector.wire.redstone";}
 }

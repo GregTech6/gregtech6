@@ -190,7 +190,7 @@ public interface ICover {
 	
 	public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity);
 	
-	public static final float[][] BOXES_COVERS	= new float[][] {{PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[14], PX_N[ 0]}, {PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]}, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]}, {PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]}, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]}, {PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]}};
+	public static final float[][] BOXES_COVERS  = new float[][] {{PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[14], PX_N[ 0]}, {PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]}, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]}, {PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]}, {PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]}, {PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]}};
 	public static final float[][] BOXES_HOLDERS = new float[][] {{PX_P[ 7], PX_P[ 0], PX_P[ 7], PX_N[ 7], PX_N[ 8], PX_N[ 7]}, {PX_P[ 7], PX_P[ 8], PX_P[ 7], PX_N[ 7], PX_N[ 0], PX_N[ 7]}, {PX_P[ 7], PX_P[ 7], PX_P[ 0], PX_N[ 7], PX_N[ 7], PX_N[ 8]}, {PX_P[ 7], PX_P[ 7], PX_P[ 8], PX_N[ 7], PX_N[ 7], PX_N[ 0]}, {PX_P[ 0], PX_P[ 7], PX_P[ 7], PX_N[ 8], PX_N[ 7], PX_N[ 7]}, {PX_P[ 8], PX_P[ 7], PX_P[ 7], PX_N[ 0], PX_N[ 7], PX_N[ 7]}};
 	
 	public boolean interceptItemInsert(byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide);

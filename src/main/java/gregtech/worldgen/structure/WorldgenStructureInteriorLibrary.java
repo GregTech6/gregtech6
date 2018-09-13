@@ -164,60 +164,60 @@ public class WorldgenStructureInteriorLibrary extends WorldgenStructure {
 			tDidntGenerateSpecial = F;
 			Block tThaumcraftTable = ST.block(MD.TC, "blockTable"), tThaumcraftCandle = ST.block(MD.TC, "blockCandle");
 			if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 5, tThaumcraftTable, 1, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 7, tThaumcraftTable, 1, 2);
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 8, tThaumcraftTable, 1, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+10, tThaumcraftTable, 1, 2);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 5, tThaumcraftTable, 1, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 7, tThaumcraftTable, 1, 2);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 8, tThaumcraftTable, 1, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+10, tThaumcraftTable, 1, 2);
 				
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 5, aData, aRandom);
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 6, tThaumcraftCandle, aData.mColorInversed, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 7+aRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 9, tThaumcraftCandle, aData.mColorInversed, 2);
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+10, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 5, aData, aRandom);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 6, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 7+aRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 9, tThaumcraftCandle, aData.mColorInversed, 2);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+10, aData, aRandom);
 			}
 			if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 5, tThaumcraftTable, 1, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 7, tThaumcraftTable, 1, 2);
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 8, tThaumcraftTable, 1, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+10, tThaumcraftTable, 1, 2);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 5, tThaumcraftTable, 1, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 7, tThaumcraftTable, 1, 2);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 8, tThaumcraftTable, 1, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+10, tThaumcraftTable, 1, 2);
 				
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 5, aData, aRandom);
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 6, tThaumcraftCandle, aData.mColorInversed, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 7+aRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 9, tThaumcraftCandle, aData.mColorInversed, 2);
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+10, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 5, aData, aRandom);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 6, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 7+aRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 9, tThaumcraftCandle, aData.mColorInversed, 2);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+10, aData, aRandom);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
-				setBlock							(aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+14, tThaumcraftTable, 0, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-				setBlock							(aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+14, tThaumcraftTable, 0, 2);
-				setBlock							(aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+14, tThaumcraftTable, 0, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-				setBlock							(aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+14, tThaumcraftTable, 0, 2);
+				setBlock                            (aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+14, tThaumcraftTable, 0, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+				setBlock                            (aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+14, tThaumcraftTable, 0, 2);
+				setBlock                            (aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+14, tThaumcraftTable, 0, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+				setBlock                            (aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+14, tThaumcraftTable, 0, 2);
 				
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
-				setBlock							(aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+14, tThaumcraftCandle, aData.mColorInversed, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 7+aRandom.nextInt(2), aData.mOffsetY+2, aChunkZ+14, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-				setBlock							(aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+14, tThaumcraftCandle, aData.mColorInversed, 2);
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
+				setBlock                            (aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+14, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 7+aRandom.nextInt(2), aData.mOffsetY+2, aChunkZ+14, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+				setBlock                            (aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+14, tThaumcraftCandle, aData.mColorInversed, 2);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
-				setBlock							(aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+ 1, tThaumcraftTable, 0, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-				setBlock							(aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+ 1, tThaumcraftTable, 0, 2);
-				setBlock							(aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+ 1, tThaumcraftTable, 0, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-				setBlock							(aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+ 1, tThaumcraftTable, 0, 2);
+				setBlock                            (aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+ 1, tThaumcraftTable, 0, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+				setBlock                            (aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+ 1, tThaumcraftTable, 0, 2);
+				setBlock                            (aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+ 1, tThaumcraftTable, 0, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+				setBlock                            (aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+ 1, tThaumcraftTable, 0, 2);
 				
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
-				setBlock							(aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+ 1, tThaumcraftCandle, aData.mColorInversed, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 7+aRandom.nextInt(2), aData.mOffsetY+2, aChunkZ+ 1, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-				setBlock							(aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+ 1, tThaumcraftCandle, aData.mColorInversed, 2);
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
+				setBlock                            (aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+ 1, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 7+aRandom.nextInt(2), aData.mOffsetY+2, aChunkZ+ 1, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+				setBlock                            (aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+ 1, tThaumcraftCandle, aData.mColorInversed, 2);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
 			}
 			break;
 		case 1:
@@ -228,101 +228,101 @@ public class WorldgenStructureInteriorLibrary extends WorldgenStructure {
 			if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
 				if (temp) {
 					temp = F;
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 5, tInkMixer		, 0, 2, 1);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short)32705, new FluidTankGT(FL.Myst_Ink.make(1000+1000*aRandom.nextInt(8))).writeToNBT(UT.NBT.make(), NBT_TANK+".out.0"), T, T);
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 7, tWritingTable	, 0, 2);
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 8, tWritingTable	, 8, 2);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+10, tBookBinder	, 0, 2, 1);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 5, tInkMixer        , 0, 2, 1);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short)32705, new FluidTankGT(FL.Myst_Ink.make(1000+1000*aRandom.nextInt(8))).writeToNBT(UT.NBT.make(), NBT_TANK+".out.0"), T, T);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 7, tWritingTable    , 0, 2);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 8, tWritingTable    , 8, 2);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+10, tBookBinder  , 0, 2, 1);
 					
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 9, tLectern		, 0, 2, 1);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 9, tLectern     , 0, 2, 1);
 				} else {
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 5, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 6, tStand			, 0, 2, 2);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 7, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 8, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 9, tStand			, 0, 2, 2);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+10, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 5, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 6, tStand           , 0, 2, 2);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 7, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 8, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 9, tStand           , 0, 2, 2);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+10, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
 					
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 5, tLectern		, 0, 2, 1);
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 7, tLectern		, 0, 2, 1);
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 8, tLectern		, 0, 2, 1);
-					setBlock							(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+10, tLectern		, 0, 2, 1);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 5, tLectern     , 0, 2, 1);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 7, tLectern     , 0, 2, 1);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 8, tLectern     , 0, 2, 1);
+					setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+10, tLectern     , 0, 2, 1);
 				}
 			}
 			if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
 				if (temp) {
 					temp = F;
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 5, tBookBinder		, 0, 2, 3);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 7, tWritingTable	,10, 2);
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 8, tWritingTable	, 2, 2);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+10, tInkMixer		, 0, 2, 3);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 5, tBookBinder      , 0, 2, 3);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 7, tWritingTable    ,10, 2);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 8, tWritingTable    , 2, 2);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+10, tInkMixer        , 0, 2, 3);
 					
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 6, tLectern		, 0, 2, 3);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 6, tLectern     , 0, 2, 3);
 				} else {
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 5, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 6, tStand			, 0, 2, 6);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 7, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 8, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 9, tStand			, 0, 2, 6);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+10, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 5, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 6, tStand           , 0, 2, 6);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 7, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 8, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 9, tStand           , 0, 2, 6);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+10, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
 					
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 5, tLectern		, 0, 2, 3);
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 7, tLectern		, 0, 2, 3);
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 8, tLectern		, 0, 2, 3);
-					setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+10, tLectern		, 0, 2, 3);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 5, tLectern     , 0, 2, 3);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 7, tLectern     , 0, 2, 3);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 8, tLectern     , 0, 2, 3);
+					setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+10, tLectern     , 0, 2, 3);
 				}
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
 				if (temp) {
 					temp = F;
-					setBlock							(aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+14, tBookBinder	, 0, 2, 2);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-					setBlock							(aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+14, tWritingTable	, 9, 2);
-					setBlock							(aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+14, tWritingTable	, 1, 2);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
-					setBlock							(aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+14, tInkMixer		, 0, 2, 2);
+					setBlock                            (aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+14, tBookBinder  , 0, 2, 2);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+					setBlock                            (aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+14, tWritingTable    , 9, 2);
+					setBlock                            (aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+14, tWritingTable    , 1, 2);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
+					setBlock                            (aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+14, tInkMixer        , 0, 2, 2);
 					
-					setBlock							(aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+14, tLectern		, 0, 2, 2);
+					setBlock                            (aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+14, tLectern     , 0, 2, 2);
 				} else {
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-					setBlock							(aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+14, tStand			, 0, 2, 4);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-					setBlock							(aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+14, tStand			, 0, 2, 4);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+					setBlock                            (aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+14, tStand           , 0, 2, 4);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+					setBlock                            (aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+14, tStand           , 0, 2, 4);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
 					
-					setBlock							(aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+14, tLectern		, 0, 2, 2);
-					setBlock							(aWorld, aChunkX+ 7, aData.mOffsetY+2, aChunkZ+14, tLectern		, 0, 2, 2);
-					setBlock							(aWorld, aChunkX+ 8, aData.mOffsetY+2, aChunkZ+14, tLectern		, 0, 2, 2);
-					setBlock							(aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+14, tLectern		, 0, 2, 2);
+					setBlock                            (aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+14, tLectern     , 0, 2, 2);
+					setBlock                            (aWorld, aChunkX+ 7, aData.mOffsetY+2, aChunkZ+14, tLectern     , 0, 2, 2);
+					setBlock                            (aWorld, aChunkX+ 8, aData.mOffsetY+2, aChunkZ+14, tLectern     , 0, 2, 2);
+					setBlock                            (aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+14, tLectern     , 0, 2, 2);
 				}
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
 				if (temp) {
 					temp = F;
-					setBlock							(aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+ 1, tInkMixer		, 0, 2, 0);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
-					setBlock							(aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+ 1, tWritingTable	, 3, 2);
-					setBlock							(aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+ 1, tWritingTable	,11, 2);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-					setBlock							(aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+ 1, tBookBinder	, 0, 2, 0);
+					setBlock                            (aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+ 1, tInkMixer        , 0, 2, 0);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
+					setBlock                            (aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+ 1, tWritingTable    , 3, 2);
+					setBlock                            (aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+ 1, tWritingTable    ,11, 2);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+					setBlock                            (aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+ 1, tBookBinder  , 0, 2, 0);
 					
-					setBlock							(aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+ 1, tLectern		, 0, 2, 0);
+					setBlock                            (aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+ 1, tLectern     , 0, 2, 0);
 				} else {
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-					setBlock							(aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+ 1, tStand			, 0, 2, 0);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-					setBlock							(aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+ 1, tStand			, 0, 2, 0);
-					aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+					setBlock                            (aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+ 1, tStand           , 0, 2, 0);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+					setBlock                            (aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+ 1, tStand           , 0, 2, 0);
+					aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
 					
-					setBlock							(aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+ 1, tLectern		, 0, 2, 0);
-					setBlock							(aWorld, aChunkX+ 7, aData.mOffsetY+2, aChunkZ+ 1, tLectern		, 0, 2, 0);
-					setBlock							(aWorld, aChunkX+ 8, aData.mOffsetY+2, aChunkZ+ 1, tLectern		, 0, 2, 0);
-					setBlock							(aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+ 1, tLectern		, 0, 2, 0);
+					setBlock                            (aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+ 1, tLectern     , 0, 2, 0);
+					setBlock                            (aWorld, aChunkX+ 7, aData.mOffsetY+2, aChunkZ+ 1, tLectern     , 0, 2, 0);
+					setBlock                            (aWorld, aChunkX+ 8, aData.mOffsetY+2, aChunkZ+ 1, tLectern     , 0, 2, 0);
+					setBlock                            (aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+ 1, tLectern     , 0, 2, 0);
 				}
 			}
 			break;
@@ -332,115 +332,115 @@ public class WorldgenStructureInteriorLibrary extends WorldgenStructure {
 		
 		if (tDidntGenerateSpecial) {
 			if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 5, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 7, Blocks.wooden_slab, tWoodType+8, 2);
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 8, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-				setBlock							(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+10, Blocks.wooden_slab, tWoodType+8, 2);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 5, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 7, Blocks.wooden_slab, tWoodType+8, 2);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 8, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
+				setBlock                            (aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+10, Blocks.wooden_slab, tWoodType+8, 2);
 				
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 5, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 5, aData, aRandom);
 				if (tDidntGenerateZPM && aRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 6, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 6, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
 				tDidntGenerateZPM = F;
-				} else setFlowerPot					(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 6, aData, aRandom);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 7+aRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+				} else setFlowerPot                 (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 6, aData, aRandom);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 7+aRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 				if (tDidntGenerateZPM && aRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 9, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 9, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
 				tDidntGenerateZPM = F;
-				} else setFlowerPot					(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 9, aData, aRandom);
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+10, aData, aRandom);
+				} else setFlowerPot                 (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+ 9, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+14, aData.mOffsetY+2, aChunkZ+10, aData, aRandom);
 			}
 			if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 5, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 7, Blocks.wooden_slab, tWoodType+8, 2);
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 8, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-				setBlock							(aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+10, Blocks.wooden_slab, tWoodType+8, 2);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 5, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 7, Blocks.wooden_slab, tWoodType+8, 2);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 8, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+ 9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
+				setBlock                            (aWorld, aChunkX+ 1, aData.mOffsetY+1, aChunkZ+10, Blocks.wooden_slab, tWoodType+8, 2);
 				
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 5, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 5, aData, aRandom);
 				if (tDidntGenerateZPM && aRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 6, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 6, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
 				tDidntGenerateZPM = F;
-				} else setFlowerPot					(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 6, aData, aRandom);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 7+aRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+				} else setFlowerPot                 (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 6, aData, aRandom);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 7+aRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 				if (tDidntGenerateZPM && aRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 9, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 9, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
 				tDidntGenerateZPM = F;
-				} else setFlowerPot					(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 9, aData, aRandom);
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+10, aData, aRandom);
+				} else setFlowerPot                 (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+ 9, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+ 1, aData.mOffsetY+2, aChunkZ+10, aData, aRandom);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
-				setBlock							(aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+14, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-				setBlock							(aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+14, Blocks.wooden_slab, tWoodType+8, 2);
-				setBlock							(aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+14, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-				setBlock							(aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+14, Blocks.wooden_slab, tWoodType+8, 2);
+				setBlock                            (aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+14, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+				setBlock                            (aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+14, Blocks.wooden_slab, tWoodType+8, 2);
+				setBlock                            (aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+14, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
+				setBlock                            (aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+14, Blocks.wooden_slab, tWoodType+8, 2);
 				
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
 				if (tDidntGenerateZPM && aRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+14, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+14, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
 				tDidntGenerateZPM = F;
-				} else setFlowerPot					(aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 7+aRandom.nextInt(2), aData.mOffsetY+2, aChunkZ+14, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+				} else setFlowerPot                 (aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 7+aRandom.nextInt(2), aData.mOffsetY+2, aChunkZ+14, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 				if (tDidntGenerateZPM && aRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+14, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+14, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
 				tDidntGenerateZPM = F;
-				} else setFlowerPot					(aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
+				} else setFlowerPot                 (aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+14, aData, aRandom);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
-				setBlock							(aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+ 1, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-				setBlock							(aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+ 1, Blocks.wooden_slab, tWoodType+8, 2);
-				setBlock							(aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+ 1, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-				setBlock							(aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+ 1, Blocks.wooden_slab, tWoodType+8, 2);
+				setBlock                            (aWorld, aChunkX+ 5, aData.mOffsetY+1, aChunkZ+ 1, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 6, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+				setBlock                            (aWorld, aChunkX+ 7, aData.mOffsetY+1, aChunkZ+ 1, Blocks.wooden_slab, tWoodType+8, 2);
+				setBlock                            (aWorld, aChunkX+ 8, aData.mOffsetY+1, aChunkZ+ 1, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 9, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
+				setBlock                            (aWorld, aChunkX+10, aData.mOffsetY+1, aChunkZ+ 1, Blocks.wooden_slab, tWoodType+8, 2);
 				
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+ 5, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
 				if (tDidntGenerateZPM && aRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+ 1, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+ 1, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
 				tDidntGenerateZPM = F;
-				} else setFlowerPot					(aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 7+aRandom.nextInt(2), aData.mOffsetY+2, aChunkZ+ 1, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+				} else setFlowerPot                 (aWorld, aChunkX+ 6, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 7+aRandom.nextInt(2), aData.mOffsetY+2, aChunkZ+ 1, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 				if (tDidntGenerateZPM && aRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
-				aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+ 1, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
+				aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+ 1, SIDE_UNKNOWN, (short)14999, UT.NBT.make(null, NBT_ACTIVE_ENERGY, aRandom.nextBoolean()), T, T);
 				tDidntGenerateZPM = F;
-				} else setFlowerPot					(aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
-				if (aRandom.nextInt(4)==0) setCoins	(aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
+				} else setFlowerPot                 (aWorld, aChunkX+ 9, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
+				if (aRandom.nextInt(4)==0) setCoins (aWorld, aChunkX+10, aData.mOffsetY+2, aChunkZ+ 1, aData, aRandom);
 			}
 		}
 		
 		switch(aRandom.nextInt(4)) {
 		case 0:
-			setBlock							(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 3, Blocks.enchanting_table, 0, 2);
-			setBlock							(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+12, Blocks.crafting_table, 0, 2);
-			setBlock							(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 3, Blocks.jukebox, 0, 2);
-			setBlock							(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+12, Blocks.ender_chest, 0, 2);
-			aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 3, aData.mOffsetY+2, aChunkZ+12, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+			setBlock                            (aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 3, Blocks.enchanting_table, 0, 2);
+			setBlock                            (aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+12, Blocks.crafting_table, 0, 2);
+			setBlock                            (aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 3, Blocks.jukebox, 0, 2);
+			setBlock                            (aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+12, Blocks.ender_chest, 0, 2);
+			aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 3, aData.mOffsetY+2, aChunkZ+12, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 			break;
 		case 1:
-			setBlock							(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 3, Blocks.ender_chest, 0, 2);
-			setBlock							(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+12, Blocks.enchanting_table, 0, 2);
-			setBlock							(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 3, Blocks.crafting_table, 0, 2);
-			setBlock							(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+12, Blocks.jukebox, 0, 2);
-			aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+12, aData.mOffsetY+2, aChunkZ+ 3, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+			setBlock                            (aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 3, Blocks.ender_chest, 0, 2);
+			setBlock                            (aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+12, Blocks.enchanting_table, 0, 2);
+			setBlock                            (aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 3, Blocks.crafting_table, 0, 2);
+			setBlock                            (aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+12, Blocks.jukebox, 0, 2);
+			aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+12, aData.mOffsetY+2, aChunkZ+ 3, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 			break;
 		case 2:
-			setBlock							(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 3, Blocks.jukebox, 0, 2);
-			setBlock							(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+12, Blocks.ender_chest, 0, 2);
-			setBlock							(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 3, Blocks.enchanting_table, 0, 2);
-			setBlock							(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+12, Blocks.crafting_table, 0, 2);
-			aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+12, aData.mOffsetY+2, aChunkZ+12, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+			setBlock                            (aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 3, Blocks.jukebox, 0, 2);
+			setBlock                            (aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+12, Blocks.ender_chest, 0, 2);
+			setBlock                            (aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 3, Blocks.enchanting_table, 0, 2);
+			setBlock                            (aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+12, Blocks.crafting_table, 0, 2);
+			aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+12, aData.mOffsetY+2, aChunkZ+12, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 			break;
 		case 3:
-			setBlock							(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 3, Blocks.crafting_table, 0, 2);
-			setBlock							(aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+12, Blocks.jukebox, 0, 2);
-			setBlock							(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 3, Blocks.ender_chest, 0, 2);
-			setBlock							(aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+12, Blocks.enchanting_table, 0, 2);
-			aData.mRegistry.mBlock.placeBlock	(aWorld, aChunkX+ 3, aData.mOffsetY+2, aChunkZ+ 3, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+			setBlock                            (aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+ 3, Blocks.crafting_table, 0, 2);
+			setBlock                            (aWorld, aChunkX+ 3, aData.mOffsetY+1, aChunkZ+12, Blocks.jukebox, 0, 2);
+			setBlock                            (aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+ 3, Blocks.ender_chest, 0, 2);
+			setBlock                            (aWorld, aChunkX+12, aData.mOffsetY+1, aChunkZ+12, Blocks.enchanting_table, 0, 2);
+			aData.mRegistry.mBlock.placeBlock   (aWorld, aChunkX+ 3, aData.mOffsetY+2, aChunkZ+ 3, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 			break;
 		}
 		return T;

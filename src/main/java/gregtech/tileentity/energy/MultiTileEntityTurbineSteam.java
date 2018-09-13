@@ -95,10 +95,10 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 		super.doConversion(aTimer);
 	}
 	
-	@Override public float getSurfaceSizeAttachable	(byte aSide) {return ALONG_AXIS[aSide][mFacing]?0.5F:0.25F;}
-	@Override public boolean isSideSolid2			(byte aSide) {return T;}
-	@Override public boolean isSurfaceOpaque2		(byte aSide) {return T;}
-	@Override public boolean allowCovers			(byte aSide) {return T;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return ALONG_AXIS[aSide][mFacing]?0.5F:0.25F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return T;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return T;}
+	@Override public boolean allowCovers            (byte aSide) {return T;}
 	
 	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return isInput(aSide) && !mStopped && UT.Fluids.steam(aFluidToFill) ? mTanks[0] : null;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return null;}

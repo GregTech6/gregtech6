@@ -78,17 +78,17 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ "Max: " + mTanks[0].getCapacity() + " L");
-		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.tank3x3x3.1"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.tank3x3x3.2"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.tank3x3x3.3"));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
-		aList.add(Chat.ORANGE	+ LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
-		if (mGasProof		) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
-		if (mAcidProof		) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
-		if (mPlasmaProof	) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_MELTDOWN) + " (" + mMaterial.mMeltingPoint + " K)");
+		aList.add(Chat.CYAN     + "Max: " + mTanks[0].getCapacity() + " L");
+		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.3"));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
+		if (mGasProof       ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
+		if (mAcidProof      ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
+		if (mPlasmaProof    ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + mMaterial.mMeltingPoint + " K)");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

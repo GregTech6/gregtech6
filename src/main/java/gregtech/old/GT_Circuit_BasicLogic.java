@@ -35,7 +35,7 @@ public class GT_Circuit_BasicLogic extends GT_CircuitryBehavior {
 	
 	@Override
 	public void validateParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		if (aCircuitData[0] <  0) aCircuitData[0] =	 0;
+		if (aCircuitData[0] <  0) aCircuitData[0] =  0;
 		if (aCircuitData[0] > 13) aCircuitData[0] = 13;
 	}
 	

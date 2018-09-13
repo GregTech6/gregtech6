@@ -49,62 +49,62 @@ public class Loader_Recipes_Thaumcraft implements Runnable {
 	public void run() {
 		if (MD.TC.mLoaded) {
 			OUT.println("GT_Mod: Doing TC Recipes.");
-			RM.food_can(IL.TC_Nugget_Chicken	.wild(9), 8, "Canned Chicken Nuggets", IL.CANS_MEAT);
-			RM.food_can(IL.TC_Nugget_Beef		.wild(9), 8, "Canned Beef Nuggets", IL.CANS_MEAT);
-			RM.food_can(IL.TC_Nugget_Pork		.wild(9), 8, "Canned Pork Nuggets", IL.CANS_MEAT);
-			RM.food_can(IL.TC_Nugget_Fish		.wild(9), 8, "Canned Fish Nuggets", IL.CANS_FISH);
-			RM.food_can(IL.TC_Triple_Meat_Treat	.wild(1), 6, "Canned Meat Treat", IL.CANS_MEAT);
+			RM.food_can(IL.TC_Nugget_Chicken    .wild(9), 8, "Canned Chicken Nuggets", IL.CANS_MEAT);
+			RM.food_can(IL.TC_Nugget_Beef       .wild(9), 8, "Canned Beef Nuggets", IL.CANS_MEAT);
+			RM.food_can(IL.TC_Nugget_Pork       .wild(9), 8, "Canned Pork Nuggets", IL.CANS_MEAT);
+			RM.food_can(IL.TC_Nugget_Fish       .wild(9), 8, "Canned Fish Nuggets", IL.CANS_FISH);
+			RM.food_can(IL.TC_Triple_Meat_Treat .wild(1), 6, "Canned Meat Treat", IL.CANS_MEAT);
 			
-			FoodsGT.put(IL.TC_Nugget_Chicken	.wild(1), 0, 0, 0, 0, 1);
-			FoodsGT.put(IL.TC_Nugget_Beef		.wild(1), 0, 0, 0, 0, 1);
-			FoodsGT.put(IL.TC_Nugget_Pork		.wild(1), 0, 0, 0, 0, 1);
-			FoodsGT.put(IL.TC_Nugget_Fish		.wild(1), 0, 0, 0, 0, 1);
-			FoodsGT.put(IL.TC_Triple_Meat_Treat	.wild(1), 0, 0, 0,30,10);
+			FoodsGT.put(IL.TC_Nugget_Chicken    .wild(1), 0, 0, 0, 0, 1);
+			FoodsGT.put(IL.TC_Nugget_Beef       .wild(1), 0, 0, 0, 0, 1);
+			FoodsGT.put(IL.TC_Nugget_Pork       .wild(1), 0, 0, 0, 0, 1);
+			FoodsGT.put(IL.TC_Nugget_Fish       .wild(1), 0, 0, 0, 0, 1);
+			FoodsGT.put(IL.TC_Triple_Meat_Treat .wild(1), 0, 0, 0,30,10);
 			
 			CR.shaped(IL.TC_Phial.get(8), CR.DEF_REM_NCC, " C ", "G G", " G ", 'C', "itemClay", 'G', ST.make(Blocks.glass, 1, W));
 			
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.string, 1, W), MT.Tallow.liquid(U*2, T), NF, ST.make(MD.TC, "blockCandle", 3, 0));
 			
-			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)				, IL.TC_Nugget_Chicken	.wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Beef.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)				, IL.TC_Nugget_Chicken	.wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)				, IL.TC_Nugget_Chicken	.wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)				, IL.TC_Nugget_Fish		.wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)	, IL.TC_Nugget_Chicken	.wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Beef.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)	, IL.TC_Nugget_Chicken	.wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)	, IL.TC_Nugget_Chicken	.wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)	, IL.TC_Nugget_Fish		.wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Beef.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)               , IL.TC_Nugget_Fish     .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Beef.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Fish     .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
 			
-			RM.ic2_compressor(						ST.make(Items.rotten_flesh, 9, 0), IL.TC_Block_Flesh.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16,		ST.make(Items.rotten_flesh, 9, W), IL.TC_Block_Flesh.get(1));
-			RM.Boxinator.addRecipe2(T, 16, 16,		ST.make(Items.rotten_flesh, 9, W), ST.tag(9), IL.TC_Block_Flesh.get(1));
-			RM.Unboxinator.addRecipe1(T, 16, 16,	IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));
-			RM.ic2_extractor(						IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));
+			RM.ic2_compressor(                      ST.make(Items.rotten_flesh, 9, 0), IL.TC_Block_Flesh.get(1));
+			RM.Compressor.addRecipe1(T, 16, 16,     ST.make(Items.rotten_flesh, 9, W), IL.TC_Block_Flesh.get(1));
+			RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(Items.rotten_flesh, 9, W), ST.tag(9), IL.TC_Block_Flesh.get(1));
+			RM.Unboxinator.addRecipe1(T, 16, 16,    IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));
+			RM.ic2_extractor(                       IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));
 			
-			RM.ic2_compressor(						IL.TC_Tallow.get(9), IL.TC_Block_Tallow.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16,		IL.TC_Tallow.get(9), IL.TC_Block_Tallow.get(1));
-			RM.Boxinator.addRecipe2(T, 16, 16,		IL.TC_Tallow.get(9), ST.tag(9), IL.TC_Block_Tallow.get(1));
-			RM.Unboxinator.addRecipe1(T, 16, 16,	IL.TC_Block_Tallow.get(1), IL.TC_Tallow.get(9));
-			RM.ic2_extractor(						IL.TC_Block_Tallow.get(1), IL.TC_Tallow.get(9));
+			RM.ic2_compressor(                      IL.TC_Tallow.get(9), IL.TC_Block_Tallow.get(1));
+			RM.Compressor.addRecipe1(T, 16, 16,     IL.TC_Tallow.get(9), IL.TC_Block_Tallow.get(1));
+			RM.Boxinator.addRecipe2(T, 16, 16,      IL.TC_Tallow.get(9), ST.tag(9), IL.TC_Block_Tallow.get(1));
+			RM.Unboxinator.addRecipe1(T, 16, 16,    IL.TC_Block_Tallow.get(1), IL.TC_Tallow.get(9));
+			RM.ic2_extractor(                       IL.TC_Block_Tallow.get(1), IL.TC_Tallow.get(9));
 			if (MD.CHSL.mLoaded) {
-			RM.Unboxinator.addRecipe1(T, 16, 16,	ST.make(MD.CHSL, "tallow", 1, W), IL.TC_Tallow.get(9));
-			RM.ic2_extractor(						ST.make(MD.CHSL, "tallow", 1, W), IL.TC_Tallow.get(9));
+			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.CHSL, "tallow", 1, W), IL.TC_Tallow.get(9));
+			RM.ic2_extractor(                       ST.make(MD.CHSL, "tallow", 1, W), IL.TC_Tallow.get(9));
 			}
 			
-			RM.ic2_compressor(						OP.gem.mat(MT.Amber, 4), IL.TC_Block_Amber.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16,		OP.gem.mat(MT.Amber, 4), IL.TC_Block_Amber.get(1));
-			RM.Boxinator.addRecipe2(T, 16, 16,		OP.gem.mat(MT.Amber, 4), ST.tag(4), IL.TC_Block_Amber_Bricks.get(1));
-			RM.Unboxinator.addRecipe1(T, 16, 16,	IL.TC_Block_Amber.get(1), OP.gem.mat(MT.Amber, 4));
-			RM.ic2_extractor(						IL.TC_Block_Amber.get(1), OP.gem.mat(MT.Amber, 4));
-			RM.Unboxinator.addRecipe1(T, 16, 16,	IL.TC_Block_Amber_Bricks.get(1), OP.gem.mat(MT.Amber, 4));
-			RM.ic2_extractor(						IL.TC_Block_Amber_Bricks.get(1), OP.gem.mat(MT.Amber, 4));
+			RM.ic2_compressor(                      OP.gem.mat(MT.Amber, 4), IL.TC_Block_Amber.get(1));
+			RM.Compressor.addRecipe1(T, 16, 16,     OP.gem.mat(MT.Amber, 4), IL.TC_Block_Amber.get(1));
+			RM.Boxinator.addRecipe2(T, 16, 16,      OP.gem.mat(MT.Amber, 4), ST.tag(4), IL.TC_Block_Amber_Bricks.get(1));
+			RM.Unboxinator.addRecipe1(T, 16, 16,    IL.TC_Block_Amber.get(1), OP.gem.mat(MT.Amber, 4));
+			RM.ic2_extractor(                       IL.TC_Block_Amber.get(1), OP.gem.mat(MT.Amber, 4));
+			RM.Unboxinator.addRecipe1(T, 16, 16,    IL.TC_Block_Amber_Bricks.get(1), OP.gem.mat(MT.Amber, 4));
+			RM.ic2_extractor(                       IL.TC_Block_Amber_Bricks.get(1), OP.gem.mat(MT.Amber, 4));
 			
 			Item tCrystal = ST.item(MD.TC, "blockCrystal"), tShard = ST.item(MD.TC, "ItemShard");
 			for (int i = 0; i < 6; i++) {
-			RM.ic2_compressor(						ST.make(tShard, 6, i), ST.make(tCrystal, 1, i));
-			RM.Compressor.addRecipe1(T, 16, 16,		ST.make(tShard, 6, i), ST.make(tCrystal, 1, i));
-			RM.Boxinator.addRecipe2(T, 16, 16,		ST.make(tShard, 6, i), ST.tag(6), ST.make(tCrystal, 1, i));
-			RM.Unboxinator.addRecipe1(T, 16, 16,	ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
-			RM.ic2_extractor(						ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
+			RM.ic2_compressor(                      ST.make(tShard, 6, i), ST.make(tCrystal, 1, i));
+			RM.Compressor.addRecipe1(T, 16, 16,     ST.make(tShard, 6, i), ST.make(tCrystal, 1, i));
+			RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(tShard, 6, i), ST.tag(6), ST.make(tCrystal, 1, i));
+			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
+			RM.ic2_extractor(                       ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
 			}
 		}
 		if (COMPAT_TC != null) {
@@ -125,20 +125,20 @@ public class Loader_Recipes_Thaumcraft implements Runnable {
 				, Arrays.asList(TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.AQUA, 4))
 				, null
 				, LH.add("gt.research.page.1." + tKey, "You have discovered a way of filling a Bucket with aqua essentia in order to simply get Water.")
-				, COMPAT_TC.addCrucibleRecipe(tKey, ST.make(Items.bucket			, 1, W), ST.make(Items.water_bucket, 1, 0), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Cell_Empty					.get(1), IL.Cell_Water.get(1), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_MagicCapsule				.get(1), UT.Fluids.fillFluidContainer(FL.Water.make(16000), IL.FR_MagicCapsule				.get(1), F, F), TC.stack(TC.AQUA,10))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_TinCapsule				.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_TinCapsule				.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_WaxCapsule				.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_WaxCapsule				.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_RefractoryCapsule			.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_RefractoryCapsule			.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Copper			.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Copper			.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Tin			.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Tin			.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Zinc			.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Zinc			.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Lead			.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Lead			.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bismuth		.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Bismuth		.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Brass			.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Brass			.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bronze			.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Bronze			.get(1), F, F), TC.stack(TC.AQUA, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_BismuthBronze	.get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_BismuthBronze	.get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, ST.make(Items.bucket            , 1, W), ST.make(Items.water_bucket, 1, 0), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Cell_Empty                   .get(1), IL.Cell_Water.get(1), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_MagicCapsule              .get(1), UT.Fluids.fillFluidContainer(FL.Water.make(16000), IL.FR_MagicCapsule              .get(1), F, F), TC.stack(TC.AQUA,10))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_TinCapsule                .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_TinCapsule                .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_WaxCapsule                .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_WaxCapsule                .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_RefractoryCapsule         .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_RefractoryCapsule         .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Copper         .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Copper         .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Tin            .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Tin            .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Zinc           .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Zinc           .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Lead           .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Lead           .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bismuth        .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Bismuth        .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Brass          .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Brass          .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bronze         .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Bronze         .get(1), F, F), TC.stack(TC.AQUA, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_BismuthBronze  .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_BismuthBronze  .get(1), F, F), TC.stack(TC.AQUA, 4))
 			);
 			tMat = MT.Zn;
 			COMPAT_TC.addResearch(tKey = TRANSZINC
@@ -264,14 +264,14 @@ public class Loader_Recipes_Thaumcraft implements Runnable {
 				, Arrays.asList(TC.stack(TC.VITREUS, 5), TC.stack(TC.PERMUTATIO, 3), TC.stack(TC.ORDO, 3))
 				, null
 				, LH.add("gt.research.page.1." + tKey, "Sometimes when processing your Crystal Shards, they become a pile of Dust instead of the mostly wanted Shard.<BR><BR>You have finally found a way to reverse this Process by using Vitreus Essentia for recrystallising the Shards.")
-				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.Amber			), OP.gem.mat(MT.Amber			, 1), TC.stack(TC.VITREUS, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedOrder		), OP.gem.mat(MT.InfusedOrder	, 1), TC.stack(TC.VITREUS, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedEntropy	), OP.gem.mat(MT.InfusedEntropy	, 1), TC.stack(TC.VITREUS, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedAir		), OP.gem.mat(MT.InfusedAir		, 1), TC.stack(TC.VITREUS, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedEarth		), OP.gem.mat(MT.InfusedEarth	, 1), TC.stack(TC.VITREUS, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedFire		), OP.gem.mat(MT.InfusedFire	, 1), TC.stack(TC.VITREUS, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedWater		), OP.gem.mat(MT.InfusedWater	, 1), TC.stack(TC.VITREUS, 4))
-				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedBalance	), OP.gem.mat(MT.InfusedBalance	, 1), TC.stack(TC.VITREUS, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.Amber            ), OP.gem.mat(MT.Amber          , 1), TC.stack(TC.VITREUS, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedOrder     ), OP.gem.mat(MT.InfusedOrder   , 1), TC.stack(TC.VITREUS, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedEntropy   ), OP.gem.mat(MT.InfusedEntropy , 1), TC.stack(TC.VITREUS, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedAir       ), OP.gem.mat(MT.InfusedAir     , 1), TC.stack(TC.VITREUS, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedEarth     ), OP.gem.mat(MT.InfusedEarth   , 1), TC.stack(TC.VITREUS, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedFire      ), OP.gem.mat(MT.InfusedFire    , 1), TC.stack(TC.VITREUS, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedWater     ), OP.gem.mat(MT.InfusedWater   , 1), TC.stack(TC.VITREUS, 4))
+				, COMPAT_TC.addCrucibleRecipe(tKey, OP.dust.dat(MT.InfusedBalance   ), OP.gem.mat(MT.InfusedBalance , 1), TC.stack(TC.VITREUS, 4))
 			);
 			/*
 			tKey = IThaumcraftCompat.ADVANCEDENTROPICPROCESSING;

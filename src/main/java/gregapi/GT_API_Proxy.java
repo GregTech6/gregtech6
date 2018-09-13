@@ -225,10 +225,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent public void onWorldLoad(WorldEvent.Load aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	
-	public	static final List<ITileEntityServerTickPre	> SERVER_TICK_PRE					= new ArrayListNoNulls<>(), SERVER_TICK_PR2 = new ArrayListNoNulls<>();
-	public	static final List<ITileEntityServerTickPost	> SERVER_TICK_POST					= new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
-	public	static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES		= new ArrayListNoNulls<>();
-	private static List<ITileEntityScheduledUpdate		> SCHEDULED_TILEENTITY_UPDATES_2	= new ArrayListNoNulls<>();
+	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                   = new ArrayListNoNulls<>(), SERVER_TICK_PR2 = new ArrayListNoNulls<>();
+	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST                  = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
+	public  static List<ITileEntityScheduledUpdate      > SCHEDULED_TILEENTITY_UPDATES      = new ArrayListNoNulls<>();
+	private static List<ITileEntityScheduledUpdate      > SCHEDULED_TILEENTITY_UPDATES_2    = new ArrayListNoNulls<>();
 	
 	@SubscribeEvent
 	public void onServerTick(ServerTickEvent aEvent) {
@@ -240,29 +240,29 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					
 					if (MD.IC2.mLoaded) try {
 					OUT.println("GT_API: IC2 Machines");
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.cannerBottle				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.centrifuge				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.compressor				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.extractor					.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.macerator					.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerCutting		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerExtruding		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerRolling		.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.matterAmplifier			.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
-					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.oreWashing				.getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.cannerBottle              .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.centrifuge                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.compressor                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.extractor                 .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.macerator                 .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerCutting        .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerExtruding      .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.metalformerRolling        .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.matterAmplifier           .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
+					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.oreWashing                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
 					} catch(Throwable e) {/**/}
 					
 					OUT.println("GT_API: Dungeon Loot");
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST			).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST				).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER	).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR		).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST            ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST              ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH       ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING      ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY       ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR      ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST     ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST     ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
+					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR       ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
 					OUT.println("GT_API: Smelting");
 					for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
 					OUT.println("GT_API: Crafting Recipes");
@@ -304,7 +304,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							Object[] tInput = ((ShapedOreRecipe)tRecipe).getInput();
 							for (int j = 0; j < tInput.length; j++) {
 								if (tInput[j] instanceof List && ((List<?>)tInput[j]).isEmpty()) {
-//									DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
+//                                  DEB.println("Removed Recipe for " + ((ShapedOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
 									tList.remove(i--);
 									break;
 								}
@@ -313,7 +313,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							ArrayList<Object> tInput = ((ShapelessOreRecipe)tRecipe).getInput();
 							for (int j = 0; j < tInput.size(); j++) {
 								if (tInput.get(j) instanceof List && ((List<?>)tInput.get(j)).isEmpty()) {
-//									DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
+//                                  DEB.println("Removed Recipe for " + ((ShapelessOreRecipe)tRecipe).getRecipeOutput().getDisplayName() + " because Ingredient Nr. " + j + " is missing");
 									tList.remove(i--);
 									break;
 								}
@@ -452,9 +452,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				if (aOrb.xpValue <= 0) {aOrb.xpValue = 0; aOrb.setDead(); continue;}
 				for (EntityXPOrb tOrb : tOrbs) if (aOrb != tOrb && !tOrb.isDead && tOrb.xpValue > 0 && tOrb.xpValue < Short.MAX_VALUE && aOrb.getDistanceSqToEntity(tOrb) <= 3) {
 					aOrb.xpOrbAge = Math.min(aOrb.xpOrbAge, tOrb.xpOrbAge);
-					if (aOrb.xpValue +	tOrb.xpValue > Short.MAX_VALUE) {
+					if (aOrb.xpValue +  tOrb.xpValue > Short.MAX_VALUE) {
 						tOrb.xpValue -= (Short.MAX_VALUE - aOrb.xpValue);
-						aOrb.xpValue  =	 Short.MAX_VALUE;
+						aOrb.xpValue  =  Short.MAX_VALUE;
 						break;
 					}
 					aOrb.xpValue += tOrb.xpValue;
@@ -501,7 +501,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							UT.Entities.chat(aEvent.player, "We know you could have chosen any other Kit.");
 							UT.Entities.chat(aEvent.player, "And are proud that you chose ours as the best.");
 							ST.drop(aEvent.player, ST.make(Items.flint, 12, 0));
-							ST.drop(aEvent.player, ST.make(Items.stick,	 8, 0));
+							ST.drop(aEvent.player, ST.make(Items.stick,  8, 0));
 							ST.drop(aEvent.player, IL.Grass_Dry.get(8));
 							ST.drop(aEvent.player, IL.Bottle_Purple_Drink.get(6));
 							switch (RNGSUS.nextInt(4)) {
@@ -564,10 +564,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								if (tPlayer == null) continue;
 								if ("Bear989Sr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									switch(tEmptySlots) {
-									case 0:	UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You are full of shit, Bean!!!")); break;
-									case 1:	UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Your Inventory is almost full, Bean!!")); break;
-									case 2:	UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You should clean up your Inventory, Bean!")); break;
-									case 3:	UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bean, your Inventory starts to get full.")); break;
+									case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You are full of shit, Bean!!!")); break;
+									case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Your Inventory is almost full, Bean!!")); break;
+									case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You should clean up your Inventory, Bean!")); break;
+									case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bean, your Inventory starts to get full.")); break;
 									}
 								} else if ("Bear989jr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, UT.NBT.addEnchantment(ST.make(Items.cookie, 1, 0, "Jr. Cookie"), Enchantment_WerewolfDamage.INSTANCE, 1), F);
@@ -715,7 +715,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (aEvent.entityPlayer == null || aEvent.entityPlayer.worldObj == null || aEvent.action == null || aEvent.world.provider == null || aEvent.action == null) return;
 		
 		ItemStack aStack = aEvent.entityPlayer.inventory.getCurrentItem();
-//		Block aBlock = aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z);
+//      Block aBlock = aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z);
 		TileEntity aTileEntity = aEvent.world.getTileEntity(aEvent.x, aEvent.y, aEvent.z);
 		
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) {
@@ -855,36 +855,36 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					OM.set(tDrop);
 					// TODO HASHMAP
 					if (MD.GT.mLoaded) {
-					if (IL.CHSL_Granite				.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.EtFu_Granite				.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.GaSu_Granite				.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.BOTA_Granite				.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.CHSL_Granite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
-					if (IL.EtFu_Granite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
-					if (IL.GaSu_Granite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
-					if (IL.BOTA_Granite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
-					if (IL.BOTA_Granite_Bricks		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 3), F, F); else
-					if (IL.BOTA_Granite_Chiseled	.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 6), F, F); else
-					if (IL.CHSL_Diorite				.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.EtFu_Diorite				.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.GaSu_Diorite				.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.BOTA_Diorite				.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.CHSL_Diorite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
-					if (IL.EtFu_Diorite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
-					if (IL.GaSu_Diorite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
-					if (IL.BOTA_Diorite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
-					if (IL.BOTA_Diorite_Bricks		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 3), F, F); else
-					if (IL.BOTA_Diorite_Chiseled	.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 6), F, F); else
-					if (IL.CHSL_Andesite			.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.EtFu_Andesite			.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.GaSu_Andesite			.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.BOTA_Andesite			.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.CHSL_Andesite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
-					if (IL.EtFu_Andesite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
-					if (IL.GaSu_Andesite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
-					if (IL.BOTA_Andesite_Smooth		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
-					if (IL.BOTA_Andesite_Bricks		.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 3), F, F); else
-					if (IL.BOTA_Andesite_Chiseled	.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 6), F, F);
+					if (IL.CHSL_Granite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.EtFu_Granite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.GaSu_Granite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.BOTA_Granite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.CHSL_Granite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
+					if (IL.EtFu_Granite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
+					if (IL.GaSu_Granite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
+					if (IL.BOTA_Granite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
+					if (IL.BOTA_Granite_Bricks      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 3), F, F); else
+					if (IL.BOTA_Granite_Chiseled    .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 6), F, F); else
+					if (IL.CHSL_Diorite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.EtFu_Diorite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.GaSu_Diorite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.BOTA_Diorite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.CHSL_Diorite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
+					if (IL.EtFu_Diorite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
+					if (IL.GaSu_Diorite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
+					if (IL.BOTA_Diorite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
+					if (IL.BOTA_Diorite_Bricks      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 3), F, F); else
+					if (IL.BOTA_Diorite_Chiseled    .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 6), F, F); else
+					if (IL.CHSL_Andesite            .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.EtFu_Andesite            .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.GaSu_Andesite            .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.BOTA_Andesite            .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.CHSL_Andesite_Smooth     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
+					if (IL.EtFu_Andesite_Smooth     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
+					if (IL.GaSu_Andesite_Smooth     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
+					if (IL.BOTA_Andesite_Smooth     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
+					if (IL.BOTA_Andesite_Bricks     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 3), F, F); else
+					if (IL.BOTA_Andesite_Chiseled   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 6), F, F);
 					}
 				}
 				
@@ -906,11 +906,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onLoginEvent(cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent aEvent) {
-		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES	) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
-		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES	) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
-		if (DISABLE_ALL_IC2_MACERATOR_RECIPES	) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
-		if (DISABLE_ALL_IC2_OREWASHER_RECIPES	) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
-		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES	) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
+		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES  ) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
+		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES   ) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
+		if (DISABLE_ALL_IC2_MACERATOR_RECIPES   ) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
+		if (DISABLE_ALL_IC2_OREWASHER_RECIPES   ) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
+		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES  ) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
 		
 		if (aEvent.player.worldObj.isRemote) return;
 		if (aEvent.player instanceof EntityPlayerMP) mNewPlayers.add((EntityPlayerMP)aEvent.player);
@@ -961,9 +961,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public void onCheckSpawnEvent(LivingSpawnEvent.CheckSpawn aEvent) {
 		if (aEvent.getResult() == Result.DENY || aEvent.world.provider.dimensionId != 0 || aEvent.y <= 50) return;
 		if (GENERATE_BIOMES) {
-			if (UT.Code.inside(-96,	 95, (int)aEvent.x) && UT.Code.inside(-96,	95, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
+			if (UT.Code.inside(-96,  95, (int)aEvent.x) && UT.Code.inside(-96,  95, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
 		} else if (GENERATE_NEXUS) {
-			if (UT.Code.inside(	 0,	 48, (int)aEvent.x) && UT.Code.inside(-64, -16, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
+			if (UT.Code.inside(  0,  48, (int)aEvent.x) && UT.Code.inside(-64, -16, (int)aEvent.z)) {aEvent.setResult(Result.DENY); return;}
 		}
 		if (GENERATE_STREETS && (UT.Code.inside(-48, 48, (int)aEvent.x) || UT.Code.inside(-48, 48, (int)aEvent.z))) {aEvent.setResult(Result.DENY); return;}
 		if (SPAWN_ZONE_MOB_PROTECTION && UT.Code.inside(-144, 144, ((int)aEvent.x)-aEvent.world.getWorldInfo().getSpawnX()) && UT.Code.inside(-144, 144, ((int)aEvent.z)-aEvent.world.getWorldInfo().getSpawnZ()) && WD.opq(aEvent.world, (int)aEvent.x, 0, (int)aEvent.z, F, F)) {aEvent.setResult(Result.DENY); return;}
@@ -979,36 +979,36 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						if (aStack.getItem() == Items.egg || aStack.getItem() == Items.feather || aStack.getItem() == Items.apple) {
 							((EntityItem)aEvent.entity).lifespan = 1200;
 						} else {
-						//	if (MD.GT.mLoaded) {
-						//		if (aStack.getItem() == Items.stick) {
-						//			((EntityItem)aEvent.entity).lifespan = 200;
-						//		} else {
-						//			OreDictItemData tData = OM.data(aStack);
-						//			if (tData != null && tData.mPrefix == OP.rockGt) {
-						//				((EntityItem)aEvent.entity).lifespan = 200;
-						//			} else if (((EntityItem)aEvent.entity).lifespan == 6000) {
-						//				((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
-						//			}
-						//		}
-						//	} else {
+						//  if (MD.GT.mLoaded) {
+						//      if (aStack.getItem() == Items.stick) {
+						//          ((EntityItem)aEvent.entity).lifespan = 200;
+						//      } else {
+						//          OreDictItemData tData = OM.data(aStack);
+						//          if (tData != null && tData.mPrefix == OP.rockGt) {
+						//              ((EntityItem)aEvent.entity).lifespan = 200;
+						//          } else if (((EntityItem)aEvent.entity).lifespan == 6000) {
+						//              ((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
+						//          }
+						//      }
+						//  } else {
 								if (((EntityItem)aEvent.entity).lifespan == 6000) {
 									((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
 								}
-						//	}
+						//  }
 						}
 					}
 					
-//					if (MD.GT.mLoaded) {
-//					if (IL.CHSL_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
-//					if (IL.EtFu_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
-//					if (IL.BOTA_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
-//					if (IL.CHSL_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
-//					if (IL.EtFu_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
-//					if (IL.BOTA_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
-//					if (IL.CHSL_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F); else
-//					if (IL.EtFu_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F); else
-//					if (IL.BOTA_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F);
-//					}
+//                  if (MD.GT.mLoaded) {
+//                  if (IL.CHSL_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
+//                  if (IL.EtFu_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
+//                  if (IL.BOTA_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
+//                  if (IL.CHSL_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
+//                  if (IL.EtFu_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
+//                  if (IL.BOTA_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
+//                  if (IL.CHSL_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F); else
+//                  if (IL.EtFu_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F); else
+//                  if (IL.BOTA_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F);
+//                  }
 					
 					((EntityItem)aEvent.entity).setEntityItemStack(aStack);
 				} else {

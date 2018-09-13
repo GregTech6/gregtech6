@@ -42,10 +42,10 @@ public interface IEnergyConnected extends IColoredTileEntity, IHasWorldObjectAnd
 						if (tColor >= 0 && tColor != aEmitter.getColorization()) continue;
 					}
 					rUsedAmperes+=((IEnergyConnected)tTileEntity).injectEnergyUnits(j, aVoltage, aAmperage-rUsedAmperes);
-//				} else if (tTileEntity instanceof IEnergySink) {
-//					if (((IEnergySink)tTileEntity).acceptsEnergyFrom((TileEntity)aEmitter, ForgeDirection.getOrientation(j))) {
-//						while (aAmperage > rUsedAmperes && ((IEnergySink)tTileEntity).demandedEnergyUnits() > 0 && ((IEnergySink)tTileEntity).injectEnergyUnits(ForgeDirection.getOrientation(j), aVoltage) < aVoltage) rUsedAmperes++;
-//					}
+//              } else if (tTileEntity instanceof IEnergySink) {
+//                  if (((IEnergySink)tTileEntity).acceptsEnergyFrom((TileEntity)aEmitter, ForgeDirection.getOrientation(j))) {
+//                      while (aAmperage > rUsedAmperes && ((IEnergySink)tTileEntity).demandedEnergyUnits() > 0 && ((IEnergySink)tTileEntity).injectEnergyUnits(ForgeDirection.getOrientation(j), aVoltage) < aVoltage) rUsedAmperes++;
+//                  }
 				} else if (tTileEntity instanceof IEnergySink) {
 					if (((IEnergySink)tTileEntity).acceptsEnergyFrom((TileEntity)aEmitter, ForgeDirection.getOrientation(j))) {
 						while (aAmperage > rUsedAmperes && ((IEnergySink)tTileEntity).getDemandedEnergy() > 0 && ((IEnergySink)tTileEntity).injectEnergy(ForgeDirection.getOrientation(j), aVoltage, aVoltage) < aVoltage) rUsedAmperes++;

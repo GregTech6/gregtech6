@@ -31,10 +31,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class Behavior_Plunger_Item extends AbstractBehaviorDefault {
-//	private final int mCosts;
+//  private final int mCosts;
 	
 	public Behavior_Plunger_Item(int aCosts) {
-//		mCosts = aCosts;
+//      mCosts = aCosts;
 	}
 	
 	@Override

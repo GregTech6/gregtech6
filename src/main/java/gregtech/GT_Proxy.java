@@ -168,16 +168,16 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		if (mIncreaseDungeonLoot) {
 			OUT.println("GT_Mod: Increasing general amount of Loot in Dungeon Chests and alike");
 			ChestGenHooks tChest;
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST				); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST				); tChest.setMax(tChest.getMax()+12); tChest.setMin(tChest.getMin()+ 6);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST		); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST		); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER	); tChest.setMax(tChest.getMax()+ 2); tChest.setMin(tChest.getMin()+ 1);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR			); tChest.setMax(tChest.getMax()+ 4); tChest.setMin(tChest.getMin()+ 2);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH			); tChest.setMax(tChest.getMax()+12); tChest.setMin(tChest.getMin()+ 6);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING		); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR		); tChest.setMax(tChest.getMax()+ 6); tChest.setMin(tChest.getMin()+ 3);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY			); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST                ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST              ); tChest.setMax(tChest.getMax()+12); tChest.setMin(tChest.getMin()+ 6);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST       ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST       ); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER   ); tChest.setMax(tChest.getMax()+ 2); tChest.setMin(tChest.getMin()+ 1);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR         ); tChest.setMax(tChest.getMax()+ 4); tChest.setMin(tChest.getMin()+ 2);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH         ); tChest.setMax(tChest.getMax()+12); tChest.setMin(tChest.getMin()+ 6);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING        ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR        ); tChest.setMax(tChest.getMax()+ 6); tChest.setMin(tChest.getMin()+ 3);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY         ); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
 		}
 		if (mNerfedVanillaTools) {
 			OUT.println("GT_Mod: Nerfing Vanilla Tool Durability");
@@ -216,16 +216,16 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		for (OreDictMaterial aMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL) && aMaterial.mTargetRegistration == aMaterial) {
 			long
 			tBits = CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC;
-			CR.shaped(OP.toolHeadWrench		.mat(aMaterial							,  1), tBits, "hXW", "XRX", "WXd", 'X', OP.plate	.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadWrench		.mat(aMaterial							,  1), tBits, "hXW", "XRX", "WXd", 'X', OP.plateGem	.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadChainsaw	.mat(aMaterial							,  1), tBits, "SRS", "XhX", "SRS", 'X', OP.plate	.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadChainsaw	.mat(aMaterial							,  1), tBits, "SRS", "XhX", "SRS", 'X', OP.plateGem	.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadDrill		.mat(aMaterial							,  1), tBits, "XSX", "XSX", "ShS", 'X', OP.plate	.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadDrill		.mat(aMaterial							,  1), tBits, "XSX", "XSX", "ShS", 'X', OP.plateGem	.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadWrench     .mat(aMaterial                          ,  1), tBits, "hXW", "XRX", "WXd", 'X', OP.plate    .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadWrench     .mat(aMaterial                          ,  1), tBits, "hXW", "XRX", "WXd", 'X', OP.plateGem .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadChainsaw   .mat(aMaterial                          ,  1), tBits, "SRS", "XhX", "SRS", 'X', OP.plate    .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadChainsaw   .mat(aMaterial                          ,  1), tBits, "SRS", "XhX", "SRS", 'X', OP.plateGem .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadDrill      .mat(aMaterial                          ,  1), tBits, "XSX", "XSX", "ShS", 'X', OP.plate    .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadDrill      .mat(aMaterial                          ,  1), tBits, "XSX", "XSX", "ShS", 'X', OP.plateGem .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
 			
 			tBits = CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC;
 			if (!aMaterial.contains(TD.Compounds.COATED)) {
-			CR.shaped(OP.gearGtSmall		.mat(aMaterial							,  1), tBits, "P ", aMaterial.contains(TD.Properties.WOOD)?" s":aMaterial.contains(TD.Properties.STONE)?" f":" h", 'P', OP.plate.dat(aMaterial));
+			CR.shaped(OP.gearGtSmall        .mat(aMaterial                          ,  1), tBits, "P ", aMaterial.contains(TD.Properties.WOOD)?" s":aMaterial.contains(TD.Properties.STONE)?" f":" h", 'P', OP.plate.dat(aMaterial));
 			}
 		}
 	}
@@ -255,7 +255,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 				if ("WorldProviderSurfaceRTG".equalsIgnoreCase(tClassName) || "WorldTypeRTG".equalsIgnoreCase(tClassName)) return;
 			}
 			if (GENERATE_STREETS && (UT.Code.inside(-48, 47, aEvent.chunkX) || UT.Code.inside(-48, 47, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
-			if (GENERATE_BIOMES	 && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
+			if (GENERATE_BIOMES  && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
 		}
 	}
 	@SubscribeEvent
@@ -266,7 +266,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 				if ("WorldProviderSurfaceRTG".equalsIgnoreCase(tClassName) || "WorldTypeRTG".equalsIgnoreCase(tClassName)) return;
 			}
 			if (GENERATE_STREETS && (UT.Code.inside(-48, 47, aEvent.chunkX) || UT.Code.inside(-48, 47, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
-			if (GENERATE_BIOMES	 && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
+			if (GENERATE_BIOMES  && (UT.Code.inside(-96, 95, aEvent.chunkX) && UT.Code.inside(-96, 95, aEvent.chunkZ))) aEvent.setResult(Result.DENY);
 		}
 	}
 	@SubscribeEvent
@@ -400,48 +400,48 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	}
 
 // Not gonna do that one due to exploitiness.
-//	@SubscribeEvent
-//	public void onItemExpireEvent(ItemExpireEvent aEvent) {
-//		ItemStack aStack = aEvent.entityItem.getEntityItem();
-//		if (aStack != null) {
-//			if (aStack.stackSize <= 0) {aEvent.entityItem.setDead(); return;}
-//			
-//			if (!aEvent.entityItem.worldObj.isRemote && aEvent.entityItem.onGround) {
-//				if (aStack.getItem() == Items.stick) {
-//					MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
-//					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) {
-//						if (aEvent.entityItem.worldObj.canPlaceEntityOnSide(tRegistry.mBlock, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], F, SIDE_TOP, aEvent.entityItem, aStack)) {
-//							if (tRegistry.mBlock.placeBlock(aEvent.entityItem.worldObj, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], SIDE_UNKNOWN, (short)32756, null, T, F)) {
-//								aStack.stackSize--;
-//								if (aStack.stackSize <= 0) {aEvent.entityItem.setDead(); return;}
-//							}
-//						}
-//					}
-//					aEvent.entityItem.setEntityItemStack(aStack);
-//					aEvent.extraLife = 200;
-//					aEvent.setCanceled(T);
-//					return;
-//				}
-//				OreDictItemData tData = OM.data(aStack);
-//				if (tData != null && tData.mPrefix == OP.rockGt) {
-//					MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
-//					for (byte tSide : ALL_SIDES_MIDDLE_DOWN) {
-//						if (aEvent.entityItem.worldObj.canPlaceEntityOnSide(tRegistry.mBlock, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], F, SIDE_TOP, aEvent.entityItem, aStack)) {
-//							if (tRegistry.mBlock.placeBlock(aEvent.entityItem.worldObj, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], SIDE_UNKNOWN, (short)32757, ST.save(null, NBT_VALUE, aStack), T, F)) {
-//								aStack.stackSize = 0;
-//								aEvent.entityItem.setDead();
-//								return;
-//							}
-//						}
-//					}
-//					aEvent.entityItem.setEntityItemStack(aStack);
-//					aEvent.extraLife = 200;
-//					aEvent.setCanceled(T);
-//					return;
-//				}
-//			}
-//		}
-//	}
+//  @SubscribeEvent
+//  public void onItemExpireEvent(ItemExpireEvent aEvent) {
+//      ItemStack aStack = aEvent.entityItem.getEntityItem();
+//      if (aStack != null) {
+//          if (aStack.stackSize <= 0) {aEvent.entityItem.setDead(); return;}
+//          
+//          if (!aEvent.entityItem.worldObj.isRemote && aEvent.entityItem.onGround) {
+//              if (aStack.getItem() == Items.stick) {
+//                  MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
+//                  for (byte tSide : ALL_SIDES_MIDDLE_DOWN) {
+//                      if (aEvent.entityItem.worldObj.canPlaceEntityOnSide(tRegistry.mBlock, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], F, SIDE_TOP, aEvent.entityItem, aStack)) {
+//                          if (tRegistry.mBlock.placeBlock(aEvent.entityItem.worldObj, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], SIDE_UNKNOWN, (short)32756, null, T, F)) {
+//                              aStack.stackSize--;
+//                              if (aStack.stackSize <= 0) {aEvent.entityItem.setDead(); return;}
+//                          }
+//                      }
+//                  }
+//                  aEvent.entityItem.setEntityItemStack(aStack);
+//                  aEvent.extraLife = 200;
+//                  aEvent.setCanceled(T);
+//                  return;
+//              }
+//              OreDictItemData tData = OM.data(aStack);
+//              if (tData != null && tData.mPrefix == OP.rockGt) {
+//                  MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
+//                  for (byte tSide : ALL_SIDES_MIDDLE_DOWN) {
+//                      if (aEvent.entityItem.worldObj.canPlaceEntityOnSide(tRegistry.mBlock, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], F, SIDE_TOP, aEvent.entityItem, aStack)) {
+//                          if (tRegistry.mBlock.placeBlock(aEvent.entityItem.worldObj, MathHelper.floor_double(aEvent.entityItem.posX)+OFFSETS_X[tSide], MathHelper.floor_double(aEvent.entityItem.posY)+OFFSETS_Y[tSide], MathHelper.floor_double(aEvent.entityItem.posZ)+OFFSETS_Z[tSide], SIDE_UNKNOWN, (short)32757, ST.save(null, NBT_VALUE, aStack), T, F)) {
+//                              aStack.stackSize = 0;
+//                              aEvent.entityItem.setDead();
+//                              return;
+//                          }
+//                      }
+//                  }
+//                  aEvent.entityItem.setEntityItemStack(aStack);
+//                  aEvent.extraLife = 200;
+//                  aEvent.setCanceled(T);
+//                  return;
+//              }
+//          }
+//      }
+//  }
 	
 	@SubscribeEvent
 	public void onEntityLivingDropsEventEvent(LivingDropsEvent aEvent) {
@@ -491,7 +491,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	public Fluid addAutogeneratedVaporized(OreDictMaterial aMaterial, IIconContainer aTexture, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createVapour(aMaterial, aTexture, aFluidList);}
 	public Fluid addAutogeneratedPlasma(OreDictMaterial aMaterial, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createPlasma(aMaterial, aFluidList);}
 	public Fluid addAutogeneratedPlasma(OreDictMaterial aMaterial, IIconContainer aTexture, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.createPlasma(aMaterial, aTexture, aFluidList);}
-	public Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFluidList);}	
+	public Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFluidList);}    
 	public Fluid addFluid(String aName, String aLocalized, OreDictMaterial aMaterial, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.create(aName, aLocalized, aMaterial, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
 	public Fluid addFluid(String aName, IIconContainer aTexture, String aLocalized, OreDictMaterial aMaterial, short[] aRGBa, int aState, long aAmountPerUnit, long aTemperatureK, ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount, @SuppressWarnings("unchecked") Set<String>... aFluidList) {return UT.Fluids.create(aName, aTexture, aLocalized, aMaterial, aRGBa, aState, aAmountPerUnit, aTemperatureK, aFullContainer, aEmptyContainer, aFluidAmount, aFluidList);}
 	

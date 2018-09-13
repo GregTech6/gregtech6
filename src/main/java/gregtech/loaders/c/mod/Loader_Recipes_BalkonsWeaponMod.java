@@ -32,19 +32,19 @@ import gregapi.util.ST;
 public class Loader_Recipes_BalkonsWeaponMod implements Runnable {
 	@Override
 	public void run() {if (MD.BWM.mLoaded) {OUT.println("GT_Mod: Doing Balkon's Weapon Mod Recipes.");
-		CR.shaped(ST.make(MD.BWM, "crossbow"			, 1, 0), CR.DEF_REM_REV_NCC	, "OSP", "SWI", "PIW", 'P', OP.plate.dat(ANY.Steel), 'O', OP.ring.dat(ANY.Steel), 'I', "itemString", 'S', OP.stick.dat(ANY.Wood), 'W', OD.plankAnyWood);
-		CR.shaped(ST.make(MD.BWM, "gun-stock"			, 1, 0), CR.DEF_REM_REV_NCC	, "SSW", " rf", 'S', OP.stick.dat(ANY.Wood), 'W', OD.plankAnyWood);
-		CR.shaped(ST.make(MD.BWM, "musket-ironpart"		, 1, 0), CR.DEF_REM_REV_NCC	, "PPF", " hG", 'G', OP.gearGtSmall	.dat(ANY.Steel), 'F', "itemFlint", 'P', OP.pipeSmall.dat(ANY.Steel));
-		CR.shaped(ST.make(MD.BWM, "blunder-ironpart"	, 1, 0), CR.DEF_REM_REV_NCC	,  "PF",  "hG", 'G', OP.gearGtSmall	.dat(ANY.Steel), 'F', "itemFlint", 'P', OP.pipeSmall.dat(ANY.Steel));
-		CR.shaped(ST.make(MD.BWM, "flintlock"			, 1, 0), CR.DEF_REM_REV_NCC	, "PGF", "hSW", 'G', OP.gearGtSmall	.dat(ANY.Steel), 'F', "itemFlint", 'P', OP.pipeSmall.dat(ANY.Steel), 'S', OP.stick.dat(ANY.Wood), 'W', OD.plankAnyWood);
-		CR.shaped(ST.make(MD.BWM, "bolt"				, 4, 0), CR.DEF_REM_REV_NCC	,  "Ss",  "F ", 'S', OP.stickLong	.dat(ANY.Steel), 'F', OD.craftingFeather);
-		CR.shaped(ST.make(MD.BWM, "bolt"				, 4, 0), CR.DEF_NCC			, "SsS", " F ", 'S', OP.stick		.dat(ANY.Steel), 'F', OD.craftingFeather);
-		CR.shaped(ST.make(MD.BWM, "bolt"				, 4, 0), CR.DEF_NCC			, " Ss", "F F", 'S', OP.stickLong	.dat(ANY.Steel), 'F', OP.plateTiny.dat(MT.Plastic));
-		CR.shaped(ST.make(MD.BWM, "bolt"				, 4, 0), CR.DEF_NCC			, "SsS", "F F", 'S', OP.stick		.dat(ANY.Steel), 'F', OP.plateTiny.dat(MT.Plastic));
-		CR.shaped(ST.make(MD.BWM, "bullet"				, 1, 0), CR.DEF_REM_REV_NCC	,  "R","G","P", 'R', OP.round.dat(MT.Pb), 'G', OP.dustTiny.dat(MT.Gunpowder), 'P', OP.plateTiny.dat(MT.Paper));
-		CR.shaped(ST.make(MD.BWM, "shot"				, 1, 0), CR.DEF_REM_REV_NCC	,  "R","G","P", 'R', OP.dustSmall.dat(ANY.Stone), 'G', OP.dustTiny.dat(MT.Gunpowder), 'P', OP.plateTiny.dat(MT.Paper));
+		CR.shaped(ST.make(MD.BWM, "crossbow"            , 1, 0), CR.DEF_REM_REV_NCC , "OSP", "SWI", "PIW", 'P', OP.plate.dat(ANY.Steel), 'O', OP.ring.dat(ANY.Steel), 'I', "itemString", 'S', OP.stick.dat(ANY.Wood), 'W', OD.plankAnyWood);
+		CR.shaped(ST.make(MD.BWM, "gun-stock"           , 1, 0), CR.DEF_REM_REV_NCC , "SSW", " rf", 'S', OP.stick.dat(ANY.Wood), 'W', OD.plankAnyWood);
+		CR.shaped(ST.make(MD.BWM, "musket-ironpart"     , 1, 0), CR.DEF_REM_REV_NCC , "PPF", " hG", 'G', OP.gearGtSmall .dat(ANY.Steel), 'F', "itemFlint", 'P', OP.pipeSmall.dat(ANY.Steel));
+		CR.shaped(ST.make(MD.BWM, "blunder-ironpart"    , 1, 0), CR.DEF_REM_REV_NCC ,  "PF",  "hG", 'G', OP.gearGtSmall .dat(ANY.Steel), 'F', "itemFlint", 'P', OP.pipeSmall.dat(ANY.Steel));
+		CR.shaped(ST.make(MD.BWM, "flintlock"           , 1, 0), CR.DEF_REM_REV_NCC , "PGF", "hSW", 'G', OP.gearGtSmall .dat(ANY.Steel), 'F', "itemFlint", 'P', OP.pipeSmall.dat(ANY.Steel), 'S', OP.stick.dat(ANY.Wood), 'W', OD.plankAnyWood);
+		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_REM_REV_NCC ,  "Ss",  "F ", 'S', OP.stickLong   .dat(ANY.Steel), 'F', OD.craftingFeather);
+		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_NCC         , "SsS", " F ", 'S', OP.stick       .dat(ANY.Steel), 'F', OD.craftingFeather);
+		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_NCC         , " Ss", "F F", 'S', OP.stickLong   .dat(ANY.Steel), 'F', OP.plateTiny.dat(MT.Plastic));
+		CR.shaped(ST.make(MD.BWM, "bolt"                , 4, 0), CR.DEF_NCC         , "SsS", "F F", 'S', OP.stick       .dat(ANY.Steel), 'F', OP.plateTiny.dat(MT.Plastic));
+		CR.shaped(ST.make(MD.BWM, "bullet"              , 1, 0), CR.DEF_REM_REV_NCC ,  "R","G","P", 'R', OP.round.dat(MT.Pb), 'G', OP.dustTiny.dat(MT.Gunpowder), 'P', OP.plateTiny.dat(MT.Paper));
+		CR.shaped(ST.make(MD.BWM, "shot"                , 1, 0), CR.DEF_REM_REV_NCC ,  "R","G","P", 'R', OP.dustSmall.dat(ANY.Stone), 'G', OP.dustTiny.dat(MT.Gunpowder), 'P', OP.plateTiny.dat(MT.Paper));
 		
-		CR.shapeless(ST.make(MD.BWM, "musket"			, 1, 0), CR.DEF_REM_REV_NCC	, new Object[] {ST.make(MD.BWM, "musket-ironpart", 1, 0), ST.make(MD.BWM, "gun-stock", 1, 0)});
-		CR.shapeless(ST.make(MD.BWM, "blunderbuss"		, 1, 0), CR.DEF_REM_REV_NCC	, new Object[] {ST.make(MD.BWM, "blunder-ironpart", 1, 0), ST.make(MD.BWM, "gun-stock", 1, 0)});
+		CR.shapeless(ST.make(MD.BWM, "musket"           , 1, 0), CR.DEF_REM_REV_NCC , new Object[] {ST.make(MD.BWM, "musket-ironpart", 1, 0), ST.make(MD.BWM, "gun-stock", 1, 0)});
+		CR.shapeless(ST.make(MD.BWM, "blunderbuss"      , 1, 0), CR.DEF_REM_REV_NCC , new Object[] {ST.make(MD.BWM, "blunder-ironpart", 1, 0), ST.make(MD.BWM, "gun-stock", 1, 0)});
 	}}
 }

@@ -37,7 +37,7 @@ public class GT_Tool_PickaxeConstruction extends GT_Tool_Pickaxe {
 		return super.getSpeedMultiplier() * 2;
 	}
 	
-	@Override public boolean canCollect()													{return T;}
+	@Override public boolean canCollect()                                                   {return T;}
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {

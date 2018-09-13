@@ -217,14 +217,14 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	}
 	
 	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock,mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ); return T;}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,											mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(										mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,                                         mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(                                        mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return null;}
 	
-	@Override public boolean isSurfaceSolid			(byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque		(byte aSide) {return F;}
-	@Override public boolean isSideSolid			(byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt	(byte aSide) {return F;}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque        (byte aSide) {return F;}
+	@Override public boolean isSideSolid            (byte aSide) {return F;}
+	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public boolean canEntityDestroy(Entity aEntity) {return !(aEntity instanceof EntityDragon);}
 	

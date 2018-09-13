@@ -59,33 +59,33 @@ public class WorldgenLogMossy extends WorldgenObject {
 			if (!aChunk.getBlock(tX&15, tY+1, tZ&15).isAir(aWorld, tX, tY+1, tZ)) return F;
 			switch(aRandom.nextInt(3)) {
 			case 0:
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY-1, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
-											WD.set(aWorld, tX  , tY	 , tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY-1, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
+											WD.set(aWorld, tX  , tY  , tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
 											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
 											WD.set(aWorld, tX  , tY+2, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
 				return T;
 			case 1:
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX-2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX-2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
 											WD.set(aWorld, tX-1, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
 											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
 											WD.set(aWorld, tX+1, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX+2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX+2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
 				
-				if (aRandom.nextBoolean())	setMushroom(aWorld, tX-1, tY+2, tZ	, aRandom);
-				if (aRandom.nextBoolean())	setMushroom(aWorld, tX	, tY+2, tZ	, aRandom);
-				if (aRandom.nextBoolean())	setMushroom(aWorld, tX+1, tY+2, tZ	, aRandom);
+				if (aRandom.nextBoolean())  setMushroom(aWorld, tX-1, tY+2, tZ  , aRandom);
+				if (aRandom.nextBoolean())  setMushroom(aWorld, tX  , tY+2, tZ  , aRandom);
+				if (aRandom.nextBoolean())  setMushroom(aWorld, tX+1, tY+2, tZ  , aRandom);
 				return T;
 			case 2:
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+1, tZ-2, BlocksGT.Log1, PILLARS_Z[2], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+1, tZ-2, BlocksGT.Log1, PILLARS_Z[2], 2);
 											WD.set(aWorld, tX  , tY+1, tZ-1, BlocksGT.Log1, PILLARS_Z[2], 2);
 											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Z[2], 2);
 											WD.set(aWorld, tX  , tY+1, tZ+1, BlocksGT.Log1, PILLARS_Z[2], 2);
-				if (aRandom.nextBoolean())	WD.set(aWorld, tX  , tY+1, tZ+2, BlocksGT.Log1, PILLARS_Z[2], 2);
+				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+1, tZ+2, BlocksGT.Log1, PILLARS_Z[2], 2);
 				
-				if (aRandom.nextBoolean())	setMushroom(aWorld, tX	, tY+2, tZ-1, aRandom);
-				if (aRandom.nextBoolean())	setMushroom(aWorld, tX	, tY+2, tZ	, aRandom);
-				if (aRandom.nextBoolean())	setMushroom(aWorld, tX	, tY+2, tZ+1, aRandom);
+				if (aRandom.nextBoolean())  setMushroom(aWorld, tX  , tY+2, tZ-1, aRandom);
+				if (aRandom.nextBoolean())  setMushroom(aWorld, tX  , tY+2, tZ  , aRandom);
+				if (aRandom.nextBoolean())  setMushroom(aWorld, tX  , tY+2, tZ+1, aRandom);
 				return T;
 			}
 		}

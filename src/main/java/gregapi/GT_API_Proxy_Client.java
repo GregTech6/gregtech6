@@ -365,12 +365,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					aEvent.toolTip.add(LH.Chat.YELLOW + tData.mMaterial.mMaterial.mTooltipChemical);
 				}
 				if (tData.hasValidPrefixData()) {
-					if (tData.mPrefix.contains(TD.Prefix.NEEDS_SHARPENING	)) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_SHARPENING));
-					if (tData.mPrefix.contains(TD.Prefix.NEEDS_HANDLE		)) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_HANDLE) + LH.Chat.WHITE + tData.mMaterial.mMaterial.mHandleMaterial.getLocal());
+					if (tData.mPrefix.contains(TD.Prefix.NEEDS_SHARPENING   )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_SHARPENING));
+					if (tData.mPrefix.contains(TD.Prefix.NEEDS_HANDLE       )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_HANDLE) + LH.Chat.WHITE + tData.mMaterial.mMaterial.mHandleMaterial.getLocal());
 					
 					ArrayListNoNulls<Integer> tShapelessAmounts = new ArrayListNoNulls<>();
-					for (AdvancedCrafting1ToY tHandler : tData.mPrefix.mShapelessManagersSingle	) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(1);
-					for (AdvancedCraftingXToY tHandler : tData.mPrefix.mShapelessManagers		) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(tHandler.mInputCount);
+					for (AdvancedCrafting1ToY tHandler : tData.mPrefix.mShapelessManagersSingle ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(1);
+					for (AdvancedCraftingXToY tHandler : tData.mPrefix.mShapelessManagers       ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(tHandler.mInputCount);
 					if (!tShapelessAmounts.isEmpty()) {
 						Collections.sort(tShapelessAmounts);
 						aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_SHAPELESS_CRAFT) + LH.Chat.WHITE + tShapelessAmounts);
@@ -381,11 +381,11 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
 						for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools ) {
 							if (tEnchantment.mObject == Enchantment.fortune) {
-								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fortune	.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.looting	.getTranslatedName((int)tEnchantment.mAmount));
+								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fortune   .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.looting .getTranslatedName((int)tEnchantment.mAmount));
 							} else if (tEnchantment.mObject == Enchantment.knockback) {
-								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.knockback	.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.punch	.getTranslatedName((int)tEnchantment.mAmount));
+								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.knockback .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.punch   .getTranslatedName((int)tEnchantment.mAmount));
 							} else if (tEnchantment.mObject == Enchantment.fireAspect) {
-								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame	.getTranslatedName((int)tEnchantment.mAmount));
+								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame   .getTranslatedName((int)tEnchantment.mAmount));
 							} else {
 								aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
 							}
@@ -426,18 +426,18 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					} else {
 						tString.append(LH.Chat.WHITE).append("?.??? ");
 					}
-					tString.append(LH.Chat.YELLOW	).append(tMaterial.mMaterial.getLocal());
-					tString.append(LH.Chat.WHITE	).append(" (");
-					tString.append(LH.Chat.CYAN		).append("M: ");
-					tString.append(LH.Chat.WHITE	).append(tMaterial.mMaterial.mMeltingPoint);
-					tString.append(LH.Chat.RED		).append("K ");
-					tString.append(LH.Chat.CYAN		).append(" B: ");
-					tString.append(LH.Chat.WHITE	).append(tMaterial.mMaterial.mBoilingPoint);
-					tString.append(LH.Chat.RED		).append("K ");
-					tString.append(LH.Chat.CYAN		).append(" W: ");
-					tString.append(LH.Chat.WHITE	).append((long)aWeight).append(".").append(tWeight<1?"000":tWeight<10?"00"+tWeight:tWeight<100?"0"+tWeight:tWeight);
-					tString.append(LH.Chat.YELLOW	).append("kg");
-					tString.append(LH.Chat.WHITE	).append(")");
+					tString.append(LH.Chat.YELLOW   ).append(tMaterial.mMaterial.getLocal());
+					tString.append(LH.Chat.WHITE    ).append(" (");
+					tString.append(LH.Chat.CYAN     ).append("M: ");
+					tString.append(LH.Chat.WHITE    ).append(tMaterial.mMaterial.mMeltingPoint);
+					tString.append(LH.Chat.RED      ).append("K ");
+					tString.append(LH.Chat.CYAN     ).append(" B: ");
+					tString.append(LH.Chat.WHITE    ).append(tMaterial.mMaterial.mBoilingPoint);
+					tString.append(LH.Chat.RED      ).append("K ");
+					tString.append(LH.Chat.CYAN     ).append(" W: ");
+					tString.append(LH.Chat.WHITE    ).append((long)aWeight).append(".").append(tWeight<1?"000":tWeight<10?"00"+tWeight:tWeight<100?"0"+tWeight:tWeight);
+					tString.append(LH.Chat.YELLOW   ).append("kg");
+					tString.append(LH.Chat.WHITE    ).append(")");
 					aEvent.toolTip.add(tString.toString());
 				}
 			} else {

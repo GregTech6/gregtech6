@@ -101,10 +101,10 @@ public class MultiTileEntityMassStorageBarrel extends MultiTileEntityMassStorage
 		}
 		if (aSide == mFacing) {
 			if (slot(1).stackSize >= mMaxStorage) switch(aRenderPass) {
-			case 1: return BlockTextureDefault.get(BI.CHAR_1		, CA_RED_255, F, T, T, T);
-			case 2: return BlockTextureDefault.get(BI.CHAR_0		, CA_RED_255, F, T, T, T);
-			case 3: return BlockTextureDefault.get(BI.CHAR_0		, CA_RED_255, F, T, T, T);
-			case 4: return BlockTextureDefault.get(BI.CHAR_PERCENT	, CA_RED_255, F, T, T, T);
+			case 1: return BlockTextureDefault.get(BI.CHAR_1        , CA_RED_255, F, T, T, T);
+			case 2: return BlockTextureDefault.get(BI.CHAR_0        , CA_RED_255, F, T, T, T);
+			case 3: return BlockTextureDefault.get(BI.CHAR_0        , CA_RED_255, F, T, T, T);
+			case 4: return BlockTextureDefault.get(BI.CHAR_PERCENT  , CA_RED_255, F, T, T, T);
 			}
 			return BlockTextureDefault.get(BI.decimalDigit(slot(1).stackSize, 4-aRenderPass), CA_GRAY_32, F, T, T, T);
 		}

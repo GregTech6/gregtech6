@@ -164,7 +164,7 @@ public class RecipeMapPrinter extends RecipeMap {
 			if (tOutput != null) return addRecipe(new Recipe(T, new ItemStack[] {ST.amount_(8, aInputs[0])}, new ItemStack[] {tOutput}, null, null, new FluidStack[] {new FluidStack(aFluids[0].getFluid(), (int)L)}, null, 256, 2, 0), F, F, T);
 			
 			tOutput = GT_ModHandler.getAllRecipeOutput(aTileEntity==null?null:aTileEntity.getWorld(), aInputs[0], IL.DYE_ONLY_ITEMS[aDye.mIndex].get(1));
-			if (tOutput != null) return addRecipe(new Recipe(T, new ItemStack[] {ST.amount_(1, aInputs[0])}, new ItemStack[] {tOutput}, null, null, new FluidStack[] {new FluidStack(aFluids[0].getFluid(), (int)L)}, null,	 32, 2, 0), F, F, T);
+			if (tOutput != null) return addRecipe(new Recipe(T, new ItemStack[] {ST.amount_(1, aInputs[0])}, new ItemStack[] {tOutput}, null, null, new FluidStack[] {new FluidStack(aFluids[0].getFluid(), (int)L)}, null,  32, 2, 0), F, F, T);
 		}*/
 		return rRecipe;
 	}

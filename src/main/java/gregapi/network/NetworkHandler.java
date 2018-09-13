@@ -180,8 +180,8 @@ public final class NetworkHandler extends MessageToMessageCodec<FMLProxyPacket, 
 		@Override
 		protected void channelRead0(ChannelHandlerContext ctx, IPacket aPacket) throws Exception {
 			aPacket.process(Minecraft.getMinecraft().thePlayer == null ? null : Minecraft.getMinecraft().thePlayer.worldObj, mNetworkHandler);
-//			DEB.println(aPacket.getClass().getName());
-//			if (aPacket instanceof PacketCoordinates) DEB.println(" X: " + ((PacketCoordinates)aPacket).mX + " - Y: " + ((PacketCoordinates)aPacket).mY + " - Z: " + ((PacketCoordinates)aPacket).mZ);
+//          DEB.println(aPacket.getClass().getName());
+//          if (aPacket instanceof PacketCoordinates) DEB.println(" X: " + ((PacketCoordinates)aPacket).mX + " - Y: " + ((PacketCoordinates)aPacket).mY + " - Z: " + ((PacketCoordinates)aPacket).mZ);
 		}
 	}
 	

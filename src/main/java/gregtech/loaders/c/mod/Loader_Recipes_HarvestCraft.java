@@ -84,247 +84,247 @@ public class Loader_Recipes_HarvestCraft implements Runnable {
 			}
 		}
 		
-		FoodsGT.put(ST.make(MD.HaC, "fruitsaladItem"	, 1), 0, 0, 0, 20, 0);
-		FoodsGT.put(ST.make(MD.HaC, "citrussaladItem"	, 1), 0, 0, 0, 10, 0);
-		FoodsGT.put(ST.make(MD.HaC, "springsaladItem"	, 1), 0, 0, 0, 10, 0);
+		FoodsGT.put(ST.make(MD.HaC, "fruitsaladItem"    , 1), 0, 0, 0, 20, 0);
+		FoodsGT.put(ST.make(MD.HaC, "citrussaladItem"   , 1), 0, 0, 0, 10, 0);
+		FoodsGT.put(ST.make(MD.HaC, "springsaladItem"   , 1), 0, 0, 0, 10, 0);
 		
-		RM.add_smelting(ST.make(MD.HaC, "turkeyrawItem"		, 1), ST.make(MD.HaC, "turkeycookedItem"	, 1));
-		RM.add_smelting(ST.make(MD.HaC, "rabbitrawItem"		, 1), ST.make(MD.HaC, "rabbitcookedItem"	, 1));
-		RM.add_smelting(ST.make(MD.HaC, "venisonrawItem"	, 1), ST.make(MD.HaC, "venisoncookedItem"	, 1));
+		RM.add_smelting(ST.make(MD.HaC, "turkeyrawItem"     , 1), ST.make(MD.HaC, "turkeycookedItem"    , 1));
+		RM.add_smelting(ST.make(MD.HaC, "rabbitrawItem"     , 1), ST.make(MD.HaC, "rabbitcookedItem"    , 1));
+		RM.add_smelting(ST.make(MD.HaC, "venisonrawItem"    , 1), ST.make(MD.HaC, "venisoncookedItem"   , 1));
 		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis)
-		RM.Loom		.addRecipe2(T, 64,	128, ST.make(MD.HaC, "hardenedleatherItem", 6), (tMat==MT.Enori?OP.plateGem:OP.plate)	.mat(tMat			, 8), ST.make(Items.iron_horse_armor, 1, 0));
-		RM.Loom		.addRecipe2(T, 64,	128, ST.make(MD.HaC, "hardenedleatherItem", 6), OP.plate								.mat(MT.Au			, 8), ST.make(Items.golden_horse_armor, 1, 0));
-		RM.Loom		.addRecipe2(T, 64,	128, ST.make(MD.HaC, "hardenedleatherItem", 6), OP.plateGem								.mat(MT.Diamond		, 8), ST.make(Items.diamond_horse_armor, 1, 0));
+		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), (tMat==MT.Enori?OP.plateGem:OP.plate)   .mat(tMat           , 8), ST.make(Items.iron_horse_armor, 1, 0));
+		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), OP.plate                                .mat(MT.Au          , 8), ST.make(Items.golden_horse_armor, 1, 0));
+		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), OP.plateGem                             .mat(MT.Diamond     , 8), ST.make(Items.diamond_horse_armor, 1, 0));
 		for (OreDictMaterial tMat : ANY.Steel.mToThis)
-		RM.Loom		.addRecipeX(T, 64,	128, new ItemStack[] {ST.make(MD.HaC, "hardenedleatherItem", 6), OP.ring.mat(tMat, 2), OP.stick.mat(tMat, 3)}, ST.make(Items.saddle, 1, 0));
-		RM.Loom		.addRecipe2(T, 16,	128, ST.tag(4), ST.make(MD.HaC, "hardenedleatherItem", 5), ST.make(MD.HaC, "hardenedleatherhelmItem", 1));
-		RM.Loom		.addRecipe2(T, 16,	128, ST.tag(5), ST.make(MD.HaC, "hardenedleatherItem", 8), ST.make(MD.HaC, "hardenedleatherchestItem", 1));
-		RM.Loom		.addRecipe2(T, 16,	128, ST.tag(6), ST.make(MD.HaC, "hardenedleatherItem", 7), ST.make(MD.HaC, "hardenedleatherleggingsItem", 1));
-		RM.Loom		.addRecipe2(T, 16,	128, ST.tag(7), ST.make(MD.HaC, "hardenedleatherItem", 4), ST.make(MD.HaC, "hardenedleatherbootsItem", 1));
+		RM.Loom     .addRecipeX(T, 64,  128, new ItemStack[] {ST.make(MD.HaC, "hardenedleatherItem", 6), OP.ring.mat(tMat, 2), OP.stick.mat(tMat, 3)}, ST.make(Items.saddle, 1, 0));
+		RM.Loom     .addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.HaC, "hardenedleatherItem", 5), ST.make(MD.HaC, "hardenedleatherhelmItem", 1));
+		RM.Loom     .addRecipe2(T, 16,  128, ST.tag(5), ST.make(MD.HaC, "hardenedleatherItem", 8), ST.make(MD.HaC, "hardenedleatherchestItem", 1));
+		RM.Loom     .addRecipe2(T, 16,  128, ST.tag(6), ST.make(MD.HaC, "hardenedleatherItem", 7), ST.make(MD.HaC, "hardenedleatherleggingsItem", 1));
+		RM.Loom     .addRecipe2(T, 16,  128, ST.tag(7), ST.make(MD.HaC, "hardenedleatherItem", 4), ST.make(MD.HaC, "hardenedleatherbootsItem", 1));
 		
-		RM.Shredder	.addRecipe1(T, 16,	 16, ST.make(Blocks.double_plant	, 1, 0), ST.make(MD.HaC, "sunflowerseedsItem", 1));
+		RM.Shredder .addRecipe1(T, 16,   16, ST.make(Blocks.double_plant    , 1, 0), ST.make(MD.HaC, "sunflowerseedsItem", 1));
 		
-		RM.Press	.addRecipe2(T, 16,	 32, OM.dust(MT.Chili, U4), OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "chilichocolateItem", 1));
-		RM.Press	.addRecipe2(T, 16,	 32, OM.dust(MT.Chili, U3), OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "chilichocolateItem", 1));
-		RM.Press	.addRecipe2(T, 16,	128, OM.dust(MT.Chili, U ), OP.ingot.mat(MT.Chocolate, 4), ST.make(MD.HaC, "chilichocolateItem", 4));
+		RM.Press    .addRecipe2(T, 16,   32, OM.dust(MT.Chili, U4), OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "chilichocolateItem", 1));
+		RM.Press    .addRecipe2(T, 16,   32, OM.dust(MT.Chili, U3), OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "chilichocolateItem", 1));
+		RM.Press    .addRecipe2(T, 16,  128, OM.dust(MT.Chili, U ), OP.ingot.mat(MT.Chocolate, 4), ST.make(MD.HaC, "chilichocolateItem", 4));
 		
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.string, 1, W), IL.Remains_Fruit		.get(3), ST.make(MD.HaC, "fruitbaitItem", 4));
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.string, 1, W), IL.Remains_Veggie		.get(3), ST.make(MD.HaC, "veggiebaitItem", 4));
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.string, 1, W), IL.Remains_Nut		.get(3), ST.make(MD.HaC, "grainbaitItem", 4));
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.string, 1, W), OM.dust(MT.FishRaw	,  U*3), ST.make(MD.HaC, "fishtrapbaitItem", 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Fruit      .get(3), ST.make(MD.HaC, "fruitbaitItem", 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Veggie     .get(3), ST.make(MD.HaC, "veggiebaitItem", 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Nut        .get(3), ST.make(MD.HaC, "grainbaitItem", 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), OM.dust(MT.FishRaw    ,  U*3), ST.make(MD.HaC, "fishtrapbaitItem", 4));
 		
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.beef			, 1, W), OM.dust(MT.NaCl, U4), ST.make(MD.HaC, "beefjerkyItem"		, 1));
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.rotten_flesh	, 1, W), OM.dust(MT.NaCl, U4), ST.make(MD.HaC, "zombiejerkyItem"	, 1));
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.beef			, 1, W), OM.dust(MT.NaCl, U3), ST.make(MD.HaC, "beefjerkyItem"		, 1));
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.rotten_flesh	, 1, W), OM.dust(MT.NaCl, U3), ST.make(MD.HaC, "zombiejerkyItem"	, 1));
-		RM.Mixer	.addRecipe2(T, 16,	 64, ST.make(Items.beef			, 4, W), OM.dust(MT.NaCl, U ), ST.make(MD.HaC, "beefjerkyItem"		, 4));
-		RM.Mixer	.addRecipe2(T, 16,	 64, ST.make(Items.rotten_flesh	, 4, W), OM.dust(MT.NaCl, U ), ST.make(MD.HaC, "zombiejerkyItem"	, 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.beef         , 1, W), OM.dust(MT.NaCl, U4), ST.make(MD.HaC, "beefjerkyItem"      , 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.rotten_flesh , 1, W), OM.dust(MT.NaCl, U4), ST.make(MD.HaC, "zombiejerkyItem"    , 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.beef         , 1, W), OM.dust(MT.NaCl, U3), ST.make(MD.HaC, "beefjerkyItem"      , 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.rotten_flesh , 1, W), OM.dust(MT.NaCl, U3), ST.make(MD.HaC, "zombiejerkyItem"    , 1));
+		RM.Mixer    .addRecipe2(T, 16,   64, ST.make(Items.beef         , 4, W), OM.dust(MT.NaCl, U ), ST.make(MD.HaC, "beefjerkyItem"      , 4));
+		RM.Mixer    .addRecipe2(T, 16,   64, ST.make(Items.rotten_flesh , 4, W), OM.dust(MT.NaCl, U ), ST.make(MD.HaC, "zombiejerkyItem"    , 4));
 		
-		RM.Mixer	.addRecipe1(T,	0,	 16, OM.dust(MT.Mint, U9), MT.Sugar.liquid(	 U4, T), NF, ST.make(MD.HaC, "peppermintItem", 1));
-		RM.Mixer	.addRecipe1(T,	0,	 32, OM.dust(MT.Mint, U4), MT.Sugar.liquid(	 U2, T), NF, ST.make(MD.HaC, "peppermintItem", 2));
-		RM.Mixer	.addRecipe1(T,	0,	128, OM.dust(MT.Mint, U ), MT.Sugar.liquid(9*U4, T), NF, ST.make(MD.HaC, "peppermintItem", 9));
+		RM.Mixer    .addRecipe1(T,  0,   16, OM.dust(MT.Mint, U9), MT.Sugar.liquid(  U4, T), NF, ST.make(MD.HaC, "peppermintItem", 1));
+		RM.Mixer    .addRecipe1(T,  0,   32, OM.dust(MT.Mint, U4), MT.Sugar.liquid(  U2, T), NF, ST.make(MD.HaC, "peppermintItem", 2));
+		RM.Mixer    .addRecipe1(T,  0,  128, OM.dust(MT.Mint, U ), MT.Sugar.liquid(9*U4, T), NF, ST.make(MD.HaC, "peppermintItem", 9));
 		
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(MD.HaC, "flourItem", 1), FL.Water.make(1000), NF, IL.Food_Dough.get(1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(MD.HaC, "flourItem", 1), FL.DistW.make(1000), NF, IL.Food_Dough.get(1));
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.Water.make(1000), NF, IL.Food_Dough.get(1));
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.DistW.make(1000), NF, IL.Food_Dough.get(1));
 		
-		RM.Mixer	.addRecipe1(T, 16,	 16, OM.dust(MT.Almond, U4)	, FL.Honey	 .make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, OM.dust(MT.Almond)		, FL.Honey	 .make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
-		RM.Mixer	.addRecipe1(T, 16,	 16, OM.dust(MT.Almond, U4)	, FL.HoneyGrC.make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, OM.dust(MT.Almond)		, FL.HoneyGrC.make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
-		RM.Mixer	.addRecipe1(T, 16,	 16, OM.dust(MT.Almond, U4)	, FL.HoneyBoP.make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, OM.dust(MT.Almond)		, FL.HoneyBoP.make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4) , FL.Honey   .make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond)     , FL.Honey   .make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4) , FL.HoneyGrC.make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond)     , FL.HoneyGrC.make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4) , FL.HoneyBoP.make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond)     , FL.HoneyBoP.make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
 		
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(MD.HaC, "chiliItem", 1), FL.Sauce_Chili.make(100), NF, ST.make(MD.HaC, "extremechiliItem", 1));
-		RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(MD.HaC, "chiliItem", 1), OM.dust(MT.Chili), ST.make(MD.HaC, "extremechiliItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "chiliItem", 1), FL.Sauce_Chili.make(100), NF, ST.make(MD.HaC, "extremechiliItem", 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(MD.HaC, "chiliItem", 1), OM.dust(MT.Chili), ST.make(MD.HaC, "extremechiliItem", 1));
 		
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(MD.HaC, "royaljellyItem", 1), FL.Honeydew.make(40), UT.Fluids.make("potion.ambrosia", 80), ZL_IS);
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "royaljellyItem", 1), FL.Honeydew.make(40), UT.Fluids.make("potion.ambrosia", 80), ZL_IS);
 		
 		if (IL.GrC_Starter_Culture.exists()) {
-		RM.Mixer	.addRecipe1(T, 16,	 16, IL.GrC_Starter_Culture.get(1), FL.Milk	  .make( 250), NF, tYogurt);
-		RM.Mixer	.addRecipe1(T, 16,	 16, IL.GrC_Starter_Culture.get(1), FL.MilkGrC.make( 250), NF, tYogurt);
-		RM.Mixer	.addRecipe1(T, 16,	 16, IL.GrC_Starter_Culture.get(1), FL.MilkSoy.make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(T, 16,   16, IL.GrC_Starter_Culture.get(1), FL.Milk   .make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(T, 16,   16, IL.GrC_Starter_Culture.get(1), FL.MilkGrC.make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(T, 16,   16, IL.GrC_Starter_Culture.get(1), FL.MilkSoy.make( 250), NF, tYogurt);
 		} else {
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(Items.leather, 1, W), FL.Milk	 .make( 250), NF, tYogurt);
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(Items.leather, 1, W), FL.MilkGrC.make( 250), NF, tYogurt);
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(Items.leather, 1, W), FL.MilkSoy.make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.leather, 1, W), FL.Milk   .make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.leather, 1, W), FL.MilkGrC.make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.leather, 1, W), FL.MilkSoy.make( 250), NF, tYogurt);
 		}
-		RM.Mixer	.addRecipe1(F, 16,	 16, ST.amount(0, tYogurt), FL.Milk	  .make( 250), NF, tYogurt);
-		RM.Mixer	.addRecipe1(F, 16,	 16, ST.amount(0, tYogurt), FL.MilkGrC.make( 250), NF, tYogurt);
-		RM.Mixer	.addRecipe1(F, 16,	 16, ST.amount(0, tYogurt), FL.MilkSoy.make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(F, 16,   16, ST.amount(0, tYogurt), FL.Milk   .make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(F, 16,   16, ST.amount(0, tYogurt), FL.MilkGrC.make( 250), NF, tYogurt);
+		RM.Mixer    .addRecipe1(F, 16,   16, ST.amount(0, tYogurt), FL.MilkSoy.make( 250), NF, tYogurt);
 		
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(Items.snowball, 1, W)	, UT.Fluids.make("chocolatemilk"			,  250)	, NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, OM.dust(MT.Snow, U4)			, UT.Fluids.make("chocolatemilk"			,  250)	, NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
-		RM.Mixer	.addRecipe1(T, 16,	 64, ST.make(Blocks.snow, 1, W)		, UT.Fluids.make("chocolatemilk"			, 1000)	, NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
-		RM.Mixer	.addRecipe1(T, 16,	 64, OM.dust(MT.Snow)				, UT.Fluids.make("chocolatemilk"			, 1000)	, NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
-		RM.Mixer	.addRecipe1(T, 16,	 16, ST.make(Items.snowball, 1, W)	, UT.Fluids.make("potion.darkchocolatemilk"	,  250)	, NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, OM.dust(MT.Snow, U4)			, UT.Fluids.make("potion.darkchocolatemilk"	,  250)	, NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
-		RM.Mixer	.addRecipe1(T, 16,	 64, ST.make(Blocks.snow, 1, W)		, UT.Fluids.make("potion.darkchocolatemilk"	, 1000)	, NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
-		RM.Mixer	.addRecipe1(T, 16,	 64, OM.dust(MT.Snow)				, UT.Fluids.make("potion.darkchocolatemilk"	, 1000)	, NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.Milk	 .make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.MilkGrC.make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.MilkSoy.make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.Milk	 .make( 250), FL.Smoothie_Banana.make(200)}, ZL_FS, ST.make(MD.HaC, "bananamilkshakeItem", 1));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.MilkGrC.make( 250), FL.Smoothie_Banana.make(200)}, ZL_FS, ST.make(MD.HaC, "bananamilkshakeItem", 1));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.MilkSoy.make( 250), FL.Smoothie_Banana.make(200)}, ZL_FS, ST.make(MD.HaC, "bananamilkshakeItem", 1));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.Milk	 .make( 250), FL.Smoothie_Gooseberry.make(200)}, ZL_FS, ST.make(MD.HaC, "gooseberrymilkshakeItem", 1));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.MilkGrC.make( 250), FL.Smoothie_Gooseberry.make(200)}, ZL_FS, ST.make(MD.HaC, "gooseberrymilkshakeItem", 1));
-		RM.Mixer	.addRecipe0(T, 16,	 16, new FluidStack[] {FL.MilkSoy.make( 250), FL.Smoothie_Gooseberry.make(200)}, ZL_FS, ST.make(MD.HaC, "gooseberrymilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.snowball, 1, W)  , UT.Fluids.make("chocolatemilk"            ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Snow, U4)           , UT.Fluids.make("chocolatemilk"            ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   64, ST.make(Blocks.snow, 1, W)     , UT.Fluids.make("chocolatemilk"            , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   64, OM.dust(MT.Snow)               , UT.Fluids.make("chocolatemilk"            , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.snowball, 1, W)  , UT.Fluids.make("potion.darkchocolatemilk" ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Snow, U4)           , UT.Fluids.make("potion.darkchocolatemilk" ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   64, ST.make(Blocks.snow, 1, W)     , UT.Fluids.make("potion.darkchocolatemilk" , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   64, OM.dust(MT.Snow)               , UT.Fluids.make("potion.darkchocolatemilk" , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.Milk   .make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.MilkGrC.make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.MilkSoy.make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.Milk   .make( 250), FL.Smoothie_Banana.make(200)}, ZL_FS, ST.make(MD.HaC, "bananamilkshakeItem", 1));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.MilkGrC.make( 250), FL.Smoothie_Banana.make(200)}, ZL_FS, ST.make(MD.HaC, "bananamilkshakeItem", 1));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.MilkSoy.make( 250), FL.Smoothie_Banana.make(200)}, ZL_FS, ST.make(MD.HaC, "bananamilkshakeItem", 1));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.Milk   .make( 250), FL.Smoothie_Gooseberry.make(200)}, ZL_FS, ST.make(MD.HaC, "gooseberrymilkshakeItem", 1));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.MilkGrC.make( 250), FL.Smoothie_Gooseberry.make(200)}, ZL_FS, ST.make(MD.HaC, "gooseberrymilkshakeItem", 1));
+		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.MilkSoy.make( 250), FL.Smoothie_Gooseberry.make(200)}, ZL_FS, ST.make(MD.HaC, "gooseberrymilkshakeItem", 1));
 		
-		RM.Mixer	.addRecipe2(T, 16,	 16, OM.dust(MT.NaCl, U4)	, ST.make(MD.HaC, "sunflowerseedsItem", 1), ST.make(MD.HaC, "saltedsunflowerseedsItem", 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, OM.dust(MT.NaCl, U4)   , ST.make(MD.HaC, "sunflowerseedsItem", 1), ST.make(MD.HaC, "saltedsunflowerseedsItem", 1));
 		
-		RM.Mixer	.addRecipe2(T, 16,	 16, tYogurt, OM.dust(MT.Vanilla				 ), ST.make(MD.HaC, "vanillayogurtItem"		, 1));
-		RM.Mixer	.addRecipe2(T, 16,	 16, tYogurt, OM.dust(MT.Chocolate				 ), ST.make(MD.HaC, "chocolateyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Grapefruit	.make(100), NF, ST.make(MD.HaC, "grapefruityogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Pear			.make(100), NF, ST.make(MD.HaC, "pearyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Apricot		.make(100), NF, ST.make(MD.HaC, "apricotyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Plum			.make(100), NF, ST.make(MD.HaC, "plumyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Peach		.make(100), NF, ST.make(MD.HaC, "peachyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Lime			.make(100), NF, ST.make(MD.HaC, "limeyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Orange		.make(100), NF, ST.make(MD.HaC, "orangeyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Persimmon	.make(100), NF, ST.make(MD.HaC, "persimmonyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Cranberry	.make(100), NF, ST.make(MD.HaC, "cranberryyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Ananas		.make(100), NF, ST.make(MD.HaC, "pineappleyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Cherry		.make(100), NF, ST.make(MD.HaC, "cherryyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Banana		.make(100), NF, ST.make(MD.HaC, "bananayogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Lemon		.make(100), NF, ST.make(MD.HaC, "lemonyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Apple		.make(100), NF, ST.make(MD.HaC, "appleyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_AppleGrC		.make(100), NF, ST.make(MD.HaC, "appleyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Grape_Red	.make(100), NF, ST.make(MD.HaC, "grapeyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Grape_White	.make(100), NF, ST.make(MD.HaC, "grapeyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Grape_Green	.make(100), NF, ST.make(MD.HaC, "grapeyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Grape_Purple	.make(100), NF, ST.make(MD.HaC, "grapeyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Melon		.make(100), NF, ST.make(MD.HaC, "melonyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Kiwi			.make(100), NF, ST.make(MD.HaC, "kiwiyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Raspberry	.make(100), NF, ST.make(MD.HaC, "raspberryyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Blackberry	.make(100), NF, ST.make(MD.HaC, "blackberryyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Blueberry	.make(100), NF, ST.make(MD.HaC, "blueberryyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Gooseberry	.make(100), NF, ST.make(MD.HaC, "gooseberryyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Strawberry	.make(100), NF, ST.make(MD.HaC, "strawberryyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Pumpkin		.make(100), NF, ST.make(MD.HaC, "pumpkinyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Pomegranate	.make(100), NF, ST.make(MD.HaC, "pomegranateyogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Fig			.make(100), NF, ST.make(MD.HaC, "figyogurtItem"			, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Starfruit	.make(100), NF, ST.make(MD.HaC, "starfruityogurtItem"	, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Mango		.make(100), NF, ST.make(MD.HaC, "mangoyogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Papaya		.make(100), NF, ST.make(MD.HaC, "papayayogurtItem"		, 1));
-		RM.Mixer	.addRecipe1(T, 16,	 16, tYogurt, FL.Juice_Coconut		.make(100), NF, ST.make(MD.HaC, "coconutyogurtItem"		, 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, tYogurt, OM.dust(MT.Vanilla                 ), ST.make(MD.HaC, "vanillayogurtItem"     , 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, tYogurt, OM.dust(MT.Chocolate               ), ST.make(MD.HaC, "chocolateyogurtItem"   , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Grapefruit   .make(100), NF, ST.make(MD.HaC, "grapefruityogurtItem"  , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Pear         .make(100), NF, ST.make(MD.HaC, "pearyogurtItem"        , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Apricot      .make(100), NF, ST.make(MD.HaC, "apricotyogurtItem"     , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Plum         .make(100), NF, ST.make(MD.HaC, "plumyogurtItem"        , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Peach        .make(100), NF, ST.make(MD.HaC, "peachyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Lime         .make(100), NF, ST.make(MD.HaC, "limeyogurtItem"        , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Orange       .make(100), NF, ST.make(MD.HaC, "orangeyogurtItem"      , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Persimmon    .make(100), NF, ST.make(MD.HaC, "persimmonyogurtItem"   , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Cranberry    .make(100), NF, ST.make(MD.HaC, "cranberryyogurtItem"   , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Ananas       .make(100), NF, ST.make(MD.HaC, "pineappleyogurtItem"   , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Cherry       .make(100), NF, ST.make(MD.HaC, "cherryyogurtItem"      , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Banana       .make(100), NF, ST.make(MD.HaC, "bananayogurtItem"      , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Lemon        .make(100), NF, ST.make(MD.HaC, "lemonyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Apple        .make(100), NF, ST.make(MD.HaC, "appleyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_AppleGrC     .make(100), NF, ST.make(MD.HaC, "appleyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Grape_Red    .make(100), NF, ST.make(MD.HaC, "grapeyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Grape_White  .make(100), NF, ST.make(MD.HaC, "grapeyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Grape_Green  .make(100), NF, ST.make(MD.HaC, "grapeyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Grape_Purple .make(100), NF, ST.make(MD.HaC, "grapeyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Melon        .make(100), NF, ST.make(MD.HaC, "melonyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Kiwi         .make(100), NF, ST.make(MD.HaC, "kiwiyogurtItem"        , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Raspberry    .make(100), NF, ST.make(MD.HaC, "raspberryyogurtItem"   , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Blackberry   .make(100), NF, ST.make(MD.HaC, "blackberryyogurtItem"  , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Blueberry    .make(100), NF, ST.make(MD.HaC, "blueberryyogurtItem"   , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Gooseberry   .make(100), NF, ST.make(MD.HaC, "gooseberryyogurtItem"  , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Strawberry   .make(100), NF, ST.make(MD.HaC, "strawberryyogurtItem"  , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Pumpkin      .make(100), NF, ST.make(MD.HaC, "pumpkinyogurtItem"     , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Pomegranate  .make(100), NF, ST.make(MD.HaC, "pomegranateyogurtItem" , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Fig          .make(100), NF, ST.make(MD.HaC, "figyogurtItem"         , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Starfruit    .make(100), NF, ST.make(MD.HaC, "starfruityogurtItem"   , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Mango        .make(100), NF, ST.make(MD.HaC, "mangoyogurtItem"       , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Papaya       .make(100), NF, ST.make(MD.HaC, "papayayogurtItem"      , 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Coconut      .make(100), NF, ST.make(MD.HaC, "coconutyogurtItem"     , 1));
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("cropCoconut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "toastedcoconutItem", 1));
 		}});
 		addListener("cropStrawberry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Bath		.addRecipe1(T,	0,	 16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatestrawberryItem", 1));
+			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatestrawberryItem", 1));
 		}});
 		addListener("cropCherry", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Bath		.addRecipe1(T,	0,	 16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatecherryItem", 1));
+			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatecherryItem", 1));
 		}});
 		addListener("cropCorn", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer	.addRecipe1(T, 16,	 16, aEvent.mStack, FL.Milk	  .make( 250), NF, ST.make(MD.HaC, "cornflakesItem", 1));
-			RM.Mixer	.addRecipe1(T, 16,	 16, aEvent.mStack, FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "cornflakesItem", 1));
-			RM.Mixer	.addRecipe1(T, 16,	 16, aEvent.mStack, FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "cornflakesItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.Milk   .make( 250), NF, ST.make(MD.HaC, "cornflakesItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "cornflakesItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "cornflakesItem", 1));
 		}});
 		addListener("cropBeet", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, FL.Milk				.make( 250), NF, ST.make(MD.HaC, "beetsoupItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, FL.MilkGrC				.make( 250), NF, ST.make(MD.HaC, "beetsoupItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, FL.MilkSoy				.make( 250), NF, ST.make(MD.HaC, "beetsoupItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 64, new ItemStack[] {IL.Food_Onion_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, FL.Milk		.make(1000), NF, ST.make(MD.HaC, "beetsoupItem", 4));
-			RM.Mixer	.addRecipeX(T, 16,	 64, new ItemStack[] {IL.Food_Onion_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, FL.MilkGrC	.make(1000), NF, ST.make(MD.HaC, "beetsoupItem", 4));
-			RM.Mixer	.addRecipeX(T, 16,	 64, new ItemStack[] {IL.Food_Onion_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, FL.MilkSoy	.make(1000), NF, ST.make(MD.HaC, "beetsoupItem", 4));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, FL.Milk                .make( 250), NF, ST.make(MD.HaC, "beetsoupItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, FL.MilkGrC             .make( 250), NF, ST.make(MD.HaC, "beetsoupItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, FL.MilkSoy             .make( 250), NF, ST.make(MD.HaC, "beetsoupItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   64, new ItemStack[] {IL.Food_Onion_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, FL.Milk      .make(1000), NF, ST.make(MD.HaC, "beetsoupItem", 4));
+			RM.Mixer    .addRecipeX(T, 16,   64, new ItemStack[] {IL.Food_Onion_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, FL.MilkGrC   .make(1000), NF, ST.make(MD.HaC, "beetsoupItem", 4));
+			RM.Mixer    .addRecipeX(T, 16,   64, new ItemStack[] {IL.Food_Onion_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, FL.MilkSoy   .make(1000), NF, ST.make(MD.HaC, "beetsoupItem", 4));
 		}});
 		addListener("cropSpiceleaf", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {aEvent.mStack, OM.dust(MT.PepperBlack), OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon)}, ST.make(MD.HaC, "garammasalaItem", 4));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {aEvent.mStack, OM.dust(MT.PepperBlack), OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon)}, ST.make(MD.HaC, "garammasalaItem", 4));
 		}});
 		addListener("cropRadish", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), IL.Food_Cucumber_Sliced.get( 3), aEvent.mStack}, UT.Fluids.make("potion.vinegar",  125), NF, ST.make(MD.HaC, "summerradishsaladItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), IL.Food_Cucumber_Sliced.get( 3), aEvent.mStack}, UT.Fluids.make("potion.vinegar",  125), NF, ST.make(MD.HaC, "summerradishsaladItem", 1));
 		}});
 		addListener("cropCabbage", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Carrot_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, UT.Fluids.make("mayo",  125), NF, ST.make(MD.HaC, "coleslawItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Carrot_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, UT.Fluids.make("mayo",	500), NF, ST.make(MD.HaC, "coleslawItem", 4));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Carrot_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, UT.Fluids.make("mayo",  125), NF, ST.make(MD.HaC, "coleslawItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Carrot_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, UT.Fluids.make("mayo",  500), NF, ST.make(MD.HaC, "coleslawItem", 4));
 		}});
 		addListener("cropBean", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.FishCooked	), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.MeatCooked	), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.SoylentGreen	), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.Tofu			), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.FishCooked   ), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.MeatCooked   ), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.SoylentGreen ), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.Tofu         ), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
 		}});
 		
 		
 		addListener("foodCaramel", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Press	.addRecipe2(T, 16,	 32, aEvent.mStack, OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "chocolatecaramelfudgeItem", 1));
+			RM.Press    .addRecipe2(T, 16,   32, aEvent.mStack, OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "chocolatecaramelfudgeItem", 1));
 		}});
 		addListener("foodFlour", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer	.addRecipe1(T, 16,	 16, aEvent.mStack, FL.Milk	  .make( 250), NF, ST.make(MD.HaC, "batterItem", 1));
-			RM.Mixer	.addRecipe1(T, 16,	 16, aEvent.mStack, FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "batterItem", 1));
-			RM.Mixer	.addRecipe1(T, 16,	 16, aEvent.mStack, FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "batterItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.Milk   .make( 250), NF, ST.make(MD.HaC, "batterItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "batterItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "batterItem", 1));
 		}});
 		addListener("foodDough", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Bath		.addRecipe1(T,	0,	 16, aEvent.mStack, MT.FryingOilHot.liquid(U100, T), NF, ST.make(MD.HaC, "donutItem", 1));
+			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.FryingOilHot.liquid(U100, T), NF, ST.make(MD.HaC, "donutItem", 1));
 		}});
 
 		addListener(new OreDictListenerEvent_TwoNames("listAlljelly", "foodDonut") {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
-			RM.Injector	.addRecipe2(T, 16,	 64, aStack1, ST.amount(4, aStack2), ST.make(MD.HaC, "jellydonutItem", 4));
+			RM.Injector .addRecipe2(T, 16,   64, aStack1, ST.amount(4, aStack2), ST.make(MD.HaC, "jellydonutItem", 4));
 		}});
 		addListener("foodDonut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Bath		.addRecipeX(T,	0,	 16, new ItemStack[] {aEvent.mStack, IL.Dye_Cactus.get(1), ST.make(Items.dye, 1, 1), ST.make(Items.dye, 1, 11)}, MT.Sugar.liquid(U4, T), NF, ST.make(MD.HaC, "frosteddonutItem", 1));
-			RM.Bath		.addRecipe1(T,	0,	 16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatedonutItem", 1));
-			RM.Mixer	.addRecipe2(T, 16,	 16, aEvent.mStack, OM.dust(MT.Sugar, U4), ST.make(MD.HaC, "powdereddonutItem", 1));
-			RM.Mixer	.addRecipe2(T, 16,	 16, aEvent.mStack, OM.dust(MT.Sugar, U3), ST.make(MD.HaC, "powdereddonutItem", 1));
-			RM.Mixer	.addRecipe2(T, 16,	 64, ST.amount(4, aEvent.mStack), OM.dust(MT.Sugar), ST.make(MD.HaC, "powdereddonutItem", 4));
+			RM.Bath     .addRecipeX(T,  0,   16, new ItemStack[] {aEvent.mStack, IL.Dye_Cactus.get(1), ST.make(Items.dye, 1, 1), ST.make(Items.dye, 1, 11)}, MT.Sugar.liquid(U4, T), NF, ST.make(MD.HaC, "frosteddonutItem", 1));
+			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatedonutItem", 1));
+			RM.Mixer    .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(MT.Sugar, U4), ST.make(MD.HaC, "powdereddonutItem", 1));
+			RM.Mixer    .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(MT.Sugar, U3), ST.make(MD.HaC, "powdereddonutItem", 1));
+			RM.Mixer    .addRecipe2(T, 16,   64, ST.amount(4, aEvent.mStack), OM.dust(MT.Sugar), ST.make(MD.HaC, "powdereddonutItem", 4));
 		}});
 		addListener("foodPowdereddonut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer	.addRecipe2(T, 16,	 16, aEvent.mStack, OM.dust(MT.Cinnamon, U4), ST.make(MD.HaC, "cinnamonsugardonutItem", 1));
-			RM.Mixer	.addRecipe2(T, 16,	 16, aEvent.mStack, OM.dust(MT.Cinnamon, U3), ST.make(MD.HaC, "cinnamonsugardonutItem", 1));
-			RM.Mixer	.addRecipe2(T, 16,	 64, ST.amount(4, aEvent.mStack), OM.dust(MT.Cinnamon), ST.make(MD.HaC, "cinnamonsugardonutItem", 4));
+			RM.Mixer    .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(MT.Cinnamon, U4), ST.make(MD.HaC, "cinnamonsugardonutItem", 1));
+			RM.Mixer    .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(MT.Cinnamon, U3), ST.make(MD.HaC, "cinnamonsugardonutItem", 1));
+			RM.Mixer    .addRecipe2(T, 16,   64, ST.amount(4, aEvent.mStack), OM.dust(MT.Cinnamon), ST.make(MD.HaC, "cinnamonsugardonutItem", 4));
 		}});
 		addListener("foodFilledhoneycomb", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Press	.addRecipe2(T, 16,	 32, aEvent.mStack, OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "honeycombchocolatebarItem", 1));
+			RM.Press    .addRecipe2(T, 16,   32, aEvent.mStack, OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "honeycombchocolatebarItem", 1));
 		}});
 		
 		addListener("listAllgrain", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null)
-			RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "grainbaitItem", 4));
+			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "grainbaitItem", 4));
 		}});
 		addListener("listAllveggie", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null)
-			RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "veggiebaitItem", 4));
+			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "veggiebaitItem", 4));
 		}});
 		addListener("listAllfishraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null && !OM.is_("listAllmeatsubstitute", aEvent.mStack))
-			RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fishtrapbaitItem", 4));
+			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fishtrapbaitItem", 4));
 		}});
 		addListener("listAllfruit", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null)
-			RM.Mixer	.addRecipe2(T, 16,	 16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fruitbaitItem", 4));
+			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fruitbaitItem", 4));
 		}});
 		addListener("listAllegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null && !OM.is_("listAllmeatsubstitute", aEvent.mStack)) {
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack}, FL.Milk	  .make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack}, FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
-			RM.Mixer	.addRecipeX(T, 16,	 16, new ItemStack[] {OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack}, FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack}, FL.Milk   .make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack}, FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack}, FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
 			}
 		}});
 		addListener("foodBaconcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null && !OM.is_("listAllmeatsubstitute", aEvent.mStack)) {
-			RM.Bath		.addRecipe1(T,	0,	 16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatebaconItem", 1));
-			RM.Mixer	.addRecipe1(T, 16,	 16, aEvent.mStack, UT.Fluids.make("maplesyrup", 50), NF, ST.make(MD.HaC, "maplecandiedbaconItem", 1));
-			RM.Mixer	.addRecipe1(T, 16,	 16, aEvent.mStack, UT.Fluids.make("rainbowsap", 50), NF, ST.make(MD.HaC, "epicbaconItem", 1));
+			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatebaconItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, UT.Fluids.make("maplesyrup", 50), NF, ST.make(MD.HaC, "maplecandiedbaconItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, UT.Fluids.make("rainbowsap", 50), NF, ST.make(MD.HaC, "epicbaconItem", 1));
 			}
 		}});
 		addListener("foodScrapmeat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			// TODO: Spice + Salt + Meat
-			RM.Injector	.addRecipe2(T, 16,	 16, OM.dust(MT.MeatRaw, U), aEvent.mStack, ST.make(MD.HaC, "porksausageItem", 1));
+			RM.Injector .addRecipe2(T, 16,   16, OM.dust(MT.MeatRaw, U), aEvent.mStack, ST.make(MD.HaC, "porksausageItem", 1));
 		}});
 		addListener("foodHoneydrop", "dropHoney", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			CR.remove(ST.make(MD.HaC, "potItem", 1), aEvent.mStack);
 		}});
 		addListener(OP.stick.dat(ANY.WoodNormal), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Loom.addRecipe2(T, 16,	16, ST.make(MD.HaC, "hardenedleatherItem", 1), ST.amount(8, aEvent.mStack), ST.make(Items.item_frame, 1, 0));
+			RM.Loom.addRecipe2(T, 16,   16, ST.make(MD.HaC, "hardenedleatherItem", 1), ST.amount(8, aEvent.mStack), ST.make(Items.item_frame, 1, 0));
 		}});
 		}};
 		
 		for (OreDictMaterial tMat : ANY.Wax.mToThis) {
-			RM.Laminator.addRecipe2(T, 16,	 16, OP.foil.mat(tMat, 1), ST.make(Items.leather, 1, W), ST.make(MD.HaC, "hardenedleatherItem", 1));
+			RM.Laminator.addRecipe2(T, 16,   16, OP.foil.mat(tMat, 1), ST.make(Items.leather, 1, W), ST.make(MD.HaC, "hardenedleatherItem", 1));
 		}
 		
 		OP.dust.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

@@ -271,8 +271,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		if (mPrefix.mIconIndexBlock >= 0) {
 			OreDictMaterial aMaterial = getMetaMaterial(aMetaData);
 			if (aMaterial != null && aMaterial.mTextureSetsBlock != null)
-			return aMaterial	.mTextureSetsBlock.get(mPrefix.mIconIndexBlock).getIcon(0);
-			return MT.NULL		.mTextureSetsBlock.get(mPrefix.mIconIndexBlock).getIcon(0);
+			return aMaterial    .mTextureSetsBlock.get(mPrefix.mIconIndexBlock).getIcon(0);
+			return MT.NULL      .mTextureSetsBlock.get(mPrefix.mIconIndexBlock).getIcon(0);
 		}
 		return null;
 	}
@@ -383,7 +383,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	}
 	
 	@Override
-	public float getExplosionResistance(Entity par1Entity, World aWorld, int aX, int aY, int aZ, double explosionX, double explosionY, double explosionZ)		{
+	public float getExplosionResistance(Entity par1Entity, World aWorld, int aX, int aY, int aZ, double explosionX, double explosionY, double explosionZ)       {
 		OreDictMaterial aMaterial = getMetaMaterial(aWorld, aX, aY, aZ);
 		if (aMaterial != null && ((mCanExplode && aMaterial.contains(TD.Properties.EXPLOSIVE)) || (mCanBurn && aMaterial.contains(TD.Properties.FLAMMABLE) && mPrefix.mFamiliarPrefixes.contains(OP.dust)))) return 0;
 		return mBaseResistance * (1+getHarvestLevel(aWorld.getBlockMetadata(aX, aY, aZ)));
@@ -616,7 +616,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override public boolean isBeaconBase(IBlockAccess aWorld, int aX, int aY, int aZ, int aBeaconX, int aBeaconY, int aBeaconZ) {return mBeaconBase;}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return mOpaque;}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)	{return mNormalCube;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return mNormalCube;}
 	@Override public boolean hasTileEntity(int aMeta) {return T;}
 	@Override public boolean renderAsNormalBlock() {return T;}
 	@Override public final boolean isOpaqueCube() {return mOpaque;}
@@ -678,10 +678,10 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		return F;
 	}
 	
-	@Override public void receiveDataByte				(IBlockAccess aWorld, int aX, int aY, int aZ, byte	 aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataShort				(IBlockAccess aWorld, int aX, int aY, int aZ, short	 aData, INetworkHandler aNetworkHandler) {setExtendedMetaData(aWorld, aX, aY, aZ, aData);}
-	@Override public void receiveDataInteger			(IBlockAccess aWorld, int aX, int aY, int aZ, int	 aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataLong				(IBlockAccess aWorld, int aX, int aY, int aZ, long	 aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataByteArray			(IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataName				(IBlockAccess aWorld, int aX, int aY, int aZ, String aData, INetworkHandler aNetworkHandler) {if (UT.Code.stringValid(aData)) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof PrefixBlockTileEntity) {if (((PrefixBlockTileEntity)aTileEntity).mItemNBT == null) ((PrefixBlockTileEntity)aTileEntity).mItemNBT = UT.NBT.make(); ((PrefixBlockTileEntity)aTileEntity).mItemNBT.setTag("display", UT.NBT.makeString(((PrefixBlockTileEntity)aTileEntity).mItemNBT.getCompoundTag("display"), "Name", aData));}}}
+	@Override public void receiveDataByte               (IBlockAccess aWorld, int aX, int aY, int aZ, byte   aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataShort              (IBlockAccess aWorld, int aX, int aY, int aZ, short  aData, INetworkHandler aNetworkHandler) {setExtendedMetaData(aWorld, aX, aY, aZ, aData);}
+	@Override public void receiveDataInteger            (IBlockAccess aWorld, int aX, int aY, int aZ, int    aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataLong               (IBlockAccess aWorld, int aX, int aY, int aZ, long   aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataByteArray          (IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataName               (IBlockAccess aWorld, int aX, int aY, int aZ, String aData, INetworkHandler aNetworkHandler) {if (UT.Code.stringValid(aData)) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof PrefixBlockTileEntity) {if (((PrefixBlockTileEntity)aTileEntity).mItemNBT == null) ((PrefixBlockTileEntity)aTileEntity).mItemNBT = UT.NBT.make(); ((PrefixBlockTileEntity)aTileEntity).mItemNBT.setTag("display", UT.NBT.makeString(((PrefixBlockTileEntity)aTileEntity).mItemNBT.getCompoundTag("display"), "Name", aData));}}}
 }

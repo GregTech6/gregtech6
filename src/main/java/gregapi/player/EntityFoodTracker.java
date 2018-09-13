@@ -49,11 +49,11 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 	@Override
 	public void saveNBTData(NBTTagCompound aNBT) {
 		NBTTagCompound tNBT = UT.NBT.make();
-		if (mAlcohol		!= 0) tNBT.setByte("a", mAlcohol);
-		if (mCaffeine		!= 0) tNBT.setByte("c", mCaffeine);
-		if (mSugar			!= 0) tNBT.setByte("s", mSugar);
-		if (mDehydration	!= 0) tNBT.setByte("d", mDehydration);
-		if (mFat			!= 0) tNBT.setByte("f", mFat);
+		if (mAlcohol        != 0) tNBT.setByte("a", mAlcohol);
+		if (mCaffeine       != 0) tNBT.setByte("c", mCaffeine);
+		if (mSugar          != 0) tNBT.setByte("s", mSugar);
+		if (mDehydration    != 0) tNBT.setByte("d", mDehydration);
+		if (mFat            != 0) tNBT.setByte("f", mFat);
 		if (!tNBT.hasNoTags()) aNBT.setTag("gt.properties.food", tNBT);
 	}
 	
@@ -61,11 +61,11 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 	public void loadNBTData(NBTTagCompound aNBT) {
 		if (!aNBT.hasKey("gt.properties.food")) return;
 		NBTTagCompound tNBT = aNBT.getCompoundTag("gt.properties.food");
-		mAlcohol		= tNBT.getByte("a");
-		mCaffeine		= tNBT.getByte("c");
-		mDehydration	= tNBT.getByte("d");
-		mSugar			= tNBT.getByte("s");
-		mFat			= tNBT.getByte("f");
+		mAlcohol        = tNBT.getByte("a");
+		mCaffeine       = tNBT.getByte("c");
+		mDehydration    = tNBT.getByte("d");
+		mSugar          = tNBT.getByte("s");
+		mFat            = tNBT.getByte("f");
 	}
 	
 	@Override
@@ -175,11 +175,11 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 0));
 				}
 				
-				if (tTracker.mAlcohol		> 0) tTracker.mAlcohol--;
-				if (tTracker.mCaffeine		> 0) tTracker.mCaffeine--;
-				if (tTracker.mDehydration	> 0) tTracker.mDehydration--;
-				if (tTracker.mSugar			> 0) tTracker.mSugar--;
-				if (tTracker.mFat			> 0) tTracker.mFat--;
+				if (tTracker.mAlcohol       > 0) tTracker.mAlcohol--;
+				if (tTracker.mCaffeine      > 0) tTracker.mCaffeine--;
+				if (tTracker.mDehydration   > 0) tTracker.mDehydration--;
+				if (tTracker.mSugar         > 0) tTracker.mSugar--;
+				if (tTracker.mFat           > 0) tTracker.mFat--;
 			}
 		}
 	}

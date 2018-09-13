@@ -113,27 +113,27 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY-1, tZ+1, 18101, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY-1, tZ+1, 18101, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
 			
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY	, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY	, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY	, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY	, tZ  , mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY	, tZ  , mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY	, tZ  , mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY	, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY	, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY	, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY  , tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY  , tZ  , mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ  , mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ  , mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY  , tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
 			
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+2, tZ  , mBoilerWalls, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
 			for (int i = 1; i < 3; i++) {
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY+i, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(),				 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+i, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(),	i == 1 ? 1 : 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+i, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(),				 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY+i, tZ  , mBoilerWalls, getMultiTileEntityRegistryID(),	i == 1 ? 1 : 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY+i, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(),                0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+i, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(),   i == 1 ? 1 : 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+i, tZ-1, mBoilerWalls, getMultiTileEntityRegistryID(),                0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY+i, tZ  , mBoilerWalls, getMultiTileEntityRegistryID(),   i == 1 ? 1 : 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
 			
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+i, tZ  , mBoilerWalls, getMultiTileEntityRegistryID(),	i == 1 ? 1 : 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY+i, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(),				 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+i, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(),	i == 1 ? 1 : 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+i, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(),				 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+i, tZ  , mBoilerWalls, getMultiTileEntityRegistryID(),   i == 1 ? 1 : 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-1, tY+i, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(),                0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+i, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(),   i == 1 ? 1 : 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+i, tZ+1, mBoilerWalls, getMultiTileEntityRegistryID(),                0, MultiTileEntityMultiBlockPart.ONLY_FLUID_OUT)) tSuccess = F;
 			}
 			
 			return tSuccess;
@@ -150,21 +150,21 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.largeboiler.1"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.largeboiler.2"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.largeboiler.3"));
-		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.largeboiler.4"));
-		aList.add(Chat.CYAN		+ LH.get(LH.CONVERTS_FROM_X)		+ " 1 L " + UT.Fluids.name(FluidRegistry.WATER, true) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
+		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.largeboiler.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.largeboiler.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.largeboiler.3"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.largeboiler.4"));
+		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " 1 L " + UT.Fluids.name(FluidRegistry.WATER, true) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
-		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_INPUT)			+ ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)						+ " " + mEnergyTypeAccepted.getChatFormat()	+ mEnergyTypeAccepted.getLocalisedNameShort()	+ Chat.WHITE + "/t (Heat Acceptors)");
-		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_CAPACITY)		+ ": " + Chat.WHITE + mCapacity										+ " " + mEnergyTypeAccepted.getChatFormat()	+ mEnergyTypeAccepted.getLocalisedNameShort()	+ Chat.WHITE);
-		aList.add(Chat.RED		+ LH.get(LH.ENERGY_OUTPUT)			+ ": " + Chat.WHITE + UT.Code.units(mOutput, 10000, mEfficiency, F)	+ " " + TD.Energy.STEAM.getChatFormat()		+ TD.Energy.STEAM.getLocalisedNameLong()		+ Chat.WHITE + "/t (Pipe Holes)");
-		aList.add(Chat.RED		+ LH.get(LH.ENERGY_CAPACITY)		+ ": " + Chat.WHITE + mCapacity										+ " " + TD.Energy.STEAM.getChatFormat()		+ TD.Energy.STEAM.getLocalisedNameLong()		+ Chat.WHITE);
-		aList.add(Chat.ORANGE	+ LH.get(LH.REQUIREMENT_WATER_PURE));
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_EXPLOSION_STEAM));
-		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_MELTDOWN));
-		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_DECALCIFY_CHISEL));
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)                        + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE + "/t (Heat Acceptors)");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                     + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE);
+		aList.add(Chat.RED      + LH.get(LH.ENERGY_OUTPUT)          + ": " + Chat.WHITE + UT.Code.units(mOutput, 10000, mEfficiency, F) + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE + "/t (Pipe Holes)");
+		aList.add(Chat.RED      + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                     + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE);
+		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_WATER_PURE));
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_EXPLOSION_STEAM));
+		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DECALCIFY_CHISEL));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -214,9 +214,9 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 					
 					@SuppressWarnings("unchecked")
 					DelegatorTileEntity<TileEntity>[] tDelegators = new DelegatorTileEntity[] {
-					  WD.te(worldObj, getOffsetXN(mFacing, 1)  , yCoord+3, getOffsetZN(mFacing, 1)	, SIDE_Y_NEG, F)
-					, WD.te(worldObj, getOffsetXN(mFacing, 1)-2, yCoord+1, getOffsetZN(mFacing, 1)	, SIDE_X_POS, F)
-					, WD.te(worldObj, getOffsetXN(mFacing, 1)+2, yCoord+1, getOffsetZN(mFacing, 1)	, SIDE_X_NEG, F)
+					  WD.te(worldObj, getOffsetXN(mFacing, 1)  , yCoord+3, getOffsetZN(mFacing, 1)  , SIDE_Y_NEG, F)
+					, WD.te(worldObj, getOffsetXN(mFacing, 1)-2, yCoord+1, getOffsetZN(mFacing, 1)  , SIDE_X_POS, F)
+					, WD.te(worldObj, getOffsetXN(mFacing, 1)+2, yCoord+1, getOffsetZN(mFacing, 1)  , SIDE_X_NEG, F)
 					, WD.te(worldObj, getOffsetXN(mFacing, 1)  , yCoord+1, getOffsetZN(mFacing, 1)-2, SIDE_Z_POS, F)
 					, WD.te(worldObj, getOffsetXN(mFacing, 1)  , yCoord+1, getOffsetZN(mFacing, 1)+2, SIDE_Z_NEG, F)
 					};

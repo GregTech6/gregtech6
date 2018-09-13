@@ -35,7 +35,7 @@ public class WorldgenStructureExteriorPillar extends WorldgenStructure {
 		boolean temp = T;
 		for (int tX = 6; tX <= 9 && temp; tX++) for (int tZ = 6; tZ <= 9 && temp; tZ++) if (aWorld.getBlock(aChunkX+tX, aData.mOffsetY-1, aChunkZ+tZ).isOpaqueCube()) temp = F;
 		
-		if (temp) for (int tX =	 5; tX <= 10; tX++) for (int tZ =  5; tZ <= 10; tZ++) {
+		if (temp) for (int tX =  5; tX <= 10; tX++) for (int tZ =  5; tZ <= 10; tZ++) {
 			setSmoothBlock (aWorld, aChunkX+tX, aData.mOffsetY-1, aChunkZ+tZ, aData, aRandom);
 			setRandomBricks(aWorld, aChunkX+tX, aData.mOffsetY-2, aChunkZ+tZ, aData, aRandom);
 		}
@@ -47,13 +47,13 @@ public class WorldgenStructureExteriorPillar extends WorldgenStructure {
 				if (tBlock instanceof BlockFalling || !tBlock.isOpaqueCube()) temp = T;
 			}
 			if (temp) {
-				for (int tX =  6; tX <=	 9; tX++) for (int tZ =	 6; tZ <=  9; tZ++) {
-					setRandomBricks(aWorld, aChunkX+tX, tY	, aChunkZ+tZ, aData, aRandom);
+				for (int tX =  6; tX <=  9; tX++) for (int tZ =  6; tZ <=  9; tZ++) {
+					setRandomBricks(aWorld, aChunkX+tX, tY  , aChunkZ+tZ, aData, aRandom);
 				}
 			} else {
-				for (int tX =  5; tX <= 10; tX++) for (int tZ =	 5; tZ <= 10; tZ++) {
+				for (int tX =  5; tX <= 10; tX++) for (int tZ =  5; tZ <= 10; tZ++) {
 					setSmoothBlock (aWorld, aChunkX+tX, tY+1, aChunkZ+tZ, aData, aRandom);
-					setRandomBricks(aWorld, aChunkX+tX, tY	, aChunkZ+tZ, aData, aRandom);
+					setRandomBricks(aWorld, aChunkX+tX, tY  , aChunkZ+tZ, aData, aRandom);
 					setRandomBricks(aWorld, aChunkX+tX, tY-1, aChunkZ+tZ, aData, aRandom);
 					if (tY > 2 || aWorld.getBlock(aChunkX+tX, 0, aChunkZ+tZ).getBlockHardness(aWorld, aChunkX+tX, 0, aChunkZ+tZ) >= 0)
 					setSmoothBlock (aWorld, aChunkX+tX, tY-2, aChunkZ+tZ, aData, aRandom);

@@ -148,8 +148,8 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 			List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
 			// Important Stuff to do first
 			for (Object tRandomData : aRandomData) if (tRandomData instanceof TagData) {
-				if (tRandomData == TD.Creative.HIDDEN			) {mVisibleItems.set(aID, F); continue;}
-				if (tRandomData == TD.Properties.AUTO_BLACKLIST	) {OM.blacklist_(rStack); continue;}
+				if (tRandomData == TD.Creative.HIDDEN           ) {mVisibleItems.set(aID, F); continue;}
+				if (tRandomData == TD.Properties.AUTO_BLACKLIST ) {OM.blacklist_(rStack); continue;}
 			}
 			// now check for the rest
 			for (Object tRandomData : aRandomData) if (tRandomData != null) {
@@ -209,16 +209,16 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 				if (tRandomData instanceof FluidStack) {
 					tRandomData = new FluidContainerData((FluidStack)tRandomData, ST.copy(rStack), getContainerItem(rStack), T);
 					if (((FluidContainerData)tRandomData).emptyContainer != null)
-				//	RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
-				//	RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
+				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
+				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
 					UT.Fluids.setFluidContainerData((FluidContainerData)tRandomData, T, F);
 					FluidContainerRegistry.registerFluidContainer((FluidContainerData)tRandomData);
 					continue;
 				}
 				if (tRandomData instanceof FluidContainerData) {
 					if (((FluidContainerData)tRandomData).emptyContainer != null)
-				//	RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
-				//	RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
+				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
+				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
 					UT.Fluids.setFluidContainerData((FluidContainerData)tRandomData, T, F);
 					FluidContainerRegistry.registerFluidContainer((FluidContainerData)tRandomData);
 					continue;

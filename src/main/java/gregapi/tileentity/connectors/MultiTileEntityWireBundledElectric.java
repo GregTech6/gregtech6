@@ -97,5 +97,5 @@ public class MultiTileEntityWireBundledElectric extends MultiTileEntityWireElect
 		return T;
 	}
 	
-	@Override public String getTileEntityName				() {return "gt.multitileentity.connector.wire.bundled.electric";}
+	@Override public String getTileEntityName               () {return "gt.multitileentity.connector.wire.bundled.electric";}
 }

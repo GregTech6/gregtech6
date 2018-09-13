@@ -59,9 +59,9 @@ public class PacketSyncDataByteArrayAndIDsAndCovers extends PacketSyncDataByteAr
 	
 	private PacketSyncDataByteArrayAndIDsAndCovers(int aX, int aY, int aZ, short aID1, short aID2, byte[] aData, ByteArrayDataInput aCovers) {
 		super(aX, aY, aZ, aID1, aID2, aData);
-		mCoverIDs		= new short[] {0,0,0,0,0,0};
-		mCoverMetas		= new short[] {0,0,0,0,0,0};
-		mCoverVisuals	= new short[] {0,0,0,0,0,0};
+		mCoverIDs       = new short[] {0,0,0,0,0,0};
+		mCoverMetas     = new short[] {0,0,0,0,0,0};
+		mCoverVisuals   = new short[] {0,0,0,0,0,0};
 		for (byte i = 0, j = aCovers.readByte(); i < 6; i++) if ((j & (1 << i)) != 0) {mCoverIDs[i] = aCovers.readShort(); mCoverMetas[i] = aCovers.readShort(); mCoverVisuals[i] = aCovers.readShort();}
 		for (byte i = 0; i < 6; i++) if (mCoverIDs[i] != 0) return;
 		mCoverIDs = null;

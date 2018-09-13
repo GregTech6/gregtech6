@@ -48,10 +48,10 @@ public interface IHasWorldObjectAndCoords {
 	public IFluidHandler getITankContainerOffset(int aX, int aY, int aZ);
 	public IFluidHandler getITankContainerAtSide(byte aSide);
 	public IFluidHandler getITankContainerAtSideAndDistance(byte aSide, int aDistance);
-//	public IGregTechTileEntity getIGregTechTileEntity(int aX, int aY, int aZ);
-//	public IGregTechTileEntity getIGregTechTileEntityOffset(int aX, int aY, int aZ);
-//	public IGregTechTileEntity getIGregTechTileEntityAtSide(byte aSide);
-//	public IGregTechTileEntity getIGregTechTileEntityAtSideAndDistance(byte aSide, int aDistance);
+//  public IGregTechTileEntity getIGregTechTileEntity(int aX, int aY, int aZ);
+//  public IGregTechTileEntity getIGregTechTileEntityOffset(int aX, int aY, int aZ);
+//  public IGregTechTileEntity getIGregTechTileEntityAtSide(byte aSide);
+//  public IGregTechTileEntity getIGregTechTileEntityAtSideAndDistance(byte aSide, int aDistance);
 	public Block getBlock(int aX, int aY, int aZ);
 	public Block getBlockOffset(int aX, int aY, int aZ);
 	public Block getBlockAtSide(byte aSide);
@@ -78,9 +78,9 @@ public interface IHasWorldObjectAndCoords {
 	public boolean getAirAtSideAndDistance(byte aSide, int aDistance);
 	public BiomeGenBase getBiome();
 	public BiomeGenBase getBiome(int aX, int aZ);
-	public int	 getOffsetX(byte aSide, int aMultiplier);
+	public int   getOffsetX(byte aSide, int aMultiplier);
 	public short getOffsetY(byte aSide, int aMultiplier);
-	public int	 getOffsetZ(byte aSide, int aMultiplier);
+	public int   getOffsetZ(byte aSide, int aMultiplier);
 	public boolean isDead();
 	public void sendBlockEvent(byte aID, byte aValue);
 	public long getTimer();
