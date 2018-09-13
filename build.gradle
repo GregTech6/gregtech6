@@ -15,6 +15,13 @@ buildscript {
 	}
 }
 
+// Because Forge is too stupid to fix Deprecation Issues, and we cannot fix it on our end! (until we fork Forge)
+allprojects {
+	tasks.withType(JavaCompile) {
+		options.compilerArgs << "-Xlint:deprecation"
+	}
+}
+
 apply plugin: 'eclipse'
 eclipse {
 	classpath {
