@@ -90,7 +90,7 @@ public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle 
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, mEnergyTypeEmitted, LH.get(LH.FACE_BACK), LH.get(LH.FACE_FRONT));
 		addToolTipsEfficiency(aList, aStack, aF3_H);
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
@@ -98,7 +98,7 @@ public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle 
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
-	public void addToolTipsEfficiency(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (TD.Energy.ALL_EU.contains(mEnergyTypeAccepted)) {
 			if (TD.Energy.ALL_EU.contains(mEnergyTypeEmitted)) {
 				aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, mInput, mOutput*2, F)));
@@ -217,7 +217,7 @@ public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle 
 	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == mFacing && super.isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
 	@Override public long getEnergySizeInputRecommended		(TagData aEnergyType, byte aSide) {return mInput;}
 	@Override public long getEnergySizeOutputRecommended	(TagData aEnergyType, byte aSide) {return mOutput;}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls(F, mEnergyTypeEmitted, mEnergyTypeAccepted);}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mEnergyTypeEmitted, mEnergyTypeAccepted);}
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {

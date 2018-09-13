@@ -41,7 +41,8 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 public class WorldgenOcean extends WorldgenObject {
 	public int mHeight = 62;
 	
-	public WorldgenOcean(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenOcean(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
 	}

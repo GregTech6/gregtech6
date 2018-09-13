@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RemovedByPlayer;
-import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.BI;
 import gregapi.data.FL;
@@ -150,7 +149,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.largeboiler.1"));
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.largeboiler.2"));
@@ -213,6 +212,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 				if (tDrainableSteam != null) {
 					int tTargets = 0;
 					
+					@SuppressWarnings("unchecked")
 					DelegatorTileEntity<TileEntity>[] tDelegators = new DelegatorTileEntity[] {
 					  WD.te(worldObj, getOffsetXN(mFacing, 1)  , yCoord+3, getOffsetZN(mFacing, 1)	, SIDE_Y_NEG, F)
 					, WD.te(worldObj, getOffsetXN(mFacing, 1)-2, yCoord+1, getOffsetZN(mFacing, 1)	, SIDE_X_POS, F)
@@ -373,8 +373,8 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	@Override public long getEnergySizeInputMax(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
 	@Override public long getEnergyStored(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mEnergy : 0;}
 	@Override public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mCapacity : 0;}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls(F, mEnergyTypeAccepted);}
-	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return new ArrayListNoNulls(F, mEnergyTypeAccepted);}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
+	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
 	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return UT.Fluids.water(aFluidToFill) ? mTanks[0] : null;}
 	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTanks[1];}

@@ -71,7 +71,7 @@ public class MultiTileEntityResinHoleRubber extends MultiTileEntityTreeHole {
 	
 	private boolean checkLeaves(int aX, int aY, int aZ) {return getBlock(aX, aY, aZ) == BlocksGT.Leaves && getMetaData(aX, aY, aZ) == 8;}
 	
-	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls(F, ST.make(BlocksGT.LogA, 1, 0));}
+	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls<>(F, ST.make(BlocksGT.LogA, 1, 0));}
 	@Override public ItemStack getResinItem(byte aSide) {return IL.IC2_Resin.get(1, IL.Resin.get(1));}
 	@Override public FluidStack getResinFluid(byte aSide) {return UT.Fluids.make("fluidrubbertreesap", 250);}
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? aSide != mFacing ? BlockTextureCopied.get(BlocksGT.LogA, SIDE_ANY, 0) : BlockTextureDefault.get(mHasResin?Textures.BlockIcons.LOG_RESIN_RUBBER:Textures.BlockIcons.LOG_HOLE_RUBBER) : null;}

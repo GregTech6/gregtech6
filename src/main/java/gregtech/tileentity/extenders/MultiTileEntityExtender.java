@@ -111,7 +111,7 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if ((mModes & MODE_ALL) == MODE_ALL) {
 			aList.add(Chat.CYAN + LH.get(sToolTipFunctionAll));
 		} else {
@@ -164,7 +164,7 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 	
 	@Override
 	public DelegatorTileEntity<TileEntity> getDelegateTileEntity(byte aSide) {
-		if ((mModes & MODE_ALL) != MODE_ALL) return new DelegatorTileEntity(this, aSide);
+		if ((mModes & MODE_ALL) != MODE_ALL) return new DelegatorTileEntity<TileEntity>(this, aSide);
 		return getAdjacentTileEntity(getExtenderTargetSide(aSide), F, T);
 	}
 	

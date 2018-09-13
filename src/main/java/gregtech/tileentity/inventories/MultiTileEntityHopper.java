@@ -92,7 +92,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get("gt.multitileentity.hopper.tooltip.1") + getSizeInventory());
 		if (mMode > 0)
 		aList.add(Chat.CYAN		+ LH.get("gt.multitileentity.hopper.tooltip.2") + mMode);
@@ -165,8 +165,9 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 				if (!SIDES_TOP[mFacing] && !invempty()) {
 					DelegatorTileEntity<IInventory> tDelegator = getAdjacentInventory(mFacing);
 					if (tDelegator.getBlock() instanceof BlockRailBase) {
+						@SuppressWarnings("rawtypes")
 						List tList = worldObj.getEntitiesWithinAABBExcludingEntity(null, tDelegator.box(0, 0, 0, 1, 1, 1), IEntitySelector.selectInventories);
-						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity(tList.get(0), tDelegator);
+						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 					}
 					while (tMovedItems + (mMode<=0?1:mMode) <= 64) {
 						int tMoved = UT.Inventories.moveOneItemStack(this, tDelegator, mFacing, tDelegator.mSideOfTileEntity, null, F, 64, 1, mMode<=0?64-tMovedItems:mMode, mMode<=0?1:mMode);
@@ -177,8 +178,9 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 				}
 				DelegatorTileEntity<IInventory> tDelegator = getAdjacentInventory(SIDE_TOP);
 				if (tDelegator.getBlock() instanceof BlockRailBase) {
+					@SuppressWarnings("rawtypes")
 					List tList = worldObj.getEntitiesWithinAABBExcludingEntity(null, tDelegator.box(0, 0, 0, 1, 1, 1), IEntitySelector.selectInventories);
-					if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity(tList.get(0), tDelegator);
+					if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 				}
 				if (tDelegator.mTileEntity != null) {
 					tMovedItems += UT.Inventories.moveOneItemStack(tDelegator.mTileEntity, this, tDelegator.mSideOfTileEntity, SIDE_TOP);
@@ -225,7 +227,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

@@ -39,6 +39,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class Loader_Recipes_ImmersiveEngineering implements Runnable {
 	@Override
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void run() {if (MD.IE.mLoaded) {OUT.println("GT_Mod: Doing Immersive Engineering Recipes.");
 		RM.sawing(16, 96, F, 100, ST.make(MD.IE, "woodenDevice", 1, 6), IL.Plank.get(6), OP.dustSmall.mat(MT.Wood, 2));
 		

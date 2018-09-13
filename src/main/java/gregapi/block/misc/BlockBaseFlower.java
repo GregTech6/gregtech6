@@ -102,7 +102,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public void onOxygenAdded(World aWorld, int aX, int aY, int aZ) {/**/}
 	@Override public void onOxygenRemoved(World aWorld, int aX, int aY, int aZ) {if (!aWorld.isRemote && !WD.oxygen(aWorld, aX, aY, aZ)) {aWorld.setBlock(aX, aY, aZ, NB, 0, 3); return;}}
 	
-	@Override public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {/**/}
+	@Override public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {/**/}
 	@Override public float getExplosionResistance(int aMeta) {return 0;}
 	@Override public boolean useGravity(int aMeta) {return F;}
 	@Override public boolean doesWalkSpeed(short aMeta) {return F;}

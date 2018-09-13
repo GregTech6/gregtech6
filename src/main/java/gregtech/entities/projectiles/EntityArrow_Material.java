@@ -64,7 +64,7 @@ public class EntityArrow_Material extends EntityProjectile {
 	private int mHitBlockZ = -1;
 	private Block mHitBlock = NB;
 	private int mHitBlockMeta = 0;
-	private boolean inGround = false;
+	private boolean inGround = F;
 	private int mTicksAlive = 0;
 	private int ticksInAir = 0;
 	private int mKnockback = 0;
@@ -115,7 +115,7 @@ public class EntityArrow_Material extends EntityProjectile {
 		if (tBlock.getMaterial() != Material.air) {
 			tBlock.setBlockBoundsBasedOnState(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ);
 			AxisAlignedBB axisalignedbb = tBlock.getCollisionBoundingBoxFromPool(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ);
-			if (axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(posX, posY, posZ))) inGround = true;
+			if (axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(posX, posY, posZ))) inGround = T;
 		}
 		
 		if (arrowShake > 0) arrowShake--;
@@ -123,7 +123,7 @@ public class EntityArrow_Material extends EntityProjectile {
 		if (inGround) {
 			int j = worldObj.getBlockMetadata(mHitBlockX, mHitBlockY, mHitBlockZ);
 			if (tBlock != mHitBlock || j != mHitBlockMeta) {
-				inGround = false;
+				inGround = F;
 				motionX *= (rand.nextFloat() * 0.2F);
 				motionY *= (rand.nextFloat() * 0.2F);
 				motionZ *= (rand.nextFloat() * 0.2F);
@@ -134,13 +134,14 @@ public class EntityArrow_Material extends EntityProjectile {
 			ticksInAir++;
 			Vec3 vec31 = Vec3.createVectorHelper(posX, posY, posZ);
 			Vec3 vec3 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
-			MovingObjectPosition tVector = worldObj.func_147447_a(vec31, vec3, false, true, false);
+			MovingObjectPosition tVector = worldObj.func_147447_a(vec31, vec3, F, T, F);
 			vec31 = Vec3.createVectorHelper(posX, posY, posZ);
 			vec3 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
 			
 			if (tVector != null) vec3 = Vec3.createVectorHelper(tVector.hitVec.xCoord, tVector.hitVec.yCoord, tVector.hitVec.zCoord);
 			
 			Entity tHitEntity = null;
+			@SuppressWarnings("rawtypes")
 			List tAllPotentiallyHitEntities = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
 			double tSmallestDistance = Double.MAX_VALUE;
 			

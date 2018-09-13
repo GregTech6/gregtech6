@@ -44,7 +44,7 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 	@Override
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aPlayer != null && SIDES_VALID[aSide] && !(aPlayer instanceof FakePlayer) && WD.obstructed(aWorld, aX, aY, aZ, aSide)) return F;
-		List<String> tChatReturn = new ArrayListNoNulls();
+		List<String> tChatReturn = new ArrayListNoNulls<>();
 		long tDamage = 10000;
 		if (RNGSUS.nextInt(100)<GT_Mod.gregtechproxy.mFlintChance) tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer != null && aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);

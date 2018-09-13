@@ -83,7 +83,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
@@ -142,10 +142,10 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 			mTemperature = ((BlockLongDistPipe)aBlock).mTemperatures[aMetaData];
 			if (mTemperature <= 0) return;
 			HashSetNoNulls<ChunkCoordinates>
-			tNewChecks	= new HashSetNoNulls(),
-			tOldChecks	= new HashSetNoNulls(F, getCoords()),
-			tToCheck	= new HashSetNoNulls(F, getOffsetN(mFacing, 1)),
-			tWires		= new HashSetNoNulls();
+			tNewChecks	= new HashSetNoNulls<>(),
+			tOldChecks	= new HashSetNoNulls<>(F, getCoords()),
+			tToCheck	= new HashSetNoNulls<>(F, getOffsetN(mFacing, 1)),
+			tWires		= new HashSetNoNulls<>();
 			
 			while (!tToCheck.isEmpty()) {
 				for (ChunkCoordinates aCoords : tToCheck) {

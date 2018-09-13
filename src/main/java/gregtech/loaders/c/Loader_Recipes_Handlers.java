@@ -60,6 +60,7 @@ import net.minecraftforge.fluids.FluidStack;
  */
 public class Loader_Recipes_Handlers implements Runnable {
 	@Override
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void run() {OUT.println("GT_Mod: Doing Recipe Map Handlers.");
 		RM.Sifting		.add(new RecipeMapHandlerPrefix(pebbles							, 1, null, 0, NF,  16, 0,	512, NF, dust				, 3, null		, 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		
@@ -534,6 +535,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		sExtruderNormal = sExtruderSimple = null;
 	}
 	
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private static ICondition<OreDictMaterial> sExtruderSimple = new And(ANTIMATTER.NOT, EXTRUDER_SIMPLE, EXTRUDER, fullforge()), sExtruderNormal = new And(ANTIMATTER.NOT, EXTRUDER_SIMPLE.NOT, EXTRUDER, fullforge());
 	
 	private static void addExtruderRecipe(OreDictPrefix aInput, OreDictPrefix aOutput, boolean aHot, ItemStack aShape) {
@@ -547,14 +549,14 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)	, 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, sExtruderSimple));
 	}
 	
-	private static void addExtruderRecipe(OreDictPrefix aInput, OreDictPrefix aOutput, boolean aHot, ItemStack aShape, ICondition aCondition) {
+	private static void addExtruderRecipe(OreDictPrefix aInput, OreDictPrefix aOutput, boolean aHot, ItemStack aShape, ICondition<OreDictMaterial> aCondition) {
 		if (aInput == aOutput) return;
 		long tInputAmount = 1, tOutputAmount = 1;
 		if (aOutput.mAmount > aInput.mAmount) tInputAmount = UT.Code.divup(aOutput.mAmount, aInput.mAmount); else tOutputAmount = aInput.mAmount / aOutput.mAmount;
 		if (tInputAmount > 64 || tOutputAmount < 1) return;
 		if (tOutputAmount > 64) tOutputAmount = 64;
 		if (aHot)
-		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 96, 0														, 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And(aCondition, sExtruderNormal)));
-		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)	, 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And(aCondition, sExtruderSimple)));
+		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 96, 0														, 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And<>(aCondition, sExtruderNormal)));
+		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)	, 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And<>(aCondition, sExtruderSimple)));
 	}
 }

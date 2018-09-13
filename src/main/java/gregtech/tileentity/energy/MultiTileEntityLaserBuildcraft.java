@@ -50,7 +50,7 @@ public class MultiTileEntityLaserBuildcraft extends TileEntityBase10EnergyConver
 	static {LH.add("gt.tooltip.assemblylaser", "Place directly ontop of the Laser powered BC Device");}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get("gt.tooltip.assemblylaser"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}

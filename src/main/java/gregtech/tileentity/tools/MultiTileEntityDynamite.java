@@ -78,7 +78,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.TOOLTIP_BLASTPOWER) + Chat.WHITE + mMaxExplosionResistance);
 		aList.add(Chat.CYAN		+ LH.get(LH.TOOLTIP_BLASTRANGE) + Chat.WHITE + "3x3x3");
 		if (mFortune > 0)
@@ -132,7 +132,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return mDontDrop ? new ArrayListNoNulls() : super.getDrops(aFortune, aSilkTouch);
+		return mDontDrop ? new ArrayListNoNulls<ItemStack>() : super.getDrops(aFortune, aSilkTouch);
 	}
 	
 	@Override
@@ -198,6 +198,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		}
 		
 		@Override
+		@SuppressWarnings({"unchecked", "rawtypes"})
 		public void doExplosionA() {
 			for (int tX = UT.Code.roundDown(explosionX) - 1; tX <= UT.Code.roundDown(explosionX) + 1; tX++) for (int tY = UT.Code.roundDown(explosionY) - 1; tY <= UT.Code.roundDown(explosionY) + 1; tY++) for (int tZ = UT.Code.roundDown(explosionZ) - 1; tZ <= UT.Code.roundDown(explosionZ) + 1; tZ++) {
 				Block tBlock = mWorld.getBlock(tX, tY, tZ);
@@ -211,6 +212,7 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		}
 		
 		@Override
+		@SuppressWarnings("rawtypes")
 		public void doExplosionB(boolean aEffects) {
 			mWorld.playSoundEffect(explosionX, explosionY, explosionZ, "random.explode", 4.0F, (1.0F + (RNGSUS.nextFloat() - RNGSUS.nextFloat()) * 0.2F) * 0.7F);
 			if (explosionSize >= 2.0F && isSmoking) {

@@ -42,6 +42,7 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 	public final ChestGenHooks mHookToReplaceChestsOf;
 	public final String mCategory;
 	
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public ChestGenHooksChestReplacer(String aCategory) {
 		super(aCategory);
 		mCategory = aCategory;

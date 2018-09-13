@@ -43,7 +43,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenErebusRocks extends WorldgenObject {
-	public WorldgenErebusRocks(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenErebusRocks(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

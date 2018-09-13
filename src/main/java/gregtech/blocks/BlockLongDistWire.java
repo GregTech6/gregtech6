@@ -47,7 +47,7 @@ public class BlockLongDistWire extends BlockBaseMachineUpdate {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get(LH.WIRE_STATS_VOLTAGE) + (VMAX[mTiers[aMeta]]) + " " + TD.Energy.EU.getLocalisedNameShort() + " (" + VN[mTiers[aMeta]] + ")");
 		aList.add(Chat.CYAN + LH.get(LH.WIRE_STATS_AMPERAGE) + "UNLIMITED");
 		aList.add(Chat.CYAN + LH.get(LH.WIRE_STATS_LOSS) + "0.125 " + TD.Energy.EU.getLocalisedNameShort() + "/m");

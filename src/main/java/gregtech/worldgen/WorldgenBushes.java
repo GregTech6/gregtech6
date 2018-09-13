@@ -44,7 +44,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenBushes extends WorldgenObject {
-	public WorldgenBushes(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenBushes(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

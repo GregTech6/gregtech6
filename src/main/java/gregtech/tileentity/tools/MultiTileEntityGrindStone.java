@@ -76,7 +76,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_GRINDSTONE_INIT));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_GRINDSTONE_USAGE));

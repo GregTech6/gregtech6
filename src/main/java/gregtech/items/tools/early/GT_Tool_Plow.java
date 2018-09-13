@@ -40,7 +40,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_Plow extends ToolStats {
-	private ThreadLocal sIsHarvestingRightNow = new ThreadLocal();
+	private ThreadLocal<Object> sIsHarvestingRightNow = new ThreadLocal<>();
 	
 	@Override
 	public int getToolDamagePerDropConversion() {

@@ -58,7 +58,8 @@ public class WorldgenStructure extends WorldgenObject {
 	public final int mProbability, mMinSize, mMaxSize, mMinY, mMaxY, mRoomChance;
 	public final boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mZPM;
 	
-	public WorldgenStructure(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalMyst, List... aLists) {
+	@SafeVarargs
+	public WorldgenStructure(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalMyst, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mProbability		= Math.max(1,			ConfigsGT.WORLDGEN.get(mCategory, "Probability"		, aProbability));
 		mMinSize			= Math.max(2,			ConfigsGT.WORLDGEN.get(mCategory, "MinSize"			, aMinSize));
@@ -92,7 +93,7 @@ public class WorldgenStructure extends WorldgenObject {
 		
 		BlockStones tPrimaryBlock = (BlockStones)BlocksGT.stones[aRandom.nextInt(BlocksGT.stones.length)], tSecondaryBlock = (BlockStones)BlocksGT.stones[aRandom.nextInt(BlocksGT.stones.length)];
 		
-		HashSetNoNulls<ChunkCoordinates> tLightUpdateCoords = new HashSetNoNulls();
+		HashSetNoNulls<ChunkCoordinates> tLightUpdateCoords = new HashSetNoNulls<>();
 		
 		byte[][] tRoomLayout = new byte[2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)][2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)];
 		

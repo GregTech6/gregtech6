@@ -92,7 +92,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.1") + mMaxStorage);
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.2"));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CUTTER));

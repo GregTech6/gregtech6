@@ -26,6 +26,7 @@ import java.util.List;
 
 import gregapi.data.LH;
 import gregapi.lang.LanguageHandler;
+import gregapi.oredict.OreDictMaterial;
 
 /**
  * @author Gregorius Techneticies
@@ -43,7 +44,7 @@ public final class TagData implements ICondition<ITagDataContainer> {
 	public String mChatFormat = "";
 	
 	@SuppressWarnings("unchecked")
-	public final ICondition<ITagDataContainer> NOT = new ICondition.Not(this);
+	public final ICondition<OreDictMaterial> NOT = new ICondition.Not(this);
 	
 	public final List<TagData> AS_LIST = Collections.unmodifiableList(Arrays.asList(this));
 	

@@ -45,7 +45,7 @@ public class Behavior_Cropnalyzer extends AbstractBehaviorDefault {
 	@Override
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {
 		if (aPlayer instanceof EntityPlayerMP) {
-			ArrayList<String> tList = new ArrayListNoNulls();
+			ArrayList<String> tList = new ArrayListNoNulls<>();
 			long tUsedEnergy = getCropScan(tList, aWorld, aX, aY, aZ);
 			if (tUsedEnergy <= 0) return F;
 			if (aItem.useEnergy(TD.Energy.EU, aStack, tUsedEnergy, aPlayer, aPlayer.inventory, aWorld, aX, aY, aZ, T)) UT.Entities.sendchat(aPlayer, tList, F);
@@ -68,7 +68,7 @@ public class Behavior_Cropnalyzer extends AbstractBehaviorDefault {
 	public long getCropScan(ArrayList<String> aList, World aWorld, int aX, int aY, int aZ) {
 		if (aList == null || !MD.IC2.mLoaded) return 0;
 		
-		ArrayList<String> rList = new ArrayListNoNulls();
+		ArrayList<String> rList = new ArrayListNoNulls<>();
 		long rEUAmount = 0;
 		
 		TileEntity tTileEntity = WD.te(aWorld, aX, aY, aZ, T);

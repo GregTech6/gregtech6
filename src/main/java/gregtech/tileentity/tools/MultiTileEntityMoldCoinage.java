@@ -89,7 +89,7 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD_COINAGE));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD_SELECT) + " (Doesn't work right now)");
 		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");

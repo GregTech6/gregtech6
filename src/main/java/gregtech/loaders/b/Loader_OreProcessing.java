@@ -78,6 +78,7 @@ public class Loader_OreProcessing implements Runnable {
 	static final long RECIPE_BITS = CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT;
 	
 	@Override
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void run() {
 		OUT.println("GT_Mod: Register Ore processing.");
 		
@@ -122,16 +123,16 @@ public class Loader_OreProcessing implements Runnable {
 		
 		}};
 		
-		plate						.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
-		plateDouble					.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, casingMachineDouble, blockPlate, blockSolid, blockIngot, blockDust));
-		plateTriple					.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, blockPlate, blockSolid, blockIngot, casingMachineDouble, blockDust));
-		plateQuadruple				.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, blockIngot, blockPlate, blockSolid, casingMachineQuadruple, blockDust));
-		plateQuintuple				.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, casingMachineQuadruple, blockIngot, blockPlate, blockSolid, blockDust));
-		plateDense					.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, casingMachineDense, blockSolid, blockPlate, blockIngot, blockDust));
-		plateCurved					.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, casingMachine, blockSolid, blockPlate, blockIngot, blockDust));
-		plateGem					.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, blockGem, blockPlateGem, blockDust));
-		sheetGt						.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
-		foil						.addListener(new OreProcessing_CoversMulti(ICondition.TRUE, foil));
+		plate						.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
+		plateDouble					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDouble, blockPlate, blockSolid, blockIngot, blockDust));
+		plateTriple					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockPlate, blockSolid, blockIngot, casingMachineDouble, blockDust));
+		plateQuadruple				.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockIngot, blockPlate, blockSolid, casingMachineQuadruple, blockDust));
+		plateQuintuple				.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineQuadruple, blockIngot, blockPlate, blockSolid, blockDust));
+		plateDense					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachineDense, blockSolid, blockPlate, blockIngot, blockDust));
+		plateCurved					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, casingMachine, blockSolid, blockPlate, blockIngot, blockDust));
+		plateGem					.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockGem, blockPlateGem, blockDust));
+		sheetGt						.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
+		foil						.addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, foil));
 		
 		scrapGt						.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
 		rockGt						.addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
@@ -243,7 +244,7 @@ public class Loader_OreProcessing implements Runnable {
 		arrowGtPlastic				.addListener(new OreProcessing_Shapeless( 1, tCategory + "arrowsPlastic"			, new Object[] {toolHeadArrow, arrowGtPlastic.dat(MT.Empty)	}, ANTIMATTER.NOT));
 		cableGt01					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {wireGt01, plate.dat(MT.Rubber)											}, ANTIMATTER.NOT));
 		cableGt02					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {wireGt02, plate.dat(MT.Rubber)											}, ANTIMATTER.NOT));
-		chemtube					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {dustTiny, chemtube.mat(MT.Empty, 1)									}, ICondition.TRUE));
+		chemtube					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {dustTiny, chemtube.mat(MT.Empty, 1)									}, (ICondition<OreDictMaterial>)ICondition.TRUE));
 		dustTiny					.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {chemtube																}, meltmin(DEF_ENV_TEMP)));
 		toolHeadRawUniversalSpade	.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadShovel		, OreDictToolNames.file, OreDictToolNames.saw		}, new And(ANTIMATTER.NOT, COATED.NOT)));
 		toolHeadRawUniversalSpade	.addListener(new OreProcessing_Shapeless( 1, null, new Object[] {toolHeadSpade		, OreDictToolNames.file, OreDictToolNames.saw		}, new And(ANTIMATTER.NOT, COATED.NOT)));
@@ -258,10 +259,10 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_CoversSimple implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		public final OreDictPrefix mTargetPrefix;
 		
-		public OreProcessing_CoversSimple(ICondition aCondition, OreDictPrefix aTargetPrefix) {
+		public OreProcessing_CoversSimple(ICondition<OreDictMaterial> aCondition, OreDictPrefix aTargetPrefix) {
 			mTargetPrefix = aTargetPrefix;
 			mCondition = aCondition;
 		}
@@ -275,10 +276,10 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_CoversMulti implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		public final OreDictPrefix[] mTargetPrefixes;
 		
-		public OreProcessing_CoversMulti(ICondition aCondition, OreDictPrefix... aTargetPrefixes) {
+		public OreProcessing_CoversMulti(ICondition<OreDictMaterial> aCondition, OreDictPrefix... aTargetPrefixes) {
 			mTargetPrefixes = aTargetPrefixes;
 			mCondition = aCondition;
 		}
@@ -298,7 +299,7 @@ public class Loader_OreProcessing implements Runnable {
 		public void onRecycleableRegistration(OreDictRecyclingContainer aEvent) {
 			if (aEvent.mItemData == null || ST.container(aEvent.mStack, T) != null || (aEvent.mItemData.mPrefix != null && aEvent.mItemData.mPrefix.containsAny(ORE_PROCESSING_DIRTY, ORE))) return;
 			
-			List<OreDictMaterialStack> tList = new ArrayListNoNulls();
+			List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 			for (OreDictMaterialStack tMaterial : aEvent.mItemData.getAllMaterialStacks()) {
 				if (tMaterial.mMaterial == MT.Paper) RM.Mortar.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(tMaterial));
 				if (tMaterial.mMaterial.mTargetSmelting.mAmount > 0 && tMaterial.mMaterial.contains(MELTING) && !tMaterial.mMaterial.contains(BLACKLISTED_SMELTER)) OM.stack(UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F), tMaterial.mMaterial.mTargetSmelting.mMaterial).addToList(tList);
@@ -327,11 +328,11 @@ public class Loader_OreProcessing implements Runnable {
 		public void onRecycleableRegistration(OreDictRecyclingContainer aEvent) {
 			if (aEvent.mItemData == null || (aEvent.mItemData.mPrefix != null && aEvent.mItemData.mPrefix.contains(INGOT_BASED))) return;
 			
-			List<OreDictMaterialStack> tList = new ArrayListNoNulls();
+			List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 			for (OreDictMaterialStack tMaterial : aEvent.mItemData.getAllMaterialStacks()) if (tMaterial.mMaterial.mTargetSmelting.mAmount > 0 && tMaterial.mMaterial.contains(MELTING)) OM.stack(UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F), tMaterial.mMaterial.mTargetSmelting.mMaterial).addToList(tList);
 			if (tList.isEmpty()) return;
 			
-			ArrayListNoNulls<ItemStack> tIngots = new ArrayListNoNulls();
+			ArrayListNoNulls<ItemStack> tIngots = new ArrayListNoNulls<>();
 			for (OreDictMaterialStack tMaterial : tList) tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
 			
 			if (!tIngots.isEmpty()) RM.CrucibleSmelting.addFakeRecipe(F, new ItemStack[] {aEvent.mStack}, tIngots.toArray(ZL_IS), null, null, null, null, 0, 0, aEvent.mItemData.mMaterial.mMaterial.mMeltingPoint);
@@ -362,7 +363,7 @@ public class Loader_OreProcessing implements Runnable {
 			}
 		}
 		
-		private ArrayList<OreDictMaterial> mAlreadyListedOres = new ArrayListNoNulls(1000);
+		private ArrayList<OreDictMaterial> mAlreadyListedOres = new ArrayListNoNulls<>(1000);
 		
 		private boolean registerStandardOreRecipes(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aOreStack, int aMultiplier) {
 			if (aOreStack == null || aMaterial == null) return F;
@@ -392,7 +393,7 @@ public class Loader_OreProcessing implements Runnable {
 			if (tSmeltInto == null) tSmeltInto = OM.gem(aMaterial.mTargetSmelting);
 			if (tCrushed == null) tCrushed = dustImpure.mat(aMaterial, ST.amount(UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier), tCleaned, tDust, tGem), aMaterial.mOreMultiplier * aMultiplier);
 			
-			ArrayList<ItemStack> tByProductStacks = new ArrayListNoNulls();
+			ArrayList<ItemStack> tByProductStacks = new ArrayListNoNulls<>();
 			
 			for (OreDictMaterial tMat : aMaterial.mByProducts) {
 				ItemStack tByProduct = OM.dustOrIngot(tMat, U);
@@ -451,11 +452,11 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_Maceration implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final OreDictPrefix mTargetPrefix;
 		private final long mAmount;
 		
-		public OreProcessing_Maceration(OreDictPrefix aTargetPrefix, long aAmount, ICondition aCondition) {
+		public OreProcessing_Maceration(OreDictPrefix aTargetPrefix, long aAmount, ICondition<OreDictMaterial> aCondition) {
 			mTargetPrefix = aTargetPrefix;
 			mCondition = aCondition;
 			mAmount = aAmount;
@@ -470,10 +471,10 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_GlassTube implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final long mMaterialAmount;
 		
-		public OreProcessing_GlassTube(long aOutputMaterialAmount, ICondition aCondition) {
+		public OreProcessing_GlassTube(long aOutputMaterialAmount, ICondition<OreDictMaterial> aCondition) {
 			mCondition = aCondition;
 			mMaterialAmount = aOutputMaterialAmount;
 		}
@@ -493,10 +494,10 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_PlantSqueezing implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final long mOutputMaterialAmount;
 		
-		public OreProcessing_PlantSqueezing(long aOutputMaterialAmount, ICondition aCondition) {
+		public OreProcessing_PlantSqueezing(long aOutputMaterialAmount, ICondition<OreDictMaterial> aCondition) {
 			mCondition = aCondition;
 			mOutputMaterialAmount = aOutputMaterialAmount;
 		}
@@ -515,11 +516,11 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_Welding implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final OreDictPrefix mTargetPrefix;
 		private final long mInputAmount, mOutputAmount;
 		
-		public OreProcessing_Welding(OreDictPrefix aTargetPrefix, long aInputAmount, long aOutputAmount, ICondition aCondition) {
+		public OreProcessing_Welding(OreDictPrefix aTargetPrefix, long aInputAmount, long aOutputAmount, ICondition<OreDictMaterial> aCondition) {
 			mTargetPrefix = aTargetPrefix;
 			mCondition = aCondition;
 			mInputAmount = aInputAmount;
@@ -538,10 +539,10 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_Decomposition implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final RecipeMap mTargetRecipeMap;
 		
-		public OreProcessing_Decomposition(RecipeMap aTargetRecipeMap, ICondition aCondition) {
+		public OreProcessing_Decomposition(RecipeMap aTargetRecipeMap, ICondition<OreDictMaterial> aCondition) {
 			mCondition = aCondition;
 			mTargetRecipeMap = aTargetRecipeMap;
 		}
@@ -551,8 +552,8 @@ public class Loader_OreProcessing implements Runnable {
 			if (mCondition.isTrue(aEvent.mMaterial)) {
 				IOreDictConfigurationComponent tComponents = aEvent.mMaterial.mComponents;
 				if (tComponents != null && tComponents.getCommonDivider() <= 64) {
-					ArrayListNoNulls<ItemStack> tStackOutputs = new ArrayListNoNulls();
-					ArrayListNoNulls<FluidStack> tFluidOutputs = new ArrayListNoNulls();
+					ArrayListNoNulls<ItemStack> tStackOutputs = new ArrayListNoNulls<>();
+					ArrayListNoNulls<FluidStack> tFluidOutputs = new ArrayListNoNulls<>();
 					long tAmount = 0;
 					
 					for (OreDictMaterialStack tMaterial : tComponents.getUndividedComponents()) {
@@ -571,10 +572,10 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_Smelting implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final long mTargetAmount;
 		
-		public OreProcessing_Smelting(long aTargetAmount, ICondition aCondition) {
+		public OreProcessing_Smelting(long aTargetAmount, ICondition<OreDictMaterial> aCondition) {
 			mTargetAmount = aTargetAmount;
 			mCondition = aCondition;
 		}
@@ -592,7 +593,7 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_Shapeless implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final String mCategoryName;
 		private final Object[] mRecipe;
 		private final long mOutputAmount;
@@ -600,7 +601,7 @@ public class Loader_OreProcessing implements Runnable {
 		/**
 		 * Converts the Prefixes inside the aRecipe Array automatically to aRecipe[i].get(aEvent.mMaterial)
 		 */
-		public OreProcessing_Shapeless(long aOutputAmount, String aCategoryName, Object[] aRecipe, ICondition aCondition) {
+		public OreProcessing_Shapeless(long aOutputAmount, String aCategoryName, Object[] aRecipe, ICondition<OreDictMaterial> aCondition) {
 			mOutputAmount = aOutputAmount;
 			mRecipe = aRecipe;
 			mCondition = aCondition;
@@ -624,7 +625,7 @@ public class Loader_OreProcessing implements Runnable {
 	}
 	
 	public static class OreProcessing_CraftFrom implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final String[][] mRecipes;
 		private final String mCategoryName;
 		private final OreDictPrefix mSpecialPrefix1, mSpecialPrefix2, mSpecialPrefix3;
@@ -645,7 +646,7 @@ public class Loader_OreProcessing implements Runnable {
 		 * S = stick
 		 * H = stick, made of Handle Material
 		 */
-		public OreProcessing_CraftFrom(long aOutputAmount, String aCategoryName, String[][] aRecipes, OreDictPrefix aSpecialPrefix1, OreDictPrefix aSpecialPrefix2, OreDictPrefix aSpecialPrefix3, Object aSpecialObject1, Object aSpecialObject2, ICondition aCondition) {
+		public OreProcessing_CraftFrom(long aOutputAmount, String aCategoryName, String[][] aRecipes, OreDictPrefix aSpecialPrefix1, OreDictPrefix aSpecialPrefix2, OreDictPrefix aSpecialPrefix3, Object aSpecialObject1, Object aSpecialObject2, ICondition<OreDictMaterial> aCondition) {
 			mSpecialPrefix1 = aSpecialPrefix1;
 			mSpecialPrefix2 = aSpecialPrefix2;
 			mSpecialPrefix3 = aSpecialPrefix3;

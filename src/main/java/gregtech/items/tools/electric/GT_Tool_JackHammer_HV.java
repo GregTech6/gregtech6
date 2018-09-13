@@ -105,7 +105,7 @@ public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 		int rConversions = 0;
 		Recipe tRecipe;
 		if (aBlock.hasTileEntity(aMetaData) || null == (tRecipe = RM.Hammer.findRecipe(null, null, true, Integer.MAX_VALUE, null, ZL_FS, ST.make(aBlock, 1, aMetaData)))) {
-			List<ItemStack> tDrops = new ArrayListNoNulls();
+			List<ItemStack> tDrops = new ArrayListNoNulls<>();
 			for (int i = 0; i < aDrops.size(); i++) {
 				tRecipe = RM.Hammer.findRecipe(null, null, true, Integer.MAX_VALUE, null, ZL_FS, ST.amount(1, aDrops.get(i)));
 				if (tRecipe != null) {

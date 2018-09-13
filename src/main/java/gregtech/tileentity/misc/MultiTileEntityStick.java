@@ -71,7 +71,7 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return new ArrayListNoNulls(F, WD.dimAETHER(worldObj) ? OP.stick.mat(MT.Skyroot, 1+rng(1+aFortune)) : WD.dimBTL(worldObj) ? OP.stick.mat(MT.Weedwood, 1+rng(1+aFortune)) : ST.make(Items.stick, 1+rng(1+aFortune), 0));
+		return new ArrayListNoNulls<>(F, WD.dimAETHER(worldObj) ? OP.stick.mat(MT.Skyroot, 1+rng(1+aFortune)) : WD.dimBTL(worldObj) ? OP.stick.mat(MT.Weedwood, 1+rng(1+aFortune)) : ST.make(Items.stick, 1+rng(1+aFortune), 0));
 	}
 	
 	@Override

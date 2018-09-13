@@ -99,7 +99,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE + LH.get(LH.NO_GUI_CLICK_TO_INTERACT));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
@@ -254,7 +254,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

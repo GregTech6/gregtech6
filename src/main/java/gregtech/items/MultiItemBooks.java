@@ -126,7 +126,7 @@ public class MultiItemBooks extends MultiItemRandom {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addAdditionalToolTips(aList, aStack, aF3_H);
 		String tTitle = UT.NBT.getBookTitle(aStack);
 		if (UT.Code.stringValid(tTitle)) {

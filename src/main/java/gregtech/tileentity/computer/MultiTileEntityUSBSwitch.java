@@ -49,7 +49,7 @@ public class MultiTileEntityUSBSwitch extends TileEntityBase08DataSwitch {
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.usb.switch.tooltip"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}

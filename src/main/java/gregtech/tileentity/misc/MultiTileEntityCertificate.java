@@ -57,7 +57,7 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle implements IMTE_OnRegistration, IMTE_OnDespawn, IMTE_GetLifeSpan, IMTE_OnServerLoad, IMTE_OnServerSave, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
-	public static final ArrayListNoNulls<String> ALREADY_RECEIVED = new ArrayListNoNulls();
+	public static final ArrayListNoNulls<String> ALREADY_RECEIVED = new ArrayListNoNulls<>();
 	
 	@Override
 	public void onServerSave(File aSaveLocation) {
@@ -123,7 +123,7 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 	static {LH.add("gt.tooltip.certificate", "Certified Support of GregTech");}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.DGRAY + LH.get("gt.tooltip.certificate"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}

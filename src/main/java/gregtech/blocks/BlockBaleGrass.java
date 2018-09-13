@@ -126,7 +126,7 @@ public class BlockBaleGrass extends BlockBaseBale {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		super.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
 		if ((aMeta & 3) == 0) {
 			aList.add(LH.Chat.CYAN + LH.get("gt.tooltip.bale"));

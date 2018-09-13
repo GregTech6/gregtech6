@@ -124,7 +124,7 @@ public class MultiTileEntityLargeTurbineSteam extends TileEntityBase11MultiBlock
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.steamturbine.1"));
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.steamturbine.2"));
@@ -134,7 +134,7 @@ public class MultiTileEntityLargeTurbineSteam extends TileEntityBase11MultiBlock
 	}
 	
 	@Override
-	public void addToolTipsEnergy(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTipsEnergy(aList, aStack, aF3_H);
 		aList.add(Chat.ORANGE	+ LH.get(LH.EMITS_USED_STEAM) + " ("+LH.get(LH.FACE_SIDES)+", 95%)");
 	}

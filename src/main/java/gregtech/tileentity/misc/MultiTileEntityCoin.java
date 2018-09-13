@@ -109,7 +109,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls();
+		ArrayListNoNulls<ItemStack> rList = new ArrayListNoNulls<>();
 		short tCoinAmount = 0;
 		for (int i = 0; i < mCoinStackSizes.length; i++) tCoinAmount += mCoinStackSizes[i];
 		while (tCoinAmount > 0) {
@@ -120,7 +120,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 		return rList;
 	}
 	
-	public static Map<OreDictMaterial, ItemStack> COIN_MAP = new HashMap();
+	public static Map<OreDictMaterial, ItemStack> COIN_MAP = new HashMap<>();
 	public static MultiTileEntityRegistry MTE_REGISTRY = null;
 	public static MultiTileEntityCoin INSTANCE;
 	
@@ -138,7 +138,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + mMaterial.getLocal() + (mIsUnique?" (Unique)":""));
 		aList.add(LH.Chat.DGRAY	+ LH.get("gt.tooltip.coins.1"));
 		aList.add(LH.Chat.DGRAY	+ LH.get("gt.tooltip.coins.2"));
@@ -325,7 +325,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		aList.addAll(COIN_MAP.values());
 		return F;
 	}
@@ -451,7 +451,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[14], PX_N[ 0]);}
 	
 	@Override
-	public void addCollisionBoxesToList(AxisAlignedBB aAABB, List aList, Entity aEntity) {
+	public void addCollisionBoxesToList(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		for (byte i = 0; i < 16; i++) if (mCoinStackSizes[i] > 0) box(aAABB, aList, PX_P[i/4]*4, 0, PX_P[i%4]*4, PX_P[i/4]*4+PX_P[4], mCoinStackSizes[i]/(float)COIN_STACKSIZE, PX_P[i%4]*4+PX_P[4]);
 	}
 	

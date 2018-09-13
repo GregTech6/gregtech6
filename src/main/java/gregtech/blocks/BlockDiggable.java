@@ -71,9 +71,9 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
 		switch(aMeta) {
-		case  0: return new ArrayListNoNulls(F, IL.Mud_Ball.get(4));
-		case  1: return new ArrayListNoNulls(F, IL.Clay_Ball_Brown.get(4));
-		default: return new ArrayListNoNulls(F, ST.make(this, 1, aMeta));
+		case  0: return new ArrayListNoNulls<>(F, IL.Mud_Ball.get(4));
+		case  1: return new ArrayListNoNulls<>(F, IL.Clay_Ball_Brown.get(4));
+		default: return new ArrayListNoNulls<>(F, ST.make(this, 1, aMeta));
 		}
 	}
 	

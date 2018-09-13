@@ -315,7 +315,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		return this;
 	}
 	
-	public OreDictPrefix setCondition(@SuppressWarnings("rawtypes") ICondition aCondition) {
+	public OreDictPrefix setCondition(ICondition<?> aCondition) {
 		mCondition = aCondition==null?ICondition.FALSE:aCondition;
 		return this;
 	}

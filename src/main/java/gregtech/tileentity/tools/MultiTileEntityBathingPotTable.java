@@ -52,7 +52,7 @@ public class MultiTileEntityBathingPotTable extends MultiTileEntityBathingPot {
 	}
 	
 	@Override
-	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List aList, Entity aEntity) {
+	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		box(aAABB, aList, PX_P[14], PX_P[ 8], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		box(aAABB, aList, PX_P[ 0], PX_P[ 8], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		box(aAABB, aList, PX_P[ 0], PX_P[ 8], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]);

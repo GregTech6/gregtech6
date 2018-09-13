@@ -42,7 +42,7 @@ import net.minecraft.world.World;
  */
 public class MultiTileEntityZPM extends TileEntityBase08Battery implements IMTE_GetLightValue {
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (UT.Code.inside(1, mCapacity-1, mEnergy)) {
 			super.addToolTips(aList, aStack, aF3_H);
 		} else {

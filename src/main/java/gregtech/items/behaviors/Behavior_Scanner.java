@@ -48,7 +48,7 @@ public class Behavior_Scanner extends AbstractBehaviorDefault {
 	@Override
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {
 		if (aPlayer instanceof EntityPlayerMP) {
-			ArrayList<String> tList = new ArrayListNoNulls();
+			ArrayList<String> tList = new ArrayListNoNulls<>();
 			if (aItem.useEnergy(TD.Energy.EU, aStack, WD.scan(tList, aPlayer, aWorld, mScanLevel, aX, aY, aZ, aSide, hitX, hitY, hitZ), aPlayer, aPlayer.inventory, aWorld, aX, aY, aZ, T)) UT.Entities.sendchat(aPlayer, tList, F);
 			return T;
 		}

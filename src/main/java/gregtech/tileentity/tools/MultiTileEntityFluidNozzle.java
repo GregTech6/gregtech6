@@ -61,7 +61,7 @@ public class MultiTileEntityFluidNozzle extends TileEntityBase09FacingSingle imp
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_TANK));
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 	}

@@ -88,7 +88,7 @@ public class Behavior_Lighter extends AbstractBehaviorDefault {
 			UT.Sounds.send(aWorld, SFX.MC_IGNITE, 1.0F, 1.0F, aX, aY, aZ);
 			long tDamage = 0;
 			if (RNGSUS.nextInt(10000) < mChance) {
-				List<String> tChatReturn = new ArrayListNoNulls();
+				List<String> tChatReturn = new ArrayListNoNulls<>();
 				tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 3, aPlayer, tChatReturn, aPlayer.inventory, aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 				UT.Entities.sendchat(aPlayer, tChatReturn, F);
 			} else {
@@ -102,7 +102,7 @@ public class Behavior_Lighter extends AbstractBehaviorDefault {
 			UT.Sounds.send(aWorld, SFX.MC_IGNITE, 1.0F, 1.0F, aX, aY, aZ);
 			long tDamage = 0;
 			if (RNGSUS.nextInt(10000) < mChance) {
-				List<String> tChatReturn = new ArrayListNoNulls();
+				List<String> tChatReturn = new ArrayListNoNulls<>();
 				tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 3, aPlayer, tChatReturn, aPlayer.inventory, aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 				UT.Entities.sendchat(aPlayer, tChatReturn, F);
 			} else {

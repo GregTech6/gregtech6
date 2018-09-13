@@ -72,7 +72,7 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 	@Override
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		if (aWorld.isRemote || aPlayer.isSneaking() || !aStack.hasTagCompound()) return aStack;
-		ArrayListNoNulls<ChunkCoordinates> tToBeKept = new ArrayListNoNulls();
+		ArrayListNoNulls<ChunkCoordinates> tToBeKept = new ArrayListNoNulls<>();
 		for (ChunkCoordinates tCoords : getCoordinateList(aStack.getTagCompound(), aWorld.provider.dimensionId)) {
 			if (Math.abs(tCoords.posX - aPlayer.posX) <= 128 && Math.abs(tCoords.posY - aPlayer.posY) <= 128 && Math.abs(tCoords.posZ - aPlayer.posZ) <= 128) {
 				TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
@@ -87,7 +87,7 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 	}
 	
 	public ArrayListNoNulls<ChunkCoordinates> getCoordinateList(NBTTagCompound aNBT, int aDimension) {
-		ArrayListNoNulls<ChunkCoordinates> rList = new ArrayListNoNulls();
+		ArrayListNoNulls<ChunkCoordinates> rList = new ArrayListNoNulls<>();
 		if (aNBT == null) return rList;
 		NBTTagCompound tNBT = aNBT.getCompoundTag("gt.remote.dim."+aDimension);
 		if (tNBT.hasNoTags()) return rList;

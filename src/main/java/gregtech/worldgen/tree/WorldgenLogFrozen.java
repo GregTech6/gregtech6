@@ -38,7 +38,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenLogFrozen extends WorldgenObject {
-	public WorldgenLogFrozen(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenLogFrozen(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

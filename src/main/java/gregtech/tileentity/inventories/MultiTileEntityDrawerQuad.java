@@ -78,7 +78,7 @@ public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle impl
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

@@ -57,7 +57,7 @@ public class BlockSpikeSharp extends BlockBaseSpike {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		if (aMeta < 8) {
 			aList.add(LH.Chat.ORANGE + "Deals normal Damage to anything touching it!");
 			aList.add(LH.Chat.ORANGE + "Doesn't work on Skeletons, Slimes and Iron Golems.");

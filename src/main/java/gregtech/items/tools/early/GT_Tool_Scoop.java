@@ -98,6 +98,7 @@ public class GT_Tool_Scoop extends ToolStats {
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_scoop, SFX.MC_DIG_CLOTH, getToolDamagePerContainerCraft(), !canBlock()));
 		try {

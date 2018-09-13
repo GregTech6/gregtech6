@@ -91,7 +91,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES)		+ ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		LH.addEnergyToolTips(this, aList, null, mEnergyTypeEmitted, null, LH.get(LH.FACE_TOP));

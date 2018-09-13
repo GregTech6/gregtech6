@@ -91,7 +91,7 @@ public class MultiTileEntityLocker extends TileEntityBase09FacingSingle implemen
 	@Override public boolean getStateRunningSuccessfully() {return UT.Code.containsSomething(getInventory());}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

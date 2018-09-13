@@ -41,7 +41,7 @@ public class MultiTileEntityPanelAsphalt extends MultiTileEntityPanelColored imp
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_WALKSPEED));
 	}
 	

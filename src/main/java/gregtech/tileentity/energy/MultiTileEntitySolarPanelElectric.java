@@ -68,12 +68,12 @@ public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSin
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		addToolTipsEnergy(aList, aStack, aF3_H);
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
-	public void addToolTipsEnergy(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		LH.addEnergyToolTips(this, aList, null, mEnergyTypeEmitted, null, LH.get(LH.FACE_FRONT));
 	}
 	

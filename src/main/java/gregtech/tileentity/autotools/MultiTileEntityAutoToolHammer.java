@@ -71,7 +71,7 @@ public class MultiTileEntityAutoToolHammer extends TileEntityBase09FacingSingle 
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_AUTOHAMMER));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_QUALITY)		+ ": " + Chat.WHITE + mQuality);
 		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, LH.get(LH.FACE_BACK), null);

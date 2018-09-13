@@ -97,7 +97,7 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_CUTTER));
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_MONKEY_WRENCH));

@@ -249,7 +249,7 @@ public class Loader_Recipes_Ores implements Runnable {
 			ItemStack tDust = dust.mat(aMat, 1);
 			if (ST.invalid(tDust)) continue;
 			
-			ArrayListNoNulls<OreDictMaterial> tMagnetList = new ArrayListNoNulls();
+			ArrayListNoNulls<OreDictMaterial> tMagnetList = new ArrayListNoNulls<>();
 			if (aMat.containsAny(MAGNETIC_PASSIVE, MAGNETIC_ACTIVE)) {
 				for (OreDictMaterial tMaterial : aMat.mByProducts) if (!tMaterial.containsAny(MAGNETIC_PASSIVE, MAGNETIC_ACTIVE)) tMagnetList.add(tMaterial);
 			} else {

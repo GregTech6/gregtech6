@@ -156,7 +156,8 @@ public class Loader_Tools implements Runnable {
 			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+((i+7)%8)*2)
 		);
 		
-		GAPI.mBeforePostInit.add(new Runnable() {@Override public void run() {
+		GAPI.mBeforePostInit.add(new Runnable() {@SuppressWarnings({"rawtypes", "unchecked"})
+		@Override public void run() {
 		
 		CR.shapeless(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER, 1, MT.Steel				, MT.Flint	), CR.DEF		, new Object[] {ST.make(Items.flint_and_steel, 1, 0)});
 		CR.shaped(ST.make(Items.flint_and_steel, 1, 0)							, CR.DEL_OTHER_NATIVE_RECIPES			|  CR.DEF_MIR	, "T ", " F", 'F', OD.itemFlint, 'T', OP.nugget.dat(MT.Steel));
@@ -317,7 +318,7 @@ public class Loader_Tools implements Runnable {
 	}
 	
 	public static class OreProcessing_Tool implements IOreDictListenerEvent {
-		private final ICondition mCondition;
+		private final ICondition<OreDictMaterial> mCondition;
 		private final String[][] mToolRecipes, mToolHeadRecipes;
 		private final String mCategoryName;
 		private final Object mSpecialObjectV, mSpecialObjectW, mSpecialObjectX, mSpecialObjectY, mSpecialObjectZ;
@@ -340,7 +341,7 @@ public class Loader_Tools implements Runnable {
 		 * A = the tool head
 		 * XYZVW
 		 */
-		public OreProcessing_Tool(int aToolID, String aCategoryName, boolean aUseNormalHandle, boolean aDismantleable, long aCapacity, long aVoltage, OreDictMaterial aHandleOverride, String[][] aToolRecipes, String[][] aToolHeadRecipes, Object aSpecialObjectX, Object aSpecialObjectY, Object aSpecialobjectZ, Object aSpecialObjectV, Object aSpecialObjectW, ICondition aCondition) {
+		public OreProcessing_Tool(int aToolID, String aCategoryName, boolean aUseNormalHandle, boolean aDismantleable, long aCapacity, long aVoltage, OreDictMaterial aHandleOverride, String[][] aToolRecipes, String[][] aToolHeadRecipes, Object aSpecialObjectX, Object aSpecialObjectY, Object aSpecialobjectZ, Object aSpecialObjectV, Object aSpecialObjectW, ICondition<OreDictMaterial> aCondition) {
 			mSpecialObjectV = aSpecialObjectV;
 			mSpecialObjectW = aSpecialObjectW;
 			mSpecialObjectX = aSpecialObjectX;

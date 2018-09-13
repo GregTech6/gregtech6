@@ -95,7 +95,7 @@ public class Behavior_Spray_Extinguisher extends AbstractBehaviorDefault {
 	
 	public long extinguish(World aWorld, int aX, int aY, int aZ, byte aSide, long aUses, EntityPlayer aPlayer, ItemStack aStack, float aHitX, float aHitY, float aHitZ) {
 		if (aPlayer == null || SIDES_INVALID[aSide] || aPlayer instanceof FakePlayer || !WD.obstructed(aWorld, aX, aY, aZ, aSide)) {
-			List<String> tChatReturn = new ArrayListNoNulls();
+			List<String> tChatReturn = new ArrayListNoNulls<>();
 			long tDamage = IBlockToolable.Util.onToolClick(TOOL_extinguisher, aUses*1000, 1, aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer!=null&&aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 			UT.Entities.sendchat(aPlayer, tChatReturn, F);
 			if (tDamage > 0) return Math.min(10, tDamage / 1000);

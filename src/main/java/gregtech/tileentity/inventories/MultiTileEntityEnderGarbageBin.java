@@ -57,7 +57,7 @@ public class MultiTileEntityEnderGarbageBin extends TileEntityBase07Paintable im
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.ender.garbage.bin.tooltip.1"));
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.ender.garbage.bin.tooltip.2"));
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.ender.garbage.bin.tooltip.3"));

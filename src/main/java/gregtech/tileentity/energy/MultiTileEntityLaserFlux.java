@@ -36,7 +36,7 @@ import net.minecraft.item.ItemStack;
 
 public class MultiTileEntityLaserFlux extends TileEntityBase10EnergyConverter implements ITileEntityEnergyFluxHandler, ITileEntityAdjacentOnOff {
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 //		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_CONTACT) + " (" + LH.get(LH.FACE_FRONT) + ")");
 	}

@@ -77,7 +77,7 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ "Max: " + mTanks[0].getCapacity() + " L");
 		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.tank3x3x3.1"));

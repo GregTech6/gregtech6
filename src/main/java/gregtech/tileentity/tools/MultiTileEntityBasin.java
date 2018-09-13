@@ -52,7 +52,7 @@ public class MultiTileEntityBasin extends MultiTileEntityMold {
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD) + " " + getMoldRecipe(0).mNameLocal);
 		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
@@ -177,7 +177,7 @@ public class MultiTileEntityBasin extends MultiTileEntityMold {
 	@Override public boolean addDefaultCollisionBoxToList() {return F;}
 	
 	@Override
-	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List aList, Entity aEntity) {
+	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		box(aAABB, aList, PX_P[14], PX_P[ 1], PX_P[ 1], PX_N[ 1], PX_N[ 1], PX_N[ 1]);
 		box(aAABB, aList, PX_P[ 1], PX_P[ 1], PX_P[14], PX_N[ 1], PX_N[ 1], PX_N[ 1]);
 		box(aAABB, aList, PX_P[ 1], PX_P[ 1], PX_P[ 1], PX_N[14], PX_N[ 1], PX_N[ 1]);

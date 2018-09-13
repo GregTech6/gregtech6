@@ -100,7 +100,7 @@ public class BlockTreeLeaves extends BlockBaseLeaves {
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
-		ArrayListNoNulls<ItemStack> rDrops = new ArrayListNoNulls();
+		ArrayListNoNulls<ItemStack> rDrops = new ArrayListNoNulls<>();
 		int tChance = 50;
 		if (aFortune > 0) {
 			tChance -= 5 << aFortune;

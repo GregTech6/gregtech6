@@ -97,7 +97,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.CONVERTS_FROM_X)		+ " " + STEAM_PER_WATER + " L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_TO_Y) + " " + (STEAM_PER_WATER / STEAM_PER_EU) + " " + mEnergyTypeEmitted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_INPUT)			+ ": " + Chat.WHITE + UT.Code.units(mOutput*STEAM_PER_EU, mEfficiency*2, 10000, F) + " - " + UT.Code.units(mOutput*2*STEAM_PER_EU, mEfficiency, 10000, F)	+ " " + TD.Energy.STEAM.getChatFormat()		+ TD.Energy.STEAM.getLocalisedNameLong()		+ Chat.WHITE + "/t ("+LH.get(LH.FACE_BACK)+")");

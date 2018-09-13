@@ -41,7 +41,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenPlanetRocks extends WorldgenObject {
-	public WorldgenPlanetRocks(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenPlanetRocks(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

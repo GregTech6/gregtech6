@@ -34,13 +34,14 @@ import gregapi.render.ITexture;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMassStorageStandard extends MultiTileEntityMassStorage implements IMTE_GetSubItems {
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

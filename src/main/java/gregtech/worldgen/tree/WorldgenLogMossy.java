@@ -40,7 +40,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenLogMossy extends WorldgenObject {
-	public WorldgenLogMossy(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenLogMossy(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

@@ -44,7 +44,7 @@ public class MultiTileEntityStorageInserter extends TileEntityBase07Paintable im
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (!UT.Entities.isPlayer(aPlayer)) return T;
-		ArrayListNoNulls<MultiTileEntityMassStorage> tList = new ArrayListNoNulls();
+		ArrayListNoNulls<MultiTileEntityMassStorage> tList = new ArrayListNoNulls<>();
 		int tX = getOffsetX(aSide), tY = getOffsetY(aSide), tZ = getOffsetZ(aSide);
 		boolean tDirectionsToGo[] = new boolean[] {T,T,T,T}, tOnlyHand = (aPlayer.inventory.getCurrentItem() != null);
 		for (int i = 0; i <= 6 && checkColumn(aPlayer, tX, --tY, tZ, tList, tOnlyHand); i++) if (i == 6) return T;
@@ -66,7 +66,7 @@ public class MultiTileEntityStorageInserter extends TileEntityBase07Paintable im
 		return T;
 	}
 	
-	public boolean checkColumn(EntityPlayer aPlayer, int aX, int aY, int aZ, ArrayListNoNulls aList, boolean aOnlyHand) {
+	public boolean checkColumn(EntityPlayer aPlayer, int aX, int aY, int aZ, ArrayListNoNulls<MultiTileEntityMassStorage> aList, boolean aOnlyHand) {
 		if (!WD.floor(worldObj, aX, aY, aZ)) return T;
 		boolean temp = T;
 		for (int i = 1; i < 8; i++) {
@@ -83,7 +83,7 @@ public class MultiTileEntityStorageInserter extends TileEntityBase07Paintable im
 							tryInsert(aPlayer, (MultiTileEntityMassStorage)tTileEntity, aOnlyHand);
 							if (aOnlyHand && aPlayer.inventory.getCurrentItem() == null) return temp;
 						} else {
-							aList.add(tTileEntity);
+							aList.add((MultiTileEntityMassStorage)tTileEntity);
 						}
 					}
 				}

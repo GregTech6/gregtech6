@@ -41,7 +41,8 @@ import net.minecraft.world.chunk.Chunk;
 public class WorldgenNexus extends WorldgenObject {
 	public int mHeight = 66;
 	
-	public WorldgenNexus(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenNexus(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
 		GENERATE_NEXUS = mEnabled;

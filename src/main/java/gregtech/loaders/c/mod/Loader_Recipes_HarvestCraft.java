@@ -52,6 +52,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class Loader_Recipes_HarvestCraft implements Runnable {
 	@Override
+	@SuppressWarnings("unchecked")
 	public void run() {if (MD.HaC.mLoaded) {OUT.println("GT_Mod: Doing HarvestCraft Recipes.");
 		final ItemStack tYogurt = ST.make(MD.HaC, "plainyogurtItem", 1);
 		

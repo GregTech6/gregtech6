@@ -37,7 +37,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenTreeHazel extends WorldgenObject {
-	public WorldgenTreeHazel(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenTreeHazel(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

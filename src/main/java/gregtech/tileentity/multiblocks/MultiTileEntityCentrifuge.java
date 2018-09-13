@@ -79,7 +79,7 @@ public class MultiTileEntityCentrifuge extends TileEntityBase10MultiBlockMachine
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.centrifuge.1"));
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.centrifuge.2"));

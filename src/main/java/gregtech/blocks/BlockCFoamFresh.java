@@ -67,7 +67,7 @@ public class BlockCFoamFresh extends BlockColored implements IBlockFoamable {
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
-		return new ArrayListNoNulls();
+		return new ArrayListNoNulls<>();
 	}
 	
 	@Override

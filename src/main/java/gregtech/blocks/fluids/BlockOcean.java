@@ -88,7 +88,7 @@ public class BlockOcean extends BlockWaterlike {
 		BiomeGenBase tBiome = aWorld.getBiomeGenForCoords(aX, aZ);
 		
 		byte tOceanCounter = 0;
-		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls();
+		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls<>();
 		for (byte tSide : ALL_SIDES_BUT_TOP) if (aWorld.blockExists(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide])) {
 			tBlock = aWorld.getBlock(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);
 			byte tMeta = (byte)aWorld.getBlockMetadata(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);

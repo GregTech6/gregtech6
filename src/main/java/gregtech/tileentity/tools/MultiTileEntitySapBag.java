@@ -71,7 +71,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE + LH.get(LH.NO_GUI_CLICK_TO_INVENTORY));
 	}
 	

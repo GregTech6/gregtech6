@@ -48,7 +48,8 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
  * @author Gregorius Techneticies
  */
 public class WorldgenStoneLayers extends WorldgenObject {
-	public WorldgenStoneLayers(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenStoneLayers(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		GENERATE_STONE = mEnabled;
 	}

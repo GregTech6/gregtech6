@@ -89,7 +89,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + (ST.valid(mBerry)?mBerry.getDisplayName():"Rightclick with a Berry to set Output"));
 	}
 	

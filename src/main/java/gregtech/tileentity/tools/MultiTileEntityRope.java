@@ -63,7 +63,7 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		//
 	}
 	

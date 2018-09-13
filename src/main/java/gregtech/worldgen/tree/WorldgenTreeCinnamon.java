@@ -37,7 +37,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenTreeCinnamon extends WorldgenObject {
-	public WorldgenTreeCinnamon(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenTreeCinnamon(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

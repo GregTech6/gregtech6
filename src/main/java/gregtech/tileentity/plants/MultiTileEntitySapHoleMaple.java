@@ -80,7 +80,7 @@ public class MultiTileEntitySapHoleMaple extends MultiTileEntityTreeHole {
 	
 	private boolean checkLeaves(int aX, int aY, int aZ) {return getBlock(aX, aY, aZ) == BlocksGT.Leaves && getMetaData(aX, aY, aZ) == 9;}
 	
-	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls(F, ST.make(BlocksGT.LogA, 1, 1));}
+	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls<>(F, ST.make(BlocksGT.LogA, 1, 1));}
 	@Override public ItemStack getResinItem(byte aSide) {return null;}
 	@Override public FluidStack getResinFluid(byte aSide) {return UT.Fluids.make("maplesap", 250);}
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? aSide != mFacing ? BlockTextureCopied.get(BlocksGT.LogA, SIDE_ANY, 1) : BlockTextureDefault.get(mHasResin?Textures.BlockIcons.LOG_SAP_MAPLE:Textures.BlockIcons.LOG_HOLE_MAPLE) : null;}

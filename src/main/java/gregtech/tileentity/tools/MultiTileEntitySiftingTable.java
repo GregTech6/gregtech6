@@ -84,7 +84,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_SIFTER_USAGE));
 		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");

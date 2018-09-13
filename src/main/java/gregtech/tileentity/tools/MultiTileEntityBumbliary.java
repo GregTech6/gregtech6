@@ -82,7 +82,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		// TODO
 	}
 	
@@ -95,6 +95,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {

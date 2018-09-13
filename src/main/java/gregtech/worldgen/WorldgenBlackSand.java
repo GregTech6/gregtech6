@@ -38,7 +38,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenBlackSand extends WorldgenObject {
-	public WorldgenBlackSand(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenBlackSand(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

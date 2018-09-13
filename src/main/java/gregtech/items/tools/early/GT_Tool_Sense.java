@@ -37,7 +37,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_Sense extends ToolStats {
-	private ThreadLocal sIsHarvestingRightNow = new ThreadLocal();
+	private ThreadLocal<Object> sIsHarvestingRightNow = new ThreadLocal<>();
 	
 	@Override
 	public float getBaseDamage() {

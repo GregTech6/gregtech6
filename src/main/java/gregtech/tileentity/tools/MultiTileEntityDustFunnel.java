@@ -85,7 +85,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_DUSTFUNNEL));
 		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
 		aList.add(Chat.DGRAY	+ LH.get(LH.TOOL_TO_TOGGLE_OUTPUTS_MONKEY_WRENCH));

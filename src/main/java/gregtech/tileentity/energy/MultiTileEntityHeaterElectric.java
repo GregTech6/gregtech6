@@ -46,7 +46,7 @@ public class MultiTileEntityHeaterElectric extends TileEntityBase10EnergyConvert
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box((mFacing==SIDE_X_NEG?PX_P[2]:0), (mFacing==SIDE_Y_NEG?PX_P[2]:0), (mFacing==SIDE_Z_NEG?PX_P[2]:0), (mFacing==SIDE_X_POS?PX_N[2]:1), (mFacing==SIDE_Y_POS?PX_N[2]:1), (mFacing==SIDE_Z_POS?PX_N[2]:1));}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_CONTACT) + " (" + LH.get(LH.FACE_FRONT) + ")");
 	}

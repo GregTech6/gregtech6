@@ -86,7 +86,7 @@ public class MultiTileEntityLargeDynamo extends TileEntityBase11MultiBlockConver
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.dynamo.1"));
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.dynamo.2"));

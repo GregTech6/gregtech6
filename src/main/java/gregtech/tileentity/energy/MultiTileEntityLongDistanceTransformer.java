@@ -97,7 +97,7 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, mEnergyTypeEmitted, getLocalisedInputSide(), getLocalisedOutputSide());
 		super.addToolTips(aList, aStack, aF3_H);
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
@@ -179,10 +179,10 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 		if (aBlock instanceof BlockLongDistWire) {
 			mThroughput = VMAX[((BlockLongDistWire)aBlock).mTiers[aMetaData]];
 			HashSetNoNulls<ChunkCoordinates>
-			tNewChecks	= new HashSetNoNulls(),
-			tOldChecks	= new HashSetNoNulls(F, getCoords()),
-			tToCheck	= new HashSetNoNulls(F, getOffsetN(mFacing, 1)),
-			tWires		= new HashSetNoNulls();
+			tNewChecks	= new HashSetNoNulls<>(),
+			tOldChecks	= new HashSetNoNulls<>(F, getCoords()),
+			tToCheck	= new HashSetNoNulls<>(F, getOffsetN(mFacing, 1)),
+			tWires		= new HashSetNoNulls<>();
 			
 			mDistance = -1;
 			while (!tToCheck.isEmpty()) {
@@ -251,7 +251,7 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 	
 	@Override public boolean isEnergyAcceptingFrom			(TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || checkTarget()) &&	(SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
 	@Override public boolean isEnergyEmittingTo				(TagData aEnergyType, byte aSide, boolean aTheoretical) {return										(SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo	(aEnergyType, aSide, aTheoretical);}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls(F, mEnergyTypeAccepted, mEnergyTypeEmitted);}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mEnergyTypeAccepted, mEnergyTypeEmitted);}
 	
 	@Override public double getDemandedEnergy() {return checkTarget() ? super.getDemandedEnergy() : 0;}
 	

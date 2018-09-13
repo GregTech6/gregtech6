@@ -82,7 +82,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return new ArrayListNoNulls(F, mRock == null ? getDefaultRock(1+rng(1+aFortune)) : ST.amount(1+rng(1+aFortune), mRock));
+		return new ArrayListNoNulls<>(F, mRock == null ? getDefaultRock(1+rng(1+aFortune)) : ST.amount(1+rng(1+aFortune), mRock));
 	}
 	
 	@Override

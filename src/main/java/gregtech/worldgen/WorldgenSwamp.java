@@ -42,7 +42,8 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 public class WorldgenSwamp extends WorldgenObject {
 	public int mHeight = 62;
 	
-	public WorldgenSwamp(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenSwamp(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
 	}

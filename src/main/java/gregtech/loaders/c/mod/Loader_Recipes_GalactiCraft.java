@@ -47,6 +47,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class Loader_Recipes_GalactiCraft implements Runnable {
 	@Override
+	@SuppressWarnings("unchecked")
 	public void run() {
 		if (MD.GC.mLoaded) {
 			OUT.println("GT_Mod: Doing Galacticraft Recipes.");
@@ -61,7 +62,7 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 0),	CR.DEF_REM_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Fe		), 'D', OP.plateDense.dat(ANY.Fe	));
 			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 1),	CR.DEF_REM_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Steel	), 'D', OP.plateDense.dat(ANY.Steel	));
 			
-			List
+			List<ItemStack>
 			  tListA = OreDictionary.getOres("gt:complateCopper"		), tListA1 = OreDictionary.getOres("compressedCopper"		)
 			, tListB = OreDictionary.getOres("gt:complateTin"			), tListB1 = OreDictionary.getOres("compressedTin"			)
 			, tListC = OreDictionary.getOres("gt:complateAluminium"		), tListC1 = OreDictionary.getOres("compressedAluminum"		), tListC2 = OreDictionary.getOres("compressedAluminium")

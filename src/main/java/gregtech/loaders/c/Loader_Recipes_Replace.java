@@ -58,9 +58,10 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class Loader_Recipes_Replace implements Runnable {
-	public static final Set<String> sNonReplaceableNames = new HashSetNoNulls(F, "ic2.itemwoodrotor", "ic2.itemironrotor", "ic2.itemsteelrotor", "ic2.itemcarbonrotor", "ic2.itemwcarbonrotor", "ic2.itemSteamTurbine", "ic2.itemLathingTool", "item.ItemToolThermometer");
-	public static final ItemStackSet<ItemStackContainer> NON_REPLACEABLE = new ItemStackSet();
+	public static final Set<String> sNonReplaceableNames = new HashSetNoNulls<>(F, "ic2.itemwoodrotor", "ic2.itemironrotor", "ic2.itemsteelrotor", "ic2.itemcarbonrotor", "ic2.itemwcarbonrotor", "ic2.itemSteamTurbine", "ic2.itemLathingTool", "item.ItemToolThermometer");
+	public static final ItemStackSet<ItemStackContainer> NON_REPLACEABLE = new ItemStackSet<>();
 	
+	@SuppressWarnings("rawtypes")
 	@Override public void run() {OUT.println("GT_Mod: Replacing Vanilla alike Recipes.");
 		NON_REPLACEABLE.add(ST.make(ToolsGT.sMetaTool							, 1, W));
 		NON_REPLACEABLE.add(ST.make(Items.bow									, 1, W));
@@ -123,9 +124,10 @@ public class Loader_Recipes_Replace implements Runnable {
 		NON_REPLACEABLE.add(ST.make(MD.GC, "item.sensorGlasses"					, 1, W));
 		NON_REPLACEABLE.add(ST.make(MD.NC, "ItemToolThermometer"				, 1, W));
 		
-		ArrayListNoNulls<RecipeReplacement> tList = new ArrayListNoNulls();
-		HashSetNoNulls<IRecipe> tSet = new HashSetNoNulls<IRecipe>(CraftingManager.getInstance().getRecipeList());
-		HashSetNoNulls<Object> tAlreadyScannedItems = new HashSetNoNulls();
+		@SuppressWarnings("unchecked")
+		HashSetNoNulls<IRecipe> tSet = new HashSetNoNulls<>(CraftingManager.getInstance().getRecipeList());
+		HashSetNoNulls<Object> tAlreadyScannedItems = new HashSetNoNulls<>();
+		ArrayListNoNulls<RecipeReplacement> tList = new ArrayListNoNulls<>();
 		boolean tUseProgressBar = UT.LoadingBar.start("Looking up Recipes", tSet.size());
 		for (IRecipe tRecipe : tSet) {
 			if (tUseProgressBar) UT.LoadingBar.step("");

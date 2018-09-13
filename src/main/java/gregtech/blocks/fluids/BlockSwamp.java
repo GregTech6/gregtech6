@@ -90,7 +90,7 @@ public class BlockSwamp extends BlockWaterlike {
 		boolean tDirt = F;
 		
 		byte tSwampCounter = 0;
-		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls();
+		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls<>();
 		for (byte tSide : ALL_SIDES_BUT_TOP) if (aWorld.blockExists(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide])) {
 			tBlock = aWorld.getBlock(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);
 			if (tBlock != NB) {

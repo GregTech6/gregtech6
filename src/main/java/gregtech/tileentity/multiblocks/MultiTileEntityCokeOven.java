@@ -63,7 +63,7 @@ public class MultiTileEntityCokeOven extends TileEntityBase10MultiBlockMachine {
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.cokeoven.1"));
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.cokeoven.2"));
@@ -86,7 +86,7 @@ public class MultiTileEntityCokeOven extends TileEntityBase10MultiBlockMachine {
 			for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) {
 				DelegatorTileEntity<TileEntity> tTarget = WD.te(worldObj, tX+i, tY, tZ+j, SIDE_TOP, F);
 				if (tTarget.mTileEntity instanceof IFluidHandler && ((IFluidHandler)tTarget.mTileEntity).canFill(tTarget.getForgeSideOfTileEntity(), aOutput)) {
-					return mFluidOutputTarget = new DelegatorTileEntity(tTarget.mTileEntity, tTarget);
+					return mFluidOutputTarget = new DelegatorTileEntity<>((IFluidHandler)tTarget.mTileEntity, tTarget);
 				}
 			}
 		}

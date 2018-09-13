@@ -447,7 +447,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		String tTooltip = getFlowerTooltip(ST.meta(aStack));
 		if (UT.Code.stringValid(tTooltip)) aList.add(LH.Chat.CYAN + "Requirement: " + LH.Chat.WHITE + tTooltip);
 		

@@ -37,7 +37,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenGlowtus extends WorldgenObject {
-	public WorldgenGlowtus(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenGlowtus(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

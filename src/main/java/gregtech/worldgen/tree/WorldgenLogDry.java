@@ -38,7 +38,8 @@ import net.minecraft.world.chunk.Chunk;
  * @author Gregorius Techneticies
  */
 public class WorldgenLogDry extends WorldgenObject {
-	public WorldgenLogDry(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenLogDry(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 	}
 	

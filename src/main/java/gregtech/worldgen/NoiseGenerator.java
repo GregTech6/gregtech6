@@ -169,7 +169,6 @@ public class NoiseGenerator {
 	private static class Float2 {
 		public final float x, y;
 
-		@SuppressWarnings("hiding")
 		public Float2(float x, float y) {
 			this.x = x;
 			this.y = y;
@@ -179,7 +178,6 @@ public class NoiseGenerator {
 	private static class Float3 {
 		public final float x, y, z;
 
-		@SuppressWarnings("hiding")
 		public Float3(float x, float y, float z) {
 			this.x = x;
 			this.y = y;

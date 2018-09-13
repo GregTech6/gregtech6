@@ -44,7 +44,8 @@ import net.minecraft.world.chunk.Chunk;
 public class WorldgenBeacon extends WorldgenObject {
 	public int mHeight = 66;
 	
-	public WorldgenBeacon(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenBeacon(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
 		GENERATE_BEACON = mEnabled;

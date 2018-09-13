@@ -58,7 +58,7 @@ public class MultiTileEntityEnderGarbageDump extends TileEntityBase07Paintable i
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.ender.garbage.dump.tooltip.1"));
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.ender.garbage.dump.tooltip.2"));
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.ender.garbage.dump.tooltip.3"));
@@ -99,7 +99,7 @@ public class MultiTileEntityEnderGarbageDump extends TileEntityBase07Paintable i
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return new ArrayListNoNulls();
+		return new ArrayListNoNulls<>();
 	}
 	
 	@Override

@@ -42,7 +42,7 @@ public class Loader_Books implements Runnable {
 		OUT.println("GT_Mod: Register Books.");
 		
 		String tPage = "";
-		List<String> tBook = new ArrayListNoNulls();
+		List<String> tBook = new ArrayListNoNulls<>();
 		
 		UT.Books.createWrittenBook("Manual_Punch_Cards", "Punch Card Manual V0.0", "Gregorius Techneticies", ST.make(ItemsGT.BOOKS, 1, 1), new String[] {
 		  "This Manual will explain the Functionality of the Punch Cards, once they are fully implemented. And no, they won't be like the IRL Punch Cards. This is just a current Idea Collection."

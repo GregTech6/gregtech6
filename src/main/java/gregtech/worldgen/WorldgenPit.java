@@ -42,7 +42,8 @@ public class WorldgenPit extends WorldgenObject {
 	public final byte mMeta;
 	public final int mChance, mDivider;
 	
-	public WorldgenPit(String aName, boolean aDefault, Block aBlock, long aMeta, long aChance, long aDivider, List... aLists) {
+	@SafeVarargs
+	public WorldgenPit(String aName, boolean aDefault, Block aBlock, long aMeta, long aChance, long aDivider, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mBlock = aBlock;
 		mMeta = UT.Code.bind4(aMeta);

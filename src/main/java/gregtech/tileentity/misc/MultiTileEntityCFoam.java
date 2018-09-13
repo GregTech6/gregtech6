@@ -93,7 +93,7 @@ public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements I
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (mOwnable) aList.add(Chat.ORANGE + LH.get(LH.OWNER_CONTROLLED));
 	}
 	
@@ -150,7 +150,7 @@ public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements I
 	@Override public boolean driedFoam				(byte aSide) {return mFoamDried;}
 	@Override public boolean ownedFoam				(byte aSide) {return mOwnable;}
 	@Override public boolean applyFoam				(byte aSide, Entity aPlayer, short[] aCFoamRGB, byte aVanillaColor, boolean aOwnable) {return F;}
-	@Override public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {return F;}
+	@Override public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {return F;}
 	@Override public boolean addDefaultCollisionBoxToList() {return T;}
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	

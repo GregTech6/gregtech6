@@ -104,8 +104,9 @@ public abstract class GT_Block_Casings_Abstract extends BlockBaseSealable {
 		//
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override @SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item aItem, CreativeTabs par2CreativeTabs, List aList) {
+	public void getSubBlocks(Item aItem, CreativeTabs par2CreativeTabs, @SuppressWarnings("rawtypes") List aList) {
 		for (int i = 0; i < 16; i++) aList.add(ST.make(aItem, 1, i));
 	}
 }

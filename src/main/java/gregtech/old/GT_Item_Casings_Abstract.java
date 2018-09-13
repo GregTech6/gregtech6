@@ -52,7 +52,8 @@ public abstract class GT_Item_Casings_Abstract extends ItemBlock {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	@SuppressWarnings("unchecked")
+	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		super.addInformation(aStack, aPlayer, aList, aF3_H);
 		aList.add(mNoMobsToolTip);
 		aList.add(mNoTileEntityToolTip);

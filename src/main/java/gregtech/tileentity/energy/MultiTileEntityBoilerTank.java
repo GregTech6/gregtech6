@@ -91,7 +91,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.CONVERTS_FROM_X)		+ " 1 L " + UT.Fluids.name(FluidRegistry.WATER, T) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + UT.Fluids.name(FL.Steam.make(0), true) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		aList.add(Chat.GREEN	+ LH.get(LH.ENERGY_INPUT)			+ ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)						+ " " + mEnergyTypeAccepted.getChatFormat()	+ mEnergyTypeAccepted.getLocalisedNameShort()	+ Chat.WHITE + "/t ("+LH.get(LH.FACE_ANY)+")");

@@ -66,6 +66,7 @@ public class Loader_ItemIterator implements Runnable {
 		
 		OUT.println("GT_Mod: Scanning ItemList.");
 		
+		@SuppressWarnings("rawtypes")
 		Iterator tIterator = Item.itemRegistry.iterator();
 		
 		Object tObject;

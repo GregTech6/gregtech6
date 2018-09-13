@@ -61,7 +61,7 @@ public class BlockSpikeFancy extends BlockBaseSpike {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		if (aMeta < 8) {
 			aList.add(LH.Chat.ORANGE + "Deals huge Damage to any Undead touching it!");
 			aList.add(LH.Chat.ORANGE + "Does very low Damage to anything else!");

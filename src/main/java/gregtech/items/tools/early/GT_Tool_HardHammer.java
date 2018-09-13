@@ -21,7 +21,6 @@ package gregtech.items.tools.early;
 
 import static gregapi.data.CS.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
@@ -47,8 +46,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_HardHammer extends ToolStats {
-	public static final List<String> mEffectiveList = Arrays.asList(
-		  "EntityTowerGuardian".toLowerCase()
+	public static final List<String> mEffectiveList = new ArrayListNoNulls<>(F
+		, "EntityTowerGuardian".toLowerCase()
 		, "EntityStoneSoldier".toLowerCase()
 		, "EntityStone".toLowerCase()
 		, "EntityGeonach".toLowerCase()
@@ -96,7 +95,7 @@ public class GT_Tool_HardHammer extends ToolStats {
 		int rConversions = 0;
 		Recipe tRecipe;
 		if (aBlock.hasTileEntity(aMetaData) || null == (tRecipe = RM.Hammer.findRecipe(null, null, T, Integer.MAX_VALUE, null, ZL_FS, ST.make(aBlock, 1, aMetaData)))) {
-			List<ItemStack> tDrops = new ArrayListNoNulls();
+			List<ItemStack> tDrops = new ArrayListNoNulls<>();
 			for (int i = 0; i < aDrops.size(); i++) {
 				tRecipe = RM.Hammer.findRecipe(null, null, T, Integer.MAX_VALUE, null, ZL_FS, ST.amount(1, aDrops.get(i)));
 				if (tRecipe != null) {

@@ -151,6 +151,7 @@ public class Override_Drops {
 			tReplaceIron = T;
 			
 			if (aPlayerKill) {
+			@SuppressWarnings("rawtypes")
 			List tList = aDead.worldObj.getEntitiesWithinAABBExcludingEntity(aDead, aDead.boundingBox.expand(32, 32, 32));
 			for (int i = 0; i < tList.size(); i++) if (tList.get(i) instanceof EntityPlayer) {for (int j = 0; j < tList.size(); j++) if (tList.get(j) instanceof EntityPigZombie) ((EntityPigZombie)tList.get(j)).attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)tList.get(i)), 0); break;}
 			

@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Random;
 
 import gregapi.worldgen.WorldgenFluid;
+import gregapi.worldgen.WorldgenObject;
 import gregtech.tileentity.misc.MultiTileEntityFluidSpring;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -38,7 +39,8 @@ public class WorldgenFluidSpring extends WorldgenFluid {
 	public final FluidStack mSpringFluid;
 	public final int mSpringChance;
 	
-	public WorldgenFluidSpring(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, FluidStack aSpringFluid, int aSpringChance, List... aLists) {
+	@SafeVarargs
+	public WorldgenFluidSpring(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, FluidStack aSpringFluid, int aSpringChance, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aBlock, aBlockMeta, aAmount, aSize, aProbability, aMinY, aMaxY, aBiomeList, aAllowToGenerateinVoid, aLists);
 		mSpringFluid = aSpringFluid;
 		mSpringChance = aSpringChance;

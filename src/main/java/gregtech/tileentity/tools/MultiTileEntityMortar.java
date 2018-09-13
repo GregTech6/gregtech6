@@ -65,7 +65,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MORTAR_USAGE));
 		aList.add(Chat.ORANGE	+ LH.get(LH.NO_GUI_CLICK_TO_INTERACT)	+ " (" + LH.get(LH.FACE_TOP) + ")");
@@ -152,7 +152,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 	}
 	
 	@Override
-	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List aList, Entity aEntity) {
+	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		box(aAABB, aList, PX_P[12], PX_P[ 0], PX_P[ 2], PX_N[ 2], PX_N[10], PX_N[ 2]);
 		box(aAABB, aList, PX_P[ 2], PX_P[ 0], PX_P[12], PX_N[ 2], PX_N[10], PX_N[ 2]);
 		box(aAABB, aList, PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[12], PX_N[10], PX_N[ 2]);

@@ -60,7 +60,7 @@ public class MultiTileEntitySafeMechanical extends MultiTileEntitySafe {
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE + LH.get(LH.OWNER_CONTROLLED));
 		super.addToolTips(aList, aStack, aF3_H);
 	}

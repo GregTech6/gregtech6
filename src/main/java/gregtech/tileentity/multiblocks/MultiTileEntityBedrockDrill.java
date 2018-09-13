@@ -65,7 +65,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	public int mType = 0;
 	public TagData mEnergyTypeAccepted = TD.Energy.RU;
 	public FluidTankGT[] mTanks = new FluidTankGT[] {new FluidTankGT(16000)};
-	public final List<OreDictMaterial> mList = new ArrayListNoNulls();
+	public final List<OreDictMaterial> mList = new ArrayListNoNulls<>();
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -122,7 +122,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.bedrockdrill.1"));
 		aList.add(Chat.WHITE	+ LH.get("gt.tooltip.multiblock.bedrockdrill.2"));
@@ -212,8 +212,8 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	@Override public long getEnergySizeInputMax(TagData aEnergyType, byte aSide) {return 4096;}
 	@Override public long getEnergyStored(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mEnergy : 0;}
 	@Override public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? 40000 : 0;}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls(F, mEnergyTypeAccepted);}
-	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return new ArrayListNoNulls(F, mEnergyTypeAccepted);}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
+	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
 	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return FluidsGT.LUBRICANT.contains(aFluidToFill.getFluid().getName()) ? mTanks[0] : null;}
 	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTanks[0];}

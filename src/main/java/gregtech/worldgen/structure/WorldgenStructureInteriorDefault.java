@@ -129,7 +129,7 @@ public class WorldgenStructureInteriorDefault extends WorldgenStructure {
 		
 		//-----
 		
-		ArrayListNoNulls<Integer> tMoldShapes = new ArrayListNoNulls(MultiTileEntityMold.MOLD_RECIPES.keySet());
+		ArrayListNoNulls<Integer> tMoldShapes = new ArrayListNoNulls<>(MultiTileEntityMold.MOLD_RECIPES.keySet());
 		int tCrucibleType = aRandom.nextInt(3);
 		
 		aData.mRegistry.mBlock.placeBlock			(aWorld, aChunkX+14, aData.mOffsetY+1, aChunkZ+ 1, SIDE_UNKNOWN, (short)   11, UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.VILLAGE_BLACKSMITH	, NBT_FACING, SIDE_X_NEG), T, T);

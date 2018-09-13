@@ -61,7 +61,7 @@ public class BlockGlassClear extends BlockColored {
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return mBlock == this || mSide == aSide;}
 	@Override public boolean isBlockSolid(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return F;}
-	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls(F, OP.scrapGt.mat(MT.Glass, mBlock == this ? 9 : 4));}
+	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls<>(F, OP.scrapGt.mat(MT.Glass, mBlock == this ? 9 : 4));}
 	
 	@Override
 	@SideOnly(Side.CLIENT)

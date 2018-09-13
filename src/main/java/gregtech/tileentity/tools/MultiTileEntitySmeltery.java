@@ -102,7 +102,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	protected short mDisplayedFluid = -1, oDisplayedFluid = -1;
 	protected long mEnergy = 0, mTemperature = DEF_ENV_TEMP, oTemperature = 0;
 	protected TagData mEnergyTypeAccepted = TD.Energy.HU;
-	protected List<OreDictMaterialStack> mContent = new ArrayListNoNulls();
+	protected List<OreDictMaterialStack> mContent = new ArrayListNoNulls<>();
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -125,7 +125,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN		+ LH.get(LH.CONVERTS_FROM_X) + " 1 " + mEnergyTypeAccepted.getLocalisedNameShort() + " " + LH.get(LH.CONVERTS_TO_Y) + " +1 K " + LH.get(LH.CONVERTS_PER_Z) + " "+ KG_PER_ENERGY + "kg (at least "+getEnergySizeInputMin(mEnergyTypeAccepted, SIDE_ANY)+" Units per Tick required!)");
 		aList.add(Chat.DRED		+ LH.get(LH.HAZARD_MELTDOWN) + " (" + getTemperatureMax(SIDE_ANY) + " K)");
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
@@ -153,6 +153,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onServerTickPost(boolean aFirst) {
 		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord+PX_P[2], yCoord+PX_P[2], zCoord+PX_P[2], PX_N[4], 1, PX_N[4]));
@@ -167,7 +168,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 				GarbageGT.trash(decrStackSize(0, 1));
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 			} else {
-				List<OreDictMaterialStack> tList = new ArrayListNoNulls();
+				List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) if (tMaterial.mAmount > 0) tList.add(tMaterial.clone());
 				if (addMaterialStacks(tList, tTemperature)) decrStackSize(0, 1);
 			}
@@ -205,7 +206,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			}
 		}
 		
-		Set<OreDictMaterial> tAlreadyCheckedAlloys = new HashSetNoNulls();
+		Set<OreDictMaterial> tAlreadyCheckedAlloys = new HashSetNoNulls<>();
 		
 		OreDictMaterial tPreferredAlloy = null;
 		IOreDictConfigurationComponent tPreferredRecipe = null;
@@ -215,7 +216,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			if (mTemperature >= tMaterial.mMaterial.mMeltingPoint) {
 				for (OreDictMaterial tAlloy : tMaterial.mMaterial.mAlloyComponentReferences) if (tAlreadyCheckedAlloys.add(tAlloy) && mTemperature >= tAlloy.mMeltingPoint) {
 					for (IOreDictConfigurationComponent tAlloyRecipe : tAlloy.mAlloyCreationRecipes) {
-						List<OreDictMaterialStack> tNeededStuff = new ArrayListNoNulls();
+						List<OreDictMaterialStack> tNeededStuff = new ArrayListNoNulls<>();
 						for (OreDictMaterialStack tComponent : tAlloyRecipe.getUndividedComponents()) {
 							tNeededStuff.add(OM.stack(tComponent.mMaterial, Math.max(1, tComponent.mAmount / U)));
 						}
@@ -433,13 +434,13 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 							OreDictMaterialStack tFluidData = OreDictMaterial.FLUID_MAP.get(tFluid.getFluid().getName());
 							if (tFluidData != null) {
 								if (UT.Fluids.equal(tFluidData.mMaterial.mLiquid, tFluid)) {
-									if (addMaterialStacks(new ArrayListNoNulls(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mMaterial.mLiquid.amount, tFluidData.mMaterial.mLiquidUnit, F))), UT.Code.bind(UT.Fluids.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
+									if (addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mMaterial.mLiquid.amount, tFluidData.mMaterial.mLiquidUnit, F))), UT.Code.bind(UT.Fluids.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
 										aStack.stackSize--;
 										UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 										return T;
 									}
 								} else {
-									if (addMaterialStacks(new ArrayListNoNulls(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mAmount, U, F))), UT.Code.bind(UT.Fluids.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
+									if (addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mAmount, U, F))), UT.Code.bind(UT.Fluids.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
 										aStack.stackSize--;
 										UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 										return T;
@@ -580,27 +581,27 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		if (mTemperature > 320 && UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mTemperature / 100.0F))) {
 			if (aEntity instanceof EntityLivingBase && !((EntityLivingBase)aEntity).isEntityAlive()) {
 				if (aEntity instanceof EntityVillager || aEntity instanceof EntityWitch) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(2*U, MT.SoylentGreen)), C+37);
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(2*U, MT.SoylentGreen)), C+37);
 				} else if (aEntity instanceof EntitySnowman) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(4*U, MT.Snow)), C-10);
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(4*U, MT.Snow)), C-10);
 				} else if (aEntity instanceof EntityIronGolem) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(4*U, MT.Fe)), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(4*U, MT.Fe)), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
 				} else if (aEntity instanceof EntitySkeleton) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(1*U, MT.Bone), ((EntitySkeleton)aEntity).getSkeletonType() == 1 ? OM.stack(1*U, MT.Coal) : null), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, MT.Bone), ((EntitySkeleton)aEntity).getSkeletonType() == 1 ? OM.stack(1*U, MT.Coal) : null), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
 				} else if (aEntity instanceof EntityZombie) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(1*U, MT.MeatRotten)), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, MT.MeatRotten)), WD.envTemp(worldObj, xCoord, yCoord, zCoord));
 				} else if (aEntity instanceof EntityMooshroom || aEntity instanceof EntityCow || aEntity instanceof EntityHorse) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(3*U, MT.MeatRaw)), C+37);
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(3*U, MT.MeatRaw)), C+37);
 				} else if (aEntity instanceof EntityPig || aEntity instanceof EntitySheep || aEntity instanceof EntityWolf || aEntity instanceof EntitySquid) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(2*U, MT.MeatRaw)), C+37);
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(2*U, MT.MeatRaw)), C+37);
 				} else if (aEntity instanceof EntityChicken || aEntity instanceof EntityOcelot || aEntity instanceof EntitySpider || aEntity instanceof EntitySilverfish) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(1*U, MT.MeatRaw)), C+37);
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, MT.MeatRaw)), C+37);
 				} else if (aEntity instanceof EntityCreeper) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(1*U, MT.Gunpowder)), C+20);
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, MT.Gunpowder)), C+20);
 				} else if (aEntity instanceof EntityEnderman) {
-					addMaterialStacks(new ArrayListNoNulls(F, OM.stack(1*U, MT.EnderPearl)), C+20);
+					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, MT.EnderPearl)), C+20);
 				} else if (aEntity instanceof EntityPlayer) {
-					if ("GregoriusT".equalsIgnoreCase(aEntity.getCommandSenderName())) for (int i = 0; i < 16; i++) addMaterialStacks(new ArrayListNoNulls(F, OM.stack(1*U, MT.Tc)), C+20);
+					if ("GregoriusT".equalsIgnoreCase(aEntity.getCommandSenderName())) for (int i = 0; i < 16; i++) addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(1*U, MT.Tc)), C+20);
 				}
 			}
 		}
@@ -610,7 +611,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override public boolean addDefaultCollisionBoxToList() {return F;}
 	
 	@Override
-	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List aList, Entity aEntity) {
+	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		box(aAABB, aList, PX_P[14], PX_P[ 1], PX_P[ 1], PX_N[ 1], PX_N[ 1], PX_N[ 1]);
 		box(aAABB, aList, PX_P[ 1], PX_P[ 1], PX_P[14], PX_N[ 1], PX_N[ 1], PX_N[ 1]);
 		box(aAABB, aList, PX_P[ 1], PX_P[ 1], PX_P[ 1], PX_N[14], PX_N[ 1], PX_N[ 1]);
@@ -640,7 +641,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	

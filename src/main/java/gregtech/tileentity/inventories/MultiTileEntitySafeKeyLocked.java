@@ -64,7 +64,7 @@ public class MultiTileEntitySafeKeyLocked extends MultiTileEntitySafe implements
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE + LH.get(LH.KEY_CONTROLLED));
 		super.addToolTips(aList, aStack, aF3_H);
 	}

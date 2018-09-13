@@ -52,7 +52,8 @@ import net.minecraft.world.chunk.Chunk;
 public class WorldgenStreets extends WorldgenObject {
 	public int mHeight = 66;
 	
-	public WorldgenStreets(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenStreets(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, ConfigsGT.WORLDGEN.get("worldgenerator.streets", "Enabled", aDefault), aLists);
 		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", ConfigsGT.WORLDGEN.get("worldgenerator.streets", "Height", mHeight));
 		GENERATE_STREETS = mEnabled;
@@ -213,7 +214,7 @@ public class WorldgenStreets extends WorldgenObject {
 						}
 					}
 				}
-				aBiomeNames = new HashSetNoNulls(aBiomeNames);
+				aBiomeNames = new HashSetNoNulls<>(aBiomeNames);
 				for (int i = aMinZ; i <= aMaxZ; i++) for (int j = (aMinZ < 0 ? 0 : -16), k = (aMinZ < 0 ? 16 : 0); j < k; j++) {
 					BiomeGenBase tBiome = aWorld.getBiomeGenForCoords(j, i);
 					if (tBiome != null) aBiomeNames.add(tBiome.biomeName);
@@ -240,7 +241,7 @@ public class WorldgenStreets extends WorldgenObject {
 						}
 					}
 				}
-				aBiomeNames = new HashSetNoNulls(aBiomeNames);
+				aBiomeNames = new HashSetNoNulls<>(aBiomeNames);
 				for (int i = aMinX; i <= aMaxX; i++) for (int j = (aMinZ < 0 ? 0 : -16), k = (aMinZ < 0 ? 16 : 0); j < k; j++) {
 					BiomeGenBase tBiome = aWorld.getBiomeGenForCoords(i, j);
 					if (tBiome != null) aBiomeNames.add(tBiome.biomeName);
@@ -255,6 +256,7 @@ public class WorldgenStreets extends WorldgenObject {
 		return F;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public final boolean generateRoadX(World aWorld, int aMinZ, boolean aLand, boolean aKillSky, boolean aTunnel, boolean aBridge, boolean aSideWalls) {
 		for (int i = 0; i < 16; i++) {
 			if (aLand) {
@@ -495,6 +497,7 @@ public class WorldgenStreets extends WorldgenObject {
 		return T;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public final boolean generateRoadZ(World aWorld, int aMinX, boolean aLand, boolean aKillSky, boolean aTunnel, boolean aBridge, boolean aSideWalls) {
 		for (int i = 0; i < 16; i++) {
 			if (aLand) {

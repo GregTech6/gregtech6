@@ -88,7 +88,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class MultiTileEntityMold extends TileEntityBase07Paintable implements IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_GetSubItems, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataShort {
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
-	public static final Map<Integer, OreDictPrefix> MOLD_RECIPES = new HashMap();
+	public static final Map<Integer, OreDictPrefix> MOLD_RECIPES = new HashMap<>();
 	
 	public OreDictPrefix getMoldRecipe(int aShape) {
 		if (aShape == 0) return null;
@@ -133,7 +133,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (mShape == 0)
 		aList.add(Chat.CYAN		+ LH.get(LH.RECIPES_MOLD_SELECT));
 		else
@@ -657,14 +657,14 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 	@Override public FluidTankInfo[] getTankInfo(ForgeDirection aDirection) {return L1_FLUIDTANKINFO_DUMMY;}
 	
 	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List aList, short aID) {
+	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.mold";}
 	
 	static {
-		Map<Integer, OreDictPrefix> TEMP_MOLD_RECIPES = new HashMap();
+		Map<Integer, OreDictPrefix> TEMP_MOLD_RECIPES = new HashMap<>();
 		
 		TEMP_MOLD_RECIPES.put(
 		B[ 0]|B[ 1]|B[ 2]|B[ 3]|

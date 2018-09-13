@@ -48,7 +48,8 @@ import net.minecraft.world.gen.feature.WorldGenTrees;
 public class WorldgenCenterBiomes extends WorldgenObject {
 	public int mHeight = 66;
 	
-	public WorldgenCenterBiomes(String aName, boolean aDefault, List... aLists) {
+	@SafeVarargs
+	public WorldgenCenterBiomes(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
 		GENERATE_BIOMES = mEnabled;

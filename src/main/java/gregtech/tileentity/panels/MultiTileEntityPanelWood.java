@@ -46,7 +46,7 @@ public class MultiTileEntityPanelWood extends MultiTileEntityPanel implements IM
 	}
 	
 	@Override
-	public void addToolTips(List aList, ItemStack aStack, boolean aF3_H) {
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		ItemStack tStack = PlankData.PLANKS[mIndex % PlankData.PLANKS.length];
 		if (ST.valid(tStack)) aList.add(LH.Chat.CYAN + tStack.getDisplayName());
 	}
