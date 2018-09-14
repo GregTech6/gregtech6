@@ -799,26 +799,33 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (aEvent.newSpeed > 0) {
 			if (aEvent.entityPlayer != null) {
 				ItemStack aStack = aEvent.entityPlayer.getCurrentEquippedItem();
-				if (aStack != null && aStack.getItem() instanceof MultiItemTool) aEvent.newSpeed = ((MultiItemTool)aStack.getItem()).onBlockBreakSpeedEvent(aEvent.newSpeed, aStack, aEvent.entityPlayer, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.metadata, aEvent);
+				if (aStack != null && aStack.getItem() instanceof MultiItemTool) {
+					// Aether does something stupid so Reflection it is
+					UT.Reflection.setField(aEvent, "originalSpeed", aEvent.newSpeed = ((MultiItemTool)aStack.getItem()).onBlockBreakSpeedEvent(aEvent.newSpeed, aStack, aEvent.entityPlayer, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.metadata, aEvent));
+				}
 			}
 			
 			ItemStackContainer tBlock = new ItemStackContainer(aEvent.block, 1, aEvent.metadata);
 			
 			if (OM.prefixcontains(ST.make(aEvent.block, 1, aEvent.metadata), TD.Prefix.ORE)) {
-				aEvent.newSpeed /= HARDNESS_MULTIPLIER_ORES;
+				// Aether does something stupid so Reflection it is
+				UT.Reflection.setField(aEvent, "originalSpeed", aEvent.newSpeed /= HARDNESS_MULTIPLIER_ORES);
 				return;
 			}
 			if (BlocksGT.stoneToBrokenOres.containsKey(tBlock) || BlocksGT.stoneToNormalOres.containsKey(tBlock) || BlocksGT.stoneToSmallOres.containsKey(tBlock)) {
 				if (aEvent.block.getMaterial() == Material.sand || aEvent.block.getMaterial() == Material.clay || aEvent.block.getMaterial() == Material.grass || aEvent.block.getMaterial() == Material.ground) {
-					aEvent.newSpeed /= HARDNESS_MULTIPLIER_SAND;
+					// Aether does something stupid so Reflection it is
+					UT.Reflection.setField(aEvent, "originalSpeed", aEvent.newSpeed /= HARDNESS_MULTIPLIER_SAND);
 					return;
 				}
-				aEvent.newSpeed /= HARDNESS_MULTIPLIER_ROCK;
+				// Aether does something stupid so Reflection it is
+				UT.Reflection.setField(aEvent, "originalSpeed", aEvent.newSpeed /= HARDNESS_MULTIPLIER_ROCK);
 				return;
 			}
 			if (aEvent.block instanceof IBlockPlacable) {
 				if (BlocksGT.stoneToBrokenOres.containsValue((IBlockPlacable)aEvent.block) || BlocksGT.stoneToNormalOres.containsValue((IBlockPlacable)aEvent.block) || BlocksGT.stoneToSmallOres.containsValue((IBlockPlacable)aEvent.block)) {
-					aEvent.newSpeed /= HARDNESS_MULTIPLIER_ORES;
+					// Aether does something stupid so Reflection it is
+					UT.Reflection.setField(aEvent, "originalSpeed", aEvent.newSpeed /= HARDNESS_MULTIPLIER_ORES);
 					return;
 				}
 			}

@@ -2070,6 +2070,16 @@ public class UT {
 			return rField;
 		}
 		
+		public static Field setField(Object aObject, String aField, Object aValue) {
+			Field rField = null;
+			try {
+				rField = aObject.getClass().getDeclaredField(aField);
+				rField.setAccessible(T);
+				rField.set(aObject, aValue);
+			} catch (Throwable e) {e.printStackTrace(DEB);}
+			return rField;
+		}
+		
 		public static Field getField(Object aObject, String aField) {
 			Field rField = null;
 			try {
