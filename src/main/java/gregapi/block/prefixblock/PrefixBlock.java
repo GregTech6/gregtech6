@@ -401,7 +401,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	}
 	
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition aTarget, World aWorld, int aX, int aY, int aZ) {
+	public ItemStack getPickBlock(MovingObjectPosition aTarget, World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer) {
 		return getItemStackFromBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN);
 	}
 	

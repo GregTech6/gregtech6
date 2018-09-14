@@ -211,7 +211,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public OreDictItemData getOreDictItemData(ItemStack aStack) {return UT.Code.exists(ST.meta(aStack), mMaterialList) ? new OreDictItemData(mPrefix, mMaterialList[ST.meta(aStack)]) : null;}
 	@Override public OreDictMaterial getMaterial(int aMetaData) {return UT.Code.exists(aMetaData, mMaterialList) ? mMaterialList[aMetaData] : null;}
 	@Override public OreDictPrefix getPrefix(int aMetaData) {return mPrefix;}
-	@Override public boolean hasEffect(ItemStack aStack) {return F;}
+	@Override @SuppressWarnings("deprecation") public boolean hasEffect(ItemStack aStack) {return F;}
 	@Override public boolean hasEffect(ItemStack aStack, int aRenderPass) {return F;}
 	
 	/*

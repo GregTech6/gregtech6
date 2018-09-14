@@ -514,6 +514,7 @@ public enum IL implements IItemContainer {
 	}
 	
 	@Override
+	@SuppressWarnings("deprecation")
 	public ItemStack getWildcard(long aAmount, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
 		if (ST.invalid(mStack)) return ST.copy(aReplacements);
@@ -603,6 +604,6 @@ public enum IL implements IItemContainer {
 		return this;
 	}
 	
-	@Override public Item getItem() {return item();}
-	@Override public Block getBlock() {return block();}
+	@SuppressWarnings("deprecation") @Override public Item getItem() {return item();}
+	@SuppressWarnings("deprecation") @Override public Block getBlock() {return block();}
 }

@@ -29,7 +29,6 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.old.IGT_RecipeAdder;
-import gregapi.old.IGT_RecipeAdder.NonWorkingRecipeAdder;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -41,9 +40,11 @@ import net.minecraftforge.fluids.FluidRegistry;
 @SuppressWarnings("deprecation")
 public class Loader_MachineRecipes implements Runnable {
 	@Override
+	@SuppressWarnings("deprecation")
 	public void run() {
 		OUT.println("GT_Mod: Adding non-OreDict Machine Recipes.");
-		IGT_RecipeAdder RA = new NonWorkingRecipeAdder();
+		@SuppressWarnings("deprecation")
+		IGT_RecipeAdder RA = IGT_RecipeAdder.NON_WORKING;
 		
 //      RA.addPrinterRecipe(OM.get(OP.plateDouble, MT.Paper, 1), UT.Fluids.make("squidink", (int)L / 4), NI, IL.Paper_Punch_Card_Empty.get(1), 100, 2);
 //      RA.addPrinterRecipe(IL.Paper_Punch_Card_Empty.get(1), UT.Fluids.make("squidink", (int)L / 4), IL.Tool_DataStick.getWithName(0, "With Punch Card Data"), IL.Paper_Punch_Card_Encoded.get(1), 100, 2);
@@ -91,12 +92,6 @@ public class Loader_MachineRecipes implements Runnable {
 //      RA.addAssemblerRecipe(ST.make(Items.leather, 1, W)                                                  , ST.make(Items.lead, 1, W)                                     , MT.Glue.getFluid( 50)         , ST.make(Items.name_tag, 1, 0)                                         , 100,    8);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Paper, 8)                     , ST.make(Items.compass, 1, W)                                  , NF                                    , ST.make(Items.map, 1, 0)                                              , 100,    8);
 //      RA.addAssemblerRecipe(OM.get(OP.dust, MT.Tantalum, 1)                       , OM.get(OP.plate, MT.Manganese, 1) , MT.Plastic.getMolten(L)       , IL.Battery_RE_ULV_Tantalum.get(1)                                     , 100,    4);
-		RA.addAssemblerRecipe(ST.make(MD.TF, "item.charmOfLife1", 4, 0)                     , ST.tag(4)                     , NF                                    , ST.make(MD.TF, "item.charmOfLife2"            ,  1,    0) , 100,    8);
-		RA.addAssemblerRecipe(ST.make(MD.TF, "item.charmOfKeeping1", 4, 0)                      , ST.tag(4)                     , NF                                    , ST.make(MD.TF, "item.charmOfKeeping2"     ,  1,    0) , 100,    8);
-		RA.addAssemblerRecipe(ST.make(MD.TF, "item.charmOfKeeping2", 4, 0)                      , ST.tag(4)                     , NF                                    , ST.make(MD.TF, "item.charmOfKeeping3"     ,  1,    0) , 100,    8);
-		RA.addAssemblerRecipe(ST.make(MD.TF, "item.charmOfLife2", 1, 0)                     , ST.tag(1)                     , NF                                    , ST.make(MD.TF, "item.charmOfLife1"            ,  4,    0) , 100,    8);
-		RA.addAssemblerRecipe(ST.make(MD.TF, "item.charmOfKeeping2", 1, 0)                      , ST.tag(1)                     , NF                                    , ST.make(MD.TF, "item.charmOfKeeping1"     ,  4,    0) , 100,    8);
-		RA.addAssemblerRecipe(ST.make(MD.TF, "item.charmOfKeeping3", 1, 0)                      , ST.tag(1)                     , NF                                    , ST.make(MD.TF, "item.charmOfKeeping2"     ,  4,    0) , 100,    8);
 //      RA.addAssemblerRecipe(IL.FR_Wax.get(6)                                                              , ST.make(Items.string, 1, W)                                       , MT.Water.getFluid( 600)       , ST.make(MD.FR, "candle"                       , 24,    0) ,  64,    8);
 //      RA.addAssemblerRecipe(IL.FR_Wax.get(2)                                                              , IL.FR_Silk.get(1)                                             , MT.Water.getFluid( 200)       , ST.make(MD.FR, "candle"                       ,  8,    0) ,  16,    8);
 //      RA.addAssemblerRecipe(IL.FR_Silk.get(9)                                                             , IL.Circuit_Integrated.getWithDamage(0, 9)                     , MT.Water.getFluid( 500)       , ST.make(MD.FR, "craftingMaterial"         ,  1,    3) ,  64,    8);

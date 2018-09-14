@@ -657,6 +657,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	@Override
+	@SuppressWarnings("deprecation")
 	public boolean hasEffect(ItemStack aStack) {
 		return F;
 	}
