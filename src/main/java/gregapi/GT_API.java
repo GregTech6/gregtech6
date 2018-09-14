@@ -240,6 +240,9 @@ public class GT_API extends Abstract_Mod {
 		Blocks.monster_egg.setHarvestLevel("pickaxe", 0);
 		Blocks.obsidian.setHarvestLevel("pickaxe", 3);
 		
+		// well that one did not work... continue reflection because the gregtech_at.cfg isn't doing what it is supposed to
+		// Material.tnt.func_85158_p();
+		// Material.tnt.setAdventureModeExempt();
 		UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
 		UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
 		
