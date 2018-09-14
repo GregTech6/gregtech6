@@ -31,6 +31,7 @@
 !/src/main/java/**/*.java
 
 # Assets
+!/src/main/resources/**/*.ogg
 !/src/main/resources/**/*.png
 !/src/main/resources/**/*.mcmeta
 !/src/main/resources/**/*.lang
