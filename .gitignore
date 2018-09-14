@@ -30,16 +30,17 @@
 # Source
 !/src/main/java/**/*.java
 
+# License Files inside the Mod
+!/src/main/resources/**/LICENSE*
+!/src/main/resources/**/COPYING*
 # Assets
+!/src/main/resources/**/*.txt
 !/src/main/resources/**/*.ogg
 !/src/main/resources/**/*.png
 !/src/main/resources/**/*.json
-!/src/main/resources/**/*.mcmeta
 !/src/main/resources/**/*.lang
-!/src/main/resources/**/mcmod.info
-!/src/main/resources/**/LICENSE*
-!/src/main/resources/**/COPYING*
+!/src/main/resources/**/*.info
+!/src/main/resources/**/*.mcmeta
 # Some old scripts in resources...
 !/src/main/resources/**/*.bat
-!/src/main/resources/**/*.txt
 /bin/
