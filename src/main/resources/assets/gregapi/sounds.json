@@ -1,0 +1,5 @@
+{
+"gt.screwdriver":{"category":"player", "sounds":[{"name":"screwdriver", "stream":false}]},
+"gt.wrench":{"category":"player", "sounds":[{"name":"wrench", "stream":false}]},
+"gt.beep":{"category":"player", "sounds":[{"name":"beep", "stream":false}]}
+}

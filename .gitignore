@@ -33,6 +33,7 @@
 # Assets
 !/src/main/resources/**/*.ogg
 !/src/main/resources/**/*.png
+!/src/main/resources/**/*.json
 !/src/main/resources/**/*.mcmeta
 !/src/main/resources/**/*.lang
 !/src/main/resources/**/mcmod.info
