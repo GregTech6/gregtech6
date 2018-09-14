@@ -61,7 +61,7 @@ public class CoverTextureMulti extends AbstractCoverDefault {
 		return 0;
 	}
 	
-	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), mSound == null ? SFX.GT_WRENCH : mSound, 1.0F, -1.0F, aData.mTileEntity.getCoords());}
+	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), mSound == null ? SFX.GT_SCREWDRIVER : mSound, 1.0F, 1.0F, aData.mTileEntity.getCoords());}
 	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), mSound == null ? SFX.MC_BREAK : mSound, 1.0F, -1.0F, aTileEntity.getCoords());}
 	@Override public void getCollisions(byte aCoverSide, CoverData aData, AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {if (mHasCollide) super.getCollisions(aCoverSide, aData, aAABB, aList, aEntity);}
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return mTextures[aData.mVisuals[aSide]%mTextures.length];}

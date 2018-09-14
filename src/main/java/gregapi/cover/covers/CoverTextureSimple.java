@@ -44,7 +44,7 @@ public class CoverTextureSimple extends AbstractCoverDefault {
 		mSound = aSound;
 	}
 	
-	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), mSound == null ? SFX.GT_WRENCH : mSound, 1.0F, -1.0F, aData.mTileEntity.getCoords());}
+	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), mSound == null ? SFX.GT_SCREWDRIVER : mSound, 1.0F, 1.0F, aData.mTileEntity.getCoords());}
 	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), mSound == null ? SFX.MC_BREAK : mSound, 1.0F, -1.0F, aTileEntity.getCoords());}
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return mTexture;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return F;}

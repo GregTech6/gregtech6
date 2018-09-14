@@ -1822,6 +1822,7 @@ public class CS {
 		
 		, GT_BEEP               = MD.GAPI.mID.toLowerCase() + ":" + "gt.beep"
 		, GT_WRENCH             = MD.GAPI.mID.toLowerCase() + ":" + "gt.wrench"
+		, GT_SCREWDRIVER        = MD.GAPI.mID.toLowerCase() + ":" + "gt.screwdriver"
 		
 		, IC_WRENCH             = GT_WRENCH
 		, IC_TRAMPOLINE         = MD.IC2.mID.toLowerCase() + ":" + "tools.RubberTrampoline"
