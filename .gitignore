@@ -35,6 +35,7 @@
 !/src/main/resources/**/COPYING*
 # Assets
 !/src/main/resources/**/*.txt
+!/src/main/resources/**/*.cfg
 !/src/main/resources/**/*.ogg
 !/src/main/resources/**/*.png
 !/src/main/resources/**/*.json
