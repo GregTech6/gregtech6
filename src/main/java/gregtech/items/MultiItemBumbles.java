@@ -448,7 +448,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	
 	@Override
 	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		String tTooltip = getFlowerTooltip(ST.meta(aStack));
+		String tTooltip = getFlowerTooltip(ST.meta_(aStack));
 		if (UT.Code.stringValid(tTooltip)) aList.add(LH.Chat.CYAN + "Requirement: " + LH.Chat.WHITE + tTooltip);
 		
 		NBTTagCompound aBumbleTag = Util.getBumbleTag(aStack);
@@ -456,7 +456,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 			aList.add(LH.Chat.BLINKING_RED + "No Genetic Data to display");
 			aList.add(LH.Chat.CYAN + "Generates random 'Outsider-Plains-Biome' Genes when used");
 		} else {
-			if (ST.meta(aStack) % 10 < 5) {
+			if (ST.meta_(aStack) % 10 < 5) {
 				aList.add(LH.Chat.RED + "Not scanned");
 			} else {
 				aList.add(LH.Chat.CYAN + "Humidity: " + LH.Chat.WHITE + Util.getHumidityMin(aBumbleTag) + " to " + Util.getHumidityMax(aBumbleTag) + LH.Chat.RED + "   Temp: " + LH.Chat.WHITE + Util.getTemperatureMin(aBumbleTag) + "K to " + Util.getTemperatureMax(aBumbleTag) + "K");
@@ -507,11 +507,11 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		}
 	}
 	
-	@Override public ItemStack bumbleScan(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta(rStack); if (aMeta % 10 < 5) ST.meta(rStack, aMeta + 5); return rStack;}
-	@Override public ItemStack bumbleKill(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta(rStack); if (aMeta % 5 != 4) ST.meta(rStack, (aMeta / 5) * 5 + 4); return rStack;}
-	@Override public ItemStack bumbleCrown(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta(rStack); if (aMeta % 5 != 2) ST.meta(rStack, (aMeta / 5) * 5 + 2); return rStack;}
+	@Override public ItemStack bumbleScan(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta_(rStack); if (aMeta % 10 < 5) ST.meta_(rStack, aMeta + 5); return rStack;}
+	@Override public ItemStack bumbleKill(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta_(rStack); if (aMeta % 5 != 4) ST.meta_(rStack, (aMeta / 5) * 5 + 4); return rStack;}
+	@Override public ItemStack bumbleCrown(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta_(rStack); if (aMeta % 5 != 2) ST.meta_(rStack, (aMeta / 5) * 5 + 2); return rStack;}
 	@Override public boolean bumbleEqual(ItemStack aBumbleBeeA, short aMetaDataA, ItemStack aBumbleBeeB, short aMetaDataB) {return aBumbleBeeA.getItem() == aBumbleBeeB.getItem() && aMetaDataA / 10 == aMetaDataB / 10;}
-	@Override public byte bumbleType(ItemStack aBumbleBee) {return (byte)(ST.meta(aBumbleBee) % 10);}
+	@Override public byte bumbleType(ItemStack aBumbleBee) {return (byte)(ST.meta_(aBumbleBee) % 10);}
 	
 	@Override public ItemStack bumbleDrone      (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10);}
 	@Override public ItemStack bumblePrincess   (ItemStack aBumbleBee, short aMetaData) {return ST.make(this, 1, (aMetaData / 10) * 10 + 1);}
@@ -593,10 +593,10 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	
 	public IIcon PRINCESS, QUEEN, SCANNED, DEAD;
 	
-	@Override public IIcon getIconIndex(ItemStack aStack) {return mIconList[(ST.meta(aStack)/10)*10][0];}
+	@Override public IIcon getIconIndex(ItemStack aStack) {return mIconList[(ST.meta_(aStack)/10)*10][0];}
 	@Override public IIcon getIconFromDamage(int aMetaData) {aMetaData /= 10; aMetaData *= 10; return UT.Code.exists(aMetaData, mIconList) ? mIconList[aMetaData][0] : Textures.ItemIcons.RENDERING_ERROR.getIcon(0);}
 	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {return getIcon(aStack, aRenderPass);}
-	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIconFromDamageForRenderPass(ST.meta(aStack), aRenderPass);}
+	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIconFromDamageForRenderPass(ST.meta_(aStack), aRenderPass);}
 	
 	@Override public boolean requiresMultipleRenderPasses() {return T;}
 	

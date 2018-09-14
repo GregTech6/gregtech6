@@ -38,7 +38,7 @@ public class CoverRegistry {
 	}
 	
 	public static ICover get(ItemStack aStack) {
-		return aStack==null?null:get(ST.id(aStack), ST.meta(aStack));
+		return aStack==null?null:get(ST.id(aStack), ST.meta_(aStack));
 	}
 	
 	public static void put(ItemStackContainer aStack, ICover aCover) {

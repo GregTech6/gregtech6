@@ -207,7 +207,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 					continue;
 				}
 				if (tRandomData instanceof FluidStack) {
-					tRandomData = new FluidContainerData((FluidStack)tRandomData, ST.copy(rStack), getContainerItem(rStack), T);
+					tRandomData = new FluidContainerData((FluidStack)tRandomData, ST.copy_(rStack), getContainerItem(rStack), T);
 					if (((FluidContainerData)tRandomData).emptyContainer != null)
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
@@ -344,12 +344,12 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	
 	@Override
 	public IItemEnergy getEnergyStats(ItemStack aStack) {
-		return mElectricStats.get(ST.meta(aStack));
+		return mElectricStats.get(ST.meta_(aStack));
 	}
 	
 	@Override
 	public Long[] getFluidContainerStats(ItemStack aStack) {
-		return mFluidContainerStats.get(ST.meta(aStack));
+		return mFluidContainerStats.get(ST.meta_(aStack));
 	}
 	
 	@Override
@@ -398,7 +398,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 	
 	@Override
 	public IIcon getIconIndex(ItemStack aStack) {
-		short aMetaData = ST.meta(aStack);
+		short aMetaData = ST.meta_(aStack);
 		if (!UT.Code.exists(aMetaData, mIconList)) return Textures.ItemIcons.RENDERING_ERROR.getIcon(0);
 		IItemEnergy tStats = mElectricStats.get(aMetaData);
 		if (tStats != null && mIconList[aMetaData].length > 1) {

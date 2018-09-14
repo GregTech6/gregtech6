@@ -244,7 +244,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		// Initialising the List of Decorative Plank Icons
 		for (int i = 0; i < PlankData.PLANKS.length; i++) {
 			Block tBlock = ST.block(PlankData.PLANKS[i]);
-			if (tBlock != null && tBlock != NB) PlankData.PLANK_ICONS[i] = new IconContainerCopied(tBlock, ST.meta(PlankData.PLANKS[i]), SIDE_ANY);
+			if (tBlock != null && tBlock != NB) PlankData.PLANK_ICONS[i] = new IconContainerCopied(tBlock, ST.meta_(PlankData.PLANKS[i]), SIDE_ANY);
 		}
 	}
 	
@@ -267,7 +267,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		if (!DISPLAY_TEMP_TOOLTIP) {DISPLAY_TEMP_TOOLTIP = T; return;}
 		
 		String aRegName = ST.regName(aEvent.itemStack);
-		short aMeta = ST.meta(aEvent.itemStack);
+		short aMeta = ST.meta_(aEvent.itemStack);
 		byte aBlockMeta = (byte)(UT.Code.inside(0, 15, aMeta) ? aMeta : 0);
 		Block aBlock = ST.block(aEvent.itemStack);
 		

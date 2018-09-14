@@ -109,7 +109,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 				ItemStack tRoyalStack = slot(SLOT_ROYAL);
 				IItemBumbleBee tRoyalItem = (IItemBumbleBee)tRoyalStack.getItem();
 				NBTTagCompound tRoyalTag = Util.getBumbleTag(tRoyalStack);
-				short tRoyalMeta = ST.meta(tRoyalStack);
+				short tRoyalMeta = ST.meta_(tRoyalStack);
 				if (mLife > 0 && tRoyalItem.bumbleType(tRoyalStack) % 5 == 2) {
 					mBreedingCountDown = 1200;
 					if (checkEnvironment(tRoyalTag)) {
@@ -202,14 +202,14 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 									if (((IItemBumbleBee)tDroneStack.getItem()).bumbleType(tDroneStack) % 5 == 0) {
 										tBreedStack = tDroneStack;
 										tBreedSlot = tDroneSlot;
-										if (tRoyalItem.bumbleEqual(tRoyalStack, tRoyalMeta, tDroneStack, ST.meta(tDroneStack))) break;
+										if (tRoyalItem.bumbleEqual(tRoyalStack, tRoyalMeta, tDroneStack, ST.meta_(tDroneStack))) break;
 									}
 								}
 							}
 							if (tBreedStack != null) {
 								mBreedingCountDown = 1200;
 								IItemBumbleBee tBreedItem = (IItemBumbleBee)tBreedStack.getItem();
-								short tBreedMeta = ST.meta(tBreedStack);
+								short tBreedMeta = ST.meta_(tBreedStack);
 								int tPrincessCount = 1 + rng(5) / 2;
 								
 								mOffSpring = new ItemStack[(int)(Util.getOffspring(tRoyalTag)) + tPrincessCount];
@@ -219,8 +219,8 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 										mOffSpring[i] = (i < tPrincessCount ? tRoyalItem.bumblePrincess(tRoyalStack, tRoyalMeta) : tRoyalItem.bumbleDrone(tRoyalStack, tRoyalMeta));
 										if (ST.valid(mOffSpring[i]) && mOffSpring[i].getItem() instanceof IItemBumbleBee) {
 											IItemBumbleBee tOffSpringItem = (IItemBumbleBee)mOffSpring[i].getItem();
-											if (rng(10000) < tOffSpringItem.bumbleMutateChance(mOffSpring[i], ST.meta(mOffSpring[i]))) {
-												mOffSpring[i] = tOffSpringItem.bumbleMutate(mOffSpring[i], ST.meta(mOffSpring[i]), RNGSUS);
+											if (rng(10000) < tOffSpringItem.bumbleMutateChance(mOffSpring[i], ST.meta_(mOffSpring[i]))) {
+												mOffSpring[i] = tOffSpringItem.bumbleMutate(mOffSpring[i], ST.meta_(mOffSpring[i]), RNGSUS);
 											}
 										}
 									}
@@ -356,7 +356,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	}
 	
 	private boolean attackEntity(EntityLivingBase aEntity) {
-		return slotHas(SLOT_ROYAL) && slot(SLOT_ROYAL).getItem() instanceof IItemBumbleBee && ((IItemBumbleBee)slot(SLOT_ROYAL).getItem()).bumbleType(slot(SLOT_ROYAL)) % 5 == 2 && ((IItemBumbleBee)slot(SLOT_ROYAL).getItem()).bumbleAttack(slot(SLOT_ROYAL), ST.meta(slot(SLOT_ROYAL)), aEntity);
+		return slotHas(SLOT_ROYAL) && slot(SLOT_ROYAL).getItem() instanceof IItemBumbleBee && ((IItemBumbleBee)slot(SLOT_ROYAL).getItem()).bumbleType(slot(SLOT_ROYAL)) % 5 == 2 && ((IItemBumbleBee)slot(SLOT_ROYAL).getItem()).bumbleAttack(slot(SLOT_ROYAL), ST.meta_(slot(SLOT_ROYAL)), aEntity);
 	}
 	
 	private boolean checkEnvironment(NBTTagCompound aBumbleTag) {

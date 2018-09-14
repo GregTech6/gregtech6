@@ -131,7 +131,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Drying       .addRecipe1(T, 16,  128, aEvent.mStack, NF, FL.DistW.make(64)       , ST.make(BlocksGT.Log1, 1, 0));
 			RM.Fermenter    .addRecipe1(T, 16,  128, aEvent.mStack                              , ST.make(BlocksGT.Log1, 1, 1));
 			
-			short aMeta = ST.meta(aEvent.mStack);
+			short aMeta = ST.meta_(aEvent.mStack);
 			
 			if (WoodDictionary.WOODS.containsKey(new ItemStackContainer(aEvent.mStack, aMeta == W ? 0 : aMeta)) || WoodDictionary.WOODS.containsKey(new ItemStackContainer(aEvent.mStack, W)) || WoodDictionary.BEAMS.containsKey(new ItemStackContainer(aEvent.mStack, aMeta == W ? 0 : aMeta)) || WoodDictionary.BEAMS.containsKey(new ItemStackContainer(aEvent.mStack, W))) return;
 			

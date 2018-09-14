@@ -59,7 +59,7 @@ public class RecipeMapBath extends RecipeMap {
 			if (MD.ATUM.mLoaded) {
 				Item tItem = ST.item(MD.ATUM, "item.loot");
 				if (aInput.getItem() == tItem) {
-					short tMeta = ST.meta(aInput);
+					short tMeta = ST.meta_(aInput);
 					if ((tMeta & 31) == 1) return new Recipe(F, F, F, new ItemStack[] {ST.amount(1, aInput)}, new ItemStack[] {ST.make(tItem, 1, (tMeta & ~31) + 2 + 2 * RNGSUS.nextInt(6))}, null, null, new FluidStack[] {UT.Fluids.water(aFluids[0])?UT.Fluids.amount(aFluids[0], 100):FL.Water.make(100)}, ZL_FS, 512, 0, 0).setNeedEmptyOut();
 					return null;
 				}

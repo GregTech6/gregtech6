@@ -544,7 +544,7 @@ public class Recipe {
 		public List<Recipe> getNEIRecipes(ItemStack... aOutputs) {
 			for (ItemStack aOutput : aOutputs) if (ST.valid(aOutput)) {
 				if (IL.Display_Fluid.equal(aOutput, T, T)) {
-					Fluid tFluid = UT.Fluids.fluid(ST.meta(aOutput));
+					Fluid tFluid = UT.Fluids.fluid(ST.meta_(aOutput));
 					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, tFluid);
 				} else {
 					OreDictItemData tData = OM.data_(aOutput);
@@ -556,14 +556,14 @@ public class Recipe {
 				for (ItemStack aOutput : aOutputs) if (aOutput != null) {
 					if (IL.Display_Fluid.equal(aOutput, T, T)) {
 						for (FluidStack tOutput : tRecipe.mFluidOutputs) {
-							if (ST.meta(aOutput) >= 0 && UT.Fluids.id(tOutput) == ST.meta(aOutput)) {
+							if (ST.meta_(aOutput) >= 0 && UT.Fluids.id(tOutput) == ST.meta_(aOutput)) {
 								rList.add(tRecipe);
 								break;
 							}
 						}
 					} else {
 						for (ItemStack tOutput : tRecipe.mOutputs) if (tOutput != null && tOutput.getItem() == aOutput.getItem()) {
-							if (ST.meta(tOutput) == W || ST.meta(tOutput) == ST.meta(aOutput) || tOutput.isItemStackDamageable()) {
+							if (ST.meta_(tOutput) == W || ST.meta_(tOutput) == ST.meta_(aOutput) || tOutput.isItemStackDamageable()) {
 								rList.add(tRecipe);
 								break;
 							}
@@ -577,7 +577,7 @@ public class Recipe {
 		public List<Recipe> getNEIUsages(ItemStack... aInputs) {
 			for (ItemStack aInput : aInputs) if (ST.valid(aInput)) {
 				if (IL.Display_Fluid.equal(aInput, T, T)) {
-					Fluid tFluid = UT.Fluids.fluid(ST.meta(aInput));
+					Fluid tFluid = UT.Fluids.fluid(ST.meta_(aInput));
 					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, tFluid);
 				} else {
 					OreDictItemData tData = OM.data_(aInput);
@@ -589,14 +589,14 @@ public class Recipe {
 				for (ItemStack aInput : aInputs) if (aInput != null) {
 					if (IL.Display_Fluid.equal(aInput, T, T)) {
 						for (FluidStack tInput : tRecipe.mFluidInputs) {
-							if (ST.meta(aInput) >= 0 && UT.Fluids.id(tInput) == ST.meta(aInput)) {
+							if (ST.meta_(aInput) >= 0 && UT.Fluids.id(tInput) == ST.meta_(aInput)) {
 								rList.add(tRecipe);
 								break;
 							}
 						}
 					} else {
 						for (ItemStack tInput : tRecipe.mInputs) if (tInput != null && tInput.getItem() == aInput.getItem()) {
-							if (ST.meta(tInput) == W || ST.meta(tInput) == ST.meta(aInput) || tInput.isItemStackDamageable()) {
+							if (ST.meta_(tInput) == W || ST.meta_(tInput) == ST.meta_(aInput) || tInput.isItemStackDamageable()) {
 								rList.add(tRecipe);
 								break;
 							}
@@ -702,7 +702,7 @@ public class Recipe {
 				if (tChance > 0) {
 					int tMax = getMaxChance(i);
 					if (tChance >= tMax) {
-						rArray[i] = ST.mul(aProcessCount, tOutput);
+						rArray[i] = ST.mul_(aProcessCount, tOutput);
 					} else {
 						for (int j = 0, k = tOutput.stackSize * aProcessCount; j < k; j++) if (aRandom.nextInt(tMax) < tChance) {
 							if (rArray[i] == null) rArray[i] = ST.amount(1, tOutput); else rArray[i].stackSize++;
@@ -797,8 +797,8 @@ public class Recipe {
 	}
 	
 	private Recipe(Recipe aRecipe) {
-		mInputs = ST.copyArray((Object[])aRecipe.mInputs);
-		mOutputs = ST.copyArray((Object[])aRecipe.mOutputs);
+		mInputs = ST.copyArray(aRecipe.mInputs);
+		mOutputs = ST.copyArray(aRecipe.mOutputs);
 		mSpecialItems = aRecipe.mSpecialItems;
 		mChances = Arrays.copyOf(aRecipe.mChances, aRecipe.mChances.length);
 		mMaxChances = Arrays.copyOf(aRecipe.mMaxChances, aRecipe.mMaxChances.length);
@@ -838,7 +838,7 @@ public class Recipe {
 		
 		for (ItemStack tStack : aOutputs) {
 			if (tStack != null) {
-				if (ST.meta(tStack) == W) ST.meta(tStack, 0);
+				if (ST.meta_(tStack) == W) ST.meta_(tStack, 0);
 				ST.update(tStack);
 			}
 		}
@@ -850,7 +850,7 @@ public class Recipe {
 		for (int i = 0; i < aFluidOutputs   .length; i++) aFluidOutputs[i] = aFluidOutputs[i].copy();
 		
 		if (aOptimize)  {
-			for (int i = 0; i < aInputs.length; i++) if (aInputs[i] != NI && ST.meta(aInputs[i]) != W) for (int j = 0; j < aOutputs.length; j++) {
+			for (int i = 0; i < aInputs.length; i++) if (aInputs[i] != NI && ST.meta_(aInputs[i]) != W) for (int j = 0; j < aOutputs.length; j++) {
 				if (ST.equal(aInputs[i], aOutputs[j])) {
 					if (aInputs[i].stackSize >= aOutputs[j].stackSize) {
 						aInputs[i].stackSize -= aOutputs[j].stackSize;

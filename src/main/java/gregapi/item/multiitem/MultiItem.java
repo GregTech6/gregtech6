@@ -300,7 +300,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		
 		ItemStack tStack = UT.Fluids.fillFluidContainer(aFluid, aStack, F, F, F, F);
 		if (tStack != null) {
-			aStack.setItemDamage(ST.meta(tStack));
+			aStack.setItemDamage(ST.meta_(tStack));
 			aStack.func_150996_a(tStack.getItem());
 			return UT.Fluids.getFluidForFilledItem(tStack, F).amount;
 		}
@@ -355,7 +355,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 					aStack.stackSize = 0;
 					return tFluid;
 				}
-				aStack.setItemDamage(ST.meta(tStack));
+				aStack.setItemDamage(ST.meta_(tStack));
 				aStack.func_150996_a(tStack.getItem());
 			}
 			return tFluid;

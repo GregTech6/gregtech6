@@ -361,7 +361,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		EntityPlayer aPlayer = GT_API.api_proxy.getThePlayer();
 		if (aPlayer == null) return getIconIndex(aStack);
 		ChunkCoordinates aTarget;
-		switch(ST.meta(aStack)) {
+		switch(ST.meta_(aStack)) {
 		case 11000: return Textures.ItemIcons.COMPASS[UT.Code.roundDown(0.5+Textures.ItemIcons.COMPASS.length*(361260+aPlayer.rotationYaw)/360)%Textures.ItemIcons.COMPASS.length].getIcon(0);
 		case 11001: return Textures.ItemIcons.COMPASS[UT.Code.roundDown(0.5+Textures.ItemIcons.COMPASS.length*(361260-aPlayer.rotationYaw)/360)%Textures.ItemIcons.COMPASS.length].getIcon(0);
 		case 11003: return Textures.ItemIcons.COMPASS[UT.Code.roundDown(0.5+Textures.ItemIcons.COMPASS.length*(361170+aPlayer.rotationYaw-Math.atan2(-aPlayer.posZ, -aPlayer.posX)*180/Math.PI)/360)%Textures.ItemIcons.COMPASS.length].getIcon(0);
@@ -391,7 +391,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 	
 	@Override
 	public ItemStack getContainerItem(ItemStack aStack) {
-		int aMeta = ST.meta(aStack);
+		int aMeta = ST.meta_(aStack);
 		if (aMeta >=  1000 && aMeta <=  1999) return ST.make(this, 1,   999);
 		if (aMeta >   2000 && aMeta <=  2099) return ST.make(this, 1,  2000);
 		if (aMeta >   2100 && aMeta <=  2199) return ST.make(this, 1,  2100);
@@ -413,7 +413,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 	
 	@Override
 	public int getDefaultStackLimit(ItemStack aStack) {
-		int aMeta = ST.meta(aStack);
+		int aMeta = ST.meta_(aStack);
 		switch (aMeta) {
 		case 5002: case 5005: case 5008: case 5011: case 5014: case 5015: case 9001: case 9002: return 1;
 		default: return (aMeta >= 2000 && aMeta < 3000) ? 1 : 64;
@@ -422,7 +422,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 	
 	@Override
 	public ItemStack getRotten(ItemStack aStack) {
-		switch(ST.meta(aStack)) {
+		switch(ST.meta_(aStack)) {
 		case 2002: return ST.make(this, aStack.stackSize, 2011, aStack.getTagCompound());
 		case 2102: return ST.make(this, aStack.stackSize, 2111, aStack.getTagCompound());
 		case 2202: return ST.make(this, aStack.stackSize, 2211, aStack.getTagCompound());

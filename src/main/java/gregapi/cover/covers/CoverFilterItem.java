@@ -74,7 +74,7 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 						aChatReturn.add("Filter is empty!");
 						aData.mNBTs[aCoverSide] = null;
 					} else {
-						aChatReturn.add("Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta(tStack));
+						aChatReturn.add("Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
 					}
 				}
 			}
@@ -91,7 +91,7 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 				if (ST.valid(tStack)) {
 					aData.mNBTs[aCoverSide] = ST.save(null, "gt.filter.item", tStack);
 					UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
-					UT.Entities.sendchat(aPlayer, "Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta(tStack));
+					UT.Entities.sendchat(aPlayer, "Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
 				}
 			}
 		}

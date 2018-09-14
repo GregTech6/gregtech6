@@ -371,7 +371,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	
 	@Override
 	public int getItemStackLimit(ItemStack aStack) {
-		switch (ST.meta(aStack)) {
+		switch (ST.meta_(aStack)) {
 		case  0: return UT.Code.bindStack(OP.stone              .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
 		case  1: return UT.Code.bindStack(OP.stoneCobble        .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));
 		case  2: return UT.Code.bindStack(OP.stoneMossy         .mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));

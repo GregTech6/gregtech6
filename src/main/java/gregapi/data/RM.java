@@ -274,7 +274,7 @@ public class RM {
 		rem_smelting(aInput);
 		aOutput = OM.get_(aOutput);
 		if (ST.container(aInput, F) != null || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
-		FurnaceRecipes.smelting().func_151394_a(aInput, ST.copy(aOutput), aEXP);
+		FurnaceRecipes.smelting().func_151394_a(aInput, ST.copy_(aOutput), aEXP);
 		return T;
 	}
 	public static boolean rem_smelting(ItemStack aInput) {
@@ -305,9 +305,9 @@ public class RM {
 		return temp;
 	}
 	
-	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy(aInput), ST.copy(aOutput), Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
-	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput, ItemStack aOutput2, float aChance2) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy(aInput), ST.copy(aOutput), ST.copy(aOutput2), aChance2, Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
-	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput, ItemStack aOutput2, float aChance2, ItemStack aOutput3, float aChance3) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy(aInput), ST.copy(aOutput), ST.copy(aOutput2), aChance2, ST.copy(aOutput3), aChance3, Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
+	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy_(aInput), ST.copy_(aOutput), Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
+	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput, ItemStack aOutput2, float aChance2) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy_(aInput), ST.copy_(aOutput), ST.copy(aOutput2), aChance2, Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
+	public static boolean ae_grinder(int aTurns, ItemStack aInput, ItemStack aOutput, ItemStack aOutput2, float aChance2, ItemStack aOutput3, float aChance3) {if (MD.AE.mLoaded && ST.valid(aInput) && ST.valid(aOutput)) try {AEApi.instance().registries().grinder().addRecipe(ST.copy_(aInput), ST.copy_(aOutput), ST.copy(aOutput2), aChance2, ST.copy(aOutput3), aChance3, Math.max(1, aTurns)); return T;} catch(Throwable e) {e.printStackTrace(ERR);} return F;}
 	
 	public static boolean pulverizing(ItemStack aInput, ItemStack aOutput1) {return pulverizing(aInput, aOutput1, null, 0, F);}
 	public static boolean pulverizing(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2) {return pulverizing(aInput, aOutput1, aOutput2, 100, F);}
@@ -340,7 +340,7 @@ public class RM {
 				if (!OP.log.contains(aInput) && ConfigsGT.RECIPES.get(ConfigCategories.Machines.rockcrushing, aInput, ST.block(aInput) != NB)) {
 					try {
 						if (ST.block(aInput) != Blocks.obsidian && ST.block(aInput) != Blocks.gravel) {
-							mods.railcraft.api.crafting.IRockCrusherRecipe tRecipe = mods.railcraft.api.crafting.RailcraftCraftingManager.rockCrusher.createNewRecipe(ST.amount(1, aInput), ST.meta(aInput) != W, F);
+							mods.railcraft.api.crafting.IRockCrusherRecipe tRecipe = mods.railcraft.api.crafting.RailcraftCraftingManager.rockCrusher.createNewRecipe(ST.amount(1, aInput), ST.meta_(aInput) != W, F);
 							tRecipe.addOutput(ST.copy(aOutput1), 1.0F/aInput.stackSize);
 							if (aOutput2 != null) tRecipe.addOutput(ST.copy(aOutput2), (0.01F*(aChance2<=0?10:aChance2))/aInput.stackSize);
 							if (aOutput3 != null) tRecipe.addOutput(ST.copy(aOutput3), (0.01F*(aChance3<=0?10:aChance3))/aInput.stackSize);

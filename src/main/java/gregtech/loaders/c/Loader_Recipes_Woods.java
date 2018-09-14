@@ -84,32 +84,32 @@ public class Loader_Recipes_Woods implements Runnable {
 		
 		for (WoodEntry aEntry : WoodDictionary.WOODS.values()) {
 			if (aEntry.mBeamEntry != null)
-			RM.debarking(16, 64,               aEntry.mLog, ST.amountValidMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
+			RM.debarking(16, 64,               aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
 			RM.pulverizing(                    aEntry.mLog, OP.dust.mat(aEntry.mMaterialWood, aEntry.mPlankCountBuzz), aEntry.mBark, 50, F);
-			RM.sawing(16, 128, F, 4,           aEntry.mLog, ST.amountValidMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
-			GT_ModHandler.addSawmillRecipe(    aEntry.mLog, ST.amountValidMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
+			RM.sawing(16, 128, F, 4,           aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
+			GT_ModHandler.addSawmillRecipe(    aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
 			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
-			RM.Lathe.addRecipe1(T, 16, 80,     aEntry.mLog, ST.amountValidMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
+			RM.Lathe.addRecipe1(T, 16, 80,     aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
 			
-			CR.remove(ST.amountValidMeta(1, aEntry.mLog));
-			CR.shaped   (ST.amountValidMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NAC_NCC, "sLf", 'L', aEntry.mLog);
-			CR.shaped   (ST.amountValidMeta(NERFED_WOOD?aEntry.mPlankCountSaw :aEntry.mPlankCountBuzz , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, "s", "L", 'L', aEntry.mLog);
-			CR.shapeless(ST.amountValidMeta(NERFED_WOOD?aEntry.mPlankCountHand:aEntry.mPlankCountSaw  , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, new Object[] {aEntry.mLog});
+			CR.remove(ST.validMeta(1, aEntry.mLog));
+			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NAC_NCC, "sLf", 'L', aEntry.mLog);
+			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mPlankCountSaw :aEntry.mPlankCountBuzz , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, "s", "L", 'L', aEntry.mLog);
+			CR.shapeless(ST.validMeta(NERFED_WOOD?aEntry.mPlankCountHand:aEntry.mPlankCountSaw  , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, new Object[] {aEntry.mLog});
 		}
 		for (BeamEntry aEntry : WoodDictionary.BEAMS.values()) {
 			RM.generify(                       aEntry.mBeam, IL.Beam.get(1));
 			RM.pulverizing(                    aEntry.mBeam, OP.dust.mat(aEntry.mMaterialBeam, aEntry.mPlankCountBuzz));
-			RM.sawing(16, 128, F, 4,           aEntry.mBeam, ST.amountValidMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
-			GT_ModHandler.addSawmillRecipe(    aEntry.mBeam, ST.amountValidMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
+			RM.sawing(16, 128, F, 4,           aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
+			GT_ModHandler.addSawmillRecipe(    aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
 			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
-			RM.Lathe.addRecipe1(T, 16, 80,     aEntry.mBeam, ST.amountValidMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialBeam));
+			RM.Lathe.addRecipe1(T, 16, 80,     aEntry.mBeam, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialBeam));
 			
-			CR.shaped   (ST.amountValidMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NAC_NCC, "sBf", 'B', aEntry.mBeam);
-			CR.shaped   (ST.amountValidMeta(NERFED_WOOD?aEntry.mPlankCountSaw :aEntry.mPlankCountBuzz , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, "s", "B", 'B', aEntry.mBeam);
-			CR.shapeless(ST.amountValidMeta(NERFED_WOOD?aEntry.mPlankCountHand:aEntry.mPlankCountSaw  , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, new Object[] {aEntry.mBeam});
+			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NAC_NCC, "sBf", 'B', aEntry.mBeam);
+			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mPlankCountSaw :aEntry.mPlankCountBuzz , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, "s", "B", 'B', aEntry.mBeam);
+			CR.shapeless(ST.validMeta(NERFED_WOOD?aEntry.mPlankCountHand:aEntry.mPlankCountSaw  , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, new Object[] {aEntry.mBeam});
 		}
 		for (PlankEntry aEntry : WoodDictionary.PLANKS.values()) {
-			ItemStack aPlank = ST.amountValidMeta(1, aEntry.mPlank);
+			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			RM.generify(aEntry.mPlank, IL.Plank.get(1));
 			RM.pulverizing(aEntry.mPlank, OP.dust.mat(aEntry.mMaterialPlank, 1));
 			if (ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank)) {
@@ -134,24 +134,24 @@ public class Loader_Recipes_Woods implements Runnable {
 			}
 			if (ST.valid(aEntry.mSlab)) {
 				CR.remove(aPlank, aPlank, aPlank);
-				CR.shaped(ST.amountValidMeta(2, aEntry.mSlab), CR.DEF_NAC_NCC_MIR, "sP", 'P', aEntry.mPlank);
-				RM.sawing(16, 72, F, 3, aEntry.mPlank, ST.amountValidMeta(2, aEntry.mSlab));
-				GT_ModHandler.addSawmillRecipe(aEntry.mPlank, ST.amountValidMeta(2, aEntry.mSlab), NI);
+				CR.shaped(ST.validMeta_(2, aEntry.mSlab), CR.DEF_NAC_NCC_MIR, "sP", 'P', aEntry.mPlank);
+				RM.sawing(16, 72, F, 3, aEntry.mPlank, ST.validMeta_(2, aEntry.mSlab));
+				GT_ModHandler.addSawmillRecipe(aEntry.mPlank, ST.validMeta_(2, aEntry.mSlab), NI);
 			}
 			if (ST.valid(aEntry.mStair)) {
 				CR.remove(NI, NI, aPlank, NI, aPlank, aPlank, aPlank, aPlank, aPlank);
 				CR.remove(aPlank, NI, NI, aPlank, aPlank, NI, aPlank, aPlank, aPlank);
 				if (ST.valid(aEntry.mSlab)) {
-					CR.shaped(ST.amountValidMeta(1, aEntry.mSlab), CR.DEF_NCC_MIR, "sP", 'P', aEntry.mStair);
-					CR.shaped(ST.amountValidMeta(2, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mSlab);
+					CR.shaped(ST.validMeta_(1, aEntry.mSlab), CR.DEF_NCC_MIR, "sP", 'P', aEntry.mStair);
+					CR.shaped(ST.validMeta_(2, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mSlab);
 				}
-				CR.shaped(ST.amountValidMeta(4, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mPlank);
+				CR.shaped(ST.validMeta_(4, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mPlank);
 			}
 			if (ST.valid(aEntry.mStick)) {
-				RM.Lathe.addRecipe1(T, 16, 16, aEntry.mPlank, ST.amountValidMeta(aEntry.mStickCountLathe, aEntry.mStick));
+				RM.Lathe.addRecipe1(T, 16, 16, aEntry.mPlank, ST.validMeta_(aEntry.mStickCountLathe, aEntry.mStick));
 				CR.remove(aPlank, NI, NI, aPlank);
-				CR.shaped(ST.amountValidMeta((NERFED_WOOD?aEntry.mStickCountHand:aEntry.mStickCountSaw)*2, aEntry.mStick), CR.DEF_NAC_NCC, "P", "P", 'P', aEntry.mPlank);
-				CR.shaped(ST.amountValidMeta( NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe , aEntry.mStick), CR.DEF_NAC_NCC, "s", "P", 'P', aEntry.mPlank);
+				CR.shaped(ST.validMeta_((NERFED_WOOD?aEntry.mStickCountHand:aEntry.mStickCountSaw)*2, aEntry.mStick), CR.DEF_NAC_NCC, "P", "P", 'P', aEntry.mPlank);
+				CR.shaped(ST.validMeta_( NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe , aEntry.mStick), CR.DEF_NAC_NCC, "s", "P", 'P', aEntry.mPlank);
 			}
 			if (!IL.Crate.equal(aEntry.mPlank, F, T) && !IL.Crate_Fireproof.equal(aEntry.mPlank, F, T)) {
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.amount(16, aEntry.mPlank), IL.Crate.get(1), OP.crateGtPlate.mat(aEntry.mMaterialPlank, 1));

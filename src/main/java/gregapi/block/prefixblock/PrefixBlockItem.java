@@ -82,10 +82,10 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 	
 	@Override
 	public boolean placeBlockAt(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ, int aMeta) {
-		if (mBlock.placeBlock(aWorld, aX, aY, aZ, (byte)aSide, ST.meta(aStack), aStack.getTagCompound(), T, F)) {
+		if (mBlock.placeBlock(aWorld, aX, aY, aZ, (byte)aSide, ST.meta_(aStack), aStack.getTagCompound(), T, F)) {
 			if (aWorld.getBlock(aX, aY, aZ) == field_150939_a) {
 				field_150939_a.onBlockPlacedBy(aWorld, aX, aY, aZ, aPlayer, aStack);
-				field_150939_a.onPostBlockPlaced(aWorld, aX, aY, aZ, ST.meta(aStack));
+				field_150939_a.onPostBlockPlaced(aWorld, aX, aY, aZ, ST.meta_(aStack));
 			}
 			return T;
 		}
@@ -96,7 +96,7 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 	@Override
 	public int getColorFromItemStack(ItemStack aStack, int aRenderPass) {
 		if (aRenderPass == 0) {
-			short aMetaData = ST.meta(aStack);
+			short aMetaData = ST.meta_(aStack);
 			if (UT.Code.exists(aMetaData, mBlock.mMaterialList)) return UT.Code.getRGBInt(mBlock.mMaterialList[aMetaData].mRGBa[mBlock.mPrefix.mState]);
 		}
 		return UNCOLORED;
@@ -104,7 +104,7 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 	
 	@Override
 	public final String getUnlocalizedName(ItemStack aStack) {
-		short aMetaData = ST.meta(aStack);
+		short aMetaData = ST.meta_(aStack);
 		if (aMetaData == W) return mBlock.mNameInternal+"."+W;
 		if (UT.Code.exists(aMetaData, mBlock.mMaterialList)) return "oredict." + mBlock.mPrefix.dat(mBlock.mMaterialList[aMetaData]).toString();
 		return mBlock.getUnlocalizedName();
@@ -132,14 +132,14 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 	
 	@Override
 	public OreDictItemData getOreDictItemData(ItemStack aStack) {
-		if (mBlock.mPrefix != null && UT.Code.exists(ST.meta(aStack), mBlock.mMaterialList)) return new OreDictItemData(mBlock.mPrefix, mBlock.mMaterialList[ST.meta(aStack)]);
+		if (mBlock.mPrefix != null && UT.Code.exists(ST.meta_(aStack), mBlock.mMaterialList)) return new OreDictItemData(mBlock.mPrefix, mBlock.mMaterialList[ST.meta_(aStack)]);
 		return null;
 	}
 	
 	@Override public final String getUnlocalizedName() {return mBlock.getUnlocalizedName();}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}
 	@Override public ItemStack getContainerItem(ItemStack aStack) {return null;}
-	@Override public void updateItemStack(ItemStack aStack) {if (mBlock.mMaterialList != OreDictMaterial.MATERIAL_ARRAY) return; int aDamage = ST.meta(aStack); if (UT.Code.exists(aDamage, mBlock.mMaterialList)) {OreDictMaterial aMaterial = mBlock.mMaterialList[aDamage]; if (aMaterial != aMaterial.mTargetRegistration) aStack.setItemDamage(aMaterial.mTargetRegistration.mID);}}
+	@Override public void updateItemStack(ItemStack aStack) {if (mBlock.mMaterialList != OreDictMaterial.MATERIAL_ARRAY) return; int aDamage = ST.meta_(aStack); if (UT.Code.exists(aDamage, mBlock.mMaterialList)) {OreDictMaterial aMaterial = mBlock.mMaterialList[aDamage]; if (aMaterial != aMaterial.mTargetRegistration) aStack.setItemDamage(aMaterial.mTargetRegistration.mID);}}
 	@Override public void updateItemStack(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {updateItemStack(aStack);}
 	@Override public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {updateItemStack(aStack);}
 	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}

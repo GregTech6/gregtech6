@@ -107,7 +107,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			
 			ArrayList<ItemStack> tDisplayStacks = new ArrayListNoNulls<>();
 			for (ItemStack tStack : items) if (ST.valid(tStack)) {
-				if (ST.meta(tStack) == W) {
+				if (ST.meta_(tStack) == W) {
 					List<ItemStack> permutations = ItemList.itemMap.get(tStack.getItem());
 					if (!permutations.isEmpty()) {
 						for(ItemStack stack : permutations) tDisplayStacks.add(ST.amount(tStack.stackSize, stack));

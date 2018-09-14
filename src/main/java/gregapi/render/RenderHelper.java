@@ -65,12 +65,12 @@ public class RenderHelper {
 			glColor4f((tColor >> 16 & 255) / 255F, (tColor >> 8 & 255) / 255F, (tColor & 255) / 255F, 1);
 			glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
 			mRenderBlocks.useInventoryTint = T;
-			mRenderBlocks.renderBlockAsItem(block, ST.meta(aStack), 1.0F);
+			mRenderBlocks.renderBlockAsItem(block, ST.meta_(aStack), 1.0F);
 			mRenderBlocks.useInventoryTint = T;
 			glPopMatrix();
 		} else {
 			ResourceLocation tResource = aTextureManager.getResourceLocation(aStack.getItemSpriteNumber());
-			int tMaxRenderPasses = Math.max(1, aStack.getItem().getRenderPasses(ST.meta(aStack)));
+			int tMaxRenderPasses = Math.max(1, aStack.getItem().getRenderPasses(ST.meta_(aStack)));
 			for (int i = 0; i < tMaxRenderPasses; i++) {
 				IIcon tIcon = aStack.getItem().getIcon(aStack, i);
 				if (tIcon == null) tIcon = ((TextureMap)Minecraft.getMinecraft().getTextureManager().getTexture(tResource)).getAtlasSprite("missingno");

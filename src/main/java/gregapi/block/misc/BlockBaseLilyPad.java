@@ -92,7 +92,7 @@ public class BlockBaseLilyPad extends BlockBaseMeta implements IPlantable, IRend
 		int aX = tPos.blockX, aY = tPos.blockY, aZ = tPos.blockZ;
 		if (!aWorld.canMineBlock(aPlayer, aX, aY, aZ) || !aPlayer.canPlayerEdit(aX, aY, aZ, tPos.sideHit, aStack)) return aStack;
 		if (aWorld.getBlock(aX, aY, aZ).getMaterial() == Material.water && aWorld.getBlockMetadata(aX, aY, aZ) == 0 && aWorld.isAirBlock(aX, aY+1, aZ)) {
-			aWorld.setBlock(aX, aY+1, aZ, this, ST.meta(aStack), 3);
+			aWorld.setBlock(aX, aY+1, aZ, this, ST.meta_(aStack), 3);
 			if (!UT.Entities.hasInfiniteItems(aPlayer)) {aStack.stackSize--;}
 		}
 		return aStack;
@@ -104,7 +104,7 @@ public class BlockBaseLilyPad extends BlockBaseMeta implements IPlantable, IRend
 	
 	@Override public IIcon getIcon(int aSide, int aMeta) {return mIcons[aMeta % mIcons.length].getIcon(0);}
 	@Override public int getRenderType() {return RendererBlockTextured.INSTANCE==null?23:RendererBlockTextured.INSTANCE.mRenderID;}
-	@Override public ITexture getTexture(int aRenderPass, byte aSide, ItemStack aStack) {return SIDES_VERTICAL[aSide] ? BlockTextureDefault.get(mIcons[ST.meta(aStack) % mIcons.length]) : null;}
+	@Override public ITexture getTexture(int aRenderPass, byte aSide, ItemStack aStack) {return SIDES_VERTICAL[aSide] ? BlockTextureDefault.get(mIcons[ST.meta_(aStack) % mIcons.length]) : null;}
 	@Override public ITexture getTexture(int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered, IBlockAccess aWorld, int aX, int aY, int aZ) {return SIDES_VERTICAL[aSide] ? BlockTextureDefault.get(mIcons[aWorld.getBlockMetadata(aX, aY, aZ) % mIcons.length]) : null;}
 	@Override public boolean setBlockBounds(int aRenderPass, ItemStack aStack) {setBlockBounds(0, 0, 0, 1, 0.015625F, 1); return T;}
 	@Override public boolean setBlockBounds(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered) {setBlockBounds(0, 0, 0, 1, 0.015625F, 1); return T;}

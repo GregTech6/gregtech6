@@ -134,10 +134,10 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public int getRenderPasses(int metadata) {return 2;}
 	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister aIconRegister) {/**/}
 	@Override public boolean requiresMultipleRenderPasses() {return mPrefix.mIconIndexItem >= 0;}
-	@Override public IIcon getIconIndex(ItemStack aStack) {return getIconFromDamageForRenderPass(ST.meta(aStack), 0);}
+	@Override public IIcon getIconIndex(ItemStack aStack) {return getIconFromDamageForRenderPass(ST.meta_(aStack), 0);}
 	@Override public IIcon getIconFromDamage(int aMetaData) {return getIconFromDamageForRenderPass(aMetaData, 0);}
-	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIconFromDamageForRenderPass(ST.meta(aStack), aRenderPass);}
-	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {return getIconFromDamageForRenderPass(ST.meta(aStack), aRenderPass);}
+	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIconFromDamageForRenderPass(ST.meta_(aStack), aRenderPass);}
+	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {return getIconFromDamageForRenderPass(ST.meta_(aStack), aRenderPass);}
 	
 	@Override
 	public IIcon getIconFromDamageForRenderPass(int aMetaData, int aRenderPass) {
@@ -152,7 +152,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override
 	public int getColorFromItemStack(ItemStack aStack, int aRenderPass) {
 		if (aRenderPass == 0) {
-			short aMetaData = ST.meta(aStack);
+			short aMetaData = ST.meta_(aStack);
 			if (UT.Code.exists(aMetaData, mMaterialList)) return UT.Code.getRGBInt(mMaterialList[aMetaData].mRGBa[mPrefix.mState]);
 		}
 		return 16777215;
@@ -160,7 +160,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	
 	@Override
 	public final String getUnlocalizedName(ItemStack aStack) {
-		short aMetaData = ST.meta(aStack);
+		short aMetaData = ST.meta_(aStack);
 		if (aMetaData == W) return mNameInternal+"."+W;
 		if (UT.Code.exists(aMetaData, mMaterialList)) return "oredict." + mPrefix.dat(mMaterialList[aMetaData]).toString();
 		return mNameInternal;
@@ -177,7 +177,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override
 	public boolean isBeaconPayment(ItemStack aStack) {
 		if (mPrefix.mAmount >= U && (mPrefix.contains(TD.Prefix.GEM_BASED) || mPrefix.contains(TD.Prefix.INGOT_BASED))) {
-			short aMetaData = ST.meta(aStack);
+			short aMetaData = ST.meta_(aStack);
 			return UT.Code.exists(aMetaData, mMaterialList) && (mMaterialList[aMetaData].contains(TD.Properties.VALUABLE) || ANY.Iron.mToThis.contains(mMaterialList[aMetaData]));
 		}
 		return F;
@@ -186,10 +186,10 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override
 	public void updateItemStack(ItemStack aStack) {
 		if (mMaterialList != OreDictMaterial.MATERIAL_ARRAY) return;
-		int aMeta = ST.meta(aStack);
+		int aMeta = ST.meta_(aStack);
 		if (UT.Code.exists(aMeta, mMaterialList)) {
 			OreDictMaterial aMaterial = mMaterialList[aMeta];
-			if (aMaterial != aMaterial.mTargetRegistration) ST.meta(aStack, aMaterial.mTargetRegistration.mID);
+			if (aMaterial != aMaterial.mTargetRegistration) ST.meta_(aStack, aMaterial.mTargetRegistration.mID);
 			if (!mPrefix.isGeneratingItem(aMaterial.mTargetRegistration)) ST.set(aStack, mPrefix.mat(aMaterial.mTargetRegistration, 1), F, F);
 		}
 	}
@@ -208,7 +208,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 	@Override public boolean getIsRepairable(ItemStack aStack, ItemStack aMaterial) {return F;}
 	@Override public int getItemEnchantability() {return 0;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return mPrefix.mDefaultStackSize;}
-	@Override public OreDictItemData getOreDictItemData(ItemStack aStack) {return UT.Code.exists(ST.meta(aStack), mMaterialList) ? new OreDictItemData(mPrefix, mMaterialList[ST.meta(aStack)]) : null;}
+	@Override public OreDictItemData getOreDictItemData(ItemStack aStack) {return UT.Code.exists(ST.meta_(aStack), mMaterialList) ? new OreDictItemData(mPrefix, mMaterialList[ST.meta_(aStack)]) : null;}
 	@Override public OreDictMaterial getMaterial(int aMetaData) {return UT.Code.exists(aMetaData, mMaterialList) ? mMaterialList[aMetaData] : null;}
 	@Override public OreDictPrefix getPrefix(int aMetaData) {return mPrefix;}
 	@Override @SuppressWarnings("deprecation") public boolean hasEffect(ItemStack aStack) {return F;}

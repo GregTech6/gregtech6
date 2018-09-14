@@ -76,12 +76,12 @@ public class GT_ModHandler {
 	 * Induction Smelter Recipes for TE
 	 */
 	public static boolean addInductionSmelterRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aOutput1, ItemStack aOutput2, int aEnergy, int aChance) {
-		if (ST.invalid(aInput1 == null) || ST.invalid(aOutput1)) return F;
+		if (ST.invalid(aInput1) || ST.invalid(aOutput1)) return F;
 		aOutput1 = OM.get_(aOutput1);
 		aOutput2 = OM.get(aOutput2);
 		if (ST.container(aInput1, F) != null || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.inductionsmelter, aInput2==null?aInput1:aOutput1, T)) return F;
 		try {
-			ThermalExpansion.addSmelterRecipe(aEnergy*10, ST.copy(aInput1), aInput2==null?ST.make(Blocks.sand, 1, 0):aInput2, aOutput1, aOutput2, aChance);
+			ThermalExpansion.addSmelterRecipe(aEnergy*10, ST.copy_(aInput1), aInput2==null?ST.make(Blocks.sand, 1, 0):aInput2, aOutput1, aOutput2, aChance);
 		} catch(Throwable e) {/*Do nothing*/}
 		return T;
 	}

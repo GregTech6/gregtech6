@@ -291,7 +291,7 @@ public final class OreDictManager {
 	/** Fluid Containers are not unificatable at all. Also I set Water Bottles to contain 0L of Water. */
 	@SubscribeEvent
 	public void onFluidContainerRegistration(FluidContainerRegisterEvent aFluidEvent) {
-		if (aFluidEvent.data.filledContainer.getItem() == Items.potionitem && ST.meta(aFluidEvent.data.filledContainer) == 0) aFluidEvent.data.fluid.amount = 0;
+		if (aFluidEvent.data.filledContainer.getItem() == Items.potionitem && ST.meta_(aFluidEvent.data.filledContainer) == 0) aFluidEvent.data.fluid.amount = 0;
 		addToBlacklist(aFluidEvent.data.emptyContainer);
 		UT.Fluids.setFluidContainerData(aFluidEvent.data, F, F);
 	}
@@ -353,8 +353,8 @@ public final class OreDictManager {
 		OreDictMaterial aMaterial = null;
 		
 		if (aEvent.Ore.getItem() instanceof IOreDictOptimizedParsingItem) {
-			aPrefix = ((IOreDictOptimizedParsingItem)aEvent.Ore.getItem()).getPrefix(ST.meta(aEvent.Ore));
-			aMaterial = ((IOreDictOptimizedParsingItem)aEvent.Ore.getItem()).getMaterial(ST.meta(aEvent.Ore));
+			aPrefix = ((IOreDictOptimizedParsingItem)aEvent.Ore.getItem()).getPrefix(ST.meta_(aEvent.Ore));
+			aMaterial = ((IOreDictOptimizedParsingItem)aEvent.Ore.getItem()).getMaterial(ST.meta_(aEvent.Ore));
 			if (aPrefix == null || aMaterial == null || !aEvent.Name.equals(aPrefix.mNameInternal+aMaterial.mNameInternal)) {aPrefix = null; aMaterial = null;}
 		}
 		
@@ -463,7 +463,7 @@ public final class OreDictManager {
 	}
 	
 	public boolean setTarget(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, boolean aOverwrite, boolean aAlreadyRegistered, boolean aIgnoreBlacklist) {
-		if (aMaterial == null || aPrefix == null || ST.invalid(aStack) || ST.meta(aStack) == W) return F;
+		if (aMaterial == null || aPrefix == null || ST.invalid(aStack) || ST.meta_(aStack) == W) return F;
 		return setTarget_(aPrefix, aMaterial, aStack, aOverwrite, aAlreadyRegistered, aIgnoreBlacklist);
 	}
 	public boolean setTarget_(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, boolean aOverwrite, boolean aAlreadyRegistered, boolean aIgnoreBlacklist) {
@@ -480,7 +480,7 @@ public final class OreDictManager {
 		if (UT.Code.stringInvalid(aName)) return null;
 		ItemStack tStack = sName2StackMap.get(aName.toString());
 		if (ST.valid(tStack)) return ST.amount(aAmount, tStack);
-		return ST.amount(aAmount, getOres(aName, F).toArray());
+		return ST.size(aAmount, ST.copyFirst(getOres(aName, F).toArray()));
 	}
 	
 	public ItemStack getStack(Object aName, long aAmount) {
@@ -535,7 +535,7 @@ public final class OreDictManager {
 		ItemStack tStack = getStack_(aUseBlackList, aStack);
 		if (tStack == null || ST.equal(aStack, tStack)) return aStack;
 		aStack.func_150996_a(tStack.getItem());
-		return ST.meta(aStack, ST.meta(tStack));
+		return ST.meta_(aStack, ST.meta_(tStack));
 	}
 	
 	public ItemStack getStack(boolean aUseBlackList, ItemStack aStack) {
@@ -646,7 +646,7 @@ public final class OreDictManager {
 		return addAssociation_(aPrefix, aMaterial, aStack);
 	}
 	public boolean addAssociation_(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
-		if (ST.meta(aStack) == W) for (byte i = 0; i < 16; i++) setItemData_(ST.copyAmountAndMeta(1, i, aStack), new OreDictItemData(aPrefix, aMaterial));
+		if (ST.meta_(aStack) == W) for (byte i = 0; i < 16; i++) setItemData_(ST.copyAmountAndMeta(1, i, aStack), new OreDictItemData(aPrefix, aMaterial));
 		return setItemData_(aStack, new OreDictItemData(aPrefix, aMaterial));
 	}
 	
@@ -732,7 +732,7 @@ public final class OreDictManager {
 			if (aTransformWildcardBlocksTo16) {
 				tList = OreDictionary.getOres(aName, F);
 				for (ItemStack tStack : tList) {
-					if (ST.meta(tStack) == W && ST.block(tStack) != NB) {
+					if (ST.meta_(tStack) == W && ST.block(tStack) != NB) {
 						for (int i = 0; i < 16; i++) rList.add(ST.make(tStack.getItem(), 1, i));
 					} else {
 						rList.add(tStack);

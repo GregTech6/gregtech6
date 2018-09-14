@@ -66,7 +66,7 @@ public class Behavior_Spray_Extinguisher extends AbstractBehaviorDefault {
 		
 		if (ST.equal(aStack, mFull, T)) {
 			aStack.func_150996_a(mUsed.getItem());
-			ST.meta(aStack, ST.meta(mUsed));
+			ST.meta_(aStack, ST.meta_(mUsed));
 			tUses = mUses;
 		}
 		if (ST.equal(aStack, mUsed, T)) {
@@ -87,7 +87,7 @@ public class Behavior_Spray_Extinguisher extends AbstractBehaviorDefault {
 				aStack.stackSize--;
 			} else {
 				aStack.func_150996_a(mEmpty.getItem());
-				ST.meta(aStack, ST.meta(mEmpty));
+				ST.meta_(aStack, ST.meta_(mEmpty));
 			}
 		}
 		return rOutput;

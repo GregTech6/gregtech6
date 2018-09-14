@@ -156,7 +156,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	@Override public boolean setBlockBounds(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered) {return F;}
 	@Override public int getRenderPasses(ItemStack aStack) {return 0;}
 	@Override public int getRenderPasses(IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered) {return 0;}
-	@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return new SpikeRenderer(ST.meta(aStack), mMat1, mMat2);}
+	@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return new SpikeRenderer(ST.meta_(aStack), mMat1, mMat2);}
 	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {return new SpikeRenderer(aWorld.getBlockMetadata(aX, aY, aZ), mMat1, mMat2);}
 	
 	public static class SpikeRenderer implements IRenderedBlockObject {

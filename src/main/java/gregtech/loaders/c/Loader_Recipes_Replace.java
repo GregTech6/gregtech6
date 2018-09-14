@@ -228,14 +228,14 @@ public class Loader_Recipes_Replace implements Runnable {
 			if (tMat == null) continue;
 			INGT.func_150996_a(tMat.getItem());
 			INGT.stackSize = 1;
-			ST.meta(INGT, ST.meta(tMat));
+			ST.meta_(INGT, ST.meta_(tMat));
 			RecipeReplacer[] tReplacer = sRecipesMat;
 			if (aRecipe.mRod != null) {
 				ItemStack tRod = OP.stick.mat(aRecipe.mRod, 1);
 				if (tRod == null) continue;
 				STCK.func_150996_a(tRod.getItem());
 				STCK.stackSize = 1;
-				ST.meta(STCK, ST.meta(tRod));
+				ST.meta_(STCK, ST.meta_(tRod));
 				tReplacer = sRecipesRod;
 			}
 			

@@ -92,7 +92,7 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 		return aFluid != null && allowInput(aFluid.getFluid());
 	}
 	public boolean allowInput(Fluid aFluid) {
-		if (aFluid != null) for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && UT.Fluids.id(aFluid) == ST.meta(tStack)) return T;
+		if (aFluid != null) for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && UT.Fluids.id(aFluid) == ST.meta_(tStack)) return T;
 		return F;
 	}
 	

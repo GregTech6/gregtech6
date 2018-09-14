@@ -268,7 +268,7 @@ public class Loader_Recipes_Food implements Runnable {
 			OreDictItemData tData = OM.anydata_(aEvent.mStack);
 			if (OM.materialcontained(tData, MT.Tofu, MT.SoylentGreen)) return;
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Fish", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_FISH);
-			if (ST.container(aEvent.mStack, T) != null || ST.meta(aEvent.mStack) == W) return;
+			if (ST.container(aEvent.mStack, T) != null || ST.meta_(aEvent.mStack) == W) return;
 			long tFishOilAmount = U;
 			OreDictMaterialStack tByProduct = null;
 			if (tData == null) tByProduct = OM.stack(MT.FishRaw, U); else for (OreDictMaterialStack tMat : tData.getAllMaterialStacks()) {

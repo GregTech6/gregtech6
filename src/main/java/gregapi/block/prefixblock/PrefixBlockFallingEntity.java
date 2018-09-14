@@ -83,12 +83,12 @@ public class PrefixBlockFallingEntity extends EntityFallingBlock {
 				motionY *= -0.5D;
 				if (worldObj.getBlock(aX, aY, aZ) != Blocks.piston_extension) {
 					setDead();
-					if (!worldObj.canPlaceEntityOnSide(super.func_145805_f(), aX, aY, aZ, T, 1, null, mStack) || BlockFalling.func_149831_e(worldObj, aX, aY - 1, aZ) || !mBlock.placeBlock(worldObj, aX, aY, aZ, (byte)1, ST.meta(mStack), mStack.getTagCompound(), T, T)) {
-						if (field_145813_c) if (mBlock instanceof PrefixBlock) {for (ItemStack tStack : ((PrefixBlock)mBlock).mDrops.getDrops((PrefixBlock)mBlock, worldObj, aX, aY, aZ, ST.meta(mStack), null, 0, F)) entityDropItem(tStack, 0.0F);} else entityDropItem(mStack, 0.0F);
+					if (!worldObj.canPlaceEntityOnSide(super.func_145805_f(), aX, aY, aZ, T, 1, null, mStack) || BlockFalling.func_149831_e(worldObj, aX, aY - 1, aZ) || !mBlock.placeBlock(worldObj, aX, aY, aZ, (byte)1, ST.meta_(mStack), mStack.getTagCompound(), T, T)) {
+						if (field_145813_c) if (mBlock instanceof PrefixBlock) {for (ItemStack tStack : ((PrefixBlock)mBlock).mDrops.getDrops((PrefixBlock)mBlock, worldObj, aX, aY, aZ, ST.meta_(mStack), null, 0, F)) entityDropItem(tStack, 0.0F);} else entityDropItem(mStack, 0.0F);
 					}
 				}
 			} else if (field_145812_b > 100 && !worldObj.isRemote && (aY < 1 || aY > 256) || field_145812_b > 600) {
-				if (field_145813_c) if (mBlock instanceof PrefixBlock) {for (ItemStack tStack : ((PrefixBlock)mBlock).mDrops.getDrops((PrefixBlock)mBlock, worldObj, aX, aY, aZ, ST.meta(mStack), null, 0, F)) entityDropItem(tStack, 0.0F);} else entityDropItem(mStack, 0.0F);
+				if (field_145813_c) if (mBlock instanceof PrefixBlock) {for (ItemStack tStack : ((PrefixBlock)mBlock).mDrops.getDrops((PrefixBlock)mBlock, worldObj, aX, aY, aZ, ST.meta_(mStack), null, 0, F)) entityDropItem(tStack, 0.0F);} else entityDropItem(mStack, 0.0F);
 				setDead();
 			}
 		}
@@ -106,7 +106,7 @@ public class PrefixBlockFallingEntity extends EntityFallingBlock {
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound aNBT) {
 		super.writeEntityToNBT(aNBT);
-		aNBT.setShort("MetaData", ST.meta(mStack));
+		aNBT.setShort("MetaData", ST.meta_(mStack));
 	}
 	
 	@Override

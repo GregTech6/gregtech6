@@ -1081,14 +1081,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (ST.invalid(aFuel) || UT.Fluids.getFluidForFilledItem(aFuel, T) != null) return 0;
 		Block aBlock = ST.block(aFuel);
 		if (aBlock == Blocks.red_mushroom_block || aBlock == Blocks.brown_mushroom_block) return (3 * TICKS_PER_SMELT) / 2;
-		if (aBlock == BlocksGT.BalesGrass) return (9 * TICKS_PER_SMELT) / ((ST.meta(aFuel) & 3) == 1 ? 2 : 4);
+		if (aBlock == BlocksGT.BalesGrass) return (9 * TICKS_PER_SMELT) / ((ST.meta_(aFuel) & 3) == 1 ? 2 : 4);
 		if (aBlock instanceof BlockBaseBale) return (9 * TICKS_PER_SMELT) / 4;
 		if (aBlock instanceof BlockBasePlanks) return (3 * TICKS_PER_SMELT) / 2;
 		if (aBlock instanceof BlockBaseSapling) return TICKS_PER_SMELT / 2;
 		if (aBlock instanceof BlockBaseBeam || aBlock instanceof BlockBaseLog) return TICKS_PER_SMELT * 6;
 		long rFuelValue = 0;
 		if (aFuel.getItem() instanceof MultiItemRandom) {
-			Short tFuelValue = ((MultiItemRandom)aFuel.getItem()).mBurnValues.get(ST.meta(aFuel));
+			Short tFuelValue = ((MultiItemRandom)aFuel.getItem()).mBurnValues.get(ST.meta_(aFuel));
 			if (tFuelValue != null) rFuelValue = (short)Math.max(rFuelValue, tFuelValue);
 		} else {
 			if (OM.is_("logWood", aFuel)) return TICKS_PER_SMELT * 6;

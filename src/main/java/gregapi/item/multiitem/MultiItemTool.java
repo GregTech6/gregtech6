@@ -481,7 +481,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	private IToolStats getToolStatsInternal(ItemStack aStack) {
-		return aStack == null ? null : getToolStatsInternal(ST.meta(aStack));
+		return aStack == null ? null : getToolStatsInternal(ST.meta_(aStack));
 	}
 	
 	private IToolStats getToolStatsInternal(int aDamage) {
@@ -514,7 +514,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public boolean isItemStackUsable(ItemStack aStack) {
 		if (aStack == null || aStack.stackSize <= 0) return F;
 		IToolStats tStats = getToolStatsInternal(aStack);
-		if (ST.meta(aStack) % 2 == 1 || tStats == null) {
+		if (ST.meta_(aStack) % 2 == 1 || tStats == null) {
 			NBTTagCompound aNBT = aStack.getTagCompound();
 			if (aNBT != null) aNBT.removeTag("ench");
 			return F;
@@ -563,13 +563,13 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	public short getChargedMetaData(ItemStack aStack) {
-		return (short)(ST.meta(aStack) - (ST.meta(aStack) % 2));
+		return (short)(ST.meta_(aStack) - (ST.meta_(aStack) % 2));
 	}
 	
 	public short getEmptyMetaData(ItemStack aStack) {
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null) aNBT.removeTag("ench");
-		return (short)(ST.meta(aStack)+1-(ST.meta(aStack) % 2));
+		return (short)(ST.meta_(aStack)+1-(ST.meta_(aStack) % 2));
 	}
 	
 	@Override public int getItemEnchantability() {return 0;}

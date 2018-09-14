@@ -53,7 +53,7 @@ public class ItemBlockMetaType extends ItemBlockBase implements IItemUpdatable {
 	@Override
 	public void updateItemStack(ItemStack aStack) {
 		if (((BlockMetaType)mPlaceable).mBlock.mSlabs[1] == mPlaceable || ((BlockMetaType)mPlaceable).mBlock.mSlabs[2] == mPlaceable || ((BlockMetaType)mPlaceable).mBlock.mSlabs[3] == mPlaceable || ((BlockMetaType)mPlaceable).mBlock.mSlabs[4] == mPlaceable || ((BlockMetaType)mPlaceable).mBlock.mSlabs[5] == mPlaceable) {
-			ST.set(aStack, ST.make(((BlockMetaType)mPlaceable).mBlock.mSlabs[0], 1, ST.meta(aStack)), F, F);
+			ST.set(aStack, ST.make(((BlockMetaType)mPlaceable).mBlock.mSlabs[0], 1, ST.meta_(aStack)), F, F);
 		}
 	}
 	@Override

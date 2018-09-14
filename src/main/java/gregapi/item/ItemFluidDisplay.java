@@ -72,7 +72,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	@SuppressWarnings("unchecked")
 	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		NBTTagCompound aNBT = aStack.getTagCompound();
-		Fluid aFluid = FluidRegistry.getFluid(ST.meta(aStack));
+		Fluid aFluid = FluidRegistry.getFluid(ST.meta_(aStack));
 		if (aFluid == null) {
 			aList.add(LH.Chat.BLINKING_RED + "CLIENTSIDE FLUID IS NULL!!!" + LH.Chat.GRAY);
 		} else if (FL.Error.is(aFluid)) {
@@ -225,7 +225,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack aStack, int aRenderPass) {
-		Fluid aFluid = FluidRegistry.getFluid(ST.meta(aStack));
+		Fluid aFluid = FluidRegistry.getFluid(ST.meta_(aStack));
 		if (aFluid == null) return 16777215;
 		Block tBlock = aFluid.getBlock();
 		return tBlock != null && tBlock != NB ? tBlock.getRenderColor(0) : aFluid.getColor();
@@ -238,20 +238,20 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	
 	@Override
 	public String getUnlocalizedName(ItemStack aStack) {
-		if (aStack != null) return UT.Fluids.name(FluidRegistry.getFluid(ST.meta(aStack)), F);
+		if (aStack != null) return UT.Fluids.name(FluidRegistry.getFluid(ST.meta_(aStack)), F);
 		return "";
 	}
 	
 	@Override
 	public String getItemStackDisplayName(ItemStack aStack) {
-		if (aStack != null) return UT.Fluids.name(FluidRegistry.getFluid(ST.meta(aStack)), T);
+		if (aStack != null) return UT.Fluids.name(FluidRegistry.getFluid(ST.meta_(aStack)), T);
 		return "";
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack aStack, int aRenderPass) {
-		Fluid aFluid = FluidRegistry.getFluid(ST.meta(aStack));
+		Fluid aFluid = FluidRegistry.getFluid(ST.meta_(aStack));
 		return aFluid != null && FluidsGT.ENCHANTED_EFFECT.contains(aFluid.getName());
 	}
 	
@@ -296,11 +296,11 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			String tName = FluidsGT.FLUID_RENAMINGS.get(aName);
 			if (UT.Code.stringValid(tName)) aName = tName;
 			Fluid tFluid = UT.Fluids.fluid_(aName);
-			if (tFluid != null) ST.meta(aStack, tFluid.getID());
+			if (tFluid != null) ST.meta_(aStack, tFluid.getID());
 			return;
 		}
-		Fluid tFluid = UT.Fluids.fluid(ST.meta(aStack));
-		if (tFluid == null) ST.meta(aStack, W); else {aStack.setTagCompound(UT.NBT.makeString("f", tFluid.getName()));}
+		Fluid tFluid = UT.Fluids.fluid(ST.meta_(aStack));
+		if (tFluid == null) ST.meta_(aStack, W); else {aStack.setTagCompound(UT.NBT.makeString("f", tFluid.getName()));}
 	}
 	@Override
 	public void updateItemStack(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {
@@ -309,7 +309,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	
 	@Override
 	public FluidStack getFluid(ItemStack aStack) {
-		Fluid tFluid = FluidRegistry.getFluid(ST.meta(aStack));
+		Fluid tFluid = FluidRegistry.getFluid(ST.meta_(aStack));
 		if (tFluid == null) return null;
 		FluidStack rFluid = null;
 		NBTTagCompound aNBT = aStack.getTagCompound();

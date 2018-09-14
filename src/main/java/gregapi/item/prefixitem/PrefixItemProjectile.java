@@ -72,7 +72,7 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 	
 	@Override
 	public boolean hasProjectile(TagData aProjectileType, ItemStack aStack) {
-		return mProjectileType == aProjectileType && UT.Code.exists(ST.meta(aStack), mMaterialList) && mMaterialList[ST.meta(aStack)] != MT.Empty;
+		return mProjectileType == aProjectileType && UT.Code.exists(ST.meta_(aStack), mMaterialList) && mMaterialList[ST.meta_(aStack)] != MT.Empty;
 	}
 	
 	@Override
@@ -115,7 +115,7 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 	@Override
 	public void updateItemStack(ItemStack aStack) {
 		super.updateItemStack(aStack);
-		short aMetaData = ST.meta(aStack);
+		short aMetaData = ST.meta_(aStack);
 		if (UT.Code.exists(aMetaData, mMaterialList) && !mMaterialList[aMetaData].mEnchantmentTools.isEmpty()) {
 			NBTTagCompound tNBT = UT.NBT.getNBT(aStack);
 			if (!tNBT.getBoolean("gt.u")) {

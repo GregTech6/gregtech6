@@ -503,13 +503,13 @@ public enum IL implements IItemContainer {
 	
 	@Override
 	public boolean equal(Object aStack, boolean aWildcard, boolean aIgnoreNBT) {
-		return ST.valid(mStack) && ST.valid(aStack) && ST.equal((ItemStack)aStack, aWildcard?wild(1):get(1), aIgnoreNBT);
+		return ST.valid(mStack) && ST.valid((ItemStack)aStack) && ST.equal((ItemStack)aStack, aWildcard?wild(1):get(1), aIgnoreNBT);
 	}
 	
 	@Override
 	public ItemStack get(long aAmount, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
-		if (ST.invalid(mStack)) return ST.copy(aReplacements);
+		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.amount(aAmount, OM.get_(mStack));
 	}
 	
@@ -517,28 +517,28 @@ public enum IL implements IItemContainer {
 	@SuppressWarnings("deprecation")
 	public ItemStack getWildcard(long aAmount, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
-		if (ST.invalid(mStack)) return ST.copy(aReplacements);
+		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, W, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack wild(long aAmount, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
-		if (ST.invalid(mStack)) return ST.copy(aReplacements);
+		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, W, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack getUndamaged(long aAmount, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
-		if (ST.invalid(mStack)) return ST.copy(aReplacements);
+		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, 0, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack getAlmostBroken(long aAmount, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
-		if (ST.invalid(mStack)) return ST.copy(aReplacements);
+		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, mStack.getMaxDamage()-1, OM.get_(mStack));
 	}
 	
@@ -570,21 +570,21 @@ public enum IL implements IItemContainer {
 	@Override
 	public ItemStack getWithMeta(long aAmount, long aMetaValue, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
-		if (ST.invalid(mStack)) return ST.copy(aReplacements);
+		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, aMetaValue, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack getWithDamage(long aAmount, long aMetaValue, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
-		if (ST.invalid(mStack)) return ST.copy(aReplacements);
+		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		return ST.copyAmountAndMeta(aAmount, aMetaValue, OM.get_(mStack));
 	}
 	
 	@Override
 	public ItemStack getWithNBT(long aAmount, NBTTagCompound aNBT, Object... aReplacements) {
 		if (mHasNotBeenSet && Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) OUT.println("The Enum '" + name() + "' has not been set to an Item at this time!");
-		if (ST.invalid(mStack)) return ST.copy(aReplacements);
+		if (ST.invalid(mStack)) return ST.copyFirst(aReplacements);
 		ItemStack rStack = ST.amount(aAmount, OM.get_(mStack));
 		UT.NBT.set(rStack, aNBT);
 		return rStack;

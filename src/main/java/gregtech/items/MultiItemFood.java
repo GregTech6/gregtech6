@@ -719,7 +719,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 	
 	@Override
 	public ItemStack getRotten(ItemStack aStack) {
-		short aMeta = ST.meta(aStack);
+		short aMeta = ST.meta_(aStack);
 		if (UT.Code.inside(    0,   999, aMeta)) return (IL.ENVM_Rotten_Food.exists()?IL.ENVM_Rotten_Food:IL.Remains_Plant).get(aStack.stackSize);
 		if (UT.Code.inside( 1100,  1999, aMeta)) return ST.make(Items.rotten_flesh, aStack.stackSize, 0);
 		if (UT.Code.inside(13000, 13999, aMeta)) return null;

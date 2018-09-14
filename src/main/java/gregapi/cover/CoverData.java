@@ -117,7 +117,7 @@ public class CoverData {
 	}
 	
 	public CoverData set(byte aSide, ItemStack aStack) {
-		return aStack == null ? set(aSide, (short)0, (short)0, null) : set(aSide, ST.id(aStack), ST.meta(aStack), aStack.getTagCompound());
+		return aStack == null ? set(aSide, (short)0, (short)0, null) : set(aSide, ST.id(aStack), ST.meta_(aStack), aStack.getTagCompound());
 	}
 	
 	public CoverData set(byte aSide, short aID, short aMeta, NBTTagCompound aNBT) {

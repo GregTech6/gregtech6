@@ -205,7 +205,7 @@ public class Loader_Recipes_IndustrialCraft implements Runnable {
 				RM.Canner.addRecipe2(T, 16, 16, tStack, IL.Cell_Empty.get(1), rStack);
 				if (temp) {
 					temp = F;
-					RM.Canner.addRecipe2(T, 16, 32, OM.ingot(MT.U_235), IL.Cell_Empty.get(2), ST.mul(2, rStack));
+					RM.Canner.addRecipe2(T, 16, 32, OM.ingot(MT.U_235), IL.Cell_Empty.get(2), ST.mul_(2, rStack));
 				}
 			}
 		}

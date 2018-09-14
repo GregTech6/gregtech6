@@ -49,7 +49,7 @@ public class ItemBlockBase extends ItemBlock {
 	@SuppressWarnings("unchecked")
 	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		super.addInformation(aStack, aPlayer, aList, aF3_H);
-		short aMeta = ST.meta(aStack);
+		short aMeta = ST.meta_(aStack);
 		mPlaceable.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
 		if (field_150939_a.getCollisionBoundingBoxFromPool(aPlayer.worldObj, 0, 0, 0) != null) {
 			if (mPlaceable.doesWalkSpeed(aMeta)) aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_WALKSPEED));

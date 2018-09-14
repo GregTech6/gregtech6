@@ -181,12 +181,12 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	@Override
 	public Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, List<TC_AspectStack> aAspects) {
 		if (UT.Code.stringInvalid(aResearch) || aInput == null || aOutput == null || aAspects == null || aAspects.isEmpty()) return null;
-		return ThaumcraftApi.addCrucibleRecipe(aResearch, ST.copy(aOutput), aInput instanceof ItemStack || aInput instanceof ArrayList ? aInput : aInput.toString(), (AspectList)getAspectList(aAspects));
+		return ThaumcraftApi.addCrucibleRecipe(aResearch, ST.copy_(aOutput), aInput instanceof ItemStack || aInput instanceof ArrayList ? aInput : aInput.toString(), (AspectList)getAspectList(aAspects));
 	}
 	@Override
 	public Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, TC_AspectStack... aAspects) {
 		if (UT.Code.stringInvalid(aResearch) || aInput == null || aOutput == null || aAspects == null || aAspects.length <= 0) return null;
-		return ThaumcraftApi.addCrucibleRecipe(aResearch, ST.copy(aOutput), aInput instanceof ItemStack || aInput instanceof ArrayList ? aInput : aInput.toString(), (AspectList)getAspectList(aAspects));
+		return ThaumcraftApi.addCrucibleRecipe(aResearch, ST.copy_(aOutput), aInput instanceof ItemStack || aInput instanceof ArrayList ? aInput : aInput.toString(), (AspectList)getAspectList(aAspects));
 	}
 	
 	@Override

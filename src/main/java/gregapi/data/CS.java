@@ -1157,7 +1157,7 @@ public class CS {
 				GARBAGE_ITEMS.add(aStack);
 				return aStack.stackSize;
 			}
-			ItemStack tGarbage = GARBAGE_MAP_ITEMS.get(aStack.getItem(), ST.meta(aStack));
+			ItemStack tGarbage = GARBAGE_MAP_ITEMS.get(aStack.getItem(), ST.meta_(aStack));
 			if (ST.valid(tGarbage)) {
 				tGarbage.stackSize = UT.Code.bindInt((long)tGarbage.stackSize + (long)aStack.stackSize);
 				return aStack.stackSize;

@@ -57,7 +57,7 @@ public class ItemStackContainer {
 	}
 	
 	public ItemStackContainer(ItemStack aStack) {
-		this(aStack==null?null:aStack.getItem(), aStack==null?0:aStack.stackSize, aStack==null?0:ST.meta(aStack));
+		this(aStack==null?null:aStack.getItem(), aStack==null?0:aStack.stackSize, aStack==null?0:ST.meta_(aStack));
 	}
 	
 	public ItemStackContainer(ItemStack aStack, long aMetaData) {

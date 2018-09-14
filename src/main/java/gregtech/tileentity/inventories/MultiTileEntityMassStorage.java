@@ -406,7 +406,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		int tStacksize = slotHas(1) ? slot(1).stackSize : -1;
-		short tMeta = slotHas(1) ? ST.meta(slot(1)) : 0, tID = ST.id(slot(1));
+		short tMeta = slotHas(1) ? ST.meta_(slot(1)) : 0, tID = ST.id(slot(1));
 		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getDirectionData(), mMode, UT.Code.toByteS(tID, 0), UT.Code.toByteS(tID, 1), UT.Code.toByteS(tMeta, 0), UT.Code.toByteS(tMeta, 1), UT.Code.toByteI(tStacksize, 0), UT.Code.toByteI(tStacksize, 1), UT.Code.toByteI(tStacksize, 2), UT.Code.toByteI(tStacksize, 3)) : getClientDataPacketInteger(aSendAll, tStacksize);
 	}
 	

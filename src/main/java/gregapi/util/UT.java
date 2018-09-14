@@ -3032,8 +3032,8 @@ public class UT {
 		@Deprecated public static ItemStack update(ItemStack aStack) {return ST.update(aStack);}
 		@Deprecated public static ItemStack update_(ItemStack aStack) {return ST.update_(aStack);}
 		@Deprecated public static boolean inList(Collection<ItemStack> aList, ItemStack aStack, boolean aTrueIfListEmpty, boolean aInvertFilter) {return ST.listed(aList, aStack, aTrueIfListEmpty, aInvertFilter);}
-		@Deprecated public static ItemStack set(Object aSetStack, Object aToStack) {return ST.set(aSetStack, aToStack);}
-		@Deprecated public static ItemStack set(Object aSetStack, Object aToStack, boolean aCheckStacksize, boolean aCheckNBT) {return ST.set(aSetStack, aToStack, aCheckStacksize, aCheckNBT);}
+		@Deprecated public static ItemStack set(Object aSetStack, Object aToStack) {return ST.set((ItemStack)aSetStack, (ItemStack)aToStack);}
+		@Deprecated public static ItemStack set(Object aSetStack, Object aToStack, boolean aCheckStacksize, boolean aCheckNBT) {return ST.set((ItemStack)aSetStack, (ItemStack)aToStack, aCheckStacksize, aCheckNBT);}
 		@Deprecated public static ItemStack container(ItemStack aStack, boolean aCheckIFluidContainerItems) {return ST.container(aStack, aCheckIFluidContainerItems);}
 		@Deprecated public static ItemStack container(ItemStack aStack, boolean aCheckIFluidContainerItems, int aStacksize) {return ST.container(aStack, aCheckIFluidContainerItems, aStacksize);}
 		@Deprecated public static boolean equal(ItemStack aStack1, ItemStack aStack2) {return ST.equal(aStack1, aStack2);}
@@ -3044,8 +3044,8 @@ public class UT {
 		@Deprecated public static short id(Item aItem) {return ST.id(aItem);}
 		@Deprecated public static short id(ItemStack aStack) {return ST.id(aStack);}
 		@Deprecated public static Item item(ItemStack aStack) {return ST.item(aStack);}
-		@Deprecated public static short meta(ItemStack aStack) {return ST.meta(aStack);}
-		@Deprecated public static ItemStack meta(ItemStack aStack, long aMeta) {return ST.meta(aStack, aMeta);}
+		@Deprecated public static short meta(ItemStack aStack) {return ST.meta_(aStack);}
+		@Deprecated public static ItemStack meta(ItemStack aStack, long aMeta) {return ST.meta_(aStack, aMeta);}
 		@Deprecated public static boolean rotten(ItemStack aStack) {return ST.rotten(aStack);}
 		@Deprecated public static int food(ItemStack aStack) {return ST.food(aStack);}
 		@Deprecated public static float saturation(ItemStack aStack) {return ST.saturation(aStack);}
@@ -3087,23 +3087,23 @@ public class UT {
 		@Deprecated public static ItemStack make(Block aBlock, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, Code.bindInt(aStacksize), (int)aMetaData), aName, aNBT);}
 		@Deprecated public static ItemStack make(ItemStack aStack, String aName, NBTTagCompound aNBT) {if (aStack == null) return null; aStack = aStack.copy(); NBT.set(aStack, aNBT); if (aName != null) aStack.setStackDisplayName(aName); return aStack;}
 		@Deprecated public static ItemStack make(ItemStackContainer aStack, String aName, NBTTagCompound aNBT) {if (aStack == null) return null; ItemStack rStack = aStack.toStack(); if (rStack == null) return null; NBT.set(rStack, aNBT); if (aName != null) rStack.setStackDisplayName(aName); return rStack;}
-		@Deprecated public static ItemStack[] copyArray(Object... aStacks) {return ST.copyArray(aStacks);}
-		@Deprecated public static ItemStack copy(Object... aStacks) {return ST.copy(aStacks);}
-		@Deprecated public static ItemStack amount(long aAmount, Object... aStacks) {return ST.amount(aAmount, aStacks);}
-		@Deprecated public static ItemStack copyAmount(long aAmount, Object... aStacks) {return ST.amount(aAmount, aStacks);}
+		@Deprecated public static ItemStack[] copyArray(Object... aStacks) {return ST.copyArray((ItemStack[])aStacks);}
+		@Deprecated public static ItemStack copy(Object... aStacks) {return ST.copyFirst(aStacks);}
+		@Deprecated public static ItemStack amount(long aAmount, Object... aStacks) {return ST.amount(aAmount, (ItemStack)aStacks[0]);}
+		@Deprecated public static ItemStack copyAmount(long aAmount, Object... aStacks) {return ST.amount(aAmount, (ItemStack)aStacks[0]);}
 		@Deprecated public static ItemStack copyMeta(long aMetaData, Object... aStacks) {return copyMeta(aMetaData, aStacks);}
-		@Deprecated public static ItemStack copyAmountAndMeta(long aAmount, long aMetaData, Object... aStacks) {return ST.copyAmountAndMeta(aAmount, aMetaData, aStacks);}
-		@Deprecated public static ItemStack mul(long aMultiplier, Object... aStacks) {return ST.mul(aMultiplier, aStacks);}
-		@Deprecated public static ItemStack div(long aDivider, Object... aStacks) {return ST.div(aDivider, aStacks);}
+		@Deprecated public static ItemStack copyAmountAndMeta(long aAmount, long aMetaData, Object... aStacks) {return ST.copyAmountAndMeta(aAmount, aMetaData, (ItemStack)aStacks[0]);}
+		@Deprecated public static ItemStack mul(long aMultiplier, Object... aStacks) {return ST.mul(aMultiplier, (ItemStack)aStacks[0]);}
+		@Deprecated public static ItemStack div(long aDivider, Object... aStacks) {return ST.div(aDivider, (ItemStack)aStacks[0]);}
 		@Deprecated public static int toInt(ItemStack aStack) {return ST.toInt(aStack);}
 		@Deprecated public static int toIntWildcard(ItemStack aStack) {return ST.toIntWildcard(aStack);}
 		@Deprecated public static ItemStack toStack(int aStack) {return ST.toStack(aStack);}
 		@Deprecated public static Integer[] toIntegerArray(ItemStack... aStacks) {return ST.toIntegerArray(aStacks);}
 		@Deprecated public static int[] toIntArray(ItemStack... aStacks) {return ST.toIntArray(aStacks);}
-		@Deprecated public static Block block(Object aStack) {return ST.block(aStack);}
-		@Deprecated public static Block block_(Object aStack) {return ST.block_(aStack);}
-		@Deprecated public static boolean valid(Object aStack) {return ST.valid(aStack);}
-		@Deprecated public static boolean invalid(Object aStack) {return ST.invalid(aStack);}
+		@Deprecated public static Block block(Object aStack) {return ST.block((ItemStack)aStack);}
+		@Deprecated public static Block block_(Object aStack) {return ST.block_((ItemStack)aStack);}
+		@Deprecated public static boolean valid(Object aStack) {return ST.valid((ItemStack)aStack);}
+		@Deprecated public static boolean invalid(Object aStack) {return ST.invalid((ItemStack)aStack);}
 		@Deprecated public static String configName(ItemStack aStack) {return ST.configName(aStack);}
 		@Deprecated public static String configNames(ItemStack... aStacks) {return ST.configNames(aStacks);}
 		@Deprecated public static String regName(ItemStack aStack) {return ST.regName(aStack);}

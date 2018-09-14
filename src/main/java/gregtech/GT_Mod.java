@@ -214,7 +214,7 @@ public class GT_Mod extends Abstract_Mod {
 	
 	@Override
 	public void onModInit2(FMLInitializationEvent aEvent) {
-		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
+		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
 		OP.chemtube.mContainerItem = OP.chemtube.mat(MT.Empty, 1);
 		
 		new Loader_Late_Items_And_Blocks().run();
@@ -233,7 +233,7 @@ public class GT_Mod extends Abstract_Mod {
 		// Clearing the AE Grindstone Recipe List.
 		if (MD.AE.mLoaded) AEApi.instance().registries().grinder().getRecipes().clear();
 		
-		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
+		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
 		
 		new Loader_BlockResistance().run();
 		new Loader_Fuels().run();
@@ -415,7 +415,7 @@ public class GT_Mod extends Abstract_Mod {
 	
 	@Override
 	public void onModServerStarting2(FMLServerStartingEvent aEvent) {
-		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
+		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
 		
 		ORD.println("============================");
 		ORD.println("Outputting Unknown Materials");
@@ -430,7 +430,7 @@ public class GT_Mod extends Abstract_Mod {
 		for (OreDictMaterial tUnknown : OreDictMaterial.MATERIAL_MAP.values()) if (tUnknown != null && tUnknown.contains(TD.Properties.UNUSED_MATERIAL) && !tUnknown.contains(TD.Properties.IGNORE_IN_COLOR_LOG)) {
 			for (ItemStackContainer aStack : tUnknown.mRegisteredItems) {
 				ItemStack tStack = aStack.toStack();
-				if (ST.valid(tStack) && ST.block(aStack) == NB && !(tStack.getItem() instanceof PrefixItem) && !(tStack.getItem() instanceof PrefixBlockItem)) {
+				if (ST.valid(tStack) && ST.block(tStack) == NB && !(tStack.getItem() instanceof PrefixItem) && !(tStack.getItem() instanceof PrefixBlockItem)) {
 					short[] tRGB = UT.Code.color(tStack);
 					if (tRGB != null && tRGB != UNCOLOURED) ORD.println(tUnknown.mNameInternal + "  -  RGB: " + tRGB[0]+", "+tRGB[1]+", "+tRGB[2] + "  -  " + ST.names(tStack));
 				}

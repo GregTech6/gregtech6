@@ -138,7 +138,7 @@ public class RecipeMapPrinter extends RecipeMap {
 				if (tID > 0 && UT.Code.exists(tID, OreDictMaterial.MATERIAL_ARRAY)) {
 					OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[tID];
 					if (ST.valid(tMaterial.mDictionaryBook)) {
-						boolean tUseManyPages = (ST.meta(tMaterial.mDictionaryBook) == 32003);
+						boolean tUseManyPages = (ST.meta_(tMaterial.mDictionaryBook) == 32003);
 						rRecipe = new Recipe(F, F, F, new ItemStack[] {ST.amount(tUseManyPages?6:3, tPaper), ST.amount(0, tUSB)}, new ItemStack[] {tUseManyPages?IL.Paper_Printed_Pages_Many.get(1):IL.Paper_Printed_Pages.get(1)}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 1, tUseManyPages?1:2, T)}, null, tUseManyPages?1024:512, 16, 0);
 						UT.NBT.set(rRecipe.mOutputs[0], tMaterial.mDictionaryBook.getTagCompound());
 						return rRecipe;

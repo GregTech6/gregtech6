@@ -407,8 +407,8 @@ public class WD {
 	public static boolean set(World aWorld, int aX, int aY, int aZ, ItemStack aStack) {
 		Block tBlock = ST.block(aStack);
 		if (tBlock == NB) return F;
-		if (tBlock instanceof IBlockPlacable) return ((IBlockPlacable)tBlock).placeBlock(aWorld, aX, aY, aZ, (byte)6, ST.meta(aStack), aStack.getTagCompound(), T, F);
-		if (ST.meta(aStack) < 16) return aWorld.setBlock(aX, aY, aZ, tBlock, ST.meta(aStack), 3);
+		if (tBlock instanceof IBlockPlacable) return ((IBlockPlacable)tBlock).placeBlock(aWorld, aX, aY, aZ, (byte)6, ST.meta_(aStack), aStack.getTagCompound(), T, F);
+		if (ST.meta_(aStack) < 16) return aWorld.setBlock(aX, aY, aZ, tBlock, ST.meta_(aStack), 3);
 		return F;
 	}
 	

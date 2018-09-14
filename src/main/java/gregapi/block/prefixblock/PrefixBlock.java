@@ -301,7 +301,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	
 	@Override
 	public ITexture getTexture(int aRenderPass, byte aSide, ItemStack aStack) {
-		return getTexture(ST.meta(aStack), F);
+		return getTexture(ST.meta_(aStack), F);
 	}
 	
 	@Override

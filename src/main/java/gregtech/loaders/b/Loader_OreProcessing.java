@@ -367,7 +367,7 @@ public class Loader_OreProcessing implements Runnable {
 		
 		private boolean registerStandardOreRecipes(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aOreStack, int aMultiplier) {
 			if (aOreStack == null || aMaterial == null) return F;
-			if (COMPAT_IC2 != null && !(aOreStack.getItem() instanceof IPrefixItem)) COMPAT_IC2.valuable(ST.block(aOreStack), ST.meta(aOreStack), 3);
+			if (COMPAT_IC2 != null && !(aOreStack.getItem() instanceof IPrefixItem)) COMPAT_IC2.valuable(ST.block(aOreStack), ST.meta_(aOreStack), 3);
 			aMaterial = aMaterial.mTargetCrushing.mMaterial;
 			if (aMaterial == null) return F;
 			OreDictMaterial tPrimaryByMaterial = null, tSecondaryByMaterial = null, tTertiaryByMaterial = null;
@@ -391,7 +391,7 @@ public class Loader_OreProcessing implements Runnable {
 			}
 			
 			if (tSmeltInto == null) tSmeltInto = OM.gem(aMaterial.mTargetSmelting);
-			if (tCrushed == null) tCrushed = dustImpure.mat(aMaterial, ST.amount(UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier), tCleaned, tDust, tGem), aMaterial.mOreMultiplier * aMultiplier);
+			if (tCrushed == null) tCrushed = dustImpure.mat(aMaterial, ST.amount(UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier), ST.copyFirst(tCleaned, tDust, tGem)), aMaterial.mOreMultiplier * aMultiplier);
 			
 			ArrayList<ItemStack> tByProductStacks = new ArrayListNoNulls<>();
 			

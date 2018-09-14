@@ -287,7 +287,7 @@ public class CR {
 	private static boolean shaped(ItemStack aResult, Enchantment[] aEnchantmentsAdded, int[] aEnchantmentLevelsAdded, boolean aMirrored, boolean aBuffered, boolean aKeepNBT, boolean aDismantleable, boolean aRemovable, boolean aReversible, boolean aRemoveAllOthersWithSameOutput, boolean aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, boolean aRemoveAllOtherShapedsWithSameOutput, boolean aRemoveAllOtherNativeRecipes, boolean aCheckForCollisions, boolean aOnlyAddIfThereIsAnyRecipeOutputtingThis, boolean aOnlyAddIfResultIsNotNull, boolean aDeleteOnlyIfNoDyeInvolved, boolean aNotAutoCraftable, Object[] aRecipe) {
 		if (aOnlyAddIfResultIsNotNull && ST.invalid(aResult)) return F;
 		aResult = OM.get(aResult);
-		if (aResult != null && ST.meta(aResult) == W) ST.meta(aResult, 0);
+		if (aResult != null && ST.meta_(aResult) == W) ST.meta_(aResult, 0);
 		if (aRecipe == null || aRecipe.length <= 0) return F;
 		
 		boolean tThereWasARecipe = F;
@@ -401,7 +401,7 @@ public class CR {
 				int x = -1;
 				for (char chr : shape.toCharArray()) {
 					tRecipe[++x] = tItemStackMap.get(chr);
-					if (tRecipe[x] != null && ST.meta(tRecipe[x]) == W) ST.meta(tRecipe[x], 0);
+					if (tRecipe[x] != null && ST.meta_(tRecipe[x]) == W) ST.meta_(tRecipe[x], 0);
 				}
 				tThereWasARecipe = remove(tRecipe) != null || tThereWasARecipe;
 			}
@@ -425,7 +425,7 @@ public class CR {
 			}
 		}
 		
-		if (ST.meta(aResult) == W || ST.meta(aResult) < 0) ST.meta(aResult, 0);
+		if (ST.meta_(aResult) == W || ST.meta_(aResult) < 0) ST.meta_(aResult, 0);
 		
 		ST.update(aResult);
 		
@@ -489,7 +489,7 @@ public class CR {
 		
 		if (aRemoveAllOthersWithSameOutput || aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT || aRemoveAllOtherShapedsWithSameOutput || aRemoveAllOtherNativeRecipes) remout(aResult, !aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, aRemoveAllOtherShapedsWithSameOutput, aRemoveAllOtherNativeRecipes, T);
 		
-		if (ST.meta(aResult) == W || ST.meta(aResult) < 0) ST.meta(aResult, 0);
+		if (ST.meta_(aResult) == W || ST.meta_(aResult) < 0) ST.meta_(aResult, 0);
 		
 		ST.update(aResult);
 		
@@ -554,7 +554,7 @@ public class CR {
 		if (tIndex == 2) {
 			assert tStack1 != null && tStack2 != null;
 			if (tStack1.getItem() == tStack2.getItem() && tStack1.getItem().isRepairable()) {
-				int tNewDamage = ST.meta(tStack1)+ST.meta(tStack2)+(tStack1.getMaxDamage()/-20)-tStack1.getMaxDamage();
+				int tNewDamage = ST.meta_(tStack1)+ST.meta_(tStack2)+(tStack1.getMaxDamage()/-20)-tStack1.getMaxDamage();
 				return ST.make(tStack1.getItem(), 1, tNewDamage<0?0:tNewDamage);
 			}
 		}

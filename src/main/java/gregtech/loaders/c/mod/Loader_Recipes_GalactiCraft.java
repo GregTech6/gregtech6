@@ -97,21 +97,21 @@ public class Loader_Recipes_GalactiCraft implements Runnable {
 							if (tListG1 == tInput) tInputs[i] = tListG; else
 							if (tListH1 == tInput) tInputs[i] = tListH; else
 							if (tListI1 == tInput) tInputs[i] = tListI;
-						} else if (ST.valid(tInput)) {
+						} else if (tInput instanceof ItemStack && ST.valid((ItemStack)tInput)) {
 							Item tItem = ST.item((ItemStack)tInput);
-							if (tItem == tItemA) {switch(ST.meta((ItemStack)tInput)) {
+							if (tItem == tItemA) {switch(ST.meta_((ItemStack)tInput)) {
 							case  6: tInputs[i] = tListA; break;
 							case  7: tInputs[i] = tListB; break;
 							case  8: tInputs[i] = tListC; break;
 							case  9: tInputs[i] = tListD; break;
 							case 10: tInputs[i] = tListE; break;
 							case 11: tInputs[i] = tListF; break;
-							}}else if (tItem == tItemG) {if (ST.meta((ItemStack)tInput) == 1) tInputs[i] = tListG;
-							} else if (tItem == tItemH) {switch(ST.meta((ItemStack)tInput)) {
+							}}else if (tItem == tItemG) {if (ST.meta_((ItemStack)tInput) == 1) tInputs[i] = tListG;
+							} else if (tItem == tItemH) {switch(ST.meta_((ItemStack)tInput)) {
 							case  1: tInputs[i] = tListH2; break;
 							case  2: tInputs[i] = tListH3; break;
 							case  5: tInputs[i] = tListH ; break;
-							}}else if (tItem == tItemI) {if (ST.meta((ItemStack)tInput) == 6) tInputs[i] = tListI;
+							}}else if (tItem == tItemI) {if (ST.meta_((ItemStack)tInput) == 6) tInputs[i] = tListI;
 							}
 						}
 					}

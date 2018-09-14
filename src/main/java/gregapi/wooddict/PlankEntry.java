@@ -105,7 +105,7 @@ public class PlankEntry {
 		
 		if (mPlankIconIndex > 0 && ST.invalid(PlankData.PLANKS[mPlankIconIndex])) {
 			PlankData.PLANKS[mPlankIconIndex] = ST.amount(1, mPlank);
-			PlankData.PLANK_ICONS[mPlankIconIndex] = new IconContainerCopied(ST.block(mPlank), ST.meta(mPlank), SIDE_ANY);
+			PlankData.PLANK_ICONS[mPlankIconIndex] = new IconContainerCopied(ST.block(mPlank), ST.meta_(mPlank), SIDE_ANY);
 		}
 		
 		WoodDictionary.PLANKS.put(mPlank, this);

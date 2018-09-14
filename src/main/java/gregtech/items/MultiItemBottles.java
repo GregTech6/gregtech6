@@ -327,12 +327,12 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 	
 	@Override
 	public int getDefaultStackLimit(ItemStack aStack) {
-		return ST.meta(aStack) >= 32000 ? 64 : OP.bottle.mDefaultStackSize;
+		return ST.meta_(aStack) >= 32000 ? 64 : OP.bottle.mDefaultStackSize;
 	}
 	
 	@Override
 	public ItemStack getRotten(ItemStack aStack) {
-		short aMeta = ST.meta(aStack);
+		short aMeta = ST.meta_(aStack);
 		
 		switch(aMeta) {
 		case    5: case    6: case    7: case 1102: case 1601: case 1700: return aStack;

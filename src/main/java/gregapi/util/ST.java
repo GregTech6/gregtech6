@@ -29,7 +29,6 @@ import java.util.Map;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ModData;
-import gregapi.data.CS;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -66,6 +65,249 @@ import net.minecraftforge.fluids.IFluidContainerItem;
  * @author Gregorius Techneticies
  */
 public class ST {
+	public static boolean equal (ItemStack aStack1, ItemStack aStack2) {
+		return equal(aStack1, aStack2, F);
+	}
+	public static boolean equal (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
+		return aStack1 != null && aStack2 != null && equal_(aStack1, aStack2, aIgnoreNBT);
+	}
+	public static boolean equal_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
+		return aStack1.getItem() == aStack2.getItem() && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null)) && (aStack1.getTagCompound() == null || aStack1.getTagCompound().equals(aStack2.getTagCompound()))) && (meta_(aStack1) == meta_(aStack2) || meta_(aStack1) == W || meta_(aStack2) == W);
+	}
+	
+	public static boolean equalTools (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
+		return aStack1 != null && aStack2 != null && equalTools_(aStack1, aStack2, aIgnoreNBT);
+	}
+	public static boolean equalTools_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
+		return aStack1.getItem() == aStack2.getItem() && (aIgnoreNBT || aStack1.getItem() instanceof IItemGTContainerTool || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null)) && (aStack1.getTagCompound() == null || aStack1.getTagCompound().equals(aStack2.getTagCompound()))) && (meta_(aStack1) == meta_(aStack2) || meta_(aStack1) == W || meta_(aStack2) == W);
+	}
+	
+	public static boolean valid(ItemStack aStack) {
+		return aStack.stackSize >= 0 && aStack.getItem() != null;
+	}
+	public static boolean invalid(ItemStack aStack) {
+		return aStack.stackSize <  0 || aStack.getItem() == null;
+	}
+	
+	public static short id(Item aItem) {
+		return aItem == null ? 0 : (short)Item.getIdFromItem(aItem);
+	}
+	public static short id(ItemStack aStack) {
+		return aStack == null ? 0 : id(aStack.getItem());
+	}
+	public static Item item(ItemStack aStack) {
+		return aStack == null ? null : aStack.getItem();
+	}
+	public static Block block(ItemStack aStack) {
+		return aStack != null && aStack.getItem() != null ? Block.getBlockFromItem(aStack.getItem()) : NB;
+	}
+	public static Block block_(ItemStack aStack) {
+		return Block.getBlockFromItem(aStack.getItem());
+	}
+	
+	public static short meta (ItemStack aStack) {
+		return aStack == null ? 0 : meta_(aStack);
+	}
+	public static short meta_(ItemStack aStack) {
+		return (short)Items.feather.getDamage(aStack);
+	}
+	public static ItemStack meta (ItemStack aStack, long aMeta) {
+		return aStack == null ? null : meta_(aStack, aMeta);
+	}
+	public static ItemStack meta_(ItemStack aStack, long aMeta) {
+		Items.feather.setDamage(aStack, (short)aMeta);
+		return aStack;
+	}
+	
+	public static byte size(ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null || aStack.stackSize < 0 ? 0 : UT.Code.bindByte(aStack.stackSize);
+	}
+	public static ItemStack size (long aStackSize, ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null ? null : size_(aStackSize, aStack);
+	}
+	public static ItemStack size_(long aStackSize, ItemStack aStack) {
+		aStack.stackSize = (int)aStackSize;
+		return aStack;
+	}
+	
+	public static ItemStack set(ItemStack aSetStack, ItemStack aToStack) {
+		return set(aSetStack, aToStack, T, T);
+	}
+	public static ItemStack set(ItemStack aSetStack, ItemStack aToStack, boolean aCheckStacksize, boolean aCheckNBT) {
+		if (invalid(aSetStack) || invalid(aToStack)) return null;
+		aSetStack.func_150996_a(aToStack.getItem());
+		if (aCheckStacksize) aSetStack.stackSize = aToStack.stackSize;
+		meta_(aSetStack, meta_(aToStack));
+		if (aCheckNBT) aSetStack.setTagCompound(aToStack.getTagCompound());
+		return aSetStack;
+	}
+	
+	public static ItemStack copy (ItemStack aStack) {
+		return aStack != null && aStack.getItem() != null ? copy_(aStack) : null;
+	}
+	public static ItemStack copy_(ItemStack aStack) {
+		return aStack.copy();
+	}
+	
+	public static ItemStack amount (long aStackSize, ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null ? null : amount_(aStackSize, aStack);
+	}
+	public static ItemStack amount_(long aStackSize, ItemStack aStack) {
+		return size_(aStackSize, copy_(aStack));
+	}
+	
+	public static ItemStack mul (long aMultiplier, ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null ? null : mul_(aMultiplier, aStack);
+	}
+	public static ItemStack mul_(long aMultiplier, ItemStack aStack) {
+		return amount_(aStack.stackSize * aMultiplier, aStack);
+	}
+	
+	public static ItemStack div (long aDivider, ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null ? null : div_(aDivider, aStack);
+	}
+	public static ItemStack div_(long aDivider, ItemStack aStack) {
+		return amount_(aStack.stackSize / aDivider, aStack);
+	}
+	
+	public static ItemStack validMeta (long aStackSize, ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null ? null : validMeta_(aStackSize, aStack);
+	}
+	public static ItemStack validMeta_(long aStackSize, ItemStack aStack) {
+		return size_(aStackSize, validMeta_(aStack));
+	}
+	public static ItemStack validMeta (ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null ? null : validMeta_(aStack);
+	}
+	public static ItemStack validMeta_(ItemStack aStack) {
+		return meta_(aStack) == W ? meta_(copy_(aStack), 0) : copy_(aStack);
+	}
+	
+	public static ItemStack update (ItemStack aStack) {
+		return invalid(aStack)?aStack:update_(aStack);
+	}
+	public static ItemStack update_(ItemStack aStack) {
+		if (aStack.hasTagCompound() && aStack.getTagCompound().hasNoTags()) aStack.setTagCompound(null);
+		if (aStack.getItem() instanceof IItemUpdatable) ((IItemUpdatable)aStack.getItem()).updateItemStack(aStack);
+		return aStack;
+	}
+	public static ItemStack update (ItemStack aStack, World aWorld, int aX, int aY, int aZ) {
+		return invalid(aStack)?aStack:update_(aStack, aWorld, aX, aY, aZ);
+	}
+	public static ItemStack update_(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {
+		if (aStack.hasTagCompound() && aStack.getTagCompound().hasNoTags()) aStack.setTagCompound(null);
+		if (aStack.getItem() instanceof IItemUpdatable) ((IItemUpdatable)aStack.getItem()).updateItemStack(aStack);
+		return aStack;
+	}
+	public static ItemStack update (ItemStack aStack, Entity aEntity) {
+		return update(aStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+	}
+	public static ItemStack update_(ItemStack aStack, Entity aEntity) {
+		return update_(aStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+	}
+	
+	public static ItemStack[] copyArray(ItemStack... aStacks) {
+		ItemStack[] rStacks = new ItemStack[aStacks.length];
+		for (int i = 0; i < aStacks.length; i++) rStacks[i] = copy(aStacks[i]);
+		return rStacks;
+	}
+	
+	public static ItemStack copyFirst(Object... aStacks) {
+		for (Object aStack : aStacks) if (aStack instanceof ItemStack && ((ItemStack)aStack).getItem() != null) return ((ItemStack)aStack).copy();
+		return null;
+	}
+	
+	public static ItemStack copyMeta(long aMetaData, ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null ? null : meta_(copy_(aStack), aMetaData);
+	}
+	public static ItemStack copyAmountAndMeta(long aStackSize, long aMetaData, ItemStack aStack) {
+		return aStack == null || aStack.getItem() == null ? null : meta_(amount_(aStackSize, aStack), aMetaData);
+	}
+	
+	public static Item item(ModData aModID, String aItem) {return item(make(aModID, aItem, 1, null));}
+	public static Item item(ModData aModID, String aItem, Item aReplacement) {Item rItem = item(aModID, aItem); return rItem == null ? aReplacement : rItem;}
+	
+	public static Block block(ModData aModID, String aBlock) {return block(make(aModID, aBlock, 1, null));}
+	public static Block block(ModData aModID, String aBlock, Block aReplacement) {Block rBlock = block(aModID, aBlock); return rBlock == NB ? aReplacement : rBlock;}
+	
+	private static final Map<String, ItemStack> sIC2ItemMap = new HashMap<>();
+	public static ItemStack mkic(String aItem, long aStackSize, ItemStack aReplacement) {if (UT.Code.stringInvalid(aItem) || !GAPI_POST.mStartedPreInit) return null; if (!sIC2ItemMap.containsKey(aItem)) try {ItemStack tStack = IC2Items.getItem(aItem); sIC2ItemMap.put(aItem, tStack); if (tStack == null && D1 && MD.IC2.mLoaded) ERR.println(aItem + " is not found in the IC2 Items!");} catch (Throwable e) {/*Do nothing*/} return amount(aStackSize, copyFirst(sIC2ItemMap.get(aItem), aReplacement));}
+	public static ItemStack mkic(String aItem, long aStackSize, long aMeta, ItemStack aReplacement) {ItemStack rStack = mkic(aItem, aStackSize, aReplacement); if (rStack == null) return null; meta_(rStack, aMeta); return rStack;}
+	public static ItemStack mkic(String aItem, long aStackSize, long aMeta) {return mkic(aItem, aStackSize, aMeta, null);}
+	public static ItemStack mkic(String aItem, long aStackSize) {return mkic(aItem, aStackSize, null);}
+	public static ItemStack make(ModData aModID, String aItem, long aStackSize) {return make(aModID, aItem, aStackSize, null);}
+	public static ItemStack make(ModData aModID, String aItem, long aStackSize, ItemStack aReplacement) {if (!aModID.mLoaded || UT.Code.stringInvalid(aItem) || !GAPI_POST.mStartedPreInit) return aReplacement; if (aItem.length()>5&&aItem.charAt(0)=='t'&&aItem.charAt(1)=='i'&&aItem.charAt(2)=='l'&&aItem.charAt(3)=='e'&&aItem.charAt(4)=='.') return amount(aStackSize, copyFirst(GameRegistry.findItemStack(aModID.mID, aItem, (int)aStackSize), GameRegistry.findItemStack(aModID.mID, aItem.substring(5), (int)aStackSize), aReplacement)); return amount(aStackSize, copyFirst(GameRegistry.findItemStack(aModID.mID, aItem, (int)aStackSize), aReplacement));}
+	public static ItemStack make(ModData aModID, String aItem, long aStackSize, long aMeta) {ItemStack rStack = make(aModID, aItem, aStackSize); if (rStack == null) return null; meta_(rStack, aMeta); return rStack;}
+	public static ItemStack make(ModData aModID, String aItem, long aStackSize, long aMeta, ItemStack aReplacement) {ItemStack rStack = make(aModID, aItem, aStackSize, aReplacement); if (rStack == null) return null; meta_(rStack, aMeta); return rStack;}
+	public static ItemStack make(long aItemID, long aStacksize, long aMetaData) {return aItemID==0?null:make(Item.getItemById((int)aItemID), aStacksize, aMetaData);}
+	public static ItemStack make(Item aItem, long aStacksize, long aMetaData) {return aItem == null ? null : make(new ItemStack(aItem, UT.Code.bindInt(aStacksize), (int)aMetaData), null);}
+	public static ItemStack make(Block aBlock, long aStacksize, long aMetaData) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, UT.Code.bindInt(aStacksize), (int)aMetaData), null);}
+//  public static ItemStack make(IBlock aBlock, long aStacksize, long aMetaData) {return aBlock == null ? null : make(new ItemStack(aBlock.getBlock(), UT.Code.bindInt(aStacksize), (int)aMetaData), null);}
+	public static ItemStack make(long aItemID, long aStacksize, long aMetaData, NBTTagCompound aNBT) {return aItemID==0?null:make(Item.getItemById((int)aItemID), aStacksize, aMetaData, aNBT);}
+	public static ItemStack make(Item aItem, long aStacksize, long aMetaData, NBTTagCompound aNBT) {return aItem == null ? null : make(new ItemStack(aItem, UT.Code.bindInt(aStacksize), (int)aMetaData), aNBT);}
+	public static ItemStack make(Block aBlock, long aStacksize, long aMetaData, NBTTagCompound aNBT) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, UT.Code.bindInt(aStacksize), (int)aMetaData), aNBT);}
+//  public static ItemStack make(IBlock aBlock, long aStacksize, long aMetaData, NBTTagCompound aNBT) {return aBlock == null ? null : make(new ItemStack(aBlock.getBlock(), UT.Code.bindInt(aStacksize), (int)aMetaData), aNBT);}
+	public static ItemStack make(ItemStack aStack, NBTTagCompound aNBT) {return make(aStack, null, aNBT);}
+	public static ItemStack make(ItemStackContainer aStack, NBTTagCompound aNBT) {return make(aStack, null, aNBT);}
+	public static ItemStack make(long aItemID, long aStacksize, long aMetaData, String aName) {return aItemID==0?null:make(Item.getItemById((int)aItemID), aStacksize, aMetaData, aName);}
+	public static ItemStack make(Item aItem, long aStacksize, long aMetaData, String aName) {return aItem == null ? null : make(new ItemStack(aItem, UT.Code.bindInt(aStacksize), (int)aMetaData), aName, null);}
+	public static ItemStack make(Block aBlock, long aStacksize, long aMetaData, String aName) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, UT.Code.bindInt(aStacksize), (int)aMetaData), aName, null);}
+//  public static ItemStack make(IBlock aBlock, long aStacksize, long aMetaData, String aName) {return aBlock == null ? null : make(new ItemStack(aBlock.getBlock(), UT.Code.bindInt(aStacksize), (int)aMetaData), aName, null);}
+	public static ItemStack make(long aItemID, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aItemID==0?null:make(Item.getItemById((int)aItemID), aStacksize, aMetaData, aName, aNBT);}
+	public static ItemStack make(Item aItem, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aItem == null ? null : make(new ItemStack(aItem, UT.Code.bindInt(aStacksize), (int)aMetaData), aName, aNBT);}
+	public static ItemStack make(Block aBlock, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, UT.Code.bindInt(aStacksize), (int)aMetaData), aName, aNBT);}
+//  public static ItemStack make(IBlock aBlock, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aBlock == null ? null : make(new ItemStack(aBlock.getBlock(), UT.Code.bindInt(aStacksize), (int)aMetaData), aName, aNBT);}
+	public static ItemStack make(ItemStack aStack, String aName, NBTTagCompound aNBT) {if (aStack == null) return null; aStack = aStack.copy(); UT.NBT.set(aStack, aNBT); if (aName != null) aStack.setStackDisplayName(aName); return aStack;}
+	public static ItemStack make(ItemStackContainer aStack, String aName, NBTTagCompound aNBT) {if (aStack == null) return null; ItemStack rStack = aStack.toStack(); if (rStack == null) return null; UT.NBT.set(rStack, aNBT); if (aName != null) rStack.setStackDisplayName(aName); return rStack;}
+	
+	public static EntityItem place (World aWorld, double aX, double aY, double aZ, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (World aWorld, double aX, double aY, double aZ, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (World aWorld, double aX, double aY, double aZ, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (World aWorld, double aX, double aY, double aZ, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (World aWorld, double aX, double aY, double aZ, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, double aX, double aY, double aZ, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, double aX, double aY, double aZ, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, double aX, double aY, double aZ, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, double aX, double aY, double aZ, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, double aX, double aY, double aZ, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem entity(World aWorld, double aX, double aY, double aZ, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
+	public static EntityItem entity(World aWorld, double aX, double aY, double aZ, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
+	public static EntityItem entity(World aWorld, double aX, double aY, double aZ, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
+	public static EntityItem entity(World aWorld, double aX, double aY, double aZ, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
+	public static EntityItem entity(World aWorld, double aX, double aY, double aZ, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
+	
+	public static EntityItem place (Entity aEntity, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (Entity aEntity, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (Entity aEntity, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (Entity aEntity, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (Entity aEntity, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (Entity aEntity, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (Entity aEntity, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (Entity aEntity, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (Entity aEntity, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (Entity aEntity, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem entity(Entity aEntity, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
+	public static EntityItem entity(Entity aEntity, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
+	public static EntityItem entity(Entity aEntity, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
+	public static EntityItem entity(Entity aEntity, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
+	public static EntityItem entity(Entity aEntity, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
+	
+	public static EntityItem place (World aWorld, ChunkCoordinates aCoords, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (World aWorld, ChunkCoordinates aCoords, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (World aWorld, ChunkCoordinates aCoords, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (World aWorld, ChunkCoordinates aCoords, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem place (World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, ChunkCoordinates aCoords, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, ChunkCoordinates aCoords, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, ChunkCoordinates aCoords, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, ChunkCoordinates aCoords, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem drop  (World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
+	public static EntityItem entity(World aWorld, ChunkCoordinates aCoords, ModData aModID, String aItem, long aStackSize, long aMetaData) {ItemStack rStack = ST.make(aModID, aItem, aStackSize, aMetaData); if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
+	public static EntityItem entity(World aWorld, ChunkCoordinates aCoords, Item aItem, long aStacksize, long aMetaData                  ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
+	public static EntityItem entity(World aWorld, ChunkCoordinates aCoords, Block aBlock, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
+	public static EntityItem entity(World aWorld, ChunkCoordinates aCoords, ItemStackContainer aStack                                    ) {ItemStack rStack = aStack.toStack()                             ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
+	public static EntityItem entity(World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                             ) {ItemStack rStack = aStack                                       ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
+	
 	public static ItemStack tag(long aNumber) {
 		return IL.Circuit_Selector.getWithDamage(0, aNumber);
 	}
@@ -73,7 +315,6 @@ public class ST {
 	public static ItemStack book(String aMapping) {
 		return UT.Books.getBookWithTitle(aMapping);
 	}
-	
 	public static ItemStack book(String aMapping, ItemStack aBook) {
 		return UT.Books.getBookWithTitle(aMapping, aBook);
 	}
@@ -100,29 +341,6 @@ public class ST {
 		return tData != null && tData.mPrefix != null && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
 	}
 	
-	public static ItemStack update(ItemStack aStack) {
-		return invalid(aStack)?aStack:update_(aStack);
-	}
-	public static ItemStack update_(ItemStack aStack) {
-		if (aStack.hasTagCompound() && aStack.getTagCompound().hasNoTags()) aStack.setTagCompound(null);
-		if (aStack.getItem() instanceof IItemUpdatable) ((IItemUpdatable)aStack.getItem()).updateItemStack(aStack);
-		return aStack;
-	}
-	public static ItemStack update(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {
-		return invalid(aStack)?aStack:update_(aStack, aWorld, aX, aY, aZ);
-	}
-	public static ItemStack update_(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {
-		if (aStack.hasTagCompound() && aStack.getTagCompound().hasNoTags()) aStack.setTagCompound(null);
-		if (aStack.getItem() instanceof IItemUpdatable) ((IItemUpdatable)aStack.getItem()).updateItemStack(aStack);
-		return aStack;
-	}
-	public static ItemStack update(ItemStack aStack, Entity aEntity) {
-		return update(aStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
-	}
-	public static ItemStack update_(ItemStack aStack, Entity aEntity) {
-		return update_(aStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
-	}
-	
 	public static boolean listed(Collection<ItemStack> aList, ItemStack aStack, boolean aTrueIfListEmpty, boolean aInvertFilter) {
 		if (aStack == null || aStack.stackSize < 1) return F;
 		if (aList == null) return aTrueIfListEmpty;
@@ -132,19 +350,6 @@ public class ST {
 		ItemStack tStack = null;
 		while (tIterator.hasNext()) if ((tStack = tIterator.next())!= null && equal(aStack, tStack)) return !aInvertFilter;
 		return aInvertFilter;
-	}
-	
-	public static ItemStack set(Object aSetStack, Object aToStack) {
-		return set(aSetStack, aToStack, T, T);
-	}
-	
-	public static ItemStack set(Object aSetStack, Object aToStack, boolean aCheckStacksize, boolean aCheckNBT) {
-		if (invalid(aSetStack) || invalid(aToStack)) return null;
-		((ItemStack)aSetStack).func_150996_a(((ItemStack)aToStack).getItem());
-		if (aCheckStacksize) ((ItemStack)aSetStack).stackSize = ((ItemStack)aToStack).stackSize;
-		meta((ItemStack)aSetStack, meta((ItemStack)aToStack));
-		if (aCheckNBT) ((ItemStack)aSetStack).setTagCompound(((ItemStack)aToStack).getTagCompound());
-		return (ItemStack)aSetStack;
 	}
 	
 	public static ItemStack container(ItemStack aStack, boolean aCheckIFluidContainerItems) {
@@ -162,7 +367,7 @@ public class ST {
 			return tStack;
 		}
 		
-		if (IL.IC2_ForgeHammer.equal(aStack, T, T) || IL.IC2_WireCutter.equal(aStack, T, T)) return copyMeta(meta(aStack) + 1, aStack);
+		if (IL.IC2_ForgeHammer.equal(aStack, T, T) || IL.IC2_WireCutter.equal(aStack, T, T)) return copyMeta(meta_(aStack) + 1, aStack);
 		return NI;
 	}
 	
@@ -170,51 +375,10 @@ public class ST {
 		return amount(aStacksize, container(aStack, aCheckIFluidContainerItems));
 	}
 	
-	public static boolean equal(ItemStack aStack1, ItemStack aStack2) {
-		return equal(aStack1, aStack2, F);
-	}
-	
-	public static boolean equalTools(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-		return aStack1 != null && aStack2 != null && equalTools_(aStack1, aStack2, aIgnoreNBT);
-	}
-	
-	public static boolean equalTools_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-		return aStack1.getItem() == aStack2.getItem() && (aIgnoreNBT || aStack1.getItem() instanceof IItemGTContainerTool || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null)) && (aStack1.getTagCompound() == null || aStack1.getTagCompound().equals(aStack2.getTagCompound()))) && (meta(aStack1) == meta(aStack2) || meta(aStack1) == CS.W || meta(aStack2) == CS.W);
-	}
-	
-	public static boolean equal(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-		return aStack1 != null && aStack2 != null && equal_(aStack1, aStack2, aIgnoreNBT);
-	}
-	
-	public static boolean equal_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-		return aStack1.getItem() == aStack2.getItem() && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null)) && (aStack1.getTagCompound() == null || aStack1.getTagCompound().equals(aStack2.getTagCompound()))) && (meta(aStack1) == meta(aStack2) || meta(aStack1) == CS.W || meta(aStack2) == CS.W);
-	}
-	
-	public static short id(Item aItem) {
-		return aItem==null?0:(short)Item.getIdFromItem(aItem);
-	}
-	
-	public static short id(ItemStack aStack) {
-		return aStack==null?0:id(aStack.getItem());
-	}
-	
-	public static Item item(ItemStack aStack) {
-		return aStack==null?null:aStack.getItem();
-	}
-	
-	public static short meta(ItemStack aStack) {
-		return (short)Items.feather.getDamage(aStack);
-	}
-	
-	public static ItemStack meta(ItemStack aStack, long aMeta) {
-		Items.feather.setDamage(aStack, (short)aMeta);
-		return aStack;
-	}
-	
 	public static boolean rotten(ItemStack aStack) {
 		if (invalid(aStack)) return F;
 		if (aStack.getItem() instanceof MultiItemRandom) {
-			IFoodStat tStat = ((MultiItemRandom)aStack.getItem()).mFoodStats.get(meta(aStack));
+			IFoodStat tStat = ((MultiItemRandom)aStack.getItem()).mFoodStats.get(meta_(aStack));
 			return tStat != null && tStat.isRotten(aStack.getItem(), aStack, null);
 		}
 		return aStack.getItem() == Items.rotten_flesh || OM.materialcontained(aStack, MT.MeatRotten, MT.FishRotten);
@@ -230,7 +394,7 @@ public class ST {
 			}
 		}
 		if (aStack.getItem() instanceof MultiItemRandom) {
-			IFoodStat tStat = ((MultiItemRandom)aStack.getItem()).mFoodStats.get(meta(aStack));
+			IFoodStat tStat = ((MultiItemRandom)aStack.getItem()).mFoodStats.get(meta_(aStack));
 			return tStat == null ? 0 : tStat.getFoodLevel(aStack.getItem(), aStack, null);
 		}
 		return 0;
@@ -246,7 +410,7 @@ public class ST {
 			}
 		}
 		if (aStack.getItem() instanceof MultiItemRandom) {
-			IFoodStat tStat = ((MultiItemRandom)aStack.getItem()).mFoodStats.get(meta(aStack));
+			IFoodStat tStat = ((MultiItemRandom)aStack.getItem()).mFoodStats.get(meta_(aStack));
 			return tStat == null ? 0 : tStat.getSaturation(aStack.getItem(), aStack, null);
 		}
 		return 0;
@@ -277,156 +441,12 @@ public class ST {
 		return 0;
 	}
 	
-	public static Item item(ModData aModID, String aItem) {return item(make(aModID, aItem, 1, null));}
-	public static Item item(ModData aModID, String aItem, Item aReplacement) {Item rItem = item(aModID, aItem); return rItem == null ? aReplacement : rItem;}
-	
-	public static Block block(ModData aModID, String aBlock) {return block(make(aModID, aBlock, 1, null));}
-	public static Block block(ModData aModID, String aBlock, Block aReplacement) {Block rBlock = block(aModID, aBlock); return rBlock == NB ? aReplacement : rBlock;}
-	
-	private static final Map<String, ItemStack> sIC2ItemMap = new HashMap<>();
-	public static ItemStack mkic(String aItem, long aAmount, ItemStack aReplacement) {if (UT.Code.stringInvalid(aItem) || !GAPI_POST.mStartedPreInit) return null; if (!sIC2ItemMap.containsKey(aItem)) try {ItemStack tStack = IC2Items.getItem(aItem); sIC2ItemMap.put(aItem, tStack); if (tStack == null && D1 && MD.IC2.mLoaded) ERR.println(aItem + " is not found in the IC2 Items!");} catch (Throwable e) {/*Do nothing*/} return amount(aAmount, sIC2ItemMap.get(aItem), aReplacement);}
-	public static ItemStack mkic(String aItem, long aAmount, long aMeta, ItemStack aReplacement) {ItemStack rStack = mkic(aItem, aAmount, aReplacement); if (rStack == null) return null; meta(rStack, aMeta); return rStack;}
-	public static ItemStack mkic(String aItem, long aAmount, long aMeta) {return mkic(aItem, aAmount, aMeta, null);}
-	public static ItemStack mkic(String aItem, long aAmount) {return mkic(aItem, aAmount, null);}
-	public static ItemStack make(ModData aModID, String aItem, long aAmount) {return make(aModID, aItem, aAmount, null);}
-	public static ItemStack make(ModData aModID, String aItem, long aAmount, ItemStack aReplacement) {if (!aModID.mLoaded || UT.Code.stringInvalid(aItem) || !GAPI_POST.mStartedPreInit) return aReplacement; if (aItem.length()>5&&aItem.charAt(0)=='t'&&aItem.charAt(1)=='i'&&aItem.charAt(2)=='l'&&aItem.charAt(3)=='e'&&aItem.charAt(4)=='.') return amount(aAmount, GameRegistry.findItemStack(aModID.mID, aItem, (int)aAmount), GameRegistry.findItemStack(aModID.mID, aItem.substring(5), (int)aAmount), aReplacement); return amount(aAmount, GameRegistry.findItemStack(aModID.mID, aItem, (int)aAmount), aReplacement);}
-	public static ItemStack make(ModData aModID, String aItem, long aAmount, long aMeta) {ItemStack rStack = make(aModID, aItem, aAmount); if (rStack == null) return null; meta(rStack, aMeta); return rStack;}
-	public static ItemStack make(ModData aModID, String aItem, long aAmount, long aMeta, ItemStack aReplacement) {ItemStack rStack = make(aModID, aItem, aAmount, aReplacement); if (rStack == null) return null; meta(rStack, aMeta); return rStack;}
-	public static ItemStack make(long aItemID, long aStacksize, long aMetaData) {return aItemID==0?null:make(Item.getItemById((int)aItemID), aStacksize, aMetaData);}
-	public static ItemStack make(Item aItem, long aStacksize, long aMetaData) {return aItem == null ? null : make(new ItemStack(aItem, UT.Code.bindInt(aStacksize), (int)aMetaData), null);}
-	public static ItemStack make(Block aBlock, long aStacksize, long aMetaData) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, UT.Code.bindInt(aStacksize), (int)aMetaData), null);}
-//  public static ItemStack make(IBlock aBlock, long aStacksize, long aMetaData) {return aBlock == null ? null : make(new ItemStack(aBlock.getBlock(), UT.Code.bindInt(aStacksize), (int)aMetaData), null);}
-	public static ItemStack make(long aItemID, long aStacksize, long aMetaData, NBTTagCompound aNBT) {return aItemID==0?null:make(Item.getItemById((int)aItemID), aStacksize, aMetaData, aNBT);}
-	public static ItemStack make(Item aItem, long aStacksize, long aMetaData, NBTTagCompound aNBT) {return aItem == null ? null : make(new ItemStack(aItem, UT.Code.bindInt(aStacksize), (int)aMetaData), aNBT);}
-	public static ItemStack make(Block aBlock, long aStacksize, long aMetaData, NBTTagCompound aNBT) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, UT.Code.bindInt(aStacksize), (int)aMetaData), aNBT);}
-//  public static ItemStack make(IBlock aBlock, long aStacksize, long aMetaData, NBTTagCompound aNBT) {return aBlock == null ? null : make(new ItemStack(aBlock.getBlock(), UT.Code.bindInt(aStacksize), (int)aMetaData), aNBT);}
-	public static ItemStack make(ItemStack aStack, NBTTagCompound aNBT) {return make(aStack, null, aNBT);}
-	public static ItemStack make(ItemStackContainer aStack, NBTTagCompound aNBT) {return make(aStack, null, aNBT);}
-	public static ItemStack make(long aItemID, long aStacksize, long aMetaData, String aName) {return aItemID==0?null:make(Item.getItemById((int)aItemID), aStacksize, aMetaData, aName);}
-	public static ItemStack make(Item aItem, long aStacksize, long aMetaData, String aName) {return aItem == null ? null : make(new ItemStack(aItem, UT.Code.bindInt(aStacksize), (int)aMetaData), aName, null);}
-	public static ItemStack make(Block aBlock, long aStacksize, long aMetaData, String aName) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, UT.Code.bindInt(aStacksize), (int)aMetaData), aName, null);}
-//  public static ItemStack make(IBlock aBlock, long aStacksize, long aMetaData, String aName) {return aBlock == null ? null : make(new ItemStack(aBlock.getBlock(), UT.Code.bindInt(aStacksize), (int)aMetaData), aName, null);}
-	public static ItemStack make(long aItemID, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aItemID==0?null:make(Item.getItemById((int)aItemID), aStacksize, aMetaData, aName, aNBT);}
-	public static ItemStack make(Item aItem, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aItem == null ? null : make(new ItemStack(aItem, UT.Code.bindInt(aStacksize), (int)aMetaData), aName, aNBT);}
-	public static ItemStack make(Block aBlock, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aBlock == null || aBlock == NB ? null : make(new ItemStack(aBlock, UT.Code.bindInt(aStacksize), (int)aMetaData), aName, aNBT);}
-//  public static ItemStack make(IBlock aBlock, long aStacksize, long aMetaData, String aName, NBTTagCompound aNBT) {return aBlock == null ? null : make(new ItemStack(aBlock.getBlock(), UT.Code.bindInt(aStacksize), (int)aMetaData), aName, aNBT);}
-	public static ItemStack make(ItemStack aStack, String aName, NBTTagCompound aNBT) {if (aStack == null) return null; aStack = aStack.copy(); UT.NBT.set(aStack, aNBT); if (aName != null) aStack.setStackDisplayName(aName); return aStack;}
-	public static ItemStack make(ItemStackContainer aStack, String aName, NBTTagCompound aNBT) {if (aStack == null) return null; ItemStack rStack = aStack.toStack(); if (rStack == null) return null; UT.NBT.set(rStack, aNBT); if (aName != null) rStack.setStackDisplayName(aName); return rStack;}
-	
-	public static EntityItem place  (World aWorld, double aX, double aY, double aZ, ModData aModID, String aItem, long aAmount, long aMetaData  ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (World aWorld, double aX, double aY, double aZ, Item aItem, long aStacksize, long aMetaData                 ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (World aWorld, double aX, double aY, double aZ, Block aBlock, long aStacksize, long aMetaData               ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (World aWorld, double aX, double aY, double aZ, ItemStackContainer aStack                                   ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (World aWorld, double aX, double aY, double aZ, ItemStack aStack                                            ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, double aX, double aY, double aZ, ModData aModID, String aItem, long aAmount, long aMetaData  ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, double aX, double aY, double aZ, Item aItem, long aStacksize, long aMetaData                 ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, double aX, double aY, double aZ, Block aBlock, long aStacksize, long aMetaData               ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, double aX, double aY, double aZ, ItemStackContainer aStack                                   ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, double aX, double aY, double aZ, ItemStack aStack                                            ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem entity (World aWorld, double aX, double aY, double aZ, ModData aModID, String aItem, long aAmount, long aMetaData  ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
-	public static EntityItem entity (World aWorld, double aX, double aY, double aZ, Item aItem, long aStacksize, long aMetaData                 ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
-	public static EntityItem entity (World aWorld, double aX, double aY, double aZ, Block aBlock, long aStacksize, long aMetaData               ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
-	public static EntityItem entity (World aWorld, double aX, double aY, double aZ, ItemStackContainer aStack                                   ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
-	public static EntityItem entity (World aWorld, double aX, double aY, double aZ, ItemStack aStack                                            ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aX, aY, aZ, update_(rStack, aWorld, UT.Code.roundDown(aX), UT.Code.roundDown(aY), UT.Code.roundDown(aZ))); return rEntity;}
-	
-	public static EntityItem place  (Entity aEntity, ModData aModID, String aItem, long aAmount, long aMetaData ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (Entity aEntity, Item aItem, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (Entity aEntity, Block aBlock, long aStacksize, long aMetaData              ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (Entity aEntity, ItemStackContainer aStack                                  ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (Entity aEntity, ItemStack aStack                                           ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (Entity aEntity, ModData aModID, String aItem, long aAmount, long aMetaData ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (Entity aEntity, Item aItem, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (Entity aEntity, Block aBlock, long aStacksize, long aMetaData              ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (Entity aEntity, ItemStackContainer aStack                                  ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (Entity aEntity, ItemStack aStack                                           ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return aEntity.worldObj.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem entity (Entity aEntity, ModData aModID, String aItem, long aAmount, long aMetaData ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
-	public static EntityItem entity (Entity aEntity, Item aItem, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
-	public static EntityItem entity (Entity aEntity, Block aBlock, long aStacksize, long aMetaData              ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
-	public static EntityItem entity (Entity aEntity, ItemStackContainer aStack                                  ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
-	public static EntityItem entity (Entity aEntity, ItemStack aStack                                           ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aEntity.worldObj, aEntity.posX, aEntity.posY, aEntity.posZ, update_(rStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ))); return rEntity;}
-	
-	public static EntityItem place  (World aWorld, ChunkCoordinates aCoords, ModData aModID, String aItem, long aAmount, long aMetaData ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (World aWorld, ChunkCoordinates aCoords, Item aItem, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (World aWorld, ChunkCoordinates aCoords, Block aBlock, long aStacksize, long aMetaData              ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (World aWorld, ChunkCoordinates aCoords, ItemStackContainer aStack                                  ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem place  (World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                           ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); rEntity.motionX = rEntity.motionY = rEntity.motionZ = 0; return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, ChunkCoordinates aCoords, ModData aModID, String aItem, long aAmount, long aMetaData ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, ChunkCoordinates aCoords, Item aItem, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, ChunkCoordinates aCoords, Block aBlock, long aStacksize, long aMetaData              ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, ChunkCoordinates aCoords, ItemStackContainer aStack                                  ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem drop   (World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                           ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return aWorld.spawnEntityInWorld(rEntity) ? rEntity : null;}
-	public static EntityItem entity (World aWorld, ChunkCoordinates aCoords, ModData aModID, String aItem, long aAmount, long aMetaData ) {ItemStack rStack = ST.make(aModID, aItem, aAmount, aMetaData)    ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
-	public static EntityItem entity (World aWorld, ChunkCoordinates aCoords, Item aItem, long aStacksize, long aMetaData                ) {ItemStack rStack = ST.make(aItem, aStacksize, aMetaData)         ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
-	public static EntityItem entity (World aWorld, ChunkCoordinates aCoords, Block aBlock, long aStacksize, long aMetaData              ) {ItemStack rStack = ST.make(aBlock, aStacksize, aMetaData)        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
-	public static EntityItem entity (World aWorld, ChunkCoordinates aCoords, ItemStackContainer aStack                                  ) {ItemStack rStack = aStack.toStack()                              ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
-	public static EntityItem entity (World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                           ) {ItemStack rStack = aStack                                        ; if (invalid(rStack)) return null; EntityItem rEntity = new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(rStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ)); return rEntity;}
-	
-	public static ItemStack[] copyArray(Object... aStacks) {
-		ItemStack[] rStacks = new ItemStack[aStacks.length];
-		for (int i = 0; i < aStacks.length; i++) rStacks[i] = copy(aStacks[i]);
-		return rStacks;
-	}
-	
-	public static ItemStack copy(Object... aStacks) {
-		for (Object tStack : aStacks) if (valid(tStack)) return ((ItemStack)tStack).copy();
-		return null;
-	}
-	
-	public static ItemStack amountValidMeta(long aAmount, Object... aStacks) {
-		ItemStack rStack = copy(aStacks);
-		if (invalid(rStack)) return null;
-		if (meta(rStack) == W) meta(rStack, 0);
-		rStack.stackSize = (int)aAmount;
-		return rStack;
-	}
-	
-	public static ItemStack amount(long aAmount, Object... aStacks) {
-		ItemStack rStack = copy(aStacks);
-		if (invalid(rStack)) return null;
-		rStack.stackSize = (int)aAmount;
-		return rStack;
-	}
-	
-	public static ItemStack copyMeta(long aMetaData, Object... aStacks) {
-		ItemStack rStack = copy(aStacks);
-		if (invalid(rStack)) return null;
-		return meta(rStack, aMetaData);
-	}
-	
-	public static ItemStack copyAmountAndMeta(long aAmount, long aMetaData, Object... aStacks) {
-		ItemStack rStack = amount(aAmount, aStacks);
-		if (invalid(rStack)) return null;
-		return meta(rStack, aMetaData);
-	}
-	
-	/**
-	 * returns a copy of an ItemStack with its StackSize being multiplied by aMultiplier
-	 */
-	public static ItemStack mul(long aMultiplier, Object... aStacks) {
-		ItemStack rStack = copy(aStacks);
-		if (rStack == null) return null;
-		rStack.stackSize *= aMultiplier;
-		return rStack;
-	}
-	
-	/**
-	 * returns a copy of an ItemStack with its StackSize being divided by aDivider
-	 */
-	public static ItemStack div(long aDivider, Object... aStacks) {
-		ItemStack rStack = copy(aStacks);
-		if (rStack == null) return null;
-		rStack.stackSize /= aDivider;
-		return rStack;
-	}
-	
 	public static int toInt(ItemStack aStack) {
-		if (invalid(aStack)) return 0;
-		return id(aStack) | (meta(aStack)<<16);
+		return aStack != null && aStack.getItem() != null ? id(aStack) | (meta_(aStack)<<16) : 0;
 	}
 	
 	public static int toIntWildcard(ItemStack aStack) {
-		if (invalid(aStack)) return 0;
-		return id(aStack) | (W<<16);
+		return aStack != null && aStack.getItem() != null ? id(aStack) | (W<<16) : 0;
 	}
 	
 	public static ItemStack toStack(int aStack) {
@@ -447,83 +467,55 @@ public class ST {
 		return rArray;
 	}
 	
-	public static Block block(Object aStack) {
-		if (invalid(aStack)) return NB;
-		return Block.getBlockFromItem(((ItemStack)aStack).getItem());
-	}
-	
-	public static Block block_(Object aStack) {
-		return Block.getBlockFromItem(((ItemStack)aStack).getItem());
-	}
-	
-	public static boolean valid(Object aStack) {
-		return   aStack instanceof ItemStack  && ((ItemStack)aStack).stackSize >= 0 && ((ItemStack)aStack).getItem() != null;
-	}
-	
-	public static boolean invalid(Object aStack) {
-		return !(aStack instanceof ItemStack) || ((ItemStack)aStack).stackSize <  0 || ((ItemStack)aStack).getItem() == null;
-	}
-	
 	public static String configName(ItemStack aStack) {
 		if (invalid(aStack)) return "";
 		Object rName = OreDictManager.INSTANCE.getAssociation_(aStack, T);
 		if (rName != null) return rName.toString();
 		try {if (UT.Code.stringValid(rName = aStack.getUnlocalizedName())) return rName.toString();} catch (Throwable e) {/*Do nothing*/}
-		return aStack.getItem() + "." + meta(aStack);
+		return aStack.getItem() + "." + meta_(aStack);
 	}
-	
 	public static String configNames(ItemStack... aStacks) {
 		String rString = "";
 		for (ItemStack tStack : aStacks) rString += (tStack == null ? "null;" : configName(tStack) + ";");
 		return rString;
 	}
-	
 	public static String regName(ItemStack aStack) {
 		return invalid(aStack) ? "null" : Item.itemRegistry.getNameForObject(aStack.getItem());
 	}
-	
 	public static String names(ItemStack... aStacks) {
 		String rString = "";
 		for (ItemStack tStack : aStacks) rString += (tStack == null ? "null; " : tStack.getDisplayName() + "; ");
 		return rString;
 	}
-	
 	public static String namesAndSizes(ItemStack... aStacks) {
 		String rString = "";
 		for (ItemStack tStack : aStacks) rString += (tStack == null ? "null; " : tStack.getDisplayName() + " " + tStack.stackSize + "; ");
 		return rString;
 	}
 	
+	
 	public static void hide(Item aItem) {
 		hide(aItem, W);
 	}
-	
 	public static void hide(Item aItem, long aMetaData) {
 		hide(make(aItem, 1, aMetaData));
 	}
-	
 	public static void hide(Block aBlock) {
 		hide(aBlock, W);
 	}
-	
 	public static void hide(Block aBlock, long aMetaData) {
 		hide(make(aBlock, 1, aMetaData));
 	}
-	
 	public static void hide(ItemStack aStack) {
 		if (aStack != null) try {codechicken.nei.api.API.hideItem(aStack);} catch(Throwable e) {/**/}
 	}
 	
-	/**
-	 * Loads an ItemStack properly.
-	 */
+	/** Loads an ItemStack properly. */
 	public static ItemStack load(NBTTagCompound aNBT, String aTagName) {
 		return aNBT == null ? null : load(aNBT.getCompoundTag(aTagName));
 	}
 	
-	/**
-	 * Loads an ItemStack properly.
-	 */
+	/** Loads an ItemStack properly. */
 	public static ItemStack load(NBTTagCompound aNBT) {
 		if (aNBT == null || aNBT.hasNoTags()) return null;
 		ItemStack rStack = make(Item.getItemById(aNBT.getShort("id")), aNBT.getInteger("Count"), aNBT.getShort("Damage"), aNBT.hasKey("tag", 10)?aNBT.getCompoundTag("tag"):null);
@@ -532,9 +524,7 @@ public class ST {
 		return update_(OM.get_(rStack));
 	}
 	
-	/**
-	 * Saves an ItemStack properly.
-	 */
+	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, ItemStack aStack) {
 		if (aNBT == null) aNBT = UT.NBT.make();
 		NBTTagCompound tNBT = save(aStack);
@@ -542,16 +532,14 @@ public class ST {
 		return aNBT;
 	}
 	
-	/**
-	 * Saves an ItemStack properly.
-	 */
+	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(ItemStack aStack) {
 		if (invalid(aStack)) return null;
 		NBTTagCompound rNBT = UT.NBT.make();
 		aStack = OM.get_(aStack);
 		rNBT.setShort("id", (short)Item.getIdFromItem(aStack.getItem()));
 		UT.NBT.setNumber(rNBT, "Count", aStack.stackSize);
-		rNBT.setShort("Damage", meta(aStack));
+		rNBT.setShort("Damage", meta_(aStack));
 		if (aStack.hasTagCompound()) rNBT.setTag("tag", aStack.getTagCompound());
 		return rNBT;
 	}

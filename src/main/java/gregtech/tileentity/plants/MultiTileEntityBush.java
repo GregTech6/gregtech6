@@ -261,7 +261,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		short tID = ST.id(mBerry), tMeta = tID>0?ST.meta(mBerry):0;
+		short tID = ST.id(mBerry), tMeta = tID>0?ST.meta_(mBerry):0;
 		return aSendAll ? getClientDataPacketByteArray(aSendAll, getDirectionData(), getVisualData(), UT.Code.toByteS(tID, 0), UT.Code.toByteS(tID, 1), UT.Code.toByteS(tMeta, 0), UT.Code.toByteS(tMeta, 1)) : getClientDataPacketByte(aSendAll, getVisualData());
 	}
 	

@@ -110,7 +110,7 @@ public class MultiItemBooks extends MultiItemRandom {
 	@Override
 	public WeightedRandomChestContent getChestGenBase(ChestGenHooks aChestGenHook, Random aRandom, WeightedRandomChestContent aOriginal) {
 		if (aOriginal.theItemId.hasTagCompound()) return aOriginal;
-		if (ST.meta(aOriginal.theItemId) == 32002 || ST.meta(aOriginal.theItemId) == 32003) return new WeightedRandomChestContent(ST.book(UT.Books.MATERIAL_DICTIONARIES.get(aRandom.nextInt(UT.Books.MATERIAL_DICTIONARIES.size()))), aOriginal.theMinimumChanceToGenerateItem, aOriginal.theMaximumChanceToGenerateItem, aOriginal.itemWeight);
+		if (ST.meta_(aOriginal.theItemId) == 32002 || ST.meta_(aOriginal.theItemId) == 32003) return new WeightedRandomChestContent(ST.book(UT.Books.MATERIAL_DICTIONARIES.get(aRandom.nextInt(UT.Books.MATERIAL_DICTIONARIES.size()))), aOriginal.theMinimumChanceToGenerateItem, aOriginal.theMaximumChanceToGenerateItem, aOriginal.itemWeight);
 		return aOriginal;
 	}
 	
