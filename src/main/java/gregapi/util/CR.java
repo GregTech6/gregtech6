@@ -286,8 +286,7 @@ public class CR {
 	
 	private static boolean shaped(ItemStack aResult, Enchantment[] aEnchantmentsAdded, int[] aEnchantmentLevelsAdded, boolean aMirrored, boolean aBuffered, boolean aKeepNBT, boolean aDismantleable, boolean aRemovable, boolean aReversible, boolean aRemoveAllOthersWithSameOutput, boolean aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, boolean aRemoveAllOtherShapedsWithSameOutput, boolean aRemoveAllOtherNativeRecipes, boolean aCheckForCollisions, boolean aOnlyAddIfThereIsAnyRecipeOutputtingThis, boolean aOnlyAddIfResultIsNotNull, boolean aDeleteOnlyIfNoDyeInvolved, boolean aNotAutoCraftable, Object[] aRecipe) {
 		if (aOnlyAddIfResultIsNotNull && ST.invalid(aResult)) return F;
-		aResult = OM.get(aResult);
-		if (aResult != null && ST.meta_(aResult) == W) ST.meta_(aResult, 0);
+		aResult = ST.validMeta_(OM.get(aResult));
 		if (aRecipe == null || aRecipe.length <= 0) return F;
 		
 		boolean tThereWasARecipe = F;
@@ -346,9 +345,6 @@ public class CR {
 			
 			aRecipe = tRecipeList.toArray();
 			
-			if (aRecipe[idx] instanceof Boolean) {
-				idx++;
-			}
 			HashMap<Character, ItemStack> tItemStackMap = new HashMap<>();
 			HashMap<Character, OreDictItemData> tItemDataMap = new HashMap<>();
 			tItemStackMap.put(' ', null);
@@ -363,29 +359,28 @@ public class CR {
 					}
 					return F;
 				}
-				Character chr = (Character)aRecipe[idx];
-				Object in = aRecipe[idx + 1];
 				
-				if (in instanceof ItemStack) {
-					tItemStackMap.put(chr, ST.copy((ItemStack)in));
-					tItemDataMap.put(chr, OM.data_((ItemStack)in));
+				Character tChar = (Character)aRecipe[idx];
+				Object tInput = aRecipe[idx + 1];
+				
+				if (tInput instanceof ItemStack) {
+					tItemStackMap.put(tChar, ST.copy_((ItemStack)tInput));
+					tItemDataMap .put(tChar, OM.data_((ItemStack)tInput));
 				} else {
-					String tInString = in.toString();
-					OreDictItemData tData = null;
-					
-					if (in instanceof OreDictItemData) {
-						tData = (OreDictItemData)in;
-						in = aRecipe[idx + 1] = tInString;
-					}
-					if (UT.Code.stringValid(tInString)) {
-						OreDictItemData tData2 = OreDictManager.INSTANCE.getAutomaticItemData(tInString);
-						if (tData2 != null) tItemDataMap.put(chr, tData2); else if (tData != null) tItemDataMap.put(chr, tData);
-						
-						ItemStack tStack = OreDictManager.INSTANCE.getFirstOre(tInString, 1);
-						if (tStack == null) tRemoveRecipe = F; else tItemStackMap.put(chr, tStack);
+					String tInputString = tInput.toString();
+					if (tInput instanceof OreDictItemData) {
+						tItemDataMap.put(tChar, (OreDictItemData)tInput);
+						if (UT.Code.stringInvalid(tInputString)) {
+							throw new IllegalArgumentException();
+						}
+					} else if (UT.Code.stringValid(tInputString)) {
+						tItemDataMap.put(tChar, OreDictManager.INSTANCE.getAutomaticItemData(tInputString));
 					} else {
 						throw new IllegalArgumentException();
 					}
+					ItemStack tStack = OreDictManager.INSTANCE.getFirstOre(tInputString, 1);
+					if (tStack == null) tRemoveRecipe = F; else tItemStackMap.put(tChar, tStack);
+					aRecipe[idx + 1] = tInputString;
 				}
 			}
 			
@@ -425,15 +420,17 @@ public class CR {
 			}
 		}
 		
-		if (ST.meta_(aResult) == W || ST.meta_(aResult) < 0) ST.meta_(aResult, 0);
+		aResult = ST.update_(aResult);
 		
-		ST.update(aResult);
+		DEB.println("-----");
+		for (Object tObject : aRecipe) DEB.println(tObject.getClass());
+		DEB.println("-----");
 		
 		if (tThereWasARecipe || !aOnlyAddIfThereIsAnyRecipeOutputtingThis) {
 			if (sBufferCraftingRecipes && aBuffered)
-				sBufferRecipeList.add(new AdvancedCraftingShaped(ST.copy(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
+				sBufferRecipeList.add (new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
 			else
-				GameRegistry.addRecipe(new AdvancedCraftingShaped(ST.copy(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
+				GameRegistry.addRecipe(new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
 		}
 		return T;
 	}

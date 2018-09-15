@@ -83,10 +83,10 @@ public class ST {
 	}
 	
 	public static boolean valid(ItemStack aStack) {
-		return aStack.stackSize >= 0 && aStack.getItem() != null;
+		return aStack != null && aStack.stackSize >= 0 && aStack.getItem() != null;
 	}
 	public static boolean invalid(ItemStack aStack) {
-		return aStack.stackSize <  0 || aStack.getItem() == null;
+		return aStack == null || aStack.stackSize <  0 || aStack.getItem() == null;
 	}
 	
 	public static short id(Item aItem) {
