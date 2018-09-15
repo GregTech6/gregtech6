@@ -422,10 +422,6 @@ public class CR {
 		
 		aResult = ST.update_(aResult);
 		
-		DEB.println("-----");
-		for (Object tObject : aRecipe) DEB.println(tObject.getClass());
-		DEB.println("-----");
-		
 		if (tThereWasARecipe || !aOnlyAddIfThereIsAnyRecipeOutputtingThis) {
 			if (sBufferCraftingRecipes && aBuffered)
 				sBufferRecipeList.add (new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
@@ -445,7 +441,8 @@ public class CR {
 	private static boolean shapeless(ItemStack aResult, Enchantment[] aEnchantmentsAdded, int[] aEnchantmentLevelsAdded, boolean aBuffered, boolean aKeepNBT, boolean aDismantleable, boolean aRemovable, boolean aNotAutoCraftable, boolean aRemoveAllOthersWithSameOutput, boolean aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, boolean aRemoveAllOtherShapedsWithSameOutput, boolean aRemoveAllOtherNativeRecipes, Object[] aRecipe) {
 		if (aRecipe == null || aRecipe.length <= 0) return F;
 		if (aRecipe.length > 9) throw new IllegalArgumentException("Shapeless Recipe has more than 9 Inputs! This would crash NEI!");
-		aResult = OM.get(aResult);
+		
+		aResult = ST.validMeta_(OM.get(aResult));
 		for (byte i = 0; i < aRecipe.length; i++) {
 			if (aRecipe[i] instanceof IItemContainer)
 				aRecipe[i] = ((IItemContainer)aRecipe[i]).get(1);
@@ -485,8 +482,6 @@ public class CR {
 		if (aResult == null || aResult.stackSize <= 0) return F;
 		
 		if (aRemoveAllOthersWithSameOutput || aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT || aRemoveAllOtherShapedsWithSameOutput || aRemoveAllOtherNativeRecipes) remout(aResult, !aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, aRemoveAllOtherShapedsWithSameOutput, aRemoveAllOtherNativeRecipes, T);
-		
-		if (ST.meta_(aResult) == W || ST.meta_(aResult) < 0) ST.meta_(aResult, 0);
 		
 		ST.update(aResult);
 		

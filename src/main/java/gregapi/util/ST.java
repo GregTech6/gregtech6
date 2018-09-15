@@ -90,7 +90,7 @@ public class ST {
 	}
 	
 	public static short id(Item aItem) {
-		return aItem == null ? 0 : (short)Item.getIdFromItem(aItem);
+		return aItem  == null ? 0 : (short)Item.getIdFromItem(aItem);
 	}
 	public static short id(ItemStack aStack) {
 		return aStack == null ? 0 : id(aStack.getItem());
@@ -143,7 +143,7 @@ public class ST {
 	}
 	
 	public static ItemStack copy (ItemStack aStack) {
-		return aStack != null && aStack.getItem() != null ? copy_(aStack) : null;
+		return aStack == null || aStack.getItem() == null ? null : copy_(aStack);
 	}
 	public static ItemStack copy_(ItemStack aStack) {
 		return aStack.copy();
