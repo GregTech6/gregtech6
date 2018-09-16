@@ -40,6 +40,11 @@ public final class ModData implements ICondition<ITagDataContainer<?>> {
 		MODS.add(this);
 	}
 	
+	public ModData setLoaded(boolean aLoaded) {
+		mLoaded = aLoaded;
+		return this;
+	}
+	
 	@Override
 	public String toString() {
 		return mID;

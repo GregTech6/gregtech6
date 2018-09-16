@@ -186,7 +186,7 @@ public class GT_API extends Abstract_Mod {
 		OP.ore.toString();
 		
 		Textures.BlockIcons.VOID.toString();
-		Textures.ItemIcons.VOID.toString();
+		Textures.ItemIcons .VOID.toString();
 		
 		try {
 			DW = new DummyWorld();
@@ -242,9 +242,13 @@ public class GT_API extends Abstract_Mod {
 		Blocks.monster_egg.setHarvestLevel("pickaxe", 0);
 		Blocks.obsidian.setHarvestLevel("pickaxe", 3);
 		
-		Material.tnt.setAdventureModeExempt();
-	//  UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
-	//  UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
+		try {
+			// The Access Transformer should make this work
+			Material.tnt.setAdventureModeExempt();
+		} catch(Throwable e) {
+			UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
+			UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
+		}
 		
 		Set<Block> tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
 		tSet.add(Blocks.bed);

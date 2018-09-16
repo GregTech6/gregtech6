@@ -20,6 +20,7 @@
 package gregtech;
 
 import static gregapi.data.CS.*;
+import static gregapi.util.CR.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.IItemContainer;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
+import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
 import gregapi.data.CS.DirectoriesGT;
 import gregapi.data.CS.FluidsGT;
@@ -59,6 +61,7 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
@@ -79,6 +82,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.blocks.fluids.BlockOcean;
+import gregtech.compat.*;
 import gregtech.entities.projectiles.EntityArrow_Material;
 import gregtech.entities.projectiles.EntityArrow_Potion;
 import gregtech.items.tools.early.GT_Tool_Scoop;
@@ -91,7 +95,6 @@ import gregtech.loaders.b.Loader_MultiTileEntities;
 import gregtech.loaders.b.Loader_OreProcessing;
 import gregtech.loaders.b.Loader_Worldgen;
 import gregtech.loaders.c.*;
-import gregtech.loaders.c.mod.*;
 import ic2.core.Ic2Items;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -210,6 +213,98 @@ public class GT_Mod extends Abstract_Mod {
 //      new Loader_CircuitBehaviors().run();
 //      new Loader_CoverBehaviors().run();
 //      new Loader_Sonictron().run();
+		
+		new CompatMods(MD.MC, this) {@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
+			// Clearing the AE Grindstone Recipe List.
+			if (MD.AE.mLoaded) AEApi.instance().registries().grinder().getRecipes().clear();
+			
+			for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
+			
+			ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
+				new Loader_BlockResistance(),
+				new Loader_Fuels(),
+				new Loader_Crops(),
+				new Loader_Loot(),
+				
+				new Loader_Recipes_Woods(), // has to be before Vanilla!
+				new Loader_Recipes_Vanilla(), // has to be after Woods!
+				new Loader_Recipes_Temporary(),
+				new Loader_Recipes_Chem(),
+				new Loader_Recipes_Crops(),
+				new Loader_Recipes_Potions(),
+				new Loader_Recipes_Food(),
+				new Loader_Recipes_Ores(),
+				new Loader_Recipes_Alloys(),
+				new Loader_Recipes_Other(),
+				
+				new Loader_Recipes_Extruder()
+			);
+			
+			for (Runnable tRunnable : tList) try {
+				tRunnable.run();
+			} catch(Throwable e) {e.printStackTrace(ERR);}
+		}};
+		
+		new Compat_Recipes_Ganys                (MD.GAPI          , this);
+		new Compat_Recipes_Chisel               (MD.CHSL          , this);
+		new Compat_Recipes_IndustrialCraft      (MD.IC2           , this);
+		new Compat_Recipes_IndustrialCraft_Scrap(MD.IC2           , this);
+		new Compat_Recipes_BuildCraft           (MD.BC            , this);
+		new Compat_Recipes_Railcraft            (MD.RC            , this); // has to be before MFR!
+		new Compat_Recipes_ThermalExpansion     (MD.TE_FOUNDATION , this);
+		new Compat_Recipes_Forestry             (MD.FR            , this);
+		new Compat_Recipes_MagicBees            (MD.FRMB          , this);
+		new Compat_Recipes_Binnie               (MD.BINNIE        , this);
+		new Compat_Recipes_BetterRecords        (MD.BETTER_RECORDS, this);
+		new Compat_Recipes_BalkonsWeaponMod     (MD.BWM           , this);
+		new Compat_Recipes_OpenModularTurrets   (MD.OMT           , this);
+		new Compat_Recipes_TechGuns             (MD.TG            , this);
+		new Compat_Recipes_Atum                 (MD.ATUM          , this);
+		new Compat_Recipes_JABBA                (MD.JABBA         , this);
+		new Compat_Recipes_Factorization        (MD.FZ            , this);
+		new Compat_Recipes_MineFactoryReloaded  (MD.MFR           , this); // Has to be after RC!
+		new Compat_Recipes_AppliedEnergistics   (MD.AE            , this);
+		new Compat_Recipes_Bluepower            (MD.BP            , this);
+		new Compat_Recipes_ProjectRed           (MD.PR            , this);
+		new Compat_Recipes_ProjectE             (MD.PE            , this);
+		new Compat_Recipes_GrowthCraft          (MD.GrC           , this);
+		new Compat_Recipes_HarvestCraft         (MD.HaC           , this);
+		new Compat_Recipes_MoCreatures          (MD.MoCr          , this);
+		new Compat_Recipes_Lycanites            (MD.LycM          , this);
+		new Compat_Recipes_Erebus               (MD.ERE           , this);
+		new Compat_Recipes_Betweenlands         (MD.BTL           , this);
+		new Compat_Recipes_TwilightForest       (MD.TF            , this);
+		new Compat_Recipes_Enviromine           (MD.ENVM          , this);
+		new Compat_Recipes_ExtraBiomesXL        (MD.EBXL          , this);
+		new Compat_Recipes_BiomesOPlenty        (MD.BoP           , this);
+		new Compat_Recipes_Highlands            (MD.HiL           , this);
+		new Compat_Recipes_Mariculture          (MD.MaCu          , this);
+		new Compat_Recipes_ImmersiveEngineering (MD.IE            , this);
+		new Compat_Recipes_Reika                (MD.DRGN          , this);
+		new Compat_Recipes_Mekanism             (MD.Mek           , this);
+		new Compat_Recipes_GalactiCraft         (MD.GC            , this);
+		new Compat_Recipes_Mystcraft            (MD.MYST          , this);
+		new Compat_Recipes_Thaumcraft           (MD.TC            , this);
+		new Compat_Recipes_ForbiddenMagic       (MD.TCFM          , this);
+		new Compat_Recipes_ArsMagica            (MD.ARS           , this);
+		new Compat_Recipes_Botania              (MD.BOTA          , this);
+		new Compat_Recipes_Aether               (MD.AETHER        , this);
+		new Compat_Recipes_RandomThings         (MD.RT            , this);
+		new Compat_Recipes_ActuallyAdditions    (MD.AA            , this);
+		new Compat_Recipes_ExtraUtilities       (MD.ExU           , this);
+		new Compat_Recipes_WRCBE                (MD.WR_CBE_C      , this);
+		
+		new CompatMods(MD.GT, this) {@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
+			ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
+				new Loader_Recipes_Replace(),
+				new Loader_Recipes_Copy(),
+				new Loader_Recipes_Decomp(),
+				new Loader_Recipes_Handlers()
+			);
+			for (Runnable tRunnable : tList) try {
+				tRunnable.run();
+			} catch(Throwable e) {e.printStackTrace(ERR);}
+		}};
 	}
 	
 	@Override
@@ -230,99 +325,24 @@ public class GT_Mod extends Abstract_Mod {
 	
 	@Override
 	public void onModPostInit2(FMLPostInitializationEvent aEvent) {
-		// Clearing the AE Grindstone Recipe List.
-		if (MD.AE.mLoaded) AEApi.instance().registries().grinder().getRecipes().clear();
-		
-		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
-		
-		new Loader_BlockResistance().run();
-		new Loader_Fuels().run();
-		new Loader_Crops().run();
-		new Loader_Loot().run();
-		
-		// Doing all the Recipe Additions.
-		
-		ArrayListNoNulls<Thread> tThreadList = new ArrayListNoNulls<>(F
-		, new Thread(new Loader_Recipes_Extruder())
-		);
-		
-		for (Thread tThread : tThreadList) tThread.start();
-		
-		ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
-			new Loader_Recipes_Woods(), // has to be before Vanilla!
-			new Loader_Recipes_Vanilla(), // has to be after Woods!
-			new Loader_Recipes_Temporary(),
-			new Loader_Recipes_Chem(),
-			new Loader_Recipes_Crops(),
-			new Loader_Recipes_Potions(),
-			new Loader_Recipes_Food(),
-			new Loader_Recipes_Ores(),
-			new Loader_Recipes_Alloys(),
-			new Loader_Recipes_Other(),
+		if (!MD.RC.mLoaded) {
+			CR.shaped(ST.make(Blocks.rail          ,  4, 0), DEF_REV_NCC | DEL_OTHER_SHAPED_RECIPES, "RSR", "RSR", "RSR", 'R', OP.railGt.dat(ANY.Fe), 'S', OP.stick.dat(MT.WoodSealed));
+			CR.shaped(ST.make(Blocks.golden_rail   ,  4, 0), DEF_REV_NCC | DEL_OTHER_SHAPED_RECIPES, "RSR", "GDG", "RSR", 'R', OP.railGt.dat(ANY.Fe), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'G', OP.railGt.dat(MT.Au));
+			CR.shaped(ST.make(Blocks.detector_rail ,  4, 0), DEF_REV_NCC | DEL_OTHER_SHAPED_RECIPES, "RSR", "RPR", "RDR", 'R', OP.railGt.dat(ANY.Fe), 'S', OP.stick.dat(MT.WoodSealed), 'D', OD.itemRedstone, 'P', ST.make(Blocks.stone_pressure_plate, 1, W));
 			
-			new Loader_Recipes_Chisel(),
-			new Loader_Recipes_Ganys(),
-			new Loader_Recipes_IndustrialCraft(),
-			new Loader_Recipes_IndustrialCraft_Scrap(),
-			new Loader_Recipes_BuildCraft(),
-			new Loader_Recipes_Railcraft(), // has to be before MFR!
-			new Loader_Recipes_ThermalExpansion(),
-			new Loader_Recipes_Forestry(),
-			new Loader_Recipes_MagicBees(),
-			new Loader_Recipes_Binnie(),
-			new Loader_Recipes_BetterRecords(),
-			new Loader_Recipes_BalkonsWeaponMod(),
-			new Loader_Recipes_OpenModularTurrets(),
-			new Loader_Recipes_TechGuns(),
-			new Loader_Recipes_Atum(),
-			new Loader_Recipes_JABBA(),
-			new Loader_Recipes_Factorization(),
-			new Loader_Recipes_MineFactoryReloaded(), // Has to be after RC!
-			new Loader_Recipes_AppliedEnergistics(),
-			new Loader_Recipes_Bluepower(),
-			new Loader_Recipes_ProjectRed(),
-			new Loader_Recipes_ProjectE(),
-			new Loader_Recipes_GrowthCraft(),
-			new Loader_Recipes_HarvestCraft(),
-			new Loader_Recipes_MoCreatures(),
-			new Loader_Recipes_Lycanite(),
-			new Loader_Recipes_Erebus(),
-			new Loader_Recipes_Betweenlands(),
-			new Loader_Recipes_TwilightForest(),
-			new Loader_Recipes_Enviromine(),
-			new Loader_Recipes_ExtraBiomesXL(),
-			new Loader_Recipes_BiomesOPlenty(),
-			new Loader_Recipes_Highlands(),
-			new Loader_Recipes_Mariculture(),
-			new Loader_Recipes_ImmersiveEngineering(),
-			new Loader_Recipes_Reika(),
-			new Loader_Recipes_Mekanism(),
-			new Loader_Recipes_GalactiCraft(),
-			new Loader_Recipes_Mystcraft(),
-			new Loader_Recipes_Thaumcraft(),
-			new Loader_Recipes_ForbiddenMagic(),
-			new Loader_Recipes_ArsMagica(),
-			new Loader_Recipes_Botania(),
-			new Loader_Recipes_Aether(),
-			new Loader_Recipes_RandomThings(),
-			new Loader_Recipes_ActuallyAdditions(),
-			new Loader_Recipes_ExtraUtilities(),
-			new Loader_Recipes_WRCBE(),
-			
-			new Loader_Recipes_Replace(),
-			new Loader_Recipes_Copy(),
-			new Loader_Recipes_Decomp(),
-			new Loader_Recipes_Handlers()
-		);
-		
-		for (Runnable tRunnable : tList) try {
-			tRunnable.run();
-		} catch(Throwable e) {e.printStackTrace(ERR);}
+			CR.shaped(ST.make(Blocks.activator_rail,  1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.Al             ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail,  1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.Bronze         ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail,  2, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(ANY.Fe            ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail,  3, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(ANY.Steel         ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail,  4, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.StainlessSteel ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail,  6, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.Ti             ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail,  6, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(ANY.W             ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail, 12, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.TungstenSteel  ), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+			CR.shaped(ST.make(Blocks.activator_rail, 12, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "RSR", "RTR", "RSR", 'R', OP.railGt.dat(MT.TungstenCarbide), 'S', OP.stick.dat(MT.WoodSealed), 'T', OD.craftingRedstoneTorch);
+		}
 		
 		ItemStack tLignite = ST.make(MD.UB, "ligniteCoal", 1, 0);
 		if (ST.valid(tLignite)) CR.remove(tLignite, tLignite, tLignite, tLignite, tLignite, tLignite, tLignite, tLignite, tLignite);
-		
-		for (Thread tThread : tThreadList) try {tThread.join();} catch (InterruptedException e) {e.printStackTrace(ERR);}
 		
 		Block tBlock = ST.block(MD.FR, "beehives", NB);
 		if (tBlock != NB) {tBlock.setHarvestLevel("scoop", 0); GT_Tool_Scoop.sBeeHiveMaterial = tBlock.getMaterial();}

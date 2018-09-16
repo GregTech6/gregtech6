@@ -19,6 +19,8 @@
 
 package gregapi.data;
 
+import static gregapi.data.CS.*;
+
 import gregapi.code.ModData;
 import gregapi.data.CS.ModIDs;
 
@@ -26,8 +28,7 @@ import gregapi.data.CS.ModIDs;
  * @author Gregorius Techneticies
  */
 public class MD {
-	public static final ModData
-	  MC                = new ModData(ModIDs.MC                 , "Minecraft")
+	public static final ModData MC = new ModData(ModIDs.MC, "Minecraft").setLoaded(T)
 	
 	, GT                = new ModData(ModIDs.GT                 , "GregTech")
 	, GAPI              = new ModData(ModIDs.GAPI               , "Greg-API")
