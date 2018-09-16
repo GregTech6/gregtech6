@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.old;
+package gregapi.old;
 
 import static gregapi.data.CS.*;
 

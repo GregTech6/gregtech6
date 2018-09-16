@@ -17,62 +17,52 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.old;
+package gregapi.old;
 
-import gregapi.old.GT_CircuitryBehavior;
-import gregapi.old.IRedstoneCircuitBlock;
-
-public class GT_Circuit_RedstoneMeter extends GT_CircuitryBehavior {
-	public GT_Circuit_RedstoneMeter(int aIndex) {
+public class GT_Circuit_BitAnd extends GT_CircuitryBehavior {
+	
+	public GT_Circuit_BitAnd(int aIndex) {
 		super(aIndex);
 	}
 	
 	@Override
 	public void initParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		aCircuitData[0] =  1;
-		aCircuitData[1] = 15;
-		aCircuitData[2] =  0;
-		aCircuitData[3] = 15;
+		aCircuitData[0] = 0;
+		aCircuitData[1] = 0;
+		aCircuitData[2] = 0;
+		aCircuitData[3] = 0;
 	}
 	
 	@Override
 	public void validateParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		if (aCircuitData[0] <  0) aCircuitData[0] =  0;
-		if (aCircuitData[0] > 15) aCircuitData[0] = 15;
-		if (aCircuitData[1] <  0) aCircuitData[1] =  0;
-		if (aCircuitData[1] > 15) aCircuitData[1] = 15;
-		if (aCircuitData[1] < aCircuitData[0]) aCircuitData[1] = aCircuitData[0];
-		if (aCircuitData[2] <  0) aCircuitData[2] =  0;
-		if (aCircuitData[2] >  1) aCircuitData[2] =  1;
-		if (aCircuitData[3] <  0) aCircuitData[3] =  0;
-		if (aCircuitData[3] > 15) aCircuitData[3] = 15;
+		if (aCircuitData[0] < 0) aCircuitData[0] = 0;
+		if (aCircuitData[1] < 0) aCircuitData[1] = 0;
+		if (aCircuitData[2] < 0) aCircuitData[2] = 0;
+		if (aCircuitData[3] < 0) aCircuitData[3] = 0;
+		if (aCircuitData[0] > 1) aCircuitData[0] = 1;
+		if (aCircuitData[1] > 1) aCircuitData[1] = 1;
+		if (aCircuitData[2] > 1) aCircuitData[2] = 1;
+		if (aCircuitData[3] > 1) aCircuitData[3] = 1;
 	}
 	
 	@Override
 	public void onTick(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		byte tRedstone = getStrongestRedstone(aRedstoneCircuitBlock);
-		aRedstoneCircuitBlock.setRedstone((tRedstone>=aCircuitData[0]&&tRedstone<=aCircuitData[1])!=(aCircuitData[2]!=0)?(byte)aCircuitData[3]:0, aRedstoneCircuitBlock.getOutputFacing());
+		aRedstoneCircuitBlock.setRedstone(((getStrongestRedstone(aRedstoneCircuitBlock) & (aCircuitData[0] | (aCircuitData[1]<<1) | (aCircuitData[2]<<2) | (aCircuitData[3]<<3))) != 0 ? (byte)15 : 0), aRedstoneCircuitBlock.getOutputFacing());
 	}
 	
 	@Override
 	public String getName() {
-		return "Redstone Meter";
+		return "Hardcode Bit-AND";
 	}
 	
 	@Override
 	public String getDescription() {
-		return "Checks Boundaries";
+		return "( signal & this ) != 0";
 	}
 	
 	@Override
 	public String getDataDescription(int[] aCircuitData, int aCircuitDataIndex) {
-		switch(aCircuitDataIndex) {
-		case  0: return "Lower";
-		case  1: return "Upper";
-		case  2: return "Invert:";
-		case  3: return "RS Out:";
-		}
-		return "";
+		return "Bit " + aCircuitDataIndex + ":";
 	}
 	
 	@Override
@@ -82,7 +72,6 @@ public class GT_Circuit_RedstoneMeter extends GT_CircuitryBehavior {
 	
 	@Override
 	public String getDataDisplay(int[] aCircuitData, int aCircuitDataIndex) {
-		if (aCircuitDataIndex == 2) return aCircuitData[2]==0?"OFF":"ON";
-		return null;
+		return aCircuitData[aCircuitDataIndex]==0?"OFF":"ON";
 	}
 }

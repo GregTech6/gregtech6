@@ -17,14 +17,11 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.old;
+package gregapi.old;
 
-import gregapi.old.GT_CircuitryBehavior;
-import gregapi.old.IRedstoneCircuitBlock;
-
-public class GT_Circuit_Randomizer extends GT_CircuitryBehavior {
+public class GT_Circuit_Repeater extends GT_CircuitryBehavior {
 	
-	public GT_Circuit_Randomizer(int aIndex) {
+	public GT_Circuit_Repeater(int aIndex) {
 		super(aIndex);
 	}
 	
@@ -32,54 +29,54 @@ public class GT_Circuit_Randomizer extends GT_CircuitryBehavior {
 	public void initParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
 		aCircuitData[0] = 1;
 		aCircuitData[4] = 0;
+		aCircuitData[5] =-1;
 	}
 	
 	@Override
 	public void validateParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
 		if (aCircuitData[0] < 1) aCircuitData[0] = 1;
-		if (aCircuitData[3] < 0) aCircuitData[3] = 0;
-		if (aCircuitData[3] > 1) aCircuitData[3] = 1;
 		if (aCircuitData[4] < 0) aCircuitData[4] = 0;
+		if (aCircuitData[5] <-1) aCircuitData[5] =-1;
 	}
 	
 	@Override
 	public void onTick(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock) {
-		if (aCircuitData[3] == 1) {
-			if (getAnyRedstone(aRedstoneCircuitBlock)) {
-				aCircuitData[4]++;
-			} else {
-				aCircuitData[4] = 0;
-			}
-		} else {
-			if (getAnyRedstone(aRedstoneCircuitBlock)) {
-				aCircuitData[4] = 0;
-			} else {
-				aCircuitData[4]++;
+		if (getAnyRedstone(aRedstoneCircuitBlock)) {
+			aCircuitData[4]++;
+			if (aCircuitData[5] < 0) {
+				aCircuitData[5] = 0;
 			}
 		}
-		
-		if (aCircuitData[4]>=aCircuitData[0]) {
-			aCircuitData[4] = 0;
-			aRedstoneCircuitBlock.setRedstone((byte)aRedstoneCircuitBlock.getRandom(16), aRedstoneCircuitBlock.getOutputFacing());
+		if (aCircuitData[5] >= 0 && aCircuitData[5] < aCircuitData[0]) {
+			aCircuitData[5]++;
+		}
+		if (aCircuitData[4] > 0) {
+			if (aCircuitData[5]>=aCircuitData[0]) {
+				aCircuitData[4]--;
+				aRedstoneCircuitBlock.setRedstone((byte)15, aRedstoneCircuitBlock.getOutputFacing());
+			} else {
+				aRedstoneCircuitBlock.setRedstone((byte) 0, aRedstoneCircuitBlock.getOutputFacing());
+			}
+		} else {
+			aRedstoneCircuitBlock.setRedstone((byte) 0, aRedstoneCircuitBlock.getOutputFacing());
+			aCircuitData[5] = -1;
 		}
 	}
 	
 	@Override
 	public String getName() {
-		return "Randomizer";
+		return "Repeater";
 	}
 	
 	@Override
 	public String getDescription() {
-		return "Randomizes Redstone";
+		return "Delays RS-Signal";
 	}
 	
 	@Override
 	public String getDataDescription(int[] aCircuitData, int aCircuitDataIndex) {
 		switch(aCircuitDataIndex) {
 		case  0: return "Delay";
-		case  3: return aCircuitData[aCircuitDataIndex]==1?"RS => ON":"RS => OFF";
-		case  4: return "Status";
 		}
 		return "";
 	}
@@ -91,7 +88,7 @@ public class GT_Circuit_Randomizer extends GT_CircuitryBehavior {
 	
 	@Override
 	public String getDataDisplay(int[] aCircuitData, int aCircuitDataIndex) {
-		if (aCircuitDataIndex != 0) return "";
+		if (aCircuitDataIndex > 0) return "";
 		return null;
 	}
 }

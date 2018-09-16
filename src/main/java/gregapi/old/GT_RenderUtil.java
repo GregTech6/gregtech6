@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.render;
+package gregapi.old;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;

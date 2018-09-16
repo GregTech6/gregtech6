@@ -17,10 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.old;
-
-import gregapi.old.GT_CircuitryBehavior;
-import gregapi.old.IRedstoneCircuitBlock;
+package gregapi.old;
 
 public class GT_Circuit_Pulser extends GT_CircuitryBehavior {
 	
