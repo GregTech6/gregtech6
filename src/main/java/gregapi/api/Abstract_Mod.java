@@ -31,6 +31,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.compat.ICompat;
 import gregapi.util.CR;
 import gregapi.util.UT;
 
@@ -89,6 +90,9 @@ public abstract class Abstract_Mod {
 	mBeforeServerStopping   = new ArrayListNoNulls<>(), mAfterServerStopping = new ArrayListNoNulls<>(),
 	mBeforeServerStopped    = new ArrayListNoNulls<>(), mAfterServerStopped  = new ArrayListNoNulls<>();
 	
+	public final List<ICompat>
+	mCompatClasses          = new ArrayListNoNulls<>();
+	
 	public Abstract_Mod() {
 		sModCountUsingGTAPI++;
 		MODS_USING_GT_API.add(this);
@@ -122,6 +126,7 @@ public abstract class Abstract_Mod {
 	@Override public String toString() {return getModID();}
 	
 	public void loadRunnables(String aName, List<Runnable> aList) {
+		if (aList.isEmpty()) return;
 		UT.LoadingBar.start(aName, aList.size());
 		for (Runnable tRunnable : aList) {
 			String tString = tRunnable.toString();
@@ -160,6 +165,16 @@ public abstract class Abstract_Mod {
 			OUT.println(getModNameForLog() + ": PreInit-Phase finished!");
 			ORD.println(getModNameForLog() + ": PreInit-Phase finished!");
 			
+			if (!mCompatClasses.isEmpty()) {
+				UT.LoadingBar.start("Loading Compat (PreInit)", mCompatClasses.size());
+				for (ICompat tCompat : mCompatClasses) {
+					String tString = tCompat.toString();
+					UT.LoadingBar.step(UT.Code.stringValid(tString)?tString:"UNNAMED");
+					try {tCompat.onPreLoad(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
+				}
+				UT.LoadingBar.finish();
+			}
+			
 			loadRunnables("After PreInit", mAfterPreInit); mAfterPreInit.clear(); mAfterPreInit = null;
 			
 			loadRunnables("Saving Configs", sConfigs);
@@ -194,6 +209,16 @@ public abstract class Abstract_Mod {
 			
 			OUT.println(getModNameForLog() + ": Init-Phase finished!");
 			ORD.println(getModNameForLog() + ": Init-Phase finished!");
+			
+			if (!mCompatClasses.isEmpty()) {
+				UT.LoadingBar.start("Loading Compat (Init)", mCompatClasses.size());
+				for (ICompat tCompat : mCompatClasses) {
+					String tString = tCompat.toString();
+					UT.LoadingBar.step(UT.Code.stringValid(tString)?tString:"UNNAMED");
+					try {tCompat.onLoad(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
+				}
+				UT.LoadingBar.finish();
+			}
 			
 			loadRunnables("After Init", mAfterInit); mAfterInit.clear(); mAfterInit = null;
 			
@@ -230,6 +255,16 @@ public abstract class Abstract_Mod {
 			OUT.println(getModNameForLog() + ": PostInit-Phase finished!");
 			ORD.println(getModNameForLog() + ": PostInit-Phase finished!");
 			
+			if (!mCompatClasses.isEmpty()) {
+				UT.LoadingBar.start("Loading Compat (PostInit)", mCompatClasses.size());
+				for (ICompat tCompat : mCompatClasses) {
+					String tString = tCompat.toString();
+					UT.LoadingBar.step(UT.Code.stringValid(tString)?tString:"UNNAMED");
+					try {tCompat.onPostLoad(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
+				}
+				UT.LoadingBar.finish();
+			}
+			
 			loadRunnables("After PostInit", mAfterPostInit); mAfterPostInit.clear(); mAfterPostInit = null;
 			
 			loadRunnables("Finalize", mFinalize); mFinalize.clear(); mFinalize = null;
@@ -258,6 +293,7 @@ public abstract class Abstract_Mod {
 		mStartedServerStarting++;
 		if (mProxy != null) mProxy.onProxyBeforeServerStarting(this, aEvent);
 		onModServerStarting2(aEvent);
+		for (ICompat tCompat : mCompatClasses) try {tCompat.onServerStarting(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 		if (mProxy != null) mProxy.onProxyAfterServerStarting(this, aEvent);
 		mFinishedServerStarting++;
 		loadRunnables(mAfterServerStarting);
@@ -268,6 +304,7 @@ public abstract class Abstract_Mod {
 		mStartedServerStarted++;
 		if (mProxy != null) mProxy.onProxyBeforeServerStarted(this, aEvent);
 		onModServerStarted2(aEvent);
+		for (ICompat tCompat : mCompatClasses) try {tCompat.onServerStarted(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 		if (mProxy != null) mProxy.onProxyAfterServerStarted(this, aEvent);
 		mFinishedServerStarted++;
 		loadRunnables(mAfterServerStarted);
@@ -278,6 +315,7 @@ public abstract class Abstract_Mod {
 		mStartedServerStopping++;
 		if (mProxy != null) mProxy.onProxyBeforeServerStopping(this, aEvent);
 		onModServerStopping2(aEvent);
+		for (ICompat tCompat : mCompatClasses) try {tCompat.onServerStopping(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 		if (mProxy != null) mProxy.onProxyAfterServerStopping(this, aEvent);
 		mFinishedServerStopping++;
 		loadRunnables(mAfterServerStopping);
@@ -288,6 +326,7 @@ public abstract class Abstract_Mod {
 		mStartedServerStopped++;
 		if (mProxy != null) mProxy.onProxyBeforeServerStopped(this, aEvent);
 		onModServerStopped2(aEvent);
+		for (ICompat tCompat : mCompatClasses) try {tCompat.onServerStopped(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 		if (mProxy != null) mProxy.onProxyAfterServerStopped(this, aEvent);
 		mFinishedServerStopped++;
 		loadRunnables(mAfterServerStopped);

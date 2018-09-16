@@ -3206,7 +3206,7 @@ public class UT {
 		
 		@SuppressWarnings("deprecation")
 		public static boolean start(String aName, int aSize) {
-			if (mBar == null && mEnabled) {
+			if (mBar == null && mEnabled && aSize > 0) {
 				try {
 					mBar = cpw.mods.fml.common.ProgressManager.push(aName, aSize);
 					mSize = aSize;
