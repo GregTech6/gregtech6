@@ -328,7 +328,7 @@ public class LoaderItemList implements Runnable {
 		IL.IE_Blueprint_Projectiles_Specialized .set(ST.make(MD.IE, "blueprint"                             , 1, 1), new OreDictItemData(MT.Paper, 3*U));
 		IL.IE_Blueprint_Projectiles_Electrodes  .set(ST.make(MD.IE, "blueprint"                             , 1, 2), new OreDictItemData(MT.Paper, 3*U));
 		IL.IE_Treated_Planks                    .set(ST.make(MD.IE, "treatedWood"                           , 1, 0), new OreDictItemData(MT.WoodSealed, U));
-		IL.IE_Treated_Slabs                     .set(ST.make(MD.IE, "woodenDecoration"                      , 1, 2), new OreDictItemData(MT.WoodSealed, U2));
+		IL.IE_Treated_Slab                      .set(ST.make(MD.IE, "woodenDecoration"                      , 1, 2), new OreDictItemData(MT.WoodSealed, U2));
 		IL.IE_Treated_Stairs                    .set(ST.make(MD.IE, "woodenStairs"                          , 1, 0), new OreDictItemData(MT.WoodSealed, 3*U4));
 		
 		IL.Myst_Ink_Vial                        .set(ST.make(MD.MYST, "vial"                                , 1, 0));
@@ -401,6 +401,9 @@ public class LoaderItemList implements Runnable {
 		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemFertilizer);
 		IL.ERE_Gaean_Gem                        .set(ST.make(MD.ERE, "materials"                            , 1,39));
 		IL.ERE_Gaean_Staff                      .set(ST.make(MD.ERE, "portalActivator"                      , 1, 0));
+		IL.ERE_White_Plank                      .set(ST.make(MD.ERE, "planks"              					, 1, 7));
+		IL.ERE_White_Slab                       .set(ST.make(MD.ERE, "slabPlanksWhite"    					, 1, 0));
+		IL.ERE_White_Stairs                     .set(ST.make(MD.ERE, "plankStairWhite"   					, 1, 0));
 		
 		IL.BTL_Swamp_Talisman                   .set(ST.make(MD.BTL, "swampTalisman"                        , 1, 0));
 		IL.BTL_Tainted_Potion                   .set(ST.make(MD.BTL, "taintedPotion"                        , 1, 0));

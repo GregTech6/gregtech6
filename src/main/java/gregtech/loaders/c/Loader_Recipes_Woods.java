@@ -21,6 +21,8 @@ package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
@@ -33,11 +35,13 @@ import gregapi.recipes.GT_ModHandler;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import gregapi.wooddict.BeamEntry;
 import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Woods implements Runnable {
 	public static FL[] OILS = {FL.Oil_Seed, FL.Oil_Lin, FL.Oil_Hemp, FL.Oil_Nut, FL.Oil_Olive, FL.Oil_Sunflower, FL.Oil_Creosote};
@@ -82,8 +86,8 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0] , 1, i), FL.Potion_FireResistance_1L.make(25), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0]  , 1, i));
 		}
 		
-		if (IL.IE_Treated_Slabs.exists())
-		RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slabs  .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
+		if (IL.IE_Treated_Slab.exists())
+		RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slab  .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
 		RM.Bath.addRecipe1(T, 0, 16, IL.Treated_Plank_Slab.get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
 		
 		
@@ -135,9 +139,26 @@ public class Loader_Recipes_Woods implements Runnable {
 				RM.Bath.addRecipe1(T, 0, 102, aEntry.mStair, tFluid.make( 75), NF, tTreated);
 				}
 				if (ST.valid(aEntry.mSlab)) {
-				tTreated = IL.IE_Treated_Slabs.get(1, IL.Treated_Plank_Slab.get(1));
+				tTreated = IL.IE_Treated_Slab.get(1, IL.Treated_Plank_Slab.get(1));
 				for (FL tFluid : OILS)
 				RM.Bath.addRecipe1(T, 0,  72, aEntry.mSlab , tFluid.make( 50), NF, tTreated);
+				}
+				
+				if (IL.ERE_White_Plank.exists() && !IL.ERE_White_Plank.equal(aEntry.mPlank, F, T)) {
+					tTreated = IL.ERE_White_Plank.get(1);
+					for (List<FluidStack> tDyes : DYE_FLUIDS) for (FluidStack tFluid : tDyes)
+					RM.Bath.addRecipe1(T, 0, 144, aEntry.mPlank, tFluid, NF, tTreated);
+					
+					if (ST.valid(aEntry.mStair) && IL.ERE_White_Stairs.exists()) {
+					tTreated = IL.ERE_White_Stairs.get(1);
+					for (List<FluidStack> tDyes : DYE_FLUIDS) for (FluidStack tFluid : tDyes)
+					RM.Bath.addRecipe1(T, 0, 102, aEntry.mStair, UT.Fluids.mul(tFluid, 3, 4, T), NF, tTreated);
+					}
+					if (ST.valid(aEntry.mSlab) && IL.ERE_White_Slab.exists()) {
+					tTreated = IL.ERE_White_Slab.get(1);
+					for (List<FluidStack> tDyes : DYE_FLUIDS) for (FluidStack tFluid : tDyes)
+					RM.Bath.addRecipe1(T, 0,  72, aEntry.mSlab , UT.Fluids.mul(tFluid, 1, 2, T), NF, tTreated);
+					}
 				}
 			}
 			if (ST.valid(aEntry.mSlab)) {

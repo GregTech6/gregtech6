@@ -59,8 +59,6 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[106] = IL.BTL_Portal_Bark.get(1);
 		PlankData.PLANKS[107] = IL.BTL_Weedwood_Bark.get(1);
 		PlankData.PLANKS[108] = IL.BTL_Weedwood_RottenBark.get(1);
-		tBlock = ST.block(MD.ERE, "planks");
-		for (int i = 0; i < 11; i++) PlankData.PLANKS[109+i] = ST.make(tBlock, 1, i);
 		PlankData.PLANKS[120] = ST.make(MD.ERE, "petrifiedWoodPlanks", 1, 0);
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
@@ -307,6 +305,53 @@ public class LoaderWoodDictionary implements Runnable {
 			new WoodEntry(ST.make(tLog, 1, 37), WoodDictionary.PLANKS.get(tPlank, 26));
 			new WoodEntry(ST.make(tLog, 1, 38), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 1), ST.make(MD.HaC, "cinnamonItem", 1, IL.Food_Cinnamon.get(1)), MT.Cinnamon);
 			new WoodEntry(ST.make(tLog, 1, 39), WoodDictionary.PLANKS.get(tPlank, 34));
+		}
+		// Erebus Trees
+		if (MD.ERE.mLoaded) {
+			Block tPlank = ST.block(MD.ERE, "planks");
+			new PlankEntry(ST.make(tPlank, 1, 0), ST.make(MD.ERE, "slabPlanksBaobab"    , 1, 0), ST.make(MD.ERE, "plankStairBaobab"    , 1, 0), 109);
+			new PlankEntry(ST.make(tPlank, 1, 1), ST.make(MD.ERE, "slabPlanksEucalyptus", 1, 0), ST.make(MD.ERE, "plankStairEucalyptus", 1, 0), 110);
+			new PlankEntry(ST.make(tPlank, 1, 2), ST.make(MD.ERE, "slabPlanksMahogany"  , 1, 0), ST.make(MD.ERE, "plankStairMahogany"  , 1, 0), 111);
+			new PlankEntry(ST.make(tPlank, 1, 3), ST.make(MD.ERE, "slabPlanksMossbark"  , 1, 0), ST.make(MD.ERE, "plankStairMossbark"  , 1, 0), 112);
+			new PlankEntry(ST.make(tPlank, 1, 4), ST.make(MD.ERE, "slabPlanksAsper"     , 1, 0), ST.make(MD.ERE, "plankStairAsper"     , 1, 0), 113);
+			new PlankEntry(ST.make(tPlank, 1, 5), ST.make(MD.ERE, "slabPlanksCypress"   , 1, 0), ST.make(MD.ERE, "plankStairCypress"   , 1, 0), 114);
+			new PlankEntry(ST.make(tPlank, 1, 6), ST.make(MD.ERE, "slabPlanksSap"       , 1, 0), ST.make(MD.ERE, "plankStairSap"       , 1, 0), 115);
+			new PlankEntry(ST.make(tPlank, 1, 7), ST.make(MD.ERE, "slabPlanksWhite"     , 1, 0), ST.make(MD.ERE, "plankStairWhite"     , 1, 0), 116);
+			new PlankEntry(ST.make(tPlank, 1, 8), ST.make(MD.ERE, "slabPlanksBamboo"    , 1, 0), ST.make(MD.ERE, "plankStairBamboo"    , 1, 0), 117);
+			new PlankEntry(ST.make(tPlank, 1, 9), ST.make(MD.ERE, "slabPlanksRotten"    , 1, 0), ST.make(MD.ERE, "plankStairRotten"    , 1, 0), 118);
+			new PlankEntry(ST.make(tPlank, 1,10), ST.make(MD.ERE, "slabPlanksMarshwood" , 1, 0), ST.make(MD.ERE, "plankStairMarshwood" , 1, 0), 119);
+			
+			CR.shaped(ST.make(tPlank, 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksBaobab"    , 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksEucalyptus", 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 2), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksMahogany"  , 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 3), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksMossbark"  , 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 4), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksAsper"     , 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 5), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksCypress"   , 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 6), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksSap"       , 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 7), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksWhite"     , 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 8), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksBamboo"    , 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 9), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksRotten"    , 1, 0));
+			CR.shaped(ST.make(tPlank, 1,10), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksMarshwood" , 1, 0));
+			
+			new WoodEntry(ST.make(MD.ERE, "logBaobab"    , 1, W), WoodDictionary.PLANKS.get(tPlank, 0));
+			new WoodEntry(ST.make(MD.ERE, "logEucalyptus", 1, W), WoodDictionary.PLANKS.get(tPlank, 1));
+			new WoodEntry(ST.make(MD.ERE, "logMahogany"  , 1, W), WoodDictionary.PLANKS.get(tPlank, 2));
+			new WoodEntry(ST.make(MD.ERE, "logMossbark"  , 1, W), WoodDictionary.PLANKS.get(tPlank, 3));
+			new WoodEntry(ST.make(MD.ERE, "logAsper"     , 1, W), WoodDictionary.PLANKS.get(tPlank, 4));
+			new WoodEntry(ST.make(MD.ERE, "logCypress"   , 1, W), WoodDictionary.PLANKS.get(tPlank, 5));
+			new WoodEntry(ST.make(MD.ERE, "logSap"       , 1, W), WoodDictionary.PLANKS.get(tPlank, 6));
+			new WoodEntry(ST.make(MD.ERE, "saplessLog"   , 1, W), WoodDictionary.PLANKS.get(tPlank, 6));
+			new WoodEntry(ST.make(MD.ERE, "logRotten"    , 1, W), WoodDictionary.PLANKS.get(tPlank, 9));
+			new WoodEntry(ST.make(MD.ERE, "logMarshwood" , 1, W), WoodDictionary.PLANKS.get(tPlank,10));
+			
+			new SaplingEntry(ST.make(MD.ERE, "saplingBaobab"    , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logBaobab"    , W), ST.make(MD.ERE, "leavesBaobab"    , 1, W));
+			new SaplingEntry(ST.make(MD.ERE, "saplingEucalyptus", 1, W), WoodDictionary.WOODS.get(MD.ERE, "logEucalyptus", W), ST.make(MD.ERE, "leavesEucalyptus", 1, W));
+			new SaplingEntry(ST.make(MD.ERE, "saplingMahogany"  , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logMahogany"  , W), ST.make(MD.ERE, "leavesMahogany"  , 1, W));
+			new SaplingEntry(ST.make(MD.ERE, "saplingMossbark"  , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logMossbark"  , W), ST.make(MD.ERE, "leavesMossbark"  , 1, W));
+			new SaplingEntry(ST.make(MD.ERE, "saplingAsper"     , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logAsper"     , W), ST.make(MD.ERE, "leavesAsper"     , 1, W));
+			new SaplingEntry(ST.make(MD.ERE, "saplingCypress"   , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logCypress"   , W), ST.make(MD.ERE, "leavesCypress"   , 1, W));
+			new SaplingEntry(ST.make(MD.ERE, "saplingSap"       , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logSap"       , W), ST.make(MD.ERE, "leavesSap"       , 1, W));
+			new SaplingEntry(ST.make(MD.ERE, "saplingMarshwood" , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logMarshwood" , W), ST.make(MD.ERE, "leavesMarshwood" , 1, W));
 		}
 		// Chisel Planks
 		if (MD.CHSL.mLoaded) {
