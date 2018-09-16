@@ -271,7 +271,7 @@ public class Loader_Tools implements Runnable {
 		
 		GameRegistry.addRecipe(new AdvancedCraftingTool(MAGNIFYING_GLASS        , OP.lens, MT.Glass));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(HARDHAMMER              , OP.toolHeadHammer, new Nor(WOOD, BOUNCY, STRETCHY)));
-		GameRegistry.addRecipe(new AdvancedCraftingTool(SOFTHAMMER              , OP.toolHeadHammer, new Or (WOOD, BOUNCY, STRETCHY)));
+		GameRegistry.addRecipe(new AdvancedCraftingTool(SOFTHAMMER              , OP.toolHeadHammer, new Or (WOOD, BOUNCY, STRETCHY), MT.Rubber));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(SWORD                   , OP.toolHeadSword));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(CONSTRUCTION_PICK       , OP.toolHeadConstructionPickaxe));
 		GameRegistry.addRecipe(new AdvancedCraftingTool(GEM_PICK                , OP.toolHeadPickaxeGem, MT.Diamond));
