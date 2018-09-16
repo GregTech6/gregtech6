@@ -82,6 +82,11 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0] , 1, i), FL.Potion_FireResistance_1L.make(25), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0]  , 1, i));
 		}
 		
+		if (IL.IE_Treated_Slabs.exists())
+		RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slabs  .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
+		RM.Bath.addRecipe1(T, 0, 16, IL.Treated_Plank_Slab.get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
+		
+		
 		for (WoodEntry aEntry : WoodDictionary.WOODS.values()) {
 			if (aEntry.mBeamEntry != null)
 			RM.debarking(16, 64,               aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
@@ -90,6 +95,9 @@ public class Loader_Recipes_Woods implements Runnable {
 			GT_ModHandler.addSawmillRecipe(    aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
 			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
 			RM.Lathe.addRecipe1(T, 16, 80,     aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
+			if (IL.RC_Creosote_Wood.exists())
+			RM.Bath.addRecipe1(T, 0, 16,       aEntry.mLog, FL.Oil_Creosote.make(1000), NF, IL.RC_Creosote_Wood.get(1));
+			
 			
 			CR.remove(ST.validMeta(1, aEntry.mLog));
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NAC_NCC, "sLf", 'L', aEntry.mLog);
