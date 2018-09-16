@@ -86,10 +86,11 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0] , 1, i), FL.Potion_FireResistance_1L.make(25), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0]  , 1, i));
 		}
 		
-		if (IL.IE_Treated_Slab.exists())
-		RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slab  .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
-		RM.Bath.addRecipe1(T, 0, 16, IL.Treated_Plank_Slab.get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
-		
+		if (IL.RC_Tie_Wood.exists()) {
+			if (IL.IE_Treated_Slab.exists())
+			RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slab   .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
+			RM.Bath.addRecipe1(T, 0, 16, IL.Treated_Plank_Slab.get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
+		}
 		
 		for (WoodEntry aEntry : WoodDictionary.WOODS.values()) {
 			if (aEntry.mBeamEntry != null)
