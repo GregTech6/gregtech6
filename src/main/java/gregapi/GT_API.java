@@ -177,6 +177,8 @@ public class GT_API extends Abstract_Mod {
 	public GT_API() {
 		GAPI = this;
 		
+		if (!MD.ENCHIRIDION.mLoaded) MD.MaCu.mLoaded = F;
+		
 		// A bunch of Code that is there to statically initialise the Database in the right order.
 		BI.BAROMETER.toString();
 		MT.NULL.toString();
@@ -241,8 +243,8 @@ public class GT_API extends Abstract_Mod {
 		Blocks.obsidian.setHarvestLevel("pickaxe", 3);
 		
 		Material.tnt.setAdventureModeExempt();
-	//	UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
-	//	UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
+	//  UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
+	//  UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
 		
 		Set<Block> tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
 		tSet.add(Blocks.bed);
