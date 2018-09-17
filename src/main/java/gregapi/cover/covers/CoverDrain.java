@@ -64,7 +64,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 						} else {
 							temp = aData.mTileEntity.getRainOffset(OFFSETS_X[aSide], OFFSETS_Y[aSide]  , OFFSETS_Z[aSide]) && (SIDES_TOP[aSide] || aData.mTileEntity.getBlockOffset(OFFSETS_X[aSide], -1, OFFSETS_Z[aSide]).isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getY()-1, aData.mTileEntity.getOffsetZ(aSide), FORGE_DIR[SIDE_TOP]));
 						}
-						if (temp) UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make((long)Math.max(1, tBiome.rainfall*100) * (aData.mTileEntity.getWorld().isThundering()?2:1)), T);
+						if (temp) UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make((long)Math.max(1, tBiome.rainfall*10000) * (aData.mTileEntity.getWorld().isThundering()?2:1)), T);
 					}
 				}
 			}
