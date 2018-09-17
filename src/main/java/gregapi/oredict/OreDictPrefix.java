@@ -42,6 +42,7 @@ import gregapi.data.TC;
 import gregapi.data.TC.TC_AspectStack;
 import gregapi.data.TD;
 import gregapi.item.IItemGT;
+import gregapi.item.IPrefixItem;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.recipes.AdvancedCrafting1ToY;
 import gregapi.recipes.AdvancedCraftingXToY;
@@ -432,13 +433,13 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	}
 	
 	public ItemStack mat(OreDictMaterial aMaterial, long aStackSize) {
-		return OreDictManager.INSTANCE.getStack(mNameInternal + aMaterial.mNameInternal, null, aStackSize, F, F);
+		return OreDictManager.INSTANCE.getStack(this, aMaterial, NI, aStackSize);
 	}
 	public ItemStack mat(OreDictMaterial aMaterial, long aStackSize, ItemStack aReplacement) {
-		return OreDictManager.INSTANCE.getStack(mNameInternal + aMaterial.mNameInternal, aReplacement, aStackSize, F, F);
+		return OreDictManager.INSTANCE.getStack(this, aMaterial, aReplacement, aStackSize);
 	}
 	public ItemStack mat(OreDictMaterial aMaterial, ItemStack aReplacement, long aStackSize) {
-		return OreDictManager.INSTANCE.getStack(mNameInternal + aMaterial.mNameInternal, aReplacement, aStackSize, F, F);
+		return OreDictManager.INSTANCE.getStack(this, aMaterial, aReplacement, aStackSize);
 	}
 	
 	@Override
@@ -481,7 +482,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	
 	/** List of all valid Items, which are registered for this Prefix. */
 	public final ItemStackSet<ItemStackContainer> mRegisteredItems = new ItemStackSet<>();
-	public final List<Item> mRegisteredPrefixItems = new ArrayListNoNulls<>();
+	public final List<IPrefixItem> mRegisteredPrefixItems = new ArrayListNoNulls<>();
 	public final Set<OreDictMaterial> mRegisteredMaterials = new HashSetNoNulls<>();
 	/** This is used to determine if any of the ItemStacks belongs to this Prefix. */
 	public boolean contains(ItemStack... aStacks) {

@@ -50,6 +50,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
@@ -496,7 +497,11 @@ public final class OreDictManager {
 	}
 	
 	public ItemStack getStack(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aReplacement, long aAmount) {
-		return getStack(aPrefix.mNameInternal + aMaterial.mNameInternal, aReplacement, aAmount, F, T);
+		ItemStack rStack = getStack(aPrefix.mNameInternal + aMaterial.mNameInternal, aReplacement, aAmount, F, F);
+		if (rStack == null && aMaterial.mID >= 0 && !aPrefix.mRegisteredPrefixItems.isEmpty()) {
+			return ST.make((Item)aPrefix.mRegisteredPrefixItems.get(0), aAmount, aMaterial.mID);
+		}
+		return rStack;
 	}
 	
 	public ItemStack getStack(Object aName, ItemStack aReplacement, long aAmount, boolean aMentionPossibleTypos, boolean aNoInvalidAmounts) {
