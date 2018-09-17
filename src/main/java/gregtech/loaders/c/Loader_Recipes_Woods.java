@@ -21,8 +21,6 @@ package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
 
-import java.util.List;
-
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
@@ -147,17 +145,17 @@ public class Loader_Recipes_Woods implements Runnable {
 				
 				if (IL.ERE_White_Plank.exists() && !IL.ERE_White_Plank.equal(aEntry.mPlank, F, T)) {
 					tTreated = IL.ERE_White_Plank.get(1);
-					for (List<FluidStack> tDyes : DYE_FLUIDS) for (FluidStack tFluid : tDyes)
+					for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
 					RM.Bath.addRecipe1(T, 0, 144, aEntry.mPlank, tFluid, NF, tTreated);
 					
 					if (ST.valid(aEntry.mStair) && IL.ERE_White_Stairs.exists()) {
 					tTreated = IL.ERE_White_Stairs.get(1);
-					for (List<FluidStack> tDyes : DYE_FLUIDS) for (FluidStack tFluid : tDyes)
+					for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
 					RM.Bath.addRecipe1(T, 0, 102, aEntry.mStair, UT.Fluids.mul(tFluid, 3, 4, T), NF, tTreated);
 					}
 					if (ST.valid(aEntry.mSlab) && IL.ERE_White_Slab.exists()) {
 					tTreated = IL.ERE_White_Slab.get(1);
-					for (List<FluidStack> tDyes : DYE_FLUIDS) for (FluidStack tFluid : tDyes)
+					for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
 					RM.Bath.addRecipe1(T, 0,  72, aEntry.mSlab , UT.Fluids.mul(tFluid, 1, 2, T), NF, tTreated);
 					}
 				}
