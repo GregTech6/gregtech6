@@ -143,6 +143,10 @@ public class LoaderWoodDictionary implements Runnable {
 			if (MD.MFR.mLoaded) {
 				new SaplingEntry(IL.MFR_Sapling_Rubber.wild(1), new WoodEntry(IL.MFR_Log_Rubber.wild(1), tRubberBeam, 1, 350, 1, 3, 4, IL.IC2_Resin.get(1, IL.Resin.get(1)), MT.WoodRubber, MT.Bark, OP.stickLong.mat(MT.Wood, 1), 1, 2), IL.MFR_Leaves_Rubber.wild(1));
 			}
+			// Atum Palm Trees
+			if (MD.ATUM.mLoaded) {
+				new SaplingEntry(ST.make(MD.ATUM, "tile.palmSapling", 1, W), new WoodEntry(ST.make(MD.ATUM, "tile.palmLog", 1, W), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2), new PlankEntry(ST.make(MD.ATUM, "tile.palmPlanks", 1, W), 123)), ST.make(MD.ATUM, "tile.palmLeaves", 1, W));
+			}
 		} else {
 			WoodDictionary.DEFAULT_PLANK = WoodDictionary.PLANKS.get(Blocks.planks, 0);
 			
@@ -154,10 +158,10 @@ public class LoaderWoodDictionary implements Runnable {
 			if (MD.MFR.mLoaded) {
 				new SaplingEntry(IL.MFR_Sapling_Rubber.wild(1), new WoodEntry(IL.MFR_Log_Rubber.wild(1), 1, 350, 1, 3, 4, IL.IC2_Resin.get(1, IL.Resin.get(1)), MT.WoodRubber, MT.Bark, OP.stickLong.mat(MT.Wood, 1), 1, 2), IL.MFR_Leaves_Rubber.wild(1));
 			}
-		}
-		// Atum Palm Trees
-		if (MD.ATUM.mLoaded) {
-			new SaplingEntry(ST.make(MD.ATUM, "tile.palmSapling", 1, W), new WoodEntry(ST.make(MD.ATUM, "tile.palmLog", 1, W), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2), new PlankEntry(ST.make(MD.ATUM, "tile.palmPlanks", 1, W), 123)), ST.make(MD.ATUM, "tile.palmLeaves", 1, W));
+			// Atum Palm Trees
+			if (MD.ATUM.mLoaded) {
+				new SaplingEntry(ST.make(MD.ATUM, "tile.palmSapling", 1, W), new WoodEntry(ST.make(MD.ATUM, "tile.palmLog", 1, W), new PlankEntry(ST.make(MD.ATUM, "tile.palmPlanks", 1, W), 123)), ST.make(MD.ATUM, "tile.palmLeaves", 1, W));
+			}
 		}
 		// Thaumcraft Trees
 		if (MD.TC.mLoaded) {
