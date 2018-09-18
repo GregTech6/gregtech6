@@ -173,10 +173,8 @@ runServer {
 afterEvaluate {
 	//println sourceSets
 	sourceSets.main.runtimeClasspath.each {
-		println it
 		eclipseRuntimeClasspath += eclipseRuntimeClasspathTemplate.replaceAll('@@PATH@@', it.toString())
 	}
-	println eclipseRuntimeClasspath
 }
 
 processResources {
