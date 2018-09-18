@@ -389,6 +389,10 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Log_Canopy                        .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 1), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Log_Mangrove                      .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 2), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Log_Darkwood                      .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 3), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Time                          .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 0), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Trans                         .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 1), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Mine                          .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 2), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Sorting                       .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 3), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
 		
 		if (IL.TF_Vial_FieryBlood.item() != null) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.item() != null) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
@@ -401,9 +405,9 @@ public class LoaderItemList implements Runnable {
 		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemFertilizer);
 		IL.ERE_Gaean_Gem                        .set(ST.make(MD.ERE, "materials"                            , 1,39));
 		IL.ERE_Gaean_Staff                      .set(ST.make(MD.ERE, "portalActivator"                      , 1, 0));
-		IL.ERE_White_Plank                      .set(ST.make(MD.ERE, "planks"              					, 1, 7));
-		IL.ERE_White_Slab                       .set(ST.make(MD.ERE, "slabPlanksWhite"    					, 1, 0));
-		IL.ERE_White_Stairs                     .set(ST.make(MD.ERE, "plankStairWhite"   					, 1, 0));
+		IL.ERE_White_Planks                      .set(ST.make(MD.ERE, "planks"                                  , 1, 7));
+		IL.ERE_White_Slab                       .set(ST.make(MD.ERE, "slabPlanksWhite"                      , 1, 0));
+		IL.ERE_White_Stairs                     .set(ST.make(MD.ERE, "plankStairWhite"                      , 1, 0));
 		
 		IL.BTL_Swamp_Talisman                   .set(ST.make(MD.BTL, "swampTalisman"                        , 1, 0));
 		IL.BTL_Tainted_Potion                   .set(ST.make(MD.BTL, "taintedPotion"                        , 1, 0));

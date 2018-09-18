@@ -23,8 +23,10 @@ import static gregapi.data.CS.*;
 
 import java.util.Collection;
 
+import gregapi.data.ANY;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.FL;
+import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.item.IItemColorableRGB;
@@ -34,6 +36,8 @@ import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.util.CR;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.wooddict.PlankEntry;
+import gregapi.wooddict.WoodDictionary;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -47,6 +51,8 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class RecipeMapBath extends RecipeMap {
+	public static FL[] OILS = {FL.Oil_Seed, FL.Oil_Lin, FL.Oil_Hemp, FL.Oil_Nut, FL.Oil_Olive, FL.Oil_Sunflower, FL.Oil_Creosote};
+	
 	public RecipeMapBath(Collection<Recipe> aRecipeList, String aUnlocalizedName, String aNameLocal, String aNameNEI, long aProgressBarDirection, long aProgressBarAmount, String aNEIGUIPath, long aInputItemsCount, long aOutputItemsCount, long aMinimalInputItems, long aInputFluidCount, long aOutputFluidCount, long aMinimalInputFluids, long aMinimalInputs, long aPower, String aNEISpecialValuePre, long aNEISpecialValueMultiplier, String aNEISpecialValuePost, boolean aShowVoltageAmperageInNEI, boolean aNEIAllowed, boolean aConfigAllowed, boolean aNeedsOutputs) {
 		super(aRecipeList, aUnlocalizedName, aNameLocal, aNameNEI, aProgressBarDirection, aProgressBarAmount, aNEIGUIPath, aInputItemsCount, aOutputItemsCount, aMinimalInputItems, aInputFluidCount, aOutputFluidCount, aMinimalInputFluids, aMinimalInputs, aPower, aNEISpecialValuePre, aNEISpecialValueMultiplier, aNEISpecialValuePost, aShowVoltageAmperageInNEI, aNEIAllowed, aConfigAllowed, aNeedsOutputs);
 	}
@@ -56,6 +62,51 @@ public class RecipeMapBath extends RecipeMap {
 		Recipe rRecipe = super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 		if (aInputs == null || aInputs.length < 1 || aInputs[0] == null || aFluids.length < 1 || aFluids[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		if (rRecipe == null) for (ItemStack aInput : aInputs) if (aInput != null) {
+			PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(ST.item(aInput), ST.meta(aInput));
+			if (aEntry != null && ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank)) {
+				if (ST.valid(aEntry.mPlank)) {
+					if (IL.MaCu_Polished_Planks.exists())
+					addRecipe1(T, 0, 144, aEntry.mPlank, FL.Oil_Fish.make(1000), NF, IL.MaCu_Polished_Planks.get(1));
+					
+					if (!IL.Treated_Planks.equal(aEntry.mPlank, F, T) && !IL.IE_Treated_Planks.equal(aEntry.mPlank, F, T)) {
+						ItemStack tTreated = IL.IE_Treated_Planks.get(1, IL.Treated_Planks.get(1));
+						for (FL tFluid : OILS)
+						addRecipe1(T, 0, 144, aEntry.mPlank, tFluid.make(100), NF, tTreated);
+					}
+					if (IL.ERE_White_Planks.exists() && !IL.ERE_White_Planks.equal(aEntry.mPlank, F, T)) {
+						ItemStack tTreated = IL.ERE_White_Planks.get(1);
+						for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
+						addRecipe1(T, 0, 144, aEntry.mPlank, tFluid, NF, tTreated);
+					}
+				}
+				
+				if (ST.valid(aEntry.mStair)) {
+					if (IL.IE_Treated_Stairs.exists() && !IL.IE_Treated_Stairs.equal(aEntry.mStair, F, T)) {
+						ItemStack tTreated = IL.IE_Treated_Stairs.get(1);
+						for (FL tFluid : OILS)
+						addRecipe1(T, 0, 102, aEntry.mStair, tFluid.make( 75), NF, tTreated);
+					}
+					if (IL.ERE_White_Stairs.exists() && !IL.ERE_White_Stairs.equal(aEntry.mStair, F, T)) {
+						ItemStack tTreated = IL.ERE_White_Stairs.get(1);
+						for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
+						addRecipe1(T, 0, 102, aEntry.mStair, UT.Fluids.mul(tFluid, 3, 4, T), NF, tTreated);
+					}
+				}
+				
+				if (ST.valid(aEntry.mSlab)) {
+					if (!IL.Treated_Planks_Slab.equal(aEntry.mSlab, F, T) && !IL.IE_Treated_Slab.equal(aEntry.mSlab, F, T)) {
+						ItemStack tTreated = IL.IE_Treated_Slab.get(1, IL.Treated_Planks_Slab.get(1));
+						for (FL tFluid : OILS)
+						addRecipe1(T, 0,  72, aEntry.mSlab, tFluid.make( 50), NF, tTreated);
+					}
+					if (IL.ERE_White_Slab.exists() && !IL.ERE_White_Slab.equal(aEntry.mSlab, F, T)) {
+						ItemStack tTreated = IL.ERE_White_Slab.get(1);
+						for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
+						addRecipe1(T, 0,  72, aEntry.mSlab, UT.Fluids.mul(tFluid, 1, 2, T), NF, tTreated);
+					}
+				}
+			}
+			
 			if (MD.ATUM.mLoaded) {
 				Item tItem = ST.item(MD.ATUM, "item.loot");
 				if (aInput.getItem() == tItem) {
@@ -124,7 +175,11 @@ public class RecipeMapBath extends RecipeMap {
 		return rRecipe;
 	}
 	
-	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return (aStack != null && (aStack.getItem() instanceof ItemArmor || (aStack.getItem() instanceof IItemColorableRGB && (((IItemColorableRGB)aStack.getItem()).canRecolorItem(aStack) || ((IItemColorableRGB)aStack.getItem()).canDecolorItem(aStack))))) || (ST.food(aStack) > 0 && UT.Fluids.getFluidForFilledItem(aStack, T) == null) || super.containsInput(aStack, aTileEntity, aSpecialSlot);}
+	@Override
+	public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {
+		PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(ST.item(aStack), ST.meta(aStack));
+		return (aEntry != null && ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank)) || (aStack != null && (aStack.getItem() instanceof ItemArmor || (aStack.getItem() instanceof IItemColorableRGB && (((IItemColorableRGB)aStack.getItem()).canRecolorItem(aStack) || ((IItemColorableRGB)aStack.getItem()).canDecolorItem(aStack))))) || (ST.food(aStack) > 0 && UT.Fluids.getFluidForFilledItem(aStack, T) == null) || super.containsInput(aStack, aTileEntity, aSpecialSlot);
+	}
 	@Override public boolean containsInput(FluidStack aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return aFluid != null && aFluid.getFluid() != null && (super.containsInput(aFluid, aTileEntity, aSpecialSlot) || FluidsGT.BATH.contains(aFluid.getFluid().getName()));}
 	@Override public boolean containsInput(Fluid aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return aFluid != null && (super.containsInput(aFluid, aTileEntity, aSpecialSlot) || FluidsGT.BATH.contains(aFluid.getName()));}
 }

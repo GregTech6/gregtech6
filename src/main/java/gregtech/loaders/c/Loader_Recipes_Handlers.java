@@ -400,7 +400,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Nut         .make( 100),   0, 144, NF, MT.WoodSealed    , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Olive       .make( 100),   0, 144, NF, MT.WoodSealed    , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Sunflower   .make( 100),   0, 144, NF, MT.WoodSealed    , NI, T, tConditionP));
-		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Creosote    .make( 125),   0, 144, NF, MT.WoodSealed    , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Creosote    .make( 100),   0, 144, NF, MT.WoodSealed    , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Fish        .make(1000),   0, 144, NF, MT.WoodPolished  , NI, T, tConditionP));
 		}
 		

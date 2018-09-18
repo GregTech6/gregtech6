@@ -22,7 +22,6 @@ package gregtech.loaders.c;
 import static gregapi.data.CS.*;
 
 import gregapi.block.metatype.BlockMetaType;
-import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -33,17 +32,13 @@ import gregapi.recipes.GT_ModHandler;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregapi.wooddict.BeamEntry;
 import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Woods implements Runnable {
-	public static FL[] OILS = {FL.Oil_Seed, FL.Oil_Lin, FL.Oil_Hemp, FL.Oil_Nut, FL.Oil_Olive, FL.Oil_Sunflower, FL.Oil_Creosote};
-	
 	@Override public void run() {OUT.println("GT_Mod: Doing Recipes for Woods.");
 		for (int i = 0; i <  4; i++) {
 		RM.Laminator    .addRecipe2(T, 16,  192, OP.plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.Log1 , 1, i), ST.make(BlocksGT.Log1FireProof , 1, i));
@@ -86,9 +81,10 @@ public class Loader_Recipes_Woods implements Runnable {
 		
 		if (IL.RC_Tie_Wood.exists()) {
 			if (IL.IE_Treated_Slab.exists())
-			RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slab   .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
-			RM.Bath.addRecipe1(T, 0, 16, IL.Treated_Plank_Slab.get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
+			RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slab    .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
+			RM.Bath.addRecipe1(T, 0, 16, IL.Treated_Planks_Slab.get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
 		}
+		
 		
 		for (WoodEntry aEntry : WoodDictionary.WOODS.values()) {
 			if (aEntry.mBeamEntry != null)
@@ -107,6 +103,8 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mPlankCountSaw :aEntry.mPlankCountBuzz , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, "s", "L", 'L', aEntry.mLog);
 			CR.shapeless(ST.validMeta(NERFED_WOOD?aEntry.mPlankCountHand:aEntry.mPlankCountSaw  , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, new Object[] {aEntry.mLog});
 		}
+		
+		
 		for (BeamEntry aEntry : WoodDictionary.BEAMS.values()) {
 			RM.generify(                       aEntry.mBeam, IL.Beam.get(1));
 			RM.pulverizing(                    aEntry.mBeam, OP.dust.mat(aEntry.mMaterialBeam, aEntry.mPlankCountBuzz));
@@ -119,62 +117,12 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mPlankCountSaw :aEntry.mPlankCountBuzz , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, "s", "B", 'B', aEntry.mBeam);
 			CR.shapeless(ST.validMeta(NERFED_WOOD?aEntry.mPlankCountHand:aEntry.mPlankCountSaw  , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, new Object[] {aEntry.mBeam});
 		}
+		
+		
 		for (PlankEntry aEntry : WoodDictionary.PLANKS.values()) {
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			RM.generify(aEntry.mPlank, IL.Plank.get(1));
 			RM.pulverizing(aEntry.mPlank, OP.dust.mat(aEntry.mMaterialPlank, 1));
-			if (ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank)) {
-				if (IL.MaCu_Polished_Planks.exists())
-				RM.Bath.addRecipe1(T, 0, 144, aEntry.mPlank, FL.Oil_Fish.make(1000), NF, IL.MaCu_Polished_Planks.get(1));
-				
-				ItemStack
-				tTreated = IL.IE_Treated_Planks.get(1, IL.Treated_Plank.get(1));
-				for (FL tFluid : OILS)
-				RM.Bath.addRecipe1(T, 0, 144, aEntry.mPlank, tFluid.make(100), NF, tTreated);
-				
-				if (ST.valid(aEntry.mStair) && IL.IE_Treated_Stairs.exists()) {
-				tTreated = IL.IE_Treated_Stairs.get(1);
-				for (FL tFluid : OILS)
-				RM.Bath.addRecipe1(T, 0, 102, aEntry.mStair, tFluid.make( 75), NF, tTreated);
-				}
-				if (ST.valid(aEntry.mSlab)) {
-				tTreated = IL.IE_Treated_Slab.get(1, IL.Treated_Plank_Slab.get(1));
-				for (FL tFluid : OILS)
-				RM.Bath.addRecipe1(T, 0,  72, aEntry.mSlab , tFluid.make( 50), NF, tTreated);
-				}
-				
-				if (IL.ERE_White_Plank.exists() && !IL.ERE_White_Plank.equal(aEntry.mPlank, F, T)) {
-					tTreated = IL.ERE_White_Plank.get(1);
-					for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
-					RM.Bath.addRecipe1(T, 0, 144, aEntry.mPlank, tFluid, NF, tTreated);
-					
-					if (ST.valid(aEntry.mStair) && IL.ERE_White_Stairs.exists()) {
-					tTreated = IL.ERE_White_Stairs.get(1);
-					for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
-					RM.Bath.addRecipe1(T, 0, 102, aEntry.mStair, UT.Fluids.mul(tFluid, 3, 4, T), NF, tTreated);
-					}
-					if (ST.valid(aEntry.mSlab) && IL.ERE_White_Slab.exists()) {
-					tTreated = IL.ERE_White_Slab.get(1);
-					for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
-					RM.Bath.addRecipe1(T, 0,  72, aEntry.mSlab , UT.Fluids.mul(tFluid, 1, 2, T), NF, tTreated);
-					}
-				}
-			}
-			if (ST.valid(aEntry.mSlab)) {
-				CR.remove(aPlank, aPlank, aPlank);
-				CR.shaped(ST.validMeta_(2, aEntry.mSlab), CR.DEF_NAC_NCC_MIR, "sP", 'P', aEntry.mPlank);
-				RM.sawing(16, 72, F, 3, aEntry.mPlank, ST.validMeta_(2, aEntry.mSlab));
-				GT_ModHandler.addSawmillRecipe(aEntry.mPlank, ST.validMeta_(2, aEntry.mSlab), NI);
-			}
-			if (ST.valid(aEntry.mStair)) {
-				CR.remove(NI, NI, aPlank, NI, aPlank, aPlank, aPlank, aPlank, aPlank);
-				CR.remove(aPlank, NI, NI, aPlank, aPlank, NI, aPlank, aPlank, aPlank);
-				if (ST.valid(aEntry.mSlab)) {
-					CR.shaped(ST.validMeta_(1, aEntry.mSlab), CR.DEF_NCC_MIR, "sP", 'P', aEntry.mStair);
-					CR.shaped(ST.validMeta_(2, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mSlab);
-				}
-				CR.shaped(ST.validMeta_(4, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mPlank);
-			}
 			if (ST.valid(aEntry.mStick)) {
 				RM.Lathe.addRecipe1(T, 16, 16, aEntry.mPlank, ST.validMeta_(aEntry.mStickCountLathe, aEntry.mStick));
 				CR.remove(aPlank, NI, NI, aPlank);
@@ -187,6 +135,43 @@ public class Loader_Recipes_Woods implements Runnable {
 			}
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.amount( 9, aEntry.mPlank), ST.tag(9), OP.blockPlate.mat(aEntry.mMaterialPlank, 1));
 //          RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), NI, OP.gearGt.mat(aEntry.mMaterialPlank, 1));
+			
+			if (ST.valid(aEntry.mStair)) {
+				CR.shaped(ST.validMeta_(4, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mPlank);
+			}
+			
+			if (ST.valid(aEntry.mSlab)) {
+				CR.shaped(ST.validMeta_(2, aEntry.mSlab), CR.DEF_NAC_NCC_MIR, "sP", 'P', aEntry.mPlank);
+				GT_ModHandler.addSawmillRecipe(aEntry.mPlank, ST.validMeta_(2, aEntry.mSlab), NI);
+				RM.sawing(16, 72, F, 3, aEntry.mPlank, ST.validMeta_(2, aEntry.mSlab));
+			}
+		}
+		
+		
+		for (PlankEntry aEntry : WoodDictionary.STAIRS.values()) {
+			RM.generify(aEntry.mStair, IL.Plank_Stairs.get(1));
+			RM.pulverizing(aEntry.mStair, OP.dustSmall.mat(aEntry.mMaterialPlank, 3));
+			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
+			CR.remove(NI, NI, aPlank, NI, aPlank, aPlank, aPlank, aPlank, aPlank);
+			CR.remove(aPlank, NI, NI, aPlank, aPlank, NI, aPlank, aPlank, aPlank);
+			
+			if (ST.valid(aEntry.mSlab)) {
+				CR.shaped(ST.validMeta_(1, aEntry.mSlab ), CR.DEF_NCC_MIR, "sP"      , 'P', aEntry.mStair);
+				GT_ModHandler.addSawmillRecipe(aEntry.mStair, ST.validMeta_(1, aEntry.mSlab), OP.dustSmall.mat(aEntry.mMaterialPlank, 1));
+				RM.sawing(16, 72, F, 3, aEntry.mStair, ST.validMeta_(1, aEntry.mSlab), OP.dustSmall.mat(aEntry.mMaterialPlank, 1));
+			}
+		}
+		
+		
+		for (PlankEntry aEntry : WoodDictionary.SLABS.values()) {
+			RM.generify(aEntry.mSlab, IL.Plank_Slab.get(1));
+			RM.pulverizing(aEntry.mSlab, OP.dustSmall.mat(aEntry.mMaterialPlank, 2));
+			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
+			CR.remove(aPlank, aPlank, aPlank);
+			
+			if (ST.valid(aEntry.mStair)) {
+				CR.shaped(ST.validMeta_(2, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mSlab );
+			}
 		}
 	}
 }

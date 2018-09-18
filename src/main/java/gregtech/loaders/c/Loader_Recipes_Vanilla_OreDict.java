@@ -210,7 +210,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			
 			if (IL.MaCu_Polished_Planks.exists())
 			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Fish      .make(1000), NF, IL.MaCu_Polished_Planks.get(1));
-			ItemStack tTreated = IL.IE_Treated_Planks.get(1, IL.Treated_Plank.get(1));
+			ItemStack tTreated = IL.IE_Treated_Planks.get(1, IL.Treated_Planks.get(1));
 			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Seed      .make( 100), NF, tTreated);
 			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Lin       .make( 100), NF, tTreated);
 			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Hemp      .make( 100), NF, tTreated);

@@ -497,8 +497,9 @@ public final class OreDictManager {
 	}
 	
 	public ItemStack getStack(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aReplacement, long aAmount) {
+		if (GAPI.mStartedInit) return getStack(aPrefix.mNameInternal + aMaterial.mNameInternal, aReplacement, aAmount, F, F);
 		ItemStack rStack = getStack(aPrefix.mNameInternal + aMaterial.mNameInternal, aReplacement, aAmount, F, F);
-		if (rStack == null && aMaterial.mID >= 0 && !aPrefix.mRegisteredPrefixItems.isEmpty()) {
+		if (rStack == null && aMaterial.mID >= 0 && aPrefix.isGeneratingItem(aMaterial) && !aPrefix.mRegisteredPrefixItems.isEmpty()) {
 			return ST.make((Item)aPrefix.mRegisteredPrefixItems.get(0), aAmount, aMaterial.mID);
 		}
 		return rStack;

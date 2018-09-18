@@ -42,6 +42,7 @@ import gregtech.blocks.tree.BlockTreeLogB;
 import gregtech.blocks.tree.BlockTreeLogBFireProof;
 import gregtech.blocks.tree.BlockTreeSapling;
 import gregtech.blocks.wood.*;
+import net.minecraft.init.Blocks;
 
 public class Loader_Woods implements Runnable {
 	@Override
@@ -69,10 +70,11 @@ public class Loader_Woods implements Runnable {
 		BlocksGT.Sapling    = new BlockTreeSapling  ("gt.block.sapling");
 		BlocksGT.Leaves     = new BlockTreeLeaves   ("gt.block.leaves", BlocksGT.Sapling);
 		
-		IL.Plank_Slab.set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 9));
-		IL.Plank.set(ST.make(BlocksGT.Planks, 1,  9));
-		IL.Treated_Plank_Slab.set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 10));
-		IL.Treated_Plank.set(ST.make(BlocksGT.Planks, 1,  10));
+		IL.Plank_Stairs       .set(ST.make(Blocks.oak_stairs, 1, 0));
+		IL.Plank_Slab         .set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 9));
+		IL.Plank              .set(ST.make(BlocksGT.Planks, 1,  9));
+		IL.Treated_Planks_Slab.set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 10));
+		IL.Treated_Planks     .set(ST.make(BlocksGT.Planks, 1,  10));
 		IL.Beam .set(ST.make(BlocksGT.Beam2 , 1,  3));
 		IL.Crate.set(ST.make(BlocksGT.Planks, 1, 11));
 		IL.Crate_Fireproof.set(ST.make(BlocksGT.PlanksFireProof, 1, 11));

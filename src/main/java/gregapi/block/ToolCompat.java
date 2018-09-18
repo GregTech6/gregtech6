@@ -111,6 +111,8 @@ public class ToolCompat {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
 				} else if (IL.TF_Log_Darkwood.equal(aBlock) && (aMeta & 3) != 3) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
+				} else if (IL.TF_Log_Time.equal(aBlock) && (aMeta & 1) == 0) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, (aMeta&12)|((aMeta & 2) == 0 ? 1 : 2), 3);
 				}
 			}
 			if (!rReturn && BlocksGT.Beam3 != null) {
@@ -133,6 +135,8 @@ public class ToolCompat {
 					rReturn = aWorld.setBlock(aX, aY, aZ, IL.BTL_Weedwood_Beam.block(), 0, 3);
 				} else if (IL.BTL_Weedwood_Beam.equal(aBlock)) {
 					rReturn = F;
+				} else if (IL.TF_Log_Trans.equal(aBlock) && (aMeta & 1) == 1) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, (aMeta&12)|((aMeta & 2) == 0 ? 0 : 1), 3);
 				} else if (OM.is(OD.logWood, ST.make(aBlock, 1, aMeta))) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, (aMeta&12)|3, 3);
 				}

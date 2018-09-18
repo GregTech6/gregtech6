@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Set;
 
 import gregapi.code.HashSetNoNulls;
+import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.PlankData;
 import gregapi.data.IL;
 import gregapi.data.MT;
@@ -56,7 +57,7 @@ public class PlankEntry {
 		this(aPlank, aSlab, 0);
 	}
 	public PlankEntry(ItemStack aPlank, ItemStack aSlab, int aPlankIconIndex) {
-		this(aPlank, aSlab, ST.make(Blocks.oak_stairs, 1, 0), aPlankIconIndex);
+		this(aPlank, aSlab, IL.Plank_Stairs.get(1, ST.make(Blocks.oak_stairs, 1, 0)), aPlankIconIndex);
 	}
 	public PlankEntry(ItemStack aPlank, ItemStack aSlab, ItemStack aStair) {
 		this(aPlank, aSlab, aStair, 0);
@@ -80,7 +81,7 @@ public class PlankEntry {
 		this(aPlank, aSlab, aMaterialPlank, aPlankIconIndex, aStick, 1, 2, 2);
 	}
 	public PlankEntry(ItemStack aPlank, ItemStack aSlab, OreDictMaterial aMaterialPlank, int aPlankIconIndex, ItemStack aStick, int aStickCountHand, int aStickCountSaw, int aStickCountLathe) {
-		this(aPlank, aSlab, ST.make(Blocks.oak_stairs, 1, 0), aMaterialPlank, aPlankIconIndex, aStick, aStickCountHand, aStickCountSaw, aStickCountLathe);
+		this(aPlank, aSlab, IL.Plank_Stairs.get(1, ST.make(Blocks.oak_stairs, 1, 0)), aMaterialPlank, aPlankIconIndex, aStick, aStickCountHand, aStickCountSaw, aStickCountLathe);
 	}
 	public PlankEntry(ItemStack aPlank, ItemStack aSlab, ItemStack aStair, OreDictMaterial aMaterialPlank) {
 		this(aPlank, aSlab, aStair, aMaterialPlank, 0);
@@ -108,10 +109,20 @@ public class PlankEntry {
 			PlankData.PLANK_ICONS[mPlankIconIndex] = new IconContainerCopied(ST.block(mPlank), ST.meta_(mPlank), SIDE_ANY);
 		}
 		
-		WoodDictionary.PLANKS.put(mPlank, this);
-		
-		OreDictManager.INSTANCE.setItemData_(mPlank, new OreDictItemData(mMaterialPlank, U));
-		OreDictManager.INSTANCE.setItemData (mSlab , new OreDictItemData(mMaterialPlank, U2));
-		OreDictManager.INSTANCE.setItemData (mStair, new OreDictItemData(mMaterialPlank, U4*3));
+		if (ST.valid(mPlank) && !WoodDictionary.PLANKS.containsKey(new ItemStackContainer(mPlank))) {
+			OreDictManager.INSTANCE.setItemData_(mPlank, new OreDictItemData(mMaterialPlank, U));
+			WoodDictionary.PLANKS_ANY.put(mPlank, this);
+			WoodDictionary.PLANKS.put(mPlank, this);
+		}
+		if (ST.valid(mStair) && !WoodDictionary.STAIRS.containsKey(new ItemStackContainer(mStair))) {
+			OreDictManager.INSTANCE.setItemData_(mStair, new OreDictItemData(mMaterialPlank, U4*3));
+			WoodDictionary.PLANKS_ANY.put(mStair, this);
+			WoodDictionary.STAIRS.put(mStair, this);
+		}
+		if (ST.valid(mSlab) && !WoodDictionary.SLABS.containsKey(new ItemStackContainer(mSlab))) {
+			OreDictManager.INSTANCE.setItemData_(mSlab , new OreDictItemData(mMaterialPlank, U2));
+			WoodDictionary.PLANKS_ANY.put(mSlab, this);
+			WoodDictionary.SLABS.put(mSlab, this);
+		}
 	}
 }

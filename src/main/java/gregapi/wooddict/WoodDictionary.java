@@ -26,7 +26,11 @@ import gregapi.code.ItemStackMap;
  * @author Gregorius Techneticies
  */
 public class WoodDictionary {
+	/** Contains all Planks, Stairs and Slabs */
+	public static final ItemStackMap<ItemStackContainer, PlankEntry> PLANKS_ANY = new ItemStackMap<>();
 	public static final ItemStackMap<ItemStackContainer, PlankEntry> PLANKS = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, PlankEntry> STAIRS = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, PlankEntry> SLABS = new ItemStackMap<>();
 	public static final ItemStackMap<ItemStackContainer, BeamEntry> BEAMS = new ItemStackMap<>();
 	public static final ItemStackMap<ItemStackContainer, WoodEntry> WOODS = new ItemStackMap<>();
 	public static final ItemStackMap<ItemStackContainer, SaplingEntry> SAPLINGS = new ItemStackMap<>();

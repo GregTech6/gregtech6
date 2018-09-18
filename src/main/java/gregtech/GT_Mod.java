@@ -406,6 +406,18 @@ public class GT_Mod extends Abstract_Mod {
 		if (IL.IE_Blueprint_Projectiles_Common.exists())
 		RM.Printer.addFakeRecipe(F, new ItemStack[] {ST.make(Items.paper, 3, W)         , IL.USB_Stick_1.getWithName(0, "Containing scanned Engineer's Blueprint"   )}, new ItemStack[] {IL.IE_Blueprint_Projectiles_Common.wild(1) }, null, null, new FluidStack[] {                                                                                                                                                                                            UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Blue ], 3, 1, T)}, ZL_FS, 2048, 16, 0);
 		
+		if (IL.IE_Treated_Stairs.exists())  RM.Bath.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.oak_stairs , 1, W)}, new ItemStack[] {IL.IE_Treated_Stairs.get(1                               )}, null, null, new FluidStack[] {FL.Oil_Creosote.make( 75)}, ZL_FS, 102, 0, 0);
+											RM.Bath.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.wooden_slab, 1, W)}, new ItemStack[] {IL.IE_Treated_Slab  .get(1, IL.Treated_Planks_Slab.get(1))}, null, null, new FluidStack[] {FL.Oil_Creosote.make( 50)}, ZL_FS,  72, 0, 0);
+											RM.Bath.addFakeRecipe(F, new ItemStack[] {IL.Plank_Slab             .get(1)}, new ItemStack[] {IL.IE_Treated_Slab  .get(1, IL.Treated_Planks_Slab.get(1))}, null, null, new FluidStack[] {FL.Oil_Creosote.make( 50)}, ZL_FS,  72, 0, 0);
+		if (IL.ERE_White_Planks.exists())   RM.Bath.addFakeRecipe(F, new ItemStack[] {IL.Plank                  .get(1)}, new ItemStack[] {IL.ERE_White_Planks .get(1                               )}, null, null, new FluidStack[] {              DYE_FLUIDS_WATER[DYE_INDEX_White]          }, ZL_FS, 144, 0, 0);
+		if (IL.ERE_White_Slab.exists())     RM.Bath.addFakeRecipe(F, new ItemStack[] {IL.Plank_Slab             .get(1)}, new ItemStack[] {IL.ERE_White_Slab   .get(1                               )}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_WATER[DYE_INDEX_White], 1, 2, T)}, ZL_FS,  72, 0, 0);
+		if (IL.ERE_White_Planks.exists())   RM.Bath.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.planks     , 1, W)}, new ItemStack[] {IL.ERE_White_Planks .get(1                               )}, null, null, new FluidStack[] {              DYE_FLUIDS_WATER[DYE_INDEX_White]          }, ZL_FS, 144, 0, 0);
+		if (IL.ERE_White_Stairs.exists())   RM.Bath.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.oak_stairs , 1, W)}, new ItemStack[] {IL.ERE_White_Stairs .get(1                               )}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_WATER[DYE_INDEX_White], 3, 4, T)}, ZL_FS, 102, 0, 0);
+		if (IL.ERE_White_Slab.exists())     RM.Bath.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.wooden_slab, 1, W)}, new ItemStack[] {IL.ERE_White_Slab   .get(1                               )}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_WATER[DYE_INDEX_White], 1, 2, T)}, ZL_FS,  72, 0, 0);
+		
+		
+		
+		
 		if (CODE_CLIENT) {
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
 				for (IOreDictConfigurationComponent tAlloy : aMaterial.mAlloyCreationRecipes) {

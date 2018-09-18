@@ -420,9 +420,9 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Bath             .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.ConcreteReinforced    ).mSlabs[0] , 1, W), UT.Fluids.mul(tDye, 1, 48, T), NF, ST.make(((BlockMetaType)BlocksGT.ConcreteReinforced ).mSlabs[0] , 1, i));
 		
 		if (tRegistry != null) for (byte j = 0; j < 16; j++) {
-		RM.Bath             .addRecipe1(T,  0,   16, tRegistry.getItem(32452+j), UT.Fluids.mul(tDye, 1,144, T), NF, tRegistry.getItem(32452+i));
-		RM.Bath             .addRecipe1(T,  0,   16, tRegistry.getItem(32468+j), UT.Fluids.mul(tDye, 1,144, T), NF, tRegistry.getItem(32468+i));
-		RM.Bath             .addRecipe1(T,  0,   16, tRegistry.getItem(32484+j), UT.Fluids.mul(tDye, 1,144, T), NF, tRegistry.getItem(32484+i));
+		RM.Bath             .addRecipe1(F,  0,   16, tRegistry.getItem(32452+j), UT.Fluids.mul(tDye, 1,144, T), NF, tRegistry.getItem(32452+i));
+		RM.Bath             .addRecipe1(F,  0,   16, tRegistry.getItem(32468+j), UT.Fluids.mul(tDye, 1,144, T), NF, tRegistry.getItem(32468+i));
+		RM.Bath             .addRecipe1(F,  0,   16, tRegistry.getItem(32484+j), UT.Fluids.mul(tDye, 1,144, T), NF, tRegistry.getItem(32484+i));
 		}
 		}
 		
