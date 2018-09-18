@@ -22,6 +22,8 @@ package gregapi.render;
 import static gregapi.data.CS.*;
 import static org.lwjgl.opengl.GL11.*;
 
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.util.ST;
@@ -33,6 +35,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
@@ -90,5 +93,348 @@ public class RenderHelper {
 		glDisable(GL_ALPHA_TEST);
 		glEnable(GL_LIGHTING);
 		glEnable(GL_CULL_FACE);
+	}
+	
+	public static void drawWrenchOverlay(EntityPlayer aPlayer, int aX, int aY, int aZ, byte aConnections, byte aSide, float aPartialTicks) {
+		try {Class.forName("codechicken.lib.vec.Rotation");} catch (ClassNotFoundException e) {return;}
+		
+		GL11.glPushMatrix();
+		GL11.glTranslated(-(aPlayer.lastTickPosX + (aPlayer.posX - aPlayer.lastTickPosX) * aPartialTicks), -(aPlayer.lastTickPosY + (aPlayer.posY - aPlayer.lastTickPosY) * aPartialTicks), -(aPlayer.lastTickPosZ + (aPlayer.posZ - aPlayer.lastTickPosZ) * aPartialTicks));
+		GL11.glTranslated(aX + 0.5, aY + 0.5, aZ + 0.5);
+		codechicken.lib.vec.Rotation.sideRotations[aSide].glApply();
+		GL11.glTranslated(0, -0.501, 0);
+		GL11.glLineWidth(2.0F);
+		GL11.glColor4d(0, 0, 0, 0.5);
+		GL11.glBegin(GL11.GL_LINES);
+		GL11.glVertex3d(+0.50, 0, -0.25);
+		GL11.glVertex3d(-0.50, 0, -0.25);
+		GL11.glVertex3d(+0.50, 0, +0.25);
+		GL11.glVertex3d(-0.50, 0, +0.25);
+		GL11.glVertex3d(+0.25, 0, -0.50);
+		GL11.glVertex3d(+0.25, 0, +0.50);
+		GL11.glVertex3d(-0.25, 0, -0.50);
+		GL11.glVertex3d(-0.25, 0, +0.50);
+		switch(aSide) {
+		case SIDE_DOWN:
+			if (FACE_CONNECTED[SIDE_DOWN][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_UP][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.50);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				
+				GL11.glVertex3d(+0.50, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+				
+				GL11.glVertex3d(+0.50, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+				
+				GL11.glVertex3d(-0.50, 0, +0.50);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_NORTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+			}
+			if (FACE_CONNECTED[SIDE_SOUTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_WEST][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_EAST][aConnections]) {
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			break;
+		case SIDE_UP:
+			if (FACE_CONNECTED[SIDE_DOWN][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.50);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				
+				GL11.glVertex3d(+0.50, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+				
+				GL11.glVertex3d(+0.50, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+				
+				GL11.glVertex3d(-0.50, 0, +0.50);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_UP][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_NORTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_SOUTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+			}
+			if (FACE_CONNECTED[SIDE_WEST][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_EAST][aConnections]) {
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			break;
+		case SIDE_NORTH:
+			if (FACE_CONNECTED[SIDE_DOWN][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_UP][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+			}
+			if (FACE_CONNECTED[SIDE_NORTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_SOUTH][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.50);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				
+				GL11.glVertex3d(+0.50, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+				
+				GL11.glVertex3d(+0.50, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+				
+				GL11.glVertex3d(-0.50, 0, +0.50);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_WEST][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_EAST][aConnections]) {
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			break;
+		case SIDE_SOUTH:
+			if (FACE_CONNECTED[SIDE_DOWN][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+			}
+			if (FACE_CONNECTED[SIDE_UP][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_NORTH][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.50);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				
+				GL11.glVertex3d(+0.50, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+				
+				GL11.glVertex3d(+0.50, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+				
+				GL11.glVertex3d(-0.50, 0, +0.50);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_SOUTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_WEST][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_EAST][aConnections]) {
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			break;
+		case SIDE_WEST:
+			if (FACE_CONNECTED[SIDE_DOWN][aConnections]) {
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_UP][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_NORTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+			}
+			if (FACE_CONNECTED[SIDE_SOUTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_WEST][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_EAST][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.50);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				
+				GL11.glVertex3d(+0.50, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+				
+				GL11.glVertex3d(+0.50, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+				
+				GL11.glVertex3d(-0.50, 0, +0.50);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.50);
+			}
+			break;
+		case SIDE_EAST:
+			if (FACE_CONNECTED[SIDE_DOWN][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_UP][aConnections]) {
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			if (FACE_CONNECTED[SIDE_NORTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+			}
+			if (FACE_CONNECTED[SIDE_SOUTH][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_WEST][aConnections]) {
+				GL11.glVertex3d(-0.50, 0, -0.50);
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(-0.50, 0, -0.25);
+				GL11.glVertex3d(-0.25, 0, -0.50);
+				
+				GL11.glVertex3d(+0.50, 0, +0.50);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(+0.50, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, +0.50);
+				
+				GL11.glVertex3d(+0.50, 0, -0.50);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+				GL11.glVertex3d(+0.50, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, -0.50);
+				
+				GL11.glVertex3d(-0.50, 0, +0.50);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(-0.50, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.50);
+			}
+			if (FACE_CONNECTED[SIDE_EAST][aConnections]) {
+				GL11.glVertex3d(-0.25, 0, -0.25);
+				GL11.glVertex3d(+0.25, 0, +0.25);
+				GL11.glVertex3d(-0.25, 0, +0.25);
+				GL11.glVertex3d(+0.25, 0, -0.25);
+			}
+			break;
+		}
+		GL11.glEnd();
+		GL11.glPopMatrix();
 	}
 }

@@ -42,6 +42,7 @@ import gregapi.network.packets.PacketBlockEvent;
 import gregapi.random.ExplosionGT;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.IRenderedBlockObject.ErrorRenderer;
+import gregapi.render.RenderHelper;
 import gregapi.tileentity.ITileEntity;
 import gregapi.tileentity.ITileEntityGUI;
 import gregapi.tileentity.data.ITileEntitySurface;
@@ -73,6 +74,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
@@ -864,6 +866,27 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean box(Block aBlock, float[] aBox) {aBlock.setBlockBounds(aBox[0], aBox[1], aBox[2], aBox[3], aBox[4], aBox[5]); return T;}
 	public boolean box(Block aBlock, double aMinX, double aMinY, double aMinZ, double aMaxX, double aMaxY, double aMaxZ) {aBlock.setBlockBounds((float)aMinX, (float)aMinY, (float)aMinZ, (float)aMaxX, (float)aMaxY, (float)aMaxZ); return T;}
 	
+	// Default Overlay Code
+	
+	public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {
+		return F;
+	}
+	
+	public boolean isConnectedWrenchingOverlay(ItemStack aStack, byte aSide) {
+		return F;
+	}
+	
+	public boolean onDrawBlockHighlight2(DrawBlockHighlightEvent aEvent) {return F;}
+	
+	public final boolean onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
+		if (!SIDES_VALID[aEvent.target.sideHit] || onDrawBlockHighlight2(aEvent)) return T;
+		byte tConnections = 0; for (byte i = 0; i < 6; i++) if (isConnectedWrenchingOverlay(aEvent.currentItem, i)) tConnections |= (1 << i);
+		if (ST.valid(aEvent.currentItem) && isUsingWrenchingOverlay(aEvent.currentItem, (byte)aEvent.target.sideHit)) {
+			RenderHelper.drawWrenchOverlay(aEvent.player, aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ, tConnections, (byte)aEvent.target.sideHit, aEvent.partialTicks);
+			return T;
+		}
+		return T;
+	}
 	
 	// Error things
 	

@@ -26,8 +26,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -67,6 +65,7 @@ import gregapi.recipes.AdvancedCrafting1ToY;
 import gregapi.recipes.AdvancedCraftingXToY;
 import gregapi.render.ITexture;
 import gregapi.render.IconContainerCopied;
+import gregapi.render.RenderHelper;
 import gregapi.render.RendererBlockTextured;
 import gregapi.tileentity.render.ITileEntityOnDrawBlockHighlight;
 import gregapi.util.OM;
@@ -546,37 +545,11 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		TileEntity aTileEntity = WD.te(aEvent.player.worldObj, aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ, T);
 		if (!(aTileEntity instanceof ITileEntityOnDrawBlockHighlight) || !((ITileEntityOnDrawBlockHighlight)aTileEntity).onDrawBlockHighlight(aEvent)) {
 			if ((ROTATABLE_VANILLA_BLOCKS.contains(aBlock) || (ToolCompat.IC_WRENCHABLE && aTileEntity instanceof ic2.api.tile.IWrenchable)) && ST.valid(aEvent.currentItem) && ToolsGT.contains(TOOL_wrench, aEvent.currentItem)) {
-				drawGrid(aEvent);
+				RenderHelper.drawWrenchOverlay(aEvent.player, aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ, (byte)0, (byte)aEvent.target.sideHit, aEvent.partialTicks);
 				return;
 			}
 		}
 	}
 	
 	private static List<Block> ROTATABLE_VANILLA_BLOCKS = Arrays.asList(Blocks.piston, Blocks.sticky_piston, Blocks.furnace, Blocks.lit_furnace, Blocks.dropper, Blocks.dispenser, Blocks.chest, Blocks.trapped_chest, Blocks.ender_chest, Blocks.hopper, Blocks.pumpkin, Blocks.lit_pumpkin);
-	
-	private static void drawGrid(DrawBlockHighlightEvent aEvent) {
-		try {
-			Class.forName("codechicken.lib.vec.Rotation");
-			GL11.glPushMatrix();
-			GL11.glTranslated(-(aEvent.player.lastTickPosX + (aEvent.player.posX - aEvent.player.lastTickPosX) * aEvent.partialTicks), -(aEvent.player.lastTickPosY + (aEvent.player.posY - aEvent.player.lastTickPosY) * aEvent.partialTicks), -(aEvent.player.lastTickPosZ + (aEvent.player.posZ - aEvent.player.lastTickPosZ) * aEvent.partialTicks));
-			GL11.glTranslated(aEvent.target.blockX + 0.5F, aEvent.target.blockY + 0.5F, aEvent.target.blockZ + 0.5F);
-			codechicken.lib.vec.Rotation.sideRotations[aEvent.target.sideHit].glApply();
-			GL11.glTranslated(0, -0.501, 0);
-			GL11.glLineWidth(2.0F);
-			GL11.glColor4f(0, 0, 0, 0.5F);
-			GL11.glBegin(GL11.GL_LINES);
-			GL11.glVertex3d( 0.50, 0, -0.25);
-			GL11.glVertex3d(-0.50, 0, -0.25);
-			GL11.glVertex3d( 0.50, 0,  0.25);
-			GL11.glVertex3d(-0.50, 0,  0.25);
-			GL11.glVertex3d( 0.25, 0, -0.50);
-			GL11.glVertex3d( 0.25, 0,  0.50);
-			GL11.glVertex3d(-0.25, 0, -0.50);
-			GL11.glVertex3d(-0.25, 0,  0.50);
-			GL11.glEnd();
-			GL11.glPopMatrix();
-		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
-		}
-	}
 }
