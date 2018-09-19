@@ -30,15 +30,26 @@ eclipse {
 	}
 }
 
-// This is filled out lower down in the file
 def eclipseRuntimeClasspath = ""
 def eclipseRuntimeClasspathTemplate = "<listEntry value=\"&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#10;&lt;runtimeClasspathEntry externalArchive=&quot;@@PATH@@&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;&#10;\"/>\n"
 
 task eclipseForgeWorkspace(type: Copy) {
-	from ".meta/eclipse/.metadata"
+	doFirst {
+		sourceSets.main.runtimeClasspath.collect {
+			eclipseRuntimeClasspath += eclipseRuntimeClasspathTemplate.replaceAll('@@PATH@@', it.toString())
+			""
+		}
+	}
+	from(".meta/eclipse/.metadata") {
+		include '**/*.template'
+		rename { it.replace '.template', '' }
+		filter { it.replaceAll('@@eclipseRuntimeClasspath@@', eclipseRuntimeClasspath) }
+		//rename '(.*).template', '$1'
+	}
+	from(".meta/eclipse/.metadata") {
+		exclude '**/*.launch'
+	}
 	into "eclipse/.metadata"
-	// This must remain in a closure to run after the lower file block is run
-	filter { it.replaceAll('@@eclipseRuntimeClasspath@@', eclipseRuntimeClasspath) }
 }
 
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -167,14 +178,6 @@ runClient {
 
 runServer {
 	jvmArgs "-Xms4096m", "-Xms1024m"
-}
-
-// Yes this has to be down here for some reason...
-afterEvaluate {
-	//println sourceSets
-	sourceSets.main.runtimeClasspath.each {
-		eclipseRuntimeClasspath += eclipseRuntimeClasspathTemplate.replaceAll('@@PATH@@', it.toString())
-	}
 }
 
 processResources {
