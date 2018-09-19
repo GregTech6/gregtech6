@@ -173,11 +173,11 @@ dependencies {
 }
 
 runClient {
-	jvmArgs "-Xms4096m", "-Xms1024m"
+	jvmArgs "-Xmx4096m", "-Xms1024m"
 }
 
 runServer {
-	jvmArgs "-Xms4096m", "-Xms1024m"
+	jvmArgs "-Xmx4096m", "-Xms1024m"
 }
 
 processResources {
