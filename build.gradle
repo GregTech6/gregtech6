@@ -34,15 +34,22 @@ def eclipseRuntimeClasspath = ""
 def eclipseRuntimeClasspathTemplate = "<listEntry value=\"&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#10;&lt;runtimeClasspathEntry externalArchive=&quot;@@PATH@@&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;&#10;\"/>\n"
 
 task eclipseForgeWorkspace(type: Copy) {
-	from ".meta/eclipse/.metadata"
-	into "eclipse/.metadata"
-	filter { it.replaceAll('@@eclipseRuntimeClasspath@@', eclipseRuntimeClasspath) }
 	doFirst {
 		sourceSets.main.runtimeClasspath.collect {
 			eclipseRuntimeClasspath += eclipseRuntimeClasspathTemplate.replaceAll('@@PATH@@', it.toString())
 			""
 		}
 	}
+	from(".meta/eclipse/.metadata") {
+		include '**/*.template'
+		rename { it.replace '.template', '' }
+		filter { it.replaceAll('@@eclipseRuntimeClasspath@@', eclipseRuntimeClasspath) }
+		//rename '(.*).template', '$1'
+	}
+	from(".meta/eclipse/.metadata") {
+		exclude '**/*.launch'
+	}
+	into "eclipse/.metadata"
 }
 
 import org.apache.tools.ant.taskdefs.condition.Os
