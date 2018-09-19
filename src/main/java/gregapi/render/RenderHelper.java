@@ -102,7 +102,7 @@ public class RenderHelper {
 		GL11.glTranslated(-(aPlayer.lastTickPosX + (aPlayer.posX - aPlayer.lastTickPosX) * aPartialTicks), -(aPlayer.lastTickPosY + (aPlayer.posY - aPlayer.lastTickPosY) * aPartialTicks), -(aPlayer.lastTickPosZ + (aPlayer.posZ - aPlayer.lastTickPosZ) * aPartialTicks));
 		GL11.glTranslated(aX + 0.5, aY + 0.5, aZ + 0.5);
 		codechicken.lib.vec.Rotation.sideRotations[aSide].glApply();
-		GL11.glTranslated(0, -0.501, 0);
+		GL11.glTranslated(0, -0.5025, 0);
 		GL11.glLineWidth(2.0F);
 		GL11.glColor4d(0, 0, 0, 0.5);
 		GL11.glBegin(GL11.GL_LINES);
