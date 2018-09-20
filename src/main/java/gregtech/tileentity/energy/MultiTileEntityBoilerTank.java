@@ -29,6 +29,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RemovedByPlayer;
 import gregapi.code.TagData;
 import gregapi.data.BI;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -129,7 +130,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 			if (mCoolDownResetTimer-- <= 0) {
 				mCoolDownResetTimer = 0;
 				mEnergy -= (mOutput * 4) / STEAM_PER_EU;
-				mTanks[1].remove(mOutput * 4);
+				GarbageGT.trash(mTanks[1], mOutput * 4);
 				if (mEnergy <= 0) {
 					mEnergy = 0;
 					mCoolDownResetTimer = 128;
