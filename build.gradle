@@ -248,9 +248,9 @@ uploadArchives {
 			repository(url: "http://maven.gregtech.overminddl1.com/upload") {
 				authentication(userName: mavenUsername, password: mavenPassword)
 			}
-			pom*.whenConfigured {
-				pom -> pom.dependencies.clear()
-			}
+		//	pom*.whenConfigured {
+		//		pom -> pom.dependencies.clear()
+		//	}
 		}
 	}
 }
