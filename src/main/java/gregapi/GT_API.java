@@ -248,6 +248,7 @@ public class GT_API extends Abstract_Mod {
 		} catch(Throwable e) {
 			UT.Reflection.callMethod(Material.tnt, "func_85158_p", T, F, F);
 			UT.Reflection.callMethod(Material.tnt, "setAdventureModeExempt", T, F, F);
+			e.printStackTrace(DEB);
 		}
 		
 		Set<Block> tSet = (Set<Block>)UT.Reflection.getFieldContent(ItemAxe.class, "field_150917_c", T, T);
@@ -317,8 +318,8 @@ public class GT_API extends Abstract_Mod {
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onIDChanging(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 	}
 	
-	@SuppressWarnings("resource")
 	@Override
+	@SuppressWarnings("resource")
 	public void onModPreInit2(FMLPreInitializationEvent aEvent) {
 		try {
 			OUT.println(getModNameForLog() + ": Sorting Greg-API to the start of the Mod List for further processing.");
