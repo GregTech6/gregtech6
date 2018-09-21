@@ -194,6 +194,12 @@ task wrapper(type: Wrapper) {
 	gradleVersion = '2.14.1'
 }
 
+jar {
+	manifest {
+		attributes 'FMLAT': 'gregtech_at.cfg'
+	}
+}
+
 task sourceJar(type: Jar) {
 	manifest {}
 	classifier = 'sources'
@@ -202,14 +208,18 @@ task sourceJar(type: Jar) {
 }
 
 task devJar(type: Jar) {
-	manifest {}
+	manifest {
+		attributes 'FMLAT': 'gregtech_at.cfg'
+	}
 	classifier = 'dev'
 	from sourceSets.main.output
 }
 
 task coreJar(type: Jar) {
 	dependsOn jar
-	manifest {}
+	manifest {
+		attributes 'FMLAT': 'gregtech_at.cfg'
+	}
 	classifier = 'core'
 	from sourceSets.main.output
 	exclude('gregtech/**')
