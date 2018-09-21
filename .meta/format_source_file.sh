@@ -8,7 +8,7 @@ TAB=$(printf '\t')
 ORIGINAL_HEADER="$(sed '/^package/Q' "$1")"
 
 if [ "$LICENSE_HEADER" = "$ORIGINAL_HEADER" ] && ! grep -Eq "(^    |[^$TAB]$TAB)" "$1"; then
-	echo "Already formatted: $1"
+	# echo "Already formatted: $1"
 	exit 0
 else
 	echo "$(tput bold)Formatting: $1$(tput sgr0)"
@@ -24,4 +24,3 @@ else
 	# And finally remove the tmp file
 	rm "$1.tmp"
 fi
-
