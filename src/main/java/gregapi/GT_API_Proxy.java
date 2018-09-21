@@ -543,7 +543,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								float tHeat = UT.Entities.getHeatDamageFromItem(tStack);
 								if (tHeat != 0.0F) if (tHeat > 0) UT.Entities.applyHeatDamage(aEvent.player, tHeat); else UT.Entities.applyFrostDamage(aEvent.player, -tHeat);
 							}
-							if (tData != null && (tData.mMaterial.mMaterial == MT.Bedrockium || tData.mMaterial.mMaterial == MT.Neutronium) && (tData.mPrefix != null || tData.mByProducts.length <= 0)) {
+							if (tData != null && tData.mMaterial != null && (tData.mMaterial.mMaterial == MT.Bedrockium || tData.mMaterial.mMaterial == MT.Neutronium) && (tData.mPrefix != null || tData.mByProducts.length <= 0)) {
 								PotionEffect tEffect = null;
 								aEvent.player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, Math.max(140, ((tEffect = aEvent.player.getActivePotionEffect(Potion.moveSlowdown))==null?0:tEffect.getDuration())), 3));
 							}
