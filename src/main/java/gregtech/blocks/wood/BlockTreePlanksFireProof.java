@@ -43,7 +43,7 @@ public class BlockTreePlanksFireProof extends BlockBasePlanks {
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".9.name", "Wood Planks (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", "Wood Planks (Fireproof)");
+		LH.add(getUnlocalizedName()+".10.name", "Treated Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".11.name", "Empty Crate (Fireproof)");
 		LH.add(getUnlocalizedName()+".12.name", "Dead Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".13.name", "Rotten Planks (Fireproof)");
@@ -68,7 +68,7 @@ public class BlockTreePlanksFireProof extends BlockBasePlanks {
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".9.name", "Wood Slab (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", "Wood Slab (Fireproof)");
+		LH.add(getUnlocalizedName()+".10.name", "Treated Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+".11.name", "Empty Crate Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+".12.name", "Dead Slab (Fireproof)");
 		LH.add(getUnlocalizedName()+".13.name", "Rotten Slab (Fireproof)");
