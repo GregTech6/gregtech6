@@ -54,7 +54,6 @@ import gregapi.tileentity.inventories.ITileEntityBookShelf;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import mcp.mobius.waila.api.IWailaBlock;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
@@ -99,7 +98,7 @@ import openblocks.api.IPaintableBlock;
 , @Optional.Interface(iface = "mcp.mobius.waila.api.IWailaBlock", modid = ModIDs.WAILA)
 })
 @SuppressWarnings("deprecation")
-public class MultiTileEntityBlock extends Block implements IBlockErrorable, IBlockOnWalkOver, IBlockSealable, IOxygenReliantBlock, IPaintableBlock, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial, IWailaBlock {
+public class MultiTileEntityBlock extends Block implements IBlockErrorable, IBlockOnWalkOver, IBlockSealable, IOxygenReliantBlock, IPaintableBlock, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial, mcp.mobius.waila.api.IWailaBlock {
 	/** There are quite some odd timings in the Block breaking Code which require the TileEntity to be buffered. */
 	public static ThreadLocal<TileEntity> sTemporaryTileEntity = new ThreadLocal<>();
 	

@@ -28,7 +28,6 @@ import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.old.IGT_RecipeAdder;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -44,7 +43,7 @@ public class Loader_MachineRecipes implements Runnable {
 	public void run() {
 		OUT.println("GT_Mod: Adding non-OreDict Machine Recipes.");
 		@SuppressWarnings("deprecation")
-		IGT_RecipeAdder RA = IGT_RecipeAdder.NON_WORKING;
+		gregapi.old.IGT_RecipeAdder RA = gregapi.old.IGT_RecipeAdder.NON_WORKING;
 		
 //      RA.addPrinterRecipe(OM.get(OP.plateDouble, MT.Paper, 1), UT.Fluids.make("squidink", (int)L / 4), NI, IL.Paper_Punch_Card_Empty.get(1), 100, 2);
 //      RA.addPrinterRecipe(IL.Paper_Punch_Card_Empty.get(1), UT.Fluids.make("squidink", (int)L / 4), IL.Tool_DataStick.getWithName(0, "With Punch Card Data"), IL.Paper_Punch_Card_Encoded.get(1), 100, 2);
