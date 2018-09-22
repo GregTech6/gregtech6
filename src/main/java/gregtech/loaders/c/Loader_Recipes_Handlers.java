@@ -549,6 +549,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)  , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, sExtruderSimple));
 	}
 	
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private static void addExtruderRecipe(OreDictPrefix aInput, OreDictPrefix aOutput, boolean aHot, ItemStack aShape, ICondition<OreDictMaterial> aCondition) {
 		if (aInput == aOutput) return;
 		long tInputAmount = 1, tOutputAmount = 1;
@@ -556,7 +557,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		if (tInputAmount > 64 || tOutputAmount < 1) return;
 		if (tOutputAmount > 64) tOutputAmount = 64;
 		if (aHot)
-		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 96, 0                                                       , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And<>(aCondition, sExtruderNormal)));
-		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)  , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And<>(aCondition, sExtruderSimple)));
+		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 96, 0                                                       , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And(aCondition, sExtruderNormal)));
+		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)  , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And(aCondition, sExtruderSimple)));
 	}
 }
