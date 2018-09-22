@@ -15,6 +15,10 @@ buildscript {
 	}
 }
 
+group = "com.gregoriust.gregtech"
+archivesBaseName = "gregtech_1.7.10"
+version = "6.09.02"
+
 allprojects {
 	tasks.withType(JavaCompile) {
 		options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
@@ -140,9 +144,6 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 compileJava.options.bootClasspath = org.gradle.internal.jvm.Jvm.current().getJre().getHomeDir().toString() +"/lib/rt.jar"
 
-group= "com.gregoriust.gregtech"
-archivesBaseName = "gregtech_1.7.10"
-version = "6.09.01"
 
 minecraft {
 	version = "1.7.10-10.13.4.1614-1.7.10"
