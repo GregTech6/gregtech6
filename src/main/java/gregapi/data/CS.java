@@ -1607,6 +1607,8 @@ public class CS {
 		
 		, QT                = "qwertech"
 		
+		, WAILA             = "Waila"
+		
 		, IC2               = "IC2"
 		, IC2C              = "IC2-Classic-Spmod"
 		
