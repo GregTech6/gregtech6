@@ -321,21 +321,6 @@ public class GT_API extends Abstract_Mod {
 	@Override
 	@SuppressWarnings("resource")
 	public void onModPreInit2(FMLPreInitializationEvent aEvent) {
-		try {
-			OUT.println(getModNameForLog() + ": Sorting Greg-API to the start of the Mod List for further processing.");
-			LoadController tLoadController = ((LoadController)UT.Reflection.getFieldContent(Loader.instance(), "modController", T, T));
-			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList<>(tModList.size());
-			ModContainer tGregTech = null;
-			for (short i = 0; i < tModList.size(); i++) {
-				ModContainer tMod = tModList.get(i);
-				if (tMod.getModId().equalsIgnoreCase(MD.GAPI.mID)) tGregTech = tMod; else tNewModsList.add(tMod);
-			}
-			if (tGregTech != null) tNewModsList.add(0, tGregTech);
-			UT.Reflection.getField(tLoadController, "activeModList", T, T).set(tLoadController, tNewModsList);
-		} catch(Throwable e) {
-			if (D1) e.printStackTrace(ERR);
-		}
-		
 		File
 		tFile = new File(DirectoriesGT.CONFIG_GT, "IDs.cfg");
 		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "ids.cfg");
@@ -406,9 +391,11 @@ public class GT_API extends Abstract_Mod {
 			try {mPlayerLogger = new LoggerPlayerActivity(new PrintStream(tFile));} catch (Throwable e) {/*Do nothing*/}
 		}
 		
-		D1 = tMainConfig.get("general", "Debug1", F).getBoolean(F);
-		D2 = tMainConfig.get("general", "Debug2", F).getBoolean(F);
-		D3 = tMainConfig.get("general", "Debug3", F).getBoolean(F);
+		ConfigsGT.CLIENT = new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");
+		
+		D1 = ConfigsGT.CLIENT.get("debug" , "logs"    , F);
+		D2 = ConfigsGT.CLIENT.get("debug" , "oredict" , F);
+		D3 = ConfigsGT.CLIENT.get("debug" , "misc"    , F);
 		
 		if (D1) {
 			tList = ((LogBuffer)DEB).mBufferedLog;
@@ -522,8 +509,6 @@ public class GT_API extends Abstract_Mod {
 		
 		tMainConfig.save();
 		tStackConfig.save();
-		
-		ConfigsGT.CLIENT                    = new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");
 		
 		SHOW_HIDDEN_ITEMS                   = ConfigsGT.CLIENT.get("visibility" , "HiddenGTItems"           , F);
 		SHOW_HIDDEN_MATERIALS               = ConfigsGT.CLIENT.get("visibility" , "HiddenGTMaterials"       , F);
@@ -652,6 +637,21 @@ public class GT_API extends Abstract_Mod {
 		// Preventing a Water Dupe by registering this Recipe early so it won't be overridden
 		RM.Canner.addRecipe1(T, 16, 16, ST.make(Items.glass_bottle, 1, 0), FL.Water.make(250), NF, ST.make(Items.potionitem, 1, 0));
 		RM.Canner.addRecipe1(T, 16, 16, ST.make(Items.potionitem, 1, 0), ST.make(Items.glass_bottle, 1, 0));
+		
+		try {
+			OUT.println(getModNameForLog() + ": Sorting Greg-API to the start of the Mod List for further processing.");
+			LoadController tLoadController = ((LoadController)UT.Reflection.getFieldContent(Loader.instance(), "modController", T, T));
+			List<ModContainer> tModList = tLoadController.getActiveModList(), tNewModsList = new ArrayList<>(tModList.size());
+			ModContainer tGregTech = null;
+			for (short i = 0; i < tModList.size(); i++) {
+				ModContainer tMod = tModList.get(i);
+				if (tMod.getModId().equalsIgnoreCase(MD.GAPI.mID)) tGregTech = tMod; else tNewModsList.add(tMod);
+			}
+			if (tGregTech != null) tNewModsList.add(0, tGregTech);
+			UT.Reflection.getField(tLoadController, "activeModList", T, T).set(tLoadController, tNewModsList);
+		} catch(Throwable e) {
+			if (D1) e.printStackTrace(ERR);
+		}
 		
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPreLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 	}

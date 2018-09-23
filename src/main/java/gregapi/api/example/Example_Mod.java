@@ -19,8 +19,6 @@
 
 package gregapi.api.example;
 
-import gregapi.code.ModData;
-
 /**
  * @author Max Mustermann
  * 
@@ -47,7 +45,7 @@ public final class Example_Mod extends gregapi.api.Abstract_Mod {
 	/** This is your Mods Version */
 	public static final String VERSION = "EXAMPLE-MC1710"; // <-- TODO: you need to change this to the Version of your own Mod, and then remove this Comment after you did that.
 	/** Contains a ModData Object for ID and Name. Doesn't have to be changed. */
-	public static ModData MOD_DATA = new ModData(MOD_ID, MOD_NAME);
+	public static gregapi.code.ModData MOD_DATA = new gregapi.code.ModData(MOD_ID, MOD_NAME);
 	
 	@cpw.mods.fml.common.SidedProxy(modId = MOD_ID, clientSide = "gregapi.api.example.Example_Proxy_Client", serverSide = "gregapi.api.example.Example_Proxy_Server")
 	public static gregapi.api.Abstract_Proxy PROXY;
