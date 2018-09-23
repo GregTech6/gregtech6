@@ -54,8 +54,6 @@ import gregapi.tileentity.inventories.ITileEntityBookShelf;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -95,10 +93,9 @@ import openblocks.api.IPaintableBlock;
 @Optional.InterfaceList(value = {
   @Optional.Interface(iface = "openblocks.api.IPaintableBlock", modid = ModIDs.OB)
 , @Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock", modid = ModIDs.GC)
-, @Optional.Interface(iface = "mcp.mobius.waila.api.IWailaBlock", modid = ModIDs.WAILA)
 })
 @SuppressWarnings("deprecation")
-public class MultiTileEntityBlock extends Block implements IBlockErrorable, IBlockOnWalkOver, IBlockSealable, IOxygenReliantBlock, IPaintableBlock, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial, mcp.mobius.waila.api.IWailaBlock {
+public class MultiTileEntityBlock extends Block implements IBlockErrorable, IBlockOnWalkOver, IBlockSealable, IOxygenReliantBlock, IPaintableBlock, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial {
 	/** There are quite some odd timings in the Block breaking Code which require the TileEntity to be buffered. */
 	public static ThreadLocal<TileEntity> sTemporaryTileEntity = new ThreadLocal<>();
 	
@@ -275,6 +272,7 @@ public class MultiTileEntityBlock extends Block implements IBlockErrorable, IBlo
 	@Override public final void randomDisplayTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof IMTE_RandomDisplayTick) ((IMTE_RandomDisplayTick)aTileEntity).randomDisplayTick(aRandom); else super.randomDisplayTick(aWorld, aX, aY, aZ, aRandom);}
 	@Override public final void onBlockExploded(World aWorld, int aX, int aY, int aZ, Explosion aExplosion) {if (aWorld.isRemote) return; TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); sTemporaryTileEntity.set(aTileEntity); if (aTileEntity instanceof IMTE_OnBlockExploded) ((IMTE_OnBlockExploded)aTileEntity).onExploded(aExplosion); else aWorld.setBlockToAir(aX, aY, aZ);}
 	@Override public final ItemStack getPickBlock(MovingObjectPosition aTarget, World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); return aTileEntity instanceof IMTE_GetPickBlock?((IMTE_GetPickBlock)aTileEntity).getPickBlock(aTarget):null;}
+	@Override public final ItemStack getPickBlock(MovingObjectPosition aTarget, World aWorld, int aX, int aY, int aZ                      ) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); return aTileEntity instanceof IMTE_GetPickBlock?((IMTE_GetPickBlock)aTileEntity).getPickBlock(aTarget):null;}
 	@Override public final ItemStack getItemStackFromBlock(IBlockAccess aWorld, int aX, int aY, int aZ, byte aSide) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); return aTileEntity instanceof IMTE_GetStackFromBlock?((IMTE_GetStackFromBlock)aTileEntity).getStackFromBlock(aSide):null;}
 	@Override public final int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); return aTileEntity instanceof IMTE_GetFlammability ? ((IMTE_GetFlammability)aTileEntity).getFlammability(UT.Code.side(aSide), getMaterial().getCanBurn()) : getMaterial().getCanBurn() ? 150 : 0;}
 	@Override public final int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); return aTileEntity instanceof IMTE_GetFireSpreadSpeed ? ((IMTE_GetFireSpreadSpeed)aTileEntity).getFireSpreadSpeed(UT.Code.side(aSide), getMaterial().getCanBurn()) : getMaterial().getCanBurn() ? 150 : 0;}
@@ -332,8 +330,4 @@ public class MultiTileEntityBlock extends Block implements IBlockErrorable, IBlo
 	@Override public final boolean isSealed(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); return aTileEntity instanceof IMTE_IsSealable && ((IMTE_IsSealable)aTileEntity).isSealable((byte)(UT.Code.side(aDirection) ^ 1));}
 	@Override public final void onOxygenAdded  (World aWorld, int aX, int aY, int aZ) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof IMTE_OnOxygenAdded  ) ((IMTE_OnOxygenAdded  )aTileEntity).onOxygenAdded  ();}
 	@Override public final void onOxygenRemoved(World aWorld, int aX, int aY, int aZ) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof IMTE_OnOxygenRemoved) ((IMTE_OnOxygenRemoved)aTileEntity).onOxygenRemoved();}
-	@Override @Optional.Method(modid = ModIDs.WAILA) public List<String> getWailaHead(ItemStack aStack, List<String> aTooltips, IWailaDataAccessor aAccessor, IWailaConfigHandler aConfig) {ItemStack tStack = getWailaStack(aAccessor, aConfig); if (ST.valid(tStack)) aTooltips.add(tStack.getDisplayName()); return aTooltips;}
-	@Override @Optional.Method(modid = ModIDs.WAILA) public List<String> getWailaBody(ItemStack aStack, List<String> aTooltips, IWailaDataAccessor aAccessor, IWailaConfigHandler aConfig) {return aTooltips;}
-	@Override @Optional.Method(modid = ModIDs.WAILA) public List<String> getWailaTail(ItemStack aStack, List<String> aTooltips, IWailaDataAccessor aAccessor, IWailaConfigHandler aConfig) {return aTooltips;}
-	@Override @Optional.Method(modid = ModIDs.WAILA) public ItemStack getWailaStack(IWailaDataAccessor aAccessor, IWailaConfigHandler aConfig) {List<ItemStack> tDrops = getDrops(aAccessor.getWorld(), aAccessor.getPosition().blockX, aAccessor.getPosition().blockY, aAccessor.getPosition().blockZ, 0, 0); return tDrops.isEmpty() ? null : tDrops.get(0);}
 }
