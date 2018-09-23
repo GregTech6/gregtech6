@@ -114,9 +114,9 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	public void onProxyBeforePreInit(Abstract_Mod aMod, FMLPreInitializationEvent aEvent) {
 		super.onProxyBeforePreInit(aMod, aEvent);
 		new Thread(new Runnable() {@Override public void run() {
-		String[]
-		tSupporterListGoldDefault = new String[] {"Bear989Sr", "ElectroBot", "Ilirith", "Ngar", "Vash505", "stephen_2015", "Totilus", "mrgreenacid", "Asturrial", "DarkYuan", "tyra_oa", "seregheru", "Sovereignty89", "TheWorstPHO", "e99999", "PrivateDijon", "djflippy", "TOFUFreak", "SweetyLizard", "repo_alt", "ihategravel22", "WindowsBunny", "abestone2", "crepes_r_us", "adamcirillo", "Buuz135", "123mcprorot123", "Schlaibi", "MarconosII", "k0jul", "Trilexcom", "laurynasl", "Axlegear", "mtimmerije", "FPSaddiction", "Yabdat", "Goshen", "InsaneyHaney", "KrotanHill", "buizerd007", "Lehran", "GrandKaiser", "kei_kouma", "Mehrin", "leagris", "BloodyAsp", "kehaan", "Mine_Sasha", "DarthUmbris"},
-		tSupporterListSilverDefault = new String[] {"Bear989jr", "ultrasn0wz", "NanoHeart_", "Briareos1981", "XxinsanityxX", "Bladezz88", "Spungebubb", "estebes", "cmclouser", "ArchonCerulean", "Ray_CZ", "stepgoku", "phone1246", "msmilkshake", "Xyic0re", "FenixElite", "Nohicom", "pitchcherry", "MatthieuLeDieu", "Nicholas_Manuel", "Stijn_A", "negersvend", "jorstar", "Ralacroix", "ManuCortex", "Raganork", "TexanMD", "Morehatz", "MiniKatalyst", "Thanatos_00", "Goshen_Ithilien", "TheSkera", "LuxusDarkangel", "Ashleee", "Pit_of_Darkness", "DoughnutDev", "GeekTechMedia", "Heph", "Mileaos2", "CodingWithClass", "UltraPeeks", "boredi", "Lushiita", "Moothox", "fry_lad", "cdaser", "renadi", "hanakocz", "GeoStyx", "Beardedflea", "MysteryDump", "Flaver4", "x_Fame", "Azuxul", "manf", "Bimgo", "leagris", "IAmMinecrafter02", "Cerous", "Devilin_Pixy", "Bkarlsson87", "BadAlchemy", "CaballoCraft", "melanclock", "Resursator", "demanzke", "AndrewAmmerlaan", "Deathlycraft", "Jirajha", "Axlegear", "kei_kouma", "Dracion", "dungi", "Dorfschwein", "Zero Tw0", "mattiagraz85", "sebastiank30", "Plem", "invultri", "grillo126", "malcanteth", "Malevolence_", "Nicholas_Manuel", "Sirbab", "kehaan", "bpgames123", "semig0d", "9000bowser", "Sovereignty89", "Kris1432", "xander_cage_", "XanderT", "samuraijp", "bsaa", "SpwnX", "tworf", "Kadah", "kanni", "Stute", "Hegik", "Onlyme", "t3hero", "Hotchi", "jagoly", "Nullav"/*, "nallar"*/, "BH5432", "Sibmer", "inceee", "foxxx0", "Hartok", "TMSama", "Shlnen", "Carsso", "zessirb", "meep310", "Seldron", "yttr1um", "hohounk", "freebug", "Sylphio", "jmarler", "Saberawr", "r00teniy", "Neonbeta", "yinscape", "voooon24", "Quintine", "peach774", "lepthymo", "bildeman", "Kremnari", "Aerosalo", "OndraSter", "oscares91", "crdl_pls", "Daxx367x2", "EGERTRONx", "aka13_404", "Abouttabs", "Johnstaal", "djshiny99", "megatronp", "DZCreeper", "Kane_Hart", "Truculent", "vidplace7", "simon6689", "MomoNasty", "UnknownXLV", "goreacraft", "Fluttermine", "Daddy_Cecil", "MrMaleficus", "TigersFangs", "cublikefoot", "chainman564", "NikitaBuker", "Misha999777", "25FiveDetail", "AntiCivilBoy", "michaelbrady"/*, "xXxIceFirexXx"*/, "Asutoro", "Speedynutty68", "GarretSidzaka", "HallowCharm977", "mastermind1919", "The_Hypersonic", "diamondguy2798", "zF4ll3nPr3d4t0r", "CrafterOfMines57", "XxELIT3xSNIP3RxX", "SuterusuKusanagi", "xavier0014", "Ultimaheart4", "Ultimabunny4", "adamros", "alexbegt"};
+//      String[]
+//      tSupporterListGoldDefault = new String[] {"Bear989Sr", "ElectroBot", "Ilirith", "Ngar", "Vash505", "stephen_2015", "Totilus", "mrgreenacid", "Asturrial", "DarkYuan", "tyra_oa", "seregheru", "Sovereignty89", "TheWorstPHO", "e99999", "PrivateDijon", "djflippy", "TOFUFreak", "SweetyLizard", "repo_alt", "ihategravel22", "WindowsBunny", "abestone2", "crepes_r_us", "adamcirillo", "Buuz135", "123mcprorot123", "Schlaibi", "MarconosII", "k0jul", "Trilexcom", "laurynasl", "Axlegear", "mtimmerije", "FPSaddiction", "Yabdat", "Goshen", "InsaneyHaney", "KrotanHill", "buizerd007", "Lehran", "GrandKaiser", "kei_kouma", "Mehrin", "leagris", "BloodyAsp", "kehaan", "Mine_Sasha", "DarthUmbris"},
+//      tSupporterListSilverDefault = new String[] {"Bear989jr", "ultrasn0wz", "NanoHeart_", "Briareos1981", "XxinsanityxX", "Bladezz88", "Spungebubb", "estebes", "cmclouser", "ArchonCerulean", "Ray_CZ", "stepgoku", "phone1246", "msmilkshake", "Xyic0re", "FenixElite", "Nohicom", "pitchcherry", "MatthieuLeDieu", "Nicholas_Manuel", "Stijn_A", "negersvend", "jorstar", "Ralacroix", "ManuCortex", "Raganork", "TexanMD", "Morehatz", "MiniKatalyst", "Thanatos_00", "Goshen_Ithilien", "TheSkera", "LuxusDarkangel", "Ashleee", "Pit_of_Darkness", "DoughnutDev", "GeekTechMedia", "Heph", "Mileaos2", "CodingWithClass", "UltraPeeks", "boredi", "Lushiita", "Moothox", "fry_lad", "cdaser", "renadi", "hanakocz", "GeoStyx", "Beardedflea", "MysteryDump", "Flaver4", "x_Fame", "Azuxul", "manf", "Bimgo", "leagris", "IAmMinecrafter02", "Cerous", "Devilin_Pixy", "Bkarlsson87", "BadAlchemy", "CaballoCraft", "melanclock", "Resursator", "demanzke", "AndrewAmmerlaan", "Deathlycraft", "Jirajha", "Axlegear", "kei_kouma", "Dracion", "dungi", "Dorfschwein", "Zero Tw0", "mattiagraz85", "sebastiank30", "Plem", "invultri", "grillo126", "malcanteth", "Malevolence_", "Nicholas_Manuel", "Sirbab", "kehaan", "bpgames123", "semig0d", "9000bowser", "Sovereignty89", "Kris1432", "xander_cage_", "XanderT", "samuraijp", "bsaa", "SpwnX", "tworf", "Kadah", "kanni", "Stute", "Hegik", "Onlyme", "t3hero", "Hotchi", "jagoly", "Nullav"/*, "nallar"*/, "BH5432", "Sibmer", "inceee", "foxxx0", "Hartok", "TMSama", "Shlnen", "Carsso", "zessirb", "meep310", "Seldron", "yttr1um", "hohounk", "freebug", "Sylphio", "jmarler", "Saberawr", "r00teniy", "Neonbeta", "yinscape", "voooon24", "Quintine", "peach774", "lepthymo", "bildeman", "Kremnari", "Aerosalo", "OndraSter", "oscares91", "crdl_pls", "Daxx367x2", "EGERTRONx", "aka13_404", "Abouttabs", "Johnstaal", "djshiny99", "megatronp", "DZCreeper", "Kane_Hart", "Truculent", "vidplace7", "simon6689", "MomoNasty", "UnknownXLV", "goreacraft", "Fluttermine", "Daddy_Cecil", "MrMaleficus", "TigersFangs", "cublikefoot", "chainman564", "NikitaBuker", "Misha999777", "25FiveDetail", "AntiCivilBoy", "michaelbrady"/*, "xXxIceFirexXx"*/, "Asutoro", "Speedynutty68", "GarretSidzaka", "HallowCharm977", "mastermind1919", "The_Hypersonic", "diamondguy2798", "zF4ll3nPr3d4t0r", "CrafterOfMines57", "XxELIT3xSNIP3RxX", "SuterusuKusanagi", "xavier0014", "Ultimaheart4", "Ultimabunny4", "adamros", "alexbegt"};
 		
 		if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) {
 			try {
@@ -138,16 +138,24 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		if (downloadSupporterListSilverFromMain()) {
 			OUT.println("GT_DL_Thread: Success downloading Silver Supporter List!");
 		} else {
-			OUT.println("GT_DL_Thread: Failed downloading Silver Supporter List, using Hardcoded!");
-			for (String tName : tSupporterListSilverDefault) mSupporterListSilver.add(tName.toLowerCase());
+			OUT.println("GT_DL_Thread: Failed downloading Silver Supporter List, using interal List!");
+			try {
+				Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlist.txt"));
+				while (tScanner.hasNextLine()) mSupporterListSilver.add(tScanner.nextLine().toLowerCase());
+				tScanner.close();
+			} catch(Throwable e) {e.printStackTrace(DEB);}
 		}
 		
 		OUT.println("GT_DL_Thread: Downloading Gold Supporter List.");
 		if (downloadSupporterListGoldFromMain()) {
 			OUT.println("GT_DL_Thread: Success downloading Gold Supporter List!");
 		} else {
-			OUT.println("GT_DL_Thread: Failed downloading Gold Supporter List, using Hardcoded!");
-			for (String tName : tSupporterListGoldDefault) mSupporterListGold.add(tName.toLowerCase());
+			OUT.println("GT_DL_Thread: Failed downloading Gold Supporter List, using interal List!");
+			try {
+				Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlistgold.txt"));
+				while (tScanner.hasNextLine()) mSupporterListGold.add(tScanner.nextLine().toLowerCase());
+				tScanner.close();
+			} catch(Throwable e) {e.printStackTrace(DEB);}
 		}
 		
 		try {
