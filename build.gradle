@@ -15,10 +15,6 @@ buildscript {
 	}
 }
 
-group = "com.gregoriust.gregtech"
-archivesBaseName = "gregtech_1.7.10"
-version = "6.09.02"
-
 allprojects {
 	tasks.withType(JavaCompile) {
 		options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
@@ -140,14 +136,22 @@ repositories {
 
 apply plugin: 'forge'
 
+group = "com.gregoriust.gregtech"
+archivesBaseName = "gregtech_1.7.10"
+version = "<UNKNOWN>"
+
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 compileJava.options.bootClasspath = org.gradle.internal.jvm.Jvm.current().getJre().getHomeDir().toString() +"/lib/rt.jar"
 
+configurations {
+	shade
+	compile.extendsFrom shade
+}
 
 minecraft {
 	version = "1.7.10-10.13.4.1614-1.7.10"
-	runDir = "assets"
+	runDir = "instance"
 }
 
 dependencies {
@@ -181,10 +185,85 @@ dependencies {
 	// This ComputerCraft thing is *SUCH* a hack, but ComputerCraft is... not
 	// right...  This only works because of CodeChickenCore Magic being included
 	// up above...
-	compileOnly "dan200.computercraft:ComputerCraft:1.75" 
+	compileOnly "dan200.computercraft:ComputerCraft:1.75"
 	compileOnly "openblocks:OpenBlocks:1.7.10-1.6-1.7.10:deobf"
 	compileOnly "openmods:OpenModsLib:1.7.10-0.10:deobf"
 	compileOnly "ic2:IC2Classic:1.2.1.8:dev"
+
+	// List of potentially useful mods that may or may not be linked in here:
+	//compileOnly "appeng:appliedenergistics2:rv3-beta-6:dev"
+	//compileOnly "applecore:AppleCore:1.7.10-3.1.1:deobf"
+	//compileOnly "binnie:binnie-mods:1.7.10-2.0.22:dev"
+	//compileOnly "blusunrize:ImmersiveEngineering:0.7.7:deobf"
+	//compileOnly "climateControl:ClimateControl:0.6.61" // Hack
+	//compileOnly "climateControl:ClimateControl:0.8.2" // Hack
+	//compileOnly "climateControl:climateControl:0.6.beta59:dev" // Does nothing but compiles successfully
+	//compileOnly "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
+	//compileOnly "codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev"
+	//compileOnly "codechicken:ForgeMultipart:1.7.10-1.2.0.347:dev"
+	//compileOnly "codechicken:NotEnoughItems:1.7.10-1.0.5.120:dev"
+	//compileOnly "cofh:CoFHCore:1.7.10R3.0.4:dev"
+	//compileOnly "cofh:CoFHLib:1.7.10R3.0.3:dev"
+	//compileOnly "com.InfinityRaider.AgriCraft:AgriCraft:1.7.10-1.5.0:dev"
+	//compileOnly "com.amadornes.framez:Framez:1.7.10-0.2-33:deobf"
+	//compileOnly "com.amadornes.jtraits:JTraits:0.1"
+	//compileOnly "com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf"
+	//compileOnly "com.bioxx.tfc:TerraFirmaCraft_1.7.10:0.79.28.908:deobf"
+	//compileOnly "com.bluepowermod:BluePower:1.7.10-0.2.963:deobf"
+	//compileOnly "com.builtbroken:ICBM:1.7.10-2.15.5b514:deobf-dev"
+	//compileOnly "com.builtbroken:VoltzEngine:1.7.10-1.11.0b466:deobf"
+	//compileOnly "com.carpentersblocks:CarpentersBlocks:3.3.8.2:dev"
+	//compileOnly "com.chocolate.chocolateQuest:chocolateQuest:1.7.10-1.1d" // Hack
+	//compileOnly "com.creativemd:craftingmanager:0.7.6:dev"
+	//compileOnly "com.creativemd:creativecore:1.3.24:dev"
+	//compileOnly "com.gregoriust.gregtech:gregtech_1.7.10:6.09.00:dev"
+	//compileOnly "com.mod-buildcraft:buildcraft:7.1.23:dev"
+	//compileOnly "com.rwtema.funkylocomotion:funky-locomotion-1.7.10:beta-7:deobf"
+	//compileOnly "com.wayoftime.bloodmagic:BloodMagic:1.7.10-1.3.3-18:deobf"
+	//compileOnly "com.xcompwiz:mystcraft:1.7.10-0.12.3.04:dev"
+	//compileOnly "dan200.computercraft:ComputerCraft:1.75" // Hack
+	//compileOnly "delvr.streams:Streams:1.7.10-0.3.4:deobf"
+	//compileOnly "enviromine:EnviroMine:1.3.124:deobf"
+	//compileOnly "extracells:ExtraCells:1.7.10-2.3.14b200:deobf"
+	//compileOnly "ic2:IC2Classic:1.2.1.8:dev"
+	//compileOnly "io.netty-opis:Netty-opis:4.0.23" // Needed for dev opis because it doesn't know how to specify dependencies properly
+	//compileOnly "java.moze_intel:ProjectE:1.7.10-PE1.10.1:dev"
+	//compileOnly "li.cil.oc:OpenComputers:MC1.7.10-1.7.2.1204:dev"
+	//compileOnly "mcp.mobius.opis:Opis:1.2.5_1.7.10:dev"
+	//compileOnly "mcp.mobius.waila:Waila:1.5.10_1.7.10:dev"
+	//compileOnly "mcp.mobius.waila:Waila:1.5.11-RC2-NONEI_1.7.10:dev"
+	//compileOnly "mekanism:MekanismAll:1.7.10-9.1.1.283:dev"
+	//compileOnly "micdoodle8.mods:Galacticraft-Planets:1.7-3.0.12.504:Dev"
+	//compileOnly "micdoodle8.mods:GalacticraftCore:1.7-3.0.12.504:Dev"
+	//compileOnly "micdoodle8.mods:MicdoodleCore:1.7-3.0.12.504:Dev"
+	//compileOnly "minechem:Minechem:1.7.10-6.0.407:dev"
+	//compileOnly "minetweaker:MineTweaker3:1.7.10-3.0.10:dev-full"
+	//compileOnly "mods.railcraft:Railcraft_1.7.10:9.12.3.0:dev"
+	//compileOnly "mrtjp:ForgeRelocation:0.0.1.4:dev"
+	//compileOnly "mrtjp:MrTJPCore:1.1.0.34:dev"
+	//compileOnly "mrtjp:ProjectRed:1.7.10-4.7.0pre11.52:dev"
+	//compileOnly "net.bdew:bdlib:1.9.4.110-mc1.7.10:dev"
+	//compileOnly "net.bdew:gendustry:1.6.4-133-mc1.7.10:dev"
+	//compileOnly "net.machinemuse:ModularPowersuits:1.7.10-0.11.1.114" // Hack
+	//compileOnly "net.machinemuse:Numina:0.4.1.105" // Hack
+	//compileOnly "net.sengir.forestry:forestry_1.7.10:4.2.16.64:dev"
+	//compileOnly "openblocks:OpenBlocks:1.7.10-1.6-1.7.10:deobf"
+	//compileOnly "openmods:OpenModsLib:1.7.10-0.10:deobf"
+	//compileOnly "pneumaticCraft:PneumaticCraft:1.7.10-1.12.7-153:userdev"
+	//compileOnly "powercrystals:MineFactoryReloaded:[1.7.10]2.8.2B1-201:dev"
+	//compileOnly "qmunity:QmunityLib:0.2.118:deobf"
+	//compileOnly "santa:hairy-spice:0.1:dev"
+	//compileOnly "team.chisel.ctmlib:CTMLib:MC1.7.10-1.4.1.5:deobf"
+	//compileOnly "team.chisel:Chisel:2.9.5.12:deobf"
+	//compileOnly "thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev"
+	//compileOnly "ttftcuts.atg:ATG:1.7.10-0.12.0:DEV"
+	//compileOnly "twilightforest:twilightforest:1.7.10-2.3.8dev:dev"
+	//compileOnly "vazkii.botania:Botania:r1.8-250:deobf"
+	//compileOnly 'com.miglayout:miglayout-swing:4.2' // Needed for dev opis because it doesn't know how to specify dependencies properly
+	//compileOnly 'net.sf.opencsv:opencsv:2.3' // Needed for dev opis because it doesn't know how to specify dependencies properly
+	//compileOnly 'org.apache.commons:commons-math3:3.2' // Needed for dev opis because it doesn't know how to specify dependencies properly
+	//compileOnly 'org.jfree:jcommon:1.0.21' // Needed for dev opis because it doesn't know how to specify dependencies properly
+	//compileOnly 'org.jfree:jfreechart:1.0.17' // Needed for dev opis because it doesn't know how to specify dependencies properly
 }
 
 runClient {
@@ -195,7 +274,54 @@ runServer {
 	jvmArgs "-Xmx4096m", "-Xms1024m"
 }
 
+task buildInfo {
+	def matcher = "v6.[0-9]*"
+	def cmdTag = "git describe --match ${matcher} --abbrev=0 --exact-match --dirty"
+	def procTag = cmdTag.execute()
+	procTag.waitFor()
+	if (procTag.exitValue() == 0) {
+		ext.isRelease = true
+		ext.tag = "${procTag.text.trim().substring(1)}" // Full Release
+	} else {
+		def cmdLat = "git describe --match ${matcher} --dirty"
+		def procLat = cmdLat.execute()
+		procLat.waitFor()
+		if (procLat.exitValue() == 0) {
+			ext.isRelease = false
+			ext.tag = procLat.text.trim().substring(1)
+		} else {
+			def cmdDes = "git describe --dirty"
+			def procDes = cmdDes.execute()
+			procDes.waitFor()
+			if (procDes.exitValue() == 0) {
+				ext.isRelease = false
+				ext.tag = "DEV-${procDes.text.trim()}"
+			} else {
+				ext.isRelease = false
+				ext.tag = "NOGIT" // No tags at all?!
+			}
+		}
+	}
+
+	if (System.getenv().BUILD_NUMBER != null) {
+		ext.buildNum = System.getenv().BUILD_NUMBER
+	} else {
+		ext.buildNum = new Date().format('yyyyMMddHHmmss')
+	}
+
+	ext.version = "${ext.tag}.${ext.buildNum}"
+}
+
+if (System.getenv().ARTIFACT_VERSION == null) {
+	version = "${project.buildInfo.version}"
+} else {
+	version = "${System.getenv().ARTIFACT_VERSION}"
+}
+
 processResources {
+	inputs.property "version", project.version
+	inputs.property "mcversion", project.minecraft.version
+
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
 		expand 'version':project.version, 'mcversion':project.minecraft.version
@@ -213,6 +339,12 @@ jar {
 	manifest {
 		attributes 'FMLAT': 'gregtech_at.cfg'
 	}
+	// For future use:
+	//configurations.shade.each { dep ->
+	//	from(project.zipTree(dep)) {
+	//		exclude 'META-INF', 'META-INF/**'
+	//	}
+	//}
 }
 
 task sourceJar(type: Jar) {
@@ -226,6 +358,12 @@ task devJar(type: Jar) {
 	manifest {
 		attributes 'FMLAT': 'gregtech_at.cfg'
 	}
+	// For future use:
+	//configurations.shade.each { dep ->
+	//	from(project.zipTree(dep)) {
+	//		exclude 'META-INF', 'META-INF/**'
+	//	}
+	//}
 	classifier = 'dev'
 	from sourceSets.main.output
 }
@@ -256,16 +394,21 @@ if (!hasProperty("mavenUsername")) {
 if (!hasProperty("mavenPassword")) {
 	ext.mavenPassword=""
 }
+if (!hasProperty("mavenURL")) {
+	ext.mavenURL="http://maven.gregtech.overminddl1.com/upload"
+}
 
-uploadArchives {
-	repositories {
-		mavenDeployer {
-			repository(url: "http://maven.gregtech.overminddl1.com/upload") {
-				authentication(userName: mavenUsername, password: mavenPassword)
+if (!version.contains("-dirty")) {
+	uploadArchives {
+		repositories {
+			mavenDeployer {
+				repository(url: mavenURL) {
+					authentication(userName: mavenUsername, password: mavenPassword)
+				}
+				//	pom*.whenConfigured {
+				//		pom -> pom.dependencies.clear()
+				//	}
 			}
-		//	pom*.whenConfigured {
-		//		pom -> pom.dependencies.clear()
-		//	}
 		}
 	}
 }
