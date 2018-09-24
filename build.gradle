@@ -283,22 +283,26 @@ task buildInfo {
 		ext.isRelease = true
 		ext.tag = "${procTag.text.trim().substring(1)}" // Full Release
 	} else {
-		def cmdLat = "git describe --match ${matcher} --dirty"
-		def procLat = cmdLat.execute()
-		procLat.waitFor()
-		if (procLat.exitValue() == 0) {
-			ext.isRelease = false
-			ext.tag = procLat.text.trim().substring(1)
+		if (System.getenv().VERSION_FALLBACK != null) {
+			ext.tag = System.getenv().VERSION_FALLBACK
 		} else {
-			def cmdDes = "git describe --dirty"
-			def procDes = cmdDes.execute()
-			procDes.waitFor()
-			if (procDes.exitValue() == 0) {
+			def cmdLat = "git describe --match ${matcher} --dirty"
+			def procLat = cmdLat.execute()
+			procLat.waitFor()
+			if (procLat.exitValue() == 0) {
 				ext.isRelease = false
-				ext.tag = "DEV-${procDes.text.trim()}"
+				ext.tag = procLat.text.trim().substring(1)
 			} else {
-				ext.isRelease = false
-				ext.tag = "NOGIT" // No tags at all?!
+				def cmdDes = "git describe --dirty"
+				def procDes = cmdDes.execute()
+				procDes.waitFor()
+				if (procDes.exitValue() == 0) {
+					ext.isRelease = false
+					ext.tag = "DEV-${procDes.text.trim()}"
+				} else {
+					ext.isRelease = false
+					ext.tag = "NOGIT" // No tags at all?!
+				}
 			}
 		}
 	}
