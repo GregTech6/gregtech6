@@ -22,7 +22,7 @@ package gregapi;
 /**
  * @author Gregorius Techneticies
  * 
- * This Text is a little bit old, but I think most of it still fits.
+ * This Text is a very bit old, but I think most of it still fits.
  * 
  * ----------------------------------------------------------------
  * There are hooks to load after the 2 API Mods and GT itself.
@@ -52,18 +52,6 @@ package gregapi;
  * use a Name which starts with "gt."! This is MY Name Prefix and
  * not yours. This happens way too often especially with people
  * decompiling my Code to find out how they have to use Stuff.
- * ----------------------------------------------------------------
- * You may have noticed, that I try to avoid the usage of the Data
- * Types "Double" and "Float". This is because they fail after they
- * reach a few Digits too much. They cannot even display Integers
- * properly, resulting in imprecise Values and worse.
- * 
- * That is why I made the Parameters as Integer or Long for most
- * of the Functionality.
- * 
- * Trust me, there were already enough Problems due to Floats and
- * Doubles. They may look nice and are easy to use, but they are
- * the Devil. And I mean the Canadian Devil, not the regular one.
  * ----------------------------------------------------------------
  * Most of the Constants are found inside the data package.
  * ----------------------------------------------------------------
