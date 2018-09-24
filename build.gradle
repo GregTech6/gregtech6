@@ -282,38 +282,32 @@ task buildInfo {
 	if (procTag.exitValue() == 0) {
 		ext.isRelease = true
 		ext.tag = "${procTag.text.trim().substring(1)}" // Full Release
+		ext.version = ext.tag
 	} else {
 		if (System.getenv().VERSION_FALLBACK != null) {
-			ext.tag = System.getenv().VERSION_FALLBACK
+			ext.version = System.getenv().VERSION_FALLBACK
+		}
+		def cmdLat = "git describe --match ${matcher} --dirty"
+		def procLat = cmdLat.execute()
+		procLat.waitFor()
+		if (procLat.exitValue() == 0) {
+			ext.tag = procLat.text.trim().substring(1)
 		} else {
-			def cmdLat = "git describe --match ${matcher} --dirty"
-			def procLat = cmdLat.execute()
-			procLat.waitFor()
-			if (procLat.exitValue() == 0) {
-				ext.isRelease = false
-				ext.tag = procLat.text.trim().substring(1)
+			def cmdDes = "git describe --dirty"
+			def procDes = cmdDes.execute()
+			procDes.waitFor()
+			if (procDes.exitValue() == 0) {
+				ext.tag = "DEV-${procDes.text.trim()}"
 			} else {
-				def cmdDes = "git describe --dirty"
-				def procDes = cmdDes.execute()
-				procDes.waitFor()
-				if (procDes.exitValue() == 0) {
-					ext.isRelease = false
-					ext.tag = "DEV-${procDes.text.trim()}"
-				} else {
-					ext.isRelease = false
-					ext.tag = "NOGIT" // No tags at all?!
-				}
+				ext.tag = "NOGIT" // No tags at all?!
 			}
 		}
+		if (System.getenv().VERSION_FALLBACK != null) {
+			ext.version = System.getenv().VERSION_FALLBACK
+		} else {
+			ext.version = ext.tag
+		}
 	}
-
-	if (System.getenv().BUILD_NUMBER != null) {
-		ext.buildNum = System.getenv().BUILD_NUMBER
-	} else {
-		ext.buildNum = new Date().format('yyyyMMddHHmmss')
-	}
-
-	ext.version = "${ext.tag}.${ext.buildNum}"
 }
 
 if (System.getenv().ARTIFACT_VERSION == null) {
@@ -323,7 +317,7 @@ if (System.getenv().ARTIFACT_VERSION == null) {
 }
 
 processResources {
-	inputs.property "version", project.version
+	inputs.property "version", project.buildInfo.tag
 	inputs.property "mcversion", project.minecraft.version
 
 	from(sourceSets.main.resources.srcDirs) {
