@@ -403,10 +403,8 @@ if (!version.contains("-dirty")) {
 				repository(url: mavenURL) {
 					authentication(userName: mavenUsername, password: mavenPassword)
 				}
-				//	pom*.whenConfigured {
-				//		pom -> pom.dependencies.clear()
-				//	}
 			}
 		}
 	}
 }
+
