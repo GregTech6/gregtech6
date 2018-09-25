@@ -396,7 +396,7 @@ if (!hasProperty("mavenURL")) {
 	ext.mavenURL="${System.getenv().MAVEN_URL}"
 }
 
-if (!version.contains("-dirty")) {
+if (!project.buildInfo.tag.contains("-dirty")) {
 	uploadArchives {
 		repositories {
 			mavenDeployer {
