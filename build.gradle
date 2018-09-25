@@ -3,7 +3,7 @@ buildscript {
 		mavenCentral()
 		maven {
 			name = "forge"
-			url = "http://files.minecraftforge.net/maven"
+			url = "https://files.minecraftforge.net/maven"
 		}
 		maven {
 			name = "sonatype"
@@ -143,6 +143,9 @@ version = "<UNKNOWN>"
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 compileJava.options.bootClasspath = org.gradle.internal.jvm.Jvm.current().getJre().getHomeDir().toString() +"/lib/rt.jar"
+compileJava {
+	options.encoding = "UTF-8"
+}
 
 configurations {
 	shade
@@ -282,34 +285,29 @@ task buildInfo {
 	if (procTag.exitValue() == 0) {
 		ext.isRelease = true
 		ext.tag = "${procTag.text.trim().substring(1)}" // Full Release
+		ext.version = ext.tag
 	} else {
 		def cmdLat = "git describe --match ${matcher} --dirty"
 		def procLat = cmdLat.execute()
 		procLat.waitFor()
 		if (procLat.exitValue() == 0) {
-			ext.isRelease = false
 			ext.tag = procLat.text.trim().substring(1)
 		} else {
 			def cmdDes = "git describe --dirty"
 			def procDes = cmdDes.execute()
 			procDes.waitFor()
 			if (procDes.exitValue() == 0) {
-				ext.isRelease = false
 				ext.tag = "DEV-${procDes.text.trim()}"
 			} else {
-				ext.isRelease = false
 				ext.tag = "NOGIT" // No tags at all?!
 			}
 		}
+		if (System.getenv().VERSION_FALLBACK != null) {
+			ext.version = System.getenv().VERSION_FALLBACK
+		} else {
+			ext.version = ext.tag
+		}
 	}
-
-	if (System.getenv().BUILD_NUMBER != null) {
-		ext.buildNum = System.getenv().BUILD_NUMBER
-	} else {
-		ext.buildNum = new Date().format('yyyyMMddHHmmss')
-	}
-
-	ext.version = "${ext.tag}.${ext.buildNum}"
 }
 
 if (System.getenv().ARTIFACT_VERSION == null) {
@@ -319,12 +317,12 @@ if (System.getenv().ARTIFACT_VERSION == null) {
 }
 
 processResources {
-	inputs.property "version", project.version
+	inputs.property "version", project.buildInfo.tag
 	inputs.property "mcversion", project.minecraft.version
 
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
-		expand 'version':project.version, 'mcversion':project.minecraft.version
+		expand 'version':project.buildInfo.tag, 'mcversion':project.minecraft.version
 	}
 	from(sourceSets.main.resources.srcDirs) {
 		exclude 'mcmod.info'
@@ -389,26 +387,25 @@ artifacts {
 }
 
 if (!hasProperty("mavenUsername")) {
-	ext.mavenUsername=""
+	ext.mavenUsername="${System.getenv().MAVEN_USERNAME}"
 }
 if (!hasProperty("mavenPassword")) {
-	ext.mavenPassword=""
+	ext.mavenPassword="${System.getenv().MAVEN_PASSWORD}"
 }
 if (!hasProperty("mavenURL")) {
-	ext.mavenURL="http://maven.gregtech.overminddl1.com/upload"
+	ext.mavenURL="${System.getenv().MAVEN_URL}"
 }
 
-if (!version.contains("-dirty")) {
+if (!project.buildInfo.tag.contains("-dirty")) {
 	uploadArchives {
 		repositories {
 			mavenDeployer {
+				uniqueVersion = false
 				repository(url: mavenURL) {
 					authentication(userName: mavenUsername, password: mavenPassword)
 				}
-				//	pom*.whenConfigured {
-				//		pom -> pom.dependencies.clear()
-				//	}
 			}
 		}
 	}
 }
+
