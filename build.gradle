@@ -287,9 +287,6 @@ task buildInfo {
 		ext.tag = "${procTag.text.trim().substring(1)}" // Full Release
 		ext.version = ext.tag
 	} else {
-		if (System.getenv().VERSION_FALLBACK != null) {
-			ext.version = System.getenv().VERSION_FALLBACK
-		}
 		def cmdLat = "git describe --match ${matcher} --dirty"
 		def procLat = cmdLat.execute()
 		procLat.waitFor()
@@ -403,6 +400,7 @@ if (!version.contains("-dirty")) {
 	uploadArchives {
 		repositories {
 			mavenDeployer {
+				uniqueVersion = false
 				repository(url: mavenURL) {
 					authentication(userName: mavenUsername, password: mavenPassword)
 				}
