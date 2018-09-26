@@ -43,7 +43,7 @@ import net.minecraft.init.Blocks;
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_API: Initialize Wood Dictionary.");
+		OUT.println("GT_API_POST: Initialize Wood Dictionary.");
 		
 		// Initializing the List of Decorative Planks
 		PlankData.PLANKS[ 43] = ST.make(MD.TCFM, "TaintPlank", 1, 0);

@@ -303,10 +303,8 @@ public class GT_API_Post extends Abstract_Mod {
 		}
 		
 		// Wow, Ars Magica too is on this List, at least for its Blocks...
-		if (MD.ARS.mLoaded) {
-			IL.ARS_Cerublossom  .set(ST.make(MD.ARS, "blueOrchid", 1, 0), null, "flowerCerublossom");
-			IL.ARS_DesertNova   .set(ST.make(MD.ARS, "desertNova", 1, 0), null, "flowerDesertNova");
-		}
+		IL.ARS_Cerublossom.set(ST.make(MD.ARS, "blueOrchid", 1, 0), null, "flowerCerublossom");
+		IL.ARS_DesertNova .set(ST.make(MD.ARS, "desertNova", 1, 0), null, "flowerDesertNova");
 		
 		// Cooking for Blockheads is here too!...
 		if (MD.CookBook.mLoaded) {
