@@ -285,6 +285,7 @@ task buildInfo {
 		ext.tag = "${procTag.text.trim().substring(1)}" // Full Release
 		ext.version = ext.tag
 	} else {
+		ext.isRelease = false
 		def cmdLat = "git describe --match ${matcher} --dirty"
 		def procLat = cmdLat.execute()
 		procLat.waitFor()
@@ -394,7 +395,7 @@ if (!hasProperty("mavenURL")) {
 	ext.mavenURL="${System.getenv().MAVEN_URL}"
 }
 
-if (!project.buildInfo.tag.contains("-dirty")) {
+if ( !project.buildInfo.tag.contains("-dirty") && (System.getenv().ONLY_RELEASES!="true" || project.buildInfo.isRelease) ) {
 	uploadArchives {
 		repositories {
 			mavenDeployer {
