@@ -47,3 +47,5 @@
 !/src/main/resources/**/*.bat
 
 /bin/
+/.gradle/
+/build/
