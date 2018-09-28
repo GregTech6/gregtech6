@@ -29,8 +29,9 @@ package gregapi;
  * They are in the form of Lists containing "Runnable" classes.
  * Those Lists are to be found in "gregapi.api.Abstract_Mod".
  * The Mod Objects themselves are in "gregapi.data.CS".
- * I have put them at the top of the Class so it's unoverseeable.
+ * I have put them at the top of the Class so it's unoverlookable.
  * ----------------------------------------------------------------
+ * 
  * If you want your Mod dependent on this API, then instead of
  * adding a dependency to GregTech add a dependency to this API
  * 
@@ -45,6 +46,7 @@ package gregapi;
  * be installed, so that your Mod works. Of course the Core-API
  * might be more desirable to some of your Users since it doesn't
  * do anything, unlike GregTech, which changes almost everything.
+ * 
  * ================================================================
  * Now for some other Informations
  * ================================================================
