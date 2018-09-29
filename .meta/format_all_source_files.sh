@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Formatting all Source Files"
+
 SOURCE_DIR=`dirname $0`
 
 export LICENSE_HEADER="$(cat "$SOURCE_DIR/LICENSE.header")"
@@ -12,5 +14,5 @@ else
 	done
 fi
 
-echo "Done formatting Source Files"
+echo "Done formatting all Source Files"
 
