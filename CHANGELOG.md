@@ -21,7 +21,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.02: (Not released yet)
+6.09.02:
+[NOTE] New Build System is in the testing, this Version is released in a new way, so expect the whatever, lol.
 [FIXED] WAILA Block Names and Thaumometer scanning. Found the stupid Reason it didn't work right, so I was able to remove my provisorical fix from before.
 [CHANGED] Moved the Debug Configs to the Clientside Config File.
 [CHANGED] Supporter Lists are now less of a bitch for me to Update. Now I only need to change regular Text Files instead of Code Files.

@@ -388,9 +388,11 @@ artifacts {
 if (!hasProperty("mavenUsername")) {
 	ext.mavenUsername="${System.getenv().MAVEN_USERNAME}"
 }
+
 if (!hasProperty("mavenPassword")) {
 	ext.mavenPassword="${System.getenv().MAVEN_PASSWORD}"
 }
+
 if (!hasProperty("mavenURL")) {
 	ext.mavenURL="${System.getenv().MAVEN_URL}"
 }
