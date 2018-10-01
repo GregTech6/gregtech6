@@ -382,6 +382,25 @@ task changelog(type: Copy) {
 	into './build/libs'
 	ext.output = new File("./build/libs/$archivesBaseName-$version-changelog.md")
 }
+
+task supporterlist(type: Copy) {
+	from('./src/main/resources/supporterlist.txt') {
+		rename '.*', "$archivesBaseName-$version-supporterlist.txt"
+	}
+	into './build/libs'
+	ext.output = new File("./build/libs/$archivesBaseName-$version-supporterlist.txt")
+}
+
+task supporterlistgold(type: Copy) {
+	from('./src/main/resources/supporterlistgold.txt') {
+		rename '.*', "$archivesBaseName-$version-supporterlistgold.txt"
+	}
+	into './build/libs'
+	ext.output = new File("./build/libs/$archivesBaseName-$version-supporterlistgold.txt")
+}
+
+jar.dependsOn supporterlist
+jar.dependsOn supporterlistgold
 jar.dependsOn changelog
 
 reobf {
@@ -391,7 +410,7 @@ reobf {
 }
 
 artifacts {
-	archives devJar, sourceJar, coreJar, changelog.output
+	archives devJar, sourceJar, coreJar, changelog.output, supporterlist.output, supporterlistgold.output
 }
 
 if (!hasProperty("mavenUsername")) {
