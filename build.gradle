@@ -375,6 +375,15 @@ task coreJar(type: Jar) {
 	exclude('gregtech/**')
 }
 
+task changelog(type: Copy) {
+	from('./CHANGELOG.md') {
+		rename '.*', "$archivesBaseName-$version-changelog.md"
+	}
+	into './build/libs'
+	ext.output = new File("./build/libs/$archivesBaseName-$version-changelog.md")
+}
+jar.dependsOn changelog
+
 reobf {
 	reobf(coreJar) {
 		spec -> spec.classpath = sourceSets.main.compileClasspath
@@ -382,7 +391,7 @@ reobf {
 }
 
 artifacts {
-	archives devJar, sourceJar, coreJar
+	archives devJar, sourceJar, coreJar, changelog.output
 }
 
 if (!hasProperty("mavenUsername")) {
