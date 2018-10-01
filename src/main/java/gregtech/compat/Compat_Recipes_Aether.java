@@ -64,6 +64,17 @@ public class Compat_Recipes_Aether extends CompatMods {
 		
 		RM.unbox(IL.AETHER_Skyroot_Planks.get(3), ST.make(MD.AETHER, "skyrootBookshelf", 1, W), ST.make(Items.book, 3, 0));
 		
+		// TODO: Magical Infuser
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 4), OP.dustTiny    .mat(MT.Gravitite, 9), ST.make(MD.AETHER, "enchantedGravitite", 1, 0));
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 4), OP.dustSmall   .mat(MT.Gravitite, 4), ST.make(MD.AETHER, "enchantedGravitite", 1, 0));
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 4), OP.dust        .mat(MT.Gravitite, 1), ST.make(MD.AETHER, "enchantedGravitite", 1, 0));
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 4), OP.gemChipped  .mat(MT.Gravitite, 4), ST.make(MD.AETHER, "enchantedGravitite", 1, 0));
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 4), OP.gemFlawed   .mat(MT.Gravitite, 2), ST.make(MD.AETHER, "enchantedGravitite", 1, 0));
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 3), OP.gem         .mat(MT.Gravitite, 1), ST.make(MD.AETHER, "enchantedGravitite", 1, 0));
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 5), OP.gemFlawless .mat(MT.Gravitite, 1), ST.make(MD.AETHER, "enchantedGravitite", 2, 0));
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 9), OP.gemExquisite.mat(MT.Gravitite, 1), ST.make(MD.AETHER, "enchantedGravitite", 4, 0));
+		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium,16), OP.gemLegendary.mat(MT.Gravitite, 1), ST.make(MD.AETHER, "enchantedGravitite", 8, 0));
+		
 		RM.biomass(ST.make(MD.AETHER, "purpleFlower", 16, W), 64);
 		RM.biomass(ST.make(MD.AETHER, "whiteRose", 16, W), 64);
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower" , 1, W), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));

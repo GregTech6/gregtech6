@@ -18,7 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.03: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] A way to turn Gravitite Gems and Dust into Enchanted Gravitite using the Injector. Later its gonna be a Magic Infuser instead of the Injector.
 
 
 6.09.02:

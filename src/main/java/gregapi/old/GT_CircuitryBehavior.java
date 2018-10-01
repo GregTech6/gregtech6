@@ -47,23 +47,23 @@ public abstract class GT_CircuitryBehavior {
 	
 	/**
 	 * Initializes the Parameters of this Circuit, all Parameters have been set to 0 right before calling this
-	 * @param aCircuitData, The Data Storage you can use (8 Slots)
-	 * @param aRedstoneCircuitBlock, The Circuit Block MetaTileEntity itself
+	 * aCircuitData, The Data Storage you can use (8 Slots)
+	 * aRedstoneCircuitBlock, The Circuit Block MetaTileEntity itself
 	 */
 	public abstract void initParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock);
 	
 	/**
 	 * Validates the Parameters of this Circuit when a value has been changed by the GUI
 	 * Also called right after @initParameters and when the Chunk reloads
-	 * @param aCircuitData, The Data Storage you can use (8 Slots and only the first 4 are User definable)
-	 * @param aRedstoneCircuitBlock, The Circuit Block MetaTileEntity itself
+	 * aCircuitData, The Data Storage you can use (8 Slots and only the first 4 are User definable)
+	 * aRedstoneCircuitBlock, The Circuit Block MetaTileEntity itself
 	 */
 	public abstract void validateParameters(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock);
 	
 	/**
 	 * Called every tick if the Block has enough Energy and if the Block is Active
-	 * @param aCircuitData, The Data Storage you can use (8 Slots)
-	 * @param aRedstoneCircuitBlock, The Circuit Block MetaTileEntity itself
+	 * aCircuitData, The Data Storage you can use (8 Slots)
+	 * aRedstoneCircuitBlock, The Circuit Block MetaTileEntity itself
 	 */
 	public abstract void onTick(int[] aCircuitData, IRedstoneCircuitBlock aRedstoneCircuitBlock);
 

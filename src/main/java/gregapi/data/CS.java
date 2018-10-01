@@ -1327,7 +1327,7 @@ public class CS {
 	public static class BushesGT {
 		public static final ItemStackMap<ItemStackContainer, int[]> MAP = new ItemStackMap<>();
 		public static int[] get(ItemStack aStack) {return MAP.containsKey(new ItemStackContainer(aStack)) ? MAP.get(new ItemStackContainer(aStack)) : MAP.get(new ItemStackContainer(aStack.getItem(), 1, W));}
-		/** @param aStats, Bush Color, Stage 1, Stage 2, Stage 3 */
+		/** Bush Color, Stage 1, Stage 2, Stage 3 */
 		public static void put(ItemStack aStack, int aBush, int aBloom, int aImmature, int aBerry) {if (!MAP.containsKey(new ItemStackContainer(aStack))) MAP.put(new ItemStackContainer(aStack), new int[] {aBush, aBloom, aImmature, aBerry});}
 		public static void override(ItemStack aStack, int... aColors) {MAP.put(new ItemStackContainer(aStack), aColors);}
 	}
@@ -1335,7 +1335,7 @@ public class CS {
 	public static class FoodsGT {
 		public static final ItemStackMap<ItemStackContainer, int[]> MAP = new ItemStackMap<>();
 		public static int[] get(ItemStack aStack) {return MAP.containsKey(new ItemStackContainer(aStack)) ? MAP.get(new ItemStackContainer(aStack)) : MAP.get(new ItemStackContainer(aStack.getItem(), 1, W));}
-		/** @param aStats Alcohol, Caffeine, Dehydration, Sugar, Fat */
+		/** Alcohol, Caffeine, Dehydration, Sugar, Fat */
 		public static void put(ItemStack aStack, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {if (!MAP.containsKey(new ItemStackContainer(aStack))) MAP.put(new ItemStackContainer(aStack), new int[] {aAlcohol, aCaffeine, aDehydration, aSugar, aFat});}
 		public static void override(ItemStack aStack, int... aStats) {MAP.put(new ItemStackContainer(aStack), aStats);}
 	}
