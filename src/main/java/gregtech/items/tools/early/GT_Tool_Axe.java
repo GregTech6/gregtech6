@@ -101,7 +101,7 @@ public class GT_Tool_Axe extends ToolStats {
 	@Override
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
 		int rAmount = 0;
-		if (LOCK && !aPlayer.worldObj.isRemote && !aPlayer.isSneaking() && (aBlock.isWood(aPlayer.worldObj, aX, aY, aZ) || OP.log.contains(ST.make(aBlock, 1, aMetaData)) || WoodDictionary.WOODS.containsKey(new ItemStackContainer(aBlock, 1, aMetaData)) || WoodDictionary.WOODS.containsKey(new ItemStackContainer(aBlock, 1, W)))) {
+		if (LOCK && !aPlayer.worldObj.isRemote && !aPlayer.isSneaking() && !aBlock.getClass().getName().startsWith("com.ferreusveritas.dynamictrees") && (aBlock.isWood(aPlayer.worldObj, aX, aY, aZ) || OP.log.contains(ST.make(aBlock, 1, aMetaData)) || WoodDictionary.WOODS.containsKey(new ItemStackContainer(aBlock, 1, aMetaData)) || WoodDictionary.WOODS.containsKey(new ItemStackContainer(aBlock, 1, W)))) {
 			try {
 				int tIncrement = (int)Math.max(1, (aBlock.getBlockHardness(aPlayer.worldObj, aX, aY, aZ) * getToolDamagePerBlockBreak()) / 10);
 				LOCK = F;
@@ -115,6 +115,7 @@ public class GT_Tool_Axe extends ToolStats {
 	@Override
 	public float getMiningSpeed(Block aBlock, byte aMetaData, float aDefault, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ) {
 		if (aBlock instanceof BlockBaseBeam) return 2 * aDefault;
+		if (aBlock.getClass().getName().startsWith("com.ferreusveritas.dynamictrees")) return aDefault;
 		if (aBlock.isWood(aPlayer.worldObj, aX, aY, aZ) || OP.log.contains(ST.make(aBlock, 1, aMetaData)) || WoodDictionary.WOODS.containsKey(new ItemStackContainer(aBlock, 1, aMetaData)) || WoodDictionary.WOODS.containsKey(new ItemStackContainer(aBlock, 1, W))) {
 			float rAmount = 1.0F, tIncrement = 1.0F;
 			if (!aPlayer.isSneaking()) for (int tY = aY+1, tH = aPlayer.worldObj.getHeight(); tY < tH; tY++) if (aPlayer.worldObj.getBlock(aX, tY, aZ) == aBlock) {tIncrement+=0.1F; rAmount+=tIncrement;} else break;

@@ -1648,7 +1648,9 @@ public class CS {
 		
 		, ZTONES            = "Ztones"
 		, CHSL              = "chisel"
+		
 		, EtFu              = "etfuturum"
+		, BB                = "betterbeginnings"
 		
 		, BbLC              = "BiblioCraft"
 		, CARP              = "CarpentersBlocks"

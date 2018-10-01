@@ -77,7 +77,9 @@ public class MD {
 	
 	, ZTONES            = new ModData(ModIDs.ZTONES             , "Ztones")
 	, CHSL              = new ModData(ModIDs.CHSL               , "Chisel")
+	
 	, EtFu              = new ModData(ModIDs.EtFu               , "Et Futurum")
+	, BB                = new ModData(ModIDs.BB                 , "Better Beginnings")
 	
 	, BbLC              = new ModData(ModIDs.BbLC               , "BiblioCraft")
 	, CARP              = new ModData(ModIDs.CARP               , "Carpenters Blocks")

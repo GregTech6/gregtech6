@@ -247,6 +247,7 @@ public class GT_Mod extends Abstract_Mod {
 		
 		new Compat_Recipes_Ganys                (MD.GAPI          , this);
 		new Compat_Recipes_Chisel               (MD.CHSL          , this);
+		new Compat_Recipes_BetterBeginnings     (MD.BB            , this);
 		new Compat_Recipes_IndustrialCraft      (MD.IC2           , this);
 		new Compat_Recipes_IndustrialCraft_Scrap(MD.IC2           , this);
 		new Compat_Recipes_BuildCraft           (MD.BC            , this);
