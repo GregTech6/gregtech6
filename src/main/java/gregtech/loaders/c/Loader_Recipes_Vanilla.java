@@ -437,6 +437,10 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(9), FL.Water.make(1000), NF, OP.dust.mat(MT.Snow, 1));
 		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(9), FL.DistW.make(1000), NF, OP.dust.mat(MT.Snow, 1));
 		
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass             , 1, W), OM.dust(MT.Glass));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass     , 1, W), OM.dust(MT.Glass, 3*U8));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass_pane        , 1, W), OM.dust(MT.Glass));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass_pane, 1, W), OM.dust(MT.Glass, 3*U8));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(2));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Items.blaze_rod, 1, W), ST.make(Items.blaze_powder, 2, 0));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.clay_ball, 1, W), OM.dust(MT.Clay));

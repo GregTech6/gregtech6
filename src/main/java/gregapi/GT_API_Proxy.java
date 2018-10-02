@@ -57,7 +57,7 @@ import gregapi.block.tree.BlockBaseSapling;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.CS;
+import gregapi.data.*;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.BooksGT;
 import gregapi.data.CS.FluidsGT;
@@ -67,14 +67,6 @@ import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PotionsGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.CS.ToolsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
 import gregapi.enchants.Enchantment_WerewolfDamage;
 import gregapi.item.IItemNoGTOverride;
 import gregapi.item.IItemProjectile;
@@ -1091,7 +1083,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			Short tFuelValue = ((MultiItemRandom)aFuel.getItem()).mBurnValues.get(ST.meta_(aFuel));
 			if (tFuelValue != null) rFuelValue = (short)Math.max(rFuelValue, tFuelValue);
 		} else {
-			if (OM.is_("logWood", aFuel)) return TICKS_PER_SMELT * 6;
+			if (OM.is_(OD.logWood, aFuel)) return TICKS_PER_SMELT * 6;
+			if (IL.IC2_Resin.equal(aFuel, F, T)) return TICKS_PER_SMELT / 2;
 		}
 		NBTTagCompound tNBT = aFuel.getTagCompound();
 		if (tNBT != null) {

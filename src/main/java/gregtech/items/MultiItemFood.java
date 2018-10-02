@@ -101,7 +101,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.DesertNova.set(                          addItem(tLastID = 12011, "Desert Nova"                              , "Used for magical Purposes"                                   , new Behavior_Turn_Into(IL.ARS_DesertNova  ), IL.ARS_DesertNova    .exists() ? TD.Creative.HIDDEN : "flowerDesertNova"     , TC.stack(TC.HERBA, 1), TC.stack(TC.PRAECANTIO, 1), TC.stack(TC.LUX, 1)));
 		
 		
-		IL.Resin.set(                               addItem(tLastID = 12050, "Rubber Resin"                             , ""                                                            , new Behavior_Turn_Into(IL.IC2_Resin       ), IL.IC2_Resin         .exists() ? TD.Creative.HIDDEN : "itemResin"            , TC.stack(TC.LIMUS, 1)));
+		IL.Resin.set(                               addItem(tLastID = 12050, "Rubber Resin"                             , ""                                                            , new Behavior_Turn_Into(IL.IC2_Resin       ), IL.IC2_Resin         .exists() ? TD.Creative.HIDDEN : "itemResin"            , TC.stack(TC.LIMUS, 1), TICKS_PER_SMELT / 2));
 		
 		
 		IL.Remains_Plant.set(                       addItem(tLastID = 12100, "Plant Remains"                            , ""                                                            , "itemPlantRemains", TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));

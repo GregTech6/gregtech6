@@ -378,23 +378,23 @@ public class Override_Drops {
 			).get(1)));
 			}
 			
-			if (((EntityZombie)aDead).isVillager()) {
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Creeper")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Skeleton")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Zombie")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Spider")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_End")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Blaze")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Witch")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Elements")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Alloys")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Smeltery")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Extenders")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Printer")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Steam")));
-			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, ST.book("Manual_Random")));
+			if (((EntityZombie)aDead).isVillager()) for (int i = 0, j = 1+RNGSUS.nextInt(3); i < j; i++) switch(RNGSUS.nextInt(20)) {
+			case  0: aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Creeper")));   break;
+			case  1: aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Skeleton")));  break;
+			case  2: aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Zombie")));    break;
+			case  3: aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Spider")));    break;
+			case  4: aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_End")));       break;
+			case  5: aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Blaze")));     break;
+			case  6: aDrops.add(ST.entity(aDead, ST.book("Manual_Hunting_Witch")));     break;
+			case  7: aDrops.add(ST.entity(aDead, ST.book("Manual_Elements")));          break;
+			case  8: aDrops.add(ST.entity(aDead, ST.book("Manual_Alloys")));            break;
+			case  9: aDrops.add(ST.entity(aDead, ST.book("Manual_Smeltery")));          break;
+			case 10: aDrops.add(ST.entity(aDead, ST.book("Manual_Extenders")));         break;
+			case 11: aDrops.add(ST.entity(aDead, ST.book("Manual_Printer")));           break;
+			case 12: aDrops.add(ST.entity(aDead, ST.book("Manual_Steam")));             break;
+			case 13: aDrops.add(ST.entity(aDead, ST.book("Manual_Random")));            break;
+			default: aDrops.add(ST.entity(aDead, ST.book(UT.Books.MATERIAL_DICTIONARIES.get(RNGSUS.nextInt(UT.Books.MATERIAL_DICTIONARIES.size()))))); break;
 			}
-			
 			}
 		} else if (aDead instanceof EntitySpider) {
 			tReplaceIron = T;

@@ -344,9 +344,11 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(crushedCentrifugedTiny  ,  9, crushedCentrifuged        , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(nugget                  ,  9, ingot                     , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(chunkGt                 ,  4, ingot                     , 1, F));
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(chunkGt                 ,  8, ingot                     , 2, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(dustDiv72               ,  8, dustTiny                  , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(dustTiny                ,  9, dust                      , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(dustSmall               ,  4, dust                      , 1, F));
+		GameRegistry.addRecipe(new AdvancedCraftingXToY(dustSmall               ,  8, dust                      , 2, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(dust                    ,  9, blockDust                 , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(ingot                   ,  9, blockIngot                , 1, F));
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(gem                     ,  9, blockGem                  , 1, F));
