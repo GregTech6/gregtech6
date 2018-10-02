@@ -21,6 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] Botanias Paint Slinger Lens should work for painting GT6 TileEntities now.
 [FIXED] Dynamic Trees's Trees wont be Treecapitated twice anymore, so the harvesting slowdown from my end is removed.
 [FIXED] Crafting Table Recipe from Better Beginnings did not use the OreDict Wooden Planks, so only the 6 vanilla ones were usable.
+[CHANGED] The Wrench and Screwdriver Sounds a little.
 [CHANGED] Liquid/Gas Burning Boxes now have a 25 tick cooldown whenever they actually run out of Fuel. During that Cooldown they will automatically ignite themselves whenever new Fuel is added, even if the Fuel is a different Type.
 [CHANGED] Villager Zombies can now also drop Material Dictionaries.
 [CHANGED] In addition to Crowbars you can now also use Screwdrivers to open GT6 Crates (also it's less durability eating). Not only that but now you also get the empty Crate back from this. (empty crates didnt exist when I originally made it, so guess why I forgot about it)
