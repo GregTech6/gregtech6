@@ -137,7 +137,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (aTool.equals(TOOL_cutter)) {
 			mMode ^= B[2];
 			aChatReturn.add((mMode & B[2]) == 0 ? "Won't emit Overflow" : "Will emit Overflow to Inventories below");
-			if ((mMode & B[2]) != 0 && slot(1).stackSize <= 0) slot(1, NI);
+			if ((mMode & B[2]) != 0 && slotHas(1) && slot(1).stackSize <= 0) slot(1, NI);
 			updateClientData();
 			updateInventory();
 			return 10000;
@@ -145,7 +145,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (aTool.equals(TOOL_screwdriver)) {
 			mMode ^= B[1];
 			aChatReturn.add((mMode & B[1]) == 0 ? "Filter stays when empty" : "Filter resets when empty");
-			if ((mMode & B[1]) != 0 && slot(1).stackSize <= 0) slot(1, NI);
+			if ((mMode & B[1]) != 0 && slotHas(1) && slot(1).stackSize <= 0) slot(1, NI);
 			updateClientData();
 			updateInventory();
 			return 10000;
