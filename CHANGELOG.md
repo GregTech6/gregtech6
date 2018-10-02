@@ -18,11 +18,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.03: (Not released yet)
+[COMPAT] Botanias Paint Slinger Lens should work for painting GT6 TileEntities now.
 [FIXED] Dynamic Trees's Trees wont be Treecapitated twice anymore, so the harvesting slowdown from my end is removed.
 [FIXED] Crafting Table Recipe from Better Beginnings did not use the OreDict Wooden Planks, so only the 6 vanilla ones were usable.
 [CHANGED] Liquid/Gas Burning Boxes now have a 25 tick cooldown whenever they actually run out of Fuel. During that Cooldown they will automatically ignite themselves whenever new Fuel is added, even if the Fuel is a different Type.
 [ADDED] A way to turn Gravitite Gems and Dust into Enchanted Gravitite using the Injector. Later its gonna be a Magic Infuser instead of the Injector.
 [ADDED] Skyroot Item and Fluid Barrels, they are just like Treated Wood Barrels in their Stats.
+[ADDED] Draconium and Syrmorite Drums.
 
 
 6.09.02:
@@ -50,7 +52,7 @@ And I need certain things to be fixed before I can work properly again, otherwis
 [NOTE] GregTech-6 is now OpenSource (LGPLv3) and on git.gregtech.overminddl1.com. Don't worry, I will still be working on GT6 myself, this is just an upgrade. ;D
 [NOTE] Some GT6 Addons like QwerTech or GT Weapons Works will need to be recompiled in order to work with this Version.
 [BROKEN] IC2 Sounds are currently not available due to going OpenSource, and IC2 obviously not being OpenSource. (I had to copy their Sound Files to make shit work, because they clearly didn't care to make things proper)
-[BROKEN] WAILA is somehow no longer able to display the Name of my Blocks. I wonder if it is because the WAILA API is inside the new Dev Environment, because I never did WAILA Compatibility at all.
+[BROKEN AND FIXED LATER] WAILA is somehow no longer able to display the Name of my Blocks. I wonder if it is because the WAILA API is inside the new Dev Environment, because I never did WAILA Compatibility at all.
 [IMPROVED] Performance in general. I kept one piece of old Code and that has wrecked a lot of Speed and RAM, but now it's fixed.
 [FIXED] Tons of minor Issues that required a massive amount of typing.
 [FIXED] Treecapitation overall now also works when Aether is breaking it. Note, that this has nothing to do with the seperate Issue that Aether Trees cant be Treecapitated.
