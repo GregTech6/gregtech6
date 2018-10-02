@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.09.03: (Not released yet)
 [FIXED] Dynamic Trees's Trees wont be Treecapitated twice anymore, so the harvesting slowdown from my end is removed.
 [FIXED] Crafting Table Recipe from Better Beginnings did not use the OreDict Wooden Planks, so only the 6 vanilla ones were usable.
+[CHANGED] Liquid/Gas Burning Boxes now have a 25 tick cooldown whenever they actually run out of Fuel. During that Cooldown they will automatically ignite themselves whenever new Fuel is added, even if the Fuel is a different Type.
 [ADDED] A way to turn Gravitite Gems and Dust into Enchanted Gravitite using the Injector. Later its gonna be a Magic Infuser instead of the Injector.
 
 

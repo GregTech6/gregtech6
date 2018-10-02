@@ -81,10 +81,8 @@ public interface IGT_RecipeAdder {
 	public boolean addCrusherRecipe(ItemStack aInput, ItemStack[] aOutputs, long[] aChances, long aDuration, long aEUt);
 	public boolean addSharpeningRecipe(ItemStack aItemToSharpen, ItemStack aSharpenedItem, ItemStack aRemainingDust, long aDustChance, long aDuration, long aEUt);
 	
-	@SuppressWarnings("deprecation")
 	public static final IGT_RecipeAdder NON_WORKING = new NonWorkingRecipeAdder();
 	
-	@SuppressWarnings("deprecation")
 	public static class NonWorkingRecipeAdder implements IGT_RecipeAdder {
 		@Override public boolean addFusionReactorRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aOutput1, long aFusionDurationInTicks, long aFusionEnergyPerTick, long aEnergyNeededForStartingFusion) {return F;}
 		@Override public boolean addCentrifugeRecipe(ItemStack aInput1, long aInput2, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, ItemStack aOutput5, ItemStack aOutput6, long aDuration) {return F;}

@@ -25,6 +25,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @Deprecated
+@SuppressWarnings("deprecation")
 public interface IEnergyConnected extends IColoredTileEntity, IHasWorldObjectAndCoords {
 	public long injectEnergyUnits(byte aSide, long aVoltage, long aAmperage);
 	public boolean inputEnergyFrom(byte aSide);

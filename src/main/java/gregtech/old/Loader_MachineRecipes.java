@@ -39,10 +39,8 @@ import net.minecraftforge.fluids.FluidRegistry;
 @SuppressWarnings("deprecation")
 public class Loader_MachineRecipes implements Runnable {
 	@Override
-	@SuppressWarnings("deprecation")
 	public void run() {
 		OUT.println("GT_Mod: Adding non-OreDict Machine Recipes.");
-		@SuppressWarnings("deprecation")
 		gregapi.old.IGT_RecipeAdder RA = gregapi.old.IGT_RecipeAdder.NON_WORKING;
 		
 //      RA.addPrinterRecipe(OM.get(OP.plateDouble, MT.Paper, 1), UT.Fluids.make("squidink", (int)L / 4), NI, IL.Paper_Punch_Card_Empty.get(1), 100, 2);

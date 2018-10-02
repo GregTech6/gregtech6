@@ -68,7 +68,7 @@ public class FluidGT extends Fluid implements Runnable {
 	
 	@Override public String getUnlocalizedName(FluidStack stack) {return getUnlocalizedName();}
 	@Override public String getUnlocalizedName() {return "fluid." + unlocalizedName;}
-	@Override @SuppressWarnings("deprecation") public String getLocalizedName(FluidStack stack) {return getLocalizedName();}
+	@Override public String getLocalizedName(FluidStack stack) {return LH.get(getUnlocalizedName());}
 	@Override @SuppressWarnings("deprecation") public String getLocalizedName() {return LH.get(getUnlocalizedName());}
 	
 	@Override public int getTemperature(FluidStack aFluid) {return mTemperature;}

@@ -1010,6 +1010,7 @@ public class CS {
 	, NBT_HARDNESS                  = "gt.hardness"                 // Float
 	, NBT_RESISTANCE                = "gt.resistance"               // Float
 	, NBT_FLAMMABILITY              = "gt.flammability"             // Integer
+	, NBT_COOLDOWN                  = "gt.cooldown"                 // Number
 	, NBT_REDSTONE                  = "gt.redstone"                 // Byte
 	, NBT_REDSTONE_0                = "gt.redstone.0"               // Byte
 	, NBT_REDSTONE_1                = "gt.redstone.1"               // Byte

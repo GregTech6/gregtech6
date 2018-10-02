@@ -20,6 +20,7 @@
 package gregtech.api.interfaces.tileentity;
 
 @Deprecated
+@SuppressWarnings("deprecation")
 public interface IBasicEnergyContainer extends IEnergyConnected {
 	public boolean isUniversalEnergyStored(long aEnergyAmount);
 	public long getUniversalEnergyStored();

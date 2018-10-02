@@ -41,8 +41,8 @@ public class MultiTileEntityGeneratorGas extends MultiTileEntityGeneratorLiquid 
 		return mRecipes.containsInput(aFluidToFill, this, NI) && UT.Fluids.gas(aFluidToFill) ? mTank : null;
 	}
 	
-	@Override public boolean setAdjacentOnOff(boolean aOnOff) {if (mBurning && !aOnOff) mBurning = F; return mBurning;}
-	@Override public boolean setStateOnOff(boolean aOnOff) {if (mBurning && !aOnOff) mBurning = F; return mBurning;}
+	@Override public boolean setAdjacentOnOff(boolean aOnOff) {if (mBurning && !aOnOff) {mBurning = F; mCooldown = 0;} return mBurning;}
+	@Override public boolean setStateOnOff(boolean aOnOff) {if (mBurning && !aOnOff) {mBurning = F; mCooldown = 0;} return mBurning;}
 	@Override public boolean getStateOnOff() {return mBurning;}
 	
 	@Override

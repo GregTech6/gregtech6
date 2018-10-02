@@ -61,6 +61,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	private static int FLAME_RANGE = 2;
 	
+	protected byte mCooldown = 0;
 	protected short mEfficiency = 10000;
 	protected long mEnergy = 0, mRate = 1;
 	protected boolean mBurning = F, oBurning = F;
@@ -74,6 +75,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		super.readFromNBT2(aNBT);
 		mEnergy = aNBT.getLong(NBT_ENERGY);
 		mBurning = aNBT.getBoolean(NBT_ACTIVE);
+		if (aNBT.hasKey(NBT_COOLDOWN)) mCooldown = aNBT.getByte(NBT_COOLDOWN);
 		if (aNBT.hasKey(NBT_OUTPUT)) mRate = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_FUELMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_FUELMAP));
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
@@ -85,6 +87,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
+		UT.NBT.setNumber(aNBT, NBT_COOLDOWN, mCooldown);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mBurning);
 		mTank.writeToNBT(aNBT, NBT_TANK);
@@ -107,7 +110,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			if (mBurning) {
+			if (mBurning || mCooldown > 0) {
 				if (mEnergy > 0) {
 					mEnergy -= Math.max(1, Math.max(mRate / 2, ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, 1, Math.min(mRate, mEnergy), this)));
 					if (mEfficiency < 1 || rng(mEfficiency) == 0) {
@@ -133,15 +136,14 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 								}
 							} else {
 								mTank.setFluid(NF);
+								mCooldown = 25;
 							}
 						}
 					}
 				}
 			}
-			if (mEnergy <= 0) {
-				mEnergy = 0;
-				mBurning = F;
-			}
+			if (mEnergy <= 0) {mEnergy = 0; mBurning = F;}
+			if (mCooldown > 0) mCooldown--;
 		} else {
 			if (mBurning && rng(5) == 0) spawnBurningParticles(xCoord+0.5+OFFSETS_X[mFacing]*0.55+(SIDES_AXIS_X[mFacing]?0:RNGSUS.nextFloat()*0.6F-0.3F), yCoord+RNGSUS.nextFloat()*0.375F, zCoord+0.5+OFFSETS_Z[mFacing]*0.55+(SIDES_AXIS_Z[mFacing]?0:RNGSUS.nextFloat()*0.6F-0.3F));
 		}
@@ -198,7 +200,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	
 	@Override
 	protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
-		return mBurning ? null : mTank;
+		return mBurning || mCooldown > 0 ? null : mTank;
 	}
 	
 	@Override
@@ -214,7 +216,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mBurning?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]])): null;}
 	
-	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mBurning) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mRate / 10.0F));}
+	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mBurning || mCooldown > 0) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mRate / 10.0F));}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, 0, 0, 1, 0.875, 1);}
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return ZL_IS;}
