@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Crafting Table Recipe from Better Beginnings did not use the OreDict Wooden Planks, so only the 6 vanilla ones were usable.
 [CHANGED] Liquid/Gas Burning Boxes now have a 25 tick cooldown whenever they actually run out of Fuel. During that Cooldown they will automatically ignite themselves whenever new Fuel is added, even if the Fuel is a different Type.
 [CHANGED] Villager Zombies can now also drop Material Dictionaries.
+[CHANGED] In addition to Crowbars you can now also use Screwdrivers to open GT6 Crates (also it's less durability eating). Not only that but now you also get the empty Crate back from this. (empty crates didnt exist when I originally made it, so guess why I forgot about it)
 [ADDED] A way to turn Gravitite Gems and Dust into Enchanted Gravitite using the Injector. Later its gonna be a Magic Infuser instead of the Injector.
 [ADDED] Skyroot Item and Fluid Barrels, they are just like Treated Wood Barrels in their Stats.
 [ADDED] Draconium and Syrmorite Drums.

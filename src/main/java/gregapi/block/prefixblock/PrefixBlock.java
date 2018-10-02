@@ -35,6 +35,7 @@ import gregapi.block.behaviors.Drops;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ModData;
 import gregapi.data.CS.SFX;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -469,36 +470,41 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
 		// TODO: I directly inserted the Crate Drop Code here, instead of making a special registry.
 		OreDictMaterial aMaterial = getMetaMaterial(aWorld, aX, aY, aZ);
-		if (!aWorld.isRemote && aTool.equals(TOOL_crowbar)) {
+		if (!aWorld.isRemote && (aTool.equals(TOOL_screwdriver) || aTool.equals(TOOL_crowbar))) {
 			if (mPrefix == OP.crateGtGem) {
 				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.gem.mat(aMaterial, 16));
-				return 10000;
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
 			}
 			if (mPrefix == OP.crateGtDust) {
 				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.dust.mat(aMaterial, 16));
-				return 10000;
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
 			}
 			if (mPrefix == OP.crateGtIngot) {
 				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.ingot.mat(aMaterial, 16));
-				return 10000;
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
 			}
 			if (mPrefix == OP.crateGtPlate) {
 				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plate.mat(aMaterial, 16));
-				return 10000;
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
 			}
 			if (mPrefix == OP.crateGtPlateGem) {
 				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plateGem.mat(aMaterial, 16));
-				return 10000;
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
 			}
 		}
 		if (!aWorld.isRemote && aTool.equals(TOOL_magnifyingglass)) {
