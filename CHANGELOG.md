@@ -32,6 +32,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Grass Paths like Et Futurum, but better and compatible with Biomes o' Plenty and Aether.
 They also increase the Walk speed slightly (less than Asphalt!) and dont get destroyed when you place an opaque Block ontop of them.
 Old Et Futurum Grass Paths will turn into GT6 ones once you walk over them, right before the walk speed calculations, so you also get the minimal movement speed bonus from converting them.
+Mobs can also not spawn on these Paths.
 
 
 6.09.02:

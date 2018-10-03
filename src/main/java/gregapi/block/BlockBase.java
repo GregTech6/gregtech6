@@ -76,6 +76,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public boolean isOpaqueCube() {return T;}
 	@Override public boolean func_149730_j() {return isOpaqueCube();}
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return isSideSolid(aWorld.getBlockMetadata(aX, aY, aZ), UT.Code.side(aDirection));}
+	@Override public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return isOpaqueCube() ? !WD.visOpq(aWorld.getBlock(aX, aY, aZ)) : super.shouldSideBeRendered(aWorld, aX, aY, aZ, aSide);}
 	@Override public int damageDropped(int aMeta) {return aMeta;}
 	@Override public int quantityDropped(Random par1Random) {return 1;}
 	@Override public ItemStack createStackedBlock(int aMeta) {return ST.make(this, 1, damageDropped(aMeta));}

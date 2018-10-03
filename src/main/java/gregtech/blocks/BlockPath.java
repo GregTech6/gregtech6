@@ -30,6 +30,8 @@ import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.old.Textures;
 import gregapi.util.ST;
+import gregapi.util.WD;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -41,7 +43,7 @@ import net.minecraft.world.World;
 
 public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver {
 	public BlockPath(String aUnlocalised) {
-		super(null, aUnlocalised, Material.grass, soundTypeGrass, 2, Textures.BlockIcons.PATHS);
+		super(null, aUnlocalised, Material.grass, soundTypeGrass, 5, Textures.BlockIcons.PATHS);
 		LH.add(getUnlocalizedName()+ ".0.name", "Grass Path");
 		LH.add(getUnlocalizedName()+ ".1.name", "Aether Grass Path");
 		LH.add(getUnlocalizedName()+ ".2.name", "Loamy Grass Path");
@@ -59,6 +61,13 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver {
 		case  4: return new ArrayListNoNulls<>(F, IL.BoP_Dirt_Silty.get(1));
 		default: return new ArrayListNoNulls<>(F, ST.make(Blocks.dirt, 1, 0));
 		}
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {
+		if (SIDES_TOP[aSide]) return T;
+		Block tBlock = aWorld.getBlock(aX, aY, aZ);
+		return tBlock != this && tBlock != Blocks.farmland && !WD.visOpq(tBlock);
 	}
 	
 	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {aEntity.motionX *= 1.1; aEntity.motionZ *= 1.1;}
