@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -30,6 +31,8 @@ import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.util.UT;
+import gregapi.util.WD;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -44,22 +47,80 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 	
 	@Override
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aWorld.isRemote || !IL.EtFu_Path.exists() || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
-		if (aWorld.getBlock(aX, aY, aZ) == Blocks.grass && (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer))) {
-			UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
-			aWorld.setBlock(aX, aY, aZ, IL.EtFu_Path.block());
-			return T;
+		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+		Block aBlock = WD.block(aWorld, aX, aY, aZ);
+		
+		if (aBlock == Blocks.grass || IL.BoP_Grass_Long.equal(aBlock) || IL.BoP_Grass_Origin.equal(aBlock)) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 0, 3);
+					return T;
+				}
+				return F;
+			}
+			if (IL.EtFu_Path.exists()) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, IL.EtFu_Path.block());
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.AETHER_Grass.equal(aBlock) || IL.AETHER_Grass_Enchanted.equal(aBlock)) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 1, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		
+		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
+		
+		if (IL.BoP_Grass_Loamy.equal(aBlock) && aMeta == 0) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 2, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.BoP_Grass_Sandy.equal(aBlock) && aMeta == 1) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 3, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.BoP_Grass_Silty.equal(aBlock) && aMeta == 2) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 4, 3);
+					return T;
+				}
+				return F;
+			}
 		}
 		return F;
 	}
 	
 	static {
-		LH.add("gt.behaviour.path", "Creates Paths on Grass on Rightclick");
+		LH.add("gt.behaviour.path", "Creates Paths in Grass on Rightclick");
 	}
 	
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
-		if (IL.EtFu_Path.exists()) aList.add(LH.get("gt.behaviour.path"));
+		if (IL.EtFu_Path.exists() || BlocksGT.Paths != null) aList.add(LH.get("gt.behaviour.path"));
 		return aList;
 	}
 }

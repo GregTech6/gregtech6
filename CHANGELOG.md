@@ -28,6 +28,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] A way to turn Gravitite Gems and Dust into Enchanted Gravitite using the Injector. Later its gonna be a Magic Infuser instead of the Injector.
 [ADDED] Skyroot Item and Fluid Barrels, they are just like Treated Wood Barrels in their Stats.
 [ADDED] Draconium and Syrmorite Drums.
+[ADDED]
+Grass Paths like Et Futurum, but better and compatible with Biomes o' Plenty and Aether.
+They also increase the Walk speed slightly (less than Asphalt!) and dont get destroyed when you place an opaque Block ontop of them.
+Old Et Futurum Grass Paths will turn into GT6 ones once you walk over them, right before the walk speed calculations, so you also get the minimal movement speed bonus from converting them.
 
 
 6.09.02:

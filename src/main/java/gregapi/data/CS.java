@@ -1376,7 +1376,7 @@ public class CS {
 		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy;
 		public static BlockFluidClassic Ocean, Swamp;
 		
-		public static BlockBase Diggables, Sands, RockOres;
+		public static BlockBase Diggables, Sands, Paths, RockOres;
 		
 		public static IBlockBase FlowersA, FlowersB;
 		public static BlockBase Glowtus, Sapling, Leaves, BalesGrass, BalesCrop;

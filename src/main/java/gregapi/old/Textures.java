@@ -25,9 +25,11 @@ import gregapi.GT_API;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
+import gregapi.render.IconContainerCopied;
 import gregapi.util.UT;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
@@ -42,6 +44,8 @@ public class Textures {
 		
 		, MUD, CLAY_BROWN
 		, SAND_MAGNETITE
+		
+		, PATH, PATH_DIRT, PATH_AETHER, PATH_LOAMY, PATH_SANDY, PATH_SILTY
 		
 		, LONG_DIST_WIRE_EV, LONG_DIST_WIRE_IV, LONG_DIST_WIRE_LuV, LONG_DIST_WIRE_ZPM, LONG_DIST_WIRE_UV
 		, LONG_DIST_PIPE_ITEM
@@ -402,6 +406,42 @@ public class Textures {
 			CLAY_BROWN,
 			CLAY_BROWN,
 			CLAY_BROWN,
+		},
+		PATHS = new IIconContainer[] {
+			PATH_DIRT,
+			PATH_AETHER,
+			PATH_LOAMY,
+			PATH_SANDY,
+			PATH_SILTY,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+			PATH_DIRT,
+		},
+		DIRTS = new IIconContainer[] {
+			new IconContainerCopied(Blocks.dirt, 0, SIDE_BOTTOM),
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
+			PATH,
 		},
 		ROCK_ORES = new IIconContainer[] {
 			ORE_ANTHRACITE,

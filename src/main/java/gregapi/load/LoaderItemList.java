@@ -30,8 +30,10 @@ import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
+import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
+import gregapi.render.IconContainerCopied;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.worldgen.StoneLayer;
@@ -451,6 +453,8 @@ public class LoaderItemList implements Runnable {
 		IL.AETHER_Skyroot_Leaves_Purple         .set(ST.make(MD.AETHER, "purpleCrystalLeaves"               , 1, 1), null, OP.treeLeaves);
 		IL.AETHER_Skyroot_Leaves_Apple          .set(ST.make(MD.AETHER, "purpleFruitLeaves"                 , 1, 1), null, OP.treeLeaves);
 		
+		if (IL.AETHER_Dirt.exists()) Textures.BlockIcons.DIRTS[1] = new IconContainerCopied(IL.AETHER_Dirt.block(), 0, SIDE_BOTTOM);
+		
 		IL.GrC_Honey_Jar                        .set(ST.make(MD.GrC_Bees, "grc.honeyJar"                    , 1, 0), null, OD.container1000honey);
 		if (IL.GrC_Honey_Jar.item() != null) IL.GrC_Honey_Jar.item().setContainerItem(Items.flower_pot);
 		
@@ -615,6 +619,10 @@ public class LoaderItemList implements Runnable {
 		IL.BoP_Bone_Small                       .set(ST.make(MD.BoP, "bones"                                , 1, 0), new OreDictItemData(MT.Bone, U* 3));
 		IL.BoP_Bone_Medium                      .set(ST.make(MD.BoP, "bones"                                , 1, 1), new OreDictItemData(MT.Bone, U* 6));
 		IL.BoP_Bone_Large                       .set(ST.make(MD.BoP, "bones"                                , 1, 2), new OreDictItemData(MT.Bone, U*12));
+		
+		if (IL.BoP_Dirt_Loamy.exists()) Textures.BlockIcons.DIRTS[2] = new IconContainerCopied(IL.BoP_Dirt_Loamy.block(), 0, SIDE_BOTTOM);
+		if (IL.BoP_Dirt_Sandy.exists()) Textures.BlockIcons.DIRTS[3] = new IconContainerCopied(IL.BoP_Dirt_Sandy.block(), 2, SIDE_BOTTOM);
+		if (IL.BoP_Dirt_Silty.exists()) Textures.BlockIcons.DIRTS[4] = new IconContainerCopied(IL.BoP_Dirt_Silty.block(), 4, SIDE_BOTTOM);
 		
 		IL.BoP_Berry                            .set(ST.make(MD.BoP, "food"                                 , 1, 0), null, "cropBerry");
 		IL.BoP_ShroomPowder                     .set(ST.make(MD.BoP, "food"                                 , 1, 1));
