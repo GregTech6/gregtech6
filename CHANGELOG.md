@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.03: (Not released yet)
 [COMPAT] Botanias Paint Slinger Lens should work for painting GT6 TileEntities now.
+[COMPAT] Trees from Biomes o'Plenty and the Sakura Tree from the BambooMod are now Supported via the Wood Registry.
 [FIXED] Dynamic Trees's Trees wont be Treecapitated twice anymore, so the harvesting slowdown from my end is removed.
 [FIXED] Crafting Table Recipe from Better Beginnings did not use the OreDict Wooden Planks, so only the 6 vanilla ones were usable.
 [CHANGED] The Wrench and Screwdriver Sounds a little.

@@ -52,8 +52,6 @@ public class LoaderWoodDictionary implements Runnable {
 		for (int i = 0; i <  2; i++) PlankData.PLANKS[44+i] = ST.make(tBlock, 1, i);
 		tBlock = ST.block(MD.WTCH, "witchwood");
 		for (int i = 0; i <  3; i++) PlankData.PLANKS[65+i] = ST.make(tBlock, 1, i);
-		tBlock = ST.block(MD.BoP, "planks");
-		for (int i = 0; i < 15; i++) PlankData.PLANKS[72+i] = ST.make(tBlock, 1, i);
 		PlankData.PLANKS[ 96] = ST.make(MD.RC, "cube", 1, 8);
 		PlankData.PLANKS[104] = ST.make(MD.BTL, "rubberTreePlanks", 1, 0);
 //      PlankData.PLANKS[105] = ST.make(MD.BTL, "weedwoodPlanks", 1, 0);
@@ -64,7 +62,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 161 is next!
+		// No Gaps in this List, so 162 is next!
 		
 		
 		// Vanilla Trees
@@ -162,6 +160,10 @@ public class LoaderWoodDictionary implements Runnable {
 			if (MD.ATUM.mLoaded) {
 				new SaplingEntry(ST.make(MD.ATUM, "tile.palmSapling", 1, W), new WoodEntry(ST.make(MD.ATUM, "tile.palmLog", 1, W), new PlankEntry(ST.make(MD.ATUM, "tile.palmPlanks", 1, W), 123)), ST.make(MD.ATUM, "tile.palmLeaves", 1, W));
 			}
+		}
+		// BambooModSakuraTrees
+		if (MD.Bamboo.mLoaded) {
+			new SaplingEntry(ST.make(MD.Bamboo, "sakuraSapling", 1, W), new WoodEntry(ST.make(MD.Bamboo, "sakuraLog", 1, W), new PlankEntry(ST.make(MD.Bamboo, "twoDirDeco", 1, 2), ST.make(MD.Bamboo, "halfTwoDirDeco", 1, 2), 161), 1, 350), ST.make(MD.Bamboo, "sakuraLeaves", 1, W));
 		}
 		// Thaumcraft Trees
 		if (MD.TC.mLoaded) {
@@ -268,6 +270,40 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 1), WoodDictionary.WOODS.get(MD.EBXL, "log1", 3), ST.make(MD.EBXL, "leaves_2", 1, 1));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 2), WoodDictionary.WOODS.get(MD.EBXL, "log1", 3), ST.make(MD.EBXL, "leaves_2", 1, 2));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 3), WoodDictionary.WOODS.get(MD.EBXL, "log2", 0), ST.make(MD.EBXL, "leaves_2", 1, 3));
+		}
+		// Biomes o' Plenty Trees
+		if (MD.BoP.mLoaded) {
+			Block tPlank = ST.block(MD.BoP, "planks");
+			new WoodEntry(ST.make(MD.BoP, "logs1", 1, 0), new PlankEntry(ST.make(tPlank, 1, 0), ST.make(MD.BoP, "woodenSingleSlab1", 1, 0), ST.make(MD.BoP, "sacredoakStairs"   , 1, W), 72), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs1", 1, 1), new PlankEntry(ST.make(tPlank, 1, 1), ST.make(MD.BoP, "woodenSingleSlab1", 1, 1), ST.make(MD.BoP, "cherryStairs"      , 1, W), 73), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs1", 1, 2), new PlankEntry(ST.make(tPlank, 1, 2), ST.make(MD.BoP, "woodenSingleSlab1", 1, 2), ST.make(MD.BoP, "darkStairs"        , 1, W), 74), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs1", 1, 3), new PlankEntry(ST.make(tPlank, 1, 3), ST.make(MD.BoP, "woodenSingleSlab1", 1, 3), ST.make(MD.BoP, "firStairs"         , 1, W), 75), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs2", 1, 0), new PlankEntry(ST.make(tPlank, 1, 4), ST.make(MD.BoP, "woodenSingleSlab1", 1, 4), ST.make(MD.BoP, "etherealStairs"    , 1, W), 76), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs2", 1, 1), new PlankEntry(ST.make(tPlank, 1, 5), ST.make(MD.BoP, "woodenSingleSlab1", 1, 5), ST.make(MD.BoP, "magicStairs"       , 1, W), 77), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs2", 1, 2), new PlankEntry(ST.make(tPlank, 1, 6), ST.make(MD.BoP, "woodenSingleSlab1", 1, 6), ST.make(MD.BoP, "mangroveStairs"    , 1, W), 78), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs2", 1, 3), new PlankEntry(ST.make(tPlank, 1, 7), ST.make(MD.BoP, "woodenSingleSlab1", 1, 7), ST.make(MD.BoP, "palmStairs"        , 1, W), 79), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs3", 1, 0), new PlankEntry(ST.make(tPlank, 1, 8), ST.make(MD.BoP, "woodenSingleSlab2", 1, 0), ST.make(MD.BoP, "redwoodStairs"     , 1, W), 80), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs3", 1, 1), new PlankEntry(ST.make(tPlank, 1, 9), ST.make(MD.BoP, "woodenSingleSlab2", 1, 1), ST.make(MD.BoP, "willowStairs"      , 1, W), 81), 2, 500);
+			new PlankEntry(ST.make(tPlank, 1,10), NI, NI, MT.Wood, 82, NI, 0, 0, 0);
+			new WoodEntry(ST.make(MD.BoP, "logs3", 1, 2), WoodDictionary.PLANKS.get(BlocksGT.Planks, 12), 1, 50, 1, 2, 3, IL.Bark_Dry.get(1), MT.Wood, MT.Bark, null, 0, 0);
+			new WoodEntry(ST.make(MD.BoP, "logs4", 1, 0), new PlankEntry(ST.make(tPlank, 1,11), ST.make(MD.BoP, "woodenSingleSlab2", 1, 2), ST.make(MD.BoP, "pineStairs"        , 1, W), 83), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs4", 1, 1), new PlankEntry(ST.make(tPlank, 1,12), ST.make(MD.BoP, "woodenSingleSlab2", 1, 3), ST.make(MD.BoP, "hellBarkStairs"    , 1, W), 84), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs4", 1, 2), new PlankEntry(ST.make(tPlank, 1,13), ST.make(MD.BoP, "woodenSingleSlab2", 1, 4), ST.make(MD.BoP, "jacarandaStairs"   , 1, W), 85), 1, 250);
+			new WoodEntry(ST.make(MD.BoP, "logs4", 1, 3), new PlankEntry(ST.make(tPlank, 1,14), IL.Plank_Slab                   .get(1)   , ST.make(MD.BoP, "mahoganyStairs"    , 1, W), 86), 1, 250);
+			
+			CR.shaped(ST.make(tPlank, 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 1));
+			CR.shaped(ST.make(tPlank, 1, 2), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 2));
+			CR.shaped(ST.make(tPlank, 1, 3), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 3));
+			CR.shaped(ST.make(tPlank, 1, 4), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 4));
+			CR.shaped(ST.make(tPlank, 1, 5), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 5));
+			CR.shaped(ST.make(tPlank, 1, 6), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 6));
+			CR.shaped(ST.make(tPlank, 1, 7), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 7));
+			CR.shaped(ST.make(tPlank, 1, 8), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab2", 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 9), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab2", 1, 1));
+			CR.shaped(ST.make(tPlank, 1,11), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab2", 1, 2));
+			CR.shaped(ST.make(tPlank, 1,12), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab2", 1, 3));
+			CR.shaped(ST.make(tPlank, 1,13), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab2", 1, 4));
 		}
 		// Forestry Trees
 		if (MD.FR.mLoaded) {
