@@ -30,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] A way to turn Gravitite Gems and Dust into Enchanted Gravitite using the Injector. Later its gonna be a Magic Infuser instead of the Injector.
 [ADDED] Skyroot Item and Fluid Barrels, they are just like Treated Wood Barrels in their Stats.
 [ADDED] Draconium, Thaumium, Manasteel, Gaia and Syrmorite Drums. Also lots of Capsule Cell Container Materials aswell.
-[ADDED] More Material Variety for Item and Fluid Pipes, including Fan Favourites such as the Fake Osmium Item Pipe made from Mekanism Osmium.
+[ADDED] More Material Variety for Item and Fluid Pipes, including Fan Favourites such as the "Fake Osmium" Item Pipe made from Mekanism Osmium.
 [ADDED]
 Grass Paths like Et Futurum, but better and compatible with Biomes o' Plenty and Aether.
 They also increase the Walk speed slightly (less than Asphalt!) and dont get destroyed when you place an opaque Block ontop of them.

@@ -128,6 +128,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg("cropIvy"                            , ST.make(MD.BoP, "foliage", 1, 7));
 		OM.reg("cropPinecone"                       , ST.make(MD.BoP, "misc", 1, 13));
 		OM.reg("cropGrapeRed"                       , ST.make(MD.HaC, "grapeItem", 1));
+		OM.reg("cropBambooshoot"                    , ST.make(MD.BoP, "saplings", 1, 2));
 		OM.reg("listAllmushroom"                    , ST.make(MD.BoP, "mushrooms", 1, 0));
 		OM.reg("listAllmushroom"                    , ST.make(MD.BoP, "mushrooms", 1, 1));
 		OM.reg("listAllmushroom"                    , ST.make(MD.BoP, "mushrooms", 1, 2));

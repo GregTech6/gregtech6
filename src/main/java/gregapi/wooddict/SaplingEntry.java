@@ -38,8 +38,10 @@ public class SaplingEntry {
 		mSapling = ST.amount(1, aSapling);
 		
 		mWoodEntry = aWood;
-		mWoodEntry.mSaplingEntries.add(this);
-		mMaterialSapling = mWoodEntry.mMaterialWood;
+		if (mWoodEntry != null) {
+			mWoodEntry.mSaplingEntries.add(this);
+			mMaterialSapling = mWoodEntry.mMaterialWood;
+		}
 		
 		WoodDictionary.SAPLINGS.put(mSapling, this);
 	}
@@ -50,8 +52,10 @@ public class SaplingEntry {
 		mLeafEntry = new LeafEntry(aLeaf);
 		mLeafEntry.mSaplingEntries.add(this);
 		mWoodEntry = aWood;
-		mWoodEntry.mSaplingEntries.add(this);
-		mMaterialSapling = mWoodEntry.mMaterialWood;
+		if (mWoodEntry != null) {
+			mWoodEntry.mSaplingEntries.add(this);
+			mMaterialSapling = mWoodEntry.mMaterialWood;
+		}
 		
 		WoodDictionary.SAPLINGS.put(mSapling, this);
 	}
@@ -62,8 +66,10 @@ public class SaplingEntry {
 		mLeafEntry = aLeaf;
 		mLeafEntry.mSaplingEntries.add(this);
 		mWoodEntry = aWood;
-		mWoodEntry.mSaplingEntries.add(this);
-		mMaterialSapling = mWoodEntry.mMaterialWood;
+		if (mWoodEntry != null) {
+			mWoodEntry.mSaplingEntries.add(this);
+			mMaterialSapling = mWoodEntry.mMaterialWood;
+		}
 		
 		WoodDictionary.SAPLINGS.put(mSapling, this);
 	}
