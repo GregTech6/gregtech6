@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.09.03: (Not released yet)
 [COMPAT] Botanias Paint Slinger Lens should work for painting GT6 TileEntities now.
 [COMPAT] Trees from Biomes o'Plenty and the Sakura Tree from the BambooMod are now Supported via the Wood Registry.
+[FIXED] A few Recipes.
 [FIXED] Dynamic Trees's Trees wont be Treecapitated twice anymore, so the harvesting slowdown from my end is removed.
 [FIXED] Crafting Table Recipe from Better Beginnings did not use the OreDict Wooden Planks, so only the 6 vanilla ones were usable.
 [CHANGED] The Wrench and Screwdriver Sounds a little.
@@ -28,7 +29,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] In addition to Crowbars you can now also use Screwdrivers to open GT6 Crates (also it's less durability eating). Not only that but now you also get the empty Crate back from this. (empty crates didnt exist when I originally made it, so guess why I forgot about it)
 [ADDED] A way to turn Gravitite Gems and Dust into Enchanted Gravitite using the Injector. Later its gonna be a Magic Infuser instead of the Injector.
 [ADDED] Skyroot Item and Fluid Barrels, they are just like Treated Wood Barrels in their Stats.
-[ADDED] Draconium and Syrmorite Drums.
+[ADDED] Draconium, Thaumium, Manasteel, Gaia and Syrmorite Drums. Also lots of Capsule Cell Container Materials aswell.
+[ADDED] More Material Variety for Item and Fluid Pipes, including Fan Favourites such as the Fake Osmium Item Pipe made from Mekanism Osmium.
 [ADDED]
 Grass Paths like Et Futurum, but better and compatible with Biomes o' Plenty and Aether.
 They also increase the Walk speed slightly (less than Asphalt!) and dont get destroyed when you place an opaque Block ontop of them.

@@ -265,7 +265,10 @@ public class LoaderItemData implements Runnable {
 		OM.reg("foodTitanraw"                       , ST.make(MD.ERE, "food", 1, 12));
 		OM.reg("foodTitancooked"                    , ST.make(MD.ERE, "food", 1, 13));
 		OM.reg("cropBambooshoot"                    , ST.make(MD.Bamboo, "blockbambooshoot", 1, 0));
+		OM.reg(OP.treeSapling                       , ST.make(MD.Bamboo, "sakuraSapling", 1, W));
+		OM.reg(OP.treeLeaves                        , ST.make(MD.Bamboo, "sakuraLeaves", 1, W));
 		OM.reg(OD.logWood                           , ST.make(MD.Bamboo, "sakuraLog", 1, W));
+		OM.reg(OD.slabWood                          , ST.make(MD.Bamboo, "halfTwoDirDeco", 1, 2));
 		OM.reg("seedRice"                           , ST.make(MD.Bamboo, "seedrice", 1, 0));
 		OM.reg("dustRice"                           , ST.make(MD.Bamboo, "rawrice", 1, 0));
 		OM.reg("cropSoybean"                        , ST.make(MD.Bamboo, "itembean", 1, 0));

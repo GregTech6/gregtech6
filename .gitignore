@@ -45,3 +45,6 @@
 !/src/main/resources/**/*.mcmeta
 # Some old scripts in resources...
 !/src/main/resources/**/*.bat
+/.gradle/
+/build/
+/bin/
