@@ -78,12 +78,12 @@ idea{
 
 repositories {
 	maven {
-		name = "forge"
-		url = "https://files.minecraftforge.net/maven"
-	}
-	maven {
 		name = "gt"
 		url = "https://gregtech.overminddl1.com/"
+	}
+	maven {
+		name = "forge"
+		url = "https://files.minecraftforge.net/maven"
 	}
 	//// No official maven'y storage for:
 	//// - Baubles
