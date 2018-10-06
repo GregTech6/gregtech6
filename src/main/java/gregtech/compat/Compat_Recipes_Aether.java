@@ -20,6 +20,7 @@
 package gregtech.compat;
 
 import static gregapi.data.CS.*;
+import static gregapi.util.CR.*;
 
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
@@ -29,6 +30,7 @@ import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.util.CR;
@@ -43,6 +45,10 @@ public class Compat_Recipes_Aether extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Aether Recipes.");
 		ST.item(MD.AETHER, "moaEgg").setMaxStackSize(64);
+		
+		CR.shaped(ST.make(MD.AETHER, "shoyrootBowl", 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankSkyroot);
+		CR.shapeless(ST.make(Items.bowl, 1, 0), CR.DEF_NAC_NCC, new Object[] {ST.make(MD.AETHER, "shoyrootBowl", 1, 0)});
+		RM.generify(ST.make(MD.AETHER, "shoyrootBowl", 1, 0), ST.make(Items.bowl, 1, 0));
 		
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootSignItem"         , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount / 3));
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootFenceGate"        , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount * 4));
