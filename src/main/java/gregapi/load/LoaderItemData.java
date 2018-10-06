@@ -122,6 +122,12 @@ public class LoaderItemData implements Runnable {
 		OM.reg("foodChocolatestrawberry"            , ST.make(MD.EBXL, "extrabiomes.crop", 1, 1));
 		OM.reg("cropStrawberry"                     , ST.make(MD.EBXL, "extrabiomes.crop", 1, 0));
 		OM.reg("seedStrawberry"                     , ST.make(MD.EBXL, "extrabiomes.seed", 1, 0));
+		OM.reg("cropAcorn"                          , ST.make(MD.DYNAMIC_TREES, "oakseed"    , 1, 0));
+		OM.reg("cropCatkin"                         , ST.make(MD.DYNAMIC_TREES, "birchseed"  , 1, 0));
+		OM.reg("cropPinecone"                       , ST.make(MD.DYNAMIC_TREES, "spruceseed" , 1, 0));
+//      OM.reg("cropPinecone"                       , ST.make(MD.DYNAMIC_TREES, "jungleseed" , 1, 0));
+//      OM.reg("cropPinecone"                       , ST.make(MD.DYNAMIC_TREES, "acaciaseed" , 1, 0));
+		OM.reg("cropAcorn"                          , ST.make(MD.DYNAMIC_TREES, "darkoakseed", 1, 0));
 		OM.reg("cropKelp"                           , ST.make(MD.BoP, "coral1", 1, 11));
 		OM.reg("cropAlgae"                          , ST.make(MD.BoP, "coral2", 1, 8));
 		OM.reg("cropFlax"                           , ST.make(MD.BoP, "foliage", 1, 3));

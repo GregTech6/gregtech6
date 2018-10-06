@@ -80,6 +80,7 @@ public class MD {
 	
 	, EtFu              = new ModData(ModIDs.EtFu               , "Et Futurum")
 	, BB                = new ModData(ModIDs.BB                 , "Better Beginnings")
+	, DYNAMIC_TREES     = new ModData(ModIDs.DYNAMIC_TREES      , "Dynamic Trees")
 	
 	, BbLC              = new ModData(ModIDs.BbLC               , "BiblioCraft")
 	, CARP              = new ModData(ModIDs.CARP               , "Carpenters Blocks")

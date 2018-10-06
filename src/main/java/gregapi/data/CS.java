@@ -1652,6 +1652,7 @@ public class CS {
 		
 		, EtFu              = "etfuturum"
 		, BB                = "betterbeginnings"
+		, DYNAMIC_TREES     = "dynamictrees"
 		
 		, BbLC              = "BiblioCraft"
 		, CARP              = "CarpentersBlocks"
