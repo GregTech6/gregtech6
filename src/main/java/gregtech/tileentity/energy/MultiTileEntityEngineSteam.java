@@ -125,7 +125,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 				if (tConversions > 0) {
 					mEnergy += UT.Code.units(tConversions * STEAM_PER_WATER / STEAM_PER_EU, 10000, mEfficiency, F);
 					mTanks[0].getFluid().amount -= tConversions * STEAM_PER_WATER;
-					if (mTanks[0].getFluidAmount() <= 0) mTanks[0].setFluid(null);
+					if (mTanks[0].getFluidAmount() <= 0) mTanks[0].setEmpty();
 					FluidStack tDistilledWater = FL.DistW.make(tConversions);
 					for (byte tDir : FACING_SIDES[mFacing]) {
 						if (tDistilledWater.amount <= 0) break;
@@ -155,7 +155,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 			if (mEnergy >= mCapacity) {
 				mEnergy = mCapacity - 1;
 				mStopped = T;
-				mTanks[0].setFluid(null);
+				mTanks[0].setEmpty();
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 			}
 			

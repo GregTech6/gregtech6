@@ -120,7 +120,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 					mEfficiency -= tConversions;
 					if (mEfficiency < 5000) mEfficiency = 5000;
 				}
-				if (mTanks[0].getFluidAmount() <= 0) mTanks[0].setFluid(null);
+				if (mTanks[0].getFluidAmount() <= 0) mTanks[0].setEmpty();
 				mTanks[1].setFluid(FL.Steam.make(mTanks[1].getFluidAmount() + UT.Code.units(tConversions, 10000, mEfficiency * 160, F)));
 				mEnergy -= tConversions * 80;
 				mCoolDownResetTimer = 128;
@@ -166,7 +166,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 					explode();
 				} else {
 					if (mEnergy+mTanks[1].getFluidAmount()/STEAM_PER_EU > 2000) UT.Entities.applyHeatDamage(aPlayer, (mEnergy+mTanks[1].getFluidAmount()/2) / 2000.0F);
-					mTanks[1].setFluid(NF);
+					mTanks[1].setEmpty();
 					mEfficiency = 10000;
 					mEnergy = 0;
 					return rResult;

@@ -149,7 +149,7 @@ public class MultiTileEntityLargeTurbineSteam extends TileEntityBase11MultiBlock
 			mSteamCounter += tSteam;
 			mStorage.mEnergy += tSteam / 2;
 			mEnergyProducedNextTick += tSteam / 2;
-			mTanks[0].setFluid(NF);
+			mTanks[0].setEmpty();
 			if (mSteamCounter >= STEAM_PER_WATER) {
 				mTanks[1].fillAll(FL.DistW.make(mSteamCounter / STEAM_PER_WATER));
 				mSteamCounter %= STEAM_PER_WATER;

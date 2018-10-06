@@ -125,6 +125,7 @@ public class FluidTankGT implements IFluidTank {
 		return F;
 	}
 	
+	public FluidTankGT setEmpty() {mFluid = NF; return this;}
 	public FluidTankGT setFluid(FluidStack aFluid) {mFluid = aFluid; return this;}
 	public FluidTankGT setCapacity(long aCapacity) {mCapacity = UT.Code.bindInt(aCapacity); return this;}
 	public FluidTankGT setPreventDraining() {return setPreventDraining(T);}

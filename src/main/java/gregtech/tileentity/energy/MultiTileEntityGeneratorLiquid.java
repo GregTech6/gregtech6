@@ -110,42 +110,53 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
+			// Check if it is ready to burn or emit Energy.
 			if (mBurning || mCooldown > 0) {
+				// Emit buffered Energy. And yes if you use a strong enough Fuel, that Energy would stay buffered even while the Burning Box is Off. This is very intended and represents partially used Fuel.
 				if (mEnergy > 0) {
 					mEnergy -= Math.max(1, Math.max(mRate / 2, ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, 1, Math.min(mRate, mEnergy), this)));
+					// Burn surrounding Area.
 					if (mEfficiency < 1 || rng(mEfficiency) == 0) {
 						WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), T);
 					}
 				}
+				// Check if it needs to burn more Fuel, or if the buffered Energy is enough.
 				if (mEnergy < mRate * 2) {
+					// Will be set back to true if the Recipe finds enough Fuel.
+					mBurning = F;
+					// Burn whatever Block is in front of the Burning Box, if it is flammable.
 					WD.fire(worldObj, getOffset(mFacing, 1), T);
+					// Check for Air, because Fire needs Oxygen.
 					if (!WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
-						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, new FluidStack[] {mTank.getFluid()}, ZL_IS);
-						
-						if (tRecipe != null) {
-							if (tRecipe.isRecipeInputEqual(T, F, new FluidStack[] {mTank.getFluid()}, ZL_IS)) {
-								mLastRecipe = tRecipe;
+						// Find and apply fitting Recipe.
+						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, new IFluidTank[] {mTank}, ZL_IS);
+						if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, new IFluidTank[] {mTank}, ZL_IS)) {
+							mBurning = T;
+							mCooldown = 25;
+							mLastRecipe = tRecipe;
+							mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
+							// Burn as much as needed to keep up the Power per Tick.
+							while (mEnergy < mRate * 2 && tRecipe.isRecipeInputEqual(T, F, new IFluidTank[] {mTank}, ZL_IS)) {
 								mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
-								if (mTank.getFluidAmount() > 0) {
-									while (mEnergy < mRate * 2 && tRecipe.isRecipeInputEqual(T, F, new FluidStack[] {mTank.getFluid()}, ZL_IS)) {
-										mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
-										if (mTank.getFluidAmount() == 0) {mTank.setFluid(NF); break;}
-									}
-								} else {
-									mTank.setFluid(NF);
-								}
-							} else {
-								mTank.setFluid(NF);
-								mCooldown = 25;
+								if (mTank.isEmpty()) break;
 							}
+						} else {
+							// set remaining Fluid to null, in case the Fuel Type needs to be swapped out.
+							mTank.setEmpty();
 						}
+					} else {
+						// Well, no Air, no Fire.
+						mCooldown = 0;
 					}
 				}
 			}
+			// Out of Fuel I guess.
 			if (mEnergy <= 0) {mEnergy = 0; mBurning = F;}
+			// Time to auto-re-ignite the Box after loss of Fuel ticks down.
 			if (mCooldown > 0) mCooldown--;
 		} else {
-			if (mBurning && rng(5) == 0) spawnBurningParticles(xCoord+0.5+OFFSETS_X[mFacing]*0.55+(SIDES_AXIS_X[mFacing]?0:RNGSUS.nextFloat()*0.6F-0.3F), yCoord+RNGSUS.nextFloat()*0.375F, zCoord+0.5+OFFSETS_Z[mFacing]*0.55+(SIDES_AXIS_Z[mFacing]?0:RNGSUS.nextFloat()*0.6F-0.3F));
+			// Client Burning Particles.
+			if (mBurning && rng(5) == 0) spawnBurningParticles(xCoord+0.5+OFFSETS_X[mFacing]*0.55+(SIDES_AXIS_X[mFacing]?0:RNGSUS.nextFloat()*0.6-0.3), yCoord+RNGSUS.nextFloat()*0.375, zCoord+0.5+OFFSETS_Z[mFacing]*0.55+(SIDES_AXIS_Z[mFacing]?0:RNGSUS.nextFloat()*0.6-0.3));
 		}
 	}
 	
@@ -156,8 +167,8 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_igniter       ) && (aSide == mFacing || aPlayer == null)) {mBurning = T; return 10000;}
-		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {mBurning = F; return 10000;}
+		if (aTool.equals(TOOL_igniter       ) && (aSide == mFacing || aPlayer == null)) {mBurning = T; mCooldown = 25; return 10000;}
+		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {mBurning = F; mCooldown =  0; return 10000;}
 		
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {

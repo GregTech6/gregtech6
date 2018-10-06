@@ -81,7 +81,7 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 			mSteamCounter += tSteam;
 			mStorage.mEnergy += tSteam / 2;
 			mEnergyProducedNextTick += tSteam / 2;
-			mTanks[0].setFluid(NF);
+			mTanks[0].setEmpty();
 			if (mSteamCounter >= STEAM_PER_WATER) {
 				FluidStack tDrainableSteam = FL.DistW.make(mSteamCounter / STEAM_PER_WATER);
 				for (byte tDir : FACING_SIDES[mFacing]) {
