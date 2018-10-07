@@ -332,6 +332,7 @@ public class LoaderItemList implements Runnable {
 		IL.IE_Treated_Planks                    .set(ST.make(MD.IE, "treatedWood"                           , 1, 0), new OreDictItemData(MT.WoodSealed, U));
 		IL.IE_Treated_Slab                      .set(ST.make(MD.IE, "woodenDecoration"                      , 1, 2), new OreDictItemData(MT.WoodSealed, U2));
 		IL.IE_Treated_Stairs                    .set(ST.make(MD.IE, "woodenStairs"                          , 1, 0), new OreDictItemData(MT.WoodSealed, 3*U4));
+		IL.IE_Crate                             .set(ST.make(MD.IE, "woodenDevice"                          , 1, 4), new OreDictItemData(MT.WoodSealed, 8*U), OD.craftingChest);
 		
 		IL.Myst_Ink_Vial                        .set(ST.make(MD.MYST, "vial"                                , 1, 0));
 		IL.Myst_Desk_Item                       .set(ST.make(MD.MYST, "writingdesk"                         , 1, 0));
@@ -416,6 +417,7 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Betweenstone                     .set(ST.make(MD.BTL, "betweenstone"                         , 1, 0), OP.stone.dat(MT.Betweenstone));
 		IL.BTL_Pitstone                         .set(ST.make(MD.BTL, "pitstone"                             , 1, 0), OP.stone.dat(MT.Pitstone));
 		IL.BTL_Bedrock                          .set(ST.make(MD.BTL, "bedrock"                              , 1, 0), OP.stone.dat(MT.Bedrock));
+		IL.BTL_Chest                            .set(ST.make(MD.BTL, "weedwoodChest"                        , 1, 0), new OreDictItemData(MT.Weedwood, 8*U), OD.craftingChest);
 		IL.BTL_Weedwood_Leaves                  .set(ST.make(MD.BTL, "weedwoodLeaves"                       , 1, 0), null, OP.treeLeaves);
 		IL.BTL_Weedwood_Sapling                 .set(ST.make(MD.BTL, "saplingWeedwood"                      , 1, 0), null, OP.treeSapling);
 		IL.BTL_Weedwood_Planks                  .set(ST.make(MD.BTL, "weedwoodPlanks"                       , 1, 0), new OreDictItemData(MT.Weedwood, U), OD.plankWeedwood);
@@ -430,6 +432,7 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Skin                             .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 7), null, OD.itemSkin);
 		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,39), null, OD.itemTar);
 		
+		IL.AETHER_Chest                         .set(ST.make(MD.AETHER, "skyrootChest"                      , 1, 0), new OreDictItemData(MT.Skyroot, 8*U), OD.craftingChest);
 		IL.AETHER_Skyroot_Planks                .set(ST.make(MD.AETHER, "skyrootPlank"                      , 1, 0), new OreDictItemData(MT.Skyroot, U), OD.plankSkyroot);
 		IL.AETHER_Skyroot_Log                   .set(ST.make(MD.AETHER, "aetherLog"                         , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U));
 		IL.AETHER_Skyroot_Log_Gold              .set(ST.make(MD.AETHER, "aetherLog"                         , 1, 2), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log.wild(1), OD.logWood);
