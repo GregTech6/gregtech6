@@ -217,6 +217,7 @@ public class TextureSet {
 	, SET_REDSTONE                  = new TextureSet[] {addTextureSet(MD.GT.mID, F, "REDSTONE")      , addTextureSet(MD.GT.mID, T, "REDSTONE")      }
 	, SET_MAGNETIC                  = new TextureSet[] {addTextureSet(MD.GT.mID, F, "MAGNETIC")      , addTextureSet(MD.GT.mID, T, "MAGNETIC")      }
 	, SET_METALLIC                  = new TextureSet[] {addTextureSet(MD.GT.mID, F, "METALLIC")      , addTextureSet(MD.GT.mID, T, "METALLIC")      }
+	, SET_PRISMARINE                = new TextureSet[] {addTextureSet(MD.GT.mID, F, "PRISMARINE")    , addTextureSet(MD.GT.mID, T, "PRISMARINE")    }
 	, SET_CUBE_SHINY                = new TextureSet[] {addTextureSet(MD.GT.mID, F, "CUBE_SHINY")    , addTextureSet(MD.GT.mID, T, "CUBE_SHINY")    }
 	, SET_NETHERSTAR                = new TextureSet[] {addTextureSet(MD.GT.mID, F, "NETHERSTAR")    , addTextureSet(MD.GT.mID, T, "NETHERSTAR")    }
 	, SET_GEM_VERTICAL              = new TextureSet[] {addTextureSet(MD.GT.mID, F, "GEM_VERTICAL")  , addTextureSet(MD.GT.mID, T, "GEM_VERTICAL")  }

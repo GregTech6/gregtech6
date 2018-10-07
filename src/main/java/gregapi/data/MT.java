@@ -1146,6 +1146,9 @@ public class MT {
 	Dacite                  = stone         ( 9187, "Dacite"                , SET_STONE             , 131, 131, 131, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1),
 	Shale                   = stone         ( 9190, "Shale"                 , SET_STONE             , 142, 142, 168, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 0),
 	Eclogite                = stone         ( 9191, "Eclogite"              , SET_STONE             ,  90,  40,  40, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1),
+	PrismarineLight         = stone         ( 9219, "Prismarine"            , SET_PRISMARINE        , 110, 178, 165, 255).put(G_GEM_ORES, CRYSTAL, CRYSTALLISABLE)                                                                                                                                                                                                                                                                  .aspects(TC.TEMPESTAS   , 1).qual(1, 4.0, 48, 1).setLocal("Light Prismarine"),
+	PrismarineDark          = stone         ( 9220, "PrismarineDark"        , SET_PRISMARINE        ,  88, 125, 108, 255).put(G_GEM_ORES, CRYSTAL, CRYSTALLISABLE)                                                                                                                                                                                                                                                                  .aspects(TC.TEMPESTAS   , 1).qual(1, 4.0, 48, 1).setLocal("Dark Prismarine"),
+	
 	Greenstone              = stone         ( 9172, "Greenstone"            , SET_STONE             ,  52, 252,  52, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.TERRA       , 1),
 	Bluestone               = stone         ( 9185, "Bluestone"             , SET_STONE             ,  52,  52, 252, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.TERRA       , 1),
 	Epidote                 = stone         ( 9182, "Epidote"               , SET_STONE             , 128, 128, 128, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.TERRA       , 1),
@@ -1403,6 +1406,9 @@ public class MT {
 			
 			Wood                    .put(MD.MC);
 			Stone                   .put(MD.MC);
+			Granite                 .put(MD.MC);
+			Diorite                 .put(MD.MC);
+			Andesite                .put(MD.MC);
 			Fe                      .put(MD.MC);
 			Au                      .put(MD.MC);
 			Diamond                 .put(MD.MC);
@@ -1444,6 +1450,9 @@ public class MT {
 			MeatRotten              .put(MD.MC);
 			Wheat                   .put(MD.MC);
 			Potato                  .put(MD.MC);
+			PrismarineLight         .put(MD.MC);
+			PrismarineDark          .put(MD.MC);
+			
 			
 			Black                   .put(MD.MC);
 			Red                     .put(MD.MC);
@@ -2532,7 +2541,6 @@ public class MT {
 		IridironReinforced          = unused        ("IridiumIronReinforced"        ).put(G_INGOT).setMcfg( 0, Ir, 1*U, Fe, 1*U).setLocal("Reinforced Iridiron"),
 		Quicklime                   = unused        ("Quicklime"                    ).put(G_DUST).setMcfg( 0, Ca, 1*U, O, 1*U),
 		LimePure                    = unused        ("LimePure"                     ).setLocal("Pure Lime"),
-		Prismarine                  = unused        ("Prismarine"                   ).setOriginalMod(MD.MC),
 		TNT                         = unused        ("TNT"                          ).put(EXPLOSIVE, FLAMMABLE).aspects(TC.PERDITIO, 3, TC.IGNIS, 1).setOriginalMod(MD.MC),
 		TerrasteelAlloyRaw          = unused        ("TerrasteelAlloyRaw"           ).put(G_INGOT, MAGICAL, "RawTerrasteelAlloy").setLocal("Raw Terrasteel Alloy"),
 		TerrasteelAlloyStrengthened = unused        ("TerrasteelAlloyStrengthened"  ).put(G_INGOT, MAGICAL, "StrengthenedTerrasteelAlloy").setLocal("Strengthened Terrasteel Alloy"),

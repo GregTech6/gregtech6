@@ -22,7 +22,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.04: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED]
+Light and Dark Prismarine Rock Types.
+Including all the Stuff the usual Rock Types like Granite, Komatiite and such have.
+And yes it is 2 different Types, with their own light and dark Prismarine Materials.
+Currently only generate as a Part of GT6 Dungeons.
 
 
 6.09.03:
