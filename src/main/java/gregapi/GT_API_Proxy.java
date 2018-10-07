@@ -971,50 +971,25 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
-		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
-			if (aEvent.entity instanceof EntityItem) {
-				ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity.worldObj, UT.Code.roundDown(aEvent.entity.posX), UT.Code.roundDown(aEvent.entity.posY), UT.Code.roundDown(aEvent.entity.posZ));
-				if (ST.valid(aStack) && aStack.stackSize > 0) {
-					if (((EntityItem)aEvent.entity).lifespan > 1200) {
-						if (aStack.getItem() == Items.egg || aStack.getItem() == Items.feather || aStack.getItem() == Items.apple) {
-							((EntityItem)aEvent.entity).lifespan = 1200;
-						} else {
-						//  if (MD.GT.mLoaded) {
-						//      if (aStack.getItem() == Items.stick) {
-						//          ((EntityItem)aEvent.entity).lifespan = 200;
-						//      } else {
-						//          OreDictItemData tData = OM.data(aStack);
-						//          if (tData != null && tData.mPrefix == OP.rockGt) {
-						//              ((EntityItem)aEvent.entity).lifespan = 200;
-						//          } else if (((EntityItem)aEvent.entity).lifespan == 6000) {
-						//              ((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
-						//          }
-						//      }
-						//  } else {
-								if (((EntityItem)aEvent.entity).lifespan == 6000) {
-									((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
-								}
-						//  }
+		if (aEvent.entity instanceof EntityItem && !aEvent.entity.worldObj.isRemote) {
+			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity.worldObj, UT.Code.roundDown(aEvent.entity.posX), UT.Code.roundDown(aEvent.entity.posY), UT.Code.roundDown(aEvent.entity.posZ));
+			if (ST.valid(aStack) && aStack.stackSize > 0) {
+				if (ST.meta(aStack) == W) ST.meta(aStack, 0);
+				if (((EntityItem)aEvent.entity).lifespan > 1200) {
+					if (aStack.getItem() == Items.egg || aStack.getItem() == Items.feather || aStack.getItem() == Items.apple) {
+						((EntityItem)aEvent.entity).lifespan = 1200;
+					} else {
+						if (((EntityItem)aEvent.entity).lifespan == 6000) {
+							((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
 						}
 					}
-					
-//                  if (MD.GT.mLoaded) {
-//                  if (IL.CHSL_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
-//                  if (IL.EtFu_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
-//                  if (IL.BOTA_Granite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[5], 1, 0), F, F); else
-//                  if (IL.CHSL_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
-//                  if (IL.EtFu_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
-//                  if (IL.BOTA_Diorite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[6], 1, 0), F, F); else
-//                  if (IL.CHSL_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F); else
-//                  if (IL.EtFu_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F); else
-//                  if (IL.BOTA_Andesite.equal(aStack, F, T)) ST.set(aStack, ST.make(BlocksGT.stones[7], 1, 0), F, F);
-//                  }
-					
-					((EntityItem)aEvent.entity).setEntityItemStack(aStack);
-				} else {
-					aEvent.entity.setDead();
-					return;
 				}
+				// Result was valid so set the ItemStack.
+				((EntityItem)aEvent.entity).setEntityItemStack(aStack);
+			} else {
+				// Result was invalid therefore kill the Stack.
+				aEvent.entity.setDead();
+				return;
 			}
 		}
 	}
