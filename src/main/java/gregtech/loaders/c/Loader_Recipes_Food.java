@@ -378,7 +378,7 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {ingot.mat(MT.Peat, 2), OM.dust(tMat, U*2), aEvent.mStack}, ingotDouble.mat(MT.PeatBituminous, 1));
 		}});
 		addListener("listAllmushroom", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!ST.equal(aEvent.mStack, ST.make(Blocks.brown_mushroom, 1, W)))
+			if (!ST.equal(aEvent.mStack, Blocks.brown_mushroom))
 			RM.Mixer        .addRecipe2(T, 16,   16, aEvent.mStack, ST.make(Blocks.brown_mushroom, 1, W), NF, FL.Soup_Mushroom.make(1000), ZL_IS);
 		}});
 		

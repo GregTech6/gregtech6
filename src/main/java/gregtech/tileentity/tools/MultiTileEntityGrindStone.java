@@ -99,7 +99,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 				if (aStack == null || mRecipes == null || !UT.Entities.isPlayer(aPlayer)) {
 					mClickCount = 0;
 				} else if (mStone <= 0) {
-					if (ST.equal(ST.make(Blocks.sandstone, 1, W), aStack, T) && aStack.stackSize > 0) {
+					if (ST.equal(aStack, Blocks.sandstone) && aStack.stackSize > 0) {
 						mClickCount = 0;
 						mStone = 4;
 						if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;

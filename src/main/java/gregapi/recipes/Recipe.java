@@ -491,7 +491,7 @@ public class Recipe {
 				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
 				}
 				if (tStack1.getItem() != tStack2.getItem()) {
-				tRecipes = mRecipeItemMap.get(new ItemStackContainer(ST.copyMeta(W, tStack2)));
+				tRecipes = mRecipeItemMap.get(new ItemStackContainer(tStack2, W));
 				if (tRecipes != null) for (Recipe tRecipe : tRecipes) if (!tRecipe.mFakeRecipe && tRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return tRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, tRecipe.mEUt)?oRecipe=tRecipe:null;
 				}
 			}

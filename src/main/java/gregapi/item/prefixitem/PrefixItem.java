@@ -173,7 +173,6 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 		return mContainerItem != null ? ST.amount(1, mContainerItem) : mPrefix.mContainerItem != null ? ST.amount(1, mContainerItem = mPrefix.mContainerItem) : null;
 	}
 	
-	
 	@Override
 	public boolean isBeaconPayment(ItemStack aStack) {
 		if (mPrefix.mAmount >= U && (mPrefix.contains(TD.Prefix.GEM_BASED) || mPrefix.contains(TD.Prefix.INGOT_BASED))) {

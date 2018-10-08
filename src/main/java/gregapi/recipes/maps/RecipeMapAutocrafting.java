@@ -108,7 +108,7 @@ public class RecipeMapAutocrafting extends RecipeMap {
 		
 		if (ST.invalid(tOutput)) return null; 
 		
-		ArrayListNoNulls<ItemStack> tInputs = new ArrayListNoNulls<>();
+		ArrayListNoNulls<ItemStack> tInputs  = new ArrayListNoNulls<>();
 		ArrayListNoNulls<ItemStack> tOutputs = new ArrayListNoNulls<>(F, tOutput);
 		
 		for (ItemStack tPlan : tBlueprint) if (tPlan != null) {
@@ -119,7 +119,7 @@ public class RecipeMapAutocrafting extends RecipeMap {
 				temp = F;
 			}
 			if (temp) {
-				tInputs.add(ST.amount(1, tPlan));
+				tInputs .add(ST.amount(1, tPlan));
 				tOutputs.add(ST.container(tPlan, F));
 			}
 		}

@@ -505,7 +505,7 @@ public enum IL implements IItemContainer {
 	
 	@Override
 	public boolean equal(Object aStack, boolean aWildcard, boolean aIgnoreNBT) {
-		return ST.valid(mStack) && ST.valid((ItemStack)aStack) && ST.equal((ItemStack)aStack, aWildcard?wild(1):get(1), aIgnoreNBT);
+		return ST.valid(mStack) && (aWildcard ? ST.equal_((ItemStack)aStack, ST.item(mStack)) : ST.equal_((ItemStack)aStack, mStack, aIgnoreNBT));
 	}
 	
 	@Override

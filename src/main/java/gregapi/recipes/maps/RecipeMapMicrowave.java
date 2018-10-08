@@ -51,18 +51,18 @@ public class RecipeMapMicrowave extends RecipeMapNonGTRecipes {
 		if (aRecipe != null && aRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return aRecipe;
 		ItemStack tOutput = RM.get_smelting(aInputs[0], F, null);
 		
-		if (ST.equal(aInputs[0], ST.make(Items.book, 1, W))) {
+		if (ST.equal(aInputs[0], Items.book)) {
 			return new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {ST.book("Manual_Microwave")}, null, null, null, null, 32, 4, 0);
 		}
 		
 		// Check Container Item of Input since it is around the Input, then the Input itself, then Container Item of Output and last check the Output itself
 		for (ItemStack tStack : new ItemStack[] {ST.container(aInputs[0], T), aInputs[0], ST.container(tOutput, T), tOutput}) if (ST.valid(tStack)) {
-			if (ST.equal(tStack, ST.make(Blocks.netherrack, 1, W), T)
-			 || ST.equal(tStack, ST.make(Blocks.tnt, 1, W), T)
-			 || ST.equal(tStack, ST.make(Items.egg, 1, W), T)
-			 || ST.equal(tStack, ST.make(Items.firework_charge, 1, W), T)
-			 || ST.equal(tStack, ST.make(Items.fireworks, 1, W), T)
-			 || ST.equal(tStack, ST.make(Items.fire_charge, 1, W), T)
+			if (ST.equal(tStack, Blocks.netherrack)
+			 || ST.equal(tStack, Blocks.tnt)
+			 || ST.equal(tStack, Items.egg)
+			 || ST.equal(tStack, Items.firework_charge)
+			 || ST.equal(tStack, Items.fireworks)
+			 || ST.equal(tStack, Items.fire_charge)
 			) {
 				if (aTileEntity instanceof TileEntityBase01Root) ((TileEntityBase01Root)aTileEntity).overcharge(aSize * 4, TD.Energy.EU);
 				return null;

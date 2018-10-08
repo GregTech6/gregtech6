@@ -460,7 +460,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@SubscribeEvent
 	public void onEntityLivingFallEvent(LivingFallEvent aEvent) {
 		if (!aEvent.entity.worldObj.isRemote && aEvent.entity instanceof EntityPlayer) {
-			if (ST.equal(((EntityPlayer)aEvent.entity).getCurrentEquippedItem(), ST.make(ToolsGT.sMetaTool, 1, ToolsGT.SCISSORS), T) || ST.equal(((EntityPlayer)aEvent.entity).getCurrentEquippedItem(), ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_SCISSORS), T)) aEvent.distance *= 2;
+			if (ST.equal(((EntityPlayer)aEvent.entity).getCurrentEquippedItem(), ToolsGT.sMetaTool, ToolsGT.SCISSORS) || ST.equal(((EntityPlayer)aEvent.entity).getCurrentEquippedItem(), ToolsGT.sMetaTool, ToolsGT.POCKET_SCISSORS)) aEvent.distance *= 2;
 		}
 	}
 	

@@ -65,70 +65,83 @@ import net.minecraftforge.fluids.IFluidContainerItem;
  * @author Gregorius Techneticies
  */
 public class ST {
-	public static boolean equal (ItemStack aStack1, ItemStack aStack2) {
-		return equal(aStack1, aStack2, F);
-	}
-	public static boolean equal (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-		return aStack1 != null && aStack2 != null && equal_(aStack1, aStack2, aIgnoreNBT);
-	}
-	public static boolean equal_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-		return aStack1.getItem() == aStack2.getItem() && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null)) && (aStack1.getTagCompound() == null || aStack1.getTagCompound().equals(aStack2.getTagCompound()))) && (meta_(aStack1) == meta_(aStack2) || meta_(aStack1) == W || meta_(aStack2) == W);
-	}
+	public static boolean equal (ItemStack aStack1, ItemStack aStack2) {return equal(aStack1, aStack2, F);}
+	public static boolean equal (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return aStack1 != null && aStack2 != null && equal_(aStack1, aStack2, aIgnoreNBT);}
+	public static boolean equal_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return aStack1.getItem() == aStack2.getItem() && (aIgnoreNBT || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null)) && (aStack1.getTagCompound() == null || aStack1.getTagCompound().equals(aStack2.getTagCompound()))) && (meta_(aStack1) == meta_(aStack2) || meta_(aStack1) == W || meta_(aStack2) == W);}
 	
-	public static boolean equalTools (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-		return aStack1 != null && aStack2 != null && equalTools_(aStack1, aStack2, aIgnoreNBT);
-	}
-	public static boolean equalTools_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-		return aStack1.getItem() == aStack2.getItem() && (aIgnoreNBT || aStack1.getItem() instanceof IItemGTContainerTool || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null)) && (aStack1.getTagCompound() == null || aStack1.getTagCompound().equals(aStack2.getTagCompound()))) && (meta_(aStack1) == meta_(aStack2) || meta_(aStack1) == W || meta_(aStack2) == W);
-	}
+	public static boolean equal (ItemStack aStack, Item  aItem ) {return aStack != null && aItem  != null && equal_(aStack, aItem );}
+	public static boolean equal (ItemStack aStack, Block aBlock) {return aStack != null && aBlock != null && equal_(aStack, aBlock);}
+	public static boolean equal_(ItemStack aStack, Item  aItem ) {return item_ (aStack) == aItem ;}
+	public static boolean equal_(ItemStack aStack, Block aBlock) {return block_(aStack) == aBlock;}
+	public static boolean equal (ItemStack aStack, Item  aItem , long aMeta) {return aStack != null && aItem  != null && equal_(aStack, aItem , aMeta);}
+	public static boolean equal (ItemStack aStack, Block aBlock, long aMeta) {return aStack != null && aBlock != null && equal_(aStack, aBlock, aMeta);}
+	public static boolean equal_(ItemStack aStack, Item  aItem , long aMeta) {return equal(ST.meta_(aStack), aMeta) && item_ (aStack) == aItem ;}
+	public static boolean equal_(ItemStack aStack, Block aBlock, long aMeta) {return equal(ST.meta_(aStack), aMeta) && block_(aStack) == aBlock;}
+	public static boolean equal (ItemStack aStack, ModData aModID, String aItem            ) {return equal(aStack, GameRegistry.findItem(aModID.mID, aItem));}
+	public static boolean equal (ItemStack aStack, ModData aModID, String aItem, long aMeta) {return equal(aStack, GameRegistry.findItem(aModID.mID, aItem), aMeta);}
 	
-	public static boolean valid(ItemStack aStack) {
-		return aStack != null && aStack.stackSize >= 0 && aStack.getItem() != null;
-	}
-	public static boolean invalid(ItemStack aStack) {
-		return aStack == null || aStack.stackSize <  0 || aStack.getItem() == null;
-	}
+	public static boolean equal (long aMeta1, long aMeta2) {return aMeta1 == aMeta2 || aMeta1 == W || aMeta2 == W;}
 	
-	public static short id(Item aItem) {
-		return aItem  == null ? 0 : (short)Item.getIdFromItem(aItem);
-	}
-	public static short id(ItemStack aStack) {
-		return aStack == null ? 0 : id(aStack.getItem());
-	}
-	public static Item item(ItemStack aStack) {
-		return aStack == null ? null : aStack.getItem();
-	}
-	public static Block block(ItemStack aStack) {
-		return aStack != null && aStack.getItem() != null ? Block.getBlockFromItem(aStack.getItem()) : NB;
-	}
-	public static Block block_(ItemStack aStack) {
-		return Block.getBlockFromItem(aStack.getItem());
-	}
+	public static boolean equalTools (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return aStack1 != null && aStack2 != null && equalTools_(aStack1, aStack2, aIgnoreNBT);}
+	public static boolean equalTools_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return aStack1.getItem() == aStack2.getItem() && (aIgnoreNBT || aStack1.getItem() instanceof IItemGTContainerTool || ((aStack1.getTagCompound() == null) == (aStack2.getTagCompound() == null)) && (aStack1.getTagCompound() == null || aStack1.getTagCompound().equals(aStack2.getTagCompound()))) && (meta_(aStack1) == meta_(aStack2) || meta_(aStack1) == W || meta_(aStack2) == W);}
 	
-	public static short meta (ItemStack aStack) {
-		return aStack == null ? 0 : meta_(aStack);
-	}
-	public static short meta_(ItemStack aStack) {
-		return (short)Items.feather.getDamage(aStack);
-	}
-	public static ItemStack meta (ItemStack aStack, long aMeta) {
-		return aStack == null ? null : meta_(aStack, aMeta);
-	}
-	public static ItemStack meta_(ItemStack aStack, long aMeta) {
-		Items.feather.setDamage(aStack, (short)aMeta);
-		return aStack;
-	}
+	public static boolean   valid(ItemStack aStack) {return aStack != null && aStack.stackSize >= 0 && aStack.getItem() != null;}
+	public static boolean invalid(ItemStack aStack) {return aStack == null || aStack.stackSize <  0 || aStack.getItem() == null;}
+
+	public static short id (Item      aItem ) {return aItem  == null ? 0 : id_(aItem);}
+	public static short id_(Item      aItem ) {return (short)Item.getIdFromItem(aItem);}
+	public static short id (Block     aBlock) {return aBlock == null ? 0 : id_(aBlock);}
+	public static short id_(Block     aBlock) {return aBlock == NB   ? 0 : (short)Block.getIdFromBlock(aBlock);}
+	public static short id (ItemStack aStack) {return aStack == null ? 0 : id(aStack.getItem());}
 	
-	public static byte size(ItemStack aStack) {
-		return aStack == null || aStack.getItem() == null || aStack.stackSize < 0 ? 0 : UT.Code.bindByte(aStack.stackSize);
-	}
-	public static ItemStack size (long aStackSize, ItemStack aStack) {
-		return aStack == null || aStack.getItem() == null ? null : size_(aStackSize, aStack);
-	}
-	public static ItemStack size_(long aStackSize, ItemStack aStack) {
-		aStack.stackSize = (int)aStackSize;
-		return aStack;
-	}
+	public static Item item (ModData aModID, String aItem) {return item(make(aModID, aItem, 1, null));}
+	public static Item item (ModData aModID, String aItem, Item aReplacement) {Item rItem = item(aModID, aItem); return rItem == null ? aReplacement : rItem;}
+	public static Item item (Block aBlock) {return aBlock == null ? null : item_(aBlock);}
+	public static Item item_(Block aBlock) {return aBlock == NB   ? null : Item.getItemFromBlock(aBlock);}
+	public static Item item (ItemStack aStack) {return aStack == null ? null : item_(aStack);}
+	public static Item item_(ItemStack aStack) {return aStack.getItem();}
+	
+	public static Block block (ModData aModID, String aBlock) {return block(make(aModID, aBlock, 1, null));}
+	public static Block block (ModData aModID, String aBlock, Block aReplacement) {Block rBlock = block(aModID, aBlock); return rBlock == NB ? aReplacement : rBlock;}
+	public static Block block (Item aItem) {return aItem != null ? block_(aItem) : NB;}
+	public static Block block_(Item aItem) {return Block.getBlockFromItem(aItem);}
+	public static Block block (ItemStack aStack) {return aStack != null ? block(aStack.getItem()) : NB;}
+	public static Block block_(ItemStack aStack) {return block_(aStack.getItem());}
+	
+	public static short     meta (ItemStack aStack) {return aStack == null ? 0 : meta_(aStack);}
+	public static short     meta_(ItemStack aStack) {return (short)Items.feather.getDamage(aStack);}
+	public static ItemStack meta (ItemStack aStack, long aMeta) {return aStack == null ? null : meta_(aStack, aMeta);}
+	public static ItemStack meta_(ItemStack aStack, long aMeta) {Items.feather.setDamage(aStack, (short)aMeta); return aStack;}
+	
+	public static byte size (ItemStack aStack) {return aStack == null || aStack.getItem() == null || aStack.stackSize < 0 ? 0 : UT.Code.bindByte(aStack.stackSize);}
+	public static ItemStack size (long aStackSize, ItemStack aStack) {return aStack == null || aStack.getItem() == null ? null : size_(aStackSize, aStack);}
+	public static ItemStack size_(long aStackSize, ItemStack aStack) {aStack.stackSize = (int)aStackSize; return aStack;}
+	
+	public static ItemStack copy (ItemStack aStack) {return aStack == null || aStack.getItem() == null ? null : copy_(aStack);}
+	public static ItemStack copy_(ItemStack aStack) {return aStack.copy();}
+	
+	public static ItemStack amount (long aStackSize, ItemStack aStack) {return aStack == null || aStack.getItem() == null ? null : amount_(aStackSize, aStack);}
+	public static ItemStack amount_(long aStackSize, ItemStack aStack) {return size_(aStackSize, copy_(aStack));}
+	
+	public static ItemStack mul (long aMultiplier, ItemStack aStack) {return aStack == null || aStack.getItem() == null ? null : mul_(aMultiplier, aStack);}
+	public static ItemStack mul_(long aMultiplier, ItemStack aStack) {return amount_(aStack.stackSize * aMultiplier, aStack);}
+	
+	public static ItemStack div (long aDivider, ItemStack aStack) {return aStack == null || aStack.getItem() == null ? null : div_(aDivider, aStack);}
+	public static ItemStack div_(long aDivider, ItemStack aStack) {return amount_(aStack.stackSize / aDivider, aStack);}
+	
+	public static ItemStack validMeta (long aStackSize, ItemStack aStack) {return aStack == null || aStack.getItem() == null ? null : validMeta_(aStackSize, aStack);}
+	public static ItemStack validMeta_(long aStackSize, ItemStack aStack) {return size_(aStackSize, validMeta_(aStack));}
+	public static ItemStack validMeta (ItemStack aStack) {return aStack == null || aStack.getItem() == null ? null : validMeta_(aStack);}
+	public static ItemStack validMeta_(ItemStack aStack) {return meta_(aStack) == W ? meta_(copy_(aStack), 0) : copy_(aStack);}
+	
+	public static int toInt(Item aItem, long aMeta) {return aItem == null ? 0 : id_(aItem) | (((short)aMeta)<<16);}
+	public static int toInt(ItemStack aStack) {return aStack != null ? toInt(item_(aStack), meta_(aStack)) : 0;}
+	public static int toInt(ItemStack aStack, long aMeta) {return aStack != null ? toInt(item_(aStack), aMeta) : 0;}
+	
+	public static ItemStack toStack(int aStack) {return make(toItem(aStack), 1, toMeta(aStack));}
+	public static Block     toBlock(int aStack) {return Block.getBlockById(aStack&(~0>>>16));}
+	public static Item      toItem (int aStack) {return Item.getItemById(aStack&(~0>>>16));}
+	public static short     toMeta (int aStack) {return (short)(aStack>>>16);}
 	
 	public static ItemStack set(ItemStack aSetStack, ItemStack aToStack) {
 		return set(aSetStack, aToStack, T, T);
@@ -140,47 +153,6 @@ public class ST {
 		meta_(aSetStack, meta_(aToStack));
 		if (aCheckNBT) aSetStack.setTagCompound(aToStack.getTagCompound());
 		return aSetStack;
-	}
-	
-	public static ItemStack copy (ItemStack aStack) {
-		return aStack == null || aStack.getItem() == null ? null : copy_(aStack);
-	}
-	public static ItemStack copy_(ItemStack aStack) {
-		return aStack.copy();
-	}
-	
-	public static ItemStack amount (long aStackSize, ItemStack aStack) {
-		return aStack == null || aStack.getItem() == null ? null : amount_(aStackSize, aStack);
-	}
-	public static ItemStack amount_(long aStackSize, ItemStack aStack) {
-		return size_(aStackSize, copy_(aStack));
-	}
-	
-	public static ItemStack mul (long aMultiplier, ItemStack aStack) {
-		return aStack == null || aStack.getItem() == null ? null : mul_(aMultiplier, aStack);
-	}
-	public static ItemStack mul_(long aMultiplier, ItemStack aStack) {
-		return amount_(aStack.stackSize * aMultiplier, aStack);
-	}
-	
-	public static ItemStack div (long aDivider, ItemStack aStack) {
-		return aStack == null || aStack.getItem() == null ? null : div_(aDivider, aStack);
-	}
-	public static ItemStack div_(long aDivider, ItemStack aStack) {
-		return amount_(aStack.stackSize / aDivider, aStack);
-	}
-	
-	public static ItemStack validMeta (long aStackSize, ItemStack aStack) {
-		return aStack == null || aStack.getItem() == null ? null : validMeta_(aStackSize, aStack);
-	}
-	public static ItemStack validMeta_(long aStackSize, ItemStack aStack) {
-		return size_(aStackSize, validMeta_(aStack));
-	}
-	public static ItemStack validMeta (ItemStack aStack) {
-		return aStack == null || aStack.getItem() == null ? null : validMeta_(aStack);
-	}
-	public static ItemStack validMeta_(ItemStack aStack) {
-		return meta_(aStack) == W ? meta_(copy_(aStack), 0) : copy_(aStack);
 	}
 	
 	public static ItemStack update (ItemStack aStack) {
@@ -223,12 +195,6 @@ public class ST {
 	public static ItemStack copyAmountAndMeta(long aStackSize, long aMetaData, ItemStack aStack) {
 		return aStack == null || aStack.getItem() == null ? null : meta_(amount_(aStackSize, aStack), aMetaData);
 	}
-	
-	public static Item item(ModData aModID, String aItem) {return item(make(aModID, aItem, 1, null));}
-	public static Item item(ModData aModID, String aItem, Item aReplacement) {Item rItem = item(aModID, aItem); return rItem == null ? aReplacement : rItem;}
-	
-	public static Block block(ModData aModID, String aBlock) {return block(make(aModID, aBlock, 1, null));}
-	public static Block block(ModData aModID, String aBlock, Block aReplacement) {Block rBlock = block(aModID, aBlock); return rBlock == NB ? aReplacement : rBlock;}
 	
 	private static final Map<String, ItemStack> sIC2ItemMap = new HashMap<>();
 	public static ItemStack mkic(String aItem, long aStackSize, ItemStack aReplacement) {if (UT.Code.stringInvalid(aItem) || !GAPI_POST.mStartedPreInit) return null; if (!sIC2ItemMap.containsKey(aItem)) try {ItemStack tStack = IC2Items.getItem(aItem); sIC2ItemMap.put(aItem, tStack); if (tStack == null && D1 && MD.IC2.mLoaded) ERR.println(aItem + " is not found in the IC2 Items!");} catch (Throwable e) {/*Do nothing*/} return amount(aStackSize, copyFirst(sIC2ItemMap.get(aItem), aReplacement));}
@@ -439,20 +405,6 @@ public class ST {
 		if (tItem == Items.blaze_rod) return 2400;
 		if (tItem == Items.lava_bucket) return 20000;
 		return 0;
-	}
-	
-	public static int toInt(ItemStack aStack) {
-		return aStack != null && aStack.getItem() != null ? id(aStack) | (meta_(aStack)<<16) : 0;
-	}
-	
-	public static int toIntWildcard(ItemStack aStack) {
-		return aStack != null && aStack.getItem() != null ? id(aStack) | (W<<16) : 0;
-	}
-	
-	public static ItemStack toStack(int aStack) {
-		Item tItem = Item.getItemById(aStack&(~0>>>16));
-		if (tItem != null) return make(tItem, 1, aStack>>>16);
-		return null;
 	}
 	
 	public static Integer[] toIntegerArray(ItemStack... aStacks) {

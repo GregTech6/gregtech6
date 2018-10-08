@@ -216,13 +216,13 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	private boolean switchBooks(EntityPlayer aPlayer, int aSlot) {
 		if (slotHas(aSlot)) {
 			if (!aPlayer.isSneaking()) {
-				if (ST.equal(slot(aSlot), ST.make(Blocks.stone_button, 1, W)) || ST.equal(slot(aSlot), ST.make(Blocks.wooden_button, 1, W))) {
+				if (ST.equal(slot(aSlot), Blocks.stone_button) || ST.equal(slot(aSlot), Blocks.wooden_button)) {
 					mRedstoneDelay = 120;
 					causeBlockUpdate();
 					playClick();
 					return T;
 				}
-				if (ST.equal(slot(aSlot), ST.make(Blocks.lever, 1, W)) || ST.equal(slot(aSlot), ST.make(Blocks.redstone_torch, 1, W))) {
+				if (ST.equal(slot(aSlot), Blocks.lever) || ST.equal(slot(aSlot), Blocks.redstone_torch)) {
 					if (mRedstoneDelay == 0) mRedstoneDelay = -1; else mRedstoneDelay = 0;
 					causeBlockUpdate();
 					playClick();
@@ -366,8 +366,8 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	private static final int[] ACCESSIBLE_SLOTS = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ACCESSIBLE_SLOTS;}
-	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return slotHas(aSlot) && !ST.equal(slot(aSlot), ST.make(Blocks.cobblestone, 1, W)) && !ST.equal(slot(aSlot), ST.make(Blocks.redstone_torch, 1, W)) && !ST.equal(slot(aSlot), ST.make(Blocks.lever, 1, W)) && !ST.equal(slot(aSlot), ST.make(Blocks.stone_button, 1, W)) && !ST.equal(slot(aSlot), ST.make(Blocks.wooden_button, 1, W));}
-	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return !slotHas(aSlot) && (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aStack, W))) && !ST.equal(slot(aSlot), ST.make(Blocks.cobblestone, 1, W)) && !ST.equal(slot(aSlot), ST.make(Blocks.stone_button, 1, W)) && !ST.equal(slot(aSlot), ST.make(Blocks.redstone_torch, 1, W)) && !ST.equal(slot(aSlot), ST.make(Blocks.lever, 1, W)) && !ST.equal(slot(aSlot), ST.make(Blocks.wooden_button, 1, W));}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return slotHas(aSlot) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !ST.equal(slot(aSlot), Blocks.lever) && !ST.equal(slot(aSlot), Blocks.stone_button) && !ST.equal(slot(aSlot), Blocks.wooden_button);}
+	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return !slotHas(aSlot) && (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aStack, W))) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.stone_button) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !ST.equal(slot(aSlot), Blocks.lever) && !ST.equal(slot(aSlot), Blocks.wooden_button);}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.shelf.books";}
 }

@@ -372,7 +372,7 @@ public class UT {
 		}
 		public static ItemStack fillFluidContainer(FluidStack aFluid, ItemStack aStack, boolean aRemoveFluidDirectly, boolean aCheckIFluidContainerItems, boolean aAllowPartialFilling, boolean aIsNonCannerCheck) {
 			if (ST.invalid(aStack) || aFluid == null) return NI;
-			if (aFluid.getFluid() == FluidRegistry.WATER && ST.equal(aStack, ST.make(Items.glass_bottle, 1, CS.W), T)) {
+			if (aFluid.getFluid() == FluidRegistry.WATER && ST.equal(aStack, Items.glass_bottle)) {
 				if (aFluid.amount >= 250) {
 					if (aRemoveFluidDirectly) aFluid.amount -= 250;
 					return ST.make(Items.potionitem, 1, 0);
@@ -406,7 +406,7 @@ public class UT {
 			if (aTank == null) return NI;
 			FluidStack aFluid = aTank.getFluid();
 			if (ST.invalid(aStack) || aFluid == null) return NI;
-			if (aFluid.getFluid() == FluidRegistry.WATER && ST.equal(aStack, ST.make(Items.glass_bottle, 1, CS.W), T)) {
+			if (aFluid.getFluid() == FluidRegistry.WATER && ST.equal(aStack, Items.glass_bottle)) {
 				if (aFluid.amount >= 250) {
 					if (aRemoveFluidDirectly) aTank.drain(250, T);
 					return ST.make(Items.potionitem, 1, 0);
@@ -3103,7 +3103,7 @@ public class UT {
 		@Deprecated public static ItemStack mul(long aMultiplier, Object... aStacks) {return ST.mul(aMultiplier, (ItemStack)aStacks[0]);}
 		@Deprecated public static ItemStack div(long aDivider, Object... aStacks) {return ST.div(aDivider, (ItemStack)aStacks[0]);}
 		@Deprecated public static int toInt(ItemStack aStack) {return ST.toInt(aStack);}
-		@Deprecated public static int toIntWildcard(ItemStack aStack) {return ST.toIntWildcard(aStack);}
+		@Deprecated public static int toIntWildcard(ItemStack aStack) {return ST.toInt(aStack, W);}
 		@Deprecated public static ItemStack toStack(int aStack) {return ST.toStack(aStack);}
 		@Deprecated public static Integer[] toIntegerArray(ItemStack... aStacks) {return ST.toIntegerArray(aStacks);}
 		@Deprecated public static int[] toIntArray(ItemStack... aStacks) {return ST.toIntArray(aStacks);}
