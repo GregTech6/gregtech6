@@ -1309,9 +1309,11 @@ public class Loader_MultiTileEntities implements Runnable {
 		MultiTileEntityPipeItem.addItemPipes(25125, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.BlackBronze);
 		MultiTileEntityPipeItem.addItemPipes(25150, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.AluminiumBrass);
 		MultiTileEntityPipeItem.addItemPipes(25175, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.Manyullyn);
+		MultiTileEntityPipeItem.addItemPipes(25325, 25202, 16384,   2, T, T, aRegistry, aMachine    , aClass, MT.Magnalium);
 		MultiTileEntityPipeItem.addItemPipes(25200, 25202,  8192,   4, T, T, aRegistry, aMachine    , aClass, MT.Pt);
 		MultiTileEntityPipeItem.addItemPipes(25300, 25202,  4096,   8, T, T, aRegistry, aMachine    , aClass, MT.Os);
 		MultiTileEntityPipeItem.addItemPipes(25400, 25202,  2048,  16, T, T, aRegistry, aMachine    , aClass, MT.Enderium);
+		MultiTileEntityPipeItem.addItemPipes(25425, 25202,  2048,  16, T, T, aRegistry, aMachine    , aClass, MT.Ultimet);
 		MultiTileEntityPipeItem.addItemPipes(25475, 25202,  2048,  16, T, T, aRegistry, aMachine    , aClass, MT.ElvenElementium);
 		MultiTileEntityPipeItem.addItemPipes(25500, 25202,  1024,  32, T, T, aRegistry, aMachine    , aClass, MT.Osmiridium);
 		MultiTileEntityPipeItem.addItemPipes(25900, 25202,    64, 512, T, T, aRegistry, aMachine    , aClass, MT.VibraniumSilver);
