@@ -1434,6 +1434,13 @@ public class UT {
 			return aSide < OPPOSITES.length && aSide >= 0 ? OPPOSITES[aSide] : 6;
 		}
 		
+		/** Turns the Amount of Stuff into a more readable String. */
+		public static String displayUnits(long aAmount) {
+			if (aAmount < 0) return "?.???";
+			long tDigits = ((aAmount % U) * 1000) / U;
+			return (aAmount / U) + "." + (tDigits<1?"000":tDigits<10?"00"+tDigits:tDigits<100?"0"+tDigits:tDigits);
+		}
+		
 		/** Translates Amount of aUnit1 to Amount of aUnit2. */
 		public static long units(long aAmount, long aOriginalUnit, long aTargetUnit, boolean aRoundUp) {
 			if (aOriginalUnit == aTargetUnit || aOriginalUnit == 0) return aAmount;

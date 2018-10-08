@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.block.multitileentity.example;
+package gregtech.tileentity.portals;
 
 import static gregapi.data.CS.*;
 
@@ -26,14 +26,11 @@ import java.util.List;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
-import gregapi.data.MD;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.ITexture;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import gregapi.util.WD;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -41,34 +38,34 @@ import net.minecraft.item.ItemStack;
 /**
  * @author Gregorius Techneticies
  * 
- * An example implementation of a Miniature Twilight Portal with my MultiTileEntity System.
+ * An example implementation of a Miniature End Portal with my MultiTileEntity System.
  */
-public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal {
-	public static List<MultiTileEntityMiniPortalTwilight>
-	sListTwilightSide = new ArrayListNoNulls<>(),
+public class MultiTileEntityMiniPortalEnd extends MultiTileEntityMiniPortal {
+	public static List<MultiTileEntityMiniPortalEnd>
+	sListEndSide = new ArrayListNoNulls<>(),
 	sListWorldSide  = new ArrayListNoNulls<>();
 	
 	static {
-		LH.add("gt.tileentity.portal.twilight.tooltip.1", "Only works between the Twilight Forest and the Overworld!");
-		LH.add("gt.tileentity.portal.twilight.tooltip.2", "Margin of Error to still work: 512 Meters.");
-		LH.add("gt.tileentity.portal.twilight.tooltip.3", "Requires Diamond for activation");
+		LH.add("gt.tileentity.portal.end.tooltip.1", "Only works between the End and the Overworld with a x128 Distance Factor!");
+		LH.add("gt.tileentity.portal.end.tooltip.2", "Margin of Error to still work: 512 Meters.");
+		LH.add("gt.tileentity.portal.end.tooltip.3", "Requires Ender Eye for activation");
 	}
 	
 	@Override
 	public void addToolTips2(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.twilight.tooltip.1"));
-		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.twilight.tooltip.2"));
-		aList.add(Chat.ORANGE   + LH.get("gt.tileentity.portal.twilight.tooltip.3"));
+		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.end.tooltip.1"));
+		aList.add(Chat.CYAN     + LH.get("gt.tileentity.portal.end.tooltip.2"));
+		aList.add(Chat.ORANGE   + LH.get("gt.tileentity.portal.end.tooltip.3"));
 	}
 	
 	@Override
 	public void findTargetPortal() {
 		mTarget = null;
-		if (MD.TF.mLoaded && worldObj != null && isServerSide()) {
+		if (worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 512*512;
-				for (MultiTileEntityMiniPortalTwilight tTarget : sListTwilightSide) if (tTarget != this) {
-					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
+				for (MultiTileEntityMiniPortalEnd tTarget : sListEndSide) if (tTarget != this) {
+					long tXDifference = xCoord-tTarget.xCoord*128, tZDifference = zCoord-tTarget.zCoord*128;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
 						tShortestDistance = tTempDist;
@@ -77,10 +74,10 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 						mTarget = tTarget;
 					}
 				}
-			} else if (WD.dimTF(worldObj)) {
+			} else if (worldObj.provider.dimensionId == DIM_END) {
 				long tShortestDistance = 512*512;
-				for (MultiTileEntityMiniPortalTwilight tTarget : sListWorldSide) if (tTarget != this) {
-					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
+				for (MultiTileEntityMiniPortalEnd tTarget : sListWorldSide) if (tTarget != this) {
+					long tXDifference = tTarget.xCoord-xCoord*128, tZDifference = tTarget.zCoord-zCoord*128;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
 						tShortestDistance = tTempDist;
@@ -95,14 +92,14 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 	
 	@Override
 	public void addThisPortalToLists() {
-		if (MD.TF.mLoaded && worldObj != null && isServerSide()) {
+		if (worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-				for (MultiTileEntityMiniPortalTwilight tPortal : sListTwilightSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortalEnd tPortal : sListEndSide) tPortal.findTargetPortal();
 				findTargetPortal();
-			} else if (WD.dimTF(worldObj)) {
-				if (!sListTwilightSide.contains(this)) sListTwilightSide.add(this);
-				for (MultiTileEntityMiniPortalTwilight tPortal : sListWorldSide) tPortal.findTargetPortal();
+			} else if (worldObj.provider.dimensionId == DIM_END) {
+				if (!sListEndSide.contains(this)) sListEndSide.add(this);
+				for (MultiTileEntityMiniPortalEnd tPortal : sListWorldSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else {
 				setPortalInactive();
@@ -112,8 +109,8 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 	
 	@Override
 	public void removeThisPortalFromLists() {
-		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListTwilightSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		if (sListTwilightSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
+		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListEndSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
+		if (sListEndSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		mTarget = null;
 	}
 	
@@ -121,23 +118,23 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			ItemStack aStack = aPlayer.inventory.getCurrentItem();
-			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemDiamond", aStack)) {
+			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemEnderEye", aStack)) {
 				setPortalActive();
 				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
-				worldObj.addWeatherEffect(new EntityLightningBolt(worldObj, xCoord, yCoord, zCoord));
+				
 			}
 		}
 		return T;
 	}
 	
-	@Override public float getBlockHardness() {return Blocks.grass.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
-	@Override public float getExplosionResistance() {return Blocks.grass.getExplosionResistance(null);}
+	@Override public float getBlockHardness() {return Blocks.end_stone.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
+	@Override public float getExplosionResistance() {return Blocks.end_stone.getExplosionResistance(null);}
 	
-	public ITexture sTwilightPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, UNCOLOURED, F, T, T), sTwilightPortalFrame = BlockTextureCopied.get(Blocks.grass, SIDE_TOP, 0, DYE_Green, F, F, F), sTwilightPortalInactive = BlockTextureCopied.get(Blocks.water, SIDE_TOP, 0, UNCOLOURED, F, F, F);
-	@Override public ITexture getPortalTexture() {return sTwilightPortal;}
-	@Override public ITexture getFrameTexture() {return sTwilightPortalFrame;}
-	@Override public ITexture getInactiveTexture() {return sTwilightPortalInactive;}
+	public ITexture sEndPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, DYE_Black, F, T, T), sEndPortalFrame = BlockTextureCopied.get(Blocks.end_portal_frame, SIDE_TOP, 0);
+	@Override public ITexture getPortalTexture() {return sEndPortal;}
+	@Override public ITexture getFrameTexture() {return sEndPortalFrame;}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.portal.twilight";}
+	
+	@Override public String getTileEntityName() {return "gt.multitileentity.portal.end";}
 }

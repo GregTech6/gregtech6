@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.block.multitileentity.example;
+package gregtech.tileentity.portals;
 
 import static gregapi.data.CS.*;
 
