@@ -428,8 +428,8 @@ public class LoaderWoodDictionary implements Runnable {
 		// Chisel Planks
 		if (MD.CHSL.mLoaded) {
 			new PlankEntry(ST.make(MD.CHSL, "oak_planks"        , 1, W), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs       , 1, 0));
-			new PlankEntry(ST.make(MD.CHSL, "birch_planks"      , 1, W), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs    , 1, 0));
-			new PlankEntry(ST.make(MD.CHSL, "spruce_planks"     , 1, W), ST.make(Blocks.wooden_slab, 1, 2), ST.make(Blocks.birch_stairs     , 1, 0));
+			new PlankEntry(ST.make(MD.CHSL, "spruce_planks"     , 1, W), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs    , 1, 0));
+			new PlankEntry(ST.make(MD.CHSL, "birch_planks"      , 1, W), ST.make(Blocks.wooden_slab, 1, 2), ST.make(Blocks.birch_stairs     , 1, 0));
 			new PlankEntry(ST.make(MD.CHSL, "jungle_planks"     , 1, W), ST.make(Blocks.wooden_slab, 1, 3), ST.make(Blocks.jungle_stairs    , 1, 0));
 			new PlankEntry(ST.make(MD.CHSL, "acacia_planks"     , 1, W), ST.make(Blocks.wooden_slab, 1, 4), ST.make(Blocks.acacia_stairs    , 1, 0));
 			new PlankEntry(ST.make(MD.CHSL, "dark_oak_planks"   , 1, W), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs  , 1, 0));

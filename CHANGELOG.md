@@ -26,6 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.04: (Not released yet)
+[FIXED] Plenty of random tiny Bugs.
 [ADDED]
 Light and Dark Prismarine Rock Types.
 Including all the Stuff the usual Rock Types like Granite, Komatiite and such have.
