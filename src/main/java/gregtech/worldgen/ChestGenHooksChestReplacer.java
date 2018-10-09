@@ -88,7 +88,7 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 			if (aInventory.getClass() != TileEntityChest.class || ((TileEntityChest)aInventory).getWorldObj() == null || Blocks.chest != ((TileEntityChest)aInventory).getWorldObj().getBlock(((TileEntityChest)aInventory).xCoord, ((TileEntityChest)aInventory).yCoord, ((TileEntityChest)aInventory).zCoord)) return generateChestContent2(aRandom, aInventory);
 			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 			if (tRegistry == null) return generateChestContent2(aRandom, aInventory);
-			tRegistry.mBlock.placeBlock(((TileEntityChest)aInventory).getWorldObj(), ((TileEntityChest)aInventory).xCoord, ((TileEntityChest)aInventory).yCoord, ((TileEntityChest)aInventory).zCoord, SIDE_UNKNOWN, (short)32745, UT.NBT.make(null, NBT_FACING, VALIDATE_HORIZONTAL[((TileEntityChest)aInventory).getWorldObj().getBlockMetadata(((TileEntityChest)aInventory).xCoord, ((TileEntityChest)aInventory).yCoord, ((TileEntityChest)aInventory).zCoord)], "gt.dungeonloot", mCategory), T, T);
+			tRegistry.mBlock.placeBlock(((TileEntityChest)aInventory).getWorldObj(), ((TileEntityChest)aInventory).xCoord, ((TileEntityChest)aInventory).yCoord, ((TileEntityChest)aInventory).zCoord, SIDE_UNKNOWN, (short)32745, UT.NBT.make(null, NBT_FACING, VALIDATE_HORIZONTAL[((TileEntityChest)aInventory).getWorldObj().getBlockMetadata(((TileEntityChest)aInventory).xCoord, ((TileEntityChest)aInventory).yCoord, ((TileEntityChest)aInventory).zCoord)], "gt.dungeonloot", mCategory), F, T);
 			return ZL_IS;
 		}
 		

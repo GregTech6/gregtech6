@@ -172,7 +172,8 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	
 	@Override
 	public boolean breakBlock() {
-		generateDungeonLoot();
+		// Only auto-generate Loot if a second has passed since its original placement. Prevents Item spillage during Worldgen in most cases.
+		if (mTimer > 20) generateDungeonLoot();
 		return super.breakBlock();
 	}
 	
