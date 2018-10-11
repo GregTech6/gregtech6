@@ -26,10 +26,8 @@ import java.util.List;
 
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
@@ -59,10 +57,8 @@ import gregapi.util.OM;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.BlockCauldron;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -74,7 +70,7 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetSubItems, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	public byte mLastReceivedFrom = 0, mRenderType = 0;
 	public long mTemperature = DEF_ENV_TEMP, mMaxTemperature, mTransferredAmount = 0;
 	public int mCapacity = 1000;
@@ -371,11 +367,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
 	@Override public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {if (aDoFill) mLastReceivedFrom |= SBIT[UT.Code.side(aDirection)]; return super.fill(aDirection, aFluid, aDoFill);}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
 	
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptFluidsFrom                      (byte aSide) {return connected(aSide);}

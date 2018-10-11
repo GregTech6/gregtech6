@@ -28,9 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import gregapi.GT_API_Proxy;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
@@ -57,11 +55,9 @@ import gregapi.tileentity.delegate.ITileEntityCanDelegate;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -71,7 +67,7 @@ import net.minecraft.tileentity.TileEntityHopper;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityProgress, ITileEntityItemPipe, ITileEntityServerTickPre, IMTE_GetSubItems {
+public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityProgress, ITileEntityItemPipe, ITileEntityServerTickPre {
 	public long mTransferredItems = 0, mStepSize = 1;
 	public byte mLastReceivedFrom = SIDE_UNDEFINED, oLastReceivedFrom = SIDE_UNDEFINED, mRenderType = 0, mDisabledOutputs = 0, mDisabledInputs = 0;
 	public boolean mBlocking = T;
@@ -244,11 +240,6 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {if (!connected(aSide) || FACE_CONNECTED[aSide][mDisabledInputs]) return F; if (!UT.Code.containsSomething(getInventory())) mLastReceivedFrom = aSide; return mLastReceivedFrom == aSide && slot(aSlot) == null;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return SIDES_INVALID[aSide] || connected(aSide);}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {ItemStack[] rStack = super.getDefaultInventory(aNBT); ACCESSIBLE_SLOTS = new int[rStack.length]; for (int i = 0; i < ACCESSIBLE_SLOTS.length; i++) ACCESSIBLE_SLOTS[i] = i; return rStack;}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
 	
 	@Override public boolean canEmitItemsTo                 (byte aSide, Object aSender) {return (aSender != this || aSide != mLastReceivedFrom) && connected(aSide);}
 	@Override public boolean canAcceptItemsFrom             (byte aSide, Object aSender) {return connected(aSide);}

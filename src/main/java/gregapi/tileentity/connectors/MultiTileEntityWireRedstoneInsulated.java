@@ -25,8 +25,6 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetComparatorInputOverride;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.code.TagData;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -43,8 +41,6 @@ import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneWire;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -52,7 +48,7 @@ import net.minecraft.tileentity.TileEntity;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityRedstoneWire, ITileEntityProgress, ITileEntitySwitchableMode, IMTE_GetSubItems, IMTE_GetComparatorInputOverride {
+public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityRedstoneWire, ITileEntityProgress, ITileEntitySwitchableMode, IMTE_GetComparatorInputOverride {
 	public static final int REDSTONE_ID = -1;
 	
 	public long mRedstone = 0, mLoss = 1;
@@ -153,11 +149,6 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	@Override public boolean isObstructingBlockAt(byte aSide) {return F;} // Btw, Wires have this but Pipes don't. This is because Wires are flexible, while Pipes aren't.
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
 	
 	public boolean canEmitRedstoneToVanilla                 (byte aSide) {return aSide != mReceived && connected(aSide) && !(getAdjacentTileEntity(aSide).mTileEntity instanceof ITileEntityRedstoneWire);}
 	public boolean canAcceptRedstoneFromVanilla             (byte aSide) {return connected(aSide);}

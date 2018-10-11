@@ -54,6 +54,7 @@ public class TD {
 		public static final TagData WIRE_REDSTONE                           = TagData.createTagData("CONNECTORS.WIRE_REDSTONE", "Redstone Wire");
 		public static final TagData WIRE_ELECTRIC                           = TagData.createTagData("CONNECTORS.WIRE_ELECTRIC", "Electric Wire");
 		public static final TagData WIRE_LASER                              = TagData.createTagData("CONNECTORS.WIRE_LASER", "Laser Wire");
+		public static final TagData AXLE_ROTATION                           = TagData.createTagData("CONNECTORS.AXLE_ROTATION", "Rotational Axle");
 		
 		/** Contains all known Energy Tags, which are related to Item Transport. */
 		public static final List<TagData> ALL_ITEM_TRANSPORT                = new ArrayListNoNulls<>(F, PNEUMATIC_ITEM);

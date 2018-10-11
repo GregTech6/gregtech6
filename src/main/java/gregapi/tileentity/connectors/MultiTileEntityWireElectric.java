@@ -28,10 +28,8 @@ import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyHandler;
 import cofh.api.energy.IEnergyReceiver;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
@@ -61,9 +59,7 @@ import ic2.api.energy.tile.IEnergyTile;
 import micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC;
 import micdoodle8.mods.galacticraft.api.transmission.NetworkType;
 import micdoodle8.mods.galacticraft.api.transmission.tile.IConnector;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -71,7 +67,7 @@ import net.minecraft.tileentity.TileEntity;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetSubItems, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	public long mTransferredAmperes = 0, mTransferredWattage = 0, mWattageLast = 0, mLoss = 1, mAmperage = 1, mVoltage = 32;
 	public byte mRenderType = 0, mBurnCounter = 0;
 	
@@ -236,11 +232,6 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	@Override public long getEnergyLossPerMeter(TagData aEnergyType) {return aEnergyType == TD.Energy.EU ? mLoss : 0;}
 	@Override public OreDictMaterial getEnergyConductorMaterial() {return mMaterial;}
 	@Override public OreDictMaterial getEnergyConductorInsulation() {switch(mRenderType) {case 1: case 2: return MT.Rubber; default: return MT.NULL;}}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
 	
 	public boolean canEmitEnergyTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptEnergyFrom                      (byte aSide) {return connected(aSide);}
