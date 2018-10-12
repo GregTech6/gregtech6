@@ -25,7 +25,7 @@ import gregapi.block.MaterialMachines;
 import gregapi.block.MaterialScoopable;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
-import gregapi.block.multitileentity.example.*;
+import gregapi.block.multitileentity.example.MultiTileEntityChest;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.covers.CoverAsphalt;
 import gregapi.cover.covers.CoverTextureSimple;
@@ -41,6 +41,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
 import gregapi.tileentity.connectors.ITileEntityRedstoneWire;
+import gregapi.tileentity.connectors.MultiTileEntityAxle;
 import gregapi.tileentity.connectors.MultiTileEntityPipeFluid;
 import gregapi.tileentity.connectors.MultiTileEntityPipeItem;
 import gregapi.tileentity.connectors.MultiTileEntityWireElectric;
@@ -1302,6 +1303,13 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.Draconium;        OM.reg_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32622, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, T, NBT_GASPROOF, T, NBT_ACIDPROOF, T, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )));
 		aMat = MT.DraconiumAwakened;OM.reg_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32623, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, T, NBT_GASPROOF, T, NBT_ACIDPROOF, T, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )));
 		// 32631 is next
+		
+		aClass = MultiTileEntityAxle.class;
+		aMat = MT.WoodSealed;       aRegistry.add(            "Wooden Axle", "Axles", 24800, 24820, aClass, aMat.mToolQuality, 64, aMachine, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 6.0F, NBT_RESISTANCE, 6.0F, NBT_DIAMETER, PX_P[6], NBT_PIPESIZE, VMAX[0], NBT_PIPEBANDWIDTH, 1), "rS", "Sf", 'S', OP.stickLong.dat(aMat));
+		aMat = MT.Bronze;           aRegistry.add(aMat.mNameLocal + " Axle", "Axles", 24810, 24820, aClass, aMat.mToolQuality, 64, aMachine, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 6.0F, NBT_RESISTANCE, 6.0F, NBT_DIAMETER, PX_P[6], NBT_PIPESIZE, VMAX[1], NBT_PIPEBANDWIDTH, 2), "hS", "Sf", 'S', OP.stickLong.dat(aMat));
+		aMat = MT.Steel;            aRegistry.add(aMat.mNameLocal + " Axle", "Axles", 24820, 24820, aClass, aMat.mToolQuality, 64, aMachine, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 6.0F, NBT_RESISTANCE, 6.0F, NBT_DIAMETER, PX_P[6], NBT_PIPESIZE, VMAX[2], NBT_PIPEBANDWIDTH, 4), "hS", "Sf", 'S', OP.stickLong.dat(aMat));
+		aMat = MT.Ti;               aRegistry.add(aMat.mNameLocal + " Axle", "Axles", 24830, 24820, aClass, aMat.mToolQuality, 64, aMachine, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 6.0F, NBT_RESISTANCE, 6.0F, NBT_DIAMETER, PX_P[6], NBT_PIPESIZE, VMAX[3], NBT_PIPEBANDWIDTH, 8), "hS", "Sf", 'S', OP.stickLong.dat(aMat));
+		aMat = MT.TungstenSteel;    aRegistry.add(aMat.mNameLocal + " Axle", "Axles", 24840, 24820, aClass, aMat.mToolQuality, 64, aMachine, UT.NBT.make(null, NBT_MATERIAL, aMat, NBT_HARDNESS, 6.0F, NBT_RESISTANCE, 6.0F, NBT_DIAMETER, PX_P[6], NBT_PIPESIZE, VMAX[4], NBT_PIPEBANDWIDTH,16), "hS", "Sf", 'S', OP.stickLong.dat(aMat));
 		
 		aClass = MultiTileEntityWireLaser.class;
 		aRegistry.add("Laser Fiber Wire", "Laser Wires", 24900, 24900, aClass, aMat.mToolQuality, 64, aMetalWires, UT.NBT.make(null, NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "PGR", "DxD", "RGP", 'P', OP.plate.dat(MT.Ag), 'G', Blocks.glass, 'D', OP.gem.dat(MT.Diamond), 'R', OD.itemRedstone);

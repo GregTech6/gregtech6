@@ -30,14 +30,15 @@ import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MT;
 import gregapi.data.TD;
+import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataConductor;
-import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -47,6 +48,7 @@ import net.minecraft.tileentity.TileEntity;
  */
 public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress {
 	public long mTransferredPower = 0, mTransferredWattage = 0, mWattageLast = 0, mPower = 1, mSpeed = 32;
+	public byte mRotationDir = 1, oRotationDir = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -63,7 +65,7 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		// TODO
-		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_VOLTAGE) + mSpeed + " " + TD.Energy.RU.getLocalisedNameShort() + " (" + VN[UT.Code.tierMin(mSpeed)] + ")");
+		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_VOLTAGE) + mSpeed + " " + TD.Energy.RU.getLocalisedNameShort());
 		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_AMPERAGE) + mPower);
 		if (mContactDamage) aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
 		super.addToolTips(aList, aStack, aF3_H);
@@ -77,6 +79,11 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 			// TODO
 		}
 	}
+	
+	@Override public boolean onTickCheck(long aTimer) {return mRotationDir != oRotationDir || super.onTickCheck(aTimer);}
+	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationDir = mRotationDir;}
+	@Override public void setVisualData(byte aData) {mRotationDir = aData;}
+	@Override public byte getVisualData() {return mRotationDir;}
 	
 	public long transferRotations(byte aSide, long aSpeed, long aPower, long aChannel, HashSetNoNulls<TileEntity> aAlreadyPassed) {
 		if (mTimer < 1) return 0;
@@ -144,8 +151,8 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	@Override public long getProgressValue                  (byte aSide) {return mTransferredPower;}
 	@Override public long getProgressMax                    (byte aSide) {return mPower;}
 	
-	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return null;} // TODO
-	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return null;} // TODO
+	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.AXLES[(mConnections & 12) != 0 ? 0 : (mConnections & 48) != 0 ? 2 : 1][aSide][mRotationDir], mMaterial.mRGBaSolid);}
+	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.AXLES[(mConnections & 12) != 0 ? 0 : (mConnections & 48) != 0 ? 2 : 1][aSide][mRotationDir], mMaterial.mRGBaSolid);}
 	
 	@Override public Collection<TagData> getConnectorTypes  (byte aSide) {return TD.Connectors.AXLE_ROTATION.AS_LIST;}
 	

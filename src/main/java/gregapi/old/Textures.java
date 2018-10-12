@@ -47,6 +47,8 @@ public class Textures {
 		
 		, PATH, PATH_DIRT, PATH_AETHER, PATH_LOAMY, PATH_SANDY, PATH_SILTY
 		
+		, AXLE, AXLE_VERTICAL, AXLE_DOWN, AXLE_UP, AXLE_HORIZONTAL, AXLE_LEFT, AXLE_RIGHT, AXLE_CLOCKWISE, AXLE_COUNTERCLOCKWISE
+		
 		, LONG_DIST_WIRE_EV, LONG_DIST_WIRE_IV, LONG_DIST_WIRE_LuV, LONG_DIST_WIRE_ZPM, LONG_DIST_WIRE_UV
 		, LONG_DIST_PIPE_ITEM
 		, LONG_DIST_PIPE_FLUID
@@ -162,7 +164,7 @@ public class Textures {
 		}
 		
 		public static final IIconContainer[]
-		BALES_GRASS = new IIconContainer[] {
+		BALES_GRASS = {
 			GRASS_TOP,
 			GRASS_SIDE,
 			GRASS_TOP_DRY,
@@ -172,7 +174,7 @@ public class Textures {
 			GRASS_TOP_ROTTEN,
 			GRASS_SIDE_ROTTEN,
 		},
-		BALES_CROP = new IIconContainer[] {
+		BALES_CROP = {
 			RYE_TOP,
 			RYE_SIDE,
 			OAT_TOP,
@@ -182,7 +184,7 @@ public class Textures {
 			RICE_TOP,
 			RICE_SIDE,
 		},
-		LOGS_1 = new IIconContainer[] {
+		LOGS_1 = {
 			LOG_TOP_DRY,
 			LOG_SIDE_DRY,
 			LOG_TOP_ROTTEN,
@@ -192,7 +194,7 @@ public class Textures {
 			LOG_TOP_FROZEN,
 			LOG_SIDE_FROZEN,
 		},
-		LOGS_A = new IIconContainer[] {
+		LOGS_A = {
 			LOG_TOP_RUBBER,
 			LOG_SIDE_RUBBER,
 			LOG_TOP_MAPLE,
@@ -202,7 +204,7 @@ public class Textures {
 			LOG_TOP_BLUEMAHOE,
 			LOG_SIDE_BLUEMAHOE,
 		},
-		LOGS_B = new IIconContainer[] {
+		LOGS_B = {
 			LOG_TOP_HAZEL,
 			LOG_SIDE_HAZEL,
 			LOG_TOP_CINNAMON,
@@ -212,7 +214,7 @@ public class Textures {
 			LOG_TOP_RAINBOWOOD,
 			LOG_SIDE_RAINBOWOOD,
 		},
-		BEAMS_1 = new IIconContainer[] {
+		BEAMS_1 = {
 			BEAM_TOP_OAK,
 			BEAM_SIDE_OAK,
 			BEAM_TOP_SPRUCE,
@@ -222,7 +224,7 @@ public class Textures {
 			BEAM_TOP_JUNGLE,
 			BEAM_SIDE_JUNGLE,
 		},
-		BEAMS_2 = new IIconContainer[] {
+		BEAMS_2 = {
 			BEAM_TOP_ACACIA,
 			BEAM_SIDE_ACACIA,
 			BEAM_TOP_DARKOAK,
@@ -232,7 +234,7 @@ public class Textures {
 			BEAM_TOP_WOOD,
 			BEAM_SIDE_WOOD,
 		},
-		BEAMS_3 = new IIconContainer[] {
+		BEAMS_3 = {
 			BEAM_TOP_GREATWOOD,
 			BEAM_SIDE_GREATWOOD,
 			BEAM_TOP_SILVERWOOD,
@@ -242,7 +244,7 @@ public class Textures {
 			BEAM_TOP_DARKWOOD,
 			BEAM_SIDE_DARKWOOD,
 		},
-		BEAMS_A = new IIconContainer[] {
+		BEAMS_A = {
 			BEAM_TOP_RUBBER,
 			BEAM_SIDE_RUBBER,
 			BEAM_TOP_MAPLE,
@@ -252,7 +254,7 @@ public class Textures {
 			BEAM_TOP_BLUEMAHOE,
 			BEAM_SIDE_BLUEMAHOE,
 		},
-		BEAMS_B = new IIconContainer[] {
+		BEAMS_B = {
 			BEAM_TOP_HAZEL,
 			BEAM_SIDE_HAZEL,
 			BEAM_TOP_CINNAMON,
@@ -262,7 +264,7 @@ public class Textures {
 			BEAM_TOP_RAINBOWOOD,
 			BEAM_SIDE_RAINBOWOOD,
 		},
-		PLANKS = new IIconContainer[] {
+		PLANKS = {
 			PLANKS_RUBBER,
 			PLANKS_MAPLE,
 			PLANKS_WILLOW,
@@ -280,7 +282,7 @@ public class Textures {
 			PLANKS_MOSSY,
 			PLANKS_FROZEN,
 		},
-		LEAVES = new IIconContainer[] {
+		LEAVES = {
 			LEAVES_RUBBER,
 			LEAVES_MAPLE,
 			LEAVES_WILLOW,
@@ -298,7 +300,7 @@ public class Textures {
 			LEAVES_OPAQUE_HAZEL,
 			LEAVES_OPAQUE_RAINBOWOOD,
 		},
-		SAPLINGS = new IIconContainer[] {
+		SAPLINGS = {
 			SAPLING_SMALL_RUBBER,
 			SAPLING_SMALL_MAPLE,
 			SAPLING_SMALL_WILLOW,
@@ -317,7 +319,7 @@ public class Textures {
 			SAPLING_LARGE_HAZEL,
 			SAPLING_LARGE_RAINBOWOOD,
 		},
-		FLOWERS_A = new IIconContainer[] {
+		FLOWERS_A = {
 			FLOWER_ALTERED_ANDESITE_BUCKWHEAT,
 			FLOWER_CROSBY_BUCKWHEAT,
 			FLOWER_ALPINE_CATCHFLY,
@@ -335,7 +337,7 @@ public class Textures {
 			FLOWER_ALTERED_ANDESITE_BUCKWHEAT,
 			FLOWER_ALTERED_ANDESITE_BUCKWHEAT,
 		},
-		FLOWERS_B = new IIconContainer[] {
+		FLOWERS_B = {
 			FLOWER_SAGEBRUSH,
 			FLOWER_FOUR_WING_SALTBUSH,
 			FLOWER_DESERT_TRUMPET,
@@ -353,7 +355,7 @@ public class Textures {
 			FLOWER_SAGEBRUSH,
 			FLOWER_SAGEBRUSH,
 		},
-		GLOWTUS = new IIconContainer[] {
+		GLOWTUS = {
 			GLOWTUS_BLACK,
 			GLOWTUS_RED,
 			GLOWTUS_GREEN,
@@ -371,7 +373,7 @@ public class Textures {
 			GLOWTUS_ORANGE,
 			GLOWTUS_WHITE,
 		},
-		SANDS = new IIconContainer[] {
+		SANDS = {
 			SAND_MAGNETITE,
 			SAND_MAGNETITE,
 			SAND_MAGNETITE,
@@ -389,7 +391,7 @@ public class Textures {
 			SAND_MAGNETITE,
 			SAND_MAGNETITE,
 		},
-		DIGGABLES = new IIconContainer[] {
+		DIGGABLES = {
 			MUD,
 			CLAY_BROWN,
 			CLAY_BROWN,
@@ -407,7 +409,7 @@ public class Textures {
 			CLAY_BROWN,
 			CLAY_BROWN,
 		},
-		PATHS = new IIconContainer[] {
+		PATHS = {
 			PATH_DIRT,
 			PATH_AETHER,
 			PATH_LOAMY,
@@ -425,7 +427,7 @@ public class Textures {
 			PATH_DIRT,
 			PATH_DIRT,
 		},
-		DIRTS = new IIconContainer[] {
+		DIRTS = {
 			new IconContainerCopied(Blocks.dirt, 0, SIDE_BOTTOM),
 			PATH,
 			PATH,
@@ -443,7 +445,7 @@ public class Textures {
 			PATH,
 			PATH,
 		},
-		ROCK_ORES = new IIconContainer[] {
+		ROCK_ORES = {
 			ORE_ANTHRACITE,
 			ORE_LIGNITE,
 			ORE_SALT,
@@ -461,7 +463,7 @@ public class Textures {
 			ORE_LIGNITE,
 			ORE_LIGNITE,
 		},
-		LONG_DIST_WIRES_01 = new IIconContainer[] {
+		LONG_DIST_WIRES_01 = {
 			LONG_DIST_WIRE_EV,
 			LONG_DIST_WIRE_EV,
 			LONG_DIST_WIRE_IV,
@@ -479,7 +481,7 @@ public class Textures {
 			LONG_DIST_WIRE_UV,
 			LONG_DIST_WIRE_UV,
 		},
-		LONG_DIST_PIPES_01 = new IIconContainer[] {
+		LONG_DIST_PIPES_01 = {
 			LONG_DIST_PIPE_ITEM,
 			LONG_DIST_PIPE_FLUID,
 			LONG_DIST_PIPE_FLUID,
@@ -497,7 +499,33 @@ public class Textures {
 			LONG_DIST_PIPE_FLUID,
 			LONG_DIST_PIPE_FLUID,
 		},
-		
+		AXLES[][] = {
+			{
+			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE},
+			{AXLE_VERTICAL  , AXLE_RIGHT            , AXLE_LEFT},
+			{AXLE_VERTICAL  , AXLE_RIGHT            , AXLE_LEFT},
+			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE},
+			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP},
+			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP},
+			{VOID           , VOID                  , VOID}
+			},{
+			{AXLE_HORIZONTAL, AXLE_LEFT             , AXLE_RIGHT},
+			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE},
+			{AXLE_HORIZONTAL, AXLE_LEFT             , AXLE_RIGHT},
+			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT},
+			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE},
+			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT},
+			{VOID           , VOID                  , VOID}
+			},{
+			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP},
+			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT},
+			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE},
+			{AXLE_VERTICAL  , AXLE_UP               , AXLE_DOWN},
+			{AXLE_HORIZONTAL, AXLE_LEFT             , AXLE_RIGHT},
+			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE},
+			{VOID           , VOID                  , VOID}
+			}
+		},
 		
 		GLASSES_CLEAR = UT.Code.fill(GLASS_CLEAR, new IIconContainer[16]),
 		ASPHALTS = UT.Code.fill(ASPHALT, new IIconContainer[16]),
@@ -590,7 +618,7 @@ public class Textures {
 		;
 		
 		public static final IIconContainer[]
-		COMPASS = new IIconContainer[] {
+		COMPASS = {
 			COMPASS_N,
 			COMPASS_NNE,
 			COMPASS_NE,
@@ -608,7 +636,7 @@ public class Textures {
 			COMPASS_NW,
 			COMPASS_NNW
 		},
-		DURABILITY_BAR = new IIconContainer[] {
+		DURABILITY_BAR = {
 			DURABILITY_BAR_0,
 			DURABILITY_BAR_1,
 			DURABILITY_BAR_2,
@@ -619,7 +647,7 @@ public class Textures {
 			DURABILITY_BAR_7,
 			DURABILITY_BAR_8,
 		},
-		ENERGY_BAR = new IIconContainer[] {
+		ENERGY_BAR = {
 			ENERGY_BAR_0,
 			ENERGY_BAR_1,
 			ENERGY_BAR_2,

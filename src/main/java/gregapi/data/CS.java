@@ -112,7 +112,7 @@ public class CS {
 	public static final HashSet<Character> Ch_U = new HashSet<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'));
 	
 	/** The first 32 Bits */
-	public static final int[] B = new int[] {1<<0,1<<1,1<<2,1<<3,1<<4,1<<5,1<<6,1<<7,1<<8,1<<9,1<<10,1<<11,1<<12,1<<13,1<<14,1<<15,1<<16,1<<17,1<<18,1<<19,1<<20,1<<21,1<<22,1<<23,1<<24,1<<25,1<<26,1<<27,1<<28,1<<29,1<<30,1<<31};
+	public static final int[] B = {1<<0,1<<1,1<<2,1<<3,1<<4,1<<5,1<<6,1<<7,1<<8,1<<9,1<<10,1<<11,1<<12,1<<13,1<<14,1<<15,1<<16,1<<17,1<<18,1<<19,1<<20,1<<21,1<<22,1<<23,1<<24,1<<25,1<<26,1<<27,1<<28,1<<29,1<<30,1<<31};
 	
 	/**
 	 * Renamed from "MATERIAL_UNIT" to just "U"
@@ -160,22 +160,22 @@ public class CS {
 	V       = { 8, 32, 128,  512, 2048,  8192, 32768, 131072,  524288, 2097152,  8388608, 33554432, 134217728,  536870912, 2147483648L,  8589934592L};
 	
 	/** The short Names for the Voltages */
-	public static final String[] VN = new String[] {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "PUV1", "PUV2", "PUV3", "PUV4", "PUV5", "\u03A9V", "\u03A9V"};
+	public static final String[] VN = {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "PUV1", "PUV2", "PUV3", "PUV4", "PUV5", "\u03A9V", "\u03A9V"};
 	
 	/** The long Names for the Voltages */
-	public static final String[] VOLTAGE_NAMES = new String[] {"Ultra Low Voltage", "Low Voltage", "Medium Voltage", "High Voltage", "Extreme Voltage", "Insane Voltage", "Ludicrous Voltage", "ZPM Voltage", "Ultimate Voltage", "Post Ultimate Voltage 1", "Post Ultimate Voltage 2", "Post Ultimate Voltage 3", "Post Ultimate Voltage 4", "Post Ultimate Voltage 5", "Omega Voltage", "Omega Voltage"};
+	public static final String[] VOLTAGE_NAMES = {"Ultra Low Voltage", "Low Voltage", "Medium Voltage", "High Voltage", "Extreme Voltage", "Insane Voltage", "Ludicrous Voltage", "ZPM Voltage", "Ultimate Voltage", "Post Ultimate Voltage 1", "Post Ultimate Voltage 2", "Post Ultimate Voltage 3", "Post Ultimate Voltage 4", "Post Ultimate Voltage 5", "Omega Voltage", "Omega Voltage"};
 	
 	/** The short Names for the USB Sticks */
-	public static final String[] OD_USB_STICKS = new String[] {"gt:usbstick0", "gt:usbstick1", "gt:usbstick2", "gt:usbstick3", "gt:usbstick4", "gt:usbstick5", "gt:usbstick6", "gt:usbstick7", "gt:usbstick8", "gt:usbstick9"};
+	public static final String[] OD_USB_STICKS = {"gt:usbstick0", "gt:usbstick1", "gt:usbstick2", "gt:usbstick3", "gt:usbstick4", "gt:usbstick5", "gt:usbstick6", "gt:usbstick7", "gt:usbstick8", "gt:usbstick9"};
 	/** The short Names for the USB Cables */
-	public static final String[] OD_USB_CABLES = new String[] {"gt:usbcable0", "gt:usbcable1", "gt:usbcable2", "gt:usbcable3", "gt:usbcable4", "gt:usbcable5", "gt:usbcable6", "gt:usbcable7", "gt:usbcable8", "gt:usbcable9"};
+	public static final String[] OD_USB_CABLES = {"gt:usbcable0", "gt:usbcable1", "gt:usbcable2", "gt:usbcable3", "gt:usbcable4", "gt:usbcable5", "gt:usbcable6", "gt:usbcable7", "gt:usbcable8", "gt:usbcable9"};
 	/** The short Names for the USB Drives */
-	public static final String[] OD_USB_DRIVES = new String[] {"gt:usbdrive0", "gt:usbdrive1", "gt:usbdrive2", "gt:usbdrive3", "gt:usbdrive4", "gt:usbdrive5", "gt:usbdrive6", "gt:usbdrive7", "gt:usbdrive8", "gt:usbdrive9"};
+	public static final String[] OD_USB_DRIVES = {"gt:usbdrive0", "gt:usbdrive1", "gt:usbdrive2", "gt:usbdrive3", "gt:usbdrive4", "gt:usbdrive5", "gt:usbdrive6", "gt:usbdrive7", "gt:usbdrive8", "gt:usbdrive9"};
 	/** The short Names for the Circuits */
-	public static final String[] OD_CIRCUITS = new String[] {"gt:circuit0", "gt:circuit1", "gt:circuit2", "gt:circuit3", "gt:circuit4", "gt:circuit5", "gt:circuit6", "gt:circuit7", "gt:circuit8", "gt:circuit9"};
+	public static final String[] OD_CIRCUITS = {"gt:circuit0", "gt:circuit1", "gt:circuit2", "gt:circuit3", "gt:circuit4", "gt:circuit5", "gt:circuit6", "gt:circuit7", "gt:circuit8", "gt:circuit9"};
 	
 	/** Subtext Numbers. */
-	public static final String[] NUM_SUB = new String[] {
+	public static final String[] NUM_SUB = {
 	  "\u2080", "\u2081", "\u2082", "\u2083", "\u2084", "\u2085", "\u2086", "\u2087", "\u2088", "\u2089"
 	, "\u2081\u2080", "\u2081\u2081", "\u2081\u2082", "\u2081\u2083", "\u2081\u2084", "\u2081\u2085", "\u2081\u2086", "\u2081\u2087", "\u2081\u2088", "\u2081\u2089"
 	, "\u2082\u2080", "\u2082\u2081", "\u2082\u2082", "\u2082\u2083", "\u2082\u2084", "\u2082\u2085", "\u2082\u2086", "\u2082\u2087", "\u2082\u2088", "\u2082\u2089"
@@ -270,12 +270,12 @@ public class CS {
 	/** If I ever need to talk in Chat. XD */
 	public static final String CHAT_GREG = LH.Chat.WHITE+"<"+LH.Chat.BLUE+"GregoriusT"+LH.Chat.WHITE+">";
 	/** The Colour White as RGB Short Array. */
-	public static final short[] UNCOLOURED = new short[] {255, 255, 255, 255};
+	public static final short[] UNCOLOURED = {255, 255, 255, 255};
 	/** The Colour White as simple Integer (0x00ffffff). */
 	public static final int UNCOLORED = 16777215;
 	public static final int ALL_NON_ALPHA_COLOR = 0x00ffffff;
 	
-	public static final int[] RAINBOW_ARRAY = new int[] {
+	public static final int[] RAINBOW_ARRAY = {
 		0xff0000,
 		0xff4000,
 		0xff8000,
@@ -304,41 +304,41 @@ public class CS {
 	
 	/** Some Colour Arrays */
 	public static final short[]
-	  CA_WHITE              = new short[] {255, 255, 255, 255}
-	, CA_GRAY_192           = new short[] {192, 192, 192, 255}
-	, CA_GRAY_128           = new short[] {128, 128, 128, 255}
-	, CA_GRAY_64            = new short[] { 64,  64,  64, 255}
-	, CA_GRAY_32            = new short[] { 32,  32,  32, 255}
-	, CA_RED_255            = new short[] {255,   0,   0, 255}
-	, CA_RED_192            = new short[] {192,   0,   0, 255}
-	, CA_RED_128            = new short[] {128,   0,   0, 255}
-	, CA_RED_64             = new short[] { 64,   0,   0, 255}
-	, CA_RED_32             = new short[] { 32,   0,   0, 255}
-	, CA_GREEN_255          = new short[] {  0, 255,   0, 255}
-	, CA_GREEN_192          = new short[] {  0, 192,   0, 255}
-	, CA_GREEN_128          = new short[] {  0, 128,   0, 255}
-	, CA_GREEN_64           = new short[] {  0,  64,   0, 255}
-	, CA_GREEN_32           = new short[] {  0,  32,   0, 255}
-	, CA_BLUE_255           = new short[] {  0,   0, 255, 255}
-	, CA_BLUE_192           = new short[] {  0,   0, 192, 255}
-	, CA_BLUE_128           = new short[] {  0,   0, 128, 255}
-	, CA_BLUE_64            = new short[] {  0,   0,  64, 255}
-	, CA_BLUE_32            = new short[] {  0,   0,  32, 255}
-	, CA_LIGHT_BLUE_255     = new short[] {128, 128, 255, 255}
-	, CA_LIGHT_BLUE_192     = new short[] { 96,  96, 192, 255}
-	, CA_LIGHT_BLUE_128     = new short[] { 64,  64, 128, 255}
-	, CA_LIGHT_BLUE_64      = new short[] { 32,  32,  64, 255}
-	, CA_LIGHT_BLUE_32      = new short[] { 16,  16,  32, 255}
-	, CA_YELLOW_255         = new short[] {255, 255,   0, 255}
-	, CA_YELLOW_192         = new short[] {192, 192,   0, 255}
-	, CA_YELLOW_128         = new short[] {128, 128,   0, 255}
-	, CA_YELLOW_64          = new short[] { 64,  64,   0, 255}
-	, CA_YELLOW_32          = new short[] { 32,  32,   0, 255}
-	, CA_LIGHT_YELLOW_255   = new short[] {255, 255, 128, 255}
-	, CA_LIGHT_YELLOW_192   = new short[] {192, 192,  96, 255}
-	, CA_LIGHT_YELLOW_128   = new short[] {128, 128,  64, 255}
-	, CA_LIGHT_YELLOW_64    = new short[] { 64,  64,  32, 255}
-	, CA_LIGHT_YELLOW_32    = new short[] { 32,  32,  16, 255}
+	  CA_WHITE              = {255, 255, 255, 255}
+	, CA_GRAY_192           = {192, 192, 192, 255}
+	, CA_GRAY_128           = {128, 128, 128, 255}
+	, CA_GRAY_64            = { 64,  64,  64, 255}
+	, CA_GRAY_32            = { 32,  32,  32, 255}
+	, CA_RED_255            = {255,   0,   0, 255}
+	, CA_RED_192            = {192,   0,   0, 255}
+	, CA_RED_128            = {128,   0,   0, 255}
+	, CA_RED_64             = { 64,   0,   0, 255}
+	, CA_RED_32             = { 32,   0,   0, 255}
+	, CA_GREEN_255          = {  0, 255,   0, 255}
+	, CA_GREEN_192          = {  0, 192,   0, 255}
+	, CA_GREEN_128          = {  0, 128,   0, 255}
+	, CA_GREEN_64           = {  0,  64,   0, 255}
+	, CA_GREEN_32           = {  0,  32,   0, 255}
+	, CA_BLUE_255           = {  0,   0, 255, 255}
+	, CA_BLUE_192           = {  0,   0, 192, 255}
+	, CA_BLUE_128           = {  0,   0, 128, 255}
+	, CA_BLUE_64            = {  0,   0,  64, 255}
+	, CA_BLUE_32            = {  0,   0,  32, 255}
+	, CA_LIGHT_BLUE_255     = {128, 128, 255, 255}
+	, CA_LIGHT_BLUE_192     = { 96,  96, 192, 255}
+	, CA_LIGHT_BLUE_128     = { 64,  64, 128, 255}
+	, CA_LIGHT_BLUE_64      = { 32,  32,  64, 255}
+	, CA_LIGHT_BLUE_32      = { 16,  16,  32, 255}
+	, CA_YELLOW_255         = {255, 255,   0, 255}
+	, CA_YELLOW_192         = {192, 192,   0, 255}
+	, CA_YELLOW_128         = {128, 128,   0, 255}
+	, CA_YELLOW_64          = { 64,  64,   0, 255}
+	, CA_YELLOW_32          = { 32,  32,   0, 255}
+	, CA_LIGHT_YELLOW_255   = {255, 255, 128, 255}
+	, CA_LIGHT_YELLOW_192   = {192, 192,  96, 255}
+	, CA_LIGHT_YELLOW_128   = {128, 128,  64, 255}
+	, CA_LIGHT_YELLOW_64    = { 64,  64,  32, 255}
+	, CA_LIGHT_YELLOW_32    = { 32,  32,  16, 255}
 	;
 	
 	public static final short[]
@@ -410,18 +410,20 @@ public class CS {
 	public static final int[] DYES_INT                      = {DYE_INT_Black, DYE_INT_Red, DYE_INT_Green, DYE_INT_Brown, DYE_INT_Blue, DYE_INT_Purple, DYE_INT_Cyan, DYE_INT_LightGray, DYE_INT_Gray, DYE_INT_Pink, DYE_INT_Lime, DYE_INT_Yellow, DYE_INT_LightBlue, DYE_INT_Magenta, DYE_INT_Orange, DYE_INT_White};
 	public static final int[] DYES_INT_INVERTED             = {DYES_INT[15], DYES_INT[14], DYES_INT[13], DYES_INT[12], DYES_INT[11], DYES_INT[10], DYES_INT[ 9], DYES_INT[ 8], DYES_INT[ 7], DYES_INT[ 6], DYES_INT[ 5], DYES_INT[ 4], DYES_INT[ 3], DYES_INT[ 2], DYES_INT[ 1], DYES_INT[ 0]};
 	
+	public static final FluidStack[] DYED_C_FOAMS           = new FluidStack[16];
+	public static final FluidStack[] DYED_C_FOAMS_OWNED     = new FluidStack[16];
+	
 	public static final FluidStack[] DYE_FLUIDS_WATER       = new FluidStack[16];
 	public static final FluidStack[] DYE_FLUIDS_FLOWER      = new FluidStack[16];
 	public static final FluidStack[] DYE_FLUIDS_CHEMICAL    = new FluidStack[16];
-	public static final FluidStack[][] DYE_FLUIDCATEGORIES  = new FluidStack[][] {DYE_FLUIDS_WATER, DYE_FLUIDS_FLOWER, DYE_FLUIDS_CHEMICAL};
-	public static final FluidStack[] DYED_C_FOAMS           = new FluidStack[16];
-	public static final FluidStack[] DYED_C_FOAMS_OWNED     = new FluidStack[16];
+	public static final FluidStack[][] DYE_FLUIDCATEGORIES  = {DYE_FLUIDS_WATER, DYE_FLUIDS_FLOWER, DYE_FLUIDS_CHEMICAL};
+	
 	
 	@SuppressWarnings("unchecked")
 	public static final ArrayListNoNulls<FluidStack>[] DYE_FLUIDS = new ArrayListNoNulls[] {new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>()};
 	
 	/** Array with length 17 containing the Coordinates of Pixels from 0/16 to 16/16 */
-	public static final float[] PX_P = new float[] {
+	public static final float[] PX_P = {
 		  0.0000F, 0.0625F, 0.1250F, 0.1875F
 		, 0.2500F, 0.3125F, 0.3750F, 0.4375F
 		, 0.5000F, 0.5625F, 0.6250F, 0.6875F
@@ -429,7 +431,7 @@ public class CS {
 		, 1.0000F}, PIXELS_POS = PX_P;
 	
 	/** Array with length 17 containing the Coordinates of Pixels from 16/16 to 0/16 */
-	public static final float[] PX_N = new float[] {
+	public static final float[] PX_N = {
 		  1.0000F, 0.9375F, 0.8750F, 0.8125F
 		, 0.7500F, 0.6875F, 0.6250F, 0.5625F
 		, 0.5000F, 0.4375F, 0.3750F, 0.3125F
@@ -449,7 +451,7 @@ public class CS {
 	 * [Facing,Side]->Side Mappings for Blocks, which don't face up- and downwards.
 	 * 0 = bottom, 1 = top, 2 = left, 3 = front, 4 = right, 5 = back, 6 = undefined.
 	 */
-	public static final byte[][] FACING_ROTATIONS = new byte[][] {
+	public static final byte[][] FACING_ROTATIONS = {
 		{0,1,2,3,4,5,6},
 		{0,1,2,3,4,5,6},
 		{0,1,3,5,4,2,6},
@@ -463,7 +465,7 @@ public class CS {
 	 * [Facing,Side]->Orientation Mappings for Blocks, which don't face up- and downwards.
 	 * 0 = bottom, 1 = top, 2 = left, 3 = front, 4 = right, 5 = back, 6 = undefined.
 	 */
-	public static final byte[][] FACING_TO_SIDE = new byte[][] {
+	public static final byte[][] FACING_TO_SIDE = {
 		{0,1,2,3,4,5,6},
 		{0,1,2,3,4,5,6},
 		{0,1,5,2,4,3,6},
@@ -474,14 +476,14 @@ public class CS {
 	};
 	
 	/** Gives you the Sides, which are not the Front nor the Back of the Facing. */
-	public static final byte[][] FACING_SIDES = new byte[][] {{2,3,4,5},{2,3,4,5},{0,1,4,5},{0,1,4,5},{0,1,2,3},{0,1,2,3},{}};
+	public static final byte[][] FACING_SIDES = {{2,3,4,5},{2,3,4,5},{0,1,4,5},{0,1,4,5},{0,1,2,3},{0,1,2,3},{}};
 	/** Gives you the Sides, which are the Front and the Back, with the Front being the first one. */
-	public static final byte[][] FACING_FRONT_BACK = new byte[][] {{0,1},{1,0},{2,3},{3,2},{4,5},{5,4},{}};
+	public static final byte[][] FACING_FRONT_BACK = {{0,1},{1,0},{2,3},{3,2},{4,5},{5,4},{}};
 	/** Gives you the Sides, which are the Front and the Back, with the Back being the first one. */
-	public static final byte[][] FACING_BACK_FRONT = new byte[][] {{1,0},{0,1},{3,2},{2,3},{5,4},{4,5},{}};
+	public static final byte[][] FACING_BACK_FRONT = {{1,0},{0,1},{3,2},{2,3},{5,4},{4,5},{}};
 	
 	/** Checks if two Sides are along the same Axis */
-	public static final boolean[][] ALONG_AXIS = new boolean[][] {
+	public static final boolean[][] ALONG_AXIS = {
 		{T,T,F,F,F,F,F},
 		{T,T,F,F,F,F,F},
 		{F,F,T,T,F,F,F},
@@ -492,7 +494,7 @@ public class CS {
 	};
 	
 	/** Checks if two Sides are along the shifted Axis */
-	public static final boolean[][] ALONG_AXIS_1 = new boolean[][] {
+	public static final boolean[][] ALONG_AXIS_1 = {
 		{F,F,T,T,F,F,F},
 		{F,F,T,T,F,F,F},
 		{F,F,F,F,T,T,F},
@@ -503,7 +505,7 @@ public class CS {
 	};
 	
 	/** Checks if two Sides are along the double shifted Axis */
-	public static final boolean[][] ALONG_AXIS_2 = new boolean[][] {
+	public static final boolean[][] ALONG_AXIS_2 = {
 		{F,F,F,F,T,T,F},
 		{F,F,F,F,T,T,F},
 		{T,T,F,F,F,F,F},
@@ -514,7 +516,7 @@ public class CS {
 	};
 	
 	/** Insert Facing and a Connectivity BitMask to see if it is connecting to that Side. Technically this is a simple Bit Operation, but accessing an Array with "FACE_CONNECTED[aSide][aConnections]" just looks nicer than "(aConnections & (1 << aSide) != 0)". */
-	public static final boolean[][] FACE_CONNECTED = new boolean[][] {
+	public static final boolean[][] FACE_CONNECTED = {
 		{F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T},
 		{F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T},
 		{F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T},
@@ -525,87 +527,87 @@ public class CS {
 	};
 	
 	/** Fast lookup to see how many Connections a Mask has. It is recommended to do either &63 or &127 on the Index depending on how you use it. */
-	public static final byte[]              FACE_CONNECTION_COUNT = new byte[] {0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7};
+	public static final byte[]              FACE_CONNECTION_COUNT = {0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7};
 	
 	/** Side Bits for quick reference.*/
-	public static final byte                SBIT[] = new byte[] { 1, 2, 4, 8,16,32,64}, SIDE_BITS[] = SBIT, SBIT_D = 1, SBIT_U = 2, SBIT_L = 4, SBIT_F = 8, SBIT_R = 16, SBIT_B = 32, SBIT_N = 4, SBIT_S = 8, SBIT_W = 16, SBIT_E = 32, SBIT_A = 64, SBIT_I = 64;
+	public static final byte                SBIT[] = { 1, 2, 4, 8,16,32,64}, SIDE_BITS[] = SBIT, SBIT_D = 1, SBIT_U = 2, SBIT_L = 4, SBIT_F = 8, SBIT_R = 16, SBIT_B = 32, SBIT_N = 4, SBIT_S = 8, SBIT_W = 16, SBIT_E = 32, SBIT_A = 64, SBIT_I = 64;
 	
 	/** Those are not representing actual directions! They are for the "FACING_ROTATIONS" Array-Map */
 	public static final byte                SIDE_LEFT = 2, SIDE_FRONT = 3, SIDE_RIGHT = 4, SIDE_BACK = 5;
 	
 	/** Converts Sides to a Top-Bottom-Side Value, this limits the Range to a Number between [0 and 2] */
-	public static final byte[]              FACES_TBS = new byte[] { 0, 1, 2, 2, 2, 2, 2};
+	public static final byte[]              FACES_TBS = { 0, 1, 2, 2, 2, 2, 2};
 	/** Side->Opposite Mappings. */
-	public static final byte[]              OPPOSITES = new byte[] { 1, 0, 3, 2, 5, 4, 6};
+	public static final byte[]              OPPOSITES = { 1, 0, 3, 2, 5, 4, 6};
 	/** Side->Offset Mappings. */
-	public static final byte[]              OFFSETS_X = new byte[] { 0, 0, 0, 0,-1,+1, 0},
-											OFFSETS_Y = new byte[] {-1,+1, 0, 0, 0, 0, 0},
-											OFFSETS_Z = new byte[] { 0, 0,-1,+1, 0, 0, 0};
+	public static final byte[]              OFFSETS_X = { 0, 0, 0, 0,-1,+1, 0},
+											OFFSETS_Y = {-1,+1, 0, 0, 0, 0, 0},
+											OFFSETS_Z = { 0, 0,-1,+1, 0, 0, 0};
 	
 	/** Side->ForgeDirection Mappings. */
-	public static final ForgeDirection[]    FORGE_DIR = new ForgeDirection[] {ForgeDirection.DOWN, ForgeDirection.UP, ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.WEST, ForgeDirection.EAST, ForgeDirection.UNKNOWN};
+	public static final ForgeDirection[]    FORGE_DIR = {ForgeDirection.DOWN, ForgeDirection.UP, ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.WEST, ForgeDirection.EAST, ForgeDirection.UNKNOWN};
 	/** Side->Opposite Mappings with ForgeDirection. */
-	public static final ForgeDirection[]    FORGE_DIR_OPPOSITES = new ForgeDirection[] {ForgeDirection.UP, ForgeDirection.DOWN, ForgeDirection.SOUTH, ForgeDirection.NORTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.UNKNOWN};
+	public static final ForgeDirection[]    FORGE_DIR_OPPOSITES = {ForgeDirection.UP, ForgeDirection.DOWN, ForgeDirection.SOUTH, ForgeDirection.NORTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.UNKNOWN};
 	
 	/** Compass alike Array for the proper ordering of North, East, South and West. */
-	public static final byte[]              COMPASS_DIRECTIONS      = new byte[] {SIDE_NORTH, SIDE_EAST, SIDE_SOUTH, SIDE_WEST};
+	public static final byte[]              COMPASS_DIRECTIONS      = {SIDE_NORTH, SIDE_EAST, SIDE_SOUTH, SIDE_WEST};
 	/** Side -> Compass Direction. Defaults to North if wrong value. */
-	public static final byte[]              COMPASS_FROM_SIDE       = new byte[] { 0, 0, 0, 2, 3, 1, 0};
+	public static final byte[]              COMPASS_FROM_SIDE       = { 0, 0, 0, 2, 3, 1, 0};
 	
 	/** Used for Meta => Side */
-	public static final byte[]              VALIDATE                = new byte[] { 0, 1, 2, 3, 4, 5, 0, 0, 0, 1, 2, 3, 4, 5, 0, 0},
-											VALIDATE_VERTICAL       = new byte[] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-											VALIDATE_HORIZONTAL     = new byte[] { 3, 3, 2, 3, 4, 5, 3, 3, 3, 3, 2, 3, 4, 5, 3, 3};
+	public static final byte[]              VALIDATE                = { 0, 1, 2, 3, 4, 5, 0, 0, 0, 1, 2, 3, 4, 5, 0, 0},
+											VALIDATE_VERTICAL       = { 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+											VALIDATE_HORIZONTAL     = { 3, 3, 2, 3, 4, 5, 3, 3, 3, 3, 2, 3, 4, 5, 3, 3};
 	
 	/** An Array containing all Sides which follow the Condition, in order to iterate over them for example. */
-	public static final byte[]              ALL_SIDES                   = new byte[]    {0,1,2,3,4,5,6},
-											ALL_SIDES_MIDDLE            = new byte[]    {6,0,1,2,3,4,5},
-											ALL_SIDES_MIDDLE_UP         = new byte[]    {6,1,2,3,4,5,0},
-											ALL_SIDES_MIDDLE_DOWN       = new byte[]    {6,0,2,3,4,5,1},
-											ALL_SIDES_VALID             = new byte[]    {0,1,2,3,4,5},
-											ALL_SIDES_VALID_FIRST[]     = new byte[][] {{0,1,2,3,4,5  },{1,0,2,3,4,5  },{2,0,1,3,4,5  },{3,0,1,2,4,5  },{4,0,1,2,3,5  },{5,0,1,2,3,4  },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_ONLY[]      = new byte[][] {{0            },{1            },{2            },{3            },{4            },{5            },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_BUT[]       = new byte[][] {{  1,2,3,4,5  },{0  ,2,3,4,5  },{0,1  ,3,4,5  },{0,1,2  ,4,5  },{0,1,2,3  ,5  },{0,1,2,3,4    },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_BUT_AXIS[]  = new byte[][] {{    2,3,4,5  },{    2,3,4,5  },{0,1    ,4,5  },{0,1    ,4,5  },{0,1,2,3      },{0,1,2,3      },{0,1,2,3,4,5  }},
-											ALL_SIDES_THIS_AND_ANY[]    = new byte[][] {{0          ,6},{1          ,6},{2          ,6},{3          ,6},{4          ,6},{5          ,6},{0,1,2,3,4,5,6}},
-											ALL_SIDES_VERTICAL          = new byte[]    {0,1},
-											ALL_SIDES_BOTTOM            = new byte[]    {0},
-											ALL_SIDES_TOP               = new byte[]    {1},
-											ALL_SIDES_HORIZONTAL        = new byte[]    {2,3,4,5},
-											ALL_SIDES_HORIZONTAL_UP     = new byte[]    {2,3,4,5,1},
-											ALL_SIDES_HORIZONTAL_DOWN   = new byte[]    {2,3,4,5,0},
-											ALL_SIDES_BUT_TOP           = new byte[]    {0,2,3,4,5},
-											ALL_SIDES_BUT_BOTTOM        = new byte[]    {1,2,3,4,5},
-											ALL_SIDES_X                 = new byte[]    {4,5},
-											ALL_SIDES_Y                 = new byte[]    {0,1},
-											ALL_SIDES_Z                 = new byte[]    {2,3};
+	public static final byte[]              ALL_SIDES                   =  {0,1,2,3,4,5,6},
+											ALL_SIDES_MIDDLE            =  {6,0,1,2,3,4,5},
+											ALL_SIDES_MIDDLE_UP         =  {6,1,2,3,4,5,0},
+											ALL_SIDES_MIDDLE_DOWN       =  {6,0,2,3,4,5,1},
+											ALL_SIDES_VALID             =  {0,1,2,3,4,5},
+											ALL_SIDES_VALID_FIRST[]     = {{0,1,2,3,4,5  },{1,0,2,3,4,5  },{2,0,1,3,4,5  },{3,0,1,2,4,5  },{4,0,1,2,3,5  },{5,0,1,2,3,4  },{0,1,2,3,4,5  }},
+											ALL_SIDES_VALID_ONLY[]      = {{0            },{1            },{2            },{3            },{4            },{5            },{0,1,2,3,4,5  }},
+											ALL_SIDES_VALID_BUT[]       = {{  1,2,3,4,5  },{0  ,2,3,4,5  },{0,1  ,3,4,5  },{0,1,2  ,4,5  },{0,1,2,3  ,5  },{0,1,2,3,4    },{0,1,2,3,4,5  }},
+											ALL_SIDES_VALID_BUT_AXIS[]  = {{    2,3,4,5  },{    2,3,4,5  },{0,1    ,4,5  },{0,1    ,4,5  },{0,1,2,3      },{0,1,2,3      },{0,1,2,3,4,5  }},
+											ALL_SIDES_THIS_AND_ANY[]    = {{0          ,6},{1          ,6},{2          ,6},{3          ,6},{4          ,6},{5          ,6},{0,1,2,3,4,5,6}},
+											ALL_SIDES_VERTICAL          =  {0,1},
+											ALL_SIDES_BOTTOM            =  {0},
+											ALL_SIDES_TOP               =  {1},
+											ALL_SIDES_HORIZONTAL        =  {2,3,4,5},
+											ALL_SIDES_HORIZONTAL_UP     =  {2,3,4,5,1},
+											ALL_SIDES_HORIZONTAL_DOWN   =  {2,3,4,5,0},
+											ALL_SIDES_BUT_TOP           =  {0,2,3,4,5},
+											ALL_SIDES_BUT_BOTTOM        =  {1,2,3,4,5},
+											ALL_SIDES_X                 =  {4,5},
+											ALL_SIDES_Y                 =  {0,1},
+											ALL_SIDES_Z                 =  {2,3};
 	
 	/** For Facing Checks. */
-	public static final boolean[]           SIDES_BOTTOM            = new boolean[] {T,F,F,F,F,F,F},
-											SIDES_TOP               = new boolean[] {F,T,F,F,F,F,F},
-											SIDES_LEFT              = new boolean[] {F,F,T,F,F,F,F},
-											SIDES_FRONT             = new boolean[] {F,F,F,T,F,F,F},
-											SIDES_RIGHT             = new boolean[] {F,F,F,F,T,F,F},
-											SIDES_BACK              = new boolean[] {F,F,F,F,F,T,F},
-											SIDES_INVALID           = new boolean[] {F,F,F,F,F,F,T},
-											SIDES_VALID             = new boolean[] {T,T,T,T,T,T,F},
-											SIDES_ALL               = new boolean[] {T,T,T,T,T,T,T},
-											SIDES_NONE              = new boolean[] {F,F,F,F,F,F,F},
-											SIDES_LEFT_RIGHT        = new boolean[] {F,F,T,F,T,F,F},
-											SIDES_FRONT_BACK        = new boolean[] {F,F,F,T,F,T,F},
-											SIDES_AXIS_X            = new boolean[] {F,F,F,F,T,T,F},
-											SIDES_AXIS_Y            = new boolean[] {T,T,F,F,F,F,F},
-											SIDES_AXIS_Z            = new boolean[] {F,F,T,T,F,F,F},
-											SIDES_COMPASS           = new boolean[] {F,F,T,T,T,T,F},
-											SIDES_VERTICAL          = new boolean[] {T,T,F,F,F,F,F},
-											SIDES_HORIZONTAL        = new boolean[] {F,F,T,T,T,T,F},
-											SIDES_TOP_HORIZONTAL    = new boolean[] {F,T,T,T,T,T,F},
-											SIDES_BOTTOM_HORIZONTAL = new boolean[] {T,F,T,T,T,T,F},
-											SIDES_ITEM_RENDER       = new boolean[] {T,T,T,T,T,T,F};
+	public static final boolean[]           SIDES_BOTTOM            = {T,F,F,F,F,F,F},
+											SIDES_TOP               = {F,T,F,F,F,F,F},
+											SIDES_LEFT              = {F,F,T,F,F,F,F},
+											SIDES_FRONT             = {F,F,F,T,F,F,F},
+											SIDES_RIGHT             = {F,F,F,F,T,F,F},
+											SIDES_BACK              = {F,F,F,F,F,T,F},
+											SIDES_INVALID           = {F,F,F,F,F,F,T},
+											SIDES_VALID             = {T,T,T,T,T,T,F},
+											SIDES_ALL               = {T,T,T,T,T,T,T},
+											SIDES_NONE              = {F,F,F,F,F,F,F},
+											SIDES_LEFT_RIGHT        = {F,F,T,F,T,F,F},
+											SIDES_FRONT_BACK        = {F,F,F,T,F,T,F},
+											SIDES_AXIS_X            = {F,F,F,F,T,T,F},
+											SIDES_AXIS_Y            = {T,T,F,F,F,F,F},
+											SIDES_AXIS_Z            = {F,F,T,T,F,F,F},
+											SIDES_COMPASS           = {F,F,T,T,T,T,F},
+											SIDES_VERTICAL          = {T,T,F,F,F,F,F},
+											SIDES_HORIZONTAL        = {F,F,T,T,T,T,F},
+											SIDES_TOP_HORIZONTAL    = {F,T,T,T,T,T,F},
+											SIDES_BOTTOM_HORIZONTAL = {T,F,T,T,T,T,F},
+											SIDES_ITEM_RENDER       = {T,T,T,T,T,T,F};
 	
 	/** For Facing Checks. */
 	public static final boolean[][]
-	SIDES_ANY_BUT = new boolean[][] {
+	SIDES_ANY_BUT = {
 		{F,T,T,T,T,T,F},
 		{T,F,T,T,T,T,F},
 		{T,T,F,T,T,T,F},
@@ -614,7 +616,7 @@ public class CS {
 		{T,T,T,T,T,F,F},
 		{T,T,T,T,T,T,F}
 	},
-	SIDES_THIS = new boolean[][] {
+	SIDES_THIS = {
 		{T,F,F,F,F,F,F},
 		{F,T,F,F,F,F,F},
 		{F,F,T,F,F,F,F},
@@ -623,7 +625,7 @@ public class CS {
 		{F,F,F,F,F,T,F},
 		{F,F,F,F,F,F,F}
 	},
-	SIDES_EQUAL = new boolean[][] {
+	SIDES_EQUAL = {
 		{T,F,F,F,F,F,T},
 		{F,T,F,F,F,F,T},
 		{F,F,T,F,F,F,T},
@@ -632,7 +634,7 @@ public class CS {
 		{F,F,F,F,F,T,T},
 		{T,T,T,T,T,T,T}
 	},
-	SIDES_UNEQUAL = new boolean[][] {
+	SIDES_UNEQUAL = {
 		{F,T,T,T,T,T,F},
 		{T,F,T,T,T,T,F},
 		{T,T,F,T,T,T,F},
@@ -660,7 +662,7 @@ public class CS {
 		SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
 	};
 	
-	public static final boolean[] TRUE_6 = new boolean[] {T,T,T,T,T,T};
+	public static final boolean[] TRUE_6 = {T,T,T,T,T,T};
 	
 	/** To Scan Coordinates in a somewhat "close stuff gets scanned first" order. */
 	public static final int[]
