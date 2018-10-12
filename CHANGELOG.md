@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Plenty of random tiny Bugs.
 [ADDED]
 Axles to transfer Rotational Units (RU)
-They are going to be lossless, but since there is no Gear Boxes yet you cant Transform or Round-The-Corner them.
+They are going to be somewhat lossless (I still need to think of a distance penalty), but since there is no Gear Boxes yet you cant Transform or Round-The-Corner them.
 [ADDED]
 Light and Dark Prismarine Rock Types.
 Including all the Stuff the usual Rock Types like Granite, Komatiite and such have.
