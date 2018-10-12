@@ -47,13 +47,13 @@ public interface IHasWorldAndCoords extends IHasWorld, IHasCoords {
 	/** Do not return null! See {@link ITileEntityDelegating} */
 	public DelegatorTileEntity<IFluidHandler> getAdjacentTank(byte aSide);
 	
-	/** Do not return null! See {@link ITileEntityDelegating} if aAllowDelegates is false, it will check of the TileEntity can delegate, see {@link ITileEntityCanDelegate}, and if it can, then this will output a Delegator Object with a null TileEntity instead. */
+	/** Do not return null! See {@link ITileEntityDelegating} if aAllowDelegates is false, it will check if the TileEntity can delegate, see {@link ITileEntityCanDelegate}, and if it can, then this will output a Delegator Object with a null TileEntity instead. */
 	public DelegatorTileEntity<TileEntity> getAdjacentTileEntity(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators);
-	/** Do not return null! See {@link ITileEntityDelegating} if aAllowDelegates is false, it will check of the TileEntity can delegate, see {@link ITileEntityCanDelegate}, and if it can, then this will output a Delegator Object with a null TileEntity instead. */
+	/** Do not return null! See {@link ITileEntityDelegating} if aAllowDelegates is false, it will check if the TileEntity can delegate, see {@link ITileEntityCanDelegate}, and if it can, then this will output a Delegator Object with a null TileEntity instead. */
 	public DelegatorTileEntity<IInventory> getAdjacentInventory(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators);
-	/** Do not return null! See {@link ITileEntityDelegating} if aAllowDelegates is false, it will check of the TileEntity can delegate, see {@link ITileEntityCanDelegate}, and if it can, then this will output a Delegator Object with a null TileEntity instead. */
+	/** Do not return null! See {@link ITileEntityDelegating} if aAllowDelegates is false, it will check if the TileEntity can delegate, see {@link ITileEntityCanDelegate}, and if it can, then this will output a Delegator Object with a null TileEntity instead. */
 	public DelegatorTileEntity<ISidedInventory> getAdjacentSidedInventory(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators);
-	/** Do not return null! See {@link ITileEntityDelegating} if aAllowDelegates is false, it will check of the TileEntity can delegate, see {@link ITileEntityCanDelegate}, and if it can, then this will output a Delegator Object with a null TileEntity instead. */
+	/** Do not return null! See {@link ITileEntityDelegating} if aAllowDelegates is false, it will check if the TileEntity can delegate, see {@link ITileEntityCanDelegate}, and if it can, then this will output a Delegator Object with a null TileEntity instead. */
 	public DelegatorTileEntity<IFluidHandler> getAdjacentTank(byte aSide, boolean aAllowDelegates, boolean aNotConnectToDelegators);
 	
 	public Block getBlockOffset(int aX, int aY, int aZ);
