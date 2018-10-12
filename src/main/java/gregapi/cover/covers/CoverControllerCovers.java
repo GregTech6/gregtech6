@@ -84,6 +84,7 @@ public class CoverControllerCovers extends AbstractCoverAttachment {
 				if (aChatReturn != null) aChatReturn.add((aData.mValues[aCoverSide] & B[0]) != 0 ? "Covers work when Input is OFF" : "Covers work when Input is ON");
 				return 1;
 			}
+			return 0;
 		}
 		if (aData.mBehaviours[tSide] != null) return aData.mBehaviours[tSide].onToolClick(tSide, aData, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSideClicked, aHitX, aHitY, aHitZ);
 		return 0;
