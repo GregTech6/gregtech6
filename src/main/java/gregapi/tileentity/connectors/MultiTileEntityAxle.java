@@ -81,7 +81,8 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	}
 	
 	@Override public boolean onTickCheck(long aTimer) {return mRotationDir != oRotationDir || super.onTickCheck(aTimer);}
-	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationDir = mRotationDir; mRotationDir = 0;}
+	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationDir = mRotationDir;}
+	@Override public void onTickEnd(long aTimer, boolean aIsServerSide) {mRotationDir = 0; super.onTickEnd(aTimer, aIsServerSide);}
 	@Override public void setVisualData(byte aData) {mRotationDir = aData;}
 	@Override public byte getVisualData() {return mRotationDir;}
 	
@@ -89,12 +90,12 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		if (mTimer < 1) return 0;
 		
 		switch(aSide) {
-		case SIDE_X_NEG: mRotationDir = (byte)(aPower<0?2:1); break;
-		case SIDE_Y_NEG: mRotationDir = (byte)(aPower<0?2:1); break;
-		case SIDE_Z_NEG: mRotationDir = (byte)(aPower<0?2:1); break;
-		case SIDE_X_POS: mRotationDir = (byte)(aPower<0?1:2); break;
-		case SIDE_Y_POS: mRotationDir = (byte)(aPower<0?1:2); break;
-		case SIDE_Z_POS: mRotationDir = (byte)(aPower<0?1:2); break;
+		case SIDE_X_NEG: mRotationDir = (byte)(aSpeed<0?1:2); break;
+		case SIDE_Y_NEG: mRotationDir = (byte)(aSpeed<0?1:2); break;
+		case SIDE_Z_NEG: mRotationDir = (byte)(aSpeed<0?1:2); break;
+		case SIDE_X_POS: mRotationDir = (byte)(aSpeed<0?2:1); break;
+		case SIDE_Y_POS: mRotationDir = (byte)(aSpeed<0?2:1); break;
+		case SIDE_Z_POS: mRotationDir = (byte)(aSpeed<0?2:1); break;
 		}
 		
 		long rUsedAmperes = 0;
