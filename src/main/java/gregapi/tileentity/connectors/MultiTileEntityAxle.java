@@ -76,13 +76,15 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		super.onTick2(aTimer, aIsServerSide);
 		
 		if (aIsServerSide) {
-			// TODO
+			if (mWattageLast == 0) mRotationDir = 0;
+			mWattageLast = mTransferredWattage;
+			mTransferredWattage = 0;
+			mTransferredPower = 0;
 		}
 	}
 	
 	@Override public boolean onTickCheck(long aTimer) {return mRotationDir != oRotationDir || super.onTickCheck(aTimer);}
 	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationDir = mRotationDir;}
-	@Override public void onTickEnd(long aTimer, boolean aIsServerSide) {mRotationDir = 0; super.onTickEnd(aTimer, aIsServerSide);}
 	@Override public void setVisualData(byte aData) {mRotationDir = aData;}
 	@Override public byte getVisualData() {return mRotationDir;}
 	
@@ -115,10 +117,10 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		return rUsedAmperes > 0 ? addToEnergyTransferred(aSpeed, rUsedAmperes) ? rUsedAmperes : aPower : 0;
 	}
 	
-	public boolean addToEnergyTransferred(long aVoltage, long aAmperage) {
-		mTransferredPower += aAmperage;
-		mTransferredWattage += Math.abs(aVoltage * aAmperage);
-		if (Math.abs(aVoltage) > mSpeed || mTransferredPower > mPower) {
+	public boolean addToEnergyTransferred(long aSpeed, long aPower) {
+		mTransferredPower += aPower;
+		mTransferredWattage += Math.abs(aSpeed * aPower);
+		if (Math.abs(aSpeed) > mSpeed || mTransferredPower > mPower) {
 			// TODO
 			return F;
 		}
