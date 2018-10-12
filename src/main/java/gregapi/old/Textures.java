@@ -501,29 +501,29 @@ public class Textures {
 		},
 		AXLES[][] = {
 			{
-			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE},
-			{AXLE_VERTICAL  , AXLE_RIGHT            , AXLE_LEFT},
-			{AXLE_VERTICAL  , AXLE_RIGHT            , AXLE_LEFT},
-			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE},
-			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP},
-			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP},
-			{VOID           , VOID                  , VOID}
+			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
+			{AXLE_HORIZONTAL, AXLE_LEFT             , AXLE_RIGHT            },
+			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE },
+			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE        },
+			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP               },
+			{AXLE_VERTICAL  , AXLE_UP               , AXLE_DOWN             },
+			{VOID           , VOID                  , VOID                  }
 			},{
-			{AXLE_HORIZONTAL, AXLE_LEFT             , AXLE_RIGHT},
-			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE},
-			{AXLE_HORIZONTAL, AXLE_LEFT             , AXLE_RIGHT},
-			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT},
-			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE},
-			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT},
-			{VOID           , VOID                  , VOID}
+			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE },
+			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE        },
+			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
+			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
+			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
+			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
+			{VOID           , VOID                  , VOID                  }
 			},{
-			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP},
-			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT},
-			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE},
-			{AXLE_VERTICAL  , AXLE_UP               , AXLE_DOWN},
-			{AXLE_HORIZONTAL, AXLE_LEFT             , AXLE_RIGHT},
-			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE},
-			{VOID           , VOID                  , VOID}
+			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP               },
+			{AXLE_VERTICAL  , AXLE_UP               , AXLE_DOWN             },
+			{AXLE_VERTICAL  , AXLE_UP               , AXLE_DOWN             },
+			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP               },
+			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE },
+			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE        },
+			{VOID           , VOID                  , VOID                  }
 			}
 		},
 		
