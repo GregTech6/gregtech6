@@ -499,8 +499,7 @@ public class Textures {
 			LONG_DIST_PIPE_FLUID,
 			LONG_DIST_PIPE_FLUID,
 		},
-		AXLES[][] = {
-			{
+		AXLES[][] = {{
 			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
 			{AXLE_HORIZONTAL, AXLE_LEFT             , AXLE_RIGHT            },
 			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE },
@@ -508,7 +507,7 @@ public class Textures {
 			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP               },
 			{AXLE_VERTICAL  , AXLE_UP               , AXLE_DOWN             },
 			{VOID           , VOID                  , VOID                  }
-			},{
+		},{
 			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE },
 			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE        },
 			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
@@ -516,16 +515,15 @@ public class Textures {
 			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
 			{AXLE_HORIZONTAL, AXLE_RIGHT            , AXLE_LEFT             },
 			{VOID           , VOID                  , VOID                  }
-			},{
+		},{
 			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP               },
-			{AXLE_VERTICAL  , AXLE_UP               , AXLE_DOWN             },
+			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP               },
 			{AXLE_VERTICAL  , AXLE_UP               , AXLE_DOWN             },
 			{AXLE_VERTICAL  , AXLE_DOWN             , AXLE_UP               },
 			{AXLE           , AXLE_CLOCKWISE        , AXLE_COUNTERCLOCKWISE },
 			{AXLE           , AXLE_COUNTERCLOCKWISE , AXLE_CLOCKWISE        },
 			{VOID           , VOID                  , VOID                  }
-			}
-		},
+		}},
 		
 		GLASSES_CLEAR = UT.Code.fill(GLASS_CLEAR, new IIconContainer[16]),
 		ASPHALTS = UT.Code.fill(ASPHALT, new IIconContainer[16]),
