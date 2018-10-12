@@ -48,7 +48,7 @@ import net.minecraft.tileentity.TileEntity;
  */
 public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress {
 	public long mTransferredPower = 0, mTransferredWattage = 0, mWattageLast = 0, mPower = 1, mSpeed = 32;
-	public byte mRotationDir = 1, oRotationDir = 0;
+	public byte mRotationDir = 0, oRotationDir = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -81,12 +81,21 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	}
 	
 	@Override public boolean onTickCheck(long aTimer) {return mRotationDir != oRotationDir || super.onTickCheck(aTimer);}
-	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationDir = mRotationDir;}
+	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationDir = mRotationDir; mRotationDir = 0;}
 	@Override public void setVisualData(byte aData) {mRotationDir = aData;}
 	@Override public byte getVisualData() {return mRotationDir;}
 	
 	public long transferRotations(byte aSide, long aSpeed, long aPower, long aChannel, HashSetNoNulls<TileEntity> aAlreadyPassed) {
 		if (mTimer < 1) return 0;
+		
+		switch(aSide) {
+		case SIDE_X_NEG: mRotationDir = (byte)(aPower<0?2:1); break;
+		case SIDE_Y_NEG: mRotationDir = (byte)(aPower<0?2:1); break;
+		case SIDE_Z_NEG: mRotationDir = (byte)(aPower<0?2:1); break;
+		case SIDE_X_POS: mRotationDir = (byte)(aPower<0?1:2); break;
+		case SIDE_Y_POS: mRotationDir = (byte)(aPower<0?1:2); break;
+		case SIDE_Z_POS: mRotationDir = (byte)(aPower<0?1:2); break;
+		}
 		
 		long rUsedAmperes = 0;
 		for (byte tSide : ALL_SIDES_VALID_BUT[aSide]) if (canEmitEnergyTo(tSide)) {
