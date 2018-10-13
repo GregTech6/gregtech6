@@ -100,9 +100,9 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		case SIDE_Z_POS: mRotationDir = (byte)(aSpeed<0?2:1); break;
 		}
 		
-		if (!canEmitEnergyTo(OPPOSITES[aSide])) return aPower;
+		if (!canEmitEnergyTo(OPPOSITES[aSide])) return addToEnergyTransferred(aSpeed, aPower, aPower);
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(OPPOSITES[aSide]);
-		return aAlreadyPassed.add(tDelegator.mTileEntity) ? tDelegator.mTileEntity instanceof MultiTileEntityAxle ? ((MultiTileEntityAxle)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.RU, tDelegator.mSideOfTileEntity, F) ? addToEnergyTransferred(aSpeed, aPower, ((MultiTileEntityAxle)tDelegator.mTileEntity).transferRotations(tDelegator.mSideOfTileEntity, aSpeed, aPower, aChannel, aAlreadyPassed)) : aPower : addToEnergyTransferred(aSpeed, aPower, ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, tDelegator.mSideOfTileEntity, aSpeed, aPower, this, tDelegator.mTileEntity)) : aPower;
+		return addToEnergyTransferred(aSpeed, aPower, aAlreadyPassed.add(tDelegator.mTileEntity) ? tDelegator.mTileEntity instanceof MultiTileEntityAxle ? ((MultiTileEntityAxle)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.RU, tDelegator.mSideOfTileEntity, F) ? ((MultiTileEntityAxle)tDelegator.mTileEntity).transferRotations(tDelegator.mSideOfTileEntity, aSpeed, aPower, aChannel, aAlreadyPassed) : aPower : ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, tDelegator.mSideOfTileEntity, aSpeed, aPower, this, tDelegator.mTileEntity) : aPower);
 	}
 	
 	public long addToEnergyTransferred(long aSpeed, long aOriginalPower, long aPower) {
