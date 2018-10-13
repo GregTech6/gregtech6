@@ -29,7 +29,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Plenty of random tiny Bugs.
 [ADDED]
 Axles to transfer Rotational Units (RU)
-They are going to be somewhat lossless (I still need to think of a distance penalty), but since there is no Gear Boxes yet you cant Transform or Round-The-Corner them.
+They are going to be somewhat lossless (I still need to think of a good distance penalty).
+It is pretty straight forward, literally, they can only go in a straight line. If you manage to somehow make an Axle even visually bend around a corner, that would be a Bug. (it wouldn't transfer power around the corner though)
+There is no Gearboxes yet, lets see how long it takes for me to add those, maybe even next week.
 [ADDED]
 Light and Dark Prismarine Rock Types.
 Including all the Stuff the usual Rock Types like Granite, Komatiite and such have.

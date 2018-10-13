@@ -26,6 +26,7 @@ import java.util.List;
 
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
+import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MT;
@@ -39,6 +40,7 @@ import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataConductor;
+import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -64,10 +66,8 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		// TODO
-		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_VOLTAGE) + mSpeed + " " + TD.Energy.RU.getLocalisedNameShort());
-		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_AMPERAGE) + mPower);
-		if (mContactDamage) aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
+		aList.add(Chat.CYAN     + LH.get(LH.AXLE_STATS_SPEED) + mSpeed + " " + TD.Energy.RU.getLocalisedNameShort());
+		aList.add(Chat.CYAN     + LH.get(LH.AXLE_STATS_POWER) + mPower);
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -76,7 +76,7 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		super.onTick2(aTimer, aIsServerSide);
 		
 		if (aIsServerSide) {
-			if (mWattageLast == 0) mRotationDir = 0;
+			if (mWattageLast == 0 && aTimer > 10) mRotationDir = 0;
 			mWattageLast = mTransferredWattage;
 			mTransferredWattage = 0;
 			mTransferredPower = 0;
@@ -100,31 +100,22 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		case SIDE_Z_POS: mRotationDir = (byte)(aSpeed<0?2:1); break;
 		}
 		
-		long rUsedAmperes = 0;
-		for (byte tSide : ALL_SIDES_VALID_BUT[aSide]) if (canEmitEnergyTo(tSide)) {
-			if (aPower <= rUsedAmperes) break;
-			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-			if (aAlreadyPassed.add(tDelegator.mTileEntity)) {
-				if (tDelegator.mTileEntity instanceof MultiTileEntityAxle) {
-					if (((MultiTileEntityAxle)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.RU, tDelegator.mSideOfTileEntity, F)) {
-						rUsedAmperes += ((MultiTileEntityAxle)tDelegator.mTileEntity).transferRotations(tDelegator.mSideOfTileEntity, aSpeed, aPower-rUsedAmperes, aChannel, aAlreadyPassed);
-					}
-				} else {
-					rUsedAmperes += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, tDelegator.mSideOfTileEntity, aSpeed, aPower-rUsedAmperes, this, tDelegator.mTileEntity);
-				}
-			}
-		}
-		return rUsedAmperes > 0 ? addToEnergyTransferred(aSpeed, rUsedAmperes) ? rUsedAmperes : aPower : 0;
+		if (!canEmitEnergyTo(OPPOSITES[aSide])) return aPower;
+		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(OPPOSITES[aSide]);
+		return aAlreadyPassed.add(tDelegator.mTileEntity) ? tDelegator.mTileEntity instanceof MultiTileEntityAxle ? ((MultiTileEntityAxle)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.RU, tDelegator.mSideOfTileEntity, F) ? addToEnergyTransferred(aSpeed, aPower, ((MultiTileEntityAxle)tDelegator.mTileEntity).transferRotations(tDelegator.mSideOfTileEntity, aSpeed, aPower, aChannel, aAlreadyPassed)) : aPower : addToEnergyTransferred(aSpeed, aPower, ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, tDelegator.mSideOfTileEntity, aSpeed, aPower, this, tDelegator.mTileEntity)) : aPower;
 	}
 	
-	public boolean addToEnergyTransferred(long aSpeed, long aPower) {
+	public long addToEnergyTransferred(long aSpeed, long aOriginalPower, long aPower) {
 		mTransferredPower += aPower;
 		mTransferredWattage += Math.abs(aSpeed * aPower);
+		// Yes Rotation Speed only becomes a problem when it is actually being transferred,
+		// If the Axle just Rotates Idle then it can spin at ludicrous Speeds.
 		if (Math.abs(aSpeed) > mSpeed || mTransferredPower > mPower) {
-			// TODO
-			return F;
+			UT.Sounds.send(SFX.MC_BREAK, this);
+			setToAir();
+			return aOriginalPower;
 		}
-		return T;
+		return aPower;
 	}
 	
 	@Override

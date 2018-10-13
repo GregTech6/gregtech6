@@ -633,7 +633,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	// A Default implementation of the Energy behaviour.
 	
-	public long doInject (TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {return 0;}
+	public long doInject (TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject ) {return 0;}
 	public long doExtract(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return 0;}
 	public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return F;}
 	public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return F;}
@@ -665,8 +665,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public Collection<TagData> getEnergyCapacitorTypes  (MultiTileEntityMultiBlockPart aPart, byte aSide) {return getEnergyCapacitorTypes(aSide);}
 	
 	public boolean isEnergyAcceptingFrom                (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	public boolean isEnergyEmittingTo                   (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
-	public long doEnergyInjection                       (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {return doEnergyInjection(aEnergyType, aSide, aSize, aAmount, aDoInject);}
+	public boolean isEnergyEmittingTo                   (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
+	public long doEnergyInjection                       (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject ) {return doEnergyInjection (aEnergyType, aSide, aSize, aAmount, aDoInject );}
 	public long doEnergyExtraction                      (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoExtract) {return doEnergyExtraction(aEnergyType, aSide, aSize, aAmount, aDoExtract);}
 	public long getEnergyOffered                        (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide, long aSize) {return getEnergyOffered(aEnergyType, aSide, aSize);}
 	public long getEnergySizeOutputRecommended          (MultiTileEntityMultiBlockPart aPart, TagData aEnergyType, byte aSide) {return getEnergySizeOutputRecommended(aEnergyType, aSide);}

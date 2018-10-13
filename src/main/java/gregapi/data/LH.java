@@ -149,6 +149,8 @@ public class LH {
 	, PIPE_STATS_BANDWIDTH = "gt.lang.pipe.stats.bandwidth"
 	, PIPE_STATS_CAPACITY = "gt.lang.pipe.stats.capacity"
 	, PIPE_STATS_AMOUNT = "gt.lang.pipe.stats.amount"
+	, AXLE_STATS_SPEED = "gt.lang.axle.stats.speed"
+	, AXLE_STATS_POWER = "gt.lang.axle.stats.power"
 	, HAZARD_FIRE = "gt.lang.hazard.fire"
 	, HAZARD_EXPLOSION_STEAM = "gt.lang.hazard.explosion.steam"
 	, HAZARD_MELTDOWN = "gt.lang.hazard.meltdown"
@@ -395,6 +397,8 @@ public class LH {
 		add(PIPE_STATS_BANDWIDTH                        , "Bandwidth: ");
 		add(PIPE_STATS_CAPACITY                         , "Capacity: ");
 		add(PIPE_STATS_AMOUNT                           , "Amount of Pipes: ");
+		add(AXLE_STATS_SPEED                            , "Speed: ");
+		add(AXLE_STATS_POWER                            , "Power: ");
 		add(HAZARD_FIRE                                 , "Can put Blocks around it on Fire!");
 		add(HAZARD_EXPLOSION_STEAM                      , "Explodes when Steam Pressure is too high!");
 		add(HAZARD_MELTDOWN                             , "Melts down when stored Heat is too much!");
