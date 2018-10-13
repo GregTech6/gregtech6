@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.04: (Not released yet)
+6.09.04:
 [FIXED] Plenty of random tiny Bugs.
 [ADDED]
 Axles to transfer Rotational Units (RU)
