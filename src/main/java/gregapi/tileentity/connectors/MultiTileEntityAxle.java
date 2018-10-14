@@ -49,7 +49,7 @@ import net.minecraft.tileentity.TileEntity;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress {
-	public long mTransferredPower = 0, mTransferredWattage = 0, mWattageLast = 0, mPower = 1, mSpeed = 32;
+	public long mTransferredPower = 0, mTransferredSpeed = 0, mTransferredEnergy = 0, mPower = 1, mSpeed = 32;
 	public byte mRotationDir = 0, oRotationDir = 0;
 	
 	@Override
@@ -66,8 +66,8 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.AXLE_STATS_SPEED) + mSpeed + " " + TD.Energy.RU.getLocalisedNameShort());
-		aList.add(Chat.CYAN     + LH.get(LH.AXLE_STATS_POWER) + mPower);
+		aList.add(Chat.CYAN + LH.get(LH.AXLE_STATS_SPEED) + mSpeed + " " + TD.Energy.RU.getLocalisedNameShort());
+		aList.add(Chat.CYAN + LH.get(LH.AXLE_STATS_POWER) + mPower);
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -76,10 +76,8 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		super.onTick2(aTimer, aIsServerSide);
 		
 		if (aIsServerSide) {
-			if (mWattageLast == 0 && aTimer > 10) mRotationDir = 0;
-			mWattageLast = mTransferredWattage;
-			mTransferredWattage = 0;
-			mTransferredPower = 0;
+			if (mTransferredSpeed == 0 && aTimer > 5) mRotationDir = 0;
+			mTransferredEnergy = mTransferredSpeed = mTransferredPower = 0;
 		}
 	}
 	
@@ -91,23 +89,20 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	public long transferRotations(byte aSide, long aSpeed, long aPower, long aChannel, HashSetNoNulls<TileEntity> aAlreadyPassed) {
 		if (mTimer < 1) return 0;
 		
-		switch(aSide) {
-		case SIDE_X_NEG: mRotationDir = (byte)(aSpeed<0?1:2); break;
-		case SIDE_Y_NEG: mRotationDir = (byte)(aSpeed<0?1:2); break;
-		case SIDE_Z_NEG: mRotationDir = (byte)(aSpeed<0?1:2); break;
-		case SIDE_X_POS: mRotationDir = (byte)(aSpeed<0?2:1); break;
-		case SIDE_Y_POS: mRotationDir = (byte)(aSpeed<0?2:1); break;
-		case SIDE_Z_POS: mRotationDir = (byte)(aSpeed<0?2:1); break;
-		}
+		// Replaced a switch/case with "simple" Math.
+		// Sides pointing to the negative Axis direction are ?1:2, while the positive direction is ?2:1
+		// Abusing the Fact that negative is always even and positive is always odd.
+		mRotationDir = (byte)(aSpeed < 0 ? 1+(aSide & 1) : 2-(aSide & 1));
 		
 		if (!canEmitEnergyTo(OPPOSITES[aSide])) return addToEnergyTransferred(aSpeed, aPower, aPower);
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(OPPOSITES[aSide]);
-		return addToEnergyTransferred(aSpeed, aPower, aAlreadyPassed.add(tDelegator.mTileEntity) ? tDelegator.mTileEntity instanceof MultiTileEntityAxle ? ((MultiTileEntityAxle)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.RU, tDelegator.mSideOfTileEntity, F) ? ((MultiTileEntityAxle)tDelegator.mTileEntity).transferRotations(tDelegator.mSideOfTileEntity, aSpeed, aPower, aChannel, aAlreadyPassed) : aPower : ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, tDelegator.mSideOfTileEntity, aSpeed, aPower, this, tDelegator.mTileEntity) : aPower);
+		return addToEnergyTransferred(aSpeed, aPower, aAlreadyPassed.add(tDelegator.mTileEntity) ? tDelegator.mTileEntity instanceof MultiTileEntityAxle ? ((MultiTileEntityAxle)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.RU, tDelegator.mSideOfTileEntity, F) ? ((MultiTileEntityAxle)tDelegator.mTileEntity).transferRotations(tDelegator.mSideOfTileEntity, aSpeed, aPower, aChannel, aAlreadyPassed) : 0 : ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, tDelegator.mSideOfTileEntity, aSpeed, aPower, this, tDelegator.mTileEntity) : 0);
 	}
 	
 	public long addToEnergyTransferred(long aSpeed, long aOriginalPower, long aPower) {
+		mTransferredSpeed += aSpeed;
 		mTransferredPower += aPower;
-		mTransferredWattage += Math.abs(aSpeed * aPower);
+		mTransferredEnergy += Math.abs(aSpeed * aPower);
 		// Yes Rotation Speed only becomes a problem when it is actually being transferred,
 		// If the Axle just Rotates Idle then it can spin at ludicrous Speeds.
 		if (Math.abs(aSpeed) > mSpeed || mTransferredPower > mPower) {
