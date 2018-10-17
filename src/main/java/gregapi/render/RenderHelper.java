@@ -105,16 +105,16 @@ public class RenderHelper {
 		codechicken.lib.vec.Rotation.sideRotations[aSide].glApply();
 		GL11.glTranslated(0, -0.5025, 0);
 		GL11.glLineWidth(2.0F);
-		GL11.glColor4d(0, 0, 0, 0.5);
+		GL11.glColor4d(0.5+0.1*(aPartialTicks-0.5), 0.5+0.1*(aPartialTicks-0.5), 0.5+0.1*(aPartialTicks-0.5), 0.5);
 		GL11.glBegin(GL11.GL_LINES);
-		GL11.glVertex3d(+0.50, 0, -0.25);
+		GL11.glVertex3d( 0.50, 0, -0.25);
 		GL11.glVertex3d(-0.50, 0, -0.25);
-		GL11.glVertex3d(+0.50, 0, +0.25);
-		GL11.glVertex3d(-0.50, 0, +0.25);
-		GL11.glVertex3d(+0.25, 0, -0.50);
-		GL11.glVertex3d(+0.25, 0, +0.50);
+		GL11.glVertex3d( 0.50, 0,  0.25);
+		GL11.glVertex3d(-0.50, 0,  0.25);
+		GL11.glVertex3d( 0.25, 0, -0.50);
+		GL11.glVertex3d( 0.25, 0,  0.50);
 		GL11.glVertex3d(-0.25, 0, -0.50);
-		GL11.glVertex3d(-0.25, 0, +0.50);
+		GL11.glVertex3d(-0.25, 0,  0.50);
 		switch(aSide) {
 		case SIDE_DOWN:
 			if (FACE_CONNECTED[SIDE_DOWN][aConnections]) {

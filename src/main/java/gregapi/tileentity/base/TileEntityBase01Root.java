@@ -408,7 +408,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	@Override
 	public boolean shouldRefresh(Block aOldBlock, Block aNewBlock, int aOldMeta, int aNewMeta, World aWorld, int aX, int aY, int aZ) {
-		return mShouldRefresh;
+		return mShouldRefresh || aOldBlock != aNewBlock;
 	}
 	
 	/** Simple Function to prevent Block Updates from happening multiple times within the same Tick. */

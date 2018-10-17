@@ -22,11 +22,14 @@ package gregapi.block.multitileentity;
 import static gregapi.data.CS.*;
 
 import gregapi.block.IBlockPlacable;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_HasMultiBlockMachineRelevantData;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RegisterIcons;
 import gregapi.render.IRenderedBlock;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.ITexture;
 import gregapi.render.RendererBlockTextured;
+import gregapi.tileentity.ITileEntity;
+import gregapi.tileentity.ITileEntityMachineBlockUpdateable;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -34,6 +37,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -88,11 +92,25 @@ public class MultiTileEntityBlockInternal extends Block implements IRenderedBloc
 			WD.set(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, 0, F);
 			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
 			WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
-			if (!aWorld.isRemote && aCauseBlockUpdates) {
-				aWorld.notifyBlockChange(aX, aY, aZ, tReplacedBlock);
-				aWorld.func_147453_f(aX, aY, aZ, aMTEContainer.mBlock);
-			}
-			aWorld.func_147451_t(aX, aY, aZ);
+			try {
+				if (aMTEContainer.mTileEntity instanceof IMTE_HasMultiBlockMachineRelevantData) {
+					if (((IMTE_HasMultiBlockMachineRelevantData)aMTEContainer.mTileEntity).hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, new ChunkCoordinates(aX, aY, aZ), aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, F);
+				}
+			} catch(Throwable e) {e.printStackTrace(ERR);}
+			try {
+				if (!aWorld.isRemote && aCauseBlockUpdates) {
+					aWorld.notifyBlockChange(aX, aY, aZ, tReplacedBlock);
+					aWorld.func_147453_f(aX, aY, aZ, aMTEContainer.mBlock);
+				}
+			} catch(Throwable e) {e.printStackTrace(ERR);}
+			try {
+				if (aMTEContainer.mTileEntity instanceof ITileEntity) {
+					((ITileEntity)aMTEContainer.mTileEntity).onTileEntityPlaced();
+				}
+			} catch(Throwable e) {e.printStackTrace(ERR);}
+			try {
+				aWorld.func_147451_t(aX, aY, aZ);
+			} catch(Throwable e) {e.printStackTrace(ERR);}
 			return T;
 		}
 		return F;
