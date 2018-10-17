@@ -22,7 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.05: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Axles will now consume one Packet of Energy to start rotating. So the more Axles you have, the more Energy is going to be consumed when starting your Machinery.
 
 
 6.09.04:

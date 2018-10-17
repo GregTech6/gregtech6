@@ -94,7 +94,7 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		// Abusing the Fact that negative is always even and positive is always odd.
 		mRotationDir = (byte)(aSpeed < 0 ? 1+(aSide & 1) : 2-(aSide & 1));
 		
-		if (!canEmitEnergyTo(OPPOSITES[aSide])) return addToEnergyTransferred(aSpeed, aPower, aPower);
+		if (oRotationDir == 0 || !canEmitEnergyTo(OPPOSITES[aSide])) return addToEnergyTransferred(aSpeed, aPower, aPower);
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(OPPOSITES[aSide]);
 		return addToEnergyTransferred(aSpeed, aPower, aAlreadyPassed.add(tDelegator.mTileEntity) ? tDelegator.mTileEntity instanceof MultiTileEntityAxle ? ((MultiTileEntityAxle)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.RU, tDelegator.mSideOfTileEntity, F) ? ((MultiTileEntityAxle)tDelegator.mTileEntity).transferRotations(tDelegator.mSideOfTileEntity, aSpeed, aPower, aChannel, aAlreadyPassed) : 0 : ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, tDelegator.mSideOfTileEntity, aSpeed, aPower, this, tDelegator.mTileEntity) : 0);
 	}
