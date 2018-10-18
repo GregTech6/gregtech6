@@ -203,15 +203,15 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		if (aStack == null) aStack = slot(30);
 		if (!IL.Paper_Blueprint_Empty.equal(aStack, F, T)) return;
 		UT.NBT.setBlueprintCrafting(aStack,
-		  slotHas(21) ? slot(21).getItem() instanceof IItemGTContainerTool ? ST.make(slot(21), null) : slot(21) : null
-		, slotHas(22) ? slot(22).getItem() instanceof IItemGTContainerTool ? ST.make(slot(22), null) : slot(22) : null
-		, slotHas(23) ? slot(23).getItem() instanceof IItemGTContainerTool ? ST.make(slot(23), null) : slot(23) : null
-		, slotHas(24) ? slot(24).getItem() instanceof IItemGTContainerTool ? ST.make(slot(24), null) : slot(24) : null
-		, slotHas(25) ? slot(25).getItem() instanceof IItemGTContainerTool ? ST.make(slot(25), null) : slot(25) : null
-		, slotHas(26) ? slot(26).getItem() instanceof IItemGTContainerTool ? ST.make(slot(26), null) : slot(26) : null
-		, slotHas(27) ? slot(27).getItem() instanceof IItemGTContainerTool ? ST.make(slot(27), null) : slot(27) : null
-		, slotHas(28) ? slot(28).getItem() instanceof IItemGTContainerTool ? ST.make(slot(28), null) : slot(28) : null
-		, slotHas(29) ? slot(29).getItem() instanceof IItemGTContainerTool ? ST.make(slot(29), null) : slot(29) : null
+		  slotHas(21) ? slot(21).getItem() instanceof IItemGTContainerTool ? ST.make(slot(21), null, null) : slot(21) : null
+		, slotHas(22) ? slot(22).getItem() instanceof IItemGTContainerTool ? ST.make(slot(22), null, null) : slot(22) : null
+		, slotHas(23) ? slot(23).getItem() instanceof IItemGTContainerTool ? ST.make(slot(23), null, null) : slot(23) : null
+		, slotHas(24) ? slot(24).getItem() instanceof IItemGTContainerTool ? ST.make(slot(24), null, null) : slot(24) : null
+		, slotHas(25) ? slot(25).getItem() instanceof IItemGTContainerTool ? ST.make(slot(25), null, null) : slot(25) : null
+		, slotHas(26) ? slot(26).getItem() instanceof IItemGTContainerTool ? ST.make(slot(26), null, null) : slot(26) : null
+		, slotHas(27) ? slot(27).getItem() instanceof IItemGTContainerTool ? ST.make(slot(27), null, null) : slot(27) : null
+		, slotHas(28) ? slot(28).getItem() instanceof IItemGTContainerTool ? ST.make(slot(28), null, null) : slot(28) : null
+		, slotHas(29) ? slot(29).getItem() instanceof IItemGTContainerTool ? ST.make(slot(29), null, null) : slot(29) : null
 		);
 		if (slotHas(31)) aStack.setStackDisplayName(slot(31).getDisplayName());
 		ST.set(aStack, IL.Paper_Blueprint_Used.get(1), F, F);

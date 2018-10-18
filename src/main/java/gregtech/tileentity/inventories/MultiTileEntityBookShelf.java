@@ -122,7 +122,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 						if (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack, W))) {
 							slot(tSlot, ST.amount(1, tStack));
 						} else {
-							slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, ST.make(Items.book, 1, 0)));
+							slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, Items.book));
 						}
 					}
 				}
@@ -138,7 +138,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 						if (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack, W))) {
 							slot(tSlot, ST.amount(1, tStack));
 						} else {
-							slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, ST.make(Items.book, 1, 0)));
+							slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, Items.book));
 						}
 					}
 				}

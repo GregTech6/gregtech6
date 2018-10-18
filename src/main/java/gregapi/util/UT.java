@@ -1588,7 +1588,7 @@ public class UT {
 		
 		public static NBTTagList makeInv(ItemStack... aStacks) {
 			NBTTagList rInventory = new NBTTagList();
-			for (int i = 0; i < aStacks.length; i++) rInventory.appendTag(UT.NBT.makeShort(ST.save(aStacks[i]), "s", (short)i));
+			for (int i = 0; i < aStacks.length; i++) rInventory.appendTag(makeShort(ST.save(aStacks[i]), "s", (short)i));
 			return rInventory;
 		}
 		
@@ -1638,12 +1638,12 @@ public class UT {
 		
 		public static NBTTagCompound makeLong(Object aTag, long aValue) {
 			NBTTagCompound aNBT = make();
-			NBT.setNumber(aNBT, aTag.toString(), aValue);
+			setNumber(aNBT, aTag.toString(), aValue);
 			return aNBT;
 		}
 		public static NBTTagCompound makeLong(NBTTagCompound aNBT, Object aTag, long aValue) {
 			if (aNBT == null) aNBT = make();
-			NBT.setNumber(aNBT, aTag.toString(), aValue);
+			setNumber(aNBT, aTag.toString(), aValue);
 			return aNBT;
 		}
 		
@@ -1784,7 +1784,7 @@ public class UT {
 		
 		public static NBTTagCompound setLighterFuel(ItemStack aStack, long aFuel) {
 			NBTTagCompound tNBT = getNBT(aStack);
-			NBT.setNumber(tNBT, "gt.lighter", aFuel);
+			setNumber(tNBT, "gt.lighter", aFuel);
 			set(aStack, tNBT);
 			return tNBT;
 		}
@@ -1793,7 +1793,7 @@ public class UT {
 			return tNBT.getLong("gt.lighter");
 		}
 		public static NBTTagCompound setLighterFuel(NBTTagCompound aNBT, long aFuel) {
-			NBT.setNumber(aNBT, "gt.lighter", aFuel);
+			setNumber(aNBT, "gt.lighter", aFuel);
 			return aNBT;
 		}
 		public static long getLighterFuel(NBTTagCompound aNBT) {
@@ -1930,27 +1930,27 @@ public class UT {
 				}
 				return aList;
 			}
-			String tString = NBT.getBookTitle(aData);
+			String tString = getBookTitle(aData);
 			if (Code.stringValid(tString)) {
 				aList.add(LH.Chat.CYAN + "Book: " + tString);
 				if (aAllDetails) {
-					tString = NBT.getBookAuthor(aData);
+					tString = getBookAuthor(aData);
 					if (Code.stringValid(tString)) aList.add(LH.Chat.CYAN + "by " + tString);
 				}
 				return aList;
 			}
-			short tMapID = NBT.getMapID(aData);
+			short tMapID = getMapID(aData);
 			if (tMapID >= 0) {
 				aList.add(LH.Chat.CYAN + "Map ID: " + tMapID);
 				return aList;
 			}
-			tString = NBT.getPunchCardData(aData);
+			tString = getPunchCardData(aData);
 			if (Code.stringValid(tString)) {
 				aList.add(LH.Chat.CYAN + "Punch Card Data");
 				if (aAllDetails) for (int i = 0, j = tString.length(); i < j; i += 64) aList.add(LH.Chat.GREEN + tString.substring(i, Math.min(i+64, j)));
 				return aList;
 			}
-			ItemStack[] tBlueprint = NBT.getBlueprintCrafting(aData);
+			ItemStack[] tBlueprint = getBlueprintCrafting(aData);
 			if (tBlueprint != ZL_IS) {
 				ItemStack tCrafted = CR.getany(DW, tBlueprint);
 				if (tCrafted == null) {
@@ -1991,7 +1991,7 @@ public class UT {
 				tList.appendTag(tEnchantmentTag);
 			}
 			
-			return NBT.set(aStack, tNBT);
+			return set(aStack, tNBT);
 		}
 	}
 	

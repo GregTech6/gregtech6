@@ -955,7 +955,7 @@ public class LoaderItemList implements Runnable {
 		IL.FR_Bee_Drone                         .set(ST.make(MD.FR, "beeDroneGE"                            , 1, 0));
 		IL.FR_Bee_Princess                      .set(ST.make(MD.FR, "beePrincessGE"                         , 1, 0));
 		IL.FR_Bee_Queen                         .set(ST.make(MD.FR, "beeQueenGE"                            , 1, 0));
-		IL.FR_Tree_Sapling                      .set(ST.make(MD.FR, "sapling"                               , 1, ST.make(MD.FR, "saplingGE", 1)));
+		IL.FR_Tree_Sapling                      .set(ST.make(MD.FR, "sapling"                               , 1, 0, ST.make(MD.FR, "saplingGE", 1)));
 		IL.FR_Butterfly                         .set(ST.make(MD.FR, "butterflyGE"                           , 1, 0));
 		IL.FR_Larvae                            .set(ST.make(MD.FR, "beeLarvaeGE"                           , 1, 0));
 		IL.FR_Serum                             .set(ST.make(MD.FR, "serumGE"                               , 1, 0));
