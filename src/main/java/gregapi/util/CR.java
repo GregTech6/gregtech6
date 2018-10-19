@@ -286,11 +286,11 @@ public class CR {
 	
 	private static boolean shaped(ItemStack aResult, Enchantment[] aEnchantmentsAdded, int[] aEnchantmentLevelsAdded, boolean aMirrored, boolean aBuffered, boolean aKeepNBT, boolean aDismantleable, boolean aRemovable, boolean aReversible, boolean aRemoveAllOthersWithSameOutput, boolean aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, boolean aRemoveAllOtherShapedsWithSameOutput, boolean aRemoveAllOtherNativeRecipes, boolean aCheckForCollisions, boolean aOnlyAddIfThereIsAnyRecipeOutputtingThis, boolean aOnlyAddIfResultIsNotNull, boolean aDeleteOnlyIfNoDyeInvolved, boolean aNotAutoCraftable, Object[] aRecipe) {
 		if (aOnlyAddIfResultIsNotNull && ST.invalid(aResult)) return F;
-		aResult = ST.validMeta(OM.get(aResult));
 		if (aRecipe == null || aRecipe.length <= 0) return F;
 		
 		boolean tThereWasARecipe = F;
 		
+		aResult = ST.validMeta(OM.get(aResult));
 		for (byte i = 0; i < aRecipe.length; i++) {
 			if (aRecipe[i] instanceof IItemContainer)
 				aRecipe[i] = ((IItemContainer)aRecipe[i]).get(1);

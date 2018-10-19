@@ -836,18 +836,11 @@ public class Recipe {
 		aFluidInputs  = UT.Code.getWithoutNulls(aFluidInputs ).toArray(ZL_FS);
 		aFluidOutputs = UT.Code.getWithoutNulls(aFluidOutputs).toArray(ZL_FS);
 		
-		for (ItemStack tStack : aOutputs) {
-			if (tStack != null) {
-				if (ST.meta_(tStack) == W) ST.meta_(tStack, 0);
-				ST.update(tStack);
-			}
-		}
-		
-		for (int i = 0; i < aChances        .length; i++) if (aChances[i] <=  0) aChances[i] = 10000;
-		for (int i = 0; i < aInputs         .length; i++) if (aInputs [i] != NI) aInputs [i] = aInputs [i].copy();
-		for (int i = 0; i < aOutputs        .length; i++) if (aOutputs[i] != NI) aOutputs[i] = aOutputs[i].copy();
-		for (int i = 0; i < aFluidInputs    .length; i++) aFluidInputs[i] = aFluidInputs[i].copy();
-		for (int i = 0; i < aFluidOutputs   .length; i++) aFluidOutputs[i] = aFluidOutputs[i].copy();
+		for (int i = 0; i < aChances     .length; i++) if (aChances[i] <=  0) aChances[i] = 10000;
+		for (int i = 0; i < aInputs      .length; i++) aInputs [i] = ST.copy     (aInputs [i]);
+		for (int i = 0; i < aOutputs     .length; i++) aOutputs[i] = ST.validMeta(aOutputs[i]);
+		for (int i = 0; i < aFluidInputs .length; i++) aFluidInputs [i] = aFluidInputs [i].copy();
+		for (int i = 0; i < aFluidOutputs.length; i++) aFluidOutputs[i] = aFluidOutputs[i].copy();
 		
 		if (aOptimize)  {
 			for (int i = 0; i < aInputs.length; i++) if (aInputs[i] != NI && ST.meta_(aInputs[i]) != W) for (int j = 0; j < aOutputs.length; j++) {

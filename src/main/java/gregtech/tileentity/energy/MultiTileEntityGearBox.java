@@ -151,13 +151,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public boolean checkGears() {
 		switch(FACE_CONNECTION_COUNT[mAxleGear & 63]) {
 		case 1:
-			// Only rotate when connected with the Axle.
-			switch((mAxleGear >>> 6) & 3) {
-			case  1: return (mAxleGear & 48) != 0;
-			case  2: return (mAxleGear &  3) != 0;
-			case  3: return (mAxleGear & 12) != 0;
-			}
-			return F;
+			// Always Rotates when connected, nothing stops it from doing so.
+			return T;
 		case 2:
 			// Corner Gears will always work.
 			if ((mAxleGear & 48) != 48 && (mAxleGear & 3) != 3 && (mAxleGear & 12) != 12) return T;
@@ -238,7 +233,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		
 		if (SIDES_VALID[aSide]) {
 			// Rotation Direction
-			if (aSpeed > 0) mRotationData |= B[aSide];
+			if (aSpeed < 0) mRotationData |= B[aSide];
 			// Do we have an Axle on this Side?
 			if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]) {
 				// Only once per Tick for Axle Inputs
