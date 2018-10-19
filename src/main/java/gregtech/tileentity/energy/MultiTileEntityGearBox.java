@@ -94,7 +94,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				return 10000;
 			}
 			if (UT.Entities.hasInfiniteItems(aPlayer)) {
-				mAxleGear |=  B[aSide];
+				mAxleGear |= B[aSide];
 				mGearsWork = checkGears();
 				updateClientData();
 				causeBlockUpdate();
@@ -104,7 +104,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				OreDictItemData tData = OM.data(aPlayerInventory.getStackInSlot(i));
 				if (tData != null && tData.mPrefix == OP.gearGt && (tData.mMaterial.mMaterial == mMaterial || mMaterial.mToThis.contains(tData.mMaterial.mMaterial))) {
 					aPlayerInventory.decrStackSize(i, 1);
-					mAxleGear |=  B[aSide];
+					mAxleGear |= B[aSide];
 					mGearsWork = checkGears();
 					updateClientData();
 					causeBlockUpdate();
@@ -141,17 +141,18 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	}
 	
 	public boolean checkGears() {
+		DEB.println("TEST 1");
 		switch((mAxleGear >>> 6) & 3) {
 		case  1: if (FACE_CONNECTED[SIDE_X_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_X_POS][mAxleGear & 63]) return F;
 		case  2: if (FACE_CONNECTED[SIDE_Y_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_Y_POS][mAxleGear & 63]) return F;
 		case  3: if (FACE_CONNECTED[SIDE_Z_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_Z_POS][mAxleGear & 63]) return F;
 		}
+		DEB.println("TEST 2");
 		byte tAxisUsed = 0;
 		if (FACE_CONNECTED[SIDE_X_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_X_POS][mAxleGear & 63]) tAxisUsed++;
 		if (FACE_CONNECTED[SIDE_Y_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_Y_POS][mAxleGear & 63]) tAxisUsed++;
 		if (FACE_CONNECTED[SIDE_Z_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_Z_POS][mAxleGear & 63]) tAxisUsed++;
-		if (tAxisUsed != 2) return F;
-		return T;
+		return (tAxisUsed & 2) == 0;
 	}
 	
 	@Override public boolean onTickCheck(long aTimer) {return mRotationData != oRotationData || super.onTickCheck(aTimer);}
@@ -161,12 +162,12 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), mRotationData) : getClientDataPacketByte(aSendAll, getVisualData());
+		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), mAxleGear) : getClientDataPacketByte(aSendAll, getVisualData());
 	}
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		mRotationData = aData[4];
+		mAxleGear = aData[4];
 		return super.receiveDataByteArray(aData, aNetworkHandler);
 	}
 	
@@ -176,46 +177,53 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTexture          = BlockTextureDefault.get(Textures.BlockIcons.GEARBOX     , mMaterial.fRGBaSolid);
 		mTextureAxle      = BlockTextureDefault.get(Textures.BlockIcons.GEARBOX_AXLE, mMaterial.fRGBaSolid);
-		mTextureGearA     = BlockTextureMulti.get(mTexture    , BlockTextureDefault.get((mRotationData & B[7]) == 0 ? Textures.BlockIcons.GEAR : Textures.BlockIcons.GEAR_CLOCKWISE       , mMaterial.fRGBaSolid));
-		mTextureAxleGearA = BlockTextureMulti.get(mTextureAxle, BlockTextureDefault.get((mRotationData & B[7]) == 0 ? Textures.BlockIcons.GEAR : Textures.BlockIcons.GEAR_CLOCKWISE       , mMaterial.fRGBaSolid));
-		mTextureGearB     = BlockTextureMulti.get(mTexture    , BlockTextureDefault.get((mRotationData & B[7]) == 0 ? Textures.BlockIcons.GEAR : Textures.BlockIcons.GEAR_COUNTERCLOCKWISE, mMaterial.fRGBaSolid));
-		mTextureAxleGearB = BlockTextureMulti.get(mTextureAxle, BlockTextureDefault.get((mRotationData & B[7]) == 0 ? Textures.BlockIcons.GEAR : Textures.BlockIcons.GEAR_COUNTERCLOCKWISE, mMaterial.fRGBaSolid));
+		mTextureGearA     = BlockTextureMulti.get(mTexture    , BlockTextureDefault.get((mRotationData & B[6]) == 0 ? Textures.BlockIcons.GEAR : Textures.BlockIcons.GEAR_CLOCKWISE       , mMaterial.fRGBaSolid));
+		mTextureAxleGearA = BlockTextureMulti.get(mTextureAxle, BlockTextureDefault.get((mRotationData & B[6]) == 0 ? Textures.BlockIcons.GEAR : Textures.BlockIcons.GEAR_CLOCKWISE       , mMaterial.fRGBaSolid));
+		mTextureGearB     = BlockTextureMulti.get(mTexture    , BlockTextureDefault.get((mRotationData & B[6]) == 0 ? Textures.BlockIcons.GEAR : Textures.BlockIcons.GEAR_COUNTERCLOCKWISE, mMaterial.fRGBaSolid));
+		mTextureAxleGearB = BlockTextureMulti.get(mTextureAxle, BlockTextureDefault.get((mRotationData & B[6]) == 0 ? Textures.BlockIcons.GEAR : Textures.BlockIcons.GEAR_COUNTERCLOCKWISE, mMaterial.fRGBaSolid));
 		return 1;
 	}
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		if (!aShouldSideBeRendered[aSide]) return null;
-		boolean tAxle = AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide];
-		return FACE_CONNECTED[aSide][mAxleGear & 63] ? FACE_CONNECTED[aSide][mRotationData & 63] ? tAxle?mTextureAxleGearA:mTextureGearA : tAxle?mTextureAxleGearB:mTextureGearB : tAxle?mTextureAxle:mTexture;
+		return aShouldSideBeRendered[aSide] ? FACE_CONNECTED[aSide][mAxleGear & 63] ? FACE_CONNECTED[aSide][mRotationData & 63] ? AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]?mTextureAxleGearA:mTextureGearA : AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]?mTextureAxleGearB:mTextureGearB : AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]?mTextureAxle:mTexture : null;
 	}
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSpeed, long aPower, boolean aDoInject) {
+		DEB.println("TEST A: " + aSpeed + " - " + aPower);
 		if (!isEnergyType(aEnergyType, aSide, F)) return 0;
+		DEB.println("TEST B");
 		if (!aDoInject) return aPower;
+		DEB.println("TEST C");
 		if (mCheck || Math.abs(aSpeed) > mMaxThroughPut) {
 			mJammed = T;
 			mRotationData = 0;
+			DEB.println("TEST D1");
 			return aPower;
 		}
+		DEB.println("TEST D2");
 		mCheck = T;
 		mRotationData = (byte)(mGearsWork ? 64 : 0);
 		long rPower = 0;
 		
 		if (SIDES_VALID[aSide]) {
+			DEB.println("TEST E");
 			// Rotation Direction
 			if (aSpeed > 0) mRotationData |= B[aSide];
 			// Do we have an Axle on this Side?
 			if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]) {
+				DEB.println("TEST F");
 				// Axles always work regardless of the Gears being Jammed, because of Safety Bearings.
 				rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, +aSpeed, aPower-rPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
 				// Is there a Gear on the other Side of the Axle?
 				if (mGearsWork && FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
+					DEB.println("TEST G");
 					// Rotation Direction
 					if (aSpeed < 0) mRotationData |= B[OPPOSITES[aSide]];
 					// Rotate the other Gears
 					for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
+						DEB.println("TEST H");
 						// Rotation Direction
 						if (aSpeed > 0) mRotationData |= B[tSide];
 						// Output Power
@@ -223,16 +231,21 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 					}
 				}
 			}
+			DEB.println("TEST I");
 			// Do we have a Gear on this Side?
 			if (mGearsWork && FACE_CONNECTED[aSide][mAxleGear & 63]) {
+				DEB.println("TEST J");
 				// Rotate the other Gears
 				for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
+					DEB.println("TEST K");
 					// Rotation Direction
 					if (aSpeed < 0) mRotationData |= B[tSide];
 					// Output Power
 					rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, +aSpeed, aPower-rPower, this, getAdjacentTileEntity(tSide));
 				}
+				DEB.println("TEST L");
 				if (FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
+					DEB.println("TEST M");
 					// Rotation Direction
 					if (aSpeed > 0) mRotationData |= B[OPPOSITES[aSide]];
 					// Output Power
