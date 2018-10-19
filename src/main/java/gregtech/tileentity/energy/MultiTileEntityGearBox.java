@@ -55,27 +55,34 @@ import net.minecraft.nbt.NBTTagCompound;
 public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_AddToolTips {
 	public boolean mJammed = F, mCheck = F, mGearsWork = F;
 	public long mMaxThroughPut = 64;
-	public byte mAxleGear = 0, mRotationData = 0, oRotationData = 0;
+	public short mAxleGear = 0, mRotationData = 0, oRotationData = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_STOPPED)) mJammed = aNBT.getBoolean(NBT_STOPPED);
-		if (aNBT.hasKey(NBT_CONNECTION)) mAxleGear = aNBT.getByte(NBT_CONNECTION);
-		if (aNBT.hasKey(NBT_INPUT)) mMaxThroughPut = aNBT.getByte(NBT_INPUT);
-		mGearsWork = checkGears();
+		if (aNBT.hasKey(NBT_CONNECTION)) mAxleGear = UT.Code.unsignB(aNBT.getByte(NBT_CONNECTION));
+		if (aNBT.hasKey(NBT_INPUT)) mMaxThroughPut = aNBT.getLong(NBT_INPUT);
+		// mGearsWork = checkGears(); TODO uncomment this
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mJammed);
-		aNBT.setByte(NBT_CONNECTION, mAxleGear);
+		aNBT.setByte(NBT_CONNECTION, (byte)mAxleGear);
+	}
+	
+	@Override
+	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
+		super.writeItemNBT2(aNBT);
+		aNBT.setByte(NBT_CONNECTION, (byte)mAxleGear);
+		return aNBT;
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (!mGearsWork && mAxleGear != 0)
+		if (!mGearsWork && (mAxleGear & 63) != 0)
 		aList.add(LH.Chat.BLINKING_RED + "Gears are interlocked wrongly!"); // TODO LanguageHandler
 		// TODO Wrench Usage Manual
 	}
@@ -141,33 +148,40 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	}
 	
 	public boolean checkGears() {
-		DEB.println("TEST 1");
+		DEB.println("TEST X " + ((mAxleGear >>> 6) & 3));
 		switch((mAxleGear >>> 6) & 3) {
 		case  1: if (FACE_CONNECTED[SIDE_X_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_X_POS][mAxleGear & 63]) return F;
 		case  2: if (FACE_CONNECTED[SIDE_Y_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_Y_POS][mAxleGear & 63]) return F;
 		case  3: if (FACE_CONNECTED[SIDE_Z_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_Z_POS][mAxleGear & 63]) return F;
 		}
-		DEB.println("TEST 2");
+		DEB.println("TEST Y");
+		DEB.println(FACE_CONNECTED[SIDE_X_NEG][mAxleGear & 63]);
+		DEB.println(FACE_CONNECTED[SIDE_X_POS][mAxleGear & 63]);
+		DEB.println(FACE_CONNECTED[SIDE_Y_NEG][mAxleGear & 63]);
+		DEB.println(FACE_CONNECTED[SIDE_Y_POS][mAxleGear & 63]);
+		DEB.println(FACE_CONNECTED[SIDE_Z_NEG][mAxleGear & 63]);
+		DEB.println(FACE_CONNECTED[SIDE_Z_POS][mAxleGear & 63]);
 		byte tAxisUsed = 0;
 		if (FACE_CONNECTED[SIDE_X_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_X_POS][mAxleGear & 63]) tAxisUsed++;
 		if (FACE_CONNECTED[SIDE_Y_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_Y_POS][mAxleGear & 63]) tAxisUsed++;
 		if (FACE_CONNECTED[SIDE_Z_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_Z_POS][mAxleGear & 63]) tAxisUsed++;
+		DEB.println("TEST Z " + tAxisUsed);
 		return (tAxisUsed & 2) == 0;
 	}
 	
 	@Override public boolean onTickCheck(long aTimer) {return mRotationData != oRotationData || super.onTickCheck(aTimer);}
 	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationData = mRotationData;}
 	@Override public void setVisualData(byte aData) {mRotationData = aData;}
-	@Override public byte getVisualData() {return mRotationData;}
+	@Override public byte getVisualData() {return (byte)mRotationData;}
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), mAxleGear) : getClientDataPacketByte(aSendAll, getVisualData());
+		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), (byte)mAxleGear) : getClientDataPacketByte(aSendAll, getVisualData());
 	}
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		mAxleGear = aData[4];
+		mAxleGear = UT.Code.unsignB(aData[4]);
 		return super.receiveDataByteArray(aData, aNetworkHandler);
 	}
 	
