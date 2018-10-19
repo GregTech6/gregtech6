@@ -63,7 +63,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		if (aNBT.hasKey(NBT_STOPPED)) mJammed = aNBT.getBoolean(NBT_STOPPED);
 		if (aNBT.hasKey(NBT_CONNECTION)) mAxleGear = UT.Code.unsignB(aNBT.getByte(NBT_CONNECTION));
 		if (aNBT.hasKey(NBT_INPUT)) mMaxThroughPut = aNBT.getLong(NBT_INPUT);
-		// mGearsWork = checkGears(); TODO uncomment this
+		mGearsWork = checkGears();
 	}
 	
 	@Override
@@ -122,10 +122,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			return 0;
 		}
 		if (aTool.equals(TOOL_monkeywrench)) {
-			mAxleGear &= 63;
-			if (SIDES_AXIS_X[aSide] && ((mAxleGear >>> 6) & 3) != 1) mAxleGear |= (byte)(1 << 6);
-			if (SIDES_AXIS_Y[aSide] && ((mAxleGear >>> 6) & 3) != 2) mAxleGear |= (byte)(2 << 6);
-			if (SIDES_AXIS_Z[aSide] && ((mAxleGear >>> 6) & 3) != 3) mAxleGear |= (byte)(3 << 6);
+			if (SIDES_AXIS_X[aSide]) if (((mAxleGear >>> 6) & 3) != 1) mAxleGear |= (byte)((mAxleGear & 63) | (1 << 6)); else mAxleGear &= 63;
+			if (SIDES_AXIS_Y[aSide]) if (((mAxleGear >>> 6) & 3) != 2) mAxleGear |= (byte)((mAxleGear & 63) | (2 << 6)); else mAxleGear &= 63;
+			if (SIDES_AXIS_Z[aSide]) if (((mAxleGear >>> 6) & 3) != 3) mAxleGear |= (byte)((mAxleGear & 63) | (3 << 6)); else mAxleGear &= 63;
 			mGearsWork = checkGears();
 			updateClientData();
 			causeBlockUpdate();
@@ -148,25 +147,16 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	}
 	
 	public boolean checkGears() {
-		DEB.println("TEST X " + ((mAxleGear >>> 6) & 3));
 		switch((mAxleGear >>> 6) & 3) {
-		case  1: if (FACE_CONNECTED[SIDE_X_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_X_POS][mAxleGear & 63]) return F;
-		case  2: if (FACE_CONNECTED[SIDE_Y_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_Y_POS][mAxleGear & 63]) return F;
-		case  3: if (FACE_CONNECTED[SIDE_Z_NEG][mAxleGear & 63] && FACE_CONNECTED[SIDE_Z_POS][mAxleGear & 63]) return F;
+		case  1: if ((mAxleGear & 48) == 48) return (mAxleGear & 15) == 0;
+		case  2: if ((mAxleGear &  3) ==  3) return (mAxleGear & 60) == 0;
+		case  3: if ((mAxleGear & 12) == 12) return (mAxleGear & 51) == 0;
 		}
-		DEB.println("TEST Y");
-		DEB.println(FACE_CONNECTED[SIDE_X_NEG][mAxleGear & 63]);
-		DEB.println(FACE_CONNECTED[SIDE_X_POS][mAxleGear & 63]);
-		DEB.println(FACE_CONNECTED[SIDE_Y_NEG][mAxleGear & 63]);
-		DEB.println(FACE_CONNECTED[SIDE_Y_POS][mAxleGear & 63]);
-		DEB.println(FACE_CONNECTED[SIDE_Z_NEG][mAxleGear & 63]);
-		DEB.println(FACE_CONNECTED[SIDE_Z_POS][mAxleGear & 63]);
 		byte tAxisUsed = 0;
-		if (FACE_CONNECTED[SIDE_X_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_X_POS][mAxleGear & 63]) tAxisUsed++;
-		if (FACE_CONNECTED[SIDE_Y_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_Y_POS][mAxleGear & 63]) tAxisUsed++;
-		if (FACE_CONNECTED[SIDE_Z_NEG][mAxleGear & 63] || FACE_CONNECTED[SIDE_Z_POS][mAxleGear & 63]) tAxisUsed++;
-		DEB.println("TEST Z " + tAxisUsed);
-		return (tAxisUsed & 2) == 0;
+		if ((mAxleGear & 48) != 0) tAxisUsed++;
+		if ((mAxleGear &  3) != 0) tAxisUsed++;
+		if ((mAxleGear & 12) != 0) tAxisUsed++;
+		return (tAxisUsed & 1) == 0;
 	}
 	
 	@Override public boolean onTickCheck(long aTimer) {return mRotationData != oRotationData || super.onTickCheck(aTimer);}
@@ -205,61 +195,47 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSpeed, long aPower, boolean aDoInject) {
-		DEB.println("TEST A: " + aSpeed + " - " + aPower);
 		if (!isEnergyType(aEnergyType, aSide, F)) return 0;
-		DEB.println("TEST B");
 		if (!aDoInject) return aPower;
-		DEB.println("TEST C");
 		if (mCheck || Math.abs(aSpeed) > mMaxThroughPut) {
 			mJammed = T;
 			mRotationData = 0;
-			DEB.println("TEST D1");
 			return aPower;
 		}
-		DEB.println("TEST D2");
 		mCheck = T;
 		mRotationData = (byte)(mGearsWork ? 64 : 0);
 		long rPower = 0;
 		
 		if (SIDES_VALID[aSide]) {
-			DEB.println("TEST E");
 			// Rotation Direction
 			if (aSpeed > 0) mRotationData |= B[aSide];
 			// Do we have an Axle on this Side?
 			if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]) {
-				DEB.println("TEST F");
 				// Axles always work regardless of the Gears being Jammed, because of Safety Bearings.
 				rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, +aSpeed, aPower-rPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
 				// Is there a Gear on the other Side of the Axle?
 				if (mGearsWork && FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
-					DEB.println("TEST G");
 					// Rotation Direction
-					if (aSpeed < 0) mRotationData |= B[OPPOSITES[aSide]];
+					if (aSpeed > 0) mRotationData |= B[OPPOSITES[aSide]];
 					// Rotate the other Gears
 					for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
-						DEB.println("TEST H");
 						// Rotation Direction
-						if (aSpeed > 0) mRotationData |= B[tSide];
+						if (aSpeed < 0) mRotationData |= B[tSide];
 						// Output Power
 						rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, -aSpeed, aPower-rPower, this, getAdjacentTileEntity(tSide));
 					}
 				}
 			}
-			DEB.println("TEST I");
 			// Do we have a Gear on this Side?
 			if (mGearsWork && FACE_CONNECTED[aSide][mAxleGear & 63]) {
-				DEB.println("TEST J");
 				// Rotate the other Gears
 				for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
-					DEB.println("TEST K");
 					// Rotation Direction
 					if (aSpeed < 0) mRotationData |= B[tSide];
 					// Output Power
 					rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, +aSpeed, aPower-rPower, this, getAdjacentTileEntity(tSide));
 				}
-				DEB.println("TEST L");
 				if (FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
-					DEB.println("TEST M");
 					// Rotation Direction
 					if (aSpeed > 0) mRotationData |= B[OPPOSITES[aSide]];
 					// Output Power
