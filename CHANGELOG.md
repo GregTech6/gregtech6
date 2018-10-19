@@ -23,6 +23,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.05: (Not released yet)
 [CHANGED] Axles will now consume one Packet of Energy to start rotating. So the more Axles you have, the more Energy is going to be consumed when starting your Machinery.
+[ADDED]
+Custom Gearboxes
+You can Wrench their Side while having a normal sized Gear of the same Material in your Inventory to put the Gear in.
+Gears that are on adjacent Sides will automatically be interlocked, note that there is plenty of ways to do that wrong, just like in real Life.
+The Monkeywrench will set the Direction the internal Axle is Facing or remove the internal Axles Functionality.
+The Axle will ALWAYS be able to Rotate due to being connected via a Safety bearing, even if the Gears themselves are jammed.
+It is possible to use Gearboxes to transmit power, but they are more expensive than any of the Axles of their Tier, even if you don't add any Gears.
 
 
 6.09.04:

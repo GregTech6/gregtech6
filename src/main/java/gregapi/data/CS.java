@@ -642,6 +642,12 @@ public class CS {
 		{T,T,T,T,F,T,F},
 		{T,T,T,T,T,F,F},
 		{F,F,F,F,F,F,F}
+	},
+	AXIS_XYZ = {
+		SIDES_NONE,
+		SIDES_AXIS_X,
+		SIDES_AXIS_Y,
+		SIDES_AXIS_Z
 	};
 	
 	/** Pillar Stuff for more understandable references. */

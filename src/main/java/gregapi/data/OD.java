@@ -53,10 +53,22 @@ public enum OD {
 	, container250lava
 	, container1000milk
 	, container250milk
+	, container1000soymilk
+	, container250soymilk
 	, container1000honey
 	, container250honey
 	, container1000creosote
 	, container250creosote
+	, container1000rubbertreesap
+	, container250rubbertreesap
+	, container1000spruceresin
+	, container250spruceresin
+	, container1000latex
+	, container250latex
+	, container1000lubricant
+	, container250lubricant
+	, container1000glue
+	, container250glue
 	, enderChest
 	, pestleAndMortar
 	, materialPressedwax
@@ -90,6 +102,7 @@ public enum OD {
 	, itemMoss
 	, itemSlag
 	, itemGlue
+	, itemLubricant
 	, itemResin
 	, itemRubber
 	, itemFlint

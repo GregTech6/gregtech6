@@ -275,5 +275,20 @@ public interface ITileEntityEnergy extends gregapi.tileentity.ITileEntityEnergy 
 			}
 			return rUsedAmount;
 		}
+		
+		/**
+		 * Inserts Energy into the TileEntity.
+		 * Also compatible with IC2 TileEntities when electric and RF TileEntities when RedstoneFlux.
+		 * @param aEnergyType The Type of Energy to be emitted
+		 * @param aSideInto The Side of the receiving TileEntity to insert the Energy into.
+		 * @param aSize The Minimum Transfer Rate of Energy (like Voltage for example). This can be negative too in case it has a direction for example (clockwise/counterclockwise)
+		 * @param aAmount The Amount of Packets in size of aSize to be emitted (like Amperage for example)
+		 * @param aEmitter The TileEntity which emits the Energy. May be null!
+		 * @param aReceiver The TileEntity which receives the Energy.
+		 * @return the amount of used Energy Packets.
+		 */
+		public static final long insertEnergyInto(TagData aEnergyType, long aSize, long aAmount, Object aEmitter, DelegatorTileEntity<TileEntity> aReceiver) {
+			return insertEnergyInto(aEnergyType, aReceiver.mSideOfTileEntity, aSize, aAmount, aEmitter, aReceiver.mTileEntity);
+		}
 	}
 }

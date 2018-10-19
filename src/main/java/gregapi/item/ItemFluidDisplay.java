@@ -143,6 +143,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				aList.add(LH.Chat.ORANGE + "Acidic! Handle with Care!" + LH.Chat.GRAY);
 			}
 			if (FL.Lubricant.is(aFluid) || FL.LubRoCant.is(aFluid)) {
+				aList.add(LH.Chat.ORANGE + "Industrial Use ONLY" + LH.Chat.GRAY);
 				aList.add(LH.Chat.RED + "Not Motherf***ing Flammable!" + LH.Chat.GRAY);
 			} else {
 				Collection<Recipe>
