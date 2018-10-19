@@ -29,6 +29,8 @@ import gregapi.code.TagData;
 import gregapi.data.LH;
 import gregapi.data.OP;
 import gregapi.data.TD;
+import gregapi.network.INetworkHandler;
+import gregapi.network.IPacket;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.render.BlockTextureDefault;
@@ -73,7 +75,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (!mGearsWork)
+		if (!mGearsWork && mAxleGear != 0)
 		aList.add(LH.Chat.BLINKING_RED + "Gears are interlocked wrongly!"); // TODO LanguageHandler
 		// TODO Wrench Usage Manual
 	}
@@ -86,14 +88,14 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if (FACE_CONNECTED[aSide][mAxleGear & 63]) {
 				mAxleGear &= ~B[aSide];
 				ST.place(getWorld(), getOffset(aSide, 1), OP.gearGt.mat(mMaterial, 1));
-				checkGears();
+				mGearsWork = checkGears();
 				updateClientData();
 				causeBlockUpdate();
 				return 10000;
 			}
 			if (UT.Entities.hasInfiniteItems(aPlayer)) {
 				mAxleGear |=  B[aSide];
-				checkGears();
+				mGearsWork = checkGears();
 				updateClientData();
 				causeBlockUpdate();
 				return 10000;
@@ -103,7 +105,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				if (tData != null && tData.mPrefix == OP.gearGt && (tData.mMaterial.mMaterial == mMaterial || mMaterial.mToThis.contains(tData.mMaterial.mMaterial))) {
 					aPlayerInventory.decrStackSize(i, 1);
 					mAxleGear |=  B[aSide];
-					checkGears();
+					mGearsWork = checkGears();
 					updateClientData();
 					causeBlockUpdate();
 					return 10000;
@@ -117,10 +119,15 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if (SIDES_AXIS_X[aSide] && ((mAxleGear >>> 6) & 3) != 1) mAxleGear |= (byte)(1 << 6);
 			if (SIDES_AXIS_Y[aSide] && ((mAxleGear >>> 6) & 3) != 2) mAxleGear |= (byte)(2 << 6);
 			if (SIDES_AXIS_Z[aSide] && ((mAxleGear >>> 6) & 3) != 3) mAxleGear |= (byte)(3 << 6);
-			checkGears();
+			mGearsWork = checkGears();
 			updateClientData();
 			causeBlockUpdate();
 			return 10000;
+		}
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			mGearsWork = checkGears();
+			if (aChatReturn != null) aChatReturn.add(mGearsWork ? "Gears interlocked properly." : "Gears interlocked improperly!");
+			return 1;
 		}
 		return 0;
 	}
@@ -151,6 +158,17 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oRotationData = mRotationData;}
 	@Override public void setVisualData(byte aData) {mRotationData = aData;}
 	@Override public byte getVisualData() {return mRotationData;}
+	
+	@Override
+	public IPacket getClientDataPacket(boolean aSendAll) {
+		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), mRotationData) : getClientDataPacketByte(aSendAll, getVisualData());
+	}
+	
+	@Override
+	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
+		mRotationData = aData[4];
+		return super.receiveDataByteArray(aData, aNetworkHandler);
+	}
 	
 	public ITexture mTextureGearA, mTextureAxleGearA, mTextureGearB, mTextureAxleGearB, mTexture, mTextureAxle;
 	

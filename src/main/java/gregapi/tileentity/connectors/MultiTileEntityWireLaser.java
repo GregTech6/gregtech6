@@ -64,7 +64,7 @@ public class MultiTileEntityWireLaser extends TileEntityBase10ConnectorRendered 
 						rUsedAmperes += ((MultiTileEntityWireLaser)tDelegator.mTileEntity).transferLaser(tDelegator.mSideOfTileEntity, aVoltage, aAmperage-rUsedAmperes, aChannel, aAlreadyPassed);
 					}
 				} else {
-					rUsedAmperes += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.LU, tDelegator.mSideOfTileEntity, aVoltage, aAmperage-rUsedAmperes, this, tDelegator.mTileEntity);
+					rUsedAmperes += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.LU, aVoltage, aAmperage-rUsedAmperes, this, tDelegator);
 				}
 			}
 		}

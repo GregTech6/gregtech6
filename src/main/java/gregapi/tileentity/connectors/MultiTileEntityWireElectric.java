@@ -167,7 +167,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 						rUsedAmperes += ((MultiTileEntityWireElectric)tDelegator.mTileEntity).transferElectricity(tDelegator.mSideOfTileEntity, aVoltage, aAmperage-rUsedAmperes, aChannel, aAlreadyPassed);
 					}
 				} else {
-					rUsedAmperes += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.EU, tDelegator.mSideOfTileEntity, aVoltage, aAmperage-rUsedAmperes, this, tDelegator.mTileEntity);
+					rUsedAmperes += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.EU, aVoltage, aAmperage-rUsedAmperes, this, tDelegator);
 				}
 			}
 		}

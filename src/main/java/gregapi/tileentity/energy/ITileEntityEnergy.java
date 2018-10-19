@@ -247,7 +247,7 @@ public interface ITileEntityEnergy extends gregapi.tileentity.ITileEntityEnergy 
 		 */
 		public static final long emitEnergyToSide(TagData aEnergyType, byte aSideOutOf, long aSize, long aAmount, TileEntity aEmitter) {
 			DelegatorTileEntity<TileEntity> tDelegator = aEmitter instanceof IHasWorldAndCoords ? ((IHasWorldAndCoords)aEmitter).getAdjacentTileEntity(aSideOutOf) : WD.te(aEmitter.getWorldObj(), aEmitter.xCoord+OFFSETS_X[aSideOutOf], aEmitter.yCoord+OFFSETS_Y[aSideOutOf], aEmitter.zCoord+OFFSETS_Z[aSideOutOf], OPPOSITES[aSideOutOf], F);
-			return insertEnergyInto(aEnergyType, tDelegator.mSideOfTileEntity, aSize, aAmount, aEmitter, tDelegator.mTileEntity);
+			return insertEnergyInto(aEnergyType, aSize, aAmount, aEmitter, tDelegator);
 		}
 		
 		/**
