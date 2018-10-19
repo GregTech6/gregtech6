@@ -122,9 +122,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			return 0;
 		}
 		if (aTool.equals(TOOL_monkeywrench)) {
-			if (SIDES_AXIS_X[aSide]) if (((mAxleGear >>> 6) & 3) != 1) mAxleGear |= (byte)((mAxleGear & 63) | (1 << 6)); else mAxleGear &= 63;
-			if (SIDES_AXIS_Y[aSide]) if (((mAxleGear >>> 6) & 3) != 2) mAxleGear |= (byte)((mAxleGear & 63) | (2 << 6)); else mAxleGear &= 63;
-			if (SIDES_AXIS_Z[aSide]) if (((mAxleGear >>> 6) & 3) != 3) mAxleGear |= (byte)((mAxleGear & 63) | (3 << 6)); else mAxleGear &= 63;
+			if (SIDES_AXIS_X[aSide]) if (((mAxleGear >>> 6) & 3) != 1) mAxleGear = (byte)((mAxleGear & 63) | (1 << 6)); else mAxleGear &= 63;
+			if (SIDES_AXIS_Y[aSide]) if (((mAxleGear >>> 6) & 3) != 2) mAxleGear = (byte)((mAxleGear & 63) | (2 << 6)); else mAxleGear &= 63;
+			if (SIDES_AXIS_Z[aSide]) if (((mAxleGear >>> 6) & 3) != 3) mAxleGear = (byte)((mAxleGear & 63) | (3 << 6)); else mAxleGear &= 63;
 			mGearsWork = checkGears();
 			updateClientData();
 			causeBlockUpdate();
@@ -231,13 +231,19 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				// Rotate the other Gears
 				for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
 					// Rotation Direction
-					if (aSpeed < 0) mRotationData |= B[tSide];
+					if (aSpeed > 0) mRotationData |= B[tSide];
 					// Output Power
 					rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, +aSpeed, aPower-rPower, this, getAdjacentTileEntity(tSide));
+					// Do we have an Axle on this Side?
+					if (AXIS_XYZ[(mAxleGear >>> 6) & 3][OPPOSITES[tSide]]) {
+						// And the Axle Transfers RU to the opposite Side.
+						rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, -aSpeed, aPower-rPower, this, getAdjacentTileEntity(OPPOSITES[tSide]));
+					}
 				}
+				// Opposite Side Gear
 				if (FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
 					// Rotation Direction
-					if (aSpeed > 0) mRotationData |= B[OPPOSITES[aSide]];
+					if (aSpeed < 0) mRotationData |= B[OPPOSITES[aSide]];
 					// Output Power
 					rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, -aSpeed, aPower-rPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
 				}
