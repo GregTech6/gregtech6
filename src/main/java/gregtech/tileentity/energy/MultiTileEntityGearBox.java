@@ -147,16 +147,41 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	}
 	
 	public boolean checkGears() {
-		switch((mAxleGear >>> 6) & 3) {
-		case  1: if ((mAxleGear & 48) == 48) return (mAxleGear & 15) == 0;
-		case  2: if ((mAxleGear &  3) ==  3) return (mAxleGear & 60) == 0;
-		case  3: if ((mAxleGear & 12) == 12) return (mAxleGear & 51) == 0;
+		switch(FACE_CONNECTION_COUNT[mAxleGear & 63]) {
+		case 1:
+			// Only rotate when connected with the Axle.
+			switch((mAxleGear >>> 6) & 3) {
+			case  1: return (mAxleGear & 48) != 0;
+			case  2: return (mAxleGear &  3) != 0;
+			case  3: return (mAxleGear & 12) != 0;
+			}
+			return F;
+		case 2:
+			// Corner Gears can always work.
+			if ((mAxleGear & 48) != 48 && (mAxleGear & 3) != 3 && (mAxleGear & 12) != 12) return T;
+			// But also Rotate when both Gears are on the same Axle, as senseless as that is, it is what would happen.
+			switch((mAxleGear >>> 6) & 3) {
+			case  1: return (mAxleGear & 48) != 0;
+			case  2: return (mAxleGear &  3) != 0;
+			case  3: return (mAxleGear & 12) != 0;
+			}
+			return F;
+		case 3: case 4:
+			// Make sure the Axle wont screw the Setup over by forming a D or Omikron Shape.
+			switch((mAxleGear >>> 6) & 3) {
+			case  1: if ((mAxleGear & 48) == 48) return F; break;
+			case  2: if ((mAxleGear &  3) ==  3) return F; break;
+			case  3: if ((mAxleGear & 12) == 12) return F; break;
+			}
+			// Triangle interlocked Gears do ofcourse not work!
+			byte tAxisUsed = 0;
+			if ((mAxleGear & 48) != 0) tAxisUsed++;
+			if ((mAxleGear &  3) != 0) tAxisUsed++;
+			if ((mAxleGear & 12) != 0) tAxisUsed++;
+			return tAxisUsed == 2;
 		}
-		byte tAxisUsed = 0;
-		if ((mAxleGear & 48) != 0) tAxisUsed++;
-		if ((mAxleGear &  3) != 0) tAxisUsed++;
-		if ((mAxleGear & 12) != 0) tAxisUsed++;
-		return (tAxisUsed & 1) == 0;
+		// 5 Gears never work, same as 6 Gears and ofcourse 0 Gears.
+		return F;
 	}
 	
 	@Override public boolean onTickCheck(long aTimer) {return mRotationData != oRotationData || super.onTickCheck(aTimer);}
@@ -197,13 +222,12 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public long doInject(TagData aEnergyType, byte aSide, long aSpeed, long aPower, boolean aDoInject) {
 		if (!isEnergyType(aEnergyType, aSide, F)) return 0;
 		if (!aDoInject) return aPower;
+		mRotationData = 0;
 		if (mCheck || Math.abs(aSpeed) > mMaxThroughPut) {
 			mJammed = T;
-			mRotationData = 0;
 			return aPower;
 		}
 		mCheck = T;
-		mRotationData = (byte)(mGearsWork ? 64 : 0);
 		long rPower = 0;
 		
 		if (SIDES_VALID[aSide]) {
@@ -215,6 +239,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, +aSpeed, aPower-rPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
 				// Is there a Gear on the other Side of the Axle?
 				if (mGearsWork && FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
+					// Gears Rotate in this case!
+					mRotationData |= B[6];
 					// Rotation Direction
 					if (aSpeed > 0) mRotationData |= B[OPPOSITES[aSide]];
 					// Rotate the other Gears
@@ -228,6 +254,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			}
 			// Do we have a Gear on this Side?
 			if (mGearsWork && FACE_CONNECTED[aSide][mAxleGear & 63]) {
+				// Gears Rotate in this case!
+				mRotationData |= B[6];
 				// Rotate the other Gears
 				for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[aSide]) if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
 					// Rotation Direction
