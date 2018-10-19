@@ -26,6 +26,7 @@ import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.code.TagData;
+import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -53,7 +54,7 @@ import net.minecraft.nbt.NBTTagCompound;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_AddToolTips {
-	public boolean mJammed = F, mCheck = F, mGearsWork = F;
+	public boolean mJammed = F, mUsedGear = F, mUsedAxle = F, mGearsWork = F;
 	public long mMaxThroughPut = 64;
 	public short mAxleGear = 0, mRotationData = 0, oRotationData = 0;
 	
@@ -141,8 +142,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			if (!mCheck) mRotationData = 0;
-			mCheck = F;
+			if (!mUsedGear) mRotationData = 0;
+			mUsedGear = F;
+			mUsedAxle = F;
 		}
 	}
 	
@@ -157,9 +159,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			}
 			return F;
 		case 2:
-			// Corner Gears can always work.
+			// Corner Gears will always work.
 			if ((mAxleGear & 48) != 48 && (mAxleGear & 3) != 3 && (mAxleGear & 12) != 12) return T;
-			// But also Rotate when both Gears are on the same Axle, as senseless as that is, it is what would happen.
+			// But also Rotate when both Gears are on the same Axle, as dumb and useless as that is, it is what would happen.
 			switch((mAxleGear >>> 6) & 3) {
 			case  1: return (mAxleGear & 48) != 0;
 			case  2: return (mAxleGear &  3) != 0;
@@ -178,7 +180,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if ((mAxleGear & 48) != 0) tAxisUsed++;
 			if ((mAxleGear &  3) != 0) tAxisUsed++;
 			if ((mAxleGear & 12) != 0) tAxisUsed++;
-			return tAxisUsed == 2;
+			return tAxisUsed < 3;
 		}
 		// 5 Gears never work, same as 6 Gears and ofcourse 0 Gears.
 		return F;
@@ -222,23 +224,39 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	public long doInject(TagData aEnergyType, byte aSide, long aSpeed, long aPower, boolean aDoInject) {
 		if (!isEnergyType(aEnergyType, aSide, F)) return 0;
 		if (!aDoInject) return aPower;
+		
 		mRotationData = 0;
-		if (mCheck || Math.abs(aSpeed) > mMaxThroughPut) {
-			mJammed = T;
+		
+		if (Math.abs(aSpeed) > mMaxThroughPut) {
+			UT.Sounds.send(SFX.MC_BREAK, this);
+			setToAir();
 			return aPower;
 		}
-		mCheck = T;
+		
 		long rPower = 0;
+		boolean tUsedGear = F;
 		
 		if (SIDES_VALID[aSide]) {
 			// Rotation Direction
 			if (aSpeed > 0) mRotationData |= B[aSide];
 			// Do we have an Axle on this Side?
 			if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]) {
+				// Only once per Tick for Axle Inputs
+				if (mUsedAxle) {
+					mJammed = T;
+					return aPower;
+				}
+				mUsedAxle = T;
 				// Axles always work regardless of the Gears being Jammed, because of Safety Bearings.
 				rPower += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, +aSpeed, aPower-rPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
 				// Is there a Gear on the other Side of the Axle?
 				if (mGearsWork && FACE_CONNECTED[OPPOSITES[aSide]][mAxleGear & 63]) {
+					// Only once per Tick for Gear Inputs
+					if (mUsedGear) {
+						mJammed = T;
+						return aPower;
+					}
+					tUsedGear = T;
 					// Gears Rotate in this case!
 					mRotationData |= B[6];
 					// Rotation Direction
@@ -254,6 +272,12 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			}
 			// Do we have a Gear on this Side?
 			if (mGearsWork && FACE_CONNECTED[aSide][mAxleGear & 63]) {
+				// Only once per Tick for Gear Inputs
+				if (mUsedGear) {
+					mJammed = T;
+					return aPower;
+				}
+				tUsedGear = T;
 				// Gears Rotate in this case!
 				mRotationData |= B[6];
 				// Rotate the other Gears
@@ -294,6 +318,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				break;
 			}
 		}
+		if (tUsedGear) mUsedGear = T;
 		return rPower;
 	}
 	

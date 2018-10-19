@@ -97,16 +97,20 @@ public class RenderHelper {
 	
 	public static void drawWrenchOverlay(EntityPlayer aPlayer, int aX, int aY, int aZ, byte aConnections, byte aSide, float aPartialTicks) {
 		try {Class.forName("codechicken.lib.vec.Rotation");} catch (ClassNotFoundException e) {return;}
-
-		GL11.glDepthFunc(GL11.GL_ALWAYS);
+		
+//      GL11.glDepthFunc(GL11.GL_ALWAYS);
+		GL11.glDepthFunc(GL11.GL_LEQUAL);
 		GL11.glPushMatrix();
 		GL11.glTranslated(-(aPlayer.lastTickPosX + (aPlayer.posX - aPlayer.lastTickPosX) * aPartialTicks), -(aPlayer.lastTickPosY + (aPlayer.posY - aPlayer.lastTickPosY) * aPartialTicks), -(aPlayer.lastTickPosZ + (aPlayer.posZ - aPlayer.lastTickPosZ) * aPartialTicks));
 		GL11.glTranslated(aX + 0.5, aY + 0.5, aZ + 0.5);
 		codechicken.lib.vec.Rotation.sideRotations[aSide].glApply();
 		GL11.glTranslated(0, -0.5025, 0);
 		GL11.glLineWidth(2.0F);
-		GL11.glColor4d(0.5+0.1*(aPartialTicks-0.5), 0.5+0.1*(aPartialTicks-0.5), 0.5+0.1*(aPartialTicks-0.5), 0.5);
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glBegin(GL11.GL_LINES);
+		GL11.glColor4d(0.5+0.1*(aPartialTicks-0.5), 0.5+0.1*(aPartialTicks-0.5), 0.5+0.1*(aPartialTicks-0.5), 0.5);
+		
 		GL11.glVertex3d( 0.50, 0, -0.25);
 		GL11.glVertex3d(-0.50, 0, -0.25);
 		GL11.glVertex3d( 0.50, 0,  0.25);
@@ -437,6 +441,8 @@ public class RenderHelper {
 		}
 		GL11.glEnd();
 		GL11.glPopMatrix();
-		GL11.glDepthFunc(GL11.GL_LEQUAL);
+		GL11.glEnable(GL11.GL_LIGHTING);
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+//      GL11.glDepthFunc(GL11.GL_LEQUAL);
 	}
 }
