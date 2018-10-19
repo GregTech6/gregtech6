@@ -109,8 +109,9 @@ public class RenderHelper {
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glBegin(GL11.GL_LINES);
-		double tColor = 0.5+0.2*(((CLIENT_TIME%20)/20.0)-0.5);
+		double tColor = (CLIENT_TIME % 42 < 21 ? 0.25 + ((CLIENT_TIME % 21)/40.0) : 0.75 - ((CLIENT_TIME % 21)/40.0));
 		GL11.glColor4d(tColor, tColor, tColor, 0.5);
+		
 		
 		GL11.glVertex3d( 0.50, 0, -0.25);
 		GL11.glVertex3d(-0.50, 0, -0.25);

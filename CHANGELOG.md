@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.05: (Not released yet)
+[FIXED] The Wrench/Cover Overlay Lines on Blocks now have a more visible Coloration and shouldnt vanish anymore either.
 [CHANGED] Axles will now consume one Packet of Energy to start rotating. So the more Axles you have, the more Energy is going to be consumed when starting your Machinery.
 [ADDED]
 Custom Gearboxes
