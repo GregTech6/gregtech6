@@ -21,7 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.05: (Not released yet)
+6.09.05:
 [FIXED] Vanilla Hoes wont till Coarse Dirt or Podzol anymore.
 [FIXED] Berry Bushes will now automatically remove Snow Layers ontop of them during their first tick.
 [FIXED] The Wrench/Cover Overlay Lines on Blocks now have a more visible Coloration and shouldnt vanish anymore either.
