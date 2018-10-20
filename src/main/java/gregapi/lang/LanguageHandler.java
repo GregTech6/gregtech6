@@ -183,7 +183,7 @@ public class LanguageHandler {
 			if (aPrefix == OP.rockGt)                                       return "Umber Rock";
 		} else
 		if (aMaterial == MT.Betweenstone) {
-			if (aPrefix == OP.rockGt)                                       return "Between Rock";
+			if (aPrefix == OP.rockGt)                                       return "Betweenrock";
 		} else
 		if (aMaterial == MT.Pitstone) {
 			if (aPrefix == OP.rockGt)                                       return "Pit Rock";

@@ -826,6 +826,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	}
 	
 	@SubscribeEvent
+	public void onUseHoeEvent(net.minecraftforge.event.entity.player.UseHoeEvent aEvent) {
+		if (aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z) == Blocks.dirt && aEvent.world.getBlockMetadata(aEvent.x, aEvent.y, aEvent.z) != 0) aEvent.setCanceled(T);
+	}
+	
+	@SubscribeEvent
 	public void onBlockHarvestingEvent(BlockEvent.HarvestDropsEvent aEvent) {
 		
 		Iterator<ItemStack> aDrops = aEvent.drops.iterator();

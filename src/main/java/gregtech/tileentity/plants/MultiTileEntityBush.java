@@ -51,6 +51,7 @@ import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -96,6 +97,12 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	@Override
 	public void onOxygenRemoved() {
 		if (isServerSide() && !WD.oxygen(worldObj, xCoord, yCoord, zCoord)) setToAir();
+	}
+	
+	@Override
+	public void onTickFirst2(boolean aIsServerSide) {
+		super.onTickFirst2(aIsServerSide);
+		if (getBlockAtSide(SIDE_UP) == Blocks.snow_layer) worldObj.setBlockToAir(xCoord, yCoord+1, zCoord);
 	}
 	
 	@Override
