@@ -95,6 +95,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		aList.add(Chat.CYAN + LH.get(LH.AXLE_STATS_SPEED) + mMaxThroughPut + " " + TD.Energy.RU.getLocalisedNameShort());
 		aList.add(Chat.DGRAY + LH.get("gt.tooltip.gearbox.custom.2"));
 		aList.add(Chat.DGRAY + LH.get("gt.tooltip.gearbox.custom.3"));
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
 	
 	@Override
@@ -135,6 +137,13 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if (SIDES_AXIS_X[aSide]) if (((mAxleGear >>> 6) & 3) != 1) mAxleGear = (byte)((mAxleGear & 63) | (1 << 6)); else mAxleGear &= 63;
 			if (SIDES_AXIS_Y[aSide]) if (((mAxleGear >>> 6) & 3) != 2) mAxleGear = (byte)((mAxleGear & 63) | (2 << 6)); else mAxleGear &= 63;
 			if (SIDES_AXIS_Z[aSide]) if (((mAxleGear >>> 6) & 3) != 3) mAxleGear = (byte)((mAxleGear & 63) | (3 << 6)); else mAxleGear &= 63;
+			mGearsWork = checkGears();
+			updateClientData();
+			causeBlockUpdate();
+			return 10000;
+		}
+		if (aTool.equals(TOOL_softhammer)) {
+			mJammed = !mJammed;
 			mGearsWork = checkGears();
 			updateClientData();
 			causeBlockUpdate();
