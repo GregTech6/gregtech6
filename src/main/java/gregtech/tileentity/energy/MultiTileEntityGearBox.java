@@ -28,6 +28,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.code.TagData;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.network.INetworkHandler;
@@ -81,11 +82,19 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		return aNBT;
 	}
 	
+	static {
+		LH.add("gt.tooltip.gearbox.custom.1", "Gears are interlocked wrongly!");
+		LH.add("gt.tooltip.gearbox.custom.2", "Use Wrench to mount Gears from your Inventory");
+		LH.add("gt.tooltip.gearbox.custom.3", "Use Monkeywrench to change Axle Direction");
+	}
+	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (!mGearsWork && (mAxleGear & 63) != 0)
-		aList.add(LH.Chat.BLINKING_RED + "Gears are interlocked wrongly!"); // TODO LanguageHandler
-		// TODO Wrench Usage Manual
+		if (!mGearsWork)
+		aList.add(Chat.BLINKING_RED + LH.get("gt.tooltip.gearbox.custom.1"));
+		aList.add(Chat.CYAN + LH.get(LH.AXLE_STATS_SPEED) + mMaxThroughPut + " " + TD.Energy.RU.getLocalisedNameShort());
+		aList.add(Chat.DGRAY + LH.get("gt.tooltip.gearbox.custom.2"));
+		aList.add(Chat.DGRAY + LH.get("gt.tooltip.gearbox.custom.3"));
 	}
 	
 	@Override
@@ -119,7 +128,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 					return 10000;
 				}
 			}
-			UT.Entities.chat(aPlayer, "You dont have a fitting Gear in your Inventory!");
+			UT.Entities.chat(aPlayer, "You dont have a Gear of the same Material in your Inventory!");
 			return 0;
 		}
 		if (aTool.equals(TOOL_monkeywrench)) {
@@ -150,6 +159,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	
 	public boolean checkGears() {
 		switch(FACE_CONNECTION_COUNT[mAxleGear & 63]) {
+		case 0:
+			// Just prevents the Error Tooltip from popping up.
+			return T;
 		case 1:
 			// Always Rotates when connected, nothing stops it from doing so.
 			return T;
@@ -177,7 +189,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if ((mAxleGear & 12) != 0) tAxisUsed++;
 			return tAxisUsed < 3;
 		}
-		// 5 Gears never work, same as 6 Gears and ofcourse 0 Gears.
+		// 5 Gears never work, same as 6 Gears
 		return F;
 	}
 	
@@ -224,7 +236,15 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		
 		if (Math.abs(aSpeed) > mMaxThroughPut) {
 			UT.Sounds.send(SFX.MC_BREAK, this);
-			setToAir();
+			byte tCount = FACE_CONNECTION_COUNT[mAxleGear & 63];
+			if (tCount > 0) {
+				ST.drop(getWorld(), getCoords(), OP.scrapGt.mat(mMaterial, 9+getRandomNumber(27)));
+				if (tCount > 1)
+				ST.drop(getWorld(), getCoords(), OP.gearGt.mat(mMaterial, tCount-1));
+			}
+			mAxleGear = 0;
+			updateClientData();
+			mGearsWork = checkGears();
 			return aPower;
 		}
 		
@@ -330,9 +350,9 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	
-	@Override public boolean getStateRunningPossible () {return !mJammed;}
-	@Override public boolean getStateRunningPassively() {return !mJammed;}
-	@Override public boolean getStateRunningActively () {return !mJammed;}
+	@Override public boolean getStateRunningPossible () {return mGearsWork;}
+	@Override public boolean getStateRunningPassively() {return (mRotationData & B[6]) != 0 || (oRotationData & B[6]) != 0;}
+	@Override public boolean getStateRunningActively () {return (mRotationData & B[6]) != 0 || (oRotationData & B[6]) != 0;}
 	@Override public boolean setStateOnOff(boolean aOnOff) {mJammed = !aOnOff; return !mJammed;}
 	@Override public boolean getStateOnOff() {return !mJammed;}
 	

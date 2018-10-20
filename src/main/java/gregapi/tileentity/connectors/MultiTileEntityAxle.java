@@ -107,7 +107,7 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		// If the Axle just Rotates Idle then it can spin at ludicrous Speeds.
 		if (Math.abs(aSpeed) > mSpeed || mTransferredPower > mPower) {
 			UT.Sounds.send(SFX.MC_BREAK, this);
-			setToAir();
+			popOff();
 			return aOriginalPower;
 		}
 		return aPower;

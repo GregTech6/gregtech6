@@ -23,7 +23,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.05: (Not released yet)
 [FIXED] The Wrench/Cover Overlay Lines on Blocks now have a more visible Coloration and shouldnt vanish anymore either.
-[CHANGED] Axles will now consume one Packet of Energy to start rotating. So the more Axles you have, the more Energy is going to be consumed when starting your Machinery.
+[CHANGED]
+Axles will now consume one Packet of Energy to start rotating.
+So the more Axles you have, the more Energy is going to be consumed when starting your Machinery.
+They will also now pop onto the Floor instead of just vanishing into nothingness when overloaded.
 [ADDED]
 Custom Gearboxes
 You can Wrench their Side while having a normal sized Gear of the same Material in your Inventory to put the Gear in.
@@ -31,6 +34,7 @@ Gears that are on adjacent Sides will automatically be interlocked, note that th
 The Monkeywrench will set the Direction the internal Axle is Facing or remove the internal Axles Functionality.
 The Axle will ALWAYS be able to Rotate due to being connected via a Safety bearing, even if the Gears themselves are jammed.
 It is possible to use Gearboxes to transmit power, but they are more expensive than any of the Axles of their Tier, even if you don't add any Gears.
+When Gearboxes break due to overloading them, they will only break one of the Gears into Scraps but they will drop all Gears as Items and reset the internal Axle.
 
 
 6.09.04:
