@@ -58,7 +58,7 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 		UT.NBT.setBoolean(aNBT, NBT_CAN_ENERGY, mCanEmitEnergy);
 	}
 	
-	public boolean doConversion(long aTimer, TileEntity aEmitter, byte aSide) {
+	public boolean doConversion(long aTimer, TileEntity aEmitter, byte aSide, boolean aNegative) {
 		long tOutput = UT.Code.units(mStorage.mEnergy, mEnergyIN.mRec, mEnergyOUT.mRec, F);
 		mFast = (tOutput > mEnergyOUT.mRec);
 		mCanEmitEnergy = (tOutput >= mEnergyOUT.mMin);
@@ -71,13 +71,13 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 				return T;
 			}
 			if (mSizeIrrelevant) {
-				long tEmittedPackets = (SIDES_VALID[aSide] ? ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide, 1, tOutput*mMultiplier, aEmitter) : ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyOUT.mType, 1, tOutput*mMultiplier, (ITileEntityEnergy)aEmitter));
+				long tEmittedPackets = (SIDES_VALID[aSide] ? ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide, aNegative ? -1 : 1,                     tOutput*mMultiplier, aEmitter) : ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyOUT.mType, aNegative ? -1 : 1,                     tOutput*mMultiplier, (ITileEntityEnergy)aEmitter));
 				if (tEmittedPackets > 0) {
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets, mEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
 					mEmitsEnergy = T;
 				}
 			} else {
-				long tEmittedPackets = (SIDES_VALID[aSide] ? ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide, tOutput*mFactor, mMultiplier, aEmitter) : ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyOUT.mType, tOutput*mFactor, mMultiplier, (ITileEntityEnergy)aEmitter));
+				long tEmittedPackets = (SIDES_VALID[aSide] ? ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide, aNegative ? -tOutput*mFactor : tOutput*mFactor, mMultiplier, aEmitter) : ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyOUT.mType, aNegative ? -tOutput*mFactor : tOutput*mFactor, mMultiplier, (ITileEntityEnergy)aEmitter));
 				if (tEmittedPackets > 0) {
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets * tOutput, mEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
 					mEmitsEnergy = T;

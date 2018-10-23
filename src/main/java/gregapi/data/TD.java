@@ -198,6 +198,8 @@ public class TD {
 		public static final List<TagData> ALL_KINETIC                       = new ArrayListNoNulls<>(F, KU, RU);
 		/** Contains all known Energy Tags, which are electric. */
 		public static final List<TagData> ALL_ELECTRIC                      = new ArrayListNoNulls<>(F, EU);
+		/** Contains all known Energy Tags, which are electric. */
+		public static final List<TagData> ALL_NEGATIVE_ALLOWED              = new ArrayListNoNulls<>(F, AU, QU, MU, KU, RU, EU);
 		/** Contains all known Energy Tags, which are weak to Water, such as electricity. */
 		public static final List<TagData> ALL_WEAK_TO_WATER                 = new ArrayListNoNulls<>(F, EU, HU);
 		/** Contains all known Energy Tags, which are weak to Thunder, such as electricity. */

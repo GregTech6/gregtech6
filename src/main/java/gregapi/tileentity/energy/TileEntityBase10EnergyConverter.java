@@ -110,10 +110,10 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	@Override public boolean onTickCheck(long aTimer) {return mActivity.check(mStopped) || mNegativeInput != oNegativeInput || super.onTickCheck(aTimer);}
 	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oNegativeInput = mNegativeInput;}
 	@Override public void setVisualData(byte aData) {mActivity.mState = (byte)(aData & 127); mNegativeInput = (aData < 0);}
-	@Override public byte getVisualData() {return (byte)(mActivity.mState | (byte)(mNegativeInput ? B[8] : 0));}
+	@Override public byte getVisualData() {return (byte)(mActivity.mState | (byte)(mNegativeInput ? B[7] : 0));}
 	
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doConversion(aTimer, this, SIDE_ANY);
+		mActivity.mActive = mConverter.doConversion(aTimer, this, SIDE_ANY, mNegativeInput && TD.Energy.ALL_NEGATIVE_ALLOWED.contains(mEnergyIN.mType) && TD.Energy.ALL_NEGATIVE_ALLOWED.contains(mEnergyOUT.mType));
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;
