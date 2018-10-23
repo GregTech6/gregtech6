@@ -42,7 +42,7 @@ import net.minecraft.nbt.NBTTagCompound;
  * @author Gregorius Techneticies
  */
 public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively {
-	protected boolean mStopped = F;
+	protected boolean mStopped = F, mNegativeInput = F, oNegativeInput = F;
 	protected byte mExplosionPrevention = 0;
 	
 	public TE_Behavior_Energy_Stats mEnergyIN = null, mEnergyOUT = null;
@@ -107,9 +107,10 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 		}
 	}
 	
-	@Override public boolean onTickCheck(long aTimer) {return mActivity.check(mStopped) || super.onTickCheck(aTimer);}
-	@Override public void setVisualData(byte aData) {mActivity.mState = aData;}
-	@Override public byte getVisualData() {return mActivity.mState;}
+	@Override public boolean onTickCheck(long aTimer) {return mActivity.check(mStopped) || mNegativeInput != oNegativeInput || super.onTickCheck(aTimer);}
+	@Override public void onTickResetChecks(long aTimer, boolean aIsServerSide) {super.onTickResetChecks(aTimer, aIsServerSide); oNegativeInput = mNegativeInput;}
+	@Override public void setVisualData(byte aData) {mActivity.mState = (byte)(aData & 127); mNegativeInput = (aData < 0);}
+	@Override public byte getVisualData() {return (byte)(mActivity.mState | (byte)(mNegativeInput ? B[8] : 0));}
 	
 	public void doConversion(long aTimer) {
 		mActivity.mActive = mConverter.doConversion(aTimer, this, SIDE_ANY);
@@ -122,6 +123,7 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
+		if (aDoInject) mNegativeInput = (aSize < 0);
 		long tConsumed = mConverter.mEnergyIN.doInject(aSize, aAmount, aDoInject);
 		if (mConverter.mEnergyIN.mOverloaded) {
 			overload(aSize, aEnergyType);

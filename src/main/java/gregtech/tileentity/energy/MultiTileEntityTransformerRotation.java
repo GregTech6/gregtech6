@@ -34,7 +34,7 @@ public class MultiTileEntityTransformerRotation extends TileEntityBase11Bidirect
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		int aIndex = aSide==mFacing?0:aSide==OPPOSITES[mFacing]?1:2;
+		int aIndex = aSide==mFacing?mNegativeInput?0:1:aSide==OPPOSITES[mFacing]?mNegativeInput?1:0:2;
 		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[mActivity.mState == 1 ? 1 : 0][aIndex], mRGBa), BlockTextureDefault.get(sOverlays[mActivity.mState == 1 ? 1 : 0][aIndex]));
 	}
 	

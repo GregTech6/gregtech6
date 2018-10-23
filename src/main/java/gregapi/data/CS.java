@@ -1850,18 +1850,9 @@ public class CS {
 		, IC_DRILL_HARD         = MD.IC2.mID.toLowerCase() + ":" + "tools.drill.DrillHard"
 		, IC_SCANNER            = MD.IC2.mID.toLowerCase() + ":" + "tools.ODScanner"
 		
-		, IC_MACHINE_EXTRACTOR  = MD.IC2.mID.toLowerCase() + ":" + "machines.ExtractorOp"
-		, IC_MACHINE_MACERATOR  = MD.IC2.mID.toLowerCase() + ":" + "machines.MaceratorOp"
-		, IC_MACHINE_INDUCTION  = MD.IC2.mID.toLowerCase() + ":" + "machines.InductionLoop"
-		, IC_MACHINE_COMPRESSOR = MD.IC2.mID.toLowerCase() + ":" + "machines.CompressorOp"
-		, IC_MACHINE_RECYCLER   = MD.IC2.mID.toLowerCase() + ":" + "machines.RecyclerOp"
-		, IC_MACHINE_MINER      = MD.IC2.mID.toLowerCase() + ":" + "machines.MinerOp"
-		, IC_MACHINE_PUMP       = MD.IC2.mID.toLowerCase() + ":" + "machines.PumpOp"
-		, IC_MACHINE_FURNACE    = MD.IC2.mID.toLowerCase() + ":" + "machines.ElectroFurnaceLoop"
-		, IC_MACHINE_OVERLOAD   = MD.IC2.mID.toLowerCase() + ":" + "machines.MachineOverload"
-		, IC_MACHINE_INTERRUPT  = MD.IC2.mID.toLowerCase() + ":" + "machines.InterruptOne"
+		, IC_MACHINE_OVERLOAD   = MC_EXPLODE
+		, IC_MACHINE_INTERRUPT  = MC_BREAK
 		, IC_MACHINE_KA_CHING   = MD.IC2.mID.toLowerCase() + ":" + "machines.KaChing"
-		, IC_MACHINE_MAGNETIZER = MD.IC2.mID.toLowerCase() + ":" + "machines.MagnetizerLoop"
 		
 		, MISSING = null;
 	}
