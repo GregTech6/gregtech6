@@ -70,8 +70,8 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	public void readEnergyBehavior(NBTTagCompound aNBT) {
 		long tInput = aNBT.getLong(NBT_INPUT), tOutput = aNBT.getLong(NBT_OUTPUT);
 		mStorage    = new TE_Behavior_Energy_Capacitor  (this, aNBT, tInput * 2);
-		mEnergyIN   = new TE_Behavior_Energy_Stats      (this, aNBT, aNBT.hasKey(NBT_ENERGY_ACCEPTED) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED)) : TD.Energy.QU   , mStorage, tInput <= 16 ? 1 : tInput / 2, tInput, tInput * 2);
-		mEnergyOUT  = new TE_Behavior_Energy_Stats      (this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED ) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED )) : mEnergyIN.mType, mStorage, tOutput / 2, tOutput, tOutput * 2);
+		mEnergyIN   = new TE_Behavior_Energy_Stats      (this, aNBT, aNBT.hasKey(NBT_ENERGY_ACCEPTED) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED)) : TD.Energy.QU   , mStorage, takesAnyLowerSize() || tInput <= 16 ? 1 : tInput / 2, tInput, tInput * 2);
+		mEnergyOUT  = new TE_Behavior_Energy_Stats      (this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED ) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED )) : mEnergyIN.mType, mStorage, emitsAnyLowerSize() ? 1 : tOutput / 2, tOutput, tOutput * 2);
 	}
 	
 	public void readEnergyConverter(NBTTagCompound aNBT) {
@@ -162,6 +162,8 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	
 	// Stuff to Override
 	
+	public boolean takesAnyLowerSize() {return F;}
+	public boolean emitsAnyLowerSize() {return F;}
 	public boolean isInput (byte aSide) {return aSide != mFacing;}
 	public boolean isOutput(byte aSide) {return aSide == mFacing;}
 	public String getLocalisedInputSide () {return LH.get(LH.FACE_ANYBUT_FRONT);}
