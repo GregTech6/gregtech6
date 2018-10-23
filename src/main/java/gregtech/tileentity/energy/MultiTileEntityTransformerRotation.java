@@ -40,8 +40,6 @@ public class MultiTileEntityTransformerRotation extends TileEntityBase11Bidirect
 	
 	@Override public boolean isInput (byte aSide) {return mReversed ? aSide == OPPOSITES[mFacing] : aSide == mFacing;}
 	@Override public boolean isOutput(byte aSide) {return mReversed ? aSide == mFacing : aSide == OPPOSITES[mFacing];}
-	@Override public boolean takesAnyLowerSize() {return T;}
-	@Override public boolean emitsAnyLowerSize() {return T;}
 	
 	// Icons
 	public static IIconContainer sColoreds[][] = new IIconContainer[][] {{
