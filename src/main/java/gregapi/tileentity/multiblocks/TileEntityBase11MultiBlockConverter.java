@@ -119,7 +119,7 @@ public abstract class TileEntityBase11MultiBlockConverter extends TileEntityBase
 	public abstract byte getEmittingSide();
 	
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doConversion(aTimer, getEmittingTileEntity(), getEmittingSide());
+		mActivity.mActive = mConverter.doConversion(aTimer, getEmittingTileEntity(), getEmittingSide(), F);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mEnergyOUT.mType);
 			mConverter.mOverloaded = F;
