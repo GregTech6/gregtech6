@@ -51,6 +51,7 @@ import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
@@ -96,7 +97,7 @@ import net.minecraftforge.fluids.IFluidTank;
 @Optional.InterfaceList(value = {
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
 })
-public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, IFluidHandler {
+public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
 	public boolean mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
 	public byte mEnergyInputs = 0, mOutputBlocked = 0, mMode = 0;
 	public byte mItemInputs  = 0, mItemOutputs  = 0, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
@@ -909,8 +910,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override public boolean canSave(int aSlot) {return !IL.Display_Fluid.equal(slot(aSlot), T, T);}
 	@Override public boolean hasWork() {return mMaxProgress > 0;}
-	@Override public long getProgressValue(byte aSide) {return mSuccessful ? getProgressMax(aSide) :    mMinEnergy < 1 ? mProgress      : mProgress     / mMinEnergy + (mProgress       % mMinEnergy == 0 ? 0 : 1) ;}
-	@Override public long getProgressMax  (byte aSide) {return Math.max(1,                              mMinEnergy < 1 ? mMaxProgress   : mMaxProgress  / mMinEnergy + (mMaxProgress    % mMinEnergy == 0 ? 0 : 1));}
+	@Override public long getProgressValue(byte aSide) {return mSuccessful ? getProgressMax(aSide) : mMinEnergy < 1 ? mProgress    : mProgress    / mMinEnergy + (mProgress    % mMinEnergy == 0 ? 0 : 1) ;}
+	@Override public long getProgressMax  (byte aSide) {return Math.max(1,                           mMinEnergy < 1 ? mMaxProgress : mMaxProgress / mMinEnergy + (mMaxProgress % mMinEnergy == 0 ? 0 : 1));}
+	@Override public long getGibblValue   (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].getFluidAmount(); for (int i = 0; i < mTanksOutput.length; i++) rGibbl += mTanksOutput[i].getFluidAmount(); return rGibbl;}
+	@Override public long getGibblMax     (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].getCapacity   (); for (int i = 0; i < mTanksOutput.length; i++) rGibbl += mTanksOutput[i].getCapacity   (); return rGibbl;}
 	
 	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0;}
 	@Override public boolean getStateRunningPassively() {return mRunning;}

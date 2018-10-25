@@ -58,7 +58,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetOreDictItemData, IMTE_AddToolTips {
 	public boolean mJammed = F, mUsedGear = F, mUsedAxle = F, mGearsWork = F;
 	public long mMaxThroughPut = 64;
-	public short mAxleGear = 0, mRotationData = 0, oRotationData = 0;
+	public short mAxleGear = 0, fRotationData = 0, mRotationData = 0, oRotationData = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -242,7 +242,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		if (!isEnergyType(aEnergyType, aSide, F)) return 0;
 		if (!aDoInject) return aPower;
 		
-		mRotationData = 0;
+		if (!mUsedGear) mRotationData = 0;
 		
 		if (Math.abs(aSpeed) > mMaxThroughPut) {
 			UT.Sounds.send(SFX.MC_BREAK, this);

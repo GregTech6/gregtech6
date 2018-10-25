@@ -21,8 +21,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Screwdriver Recipes being overwritten by Axle Recipes by accident.
 [FIXED] Gearboxes and Axles were not being Paintable, because I accidentially grabbed the wrong RGB Color.
 [FIXED] Gears attached to the Gearboxes did not count towards the contained Materials total for recycling them.
+[ADDED] The Gibbl-O-Meter can now detect the total amount of Fluid inside any Basic Machine.
 [ADDED] Wrench Overlay to show which Sides of a Custom Gearbox have Gears.
-[ADDED] Transformer Gearboxes, they kinda work like the Electric Transformers, just with only one instead of 5 outputs. It's a Planetary Gear by design.
+[ADDED] Transformer Gearboxes, they kinda work like the Electric Transformers, just with only one instead of 5 Outputs. It's a Planetary Gear by design.
 
 
 6.09.05:
