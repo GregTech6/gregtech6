@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.09.12: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.09.11: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.09.10: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -17,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.06: (Not released yet)
+6.09.06:
 [FIXED] Screwdriver Recipes being overwritten by Axle Recipes by accident.
 [FIXED] Gearboxes and Axles were not being Paintable, because I accidentially grabbed the wrong RGB Color.
 [FIXED] Gears attached to the Gearboxes did not count towards the contained Materials total for recycling them.
