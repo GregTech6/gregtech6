@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetOreDictItemData;
 import gregapi.code.TagData;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
@@ -54,7 +55,7 @@ import net.minecraft.nbt.NBTTagCompound;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_AddToolTips {
+public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetOreDictItemData, IMTE_AddToolTips {
 	public boolean mJammed = F, mUsedGear = F, mUsedAxle = F, mGearsWork = F;
 	public long mMaxThroughPut = 64;
 	public short mAxleGear = 0, mRotationData = 0, oRotationData = 0;
@@ -119,7 +120,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				causeBlockUpdate();
 				return 10000;
 			}
-			for (int i = 0, j = aPlayerInventory.getSizeInventory(); i < j; i++) {
+			if (aPlayerInventory != null) for (int i = 0, j = aPlayerInventory.getSizeInventory(); i < j; i++) {
 				OreDictItemData tData = OM.data(aPlayerInventory.getStackInSlot(i));
 				if (tData != null && tData.mPrefix == OP.gearGt && (tData.mMaterial.mMaterial == mMaterial || mMaterial.mToThis.contains(tData.mMaterial.mMaterial))) {
 					aPlayerInventory.decrStackSize(i, 1);
@@ -357,6 +358,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return mMaxThroughPut;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.RU.AS_LIST;}
 	
+	@Override public boolean isConnectedWrenchingOverlay(ItemStack aStack, byte aSide) {return FACE_CONNECTED[aSide][mAxleGear & 63];}
+	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	
 	@Override public boolean getStateRunningPossible () {return mGearsWork;}
@@ -366,4 +369,10 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	@Override public boolean getStateOnOff() {return !mJammed;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.gearbox.custom";}
+	
+	@Override
+	public List<OreDictItemData> getOreDictItemData(List<OreDictItemData> aList) {
+		if (FACE_CONNECTION_COUNT[mAxleGear & 63] > 0) aList.add(new OreDictItemData(mMaterial, OP.gearGt.mAmount * FACE_CONNECTION_COUNT[mAxleGear & 63]));
+		return aList;
+	}
 }

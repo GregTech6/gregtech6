@@ -21,6 +21,7 @@ package gregtech.tileentity.energy;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.LH;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -40,6 +41,8 @@ public class MultiTileEntityTransformerRotation extends TileEntityBase11Bidirect
 	
 	@Override public boolean isInput (byte aSide) {return mReversed ? aSide == OPPOSITES[mFacing] : aSide == mFacing;}
 	@Override public boolean isOutput(byte aSide) {return mReversed ? aSide == mFacing : aSide == OPPOSITES[mFacing];}
+	@Override public String getLocalisedInputSide () {return LH.get(LH.FACE_FRONT);}
+	@Override public String getLocalisedOutputSide() {return LH.get(LH.FACE_BACK);}
 	
 	// Icons
 	public static IIconContainer sColoreds[][] = new IIconContainer[][] {{

@@ -133,7 +133,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			
 			short aMeta = ST.meta_(aEvent.mStack);
 			
-			if (WoodDictionary.WOODS.containsKey(new ItemStackContainer(aEvent.mStack, aMeta == W ? 0 : aMeta)) || WoodDictionary.WOODS.containsKey(new ItemStackContainer(aEvent.mStack, W)) || WoodDictionary.BEAMS.containsKey(new ItemStackContainer(aEvent.mStack, aMeta == W ? 0 : aMeta)) || WoodDictionary.BEAMS.containsKey(new ItemStackContainer(aEvent.mStack, W))) return;
+			if (WoodDictionary.WOODS.containsKey(aEvent.mStack.getItem(), aMeta, T) || WoodDictionary.BEAMS.containsKey(aEvent.mStack.getItem(), aMeta, T)) return;
 			
 			ItemStack tBark = OM.dust(MT.Bark, U2), tOverridePlank = NI;
 			OreDictMaterial tWood = MT.Wood;

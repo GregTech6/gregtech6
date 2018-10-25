@@ -19,6 +19,8 @@
 
 package gregapi.code;
 
+import static gregapi.data.CS.*;
+
 import java.util.HashMap;
 
 import gregapi.GT_API;
@@ -43,20 +45,30 @@ public class ItemStackMap<K extends ItemStackContainer, V> extends HashMap<ItemS
 		return this == o;
 	}
 	
-	public V get(long aID, long aMetaData) {
-		return get(new ItemStackContainer(aID, 1, aMetaData));
+	public boolean containsKey(long aID, long aMeta, boolean aWildcard) {
+		return containsKey(new ItemStackContainer(aID, 1, aMeta)) || (aWildcard && aMeta != W && containsKey(new ItemStackContainer(aID, 1, W)));
+	}
+	public boolean containsKey(Item aItem, long aMeta, boolean aWildcard) {
+		return containsKey(new ItemStackContainer(aItem, 1, aMeta)) || (aWildcard && aMeta != W && containsKey(new ItemStackContainer(aItem, 1, W)));
+	}
+	public boolean containsKey(Block aBlock, long aMeta, boolean aWildcard) {
+		return containsKey(new ItemStackContainer(aBlock, 1, aMeta)) || (aWildcard && aMeta != W && containsKey(new ItemStackContainer(aBlock, 1, W)));
 	}
 	
-	public V get(Item aItem, long aMetaData) {
-		return get(new ItemStackContainer(aItem, 1, aMetaData));
+	public V get(long aID, long aMeta) {
+		return get(new ItemStackContainer(aID, 1, aMeta));
 	}
 	
-	public V get(Block aBlock, long aMetaData) {
-		return get(new ItemStackContainer(aBlock, 1, aMetaData));
+	public V get(Item aItem, long aMeta) {
+		return get(new ItemStackContainer(aItem, 1, aMeta));
 	}
 	
-	public V get(ModData aMod, String aName, long aMetaData) {
-		return aMod.mLoaded ? get(new ItemStackContainer(ST.make(aMod, aName, 1, aMetaData))) : null;
+	public V get(Block aBlock, long aMeta) {
+		return get(new ItemStackContainer(aBlock, 1, aMeta));
+	}
+	
+	public V get(ModData aMod, String aName, long aMeta) {
+		return aMod.mLoaded ? get(new ItemStackContainer(ST.make(aMod, aName, 1, aMeta))) : null;
 	}
 	
 	public V put(ItemStack aKey, V aValue) {

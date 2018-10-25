@@ -29,6 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.ModIDs;
 import gregapi.network.INetworkHandler;
+import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.tileentity.ITileEntitySpecificPlacementBehavior;
 import net.minecraft.block.Block;
@@ -337,5 +338,10 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_OnServerSave extends IMultiTileEntity {
 		/** Gets called once per class when the Server stops. */
 		public void onServerSave(File aSaveLocation);
+	}
+	
+	public static interface IMTE_GetOreDictItemData extends IMultiTileEntity {
+		/** Gets called to determine OreDictItemData, this is a List with the first element being the Default OreDictItemData, followed by Covers and Stuff. */
+		public List<OreDictItemData> getOreDictItemData(List<OreDictItemData> aList);
 	}
 }

@@ -256,18 +256,23 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	
 	@Override
 	public OreDictItemData getOreDictItemData(ItemStack aStack) {
-		OreDictItemData rData = OM.data(aStack);
-		ArrayListNoNulls<OreDictItemData> rList = new ArrayListNoNulls<>(F, rData);
+		List<OreDictItemData> rList = new ArrayListNoNulls<>(F, OM.data(aStack));
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		// Yes I keep Covers a special case, less chances for fuck ups.
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof ITileEntityCoverable) {
 			CoverData tCoverData = ((ITileEntityCoverable)tTileEntityContainer.mTileEntity).getCoverData();
 			if (tCoverData != null) for (byte tSide : ALL_SIDES_VALID) rList.add(OM.anydata(tCoverData.getCoverItem(tSide)));
 		}
+		// Same for foamed Blocks.
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof ITileEntityFoamable && ((ITileEntityFoamable)tTileEntityContainer.mTileEntity).hasFoam(SIDE_ANY)) {
 			rList.add(new OreDictItemData(MT.ConstructionFoam, U));
 			if (((ITileEntityFoamable)tTileEntityContainer.mTileEntity).ownedFoam(SIDE_ANY)) rList.add(new OreDictItemData(MT.Pd, U4));
 		}
-		return rList.isEmpty() ? null : rData == null || rList.size() > 1 ? new OreDictItemData(rList) : rData;
+		// General case for Custom additional OreDictItemData.
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IMTE_GetOreDictItemData) {
+			rList = ((IMTE_GetOreDictItemData)tTileEntityContainer.mTileEntity).getOreDictItemData(rList);
+		}
+		return rList.isEmpty() ? null : rList.size() > 1 ? new OreDictItemData(rList) : rList.get(0);
 	}
 	
 	@Override
