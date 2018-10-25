@@ -28,6 +28,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetOreDictItemData;
 import gregapi.code.TagData;
 import gregapi.data.CS.SFX;
+import gregapi.data.CS.ToolsGT;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.OP;
@@ -358,6 +359,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return mMaxThroughPut;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.RU.AS_LIST;}
 	
+	@Override public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {return super.isUsingWrenchingOverlay(aStack, aSide) || ToolsGT.contains(TOOL_wrench, aStack) || ToolsGT.contains(TOOL_monkeywrench, aStack);}
 	@Override public boolean isConnectedWrenchingOverlay(ItemStack aStack, byte aSide) {return FACE_CONNECTED[aSide][mAxleGear & 63];}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
