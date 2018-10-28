@@ -23,7 +23,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.07: (Not released yet)
 [CHANGED] Wrenching a Gearbox now uses the Wrenching Sides rather than the Facing you click on.
-[CHANGED] Custom Gearboxes now split the Power evenly over all Targets and can accept Power from multiple Sides as long as their absolute Speed is matching.
+[CHANGED] Custom Gearboxes now split the Power evenly over all Targets and can accept Power from multiple Sides as long as their absolute Speed is matching. Note, that you need to make a Tree Design for using more than one Gearbox, because Symmetry.
+[ADDED] A Titanium-Gold Alloy that is more durable than Titanium itself.
 
 
 6.09.06:
