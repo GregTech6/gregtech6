@@ -183,7 +183,6 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 					if (++mOrder >= 6) mOrder = 0;
 				}
 			}
-			
 			if (!mUsedGear) mRotationData = 0;
 			mUsedGear = F;
 		}
