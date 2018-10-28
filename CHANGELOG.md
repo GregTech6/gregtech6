@@ -22,7 +22,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.07: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Wrenching a Gearbox now uses the Wrenching Sides rather than the Facing you click on.
+[CHANGED] Custom Gearboxes now split the Power evenly over all Targets and can accept Power from multiple Sides as long as their absolute Speed is matching.
 
 
 6.09.06:
