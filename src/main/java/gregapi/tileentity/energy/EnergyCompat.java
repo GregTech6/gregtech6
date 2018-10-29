@@ -92,6 +92,7 @@ public class EnergyCompat {
 		return F;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static long insertEnergyInto(TagData aEnergyType, byte aSideInto, long aSize, long aAmount, Object aEmitter, TileEntity aReceiver) {
 		if (aAmount <= 0 || aSize == 0 || aReceiver == null) return 0;
 		
@@ -155,6 +156,10 @@ public class EnergyCompat {
 					}
 					return rUsedAmount;
 				}
+			}
+			
+			if (aReceiver instanceof gregtech.api.interfaces.tileentity.IEnergyConnected) {
+				return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aReceiver).injectEnergyUnits(aSideInto, aSize, aAmount);
 			}
 		}
 		
