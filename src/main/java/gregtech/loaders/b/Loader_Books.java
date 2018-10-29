@@ -94,18 +94,20 @@ public class Loader_Books implements Runnable {
 		, "If the Engines are too Red then they will release the Steam and stop running (no Explosions, just a waste of Steam and a fizzing noise)."
 		});
 		
-		UT.Books.createWrittenBook("Manual_Random", "Manual with Random Information", "Gregorius Techneticies", ST.make(ItemsGT.BOOKS, 1, 32000), new String[] {
+		UT.Books.createWrittenBook("Manual_Random", "Tips & Tricks with GregTech Six", "Gregorius Techneticies", ST.make(ItemsGT.BOOKS, 1, 32000), new String[] {
 		  "This Book contains random Information that might be useful sometime. Read it whenever you have Issues. Maybe it has the Solution."
 		, "The first Hint is obvious: ALWAYS. READ. THE. ENTIRE. TOOLTIP. FIRST! The Tooltips often contain the Information you need, but not many people think about reading them. They usually contain all the Stats of the Machine."
 		, "If a Machine doesn't process a certain Recipe (but does others), then you are not supplying enough Power. This is ALWAYS the Issue. The Tier of a Machine determines how much more Energy it consumes, than the normal Recipe."
 		, "The Tiers of Machines are as follows: anything between 16 and 64 Generic Units per Tick is Tier ONE\nTier 2: 65-256\nTier 3: 257-1024\nTier 4: 1025-4096\nTier 5: 4097-16192"
 		, "If the Tier of the Machine you are using is in a higher Range than the Tier of the Recipe (see its GU/t) it will multiply the required Input GU/t by 4 and half the Processing time, making the Recipe twice as expensive."
 		, "And yes, 64 GU/t is STILL TIER ONE, you seriously have to insert that much into a Tier 1 Machine! It is often possible to use the Motor/Heater/etc of a higher Tier on the lowest Power Input to get the GU/t."
+		, "GT6 Electric Power is widely compatible with all Mods that use the IC² API, such as:\nIC², IC²-Classic, IC²-Addons, Railcraft, Forestry and more!"
+		, "Things emitting a Voltage less than 1024 EU/t are even capable of powering the non-IC² Machines of the following Mods:\nGalacticraft and it's Addons, Applied Energistics, Immersive Engineering, OpenModularTurrets, TechGuns and even GT5U!"
 		, "Burning Boxes of any kind are always a Fire Hazard, make sure to only have Fireproof Stuff around them! The only ways to turn those Boxes off are placing a solid Block in front of them or the Fire Extinguishers."
-		, "You want to move water or get Milk, but don't have an Iron Bucket? Try making a Wooden Bucket for that Task, its cheaper, even if it only does a few Liquids."
+		, "You want to move Water or get Milk, but don't have an Iron Bucket? Try making a Wooden Bucket for that Task, it's cheaper, even if it only works for a small sortiment Liquids."
 		, "If you need a Printer Manual, then just insert Chemical Black Dye and an empty vanilla Book into it and apply Energy. It will instantly print that Manual."
 		, "The Bathing Pot and the Bath can dye Leather Armor using Liquid Dyes.\nYou can wash Ores early on by throwing them into a filled vanilla Cauldron. Also GT Pipes can fill Cauldrons with Water."
-		, "Space out Machines a little in order to be able to automate them later without causing a huge Clusterfuck. Always have enough space for 2 Blocks inbetween each Machine, if not 3! Disregard the eventual Loss of Power, its not worth it."
+		, "Space out Machines a little in order to be able to automate them later without causing a huge Clusterfuck. Always have enough space for 2 Blocks inbetween each Machine, if not 3! Disregard the eventual Loss of Power, it's not worth it."
 		});
 		
 		UT.Books.createWrittenBook("Manual_Portal_TF", "Benimatics Twilight Forest", "Gregorius Techneticies", ST.make(ItemsGT.BOOKS, 1, 5), new String[] {
