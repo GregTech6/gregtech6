@@ -188,6 +188,7 @@ public class LH {
 	, TOOLTIP_BLAST_RESISTANCE_CREEPER = "gt.lang.blast.resist.creeper.proof"
 	, TOOLTIP_BLAST_RESISTANCE_TNT = "gt.lang.blast.resist.tnt.proof"
 	, TOOLTIP_BLAST_RESISTANCE_NOT_NUKE = "gt.lang.blast.resist.nuke.not"
+	, TOOLTIP_BETWEENLANDS_RESISTANCE = "gt.lang.betweenlands.resist"
 	, PROSPECTING_LAVA = "gt.lang.prospecting.lava"
 	, PROSPECTING_LIQUID = "gt.lang.prospecting.liquid"
 	, PROSPECTING_AIR = "gt.lang.prospecting.air"
@@ -436,6 +437,7 @@ public class LH {
 		add(TOOLTIP_BLAST_RESISTANCE_CREEPER            , "(Creeper Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_TNT                , "(TNT Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes will go right through!)");
+		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the Effects of the Betweenlands");
 		add(PROSPECTING_LAVA                            , "There is Lava behind this Rock.");
 		add(PROSPECTING_LIQUID                          , "There is a Liquid behind this Rock.");
 		add(PROSPECTING_AIR                             , "There is an Air Pocket behind this Rock.");

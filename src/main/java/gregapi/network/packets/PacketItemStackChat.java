@@ -33,7 +33,6 @@ import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTSizeTracker;
@@ -76,7 +75,7 @@ public class PacketItemStackChat implements IPacket {
 	
 	@Override
 	public IPacket decode(ByteArrayDataInput aData) {
-		return new PacketItemStackChat(ST.make(Item.getItemById(aData.readShort()), aData.readByte(), aData.readShort(), readNBTTagCompoundFromBuffer(aData)));
+		return new PacketItemStackChat(ST.make(aData.readShort(), aData.readByte(), aData.readShort(), readNBTTagCompoundFromBuffer(aData)));
 	}
 	
 	public NBTTagCompound readNBTTagCompoundFromBuffer(ByteArrayDataInput aData) {

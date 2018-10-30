@@ -79,6 +79,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -265,26 +266,6 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI || ST.invalid(aEvent.itemStack)) return;
 		if (!DISPLAY_TEMP_TOOLTIP) {DISPLAY_TEMP_TOOLTIP = T; return;}
 		
-		String aRegName = ST.regName(aEvent.itemStack);
-		short aMeta = ST.meta_(aEvent.itemStack);
-		byte aBlockMeta = (byte)(UT.Code.inside(0, 15, aMeta) ? aMeta : 0);
-		Block aBlock = ST.block(aEvent.itemStack);
-		
-		if (aBlock == Blocks.dirt && aBlockMeta == 1) {
-			aEvent.toolTip.set(0, "Coarse Dirt");
-		}
-		if (MD.RC.mLoaded && aEvent.itemStack.getTagCompound() == null && "Railcraft:part.plate".equalsIgnoreCase(aRegName)) {
-			switch(aMeta) {
-			case 0: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Fe.getLocal()+" Plate"); break;
-			case 1: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Steel.getLocal()+" Plate"); break;
-			case 2: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.TinAlloy.getLocal()+" Plate"); break;
-			case 3: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Cu.getLocal()+" Plate"); break;
-			case 4: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Pb.getLocal()+" Plate"); break;
-			}
-		}
-		
-		OreDictItemData tData = OM.anydata_(aEvent.itemStack);
-		
 		if (UT.NBT.getNBT(aEvent.itemStack).getBoolean("gt.err.oredict.output")) {
 			aEvent.toolTip.clear();
 			aEvent.toolTip.add(0, "A Recipe used an OreDict Item as Output directly, without copying it before!");
@@ -294,9 +275,35 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			return;
 		}
 		
+		String aRegName = ST.regName(aEvent.itemStack);
+		if (aRegName == null) aRegName = "ERROR: THIS ITEM HAS NOT BEEN REGISTERED!!!";
+		short aMeta = ST.meta_(aEvent.itemStack);
+		byte aBlockMeta = (byte)(UT.Code.inside(0, 15, aMeta) ? aMeta : 0);
+		Block aBlock = ST.block(aEvent.itemStack);
+		Item aItem = ST.item(aEvent.itemStack);
+		
+		if (aEvent.itemStack.getTagCompound() == null) {
+			if (aBlock == Blocks.dirt && aBlockMeta == 1) {
+				aEvent.toolTip.set(0, "Coarse Dirt");
+			}
+			if (MD.RC.mLoaded && "Railcraft:part.plate".equalsIgnoreCase(aRegName)) {
+				switch(aMeta) {
+				case 0: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Fe.getLocal()+" Plate"); break;
+				case 1: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Steel.getLocal()+" Plate"); break;
+				case 2: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.TinAlloy.getLocal()+" Plate"); break;
+				case 3: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Cu.getLocal()+" Plate"); break;
+				case 4: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Pb.getLocal()+" Plate"); break;
+				}
+			}
+		}
+		
+		
+		
+		
 		if (ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.contains(aEvent.itemStack, T)) {
 			aEvent.toolTip.add(LH.Chat.BLINKING_RED + "Recipe has been removed in favour of the GregTech Ender Garbage Bin");
 		}
+		
 		
 		ICover tCover = CoverRegistry.get(aEvent.itemStack);
 		if (tCover != null) tCover.addToolTips(aEvent.toolTip, aEvent.itemStack, aEvent.showAdvancedItemTooltips);
@@ -317,26 +324,28 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		}
 		
 		
-		if (aEvent.itemStack.getItem().isBeaconPayment(aEvent.itemStack)) {
+		if (aItem.isBeaconPayment(aEvent.itemStack)) {
 			aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_BEACON_PAYMENT));
 		}
 		
 		
-		if (!(aEvent.itemStack.getItem() instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
+		OreDictItemData tData = OM.anydata_(aEvent.itemStack);
+		
+		if (!(aItem instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
 			if (tData != null && tData.hasValidPrefixMaterialData()) {
 				if (tData.mBlackListed) {
-					if (aEvent.itemStack.getItem() instanceof IItemGT)
+					if (aItem instanceof IItemGT)
 					aEvent.toolTip.add(LH.Chat.ORANGE + tData.toString());
 					else
 					aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta + LH.Chat.WHITE + " - " + LH.Chat.ORANGE + tData.toString());
 				} else {
-					if (aEvent.itemStack.getItem() instanceof IItemGT)
+					if (aItem instanceof IItemGT)
 					aEvent.toolTip.add(LH.Chat.GREEN + tData.toString());
 					else
 					aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta + LH.Chat.WHITE + " - " + LH.Chat.GREEN + tData.toString());
 				}
 			} else {
-				if (!(aEvent.itemStack.getItem() instanceof IItemGT))
+				if (!(aItem instanceof IItemGT))
 				aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta);
 			}
 		}
@@ -397,15 +406,20 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 						}
 					}
 				}
-				if (tData.hasValidPrefixData() && !(aBlock instanceof MultiTileEntityBlockInternal)) {
-					if (tData.mMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)) {
-						if (tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
-							aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE_AND_EXPLOSIVE));
-						} else {
-							aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE));
+				if (tData.hasValidPrefixData()) {
+					if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
+						aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
+					}
+					if (!(aBlock instanceof MultiTileEntityBlockInternal)) {
+						if (tData.mMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)) {
+							if (tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
+								aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE_AND_EXPLOSIVE));
+							} else {
+								aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE));
+							}
+						} else if (tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
+							aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_EXPLOSIVE));
 						}
-					} else if (tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
-						aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_EXPLOSIVE));
 					}
 				}
 			}
@@ -437,7 +451,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			} else {
 				aEvent.toolTip.add(LH.Chat.DGRAY + "Enable F3+H Mode for Info about contained Materials.");
 			}
-			if (aEvent.itemStack.getItem() instanceof IItemGT && tData.hasValidPrefixMaterialData()) {
+			if (aItem instanceof IItemGT && tData.hasValidPrefixMaterialData()) {
 				if (tData.mMaterial.mMaterial.mOriginalMod == null) {
 					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: Unknown (But definitely not GregTech)");
 				} else {

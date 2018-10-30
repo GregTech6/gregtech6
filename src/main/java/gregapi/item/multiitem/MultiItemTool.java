@@ -48,6 +48,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -185,6 +186,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		IToolStats tStats = getToolStats(aStack);
 		if (isItemStackUsable(aStack) && getDigSpeed(aStack, aBlock, aMetaData) > 0) {
 			int tDamage = tStats.convertBlockDrops(aDrops, aStack, aPlayer, aBlock, (getToolMaxDamage(aStack) - getToolDamage(aStack)) / tStats.getToolDamagePerDropConversion(), aX, aY, aZ, aMetaData, aFortune, aSilkTouch, aEvent);
+			if (WD.dimBTL(aPlayer.worldObj) && !getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
 			if (!UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, tDamage * tStats.getToolDamagePerDropConversion(), aPlayer);
 		}
 	}
@@ -287,6 +289,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			aList.add(LH.Chat.WHITE + "Attack Damage: " + LH.Chat.BLUE + "+" + tCombat + LH.Chat.RED + " (= " + ((tCombat+1)/2) + " Hearts)" + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * getPrimaryMaterial(aStack, MT.NULL).mToolSpeed) + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + "Crafting Uses: " + LH.Chat.GREEN + UT.Code.divup(getEnergyStats(aStack) == null ? tMaxDamage - tDamage : getEnergyStored(TD.Energy.EU, aStack), tStats.getToolDamagePerContainerCraft()) + LH.Chat.GRAY);
+			if (MD.BTL.mLoaded && tMaterial.contains(TD.Properties.BETWEENLANDS)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
 			if (tStats.canCollect() || getPrimaryMaterial(aStack).contains(TD.Properties.MAGNETIC_ACTIVE)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
 		}
 	}
@@ -430,9 +433,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public final boolean canHarvestBlock(Block aBlock, ItemStack aStack) {
-		if (IL.TC_Block_Air.equal(aBlock) || getDigSpeed(aStack, aBlock, (byte)0) > 0) return T;
-		String tRegName = ST.regName(ST.make(aBlock, 1, 0));
-		return tRegName != null && tRegName.startsWith(MD.CARP.mID);
+		return IL.TC_Block_Air.equal(aBlock) || ST.ownedBy(MD.CARP, aBlock) || getDigSpeed(aStack, aBlock, (byte)0) > 0;
 	}
 	
 	@Override
@@ -449,7 +450,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (tStats == null) return F;
 		if (TOOL_SOUNDS) UT.Sounds.play(tStats.getMiningSound(), 5, 1, aX, aY, aZ);
 		boolean rReturn = (getDigSpeed(aStack, aBlock, aWorld.getBlockMetadata(aX, aY, aZ)) > 0);
-		if (!UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, (int)Math.max(1, aBlock.getBlockHardness(aWorld, aX, aY, aZ) * tStats.getToolDamagePerBlockBreak()), aPlayer);
+		if (!UT.Entities.hasInfiniteItems(aPlayer)) {
+			double tDamage = Math.max(1, tStats.getToolDamagePerBlockBreak() * aBlock.getBlockHardness(aWorld, aX, aY, aZ));
+			if (WD.dimBTL(aWorld) && !getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
+			doDamage(aStack, (int)tDamage, aPlayer);
+		}
 		return rReturn;
 	}
 	

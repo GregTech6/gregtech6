@@ -41,7 +41,6 @@ import gregapi.item.multiitem.energy.EnergyStatDebug;
 import gregapi.lang.LanguageHandler;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import gregapi.util.WD;
 import micdoodle8.mods.galacticraft.core.energy.EnergyConfigHandler;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.Entity;
@@ -184,7 +183,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	
 	@Override
 	public boolean onItemUse(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
-		if (ST.regName(ST.make(WD.block(aWorld, aX, aY, aZ), 1, 0)).startsWith(MD.BbLC.mID)) return F;
+		if (ST.ownedBy(MD.BbLC, aWorld, aX, aY, aZ)) return F;
 		useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		isItemStackUsable(aStack);
 		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));
@@ -205,7 +204,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	
 	@Override
 	public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
-		if (ST.regName(ST.make(WD.block(aWorld, aX, aY, aZ), 1, 0)).startsWith(MD.BbLC.mID)) return F;
+		if (ST.ownedBy(MD.BbLC, aWorld, aX, aY, aZ)) return F;
 		useEnergy(TD.Energy.EU, aStack, 0, aPlayer, null, null, 0, 0, 0, T);
 		isItemStackUsable(aStack);
 		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)getDamage(aStack));

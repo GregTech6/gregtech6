@@ -59,6 +59,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
@@ -157,6 +158,23 @@ public class ST {
 	public static Block     toBlock(int aStack) {return block(aStack&(~0>>>16));}
 	public static Item      toItem (int aStack) {return item(aStack&(~0>>>16));}
 	public static short     toMeta (int aStack) {return (short)(aStack>>>16);}
+	
+	public static String regName (ItemStack aStack) {return regName(item(aStack));}
+	public static String regName (Block     aBlock) {return regName(item(aBlock));}
+	public static String regName (Item      aItem ) {return aItem == null ? null : regName_(aItem);}
+	public static String regName_(Item      aItem ) {return Item.itemRegistry.getNameForObject(aItem);}
+	
+	public static boolean ownedBy (ModData aMod, IBlockAccess aWorld, int aX, int aY, int aZ) {return aMod.mLoaded && ownedBy(aMod.mID, aWorld, aX, aY, aZ);}
+	public static boolean ownedBy (ModData aMod, ItemStack    aStack                        ) {return aMod.mLoaded && ownedBy(aMod.mID, aStack);}
+	public static boolean ownedBy (ModData aMod, Block        aBlock                        ) {return aMod.mLoaded && ownedBy(aMod.mID, aBlock);}
+	public static boolean ownedBy (ModData aMod, Item         aItem                         ) {return aMod.mLoaded && ownedBy(aMod.mID, aItem);}
+	public static boolean ownedBy (ModData aMod, String       aRegName                      ) {return aMod.mLoaded && ownedBy(aMod.mID, aRegName);}
+	public static boolean ownedBy (String  aMod, IBlockAccess aWorld, int aX, int aY, int aZ) {return ownedBy(aMod, aWorld.getBlock(aX, aY, aZ));}
+	public static boolean ownedBy (String  aMod, ItemStack    aStack                        ) {return ownedBy(aMod, regName(aStack));}
+	public static boolean ownedBy (String  aMod, Block        aBlock                        ) {return ownedBy(aMod, regName(aBlock));}
+	public static boolean ownedBy (String  aMod, Item         aItem                         ) {return ownedBy(aMod, regName(aItem));}
+	public static boolean ownedBy (String  aMod, String       aRegName                      ) {return aRegName != null && aMod != null && ownedBy_(aMod, aRegName);}
+	public static boolean ownedBy_(String  aMod, String       aRegName                      ) {return aRegName.startsWith(aMod);}
 	
 	public static ItemStack set(ItemStack aSetStack, ItemStack aToStack) {
 		return set(aSetStack, aToStack, T, T);
@@ -483,9 +501,6 @@ public class ST {
 		String rString = "";
 		for (ItemStack tStack : aStacks) rString += (tStack == null ? "null;" : configName(tStack) + ";");
 		return rString;
-	}
-	public static String regName(ItemStack aStack) {
-		return invalid(aStack) ? "null" : Item.itemRegistry.getNameForObject(item_(aStack));
 	}
 	public static String names(ItemStack... aStacks) {
 		String rString = "";
