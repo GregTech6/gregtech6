@@ -706,7 +706,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onPlayerInteraction(PlayerInteractEvent aEvent) {
-		if (aEvent.entityPlayer == null || aEvent.entityPlayer.worldObj == null || aEvent.action == null || aEvent.world.provider == null || aEvent.action == null) return;
+		if (aEvent.entityPlayer == null || aEvent.entityPlayer.worldObj == null || aEvent.action == null || aEvent.world.provider == null) return;
 		
 		PLAYER_LAST_CLICKED.put(aEvent.entityPlayer, new ChunkCoordinates(aEvent.x, aEvent.y, aEvent.z));
 		

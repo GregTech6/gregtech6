@@ -188,27 +188,37 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				break;
 			}
 			
+			DEB.println("TEST 1");
 			if (aTimer % 5 == 0 && (mState & B[2]) != 0) {
+				DEB.println("TEST 2");
 				mState &= ~B[2];
-				for (Entry<EntityPlayer, ChunkCoordinates> tEntry : PLAYER_LAST_CLICKED.entrySet()) if (getCoords().equals(tEntry.getValue()) && isUseableByPlayer(tEntry.getKey())) {
-					boolean temp = T;
-					for (int i = 1; i < 13; i++) if (slot(i) != null) {temp = F; break;}
-					ItemStack aStack = slot(0);
-					
-					if (temp && mRecipes != null && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(tEntry.getKey()))) {
-						mClickCount = 0;
-						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
-						if (tRecipe == null) {
-							for (int i = 1; i < 13; i++) if (addStackToSlot(i, aStack)) {slot(0, null); break;}
-						} else {
-							if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
-							if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, new ItemStack[] {aStack})) {
-								if (aStack.stackSize <= 0) slot(0, null);
-								ItemStack[] tOutputs = tRecipe.getOutputs(RNGSUS);
-								for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
-								tEntry.getKey().addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 5000.0F);
-								tEntry.getKey().swingItem();
-								mState |= B[2];
+				for (Entry<EntityPlayer, ChunkCoordinates> tEntry : PLAYER_LAST_CLICKED.entrySet()) {
+					DEB.println("TEST 3");
+					if (getCoords().equals(tEntry.getValue()) && tEntry.getKey().getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64D) {
+						DEB.println("TEST 4");
+						boolean temp = T;
+						for (int i = 1; i < 13; i++) if (slot(i) != null) {temp = F; break;}
+						ItemStack aStack = slot(0);
+						
+						if (temp && mRecipes != null && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(tEntry.getKey()))) {
+							DEB.println("TEST 5");
+							mClickCount = 0;
+							Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
+							if (tRecipe == null) {
+								DEB.println("TEST 6");
+								for (int i = 1; i < 13; i++) if (addStackToSlot(i, aStack)) {slot(0, null); break;}
+							} else {
+								DEB.println("TEST 7");
+								if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
+								if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, new ItemStack[] {aStack})) {
+									DEB.println("TEST 8");
+									if (aStack.stackSize <= 0) slot(0, null);
+									ItemStack[] tOutputs = tRecipe.getOutputs(RNGSUS);
+									for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
+									tEntry.getKey().addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 5000.0F);
+									tEntry.getKey().swingItem();
+									mState |= B[2];
+								}
 							}
 						}
 					}
