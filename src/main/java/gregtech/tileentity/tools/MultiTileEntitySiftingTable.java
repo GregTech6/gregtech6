@@ -96,9 +96,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			mState = 0;
 			mDisplayedInput = 0;
 			mDisplayedOutput = 0;
+			mState &= ~B[0];
 			ItemStack tStack = slot(0);
 			if (ST.valid(tStack)) {
 				mState |= B[0];
@@ -143,6 +143,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					}
 				}
 			}
+			mState &= ~B[1];
 			for (int i = 1; i < 13; i++) if (ST.valid(tStack = slot(i))) {
 				mState |= B[1];
 				if (ST.equal(tStack, Blocks.gravel      , W)) {mDisplayedOutput = -1;} else
@@ -188,7 +189,6 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				break;
 			}
 			
-			DEB.println("TEST 1");
 			if (aTimer % 5 == 0 && (mState & B[2]) != 0) {
 				DEB.println("TEST 2");
 				mState &= ~B[2];
