@@ -187,15 +187,11 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	@Override
 	@SuppressWarnings("deprecation")
 	public boolean canConnect(byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {
-		if (aDelegator.mTileEntity instanceof ITileEntityEnergy) return ((ITileEntityEnergy)aDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.EU, aDelegator.mSideOfTileEntity, T) || ((ITileEntityEnergy)aDelegator.mTileEntity).isEnergyEmittingTo(TD.Energy.EU, aDelegator.mSideOfTileEntity, T);
-		if (aDelegator.mTileEntity instanceof gregapi.tileentity.ITileEntityEnergy) return ((gregapi.tileentity.ITileEntityEnergy)aDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.EU, aDelegator.mSideOfTileEntity, T) || ((gregapi.tileentity.ITileEntityEnergy)aDelegator.mTileEntity).isEnergyEmittingTo(TD.Energy.EU, aDelegator.mSideOfTileEntity, T);
-		if (aDelegator.mTileEntity instanceof gregtech.api.interfaces.tileentity.IEnergyConnected) return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aDelegator.mTileEntity).inputEnergyFrom(aDelegator.mSideOfTileEntity) || ((gregtech.api.interfaces.tileentity.IEnergyConnected)aDelegator.mTileEntity).outputsEnergyTo(aDelegator.mSideOfTileEntity);
-		if (EnergyCompat.AE_ENERGY) {
-			if (aDelegator.mTileEntity instanceof appeng.tile.powersink.IC2) return ((appeng.tile.powersink.IC2)aDelegator.mTileEntity).acceptsEnergyFrom(this, aDelegator.getForgeSideOfTileEntity());
-		}
-		if (COMPAT_GC != null) {
-			if (aDelegator.mTileEntity instanceof IEnergyHandlerGC && (!(aDelegator.mTileEntity instanceof IConnector) || ((IConnector)aDelegator.mTileEntity).canConnect(aDelegator.getForgeSideOfTileEntity(), NetworkType.POWER))) return T;
-		}
+		if (aDelegator.mTileEntity instanceof ITileEntityEnergy                                  ) return ((ITileEntityEnergy                                               )aDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.EU, aDelegator.mSideOfTileEntity, T) || ((ITileEntityEnergy                                  )aDelegator.mTileEntity).isEnergyEmittingTo(TD.Energy.EU, aDelegator.mSideOfTileEntity, T);
+		if (aDelegator.mTileEntity instanceof gregapi.tileentity.ITileEntityEnergy               ) return ((gregapi.tileentity.ITileEntityEnergy                            )aDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.EU, aDelegator.mSideOfTileEntity, T) || ((gregapi.tileentity.ITileEntityEnergy               )aDelegator.mTileEntity).isEnergyEmittingTo(TD.Energy.EU, aDelegator.mSideOfTileEntity, T);
+		if (aDelegator.mTileEntity instanceof gregtech.api.interfaces.tileentity.IEnergyConnected) return T; // return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aDelegator.mTileEntity).inputEnergyFrom      (aDelegator.mSideOfTileEntity                 ) || ((gregtech.api.interfaces.tileentity.IEnergyConnected)aDelegator.mTileEntity).outputsEnergyTo   (aDelegator.mSideOfTileEntity);
+		if (EnergyCompat.AE_ENERGY && aDelegator.mTileEntity instanceof appeng.tile.powersink.IC2) return ((appeng.tile.powersink.IC2                                       )aDelegator.mTileEntity).acceptsEnergyFrom    (this, aDelegator.getForgeSideOfTileEntity());
+		if (COMPAT_GC != null && aDelegator.mTileEntity instanceof IEnergyHandlerGC && (!(aDelegator.mTileEntity instanceof IConnector) || ((IConnector                     )aDelegator.mTileEntity).canConnect           (aDelegator.getForgeSideOfTileEntity(), NetworkType.POWER))) return T;
 		if (EnergyCompat.IC_ENERGY) {
 			TileEntity tConnected = (aDelegator.mTileEntity instanceof IEnergyTile || EnergyNet.instance == null ? aDelegator.mTileEntity : EnergyNet.instance.getTileEntity(aDelegator.mWorld, aDelegator.mX, aDelegator.mY, aDelegator.mZ));
 			if (tConnected instanceof IEnergySink   && ((IEnergySink  )tConnected).acceptsEnergyFrom(this, aDelegator.getForgeSideOfTileEntity())) return T;
