@@ -119,6 +119,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
@@ -706,6 +707,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent
 	public void onPlayerInteraction(PlayerInteractEvent aEvent) {
 		if (aEvent.entityPlayer == null || aEvent.entityPlayer.worldObj == null || aEvent.action == null || aEvent.world.provider == null || aEvent.action == null) return;
+		
+		PLAYER_LAST_CLICKED.put(aEvent.entityPlayer, new ChunkCoordinates(aEvent.x, aEvent.y, aEvent.z));
 		
 		ItemStack aStack = aEvent.entityPlayer.inventory.getCurrentItem();
 //      Block aBlock = aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z);

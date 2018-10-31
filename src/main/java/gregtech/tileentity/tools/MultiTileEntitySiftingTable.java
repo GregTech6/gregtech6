@@ -22,6 +22,7 @@ package gregtech.tileentity.tools;
 import static gregapi.data.CS.*;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
@@ -29,6 +30,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBo
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.data.BI;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.SFX;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -58,15 +60,16 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChunkCoordinates;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable implements IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips {
-	protected short mDisplayedInput = 0, mDisplayedOutput = 0, oDisplayedInput = -1, oDisplayedOutput = -1;
-	protected byte mState = 0, oState = 0, mClickCount = 0;
-	protected RecipeMap mRecipes = RM.Sifting;
-	protected Recipe mLastRecipe = null;
+	public short mDisplayedInput = 0, mDisplayedOutput = 0, oDisplayedInput = -1, oDisplayedOutput = -1;
+	public byte mState = 0, oState = 0, mClickCount = 0;
+	public RecipeMap mRecipes = RM.Sifting;
+	public Recipe mLastRecipe = null;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -184,6 +187,37 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				}
 				break;
 			}
+			
+			if (aTimer % 5 == 0 && (mState & B[2]) != 0) {
+				mState &= ~B[2];
+				for (Entry<EntityPlayer, ChunkCoordinates> tEntry : PLAYER_LAST_CLICKED.entrySet()) if (getCoords().equals(tEntry.getValue()) && isUseableByPlayer(tEntry.getKey())) {
+					boolean temp = T;
+					for (int i = 1; i < 13; i++) if (slot(i) != null) {temp = F; break;}
+					ItemStack aStack = slot(0);
+					
+					if (temp && mRecipes != null && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(tEntry.getKey()))) {
+						mClickCount = 0;
+						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
+						if (tRecipe == null) {
+							for (int i = 1; i < 13; i++) if (addStackToSlot(i, aStack)) {slot(0, null); break;}
+						} else {
+							if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
+							if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, new ItemStack[] {aStack})) {
+								if (aStack.stackSize <= 0) slot(0, null);
+								ItemStack[] tOutputs = tRecipe.getOutputs(RNGSUS);
+								for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
+								tEntry.getKey().addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 5000.0F);
+								tEntry.getKey().swingItem();
+								mState |= B[2];
+							}
+						}
+					}
+				}
+			}
+		} else {
+			if (aTimer % 5 == 0 && (mState & B[2]) != 0) {
+				UT.Sounds.play(SFX.MC_DIG_SAND, 5, 1.0F, 1.0F, getCoords());
+			}
 		}
 	}
 	
@@ -198,25 +232,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				ItemStack aStack = slot(0);
 				if (aStack == null) {
 					mClickCount = 0;
-					UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0, null, F, (byte)64, (byte)1, (byte)64, (byte)1);
+					UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0, null, F, 64, 1, 64, 1);
 				} else {
-					boolean temp = T;
-					for (int i = 1; i < 13; i++) if (slot(i) != null) {temp = F; break;}
-					if (temp && mRecipes != null && UT.Entities.isPlayer(aPlayer) && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(aPlayer))) {
-						mClickCount = 0;
-						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
-						if (tRecipe == null) {
-							for (int i = 1; i < 13; i++) if (addStackToSlot(i, aStack)) {slot(0, null); break;}
-						} else {
-							if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
-							if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, new ItemStack[] {aStack})) {
-								if (aStack.stackSize <= 0) slot(0, null);
-								ItemStack[] tOutputs = tRecipe.getOutputs(RNGSUS);
-								for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
-								aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 5000.0F);
-							}
-						}
-					}
+					mState |= B[2];
 				}
 			} else {
 				for (int i = 1; i < 13; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), F)) slot(i, null);
@@ -228,7 +246,6 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					mRecipes.openNEI();
 					return T;
 				}
-				if ((mState & B[0]) != 0) UT.Sounds.play("dig.sand", 5, 1.0F, 1.0F, getCoords());
 			}
 		}
 		return T;
@@ -249,9 +266,9 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		if (aSendAll)                               return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
-		if (mDisplayedInput  != oDisplayedInput )   return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1));
-		if (mDisplayedOutput != oDisplayedOutput)   return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1));
+		if (aSendAll)                             return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
+		if (mDisplayedInput  != oDisplayedInput ) return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1), UT.Code.toByteS(mDisplayedInput, 0), UT.Code.toByteS(mDisplayedInput, 1));
+		if (mDisplayedOutput != oDisplayedOutput) return getClientDataPacketByteArray(aSendAll, mState, UT.Code.toByteS(mDisplayedOutput, 0), UT.Code.toByteS(mDisplayedOutput, 1));
 		return getClientDataPacketByte(aSendAll, mState);
 	}
 	
@@ -259,7 +276,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		mState = aData[0];
 		if (aData.length > 2) mDisplayedOutput = UT.Code.combine(aData[1], aData[2]);
-		if (aData.length > 4) mDisplayedInput = UT.Code.combine(aData[3], aData[4]);
+		if (aData.length > 4) mDisplayedInput  = UT.Code.combine(aData[3], aData[4]);
 		if (aData.length > 7) mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[5]), UT.Code.unsignB(aData[6]), UT.Code.unsignB(aData[7])});
 		return T;
 	}
@@ -307,10 +324,10 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 		if (aRenderPass == 0 && aSide == 0) {
 			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
 			
-			mTextureLegs        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
-			mTextureGrid        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureGrid    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayGrid));
-			mTextureBorder      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBorder  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBorder));
-			mTexturePlate       = BlockTextureMulti.get(BlockTextureDefault.get(sTexturePlate   , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayPlate));
+			mTextureLegs        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
+			mTextureGrid        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureGrid  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayGrid));
+			mTextureBorder      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBorder, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBorder));
+			mTexturePlate       = BlockTextureMulti.get(BlockTextureDefault.get(sTexturePlate , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayPlate));
 			
 			mTextureInput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
 			mTextureOutput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);

@@ -71,6 +71,7 @@ import gregapi.util.UT;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
@@ -258,6 +259,9 @@ public class CS {
 	, BIOMES_SPACE              = new HashSetNoNulls<>(F, "Space", "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat", "asteroids", "space", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea");
 	
 	// "Bog", "Badlands", "Outback", "Tropics", "Tropical Islands", "Volcano Island", "Windy Island", "Origin Valley"
+	
+	/** Stores the Coordinates that any given Player last interacted with. */
+	public static final Map<EntityPlayer, ChunkCoordinates> PLAYER_LAST_CLICKED = new HashMap<>();
 	
 	/** a Random generator so I don't need to instantiate a new one all the time. */
 	public static final Random RNGSUS = new Random(), RANDOM = RNGSUS;
