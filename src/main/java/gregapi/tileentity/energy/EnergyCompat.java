@@ -100,6 +100,7 @@ public class EnergyCompat {
 		if (aEnergyType == TD.Energy.EU) {
 			aSize = Math.abs(aSize);
 			
+			// Applied Energistics gets a special case.
 			if (AE_ENERGY && aReceiver instanceof appeng.tile.powersink.IC2) {
 				if (((appeng.tile.powersink.IC2)aReceiver).acceptsEnergyFrom(aEmitter instanceof TileEntity ? (TileEntity)aEmitter : null, FORGE_DIR[aSideInto])) {
 					if (checkOverCharge(aSize, aReceiver)) return aAmount;
@@ -110,6 +111,7 @@ public class EnergyCompat {
 				return 0;
 			}
 			
+			// Electricity alike RF Receivers that are whitelisted for my Power System.
 			if (RF_ENERGY && isElectricRFReceiver(aReceiver)) {
 				if (!(aReceiver instanceof IEnergyConnection) || ((IEnergyConnection)aReceiver).canConnectEnergy(FORGE_DIR[aSideInto])) {
 					if (aReceiver instanceof IEnergyReceiver) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((IEnergyReceiver)aReceiver).receiveEnergy(FORGE_DIR[aSideInto], UT.Code.bind31(aAmount * aSize * RF_PER_EU), F), aSize * RF_PER_EU);
@@ -118,6 +120,7 @@ public class EnergyCompat {
 				return 0;
 			}
 			
+			// GalactiCraft and its Addons
 			if (COMPAT_GC != null) {
 				if (aReceiver instanceof IEnergyHandlerGC) {
 					if (!(aReceiver instanceof IConnector) || ((IConnector)aReceiver).canConnect(FORGE_DIR[aSideInto], NetworkType.POWER)) {
@@ -140,6 +143,12 @@ public class EnergyCompat {
 				}
 			}
 			
+			// Since GT5U is still basically an IC2-Addon I don't want the IC2 Power System to come before this.
+			if (aReceiver instanceof gregtech.api.interfaces.tileentity.IEnergyConnected) {
+				return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aReceiver).injectEnergyUnits(aSideInto, aSize, aAmount);
+			}
+			
+			// IC2 Power at last, because special cases should always override the very "compatible" IC2 Stuff.
 			if (IC_ENERGY) {
 				TileEntity tReceiver = (aReceiver instanceof IEnergyTile || EnergyNet.instance == null ? aReceiver : EnergyNet.instance.getTileEntity(aReceiver.getWorldObj(), aReceiver.xCoord, aReceiver.yCoord, aReceiver.zCoord));
 				if (tReceiver instanceof IEnergySink && ((IEnergySink)tReceiver).acceptsEnergyFrom(aEmitter instanceof TileEntity ? (TileEntity)aEmitter : null, FORGE_DIR[aSideInto])) {
@@ -156,10 +165,6 @@ public class EnergyCompat {
 					}
 					return rUsedAmount;
 				}
-			}
-			
-			if (aReceiver instanceof gregtech.api.interfaces.tileentity.IEnergyConnected) {
-				return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aReceiver).injectEnergyUnits(aSideInto, aSize, aAmount);
 			}
 		}
 		

@@ -20,6 +20,7 @@
 package gregtech.api.interfaces.tileentity;
 
 @Deprecated
+/** Required to exist in GT6 because Immersive Engineering crashes otherwise. Also there is that GT5U+GT6 Mod that basically needs this for Compat. */
 public interface IColoredTileEntity {
 	public byte getColorization();
 	public byte setColorization(byte aColor);

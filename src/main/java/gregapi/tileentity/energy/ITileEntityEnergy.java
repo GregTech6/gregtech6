@@ -262,18 +262,7 @@ public interface ITileEntityEnergy extends gregapi.tileentity.ITileEntityEnergy 
 		 * @return the amount of used Energy Packets.
 		 */
 		public static final long insertEnergyInto(TagData aEnergyType, byte aSideInto, long aSize, long aAmount, Object aEmitter, TileEntity aReceiver) {
-			if (aReceiver == null) return 0;
-			long rUsedAmount = 0;
-			if (aAmount > rUsedAmount) {
-				if (aReceiver instanceof ITileEntityEnergy) {
-					rUsedAmount+=((ITileEntityEnergy)aReceiver).doEnergyInjection(aEnergyType, aSideInto, aSize, aAmount-rUsedAmount, T);
-				} else if (aReceiver instanceof gregapi.tileentity.ITileEntityEnergy) {
-					rUsedAmount+=((gregapi.tileentity.ITileEntityEnergy)aReceiver).doEnergyInjection(aEnergyType, aSideInto, aSize, aAmount-rUsedAmount, T);
-				} else {
-					rUsedAmount+=EnergyCompat.insertEnergyInto(aEnergyType, aSideInto, aSize, aAmount-rUsedAmount, aEmitter, aReceiver);
-				}
-			}
-			return rUsedAmount;
+			return aReceiver instanceof ITileEntityEnergy ? ((ITileEntityEnergy)aReceiver).doEnergyInjection(aEnergyType, aSideInto, aSize, aAmount, T) : EnergyCompat.insertEnergyInto(aEnergyType, aSideInto, aSize, aAmount, aEmitter, aReceiver);
 		}
 		
 		/**

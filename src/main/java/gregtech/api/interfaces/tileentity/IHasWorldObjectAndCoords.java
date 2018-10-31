@@ -28,6 +28,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.IFluidHandler;
 
 @Deprecated
+/** Required to exist in GT6 because Immersive Engineering crashes otherwise. Also there is that GT5U+GT6 Mod that basically needs this for Compat. */
 public interface IHasWorldObjectAndCoords {
 	public World getWorld();
 	public int getXCoord();

@@ -21,6 +21,7 @@ package gregtech.api.interfaces.tileentity;
 
 @Deprecated
 @SuppressWarnings("deprecation")
+/** Required to exist in GT6 because Immersive Engineering crashes otherwise. Also there is that GT5U+GT6 Mod that basically needs this for Compat. */
 public interface IBasicEnergyContainer extends IEnergyConnected {
 	public boolean isUniversalEnergyStored(long aEnergyAmount);
 	public long getUniversalEnergyStored();
