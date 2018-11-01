@@ -27,6 +27,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Custom Gearboxes now split the Power evenly over all Targets and can accept Power from multiple Sides as long as their absolute Speed is matching. Note, that you need to make a Tree Design for using more than one Gearbox, because Symmetry.
 [CHANGED] The Sifting Table now no longer requires holding Rightclick pressed, this means you can now use Chat while sifting through Stuff. You still need to stand next to it and you are not allowed to click any other Block!
 [ADDED] A Titanium-Gold Alloy that is more durable than Titanium itself.
+[ADDED] A Converter Engine for Rotation Power to Kinetic Power. It works almost exactly like the Electromagnet with having 2 Outputs, but accepts RU and emits KU.
 
 
 6.09.06:
