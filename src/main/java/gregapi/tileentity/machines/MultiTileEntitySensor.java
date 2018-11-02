@@ -92,7 +92,6 @@ public abstract class MultiTileEntitySensor extends TileEntityBase10FacingDouble
 		aList.add(Chat.DGRAY    + LH.get("gt.tooltip.sensor.screwdrive.display"));
 		aList.add(Chat.DGRAY    + LH.get("gt.tooltip.sensor.screwdrive.modes"));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_SET_INPUT_MONKEY_WRENCH));
-		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
 	@Override
