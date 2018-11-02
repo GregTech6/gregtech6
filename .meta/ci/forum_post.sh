@@ -6,7 +6,7 @@ PROJECT_PATH="$(dirname "$(dirname "$SCRIPT_PATH")")" # Go up two levels: .meta/
 
 # Get the current Caption
 CAPTION="$(curl -s https://gregtech.overminddl1.com/imagecaption.adoc)"
-CAPTION="${CAPTION:2:${#CAPTION}-2}"
+CAPTION="${CAPTION:1:${#CAPTION}-1}"
 
 # Write the Post
 echo 'Another GregTech Update has been released!'
