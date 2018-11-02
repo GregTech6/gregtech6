@@ -1728,6 +1728,7 @@ public class MT {
 			BlackBronze             .addEnchantmentForTools(Enchantment.smite, 2);
 			BlueSteel               .addEnchantmentForTools(Enchantment.smite, 3);
 			Au                      .addEnchantmentForTools(Enchantment.smite, 3);
+			TitaniumGold            .addEnchantmentForTools(Enchantment.smite, 3);
 			Electrum                .addEnchantmentForTools(Enchantment.smite, 3);
 			GildedIron              .addEnchantmentForTools(Enchantment.smite, 3);
 			Holystone               .addEnchantmentForTools(Enchantment.smite, 3);
@@ -1786,6 +1787,8 @@ public class MT {
 			BlackSteel              .addEnchantmentForTools(Enchantment.sharpness, 3);
 			RedSteel                .addEnchantmentForTools(Enchantment.sharpness, 3);
 			BlueSteel               .addEnchantmentForTools(Enchantment.sharpness, 3);
+			Ti                      .addEnchantmentForTools(Enchantment.sharpness, 3);
+			TitaniumGold            .addEnchantmentForTools(Enchantment.sharpness, 3);
 			ShadowSteel             .addEnchantmentForTools(Enchantment.sharpness, 4);
 			Zanite                  .addEnchantmentForTools(Enchantment.sharpness, 4);
 			DamascusSteel           .addEnchantmentForTools(Enchantment.sharpness, 5);

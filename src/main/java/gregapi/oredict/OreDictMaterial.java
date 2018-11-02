@@ -354,6 +354,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	public OreDictMaterial visDefault(OreDictMaterial... aMaterials) {
+		if (mOriginalMod != null && mOriginalMod.mLoaded) return this;
 		hide();
 		visName("ore"+mNameInternal, "dust"+mNameInternal, "gem"+mNameInternal, "ingot"+mNameInternal, "plate"+mNameInternal, "stick"+mNameInternal);
 		for (OreDictMaterial tMaterial : aMaterials) visName("ore"+tMaterial.mNameInternal, "dust"+tMaterial.mNameInternal, "gem"+tMaterial.mNameInternal, "ingot"+tMaterial.mNameInternal, "plate"+tMaterial.mNameInternal, "stick"+tMaterial.mNameInternal);
