@@ -38,6 +38,7 @@ import gregapi.code.ModData;
 import gregapi.code.ObjectStack;
 import gregapi.code.TagData;
 import gregapi.data.FL;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.TC;
 import gregapi.data.TC.TC_AspectStack;
@@ -354,7 +355,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	public OreDictMaterial visDefault(OreDictMaterial... aMaterials) {
-		if (mOriginalMod != null && mOriginalMod.mLoaded) return this;
+		if (mOriginalMod != null && mOriginalMod != MD.GAPI && mOriginalMod.mLoaded) return this;
 		hide();
 		visName("ore"+mNameInternal, "dust"+mNameInternal, "gem"+mNameInternal, "ingot"+mNameInternal, "plate"+mNameInternal, "stick"+mNameInternal);
 		for (OreDictMaterial tMaterial : aMaterials) visName("ore"+tMaterial.mNameInternal, "dust"+tMaterial.mNameInternal, "gem"+tMaterial.mNameInternal, "ingot"+tMaterial.mNameInternal, "plate"+tMaterial.mNameInternal, "stick"+tMaterial.mNameInternal);
