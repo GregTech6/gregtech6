@@ -1,9 +1,13 @@
 buildscript {
 	repositories {
 		mavenCentral()
+		//maven {
+		//	name = "forge"
+		//	url = "https://files.minecraftforge.net/maven"
+		//}
 		maven {
-			name = "forge"
-			url = "https://files.minecraftforge.net/maven"
+			name = "gt"
+			url = "https://gregtech.overminddl1.com/"
 		}
 		maven {
 			name = "sonatype"
@@ -81,10 +85,10 @@ repositories {
 		name = "gt"
 		url = "https://gregtech.overminddl1.com/"
 	}
-	maven {
-		name = "forge"
-		url = "https://files.minecraftforge.net/maven"
-	}
+	//maven {
+	//	name = "forge"
+	//	url = "https://files.minecraftforge.net/maven"
+	//}
 	//// No official maven'y storage for:
 	//// - Baubles
 	//// - MicdoodleCore
