@@ -46,6 +46,7 @@ public class LH {
 	, RECIPES_MOLD = "gt.lang.recipes.mold"
 	, RECIPES_MOLD_SELECT = "gt.lang.recipes.mold.select"
 	, RECIPES_MOLD_COINAGE = "gt.lang.recipes.mold.coinage"
+	, RECIPES_ANVIL_USAGE = "gt.lang.recipes.anvil.usage"
 	, RECIPES_SIFTER_USAGE = "gt.lang.recipes.sifter.usage"
 	, RECIPES_JUICER_USAGE = "gt.lang.recipes.juicer.usage"
 	, RECIPES_MORTAR_USAGE = "gt.lang.recipes.mortar.usage"
@@ -296,6 +297,7 @@ public class LH {
 		add(RECIPES_MOLD                                , "This Mold produces");
 		add(RECIPES_MOLD_SELECT                         , "Use a Chisel in order to select the Shape of the Mold");
 		add(RECIPES_MOLD_COINAGE                        , "Place tiny Metal Plate ontop, hammer it and retrieve Coin");
+		add(RECIPES_ANVIL_USAGE                         , "Place Input on Top and use the Hammer");
 		add(RECIPES_MORTAR_USAGE                        , "Rightclick with the Item you want to turn into Dust");
 		add(RECIPES_JUICER_USAGE                        , "Rightclick with the Item you want to get Juice from");
 		add(RECIPES_SIFTER_USAGE                        , "Place Input on Top and rightclick it");

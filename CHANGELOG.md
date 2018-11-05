@@ -18,7 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.08: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[WIP] Working on an Anvil.
 
 
 6.09.07:

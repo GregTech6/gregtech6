@@ -292,6 +292,57 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
+		boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
+		
+		mTextureLegs   = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
+		mTextureGrid   = BlockTextureMulti.get(BlockTextureDefault.get(sTextureGrid  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayGrid));
+		mTextureBorder = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBorder, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBorder));
+		mTexturePlate  = BlockTextureMulti.get(BlockTextureDefault.get(sTexturePlate , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayPlate));
+		
+		mTextureInput  = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
+		mTextureOutput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
+		
+		if (mDisplayedInput != 0) {
+			if (UT.Code.exists(mDisplayedInput, OreDictMaterial.MATERIAL_ARRAY)) {
+				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedInput];
+				mTextureInput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
+			} else if (mDisplayedInput < 0) {
+				switch(mDisplayedInput) {
+				case  -1: mTextureInput  = BlockTextureCopied.get(Blocks.gravel         , SIDE_ANY, 0); break;
+				case  -2: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 0); break;
+				case  -3: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 1); break;
+				case  -4: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 2); break;
+				case  -5: mTextureInput  = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 0); break;
+				case  -6: mTextureInput  = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 1); break;
+				case  -7: mTextureInput  = BlockTextureCopied.get(Blocks.grass          , SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
+				case  -8: mTextureInput  = BlockTextureCopied.get(Blocks.mycelium       , SIDE_ANY, 0); break;
+				case  -9: mTextureInput  = BlockTextureCopied.get(Blocks.soul_sand      , SIDE_ANY, 0); break;
+				case -10: mTextureInput  = BlockTextureCopied.get(BlocksGT.Diggables    , SIDE_ANY, 0); break;
+				case -11: mTextureInput  = BlockTextureCopied.get(BlocksGT.Sands        , SIDE_ANY, 0); break;
+				}
+			}
+		}
+		if (mDisplayedOutput != 0) {
+			if (UT.Code.exists(mDisplayedOutput, OreDictMaterial.MATERIAL_ARRAY)) {
+				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedOutput];
+				mTextureOutput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
+			} else if (mDisplayedOutput < 0) {
+				switch(mDisplayedOutput) {
+				case  -1: mTextureOutput = BlockTextureCopied.get(Blocks.gravel         , SIDE_ANY, 0); break;
+				case  -2: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 0); break;
+				case  -3: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 1); break;
+				case  -4: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 2); break;
+				case  -5: mTextureOutput = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 0); break;
+				case  -6: mTextureOutput = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 1); break;
+				case  -7: mTextureOutput = BlockTextureCopied.get(Blocks.grass          , SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
+				case  -8: mTextureOutput = BlockTextureCopied.get(Blocks.mycelium       , SIDE_ANY, 0); break;
+				case  -9: mTextureOutput = BlockTextureCopied.get(Blocks.soul_sand      , SIDE_ANY, 0); break;
+				case -10: mTextureOutput = BlockTextureCopied.get(BlocksGT.Diggables    , SIDE_ANY, 0); break;
+				case -11: mTextureOutput = BlockTextureCopied.get(BlocksGT.Sands        , SIDE_ANY, 0); break;
+				}
+			}
+		}
+		
 		return 9;
 	}
 	
@@ -325,60 +376,6 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		if (aRenderPass == 0 && aSide == 0) {
-			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
-			
-			mTextureLegs        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
-			mTextureGrid        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureGrid  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayGrid));
-			mTextureBorder      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBorder, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBorder));
-			mTexturePlate       = BlockTextureMulti.get(BlockTextureDefault.get(sTexturePlate , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayPlate));
-			
-			mTextureInput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
-			mTextureOutput = BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F);
-			
-			if (mDisplayedInput != 0) {
-				if (UT.Code.exists(mDisplayedInput, OreDictMaterial.MATERIAL_ARRAY)) {
-					OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedInput];
-					mTextureInput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
-				} else if (mDisplayedInput < 0) {
-					switch(mDisplayedInput) {
-					case  -1: mTextureInput  = BlockTextureCopied.get(Blocks.gravel         , SIDE_ANY, 0); break;
-					case  -2: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 0); break;
-					case  -3: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 1); break;
-					case  -4: mTextureInput  = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 2); break;
-					case  -5: mTextureInput  = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 0); break;
-					case  -6: mTextureInput  = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 1); break;
-					case  -7: mTextureInput  = BlockTextureCopied.get(Blocks.grass          , SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
-					case  -8: mTextureInput  = BlockTextureCopied.get(Blocks.mycelium       , SIDE_ANY, 0); break;
-					case  -9: mTextureInput  = BlockTextureCopied.get(Blocks.soul_sand      , SIDE_ANY, 0); break;
-					case -10: mTextureInput  = BlockTextureCopied.get(BlocksGT.Diggables    , SIDE_ANY, 0); break;
-					case -11: mTextureInput  = BlockTextureCopied.get(BlocksGT.Sands        , SIDE_ANY, 0); break;
-					}
-				}
-			}
-			
-			if (mDisplayedOutput != 0) {
-				if (UT.Code.exists(mDisplayedOutput, OreDictMaterial.MATERIAL_ARRAY)) {
-					OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedOutput];
-					mTextureOutput = BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
-				} else if (mDisplayedOutput < 0) {
-					switch(mDisplayedOutput) {
-					case  -1: mTextureOutput = BlockTextureCopied.get(Blocks.gravel         , SIDE_ANY, 0); break;
-					case  -2: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 0); break;
-					case  -3: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 1); break;
-					case  -4: mTextureOutput = BlockTextureCopied.get(Blocks.dirt           , SIDE_ANY, 2); break;
-					case  -5: mTextureOutput = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 0); break;
-					case  -6: mTextureOutput = BlockTextureCopied.get(Blocks.sand           , SIDE_ANY, 1); break;
-					case  -7: mTextureOutput = BlockTextureCopied.get(Blocks.grass          , SIDE_ANY, 0, new short[] {106, 170,  64, 255}, F, F, F); break;
-					case  -8: mTextureOutput = BlockTextureCopied.get(Blocks.mycelium       , SIDE_ANY, 0); break;
-					case  -9: mTextureOutput = BlockTextureCopied.get(Blocks.soul_sand      , SIDE_ANY, 0); break;
-					case -10: mTextureOutput = BlockTextureCopied.get(BlocksGT.Diggables    , SIDE_ANY, 0); break;
-					case -11: mTextureOutput = BlockTextureCopied.get(BlocksGT.Sands        , SIDE_ANY, 0); break;
-					}
-				}
-			}
-		}
-		
 		if (aRenderPass == 0) return SIDES_TOP[aSide]?BlockTextureMulti.get(mTextureLegs, BI.nei()):mTextureLegs;
 		if (aRenderPass <  4) return mTextureLegs;
 		if (aRenderPass <  6) return SIDES_VERTICAL[aSide]?mTextureGrid:mTextureBorder;
