@@ -91,22 +91,21 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0 || isClientSide()) return rReturn;
-		if (SIDES_TOP[aSide] && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
+		if ((SIDES_TOP[aSide] || aPlayer == null) && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
 			Recipe tRecipe = (slotHas(0)&&slotHas(1)?RM.AnvilTwo:RM.AnvilOne).findRecipe(this, null, F, V[1], NI, ZL_FLUIDTANKGT, slot(0), slot(1));
-			if (tRecipe != null) {
-				if (tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slot(0), slot(1))) {
-					ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
-					for (int i = 0; i < tOutputItems.length; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5);
-					removeAllDroppableNullStacks();
-					long tDurability = Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.mEUt) * Math.max(1, tRecipe.mDuration), 4));
-					mDurability -= tDurability;
-					if (mDurability <= 0) {
-						UT.Sounds.send(SFX.MC_BREAK, this);
-						ST.drop(worldObj, getCoords(), OP.scrapGt.mat(mMaterial, 32+getRandomNumber(32))); // Drops up to 63 Scraps, so 7 Units.
-						setToAir();
-					}
-					return tDurability;
+			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slot(0), slot(1))) {
+				ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
+				for (int i = 0; i < tOutputItems.length; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5);
+				removeAllDroppableNullStacks();
+				long tDurability = Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.mEUt) * Math.max(1, tRecipe.mDuration), 4));
+				mDurability -= tDurability;
+				if (mDurability <= 0) {
+					UT.Sounds.send(SFX.MC_BREAK, this);
+					ST.drop(worldObj, getCoords(), OP.scrapGt.mat(mMaterial, 32+getRandomNumber(32))); // Drops up to 63 Scraps, so 7 Units.
+					setToAir();
 				}
+				updateInventory();
+				return tDurability;
 			}
 			return 0;
 		}
@@ -157,7 +156,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
 				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 0 : 1] > 0.5 ? 0 : 1);
 				if (ST.valid(aStack)) return (RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0;
-				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5)) {slot(tSlot, NI); return T;}
+				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5)) {slot(tSlot, NI); updateInventory(); return T;}
 			} else {
 				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) {RM.AnvilTwo.openNEI(); return T;}
 			}
