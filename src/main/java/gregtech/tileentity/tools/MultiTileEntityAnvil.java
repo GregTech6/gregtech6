@@ -96,7 +96,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			if (tRecipe != null) {
 				if (tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slot(0), slot(1))) {
 					ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
-					for (int i = 0; i < tOutputItems.length; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F, worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5);
+					for (int i = 0; i < tOutputItems.length; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5);
 					removeAllDroppableNullStacks();
 					long tDurability = Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.mEUt) * Math.max(1, tRecipe.mDuration), 4));
 					mDurability -= tDurability;
@@ -120,17 +120,30 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
 			if (mInventoryChanged) {
+				mStateA = mStateB = 0;
+				mMaterialA = mMaterialB = 0;
 				OreDictItemData
 				tData = OM.anydata(slot(0));
-				if (tData != null && tData.mMaterial != null && mMaterialA != (tData.mMaterial.mMaterial.mID > 0 ? tData.mMaterial.mMaterial.mID : 0)) {
-					mMaterialA = (tData.mMaterial.mMaterial.mID > 0 ? tData.mMaterial.mMaterial.mID : 0);
-					updateClientData();
+				if (tData != null) {
+					if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
+					if (tData.mPrefix != null) {
+						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mStateA = 1;
+						if (tData.mPrefix.mNameInternal.startsWith("plate")) mStateA = 2;
+						if (tData.mPrefix.mNameInternal.startsWith("stick")) mStateA = 3;
+						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mStateA = 4;
+					}
 				}
 				tData = OM.anydata(slot(1));
-				if (tData != null && tData.mMaterial != null && mMaterialB != (tData.mMaterial.mMaterial.mID > 0 ? tData.mMaterial.mMaterial.mID : 0)) {
-					mMaterialB = (tData.mMaterial.mMaterial.mID > 0 ? tData.mMaterial.mMaterial.mID : 0);
-					updateClientData();
+				if (tData != null) {
+					if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
+					if (tData.mPrefix != null) {
+						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mStateB = 1;
+						if (tData.mPrefix.mNameInternal.startsWith("plate")) mStateB = 2;
+						if (tData.mPrefix.mNameInternal.startsWith("stick")) mStateB = 3;
+						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mStateB = 4;
+					}
 				}
+				updateClientData();
 			}
 		}
 	}
@@ -142,9 +155,9 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			if (isServerSide()) {
 				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) return T;
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
-				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 0 : 1] < 0.5 ? 0 : 1);
+				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 0 : 1] > 0.5 ? 0 : 1);
 				if (ST.valid(aStack)) return (RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0;
-				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5)) {slot(tSlot, NI); return T;}
+				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5)) {slot(tSlot, NI); return T;}
 			} else {
 				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) {RM.AnvilTwo.openNEI(); return T;}
 			}
@@ -185,11 +198,24 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		switch(aRenderPass) {
 		case  0: return box(aBlock, PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_P[ 4], PX_N[ 4]);
 		case  1: return box(aBlock, PX_P[ 6], PX_P[ 4], PX_P[ 6], PX_N[ 6], PX_P[ 8], PX_N[ 6]);
-		case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[12], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);
-		case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6: 2]);
-		// TODO Designs
-		case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
-		case  5: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 1]);
+		case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 8], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[ 4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);
+		case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 4], PX_P[SIDES_AXIS_X[mFacing]? 6: 2]);
+		case  4:
+			switch(mStateA) {
+			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 2], PX_N[SIDES_AXIS_Z[mFacing]? 5: 8], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 8]);
+			case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 3], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
+			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 9], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 7: 9]);
+			case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10]);
+			default: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
+			}
+		case  5:
+			switch(mStateB) {
+			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 8], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 8], PX_N[SIDES_AXIS_Z[mFacing]? 5: 2], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 2]);
+			case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[ 3], PX_N[SIDES_AXIS_X[mFacing]? 5: 1]);
+			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 9], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 7: 1]);
+			case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 6: 2]);
+			default: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 1]);
+			}
 		}
 		return F;
 	}
@@ -199,18 +225,19 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		switch(aRenderPass) {
 		case  0: return SIDES_TOP_HORIZONTAL[aSide] || aShouldSideBeRendered[aSide] ? mTextureAnvil : null;
 		case  1: return SIDES_HORIZONTAL[aSide] ? mTextureAnvil : null;
-		case  3: return BI.nei();
-		case  4: return mTextureA;
-		case  5: return mTextureB;
-		default: return mTextureAnvil;
+		case  2: return !ALONG_AXIS[mFacing][aSide] || aShouldSideBeRendered[aSide] ? mTextureAnvil : null;
+		case  3: return SIDES_TOP[aSide] ? BI.nei() : null;
+		case  4: return SIDES_TOP_HORIZONTAL[aSide] ? mTextureA : null;
+		case  5: return SIDES_TOP_HORIZONTAL[aSide] ? mTextureB : null;
+		default: return null;
 		}
 	}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 4], PX_N[ 0]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 4], PX_N[ 0]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 4], PX_N[ 0]);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);}
 	
 	@Override public float getSurfaceSize           (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
@@ -231,11 +258,11 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI);}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.anvil.simple";}
-	
 	@Override
 	public void onRegistration(MultiTileEntityRegistry aRegistry, short aID) {
 		RM.AnvilOne.mRecipeMachineList.add(aRegistry.getItem(aID));
 		RM.AnvilTwo.mRecipeMachineList.add(aRegistry.getItem(aID));
 	}
+	
+	@Override public String getTileEntityName() {return "gt.multitileentity.anvil.simple";}
 }

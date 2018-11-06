@@ -18,8 +18,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.08: (Not released yet)
-[WIP] Working on an Anvil.
 [CHANGED] Made Seed Oil and similar Plant Oils usable in the Recipes for the Wooden and the Bronze Gearboxes.
+[ADDED]
+Anvil for crafting Ingots into Double Ingots or Plates and that kinda Stuff.
+Now it no longer uses Crafting Recipes for this purpose.
+There is variants made of Stone and Granite for Earlygame, and lots of different Metal Variants.
+The Material you make the Anvil from will determine its Durability, the better the Material the more often you can use it, before it inevitably breaks into Scraps.
 
 
 6.09.07:

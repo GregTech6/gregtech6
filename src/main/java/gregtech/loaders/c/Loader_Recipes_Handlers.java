@@ -222,6 +222,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(ingotQuadruple                                      , 1, NF,  16, 0,    64, NF, plateTriple                             , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(ingotQuintuple                                      , 1, NF,  16, 0,    64, NF, plateQuadruple                          , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(plateCurved                                         , 1, NF,  16, 0,    64, NF, plate                                   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(plate                                               , 1, NF,  16, 0,    64, NF, casingSmall                             , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		
 		RM.Lathe        .add(new RecipeMapHandlerPrefix(bolt                                                , 1, NF,  16, 0,    64, NF, screw                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)));
 		RM.Lathe        .add(new RecipeMapHandlerPrefix(nugget                                              , 1, NF,  16, 0,    64, NF, round                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
