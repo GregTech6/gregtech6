@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.08: (Not released yet)
 [WIP] Working on an Anvil.
+[CHANGED] Made Seed Oil and similar Plant Oils usable in the Recipes for the Wooden and the Bronze Gearboxes.
 
 
 6.09.07:

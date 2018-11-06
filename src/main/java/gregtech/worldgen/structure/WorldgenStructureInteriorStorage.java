@@ -41,8 +41,8 @@ public class WorldgenStructureInteriorStorage extends WorldgenStructure {
 		OreDictMaterial[] tGeneratedMaterials = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel};
 		IPrefixBlock[] tGeneratedCrates = {BlocksGT.crateGtDust, BlocksGT.crateGtPlate, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot};
 		FluidStack[][] tFluids = {
-		  {FL.Oil_Creosote.make(16000), FL.Oil_Seed.make(16000), FL.Lubricant.make(16000), FL.Glue.make(16000), FL.Latex.make(16000), FL.Holywater.make(16000), FL.Purple_Drink.make(16000)}
-		, {FL.Oil_Creosote.make(32000), FL.Oil_Seed.make(32000), FL.Lubricant.make(32000), FL.Glue.make(32000), FL.Latex.make(32000), FL.Holywater.make(32000), FL.Purple_Drink.make(32000)}
+		  {FL.Oil_Creosote.make(16000), FL.Oil_Seed.make(16000), FL.lube(16000), FL.Glue.make(16000), FL.Latex.make(16000), FL.Holywater.make(16000), FL.Purple_Drink.make(16000)}
+		, {FL.Oil_Creosote.make(32000), FL.Oil_Seed.make(32000), FL.lube(32000), FL.Glue.make(32000), FL.Latex.make(32000), FL.Holywater.make(32000), FL.Purple_Drink.make(32000)}
 		, {FL.Oil_Normal.make(64000), FL.Oil_Normal.make(64000), FL.Oil_Soulsand.make(64000), FL.Oil_Light.make(64000), FL.Oil_Medium.make(64000), FL.Oil_Heavy.make(64000), FL.Oil_ExtraHeavy.make(64000)}
 		};
 		short[] tIDs = new short[] {32714, 32734, 32716};

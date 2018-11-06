@@ -475,7 +475,7 @@ public class UT {
 			String tName = FluidsGT.FLUID_RENAMINGS.get(aName);
 			if (Code.stringValid(tName)) aName = tName;
 			Fluid aFluid = FluidRegistry.getFluid(aName);
-			if (aFluid == null) return null;
+			if (aFluid == null) return FL.LubRoCant.is(aName) ? FL.Lubricant.make(aNBT.getInteger("Amount")) : null;
 			FluidStack rFluid = new FluidStack(aFluid, aNBT.getInteger("Amount"));
 			if (aNBT.hasKey("Tag")) rFluid.tag = aNBT.getCompoundTag("Tag");
 			return rFluid;

@@ -103,6 +103,7 @@ public enum OD {
 	, itemSlag
 	, itemGlue
 	, itemLubricant
+	, itemLubricantEarly
 	, itemResin
 	, itemRubber
 	, itemFlint
