@@ -160,7 +160,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
 				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 1 : 0] < 0.5 ? 0 : 1);
 				if (ST.valid(aStack)) {
-					if (RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
+					if ((RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
 						playClick();
 					}
 					return T;
