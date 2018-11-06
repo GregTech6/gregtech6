@@ -27,6 +27,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.BI;
 import gregapi.data.CS.SFX;
@@ -43,21 +44,24 @@ import gregapi.recipes.Recipe;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.tileentity.machines.ITileEntityAnvil;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implements IMTE_OnRegistration, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implements ITileEntityAnvil, IMTE_OnRegistration, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	public short mMaterialA = 0, mMaterialB = 0;
 	public byte mStateA = 0, mStateB = 0;
 	public long mDurability = 10000;
@@ -91,9 +95,12 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0 || isClientSide()) return rReturn;
+		DEB.println("TEST 1");
 		if ((SIDES_TOP[aSide] || aPlayer == null) && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
 			Recipe tRecipe = (slotHas(0)&&slotHas(1)?RM.AnvilTwo:RM.AnvilOne).findRecipe(this, null, F, V[1], NI, ZL_FLUIDTANKGT, slot(0), slot(1));
+			DEB.println("TEST 2 " + tRecipe);
 			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slot(0), slot(1))) {
+				DEB.println("TEST 3");
 				ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
 				for (int i = 0; i < tOutputItems.length; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5);
 				removeAllDroppableNullStacks();
@@ -154,14 +161,31 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			if (isServerSide()) {
 				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) return T;
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
-				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 1 : 0] > 0.5 ? 0 : 1);
-				if (ST.valid(aStack)) return (RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0;
-				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5)) {slot(tSlot, NI); updateInventory(); return T;}
+				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 1 : 0] < 0.5 ? 0 : 1);
+				if (ST.valid(aStack)) {
+					if (RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
+						playClick();
+					}
+					return T;
+				}
+				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5)) {
+					slot(tSlot, NI);
+					updateInventory();
+					return T;
+				}
 			} else {
 				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) {RM.AnvilTwo.openNEI(); return T;}
 			}
 		}
 		return T;
+	}
+	
+	@Override
+	public boolean onPlaced(ItemStack aStack, EntityPlayer aPlayer, MultiTileEntityContainer aMTEContainer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		super.onPlaced(aStack, aPlayer, aMTEContainer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ);
+		if (mMaterial.contains(TD.Properties.STONE)) return T;
+		aWorld.playSoundEffect(aX+0.5, aY+0.5, aZ+0.5, Blocks.anvil.stepSound.func_150496_b(), (Blocks.anvil.stepSound.getVolume()+1)/2, Blocks.anvil.stepSound.getPitch()*0.8F);
+		return F;
 	}
 	
 	@Override
@@ -201,15 +225,15 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 4]+0.0001F, PX_P[SIDES_AXIS_X[mFacing]? 6: 2]);
 		case  4:
 			switch(mStateA) {
-			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 2], PX_N[SIDES_AXIS_Z[mFacing]? 5: 8], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 8]);
+			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 3], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 3], PX_N[SIDES_AXIS_Z[mFacing]? 5: 6], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 6]);
 			case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 3], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
-			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 9], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 7: 9]);
+			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 9], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 7: 9]);
 			case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
 			}
 		case  5:
 			switch(mStateB) {
-			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 8], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 8], PX_N[SIDES_AXIS_Z[mFacing]? 5: 2], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 2]);
+			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 6], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 6], PX_N[SIDES_AXIS_Z[mFacing]? 5: 3], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 3]);
 			case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[ 3], PX_N[SIDES_AXIS_X[mFacing]? 5: 1]);
 			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 9], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 7: 1]);
 			case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 6: 2]);
@@ -246,6 +270,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override public boolean isSideSolid2           (byte aSide) {return F;}
 	@Override public boolean allowCovers            (byte aSide) {return F;}
 	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
+	@Override public boolean isAnvil                (byte aSide) {return T;}
 	
 	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}

@@ -755,7 +755,7 @@ public class Recipe {
 		if (!checkStacksEqual(F, aDontCheckStackSizes, aInputs)) return F;
 		
 		if (aDecreaseStacksizeBySuccess) {
-			for (FluidStack tFluid : mFluidInputs) if (tFluid != null)   for (FluidStack aFluid : aFluidInputs) if (aFluid != null && aFluid.isFluidEqual(tFluid) && aFluid.amount >= tFluid.amount) {aFluid.amount -= tFluid.amount; break;}
+			for (FluidStack tFluid : mFluidInputs) if (tFluid != null) for (FluidStack aFluid : aFluidInputs) if (aFluid != null && aFluid.isFluidEqual(tFluid) && aFluid.amount >= tFluid.amount) {aFluid.amount -= tFluid.amount; break;}
 			checkStacksEqual(T, F, aInputs);
 		}
 		
@@ -766,16 +766,22 @@ public class Recipe {
 		if (mFluidInputs.length > 0 && (aFluidInputs == null || aFluidInputs.length < 1)) return F;     
 		if (mInputs.length > 0 && (aInputs == null || aInputs.length < 1)) return F;
 		
+		if (GT.mFinishedServerStarted > 0) DEB.println("TEST A");
+		
 		for (FluidStack tFluid : mFluidInputs) if (tFluid != null) {
 			boolean temp = T;
 			for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid) && (aDontCheckStackSizes || aFluid.amount >= tFluid.amount)) {temp = F; break;}}
 			if (temp) return F;
 		}
 		
+		if (GT.mFinishedServerStarted > 0) DEB.println("TEST B");
+		
 		if (!checkStacksEqual(F, aDontCheckStackSizes, aInputs)) return F;
 		
+		if (GT.mFinishedServerStarted > 0) DEB.println("TEST C");
+		
 		if (aDecreaseStacksizeBySuccess) {
-			for (FluidStack tFluid : mFluidInputs) if (tFluid != null)   for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid) && aFluid.amount >= tFluid.amount) {tTank.drain(tFluid.amount, T); break;}}
+			for (FluidStack tFluid : mFluidInputs) if (tFluid != null) for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid) && aFluid.amount >= tFluid.amount) {tTank.drain(tFluid.amount, T); break;}}
 			checkStacksEqual(T, F, aInputs);
 		}
 		
