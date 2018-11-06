@@ -988,6 +988,7 @@ public class CS {
 	, NBT_THROUGHPUT                = "gt.througput"                // Number
 	, NBT_PARALLEL                  = "gt.parallel"                 // Number
 	, NBT_PARALLEL_DURATION         = "gt.paradura"                 // Boolean
+	, NBT_DURABILITY                = "gt.durability"               // Number
 	, NBT_QUALITY                   = "gt.quality"                  // Byte
 	, NBT_FORTUNE                   = "gt.fortune"                  // Byte
 	, NBT_FACING                    = "gt.facing"                   // Byte

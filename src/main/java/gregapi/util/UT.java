@@ -2589,48 +2589,50 @@ public class UT {
 		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, ItemStack aStack) {
 			return addStackToPlayerInventory(aPlayer, aStack, F);
 		}
-		
 		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {
-			if (aPlayer != null && ST.valid(aStack)) {
+			return addStackToPlayerInventory(aPlayer, aPlayer.inventory, aStack, F);
+		}
+		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst) {
+			if (aInventory != null && ST.valid(aStack)) {
 				UT.Inventories.checkAchievements(aPlayer, aStack);
 				
-				for (int i = 0; i < 36; i++) if (i != aPlayer.inventory.currentItem) {
-					ItemStack tStack = aPlayer.inventory.getStackInSlot(i);
+				for (int i = 0; i < 36; i++) if (aPlayer == null || i != aPlayer.inventory.currentItem) {
+					ItemStack tStack = aInventory.getStackInSlot(i);
 					if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
 						tStack.stackSize += aStack.stackSize;
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					}
 				}
-				if (aCurrentSlotFirst) {
-					ItemStack tStack = aPlayer.inventory.getStackInSlot(aPlayer.inventory.currentItem);
+				if (aCurrentSlotFirst && aPlayer != null) {
+					ItemStack tStack = aInventory.getStackInSlot(aPlayer.inventory.currentItem);
 					if (tStack == null || tStack.stackSize == 0) {
-						aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						aInventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
+						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					} else if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
 						tStack.stackSize += aStack.stackSize;
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					}
 				}
-				for (int i = 0; i < 36; i++) if (i != aPlayer.inventory.currentItem) {
-					ItemStack tStack = aPlayer.inventory.getStackInSlot(i);
+				for (int i = 0; i < 36; i++) if (aPlayer == null || i != aPlayer.inventory.currentItem) {
+					ItemStack tStack = aInventory.getStackInSlot(i);
 					if (tStack == null || tStack.stackSize <= 0) {
-						aPlayer.inventory.setInventorySlotContents(i, aStack);
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						aInventory.setInventorySlotContents(i, aStack);
+						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					}
 				}
-				if (!aCurrentSlotFirst) {
-					ItemStack tStack = aPlayer.inventory.getStackInSlot(aPlayer.inventory.currentItem);
+				if (!aCurrentSlotFirst && aPlayer != null) {
+					ItemStack tStack = aInventory.getStackInSlot(aPlayer.inventory.currentItem);
 					if (tStack == null || tStack.stackSize == 0) {
-						aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						aInventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
+						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					} else if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
 						tStack.stackSize += aStack.stackSize;
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					}
 				}
@@ -2652,6 +2654,11 @@ public class UT {
 		
 		public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst, World aWorld, double aX, double aY, double aZ) {
 			if (ST.valid(aStack) && !addStackToPlayerInventory(aPlayer, aStack, aCurrentSlotFirst)) ST.drop(aWorld, aX, aY, aZ, aStack);
+			return T;
+		}
+		
+		public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst, World aWorld, double aX, double aY, double aZ) {
+			if (ST.valid(aStack) && !addStackToPlayerInventory(aPlayer, aInventory, aStack, aCurrentSlotFirst)) ST.drop(aWorld, aX, aY, aZ, aStack);
 			return T;
 		}
 		

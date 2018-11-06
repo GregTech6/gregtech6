@@ -25,8 +25,11 @@ import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.BI;
+import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.OP;
@@ -34,15 +37,19 @@ import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
+import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.recipes.Recipe;
-import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.util.OM;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -50,49 +57,96 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implements IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implements IMTE_OnRegistration, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	public short mMaterialA = 0, mMaterialB = 0;
 	public byte mStateA = 0, mStateB = 0;
-	public RecipeMap mRecipes = RM.Anvil;
-	public Recipe mLastRecipe = null;
+	public long mDurability = 10000;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		if (aNBT.hasKey(NBT_RECIPEMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_RECIPEMAP));
+		if (aNBT.hasKey(NBT_DURABILITY)) mDurability = aNBT.getLong(NBT_DURABILITY);
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
+		UT.NBT.setNumber(aNBT, NBT_DURABILITY, mDurability);
+	}
+	
+	@Override
+	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
+		UT.NBT.setNumber(aNBT, NBT_DURABILITY, mDurability);
+		return aNBT;
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(RM.AnvilTwo.mNameInternal) +Chat.CYAN+" (D: "+Chat.WHITE+UT.Code.divup(mDurability, 10000)+Chat.CYAN+")");
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_ANVIL_USAGE));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
 	}
 	
 	@Override
-	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (isServerSide()) {
-			if (SIDES_TOP[aSide]) {
-				// TODO Proper NEI Coordinates
-				float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
-				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?8:4] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?8:4]) return T;
-				
-				
-				// TODO Place/Remove Items when clicking.
-			}
-		} else {
-			if (SIDES_TOP[aSide]) {
-				// TODO Proper NEI Coordinates
-				float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
-				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?8:4] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?8:4]) {
-					mRecipes.openNEI();
-					return T;
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (rReturn > 0 || isClientSide()) return rReturn;
+		if (SIDES_TOP[aSide] && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
+			Recipe tRecipe = (slotHas(0)&&slotHas(1)?RM.AnvilTwo:RM.AnvilOne).findRecipe(this, null, F, V[1], NI, ZL_FLUIDTANKGT, slot(0), slot(1));
+			if (tRecipe != null) {
+				if (tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slot(0), slot(1))) {
+					ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
+					for (int i = 0; i < tOutputItems.length; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F, worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5);
+					removeAllDroppableNullStacks();
+					long tDurability = Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.mEUt) * Math.max(1, tRecipe.mDuration), 4));
+					mDurability -= tDurability;
+					if (mDurability <= 0) {
+						UT.Sounds.send(SFX.MC_BREAK, this);
+						ST.drop(worldObj, getCoords(), OP.scrapGt.mat(mMaterial, 32+getRandomNumber(32))); // Drops up to 63 Scraps, so 7 Units.
+						setToAir();
+					}
+					return tDurability;
 				}
+			}
+			return 0;
+		}
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			if (aChatReturn != null) aChatReturn.add("Remaining Durability: " + UT.Code.divup(mDurability, 10000));
+		}
+		return 0;
+	}
+	
+	@Override
+	public void onTick2(long aTimer, boolean aIsServerSide) {
+		if (aIsServerSide) {
+			if (mInventoryChanged) {
+				OreDictItemData
+				tData = OM.anydata(slot(0));
+				if (tData != null && tData.mMaterial != null && mMaterialA != (tData.mMaterial.mMaterial.mID > 0 ? tData.mMaterial.mMaterial.mID : 0)) {
+					mMaterialA = (tData.mMaterial.mMaterial.mID > 0 ? tData.mMaterial.mMaterial.mID : 0);
+					updateClientData();
+				}
+				tData = OM.anydata(slot(1));
+				if (tData != null && tData.mMaterial != null && mMaterialB != (tData.mMaterial.mMaterial.mID > 0 ? tData.mMaterial.mMaterial.mID : 0)) {
+					mMaterialB = (tData.mMaterial.mMaterial.mID > 0 ? tData.mMaterial.mMaterial.mID : 0);
+					updateClientData();
+				}
+			}
+		}
+	}
+	
+	@Override
+	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (SIDES_TOP[aSide]) {
+			float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
+			if (isServerSide()) {
+				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) return T;
+				ItemStack aStack = aPlayer.getCurrentEquippedItem();
+				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 0 : 1] < 0.5 ? 0 : 1);
+				if (ST.valid(aStack)) return (RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0;
+				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5)) {slot(tSlot, NI); return T;}
+			} else {
+				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) {RM.AnvilTwo.openNEI(); return T;}
 			}
 		}
 		return T;
@@ -121,23 +175,21 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid.mIconIndexBlock, mMaterial.contains(TD.Properties.GLOWING));
-		if (mMaterialA > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialA] != null) mTextureA = BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], OP.blockSolid.mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING));
-		if (mMaterialB > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialB] != null) mTextureB = BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], OP.blockSolid.mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING));
-		return 6;
+		mTextureA = (mMaterialA > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialA] != null ? BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], OP.blockSolid.mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING)) : null);
+		mTextureB = (mMaterialB > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialB] != null ? BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], OP.blockSolid.mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING)) : null);
+		return mTextureB == null ? mTextureA == null ? 4 : 5 : 6;
 	}
 	
-	@Override//TODO
+	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_P[13], PX_N[14]); return T;
-		case  1: box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_P[13], PX_N[14]); return T;
-		case  2: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[14], PX_P[13], PX_N[ 0]); return T;
-		case  3: box(aBlock, PX_P[14], PX_P[ 0], PX_P[14], PX_N[ 0], PX_P[13], PX_N[ 0]); return T;
-		case  4: box(aBlock, PX_P[ 0], PX_P[10], PX_P[ 0], PX_N[ 0], PX_P[12], PX_N[ 0]); return T;
-		case  5: box(aBlock, PX_N[ 0]-0.0001F, PX_P[12], PX_N[ 0]-0.0001F, PX_P[ 0]+0.0001F, PX_P[10], PX_P[ 0]+0.0001F); return T;
-		case  6: box(aBlock, PX_P[ 0], PX_P[ 2], PX_P[ 0], PX_N[ 0], PX_P[ 5], PX_N[ 0]); return T;
-		case  7: box(aBlock, PX_P[ 2], PX_P[10]-0.0001F, PX_P[ 2], PX_N[ 2], PX_P[mMaterialA<0?16:14], PX_N[ 2]); return T;
-		case  8: box(aBlock, PX_P[ 2], PX_P[ 5], PX_P[ 2], PX_N[ 2], PX_P[ 8], PX_N[ 2]); return T;
+		case  0: return box(aBlock, PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_P[ 4], PX_N[ 4]);
+		case  1: return box(aBlock, PX_P[ 6], PX_P[ 4], PX_P[ 6], PX_N[ 6], PX_P[ 8], PX_N[ 6]);
+		case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[12], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);
+		case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6: 2]);
+		// TODO Designs
+		case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
+		case  5: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 1]);
 		}
 		return F;
 	}
@@ -145,9 +197,11 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  3: return mTextureA;
-		case  4: return mTextureB;
-		case  5: return BI.nei();
+		case  0: return SIDES_TOP_HORIZONTAL[aSide] || aShouldSideBeRendered[aSide] ? mTextureAnvil : null;
+		case  1: return SIDES_HORIZONTAL[aSide] ? mTextureAnvil : null;
+		case  3: return BI.nei();
+		case  4: return mTextureA;
+		case  5: return mTextureB;
 		default: return mTextureAnvil;
 		}
 	}
@@ -167,12 +221,21 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override public boolean allowCovers            (byte aSide) {return F;}
 	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
 	
+	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
+	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
+	
 	// Inventory Stuff
-	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[3];}
+	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[2];}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return aSlot <  2 && mRecipes != null && mRecipes.containsInput(aStack, this, NI);}
-	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == 2;}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI);}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.anvil";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.anvil.simple";}
+	
+	@Override
+	public void onRegistration(MultiTileEntityRegistry aRegistry, short aID) {
+		RM.AnvilOne.mRecipeMachineList.add(aRegistry.getItem(aID));
+		RM.AnvilTwo.mRecipeMachineList.add(aRegistry.getItem(aID));
+	}
 }
