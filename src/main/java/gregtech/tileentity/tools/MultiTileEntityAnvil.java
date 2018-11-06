@@ -95,12 +95,9 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0 || isClientSide()) return rReturn;
-		DEB.println("TEST 1");
 		if ((SIDES_TOP[aSide] || aPlayer == null) && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
-			Recipe tRecipe = (slotHas(0)&&slotHas(1)?RM.AnvilTwo:RM.AnvilOne).findRecipe(this, null, F, V[1], NI, ZL_FLUIDTANKGT, slot(0), slot(1));
-			DEB.println("TEST 2 " + tRecipe);
+			Recipe tRecipe = (slotHas(0)&&slotHas(1)?RM.AnvilTwo:RM.AnvilOne).findRecipe(this, null, F, Long.MAX_VALUE, NI, ZL_FLUIDTANKGT, slot(0), slot(1));
 			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slot(0), slot(1))) {
-				DEB.println("TEST 3");
 				ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
 				for (int i = 0; i < tOutputItems.length; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5);
 				removeAllDroppableNullStacks();
@@ -225,7 +222,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 4]+0.0001F, PX_P[SIDES_AXIS_X[mFacing]? 6: 2]);
 		case  4:
 			switch(mStateA) {
-			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 3], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 3], PX_N[SIDES_AXIS_Z[mFacing]? 5: 6], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 6]);
+			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 3], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 3], PX_N[SIDES_AXIS_Z[mFacing]? 5:10], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5:10]);
 			case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 3], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
 			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 9], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 7: 9]);
 			case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10]);
@@ -233,7 +230,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			}
 		case  5:
 			switch(mStateB) {
-			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 6], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 6], PX_N[SIDES_AXIS_Z[mFacing]? 5: 3], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 3]);
+			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5:10], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5:10], PX_N[SIDES_AXIS_Z[mFacing]? 5: 3], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 3]);
 			case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[ 3], PX_N[SIDES_AXIS_X[mFacing]? 5: 1]);
 			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 9], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 7: 1]);
 			case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 6: 2]);
