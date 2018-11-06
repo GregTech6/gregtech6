@@ -154,7 +154,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			if (isServerSide()) {
 				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) return T;
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
-				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 0 : 1] > 0.5 ? 0 : 1);
+				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 1 : 0] > 0.5 ? 0 : 1);
 				if (ST.valid(aStack)) return (RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0;
 				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5)) {slot(tSlot, NI); updateInventory(); return T;}
 			} else {
@@ -195,10 +195,10 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: return box(aBlock, PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_P[ 4], PX_N[ 4]);
-		case  1: return box(aBlock, PX_P[ 6], PX_P[ 4], PX_P[ 6], PX_N[ 6], PX_P[ 8], PX_N[ 6]);
+		case  0: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 2], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 2], PX_N[SIDES_AXIS_Z[mFacing]? 4: 2], PX_N[12], PX_N[SIDES_AXIS_X[mFacing]? 4: 2]);
+		case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6: 4], PX_P[ 4], PX_P[SIDES_AXIS_X[mFacing]? 6: 4], PX_N[SIDES_AXIS_Z[mFacing]? 6: 4], PX_N[ 8], PX_N[SIDES_AXIS_X[mFacing]? 6: 4]);
 		case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 8], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[ 4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);
-		case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 4], PX_P[SIDES_AXIS_X[mFacing]? 6: 2]);
+		case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 4]+0.0001F, PX_P[SIDES_AXIS_X[mFacing]? 6: 2]);
 		case  4:
 			switch(mStateA) {
 			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 2], PX_N[SIDES_AXIS_Z[mFacing]? 5: 8], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 8]);

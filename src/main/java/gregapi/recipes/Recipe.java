@@ -715,7 +715,7 @@ public class Recipe {
 		return rArray;
 	}
 	
-	public boolean checkStacksEqual(boolean aDontCheckStackSizes, ItemStack... aInputs) {
+	public boolean checkStacksEqual(boolean aDecreaseStacksizeBySuccess, boolean aDontCheckStackSizes, ItemStack... aInputs) {
 		boolean[] tChecked = new boolean[aInputs.length];
 		for (ItemStack tInput : mInputs) if (ST.valid(tInput)) {
 			boolean temp = T;
@@ -723,6 +723,7 @@ public class Recipe {
 				ItemStack aInput = aInputs[i];
 				if (ST.valid(aInput)) {
 					if ((aDontCheckStackSizes || aInput.stackSize >= tInput.stackSize) && OreDictManager.INSTANCE.equal_(F, aInput, tInput)) {
+						if (aDecreaseStacksizeBySuccess) aInput.stackSize -= tInput.stackSize;
 						tChecked[i] = T;
 						temp = F;
 						break;
@@ -751,11 +752,11 @@ public class Recipe {
 			if (temp) return F;
 		}
 		
-		if (!checkStacksEqual(aDontCheckStackSizes, aInputs)) return F;
+		if (!checkStacksEqual(F, aDontCheckStackSizes, aInputs)) return F;
 		
 		if (aDecreaseStacksizeBySuccess) {
-			for (FluidStack tFluid : mFluidInputs) if (tFluid != null)   for (FluidStack aFluid : aFluidInputs) if (aFluid != null && aFluid.isFluidEqual(tFluid)                         && aFluid.amount    >= tFluid.amount   ) {aFluid.amount    -= tFluid.amount; break;}
-			for (ItemStack  tStack : mInputs     ) if (ST.valid(tStack)) for (ItemStack  aStack : aInputs     ) if (ST.valid(aStack) && OreDictManager.INSTANCE.equal_(F, aStack, tStack) && aStack.stackSize >= tStack.stackSize) {aStack.stackSize -= tStack.stackSize; break;}
+			for (FluidStack tFluid : mFluidInputs) if (tFluid != null)   for (FluidStack aFluid : aFluidInputs) if (aFluid != null && aFluid.isFluidEqual(tFluid) && aFluid.amount >= tFluid.amount) {aFluid.amount -= tFluid.amount; break;}
+			checkStacksEqual(T, F, aInputs);
 		}
 		
 		return T;
@@ -771,11 +772,11 @@ public class Recipe {
 			if (temp) return F;
 		}
 		
-		if (!checkStacksEqual(aDontCheckStackSizes, aInputs)) return F;
+		if (!checkStacksEqual(F, aDontCheckStackSizes, aInputs)) return F;
 		
 		if (aDecreaseStacksizeBySuccess) {
-			for (FluidStack tFluid : mFluidInputs) if (tFluid != null)   for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid)                         && aFluid.amount    >= tFluid.amount   ) {tTank.drain(tFluid.amount, T); break;}}
-			for (ItemStack  tStack : mInputs     ) if (ST.valid(tStack)) for (ItemStack  aStack : aInputs    )                                        if (ST.valid(aStack) && OreDictManager.INSTANCE.equal_(F, aStack, tStack) && aStack.stackSize >= tStack.stackSize) {aStack.stackSize -= tStack.stackSize; break;}
+			for (FluidStack tFluid : mFluidInputs) if (tFluid != null)   for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid) && aFluid.amount >= tFluid.amount) {tTank.drain(tFluid.amount, T); break;}}
+			checkStacksEqual(T, F, aInputs);
 		}
 		
 		return T;
@@ -790,14 +791,14 @@ public class Recipe {
 		while (rProcessCount < aMaxProcessCount) {
 			for (FluidStack tFluid : mFluidInputs) if (tFluid != null) {
 				boolean temp = T;
-				for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid) && (aFluid.amount >= tFluid.amount)) {temp = F; break;}}
+				for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid) && aFluid.amount >= tFluid.amount) {temp = F; break;}}
 				if (temp) return rProcessCount;
 			}
 			
-			if (!checkStacksEqual(F, aInputs)) return rProcessCount;
+			if (!checkStacksEqual(F, F, aInputs)) return rProcessCount;
 			
-			for (FluidStack tFluid : mFluidInputs) if (tFluid != null)   for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid)                         && (aFluid.amount    >= tFluid.amount   )) {tTank.drain(tFluid.amount, T); break;}}
-			for (ItemStack  tStack : mInputs     ) if (ST.valid(tStack)) for (ItemStack  aStack : aInputs    )                                        if (ST.valid(aStack) && OreDictManager.INSTANCE.equal_(F, aStack, tStack) && (aStack.stackSize >= tStack.stackSize)) {aStack.stackSize -= tStack.stackSize; break;}
+			for (FluidStack tFluid : mFluidInputs) if (tFluid != null) for (IFluidTank tTank : aFluidInputs) {FluidStack aFluid = tTank.getFluid(); if (aFluid != null && aFluid.isFluidEqual(tFluid) && (aFluid.amount >= tFluid.amount)) {tTank.drain(tFluid.amount, T); break;}}
+			checkStacksEqual(T, F, aInputs);
 			
 			rProcessCount++;
 		}
