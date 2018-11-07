@@ -99,7 +99,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			Recipe tRecipe = (slotHas(0)&&slotHas(1)?RM.AnvilTwo:RM.AnvilOne).findRecipe(this, null, F, Long.MAX_VALUE, NI, ZL_FLUIDTANKGT, slot(0), slot(1));
 			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slot(0), slot(1))) {
 				ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
-				for (int i = 0; i < tOutputItems.length; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5);
+				for (int i = 0; i < tOutputItems.length; i++) if (ST.valid(tOutputItems[i]) && !UT.Inventories.addStackToPlayerInventory(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F)) ST.place(worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5, tOutputItems[i]);
 				removeAllDroppableNullStacks();
 				long tDurability = Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.mEUt) * Math.max(1, tRecipe.mDuration), 4));
 				mDurability -= tDurability;
@@ -165,7 +165,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					}
 					return T;
 				}
-				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.0, zCoord+0.5)) {
+				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
 					slot(tSlot, NI);
 					updateInventory();
 					return T;
