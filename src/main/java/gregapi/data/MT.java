@@ -49,6 +49,7 @@ public class MT {
 	public static final HashSetNoNulls<OreDictMaterial> ALL_MATERIALS_REGISTERED_HERE = new HashSetNoNulls<>();
 	
 	/** Making the Table a little bit more overviewable. DO NOT USE THESE FUNCTIONS YOURSELF!!! Use "OreDictMaterial.createMaterial(YOUR-ID-AS-SPECIFIED-IN-THE-ID-RANGES, OREDICT-NAME, LOCALISED-NAME)" */
+	static OreDictMaterial tier         (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT, IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1);}
 	static OreDictMaterial unused       (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT);}
 	static OreDictMaterial depricated   (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT);}
 	static OreDictMaterial invalid      (String aNameOreDict) {return unused(aNameOreDict).put(INVALID_MATERIAL);}
@@ -618,40 +619,38 @@ public class MT {
 	Teo     = unknown       ( 3980, "Triennoctium"          , "Teo"     , 398,1460),
 	Tee     = unknown       ( 3990, "Triennennium"          , "Tee"     , 399,1465),
 	
-	
-	Neutronium              = unused        ("Neutronium"       ).qual(3, 6.0, 81920, 6)        .put(IGNORE_IN_COLOR_LOG).setTooltip("Nt"),
-	
-	
-	Primitive               = unused        ("Primitive"        ).aspects(TC.MACHINA    , 1)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Basic                   = unused        ("Basic"            ).aspects(TC.MACHINA    , 2)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Good                    = unused        ("Good"             ).aspects(TC.MACHINA    , 3)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Advanced                = unused        ("Advanced"         ).aspects(TC.MACHINA    , 4)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Data                    = unused        ("Data"             ).aspects(TC.MACHINA    , 4)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Elite                   = unused        ("Elite"            ).aspects(TC.MACHINA    , 5)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Master                  = unused        ("Master"           ).aspects(TC.MACHINA    , 6)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Ultimate                = unused        ("Ultimate"         ).aspects(TC.MACHINA    , 7)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Quantum                 = unused        ("Quantum"          ).aspects(TC.ORDO       , 8)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Superconductor          = unused        ("Superconductor"   ).aspects(TC.ELECTRUM   , 8)    .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
-	Infinite                = unused        ("Infinite"         )                               .put(IGNORE_IN_COLOR_LOG).setAllToTheOutputOf(null, 0, 1),
+	Neutronium = unused("Neutronium").qual(3, 6.0, 81920, 6).put(IGNORE_IN_COLOR_LOG).setTooltip("Nt"),
 	
 	
-	Black       = dye( 8250, "Black"        ,  32,  32,  32),
-	Red         = dye( 8251, "Red"          , 255,   0,   0),
-	Green       = dye( 8252, "Green"        ,   0, 255,   0),
-	Brown       = dye( 8253, "Brown"        ,  96,  64,   0),
-	Blue        = dye( 8254, "Blue"         ,   0,   0, 255),
-	Purple      = dye( 8255, "Purple"       , 128,   0, 128),
-	Cyan        = dye( 8256, "Cyan"         ,   0, 255, 255),
-	LightGray   = dye( 8257, "Light Gray"   , 192, 192, 192),
-	Gray        = dye( 8258, "Gray"         , 128, 128, 128),
-	Pink        = dye( 8259, "Pink"         , 255, 192, 192),
-	Lime        = dye( 8260, "Lime"         , 128, 255, 128),
-	Yellow      = dye( 8261, "Yellow"       , 255, 255,   0),
-	LightBlue   = dye( 8262, "Light Blue"   , 128, 128, 255),
-	Magenta     = dye( 8263, "Magenta"      , 255,   0, 255),
-	Orange      = dye( 8264, "Orange"       , 255, 128,   0),
-	White       = dye( 8265, "White"        , 255, 255, 255),
 	
+	Primitive      = tier("Primitive"     ).aspects(TC.MACHINA , 1),
+	Basic          = tier("Basic"         ).aspects(TC.MACHINA , 2),
+	Good           = tier("Good"          ).aspects(TC.MACHINA , 3),
+	Advanced       = tier("Advanced"      ).aspects(TC.MACHINA , 4),
+	Data           = tier("Data"          ).aspects(TC.MACHINA , 4),
+	Elite          = tier("Elite"         ).aspects(TC.MACHINA , 5),
+	Master         = tier("Master"        ).aspects(TC.MACHINA , 6),
+	Ultimate       = tier("Ultimate"      ).aspects(TC.MACHINA , 7),
+	Quantum        = tier("Quantum"       ).aspects(TC.ORDO    , 8),
+	Superconductor = tier("Superconductor").aspects(TC.ELECTRUM, 8),
+	Infinite       = tier("Infinite"      ),
+	
+	Black          = dye( 8250, "Black"     ,  32,  32,  32),
+	Red            = dye( 8251, "Red"       , 255,   0,   0),
+	Green          = dye( 8252, "Green"     ,   0, 255,   0),
+	Brown          = dye( 8253, "Brown"     ,  96,  64,   0),
+	Blue           = dye( 8254, "Blue"      ,   0,   0, 255),
+	Purple         = dye( 8255, "Purple"    , 128,   0, 128),
+	Cyan           = dye( 8256, "Cyan"      ,   0, 255, 255),
+	LightGray      = dye( 8257, "Light Gray", 192, 192, 192),
+	Gray           = dye( 8258, "Gray"      , 128, 128, 128),
+	Pink           = dye( 8259, "Pink"      , 255, 192, 192),
+	Lime           = dye( 8260, "Lime"      , 128, 255, 128),
+	Yellow         = dye( 8261, "Yellow"    , 255, 255,   0),
+	LightBlue      = dye( 8262, "Light Blue", 128, 128, 255),
+	Magenta        = dye( 8263, "Magenta"   , 255,   0, 255),
+	Orange         = dye( 8264, "Orange"    , 255, 128,   0),
+	White          = dye( 8265, "White"     , 255, 255, 255),
 	
 	Water                   = lquddcmp      ( 9800, "Water"                 , SET_FLUID             , 100, 100, 255, 255).put(UNRECYCLABLE, FOOD, MELTING)                                                                                                              .uumMcfg( 0, H              , 2*U, O                , 1*U)                                                                                                  .aspects(TC.AQUA, 2).liquid(FL.Water.make(1000)).heat(CS.C, CS.C+100).setDensity(1.0), H2O = Water,
 	Snow                    = dust          ( 9801, "Snow"                  , SET_FINE              , 250, 250, 250, 255).put(UNRECYCLABLE, FOOD, MORTAR)                                                                                                               .uumMcfg( 0, H              , 2*U, O                , 1*U)                                                                                                  .aspects(TC.GELUM, 1).setSmelting(H2O, U).heat(CS.C, CS.C+100).setDensity(1.0),
@@ -1256,7 +1255,7 @@ public class MT {
 	DarkThaumium            = alloymachine  ( 8680, "Dark Thaumium"         , SET_METALLIC          , 100,  75,  75, 255).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN).qual(3, 12.0,   512,  3)                                                                                                                                                                                                                               ,
 	VoidMetal               = alloymachine  ( 8681, "Void Metal"            , SET_METALLIC          ,  30,  10,  30, 100).put(MAGICAL, CENTRIFUGE, MOLTEN, "Void").qual(3, 12.0,    2048,  4)                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 7, TC.TENEBRAE, 8, TC.VACUOS, 8, TC.ALIENIS, 2, TC.HERBA, 1).heat(3000, 5000),
 	Osmiridium              = alloymachine  ( 8682, "Osmiridium"            , SET_METALLIC          , 100, 100, 255, 255).qual(3, 11.0, 3840, 4)                                                                                                                        .uumMcfg( 0, Os             , 1*U, Ir               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.MACHINA, 2, TC.NEBRISUM, 1).alloyCentrifuge(),
-	Sunnarium               = alloymachine  ( 8683, "Sunnarium"             , SET_SHINY             , 255, 255,   0, 255)                                                                                                                                                                                                                                                                                                           ,
+	Sunnarium               = alloymachine  ( 8683, "Sunnarium"             , SET_SHINY             , 255, 255,   0, 255).put(GLOWING, LIGHTING)                                                                                                                                                                                                                                                                                    ,
 	ChromiumDioxide         = alloy         ( 8685, "Chromium Dioxide"      , SET_DULL              ,  10,  20,  10, 255).put(ELECTROLYSER, MAGNETIC_PASSIVE)                                                                                                           .uumMcfg( 1, Cr             , 1*U, O                , 2*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.FABRICO, 1).qual(3, 11.0,  256,  3).heat(650), CrO2 = ChromiumDioxide,
 	VanadiumGallium         = alloy         ( 8686, "Vanadium-Gallium"      , SET_SHINY             , 128, 128, 140, 255).put(BRITTLE)                                                                                                                                  .uumMcfg( 0, V              , 3*U, Ga               , 1*U)                                                                                                  .alloyCentrifuge(),
 	YttriumBariumCuprate    = alloy         ( 8687, "Yttrium-Barium-Cuprate", SET_METALLIC          ,  80,  64,  70, 255).put(BRITTLE, ELECTROLYSER, LAYERED)                                                                                                           .uumMcfg( 6, Y              , 1*U, Ba               , 2*U, Cu               , 3*U, O                , 7*U)                                                  .heat(1200),
@@ -1275,7 +1274,7 @@ public class MT {
 	EnderiumBase            = alloymachine  ( 8729, "Enderium Base"         , SET_METALLIC          ,  53,  85, 108, 255).put(MOLTEN, MD.EIO)                                                                                                                           .uumMcfg( 4, Sn             , 2*U, Ag               , 1*U, Pt               , 1*U)                                                                          .aspects(TC.METALLUM, 3).alloyCentrifuge(),
 	Enderium                = alloymachine  ( 8710, "Enderium"              , SET_METALLIC          ,  60, 125, 115, 255).put(MAGICAL, MOLTEN, MD.TE).qual(3,  8.0, 256, 3)                                                                                             .setMcfg( 1, EnderiumBase   , 1*U, EnderPearl       , 1*U)                                                                                                  .aspects(TC.METALLUM, 3, TC.ALIENIS, 1).alloyCentrifuge(),
 //  InfusedGold             = alloymachore  ( 8712, "Infused Gold"          , SET_SHINY             , 255, 200,  60, 255).qual(2, 12.0, 64, 3)                                                                                                                                                                                                                                                                                      ,
-	RefinedGlowstone        = alloy         ( 8713, "GlowstoneRefined"      , SET_REDSTONE          , 255, 255,   0, 255).put("RefinedGlowstone").setLocal("Refined Glowstone")                                                                                                                                                                                                                                                     ,
+	RefinedGlowstone        = alloy         ( 8713, "GlowstoneRefined"      , SET_REDSTONE          , 255, 255,   0, 255).put("RefinedGlowstone", GLOWING).setLocal("Refined Glowstone")                                                                                                                                                                                                                                            ,
 	RefinedObsidian         = alloy         ( 8714, "ObsidianRefined"       , SET_REDSTONE          ,  80,  50, 100, 255).put("RefinedObsidian").setLocal("Refined Obsidian")                                                                                                                                                                                                                                                       ,
 	Yellorium               = metalore      ( 8715, "Yellorium"             , SET_SHINY             , 140, 130,  20, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.RADIO, 2),
 	Blutonium               = metalore      ( 8716, "Blutonium"             , SET_SHINY             ,  60,  60, 180, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.RADIO, 3),
@@ -1299,7 +1298,7 @@ public class MT {
 	Manasteel               = alloymachine  ( 8720, "Manasteel"             , SET_SHINY             , 110, 200, 250, 255).put(MAGICAL).qual(3, 12.0, 256, 3)                                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 2).heat(Fe.mMeltingPoint+500, Fe.mBoilingPoint+1000),
 	Terrasteel              = alloymachine  ( 8721, "Terrasteel"            , SET_SHINY             , 110, 200,  50, 255).put(MAGICAL).qual(3, 16.0,2048, 4)                                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 2).heat(Fe.mMeltingPoint+750, Fe.mBoilingPoint+1500),
 	ElvenElementium         = alloymachine  ( 8722, "Elven Elementium"      , SET_SHINY             , 250, 120, 250, 255).put(MAGICAL).qual(3, 14.0, 512, 3)                                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 2, TC.ALIENIS, 2).heat(Fe.mMeltingPoint+1000, Fe.mBoilingPoint+2000),
-	GaiaSpirit              = alloymachine  ( 8735, "Gaia Spirit"           , SET_SHINY             , 250, 250, 250, 255).put(MAGICAL).qual(3, 20.0,2048, 4)                                                                                                                                                                                                                                                                        .aspects(TC.AURAM, 4, TC.SPIRITUS, 4, TC.PRAECANTIO, 4).heat(W.mMeltingPoint+250, W.mBoilingPoint+500),
+	GaiaSpirit              = alloymachine  ( 8735, "Gaia Spirit"           , SET_SHINY             , 250, 250, 250, 255).put(MAGICAL, GLOWING).qual(3, 20.0,2048, 4)                                                                                                                                                                                                                                                               .aspects(TC.AURAM, 4, TC.SPIRITUS, 4, TC.PRAECANTIO, 4).heat(W.mMeltingPoint+250, W.mBoilingPoint+500),
 	Endium                  = metalore      ( 8736, "Endium"                , SET_METALLIC          ,  50,  10,  50, 255).put(MAGICAL).qual(3, 12.0, 256, 3)                                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 1, TC.ALIENIS, 3),
 	
 	
@@ -1314,14 +1313,14 @@ public class MT {
 	FrozenIron              = metalmachore  ( 8758, "Frozen Iron"           , SET_DULL              , 235, 235, 255, 255).put(DECOMPOSABLE, MAGNETIC_PASSIVE)                                                                                                           .uumMcfg( 0, Fe             , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.GELUM, 2).steal(Fe).setSmelting(Fe, U).setForging(Fe, U),
 	Kreknorite              = metalmachore  ( 8759, "Kreknorite"            , SET_SPACE             , 128,   0,   0, 255).put(MOLTEN, TICKS_PER_SMELT*18)                                                                                                                                                                                                                                                                           .aspects(TC.METALLUM, 2, TC.IGNIS, 2).qual(3, 8.0, 1200, 3).heat(MeteoricSteel.mMeltingPoint + 200, MeteoricSteel.mBoilingPoint + 200),
 	Syrmorite               = metalmachore  ( 8785, "Syrmorite"             , SET_DULL              ,  80,  80, 199, 255).put(MOLTEN)                                                                                                                                                                                                                                                                                               .aspects(TC.METALLUM, 2, TC.MORTUUS, 1).qual(2, 6.0,  500, 1).heat(Au),
-	Octine                  = metalmachore  ( 8786, "Octine"                , SET_METALLIC          , 255, 128,  32, 255).put(MOLTEN)                                                                                                                                                                                                                                                                                               .aspects(TC.METALLUM, 2, TC.MORTUUS, 1).qual(3, 8.0,  900, 2).heat(Steel.mBoilingPoint-200, Steel.mBoilingPoint+500),
+	Octine                  = metalmachore  ( 8786, "Octine"                , SET_METALLIC          , 255, 128,  32, 255).put(MOLTEN, MAGICAL, GLOWING, UNBURNABLE, BURNING)                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 2, TC.MORTUUS, 1).qual(3, 8.0,  900, 2).heat(Steel.mBoilingPoint-200, Steel.mBoilingPoint+500),
 	
 	
 	Bedrockium              = metalmachore  ( 8795, "Bedrockium"            , SET_ROUGH             ,  88,  88,  88, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.METALLUM, 1, TC.TERRA, 10).heat(2000),
 	
 	
-	Draconium               = metalmachore  ( 8791, "Draconium"             , SET_METALLIC          , 150,  50, 250, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.METALLUM, 2, TC.ALIENIS, 1).heat(4500),
-	DraconiumAwakened       = alloymachine  ( 8792, "DraconiumAwakened"     , SET_METALLIC          , 250, 150,  50, 255)                                                                                                                                               .setMcfg( 1, Draconium      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.ALIENIS, 4).heat(5500).setLocal("Awakened Draconium"),
+	Draconium               = metalmachore  ( 8791, "Draconium"             , SET_METALLIC          , 150,  50, 250, 255).put(MOLTEN)                                                                                                                                                                                                                                                                                               .aspects(TC.METALLUM, 2, TC.ALIENIS, 1).heat(4500),
+	DraconiumAwakened       = alloymachine  ( 8792, "DraconiumAwakened"     , SET_METALLIC          , 250, 150,  50, 255).put(MOLTEN, GLOWING)                                                                                                                          .setMcfg( 1, Draconium      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.ALIENIS, 4).heat(5500).setLocal("Awakened Draconium"),
 	
 	
 	Trinaquadalloy          = alloymachine  ( 8684, "Trinaquadalloy"        , SET_METALLIC          , 146, 186, 146, 255).put(CENTRIFUGE, "NaquadahAlloy").qual(3, 14.0,  20480,  5)                                                                                    .uumMcfg( 0, Ke             , 6*U, Nq               , 2*U, C                , 1*U)                                                                          .aspects(TC.METALLUM, 3, TC.TUTAMEN, 3, TC.NEBRISUM, 1),
