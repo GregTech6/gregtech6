@@ -33,6 +33,7 @@ import gregapi.data.BI;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
@@ -88,7 +89,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(RM.AnvilTwo.mNameInternal) +Chat.CYAN+" (D: "+Chat.WHITE+UT.Code.divup(mDurability, 10000)+Chat.CYAN+")");
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_ANVIL_USAGE));
-		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT) + " (" + LH.get(LH.FACE_TOP) + ")");
 	}
 	
 	@Override
@@ -156,9 +157,9 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		if (SIDES_TOP[aSide]) {
 			float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
 			if (isServerSide()) {
-				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) return T;
+				if (tCoords[0] <= PX_P[SIDES_AXIS_X[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2]) return T;
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
-				byte tSlot = (byte)(tCoords[SIDES_AXIS_Z[mFacing] ? 1 : 0] < 0.5 ? 0 : 1);
+				byte tSlot = (byte)(tCoords[SIDES_AXIS_X[mFacing] ? 1 : 0] < 0.5 ? 0 : 1);
 				if (ST.valid(aStack)) {
 					if ((RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
 						playClick();
@@ -171,7 +172,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					return T;
 				}
 			} else {
-				if (tCoords[0] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_X[mFacing]?6:2]) {RM.AnvilTwo.openNEI(); return T;}
+				if (tCoords[0] <= PX_P[SIDES_AXIS_X[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2]) {RM.AnvilTwo.openNEI(); return T;}
 			}
 		}
 		return T;
@@ -180,11 +181,9 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public boolean onPlaced(ItemStack aStack, EntityPlayer aPlayer, MultiTileEntityContainer aMTEContainer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		super.onPlaced(aStack, aPlayer, aMTEContainer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ);
-		if (aMTEContainer.mBlock.stepSound == Block.soundTypeMetal) {
-			aWorld.playSoundEffect(aX+0.5, aY+0.5, aZ+0.5, Blocks.anvil.stepSound.func_150496_b(), (Blocks.anvil.stepSound.getVolume()+1)/2, Blocks.anvil.stepSound.getPitch()*0.8F);
-			return F;
-		}
-		return T;
+		if (aMTEContainer.mBlock.stepSound != Block.soundTypeMetal || mMaterial.contains(TD.Properties.STONE) || mMaterial == MT.IronWood) return T;
+		aWorld.playSoundEffect(aX+0.5, aY+0.5, aZ+0.5, Blocks.anvil.stepSound.func_150496_b(), (Blocks.anvil.stepSound.getVolume()+1)/2, Blocks.anvil.stepSound.getPitch()*0.8F);
+		return F;
 	}
 	
 	@Override
@@ -218,25 +217,25 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 2], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 2], PX_N[SIDES_AXIS_Z[mFacing]? 4: 2], PX_N[12], PX_N[SIDES_AXIS_X[mFacing]? 4: 2]);
-		case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6: 4], PX_P[ 4], PX_P[SIDES_AXIS_X[mFacing]? 6: 4], PX_N[SIDES_AXIS_Z[mFacing]? 6: 4], PX_N[ 8], PX_N[SIDES_AXIS_X[mFacing]? 6: 4]);
-		case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 8], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[ 4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);
-		case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 4]+0.0001F, PX_P[SIDES_AXIS_X[mFacing]? 6: 2]);
+		case  0: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 2], PX_P[ 0], PX_P[SIDES_AXIS_Z[mFacing]? 4: 2], PX_N[SIDES_AXIS_X[mFacing]? 4: 2], PX_N[12], PX_N[SIDES_AXIS_Z[mFacing]? 4: 2]);
+		case  1: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 4], PX_P[ 4], PX_P[SIDES_AXIS_Z[mFacing]? 6: 4], PX_N[SIDES_AXIS_X[mFacing]? 6: 4], PX_N[ 8], PX_N[SIDES_AXIS_Z[mFacing]? 6: 4]);
+		case  2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[ 8], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[ 4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0]);
+		case  3: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 4]+0.0001F, PX_P[SIDES_AXIS_Z[mFacing]? 6: 2]);
 		case  4:
 			switch(mStateA) {
-			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 3], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 3], PX_N[SIDES_AXIS_Z[mFacing]? 5:10], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5:10]);
-			case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 3], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
-			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 9], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 7: 9]);
-			case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10]);
-			default: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 9]);
+			case  1: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 3], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 3], PX_N[SIDES_AXIS_X[mFacing]? 5:10], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 5:10]);
+			case  2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
+			case  3: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[SIDES_AXIS_X[mFacing]? 7: 9], PX_N[ 2], PX_N[SIDES_AXIS_Z[mFacing]? 7: 9]);
+			case  4: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 2], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
+			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
 			}
 		case  5:
 			switch(mStateB) {
-			case  1: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5:10], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5:10], PX_N[SIDES_AXIS_Z[mFacing]? 5: 3], PX_N[ 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 3]);
-			case  2: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[ 3], PX_N[SIDES_AXIS_X[mFacing]? 5: 1]);
-			case  3: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 7: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 7: 9], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 7: 1]);
-			case  4: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[ 2], PX_N[SIDES_AXIS_X[mFacing]? 6: 2]);
-			default: return box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_X[mFacing]? 5: 1]);
+			case  1: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5:10], PX_N[SIDES_AXIS_X[mFacing]? 5: 3], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 3]);
+			case  2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
+			case  3: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 7: 9], PX_N[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[ 2], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1]);
+			case  4: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 2], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
+			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
 			}
 		}
 		return F;
@@ -257,9 +256,9 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_X[mFacing]? 4: 0]);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0]);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0]);}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0]);}
 	
 	@Override public float getSurfaceSize           (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
