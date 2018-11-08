@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.08: (Not released yet)
+6.09.08:
 [CHANGED] Made Seed Oil and similar Plant Oils usable in the Recipes for the Wooden and the Bronze Gearboxes.
 [ADDED] Chains, currently pretty much useless though. Now Qwertech doesn't need to add them anymore.
 [ADDED]
