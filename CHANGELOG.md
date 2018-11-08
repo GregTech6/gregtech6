@@ -27,6 +27,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.08: (Not released yet)
 [CHANGED] Made Seed Oil and similar Plant Oils usable in the Recipes for the Wooden and the Bronze Gearboxes.
+[ADDED] Chains, currently pretty much useless though. Now Qwertech doesn't need to add them anymore.
 [ADDED]
 Anvil for crafting Ingots into Double Ingots or Plates and that kinda Stuff.
 Now it no longer uses Crafting Recipes for this purpose, instead you place 1 or 2 items on it and Hammer away at it.

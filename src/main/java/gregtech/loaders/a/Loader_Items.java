@@ -118,6 +118,7 @@ public class Loader_Items implements Runnable {
 		new PrefixItem(MD.GT, "gt.meta.bolt"                        , OP.bolt                           );
 		new PrefixItem(MD.GT, "gt.meta.screw"                       , OP.screw                          );
 		new PrefixItemRing(MD.GT, "gt.meta.ring"                    , OP.ring                           );
+		new PrefixItem(MD.GT, "gt.meta.chain"                       , OP.chain                          );
 		new PrefixItem(MD.GT, "gt.meta.foil"                        , OP.foil                           );
 		new PrefixItem(MD.GT, "gt.meta.casingSmall"                 , OP.casingSmall                    );
 		new PrefixItem(MD.GT, "gt.meta.wireFine"                    , OP.wireFine                       );

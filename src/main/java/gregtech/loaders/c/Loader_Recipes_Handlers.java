@@ -36,7 +36,6 @@ import gregapi.code.ICondition.Or;
 import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.IL;
-import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -75,15 +74,6 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Crusher      .add(new RecipeMapHandlerPrefix(gem                             , 1, null, 0, NF,  16, 0,   256, NF, gemFlawed          , 2, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		RM.Crusher      .add(new RecipeMapHandlerPrefix(gemFlawed                       , 1, null, 0, NF,  16, 0,   256, NF, gemChipped         , 2, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		RM.Crusher      .add(new RecipeMapHandlerPrefix(gemChipped                      , 1, null, 0, NF,  16, 0,   256, NF, null               , 0, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
-		
-		if (!MD.QT.mLoaded) {
-		gemExquisite    .addListener(new OreProcessing_CraftFrom( 2, null, new String[][] {{"h" ,  "X"}}, gemLegendary  , null, null, null, null, ANTIMATTER.NOT));
-		gemFlawless     .addListener(new OreProcessing_CraftFrom( 2, null, new String[][] {{"h" ,  "X"}}, gemExquisite  , null, null, null, null, ANTIMATTER.NOT));
-		gem             .addListener(new OreProcessing_CraftFrom( 2, null, new String[][] {{"h" ,  "X"}}, gemFlawless   , null, null, null, null, ANTIMATTER.NOT));
-		gemFlawed       .addListener(new OreProcessing_CraftFrom( 2, null, new String[][] {{"h" ,  "X"}}, gem           , null, null, null, null, ANTIMATTER.NOT));
-		gemChipped      .addListener(new OreProcessing_CraftFrom( 2, null, new String[][] {{"h" ,  "X"}}, gemFlawed     , null, null, null, null, ANTIMATTER.NOT));
-		dustSmall       .addListener(new OreProcessing_CraftFrom( 1, null, new String[][] {{"h" ,  "X"}}, gemChipped    , null, null, null, null, ANTIMATTER.NOT));
-		}
 		
 		RM.Mortar       .add(new RecipeMapHandlerPrefix(rockGt                          , 1, null, 0, NF,  16, 0,    16, NF, dustSmall          , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		RM.Mortar       .add(new RecipeMapHandlerPrefix(crushedPurified                 , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
@@ -215,6 +205,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.AnvilTwo     .add(new RecipeMapHandlerPrefix(plateDouble                     , 1, plateDouble    , 1, NF,  64, 0,    64, NF, plateQuadruple          , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.AnvilTwo     .add(new RecipeMapHandlerPrefix(plateDouble                     , 1, plateTriple    , 1, NF,  64, 0,    64, NF, plateQuintuple          , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.AnvilTwo     .add(new RecipeMapHandlerPrefix(stick                           , 1, stick          , 1, NF,  64, 0,    64, NF, stickLong               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.AnvilTwo     .add(new RecipeMapHandlerPrefix(ring                            , 2, ring           , 2, NF,  64, 0,    64, NF, chain                   , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		
 		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(chunkGt                                             , 1, NF,  64, 0,    64, NF, plateTiny                               , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(ingotDouble                                         , 1, NF,  64, 0,    64, NF, plate                                   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
@@ -222,7 +213,13 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(ingotQuadruple                                      , 1, NF,  64, 0,    64, NF, plateTriple                             , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(ingotQuintuple                                      , 1, NF,  64, 0,    64, NF, plateQuadruple                          , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(plateCurved                                         , 1, NF,  64, 0,    64, NF, plate                                   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
-		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(plate                                               , 1, NF,  64, 0,    64, NF, casingSmall                             , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(plate                                               , 1, NF,  64, 0,    64, NF, casingSmall                             , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(gemLegendary                                        , 1, NF,  64, 0,    64, NF, gemExquisite                            , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT)));
+		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(gemExquisite                                        , 1, NF,  64, 0,    64, NF, gemFlawless                             , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT)));
+		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(gemFlawless                                         , 1, NF,  64, 0,    64, NF, gem                                     , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT)));
+		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(gem                                                 , 1, NF,  64, 0,    64, NF, gemFlawed                               , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT)));
+		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(gemFlawed                                           , 1, NF,  64, 0,    64, NF, gemChipped                              , 2, NI, NI, T, F, F, new And(ANTIMATTER.NOT)));
+		RM.AnvilOne     .add(new RecipeMapHandlerPrefix(gemChipped                                          , 1, NF,  64, 0,    64, NF, dustSmall                               , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT)));
 		
 		RM.Lathe        .add(new RecipeMapHandlerPrefix(bolt                                                , 1, NF,  16, 0,    64, NF, screw                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)));
 		RM.Lathe        .add(new RecipeMapHandlerPrefix(nugget                                              , 1, NF,  16, 0,    64, NF, round                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
