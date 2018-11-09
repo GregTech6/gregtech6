@@ -179,27 +179,24 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (SIDES_TOP[aSide]) {
-			float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
-			if (isServerSide()) {
-				if (tCoords[0] <= PX_P[SIDES_AXIS_X[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2]) return T;
-				ItemStack aStack = aPlayer.getCurrentEquippedItem();
-				byte tSlot = (byte)(tCoords[SIDES_AXIS_X[mFacing] ? 1 : 0] < 0.5 ? 0 : 1);
-				if (ST.valid(aStack)) {
-					if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
-						playClick();
-					}
-					return T;
+		if (isServerSide()) {
+			if (aHitY < PX_P[4]) return T;
+			ItemStack aStack = aPlayer.getCurrentEquippedItem();
+			byte tSlot = (byte)((SIDES_AXIS_Z[mFacing]?aHitX:aHitZ) < 0.5 ? 0 : 1);
+			if (ST.valid(aStack)) {
+				if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
+					playClick();
 				}
-				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
-					slot(tSlot, NI);
-					updateInventory();
-					return T;
-				}
-			} else {
-				if (tCoords[0] <= PX_P[SIDES_AXIS_X[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2]) {RM.Anvil.openNEI(); return T;}
+				return T;
 			}
+			if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
+				slot(tSlot, NI);
+				updateInventory();
+				return T;
+			}
+			return T;
 		}
+		if (aHitY < PX_P[4]) {RM.Anvil.openNEI(); return T;}
 		return T;
 	}
 	
@@ -259,6 +256,13 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case SIDE_Z_NEG: return box(aBlock, PX_P[ 0], PX_P[ 9], PX_P[ 4], PX_N[15], PX_N[ 5], PX_N[ 4]);
 			default        : return box(aBlock, PX_P[15], PX_P[ 9], PX_P[ 4], PX_N[ 0], PX_N[ 5], PX_N[ 4]);
 			}
+		case  5:
+			switch(mFacing) {
+			case SIDE_X_NEG: return box(aBlock, PX_P[ 4]-0.0001F, PX_P[ 0], PX_P[ 0], PX_P[12]+0.0001F, PX_P[ 2], PX_P[ 2]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 4]-0.0001F, PX_P[ 0], PX_P[14], PX_P[12]+0.0001F, PX_P[ 2], PX_P[16]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 4]-0.0001F, PX_P[ 2], PX_P[ 2], PX_P[12]+0.0001F);
+			default        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 4]-0.0001F, PX_P[16], PX_P[ 2], PX_P[12]+0.0001F);
+			}
 		case  6:
 			switch(mShapeA) {
 			case  1: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 3], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 3], PX_N[SIDES_AXIS_X[mFacing]? 5:10], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 5:10]);
@@ -279,7 +283,6 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
 			}
-		case  5: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 4]+0.0001F, PX_P[SIDES_AXIS_Z[mFacing]? 6: 2]);
 		}
 		return F;
 	}
@@ -292,7 +295,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		case  2: return !ALONG_AXIS[mFacing][aSide] || aShouldSideBeRendered[aSide] ? mTextureAnvil : null;
 		case  3: return mTextureAnvil;
 		case  4: return mTextureAnvil;
-		case  5: return SIDES_TOP[aSide] ? BI.nei() : null;
+		case  5: return ALONG_AXIS[mFacing][aSide] ? BI.nei() : null;
 		case  6: return SIDES_TOP_HORIZONTAL[aSide] ? mTextureA : null;
 		case  7: return SIDES_TOP_HORIZONTAL[aSide] ? mTextureB : null;
 		default: return mTextureAnvil;
@@ -315,7 +318,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
 	@Override public boolean isAnvil                (byte aSide) {return T;}
 	
-	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
+	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 	
 	// Inventory Stuff
@@ -327,9 +330,9 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	
 	@Override
 	public void onRegistration(MultiTileEntityRegistry aRegistry, short aID) {
-		RM.Anvil.mRecipeMachineList.add(aRegistry.getItem(aID));
+		RM.Anvil         .mRecipeMachineList.add(aRegistry.getItem(aID));
 		RM.AnvilBendSmall.mRecipeMachineList.add(aRegistry.getItem(aID));
-		RM.AnvilBendBig.mRecipeMachineList.add(aRegistry.getItem(aID));
+		RM.AnvilBendBig  .mRecipeMachineList.add(aRegistry.getItem(aID));
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.anvil.simple";}
