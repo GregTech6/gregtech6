@@ -100,7 +100,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		if ((SIDES_TOP_HORIZONTAL[aSide] || aPlayer == null) && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
 			RecipeMap tRecipeMap = RM.Anvil;
 			if (SIDES_HORIZONTAL[aSide]) {
-				if (ALONG_AXIS[aSide][mFacing]) {
+				if (ALONG_AXIS[mFacing][aSide]) {
 					switch(mFacing) {
 					case SIDE_X_NEG: tRecipeMap = (aHitZ < 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
 					case SIDE_X_POS: tRecipeMap = (aHitZ > 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
@@ -310,15 +310,16 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[ 0], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0]);}
 	
-	@Override public float getSurfaceSize           (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
-	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_VERTICAL[aSide]?1.0F:0.0F;}
-	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_TOP[aSide]?PX_N[ 4]:0.0F;}
+	@Override public float getSurfaceSize           (byte aSide) {return SIDES_VERTICAL[aSide]?0.5F:0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_VERTICAL[aSide]?0.5F:0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_TOP[aSide]||ALONG_AXIS[mFacing][aSide]?PX_P[ 4]:0.0F;}
 	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
 	@Override public boolean isSideSolid2           (byte aSide) {return F;}
 	@Override public boolean allowCovers            (byte aSide) {return F;}
 	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
 	@Override public boolean isAnvil                (byte aSide) {return T;}
+	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
