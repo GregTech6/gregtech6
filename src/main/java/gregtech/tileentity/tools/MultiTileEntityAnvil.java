@@ -150,26 +150,30 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				if (tData != null) {
 					if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
 					if (tData.mPrefix != null) {
-						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1;
-						if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2;
-						if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3;
-						if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3;
-						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4;
-						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5;
-						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6;
+						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1; else
+						if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2; else
+						if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeA = 2; else
+						if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3; else
+						if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3; else
+						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
+						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
+						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
+						mShapeA = 0;
 					}
 				}
 				tData = OM.anydata(slot(1));
 				if (tData != null) {
 					if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
 					if (tData.mPrefix != null) {
-						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1;
-						if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2;
-						if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3;
-						if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3;
-						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4;
-						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5;
-						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6;
+						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1; else
+						if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2; else
+						if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeB = 2; else
+						if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3; else
+						if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3; else
+						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
+						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
+						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
+						mShapeB = 0;
 					}
 				}
 				updateClientData();
@@ -183,10 +187,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			if (aHitY < PX_P[4]) return T;
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			byte tSlot = (byte)((SIDES_AXIS_Z[mFacing]?aHitX:aHitZ) < 0.5 ? 0 : 1);
-			if (ST.valid(aStack)) {
-				if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
-					playClick();
-				}
+			if (SIDES_TOP[aSide] && ST.valid(aStack)) {
+				if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) playClick();
 				return T;
 			}
 			if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
@@ -258,10 +260,10 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			}
 		case  5:
 			switch(mFacing) {
-			case SIDE_X_NEG: return box(aBlock, PX_P[ 4]-0.0001F, PX_P[ 0], PX_P[ 0], PX_P[12]+0.0001F, PX_P[ 2], PX_P[ 2]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 4]-0.0001F, PX_P[ 0], PX_P[14], PX_P[12]+0.0001F, PX_P[ 2], PX_P[16]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 4]-0.0001F, PX_P[ 2], PX_P[ 2], PX_P[12]+0.0001F);
-			default        : return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 4]-0.0001F, PX_P[16], PX_P[ 2], PX_P[12]+0.0001F);
+			case SIDE_X_NEG: return box(aBlock, PX_P[ 4]-0.0001F, PX_P[ 0], PX_P[ 2], PX_P[12]+0.0001F, PX_P[ 2], PX_P[ 4]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 4]-0.0001F, PX_P[ 0], PX_P[12], PX_P[12]+0.0001F, PX_P[ 2], PX_P[14]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 2], PX_P[ 0], PX_P[ 4]-0.0001F, PX_P[ 4], PX_P[ 2], PX_P[12]+0.0001F);
+			default        : return box(aBlock, PX_P[12], PX_P[ 0], PX_P[ 4]-0.0001F, PX_P[14], PX_P[ 2], PX_P[12]+0.0001F);
 			}
 		case  6:
 			switch(mShapeA) {
