@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.09.16: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.09.15: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.09.14: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.09: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Anvils now have the ability to be used as Bending Cylinders by hammering on their Sides instead of their Top.
 
 
 6.09.08:

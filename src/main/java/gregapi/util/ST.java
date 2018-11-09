@@ -345,6 +345,9 @@ public class ST {
 	public static EntityItem entity (World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                    ) {ItemStack rStack = aStack                           ; if (invalid(rStack)) return null; return               entity_(aWorld, aCoords, rStack);}
 	public static EntityItem entity_(World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                    ) {return new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(aStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ));}
 	
+	public static ItemStack emptySlot() {
+		return IL.Empty_Slot.get(0);
+	}
 	public static ItemStack tag(long aNumber) {
 		return IL.Circuit_Selector.getWithDamage(0, aNumber);
 	}

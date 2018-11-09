@@ -45,8 +45,8 @@ import net.minecraft.util.IIcon;
  * @author Gregorius Techneticies
  */
 public class ItemIntegratedCircuit extends ItemBase {
-	public ItemIntegratedCircuit(String aUnlocalized, String aEnglish) {
-		super(MD.GAPI.mID, aUnlocalized, aEnglish, "");
+	public ItemIntegratedCircuit(String aUnlocalized) {
+		super(MD.GAPI.mID, aUnlocalized, "Selector Tag", "");
 		setHasSubtypes(T);
 		setMaxDamage(0);
 		

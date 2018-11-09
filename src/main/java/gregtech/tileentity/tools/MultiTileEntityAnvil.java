@@ -42,6 +42,7 @@ import gregapi.network.IPacket;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.recipes.Recipe;
+import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
@@ -87,7 +88,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(RM.AnvilTwo.mNameInternal) +Chat.CYAN+" (D: "+Chat.WHITE+UT.Code.divup(mDurability, 10000)+Chat.CYAN+")");
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(RM.Anvil.mNameInternal) +Chat.CYAN+" (D: "+Chat.WHITE+UT.Code.divup(mDurability, 10000)+Chat.CYAN+")");
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_ANVIL_USAGE));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT) + " (" + LH.get(LH.FACE_TOP) + ")");
 	}
@@ -96,9 +97,16 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0 || isClientSide()) return rReturn;
-		if ((SIDES_TOP[aSide] || aPlayer == null) && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
-			Recipe tRecipe = (slotHas(0)&&slotHas(1)?RM.AnvilTwo:RM.AnvilOne).findRecipe(this, null, F, Long.MAX_VALUE, NI, ZL_FLUIDTANKGT, slot(0), slot(1));
-			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slot(0), slot(1))) {
+		if ((SIDES_TOP_HORIZONTAL[aSide] || aPlayer == null) && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
+			RecipeMap tRecipeMap = RM.Anvil;
+			if (SIDES_HORIZONTAL[aSide]) switch(mFacing) {
+			case SIDE_X_NEG: tRecipeMap = (aHitZ > 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+			case SIDE_X_POS: tRecipeMap = (aHitZ < 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+			case SIDE_Z_NEG: tRecipeMap = (aHitX > 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+			case SIDE_Z_POS: tRecipeMap = (aHitX < 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+			}
+			Recipe tRecipe = tRecipeMap.findRecipe(this, null, F, Long.MAX_VALUE, NI, ZL_FLUIDTANKGT, slotHas(0)?slot(0):ST.emptySlot(), slotHas(1)?slot(1):ST.emptySlot());
+			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slotHas(0)?slot(0):ST.emptySlot(), slotHas(1)?slot(1):ST.emptySlot())) {
 				ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
 				for (int i = 0; i < tOutputItems.length; i++) if (ST.valid(tOutputItems[i]) && !UT.Inventories.addStackToPlayerInventory(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F)) ST.place(worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5, tOutputItems[i]);
 				removeAllDroppableNullStacks();
@@ -165,7 +173,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
 				byte tSlot = (byte)(tCoords[SIDES_AXIS_X[mFacing] ? 1 : 0] < 0.5 ? 0 : 1);
 				if (ST.valid(aStack)) {
-					if ((RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
+					if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) {
 						playClick();
 					}
 					return T;
@@ -176,7 +184,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					return T;
 				}
 			} else {
-				if (tCoords[0] <= PX_P[SIDES_AXIS_X[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2]) {RM.AnvilTwo.openNEI(); return T;}
+				if (tCoords[0] <= PX_P[SIDES_AXIS_X[mFacing]?6:2] && tCoords[1] <= PX_P[SIDES_AXIS_Z[mFacing]?6:2]) {RM.Anvil.openNEI(); return T;}
 			}
 		}
 		return T;
@@ -285,13 +293,14 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[2];}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return RM.AnvilOne.containsInput(aStack, this, NI) || RM.AnvilTwo.containsInput(aStack, this, NI);}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI);}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
 	
 	@Override
 	public void onRegistration(MultiTileEntityRegistry aRegistry, short aID) {
-		RM.AnvilOne.mRecipeMachineList.add(aRegistry.getItem(aID));
-		RM.AnvilTwo.mRecipeMachineList.add(aRegistry.getItem(aID));
+		RM.Anvil.mRecipeMachineList.add(aRegistry.getItem(aID));
+		RM.AnvilBendSmall.mRecipeMachineList.add(aRegistry.getItem(aID));
+		RM.AnvilBendBig.mRecipeMachineList.add(aRegistry.getItem(aID));
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.anvil.simple";}

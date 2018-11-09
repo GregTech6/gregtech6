@@ -89,6 +89,7 @@ import gregapi.enchants.Enchantment_EnderDamage;
 import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.enchants.Enchantment_SlimeDamage;
 import gregapi.enchants.Enchantment_WerewolfDamage;
+import gregapi.item.ItemEmptySlot;
 import gregapi.item.ItemFluidDisplay;
 import gregapi.item.ItemIntegratedCircuit;
 import gregapi.lang.LanguageHandler;
@@ -628,7 +629,9 @@ public class GT_API extends Abstract_Mod {
 		// Initialises the Fluid Display Item.
 		IL.Display_Fluid.set(new ItemFluidDisplay());
 		// Initialises the Integrated Circuit Item.
-		IL.Circuit_Selector.set(new ItemIntegratedCircuit("gt.integrated_circuit", "Selector Tag"));
+		IL.Circuit_Selector.set(new ItemIntegratedCircuit("gt.integrated_circuit"));
+		// Initialises the Empty Slot Marker Item.
+		IL.Empty_Slot.set(new ItemEmptySlot("gt.empty_slot"));
 		// Register the GUI Handler.
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, api_proxy);
 		// Fixing vanilla Oak Plank Slab Recipe.

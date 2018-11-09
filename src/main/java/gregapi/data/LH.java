@@ -297,7 +297,7 @@ public class LH {
 		add(RECIPES_MOLD                                , "This Mold produces");
 		add(RECIPES_MOLD_SELECT                         , "Use a Chisel in order to select the Shape of the Mold");
 		add(RECIPES_MOLD_COINAGE                        , "Place tiny Metal Plate ontop, hammer it and retrieve Coin");
-		add(RECIPES_ANVIL_USAGE                         , "Place Input on Top and use the Hammer");
+		add(RECIPES_ANVIL_USAGE                         , "Place Input on Top and use the Hammer on either the Top or the Sides");
 		add(RECIPES_MORTAR_USAGE                        , "Rightclick with the Item you want to turn into Dust");
 		add(RECIPES_JUICER_USAGE                        , "Rightclick with the Item you want to get Juice from");
 		add(RECIPES_SIFTER_USAGE                        , "Place Input on Top and rightclick it");
