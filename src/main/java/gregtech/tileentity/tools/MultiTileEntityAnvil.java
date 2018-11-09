@@ -99,11 +99,22 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		if (rReturn > 0 || isClientSide()) return rReturn;
 		if ((SIDES_TOP_HORIZONTAL[aSide] || aPlayer == null) && aTool.equals(TOOL_hammer) && (slotHas(0)||slotHas(1))) {
 			RecipeMap tRecipeMap = RM.Anvil;
-			if (SIDES_HORIZONTAL[aSide]) switch(mFacing) {
-			case SIDE_X_NEG: tRecipeMap = (aHitZ > 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
-			case SIDE_X_POS: tRecipeMap = (aHitZ < 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
-			case SIDE_Z_NEG: tRecipeMap = (aHitX > 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
-			case SIDE_Z_POS: tRecipeMap = (aHitX < 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+			if (SIDES_HORIZONTAL[aSide]) {
+				if (ALONG_AXIS[aSide][mFacing]) {
+					switch(mFacing) {
+					case SIDE_X_NEG: tRecipeMap = (aHitZ < 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+					case SIDE_X_POS: tRecipeMap = (aHitZ > 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+					case SIDE_Z_NEG: tRecipeMap = (aHitX < 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+					case SIDE_Z_POS: tRecipeMap = (aHitX > 0.5 ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+					}
+				} else {
+					switch(mFacing) {
+					case SIDE_X_NEG: tRecipeMap = (aSide == SIDE_Z_NEG ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+					case SIDE_X_POS: tRecipeMap = (aSide == SIDE_Z_POS ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+					case SIDE_Z_NEG: tRecipeMap = (aSide == SIDE_X_NEG ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+					case SIDE_Z_POS: tRecipeMap = (aSide == SIDE_X_POS ? RM.AnvilBendSmall : RM.AnvilBendBig); break;
+					}
+				}
 			}
 			Recipe tRecipe = tRecipeMap.findRecipe(this, null, F, Long.MAX_VALUE, NI, ZL_FLUIDTANKGT, slotHas(0)?slot(0):ST.emptySlot(), slotHas(1)?slot(1):ST.emptySlot());
 			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slotHas(0)?slot(0):ST.emptySlot(), slotHas(1)?slot(1):ST.emptySlot())) {
@@ -236,17 +247,17 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		case  2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 1], PX_P[ 8], PX_P[SIDES_AXIS_Z[mFacing]? 4: 1], PX_N[SIDES_AXIS_X[mFacing]? 4: 1], PX_N[ 4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 1]);
 		case  3:
 			switch(mFacing) {
-			case SIDE_X_NEG: return box(aBlock, PX_P[ 5], PX_P[ 8], PX_P[15], PX_N[ 5], PX_N[ 0], PX_N[ 0]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 5], PX_P[ 8], PX_P[ 0], PX_N[ 5], PX_N[ 0], PX_N[15]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[15], PX_P[ 8], PX_P[ 5], PX_N[ 0], PX_N[ 0], PX_N[ 5]);
-			default        : return box(aBlock, PX_P[ 0], PX_P[ 8], PX_P[ 5], PX_N[15], PX_N[ 0], PX_N[ 5]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[ 5], PX_P[ 8], PX_P[15], PX_N[ 5], PX_N[ 4], PX_N[ 0]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 5], PX_P[ 8], PX_P[ 0], PX_N[ 5], PX_N[ 4], PX_N[15]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[15], PX_P[ 8], PX_P[ 5], PX_N[ 0], PX_N[ 4], PX_N[ 5]);
+			default        : return box(aBlock, PX_P[ 0], PX_P[ 8], PX_P[ 5], PX_N[15], PX_N[ 4], PX_N[ 5]);
 			}
 		case  4:
 			switch(mFacing) {
-			case SIDE_X_NEG: return box(aBlock, PX_P[ 4], PX_P[ 9], PX_P[ 0], PX_N[ 4], PX_N[ 1], PX_N[15]);
-			case SIDE_X_POS: return box(aBlock, PX_P[ 4], PX_P[ 9], PX_P[15], PX_N[ 4], PX_N[ 1], PX_N[ 0]);
-			case SIDE_Z_NEG: return box(aBlock, PX_P[ 0], PX_P[ 9], PX_P[ 4], PX_N[15], PX_N[ 1], PX_N[ 4]);
-			default        : return box(aBlock, PX_P[15], PX_P[ 9], PX_P[ 4], PX_N[ 0], PX_N[ 1], PX_N[ 4]);
+			case SIDE_X_NEG: return box(aBlock, PX_P[ 4], PX_P[ 9], PX_P[ 0], PX_N[ 4], PX_N[ 5], PX_N[15]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 4], PX_P[ 9], PX_P[15], PX_N[ 4], PX_N[ 5], PX_N[ 0]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 0], PX_P[ 9], PX_P[ 4], PX_N[15], PX_N[ 5], PX_N[ 4]);
+			default        : return box(aBlock, PX_P[15], PX_P[ 9], PX_P[ 4], PX_N[ 0], PX_N[ 5], PX_N[ 4]);
 			}
 		case  6:
 			switch(mShapeA) {

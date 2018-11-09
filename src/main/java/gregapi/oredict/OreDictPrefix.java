@@ -541,6 +541,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	public boolean isTrue(ITagDataContainer<?> aMaterial) {
 		return aMaterial instanceof OreDictMaterial && canGenerateItem((OreDictMaterial)aMaterial);
 	}
+	
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public final ICondition<ITagDataContainer> NOT = new ICondition.Not(this);
 }
