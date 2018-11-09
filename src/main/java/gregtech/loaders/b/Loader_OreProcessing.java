@@ -46,7 +46,6 @@ import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
-import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
@@ -178,12 +177,9 @@ public class Loader_OreProcessing implements Runnable {
 		
 		String tCategory = ConfigCategories.Recipes.gregtechrecipes + ".";
 		
-		if (!MD.QT.mLoaded) {
 		rotor                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "rotor"                    , new String[][] {{"YhY", "TXf", "YdY"}}, ring              , plateCurved   , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		toolHeadBuzzSaw             .addListener(new OreProcessing_CraftFrom( 1, tCategory + "toolHeadBuzzSaw"          , new String[][] {{"wPh", "P P", "fPx"}}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
 		toolHeadBuzzSaw             .addListener(new OreProcessing_CraftFrom( 1, tCategory + "toolHeadBuzzSaw"          , new String[][] {{"wCh", "C C", "fCx"}}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
-		}
-		
 		gearGt                      .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"XYX", "YfY", "XYX"}}, rockGt            , stone         , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, STONE, MT.Stone.NOT, MT.Bedrock.NOT)));
 		gearGt                      .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"XYX", "YfY", "XYX"}}, stick             , stone         , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, STONE, MT.Stone.NOT, MT.Bedrock.NOT)));
 		gearGt                      .addListener(new OreProcessing_CraftFrom( 1, null                                   , new String[][] {{"XYX", "YwY", "XYX"}}, stick             , plate         , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));

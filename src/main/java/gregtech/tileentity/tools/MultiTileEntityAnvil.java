@@ -65,7 +65,7 @@ import net.minecraft.world.World;
  */
 public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implements ITileEntityAnvil, IMTE_OnRegistration, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	public short mMaterialA = 0, mMaterialB = 0;
-	public byte mStateA = 0, mStateB = 0;
+	public byte mShapeA = 0, mShapeB = 0;
 	public long mDurability = 10000;
 	
 	@Override
@@ -132,31 +132,33 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
 			if (mInventoryChanged) {
-				mStateA = mStateB = 0;
+				mShapeA = mShapeB = 0;
 				mMaterialA = mMaterialB = 0;
 				OreDictItemData
 				tData = OM.anydata(slot(0));
 				if (tData != null) {
 					if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
 					if (tData.mPrefix != null) {
-						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mStateA = 1;
-						if (tData.mPrefix.mNameInternal.startsWith("plate")) mStateA = 2;
-						if (tData.mPrefix.mNameInternal.startsWith("stick")) mStateA = 3;
-						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mStateA = 4;
-						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mStateA = 5;
-						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mStateA = 6;
+						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1;
+						if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2;
+						if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3;
+						if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3;
+						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4;
+						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5;
+						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6;
 					}
 				}
 				tData = OM.anydata(slot(1));
 				if (tData != null) {
 					if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
 					if (tData.mPrefix != null) {
-						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mStateB = 1;
-						if (tData.mPrefix.mNameInternal.startsWith("plate")) mStateB = 2;
-						if (tData.mPrefix.mNameInternal.startsWith("stick")) mStateB = 3;
-						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mStateB = 4;
-						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mStateB = 5;
-						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mStateB = 6;
+						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1;
+						if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2;
+						if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3;
+						if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3;
+						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4;
+						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5;
+						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6;
 					}
 				}
 				updateClientData();
@@ -200,7 +202,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		if (aSendAll) return getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), mStateA, mStateB, UT.Code.toByteS(mMaterialA, 0), UT.Code.toByteS(mMaterialA, 1), UT.Code.toByteS(mMaterialB, 0), UT.Code.toByteS(mMaterialB, 1));
+		if (aSendAll) return getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), mShapeA, mShapeB, UT.Code.toByteS(mMaterialA, 0), UT.Code.toByteS(mMaterialA, 1), UT.Code.toByteS(mMaterialB, 0), UT.Code.toByteS(mMaterialB, 1));
 		return super.getClientDataPacket(aSendAll);
 	}
 	
@@ -208,8 +210,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		super.receiveDataByteArray(aData, aNetworkHandler);
 		if (aData.length > 4) {
-			mStateA = aData[5];
-			mStateB = aData[6];
+			mShapeA = aData[5];
+			mShapeB = aData[6];
 			mMaterialA = UT.Code.combine(aData[7], aData[ 8]);
 			mMaterialB = UT.Code.combine(aData[9], aData[10]);
 		}
@@ -221,9 +223,9 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid.mIconIndexBlock, mMaterial.contains(TD.Properties.GLOWING));
-		mTextureA = (mMaterialA > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialA] != null ? BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], (mStateA==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING)) : null);
-		mTextureB = (mMaterialB > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialB] != null ? BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], (mStateB==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING)) : null);
-		return mTextureB == null ? mTextureA == null ? 4 : 5 : 6;
+		mTextureA = (mMaterialA > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialA] != null ? BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], (mShapeA==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING)) : null);
+		mTextureB = (mMaterialB > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialB] != null ? BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], (mShapeB==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING)) : null);
+		return mTextureB == null ? mTextureA == null ? 6 : 7 : 8;
 	}
 	
 	@Override
@@ -231,10 +233,23 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		switch(aRenderPass) {
 		case  0: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 2], PX_P[ 0], PX_P[SIDES_AXIS_Z[mFacing]? 4: 2], PX_N[SIDES_AXIS_X[mFacing]? 4: 2], PX_N[12], PX_N[SIDES_AXIS_Z[mFacing]? 4: 2]);
 		case  1: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 4], PX_P[ 4], PX_P[SIDES_AXIS_Z[mFacing]? 6: 4], PX_N[SIDES_AXIS_X[mFacing]? 6: 4], PX_N[ 8], PX_N[SIDES_AXIS_Z[mFacing]? 6: 4]);
-		case  2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[ 8], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_N[SIDES_AXIS_X[mFacing]? 4: 0], PX_N[ 4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 0]);
-		case  3: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 4]+0.0001F, PX_P[SIDES_AXIS_Z[mFacing]? 6: 2]);
+		case  2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 1], PX_P[ 8], PX_P[SIDES_AXIS_Z[mFacing]? 4: 1], PX_N[SIDES_AXIS_X[mFacing]? 4: 1], PX_N[ 4], PX_N[SIDES_AXIS_Z[mFacing]? 4: 1]);
+		case  3:
+			switch(mFacing) {
+			case SIDE_X_NEG: return box(aBlock, PX_P[ 5], PX_P[ 8], PX_P[15], PX_N[ 5], PX_N[ 0], PX_N[ 0]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 5], PX_P[ 8], PX_P[ 0], PX_N[ 5], PX_N[ 0], PX_N[15]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[15], PX_P[ 8], PX_P[ 5], PX_N[ 0], PX_N[ 0], PX_N[ 5]);
+			default        : return box(aBlock, PX_P[ 0], PX_P[ 8], PX_P[ 5], PX_N[15], PX_N[ 0], PX_N[ 5]);
+			}
 		case  4:
-			switch(mStateA) {
+			switch(mFacing) {
+			case SIDE_X_NEG: return box(aBlock, PX_P[ 4], PX_P[ 9], PX_P[ 0], PX_N[ 4], PX_N[ 1], PX_N[15]);
+			case SIDE_X_POS: return box(aBlock, PX_P[ 4], PX_P[ 9], PX_P[15], PX_N[ 4], PX_N[ 1], PX_N[ 0]);
+			case SIDE_Z_NEG: return box(aBlock, PX_P[ 0], PX_P[ 9], PX_P[ 4], PX_N[15], PX_N[ 1], PX_N[ 4]);
+			default        : return box(aBlock, PX_P[15], PX_P[ 9], PX_P[ 4], PX_N[ 0], PX_N[ 1], PX_N[ 4]);
+			}
+		case  6:
+			switch(mShapeA) {
 			case  1: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 3], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 3], PX_N[SIDES_AXIS_X[mFacing]? 5:10], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 5:10]);
 			case  2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
 			case  3: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[SIDES_AXIS_X[mFacing]? 7: 9], PX_N[ 2], PX_N[SIDES_AXIS_Z[mFacing]? 7: 9]);
@@ -243,8 +258,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
 			}
-		case  5:
-			switch(mStateB) {
+		case  7:
+			switch(mShapeB) {
 			case  1: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5:10], PX_N[SIDES_AXIS_X[mFacing]? 5: 3], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 5: 3]);
 			case  2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
 			case  3: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 7: 9], PX_N[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[ 2], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1]);
@@ -253,6 +268,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
 			}
+		case  5: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 4: 0], PX_P[11], PX_P[SIDES_AXIS_Z[mFacing]? 4: 0], PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 4]+0.0001F, PX_P[SIDES_AXIS_Z[mFacing]? 6: 2]);
 		}
 		return F;
 	}
@@ -263,10 +279,12 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		case  0: return SIDES_TOP_HORIZONTAL[aSide] || aShouldSideBeRendered[aSide] ? mTextureAnvil : null;
 		case  1: return SIDES_HORIZONTAL[aSide] ? mTextureAnvil : null;
 		case  2: return !ALONG_AXIS[mFacing][aSide] || aShouldSideBeRendered[aSide] ? mTextureAnvil : null;
-		case  3: return SIDES_TOP[aSide] ? BI.nei() : null;
-		case  4: return SIDES_TOP_HORIZONTAL[aSide] ? mTextureA : null;
-		case  5: return SIDES_TOP_HORIZONTAL[aSide] ? mTextureB : null;
-		default: return null;
+		case  3: return mTextureAnvil;
+		case  4: return mTextureAnvil;
+		case  5: return SIDES_TOP[aSide] ? BI.nei() : null;
+		case  6: return SIDES_TOP_HORIZONTAL[aSide] ? mTextureA : null;
+		case  7: return SIDES_TOP_HORIZONTAL[aSide] ? mTextureB : null;
+		default: return mTextureAnvil;
 		}
 	}
 	
