@@ -33,6 +33,7 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.IRenderedBlock;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.ITexture;
+import gregapi.render.RendererBlockTextured;
 import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -74,6 +75,7 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 		return tBlock != this && tBlock != Blocks.farmland && !WD.visOpq(tBlock);
 	}
 	
+	@Override public int getRenderType() {return RendererBlockTextured.INSTANCE==null?0:RendererBlockTextured.INSTANCE.mRenderID;}
 	@Override public ITexture getTexture(int aRenderPass, byte aSide, ItemStack aStack                                                            ) {return BlockTextureDefault.get(SIDES_TOP[aSide]?Textures.BlockIcons.PATH:(SIDES_BOTTOM[aSide]?Textures.BlockIcons.DIRTS:Textures.BlockIcons.PATHS)[ST.meta_(aStack                   ) % 16]);}
 	@Override public ITexture getTexture(int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered, IBlockAccess aWorld, int aX, int aY, int aZ) {return BlockTextureDefault.get(SIDES_TOP[aSide]?Textures.BlockIcons.PATH:(SIDES_BOTTOM[aSide]?Textures.BlockIcons.DIRTS:Textures.BlockIcons.PATHS)[aWorld.getBlockMetadata(aX, aY, aZ) % 16]);}
 	@Override public boolean usesRenderPass(int aRenderPass, ItemStack aStack                                                                     ) {return T;}
