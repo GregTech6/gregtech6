@@ -22,6 +22,7 @@ package gregapi.load;
 import static gregapi.data.CS.*;
 
 import gregapi.data.ANY;
+import gregapi.data.CS.OreDictToolNames;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
@@ -535,6 +536,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("plateWood"                       , "plankWood");
 		OreDictManager.INSTANCE.addReRegistration("plankWood"                       , "plankAnyWood");
 		OreDictManager.INSTANCE.addReRegistration("plateAnyWood"                    , "plankAnyWood");
+		OreDictManager.INSTANCE.addReRegistration(OreDictToolNames.axe              , OreDictToolNames.sawaxe);
+		OreDictManager.INSTANCE.addReRegistration(OreDictToolNames.saw              , OreDictToolNames.sawaxe);
 		OreDictManager.INSTANCE.addReRegistration("stickTin"                        , "craftingToolSolderingMetal");
 		OreDictManager.INSTANCE.addReRegistration("stickLead"                       , "craftingToolSolderingMetal");
 		OreDictManager.INSTANCE.addReRegistration("stickSolderingAlloy"             , "craftingToolSolderingMetal");

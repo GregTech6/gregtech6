@@ -184,7 +184,8 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *   'b' = OreDictToolNames.blade
+	 *   'a' = OreDictToolNames.axe
+	 * , 'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
@@ -200,6 +201,7 @@ public class CR {
 	 * , 'q' = OreDictToolNames.scissors
 	 * , 'r' = OreDictToolNames.softhammer
 	 * , 's' = OreDictToolNames.saw
+	 * , 'v' = OreDictToolNames.sawaxe
 	 * , 'w' = OreDictToolNames.wrench
 	 * , 'x' = OreDictToolNames.wirecutter
 	 * , 'y' = OreDictToolNames.chisel
@@ -213,7 +215,8 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *   'b' = OreDictToolNames.blade
+	 *   'a' = OreDictToolNames.axe
+	 * , 'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
@@ -229,6 +232,7 @@ public class CR {
 	 * , 'q' = OreDictToolNames.scissors
 	 * , 'r' = OreDictToolNames.softhammer
 	 * , 's' = OreDictToolNames.saw
+	 * , 'v' = OreDictToolNames.sawaxe
 	 * , 'w' = OreDictToolNames.wrench
 	 * , 'x' = OreDictToolNames.wirecutter
 	 * , 'y' = OreDictToolNames.chisel
@@ -242,7 +246,8 @@ public class CR {
 	 * Enums are automatically getting their "name()"-Method called in order to deliver an OreDict String.
 	 * Lowercase Letters are reserved for Tools. They are as follows:
 	 * 
-	 *   'b' = OreDictToolNames.blade
+	 *   'a' = OreDictToolNames.axe
+	 * , 'b' = OreDictToolNames.blade
 	 * , 'c' = OreDictToolNames.crowbar
 	 * , 'd' = OreDictToolNames.screwdriver
 	 * , 'e' = OreDictToolNames.drill
@@ -258,6 +263,7 @@ public class CR {
 	 * , 'q' = OreDictToolNames.scissors
 	 * , 'r' = OreDictToolNames.softhammer
 	 * , 's' = OreDictToolNames.saw
+	 * , 'v' = OreDictToolNames.sawaxe
 	 * , 'w' = OreDictToolNames.wrench
 	 * , 'x' = OreDictToolNames.wirecutter
 	 * , 'y' = OreDictToolNames.chisel
@@ -319,6 +325,7 @@ public class CR {
 				
 				for (char c : s.toCharArray()) {
 					switch(c) {
+					case 'a': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.axe                      ); break;
 					case 'b': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.blade                    ); break;
 					case 'c': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.crowbar                  ); break;
 					case 'd': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.screwdriver              ); break;
@@ -335,6 +342,7 @@ public class CR {
 					case 'q': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.scissors                 ); break;
 					case 'r': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.softhammer               ); break;
 					case 's': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.saw                      ); break;
+					case 'v': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.sawaxe                   ); break;
 					case 'w': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.wrench                   ); break;
 					case 'x': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.wirecutter               ); break;
 					case 'y': tRecipeList.add(c); tRecipeList.add(OreDictToolNames.chisel                   ); break;

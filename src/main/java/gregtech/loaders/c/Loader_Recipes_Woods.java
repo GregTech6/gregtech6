@@ -135,11 +135,11 @@ public class Loader_Recipes_Woods implements Runnable {
 //          RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), NI, OP.gearGt.mat(aEntry.mMaterialPlank, 1));
 			
 			if (ST.valid(aEntry.mStair)) {
-				CR.shaped(ST.validMeta_(4, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mPlank);
+				CR.shaped(ST.validMeta_(4, aEntry.mStair), CR.DEF_NCC_MIR, "vP", "PP", 'P', aEntry.mPlank);
 			}
 			
 			if (ST.valid(aEntry.mSlab)) {
-				CR.shaped(ST.validMeta_(2, aEntry.mSlab), CR.DEF_NAC_NCC_MIR, "sP", 'P', aEntry.mPlank);
+				CR.shaped(ST.validMeta_(2, aEntry.mSlab), CR.DEF_NAC_NCC_MIR, "vP", 'P', aEntry.mPlank);
 				GT_ModHandler.addSawmillRecipe(aEntry.mPlank, ST.validMeta_(2, aEntry.mSlab), NI);
 				RM.sawing(16, 72, F, 3, aEntry.mPlank, ST.validMeta_(2, aEntry.mSlab));
 			}
@@ -154,7 +154,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.remove(aPlank, NI, NI, aPlank, aPlank, NI, aPlank, aPlank, aPlank);
 			
 			if (ST.valid(aEntry.mSlab)) {
-				CR.shaped(ST.validMeta_(1, aEntry.mSlab ), CR.DEF_NCC_MIR, "sP"      , 'P', aEntry.mStair);
+				CR.shaped(ST.validMeta_(1, aEntry.mSlab ), CR.DEF_NCC_MIR, "vP", 'P', aEntry.mStair);
 				GT_ModHandler.addSawmillRecipe(aEntry.mStair, ST.validMeta_(1, aEntry.mSlab), OP.dustSmall.mat(aEntry.mMaterialPlank, 1));
 				RM.sawing(16, 72, F, 3, aEntry.mStair, ST.validMeta_(1, aEntry.mSlab), OP.dustSmall.mat(aEntry.mMaterialPlank, 1));
 			}
@@ -168,7 +168,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.remove(aPlank, aPlank, aPlank);
 			
 			if (ST.valid(aEntry.mStair)) {
-				CR.shaped(ST.validMeta_(2, aEntry.mStair), CR.DEF_NCC_MIR, "sP", "PP", 'P', aEntry.mSlab );
+				CR.shaped(ST.validMeta_(2, aEntry.mStair), CR.DEF_NCC_MIR, "vP", "PP", 'P', aEntry.mSlab);
 			}
 		}
 	}

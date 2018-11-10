@@ -30,6 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.09: (Not released yet)
+[ADDED] Axes can now be used like Saws for making Slabs and Stairs.
 [ADDED] Anvils now have the ability to be used as Bending Cylinders by hammering on their Sides instead of their Top.
 
 

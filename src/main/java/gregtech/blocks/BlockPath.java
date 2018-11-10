@@ -29,6 +29,10 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.old.Textures;
+import gregapi.render.BlockTextureDefault;
+import gregapi.render.IRenderedBlock;
+import gregapi.render.IRenderedBlockObject;
+import gregapi.render.ITexture;
 import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -41,7 +45,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver {
+public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRenderedBlock {
 	public BlockPath(String aUnlocalised) {
 		super(null, aUnlocalised, Material.grass, soundTypeGrass, 5, Textures.BlockIcons.PATHS);
 		LH.add(getUnlocalizedName()+ ".0.name", "Grass Path");
@@ -69,6 +73,17 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver {
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
 		return tBlock != this && tBlock != Blocks.farmland && !WD.visOpq(tBlock);
 	}
+	
+	@Override public ITexture getTexture(int aRenderPass, byte aSide, ItemStack aStack                                                            ) {return BlockTextureDefault.get(SIDES_TOP[aSide]?Textures.BlockIcons.PATH:(SIDES_BOTTOM[aSide]?Textures.BlockIcons.DIRTS:Textures.BlockIcons.PATHS)[ST.meta_(aStack                   ) % 16]);}
+	@Override public ITexture getTexture(int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered, IBlockAccess aWorld, int aX, int aY, int aZ) {return BlockTextureDefault.get(SIDES_TOP[aSide]?Textures.BlockIcons.PATH:(SIDES_BOTTOM[aSide]?Textures.BlockIcons.DIRTS:Textures.BlockIcons.PATHS)[aWorld.getBlockMetadata(aX, aY, aZ) % 16]);}
+	@Override public boolean usesRenderPass(int aRenderPass, ItemStack aStack                                                                     ) {return T;}
+	@Override public boolean usesRenderPass(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered         ) {return T;}
+	@Override public boolean setBlockBounds(int aRenderPass, ItemStack aStack                                                                     ) {setBlockBounds(0, 0, 0, 1, PIXELS_NEG[1], 1); return T;}
+	@Override public boolean setBlockBounds(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered         ) {setBlockBounds(0, 0, 0, 1, PIXELS_NEG[1], 1); return T;}
+	@Override public int getRenderPasses(ItemStack aStack                                                                                         ) {return 1;}
+	@Override public int getRenderPasses(IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered                             ) {return 1;}
+	@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack                                                                  ) {return null;}
+	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ                                       ) {return null;}
 	
 	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {aEntity.motionX *= 1.1; aEntity.motionZ *= 1.1;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return (SIDES_TOP[aSide]?Textures.BlockIcons.PATH:(SIDES_BOTTOM[aSide]?Textures.BlockIcons.DIRTS:Textures.BlockIcons.PATHS)[aMeta % 16]).getIcon(0);}
