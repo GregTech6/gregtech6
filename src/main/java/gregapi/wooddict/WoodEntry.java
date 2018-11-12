@@ -164,5 +164,6 @@ public class WoodEntry {
 		mPlankEntry.mWoodEntries.add(this);
 		
 		WoodDictionary.WOODS.put(mLog, this);
+		WoodDictionary.IGNORE_OREDICT_REGISTRATIONS.add(ST.item_(mLog));
 	}
 }

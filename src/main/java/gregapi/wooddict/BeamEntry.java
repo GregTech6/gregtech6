@@ -74,7 +74,7 @@ public class BeamEntry {
 		mPlankEntry.mBeamEntries.add(this);
 		
 		WoodDictionary.BEAMS.put(mBeam, this);
-		
+		WoodDictionary.IGNORE_OREDICT_REGISTRATIONS.add(ST.item_(mBeam));
 		OreDictManager.INSTANCE.setItemData_(mBeam, new OreDictItemData(mMaterialBeam, U*8));
 	}
 }

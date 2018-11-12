@@ -127,6 +127,8 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 		addListener(OD.logWood, OD.logRubber, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "wood2charcoalsmelting", T)) RM.rem_smelting(aEvent.mStack, ST.make(Items.coal, 1, 1));
 			
+			if (ST.block(aEvent.mStack) == BlocksGT.Log1) return;
+			
 			if (IL.MaCu_Polished_Logs.exists())
 			RM.Bath         .addRecipe1(T,  0,  144, aEvent.mStack, FL.Oil_Fish.make(3000), NF  , IL.MaCu_Polished_Logs.get(1));
 			RM.Freezer      .addRecipe1(T, 16,   16, aEvent.mStack, FL.Water.make(1000), NF     , ST.make(BlocksGT.Log1, 1, 3));
@@ -134,9 +136,9 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Drying       .addRecipe1(T, 16,  128, aEvent.mStack, NF, FL.DistW.make(64)       , ST.make(BlocksGT.Log1, 1, 0));
 			RM.Fermenter    .addRecipe1(T, 16,  128, aEvent.mStack                              , ST.make(BlocksGT.Log1, 1, 1));
 			
-			short aMeta = ST.meta_(aEvent.mStack);
+			if (WoodDictionary.IGNORE_OREDICT_REGISTRATIONS.contains(ST.item_(aEvent.mStack)));
 			
-			if (WoodDictionary.WOODS.containsKey(aEvent.mStack.getItem(), aMeta, T) || WoodDictionary.BEAMS.containsKey(aEvent.mStack.getItem(), aMeta, T)) return;
+			short aMeta = ST.meta_(aEvent.mStack);
 			
 			ItemStack tBark = OM.dust(MT.Bark, U2), tOverridePlank = NI;
 			OreDictMaterial tWood = MT.Wood;
@@ -158,23 +160,23 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 				if (tOverridePlank == null) {
 					ItemStack tPlank;
 					for (int i = 0; i < W; i++) {
-						tPlank = CR.get(ST.make(aEvent.mStack.getItem(), 1, i));
+						tPlank = CR.get(ST.make(ST.item_(aEvent.mStack), 1, i));
 						if (tPlank == null) {if (i < 16) continue; break;}
 						ItemStack tPlanks = ST.amount((tPlank.stackSize * 3) / 2, tPlank);
 						tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;
-						RM.sawing(16, 128, F, 5, ST.make(aEvent.mStack.getItem(), 1, i), ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
-						GT_ModHandler.addSawmillRecipe(ST.make(aEvent.mStack.getItem(), 1, i), tPlanks, dust.mat(tWood, 1));
-						CR.remove(ST.make(aEvent.mStack.getItem(), 1, i));
-						CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(aEvent.mStack.getItem(), 1, i));
-						CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(aEvent.mStack.getItem(), 1, i)});
+						RM.sawing(16, 128, F, 5, ST.make(ST.item_(aEvent.mStack), 1, i), ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
+						GT_ModHandler.addSawmillRecipe(ST.make(ST.item_(aEvent.mStack), 1, i), tPlanks, dust.mat(tWood, 1));
+						CR.remove(ST.make(ST.item_(aEvent.mStack), 1, i));
+						CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, i));
+						CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, i)});
 					}
 				} else {
 					ItemStack tPlanks = ST.amount((tOverridePlank.stackSize * 3) / 2, tOverridePlank);
-					RM.sawing(16, 128, F, 5, ST.make(aEvent.mStack.getItem(), 1, aMeta), ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
-					GT_ModHandler.addSawmillRecipe(ST.make(aEvent.mStack.getItem(), 1, aMeta), tPlanks, dust.mat(tWood, 1));
-					for (int i = 0; i < 16; i++) CR.remove(ST.make(aEvent.mStack.getItem(), 1, i));
-					CR.shaped(ST.amount(NERFED_WOOD?tOverridePlank.stackSize:(tOverridePlank.stackSize * 5) / 4, tOverridePlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(aEvent.mStack.getItem(), 1, aMeta));
-					CR.shapeless(ST.amount(tOverridePlank.stackSize / (NERFED_WOOD?2:1), tOverridePlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(aEvent.mStack.getItem(), 1, aMeta)});
+					RM.sawing(16, 128, F, 5, ST.make(ST.item_(aEvent.mStack), 1, aMeta), ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
+					GT_ModHandler.addSawmillRecipe(ST.make(ST.item_(aEvent.mStack), 1, aMeta), tPlanks, dust.mat(tWood, 1));
+					for (int i = 0; i < 16; i++) CR.remove(ST.make(ST.item_(aEvent.mStack), 1, i));
+					CR.shaped(ST.amount(NERFED_WOOD?tOverridePlank.stackSize:(tOverridePlank.stackSize * 5) / 4, tOverridePlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, aMeta));
+					CR.shapeless(ST.amount(tOverridePlank.stackSize / (NERFED_WOOD?2:1), tOverridePlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, aMeta)});
 				}
 			} else {
 				ItemStack tPlank = tOverridePlank;

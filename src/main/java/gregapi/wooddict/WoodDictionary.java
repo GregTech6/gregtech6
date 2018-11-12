@@ -19,8 +19,12 @@
 
 package gregapi.wooddict;
 
+import java.util.Set;
+
+import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
+import net.minecraft.item.Item;
 
 /**
  * @author Gregorius Techneticies
@@ -35,6 +39,9 @@ public class WoodDictionary {
 	public static final ItemStackMap<ItemStackContainer, WoodEntry> WOODS = new ItemStackMap<>();
 	public static final ItemStackMap<ItemStackContainer, SaplingEntry> SAPLINGS = new ItemStackMap<>();
 	public static final ItemStackMap<ItemStackContainer, LeafEntry> LEAVES = new ItemStackMap<>();
+	
+	/** To prevent the OreDict from messing up Recipes. */
+	public static final Set<Item> IGNORE_OREDICT_REGISTRATIONS = new HashSetNoNulls<>();
 	
 	public static BeamEntry DEFAULT_BEAM;
 	public static PlankEntry DEFAULT_PLANK;
