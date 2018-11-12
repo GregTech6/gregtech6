@@ -633,7 +633,7 @@ public class LoaderItemData implements Runnable {
 				OM.reg(OP.stone, MT.Chert                       , ST.make(MD.UB, tName, 1, 15));
 			}
 			
-			for (String tName : new String [] {"igneousStone", "igneousStoneBrick", "igneousCobblestone"}) {
+			for (String tName : new String [] {"igneousStone", "igneousCobblestone", "igneousStoneBrick"}) {
 				OM.reg(OP.stone, MT.GraniteRed                  , ST.make(MD.UB, tName, 1,  0));
 				OM.reg(OP.stone, MT.GraniteBlack                , ST.make(MD.UB, tName, 1,  1));
 				OM.reg(OP.stone, MT.Rhyolite                    , ST.make(MD.UB, tName, 1,  2));
@@ -673,7 +673,7 @@ public class LoaderItemData implements Runnable {
 		}
 		
 		if (MD.EB.mLoaded) {
-			for (String tName : new String [] {"enhancedbiomes.tile.stoneEB", "enhancedbiomes.tile.stoneCobbleEB"}) {
+			for (String tName : new String [] {"enhancedbiomes.tile.stoneEB", "enhancedbiomes.tile.stoneCobbleEB", "enhancedbiomes.tile.stoneBrickEB"}) {
 				OM.reg(OP.stone, MT.Basalt                      , ST.make(MD.EB, tName, 1, 0));
 				OM.reg(OP.stone, MT.Shale                       , ST.make(MD.EB, tName, 1, 1));
 				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.EB, tName, 1, 2));
