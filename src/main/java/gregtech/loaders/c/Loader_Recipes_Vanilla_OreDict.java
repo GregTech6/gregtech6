@@ -136,7 +136,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Drying       .addRecipe1(T, 16,  128, aEvent.mStack, NF, FL.DistW.make(64)       , ST.make(BlocksGT.Log1, 1, 0));
 			RM.Fermenter    .addRecipe1(T, 16,  128, aEvent.mStack                              , ST.make(BlocksGT.Log1, 1, 1));
 			
-			if (WoodDictionary.IGNORE_OREDICT_REGISTRATIONS.contains(ST.item_(aEvent.mStack)));
+			if (WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.contains(ST.item_(aEvent.mStack))) return;
 			
 			short aMeta = ST.meta_(aEvent.mStack);
 			

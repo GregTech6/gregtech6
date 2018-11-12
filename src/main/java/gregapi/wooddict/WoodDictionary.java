@@ -41,7 +41,7 @@ public class WoodDictionary {
 	public static final ItemStackMap<ItemStackContainer, LeafEntry> LEAVES = new ItemStackMap<>();
 	
 	/** To prevent the OreDict from messing up Recipes. */
-	public static final Set<Item> IGNORE_OREDICT_REGISTRATIONS = new HashSetNoNulls<>();
+	public static final Set<Item> IGNORED_OREDICT_REGISTRATIONS = new HashSetNoNulls<>();
 	
 	public static BeamEntry DEFAULT_BEAM;
 	public static PlankEntry DEFAULT_PLANK;

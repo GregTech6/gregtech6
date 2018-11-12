@@ -178,6 +178,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.remove(ST.make(Items.coal, 1, 0), NI, NI, ST.make(Items.stick, 1, 0));
 		CR.remove(ST.make(Items.coal, 1, 1), NI, NI, ST.make(Items.stick, 1, 0));
 		} else {
+		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.Charcoal)                      , 'S', OP.stick.dat(ANY.Wood));
+		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.Charcoal)                     , 'S', OP.stick.dat(ANY.Wood));
+		
 		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.rockGt.dat(MT.Coal)                       , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.Coal)                          , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.Coal)                         , 'S', OP.stick.dat(ANY.Wood));

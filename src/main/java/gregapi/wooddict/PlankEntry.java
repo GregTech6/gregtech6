@@ -113,19 +113,19 @@ public class PlankEntry {
 			OreDictManager.INSTANCE.setItemData_(mPlank, new OreDictItemData(mMaterialPlank, U));
 			WoodDictionary.PLANKS_ANY.put(mPlank, this);
 			WoodDictionary.PLANKS.put(mPlank, this);
-			WoodDictionary.IGNORE_OREDICT_REGISTRATIONS.add(ST.item_(mPlank));
+			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mPlank));
 		}
 		if (ST.valid(mStair) && !WoodDictionary.STAIRS.containsKey(new ItemStackContainer(mStair))) {
 			OreDictManager.INSTANCE.setItemData_(mStair, new OreDictItemData(mMaterialPlank, U4*3));
 			WoodDictionary.PLANKS_ANY.put(mStair, this);
 			WoodDictionary.STAIRS.put(mStair, this);
-			WoodDictionary.IGNORE_OREDICT_REGISTRATIONS.add(ST.item_(mStair));
+			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mStair));
 		}
 		if (ST.valid(mSlab) && !WoodDictionary.SLABS.containsKey(new ItemStackContainer(mSlab))) {
 			OreDictManager.INSTANCE.setItemData_(mSlab , new OreDictItemData(mMaterialPlank, U2));
 			WoodDictionary.PLANKS_ANY.put(mSlab, this);
 			WoodDictionary.SLABS.put(mSlab, this);
-			WoodDictionary.IGNORE_OREDICT_REGISTRATIONS.add(ST.item_(mSlab));
+			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mSlab));
 		}
 	}
 }
