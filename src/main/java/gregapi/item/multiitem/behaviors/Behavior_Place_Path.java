@@ -111,6 +111,76 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 				return F;
 			}
 		}
+		if (IL.EB_Grass_Alfisol.equal(aBlock) && aMeta == 0) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 5, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.EB_Grass_Andisol.equal(aBlock) && aMeta == 1) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 6, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.EB_Grass_Gelisol.equal(aBlock) && aMeta == 3) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 7, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.EB_Grass_Histosol.equal(aBlock) && aMeta == 4) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 8, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.EB_Grass_Inceptisol.equal(aBlock) && aMeta == 5) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths, 9, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.EB_Grass_Mollisol.equal(aBlock) && aMeta == 6) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths,10, 3);
+					return T;
+				}
+				return F;
+			}
+		}
+		if (IL.EB_Grass_Oxisol.equal(aBlock) && aMeta == 7) {
+			if (BlocksGT.Paths != null) {
+				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
+					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+					aWorld.setBlock(aX, aY, aZ, BlocksGT.Paths,11, 3);
+					return T;
+				}
+				return F;
+			}
+		}
 		return F;
 	}
 	

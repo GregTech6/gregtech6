@@ -294,6 +294,22 @@ public class Loader_Worldgen implements Runnable {
 		));
 		
 		
+		if (MD.EB.mLoaded) {
+		Block tStone = ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), tCobble = ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB");
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0, tCobble, 0, tCobble, 0, MT.Basalt         ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 1, tCobble, 1, tCobble, 1, MT.Shale          ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 2, tCobble, 2, tCobble, 2, MT.Sand           ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 3, tCobble, 3, tCobble, 3, MT.Limestone      ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 4, tCobble, 4, tCobble, 4, MT.Stone          )); // Slate
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 5, tCobble, 5, tCobble, 5, MT.Rhyolite       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 6, tCobble, 6, tCobble, 6, MT.Chalk          ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 7, tCobble, 7, tCobble, 7, MT.Marble         ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 8, tCobble, 8, tCobble, 8, MT.Dolomite       ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone, 9, tCobble, 9, tCobble, 9, MT.Blueschist     )); // More of a Neutral Gray
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,10, tCobble,10, tCobble,10, MT.Chert          ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,11, tCobble,11, tCobble,11, MT.Gabbro         ));
+		StoneLayer.LAYERS.add(new StoneLayer(tStone,12, tCobble,12, tCobble,12, MT.Dacite         ));
+		}
 		if (MD.UB.mLoaded) {
 		Block tStone = ST.block(MD.UB, "igneousStone"), tCobble = ST.block(MD.UB, "igneousCobblestone");
 		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0+8, tCobble, 0, tCobble, 0, MT.GraniteRed     ));

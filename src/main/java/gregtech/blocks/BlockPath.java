@@ -49,19 +49,19 @@ import net.minecraft.world.World;
 
 public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRenderedBlock {
 	public BlockPath(String aUnlocalised) {
-		super(null, aUnlocalised, Material.grass, soundTypeGrass, 5, Textures.BlockIcons.DIRTS);
+		super(null, aUnlocalised, Material.grass, soundTypeGrass, 12, Textures.BlockIcons.DIRTS);
 		LH.add(getUnlocalizedName()+  ".0.name", "Grass Path");
 		LH.add(getUnlocalizedName()+  ".1.name", "Aether Grass Path");
 		LH.add(getUnlocalizedName()+  ".2.name", "Loamy Grass Path");
 		LH.add(getUnlocalizedName()+  ".3.name", "Sandy Grass Path");
 		LH.add(getUnlocalizedName()+  ".4.name", "Silty Grass Path");
-		LH.add(getUnlocalizedName()+  ".5.name", "Grass Path");
-		LH.add(getUnlocalizedName()+  ".6.name", "Grass Path");
-		LH.add(getUnlocalizedName()+  ".7.name", "Grass Path");
-		LH.add(getUnlocalizedName()+  ".8.name", "Grass Path");
-		LH.add(getUnlocalizedName()+  ".9.name", "Grass Path");
-		LH.add(getUnlocalizedName()+ ".10.name", "Grass Path");
-		LH.add(getUnlocalizedName()+ ".11.name", "Grass Path");
+		LH.add(getUnlocalizedName()+  ".5.name", "Alfisol Grass Path");
+		LH.add(getUnlocalizedName()+  ".6.name", "Andisol Grass Path");
+		LH.add(getUnlocalizedName()+  ".7.name", "Gelisol Grass Path");
+		LH.add(getUnlocalizedName()+  ".8.name", "Histosol Grass Path");
+		LH.add(getUnlocalizedName()+  ".9.name", "Inceptisol Grass Path");
+		LH.add(getUnlocalizedName()+ ".10.name", "Mollisol Grass Path");
+		LH.add(getUnlocalizedName()+ ".11.name", "Oxisol Grass Path");
 		LH.add(getUnlocalizedName()+ ".12.name", "Grass Path");
 		LH.add(getUnlocalizedName()+ ".13.name", "Grass Path");
 		LH.add(getUnlocalizedName()+ ".14.name", "Grass Path");
@@ -76,6 +76,13 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 		case  2: return new ArrayListNoNulls<>(F, IL.BoP_Dirt_Loamy.get(1));
 		case  3: return new ArrayListNoNulls<>(F, IL.BoP_Dirt_Sandy.get(1));
 		case  4: return new ArrayListNoNulls<>(F, IL.BoP_Dirt_Silty.get(1));
+		case  5: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Alfisol.get(1));
+		case  6: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Andisol.get(1));
+		case  7: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Gelisol.get(1));
+		case  8: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Histosol.get(1));
+		case  9: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Inceptisol.get(1));
+		case 10: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Mollisol.get(1));
+		case 11: return new ArrayListNoNulls<>(F, IL.EB_Dirt_Oxisol.get(1));
 		default: return new ArrayListNoNulls<>(F, ST.make(Blocks.dirt, 1, 0));
 		}
 	}

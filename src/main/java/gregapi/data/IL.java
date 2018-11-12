@@ -80,6 +80,8 @@ public enum IL implements IItemContainer {
 	BoP_Dirt_Dried, BoP_Dirt_Hard, BoP_Sand_Hard, BoP_Grass_Origin, BoP_Grass_Long, BoP_Grass_Netherrack, BoP_Grass_Endstone, BoP_Grass_Smoldering, BoP_Grass_Loamy, BoP_Grass_Sandy, BoP_Grass_Silty, BoP_Dirt_Loamy, BoP_Dirt_Sandy, BoP_Dirt_Silty, BoP_Coarse_Loamy, BoP_Coarse_Sandy, BoP_Coarse_Silty,
 	EBXL_Dye_Black, EBXL_Dye_Blue, EBXL_Dye_Brown, EBXL_Dye_White,
 	EBXL_Cactus_Paste,
+	EB_Dirt_Alfisol, EB_Dirt_Andisol, EB_Dirt_Gelisol, EB_Dirt_Histosol, EB_Dirt_Inceptisol, EB_Dirt_Mollisol, EB_Dirt_Oxisol,
+	EB_Grass_Alfisol, EB_Grass_Andisol, EB_Grass_Gelisol, EB_Grass_Histosol, EB_Grass_Inceptisol, EB_Grass_Mollisol, EB_Grass_Oxisol,
 	ENVM_Spoiled_Milk_Bucket, ENVM_Rotten_Food, ENVM_Bottle_Water_Dirty, ENVM_Bottle_Water_Cold, ENVM_Bottle_Water_Salty,
 	EtFu_Rabbit_Foot, EtFu_Beet_Seeds, EtFu_Dragon_Breath, EtFu_Path, EtFu_Dirt, EtFu_Gravel,
 	EtFu_Granite, EtFu_Diorite, EtFu_Andesite, EtFu_Granite_Smooth, EtFu_Diorite_Smooth, EtFu_Andesite_Smooth,

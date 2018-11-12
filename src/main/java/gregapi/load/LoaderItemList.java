@@ -163,6 +163,8 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.TC, "blockWarded"                    , 1, W));
 		
 		
+		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"));
+		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BoP, "mud"));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BoP, "driedDirt"));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BoP, "originGrass"));
@@ -184,6 +186,8 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.harvestableSpade.add(ST.block(MD.AETHER, "enchantedGrass"));
 		
 		
+		BlocksGT.plantableGreens.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"));
+		BlocksGT.plantableGreens.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"));
 		BlocksGT.plantableGreens.add(ST.block(MD.BoP, "mud"));
 		BlocksGT.plantableGreens.add(ST.block(MD.BoP, "originGrass"));
 		BlocksGT.plantableGreens.add(ST.block(MD.BoP, "longGrass"));
@@ -232,6 +236,8 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BR, "YelloriteOre"));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BoP, "gemOre"));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BoP, "rocks"));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.FR, "resources"));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GC, "tile.gcBlockCore"));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GC_GALAXYSPACE, "leadore"));
@@ -573,6 +579,30 @@ public class LoaderItemList implements Runnable {
 		IL.EBXL_Dye_Blue                        .set(ST.make(MD.EBXL, "extrabiomes.dye"                     , 1, 1), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue]);
 		IL.EBXL_Dye_Brown                       .set(ST.make(MD.EBXL, "extrabiomes.dye"                     , 1, 2), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Brown]);
 		IL.EBXL_Dye_White                       .set(ST.make(MD.EBXL, "extrabiomes.dye"                     , 1, 3), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_White]);
+		
+		
+		IL.EB_Dirt_Alfisol                      .set(ST.make(MD.EB, "enhancedbiomes.tile.dirtEB"            , 1, 0));
+		IL.EB_Dirt_Andisol                      .set(ST.make(MD.EB, "enhancedbiomes.tile.dirtEB"            , 1, 1));
+		IL.EB_Dirt_Gelisol                      .set(ST.make(MD.EB, "enhancedbiomes.tile.dirtEB"            , 1, 3));
+		IL.EB_Dirt_Histosol                     .set(ST.make(MD.EB, "enhancedbiomes.tile.dirtEB"            , 1, 4));
+		IL.EB_Dirt_Inceptisol                   .set(ST.make(MD.EB, "enhancedbiomes.tile.dirtEB"            , 1, 5));
+		IL.EB_Dirt_Mollisol                     .set(ST.make(MD.EB, "enhancedbiomes.tile.dirtEB"            , 1, 6));
+		IL.EB_Dirt_Oxisol                       .set(ST.make(MD.EB, "enhancedbiomes.tile.dirtEB"            , 1, 7));
+		IL.EB_Grass_Alfisol                     .set(ST.make(MD.EB, "enhancedbiomes.tile.grassEB"           , 1, 0));
+		IL.EB_Grass_Andisol                     .set(ST.make(MD.EB, "enhancedbiomes.tile.grassEB"           , 1, 1));
+		IL.EB_Grass_Gelisol                     .set(ST.make(MD.EB, "enhancedbiomes.tile.grassEB"           , 1, 3));
+		IL.EB_Grass_Histosol                    .set(ST.make(MD.EB, "enhancedbiomes.tile.grassEB"           , 1, 4));
+		IL.EB_Grass_Inceptisol                  .set(ST.make(MD.EB, "enhancedbiomes.tile.grassEB"           , 1, 5));
+		IL.EB_Grass_Mollisol                    .set(ST.make(MD.EB, "enhancedbiomes.tile.grassEB"           , 1, 6));
+		IL.EB_Grass_Oxisol                      .set(ST.make(MD.EB, "enhancedbiomes.tile.grassEB"           , 1, 7));
+		
+		if (IL.EB_Dirt_Alfisol   .exists()) Textures.BlockIcons.DIRTS[ 5] = new IconContainerCopied(IL.EB_Dirt_Alfisol   .block(), 0, SIDE_BOTTOM);
+		if (IL.EB_Dirt_Andisol   .exists()) Textures.BlockIcons.DIRTS[ 6] = new IconContainerCopied(IL.EB_Dirt_Andisol   .block(), 1, SIDE_BOTTOM);
+		if (IL.EB_Dirt_Gelisol   .exists()) Textures.BlockIcons.DIRTS[ 7] = new IconContainerCopied(IL.EB_Dirt_Gelisol   .block(), 3, SIDE_BOTTOM);
+		if (IL.EB_Dirt_Histosol  .exists()) Textures.BlockIcons.DIRTS[ 8] = new IconContainerCopied(IL.EB_Dirt_Histosol  .block(), 4, SIDE_BOTTOM);
+		if (IL.EB_Dirt_Inceptisol.exists()) Textures.BlockIcons.DIRTS[ 9] = new IconContainerCopied(IL.EB_Dirt_Inceptisol.block(), 5, SIDE_BOTTOM);
+		if (IL.EB_Dirt_Mollisol  .exists()) Textures.BlockIcons.DIRTS[10] = new IconContainerCopied(IL.EB_Dirt_Mollisol  .block(), 6, SIDE_BOTTOM);
+		if (IL.EB_Dirt_Oxisol    .exists()) Textures.BlockIcons.DIRTS[11] = new IconContainerCopied(IL.EB_Dirt_Oxisol    .block(), 7, SIDE_BOTTOM);
 		
 		
 		IL.BoP_Limestone                        .set(ST.make(MD.BoP, "rocks"                                , 1, 0), OP.stone.dat(MT.Limestone));

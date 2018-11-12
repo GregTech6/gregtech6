@@ -1743,6 +1743,7 @@ public class CS {
 		
 		, DE                = "DraconicEvolution"
 		
+		, EB                = "enhancedbiomes"
 		, EBXL              = "ExtrabiomesXL"
 		, BoP               = "BiomesOPlenty"
 		, HiL               = "Highlands"

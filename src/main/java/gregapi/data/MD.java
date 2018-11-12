@@ -156,6 +156,7 @@ public class MD {
 	
 	, DE                = new ModData(ModIDs.DE                 , "Draconic Evolution")
 	
+	, EB                = new ModData(ModIDs.EB                 , "Enhanced Biomes")
 	, EBXL              = new ModData(ModIDs.EBXL               , "Extra Biomes XL")
 	, BoP               = new ModData(ModIDs.BoP                , "Biomes O' Plenty")
 	, HiL               = new ModData(ModIDs.HiL                , "Highlands")

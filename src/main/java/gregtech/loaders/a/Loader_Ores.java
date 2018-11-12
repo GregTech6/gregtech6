@@ -122,15 +122,25 @@ public class Loader_Ores implements Runnable {
 		//====================================================================================================//
 		
 		if (MD.UB.mLoaded) {
-		RM.generify(ST.make(MD.UB, "igneousStone"           , 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.UB, "metamorphicStone"       , 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.UB, "sedimentaryStone"       , 1, W), ST.make(Blocks.stone, 1, 0));
-		RM.generify(ST.make(MD.UB, "igneousCobblestone"     , 1, W), ST.make(Blocks.cobblestone, 1, 0));
-		RM.generify(ST.make(MD.UB, "metamorphicCobblestone" , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.UB, "igneousStone"                     , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.UB, "metamorphicStone"                 , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.UB, "sedimentaryStone"                 , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.UB, "igneousCobblestone"               , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		RM.generify(ST.make(MD.UB, "metamorphicCobblestone"           , 1, W), ST.make(Blocks.cobblestone, 1, 0));
+		}
+		if (MD.EB.mLoaded) {
+		RM.generify(ST.make(MD.EB, "enhancedbiomes.tile.stoneEB"      , 1, W), ST.make(Blocks.stone, 1, 0));
+		RM.generify(ST.make(MD.EB, "enhancedbiomes.tile.stoneCobbleEB", 1, W), ST.make(Blocks.cobblestone, 1, 0));
 		}
 		
 		OreDictPrefix[] tPrefix;
 		OreDictMaterial[] tDrops;
+		
+		tPrefix = new OreDictPrefix[] {OP.oreBasalt, OP.oreShale, OP.oreSandstone, OP.oreLimestone, OP.oreVanillastone/*Slate*/, OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreVanillastone, OP.oreBlueschist, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
+		tDrops  = new OreDictMaterial[] {MT.Basalt, MT.Shale, MT.Sand, MT.Limestone, MT.Stone/*MT.Slate*/, MT.Rhyolite, MT.Chalk, MT.Marble, MT.Dolomite, MT.Blueschist/* More of a Neutral Gray */, MT.Chert, MT.Gabbro, MT.Dacite};
+		for (int i = 0; i < 13; i++) rockset(MD.EB, "enhancedbiomes.tile.stoneEB", i, i, "enhancedbiomes.tile.stoneCobbleEB", i, "eb.stone."+i, tPrefix[i], tDrops[i]);
+		
+		
 		
 		tPrefix = new OreDictPrefix[] {OP.oreVanillagranite, OP.oreBlackgranite, OP.oreVanillastone, OP.oreAndesite, OP.oreVanillastone, OP.oreBasalt, OP.oreKomatiite, OP.oreVanillastone};
 		tDrops  = new OreDictMaterial[] {MT.Granite, MT.GraniteBlack, MT.Rhyolite, MT.Andesite, MT.Gabbro, MT.Basalt, MT.Komatiite, MT.Dacite};

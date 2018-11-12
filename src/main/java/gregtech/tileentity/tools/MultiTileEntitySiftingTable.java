@@ -134,6 +134,20 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (IL.BoP_Dirt_Loamy               .equal(tStack, F, T)) {mDisplayedInput = -2;} else
 				if (IL.BoP_Dirt_Sandy               .equal(tStack, F, T)) {mDisplayedInput = -2;} else
 				if (IL.BoP_Dirt_Silty               .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.EB_Dirt_Alfisol              .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.EB_Dirt_Andisol              .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.EB_Dirt_Gelisol              .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.EB_Dirt_Histosol             .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.EB_Dirt_Inceptisol           .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.EB_Dirt_Mollisol             .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.EB_Dirt_Oxisol               .equal(tStack, F, T)) {mDisplayedInput = -2;} else
+				if (IL.EB_Grass_Alfisol             .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.EB_Grass_Andisol             .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.EB_Grass_Gelisol             .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.EB_Grass_Histosol            .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.EB_Grass_Inceptisol          .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.EB_Grass_Mollisol            .equal(tStack, F, T)) {mDisplayedInput = -7;} else
+				if (IL.EB_Grass_Oxisol              .equal(tStack, F, T)) {mDisplayedInput = -7;} else
 				{
 					OreDictItemData tData = OM.data_(tStack);
 					if (tData == null || tData.mMaterial == null) {
@@ -178,6 +192,20 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (IL.BoP_Dirt_Loamy               .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
 				if (IL.BoP_Dirt_Sandy               .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
 				if (IL.BoP_Dirt_Silty               .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.EB_Dirt_Alfisol              .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.EB_Dirt_Andisol              .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.EB_Dirt_Gelisol              .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.EB_Dirt_Histosol             .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.EB_Dirt_Inceptisol           .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.EB_Dirt_Mollisol             .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.EB_Dirt_Oxisol               .equal(tStack, F, T)) {mDisplayedOutput = -2;} else
+				if (IL.EB_Grass_Alfisol             .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.EB_Grass_Andisol             .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.EB_Grass_Gelisol             .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.EB_Grass_Histosol            .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.EB_Grass_Inceptisol          .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.EB_Grass_Mollisol            .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
+				if (IL.EB_Grass_Oxisol              .equal(tStack, F, T)) {mDisplayedOutput = -7;} else
 				{
 					OreDictItemData tData = OM.data_(tStack);
 					if (tData == null || tData.mMaterial == null) {
