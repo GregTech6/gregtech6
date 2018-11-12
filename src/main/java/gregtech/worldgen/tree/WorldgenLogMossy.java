@@ -55,7 +55,7 @@ public class WorldgenLogMossy extends WorldgenObject {
 		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
 			Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
 			if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
-			if (tContact != Blocks.grass && tContact != Blocks.dirt) continue;
+			if (!BlocksGT.plantableGrass.contains(tContact)) continue;
 			if (!aChunk.getBlock(tX&15, tY+1, tZ&15).isAir(aWorld, tX, tY+1, tZ)) return F;
 			switch(aRandom.nextInt(3)) {
 			case 0:

@@ -26,6 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.data.MD;
 import gregapi.old.Textures;
 import gregapi.util.ST;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
@@ -42,6 +43,12 @@ public class ItemEmptySlot extends ItemBase {
 	@Override
 	public IIcon getIconFromDamage(int aMeta) {
 		return Textures.ItemIcons.VOID.getIcon(0);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister aIconRegister) {
+		// No Icons to register!
 	}
 	
 	@Override

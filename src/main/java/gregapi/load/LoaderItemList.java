@@ -185,7 +185,6 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.harvestableSpade.add(ST.block(MD.AETHER, "enchantedAetherGrass"));
 		BlocksGT.harvestableSpade.add(ST.block(MD.AETHER, "enchantedGrass"));
 		
-		
 		BlocksGT.plantableGreens.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"));
 		BlocksGT.plantableGreens.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"));
 		BlocksGT.plantableGreens.add(ST.block(MD.BoP, "mud"));
@@ -204,6 +203,18 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "aetherGrass"));
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "enchantedAetherGrass"));
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "enchantedGrass"));
+		
+		BlocksGT.plantableGrass.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"));
+		BlocksGT.plantableGrass.add(ST.block(MD.BoP, "originGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.BoP, "longGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.BoP, "bopGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.BoP, "newBopGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.BTL, "swampGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.BTL, "slimyGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.BOTA, "altGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "aetherGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedAetherGrass"));
+		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedGrass"));
 		
 		
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.UB, "igneousStone"));

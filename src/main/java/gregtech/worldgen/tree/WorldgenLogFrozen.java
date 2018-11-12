@@ -53,7 +53,7 @@ public class WorldgenLogFrozen extends WorldgenObject {
 		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
 			Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
 			if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) {temp = T; continue;}
-			if (tContact != Blocks.grass && tContact != Blocks.dirt && tContact != Blocks.snow) {temp = F; continue;}
+			if (!BlocksGT.plantableGreens.contains(tContact) && tContact != Blocks.snow) {temp = F; continue;}
 			if (!temp && aChunk.getBlock(tX&15, tY+1, tZ&15) != Blocks.snow_layer) return F;
 			switch(aRandom.nextInt(3)) {
 			case 0:

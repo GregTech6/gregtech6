@@ -27,6 +27,7 @@ import java.util.Set;
 
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ItemStackContainer;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.BushesGT;
 import gregapi.data.IL;
 import gregapi.util.ST;
@@ -61,7 +62,7 @@ public class WorldgenBushes extends WorldgenObject {
 		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
 			Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
 			if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) {temp = T; continue;}
-			if (tContact != Blocks.grass && tContact != Blocks.dirt) {temp = F; continue;}
+			if (!BlocksGT.plantableGreens.contains(tContact)) {temp = F; continue;}
 			if (!temp || !WD.easyRep(aWorld, tX, tY+1, tZ)) return F;
 			if (tContact == Blocks.grass) WD.set(aChunk, tX-aMinX, tY, tZ-aMinZ, Blocks.dirt, 0);
 			

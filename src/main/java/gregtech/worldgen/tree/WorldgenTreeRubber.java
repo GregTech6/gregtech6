@@ -28,7 +28,6 @@ import java.util.Set;
 import gregapi.block.tree.BlockBaseSapling;
 import gregapi.data.CS.BlocksGT;
 import gregapi.worldgen.WorldgenObject;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -49,7 +48,7 @@ public class WorldgenTreeRubber extends WorldgenObject {
 		for (String tName : aBiomeNames) if (BIOMES_TAIGA.contains(tName)) {temp = F; break;}
 		if (temp) return F;
 		int tX = aRandom.nextInt(16), tZ = aRandom.nextInt(16);
-		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) if (aChunk.getBlock(tX, tY, tZ) == Blocks.grass) return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aMinX + tX, tY+1, aMinZ + tZ, (byte)0, aRandom);
+		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) if (BlocksGT.plantableGrass.contains(aChunk.getBlock(tX, tY, tZ))) return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aMinX + tX, tY+1, aMinZ + tZ, (byte)0, aRandom);
 		return T;
 	}
 }
