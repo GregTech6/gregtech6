@@ -30,6 +30,7 @@ import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
+import gregapi.render.BlockTextureMulti;
 import gregapi.render.IRenderedBlock;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.ITexture;
@@ -48,12 +49,23 @@ import net.minecraft.world.World;
 
 public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRenderedBlock {
 	public BlockPath(String aUnlocalised) {
-		super(null, aUnlocalised, Material.grass, soundTypeGrass, 5, Textures.BlockIcons.PATHS);
-		LH.add(getUnlocalizedName()+ ".0.name", "Grass Path");
-		LH.add(getUnlocalizedName()+ ".1.name", "Aether Grass Path");
-		LH.add(getUnlocalizedName()+ ".2.name", "Loamy Grass Path");
-		LH.add(getUnlocalizedName()+ ".3.name", "Sandy Grass Path");
-		LH.add(getUnlocalizedName()+ ".4.name", "Silty Grass Path");
+		super(null, aUnlocalised, Material.grass, soundTypeGrass, 5, Textures.BlockIcons.DIRTS);
+		LH.add(getUnlocalizedName()+  ".0.name", "Grass Path");
+		LH.add(getUnlocalizedName()+  ".1.name", "Aether Grass Path");
+		LH.add(getUnlocalizedName()+  ".2.name", "Loamy Grass Path");
+		LH.add(getUnlocalizedName()+  ".3.name", "Sandy Grass Path");
+		LH.add(getUnlocalizedName()+  ".4.name", "Silty Grass Path");
+		LH.add(getUnlocalizedName()+  ".5.name", "Grass Path");
+		LH.add(getUnlocalizedName()+  ".6.name", "Grass Path");
+		LH.add(getUnlocalizedName()+  ".7.name", "Grass Path");
+		LH.add(getUnlocalizedName()+  ".8.name", "Grass Path");
+		LH.add(getUnlocalizedName()+  ".9.name", "Grass Path");
+		LH.add(getUnlocalizedName()+ ".10.name", "Grass Path");
+		LH.add(getUnlocalizedName()+ ".11.name", "Grass Path");
+		LH.add(getUnlocalizedName()+ ".12.name", "Grass Path");
+		LH.add(getUnlocalizedName()+ ".13.name", "Grass Path");
+		LH.add(getUnlocalizedName()+ ".14.name", "Grass Path");
+		LH.add(getUnlocalizedName()+ ".15.name", "Grass Path");
 		setBlockBounds(0, 0, 0, 1, PIXELS_NEG[1], 1);
 	}
 	
@@ -76,8 +88,21 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	}
 	
 	@Override public int getRenderType() {return RendererBlockTextured.INSTANCE==null?0:RendererBlockTextured.INSTANCE.mRenderID;}
-	@Override public ITexture getTexture(int aRenderPass, byte aSide, ItemStack aStack                                                            ) {return BlockTextureDefault.get(SIDES_TOP[aSide]?Textures.BlockIcons.PATH:(SIDES_BOTTOM[aSide]?Textures.BlockIcons.DIRTS:Textures.BlockIcons.PATHS)[ST.meta_(aStack                   ) % 16]);}
-	@Override public ITexture getTexture(int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered, IBlockAccess aWorld, int aX, int aY, int aZ) {return BlockTextureDefault.get(SIDES_TOP[aSide]?Textures.BlockIcons.PATH:(SIDES_BOTTOM[aSide]?Textures.BlockIcons.DIRTS:Textures.BlockIcons.PATHS)[aWorld.getBlockMetadata(aX, aY, aZ) % 16]);}
+	
+	@Override
+	public ITexture getTexture(int aRenderPass, byte aSide, ItemStack aStack) {
+		if (SIDES_TOP[aSide]) return BlockTextureDefault.get(Textures.BlockIcons.PATH_TOP);
+		ITexture tDirt = BlockTextureDefault.get(mIcons[ST.meta_(aStack) % 16]);
+		return SIDES_BOTTOM[aSide]?tDirt:BlockTextureMulti.get(tDirt, BlockTextureDefault.get(Textures.BlockIcons.PATH_SIDE));
+	}
+	
+	@Override
+	public ITexture getTexture(int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered, IBlockAccess aWorld, int aX, int aY, int aZ) {
+		if (SIDES_TOP[aSide]) return BlockTextureDefault.get(Textures.BlockIcons.PATH_TOP);
+		ITexture tDirt = BlockTextureDefault.get(mIcons[aWorld.getBlockMetadata(aX, aY, aZ) % 16]);
+		return SIDES_BOTTOM[aSide]?tDirt:BlockTextureMulti.get(tDirt, BlockTextureDefault.get(Textures.BlockIcons.PATH_SIDE));
+	}
+	
 	@Override public boolean usesRenderPass(int aRenderPass, ItemStack aStack                                                                     ) {return T;}
 	@Override public boolean usesRenderPass(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered         ) {return T;}
 	@Override public boolean setBlockBounds(int aRenderPass, ItemStack aStack                                                                     ) {setBlockBounds(0, 0, 0, 1, PIXELS_NEG[1], 1); return T;}
@@ -88,7 +113,7 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ                                       ) {return null;}
 	
 	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {aEntity.motionX *= 1.1; aEntity.motionZ *= 1.1;}
-	@Override public IIcon getIcon(int aSide, int aMeta) {return (SIDES_TOP[aSide]?Textures.BlockIcons.PATH:(SIDES_BOTTOM[aSide]?Textures.BlockIcons.DIRTS:Textures.BlockIcons.PATHS)[aMeta % 16]).getIcon(0);}
+	@Override public IIcon getIcon(int aSide, int aMeta) {return (SIDES_TOP[aSide]?Textures.BlockIcons.PATH_TOP:Textures.BlockIcons.DIRTS[aMeta % 16]).getIcon(0);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool (World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1);}
 	@Override public boolean doesWalkSpeed(short aMeta) {return T;}

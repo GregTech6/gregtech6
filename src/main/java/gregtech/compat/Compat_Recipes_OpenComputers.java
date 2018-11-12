@@ -36,6 +36,6 @@ public class Compat_Recipes_OpenComputers extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Open Computers Recipes.");
 		RM.rem_smelting(ST.make(MD.OC, "item", 1, 30));
 		CR.remout(ST.make(MD.OC, "item", 1, 30));
-		CR.shapeless(ST.make(MD.OC, "item", 1, 30), new Object[] {OD_CIRCUITS[3]});
+		CR.shapeless(ST.make(MD.OC, "item", 1, 32), new Object[] {OD_CIRCUITS[3]});
 	}
 }
