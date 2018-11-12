@@ -62,7 +62,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 162 is next!
+		// No Gaps in this List, so 176 is next!
 		
 		
 		// Vanilla Trees
@@ -315,6 +315,41 @@ public class LoaderWoodDictionary implements Runnable {
 			CR.shaped(ST.make(tPlank, 1,11), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab2", 1, 2));
 			CR.shaped(ST.make(tPlank, 1,12), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab2", 1, 3));
 			CR.shaped(ST.make(tPlank, 1,13), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab2", 1, 4));
+		}
+		// Enhanced Biomes Trees
+		if (MD.EB.mLoaded) {
+			Block tPlank = ST.block(MD.EB, "enhancedbiomes.tile.planksEB");
+			
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 0), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logOakEB"   , 1, 0), new PlankEntry(ST.make(tPlank, 1, 0), ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 0), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB0" , 1, W), 162)), ST.make(MD.EB, "enhancedbiomes.tile.leavesOakEB"   , 1, 0));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 1), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logOakEB"   , 1, 1), new PlankEntry(ST.make(tPlank, 1, 1), ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 1), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB1" , 1, W), 163)), ST.make(MD.EB, "enhancedbiomes.tile.leavesOakEB"   , 1, 1));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 2), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logOakEB"   , 1, 2), new PlankEntry(ST.make(tPlank, 1, 2), ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 2), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB2" , 1, W), 164)), ST.make(MD.EB, "enhancedbiomes.tile.leavesOakEB"   , 1, 2));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 3), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logOakEB"   , 1, 3), new PlankEntry(ST.make(tPlank, 1, 3), ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 3), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB3" , 1, W), 165)), ST.make(MD.EB, "enhancedbiomes.tile.leavesOakEB"   , 1, 3));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 4), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logSpruceEB", 1, 0), new PlankEntry(ST.make(tPlank, 1, 4), ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 4), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB4" , 1, W), 166)), ST.make(MD.EB, "enhancedbiomes.tile.leavesSpruceEB", 1, 0));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 5), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logSpruceEB", 1, 1), new PlankEntry(ST.make(tPlank, 1, 5), ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 5), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB5" , 1, W), 167)), ST.make(MD.EB, "enhancedbiomes.tile.leavesSpruceEB", 1, 1));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 6), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logSpruceEB", 1, 2), new PlankEntry(ST.make(tPlank, 1, 6), ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 6), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB6" , 1, W), 168)), ST.make(MD.EB, "enhancedbiomes.tile.leavesSpruceEB", 1, 2));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 7), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logSpruceEB", 1, 3), new PlankEntry(ST.make(tPlank, 1, 7), ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 7), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB7" , 1, W), 169)), ST.make(MD.EB, "enhancedbiomes.tile.leavesSpruceEB", 1, 3));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 8), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logBirchEB" , 1, 0), new PlankEntry(ST.make(tPlank, 1, 8), ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 0), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB8" , 1, W), 170)), ST.make(MD.EB, "enhancedbiomes.tile.leavesBirchEB" , 1, 0));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1, 9), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logBirchEB" , 1, 1), new PlankEntry(ST.make(tPlank, 1, 9), ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 1), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB9" , 1, W), 171)), ST.make(MD.EB, "enhancedbiomes.tile.leavesBirchEB" , 1, 1));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1,10), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logBirchEB" , 1, 2), new PlankEntry(ST.make(tPlank, 1,10), ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 2), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB10", 1, W), 172)), ST.make(MD.EB, "enhancedbiomes.tile.leavesBirchEB" , 1, 2));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1,12), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logSpruceEB", 1, 0), new PlankEntry(ST.make(tPlank, 1,12), ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 4), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB12", 1, W), 173)), ST.make(MD.EB, "enhancedbiomes.tile.leavesJungleEB", 1, 0));
+			new SaplingEntry(ST.make(MD.EB, "enhancedbiomes.tile.saplingEB", 1,14), new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logSpruceEB", 1, 2), new PlankEntry(ST.make(tPlank, 1,14), ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 6), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB14", 1, W), 175)), ST.make(MD.EB, "enhancedbiomes.tile.leavesJungleEB", 1, 2));
+			
+			new WoodEntry(ST.make(MD.EB, "enhancedbiomes.tile.logSpruceEB", 1, 1), new PlankEntry(ST.make(tPlank, 1,13), ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 5), ST.make(MD.EB, "enhancedbiomes.tile.stairsWoodEB13", 1, W), 174), 1, 50, 1, 2, 3, IL.Bark_Dry.get(1), MT.Wood, MT.Bark, null, 0, 0);
+			
+			CR.shaped(ST.make(tPlank, 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 1));
+			CR.shaped(ST.make(tPlank, 1, 2), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 2));
+			CR.shaped(ST.make(tPlank, 1, 3), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 3));
+			CR.shaped(ST.make(tPlank, 1, 4), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 4));
+			CR.shaped(ST.make(tPlank, 1, 5), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 5));
+			CR.shaped(ST.make(tPlank, 1, 6), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 6));
+			CR.shaped(ST.make(tPlank, 1, 7), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab1EB", 1, 7));
+			CR.shaped(ST.make(tPlank, 1, 8), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 9), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 1));
+			CR.shaped(ST.make(tPlank, 1,10), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 2));
+			CR.shaped(ST.make(tPlank, 1,12), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 4));
+			CR.shaped(ST.make(tPlank, 1,13), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 5));
+			CR.shaped(ST.make(tPlank, 1,14), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 6));
 		}
 		// Forestry Trees
 		if (MD.FR.mLoaded) {
