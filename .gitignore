@@ -25,8 +25,11 @@
 !/gradle/wrapper/gradle-wrapper.jar
 !/gradle/wrapper/gradle-wrapper.properties
 
-# Meta project files
+# Meta Project Files
 !/.meta/**/*
+
+# Default Config Pack
+!/.defaultconfigs/**/*
 
 # Source
 !/src/main/java/**/*.java
