@@ -310,6 +310,7 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(tStone,11, tCobble,11, tCobble,11, MT.Gabbro         ));
 		StoneLayer.LAYERS.add(new StoneLayer(tStone,12, tCobble,12, tCobble,12, MT.Dacite         ));
 		}
+		
 		if (MD.UB.mLoaded) {
 		Block tStone = ST.block(MD.UB, "igneousStone"), tCobble = ST.block(MD.UB, "igneousCobblestone");
 		StoneLayer.LAYERS.add(new StoneLayer(tStone, 0+8, tCobble, 0, tCobble, 0, MT.GraniteRed     ));

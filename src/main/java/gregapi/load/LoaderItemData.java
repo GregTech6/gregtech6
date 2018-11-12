@@ -672,6 +672,24 @@ public class LoaderItemData implements Runnable {
 			}
 		}
 		
+		if (MD.EB.mLoaded) {
+			for (String tName : new String [] {"enhancedbiomes.tile.stoneEB", "enhancedbiomes.tile.stoneCobbleEB"}) {
+				OM.reg(OP.stone, MT.Basalt                      , ST.make(MD.EB, tName, 1, 0));
+				OM.reg(OP.stone, MT.Shale                       , ST.make(MD.EB, tName, 1, 1));
+				OM.reg(OP.stone, MT.Sand                        , ST.make(MD.EB, tName, 1, 2));
+				OM.reg(OP.stone, MT.Limestone                   , ST.make(MD.EB, tName, 1, 3));
+				OM.reg(OP.stone, MT.Stone                       , ST.make(MD.EB, tName, 1, 4)); // Slate
+				OM.reg(OP.stone, MT.Rhyolite                    , ST.make(MD.EB, tName, 1, 5));
+				OM.reg(OP.stone, MT.Chalk                       , ST.make(MD.EB, tName, 1, 6));
+				OM.reg(OP.stone, MT.Marble                      , ST.make(MD.EB, tName, 1, 7));
+				OM.reg(OP.stone, MT.Dolomite                    , ST.make(MD.EB, tName, 1, 8));
+				OM.reg(OP.stone, MT.Blueschist                  , ST.make(MD.EB, tName, 1, 9)); // More of a Neutral Gray
+				OM.reg(OP.stone, MT.Chert                       , ST.make(MD.EB, tName, 1,10));
+				OM.reg(OP.stone, MT.Gabbro                      , ST.make(MD.EB, tName, 1,11));
+				OM.reg(OP.stone, MT.Dacite                      , ST.make(MD.EB, tName, 1,12));
+			}
+		}
+		
 		if (MD.ERE.mLoaded) {
 			OM.reg(OP.stone, MT.Umber                           , ST.make(MD.ERE, "umberstone"                  , 1, 2));
 			OM.reg(OP.stone, MT.Umber                           , ST.make(MD.ERE, "umberstone"                  , 1, 3));
@@ -1199,8 +1217,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RC, "part.gear"                          , 1,   1, MT.Sn                 ,  U * 2, ANY.Fe        ,  U * 4);
 		OM.data(MD.RC, "part.gear"                          , 1,   2, MT.Sn                 ,  U * 2, ANY.Steel ,  U * 4);
 		OM.data(MD.RC, "anvil", 1, 0                                                                , ANY.Steel ,  U *30);
-		OM.data(MD.RC, "anvil", 1, 1                                                                , ANY.Steel ,  U *20);
-		OM.data(MD.RC, "anvil", 1, 2                                                                , ANY.Steel ,  U *10);
+		OM.data(MD.RC, "anvil", 1, 1                                                                , ANY.Steel ,  U *25);
+		OM.data(MD.RC, "anvil", 1, 2                                                                , ANY.Steel ,  U *20);
 		
 		
 		OM.dat2(MD.RoC, "rotarycraft_item_bedsword"         , 1,   W, MT.Bedrock_HSLA_Alloy ,  U * 2, MT.HSLA               ,  U * 1);
@@ -1631,8 +1649,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.light_weighted_pressure_plate, 1, W) , MT.Au                 ,  U * 2);
 		OM.data(ST.make(Blocks.heavy_weighted_pressure_plate, 1, W) , ANY.Fe                ,  U * 2);
 		OM.data(ST.make(Blocks.anvil, 1, 0)                         , ANY.Fe                ,  U *30);
-		OM.data(ST.make(Blocks.anvil, 1, 1)                         , ANY.Fe                ,  U *20);
-		OM.data(ST.make(Blocks.anvil, 1, 2)                         , ANY.Fe                ,  U *10);
+		OM.data(ST.make(Blocks.anvil, 1, 1)                         , ANY.Fe                ,  U *25);
+		OM.data(ST.make(Blocks.anvil, 1, 2)                         , ANY.Fe                ,  U *20);
 		OM.data(ST.make(Blocks.hopper, 1, W)                        , ANY.Fe                ,  U * 5 , ANY.Wood, U * 8);
 		OM.data(ST.make(Blocks.tripwire_hook, 1, W)                 , ANY.Fe                ,  OP.ring.mAmount * 2, ANY.Wood, U);
 		OM.data(ST.make(Blocks.stained_glass        , 1, W)         , MT.Glass              ,  U);
