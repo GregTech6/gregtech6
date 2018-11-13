@@ -65,6 +65,8 @@ public class EnergyCompat {
 		if (MD.OMT.mLoaded && aReceiver.getClass().getName().startsWith("openmodularturrets"             )) return T;
 		if (MD.TG .mLoaded && aReceiver.getClass().getName().startsWith("techguns"                       )) return T;
 		if (MD.IE .mLoaded && aReceiver.getClass().getName().startsWith("blusunrize.immersiveengineering")) return T;
+		if (                  aReceiver.getClass().getName().startsWith("icbm"                           )) return T;
+		if (                  aReceiver.getClass().getName().startsWith("com.builtbroken"                )) return T;
 		return F;
 	}
 	

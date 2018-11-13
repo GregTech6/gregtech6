@@ -122,6 +122,11 @@ public class MD {
 	, ElC               = new ModData(ModIDs.ElC                , "ElectriCraft")
 	, CrC               = new ModData(ModIDs.CrC                , "ChromatiCraft")
 	
+	, VOLTZ             = new ModData(ModIDs.VOLTZ              , "Voltz Engine")
+	, MFFS              = new ModData(ModIDs.MFFS               , "Modular Force Field System")
+	, ICBM              = new ModData(ModIDs.ICBM               , "ICBM")
+	, ATSCI             = new ModData(ModIDs.ATSCI              , "Atomic Science")
+	
 	, Mek               = new ModData(ModIDs.Mek                , "Mekanism")
 	, Mek_Tools         = new ModData(ModIDs.Mek_Tools          , "Mekanism Tools")
 	, Mek_Generators    = new ModData(ModIDs.Mek_Generators     , "Mekanism Generators")

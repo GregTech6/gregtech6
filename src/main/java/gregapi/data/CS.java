@@ -1710,6 +1710,11 @@ public class CS {
 		, ElC               = "ElectriCraft"
 		, CrC               = "ChromatiCraft"
 		
+		, VOLTZ             = "voltzengine"
+		, MFFS              = "mffs"
+		, ICBM              = "icbmclassic"
+		, ATSCI             = "atomicscience"
+		
 		, Mek               = "Mekanism"
 		, Mek_Tools         = "MekanismTools"
 		, Mek_Generators    = "MekanismGenerators"
