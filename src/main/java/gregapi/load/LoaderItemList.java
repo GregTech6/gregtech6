@@ -1167,6 +1167,10 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_BIO                    .add(ST.make(MD.HBM, "item.hazmat_paa_plate"                , 1, W));
 		ArmorsGT.HAZMATS_BIO                    .add(ST.make(MD.HBM, "item.hazmat_paa_legs"                 , 1, W));
 		ArmorsGT.HAZMATS_BIO                    .add(ST.make(MD.HBM, "item.hazmat_paa_boots"                , 1, W));
+		ArmorsGT.HAZMATS_BIO                    .add(ST.make(MD.ATSCI, "hazmat_helm"                        , 1, W));
+		ArmorsGT.HAZMATS_BIO                    .add(ST.make(MD.ATSCI, "hazmat_chest"                       , 1, W));
+		ArmorsGT.HAZMATS_BIO                    .add(ST.make(MD.ATSCI, "hazmat_legs"                        , 1, W));
+		ArmorsGT.HAZMATS_BIO                    .add(ST.make(MD.ATSCI, "hazmat_boots"                       , 1, W));
 		
 		ArmorsGT.HAZMATS_CHEM                   .add(ST.mkic("hazmatHelmet"                                 , 1, W));
 		ArmorsGT.HAZMATS_CHEM                   .add(ST.mkic("hazmatChestplate"                             , 1, W));
@@ -1180,6 +1184,10 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.HBM, "item.hazmat_paa_plate"                , 1, W));
 		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.HBM, "item.hazmat_paa_legs"                 , 1, W));
 		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.HBM, "item.hazmat_paa_boots"                , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.ATSCI, "hazmat_helm"                        , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.ATSCI, "hazmat_chest"                       , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.ATSCI, "hazmat_legs"                        , 1, W));
+		ArmorsGT.HAZMATS_CHEM                   .add(ST.make(MD.ATSCI, "hazmat_boots"                       , 1, W));
 		
 		ArmorsGT.HAZMATS_GAS                    .add(ST.mkic("hazmatHelmet"                                 , 1, W));
 		ArmorsGT.HAZMATS_GAS                    .add(ST.mkic("hazmatChestplate"                             , 1, W));
@@ -1193,6 +1201,10 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.HBM, "item.hazmat_paa_plate"                , 1, W));
 		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.HBM, "item.hazmat_paa_legs"                 , 1, W));
 		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.HBM, "item.hazmat_paa_boots"                , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.ATSCI, "hazmat_helm"                        , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.ATSCI, "hazmat_chest"                       , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.ATSCI, "hazmat_legs"                        , 1, W));
+		ArmorsGT.HAZMATS_GAS                    .add(ST.make(MD.ATSCI, "hazmat_boots"                       , 1, W));
 		
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.mkic("hazmatHelmet"                                 , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.mkic("hazmatChestplate"                             , 1, W));
@@ -1221,6 +1233,10 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.paa_plate"                       , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.paa_legs"                        , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.paa_boots"                       , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.ATSCI, "hazmat_helm"                        , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.ATSCI, "hazmat_chest"                       , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.ATSCI, "hazmat_legs"                        , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.ATSCI, "hazmat_boots"                       , 1, W));
 		
 		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.mkic("hazmatHelmet"                                 , 1, W));
 		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.mkic("hazmatChestplate"                             , 1, W));
