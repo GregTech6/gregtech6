@@ -369,15 +369,15 @@ task devJar(type: Jar) {
 	from sourceSets.main.output
 }
 
-task coreJar(type: Jar) {
-	dependsOn jar
-	manifest {
-		attributes 'FMLAT': 'gregtech_at.cfg'
-	}
-	classifier = 'core'
-	from sourceSets.main.output
-	exclude('gregtech/**')
-}
+//task coreJar(type: Jar) {
+//	dependsOn jar
+//	manifest {
+//		attributes 'FMLAT': 'gregtech_at.cfg'
+//	}
+//	classifier = 'core'
+//	from sourceSets.main.output
+//	exclude('gregtech/**')
+//}
 
 task changelog(type: Copy) {
 	from('./CHANGELOG.md') {
@@ -403,18 +403,26 @@ task supporterlistgold(type: Copy) {
 	ext.output = new File("./build/libs/$archivesBaseName-$version-supporterlistgold.txt")
 }
 
+task defaultConfigPack(type: Zip) {
+	from('./.defaultconfigs/')
+	include('**/')
+	classifier = 'defaultConfigPack'
+	destinationDir = new File('./build/libs/')
+}
+
 jar.dependsOn supporterlist
 jar.dependsOn supporterlistgold
 jar.dependsOn changelog
+jar.dependsOn defaultConfigPack
 
 reobf {
-	reobf(coreJar) {
-		spec -> spec.classpath = sourceSets.main.compileClasspath
-	}
+	//reobf(coreJar) {
+	//	spec -> spec.classpath = sourceSets.main.compileClasspath
+	//}
 }
 
 artifacts {
-	archives devJar, sourceJar, coreJar, changelog.output, supporterlist.output, supporterlistgold.output
+	archives devJar, sourceJar, changelog.output, supporterlist.output, supporterlistgold.output, defaultConfigPack //, coreJar
 }
 
 if (!hasProperty("mavenUsername")) {
