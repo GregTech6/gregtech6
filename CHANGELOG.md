@@ -31,8 +31,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.09: (Not released yet)
 [NOTE] The Default Config Pack updated again to disable Enhanced Biomes Underground Worldgen.
-[FIXED] Paint Slinger Lens not being required to have Mana Bursts paint GT6 Machines, so any Mana Burst did it, even unpainted ones.
+[COMPAT] Voltz based Mods, maybe also Mekanism (not tested), are now supported for GT6 EU with proper Energy Ratios. Remember to only use EU Packets that are 1024EU/t or smaller. ;)
 [COMPAT] Enhanced Biomes got checked for all the Stuff that could be Compatible, such as Rock Types, Wood Types and Biomes. Yep this time it's gonna be mostly a Compat Update again.
+[FIXED] Paint Slinger Lens not being required to have Mana Bursts paint GT6 Machines, so any Mana Burst did it, even unpainted ones.
 [ADDED] Ore Multiplier on things like Redstone and Lapis can now be altered in the Material Config.
 [ADDED] Axes can now be used like Saws for making Slabs and Stairs.
 [ADDED] Anvils now have the ability to be used as Bending Cylinders by hammering on their Sides instead of their Top.

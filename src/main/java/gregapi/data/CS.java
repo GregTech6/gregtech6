@@ -209,9 +209,13 @@ public class CS {
 	, "\u2082\u2089\u2080", "\u2082\u2089\u2081", "\u2082\u2089\u2082", "\u2082\u2089\u2083", "\u2082\u2089\u2084", "\u2082\u2089\u2085", "\u2082\u2089\u2086", "\u2082\u2089\u2087", "\u2082\u2089\u2088", "\u2082\u2089\u2089"
 	, "\u2083\u2080\u2080\u208A"
 	};
-	
-	/** The value of how many RF Units are worth an Energy Unit (EU) or MJ Unit. */
-	public static final int RF_PER_EU = 4, RF_PER_MJ = 10;
+
+	/** The value of how many Voltz/Mekanism Joules are worth an EU. */
+	public static final int  J_PER_EU = 10;
+	/** The value of how many RF are worth an MJ. */
+	public static final int RF_PER_MJ = 10;
+	/** The value of how many RF are worth an EU. */
+	public static final int RF_PER_EU =  4;
 	/** The value of how many Fuel Ticks a Furnace Smelt has. */
 	public static int TICKS_PER_SMELT = 200;
 	/** The value of how many Energy Units are worth a Furnace Tick in regards of Fuel -> Energy */

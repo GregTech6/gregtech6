@@ -34,28 +34,41 @@ import net.minecraft.world.World;
  * For mostly Internal Use.
  */
 public class EnergyCompat {
-	public static boolean RF_ENERGY = F, AE_ENERGY = F, IC_ENERGY = F, BC_LASER = F;
+	public static boolean RF_ENERGY = F, AE_ENERGY = F, IC_ENERGY = F, BB_ENERGY = F, GC_ENERGY = F, BC_LASER = F;
 	
-	/** Gets Called once during postInit to see which Interfaces are there.*/
+	/** Gets Called once during postInit to see which Interfaces are there and Classloaded. */
 	public static void checkAvailabilities() {
 		try {
-			cofh.api.energy.IEnergyHandler      .class.getCanonicalName();
-			cofh.api.energy.IEnergyReceiver     .class.getCanonicalName();
-			cofh.api.energy.IEnergyConnection   .class.getCanonicalName();
+			cofh.api.energy.IEnergyHandler                               .class.getCanonicalName();
+			cofh.api.energy.IEnergyReceiver                              .class.getCanonicalName();
+			cofh.api.energy.IEnergyConnection                            .class.getCanonicalName();
 			RF_ENERGY = T;
 		} catch(Throwable e) {/**/}
 		try {
-			appeng.tile.powersink.IC2           .class.getCanonicalName();
+			appeng.tile.powersink.IC2                                    .class.getCanonicalName();
 			AE_ENERGY = T;
 		} catch(Throwable e) {/**/}
 		try {
-			ic2.api.energy.tile.IEnergySink     .class.getCanonicalName();
-			ic2.api.energy.tile.IEnergySource   .class.getCanonicalName();
-			ic2.api.energy.tile.IEnergyConductor.class.getCanonicalName();
+			ic2.api.energy.tile.IEnergySink                              .class.getCanonicalName();
+			ic2.api.energy.tile.IEnergySource                            .class.getCanonicalName();
+			ic2.api.energy.tile.IEnergyConductor                         .class.getCanonicalName();
 			IC_ENERGY = T;
 		} catch(Throwable e) {/**/}
 		try {
-			buildcraft.api.power.ILaserTarget   .class.getCanonicalName();
+			com.builtbroken.mc.api.energy.IEnergyBufferProvider          .class.getCanonicalName();
+			com.builtbroken.mc.api.energy.IEnergyBuffer                  .class.getCanonicalName();
+			BB_ENERGY = T;
+		} catch(Throwable e) {/**/}
+		try {
+			micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC      .class.getCanonicalName();
+			micdoodle8.mods.galacticraft.api.power.EnergySource          .class.getCanonicalName();
+			micdoodle8.mods.galacticraft.api.transmission.tile.IConnector.class.getCanonicalName();
+			micdoodle8.mods.galacticraft.api.transmission.NetworkType    .class.getCanonicalName();
+			micdoodle8.mods.galacticraft.core.energy.EnergyConfigHandler .class.getCanonicalName();
+			GC_ENERGY = T;
+		} catch(Throwable e) {/**/}
+		try {
+			buildcraft.api.power.ILaserTarget                            .class.getCanonicalName();
 			BC_LASER = T;
 		} catch(Throwable e) {/**/}
 	}
@@ -65,8 +78,6 @@ public class EnergyCompat {
 		if (MD.OMT.mLoaded && aReceiver.getClass().getName().startsWith("openmodularturrets"             )) return T;
 		if (MD.TG .mLoaded && aReceiver.getClass().getName().startsWith("techguns"                       )) return T;
 		if (MD.IE .mLoaded && aReceiver.getClass().getName().startsWith("blusunrize.immersiveengineering")) return T;
-		if (                  aReceiver.getClass().getName().startsWith("icbm"                           )) return T;
-		if (                  aReceiver.getClass().getName().startsWith("com.builtbroken"                )) return T;
 		return F;
 	}
 	
@@ -78,7 +89,9 @@ public class EnergyCompat {
 		if (aTarget instanceof gregtech.api.interfaces.tileentity.IEnergyConnected    ) return T; // return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aTarget).inputEnergyFrom      (aSide                 ) || ((gregtech.api.interfaces.tileentity.IEnergyConnected)aTarget).outputsEnergyTo(aSide);
 		if (AE_ENERGY && aThis != null && aTarget instanceof appeng.tile.powersink.IC2) return ((appeng.tile.powersink.IC2                                       )aTarget).acceptsEnergyFrom    (aThis, FORGE_DIR[aSide]);
 		
-		if (COMPAT_GC != null && aTarget instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC && (!(aTarget instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aTarget).canConnect(FORGE_DIR[aSide], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER))) return T;
+		if (GC_ENERGY && aTarget instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC && (!(aTarget instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aTarget).canConnect(FORGE_DIR[aSide], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER))) return T;
+		
+		if (BB_ENERGY && aTarget instanceof com.builtbroken.mc.api.energy.IEnergyBufferProvider && ((com.builtbroken.mc.api.energy.IEnergyBufferProvider)aTarget).getEnergyBuffer(FORGE_DIR[aSide]) != null) return T;
 		
 		if (IC_ENERGY && aThis != null) {
 			TileEntity tConnected = (aTarget instanceof ic2.api.energy.tile.IEnergyTile || ic2.api.energy.EnergyNet.instance == null ? aTarget : ic2.api.energy.EnergyNet.instance.getTileEntity(aTarget.getWorldObj(), aTarget.xCoord, aTarget.yCoord, aTarget.zCoord));
@@ -105,7 +118,7 @@ public class EnergyCompat {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static long insertEnergyInto(TagData aEnergyType, byte aSideInto, long aSize, long aAmount, Object aEmitter, TileEntity aReceiver) {
+	public static long insertEnergyInto(TagData aEnergyType, byte aSide, long aSize, long aAmount, Object aEmitter, TileEntity aReceiver) {
 		if (aAmount <= 0 || aSize == 0 || aReceiver == null) return 0;
 		
 		if (aEnergyType == TD.Energy.EU) {
@@ -114,27 +127,27 @@ public class EnergyCompat {
 			
 			// Applied Energistics gets a special case.
 			if (AE_ENERGY && aReceiver instanceof appeng.tile.powersink.IC2) {
-				if (((appeng.tile.powersink.IC2)aReceiver).acceptsEnergyFrom(aEmitter instanceof TileEntity ? (TileEntity)aEmitter : null, FORGE_DIR[aSideInto])) {
+				if (((appeng.tile.powersink.IC2)aReceiver).acceptsEnergyFrom(aEmitter instanceof TileEntity ? (TileEntity)aEmitter : null, FORGE_DIR[aSide])) {
 					if (checkOverCharge(aSize, aReceiver)) return aAmount;
 					long rUsedAmount = 0;
-					while (aAmount > rUsedAmount && ((appeng.tile.powersink.IC2)aReceiver).getDemandedEnergy() >= aSize && ((appeng.tile.powersink.IC2)aReceiver).injectEnergy(FORGE_DIR[aSideInto], aSize, aSize) < aSize) rUsedAmount++;
+					while (aAmount > rUsedAmount && ((appeng.tile.powersink.IC2)aReceiver).getDemandedEnergy() >= aSize && ((appeng.tile.powersink.IC2)aReceiver).injectEnergy(FORGE_DIR[aSide], aSize, aSize) < aSize) rUsedAmount++;
 					return rUsedAmount;
 				}
 				return 0;
 			}
 			
 			// GalactiCraft and its Addons
-			if (COMPAT_GC != null) {
+			if (GC_ENERGY && COMPAT_GC != null) {
 				if (aReceiver instanceof micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC) {
-					if (!(aReceiver instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aReceiver).canConnect(FORGE_DIR[aSideInto], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER)) {
+					if (!(aReceiver instanceof micdoodle8.mods.galacticraft.api.transmission.tile.IConnector) || ((micdoodle8.mods.galacticraft.api.transmission.tile.IConnector)aReceiver).canConnect(FORGE_DIR[aSide], micdoodle8.mods.galacticraft.api.transmission.NetworkType.POWER)) {
 						if (checkOverCharge(aSize, aReceiver)) return aAmount;
-						float tSizeToReceive = aSize * micdoodle8.mods.galacticraft.core.energy.EnergyConfigHandler.IC2_RATIO, tStored = ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).getEnergyStoredGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSideInto));
-						if (tSizeToReceive >= tStored || tSizeToReceive <= ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).getMaxEnergyStoredGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSideInto)) - tStored) {
-							float tReceived = ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).receiveEnergyGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSideInto), tSizeToReceive, F);
+						float tSizeToReceive = aSize * micdoodle8.mods.galacticraft.core.energy.EnergyConfigHandler.IC2_RATIO, tStored = ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).getEnergyStoredGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSide));
+						if (tSizeToReceive >= tStored || tSizeToReceive <= ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).getMaxEnergyStoredGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSide)) - tStored) {
+							float tReceived = ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).receiveEnergyGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSide), tSizeToReceive, F);
 							if (tReceived > 0) {
 								tSizeToReceive -= tReceived;
 								while (tSizeToReceive > 0) {
-									tReceived = ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).receiveEnergyGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSideInto), tSizeToReceive, F);
+									tReceived = ((micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC)aReceiver).receiveEnergyGC((micdoodle8.mods.galacticraft.api.power.EnergySource)COMPAT_GC.dir(aSide), tSizeToReceive, F);
 									if (tReceived < 1) break;
 									tSizeToReceive -= tReceived;
 								}
@@ -146,26 +159,32 @@ public class EnergyCompat {
 				}
 			}
 			
+			// Voltz Stuff
+			if (BB_ENERGY && aReceiver instanceof com.builtbroken.mc.api.energy.IEnergyBufferProvider) {
+				Object tEnergyBuffer = ((com.builtbroken.mc.api.energy.IEnergyBufferProvider)aReceiver).getEnergyBuffer(FORGE_DIR[aSide]);
+				if (tEnergyBuffer != null) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((com.builtbroken.mc.api.energy.IEnergyBuffer)tEnergyBuffer).addEnergyToStorage(UT.Code.bind31(aSize * aAmount) * J_PER_EU, T), aSize * J_PER_EU);
+			}
+			
 			// Electricity alike RF Receivers that are whitelisted for my Power System.
 			if (RF_ENERGY && isElectricRFReceiver(aReceiver)) {
-				if (!(aReceiver instanceof cofh.api.energy.IEnergyConnection) || ((cofh.api.energy.IEnergyConnection)aReceiver).canConnectEnergy(FORGE_DIR[aSideInto])) {
-					if (aReceiver instanceof cofh.api.energy.IEnergyReceiver) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((cofh.api.energy.IEnergyReceiver)aReceiver).receiveEnergy(FORGE_DIR[aSideInto], UT.Code.bind31(aAmount * aSize * RF_PER_EU), F), aSize * RF_PER_EU);
-					if (aReceiver instanceof cofh.api.energy.IEnergyHandler ) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((cofh.api.energy.IEnergyHandler )aReceiver).receiveEnergy(FORGE_DIR[aSideInto], UT.Code.bind31(aAmount * aSize * RF_PER_EU), F), aSize * RF_PER_EU);
+				if (!(aReceiver instanceof cofh.api.energy.IEnergyConnection) || ((cofh.api.energy.IEnergyConnection)aReceiver).canConnectEnergy(FORGE_DIR[aSide])) {
+					if (aReceiver instanceof cofh.api.energy.IEnergyReceiver) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((cofh.api.energy.IEnergyReceiver)aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * aSize * RF_PER_EU), F), aSize * RF_PER_EU);
+					if (aReceiver instanceof cofh.api.energy.IEnergyHandler ) return checkOverCharge(aSize, aReceiver) ? aAmount : UT.Code.divup(((cofh.api.energy.IEnergyHandler )aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * aSize * RF_PER_EU), F), aSize * RF_PER_EU);
 				}
 				return 0;
 			}
 			
 			// Since GT5U is still basically an IC2-Addon, I don't want the IC2 Power System to come before this by accident.
 			if (aReceiver instanceof gregtech.api.interfaces.tileentity.IEnergyConnected) {
-				return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aReceiver).injectEnergyUnits(aSideInto, aSize, aAmount);
+				return ((gregtech.api.interfaces.tileentity.IEnergyConnected)aReceiver).injectEnergyUnits(aSide, aSize, aAmount);
 			}
 			
 			// IC2 Power at last, because special cases should always override the very "compatible" IC2 Stuff.
 			if (IC_ENERGY) {
 				TileEntity tReceiver = (aReceiver instanceof ic2.api.energy.tile.IEnergyTile || ic2.api.energy.EnergyNet.instance == null ? aReceiver : ic2.api.energy.EnergyNet.instance.getTileEntity(aReceiver.getWorldObj(), aReceiver.xCoord, aReceiver.yCoord, aReceiver.zCoord));
-				if (tReceiver instanceof ic2.api.energy.tile.IEnergySink && ((ic2.api.energy.tile.IEnergySink)tReceiver).acceptsEnergyFrom(aEmitter instanceof TileEntity ? (TileEntity)aEmitter : null, FORGE_DIR[aSideInto])) {
+				if (tReceiver instanceof ic2.api.energy.tile.IEnergySink && ((ic2.api.energy.tile.IEnergySink)tReceiver).acceptsEnergyFrom(aEmitter instanceof TileEntity ? (TileEntity)aEmitter : null, FORGE_DIR[aSide])) {
 					long rUsedAmount = 0;
-					while (aAmount > rUsedAmount && ((ic2.api.energy.tile.IEnergySink)tReceiver).getDemandedEnergy() >= aSize && ((ic2.api.energy.tile.IEnergySink)tReceiver).injectEnergy(FORGE_DIR[aSideInto], aSize, aSize) < aSize) rUsedAmount++;
+					while (aAmount > rUsedAmount && ((ic2.api.energy.tile.IEnergySink)tReceiver).getDemandedEnergy() >= aSize && ((ic2.api.energy.tile.IEnergySink)tReceiver).injectEnergy(FORGE_DIR[aSide], aSize, aSize) < aSize) rUsedAmount++;
 					if (rUsedAmount > 0) {
 						int tTier = ((ic2.api.energy.tile.IEnergySink)tReceiver).getSinkTier();
 						if (tTier >= 0 && tTier < VMAX.length-1 && aSize > VMAX[tTier]) {
@@ -192,9 +211,9 @@ public class EnergyCompat {
 			if (aEnergyType == TD.Energy.EU && EMIT_EU_AS_RF) tSizeToReceive = aSize * RF_PER_EU;
 			
 			if (tSizeToReceive > 0) {
-				if (!(aReceiver instanceof cofh.api.energy.IEnergyConnection) || ((cofh.api.energy.IEnergyConnection)aReceiver).canConnectEnergy(FORGE_DIR[aSideInto])) {
-					if (aReceiver instanceof cofh.api.energy.IEnergyReceiver) return UT.Code.divup(((cofh.api.energy.IEnergyReceiver)aReceiver).receiveEnergy(FORGE_DIR[aSideInto], UT.Code.bind31(aAmount * tSizeToReceive), F), tSizeToReceive);
-					if (aReceiver instanceof cofh.api.energy.IEnergyHandler ) return UT.Code.divup(((cofh.api.energy.IEnergyHandler )aReceiver).receiveEnergy(FORGE_DIR[aSideInto], UT.Code.bind31(aAmount * tSizeToReceive), F), tSizeToReceive);
+				if (!(aReceiver instanceof cofh.api.energy.IEnergyConnection) || ((cofh.api.energy.IEnergyConnection)aReceiver).canConnectEnergy(FORGE_DIR[aSide])) {
+					if (aReceiver instanceof cofh.api.energy.IEnergyReceiver) return UT.Code.divup(((cofh.api.energy.IEnergyReceiver)aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * tSizeToReceive), F), tSizeToReceive);
+					if (aReceiver instanceof cofh.api.energy.IEnergyHandler ) return UT.Code.divup(((cofh.api.energy.IEnergyHandler )aReceiver).receiveEnergy(FORGE_DIR[aSide], UT.Code.bind31(aAmount * tSizeToReceive), F), tSizeToReceive);
 				}
 			}
 		}
