@@ -30,6 +30,7 @@
 
 # Default Config Pack
 !/.defaultconfigs/**/*
+/.defaultconfigs/**/.directory
 
 # Source
 !/src/main/java/**/*.java
