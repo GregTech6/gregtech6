@@ -162,6 +162,9 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.HBM, "tile.crystal_hardened"         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.TC, "blockWarded"                    , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.ICBM, "icbmCConcrete"                , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.ICBM, "icbmCRail"                    , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.ICBM, "icbmCGlass"                   , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.ICBM, "icbmCCamouflage"              , 1, W));
 		
 		
 		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"));

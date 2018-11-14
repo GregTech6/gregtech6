@@ -1124,61 +1124,6 @@ public class LoaderItemData implements Runnable {
 		}
 		
 		
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   1, ANY.Cu                ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   2, MT.Sn                 ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   3, MT.Bronze             ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   4, ANY.Fe                ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   5, ANY.Steel             ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   6, MT.Ag                 ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   7, MT.Au                 ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   8, MT.Pb                 ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,   9, MT.Zn                 ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,  10, MT.Ni                 ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,  11, MT.Al                 ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,  12, MT.Mg                 ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,  14, MT.Brass              ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,  15, ANY.Stone             ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,  16, ANY.Wood              ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,  17, MT.Diamond            ,  U * 1);
-		OM.data(MD.VOLTZ, "veGear"                          , 1,  18, MT.Pt                 ,  U * 1);
-		
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   1, ANY.Cu                ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   2, MT.Sn                 ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   3, MT.Bronze             ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   4, ANY.Fe                ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   5, ANY.Steel             ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   6, MT.Ag                 ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   7, MT.Au                 ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   8, MT.Pb                 ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,   9, MT.Zn                 ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,  10, MT.Ni                 ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,  11, MT.Al                 ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,  12, MT.Mg                 ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,  14, MT.Brass              ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,  15, ANY.Stone             ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,  16, ANY.Wood              ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,  17, MT.Diamond            ,  U2);
-		OM.data(MD.VOLTZ, "veRod"                           , 1,  18, MT.Pt                 ,  U2);
-		
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   1, ANY.Cu                ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   2, MT.Sn                 ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   3, MT.Bronze             ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   4, ANY.Fe                ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   5, ANY.Steel             ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   6, MT.Ag                 ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   7, MT.Au                 ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   8, MT.Pb                 ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,   9, MT.Zn                 ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,  10, MT.Ni                 ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,  11, MT.Al                 ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,  12, MT.Mg                 ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,  14, MT.Brass              ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,  15, ANY.Stone             ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,  16, ANY.Wood              ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,  17, MT.Diamond            ,  U9);
-		OM.data(MD.VOLTZ, "veWire"                          , 1,  18, MT.Pt                 ,  U9);
-		
-		
 		OM.data(MD.ExU, "drum"                              , 1,   0, ANY.Fe                ,  U *17);
 		OM.data(MD.ExU, "drum"                              , 1,   1, ANY.Fe                ,  U * 7, MT.Au                 ,  U * 4, MT.Bedrockium         , U * 6);
 		OM.data(MD.ExU, "spike_base"                        , 1,   0, ANY.Fe                ,  18*U4);
