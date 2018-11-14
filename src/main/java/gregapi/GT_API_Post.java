@@ -331,24 +331,24 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		// Those "On-Demand" Materials of VoltzEngine are registered late...
 		if (MD.VOLTZ.mLoaded) {
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 0), OP.oreVanillastone.dat(MT.Sn));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 1), OP.oreVanillastone.dat(MT.Cu));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 2), OP.oreVanillastone.dat(MT.Ag));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 3), OP.oreVanillastone.dat(MT.Pb));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 4), OP.oreVanillastone.dat(MT.Zn));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 5), OP.oreVanillastone.dat(MT.Ni));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 6), OP.oreVanillastone.dat(MT.OREMATS.Bauxite));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 7), OP.oreVanillastone.dat(MT.OREMATS.Magnesite));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 8), OP.oreVanillastone.dat(MT.OREMATS.Uraninite));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "stoneOre", 1, 9), OP.oreVanillastone.dat(MT.Pt));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "gemOre"  , 1, 0), OP.oreVanillastone.dat(MT.Amazonite));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "gemOre"  , 1, 1), OP.oreVanillastone.dat(MT.SmokeyQuartz));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "gemOre"  , 1, 2), OP.oreVanillastone.dat(MT.OnyxBlack));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "gemOre"  , 1, 3), OP.oreVanillastone.dat(MT.OnyxRed));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "gemOre"  , 1, 4), OP.oreVanillastone.dat(MT.Uvarovite));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "gemOre"  , 1, 5), OP.oreVanillastone.dat(MT.Grossular));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "gemOre"  , 1, 6), OP.oreVanillastone.dat(MT.Almandine));
-			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "gemOre"  , 1, 7), OP.oreVanillastone.dat(MT.Andradite));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 0), OP.oreVanillastone.dat(MT.Sn));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 1), OP.oreVanillastone.dat(MT.Cu));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 2), OP.oreVanillastone.dat(MT.Ag));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 3), OP.oreVanillastone.dat(MT.Pb));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 4), OP.oreVanillastone.dat(MT.Zn));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 5), OP.oreVanillastone.dat(MT.Ni));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 6), OP.oreVanillastone.dat(MT.OREMATS.Bauxite));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 7), OP.oreVanillastone.dat(MT.OREMATS.Magnesite));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 8), OP.oreVanillastone.dat(MT.OREMATS.Uraninite));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veStoneOre", 1, 9), OP.oreVanillastone.dat(MT.Pt));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 0), OP.oreVanillastone.dat(MT.Amazonite));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 1), OP.oreVanillastone.dat(MT.SmokeyQuartz));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 2), OP.oreVanillastone.dat(MT.OnyxBlack));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 3), OP.oreVanillastone.dat(MT.OnyxRed));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 4), OP.oreVanillastone.dat(MT.Uvarovite));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 5), OP.oreVanillastone.dat(MT.Grossular));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 6), OP.oreVanillastone.dat(MT.Almandine));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 7), OP.oreVanillastone.dat(MT.Andradite));
 			
 			OM.data(MD.VOLTZ, "veSheetMetal"                    , 1,   0, ANY.Steel             ,  U);
 			OM.data(MD.VOLTZ, "veSheetMetal"                    , 1,   1, ANY.Steel             ,  U2);

@@ -31,7 +31,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.09: (Not released yet)
 [NOTE] The Default Config Pack updated again to disable Enhanced Biomes Underground Worldgen.
-[COMPAT] Voltz based Mods, maybe also Mekanism (not tested), are now supported for GT6 EU with proper Energy Ratios. Remember to only use EU Packets that are 1024EU/t or smaller. ;)
+[COMPAT] Voltz based Mods, maybe also Mekanism (not tested), are now able to be powered by GT6 EU with the proper Energy Ratios (1 EU = 10 J). Remember to only insert EU Packets that are 1024EU/t or smaller, also it could be wasteful to not use Ultra Low Voltage for things that run constantly, just like for Galacticraft. ;)
 [COMPAT] Enhanced Biomes got checked for all the Stuff that could be Compatible, such as Rock Types, Wood Types and Biomes. Yep this time it's gonna be mostly a Compat Update again.
 [FIXED] Paint Slinger Lens not being required to have Mana Bursts paint GT6 Machines, so any Mana Burst did it, even unpainted ones.
 [ADDED] Ore Multiplier on things like Redstone and Lapis can now be altered in the Material Config.
