@@ -2590,7 +2590,7 @@ public class UT {
 			return addStackToPlayerInventory(aPlayer, aStack, F);
 		}
 		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {
-			return addStackToPlayerInventory(aPlayer, aPlayer.inventory, aStack, F);
+			return addStackToPlayerInventory(aPlayer, aPlayer.inventory, aStack, aCurrentSlotFirst);
 		}
 		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst) {
 			if (aInventory != null && ST.valid(aStack)) {
@@ -2608,11 +2608,11 @@ public class UT {
 					ItemStack tStack = aInventory.getStackInSlot(aPlayer.inventory.currentItem);
 					if (tStack == null || tStack.stackSize == 0) {
 						aInventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
-						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					} else if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
 						tStack.stackSize += aStack.stackSize;
-						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					}
 				}
@@ -2628,11 +2628,11 @@ public class UT {
 					ItemStack tStack = aInventory.getStackInSlot(aPlayer.inventory.currentItem);
 					if (tStack == null || tStack.stackSize == 0) {
 						aInventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
-						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					} else if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
 						tStack.stackSize += aStack.stackSize;
-						if (aPlayer != null && aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
 						return T;
 					}
 				}
