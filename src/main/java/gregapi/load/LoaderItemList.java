@@ -161,6 +161,7 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.HBM, "tile.block_meteor_cobble"      , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.HBM, "tile.crystal_hardened"         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.TC, "blockWarded"                    , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(        ST.make(MD.ICBM, "icbmCConcrete"                , 1, W));
 		
 		
 		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"));
@@ -690,13 +691,17 @@ public class LoaderItemList implements Runnable {
 		
 		if (IL.BoP_Jar_Honey.item() != null && IL.BoP_Jar_Empty.item() != null) IL.BoP_Jar_Honey.item().setContainerItem(IL.BoP_Jar_Empty.item());
 		
+		
 		IL.HiL_Ironwood                         .set(ST.make(MD.HiL, "tile.hl_ironwoodWood"                 , 1, 0), new OreDictItemData(ANY.Wood, U*8, MT.LiveRoot, U4), OD.logWood);
+		
 		
 		IL.RoC_Comb_Slippery                    .set(ST.make(MD.RoC, "rotarycraft_item_modinterface"        , 1, 0), null, OD.beeComb);
 		IL.RoC_Propolis_Slippery                .set(ST.make(MD.RoC, "rotarycraft_item_modinterface"        , 1, 1), null, OD.listAllpropolis);
 		
+		
 		IL.JABBA_Dolly                          .set(ST.make(MD.JABBA, "mover"                              , 1, 0));
 		IL.JABBA_Dolly_Diamond                  .set(ST.make(MD.JABBA, "moverDiamond"                       , 1, 0));
+		
 		
 		IL.GC_Infinite_Oxygen                   .set(ST.make(MD.GC, "item.infiniteOxygen"                   , 1, 0)); ItemsGT.DEBUG_ITEMS.add(IL.GC_Infinite_Oxygen.wild(1)); ItemsGT.ILLEGAL_DROPS.add(IL.GC_Infinite_Oxygen.wild(1));
 		IL.GC_Infinite_Battery                  .set(ST.make(MD.GC, "item.infiniteBattery"                  , 1, 0)); ItemsGT.DEBUG_ITEMS.add(IL.GC_Infinite_Battery.wild(1)); ItemsGT.ILLEGAL_DROPS.add(IL.GC_Infinite_Battery.wild(1));
@@ -713,6 +718,7 @@ public class LoaderItemList implements Runnable {
 		IL.GC_Schematic_2                       .set(ST.make(MD.GC_PLANETS, "item.schematic"                , 1, 0));
 		IL.GC_Schematic_3                       .set(ST.make(MD.GC_GALAXYSPACE, "item.ItemSchematics"       , 1, 0));
 		
+		
 		IL.TG_Ore_Cluster_1                     .set(ST.make(MD.TG, "oreCluster"                            , 1, 0)); ItemsGT.DEBUG_ITEMS.add(IL.TG_Ore_Cluster_1.wild(1)); ItemsGT.ILLEGAL_DROPS.add(IL.TG_Ore_Cluster_1.wild(1));
 		IL.TG_Ore_Cluster_2                     .set(ST.make(MD.TG, "oreCluster2"                           , 1, 0)); ItemsGT.DEBUG_ITEMS.add(IL.TG_Ore_Cluster_2.wild(1)); ItemsGT.ILLEGAL_DROPS.add(IL.TG_Ore_Cluster_2.wild(1));
 		IL.TG_Spawner_Bug                       .set(ST.make(MD.TG, "TGMonsterSpawner"                      , 1, 0));
@@ -720,6 +726,7 @@ public class LoaderItemList implements Runnable {
 		
 		if (IL.TG_Ore_Cluster_1.block() != NB) IL.TG_Ore_Cluster_1.block().setHardness(1000).setResistance(6000000).setHarvestLevel(TOOL_pickaxe, 3);
 		if (IL.TG_Ore_Cluster_2.block() != NB) IL.TG_Ore_Cluster_2.block().setHardness(1000).setResistance(6000000).setHarvestLevel(TOOL_pickaxe, 3);
+		
 		
 		IL.MFR_Fertilizer                       .set(ST.make(MD.MFR, "fertilizer"                           , 1, 0), null, OD.itemFertilizer, DYE_OREDICTS_MIXABLE[DYE_INDEX_Brown]);
 		IL.MFR_Log_Rubber                       .set(ST.make(MD.MFR, "rubberwood.log"                       , 1, 0), new OreDictItemData(MT.WoodRubber, U*8, MT.Bark, U), OD.logRubber);
@@ -730,8 +737,13 @@ public class LoaderItemList implements Runnable {
 		IL.MFR_Leaves_Rubber                    .set(ST.make(MD.MFR, "rubberwood.leaves"                    , 1, 0), null, OP.treeLeaves);
 		IL.MFR_Leaves_Rubber_Dry                .set(ST.make(MD.MFR, "rubberwood.leaves"                    , 1, 1), null, OP.treeLeaves);
 		
+		
 		IL.AA_Fertilizer                        .set(ST.make(MD.AA, "itemFertilizer"                        , 1, 0), null, OD.itemFertilizer);
 		IL.AA_Dye_Black                         .set(ST.make(MD.AA, "itemMisc"                              , 1,17), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
+		
+		
+		IL.ICBM_Concrete                        .set(ST.make(MD.ICBM, "icbmCConcrete"                       , 1, 0));
+		
 		
 		IL.FR_Planks_Fireproof                  .set(ST.make(MD.FR, "planksFireproof"                       , 1, 0));
 		IL.FR_Planks                            .set(ST.make(MD.FR, "planks"                                , 1, 0));

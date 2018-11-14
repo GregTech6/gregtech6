@@ -313,7 +313,15 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			if (IL.TC_Warded_Glass.equal(aEvent.itemStack, F, T)) {
 				aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, 999));
 			} else if (ItemsGT.SHOW_RESISTANCE.contains(aEvent.itemStack, T)) {
-				aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, aBlock.getExplosionResistance(null)));
+				if (IL.ICBM_Concrete.block() == aBlock) {
+					switch(aMeta) {
+					default: aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, 30)); break;
+					case  1: aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, 38)); break;
+					case  2: aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, 48)); break;
+					}
+				} else {
+					aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, aBlock.getExplosionResistance(null)));
+				}
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aBlock.getHarvestTool(aBlockMeta), "Pickaxe") + " ("+aBlock.getHarvestLevel(aBlockMeta)+")");
 			}
 		}

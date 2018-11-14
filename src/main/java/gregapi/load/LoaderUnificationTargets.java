@@ -312,6 +312,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Ash                    , ST.make(MD.BINNIE_BOTANY, "misc", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Wood                   , ST.make(MD.BINNIE_BOTANY, "misc", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.S                      , ST.make(MD.BINNIE_BOTANY, "misc", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.gemOre         , MT.Goshenite              , ST.make(MD.VOLTZ, "gems", 1,   10));
+		OreDictManager.INSTANCE.setTarget(OP.gemRaw         , MT.Goshenite              , ST.make(MD.VOLTZ, "gems", 1, 1010));
+		OreDictManager.INSTANCE.setTarget(OP.gemUncut       , MT.Goshenite              , ST.make(MD.VOLTZ, "gems", 1, 2010));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Goshenite              , ST.make(MD.VOLTZ, "gems", 1, 3010));
+		OreDictManager.INSTANCE.setTarget(OP.gemPolished    , MT.Goshenite              , ST.make(MD.VOLTZ, "gems", 1, 4010));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.TungstenCarbide        , ST.make(MD.MgC, "item.ingotCarbide", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Yellorite              , ST.make(MD.BR, "YelloriteOre", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Yellorium              , ST.make(MD.BR, "BRMetalBlock", 1, 0));
