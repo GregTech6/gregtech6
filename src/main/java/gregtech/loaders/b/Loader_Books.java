@@ -443,7 +443,7 @@ public class Loader_Books implements Runnable {
 		
 		for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) {
 			if (tMat != null && !tMat.mHidden && tMat.contains(TD.Atomic.ELEMENT) && !tMat.contains(TD.Atomic.ANTIMATTER)) {
-				tBook.add(tMat.getLocal()+"\n"+tMat.mProtons+"/"+tMat.mNeutrons+"\n===================\nID: "+(tMat.mID<0?"NONE":tMat.mID)+"\nMelting: "+tMat.mMeltingPoint+" K\nBoiling: "+tMat.mBoilingPoint+" K\nPlasma: "+tMat.mPlasmaPoint+" K\n===================\nDensity:\n"+tMat.mGramPerCubicCentimeter+" g/cm3\n"+tMat.getWeight(U)+" kg/unit\n===================\n");
+				tBook.add(tMat.getLocal()+"\n"+tMat.mProtons+"/"+tMat.mNeutrons+"\n===================\nID: "+(tMat.mID<0?"NONE":tMat.mID)+"\nMelting: "+tMat.mMeltingPoint+" K\nBoiling: "+tMat.mBoilingPoint+" K\nPlasma: "+tMat.mPlasmaPoint+" K\n===================\nDensity:\n"+(tMat.mGramPerCubicCentimeter == 0 ? "???" : tMat.mGramPerCubicCentimeter)+" g/cm3\n"+tMat.getWeight(U)+" kg/unit\n===================\n");
 			}
 		}
 		

@@ -532,6 +532,9 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.grossular"         , T,   5, 250,   1, MT.Grossular                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
 		new WorldgenOresSmall("ore.small.uvarovite"         , T,   5, 250,   1, MT.Uvarovite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
 		new WorldgenOresSmall("ore.small.jade"              , T,   5, 250,   1, MT.Jade                         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.amazonite"         , T,   5, 250,   1, MT.Amazonite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.redonyx"           , T,   5, 250,   1, MT.OnyxRed                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.blackonyx"         , T,   5, 250,   1, MT.OnyxBlack                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
 		new WorldgenOresSmall("ore.small.amber"             , T,   5, 250,   1, MT.Amber                        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA);
 		new WorldgenOresSmall("ore.small.cooperite"         , T,  20,  40,   4, MT.OREMATS.Cooperite            , GEN_END, GEN_ASTEROIDS);
 		new WorldgenOresSmall("ore.small.sperrylite"        , T,  20,  40,   4, MT.OREMATS.Sperrylite           , GEN_END, GEN_ASTEROIDS, GEN_AETHER);

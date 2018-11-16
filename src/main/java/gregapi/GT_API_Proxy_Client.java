@@ -439,7 +439,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 						temp = F;
 					}
 					StringBuilder tString = new StringBuilder(128);
-					double aWeight = tMaterial.mAmount > 0 ? tMaterial.mMaterial.getWeight(tMaterial.mAmount) : 0;
+					double aWeight = tMaterial.weight();
 					long tWeight = ((long)(aWeight*1000))%1000;
 					tString.append(LH.Chat.WHITE    ).append(UT.Code.displayUnits(tMaterial.mAmount)).append(" ");
 					tString.append(LH.Chat.YELLOW   ).append(tMaterial.mMaterial.getLocal());

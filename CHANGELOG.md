@@ -26,7 +26,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.10: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Emeralds all of a sudden switching from Electrolyzing to Centrifuge Recipe in the previous Release, it's Electrolyzer again.
+[ADDED] Amazonite, Red Onyx and Black Onyx Small Ores.
 
 
 6.09.09:

@@ -21,8 +21,6 @@ package gregapi.util;
 
 import static gregapi.data.CS.*;
 
-import java.util.List;
-
 import gregapi.code.ModData;
 import gregapi.code.TagData;
 import gregapi.data.MT;
@@ -298,7 +296,7 @@ public class OM {
 		OreDictManager.INSTANCE.addToBlacklist_(aStack);
 	}
 	
-	public static long total(List<OreDictMaterialStack> aList) {
+	public static long total(Iterable<OreDictMaterialStack> aList) {
 		long rAmount = 0;
 		for (OreDictMaterialStack tStack : aList) if (tStack != null && tStack.mMaterial != MT.NULL) rAmount += tStack.mAmount;
 		return rAmount;
@@ -313,9 +311,9 @@ public class OM {
 		return tData == null ? 0 : aStack.stackSize * weight(tData.getAllMaterialStacks());
 	}
 	
-	public static double weight(List<OreDictMaterialStack> aList) {
+	public static double weight(Iterable<OreDictMaterialStack> aList) {
 		double rWeight = 0;
-		for (OreDictMaterialStack tStack : aList) if (tStack != null && tStack.mMaterial != MT.NULL) rWeight += tStack.mMaterial.getWeight(tStack.mAmount);
+		for (OreDictMaterialStack tStack : aList) if (tStack != null && tStack.mMaterial != MT.NULL) rWeight += tStack.weight();
 		return rWeight;
 	}
 	

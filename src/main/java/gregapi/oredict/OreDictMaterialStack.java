@@ -69,6 +69,10 @@ public final class OreDictMaterialStack implements Cloneable {
 		return new OreDictMaterialStack(mMaterial, UT.Code.divup(aMultiplier * mAmount, aDivider));
 	}
 	
+	public double weight() {
+		return mMaterial.getWeight(mAmount);
+	}
+	
 	@Override
 	public boolean equals(Object aObject) {
 		if (aObject == this) return T;

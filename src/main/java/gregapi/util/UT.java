@@ -615,7 +615,7 @@ public class UT {
 			boolean temp = F;
 			int tCounter = 0;
 			
-			tBook.add("===================\n"+aMat.getLocal()+"\n===================\nID: "+(aMat.mID<0?"NONE":aMat.mID)+"\nMelting: "+aMat.mMeltingPoint+" K\nBoiling: "+aMat.mBoilingPoint+" K\nPlasma: "+aMat.mPlasmaPoint+" K\n===================\nDensity:\n"+aMat.mGramPerCubicCentimeter+" g/cm3\n"+aMat.getWeight(U)+" kg/unit\n===================\n");
+			tBook.add("===================\n"+aMat.getLocal()+"\n===================\nID: "+(aMat.mID<0?"NONE":aMat.mID)+"\nMelting: "+aMat.mMeltingPoint+" K\nBoiling: "+aMat.mBoilingPoint+" K\nPlasma: "+aMat.mPlasmaPoint+" K\n===================\nDensity:\n"+(aMat.mGramPerCubicCentimeter == 0 ? "???" : aMat.mGramPerCubicCentimeter)+" g/cm3\n"+aMat.getWeight(U)+" kg/unit\n===================\n");
 			
 			//----------
 			

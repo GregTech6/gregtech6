@@ -271,7 +271,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		
 		for (OreDictMaterialStack tMaterial : mContent) {
 			if (tLightest == null || tMaterial.mMaterial.mGramPerCubicCentimeter < tLightest.mMaterial.mGramPerCubicCentimeter) tLightest = tMaterial;
-			tWeight += tMaterial.mMaterial.getWeight(tMaterial.mAmount);
+			tWeight += tMaterial.weight();
 			tTotal += tMaterial.mAmount;
 		}
 		
@@ -355,12 +355,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		return 0;
 	}
 	
-	@Override
-	public double getWeightValue(byte aSide) {
-		double rWeight = 0;
-		for (OreDictMaterialStack tMaterial : mContent) rWeight += tMaterial.mMaterial.getWeight(tMaterial.mAmount);
-		return rWeight;
-	}
+	@Override public double getWeightValue(byte aSide) {return OM.weight(mContent);}
 	
 	@Override
 	public boolean breakBlock() {
