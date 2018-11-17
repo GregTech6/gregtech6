@@ -52,7 +52,7 @@ public class WorldgenRocks extends WorldgenObject {
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (aRandom.nextBoolean() || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
 		boolean temp = T;
-		for (String tName : aBiomeNames) if (BIOMES_DESERT.contains(tName) || BIOMES_MESA.contains(tName) || BIOMES_TAIGA.contains(tName) || BIOMES_SWAMP.contains(tName) || BIOMES_SAVANNA.contains(tName) || BIOMES_PLAINS.contains(tName) || BIOMES_WOODS.contains(tName) || BIOMES_MOUNTAINS.contains(tName)) {temp = F; break;}
+		for (String tName : aBiomeNames) if (BIOMES_DESERT.contains(tName) || BIOMES_MESA.contains(tName) || BIOMES_TAIGA.contains(tName) || BIOMES_SWAMP.contains(tName) || BIOMES_SAVANNA.contains(tName) || BIOMES_PLAINS.contains(tName) || BIOMES_WOODS.contains(tName) || BIOMES_MOUNTAINS.contains(tName) || BIOMES_WASTELANDS.contains(tName)) {temp = F; break;}
 		if (temp) return F;
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return F;

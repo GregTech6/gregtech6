@@ -72,9 +72,6 @@ public class StoneLayer {
 		mOre = BlocksGT.stoneToNormalOres.get(mStack);
 		mOreSmall = BlocksGT.stoneToSmallOres.get(mStack);
 		mOreBroken = BlocksGT.stoneToBrokenOres.get(mStack);
-		if (mOre == null) mOre = BlocksGT.ore;
-		if (mOreSmall == null) mOreSmall = BlocksGT.oreSmall;
-		if (mOreBroken == null) mOreBroken = BlocksGT.oreBroken;
 		mOres = new ArrayListNoNulls<>(F, aOres);
 	}
 	

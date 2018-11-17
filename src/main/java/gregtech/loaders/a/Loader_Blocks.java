@@ -65,7 +65,7 @@ public class Loader_Blocks implements Runnable {
 		
 		BlocksGT.Glass                                                          = new BlockGlassClear           ("gt.block.glass");
 		BlocksGT.GlowGlass                                                      = new BlockGlassGlow            ("gt.block.glass.glow");
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Glass, 1, W), F, TC.stack(TC.VITREUS, 2));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Glass    , 1, W), F, TC.stack(TC.VITREUS, 2));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.GlowGlass, 1, W), F, TC.stack(TC.VITREUS, 2), TC.stack(TC.LUX, 2));
 		
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Diggables                           = new BlockDiggable             ("gt.block.diggable"));
@@ -102,7 +102,7 @@ public class Loader_Blocks implements Runnable {
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BalesGrass                          = new BlockBaleGrass            ("gt.block.bale.grass"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.BalesCrop                           = new BlockBaleCrop             ("gt.block.bale.crop"));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesGrass, 1, W), F, TC.stack(TC.MESSIS, 4));
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesCrop, 1, W), F, TC.stack(TC.MESSIS, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesCrop , 1, W), F, TC.stack(TC.MESSIS, 4));
 		
 		BlocksGT.Ocean                                                          = new BlockOcean                ("gt.block.ocean", UT.Fluids.fluid("seawater"));
 		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp", UT.Fluids.fluid("waterdirty"));
