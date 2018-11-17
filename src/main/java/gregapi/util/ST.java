@@ -150,6 +150,8 @@ public class ST {
 	public static ItemStack validMeta (ItemStack aStack) {return aStack == null || item_(aStack) == null ? null : validMeta_(aStack);}
 	public static ItemStack validMeta_(ItemStack aStack) {return meta_(aStack) == W ? meta_(copy_(aStack), 0) : copy_(aStack);}
 	
+	public static Block nullair(Block aBlock) {return aBlock != NB ? aBlock : null;}
+	
 	public static int toInt(Item aItem, long aMeta) {return aItem == null ? 0 : id_(aItem) | (((short)aMeta)<<16);}
 	public static int toInt(ItemStack aStack) {return aStack != null ? toInt(item_(aStack), meta_(aStack)) : 0;}
 	public static int toInt(ItemStack aStack, long aMeta) {return aStack != null ? toInt(item_(aStack), aMeta) : 0;}
