@@ -171,6 +171,7 @@ public class CR {
 	public static final long DEF_REM_REV = DEF_REM|REV;
 	public static final long DEF_REM_NCC = DEF_REM|NO_COLLISION_CHECK;
 	public static final long DEF_REM_REV_NCC = DEF_REM_REV|NO_COLLISION_CHECK;
+	public static final long DEF_REM_REV_NCC_MIR = DEF_REM_REV_NCC|MIR;
 	public static final long DEF_REM_NAC = DEF_REM|NO_AUTO;
 	public static final long DEF_REM_NAC_NCC = DEF_REM_NCC|NO_AUTO;
 	public static final long DEF_REM_NAC_REV = DEF_REM_REV|NO_AUTO;

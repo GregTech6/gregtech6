@@ -1152,6 +1152,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropRye"                         , "listAllwheats");
 		OreDictManager.INSTANCE.addReRegistration("cropBarley"                      , "listAllwheats");
 		OreDictManager.INSTANCE.addReRegistration("cropOats"                        , "listAllwheats");
+		OreDictManager.INSTANCE.addReRegistration("listAllseed"                     , "seeds");
 		OreDictManager.INSTANCE.addReRegistration("listAllwheats"                   , "listAllgrain");
 		OreDictManager.INSTANCE.addReRegistration("dustWheat"                       , "listAllgrain");
 		OreDictManager.INSTANCE.addReRegistration("dustBarley"                      , "listAllgrain");
