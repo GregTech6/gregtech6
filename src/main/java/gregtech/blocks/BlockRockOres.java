@@ -56,12 +56,12 @@ public class BlockRockOres extends BlockBaseMeta {
 		OM.reg(ST.make(this, 1, 4), OP.ore.dat(MT.OREMATS.Bauxite));
 		OM.reg(ST.make(this, 1, 5), OP.ore.dat(MT.Oilshale));
 		
-		StoneLayer.LAYERS.add(new StoneLayer(this, 0, null, 0, null, 0, MT.Coal));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 1, null, 0, null, 0, MT.Lignite));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 2, null, 0, null, 0, MT.NaCl));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 3, null, 0, null, 0, MT.KCl));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 4, null, 0, null, 0, MT.OREMATS.Bauxite));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 5, null, 0, null, 0, MT.Oilshale));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Coal));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 1, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Lignite));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 2, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.NaCl));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 3, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.KCl));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 4, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.OREMATS.Bauxite));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 5, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Oilshale));
 	}
 	
 	@Override public boolean useGravity(int aMeta) {return F;}

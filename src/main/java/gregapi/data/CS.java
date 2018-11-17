@@ -251,6 +251,7 @@ public class CS {
 	, BIOMES_MOUNTAINS          = new HashSetNoNulls<>(F, BiomeGenBase.extremeHills.biomeName, BiomeGenBase.extremeHillsEdge.biomeName, BiomeGenBase.extremeHillsPlus.biomeName, BiomeGenBase.stoneBeach.biomeName, "Extreme Hills M", "Extreme Hills+ M", "Mountainous Archipelago", "Mountains", "Mountains Edge", "Plateau", "Highlands", "Highlands Center", "Alps", "Cliffs", "Flying Mountains", "Rock Mountains", "Snow Mountains", "Rock Island", "Valley", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Mountains M", "Alpine Tundra", "Stone Canyon", "Stone Canyon 2", "Rocky Desert", "Rocky Hills")
 	, BIOMES_NETHER             = new HashSetNoNulls<>(F, BiomeGenBase.hell.biomeName)
 	, BIOMES_END                = new HashSetNoNulls<>(F, BiomeGenBase.sky.biomeName)
+	, BIOMES_WASTELANDS         = new HashSetNoNulls<>(F, "Wasteland", "Wasteland Mountains", "Wasteland Forest", "Radioactive Wasteland")
 	, BIOMES_SHROOM             = new HashSetNoNulls<>(F, BiomeGenBase.mushroomIsland.biomeName, BiomeGenBase.mushroomIslandShore.biomeName, "Fungal Forest", "Fungal Forest M")
 	, BIOMES_MAGICAL            = new HashSetNoNulls<>(F, "Magical Forest", "Tainted Land", "Eerie", "WyvernBiome", "Eldritch", "Enchanted Forest", "Mystic Grove")
 	, BIOMES_MAGICAL_GOOD       = new HashSetNoNulls<>(F, "Magical Forest", "Eldritch", "Enchanted Forest", "Mystic Grove")
@@ -262,7 +263,7 @@ public class CS {
 	, BIOMES_ASTEROIDS          = new HashSetNoNulls<>(F, "Asteroids", "asteroids")
 	, BIOMES_SPACE              = new HashSetNoNulls<>(F, "Space", "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat", "asteroids", "space", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea");
 	
-	// "Bog", "Fens", "Carr", "Kakadu", "Scree", "Scrub", "Riparian Zone", "Basin", "Badlands", "Outback", "Tropics", "Tropical Islands", "Tropical Archipelago", "Windy Island", "Wastelands", "Volcano Island", "Volcano", "Volcano M"
+	// "Wasteland City", "Bog", "Fens", "Carr", "Kakadu", "Scree", "Scrub", "Riparian Zone", "Basin", "Badlands", "Outback", "Tropics", "Tropical Islands", "Tropical Archipelago", "Windy Island", "Wastelands", "Volcano Island", "Volcano", "Volcano M"
 	
 	/** Stores the Coordinates that any given Player last interacted with. */
 	public static final Map<EntityPlayer, ChunkCoordinates> PLAYER_LAST_CLICKED = new HashMap<>();

@@ -26,6 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.10: (Not released yet)
+[COMPAT] The Wastelands Mod has its Biomes Supported for spawning Sticks and Stuff.
 [FIXED] Air Blocks counting as Blocks that Plants can be placed on, due to a Mod Compat Derp on my End (aka: Any of the compatible Mods not being installed => Air Block got added to a HashSet => Trees spawn in the Sky)
 [FIXED] Emeralds all of a sudden switching from Electrolyzing to Centrifuge Recipe in the previous Release, it's Electrolyzer again.
 [ADDED] Amazonite, Red Onyx and Black Onyx Small Ores.

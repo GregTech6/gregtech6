@@ -49,8 +49,8 @@ public class WorldgenSticks extends WorldgenObject {
 		int tCount = (WD.dimBTL(aWorld) || WD.dimAETHER(aWorld) ? 2 : 0);
 		for (String tName : aBiomeNames) {
 			if (tCount < 3) if (BIOMES_WOODS.contains(tName) || BIOMES_SWAMP.contains(tName)) {tCount = 3; continue;}
-			if (tCount < 2) if (BIOMES_RIVER.contains(tName) || BIOMES_SAVANNA.contains(tName) || BIOMES_PLAINS.contains(tName)) {tCount = 2; continue;}
-			if (tCount < 1) if (BIOMES_MESA.contains(tName) || BIOMES_TAIGA.contains(tName)) {tCount = 1; continue;}
+			if (tCount < 2) if (BIOMES_RIVER.contains(tName) || BIOMES_PLAINS.contains(tName) || BIOMES_SAVANNA.contains(tName) || "Wasteland Forest".equals(tName)) {tCount = 2; continue;}
+			if (tCount < 1) if (BIOMES_TAIGA.contains(tName) || BIOMES_MESA.contains(tName) || (aRandom.nextBoolean() && BIOMES_WASTELANDS.contains(tName))) {tCount = 1; continue;}
 		}
 		if (tCount <= 0) return F;
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
