@@ -29,6 +29,7 @@ import gregapi.block.IBlockToolable;
 import gregapi.block.ToolCompat;
 import gregapi.data.CS.SFX;
 import gregapi.data.OP;
+import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.IRenderedBlock;
@@ -39,6 +40,7 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -81,6 +83,23 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 		OM.data(ST.make(this, 1, 8), aMat2, U*9);
 		OM.data(ST.make(this, 1,14), aMat2, U*9);
 		OM.data(ST.make(this, 1,15), aMat2, U*9);
+		
+		if (CODE_CLIENT) {
+			mRenderers[ 0] = new SpikeRendererYNeg(aMat1);
+			mRenderers[ 1] = new SpikeRendererYPos(aMat1);
+			mRenderers[ 2] = new SpikeRendererZNeg(aMat1);
+			mRenderers[ 3] = new SpikeRendererZPos(aMat1);
+			mRenderers[ 4] = new SpikeRendererXNeg(aMat1);
+			mRenderers[ 5] = new SpikeRendererXPos(aMat1);
+			mRenderers[ 6] = mRenderers[ 7] = new SpikeRendererOmni(aMat1);
+			mRenderers[ 8] = new SpikeRendererYNeg(aMat2);
+			mRenderers[ 9] = new SpikeRendererYPos(aMat2);
+			mRenderers[10] = new SpikeRendererZNeg(aMat2);
+			mRenderers[11] = new SpikeRendererZPos(aMat2);
+			mRenderers[12] = new SpikeRendererXNeg(aMat2);
+			mRenderers[13] = new SpikeRendererXPos(aMat2);
+			mRenderers[14] = mRenderers[15] = new SpikeRendererOmni(aMat2);
+		}
 	}
 	
 	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {if ((aWorld.getBlockMetadata(aX, aY, aZ) & 7) != SIDE_UP) {aEntity.motionX *= 0.1; aEntity.motionZ *= 0.1;}}
@@ -156,19 +175,37 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	@Override public boolean setBlockBounds(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered) {return F;}
 	@Override public int getRenderPasses(ItemStack aStack) {return 0;}
 	@Override public int getRenderPasses(IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered) {return 0;}
-	@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return new SpikeRenderer(ST.meta_(aStack), mMat1, mMat2);}
-	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {return new SpikeRenderer(aWorld.getBlockMetadata(aX, aY, aZ), mMat1, mMat2);}
+	@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return mRenderers[ST.meta_(aStack) & 15];}
+	@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {return mRenderers[aWorld.getBlockMetadata(aX, aY, aZ)];}
 	
-	public static class SpikeRenderer implements IRenderedBlockObject {
-		public final byte mMeta;
-		public ITexture mTexture;
+	public SpikeRendererBase[] mRenderers = new SpikeRendererBase[16];
+	
+	public static abstract class SpikeRendererBase implements IRenderedBlockObject {
+		public ITexture mTextureNormal, mTextureUsed;
+		public SpikeRendererBase(OreDictMaterial aMat) {mTextureUsed = mTextureNormal = BlockTextureDefault.get(aMat, OP.blockSolid, F);}
 		
-		public SpikeRenderer(int aMeta, OreDictMaterial aMat1, OreDictMaterial aMat2) {mMeta = UT.Code.bind4(aMeta); mTexture = BlockTextureDefault.get(mMeta < 8 ? aMat1 : aMat2, OP.blockSolid, F);}
-		
+		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return APRIL_FOOLS ? 5 : 13;}
+		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mTextureUsed;}
+		@Override public boolean usesRenderPass(int aRenderPass, boolean[] aShouldSideBeRendered) {return T;}
+		@Override public boolean renderItem (Block aBlock, RenderBlocks aRenderer) {return F;}
+		@Override public boolean renderBlock(Block aBlock, RenderBlocks aRenderer) {return F;}
+		@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {mTextureUsed = mTextureNormal; return this;}
+		@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {mTextureUsed = (APRIL_FOOLS ? BlockTextureDefault.get(Textures.BlockIcons.CFOAM_HARDENED, RAINBOW_ARRAY[WD.random(42069, aX, aY, aZ, 12) * 2]) : mTextureNormal); return this;}
+	}
+	
+	public static class SpikeRendererXPos extends SpikeRendererBase {
+		public SpikeRendererXPos(OreDictMaterial aMat) {super(aMat);}
+		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return SIDE_X_POS == aSide && (aRenderPass != 0 || !aShouldSideBeRendered[aSide]) ? null : super.getTexture(aBlock, aRenderPass, aSide, aShouldSideBeRendered);}
 		@Override
 		public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-			switch(mMeta & 7) {
-			case SIDE_X_POS: switch(aRenderPass) {
+			if (APRIL_FOOLS) switch(aRenderPass) {
+			case  1: aBlock.setBlockBounds(PX_P[ 5], PX_P[ 2], PX_P[ 2], PX_N[ 1], PX_P[ 7], PX_P[ 7]); return T;
+			case  2: aBlock.setBlockBounds(PX_P[ 5], PX_P[ 2], PX_P[ 9], PX_N[ 1], PX_P[ 7], PX_P[14]); return T;
+			case  3: aBlock.setBlockBounds(PX_P[ 5], PX_P[ 9], PX_P[ 2], PX_N[ 1], PX_P[14], PX_P[ 7]); return T;
+			case  4: aBlock.setBlockBounds(PX_P[ 5], PX_P[ 9], PX_P[ 9], PX_N[ 1], PX_P[14], PX_P[14]); return T;
+			default: aBlock.setBlockBounds(PX_P[ 8], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
+			}
+			switch(aRenderPass) {
 			case  1: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 4], PX_P[ 4], PX_N[ 1], PX_P[ 5], PX_P[ 5]); return T;
 			case  2: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 4], PX_P[11], PX_N[ 1], PX_P[ 5], PX_P[12]); return T;
 			case  3: aBlock.setBlockBounds(PX_P[ 1], PX_P[11], PX_P[ 4], PX_N[ 1], PX_P[12], PX_P[ 5]); return T;
@@ -183,37 +220,21 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 			case 12: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 9], PX_N[ 1], PX_P[14], PX_P[14]); return T;
 			default: aBlock.setBlockBounds(PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
 			}
-			case SIDE_Y_POS: switch(aRenderPass) {
-			case  1: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 1], PX_P[ 4], PX_P[ 5], PX_N[ 1], PX_P[ 5]); return T;
-			case  2: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 1], PX_P[11], PX_P[ 5], PX_N[ 1], PX_P[12]); return T;
-			case  3: aBlock.setBlockBounds(PX_P[11], PX_P[ 1], PX_P[ 4], PX_P[12], PX_N[ 1], PX_P[ 5]); return T;
-			case  4: aBlock.setBlockBounds(PX_P[11], PX_P[ 1], PX_P[11], PX_P[12], PX_N[ 1], PX_P[12]); return T;
-			case  5: aBlock.setBlockBounds(PX_P[ 3], PX_P[ 5], PX_P[ 3], PX_P[ 6], PX_N[ 1], PX_P[ 6]); return T;
-			case  6: aBlock.setBlockBounds(PX_P[ 3], PX_P[ 5], PX_P[10], PX_P[ 6], PX_N[ 1], PX_P[13]); return T;
-			case  7: aBlock.setBlockBounds(PX_P[10], PX_P[ 5], PX_P[ 3], PX_P[13], PX_N[ 1], PX_P[ 6]); return T;
-			case  8: aBlock.setBlockBounds(PX_P[10], PX_P[ 5], PX_P[10], PX_P[13], PX_N[ 1], PX_P[13]); return T;
-			case  9: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 9], PX_P[ 2], PX_P[ 7], PX_N[ 1], PX_P[ 7]); return T;
-			case 10: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 9], PX_P[ 9], PX_P[ 7], PX_N[ 1], PX_P[14]); return T;
-			case 11: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 2], PX_P[14], PX_N[ 1], PX_P[ 7]); return T;
-			case 12: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 9], PX_P[14], PX_N[ 1], PX_P[14]); return T;
-			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
+		}
+	}
+	public static class SpikeRendererXNeg extends SpikeRendererBase {
+		public SpikeRendererXNeg(OreDictMaterial aMat) {super(aMat);}
+		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return SIDE_X_NEG == aSide && (aRenderPass != 0 || !aShouldSideBeRendered[aSide]) ? null : super.getTexture(aBlock, aRenderPass, aSide, aShouldSideBeRendered);}
+		@Override
+		public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+			if (APRIL_FOOLS) switch(aRenderPass) {
+			case  1: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 2], PX_P[ 2], PX_N[ 5], PX_P[ 7], PX_P[ 7]); return T;
+			case  2: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 2], PX_P[ 9], PX_N[ 5], PX_P[ 7], PX_P[14]); return T;
+			case  3: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 9], PX_P[ 2], PX_N[ 5], PX_P[14], PX_P[ 7]); return T;
+			case  4: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 9], PX_P[ 9], PX_N[ 5], PX_P[14], PX_P[14]); return T;
+			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 8], PX_N[ 0], PX_N[ 0]); return T;
 			}
-			case SIDE_Z_POS: switch(aRenderPass) {
-			case  1: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 4], PX_P[ 1], PX_P[ 5], PX_P[ 5], PX_N[ 1]); return T;
-			case  2: aBlock.setBlockBounds(PX_P[ 4], PX_P[11], PX_P[ 1], PX_P[ 5], PX_P[12], PX_N[ 1]); return T;
-			case  3: aBlock.setBlockBounds(PX_P[11], PX_P[ 4], PX_P[ 1], PX_P[12], PX_P[ 5], PX_N[ 1]); return T;
-			case  4: aBlock.setBlockBounds(PX_P[11], PX_P[11], PX_P[ 1], PX_P[12], PX_P[12], PX_N[ 1]); return T;
-			case  5: aBlock.setBlockBounds(PX_P[ 3], PX_P[ 3], PX_P[ 5], PX_P[ 6], PX_P[ 6], PX_N[ 1]); return T;
-			case  6: aBlock.setBlockBounds(PX_P[ 3], PX_P[10], PX_P[ 5], PX_P[ 6], PX_P[13], PX_N[ 1]); return T;
-			case  7: aBlock.setBlockBounds(PX_P[10], PX_P[ 3], PX_P[ 5], PX_P[13], PX_P[ 6], PX_N[ 1]); return T;
-			case  8: aBlock.setBlockBounds(PX_P[10], PX_P[10], PX_P[ 5], PX_P[13], PX_P[13], PX_N[ 1]); return T;
-			case  9: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 2], PX_P[ 9], PX_P[ 7], PX_P[ 7], PX_N[ 1]); return T;
-			case 10: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 9], PX_P[ 9], PX_P[ 7], PX_P[14], PX_N[ 1]); return T;
-			case 11: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 2], PX_P[ 9], PX_P[14], PX_P[ 7], PX_N[ 1]); return T;
-			case 12: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 9], PX_P[14], PX_P[14], PX_N[ 1]); return T;
-			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
-			}
-			case SIDE_X_NEG: switch(aRenderPass) {
+			switch(aRenderPass) {
 			case  1: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 4], PX_P[ 4], PX_N[ 1], PX_P[ 5], PX_P[ 5]); return T;
 			case  2: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 4], PX_P[11], PX_N[ 1], PX_P[ 5], PX_P[12]); return T;
 			case  3: aBlock.setBlockBounds(PX_P[ 1], PX_P[11], PX_P[ 4], PX_N[ 1], PX_P[12], PX_P[ 5]); return T;
@@ -228,7 +249,50 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 			case 12: aBlock.setBlockBounds(PX_P[ 1], PX_P[ 9], PX_P[ 9], PX_N[ 9], PX_P[14], PX_P[14]); return T;
 			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]); return T;
 			}
-			case SIDE_Y_NEG: switch(aRenderPass) {
+		}
+	}
+	public static class SpikeRendererYPos extends SpikeRendererBase {
+		public SpikeRendererYPos(OreDictMaterial aMat) {super(aMat);}
+		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return SIDE_Y_POS == aSide && (aRenderPass != 0 || !aShouldSideBeRendered[aSide]) ? null : super.getTexture(aBlock, aRenderPass, aSide, aShouldSideBeRendered);}
+		@Override
+		public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+			if (APRIL_FOOLS) switch(aRenderPass) {
+			case  1: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 5], PX_P[ 2], PX_P[ 7], PX_N[ 1], PX_P[ 7]); return T;
+			case  2: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 5], PX_P[ 9], PX_P[ 7], PX_N[ 1], PX_P[14]); return T;
+			case  3: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 5], PX_P[ 2], PX_P[14], PX_N[ 1], PX_P[ 7]); return T;
+			case  4: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 5], PX_P[ 9], PX_P[14], PX_N[ 1], PX_P[14]); return T;
+			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 8], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
+			}
+			switch(aRenderPass) {
+			case  1: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 1], PX_P[ 4], PX_P[ 5], PX_N[ 1], PX_P[ 5]); return T;
+			case  2: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 1], PX_P[11], PX_P[ 5], PX_N[ 1], PX_P[12]); return T;
+			case  3: aBlock.setBlockBounds(PX_P[11], PX_P[ 1], PX_P[ 4], PX_P[12], PX_N[ 1], PX_P[ 5]); return T;
+			case  4: aBlock.setBlockBounds(PX_P[11], PX_P[ 1], PX_P[11], PX_P[12], PX_N[ 1], PX_P[12]); return T;
+			case  5: aBlock.setBlockBounds(PX_P[ 3], PX_P[ 5], PX_P[ 3], PX_P[ 6], PX_N[ 1], PX_P[ 6]); return T;
+			case  6: aBlock.setBlockBounds(PX_P[ 3], PX_P[ 5], PX_P[10], PX_P[ 6], PX_N[ 1], PX_P[13]); return T;
+			case  7: aBlock.setBlockBounds(PX_P[10], PX_P[ 5], PX_P[ 3], PX_P[13], PX_N[ 1], PX_P[ 6]); return T;
+			case  8: aBlock.setBlockBounds(PX_P[10], PX_P[ 5], PX_P[10], PX_P[13], PX_N[ 1], PX_P[13]); return T;
+			case  9: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 9], PX_P[ 2], PX_P[ 7], PX_N[ 1], PX_P[ 7]); return T;
+			case 10: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 9], PX_P[ 9], PX_P[ 7], PX_N[ 1], PX_P[14]); return T;
+			case 11: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 2], PX_P[14], PX_N[ 1], PX_P[ 7]); return T;
+			case 12: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 9], PX_P[14], PX_N[ 1], PX_P[14]); return T;
+			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
+			}
+		}
+	}
+	public static class SpikeRendererYNeg extends SpikeRendererBase {
+		public SpikeRendererYNeg(OreDictMaterial aMat) {super(aMat);}
+		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return SIDE_Y_NEG == aSide && (aRenderPass != 0 || !aShouldSideBeRendered[aSide]) ? null : super.getTexture(aBlock, aRenderPass, aSide, aShouldSideBeRendered);}
+		@Override
+		public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+			if (APRIL_FOOLS) switch(aRenderPass) {
+			case  1: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 1], PX_P[ 2], PX_P[ 7], PX_N[ 5], PX_P[ 7]); return T;
+			case  2: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 1], PX_P[ 9], PX_P[ 7], PX_N[ 5], PX_P[14]); return T;
+			case  3: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 1], PX_P[ 2], PX_P[14], PX_N[ 5], PX_P[ 7]); return T;
+			case  4: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 1], PX_P[ 9], PX_P[14], PX_N[ 5], PX_P[14]); return T;
+			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 8], PX_N[ 0]); return T;
+			}
+			switch(aRenderPass) {
 			case  1: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 1], PX_P[ 4], PX_P[ 5], PX_N[ 1], PX_P[ 5]); return T;
 			case  2: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 1], PX_P[11], PX_P[ 5], PX_N[ 1], PX_P[12]); return T;
 			case  3: aBlock.setBlockBounds(PX_P[11], PX_P[ 1], PX_P[ 4], PX_P[12], PX_N[ 1], PX_P[ 5]); return T;
@@ -243,7 +307,50 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 			case 12: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 1], PX_P[ 9], PX_P[14], PX_N[ 9], PX_P[14]); return T;
 			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[14], PX_N[ 0]); return T;
 			}
-			case SIDE_Z_NEG: switch(aRenderPass) {
+		}
+	}
+	public static class SpikeRendererZPos extends SpikeRendererBase {
+		public SpikeRendererZPos(OreDictMaterial aMat) {super(aMat);}
+		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return SIDE_Z_POS == aSide && (aRenderPass != 0 || !aShouldSideBeRendered[aSide]) ? null : super.getTexture(aBlock, aRenderPass, aSide, aShouldSideBeRendered);}
+		@Override
+		public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+			if (APRIL_FOOLS) switch(aRenderPass) {
+			case  1: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 2], PX_P[ 5], PX_P[ 7], PX_P[ 7], PX_N[ 1]); return T;
+			case  2: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 9], PX_P[ 5], PX_P[ 7], PX_P[14], PX_N[ 1]); return T;
+			case  3: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 2], PX_P[ 5], PX_P[14], PX_P[ 7], PX_N[ 1]); return T;
+			case  4: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 5], PX_P[14], PX_P[14], PX_N[ 1]); return T;
+			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[ 8], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
+			}
+			switch(aRenderPass) {
+			case  1: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 4], PX_P[ 1], PX_P[ 5], PX_P[ 5], PX_N[ 1]); return T;
+			case  2: aBlock.setBlockBounds(PX_P[ 4], PX_P[11], PX_P[ 1], PX_P[ 5], PX_P[12], PX_N[ 1]); return T;
+			case  3: aBlock.setBlockBounds(PX_P[11], PX_P[ 4], PX_P[ 1], PX_P[12], PX_P[ 5], PX_N[ 1]); return T;
+			case  4: aBlock.setBlockBounds(PX_P[11], PX_P[11], PX_P[ 1], PX_P[12], PX_P[12], PX_N[ 1]); return T;
+			case  5: aBlock.setBlockBounds(PX_P[ 3], PX_P[ 3], PX_P[ 5], PX_P[ 6], PX_P[ 6], PX_N[ 1]); return T;
+			case  6: aBlock.setBlockBounds(PX_P[ 3], PX_P[10], PX_P[ 5], PX_P[ 6], PX_P[13], PX_N[ 1]); return T;
+			case  7: aBlock.setBlockBounds(PX_P[10], PX_P[ 3], PX_P[ 5], PX_P[13], PX_P[ 6], PX_N[ 1]); return T;
+			case  8: aBlock.setBlockBounds(PX_P[10], PX_P[10], PX_P[ 5], PX_P[13], PX_P[13], PX_N[ 1]); return T;
+			case  9: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 2], PX_P[ 9], PX_P[ 7], PX_P[ 7], PX_N[ 1]); return T;
+			case 10: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 9], PX_P[ 9], PX_P[ 7], PX_P[14], PX_N[ 1]); return T;
+			case 11: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 2], PX_P[ 9], PX_P[14], PX_P[ 7], PX_N[ 1]); return T;
+			case 12: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 9], PX_P[14], PX_P[14], PX_N[ 1]); return T;
+			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
+			}
+		}
+	}
+	public static class SpikeRendererZNeg extends SpikeRendererBase {
+		public SpikeRendererZNeg(OreDictMaterial aMat) {super(aMat);}
+		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return SIDE_Z_NEG == aSide && (aRenderPass != 0 || !aShouldSideBeRendered[aSide]) ? null : super.getTexture(aBlock, aRenderPass, aSide, aShouldSideBeRendered);}
+		@Override
+		public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+			if (APRIL_FOOLS) switch(aRenderPass) {
+			case  1: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 2], PX_P[ 1], PX_P[ 7], PX_P[ 7], PX_N[ 5]); return T;
+			case  2: aBlock.setBlockBounds(PX_P[ 2], PX_P[ 9], PX_P[ 1], PX_P[ 7], PX_P[14], PX_N[ 5]); return T;
+			case  3: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 2], PX_P[ 1], PX_P[14], PX_P[ 7], PX_N[ 5]); return T;
+			case  4: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 1], PX_P[14], PX_P[14], PX_N[ 5]); return T;
+			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 8]); return T;
+			}
+			switch(aRenderPass) {
 			case  1: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 4], PX_P[ 1], PX_P[ 5], PX_P[ 5], PX_N[ 1]); return T;
 			case  2: aBlock.setBlockBounds(PX_P[ 4], PX_P[11], PX_P[ 1], PX_P[ 5], PX_P[12], PX_N[ 1]); return T;
 			case  3: aBlock.setBlockBounds(PX_P[11], PX_P[ 4], PX_P[ 1], PX_P[12], PX_P[ 5], PX_N[ 1]); return T;
@@ -258,7 +365,14 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 			case 12: aBlock.setBlockBounds(PX_P[ 9], PX_P[ 9], PX_P[ 1], PX_P[14], PX_P[14], PX_N[ 9]); return T;
 			default: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]); return T;
 			}
-			default: switch(aRenderPass) {
+		}
+	}
+	public static class SpikeRendererOmni extends SpikeRendererBase {
+		public SpikeRendererOmni(OreDictMaterial aMat) {super(aMat);}
+		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 13;}
+		@Override
+		public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+			switch(aRenderPass) {
 			case  1: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 5], PX_P[ 5], PX_N[ 0], PX_P[ 6], PX_P[ 6]); return T;
 			case  2: aBlock.setBlockBounds(PX_P[ 0], PX_P[ 5], PX_P[10], PX_N[ 0], PX_P[ 6], PX_P[11]); return T;
 			case  3: aBlock.setBlockBounds(PX_P[ 0], PX_P[10], PX_P[ 5], PX_N[ 0], PX_P[11], PX_P[ 6]); return T;
@@ -273,15 +387,6 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 			case 12: aBlock.setBlockBounds(PX_P[10], PX_P[10], PX_P[ 0], PX_P[11], PX_P[11], PX_N[ 0]); return T;
 			default: aBlock.setBlockBounds(PX_P[ 4], PX_P[ 4], PX_P[ 4], PX_N[ 4], PX_N[ 4], PX_N[ 4]); return T;
 			}
-			}
 		}
-		
-		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 13;}
-		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return (mMeta & 7) < 6 && (mMeta & 7) == aSide && (aRenderPass != 0 || !aShouldSideBeRendered[aSide]) ? null : mTexture;}
-		@Override public boolean usesRenderPass(int aRenderPass, boolean[] aShouldSideBeRendered) {return T;}
-		@Override public boolean renderItem(Block aBlock, RenderBlocks aRenderer) {return F;}
-		@Override public boolean renderBlock(Block aBlock, RenderBlocks aRenderer) {return F;}
-		@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return this;}
-		@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {return this;}
 	}
 }

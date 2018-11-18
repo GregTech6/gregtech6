@@ -396,6 +396,15 @@ public class WD {
 		return rRandom;
 	}
 	
+	public static int random(World aWorld, int aX, int aY, int aZ, int aBound) {return random(aWorld.getSeed(), aX, aY, aZ, aBound);}
+	public static int random(long aSeed, int aX, int aY, int aZ, int aBound) {
+		Random rRandom = new Random(aSeed);
+		for (int i = 0; i < 10; i++) rRandom.nextInt(0x00ffffff);
+		rRandom = new Random(aSeed ^ ((rRandom.nextLong() >> 2 + 1L) * aX + (rRandom.nextLong() >> 2 + 1L) * aZ));
+		for (int i = 0; i < 10; i++) rRandom.nextInt(0x00ffffff);
+		return rRandom.nextInt(aBound);
+	}
+	
 	public static boolean border(int aFromX, int aFromZ, int aToX, int aToZ) {return aFromX >> 4 != aToX >> 4 || aFromZ >> 4 != aToZ >> 4;}
 	
 	public static boolean even(TileEntity aTileEntity) {return even(aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord);}

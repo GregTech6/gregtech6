@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -174,9 +175,11 @@ public class GT_API extends Abstract_Mod {
 	
 	private LoggerPlayerActivity mPlayerLogger;
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"unchecked", "deprecation"})
 	public GT_API() {
 		GAPI = this;
+		
+		APRIL_FOOLS = (new Date().getMonth() == 3 && new Date().getDate() <= 3);
 		
 		if (!MD.ENCHIRIDION.mLoaded) MD.MaCu.mLoaded = F;
 		
@@ -397,6 +400,7 @@ public class GT_API extends Abstract_Mod {
 		D1 = ConfigsGT.CLIENT.get("debug" , "logs"    , F);
 		D2 = ConfigsGT.CLIENT.get("debug" , "oredict" , F);
 		D3 = ConfigsGT.CLIENT.get("debug" , "misc"    , F);
+		if ( ConfigsGT.CLIENT.get("debug" , "april"   , F)) APRIL_FOOLS = T;
 		
 		if (D1) {
 			tList = ((LogBuffer)DEB).mBufferedLog;

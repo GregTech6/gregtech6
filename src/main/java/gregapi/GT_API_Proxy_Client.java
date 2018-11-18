@@ -93,7 +93,7 @@ import net.minecraftforge.fluids.FluidRegistry;
  * @author Gregorius Techneticies
  */
 public class GT_API_Proxy_Client extends GT_API_Proxy {
-	@SuppressWarnings("deprecation")
+	
 	public GT_API_Proxy_Client() {
 		super();
 		CODE_SERVER = T;
@@ -110,7 +110,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			sRainbow.addAll(Arrays.asList(MT.InfusedBalance.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.Shimmerwood.mRGBa[i], MT.Shimmerwood.mRGBa[i]));
 		}
 		
-		if (new Date().getMonth() == 3 && new Date().getDate() <= 3) {
+		if (APRIL_FOOLS) {
 			MT.W.setLocal("Wolframium");
 			MT.V.setLocal("Vandalium");
 			MT.B.setLocal("Boring");
