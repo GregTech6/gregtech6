@@ -39,8 +39,6 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
- * 
- * An example implementation of a Miniature End of Time Portal with my MultiTileEntity System.
  */
 public class MultiTileEntityMiniPortalEndOfTime extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalEndOfTime>

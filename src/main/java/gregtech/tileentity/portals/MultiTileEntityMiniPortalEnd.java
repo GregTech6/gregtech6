@@ -37,8 +37,6 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
- * 
- * An example implementation of a Miniature End Portal with my MultiTileEntity System.
  */
 public class MultiTileEntityMiniPortalEnd extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalEnd>

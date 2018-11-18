@@ -73,6 +73,8 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
+import vazkii.botania.api.item.IFlowerPlaceable;
+import vazkii.botania.api.subtile.SubTileEntity;
 
 /**
  * @author Gregorius Techneticies
@@ -82,8 +84,9 @@ import net.minecraftforge.fluids.IFluidContainerItem;
 , @Optional.Interface(iface = "ic2.api.item.ISpecialElectricItem", modid = ModIDs.IC2)
 , @Optional.Interface(iface = "ic2.api.item.IElectricItemManager", modid = ModIDs.IC2)
 , @Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.item.IItemElectric", modid = ModIDs.GC)
+, @Optional.Interface(iface = "vazkii.botania.api.item.IFlowerPlaceable", modid = ModIDs.BOTA)
 })
-public class MultiTileEntityItemInternal extends ItemBlock implements squeek.applecore.api.food.IEdible, IItemUpdatable, IItemColorableRGB, IOreDictItemDataOverrideItem, IItemGT, IItemNoGTOverride, IFluidContainerItem, ISpecialElectricItem, IElectricItemManager, IItemEnergy, IItemElectric, IItemRottable {
+public class MultiTileEntityItemInternal extends ItemBlock implements squeek.applecore.api.food.IEdible, IItemUpdatable, IItemColorableRGB, IOreDictItemDataOverrideItem, IItemGT, IItemNoGTOverride, IFluidContainerItem, ISpecialElectricItem, IElectricItemManager, IItemEnergy, IItemElectric, IItemRottable, IFlowerPlaceable {
 	public final MultiTileEntityBlockInternal mBlock;
 	
 	public MultiTileEntityItemInternal(Block aBlock) {
@@ -560,8 +563,10 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		return useEnergy(TD.Energy.EU, aStack, tAmount, null, null, null, 0, 0, 0, F) && useEnergy(TD.Energy.EU, aStack, tAmount, null, null, null, 0, 0, 0, T) ? tAmount * EnergyConfigHandler.IC2_RATIO : 0;
 	}
 	
-	@Optional.Method(modid = ModIDs.IC2)
-	@Override public IElectricItemManager getManager(ItemStack aStack) {return this;} // We are our own Manager
+	@Optional.Method(modid = ModIDs.IC2 ) @Override public IElectricItemManager getManager(ItemStack aStack) {return this;} // We are our own Manager
+	@Optional.Method(modid = ModIDs.BOTA) @Override public Block getBlockToPlaceByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {return null;}
+	@Optional.Method(modid = ModIDs.BOTA) @Override public void onBlockPlacedByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {/**/}
+	
 	@Override public String getToolTip(ItemStack aStack) {return null;} // This has its own ToolTip Handler, no need to let the IC2 Handler screw us up at this Point
 	@Override public void chargeFromArmor(ItemStack aStack, EntityLivingBase aPlayer) {/**/}
 	@Override public float getElectricityStored(ItemStack aStack) {return getEnergyStored(TD.Energy.EU, aStack) * EnergyConfigHandler.IC2_RATIO;}

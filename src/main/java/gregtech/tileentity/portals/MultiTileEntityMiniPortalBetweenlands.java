@@ -39,8 +39,6 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
- * 
- * An example implementation of a Miniature Betweenlands Portal with my MultiTileEntity System.
  */
 public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalBetweenlands>

@@ -1396,7 +1396,7 @@ public class MT {
 		@Deprecated public static final OreDictMaterial AnyGlowstone = ANY.Glowstone, AnyWax = ANY.Wax, AnyWood = ANY.Wood, AnyStone = ANY.Stone, AnyClay = ANY.Clay, AnyIron = ANY.Fe, AnyIronSteel = ANY.Steel, AnyCopper = ANY.Cu, AnySilicon = ANY.Si, AnyTungsten = ANY.W, AnyThaumicCrystal = ANY.ThaumCrystal, AnySalt = ANY.Salt, AnySteel = ANY._Steel, AnyBronze = ANY._Bronze, AnyMetal = ANY._Metal;
 		
 		public static final OreDictMaterial
-		Brick                       = invalid("Brick"                       ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT).put(STONE, BRITTLE, MORTAR).heat(2000),
+		Brick                       = invalid("Brick"                       ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT).put(STONE, BRITTLE, MORTAR).heat(2000).setRGBa(183, 90, 64, 255),
 		Organic                     = invalid("Organic"                     ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),
 		Crystal                     = invalid("Crystal"                     ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT).put(BRITTLE, CRYSTAL),
 		Unknown                     = invalid("Unknown"                     ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),

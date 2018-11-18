@@ -39,8 +39,6 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
- * 
- * An example implementation of a Miniature Erebus Portal with my MultiTileEntity System.
  */
 public class MultiTileEntityMiniPortalErebus extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalErebus>

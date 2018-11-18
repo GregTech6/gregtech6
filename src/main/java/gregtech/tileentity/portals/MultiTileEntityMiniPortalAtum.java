@@ -40,8 +40,6 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
- * 
- * An example implementation of a Miniature Atum Portal with my MultiTileEntity System.
  */
 public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalAtum>

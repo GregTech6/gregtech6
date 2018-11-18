@@ -23,7 +23,9 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import cpw.mods.fml.common.Optional;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.ModIDs;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.OP;
@@ -45,11 +47,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import vazkii.botania.api.item.IFlowerPlaceable;
+import vazkii.botania.api.subtile.SubTileEntity;
 
 /**
  * @author Gregorius Techneticies
  */
-public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefixItem, IItemGT, IItemNoGTOverride {
+@Optional.InterfaceList(value = {
+  @Optional.Interface(iface = "vazkii.botania.api.item.IFlowerPlaceable", modid = ModIDs.BOTA)
+})
+public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefixItem, IItemGT, IItemNoGTOverride, IFlowerPlaceable {
 	public final PrefixBlock mBlock;
 	
 	public PrefixBlockItem(Block aBlock) {
@@ -135,6 +142,9 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 		if (mBlock.mPrefix != null && UT.Code.exists(ST.meta_(aStack), mBlock.mMaterialList)) return new OreDictItemData(mBlock.mPrefix, mBlock.mMaterialList[ST.meta_(aStack)]);
 		return null;
 	}
+	
+	@Optional.Method(modid = ModIDs.BOTA) @Override public Block getBlockToPlaceByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {return null;}
+	@Optional.Method(modid = ModIDs.BOTA) @Override public void onBlockPlacedByFlower(ItemStack aStack, SubTileEntity aFlower, int aX, int aY, int aZ) {/**/}
 	
 	@Override public final String getUnlocalizedName() {return mBlock.getUnlocalizedName();}
 	@Override public final boolean hasContainerItem(ItemStack aStack) {return getContainerItem(aStack) != null;}

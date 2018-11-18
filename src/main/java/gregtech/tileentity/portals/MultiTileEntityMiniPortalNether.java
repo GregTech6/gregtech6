@@ -37,8 +37,6 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
- * 
- * An example implementation of a Miniature Nether Portal with my MultiTileEntity System.
  */
 public class MultiTileEntityMiniPortalNether extends MultiTileEntityMiniPortal implements IMTE_RandomDisplayTick {
 	public static List<MultiTileEntityMiniPortalNether>

@@ -39,8 +39,6 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
- * 
- * An example implementation of a Miniature Deep Dark Portal with my MultiTileEntity System.
  */
 public class MultiTileEntityMiniPortalDeepDark extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalDeepDark>

@@ -39,8 +39,6 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
- * 
- * An example implementation of a Miniature Aether Portal with my MultiTileEntity System.
  */
 public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 	public static List<MultiTileEntityMiniPortalAether>
