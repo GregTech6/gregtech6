@@ -192,7 +192,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				return T;
 			}
 			if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
-				slot(tSlot, NI);
+				slotKill(tSlot);
 				updateInventory();
 				return T;
 			}

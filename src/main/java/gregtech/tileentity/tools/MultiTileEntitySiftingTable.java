@@ -224,18 +224,18 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 						mState |= B[2];
 						
 						boolean temp = T;
-						for (int i = 1; i < 13; i++) if (slot(i) != null) {temp = F; break;}
+						for (int i = 1; i < 13; i++) if (slotHas(i)) {temp = F; break;}
 						ItemStack aStack = slot(0);
 						
 						if (temp && mRecipes != null && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(tEntry.getKey()))) {
 							mClickCount = 0;
 							Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
 							if (tRecipe == null) {
-								for (int i = 1; i < 13; i++) if (addStackToSlot(i, aStack)) {slot(0, null); break;}
+								for (int i = 1; i < 13; i++) if (addStackToSlot(i, aStack)) {slotKill(0); break;}
 							} else {
 								if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 								if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, new ItemStack[] {aStack})) {
-									if (aStack.stackSize <= 0) slot(0, null);
+									if (aStack.stackSize <= 0) slotKill(0);
 									ItemStack[] tOutputs = tRecipe.getOutputs(RNGSUS);
 									for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
 									tEntry.getKey().addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 5000.0F);
@@ -269,7 +269,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					mState |= B[2];
 				}
 			} else {
-				for (int i = 1; i < 13; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), F)) slot(i, null);
+				for (int i = 1; i < 13; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slotTake(i), F, worldObj, xCoord+0.5, yCoord+1, zCoord+0.5);
 			}
 		} else {
 			if (SIDES_TOP[aSide]) {
@@ -292,7 +292,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
 		super.onTickResetChecks(aTimer, aIsServerSide);
 		oState = mState;
-		oDisplayedInput = mDisplayedInput;
+		oDisplayedInput  = mDisplayedInput;
 		oDisplayedOutput = mDisplayedOutput;
 	}
 	

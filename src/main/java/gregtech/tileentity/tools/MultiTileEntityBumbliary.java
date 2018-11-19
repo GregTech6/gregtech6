@@ -116,10 +116,10 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 						if (--mLife <= 0) {
 							mEndedQueen = T;
 							
-							for (int tDeadSlot : SLOTS_DEAD) if (slotHas(tDeadSlot) && slot(tDeadSlot).getItem() instanceof IItemBumbleBee) slot(tDeadSlot, NI);
+							for (int tDeadSlot : SLOTS_DEAD) if (slotHas(tDeadSlot) && slot(tDeadSlot).getItem() instanceof IItemBumbleBee) slotKill(tDeadSlot);
 							
 							ItemStack tDead = tRoyalItem.bumbleKill(tRoyalStack);
-							slot(SLOT_ROYAL, NI);
+							slotKill(SLOT_ROYAL);
 							for (int tDeadSlot : SLOTS_DEAD) if (addStackToSlot(tDeadSlot, tDead)) break;
 							
 							for (int tDroneSlot : SLOTS_DRONE) if (slotHas(tDroneSlot) && slot(tDroneSlot).getItem() instanceof IItemBumbleBee) {
@@ -182,7 +182,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 						}
 					} else {
 						ItemStack tDead = tRoyalItem.bumbleKill(tRoyalStack);
-						slot(SLOT_ROYAL, NI);
+						slotKill(SLOT_ROYAL);
 						for (int tDeadSlot : SLOTS_DEAD) if (addStackToSlot(tDeadSlot, tDead)) break;
 					}
 				} else {

@@ -303,7 +303,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			if (aStack == null) {
 				aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, tOutputStack);
-				slot(0, null);
+				slotKill(0);
 				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1);
 				return T;
 			}
@@ -316,7 +316,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 			}
 			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(0), F)) {
 				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1);
-				slot(0, null);
+				slotKill(0);
 				return T;
 			}
 		}

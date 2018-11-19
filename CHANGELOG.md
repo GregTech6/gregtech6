@@ -378,8 +378,8 @@ Advanced Bumbliary.
 Requires a Comb from a crossbred Bumblebee Species in order to be crafted, so you have to have some Bumblebee Experience before you can get this!
 Extraction of Bumble Products can be automated with this variant.
 Bumblebees only have a Range of 1 Block (so a 3x3x3 cube around the Hive) for collecting Flowers and such (so it is less laggy than the regular 7x7x7).
-They only sting/attack inside a 5x5x5 cube area around the Bumbliary instead of a 9x9x9, so just stay more thna 2 Blocks away and you're safe.
-This Bumbliary has less Slots for Products, but since you can automate it, it's not that bad. Maybe I use the newly free-ed Space for something else later down the line.
+They only sting/attack inside a 5x5x5 cube area around the Bumbliary instead of a 9x9x9, so just stay more than 2 Blocks away and you're safe.
+This Bumbliary has less Slots for Products, but since you can automate it, it's not that bad. Maybe I use the newly free-ed GUI Space for something else later down the line.
 Bumblebees produce only at a quarter of their usual Speed when used here. Their Lifespan stays the same, so it is overall just much less productive, but it is place and forget, so it might be worth it.
 The Bumbles in these Advanced Bumbliaries prefer very much to be left alone, resulting in a 5 MINUTE timer for breeding (instead of 1 Minute) when you dare to rightclick their Home! This makes it much more difficult to breed within this Block.
 

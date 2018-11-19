@@ -125,7 +125,7 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 					return T;
 				}
 			} else {
-				if (UT.Inventories.addStackToPlayerInventory(aPlayer, tOutputStack, F)) slot(0, null);
+				if (UT.Inventories.addStackToPlayerInventory(aPlayer, tOutputStack, F)) slotKill(0);
 			}
 		}
 		return F;

@@ -229,7 +229,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 			}
 			
 			for (int i = 6; i < 12; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
-				slot(i, null);
+				slotKill(i);
 				return T;
 			}
 			ItemStack aStack = aPlayer.getCurrentEquippedItem(), tStack = ST.container(ST.amount(1, aStack), T);
@@ -270,7 +270,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 				}
 			}
 			if (slot(6) == null && slot(7) == null && slot(8) == null && slot(9) == null && slot(10) == null && slot(11) == null) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
-				slot(i, null);
+				slotKill(i);
 				return T;
 			}
 		} else {

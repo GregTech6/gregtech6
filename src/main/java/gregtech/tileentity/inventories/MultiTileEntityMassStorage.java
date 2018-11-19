@@ -29,6 +29,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirstClient;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataInteger;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -60,7 +61,7 @@ import net.minecraftforge.client.ForgeHooksClient;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, ITileEntityProgress, ITileEntityAdjacentInventoryUpdatable, IMTE_SyncDataInteger, IMTE_OnRegistrationFirstClient {
+public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, ITileEntityProgress, ITileEntityAdjacentInventoryUpdatable, IMTE_SyncDataInteger, IMTE_SyncDataShort, IMTE_OnRegistrationFirstClient {
 	public int oStacksize = 0, mMaxStorage = 1000000;
 	public long mPartialUnits = 0;
 	public byte mMode = 0;
@@ -111,7 +112,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (aTool.equals(TOOL_softhammer)) {
 			if (slotHas(0)) {
 				ST.place(worldObj, xCoord+OFFSETS_X[mFacing]+0.5, yCoord+OFFSETS_Y[mFacing]+0.5, zCoord+OFFSETS_Z[mFacing]+0.5, ST.copy(slot(0)));
-				slot(0, NI);
+				slotKill(0);
 				updateInventory();
 				return 10000;
 			}
@@ -120,14 +121,18 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 					ST.place(worldObj, xCoord+OFFSETS_X[mFacing]+0.5, yCoord+OFFSETS_Y[mFacing]+0.5, zCoord+OFFSETS_Z[mFacing]+0.5, ST.amount(Math.max(1, slot(1).getMaxStackSize()), slot(1)));
 					slot(1).stackSize -= Math.max(1, slot(1).getMaxStackSize());
 				}
+				if (mPartialUnits > 0) {
+					OreDictItemData tData = OM.data(slot(1));
+					if (tData != null && tData.hasValidPrefixData()) ST.drop(worldObj, getCoords(), tData.mPrefix.contains(TD.Prefix.INGOT_BASED) ? OM.ingot(tData.mMaterial.mMaterial, mPartialUnits) : OM.dust(tData.mMaterial.mMaterial, mPartialUnits));
+				}
 				if (slot(1).stackSize > 0) {
 					if (slot(1).stackSize <= Math.max(1, slot(1).getMaxStackSize())) {
 						ST.place(worldObj, xCoord+OFFSETS_X[mFacing]+0.5, yCoord+OFFSETS_Y[mFacing]+0.5, zCoord+OFFSETS_Z[mFacing]+0.5, ST.copy(slot(1)));
-						slot(1, NI);
+						slotKill(1);
 						updateClientData();
 					}
 				} else {
-					slot(1, NI);
+					slotKill(1);
 					updateClientData();
 				}
 				updateInventory();
@@ -137,7 +142,6 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (aTool.equals(TOOL_cutter)) {
 			mMode ^= B[2];
 			aChatReturn.add((mMode & B[2]) == 0 ? "Won't emit Overflow" : "Will emit Overflow to Inventories below");
-			if ((mMode & B[2]) != 0 && slotHas(1) && slot(1).stackSize <= 0) slot(1, NI);
 			updateClientData();
 			updateInventory();
 			return 10000;
@@ -145,7 +149,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (aTool.equals(TOOL_screwdriver)) {
 			mMode ^= B[1];
 			aChatReturn.add((mMode & B[1]) == 0 ? "Filter stays when empty" : "Filter resets when empty");
-			if ((mMode & B[1]) != 0 && slotHas(1) && slot(1).stackSize <= 0) slot(1, NI);
+			if (!allowZeroStacks(1)) slotNull(1);
 			updateClientData();
 			updateInventory();
 			return 10000;
@@ -243,8 +247,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 						}
 					}
 				}
-				if ((mMode & B[1]) != 0 && slot(1).stackSize <= 0 && mPartialUnits <= 0) {
-					slot(1, NI);
+				if ((mMode & B[1]) != 0 && mPartialUnits <= 0 && slotNull(1)) {
 					updateClientData();
 					updateInventory();
 				}
@@ -407,7 +410,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		int tStacksize = slotHas(1) ? slot(1).stackSize : -1;
 		short tMeta = slotHas(1) ? ST.meta_(slot(1)) : 0, tID = ST.id(slot(1));
-		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getDirectionData(), mMode, UT.Code.toByteS(tID, 0), UT.Code.toByteS(tID, 1), UT.Code.toByteS(tMeta, 0), UT.Code.toByteS(tMeta, 1), UT.Code.toByteI(tStacksize, 0), UT.Code.toByteI(tStacksize, 1), UT.Code.toByteI(tStacksize, 2), UT.Code.toByteI(tStacksize, 3)) : getClientDataPacketInteger(aSendAll, tStacksize);
+		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getDirectionData(), mMode, UT.Code.toByteS(tID, 0), UT.Code.toByteS(tID, 1), UT.Code.toByteS(tMeta, 0), UT.Code.toByteS(tMeta, 1), UT.Code.toByteI(tStacksize, 0), UT.Code.toByteI(tStacksize, 1), UT.Code.toByteI(tStacksize, 2), UT.Code.toByteI(tStacksize, 3)) : tStacksize <= Short.MAX_VALUE ? getClientDataPacketShort(aSendAll, (short)tStacksize) : getClientDataPacketInteger(aSendAll, tStacksize);
 	}
 	
 	@Override
@@ -421,7 +424,12 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	@Override
 	public boolean receiveDataInteger(int aData, INetworkHandler aNetworkHandler) {
-		if (aData < 0) slot(1, NI); else if (slotHas(1)) slot(1).stackSize = aData;
+		if (aData < 0) slotKill(1); else if (slotHas(1)) slot(1).stackSize = aData;
+		return T;
+	}
+	@Override
+	public boolean receiveDataShort(short aData, INetworkHandler aNetworkHandler) {
+		if (aData < 0) slotKill(1); else if (slotHas(1)) slot(1).stackSize = aData;
 		return T;
 	}
 	
@@ -431,7 +439,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	public static final int[] ACCESSIBLE_SLOTS = {0, 1};
 	
-	@Override public void onExploded(Explosion aExplosion) {slot(1, NI); super.onExploded(aExplosion);}
+	@Override public void onExploded(Explosion aExplosion) {slotKill(1); super.onExploded(aExplosion);}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[2];}
 	@Override public int getInventoryStackLimit() {return Math.min(slotHas(1) ? getMaxContent() - slot(1).stackSize : getMaxContent(), 64);}
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ACCESSIBLE_SLOTS;}
@@ -469,10 +477,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			if (aOnlyRemoveIfItCanRemoveAllAtOnce && slot(1).stackSize < aStack.stackSize) return 0;
 			int tAmount = Math.min(aStack.stackSize, slot(1).stackSize);
 			slot(1).stackSize -= tAmount;
-			if ((mMode & B[1]) != 0 && slot(1).stackSize <= 0 && mPartialUnits <= 0) {
-				slot(1, NI);
-				updateClientData();
-			}
+			if ((mMode & B[1]) != 0 && mPartialUnits <= 0 && slotNull(1)) updateClientData();
 			updateInventory();
 			return tAmount;
 		}

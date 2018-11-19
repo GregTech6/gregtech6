@@ -249,7 +249,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 			}
 			
 			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(6), T)) {
-				slot(6, null);
+				slotKill(6);
 				return T;
 			}
 			ItemStack tStack = ST.container(ST.amount(1, aStack), T);
@@ -289,8 +289,8 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 					if (UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, i, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) return T;
 				}
 			}
-			if (slot(6) == null) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
-				slot(i, null);
+			if (!slotHas(6)) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
+				slotKill(i);
 				return T;
 			}
 		} else {

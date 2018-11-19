@@ -774,6 +774,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public ItemStack slot(int aIndex, ItemStack aStack) {return NI;}
 	public ItemStack slot(int aIndex) {return NI;}
 	public ItemStack slotTake(int aIndex) {return NI;}
+	public boolean slotNull(int aIndex) {if (slotHas(aIndex) && slot(aIndex).stackSize < 0) return slotKill(aIndex); return F;}
+	public boolean slotKill(int aIndex) {slot(aIndex, NI); return T;}
 	public boolean slotHas(int aIndex) {return F;}
 	public boolean invempty() {return T;}
 	public int invsize() {return 0;}
@@ -803,7 +805,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 			for (int i = 0, j = invsize(); i < j; i++) if (ST.equal(slot(i), aStack)) {
 				int tChange = Math.min(aStack.stackSize - rCount, slot(i).stackSize);
 				slot(i).stackSize -= tChange;
-				if (slot(i).stackSize <= 0) slot(i, NI);
+				if (slot(i).stackSize <= 0) slotKill(i);
 				rCount += tChange;
 				if (rCount >= aStack.stackSize) break;
 			}

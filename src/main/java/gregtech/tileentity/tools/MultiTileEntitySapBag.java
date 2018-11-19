@@ -107,7 +107,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(0), T)) {
-				slot(0, null);
+				slotKill(0);
 				return T;
 			}
 			ItemStack aStack = aPlayer.getCurrentEquippedItem(), tStack;

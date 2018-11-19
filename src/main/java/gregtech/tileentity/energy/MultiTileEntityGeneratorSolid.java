@@ -145,13 +145,13 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 			if (aStack == null) {
 				if (slotHas(1)) {
 					aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, slot(1));
-					slot(1, null);
+					slotKill(1);
 					if (mBurning) UT.Entities.applyHeatDamage(aPlayer, Math.max(1.0F, Math.min(5.0F, mRate / 20.0F)));
 					return T;
 				}
 				if (!mBurning && slotHas(0)) {
 					aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, slot(0));
-					slot(0, null);
+					slotKill(0);
 					return T;
 				}
 			} else if (!slotHas(0)) {
@@ -189,7 +189,7 @@ public class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle 
 		if (aTool.equals(TOOL_shovel        ) &&  aSide == mFacing && slotHas(1)) {
 			long rDamage = 1000 * slot(1).stackSize;
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, slot(1), worldObj, xCoord, yCoord, zCoord);
-			slot(1, null);
+			slotKill(1);
 			return rDamage;
 		}
 		

@@ -230,7 +230,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 				}
 			}
 			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(aSlot), T)) {
-				slot(aSlot, NI);
+				slotKill(aSlot);
 				updateInventory();
 				playCollect();
 				return T;
