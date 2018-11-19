@@ -171,14 +171,14 @@ public class MT {
 	static OreDictMaterial alloymachnd  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return metalmachnd     (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(ALLOY, DECOMPOSABLE);}
 	
 	static OreDictMaterial wood         (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA)  {
-		OreDictMaterial rMaterial = create(aID, aNameOreDict, aSets, aR, aG, aB, aA).put(G_WOOD, WOOD, MORTAR);
+		OreDictMaterial rMaterial = create(aID, aNameOreDict, aSets, aR, aG, aB, aA).put(G_WOOD, WOOD, MORTAR).addReRegistrations(ANY.Wood, ANY.WoodPlastic);
 		if ("Wood".equalsIgnoreCase(rMaterial.mNameInternal)) return rMaterial;
 		String tPlank = "plank"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.setAutomaticItemData(tPlank, new OreDictItemData(rMaterial, U));
 		OreDictManager.INSTANCE.addAutoBlackListing(tPlank);
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plate"+rMaterial.mNameInternal, tPlank);
 		OreDictManager.INSTANCE.addReRegistration(tPlank, "plankAnyWood");
-		return rMaterial.addReRegistrations(ANY.Wood, ANY.WoodPlastic);
+		return rMaterial;
 	}
 	
 	static OreDictMaterial unknown(int aID, long aNeutrons) {
