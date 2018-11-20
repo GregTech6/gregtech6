@@ -38,6 +38,7 @@ public class ANY {
 	Sapphire        = any("Any Sapphire"        ),
 	Emerald         = any("Any Emerald"         ),
 	Garnet          = any("Any Garnet"          ),
+	Prismarine      = any("Any Prismarine"      ),
 	Grains          = any("Any Grains"          ),
 	Flour           = any("Any Flour"           ),
 	FlourGrains     = any("Any Flour Or Grains" ),
@@ -70,40 +71,41 @@ public class ANY {
 	_Metal          = any("Any Metal"           );
 	
 	protected static void init() {
-		Glowstone       .stealLooks(MT.Glowstone        ).steal(MT.Glowstone    ).setLocal("Glowstone"          ).setAllToTheOutputOf(MT.Glowstone  ).put(CRYSTAL, GLOWING, LIGHTING    );
-		Sapphire        .stealLooks(MT.BlueSapphire     ).steal(MT.Sapphire     ).setLocal("Sapphire"           ).setAllToTheOutputOf(MT.Sapphire   ).put(CRYSTAL                       );
-		Emerald         .stealLooks(MT.Emerald          ).steal(MT.Emerald      ).setLocal("Emerald"            ).setAllToTheOutputOf(MT.Emerald    ).put(CRYSTAL                       ).addReRegistrationToThis(MT.Emeradic);
-		Garnet          .stealLooks(MT.Spessartine      ).steal(MT.Spessartine  ).setLocal("Garnet"                                                 ).put(CRYSTAL                       );
-		Grains          .stealLooks(MT.Wheat            ).steal(MT.Wheat        ).setLocal("Grains"             ).setAllToTheOutputOf(MT.Wheat      ).put(FOOD, MORTAR, FLAMMABLE       );
-		Flour           .stealLooks(MT.Wheat            ).steal(MT.Wheat        ).setLocal("Flour"              ).setAllToTheOutputOf(MT.Wheat      ).put(FOOD, MORTAR, FLAMMABLE       ).addReRegistrationToThis(MT.Wheat, MT.Rye, MT.Oat, MT.Barley, MT.Potato);
-		FlourGrains     .stealLooks(MT.Wheat            ).steal(MT.Wheat        ).setLocal("Flour and Grains"   ).setAllToTheOutputOf(MT.Wheat      ).put(FOOD, MORTAR, FLAMMABLE       ).addReRegistrationToThis(MT.Potato);
-		Wax             .stealLooks(MT.Wax              ).steal(MT.Wax          ).setLocal("Wax"                ).setAllToTheOutputOf(MT.Wax        ).put(                              );
-		Stone           .stealLooks(MT.Stone            ).steal(MT.Stone        ).setLocal("Stone"              ).setAllToTheOutputOf(MT.Stone      ).put(STONE, BRITTLE, UNRECYCLABLE  ).addReRegistrationToThis(MT.Gravel);
-		Calcite         .stealLooks(MT.CaCO3            ).steal(MT.CaCO3        ).setLocal("Calcite"            ).setAllToTheOutputOf(MT.CaCO3      ).put(STONE, BRITTLE, UNRECYCLABLE  ).addReRegistrationToThis(MT.CaCO3, MT.Marble, MT.Chalk, MT.Limestone, MT.Dolomite);
-		Clay            .stealLooks(MT.ClayBrown        ).steal(MT.Clay         ).setLocal("Clay"               ).setAllToTheOutputOf(MT.Clay       ).put(                              ).addReRegistrationToThis(MT.Clay, MT.ClayBrown);
-		Salt            .stealLooks(MT.NaCl             ).steal(MT.NaCl         ).setLocal("Salt"               ).setAllToTheOutputOf(MT.NaCl       ).put(BRITTLE                       ).addReRegistrationToThis(MT.NaCl, MT.KCl, MT.LiCl, MT.MgCl2, MT.CaCl2);
-		Fe              .stealLooks(MT.Fe               ).steal(MT.Fe           ).setLocal("Iron"               ).setAllToTheOutputOf(MT.Fe         ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Fe, MT.WroughtIron, MT.PigIron, MT.MeteoricIron, MT.Meteorite, MT.Enori);
-		Iron            .stealLooks(MT.Fe               ).steal(MT.Fe           ).setLocal("Iron"               ).setAllToTheOutputOf(MT.Fe         ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Fe, MT.WroughtIron, MT.PigIron, MT.MeteoricIron, MT.Meteorite, MT.Enori, MT.Steel, MT.HSLA, MT.Knightmetal, MT.MeteoricSteel);
-		Steel           .stealLooks(MT.Steel            ).steal(MT.Steel        ).setLocal("Steel"              ).setAllToTheOutputOf(MT.Steel      ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Steel, MT.HSLA, MT.Knightmetal, MT.MeteoricSteel);
-		Cu              .stealLooks(MT.Cu               ).steal(MT.Cu           ).setLocal("Copper"             ).setAllToTheOutputOf(MT.Cu         ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Cu, MT.AnnealedCopper);
-		Ash             .stealLooks(MT.Ash              ).steal(MT.Ash          ).setLocal("Ashes"              ).setAllToTheOutputOf(MT.Ash        ).put(BRITTLE                       ).addReRegistrationToThis(MT.Ash, MT.DarkAsh, MT.VolcanicAsh);
-		C               .stealLooks(MT.C                ).steal(MT.C            ).setLocal("Carbon"             ).setAllToTheOutputOf(MT.C          ).put(                              ).addReRegistrationToThis(MT.C, MT.Graphite, MT.Graphene);
-		Coal            .stealLooks(MT.C                ).steal(MT.C            ).setLocal("Carbon"             ).setAllToTheOutputOf(MT.C          ).put(                              ).addReRegistrationToThis(MT.C, MT.Graphite, MT.Graphene, MT.CoalCoke, MT.Coal, MT.Charcoal);
-		Si              .stealLooks(MT.Si               ).steal(MT.Si           ).setLocal("Silicon"            ).setAllToTheOutputOf(MT.Si         ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Si);
-		SiO2            .stealLooks(MT.SiO2             ).steal(MT.SiO2         ).setLocal("Silicon Dioxide"    ).setAllToTheOutputOf(MT.SiO2       ).put(BRITTLE, MELTING              ).addReRegistrationToThis(MT.SiO2, MT.Glass, MT.Flint, MT.NetherQuartz, MT.Quartzite, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.SunnyQuartz, MT.SmokeyQuartz, MT.LavenderQuartz, MT.ManaQuartz, MT.RedQuartz, MT.ElvenQuartz, MT.BlazeQuartz);
-		W               .stealLooks(MT.W                ).steal(MT.W            ).setLocal("Tungsten"           ).setAllToTheOutputOf(MT.W          ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.W, MT.TungstenSintered);
-		ThaumCrystal    .stealLooks(MT.InfusedBalance   ).steal(MT.InfusedDull                                                                      ).put(DONT_SHOW_THIS_COMPONENT      );
-		WoodDefault     .stealLooks(MT.Wood             ).steal(MT.Wood         ).setLocal("Normal Wood"        ).setAllToTheOutputOf(MT.Wood       ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(MT.Wood, MT.Peanutwood).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
-		WoodNormal      .stealLooks(MT.Wood             ).steal(MT.Wood         ).setLocal("Normal Wood"        ).setAllToTheOutputOf(MT.Wood       ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(ANY.WoodDefault.mToThis.toArray(ZL_MT)).addReRegistrationToThis(MT.Weedwood, MT.Skyroot).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
-		WoodMagical     .stealLooks(MT.Greatwood        ).steal(MT.Wood         ).setLocal("Magical Wood"       ).setAllToTheOutputOf(MT.Wood       ).put(WOOD, FLAMMABLE, MAGICAL      ).addReRegistrationToThis(MT.Greatwood, MT.Silverwood, MT.Livingwood, MT.Dreamwood, MT.Shimmerwood).setFurnaceBurnTime(TICKS_PER_SMELT* 2);
-		WoodTreated     .stealLooks(MT.WoodSealed       ).steal(MT.Wood         ).setLocal("Treated Wood"       ).setAllToTheOutputOf(MT.Wood       ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(MT.WoodSealed, MT.WoodPolished).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
-		WoodUntreated   .stealLooks(MT.Wood             ).steal(MT.Wood         ).setLocal("Untreated Wood"     ).setAllToTheOutputOf(MT.Wood       ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(ANY.WoodMagical.mToThis.toArray(ZL_MT)).addReRegistrationToThis(ANY.WoodNormal.mToThis.toArray(ZL_MT)).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
-		Wood            .stealLooks(MT.Wood             ).steal(MT.Wood         ).setLocal("Wood"               ).setAllToTheOutputOf(MT.Wood       ).put(WOOD, FLAMMABLE               ).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
-		WoodPlastic     .stealLooks(MT.Wood             ).steal(MT.Wood                                                                             ).put(DONT_SHOW_THIS_COMPONENT      ).addReRegistrationToThis(MT.Plastic);
+		Glowstone       .stealLooks(MT.Glowstone      ).steal(MT.Glowstone      ).setLocal("Glowstone"          ).setAllToTheOutputOf(MT.Glowstone      ).put(CRYSTAL, GLOWING, LIGHTING    );
+		Sapphire        .stealLooks(MT.BlueSapphire   ).steal(MT.Sapphire       ).setLocal("Sapphire"           ).setAllToTheOutputOf(MT.Sapphire       ).put(CRYSTAL                       );
+		Emerald         .stealLooks(MT.Emerald        ).steal(MT.Emerald        ).setLocal("Emerald"            ).setAllToTheOutputOf(MT.Emerald        ).put(CRYSTAL                       ).addReRegistrationToThis(MT.Emeradic);
+		Garnet          .stealLooks(MT.Spessartine    ).steal(MT.Spessartine    ).setLocal("Garnet"                                                     ).put(CRYSTAL                       );
+		Prismarine      .stealLooks(MT.PrismarineLight).steal(MT.PrismarineLight).setLocal("Prismarine"         ).setAllToTheOutputOf(MT.PrismarineLight).put(CRYSTAL                       ).addReRegistrationToThis(MT.PrismarineLight, MT.PrismarineDark);
+		Grains          .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Grains"             ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE       );
+		Flour           .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Flour"              ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE       ).addReRegistrationToThis(MT.Wheat, MT.Rye, MT.Oat, MT.Barley, MT.Potato);
+		FlourGrains     .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Flour and Grains"   ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE       ).addReRegistrationToThis(MT.Potato);
+		Wax             .stealLooks(MT.Wax            ).steal(MT.Wax            ).setLocal("Wax"                ).setAllToTheOutputOf(MT.Wax            ).put(                              );
+		Stone           .stealLooks(MT.Stone          ).steal(MT.Stone          ).setLocal("Stone"              ).setAllToTheOutputOf(MT.Stone          ).put(STONE, BRITTLE, UNRECYCLABLE  ).addReRegistrationToThis(MT.Gravel);
+		Calcite         .stealLooks(MT.CaCO3          ).steal(MT.CaCO3          ).setLocal("Calcite"            ).setAllToTheOutputOf(MT.CaCO3          ).put(STONE, BRITTLE, UNRECYCLABLE  ).addReRegistrationToThis(MT.CaCO3, MT.Marble, MT.Chalk, MT.Limestone, MT.Dolomite);
+		Clay            .stealLooks(MT.ClayBrown      ).steal(MT.Clay           ).setLocal("Clay"               ).setAllToTheOutputOf(MT.Clay           ).put(                              ).addReRegistrationToThis(MT.Clay, MT.ClayBrown);
+		Salt            .stealLooks(MT.NaCl           ).steal(MT.NaCl           ).setLocal("Salt"               ).setAllToTheOutputOf(MT.NaCl           ).put(BRITTLE                       ).addReRegistrationToThis(MT.NaCl, MT.KCl, MT.LiCl, MT.MgCl2, MT.CaCl2);
+		Fe              .stealLooks(MT.Fe             ).steal(MT.Fe             ).setLocal("Iron"               ).setAllToTheOutputOf(MT.Fe             ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Fe, MT.WroughtIron, MT.PigIron, MT.MeteoricIron, MT.Meteorite, MT.Enori);
+		Iron            .stealLooks(MT.Fe             ).steal(MT.Fe             ).setLocal("Iron"               ).setAllToTheOutputOf(MT.Fe             ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Fe, MT.WroughtIron, MT.PigIron, MT.MeteoricIron, MT.Meteorite, MT.Enori, MT.Steel, MT.HSLA, MT.Knightmetal, MT.MeteoricSteel);
+		Steel           .stealLooks(MT.Steel          ).steal(MT.Steel          ).setLocal("Steel"              ).setAllToTheOutputOf(MT.Steel          ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Steel, MT.HSLA, MT.Knightmetal, MT.MeteoricSteel);
+		Cu              .stealLooks(MT.Cu             ).steal(MT.Cu             ).setLocal("Copper"             ).setAllToTheOutputOf(MT.Cu             ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Cu, MT.AnnealedCopper);
+		Ash             .stealLooks(MT.Ash            ).steal(MT.Ash            ).setLocal("Ashes"              ).setAllToTheOutputOf(MT.Ash            ).put(BRITTLE                       ).addReRegistrationToThis(MT.Ash, MT.DarkAsh, MT.VolcanicAsh);
+		C               .stealLooks(MT.C              ).steal(MT.C              ).setLocal("Carbon"             ).setAllToTheOutputOf(MT.C              ).put(                              ).addReRegistrationToThis(MT.C, MT.Graphite, MT.Graphene);
+		Coal            .stealLooks(MT.C              ).steal(MT.C              ).setLocal("Carbon"             ).setAllToTheOutputOf(MT.C              ).put(                              ).addReRegistrationToThis(MT.C, MT.Graphite, MT.Graphene, MT.CoalCoke, MT.Coal, MT.Charcoal);
+		Si              .stealLooks(MT.Si             ).steal(MT.Si             ).setLocal("Silicon"            ).setAllToTheOutputOf(MT.Si             ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Si);
+		SiO2            .stealLooks(MT.SiO2           ).steal(MT.SiO2           ).setLocal("Silicon Dioxide"    ).setAllToTheOutputOf(MT.SiO2           ).put(BRITTLE, MELTING              ).addReRegistrationToThis(MT.SiO2, MT.Glass, MT.Flint, MT.NetherQuartz, MT.Quartzite, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.SunnyQuartz, MT.SmokeyQuartz, MT.LavenderQuartz, MT.ManaQuartz, MT.RedQuartz, MT.ElvenQuartz, MT.BlazeQuartz);
+		W               .stealLooks(MT.W              ).steal(MT.W              ).setLocal("Tungsten"           ).setAllToTheOutputOf(MT.W              ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.W, MT.TungstenSintered);
+		ThaumCrystal    .stealLooks(MT.InfusedBalance ).steal(MT.InfusedDull                                                                            ).put(DONT_SHOW_THIS_COMPONENT      );
+		WoodDefault     .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Normal Wood"        ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(MT.Wood, MT.Peanutwood).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
+		WoodNormal      .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Normal Wood"        ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(ANY.WoodDefault.mToThis.toArray(ZL_MT)).addReRegistrationToThis(MT.Weedwood, MT.Skyroot).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
+		WoodMagical     .stealLooks(MT.Greatwood      ).steal(MT.Wood           ).setLocal("Magical Wood"       ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE, MAGICAL      ).addReRegistrationToThis(MT.Greatwood, MT.Silverwood, MT.Livingwood, MT.Dreamwood, MT.Shimmerwood).setFurnaceBurnTime(TICKS_PER_SMELT* 2);
+		WoodTreated     .stealLooks(MT.WoodSealed     ).steal(MT.Wood           ).setLocal("Treated Wood"       ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(MT.WoodSealed, MT.WoodPolished).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
+		WoodUntreated   .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Untreated Wood"     ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(ANY.WoodMagical.mToThis.toArray(ZL_MT)).addReRegistrationToThis(ANY.WoodNormal.mToThis.toArray(ZL_MT)).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
+		Wood            .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Wood"               ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE               ).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
+		WoodPlastic     .stealLooks(MT.Wood           ).steal(MT.Wood                                                                                   ).put(DONT_SHOW_THIS_COMPONENT      ).addReRegistrationToThis(MT.Plastic);
 		
-		_Steel          .stealLooks(MT.Steel            ).put(DONT_SHOW_THIS_COMPONENT);
-		_Bronze         .stealLooks(MT.Bronze           ).put(DONT_SHOW_THIS_COMPONENT);
-		_Metal          .stealLooks(MT.Fe               ).put(DONT_SHOW_THIS_COMPONENT);
+		_Steel          .stealLooks(MT.Steel          ).put(DONT_SHOW_THIS_COMPONENT);
+		_Bronze         .stealLooks(MT.Bronze         ).put(DONT_SHOW_THIS_COMPONENT);
+		_Metal          .stealLooks(MT.Fe             ).put(DONT_SHOW_THIS_COMPONENT);
 		
 		for (OreDictMaterial tMaterial : ANY.Iron.mToThis) tMaterial.put(AchievementList.openInventory, AchievementList.mineWood, AchievementList.buildWorkBench, AchievementList.buildPickaxe, AchievementList.buildFurnace, AchievementList.acquireIron);
 	}

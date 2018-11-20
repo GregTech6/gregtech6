@@ -106,7 +106,7 @@ public class Loader_Blocks implements Runnable {
 		
 		BlocksGT.Ocean                                                          = new BlockOcean                ("gt.block.ocean", UT.Fluids.fluid("seawater"));
 		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp", UT.Fluids.fluid("waterdirty"));
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Ocean         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.TEMPESTAS, 1));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Ocean         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.TEMPESTAS, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Swamp         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.VENENUM, 1));
 		
 		BlocksGT.OilExtraHeavy                                                  = new BlockBaseFluid            ("gt.block.fluid.oil.extraheavy"    , UT.Fluids.fluid("liquid_extra_heavy_oil"  ), 1000);
