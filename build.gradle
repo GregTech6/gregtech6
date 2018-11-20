@@ -1,6 +1,7 @@
 buildscript {
 	repositories {
 		mavenCentral()
+		jcenter()
 		//maven {
 		//	name = "forge"
 		//	url = "https://files.minecraftforge.net/maven"
@@ -16,6 +17,8 @@ buildscript {
 	}
 	dependencies {
 		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+		classpath 'net.onedaybeard.artemis:artemis-odb-gradle-plugin:2.2.0-SNAPSHOT'
+		classpath 'net.onedaybeard.artemis:artemis-fluid-gradle-plugin:2.2.0-SNAPSHOT'
 	}
 }
 
@@ -62,7 +65,7 @@ task eclipseForgeProject {
 			if(!Os.isFamily(Os.FAMILY_WINDOWS)) {
 				ant.symlink(resource: "../", link: "eclipse/Minecraft")
 			} else {
-				println("WINDOWS:  Before loading this workspace with Eclipse, manually run this in an Elevated/Admin command prompt:")
+				println("WINDOWS: Before loading this workspace with Eclipse, manually run this in an Elevated/Admin command prompt:")
 				println("mklink /D " + (new File("").absolutePath) + "/eclipse/Minecraft " + (new File("").absolutePath))
 			}
 		}
@@ -84,6 +87,10 @@ repositories {
 	maven {
 		name = "gt"
 		url = "https://gregtech.overminddl1.com/"
+	}
+	maven {
+		name = "sonatype"
+		url = "https://oss.sonatype.org/content/repositories/snapshots/"
 	}
 	//maven {
 	//	name = "forge"
@@ -139,6 +146,8 @@ repositories {
 }
 
 apply plugin: 'forge'
+apply plugin: 'artemis'
+apply plugin: 'artemis-fluid'
 
 group = "com.gregoriust.gregtech"
 archivesBaseName = "gregtech_1.7.10"
@@ -159,10 +168,18 @@ configurations {
 minecraft {
 	version = "1.7.10-10.13.4.1614-1.7.10"
 	runDir = "instance"
+	// This is how you rename a namespace
+	//srgExtra "PK: com/artemis gregtech/thirdparty/com/artemis"
+	//srgExtra "PK: net/mostlyoriginal gregtech/thirdparty/net/mostlyoriginal"
+	//srgExtra "PK: net/fbridault/eeel gregtech/thirdparty/net/fbridault/eeel"
 }
 
 dependencies {
 	//compile fileTree(dir: 'libs', include: '*.jar')
+	shade 'net.onedaybeard.artemis:artemis-odb:2.2.0-SNAPSHOT'
+	shade 'net.mostlyoriginal.artemis-odb:contrib-core:2.2.0'
+	shade 'net.mostlyoriginal.artemis-odb:contrib-eventbus:2.2.0'
+	shade 'net.fbridault.eeel:artemis-odb-eeel:1.2'
 	runtime 'org.apache.commons:commons-math3:3.2' // Needed for dev opis because it doesn't know how to specify dependencies properly
 	runtime 'org.jfree:jcommon:1.0.21'             // Needed for dev opis because it doesn't know how to specify dependencies properly
 	runtime 'org.jfree:jfreechart:1.0.17'          // Needed for dev opis because it doesn't know how to specify dependencies properly
@@ -350,16 +367,55 @@ task wrapper(type: Wrapper) {
 	gradleVersion = '3.5.1'
 }
 
+weave {
+	classesDir = sourceSets.main.output.classesDir
+	enableArtemisPlugin = true
+	enablePooledWeaving = true
+	generateLinkMutators = true
+	optimizeEntitySystems = true
+}
+
+fluid {
+	doFirst {
+		sourceSets.main.compileClasspath.each { c ->
+			if(!c.exists() && c.getName().lastIndexOf('.')==-1) {
+				c.mkdirs()
+			}
+		}
+	}
+	doLast {
+		def fp = "$buildDir/generated-source/fluid/com/artemis/SuperMapper.java"
+		String fc = new File(fp).getText('UTF-8')
+		fc = fc.replaceAll('E getE\\(int entityId\\) \\{', '@SuppressWarnings("unchecked") E getE(int entityId) {')
+		new File(fp).write(fc, 'UTF-8')
+	}
+	generatedSourcesDirectory = file("$buildDir/generated-source/fluid/")
+	classpath = sourceSets.main.compileClasspath
+
+	// Fluid Configuration
+	// preferences.prefixComponentGetter = "get" // prefix for E::[get]pos()
+	// preferences.prefixComponentCreate = "" // prefix for E::[]pos()
+	// preferences.prefixComponentHas = "has" // prefix for E::[has]Pos()
+	// preferences.prefixComponentRemove = "remove" // prefix for E::[remove]Pos()
+	// preferences.generateTagMethods = true // add tag convenience methods (true).
+	// preferences.generateGroupMethods = true // add group convenience methods (true).
+	// preferences.generateBooleanComponentAccessors = true // Generate boolean accessors for flag components (true)?
+	// preferences.swallowGettersWithParameters = false // global setting. overridden by @Fluid annotation (false).
+}
+
+sourceSets.main.java.srcDirs += file("$buildDir/generated-source/fluid/")
+sourceMainJava.dependsOn fluid
+classes.finalizedBy weave
+
 jar {
 	manifest {
 		attributes 'FMLAT': 'gregtech_at.cfg'
 	}
-	// For future use:
-	//configurations.shade.each { dep ->
-	//	from(project.zipTree(dep)) {
-	//		exclude 'META-INF', 'META-INF/**'
-	//	}
-	//}
+	configurations.shade.each { dep ->
+		from(project.zipTree(dep)) {
+			exclude 'META-INF', 'META-INF/**'
+		}
+	}
 }
 
 task sourceJar(type: Jar) {
@@ -373,12 +429,11 @@ task devJar(type: Jar) {
 	manifest {
 		attributes 'FMLAT': 'gregtech_at.cfg'
 	}
-	// For future use:
-	//configurations.shade.each { dep ->
-	//	from(project.zipTree(dep)) {
-	//		exclude 'META-INF', 'META-INF/**'
-	//	}
-	//}
+	configurations.shade.each { dep ->
+		from(project.zipTree(dep)) {
+			exclude 'META-INF', 'META-INF/**'
+		}
+	}
 	classifier = 'dev'
 	from sourceSets.main.output
 }
