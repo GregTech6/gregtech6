@@ -1642,10 +1642,11 @@ public class CS {
 		
 		, TC                = "Thaumcraft"
 		, TCFM              = "ForbiddenMagic"
+		, BOTA              = "Botania"
+		, ALF               = "alfheim"
 		, PE                = "ProjectE"
 		, WTCH              = "witchery"
 		, HOWL              = "howlingmoon"
-		, BOTA              = "Botania"
 		, TF                = "TwilightForest"
 		, ERE               = "erebus"
 		, ATUM              = "atum"

@@ -495,6 +495,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.record                            , ST.make(MD.MoCr, "recordshuffle", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.BOTA, "recordGaia1", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.BOTA, "recordGaia2", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.ALF, "FlugelDisc", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.BTL, "record16612", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.BTL, "recordAstatos", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.BTL, "recordHagDance", 1, 0));

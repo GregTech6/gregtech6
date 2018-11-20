@@ -47,10 +47,11 @@ public class MD {
 	
 	, TC                = new ModData(ModIDs.TC                 , "Thaumcraft")
 	, TCFM              = new ModData(ModIDs.TCFM               , "Forbidden Magic")
+	, BOTA              = new ModData(ModIDs.BOTA               , "Botania")
+	, ALF               = new ModData(ModIDs.ALF                , "Alfheim")
 	, PE                = new ModData(ModIDs.PE                 , "Project E")
 	, WTCH              = new ModData(ModIDs.WTCH               , "Witchery")
 	, HOWL              = new ModData(ModIDs.HOWL               , "Howling Moon")
-	, BOTA              = new ModData(ModIDs.BOTA               , "Botania")
 	, TF                = new ModData(ModIDs.TF                 , "Twilight Forest")
 	, ERE               = new ModData(ModIDs.ERE                , "Erebus")
 	, ATUM              = new ModData(ModIDs.ATUM               , "Atum")

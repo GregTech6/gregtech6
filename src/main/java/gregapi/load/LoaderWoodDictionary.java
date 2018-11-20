@@ -223,6 +223,10 @@ public class LoaderWoodDictionary implements Runnable {
 			CR.shaped(ST.make(MD.BOTA, "dreamwood"          , 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BOTA, "dreamwood0Slab", 1, 0));
 			CR.shaped(ST.make(MD.BOTA, "dreamwood"          , 1, 1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BOTA, "dreamwood1Slab", 1, 0));
 		}
+		// Alfheim Planks
+		if (MD.ALF.mLoaded) {
+			new SaplingEntry(ST.make(MD.ALF, "DreamSapling", 1, W), new WoodEntry(ST.make(MD.ALF, "DreamLog", 1, W), WoodDictionary.PLANKS.get(ST.block(MD.BOTA, "dreamwood"), 1)), ST.make(MD.ALF, "DreamLeaves", 1, W));
+		}
 		// Extra Biomes Trees
 		if (MD.EBXL.mLoaded) {
 			Block tPlank = ST.block(MD.EBXL, "planks"), tSlab = ST.block(MD.EBXL, "woodslab");
