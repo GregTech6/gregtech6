@@ -52,6 +52,19 @@ import thaumcraft.api.research.ResearchPage;
 
 public class CompatTC extends CompatBase implements ICompatTC {
 	public CompatTC() {
+		ThaumcraftApi            .class.getCanonicalName();
+		ThaumcraftApiHelper      .class.getCanonicalName();
+		Aspect                   .class.getCanonicalName();
+		AspectList               .class.getCanonicalName();
+		CrucibleRecipe           .class.getCanonicalName();
+		IArcaneRecipe            .class.getCanonicalName();
+		InfusionEnchantmentRecipe.class.getCanonicalName();
+		InfusionRecipe           .class.getCanonicalName();
+		ResearchCategories       .class.getCanonicalName();
+		ResearchCategoryList     .class.getCanonicalName();
+		ResearchItem             .class.getCanonicalName();
+		ResearchPage             .class.getCanonicalName();
+		
 		TC.AER              .mAspect = Aspect.AIR;
 		TC.ALIENIS          .mAspect = Aspect.ELDRITCH;
 		TC.AQUA             .mAspect = Aspect.WATER;
