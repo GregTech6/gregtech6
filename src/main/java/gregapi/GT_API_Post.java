@@ -455,6 +455,10 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.ARS.mLoaded) {
 			BlocksGT.FLOWERS.add(ST.block(MD.ARS, "blueOrchid"));
 		}
+		if (MD.BOTA.mLoaded) {
+			BlocksGT.FLOWERS.add(ST.block(MD.BOTA, "flower"));
+			BlocksGT.FLOWERS.add(ST.block(MD.BOTA, "shinyFlower"));
+		}
 		
 		OUT.println(getModNameForLog() + ": Registering other Mods Enchantments for Materials");
 		for (Enchantment tEnchant : Enchantment.enchantmentsList) if (tEnchant != null) {

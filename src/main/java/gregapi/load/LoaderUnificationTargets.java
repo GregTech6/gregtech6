@@ -235,6 +235,18 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Livingwood             , ST.make(MD.BOTA, "livingwood", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Dreamwood              , ST.make(MD.BOTA, "dreamwood", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Shimmerwood            , ST.make(MD.BOTA, "shimmerwoodPlanks", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreLivingrock  , MT.ElvenDragonstone       , ST.make(MD.ALF, "ElvenOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreLivingrock  , MT.ElvenElementium        , ST.make(MD.ALF, "ElvenOre", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.oreLivingrock  , MT.ElvenQuartz            , ST.make(MD.ALF, "ElvenOre", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.oreLivingrock  , MT.Au                     , ST.make(MD.ALF, "ElvenOre", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.oreLivingrock  , MT.Iffesal                , ST.make(MD.ALF, "ElvenOre", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Elvorium               , ST.make(MD.ALF, "ElvenItems", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Mauftrium              , ST.make(MD.ALF, "ElvenItems", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.MuspelheimPower        , ST.make(MD.ALF, "ElvenItems", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.NiflheimPower          , ST.make(MD.ALF, "ElvenItems", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Elvorium               , ST.make(MD.ALF, "ElvenItems", 1, 6));
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Mauftrium              , ST.make(MD.ALF, "ElvenItems", 1, 7));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Iffesal                , ST.make(MD.ALF, "ElvenItems", 1, 10));
 //      OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.Ag                     , ST.make(MD.WTCH, "ingredient", 1, 157)); may be unbalanced
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Bedrockium             , ST.make(MD.ExU, "block_bedrockium", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Bedrockium             , ST.make(MD.ExU, "bedrockiumIngot", 1, 0));

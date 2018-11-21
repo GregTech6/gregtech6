@@ -26,12 +26,14 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.util.CR;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import vazkii.botania.api.BotaniaAPI;
@@ -53,6 +55,12 @@ public class Compat_Recipes_Botania extends CompatMods {
 		CR.remout(IL.BOTA_Granite_Chiseled.get(1));
 		CR.remout(IL.BOTA_Diorite_Chiseled.get(1));
 		CR.remout(IL.BOTA_Andesite_Chiseled.get(1));
+		
+		if (MD.ALF.mLoaded) {
+		RM.Hammer       .addRecipe1(T, 16,  16, IL.ALF_Ice.get(1), OM.dust(MT.Ice, U));
+		RM.Squeezer     .addRecipe1(T, 16, 128, IL.ALF_Ice.get(1), NF, FL.Ice.make(1000), NI);
+		RM.Juicer       .addRecipe1(T, 16, 128, IL.ALF_Ice.get(1), NF, FL.Ice.make(1000), NI);
+		}
 		
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, UT.Fluids.make("mushroomsoup", 500), ZL_IS);
 		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, UT.Fluids.make("mushroomsoup", 500), ZL_IS);

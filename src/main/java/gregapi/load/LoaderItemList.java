@@ -247,6 +247,9 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "blockOreLead"                    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "blockOreTin"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "blockOreUran"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "copperOre"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "tinOre"                          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IC2, "uraniumOre"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.TG, "oreTitanIron"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BR, "YelloriteOre"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BoP, "gemOre"                          , null));
@@ -367,6 +370,12 @@ public class LoaderItemList implements Runnable {
 		
 		IL.BOTA_Ender_Air_Bottle                .set(ST.make(MD.BOTA, "manaResource"                        , 1,15));
 		IL.BOTA_Paintslinger                    .set(ST.make(MD.BOTA, "lens"                                , 1,14));
+		
+		IL.ALF_LivingCobble                     .set(ST.make(MD.ALF, "LivingCobble"                         , 1, 0), new OreDictItemData(MT.Livingrock, U), OP.cobblestone);
+		IL.ALF_DreamWood                        .set(ST.make(MD.ALF, "DreamLog"                             , 1, 0), new OreDictItemData(MT.Dreamwood, U * 8, MT.Bark, U), OD.logWood);
+		IL.ALF_DreamSapling                     .set(ST.make(MD.ALF, "DreamSapling"                         , 1, 0), null, OP.treeSapling);
+		IL.ALF_DreamLeaves                      .set(ST.make(MD.ALF, "DreamLeaves"                          , 1, 0), null, OP.treeLeaves);
+		IL.ALF_Ice                              .set(ST.make(MD.ALF, "NiflheimIce"                          , 1, 0), new OreDictItemData(MT.Ice, U));
 		
 		IL.TC_Nugget_Beef                       .set(ST.make(MD.TC, "ItemNuggetBeef"                        , 1, 0), new OreDictItemData(MT.MeatCooked, U9));
 		IL.TC_Nugget_Chicken                    .set(ST.make(MD.TC, "ItemNuggetChicken"                     , 1, 0), new OreDictItemData(MT.MeatCooked, U9));
