@@ -246,8 +246,8 @@ public class CS {
 	, BIOMES_WOODS              = new HashSetNoNulls<>(F, BiomeGenBase.forest.biomeName, BiomeGenBase.forestHills.biomeName, "Autumn Forest", "Elysian Forest M", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge", "Maple Woods", BiomeGenBase.roofedForest.biomeName, BiomeGenBase.birchForest.biomeName, BiomeGenBase.birchForestHills.biomeName, "Pine Forest", "Rainforest", "Rainforest Valley", "Redwood Forest", "Lush Redwoods", "Dense Twilight Forest", "Twilight Forest", "Firefly Forest", "Spruce Woods", "Autumn Woods", "Flower Forest", "Birch Hills", "Birch Forest M", "Birch Forest Hills M", "Roofed Forest M", "Woodlands", "Temperate Rainforest", "Pinelands", "Tall Pine Forest", "Shield", "Mystic Grove", "Ominous Woods", "Blossom Hills", "Blossom Woods", "Aspen Forest", "Aspen Hills", "Cypress Forest", "Silver Pine Forest", "Silver Pine Hills", "Fir Forest", "Flowery Archipelago", "Oak Forest", "Pine Forest", "Pine Forest Archipelago")
 	, BIOMES_FOREST             = new HashSetNoNulls<>(F, BiomeGenBase.forest.biomeName, BiomeGenBase.forestHills.biomeName, "Autumn Forest", "Elysian Forest M", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Redwood Forest", "Woodlands", "Woodland Mountains", "Woodland Field", "Woodland Hills", "Woodland Lake", "Woodland Lake Edge")
 	, BIOMES_MAPLE              = new HashSetNoNulls<>(F, BiomeGenBase.forest.biomeName, BiomeGenBase.forestHills.biomeName, "Autumn Forest", "Elysian Forest M", "Elysian Forest", "Meadow Forest", "Seasonal Forest", "Seasonal Forest Clearing", "Forested Hills", "Forested Island", "Snow Forest", "Forest Island", "Forested Archipelago", "Forested Mountains", "Forested Valley", "Maple Woods")
-	, BIOMES_PLAINS             = new HashSetNoNulls<>(F, BiomeGenBase.plains.biomeName, "Meadow", "Meadow M", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Elysian Fields M", "Lowlands", "Origin Valley", "Grassy Archipelago", "Highlands", "Bald Hill", "Tundra", "Low Hills")
-	, BIOMES_HAZEL              = new HashSetNoNulls<>(F, BiomeGenBase.plains.biomeName, "Meadow", "Meadow M", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Elysian Fields M", "Lowlands", "Origin Valley", "Grassy Archipelago")
+	, BIOMES_PLAINS             = new HashSetNoNulls<>(F, BiomeGenBase.plains.biomeName, "Meadow", "Meadow M", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Elysian Fields M", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim", "Highlands", "Bald Hill", "Tundra", "Low Hills")
+	, BIOMES_HAZEL              = new HashSetNoNulls<>(F, BiomeGenBase.plains.biomeName, "Meadow", "Meadow M", "Grassland", "Flower Field", "Sunflower Plains", "Clearing", "Twilight Clearing", "Elysian Fields", "Elysian Fields M", "Lowlands", "Origin Valley", "Grassy Archipelago", "Alfheim")
 	, BIOMES_MOUNTAINS          = new HashSetNoNulls<>(F, BiomeGenBase.extremeHills.biomeName, BiomeGenBase.extremeHillsEdge.biomeName, BiomeGenBase.extremeHillsPlus.biomeName, BiomeGenBase.stoneBeach.biomeName, "Extreme Hills M", "Extreme Hills+ M", "Mountainous Archipelago", "Mountains", "Mountains Edge", "Plateau", "Highlands", "Highlands Center", "Alps", "Cliffs", "Flying Mountains", "Rock Mountains", "Snow Mountains", "Rock Island", "Valley", "Alpine Mountains", "Alpine Mountains Edge", "Alpine Mountains M", "Alpine Tundra", "Stone Canyon", "Stone Canyon 2", "Rocky Desert", "Rocky Hills")
 	, BIOMES_NETHER             = new HashSetNoNulls<>(F, BiomeGenBase.hell.biomeName)
 	, BIOMES_END                = new HashSetNoNulls<>(F, BiomeGenBase.sky.biomeName)
@@ -778,7 +778,7 @@ public class CS {
 	/** If you have to give something a World Parameter but there is no World... (Dummy World) */
 	public static DummyWorld DW;
 	/** Dimension Types that I use as parameter for my WorldGenerators, aside from the Vanilla Dimension IDs none of these IDs is accurate as they are just the Defaults of their Respective Mods! */
-	public static final int DIM_OVERWORLD = 0, DIM_NETHER = -1, DIM_END = 1, DIM_ENVM = -2, DIM_MOON = 2, DIM_MARS = 3, DIM_ASTEROIDS = 4, DIM_PLANETS = 5, DIM_AETHER = 6, DIM_TWILIGHT = 7, DIM_ATUM = 17, DIM_BETWEENLANDS = 20, DIM_EREBUS = 66, DIM_DEEPDARK = -100, DIM_LASTMILLENIUM = -112;
+	public static final int DIM_OVERWORLD = 0, DIM_NETHER = -1, DIM_END = 1, DIM_ENVM = -2, DIM_MOON = 2, DIM_MARS = 3, DIM_ASTEROIDS = 4, DIM_PLANETS = 5, DIM_AETHER = 6, DIM_TWILIGHT = 7, DIM_ATUM = 17, DIM_BETWEENLANDS = 20, DIM_EREBUS = 66, DIM_ALFHEIM = 105, DIM_DEEPDARK = -100, DIM_LASTMILLENIUM = -112;
 	
 	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
@@ -799,8 +799,9 @@ public class CS {
 	, GEN_ATUM          = new ArrayListNoNulls<>()
 	, GEN_DEEPDARK      = new ArrayListNoNulls<>()
 	, GEN_ENVM          = new ArrayListNoNulls<>()
-	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_DEEPDARK}
-	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_DEEPDARK, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
+	, GEN_ALFHEIM       = new ArrayListNoNulls<>()
+	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK}
+	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
 	;
 	
 	/** Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load! */
@@ -821,8 +822,9 @@ public class CS {
 	, ORE_ATUM          = new ArrayListNoNulls<>()
 	, ORE_DEEPDARK      = new ArrayListNoNulls<>()
 	, ORE_ENVM          = new ArrayListNoNulls<>()
-	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_DEEPDARK}
-	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_DEEPDARK, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
+	, ORE_ALFHEIM       = new ArrayListNoNulls<>()
+	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK}
+	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
 	;
 	
 	/** For Internal Usage. Even though after 2 years I still don't use this one... */

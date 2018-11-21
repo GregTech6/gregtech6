@@ -384,34 +384,34 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOcean           ("ocean.seawater"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA); // IT IS IMPORTANT THAT OCEAN COMES BEFORE SWAMP!!!
 		new WorldgenSwamp           ("swamp.dirtywater" , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS); // IT IS IMPORTANT THAT SWAMP COMES AFTER OCEAN!!!
 		
-		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay        , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
-		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables , 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay        , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables , 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ALFHEIM);
 		
 		new WorldgenBlackSand       ("river.magnetite"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		
-		new WorldgenLogDry          ("log.dry"          , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenLogDry          ("log.dry"          , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
 		new WorldgenLogRotten       ("log.rotten"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenLogMossy        ("log.mossy"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenLogMossy        ("log.mossy"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
 		new WorldgenLogFrozen       ("log.frozen"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
 		
 		new WorldgenTreeRubber      ("tree.rubber"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT);
 		new WorldgenTreeMaple       ("tree.maple"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
 		new WorldgenTreeWillow      ("tree.willow"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
 		new WorldgenTreeBlueMahoe   ("tree.bluemahoe"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenTreeHazel       ("tree.hazel"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenTreeHazel       ("tree.hazel"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
 		new WorldgenTreeCinnamon    ("tree.cinnamon"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenTreeRainbowood  ("tree.rainbowood"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_AETHER);
+		new WorldgenTreeRainbowood  ("tree.rainbowood"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM, GEN_AETHER);
 		
-		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_ATUM);
+		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_ATUM, GEN_ALFHEIM);
 		new WorldgenAetherRocks     ("aether.rocks"     , T, GEN_AETHER);
 		new WorldgenErebusRocks     ("erebus.rocks"     , T, GEN_EREBUS);
 		new WorldgenMoonRocks       ("moon.rocks"       , T, GEN_MOON);
 		new WorldgenMarsRocks       ("mars.rocks"       , T, GEN_MARS);
 		new WorldgenPlanetRocks     ("planet.rocks"     , T, GEN_PLANETS);
-		new WorldgenSticks          ("sticks"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM);
+		new WorldgenSticks          ("sticks"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ALFHEIM);
 		
 		new WorldgenGlowtus         ("plant.glowtus"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenBushes          ("plant.bush"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenBushes          ("plant.bush"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
 		new WorldgenHives           ("bumblehives"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ATUM, GEN_NETHER, GEN_END);
 		
 		new WorldgenCenterBiomes    ("center.biomes"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
@@ -549,13 +549,13 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.sulfur_o"          , T,   5,  15,   8, MT.S                            , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS);
 		
 		new WorldgenOresSmall("ore.small.certus"            , MD.AE     .mLoaded,  20,  40,   1, MT.CertusQuartz        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ASTEROIDS, GEN_MOON);
-		new WorldgenOresSmall("ore.small.vinteum"           , MD.ARS    .mLoaded,  30,  60,   8, MT.Vinteum             , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS);
-		new WorldgenOresSmall("ore.small.perdito"           , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedEntropy      , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.ignis"             , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedFire         , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.aer"               , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedAir          , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.aqua"              , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedWater        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.terra"             , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedEarth        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.ordo"              , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedOrder        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);
+		new WorldgenOresSmall("ore.small.vinteum"           , MD.ARS    .mLoaded,  30,  60,   8, MT.Vinteum             , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM);
+		new WorldgenOresSmall("ore.small.perdito"           , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedEntropy      , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
+		new WorldgenOresSmall("ore.small.ignis"             , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedFire         , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
+		new WorldgenOresSmall("ore.small.aer"               , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedAir          , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
+		new WorldgenOresSmall("ore.small.aqua"              , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedWater        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
+		new WorldgenOresSmall("ore.small.terra"             , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedEarth        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
+		new WorldgenOresSmall("ore.small.ordo"              , MD.TC     .mLoaded,  10,  60,   8, MT.InfusedOrder        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
 		new WorldgenOresSmall("ore.small.nikolite"          , MD.RP     .mLoaded,  10,  40,   4, MT.Nikolite            , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);
 		new WorldgenOresSmall("ore.small.teslatite"         , MD.BP     .mLoaded,  10,  40,   4, MT.Teslatite           , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);
 		new WorldgenOresSmall("ore.small.electrotine"       , MD.PR     .mLoaded,  10,  40,   4, MT.Electrotine         , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_NETHER, GEN_END);

@@ -109,10 +109,10 @@ public class GT6WorldGenerator {
 	
 	public static void generate(World aWorld, int aX, int aZ, boolean aGalactiCraft) {
 		switch(aWorld.provider.dimensionId) {
-		case -2147483648    : return;
-		case DIM_OVERWORLD  : generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD  , PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD   , DIM_OVERWORLD , aWorld, aX, aZ)); return;
-		case DIM_NETHER     : generate(new WorldGenContainer(GEN_NETHER                                                 , ORE_NETHER                                                , DIM_NETHER    , aWorld, aX, aZ)); return;
-		case DIM_END        : generate(new WorldGenContainer(GEN_END                                                    , ORE_END                                                   , DIM_END       , aWorld, aX, aZ)); return;
+		case -2147483648  : return;
+		case DIM_OVERWORLD: generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD , aWorld, aX, aZ)); return;
+		case DIM_NETHER   : generate(new WorldGenContainer(GEN_NETHER                                               , ORE_NETHER                                             , DIM_NETHER    , aWorld, aX, aZ)); return;
+		case DIM_END      : generate(new WorldGenContainer(GEN_END                                                  , ORE_END                                                , DIM_END       , aWorld, aX, aZ)); return;
 		}
 		
 		if (WD.dimTF(aWorld)) {
@@ -133,6 +133,10 @@ public class GT6WorldGenerator {
 		}
 		if (WD.dimATUM(aWorld)) {
 			generate(new WorldGenContainer(GEN_ATUM, ORE_ATUM, DIM_ATUM, aWorld, aX, aZ));
+			return;
+		}
+		if (WD.dimALF(aWorld)) {
+			generate(new WorldGenContainer(GEN_ALFHEIM, ORE_ALFHEIM, DIM_ALFHEIM, aWorld, aX, aZ));
 			return;
 		}
 		if (WD.dimDD(aWorld)) {

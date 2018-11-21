@@ -192,6 +192,10 @@ public class WD {
 	public static boolean dimERE(World aWorld) {return aWorld != null && dimERE(aWorld.provider);}
 	public static boolean dimERE(WorldProvider aProvider) {return MD.ERE.mLoaded && aProvider != null && "WorldProviderErebus".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
+	public static boolean dimALF(int aDimensionID) {return MD.ALF.mLoaded && dimALF(DimensionManager.getProvider(aDimensionID));}
+	public static boolean dimALF(World aWorld) {return aWorld != null && dimALF(aWorld.provider);}
+	public static boolean dimALF(WorldProvider aProvider) {return MD.ALF.mLoaded && aProvider != null && "WorldProviderAlfheim".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
 	public static boolean dimDD(int aDimensionID) {return (MD.ExU.mLoaded || MD.ExS.mLoaded) && dimDD(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimDD(World aWorld) {return aWorld != null && dimDD(aWorld.provider);}
 	public static boolean dimDD(WorldProvider aProvider) {return (MD.ExU.mLoaded || MD.ExS.mLoaded) && aProvider != null && "WorldProviderUnderdark".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}

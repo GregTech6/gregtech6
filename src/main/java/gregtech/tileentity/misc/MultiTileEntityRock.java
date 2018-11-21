@@ -30,6 +30,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
@@ -100,14 +101,16 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 				if (worldObj.provider.dimensionId ==  0) {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rock"); return 1;}
 				if (worldObj.provider.dimensionId == +1) {aChatReturn.add(LH.Chat.GRAY + "This is definitely an End"); return 1;}
 				if (WD.dimAETHER(worldObj)) {aChatReturn.add(LH.Chat.GRAY + "Holy $#!T, it's a Rock!"); return 1;}
+				if (WD.dimALF(worldObj)) {aChatReturn.add(LH.Chat.GRAY + "Wait that Rock is alive?!"); return 1;}
 				if (BIOMES_MOON.contains(getBiome().biomeName)) {aChatReturn.add(LH.Chat.GRAY + "This is definitely not made of Cheese"); return 1;}
 				if (BIOMES_MARS.contains(getBiome().biomeName)) {aChatReturn.add(LH.Chat.GRAY + "This is definitely from Mars"); return 1;}
 				if (BIOMES_SPACE.contains(getBiome().biomeName)) {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Space Rock"); return 1;}
-				aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rock"); return 1;
+				aChatReturn.add(LH.Chat.GRAY + "This definitely is a Rock");
+				return 1;
 			}
-			if (OM.is("itemFlint", mRock)) {aChatReturn.add(LH.Chat.GRAY + "It's a Flint"); return 1;}
+			if (OM.is_(OD.itemFlint, mRock)) {aChatReturn.add(LH.Chat.GRAY + "It's a Flint"); return 1;}
 			OreDictItemData tData = OM.anydata_(mRock);
-			if (tData != null && tData.mPrefix == OP.rockGt && tData.mMaterial != null) {
+			if (tData != null && tData.hasValidMaterialData()) {
 				if (tData.mMaterial.mMaterial == MT.MeteoricIron || tData.mMaterial.mMaterial == MT.Meteorite) {
 					aChatReturn.add(LH.Chat.YELLOW + "Looks like it fell from the Sky!"); return 1;
 				}
@@ -150,7 +153,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 		}
 	}
 	
-	private ItemStack getDefaultRock(int aAmount) {
+	public ItemStack getDefaultRock(int aAmount) {
 		if (worldObj == null) return OP.rockGt.mat(MT.Stone, aAmount);
 		if (worldObj.provider.dimensionId == -1) return OP.rockGt.mat(MT.Netherrack, aAmount);
 		if (worldObj.provider.dimensionId ==  0) return OP.rockGt.mat(MT.Stone, aAmount);
@@ -159,6 +162,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 		if (WD.dimERE(worldObj)) return OP.rockGt.mat(MT.Umber, aAmount);
 		if (WD.dimBTL(worldObj)) return OP.rockGt.mat(MT.Betweenstone, aAmount);
 		if (WD.dimATUM(worldObj)) return OP.rockGt.mat(MT.Limestone, aAmount);
+		if (WD.dimALF(worldObj)) return OP.rockGt.mat(MT.Livingrock, aAmount);
 		if (BIOMES_MOON.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MoonRock, aAmount);
 		if (BIOMES_MARS.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MarsRock, aAmount);
 		if (BIOMES_SPACE.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.SpaceRock, aAmount);

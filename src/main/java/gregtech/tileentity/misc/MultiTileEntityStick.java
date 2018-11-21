@@ -71,13 +71,13 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return new ArrayListNoNulls<>(F, WD.dimAETHER(worldObj) ? OP.stick.mat(MT.Skyroot, 1+rng(1+aFortune)) : WD.dimBTL(worldObj) ? OP.stick.mat(MT.Weedwood, 1+rng(1+aFortune)) : ST.make(Items.stick, 1+rng(1+aFortune), 0));
+		return new ArrayListNoNulls<>(F, getDefaultStick(1+rng(1+aFortune)));
 	}
 	
 	@Override
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return T;
-		UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, WD.dimAETHER(worldObj) ? OP.stick.mat(MT.Skyroot, 1) : WD.dimBTL(worldObj) ? OP.stick.mat(MT.Weedwood, 1) : ST.make(Items.stick, 1, 0), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5);
+		UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, getDefaultStick(1), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5);
 		playCollect();
 		return setToAir();
 	}
@@ -85,9 +85,13 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	@Override
 	public void onNeighborBlockChange(World aWorld, Block aBlock) {
 		if (isServerSide() && !worldObj.getBlock(xCoord, yCoord-1, zCoord).isSideSolid(worldObj, xCoord, yCoord-1, zCoord, FORGE_DIR[SIDE_TOP])) {
-			ST.drop(worldObj, getCoords(), WD.dimAETHER(worldObj) ? OP.stick.mat(MT.Skyroot, 1) : WD.dimBTL(worldObj) ? OP.stick.mat(MT.Weedwood, 1) : ST.make(Items.stick, 1, 0));
+			ST.drop(worldObj, getCoords(), getDefaultStick(1));
 			setToAir();
 		}
+	}
+	
+	public ItemStack getDefaultStick(int aAmount) {
+		return WD.dimAETHER(worldObj) ? OP.stick.mat(MT.Skyroot, aAmount) : WD.dimBTL(worldObj) ? OP.stick.mat(MT.Weedwood, aAmount) : (WD.dimALF(worldObj) && rng(8) == 0) ? OP.stick.mat(MT.Dreamwood, aAmount) : ST.make(Items.stick, aAmount, 0);
 	}
 	
 	@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] || SIDES_TOP_HORIZONTAL[aSide] ? mTexture : null;}
