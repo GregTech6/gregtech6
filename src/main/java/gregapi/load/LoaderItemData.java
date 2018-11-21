@@ -413,6 +413,8 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.craftingAnvil                     , ST.make(MD.RC, "anvil", 1, 0));
 		OM.reg(OD.craftingHardenedClay              , ST.make(Blocks.hardened_clay, 1, W));
 		OM.reg(OD.craftingHardenedClay              , ST.make(Blocks.stained_hardened_clay, 1, W));
+		OM.reg(OP.treeSapling                       , ST.make(MD.ALF, "DreamSapling", 1, W));
+		OM.reg(OP.treeLeaves                        , ST.make(MD.ALF, "DreamLeaves", 1, W));
 		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "Fir Sapling", 1, W));
 		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_acaciaSapling", 1, W));
 		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_ashSapling", 1, W));
@@ -1423,6 +1425,10 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BOTA, "livingrock1Stairs"                , 1,   W, MT.Livingrock         ,  U2* 3);
 		OM.data(MD.BOTA, "livingrock0Slab"                  , 1,   W, MT.Livingrock         ,  U2);
 		OM.data(MD.BOTA, "livingrock1Slab"                  , 1,   W, MT.Livingrock         ,  U2);
+		
+		
+		OM.data(MD.ALF, "DreamLog"                          , 1,   W, MT.Dreamwood          ,  U * 8, MT.Bark, U);
+		OM.data(MD.ALF, "LivingCobble"                      , 1,   W, MT.Livingrock         ,  U * 1);
 		
 		
 //      OM.data(MD.TCFM, "WandCaps"                         , 1,   0, MT.Alchemical         ,  5* U9);
