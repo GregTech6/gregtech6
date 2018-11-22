@@ -24,15 +24,12 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
 import gregapi.render.BlockTextureCopied;
-import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
-import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -51,7 +48,7 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 	static {
 		LH.add("gt.tileentity.portal.alfheim.tooltip.1", "Only works between the Alfheim and Midgard!");
 		LH.add("gt.tileentity.portal.alfheim.tooltip.2", "Margin of Error to still work: 128 Meters.");
-		LH.add("gt.tileentity.portal.alfheim.tooltip.3", "Requires Elven Dragonstone for activation");
+		LH.add("gt.tileentity.portal.alfheim.tooltip.3", "Requires an Interdimensional Gateway Core for activation");
 		LH.add("gt.tileentity.portal.alfheim.tooltip.4", "This is not a Trade Portal! It's working just like all other Mini Portals!");
 	}
 	
@@ -67,7 +64,7 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 	public void findTargetPortal() {
 		mTarget = null;
 		if (MD.ALF.mLoaded && worldObj != null && isServerSide()) {
-			if (worldObj.provider.dimensionId == DIM_ALF) {
+			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
 				for (MultiTileEntityMiniPortalAlfheim tTarget : sListAlfheimSide) if (tTarget != this) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
@@ -123,7 +120,7 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			ItemStack aStack = aPlayer.inventory.getCurrentItem();
-			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemElvenDragonstone", aStack)) {
+			if (ST.valid(aStack) && aStack.stackSize > 0 && IL.ALF_Gateway_Core.equal(aStack, F, T)) {
 				setPortalActive();
 				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
@@ -135,7 +132,7 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 	@Override public float getBlockHardness() {return Blocks.stone.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
 	@Override public float getExplosionResistance() {return Blocks.stone.getExplosionResistance(null);}
 	
-	public ITexture sAlfheimPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, 0x0000ff00, F, T, T), sMidgardPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, 0x00ff8800, F, T, T), sAlfheimPortalFrame = BlockTextureDefault.get(MT.Terrasteel, OP.blockSolid, F);
+	public ITexture sAlfheimPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, 0x0000ff00, F, T, T), sMidgardPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, 0x00ff8800, F, T, T), sAlfheimPortalFrame = BlockTextureCopied.get(ST.block(MD.BOTA, "dreamwood", Blocks.planks));
 	@Override public ITexture getPortalTexture() {return WD.dimALF(worldObj) ? sMidgardPortal : sAlfheimPortal;}
 	@Override public ITexture getFrameTexture() {return sAlfheimPortalFrame;}
 	

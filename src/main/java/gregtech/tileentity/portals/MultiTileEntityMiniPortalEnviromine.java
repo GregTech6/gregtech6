@@ -62,7 +62,7 @@ public class MultiTileEntityMiniPortalEnviromine extends MultiTileEntityMiniPort
 	public void findTargetPortal() {
 		mTarget = null;
 		if (MD.ENVM.mLoaded && worldObj != null && isServerSide()) {
-			if (worldObj.provider.dimensionId == DIM_ENVM) {
+			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
 				for (MultiTileEntityMiniPortalEnviromine tTarget : sListEnviromineSide) if (tTarget != this) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
