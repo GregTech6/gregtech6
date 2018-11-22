@@ -39,7 +39,7 @@ import net.minecraft.item.ItemStack;
 public class Loader_Recipes_Extruder implements Runnable {
 	@Override
 	@SuppressWarnings("unused")
-	public void run() {OUT.println("GT_Mod: Doing Extruder Recipes"); try {
+	public void run() {
 		RM.Extruder     .addRecipe2(T, F, F, F, T, 16,   64, IL.Module_Stone_Generator  .get(0), IL.Shape_Extruder_Plate        .get(0), OP.plate.mat(MT.Stone, 1));
 		RM.Extruder     .addRecipe2(T, F, F, F, T, 16,   64, IL.Module_Stone_Generator  .get(0), IL.Shape_Extruder_Plate_Curved .get(0), OP.plateCurved.mat(MT.Stone, 1));
 		RM.Extruder     .addRecipe2(T, F, F, F, T, 16,   32, IL.Module_Stone_Generator  .get(0), IL.Shape_Extruder_Rod          .get(0), OP.stick.mat(MT.Stone, 1));
@@ -247,6 +247,6 @@ public class Loader_Recipes_Extruder implements Runnable {
 				}
 				}
 			}
-		}} catch(Throwable e) {e.printStackTrace(ERR);}
+		}
 	}
 }

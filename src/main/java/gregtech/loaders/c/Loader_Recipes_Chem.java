@@ -36,7 +36,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Chem implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing GT Recipes for Chemical Stuff.");
+	@Override public void run() {
 		for (FluidStack tFluid : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {     
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.NaCl, U4), UT.Fluids.mul(tFluid, 3, 4, T), MT.SaltWater.liquid(U*1, F), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.NaCl    ), UT.Fluids.mul(tFluid, 3      ), MT.SaltWater.liquid(U*4, F), ZL_IS);

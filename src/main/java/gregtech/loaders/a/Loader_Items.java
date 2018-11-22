@@ -42,8 +42,6 @@ import gregtech.items.MultiItemTechnological;
 public class Loader_Items implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Items.");
-		
 		PrefixItem tItem;
 		
 		ItemsGT.TECH = new MultiItemTechnological();

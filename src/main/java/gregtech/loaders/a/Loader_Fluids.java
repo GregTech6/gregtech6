@@ -47,7 +47,6 @@ import net.minecraftforge.fluids.FluidStack;
 public class Loader_Fluids implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Fluids.");
 		UT.Fluids.create("HeliumPlasma"             , "Helium Plasma"       , MT.He                 , 3,   1000, 10000).setLuminosity(15);
 		UT.Fluids.create("NitrogenPlasma"           , "Nitrogen Plasma"     , MT.N                  , 3,   1000, 10000).setLuminosity(15);
 		

@@ -79,8 +79,6 @@ public class Loader_OreProcessing implements Runnable {
 	@Override
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void run() {
-		OUT.println("GT_Mod: Register Ore processing.");
-		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		
 		final ITexture[] tStoneTextures = new ITexture[] {

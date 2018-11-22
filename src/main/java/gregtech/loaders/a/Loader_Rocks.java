@@ -45,8 +45,6 @@ import net.minecraft.block.material.Material;
 public class Loader_Rocks implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register GT Rock Types.");
-		
 		BlockStones tStone;
 		
 		int n = 0;

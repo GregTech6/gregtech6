@@ -115,8 +115,6 @@ import net.minecraft.tileentity.TileEntity;
 public class Loader_MultiTileEntities implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register MultiTileEntities.");
-		
 		MultiTileEntityRegistry aRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
 		MultiTileEntityBlock

@@ -39,7 +39,8 @@ import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Copy implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Copying other Mods Recipes and the Fluid Registry over to GT Machines.");
+	@Override public void run() {
+		OUT.println("GT_Mod: Copying the Fluid Registry over to GT Machines.");
 		
 		for (Map<String, FluidContainerData> tMap : UT.Fluids.sEmpty2Fluid2Data.values()) for (FluidContainerData tData : tMap.values()) {
 			ItemStack tEmpty = (tData.emptyContainer.getItem() == Items.bucket ? ST.container(tData.filledContainer, F) : tData.emptyContainer);
@@ -55,6 +56,7 @@ public class Loader_Recipes_Copy implements Runnable {
 		}
 		
 		if (MD.FR.mLoaded) {
+			OUT.println("GT_Mod: Copying all Forestry Centrifuge Recipes over to the GT Centrifuge.");
 			try {
 				for (ICentrifugeRecipe tRecipe : RecipeManagers.centrifugeManager.recipes()) {
 					Map<ItemStack, Float> tMap = tRecipe.getAllProducts();
@@ -73,6 +75,7 @@ public class Loader_Recipes_Copy implements Runnable {
 				if (D1) e.printStackTrace(ERR);
 			}
 			
+			OUT.println("GT_Mod: Copying all Forestry Squeezer Recipes over to the GT Squeezer.");
 			try {
 				for (ISqueezerRecipe tRecipe : RecipeManagers.squeezerManager.recipes()) {
 					ItemStack[] tInput = tRecipe.getResources();

@@ -186,8 +186,6 @@ public class GT_Mod extends Abstract_Mod {
 		OP.gemLegendary .disableItemGeneration(MT.EnergiumRed, MT.EnergiumCyan);
 		
 		
-		OUT.println("GT_Mod: Register Other Stuff.");
-		
 		RM.pulverizing(ST.make(Blocks.cobblestone   , 1, W), ST.make(Blocks.sand, 1, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.stone         , 1, W), ST.make(Blocks.cobblestone, 1, 0), null, 0, F);
 		RM.pulverizing(ST.make(Blocks.gravel        , 1, W), ST.make(Items.flint, 1, 0), OP.dustSmall.mat(MT.Flint, 1), 10, F);
@@ -240,9 +238,7 @@ public class GT_Mod extends Abstract_Mod {
 				new Loader_Recipes_Extruder()
 			);
 			
-			for (Runnable tRunnable : tList) try {
-				tRunnable.run();
-			} catch(Throwable e) {e.printStackTrace(ERR);}
+			for (Runnable tRunnable : tList) try {tRunnable.run();} catch(Throwable e) {e.printStackTrace(ERR);}
 		}};
 		
 		new Compat_Recipes_Ganys                (MD.GAPI          , this);
@@ -304,9 +300,7 @@ public class GT_Mod extends Abstract_Mod {
 				new Loader_Recipes_Decomp(),
 				new Loader_Recipes_Handlers()
 			);
-			for (Runnable tRunnable : tList) try {
-				tRunnable.run();
-			} catch(Throwable e) {e.printStackTrace(ERR);}
+			for (Runnable tRunnable : tList) try {tRunnable.run();} catch(Throwable e) {e.printStackTrace(ERR);}
 		}};
 	}
 	
@@ -319,11 +313,15 @@ public class GT_Mod extends Abstract_Mod {
 		
 		if (MD.IC2C.mLoaded) for (int i = 0; i <= 6; i++) FMLInterModComms.sendMessage(MD.IC2C.mID, "generatorDrop", ST.save(UT.NBT.makeInt("Key", i), "Value", IL.IC2_Machine.get(1)));
 		
-		new Loader_MultiTileEntities().run();
-		new Loader_Books().run();
-		new Loader_OreProcessing().run();
-		new Loader_Worldgen().run();
-		new Loader_ItemIterator().run();
+		ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
+			new Loader_MultiTileEntities(),
+			new Loader_Books(),
+			new Loader_OreProcessing(),
+			new Loader_Worldgen(),
+			new Loader_ItemIterator()
+		);
+		for (Runnable tRunnable : tList) try {tRunnable.run();} catch(Throwable e) {e.printStackTrace(ERR);}
+		
 	}
 	
 	@Override
@@ -350,7 +348,6 @@ public class GT_Mod extends Abstract_Mod {
 		Block tBlock = ST.block(MD.FR, "beehives", NB);
 		if (tBlock != NB) {tBlock.setHarvestLevel("scoop", 0); GT_Tool_Scoop.sBeeHiveMaterial = tBlock.getMaterial();}
 		
-		OUT.println(getModNameForLog() + ": Adding Fake Recipes for NEI");
 //      if (IL.FR_Tree_Sapling  .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Tree_Sapling  .getWildcard(1)}                                , new ItemStack[] {IL.FR_Tree_Sapling   .getWithName(1, "Scanned Sapling"       )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
 //      if (IL.FR_Butterfly     .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Butterfly     .getWildcard(1)}                                , new ItemStack[] {IL.FR_Butterfly      .getWithName(1, "Scanned Butterfly"     )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);
 //      if (IL.FR_Larvae        .get(1) != null)    RecipeMap.sScannerFakeRecipes.addFakeRecipe(F, new ItemStack[] {IL.FR_Larvae        .getWildcard(1)}                                , new ItemStack[] {IL.FR_Larvae         .getWithName(1, "Scanned Larvae"        )}, null                                                    , new FluidStack[] {MT.Honey.liquid(U/20, T)}, null, 500, 2, 0);

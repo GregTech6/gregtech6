@@ -45,7 +45,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class Loader_Recipes_Crops implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing GT Recipes for Crops Stuff.");
+	@Override public void run() {
 		for (OreDictMaterial tMat : ANY.FlourGrains.mToThis) {
 			RM.biomass(OP.dust      .mat(tMat, 9), 64);
 			RM.biomass(OP.blockDust .mat(tMat, 1), 64);

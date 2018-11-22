@@ -32,8 +32,6 @@ import net.minecraft.block.material.Material;
 public class Loader_Others implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register own MultiTileEntity Stuff.");
-		
 		new MultiTileEntityRegistry("gt.multitileentity");
 		
 		MultiTileEntityBlock.getOrCreate(MD.GT.mID, "iron"          , Material.iron                 , Block.soundTypeMetal  , TOOL_pickaxe      , 0, 0, 15, F, F);

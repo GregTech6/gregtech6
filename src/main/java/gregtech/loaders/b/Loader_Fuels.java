@@ -30,8 +30,6 @@ import gregapi.util.UT;
 public class Loader_Fuels implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Initializing various Fuels.");
-		
 		FM.Burn         .addRecipe0(T, - 64,  1, UT.Fluids.make("liquid_extra_heavy_oil", 1)        , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 48,  1, UT.Fluids.make("liquid_heavy_oil", 1)              , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 32,  1, UT.Fluids.make("liquid_medium_oil", 1)             , UT.Fluids.make("carbondioxide", 1), ZL_IS);

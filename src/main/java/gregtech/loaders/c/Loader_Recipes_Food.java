@@ -50,7 +50,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Food implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing GT Recipes for Food Stuff.");
+	@Override public void run() {
 		RM.food_can(ST.make(Items.rotten_flesh  , 1, W), 4, "Canned Meat", IL.CANS_ROTTEN);
 		RM.food_can(ST.make(Items.spider_eye    , 1, W), 2, "Canned Spider Eye", IL.CANS_ROTTEN);
 		

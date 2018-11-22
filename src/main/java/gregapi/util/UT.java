@@ -597,13 +597,10 @@ public class UT {
 			NBTTagList tNBTList = new NBTTagList();
 			for (short i = 0; i < aPages.length; i++) {
 				if (i == 49 && D1) OUT.println("NOTE: Written Book has more than 50 Pages -> " + aMapping);
-				if (aPages[i].length() < 256)
-					tNBTList.appendTag(new NBTTagString(aPages[i]));
-				else
-					ERR.println("WARNING: String for Page of written Book too long! -> " + aPages[i]);
+				if (aPages[i].length() < 256) tNBTList.appendTag(new NBTTagString(aPages[i])); else ERR.println("WARNING: String for Page of written Book too long! -> " + aPages[i]);
 			}
 			rNBT.setTag("pages", tNBTList);
-			if (aLogging) OUT.println("NOTE: Added Book to Book List  -  Mapping: '"+aMapping+"'  -  Name: '"+aTitle+"'  -  Author: '"+aAuthor+"'");
+			if (aLogging) DEB.println("NOTE: Added Book to Book List  -  Mapping: '"+aMapping+"'  -  Name: '"+aTitle+"'  -  Author: '"+aAuthor+"'");
 			NBT.set(rStack, rNBT);
 			BOOK_MAP.put(aMapping, ST.copy(rStack));
 			BOOK_LIST.add(aMapping);

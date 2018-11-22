@@ -43,8 +43,6 @@ import net.minecraft.block.Block;
 public class Loader_Blocks implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Blocks.");
-		
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.CFoam                               = new BlockCFoam                ("gt.block.cfoam"));
 		BlocksGT.CFoamFresh                                                     = new BlockCFoamFresh           ("gt.block.cfoam.fresh");
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.CFoam, 1, W), F, TC.stack(TC.TERRA, 1), TC.stack(TC.TUTAMEN, 1));

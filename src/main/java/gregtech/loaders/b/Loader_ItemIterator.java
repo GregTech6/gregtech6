@@ -30,7 +30,7 @@ import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.item.ItemBase;
+import gregapi.item.IItemGT;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
@@ -44,27 +44,26 @@ import net.minecraft.item.ItemStack;
 public class Loader_ItemIterator implements Runnable {
 	@Override
 	public void run() {
-		ItemStack tStack, tStack2;
+		ItemStack tStack;
 		
-		OUT.println("GT_Mod: Scanning for certain kinds of compatible Machineblocks.");
-		if (null != (tStack = CR.get(tStack2 = OP.ingot.mat(MT.Bronze, 1), tStack2, tStack2, tStack2, null, tStack2, tStack2, tStack2, tStack2))) {
-			OM.data(tStack, new OreDictItemData(OM.stack(MT.Bronze, (8*U)/tStack.stackSize)));
+		// TODO: I will keep this antiquated shit for now.
+		OM.data(CR.get(tStack = OP.ingot.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
+		OM.data(CR.get(tStack = OP.plate.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
+		
+		OUT.println("GT_Mod: Scanning Food for the Canning Machine and Wrenches/Crowbars for the Config.");
+		
+		boolean tCheckCrowbar = F, tCheckWrench = F, tCheckCans = (IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists());
+		
+		try {buildcraft.api.tools.IToolWrench          .class.getCanonicalName(); tCheckWrench  = T;} catch(Throwable e) {/*Do nothing*/}
+		try {mods.railcraft.api.core.items.IToolCrowbar.class.getCanonicalName(); tCheckCrowbar = T;} catch(Throwable e) {/*Do nothing*/}
+		
+		if (tCheckCans) {
+		RM.Canner.addRecipe2(T, 16, 64, ST.make(Items.rotten_flesh , 1, W), IL.IC2_Food_Can_Empty.get( 4), IL.IC2_Food_Can_Spoiled  .get( 4, IL.IC2_Food_Can_Filled.get(4)));
+		RM.Canner.addRecipe2(T, 16, 32, ST.make(Items.spider_eye   , 1, W), IL.IC2_Food_Can_Empty.get( 2), IL.IC2_Food_Can_Poisonous.get( 2, IL.IC2_Food_Can_Filled.get(2)));
+		RM.Canner.addRecipe2(T, 16, 32, IL.Food_Potato_Poisonous   .get(1), IL.IC2_Food_Can_Empty.get( 2), IL.IC2_Food_Can_Poisonous.get( 2, IL.IC2_Food_Can_Filled.get(2)));
+		RM.Canner.addRecipe2(T, 16, 96, ST.make(Items.cake         , 1, W), IL.IC2_Food_Can_Empty.get(12), IL.IC2_Food_Can_Filled   .get(12));
+		RM.Canner.addRecipe2(T, 16, 48, ST.make(Items.mushroom_stew, 1, W), IL.IC2_Food_Can_Empty.get( 6), IL.IC2_Food_Can_Filled   .get( 6), ST.make(Items.bowl, 1, 0));
 		}
-		if (null != (tStack = CR.get(tStack2 = OP.plate.mat(MT.Bronze, 1), tStack2, tStack2, tStack2, null, tStack2, tStack2, tStack2, tStack2))) {
-			OM.data(tStack, new OreDictItemData(OM.stack(MT.Bronze, (8*U)/tStack.stackSize)));
-		}
-		
-		OUT.println("GT_Mod: Adding Food Recipes to the Automatic Canning Machine. (also during the following Item Iteration)");
-		
-		if (IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists()) {
-		RM.Canner.addRecipe2(T, 16, 64, ST.make(Items.rotten_flesh, 1, W), IL.IC2_Food_Can_Empty.get(4), IL.IC2_Food_Can_Spoiled.get(4, IL.IC2_Food_Can_Filled.get(4)));
-		RM.Canner.addRecipe2(T, 16, 32, ST.make(Items.spider_eye, 1, W), IL.IC2_Food_Can_Empty.get(2), IL.IC2_Food_Can_Poisonous.get(2, IL.IC2_Food_Can_Filled.get(2)));
-		RM.Canner.addRecipe2(T, 16, 32, IL.Food_Potato_Poisonous.get(1), IL.IC2_Food_Can_Empty.get(2), IL.IC2_Food_Can_Poisonous.get(2, IL.IC2_Food_Can_Filled.get(2)));
-		RM.Canner.addRecipe2(T, 16, 96, ST.make(Items.cake, 1, W), IL.IC2_Food_Can_Empty.get(12), IL.IC2_Food_Can_Filled.get(12));
-		RM.Canner.addRecipe2(T, 16, 48, ST.make(Items.mushroom_stew, 1, W), IL.IC2_Food_Can_Empty.get(6), IL.IC2_Food_Can_Filled.get(6), ST.make(Items.bowl, 1, 0));
-		}
-		
-		OUT.println("GT_Mod: Scanning ItemList.");
 		
 		@SuppressWarnings("rawtypes")
 		Iterator tIterator = Item.itemRegistry.iterator();
@@ -72,38 +71,25 @@ public class Loader_ItemIterator implements Runnable {
 		Object tObject;
 		String tName;
 		
-		while (tIterator.hasNext()) if ((tObject = tIterator.next()) != null && tObject instanceof Item && !(tObject instanceof ItemBase)) {
+		while (tIterator.hasNext()) if ((tObject = tIterator.next()) instanceof Item && !(tObject instanceof IItemGT)) {
 			Item tItem = (Item)tObject;
 			if ((tName = tItem.getUnlocalizedName()) != null) {
-				try {
-					if (tItem instanceof mods.railcraft.api.core.items.IToolCrowbar) {
-						if (!tItem.isDamageable() && !(COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(ST.make(tItem, 1, 0)))) {
-							if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "infiniteDurabilityRCCrowbars", F)) {
-								if (CR.remout(ST.make(tItem, 1, W))) OUT.println("GT_Mod: Removed infinite RC Crowbar: " + tName);
-							}
-						} else {
-							if (ToolsGT.add(TOOL_crowbar, ST.make(tItem, 1, W))) OUT.println("GT_Mod: Registered valid RC Crowbar: " + tName);
-						}
-					}
-				} catch (Throwable e) {/*Do nothing*/}
-				try {
-					if (tItem instanceof buildcraft.api.tools.IToolWrench) {
-						if (!tItem.isDamageable() && !(COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(ST.make(tItem, 1, 0)))) {
-							if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "infiniteDurabilityBCWrenches", F)) {
-								if (CR.remout(ST.make(tItem, 1, W))) OUT.println("GT_Mod: Removed infinite BC Wrench: " + tName);
-							}
-						} else {
-							if (ToolsGT.add(TOOL_wrench, ST.make(tItem, 1, W))) OUT.println("GT_Mod: Registered valid BC Wrench: " + tName);
-						}
-					}
-				} catch (Throwable e) {/*Do nothing*/}
-				
-				if (tItem instanceof ItemFood && IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists() && tItem != IL.IC2_Food_Can_Filled.item() && tItem != IL.IC2_Food_Can_Spoiled.item()) {
-					int tFoodValue = ((ItemFood)tItem).func_150905_g(ST.make(tItem, 1, 0));
-					if (tFoodValue > 0) {
-						RM.Canner.addRecipe2(T, 16, 16*tFoodValue, ST.make(tItem, 1, W), IL.IC2_Food_Can_Empty.get(tFoodValue), IL.IC2_Food_Can_Filled.get(tFoodValue), ST.container(ST.make(tItem, 1, 0), true));
-					}
+				if (tCheckCrowbar && tItem instanceof mods.railcraft.api.core.items.IToolCrowbar) {
+					if (!tItem.isDamageable() && !(COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(ST.make(tItem, 1, 0)))) {
+						if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "infiniteDurabilityRCCrowbars", F) && CR.remout(ST.make(tItem, 1, W))) OUT.println("GT_Mod: Removed infinite RC Crowbar: " + ST.regName(tItem));
+					} else if (ToolsGT.add(TOOL_crowbar, ST.make(tItem, 1, W))) OUT.println("GT_Mod: Registered valid RC Crowbar: " + ST.regName(tItem));
 				}
+				if (tCheckWrench && tItem instanceof buildcraft.api.tools.IToolWrench) {
+					if (!tItem.isDamageable() && !(COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(ST.make(tItem, 1, 0)))) {
+						if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "infiniteDurabilityBCWrenches", F) && CR.remout(ST.make(tItem, 1, W))) OUT.println("GT_Mod: Removed infinite BC Wrench: " + ST.regName(tItem));
+					} else if (ToolsGT.add(TOOL_wrench, ST.make(tItem, 1, W))) OUT.println("GT_Mod: Registered valid BC Wrench: " + ST.regName(tItem));
+				}
+				if (tCheckCans && tItem instanceof ItemFood && tItem != IL.IC2_Food_Can_Filled.item() && tItem != IL.IC2_Food_Can_Spoiled.item()) {
+					int tFoodValue = ((ItemFood)tItem).func_150905_g(ST.make(tItem, 1, 0));
+					if (tFoodValue > 0) RM.Canner.addRecipe2(T, 16, 16*tFoodValue, ST.make(tItem, 1, W), IL.IC2_Food_Can_Empty.get(tFoodValue), IL.IC2_Food_Can_Filled.get(tFoodValue), ST.container(ST.make(tItem, 1, 0), T));
+				}
+				
+				// TODO: Gah, too lazy to install those Mods again to do it proper, and those are not Registry Names, that I could just plop in somewhere else, so welp...
 				
 				if (tName.equals("item.ItemSensorLocationCard") || tName.equals("item.ItemEnergySensorLocationCard") || tName.equals("item.ItemEnergyArrayLocationCard") || tName.equals("item.ItemTextCard")) {
 					RM.Assembler.addRecipe1(T, 16, 400, ST.make(tItem, 1, W), IL.Circuit_Basic.get(2));

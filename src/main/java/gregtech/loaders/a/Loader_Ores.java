@@ -46,7 +46,6 @@ import net.minecraft.init.Blocks;
 public class Loader_Ores implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Ore Blocks.");
 		BlocksGT.oreBedrock                 = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.bedrock"          , OP.oreBedrock             , null, null, new Drops_None()          , BlockTextureCopied.get(Blocks.bedrock         , 0), Material.rock, Block.soundTypePiston  , TOOL_pickaxe,-1,3600000F,9999,9999,9999,0,0,0,1,1,1,F,F,T,T,T,T,F,F,F,F,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.oreSmallBedrock            = new PrefixBlock_(MD.GT, "gt.meta.ore.small.bedrock"           , OP.oreSmall               , null, null, new Drops_None()          , BlockTextureCopied.get(Blocks.bedrock         , 0), Material.rock, Block.soundTypePiston  , TOOL_pickaxe,-1,3600000F,9999,9999,9999,0,0,0,1,1,1,F,F,T,T,T,T,F,F,F,F,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
 		

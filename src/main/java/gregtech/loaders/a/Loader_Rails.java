@@ -38,8 +38,6 @@ import net.minecraft.init.Blocks;
 public class Loader_Rails implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Rails.");
-		
 		BlocksGT.RailAluminium                      = new BlockBaseRail(null, "gt.block.rail.aluminium"                 , "Aluminium Track"                 , F, F, 0.20F,  6, MT.Al                .mToolQuality-1, Textures.BlockIcons.RAIL_STRAIGHT_ALUMINIUM        , Textures.BlockIcons.RAIL_TURNED_ALUMINIUM);
 		BlocksGT.RailBronze                         = new BlockBaseRail(null, "gt.block.rail.bronze"                    , "Bronze Track"                    , F, F, 0.30F,  8, MT.Bronze            .mToolQuality-1, Textures.BlockIcons.RAIL_STRAIGHT_BRONZE           , Textures.BlockIcons.RAIL_TURNED_BRONZE);
 		BlocksGT.RailSteel                          = new BlockBaseRail(null, "gt.block.rail.steel"                     , "Steel Track"                     , F, F, 0.50F, 12, MT.Steel             .mToolQuality-1, Textures.BlockIcons.RAIL_STRAIGHT_STEEL            , Textures.BlockIcons.RAIL_TURNED_STEEL);

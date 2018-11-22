@@ -39,7 +39,7 @@ import gregapi.wooddict.WoodEntry;
 import net.minecraft.item.ItemStack;
 
 public class Loader_Recipes_Woods implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing Recipes for Woods.");
+	@Override public void run() {
 		for (int i = 0; i <  4; i++) {
 		RM.Laminator    .addRecipe2(T, 16,  192, OP.plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.Log1 , 1, i), ST.make(BlocksGT.Log1FireProof , 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, OP.plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.LogA , 1, i), ST.make(BlocksGT.LogAFireProof , 1, i));

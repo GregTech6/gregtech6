@@ -47,7 +47,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Other implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing GT Recipes for other things.");
+	@Override public void run() {
 		dust.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {if (aEvent.mMaterial.mReRegistrations.contains(ANY.Wax)) CR.remove(aEvent.mStack);}});
 		
 		for (OreDictMaterial tWax : ANY.Wax.mToThis) {

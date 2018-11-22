@@ -37,7 +37,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Potions implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing GT Recipes for Potion Stuff.");
+	@Override public void run() {
 		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)}) {
 		RM.Distillery   .addRecipe1(T, 16,   48, ST.make(Items.nether_wart      , 1,  W), tWater, FL.Potion_Awkward     .make(750), ZL_IS);
 		

@@ -26,7 +26,7 @@ import gregapi.util.UT;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Alloys implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing GT Recipes for Alloy Mixing.");
+	@Override public void run() {
 		for (String tCopper : new String[] {"molten.copper", "molten.annealedcopper"}) {
 		mix(tCopper             ,  1, "molten.nickel"       ,  1                                                        , "molten.constantan"       ,  2);
 		mix(tCopper             ,  3, "molten.tin"          ,  1                                                        , "molten.bronze"           ,  4);

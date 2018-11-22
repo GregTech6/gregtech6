@@ -76,8 +76,6 @@ import net.minecraft.item.ItemStack;
 public class Loader_Tools implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Tools.");
-		
 		ToolsGT.sMetaTool = new MultiItemToolWithCompat(MD.GT.mID, "gt.metatool.01");
 		
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.SWORD                     , "Sword"                           , ""                                                    , new GT_Tool_Sword()                                       .setMaterialAmount(OP.toolHeadSword                 .mAmount), OreDictToolNames.sword, OreDictToolNames.blade                                                                                           , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.TELUM         , 4)                                                                ), TOOL_sword);

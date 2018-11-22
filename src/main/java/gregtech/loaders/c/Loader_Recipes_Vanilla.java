@@ -45,7 +45,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Vanilla implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing Vanilla related Recipes.");
+	@Override public void run() {
 		CR.remove(ST.make(Blocks.cobblestone, 1, 0), ST.make(Items.quartz, 1, 0), NI, ST.make(Items.quartz, 1, 0), ST.make(Blocks.cobblestone, 1, 0));
 		CR.remove(ST.make(Items.blaze_rod, 1, 0));
 		CR.remove(ST.make(Items.reeds, 1, 0));

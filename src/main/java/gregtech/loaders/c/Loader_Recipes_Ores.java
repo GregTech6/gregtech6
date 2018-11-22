@@ -44,7 +44,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Ores implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing GT Recipes for Ore Processing.");
+	@Override public void run() {
 		RM.Centrifuge   .addRecipe1(T, 64,  144, OM.dust(MT.DarkAsh, U*2), OM.dust(MT.Ash), IL.TE_Slag.get(1, IL.IE_Slag.get(1, OM.dust(MT.Ash))));
 		
 		for (FluidStack tWater : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {

@@ -37,8 +37,6 @@ import net.minecraft.block.material.Material;
 public class Loader_PrefixBlocks implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register PrefixBlocks.");
-		
 		BlocksGT.blockGem                   = new PrefixBlock_(MD.GT, "gt.meta.storage.gem"         , OP.blockGem               , null                  , null, null, null                                                  , Material.rock , Block.soundTypeStone  , TOOL_pickaxe  , 1.5F, 4.5F,   0,   0, 999, 0,0,0,1,1,1, F,T,F,F,T,T,T,T,T,T,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.blockDust                  = new PrefixBlock_(MD.GT, "gt.meta.storage.dust"        , OP.blockDust              , null                  , null, null, null                                                  , Material.sand , Block.soundTypeSand   , TOOL_shovel   , 0.5F, 4.5F,  -2,   0, 999, 0,0,0,1,1,1, T,F,F,F,T,T,T,T,T,T,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.blockIngot                 = new PrefixBlock_(MD.GT, "gt.meta.storage.ingot"       , OP.blockIngot             , null                  , null, null, null                                                  , Material.iron , Block.soundTypeMetal  , TOOL_pickaxe  , 1.0F, 3.0F,   0,   0, 999, 0,0,0,1,1,1, F,T,F,F,T,T,T,T,T,T,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);

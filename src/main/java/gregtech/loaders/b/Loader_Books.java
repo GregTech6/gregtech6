@@ -39,7 +39,7 @@ import net.minecraft.item.ItemStack;
 public class Loader_Books implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Books.");
+		OUT.println("GT_Mod: Registering Books.");
 		
 		String tPage = "";
 		List<String> tBook = new ArrayListNoNulls<>();

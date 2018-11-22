@@ -47,7 +47,6 @@ import net.minecraft.init.Blocks;
 public class Loader_Woods implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Woods.");
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Log1            = new BlockTreeLog1             ("gt.block.log.1"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Log1FireProof   = new BlockTreeLog1FireProof    ("gt.block.log.1.fireproof"));
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.LogA            = new BlockTreeLogA             ("gt.block.log.a"));

@@ -50,8 +50,6 @@ public class Loader_Loot implements Runnable {
 		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_DESERT_CHEST);
 		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_JUNGLE_CHEST);
 		
-		OUT.println("GT_Mod: Adding worldgenerated Chest Content.");
-		
 		addLoot(ChestGenHooks.BONUS_CHEST               ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
 		addLoot(ChestGenHooks.BONUS_CHEST               ,   5, 8,16, IL.Bottle_Glue.get(1));
 		addLoot(ChestGenHooks.BONUS_CHEST               ,   2, 8,16, IL.Bottle_Lubricant.get(1));
