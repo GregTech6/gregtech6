@@ -26,8 +26,6 @@ import java.util.Random;
 import java.util.Set;
 
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
-import gregapi.data.MT;
-import gregapi.data.OP;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -59,7 +57,7 @@ public class WorldgenAlfheimRocks extends WorldgenObject {
 				if (tContact.getMaterial().isLiquid()) break;
 				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
 				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) continue;
-				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)!=0?ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)));
+				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)!=0?ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)):null, F, T);
 				break;
 			}
 		}
