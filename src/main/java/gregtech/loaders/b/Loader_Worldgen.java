@@ -39,6 +39,7 @@ import gregapi.worldgen.WorldgenOresSmall;
 import gregapi.worldgen.WorldgenStone;
 import gregtech.worldgen.*;
 import gregtech.worldgen.aether.WorldgenAetherRocks;
+import gregtech.worldgen.alfheim.WorldgenAlfheimRocks;
 import gregtech.worldgen.center.WorldgenBeacon;
 import gregtech.worldgen.center.WorldgenCenterBiomes;
 import gregtech.worldgen.center.WorldgenNexus;
@@ -402,7 +403,8 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenTreeCinnamon    ("tree.cinnamon"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
 		new WorldgenTreeRainbowood  ("tree.rainbowood"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM, GEN_AETHER);
 		
-		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_ATUM, GEN_ALFHEIM);
+		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_ATUM);
+		new WorldgenAlfheimRocks    ("alfheim.rocks"    , T, GEN_ALFHEIM);
 		new WorldgenAetherRocks     ("aether.rocks"     , T, GEN_AETHER);
 		new WorldgenErebusRocks     ("erebus.rocks"     , T, GEN_EREBUS);
 		new WorldgenMoonRocks       ("moon.rocks"       , T, GEN_MOON);
