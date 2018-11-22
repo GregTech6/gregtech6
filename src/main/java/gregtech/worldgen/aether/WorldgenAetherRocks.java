@@ -59,7 +59,7 @@ public class WorldgenAetherRocks extends WorldgenObject {
 				if (tContact.getMaterial().isLiquid()) break;
 				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
 				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) continue;
-				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)!=0?ST.save(UT.NBT.make(), NBT_VALUE, UT.Code.select(null, OP.gem.mat(MT.Ambrosium, 1), ST.make(Items.flint, 1, 0), ST.make(Items.flint, 1, 0), OP.rockGt.mat(MT.MeteoricIron, 1))):null, F, T);
+				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)==0?ST.save(UT.NBT.make(), NBT_VALUE, UT.Code.select(null, OP.gem.mat(MT.Ambrosium, 1), ST.make(Items.flint, 1, 0), ST.make(Items.flint, 1, 0), OP.rockGt.mat(MT.MeteoricIron, 1))):null, F, T);
 				break;
 			}
 		}

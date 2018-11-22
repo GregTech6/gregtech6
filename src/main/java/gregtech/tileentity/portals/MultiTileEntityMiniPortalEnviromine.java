@@ -46,7 +46,7 @@ public class MultiTileEntityMiniPortalEnviromine extends MultiTileEntityMiniPort
 	sListWorldSide      = new ArrayListNoNulls<>();
 	
 	static {
-		LH.add("gt.tileentity.portal.enviromine.tooltip.1", "Only works between the Enviromine Dimension and the Overworld!");
+		LH.add("gt.tileentity.portal.enviromine.tooltip.1", "Only works between the Enviromine Caves and the Overworld!");
 		LH.add("gt.tileentity.portal.enviromine.tooltip.2", "Margin of Error to still work: 128 Meters.");
 		LH.add("gt.tileentity.portal.enviromine.tooltip.3", "Requires Exquisite Diamond for activation");
 	}

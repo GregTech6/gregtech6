@@ -46,7 +46,7 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 	sListWorldSide   = new ArrayListNoNulls<>();
 	
 	static {
-		LH.add("gt.tileentity.portal.alfheim.tooltip.1", "Only works between the Alfheim and Midgard!");
+		LH.add("gt.tileentity.portal.alfheim.tooltip.1", "Only works between Alfheim and Midgard!");
 		LH.add("gt.tileentity.portal.alfheim.tooltip.2", "Margin of Error to still work: 128 Meters.");
 		LH.add("gt.tileentity.portal.alfheim.tooltip.3", "Requires an Interdimensional Gateway Core for activation");
 		LH.add("gt.tileentity.portal.alfheim.tooltip.4", "This is not a Trade Portal! It's working just like all other Mini Portals!");
@@ -132,7 +132,7 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 	@Override public float getBlockHardness() {return Blocks.stone.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
 	@Override public float getExplosionResistance() {return Blocks.stone.getExplosionResistance(null);}
 	
-	public ITexture sAlfheimPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, 0x0000ff00, F, T, T), sMidgardPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, 0x00ff8800, F, T, T), sAlfheimPortalFrame = BlockTextureCopied.get(ST.block(MD.BOTA, "dreamwood", Blocks.planks));
+	public ITexture sAlfheimPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, 0x000088ff, F, T, T), sMidgardPortal = BlockTextureCopied.get(Blocks.portal, SIDE_ANY, 0, 0x00ffff00, F, T, T), sAlfheimPortalFrame = BlockTextureCopied.get(ST.block(MD.BOTA, "dreamwood", Blocks.planks));
 	@Override public ITexture getPortalTexture() {return WD.dimALF(worldObj) ? sMidgardPortal : sAlfheimPortal;}
 	@Override public ITexture getFrameTexture() {return sAlfheimPortalFrame;}
 	

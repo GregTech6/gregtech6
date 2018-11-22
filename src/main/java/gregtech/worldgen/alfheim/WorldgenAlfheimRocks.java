@@ -52,12 +52,12 @@ public class WorldgenAlfheimRocks extends WorldgenObject {
 		if (tRegistry == null) return F;
 		for (int i = 0, j = 1+aRandom.nextInt(2); i < j; i++) {
 			int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
-			for (int tY = 60+aRandom.nextInt(40); tY > 0; tY--) {
+			for (int tY = 80+aRandom.nextInt(80); tY > 60; tY--) {
 				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
 				if (tContact.getMaterial().isLiquid()) break;
 				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
 				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) continue;
-				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)!=0?ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)):null, F, T);
+				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)==0?ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)):null, F, T);
 				break;
 			}
 		}
