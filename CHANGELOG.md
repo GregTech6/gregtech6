@@ -33,6 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Emeralds all of a sudden switching from Electrolyzing to Centrifuge Recipe in the previous Release, it's Electrolyzer again.
 [ADDED] Small Ores for Amazonite, Red Onyx and Black Onyx.
 [ADDED] Enviromine Miniature Portal, is made of Black Granite and requires Exquisite Diamonds to be activated. It is literally just a plain Nether alike Cave Dimension for Overworld Ore Mining Purposes.
+[ADDED] Alfheim Miniature Portal. Note that this is just a regular Miniature Portal, like all the others, this is not the Trade Portal!
 
 
 6.09.09:

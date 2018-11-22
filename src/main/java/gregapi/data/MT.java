@@ -1042,8 +1042,8 @@ public class MT {
 	ArcaneCompound          = dust          ( 8366, "Arcane Compound"       , SET_ROUGH             , 180, 140,  50, 255).put(MAGICAL, FURNACE)                                                                                                                                                                                                                                                                                     .aspects(TC.PRAECANTIO, 1).setSmelting(ArcaneAsh, U*2),
 	
 	
-	ManaDiamond             = gem           ( 8278, "Mana Diamond"          , SET_DIAMOND           , 128, 255, 255, 127).put(MAGICAL, CRYSTAL, BRITTLE, UNBURNABLE)                                                                                                    .setMcfg( 1, Diamond        , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.VITREUS, 3, TC.LUCRUM, 4, TC.PRAECANTIO , 4).qual(3, 10.0,  1280,  3),
-	ElvenDragonstone        = gem           ( 8279, "Elven Dragonstone"     , SET_DIAMOND           , 240, 140, 240, 127).put(MAGICAL, CRYSTAL, BRITTLE, UNBURNABLE)                                                                                                    .setMcfg( 1, Diamond        , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.VITREUS, 3, TC.LUCRUM, 4, TC.ALIENIS    , 4).qual(3, 12.0,  1280,  3).setLocal("Dragonstone"),
+	ManaDiamond             = gem           ( 8278, "Mana Diamond"          , SET_DIAMOND           , 128, 255, 255, 127).put(MAGICAL, CRYSTAL, BRITTLE, UNBURNABLE)                                                                                                    .setMcfg( 1, Diamond        , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.VITREUS, 3, TC.LUCRUM, 4, TC.PRAECANTIO , 2).qual(3, 10.0,  1280,  3),
+	ElvenDragonstone        = gem           ( 8279, "Elven Dragonstone"     , SET_DIAMOND           , 240, 140, 240, 127).put(MAGICAL, CRYSTAL, BRITTLE, UNBURNABLE)                                                                                                    .setMcfg( 1, Diamond        , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.VITREUS, 3, TC.LUCRUM, 4, TC.PRAECANTIO , 4).qual(3, 12.0,  1280,  3).setLocal("Dragonstone"),
 	
 	
 	CrimsonMiddle           = gem           ( 8282, "Crimson Middle"        , SET_DIAMOND           , 240,  50,  50, 127).lens(DYE_INDEX_Red        ).put(GLOWING, LIGHTING, MORTAR, BRITTLE)                                                                                                                                                                                                                                       .aspects(TC.VITREUS, 2, TC.LUX, 2, TC.IGNIS         , 2),
@@ -1350,10 +1350,10 @@ public class MT {
 	ElvenElementium         = alloymachore  ( 8722, "Elven Elementium"      , SET_SHINY             , 250, 120, 250, 255).put(MAGICAL).qual(3, 14.0, 512, 3)                                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 2).heat(Fe.mMeltingPoint+1000, Fe.mBoilingPoint+2000).setLocal("Elementium"),
 	GaiaSpirit              = alloymachine  ( 8735, "Gaia Spirit"           , SET_SHINY             , 250, 250, 250, 255).put(MAGICAL, GLOWING).qual(3, 20.0,2048, 4)                                                                                                                                                                                                                                                               .aspects(TC.AURAM, 4, TC.SPIRITUS, 4, TC.PRAECANTIO, 4).heat(W.mMeltingPoint+250, W.mBoilingPoint+500),
 	Endium                  = metalore      ( 8736, "Endium"                , SET_METALLIC          ,  50,  10,  50, 255).put(MAGICAL).qual(3, 12.0, 256, 3)                                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 1, TC.ALIENIS, 3),
-	Mauftrium               = alloymachore  ( 8737, "Mauftrium"             , SET_SHINY             , 250, 225, 121, 255).put(MAGICAL)                                                                                                                                                                                                                                                                                              .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 1).heat(Fe.mMeltingPoint, Fe.mBoilingPoint),
-	Elvorium                = alloymachore  ( 8738, "Elvorium"              , SET_SHINY             , 235, 164,  77, 255).put(MAGICAL).qual(3, 14.0,2048, 3)                                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 2).heat(Fe.mMeltingPoint+1000, Fe.mBoilingPoint+2000),
-	NiflheimPower           = alloy         ( 8739, "Niflheim Power"        , SET_SHINY             ,  94,  94, 174, 255).put(MAGICAL, GLOWING)                                                                                                                         .setMcfg( 1, Mauftrium      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.GELUM     , 2, TC.POTENTIA, 2),
-	MuspelheimPower         = alloy         ( 8740, "Muspelheim Power"      , SET_SHINY             , 174,  94,  94, 255).put(MAGICAL, GLOWING)                                                                                                                         .setMcfg( 1, Mauftrium      , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.IGNIS     , 2, TC.POTENTIA, 2),
+	Mauftrium               = alloymachore  ( 8737, "Mauftrium"             , SET_SHINY             , 250, 225, 121, 255).put(MAGICAL).qual(3, 12.0,1024, 3)                                                                                                                                                                                                                                                                        .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 1).heat(Fe.mMeltingPoint, Fe.mBoilingPoint),
+	Elvorium                = alloymachore  ( 8738, "Elvorium"              , SET_SHINY             , 235, 164,  77, 255).put(MAGICAL).qual(3, 14.0,2048, 3)                                                                                                            .setMcfg( 1, ElvenElementium, 1*U, ElvenDragonstone , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 4).heat(Fe.mMeltingPoint+1000, Fe.mBoilingPoint+2000),
+	NiflheimPower           = alloy         ( 8739, "Niflheim Power"        , SET_SHINY             ,  94,  94, 174, 255).put(MAGICAL, GLOWING, UNBURNABLE).qual(3, 18.0,2048, 3)                                                                                       .setMcfg( 1, Elvorium       , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.GELUM     , 2, TC.POTENTIA, 2),
+	MuspelheimPower         = alloy         ( 8740, "Muspelheim Power"      , SET_SHINY             , 174,  94,  94, 255).put(MAGICAL, GLOWING, UNBURNABLE, BURNING).qual(3, 18.0,2048, 3)                                                                              .setMcfg( 1, Elvorium       , 1*U)                                                                                                                          .aspects(TC.METALLUM, 2, TC.IGNIS     , 2, TC.POTENTIA, 2),
 	Iffesal                 = oredust       ( 8741, "Iffesal"               , SET_SHINY             ,  14,  25, 171, 255).put(MAGICAL)                                                                                                                                                                                                                                                                                              .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 4),
 	
 	
@@ -1578,6 +1578,12 @@ public class MT {
 			ManaQuartz              .put(MD.BOTA).visDefault();
 			ElvenQuartz             .put(MD.BOTA).visDefault();
 			
+			Mauftrium               .put(MD.ALF).visDefault();
+			Elvorium                .put(MD.ALF).visDefault();
+			MuspelheimPower         .put(MD.ALF).visDefault();
+			NiflheimPower           .put(MD.ALF).visDefault();
+			Iffesal                 .put(MD.ALF).visDefault();
+			
 			Iritanium               .put(MD.GC_ADV_ROCKETRY);
 			TitaniumAluminide       .put(MD.GC_ADV_ROCKETRY);
 			
@@ -1758,6 +1764,7 @@ public class MT {
 			InfusedFire             .addEnchantmentForTools(Enchantment.fireAspect, 3);
 			Vulcanite               .addEnchantmentForTools(Enchantment.fireAspect, 3);
 			Amordrine               .addEnchantmentForTools(Enchantment.fireAspect, 3);
+			MuspelheimPower         .addEnchantmentForTools(Enchantment.fireAspect, 3);
 			RedMatter               .addEnchantmentForTools(Enchantment.fireAspect, 3);
 			
 			Ad                      .addEnchantmentForTools(Enchantment.silkTouch, 1);
@@ -1776,6 +1783,7 @@ public class MT {
 			NetherStar              .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			InfusedOrder            .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			InfusedBalance          .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			NiflheimPower           .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Vibramantium            .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			
 			Hepatizon               .addEnchantmentForTools(Enchantment.smite, 2);
@@ -1790,6 +1798,7 @@ public class MT {
 			EnergeticAlloy          .addEnchantmentForTools(Enchantment.smite, 4);
 			SpectreIron             .addEnchantmentForTools(Enchantment.smite, 5);
 			VibrantAlloy            .addEnchantmentForTools(Enchantment.smite, 5);
+			Mauftrium               .addEnchantmentForTools(Enchantment.smite, 5);
 			Carmot                  .addEnchantmentForTools(Enchantment.smite, 5);
 			Pt                      .addEnchantmentForTools(Enchantment.smite, 5);
 			Mithril                 .addEnchantmentForTools(Enchantment.smite, 5);
@@ -1846,6 +1855,7 @@ public class MT {
 			ShadowSteel             .addEnchantmentForTools(Enchantment.sharpness, 4);
 			Zanite                  .addEnchantmentForTools(Enchantment.sharpness, 4);
 			DamascusSteel           .addEnchantmentForTools(Enchantment.sharpness, 5);
+			Elvorium                .addEnchantmentForTools(Enchantment.sharpness, 5);
 			InfusedEntropy          .addEnchantmentForTools(Enchantment.sharpness, 5);
 			Ke                      .addEnchantmentForTools(Enchantment.sharpness, 6);
 			Trinitanium             .addEnchantmentForTools(Enchantment.sharpness, 7);
@@ -2372,7 +2382,7 @@ public class MT {
 			Diamond.put(AchievementList.openInventory, AchievementList.mineWood, AchievementList.buildWorkBench, AchievementList.buildPickaxe, AchievementList.buildFurnace, AchievementList.acquireIron, AchievementList.diamonds);
 			ManaDiamond.put(AchievementList.openInventory, AchievementList.mineWood, AchievementList.buildWorkBench, AchievementList.buildPickaxe, AchievementList.buildFurnace, AchievementList.acquireIron, AchievementList.diamonds);
 			
-			ElvenElementium.mHandleMaterial = ElvenDragonstone.mHandleMaterial = Manasteel.mHandleMaterial = Terrasteel.mHandleMaterial = ManaDiamond.mHandleMaterial = DarkThaumium.mHandleMaterial = Thaumium.mHandleMaterial = VoidMetal.mHandleMaterial = InfusedAir.mHandleMaterial = InfusedBalance.mHandleMaterial = InfusedDull.mHandleMaterial = InfusedEarth.mHandleMaterial = InfusedEntropy.mHandleMaterial = InfusedFire.mHandleMaterial = InfusedOrder.mHandleMaterial = InfusedVis.mHandleMaterial = InfusedWater.mHandleMaterial = ANY.WoodMagical;
+			Mauftrium.mHandleMaterial = Elvorium.mHandleMaterial = MuspelheimPower.mHandleMaterial = NiflheimPower.mHandleMaterial = ElvenElementium.mHandleMaterial = ElvenDragonstone.mHandleMaterial = Manasteel.mHandleMaterial = Terrasteel.mHandleMaterial = ManaDiamond.mHandleMaterial = DarkThaumium.mHandleMaterial = Thaumium.mHandleMaterial = VoidMetal.mHandleMaterial = InfusedAir.mHandleMaterial = InfusedBalance.mHandleMaterial = InfusedDull.mHandleMaterial = InfusedEarth.mHandleMaterial = InfusedEntropy.mHandleMaterial = InfusedFire.mHandleMaterial = InfusedOrder.mHandleMaterial = InfusedVis.mHandleMaterial = InfusedWater.mHandleMaterial = ANY.WoodMagical;
 			GaiaSpirit.mHandleMaterial = MT.ElvenElementium;
 			FierySteel.mHandleMaterial = Firestone.mHandleMaterial = Blaze.mHandleMaterial = Blaze;
 			Endium.mHandleMaterial = Endstone;

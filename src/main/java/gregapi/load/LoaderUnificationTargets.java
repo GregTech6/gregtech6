@@ -240,6 +240,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreLivingrock  , MT.ElvenQuartz            , ST.make(MD.ALF, "ElvenOre", 1, 2));
 		OreDictManager.INSTANCE.setTarget(OP.oreLivingrock  , MT.Au                     , ST.make(MD.ALF, "ElvenOre", 1, 3));
 		OreDictManager.INSTANCE.setTarget(OP.oreLivingrock  , MT.Iffesal                , ST.make(MD.ALF, "ElvenOre", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Mauftrium              , ST.make(MD.ALF, "MauftriumBlock", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Elvorium               , ST.make(MD.ALF, "ElvoriumBlock", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Elvorium               , ST.make(MD.ALF, "ElvenItems", 1, 2));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Mauftrium              , ST.make(MD.ALF, "ElvenItems", 1, 3));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.MuspelheimPower        , ST.make(MD.ALF, "ElvenItems", 1, 4));

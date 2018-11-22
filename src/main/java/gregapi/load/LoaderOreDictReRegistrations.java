@@ -104,6 +104,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("shardEarth"              , "gemInfusedEarth");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("shardOrder"              , "gemInfusedOrder");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("shardEntropy"            , "gemInfusedEntropy");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("elvenDragonstone"        , "gemElvenDragonstone");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("manaDiamond"             , "gemManaDiamond");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateLivingwood"         , "livingwood");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plateDreamwood"          , "dreamwood");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("stickLivingwood"         , "livingwoodTwig");
