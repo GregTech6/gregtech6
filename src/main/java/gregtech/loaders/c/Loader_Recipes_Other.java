@@ -89,12 +89,13 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		
 		addListener(DYE_OREDICTS_LENS[DYE_INDEX_Green], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(MT.Diamond        , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Diamond.get(1));
-			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(MT.Ruby           , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Ruby.get(1));
+			for (OreDictMaterial tMat : ANY.Diamond.mToThis) if (tMat != MT.Diamantine)
+			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(tMat   , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Diamond.get(1));
 			for (OreDictMaterial tMat : ANY.Emerald.mToThis)
-			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(tMat              , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Emerald.get(1));
+			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(tMat   , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Emerald.get(1));
 			for (OreDictMaterial tMat : ANY.Sapphire.mToThis) if (tMat != MT.Ruby)
-			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(tMat              , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Sapphire.get(1));
+			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(tMat   , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Sapphire.get(1));
+			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(MT.Ruby, 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Ruby.get(1));
 		}});
 		addListener(DYE_OREDICTS_LENS[DYE_INDEX_Red], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			for (OreDictMaterial tMat : ANY.Cu.mToThis)

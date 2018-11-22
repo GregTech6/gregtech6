@@ -86,9 +86,9 @@ public class Compat_Recipes_Reika extends CompatMods {
 		if (MD.ElC.mLoaded) {
 			OUT.println("GT_Mod: Doing ElectriCraft Recipes.");
 			CR.remout(MD.ElC, "electricraft_item_crafting", 3);
-			for (OreDictMaterial tMat : ANY.Glowstone.mToThis) for (OreDictMaterial tMat2 : ANY.SiO2.mToThis) {
-			RM.Mixer            .addRecipeX(T, 16,   32, new ItemStack[] {OM.dust(MT.Redstone, U*4), OM.dust(tMat, U*1), OM.dust(MT.Lapis, U*1), OM.dust(tMat2, U*1), OM.dust(MT.Diamond, U*1)}, ST.make(MD.ElC, "electricraft_item_crafting", 2, 3));
-			RM.Mixer            .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Redstone, U*2), OM.dust(tMat, U2 ), OM.dust(MT.Lapis, U2 ), OM.dust(tMat2, U2 ), OM.dust(MT.Diamond, U2 )}, ST.make(MD.ElC, "electricraft_item_crafting", 1, 3));
+			for (OreDictMaterial tMat1 : ANY.Glowstone.mToThis) for (OreDictMaterial tMat2 : ANY.SiO2.mToThis) for (OreDictMaterial tMat3 : ANY.Diamond.mToThis) {
+			RM.Mixer            .addRecipeX(T, 16,   32, new ItemStack[] {OM.dust(MT.Redstone, U*4), OM.dust(tMat1, U*1), OM.dust(MT.Lapis, U*1), OM.dust(tMat2, U*1), OM.dust(tMat3, U*1)}, ST.make(MD.ElC, "electricraft_item_crafting", 2, 3));
+			RM.Mixer            .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Redstone, U*2), OM.dust(tMat1, U2 ), OM.dust(MT.Lapis, U2 ), OM.dust(tMat2, U2 ), OM.dust(tMat3, U2 )}, ST.make(MD.ElC, "electricraft_item_crafting", 1, 3));
 			}
 		}
 		if (MD.CrC.mLoaded) {

@@ -1032,7 +1032,7 @@ public class LoaderItemList implements Runnable {
 		IL.FR_Scoop                             .set(ST.make(MD.FR, "scoop"                                 , 1, 0));
 		IL.FR_Casing_Impregnated                .set(ST.make(MD.FR, "impregnatedCasing"                     , 1, 0), new OreDictItemData(ANY.Wood           , U *64));
 		IL.FR_Casing_Sturdy                     .set(ST.make(MD.FR, "sturdyMachine"                         , 1, 0), new OreDictItemData(MT.Bronze          , U * 8));
-		IL.FR_Casing_Hardened                   .set(ST.make(MD.FR, "hardenedMachine"                       , 1, 0), new OreDictItemData(MT.Bronze          , U * 8, MT.Diamond, U * 4));
+		IL.FR_Casing_Hardened                   .set(ST.make(MD.FR, "hardenedMachine"                       , 1, 0), new OreDictItemData(MT.Bronze          , U * 8, ANY.Diamond, U * 4));
 		IL.FR_Chipset_Tin                       .set(ST.make(MD.FR, "chipsets"                              , 1, 0), new OreDictItemData(MT.Sn              , U * 1, MT.Redstone, U * 6));
 		IL.FR_Chipset_Bronze                    .set(ST.make(MD.FR, "chipsets"                              , 1, 1), new OreDictItemData(MT.Bronze          , U * 3, MT.Redstone, U * 6));
 		IL.FR_Chipset_Iron                      .set(ST.make(MD.FR, "chipsets"                              , 1, 2), new OreDictItemData(ANY.Fe             , U * 3, MT.Redstone, U * 6));
@@ -1042,7 +1042,7 @@ public class LoaderItemList implements Runnable {
 		IL.FR_ElectronTube_Bronze               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 2), new OreDictItemData(MT.Bronze          , 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Iron                 .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 3), new OreDictItemData(ANY.Fe             , 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Gold                 .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 4), new OreDictItemData(MT.Au              , 5*U4, MT.Redstone, U2, MT.Glass, U8));
-		IL.FR_ElectronTube_Diamond              .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 5), new OreDictItemData(MT.Diamond         , 5*U4, MT.Redstone, U2, MT.Glass, U8));
+		IL.FR_ElectronTube_Diamond              .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 5), new OreDictItemData(ANY.Diamond        , 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Obsidian             .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 6), new OreDictItemData(MT.Obsidian        , 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Blaze                .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 7), new OreDictItemData(MT.Blaze           , 5*U4, MT.Redstone, U2, MT.Glass, U8));
 		IL.FR_ElectronTube_Rubber               .set(ST.make(MD.FR, "thermionicTubes"                       , 1, 8), new OreDictItemData(MT.Rubber          , 5*U4, MT.Redstone, U2, MT.Glass, U8));
@@ -1127,7 +1127,7 @@ public class LoaderItemList implements Runnable {
 		IL.IC2_Carbon_Mesh                      .set(ST.mkic("carbonMesh"                                   , 1   ));
 		IL.IC2_Carbon_Plate                     .set(ST.mkic("carbonPlate"                                  , 1   ));
 		IL.IC2_Advanced_Alloy                   .set(ST.mkic("advancedAlloy"                                , 1   ));
-		IL.IC2_Iridium_Alloy                    .set(ST.mkic("iridiumPlate"                                 , 1   ), new OreDictItemData(MT.Ir, U*4, MT.Diamond, U*1));
+		IL.IC2_Iridium_Alloy                    .set(ST.mkic("iridiumPlate"                                 , 1   ), new OreDictItemData(MT.Ir, U*4, ANY.Diamond, U*1));
 		IL.IC2_Machine                          .set(ST.mkic("machine"                                      , 1   ), new OreDictItemData(ANY.Fe, U*8));
 		IL.IC2_Machine_Adv                      .set(ST.mkic("advancedMachine"                              , 1   ), new OreDictItemData(ANY.Fe, U*8));
 		IL.IC2_Generator                        .set(ST.mkic("generator"                                    , 1   ), new OreDictItemData(ANY.Fe, U*8));

@@ -439,7 +439,7 @@ public class Loader_CraftingRecipes implements Runnable {
 			ItemStack tStack = CR.get(OP.gear.mat(MT.Fe, 1), ST.make(Items.redstone, 1, 0), OP.gear.mat(MT.Fe, 1), OP.gear.mat(MT.Au, 1), OP.gear.mat(MT.Fe, 1), OP.gear.mat(MT.Au, 1), OP.gear.mat(MT.Diamond, 1), ST.make(Items.diamond_pickaxe, 1, 0), OP.gear.mat(MT.Diamond, 1));
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "quarry", T)) {
 				CR.remout(tStack);
-				CR.shaped(tStack, DEF, "ICI", "GIG", "DPD", 'C', OD_CIRCUITS[3], 'D', OP.gear.dat(MT.Diamond), 'G', OP.gear.dat(MT.Au), 'I', OP.gear.dat(ANY.Steel), 'P', ST.mkic("diamondDrill", 1, W));
+				CR.shaped(tStack, DEF, "ICI", "GIG", "DPD", 'C', OD_CIRCUITS[3], 'D', OP.gear.dat(ANY.Diamond), 'G', OP.gear.dat(MT.Au), 'I', OP.gear.dat(ANY.Steel), 'P', ST.mkic("diamondDrill", 1, W));
 			}
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "quarry", F)) {
 				CR.remout(tStack);

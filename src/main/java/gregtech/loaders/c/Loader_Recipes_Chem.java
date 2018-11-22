@@ -246,7 +246,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Charcoal                ), MT.O.gas( 2*U  , T), MT.CO2.gas( 3*U  , F)   , ZL_IS);
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Coal                    ), MT.O.gas( 4*U  , T), MT.CO2.gas( 6*U  , F)   , ZL_IS);
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.CoalCoke                ), MT.O.gas( 4*U  , T), MT.CO2.gas( 6*U  , F)   , ZL_IS);
-		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Diamond                 ), MT.O.gas( 8*U  , T), MT.CO2.gas(12*U  , F)   , ZL_IS);
+		for (OreDictMaterial tMat : ANY.Diamond.mToThis)
+		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(tMat                       ), MT.O.gas( 8*U  , T), MT.CO2.gas(12*U  , F)   , ZL_IS);
 		
 		final long[] tChances = new long[] {8000, 8000, 8000};
 		

@@ -57,7 +57,8 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		
 		RM.Press        .addRecipe2(T, 16,   64, ST.make(MD.AE, "item.ItemMultiMaterial", 0, 13), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10)   , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 16));
 		RM.Press        .addRecipe2(T, 16,   64, ST.make(MD.AE, "item.ItemMultiMaterial", 0, 13), OP.plateGem   .mat(MT.CertusQuartz    , 1)        , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 16));
-		RM.Press        .addRecipe2(T, 16,   64, ST.make(MD.AE, "item.ItemMultiMaterial", 0, 14), OP.plateGem   .mat(MT.Diamond         , 1)        , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 17));
+		for (OreDictMaterial tMat : ANY.Diamond.mToThis) if (tMat != MT.Diamantine)
+		RM.Press        .addRecipe2(T, 16,   64, ST.make(MD.AE, "item.ItemMultiMaterial", 0, 14), OP.plateGem   .mat(tMat               , 1)        , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 17));
 		RM.Press        .addRecipe2(T, 16,   64, ST.make(MD.AE, "item.ItemMultiMaterial", 0, 15), OP.plate      .mat(MT.Au              , 1)        , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 18));
 		RM.Press        .addRecipe2(T, 16,   64, ST.make(MD.AE, "item.ItemMultiMaterial", 0, 19), OP.plate      .mat(MT.Si              , 1)        , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20));
 		RM.Press        .addRecipe2(T, 16,   64, ST.make(MD.AE, "item.ItemMultiMaterial", 0, 19), OP.plateGem   .mat(MT.Si              , 1)        , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20));

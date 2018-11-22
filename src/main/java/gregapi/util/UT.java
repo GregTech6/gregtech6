@@ -40,6 +40,7 @@ import gregapi.code.ModData;
 import gregapi.code.ObjectStack;
 import gregapi.code.TagData;
 import gregapi.damage.DamageSources;
+import gregapi.data.ANY;
 import gregapi.data.CS;
 import gregapi.data.CS.ArmorsGT;
 import gregapi.data.CS.BlocksGT;
@@ -1376,7 +1377,6 @@ public class UT {
 		public static short getA(int aColors) {return (short)((aColors >>> 24) & 255);}
 		
 		@SideOnly(Side.CLIENT)
-		@SuppressWarnings("cast")
 		/** estebes helped with the code for this one, and yes that cast down there is fucking necessary... */
 		public static short[] color(ItemStack aStack) {
 			if (ST.invalid(aStack)) return UNCOLOURED;
@@ -1388,7 +1388,7 @@ public class UT {
 			short[] rColor = color(tResourceLocation);
 			if (rColor == null) return UNCOLOURED;
 			short[] rModulation = getRGBaArray(aStack.getItem().getColorFromItemStack(aStack, 0));
-			for (byte i = 0; i < 3; i++) rColor[i] = (short)((rColor[i] * (int)rModulation[i]) / 255);
+			for (byte i = 0; i < 3; i++) rColor[i] = (short)((rColor[i] * rModulation[i]) / 255);
 			return rColor;
 		}
 		
@@ -2573,7 +2573,7 @@ public class UT {
 				aPlayer.triggerAchievement(AchievementList.bakeCake);
 			}
 			if (tData != null) {
-				if (tData.mMaterial.mMaterial == MT.Diamond && tData.mPrefix.contains(TD.Prefix.GEM_BASED)) {
+				if (ANY.Diamond.mToThis.contains(tData.mMaterial.mMaterial) && tData.mPrefix.contains(TD.Prefix.GEM_BASED)) {
 					aPlayer.triggerAchievement(AchievementList.openInventory);
 					aPlayer.triggerAchievement(AchievementList.mineWood);
 					aPlayer.triggerAchievement(AchievementList.buildWorkBench);

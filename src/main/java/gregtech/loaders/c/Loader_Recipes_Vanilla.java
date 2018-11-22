@@ -65,7 +65,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "enchantmenttable", F)) {
 			OUT.println("GT_Mod: Removing the Recipe of the Enchantment Table, to have Fun enchanting with the Anvil and Books from Dungeons.");
 		} else {
-			CR.shaped(ST.make(Blocks.enchanting_table, 1, 0), CR.DEF_NCC, " B ", "DOD", "OOO", 'B', IL.TC_Thaumonomicon.get(1, ST.make(Items.book, 1, W)), 'O', OP.blockSolid.dat(MT.Obsidian), 'D', OP.gem.dat(MT.Diamond));
+			CR.shaped(ST.make(Blocks.enchanting_table, 1, 0), CR.DEF_NCC, " B ", "DOD", "OOO", 'B', IL.TC_Thaumonomicon.get(1, ST.make(Items.book, 1, W)), 'O', OP.blockSolid.dat(MT.Obsidian), 'D', OP.gem.dat(ANY.Diamond));
 		}
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "enderchest", F)) {

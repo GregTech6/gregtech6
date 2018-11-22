@@ -67,7 +67,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "electroFurnace"        ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "WWW", "WwW", "CMC", 'M', IL.IC2_Machine         , 'C', OD_CIRCUITS[1], 'W', OP.wireGt01.dat(MT.AnnealedCopper));}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "inductionFurnace"      ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "WWW", "WwW", "CMC", 'M', IL.IC2_Machine_Adv     , 'C', OD_CIRCUITS[3], 'W', OP.wireGt04.dat(MT.AnnealedCopper));}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "extractor"             ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, " w ", "PMP", "WCW", 'M', IL.IC2_Machine         , 'C', OD_CIRCUITS[1], 'W', OP.cableGt01.dat(ANY.Cu), 'P', IL.PUMPS[2]);}
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "macerator"             ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "DwD", "GMG", "CPC", 'M', IL.IC2_Machine         , 'C', OD_CIRCUITS[2], 'W', OP.cableGt01.dat(ANY.Cu), 'P', IL.MOTORS[2], 'D', OP.gem.dat(MT.Diamond), 'G', OP.gearGt.dat(ANY.Steel));}
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "macerator"             ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "DwD", "GMG", "CPC", 'M', IL.IC2_Machine         , 'C', OD_CIRCUITS[2], 'W', OP.cableGt01.dat(ANY.Cu), 'P', IL.MOTORS[2], 'D', OP.gem.dat(ANY.Diamond), 'G', OP.gearGt.dat(ANY.Steel));}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "compressor"            ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, " w ", "PMP", "WCW", 'M', IL.IC2_Machine         , 'C', OD_CIRCUITS[1], 'W', OP.cableGt01.dat(ANY.Cu), 'P', IL.PISTONS[2]);}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "recycler"              ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "GwG", "PMP", "WCW", 'M', IL.IC2_Machine         , 'C', OD_CIRCUITS[2], 'W', OP.cableGt01.dat(ANY.Cu), 'P', IL.PISTONS[3], 'G', OP.dust.dat(ANY.Glowstone));}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "massFabricator"        ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "CXC", "CMC"       , 'M', IL.IC2_Machine_Adv     , 'C', OD_CIRCUITS[6], 'X', aRegistry.getItem(20413));}
@@ -413,7 +413,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Blocks.red_mushroom, 1, W)             , IL.IC2_Grin_Powder.get(1));
 		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Items.spider_eye, 1, W)                , IL.IC2_Grin_Powder.get(2));
 		
-		RM.Press            .addRecipeX(T, 64,  256, new ItemStack[] {IL.IC2_Advanced_Alloy.get(4), OP.plate.mat(MT.Ir, 4), OP.gem.mat(MT.Diamond, 1)}, IL.IC2_Iridium_Alloy.get(1));
+		for (OreDictMaterial tMat : ANY.Diamond.mToThis) if (tMat != MT.Diamantine)
+		RM.Press            .addRecipeX(T, 64,  256, new ItemStack[] {IL.IC2_Advanced_Alloy.get(4), OP.plate.mat(MT.Ir, 4), OP.gem.mat(tMat, 1)}, IL.IC2_Iridium_Alloy.get(1));
 		RM.Press            .addRecipe2(T, 16,   64, IL.IC2_Compressed_Coal_Ball.get(8), OP.dust.mat(MT.Obsidian, 9), IL.IC2_Compressed_Coal_Chunk.get(1));
 		
 		RM.Compressor       .addRecipe1(T,256,  256, IL.IC2_Carbon_Mesh.get(1)                          , IL.IC2_Carbon_Plate.get(1));

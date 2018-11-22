@@ -301,14 +301,14 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		CR.shaped(IL.Robot_Tip_Wrench       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadWrench.dat(MT.Cr));
 		CR.shaped(IL.Robot_Tip_Screwdriver  .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadScrewdriver.dat(MT.StainlessSteel));
-		CR.shaped(IL.Robot_Tip_Saw          .get(1), CR.DEF_REV, "wPh", "CMC", "DXd", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadBuzzSaw.dat(MT.CobaltBrass), 'D', OP.dust.dat(MT.Diamond));
+		CR.shaped(IL.Robot_Tip_Saw          .get(1), CR.DEF_REV, "wPh", "CMC", "DXd", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.toolHeadBuzzSaw.dat(MT.CobaltBrass), 'D', OP.dust.dat(ANY.Diamond));
 		CR.shaped(IL.Robot_Tip_Hammer       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadHammer.dat(MT.TungstenCarbide));
 		CR.shaped(IL.Robot_Tip_Cutter       .get(1), CR.DEF_REV, "wPh", "CMC", "XfX", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.plate.dat(MT.StainlessSteel));
 		CR.shaped(IL.Robot_Tip_Chisel       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadChisel.dat(MT.TungstenSteel));
 		CR.shaped(IL.Robot_Tip_Rubber       .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadHammer.dat(MT.Rubber));
 		CR.shaped(IL.Robot_Tip_Blade        .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.PISTONS     [3], 'X', OP.toolHeadSword.dat(MT.Bronze));
 		CR.shaped(IL.Robot_Tip_Drill        .get(1), CR.DEF_REV, "wPh", "CMC", "fX ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.MOTORS      [3], 'X', OP.stick.dat(ANY.Steel));
-		CR.shaped(IL.Robot_Tip_File         .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.CONVEYERS   [3], 'X', OP.dust.dat(MT.Diamond));
+		CR.shaped(IL.Robot_Tip_File         .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.CONVEYERS   [3], 'X', OP.dust.dat(ANY.Diamond));
 		
 		IL.Tool_Remote_Activator.set(           addItem(tLastID =  9000, "Remote Activator"         , "", Behavior_Remote.INSTANCE, TC.stack(TC.MOTUS, 1), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Tool_Cheat.set(                      addItem(tLastID =  9001, "Debug Scanner"            , "", Behavior_Cropnalyzer.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, new Behavior_Scanner(Integer.MAX_VALUE), EnergyStatDebug.INSTANCE, TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));

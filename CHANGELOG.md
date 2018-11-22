@@ -30,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] Alfheim (Botania Addon) got some Worldgen Fixes and Material Data.
 [FIXED] GT6 Crashing with Alfheim installed while Thaumcraft is not installed, because Alfheim included some Thaumcraft API Files, and I did not check for all the ones I use, but only for SOME of them.
 [FIXED] Air Blocks counting as Blocks that Plants can be placed on, due to a Mod Compat Derp on my End (aka: Any of the compatible Mods not being installed => Air Block got added to a HashSet => Trees spawn in the Sky)
-[FIXED] Emeralds all of a sudden switching from Electrolyzing to Centrifuge Recipe in the previous Release, it's Electrolyzer again.
+[FIXED] Emeralds all of a sudden switching from Electrolyzing to Centrifuge Recipe in the previous Release, it's Electrolyzer again now.
 [ADDED] Small Ores for Amazonite, Red Onyx and Black Onyx.
 [ADDED] Enviromine Miniature Portal, is made of Black Granite and requires Exquisite Diamonds to be activated. It is literally just a plain Nether alike Cave Dimension for Overworld Ore Mining Purposes.
 [ADDED] Alfheim Miniature Portal. Note that this is just a regular Miniature Portal, like all the others, this is not the Trade Portal!
@@ -40,6 +40,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [NOTE] The Default Config Pack updated again to disable Enhanced Biomes Underground Worldgen.
 [COMPAT] Voltz based Mods, maybe also Mekanism (not tested), are now able to be powered by GT6 EU with the proper Energy Ratios (1 EU = 10 J). Remember to only insert EU Packets that are 1024EU/t or smaller, also it could be wasteful to not use Ultra Low Voltage for things that run constantly, just like for Galacticraft. ;)
 [COMPAT] Enhanced Biomes got checked for all the Stuff that could be Compatible, such as Rock Types, Wood Types and Biomes.
+[BUG] Trees started to generate floating in the Sky, I fixed that in the following Version.
 [FIXED] Paint Slinger Lens not being required, to have Mana Bursts paint GT6 Machines, so any Mana Burst did it, even unpainted ones.
 [ADDED] Ore Multiplier on things like Redstone and Lapis can now be altered in the Material Config.
 [ADDED] Axes can now be used like Saws for making Slabs and Stairs.

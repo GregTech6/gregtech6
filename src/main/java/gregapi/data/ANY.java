@@ -35,6 +35,7 @@ public class ANY {
 	/** Technical Materials, which are only there for Recipes and such. */
 	public static final OreDictMaterial
 	Glowstone       = any("Any Glowstone"       ),
+	Diamond         = any("Any Diamond"         ),
 	Sapphire        = any("Any Sapphire"        ),
 	Emerald         = any("Any Emerald"         ),
 	Garnet          = any("Any Garnet"          ),
@@ -72,9 +73,10 @@ public class ANY {
 	
 	protected static void init() {
 		Glowstone       .stealLooks(MT.Glowstone      ).steal(MT.Glowstone      ).setLocal("Glowstone"          ).setAllToTheOutputOf(MT.Glowstone      ).put(CRYSTAL, GLOWING, LIGHTING    );
-		Sapphire        .stealLooks(MT.BlueSapphire   ).steal(MT.Sapphire       ).setLocal("Sapphire"           ).setAllToTheOutputOf(MT.Sapphire       ).put(CRYSTAL                       );
-		Emerald         .stealLooks(MT.Emerald        ).steal(MT.Emerald        ).setLocal("Emerald"            ).setAllToTheOutputOf(MT.Emerald        ).put(CRYSTAL                       ).addReRegistrationToThis(MT.Emeradic);
-		Garnet          .stealLooks(MT.Spessartine    ).steal(MT.Spessartine    ).setLocal("Garnet"                                                     ).put(CRYSTAL                       );
+		Diamond         .stealLooks(MT.Diamond        ).steal(MT.Diamond        ).setLocal("Diamond"            ).setAllToTheOutputOf(MT.Diamond        ).put(CRYSTAL, VALUABLE             ).addReRegistrationToThis(MT.Diamantine);
+		Sapphire        .stealLooks(MT.BlueSapphire   ).steal(MT.Sapphire       ).setLocal("Sapphire"           ).setAllToTheOutputOf(MT.Sapphire       ).put(CRYSTAL, VALUABLE             );
+		Emerald         .stealLooks(MT.Emerald        ).steal(MT.Emerald        ).setLocal("Emerald"            ).setAllToTheOutputOf(MT.Emerald        ).put(CRYSTAL, VALUABLE             ).addReRegistrationToThis(MT.Emeradic);
+		Garnet          .stealLooks(MT.Spessartine    ).steal(MT.Spessartine    ).setLocal("Garnet"                                                     ).put(CRYSTAL, VALUABLE             );
 		Prismarine      .stealLooks(MT.PrismarineLight).steal(MT.PrismarineLight).setLocal("Prismarine"         ).setAllToTheOutputOf(MT.PrismarineLight).put(CRYSTAL                       ).addReRegistrationToThis(MT.PrismarineLight, MT.PrismarineDark);
 		Grains          .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Grains"             ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE       );
 		Flour           .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Flour"              ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE       ).addReRegistrationToThis(MT.Wheat, MT.Rye, MT.Oat, MT.Barley, MT.Potato);
