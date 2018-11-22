@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.10: (Not released yet)
+6.09.10: (Not released yet, to be released on Friday)
 [COMPAT] The Wastelands Mod has its Biomes Supported for spawning Sticks and Stuff.
 [COMPAT] Alfheim (Botania Addon) got some Worldgen Fixes and Material Data.
 [FIXED] GT6 Crashing with Alfheim installed while Thaumcraft is not installed, because Alfheim included some Thaumcraft API Files, and I did not check for all the ones I use, but only for SOME of them.
