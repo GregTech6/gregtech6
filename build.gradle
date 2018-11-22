@@ -392,6 +392,7 @@ fluid {
 		fp = "$buildDir/generated-source/fluid/com/artemis/SuperMapper.java"
 		fc = new File(fp).getText('UTF-8')
 		fc = fc.replaceAll('public final class', '@SuppressWarnings("all") public final class')
+		fc = fc.replaceAll('E getE\\(int entityId\\) \\{', '@SuppressWarnings("unchecked") E getE(int entityId) {')
 		new File(fp).write(fc, 'UTF-8')
 	}
 	generatedSourcesDirectory = file("$buildDir/generated-source/fluid/")
