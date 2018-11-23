@@ -104,9 +104,9 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	public int mSkeletonsShootGTArrows = 16, mFlintChance = 30;
 	
 	public GT_Proxy() {
-		MinecraftForge.EVENT_BUS.register(this);
-		MinecraftForge.ORE_GEN_BUS.register(this);
-		MinecraftForge.TERRAIN_GEN_BUS.register(this);
+		MinecraftForge.EVENT_BUS         .register(this);
+		MinecraftForge.ORE_GEN_BUS       .register(this);
+		MinecraftForge.TERRAIN_GEN_BUS   .register(this);
 		FMLCommonHandler.instance().bus().register(this);
 	}
 	
@@ -114,58 +114,42 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	public void onProxyBeforePreInit(Abstract_Mod aMod, FMLPreInitializationEvent aEvent) {
 		super.onProxyBeforePreInit(aMod, aEvent);
 		new Thread(new Runnable() {@Override public void run() {
-//      String[]
-//      tSupporterListGoldDefault = new String[] {"Bear989Sr", "ElectroBot", "Ilirith", "Ngar", "Vash505", "stephen_2015", "Totilus", "mrgreenacid", "Asturrial", "DarkYuan", "tyra_oa", "seregheru", "Sovereignty89", "TheWorstPHO", "e99999", "PrivateDijon", "djflippy", "TOFUFreak", "SweetyLizard", "repo_alt", "ihategravel22", "WindowsBunny", "abestone2", "crepes_r_us", "adamcirillo", "Buuz135", "123mcprorot123", "Schlaibi", "MarconosII", "k0jul", "Trilexcom", "laurynasl", "Axlegear", "mtimmerije", "FPSaddiction", "Yabdat", "Goshen", "InsaneyHaney", "KrotanHill", "buizerd007", "Lehran", "GrandKaiser", "kei_kouma", "Mehrin", "leagris", "BloodyAsp", "kehaan", "Mine_Sasha", "DarthUmbris"},
-//      tSupporterListSilverDefault = new String[] {"Bear989jr", "ultrasn0wz", "NanoHeart_", "Briareos1981", "XxinsanityxX", "Bladezz88", "Spungebubb", "estebes", "cmclouser", "ArchonCerulean", "Ray_CZ", "stepgoku", "phone1246", "msmilkshake", "Xyic0re", "FenixElite", "Nohicom", "pitchcherry", "MatthieuLeDieu", "Nicholas_Manuel", "Stijn_A", "negersvend", "jorstar", "Ralacroix", "ManuCortex", "Raganork", "TexanMD", "Morehatz", "MiniKatalyst", "Thanatos_00", "Goshen_Ithilien", "TheSkera", "LuxusDarkangel", "Ashleee", "Pit_of_Darkness", "DoughnutDev", "GeekTechMedia", "Heph", "Mileaos2", "CodingWithClass", "UltraPeeks", "boredi", "Lushiita", "Moothox", "fry_lad", "cdaser", "renadi", "hanakocz", "GeoStyx", "Beardedflea", "MysteryDump", "Flaver4", "x_Fame", "Azuxul", "manf", "Bimgo", "leagris", "IAmMinecrafter02", "Cerous", "Devilin_Pixy", "Bkarlsson87", "BadAlchemy", "CaballoCraft", "melanclock", "Resursator", "demanzke", "AndrewAmmerlaan", "Deathlycraft", "Jirajha", "Axlegear", "kei_kouma", "Dracion", "dungi", "Dorfschwein", "Zero Tw0", "mattiagraz85", "sebastiank30", "Plem", "invultri", "grillo126", "malcanteth", "Malevolence_", "Nicholas_Manuel", "Sirbab", "kehaan", "bpgames123", "semig0d", "9000bowser", "Sovereignty89", "Kris1432", "xander_cage_", "XanderT", "samuraijp", "bsaa", "SpwnX", "tworf", "Kadah", "kanni", "Stute", "Hegik", "Onlyme", "t3hero", "Hotchi", "jagoly", "Nullav"/*, "nallar"*/, "BH5432", "Sibmer", "inceee", "foxxx0", "Hartok", "TMSama", "Shlnen", "Carsso", "zessirb", "meep310", "Seldron", "yttr1um", "hohounk", "freebug", "Sylphio", "jmarler", "Saberawr", "r00teniy", "Neonbeta", "yinscape", "voooon24", "Quintine", "peach774", "lepthymo", "bildeman", "Kremnari", "Aerosalo", "OndraSter", "oscares91", "crdl_pls", "Daxx367x2", "EGERTRONx", "aka13_404", "Abouttabs", "Johnstaal", "djshiny99", "megatronp", "DZCreeper", "Kane_Hart", "Truculent", "vidplace7", "simon6689", "MomoNasty", "UnknownXLV", "goreacraft", "Fluttermine", "Daddy_Cecil", "MrMaleficus", "TigersFangs", "cublikefoot", "chainman564", "NikitaBuker", "Misha999777", "25FiveDetail", "AntiCivilBoy", "michaelbrady"/*, "xXxIceFirexXx"*/, "Asutoro", "Speedynutty68", "GarretSidzaka", "HallowCharm977", "mastermind1919", "The_Hypersonic", "diamondguy2798", "zF4ll3nPr3d4t0r", "CrafterOfMines57", "XxELIT3xSNIP3RxX", "SuterusuKusanagi", "xavier0014", "Ultimaheart4", "Ultimabunny4", "adamros", "alexbegt"};
 		
-		if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) {
-			try {
-				OUT.println("GT_DL_Thread: Downloading Version Number of the latest Major Version.");
-				Scanner tScanner = new Scanner(new URL("http://gregtech.overminddl1.com/com/gregoriust/gregtech/gregtech_1.7.10/version.txt").openStream());
-				if (tScanner.hasNextLine()) {
-					String tVersion = tScanner.nextLine();
-					while (tScanner.hasNextLine()) tVersion += tScanner.nextLine();
-					mVersionOutdated = !tVersion.contains(GT_Mod.MAJOR_VERSION);
-					OUT.println("GT_DL_Thread: Current Version = '" + GT_Mod.MAJOR_VERSION + "'; Recent Version = '" + tVersion + "'; Outdated = " + (mVersionOutdated?"Yes":"No"));
-				}
-				tScanner.close();
-			} catch(Throwable e) {
-				OUT.println("GT_DL_Thread: Failed Version Number of the latest Major Version!");
+		if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) try {
+			Scanner tScanner = new Scanner(new URL("http://gregtech.overminddl1.com/com/gregoriust/gregtech/gregtech_1.7.10/version.txt").openStream());
+			if (tScanner.hasNextLine()) {
+				String tVersion = tScanner.nextLine();
+				while (tScanner.hasNextLine()) tVersion += tScanner.nextLine();
+				mVersionOutdated = !tVersion.contains(GT_Mod.MAJOR_VERSION);
+				OUT.println("GT_Download_Thread: Current Version = '" + GT_Mod.MAJOR_VERSION + "'; Recent Version = '" + tVersion + "'; Outdated = " + (mVersionOutdated?"Yes":"No"));
 			}
-		}
+			tScanner.close();
+		} catch(Throwable e) {OUT.println("GT_Download_Thread: Failed Downloading Version Number of the latest Major Version!");}
 		
-		OUT.println("GT_DL_Thread: Downloading Silver Supporter List.");
 		if (downloadSupporterListSilverFromMain()) {
-			OUT.println("GT_DL_Thread: Success downloading Silver Supporter List!");
-		} else {
-			OUT.println("GT_DL_Thread: Failed downloading Silver Supporter List, using interal List!");
-			try {
-				Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlist.txt"));
-				while (tScanner.hasNextLine()) mSupporterListSilver.add(tScanner.nextLine().toLowerCase());
-				tScanner.close();
-			} catch(Throwable e) {e.printStackTrace(DEB);}
-		}
+			OUT.println("GT_Download_Thread: Downloaded Silver Supporter List!");
+		} else try {
+			Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlist.txt"));
+			while (tScanner.hasNextLine()) mSupporterListSilver.add(tScanner.nextLine().toLowerCase());
+			tScanner.close();
+			OUT.println("GT_Download_Thread: Failed downloading Silver Supporter List, using interal List!");
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
-		OUT.println("GT_DL_Thread: Downloading Gold Supporter List.");
 		if (downloadSupporterListGoldFromMain()) {
-			OUT.println("GT_DL_Thread: Success downloading Gold Supporter List!");
-		} else {
-			OUT.println("GT_DL_Thread: Failed downloading Gold Supporter List, using interal List!");
-			try {
-				Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlistgold.txt"));
-				while (tScanner.hasNextLine()) mSupporterListGold.add(tScanner.nextLine().toLowerCase());
-				tScanner.close();
-			} catch(Throwable e) {e.printStackTrace(DEB);}
-		}
+			OUT.println("GT_Download_Thread: Downloaded Gold Supporter List!");
+		} else try {
+			Scanner tScanner = new Scanner(getClass().getResourceAsStream("/supporterlistgold.txt"));
+			while (tScanner.hasNextLine()) mSupporterListGold.add(tScanner.nextLine().toLowerCase());
+			tScanner.close();
+			OUT.println("GT_Download_Thread: Failed downloading Gold Supporter List, using interal List!");
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		try {
-			OUT.println("GT_DL_Thread: Downloading News.");
 			Scanner tScanner = new Scanner(new URL("http://gregtech.overminddl1.com/com/gregoriust/gregtech/message.txt").openStream());
 			while (tScanner.hasNextLine()) mMessage += tScanner.nextLine() + " ";
 			tScanner.close();
-		} catch(Throwable e) {
-			OUT.println("GT_DL_Thread: Failed downloading News!");
-		}
+			OUT.println("GT_Download_Thread: Downloaded News.");
+		} catch(Throwable e) {OUT.println("GT_Download_Thread: Failed downloading News!");}
 		
 		mSupporterListSilver.removeAll(mSupporterListGold);
 		}}).start();
@@ -189,55 +173,47 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		}
 		if (mNerfedVanillaTools) {
 			OUT.println("GT_Mod: Nerfing Vanilla Tool Durability");
-			Items.wooden_sword.setMaxDamage(4);
-			Items.wooden_pickaxe.setMaxDamage(4);
-			Items.wooden_shovel.setMaxDamage(4);
-			Items.wooden_axe.setMaxDamage(4);
-			Items.wooden_hoe.setMaxDamage(4);
-			
-			Items.stone_sword.setMaxDamage(16);
-			Items.stone_pickaxe.setMaxDamage(16);
-			Items.stone_shovel.setMaxDamage(16);
-			Items.stone_axe.setMaxDamage(16);
-			Items.stone_hoe.setMaxDamage(16);
-			
-			Items.iron_sword.setMaxDamage(80);
-			Items.iron_pickaxe.setMaxDamage(80);
-			Items.iron_shovel.setMaxDamage(80);
-			Items.iron_axe.setMaxDamage(80);
-			Items.iron_hoe.setMaxDamage(80);
-			
-			Items.golden_sword.setMaxDamage(8);
-			Items.golden_pickaxe.setMaxDamage(8);
-			Items.golden_shovel.setMaxDamage(8);
-			Items.golden_axe.setMaxDamage(8);
-			Items.golden_hoe.setMaxDamage(8);
-			
-			Items.diamond_sword.setMaxDamage(240);
+			Items.wooden_sword   .setMaxDamage(  4);
+			Items.wooden_pickaxe .setMaxDamage(  4);
+			Items.wooden_shovel  .setMaxDamage(  4);
+			Items.wooden_axe     .setMaxDamage(  4);
+			Items.wooden_hoe     .setMaxDamage(  4);
+			Items.stone_sword    .setMaxDamage( 16);
+			Items.stone_pickaxe  .setMaxDamage( 16);
+			Items.stone_shovel   .setMaxDamage( 16);
+			Items.stone_axe      .setMaxDamage( 16);
+			Items.stone_hoe      .setMaxDamage( 16);
+			Items.iron_sword     .setMaxDamage( 80);
+			Items.iron_pickaxe   .setMaxDamage( 80);
+			Items.iron_shovel    .setMaxDamage( 80);
+			Items.iron_axe       .setMaxDamage( 80);
+			Items.iron_hoe       .setMaxDamage( 80);
+			Items.golden_sword   .setMaxDamage(  8);
+			Items.golden_pickaxe .setMaxDamage(  8);
+			Items.golden_shovel  .setMaxDamage(  8);
+			Items.golden_axe     .setMaxDamage(  8);
+			Items.golden_hoe     .setMaxDamage(  8);
+			Items.diamond_sword  .setMaxDamage(240);
 			Items.diamond_pickaxe.setMaxDamage(240);
-			Items.diamond_shovel.setMaxDamage(240);
-			Items.diamond_axe.setMaxDamage(240);
-			Items.diamond_hoe.setMaxDamage(240);
+			Items.diamond_shovel .setMaxDamage(240);
+			Items.diamond_axe    .setMaxDamage(240);
+			Items.diamond_hoe    .setMaxDamage(240);
 		}
 		
-		OUT.println("GT_Mod: Adding Tool Usage Crafting Recipes for OreDict Items.");
+		// TODO: Get rid of this old Garbage,
 		for (OreDictMaterial aMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL) && aMaterial.mTargetRegistration == aMaterial) {
 			long
 			tBits = CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC;
-			CR.shaped(OP.toolHeadWrench     .mat(aMaterial                          ,  1), tBits, "hXW", "XRX", "WXd", 'X', OP.plate    .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadWrench     .mat(aMaterial                          ,  1), tBits, "hXW", "XRX", "WXd", 'X', OP.plateGem .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadChainsaw   .mat(aMaterial                          ,  1), tBits, "SRS", "XhX", "SRS", 'X', OP.plate    .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadChainsaw   .mat(aMaterial                          ,  1), tBits, "SRS", "XhX", "SRS", 'X', OP.plateGem .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadDrill      .mat(aMaterial                          ,  1), tBits, "XSX", "XSX", "ShS", 'X', OP.plate    .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadDrill      .mat(aMaterial                          ,  1), tBits, "XSX", "XSX", "ShS", 'X', OP.plateGem .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
-			
-			tBits = CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC;
-			if (!aMaterial.contains(TD.Compounds.COATED)) {
-			CR.shaped(OP.gearGtSmall        .mat(aMaterial                          ,  1), tBits, "P ", aMaterial.contains(TD.Properties.WOOD)?" s":aMaterial.contains(TD.Properties.STONE)?" f":" h", 'P', OP.plate.dat(aMaterial));
-			}
+			CR.shaped(OP.toolHeadWrench  .mat(aMaterial, 1), tBits, "hXW", "XRX", "WXd", 'X', OP.plate   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadWrench  .mat(aMaterial, 1), tBits, "hXW", "XRX", "WXd", 'X', OP.plateGem.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadChainsaw.mat(aMaterial, 1), tBits, "SRS", "XhX", "SRS", 'X', OP.plate   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadChainsaw.mat(aMaterial, 1), tBits, "SRS", "XhX", "SRS", 'X', OP.plateGem.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadDrill   .mat(aMaterial, 1), tBits, "XSX", "XSX", "ShS", 'X', OP.plate   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadDrill   .mat(aMaterial, 1), tBits, "XSX", "XSX", "ShS", 'X', OP.plateGem.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
+			if (!aMaterial.contains(TD.Compounds.COATED))
+			CR.shaped(OP.gearGtSmall     .mat(aMaterial, 1), tBits | CR.DEF_NAC, "P ", aMaterial.contains(TD.Properties.WOOD)?" s":aMaterial.contains(TD.Properties.STONE)?" f":" h", 'P', OP.plate.dat(aMaterial));
 		}
 	}
-	
 	
 	@SubscribeEvent
 	public void onClientConnectedToServerEvent(ClientConnectedToServerEvent aEvent) {
