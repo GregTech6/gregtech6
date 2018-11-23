@@ -48,7 +48,7 @@ public class MultiTileEntityMiniPortalEnviromine extends MultiTileEntityMiniPort
 	static {
 		LH.add("gt.tileentity.portal.enviromine.tooltip.1", "Only works between the Enviromine Caves and the Overworld!");
 		LH.add("gt.tileentity.portal.enviromine.tooltip.2", "Margin of Error to still work: 128 Meters.");
-		LH.add("gt.tileentity.portal.enviromine.tooltip.3", "Requires Exquisite Diamond for activation");
+		LH.add("gt.tileentity.portal.enviromine.tooltip.3", "Requires any Exquisite Diamond for activation");
 	}
 	
 	@Override
@@ -118,7 +118,7 @@ public class MultiTileEntityMiniPortalEnviromine extends MultiTileEntityMiniPort
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			ItemStack aStack = aPlayer.inventory.getCurrentItem();
-			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemExquisiteDiamond", aStack)) {
+			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemExquisiteAnyDiamond", aStack)) {
 				setPortalActive();
 				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;

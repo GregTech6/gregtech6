@@ -107,7 +107,7 @@ public class WorldgenHives extends WorldgenObject {
 				tCount = 0;
 			}
 			return rResult;
-		case DIM_OVERWORLD:
+		case DIM_OVERWORLD: case DIM_ALFHEIM:
 			for (tY = 8; tY < 28; tY++) {
 				Block tBlock = WD.block(aWorld, tX, tY, tZ);
 				if (tBlock.getMaterial() == Material.rock && WD.opq(tBlock) && WD.stone(tBlock, WD.meta(aWorld, tX, tY, tZ))) {
@@ -135,7 +135,7 @@ public class WorldgenHives extends WorldgenObject {
 				//  return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0x44bbbb          ,   400, aRandom) || rResult;
 					if (tBlock == Blocks.water || tBlock == Blocks.flowing_water || tBlock instanceof BlockWaterlike)
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_LightBlue ,   100, aRandom) || rResult;
-					for (String tName : aBiomeNames) if (BIOMES_MAGICAL.contains(tName))
+					for (String tName : aBiomeNames) if (BIOMES_MAGICAL.contains(tName) && (aDimType != DIM_ALFHEIM || aRandom.nextBoolean()))
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Purple    ,   200, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_END.contains(tName))
 					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0x00aaaa          ,   400, aRandom) || rResult;

@@ -49,7 +49,7 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 	static {
 		LH.add("gt.tileentity.portal.twilight.tooltip.1", "Only works between the Twilight Forest and the Overworld!");
 		LH.add("gt.tileentity.portal.twilight.tooltip.2", "Margin of Error to still work: 512 Meters.");
-		LH.add("gt.tileentity.portal.twilight.tooltip.3", "Requires Diamond for activation");
+		LH.add("gt.tileentity.portal.twilight.tooltip.3", "Requires any Diamond for activation");
 	}
 	
 	@Override
@@ -119,7 +119,7 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			ItemStack aStack = aPlayer.inventory.getCurrentItem();
-			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemDiamond", aStack)) {
+			if (ST.valid(aStack) && aStack.stackSize > 0 && OM.is_("gemAnyDiamond", aStack)) {
 				setPortalActive();
 				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;

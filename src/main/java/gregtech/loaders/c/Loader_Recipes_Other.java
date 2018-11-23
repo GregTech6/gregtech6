@@ -89,7 +89,7 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		
 		addListener(DYE_OREDICTS_LENS[DYE_INDEX_Green], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			for (OreDictMaterial tMat : ANY.Diamond.mToThis) if (tMat != MT.Diamantine)
+			for (OreDictMaterial tMat : ANY.Diamond.mToThis)
 			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(tMat   , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Diamond.get(1));
 			for (OreDictMaterial tMat : ANY.Emerald.mToThis)
 			RM.LaserEngraver    .addRecipe2(T,256,   64, plateGem.mat(tMat   , 1), ST.amount(0, aEvent.mStack), IL.Circuit_Crystal_Emerald.get(1));

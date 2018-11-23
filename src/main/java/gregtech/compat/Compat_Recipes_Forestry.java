@@ -94,7 +94,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(MT.Pt                , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
 		for (OreDictMaterial tMat : ANY.W.mToThis)
 		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateTiny.mat(tMat                 , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
-		for (OreDictMaterial tMat : ANY.Diamond.mToThis) if (tMat != MT.Diamantine)
+		for (OreDictMaterial tMat : ANY.Diamond.mToThis)
 		RM.Printer.addRecipe2(F, 16, 16, OP.plateTiny.mat(MT.Paper, 1)  , OP.plateGemTiny.mat(tMat              , 1), FL.Glue.make( 25), NF, ST.make(MD.FR, "stamps", 1, 4));
 		}
 		if (CR.has(ST.make(MD.FR, "stamps", 1, 5))) {

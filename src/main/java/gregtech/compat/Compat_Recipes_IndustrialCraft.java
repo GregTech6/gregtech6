@@ -413,7 +413,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Blocks.red_mushroom, 1, W)             , IL.IC2_Grin_Powder.get(1));
 		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Items.spider_eye, 1, W)                , IL.IC2_Grin_Powder.get(2));
 		
-		for (OreDictMaterial tMat : ANY.Diamond.mToThis) if (tMat != MT.Diamantine)
+		for (OreDictMaterial tMat : ANY.Diamond.mToThis)
 		RM.Press            .addRecipeX(T, 64,  256, new ItemStack[] {IL.IC2_Advanced_Alloy.get(4), OP.plate.mat(MT.Ir, 4), OP.gem.mat(tMat, 1)}, IL.IC2_Iridium_Alloy.get(1));
 		RM.Press            .addRecipe2(T, 16,   64, IL.IC2_Compressed_Coal_Ball.get(8), OP.dust.mat(MT.Obsidian, 9), IL.IC2_Compressed_Coal_Chunk.get(1));
 		

@@ -69,12 +69,14 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.dust        .mat(MT.Redstone, 1), ST.tag(0), OP.gem     .mat(MT.Redstonia   , 1));
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(MT.Lapis   , 1), ST.tag(0), OP.gem     .mat(MT.Palis       , 1));
-		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(MT.Diamond , 1), ST.tag(0), OP.gem     .mat(MT.Diamantine  , 1));
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(MT.Coal    , 1), ST.tag(0), OP.gem     .mat(MT.VoidCrystal , 1));
 		RM.Replicator   .addRecipe2(T, 16,  144, OP.blockDust   .mat(MT.Redstone, 1), ST.tag(0), OP.blockGem.mat(MT.Redstonia   , 1));
 		RM.Replicator   .addRecipe2(T, 16,  144, OP.blockGem    .mat(MT.Lapis   , 1), ST.tag(0), OP.blockGem.mat(MT.Palis       , 1));
-		RM.Replicator   .addRecipe2(T, 16,  144, OP.blockGem    .mat(MT.Diamond , 1), ST.tag(0), OP.blockGem.mat(MT.Diamantine  , 1));
 		RM.Replicator   .addRecipe2(T, 16,  144, OP.blockGem    .mat(MT.Coal    , 1), ST.tag(0), OP.blockGem.mat(MT.VoidCrystal , 1));
+		for (OreDictMaterial tMat : ANY.Diamond.mToThis) if (tMat != MT.Diamantine) {
+		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(tMat       , 1), ST.tag(0), OP.gem     .mat(MT.Diamantine  , 1));
+		RM.Replicator   .addRecipe2(T, 16,  144, OP.blockGem    .mat(tMat       , 1), ST.tag(0), OP.blockGem.mat(MT.Diamantine  , 1));
+		}
 		for (OreDictMaterial tMat : ANY.Emerald.mToThis) if (tMat != MT.Emeradic) {
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(tMat       , 1), ST.tag(0), OP.gem     .mat(MT.Emeradic    , 1));
 		RM.Replicator   .addRecipe2(T, 16,  144, OP.blockGem    .mat(tMat       , 1), ST.tag(0), OP.blockGem.mat(MT.Emeradic    , 1));
