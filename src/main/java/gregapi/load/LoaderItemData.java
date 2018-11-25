@@ -36,16 +36,12 @@ import net.minecraft.init.Items;
  * @author Gregorius Techneticies
  * 
  * Loads the ItemData for several Items.
- * This happens during the InitPhase, or if GregTech is installed within the PreInitPhase, since GregTech loads after all the Mods mentioned here, unlike the API.
  */
 public class LoaderItemData implements Runnable {
 	@Override public String toString() {return "Item Data Loader";}
 	
 	@Override
 	public void run() {
-		OM.data(MD.AETHER, "skyrootChest"                   , 1,   W, MT.Skyroot            ,  U * 8);
-		OM.data(MD.BTL, "weedwoodChest"                     , 1,   W, MT.Weedwood           ,  U * 8);
-		
 		OM.reg(OP.glass, MT.UNUSED.Reinforced       , ST.mkic("reinforcedGlass", 1));
 		OM.reg("paperResearchFragment"              , ST.make(MD.TC, "ItemResource", 1, 9));
 		OM.reg(OP.circuit, MT.Basic                 , ST.mkic("electronicCircuit", 1));
@@ -330,8 +326,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemClay                          , ST.make(Items.clay_ball, 1, W));
 		OM.reg(OD.itemFlint                         , ST.make(Items.flint, 1, W));
 		OM.reg(OD.itemPearl                         , ST.make(MD.MaCu, "pearls", 1, W));
-		OM.reg(OD.itemFeather                       , ST.make(Items.feather, 1, W));
+		OM.reg(OD.itemPearl                         , ST.make(MD.TROPIC, "pearl", 1, W));
 		OM.reg(OD.itemFeather                       , ST.make(MD.TF, "item.tfFeather", 1, W));
+		OM.reg(OD.itemFeather                       , ST.make(Items.feather, 1, W));
 		OM.reg(OD.itemLeather                       , ST.make(Items.leather, 1, W));
 		OM.reg(OD.itemLeatherTreated                , ST.make(MD.TG, "TechgunsAmmo", 1, 109));
 		OM.reg(OD.itemLeatherHardened               , ST.make(MD.HaC, "hardenedleatherItem", 1));
@@ -351,13 +348,13 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemMoss                          , ST.make(MD.BoP, "moss", 1, 0));
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.PE, "item.pe_philosophers_stone", 1, W));
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));
-		OM.reg("container1000water"                 , ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));
+		OM.reg(OD.container1000water                , ST.make(MD.PE, "item.pe_evertide_amulet", 1, W));
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.GaEn, "infiniteBucket", 1, W));
-		OM.reg("container1000water"                 , ST.make(MD.GaEn, "infiniteBucket", 1, W));
-		OM.reg("container1000water"                 , ST.make(MD.ERE, "bambucketWater", 1, W));
-		OM.reg("container1000milk"                  , ST.make(MD.ERE, "bambucketMilk", 1, W));
-		OM.reg("container1000honey"                 , ST.make(MD.ERE, "bambucketHoney", 1, W));
-		OM.reg("container1000honey"                 , ST.make(MD.ERE, "bucketHoney", 1, W));
+		OM.reg(OD.container1000water                , ST.make(MD.GaEn, "infiniteBucket", 1, W));
+		OM.reg(OD.container1000water                , ST.make(MD.ERE, "bambucketWater", 1, W));
+		OM.reg(OD.container1000milk                 , ST.make(MD.ERE, "bambucketMilk", 1, W));
+		OM.reg(OD.container1000honey                , ST.make(MD.ERE, "bambucketHoney", 1, W));
+		OM.reg(OD.container1000honey                , ST.make(MD.ERE, "bucketHoney", 1, W));
 		OM.reg(OD.itemResin                         , ST.make(MD.ERE, "materials", 1, 41));
 		OM.reg(OD.logWood                           , ST.make(MD.TC, "blockMagicalLog", 1, 4));
 		OM.reg(OD.logWood                           , ST.make(MD.TC, "blockMagicalLog", 1, 5));
@@ -386,13 +383,13 @@ public class LoaderItemData implements Runnable {
 		OM.reg("foodMuttoncooked"                   , ST.make(MD.EtFu, "mutton_cooked", 1, 0));
 		OM.reg("foodRabbitraw"                      , ST.make(MD.EtFu, "rabbit_raw", 1, 0));
 		OM.reg("foodRabbitcooked"                   , ST.make(MD.EtFu, "rabbit_cooked", 1, 0));
-		OM.reg("container1000rubbertreesap"         , ST.make(MD.IHL, "bucket_fluidRubberTreeSap", 1, 0));
-		OM.reg("container1000spruceresin"           , ST.make(MD.IHL, "bucket_SpruceResin", 1, 0));
+		OM.reg(OD.container1000rubbertreesap        , ST.make(MD.IHL, "bucket_fluidRubberTreeSap", 1, 0));
+		OM.reg(OD.container1000spruceresin          , ST.make(MD.IHL, "bucket_SpruceResin", 1, 0));
 		OM.reg("foodCheese"                         , ST.make(MD.GC, "item.cheeseCurd", 1, W));
 		OM.reg("foodCheese"                         , ST.make(MD.AA, "itemFood", 1, 0));
 		OM.reg("foodCarrotjuice"                    , ST.make(MD.AA, "itemFood", 1, 2));
 		OM.reg("foodBaconcooked"                    , ST.make(MD.AA, "itemFood", 1,20));
-		OM.reg("slimeballRice"                      , ST.make(MD.AA, "itemMisc", 1,12));
+		OM.reg(OD.slimeballRice                     , ST.make(MD.AA, "itemMisc", 1,12));
 		OM.reg("blockClay"                          , ST.make(Blocks.clay, 1, W));
 		OM.reg(OD.craftingBook                      , ST.make(Items.book, 1, W));
 		OM.reg(OD.craftingBook                      , ST.make(Items.writable_book, 1, W));
@@ -487,6 +484,33 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.dust.dat(MT.Obsidian)             , ST.make(MD.IC2, "item.itemObsidianDust", 1, 0));
 		OM.reg(OP.dust.dat(MT.Wheat)                , ST.make(MD.IC2, "item.itemFlour", 1, 0));
 		OM.reg("cropTea"                            , ST.make(MD.IC2, "item.itemTeaLeaf", 1, 0));
+		OM.reg("cropLemon"                          , ST.make(MD.TROPIC, "grapefruit", 1, 0));
+		OM.reg("cropOrange"                         , ST.make(MD.TROPIC, "orange", 1, 0));
+		OM.reg("cropGrapefruit"                     , ST.make(MD.TROPIC, "lemon", 1, 0));
+		OM.reg("cropLime"                           , ST.make(MD.TROPIC, "lime", 1, 0));
+		OM.reg("cropAnanas"                         , ST.make(MD.TROPIC, "tile.pineapple", 1, W));
+		OM.reg("cropCoconut"                        , ST.make(MD.TROPIC, "tile.coconut", 1, W));
+		OM.reg("cropCoffee"                         , ST.make(MD.TROPIC, "coffeeBean", 1, W));
+		
+		
+		OM.reg(OP.dustSmall.dat(MT.Fe)              , ST.make(MD.BINNIE_BEE, "misc", 1, 6));
+		OM.reg(OP.dustSmall.dat(MT.Au)              , ST.make(MD.BINNIE_BEE, "misc", 1, 7));
+		OM.reg(OP.dustSmall.dat(MT.Ag)              , ST.make(MD.BINNIE_BEE, "misc", 1, 8));
+		OM.reg(OP.dustSmall.dat(MT.Pt)              , ST.make(MD.BINNIE_BEE, "misc", 1, 9));
+		OM.reg(OP.dustSmall.dat(MT.Cu)              , ST.make(MD.BINNIE_BEE, "misc", 1,10));
+		OM.reg(OP.dustSmall.dat(MT.Sn)              , ST.make(MD.BINNIE_BEE, "misc", 1,11));
+		OM.reg(OP.dustSmall.dat(MT.Ni)              , ST.make(MD.BINNIE_BEE, "misc", 1,12));
+		OM.reg(OP.dustSmall.dat(MT.Pb)              , ST.make(MD.BINNIE_BEE, "misc", 1,13));
+		OM.reg(OP.dustSmall.dat(MT.Zn)              , ST.make(MD.BINNIE_BEE, "misc", 1,14));
+		OM.reg(OP.dustSmall.dat(MT.Ti)              , ST.make(MD.BINNIE_BEE, "misc", 1,15));
+		OM.reg(OP.dustSmall.dat(MT.W)               , ST.make(MD.BINNIE_BEE, "misc", 1,16));
+		OM.reg(OP.dustSmall.dat(MT.U_238)           , ST.make(MD.BINNIE_BEE, "misc", 1,17));
+		OM.reg(OP.dustSmall.dat(MT.Coal)            , ST.make(MD.BINNIE_BEE, "misc", 1,18));
+		OM.reg(OP.dustSmall.dat(MT.Clay)            , ST.make(MD.BINNIE_BEE, "misc", 1,26));
+		OM.reg(OP.dustSmall.dat(MT.Yellorium)       , ST.make(MD.BINNIE_BEE, "misc", 1,27));
+		OM.reg(OP.dustSmall.dat(MT.Blutonium)       , ST.make(MD.BINNIE_BEE, "misc", 1,28));
+		OM.reg(OP.dustSmall.dat(MT.Cyanite)         , ST.make(MD.BINNIE_BEE, "misc", 1,29));
+		
 		
 		OM.reg(OD.record                            , ST.make(MD.MFR, "record.blank", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.RoC, "rotarycraft_item_disk", 1, 0));
@@ -510,25 +534,13 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.record                            , ST.make(MD.BTL, "recordLonelyFire", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.BTL, "recordBetweenYouAndMe", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.BTL, "recordTheExplorer", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_buriedtreasure", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_thetribe", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_tradewinds", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_lowtide", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_easternisles", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_summering", 1, 0));
 		
-		
-		OM.reg(OP.dustSmall.dat(MT.Fe)              , ST.make(MD.BINNIE_BEE, "misc", 1, 6));
-		OM.reg(OP.dustSmall.dat(MT.Au)              , ST.make(MD.BINNIE_BEE, "misc", 1, 7));
-		OM.reg(OP.dustSmall.dat(MT.Ag)              , ST.make(MD.BINNIE_BEE, "misc", 1, 8));
-		OM.reg(OP.dustSmall.dat(MT.Pt)              , ST.make(MD.BINNIE_BEE, "misc", 1, 9));
-		OM.reg(OP.dustSmall.dat(MT.Cu)              , ST.make(MD.BINNIE_BEE, "misc", 1,10));
-		OM.reg(OP.dustSmall.dat(MT.Sn)              , ST.make(MD.BINNIE_BEE, "misc", 1,11));
-		OM.reg(OP.dustSmall.dat(MT.Ni)              , ST.make(MD.BINNIE_BEE, "misc", 1,12));
-		OM.reg(OP.dustSmall.dat(MT.Pb)              , ST.make(MD.BINNIE_BEE, "misc", 1,13));
-		OM.reg(OP.dustSmall.dat(MT.Zn)              , ST.make(MD.BINNIE_BEE, "misc", 1,14));
-		OM.reg(OP.dustSmall.dat(MT.Ti)              , ST.make(MD.BINNIE_BEE, "misc", 1,15));
-		OM.reg(OP.dustSmall.dat(MT.W)               , ST.make(MD.BINNIE_BEE, "misc", 1,16));
-		OM.reg(OP.dustSmall.dat(MT.U_238)           , ST.make(MD.BINNIE_BEE, "misc", 1,17));
-		OM.reg(OP.dustSmall.dat(MT.Coal)            , ST.make(MD.BINNIE_BEE, "misc", 1,18));
-		OM.reg(OP.dustSmall.dat(MT.Clay)            , ST.make(MD.BINNIE_BEE, "misc", 1,26));
-		OM.reg(OP.dustSmall.dat(MT.Yellorium)       , ST.make(MD.BINNIE_BEE, "misc", 1,27));
-		OM.reg(OP.dustSmall.dat(MT.Blutonium)       , ST.make(MD.BINNIE_BEE, "misc", 1,28));
-		OM.reg(OP.dustSmall.dat(MT.Cyanite)         , ST.make(MD.BINNIE_BEE, "misc", 1,29));
 		
 		OM.data(MD.BINNIE_BEE, "misc"                               , 1,   1, ANY.Diamond           , U9);
 		OM.data(MD.BINNIE_BEE, "misc"                               , 1,   2, ANY.Emerald           , U9);
@@ -609,6 +621,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.GC, "item.schematic"                             , 1,   W, MT.Paper              , U*8);
 		OM.data(MD.GC_PLANETS, "item.schematic"                     , 1,   W, MT.Paper              , U*8);
 		OM.data(MD.GC_GALAXYSPACE, "item.ItemSchematics"            , 1,   W, MT.Paper              , U*8);
+		OM.data(MD.TROPIC, "encTropica"                             , 1,   W, MT.Paper              , U*3);
 		
 		for (byte i = 0; i < 16; i++) OM.reg(OP.dyeMixable.mNameInternal + DYE_OREDICTS_POST[i], ST.make(Items.dye, 1, i));
 		
@@ -739,6 +752,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.stone, MT.Redrock                             , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 1));
 		OM.reg(OP.stone, MT.Redrock                             , ST.make(MD.EBXL, "terrain_blocks1"    , 1, 2));
 //      OM.reg(OP.stone, MT.CrackedSand                         , ST.make(MD.EBXL, "terrain_blocks2"    , 1, 0));
+		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.TROPIC, "tile.chunk"       , 1, W));
 		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.IC2, "blockBasalt"         , 1, 0));
 		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.RC, "brick.abyssal"        , 1, W));
 		OM.reg(OP.stone, MT.Marble                              , ST.make(MD.RC, "brick.quarried"       , 1, W));

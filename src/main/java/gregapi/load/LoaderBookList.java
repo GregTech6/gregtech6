@@ -192,6 +192,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.ATUM, "item.loot"                          , 1,   W), (byte)  1);
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.ATUM, "item.scroll"                        , 1,   W), (byte) 18);
 		}
+		if (MD.TROPIC.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.TROPIC, "encTropica"                       , 1,   W), (byte)  1);
+		}
 		if (MD.IHL.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.IHL, "guidebook"                           , 1,   W), (byte) 48);
 		}

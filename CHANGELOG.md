@@ -30,6 +30,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.11: (Not released yet)
+[FIXED]
+A few Parts of the Trainwreck that is Tropicraft.
+It is the shittiest Mod I have ever seen so far, and that says something...
+I don't even want to call that "[COMPAT]", because "Fixing that they are too stupid to even make more than half of their own Crafting Recipes output the Item they are supposed to" is not what Compatibility is about...
 [IMPROVED] Removal of Crafting Recipes by Output has now less of a performance Impact. So faster Loading Times probably.
 
 
@@ -164,9 +168,9 @@ And I need certain things to be fixed before I can work properly again, otherwis
 [NOTE] Some GT6 Addons like QwerTech or GT Weapons Works will need to be recompiled in order to work with this Version.
 [BROKEN] IC2 Sounds are currently not available due to going OpenSource, and IC2 obviously not being OpenSource. (I had to copy their Sound Files to make shit work, because they clearly didn't care to make things proper)
 [BROKEN AND FIXED LATER] WAILA is somehow no longer able to display the Name of my Blocks. I wonder if it is because the WAILA API is inside the new Dev Environment, because I never did WAILA Compatibility at all.
-[IMPROVED] Performance in general. I kept one piece of old Code and that has wrecked a lot of Speed and RAM, but now it's fixed.
 [FIXED] Tons of minor Issues that required a massive amount of typing.
 [FIXED] Treecapitation overall now also works when Aether is breaking it. Note, that this has nothing to do with the seperate Issue that Aether Trees cant be Treecapitated.
+[IMPROVED] Performance in general. I kept one piece of old Code and that has wrecked a lot of Speed and RAM, but now it's fixed.
 [ADDED] My own selfmade Wrench and Screwdriver Sounds.
 
 

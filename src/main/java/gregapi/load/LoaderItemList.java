@@ -432,6 +432,26 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Vial_FieryBlood.item() != null) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.item() != null) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
 		
+		IL.TROPIC_Log_Palm                      .set(ST.make(MD.TROPIC, "tile.log"                          , 1, 0), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
+		IL.TROPIC_Log_Mahogany                  .set(ST.make(MD.TROPIC, "tile.log"                          , 1, 1), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
+		IL.TROPIC_Bamboo                        .set(ST.make(MD.TROPIC, "bambooChute"                       , 1, 0), new OreDictItemData(MT.Bamboo, U), OD.bamboo);
+		IL.TROPIC_Stick                         .set(ST.make(MD.TROPIC, "bambooStick"                       , 1, 0), OP.stick.dat(MT.Bamboo), OD.bamboo);
+		IL.TROPIC_Chest                         .set(ST.make(MD.TROPIC, "tile.bambooChest"                  , 1, 0), new OreDictItemData(MT.Bamboo, 8*U), OD.craftingChest);
+		IL.TROPIC_Sapling_Palm                  .set(ST.make(MD.TROPIC, "tile.sapling"                      , 1, 0), null, OP.treeSapling);
+		IL.TROPIC_Sapling_Mahogany              .set(ST.make(MD.TROPIC, "tile.sapling"                      , 1, 1), null, OP.treeSapling);
+		IL.TROPIC_Sapling_Grapefruit            .set(ST.make(MD.TROPIC, "tile.sapling"                      , 1, 2), null, OP.treeSapling);
+		IL.TROPIC_Sapling_Lemon                 .set(ST.make(MD.TROPIC, "tile.sapling"                      , 1, 3), null, OP.treeSapling);
+		IL.TROPIC_Sapling_Lime                  .set(ST.make(MD.TROPIC, "tile.sapling"                      , 1, 4), null, OP.treeSapling);
+		IL.TROPIC_Sapling_Orange                .set(ST.make(MD.TROPIC, "tile.sapling"                      , 1, 5), null, OP.treeSapling);
+		IL.TROPIC_Leaves_Palm                   .set(ST.make(MD.TROPIC, "tile.leafPalm"                     , 1, 0), null, OP.treeLeaves);
+		IL.TROPIC_Leaves_Grapefruit             .set(ST.make(MD.TROPIC, "tile.leaf"                         , 1, 0), null, OP.treeLeaves);
+		IL.TROPIC_Leaves_Lemon                  .set(ST.make(MD.TROPIC, "tile.leaf"                         , 1, 1), null, OP.treeLeaves);
+		IL.TROPIC_Leaves_Lime                   .set(ST.make(MD.TROPIC, "tile.leaf"                         , 1, 2), null, OP.treeLeaves);
+		IL.TROPIC_Leaves_Orange                 .set(ST.make(MD.TROPIC, "tile.leaf"                         , 1, 3), null, OP.treeLeaves);
+		IL.TROPIC_Leaves_Kapok                  .set(ST.make(MD.TROPIC, "tile.leafRainforest"               , 1, 0), null, OP.treeLeaves);
+		IL.TROPIC_Leaves_Mahogany               .set(ST.make(MD.TROPIC, "tile.leafRainforest"               , 1, 1), null, OP.treeLeaves);
+		IL.TROPIC_Leaves_Fruit                  .set(ST.make(MD.TROPIC, "tile.leafRainforest"               , 1, 2), null, OP.treeLeaves);
+		
 		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.Umber));
 		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), OP.stone.dat(MT.Umber));
 		IL.ERE_Mud_Brick                        .set(ST.make(MD.ERE, "materials"                            , 1,23));
@@ -440,7 +460,7 @@ public class LoaderItemList implements Runnable {
 		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemFertilizer);
 		IL.ERE_Gaean_Gem                        .set(ST.make(MD.ERE, "materials"                            , 1,39));
 		IL.ERE_Gaean_Staff                      .set(ST.make(MD.ERE, "portalActivator"                      , 1, 0));
-		IL.ERE_White_Planks                      .set(ST.make(MD.ERE, "planks"                                  , 1, 7));
+		IL.ERE_White_Planks                     .set(ST.make(MD.ERE, "planks"                               , 1, 7));
 		IL.ERE_White_Slab                       .set(ST.make(MD.ERE, "slabPlanksWhite"                      , 1, 0));
 		IL.ERE_White_Stairs                     .set(ST.make(MD.ERE, "plankStairWhite"                      , 1, 0));
 		
@@ -507,7 +527,7 @@ public class LoaderItemList implements Runnable {
 		IL.GrC_Cheese_Ricotta                   .set(ST.make(MD.GrC_Milk, "grcmilk.Cheese"                  , 1, 7), null, "foodCheeseRicotta");
 		IL.GrC_Starter_Culture                  .set(ST.make(MD.GrC_Milk, "grcmilk.StarterCulture"          , 1, 0));
 		IL.GrC_Applecore                        .set(ST.make(MD.GrC_Apples, "grc.appleSeeds"                , 1, 0), null, OD.itemPlantRemains);
-		IL.GrC_Bamboo                           .set(ST.make(MD.GrC_Bamboo, "grc.bamboo"                    , 1, 0), null, OD.bamboo);
+		IL.GrC_Bamboo                           .set(ST.make(MD.GrC_Bamboo, "grc.bamboo"                    , 1, 0), OP.stick.dat(MT.Bamboo), OD.bamboo);
 		IL.GrC_Bamboo_Charcoal                  .set(ST.make(MD.GrC_Bamboo, "grc.bambooCoal"                , 1, 0), new OreDictItemData(MT.Charcoal, U2));
 		IL.GrC_Paddy                            .set(ST.make(MD.GrC_Rice, "grc.paddyField"                  , 1, 0));
 		IL.GrC_Ice_Cream                        .set(ST.make(MD.GrC_Milk, "grcmilk.IceCream"                , 1, 0), null, "foodIcecream");
@@ -658,7 +678,7 @@ public class LoaderItemList implements Runnable {
 		IL.BoP_PixieDust                        .set(ST.make(MD.BoP, "misc"                                 , 1,11));
 		IL.BoP_Ichor                            .set(ST.make(MD.BoP, "misc"                                 , 1,12));
 		IL.BoP_Pinecone                         .set(ST.make(MD.BoP, "misc"                                 , 1,13));
-		IL.BoP_Bamboo                           .set(ST.make(MD.BoP, "bamboo"                               , 1, 0), null, OD.bamboo);
+		IL.BoP_Bamboo                           .set(ST.make(MD.BoP, "bamboo"                               , 1, 0), OP.stick.dat(MT.Bamboo), OD.bamboo);
 		IL.BoP_Hard_Ice                         .set(ST.make(MD.BoP, "hardIce"                              , 1, 0), new OreDictItemData(MT.Ice, U*2));
 		IL.BoP_Crag_Rock                        .set(ST.make(MD.BoP, "cragRock"                             , 1, 0), new OreDictItemData(MT.Stone, U), OP.cobblestone);
 		IL.BoP_Dirt_Dried                       .set(ST.make(MD.BoP, "driedDirt"                            , 1, 0));

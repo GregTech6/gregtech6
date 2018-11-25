@@ -1654,6 +1654,7 @@ public class CS {
 		, ATUM              = "atum"
 		, BTL               = "thebetweenlands"
 		, AETHER            = "aether"
+		, TROPIC            = "tropicraft"
 		, MYST              = "Mystcraft"
 		, WARPBOOK          = "warpbook"
 		, ARS               = "arsmagica2"

@@ -57,6 +57,7 @@ public class MD {
 	, ATUM              = new ModData(ModIDs.ATUM               , "Atum")
 	, BTL               = new ModData(ModIDs.BTL                , "The Betweenlands")
 	, AETHER            = new ModData(ModIDs.AETHER             , "The Aether")
+	, TROPIC            = new ModData(ModIDs.TROPIC             , "Tropicraft")
 	, MYST              = new ModData(ModIDs.MYST               , "Mystcraft")
 	, WARPBOOK          = new ModData(ModIDs.WARPBOOK           , "Warpbook")
 	, ARS               = new ModData(ModIDs.ARS                , "Ars Magica")

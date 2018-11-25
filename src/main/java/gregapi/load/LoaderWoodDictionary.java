@@ -62,7 +62,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 176 is next!
+		// No Gaps in this List, so 177 is next!
 		
 		
 		// Vanilla Trees
@@ -304,7 +304,7 @@ public class LoaderWoodDictionary implements Runnable {
 			// This one is Bamboo, so no actual Logs.
 			new SaplingEntry(ST.make(MD.BoP, "saplings"         , 1, 2), null, ST.make(MD.BoP, "leaves1", 1, 1));
 			
-			new PlankEntry(ST.make(tPlank, 1,10), NI, NI, MT.Wood, 82, NI, 0, 0, 0);
+			new PlankEntry(ST.make(tPlank, 1,10), NI, NI, MT.Bamboo, 82, NI, 0, 0, 0);
 			
 			CR.shaped(ST.make(tPlank, 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 0));
 			CR.shaped(ST.make(tPlank, 1, 1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BoP, "woodenSingleSlab1", 1, 1));
@@ -354,6 +354,17 @@ public class LoaderWoodDictionary implements Runnable {
 			CR.shaped(ST.make(tPlank, 1,12), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 4));
 			CR.shaped(ST.make(tPlank, 1,13), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 5));
 			CR.shaped(ST.make(tPlank, 1,14), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 6));
+		}
+		// Tropicraft Trees
+		if (MD.TROPIC.mLoaded) {
+			new SaplingEntry(IL.TROPIC_Sapling_Palm      .get(1), new WoodEntry(IL.TROPIC_Log_Palm    .get(1), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2), new PlankEntry(ST.make(MD.TROPIC, "tile.plank", 1, 0), ST.make(MD.TROPIC, "tile.singleSlabs", 1, 3), ST.make(MD.TROPIC, "tile.palmStairs"    , 1, 0), 176)), IL.TROPIC_Leaves_Palm    .get(1));
+			new SaplingEntry(IL.TROPIC_Sapling_Mahogany  .get(1), new WoodEntry(IL.TROPIC_Log_Mahogany.get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 3), new PlankEntry(ST.make(MD.TROPIC, "tile.plank", 1, 1), ST.make(MD.TROPIC, "tile.singleSlabs", 1, 3), ST.make(MD.TROPIC, "tile.mahoganyStairs", 1, 0)     )), IL.TROPIC_Leaves_Mahogany.get(1));
+			new SaplingEntry(IL.TROPIC_Sapling_Grapefruit.get(1), WoodDictionary.WOODS.get(Blocks.log, 0), IL.TROPIC_Leaves_Grapefruit.get(1));
+			new SaplingEntry(IL.TROPIC_Sapling_Lemon     .get(1), WoodDictionary.WOODS.get(Blocks.log, 0), IL.TROPIC_Leaves_Lemon     .get(1));
+			new SaplingEntry(IL.TROPIC_Sapling_Lime      .get(1), WoodDictionary.WOODS.get(Blocks.log, 0), IL.TROPIC_Leaves_Lime      .get(1));
+			new SaplingEntry(IL.TROPIC_Sapling_Orange    .get(1), WoodDictionary.WOODS.get(Blocks.log, 0), IL.TROPIC_Leaves_Orange    .get(1));
+			
+			CR.shaped(ST.make(MD.TROPIC, "tile.plank", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.TROPIC, "tile.singleSlabs", 1, 3));
 		}
 		// Forestry Trees
 		if (MD.FR.mLoaded) {

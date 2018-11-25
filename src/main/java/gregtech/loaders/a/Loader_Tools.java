@@ -192,7 +192,7 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN        , MT.Wood           , MT.Wood           ), CR.DEF_MIR   , "  S", " I ", "S f", 'I', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN        , MT.Wood           , MT.Wood           ), CR.DEF_MIR   , "  S", " I ", "S k", 'I', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
 		
-		for (Object[] tHandle : new Object[][] {{MT.Wood, OP.stick.dat(ANY.Wood)}, {MT.PetrifiedWood, OP.stick.dat(MT.PetrifiedWood)}, {MT.Lime, "bamboo"}, {MT.Bone, ST.make(Items.bone, 1, W)}, {MT.Plastic, OP.stick.dat(MT.Plastic)}}) {
+		for (Object[] tHandle : new Object[][] {{MT.Wood, OP.stick.dat(ANY.Wood)}, {MT.PetrifiedWood, OP.stick.dat(MT.PetrifiedWood)}, {MT.Bamboo, OD.bamboo}, {MT.Bone, ST.make(Items.bone, 1, W)}, {MT.Plastic, OP.stick.dat(MT.Plastic)}}) {
 		
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.KNIFE              , MT.Flint          , (OreDictMaterial)tHandle[0]   ), CR.DEF_MIR   , "SF"               , 'S', tHandle[1], 'F', OD.itemFlint);
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.AXE                , MT.Flint          , (OreDictMaterial)tHandle[0]   ), CR.DEF_MIR   , "FF" , "FS"        , 'S', tHandle[1], 'F', OD.itemFlint);
