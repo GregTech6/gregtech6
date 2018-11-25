@@ -62,11 +62,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
  * @author Gregorius Techneticies
  */
 public class CR {
-	private static final ArrayListNoNulls<List<ItemStack>> OREDICT_DYE_LISTS = new ArrayListNoNulls<>();
-	static {for (String tDye : DYE_OREDICTS) OREDICT_DYE_LISTS.add(OreDictionary.getOres(tDye));}
-	
-	public static final ItemStackSet<ItemStackContainer> RECIPES_TO_DELATE = new ItemStackSet<>();
-	
 	public static final HashSetNoNulls<String>
 	CLASSES_NATIVE = new HashSetNoNulls<>(F
 	, ShapedRecipes.class.getName()
@@ -112,8 +107,13 @@ public class CR {
 	, "shedar.mods.ic2.nuclearcontrol.StorageArrayRecipe"
 	);
 	
-	private static boolean BUFFERING = T;
-	private static final List<IRecipe> BUFFER = new ArrayListNoNulls<>(1000);
+	private static final ArrayListNoNulls<List<ItemStack>> OREDICT_DYE_LISTS = new ArrayListNoNulls<>();
+	static {for (String tDye : DYE_OREDICTS) OREDICT_DYE_LISTS.add(OreDictionary.getOres(tDye));}
+	
+	public static final ItemStackSet<ItemStackContainer> RECIPES_TO_DELATE = new ItemStackSet<>();
+	
+	public static boolean BUFFERING = T;
+	public static final List<IRecipe> BUFFER = new ArrayListNoNulls<>(1000);
 	
 	public static void stopBuffering() {
 		BUFFERING = F;

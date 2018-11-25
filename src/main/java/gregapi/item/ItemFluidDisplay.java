@@ -192,9 +192,8 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	public void registerIcons(IIconRegister aIconRegister) {
 		// Useful hack to register Block Icons. That is why the Fluid Display Item has to exist always.
 		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI) {
-			OUT.println("GT_API: Setting up Icon Register for Blocks");
+			OUT.println("GT_Client: Setting up and loading Icon Register for Blocks");
 			GT_API.sBlockIcons = aIconRegister;
-			OUT.println("GT_API: Starting Block Icon Load Phase");
 			for (Runnable tRunnable : GT_API.sBlockIconload) {
 				try {
 					tRunnable.run();
@@ -203,14 +202,12 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				}
 			}
 			if (MD.IC2.mLoaded) {
-				OUT.println("GT_API: Registering Crop specific Textures");
 				try {
 					for (gregapi.old.GT_BaseCrop tCrop : gregapi.old.GT_BaseCrop.sCropList) tCrop.registerSprites(aIconRegister);
 				} catch(Throwable e) {
 					e.printStackTrace(ERR);
 				}
 			}
-			OUT.println("GT_API: Finished Block Icon Load Phase");
 		}
 	}
 	

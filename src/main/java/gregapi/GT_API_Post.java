@@ -428,14 +428,12 @@ public class GT_API_Post extends Abstract_Mod {
 	
 	@Override
 	public void onModPostInit2(FMLPostInitializationEvent aEvent) {
-		OUT.println(getModNameForLog() + ": Checking IC2 Recipe Lists.");
 		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES  ) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
 		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES   ) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
 		if (DISABLE_ALL_IC2_MACERATOR_RECIPES   ) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
 		if (DISABLE_ALL_IC2_OREWASHER_RECIPES   ) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
 		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES  ) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
 		
-		OUT.println(getModNameForLog() + ": Registering things that are considered Flowers by Bumblebees.");
 		if (MD.BoP.mLoaded) {
 			BlocksGT.FLOWERS.add(ST.block(MD.BoP, "flowers"));
 			BlocksGT.FLOWERS.add(ST.block(MD.BoP, "flowers2"));
@@ -460,7 +458,6 @@ public class GT_API_Post extends Abstract_Mod {
 			BlocksGT.FLOWERS.add(ST.block(MD.BOTA, "shinyFlower"));
 		}
 		
-		OUT.println(getModNameForLog() + ": Registering other Mods Enchantments for Materials");
 		for (Enchantment tEnchant : Enchantment.enchantmentsList) if (tEnchant != null) {
 			if ("enchantment.Magnetization".equalsIgnoreCase(tEnchant.getName())) {
 				for (OreDictMaterial tMaterial : MT.ALL_MATERIALS_REGISTERED_HERE) {
@@ -517,10 +514,8 @@ public class GT_API_Post extends Abstract_Mod {
 			}
 		}
 		
-		OUT.println(getModNameForLog() + ": Doing Books for Shelves.");
 		new LoaderBookList().run();
 		
-		OUT.println(getModNameForLog() + ": Fixing Chemical Formula Tooltips of certain Elements");
 		/** Diatomic Elements get a Subscript 2 appended to their ToolTip after PostInit. That way the ToolTip Calculation works properly until PostInit happens. */
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (tMaterial.contains(TD.Atomic.DIATOMIC_NONMETAL)) tMaterial.mTooltipChemical += "\u2082";
 		

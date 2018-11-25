@@ -38,7 +38,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Decomp implements Runnable {
-	@Override public void run() {OUT.println("GT_Mod: Doing Decomposition Recipes for Electrolyzer, Centrifuge and alike"); try {
+	@Override public void run() {try {
 		for (OreDictMaterial aMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (aMaterial.mTargetRegistration == aMaterial) {
 			IOreDictConfigurationComponent tComponents = aMaterial.mComponents;
 			if (tComponents != null && tComponents.getCommonDivider() <= 64 && aMaterial.contains(TD.Compounds.DECOMPOSABLE)) {

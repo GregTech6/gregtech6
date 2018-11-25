@@ -50,7 +50,7 @@ public class Loader_ItemIterator implements Runnable {
 		OM.data(CR.get(tStack = OP.ingot.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
 		OM.data(CR.get(tStack = OP.plate.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
 		
-		OUT.println("GT_Mod: Scanning Food for the Canning Machine and Wrenches/Crowbars for the Config.");
+		OUT.println("GT_Mod: Scanning Food for the Canning Machine, and Wrenches/Crowbars for the Config.");
 		
 		boolean tCheckCrowbar = F, tCheckWrench = F, tCheckCans = (IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists());
 		

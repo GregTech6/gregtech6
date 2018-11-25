@@ -60,7 +60,7 @@ import net.minecraftforge.fluids.FluidStack;
 public class Loader_Recipes_Handlers implements Runnable {
 	@Override
 	@SuppressWarnings({"unchecked", "rawtypes"})
-	public void run() {OUT.println("GT_Mod: Doing Recipe Map Handlers.");
+	public void run() {
 		RM.Sifting              .add(new RecipeMapHandlerPrefix(pebbles                         , 1, null, 0, NF,  16, 0,   512, NF, dust               , 3, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(rockGt                          , 1, null, 0, NF,  16, 0,    16, NF, dustSmall          , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));

@@ -217,18 +217,13 @@ public class GT_Client extends GT_Proxy {
 					if (MD.IC2.mLoaded && !MD.IC2C.mLoaded) {
 						try {
 							int tVersion = Integer.parseInt(((String)Class.forName("ic2.core.IC2").getField("VERSION").get(null)).substring(4, 7));
-							if (D1) OUT.println("Industrialcraft Version: " + tVersion);
-							if (tVersion < GT_Mod.MIN_IC2) {
-								aEvent.player.addChatComponentMessage(new ChatComponentText("GregTech: Please update IndustrialCraft here:"));
-								aEvent.player.addChatComponentMessage(new ChatComponentText("ic2api.player.to:8080/job/IC2_experimental/" + (GT_Mod.MAX_IC2<Integer.MAX_VALUE?GT_Mod.MAX_IC2:GT_Mod.MIN_IC2)+"/"));
-							} else if (tVersion > GT_Mod.MAX_IC2) {
-								aEvent.player.addChatComponentMessage(new ChatComponentText("GregTech: Please downgrade IndustrialCraft here:"));
-								aEvent.player.addChatComponentMessage(new ChatComponentText("ic2api.player.to:8080/job/IC2_experimental/" + GT_Mod.MAX_IC2+"/"));
+							if (tVersion < 827) {
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Please update IndustrialCraft!"));
+								tLink = new ChatComponentText(LH.Chat.BLUE + "http://ic2api.player.to:8080/job/IC2_experimental/827/");
+								tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://ic2api.player.to:8080/job/IC2_experimental/827/"));
+								aEvent.player.addChatComponentMessage(tLink);
 							}
-						} catch(Throwable e) {
-							aEvent.player.addChatComponentMessage(new ChatComponentText("GregTech: Please get the recommended Version of IndustrialCraft here:"));
-							aEvent.player.addChatComponentMessage(new ChatComponentText("ic2api.player.to:8080/job/IC2_experimental/" + (GT_Mod.MAX_IC2<Integer.MAX_VALUE?GT_Mod.MAX_IC2:GT_Mod.MIN_IC2)+"/"));
-						}
+						} catch(Throwable e) {/**/}
 					}
 					if (MD.COG.mLoaded && !MD.PFAA.mLoaded && ConfigsGT.CLIENT.get(ConfigCategories.general, "warnings_customoregen", T)) {
 						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! CustomOreGen will fuck up all GregTech Worldgen with its Default Configs!"));

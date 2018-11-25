@@ -117,7 +117,6 @@ import net.minecraftforge.oredict.OreDictionary;
 public class GT_Mod extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
 	public static GT_Proxy gregtechproxy;
-	public static int MIN_IC2 = 827, MAX_IC2 = Integer.MAX_VALUE;
 	public static String MAJOR_VERSION = "609";
 	
 	public GT_Mod() {
@@ -146,8 +145,6 @@ public class GT_Mod extends Abstract_Mod {
 		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "gregtech.cfg");
 		Configuration tMainConfig = new Configuration(tFile);
 		
-		OUT.println(getModNameForLog() + ": Setting Configs");
-		
 		gregtechproxy.mSkeletonsShootGTArrows           = tMainConfig.get("general", "SkeletonsShootGTArrows"       , 16).getInt(16);
 		gregtechproxy.mFlintChance                      = tMainConfig.get("general", "FlintAndSteelChance"          , 30).getInt(30);
 		gregtechproxy.mDisableVanillaOres               = tMainConfig.get("general", "DisableVanillaOres"           , T).getBoolean(T);
@@ -157,7 +154,6 @@ public class GT_Mod extends Abstract_Mod {
 		
 		BlockOcean.SPREAD_TO_AIR                        = tMainConfig.get("general", "OceanBlocksSpreadToAir"       , T).getBoolean(T);
 		
-		OUT.println(getModNameForLog() + ": Saving Main Config");
 		tMainConfig.save();
 		
 		if (COMPAT_IC2 != null && !MD.IC2C.mLoaded) {

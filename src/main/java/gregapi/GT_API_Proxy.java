@@ -189,12 +189,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (mSaveLocation == null) {
 			OUT.println("WARNING: World Specific Save Files could not be loaded!");
 		} else {
-			OUT.println("GT_API: Loading Special Save Files");
 			new File(mSaveLocation, "gregtech").mkdirs();
 			
 			GarbageGT.onServerLoad(mSaveLocation);
 			MultiTileEntityRegistry.onServerLoad(mSaveLocation);
-			OUT.println("GT_API: Loaded Special Save Files");
+			OUT.println("GT_Server: Loaded Special Save Files");
 		}
 	}
 	
@@ -203,12 +202,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (mSaveLocation == null) {
 			OUT.println("WARNING: World Specific Save Files could not be saved!");
 		} else {
-			OUT.println("GT_API: Saving Special Save Files");
 			new File(mSaveLocation, "gregtech").mkdirs();
 			
 			GarbageGT.onServerSave(mSaveLocation);
 			MultiTileEntityRegistry.onServerSave(mSaveLocation);
-			OUT.println("GT_API: Saved Special Save Files");
+			OUT.println("GT_Server: Saved Special Save Files");
 		}
 		
 		mSaveLocation = null;

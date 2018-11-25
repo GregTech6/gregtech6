@@ -113,9 +113,8 @@ public class ItemIntegratedCircuit extends ItemBase {
 		for (int i = 0; i < 25/*TODO mIcons.length*/; i++) mIcons[i] = aIconRegister.registerIcon(mModID + ":" + mName + "/" + (byte)(i&255));
 		// Useful hack to register Item Icons. That is why the Integrated Circuit Item has to exist always.
 		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI) {
-			OUT.println("GT_API: Setting up Icon Register for Items");
+			OUT.println("GT_Client: Setting up and loading Icon Register for Items");
 			GT_API.sItemIcons = aIconRegister;
-			OUT.println("GT_API: Starting Item Icon Load Phase");
 			for (Runnable tRunnable : GT_API.sItemIconload) {
 				try {
 					tRunnable.run();
@@ -123,7 +122,6 @@ public class ItemIntegratedCircuit extends ItemBase {
 					e.printStackTrace(ERR);
 				}
 			}
-			OUT.println("GT_API: Finished Item Icon Load Phase");
 		}
 	}
 	

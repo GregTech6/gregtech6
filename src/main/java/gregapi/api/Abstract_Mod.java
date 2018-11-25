@@ -121,6 +121,12 @@ public abstract class Abstract_Mod {
 	/** Called after Server Stop */
 	public abstract void onModServerStopped2(FMLServerStoppedEvent aEvent);
 	
+	/** Called after the Last GT PreInit Phase happened. */
+	public void onModFinalPreInit(FMLPreInitializationEvent aEvent) {/**/}
+	/** Called after the Last GT Init Phase happened. */
+	public void onModFinalInit(FMLInitializationEvent aEvent) {/**/}
+	/** Called after the Last GT PostInit Phase happened. */
+	public void onModFinalPostInit(FMLPostInitializationEvent aEvent) {/**/}
 	
 	
 	@Override public String toString() {return getModID();}
@@ -179,6 +185,8 @@ public abstract class Abstract_Mod {
 			
 			loadRunnables("Saving Configs", sConfigs);
 			
+			if (sFinishedPreInit >= sModCountUsingGTAPI) for (Abstract_Mod tMod : MODS_USING_GT_API) try {tMod.onModFinalPreInit(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
+			
 			OUT.println(getModNameForLog() + ": =======================");
 			ORD.println(getModNameForLog() + ": =======================");
 		} catch(Throwable e) {
@@ -223,6 +231,8 @@ public abstract class Abstract_Mod {
 			loadRunnables("After Init", mAfterInit); mAfterInit.clear(); mAfterInit = null;
 			
 			loadRunnables("Saving Configs", sConfigs);
+			
+			if (sFinishedInit >= sModCountUsingGTAPI) for (Abstract_Mod tMod : MODS_USING_GT_API) try {tMod.onModFinalInit(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 			
 			OUT.println(getModNameForLog() + ": ====================");
 			ORD.println(getModNameForLog() + ": ====================");
@@ -269,11 +279,12 @@ public abstract class Abstract_Mod {
 			
 			loadRunnables("Finalize", mFinalize); mFinalize.clear(); mFinalize = null;
 			
+			if (sFinishedPostInit >= sModCountUsingGTAPI) for (Abstract_Mod tMod : MODS_USING_GT_API) try {tMod.onModFinalPostInit(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
+			
 			sFinalized++;
 			mFinalized = T;
 			
 			if (sFinalized >= sModCountUsingGTAPI) {
-				OUT.println(getModNameForLog() + ": Adding buffered Recipes.");
 				CR.stopBuffering();
 			}
 			

@@ -37,12 +37,6 @@ import net.minecraft.item.ItemStack;
 public class Loader_CraftingRecipes implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Beginning to add regular Crafting Recipes.");
-		
-		
-		
-		
-
 		/*
 		ItemStack tStack;
 		

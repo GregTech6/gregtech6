@@ -314,14 +314,6 @@ public class GT_API extends Abstract_Mod {
 	@Mod.EventHandler public void onServerStopping  (FMLServerStoppingEvent     aEvent) {onModServerStopping(aEvent);}
 	@Mod.EventHandler public void onServerStopped   (FMLServerStoppedEvent      aEvent) {onModServerStopped(aEvent);}
 	
-	@Mod.EventHandler
-	public void onIDChangingEvent(FMLModIdMappingEvent aEvent) {
-		OUT.println(getModNameForLog() + ": Remapping all the ItemStackMaps due to ID Map change.");
-		OUT.println(getModNameForLog() + ": Those damn Items should have a consistent Hashcode, but noooo, ofcourse they break Basic Code Conventions! Thanks Forge and Mojang!");
-		for (Map<ItemStackContainer, ?> tMap : STACKMAPS) UT.Code.reMap(tMap);
-		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onIDChanging(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
-	}
-	
 	@Override
 	@SuppressWarnings("resource")
 	public void onModPreInit2(FMLPreInitializationEvent aEvent) {
@@ -667,10 +659,8 @@ public class GT_API extends Abstract_Mod {
 	public void onModInit2(FMLInitializationEvent aEvent) {
 // TODO team.chisel.carving.Carving.chisel.getGroup("cobblestone").setOreName(null);
 		
-		OUT.println(getModNameForLog() + ": Doing a lot of the OreDictionary work (populating HashMaps for enabling faster access to Data and parsing Stuff). This will take a while. Like a LOT of time.");
-		OUT.println(getModNameForLog() + ": If it seriously takes more than a hour then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
+		OUT.println(getModNameForLog() + ": If the Loading Bar somehow Freezes at this Point, then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
 		OreDictManager.INSTANCE.enableRegistrations();
-		OUT.println(getModNameForLog() + ": Finished a lot of the OreDictionary work.");
 		
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 	}
@@ -691,10 +681,8 @@ public class GT_API extends Abstract_Mod {
 		EnergyCompat.checkAvailabilities();
 		ToolCompat.checkAvailabilities();
 		
-		OUT.println(getModNameForLog() + ": Doing a lot of more OreDictionary work (Registering Recipes). This will take a while. Like a LOT of time.");
-		OUT.println(getModNameForLog() + ": If it seriously takes more than a hour then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
+		OUT.println(getModNameForLog() + ": If the Loading Bar somehow Freezes at this Point, then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
 		OreDictManager.INSTANCE.onPostLoad();
-		OUT.println(getModNameForLog() + ": Finished another batch of the OreDictionary work.");
 		
 		ICover tCover = new CoverRedstoneTorch();
 		CoverRegistry.put(ST.make(Blocks.redstone_torch, 1, 0), tCover);
@@ -729,7 +717,6 @@ public class GT_API extends Abstract_Mod {
 		
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPostLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 		
-		OUT.println(getModNameForLog() + ": Dumping Material List for the Config Folder");
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && !tMaterial.contains(TD.Properties.INVALID_MATERIAL)) MAT_LOG.println(tMaterial.mNameInternal);
 	}
 	
@@ -752,5 +739,12 @@ public class GT_API extends Abstract_Mod {
 	@Override
 	public void onModServerStopped2(FMLServerStoppedEvent aEvent) {
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onServerStopped(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+	}
+	
+	@Mod.EventHandler
+	public void onIDChangingEvent(FMLModIdMappingEvent aEvent) {
+		OUT.println(getModNameForLog() + ": Remapping ItemStackMaps due to ID Map change. Those damn Items should have a consistent Hashcode, but noooo, ofcourse they break Basic Code Conventions! Thanks Forge and Mojang!");
+		for (Map<ItemStackContainer, ?> tMap : STACKMAPS) UT.Code.reMap(tMap);
+		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onIDChanging(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 	}
 }

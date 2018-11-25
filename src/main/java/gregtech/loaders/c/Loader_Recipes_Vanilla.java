@@ -696,7 +696,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.generify(OP.plantGtFiber.mat(MT.White        , 1), ST.make(Items.string, 1, 0));
 		RM.generify(OP.plantGtFiber.mat(MT.Cu           , 1), ST.make(Items.string, 1, 0));
 		
-		OUT.println("GT_Mod: Doing Vanilla related OreDict Recipes.");
 		new Loader_Recipes_Vanilla_OreDict();
 	}
 }

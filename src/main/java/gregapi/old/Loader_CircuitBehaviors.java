@@ -19,12 +19,9 @@
 
 package gregapi.old;
 
-import static gregapi.data.CS.*;
-
 public class Loader_CircuitBehaviors implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Register Redstone Circuit behaviours.");
 		new GT_Circuit_Timer(0);
 		new GT_Circuit_BasicLogic(1);
 		new GT_Circuit_Repeater(2);
