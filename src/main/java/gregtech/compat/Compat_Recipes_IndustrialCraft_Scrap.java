@@ -42,7 +42,7 @@ public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 	public Compat_Recipes_IndustrialCraft_Scrap(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
-		if (!MD.IC2C.mLoaded && COMPAT_IC2 != null) {OUT.println("GT_Mod: (re-)adding Scrapbox Drops.");
+		if (!MD.IC2C.mLoaded && COMPAT_IC2 != null) {
 			COMPAT_IC2.scrapbox(9.50F, ST.make(Items.wooden_hoe, 1, 0));
 			COMPAT_IC2.scrapbox(2.00F, ST.make(Items.wooden_axe, 1, 0));
 			COMPAT_IC2.scrapbox(2.00F, ST.make(Items.wooden_sword, 1, 0));
@@ -144,7 +144,7 @@ public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 			COMPAT_IC2.scrapbox(0.05F, OP.scrapGt.mat(MT.Diamond            , 1));
 		}
 		
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "easymobgrinderrecycling", T)) {OUT.println("GT_Mod: Adding certain Mob Drops to the Recycler Blacklist.");
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "easymobgrinderrecycling", T)) {
 			// Skeletons
 			COMPAT_IC2.blacklist(ST.make(Items.arrow, 1, 0));
 			COMPAT_IC2.blacklist(ST.make(Items.bone, 1, 0));
@@ -159,7 +159,7 @@ public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 			// Chicken Eggs
 			COMPAT_IC2.blacklist(ST.make(Items.egg, 1, 0));
 		}
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "easystonerecycling", T)) {OUT.println("GT_Mod: Adding Stone Generator related Stuff to the Recycler Blacklist.");
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "easystonerecycling", T)) {
 			ItemStack tStack = ST.make(Blocks.cobblestone, 1, 0);
 			while (tStack != null) {
 				COMPAT_IC2.blacklist(tStack);
