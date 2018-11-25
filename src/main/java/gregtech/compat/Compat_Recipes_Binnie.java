@@ -60,13 +60,13 @@ public class Compat_Recipes_Binnie extends CompatMods {
 		if (MD.BINNIE_GENETICS.mLoaded) {
 			OUT.println("GT_Mod: Doing Binnie Genetics Recipes.");
 			
-			CR.remout(MD.BINNIE_GENETICS, "misc", 4);
+			CR.delate(MD.BINNIE_GENETICS, "misc", 4);
 			RM.Mixer        .addRecipe2(T, 16,   32, OM.dust(MT.Bone), OM.dust(MT.Sugar), ST.make(MD.BINNIE_GENETICS, "misc", 2, 4));
 		}
 		if (MD.BINNIE_BOTANY.mLoaded) {
 			OUT.println("GT_Mod: Doing Binnie Botany Recipes.");
 			
-			CR.remout(MD.BINNIE_BOTANY, "misc", 6);
+			CR.delate(MD.BINNIE_BOTANY, "misc", 6);
 			
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 			addListener("itemClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -79,7 +79,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			}});
 			}};
 			
-			CR.remout(MD.BINNIE_BOTANY, "misc", 7);
+			CR.delate(MD.BINNIE_BOTANY, "misc", 7);
 			RM.Mixer        .addRecipe2(T, 16,   64, ST.make(Items.wheat_seeds, 3, W), ST.make(Items.spider_eye, 1, W), ST.make(MD.BINNIE_BOTANY, "misc", 4, 7));
 		}
 		if (MD.BINNIE_BEE.mLoaded) {

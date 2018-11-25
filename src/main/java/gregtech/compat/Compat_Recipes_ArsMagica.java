@@ -44,7 +44,7 @@ public class Compat_Recipes_ArsMagica extends CompatMods {
 	public Compat_Recipes_ArsMagica(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Ars Magica Recipes.");
-		CR.remout(MD.ARS, "manacake");
+		CR.delate(MD.ARS, "manacake");
 		
 		CR.shaped(ST.make(MD.ARS, "crystal_wrench", 1, 0), CR.DEF_REV_MIR | CR.DEL_OTHER_NATIVE_RECIPES, "I I", "CVD", " I ", 'C', "flowerCerublossom", 'D', "flowerDesertNova", 'V', OP.dust.dat(MT.Vinteum), 'I', OP.ingot.dat(ANY.Fe));
 		

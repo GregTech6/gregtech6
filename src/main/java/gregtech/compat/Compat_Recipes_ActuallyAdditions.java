@@ -59,13 +59,13 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 11), CR.DEF_REM_NCC, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced  , "listAllfishcooked", IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cucumber_Sliced, IL.Food_Tomato_Sliced, "paperEmpty", "paperEmpty"});
 		CR.shapeless(ST.make(MD.AA, "itemMisc", 2,  1), CR.DEF_REM_NCC, new Object[] {"itemPlantRemains"});
 		
-		CR.remout(MD.AA, "blockFermentingBarrel", 0);
-		CR.remout(MD.AA, "itemFood", 2);
-		CR.remout(MD.AA, "itemFood", 9);
-		CR.remout(MD.AA, "itemFood",15);
-		CR.remout(MD.AA, "itemMisc", 4);
-		CR.remout(MD.AA, "itemMisc", 9);
-		CR.remout(MD.AA, "itemMisc",12);
+		CR.delate(MD.AA, "blockFermentingBarrel", 0);
+		CR.delate(MD.AA, "itemFood", 2);
+		CR.delate(MD.AA, "itemFood", 9);
+		CR.delate(MD.AA, "itemFood",15);
+		CR.delate(MD.AA, "itemMisc", 4);
+		CR.delate(MD.AA, "itemMisc", 9);
+		CR.delate(MD.AA, "itemMisc",12);
 		
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.dust        .mat(MT.Redstone, 1), ST.tag(0), OP.gem     .mat(MT.Redstonia   , 1));
 		RM.Replicator   .addRecipe2(T, 16,   16, OP.gem         .mat(MT.Lapis   , 1), ST.tag(0), OP.gem     .mat(MT.Palis       , 1));

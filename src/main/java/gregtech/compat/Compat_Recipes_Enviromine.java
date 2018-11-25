@@ -32,8 +32,8 @@ public class Compat_Recipes_Enviromine extends CompatMods {
 	public Compat_Recipes_Enviromine(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Enviromine Recipes.");
-		CR.remout(IL.ENVM_Bottle_Water_Cold.get(1));
-		CR.remout(IL.ENVM_Bottle_Water_Dirty.get(1));
-		CR.remout(IL.ENVM_Bottle_Water_Salty.get(1));
+		CR.delate(IL.ENVM_Bottle_Water_Cold.get(1));
+		CR.delate(IL.ENVM_Bottle_Water_Dirty.get(1));
+		CR.delate(IL.ENVM_Bottle_Water_Salty.get(1));
 	}
 }

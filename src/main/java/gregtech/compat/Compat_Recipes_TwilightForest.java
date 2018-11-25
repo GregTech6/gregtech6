@@ -44,8 +44,8 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 	public Compat_Recipes_TwilightForest(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing TF Recipes.");
-		CR.remout(MD.TF, "tile.TFUncraftingTable");
-		CR.remout(IL.TF_Carminite.get(1));
+		CR.delate(MD.TF, "tile.TFUncraftingTable");
+		CR.delate(IL.TF_Carminite.get(1));
 		
 		CR.shaped(ST.make(Items.stick, 2, 0), DEF, "s", "X", 'X', IL.TF_Dry_Bush);
 		CR.shaped(ST.make(Items.stick, 2, 0), DEF, "k", "X", 'X', IL.TF_Dry_Bush);

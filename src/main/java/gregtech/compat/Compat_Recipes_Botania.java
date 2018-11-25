@@ -43,18 +43,18 @@ public class Compat_Recipes_Botania extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 		OUT.println("GT_Mod: Doing Botania Recipes.");
-		CR.remout(IL.BOTA_Granite.get(1));
-		CR.remout(IL.BOTA_Diorite.get(1));
-		CR.remout(IL.BOTA_Andesite.get(1));
-		CR.remout(IL.BOTA_Granite_Smooth.get(1));
-		CR.remout(IL.BOTA_Diorite_Smooth.get(1));
-		CR.remout(IL.BOTA_Andesite_Smooth.get(1));
-		CR.remout(IL.BOTA_Granite_Bricks.get(1));
-		CR.remout(IL.BOTA_Diorite_Bricks.get(1));
-		CR.remout(IL.BOTA_Andesite_Bricks.get(1));
-		CR.remout(IL.BOTA_Granite_Chiseled.get(1));
-		CR.remout(IL.BOTA_Diorite_Chiseled.get(1));
-		CR.remout(IL.BOTA_Andesite_Chiseled.get(1));
+		CR.delate(IL.BOTA_Granite.get(1));
+		CR.delate(IL.BOTA_Diorite.get(1));
+		CR.delate(IL.BOTA_Andesite.get(1));
+		CR.delate(IL.BOTA_Granite_Smooth.get(1));
+		CR.delate(IL.BOTA_Diorite_Smooth.get(1));
+		CR.delate(IL.BOTA_Andesite_Smooth.get(1));
+		CR.delate(IL.BOTA_Granite_Bricks.get(1));
+		CR.delate(IL.BOTA_Diorite_Bricks.get(1));
+		CR.delate(IL.BOTA_Andesite_Bricks.get(1));
+		CR.delate(IL.BOTA_Granite_Chiseled.get(1));
+		CR.delate(IL.BOTA_Diorite_Chiseled.get(1));
+		CR.delate(IL.BOTA_Andesite_Chiseled.get(1));
 		
 		if (MD.ALF.mLoaded) {
 		RM.Hammer       .addRecipe1(T, 16,  16, IL.ALF_Ice.get(1), OM.dust(MT.Ice, U));
@@ -75,7 +75,7 @@ public class Compat_Recipes_Botania extends CompatMods {
 		BotaniaAPI.registerManaInfusionRecipe(OP.ingot.mat(MT.Manasteel, 1), OP.ingot.dat(ANY.Steel).toString(), 1500);
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
-		for (int i = 0; i < 16; i++) if ((i & 3) != 1) CR.remout(ST.make(MD.BOTA, "stone", 1, i));
+		for (int i = 0; i < 16; i++) if ((i & 3) != 1) CR.delate(ST.make(MD.BOTA, "stone", 1, i));
 		
 		RM.Hammer       .addRecipe1(T, 16,   16     , ST.make(MD.BOTA, "quartzSlabManaHalf"         , 1, W), OP.gem.mat(MT.ManaQuartz, 2));
 		RM.Hammer       .addRecipe1(T, 16,   16     , ST.make(MD.BOTA, "quartzSlabManaFull"         , 1, W), OP.gem.mat(MT.ManaQuartz, 4));

@@ -81,16 +81,16 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "mfeUnit"               ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "BCB", "BXB", "BMB", 'M', IL.IC2_Machine         , 'X', aRegistry.getItem(10083), 'B', "gt:re-battery3", 'C', OD_CIRCUITS[3]);}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "mfsUnit"               ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "BCB", "BXB", "BMB", 'M', IL.IC2_Machine_Adv     , 'X', aRegistry.getItem(10043), 'B', ST.mkic("mfeUnit", 1), 'C', OD_CIRCUITS[4]);}
 		
-		CR.remout(IL.IC2_Carbon_Mesh.get(1));
-		CR.remout(IL.IC2_Carbon_Fiber.get(1));
-		CR.remout(IL.IC2_Machine.get(1));
-		CR.remout(IL.IC2_EnergyCrystal.get(1));
-		CR.remout(ST.mkic("industrialTnt", 1));
-		CR.remout(IL.Cell_Empty.get(1));
-		CR.remout(IL.IC2_Fertilizer.get(1));
-		CR.remout(IL.IC2_Spray_WeedEx.get(1));
-		CR.remout(IL.IC2_Food_Can_Empty.get(1));
-		CR.remout(IL.Cell_Universal_Fluid.get(1));
+		CR.delate(IL.IC2_Carbon_Mesh.get(1));
+		CR.delate(IL.IC2_Carbon_Fiber.get(1));
+		CR.delate(IL.IC2_Machine.get(1));
+		CR.delate(IL.IC2_EnergyCrystal.get(1));
+		CR.delate(ST.mkic("industrialTnt", 1));
+		CR.delate(IL.Cell_Empty.get(1));
+		CR.delate(IL.IC2_Fertilizer.get(1));
+		CR.delate(IL.IC2_Spray_WeedEx.get(1));
+		CR.delate(IL.IC2_Food_Can_Empty.get(1));
+		CR.delate(IL.Cell_Universal_Fluid.get(1));
 		
 		CR.remove(ST.make(Items.lava_bucket, 1, 0), IL.Cell_Empty.get(1));
 		CR.remove(ST.make(Items.water_bucket, 1, 0), IL.Cell_Empty.get(1));
@@ -280,7 +280,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 			if (D1) e.printStackTrace(ERR);
 		}
 		
-		CR.remout(IL.IC2_Energium_Dust.get(1));
+		CR.delate(IL.IC2_Energium_Dust.get(1));
 		
 		CR.shaped(IL.IC2_Iridium_Ore.get(1), CR.DEF_NAC_NCC, "XXX", "XXX", "XXX", 'X', IL.IC2_Iridium_Shard);
 		
@@ -295,9 +295,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "ic2_" + (tName = "cesuUnit"              ), T)) {CR.shaped(ST.mkic(tName, 1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES, "MBM", "BXB", "MBM", 'M', OP.plate.dat(MT.Bronze), 'X', aRegistry.getItem(10082), 'B', "gt:re-battery2");}
 		
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "ic2_" + (tName = "fermenter"           ), T)) CR.remout(ST.mkic(tName, 1));
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "ic2_" + (tName = "blastfurnace"        ), T)) CR.remout(ST.mkic(tName, 1));
-		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "ic2_forgehammer"                        , T)) CR.remout(IL.IC2_ForgeHammer.wild(1));
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "ic2_" + (tName = "fermenter"           ), T)) CR.delate(ST.mkic(tName, 1));
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "ic2_" + (tName = "blastfurnace"        ), T)) CR.delate(ST.mkic(tName, 1));
+		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "ic2_forgehammer"                        , T)) CR.delate(IL.IC2_ForgeHammer.wild(1));
 		
 		CR.shaped(ST.make(MD.IC2, "blockreactorvessel"      , 1, 0), CR.DEF_REM_REV_NCC, "PSP", "SPS", "PSP", 'P', OP.plate.dat(MT.Pb), 'S', OP.stone);
 		CR.shaped(ST.make(MD.IC2, "blockReactorFluidPort"   , 1, 0), CR.DEF_REM_REV_NCC, "XXX", "XCX", "XXX", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockreactorvessel", 1, 0));

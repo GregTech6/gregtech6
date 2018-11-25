@@ -422,7 +422,7 @@ public class Loader_CraftingRecipes implements Runnable {
 		
 		CR.shaped(ST.mkic("glassFiberCableItem", 1), DEF, "GGG", "EDE", "GGG", 'G', ST.make(Blocks.glass, 1, W), 'D', OP.dust.dat(MT.Ag), 'E', IL.IC2_Energium_Dust.get(1));
 		
-		CR.remout(ST.mkic("lapotronCrystal", 1));
+		CR.delate(ST.mkic("lapotronCrystal", 1));
 		CR.shaped(ST.mkic("lapotronCrystal", 1), DEF, "LCL", "LSL", "LCL", 'C', OD_CIRCUITS[3], 'S', ST.mkic("energyCrystal", 1, W), 'L', OP.dust.dat(MT.Lazurite));
 		CR.shaped(ST.mkic("lapotronCrystal", 1), DEF, "LCL", "LSL", "LCL", 'C', OD_CIRCUITS[3], 'S', ST.mkic("energyCrystal", 1, W), 'L', OP.dust.dat(MT.Lapis));
 		/*
@@ -438,11 +438,11 @@ public class Loader_CraftingRecipes implements Runnable {
 		if (OP.gear.mat(MT.Diamond, 1) != null) {
 			ItemStack tStack = CR.get(OP.gear.mat(MT.Fe, 1), ST.make(Items.redstone, 1, 0), OP.gear.mat(MT.Fe, 1), OP.gear.mat(MT.Au, 1), OP.gear.mat(MT.Fe, 1), OP.gear.mat(MT.Au, 1), OP.gear.mat(MT.Diamond, 1), ST.make(Items.diamond_pickaxe, 1, 0), OP.gear.mat(MT.Diamond, 1));
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "quarry", T)) {
-				CR.remout(tStack);
+				CR.delate(tStack);
 				CR.shaped(tStack, DEF, "ICI", "GIG", "DPD", 'C', OD_CIRCUITS[3], 'D', OP.gear.dat(ANY.Diamond), 'G', OP.gear.dat(MT.Au), 'I', OP.gear.dat(ANY.Steel), 'P', ST.mkic("diamondDrill", 1, W));
 			}
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "quarry", F)) {
-				CR.remout(tStack);
+				CR.delate(tStack);
 			}
 		}
 		
@@ -452,10 +452,10 @@ public class Loader_CraftingRecipes implements Runnable {
 			if (CR.remout(ST.mkic("nanoSaber", 1))) CR.shaped(ST.mkic("nanoSaber", 1), DEF, "PI ", "PI ", "CLC", 'L', OP.battery.dat(MT.Master), 'I', ST.mkic("iridiumPlate", 1), 'P', OP.plate.dat(MT.Pt), 'C', OD_CIRCUITS[5]);
 		}
 		
-		if (CR.remout(ST.mkic("diamondDrill"    , 1)))  CR.shaped(ST.mkic("diamondDrill"    , 1), DEF, " D ", "DMD", "TAT", 'M', ST.mkic("miningDrill", 1, W), 'D', OP.gem.dat(MT.TECH.DiamondIndustrial), 'T', OP.plate.dat(MT.Ti), 'A', OD_CIRCUITS[3]);
-		if (CR.remout(ST.mkic("miningDrill"     , 1)))  CR.shaped(ST.mkic("miningDrill"     , 1), DEF, " S ", "SCS", "SBS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
-		if (CR.remout(ST.mkic("chainsaw"        , 1)))  CR.shaped(ST.mkic("chainsaw"        , 1), DEF, "BS ", "SCS", " SS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
-		if (CR.remout(ST.mkic("electricHoe"     , 1)))  CR.shaped(ST.mkic("electricHoe"     , 1), DEF, "SS ", " C ", " B ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
-		if (CR.remout(ST.mkic("electricTreetap" , 1)))  CR.shaped(ST.mkic("electricTreetap" , 1), DEF, " B ", "SCS", "S  ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
+		if (CR.remout(ST.mkic("diamondDrill"   , 1))) CR.shaped(ST.mkic("diamondDrill"   , 1), DEF, " D ", "DMD", "TAT", 'M', ST.mkic("miningDrill", 1, W), 'D', OP.gem.dat(MT.TECH.DiamondIndustrial), 'T', OP.plate.dat(MT.Ti), 'A', OD_CIRCUITS[3]);
+		if (CR.remout(ST.mkic("miningDrill"    , 1))) CR.shaped(ST.mkic("miningDrill"    , 1), DEF, " S ", "SCS", "SBS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
+		if (CR.remout(ST.mkic("chainsaw"       , 1))) CR.shaped(ST.mkic("chainsaw"       , 1), DEF, "BS ", "SCS", " SS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
+		if (CR.remout(ST.mkic("electricHoe"    , 1))) CR.shaped(ST.mkic("electricHoe"    , 1), DEF, "SS ", " C ", " B ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
+		if (CR.remout(ST.mkic("electricTreetap", 1))) CR.shaped(ST.mkic("electricTreetap", 1), DEF, " B ", "SCS", "S  ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
 	}
 }

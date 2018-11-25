@@ -274,7 +274,7 @@ public abstract class Abstract_Mod {
 			
 			if (sFinalized >= sModCountUsingGTAPI) {
 				OUT.println(getModNameForLog() + ": Adding buffered Recipes.");
-				CR.stopBufferingCraftingRecipes();
+				CR.stopBuffering();
 			}
 			
 			loadRunnables("Saving Configs", sConfigs);

@@ -41,7 +41,7 @@ public class Compat_Recipes_WRCBE extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing WR-CBE Recipes.");
 		CR.remove(ST.make(Blocks.obsidian, 1, 0), NI, NI, ST.make(Blocks.obsidian, 1, 0));
-		CR.remout(MD.WR_CBE_C, "retherPearl");
+		CR.delate(MD.WR_CBE_C, "retherPearl");
 		
 		for (OreDictMaterial tGlowstone : ANY.Glowstone.mToThis) {
 			RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gem.mat(MT.EnderPearl, 1), OP.dust     .mat(MT.Redstone,  4), OP.dust     .mat(tGlowstone,  4)}, ST.make(MD.WR_CBE_C, "retherPearl", 1, 0));

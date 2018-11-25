@@ -42,15 +42,15 @@ public class Compat_Recipes_ExtraUtilities extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Extra Utilities Recipes.");
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "extra-utilities-trash-can-items", T)) {
 			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.ExU, "trashcan", 1, 0));
-			CR.remout(MD.ExU, "trashcan", 0);
+			CR.delate(MD.ExU, "trashcan", 0);
 		}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "extra-utilities-trash-can-fluids", T)) {
 			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.ExU, "trashcan", 1, 1));
-			CR.remout(MD.ExU, "trashcan", 1);
+			CR.delate(MD.ExU, "trashcan", 1);
 		}
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "extra-utilities-trash-can-energy", F)) {
 			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.ExU, "trashcan", 1, 2));
-			CR.remout(MD.ExU, "trashcan", 2);
+			CR.delate(MD.ExU, "trashcan", 2);
 		}
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {

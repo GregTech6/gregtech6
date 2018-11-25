@@ -37,11 +37,11 @@ public class Compat_Recipes_Chisel extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Chisel Mod Recipes.");
 		RM.rem_smelting(ST.make(Blocks.gravel, 1, 0));
 		
-		CR.remout(IL.CHSL_Granite.get(1));
-		CR.remout(IL.CHSL_Diorite.get(1));
-		CR.remout(IL.CHSL_Andesite.get(1));
-		CR.remout(IL.CHSL_Granite_Smooth.get(1));
-		CR.remout(IL.CHSL_Diorite_Smooth.get(1));
-		CR.remout(IL.CHSL_Andesite_Smooth.get(1));
+		CR.delate(IL.CHSL_Granite.get(1));
+		CR.delate(IL.CHSL_Diorite.get(1));
+		CR.delate(IL.CHSL_Andesite.get(1));
+		CR.delate(IL.CHSL_Granite_Smooth.get(1));
+		CR.delate(IL.CHSL_Diorite_Smooth.get(1));
+		CR.delate(IL.CHSL_Andesite_Smooth.get(1));
 	}
 }

@@ -47,7 +47,7 @@ public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 	public Compat_Recipes_OpenModularTurrets(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Open Modular Turrets Recipes.");
-		CR.remout(MD.OMT
+		CR.delate(MD.OMT
 		, "fenceTierOne", "fenceTierTwo", "fenceTierThree", "fenceTierFour", "fenceTierFive"
 		, "hardWallTierOne", "hardWallTierTwo", "hardWallTierThree", "hardWallTierFour", "hardWallTierFive"
 		, "baseTierWood", "baseTierOneBlock", "baseTierTwoBlock", "baseTierThreeBlock", "baseTierFourBlock"

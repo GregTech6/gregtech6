@@ -80,7 +80,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		CR.shaped(ST.make(MD.ERE, "gneiss"      , 1, 0), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.Gneiss));
 		
 		
-		CR.remout(MD.ERE, "mirbrick");
+		CR.delate(MD.ERE, "mirbrick");
 		if (IL.BoP_Mud_Brick.exists())
 		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.BoP_Mud_Brick, 'Y', "itemClay");
 		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 1, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', IL.ERE_Mud_Brick, 'Y', "itemClay");
@@ -89,7 +89,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		CR.shaped(ST.make(MD.ERE, "mirbrick"    , 4, 0), CR.DEF_NAC_MIR, "XY", "YX", 'X', ST.make(MD.ERE, "mudBricks", 1, 0), 'Y', "blockClay");
 		
 		
-		CR.remout(IL.ERE_Spray_Repellant.get(1));
+		CR.delate(IL.ERE_Spray_Repellant.get(1));
 		
 		RM.Canner       .addRecipe2(T, 16,144,  ST.make(MD.ERE, "materials"     , 1,29), IL.Spray_Empty.get(9), IL.ERE_Spray_Repellant.get(9));
 		

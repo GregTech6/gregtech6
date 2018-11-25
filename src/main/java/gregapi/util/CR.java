@@ -32,6 +32,8 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.IItemContainer;
+import gregapi.code.ItemStackContainer;
+import gregapi.code.ItemStackSet;
 import gregapi.code.ModData;
 import gregapi.data.CS;
 import gregapi.data.CS.OreDictToolNames;
@@ -63,6 +65,8 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class CR {
 	private static final ArrayListNoNulls<List<ItemStack>> OREDICT_DYE_LISTS = new ArrayListNoNulls<>();
 	static {for (String tDye : DYE_OREDICTS) OREDICT_DYE_LISTS.add(OreDictionary.getOres(tDye));}
+	
+	public static final ItemStackSet<ItemStackContainer> RECIPES_TO_DELATE = new ItemStackSet<>();
 	
 	public static final HashSetNoNulls<String>
 	CLASSES_NATIVE = new HashSetNoNulls<>(F
@@ -109,12 +113,22 @@ public class CR {
 	, "shedar.mods.ic2.nuclearcontrol.StorageArrayRecipe"
 	);
 	
-	private static boolean sBufferCraftingRecipes = T;
+	private static boolean BUFFERING = T;
 	public static final List<IRecipe> sAllRecipeList = Collections.synchronizedList(new ArrayListNoNulls<IRecipe>(10000));
 	private static final List<IRecipe> sBufferRecipeList = new ArrayListNoNulls<>(1000);
 	
-	public static void stopBufferingCraftingRecipes() {
-		sBufferCraftingRecipes = F;
+	public static void stopBuffering() {
+		BUFFERING = F;
+		@SuppressWarnings("unchecked")
+		List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
+		for (int i = 0; i < tList.size(); i++) {
+			IRecipe tRecipe = tList.get(i);
+			if (tRecipe != null) {
+				if (tRecipe instanceof ICraftingRecipeGT && !((ICraftingRecipeGT)tRecipe).isRemovableByGT()) continue;
+				if (CLASSES_SPECIAL.contains(tRecipe.getClass().getName())) continue;
+				if (RECIPES_TO_DELATE.contains(tRecipe.getRecipeOutput(), T)) tList.remove(i--);
+			}
+		}
 		for (IRecipe tRecipe : sBufferRecipeList) GameRegistry.addRecipe(tRecipe);
 		sBufferRecipeList.clear();
 	}
@@ -432,7 +446,7 @@ public class CR {
 		aResult = ST.update_(aResult);
 		
 		if (tThereWasARecipe || !aOnlyAddIfThereIsAnyRecipeOutputtingThis) {
-			if (sBufferCraftingRecipes && aBuffered)
+			if (BUFFERING && aBuffered)
 				sBufferRecipeList.add (new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
 			else
 				GameRegistry.addRecipe(new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
@@ -494,7 +508,7 @@ public class CR {
 		
 		ST.update(aResult);
 		
-		if (sBufferCraftingRecipes && aBuffered)
+		if (BUFFERING && aBuffered)
 			sBufferRecipeList.add(new AdvancedCraftingShapeless(ST.copy(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe));
 		else
 			GameRegistry.addRecipe(new AdvancedCraftingShapeless(ST.copy(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe));
@@ -703,6 +717,27 @@ public class CR {
 	 * @return if it has removed at least one Recipe.
 	 */
 	public static boolean remout(ModData aMod, String aName, int aMetaData) {return remout(ST.make(aMod, aName, 1, aMetaData));}
+	
+	/**
+	 * Yes "Delate" is a pun on Delete and Late. :P
+	 * Removes a Crafting Recipe after Post Init.
+	 * @param aOutput The output of the Recipe.
+	 */
+	public static void delate(ItemStack aOutput) {if (BUFFERING) RECIPES_TO_DELATE.add(aOutput); else remout(aOutput);}
+	
+	/**
+	 * Yes "Delate" is a pun on Delete and Late. :P
+	 * Removes a Crafting Recipe after Post Init.
+	 * @param aOutput The output of the Recipe.
+	 */
+	public static void delate(ModData aMod, String... aNames) {if (aMod.mLoaded) for (String aName : aNames) delate(aMod, aName, W);}
+	
+	/**
+	 * Yes "Delate" is a pun on Delete and Late. :P
+	 * Removes a Crafting Recipe after Post Init.
+	 * @param aOutput The output of the Recipe.
+	 */
+	public static void delate(ModData aMod, String aName, int aMetaData) {delate(ST.make(aMod, aName, 1, aMetaData));}
 	
 	/**
 	 * Removes a Crafting Recipe and gives you the former output of it.

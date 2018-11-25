@@ -129,7 +129,7 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 		}
 		if (MD.GC_PLANETS.mLoaded) {
 			OUT.println("GT_Mod: Doing Galacticraft Planets Recipes.");
-			CR.remout(MD.GC_PLANETS, "item.carbonFragments");
+			CR.delate(MD.GC_PLANETS, "item.carbonFragments");
 			
 			RM.Hammer       .addRecipe1(T,  16,   16, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), OM.dust(MT.Ice, 4*U));
 			RM.Squeezer     .addRecipe1(T,  16,  256, ST.make(MD.GC_PLANETS, "tile.denseIce", 1, W), NF, FL.Ice.make(4000), NI);
@@ -176,7 +176,7 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				RM.generify(ST.make(MD.GC_GALAXYSPACE, "dungeonglowstone", 1, 0), ST.make(Blocks.glowstone, 1, 0));
 				
 				RM.generify(IL.Pill_Iodine.get(1), ST.make(MD.GC_GALAXYSPACE, "item.BasicItems", 1, 11));
-				CR.remout(MD.GC_GALAXYSPACE, "item.BasicItems", 11);
+				CR.delate(MD.GC_GALAXYSPACE, "item.BasicItems", 11);
 				CR.shapeless(ST.make(MD.GC_GALAXYSPACE, "item.BasicItems", 1, 11), new Object[] {IL.Pill_Iodine});
 			} else {
 				RM.Compressor.addRecipe1(T, 16, 64, OM.dust(MT.GlowstoneCeres       , 4*U), ST.make(MD.GC_GALAXYSPACE, "ceresglowstone"     , 1, W));
@@ -198,7 +198,7 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				RM.generify(ST.make(MD.GC_GALAXYSPACE, "plutoglowstone"     , 1, W), ST.make(Blocks.glowstone, 1, 0));
 			}
 			
-			CR.remout(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, W));
+			CR.delate(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, W));
 			for (byte i = 0; i < 16; i++){
 				CR.shaped(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i), CR.DEF_NAC_NCC, "GGG", "GDG", "GGG", 'G', ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), 'D', DYE_OREDICTS[i]);
 				for (FluidStack tDye : DYE_FLUIDS[i])

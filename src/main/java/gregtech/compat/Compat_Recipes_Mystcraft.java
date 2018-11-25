@@ -35,7 +35,7 @@ public class Compat_Recipes_Mystcraft extends CompatMods {
 	public Compat_Recipes_Mystcraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Mystcraft Recipes.");
-		CR.remout(IL.Myst_Ink_Vial.get(1));
+		CR.delate(IL.Myst_Ink_Vial.get(1));
 		
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Black]) {
 		RM.Mixer            .addRecipe0(T, 16,   16, new FluidStack[] {tDye, FL.Water.make(125)}, FL.Myst_Ink.make(500), ZL_IS);

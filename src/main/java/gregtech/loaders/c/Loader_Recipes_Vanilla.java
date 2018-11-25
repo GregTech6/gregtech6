@@ -58,9 +58,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_REM_NCC, "XXX", "XFX", "XXX", 'X', "cobblestone", 'F', OD.craftingFirestarter);
 		
-		CR.remout(ST.make(Blocks.enchanting_table, 1, 0));
-		CR.remout(ST.make(Blocks.ender_chest, 1, 0));
-		CR.remout(ST.make(Items.saddle, 1, 0));
+		CR.delate(ST.make(Blocks.enchanting_table, 1, 0));
+		CR.delate(ST.make(Blocks.ender_chest, 1, 0));
+		CR.delate(ST.make(Items.saddle, 1, 0));
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "enchantmenttable", F)) {
 			OUT.println("GT_Mod: Removing the Recipe of the Enchantment Table, to have Fun enchanting with the Anvil and Books from Dungeons.");
@@ -259,12 +259,12 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		for (int i = 1; i < 16; i++)
 		CR.shapeless(ST.make(Blocks.wool, 1,  i), DEF_NAC, new Object[] {ST.make(Blocks.wool, 1, 0), DYE_OREDICTS[15-i]});
 		
-		CR.remout(IL.Food_Bread.get(1));
-		CR.remout(ST.make(Items.arrow, 1, 0));
-		CR.remout(ST.make(Items.cookie, 1, 0));
-		CR.remout(ST.make(Items.golden_apple, 1, 0));
-		CR.remout(ST.make(Items.golden_apple, 1, 1));
-		CR.remout(ST.make(Items.golden_carrot, 1, 0));
+		CR.delate(IL.Food_Bread.get(1));
+		CR.delate(ST.make(Items.arrow, 1, 0));
+		CR.delate(ST.make(Items.cookie, 1, 0));
+		CR.delate(ST.make(Items.golden_apple, 1, 0));
+		CR.delate(ST.make(Items.golden_apple, 1, 1));
+		CR.delate(ST.make(Items.golden_carrot, 1, 0));
 		
 		CR.shapeless(ST.make(Items.arrow, 1, 0), DEF_NCC, new Object[] {"itemFlint", OP.arrowGtWood.dat(MT.Empty)});
 		

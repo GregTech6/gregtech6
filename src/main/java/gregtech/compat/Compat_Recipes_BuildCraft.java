@@ -85,14 +85,14 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 		if (MD.BC_TRANSPORT.mLoaded) {
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "buildcraft-void-pipe-items", T)) {
 				ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemsvoid", 1, 0));
-				CR.remout(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemsvoid", 0);
+				CR.delate(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemsvoid", 0);
 			}
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "buildcraft-void-pipe-fluids", T)) {
 				ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 1, 0));
-				CR.remout(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 0);
+				CR.delate(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 0);
 			}
 			
-			CR.remout(MD.BC_TRANSPORT, "pipeWaterproof");
+			CR.delate(MD.BC_TRANSPORT, "pipeWaterproof");
 			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.Water.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.DistW.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));
 			RM.ic2_extractor(IL.Dye_Cactus.get(1), ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));

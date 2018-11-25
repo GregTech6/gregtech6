@@ -64,16 +64,16 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.generify(                            ST.make(MD.EtFu, "rose", 6, 0), ST.make(Blocks.double_plant, 1, 4));
 			RM.generify(                            tEtFuturumPurpurPillar, tEtFuturumPurpur);
 			
-			CR.remout(IL.EtFu_Granite.get(1));
-			CR.remout(IL.EtFu_Diorite.get(1));
-			CR.remout(IL.EtFu_Andesite.get(1));
-			CR.remout(IL.EtFu_Granite_Smooth.get(1));
-			CR.remout(IL.EtFu_Diorite_Smooth.get(1));
-			CR.remout(IL.EtFu_Andesite_Smooth.get(1));
+			CR.delate(IL.EtFu_Granite.get(1));
+			CR.delate(IL.EtFu_Diorite.get(1));
+			CR.delate(IL.EtFu_Andesite.get(1));
+			CR.delate(IL.EtFu_Granite_Smooth.get(1));
+			CR.delate(IL.EtFu_Diorite_Smooth.get(1));
+			CR.delate(IL.EtFu_Andesite_Smooth.get(1));
 			
 			if (MD.CHSL.mLoaded) {
 				ItemStack tChiselPurpur = ST.make(MD.CHSL, "purpur", 1, 0);
-				CR.remout(tChiselPurpur);
+				CR.delate(tChiselPurpur);
 				RM.generify(tChiselPurpur, tEtFuturumPurpur);
 				RM.generify(tEtFuturumPurpur, tChiselPurpur);
 				CR.shapeless(tChiselPurpur, CR.DEF, new Object[] {tEtFuturumPurpur});
@@ -84,7 +84,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 		}
 		if (MD.GaSu.mLoaded) {OUT.println("GT_Mod: Doing Recipes for Ganys Surface.");
 			if (MD.EtFu.mLoaded) {
-				CR.remout(MD.GaSu, "slimeBlock");
+				CR.delate(MD.GaSu, "slimeBlock");
 			} else {
 				CR.shaped(                          ST.make(MD.GaSu, "slimeBlock", 1, 0), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES | CR.DEL_OTHER_NATIVE_RECIPES, "XXX", "XXX", "XXX", 'X', ST.make(Items.slime_ball, 1, W));
 				RM.ic2_compressor(                  ST.make(Items.slime_ball, 9, 0), ST.make(MD.GaSu, "slimeBlock", 1, 0));
@@ -103,12 +103,12 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.GaSu, "storage", 1, 1), ST.make(Items.carrot, 9, 0));
 			RM.ic2_extractor(                       ST.make(MD.GaSu, "storage", 1, 1), ST.make(Items.carrot, 9, 0));
 			
-			CR.remout(IL.GaSu_Granite.get(1));
-			CR.remout(IL.GaSu_Diorite.get(1));
-			CR.remout(IL.GaSu_Andesite.get(1));
-			CR.remout(IL.GaSu_Granite_Smooth.get(1));
-			CR.remout(IL.GaSu_Diorite_Smooth.get(1));
-			CR.remout(IL.GaSu_Andesite_Smooth.get(1));
+			CR.delate(IL.GaSu_Granite.get(1));
+			CR.delate(IL.GaSu_Diorite.get(1));
+			CR.delate(IL.GaSu_Andesite.get(1));
+			CR.delate(IL.GaSu_Granite_Smooth.get(1));
+			CR.delate(IL.GaSu_Diorite_Smooth.get(1));
+			CR.delate(IL.GaSu_Andesite_Smooth.get(1));
 		}
 		if (MD.GaNe.mLoaded) {OUT.println("GT_Mod: Doing Recipes for Ganys Nether.");
 			RM.pulverizing(ST.make(MD.GaNe, "spectreWheatItem", 1, 0), ST.make(MD.GaNe, "spookyFlour", 1, 0));

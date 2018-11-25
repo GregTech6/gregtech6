@@ -33,6 +33,6 @@ public class Compat_Recipes_RandomThings extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing RandomThings Recipes.");
 		
-		CR.remout(MD.RT, "ingredient", 4);
+		CR.delate(MD.RT, "ingredient", 4);
 	}
 }

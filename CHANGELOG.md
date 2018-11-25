@@ -30,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.11: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[IMPROVED] Removal of Crafting Recipes by Output has now less of a performance Impact. So faster Loading Times probably.
 
 
 6.09.10:
@@ -48,7 +48,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [NOTE] The Default Config Pack updated again to disable Enhanced Biomes Underground Worldgen.
 [COMPAT] Voltz based Mods, maybe also Mekanism (not tested), are now able to be powered by GT6 EU with the proper Energy Ratios (1 EU = 10 J). Remember to only insert EU Packets that are 1024EU/t or smaller, also it could be wasteful to not use Ultra Low Voltage for things that run constantly, just like for Galacticraft. ;)
 [COMPAT] Enhanced Biomes got checked for all the Stuff that could be Compatible, such as Rock Types, Wood Types and Biomes.
-[BUG] Trees started to generate floating in the Sky, I fixed that in the following Version.
+[BROKEN AND FIXED LATER] Trees started to generate floating in the Sky, I fixed that in the following Version.
 [FIXED] Paint Slinger Lens not being required, to have Mana Bursts paint GT6 Machines, so any Mana Burst did it, even unpainted ones.
 [ADDED] Ore Multiplier on things like Redstone and Lapis can now be altered in the Material Config.
 [ADDED] Axes can now be used like Saws for making Slabs and Stairs.

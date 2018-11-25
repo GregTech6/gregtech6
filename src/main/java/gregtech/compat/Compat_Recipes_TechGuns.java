@@ -43,12 +43,12 @@ public class Compat_Recipes_TechGuns extends CompatMods {
 	public Compat_Recipes_TechGuns(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Tech Guns Recipes.");
-		CR.remout(MD.TG, "TechgunsAmmo",  1);
-		CR.remout(MD.TG, "TechgunsAmmo", 57);
-		CR.remout(MD.TG, "TechgunsAmmo", 68);
-		CR.remout(MD.TG, "TechgunsAmmo", 87);
+		CR.delate(MD.TG, "TechgunsAmmo",  1);
+		CR.delate(MD.TG, "TechgunsAmmo", 57);
+		CR.delate(MD.TG, "TechgunsAmmo", 68);
+		CR.delate(MD.TG, "TechgunsAmmo", 87);
 		
-		CR.remout(MD.TG, "goldenrevolver");
+		CR.delate(MD.TG, "goldenrevolver");
 		
 		RM.rem_smelting(ST.make(MD.TG, "TechgunsAmmo", 1, 71), ST.make(MD.TG, "TechgunsAmmo", 1, 72));
 		
