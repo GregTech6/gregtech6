@@ -28,7 +28,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import gregapi.api.Abstract_Mod;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.IItemContainer;
@@ -114,13 +113,11 @@ public class CR {
 	);
 	
 	private static boolean BUFFERING = T;
-	public static final List<IRecipe> sAllRecipeList = Collections.synchronizedList(new ArrayListNoNulls<IRecipe>(10000));
-	private static final List<IRecipe> sBufferRecipeList = new ArrayListNoNulls<>(1000);
+	private static final List<IRecipe> BUFFER = new ArrayListNoNulls<>(1000);
 	
 	public static void stopBuffering() {
 		BUFFERING = F;
-		@SuppressWarnings("unchecked")
-		List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
+		List<IRecipe> tList = list();
 		for (int i = 0; i < tList.size(); i++) {
 			IRecipe tRecipe = tList.get(i);
 			if (tRecipe != null) {
@@ -129,8 +126,8 @@ public class CR {
 				if (RECIPES_TO_DELATE.contains(tRecipe.getRecipeOutput(), T)) tList.remove(i--);
 			}
 		}
-		for (IRecipe tRecipe : sBufferRecipeList) GameRegistry.addRecipe(tRecipe);
-		sBufferRecipeList.clear();
+		for (IRecipe tRecipe : BUFFER) GameRegistry.addRecipe(tRecipe);
+		BUFFER.clear();
 	}
 	
 	public static final long NONE = 0;
@@ -431,8 +428,7 @@ public class CR {
 			tThereWasARecipe = remout(aResult, !aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, aRemoveAllOtherShapedsWithSameOutput, aRemoveAllOtherNativeRecipes, aDeleteOnlyIfNoDyeInvolved) || tThereWasARecipe;
 		
 		if (aOnlyAddIfThereIsAnyRecipeOutputtingThis && !tThereWasARecipe) {
-			@SuppressWarnings("unchecked")
-			List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
+			List<IRecipe> tList = list();
 			for (int i = 0; i < tList.size(); i++) {
 				IRecipe tRecipe = tList.get(i);
 				if (CLASSES_SPECIAL.contains(tRecipe.getClass().getName())) continue;
@@ -447,7 +443,7 @@ public class CR {
 		
 		if (tThereWasARecipe || !aOnlyAddIfThereIsAnyRecipeOutputtingThis) {
 			if (BUFFERING && aBuffered)
-				sBufferRecipeList.add (new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
+				BUFFER.add (new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
 			else
 				GameRegistry.addRecipe(new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
 		}
@@ -504,12 +500,14 @@ public class CR {
 		
 		if (aResult == null || aResult.stackSize <= 0) return F;
 		
-		if (aRemoveAllOthersWithSameOutput || aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT || aRemoveAllOtherShapedsWithSameOutput || aRemoveAllOtherNativeRecipes) remout(aResult, !aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, aRemoveAllOtherShapedsWithSameOutput, aRemoveAllOtherNativeRecipes, T);
+		if (aRemoveAllOthersWithSameOutput || aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT || aRemoveAllOtherShapedsWithSameOutput || aRemoveAllOtherNativeRecipes) {
+			remout(aResult, !aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, aRemoveAllOtherShapedsWithSameOutput, aRemoveAllOtherNativeRecipes, T);
+		}
 		
 		ST.update(aResult);
 		
 		if (BUFFERING && aBuffered)
-			sBufferRecipeList.add(new AdvancedCraftingShapeless(ST.copy(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe));
+			BUFFER.add(new AdvancedCraftingShapeless(ST.copy(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe));
 		else
 			GameRegistry.addRecipe(new AdvancedCraftingShapeless(ST.copy(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe));
 		return T;
@@ -521,39 +519,16 @@ public class CR {
 	 * Checks all Crafting Handlers for Recipe Output
 	 */
 	public static ItemStack getany(World aWorld, ItemStack... aRecipe) {
-		if (!UT.Code.containsSomething(aRecipe)) return null;
+		if (!ST.hasValid(aRecipe)) return null;
 		
 		if (aWorld == null) aWorld = CS.DW;
 		
-		InventoryCrafting aCrafting = new InventoryCrafting(new Container() {@Override public boolean canInteractWith(EntityPlayer var1) {return F;}}, 3, 3);
-		for (int i = 0; i < 9 && i < aRecipe.length; i++) aCrafting.setInventorySlotContents(i, aRecipe[i]);
+		InventoryCrafting aCrafting = crafting(aRecipe);
 		
 		if (sLastRecipe != null && sLastRecipe.matches(aCrafting, aWorld)) return sLastRecipe.getCraftingResult(aCrafting);
 		
-		@SuppressWarnings("unchecked")
-		List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
-		synchronized(sAllRecipeList) {
-			if (sAllRecipeList.size() != tList.size()) {
-				sAllRecipeList.clear();
-				sAllRecipeList.addAll(tList);
-			}
-			for (int i = 0, j = sAllRecipeList.size(); i < j; i++) {
-				IRecipe tRecipe = sAllRecipeList.get(i);
-				if (tRecipe.matches(aCrafting, aWorld)) {
-					sLastRecipe = tRecipe;
-					if (i > 8192) {
-						sAllRecipeList.add(i-8192, sAllRecipeList.remove(i));
-					} else if (i > 1024) {
-						sAllRecipeList.add(i-1024, sAllRecipeList.remove(i));
-					} else if (i > 128) {
-						sAllRecipeList.add(i-128, sAllRecipeList.remove(i));
-					} else if (i > 16) {
-						sAllRecipeList.add(i-16, sAllRecipeList.remove(i));
-					}
-					return tRecipe.getCraftingResult(aCrafting);
-				}
-			}
-		}
+		List<IRecipe> tList = list();
+		for (int i = 0; i < tList.size(); i++) if (tList.get(i).matches(aCrafting, aWorld)) return (sLastRecipe = tList.get(i)).getCraftingResult(aCrafting);
 		
 		int tIndex = 0;
 		ItemStack tStack1 = null, tStack2 = null;
@@ -581,88 +556,42 @@ public class CR {
 	public static ItemStack get(ItemStack... aRecipe) {return get(F, aRecipe);}
 	/** Gives you a copy of the Output from a Crafting Recipe. Used for Recipe Detection. */
 	public static ItemStack get(boolean aUncopiedStack, ItemStack... aRecipe) {
-		if (aRecipe == null) return null;
-		boolean temp = F;
-		for (byte i = 0; i < aRecipe.length; i++) {
-			if (aRecipe[i] != null) {
-				temp = T;
-				break;
-			}
-		}
-		if (!temp) return null;
-		InventoryCrafting aCrafting = new InventoryCrafting(new Container() {@Override public boolean canInteractWith(EntityPlayer var1) {return F;}}, 3, 3);
-		for (int i = 0; i < 9 && i < aRecipe.length; i++) aCrafting.setInventorySlotContents(i, aRecipe[i]);
-		@SuppressWarnings("unchecked")
-		List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
-		for (int i = 0; i < tList.size(); i++) {temp = F;
-			try {
-				temp = tList.get(i).matches(aCrafting, CS.DW);
-			} catch(Throwable e) {e.printStackTrace(ERR);}
-			if (temp) {
-				ItemStack tOutput = aUncopiedStack?tList.get(i).getRecipeOutput():tList.get(i).getCraftingResult(aCrafting);
-				if (tOutput == null || tOutput.stackSize <= 0) {
-					// Seriously, who would ever do that shit?
-					if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) throw new IllegalArgumentException("Seems another Mod added a Crafting Recipe with null Output. Tell the Developer of said Mod to fix that. Recipe Contents: " + ST.names(aRecipe));
-				} else {
-					if (aUncopiedStack) return tOutput;
-					return ST.copy(tOutput);
-				}
-			}
-		}
+		if (!ST.hasValid(aRecipe)) return null;
+		InventoryCrafting aCrafting = crafting(aRecipe);
+		List<IRecipe> tList = list();
+		for (int i = 0; i < tList.size(); i++) try {if (tList.get(i).matches(aCrafting, CS.DW)) return aUncopiedStack ? ST.valisize(tList.get(i).getRecipeOutput()) : ST.copy(ST.valisize(tList.get(i).getCraftingResult(aCrafting)));} catch(Throwable e) {e.printStackTrace(ERR);}
 		return null;
 	}
 	
 	/** Gives you a list of the Outputs from a Crafting Recipe. If you have multiple Mods, which add Bronze Armor for example */
-	@SuppressWarnings("unchecked")
-	public static ArrayList<ItemStack> outputs(ItemStack... aRecipe) {return outputs(CraftingManager.getInstance().getRecipeList(), F, aRecipe);}
+	public static List<ItemStack> outputs(ItemStack... aRecipe) {return outputs(list(), F, aRecipe);}
 	/** Gives you a list of the Outputs from a Crafting Recipe. If you have multiple Mods, which add Bronze Armor for example */
-	public static ArrayList<ItemStack> outputs(List<IRecipe> aList, boolean aDeleteFromList, ItemStack... aRecipe) {
+	public static List<ItemStack> outputs(List<IRecipe> aList, boolean aDeleteFromList, ItemStack... aRecipe) {
+		if (aList == null || !ST.hasValid(aRecipe)) return Collections.emptyList();
+		InventoryCrafting aCrafting = crafting(aRecipe);
 		ArrayList<ItemStack> rList = new ArrayListNoNulls<>();
-		if (aList == null || aRecipe == null) return rList;
-		boolean temp = F;
-		for (byte i = 0; i < aRecipe.length; i++) {
-			if (aRecipe[i] != null) {
-				temp = T;
-				break;
-			}
-		}
-		if (!temp) return rList;
-		InventoryCrafting aCrafting = new InventoryCrafting(new Container() {@Override
-		public boolean canInteractWith(EntityPlayer var1) {return F;}}, 3, 3);
-		for (int i = 0; i < 9 && i < aRecipe.length; i++) aCrafting.setInventorySlotContents(i, aRecipe[i]);
-		for (int i = 0; i < aList.size(); i++) {
-			temp = F;
-			try {
-				temp = aList.get(i).matches(aCrafting, CS.DW);
-			} catch(Throwable e) {e.printStackTrace(ERR);}
-			if (temp) {
-				ItemStack tOutput = aList.get(i).getCraftingResult(aCrafting);
-				if (tOutput == null || tOutput.stackSize <= 0) {
-					// Seriously, who would ever do that shit?
-					if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI) throw new IllegalArgumentException("Seems another Mod added a Crafting Recipe with null Output. Tell the Developer of said Mod to fix that. Recipe Contents: " + ST.names(aRecipe));
-				} else {
-					rList.add(ST.copy(tOutput));
-					if (aDeleteFromList) aList.remove(i--);
-				}
-			}
-		}
+		for (int i = 0; i < aList.size(); i++) try {if (aList.get(i).matches(aCrafting, CS.DW)) rList.add(ST.copy(ST.valisize((aDeleteFromList ? aList.remove(i--) : aList.get(i)).getCraftingResult(aCrafting))));} catch(Throwable e) {e.printStackTrace(ERR);}
 		return rList;
 	}
 	
+	public static InventoryCrafting crafting(ItemStack... aRecipe) {
+		InventoryCrafting rCrafting = new InventoryCrafting(new Container() {@Override public boolean canInteractWith(EntityPlayer var1) {return F;}}, 3, 3);
+		for (int i = 0; i < 9 && i < aRecipe.length; i++) rCrafting.setInventorySlotContents(i, aRecipe[i]);
+		return rCrafting;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<IRecipe> list() {return CraftingManager.getInstance().getRecipeList();}
+	
 	/**
-	 * Removes a Crafting Recipe.
+	 * Checks if this Item has a Crafting Recipe.
 	 * @param aOutput The output of the Recipe.
-	 * @return if it has removed at least one Recipe.
+	 * @return if it has found at least one Recipe.
 	 */
 	public static boolean has(ItemStack aOutput) {
 		if (ST.invalid(aOutput)) return F;
-		@SuppressWarnings("unchecked")
-		List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
-		for (int i = 0; i < tList.size(); i++) {
-			IRecipe tRecipe = tList.get(i);
-			if (tRecipe instanceof ICraftingRecipeGT || CLASSES_SPECIAL.contains(tRecipe.getClass().getName())) continue;
-			if (ST.equal(OM.get(tRecipe.getRecipeOutput()), aOutput, T)) return T;
-		}
+		List<IRecipe> tList = list();
+		for (int i = 0; i < tList.size(); i++) if (ST.equal(OM.get(tList.get(i).getRecipeOutput()), aOutput, T)) return T;
 		return F;
 	}
 	
@@ -674,8 +603,7 @@ public class CR {
 	public static boolean remout(ItemStack aOutput, boolean aIgnoreNBT, boolean aNotRemoveShapelessRecipes, boolean aOnlyRemoveNativeHandlers, boolean aDontRemoveDyeingRecipes) {
 		if (ST.invalid(aOutput)) return F;
 		boolean rReturn = F;
-		@SuppressWarnings("unchecked")
-		List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
+		List<IRecipe> tList = list();
 		aOutput = OM.get_(aOutput);
 		for (int i = 0; i < tList.size(); i++) {
 			IRecipe tRecipe = tList.get(i);
@@ -688,8 +616,8 @@ public class CR {
 			}
 			if (!ST.equal(OM.get(tRecipe.getRecipeOutput()), aOutput, aIgnoreNBT)) continue;
 			if (aDontRemoveDyeingRecipes) {
-				if (tRecipe instanceof ShapedOreRecipe      ) {boolean temp = F; for (Object tObject : ((ShapedOreRecipe    )tRecipe).getInput()) if (OREDICT_DYE_LISTS.contains(tObject)) {temp = T; break;} if (temp) continue;}
-				if (tRecipe instanceof ShapelessOreRecipe   ) {boolean temp = F; for (Object tObject : ((ShapelessOreRecipe )tRecipe).getInput()) if (OREDICT_DYE_LISTS.contains(tObject)) {temp = T; break;} if (temp) continue;}
+				if (tRecipe instanceof ShapedOreRecipe   ) {boolean temp = F; for (Object tObject : ((ShapedOreRecipe   )tRecipe).getInput()) if (OREDICT_DYE_LISTS.contains(tObject)) {temp = T; break;} if (temp) continue;}
+				if (tRecipe instanceof ShapelessOreRecipe) {boolean temp = F; for (Object tObject : ((ShapelessOreRecipe)tRecipe).getInput()) if (OREDICT_DYE_LISTS.contains(tObject)) {temp = T; break;} if (temp) continue;}
 			}
 			tList.remove(i--);
 			rReturn = T;
@@ -745,27 +673,14 @@ public class CR {
 	 * @return the output of the old Recipe or null if there was nothing.
 	 */
 	public static ItemStack remove(ItemStack... aRecipe) {
-		if (aRecipe == null) return null;
-		boolean temp = F;
-		for (byte i = 0; i < aRecipe.length; i++) {
-			if (aRecipe[i] != null) {
-				temp = T;
-				break;
-			}
-		}
-		if (!temp) return null;
+		if (!ST.hasValid(aRecipe)) return null;
 		ItemStack rReturn = null, tReturn = null;
-		InventoryCrafting aCrafting = new InventoryCrafting(new Container() {@Override public boolean canInteractWith(EntityPlayer var1) {return F;}}, 3, 3);
-		for (int i = 0; i < aRecipe.length && i < 9; i++) aCrafting.setInventorySlotContents(i, aRecipe[i]);
-		@SuppressWarnings("unchecked")
-		List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
+		InventoryCrafting aCrafting = crafting(aRecipe);
+		List<IRecipe> tList = list();
 		for (int i = 0; i < tList.size(); i++) {try {for (; i < tList.size(); i++) {
 			if ((!(tList.get(i) instanceof ICraftingRecipeGT) || ((ICraftingRecipeGT)tList.get(i)).isRemovableByGT()) && tList.get(i).matches(aCrafting, CS.DW)) {
 				tReturn = tList.get(i).getCraftingResult(aCrafting);
-				if (tReturn != null) {
-					rReturn = tReturn;
-					tList.remove(i--);
-				}
+				if (tReturn != null) {rReturn = tReturn; tList.remove(i--);}
 			}
 		}} catch(Throwable e) {e.printStackTrace(ERR);}}
 		return rReturn;

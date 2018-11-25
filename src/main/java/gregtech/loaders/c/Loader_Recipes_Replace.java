@@ -50,7 +50,6 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
@@ -124,12 +123,12 @@ public class Loader_Recipes_Replace implements Runnable {
 		NON_REPLACEABLE.add(ST.make(MD.GC, "item.sensorGlasses"                 , 1, W));
 		NON_REPLACEABLE.add(ST.make(MD.NC, "ItemToolThermometer"                , 1, W));
 		
-		@SuppressWarnings("unchecked")
-		HashSetNoNulls<IRecipe> tSet = new HashSetNoNulls<>(CraftingManager.getInstance().getRecipeList());
 		HashSetNoNulls<Object> tAlreadyScannedItems = new HashSetNoNulls<>();
 		ArrayListNoNulls<RecipeReplacement> tList = new ArrayListNoNulls<>();
-		boolean tUseProgressBar = UT.LoadingBar.start("Looking up Recipes", tSet.size());
-		for (IRecipe tRecipe : tSet) {
+		List<IRecipe> tRecipeList = CR.list();
+		boolean tUseProgressBar = UT.LoadingBar.start("Looking up Recipes", tRecipeList.size());
+		for (int l = 0; l < tRecipeList.size(); l++) {
+			IRecipe tRecipe = tRecipeList.get(l);
 			if (tUseProgressBar) UT.LoadingBar.step("");
 			ItemStack aOutput = tRecipe.getRecipeOutput();
 			if (ST.invalid(aOutput)) continue;
@@ -249,7 +248,7 @@ public class Loader_Recipes_Replace implements Runnable {
 				ItemStack tPlate = OP.plate.mat(aRecipe.mMat, 1);
 				if (tPlate == null || aReplacer.mShape == null || aReplacer.mShape.length <= 0) continue;
 				if (!ConfigsGT.RECIPES.get(ConfigCategories.Recipes.recipereplacements, aRecipe.mMat+"."+aReplacer.mName, T)) continue;
-				if (!CraftingManager.getInstance().getRecipeList().remove(aRecipe.mRecipe)) continue;
+				if (!tRecipeList.remove(aRecipe.mRecipe)) continue;
 				
 				switch (aReplacer.mShape.length) {
 				case  1: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0]                                              , PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod == MT.Wood ? ANY.Wood : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;

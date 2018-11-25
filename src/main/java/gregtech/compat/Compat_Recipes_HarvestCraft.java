@@ -48,7 +48,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -57,7 +56,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class Compat_Recipes_HarvestCraft extends CompatMods {
 	public Compat_Recipes_HarvestCraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
-	@SuppressWarnings("unchecked")
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing HarvestCraft Recipes.");
 		final ItemStack tYogurt = ST.make(MD.HaC, "plainyogurtItem", 1);
 		
@@ -74,7 +72,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		ArrayList<ItemStack> tListFoodBarley = OreDictionary.getOres("dustBarley"), tListCropBarley = OreDictionary.getOres("cropBarley");
 		ArrayList<ItemStack> tListFoodVanilla = OreDictionary.getOres("foodVanilla"), tListDustVanilla = OreDictionary.getOres("dustVanilla");
 		ArrayList<ItemStack> tListFoodOliveOil = OreDictionary.getOres("foodOliveoil"), tListFoodCookingOil = OreDictionary.getOres("listAllcookingoil");
-		for (IRecipe tRecipe : (ArrayList<IRecipe>)CraftingManager.getInstance().getRecipeList()) if (tRecipe.getClass() == ShapelessOreRecipe.class) {
+		for (IRecipe tRecipe : CR.list()) if (tRecipe.getClass() == ShapelessOreRecipe.class) {
 			ItemStack tOutput = tRecipe.getRecipeOutput();
 			if (ST.valid(tOutput) && tOutput.getItem() instanceof ItemFood) {
 				ArrayList<Object> tInputs = ((ShapelessOreRecipe)tRecipe).getInput();

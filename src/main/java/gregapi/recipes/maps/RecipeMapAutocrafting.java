@@ -38,6 +38,7 @@ import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.tileentity.ITileEntityInventoryGUI;
 import gregapi.tileentity.computer.ITileEntityUSBPort;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -45,7 +46,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -74,7 +74,7 @@ public class RecipeMapAutocrafting extends RecipeMap {
 		for (ItemStack tPlan : tBlueprint) if (tPlan != null && tPlan.getItem() instanceof IItemGTHandTool) return null;
 		
 		if (ALLOWED_RECIPES.isEmpty()) {
-			for (Object tCraftingRecipe : CraftingManager.getInstance().getRecipeList()) if (tCraftingRecipe instanceof IRecipe) {
+			for (Object tCraftingRecipe : CR.list()) if (tCraftingRecipe instanceof IRecipe) {
 				if (!(tCraftingRecipe instanceof ICraftingRecipeGT) || ((ICraftingRecipeGT)tCraftingRecipe).isAutocraftableByGT()) {
 					ALLOWED_RECIPES.add((IRecipe)tCraftingRecipe);
 				}

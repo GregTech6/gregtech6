@@ -21,9 +21,6 @@ package gregapi.recipes;
 
 import static gregapi.data.CS.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.config.ConfigCategories;
 import gregapi.data.CS.ConfigsGT;
@@ -38,7 +35,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
@@ -260,7 +256,5 @@ public class GT_ModHandler {
 	@Deprecated public static ItemStack getAllRecipeOutput(World aWorld, ItemStack... aRecipe) {return CR.getany(aWorld, aRecipe);}
 	@Deprecated public static ItemStack getRecipeOutput(ItemStack... aRecipe) {return CR.get(aRecipe);}
 	@Deprecated public static ItemStack getRecipeOutput(boolean aUncopiedStack, ItemStack... aRecipe) {return CR.get(aUncopiedStack, aRecipe);}
-	@Deprecated public static ArrayList<ItemStack> getRecipeOutputs(ItemStack... aRecipe) {return CR.outputs(aRecipe);}
-	@Deprecated public static ArrayList<ItemStack> getRecipeOutputs(List<IRecipe> aList, boolean aDeleteFromList, ItemStack... aRecipe) {return CR.outputs(aList, aDeleteFromList, aRecipe);}
 	@Deprecated public static boolean addSmeltingRecipe(ItemStack aInput, ItemStack aOutput) {return RM.add_smelting(aInput, aOutput, 0);}
 }

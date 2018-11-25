@@ -90,7 +90,8 @@ public class ST {
 	public static boolean   valid(ItemStack aStack) {return aStack != null && aStack.stackSize >= 0 && item_(aStack) != null;}
 	public static boolean invalid(ItemStack aStack) {return aStack == null || aStack.stackSize <  0 || item_(aStack) == null;}
 	
-	public static ItemStack validate(ItemStack aStack) {return valid(aStack) ? aStack : null;}
+	public static ItemStack validate(ItemStack aStack) {return valid(aStack)                         ? aStack : null;}
+	public static ItemStack valisize(ItemStack aStack) {return valid(aStack) && aStack.stackSize > 0 ? aStack : null;}
 	
 	public static short id (Item      aItem ) {return aItem  == null ? 0 : id_(aItem);}
 	public static short id_(Item      aItem ) {return (short)Item.getIdFromItem(aItem);}
@@ -231,14 +232,16 @@ public class ST {
 	}
 	public static ItemStack get(Object... aStacks) {
 		for (Object aStack : aStacks) {
-			if (aStack instanceof ItemStack         ) {if (valid((ItemStack)aStack)) return (ItemStack)aStack; continue;}
-			if (aStack instanceof Item              ) return make_((Item)aStack, 1, 0);
-			if (aStack instanceof Block             ) return make((Block)aStack, 1, 0);
-			if (aStack instanceof IItemContainer    ) {ItemStack rStack = ((IItemContainer    )aStack).get(   1); if (valid(rStack)) return rStack; continue;}
-			if (aStack instanceof ItemStackContainer) {ItemStack rStack = ((ItemStackContainer)aStack).toStack(); if (valid(rStack)) return rStack; continue;}
+		if (aStack instanceof ItemStack         ) {if (valid((ItemStack)aStack)) return (ItemStack)aStack; continue;}
+		if (aStack instanceof Item              ) return make_((Item)aStack, 1, 0);
+		if (aStack instanceof Block             ) return make((Block)aStack, 1, 0);
+		if (aStack instanceof IItemContainer    ) {ItemStack rStack = ((IItemContainer    )aStack).get(   1); if (valid(rStack)) return rStack; continue;}
+		if (aStack instanceof ItemStackContainer) {ItemStack rStack = ((ItemStackContainer)aStack).toStack(); if (valid(rStack)) return rStack; continue;}
 		}
 		return null;
 	}
+	
+	public static boolean hasValid(ItemStack... aStacks) {if (aStacks != null) for (ItemStack aStack : aStacks) if (valid(aStack)) return T; return F;}
 	
 	
 	

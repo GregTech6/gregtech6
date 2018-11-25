@@ -21,7 +21,6 @@ package gregtech.compat;
 
 import static gregapi.data.CS.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -43,7 +42,6 @@ import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -52,7 +50,6 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 public class Compat_Recipes_GalactiCraft extends CompatMods {
 	public Compat_Recipes_GalactiCraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
-	@SuppressWarnings("unchecked")
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 		if (MD.GC.mLoaded) {
 			OUT.println("GT_Mod: Doing Galacticraft Recipes.");
@@ -85,7 +82,7 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 			, tItemH = ST.item(MD.GC_PLANETS, "item.null")
 			, tItemI = ST.item(MD.GC_PLANETS, "item.itemBasicAsteroids");
 			
-			for (IRecipe tRecipe : (ArrayList<IRecipe>)CraftingManager.getInstance().getRecipeList()) if (tRecipe.getClass() == ShapedOreRecipe.class) {
+			for (IRecipe tRecipe : CR.list()) if (tRecipe.getClass() == ShapedOreRecipe.class) {
 				ItemStack tOutput = tRecipe.getRecipeOutput();
 				if (ST.valid(tOutput)) {
 					Object[] tInputs = ((ShapedOreRecipe)tRecipe).getInput();

@@ -91,6 +91,7 @@ import gregapi.tileentity.ITileEntityServerTickPre;
 import gregapi.tileentity.ITileEntitySpecificPlacementBehavior;
 import gregapi.tileentity.ITileEntitySynchronising;
 import gregapi.tileentity.inventories.ITileEntityBookShelf;
+import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -111,7 +112,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -228,11 +228,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (aEvent.side.isServer()) {
 			if (aEvent.phase == Phase.START) {
 				if (SERVER_TIME++ == 0) {
-					OUT.println("GT_API: Unificating outputs of all known Recipe Types.");
 					HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);
 					
 					if (MD.IC2.mLoaded) try {
-					OUT.println("GT_API: IC2 Machines");
 					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.cannerBottle              .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
 					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.centrifuge                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
 					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.compressor                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
@@ -245,7 +243,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					for (ic2.api.recipe.RecipeOutput tRecipe : ic2.api.recipe.Recipes.oreWashing                .getRecipes().values()) for (ItemStack tStack : tRecipe.items) tStacks.add(tStack);
 					} catch(Throwable e) {/**/}
 					
-					OUT.println("GT_API: Dungeon Loot");
 					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST            ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
 					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST              ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
 					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH       ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
@@ -256,10 +253,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST     ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
 					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST     ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
 					for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR       ).getItems(RNGSUS)) tStacks.add(tContent.theItemId);
-					OUT.println("GT_API: Smelting");
+					
 					for (Object tStack : FurnaceRecipes.smelting().getSmeltingList().values()) tStacks.add((ItemStack)tStack);
-					OUT.println("GT_API: Crafting Recipes");
-					for (Object tRecipe : CraftingManager.getInstance().getRecipeList()) if (tRecipe instanceof IRecipe) tStacks.add(((IRecipe)tRecipe).getRecipeOutput());
+					
+					for (IRecipe tRecipe : CR.list()) if (tRecipe != null) tStacks.add(tRecipe.getRecipeOutput());
 					
 					for (ItemStack tOutput : tStacks) {
 						if (OreDictManager.INSTANCE.isOreDictItem(tOutput)) {
@@ -289,8 +286,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					}
 					
 					OUT.println("GT_API: Cleaning up all OreDict Crafting Recipes, which have an empty List in them, since they are never meeting any Condition.");
-					@SuppressWarnings("unchecked")
-					List<IRecipe> tList = CraftingManager.getInstance().getRecipeList();
+					List<IRecipe> tList = CR.list();
 					for (int i = 0; i < tList.size(); i++) {
 						Object tRecipe = tList.get(i);
 						if (tRecipe instanceof ShapedOreRecipe) {
@@ -791,6 +787,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	}
 	
 	@SubscribeEvent
+	@SuppressWarnings("unlikely-arg-type")
 	public void onBlockBreakSpeedEvent(PlayerEvent.BreakSpeed aEvent) {
 		if (aEvent.newSpeed > 0) {
 			if (aEvent.entityPlayer != null) {
@@ -819,7 +816,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				return;
 			}
 			if (aEvent.block instanceof IBlockPlacable) {
-				if (BlocksGT.stoneToBrokenOres.containsValue((IBlockPlacable)aEvent.block) || BlocksGT.stoneToNormalOres.containsValue((IBlockPlacable)aEvent.block) || BlocksGT.stoneToSmallOres.containsValue((IBlockPlacable)aEvent.block)) {
+				if (BlocksGT.stoneToBrokenOres.containsValue(aEvent.block) || BlocksGT.stoneToNormalOres.containsValue(aEvent.block) || BlocksGT.stoneToSmallOres.containsValue(aEvent.block)) {
 					// Aether does something stupid so Reflection it is
 					UT.Reflection.setField(aEvent, "originalSpeed", aEvent.newSpeed /= HARDNESS_MULTIPLIER_ORES);
 					return;

@@ -101,7 +101,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTBase.NBTPrimitive;
 import net.minecraft.nbt.NBTTagCompound;
@@ -1950,7 +1949,7 @@ public class UT {
 			ItemStack[] tBlueprint = getBlueprintCrafting(aData);
 			if (tBlueprint != ZL_IS) {
 				ItemStack tCrafted = CR.getany(DW, tBlueprint);
-				if (tCrafted == null) {
+				if (ST.invalid(tCrafted)) {
 					aList.add(LH.Chat.CYAN + "Blueprint with random Items");
 				} else {
 					if (aAllDetails) {
@@ -3142,8 +3141,6 @@ public class UT {
 		@Deprecated public static ItemStack getany(World aWorld, ItemStack... aRecipe) {return CR.getany(aWorld, aRecipe);}
 		@Deprecated public static ItemStack get(ItemStack... aRecipe) {return CR.get(aRecipe);}
 		@Deprecated public static ItemStack get(boolean aUncopiedStack, ItemStack... aRecipe) {return CR.get(aUncopiedStack, aRecipe);}
-		@Deprecated public static ArrayList<ItemStack> outputs(ItemStack... aRecipe) {return CR.outputs(aRecipe);}
-		@Deprecated public static ArrayList<ItemStack> outputs(List<IRecipe> aList, boolean aDeleteFromList, ItemStack... aRecipe) {return CR.outputs(aList, aDeleteFromList, aRecipe);}
 		@Deprecated public static boolean has(ItemStack aOutput) {return CR.has(aOutput);}
 		@Deprecated public static boolean remout(ItemStack aOutput, boolean aIgnoreNBT, boolean aNotRemoveShapelessRecipes, boolean aOnlyRemoveNativeHandlers, boolean aDontRemoveDyeingRecipes) {return CR.remout(aOutput, aIgnoreNBT, aNotRemoveShapelessRecipes, aOnlyRemoveNativeHandlers, aDontRemoveDyeingRecipes);}
 		@Deprecated public static boolean remout(ItemStack aOutput) {return CR.remout(aOutput);}

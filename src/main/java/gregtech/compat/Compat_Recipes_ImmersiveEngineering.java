@@ -38,7 +38,6 @@ import gregapi.oredict.OreDictListenerEvent_TwoNames;
 import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class Compat_Recipes_ImmersiveEngineering extends CompatMods {
@@ -63,7 +62,7 @@ public class Compat_Recipes_ImmersiveEngineering extends CompatMods {
 		
 		if (IL.IE_Hammer.exists()) {
 			ArrayListNoNulls tRecipesToRemove = new ArrayListNoNulls();
-			for (Object tRecipe : CraftingManager.getInstance().getRecipeList()) {
+			for (Object tRecipe : CR.list()) {
 				if (tRecipe instanceof ShapelessOreRecipe) {
 					for (Object tInput : ((ShapelessOreRecipe)tRecipe).getInput()) {
 						if (tInput instanceof ItemStack && IL.IE_Hammer.equal(tInput, F, T)) {
@@ -73,7 +72,7 @@ public class Compat_Recipes_ImmersiveEngineering extends CompatMods {
 					}
 				}
 			}
-			CraftingManager.getInstance().getRecipeList().removeAll(tRecipesToRemove);
+			CR.list().removeAll(tRecipesToRemove);
 		}
 	}
 }

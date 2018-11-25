@@ -21,18 +21,17 @@ package gregapi.recipes;
 
 import static gregapi.data.CS.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import gregapi.code.ICondition;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
+import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
@@ -60,7 +59,7 @@ public class AdvancedCraftingXToY implements ICraftingRecipeGT {
 		mOutputCount = aOutputCount;
 		mInput.mShapelessManagers.add(this);
 		
-		ArrayList<IRecipe> tRecipeList = (ArrayList<IRecipe>)CraftingManager.getInstance().getRecipeList();
+		List<IRecipe> tRecipeList = CR.list();
 		try {for (int i = 0; i < tRecipeList.size(); i++) {
 			IRecipe tRecipe = tRecipeList.get(i);
 			int tCount = 0;
