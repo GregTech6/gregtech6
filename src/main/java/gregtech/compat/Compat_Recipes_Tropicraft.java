@@ -32,12 +32,34 @@ import gregapi.oredict.IOreDictListenerEvent;
 import gregapi.oredict.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.ST;
+import net.minecraft.init.Items;
 
 public class Compat_Recipes_Tropicraft extends CompatMods {
 	public Compat_Recipes_Tropicraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Tropicraft Recipes.");
-		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank");
+		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank", "ore");
+		RM.biomass(ST.make(MD.TROPIC, "tile.flower", 16, W), 64);
+		
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(Items.dye, 2, DYE_INDEX_LightBlue));
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], ST.make(Items.dye, 2, DYE_INDEX_Yellow   ));
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Orange   ], ST.make(Items.dye, 2, DYE_INDEX_Orange   ));
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red      ], ST.make(Items.dye, 2, DYE_INDEX_Red      ));
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1,12), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Green    ], ST.make(Items.dye, 2, DYE_INDEX_Green    ));
+		
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(Items.dye, 2, DYE_INDEX_LightBlue));
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], ST.make(Items.dye, 2, DYE_INDEX_Yellow   ));
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Orange   ], ST.make(Items.dye, 2, DYE_INDEX_Orange   ));
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 6), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Red      ], ST.make(Items.dye, 2, DYE_INDEX_Red      ));
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1,12), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Green    ], ST.make(Items.dye, 2, DYE_INDEX_Green    ));
+		
+		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
+		RM.ic2_extractor(ST.make(MD.TROPIC, "tile.flower", 1, 0), ST.make(Items.dye, 3, DYE_INDEX_LightBlue));
+		RM.ic2_extractor(ST.make(MD.TROPIC, "tile.flower", 1, 3), ST.make(Items.dye, 3, DYE_INDEX_Yellow   ));
+		RM.ic2_extractor(ST.make(MD.TROPIC, "tile.flower", 1, 5), ST.make(Items.dye, 3, DYE_INDEX_Orange   ));
+		RM.ic2_extractor(ST.make(MD.TROPIC, "tile.flower", 1, 6), ST.make(Items.dye, 3, DYE_INDEX_Red      ));
+		RM.ic2_extractor(ST.make(MD.TROPIC, "tile.flower", 1,12), ST.make(Items.dye, 3, DYE_INDEX_Green    ));
+		}
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("cropCoconut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

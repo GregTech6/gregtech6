@@ -411,6 +411,17 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Peat                   , ST.make(MD.FR, "peat", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingotDouble    , MT.PeatBituminous         , ST.make(MD.FR, "bituminousPeat", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.WaxBee                 , ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Eudialyte              , ST.make(MD.TROPIC, "tile.oreEudialyte", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Zircon                 , ST.make(MD.TROPIC, "tile.oreZircon", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Azurite                , ST.make(MD.TROPIC, "tile.oreAzurite", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Eudialyte              , ST.make(MD.TROPIC, "tile.blockOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Zircon                 , ST.make(MD.TROPIC, "tile.blockOre", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Azurite                , ST.make(MD.TROPIC, "tile.blockOre", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Zr                     , ST.make(MD.TROPIC, "tile.blockOre", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Eudialyte              , ST.make(MD.TROPIC, "ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Zircon                 , ST.make(MD.TROPIC, "ore", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Azurite                , ST.make(MD.TROPIC, "ore", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Zr                     , ST.make(MD.TROPIC, "ore", 1, 3));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Pyrotheum              , ST.make(MD.TE_FOUNDATION, "material", 1,  512));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cryotheum              , ST.make(MD.TE_FOUNDATION, "material", 1,  513));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Aerotheum              , ST.make(MD.TE_FOUNDATION, "material", 1,  514));
