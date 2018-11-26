@@ -348,7 +348,7 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.TiO2                    , U12,  0, 32)
 		);
 		StoneLayer.put(BlocksGT.Basalt, BlocksGT.Marble
-		, new StoneLayerOres(MT.Zr                      , U64,  0, 32)
+		, new StoneLayerOres(MT.Zircon                  , U24,  0, 32)
 		);
 		StoneLayer.put(BlocksGT.Basalt, 0, BlocksGT.RockOres, 2
 		, new StoneLayerOres(MT.OREMATS.Zeolite         , U8 , 16, 48)
@@ -593,7 +593,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresLarge("ore.large.manganese"         , T, T,  20,  30,     20,   3,  16, MT.Grossular                , MT.Spessartine            , MT.MnO2                           , MT.OREMATS.Tantalite              , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_END);
 		new WorldgenOresLarge("ore.large.beryllium"         , T, T,   5,  30,     15,   3,  16, MT.Aquamarine               , MT.Maxixe                 , MT.Emerald                        , MT.Th                             , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_END);
 		new WorldgenOresLarge("ore.large.beryllium2"        , T, T,   5,  30,     15,   3,  16, MT.Bixbite                  , MT.Goshenite              , MT.Heliodor                       , MT.Morganite                      , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_END);
-		new WorldgenOresLarge("ore.large.titanium"          , T, T,  10,  40,     40,   3,  16, MT.TiO2                     , MT.TiO2                   , MT.Zr                             , MT.OREMATS.Ilmenite               , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_NETHER, ORE_END);
+		new WorldgenOresLarge("ore.large.titanium"          , T, T,  10,  40,     40,   3,  16, MT.TiO2                     , MT.TiO2                   , MT.Zircon                         , MT.OREMATS.Ilmenite               , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_NETHER, ORE_END);
 		new WorldgenOresLarge("ore.large.nickel"            , T, T,  10,  40,     40,   3,  16, MT.OREMATS.Garnierite       , MT.Ni                     , MT.OREMATS.Cobaltite              , MT.OREMATS.Pentlandite            , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_NETHER, ORE_END);
 		new WorldgenOresLarge("ore.large.tetrahedrite"      , T, T,  70, 120,    150,   4,  24, MT.OREMATS.Tetrahedrite     , MT.OREMATS.Tetrahedrite   , MT.Cu                             , MT.OREMATS.Stibnite               , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_NETHER, GEN_PLANETS);
 		new WorldgenOresLarge("ore.large.redstone"          , T, T,  10,  40,     60,   3,  24, MT.Redstone                 , MT.Redstone               , MT.Ruby                           , MT.OREMATS.Cinnabar               , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_NETHER, GEN_PLANETS);

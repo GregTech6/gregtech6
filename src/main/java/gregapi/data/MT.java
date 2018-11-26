@@ -1073,7 +1073,7 @@ public class MT {
 	Dilithium               = crystal       ( 8317, "Dilithium"             , SET_DIAMOND           , 153, 255, 255, 127).lens(DYE_INDEX_White      ).put(CRYSTALLISABLE, QUARTZ, MD.MO)                                                                                                                                                                                                                                            .setSmelting(null, 0),
 	
 	
-	Zircon                  = elec          ( 8419, "Zircon"                , SET_EMERALD           ,  99,  24,  29, 255).put(G_GEM_ORES, CRYSTAL)                                                                                                                      .uumMcfg( 0, Zr             , 1*U, SiO2             , 3*U, O                , 2*U)                                                                          .aspects(TC.VITREUS, 4).setSmelting(Zr, U9),
+	Zircon                  = valgemelec    ( 8419, "Zircon"                , SET_EMERALD           ,  99,  24,  29, 255).lens(DYE_INDEX_Red        )                                                                                                                   .uumMcfg( 0, Zr             , 1*U, SiO2             , 3*U, O                , 2*U)                                                                          .aspects(TC.VITREUS, 4).setSmelting(Zr, U9),
 	Azurite                 = elec          ( 8420, "Azurite"               , SET_QUARTZ            , 109, 164, 247, 255).put(G_GEM_ORES, CRYSTAL)                                                                                                                                                                                                                                                                                  .aspects(TC.VITREUS, 2),
 	Eudialyte               = elec          ( 8421, "Eudialyte"             , SET_LAPIS             , 155,  96, 114, 255).put(G_GEM_ORES, CRYSTAL)                                                                                                                                                                                                                                                                                  .aspects(TC.VITREUS, 2),
 	
@@ -1939,9 +1939,9 @@ public class MT {
 			OREMATS.Bauxite                 .addOreByProducts(OREMATS.Kaolinite     , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 , AlO3H3                );
 			AlO3H3                          .addOreByProducts(OREMATS.Bauxite       , OREMATS.Ilmenite          , Fe2O3                 , Al2O3                 );
 			OREMATS.Ilmenite                .addOreByProducts(TiO2                  , Fe2O3                     , Mg                    , MnO2                  );
-			TiO2                            .addOreByProducts(Fe2O3                 , Nb                        , OREMATS.Tantalite     , Zr                    );
+			TiO2                            .addOreByProducts(Fe2O3                 , Nb                        , OREMATS.Tantalite     , Zircon                );
 			OREMATS.Arsenopyrite            .addOreByProducts(Au                    , CaF2                      , OREMATS.Cassiterite   , OREMATS.Huebnerite    );
-			Ti                              .addOreByProducts(Fe2O3                 , Nb                        , OREMATS.Tantalite     , Zr                    );
+			Ti                              .addOreByProducts(Fe2O3                 , Nb                        , OREMATS.Tantalite     , Zircon                );
 			Fe2O3                           .addOreByProducts(OREMATS.Ilmenite      , OREMATS.Magnetite         , MnO2                  , ClayBrown             );
 			OREMATS.Zeolite                 .addOreByProducts(Na                    , K                         , Ca                    , Mg                    );
 			OREMATS.YellowLimonite          .addOreByProducts(Ni                    , OREMATS.BrownLimonite     , Co                    );
@@ -2055,6 +2055,7 @@ public class MT {
 			OREMATS.Spodumene               .addOreByProducts(Al2O3                 , LiCl                      );
 			Co_60                           .addOreByProducts(OREMATS.Cobaltite     , Co                        );
 			Zr                              .addOreByProducts(TiO2                  , Hf                        );
+			Zircon                          .addOreByProducts(TiO2                  , Hf                        );
 			OREMATS.DiduraniumTrioxide      .addOreByProducts(Dn                    , Tn                        );
 			OREMATS.DuraniumHexafluoride    .addOreByProducts(Dn                    );
 			OREMATS.DuraniumHexachloride    .addOreByProducts(Dn                    );
@@ -2098,7 +2099,7 @@ public class MT {
 			KNO3                            .addOreByProducts(NaNO3                 );
 			Niter                           .addOreByProducts(KNO3                  , NaNO3                     );
 			Endstone                        .addOreByProducts(He_3                  );
-			Hf                              .addOreByProducts(Zr                    );
+			Hf                              .addOreByProducts(Zircon                );
 			Mg                              .addOreByProducts(Olivine               );
 			OREMATS.Cobaltite               .addOreByProducts(Co                    );
 			Co                              .addOreByProducts(OREMATS.Cobaltite     );
