@@ -113,6 +113,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (ST.equal(tStack, Blocks.soul_sand   , W)) {mDisplayedInput = -9;} else
 				if (ST.equal(tStack, BlocksGT.Diggables , W)) {mDisplayedInput =-10;} else
 				if (ST.equal(tStack, BlocksGT.Sands     , W)) {mDisplayedInput =-11;} else
+				if (IL.TROPIC_Sand_Black            .equal(tStack, F, T)) {mDisplayedInput =-11;} else
 				if (IL.EtFu_Gravel                  .equal(tStack, F, T)) {mDisplayedInput = -1;} else
 				if (IL.EtFu_Dirt                    .equal(tStack, F, T)) {mDisplayedInput = -3;} else
 				if (IL.BoP_Mud                      .equal(tStack, F, T)) {mDisplayedInput =-10;} else
@@ -171,6 +172,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (ST.equal(tStack, Blocks.soul_sand   , W)) {mDisplayedOutput = -9;} else
 				if (ST.equal(tStack, BlocksGT.Diggables , W)) {mDisplayedOutput =-10;} else
 				if (ST.equal(tStack, BlocksGT.Sands     , W)) {mDisplayedOutput =-11;} else
+				if (IL.TROPIC_Sand_Black            .equal(tStack, F, T)) {mDisplayedOutput =-11;} else
 				if (IL.EtFu_Gravel                  .equal(tStack, F, T)) {mDisplayedOutput = -1;} else
 				if (IL.EtFu_Dirt                    .equal(tStack, F, T)) {mDisplayedOutput = -3;} else
 				if (IL.BoP_Mud                      .equal(tStack, F, T)) {mDisplayedOutput =-10;} else
