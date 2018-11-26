@@ -202,7 +202,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		case 5:
 			tMaxHeight = getMaxHeight(aWorld, aX, aY, aZ, 8);
 			if (tMaxHeight < 6) return F;
-			tMaxHeight = aY+6+aRandom.nextInt(tMaxHeight-6);
+			tMaxHeight = aY+6+aRandom.nextInt(tMaxHeight-5);
 			
 			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-4, aZ+j)) return F;
 			
