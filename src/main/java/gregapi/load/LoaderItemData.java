@@ -484,9 +484,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.dust.dat(MT.Obsidian)             , ST.make(MD.IC2, "item.itemObsidianDust", 1, 0));
 		OM.reg(OP.dust.dat(MT.Wheat)                , ST.make(MD.IC2, "item.itemFlour", 1, 0));
 		OM.reg("cropTea"                            , ST.make(MD.IC2, "item.itemTeaLeaf", 1, 0));
-		OM.reg("cropLemon"                          , ST.make(MD.TROPIC, "grapefruit", 1, 0));
+		OM.reg("cropGrapefruit"                     , ST.make(MD.TROPIC, "grapefruit", 1, 0));
 		OM.reg("cropOrange"                         , ST.make(MD.TROPIC, "orange", 1, 0));
-		OM.reg("cropGrapefruit"                     , ST.make(MD.TROPIC, "lemon", 1, 0));
+		OM.reg("cropLemon"                          , ST.make(MD.TROPIC, "lemon", 1, 0));
 		OM.reg("cropLime"                           , ST.make(MD.TROPIC, "lime", 1, 0));
 		OM.reg("cropAnanas"                         , ST.make(MD.TROPIC, "tile.pineapple", 1, W));
 		OM.reg("cropCoconut"                        , ST.make(MD.TROPIC, "tile.coconut", 1, W));

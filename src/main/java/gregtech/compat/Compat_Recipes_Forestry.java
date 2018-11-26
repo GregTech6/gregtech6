@@ -394,7 +394,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 		RM.Mixer        .addRecipeX(T, 16,   64, new ItemStack[] {ST.make(Blocks.sand, 4, W), ST.make(Blocks.dirt, 4, W), IL.FR_Mulch.get(1)}, ST.make(MD.FR, "soil", 8, 1));
 		
-		for (FL tFluid : new FL[] {FL.Water, FL.DistW, FL.Ocean, FL.OceanGrC}) if (tFluid.exists()) {
+		for (FL tFluid : new FL[] {FL.Water, FL.DistW, FL.Ocean, FL.OceanGrC, FL.Tropics_Water}) if (tFluid.exists()) {
 		if (IL.IC2_Fertilizer.exists())
 		RM.Mixer        .addRecipe2(T, 16,   64, IL.IC2_Fertilizer.get(1)   , ST.make(Blocks.dirt, 8, W), tFluid.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));
 		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Fertilizer.get(1)    , ST.make(Blocks.dirt, 8, W), tFluid.make(1000), NF, ST.make(MD.FR, "soil", 8, 0));

@@ -435,6 +435,9 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Coffee                 , ST.mkic("coffeePowder", 1));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.HydratedCoal           , ST.mkic("hydratedCoalDust", 1));
 		OreDictManager.INSTANCE.setTarget(OP.cell           , MT.Creosote               , ST.make(MD.RC, "fluid.creosote.cell", 1));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.GrC_Bamboo, "grc.bamboo", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.BoP, "bamboo", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.TROPIC, "bambooStick", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Empty                  , ST.make(Items.glass_bottle, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Water                  , ST.make(Items.potionitem, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));

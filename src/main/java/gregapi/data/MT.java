@@ -1073,6 +1073,10 @@ public class MT {
 	Dilithium               = crystal       ( 8317, "Dilithium"             , SET_DIAMOND           , 153, 255, 255, 127).lens(DYE_INDEX_White      ).put(CRYSTALLISABLE, QUARTZ, MD.MO)                                                                                                                                                                                                                                            .setSmelting(null, 0),
 	
 	
+	Zircon                  = elec          ( 8419, "Zircon"                , SET_EMERALD           ,  99,  24,  29, 255).put(G_GEM_ORES, CRYSTAL)                                                                                                                      .uumMcfg( 0, Zr             , 1*U, SiO2             , 3*U, O                , 2*U)                                                                          .aspects(TC.VITREUS, 4).setSmelting(Zr, U9),
+	Azurite                 = elec          ( 8420, "Azurite"               , SET_QUARTZ            , 109, 164, 247, 255).put(G_GEM_ORES, CRYSTAL)                                                                                                                                                                                                                                                                                  .aspects(TC.VITREUS, 2),
+	Eudialyte               = elec          ( 8421, "Eudialyte"             , SET_LAPIS             , 155,  96, 114, 255).put(G_GEM_ORES, CRYSTAL)                                                                                                                                                                                                                                                                                  .aspects(TC.VITREUS, 2),
+	
 	
 	Lazurite                = elec          ( 8330, "Lazurite"              , SET_LAPIS             , 100, 120, 255, 255).put(G_GEM_ORES, DENSEPLATES, CRYSTAL, CRYSTALLISABLE, MORTAR, BRITTLE)                                                                        .uumMcfg( 0, Al2O3          , 6*U, SiO2             , 6*U, Ca               , 8*U, Na               , 8*U)                                                  ,
 	Sodalite                = elec          ( 8331, "Sodalite"              , SET_LAPIS             ,  20,  20, 255, 255).put(G_GEM_ORES, DENSEPLATES, CRYSTAL, CRYSTALLISABLE, MORTAR, BRITTLE)                                                                        .uumMcfg( 0, Al2O3          , 3*U, SiO2             , 3*U, Na               , 4*U, Cl               , 1*U)                                                  ,
@@ -1425,6 +1429,7 @@ public class MT {
 			Ti                      .setOreMultiplier( 2).setCrushing(TiO2, U);
 			W                       .setOreMultiplier( 2).setCrushing(OREMATS.Scheelite, U);
 			Amber                   .setOreMultiplier( 2);
+			Zircon                  .setOreMultiplier( 2);
 			InfusedAir              .setOreMultiplier( 2);
 			InfusedFire             .setOreMultiplier( 2);
 			InfusedEarth            .setOreMultiplier( 2);
@@ -1458,6 +1463,8 @@ public class MT {
 			Lapis                   .setOreMultiplier( 5);
 			Sodalite                .setOreMultiplier( 5);
 			Lazurite                .setOreMultiplier( 5);
+			Azurite                 .setOreMultiplier( 5);
+			Eudialyte               .setOreMultiplier( 5);
 			
 			Wood                    .put(MD.MC);
 			Stone                   .put(MD.MC);

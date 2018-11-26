@@ -63,6 +63,7 @@ public enum FL {
 	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
 	, Mineralsoda               ("mineralsoda"                                              , SIMPLE, LIQUID, FOOD)
 	, Soda                      ("soda"                                                     , SIMPLE, LIQUID, FOOD)
+	, Tropics_Water             ("tropicswater"                                             , SIMPLE, LIQUID)
 	, Ocean                     ("seawater"                                                 , SIMPLE, LIQUID)
 	, OceanGrC                  ("grccore.saltwater"                                        , SIMPLE, LIQUID)
 	, Dirty_Water               ("waterdirty"                                               , SIMPLE, LIQUID)

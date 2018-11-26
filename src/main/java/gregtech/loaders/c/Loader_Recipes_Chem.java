@@ -211,12 +211,14 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		RM.Electrolyzer .addRecipe1(T, 16,  256, ST.tag(1), new FluidStack[] {MT.LiClO3.liquid(U*5, T), MT.O.gas(U, T)}, NF, OM.dust(MT.LiClO4, U*6));
 		
-		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), new FluidStack[] {FL.Water.make(3000)       }, new FluidStack[] {MT.H.gas(U*2, F), MT.O.gas(U, F)});
-		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), new FluidStack[] {FL.DistW.make(3000)       }, new FluidStack[] {MT.H.gas(U*2, F), MT.O.gas(U, F)});
+		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), new FluidStack[] {FL.Water.make(3000)         }, new FluidStack[] {MT.H.gas(U*2, F), MT.O.gas(U, F)});
+		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), new FluidStack[] {FL.DistW.make(3000)         }, new FluidStack[] {MT.H.gas(U*2, F), MT.O.gas(U, F)});
+		if (FL.Tropics_Water.exists())
+		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), new FluidStack[] {FL.Tropics_Water.make(16000)}, new FluidStack[] {MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)}, OM.dust(MT.NaOH, 3*U8));
 		if (FL.OceanGrC.exists())
-		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), new FluidStack[] {FL.OceanGrC.make(16000)   }, new FluidStack[] {MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)}, OM.dust(MT.NaOH, 3*U8));
-		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), new FluidStack[] {FL.Ocean.make(16000)      }, new FluidStack[] {MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)}, OM.dust(MT.NaOH, 3*U8));
-		RM.Electrolyzer .addRecipe1(T, 16, 1280, ST.tag(0), new FluidStack[] {MT.SaltWater.liquid(U, T) }, new FluidStack[] {MT.Cl.gas(U8, F), MT.H.gas( 3*U8, F), MT.O.gas(   U8, F)}, OM.dust(MT.NaOH, 3*U8));
+		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), new FluidStack[] {FL.OceanGrC.make(16000)     }, new FluidStack[] {MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)}, OM.dust(MT.NaOH, 3*U8));
+		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), new FluidStack[] {FL.Ocean.make(16000)        }, new FluidStack[] {MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)}, OM.dust(MT.NaOH, 3*U8));
+		RM.Electrolyzer .addRecipe1(T, 16, 1280, ST.tag(0), new FluidStack[] {MT.SaltWater.liquid(U, T)   }, new FluidStack[] {MT.Cl.gas(U8, F), MT.H.gas( 3*U8, F), MT.O.gas(   U8, F)}, OM.dust(MT.NaOH, 3*U8));
 		
 		
 		
@@ -276,6 +278,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Drying       .addRecipe0(T, 16,   16, FL.Water.make(10), FL.DistW.make(8), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0), FL.Water.make(10), FL.DistW.make(8), ZL_IS);
 		
+		if (FL.Tropics_Water.exists())
+		RM.Drying       .addRecipe0(T, 16,12800, FL.Tropics_Water.make(8000)    , FL.DistW.make(7750), OM.dust(MT.NaCl, U4));
 		if (FL.OceanGrC.exists())
 		RM.Drying       .addRecipe0(T, 16,12800, FL.OceanGrC.make(8000)         , FL.DistW.make(7750), OM.dust(MT.NaCl, U4));
 		RM.Drying       .addRecipe0(T, 16,12800, FL.Ocean.make(8000)            , FL.DistW.make(7750), OM.dust(MT.NaCl, U4));

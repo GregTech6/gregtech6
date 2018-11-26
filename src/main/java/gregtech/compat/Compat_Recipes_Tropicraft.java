@@ -37,7 +37,7 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 	public Compat_Recipes_Tropicraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Tropicraft Recipes.");
-		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre");
+		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank");
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("cropCoconut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
