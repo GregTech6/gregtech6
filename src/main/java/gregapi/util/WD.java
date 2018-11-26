@@ -176,6 +176,10 @@ public class WD {
 		return aDimensionID == -1 || aDimensionID == 0 || aDimensionID == 1 || dimTF(tProvider) || dimERE(tProvider) || dimBTL(tProvider) || dimENVM(tProvider) || dimDD(tProvider) || dimLM(tProvider);
 	}
 	
+	public static boolean dimTROPIC(int aDimensionID) {return MD.TROPIC.mLoaded && dimTROPIC(DimensionManager.getProvider(aDimensionID));}
+	public static boolean dimTROPIC(World aWorld) {return aWorld != null && dimTROPIC(aWorld.provider);}
+	public static boolean dimTROPIC(WorldProvider aProvider) {return MD.TROPIC.mLoaded && aProvider != null && "WorldProviderTropicraft".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
 	public static boolean dimATUM(int aDimensionID) {return MD.ATUM.mLoaded && dimATUM(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimATUM(World aWorld) {return aWorld != null && dimATUM(aWorld.provider);}
 	public static boolean dimATUM(WorldProvider aProvider) {return MD.ATUM.mLoaded && aProvider != null && "AtumWorldProvider".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}

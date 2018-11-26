@@ -200,6 +200,7 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.YellowLimonite  , U8 , 16, 48)
 		, new StoneLayerOres(MT.OREMATS.BrownLimonite   , U8 , 32, 64)
 		, new StoneLayerOres(MT.OREMATS.Malachite       , U12, 16, 64)
+		, new StoneLayerOres(MT.Azurite                 , U24, 16, 64)
 		));
 		
 		
@@ -347,9 +348,6 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Ilmenite        , U8 ,  0, 32)
 		, new StoneLayerOres(MT.TiO2                    , U12,  0, 32)
 		);
-		StoneLayer.put(BlocksGT.Basalt, BlocksGT.Marble
-		, new StoneLayerOres(MT.Zircon                  , U24,  0, 32)
-		);
 		StoneLayer.put(BlocksGT.Basalt, 0, BlocksGT.RockOres, 2
 		, new StoneLayerOres(MT.OREMATS.Zeolite         , U8 , 16, 48)
 		);
@@ -376,6 +374,9 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Diamond                 , U64,  0, 32)
 		, new StoneLayerOres(MT.Graphite                , U8 ,  0, 32)
 		);
+		StoneLayer.put(BlocksGT.GraniteBlack, BlocksGT.GraniteRed
+		, new StoneLayerOres(MT.Zircon                  , U24,  0, 32)
+		);
 		
 		// TODO Asbestos missing!
 		
@@ -385,25 +386,25 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOcean           ("ocean.seawater"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA); // IT IS IMPORTANT THAT OCEAN COMES BEFORE SWAMP!!!
 		new WorldgenSwamp           ("swamp.dirtywater" , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS); // IT IS IMPORTANT THAT SWAMP COMES AFTER OCEAN!!!
 		
-		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay        , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ALFHEIM);
-		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables , 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay        , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ALFHEIM, GEN_TROPICS);
+		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables , 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ALFHEIM, GEN_TROPICS);
 		
-		new WorldgenBlackSand       ("river.magnetite"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenBlackSand       ("river.magnetite"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TROPICS);
 		
-		new WorldgenLogDry          ("log.dry"          , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
-		new WorldgenLogRotten       ("log.rotten"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenLogMossy        ("log.mossy"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
+		new WorldgenLogDry          ("log.dry"          , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenLogRotten       ("log.rotten"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
+		new WorldgenLogMossy        ("log.mossy"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
 		new WorldgenLogFrozen       ("log.frozen"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
 		
 		new WorldgenTreeRubber      ("tree.rubber"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT);
 		new WorldgenTreeMaple       ("tree.maple"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
 		new WorldgenTreeWillow      ("tree.willow"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenTreeBlueMahoe   ("tree.bluemahoe"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenTreeBlueMahoe   ("tree.bluemahoe"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
 		new WorldgenTreeHazel       ("tree.hazel"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
-		new WorldgenTreeCinnamon    ("tree.cinnamon"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenTreeCinnamon    ("tree.cinnamon"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
 		new WorldgenTreeRainbowood  ("tree.rainbowood"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM, GEN_AETHER);
 		
-		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_ATUM);
+		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_ATUM, GEN_TROPICS);
 		new WorldgenAlfheimRocks    ("alfheim.rocks"    , T, GEN_ALFHEIM);
 		new WorldgenAetherRocks     ("aether.rocks"     , T, GEN_AETHER);
 		new WorldgenErebusRocks     ("erebus.rocks"     , T, GEN_EREBUS);
@@ -412,9 +413,9 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenPlanetRocks     ("planet.rocks"     , T, GEN_PLANETS);
 		new WorldgenSticks          ("sticks"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ALFHEIM);
 		
-		new WorldgenGlowtus         ("plant.glowtus"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenBushes          ("plant.bush"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
-		new WorldgenHives           ("bumblehives"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ATUM, GEN_NETHER, GEN_END);
+		new WorldgenGlowtus         ("plant.glowtus"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
+		new WorldgenBushes          ("plant.bush"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenHives           ("bumblehives"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ATUM, GEN_NETHER, GEN_END);
 		
 		new WorldgenCenterBiomes    ("center.biomes"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		new WorldgenStreets         ("center.streets"   , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
@@ -497,6 +498,8 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.pentlandite"       , T,  20,  40,   4, MT.OREMATS.Pentlandite          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_NETHER, GEN_END);
 		new WorldgenOresSmall("ore.small.stibnite"          , T,  20,  40,   2, MT.OREMATS.Stibnite             , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_NETHER, GEN_END);
 		new WorldgenOresSmall("ore.small.asbestos"          , T,  20,  40,   8, MT.Asbestos                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.eudialyte"         , T,  20,  40,   4, MT.Eudialyte                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM);
+		new WorldgenOresSmall("ore.small.azurite"           , T,  20,  40,   4, MT.Azurite                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM);
 		new WorldgenOresSmall("ore.small.lapis"             , T,  20,  40,   4, MT.Lapis                        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER);
 		new WorldgenOresSmall("ore.small.redstone"          , T,   5,  20,   8, MT.Redstone                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_NETHER);
 		new WorldgenOresSmall("ore.small.graphite"          , T,   5,  10,   2, MT.Graphite                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_ASTEROIDS, GEN_NETHER);
@@ -570,7 +573,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresLarge("ore.large.lignite"           , T, T,  50, 130,    160,   8,  32, MT.Lignite                  , MT.Lignite                , MT.Lignite                        , MT.Coal                           , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM);
 		new WorldgenOresLarge("ore.large.coal"              , T, T,  50,  80,     80,   6,  32, MT.Coal                     , MT.Coal                   , MT.Coal                           , MT.Lignite                        , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM);
 		new WorldgenOresLarge("ore.large.apatite"           , T, T,  40,  60,     60,   3,  16, MT.Apatite                  , MT.Apatite                , MT.Phosphorus                     , MT.PO4                            , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS);
-		new WorldgenOresLarge("ore.large.lapis"             , T, T,  20,  50,     40,   5,  16, MT.Lazurite                 , MT.Sodalite               , MT.Lapis                          , MT.Pyrite                         , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS);
+		new WorldgenOresLarge("ore.large.lapis"             , T, T,  20,  50,     40,   5,  16, MT.Lazurite                 , MT.Sodalite               , MT.Lapis                          , MT.Azurite                        , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.bauxite"           , T, T,  50,  90,     80,   4,  24, MT.OREMATS.Bauxite          , MT.OREMATS.Bauxite        , MT.OREMATS.Bauxite                , MT.OREMATS.Ilmenite               , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.iodinesalt"        , T, T,  50,  60,     30,   3,  24, MT.KIO3                     , MT.NaCl                   , MT.OREMATS.Borax                  , MT.OREMATS.Zeolite                , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);
 		new WorldgenOresLarge("ore.large.rocksalt"          , T, T,  50,  60,     30,   3,  24, MT.KCl                      , MT.NaCl                   , MT.OREMATS.Lepidolite             , MT.OREMATS.Spodumene              , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS);

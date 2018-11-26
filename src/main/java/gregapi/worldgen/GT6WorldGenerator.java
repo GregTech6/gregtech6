@@ -147,6 +147,10 @@ public class GT6WorldGenerator {
 			generate(new WorldGenContainer(GEN_ENVM, ORE_ENVM, DIM_ENVM, aWorld, aX, aZ));
 			return;
 		}
+		if (WD.dimTROPIC(aWorld)) {
+			generate(new WorldGenContainer(GEN_TROPICS, ORE_TROPICS, DIM_TROPICS, aWorld, aX, aZ));
+			return;
+		}
 		
 		BiomeGenBase aBiome = aWorld.getBiomeGenForCoords(aX+7, aZ+7);
 		if (aBiome == null || BIOMES_VOID.contains(aBiome.biomeName)) return;

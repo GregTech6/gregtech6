@@ -461,6 +461,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("gemLazurite"                     , "dyeMixableCyan");
 		OreDictManager.INSTANCE.addReRegistration("gemLapis"                        , "dyeMixableBlue");
 		OreDictManager.INSTANCE.addReRegistration("gemSodalite"                     , "dyeMixableBlue");
+		OreDictManager.INSTANCE.addReRegistration("dustAzurite"                     , "dyeMixableBlue");
 		OreDictManager.INSTANCE.addReRegistration("dustLapis"                       , "dyeMixableBlue");
 		OreDictManager.INSTANCE.addReRegistration("dustSodalite"                    , "dyeMixableBlue");
 		OreDictManager.INSTANCE.addReRegistration("dustLazurite"                    , "dyeMixableCyan");
