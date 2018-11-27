@@ -183,7 +183,7 @@ public class GT6WorldGenerator {
 			generate(new WorldGenContainer(GEN_PLANETS, ORE_PLANETS, DIM_PLANETS, aWorld, aX, aZ));
 			return;
 		}
-		generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, GENERATE_STONE ? null : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD, aWorld, aX, aZ));
+		generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, GENERATE_STONE ? null : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_UNKNOWN, aWorld, aX, aZ));
 	}
 	
 	public static void generate(WorldGenContainer aWorldgen) {

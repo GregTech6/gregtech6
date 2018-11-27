@@ -56,14 +56,16 @@ public class WorldgenRocks extends WorldgenObject {
 		if (temp) return F;
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return F;
-		int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
-		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
-			Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
-			if (tContact.getMaterial().isLiquid()) break;
-			if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
-			if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) continue;
-			if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, aRandom.nextInt(12)==0?OP.rockGt.mat(MT.MeteoricIron, 1):ST.make(Items.flint, 1, 0)), F, T);
-			break;
+		for (int i = 0, tRockCount = (aDimType == DIM_OVERWORLD ? 1 : 2); i < tRockCount; i++) {
+			int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
+			for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
+				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
+				if (tContact.getMaterial().isLiquid()) break;
+				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
+				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) continue;
+				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, tRockCount == 1 || aRandom.nextInt(tRockCount) == 0 ? ST.save(UT.NBT.make(), NBT_VALUE, aRandom.nextInt(12)==0?OP.rockGt.mat(MT.MeteoricIron, 1):ST.make(Items.flint, 1, 0)) : null, F, T);
+				break;
+			}
 		}
 		return T;
 	}

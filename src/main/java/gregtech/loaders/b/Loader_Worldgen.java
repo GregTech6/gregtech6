@@ -386,8 +386,8 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOcean           ("ocean.seawater"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA); // IT IS IMPORTANT THAT OCEAN COMES BEFORE SWAMP!!!
 		new WorldgenSwamp           ("swamp.dirtywater" , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS); // IT IS IMPORTANT THAT SWAMP COMES AFTER OCEAN!!!
 		
-		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay        , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ALFHEIM, GEN_TROPICS);
-		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables , 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ALFHEIM, GEN_TROPICS);
+		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay       , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables, 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TROPICS, GEN_ALFHEIM);
 		
 		new WorldgenBlackSand       ("river.magnetite"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TROPICS);
 		
@@ -404,18 +404,18 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenTreeCinnamon    ("tree.cinnamon"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
 		new WorldgenTreeRainbowood  ("tree.rainbowood"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM, GEN_AETHER);
 		
-		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_ATUM, GEN_TROPICS);
+		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ATUM);
 		new WorldgenAlfheimRocks    ("alfheim.rocks"    , T, GEN_ALFHEIM);
 		new WorldgenAetherRocks     ("aether.rocks"     , T, GEN_AETHER);
 		new WorldgenErebusRocks     ("erebus.rocks"     , T, GEN_EREBUS);
 		new WorldgenMoonRocks       ("moon.rocks"       , T, GEN_MOON);
 		new WorldgenMarsRocks       ("mars.rocks"       , T, GEN_MARS);
 		new WorldgenPlanetRocks     ("planet.rocks"     , T, GEN_PLANETS);
-		new WorldgenSticks          ("sticks"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ALFHEIM);
+		new WorldgenSticks          ("sticks"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM);
 		
-		new WorldgenGlowtus         ("plant.glowtus"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
-		new WorldgenBushes          ("plant.bush"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenHives           ("bumblehives"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ATUM, GEN_NETHER, GEN_END);
+		new WorldgenGlowtus         ("plant.glowtus"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS);
+		new WorldgenBushes          ("plant.bush"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM);
+		new WorldgenHives           ("bumblehives"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ATUM, GEN_NETHER, GEN_END);
 		
 		new WorldgenCenterBiomes    ("center.biomes"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		new WorldgenStreets         ("center.streets"   , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
@@ -433,10 +433,11 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenFluidSpring ("nether.fluid.lava"                , T, Blocks.lava            ,  0,  1, 90, 25,   0,  16, null, F, FL.Lava.make(1), 10, GEN_NETHER);
 		
 		for (BlockBase tStone : BlocksGT.stones) {
-		new WorldgenStone   ("erebus.stone."    + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1,200,200,   0, 120, null, F, GEN_EREBUS);
-		new WorldgenStone   ("twilight.stone."  + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1,100,200,   0,  40, null, F, GEN_TWILIGHT);
-		new WorldgenStone   ("overworld.stone." + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1,200,100,   0, 120, null, F, GEN_OVERWORLD, GEN_PFAA);
-		new WorldgenStone   ("nether.stone."    + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1,200,200,   0, 120, null, F, GEN_NETHER);
+		new WorldgenStone("erebus.stone."   + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1, 200, 200, 0, 120, null, F, GEN_EREBUS);
+		new WorldgenStone("twilight.stone." + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1, 100, 200, 0,  40, null, F, GEN_TWILIGHT);
+		new WorldgenStone("overworld.stone."+ ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1, 200, 100, 0, 120, null, F, GEN_OVERWORLD, GEN_PFAA);
+		new WorldgenStone("nether.stone."   + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 200, 0, 120, null, F, GEN_NETHER);
+		new WorldgenStone("tropics.stone."  + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1, 200, 100, 0, 120, null, F, GEN_TROPICS);
 		}
 		
 		new WorldgenOresBedrock("ore.bedrock.tungstate"         , T, T,  96000, MT.OREMATS.Tungstate            , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower

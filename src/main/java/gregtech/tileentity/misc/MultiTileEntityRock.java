@@ -97,13 +97,14 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 			}
 			if (aChatReturn == null) return 1;
 			if (mRock == null) {
-				if (worldObj.provider.dimensionId == -1) {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rack"); return 1;}
-				if (worldObj.provider.dimensionId ==  0) {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rock"); return 1;}
-				if (worldObj.provider.dimensionId == +1) {aChatReturn.add(LH.Chat.GRAY + "This is definitely an End"); return 1;}
-				if (WD.dimAETHER(worldObj)) {aChatReturn.add(LH.Chat.GRAY + "Holy $#!T, it's a Rock!"); return 1;}
-				if (WD.dimALF(worldObj)) {aChatReturn.add(LH.Chat.GRAY + "Wait that Rock is alive?!"); return 1;}
-				if (BIOMES_MOON.contains(getBiome().biomeName)) {aChatReturn.add(LH.Chat.GRAY + "This is definitely not made of Cheese"); return 1;}
-				if (BIOMES_MARS.contains(getBiome().biomeName)) {aChatReturn.add(LH.Chat.GRAY + "This is definitely from Mars"); return 1;}
+				if (worldObj.provider.dimensionId == -1)         {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rack"); return 1;}
+				if (worldObj.provider.dimensionId ==  0)         {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rock"); return 1;}
+				if (worldObj.provider.dimensionId == +1)         {aChatReturn.add(LH.Chat.GRAY + "This is definitely an End"); return 1;}
+				if (WD.dimAETHER(worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Holy $#!T, it's a Rock!"); return 1;}
+				if (WD.dimALF   (worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Wait that Rock is alive?!"); return 1;}
+				if (WD.dimTROPIC(worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Seems to be a Chunk o'Head"); return 1;}
+				if (BIOMES_MOON.contains(getBiome().biomeName))  {aChatReturn.add(LH.Chat.GRAY + "This is definitely not made of Cheese"); return 1;}
+				if (BIOMES_MARS.contains(getBiome().biomeName))  {aChatReturn.add(LH.Chat.GRAY + "This is definitely from Mars"); return 1;}
 				if (BIOMES_SPACE.contains(getBiome().biomeName)) {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Space Rock"); return 1;}
 				aChatReturn.add(LH.Chat.GRAY + "This definitely is a Rock");
 				return 1;
@@ -163,6 +164,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 		if (WD.dimBTL(worldObj)) return OP.rockGt.mat(MT.Betweenstone, aAmount);
 		if (WD.dimATUM(worldObj)) return OP.rockGt.mat(MT.Limestone, aAmount);
 		if (WD.dimALF(worldObj)) return OP.rockGt.mat(MT.Livingrock, aAmount);
+		if (WD.dimTROPIC(worldObj)) return OP.rockGt.mat(MT.Basalt, aAmount);
 		if (BIOMES_MOON.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MoonRock, aAmount);
 		if (BIOMES_MARS.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MarsRock, aAmount);
 		if (BIOMES_SPACE.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.SpaceRock, aAmount);
