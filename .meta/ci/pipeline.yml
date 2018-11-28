@@ -1,0 +1,285 @@
+groups: []
+
+
+resources:
+
+- name: git-cache-only
+  type: git
+  source:
+    branch: master
+    uri: https://git.gregtech.overminddl1.com/GregTech-6/GT6.git
+    paths:
+    - "*.gradle"
+    - ".meta/*"
+    - "*_at.cfg"
+
+- name: git-compile-only
+  type: git
+  source:
+    branch: master
+    uri: https://git.gregtech.overminddl1.com/GregTech-6/GT6.git
+    paths:
+    - "*.gradle"
+    - "CHANGELOG.md"
+    - ".meta/*"
+    - "src/*"
+    - ".defaultconfigs"
+
+- name: git-versioned
+  type: git
+  source:
+    branch: master
+    uri: https://git.gregtech.overminddl1.com/GregTech-6/GT6.git
+    tag_filter: 'v[0-9]*'
+
+- name: .gradle
+  type: s3
+  source:
+    endpoint: ((cache.endpoint))
+    disable_ssl: true
+    #region_name: us-east-1
+    region_name: ((cache.region))
+    bucket: ((cache.bucket))
+    regexp: (.*).gradle.tgz
+    initial_path: v0.0.0.gradle.tgz
+    initial_content_binary: "H4sIAMJctlsAA+3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAIA3A5reHScAKAAA" # Empty tgz file
+    #versioned_file: .gradle.tgz
+    access_key_id: ((cache.access_key))
+    secret_access_key: ((cache.secret_key))
+
+- name: deploy-snapshot
+  type: gradle-uploadArchives
+  source:
+    url: ((maven.read_url))
+    put_url: ((maven.url))
+    group: com.gregoriust.gregtech
+    name: gregtech_1.7.10
+    version: SNAPSHOT
+    cmd: "git-compile-only/.meta/ci/deploy.sh"
+    env:
+      ARTIFACT_VERSION: SNAPSHOT
+      MAVEN_PASSWORD: ((maven.password))
+      MAVEN_URL: ((maven.url))
+      MAVEN_USERNAME: ((maven.username))
+
+- name: deploy-versioned
+  type: gradle-uploadArchives
+  source:
+    url: ((maven.read_url))
+    put_url: ((maven.url))
+    group: com.gregoriust.gregtech
+    name: gregtech_1.7.10
+    cmd: "git-versioned/.meta/ci/deploy.sh"
+    env:
+      VERSION_FALLBACK: SNAPSHOT
+      MAVEN_PASSWORD: ((maven.password))
+      MAVEN_URL: ((maven.url))
+      MAVEN_USERNAME: ((maven.username))
+
+- name: notify-build-status
+  type: http-api
+  source:
+    TOKEN: ((webhook.token))
+    VERSION: UNKNOWN
+    headers:
+      Authorization: Bearer {TOKEN}
+    json:
+      ATC_EXTERNAL_URL: '{ATC_EXTERNAL_URL}'
+      BUILD_ID: '{BUILD_ID}'
+      BUILD_JOB_NAME: '{BUILD_JOB_NAME}'
+      BUILD_NAME: '{BUILD_NAME}'
+      BUILD_PIPELINE_NAME: '{BUILD_PIPELINE_NAME}'
+      BUILD_STATUS: '{BUILD_STATUS}'
+      BUILD_TEAM_NAME: '{BUILD_TEAM_NAME}'
+      BUILD_TYPE: '{BUILD_TYPE}'
+      BUILD_URL: '{ATC_EXTERNAL_URL}/teams/{BUILD_TEAM_NAME}/pipelines/{BUILD_PIPELINE_NAME}/jobs/{BUILD_JOB_NAME}/builds/{BUILD_NAME}'
+      BUILD_VERSION: '{VERSION}'
+      TOKEN: '{TOKEN}'
+    method: POST
+    uri: ((webhook.url))
+    no_get: true
+
+- name: regen-static-maven
+  type: http-api
+  source:
+    headers:
+      Authorization: Basic ((maven.token))
+    method: PUT
+    uri: ((maven.url))/REGEN
+    no_get: true
+
+- name: post-forum-api
+  type: http-api
+  source:
+    method: POST
+    ENDPOINT: ((forum.endpoint))
+    AUTH: ((forum.auth))
+    uri: "{ENDPOINT}/{API}?{AUTH}"
+    no_get: true
+
+- name: gt6-screenshot
+  type: http-api
+  source:
+    uri: https://gregtech.overminddl1.com/gallery/LATEST.image.url
+
+
+resource_types:
+
+- name: http-api
+  type: docker-image
+  source:
+    repository: overminddl1/concourse-http-api-resource
+    tag: 1.0.16
+    #repository: aequitas/http-api-resource
+    #tag: latest
+
+- name: gradle-uploadArchives
+  type: docker-image
+  source:
+    repository: overminddl1/concourse-gradle-uploadarchives
+    tag: 1.0.20
+
+jobs:
+- name: update-gradle-cache
+  public: true
+  serial_groups: [deploy-snapshot, deploy-versioned]
+  plan:
+  - get: git-cache-only
+    trigger: true
+    version: latest
+  - task: cache
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: overminddl1/gradle
+          tag: 1.0.1
+      run:
+        path: sh
+        args:
+          - "-c"
+          - "git-cache-only/.meta/ci/prebuild.sh && cd .gradle && tar -cvzf ../.gradle-packed/$(cd ../git-cache-only; git describe).gradle.tgz *"
+      inputs:
+      - name: git-cache-only
+      outputs:
+      - name: .gradle-packed
+  - put: .gradle
+    params:
+      file: .gradle-packed/*.gradle.tgz
+
+- name: compile-snapshot
+  public: true
+  serial_groups: [gt6-maven, deploy-snapshot]
+  plan:
+  - get: git-compile-only
+    trigger: true
+    version: latest
+  - get: .gradle
+    params:
+      unpack: true
+  - put: deploy-snapshot
+    #params:
+    #  version-cmd: "echo -n 'SNAPSHOT-' && cd git-compile-only && git describe"
+
+- name: compile-versioned
+  public: true
+  serial_groups: [gt6-maven, deploy-versioned]
+  plan:
+  - get: git-versioned
+    trigger: true
+    version: every
+  - get: .gradle
+    params:
+      unpack: true
+  - put: deploy-versioned
+    #params:
+    #  version-cmd: "cd git-versioned && git describe"
+
+- name: broadcast-update-snapshot
+  public: true
+  plan:
+  - get: deploy-snapshot
+    trigger: true
+    passed: [compile-snapshot]
+  - put: notify-build-status
+    params:
+      VERSION:
+        load_filedata: deploy-snapshot/version
+        trim: true
+      BUILD_STATUS: success
+      BUILD_TYPE: SNAPSHOT
+
+- name: broadcast-update-versioned
+  public: true
+  plan:
+  - get: deploy-versioned
+    trigger: true
+    passed: [compile-versioned]
+  - put: notify-build-status
+    params:
+      VERSION:
+        load_filedata: deploy-versioned/version
+        trim: true
+      BUILD_STATUS: success
+      BUILD_TYPE: RELEASE
+
+- name: regen-static-site
+  public: true
+  plan:
+  - get: deploy-snapshot
+    trigger: true
+    passed: [compile-snapshot]
+  - get: deploy-versioned
+    trigger: true
+    passed: [compile-versioned]
+  - put: regen-static-maven
+
+- name: deploy-forum-post
+  public: true
+  plan:
+  - get: deploy-versioned
+    trigger: true
+    passed: [compile-versioned]
+  - get: git-versioned
+    passed: [compile-versioned]
+  - task: generate-post
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: overminddl1/gradle
+          tag: 1.0.1
+      run:
+        path: sh
+        args:
+          - "-c"
+          - "git-versioned/.meta/ci/forum_post.sh | tee post/data.txt"
+      inputs:
+      - name: git-versioned
+      outputs:
+      - name: post
+  - put: post-forum-api
+    params:
+      API: posts.json
+      DATA:
+        load_filedata: post/data.txt
+        trim: true
+      json:
+        raw: "{DATA}"
+        topic_id: 34
+
+- name: broadcast-gt6-screenshot-test
+  public: true
+  plan:
+  - get: gt6-screenshot
+    trigger: true
+  - put: notify-build-status
+    params:
+      VERSION:
+        load_filedata: gt6-screenshot/data
+        trim: true
+      BUILD_STATUS: success
+      BUILD_TYPE: SCREENSHOT
+
