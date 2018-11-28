@@ -552,16 +552,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								if (tPlayer == null) continue;
 								if ("Bear989Sr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									switch(tEmptySlots) {
-									case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You are full of shit, Bean!!!")); break;
-									case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Your Inventory is almost full, Bean!!")); break;
-									case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You should clean up your Inventory, Bean!")); break;
-									case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bean, your Inventory starts to get full.")); break;
+									case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You are full of shit, Bear!!!")); break;
+									case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Your Inventory is almost full, Bear!!")); break;
+									case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You should clean up your Inventory, Bear!")); break;
+									case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bear, your Inventory starts to get full.")); break;
 									}
 								} else if ("Bear989jr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, UT.NBT.addEnchantment(ST.make(Items.cookie, 1, 0, "Jr. Cookie"), Enchantment_WerewolfDamage.INSTANCE, 1), F);
 									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Have a Jr. Cookie. Please tell Fatass to clean his Inventory, or kill him with it."));
-								} else if ("andyafw92".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bean989Sr's Inventory is nasty again, would you please remind him to clean it?"));
 								} else if ("CrazyJ1984".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									ItemStack tArrow = ST.update(OP.arrowGtWood.mat(MT.Craponite, 1), aEvent.player);
 									if (ST.valid(tArrow)) {
@@ -574,11 +572,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, ST.update(OP.arrowGtWood.mat(MT.Tc, 1), aEvent.player), F);
 									UT.Entities.chat(tPlayer, new ChatComponentText(LH.Chat.BOLD + "You have received an Arrow"));
 								} else if ("Ilirith".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Could you tell Bean989Sr very gently, that his Inventory is a fucking mess again?"));
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Could you tell Bear989Sr very gently, that his Inventory is a fucking mess again?"));
 								} else if ("Shadowkn1ght18".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Here is your special Message to make you tell Bean989Sr to clean his Inventory."));
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Here is your special Message to make you tell Bear989Sr to clean his Inventory."));
 								} else {
-									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " There is this fella called Bean989Sr, his Inventory being a mess. Would you please remind him to clean it?"));
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " There is this fella called Bear-Nine-Eight-Nine, needing be reminded of his Inventory being a major Pine."));
 								}
 							}
 						}

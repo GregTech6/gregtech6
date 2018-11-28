@@ -21,6 +21,7 @@ package gregtech.compat;
 
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
+import static gregapi.util.CR.*;
 
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
@@ -29,23 +30,31 @@ import gregapi.compat.CompatMods;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.IOreDictListenerEvent;
 import gregapi.oredict.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.ST;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 
 public class Compat_Recipes_Tropicraft extends CompatMods {
 	public Compat_Recipes_Tropicraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Tropicraft Recipes.");
-		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank", "ore");
+		Item tChair = ST.item(MD.TROPIC, "chair"), tUmbrella = ST.item(MD.TROPIC, "umbrella"), tTorch = ST.item(MD.TROPIC, "tikiTorch");
+		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank", "ore", "tikiTorch", "chair", "umbrella", "blowGun", "portalEnchanter");
 		RM.biomass(ST.make(MD.TROPIC, "tile.flower", 16, W), 64);
 		
 		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1));
 		RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}, IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
 		RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}         , IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), dust.mat(MT.V2O5, 1));
+		
+		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Sn, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}, IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Sn, 1), dustTiny.mat(MT.Sn, 2));
+		RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}         , IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), dust.mat(MT.Sn, 1));
 		
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(Items.dye, 2, DYE_INDEX_LightBlue));
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], ST.make(Items.dye, 2, DYE_INDEX_Yellow   ));
@@ -66,6 +75,60 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		RM.ic2_extractor(ST.make(MD.TROPIC, "tile.flower", 1, 6), ST.make(Items.dye, 3, DYE_INDEX_Red      ));
 		RM.ic2_extractor(ST.make(MD.TROPIC, "tile.flower", 1,12), ST.make(Items.dye, 3, DYE_INDEX_Green    ));
 		}
+		
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Charcoal)                      , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.Charcoal)                     , 'S', OP.stick.dat(MT.Bamboo));
+		
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.Coal)                       , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Coal)                          , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.Coal)                         , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustImpure.dat(MT.Coal)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustPure.dat(MT.Coal)                     , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustRefined.dat(MT.Coal)                  , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.Coal)                      , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.Coal)              , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.Coal)           , 'S', OP.stick.dat(MT.Bamboo));
+		
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.CoalCoke)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.CoalCoke)                      , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.CoalCoke)                     , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustImpure.dat(MT.CoalCoke)               , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustPure.dat(MT.CoalCoke)                 , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustRefined.dat(MT.CoalCoke)              , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.CoalCoke)                  , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.CoalCoke)          , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 4, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.CoalCoke)       , 'S', OP.stick.dat(MT.Bamboo));
+		
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, " X ", " SX", "S  ", 'X', OP.rockGt.dat(MT.Lignite)                    , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.Lignite)                       , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.Lignite)                      , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustImpure.dat(MT.Lignite)                , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustPure.dat(MT.Lignite)                  , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustRefined.dat(MT.Lignite)               , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.Lignite)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.Lignite)           , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.Lignite)        , 'S', OP.stick.dat(MT.Bamboo));
+		
+		CR.shaped(ST.make(tTorch, 1, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.rockGt.dat(MT.LigniteCoke)                , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.gem.dat(MT.LigniteCoke)                   , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dust.dat(MT.LigniteCoke)                  , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustImpure.dat(MT.LigniteCoke)            , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustPure.dat(MT.LigniteCoke)              , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.dustRefined.dat(MT.LigniteCoke)           , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushed.dat(MT.LigniteCoke)               , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushedPurified.dat(MT.LigniteCoke)       , 'S', OP.stick.dat(MT.Bamboo));
+		CR.shaped(ST.make(tTorch, 2, 0), DEF_NAC, "  X", " S ", "S  ", 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke)    , 'S', OP.stick.dat(MT.Bamboo));
+		
+		for (int i = 0; i < 16; i++) {
+		CR.shaped(ST.make(tChair   , 1, 15-i), CR.DEF_NCC_MIR, "BWB", "BWB", "BWB", 'B', OP.stick.dat(MT.Bamboo), 'W', ST.make(Blocks.wool, 1, i));
+		CR.shaped(ST.make(tUmbrella, 1, 15-i), CR.DEF_NCC_MIR, "WWW", " B ", " B ", 'B', OP.stick.dat(MT.Bamboo), 'W', ST.make(Blocks.wool, 1, i));
+		}
+		
+		CR.shaped(ST.make(MD.TROPIC, "portalEnchanter", 1, 0), CR.DEF_NCC_MIR, "ABZ", "ZBA", " B ", 'B', OP.stick.dat(MT.Bamboo), 'A', OP.gem.dat(MT.Azurite), 'Z', OP.gem.dat(MT.Zr));
+		CR.shaped(ST.make(MD.TROPIC, "blowGun"        , 1, 0), CR.DEF_NCC_MIR, "B  ", " C ", "  B", 'B', OP.stick.dat(MT.Bamboo), 'C', ST.make(MD.TROPIC, "curare", 1, 0));
+		
+		CR.shaped(ST.make(MD.TROPIC, "coconutChunk"   , 3, 0), CR.DEF_NAC_NCC, "v", "C", 'C', "cropCoconut");
+		CR.shaped(ST.make(MD.TROPIC, "pineappleCubes" , 3, 0), CR.DEF_NAC_NCC, "v", "A", 'A', "cropAnanas");
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("cropCoconut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

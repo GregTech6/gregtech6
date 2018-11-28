@@ -36,6 +36,7 @@ I originally even want to call that "[COMPAT]", because "Fixing that they are to
 But I mostly got through adding Material Data and Stuff to it, and ended up adding a few Minerals because ofthat as well.
 [CHANGED] Zirconium Ore now exists as Zircon, meaning I nerfed that Stuff. :P
 [IMPROVED] Removal of Crafting Recipes by Output has now less of a performance Impact. So faster Loading Times probably.
+[ADDED] Tropicraft Miniature Portal. Made of Bamboo, Tropics Water and ofcourse is activated by a Tropicraft Cocktail.
 
 
 6.09.10:

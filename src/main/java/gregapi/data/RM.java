@@ -195,12 +195,12 @@ public class RM {
 		for (String tFluid : FluidsGT.WATER) if (UT.Fluids.exists(tFluid))
 		RM.Fermenter.addRecipe1(T, 16, aSpeed * 4, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(1000), ZL_IS);
 		for (String tFluid : FluidsGT.MILK) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(1250), ZL_IS);
+		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(2000), ZL_IS);
 		for (String tFluid : FluidsGT.JUICE) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(1500), ZL_IS);
+		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(3000), ZL_IS);
 		for (String tFluid : FluidsGT.HONEY) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(1500), ZL_IS);
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 2, aBiomass, FL.Honeydew.make(1000), FL.BiomassIC2.make(1500), ZL_IS);
+		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(3000), ZL_IS);
+		RM.Fermenter.addRecipe1(T, 16, aSpeed * 2, aBiomass, FL.Honeydew.make(1000), FL.BiomassIC2.make(3000), ZL_IS);
 		return T;
 	}
 	

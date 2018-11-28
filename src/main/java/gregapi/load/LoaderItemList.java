@@ -432,7 +432,10 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Vial_FieryBlood.item() != null) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.item() != null) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
 		
+		IL.TROPIC_Sand_Coral                    .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 0));
+		IL.TROPIC_Sand_Foamy                    .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 1));
 		IL.TROPIC_Sand_Black                    .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 2), new OreDictItemData(MT.OREMATS.Magnetite, U));
+		IL.TROPIC_Sand_Mineral                  .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 3), new OreDictItemData(MT.OREMATS.Cassiterite, U));
 		IL.TROPIC_Log_Palm                      .set(ST.make(MD.TROPIC, "tile.log"                          , 1, 0), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
 		IL.TROPIC_Log_Mahogany                  .set(ST.make(MD.TROPIC, "tile.log"                          , 1, 1), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
 		IL.TROPIC_Bamboo                        .set(ST.make(MD.TROPIC, "bambooChute"                       , 1, 0), new OreDictItemData(MT.Bamboo, U), OD.bamboo);
