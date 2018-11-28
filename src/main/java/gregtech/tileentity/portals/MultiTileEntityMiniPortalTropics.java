@@ -129,9 +129,10 @@ public class MultiTileEntityMiniPortalTropics extends MultiTileEntityMiniPortal 
 	@Override public float getBlockHardness() {return Blocks.grass.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
 	@Override public float getExplosionResistance() {return Blocks.grass.getExplosionResistance(null);}
 	
-	public ITexture sTropicsPortal = BlockTextureCopied.get(ST.block(MD.TROPIC, "tile.portal", Blocks.portal), SIDE_ANY, 0, UNCOLOURED, F, T, T), sTropicsPortalFrame = BlockTextureCopied.get(ST.block(MD.TROPIC, "tile.bambooBundle", Blocks.planks), SIDE_FRONT, 0, UNCOLOURED, F, F, F);
+	public ITexture sTropicsPortal = BlockTextureCopied.get(ST.block(MD.TROPIC, "tile.portal", Blocks.portal), SIDE_ANY, 0, UNCOLOURED, F, T, T), sTropicsPortalFrame = BlockTextureCopied.get(ST.block(MD.TROPIC, "tile.bambooBundle", Blocks.planks), SIDE_FRONT, 0, UNCOLOURED, F, F, F), sTropicsPortalInactive = BlockTextureCopied.get(ST.block(MD.TROPIC, "tile.tropicsWater", Blocks.water), SIDE_ANY, 0, UNCOLOURED, F, T, T);
 	@Override public ITexture getPortalTexture() {return sTropicsPortal;}
 	@Override public ITexture getFrameTexture() {return sTropicsPortalFrame;}
+	@Override public ITexture getInactiveTexture() {return sTropicsPortalInactive;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.portal.tropics";}
 }
