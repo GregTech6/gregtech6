@@ -30,10 +30,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.11: (Not released yet)
-[FIXED]
-A few Parts of the Trainwreck that is Tropicraft.
-It is the shittiest Mod I have ever seen so far, and that says something...
-I don't even want to call that "[COMPAT]", because "Fixing that they are too stupid to even make more than half of their own Crafting Recipes output the Item they are supposed to" is not what Compatibility is about...
+[COMPAT]
+Fixed a few Parts of the Trainwreck that is Tropicraft. It is the shittiest Mod I have ever seen so far, and that says something...
+I originally even want to call that "[COMPAT]", because "Fixing that they are too stupid to even make more than half of their own Crafting Recipes output the Item they are supposed to" is not what Compatibility is about...
+But I mostly got through adding Material Data and Stuff to it, and ended up adding a few Minerals because ofthat as well.
 [CHANGED] Zirconium Ore now exists as Zircon, meaning I nerfed that Stuff. :P
 [IMPROVED] Removal of Crafting Recipes by Output has now less of a performance Impact. So faster Loading Times probably.
 
