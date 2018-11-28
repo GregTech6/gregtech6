@@ -49,7 +49,7 @@ import net.minecraftforge.fluids.IFluidTank;
  * @author Gregorius Techneticies
  */
 public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBlockBase implements IMultiBlockFluidHandler, IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible {
-	public FluidTankGT[] mTanks = new FluidTankGT[] {new FluidTankGT(432000)};
+	public FluidTankGT mTank = new FluidTankGT(432000);
 	public short mTankWalls = 18002;
 	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F;
 	
@@ -60,14 +60,14 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 		if (aNBT.hasKey(NBT_GASPROOF)) mGasProof = aNBT.getBoolean(NBT_GASPROOF);
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
 		if (aNBT.hasKey(NBT_PLASMAPROOF)) mPlasmaProof = aNBT.getBoolean(NBT_PLASMAPROOF);
-		mTanks[0].setCapacity(aNBT.getInteger(NBT_TANK_CAPACITY));
-		mTanks[0].readFromNBT(aNBT, NBT_TANK);
+		mTank.setCapacity(aNBT.getInteger(NBT_TANK_CAPACITY));
+		mTank.readFromNBT(aNBT, NBT_TANK);
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
-		mTanks[0].writeToNBT(aNBT, NBT_TANK);
+		mTank.writeToNBT(aNBT, NBT_TANK);
 	}
 	
 	static {
@@ -78,7 +78,7 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + "Max: " + mTanks[0].getCapacity() + " L");
+		aList.add(Chat.CYAN     + "Max: " + mTank.getCapacity() + " L");
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.1"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.2"));
@@ -122,13 +122,13 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTanks, 1000);
+		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTank, 1000);
 		return 0;
 	}
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		FluidStack tFluid = mTanks[0].getFluid();
+		FluidStack tFluid = mTank.getFluid();
 		if (tFluid == null) {
 			aChatReturn.add("Tank is empty");
 		} else {
@@ -140,12 +140,12 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide && checkStructure(F)) {
-			FluidStack tFluid = mTanks[0].getFluid();
+			FluidStack tFluid = mTank.getFluid();
 			if (tFluid != null && tFluid.amount > 0) {
 				if (UT.Fluids.temperature(tFluid) >= mMaterial.mMeltingPoint && meltdown()) return;
 				if (!mAcidProof && UT.Fluids.acid(tFluid)) {
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
-					GarbageGT.trash(mTanks);
+					GarbageGT.trash(mTank);
 					int tX = getOffsetXN(mFacing), tY = getOffsetYN(mFacing), tZ = getOffsetZN(mFacing);
 					for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
 						if (rng(3) == 0) worldObj.setBlockToAir(tX+i, tY+j, tZ+k);
@@ -154,19 +154,19 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 					return;
 				}
 				if (!mPlasmaProof && UT.Fluids.plasma(tFluid)) {
-					GarbageGT.trash(mTanks);
+					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
 				if (!mGasProof && UT.Fluids.gas(tFluid)) {
-					GarbageGT.trash(mTanks);
+					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
 				if (!allowFluid(tFluid)) {
-					GarbageGT.trash(mTanks);
+					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
 				if (SIDES_HORIZONTAL[mFacing] || UT.Fluids.gas(tFluid) || (tFluid.getFluid().getDensity(tFluid)<0?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
-					if (UT.Fluids.move(mTanks[0], getAdjacentTileEntity(mFacing)) > 0) updateInventory();
+					if (UT.Fluids.move(mTank, getAdjacentTileEntity(mFacing)) > 0) updateInventory();
 				}
 			}
 		}
@@ -182,12 +182,12 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 			WD.burn(worldObj, tX+i, tY+j, tZ+k, F, F);
 			if (rng(4) == 0) worldObj.setBlock(tX+i, tY+j, tZ+k, Blocks.fire, 0, 3);
 		}
-		if (UT.Fluids.lava(mTanks[0].getFluid()) && mTanks[0].getFluidAmount() >= 1000) {
-			mTanks[0].remove(1000);
-			GarbageGT.trash(mTanks);
+		if (UT.Fluids.lava(mTank.getFluid()) && mTank.getFluidAmount() >= 1000) {
+			mTank.remove(1000);
+			GarbageGT.trash(mTank);
 			worldObj.setBlock(tX, tY, tZ, Blocks.flowing_lava, 0, 3);
 		} else {
-			GarbageGT.trash(mTanks);
+			GarbageGT.trash(mTank);
 			setToFire();
 		}
 		return T;
@@ -195,24 +195,24 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 	
 	@Override
 	public boolean breakBlock() {
-		GarbageGT.trash(mTanks);
+		GarbageGT.trash(mTank);
 		return super.breakBlock();
 	}
 	
 	@Override
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
-		return mTanks[0].fill(aFluid, aDoFill);
+		return mTank.fill(aFluid, aDoFill);
 	}
 	
 	@Override
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
-		return mTanks[0].drain(aMaxDrain, aDoDrain);
+		return mTank.drain(aMaxDrain, aDoDrain);
 	}
 	
-	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return mTanks[0];}
-	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTanks[0];}
-	@Override protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return mTanks;}
+	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return mTank;}
+	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTank;}
+	@Override protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return mTank.AS_ARRAY;}
 	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return null;}
-	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return mTanks[0];}
-	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
+	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return mTank;}
+	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTank.AS_ARRAY;}
 }

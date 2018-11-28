@@ -32,6 +32,7 @@ public class FluidTankGT implements IFluidTank {
 	private FluidStack mFluid;
 	private long mCapacity;
 	private boolean mPreventDraining = F, mVoidExcess = F;
+	public final FluidTankGT[] AS_ARRAY = new FluidTankGT[] {this};
 	
 	public FluidTankGT(FluidStack aFluid) {mFluid = aFluid; if (aFluid != null) mCapacity = aFluid.amount;}
 	public FluidTankGT(FluidStack aFluid, long aCapacity) {mFluid = aFluid; mCapacity = UT.Code.bindInt(aCapacity);}

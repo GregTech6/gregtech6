@@ -284,7 +284,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	
 	@Override
 	protected IFluidTank[] getFluidTanks2(byte aSide) {
-		return new IFluidTank[] {mTank};
+		return mTank.AS_ARRAY;
 	}
 	
 	@Override

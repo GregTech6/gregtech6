@@ -129,14 +129,14 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 					// Check for Air, because Fire needs Oxygen.
 					if (!WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing))) {
 						// Find and apply fitting Recipe.
-						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, new IFluidTank[] {mTank}, ZL_IS);
-						if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, new IFluidTank[] {mTank}, ZL_IS)) {
+						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, mTank.AS_ARRAY, ZL_IS);
+						if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, mTank.AS_ARRAY, ZL_IS)) {
 							mBurning = T;
-							mCooldown = 25;
+							mCooldown = 100;
 							mLastRecipe = tRecipe;
 							mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
 							// Burn as much as needed to keep up the Power per Tick.
-							while (mEnergy < mRate * 2 && tRecipe.isRecipeInputEqual(T, F, new IFluidTank[] {mTank}, ZL_IS)) {
+							while (mEnergy < mRate * 2 && tRecipe.isRecipeInputEqual(T, F, mTank.AS_ARRAY, ZL_IS)) {
 								mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
 								if (mTank.isEmpty()) break;
 							}
@@ -167,8 +167,8 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_igniter       ) && (aSide == mFacing || aPlayer == null)) {mBurning = T; mCooldown = 25; return 10000;}
-		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {mBurning = F; mCooldown =  0; return 10000;}
+		if (aTool.equals(TOOL_igniter       ) && (aSide == mFacing || aPlayer == null)) {mBurning = T; mCooldown = 100; return 10000;}
+		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {mBurning = F; mCooldown =   0; return 10000;}
 		
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
@@ -216,7 +216,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	
 	@Override
 	protected IFluidTank[] getFluidTanks2(byte aSide) {
-		return new IFluidTank[] {mTank};
+		return mTank.AS_ARRAY;
 	}
 	
 	@Override

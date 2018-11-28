@@ -44,7 +44,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
 public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implements IFluidHandler {
-	public FluidTankGT[] mTanks = new FluidTankGT[] {new FluidTankGT(Integer.MAX_VALUE)};
+	public FluidTankGT mTank = new FluidTankGT(Integer.MAX_VALUE);
 	public long mSteamCounter = 0, mEnergyProducedNextTick = 0;
 	public static final int STEAM_PER_WATER = 200;
 	
@@ -53,8 +53,8 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_ENERGY_SU)) mSteamCounter = aNBT.getLong(NBT_ENERGY_SU);
 		if (aNBT.hasKey(NBT_OUTPUT_SU)) mEnergyProducedNextTick = aNBT.getLong(NBT_OUTPUT_SU);
-		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
-		mTanks[0].setCapacity((int)UT.Code.bind_(1, Integer.MAX_VALUE, mConverter.mEnergyIN.mMax*4));
+		mTank.readFromNBT(aNBT, NBT_TANK+"."+0);
+		mTank.setCapacity((int)UT.Code.bind_(1, Integer.MAX_VALUE, mConverter.mEnergyIN.mMax*4));
 	}
 	
 	@Override
@@ -62,7 +62,7 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 		super.writeToNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY_SU, mSteamCounter);
 		UT.NBT.setNumber(aNBT, NBT_OUTPUT_SU, mEnergyProducedNextTick);
-		for (int i = 0; i < mTanks.length; i++) mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
+		mTank.writeToNBT(aNBT, NBT_TANK+"."+0);
 	}
 	
 	@Override
@@ -76,12 +76,12 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 		if (mEnergyProducedNextTick > 0) {
 			mStorage.mEnergy += mEnergyProducedNextTick;
 			mEnergyProducedNextTick = 0;
-		} else if (mTanks[0].getFluidAmount() >= UT.Code.bindInt(getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY)) * 2) {
-			int tSteam = mTanks[0].getFluidAmount();
+		} else if (mTank.getFluidAmount() >= UT.Code.bindInt(getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY)) * 2) {
+			int tSteam = mTank.getFluidAmount();
 			mSteamCounter += tSteam;
 			mStorage.mEnergy += tSteam / 2;
 			mEnergyProducedNextTick += tSteam / 2;
-			mTanks[0].setEmpty();
+			mTank.setEmpty();
 			if (mSteamCounter >= STEAM_PER_WATER) {
 				FluidStack tDrainableSteam = FL.DistW.make(mSteamCounter / STEAM_PER_WATER);
 				for (byte tDir : FACING_SIDES[mFacing]) {
@@ -100,9 +100,9 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return T;}
 	@Override public boolean allowCovers            (byte aSide) {return T;}
 	
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return isInput(aSide) && !mStopped && UT.Fluids.steam(aFluidToFill) ? mTanks[0] : null;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return isInput(aSide) && !mStopped && UT.Fluids.steam(aFluidToFill) ? mTank : null;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return null;}
-	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return isOutput(aSide) ? null : mTanks;}
+	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return isOutput(aSide) ? null : mTank.AS_ARRAY;}
 	
 	@Override public void onWalkOver2(EntityLivingBase aEntity) {if (SIDES_TOP[mFacing] && mActivity.mState>0) {aEntity.rotationYaw=aEntity.rotationYaw+(mCounterClockwise?-5:+5)*(mConverter.mFast?2:1); aEntity.rotationYawHead=aEntity.rotationYawHead+(mCounterClockwise?-5:+5)*(mConverter.mFast?2:1);}}
 	

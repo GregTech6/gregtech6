@@ -62,7 +62,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	protected short mEfficiency = 10000;
 	protected long mEnergy = 0, mCapacity = 640000, mOutput = 64;
 	protected TagData mEnergyTypeEmitted = TD.Energy.KU;
-	protected FluidTankGT[] mTanks = new FluidTankGT[] {new FluidTankGT(640)};
+	protected FluidTankGT mTank = new FluidTankGT(640);
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -77,10 +77,8 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		if (aNBT.hasKey(NBT_OUTPUT)) mOutput = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
-		for (int i = 0; i < mTanks.length; i++) {
-			mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
-			mTanks[i].setCapacity((int)UT.Code.bind_(STEAM_PER_WATER, Integer.MAX_VALUE, STEAM_PER_WATER * mOutput));
-		}
+		mTank.readFromNBT(aNBT, NBT_TANK+"."+0);
+		mTank.setCapacity((int)UT.Code.bind_(STEAM_PER_WATER, Integer.MAX_VALUE, STEAM_PER_WATER * mOutput));
 	}
 	
 	@Override
@@ -93,7 +91,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mStopped);
 		UT.NBT.setBoolean(aNBT, NBT_ACTIVE_ENERGY, mEmitsEnergy);
 		aNBT.setShort(NBT_EFFICIENCY, mEfficiency);
-		for (int i = 0; i < mTanks.length; i++) mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
+		mTank.writeToNBT(aNBT, NBT_TANK+"."+0);
 	}
 	
 	@Override
@@ -101,9 +99,9 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " " + STEAM_PER_WATER + " L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_TO_Y) + " " + (STEAM_PER_WATER / STEAM_PER_EU) + " " + mEnergyTypeEmitted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + UT.Code.units(mOutput*STEAM_PER_EU, mEfficiency*2, 10000, F) + " - " + UT.Code.units(mOutput*2*STEAM_PER_EU, mEfficiency, 10000, F)   + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE + "/t ("+LH.get(LH.FACE_BACK)+")");
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mTanks[0].getCapacity()                                               + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE);
-		aList.add(Chat.RED      + LH.get(LH.ENERGY_OUTPUT)          + ": " + Chat.WHITE + (mOutput/2) + " - " + (mOutput*2)                                     + " " + mEnergyTypeEmitted.getChatFormat()  + mEnergyTypeEmitted.getLocalisedNameShort()    + Chat.WHITE + "/t ("+LH.get(LH.FACE_FRONT)+")");
-		aList.add(Chat.RED      + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                                             + " " + mEnergyTypeEmitted.getChatFormat()  + mEnergyTypeEmitted.getLocalisedNameShort()    + Chat.WHITE);
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mTank.getCapacity()                                            + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE);
+		aList.add(Chat.RED      + LH.get(LH.ENERGY_OUTPUT)          + ": " + Chat.WHITE + (mOutput/2) + " - " + (mOutput*2)                              + " " + mEnergyTypeEmitted.getChatFormat()  + mEnergyTypeEmitted.getLocalisedNameShort()    + Chat.WHITE + "/t ("+LH.get(LH.FACE_FRONT)+")");
+		aList.add(Chat.RED      + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                                      + " " + mEnergyTypeEmitted.getChatFormat()  + mEnergyTypeEmitted.getLocalisedNameShort()    + Chat.WHITE);
 		aList.add(Chat.ORANGE   + LH.get(LH.EMITS_USED_STEAM) + " ("+LH.get(LH.FACE_SIDES)+", 80%)");
 		aList.add(LH.getToolTipRedstoneFluxEmit(mEnergyTypeEmitted));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
@@ -121,11 +119,11 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		if (aIsServerSide) {
 			// Convert Steam to Energy
 			if (!mStopped) {
-				long tConversions = mTanks[0].getFluidAmount() / STEAM_PER_WATER;
+				long tConversions = mTank.getFluidAmount() / STEAM_PER_WATER;
 				if (tConversions > 0) {
 					mEnergy += UT.Code.units(tConversions * STEAM_PER_WATER / STEAM_PER_EU, 10000, mEfficiency, F);
-					mTanks[0].getFluid().amount -= tConversions * STEAM_PER_WATER;
-					if (mTanks[0].getFluidAmount() <= 0) mTanks[0].setEmpty();
+					mTank.getFluid().amount -= tConversions * STEAM_PER_WATER;
+					if (mTank.getFluidAmount() <= 0) mTank.setEmpty();
 					FluidStack tDistilledWater = FL.DistW.make(tConversions);
 					for (byte tDir : FACING_SIDES[mFacing]) {
 						if (tDistilledWater.amount <= 0) break;
@@ -155,7 +153,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 			if (mEnergy >= mCapacity) {
 				mEnergy = mCapacity - 1;
 				mStopped = T;
-				mTanks[0].setEmpty();
+				mTank.setEmpty();
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 			}
 			
@@ -235,9 +233,9 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return aSide == OPPOSITES[mFacing] && FL.Steam.is(aFluidToFill) ? mTanks[0] : null;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return aSide == OPPOSITES[mFacing] && FL.Steam.is(aFluidToFill) ? mTank : null;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return null;}
-	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
+	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTank.AS_ARRAY;}
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {

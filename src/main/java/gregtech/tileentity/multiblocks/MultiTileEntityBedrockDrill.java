@@ -64,7 +64,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	public long mEnergy = 0;
 	public int mType = 0;
 	public TagData mEnergyTypeAccepted = TD.Energy.RU;
-	public FluidTankGT[] mTanks = new FluidTankGT[] {new FluidTankGT(16000)};
+	public FluidTankGT mTank = new FluidTankGT(16000);
 	public final List<OreDictMaterial> mList = new ArrayListNoNulls<>();
 	
 	@Override
@@ -73,7 +73,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 		mEnergy = aNBT.getLong(NBT_ENERGY);
 		mType = aNBT.getInteger(NBT_VALUE);
 		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
-		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
+		mTank.readFromNBT(aNBT, NBT_TANK+"."+0);
 	}
 	
 	@Override
@@ -81,7 +81,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 		super.writeToNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		UT.NBT.setNumber(aNBT, NBT_VALUE, mType);
-		for (int i = 0; i < mTanks.length; i++) mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
+		mTank.writeToNBT(aNBT, NBT_TANK+"."+0);
 	}
 	
 	@Override
@@ -145,7 +145,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 				DelegatorTileEntity<IInventory> tDelegator = getAdjacentInventory(SIDE_TOP);
 				UT.Inventories.moveOneItemStack(this, tDelegator, SIDE_TOP, tDelegator.mSideOfTileEntity);
 			}
-			if (mEnergy >= 32768 && !slotHas(0) && checkStructure(F) && mTanks[0].drainAll(100)) {
+			if (mEnergy >= 32768 && !slotHas(0) && checkStructure(F) && mTank.drainAll(100)) {
 				mEnergy -= 32768;
 				if (rng(1000) == 0) mType = rng(BlocksGT.stones.length+1);
 				int tSelector = rng(128);
@@ -187,7 +187,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		aChatReturn.add("Lubricant: " + mTanks[0].getFluidAmount() + "L");
+		aChatReturn.add("Lubricant: " + mTank.getFluidAmount() + "L");
 	}
 	
 	@Override public byte getDefaultSide() {return SIDE_UP;}
@@ -215,12 +215,12 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
-	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return FluidsGT.LUBRICANT.contains(aFluidToFill.getFluid().getName()) ? mTanks[0] : null;}
-	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTanks[0];}
-	@Override protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return mTanks;}
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return FluidsGT.LUBRICANT.contains(aFluidToFill.getFluid().getName()) ? mTanks[0] : null;}
-	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return mTanks[0];}
-	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
+	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return FluidsGT.LUBRICANT.contains(aFluidToFill.getFluid().getName()) ? mTank : null;}
+	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTank;}
+	@Override protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return mTank.AS_ARRAY;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return FluidsGT.LUBRICANT.contains(aFluidToFill.getFluid().getName()) ? mTank : null;}
+	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return mTank;}
+	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTank.AS_ARRAY;}
 	
 	// Inventory Stuff
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
