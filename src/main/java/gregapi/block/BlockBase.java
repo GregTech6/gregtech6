@@ -39,6 +39,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -78,7 +79,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return isSideSolid(aWorld.getBlockMetadata(aX, aY, aZ), UT.Code.side(aDirection));}
 	@Override public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return isOpaqueCube() ? !WD.visOpq(aWorld.getBlock(aX, aY, aZ)) : super.shouldSideBeRendered(aWorld, aX, aY, aZ, aSide);}
 	@Override public int damageDropped(int aMeta) {return aMeta;}
-	@Override public int quantityDropped(Random par1Random) {return 1;}
+	@Override public int quantityDropped(int aMeta, int aFortune, Random aRandom) {return 1;}
 	@Override public ItemStack createStackedBlock(int aMeta) {return ST.make(this, 1, damageDropped(aMeta));}
 	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ);}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_MAX;}
@@ -134,4 +135,26 @@ public abstract class BlockBase extends Block implements IBlockBase {
 		}
 		return F;
 	}
+	
+	@Override
+	public boolean onItemUse(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aStack.stackSize == 0) return F;
+		
+		Block tBlock = aWorld.getBlock(aX, aY, aZ);
+		if (tBlock == Blocks.snow_layer && (aWorld.getBlockMetadata(aX, aY, aZ) & 7) < 1) {
+			aSide = SIDE_UP;
+		} else if (tBlock != Blocks.vine && tBlock != Blocks.tallgrass && tBlock != Blocks.deadbush && !tBlock.isReplaceable(aWorld, aX, aY, aZ)) {
+			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
+		}
+		
+		if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || (aY == 255 && getMaterial().isSolid()) || !aWorld.canPlaceEntityOnSide(this, aX, aY, aZ, F, aSide, aPlayer, aStack)) return F;
+		
+		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, onBlockPlaced(aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, aItem.getMetadata(aStack.getItemDamage())))) {
+			aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
+			aStack.stackSize--;
+		}
+		return T;
+	}
+	
+	@Override public final int quantityDropped(Random aRandom) {return quantityDropped(0, 0, aRandom);}
 }

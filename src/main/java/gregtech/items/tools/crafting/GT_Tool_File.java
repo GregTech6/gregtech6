@@ -21,6 +21,7 @@ package gregtech.items.tools.crafting;
 
 import static gregapi.data.CS.*;
 
+import gregapi.block.misc.BlockBaseBars;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -28,6 +29,8 @@ import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockPane;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -77,7 +80,7 @@ public class GT_Tool_File extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_file)) || aBlock == Blocks.iron_bars;
+		return (tTool != null && tTool.equalsIgnoreCase(TOOL_file)) || aBlock instanceof BlockBaseBars || (aBlock instanceof BlockPane && aBlock.getMaterial() == Material.iron);
 	}
 	
 	@Override
