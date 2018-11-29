@@ -58,7 +58,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 		super(null, aNameInternal, aVanillaMaterial, aSoundType);
 		mMat = aMat;
 		
-		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC_MIR, "BBB", aVanillaMaterial == Material.wood ? "r v" : "h w", "BBB ", 'B', OP.stick.dat(mMat));
+		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC_MIR, "BBB", aVanillaMaterial == Material.wood ? "r v" : "h w", "BBB", 'B', OP.stick.dat(mMat));
 		
 		if (CODE_CLIENT) {
 			mRenderers[ 0] = new BarRendererItem(aMat);
