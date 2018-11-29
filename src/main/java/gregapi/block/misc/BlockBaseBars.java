@@ -35,6 +35,7 @@ import gregapi.render.ITexture;
 import gregapi.render.RendererBlockTextured;
 import gregapi.util.CR;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -82,31 +83,28 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	
 	@Override
 	public boolean onItemUseFirst(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aStack.stackSize == 0) return F;
+		if (aStack.stackSize == 0 || aWorld.isRemote) return F;
 		if (!aPlayer.isSneaking()) for (int i = 0; i < 2; i++) {
 			if (i == 1) {aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];}
-			if (aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) {
-				Block aBlock = WD.block(aWorld, aX, aY, aZ);
-				byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
-				if (aBlock == this) {
-					byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
-					if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
-					if ((aMeta & tMeta) == 0) {
-						if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
-							aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
-							aStack.stackSize--;
-						}
-						return !aWorld.isRemote;
+			if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+			Block aBlock = WD.block(aWorld, aX, aY, aZ);
+			byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
+			if (aBlock == this) {
+				byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
+				if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
+				if ((aMeta & tMeta) != 0) tMeta = (byte)(SBIT[aSide] >> 2);
+				if ((aMeta & tMeta) == 0 && tMeta != 0) {
+					if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
+						aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
+						if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
 					}
+					return T;
 				}
+				if (aMeta != 15) return F;
 			}
 		}
-		return F;
-	}
-	
-	@Override
-	public boolean onItemUse(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aStack.stackSize == 0) return F;
+		
+		aX -= OFFSETS_X[aSide]; aY -= OFFSETS_Y[aSide]; aZ -= OFFSETS_Z[aSide];
 		
 		Block aBlock = WD.block(aWorld, aX, aY, aZ);
 		
@@ -116,17 +114,17 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
 		}
 		
-		if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
-		
 		// if used in conjunction with << 2 , these Meta Values return the Side Bits perfectly.
 		// Z- = 1, Z+ = 2, X- = 4, X+ = 8
-		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, SIDES_HORIZONTAL[aSide] ? SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8 : (aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8))) {
+		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, (SIDES_HORIZONTAL[aSide] ? SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8 : aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8))) {
 			aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
-			aStack.stackSize--;
+			if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
+			return T;
 		}
-		return T;
+		return F;
 	}
 	
+	@Override public boolean onItemUse(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public String getHarvestTool(int aMeta) {return getMaterial() == Material.wood ? TOOL_axe : TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return mMat.mToolQuality;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
