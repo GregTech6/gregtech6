@@ -50,7 +50,7 @@ public class BlockBarsTungstenSteel extends BlockBaseBars {
 		LH.add(getUnlocalizedName()+ ".15.name", "Tungstensteel Bars");
 	}
 	
-	@Override public float getExplosionResistance(int aMeta) {return 20;}
+	@Override public float getExplosionResistance(int aMeta) {return 16;}
 	
 	@Override
 	public boolean canEntityDestroy(IBlockAccess aWorld, int aX, int aY, int aZ, Entity aEntity) {

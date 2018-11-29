@@ -90,9 +90,9 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 			Block aBlock = WD.block(aWorld, aX, aY, aZ);
 			byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
 			if (aBlock == this) {
-				byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
+				byte tMeta = (byte)(FACE_CONNECTION_COUNT[aMeta] == 3 ? 15-aMeta : aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
 				if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
-				if ((aMeta & tMeta) != 0) tMeta = (byte)(SBIT[aSide] >> 2);
+				if ((aMeta & tMeta) != 0 && SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SBIT[aSide] >> 2);
 				if ((aMeta & tMeta) == 0 && tMeta != 0) {
 					if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
 						aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);

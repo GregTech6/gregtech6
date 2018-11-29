@@ -51,7 +51,7 @@ import net.minecraft.item.ItemStack;
 public class Compat_Recipes_Thaumcraft extends CompatMods {
 	public Compat_Recipes_Thaumcraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
-	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing TC Recipes.");
+	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing TC Recipes and Research.");
 		RM.food_can(IL.TC_Nugget_Chicken    .wild(9), 8, "Canned Chicken Nuggets", IL.CANS_MEAT);
 		RM.food_can(IL.TC_Nugget_Beef       .wild(9), 8, "Canned Beef Nuggets", IL.CANS_MEAT);
 		RM.food_can(IL.TC_Nugget_Pork       .wild(9), 8, "Canned Pork Nuggets", IL.CANS_MEAT);
@@ -77,39 +77,26 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
 		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Fish     .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
 		
-		RM.ic2_compressor(                      ST.make(Items.rotten_flesh, 9, 0), IL.TC_Block_Flesh.get(1));
-		RM.Compressor.addRecipe1(T, 16, 16,     ST.make(Items.rotten_flesh, 9, W), IL.TC_Block_Flesh.get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(Items.rotten_flesh, 9, W), ST.tag(9), IL.TC_Block_Flesh.get(1));
-		RM.Unboxinator.addRecipe1(T, 16, 16,    IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));
-		RM.ic2_extractor(                       IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));
+		RM.compact(ST.make(Items.rotten_flesh, 9, W), 9, IL.TC_Block_Flesh.get(1));
+		RM.unpack(IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));
 		
-		RM.ic2_compressor(                      IL.TC_Tallow.get(9), IL.TC_Block_Tallow.get(1));
-		RM.Compressor.addRecipe1(T, 16, 16,     IL.TC_Tallow.get(9), IL.TC_Block_Tallow.get(1));
-		RM.Boxinator.addRecipe2(T, 16, 16,      IL.TC_Tallow.get(9), ST.tag(9), IL.TC_Block_Tallow.get(1));
-		RM.Unboxinator.addRecipe1(T, 16, 16,    IL.TC_Block_Tallow.get(1), IL.TC_Tallow.get(9));
-		RM.ic2_extractor(                       IL.TC_Block_Tallow.get(1), IL.TC_Tallow.get(9));
-		if (MD.CHSL.mLoaded) {
-		RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.CHSL, "tallow", 1, W), IL.TC_Tallow.get(9));
-		RM.ic2_extractor(                       ST.make(MD.CHSL, "tallow", 1, W), IL.TC_Tallow.get(9));
-		}
+		RM.compact(IL.TC_Tallow.get(9), 9, IL.TC_Block_Tallow.get(1));
+		RM.unpack(IL.TC_Block_Tallow.get(1), IL.TC_Tallow.get(9));
+		if (MD.CHSL.mLoaded)
+		RM.unpack(ST.make(MD.CHSL, "tallow", 1, W), IL.TC_Tallow.get(9));
 		
 		RM.ic2_compressor(                      OP.gem.mat(MT.Amber, 4), IL.TC_Block_Amber.get(1));
 		RM.Compressor.addRecipe1(T, 16, 16,     OP.gem.mat(MT.Amber, 4), IL.TC_Block_Amber.get(1));
 		RM.Boxinator.addRecipe2(T, 16, 16,      OP.gem.mat(MT.Amber, 4), ST.tag(4), IL.TC_Block_Amber_Bricks.get(1));
-		RM.Unboxinator.addRecipe1(T, 16, 16,    IL.TC_Block_Amber.get(1), OP.gem.mat(MT.Amber, 4));
-		RM.ic2_extractor(                       IL.TC_Block_Amber.get(1), OP.gem.mat(MT.Amber, 4));
-		RM.Unboxinator.addRecipe1(T, 16, 16,    IL.TC_Block_Amber_Bricks.get(1), OP.gem.mat(MT.Amber, 4));
-		RM.ic2_extractor(                       IL.TC_Block_Amber_Bricks.get(1), OP.gem.mat(MT.Amber, 4));
+		RM.unpack(IL.TC_Block_Amber       .get(1), OP.gem.mat(MT.Amber, 4));
+		RM.unpack(IL.TC_Block_Amber_Bricks.get(1), OP.gem.mat(MT.Amber, 4));
 		
 		Item tCrystal = ST.item(MD.TC, "blockCrystal"), tShard = ST.item(MD.TC, "ItemShard");
 		for (int i = 0; i < 6; i++) {
-		RM.ic2_compressor(                      ST.make(tShard, 6, i), ST.make(tCrystal, 1, i));
-		RM.Compressor.addRecipe1(T, 16, 16,     ST.make(tShard, 6, i), ST.make(tCrystal, 1, i));
-		RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(tShard, 6, i), ST.tag(6), ST.make(tCrystal, 1, i));
-		RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
-		RM.ic2_extractor(                       ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
+		RM.compact(ST.make(tShard, 6, i), 6, ST.make(tCrystal, 1, i));
+		RM.unpack(ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
 		}
-		OUT.println("GT_Mod: Adding Thaumcraft Research.");
+		
 		String tKey;
 		OreDictMaterial tMat;
 		
