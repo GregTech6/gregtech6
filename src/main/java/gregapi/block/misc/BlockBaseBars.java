@@ -89,7 +89,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 		
 		if (aBlock == this && !aPlayer.isSneaking() && aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) {
 			byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
-			if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
+			if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
 			if ((aMeta & tMeta) == 0) {
 				if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
 					aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
@@ -110,7 +110,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 			
 			if (aBlock == this && !aPlayer.isSneaking()) {
 				byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
-				if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
+				if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
 				if ((aMeta & tMeta) == 0) {
 					if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
 						aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
