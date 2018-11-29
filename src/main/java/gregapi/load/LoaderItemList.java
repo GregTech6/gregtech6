@@ -432,6 +432,7 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Vial_FieryBlood.item() != null) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.item() != null) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
 		
+		
 		IL.TROPIC_Sand_Coral                    .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 0));
 		IL.TROPIC_Sand_Foamy                    .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 1));
 		IL.TROPIC_Sand_Black                    .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 2), new OreDictItemData(MT.OREMATS.Magnetite, U));
@@ -456,17 +457,30 @@ public class LoaderItemList implements Runnable {
 		IL.TROPIC_Leaves_Mahogany               .set(ST.make(MD.TROPIC, "tile.leafRainforest"               , 1, 1), null, OP.treeLeaves);
 		IL.TROPIC_Leaves_Fruit                  .set(ST.make(MD.TROPIC, "tile.leafRainforest"               , 1, 2), null, OP.treeLeaves);
 		
+		
 		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.Umber));
 		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), OP.stone.dat(MT.Umber));
 		IL.ERE_Mud_Brick                        .set(ST.make(MD.ERE, "materials"                            , 1,23));
 		IL.ERE_Spray_Repellant                  .set(ST.make(MD.ERE, "sprayCan"                             , 1, 0));
 		IL.ERE_Herbicide                        .set(ST.make(MD.ERE, "planticide"                           , 1, 0));
 		IL.ERE_Compost                          .set(ST.make(MD.ERE, "compost"                              , 1, 0), null, OD.itemFertilizer);
+		IL.ERE_Bamboo                           .set(ST.make(MD.ERE, "materials"                            , 1, 3), new OreDictItemData(MT.Bamboo, U4), OD.bamboo);
 		IL.ERE_Gaean_Gem                        .set(ST.make(MD.ERE, "materials"                            , 1,39));
 		IL.ERE_Gaean_Staff                      .set(ST.make(MD.ERE, "portalActivator"                      , 1, 0));
 		IL.ERE_White_Planks                     .set(ST.make(MD.ERE, "planks"                               , 1, 7));
 		IL.ERE_White_Slab                       .set(ST.make(MD.ERE, "slabPlanksWhite"                      , 1, 0));
 		IL.ERE_White_Stairs                     .set(ST.make(MD.ERE, "plankStairWhite"                      , 1, 0));
+		IL.ERE_Pole                             .set(ST.make(MD.ERE, "bambooPole"                           , 1, 0), new OreDictItemData(MT.Bamboo, U8));
+		IL.ERE_Ladder                           .set(ST.make(MD.ERE, "bambooLadder"                         , 1, 0), new OreDictItemData(MT.Bamboo, 6*U4));
+		IL.ERE_Crate                            .set(ST.make(MD.ERE, "bambooCrate"                          , 1, 0), new OreDictItemData(MT.Bamboo, 5*U), OD.craftingChest);
+		IL.ERE_Bambucket_Empty                  .set(ST.make(MD.ERE, "bambucket"                            , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
+		IL.ERE_Bambucket_Water                  .set(ST.make(MD.ERE, "bambucketWater"                       , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4), OD.container1000water);
+		IL.ERE_Bambucket_Milk                   .set(ST.make(MD.ERE, "bambucketMilk"                        , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4), OD.container1000milk);
+		IL.ERE_Bambucket_Honey                  .set(ST.make(MD.ERE, "bambucketHoney"                       , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4), OD.container1000honey);
+		IL.ERE_Bambucket_AntiVenom              .set(ST.make(MD.ERE, "bambucketAntiVenom"                   , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
+		IL.ERE_Bambucket_FormicAcid             .set(ST.make(MD.ERE, "bambucketFormicAcid"                  , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
+		IL.ERE_Bambucket_BeetleJuice            .set(ST.make(MD.ERE, "bambucketBeetleJuice"                 , 1, 0), new OreDictItemData(MT.Bamboo, 3*U4));
+		
 		
 		IL.BTL_Swamp_Talisman                   .set(ST.make(MD.BTL, "swampTalisman"                        , 1, 0));
 		IL.BTL_Tainted_Potion                   .set(ST.make(MD.BTL, "taintedPotion"                        , 1, 0));

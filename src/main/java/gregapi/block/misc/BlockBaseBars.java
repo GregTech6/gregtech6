@@ -87,9 +87,9 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 		Block aBlock = WD.block(aWorld, aX, aY, aZ);
 		byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
 		
-		if (aBlock == this) {
+		if (aBlock == this && !aPlayer.isSneaking() && aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) {
 			byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
-			if ((aMeta & tMeta) != 0) tMeta = (byte)(tMeta < 3 ? aHitX < 0.5 ? 4 : 8 : aHitZ < 0.5 ? 1 : 2);
+			if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
 			if ((aMeta & tMeta) == 0) {
 				if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
 					aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
@@ -103,13 +103,29 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 			aSide = SIDE_UP;
 		} else if (aBlock != Blocks.vine && aBlock != Blocks.tallgrass && aBlock != Blocks.deadbush && !aBlock.isReplaceable(aWorld, aX, aY, aZ)) {
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
+			if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+			
+			aBlock = WD.block(aWorld, aX, aY, aZ);
+			aMeta  = WD.meta (aWorld, aX, aY, aZ);
+			
+			if (aBlock == this && !aPlayer.isSneaking()) {
+				byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
+				if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
+				if ((aMeta & tMeta) == 0) {
+					if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
+						aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
+						aStack.stackSize--;
+					}
+					return T;
+				}
+			}
+			
+			if (!aWorld.canPlaceEntityOnSide(this, aX, aY, aZ, F, aSide, aPlayer, aStack)) return F;
 		}
-		
-		if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || !aWorld.canPlaceEntityOnSide(this, aX, aY, aZ, F, aSide, aPlayer, aStack)) return F;
 		
 		// if used in conjunction with << 2 , these Meta Values return the Side Bits perfectly.
 		// Z- = 1, Z+ = 2, X- = 4, X+ = 8
-		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, (aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8))) {
+		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, SIDES_HORIZONTAL[aSide] ? SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8 : (aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8))) {
 			aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
 			aStack.stackSize--;
 		}
@@ -134,8 +150,29 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	
 	@Override public ItemStack getPickBlock(MovingObjectPosition aTarget, World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer) {return ST.make(this, 1, 0);}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return null;}
+	
+	@Override
+	public AxisAlignedBB getSelectedBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {
+		switch (aWorld.getBlockMetadata(aX, aY, aZ)) {
+		case  1: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+1       , aY+1, aZ+PX_P[ 2]);
+		case  2: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ+PX_P[14], aX+1       , aY+1, aZ+1       );
+		case  4: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+PX_P[ 2], aY+1, aZ+1       );
+		case  8: return AxisAlignedBB.getBoundingBox(aX+PX_P[14], aY, aZ         , aX+1       , aY+1, aZ+1       );
+		default: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+1       , aY+1, aZ+1       );
+		}
+	}
+	
+	@Override
+	public void setBlockBoundsBasedOnState(IBlockAccess aWorld, int aX, int aY, int aZ) {
+		switch (aWorld.getBlockMetadata(aX, aY, aZ)) {
+		case  1: setBlockBounds(0, 0, 0, 1, 1, PX_P[ 2]); return;
+		case  2: setBlockBounds(0, 0, PX_P[14], 1, 1, 1); return;
+		case  4: setBlockBounds(0, 0, 0, PX_P[ 2], 1, 1); return;
+		case  8: setBlockBounds(PX_P[14], 0, 0, 1, 1, 1); return;
+		default: setBlockBounds(0, 0, 0, 1, 1, 1); return;
+		}
+	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
