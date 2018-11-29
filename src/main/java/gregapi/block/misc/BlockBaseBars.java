@@ -130,7 +130,8 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public int damageDropped(int aMeta) {return 0;}
 	@Override public int quantityDropped(int aMeta, int aFortune, Random aRandom) {return aMeta == 0 ? 1 : FACE_CONNECTION_COUNT[aMeta];}
-	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 30;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
+	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 5;}
 	@Override public float getExplosionResistance(int aMeta) {return 5;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return F;}
 	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}

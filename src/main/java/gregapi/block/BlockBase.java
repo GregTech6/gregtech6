@@ -95,6 +95,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public Material getMaterial() {return GAPI_POST.mFinishedServerStarted > 0 && blockMaterial.getCanBurn() && !isFlammable(null, 0, 0, 0, FORGE_DIR[SIDE_ANY]) && BlockStaticLiquid.class.getName().equalsIgnoreCase(new Throwable().getStackTrace()[2].getClassName()) ? Material.iron : blockMaterial;}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return getExplosionResistance(aWorld.getBlockMetadata(aX, aY, aZ));}
 	@Override public float getExplosionResistance(Entity aEntity) {return getExplosionResistance(0);}
+	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 1;}
 	@Override public Block getBlock() {return this;}
 	@Override public final void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {if (useGravity(WD.meta(aWorld, aX, aY, aZ))) aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 2); onNeighborBlockChange2(aWorld, aX, aY, aZ, aBlock);}
 	@Override public final void onBlockAdded(World aWorld, int aX, int aY, int aZ) {if (useGravity(WD.meta(aWorld, aX, aY, aZ))) aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 2); onBlockAdded2(aWorld, aX, aY, aZ);}
@@ -103,6 +104,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public String name(int aMeta) {return aMeta == W ? mNameInternal : mNameInternal + "." + aMeta;}
 	@Override public boolean useGravity(int aMeta) {return F;}
 	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
+	@Override public boolean doesPistonPush(short aMeta) {return F;}
 	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return isSideSolid(aMeta, aSide);}
 	@Override public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {/**/}

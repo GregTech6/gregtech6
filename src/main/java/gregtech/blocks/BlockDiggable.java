@@ -84,6 +84,7 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	
 	@Override public boolean useGravity(int aMeta) {return aMeta == 0;}
 	@Override public boolean doesWalkSpeed(short aMeta) {return aMeta == 0;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(int aMeta) {return aMeta < 2;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_shovel;}

@@ -106,6 +106,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public float getExplosionResistance(int aMeta) {return 0;}
 	@Override public boolean useGravity(int aMeta) {return F;}
 	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
+	@Override public boolean doesPistonPush(short aMeta) {return F;}
 	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return 64;}

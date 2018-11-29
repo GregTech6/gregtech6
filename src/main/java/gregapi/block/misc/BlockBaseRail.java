@@ -125,6 +125,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public int getItemStackLimit(ItemStack aStack) {return 64;}
 	@Override public boolean useGravity(int aMeta) {return F;}
 	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}
 	
 	protected boolean func_150058_a(World aWorld, int aX, int aY, int aZ, int p_150058_5_, boolean p_150058_6_, int p_150058_7_) {

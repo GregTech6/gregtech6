@@ -48,6 +48,7 @@ public abstract class BlockBaseLog extends BlockBaseTree {
 	@Override public float getExplosionResistance(int aMeta) {return Blocks.log.getExplosionResistance(null);}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.log.mDefaultStackSize);}
 	@Override public int getRenderType() {return PILLAR_RENDER;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
 	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}

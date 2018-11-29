@@ -67,6 +67,7 @@ public class ItemBlockBase extends ItemBlock {
 			}
 		}
 		if (mPlaceable.useGravity(aMeta)) aList.add(LH.Chat.ORANGE + LH.get(LH.TOOLTIP_GRAVITY));
+		if (mPlaceable.doesPistonPush(aMeta)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_PISTONPUSHABLE));
 		float tResistance = mPlaceable.getExplosionResistance(aMeta);
 		if (tResistance > 0) aList.add(LH.getToolTipBlastResistance(field_150939_a, tResistance));
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + field_150939_a.getHarvestTool(aMeta), "Unknown") + " (" + field_150939_a.getHarvestLevel(aMeta) + ")");

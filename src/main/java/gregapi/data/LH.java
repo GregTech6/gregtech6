@@ -164,6 +164,7 @@ public class LH {
 	, TOOLTIP_SEALABLE_ANY = "gt.lang.sealable.any"
 	, TOOLTIP_SEALABLE_SOME = "gt.lang.sealable.some"
 	, TOOLTIP_SEALABLE_BUGGED = "gt.lang.sealable.bug"
+	, TOOLTIP_PISTONPUSHABLE = "gt.lang.pistonpush"
 	, TOOLTIP_SPAWNPROOF = "gt.lang.spawnproof"
 	, TOOLTIP_BLASTPOWER = "gt.lang.blastpower"
 	, TOOLTIP_BLASTRANGE = "gt.lang.blastrange"
@@ -414,6 +415,7 @@ public class LH {
 		add(TOOLTIP_SEALABLE_ANY                        , "This Block can seal Air at any Side");
 		add(TOOLTIP_SEALABLE_SOME                       , "This Block can seal Air at some Sides");
 		add(TOOLTIP_SEALABLE_BUGGED                     , "Shouldn't seal Air, but sometimes does because opaque");
+		add(TOOLTIP_PISTONPUSHABLE                      , "Pistons can push this Block");
 		add(TOOLTIP_SPAWNPROOF                          , "Mobs cannot Spawn on this Block");
 		add(TOOLTIP_BLASTPOWER                          , "Blast Power: ");
 		add(TOOLTIP_BLASTRANGE                          , "Blast Range: ");

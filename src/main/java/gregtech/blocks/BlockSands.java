@@ -41,6 +41,7 @@ public class BlockSands extends BlockBaseMeta {
 	
 	@Override public boolean useGravity(int aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(int aMeta) {return T;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_shovel;}
 	@Override public int getHarvestLevel(int aMeta) {return 0;}

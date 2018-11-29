@@ -49,6 +49,7 @@ public abstract class BlockBaseBale extends BlockBaseMeta {
 	@Override public float getExplosionResistance(int aMeta) {return Blocks.hay_block.getExplosionResistance(null);}
 	@Override public int getItemStackLimit(ItemStack aStack) {return ST.make(Blocks.hay_block, 1, 0).getMaxStackSize();}
 	@Override public int getRenderType() {return PILLAR_RENDER;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
 	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return T;}

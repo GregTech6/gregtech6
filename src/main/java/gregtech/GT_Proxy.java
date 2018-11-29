@@ -206,8 +206,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 			tBits = CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC;
 			CR.shaped(OP.toolHeadWrench  .mat(aMaterial, 1), tBits, "hXW", "XRX", "WXd", 'X', OP.plate   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
 			CR.shaped(OP.toolHeadWrench  .mat(aMaterial, 1), tBits, "hXW", "XRX", "WXd", 'X', OP.plateGem.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadChainsaw.mat(aMaterial, 1), tBits, "SRS", "XhX", "SRS", 'X', OP.plate   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadChainsaw.mat(aMaterial, 1), tBits, "SRS", "XhX", "SRS", 'X', OP.plateGem.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
+			CR.shaped(OP.toolHeadChainsaw.mat(aMaterial, 1), tBits, "SRS", "XhX", "SRS", 'X', OP.chain   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
 			CR.shaped(OP.toolHeadDrill   .mat(aMaterial, 1), tBits, "XSX", "XSX", "ShS", 'X', OP.plate   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
 			CR.shaped(OP.toolHeadDrill   .mat(aMaterial, 1), tBits, "XSX", "XSX", "ShS", 'X', OP.plateGem.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
 			if (!aMaterial.contains(TD.Compounds.COATED))

@@ -153,6 +153,7 @@ public class BlockMetaType extends BlockBaseMeta {
 	@Override public boolean isNormalCube()  {return mBlock == this;}
 	@Override public boolean isOpaqueCube() {return mBlock == this;}
 	@Override public boolean renderAsNormalBlock() {return mBlock == this;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public int getLightOpacity() {return mBlock == this ? LIGHT_OPACITY_MAX : LIGHT_OPACITY_WATER;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.stone.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));}
 	@Override public Item getItemDropped(int par1, Random par2Random, int par3) {return Item.getItemFromBlock(mBlock == this ? mBlock : mBlock.mSlabs[0]);}

@@ -66,6 +66,7 @@ public class BlockRockOres extends BlockBaseMeta {
 	
 	@Override public boolean useGravity(int aMeta) {return F;}
 	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(int aMeta) {return T;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}

@@ -124,6 +124,7 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool (World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1);}
 	@Override public boolean doesWalkSpeed(short aMeta) {return T;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
 	@Override public boolean canSilkHarvest() {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}

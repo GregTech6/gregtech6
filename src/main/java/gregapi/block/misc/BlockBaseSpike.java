@@ -118,6 +118,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean useGravity(int aMeta) {return (aMeta & 7) == 7;}
 	@Override public boolean doesWalkSpeed(short aMeta) {return T;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return T;}
 	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {aList.add(ST.make(aItem, 1, 0)); aList.add(ST.make(aItem, 1, 6)); aList.add(ST.make(aItem, 1, 7)); aList.add(ST.make(aItem, 1, 8)); aList.add(ST.make(aItem, 1, 14)); aList.add(ST.make(aItem, 1, 15));}
