@@ -232,7 +232,7 @@ public class GT_Client extends GT_Proxy {
 						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigsGT.CLIENT.mConfig.getConfigFile().getAbsolutePath()));
 						aEvent.player.addChatComponentMessage(tLink);
 					}
-					if (new Date().getMonth() == 3 && new Date().getDate() <= 3) {
+					if (APRIL_FOOLS || (new Date().getMonth() == 3 && new Date().getDate() <= 3)) {
 						aEvent.player.addChatComponentMessage(new ChatComponentText(CHAT_GREG + " Watch your Calendar!"));
 					}
 				}

@@ -45,16 +45,23 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Tropicraft Recipes.");
 		Item tChair = ST.item(MD.TROPIC, "chair"), tUmbrella = ST.item(MD.TROPIC, "umbrella"), tTorch = ST.item(MD.TROPIC, "tikiTorch");
-		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank", "ore", "tikiTorch", "chair", "umbrella", "blowGun", "portalEnchanter");
+		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank", "tile.sifter", "ore", "tikiTorch", "chair", "umbrella", "blowGun", "portalEnchanter");
 		RM.biomass(ST.make(MD.TROPIC, "tile.flower", 16, W), 64);
 		
-		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}, IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
+		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}, IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
 		RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}         , IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), dust.mat(MT.V2O5, 1));
 		
-		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Sn, 1));
-		RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}, IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Sn, 1), dustTiny.mat(MT.Sn, 2));
+		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Sn, 1));
+		RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}, IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Ni, 1), dustTiny.mat(MT.Ni, 2));
 		RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}         , IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), dust.mat(MT.Sn, 1));
+		
+		// Solonox Shell, Frox Conch, Pab Shell, Rube Nautilus, Starfish, Turtle Shell
+		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 2500, 2500, 2500, 2500, 2500, 2500}, IL.TROPIC_Sand_Foamy.get(1), IL.TROPIC_Sand_Pure.get(1), ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "shell", 1, 2), ST.make(MD.TROPIC, "shell", 1, 3), ST.make(MD.TROPIC, "shell", 1, 4), ST.make(MD.TROPIC, "shell", 1, 5));
+		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 2500, 2500, 2500, 2500, 2500, 2500}, IL.TROPIC_Sand_Coral.get(1), IL.TROPIC_Sand_Pure.get(1), ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "shell", 1, 2), ST.make(MD.TROPIC, "shell", 1, 3), ST.make(MD.TROPIC, "shell", 1, 4), ST.make(MD.TROPIC, "shell", 1, 5));
+		
+		RM.unpack(ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "pearl", 1, 0));
+		RM.unpack(ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "pearl", 1, 1));
 		
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue], ST.make(Items.dye, 2, DYE_INDEX_LightBlue));
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.TROPIC, "tile.flower", 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], ST.make(Items.dye, 2, DYE_INDEX_Yellow   ));
