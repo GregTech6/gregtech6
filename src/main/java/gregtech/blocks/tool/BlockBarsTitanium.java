@@ -45,4 +45,6 @@ public class BlockBarsTitanium extends BlockBaseBars {
 		LH.add(getUnlocalizedName()+ ".14.name", "Titanium Bars");
 		LH.add(getUnlocalizedName()+ ".15.name", "Titanium Bars");
 	}
+	
+	@Override public float getExplosionResistance(int aMeta) {return 16;}
 }

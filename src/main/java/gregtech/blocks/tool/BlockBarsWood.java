@@ -45,4 +45,6 @@ public class BlockBarsWood extends BlockBaseBars {
 		LH.add(getUnlocalizedName()+ ".14.name", "Wood Bars");
 		LH.add(getUnlocalizedName()+ ".15.name", "Wood Bars");
 	}
+	
+	@Override public float getExplosionResistance(int aMeta) {return 3;}
 }

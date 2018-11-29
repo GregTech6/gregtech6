@@ -58,7 +58,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 		super(null, aNameInternal, aVanillaMaterial, aSoundType);
 		mMat = aMat;
 		
-		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC_MIR, " BB", aVanillaMaterial == Material.wood ? "BrB" : "BhB", "BB ", 'B', OP.stick.dat(mMat));
+		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC_MIR, "BBB", aVanillaMaterial == Material.wood ? "r v" : "h w", "BBB ", 'B', OP.stick.dat(mMat));
 		
 		if (CODE_CLIENT) {
 			mRenderers[ 0] = new BarRendererItem(aMat);
@@ -99,19 +99,25 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 			}
 		}
 		
+		DEB.println("TEST A");
+		
 		if (aBlock == Blocks.snow_layer && (aMeta & 7) < 1) {
 			aSide = SIDE_UP;
 		} else if (aBlock != Blocks.vine && aBlock != Blocks.tallgrass && aBlock != Blocks.deadbush && !aBlock.isReplaceable(aWorld, aX, aY, aZ)) {
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
-			if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+		//  if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+			
+			DEB.println("TEST B");
 			
 			aBlock = WD.block(aWorld, aX, aY, aZ);
 			aMeta  = WD.meta (aWorld, aX, aY, aZ);
 			
 			if (aBlock == this && !aPlayer.isSneaking()) {
+				DEB.println("TEST C");
 				byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
 				if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
 				if ((aMeta & tMeta) == 0) {
+					DEB.println("TEST D");
 					if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
 						aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
 						aStack.stackSize--;
@@ -132,7 +138,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 		return T;
 	}
 	
-	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
+	@Override public String getHarvestTool(int aMeta) {return getMaterial() == Material.wood ? TOOL_axe : TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return mMat.mToolQuality;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public int damageDropped(int aMeta) {return 0;}
@@ -143,7 +149,6 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
-	@Override public boolean useGravity(int aMeta) {return (aMeta & 7) == 7;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return T;}
 	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {aList.add(ST.make(aItem, 1, 0));}
@@ -155,10 +160,10 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {
 		switch (aWorld.getBlockMetadata(aX, aY, aZ)) {
-		case  1: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+1       , aY+1, aZ+PX_P[ 2]);
-		case  2: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ+PX_P[14], aX+1       , aY+1, aZ+1       );
-		case  4: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+PX_P[ 2], aY+1, aZ+1       );
-		case  8: return AxisAlignedBB.getBoundingBox(aX+PX_P[14], aY, aZ         , aX+1       , aY+1, aZ+1       );
+		case  1: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+1       , aY+1, aZ+PX_P[ 1]);
+		case  2: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ+PX_P[15], aX+1       , aY+1, aZ+1       );
+		case  4: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+PX_P[ 1], aY+1, aZ+1       );
+		case  8: return AxisAlignedBB.getBoundingBox(aX+PX_P[15], aY, aZ         , aX+1       , aY+1, aZ+1       );
 		default: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+1       , aY+1, aZ+1       );
 		}
 	}
@@ -166,10 +171,10 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess aWorld, int aX, int aY, int aZ) {
 		switch (aWorld.getBlockMetadata(aX, aY, aZ)) {
-		case  1: setBlockBounds(0, 0, 0, 1, 1, PX_P[ 2]); return;
-		case  2: setBlockBounds(0, 0, PX_P[14], 1, 1, 1); return;
-		case  4: setBlockBounds(0, 0, 0, PX_P[ 2], 1, 1); return;
-		case  8: setBlockBounds(PX_P[14], 0, 0, 1, 1, 1); return;
+		case  1: setBlockBounds(0, 0, 0, 1, 1, PX_P[ 1]); return;
+		case  2: setBlockBounds(0, 0, PX_P[15], 1, 1, 1); return;
+		case  4: setBlockBounds(0, 0, 0, PX_P[ 1], 1, 1); return;
+		case  8: setBlockBounds(PX_P[15], 0, 0, 1, 1, 1); return;
 		default: setBlockBounds(0, 0, 0, 1, 1, 1); return;
 		}
 	}

@@ -50,6 +50,8 @@ public class BlockBarsAdamantium extends BlockBaseBars {
 		LH.add(getUnlocalizedName()+ ".15.name", "Adamantium Bars");
 	}
 	
+	@Override public float getExplosionResistance(int aMeta) {return 100;}
+	
 	@Override
 	public boolean canEntityDestroy(IBlockAccess aWorld, int aX, int aY, int aZ, Entity aEntity) {
 		return !(aEntity instanceof EntityWither || aEntity instanceof EntityDragon);

@@ -45,4 +45,6 @@ public class BlockBarsSteel extends BlockBaseBars {
 		LH.add(getUnlocalizedName()+ ".14.name", "Steel Bars");
 		LH.add(getUnlocalizedName()+ ".15.name", "Steel Bars");
 	}
+	
+	@Override public float getExplosionResistance(int aMeta) {return 10;}
 }
