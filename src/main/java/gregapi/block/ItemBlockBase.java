@@ -72,6 +72,7 @@ public class ItemBlockBase extends ItemBlock {
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + field_150939_a.getHarvestTool(aMeta), "Unknown") + " (" + field_150939_a.getHarvestLevel(aMeta) + ")");
 	}
 	
+	@Override public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {return mPlaceable.onItemUseFirst(this, aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ);}
 	@Override public boolean onItemUse(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {return mPlaceable.onItemUse(this, aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ);}
 	@Override public IIcon getIconFromDamage(int aMeta) {return field_150939_a.getIcon(SIDE_TOP, aMeta);}
 	@Override public String getUnlocalizedName(ItemStack aStack) {return mPlaceable.name(getDamage(aStack));}

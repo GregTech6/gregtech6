@@ -81,53 +81,42 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	}
 	
 	@Override
+	public boolean onItemUseFirst(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aStack.stackSize == 0) return F;
+		if (!aPlayer.isSneaking()) for (int i = 0; i < 2; i++) {
+			if (i == 1) {aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];}
+			if (aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) {
+				Block aBlock = WD.block(aWorld, aX, aY, aZ);
+				byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
+				if (aBlock == this) {
+					byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
+					if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
+					if ((aMeta & tMeta) == 0) {
+						if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
+							aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
+							aStack.stackSize--;
+						}
+						return !aWorld.isRemote;
+					}
+				}
+			}
+		}
+		return F;
+	}
+	
+	@Override
 	public boolean onItemUse(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aStack.stackSize == 0) return F;
 		
 		Block aBlock = WD.block(aWorld, aX, aY, aZ);
-		byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
 		
-		if (aBlock == this && !aPlayer.isSneaking() && aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) {
-			byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
-			if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
-			if ((aMeta & tMeta) == 0) {
-				if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
-					aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
-					aStack.stackSize--;
-				}
-				return T;
-			}
-		}
-		
-		DEB.println("TEST A");
-		
-		if (aBlock == Blocks.snow_layer && (aMeta & 7) < 1) {
+		if (aBlock == Blocks.snow_layer && (WD.meta(aWorld, aX, aY, aZ) & 7) < 1) {
 			aSide = SIDE_UP;
 		} else if (aBlock != Blocks.vine && aBlock != Blocks.tallgrass && aBlock != Blocks.deadbush && !aBlock.isReplaceable(aWorld, aX, aY, aZ)) {
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
-		//  if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
-			
-			DEB.println("TEST B");
-			
-			aBlock = WD.block(aWorld, aX, aY, aZ);
-			aMeta  = WD.meta (aWorld, aX, aY, aZ);
-			
-			if (aBlock == this && !aPlayer.isSneaking()) {
-				DEB.println("TEST C");
-				byte tMeta = (byte)(aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
-				if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
-				if ((aMeta & tMeta) == 0) {
-					DEB.println("TEST D");
-					if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
-						aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
-						aStack.stackSize--;
-					}
-					return T;
-				}
-			}
-			
-			if (!aWorld.canPlaceEntityOnSide(this, aX, aY, aZ, F, aSide, aPlayer, aStack)) return F;
 		}
+		
+		if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		
 		// if used in conjunction with << 2 , these Meta Values return the Side Bits perfectly.
 		// Z- = 1, Z+ = 2, X- = 4, X+ = 8

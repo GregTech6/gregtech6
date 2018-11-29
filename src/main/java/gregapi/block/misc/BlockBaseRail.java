@@ -279,6 +279,8 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		}
 	}
 	
+	@Override public boolean onItemUseFirst(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {return F;}
+	
 	@Override
 	public boolean onItemUse(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aStack.stackSize == 0) return F;
