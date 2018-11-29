@@ -1405,7 +1405,7 @@ public class CS {
 		public static BlockBase Glowtus, Sapling, Leaves, BalesGrass, BalesCrop;
 		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, Planks, PlanksFireProof;
 		
-		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass, Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
+		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass, Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium, Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
 		public static BlockBase LongDistWire01, LongDistPipe01;
 		
 		public static IBlockBase

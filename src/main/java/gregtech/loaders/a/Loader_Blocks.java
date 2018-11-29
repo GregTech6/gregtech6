@@ -38,6 +38,7 @@ import gregtech.blocks.fluids.BlockSwamp;
 import gregtech.blocks.plants.BlockFlowersA;
 import gregtech.blocks.plants.BlockFlowersB;
 import gregtech.blocks.plants.BlockGlowtus;
+import gregtech.blocks.tool.*;
 import net.minecraft.block.Block;
 
 public class Loader_Blocks implements Runnable {
@@ -77,17 +78,28 @@ public class Loader_Blocks implements Runnable {
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Sands                               = new BlockSands                ("gt.block.sands"));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Sands, 1, W), F, TC.stack(TC.TERRA, 1));
 		
+		
 		BlocksGT.Spikes_Sharp                                                   = new BlockSpikeSharp           ("gt.block.spikes.sharp");
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Sharp, 1, W), F, TC.stack(TC.METALLUM, 4), TC.stack(TC.TELUM, 4));
-		
 		BlocksGT.Spikes_Super                                                   = new BlockSpikeSuper           ("gt.block.spikes.super");
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Super, 1, W), F, TC.stack(TC.METALLUM, 4), TC.stack(TC.TELUM, 8));
-		
 		BlocksGT.Spikes_Metal                                                   = new BlockSpikeMetal           ("gt.block.spikes.metal");
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Metal, 1, W), F, TC.stack(TC.VENENUM, 4), TC.stack(TC.TELUM, 4));
-		
 		BlocksGT.Spikes_Fancy                                                   = new BlockSpikeFancy           ("gt.block.spikes.fancy");
-		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Fancy, 1, W), F, TC.stack(TC.LUCRUM, 4), TC.stack(TC.TELUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Sharp, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Super, 1, W), F, TC.stack(TC.VINCULUM, 8), TC.stack(TC.METALLUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Metal, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.VENENUM, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Spikes_Fancy, 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.LUCRUM, 4));
+		
+		
+		BlocksGT.Bars_Wood                                                      = new BlockBarsWood             ("gt.block.bars.wood");
+		BlocksGT.Bars_Steel                                                     = new BlockBarsSteel            ("gt.block.bars.steel");
+		BlocksGT.Bars_Titanium                                                  = new BlockBarsTitanium         ("gt.block.bars.titanium");
+		BlocksGT.Bars_TungstenSteel                                             = new BlockBarsTungstenSteel    ("gt.block.bars.tungstensteel");
+		BlocksGT.Bars_Adamantium                                                = new BlockBarsAdamantium       ("gt.block.bars.adamantium");
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_Wood         , 1, W), F, TC.stack(TC.VINCULUM, 2), TC.stack(TC.ARBOR, 4));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_Steel        , 1, W), F, TC.stack(TC.VINCULUM, 4), TC.stack(TC.METALLUM, 3));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_Titanium     , 1, W), F, TC.stack(TC.VINCULUM, 6), TC.stack(TC.METALLUM, 5));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_TungstenSteel, 1, W), F, TC.stack(TC.VINCULUM, 8), TC.stack(TC.METALLUM, 7));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Bars_Adamantium   , 1, W), F, TC.stack(TC.VINCULUM,10), TC.stack(TC.METALLUM,10));
+		
 		
 		BlocksGT.FlowersA                                                       = new BlockFlowersA             ("gt.block.flower.a");
 		BlocksGT.FlowersB                                                       = new BlockFlowersB             ("gt.block.flower.b");

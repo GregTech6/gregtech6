@@ -30,13 +30,18 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.11: (Not released yet)
+[IMPORTANT] European Copyright Bullshit gets worse and worse, please everybody yell at those damn politicians, who want to take away Freedom of Speech entirely! https://juliareda.eu/2018/11/third-trilogue/ and https://juliareda.eu/2018/11/youtube-article-13/
 [COMPAT]
 Fixed a few Parts of the Trainwreck that is Tropicraft. It is the shittiest Mod I have ever seen so far, and that says something...
-I originally even want to call that "[COMPAT]", because "Fixing that they are too stupid to even make more than half of their own Crafting Recipes output the Item they are supposed to" is not what Compatibility is about...
+I originally did not even want to call that "[COMPAT]", because "Fixing that they are too stupid to even make more than half of their own Crafting Recipes output the Item they are supposed to" is not what Compatibility is about...
 But I mostly got through adding Material Data and Stuff to it, and ended up adding a few Minerals because ofthat as well.
 [CHANGED] Zirconium Ore now exists as Zircon, meaning I nerfed that Stuff. :P
 [IMPROVED] Removal of Crafting Recipes by Output has now less of a performance Impact. So faster Loading Times probably.
-[ADDED] Tropicraft Miniature Portal. Made of Bamboo, Tropics Water and ofcourse is activated by a Tropicraft Cocktail.
+[ADDED] Tropicraft Miniature Portal. Made of Bamboo, Tropics Water and ofcourse it is activated by a Tropicraft Cocktail.
+[ADDED]
+My own Type of "Iron" Bars
+Available Materials include: Wood, Steel, Titanium, Tungstensteel and Adamantium.
+You can place the Bars kindof like Microblocks, but only in 4 directions so they work like Walls, but they only use MetaData so they can easily be pushed by Pistons!
 
 
 6.09.10:

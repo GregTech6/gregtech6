@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.blocks;
+package gregtech.blocks.tool;
 
 import java.util.List;
 

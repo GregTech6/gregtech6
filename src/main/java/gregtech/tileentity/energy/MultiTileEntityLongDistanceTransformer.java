@@ -45,7 +45,7 @@ import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import gregtech.blocks.BlockLongDistWire;
+import gregtech.blocks.tool.BlockLongDistWire;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;

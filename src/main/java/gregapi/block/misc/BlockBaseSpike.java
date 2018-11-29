@@ -107,7 +107,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ) {if (useGravity(aWorld.getBlockMetadata(aX, aY, aZ))) UT.Sounds.send(aWorld, SFX.MC_ANVIL_LAND, 1, 2, aX, aY, aZ);}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
-	@Override public int getHarvestLevel(int aMeta) {return 2;}
+	@Override public int getHarvestLevel(int aMeta) {return aMeta < 8 ? mMat1.mToolQuality : mMat2.mToolQuality;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public int damageDropped(int aMeta) {return (aMeta & 7) < 6 ? aMeta & 8 : aMeta;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 30;}
