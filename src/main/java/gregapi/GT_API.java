@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -175,11 +174,9 @@ public class GT_API extends Abstract_Mod {
 	
 	private LoggerPlayerActivity mPlayerLogger;
 	
-	@SuppressWarnings({"unchecked", "deprecation"})
+	@SuppressWarnings("unchecked")
 	public GT_API() {
 		GAPI = this;
-		
-		APRIL_FOOLS = (new Date().getMonth() == 3 && new Date().getDate() <= 3);
 		
 		if (!MD.ENCHIRIDION.mLoaded) MD.MaCu.mLoaded = F;
 		
@@ -393,6 +390,82 @@ public class GT_API extends Abstract_Mod {
 		D2 = ConfigsGT.CLIENT.get("debug" , "oredict" , F);
 		D3 = ConfigsGT.CLIENT.get("debug" , "misc"    , F);
 		if ( ConfigsGT.CLIENT.get("debug" , "april"   , F)) APRIL_FOOLS = T;
+		
+		if (APRIL_FOOLS && CODE_CLIENT) {
+			MT.W.setLocal("Wolframium");
+			MT.V.setLocal("Vandalium");
+			MT.B.setLocal("Boring");
+			MT.S.setLocal("Sulphur");
+			MT.K.setLocal("Kalium");
+			MT.Na.setLocal("Natrium");
+			MT.Ar.setLocal("Aragon");
+			MT.Al.setLocal("Aluminum");
+			MT.Ni.setLocal("Ferrous Metal");
+			MT.Pt.setLocal("Shiny Metal");
+			MT.Mithril.setLocal("Mana Infused Metal");
+			MT.Hg.setLocal("Quicksilver");
+			MT.Mo.setLocal("Molly-B");
+			MT.Sb.setLocal("Anti-Money");
+			MT.Tc.setLocal("Gregorium");
+			MT.Si.setLocal("Silicone");
+			MT.Cr.setLocal("Chrome");
+			MT.Cu.setLocal("Cooper");
+			MT.AnnealedCopper.setLocal("Anilled Cooper");
+			MT.Mn.setLocal("Animenese");
+			MT.As.setLocal("Arse Nick");
+			MT.Br.setLocal("Bro, that's mine");
+			MT.Kr.setLocal("Kryptonite");
+			MT.Bi.setLocal("Biffmiff");
+			MT.Sg.setLocal("Resistance is Futile");
+			MT.Zr.setLocal("Diamond");
+			MT.Au.setLocal("Pyrite");
+			MT.Pyrite.setLocal("Gold");
+			MT.Fe.setLocal("Arn");
+			MT.IronWood.setLocal("Arnwood");
+			MT.ShadowIron.setLocal("Shade Arn");
+			MT.DarkIron.setLocal("Dank Arn");
+			MT.MeteoricIron.setLocal("Metaur Arn");
+			MT.GildedIron.setLocal("Guild Arn");
+			MT.WroughtIron.setLocal("Wrecked Arn");
+			MT.Steel.setLocal("Stil");
+			MT.RedSteel.setLocal("Rad Stil");
+			MT.BlueSteel.setLocal("Blu Stil");
+			MT.BlackSteel.setLocal("Afroamerican Stil");
+			MT.DamascusSteel.setLocal("Dank Stil");
+			MT.VanadiumSteel.setLocal("Vandalium Stil");
+			MT.TungstenSteel.setLocal("Wolf Stil");
+			MT.MeteoricSteel.setLocal("Metaur Stil");
+			MT.ShadowSteel.setLocal("Shade Stil");
+			MT.Steeleaf.setLocal("Still Leave");
+			MT.Knightmetal.setLocal("Night Metal");
+			MT.FierySteel.setLocal("Fury Stil");
+			MT.Thaumium.setLocal("Thaumanominum");
+			MT.DarkThaumium.setLocal("Dank Thaumanominum");
+			MT.Rb.setLocal("Ruby");
+			MT.Ruby.setLocal("Red Sapphire");
+			MT.KNO3.setLocal("Niter");
+			MT.NaNO3.setLocal("Nitre");
+			MT.Glyceryl.setLocal("Nitro");
+			MT.Gunpowder.setLocal("Boompowder");
+			MT.SulfuricAcid.setLocal("Sulphuric Acid");
+			MT.Greenschist.setLocal("Green Shit");
+			MT.Blueschist.setLocal("Blue Shit");
+			MT.Nikolite.setLocal("Bluestone");
+			MT.Teslatite.setLocal("Bluestone");
+			MT.Electrotine.setLocal("Bluestone");
+			MT.PigIron.setLocal("Ferrobacon");
+			MT.TinAlloy.setLocal("Tin*");
+			MT.Bronze.setLocal("Tinkerers Alloy");
+			MT.BlackBronze.setLocal("Afroamerican Tinkerers Alloy");
+			MT.Constantan.setLocal("Cupronickel");
+			MT.FakeOsmium.setLocal("Platinum");
+			MT.CertusQuartz.setLocal("Citrus Quartz");
+			MT.ChargedCertusQuartz.setLocal("Charged Citrus Quartz");
+			MT.OREMATS.Galena.setLocal("Silverlead");
+			MT.OREMATS.Huebnerite.setLocal("Boobnerite");
+			MT.OREMATS.Bromargyrite.setLocal("Bromagnerite");
+			MT.OREMATS.Chalcopyrite.setLocal("Chackapackerite");
+		}
 		
 		if (D1) {
 			tList = ((LogBuffer)DEB).mBufferedLog;
