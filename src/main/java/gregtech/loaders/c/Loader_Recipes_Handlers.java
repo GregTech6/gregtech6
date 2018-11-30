@@ -222,11 +222,11 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Anvil                .add(new RecipeMapHandlerPrefix(gemChipped                                          , 1, NF,  64, 0,    64, NF, dustSmall                               , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT)));
 		
 		RM.AnvilBendBig         .add(new RecipeMapHandlerPrefix(plate                                               , 1, NF,  64, 0,    64, NF, plateCurved                             , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
+		RM.AnvilBendBig         .add(new RecipeMapHandlerPrefix(stick                                               , 1, NF,  64, 0,    64, NF, springSmall                             , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.AnvilBendBig         .add(new RecipeMapHandlerPrefix(stickLong                                           , 1, NF,  64, 0,    64, NF, spring                                  , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		
 		RM.AnvilBendSmall       .add(new RecipeMapHandlerPrefix(plate                                               , 1, NF,  64, 0,    64, NF, foil                                    , 2, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE, COATED.NOT)));
 		RM.AnvilBendSmall       .add(new RecipeMapHandlerPrefix(stick                                               , 1, NF,  64, 0,    64, NF, ring                                    , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE, COATED.NOT)));
-		RM.AnvilBendSmall       .add(new RecipeMapHandlerPrefix(wireGt01                                            , 1, NF,  64, 0,    64, NF, springSmall                             , 1, ST.emptySlot(), NI, T, F, F, new And(ANTIMATTER.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(bolt                                                , 1, NF,  16, 0,    64, NF, screw                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT)));
 		RM.Lathe                .add(new RecipeMapHandlerPrefix(nugget                                              , 1, NF,  16, 0,    64, NF, round                                   , 1, NI, NI, T, T, F, new And(ANTIMATTER.NOT, COATED.NOT, LAYERED.NOT)));
