@@ -45,6 +45,7 @@ My own Type of "Iron" Bars
 Available Materials include: Wood, Steel, Titanium, Tungstensteel and Adamantium.
 You can place the Bars kindof like Microblocks, but only in 4 directions so they work like Walls, but they only use MetaData so they can easily be pushed by Pistons!
 Useful for: Guard Rails on your Catwalks and such, Making a Bird Cage (or one for any other Animal), Making a Jail Cell (Iron Doors align very well to those Bars!), Piston Doors and more!
+Note: Right now there is this one stpid Vanilla Bug that just voids Rightclicks under certain Circumstances, I still need to look into that to fix it.
 
 
 6.09.10:

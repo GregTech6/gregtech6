@@ -45,7 +45,7 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Tropicraft Recipes.");
 		Item tChair = ST.item(MD.TROPIC, "chair"), tUmbrella = ST.item(MD.TROPIC, "umbrella"), tTorch = ST.item(MD.TROPIC, "tikiTorch");
-		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank", "tile.sifter", "ore", "tikiTorch", "chair", "umbrella", "blowGun", "portalEnchanter");
+		CR.delate(MD.TROPIC, "pineappleCubes", "tile.blockOre", "tile.singleSlabs", "tile.plank", "tile.sifter", "ore", "tikiTorch", "chair", "umbrella", "waterWand", "blowGun", "portalEnchanter", "coconutBomb");
 		RM.biomass(ST.make(MD.TROPIC, "tile.flower", 16, W), 64);
 		
 		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.TROPIC_Sand_Black.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1));
@@ -57,8 +57,9 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}         , IL.TROPIC_Sand_Mineral.get(1), dust.mat(MT.OREMATS.Cassiterite, 1), dust.mat(MT.Sn, 1));
 		
 		// Solonox Shell, Frox Conch, Pab Shell, Rube Nautilus, Starfish, Turtle Shell
-		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 2500, 2500, 2500, 2500, 2500, 2500}, IL.TROPIC_Sand_Foamy.get(1), IL.TROPIC_Sand_Pure.get(1), ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "shell", 1, 2), ST.make(MD.TROPIC, "shell", 1, 3), ST.make(MD.TROPIC, "shell", 1, 4), ST.make(MD.TROPIC, "shell", 1, 5));
-		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 2500, 2500, 2500, 2500, 2500, 2500}, IL.TROPIC_Sand_Coral.get(1), IL.TROPIC_Sand_Pure.get(1), ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "shell", 1, 2), ST.make(MD.TROPIC, "shell", 1, 3), ST.make(MD.TROPIC, "shell", 1, 4), ST.make(MD.TROPIC, "shell", 1, 5));
+		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 200, 100, 50}, IL.TROPIC_Sand_Foamy    .get(1), IL.TROPIC_Sand_Pure.get(1), ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "shell", 1, 2), ST.make(MD.TROPIC, "shell", 1, 3), ST.make(MD.TROPIC, "shell", 1, 4), ST.make(MD.TROPIC, "shell", 1, 5), ST.make(MD.TROPIC, "pearl", 1, 0), ST.make(MD.TROPIC, "pearl", 1, 1), OP.gem.mat(MT.Azurite, 1), OP.gem.mat(MT.Eudialyte, 1), OP.gem.mat(MT.Zr, 1));
+		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 200, 100, 50}, IL.TROPIC_Sand_Coral    .get(1), IL.TROPIC_Sand_Pure.get(1), ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "shell", 1, 2), ST.make(MD.TROPIC, "shell", 1, 3), ST.make(MD.TROPIC, "shell", 1, 4), ST.make(MD.TROPIC, "shell", 1, 5), ST.make(MD.TROPIC, "pearl", 1, 0), ST.make(MD.TROPIC, "pearl", 1, 1), OP.gem.mat(MT.Azurite, 1), OP.gem.mat(MT.Eudialyte, 1), OP.gem.mat(MT.Zr, 1));
+		RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 200, 100, 50}, ST.make(MD.TROPIC, "ore", 1, 5), IL.TROPIC_Sand_Pure.get(1), ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "shell", 1, 2), ST.make(MD.TROPIC, "shell", 1, 3), ST.make(MD.TROPIC, "shell", 1, 4), ST.make(MD.TROPIC, "shell", 1, 5), ST.make(MD.TROPIC, "pearl", 1, 0), ST.make(MD.TROPIC, "pearl", 1, 1), OP.gem.mat(MT.Azurite, 1), OP.gem.mat(MT.Eudialyte, 1), OP.gem.mat(MT.Zr, 1));
 		
 		RM.unpack(ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "pearl", 1, 0));
 		RM.unpack(ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "pearl", 1, 1));
@@ -133,6 +134,8 @@ public class Compat_Recipes_Tropicraft extends CompatMods {
 		
 		CR.shaped(ST.make(MD.TROPIC, "portalEnchanter", 1, 0), CR.DEF_NCC_MIR, "ABZ", "ZBA", " B ", 'B', OP.stick.dat(MT.Bamboo), 'A', OP.gem.dat(MT.Azurite), 'Z', OP.gem.dat(MT.Zr));
 		CR.shaped(ST.make(MD.TROPIC, "blowGun"        , 1, 0), CR.DEF_NCC_MIR, "B  ", " C ", "  B", 'B', OP.stick.dat(MT.Bamboo), 'C', ST.make(MD.TROPIC, "curare", 1, 0));
+		CR.shaped(ST.make(MD.TROPIC, "waterWand"      , 1, 0), CR.DEF_NCC_MIR, "  A", " S ", "S  ", 'S', OP.stickLong.dat(MT.Au), 'A', OP.gem.dat(MT.Azurite));
+		CR.shaped(ST.make(MD.TROPIC, "coconutBomb"    , 1, 0), CR.DEF_NCC_MIR, " G ", "GCG", " G ", 'G', OP.dust.dat(MT.Gunpowder), 'C', "cropCoconut");
 		
 		CR.shaped(ST.make(MD.TROPIC, "coconutChunk"   , 3, 0), CR.DEF_NAC_NCC, "v", "C", 'C', "cropCoconut");
 		CR.shaped(ST.make(MD.TROPIC, "pineappleCubes" , 3, 0), CR.DEF_NAC_NCC, "v", "A", 'A', "cropAnanas");
