@@ -37,6 +37,7 @@ import gregapi.worldgen.WorldgenOresBedrock;
 import gregapi.worldgen.WorldgenOresLarge;
 import gregapi.worldgen.WorldgenOresSmall;
 import gregapi.worldgen.WorldgenStone;
+import gregapi.worldgen.dungeon.WorldgenDungeonGT;
 import gregtech.worldgen.*;
 import gregtech.worldgen.aether.WorldgenAetherRocks;
 import gregtech.worldgen.alfheim.WorldgenAlfheimRocks;
@@ -48,7 +49,6 @@ import gregtech.worldgen.erebus.WorldgenErebusRocks;
 import gregtech.worldgen.mars.WorldgenMarsRocks;
 import gregtech.worldgen.moon.WorldgenMoonRocks;
 import gregtech.worldgen.planets.WorldgenPlanetRocks;
-import gregtech.worldgen.structure.WorldgenStructure;
 import gregtech.worldgen.tree.*;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -422,7 +422,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenNexus           ("center.nexus"     , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		new WorldgenBeacon          ("center.beacon"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		
-		new WorldgenStructure("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		
 		new WorldgenFluidSpring ("overworld.fluid.oil.extraheavy"   , T, BlocksGT.OilExtraHeavy ,  7,  1, 50,400,   0,  16, null, F, tInfiniteOil ? UT.Fluids.make("liquid_extra_heavy_oil" , 24000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		new WorldgenFluidSpring ("overworld.fluid.oil.heavy"        , T, BlocksGT.OilHeavy      ,  7,  1, 60,300,   0,  16, null, F, tInfiniteOil ? UT.Fluids.make("liquid_heavy_oil"       , 24000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA);

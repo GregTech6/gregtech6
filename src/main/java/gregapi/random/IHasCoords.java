@@ -30,7 +30,6 @@ public interface IHasCoords {
 	public int getX();
 	public int getY();
 	public int getZ();
-	
 	public int getOffsetX (byte aSide);
 	public int getOffsetY (byte aSide);
 	public int getOffsetZ (byte aSide);

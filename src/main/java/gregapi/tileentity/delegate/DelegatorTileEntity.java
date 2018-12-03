@@ -21,8 +21,7 @@ package gregapi.tileentity.delegate;
 
 import static gregapi.data.CS.*;
 
-import gregapi.random.IHasCoords;
-import gregapi.random.IHasWorld;
+import gregapi.random.WorldAndCoords;
 import gregapi.tileentity.ITileEntityUnloadable;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -37,62 +36,39 @@ import net.minecraftforge.common.util.ForgeDirection;
 /**
  * @author Gregorius Techneticies
  */
-public final class DelegatorTileEntity<T> implements IHasWorld, IHasCoords {
+public final class DelegatorTileEntity<T> extends WorldAndCoords {
 	/** the TileEntity. This should be an instance of TileEntity. */
 	public final T mTileEntity;
-	/** the Coordinates the TileEntity has, or should have in case mTileEntity is null. */
-	public final int mX, mY, mZ;
-	/** the World Object the TileEntity has, or should have in case mTileEntity is null. */
-	public final World mWorld;
 	/** the Side of the Delegate responsible for handling. So a TE-Tesseract alike can go a curve. */
 	public final byte mSideOfTileEntity;
-
+	
 	public DelegatorTileEntity(DelegatorTileEntity<T> aDelegator) {
+		super(aDelegator.mWorld, aDelegator.mX, aDelegator.mY, aDelegator.mZ);
 		mTileEntity = aDelegator.mTileEntity;
-		mWorld = aDelegator.mWorld;
-		mX = aDelegator.mX;
-		mY = aDelegator.mY;
-		mZ = aDelegator.mZ;
 		mSideOfTileEntity = aDelegator.mSideOfTileEntity;
 	}
 	
 	public DelegatorTileEntity(T aTileEntity, byte aSideOfTileEntity) {
+		super((TileEntity)aTileEntity);
 		mTileEntity = aTileEntity;
 		mSideOfTileEntity = aSideOfTileEntity;
-		if (aTileEntity instanceof TileEntity) {
-			mWorld = ((TileEntity)aTileEntity).getWorldObj();
-			mX = ((TileEntity)aTileEntity).xCoord;
-			mY = ((TileEntity)aTileEntity).yCoord;
-			mZ = ((TileEntity)aTileEntity).zCoord;
-		} else {
-			throw new IllegalArgumentException("Parameter must be an instance of TileEntity and != null");
-		}
 	}
 	
 	public DelegatorTileEntity(T aTileEntity, DelegatorTileEntity<?> aDelegator) {
+		super(aDelegator.mWorld, aDelegator.mX, aDelegator.mY, aDelegator.mZ);
 		mTileEntity = aTileEntity;
-		mWorld = aDelegator.mWorld;
-		mX = aDelegator.mX;
-		mY = aDelegator.mY;
-		mZ = aDelegator.mZ;
 		mSideOfTileEntity = aDelegator.mSideOfTileEntity;
 	}
 	
 	public DelegatorTileEntity(T aTileEntity, World aWorld, int aX, int aY, int aZ, byte aSideOfTileEntity) {
+		super(aWorld, aX, aY, aZ);
 		mTileEntity = aTileEntity;
-		mWorld = aWorld;
-		mX = aX;
-		mY = aY;
-		mZ = aZ;
 		mSideOfTileEntity = aSideOfTileEntity;
 	}
 	
 	public DelegatorTileEntity(T aTileEntity, World aWorld, ChunkCoordinates aCoords, byte aSideOfTileEntity) {
+		super(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ);
 		mTileEntity = aTileEntity;
-		mWorld = aWorld;
-		mX = aCoords.posX;
-		mY = aCoords.posY;
-		mZ = aCoords.posZ;
 		mSideOfTileEntity = aSideOfTileEntity;
 	}
 	

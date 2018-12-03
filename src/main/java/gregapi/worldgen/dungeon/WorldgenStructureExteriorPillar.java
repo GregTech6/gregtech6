@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.worldgen.structure;
+package gregapi.worldgen.dungeon;
 
 import static gregapi.data.CS.*;
 
@@ -30,17 +30,17 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenStructureExteriorPillar extends WorldgenStructure {
-	public static boolean generate(World aWorld, Random aRandom, int aChunkX, int aChunkZ, StructureData aData) {
+public class WorldgenStructureExteriorPillar extends WorldgenDungeonGT {
+	public static boolean generate(World aWorld, Random aRandom, int aChunkX, int aChunkZ, DungeonChunkData aData) {
 		boolean temp = T;
-		for (int tX = 6; tX <= 9 && temp; tX++) for (int tZ = 6; tZ <= 9 && temp; tZ++) if (aWorld.getBlock(aChunkX+tX, aData.mOffsetY-1, aChunkZ+tZ).isOpaqueCube()) temp = F;
+		for (int tX = 6; tX <= 9 && temp; tX++) for (int tZ = 6; tZ <= 9 && temp; tZ++) if (aWorld.getBlock(aChunkX+tX, aData.mY-1, aChunkZ+tZ).isOpaqueCube()) temp = F;
 		
 		if (temp) for (int tX =  5; tX <= 10; tX++) for (int tZ =  5; tZ <= 10; tZ++) {
-			setSmoothBlock (aWorld, aChunkX+tX, aData.mOffsetY-1, aChunkZ+tZ, aData, aRandom);
-			setRandomBricks(aWorld, aChunkX+tX, aData.mOffsetY-2, aChunkZ+tZ, aData, aRandom);
+			setSmoothBlock (aWorld, aChunkX+tX, aData.mY-1, aChunkZ+tZ, aData, aRandom);
+			setRandomBricks(aWorld, aChunkX+tX, aData.mY-2, aChunkZ+tZ, aData, aRandom);
 		}
 		
-		for (int tY = aData.mOffsetY-3; tY >= 2 && temp; tY--) {
+		for (int tY = aData.mY-3; tY >= 2 && temp; tY--) {
 			temp = F;
 			for (int tX = 6; tX <= 9 && !temp; tX++) for (int tZ = 6; tZ <= 9 && !temp; tZ++) {
 				Block tBlock = aWorld.getBlock(aChunkX+tX, tY, aChunkZ+tZ);
