@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.Random;
 
+import gregapi.block.IBlockPlacable;
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.HashSetNoNulls;
@@ -73,75 +74,79 @@ public class DungeonChunkData extends WorldAndCoords {
 		mRandom = aRandom;
 	}
 	
-	public boolean setRandomBricks   (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, 3+mRandom.nextInt(3), 2);}
-	public boolean setStandardBrick  (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.BRICK, 2);}
-	public boolean setRedstoneBrick  (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.RSTBR, 3);}
-	public boolean setCrackedBrick   (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.CRACK, 2);}
-	public boolean setMossyBrick     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.MBRIK, 2);}
-	public boolean setChiseledStone  (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.CHISL, 2);}
-	public boolean setStoneTiles     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.TILES, 2);}
-	public boolean setSmallTiles     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.STILE, 2);}
-	public boolean setSmallBricks    (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.SBRIK, 2);}
-	public boolean setSmoothBlock    (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.SMOTH, 2);}
-	public boolean setAirBlock       (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return setBlock(aX, aY, aZ, NB, 0, 2);}
+	public boolean bricks     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, 3+mRandom.nextInt(3), 2);}
+	public boolean brick      (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.BRICK, 2);}
+	public boolean redstoned  (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.RSTBR, 3);}
+	public boolean cracked    (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.CRACK, 2);}
+	public boolean mossy      (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.MBRIK, 2);}
+	public boolean chiseled   (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.CHISL, 2);}
+	public boolean tiles      (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.TILES, 2);}
+	public boolean smalltiles (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.STILE, 2);}
+	public boolean smallbricks(int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.SBRIK, 2);}
+	public boolean smooth     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.SMOTH, 2);}
+	public boolean setAirBlock(int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, NB, 0, 2);}
 	
-	public boolean setRandomBricks   (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, 3+mRandom.nextInt(3), 2);}
-	public boolean setStandardBrick  (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.BRICK, 2);}
-	public boolean setRedstoneBrick  (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.RSTBR, 3);}
-	public boolean setCrackedBrick   (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.CRACK, 2);}
-	public boolean setMossyBrick     (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.MBRIK, 2);}
-	public boolean setChiseledStone  (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.CHISL, 2);}
-	public boolean setStoneTiles     (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.TILES, 2);}
-	public boolean setSmallTiles     (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.STILE, 2);}
-	public boolean setSmallBricks    (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.SBRIK, 2);}
-	public boolean setSmoothBlock    (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.SMOTH, 2);}
-	public boolean setAirBlock       (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, NB, 0, 2);}
+	public boolean bricks     (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, 3+mRandom.nextInt(3), 2);}
+	public boolean brick      (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.BRICK, 2);}
+	public boolean redstoned  (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.RSTBR, 3);}
+	public boolean cracked    (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.CRACK, 2);}
+	public boolean mossy      (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.MBRIK, 2);}
+	public boolean chiseled   (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.CHISL, 2);}
+	public boolean tiles      (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.TILES, 2);}
+	public boolean smalltiles (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.STILE, 2);}
+	public boolean smallbricks(int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.SBRIK, 2);}
+	public boolean smooth     (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.SMOTH, 2);}
+	public boolean air        (int aX, int aY, int aZ) {return set(aX, aY, aZ, NB, 0, 2);}
 	
-	public boolean setGlass          (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, BlocksGT.Glass, mColor, 2);}
-	public boolean setGlowGlass      (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, BlocksGT.GlowGlass, mColor, 2);}
-	public boolean setColored        (int aX, int aY, int aZ) {return setBlock(aX, aY, aZ, BlocksGT.Concrete, mColor, 2);}
+	public boolean glass      (int aX, int aY, int aZ) {return set(aX, aY, aZ, BlocksGT.Glass, mColor, 2);}
+	public boolean glassglow  (int aX, int aY, int aZ) {return set(aX, aY, aZ, BlocksGT.GlowGlass, mColor, 2);}
+	public boolean colored    (int aX, int aY, int aZ) {return set(aX, aY, aZ, BlocksGT.Concrete, mColor, 2);}
 	
-	public boolean setLampBlock(int aX, int aY, int aZ, Block aPrimary, Block aSecondary, int aGenerateRedstoneBrick) {
+	public boolean lamp(int aX, int aY, int aZ, Block aPrimary, Block aSecondary, int aGenerateRedstoneBrick) {
 		mLightUpdateCoords.add(new ChunkCoordinates(mX+aX, mY+aY, mZ+aZ));
-		if (aGenerateRedstoneBrick != 0) setRedstoneBrick(aX, aY+aGenerateRedstoneBrick, aZ);
-		return setBlock(aX, aY, aZ, aGenerateRedstoneBrick == 0 ? Blocks.redstone_lamp : Blocks.lit_redstone_lamp, 0, 2);
+		if (aGenerateRedstoneBrick != 0) redstoned(aX, aY+aGenerateRedstoneBrick, aZ);
+		return set(aX, aY, aZ, aGenerateRedstoneBrick == 0 ? Blocks.redstone_lamp : Blocks.lit_redstone_lamp, 0, 2);
 	}
 	
-	public boolean setLampBlock(int aX, int aY, int aZ, int aGenerateRedstoneBrick) {
+	public boolean lamp(int aX, int aY, int aZ, int aGenerateRedstoneBrick) {
 		mLightUpdateCoords.add(new ChunkCoordinates(mX+aX, mY+aY, mZ+aZ));
-		if (aGenerateRedstoneBrick != 0) setRedstoneBrick(aX, aY+aGenerateRedstoneBrick, aZ);
-		return setBlock(aX, aY, aZ, aGenerateRedstoneBrick == 0 ? Blocks.redstone_lamp : Blocks.lit_redstone_lamp, 0, 2);
+		if (aGenerateRedstoneBrick != 0) redstoned(aX, aY+aGenerateRedstoneBrick, aZ);
+		return set(aX, aY, aZ, aGenerateRedstoneBrick == 0 ? Blocks.redstone_lamp : Blocks.lit_redstone_lamp, 0, 2);
 	}
 	
-	public boolean setCoins(int aX, int aY, int aZ) {
+	public boolean coins(int aX, int aY, int aZ) {
 		for (int i = 0; i < 16; i++) mCoin.setByte("gt.coin.stacksize."+i, (byte)(mRandom.nextInt(3) == 0 ? mRandom.nextInt(8) : 0));
 		mCoin.setByte("gt.coin.stacksize."+mRandom.nextInt(16), (byte)(1+mRandom.nextInt(8)));
 		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)32700, mCoin, T, T);
 	}
 	
-	public boolean setMTE(int aX, int aY, int aZ, byte aSide, long aMetaData, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+	public boolean set(int aX, int aY, int aZ, byte aSide, long aMetaData, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
 		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMetaData, aNBT, aCauseBlockUpdates, aForcePlacement);
 	}
 	
-	public boolean setFlower(int aX, int aY, int aZ) {
-		int tIndex = mRandom.nextInt(BlocksGT.FLOWER_TILES.length);
-		return setBlock(aX, aY, aZ, BlocksGT.FLOWER_TILES[tIndex], BlocksGT.FLOWER_METAS[tIndex], 2);
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, byte aSide, long aMetaData, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMetaData, aNBT, aCauseBlockUpdates, aForcePlacement);
 	}
 	
-	public boolean setFlowerPot(int aX, int aY, int aZ) {
+	public boolean flower(int aX, int aY, int aZ) {
+		int tIndex = mRandom.nextInt(BlocksGT.FLOWER_TILES.length);
+		return set(aX, aY, aZ, BlocksGT.FLOWER_TILES[tIndex], BlocksGT.FLOWER_METAS[tIndex], 2);
+	}
+	
+	public boolean pot(int aX, int aY, int aZ) {
 		int tIndex = mRandom.nextInt(BlocksGT.POT_FLOWER_TILES.length);
-		setBlock(aX, aY, aZ, Blocks.flower_pot, 0, 2);
+		set(aX, aY, aZ, Blocks.flower_pot, 0, 2);
 		TileEntity tTileEntity = mWorld.getTileEntity(mX+aX, mY+aY, mZ+aZ);
 		if (tTileEntity instanceof TileEntityFlowerPot) ((TileEntityFlowerPot)tTileEntity).func_145964_a(Item.getItemFromBlock(BlocksGT.POT_FLOWER_TILES[tIndex]), BlocksGT.POT_FLOWER_METAS[tIndex]);
 		return T;
 	}
 	
-	public boolean setBlock(int aX, int aY, int aZ, Block aBlock, int aMeta, int aFlags) {
+	public boolean set(int aX, int aY, int aZ, Block aBlock, int aMeta, int aFlags) {
 		return mWorld.setBlock(mX+aX, mY+aY, mZ+aZ, aBlock, aMeta, aFlags);
 	}
 	
-	public boolean setBlock(int aX, int aY, int aZ, Block aBlock, int aMeta, int aFlags, int aRotationCount) {
-		setBlock(aX, aY, aZ, aBlock, aMeta, aFlags);
+	public boolean set(int aX, int aY, int aZ, Block aBlock, int aMeta, int aFlags, int aRotationCount) {
+		set(aX, aY, aZ, aBlock, aMeta, aFlags);
 		while (aRotationCount-->0) aBlock.rotateBlock(mWorld, mX+aX, mY+aY, mZ+aZ, FORGE_DIR[SIDE_Y_POS]);
 		return T;
 	}

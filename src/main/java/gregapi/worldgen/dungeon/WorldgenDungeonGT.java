@@ -198,32 +198,32 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			
 			switch(tRoomLayout[i][j]) {
 			case 1:
-				if (WorldgenStructureExteriorRoom.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData, T)) {
+				if (WorldgenDungeonExteriorRoom.generate(aData)) {
 					// Default Room, because not all the Stuff has been added yet.
-					WorldgenStructureInteriorDefault.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
+					WorldgenDungeonInteriorDefault.generate(aData);
 				}
 				break;
 			case 2:
-				if (WorldgenStructureExteriorRoom.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData, T)) {
+				if (WorldgenDungeonExteriorRoom.generate(aData)) {
 					switch(tConnectionCount) {
 					case 1:
 						// Piston Door + a Portal Room.
-						WorldgenStructureExteriorPistonDoor.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
+						WorldgenDungeonExteriorPistonDoor.generate(aData);
 						if (aRandom.nextBoolean()) {
-								 if (tDidntPortalEnd        && WorldgenStructureInteriorPortalEnd       .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalEnd = F;
-							else if (tDidntPortalMyst       && WorldgenStructureInteriorPortalMyst      .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalMyst = F;
-							else if (tDidntPortalTwilight   && WorldgenStructureInteriorPortalTwilight  .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalTwilight = F;
-							else if (tDidntPortalNether     && WorldgenStructureInteriorPortalNether    .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalNether = F;
+								 if (tDidntPortalEnd        && WorldgenDungeonInteriorPortalEnd       .generate(aData)) tDidntPortalEnd = F;
+							else if (tDidntPortalMyst       && WorldgenDungeonInteriorPortalMyst      .generate(aData)) tDidntPortalMyst = F;
+							else if (tDidntPortalTwilight   && WorldgenDungeonInteriorPortalTwilight  .generate(aData)) tDidntPortalTwilight = F;
+							else if (tDidntPortalNether     && WorldgenDungeonInteriorPortalNether    .generate(aData)) tDidntPortalNether = F;
 						} else {
-								 if (tDidntPortalNether     && WorldgenStructureInteriorPortalNether    .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalNether = F;
-							else if (tDidntPortalTwilight   && WorldgenStructureInteriorPortalTwilight  .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalTwilight = F;
-							else if (tDidntPortalEnd        && WorldgenStructureInteriorPortalEnd       .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalEnd = F;
-							else if (tDidntPortalMyst       && WorldgenStructureInteriorPortalMyst      .generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData)) tDidntPortalMyst = F;
+								 if (tDidntPortalNether     && WorldgenDungeonInteriorPortalNether    .generate(aData)) tDidntPortalNether = F;
+							else if (tDidntPortalTwilight   && WorldgenDungeonInteriorPortalTwilight  .generate(aData)) tDidntPortalTwilight = F;
+							else if (tDidntPortalEnd        && WorldgenDungeonInteriorPortalEnd       .generate(aData)) tDidntPortalEnd = F;
+							else if (tDidntPortalMyst       && WorldgenDungeonInteriorPortalMyst      .generate(aData)) tDidntPortalMyst = F;
 						}
 						break;
 					case 2:
 						// Pool containing Glowtus and Bonus Chests.
-						WorldgenStructureInteriorPool.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
+						WorldgenDungeonInteriorPool.generate(aData);
 						break;
 					case 3:
 						// Empty Room
@@ -235,16 +235,16 @@ public class WorldgenDungeonGT extends WorldgenObject {
 				}
 				break;
 			case 3:
-				if (WorldgenStructureExteriorRoom.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData, T)) {
+				if (WorldgenDungeonExteriorRoom.generate(aData)) {
 					switch(tConnectionCount) {
 					case 1:
 						// Piston Door + Storage Room.
-						WorldgenStructureExteriorPistonDoor.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
-						WorldgenStructureInteriorStorage.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
+						WorldgenDungeonExteriorPistonDoor.generate(aData);
+						WorldgenDungeonInteriorStorage.generate(aData);
 						break;
 					case 2:
 						// Pool containing Glowtus and Bonus Chests.
-						WorldgenStructureInteriorPool.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
+						WorldgenDungeonInteriorPool.generate(aData);
 						break;
 					case 3:
 						// Empty Room
@@ -256,14 +256,14 @@ public class WorldgenDungeonGT extends WorldgenObject {
 				}
 				break;
 			case 4:
-				if (WorldgenStructureExteriorRoom.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData, T)) {
+				if (WorldgenDungeonExteriorRoom.generate(aData)) {
 					// Library
-					WorldgenStructureInteriorLibrary.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
+					WorldgenDungeonInteriorLibrary.generate(aData);
 				}
 				break;
 			case ROOM_ID_COUNT:
 				// Generate dedicated empty Rooms as well.
-				WorldgenStructureExteriorRoom.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData, T);
+				WorldgenDungeonExteriorRoom.generate(aData);
 				break;
 			}
 			
@@ -280,16 +280,16 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			switch(tRoomLayout[i][j]) {
 			case -128:
 				// Corridors, very important, to connect Stuff
-				WorldgenDungeonExteriorCorridor.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
+				WorldgenDungeonExteriorCorridor.generate(aData);
 				break;
 			case -2:
 				// Always have an Entrance
-				WorldgenStructureExteriorEntrance.generate(aData);
+				WorldgenDungeonExteriorEntrance.generate(aData);
 				break;
 			case -1:
 				// Always have a Sleeping Room
-				if (WorldgenStructureExteriorRoom.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData, T)) {
-					WorldgenStructureInteriorBarracks.generate(aWorld, aRandom, aMinX+i*16, aMinZ+j*16, aData);
+				if (WorldgenDungeonExteriorRoom.generate(aData)) {
+					WorldgenDungeonInteriorBarracks.generate(aData);
 				}
 				break;
 			}
