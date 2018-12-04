@@ -30,9 +30,11 @@ import net.minecraft.nbt.NBTTagList;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenDungeonInteriorPortalMyst {
-	public static boolean generate(DungeonData aData) {
-		WorldgenDungeonInteriorPortal.generate(aData);
+public class DungeonChunkRoomPortalMyst extends DungeonChunkRoomPortal {
+	@Override
+	public boolean generate(DungeonData aData) {
+		if (aData.mTags.contains(WorldgenDungeonGT.TAG_PORTAL_MYST) || !super.generate(aData)) return F;
+		aData.mTags.add(WorldgenDungeonGT.TAG_PORTAL_MYST);
 		
 		NBTTagList tInventory = new NBTTagList();
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.Myst_Crystal.get(5)), "s", (short)12));

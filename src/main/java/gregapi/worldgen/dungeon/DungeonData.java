@@ -27,6 +27,7 @@ import gregapi.block.IBlockPlacable;
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.HashSetNoNulls;
+import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
 import gregapi.random.WorldAndCoords;
 import gregapi.util.UT;
@@ -53,11 +54,12 @@ public class DungeonData extends WorldAndCoords {
 	public final ItemStack[] mKeyStacks;
 	public final boolean[] mGeneratedKeys;
 	public final HashSetNoNulls<ChunkCoordinates> mLightUpdateCoords;
+	public final HashSetNoNulls<TagData> mTags;
 	public final WorldgenDungeonGT mStructure;
 	public final NBTTagCompound mCoin;
 	public final Random mRandom;
 	
-	public DungeonData(World aWorld, int aX, int aY, int aZ, WorldgenDungeonGT aStructure, BlockStones aPrimaryBlock, BlockStones aSecondaryBlock, MultiTileEntityRegistry aRegistry, HashSetNoNulls<ChunkCoordinates> aLightUpdateCoords, long[] aKeyIDs, ItemStack[] aKeyStacks, boolean[] aGeneratedKeys, byte[][] aRoomLayout, int aRoomX, int aRoomZ, int aConnectionCount, int aColor, Random aRandom, NBTTagCompound aCoin) {
+	public DungeonData(World aWorld, int aX, int aY, int aZ, WorldgenDungeonGT aStructure, BlockStones aPrimaryBlock, BlockStones aSecondaryBlock, MultiTileEntityRegistry aRegistry, HashSetNoNulls<ChunkCoordinates> aLightUpdateCoords, HashSetNoNulls<TagData> aTags, long[] aKeyIDs, ItemStack[] aKeyStacks, boolean[] aGeneratedKeys, byte[][] aRoomLayout, int aRoomX, int aRoomZ, int aConnectionCount, int aColor, Random aRandom, NBTTagCompound aCoin) {
 		super(aWorld, aX, aY, aZ);
 		mStructure = aStructure;
 		mPrimary = aPrimaryBlock;
@@ -71,6 +73,7 @@ public class DungeonData extends WorldAndCoords {
 		mKeyStacks = aKeyStacks;
 		mGeneratedKeys = aGeneratedKeys;
 		mLightUpdateCoords = aLightUpdateCoords;
+		mTags = aTags;
 		mColor = UT.Code.bind4(aColor);
 		mColorInversed = UT.Code.bind4(15-aColor);
 		mCoin = aCoin;

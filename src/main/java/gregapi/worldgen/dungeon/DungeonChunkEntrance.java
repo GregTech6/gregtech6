@@ -28,8 +28,6 @@ import net.minecraft.block.Block;
  * @author Gregorius Techneticies
  */
 public class DungeonChunkEntrance extends DungeonChunkPillar {
-	public DungeonChunkEntrance() {/**/}
-	
 	@Override
 	public boolean generate(DungeonData aData) {
 		super.generate(aData);

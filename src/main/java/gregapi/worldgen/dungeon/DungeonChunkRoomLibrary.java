@@ -35,8 +35,10 @@ import net.minecraftforge.common.ChestGenHooks;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenDungeonInteriorLibrary {
-	public static boolean generate(DungeonData aData) {
+public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
+	@Override
+	public boolean generate(DungeonData aData) {
+		super.generate(aData);
 		int tWoodType = aData.mRandom.nextInt(6);
 		
 		String[] tLoots = new String[] {ChestGenHooks.STRONGHOLD_LIBRARY, ChestGenHooks.STRONGHOLD_CORRIDOR, ChestGenHooks.STRONGHOLD_CROSSING, ChestGenHooks.PYRAMID_DESERT_CHEST, ChestGenHooks.PYRAMID_JUNGLE_CHEST, ChestGenHooks.VILLAGE_BLACKSMITH, ChestGenHooks.MINESHAFT_CORRIDOR, ChestGenHooks.DUNGEON_CHEST, ChestGenHooks.BONUS_CHEST};
@@ -161,59 +163,59 @@ public class WorldgenDungeonInteriorLibrary {
 			tDidntGenerateSpecial = F;
 			Block tThaumcraftTable = ST.block(MD.TC, "blockTable"), tThaumcraftCandle = ST.block(MD.TC, "blockCandle");
 			if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
-				aData.set                            (14, 1,  5, tThaumcraftTable, 1, 2);
+				aData.set   (14, 1,  5, tThaumcraftTable, 1, 2);
 				aData.set   (14, 1,  6, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-				aData.set                            (14, 1,  7, tThaumcraftTable, 1, 2);
-				aData.set                            (14, 1,  8, tThaumcraftTable, 1, 2);
+				aData.set   (14, 1,  7, tThaumcraftTable, 1, 2);
+				aData.set   (14, 1,  8, tThaumcraftTable, 1, 2);
 				aData.set   (14, 1,  9, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-				aData.set                            (14, 1, 10, tThaumcraftTable, 1, 2);
+				aData.set   (14, 1, 10, tThaumcraftTable, 1, 2);
 				
 				if (aData.mRandom.nextInt(4)==0) aData.coins (14, 2,  5);
-				aData.set                            (14, 2,  6, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.set   (14, 2,  6, tThaumcraftCandle, aData.mColorInversed, 2);
 				aData.set   (14, 2,  7+aData.mRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-				aData.set                            (14, 2,  9, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.set   (14, 2,  9, tThaumcraftCandle, aData.mColorInversed, 2);
 				if (aData.mRandom.nextInt(4)==0) aData.coins (14, 2, 10);
 			}
 			if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
-				aData.set                            ( 1, 1,  5, tThaumcraftTable, 1, 2);
+				aData.set   ( 1, 1,  5, tThaumcraftTable, 1, 2);
 				aData.set   ( 1, 1,  6, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-				aData.set                            ( 1, 1,  7, tThaumcraftTable, 1, 2);
-				aData.set                            ( 1, 1,  8, tThaumcraftTable, 1, 2);
+				aData.set   ( 1, 1,  7, tThaumcraftTable, 1, 2);
+				aData.set   ( 1, 1,  8, tThaumcraftTable, 1, 2);
 				aData.set   ( 1, 1,  9, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-				aData.set                            ( 1, 1, 10, tThaumcraftTable, 1, 2);
+				aData.set   ( 1, 1, 10, tThaumcraftTable, 1, 2);
 				
 				if (aData.mRandom.nextInt(4)==0) aData.coins ( 1, 2,  5);
-				aData.set                            ( 1, 2,  6, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.set   ( 1, 2,  6, tThaumcraftCandle, aData.mColorInversed, 2);
 				aData.set   ( 1, 2,  7+aData.mRandom.nextInt(2), SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-				aData.set                            ( 1, 2,  9, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.set   ( 1, 2,  9, tThaumcraftCandle, aData.mColorInversed, 2);
 				if (aData.mRandom.nextInt(4)==0) aData.coins ( 1, 2, 10);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
-				aData.set                            ( 5, 1, 14, tThaumcraftTable, 0, 2);
+				aData.set   ( 5, 1, 14, tThaumcraftTable, 0, 2);
 				aData.set   ( 6, 1, 14, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-				aData.set                            ( 7, 1, 14, tThaumcraftTable, 0, 2);
-				aData.set                            ( 8, 1, 14, tThaumcraftTable, 0, 2);
+				aData.set   ( 7, 1, 14, tThaumcraftTable, 0, 2);
+				aData.set   ( 8, 1, 14, tThaumcraftTable, 0, 2);
 				aData.set   ( 9, 1, 14, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-				aData.set                            (10, 1, 14, tThaumcraftTable, 0, 2);
+				aData.set   (10, 1, 14, tThaumcraftTable, 0, 2);
 				
 				if (aData.mRandom.nextInt(4)==0) aData.coins ( 5, 2, 14);
-				aData.set                            ( 6, 2, 14, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.set   ( 6, 2, 14, tThaumcraftCandle, aData.mColorInversed, 2);
 				aData.set   ( 7+aData.mRandom.nextInt(2), 2, 14, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-				aData.set                            ( 9, 2, 14, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.set   ( 9, 2, 14, tThaumcraftCandle, aData.mColorInversed, 2);
 				if (aData.mRandom.nextInt(4)==0) aData.coins (10, 2, 14);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
-				aData.set                            ( 5, 1,  1, tThaumcraftTable, 0, 2);
+				aData.set   ( 5, 1,  1, tThaumcraftTable, 0, 2);
 				aData.set   ( 6, 1,  1, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-				aData.set                            ( 7, 1,  1, tThaumcraftTable, 0, 2);
-				aData.set                            ( 8, 1,  1, tThaumcraftTable, 0, 2);
+				aData.set   ( 7, 1,  1, tThaumcraftTable, 0, 2);
+				aData.set   ( 8, 1,  1, tThaumcraftTable, 0, 2);
 				aData.set   ( 9, 1,  1, SIDE_UNKNOWN, (short) 7046, UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-				aData.set                            (10, 1,  1, tThaumcraftTable, 0, 2);
+				aData.set   (10, 1,  1, tThaumcraftTable, 0, 2);
 				
 				if (aData.mRandom.nextInt(4)==0) aData.coins ( 5, 2,  1);
-				aData.set                            ( 6, 2,  1, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.set   ( 6, 2,  1, tThaumcraftCandle, aData.mColorInversed, 2);
 				aData.set   ( 7+aData.mRandom.nextInt(2), 2,  1, SIDE_UNKNOWN, (short)32739, new FluidTankGT(FL.Potion_NightVision_1L.make(250)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-				aData.set                            ( 9, 2,  1, tThaumcraftCandle, aData.mColorInversed, 2);
+				aData.set   ( 9, 2,  1, tThaumcraftCandle, aData.mColorInversed, 2);
 				if (aData.mRandom.nextInt(4)==0) aData.coins (10, 2,  1);
 			}
 			break;
@@ -225,101 +227,101 @@ public class WorldgenDungeonInteriorLibrary {
 			if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
 				if (temp) {
 					temp = F;
-					aData.set                            (14, 1,  5, tInkMixer        , 0, 2, 1);
+					aData.set   (14, 1,  5, tInkMixer        , 0, 2, 1);
 					aData.set   (14, 1,  6, SIDE_UNKNOWN, (short)32705, new FluidTankGT(FL.Myst_Ink.make(1000+1000*aData.mRandom.nextInt(8))).writeToNBT(UT.NBT.make(), NBT_TANK+".out.0"), T, T);
-					aData.set                            (14, 1,  7, tWritingTable    , 0, 2);
-					aData.set                            (14, 1,  8, tWritingTable    , 8, 2);
+					aData.set   (14, 1,  7, tWritingTable    , 0, 2);
+					aData.set   (14, 1,  8, tWritingTable    , 8, 2);
 					aData.set   (14, 1,  9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-					aData.set                            (14, 1, 10, tBookBinder  , 0, 2, 1);
+					aData.set   (14, 1, 10, tBookBinder  , 0, 2, 1);
 					
-					aData.set                            (14, 2,  9, tLectern     , 0, 2, 1);
+					aData.set   (14, 2,  9, tLectern     , 0, 2, 1);
 				} else {
 					aData.set   (14, 1,  5, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-					aData.set                            (14, 1,  6, tStand           , 0, 2, 2);
+					aData.set   (14, 1,  6, tStand           , 0, 2, 2);
 					aData.set   (14, 1,  7, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
 					aData.set   (14, 1,  8, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-					aData.set                            (14, 1,  9, tStand           , 0, 2, 2);
+					aData.set   (14, 1,  9, tStand           , 0, 2, 2);
 					aData.set   (14, 1, 10, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
 					
-					aData.set                            (14, 2,  5, tLectern     , 0, 2, 1);
-					aData.set                            (14, 2,  7, tLectern     , 0, 2, 1);
-					aData.set                            (14, 2,  8, tLectern     , 0, 2, 1);
-					aData.set                            (14, 2, 10, tLectern     , 0, 2, 1);
+					aData.set   (14, 2,  5, tLectern     , 0, 2, 1);
+					aData.set   (14, 2,  7, tLectern     , 0, 2, 1);
+					aData.set   (14, 2,  8, tLectern     , 0, 2, 1);
+					aData.set   (14, 2, 10, tLectern     , 0, 2, 1);
 				}
 			}
 			if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
 				if (temp) {
 					temp = F;
-					aData.set                            ( 1, 1,  5, tBookBinder      , 0, 2, 3);
+					aData.set   ( 1, 1,  5, tBookBinder      , 0, 2, 3);
 					aData.set   ( 1, 1,  6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-					aData.set                            ( 1, 1,  7, tWritingTable    ,10, 2);
-					aData.set                            ( 1, 1,  8, tWritingTable    , 2, 2);
+					aData.set   ( 1, 1,  7, tWritingTable    ,10, 2);
+					aData.set   ( 1, 1,  8, tWritingTable    , 2, 2);
 					aData.set   ( 1, 1,  9, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
-					aData.set                            ( 1, 1, 10, tInkMixer        , 0, 2, 3);
+					aData.set   ( 1, 1, 10, tInkMixer        , 0, 2, 3);
 					
-					aData.set                            ( 1, 2,  6, tLectern     , 0, 2, 3);
+					aData.set   ( 1, 2,  6, tLectern     , 0, 2, 3);
 				} else {
 					aData.set   ( 1, 1,  5, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-					aData.set                            ( 1, 1,  6, tStand           , 0, 2, 6);
+					aData.set   ( 1, 1,  6, tStand           , 0, 2, 6);
 					aData.set   ( 1, 1,  7, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
 					aData.set   ( 1, 1,  8, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-					aData.set                            ( 1, 1,  9, tStand           , 0, 2, 6);
+					aData.set   ( 1, 1,  9, tStand           , 0, 2, 6);
 					aData.set   ( 1, 1, 10, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
 					
-					aData.set                            ( 1, 2,  5, tLectern     , 0, 2, 3);
-					aData.set                            ( 1, 2,  7, tLectern     , 0, 2, 3);
-					aData.set                            ( 1, 2,  8, tLectern     , 0, 2, 3);
-					aData.set                            ( 1, 2, 10, tLectern     , 0, 2, 3);
+					aData.set   ( 1, 2,  5, tLectern     , 0, 2, 3);
+					aData.set   ( 1, 2,  7, tLectern     , 0, 2, 3);
+					aData.set   ( 1, 2,  8, tLectern     , 0, 2, 3);
+					aData.set   ( 1, 2, 10, tLectern     , 0, 2, 3);
 				}
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
 				if (temp) {
 					temp = F;
-					aData.set                            ( 5, 1, 14, tBookBinder  , 0, 2, 2);
+					aData.set   ( 5, 1, 14, tBookBinder  , 0, 2, 2);
 					aData.set   ( 6, 1, 14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-					aData.set                            ( 7, 1, 14, tWritingTable    , 9, 2);
-					aData.set                            ( 8, 1, 14, tWritingTable    , 1, 2);
+					aData.set   ( 7, 1, 14, tWritingTable    , 9, 2);
+					aData.set   ( 8, 1, 14, tWritingTable    , 1, 2);
 					aData.set   ( 9, 1, 14, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
-					aData.set                            (10, 1, 14, tInkMixer        , 0, 2, 2);
+					aData.set   (10, 1, 14, tInkMixer        , 0, 2, 2);
 					
-					aData.set                            ( 6, 2, 14, tLectern     , 0, 2, 2);
+					aData.set   ( 6, 2, 14, tLectern     , 0, 2, 2);
 				} else {
 					aData.set   ( 5, 1, 14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-					aData.set                            ( 6, 1, 14, tStand           , 0, 2, 4);
+					aData.set   ( 6, 1, 14, tStand           , 0, 2, 4);
 					aData.set   ( 7, 1, 14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
 					aData.set   ( 8, 1, 14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-					aData.set                            ( 9, 1, 14, tStand           , 0, 2, 4);
+					aData.set   ( 9, 1, 14, tStand           , 0, 2, 4);
 					aData.set   (10, 1, 14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
 					
-					aData.set                            ( 5, 2, 14, tLectern     , 0, 2, 2);
-					aData.set                            ( 7, 2, 14, tLectern     , 0, 2, 2);
-					aData.set                            ( 8, 2, 14, tLectern     , 0, 2, 2);
-					aData.set                            (10, 2, 14, tLectern     , 0, 2, 2);
+					aData.set   ( 5, 2, 14, tLectern     , 0, 2, 2);
+					aData.set   ( 7, 2, 14, tLectern     , 0, 2, 2);
+					aData.set   ( 8, 2, 14, tLectern     , 0, 2, 2);
+					aData.set   (10, 2, 14, tLectern     , 0, 2, 2);
 				}
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
 				if (temp) {
 					temp = F;
-					aData.set                            ( 5, 1,  1, tInkMixer        , 0, 2, 0);
+					aData.set   ( 5, 1,  1, tInkMixer        , 0, 2, 0);
 					aData.set   ( 6, 1,  1, SIDE_UNKNOWN, (short)32705, UT.NBT.make(), T, T);
-					aData.set                            ( 7, 1,  1, tWritingTable    , 3, 2);
-					aData.set                            ( 8, 1,  1, tWritingTable    ,11, 2);
+					aData.set   ( 7, 1,  1, tWritingTable    , 3, 2);
+					aData.set   ( 8, 1,  1, tWritingTable    ,11, 2);
 					aData.set   ( 9, 1,  1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-					aData.set                            (10, 1,  1, tBookBinder  , 0, 2, 0);
+					aData.set   (10, 1,  1, tBookBinder  , 0, 2, 0);
 					
-					aData.set                            ( 9, 2,  1, tLectern     , 0, 2, 0);
+					aData.set   ( 9, 2,  1, tLectern     , 0, 2, 0);
 				} else {
 					aData.set   ( 5, 1,  1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-					aData.set                            ( 6, 1,  1, tStand           , 0, 2, 0);
+					aData.set   ( 6, 1,  1, tStand           , 0, 2, 0);
 					aData.set   ( 7, 1,  1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
 					aData.set   ( 8, 1,  1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-					aData.set                            ( 9, 1,  1, tStand           , 0, 2, 0);
+					aData.set   ( 9, 1,  1, tStand           , 0, 2, 0);
 					aData.set   (10, 1,  1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
 					
-					aData.set                            ( 5, 2,  1, tLectern     , 0, 2, 0);
-					aData.set                            ( 7, 2,  1, tLectern     , 0, 2, 0);
-					aData.set                            ( 8, 2,  1, tLectern     , 0, 2, 0);
-					aData.set                            (10, 2,  1, tLectern     , 0, 2, 0);
+					aData.set   ( 5, 2,  1, tLectern     , 0, 2, 0);
+					aData.set   ( 7, 2,  1, tLectern     , 0, 2, 0);
+					aData.set   ( 8, 2,  1, tLectern     , 0, 2, 0);
+					aData.set   (10, 2,  1, tLectern     , 0, 2, 0);
 				}
 			}
 			break;
@@ -329,12 +331,12 @@ public class WorldgenDungeonInteriorLibrary {
 		
 		if (tDidntGenerateSpecial) {
 			if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
-				aData.set                            (14, 1,  5, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   (14, 1,  5, Blocks.wooden_slab, tWoodType+8, 2);
 				aData.set   (14, 1,  6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-				aData.set                            (14, 1,  7, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.set                            (14, 1,  8, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   (14, 1,  7, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   (14, 1,  8, Blocks.wooden_slab, tWoodType+8, 2);
 				aData.set   (14, 1,  9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_NEG), T, T);
-				aData.set                            (14, 1, 10, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   (14, 1, 10, Blocks.wooden_slab, tWoodType+8, 2);
 				
 				if (aData.mRandom.nextInt(4)==0) aData.coins (14, 2,  5);
 				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
@@ -349,12 +351,12 @@ public class WorldgenDungeonInteriorLibrary {
 				if (aData.mRandom.nextInt(4)==0) aData.coins (14, 2, 10);
 			}
 			if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
-				aData.set                            ( 1, 1,  5, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 1, 1,  5, Blocks.wooden_slab, tWoodType+8, 2);
 				aData.set   ( 1, 1,  6, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-				aData.set                            ( 1, 1,  7, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.set                            ( 1, 1,  8, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 1, 1,  7, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 1, 1,  8, Blocks.wooden_slab, tWoodType+8, 2);
 				aData.set   ( 1, 1,  9, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_X_POS), T, T);
-				aData.set                            ( 1, 1, 10, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 1, 1, 10, Blocks.wooden_slab, tWoodType+8, 2);
 				
 				if (aData.mRandom.nextInt(4)==0) aData.coins ( 1, 2,  5);
 				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
@@ -369,12 +371,12 @@ public class WorldgenDungeonInteriorLibrary {
 				if (aData.mRandom.nextInt(4)==0) aData.coins ( 1, 2, 10);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
-				aData.set                            ( 5, 1, 14, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 5, 1, 14, Blocks.wooden_slab, tWoodType+8, 2);
 				aData.set   ( 6, 1, 14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-				aData.set                            ( 7, 1, 14, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.set                            ( 8, 1, 14, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 7, 1, 14, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 8, 1, 14, Blocks.wooden_slab, tWoodType+8, 2);
 				aData.set   ( 9, 1, 14, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_NEG), T, T);
-				aData.set                            (10, 1, 14, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   (10, 1, 14, Blocks.wooden_slab, tWoodType+8, 2);
 				
 				if (aData.mRandom.nextInt(4)==0) aData.coins ( 5, 2, 14);
 				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.mStructure.mZPM) {
@@ -389,12 +391,12 @@ public class WorldgenDungeonInteriorLibrary {
 				if (aData.mRandom.nextInt(4)==0) aData.coins (10, 2, 14);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
-				aData.set                            ( 5, 1,  1, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 5, 1,  1, Blocks.wooden_slab, tWoodType+8, 2);
 				aData.set   ( 6, 1,  1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-				aData.set                            ( 7, 1,  1, Blocks.wooden_slab, tWoodType+8, 2);
-				aData.set                            ( 8, 1,  1, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 7, 1,  1, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   ( 8, 1,  1, Blocks.wooden_slab, tWoodType+8, 2);
 				aData.set   ( 9, 1,  1, SIDE_UNKNOWN, (short)(7000+tWoodType), UT.NBT.make(null, "gt.dungeonloot.front", ChestGenHooks.STRONGHOLD_LIBRARY, NBT_FACING, SIDE_Z_POS), T, T);
-				aData.set                            (10, 1,  1, Blocks.wooden_slab, tWoodType+8, 2);
+				aData.set   (10, 1,  1, Blocks.wooden_slab, tWoodType+8, 2);
 				
 				if (aData.mRandom.nextInt(4)==0) aData.coins ( 5, 2,  1);
 				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.mStructure.mZPM) {

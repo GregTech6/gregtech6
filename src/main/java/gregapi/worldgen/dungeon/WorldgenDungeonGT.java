@@ -29,6 +29,7 @@ import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
+import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.IL;
@@ -50,21 +51,38 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
-import twilightforest.TwilightForestMod;
 
 /**
  * @author Gregorius Techneticies
  */
 public class WorldgenDungeonGT extends WorldgenObject {
 	public static IDungeonChunk
-	  ROOM_EMPTY  = new DungeonChunkRoomEmpty()
-	, DOOR_PISTON = new DungeonChunkDoorPiston()
-	, CORRIDOR    = new DungeonChunkCorridor()
-	, PILLAR      = new DungeonChunkPillar()
-	, ENTRANCE    = new DungeonChunkEntrance()
+	  PILLAR          = new DungeonChunkPillar()
+	, ROOM_EMPTY      = new DungeonChunkRoomEmpty()
+	, DOOR_PISTON     = new DungeonChunkDoorPiston()
+	, CORRIDOR        = new DungeonChunkCorridor()
+	, ENTRANCE        = new DungeonChunkEntrance()
+	, BARRACKS        = new DungeonChunkBarracks()
 	;
 	
-	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<>(F, ROOM_EMPTY);
+	public static final TagData
+	  TAG_PORTAL_NETHER   = TagData.createTagData("gt.dungeon.portal.nether")
+	, TAG_PORTAL_END      = TagData.createTagData("gt.dungeon.portal.end")
+	, TAG_PORTAL_TWILIGHT = TagData.createTagData("gt.dungeon.portal.twilight")
+	, TAG_PORTAL_MYST     = TagData.createTagData("gt.dungeon.portal.myst")
+	;
+	
+	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<>(F
+	, ROOM_EMPTY
+	, new DungeonChunkRoomWorkshop()
+	, new DungeonChunkRoomLibrary()
+	, new DungeonChunkRoomPool()
+	, new DungeonChunkRoomStorage()
+	, new DungeonChunkRoomPortalNether()
+	, new DungeonChunkRoomPortalEnd()
+	, new DungeonChunkRoomPortalTwilight()
+	, new DungeonChunkRoomPortalMyst()
+	);
 	
 	public final int mProbability, mMinSize, mMaxSize, mMinY, mMaxY, mRoomChance;
 	public final boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mZPM;
@@ -87,7 +105,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	
 	public WorldgenDungeonGT() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F);}
 	
-	public static final int ROOM_ID_COUNT = 5;
+	public static final int ROOM_ID_COUNT = 1, IMPORTANT_ROOM_COUNT = 2;
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
@@ -102,19 +120,21 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		
 		int tOffsetY = mMinY + aRandom.nextInt(Math.max(1, mMaxY-mMinY)), tColor = aRandom.nextInt(16);
 		
-		BlockStones tPrimaryBlock = (BlockStones)BlocksGT.stones[aRandom.nextInt(BlocksGT.stones.length)], tSecondaryBlock = (BlockStones)BlocksGT.stones[aRandom.nextInt(BlocksGT.stones.length)];
+		BlockStones
+		tPrimaryBlock   = (BlockStones)BlocksGT.stones[aRandom.nextInt(BlocksGT.stones.length)],
+		tSecondaryBlock = (BlockStones)BlocksGT.stones[aRandom.nextInt(BlocksGT.stones.length)];
 		
 		HashSetNoNulls<ChunkCoordinates> tLightUpdateCoords = new HashSetNoNulls<>();
+		HashSetNoNulls<TagData> tTags = new HashSetNoNulls<>();
 		
 		byte[][] tRoomLayout = new byte[2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)][2+mMinSize+aRandom.nextInt(1+mMaxSize-mMinSize)];
 		
 		boolean[] tGeneratedKeys = new boolean[5];
 		
-		boolean
-		  tDidntPortalNether    = (mPortalNether                            && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_NETHER))
-		, tDidntPortalEnd       = (mPortalEnd                               && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END))
-		, tDidntPortalTwilight  = (mPortalTwilight  && MD.TF.mLoaded        && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == TwilightForestMod.dimensionID))
-		, tDidntPortalMyst      = (mPortalMyst      && MD.MYST.mLoaded      );
+		if (!(mPortalNether                      && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_NETHER))) tTags.add(TAG_PORTAL_NETHER);
+		if (!(mPortalEnd                         && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END   ))) tTags.add(TAG_PORTAL_END);
+		if (!(mPortalTwilight && MD.TF  .mLoaded && (aWorld.provider.dimensionId == DIM_OVERWORLD || WD.dimTF(aWorld)                         ))) tTags.add(TAG_PORTAL_TWILIGHT);
+		if (!(mPortalMyst     && MD.MYST.mLoaded )) tTags.add(TAG_PORTAL_MYST);
 		
 		long[] tKeyIDs = new long[tGeneratedKeys.length];
 		tKeyIDs[0] = System.nanoTime();
@@ -127,7 +147,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		
 		for (int i = 0; i < tRoomLayout.length; i++) for (int j = 0; j < tRoomLayout[i].length; j++) aWorld.setBlock(aMinX+8+i*16, 254, aMinZ+8+j*16, NB, 0, 3);
 		
-		for (int i = 0, j = 0, k = -1, l = 0; k >= -2 && l < 10000; l++) {
+		for (int i = 0, j = 0, k = -1, l = 0; k >= -IMPORTANT_ROOM_COUNT && l < 10000; l++) {
 			i = 1+aRandom.nextInt(tRoomLayout   .length-2);
 			j = 1+aRandom.nextInt(tRoomLayout[i].length-2);
 			if (tRoomLayout[i][j] == 0) {tRoomLayout[i][j] = (byte)k--;}
@@ -202,74 +222,11 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
 			
 			
-			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
+			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tTags, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
 			switch(tRoomLayout[i][j]) {
-			case 1:
-				if (ROOM_EMPTY.generate(aData)) {
-					// Default Room, because not all the Stuff has been added yet.
-					WorldgenDungeonInteriorDefault.generate(aData);
-				}
-				break;
-			case 2:
-				if (ROOM_EMPTY.generate(aData)) {
-					switch(tConnectionCount) {
-					case 1:
-						// Piston Door + a Portal Room.
-						DOOR_PISTON.generate(aData);
-						if (aRandom.nextBoolean()) {
-								 if (tDidntPortalEnd        && WorldgenDungeonInteriorPortalEnd       .generate(aData)) tDidntPortalEnd = F;
-							else if (tDidntPortalMyst       && WorldgenDungeonInteriorPortalMyst      .generate(aData)) tDidntPortalMyst = F;
-							else if (tDidntPortalTwilight   && WorldgenDungeonInteriorPortalTwilight  .generate(aData)) tDidntPortalTwilight = F;
-							else if (tDidntPortalNether     && WorldgenDungeonInteriorPortalNether    .generate(aData)) tDidntPortalNether = F;
-						} else {
-								 if (tDidntPortalNether     && WorldgenDungeonInteriorPortalNether    .generate(aData)) tDidntPortalNether = F;
-							else if (tDidntPortalTwilight   && WorldgenDungeonInteriorPortalTwilight  .generate(aData)) tDidntPortalTwilight = F;
-							else if (tDidntPortalEnd        && WorldgenDungeonInteriorPortalEnd       .generate(aData)) tDidntPortalEnd = F;
-							else if (tDidntPortalMyst       && WorldgenDungeonInteriorPortalMyst      .generate(aData)) tDidntPortalMyst = F;
-						}
-						break;
-					case 2:
-						// Pool containing Glowtus and Bonus Chests.
-						WorldgenDungeonInteriorPool.generate(aData);
-						break;
-					case 3:
-						// Empty Room
-						break;
-					default:
-						// Empty Room
-						break;
-					}
-				}
-				break;
-			case 3:
-				if (ROOM_EMPTY.generate(aData)) {
-					switch(tConnectionCount) {
-					case 1:
-						// Piston Door + Storage Room.
-						DOOR_PISTON.generate(aData);
-						WorldgenDungeonInteriorStorage.generate(aData);
-						break;
-					case 2:
-						// Pool containing Glowtus and Bonus Chests.
-						WorldgenDungeonInteriorPool.generate(aData);
-						break;
-					case 3:
-						// Empty Room
-						break;
-					default:
-						// Empty Room
-						break;
-					}
-				}
-				break;
-			case 4:
-				if (ROOM_EMPTY.generate(aData)) {
-					// Library
-					WorldgenDungeonInteriorLibrary.generate(aData);
-				}
-				break;
 			case ROOM_ID_COUNT:
+				// Generate a random Room
 				List<IDungeonChunk> tList = new ArrayListNoNulls<>(ROOMS);
 				while (T) {
 					if (tList.remove(aRandom.nextInt(tList.size())).generate(aData)) break;
@@ -286,7 +243,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			int tConnectionCount = 0;
 			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
 			
-			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
+			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tTags, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
 			switch(tRoomLayout[i][j]) {
 			case -128:
@@ -299,9 +256,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 				break;
 			case -1:
 				// Always have a Sleeping Room
-				if (ROOM_EMPTY.generate(aData)) {
-					WorldgenDungeonInteriorBarracks.generate(aData);
-				}
+				BARRACKS.generate(aData);
 				break;
 			}
 			

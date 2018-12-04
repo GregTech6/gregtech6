@@ -28,8 +28,6 @@ import static gregapi.data.CS.*;
  * It is a good Idea to just extend this Class and do a super Call in order to have an Empty Room generated before placing your Interior Design.
  */
 public class DungeonChunkRoomEmpty extends DungeonChunkPillar {
-	public DungeonChunkRoomEmpty() {/**/}
-	
 	@Override
 	public boolean generate(DungeonData aData) {
 		super.generate(aData);

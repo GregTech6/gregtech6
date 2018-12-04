@@ -31,9 +31,11 @@ import net.minecraft.nbt.NBTTagList;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenDungeonInteriorPortalTwilight {
-	public static boolean generate(DungeonData aData) {
-		WorldgenDungeonInteriorPortal.generate(aData);
+public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
+	@Override
+	public boolean generate(DungeonData aData) {
+		if (aData.mTags.contains(WorldgenDungeonGT.TAG_PORTAL_TWILIGHT) || !super.generate(aData)) return F;
+		aData.mTags.add(WorldgenDungeonGT.TAG_PORTAL_TWILIGHT);
 		
 		NBTTagList tInventory = new NBTTagList();
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.book("Manual_Portal_TF")), "s", (short)22));

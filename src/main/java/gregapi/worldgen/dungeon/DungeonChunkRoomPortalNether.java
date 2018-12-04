@@ -31,9 +31,11 @@ import net.minecraft.nbt.NBTTagList;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenDungeonInteriorPortalNether {
-	public static boolean generate(DungeonData aData) {
-		WorldgenDungeonInteriorPortal.generate(aData);
+public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
+	@Override
+	public boolean generate(DungeonData aData) {
+		if (aData.mTags.contains(WorldgenDungeonGT.TAG_PORTAL_NETHER) || !super.generate(aData)) return F;
+		aData.mTags.add(WorldgenDungeonGT.TAG_PORTAL_NETHER);
 		
 		NBTTagList tInventory = new NBTTagList();
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.book("Manual_Hunting_Blaze")), "s", (short)22));

@@ -33,8 +33,6 @@ import net.minecraft.block.BlockFalling;
  * It is a good Idea to just extend this Class and do a super Call in order to have a Pillar generated before placing your Exterior Design.
  */
 public class DungeonChunkPillar implements IDungeonChunk {
-	public DungeonChunkPillar() {/**/}
-	
 	@Override
 	public boolean generate(DungeonData aData) {
 		boolean temp = T;

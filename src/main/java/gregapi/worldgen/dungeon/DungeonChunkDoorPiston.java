@@ -27,8 +27,6 @@ import net.minecraft.init.Blocks;
  * @author Gregorius Techneticies
  */
 public class DungeonChunkDoorPiston implements IDungeonChunk {
-	public DungeonChunkDoorPiston() {/**/}
-	
 	@Override
 	public boolean generate(DungeonData aData) {
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {

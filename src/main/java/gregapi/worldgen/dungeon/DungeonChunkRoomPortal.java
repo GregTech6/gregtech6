@@ -24,8 +24,11 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenDungeonInteriorPortal {
-	public static boolean generate(DungeonData aData) {
+public class DungeonChunkRoomPortal extends DungeonChunkRoomVault {
+	@Override
+	public boolean generate(DungeonData aData) {
+		if (!super.generate(aData)) return F;
+		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {
 			for (int i = 0; i < 6; i++) for (int j = 0; j < 6; j++) if (i == 0 || j == 0 || i == 5 || j == 5) {
 				if ((i == 0 || i == 5) && (j == 0 || j == 5)) {
