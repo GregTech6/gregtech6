@@ -28,9 +28,15 @@ import net.minecraft.block.BlockFalling;
 
 /**
  * @author Gregorius Techneticies
+ * 
+ * This is the Pillar Implementation
+ * It is a good Idea to just extend this Class and do a super Call in order to have a Pillar generated before placing your Exterior Design.
  */
-public class WorldgenDungeonExteriorPillar {
-	public static boolean generate(DungeonChunkData aData) {
+public class DungeonChunkPillar implements IDungeonChunk {
+	public DungeonChunkPillar() {/**/}
+	
+	@Override
+	public boolean generate(DungeonData aData) {
 		boolean temp = T;
 		for (int tX = 6; tX <= 9 && temp; tX++) for (int tZ = 6; tZ <= 9 && temp; tZ++) if (WD.opq(aData.mWorld, aData.mX+tX, aData.mY-1, aData.mZ+tZ, T, F)) temp = F;
 		

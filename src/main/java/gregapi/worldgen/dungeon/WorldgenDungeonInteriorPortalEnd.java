@@ -27,7 +27,7 @@ import net.minecraft.init.Blocks;
  * @author Gregorius Techneticies
  */
 public class WorldgenDungeonInteriorPortalEnd {
-	public static boolean generate(DungeonChunkData aData) {
+	public static boolean generate(DungeonData aData) {
 		for (int tX = 5; tX <= 10; tX++) for (int tZ = 5; tZ <= 10; tZ++) {
 			aData.set(tX, 0, tZ, Blocks.end_stone, 0, 2);
 			if ((tX == 5 || tX == 10) && (tZ == 5 || tZ == 10)) {

@@ -36,7 +36,7 @@ import net.minecraftforge.common.ChestGenHooks;
  * @author Gregorius Techneticies
  */
 public class WorldgenDungeonInteriorLibrary {
-	public static boolean generate(DungeonChunkData aData) {
+	public static boolean generate(DungeonData aData) {
 		int tWoodType = aData.mRandom.nextInt(6);
 		
 		String[] tLoots = new String[] {ChestGenHooks.STRONGHOLD_LIBRARY, ChestGenHooks.STRONGHOLD_CORRIDOR, ChestGenHooks.STRONGHOLD_CROSSING, ChestGenHooks.PYRAMID_DESERT_CHEST, ChestGenHooks.PYRAMID_JUNGLE_CHEST, ChestGenHooks.VILLAGE_BLACKSMITH, ChestGenHooks.MINESHAFT_CORRIDOR, ChestGenHooks.DUNGEON_CHEST, ChestGenHooks.BONUS_CHEST};

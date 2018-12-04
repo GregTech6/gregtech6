@@ -38,7 +38,7 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class WorldgenDungeonInteriorDefault {
-	public static boolean generate(DungeonChunkData aData) {
+	public static boolean generate(DungeonData aData) {
 		aData.set           ( 3, 1,  1, SIDE_UNKNOWN, (short)   11, UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Z_POS, "gt.dungeonloot", ChestGenHooks.MINESHAFT_CORRIDOR      ), T, T);
 		
 		aData.set           ( 2, 1,  1, SIDE_UNKNOWN, (short)   11, UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_FACING, SIDE_Z_POS, "gt.dungeonloot", ChestGenHooks.STRONGHOLD_CROSSING     ), T, T);

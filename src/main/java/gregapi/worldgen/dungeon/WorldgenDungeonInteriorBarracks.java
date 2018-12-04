@@ -34,7 +34,7 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class WorldgenDungeonInteriorBarracks {
-	public static boolean generate(DungeonChunkData aData) {
+	public static boolean generate(DungeonData aData) {
 		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) if ((tX <= 4 || tX >= 11) && (tZ <= 4 || tZ >= 11)) {
 			aData.set(tX, 1, tZ, Blocks.carpet, aData.mColorInversed, 2);
 		}

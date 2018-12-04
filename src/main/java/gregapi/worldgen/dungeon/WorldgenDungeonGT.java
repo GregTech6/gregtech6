@@ -56,7 +56,15 @@ import twilightforest.TwilightForestMod;
  * @author Gregorius Techneticies
  */
 public class WorldgenDungeonGT extends WorldgenObject {
-	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<>();
+	public static IDungeonChunk
+	  ROOM_EMPTY  = new DungeonChunkRoomEmpty()
+	, DOOR_PISTON = new DungeonChunkDoorPiston()
+	, CORRIDOR    = new DungeonChunkCorridor()
+	, PILLAR      = new DungeonChunkPillar()
+	, ENTRANCE    = new DungeonChunkEntrance()
+	;
+	
+	public static final List<IDungeonChunk> ROOMS = new ArrayListNoNulls<>(F, ROOM_EMPTY);
 	
 	public final int mProbability, mMinSize, mMaxSize, mMinY, mMaxY, mRoomChance;
 	public final boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mZPM;
@@ -194,21 +202,21 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
 			
 			
-			DungeonChunkData aData = new DungeonChunkData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
+			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
 			switch(tRoomLayout[i][j]) {
 			case 1:
-				if (WorldgenDungeonExteriorRoom.generate(aData)) {
+				if (ROOM_EMPTY.generate(aData)) {
 					// Default Room, because not all the Stuff has been added yet.
 					WorldgenDungeonInteriorDefault.generate(aData);
 				}
 				break;
 			case 2:
-				if (WorldgenDungeonExteriorRoom.generate(aData)) {
+				if (ROOM_EMPTY.generate(aData)) {
 					switch(tConnectionCount) {
 					case 1:
 						// Piston Door + a Portal Room.
-						WorldgenDungeonExteriorPistonDoor.generate(aData);
+						DOOR_PISTON.generate(aData);
 						if (aRandom.nextBoolean()) {
 								 if (tDidntPortalEnd        && WorldgenDungeonInteriorPortalEnd       .generate(aData)) tDidntPortalEnd = F;
 							else if (tDidntPortalMyst       && WorldgenDungeonInteriorPortalMyst      .generate(aData)) tDidntPortalMyst = F;
@@ -235,11 +243,11 @@ public class WorldgenDungeonGT extends WorldgenObject {
 				}
 				break;
 			case 3:
-				if (WorldgenDungeonExteriorRoom.generate(aData)) {
+				if (ROOM_EMPTY.generate(aData)) {
 					switch(tConnectionCount) {
 					case 1:
 						// Piston Door + Storage Room.
-						WorldgenDungeonExteriorPistonDoor.generate(aData);
+						DOOR_PISTON.generate(aData);
 						WorldgenDungeonInteriorStorage.generate(aData);
 						break;
 					case 2:
@@ -256,14 +264,17 @@ public class WorldgenDungeonGT extends WorldgenObject {
 				}
 				break;
 			case 4:
-				if (WorldgenDungeonExteriorRoom.generate(aData)) {
+				if (ROOM_EMPTY.generate(aData)) {
 					// Library
 					WorldgenDungeonInteriorLibrary.generate(aData);
 				}
 				break;
 			case ROOM_ID_COUNT:
-				// Generate dedicated empty Rooms as well.
-				WorldgenDungeonExteriorRoom.generate(aData);
+				List<IDungeonChunk> tList = new ArrayListNoNulls<>(ROOMS);
+				while (T) {
+					if (tList.remove(aRandom.nextInt(tList.size())).generate(aData)) break;
+					if (tList.isEmpty()) {ROOM_EMPTY.generate(aData); break;}
+				}
 				break;
 			}
 			
@@ -275,20 +286,20 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			int tConnectionCount = 0;
 			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
 			
-			DungeonChunkData aData = new DungeonChunkData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
+			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
 			switch(tRoomLayout[i][j]) {
 			case -128:
 				// Corridors, very important, to connect Stuff
-				WorldgenDungeonExteriorCorridor.generate(aData);
+				CORRIDOR.generate(aData);
 				break;
 			case -2:
 				// Always have an Entrance
-				WorldgenDungeonExteriorEntrance.generate(aData);
+				ENTRANCE.generate(aData);
 				break;
 			case -1:
 				// Always have a Sleeping Room
-				if (WorldgenDungeonExteriorRoom.generate(aData)) {
+				if (ROOM_EMPTY.generate(aData)) {
 					WorldgenDungeonInteriorBarracks.generate(aData);
 				}
 				break;
@@ -306,62 +317,62 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		return T;
 	}
 	
-	public static boolean setRandomBricks   (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, 3+aRandom.nextInt(3), 2);}
-	public static boolean setStandardBrick  (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.BRICK, 2);}
-	public static boolean setRedstoneBrick  (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.RSTBR, 3);}
-	public static boolean setCrackedBrick   (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.CRACK, 2);}
-	public static boolean setMossyBrick     (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.MBRIK, 2);}
-	public static boolean setChiseledStone  (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.CHISL, 2);}
-	public static boolean setStoneTiles     (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.TILES, 2);}
-	public static boolean setSmallTiles     (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.STILE, 2);}
-	public static boolean setSmallBricks    (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.SBRIK, 2);}
-	public static boolean setSmoothBlock    (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.SMOTH, 2);}
-	public static boolean setAirBlock       (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, NB, 0, 2);}
+	public static boolean setRandomBricks   (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, 3+aRandom.nextInt(3), 2);}
+	public static boolean setStandardBrick  (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.BRICK, 2);}
+	public static boolean setRedstoneBrick  (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.RSTBR, 3);}
+	public static boolean setCrackedBrick   (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.CRACK, 2);}
+	public static boolean setMossyBrick     (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.MBRIK, 2);}
+	public static boolean setChiseledStone  (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.CHISL, 2);}
+	public static boolean setStoneTiles     (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.TILES, 2);}
+	public static boolean setSmallTiles     (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.STILE, 2);}
+	public static boolean setSmallBricks    (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.SBRIK, 2);}
+	public static boolean setSmoothBlock    (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aSecondary : aPrimary, BlockStones.SMOTH, 2);}
+	public static boolean setAirBlock       (World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, NB, 0, 2);}
 	
-	public static boolean setRandomBricks   (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, 3+aRandom.nextInt(3), 2);}
-	public static boolean setStandardBrick  (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.BRICK, 2);}
-	public static boolean setRedstoneBrick  (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.RSTBR, 3);}
-	public static boolean setCrackedBrick   (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.CRACK, 2);}
-	public static boolean setMossyBrick     (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.MBRIK, 2);}
-	public static boolean setChiseledStone  (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.CHISL, 2);}
-	public static boolean setStoneTiles     (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.TILES, 2);}
-	public static boolean setSmallTiles     (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.STILE, 2);}
-	public static boolean setSmallBricks    (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.SBRIK, 2);}
-	public static boolean setSmoothBlock    (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.SMOTH, 2);}
-	public static boolean setAirBlock       (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, NB, 0, 2);}
+	public static boolean setRandomBricks   (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, 3+aRandom.nextInt(3), 2);}
+	public static boolean setStandardBrick  (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.BRICK, 2);}
+	public static boolean setRedstoneBrick  (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.RSTBR, 3);}
+	public static boolean setCrackedBrick   (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.CRACK, 2);}
+	public static boolean setMossyBrick     (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.MBRIK, 2);}
+	public static boolean setChiseledStone  (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.CHISL, 2);}
+	public static boolean setStoneTiles     (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.TILES, 2);}
+	public static boolean setSmallTiles     (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.STILE, 2);}
+	public static boolean setSmallBricks    (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.SBRIK, 2);}
+	public static boolean setSmoothBlock    (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, aY == aData.mY+2 ? aData.mSecondary : aData.mPrimary, BlockStones.SMOTH, 2);}
+	public static boolean setAirBlock       (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, NB, 0, 2);}
 	
-	public static boolean setGlass          (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.Glass, aData.mColor, 2);}
-	public static boolean setGlowGlass      (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.GlowGlass, aData.mColor, 2);}
-	public static boolean setColored        (World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.Concrete, aData.mColor, 2);}
+	public static boolean setGlass          (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.Glass, aData.mColor, 2);}
+	public static boolean setGlowGlass      (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.GlowGlass, aData.mColor, 2);}
+	public static boolean setColored        (World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {return aWorld.setBlock(aX, aY, aZ, BlocksGT.Concrete, aData.mColor, 2);}
 	
-	public static boolean setLampBlock(World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Block aPrimary, Block aSecondary, Random aRandom, int aGenerateRedstoneBrick) {
+	public static boolean setLampBlock(World aWorld, int aX, int aY, int aZ, DungeonData aData, Block aPrimary, Block aSecondary, Random aRandom, int aGenerateRedstoneBrick) {
 		aData.mLightUpdateCoords.add(new ChunkCoordinates(aX, aY, aZ));
 		if (aGenerateRedstoneBrick != 0) setRedstoneBrick(aWorld, aX, aY+aGenerateRedstoneBrick, aZ, aData, aRandom);
 		aWorld.setBlock(aX, aY, aZ, aGenerateRedstoneBrick == 0 ? Blocks.redstone_lamp : Blocks.lit_redstone_lamp, 0, 2);
 		return T;
 	}
 	
-	public static boolean setLampBlock(World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom, int aGenerateRedstoneBrick) {
+	public static boolean setLampBlock(World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom, int aGenerateRedstoneBrick) {
 		aData.mLightUpdateCoords.add(new ChunkCoordinates(aX, aY, aZ));
 		if (aGenerateRedstoneBrick != 0) setRedstoneBrick(aWorld, aX, aY+aGenerateRedstoneBrick, aZ, aData, aRandom);
 		aWorld.setBlock(aX, aY, aZ, aGenerateRedstoneBrick == 0 ? Blocks.redstone_lamp : Blocks.lit_redstone_lamp, 0, 2);
 		return T;
 	}
 	
-	public static boolean setCoins(World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {
+	public static boolean setCoins(World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {
 		for (int i = 0; i < 16; i++) aData.mCoin.setByte("gt.coin.stacksize."+i, (byte)(aRandom.nextInt(3) == 0 ? aRandom.nextInt(8) : 0));
 		aData.mCoin.setByte("gt.coin.stacksize."+aRandom.nextInt(16), (byte)(1+aRandom.nextInt(8)));
 		aData.mMTERegistryGT.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, (short)32700, aData.mCoin, T, T);
 		return T;
 	}
 	
-	public static boolean setFlower(World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {
+	public static boolean setFlower(World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {
 		int tIndex = aRandom.nextInt(BlocksGT.FLOWER_TILES.length);
 		aWorld.setBlock(aX, aY, aZ, BlocksGT.FLOWER_TILES[tIndex], BlocksGT.FLOWER_METAS[tIndex], 2);
 		return T;
 	}
 	
-	public static boolean setFlowerPot(World aWorld, int aX, int aY, int aZ, DungeonChunkData aData, Random aRandom) {
+	public static boolean setFlowerPot(World aWorld, int aX, int aY, int aZ, DungeonData aData, Random aRandom) {
 		int tIndex = aRandom.nextInt(BlocksGT.POT_FLOWER_TILES.length);
 		aWorld.setBlock(aX, aY, aZ, Blocks.flower_pot, 0, 2);
 		TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);

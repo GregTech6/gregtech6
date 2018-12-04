@@ -32,10 +32,13 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenDungeonExteriorCorridor {
-	public static boolean generate(DungeonChunkData aData) {
+public class DungeonChunkCorridor extends DungeonChunkPillar {
+	public DungeonChunkCorridor() {/**/}
+	
+	@Override
+	public boolean generate(DungeonData aData) {
 		if ((aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0 || aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) && (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0 || aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0)) {
-			WorldgenDungeonExteriorPillar.generate(aData);
+			super.generate(aData);
 		}
 		
 		if (aData.mConnectionCount == 4) {

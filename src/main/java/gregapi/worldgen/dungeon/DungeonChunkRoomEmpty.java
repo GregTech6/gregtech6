@@ -23,10 +23,16 @@ import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
+ * 
+ * This is the Empty Room Implementation
+ * It is a good Idea to just extend this Class and do a super Call in order to have an Empty Room generated before placing your Interior Design.
  */
-public class WorldgenDungeonExteriorRoom {
-	public static boolean generate(DungeonChunkData aData) {
-		WorldgenDungeonExteriorPillar.generate(aData);
+public class DungeonChunkRoomEmpty extends DungeonChunkPillar {
+	public DungeonChunkRoomEmpty() {/**/}
+	
+	@Override
+	public boolean generate(DungeonData aData) {
+		super.generate(aData);
 		
 		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) for (int tY = 0; tY <= 7; tY++) {
 			if (tX == 0 || tX == 15 || tZ == 0 || tZ == 15 || tY == 0 || tY == 7) {

@@ -26,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.12: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[API] Addons should now be able to create their own Rooms in GT6 Dungeons.
 
 
 6.09.11:

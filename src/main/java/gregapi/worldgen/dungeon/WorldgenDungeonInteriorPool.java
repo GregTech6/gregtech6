@@ -30,7 +30,7 @@ import net.minecraftforge.common.ChestGenHooks;
  * @author Gregorius Techneticies
  */
 public class WorldgenDungeonInteriorPool {
-	public static boolean generate(DungeonChunkData aData) {
+	public static boolean generate(DungeonData aData) {
 		for (int tX = 3; tX <= 12; tX++) for (int tZ = 3; tZ <= 12; tZ++) {
 			if ((tX == 3 || tX == 12 || tZ == 3 || tZ == 12)) {
 				aData.colored(tX,  0, tZ);

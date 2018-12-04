@@ -32,7 +32,7 @@ import net.minecraft.nbt.NBTTagList;
  * @author Gregorius Techneticies
  */
 public class WorldgenDungeonInteriorPortalNether {
-	public static boolean generate(DungeonChunkData aData) {
+	public static boolean generate(DungeonData aData) {
 		WorldgenDungeonInteriorPortal.generate(aData);
 		
 		NBTTagList tInventory = new NBTTagList();

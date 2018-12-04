@@ -40,7 +40,10 @@ import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 
-public class DungeonChunkData extends WorldAndCoords {
+/**
+ * @author Gregorius Techneticies
+ */
+public class DungeonData extends WorldAndCoords {
 	public final MultiTileEntityRegistry mMTERegistryGT;
 	public final BlockStones mPrimary, mSecondary;
 	public final byte[][] mRoomLayout;
@@ -54,7 +57,7 @@ public class DungeonChunkData extends WorldAndCoords {
 	public final NBTTagCompound mCoin;
 	public final Random mRandom;
 	
-	public DungeonChunkData(World aWorld, int aX, int aY, int aZ, WorldgenDungeonGT aStructure, BlockStones aPrimaryBlock, BlockStones aSecondaryBlock, MultiTileEntityRegistry aRegistry, HashSetNoNulls<ChunkCoordinates> aLightUpdateCoords, long[] aKeyIDs, ItemStack[] aKeyStacks, boolean[] aGeneratedKeys, byte[][] aRoomLayout, int aRoomX, int aRoomZ, int aConnectionCount, int aColor, Random aRandom, NBTTagCompound aCoin) {
+	public DungeonData(World aWorld, int aX, int aY, int aZ, WorldgenDungeonGT aStructure, BlockStones aPrimaryBlock, BlockStones aSecondaryBlock, MultiTileEntityRegistry aRegistry, HashSetNoNulls<ChunkCoordinates> aLightUpdateCoords, long[] aKeyIDs, ItemStack[] aKeyStacks, boolean[] aGeneratedKeys, byte[][] aRoomLayout, int aRoomX, int aRoomZ, int aConnectionCount, int aColor, Random aRandom, NBTTagCompound aCoin) {
 		super(aWorld, aX, aY, aZ);
 		mStructure = aStructure;
 		mPrimary = aPrimaryBlock;
