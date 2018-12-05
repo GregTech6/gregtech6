@@ -118,7 +118,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			}
 			Recipe tRecipe = tRecipeMap.findRecipe(this, null, F, Long.MAX_VALUE, NI, ZL_FLUIDTANKGT, slotHas(0)?slot(0):ST.emptySlot(), slotHas(1)?slot(1):ST.emptySlot());
 			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slotHas(0)?slot(0):ST.emptySlot(), slotHas(1)?slot(1):ST.emptySlot())) {
-				ItemStack[] tOutputItems = tRecipe.getOutputs(RNGSUS);
+				ItemStack[] tOutputItems = tRecipe.getOutputs();
 				for (int i = 0; i < tOutputItems.length; i++) if (ST.valid(tOutputItems[i]) && !UT.Inventories.addStackToPlayerInventory(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F)) ST.place(worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5, tOutputItems[i]);
 				removeAllDroppableNullStacks();
 				long tDurability = Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.mEUt) * Math.max(1, tRecipe.mDuration), 4));

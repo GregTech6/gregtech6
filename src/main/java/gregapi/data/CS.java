@@ -21,15 +21,7 @@ package gregapi.data;
 
 import java.io.File;
 import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 import gregapi.api.Abstract_Mod;
 import gregapi.block.BlockBase;
@@ -267,7 +259,7 @@ public class CS {
 	// "Wasteland City", "Bog", "Fens", "Carr", "Kakadu", "Scree", "Scrub", "Riparian Zone", "Basin", "Badlands", "Outback", "Tropical Islands", "Tropical Archipelago", "Windy Island", "Wastelands", "Volcano Island", "Volcano", "Volcano M"
 	
 	/** Stores the Coordinates that any given Player last interacted with. */
-	public static final Map<EntityPlayer, ChunkCoordinates> PLAYER_LAST_CLICKED = new HashMap<>();
+	public static final Map<EntityPlayer, ChunkCoordinates> PLAYER_LAST_CLICKED = new IdentityHashMap<>();
 	
 	/** a Random generator so I don't need to instantiate a new one all the time. */
 	public static final Random RNGSUS = new Random(), RANDOM = RNGSUS;

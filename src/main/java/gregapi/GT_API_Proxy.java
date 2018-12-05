@@ -216,10 +216,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent public void onWorldLoad(WorldEvent.Load aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	
-	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                   = new ArrayListNoNulls<>(), SERVER_TICK_PR2 = new ArrayListNoNulls<>();
-	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST                  = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
-	public  static List<ITileEntityScheduledUpdate      > SCHEDULED_TILEENTITY_UPDATES      = new ArrayListNoNulls<>();
-	private static List<ITileEntityScheduledUpdate      > SCHEDULED_TILEENTITY_UPDATES_2    = new ArrayListNoNulls<>();
+	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
+	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
+	public  static       List<ITileEntityScheduledUpdate> SCHEDULED_TILEENTITY_UPDATES   = new ArrayListNoNulls<>();
+	private static       List<ITileEntityScheduledUpdate> SCHEDULED_TILEENTITY_UPDATES_2 = new ArrayListNoNulls<>();
 	
 	@SubscribeEvent
 	public void onServerTick(ServerTickEvent aEvent) {

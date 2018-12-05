@@ -29,11 +29,11 @@ import gregapi.tileentity.tools.MultiTileEntityAdvancedCraftingTable.MultiTileEn
  * @author Gregorius Techneticies
  */
 public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI {
-	public static boolean sIsAdded = T;
+	public static boolean ADDED = T;
 	
 	@Override
 	public void loadConfig() {
-		sIsAdded = F;
+		ADDED = F;
 		
 		for (RecipeMap tMap : RecipeMap.RECIPE_MAPS.values()) if (tMap.mNEIAllowed) new NEI_RecipeMap(tMap);
 		
@@ -44,7 +44,7 @@ public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI {
 		
 		NEI = T;
 		
-		sIsAdded = T;
+		ADDED = T;
 	}
 	
 	@Override
@@ -55,6 +55,6 @@ public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI {
 	/** This is just the last time I was looking at this Version Number :P */
 	@Override
 	public String getVersion() {
-		return "6.07.13";
+		return "6.09.12";
 	}
 }

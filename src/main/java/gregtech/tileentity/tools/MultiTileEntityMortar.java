@@ -86,7 +86,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 			if (tRecipe != null) {
 				if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 				if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, aStack)) {
-					for (ItemStack tStack : tRecipe.getOutputs(RNGSUS)) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 					aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 250.0F);
 					UT.Sounds.send(worldObj, SFX.MC_DIG_ROCK, 1.0F, 1.0F, getCoords());
 					return T;

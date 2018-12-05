@@ -677,6 +677,10 @@ public class Recipe {
 		return mInputs.length == 1 && mOutputs.length == 1 && mFluidInputs.length == 0 && mFluidOutputs.length == 0 && ST.block(mInputs[0]) != NB && ST.block(mOutputs[0]) != NB && mInputs[0].stackSize == 1 && mOutputs[0].stackSize == 1;
 	}
 	
+	public FluidStack[] getFluidOutputs() {
+		return getFluidOutputs(RNGSUS, 1);
+	}
+	
 	public FluidStack[] getFluidOutputs(Random aRandom) {
 		return getFluidOutputs(aRandom, 1);
 	}
@@ -685,6 +689,10 @@ public class Recipe {
 		FluidStack[] rArray = new FluidStack[mFluidOutputs.length];
 		for (int i = 0; i < rArray.length; i++) rArray[i] = UT.Fluids.mul(getFluidOutput(i), aProcessCount);
 		return rArray;
+	}
+	
+	public ItemStack[] getOutputs() {
+		return getOutputs(RNGSUS, 1);
 	}
 	
 	public ItemStack[] getOutputs(Random aRandom) {

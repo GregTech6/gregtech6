@@ -140,8 +140,8 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 			if (tRecipe != null) {
 				if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 				if (canOutput(tRecipe) && tRecipe.isRecipeInputEqual(T, F, ZL_FS, aStack)) {
-					for (ItemStack tStack : tRecipe.getOutputs(RNGSUS)) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
-					FluidStack[] tOutputFluids = tRecipe.getFluidOutputs(RNGSUS);
+					for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 					for (int i = 0; i < mTanks.length && i < tOutputFluids.length; i++) mTanks[i].fill(tOutputFluids[i], T);
 					aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 10000.0F);
 					UT.Sounds.send(worldObj, SFX.MC_SLIME_BIG, 1.0F, 1.0F, getCoords());

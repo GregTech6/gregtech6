@@ -121,8 +121,8 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 			if (tRecipe != null) {
 				if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 				if (canOutput(tRecipe) && tRecipe.isRecipeInputEqual(T, F, mTanksInput, tInputItems)) {
-					ItemStack [] tOutputItems  = tRecipe.getOutputs(RNGSUS);
-					FluidStack[] tOutputFluids = tRecipe.getFluidOutputs(RNGSUS);
+					ItemStack [] tOutputItems  = tRecipe.getOutputs();
+					FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 					for (int i = 0; i < mRecipes.mOutputItemsCount && i < tOutputItems.length; i++) addStackToSlot(i+6, tOutputItems[i]);
 					for (int i = 0; i < mTanksOutput.length && i < tOutputFluids.length; i++) mTanksOutput[i].fill(tOutputFluids[i], T);
 					removeAllDroppableNullStacks();
@@ -237,8 +237,8 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 				if (tRecipe != null) {
 					if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 					if (canOutput(tRecipe) && tRecipe.isRecipeInputEqual(T, F, mTanksInput, tInputItems)) {
-						ItemStack [] tOutputItems  = tRecipe.getOutputs(RNGSUS);
-						FluidStack[] tOutputFluids = tRecipe.getFluidOutputs(RNGSUS);
+						ItemStack [] tOutputItems  = tRecipe.getOutputs();
+						FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 						for (int i = 0; i < mRecipes.mOutputItemsCount && i < tOutputItems.length; i++) addStackToSlot(i+6, tOutputItems[i]);
 						for (int i = 0; i < mTanksOutput.length && i < tOutputFluids.length; i++) mTanksOutput[i].fill(tOutputFluids[i], T);
 						aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 250.0F);

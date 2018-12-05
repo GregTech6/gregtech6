@@ -75,7 +75,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		mRecipeMap = aRecipeMap;
 		transferRects.add(new RecipeTransferRect(new Rectangle(70-sOffsetX, 24-sOffsetY, 36, 18), getOverlayIdentifier()));
 		
-		if (!NEI_GT_API_Config.sIsAdded) {
+		if (!NEI_GT_API_Config.ADDED) {
 			FMLInterModComms.sendRuntimeMessage(GAPI, "NEIPlugins", "register-crafting-handler", MD.GAPI.mID+"@"+getRecipeName()+"@"+getOverlayIdentifier());
 			GuiCraftingRecipe.craftinghandlers.add(this);
 			GuiUsageRecipe.usagehandlers.add(this);
