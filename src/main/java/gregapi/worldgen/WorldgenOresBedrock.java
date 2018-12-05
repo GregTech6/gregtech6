@@ -129,7 +129,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 								if (tContact.getMaterial().isLiquid()) break;
 								if (!tContact.isOpaqueCube()) continue;
 								if (!WD.easyRep(aWorld, tX, tY+1, tZ)) break;
-								if (mIndicatorFlowers && (!mIndicatorRocks || aRandom.nextInt(4) > 0)) {
+								if (mIndicatorFlowers && (tContact != Blocks.dirt || !BIOMES_WASTELANDS.contains(aBiomes[8][8].biomeName)) && (!mIndicatorRocks || aRandom.nextInt(4) > 0)) {
 									WD.set(aWorld, tX, tY+1, tZ, mFlower, mFlowerMeta, 0);
 									if (mFlower.canBlockStay(aWorld, tX, tY+1, tZ)) break;
 									WD.set(aWorld, tX, tY+1, tZ, NB, 0, 0);

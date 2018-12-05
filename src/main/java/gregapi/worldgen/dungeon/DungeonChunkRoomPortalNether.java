@@ -46,7 +46,7 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.make(Items.blaze_rod, 4, 0)), "s", (short)41));
 		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {
-			aData.set( 1, 2,  5, SIDE_UNKNOWN, (short)502, UT.NBT.make(null, NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
+			aData.set( 1, 2,  5, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
 				aData.set( i, 1,  1, Blocks.soul_sand, 0, 2);
@@ -73,7 +73,7 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			aData.set( 2, 5,  9, Blocks.obsidian, 0, 2);
 		}
 		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) {
-			aData.set(14, 2, 10, SIDE_UNKNOWN, (short)502, UT.NBT.make(null, NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
+			aData.set(14, 2, 10, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
 				aData.set( i, 1,  1, Blocks.soul_sand, 0, 2);
@@ -100,7 +100,7 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			aData.set(13, 5,  9, Blocks.obsidian, 0, 2);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0) {
-			aData.set( 5, 2,  1, SIDE_UNKNOWN, (short)502, UT.NBT.make(null, NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
+			aData.set( 5, 2,  1, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
 				aData.set( 1, 1,  i, Blocks.soul_sand, 0, 2);
@@ -127,7 +127,7 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			aData.set( 9, 5,  2, Blocks.obsidian, 0, 2);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0) {
-			aData.set(10, 2, 14, SIDE_UNKNOWN, (short)502, UT.NBT.make(null, NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
+			aData.set(10, 2, 14, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
 				aData.set( 1, 1,  i, Blocks.soul_sand, 0, 2);

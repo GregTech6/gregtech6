@@ -45,6 +45,9 @@ public class FluidTankGT implements IFluidTank {
 	public NBTTagCompound writeToNBT(NBTTagCompound aNBT, String aKey) {if (mFluid != null && (mPreventDraining || mFluid.amount > 0)) aNBT.setTag(aKey, mFluid.writeToNBT(UT.NBT.make())); else aNBT.removeTag(aKey); return aNBT;}
 	public NBTTagCompound writeToNBT(String aKey) {NBTTagCompound aNBT = UT.NBT.make(); if (mFluid != null && (mPreventDraining || mFluid.amount > 0)) aNBT.setTag(aKey, mFluid.writeToNBT(UT.NBT.make())); else aNBT.removeTag(aKey); return aNBT;}
 	
+	public static NBTTagCompound writeToNBT(String aKey, FluidStack aFluid) {NBTTagCompound rNBT = UT.NBT.make(); if (aFluid != null && aFluid.amount > 0) rNBT.setTag(aKey, aFluid.writeToNBT(UT.NBT.make())); return rNBT;}
+	public static NBTTagCompound writeToNBT(NBTTagCompound aNBT, String aKey, FluidStack aFluid) {if (aFluid != null && aFluid.amount > 0) aNBT.setTag(aKey, aFluid.writeToNBT(UT.NBT.make())); else aNBT.removeTag(aKey); return aNBT;}
+	
 	@Override
 	public int fill(FluidStack aFluid, boolean aDoFill) {
 		if (aFluid == null) return 0;

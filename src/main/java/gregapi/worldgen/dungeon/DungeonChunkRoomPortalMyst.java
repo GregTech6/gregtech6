@@ -51,7 +51,7 @@ public class DungeonChunkRoomPortalMyst extends DungeonChunkRoomPortal {
 		Block tCrystal = IL.Myst_Crystal.block();
 		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {
-			aData.set( 1, 2,  5, SIDE_UNKNOWN, 502, UT.NBT.make(null, NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
+			aData.set( 1, 2,  5, SIDE_UNKNOWN, 502, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			aData.set( 2, 1,  6, tCrystal, 0, 2);
 			aData.set( 2, 1,  7, tCrystal, 0, 2);
@@ -71,7 +71,7 @@ public class DungeonChunkRoomPortalMyst extends DungeonChunkRoomPortal {
 			aData.set( 1, 5,  9, IL.Myst_Receptacle.block(), SIDE_X_NEG, 2);
 		}
 		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) {
-			aData.set(14, 2, 10, SIDE_UNKNOWN, 502, UT.NBT.make(null, NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
+			aData.set(14, 2, 10, SIDE_UNKNOWN, 502, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			aData.set(13, 1,  6, tCrystal, 0, 2);
 			aData.set(13, 1,  7, tCrystal, 0, 2);
@@ -91,7 +91,7 @@ public class DungeonChunkRoomPortalMyst extends DungeonChunkRoomPortal {
 			aData.set(14, 5,  6, IL.Myst_Receptacle.block(), SIDE_X_POS, 2);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0) {
-			aData.set( 5, 2,  1, SIDE_UNKNOWN, 502, UT.NBT.make(null, NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
+			aData.set( 5, 2,  1, SIDE_UNKNOWN, 502, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			aData.set( 6, 1,  2, tCrystal, 0, 2);
 			aData.set( 7, 1,  2, tCrystal, 0, 2);
@@ -111,7 +111,7 @@ public class DungeonChunkRoomPortalMyst extends DungeonChunkRoomPortal {
 			aData.set( 9, 5,  1, IL.Myst_Receptacle.block(), SIDE_Z_NEG, 2);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0) {
-			aData.set(10, 2, 14, SIDE_UNKNOWN, 502, UT.NBT.make(null, NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
+			aData.set(10, 2, 14, SIDE_UNKNOWN, 502, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			aData.set( 6, 1, 13, tCrystal, 0, 2);
 			aData.set( 7, 1, 13, tCrystal, 0, 2);

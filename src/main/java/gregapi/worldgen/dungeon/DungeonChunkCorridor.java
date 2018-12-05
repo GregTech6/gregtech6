@@ -174,11 +174,11 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 			
 			aData.smooth                      (10, 1, 6);
 			aData.set                            (10, 1, 7, Blocks.crafting_table, 0, 2);
-			aData.set                              (10, 1, 8, SIDE_UNKNOWN, (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3)), UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_NEG), T, T);
+			aData.set                              (10, 1, 8, SIDE_UNKNOWN, (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_NEG), T, T);
 			aData.smooth                      (10, 1, 9);
 			
 			aData.coins                            (10, 2, 6);
-			aData.set                              (10, 2, 7, SIDE_UNKNOWN, (short)32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+			aData.set                              (10, 2, 7, SIDE_UNKNOWN, (short)32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 			
 			aData.coins                            (10, 2, 9);
 		}
@@ -209,13 +209,13 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 			for (int tY =  1; tY <= 3; tY++) for (int tZ =  6; tZ <=  9; tZ++) aData.air   (5, tY, tZ);
 			
 			aData.smooth                      (5, 1, 6);
-			aData.set                              (5, 1, 7, SIDE_UNKNOWN, (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3)), UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_POS), T, T);
+			aData.set                              (5, 1, 7, SIDE_UNKNOWN, (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_POS), T, T);
 			aData.set                            (5, 1, 8, Blocks.crafting_table, 0, 2);
 			aData.smooth                      (5, 1, 9);
 			
 			aData.coins                            (5, 2, 6);
 			
-			aData.set                              (5, 2, 8, SIDE_UNKNOWN, (short)32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+			aData.set                              (5, 2, 8, SIDE_UNKNOWN, (short)32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 			aData.coins                            (5, 2, 9);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0) {
@@ -246,11 +246,11 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 			
 			aData.smooth                      (6, 1, 10);
 			aData.set                            (7, 1, 10, Blocks.crafting_table, 0, 2);
-			aData.set                              (8, 1, 10, SIDE_UNKNOWN, (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3)), UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_NEG), T, T);
+			aData.set                              (8, 1, 10, SIDE_UNKNOWN, (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_NEG), T, T);
 			aData.smooth                      (9, 1, 10);
 			
 			aData.coins                            (6, 2, 10);
-			aData.set                              (7, 2, 10, SIDE_UNKNOWN, (short)32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+			aData.set                              (7, 2, 10, SIDE_UNKNOWN, (short)32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 			
 			aData.coins                            (9, 2, 10);
 		}
@@ -281,13 +281,13 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 			for (int tY =  1; tY <= 3; tY++) for (int tX =  6; tX <=  9; tX++) aData.air   (tX, tY, 5);
 			
 			aData.smooth                      (6, 1, 5);
-			aData.set                              (7, 1, 5, SIDE_UNKNOWN, (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3)), UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_POS), T, T);
+			aData.set                              (7, 1, 5, SIDE_UNKNOWN, (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_POS), T, T);
 			aData.set                            (8, 1, 5, Blocks.crafting_table, 0, 2);
 			aData.smooth                      (9, 1, 5);
 			
 			aData.coins                            (6, 2, 5);
 			
-			aData.set                              (8, 2, 5, SIDE_UNKNOWN, (short)32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+			aData.set                              (8, 2, 5, SIDE_UNKNOWN, (short)32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 			aData.coins                            (9, 2, 5);
 		}
 		return T;

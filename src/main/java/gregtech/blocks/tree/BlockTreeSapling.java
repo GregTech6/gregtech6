@@ -76,7 +76,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 					tCanPlaceResinHole = F;
 					MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 					if (tRegistry != null) {
-						tRegistry.mBlock.placeBlock(aWorld, aX, tY, aZ, SIDE_UNKNOWN, (short)32762, UT.NBT.make(null, NBT_FACING, ALL_SIDES_HORIZONTAL[aRandom.nextInt(4)]), T, T);
+						tRegistry.mBlock.placeBlock(aWorld, aX, tY, aZ, SIDE_UNKNOWN, (short)32762, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[aRandom.nextInt(4)]), T, T);
 						continue;
 					}
 				}

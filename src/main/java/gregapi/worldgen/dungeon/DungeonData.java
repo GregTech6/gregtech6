@@ -29,6 +29,8 @@ import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.FL;
+import gregapi.fluid.FluidTankGT;
 import gregapi.random.WorldAndCoords;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -36,10 +38,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.fluids.Fluid;
 
 /**
  * @author Gregorius Techneticies
@@ -47,12 +52,11 @@ import net.minecraft.world.World;
 public class DungeonData extends WorldAndCoords {
 	public final MultiTileEntityRegistry mMTERegistryGT;
 	public final BlockStones mPrimary, mSecondary;
-	public final byte[][] mRoomLayout;
-	public final byte mColor, mColorInversed;
+	public final byte mColor, mColorInversed, mRoomLayout[][];
 	public final int mRoomX, mRoomZ, mConnectionCount;
-	public final long[] mKeyIDs;
-	public final ItemStack[] mKeyStacks;
-	public final boolean[] mGeneratedKeys;
+	public final long mKeyIDs[];
+	public final ItemStack mKeyStacks[];
+	public final boolean mGeneratedKeys[];
 	public final HashSetNoNulls<ChunkCoordinates> mLightUpdateCoords;
 	public final HashSetNoNulls<TagData> mTags;
 	public final WorldgenDungeonGT mStructure;
@@ -126,12 +130,54 @@ public class DungeonData extends WorldAndCoords {
 		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)32700, mCoin, T, T);
 	}
 	
-	public boolean set(int aX, int aY, int aZ, byte aSide, long aMetaData, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
-		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMetaData, aNBT, aCauseBlockUpdates, aForcePlacement);
+	public boolean set(int aX, int aY, int aZ, long aMeta) {
+		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, null, T, T);
+	}
+	public boolean set(int aX, int aY, int aZ, byte aSide, long aMeta) {
+		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, null, T, T);
+	}
+	public boolean set(int aX, int aY, int aZ, long aMeta, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, null, aCauseBlockUpdates, aForcePlacement);
+	}
+	public boolean set(int aX, int aY, int aZ, byte aSide, long aMeta, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, null, aCauseBlockUpdates, aForcePlacement);
+	}
+	public boolean set(int aX, int aY, int aZ, long aMeta, NBTTagCompound aNBT) {
+		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, aNBT, T, T);
+	}
+	public boolean set(int aX, int aY, int aZ, byte aSide, long aMeta, NBTTagCompound aNBT) {
+		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, aNBT, T, T);
+	}
+	public boolean set(int aX, int aY, int aZ, long aMeta, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, aNBT, aCauseBlockUpdates, aForcePlacement);
+	}
+	public boolean set(int aX, int aY, int aZ, byte aSide, long aMeta, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, aNBT, aCauseBlockUpdates, aForcePlacement);
 	}
 	
-	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, byte aSide, long aMetaData, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
-		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMetaData, aNBT, aCauseBlockUpdates, aForcePlacement);
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, long aMeta) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, null, T, T);
+	}
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, byte aSide, long aMeta) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, null, T, T);
+	}
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, long aMeta, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, null, aCauseBlockUpdates, aForcePlacement);
+	}
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, byte aSide, long aMeta, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, null, aCauseBlockUpdates, aForcePlacement);
+	}
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, long aMeta, NBTTagCompound aNBT) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, aNBT, T, T);
+	}
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, byte aSide, long aMeta, NBTTagCompound aNBT) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, aNBT, T, T);
+	}
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, long aMeta, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, aNBT, aCauseBlockUpdates, aForcePlacement);
+	}
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, byte aSide, long aMeta, NBTTagCompound aNBT, boolean aCauseBlockUpdates, boolean aForcePlacement) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, aNBT, aCauseBlockUpdates, aForcePlacement);
 	}
 	
 	public boolean flower(int aX, int aY, int aZ) {
@@ -147,12 +193,59 @@ public class DungeonData extends WorldAndCoords {
 		return T;
 	}
 	
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing));
+	}
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing, String aLootFront) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing, "gt.dungeonloot.front", aLootFront));
+	}
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing, String aLootFront, NBTTagList aInventory) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing, "gt.dungeonloot.front", aLootFront, NBT_INV_LIST, aInventory));
+	}
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing, String aLootFront, String aLootBack) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing, "gt.dungeonloot.front", aLootFront, "gt.dungeonloot.back", aLootBack));
+	}
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing, String aLootFront, String aLootBack, NBTTagList aInventory) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing, "gt.dungeonloot.front", aLootFront, "gt.dungeonloot.back", aLootBack, NBT_INV_LIST, aInventory));
+	}
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing, String[] aLootFront) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing, "gt.dungeonloot.front", UT.Code.select(ChestGenHooks.STRONGHOLD_LIBRARY, aLootFront)));
+	}
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing, String[] aLootFront, NBTTagList aInventory) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing, "gt.dungeonloot.front", UT.Code.select(ChestGenHooks.STRONGHOLD_LIBRARY, aLootFront), NBT_INV_LIST, aInventory));
+	}
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing, String[] aLootFront, String[] aLootBack) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing, "gt.dungeonloot.front", UT.Code.select(ChestGenHooks.STRONGHOLD_LIBRARY, aLootFront), "gt.dungeonloot.back", UT.Code.select(ChestGenHooks.STRONGHOLD_LIBRARY, aLootBack)));
+	}
+	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing, String[] aLootFront, String[] aLootBack, NBTTagList aInventory) {
+		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing, "gt.dungeonloot.front", UT.Code.select(ChestGenHooks.STRONGHOLD_LIBRARY, aLootFront), "gt.dungeonloot.back", UT.Code.select(ChestGenHooks.STRONGHOLD_LIBRARY, aLootBack), NBT_INV_LIST, aInventory));
+	}
+	
+	public boolean zpm(int aX, int aY, int aZ) {
+		return mStructure.mZPM && set(aX, aY, aZ, 14999, UT.NBT.make(NBT_ACTIVE_ENERGY, mRandom.nextBoolean()));
+	}
+	public boolean zpm(int aX, int aY, int aZ, boolean aActive) {
+		return mStructure.mZPM && set(aX, aY, aZ, 14999, UT.NBT.make(NBT_ACTIVE_ENERGY, aActive));
+	}
+	
+	public boolean cup(int aX, int aY, int aZ, FL aFluid) {
+		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, aFluid.make(250)));
+	}
+	public boolean cup(int aX, int aY, int aZ, Fluid aFluid) {
+		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, UT.Fluids.make(aFluid, 250)));
+	}
+	
+	public boolean set(int aX, int aY, int aZ, Block aBlock) {
+		return mWorld.setBlock(mX+aX, mY+aY, mZ+aZ, aBlock, 0, 2);
+	}
+	public boolean set(int aX, int aY, int aZ, Block aBlock, int aMeta) {
+		return mWorld.setBlock(mX+aX, mY+aY, mZ+aZ, aBlock, aMeta, 2);
+	}
 	public boolean set(int aX, int aY, int aZ, Block aBlock, int aMeta, int aFlags) {
 		return mWorld.setBlock(mX+aX, mY+aY, mZ+aZ, aBlock, aMeta, aFlags);
 	}
-	
 	public boolean set(int aX, int aY, int aZ, Block aBlock, int aMeta, int aFlags, int aRotationCount) {
-		set(aX, aY, aZ, aBlock, aMeta, aFlags);
+		if (!set(aX, aY, aZ, aBlock, aMeta, aFlags)) return F;
 		while (aRotationCount-->0) aBlock.rotateBlock(mWorld, mX+aX, mY+aY, mZ+aZ, FORGE_DIR[SIDE_Y_POS]);
 		return T;
 	}

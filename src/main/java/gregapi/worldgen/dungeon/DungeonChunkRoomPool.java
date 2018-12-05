@@ -51,10 +51,10 @@ public class DungeonChunkRoomPool extends DungeonChunkRoomEmpty {
 		
 		short tChestType = (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3));
 		
-		if (aData.mRandom.nextBoolean()) aData.set( 1, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_POS), T, T);
-		if (aData.mRandom.nextBoolean()) aData.set(14, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_NEG), T, T);
-		if (aData.mRandom.nextBoolean()) aData.set( 1, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_POS), T, T);
-		if (aData.mRandom.nextBoolean()) aData.set(14, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make(null, "gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_NEG), T, T);
+		if (aData.mRandom.nextBoolean()) aData.set( 1, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_POS), T, T);
+		if (aData.mRandom.nextBoolean()) aData.set(14, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_NEG), T, T);
+		if (aData.mRandom.nextBoolean()) aData.set( 1, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_POS), T, T);
+		if (aData.mRandom.nextBoolean()) aData.set(14, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_NEG), T, T);
 		return T;
 	}
 }

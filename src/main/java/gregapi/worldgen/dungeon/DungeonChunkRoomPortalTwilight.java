@@ -46,7 +46,7 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(4)), "s", (short)41));
 		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {
-			aData.set( 1, 2,  5, SIDE_UNKNOWN, (short)502, UT.NBT.make(null, NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
+			aData.set( 1, 2,  5, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			aData.set( 2, 1,  6, Blocks.grass, 0, 2);
 			aData.set( 2, 1,  7, Blocks.grass, 0, 2);
@@ -79,7 +79,7 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.flower( 5, 2,  9);
 		}
 		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) {
-			aData.set(14, 2, 10, SIDE_UNKNOWN, (short)502, UT.NBT.make(null, NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
+			aData.set(14, 2, 10, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			aData.set(10, 1,  6, Blocks.grass, 0, 2);
 			aData.set(10, 1,  7, Blocks.grass, 0, 2);
@@ -112,7 +112,7 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.flower(13, 2,  9);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0) {
-			aData.set( 5, 2,  1, SIDE_UNKNOWN, (short)502, UT.NBT.make(null, NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
+			aData.set( 5, 2,  1, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			aData.set( 6, 1,  2, Blocks.grass, 0, 2);
 			aData.set( 7, 1,  2, Blocks.grass, 0, 2);
@@ -145,7 +145,7 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.flower( 9, 2,  5);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0) {
-			aData.set(10, 2, 14, SIDE_UNKNOWN, (short)502, UT.NBT.make(null, NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
+			aData.set(10, 2, 14, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			aData.set( 6, 1, 10, Blocks.grass, 0, 2);
 			aData.set( 7, 1, 10, Blocks.grass, 0, 2);

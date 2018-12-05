@@ -96,10 +96,10 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 		
 		FluidStack[] tDrinks = new FluidStack[] {NF, NF, NF, NF, NF, FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Vodka.make(250), FL.Mead.make(250), FL.Whiskey_GlenMcKenner.make(250), FL.Wine_Grape_Purple.make(250)};
 		
-		aData.set( 1, 2,  4, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-		aData.set( 1, 2, 11, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-		aData.set(14, 2,  4, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
-		aData.set(14, 2, 11, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(null, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+		aData.set( 1, 2,  4, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+		aData.set( 1, 2, 11, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+		aData.set(14, 2,  4, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
+		aData.set(14, 2, 11, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 		
 		
 		String[] tLoots = new String[] {ChestGenHooks.STRONGHOLD_LIBRARY, ChestGenHooks.STRONGHOLD_CORRIDOR, ChestGenHooks.STRONGHOLD_CROSSING, ChestGenHooks.PYRAMID_DESERT_CHEST, ChestGenHooks.PYRAMID_JUNGLE_CHEST, ChestGenHooks.VILLAGE_BLACKSMITH, ChestGenHooks.MINESHAFT_CORRIDOR, ChestGenHooks.DUNGEON_CHEST, ChestGenHooks.BONUS_CHEST};
@@ -107,26 +107,26 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 		NBTTagList
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[0]) {aData.mGeneratedKeys[0] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[0]), "s", (short)aData.mRandom.nextInt(28)));}
-		aData.set( 4, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make(null, "gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[0]), T, T);
-		aData.set( 3, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make(null, "gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
+		aData.set( 4, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[0]), T, T);
+		aData.set( 3, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
 		if (aData.mRandom.nextBoolean()) aData.coins( 4, 2,  1);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[1]) {aData.mGeneratedKeys[1] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[1]), "s", (short)aData.mRandom.nextInt(28)));}
-		aData.set( 4, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make(null, "gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[1]), T, T);
-		aData.set( 3, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make(null, "gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
+		aData.set( 4, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[1]), T, T);
+		aData.set( 3, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
 		if (aData.mRandom.nextBoolean()) aData.coins( 4, 2, 14);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[3]) {aData.mGeneratedKeys[3] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[3]), "s", (short)aData.mRandom.nextInt(28)));}
-		aData.set(11, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make(null, "gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[3]), T, T);
-		aData.set(12, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make(null, "gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
+		aData.set(11, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[3]), T, T);
+		aData.set(12, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
 		if (aData.mRandom.nextBoolean()) aData.coins(11, 2,  1);
 		
 		tList = new NBTTagList();
 		if (!aData.mGeneratedKeys[4]) {aData.mGeneratedKeys[4] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[4]), "s", (short)aData.mRandom.nextInt(28)));}
-		aData.set(11, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make(null, "gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[4]), T, T);
-		aData.set(12, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make(null, "gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
+		aData.set(11, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[4]), T, T);
+		aData.set(12, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
 		if (aData.mRandom.nextBoolean()) aData.coins(11, 2, 14);
 		
 		return T;

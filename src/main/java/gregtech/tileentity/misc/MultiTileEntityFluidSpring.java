@@ -75,7 +75,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	public static MultiTileEntityFluidSpring INSTANCE;
 	
 	public static boolean setBlock(World aWorld, int aX, int aY, int aZ, FluidStack aSpring) {
-		return MTE_REGISTRY.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UP, INSTANCE.getMultiTileEntityID(), UT.NBT.make(null, "gt.spring", aSpring), T, F);
+		return MTE_REGISTRY.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UP, INSTANCE.getMultiTileEntityID(), UT.NBT.make("gt.spring", aSpring), T, F);
 	}
 	
 	@Override

@@ -83,7 +83,7 @@ public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements I
 	public static MultiTileEntityCFoam INSTANCE;
 	
 	public static boolean setBlock(World aWorld, int aX, int aY, int aZ, byte aSide, EntityPlayer aPlayer, ItemStack aStack, short[] aRGB, boolean aOwned) {
-		return MTE_REGISTRY.mBlock.placeBlock(aWorld, aX, aY, aZ, aSide, INSTANCE.getMultiTileEntityID(), UT.NBT.make(null, NBT_COLOR, UT.Code.getRGBInt(aRGB), NBT_PAINTED, T, NBT_OWNABLE, aOwned, NBT_OWNER, aOwned && aPlayer != null ? aPlayer.getUniqueID().toString() : null), T, F);
+		return MTE_REGISTRY.mBlock.placeBlock(aWorld, aX, aY, aZ, aSide, INSTANCE.getMultiTileEntityID(), UT.NBT.make(NBT_COLOR, UT.Code.getRGBInt(aRGB), NBT_PAINTED, T, NBT_OWNABLE, aOwned, NBT_OWNER, aOwned && aPlayer != null ? aPlayer.getUniqueID().toString() : null), T, F);
 	}
 	
 	@Override

@@ -32,6 +32,7 @@ import gregapi.old.Textures;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import gregapi.util.WD;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -109,7 +110,7 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 	
 	@Override
 	public boolean canBlockStay(World aWorld, int aX, int aY, int aZ) {
-		return aWorld.getBlock(aX, aY - 1, aZ).canSustainPlant(aWorld, aX, aY - 1, aZ, ForgeDirection.UP, (IPlantable)Blocks.cactus);
+		return WD.oxygen(aWorld, aX, aY, aZ) && aWorld.getBlock(aX, aY - 1, aZ).canSustainPlant(aWorld, aX, aY - 1, aZ, ForgeDirection.UP, (IPlantable)Blocks.cactus);
 	}
 	
 	@Override

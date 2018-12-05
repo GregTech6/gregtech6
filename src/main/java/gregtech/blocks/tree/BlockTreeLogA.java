@@ -98,7 +98,7 @@ public class BlockTreeLogA extends BlockBaseLogFlammable implements IBlockToolab
 			if (aWorld.isRemote) return 0;
 			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 			if (tRegistry != null) {
-				tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, (short)32761, UT.NBT.make(null, NBT_FACING, aSide), T, T);
+				tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, (short)32761, UT.NBT.make(NBT_FACING, aSide), T, T);
 				return aTool.equals(TOOL_axe) ? 500 : 1000;
 			}
 		}
