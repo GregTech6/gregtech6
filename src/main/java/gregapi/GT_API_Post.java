@@ -57,6 +57,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.worldgen.StoneLayer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 
@@ -263,6 +264,29 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.RedAlloy                   , ST.make(MD.PR, "projectred.core.part", 1, 10));
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.ElectrotineAlloy           , ST.make(MD.PR, "projectred.core.part", 1, 55));
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Electrotine                , ST.make(MD.PR, "projectred.core.part", 1, 56));
+			
+			OM.reg(OP.stone.dat(MT.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 0));
+			OM.reg(OP.stone.dat(MT.Marble), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 1));
+			OM.reg(OP.stone.dat(MT.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 2));
+			OM.reg(OP.stone.dat(MT.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 3));
+			OM.reg(OP.stone.dat(MT.Basalt), ST.make(MD.PR_EXPLORATION, "projectred.exploration.stone", 1, 4));
+			for (int i = 0; i < 16; i++) {
+			OM.reg(DYE_OREDICTS_MIXABLE[i], ST.make(MD.PR_EXPLORATION, "projectred.exploration.lilyseed", 1, 15-i));
+			OM.data(MD.PR, "projectred.core.part", 1, i+19, ANY.Glowstone, 2*U);
+			}
+			OM.data(MD.PR, "projectred.core.part", 1, 16, ANY.Cu, U);
+			OM.data(MD.PR, "projectred.core.part", 1, 17, ANY.Fe, U);
+			OM.data(MD.PR, "projectred.core.part", 1, 18, MT .Au, U);
+			
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.PR_EXPLORATION, "projectred.exploration.ore", null));
+			
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 0), OP.oreVanillastone.dat(MT.Ruby));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 1), OP.oreVanillastone.dat(MT.BlueSapphire));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 2), OP.oreVanillastone.dat(MT.Olivine));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 3), OP.oreVanillastone.dat(MT.Cu));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 4), OP.oreVanillastone.dat(MT.Sn));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 5), OP.oreVanillastone.dat(MT.Ag));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 6), OP.oreVanillastone.dat(MT.Electrotine));
 		}
 		
 		// Okay I should not have wondered about Blue Power doing the same garbage considering Project Red...
@@ -273,15 +297,50 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.Teslatite                  , ST.make(MD.BP, "teslatite_dust", 1, 0));
 			OreDictManager.INSTANCE.setTarget(OP.dust   , MT.UNUSED.InfusedTeslatite    , ST.make(MD.BP, "infused_teslatite_dust", 1, 0));
 			
-			OM.reg("seedFlax"                                                           , ST.make(MD.BP, "flax_seeds", 1, 0));
-			OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple]                               , ST.make(MD.BP, "indigo_dye", 1, 0));
-			OM.reg("cropIndigo"                                                         , ST.make(MD.BP, "indigo_flower", 1, 0));
-			OM.reg(OP.dustTiny.dat(MT.Zn)                                               , ST.make(MD.BP, "zinc_tiny_dust", 1, 0));
-			OM.reg(OP.crushed.dat(MT.Zn)                                                , ST.make(MD.BP, "zinc_ore_crushed", 1, 0));
-			OM.reg(OP.crushedPurified.dat(MT.Zn)                                        , ST.make(MD.BP, "zinc_ore_purified", 1, 0));
-			OM.reg(OP.boule.dat(MT.Si)                                                  , ST.make(MD.BP, "silicon_boule", 1, 0));
+			OM.reg("seedFlax"                            , ST.make(MD.BP, "flax_seeds", 1, 0));
+			OM.reg(DYE_OREDICTS_MIXABLE[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
+			OM.reg("cropIndigo"                          , ST.make(MD.BP, "indigo_flower", 1, 0));
+			OM.reg(OP.dustTiny.dat(MT.Zn)                , ST.make(MD.BP, "zinc_tiny_dust", 1, 0));
+			OM.reg(OP.crushed.dat(MT.Zn)                 , ST.make(MD.BP, "zinc_ore_crushed", 1, 0));
+			OM.reg(OP.crushedPurified.dat(MT.Zn)         , ST.make(MD.BP, "zinc_ore_purified", 1, 0));
+			OM.reg(OP.boule.dat(MT.Si)                   , ST.make(MD.BP, "silicon_boule", 1, 0));
+			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt", 1, 0));
+			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_cobble", 1, 0));
+			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_brick", 1, 0));
+			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "fancy_basalt", 1, 0));
+			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_brick_small", 1, 0));
+			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basaltbrick_cracked", 1, 0));
+			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_paver", 1, 0));
+			OM.reg(OP.stone.dat(MT.Basalt)               , ST.make(MD.BP, "basalt_tile", 1, 0));
+			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble", 1, 0));
+			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_brick", 1, 0));
+			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "fancy_marble", 1, 0));
+			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_brick_small", 1, 0));
+			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_paver", 1, 0));
+			OM.reg(OP.stone.dat(MT.Marble)               , ST.make(MD.BP, "marble_tile", 1, 0));
 			
-			OM.data(MD.BP, "zincplate", 1, 0, ANY.Fe, U2, MT.Zn, U4);
+			OM.data(MD.BP, "zincplate", 1, 0, ANY.Fe,   U2, MT.Zn,   U4);
+			OM.data(MD.BP, "paint_can", 1, W, ANY.Fe, 7*U2, MT.Zn, 7*U4);
+			OM.data(MD.BP, "lumar", 1, W, ANY.Glowstone, U2, MT.Redstone, U2);
+			OM.data(MD.BP, "tiles", 1, 0, MT.Marble, U2, MT.Basalt, U2);
+			
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "ruby_ore"     , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "sapphire_ore" , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "amethyst_ore" , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "silver_ore"   , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "teslatite_ore", null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "tungsten_ore" , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "zinc_ore"     , null));
+			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "copper_ore"   , null));
+			
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "ruby_ore"     , 1, 0), OP.oreVanillastone.dat(MT.Ruby));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "sapphire_ore" , 1, 0), OP.oreVanillastone.dat(MT.BlueSapphire));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "amethyst_ore" , 1, 0), OP.oreVanillastone.dat(MT.Amethyst));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "silver_ore"   , 1, 0), OP.oreVanillastone.dat(MT.Ag));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "teslatite_ore", 1, 0), OP.oreVanillastone.dat(MT.Teslatite));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "tungsten_ore" , 1, 0), OP.oreVanillastone.dat(MT.OREMATS.Tungstate));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "zinc_ore"     , 1, 0), OP.oreVanillastone.dat(MT.Zn));
+			OreDictManager.INSTANCE.setItemData_(ST.make(MD.BP, "copper_ore"   , 1, 0), OP.oreVanillastone.dat(MT.Cu));
 		}
 		
 		// Yay for Chickenbones doing it wrong, I guess...

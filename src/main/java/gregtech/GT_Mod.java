@@ -318,7 +318,6 @@ public class GT_Mod extends Abstract_Mod {
 			new Loader_ItemIterator()
 		);
 		for (Runnable tRunnable : tList) try {tRunnable.run();} catch(Throwable e) {e.printStackTrace(ERR);}
-		
 	}
 	
 	@Override

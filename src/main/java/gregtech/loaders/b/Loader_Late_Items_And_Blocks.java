@@ -33,6 +33,7 @@ import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureCopied;
 import gregapi.util.ST;
+import gregtech.loaders.a.Loader_Ores;
 import net.minecraft.block.Block;
 
 public class Loader_Late_Items_And_Blocks implements Runnable {
@@ -63,5 +64,11 @@ public class Loader_Late_Items_And_Blocks implements Runnable {
 				}
 			}
 		}
+		
+		Loader_Ores.rockset(MD.PR_EXPLORATION, "projectred.exploration.stone", 3, 3, "projectred.exploration.stone", 2, "pr.basalt", OP.oreBasalt, MT.Basalt);
+		Loader_Ores.rockset(MD.PR_EXPLORATION, "projectred.exploration.stone"                                      , 0, "pr.marble", OP.oreMarble, MT.Marble);
+		
+		Loader_Ores.rockset(MD.BP, "basalt", 0, 0, "basalt_cobble", 0, "bp.basalt", OP.oreBasalt, MT.Basalt);
+		Loader_Ores.rockset(MD.BP, "marble"                       , 0, "bp.marble", OP.oreMarble, MT.Marble);
 	}
 }

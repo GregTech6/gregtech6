@@ -201,12 +201,6 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.RC, "cube"                           , 6, "rc.abyssal"           , OP.oreBasalt              , MT.Basalt);
 		rockset(MD.RC, "cube"                           , 7, "rc.quarried"          , OP.oreMarble              , MT.Marble);
 		
-		//rockset(MD.PR_EXPLORATION, "cube"               , 0, "pr.basalt"            , OP.oreBasalt              , MT.Basalt);
-		//rockset(MD.PR_EXPLORATION, "cube"               , 0, "pr.marble"            , OP.oreMarble              , MT.Marble);
-		
-		//rockset(MD.BP, "cube"                           , 0, "bp.basalt"            , OP.oreBasalt              , MT.Basalt);
-		//rockset(MD.BP, "cube"                           , 0, "bp.marble"            , OP.oreMarble              , MT.Marble);
-		
 		if (MD.BOTA.mLoaded) {
 		rockset(MD.BOTA, ST.block(MD.BOTA, "livingrock"), 0, 0, ST.block(MD.ALF, "LivingCobble"), 0, "botania.livingrock", OP.oreLivingrock, MT.Livingrock, 1.0F, 1.0F, 0, F, F, T);
 		}
@@ -304,27 +298,27 @@ public class Loader_Ores implements Runnable {
 		}
 	}
 	
-	public boolean rockset(ModData aMod, String aRock, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops) {
+	public static boolean rockset(ModData aMod, String aRock, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops) {
 		return rockset(aMod, aRock, aMeta, aName, aPrefix, aDrops, 1, 1, 0, F, F, T);
 	}
 	
-	public boolean rockset(ModData aMod, String aRock, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
+	public static boolean rockset(ModData aMod, String aRock, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
 		return rockset(aMod, ST.block(aMod, aRock), aMeta, aName, aPrefix, aDrops, aBaseHardness, aBaseResistance, aHarvestLevelMinimum, aGravity, aEnderDragonProof, aStoneOverrideable);
 	}
 	
-	public boolean rockset(ModData aMod, Block aRock, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
+	public static boolean rockset(ModData aMod, Block aRock, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
 		return rockset(aMod, aRock, aMeta, aMeta, aRock, aMeta, aName, aPrefix, aDrops, aBaseHardness, aBaseResistance, aHarvestLevelMinimum, aGravity, aEnderDragonProof, aStoneOverrideable);
 	}
 	
-	public boolean rockset(ModData aMod, String aRock, int aMetaA, int aMetaB, String aCobble, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops) {
+	public static boolean rockset(ModData aMod, String aRock, int aMetaA, int aMetaB, String aCobble, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops) {
 		return rockset(aMod, aRock, aMetaA, aMetaB, aCobble, aMeta, aName, aPrefix, aDrops, 1.0F, 1.0F, 0, F, F, T);
 	}
 	
-	public boolean rockset(ModData aMod, String aRock, int aMetaA, int aMetaB, String aCobble, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
+	public static boolean rockset(ModData aMod, String aRock, int aMetaA, int aMetaB, String aCobble, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
 		return rockset(aMod, ST.block(aMod, aRock), aMetaA, aMetaB, ST.block(aMod, aCobble), aMeta, aName, aPrefix, aDrops, aBaseHardness, aBaseResistance, aHarvestLevelMinimum, aGravity, aEnderDragonProof, aStoneOverrideable);
 	}
 	
-	public boolean rockset(ModData aMod, Block aRock, int aMetaA, int aMetaB, Block aCobble, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
+	public static boolean rockset(ModData aMod, Block aRock, int aMetaA, int aMetaB, Block aCobble, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
 		if (aMod.mLoaded) {
 			if (aRock == NB || aRock == null) return F;
 			if (aCobble == NB || aCobble == null) {aCobble = aRock; aMeta = aMetaA;}
@@ -370,21 +364,21 @@ public class Loader_Ores implements Runnable {
 		return T;
 	}
 	
-	public PrefixBlock normal(Block aRock, int aMeta, String aName, OreDictPrefix aPrefix, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof) {
+	public static PrefixBlock normal(Block aRock, int aMeta, String aName, OreDictPrefix aPrefix, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof) {
 		if (aRock == NB || aRock == null) return null;
 		PrefixBlock rOre = new PrefixBlock_(MD.GT, "gt.meta.ore.normal."+aName, aPrefix, null, BlockTextureCopied.get(aRock, aMeta), aVanillaMaterial, aSoundType, aTool, aBaseHardness, aBaseResistance, 0, aHarvestLevelMinimum, aGravity, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
 		if (aMeta != W) BlocksGT.stoneToNormalOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToNormalOres.put(new ItemStackContainer(aRock, 1, i), rOre);
 		return rOre;
 	}
 	
-	public PrefixBlock broken(Block aRock, int aMeta, String aName, OreDictPrefix aPrefix, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aEnderDragonProof) {
+	public static PrefixBlock broken(Block aRock, int aMeta, String aName, OreDictPrefix aPrefix, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aEnderDragonProof) {
 		if (aRock == NB || aRock == null) return null;
 		PrefixBlock rOre = new PrefixBlock_(MD.GT, "gt.meta.ore.broken."+aName, aPrefix, null, BlockTextureCopied.get(aRock, aMeta), aVanillaMaterial, aSoundType, aTool, aBaseHardness, aBaseResistance, -1, aHarvestLevelMinimum, T, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
 		if (aMeta != W) BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(aRock, 1, i), rOre);
 		return rOre;
 	}
 	
-	public PrefixBlock small(Block aRock, int aMeta, String aName, OreDictMaterial aDrops, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof) {
+	public static PrefixBlock small(Block aRock, int aMeta, String aName, OreDictMaterial aDrops, Material aVanillaMaterial, SoundType aSoundType, String aTool, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof) {
 		if (aRock == NB || aRock == null) return null;
 		PrefixBlock rOre = new PrefixBlock_(MD.GT, "gt.meta.ore.small."+aName, OP.oreSmall, new Drops_SmallOre(aDrops), BlockTextureCopied.get(aRock, aMeta), aVanillaMaterial, aSoundType, aTool, aBaseHardness, aBaseResistance, -1, aHarvestLevelMinimum, aGravity, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
 		if (aMeta != W) BlocksGT.stoneToSmallOres.put(new ItemStackContainer(aRock, 1, aMeta), rOre); else for (int i = 0; i < 16; i++) BlocksGT.stoneToSmallOres.put(new ItemStackContainer(aRock, 1, i), rOre);

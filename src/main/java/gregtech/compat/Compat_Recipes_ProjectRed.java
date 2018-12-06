@@ -27,6 +27,7 @@ import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
 import gregapi.data.MD;
+import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.util.CR;
@@ -39,7 +40,8 @@ public class Compat_Recipes_ProjectRed extends CompatMods {
 		CR.delate(MD.PR, "projectred.core.part", 40);
 		
 		CR.shaped(ST.make(MD.PR, "projectred.core.part", 1, 40), CR.DEF_NCC, " D ", "DID", " D ", 'D', OD.itemRedstone, 'I', OP.ingot.dat(ANY.Cu));
-		
+		CR.shaped(ST.make(MD.PR, "projectred.core.part", 4, 12), CR.DEF_NCC, " X", "s ", 'X', OP.plateGem.dat(ANY.Si));
+		CR.shaped(ST.make(MD.PR, "projectred.core.part", 4, 13), CR.DEF_NCC, " X", "s ", 'X', OP.plateGem.dat(MT.RedstoneAlloy));
 		
 		
 	}

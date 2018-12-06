@@ -265,14 +265,6 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ENVM, "flammablecoal"                  , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HaC, "salt"                            , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.VULPES, "libVulpesore0"                , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "ruby_ore"                         , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "sapphire_ore"                     , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "amethyst_ore"                     , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "silver_ore"                       , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "teslatite_ore"                    , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "tungsten_ore"                     , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "zinc_ore"                         , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BP, "copper_ore"                       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "copper_ore"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "uranium_ore"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "sulfur_ore"                      , null));

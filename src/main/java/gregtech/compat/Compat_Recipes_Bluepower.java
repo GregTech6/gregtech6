@@ -43,9 +43,15 @@ public class Compat_Recipes_Bluepower extends CompatMods {
 		
 		CR.shaped(ST.make(MD.BP, "iron_wire"        , 1, 0), CR.DEF_REV_NCC, "XXX", "X X", "XXX", 'X', OP.wireFine.dat(ANY.Fe));
 		CR.shaped(ST.make(MD.BP, "copper_wire"      , 1, 0), CR.DEF_REV_NCC, "XXX", "X X", "XXX", 'X', OP.wireFine.dat(ANY.Cu));
-		CR.shaped(ST.make(MD.BP, "silicon_wafer"    , 4, 0), CR.DEF_REV_NCC, "X ", " s", 'X', OP.plateGem.dat(ANY.Si));
-		CR.shaped(ST.make(MD.BP, "red_doped_wafer"  , 4, 0), CR.DEF_REV_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.RedstoneAlloy));
-		CR.shaped(ST.make(MD.BP, "blue_doped_wafer" , 4, 0), CR.DEF_REV_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.TeslatineAlloy));
-		CR.shaped(ST.make(MD.BP, "blue_doped_wafer" , 4, 0), CR.DEF_NCC    , "X ", " s", 'X', OP.plateGem.dat(MT.NikolineAlloy));
+		CR.shaped(ST.make(MD.BP, "silicon_wafer"    , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(ANY.Si));
+		CR.shaped(ST.make(MD.BP, "red_doped_wafer"  , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.RedstoneAlloy));
+		CR.shaped(ST.make(MD.BP, "blue_doped_wafer" , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.TeslatineAlloy));
+		CR.shaped(ST.make(MD.BP, "blue_doped_wafer" , 4, 0), CR.DEF_NCC, "X ", " s", 'X', OP.plateGem.dat(MT.NikolineAlloy));
+		
+		RM.biomass(ST.make(MD.BP, "indigo_flower", 16, 0), 64);
+		
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BP, "indigo_flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.BP, "indigo_flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
+		RM.ic2_extractor(ST.make(MD.BP, "indigo_flower", 1, 0), ST.make(MD.BP, "indigo_dye", 1, 0));
 	}
 }

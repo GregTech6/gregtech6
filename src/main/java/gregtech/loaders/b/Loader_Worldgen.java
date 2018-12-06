@@ -135,7 +135,15 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 0, MT.Basalt));
 		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt));
+		tBlock = ST.block(MD.PR_EXPLORATION, "projectred.exploration.stone");
+		if (tBlock != NB)
+		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 3, tBlock, 2, MT.Basalt));
+		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt));
+		tBlock = ST.block(MD.BP, "basalt");
+		if (tBlock != NB)
+		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 0, MT.Basalt));
+		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Basalt
 		, new StoneLayerOres(MT.OREMATS.Bastnasite      , U24, 24, 32)
@@ -160,6 +168,15 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 7, MT.Marble));
 		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
+		tBlock = ST.block(MD.PR_EXPLORATION, "projectred.exploration.stone");
+		if (tBlock != NB)
+		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 0, MT.Marble));
+		else
+		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
+		tBlock = ST.block(MD.BP, "marble");
+		if (tBlock != NB)
+		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 0, MT.Marble));
+		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble
 		, new StoneLayerOres(MT.Dioptase                , U64, 24, 48, BIOMES_MOUNTAINS)
