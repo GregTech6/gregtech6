@@ -111,6 +111,7 @@ public enum OD {
 	, itemString
 	, itemCompass
 	, itemRedstone
+	, itemCompressedCarbon
 	, itemClay
 	, itemFeather
 	, itemLeather
