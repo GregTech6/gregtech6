@@ -30,6 +30,7 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.OreDictMaterial;
@@ -57,7 +58,7 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 13), CR.DEF_REM_NCC, new Object[] {IL.Food_Bun_Sliced, IL.Food_Bun_Sliced            , "listAllbeefcooked", IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cucumber_Sliced, IL.Food_Tomato_Sliced, IL.Food_Onion_Sliced});
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 11), CR.DEF_REM_NCC, new Object[] {IL.Food_Baguettes_Sliced                          , "listAllfishcooked", IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cucumber_Sliced, IL.Food_Tomato_Sliced, "paperEmpty", "paperEmpty"});
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 11), CR.DEF_REM_NCC, new Object[] {IL.Food_Baguette_Sliced, IL.Food_Baguette_Sliced  , "listAllfishcooked", IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cucumber_Sliced, IL.Food_Tomato_Sliced, "paperEmpty", "paperEmpty"});
-		CR.shapeless(ST.make(MD.AA, "itemMisc", 2,  1), CR.DEF_REM_NCC, new Object[] {"itemPlantRemains"});
+		CR.shapeless(ST.make(MD.AA, "itemMisc", 2,  1), CR.DEF_REM_NCC, new Object[] {OD.itemPlantRemains});
 		
 		CR.delate(MD.AA, "blockFermentingBarrel", 0);
 		CR.delate(MD.AA, "itemFood", 2);

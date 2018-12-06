@@ -401,8 +401,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Food_CakeBottom.set(                     addItem(tLastID =  3001, "Cake Bottom"                              , "I know I promised you an actual Cake, but well..."           , new FoodStat( 3, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  20,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_CakeBottom_Raw.get(1), IL.Food_CakeBottom.get(1));
 		CR.shapeless(IL.Food_CakeBottom_Raw.get(1), CR.DEF_NAC_NCC, new Object[] {"foodSugarDough", "foodSugarDough", "foodSugarDough", "foodSugarDough"});
-		CR.shaped(ST.make(Items.cake, 1, 0), CR.DEF_NAC_NCC | CR.DEL_OTHER_RECIPES, "C", "Z", 'Z', IL.Food_CakeBottom, 'C', "foodHeavycream");
-		
+		CR.shaped(ST.make(Items.cake, 1, 0), CR.DEF_NAC_NCC, "C", "Z", 'Z', IL.Food_CakeBottom, 'C', "foodHeavycream");
+		CR.delate(ST.make(Items.cake, 1, 0));
 		
 		
 		IL.Food_Dough_Flat.set(                     addItem(tLastID =  4000, "Flattened Dough"                          , "For making Pizza"                                            , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));

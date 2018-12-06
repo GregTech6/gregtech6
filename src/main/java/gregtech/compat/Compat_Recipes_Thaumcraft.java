@@ -64,7 +64,8 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		FoodsGT.put(IL.TC_Nugget_Fish       .wild(1), 0, 0, 0, 0, 1);
 		FoodsGT.put(IL.TC_Triple_Meat_Treat .wild(1), 0, 0, 0,30,10);
 		
-		CR.shaped(IL.TC_Phial.get(8), CR.DEF_REM_NCC, " C ", "G G", " G ", 'C', "itemClay", 'G', ST.make(Blocks.glass, 1, W));
+		CR.delate(IL.TC_Phial.get(1));
+		CR.shaped(IL.TC_Phial.get(8), CR.DEF_NCC, " C ", "G G", " G ", 'C', "itemClay", 'G', ST.make(Blocks.glass, 1, W));
 		
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.string, 1, W), MT.Tallow.liquid(U*2, T), NF, ST.make(MD.TC, "blockCandle", 3, 0));
 		

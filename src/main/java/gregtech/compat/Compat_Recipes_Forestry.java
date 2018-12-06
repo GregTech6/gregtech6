@@ -53,6 +53,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Forestry Recipes.");
 		CR.remove(OM.ingot(MT.Sn), OM.ingot(MT.Cu), NI, OM.ingot(MT.Cu), OM.ingot(MT.Cu));
+		CR.delate(MD.FR, "honeyedSlice", "letters");
 		
 		OM.data(CR.get(null, OP.ingot.mat(MT.Sn, 1), null, OP.ingot.mat(MT.Sn, 1), null, OP.ingot.mat(MT.Sn, 1), null, null, null), new OreDictItemData(MT.Sn, U * 3));
 		
@@ -61,12 +62,12 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		CR.shaped(ST.make(MD.FR, "gearCopper"       , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(ANY.Cu), 'G', OP.gear.dat(MT.Stone));
 		CR.shaped(ST.make(MD.FR, "gearBronze"       , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Bronze), 'G', OP.gear.dat(MT.Stone));
 		
-		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {"itemPlantRemains", "itemPlantRemains", "itemPlantRemains", "itemPlantRemains"});
-		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {"itemGrassMoldy", "itemGrassMoldy"});
-		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {"itemGrassRotten"});
-		CR.shapeless(ST.make(MD.FR, "honeyedSlice"  , 1, 0), CR.DEF_REM_NAC_NCC , new Object[] {IL.Food_Bread_Sliced, OP.bottle.dat(MT.Honey)});
-		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_REM_NAC_NCC , "G", "P", 'P', "paperEmpty", 'G', "itemGlue");
-		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NAC_NCC     , "G", "P", 'P', "paperEmpty", 'G', "listAllpropolis");
+		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains});
+		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemGrassMoldy, OD.itemGrassMoldy});
+		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemGrassRotten});
+		CR.shapeless(ST.make(MD.FR, "honeyedSlice"  , 1, 0), CR.DEF_NAC_NCC, new Object[] {IL.Food_Bread_Sliced, OP.bottle.dat(MT.Honey)});
+		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NAC_NCC, "G", "P", 'P', "paperEmpty", 'G', OD.itemGlue);
+		CR.shaped(ST.make(MD.FR, "letters"          , 1, 0), CR.DEF_NAC_NCC, "G", "P", 'P', "paperEmpty", 'G', "listAllpropolis");
 		
 		RM.Printer.addRecipe2(F, 16,128, ST.make(Items.paper, 1, W), ST.tag(0), FL.Glue.make(200), NF, ST.make(MD.FR, "letters", 1, 0));
 		

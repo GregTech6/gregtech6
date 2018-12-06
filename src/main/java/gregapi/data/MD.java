@@ -206,6 +206,11 @@ public class MD {
 	, PR_INTEGRATION    = new ModData(ModIDs.PR_INTEGRATION     , "Project Red Integration")
 	, PR_EXPANSION      = new ModData(ModIDs.PR_EXPANSION       , "Project Red Expansion")
 	, PR_TRANSMISSION   = new ModData(ModIDs.PR_TRANSMISSION    , "Project Red Transmission")
+	, PR_EXPLORATION    = new ModData(ModIDs.PR_EXPLORATION     , "Project Red Exploration")
+	, PR_COMPATIBILITY  = new ModData(ModIDs.PR_COMPATIBILITY   , "Project Red Compatibility")
+	, PR_FABRICATION    = new ModData(ModIDs.PR_FABRICATION     , "Project Red Fabrication")
+	, PR_ILLUMINATION   = new ModData(ModIDs.PR_ILLUMINATION    , "Project Red Illumination")
+	
 	, WR_CBE_C          = new ModData(ModIDs.WR_CBE_C           , "Wireless Redstone Chickenbones Edition")
 	, WR_CBE_A          = new ModData(ModIDs.WR_CBE_A           , "Wireless Redstone Chickenbones Edition")
 	, WR_CBE_L          = new ModData(ModIDs.WR_CBE_L           , "Wireless Redstone Chickenbones Edition")

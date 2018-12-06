@@ -201,6 +201,12 @@ public class Loader_Ores implements Runnable {
 		rockset(MD.RC, "cube"                           , 6, "rc.abyssal"           , OP.oreBasalt              , MT.Basalt);
 		rockset(MD.RC, "cube"                           , 7, "rc.quarried"          , OP.oreMarble              , MT.Marble);
 		
+		//rockset(MD.PR_EXPLORATION, "cube"               , 0, "pr.basalt"            , OP.oreBasalt              , MT.Basalt);
+		//rockset(MD.PR_EXPLORATION, "cube"               , 0, "pr.marble"            , OP.oreMarble              , MT.Marble);
+		
+		//rockset(MD.BP, "cube"                           , 0, "bp.basalt"            , OP.oreBasalt              , MT.Basalt);
+		//rockset(MD.BP, "cube"                           , 0, "bp.marble"            , OP.oreMarble              , MT.Marble);
+		
 		if (MD.BOTA.mLoaded) {
 		rockset(MD.BOTA, ST.block(MD.BOTA, "livingrock"), 0, 0, ST.block(MD.ALF, "LivingCobble"), 0, "botania.livingrock", OP.oreLivingrock, MT.Livingrock, 1.0F, 1.0F, 0, F, F, T);
 		}

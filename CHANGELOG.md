@@ -25,8 +25,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.12: (Not released yet)
-[NOTE] Yes I know I did not get many different things done, it was very focussed on reworking some code
+6.09.12: (Not released yet, definitely going to be released Thursday evening or so, even if there isn't much visible Features)
+[NOTE] Yes I know I did not get many different things done, I was very focussed on reworking some code.
 [API] Addons are now be able to create their own Rooms in GT6 Dungeons.
 [ADDED] GT6 Dungeons now have GT6 Anvils in their Workshops.
 

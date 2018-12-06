@@ -155,6 +155,10 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 0, MT.Marble));
 		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
+		tBlock = ST.block(MD.RC, "cube");
+		if (tBlock != NB)
+		StoneLayer.LAYERS.add(new StoneLayer(tBlock, 7, MT.Marble));
+		else
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble
@@ -283,7 +287,6 @@ public class Loader_Worldgen implements Runnable {
 		));
 		
 		
-		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Andesite));

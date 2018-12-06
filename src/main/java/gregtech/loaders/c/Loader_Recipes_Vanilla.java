@@ -56,10 +56,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', ST.make(Items.reeds, 1, 0));
 		CR.shapeless(ST.make(Items.book, 1, 0), DEF, new Object[] {OD.craftingLeather, "paperEmpty", "paperEmpty", "paperEmpty"});
 		
-		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_REM_NCC, "XXX", "XFX", "XXX", 'X', "cobblestone", 'F', OD.craftingFirestarter);
+		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.cobblestone, 'F', OD.craftingFirestarter);
 		
 		CR.delate(ST.make(Blocks.enchanting_table, 1, 0));
 		CR.delate(ST.make(Blocks.ender_chest, 1, 0));
+		CR.delate(ST.make(Blocks.furnace, 1, 0));
 		CR.delate(ST.make(Items.saddle, 1, 0));
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "enchantmenttable", F)) {

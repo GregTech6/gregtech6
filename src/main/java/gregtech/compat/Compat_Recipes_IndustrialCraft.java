@@ -216,7 +216,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 			}
 		}
 		
-		CR.shaped(ST.make(MD.IC2, "item.itemRawObsidianBlade", 1, 0), CR.DEF_REV | CR.DEL_OTHER_RECIPES, "OOO", "OFO", "OOO", 'O', OP.blockDust.dat(MT.Obsidian), 'F', "itemFlint");
+		CR.delate(MD.IC2, "item.itemRawObsidianBlade");
+		CR.shaped(ST.make(MD.IC2, "item.itemRawObsidianBlade", 1, 0), CR.DEF_REV, "OOO", "OFO", "OOO", 'O', OP.blockDust.dat(MT.Obsidian), 'F', OD.itemFlint);
 		
 		//====================================================================================================
 		} else { // IC2 Experimental
@@ -299,15 +300,25 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "ic2_" + (tName = "blastfurnace"        ), T)) CR.delate(ST.mkic(tName, 1));
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "ic2_forgehammer"                        , T)) CR.delate(IL.IC2_ForgeHammer.wild(1));
 		
-		CR.shaped(ST.make(MD.IC2, "blockreactorvessel"      , 1, 0), CR.DEF_REM_REV_NCC, "PSP", "SPS", "PSP", 'P', OP.plate.dat(MT.Pb), 'S', OP.stone);
-		CR.shaped(ST.make(MD.IC2, "blockReactorFluidPort"   , 1, 0), CR.DEF_REM_REV_NCC, "XXX", "XCX", "XXX", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockreactorvessel", 1, 0));
-		CR.shaped(ST.make(MD.IC2, "blockGenerator"          , 1, 7), CR.DEF_REM_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockGenerator", 1, 1), 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "blockHeatGenerator"      , 1, 1), CR.DEF_REM_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 5), 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "blockKineticGenerator"   , 1, 1), CR.DEF_REM_REV_NCC, "PPP", "XSS", "CPP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 6), 'P', OP.casingSmall.dat(ANY.Iron), 'S', IL.IC2_ShaftIron);
-		CR.shaped(ST.make(MD.IC2, "blockMachine3"           , 1, 3), CR.DEF_REM_REV_NCC, "GGG", "G G", "CXC", 'C', OP.cell.dat(MT.Empty), 'X', IL.IC2_Machine, 'G', OP.plateGem.dat(MT.Glass));
-		CR.shaped(ST.make(MD.IC2, "itemArmorCFPack"         , 1, 0), CR.DEF_REM_REV_NCC, "PXP", "CPC", "CPC", 'C', OP.cell.dat(MT.Empty), 'X', OD_CIRCUITS[1], 'P', OP.casingSmall.dat(ANY.Iron));
-		CR.shaped(ST.make(MD.IC2, "itemArmorJetpack"    , 1, 18001), CR.DEF_REM_REV_NCC, "PXP", "PCP", "R R", 'C', OP.cell.dat(MT.Empty), 'X', OD_CIRCUITS[1], 'P', OP.casingSmall.dat(ANY.Iron), 'R', OD.itemRedstone);
-		CR.shaped(ST.make(MD.IC2, "itemFoamSprayer"         , 1, 0), CR.DEF_REM_REV_NCC, "P  ", " P ", " CP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron));
+		CR.delate(ST.make(MD.IC2, "blockreactorvessel"      , 1, 0));
+		CR.delate(ST.make(MD.IC2, "blockReactorFluidPort"   , 1, 0));
+		CR.delate(ST.make(MD.IC2, "blockGenerator"          , 1, 7));
+		CR.delate(ST.make(MD.IC2, "blockHeatGenerator"      , 1, 1));
+		CR.delate(ST.make(MD.IC2, "blockKineticGenerator"   , 1, 1));
+		CR.delate(ST.make(MD.IC2, "blockMachine3"           , 1, 3));
+		CR.delate(ST.make(MD.IC2, "itemArmorCFPack"         , 1, 0));
+		CR.delate(ST.make(MD.IC2, "itemArmorJetpack"    , 1, 18001));
+		CR.delate(ST.make(MD.IC2, "itemFoamSprayer"         , 1, 0));
+		
+		CR.shaped(ST.make(MD.IC2, "blockreactorvessel"      , 1, 0), CR.DEF_REV_NCC, "PSP", "SPS", "PSP", 'P', OP.plate.dat(MT.Pb), 'S', OP.stone);
+		CR.shaped(ST.make(MD.IC2, "blockReactorFluidPort"   , 1, 0), CR.DEF_REV_NCC, "XXX", "XCX", "XXX", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockreactorvessel", 1, 0));
+		CR.shaped(ST.make(MD.IC2, "blockGenerator"          , 1, 7), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "blockGenerator", 1, 1), 'P', OP.casingSmall.dat(ANY.Iron));
+		CR.shaped(ST.make(MD.IC2, "blockHeatGenerator"      , 1, 1), CR.DEF_REV_NCC, "PCP", "CXC", "PCP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 5), 'P', OP.casingSmall.dat(ANY.Iron));
+		CR.shaped(ST.make(MD.IC2, "blockKineticGenerator"   , 1, 1), CR.DEF_REV_NCC, "PPP", "XSS", "CPP", 'C', OP.cell.dat(MT.Empty), 'X', ST.make(MD.IC2, "itemRecipePart", 1, 6), 'P', OP.casingSmall.dat(ANY.Iron), 'S', IL.IC2_ShaftIron);
+		CR.shaped(ST.make(MD.IC2, "blockMachine3"           , 1, 3), CR.DEF_REV_NCC, "GGG", "G G", "CXC", 'C', OP.cell.dat(MT.Empty), 'X', IL.IC2_Machine, 'G', OP.plateGem.dat(MT.Glass));
+		CR.shaped(ST.make(MD.IC2, "itemArmorCFPack"         , 1, 0), CR.DEF_REV_NCC, "PXP", "CPC", "CPC", 'C', OP.cell.dat(MT.Empty), 'X', OD_CIRCUITS[1], 'P', OP.casingSmall.dat(ANY.Iron));
+		CR.shaped(ST.make(MD.IC2, "itemArmorJetpack"    , 1, 18001), CR.DEF_REV_NCC, "PXP", "PCP", "R R", 'C', OP.cell.dat(MT.Empty), 'X', OD_CIRCUITS[1], 'P', OP.casingSmall.dat(ANY.Iron), 'R', OD.itemRedstone);
+		CR.shaped(ST.make(MD.IC2, "itemFoamSprayer"         , 1, 0), CR.DEF_REV_NCC, "P  ", " P ", " CP", 'C', OP.cell.dat(MT.Empty), 'P', OP.casingSmall.dat(ANY.Iron));
 		
 		RM.Massfab      .addRecipe1(T, 1, 32768, IL.IC2_Scrap       .get(36), NF, FL.UUM.make(1), ZL_IS);
 		RM.Massfab      .addRecipe1(T, 1, 32768, IL.IC2_Scrapbox    .get( 4), NF, FL.UUM.make(1), ZL_IS);
@@ -399,9 +410,12 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.shaped(ST.mkic("ironCableItem"   , 3), CR.DEF, "xP", 'P', OP.plate.dat(ANY.Fe));
 		CR.shaped(ST.mkic("tinCableItem"    , 3), CR.DEF, "xP", 'P', OP.plate.dat(MT.Sn));
 		
-		CR.shaped(ST.mkic("crop", 1), CR.DEF_REM, "SsS", 'S', OP.stick.dat(MT.WoodSealed));
-		CR.shaped(ST.mkic("crop", 1), CR.DEF_REM, "SkS", 'S', OP.stick.dat(MT.WoodSealed));
-		CR.shaped(IL.IC2_Scaffold.get(4), CR.DEF_REM, "WWW", " S ", "S S", 'W', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
+		CR.delate(ST.mkic("crop", 1));
+		CR.delate(IL.IC2_Scaffold.get(1));
+		
+		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SsS", 'S', OP.stick.dat(MT.WoodSealed));
+		CR.shaped(ST.mkic("crop", 1), CR.DEF, "SkS", 'S', OP.stick.dat(MT.WoodSealed));
+		CR.shaped(IL.IC2_Scaffold.get(4), CR.DEF, "WWW", " S ", "S S", 'W', OD.plankAnyWood, 'S', OP.stick.dat(ANY.Wood));
 		
 		RM.Autoclave        .addRecipe2(T,  0, 3000, OM.dust(MT.EnergiumRed, U*9), ST.tag(9), FL.Steam.make(96000), FL.DistW.make(450), IL.IC2_EnergyCrystal.get(1));
 		

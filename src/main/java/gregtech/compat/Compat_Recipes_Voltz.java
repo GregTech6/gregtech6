@@ -44,7 +44,8 @@ public class Compat_Recipes_Voltz extends CompatMods {
 			
 			Item tSheet = ST.item(MD.VOLTZ, "veSheetMetal");
 			if (tSheet != null) {
-				CR.shaped(ST.make(MD.ICBM, "icbmCMissile", 1, 24), CR.DEF_REM_REV_NCC_MIR, "CAR", "FOR", "NON", 'A', ST.make(tSheet, 1, 7), 'O', ST.make(tSheet, 1, 12), 'R', ST.make(tSheet, 1, 15), 'N', ST.make(tSheet, 1, 17), 'F', OD.itemFlint, 'C', MT.DATA.CIRCUITS[1]);
+				CR.delate(ST.make(MD.ICBM, "icbmCMissile", 1, 24));
+				CR.shaped(ST.make(MD.ICBM, "icbmCMissile", 1, 24), CR.DEF_REV_NCC_MIR, "CAR", "FOR", "NON", 'A', ST.make(tSheet, 1, 7), 'O', ST.make(tSheet, 1, 12), 'R', ST.make(tSheet, 1, 15), 'N', ST.make(tSheet, 1, 17), 'F', OD.itemFlint, 'C', MT.DATA.CIRCUITS[1]);
 			}
 		}
 	}

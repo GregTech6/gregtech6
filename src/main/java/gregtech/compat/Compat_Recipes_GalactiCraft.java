@@ -61,8 +61,10 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, new ItemStack[] {tStack, OP.compressed.mat(MT.Al, 1), OP.compressed.mat(MT.Bronze, 1)}, ST.make(MD.GC, "item.heavyPlating", 1, 0));
 			}
 			
-			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 0),  CR.DEF_REM_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Fe      ), 'D', OP.plateDense.dat(ANY.Fe    ));
-			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 1),  CR.DEF_REM_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Steel   ), 'D', OP.plateDense.dat(ANY.Steel ));
+			CR.delate(MD.GC, "tile.landingPad");
+			
+			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 0),  CR.DEF_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Fe      ), 'D', OP.plateDense.dat(ANY.Fe    ));
+			CR.shaped(ST.make(MD.GC, "tile.landingPad", 9, 1),  CR.DEF_REV_NCC, "PPP", "DDD", 'P', OP.plate.dat(ANY.Steel   ), 'D', OP.plateDense.dat(ANY.Steel ));
 			
 			List<ItemStack>
 			  tListA = OreDictionary.getOres("gt:complateCopper"        ), tListA1 = OreDictionary.getOres("compressedCopper"       )
