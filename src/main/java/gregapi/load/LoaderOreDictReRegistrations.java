@@ -222,6 +222,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockEmerald"            , "blockGemEmerald");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockLapis"              , "blockGemLapis");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockCoal"               , "blockGemCoal");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockCharcoal"           , "blockGemCharcoal");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockRuby"               , "blockGemRuby");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockBalasRuby"          , "blockGemBalasRuby");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockSapphire"           , "blockGemSapphire");
@@ -266,6 +267,9 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockSilver"             , "blockIngotSilver");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockGold"               , "blockIngotGold");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockPlatinum"           , "blockIngotPlatinum");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockOsmium"             , "blockIngotOsmium");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockRefinedGlowstone"   , "blockIngotRefinedGlowstone");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockRefinedObsidian"    , "blockIngotRefinedObsidian");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAnyIron"            , "blockIngotAnyIron");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAnyIronSteel"       , "blockIngotAnyIronSteel");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAnySteel"           , "blockIngotAnySteel");

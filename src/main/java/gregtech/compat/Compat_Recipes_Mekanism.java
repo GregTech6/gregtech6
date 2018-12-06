@@ -26,16 +26,29 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.MD;
+import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_Mekanism extends CompatMods {
 	public Compat_Recipes_Mekanism(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
-	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
-		OUT.println("GT_Mod: Doing Mekanism Recipes.");
+	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Mekanism Recipes.");
 		ItemStack x = ST.make(MD.Mek, "Salt", 1, 0);
 		CR.remove(x, x, NI, x, x);
+		
+		for (int i = 0; i < 16; i++) for (FluidStack tDye : DYE_FLUIDS[i]) {
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.Mek, "Balloon"               , 1, W), UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(MD.Mek, "Balloon"               , 1, 15-i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.Mek, "PlasticFence"          , 1, W), UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(MD.Mek, "PlasticFence"          , 1, 15-i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.Mek, "GlowPanel"             , 1, W), UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(MD.Mek, "GlowPanel"             , 1, 15-i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.Mek, "RoadPlasticBlock"      , 1, W), UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(MD.Mek, "RoadPlasticBlock"      , 1, 15-i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.Mek, "PlasticBlock"          , 1, W), UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(MD.Mek, "PlasticBlock"          , 1, 15-i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.Mek, "SlickPlasticBlock"     , 1, W), UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(MD.Mek, "SlickPlasticBlock"     , 1, 15-i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.Mek, "GlowPlasticBlock"      , 1, W), UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(MD.Mek, "GlowPlasticBlock"      , 1, 15-i));
+			RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.Mek, "ReinforcedPlasticBlock", 1, W), UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(MD.Mek, "ReinforcedPlasticBlock", 1, 15-i));
+		}
 	}
 }

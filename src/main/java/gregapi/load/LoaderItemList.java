@@ -264,6 +264,7 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.TE_FOUNDATION, "Ore"                   , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ENVM, "flammablecoal"                  , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HaC, "salt"                            , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.Mek, "OreBlock"                        , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.VULPES, "libVulpesore0"                , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "copper_ore"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "uranium_ore"                     , null));

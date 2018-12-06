@@ -75,6 +75,8 @@ public class CR {
 	, "appeng.recipes.game.ShapedRecipe"
 	, "appeng.recipes.game.ShapelessRecipe"
 	, "forestry.core.utils.ShapedRecipeCustom"
+	, "mekanism.common.recipe.ShapedMekanismRecipe"
+	, "mekanism.common.recipe.ShapelessMekanismRecipe"
 	),
 	CLASSES_SPECIAL = new HashSetNoNulls<>(F
 	, AdvancedCraftingTool.class.getName()

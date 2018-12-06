@@ -410,6 +410,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxRefractory          , ST.make(MD.FR, "refractoryWax", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Peat                   , ST.make(MD.FR, "peat", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingotDouble    , MT.PeatBituminous         , ST.make(MD.FR, "bituminousPeat", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.RefinedObsidian        , ST.make(MD.Mek, "OtherDust", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.RefinedObsidian        , ST.make(MD.Mek, "Ingot", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.RefinedObsidian        , ST.make(MD.Mek, "BasicBlock", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.RefinedGlowstone       , ST.make(MD.Mek, "Ingot", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.RefinedGlowstone       , ST.make(MD.Mek, "BasicBlock", 1, 4));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.WaxBee                 , ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Eudialyte              , ST.make(MD.TROPIC, "tile.oreEudialyte", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Zircon                 , ST.make(MD.TROPIC, "tile.oreZircon", 1, 0));

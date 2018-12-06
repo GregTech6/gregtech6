@@ -53,5 +53,7 @@ public class Compat_Recipes_Bluepower extends CompatMods {
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BP, "indigo_flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
 		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.BP, "indigo_flower", 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(MD.BP, "indigo_dye", 1, 0));
 		RM.ic2_extractor(ST.make(MD.BP, "indigo_flower", 1, 0), ST.make(MD.BP, "indigo_dye", 1, 0));
+		
+		RM.sawing(64, 64, F, 1000, ST.make(MD.BP, "silicon_boule", 1, 0), ST.make(MD.BP, "silicon_wafer", 16, 0));
 	}
 }
