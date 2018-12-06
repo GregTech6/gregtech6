@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.12: (Not released yet, definitely going to be released Thursday evening or so, even if there isn't much visible Features)
+6.09.12:
 [NOTE] Yes I know I did not get many different things done, I was very focussed on reworking some code.
 [COMPAT] Mekanism, Bluepower and Project Red got some Material Data, Ore Blocks and Bugfixes.
 [API] Addons are now be able to create their own Rooms in GT6 Dungeons.
