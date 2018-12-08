@@ -280,13 +280,13 @@ public class GT_API_Post extends Abstract_Mod {
 			
 			StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.PR_EXPLORATION, "projectred.exploration.ore", null));
 			
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 0), OP.oreVanillastone.dat(MT.Ruby));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 1), OP.oreVanillastone.dat(MT.BlueSapphire));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 2), OP.oreVanillastone.dat(MT.Olivine));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 3), OP.oreVanillastone.dat(MT.Cu));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 4), OP.oreVanillastone.dat(MT.Sn));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 5), OP.oreVanillastone.dat(MT.Ag));
-			OreDictManager.INSTANCE.setItemData_(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 6), OP.oreVanillastone.dat(MT.Electrotine));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 0), OP.oreVanillastone.dat(MT.Ruby));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 1), OP.oreVanillastone.dat(MT.BlueSapphire));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 2), OP.oreVanillastone.dat(MT.Olivine));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 3), OP.oreVanillastone.dat(MT.Cu));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 4), OP.oreVanillastone.dat(MT.Sn));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 5), OP.oreVanillastone.dat(MT.Ag));
+			OreDictManager.INSTANCE.setItemData(ST.make(MD.PR_EXPLORATION, "projectred.exploration.ore", 1, 6), OP.oreVanillastone.dat(MT.Electrotine));
 		}
 		
 		// Okay I should not have wondered about Blue Power doing the same garbage considering Project Red...
