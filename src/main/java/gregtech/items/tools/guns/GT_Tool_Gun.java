@@ -26,6 +26,7 @@ import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregtech.items.behaviors.Behavior_Gun;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
@@ -39,6 +40,11 @@ public class GT_Tool_Gun extends ToolStats {
 	@Override public boolean isRangedWeapon()                             {return T;}
 	@Override public boolean isMiningTool()                               {return F;}
 	@Override public boolean isMinableBlock(Block aBlock, byte aMetaData) {return F;}
-	@Override public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {return !aIsToolHead ? Textures.ItemIcons.KNIFE : Textures.ItemIcons.VOID;}
+	@Override public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {return !aIsToolHead ? Textures.ItemIcons.PISTOL : Textures.ItemIcons.HANDLE_PISTOL;}
 	@Override public short[]        getRGBa(boolean aIsToolHead, ItemStack aStack) {return !aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.Wood).mRGBaSolid;}
+	
+	@Override
+	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID, Behavior_Gun.BULLETS_SMALL);
+	}
 }

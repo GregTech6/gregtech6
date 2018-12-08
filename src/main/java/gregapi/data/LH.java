@@ -140,6 +140,7 @@ public class LH {
 	, TOOL_TO_HARVEST = "gt.lang.tool.to.harvest"
 	, TOOL_TO_TAKE_PINCERS = "gt.lang.use.pincers.to.take"
 	, TOOL_HINT_USE_SNEAK = "gt.lang.tool.hint.use.sneak"
+	, WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD = "gt.weapon.sneak.rightclick.reload"
 	, WIRE_STATS_LOSSLESS = "gt.lang.wire.stats.lossless"
 	, WIRE_STATS_LOSS = "gt.lang.wire.stats.loss"
 	, WIRE_STATS_VOLTAGE = "gt.lang.wire.stats.voltage"
@@ -391,6 +392,7 @@ public class LH {
 		add(TOOL_TO_HARVEST                             , "Tool to Harvest");
 		add(TOOL_TO_TAKE_PINCERS                        , "Use Pincers to extract Items while Hot");
 		add(TOOL_HINT_USE_SNEAK                         , "Use Tool and Sneak for more options");
+		add(WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD           , "Sneak Rightclick to Reload");
 		add(WIRE_STATS_LOSSLESS                         , "Transfers Power losslessly");
 		add(WIRE_STATS_LOSS                             , "Loss: ");
 		add(WIRE_STATS_VOLTAGE                          , "Voltage: ");
