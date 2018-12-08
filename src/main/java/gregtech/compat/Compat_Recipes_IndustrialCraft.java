@@ -452,6 +452,11 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Wiremill         .addRecipe1(T, 64,  128, OM.dust(tMat, U*4)                                 , IL.IC2_Carbon_Fiber.get(1));
 		RM.Wiremill         .addRecipe1(T, 64,  128, OM.dust(MT.Coal, U*8)                              , IL.IC2_Carbon_Fiber.get(1));
 		
+		RM.Laminator        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Rubber, 1), ST.mkic("tinCableItem"   , 1), ST.mkic("insulatedTinCableItem"   , 1));
+		RM.Laminator        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Rubber, 1), ST.mkic("copperCableItem", 1), ST.mkic("insulatedCopperCableItem", 1));
+		RM.Laminator        .addRecipe2(T, 16,  128, OP.plate.mat(MT.Rubber, 2), ST.mkic("goldCableItem"  , 1), ST.mkic("insulatedGoldCableItem"  , 1));
+		RM.Laminator        .addRecipe2(T, 16,  192, OP.plate.mat(MT.Rubber, 3), ST.mkic("ironCableItem"  , 1), ST.mkic("insulatedIronCableItem"  , 1));
+		
 		for (FluidStack tCFoam : DYED_C_FOAMS)
 		RM.Bath             .addRecipe1(T,  0,   64, IL.IC2_Scaffold_Iron.get(1)                        , tCFoam, NF, IL.IC2_Wall_Reinforced.get(1));
 		RM.Bath             .addRecipe1(T,  0,   64, IL.IC2_Scaffold_Iron.get(1)                        , MT.ConstructionFoam.liquid(U, T), NF, IL.IC2_Wall_Reinforced.get(1));

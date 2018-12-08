@@ -76,6 +76,7 @@ public enum OD {
 	, plankWeedwood
 	, plankAnyWood
 	, plankWood
+	, paperEmpty
 	, stairWood
 	, slabWood
 	, beamWood
@@ -97,6 +98,7 @@ public enum OD {
 	, itemGrassDry
 	, itemGrassMoldy
 	, itemGrassRotten
+	, itemKey
 	, itemMud
 	, itemTar
 	, itemMoss

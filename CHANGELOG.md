@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.09.20: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.09.19: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.09.18: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -27,6 +35,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.09.12:
 [NOTE] Yes I know I did not get many different things done, I was very focussed on reworking some code.
+[NOTE] The Default Config Pack updated again to disable Mekanism, Bluepower and Project Red Worldgen.
 [COMPAT] Mekanism, Bluepower and Project Red got some Material Data, Ore Blocks and Bugfixes.
 [API] Addons are now be able to create their own Rooms in GT6 Dungeons.
 [ADDED] GT6 Dungeons now have GT6 Anvils in their Workshops.

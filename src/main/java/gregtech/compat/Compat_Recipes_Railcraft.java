@@ -65,8 +65,10 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		
 		CR.shapeless(ST.make(MD.RC, "part.gear"             , 1,  1), CR.DEF_NCC, new Object[] {OP.gearGt.dat(ANY.Fe), ST.make(MD.RC, "part.gear", 1, 3)});
 		CR.shapeless(ST.make(MD.RC, "part.gear"             , 1,  2), CR.DEF_NCC, new Object[] {OP.gearGt.dat(ANY.Steel), ST.make(MD.RC, "part.gear", 1, 3)});
-		CR.shapeless(IL.RC_Tie_Wood.get(4), CR.DEF_NCC, new Object[] {IL.RC_Bed_Wood});
+		CR.shapeless(IL.RC_Tie_Wood .get(4), CR.DEF_NCC, new Object[] {IL.RC_Bed_Wood});
 		CR.shapeless(IL.RC_Tie_Stone.get(4), CR.DEF_NCC, new Object[] {IL.RC_Bed_Stone});
+		RM.packunpack(IL.RC_Tie_Wood .get(4), IL.RC_Bed_Wood .get(1));
+		RM.packunpack(IL.RC_Tie_Stone.get(4), IL.RC_Bed_Stone.get(1));
 		
 		CR.shaped(ST.make(MD.RC, "machine.beta"             , 8,  0), tBits | DEL_IF_NO_DYES                                    , tWrench+"PP"      , tHammer+"PP"                                  , 'P', OP.plate.dat(ANY.Fe)                             );
 		CR.shaped(ST.make(MD.RC, "machine.beta"             , 8,  1), tBits | DEL_IF_NO_DYES                                    , "GPG"             , "PGP"                 , "GPG"                 , 'P', OP.plate.dat(ANY.Fe)                             , 'G', ST.make(Blocks.glass_pane, 1, W));

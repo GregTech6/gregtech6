@@ -190,6 +190,10 @@ public class RM {
 		return T;
 	}
 	
+	public static boolean packunpack(ItemStack aContent, ItemStack aFull) {
+		return pack(aContent, aFull) && unpack(aFull, aContent);
+	}
+	
 	public static boolean biomass(ItemStack aBiomass, long aSpeed) {
 		if (ST.invalid(aBiomass)) return F;
 		for (String tFluid : FluidsGT.WATER) if (UT.Fluids.exists(tFluid))

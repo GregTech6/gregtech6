@@ -252,6 +252,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.hopper_minecart         , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', ST.make(Items.minecart, 1, 0), 'X', Blocks.hopper);
 		CR.shaped(ST.make(Items.tnt_minecart            , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "X", "C", 'C', ST.make(Items.minecart, 1, 0), 'X', Blocks.tnt);
 		
+		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.chest_minecart  , 1, 0), ST.make(Blocks.chest, 1, 0));
+		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.furnace_minecart, 1, 0), ST.make(Blocks.furnace, 1, 0));
+		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.hopper_minecart , 1, 0), ST.make(Blocks.hopper, 1, 0));
+		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.tnt_minecart    , 1, 0), ST.make(Blocks.tnt, 1, 0));
+		
 		CR.shaped(ST.make(Items.chainmail_helmet        , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "RRR", "RhR"       , 'R', OP.ring.dat(ANY.Steel));
 		CR.shaped(ST.make(Items.chainmail_chestplate    , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "RhR", "RRR", "RRR", 'R', OP.ring.dat(ANY.Steel));
 		CR.shaped(ST.make(Items.chainmail_leggings      , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "RRR", "RhR", "R R", 'R', OP.ring.dat(ANY.Steel));
@@ -526,6 +531,33 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.Chisel       .addRecipe1(T, 16,   16, ST.make(Blocks.stone, 1, W), ST.make(Blocks.stonebrick, 1, 3));
 		RM.Chisel       .addRecipe1(T, 16,   16, ST.make(Blocks.stonebrick, 1, 0), ST.make(Blocks.stonebrick, 1, 2));
+		
+		
+		for (OreDictMaterial tMat2 : ANY.Glowstone.mToThis) {
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone ,  4), OP.dust     .mat(tMat2,  4), ST.make(Blocks.redstone_lamp, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 16), OP.dust     .mat(tMat2,  4), ST.make(Blocks.redstone_lamp, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 36), OP.dust     .mat(tMat2,  4), ST.make(Blocks.redstone_lamp, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone ,  4), OP.dustSmall.mat(tMat2, 16), ST.make(Blocks.redstone_lamp, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 16), OP.dustSmall.mat(tMat2, 16), ST.make(Blocks.redstone_lamp, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 36), OP.dustSmall.mat(tMat2, 16), ST.make(Blocks.redstone_lamp, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone ,  4), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.redstone_lamp, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 16), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.redstone_lamp, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Redstone , 36), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.redstone_lamp, 1, 0));
+		}
+		for (OreDictMaterial tMat2 : ANY.SiO2.mToThis) {
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Gunpowder,  4), OP.dust     .mat(tMat2,  4), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dustSmall.mat(MT.Gunpowder, 16), OP.dust     .mat(tMat2,  4), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dustTiny .mat(MT.Gunpowder, 36), OP.dust     .mat(tMat2,  4), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Gunpowder,  4), OP.dustSmall.mat(tMat2, 16), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dustSmall.mat(MT.Gunpowder, 16), OP.dustSmall.mat(tMat2, 16), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dustTiny .mat(MT.Gunpowder, 36), OP.dustSmall.mat(tMat2, 16), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Gunpowder,  4), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dustSmall.mat(MT.Gunpowder, 16), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dustTiny .mat(MT.Gunpowder, 36), OP.dustTiny .mat(tMat2, 36), ST.make(Blocks.tnt, 1, 0));
+		}
+		RM.Press        .addRecipe2(T, 16,   16, OP.dust     .mat(MT.Gunpowder,  4), ST.make(Blocks.sand,  1, W), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dustSmall.mat(MT.Gunpowder, 16), ST.make(Blocks.sand,  1, W), ST.make(Blocks.tnt, 1, 0));
+		RM.Press        .addRecipe2(T, 16,   16, OP.dustTiny .mat(MT.Gunpowder, 36), ST.make(Blocks.sand,  1, W), ST.make(Blocks.tnt, 1, 0));
 		
 		
 		RM.Squeezer     .addRecipe1(T, 16,  128,  5000, ST.make(Blocks.melon_block      , 1, W), NF, FL.Juice_Melon.make(2250), IL.Remains_Fruit.get(9));

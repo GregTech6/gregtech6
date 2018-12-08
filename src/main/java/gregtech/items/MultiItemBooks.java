@@ -88,23 +88,23 @@ public class MultiItemBooks extends MultiItemRandom {
 		CR.shapeless(ST.make(this, 1,  1006), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages_Many.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
 		CR.shapeless(ST.make(this, 1,  1007), CR.DEF_NCC | CR.KEEPNBT, new Object[] {IL.Paper_Printed_Pages_Many.get(1), OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
 		
-		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
-		CR.shapeless(ST.make(this, 1,     1), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
-		CR.shapeless(ST.make(this, 1,     2), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
-		CR.shapeless(ST.make(this, 1,     3), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Green]});
-		CR.shapeless(ST.make(this, 1,     4), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Blue]});
-		CR.shapeless(ST.make(this, 1,     5), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Cyan]});
-		CR.shapeless(ST.make(this, 1,     6), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
-		CR.shapeless(ST.make(this, 1,     7), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
+		CR.shapeless(ST.make(this, 1,     0), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
+		CR.shapeless(ST.make(this, 1,     1), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
+		CR.shapeless(ST.make(this, 1,     2), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
+		CR.shapeless(ST.make(this, 1,     3), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Green]});
+		CR.shapeless(ST.make(this, 1,     4), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Blue]});
+		CR.shapeless(ST.make(this, 1,     5), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Cyan]});
+		CR.shapeless(ST.make(this, 1,     6), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
+		CR.shapeless(ST.make(this, 1,     7), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
 		
-		CR.shapeless(ST.make(this, 1,  1000), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
-		CR.shapeless(ST.make(this, 1,  1001), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
-		CR.shapeless(ST.make(this, 1,  1002), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
-		CR.shapeless(ST.make(this, 1,  1003), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Green]});
-		CR.shapeless(ST.make(this, 1,  1004), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Blue]});
-		CR.shapeless(ST.make(this, 1,  1005), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Cyan]});
-		CR.shapeless(ST.make(this, 1,  1006), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
-		CR.shapeless(ST.make(this, 1,  1007), CR.DEF_NCC, new Object[] {"paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", "paperEmpty", OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
+		CR.shapeless(ST.make(this, 1,  1000), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Black]});
+		CR.shapeless(ST.make(this, 1,  1001), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_White]});
+		CR.shapeless(ST.make(this, 1,  1002), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Red]});
+		CR.shapeless(ST.make(this, 1,  1003), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Green]});
+		CR.shapeless(ST.make(this, 1,  1004), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Blue]});
+		CR.shapeless(ST.make(this, 1,  1005), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Cyan]});
+		CR.shapeless(ST.make(this, 1,  1006), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Magenta]});
+		CR.shapeless(ST.make(this, 1,  1007), CR.DEF_NCC, new Object[] {OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty, OD.craftingLeather, DYE_OREDICTS[DYE_INDEX_Yellow]});
 	}
 	
 	@Override

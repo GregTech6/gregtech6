@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Collection;
 
 import gregapi.data.IL;
+import gregapi.data.OD;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe;
@@ -110,7 +111,7 @@ public class RecipeMapPrinter extends RecipeMap {
 				}
 				return rRecipe;
 			}
-			if (OM.is_("paperEmpty", tPaper)) {
+			if (OM.is_(OD.paperEmpty, tPaper)) {
 				if (IL.GC_Schematic_1.exists() && tData.hasKey("gc_schematics_1")) return new Recipe(F, F, F, new ItemStack[] {ST.amount(8, tPaper), ST.amount(0, tUSB)}, new ItemStack[] {IL.GC_Schematic_1.getWithMeta(1, tData.getShort("gc_schematics_1"))}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, null, 2048, 16, 0);
 				if (IL.GC_Schematic_2.exists() && tData.hasKey("gc_schematics_2")) return new Recipe(F, F, F, new ItemStack[] {ST.amount(8, tPaper), ST.amount(0, tUSB)}, new ItemStack[] {IL.GC_Schematic_2.getWithMeta(1, tData.getShort("gc_schematics_2"))}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, null, 2048, 16, 0);
 				if (IL.GC_Schematic_3.exists() && tData.hasKey("gc_schematics_3")) return new Recipe(F, F, F, new ItemStack[] {ST.amount(8, tPaper), ST.amount(0, tUSB)}, new ItemStack[] {IL.GC_Schematic_3.getWithMeta(1, tData.getShort("gc_schematics_3"))}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[DYE_INDEX_Black], 4, 1, T)}, null, 2048, 16, 0);
