@@ -282,22 +282,22 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void addToolTipsSided(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		String tSideNames = ""; boolean temp = F;
+		String tSideNames = "";
 		if (mEnergyTypeAccepted != TD.Energy.TU) {
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mEnergyInputs])    {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mEnergyInputs])    {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide]);}
 		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, tSideNames, null);
 		}
-		tSideNames = ""; temp = F;
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs])      {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		tSideNames = "";
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs])      {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoInput?" (auto)":"");}
 		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.ITEM_INPUT)     + ": " + Chat.WHITE + tSideNames);
-		tSideNames = ""; temp = F;
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemOutputs])     {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		tSideNames = "";
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemOutputs])     {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoOutput?" (auto)":"");}
 		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.ITEM_OUTPUT)    + ": " + Chat.WHITE + tSideNames);
-		tSideNames = ""; temp = F;
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidInputs])     {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		tSideNames = "";
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidInputs])     {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoInput?" (auto)":"");}
 		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.FLUID_INPUT)    + ": " + Chat.WHITE + tSideNames);
-		tSideNames = ""; temp = F;
-		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidOutputs])    {tSideNames += (temp?", ":"")+LH.get(LH.FACES[tSide]); temp = T;}
+		tSideNames = "";
+		for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidOutputs])    {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoOutput?" (auto)":"");}
 		if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.FLUID_OUTPUT)   + ": " + Chat.WHITE + tSideNames);
 	}
 	

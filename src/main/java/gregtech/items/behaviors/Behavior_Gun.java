@@ -30,10 +30,15 @@ import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.util.UT;
+import gregapi.util.WD;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class Behavior_Gun extends AbstractBehaviorDefault {
@@ -47,19 +52,79 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		mBulletType = aBulletType;
 	}
 	
-	@Override
-	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
-		aList.add(LH.get(LH.WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD));
-		return aList;
+	public MovingObjectPosition trace(World aWorld, Vec3 aPosA, Vec3 aPosB) {
+		if (Double.isNaN(aPosA.xCoord) || Double.isNaN(aPosA.yCoord) || Double.isNaN(aPosA.zCoord) || Double.isNaN(aPosB.xCoord) || Double.isNaN(aPosB.yCoord) || Double.isNaN(aPosB.zCoord)) return null;
+		int aAX = UT.Code.roundDown(aPosA.xCoord), aAY = UT.Code.roundDown(aPosA.yCoord), aAZ = UT.Code.roundDown(aPosA.zCoord), aBX = UT.Code.roundDown(aPosB.xCoord), aBY = UT.Code.roundDown(aPosB.yCoord), aBZ = UT.Code.roundDown(aPosB.zCoord);
+		Block aBlock = WD.block(aWorld, aAX, aAY, aAZ);
+		
+		if (aBlock.canCollideCheck(WD.meta(aWorld, aAX, aAY, aAZ), F)) {
+			MovingObjectPosition tPos = aBlock.collisionRayTrace(aWorld, aAX, aAY, aAZ, aPosA, aPosB);
+			if (tPos != null) return tPos;
+		}
+		
+		int tCount = 1000;
+		while (tCount-- >= 0) {
+			if (aAX == aBX && aAY == aBY && aAZ == aBZ) return null;
+			if (Double.isNaN(aPosA.xCoord) || Double.isNaN(aPosA.yCoord) || Double.isNaN(aPosA.zCoord)) return null;
+			
+			byte tSide = SIDE_UNKNOWN;
+			double tAX = aAX, tAY = aAY, tAZ = aAZ, tBX = aAX, tBY = aAY, tBZ = aAZ;
+			double tDiffX = aPosB.xCoord - aPosA.xCoord, tDiffY = aPosB.yCoord - aPosA.yCoord, tDiffZ = aPosB.zCoord - aPosA.zCoord;
+			
+			if (aAX != aBX) {if (aBX > aAX) tAX++; tBX = (tAX - aPosA.xCoord) / tDiffX;}
+			if (aAY != aBY) {if (aBY > aAY) tAY++; tBY = (tAY - aPosA.yCoord) / tDiffY;}
+			if (aAZ != aBZ) {if (aBZ > aAZ) tAZ++; tBZ = (tAZ - aPosA.zCoord) / tDiffZ;}
+			
+			if (tBX < tBY && tBX < tBZ) {
+				if (aBX > aAX) tSide = SIDE_X_NEG; else tSide = SIDE_X_POS;
+				aPosA.xCoord  = tAX;
+				aPosA.yCoord += tDiffY * tBX;
+				aPosA.zCoord += tDiffZ * tBX;
+			} else if (tBY < tBZ) {
+				if (aBY > aAY) tSide = SIDE_Y_NEG; else tSide = SIDE_Y_POS;
+				aPosA.xCoord += tDiffX * tBY;
+				aPosA.yCoord  = tAY;
+				aPosA.zCoord += tDiffZ * tBY;
+			} else {
+				if (aBZ > aAZ) tSide = SIDE_Z_NEG; else tSide = SIDE_Z_POS;
+				aPosA.xCoord += tDiffX * tBZ;
+				aPosA.yCoord += tDiffY * tBZ;
+				aPosA.zCoord  = tAZ;
+			}
+			
+			aAX = UT.Code.roundDown(aPosA.xCoord); if (tSide == SIDE_X_POS) aAX--;
+			aAY = UT.Code.roundDown(aPosA.yCoord); if (tSide == SIDE_Y_POS) aAY--;
+			aAZ = UT.Code.roundDown(aPosA.zCoord); if (tSide == SIDE_Z_POS) aAZ--;
+			
+			aBlock = WD.block(aWorld, aAX, aAY, aAZ);
+			
+			if (aBlock.canCollideCheck(WD.meta(aWorld, aAX, aAY, aAZ), F)) {
+				MovingObjectPosition tPos = aBlock.collisionRayTrace(aWorld, aAX, aAY, aAZ, aPosA, aPosB);
+				if (tPos != null) return tPos;
+			}
+		}
+		return null;
+	}
+	
+	public boolean shoot(ItemStack aGun, ItemStack aBullet, EntityPlayer aPlayer) {
+		
+		
+		return T;
+	}
+	
+	public boolean hit(ItemStack aGun, ItemStack aBullet, EntityLivingBase aTarget) {
+		
+		
+		return T;
 	}
 	
 	@Override
 	public ItemStack onItemRightClick(MultiItem aItem, ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		if (aPlayer instanceof EntityPlayerMP) {
 			if (aPlayer.isSneaking()) {
-				UT.Sounds.send(SFX.MC_FIREWORK_BLAST, 20, 1.0F, aPlayer);
+				// TODO: Open GUI for reloading Gun
 			} else {
-				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 20, 1.0F, aPlayer);
+				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 64, 1.0F, aPlayer);
 			}
 		}
 		return aStack;
@@ -68,14 +133,20 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 	@Override
 	public boolean onRightClickEntity(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
 		if (aPlayer instanceof EntityPlayerMP) {
-			// TODO: Just hit the Entity directly for +2 Hearts Bonus Damage.
 			if (aPlayer.isSneaking()) {
-				UT.Sounds.send(SFX.MC_FIREWORK_LARGE, 20, 1.0F, aPlayer);
+				// TODO: Open GUI for reloading Gun
 			} else {
-				UT.Sounds.send(SFX.MC_FIREWORK_LARGE_FAR, 20, 1.0F, aPlayer);
+				// TODO: Just hit the Entity directly for +2 Hearts Bonus Damage.
+				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 64, 1.0F, aPlayer);
 			}
 			return T;
 		}
 		return T;
+	}
+	
+	@Override
+	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
+		aList.add(LH.get(LH.WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD));
+		return aList;
 	}
 }

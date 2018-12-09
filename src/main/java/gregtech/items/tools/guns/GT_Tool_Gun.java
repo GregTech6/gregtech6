@@ -34,7 +34,7 @@ public class GT_Tool_Gun extends ToolStats {
 	@Override public int getToolDamagePerBlockBreak()                     {return 200;}
 	@Override public int getToolDamagePerDropConversion()                 {return 100;}
 	@Override public int getToolDamagePerContainerCraft()                 {return 200;}
-	@Override public int getToolDamagePerEntityAttack()                   {return 100;}
+	@Override public int getToolDamagePerEntityAttack()                   {return 200;}
 	@Override public float getSpeedMultiplier()                           {return 0.25F;}
 	@Override public boolean isWeapon()                                   {return T;}
 	@Override public boolean isRangedWeapon()                             {return T;}
