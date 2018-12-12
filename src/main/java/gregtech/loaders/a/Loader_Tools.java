@@ -60,7 +60,6 @@ import gregtech.items.tools.crafting.GT_Tool_File;
 import gregtech.items.tools.crafting.GT_Tool_RollingPin;
 import gregtech.items.tools.early.*;
 import gregtech.items.tools.electric.*;
-import gregtech.items.tools.guns.GT_Tool_Gun;
 import gregtech.items.tools.machine.*;
 import gregtech.items.tools.pocket.GT_Tool_Pocket_Chisel;
 import gregtech.items.tools.pocket.GT_Tool_Pocket_Cutter;
@@ -155,7 +154,7 @@ public class Loader_Tools implements Runnable {
 			ST.make(ToolsGT.sMetaTool, 1, ToolsGT.POCKET_MULTITOOL+((i+7)%8)*2)
 		);
 		
-		ToolsGT.sMetaTool.addTool(ToolsGT.PISTOL, "Pistol", "Single Shot, Moderate Damage", new GT_Tool_Gun().setMaterialAmount(U*3), TC.stack(TC.TELUM, 6), TC.stack(TC.FABRICO, 3), TC.stack(TC.IGNIS, 3));
+//      ToolsGT.sMetaTool.addTool(ToolsGT.PISTOL, "Pistol", "Single Shot, Moderate Damage", new GT_Tool_Gun().setMaterialAmount(U*3), TC.stack(TC.TELUM, 6), TC.stack(TC.FABRICO, 3), TC.stack(TC.IGNIS, 3));
 		
 		
 		

@@ -124,7 +124,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (aPlayer.isSneaking()) {
 				// TODO: Open GUI for reloading Gun
 			} else {
-				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 64, 1.0F, aPlayer);
+				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 		}
 		return aStack;
@@ -137,7 +137,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				// TODO: Open GUI for reloading Gun
 			} else {
 				// TODO: Just hit the Entity directly for +2 Hearts Bonus Damage.
-				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 64, 1.0F, aPlayer);
+				UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
 			}
 			return T;
 		}

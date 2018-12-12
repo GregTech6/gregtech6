@@ -119,7 +119,7 @@ public enum IL implements IItemContainer {
 	TROPIC_Leaves_Palm, TROPIC_Leaves_Mahogany, TROPIC_Leaves_Kapok, TROPIC_Leaves_Grapefruit, TROPIC_Leaves_Lemon, TROPIC_Leaves_Lime, TROPIC_Leaves_Orange, TROPIC_Leaves_Fruit,
 	BTL_Swamp_Talisman, BTL_Tainted_Potion, BTL_Chest,
 	BTL_Bedrock, BTL_Betweenstone, BTL_Pitstone, BTL_Weedwood_Log, BTL_Weedwood_Beam, BTL_Weedwood_Planks, BTL_Weedwood_Bark, BTL_Weedwood_Sapling, BTL_Weedwood_Leaves, BTL_Weedwood_RottenBark, BTL_Portal_Bark,
-	BTL_Bark, BTL_Resin, BTL_Rubber, BTL_Skin, BTL_Tar,
+	BTL_Bark, BTL_Dry_Bark, BTL_Resin, BTL_Rubber, BTL_Skin, BTL_Tar,
 	ERE_Mud_Brick, ERE_Spray_Repellant, ERE_Herbicide, ERE_Compost, ERE_Bamboo, ERE_Gaean_Gem, ERE_Gaean_Staff, ERE_Umberstone, ERE_Umbercobble, ERE_White_Planks, ERE_White_Slab, ERE_White_Stairs, ERE_Crate, ERE_Pole, ERE_Ladder,
 	ERE_Bambucket_Empty, ERE_Bambucket_Water, ERE_Bambucket_Milk, ERE_Bambucket_Honey, ERE_Bambucket_AntiVenom, ERE_Bambucket_FormicAcid, ERE_Bambucket_BeetleJuice,
 	AETHER_Skyroot_Planks, AETHER_Skyroot_Log, AETHER_Skyroot_Log_Gold, AETHER_Skyroot_Log_Small, AETHER_Torch_Ambrosium, AETHER_Apple, AETHER_Tall_Grass, AETHER_Dirt, AETHER_Grass, AETHER_Grass_Enchanted, AETHER_Grass_Enchanted_Vanilla, AETHER_Chest,

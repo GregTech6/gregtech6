@@ -101,20 +101,20 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.DesertNova.set(                          addItem(tLastID = 12011, "Desert Nova"                              , "Used for magical Purposes"                                   , new Behavior_Turn_Into(IL.ARS_DesertNova  ), IL.ARS_DesertNova    .exists() ? TD.Creative.HIDDEN : "flowerDesertNova"     , TC.stack(TC.HERBA, 1), TC.stack(TC.PRAECANTIO, 1), TC.stack(TC.LUX, 1)));
 		
 		
-		IL.Resin.set(                               addItem(tLastID = 12050, "Rubber Resin"                             , ""                                                            , new Behavior_Turn_Into(IL.IC2_Resin       ), IL.IC2_Resin         .exists() ? TD.Creative.HIDDEN : "itemResin"            , TC.stack(TC.LIMUS, 1), TICKS_PER_SMELT / 2));
+		IL.Resin.set(                               addItem(tLastID = 12050, "Rubber Resin"                             , ""                                                            , new Behavior_Turn_Into(IL.IC2_Resin       ), IL.IC2_Resin         .exists() ? TD.Creative.HIDDEN : OD.itemResin           , TC.stack(TC.LIMUS, 1), TICKS_PER_SMELT / 2));
 		
 		
-		IL.Remains_Plant.set(                       addItem(tLastID = 12100, "Plant Remains"                            , ""                                                            , "itemPlantRemains", TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
-		IL.Remains_Fruit.set(                       addItem(tLastID = 12101, "Fruit Remains"                            , ""                                                            , "itemPlantRemains", TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
-		IL.Remains_Veggie.set(                      addItem(tLastID = 12102, "Vegetable Remains"                        , ""                                                            , "itemPlantRemains", TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
-		IL.Remains_Nut.set(                         addItem(tLastID = 12103, "Nut Remains"                              , ""                                                            , "itemPlantRemains", TICKS_PER_SMELT / 2, TC.stack(TC.HERBA, 1)));
+		IL.Remains_Plant.set(                       addItem(tLastID = 12100, "Plant Remains"                            , ""                                                            , OD.itemPlantRemains, TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
+		IL.Remains_Fruit.set(                       addItem(tLastID = 12101, "Fruit Remains"                            , ""                                                            , OD.itemPlantRemains, TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
+		IL.Remains_Veggie.set(                      addItem(tLastID = 12102, "Vegetable Remains"                        , ""                                                            , OD.itemPlantRemains, TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1)));
+		IL.Remains_Nut.set(                         addItem(tLastID = 12103, "Nut Remains"                              , ""                                                            , OD.itemPlantRemains, TICKS_PER_SMELT / 2, TC.stack(TC.HERBA, 1)));
 		
 		
-		IL.Bark_Dry.set(                            addItem(tLastID = 12201, "Dry Bark"                                 , "Useful for making a simple Fire Starter"                     , "itemBarkDry", TICKS_PER_SMELT / 4, TC.stack(TC.ARBOR, 1), new OreDictItemData(MT.Bark, U2)));
+		IL.Bark_Dry.set(                            addItem(tLastID = 12201, "Dry Bark"                                 , "Useful for making a simple Fire Starter"                     , OD.itemBarkDry, TICKS_PER_SMELT / 4, TC.stack(TC.ARBOR, 1), new OreDictItemData(MT.Bark, U2)));
 		
 		
-		IL.Mud_Ball.set(                            addItem(tLastID = 12300, "Mud Ball"                                 , ""                                                            , "itemMud", TC.stack(TC.TERRA, 1)));
-		IL.Clay_Ball_Brown.set(                     addItem(tLastID = 12310, "Brown Clay Ball"                          , ""                                                            , "itemClay", TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
+		IL.Mud_Ball.set(                            addItem(tLastID = 12300, "Mud Ball"                                 , ""                                                            , OD.itemMud, TC.stack(TC.TERRA, 1)));
+		IL.Clay_Ball_Brown.set(                     addItem(tLastID = 12310, "Brown Clay Ball"                          , ""                                                            , OD.itemClay, TC.stack(TC.TERRA, 1), new OreDictItemData(MT.ClayBrown, U)));
 		RM.generify(IL.Clay_Ball_Brown.get(1), ST.make(Items.clay_ball, 1, 0));
 		RM.add_smelting(IL.Clay_Ball_Brown.get(1), ST.make(Items.brick, 1, 0));
 		CR.remove(ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0), NI, ST.make(Items.clay_ball, 1, 0), ST.make(Items.clay_ball, 1, 0));
@@ -126,7 +126,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		CR.shapeless    (ST.make(Items.clay_ball, 4, 0)     , CR.DEF_NAC_NCC, new Object[] {ST.make(Blocks.clay         , 1, W)});
 		
 		
-		IL.Comb_Honey.set(          addItem(tLastID = 30000, "Honey Comb"           , "", OD.beeComb, "materialHoneycomb", "foodFilledhoneycomb", TC.stack(TC.LIMUS, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.SANO, 1)));
+		IL.Comb_Honey.set(          addItem(tLastID = 30000, "Honey Comb"           , "", OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb", TC.stack(TC.LIMUS, 1), TC.stack(TC.FAMES, 1), TC.stack(TC.SANO, 1)));
 		IL.Comb_Water.set(          addItem(tLastID = 30001, "Water Comb"           , "", OD.beeComb, TC.stack(TC.AQUA, 2)));
 		IL.Comb_Magic.set(          addItem(tLastID = 30002, "Magic Comb"           , "", OD.beeComb, TC.stack(TC.PRAECANTIO, 2)));
 		IL.Comb_Nether.set(         addItem(tLastID = 30003, "Nether Comb"          , "", OD.beeComb, TC.stack(TC.IGNIS, 2)));

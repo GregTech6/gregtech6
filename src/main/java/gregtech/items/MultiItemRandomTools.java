@@ -237,11 +237,11 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		
-		IL.Tool_Fire_Starter.set(               addItem(tLastID =  5014, "Fire Starter"                     , "(Made with Dry Grass)"                       , new OreDictItemData(MT.Wood, U), new Behavior_Lighter(5000), TC.stack(TC.IGNIS, 1), TC.stack(TC.ARBOR, 1), OD.craftingFirestarter));
-		CR.shaped(IL.Tool_Fire_Starter.get(1)       , CR.DEF_NAC_NCC_MIR, "S ", "GS", 'S', OP.stick.dat(ANY.Wood), 'G', "itemGrassDry");
+		IL.Tool_Fire_Starter.set(               addItem(tLastID =  5014, "Fire Starter"                     , "(Made with Dry Grass)"                       , new OreDictItemData(MT.Wood, U), new Behavior_Lighter(5000), TC.stack(TC.IGNIS, 1), TC.stack(TC.ARBOR, 1), TC.stack(TC.HERBA, 1), OD.craftingFirestarter));
+		CR.shaped(IL.Tool_Fire_Starter.get(1)       , CR.DEF_NAC_NCC_MIR, "S ", "GS", 'S', OP.stick.dat(ANY.Wood), 'G', OD.itemGrassDry);
 		
-		IL.Tool_Fire_Starter_Bark.set(          addItem(tLastID =  5015, "Fire Starter"                     , "(Made with Dry Tree Bark)"                   , new OreDictItemData(MT.Wood, U), new Behavior_Lighter(5000), TC.stack(TC.IGNIS, 1), TC.stack(TC.ARBOR, 1), OD.craftingFirestarter));
-		CR.shaped(IL.Tool_Fire_Starter_Bark.get(1)  , CR.DEF_NAC_NCC_MIR, "S ", "GS", 'S', OP.stick.dat(ANY.Wood), 'G', "itemBarkDry");
+		IL.Tool_Fire_Starter_Bark.set(          addItem(tLastID =  5015, "Fire Starter"                     , "(Made with Dry Tree Bark)"                   , new OreDictItemData(MT.Wood, U), new Behavior_Lighter(5500), TC.stack(TC.IGNIS, 1), TC.stack(TC.ARBOR, 2), OD.craftingFirestarter));
+		CR.shaped(IL.Tool_Fire_Starter_Bark.get(1)  , CR.DEF_NAC_NCC_MIR, "S ", "GS", 'S', OP.stick.dat(ANY.Wood), 'G', OD.itemBarkDry);
 		
 		
 		IL.Pellet_Wood.set(                     addItem(tLastID =  5999, "Wood Pellet"                      , ""                                            , new OreDictItemData(MT.Wood, U), TICKS_PER_SMELT, TC.stack(TC.POTENTIA, 1)));

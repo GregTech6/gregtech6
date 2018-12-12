@@ -104,6 +104,7 @@ public enum OD {
 	, itemMoss
 	, itemSlag
 	, itemGlue
+	, itemBarkDry
 	, itemLubricant
 	, itemLubricantEarly
 	, itemResin
@@ -129,6 +130,7 @@ public enum OD {
 	, grainBait
 	, veggieBait
 	, fishtrapBait
+	, materialHoneycomb
 	;
 	
 	OD() {
