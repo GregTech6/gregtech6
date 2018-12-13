@@ -29,8 +29,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.13: (Not released yet)
-[NOTE] Got the common cold or something and just want to be in bed all day... Release will likely only contain very minor Bugfixes.
+6.09.13:
+[NOTE] Got the common cold or something and just want to be in bed all day... Release only contains very minor Bugfixes.
 
 
 6.09.12:
