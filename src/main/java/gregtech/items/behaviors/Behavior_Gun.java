@@ -75,11 +75,12 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			
 			if (aBlock.getMaterial() == Material.water || aBlock.getMaterial() == Material.lava) {
 				return new MovingObjectPosition(aAX, aAY, aAZ, tSide, aPosA, T);
-			} else if (aBlock.getMaterial() == Material.glass) {
+			} else if (aBlock.getMaterial() == Material.glass || aBlock == Blocks.redstone_lamp || aBlock == Blocks.lit_redstone_lamp) {
 				if (aHitThings) {
 					OreDictItemData tData = OM.anydata(ST.make(aBlock, 1, aMeta));
-					for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) if (tMaterial.mAmount > OP.scrapGt.mAmount) {
-						ST.drop(aWorld, aAX+0.5, aAY+0.5, aAZ+0.5, aBlock, tMaterial.mAmount / OP.scrapGt.mAmount, aMeta);
+					for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) {
+						long tAmount = tMaterial.mAmount / OP.scrapGt.mAmount;
+						while (tAmount-->0) ST.drop(aWorld, aAX+0.2+RNGSUS.nextFloat()*0.6, aAY+0.1+RNGSUS.nextFloat()*0.5, aAZ+0.2+RNGSUS.nextFloat()*0.6, OP.scrapGt.mat(tMaterial.mMaterial, 1));
 					}
 				}
 			} else if (aBlock == Blocks.fence || aBlock == Blocks.fence_gate || aBlock == Blocks.web || aBlock == Blocks.mob_spawner || aBlock instanceof BlockPane || aBlock instanceof BlockRail || aBlock instanceof BlockTorch || aBlock instanceof BlockBaseBars || aBlock instanceof BlockBaseSpike || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.air || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine) {

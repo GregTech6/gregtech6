@@ -30,7 +30,6 @@ import gregapi.code.ICondition;
 import gregapi.code.ICondition.And;
 import gregapi.code.ICondition.Or;
 import gregapi.oredict.OreDictListenerItem_Washing;
-import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialCondition;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.util.OM;
@@ -548,19 +547,6 @@ public class OP {
 		gem                 .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3);
 		bouleGt             .forceItemGeneration(MT.Si, MT.RedstoneAlloy, MT.NikolineAlloy, MT.TeslatineAlloy);
 		plateTiny           .forceItemGeneration(MT.Paper);
-		
-		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) tMat.setPriorityPrefix(OP.dust);
-		MT.Redstone             .setPriorityPrefix(OP.dust);
-		MT.Electrotine          .setPriorityPrefix(OP.dust);
-		MT.Nikolite             .setPriorityPrefix(OP.dust);
-		MT.Teslatite            .setPriorityPrefix(OP.dust);
-		MT.KNO3                 .setPriorityPrefix(OP.dust);
-		MT.NaNO3                .setPriorityPrefix(OP.dust);
-		MT.S                    .setPriorityPrefix(OP.dust);
-		MT.Si                   .setPriorityPrefix(OP.plateGem);
-		MT.RedstoneAlloy        .setPriorityPrefix(OP.plateGem);
-		MT.NikolineAlloy        .setPriorityPrefix(OP.plateGem);
-		MT.TeslatineAlloy       .setPriorityPrefix(OP.plateGem);
 		
 		//-----
 		

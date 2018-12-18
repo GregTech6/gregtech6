@@ -1738,6 +1738,7 @@ public class CS {
 		, GoG               = "GrimoireOfGaia"
 		, PdC               = "psychedelicraft"
 		, Bamboo            = "BambooMod"
+		, Fossil            = "fossil"
 		, GrC               = "Growthcraft"
 		, GrC_Apples        = "Growthcraft|Apples"
 		, GrC_Cellar        = "Growthcraft|Cellar"

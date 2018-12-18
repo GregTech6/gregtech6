@@ -26,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.14: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[COMPAT] Fossils and Archeology got a few things made more compatible. It's surprisingly compatible with the OreDict though, so I didnt have to do much with the Item Data or its Music Discs.
 
 
 6.09.13:

@@ -123,6 +123,7 @@ public enum OD {
 	, itemLeatherImpregnated
 	, itemSkin
 	, itemFur
+	, itemPelt
 	, itemFertilizer
 	, itemPlantRemains
 	, itemGhastTear

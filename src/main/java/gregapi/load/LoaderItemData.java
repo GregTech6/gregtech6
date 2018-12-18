@@ -1262,6 +1262,10 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.UB, "fossilPiece"                        , 1,   W, MT.Bone               ,  U * 1);
 		
 		
+		OM.data(MD.Fossil, "skullBlock"                     , 1,   W, MT.Bone               ,  U * 5);
+		OM.data(MD.Fossil, "skullLantern"                   , 1,   W, MT.Bone               ,  U * 5);
+		
+		
 		OM.data(MD.BB, "boneShard"                          , 1,   W, MT.Bone               ,  U * 2);
 		
 		

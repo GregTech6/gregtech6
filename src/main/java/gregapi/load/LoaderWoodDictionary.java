@@ -62,7 +62,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 177 is next!
+		// No Gaps in this List, so 178 is next!
 		
 		
 		// Vanilla Trees
@@ -145,6 +145,10 @@ public class LoaderWoodDictionary implements Runnable {
 			if (MD.ATUM.mLoaded) {
 				new SaplingEntry(ST.make(MD.ATUM, "tile.palmSapling", 1, W), new WoodEntry(ST.make(MD.ATUM, "tile.palmLog", 1, W), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2), new PlankEntry(ST.make(MD.ATUM, "tile.palmPlanks", 1, W), 123)), ST.make(MD.ATUM, "tile.palmLeaves", 1, W));
 			}
+			// Fossils and Archeology
+			if (MD.Fossil.mLoaded) {
+				new SaplingEntry(ST.make(MD.Fossil, "palaeoraphneSapling", 1, W), new WoodEntry(ST.make(MD.Fossil, "palaeoraphneLog", 1, W), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2), new PlankEntry(ST.make(MD.Fossil, "palaeoraphnePlanks", 1, W), ST.make(MD.Fossil, "palaeoraphneSlab", 1, 0), ST.make(MD.Fossil, "palaeoraphneStairs", 1, 0), 177), 2, 500), ST.make(MD.Fossil, "palaeoraphneLeaves", 1, W));
+			}
 		} else {
 			WoodDictionary.DEFAULT_PLANK = WoodDictionary.PLANKS.get(Blocks.planks, 0);
 			
@@ -159,6 +163,10 @@ public class LoaderWoodDictionary implements Runnable {
 			// Atum Palm Trees
 			if (MD.ATUM.mLoaded) {
 				new SaplingEntry(ST.make(MD.ATUM, "tile.palmSapling", 1, W), new WoodEntry(ST.make(MD.ATUM, "tile.palmLog", 1, W), new PlankEntry(ST.make(MD.ATUM, "tile.palmPlanks", 1, W), 123)), ST.make(MD.ATUM, "tile.palmLeaves", 1, W));
+			}
+			// Fossils and Archeology
+			if (MD.Fossil.mLoaded) {
+				new SaplingEntry(ST.make(MD.Fossil, "palaeoraphneSapling", 1, W), new WoodEntry(ST.make(MD.Fossil, "palaeoraphneLog", 1, W), new PlankEntry(ST.make(MD.Fossil, "palaeoraphnePlanks", 1, W), ST.make(MD.Fossil, "palaeoraphneSlab", 1, 0), ST.make(MD.Fossil, "palaeoraphneStairs", 1, 0), 177), 2, 500), ST.make(MD.Fossil, "palaeoraphneLeaves", 1, W));
 			}
 		}
 		// BambooModSakuraTrees

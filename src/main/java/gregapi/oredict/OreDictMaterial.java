@@ -40,6 +40,7 @@ import gregapi.code.TagData;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OP;
 import gregapi.data.TC;
 import gregapi.data.TC.TC_AspectStack;
 import gregapi.data.TD;
@@ -1028,9 +1029,19 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return rFluid;
 	}
 	
-	/** Sets the Plasma State of this Material. It is advised to have either 144 or 1000 as Fluid Amount. */
+	/** Sets the Priority Prefix of this Material. The Material Amount of the Prefix has to be exactly 1 Unit or else it will be rejected. */
 	public OreDictMaterial setPriorityPrefix(OreDictPrefix aPrefix) {
-		if (aPrefix.mAmount == U) mPriorityPrefix = aPrefix;
+		if (aPrefix.mAmount == U) {
+			mPriorityPrefix = aPrefix;
+			
+			if (mPriorityPrefix == OP.gem) {
+				OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"+mNameInternal);
+			} else if (mPriorityPrefix == OP.dust) {
+				OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockDust"+mNameInternal);
+			} else if (mPriorityPrefix == OP.ingot) {
+				OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal);
+			}
+		}
 		return this;
 	}
 	
