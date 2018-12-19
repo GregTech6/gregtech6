@@ -366,10 +366,10 @@ public class LoaderWoodDictionary implements Runnable {
 		if (MD.HiL.mLoaded) {
 			Block tPlank = ST.block(MD.HiL, "hl_woodPlanks"), tSlab = ST.block(MD.HiL, "hl_woodSlab");
 			
-			new PlankEntry(ST.make(tPlank, 1, 0), ST.make(tSlab, 1, 0), ST.make(MD.HiL, "hl_woodStairs0", 1, W), 178);
-			new PlankEntry(ST.make(tPlank, 1, 1), ST.make(tSlab, 1, 1), ST.make(MD.HiL, "hl_woodStairs1", 1, W), 179);
-			new PlankEntry(ST.make(tPlank, 1, 2), ST.make(tSlab, 1, 2), ST.make(MD.HiL, "hl_woodStairs2", 1, W), 180);
-			new PlankEntry(ST.make(tPlank, 1, 3), ST.make(tSlab, 1, 3), ST.make(MD.HiL, "hl_woodStairs3", 1, W), 181);
+			new PlankEntry(ST.make(tPlank, 1, 0), ST.make(tSlab, 1, 0), ST.make(MD.HiL, "tile.hl_woodStairs0", 1, W), 178);
+			new PlankEntry(ST.make(tPlank, 1, 1), ST.make(tSlab, 1, 1), ST.make(MD.HiL, "tile.hl_woodStairs1", 1, W), 179);
+			new PlankEntry(ST.make(tPlank, 1, 2), ST.make(tSlab, 1, 2), ST.make(MD.HiL, "tile.hl_woodStairs2", 1, W), 180);
+			new PlankEntry(ST.make(tPlank, 1, 3), ST.make(tSlab, 1, 3), ST.make(MD.HiL, "tile.hl_woodStairs3", 1, W), 181);
 			
 			new SaplingEntry(ST.make(MD.HiL, "Fir Sapling"                 , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_firWood"          , 1, W), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 1)                                      ), ST.make(MD.HiL, "tile.hl_firLeaves", 1, W));
 			new SaplingEntry(ST.make(MD.HiL, "tile.hl_acaciaSapling"       , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_acaciaWood"       , 1, W), WoodDictionary.BEAMS.get(BlocksGT.Beam2, 0), WoodDictionary.PLANKS.get(tPlank, 0)), ST.make(MD.HiL, "tile.hl_acaciaLeaves", 1, W));

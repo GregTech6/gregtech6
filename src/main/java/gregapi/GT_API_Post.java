@@ -582,9 +582,9 @@ public class GT_API_Post extends Abstract_Mod {
 		RM.Trees.addFakeRecipe(F, new ItemStack[] {tTree.mSapling, tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf}, tTree.mWoodEntry == null ? tTree.mLeafEntry == null ? ZL_IS : new ItemStack[] {tTree.mLeafEntry.mLeaf} : new ItemStack[] {tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf
 		, tTree.mWoodEntry.mLog
 		, tTree.mWoodEntry.mBeamEntry  == null ? NI : tTree.mWoodEntry.mBeamEntry .mBeam
-		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mPlank
-		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mStair
 		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mSlab
+		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mStair
+		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mPlank
 		}, null, null, null, null, 0, 0, 0);
 		}
 		
