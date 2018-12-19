@@ -62,7 +62,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 178 is next!
+		// No Gaps in this List, so 182 is next!
 		
 		
 		// Vanilla Trees
@@ -363,6 +363,38 @@ public class LoaderWoodDictionary implements Runnable {
 			CR.shaped(ST.make(tPlank, 1,13), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 5));
 			CR.shaped(ST.make(tPlank, 1,14), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.EB, "enhancedbiomes.tile.slab2EB", 1, 6));
 		}
+		if (MD.HiL.mLoaded) {
+			Block tPlank = ST.block(MD.HiL, "hl_woodPlanks"), tSlab = ST.block(MD.HiL, "hl_woodSlab");
+			
+			new PlankEntry(ST.make(tPlank, 1, 0), ST.make(tSlab, 1, 0), ST.make(MD.HiL, "hl_woodStairs0", 1, W), 178);
+			new PlankEntry(ST.make(tPlank, 1, 1), ST.make(tSlab, 1, 1), ST.make(MD.HiL, "hl_woodStairs1", 1, W), 179);
+			new PlankEntry(ST.make(tPlank, 1, 2), ST.make(tSlab, 1, 2), ST.make(MD.HiL, "hl_woodStairs2", 1, W), 180);
+			new PlankEntry(ST.make(tPlank, 1, 3), ST.make(tSlab, 1, 3), ST.make(MD.HiL, "hl_woodStairs3", 1, W), 181);
+			
+			new SaplingEntry(ST.make(MD.HiL, "Fir Sapling"                 , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_firWood"          , 1, W), WoodDictionary.PLANKS.get(Blocks.planks, 1)), ST.make(MD.HiL, "tile.hl_firLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_acaciaSapling"       , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_acaciaWood"       , 1, W), WoodDictionary.PLANKS.get(tPlank       , 0)), ST.make(MD.HiL, "tile.hl_acaciaLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_ashSapling"          , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_ashWood"          , 1, W), WoodDictionary.PLANKS.get(Blocks.planks, 0)), ST.make(MD.HiL, "tile.hl_ashLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_canopySapling"       , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_canopyWood"       , 1, W), WoodDictionary.PLANKS.get(Blocks.planks, 2)), ST.make(MD.HiL, "tile.hl_canopyLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_ironwoodSapling"     , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_ironwoodWood"     , 1, W), WoodDictionary.PLANKS.get(tPlank       , 3)), ST.make(MD.HiL, "tile.hl_ironwoodLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_japaneseMapleSapling", 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_japaneseMapleWood", 1, W), WoodDictionary.PLANKS.get(tPlank       , 3)), ST.make(MD.HiL, "tile.hl_japaneseMapleLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_mangroveSapling"     , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_mangroveWood"     , 1, W), WoodDictionary.PLANKS.get(tPlank       , 3)), ST.make(MD.HiL, "tile.hl_mangroveLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_palmSapling"         , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_palmWood"         , 1, W), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2)), ST.make(MD.HiL, "tile.hl_palmLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_poplarSapling"       , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_poplarWood"       , 1, W), WoodDictionary.PLANKS.get(tPlank       , 1)), ST.make(MD.HiL, "tile.hl_poplarLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_redwoodSapling"      , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_redwoodWood"      , 1, W), WoodDictionary.PLANKS.get(tPlank       , 2)), ST.make(MD.HiL, "tile.hl_redwoodLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_autumnOrangeSapling" , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), ST.make(MD.HiL, "tile.hl_autumnOrangeLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_autumnYellowSapling" , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), ST.make(MD.HiL, "tile.hl_autumnYellowLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_deadSapling"         , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_decBushSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_greatOakSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_evgBushSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 1), WoodDictionary.LEAVES.get(Blocks.leaves, 1));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_beechSapling"        , 1, W), WoodDictionary.WOODS.get(Blocks.log, 2), WoodDictionary.LEAVES.get(Blocks.leaves, 2));
+			
+			CR.shaped(ST.make(tPlank, 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlab, 1, 0));
+			CR.shaped(ST.make(tPlank, 1, 1), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlab, 1, 1));
+			CR.shaped(ST.make(tPlank, 1, 2), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlab, 1, 2));
+			CR.shaped(ST.make(tPlank, 1, 3), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlab, 1, 3));
+		}
+		
 		// Tropicraft Trees
 		if (MD.TROPIC.mLoaded) {
 			new SaplingEntry(IL.TROPIC_Sapling_Palm      .get(1), new WoodEntry(IL.TROPIC_Log_Palm    .get(1), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2), new PlankEntry(ST.make(MD.TROPIC, "tile.plank", 1, 0), ST.make(MD.TROPIC, "tile.singleSlabs", 1, 3), ST.make(MD.TROPIC, "tile.palmStairs"    , 1, 0), 176)), IL.TROPIC_Leaves_Palm    .get(1));
