@@ -147,7 +147,7 @@ public class LoaderWoodDictionary implements Runnable {
 			}
 			// Fossils and Archeology
 			if (MD.Fossil.mLoaded) {
-				new SaplingEntry(ST.make(MD.Fossil, "palaeoraphneSapling", 1, W), new WoodEntry(ST.make(MD.Fossil, "palaeoraphneLog", 1, W), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2), new PlankEntry(ST.make(MD.Fossil, "palaeoraphnePlanks", 1, W), ST.make(MD.Fossil, "palaeoraphneSlab", 1, 0), ST.make(MD.Fossil, "palaeoraphneStairs", 1, 0), 177), 2, 500), ST.make(MD.Fossil, "palaeoraphneLeaves", 1, W));
+				new SaplingEntry(ST.make(MD.Fossil, "palaeorapheSapling", 1, W), new WoodEntry(ST.make(MD.Fossil, "palaeorapheLog", 1, W), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 2), new PlankEntry(ST.make(MD.Fossil, "palaeoraphePlanks", 1, W), ST.make(MD.Fossil, "palaeorapheSlab", 1, 0), ST.make(MD.Fossil, "palaeorapheStairs", 1, 0), 177), 2, 500), ST.make(MD.Fossil, "palaeorapheLeaves", 1, W));
 			}
 		} else {
 			WoodDictionary.DEFAULT_PLANK = WoodDictionary.PLANKS.get(Blocks.planks, 0);
@@ -166,7 +166,7 @@ public class LoaderWoodDictionary implements Runnable {
 			}
 			// Fossils and Archeology
 			if (MD.Fossil.mLoaded) {
-				new SaplingEntry(ST.make(MD.Fossil, "palaeoraphneSapling", 1, W), new WoodEntry(ST.make(MD.Fossil, "palaeoraphneLog", 1, W), new PlankEntry(ST.make(MD.Fossil, "palaeoraphnePlanks", 1, W), ST.make(MD.Fossil, "palaeoraphneSlab", 1, 0), ST.make(MD.Fossil, "palaeoraphneStairs", 1, 0), 177), 2, 500), ST.make(MD.Fossil, "palaeoraphneLeaves", 1, W));
+				new SaplingEntry(ST.make(MD.Fossil, "palaeorapheSapling", 1, W), new WoodEntry(ST.make(MD.Fossil, "palaeorapheLog", 1, W), new PlankEntry(ST.make(MD.Fossil, "palaeoraphePlanks", 1, W), ST.make(MD.Fossil, "palaeorapheSlab", 1, 0), ST.make(MD.Fossil, "palaeorapheStairs", 1, 0), 177), 2, 500), ST.make(MD.Fossil, "palaeorapheLeaves", 1, W));
 			}
 		}
 		// BambooModSakuraTrees
