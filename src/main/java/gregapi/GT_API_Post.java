@@ -45,6 +45,7 @@ import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
+import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.load.LoaderBookList;
 import gregapi.load.LoaderItemData;
@@ -57,9 +58,12 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.wooddict.SaplingEntry;
+import gregapi.wooddict.WoodDictionary;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
@@ -572,6 +576,16 @@ public class GT_API_Post extends Abstract_Mod {
 				MT.Craponite            .addEnchantmentForTools(tEnchant, 1);
 				MT.EnderAmethyst        .addEnchantmentForTools(tEnchant, 5);
 			}
+		}
+		
+		for (SaplingEntry tTree : WoodDictionary.SAPLINGS.values()) {
+		RM.Trees.addFakeRecipe(F, new ItemStack[] {tTree.mSapling, tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf}, tTree.mWoodEntry == null ? tTree.mLeafEntry == null ? ZL_IS : new ItemStack[] {tTree.mLeafEntry.mLeaf} : new ItemStack[] {tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf
+		, tTree.mWoodEntry.mLog
+		, tTree.mWoodEntry.mBeamEntry  == null ? NI : tTree.mWoodEntry.mBeamEntry .mBeam
+		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mPlank
+		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mStair
+		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mSlab
+		}, null, null, null, null, 0, 0, 0);
 		}
 		
 		new LoaderBookList().run();

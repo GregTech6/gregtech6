@@ -381,7 +381,7 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.HiL, "tile.hl_poplarSapling"       , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_poplarWood"       , 1, W)                                             , WoodDictionary.PLANKS.get(tPlank, 1)), ST.make(MD.HiL, "tile.hl_poplarLeaves", 1, W));
 			new SaplingEntry(ST.make(MD.HiL, "tile.hl_redwoodSapling"      , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_redwoodWood"      , 1, W)                                             , WoodDictionary.PLANKS.get(tPlank, 2)), ST.make(MD.HiL, "tile.hl_redwoodLeaves", 1, W));
 			
-			new SaplingEntry(ST.make(MD.HiL, "tile.hl_ironwoodSapling"     , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_ironwoodWood"     , 1, W), WoodDictionary.PLANKS.get(tPlank, 3), 1, 300, OP.dustTiny.mat(MT.LiveRoot, 1), MT.LiveRoot), ST.make(MD.HiL, "tile.hl_ironwoodLeaves", 1, W));
+			new SaplingEntry(ST.make(MD.HiL, "tile.hl_ironwoodSapling"     , 1, W), new WoodEntry(ST.make(MD.HiL, "tile.hl_ironwoodWood"     , 1, W), WoodDictionary.PLANKS.get(tPlank, 3), 1, 300, OP.dustSmall.mat(MT.LiveRoot, 1), MT.LiveRoot), ST.make(MD.HiL, "tile.hl_ironwoodLeaves", 1, W));
 			
 			new SaplingEntry(ST.make(MD.HiL, "tile.hl_autumnOrangeSapling" , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), ST.make(MD.HiL, "tile.hl_autumnOrangeLeaves", 1, W));
 			new SaplingEntry(ST.make(MD.HiL, "tile.hl_autumnYellowSapling" , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), ST.make(MD.HiL, "tile.hl_autumnYellowLeaves", 1, W));
