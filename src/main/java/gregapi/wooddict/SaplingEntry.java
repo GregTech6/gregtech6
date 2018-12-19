@@ -34,7 +34,7 @@ public class SaplingEntry {
 	public OreDictMaterial mMaterialSapling = MT.Wood;
 	
 	public SaplingEntry(ItemStack aSapling, WoodEntry aWood) {
-		if (ST.invalid(mSapling)) return;
+		if (ST.invalid(aSapling)) return;
 		mSapling = ST.amount(1, aSapling);
 		
 		mWoodEntry = aWood;
@@ -46,7 +46,7 @@ public class SaplingEntry {
 		WoodDictionary.SAPLINGS.put(mSapling, this);
 	}
 	public SaplingEntry(ItemStack aSapling, WoodEntry aWood, ItemStack aLeaf) {
-		if (ST.invalid(mSapling) || ST.invalid(aLeaf)) return;
+		if (ST.invalid(aSapling) || ST.invalid(aLeaf)) return;
 		mSapling = ST.amount(1, aSapling);
 		
 		mLeafEntry = new LeafEntry(aLeaf);
@@ -60,7 +60,7 @@ public class SaplingEntry {
 		WoodDictionary.SAPLINGS.put(mSapling, this);
 	}
 	public SaplingEntry(ItemStack aSapling, WoodEntry aWood, LeafEntry aLeaf) {
-		if (ST.invalid(mSapling)) return;
+		if (ST.invalid(aSapling)) return;
 		mSapling = ST.amount(1, aSapling);
 		
 		mLeafEntry = aLeaf;
