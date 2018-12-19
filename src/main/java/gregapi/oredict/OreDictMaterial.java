@@ -40,7 +40,6 @@ import gregapi.code.TagData;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
-import gregapi.data.OP;
 import gregapi.data.TC;
 import gregapi.data.TC.TC_AspectStack;
 import gregapi.data.TD;
@@ -250,6 +249,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public final List<IOreDictConfigurationComponent> mAlloyCreationRecipes = new ArrayListNoNulls<>();
 	/** List of Achievements you get for creating an instance of this Material. */
 	public final List<Achievement> mAchievementsForCreation = new ArrayListNoNulls<>();
+	/** Contains the most useful Prefix made of 1 Unit for this Material. */
+	public int mPriorityPrefixIndex = 0;
 	/** Contains the most useful Prefix made of 1 Unit for this Material. */
 	public OreDictPrefix mPriorityPrefix = null;
 	/** The Material which is the target for Re-Registration. */
@@ -1029,19 +1030,43 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return rFluid;
 	}
 	
-	/** Sets the Priority Prefix of this Material. The Material Amount of the Prefix has to be exactly 1 Unit or else it will be rejected. */
-	public OreDictMaterial setPriorityPrefix(OreDictPrefix aPrefix) {
-		if (aPrefix.mAmount == U) {
-			mPriorityPrefix = aPrefix;
-			
-			if (mPriorityPrefix == OP.gem) {
-				OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"+mNameInternal);
-			} else if (mPriorityPrefix == OP.dust) {
-				OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockDust"+mNameInternal);
-			} else if (mPriorityPrefix == OP.ingot) {
-				OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal);
-			}
+	/**
+	 * DO NOT USE THIS!!! GREG USE ONLY!!!
+	 * Sets the Priority Prefix of this Material.
+	 */
+	public OreDictMaterial setPriorityPrefix(int aIndex) {
+		mPriorityPrefixIndex = aIndex;
+		switch (mPriorityPrefixIndex) {
+		case 0: break;
+		case 1: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"  +mNameInternal); break;
+		case 2: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockDust" +mNameInternal); break;
+		case 3: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal); break;
+		case 4: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal); break;
+		case 5: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"  +mNameInternal); break;
 		}
+		return this;
+	}
+	
+	/**
+	 * Sets the Priority Prefix of this Material.
+	 * 0 = Not Selected
+	 * 1 = Gem
+	 * 2 = Dust
+	 * 3 = Ingot
+	 * 4 = Plate
+	 * 5 = Gem Plate
+	 */
+	public OreDictMaterial setPriorityPrefix(int aIndex, OreDictPrefix aPrefix) {
+		mPriorityPrefixIndex = aIndex;
+		switch (mPriorityPrefixIndex) {
+		case 0: break;
+		case 1: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"  +mNameInternal); break;
+		case 2: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockDust" +mNameInternal); break;
+		case 3: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal); break;
+		case 4: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal); break;
+		case 5: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"  +mNameInternal); break;
+		}
+		mPriorityPrefix = aPrefix;
 		return this;
 	}
 	

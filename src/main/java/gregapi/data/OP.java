@@ -30,6 +30,7 @@ import gregapi.code.ICondition;
 import gregapi.code.ICondition.And;
 import gregapi.code.ICondition.Or;
 import gregapi.oredict.OreDictListenerItem_Washing;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialCondition;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.util.OM;
@@ -547,6 +548,17 @@ public class OP {
 		gem                 .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3);
 		bouleGt             .forceItemGeneration(MT.Si, MT.RedstoneAlloy, MT.NikolineAlloy, MT.TeslatineAlloy);
 		plateTiny           .forceItemGeneration(MT.Paper);
+		
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
+			switch (tMaterial.mPriorityPrefixIndex) {
+			case 0: tMaterial.mPriorityPrefix = null; break;
+			case 1: tMaterial.mPriorityPrefix = gem; break;
+			case 2: tMaterial.mPriorityPrefix = dust; break;
+			case 3: tMaterial.mPriorityPrefix = ingot; break;
+			case 4: tMaterial.mPriorityPrefix = plate; break;
+			case 5: tMaterial.mPriorityPrefix = plateGem; break;
+			}
+		}
 		
 		//-----
 		
