@@ -81,6 +81,8 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.wooddict.SaplingEntry;
+import gregapi.wooddict.WoodDictionary;
 import gregtech.blocks.fluids.BlockOcean;
 import gregtech.compat.*;
 import gregtech.entities.projectiles.EntityArrow_Material;
@@ -364,6 +366,16 @@ public class GT_Mod extends Abstract_Mod {
 		for (IItemContainer tPlant : new IItemContainer[] {IL.FR_Tree_Sapling, IL.IC2_Crop_Seeds}) if (tPlant.exists()) {
 		RM.Plantalyzer.addFakeRecipe(F, new ItemStack[] {tPlant.wild(1)}, new ItemStack[] {tPlant.getWithName(1, "Scanned Plant")}, null, null, null, null, 64, 16, 0);
 		}
+		for (SaplingEntry tTree : WoodDictionary.SAPLINGS.values()) {
+		RM.Trees.addFakeRecipe(F, new ItemStack[] {tTree.mSapling, tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf}, tTree.mWoodEntry == null ? tTree.mLeafEntry == null ? ZL_IS : new ItemStack[] {tTree.mLeafEntry.mLeaf} : new ItemStack[] {tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf
+			, tTree.mWoodEntry.mLog
+			, tTree.mWoodEntry.mBeamEntry  == null ? NI : tTree.mWoodEntry.mBeamEntry .mBeam
+			, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mPlank
+			, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mStair
+			, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mSlab
+		}, null, null, null, null, 0, 0, 0);
+		}
+		
 		
 		for (ItemStack tStack : OreDictManager.getOres("bookWritten", F))
 		RM.ScannerVisuals.addFakeRecipe(F, new ItemStack[] {tStack, IL.USB_Stick_1.get(1)}                                              , new ItemStack[] {IL.USB_Stick_1.getWithName(1, "Containing scanned Book"                  ), tStack}, null, null, ZL_FS, ZL_FS, 512, 16, 0);
