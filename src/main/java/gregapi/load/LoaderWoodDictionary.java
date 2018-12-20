@@ -412,12 +412,12 @@ public class LoaderWoodDictionary implements Runnable {
 		
 		// Candycraft Trees
 		if (MD.CANDY.mLoaded) {
-			new SaplingEntry(IL.CANDY_Sapling_Chocolate.get(1), new WoodEntry(IL.CANDY_Log      .get(1), new PlankEntry(IL.CANDY_Plank      .get(1), ST.make(MD.CANDY, "CandyHalfSlab1", 1, W), ST.make(MD.CANDY, "X1"  , 1, W), MT.Marshmallow, 182), 1, 0), IL.CANDY_Leaves_Chocolate.get(1));
-			new SaplingEntry(IL.CANDY_Sapling_Caramel  .get(1), new WoodEntry(IL.CANDY_Log_Dark .get(1), new PlankEntry(IL.CANDY_Plank_Dark .get(1), ST.make(MD.CANDY, "CandyHalfSlab2", 1, W), ST.make(MD.CANDY, "XX1" , 1, W), MT.Marshmallow, 183), 1, 0), IL.CANDY_Leaves_Caramel  .get(1));
-			new SaplingEntry(IL.CANDY_Sapling_White    .get(1), new WoodEntry(IL.CANDY_Log_Light.get(1), new PlankEntry(IL.CANDY_Plank_Light.get(1), ST.make(MD.CANDY, "CandyHalfSlab3", 1, W), ST.make(MD.CANDY, "XXX1", 1, W), MT.Marshmallow, 184), 1, 0), IL.CANDY_Leaves_White    .get(1));
+			new SaplingEntry(IL.CANDY_Sapling_Chocolate.get(1), new WoodEntry(IL.CANDY_Log      .get(1), new PlankEntry(IL.CANDY_Plank      .get(1), ST.make(MD.CANDY, "CandyHalfSlab" , 1, W), ST.make(MD.CANDY, "X1"  , 1, W), MT.Marshmallow, 182), 1, 0, OP.dust.mat(MT.Marshmallow, 1), MT.Marshmallow), IL.CANDY_Leaves_Chocolate.get(1));
+			new SaplingEntry(IL.CANDY_Sapling_Caramel  .get(1), new WoodEntry(IL.CANDY_Log_Dark .get(1), new PlankEntry(IL.CANDY_Plank_Dark .get(1), ST.make(MD.CANDY, "CandyHalfSlab2", 1, W), ST.make(MD.CANDY, "XX1" , 1, W), MT.Marshmallow, 183), 1, 0, OP.dust.mat(MT.Marshmallow, 1), MT.Marshmallow), IL.CANDY_Leaves_Caramel  .get(1));
+			new SaplingEntry(IL.CANDY_Sapling_White    .get(1), new WoodEntry(IL.CANDY_Log_Light.get(1), new PlankEntry(IL.CANDY_Plank_Light.get(1), ST.make(MD.CANDY, "CandyHalfSlab3", 1, W), ST.make(MD.CANDY, "XXX1", 1, W), MT.Marshmallow, 184), 1, 0, OP.dust.mat(MT.Marshmallow, 1), MT.Marshmallow), IL.CANDY_Leaves_White    .get(1));
 			new SaplingEntry(IL.CANDY_Sapling_Cherry   .get(1), WoodDictionary.WOODS.get(new ItemStackContainer(IL.CANDY_Log.get(1))), IL.CANDY_Leaves_Cherry   .get(1));
 			
-			CR.shaped(IL.CANDY_Plank      .get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.CANDY, "CandyHalfSlab1", 1, W));
+			CR.shaped(IL.CANDY_Plank      .get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.CANDY, "CandyHalfSlab" , 1, W));
 			CR.shaped(IL.CANDY_Plank_Dark .get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.CANDY, "CandyHalfSlab2", 1, W));
 			CR.shaped(IL.CANDY_Plank_Light.get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.CANDY, "CandyHalfSlab3", 1, W));
 		}
