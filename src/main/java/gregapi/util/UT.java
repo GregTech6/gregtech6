@@ -3208,7 +3208,7 @@ public class UT {
 	
 	public static boolean addSimpleIC2MachineRecipe(IMachineRecipeManager aRecipeManager, ItemStack aInput, NBTTagCompound aNBT, Object... aOutput) {
 		if (!MD.IC2.mLoaded || ST.invalid(aInput) || aOutput == null || aRecipeManager == null) return F;
-		aOutput = Code.getWithoutNulls(aOutput).toArray(ZL_OBJECT);
+		aOutput = Code.getWithoutNulls(aOutput).toArray(ZL);
 		if (aOutput.length == 0) return F;
 		OreDictItemData tOreName = OM.association_(aInput);
 		if (aRecipeManager instanceof IMachineRecipeManagerExt) {

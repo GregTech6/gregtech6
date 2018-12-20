@@ -701,13 +701,13 @@ public class CS {
 	, SCANS_NEG[] = {SCAN_NEG_0, SCAN_NEG_1, SCAN_NEG_2, SCAN_NEG_3, SCAN_NEG_4, SCAN_NEG_5, SCAN_NEG_6, SCAN_NEG_7, SCAN_NEG_8, SCAN_NEG_9}
 	;
 	
+	/** Zero-Length Array to save on Memory. */ public static final Object                  [] ZL                   = new Object[0], ZL_OBJECT = ZL;
 	/** Zero-Length Array to save on Memory. */ public static final byte                    [] ZL_BYTE              = new byte[0];
 	/** Zero-Length Array to save on Memory. */ public static final short                   [] ZL_SHORT             = new short[0];
 	/** Zero-Length Array to save on Memory. */ public static final int                     [] ZL_INTEGER           = new int[0];
 	/** Zero-Length Array to save on Memory. */ public static final long                    [] ZL_LONG              = new long[0];
 	/** Zero-Length Array to save on Memory. */ public static final float                   [] ZL_FLOAT             = new float[0];
 	/** Zero-Length Array to save on Memory. */ public static final double                  [] ZL_DOUBLE            = new double[0];
-	/** Zero-Length Array to save on Memory. */ public static final Object                  [] ZL_OBJECT            = new Object[0];
 	/** Zero-Length Array to save on Memory. */ public static final String                  [] ZL_STRING            = new String[0];
 	/** Zero-Length Array to save on Memory. */ public static final ItemStack               [] ZL_IS                = new ItemStack[0], ZL_ITEMSTACK = ZL_IS;
 	/** Zero-Length Array to save on Memory. */ public static final ItemStackContainer      [] ZL_ISC               = new ItemStackContainer[0];

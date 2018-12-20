@@ -26,6 +26,8 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.MD;
+import gregapi.data.MT;
+import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.ST;
@@ -42,5 +44,6 @@ public class Compat_Recipes_CandyCraft extends CompatMods {
 		RM.packunpack(ST.make(MD.CANDY, "B82", 4, 0), ST.make(MD.CANDY, "B96", 1, 0)); // Banana Seaweeds
 		RM.packunpack(ST.make(MD.CANDY, "B47", 4, 0), ST.make(MD.CANDY, "B19", 1, 0)); // Raspberry Chain
 		RM.packunpack(ST.make(MD.CANDY, "I12", 2, 0), ST.make(MD.CANDY, "BarleyBlock", 1, 0));
+		RM.packunpack(OP.dust.mat(MT.Sugar, 4), ST.make(MD.CANDY, "B39", 1, 0));
 	}
 }
