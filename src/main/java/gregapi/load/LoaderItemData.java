@@ -1337,6 +1337,19 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BTL, "weedwoodJukebox"                   , 1,   W, MT.Weedwood           ,  U * 8, MT.Valonite, U);
 		
 		
+		OM.data(MD.CANDY, "B13"                             , 1,   0, MT.Licorice           ,  U3* 4);
+		OM.data(MD.CANDY, "B35"                             , 1,   0, MT.Sugar              ,  U * 4); // Caramel
+		OM.data(MD.CANDY, "B39"                             , 1,   0, MT.Sugar              ,  U * 4);
+		OM.data(MD.CANDY, "I60"                             , 1,   0, MT.Sugar              ,  U9   ); // Cotton Candy
+		OM.data(MD.CANDY, "B67"                             , 1,   0, MT.Sugar              ,  U9   ); // Cotton Candy
+		OM.data(MD.CANDY, "B18"                             , 1,   0, MT.Mint               ,  U * 4);
+		OM.data(MD.CANDY, "B48"                             , 1,   0, MT.Mint               ,  U * 1);
+		OM.data(MD.CANDY, "B43"                             , 1,   0, MT.Chocolate          ,  U * 1);
+		OM.data(MD.CANDY, "B44"                             , 1,   0, MT.Chocolate          ,  U * 1);
+		OM.data(MD.CANDY, "I27"                             , 1,   0, MT.Chocolate          ,  U * 1);
+		OM.data(MD.CANDY, "B2"                              , 1,   0, MT.Barley             ,  U * 1);
+		
+		
 		OM.data(MD.AETHER, "skyrootSignItem"                , 1,   W, MT.Skyroot            ,  U6*13);
 		OM.data(MD.AETHER, "skyrootFenceGate"               , 1,   W, MT.Skyroot            ,  U * 4);
 		OM.data(MD.AETHER, "skyrootBedItem"                 , 1,   W, MT.Skyroot            ,  U * 3);

@@ -460,9 +460,7 @@ public class LoaderItemList implements Runnable {
 		IL.TROPIC_Leaves_Fruit                  .set(ST.make(MD.TROPIC, "tile.leafRainforest"               , 1, 2), null, OP.treeLeaves);
 		
 		
-		IL.CANDY_Comb_Block                     .set(ST.make(MD.CANDY, "B59"                                , 1, 0), null, OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb");
 		IL.CANDY_Comb                           .set(ST.make(MD.CANDY, "I37"                                , 1, 0), null, OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb");
-		IL.CANDY_Honey                          .set(ST.make(MD.CANDY, "I23"                                , 1, 0), null, "dropHoney", "foodHoneydrop");
 		IL.CANDY_Chest                          .set(ST.make(MD.CANDY, "B56X"                               , 1, 0), new OreDictItemData(MT.Marshmallow, 8*U), OD.craftingChest);
 		IL.CANDY_Sapling_Chocolate              .set(ST.make(MD.CANDY, "B7"                                 , 1, 0), null, OP.treeSapling);
 		IL.CANDY_Sapling_Caramel                .set(ST.make(MD.CANDY, "B7"                                 , 1, 1), null, OP.treeSapling);

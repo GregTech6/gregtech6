@@ -117,7 +117,7 @@ public enum IL implements IItemContainer {
 	TROPIC_Chest, TROPIC_Bamboo, TROPIC_Stick, TROPIC_Log_Palm, TROPIC_Log_Mahogany, TROPIC_Sand_Coral, TROPIC_Sand_Foamy, TROPIC_Sand_Black, TROPIC_Sand_Mineral, TROPIC_Sand_Pure,
 	TROPIC_Sapling_Palm, TROPIC_Sapling_Mahogany, TROPIC_Sapling_Grapefruit, TROPIC_Sapling_Lemon, TROPIC_Sapling_Lime, TROPIC_Sapling_Orange,
 	TROPIC_Leaves_Palm, TROPIC_Leaves_Mahogany, TROPIC_Leaves_Kapok, TROPIC_Leaves_Grapefruit, TROPIC_Leaves_Lemon, TROPIC_Leaves_Lime, TROPIC_Leaves_Orange, TROPIC_Leaves_Fruit,
-	CANDY_Comb_Block, CANDY_Comb, CANDY_Honey, CANDY_Chest,
+	CANDY_Comb, CANDY_Chest,
 	CANDY_Log, CANDY_Log_Dark, CANDY_Log_Light,
 	CANDY_Plank, CANDY_Plank_Dark, CANDY_Plank_Light,
 	CANDY_Sapling_Chocolate, CANDY_Sapling_Caramel, CANDY_Sapling_White, CANDY_Sapling_Cherry,

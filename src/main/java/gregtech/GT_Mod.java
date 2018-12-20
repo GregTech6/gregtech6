@@ -254,6 +254,7 @@ public class GT_Mod extends Abstract_Mod {
 		new Compat_Recipes_TechGuns             (MD.TG            , this);
 		new Compat_Recipes_Atum                 (MD.ATUM          , this);
 		new Compat_Recipes_Tropicraft           (MD.TROPIC        , this);
+		new Compat_Recipes_CandyCraft           (MD.CANDY         , this);
 		new Compat_Recipes_JABBA                (MD.JABBA         , this);
 		new Compat_Recipes_Factorization        (MD.FZ            , this);
 		new Compat_Recipes_MineFactoryReloaded  (MD.MFR           , this); // Has to be after RC!
