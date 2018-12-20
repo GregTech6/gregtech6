@@ -30,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] I needed to take a look again at Highlands, because I did not register it's Trees to my Wood Dictionary yet. Glad that is over now.
 [COMPAT] Added some Material Data to Candycraft Stuff.
 [ADDED] NEI Recipe List for Saplings/Leaves -> Leaves/Logs/Beams/Planks/Stairs/Slabs using the GT6 Wood Dictionary.
-[ADDED] Miniature CandyCraft Portal.
+[ADDED] Miniature CandyCraft Portal. Made of Candy Canes and activated via a piece of PEZ.
 
 
 6.09.13:

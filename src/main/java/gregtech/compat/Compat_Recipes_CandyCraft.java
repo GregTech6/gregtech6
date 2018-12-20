@@ -37,6 +37,7 @@ public class Compat_Recipes_CandyCraft extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing CandyCraft Recipes.");
 		CR.delate(MD.CANDY, "I48", "I49");
+		CR.remove(NI, ST.make(MD.CANDY, "I49", 1, 0), NI, ST.make(MD.CANDY, "I49", 1, 0));
 		
 		RM.packunpack(ST.make(MD.CANDY, "B48", 4, 0), ST.make(MD.CANDY, "B18", 1, 0)); // Mint
 		RM.packunpack(ST.make(MD.CANDY, "I60", 1, 0), ST.make(MD.CANDY, "B67", 1, 0)); // Cotton Candy

@@ -1343,7 +1343,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.CANDY, "I60"                             , 1,   0, MT.Sugar              ,  U9   ); // Cotton Candy
 		OM.data(MD.CANDY, "B67"                             , 1,   0, MT.Sugar              ,  U9   ); // Cotton Candy
 		OM.data(MD.CANDY, "B60"                             , 1,   0, MT.Honey              ,  U * 9);
-		OM.data(MD.CANDY, "B95"                             , 1,   0, MT.Nougat             ,  U * 9);
+		OM.data(MD.CANDY, "B95"                             , 1,   W, MT.Nougat             ,  U * 9);
 		OM.data(MD.CANDY, "B18"                             , 1,   0, MT.Mint               ,  U * 4);
 		OM.data(MD.CANDY, "B48"                             , 1,   0, MT.Mint               ,  U * 1);
 		OM.data(MD.CANDY, "B43"                             , 1,   0, MT.Chocolate          ,  U * 1);
