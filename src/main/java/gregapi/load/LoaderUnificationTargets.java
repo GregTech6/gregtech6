@@ -179,6 +179,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Octine                 , ST.make(MD.BTL, "unknownGeneric", 1, 15));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Octine                 , ST.make(MD.BTL, "octineBlock", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreBetweenstone, MT.Octine                 , ST.make(MD.BTL, "octineOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Marshmallow            , ST.make(MD.CANDY, "I21", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Sugar                  , ST.make(MD.CANDY, "I69", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Blaze                  , ST.make(MD.GaNe, "blazeIngot", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Blaze                  , ST.make(MD.GaNe, "blazeIngot", 1, 2));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Endstone               , ST.make(MD.GaEn, "endstoneRod", 1, 0));

@@ -65,6 +65,10 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.BWM, "dart"                , 1, W));
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.BWM, "dynamite"            , 1, W));
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.BWM, "cannonball"          , 1, W));
+		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I42"               , 1, W));
+		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I85"               , 1, W));
+		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I89"               , 1, W));
+		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I100"              , 1, W));
 		
 		ItemsGT.AMMO_ITEMS.add(ST.make(Items.arrow                              , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(Items.fire_charge                        , 1, W));
@@ -74,6 +78,10 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.BWM, "dart"                           , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.BWM, "dynamite"                       , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.BWM, "cannonball"                     , 1, W));
+		ItemsGT.AMMO_ITEMS.add(ST.make(MD.CANDY, "I42"                          , 1, W));
+		ItemsGT.AMMO_ITEMS.add(ST.make(MD.CANDY, "I85"                          , 1, W));
+		ItemsGT.AMMO_ITEMS.add(ST.make(MD.CANDY, "I89"                          , 1, W));
+		ItemsGT.AMMO_ITEMS.add(ST.make(MD.CANDY, "I100"                         , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.TG, "stielGranate"                    , 1, 0));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.TG, "fragGrenade"                     , 1, 0));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.TG, "TechgunsAmmo"                    , 1, 0));
@@ -452,6 +460,26 @@ public class LoaderItemList implements Runnable {
 		IL.TROPIC_Leaves_Fruit                  .set(ST.make(MD.TROPIC, "tile.leafRainforest"               , 1, 2), null, OP.treeLeaves);
 		
 		
+		IL.CANDY_Comb_Block                     .set(ST.make(MD.CANDY, "B59"                                , 1, 0), null, OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb");
+		IL.CANDY_Comb                           .set(ST.make(MD.CANDY, "I37"                                , 1, 0), null, OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb");
+		IL.CANDY_Honey                          .set(ST.make(MD.CANDY, "I23"                                , 1, 0), null, "dropHoney", "foodHoneydrop");
+		IL.CANDY_Chest                          .set(ST.make(MD.CANDY, "B56X"                               , 1, 0), new OreDictItemData(MT.Marshmallow, 8*U), OD.craftingChest);
+		IL.CANDY_Sapling_Chocolate              .set(ST.make(MD.CANDY, "B7"                                 , 1, 0), null, OP.treeSapling);
+		IL.CANDY_Sapling_Caramel                .set(ST.make(MD.CANDY, "B7"                                 , 1, 1), null, OP.treeSapling);
+		IL.CANDY_Sapling_White                  .set(ST.make(MD.CANDY, "B7"                                 , 1, 2), null, OP.treeSapling);
+		IL.CANDY_Sapling_Cherry                 .set(ST.make(MD.CANDY, "B7"                                 , 1, 3), null, OP.treeSapling);
+		IL.CANDY_Leaves_Chocolate               .set(ST.make(MD.CANDY, "B6"                                 , 1, 0), null, OP.treeLeaves);
+		IL.CANDY_Leaves_Caramel                 .set(ST.make(MD.CANDY, "B6"                                 , 1, 1), null, OP.treeLeaves);
+		IL.CANDY_Leaves_White                   .set(ST.make(MD.CANDY, "B6"                                 , 1, 2), null, OP.treeLeaves);
+		IL.CANDY_Leaves_Cherry                  .set(ST.make(MD.CANDY, "B6"                                 , 1, 3), null, OP.treeLeaves);
+		IL.CANDY_Log                            .set(ST.make(MD.CANDY, "B4"                                 , 1, 0), new OreDictItemData(MT.Marshmallow, 9*U), OD.logWood);
+		IL.CANDY_Log_Dark                       .set(ST.make(MD.CANDY, "B4"                                 , 1, 1), new OreDictItemData(MT.Marshmallow, 9*U), OD.logWood);
+		IL.CANDY_Log_Light                      .set(ST.make(MD.CANDY, "B4"                                 , 1, 2), new OreDictItemData(MT.Marshmallow, 9*U), OD.logWood);
+		IL.CANDY_Plank                          .set(ST.make(MD.CANDY, "B3"                                 , 1, 0), new OreDictItemData(MT.Marshmallow, U), OP.plank.dat(MT.Marshmallow));
+		IL.CANDY_Plank_Dark                     .set(ST.make(MD.CANDY, "B3"                                 , 1, 1), new OreDictItemData(MT.Marshmallow, U), OP.plank.dat(MT.Marshmallow));
+		IL.CANDY_Plank_Light                    .set(ST.make(MD.CANDY, "B3"                                 , 1, 2), new OreDictItemData(MT.Marshmallow, U), OP.plank.dat(MT.Marshmallow));
+		
+		
 		IL.ERE_Umberstone                       .set(ST.make(MD.ERE, "umberstone"                           , 1, 0), OP.stone.dat(MT.Umber));
 		IL.ERE_Umbercobble                      .set(ST.make(MD.ERE, "umberstone"                           , 1, 1), OP.stone.dat(MT.Umber));
 		IL.ERE_Mud_Brick                        .set(ST.make(MD.ERE, "materials"                            , 1,23));
@@ -677,7 +705,7 @@ public class LoaderItemList implements Runnable {
 		IL.BoP_Ashes                            .set(ST.make(MD.BoP, "misc"                                 , 1, 1), new OreDictItemData(MT.VolcanicAsh, U), DYE_OREDICTS_MIXABLE[DYE_INDEX_Gray]);
 		IL.BoP_Ashes_Block                      .set(ST.make(MD.BoP, "ash"                                  , 1, 0), new OreDictItemData(MT.VolcanicAsh, U*4));
 		IL.BoP_Ashstone                         .set(ST.make(MD.BoP, "ashStone"                             , 1, 0), new OreDictItemData(MT.VolcanicAsh, U));
-		IL.BoP_Comb                             .set(ST.make(MD.BoP, "misc"                                 , 1, 2), null, OD.beeComb, "materialWaxcomb");
+		IL.BoP_Comb                             .set(ST.make(MD.BoP, "misc"                                 , 1, 2), null, OD.beeComb, OD.materialWaxcomb);
 		IL.BoP_Flesh                            .set(ST.make(MD.BoP, "misc"                                 , 1, 3), new OreDictItemData(MT.MeatRaw, U));
 		IL.BoP_Flesh_Block                      .set(ST.make(MD.BoP, "flesh"                                , 1, 0), new OreDictItemData(MT.MeatRaw, U*4));
 		IL.BoP_Celestial                        .set(ST.make(MD.BoP, "misc"                                 , 1, 4));
@@ -724,7 +752,7 @@ public class LoaderItemList implements Runnable {
 		IL.BoP_WildCarrots                      .set(ST.make(MD.BoP, "food"                                 , 1, 2), null, "cropWildcarrots");
 		IL.BoP_Peach                            .set(ST.make(MD.BoP, "food"                                 , 1, 3), null, "cropPeach");
 		IL.BoP_Persimmon                        .set(ST.make(MD.BoP, "food"                                 , 1, 8), null, "cropPersimmon");
-		IL.BoP_HoneyComb                        .set(ST.make(MD.BoP, "food"                                 , 1, 9), null, OD.beeComb, "materialHoneycomb", "foodFilledhoneycomb");
+		IL.BoP_HoneyComb                        .set(ST.make(MD.BoP, "food"                                 , 1, 9), null, OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb");
 		IL.BoP_Ambrosia                         .set(ST.make(MD.BoP, "food"                                 , 1,10), null, "foodAmbrosia");
 		IL.BoP_Turnip                           .set(ST.make(MD.BoP, "food"                                 , 1,11), null, "cropTurnip");
 		IL.BoP_Pear                             .set(ST.make(MD.BoP, "food"                                 , 1,12), null, "cropPear");
@@ -833,7 +861,7 @@ public class LoaderItemList implements Runnable {
 		IL.BINNIE_Propolis_Glacial              .set(ST.make(MD.BINNIE_BEE, "propolis"                      , 1, 8), null, OD.listAllpropolis);
 		IL.BINNIE_Propolis_Peat                 .set(ST.make(MD.BINNIE_BEE, "propolis"                      , 1, 9), null, OD.listAllpropolis);
 		}
-		IL.FR_Comb_Honey                        .set(ST.make(MD.FR, "beeCombs"                              , 1, 0), null, OD.beeComb, "materialHoneycomb", "foodFilledhoneycomb");
+		IL.FR_Comb_Honey                        .set(ST.make(MD.FR, "beeCombs"                              , 1, 0), null, OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb");
 		IL.FR_Comb_Cocoa                        .set(ST.make(MD.FR, "beeCombs"                              , 1, 1), null, OD.beeComb);
 		IL.FR_Comb_Simmering                    .set(ST.make(MD.FR, "beeCombs"                              , 1, 2), null, OD.beeComb);
 		IL.FR_Comb_Stringy                      .set(ST.make(MD.FR, "beeCombs"                              , 1, 3), null, OD.beeComb);

@@ -3037,7 +3037,7 @@ public class UT {
 		@Deprecated public static ItemStack suckOneItemStackAt(World aWorld, double aX, double aY, double aZ, double aL, double aH, double aW) {return WD.suck(aWorld, aX, aY, aZ, aL, aH, aW);}
 		@Deprecated public static boolean isSideObstructed(World aWorld, int aX, int aY, int aZ, byte aSide) {return WD.obstructed(aWorld, aX, aY, aZ, aSide);}
 		@Deprecated public static MovingObjectPosition getMovingObjectPositionFromPlayer(World aWorld, EntityPlayer aPlayer, boolean aFlag) {return WD.getMOP(aWorld, aPlayer, aFlag);}
-		@Deprecated public static boolean isRealDimension(int aDimensionID) {return WD.realDim(aDimensionID);}
+		@Deprecated public static boolean isRealDimension(int aDimensionID) {return T;}
 		@Deprecated public static boolean moveEntityToDimensionAtCoords(Entity aEntity, int aDimension, double aX, double aY, double aZ) {return WD.move(aEntity, aDimension, aX, aY, aZ);}
 		@Deprecated public static DelegatorTileEntity<TileEntity> getTileEntity(World aWorld, ChunkCoordinates aCoords, byte aSide, boolean aLoadUnloadedChunks) {return WD.te(aWorld, aCoords, aSide, aLoadUnloadedChunks);}
 		@Deprecated public static DelegatorTileEntity<TileEntity> getTileEntity(World aWorld, int aX, int aY, int aZ, byte aSide, boolean aLoadUnloadedChunks) {return WD.te(aWorld, aX, aY, aZ, aSide, aLoadUnloadedChunks);}

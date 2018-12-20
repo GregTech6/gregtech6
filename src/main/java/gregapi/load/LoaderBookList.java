@@ -195,6 +195,15 @@ public class LoaderBookList implements Runnable {
 		if (MD.TROPIC.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.TROPIC, "encTropica"                       , 1,   W), (byte)  1);
 		}
+		if (MD.CANDY.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I17"                               , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I20"                               , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I47"                               , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I67"                               , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I68"                               , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I96"                               , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I102"                              , 1,   W), (byte)  1);
+		}
 		if (MD.IHL.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.IHL, "guidebook"                           , 1,   W), (byte) 48);
 		}

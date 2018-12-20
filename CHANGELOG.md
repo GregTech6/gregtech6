@@ -28,6 +28,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.09.14: (Not released yet)
 [COMPAT] Fossils and Archeology got a few things made more compatible. It's surprisingly compatible with the OreDict though, so I didnt have to do much with the Item Data or its Music Discs.
 [COMPAT] I needed to take a look again at Highlands, because I did not register it's Trees to my Wood Dictionary yet. Glad that is over now.
+[COMPAT] Added some Material Data to Candycraft Stuff.
 [ADDED] NEI Recipe List for Saplings/Leaves -> Leaves/Logs/Beams/Planks/Stairs/Slabs using the GT6 Wood Dictionary.
 
 

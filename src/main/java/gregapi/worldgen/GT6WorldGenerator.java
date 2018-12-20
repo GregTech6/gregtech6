@@ -30,8 +30,6 @@ import gregapi.util.WD;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldProviderEnd;
-import net.minecraft.world.WorldProviderHell;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 
@@ -72,7 +70,7 @@ public class GT6WorldGenerator {
 					}
 				}
 				
-				// Yes, it has to be looped twice in a row, this cannot be optimised into one Loop!
+				// Yes, it has to be looped twice in a row, this cannot be optimized into one Loop!
 				for (WorldgenObject tWorldGen : mGenNormal) tWorldGen.reset(mWorld, tChunk, mDimType, mMinX, mMinZ, mMaxX, mMaxZ, mRandom, tBiomes, tBiomeNames);
 				for (WorldgenObject tWorldGen : mGenNormal) try {if (tWorldGen.enabled(mWorld, mDimType)) tWorldGen.generate(mWorld, tChunk, mDimType, mMinX, mMinZ, mMaxX, mMaxZ, mRandom, tBiomes, tBiomeNames);} catch (Throwable e) {e.printStackTrace(ERR);}
 				
@@ -115,42 +113,17 @@ public class GT6WorldGenerator {
 		case DIM_END      : generate(new WorldGenContainer(GEN_END                                                  , ORE_END                                                , DIM_END       , aWorld, aX, aZ)); return;
 		}
 		
-		if (WD.dimTF(aWorld)) {
-			generate(new WorldGenContainer(GEN_TWILIGHT, ORE_TWILIGHT, DIM_TWILIGHT, aWorld, aX, aZ));
-			return;
-		}
-		if (WD.dimAETHER(aWorld)) {
-			generate(new WorldGenContainer(GEN_AETHER, ORE_AETHER, DIM_AETHER, aWorld, aX, aZ));
-			return;
-		}
-		if (WD.dimERE(aWorld)) {
-			generate(new WorldGenContainer(GEN_EREBUS, ORE_EREBUS, DIM_EREBUS, aWorld, aX, aZ));
-			return;
-		}
-		if (WD.dimBTL(aWorld)) {
-			generate(new WorldGenContainer(GEN_BETWEENLANDS, ORE_BETWEENLANDS, DIM_BETWEENLANDS, aWorld, aX, aZ));
-			return;
-		}
-		if (WD.dimATUM(aWorld)) {
-			generate(new WorldGenContainer(GEN_ATUM, ORE_ATUM, DIM_ATUM, aWorld, aX, aZ));
-			return;
-		}
-		if (WD.dimALF(aWorld)) {
-			generate(new WorldGenContainer(GEN_ALFHEIM, ORE_ALFHEIM, DIM_ALFHEIM, aWorld, aX, aZ));
-			return;
-		}
-		if (WD.dimDD(aWorld)) {
-			generate(new WorldGenContainer(GEN_DEEPDARK, ORE_DEEPDARK, DIM_DEEPDARK, aWorld, aX, aZ));
-			return;
-		}
-		if (WD.dimENVM(aWorld)) {
-			generate(new WorldGenContainer(GEN_ENVM, ORE_ENVM, DIM_ENVM, aWorld, aX, aZ));
-			return;
-		}
-		if (WD.dimTROPIC(aWorld)) {
-			generate(new WorldGenContainer(GEN_TROPICS, ORE_TROPICS, DIM_TROPICS, aWorld, aX, aZ));
-			return;
-		}
+		if (WD.dimMYST  (aWorld.provider)) {generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD , aWorld, aX, aZ)); return;}
+		if (WD.dimTF    (aWorld.provider)) {generate(new WorldGenContainer(GEN_TWILIGHT    , ORE_TWILIGHT    , DIM_TWILIGHT    , aWorld, aX, aZ)); return;}
+		if (WD.dimAETHER(aWorld.provider)) {generate(new WorldGenContainer(GEN_AETHER      , ORE_AETHER      , DIM_AETHER      , aWorld, aX, aZ)); return;}
+		if (WD.dimERE   (aWorld.provider)) {generate(new WorldGenContainer(GEN_EREBUS      , ORE_EREBUS      , DIM_EREBUS      , aWorld, aX, aZ)); return;}
+		if (WD.dimBTL   (aWorld.provider)) {generate(new WorldGenContainer(GEN_BETWEENLANDS, ORE_BETWEENLANDS, DIM_BETWEENLANDS, aWorld, aX, aZ)); return;}
+		if (WD.dimATUM  (aWorld.provider)) {generate(new WorldGenContainer(GEN_ATUM        , ORE_ATUM        , DIM_ATUM        , aWorld, aX, aZ)); return;}
+		if (WD.dimALF   (aWorld.provider)) {generate(new WorldGenContainer(GEN_ALFHEIM     , ORE_ALFHEIM     , DIM_ALFHEIM     , aWorld, aX, aZ)); return;}
+		if (WD.dimDD    (aWorld.provider)) {generate(new WorldGenContainer(GEN_DEEPDARK    , ORE_DEEPDARK    , DIM_DEEPDARK    , aWorld, aX, aZ)); return;}
+		if (WD.dimENVM  (aWorld.provider)) {generate(new WorldGenContainer(GEN_ENVM        , ORE_ENVM        , DIM_ENVM        , aWorld, aX, aZ)); return;}
+		if (WD.dimTROPIC(aWorld.provider)) {generate(new WorldGenContainer(GEN_TROPICS     , ORE_TROPICS     , DIM_TROPICS     , aWorld, aX, aZ)); return;}
+		if (WD.dimCANDY (aWorld.provider)) {generate(new WorldGenContainer(GEN_CANDY       , ORE_CANDY       , DIM_CANDY       , aWorld, aX, aZ)); return;}
 		
 		BiomeGenBase aBiome = aWorld.getBiomeGenForCoords(aX+7, aZ+7);
 		if (aBiome == null || BIOMES_VOID.contains(aBiome.biomeName)) return;
@@ -171,19 +144,10 @@ public class GT6WorldGenerator {
 			generate(new WorldGenContainer(GEN_ASTEROIDS, ORE_ASTEROIDS, DIM_ASTEROIDS, aWorld, aX, aZ));
 			return;
 		}
-		if (aWorld.provider instanceof WorldProviderHell || BIOMES_NETHER.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_NETHER, ORE_NETHER, DIM_NETHER, aWorld, aX, aZ));
-			return;
-		}
-		if (aWorld.provider instanceof WorldProviderEnd || BIOMES_END.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_END, ORE_END, DIM_END, aWorld, aX, aZ));
-			return;
-		}
 		if (aGalactiCraft || BIOMES_SPACE.contains(aBiome.biomeName)) {
 			generate(new WorldGenContainer(GEN_PLANETS, ORE_PLANETS, DIM_PLANETS, aWorld, aX, aZ));
 			return;
 		}
-		generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, GENERATE_STONE ? null : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_UNKNOWN, aWorld, aX, aZ));
 	}
 	
 	public static void generate(WorldGenContainer aWorldgen) {

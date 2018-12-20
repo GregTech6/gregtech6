@@ -72,6 +72,8 @@ public enum OD {
 	, enderChest
 	, pestleAndMortar
 	, materialPressedwax
+	, materialWaxcomb
+	, materialHoneycomb
 	, plankSkyroot
 	, plankWeedwood
 	, plankAnyWood
@@ -131,7 +133,6 @@ public enum OD {
 	, grainBait
 	, veggieBait
 	, fishtrapBait
-	, materialHoneycomb
 	;
 	
 	OD() {

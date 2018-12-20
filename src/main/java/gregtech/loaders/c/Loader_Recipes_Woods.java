@@ -95,7 +95,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.pulverizing(                    aEntry.mLog, OP.dust.mat(aEntry.mMaterialWood, aEntry.mPlankCountBuzz), aEntry.mBark, 50, F);
 			RM.sawing(16, 128, F, 4,           aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
 			GT_ModHandler.addSawmillRecipe(    aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
-			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
+			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
 			RM.Lathe.addRecipe1(T, 16, 80,     aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
 			if (IL.RC_Creosote_Wood.exists())
 			RM.Bath.addRecipe1(T, 0, 16,       aEntry.mLog, FL.Oil_Creosote.make(1000), NF, IL.RC_Creosote_Wood.get(1));
@@ -112,7 +112,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.pulverizing(                    aEntry.mBeam, OP.dust.mat(aEntry.mMaterialBeam, aEntry.mPlankCountBuzz));
 			RM.sawing(16, 128, F, 4,           aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
 			GT_ModHandler.addSawmillRecipe(    aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
-			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
+			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
 			RM.Lathe.addRecipe1(T, 16, 80,     aEntry.mBeam, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialBeam));
 			
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NAC_NCC, "sBf", 'B', aEntry.mBeam);

@@ -147,74 +147,59 @@ public class WD {
 	}
 	
 	public static MovingObjectPosition getMOP(World aWorld, EntityPlayer aPlayer, boolean aFlag) {
-		float f = 1.0F;
-		float f1 = aPlayer.prevRotationPitch + (aPlayer.rotationPitch - aPlayer.prevRotationPitch) * f;
-		float f2 = aPlayer.prevRotationYaw + (aPlayer.rotationYaw - aPlayer.prevRotationYaw) * f;
-		double d0 = aPlayer.prevPosX + (aPlayer.posX - aPlayer.prevPosX) * f;
-		double d1 = aPlayer.prevPosY + (aPlayer.posY - aPlayer.prevPosY) * f + (aWorld.isRemote ? aPlayer.getEyeHeight() - aPlayer.getDefaultEyeHeight() : aPlayer.getEyeHeight()); // isRemote check to revert changes to ray trace position due to adding the eye height clientside and player yOffset differences
-		double d2 = aPlayer.prevPosZ + (aPlayer.posZ - aPlayer.prevPosZ) * f;
-		Vec3 vec3 = Vec3.createVectorHelper(d0, d1, d2);
-		float f3 = MathHelper.cos(-f2 * 0.017453292F - (float)Math.PI);
-		float f4 = MathHelper.sin(-f2 * 0.017453292F - (float)Math.PI);
-		float f5 = -MathHelper.cos(-f1 * 0.017453292F);
-		float f6 = MathHelper.sin(-f1 * 0.017453292F);
-		float f7 = f4 * f5;
-		float f8 = f3 * f5;
-		double d3 = 5.0D;
-		if (aPlayer instanceof EntityPlayerMP) d3 = ((EntityPlayerMP)aPlayer).theItemInWorldManager.getBlockReachDistance();
-		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
-		return aWorld.func_147447_a(vec3, vec31, aFlag, !aFlag, F);
+		Vec3 vec3 = Vec3.createVectorHelper(
+		  aPlayer.prevPosX + (aPlayer.posX - aPlayer.prevPosX)
+		, aPlayer.prevPosY + (aPlayer.posY - aPlayer.prevPosY) + (aWorld.isRemote ? aPlayer.getEyeHeight() - aPlayer.getDefaultEyeHeight() : aPlayer.getEyeHeight()) // isRemote check to revert changes to ray trace position due to adding the eye height clientside and player yOffset differences
+		, aPlayer.prevPosZ + (aPlayer.posZ - aPlayer.prevPosZ)
+		);
+		float  tPitch = aPlayer.prevRotationPitch + (aPlayer.rotationPitch - aPlayer.prevRotationPitch);
+		float  tYaw   = aPlayer.prevRotationYaw   + (aPlayer.rotationYaw   - aPlayer.prevRotationYaw  );
+		float  tZ     =  MathHelper.cos(-tYaw   * 0.017453292F - (float)Math.PI);
+		float  tX     =  MathHelper.sin(-tYaw   * 0.017453292F - (float)Math.PI);
+		float  tW     = -MathHelper.cos(-tPitch * 0.017453292F);
+		float  tY     =  MathHelper.sin(-tPitch * 0.017453292F);
+		double tReach = (aPlayer instanceof EntityPlayerMP ? ((EntityPlayerMP)aPlayer).theItemInWorldManager.getBlockReachDistance() : 5);
+		return aWorld.func_147447_a(vec3, vec3.addVector(tX * tW * tReach, tY * tReach, tZ * tW * tReach), aFlag, !aFlag, F);
 	}
 	
-	/**
-	 * This checks if the Dimension is really a Dimension and not another Planet or something.
-	 * Used for my Teleporter.
-	 */
-	public static boolean realDim(int aDimensionID) {
-		WorldProvider tProvider = DimensionManager.getProvider(aDimensionID);
-		if (tProvider != null) try {if (tProvider.getClass().getName().contains("com.xcompwiz.mystcraft")) return T;} catch (Throwable e) {/*Do nothing*/}
-		return aDimensionID == -1 || aDimensionID == 0 || aDimensionID == 1 || dimTF(tProvider) || dimERE(tProvider) || dimBTL(tProvider) || dimENVM(tProvider) || dimDD(tProvider) || dimLM(tProvider);
-	}
+	public static boolean dimPlanet(World aWorld) {return aWorld != null && dimPlanet(aWorld.provider);}
+	public static boolean dimPlanet(WorldProvider aProvider) {return !(Math.abs(aProvider.dimensionId) <= 1 || dimMYST(aProvider) || dimTF(aProvider) || dimERE(aProvider) || dimBTL(aProvider) || dimENVM(aProvider) || dimDD(aProvider) || dimLM(aProvider) || dimAETHER(aProvider) || dimALF(aProvider) || dimTROPIC(aProvider) || dimCANDY(aProvider));}
 	
-	public static boolean dimTROPIC(int aDimensionID) {return MD.TROPIC.mLoaded && dimTROPIC(DimensionManager.getProvider(aDimensionID));}
+	public static boolean dimMYST(World aWorld) {return aWorld != null && dimMYST(aWorld.provider);}
+	public static boolean dimMYST(WorldProvider aProvider) {return MD.MYST.mLoaded && aProvider.getClass().getName().toLowerCase().contains("com.xcompwiz.mystcraft");}
+	
+	public static boolean dimCANDY(World aWorld) {return aWorld != null && dimCANDY(aWorld.provider);}
+	public static boolean dimCANDY(WorldProvider aProvider) {return MD.CANDY.mLoaded && "WorldProviderCandy".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	
 	public static boolean dimTROPIC(World aWorld) {return aWorld != null && dimTROPIC(aWorld.provider);}
-	public static boolean dimTROPIC(WorldProvider aProvider) {return MD.TROPIC.mLoaded && aProvider != null && "WorldProviderTropicraft".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimTROPIC(WorldProvider aProvider) {return MD.TROPIC.mLoaded && "WorldProviderTropicraft".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimATUM(int aDimensionID) {return MD.ATUM.mLoaded && dimATUM(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimATUM(World aWorld) {return aWorld != null && dimATUM(aWorld.provider);}
-	public static boolean dimATUM(WorldProvider aProvider) {return MD.ATUM.mLoaded && aProvider != null && "AtumWorldProvider".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimATUM(WorldProvider aProvider) {return MD.ATUM.mLoaded && "AtumWorldProvider".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimTF(int aDimensionID) {return MD.TF.mLoaded && aDimensionID == TwilightForestMod.dimensionID;}
 	public static boolean dimTF(World aWorld) {return aWorld != null && dimTF(aWorld.provider);}
-	public static boolean dimTF(WorldProvider aProvider) {return MD.TF.mLoaded && aProvider != null && aProvider.dimensionId == TwilightForestMod.dimensionID;}
+	public static boolean dimTF(WorldProvider aProvider) {return MD.TF.mLoaded && aProvider.dimensionId == TwilightForestMod.dimensionID;}
 	
-	public static boolean dimBTL(int aDimensionID) {return MD.BTL.mLoaded && dimBTL(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimBTL(World aWorld) {return aWorld != null && dimBTL(aWorld.provider);}
-	public static boolean dimBTL(WorldProvider aProvider) {return MD.BTL.mLoaded && aProvider != null && "WorldProviderBetweenlands".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimBTL(WorldProvider aProvider) {return MD.BTL.mLoaded && "WorldProviderBetweenlands".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimERE(int aDimensionID) {return MD.ERE.mLoaded && dimERE(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimERE(World aWorld) {return aWorld != null && dimERE(aWorld.provider);}
-	public static boolean dimERE(WorldProvider aProvider) {return MD.ERE.mLoaded && aProvider != null && "WorldProviderErebus".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimERE(WorldProvider aProvider) {return MD.ERE.mLoaded && "WorldProviderErebus".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimALF(int aDimensionID) {return MD.ALF.mLoaded && dimALF(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimALF(World aWorld) {return aWorld != null && dimALF(aWorld.provider);}
-	public static boolean dimALF(WorldProvider aProvider) {return MD.ALF.mLoaded && aProvider != null && "WorldProviderAlfheim".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimALF(WorldProvider aProvider) {return MD.ALF.mLoaded && "WorldProviderAlfheim".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimDD(int aDimensionID) {return (MD.ExU.mLoaded || MD.ExS.mLoaded) && dimDD(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimDD(World aWorld) {return aWorld != null && dimDD(aWorld.provider);}
-	public static boolean dimDD(WorldProvider aProvider) {return (MD.ExU.mLoaded || MD.ExS.mLoaded) && aProvider != null && "WorldProviderUnderdark".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimDD(WorldProvider aProvider) {return (MD.ExU.mLoaded || MD.ExS.mLoaded) && "WorldProviderUnderdark".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimLM(int aDimensionID) {return (MD.ExU.mLoaded || MD.ExS.mLoaded) && dimLM(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimLM(World aWorld) {return aWorld != null && dimLM(aWorld.provider);}
-	public static boolean dimLM(WorldProvider aProvider) {return (MD.ExU.mLoaded || MD.ExS.mLoaded) && aProvider != null && "WorldProviderEndOfTime".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimLM(WorldProvider aProvider) {return (MD.ExU.mLoaded || MD.ExS.mLoaded) && "WorldProviderEndOfTime".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimENVM(int aDimensionID) {return MD.ENVM.mLoaded && dimENVM(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimENVM(World aWorld) {return aWorld != null && dimENVM(aWorld.provider);}
-	public static boolean dimENVM(WorldProvider aProvider) {return MD.ENVM.mLoaded && aProvider != null && "WorldProviderCaves".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimENVM(WorldProvider aProvider) {return MD.ENVM.mLoaded && "WorldProviderCaves".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
-	public static boolean dimAETHER(int aDimensionID) {return MD.AETHER.mLoaded && dimAETHER(DimensionManager.getProvider(aDimensionID));}
 	public static boolean dimAETHER(World aWorld) {return aWorld != null && dimAETHER(aWorld.provider);}
-	public static boolean dimAETHER(WorldProvider aProvider) {return MD.AETHER.mLoaded && aProvider != null && "WorldProviderAether".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimAETHER(WorldProvider aProvider) {return MD.AETHER.mLoaded && "WorldProviderAether".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
 	
 	public static boolean move(Entity aEntity, int aDimension, double aX, double aY, double aZ) {
 		WorldServer tTargetWorld = DimensionManager.getWorld(aDimension), tOriginalWorld = DimensionManager.getWorld(aEntity.worldObj.provider.dimensionId);

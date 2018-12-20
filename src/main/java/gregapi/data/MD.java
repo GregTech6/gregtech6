@@ -61,6 +61,7 @@ public class MD {
 	, MYST              = new ModData(ModIDs.MYST               , "Mystcraft")
 	, WARPBOOK          = new ModData(ModIDs.WARPBOOK           , "Warpbook")
 	, ARS               = new ModData(ModIDs.ARS                , "Ars Magica")
+	, CANDY             = new ModData(ModIDs.CANDY              , "CandyCraft")
 	
 	, RC                = new ModData(ModIDs.RC                 , "Railcraft")
 	

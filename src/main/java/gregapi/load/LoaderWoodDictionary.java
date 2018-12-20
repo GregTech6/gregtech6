@@ -62,7 +62,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 182 is next!
+		// No Gaps in this List, so 185 is next!
 		
 		
 		// Vanilla Trees
@@ -408,6 +408,21 @@ public class LoaderWoodDictionary implements Runnable {
 			
 			CR.shaped(ST.make(MD.TROPIC, "tile.plank", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.TROPIC, "tile.singleSlabs", 1, 3));
 		}
+		
+		
+		// Candycraft Trees
+		if (MD.CANDY.mLoaded) {
+			new SaplingEntry(IL.CANDY_Sapling_Chocolate.get(1), new WoodEntry(IL.CANDY_Log      .get(1), new PlankEntry(IL.CANDY_Plank      .get(1), ST.make(MD.CANDY, "CandyHalfSlab1", 1, W), ST.make(MD.CANDY, "X1"  , 1, W), MT.Marshmallow, 182), 1, 0), IL.CANDY_Leaves_Chocolate.get(1));
+			new SaplingEntry(IL.CANDY_Sapling_Caramel  .get(1), new WoodEntry(IL.CANDY_Log_Dark .get(1), new PlankEntry(IL.CANDY_Plank_Dark .get(1), ST.make(MD.CANDY, "CandyHalfSlab2", 1, W), ST.make(MD.CANDY, "XX1" , 1, W), MT.Marshmallow, 183), 1, 0), IL.CANDY_Leaves_Caramel  .get(1));
+			new SaplingEntry(IL.CANDY_Sapling_White    .get(1), new WoodEntry(IL.CANDY_Log_Light.get(1), new PlankEntry(IL.CANDY_Plank_Light.get(1), ST.make(MD.CANDY, "CandyHalfSlab3", 1, W), ST.make(MD.CANDY, "XXX1", 1, W), MT.Marshmallow, 184), 1, 0), IL.CANDY_Leaves_White    .get(1));
+			new SaplingEntry(IL.CANDY_Sapling_Cherry   .get(1), WoodDictionary.WOODS.get(new ItemStackContainer(IL.CANDY_Log.get(1))), IL.CANDY_Leaves_Cherry   .get(1));
+			
+			CR.shaped(IL.CANDY_Plank      .get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.CANDY, "CandyHalfSlab1", 1, W));
+			CR.shaped(IL.CANDY_Plank_Dark .get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.CANDY, "CandyHalfSlab2", 1, W));
+			CR.shaped(IL.CANDY_Plank_Light.get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.CANDY, "CandyHalfSlab3", 1, W));
+		}
+		
+		
 		// Forestry Trees
 		if (MD.FR.mLoaded) {
 			Block tPlank = ST.block(MD.FR, "planks"), tLog = ST.block(MD.FR, "logs"), tSlab = ST.block(MD.FR, "slabs"), tStair = ST.block(MD.FR, "stairs");
@@ -538,45 +553,5 @@ public class LoaderWoodDictionary implements Runnable {
 			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 2), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs2", 1, 0), MT.WoodSealed, 42, OP.stick.mat(MT.Wood, 1));
 			CR.shaped(ST.make(MD.IE, "treatedWood", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.IE, "woodenDecoration", 1, 2));
 		}
-		/*
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "Fir Sapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_acaciaSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_ashSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_autumnOrangeSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_autumnYellowSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_beechSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_canopySapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_deadSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_decBushSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_evgBushSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_greatOakSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_ironwoodSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_japaneseMapleSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_mangroveSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_palmSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_poplarSapling", 1, W));
-		OM.reg(OP.treeSapling                       , ST.make(MD.HiL, "tile.hl_redwoodSapling", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_acaciaLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_ashLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_autumnOrangeLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_autumnYellowLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_canopyLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_firLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_ironwoodLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_japaneseMapleLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_mangroveLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_palmLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_poplarLeaves", 1, W));
-		OM.reg(OP.treeLeaves                        , ST.make(MD.HiL, "tile.hl_redwoodLeaves", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_acaciaWood", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_ashWood", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_canopyWood", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_firWood", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_japaneseMapleWood", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_mangroveWood", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_palmWood", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_poplarWood", 1, W));
-		OM.reg(OD.logWood                           , ST.make(MD.HiL, "tile.hl_redwoodWood", 1, W));
-		*/
 	}
 }

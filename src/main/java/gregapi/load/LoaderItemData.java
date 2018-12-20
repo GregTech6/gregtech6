@@ -353,7 +353,6 @@ public class LoaderItemData implements Runnable {
 		OM.reg("gt:autocrafterinfinite"             , ST.make(MD.GaEn, "infiniteBucket", 1, W));
 		OM.reg(OD.container1000water                , ST.make(MD.GaEn, "infiniteBucket", 1, W));
 		OM.reg(OD.container250water                 , ST.make(MD.GaEn, "infiniteBucket", 1, W));
-		OM.reg(OD.container1000honey                , ST.make(MD.ERE, "bucketHoney", 1, W));
 		OM.reg(OD.itemResin                         , ST.make(MD.ERE, "materials", 1, 41));
 		OM.reg(OD.logWood                           , ST.make(MD.TC, "blockMagicalLog", 1, 4));
 		OM.reg(OD.logWood                           , ST.make(MD.TC, "blockMagicalLog", 1, 5));
@@ -539,6 +538,10 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_lowtide", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_easternisles", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.TROPIC, "record_summering", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.CANDY, "I11", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.CANDY, "I46", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.CANDY, "I98", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.CANDY, "I101", 1, 0));
 		
 		
 		OM.data(MD.BINNIE_BEE, "misc"                               , 1,   1, ANY.Diamond           , U9);
