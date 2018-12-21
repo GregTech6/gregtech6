@@ -134,7 +134,8 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			}
 			
 			if (UT.Fluids.powerconducting(aFluid)) {
-				aList.add(LH.Chat.DGREEN + "This is a Power Conductor" + LH.Chat.GRAY);
+				aList.add(LH.Chat.DGREEN + "This is a Power Conducting Fluid" + LH.Chat.GRAY);
+				aList.add(LH.Chat.ORANGE + "Cannot be stored in regular GT6 Tanks" + LH.Chat.GRAY);
 			}
 			if (UT.Fluids.simple(aFluid)) {
 				aList.add(LH.Chat.DGREEN + "This is a simple Fluid" + LH.Chat.GRAY);

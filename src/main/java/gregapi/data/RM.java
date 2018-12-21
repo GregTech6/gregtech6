@@ -333,8 +333,8 @@ public class RM {
 	public static boolean pulverizing(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2, int aChance, boolean aOverwrite) {return pulverizing(aInput, aOutput1, aOutput2, aChance, null, 0, aOverwrite);}
 	public static boolean pulverizing(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2, int aChance2, ItemStack aOutput3, int aChance3, boolean aOverwrite) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput1)) return F;
-		aOutput1 = OM.get_(aOutput1);
-		aOutput2 = OM.get(aOutput2);
+		aOutput1 = ST.validMeta(OM.get_(aOutput1));
+		aOutput2 = ST.validMeta(OM.get (aOutput2));
 		
 		if (ST.container(aInput, F) == null) {
 			if (ENABLE_ADDING_IC2_MACERATOR_RECIPES) {
@@ -375,7 +375,7 @@ public class RM {
 	}
 	public static boolean ic2_extractor(ItemStack aInput, ItemStack aOutput) {
 		if (!ENABLE_ADDING_IC2_EXTRACTOR_RECIPES || ST.invalid(aInput) || ST.invalid(aOutput)) return F;
-		aOutput = OM.get_(aOutput);
+		aOutput = ST.validMeta(OM.get_(aOutput));
 		if (!ConfigsGT.RECIPES.get(ConfigCategories.Machines.extractor, aInput, T)) {
 			UT.removeSimpleIC2MachineRecipe(aInput, ic2.api.recipe.Recipes.extractor.getRecipes(), null);
 			return F;
@@ -385,7 +385,7 @@ public class RM {
 	}
 	public static boolean ic2_compressor(ItemStack aInput, ItemStack aOutput) {
 		if (!ENABLE_ADDING_IC2_COMPRESSOR_RECIPES || ST.invalid(aInput) || ST.invalid(aOutput)) return F;
-		aOutput = OM.get_(aOutput);
+		aOutput = ST.validMeta(OM.get_(aOutput));
 		if (!ConfigsGT.RECIPES.get(ConfigCategories.Machines.compression, aInput, T)) {
 			UT.removeSimpleIC2MachineRecipe(aInput, ic2.api.recipe.Recipes.compressor.getRecipes(), null);
 			return F;

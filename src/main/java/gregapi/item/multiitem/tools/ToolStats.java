@@ -109,10 +109,9 @@ public abstract class ToolStats implements IToolStats {
 		if (aNamePlayer.equalsIgnoreCase("CrazyJ84") || aNamePlayer.equalsIgnoreCase("CrazyJ1984")) {
 			if (aNameEntity.equalsIgnoreCase("Bear989jr")) return new ChatComponentText("<"+EnumChatFormatting.LIGHT_PURPLE+"Mrs. Crazy"+EnumChatFormatting.WHITE + "> Sorry "+EnumChatFormatting.RED+"Junior"+EnumChatFormatting.WHITE);
 			if (aNameEntity.equalsIgnoreCase("Bear989Sr")) return new ChatComponentText("<"+EnumChatFormatting.LIGHT_PURPLE+"Mrs. Crazy"+EnumChatFormatting.WHITE + "> Hush it!, "+EnumChatFormatting.RED+"Bear"+EnumChatFormatting.WHITE+"!");
-			if (aNameEntity.equalsIgnoreCase("andyafw92")) return new ChatComponentText("<"+EnumChatFormatting.LIGHT_PURPLE+"Mrs. Crazy"+EnumChatFormatting.WHITE + "> shut up "+EnumChatFormatting.RED+"Andy"+EnumChatFormatting.WHITE);
 		}
 		if (aNamePlayer.equalsIgnoreCase("Bear989Sr") || aNamePlayer.equalsIgnoreCase("Bear989jr")) {
-			if (aNameEntity.equalsIgnoreCase("andyafw92")) return new ChatComponentText("<"+EnumChatFormatting.GREEN+aNamePlayer+EnumChatFormatting.WHITE + "> "+EnumChatFormatting.RED+"Andy"+EnumChatFormatting.WHITE + ". SHUT THE FUCK UP!");
+			//
 		}
 		return getDeathMessage(aPlayer, aEntity, aNamePlayer, aNameEntity);
 	}
