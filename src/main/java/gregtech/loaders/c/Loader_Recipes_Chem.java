@@ -37,9 +37,10 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Chem implements Runnable {
 	@Override public void run() {
-		for (FluidStack tFluid : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {     
+		for (FluidStack tFluid : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.NaCl, U4), UT.Fluids.mul(tFluid, 3, 4, T), MT.SaltWater.liquid(U*1, F), ZL_IS);
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.NaCl    ), UT.Fluids.mul(tFluid, 3      ), MT.SaltWater.liquid(U*4, F), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.MgCl2   ), UT.Fluids.mul(tFluid, 6      ), NF, OP.dust.mat(MT.OREMATS.Bischofite, 1));
 		
 		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Si), UT.Fluids.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.SiO2, U*3));
 		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.Na), UT.Fluids.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.NaOH, U*3));
@@ -254,19 +255,19 @@ public class Loader_Recipes_Chem implements Runnable {
 		final long[] tChances = new long[] {8000, 8000, 8000};
 		
 		for (String tFluid : FluidsGT.AIR) if (UT.Fluids.exists(tFluid)) {
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.Pyrite                ), UT.Fluids.make(tFluid, 6000), MT.SO2.gas( 6*U3 , F)  , OM.dust(MT.Fe,   U3 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Sphalerite    ), UT.Fluids.make(tFluid, 4000), MT.SO2.gas( 3*U2 , F)  , OM.dust(MT.Zn,   U2 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Molybdenite   ), UT.Fluids.make(tFluid, 6000), MT.SO2.gas( 6*U3 , F)  , OM.dust(MT.Mo,   U3 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stibnite      ), UT.Fluids.make(tFluid, 5000), MT.SO2.gas( 9*U5 , F)  , OM.dust(MT.Sb, 2*U5 ));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Pentlandite   ), UT.Fluids.make(tFluid, 8000), MT.SO2.gas(24*U17, F)  , OM.dust(MT.Ni, 9*U17));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Chalcopyrite  ), UT.Fluids.make(tFluid, 4000), MT.SO2.gas( 6*U4 , F)  , OM.dust(MT.Fe,   U4 ), OM.dust(MT.Cu,   U4));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Arsenopyrite  ), UT.Fluids.make(tFluid, 3000), MT.SO2.gas( 3*U3 , F)  , OM.dust(MT.Fe,   U3 ), OM.dust(MT.As,   U3));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Cobaltite     ), UT.Fluids.make(tFluid, 3000), MT.SO2.gas( 3*U3 , F)  , OM.dust(MT.Co,   U3 ), OM.dust(MT.As,   U3));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Galena        ), UT.Fluids.make(tFluid, 2000), MT.SO2.gas( 6*U8 , F)  , OM.dust(MT.Ag, 3*U8 ), OM.dust(MT.Pb, 3*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Cooperite     ), UT.Fluids.make(tFluid, 2000), MT.SO2.gas( 3*U6 , F)  , OM.dust(MT.Pt, 3*U6 ), OM.dust(MT.Ni, 1*U6), OM.dust(MT.Pd, 1*U6));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Tetrahedrite  ), UT.Fluids.make(tFluid, 3000), MT.SO2.gas( 9*U8 , F)  , OM.dust(MT.Cu, 3*U8 ), OM.dust(MT.Sb, 1*U8), OM.dust(MT.Fe, 1*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stannite      ), UT.Fluids.make(tFluid, 4000), MT.SO2.gas(12*U8 , F)  , OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Fe, 1*U8), OM.dust(MT.Sn, 1*U8));
-		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Kesterite     ), UT.Fluids.make(tFluid, 4000), MT.SO2.gas(12*U8 , F)  , OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn, 1*U8));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.Pyrite              ), UT.Fluids.make(tFluid, 6000), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Fe,   U3 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Sphalerite  ), UT.Fluids.make(tFluid, 4000), MT.SO2.gas( 3*U2 , F), OM.dust(MT.Zn,   U2 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Molybdenite ), UT.Fluids.make(tFluid, 6000), MT.SO2.gas( 6*U3 , F), OM.dust(MT.Mo,   U3 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stibnite    ), UT.Fluids.make(tFluid, 5000), MT.SO2.gas( 9*U5 , F), OM.dust(MT.Sb, 2*U5 ));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Pentlandite ), UT.Fluids.make(tFluid, 8000), MT.SO2.gas(24*U17, F), OM.dust(MT.Ni, 9*U17));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Chalcopyrite), UT.Fluids.make(tFluid, 4000), MT.SO2.gas( 6*U4 , F), OM.dust(MT.Fe,   U4 ), OM.dust(MT.Cu,   U4));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Arsenopyrite), UT.Fluids.make(tFluid, 3000), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Fe,   U3 ), OM.dust(MT.As,   U3));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Cobaltite   ), UT.Fluids.make(tFluid, 3000), MT.SO2.gas( 3*U3 , F), OM.dust(MT.Co,   U3 ), OM.dust(MT.As,   U3));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Galena      ), UT.Fluids.make(tFluid, 2000), MT.SO2.gas( 6*U8 , F), OM.dust(MT.Ag, 3*U8 ), OM.dust(MT.Pb, 3*U8));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Cooperite   ), UT.Fluids.make(tFluid, 2000), MT.SO2.gas( 3*U6 , F), OM.dust(MT.Pt, 3*U6 ), OM.dust(MT.Ni, 1*U6), OM.dust(MT.Pd, 1*U6));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Tetrahedrite), UT.Fluids.make(tFluid, 3000), MT.SO2.gas( 9*U8 , F), OM.dust(MT.Cu, 3*U8 ), OM.dust(MT.Sb, 1*U8), OM.dust(MT.Fe, 1*U8));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Stannite    ), UT.Fluids.make(tFluid, 4000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Fe, 1*U8), OM.dust(MT.Sn, 1*U8));
+		RM.Roasting     .addRecipe1(T, 16,  512, tChances, OM.dust(MT.OREMATS.Kesterite   ), UT.Fluids.make(tFluid, 4000), MT.SO2.gas(12*U8 , F), OM.dust(MT.Cu, 2*U8 ), OM.dust(MT.Zn, 1*U8), OM.dust(MT.Sn, 1*U8));
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S), UT.Fluids.make(tFluid, 8000), MT.SO2.gas(3*U, F), ZL_IS);
 		}
 		
@@ -290,6 +291,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		if (FL.Stagnant_Water.exists())
 		RM.Drying       .addRecipe0(T, 16,   16, FL.Stagnant_Water.make(10)     , FL.DistW.make(5), ZL_IS);
 		
-		RM.Drying       .addRecipe1(T, 16, 6000, OP.dust.mat(MT.H2WO4, 7),NF, FL.DistW.make(3000), OP.dust.mat(MT.WO3, 4));
+		RM.Drying       .addRecipe1(T, 16, 6000, OP.dust.mat(MT.H2WO4, 7), NF, FL.DistW.make(3000), OP.dust.mat(MT.WO3, 4));
+		RM.Drying       .addRecipe1(T, 16,12000, OP.dust.mat(MT.OREMATS.Bischofite, 1), NF, FL.DistW.make(6000), OP.dust.mat(MT.MgCl2, 1));
 	}
 }

@@ -462,13 +462,13 @@ public class LoaderItemList implements Runnable {
 		
 		IL.CANDY_Comb                           .set(ST.make(MD.CANDY, "I37"                                , 1, 0), null, OD.beeComb, OD.materialHoneycomb, "foodFilledhoneycomb");
 		IL.CANDY_Chest                          .set(ST.make(MD.CANDY, "B56X"                               , 1, 0), new OreDictItemData(MT.Marshmallow, 8*U), OD.craftingChest);
-		IL.CANDY_Sapling_Chocolate              .set(ST.make(MD.CANDY, "B7"                                 , 1, 0), null, OP.treeSapling);
-		IL.CANDY_Sapling_Caramel                .set(ST.make(MD.CANDY, "B7"                                 , 1, 1), null, OP.treeSapling);
-		IL.CANDY_Sapling_White                  .set(ST.make(MD.CANDY, "B7"                                 , 1, 2), null, OP.treeSapling);
+		IL.CANDY_Sapling_Chocolate              .set(ST.make(MD.CANDY, "B7"                                 , 1, 0), new OreDictItemData(MT.Chocolate, U2), OP.treeSapling);
+		IL.CANDY_Sapling_Caramel                .set(ST.make(MD.CANDY, "B7"                                 , 1, 1), new OreDictItemData(MT.Sugar    , U2), OP.treeSapling);
+		IL.CANDY_Sapling_White                  .set(ST.make(MD.CANDY, "B7"                                 , 1, 2), new OreDictItemData(MT.Chocolate, U2), OP.treeSapling);
 		IL.CANDY_Sapling_Cherry                 .set(ST.make(MD.CANDY, "B7"                                 , 1, 3), null, OP.treeSapling);
-		IL.CANDY_Leaves_Chocolate               .set(ST.make(MD.CANDY, "B6"                                 , 1, 0), null, OP.treeLeaves);
-		IL.CANDY_Leaves_Caramel                 .set(ST.make(MD.CANDY, "B6"                                 , 1, 1), null, OP.treeLeaves);
-		IL.CANDY_Leaves_White                   .set(ST.make(MD.CANDY, "B6"                                 , 1, 2), null, OP.treeLeaves);
+		IL.CANDY_Leaves_Chocolate               .set(ST.make(MD.CANDY, "B6"                                 , 1, 0), new OreDictItemData(MT.Chocolate, U2), OP.treeLeaves);
+		IL.CANDY_Leaves_Caramel                 .set(ST.make(MD.CANDY, "B6"                                 , 1, 1), new OreDictItemData(MT.Sugar    , U2), OP.treeLeaves);
+		IL.CANDY_Leaves_White                   .set(ST.make(MD.CANDY, "B6"                                 , 1, 2), new OreDictItemData(MT.Chocolate, U2), OP.treeLeaves);
 		IL.CANDY_Leaves_Cherry                  .set(ST.make(MD.CANDY, "B6"                                 , 1, 3), null, OP.treeLeaves);
 		IL.CANDY_Log                            .set(ST.make(MD.CANDY, "B4"                                 , 1, 0), new OreDictItemData(MT.Marshmallow, 9*U), OD.logWood);
 		IL.CANDY_Log_Dark                       .set(ST.make(MD.CANDY, "B4"                                 , 1, 1), new OreDictItemData(MT.Marshmallow, 9*U), OD.logWood);

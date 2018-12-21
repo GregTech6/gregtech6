@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.09.22: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.09.21: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.09.20: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.15: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] A few tiny things I stumbled upon while trying to work on the minor parts of my TODO List, just to finally get rid of those tasks. XD
 
 
 6.09.14:

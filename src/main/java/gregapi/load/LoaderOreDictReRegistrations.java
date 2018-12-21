@@ -546,6 +546,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("ingotDuranium"                   , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotTritanium"                  , OD.craftingPistonIngot);
 		OreDictManager.INSTANCE.addReRegistration("ingotSyrmorite"                  , OD.craftingPistonIngot);
+		OreDictManager.INSTANCE.addReRegistration("ingotTarPitch"                   , OD.itemTar);
+		OreDictManager.INSTANCE.addReRegistration("nuggetTarPitch"                  , OD.itemTar);
 		OreDictManager.INSTANCE.addReRegistration("stoneBowl"                       , "bowlStone");
 		OreDictManager.INSTANCE.addReRegistration("stoneRod"                        , "stickStone");
 		OreDictManager.INSTANCE.addReRegistration("budCannabis"                     , "cropCannabis");

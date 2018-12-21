@@ -25,6 +25,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 import appeng.api.AEApi;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.code.IItemContainer;
 import gregapi.config.ConfigCategories;
 import gregapi.data.CS.ConfigsGT;
@@ -32,7 +33,7 @@ import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.FoodsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.item.multiitem.MultiItemRandom;
-import gregapi.recipes.GT_ModHandler.ThermalExpansion;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.recipes.maps.*;
 import gregapi.util.CR;
@@ -42,6 +43,7 @@ import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
 /**
@@ -230,37 +232,43 @@ public class RM {
 		return T;
 	}
 	
+	public static boolean lathing(long aEUt, long aDuration, ItemStack aInput, ItemStack... aOutputs) {
+		if (ST.invalid(aInput) || aOutputs.length <= 0 || ST.invalid(aOutputs[0])) return F;
+		RM.Lathe.addRecipe1(T, aEUt, aDuration, aInput, aOutputs);
+		return T;
+	}
+	
 	public static boolean food_can(ItemStack aStack, int aFoodValue, String aCannedName, IItemContainer... aCans) {
 		if (ST.invalid(aStack) || aStack.getItem() == ItemsGT.CANS || IL.IC2_Food_Can_Filled.equal(aStack, T, T)) return F;
 		if (aFoodValue > 0) switch(aFoodValue / 2) {
-		case  0: case  1:                                       return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[0].getWithName(1, aCannedName), ST.container(aStack, T));
-		case  2:                                                return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[1].getWithName(1, aCannedName), ST.container(aStack, T));
-		case  3:                                                return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[2].getWithName(1, aCannedName), ST.container(aStack, T));
-		case  4:                                                return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[3].getWithName(1, aCannedName), ST.container(aStack, T));
-		case  5:                                                return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[4].getWithName(1, aCannedName), ST.container(aStack, T));
-		case  8: case  9:                                       return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(2), aCans[3].getWithName(2, aCannedName), ST.container(aStack, T));
-		case 10: case 11:                                       return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(2), aCans[4].getWithName(2, aCannedName), ST.container(aStack, T));
-		case 15: case 16: case 17:                              return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(3), aCans[4].getWithName(3, aCannedName), ST.container(aStack, T));
-		case 20: case 21: case 22: case 23:                     return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(4), aCans[4].getWithName(4, aCannedName), ST.container(aStack, T));
-		case 25: case 26: case 27: case 28: case 29:            return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(5), aCans[4].getWithName(5, aCannedName), ST.container(aStack, T));
-		default:                                                return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(aFoodValue/12), aCans[5].getWithName(aFoodValue/12, aCannedName), ST.container(aStack, T));
+		case  0: case  1:                            return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[0].getWithName(1, aCannedName), ST.container(aStack, T));
+		case  2:                                     return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[1].getWithName(1, aCannedName), ST.container(aStack, T));
+		case  3:                                     return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[2].getWithName(1, aCannedName), ST.container(aStack, T));
+		case  4:                                     return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[3].getWithName(1, aCannedName), ST.container(aStack, T));
+		case  5:                                     return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(1), aCans[4].getWithName(1, aCannedName), ST.container(aStack, T));
+		case  8: case  9:                            return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(2), aCans[3].getWithName(2, aCannedName), ST.container(aStack, T));
+		case 10: case 11:                            return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(2), aCans[4].getWithName(2, aCannedName), ST.container(aStack, T));
+		case 15: case 16: case 17:                   return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(3), aCans[4].getWithName(3, aCannedName), ST.container(aStack, T));
+		case 20: case 21: case 22: case 23:          return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(4), aCans[4].getWithName(4, aCannedName), ST.container(aStack, T));
+		case 25: case 26: case 27: case 28: case 29: return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(5), aCans[4].getWithName(5, aCannedName), ST.container(aStack, T));
+		default:                                     return null != Canner.addRecipe2(T, 16, 16, aStack, IL.Food_Can_Empty.get(aFoodValue/12), aCans[5].getWithName(aFoodValue/12, aCannedName), ST.container(aStack, T));
 		}
 		return F;
 	}
 	
-	public static boolean crop_veggie   (ItemStack aStack, FL aFluid, long aAmount                      , long aChance, String aCannedName, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat ) {return crop(aStack, aFluid       , aAmount, IL.Remains_Veggie    .get( 1), aChance, aCannedName, IL.CANS_VEGGIE      , aAlcohol, aCaffeine, aDehydration, aSugar, aFat);}
-	public static boolean crop_veggie   (ItemStack aStack, FL aFluid, long aAmount, ItemStack aRemains  , long aChance, String aCannedName, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat ) {return crop(aStack, aFluid       , aAmount, aRemains                     , aChance, aCannedName, IL.CANS_VEGGIE      , aAlcohol, aCaffeine, aDehydration, aSugar, aFat);}
-	public static boolean crop_fruit    (ItemStack aStack, FL aFluid, long aAmount                      , long aChance, String aCannedName, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat ) {return crop(aStack, aFluid       , aAmount, IL.Remains_Fruit     .get( 1), aChance, aCannedName, IL.CANS_FRUIT       , aAlcohol, aCaffeine, aDehydration, aSugar, aFat);}
-	public static boolean crop_fruit    (ItemStack aStack, FL aFluid, long aAmount, ItemStack aRemains  , long aChance, String aCannedName, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat ) {return crop(aStack, aFluid       , aAmount, aRemains                     , aChance, aCannedName, IL.CANS_FRUIT       , aAlcohol, aCaffeine, aDehydration, aSugar, aFat);}
-	public static boolean crop_nut      (ItemStack aStack           , long aAmount                      , long aChance, String aCannedName                                                                      ) {return crop(aStack, FL.Oil_Nut   , aAmount, IL.Remains_Nut       .get( 1), aChance, aCannedName, IL.CANS_UNDEFINED   , 0, 0, 0, 0,16);}
-	public static boolean crop_nut      (ItemStack aStack           , long aAmount, ItemStack aRemains  , long aChance, String aCannedName                                                                      ) {return crop(aStack, FL.Oil_Nut   , aAmount, aRemains                     , aChance, aCannedName, IL.CANS_UNDEFINED   , 0, 0, 0, 0,16);}
+	public static boolean crop_veggie(ItemStack aStack, FL aFluid, long aAmount                    , long aChance, String aCannedName, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {return crop(aStack, aFluid       , aAmount, IL.Remains_Veggie    .get( 1), aChance, aCannedName, IL.CANS_VEGGIE      , aAlcohol, aCaffeine, aDehydration, aSugar, aFat);}
+	public static boolean crop_veggie(ItemStack aStack, FL aFluid, long aAmount, ItemStack aRemains, long aChance, String aCannedName, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {return crop(aStack, aFluid       , aAmount, aRemains                     , aChance, aCannedName, IL.CANS_VEGGIE      , aAlcohol, aCaffeine, aDehydration, aSugar, aFat);}
+	public static boolean crop_fruit (ItemStack aStack, FL aFluid, long aAmount                    , long aChance, String aCannedName, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {return crop(aStack, aFluid       , aAmount, IL.Remains_Fruit     .get( 1), aChance, aCannedName, IL.CANS_FRUIT       , aAlcohol, aCaffeine, aDehydration, aSugar, aFat);}
+	public static boolean crop_fruit (ItemStack aStack, FL aFluid, long aAmount, ItemStack aRemains, long aChance, String aCannedName, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {return crop(aStack, aFluid       , aAmount, aRemains                     , aChance, aCannedName, IL.CANS_FRUIT       , aAlcohol, aCaffeine, aDehydration, aSugar, aFat);}
+	public static boolean crop_nut   (ItemStack aStack           , long aAmount                    , long aChance, String aCannedName                                                                     ) {return crop(aStack, FL.Oil_Nut   , aAmount, IL.Remains_Nut       .get( 1), aChance, aCannedName, IL.CANS_UNDEFINED   , 0, 0, 0, 0,16);}
+	public static boolean crop_nut   (ItemStack aStack           , long aAmount, ItemStack aRemains, long aChance, String aCannedName                                                                     ) {return crop(aStack, FL.Oil_Nut   , aAmount, aRemains                     , aChance, aCannedName, IL.CANS_UNDEFINED   , 0, 0, 0, 0,16);}
 	
 	public static boolean crop(ItemStack aStack, FL aFluid, long aAmount, ItemStack aRemains, long aChance, String aCannedName, IItemContainer[] aCans, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {
 		if (aCans != null && UT.Code.stringValid(aCannedName)) food_can(aStack, Math.max(1, ST.food(aStack)), aCannedName, aCans);
-		if (aFluid          != null) Squeezer   .addRecipe1(T, 16, 16, aChance-1000 , aStack, NF, (aFluid.exists()?aFluid:FL.Juice).make(aAmount)                                               , aRemains);
-		if (aFluid          != null) Juicer     .addRecipe1(T, 16, 16, aChance      , aStack, NF, (aFluid.exists()?aFluid:FL.Juice).make(aAmount-(aAmount<100?aAmount/3:1+(aAmount/250))*25)    , aRemains);
-		if (aRemains        != null) Shredder   .addRecipe1(T, 16, 16, aChance      , aStack, aRemains);
-		if (aRemains        != null) Mortar     .addRecipe1(T, 16, 16, aChance/2    , aStack, aRemains);
+		if (aFluid   != null) Squeezer.addRecipe1(T, 16, 16, aChance-1000 , aStack, NF, (aFluid.exists()?aFluid:FL.Juice).make(aAmount)                                               , aRemains);
+		if (aFluid   != null) Juicer  .addRecipe1(T, 16, 16, aChance      , aStack, NF, (aFluid.exists()?aFluid:FL.Juice).make(aAmount-(aAmount<100?aAmount/3:1+(aAmount/250))*25)    , aRemains);
+		if (aRemains != null) Shredder.addRecipe1(T, 16, 16, aChance      , aStack, aRemains);
+		if (aRemains != null) Mortar  .addRecipe1(T, 16, 16, aChance/2    , aStack, aRemains);
 		if (!(aStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aStack, aAlcohol, aCaffeine, aDehydration, aSugar, aFat);
 		return T;
 	}
@@ -340,9 +348,9 @@ public class RM {
 			if (!OP.log.contains(aInput) && ANY.Wood.contains(aOutput1)) {
 				if (ConfigsGT.RECIPES.get(ConfigCategories.Machines.pulverization, aInput, T)) {
 					if (aOutput2 == null)
-						ThermalExpansion.addSawmillRecipe(32000, ST.copy(aInput), ST.copy(aOutput1));
+						te_sawmill(32000, ST.copy(aInput), ST.copy(aOutput1));
 					else
-						ThermalExpansion.addSawmillRecipe(32000, ST.copy(aInput), ST.copy(aOutput1), ST.copy(aOutput2), aChance2<=0?10:aChance2);
+						te_sawmill(32000, ST.copy(aInput), ST.copy(aOutput1), ST.copy(aOutput2), aChance2<=0?10:aChance2);
 				}
 			} else {
 				if (!OP.log.contains(aInput) && ConfigsGT.RECIPES.get(ConfigCategories.Machines.rockcrushing, aInput, ST.block(aInput) != NB)) {
@@ -357,9 +365,9 @@ public class RM {
 				}
 				if (ConfigsGT.RECIPES.get(ConfigCategories.Machines.pulverization, aInput, T)) {
 					if (aOutput2 == null)
-						ThermalExpansion.addPulverizerRecipe(32000, ST.copy(aInput), ST.copy(aOutput1));
+						te_pulverizer(32000, ST.copy(aInput), ST.copy(aOutput1));
 					else
-						ThermalExpansion.addPulverizerRecipe(32000, ST.copy(aInput), ST.copy(aOutput1), ST.copy(aOutput2), aChance2<=0?10:aChance2);
+						te_pulverizer(32000, ST.copy(aInput), ST.copy(aOutput1), ST.copy(aOutput2), aChance2<=0?10:aChance2);
 				}
 			}
 		}
@@ -402,5 +410,116 @@ public class RM {
 		}
 		UT.addSimpleIC2MachineRecipe(ic2.api.recipe.Recipes.centrifuge, aInput, UT.NBT.makeLong("minHeat", aHeat), aOutput);
 		return T;
+	}
+	
+	public static void te_furnace(int energy, ItemStack input, ItemStack output) {
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setInteger("energy", energy);
+		toSend.setTag("input", UT.NBT.make());
+		toSend.setTag("output", UT.NBT.make());
+		input.writeToNBT(toSend.getCompoundTag("input"));
+		output.writeToNBT(toSend.getCompoundTag("output"));
+		FMLInterModComms.sendMessage("ThermalExpansion", "FurnaceRecipe", toSend);
+	}
+	public static void te_pulverizer(int energy, ItemStack input, ItemStack primaryOutput) {
+		te_pulverizer(energy, input, primaryOutput, null, 0);
+	}
+	public static void te_pulverizer(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput) {
+		te_pulverizer(energy, input, primaryOutput, secondaryOutput, 100);
+	}
+	public static void te_pulverizer(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput, int secondaryChance) {
+		if (input == null || primaryOutput == null) return;
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setInteger("energy", energy);
+		toSend.setTag("input", UT.NBT.make());
+		toSend.setTag("primaryOutput", UT.NBT.make());
+		toSend.setTag("secondaryOutput", UT.NBT.make());
+		input.writeToNBT(toSend.getCompoundTag("input"));
+		primaryOutput.writeToNBT(toSend.getCompoundTag("primaryOutput"));
+		if (secondaryOutput != null) secondaryOutput.writeToNBT(toSend.getCompoundTag("secondaryOutput"));
+		toSend.setInteger("secondaryChance", secondaryChance);
+		FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", toSend);
+	}
+	public static void te_sawmill(int energy, ItemStack input, ItemStack primaryOutput) {
+		te_sawmill(energy, input, primaryOutput, null, 0);
+	}
+	public static void te_sawmill(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput) {
+		te_sawmill(energy, input, primaryOutput, secondaryOutput, 100);
+	}
+	public static void te_sawmill(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput, int secondaryChance) {
+		if (input == null || primaryOutput == null) return;
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setInteger("energy", energy);
+		toSend.setTag("input", UT.NBT.make());
+		toSend.setTag("primaryOutput", UT.NBT.make());
+		toSend.setTag("secondaryOutput", UT.NBT.make());
+		input.writeToNBT(toSend.getCompoundTag("input"));
+		primaryOutput.writeToNBT(toSend.getCompoundTag("primaryOutput"));
+		if (secondaryOutput != null) secondaryOutput.writeToNBT(toSend.getCompoundTag("secondaryOutput"));
+		toSend.setInteger("secondaryChance", secondaryChance);
+		FMLInterModComms.sendMessage("ThermalExpansion", "SawmillRecipe", toSend);
+	}
+	public static void te_smelter(int energy, ItemStack primaryInput, ItemStack secondaryInput, ItemStack primaryOutput) {
+		te_smelter(energy, primaryInput, secondaryInput, primaryOutput, null, 0);
+	}
+	public static void te_smelter(int energy, ItemStack primaryInput, ItemStack secondaryInput, ItemStack primaryOutput, ItemStack secondaryOutput) {
+		te_smelter(energy, primaryInput, secondaryInput, primaryOutput, secondaryOutput, 100);
+	}
+	public static void te_smelter(int energy, ItemStack primaryInput, ItemStack secondaryInput, ItemStack primaryOutput, ItemStack secondaryOutput, int secondaryChance) {
+		if (primaryInput == null || secondaryInput == null || primaryOutput == null) return;
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setInteger("energy", energy);
+		toSend.setTag("primaryInput", UT.NBT.make());
+		toSend.setTag("secondaryInput", UT.NBT.make());
+		toSend.setTag("primaryOutput", UT.NBT.make());
+		toSend.setTag("secondaryOutput", UT.NBT.make());
+		primaryInput.writeToNBT(toSend.getCompoundTag("primaryInput"));
+		secondaryInput.writeToNBT(toSend.getCompoundTag("secondaryInput"));
+		primaryOutput.writeToNBT(toSend.getCompoundTag("primaryOutput"));
+		if (secondaryOutput != null) secondaryOutput.writeToNBT(toSend.getCompoundTag("secondaryOutput"));
+		toSend.setInteger("secondaryChance", secondaryChance);
+		FMLInterModComms.sendMessage("ThermalExpansion", "SmelterRecipe", toSend);
+	}
+	public static void te_smelter_ore(OreDictMaterial aMaterial) {
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setString("oreType", aMaterial.toString());
+		FMLInterModComms.sendMessage("ThermalExpansion", "SmelterBlastOreType", toSend);
+	}
+	public static void te_crucible(int energy, ItemStack input, FluidStack output) {
+		if (input == null || output == null) return;
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setInteger("energy", energy);
+		toSend.setTag("input", UT.NBT.make());
+		toSend.setTag("output", UT.NBT.make());
+		input.writeToNBT(toSend.getCompoundTag("input"));
+		output.writeToNBT(toSend.getCompoundTag("output"));
+		FMLInterModComms.sendMessage("ThermalExpansion", "CrucibleRecipe", toSend);
+	}
+	public static void te_fill(int energy, ItemStack input, ItemStack output, FluidStack fluid, boolean reversible) {
+		if (input == null || output == null || fluid == null) return;
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setInteger("energy", energy);
+		toSend.setTag("input", UT.NBT.make());
+		toSend.setTag("output", UT.NBT.make());
+		toSend.setTag("fluid", UT.NBT.make());
+		input.writeToNBT(toSend.getCompoundTag("input"));
+		output.writeToNBT(toSend.getCompoundTag("output"));
+		UT.NBT.setBoolean(toSend, "reversible", reversible);
+		fluid.writeToNBT(toSend.getCompoundTag("fluid"));
+		FMLInterModComms.sendMessage("ThermalExpansion", "TransposerFillRecipe", toSend);
+	}
+	public static void te_extract(int energy, ItemStack input, ItemStack output, FluidStack fluid, int chance, boolean reversible) {
+		if (input == null || output == null || fluid == null) return;
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setInteger("energy", energy);
+		toSend.setTag("input", UT.NBT.make());
+		toSend.setTag("output", UT.NBT.make());
+		toSend.setTag("fluid", UT.NBT.make());
+		input.writeToNBT(toSend.getCompoundTag("input"));
+		output.writeToNBT(toSend.getCompoundTag("output"));
+		UT.NBT.setBoolean(toSend, "reversible", reversible);
+		toSend.setInteger("chance", chance);
+		fluid.writeToNBT(toSend.getCompoundTag("fluid"));
+		FMLInterModComms.sendMessage("ThermalExpansion", "TransposerExtractRecipe", toSend);
 	}
 }

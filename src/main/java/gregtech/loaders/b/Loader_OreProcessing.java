@@ -60,7 +60,6 @@ import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.OreDictPrefix;
-import gregapi.recipes.GT_ModHandler;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
@@ -170,8 +169,6 @@ public class Loader_OreProcessing implements Runnable {
 		plantGtFiber                .addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
 		plantGtWart                 .addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
 		plantGtBlossom              .addListener(new OreProcessing_PlantSqueezing(-1, ANTIMATTER.NOT));
-		
-		dye                         .addListener(new OreProcessing_Dye());
 		
 		String tCategory = ConfigCategories.Recipes.gregtechrecipes + ".";
 		
@@ -308,18 +305,6 @@ public class Loader_OreProcessing implements Runnable {
 			for (OreDictMaterialStack tMaterial : tList) tIngots.add(OM.ingotOrDust(tMaterial.mMaterial, tMaterial.mAmount));
 			
 			if (!tIngots.isEmpty()) RM.CrucibleSmelting.addFakeRecipe(F, new ItemStack[] {aEvent.mStack}, tIngots.toArray(ZL_IS), null, null, null, null, 0, 0, aEvent.mItemData.mMaterial.mMaterial.mMeltingPoint);
-		}
-	}
-	
-	public static class OreProcessing_Dye implements IOreDictListenerEvent {
-		@Override
-		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			int aIndex = 0; while (aIndex < 16) {if (DYE_OREDICTS[aIndex].equals(aEvent.mOreDictName)) break; aIndex++;}
-			
-			if (aIndex < 16 && ST.container(aEvent.mStack, T) == null) {
-				GT_ModHandler.addAlloySmelterRecipe(dust.mat(MT.Glass, 8)       , aEvent.mStack, ST.make(Blocks.stained_glass, 8, 15-aIndex), 200, 8, F);
-				GT_ModHandler.addAlloySmelterRecipe(ST.make(Blocks.glass, 8, W) , aEvent.mStack, ST.make(Blocks.stained_glass, 8, 15-aIndex), 200, 8, F);
-			}
 		}
 	}
 	

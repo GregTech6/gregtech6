@@ -21,9 +21,12 @@ package gregapi.data;
 
 import static gregapi.data.CS.*;
 
+import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.recipes.maps.RecipeMapFuel;
 import gregapi.recipes.maps.RecipeMapFurnaceFuel;
+import gregapi.util.UT;
+import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * @author Gregorius Techneticies
@@ -42,4 +45,23 @@ public class FM {
 	, Turbine       = new RecipeMapFuel         (null, "gt.recipe.fuels.turbine"    , "Turbine Fuels"   , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F)
 	, Magic         = new RecipeMapFuel         (null, "gt.recipe.fuels.magic"      , "Magic Fuels"     , null          , 0, 1, RES_PATH_GUI+"machines/Default"     ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 0,/*IN-OUT-MIN-FLUID=*/ 1, 2, 0,/*MIN*/ 1,/*AMP=*/ 1, "", 1, "", T, T, T, F)
 	;
+	
+	public static void te_fuel_magmatic(String fluidName, int energy) {
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setString("fluidName", fluidName);
+		toSend.setInteger("energy", energy);
+		FMLInterModComms.sendMessage("ThermalExpansion", "MagmaticFuel", toSend);
+	}
+	public static void te_fuel_compression(String fluidName, int energy) {
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setString("fluidName", fluidName);
+		toSend.setInteger("energy", energy);
+		FMLInterModComms.sendMessage("ThermalExpansion", "CompressionFuel", toSend);
+	}
+	public static void te_coolant(String fluidName, int energy) {
+		NBTTagCompound toSend = UT.NBT.make();
+		toSend.setString("fluidName", fluidName);
+		toSend.setInteger("energy", energy);
+		FMLInterModComms.sendMessage("ThermalExpansion", "Coolant", toSend);
+	}
 }

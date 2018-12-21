@@ -36,7 +36,6 @@ import gregapi.data.RM;
 import gregapi.oredict.IOreDictListenerEvent;
 import gregapi.oredict.OreDictListenerEvent_Names;
 import gregapi.oredict.OreDictMaterial;
-import gregapi.recipes.GT_ModHandler;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -165,7 +164,6 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 						ItemStack tPlanks = ST.amount((tPlank.stackSize * 3) / 2, tPlank);
 						tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;
 						RM.sawing(16, 128, F, 5, ST.make(ST.item_(aEvent.mStack), 1, i), ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
-						GT_ModHandler.addSawmillRecipe(ST.make(ST.item_(aEvent.mStack), 1, i), tPlanks, dust.mat(tWood, 1));
 						CR.remove(ST.make(ST.item_(aEvent.mStack), 1, i));
 						CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, i));
 						CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, i)});
@@ -173,7 +171,6 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 				} else {
 					ItemStack tPlanks = ST.amount((tOverridePlank.stackSize * 3) / 2, tOverridePlank);
 					RM.sawing(16, 128, F, 5, ST.make(ST.item_(aEvent.mStack), 1, aMeta), ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
-					GT_ModHandler.addSawmillRecipe(ST.make(ST.item_(aEvent.mStack), 1, aMeta), tPlanks, dust.mat(tWood, 1));
 					for (int i = 0; i < 16; i++) CR.remove(ST.make(ST.item_(aEvent.mStack), 1, i));
 					CR.shaped(ST.amount(NERFED_WOOD?tOverridePlank.stackSize:(tOverridePlank.stackSize * 5) / 4, tOverridePlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, aMeta));
 					CR.shapeless(ST.amount(tOverridePlank.stackSize / (NERFED_WOOD?2:1), tOverridePlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, aMeta)});
@@ -185,7 +182,6 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 					ItemStack tPlanks = ST.copy(tPlank);
 					tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;
 					RM.sawing(16, 128, F, 5, aEvent.mStack, ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
-					GT_ModHandler.addSawmillRecipe(aEvent.mStack, tPlanks, dust.mat(tWood, 1));
 					CR.remove(aEvent.mStack);
 					CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', aEvent.mStack);
 					CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {aEvent.mStack});

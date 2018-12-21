@@ -28,6 +28,7 @@ import gregapi.data.CS.FoodsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
@@ -373,13 +374,16 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.food_can(aEvent.mStack, Math.max(1, ST.food(aEvent.mStack)), "Canned Hydra", ST.rotten(aEvent.mStack)?IL.CANS_ROTTEN:IL.CANS_MEAT);
 			if (!(aEvent.mStack.getItem() instanceof MultiItemRandom)) FoodsGT.put(aEvent.mStack, 0, 0,20, 0,40);
 		}});
+		addListener("listAllmushroom", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.equal(aEvent.mStack, Blocks.brown_mushroom))
+			RM.Mixer        .addRecipe2(T, 16,   16, aEvent.mStack, ST.make(Blocks.brown_mushroom, 1, W), NF, FL.Soup_Mushroom.make(1000), ZL_IS);
+		}});
 		addListener("listAllpropolis", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			for (OreDictMaterial tMat : ANY.Ash.mToThis)
 			RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {ingot.mat(MT.Peat, 2), OM.dust(tMat, U*2), aEvent.mStack}, ingotDouble.mat(MT.PeatBituminous, 1));
 		}});
-		addListener("listAllmushroom", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!ST.equal(aEvent.mStack, Blocks.brown_mushroom))
-			RM.Mixer        .addRecipe2(T, 16,   16, aEvent.mStack, ST.make(Blocks.brown_mushroom, 1, W), NF, FL.Soup_Mushroom.make(1000), ZL_IS);
+		addListener(OD.itemTar, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.Mixer        .addRecipe2(T, 16,   16, ingot.mat(MT.Peat, 1), aEvent.mStack, ingotDouble.mat(MT.PeatBituminous, 1));
 		}});
 		
 		
