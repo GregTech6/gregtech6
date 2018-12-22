@@ -137,51 +137,36 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			
 			if (WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.contains(ST.item_(aEvent.mStack))) return;
 			
-			short aMeta = ST.meta_(aEvent.mStack);
-			
-			ItemStack tBark = OM.dust(MT.Bark, U2), tOverridePlank = NI;
 			OreDictMaterial tWood = MT.Wood;
 			
-			if (IL.HiL_Ironwood.equal(aEvent.mStack, T, T)) {
-				tBark = OM.dust(MT.LiveRoot, U9);
-				RM.debarking(16, 64, aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 3), OM.dust(MT.LiveRoot, U4));
-			} else if (aEvent.mOreDictName.equals("logRubber")) {
+			if (aEvent.mOreDictName.equals(OD.logRubber.toString())) {
 				tWood = MT.WoodRubber;
-				RM.debarking(16, 64, aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 2), OM.dust(MT.Bark));
+				RM.debarking(aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 2), OM.dust(MT.Bark));
 			} else {
-				RM.debarking(16, 64, aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 3), OM.dust(MT.Bark));
+				RM.debarking(aEvent.mStack, ST.make(BlocksGT.Beam2, 1, 3), OM.dust(MT.Bark));
 			}
 			
 			RM.Lathe        .addRecipe1(T, 16,   80, aEvent.mStack, stickLong.mat(tWood, 4), dust.mat(tWood, 2));
 			RM.CokeOven     .addRecipe1(T,  0, 3600, aEvent.mStack, NF, MT.Creosote.liquid(U4, F), OP.gem.mat(MT.Charcoal, 1));
 			
-			if (aMeta == W) {
-				if (tOverridePlank == null) {
-					ItemStack tPlank;
-					for (int i = 0; i < W; i++) {
-						tPlank = CR.get(ST.make(ST.item_(aEvent.mStack), 1, i));
-						if (tPlank == null) {if (i < 16) continue; break;}
-						ItemStack tPlanks = ST.amount((tPlank.stackSize * 3) / 2, tPlank);
-						tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;
-						RM.sawing(16, 128, F, 5, ST.make(ST.item_(aEvent.mStack), 1, i), ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
-						CR.remove(ST.make(ST.item_(aEvent.mStack), 1, i));
-						CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, i));
-						CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, i)});
-					}
-				} else {
-					ItemStack tPlanks = ST.amount((tOverridePlank.stackSize * 3) / 2, tOverridePlank);
-					RM.sawing(16, 128, F, 5, ST.make(ST.item_(aEvent.mStack), 1, aMeta), ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
-					for (int i = 0; i < 16; i++) CR.remove(ST.make(ST.item_(aEvent.mStack), 1, i));
-					CR.shaped(ST.amount(NERFED_WOOD?tOverridePlank.stackSize:(tOverridePlank.stackSize * 5) / 4, tOverridePlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, aMeta));
-					CR.shapeless(ST.amount(tOverridePlank.stackSize / (NERFED_WOOD?2:1), tOverridePlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, aMeta)});
+			if (ST.meta_(aEvent.mStack) == W) {
+				ItemStack tPlank;
+				for (int i = 0; i < W; i++) {
+					tPlank = CR.get(ST.make(ST.item_(aEvent.mStack), 1, i));
+					if (tPlank == null) {if (i < 16) continue; break;}
+					ItemStack tPlanks = ST.amount((tPlank.stackSize * 3) / 2, tPlank);
+					tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;
+					RM.sawing(16, 128, F, 5, ST.make(ST.item_(aEvent.mStack), 1, i), ST.copy(tPlanks), dust.mat(tWood, 1), OM.dust(MT.Bark, U2));
+					CR.remove(ST.make(ST.item_(aEvent.mStack), 1, i));
+					CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', ST.make(ST.item_(aEvent.mStack), 1, i));
+					CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, i)});
 				}
 			} else {
-				ItemStack tPlank = tOverridePlank;
-				if (tOverridePlank == null) tPlank = CR.get(new ItemStack[] {aEvent.mStack});
+				ItemStack tPlank = CR.get(new ItemStack[] {aEvent.mStack});
 				if (tPlank != null) {
 					ItemStack tPlanks = ST.copy(tPlank);
 					tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;
-					RM.sawing(16, 128, F, 5, aEvent.mStack, ST.copy(tPlanks), dust.mat(tWood, 1), tBark);
+					RM.sawing(16, 128, F, 5, aEvent.mStack, ST.copy(tPlanks), dust.mat(tWood, 1), OM.dust(MT.Bark, U2));
 					CR.remove(aEvent.mStack);
 					CR.shaped(ST.amount(NERFED_WOOD?tPlank.stackSize:(tPlank.stackSize * 5) / 4, tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, "s", "L", 'L', aEvent.mStack);
 					CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {aEvent.mStack});
@@ -195,7 +180,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.generify(aEvent.mStack, IL.Plank.get(1));
 			
 			RM.Assembler.addRecipe2(T, 16,  32, ST.amount(8, aEvent.mStack), dust.mat(MT.Redstone, 1), ST.make(Blocks.noteblock, 1, 0));
-			RM.Assembler.addRecipe2(T, 16,  64, ST.amount(8, aEvent.mStack), gem.mat(MT.Diamond , 1), ST.make(Blocks.jukebox, 1, 0));
+			RM.Assembler.addRecipe2(T, 16,  64, ST.amount(8, aEvent.mStack), gem .mat(MT.Diamond , 1), ST.make(Blocks.jukebox, 1, 0));
 //          RM.Assembler.addRecipe2(T, 16,  32, aEvent.mStack, screw.mat(MT.Fe, 1), IL.Crate_Empty.get(1));
 //          RM.Assembler.addRecipe2(T, 16,  32, aEvent.mStack, screw.mat(MT.WroughtIron, 1), IL.Crate_Empty.get(1));
 //          RM.Assembler.addRecipe2(T, 16,  32, aEvent.mStack, screw.mat(MT.Steel, 1), IL.Crate_Empty.get(1));
@@ -207,7 +192,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Assembler.addRecipe2(T, 16, 128, ST.amount(8, aEvent.mStack), ST.tag(8), ST.make(Blocks.chest, 1, 0));
 			RM.Assembler.addRecipe2(T, 16,  64, ST.amount(6, aEvent.mStack), ST.make(Items.book, 3, 0), ST.make(Blocks.bookshelf, 1, 0));
 			
-			if (WoodDictionary.PLANKS.containsKey(new ItemStackContainer(aEvent.mStack)) || WoodDictionary.PLANKS.containsKey(new ItemStackContainer(aEvent.mStack, W))) return;
+			if (WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.contains(ST.item_(aEvent.mStack))) return;
 			
 			if (IL.MaCu_Polished_Planks.exists())
 			RM.Bath     .addRecipe1(T,  0, 144, aEvent.mStack, FL.Oil_Fish      .make(1000), NF, IL.MaCu_Polished_Planks.get(1));

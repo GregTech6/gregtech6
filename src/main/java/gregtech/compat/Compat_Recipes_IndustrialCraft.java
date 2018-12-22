@@ -154,7 +154,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Shredder     .addRecipe1(T, 16,   16, 300, ST.mkic("weed", 1)        , IL.IC2_Plantball.get(1));
 		RM.Shredder     .addRecipe1(T, 16,   16, 600, ST.make(Blocks.vine, 1, W), IL.IC2_Plantball.get(1));
 		
-		RM.biomass(IL.IC2_Plantball.get(1), 64);
+		RM.biomass(IL.IC2_Plantball.get(1), 32);
 		
 		RM.Squeezer     .addRecipe1(T, 16,   16, ST.make(MD.IC2, "item.itemMatter", 1, 0), NF, FL.UUM.make(1), ZL_IS);
 		RM.Coagulator   .addRecipe0(T,  0,   16, FL.UUM.make(1), NF, ST.make(MD.IC2, "item.itemMatter", 1, 0));
@@ -353,7 +353,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Shredder     .addRecipe1(T, 16,   16, 300, ST.mkic("weed", 1)                            , IL.IC2_Biochaff.get(1));
 		RM.Shredder     .addRecipe1(T, 16,   16, 600, ST.make(Blocks.vine, 1, W)                    , IL.IC2_Biochaff.get(1));
 		
-		RM.biomass(IL.IC2_Biochaff.get(1), 64);
+		RM.biomass(IL.IC2_Biochaff.get(1), 32);
 		
 		RM.RollBender   .addRecipe1(T, 16,  128, OP.casingSmall.mat(MT.Zr, 2)                       , IL.IC2_Fuel_Rod_Empty.get(1));
 		

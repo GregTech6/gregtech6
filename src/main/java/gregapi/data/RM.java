@@ -197,20 +197,25 @@ public class RM {
 		return pack(aContent, aFull) && unpack(aFull, aContent);
 	}
 	
+	public static boolean biomass(ItemStack aBiomass) {return biomass(aBiomass, 64);}
 	public static boolean biomass(ItemStack aBiomass, long aSpeed) {
 		if (ST.invalid(aBiomass)) return F;
+		int tSize = aBiomass.stackSize;
+		if (tSize <= 0) return F;
+		aBiomass = ST.amount(1, aBiomass);
 		for (String tFluid : FluidsGT.WATER) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 4, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(1000), ZL_IS);
-		for (String tFluid : FluidsGT.MILK) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(2000), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, UT.Fluids.make(tFluid, 1080 / tSize), FL.BiomassIC2.make(1080 / tSize), ZL_IS);
+		for (String tFluid : FluidsGT.MILK ) if (UT.Fluids.exists(tFluid))
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, UT.Fluids.make(tFluid, 1080 / tSize), FL.BiomassIC2.make(2160 / tSize), ZL_IS);
 		for (String tFluid : FluidsGT.JUICE) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(3000), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, UT.Fluids.make(tFluid, 1080 / tSize), FL.BiomassIC2.make(3240 / tSize), ZL_IS);
 		for (String tFluid : FluidsGT.HONEY) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 3, aBiomass, UT.Fluids.make(tFluid, 1000), FL.BiomassIC2.make(3000), ZL_IS);
-		RM.Fermenter.addRecipe1(T, 16, aSpeed * 2, aBiomass, FL.Honeydew.make      (1000), FL.BiomassIC2.make(3000), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, UT.Fluids.make(tFluid, 1080 / tSize), FL.BiomassIC2.make(3240 / tSize), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Honeydew.make      (1080 / tSize), FL.BiomassIC2.make(3240 / tSize), ZL_IS);
 		return T;
 	}
 	
+	public static boolean debarking(ItemStack aInput, ItemStack... aOutputs) {return debarking(16, 64, 1000, aInput, aOutputs);}
 	public static boolean debarking(long aEUt, long aDuration, ItemStack aInput, ItemStack... aOutputs) {return debarking(aEUt, aDuration, 1000, aInput, aOutputs);}
 	public static boolean debarking(long aEUt, long aDuration, long aWater, ItemStack aInput, ItemStack... aOutputs) {
 		if (ST.invalid(aInput) || aOutputs.length <= 0 || ST.invalid(aOutputs[0])) return F;

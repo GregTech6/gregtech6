@@ -686,22 +686,22 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.pulverizing(ST.make(Items.reeds, 1, W), IL.Remains_Plant.get(1), T);
 		
-		RM.biomass(ST.make(Blocks.brown_mushroom, 8, W), 64);
-		RM.biomass(ST.make(Blocks.red_mushroom, 8, W), 64);
-		RM.biomass(ST.make(Blocks.red_flower, 8, W), 64);
-		RM.biomass(ST.make(Blocks.yellow_flower, 8, W), 64);
-		RM.biomass(ST.make(Blocks.double_plant, 8, W), 64);
-		RM.biomass(ST.make(Blocks.melon_block, 1, W), 64);
-		RM.biomass(ST.make(Blocks.pumpkin, 1, W), 64);
-		RM.biomass(ST.make(Blocks.cactus, 8, W), 64);
-		RM.biomass(ST.make(Items.reeds, 8, W), 64);
-		RM.biomass(ST.make(Items.melon, 9, W), 64);
-		RM.biomass(ST.make(Items.wheat, 9, W), 64);
-		RM.biomass(ST.make(Items.carrot, 9, W), 64);
-		RM.biomass(ST.make(Items.potato, 9, W), 64);
-		RM.biomass(ST.make(Items.poisonous_potato, 9, W), 64);
-		RM.biomass(IL.Dye_Cactus.get(16), 64);
-		RM.biomass(IL.Dye_Cocoa.get(16), 64);
+		RM.biomass(ST.make(Blocks.brown_mushroom, 8, W));
+		RM.biomass(ST.make(Blocks.red_mushroom, 8, W));
+		RM.biomass(ST.make(Blocks.red_flower, 8, W));
+		RM.biomass(ST.make(Blocks.yellow_flower, 8, W));
+		RM.biomass(ST.make(Blocks.double_plant, 8, W));
+		RM.biomass(ST.make(Blocks.melon_block, 1, W));
+		RM.biomass(ST.make(Blocks.pumpkin, 1, W));
+		RM.biomass(ST.make(Blocks.cactus, 8, W));
+		RM.biomass(ST.make(Items.reeds, 8, W));
+		RM.biomass(ST.make(Items.melon, 9, W));
+		RM.biomass(ST.make(Items.wheat, 9, W));
+		RM.biomass(ST.make(Items.carrot, 9, W));
+		RM.biomass(ST.make(Items.potato, 9, W));
+		RM.biomass(ST.make(Items.poisonous_potato, 9, W));
+		RM.biomass(IL.Dye_Cactus.get(16));
+		RM.biomass(IL.Dye_Cocoa.get(16));
 		
 		RM.add_smelting(ST.make(Blocks.sticky_piston, 1, W), ST.make(Blocks.piston, 1, 0));
 		RM.add_smelting(ST.make(Items.glass_bottle, 1, W), ST.make(Blocks.glass, 1, 0));

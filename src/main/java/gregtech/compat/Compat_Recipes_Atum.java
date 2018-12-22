@@ -62,7 +62,7 @@ public class Compat_Recipes_Atum extends CompatMods {
 		RM.Squeezer     .addRecipe1(T, 16,   16,  4000, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), NF, FL.Juice_Reed.make(100), IL.Remains_Plant.get(1));
 		RM.Juicer       .addRecipe1(T, 16,   16,  5000, ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), NF, FL.Juice_Reed.make(75), IL.Remains_Plant.get(1));
 		RM.pulverizing(ST.make(MD.ATUM, "item.papyrusPlant", 1, 0), IL.Remains_Plant.get(1), T);
-		RM.biomass(ST.make(MD.ATUM, "item.papyrusPlant", 8, 0), 64);
+		RM.biomass(ST.make(MD.ATUM, "item.papyrusPlant", 8, 0));
 		
 		RM.generify(ST.make(MD.ATUM, "tile.sand", 1, W), ST.make(Blocks.sand, 1, 0));
 		

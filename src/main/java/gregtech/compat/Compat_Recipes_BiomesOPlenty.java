@@ -54,14 +54,14 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		RM.compact(IL.BoP_Mud_Ball.get(1), 4, IL.BoP_Mud.get(1));
 		RM.compact(IL.BoP_Ashes.get(1), 4, IL.BoP_Ashes_Block.get(1));
 		
-		RM.biomass(ST.make(MD.BoP, "flowers", 16, W), 64);
-		RM.biomass(ST.make(MD.BoP, "flowers2", 16, W), 64);
-		RM.biomass(ST.make(MD.BoP, "plants", 16, W), 64);
-		RM.biomass(ST.make(MD.BoP, "foliage", 8, W), 64);
-		RM.biomass(ST.make(MD.BoP, "mushrooms", 16, W), 64);
-		RM.biomass(ST.make(MD.BoP, "coral1", 16, W), 64);
-		RM.biomass(ST.make(MD.BoP, "coral2", 16, W), 64);
-		RM.biomass(ST.make(MD.BoP, "lilyBop", 8, W), 64);
+		RM.biomass(ST.make(MD.BoP, "flowers", 16, W));
+		RM.biomass(ST.make(MD.BoP, "flowers2", 16, W));
+		RM.biomass(ST.make(MD.BoP, "plants", 16, W));
+		RM.biomass(ST.make(MD.BoP, "foliage", 8, W));
+		RM.biomass(ST.make(MD.BoP, "mushrooms", 16, W));
+		RM.biomass(ST.make(MD.BoP, "coral1", 16, W));
+		RM.biomass(ST.make(MD.BoP, "coral2", 16, W));
+		RM.biomass(ST.make(MD.BoP, "lilyBop", 8, W));
 		
 		CR.remove(IL.BoP_Bone_Small.get(1));
 		CR.remove(IL.BoP_Bone_Medium.get(1));
