@@ -1042,7 +1042,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		case 2: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockDust" +mNameInternal); break;
 		case 3: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal); break;
 		case 4: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal); break;
-		case 5: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"  +mNameInternal); break;
+		case 5: break;
 		}
 		return this;
 	}
@@ -1064,7 +1064,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		case 2: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockDust" +mNameInternal); break;
 		case 3: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal); break;
 		case 4: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockIngot"+mNameInternal); break;
-		case 5: OreDictManager.INSTANCE.addReRegistrationWithReversal("block"+mNameInternal, "blockGem"  +mNameInternal); break;
+		case 5: break;
 		}
 		mPriorityPrefix = aPrefix;
 		return this;

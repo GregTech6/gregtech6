@@ -319,6 +319,14 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Soularium              , ST.make(MD.EIO, "itemAlloy", 1, 7));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.PulsatingIron          , ST.make(MD.EIO, "itemMaterial", 1, 3));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.VibrantAlloy           , ST.make(MD.EIO, "itemMaterial", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.ElectricalSteel        , ST.make(MD.EIO, "blockIngotStorage", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.EnergeticAlloy         , ST.make(MD.EIO, "blockIngotStorage", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.VibrantAlloy           , ST.make(MD.EIO, "blockIngotStorage", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.RedstoneAlloy          , ST.make(MD.EIO, "blockIngotStorage", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.ConductiveIron         , ST.make(MD.EIO, "blockIngotStorage", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.PulsatingIron          , ST.make(MD.EIO, "blockIngotStorage", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.ObsidianSteel          , ST.make(MD.EIO, "blockIngotStorage", 1, 6));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Soularium              , ST.make(MD.EIO, "blockIngotStorage", 1, 7));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.ObsidianSteel          , ST.make(MD.TG, "TechgunsAmmo", 1, 40));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.ObsidianSteel          , ST.make(MD.TG, "TechgunsAmmo", 1, 65));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.C                      , ST.make(MD.TG, "TechgunsAmmo", 1, 62));

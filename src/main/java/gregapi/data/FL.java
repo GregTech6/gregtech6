@@ -39,6 +39,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public enum FL {
 	  Error                     ("error")
 	, UUM                       ("ic2uumatter"                                              , SIMPLE, LIQUID)
+	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID)
 	
 	, Air                       ("air"                                                      , SIMPLE, GAS, AIR)
 	, Air_Nether                ("netherair"                                                , SIMPLE, GAS, AIR)

@@ -281,6 +281,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockSignalum"           , "blockIngotSignalum");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockLumium"             , "blockIngotLumium");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockEnderium"           , "blockIngotEnderium");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockDarkSteel"          , "blockIngotDarkSteel");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockDarkIron"           , "blockIngotDarkIron");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockFzDarkIron"         , "blockIngotDarkIron");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockAluminum"           , "blockIngotAluminium");
