@@ -83,15 +83,7 @@ import gregtech.tileentity.misc.MultiTileEntityFluidSpring;
 import gregtech.tileentity.misc.MultiTileEntityGregOLantern;
 import gregtech.tileentity.misc.MultiTileEntityRock;
 import gregtech.tileentity.misc.MultiTileEntityStick;
-import gregtech.tileentity.multiblocks.MultiTileEntityBedrockDrill;
-import gregtech.tileentity.multiblocks.MultiTileEntityCentrifuge;
-import gregtech.tileentity.multiblocks.MultiTileEntityCokeOven;
-import gregtech.tileentity.multiblocks.MultiTileEntityDistillationTower;
-import gregtech.tileentity.multiblocks.MultiTileEntityLargeBoiler;
-import gregtech.tileentity.multiblocks.MultiTileEntityLargeDynamo;
-import gregtech.tileentity.multiblocks.MultiTileEntityLargeTurbineSteam;
-import gregtech.tileentity.multiblocks.MultiTileEntityTank3x3x3Metal;
-import gregtech.tileentity.multiblocks.MultiTileEntityTank3x3x3Wood;
+import gregtech.tileentity.multiblocks.*;
 import gregtech.tileentity.panels.MultiTileEntityPanelAsphalt;
 import gregtech.tileentity.panels.MultiTileEntityPanelCFoam;
 import gregtech.tileentity.panels.MultiTileEntityPanelConcrete;
@@ -907,6 +899,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.Ad;                   aRegistry.add("Dense Adamantium Wall"                               , "Multiblock Machines", 18025, 17101, aClass                                   , aMat.mToolQuality, 64, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 100.0F, NBT_RESISTANCE, 100.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "metalwalldense"          , NBT_DESIGNS, 3), "wPP", "hPP"       , 'P', OP.plateDense.dat(aMat));
 		
 		aMat = MT.AnnealedCopper;       aRegistry.add("Large Copper Coil"                                   , "Multiblock Machines", 18040, 17101, aClass                                   , aMat.mToolQuality, 64, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   6.0F, NBT_RESISTANCE,   6.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "coil"                    , NBT_DESIGNS, 1), "WWW", "WxW", "WWW", 'W', OP.wireGt04.dat(aMat));
+		aMat = MT.NiobiumTitanium;      aRegistry.add("Large Niobium-Titanium Coil"                         , "Multiblock Machines", 18041, 17101, aClass                                   , aMat.mToolQuality, 64, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   6.0F, NBT_RESISTANCE,   6.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "coil"                    , NBT_DESIGNS, 1), "WWW", "WxW", "WWW", 'W', OP.wireGt04.dat(aMat));
 		
 		aMat = MT.TungstenSteel;        aRegistry.add("Centrifuge Part"                                     , "Multiblock Machines", 18100, 17101, aClass                                   , aMat.mToolQuality, 64, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  12.5F, NBT_RESISTANCE,  12.5F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "centrifugeparts"         , NBT_DESIGNS, 8), "TwT", "GMG", "TdT", 'M', OP.casingMachine.dat(aMat), 'G', OP.gearGt.dat(aMat), 'T', OP.screw.dat(aMat));
 		aMat = MT.Invar;                aRegistry.add("Heat Acceptor"                                       , "Multiblock Machines", 18101, 17101, aClass                                   , aMat.mToolQuality, 64, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "heatacceptor"            , NBT_DESIGNS, 0), "MPM", "hRw", "MPM", 'M', OP.plate.dat(aMat), 'P', OP.plateTriple.dat(ANY.Cu), 'R', OP.stickLong.dat(ANY.Cu));
@@ -947,6 +940,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.TungstenSteel;        aRegistry.add("Tungstensteel Dynamo Main Housing"                   , "Multiblock Machines", 17223, 17101, MultiTileEntityLargeDynamo.class         , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  12.5F, NBT_RESISTANCE,  12.5F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "largedynamo"             , NBT_DESIGN, 18023, NBT_INPUT, 16384, NBT_OUTPUT, 12288, NBT_WASTE_ENERGY, T, NBT_ENERGY_ACCEPTED, TD.Energy.RU, NBT_ENERGY_EMITTED, TD.Energy.EU), "SwS", "CMC", "SBS", 'M', aRegistry.getItem(18023), 'S', OP.stickLong.dat(aMat), 'C', OD_CIRCUITS[6], 'B', "gt:re-battery1");
 		aMat = MT.Ad;                   aRegistry.add("Adamantium Dynamo Main Housing"                      , "Multiblock Machines", 17224, 17101, MultiTileEntityLargeDynamo.class         , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 100.0F, NBT_RESISTANCE, 100.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "largedynamo"             , NBT_DESIGN, 18025, NBT_INPUT,131072, NBT_OUTPUT, 98304, NBT_WASTE_ENERGY, T, NBT_ENERGY_ACCEPTED, TD.Energy.RU, NBT_ENERGY_EMITTED, TD.Energy.EU), "SwS", "CMC", "SBS", 'M', aRegistry.getItem(18025), 'S', OP.stickLong.dat(aMat), 'C', OD_CIRCUITS[6], 'B', "gt:re-battery1");
 		
+		aMat = ANY.W;                   aRegistry.add("Lightning Rod Output"                                , "Multiblock Machines", 17998, 17101, MultiTileEntityLightningRod.class        , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "lightningrod"            , NBT_ENERGY_EMITTED, TD.Energy.EU, NBT_CAPACITY, 18000 * VREC[6]), "CWC", "PMP", "CWC", 'M', OP.casingMachine.dat(aMat), 'W', OP.wireGt16.dat(MT.NiobiumTitanium), 'P', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6]);
 		aMat = MT.Ti;                   aRegistry.add("Bedrock Mining Drill Controller"                     , "Multiblock Machines", 17999, 17101, MultiTileEntityBedrockDrill.class        , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   9.0F, NBT_RESISTANCE,   9.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "bedrockdrill"            , NBT_RECIPEMAP, RM.BedrockOreList, NBT_ENERGY_ACCEPTED, TD.Energy.RU), "PYP", "CMC", "GIG", 'M', OP.casingMachineDense.dat(aMat), 'G', OP.gearGt.dat(MT.TungstenSteel), 'I', OP.toolHeadDrill.dat(MT.TungstenSteel), 'P', IL.Processor_Crystal_Ruby, 'Y', IL.CONVEYERS[5], 'C', OD_CIRCUITS[6]);
 	}
 	
