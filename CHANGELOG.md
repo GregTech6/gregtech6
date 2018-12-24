@@ -25,11 +25,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.16: (Not released yet)
+6.09.16: (Not released yet, gonna be on Thursday 2019)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.15: (Not released yet)
+6.09.15:
+[NOTE] Merry Gregmas! :D
 [FIXED] A few tiny things I stumbled upon while trying to work on the minor parts of my TODO List, just to finally get rid of those tasks. XD
 [CHANGED] The Calculations for Biomass Production in the Fermenter got tweaked a little bit, so that every Recipe uses a Stacksize of 1, rather than some arbitrary Numbers that pop up because of uneven division. Also Golden Carrot Juice and Golden Apple Juices have a much higher Multiplier now.
 [ADDED]

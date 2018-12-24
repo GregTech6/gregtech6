@@ -78,7 +78,7 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 4, j, 18004, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 		}
 		
-		while (ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, 5+mSize, 0, 18104, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) mSize++;
+		if (tSuccess) while (ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, 5+mSize, 0, 18104, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) mSize++;
 		return tSuccess;
 	}
 	
@@ -88,7 +88,7 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 		LH.add("gt.tooltip.multiblock.lightningrod.3", "Then: Full 3x3 of Tungsten Walls");
 		LH.add("gt.tooltip.multiblock.lightningrod.4", "Then: Full 3x3 of Large Niobium-Titanium Coils");
 		LH.add("gt.tooltip.multiblock.lightningrod.5", "Top: 3x3 of Tungsten Walls");
-		LH.add("gt.tooltip.multiblock.lightningrod.6", "Above: 1x1 Pillar of simple Lightning Rod Blocks");
+		LH.add("gt.tooltip.multiblock.lightningrod.6", "Centered Above: 1x1 Pillar of simple Lightning Rod Blocks");
 		LH.add("gt.tooltip.multiblock.lightningrod.7", "The Tip of the Rod has to be at Y = 100 or above");
 		LH.add("gt.tooltip.multiblock.lightningrod.8", "Optimum Efficiency at a Rod Length of 100m");
 		LH.add("gt.tooltip.multiblock.lightningrod.9", "Reduced Efficiency if too close to another Lightning Rod (256m)");
