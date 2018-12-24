@@ -104,10 +104,10 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.5"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.6"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.7"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.8"));
+		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.lightningrod.8"));
 		aList.add(Chat.ORANGE   + LH.get("gt.tooltip.multiblock.lightningrod.9"));
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + VREC[6] + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.WHITE + "/p (up to 16 Amps)");
-		aList.add(Chat.WHITE    + mCapacity + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.GRAY + " per Lightning Strike");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + VREC[6] + " " + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.WHITE + "/p (up to 16 Amps)");
+		aList.add(Chat.WHITE    + mCapacity + " " + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.GRAY + " per Lightning Strike");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

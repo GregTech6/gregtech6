@@ -32,6 +32,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.09.15: (Not released yet)
 [FIXED] A few tiny things I stumbled upon while trying to work on the minor parts of my TODO List, just to finally get rid of those tasks. XD
 [CHANGED] The Calculations for Biomass Production in the Fermenter got tweaked a little bit, so that every Recipe uses a Stacksize of 1, rather than some arbitrary Numbers that pop up because of uneven division. Also Golden Carrot Juice and Golden Apple Juices have a much higher Multiplier now.
+[ADDED]
+Lightning Rod Multiblock
+A 3x3x5 Base and up to 100 Blocks worth of Rod Blocks (I did not want to enforce usage of Bedrock to Build Limit, so 100 is Max Efficiency)
+Emitting almost 600 Million EU per Lightning Strike at LuV (32768 EU/t) with 1 to 16 Amps (yes that means it's never 0 Amps even if the Power goes nowhere, therefore wasting 32768 EU/t if you don't use the Power)
+Working during Thunderstorms or Rain (at 10% in that case), without caring about the Biome it is in (so Deserts work too, even if it technically doesn't rain there, those Sandstorms can pick up quite some Charge).
+Spamming these Rods is not a good Idea as it reduces their Efficiency if there is more than one Rod in a 512x512 Area centered around the Rod.
+The Tip of the Rod has to be at Y >= 100 in order to work, so you always have to be touching the Sky in some way, also only Air Blocks allowed above it, so it cant be fully encased.
+But you only need one Rod Block to make it work if you are up high enough (though that's a 1% per Rod Block Chance in that case), useful if you don't have that many Rod Blocks at the Beginning.
+While the Rod is still containing Power, it will not let more Lightning Strikes happen to itself, as it is still charged.
 
 
 6.09.14:
