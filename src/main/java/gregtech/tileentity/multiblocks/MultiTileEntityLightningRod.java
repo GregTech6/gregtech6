@@ -120,7 +120,8 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
-			if (checkStructure(F)) {
+			// Required to use force sometimes, because of variable Rod Size, and newly placed Rod Blocks don't cause Multiblock Updates due to Lag.
+			if (checkStructure(mSize < 100 && aTimer % 1200 == 300 && (worldObj.isRaining() || worldObj.isThundering()))) {
 				if (mEnergy >= VREC[6]) {
 					mEnergy -= Math.max(1, ITileEntityEnergy.Util.emitEnergyToSide(mEnergyTypeEmitted, SIDE_BOTTOM, VREC[6], 16, this)) * VREC[6];
 				} else {
