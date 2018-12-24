@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Collection;
 import java.util.List;
 
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -35,6 +36,8 @@ import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
 import gregapi.util.UT;
+import gregapi.util.WD;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -45,6 +48,8 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 	public long mEnergy = 0, mCapacity = 0;
 	public byte mSize = 0;
 	public TagData mEnergyTypeEmitted = TD.Energy.EU;
+	
+	public static List<MultiTileEntityLightningRod> ALL_LIGHTNING_RODS = new ArrayListNoNulls<>();
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -73,8 +78,7 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 4, j, 18004, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 		}
 		
-		// TODO: Specify Proper Rod
-		for (int i = 0; i < 100; i++) if (ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, 5+i, 0, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) mSize++; else break;
+		while (ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, 5+mSize, 0, 18104, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) mSize++;
 		return tSuccess;
 	}
 	
@@ -84,9 +88,10 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 		LH.add("gt.tooltip.multiblock.lightningrod.3", "Then: Full 3x3 of Tungsten Walls");
 		LH.add("gt.tooltip.multiblock.lightningrod.4", "Then: Full 3x3 of Large Niobium-Titanium Coils");
 		LH.add("gt.tooltip.multiblock.lightningrod.5", "Top: 3x3 of Tungsten Walls");
-		LH.add("gt.tooltip.multiblock.lightningrod.6", "Requires an actual Rod made of Metal ontop"); // TODO specify Rod Material.
-		LH.add("gt.tooltip.multiblock.lightningrod.7", "Optimum Efficiency at a Rod Length of 100 Meters");
-		LH.add("gt.tooltip.multiblock.lightningrod.8", "Reduced Efficiency if too close to another Lightning Rod");
+		LH.add("gt.tooltip.multiblock.lightningrod.6", "Above: 1x1 Pillar of simple Lightning Rod Blocks");
+		LH.add("gt.tooltip.multiblock.lightningrod.7", "The Tip of the Rod has to be at Y = 100 or above");
+		LH.add("gt.tooltip.multiblock.lightningrod.8", "Optimum Efficiency at a Rod Length of 100m");
+		LH.add("gt.tooltip.multiblock.lightningrod.9", "Reduced Efficiency if too close to another Lightning Rod (256m)");
 	}
 	
 	@Override
@@ -99,15 +104,16 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.5"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.6"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.7"));
-		aList.add(Chat.ORANGE   + LH.get("gt.tooltip.multiblock.lightningrod.8"));
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + VREC[6] + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.WHITE + "/t");
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.8"));
+		aList.add(Chat.ORANGE   + LH.get("gt.tooltip.multiblock.lightningrod.9"));
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + VREC[6] + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.WHITE + "/p (up to 16 Amps)");
 		aList.add(Chat.WHITE    + mCapacity + mEnergyTypeEmitted.getChatFormat() + mEnergyTypeEmitted.getLocalisedNameShort() + Chat.GRAY + " per Lightning Strike");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
 	@Override
 	public boolean isInsideStructure(int aX, int aY, int aZ) {
-		return aX >= xCoord - 1 && aY < yCoord + 5 && aZ >= zCoord - 1 && aX <= xCoord + 1 && aY >= yCoord && aZ <= zCoord + 1;
+		return aY >= yCoord && aX >= xCoord - 1 && aZ >= zCoord - 1 && aX <= xCoord + 1 && aZ <= zCoord + 1 && (aY < yCoord + 5 || (aX == xCoord && aZ == zCoord && aY <= yCoord + mSize + 4));
 	}
 	
 	@Override
@@ -119,16 +125,52 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 					mEnergy -= Math.max(1, ITileEntityEnergy.Util.emitEnergyToSide(mEnergyTypeEmitted, SIDE_BOTTOM, VREC[6], 16, this)) * VREC[6];
 				} else {
 					mEnergy = 0;
-					
-					// TODO: Lightning Strike Logic
-					if (T) {
-						mEnergy = mCapacity;
+					if (mSize > 0 && yCoord + mSize >= 100 && rng(1000000) < Math.min(100, mSize) && (worldObj.isThundering() || (worldObj.isRaining() && rng(10) == 0))) {
+						int tCount = 1;
+						for (MultiTileEntityLightningRod tLightningRod : ALL_LIGHTNING_RODS) if (tLightningRod != this && tLightningRod.mSize > 0 && tLightningRod.getWorld() == worldObj && Math.abs(tLightningRod.xCoord - xCoord) < 256 && Math.abs(tLightningRod.zCoord - zCoord) < 256) tCount++;
+						if (rng(tCount) == 0) {
+							boolean temp = T;
+							for (int i = yCoord + mSize + 5, j = worldObj.getHeight(); i < j; i++) {
+								if (!WD.air(worldObj, xCoord, i, zCoord)) {
+									temp = F;
+									break;
+								}
+							}
+							if (temp) {
+								worldObj.addWeatherEffect(new EntityLightningBolt(worldObj, xCoord, yCoord+mSize+4, zCoord));
+								mEnergy = mCapacity;
+							}
+						}
 					}
 				}
 			} else {
 				mEnergy = 0;
 			}
 		}
+	}
+	
+	@Override
+	public void onTickFirst2(boolean aIsServerSide) {
+		super.onTickFirst2(aIsServerSide);
+		if (aIsServerSide && !ALL_LIGHTNING_RODS.contains(this)) ALL_LIGHTNING_RODS.add(this);
+	}
+	
+	@Override
+	public void validate() {
+		super.validate();
+		if (isServerSide() && !ALL_LIGHTNING_RODS.contains(this)) ALL_LIGHTNING_RODS.add(this);
+	}
+	
+	@Override
+	public void invalidate() {
+		if (isServerSide()) ALL_LIGHTNING_RODS.remove(this);
+		super.invalidate();
+	}
+	
+	@Override
+	public void onChunkUnload() {
+		if (isServerSide()) ALL_LIGHTNING_RODS.remove(this);
+		super.onChunkUnload();
 	}
 	
 	@Override public byte getDefaultSide() {return SIDE_BOTTOM;}

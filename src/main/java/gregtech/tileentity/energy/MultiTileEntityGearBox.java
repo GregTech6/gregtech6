@@ -280,7 +280,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			UT.Sounds.send(SFX.MC_BREAK, this);
 			byte tCount = FACE_CONNECTION_COUNT[mAxleGear & 63];
 			if (tCount > 0) {
-				ST.drop(getWorld(), getCoords(), OP.scrapGt.mat(mMaterial, 9+getRandomNumber(27)));
+				ST.drop(getWorld(), getCoords(), OP.scrapGt.mat(mMaterial, 9+rng(27)));
 				if (tCount > 1)
 				ST.drop(getWorld(), getCoords(), OP.gearGt.mat(mMaterial, tCount-1));
 			}
