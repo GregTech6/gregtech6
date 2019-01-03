@@ -131,49 +131,71 @@ public abstract class ToolStats implements IToolStats {
 		return 0;
 	}
 	
-	public void harvestGrass(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
+	public boolean harvestGrass(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
 		if (aBlock == Blocks.tallgrass) {
 			switch(aMetaData) {
-			case 0: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return;
-			case 1: case 2: aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune))); return;
+			case 1: case 2: aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune))); return T;
 			}
-			return;
+			return F;
 		}
 		if (aBlock == Blocks.double_plant) {
 			switch(aMetaData & 7) {
-			case 2: case 3: aDrops.add(IL.Grass.get(2+RNGSUS.nextInt(1+aFortune)+RNGSUS.nextInt(1+aFortune))); return;
+			case 2: case 3: aDrops.add(IL.Grass.get(2+RNGSUS.nextInt(1+aFortune)+RNGSUS.nextInt(1+aFortune))); return T;
 			}
-			return;
+			return F;
 		}
 		if (IL.TF_Tall_Grass.equal(aBlock)) {
 			switch(aMetaData) {
-			case 10: aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune))); return;
-			case 11: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return;
+			case 10: aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune))); return T;
 			}
-			return;
+			return F;
 		}
 		if (IL.AETHER_Tall_Grass.equal(aBlock)) {
 			aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune)));
-			return;
-		}
-		if (aBlock == Blocks.deadbush) {
-			aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0));
-			return;
+			return T;
 		}
 		if (MD.BoP.mLoaded) {
 			if (aBlock == ST.block(MD.BoP, "foliage")) {
 				switch(aMetaData) {
-				case  1: if (RNGSUS.nextInt(4) <= aFortune) aDrops.add(IL.Grass.get(1)); return;
-				case  2: if (RNGSUS.nextInt(2) <= aFortune) aDrops.add(IL.Grass.get(1)); return;
-				case  4: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return;
-				case  8: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return;
-				case  9: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return;
-				case 10: aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune))); return;
-				case 11: aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune))); return;
+				case  1: if (RNGSUS.nextInt(4) <= aFortune) aDrops.add(IL.Grass.get(1)); return T;
+				case  2: if (RNGSUS.nextInt(2) <= aFortune) aDrops.add(IL.Grass.get(1)); return T;
+				case 10: aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune))); return T;
+				case 11: aDrops.add(IL.Grass.get(1+RNGSUS.nextInt(1+aFortune))); return T;
 				}
-				return;
+				return F;
 			}
 		}
+		return F;
+	}
+	
+	public boolean harvestStick(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
+		if (aBlock == Blocks.tallgrass) {
+			switch(aMetaData) {
+			case 0: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
+			}
+			return F;
+		}
+		if (IL.TF_Tall_Grass.equal(aBlock)) {
+			switch(aMetaData) {
+			case 11: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
+			}
+			return F;
+		}
+		if (aBlock == Blocks.deadbush) {
+			aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0));
+			return T;
+		}
+		if (MD.BoP.mLoaded) {
+			if (aBlock == ST.block(MD.BoP, "foliage")) {
+				switch(aMetaData) {
+				case  4: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
+				case  8: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
+				case  9: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
+				}
+				return F;
+			}
+		}
+		return F;
 	}
 	
 	private long mMaterialAmount = 0;

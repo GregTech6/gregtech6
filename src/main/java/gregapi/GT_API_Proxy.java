@@ -581,6 +581,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Could you tell Bear989Sr very gently, that his Inventory is a fucking mess again?"));
 								} else if ("Shadowkn1ght18".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Here is your special Message to make you tell Bear989Sr to clean his Inventory."));
+								} else if ("e99999".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
+									UT.Entities.chat(tPlayer, new ChatComponentText(LH.Chat.DGRAY + "You get the sneaking suspicion that Bears Inventory may or may not be full right now."));
 								} else {
 									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " There is this fella called Bear-Nine-Eight-Nine, needing be reminded of his Inventory being a major Pine."));
 								}

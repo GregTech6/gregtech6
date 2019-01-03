@@ -87,7 +87,7 @@ public class CoverRobotArm extends AbstractCoverAttachment {
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
-		aList.add(LH.Chat.CYAN + "Transfers a Stack every " + (mTiming==1?"Tick":mTiming+" Ticks"));
+		aList.add(LH.Chat.CYAN + "Transfers a Stack every " + (mTiming==1?"Tick into a specific Slot":mTiming+" Ticks into a specific Slot"));
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_MONKEY_WRENCH));
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 	}

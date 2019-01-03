@@ -108,6 +108,7 @@ public class GT_Tool_Axe extends ToolStats {
 			} catch(Throwable e) {/**/}
 			LOCK = T;
 		}
+		harvestStick(aDrops, aStack, aPlayer, aBlock, aAvailableDurability, aX, aY, aZ, aMeta, aFortune, aSilkTouch, aEvent);
 		return rAmount;
 	}
 	

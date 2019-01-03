@@ -94,93 +94,91 @@ public class EntityFoodTracker implements IExtendedEntityProperties {
 	}
 	
 	public static void tick() {
-		for (int i = 0; i < TICK_LIST.size(); i++) {
+		if (SERVER_TIME % 50 == 0) for (int i = 0; i < TICK_LIST.size(); i++) {
 			EntityFoodTracker tTracker = TICK_LIST.get(i);
 			if (tTracker.mEntity.isDead) {TICK_LIST.remove(i--); continue;}
 			
-			if (SERVER_TIME % 50 == 0) {
-				if (tTracker.mAlcohol >= 100) {
-					if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
-					tTracker.mEntity.attackEntityFrom(DamageSources.getAlcoholDamage(), FOOD_OVERDOSE_DEATH?2:1);
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 2));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 3));
-				} else if (tTracker.mAlcohol >= 75) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 1));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 2));
-				} else if (tTracker.mAlcohol >= 50) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 0));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 1));
-				} else if (tTracker.mAlcohol >= 25) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 0));
-				}
-				
-				if (tTracker.mCaffeine >= 100) {
-					if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
-					tTracker.mEntity.attackEntityFrom(DamageSources.getCaffeineDamage(), FOOD_OVERDOSE_DEATH?2:1);
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 2));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 3));
-				} else if (tTracker.mCaffeine >= 75) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 1));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 2));
-				} else if (tTracker.mCaffeine >= 50) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 0));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 1));
-				} else if (tTracker.mCaffeine >= 25) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 0));
-				}
-				
-				if (tTracker.mFat >= 100) {
-					if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
-					tTracker.mEntity.attackEntityFrom(DamageSources.getFatDamage(), FOOD_OVERDOSE_DEATH?2:1);
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 2));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 3));
-				} else if (tTracker.mFat >= 75) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 1));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 2));
-				} else if (tTracker.mFat >= 50) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 0));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 1));
-				} else if (tTracker.mFat >= 25) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 0));
-				}
-				
-				if (tTracker.mSugar >= 100) {
-					if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
-					tTracker.mEntity.attackEntityFrom(DamageSources.getSugarDamage(), FOOD_OVERDOSE_DEATH?2:1);
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 2));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 3));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 3));
-				} else if (tTracker.mSugar >= 75) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 1));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 2));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 2));
-				} else if (tTracker.mSugar >= 50) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 0));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 1));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 1));
-				} else if (tTracker.mSugar >= 25) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 0));
-					tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 0));
-				}
-				
-				if (tTracker.mDehydration >= 100) {
-					if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
-					tTracker.mEntity.attackEntityFrom(DamageSources.getDehydrationDamage(), FOOD_OVERDOSE_DEATH?2:1);
-					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 3));
-				} else if (tTracker.mDehydration >= 75) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 2));
-				} else if (tTracker.mDehydration >= 50) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 1));
-				} else if (tTracker.mDehydration >= 25) {
-					tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 0));
-				}
-				
-				if (tTracker.mAlcohol       > 0) tTracker.mAlcohol--;
-				if (tTracker.mCaffeine      > 0) tTracker.mCaffeine--;
-				if (tTracker.mDehydration   > 0) tTracker.mDehydration--;
-				if (tTracker.mSugar         > 0) tTracker.mSugar--;
-				if (tTracker.mFat           > 0) tTracker.mFat--;
+			if (tTracker.mAlcohol >= 100) {
+				if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
+				tTracker.mEntity.attackEntityFrom(DamageSources.getAlcoholDamage(), FOOD_OVERDOSE_DEATH?2:1);
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 2));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 3));
+			} else if (tTracker.mAlcohol >= 75) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 1));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 2));
+			} else if (tTracker.mAlcohol >= 50) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.confusion.id, 1200, 0));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 1));
+			} else if (tTracker.mAlcohol >= 25) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 300, 0));
 			}
+			
+			if (tTracker.mCaffeine >= 100) {
+				if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
+				tTracker.mEntity.attackEntityFrom(DamageSources.getCaffeineDamage(), FOOD_OVERDOSE_DEATH?2:1);
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 2));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 3));
+			} else if (tTracker.mCaffeine >= 75) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 1));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 2));
+			} else if (tTracker.mCaffeine >= 50) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 0));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 1));
+			} else if (tTracker.mCaffeine >= 25) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 300, 0));
+			}
+			
+			if (tTracker.mFat >= 100) {
+				if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
+				tTracker.mEntity.attackEntityFrom(DamageSources.getFatDamage(), FOOD_OVERDOSE_DEATH?2:1);
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 2));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 3));
+			} else if (tTracker.mFat >= 75) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 1));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 2));
+			} else if (tTracker.mFat >= 50) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1200, 0));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 1));
+			} else if (tTracker.mFat >= 25) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.resistance.id, 300, 0));
+			}
+			
+			if (tTracker.mSugar >= 100) {
+				if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
+				tTracker.mEntity.attackEntityFrom(DamageSources.getSugarDamage(), FOOD_OVERDOSE_DEATH?2:1);
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 2));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 3));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 3));
+			} else if (tTracker.mSugar >= 75) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 1));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 2));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 2));
+			} else if (tTracker.mSugar >= 50) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1200, 0));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 1));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 1));
+			} else if (tTracker.mSugar >= 25) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 300, 0));
+				tTracker.mEntity.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 0));
+			}
+			
+			if (tTracker.mDehydration >= 100) {
+				if (FOOD_OVERDOSE_DEATH || tTracker.mEntity.getHealth() >= 2)
+				tTracker.mEntity.attackEntityFrom(DamageSources.getDehydrationDamage(), FOOD_OVERDOSE_DEATH?2:1);
+				tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 3));
+			} else if (tTracker.mDehydration >= 75) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 2));
+			} else if (tTracker.mDehydration >= 50) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 1));
+			} else if (tTracker.mDehydration >= 25) {
+				tTracker.mEntity.addPotionEffect(new PotionEffect(PotionsGT.ID_DEHYDRATION >= 0 ? PotionsGT.ID_DEHYDRATION : Potion.hunger.id, 1200, 0));
+			}
+			
+			if (tTracker.mAlcohol       > 0) tTracker.mAlcohol--;
+			if (tTracker.mCaffeine      > 0) tTracker.mCaffeine--;
+			if (tTracker.mDehydration   > 0) tTracker.mDehydration--;
+			if (tTracker.mSugar         > 0) tTracker.mSugar--;
+			if (tTracker.mFat           > 0) tTracker.mFat--;
 		}
 	}
 	
