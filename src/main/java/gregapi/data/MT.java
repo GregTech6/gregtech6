@@ -118,8 +118,8 @@ public class MT {
 	static OreDictMaterial dustdcmp     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return dust            (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(DECOMPOSABLE);}
 	static OreDictMaterial dustcent     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return dustdcmp        (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial dustelec     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return dustdcmp        (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(ELECTROLYSER);}
-	static OreDictMaterial glowstone    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return oredustcent     (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(PLATES, STICKS, MORTAR, BRITTLE, UNBURNABLE, MELTING, CRYSTAL, GLOWING, LIGHTING).setPriorityPrefix(2).addReRegistrations(ANY.Glowstone);}
-	static OreDictMaterial redstone     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return oredustcent     (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(PLATES, STICKS, MORTAR, BRITTLE, UNBURNABLE, MELTING, CRYSTAL, G_GEM_ORES_TRANSPARENT).setPriorityPrefix(2);}
+	static OreDictMaterial glowstone    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return oredustcent     (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(PLATES, STICKS, MORTAR, BRITTLE, UNBURNABLE, MELTING, CRYSTAL, GLOWING, LIGHTING).setPriorityPrefix(2).addReRegistrations(ANY.Glowstone).setOreMultiplier(4);}
+	static OreDictMaterial redstone     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return oredustcent     (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(PLATES, STICKS, MORTAR, BRITTLE, UNBURNABLE, MELTING, CRYSTAL, G_GEM_ORES_TRANSPARENT).setPriorityPrefix(2).setOreMultiplier(4);}
 	static OreDictMaterial coal         (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return elec            (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(G_GEM_ORES, BRITTLE, FLAMMABLE, MORTAR).setPriorityPrefix(1);}
 	static OreDictMaterial wax          (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return dust            (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(FOILS, PLATES, INGOTS, PARTS, FURNACE, MELTING, BRITTLE, MORTAR, EXTRUDER, EXTRUDER_SIMPLE).addReRegistrations(ANY.Wax);}
 	static OreDictMaterial meat         (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return dustfood        (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(MEAT, INGOTS, MELTING, EXTRUDER, EXTRUDER_SIMPLE);}
@@ -140,7 +140,7 @@ public class MT {
 	static OreDictMaterial stonecent    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return stonedcmp       (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial stoneelec    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return stonedcmp       (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(ELECTROLYSER);}
 	static OreDictMaterial crystal      (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return create          (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(G_GEM_ORES_TRANSPARENT, CRYSTAL).setPriorityPrefix(1);}
-	static OreDictMaterial crystal_tc   (int aID, String aNameOreDict, long aR, long aG, long aB, long aA, byte aColor           )  {return crystal         (aID, aNameOreDict, SET_SHARDS, aR, aG, aB, aA).lens(aColor).put(MAGICAL, UNBURNABLE, MD.TC).addReRegistrations(ANY.ThaumCrystal).visDefault();}
+	static OreDictMaterial crystal_tc   (int aID, String aNameOreDict, long aR, long aG, long aB, long aA, byte aColor           )  {return crystal         (aID, aNameOreDict, SET_SHARDS, aR, aG, aB, aA).lens(aColor).put(MAGICAL, UNBURNABLE, MD.TC).addReRegistrations(ANY.ThaumCrystal).setOreMultiplier(2).visDefault();}
 	static OreDictMaterial crystaldcmp  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystal         (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(DECOMPOSABLE);}
 	static OreDictMaterial crystalcent  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial crystalelec  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets, aR, aG, aB, aA).put(ELECTROLYSER);}
@@ -724,7 +724,7 @@ public class MT {
 	NH3                     = gasaciddcmp   ( 8025, "Ammonia"               , SET_GAS               , 114, 223, 232, 255).put(GASSES)                                                                                                                                   .uumMcfg( 0, N              , 1*U, H                , 3*U)                                                                                                  .heat( 195,  239),
 	
 	
-	Sugar                   = dustdcmp      ( 9703, "Sugar"                 , SET_CUBE              , 250, 250, 250, 255).put(FURNACE, MELTING, BRITTLE, MORTAR, FOOD)                                                                                                  .uumMcfg( 0, C              ,12*U, H                ,22*U, O                ,11*U)                                                                          .aspects(TC.HERBA, 1, TC.AQUA, 1, TC.AER, 1).heat(459),
+	Sugar                   = dustdcmp      ( 9703, "Sugar"                 , SET_CUBE              , 250, 250, 250, 255).put(FURNACE, MELTING, FLAMMABLE, BRITTLE, MORTAR, FOOD)                                                                                       .uumMcfg( 0, C              ,12*U, H                ,22*U, O                ,11*U)                                                                          .aspects(TC.HERBA, 1, TC.AQUA, 1, TC.AER, 1).heat(459),
 	IodineSalt              = oredustelec   ( 8242, "Iodine Salt"           , SET_CUBE              , 240, 200, 240, 255).put(BRITTLE, MORTAR)                                                                                                                          .uumMcfg( 0, K              , 1*U, I                , 1*U, O                , 3*U)                                                                          .aspects(TC.TEMPESTAS, 1).heat(300, 370), KIO3 = IodineSalt,
 	SilverIodide            = oredustelec   ( 8243, "Silver Iodide"         , SET_CUBE              , 240, 200, 100, 255).put(BRITTLE, MORTAR)                                                                                                                          .uumMcfg( 0, Ag             , 1*U, I                , 1*U)                                                                                                  .aspects(TC.TEMPESTAS, 2).heat(831, 1779).setOriginalMod(MD.RoC), AgI = SilverIodide,
 	SiliconDioxide          = oredustdcmp   ( 8000, "Silicon Dioxide"       , SET_QUARTZ            , 200, 200, 200, 255).put(BRITTLE, QUARTZ, CRYSTALLISABLE, FURNACE)                                                                                                 .uumMcfg( 0, Si             , 1*U, O                , 2*U)                                                                                                  .aspects(TC.VITREUS, 2).heat(1986, 3220).setOriginalMod(MD.IC2), SiO2 = SiliconDioxide,
@@ -1436,15 +1436,6 @@ public class MT {
 			W                       .setOreMultiplier( 2).setCrushing(OREMATS.Scheelite, U);
 			Amber                   .setOreMultiplier( 2);
 			Zircon                  .setOreMultiplier( 2);
-			InfusedAir              .setOreMultiplier( 2);
-			InfusedFire             .setOreMultiplier( 2);
-			InfusedEarth            .setOreMultiplier( 2);
-			InfusedWater            .setOreMultiplier( 2);
-			InfusedEntropy          .setOreMultiplier( 2);
-			InfusedOrder            .setOreMultiplier( 2);
-			InfusedVis              .setOreMultiplier( 2);
-			InfusedDull             .setOreMultiplier( 2);
-			InfusedBalance          .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);
 			OREMATS.Cassiterite     .setOreMultiplier( 2);
 			NetherQuartz            .setOreMultiplier( 2);
@@ -1456,16 +1447,6 @@ public class MT {
 			NaNO3                   .setOreMultiplier( 3);
 			KNO3                    .setOreMultiplier( 3);
 			Apatite                 .setOreMultiplier( 4);
-			Electrotine             .setOreMultiplier( 4);
-			Nikolite                .setOreMultiplier( 4);
-			Teslatite               .setOreMultiplier( 4);
-			Redstone                .setOreMultiplier( 4);
-			Glowstone               .setOreMultiplier( 4);
-			GlowstoneCeres          .setOreMultiplier( 4);
-			GlowstoneIo             .setOreMultiplier( 4);
-			GlowstoneEnceladus      .setOreMultiplier( 4);
-			GlowstoneProteus        .setOreMultiplier( 4);
-			GlowstonePluto          .setOreMultiplier( 4);
 			Lapis                   .setOreMultiplier( 5);
 			Sodalite                .setOreMultiplier( 5);
 			Lazurite                .setOreMultiplier( 5);

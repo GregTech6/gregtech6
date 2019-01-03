@@ -25,8 +25,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.16: (Not released yet, gonna be on Thursday 2019)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.09.16: (Not released yet, gonna be in a few Hours)
+[NOTE] Sorry but OvermindDL1 talked me into playing Factorio. Guess how THAT went. XD
+[FIXED] A few tiny things.
+[ADDED] Robot Arm Covers now insert ItemStacks into specified Slots on the Recipients Side.
+[ADDED] You can now click the sides of an Anvil without a Hammer in order to "balance" the input ontop, if there is only one ItemStack.
 
 
 6.09.15:
@@ -42,6 +45,7 @@ Spamming these Rods is not a good Idea as it reduces their Efficiency if there i
 The Tip of the Rod has to be at Y >= 100 in order to work, so you always have to be touching the Sky in some way, also only Air Blocks allowed above it, so it cant be fully encased.
 But you only need one Rod Block to make it work if you are up high enough (though that's a 1% per Rod Block Chance in that case), useful if you don't have that many Rod Blocks at the Beginning.
 While the Rod is still containing Power, it will not let more Lightning Strikes happen to itself, as it is still charged.
+And no you cant just spawn Lightning using other Mods to power this thing, that would be way too OP, but you can use the Forestry Rainmaker I guess.
 
 
 6.09.14:

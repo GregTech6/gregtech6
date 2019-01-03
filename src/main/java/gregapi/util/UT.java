@@ -2371,26 +2371,26 @@ public class UT {
 		 * Moves Stack from Inv-Slot to Inv-Slot, without checking if its even allowed. (useful for internal Inventory Operations)
 		 * @return the Amount of moved Items
 		 */
-		public static byte moveStackFromSlotAToSlotB(IInventory aTileEntity1, IInventory aTileEntity2, int aGrabFrom, int aPutTo, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
-			if (aTileEntity1 == null || aTileEntity2 == null || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMaxMoveAtOnce <= 0 || aMinMoveAtOnce > aMaxMoveAtOnce) return 0;
+		public static byte moveStackFromSlotAToSlotB(IInventory aTileEntity, IInventory aTarget, int aGrabFrom, int aPutTo, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
+			if (aTileEntity == null || aTarget == null || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMaxMoveAtOnce <= 0 || aMinMoveAtOnce > aMaxMoveAtOnce || aGrabFrom < 0 || aGrabFrom >= aTileEntity.getSizeInventory() || aPutTo < 0 || aPutTo >= aTarget.getSizeInventory()) return 0;
 			
-			ItemStack tStack1 = aTileEntity1.getStackInSlot(aGrabFrom), tStack2 = aTileEntity2.getStackInSlot(aPutTo), tStack3 = null;
+			ItemStack tStack1 = aTileEntity.getStackInSlot(aGrabFrom), tStack2 = aTarget.getStackInSlot(aPutTo), tStack3 = null;
 			if (tStack1 != null) {
 				if (tStack2 != null && !ST.equal(tStack1, tStack2)) return 0;
 				tStack3 = ST.copy(tStack1);
-				aMaxTargetStackSize = (byte)Math.min(aMaxTargetStackSize, Math.min(tStack3.getMaxStackSize(), Math.min(tStack2==null?Integer.MAX_VALUE:tStack2.getMaxStackSize(), aTileEntity2.getInventoryStackLimit())));
+				aMaxTargetStackSize = (byte)Math.min(aMaxTargetStackSize, Math.min(tStack3.getMaxStackSize(), Math.min(tStack2==null?Integer.MAX_VALUE:tStack2.getMaxStackSize(), aTarget.getInventoryStackLimit())));
 				tStack3.stackSize = Math.min(tStack3.stackSize, aMaxTargetStackSize - (tStack2 == null?0:tStack2.stackSize));
 				if (tStack3.stackSize > aMaxMoveAtOnce) tStack3.stackSize = aMaxMoveAtOnce;
 				if (tStack3.stackSize + (tStack2==null?0:tStack2.stackSize) >= Math.min(tStack3.getMaxStackSize(), aMinTargetStackSize) && tStack3.stackSize >= aMinMoveAtOnce) {
-					tStack3 = aTileEntity1.decrStackSize(aGrabFrom, tStack3.stackSize);
-					aTileEntity1.markDirty();
+					tStack3 = aTileEntity.decrStackSize(aGrabFrom, tStack3.stackSize);
+					aTileEntity.markDirty();
 					if (tStack3 != null) {
 						if (tStack2 == null) {
-							aTileEntity2.setInventorySlotContents(aPutTo, ST.copy(tStack3));
-							aTileEntity2.markDirty();
+							aTarget.setInventorySlotContents(aPutTo, ST.copy(tStack3));
+							aTarget.markDirty();
 						} else {
 							tStack2.stackSize += tStack3.stackSize;
-							aTileEntity2.markDirty();
+							aTarget.markDirty();
 						}
 						return (byte)tStack3.stackSize;
 					}

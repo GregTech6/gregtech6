@@ -417,7 +417,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.PUMPS[i].set(                        addItem(12020+i, "Compact Electric Pump ("+VN[i]+")"        , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), TC.stack(TC.AQUA, 1+i), new CoverPump(250<<(2*i))));
 		IL.CONVEYERS[i].set(                    addItem(12040+i, "Compact Electric Conveyor ("+VN[i]+")"    , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), new CoverConveyor(512>>i)));
 		IL.PISTONS[i].set(                      addItem(12060+i, "Compact Electric Piston ("+VN[i]+")"      , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
-		IL.ROBOT_ARMS[i].set(                   addItem(12080+i, "Compact Robot Arm ("+VN[i]+")"            , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.HUMANUS, 1+i)));
+		IL.ROBOT_ARMS[i].set(                   addItem(12080+i, "Compact Robot Arm ("+VN[i]+")"            , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.HUMANUS, 1+i), new CoverRobotArm(512>>i)));
 		IL.FIELD_GENERATORS[i].set(             addItem(12100+i, "Compact Force Field Emitter ("+VN[i]+")"  , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.TUTAMEN, 1+i)));
 		IL.EMITTERS[i].set(                     addItem(12120+i, "Compact Signal Emitter ("+VN[i]+")"       , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.LUX, 1+i)));
 		IL.SENSORS[i].set(                      addItem(12140+i, "Compact Sensor ("+VN[i]+")"               , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.SENSUS, 1+i)));

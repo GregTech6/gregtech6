@@ -187,14 +187,43 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			if (aHitY < PX_P[4]) return T;
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			byte tSlot = (byte)((SIDES_AXIS_Z[mFacing]?aHitX:aHitZ) < 0.5 ? 0 : 1);
-			if (SIDES_TOP[aSide] && ST.valid(aStack)) {
-				if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) playClick();
-				return T;
+			if (SIDES_TOP[aSide]) {
+				if (ST.valid(aStack)) {
+					if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) playClick();
+					return T;
+				}
+				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
+					slotKill(tSlot);
+					updateInventory();
+					return T;
+				}
 			}
-			if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
-				slotKill(tSlot);
-				updateInventory();
-				return T;
+			if (slotHas(0)) {
+				if (!slotHas(1)) {
+					if (slot(0).stackSize % 2 != 0) {
+						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, slot(0)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5);
+						slot(0).stackSize--;
+						if (slotNull(0)) return T;
+					}
+					if (slot(0).stackSize > 1) {
+						slot(0).stackSize /= 2;
+						slot(1, ST.copy(slot(0)));
+						updateInventory();
+						return T;
+					}
+				}
+			} else if (slotHas(1)) {
+				if (slot(1).stackSize % 2 != 0) {
+					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, slot(1)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5);
+					slot(1).stackSize--;
+					if (slotNull(1)) return T;
+				}
+				if (slot(1).stackSize > 1) {
+					slot(1).stackSize /= 2;
+					slot(0, ST.copy(slot(1)));
+					updateInventory();
+					return T;
+				}
 			}
 			return T;
 		}
