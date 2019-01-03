@@ -81,7 +81,7 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	@Override public final ItemStack slot(int aIndex, ItemStack aStack) {return mInventory[aIndex] = aStack;}
 	@Override public final ItemStack slot(int aIndex) {return mInventory[aIndex];}
 	@Override public final ItemStack slotTake(int aIndex) {ItemStack rStack = mInventory[aIndex]; mInventory[aIndex] = null; return rStack;}
-	@Override public final boolean slotNull(int aIndex) {if (mInventory[aIndex] != null && mInventory[aIndex].stackSize < 0) return slotKill(aIndex); return F;}
+	@Override public final boolean slotNull(int aIndex) {if (mInventory[aIndex] != null && mInventory[aIndex].stackSize <= 0) return slotKill(aIndex); return F;}
 	@Override public final boolean slotKill(int aIndex) {mInventory[aIndex] = null; return T;}
 	@Override public final boolean slotHas(int aIndex) {return mInventory[aIndex] != null;}
 	@Override public final boolean invempty() {for (int i = 0; i < mInventory.length; i++) if (mInventory[i] != null) return F; return T;}

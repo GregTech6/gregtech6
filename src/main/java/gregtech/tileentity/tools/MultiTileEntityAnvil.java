@@ -200,33 +200,24 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			}
 			if (slotHas(0)) {
 				if (!slotHas(1)) {
-					if (slot(0).stackSize % 2 != 0) {
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, slot(0)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5);
-						slot(0).stackSize--;
-						if (slotNull(0)) {
-							updateInventory();
-							return T;
-						}
-					}
+					if (slot(0).stackSize % 2 != 0 && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, slot(0)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) slot(0).stackSize--;
 					if (slot(0).stackSize > 1) {
 						slot(0).stackSize /= 2;
 						slot(1, ST.copy(slot(0)));
-						updateInventory();
-						return T;
 					}
-				}
-			} else if (slotHas(1)) {
-				if (slot(1).stackSize % 2 != 0) {
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, slot(1)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5);
-					slot(1).stackSize--;
-					if (slotNull(1)) return T;
-				}
-				if (slot(1).stackSize > 1) {
-					slot(1).stackSize /= 2;
-					slot(0, ST.copy(slot(1)));
+					slotNull(0);
 					updateInventory();
 					return T;
 				}
+			} else if (slotHas(1)) {
+				if (slot(1).stackSize % 2 != 0 && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, slot(1)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) slot(1).stackSize--;
+				if (slot(1).stackSize > 1) {
+					slot(1).stackSize /= 2;
+					slot(0, ST.copy(slot(1)));
+				}
+				slotNull(1);
+				updateInventory();
+				return T;
 			}
 			return T;
 		}
