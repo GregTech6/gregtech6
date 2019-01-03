@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.16: (Not released yet, gonna be in a few Hours)
+6.09.16:
 [NOTE] Sorry but OvermindDL1 talked me into playing Factorio. Guess how THAT went. XD
 [FIXED] A few tiny things.
 [ADDED] Robot Arm Covers now insert ItemStacks into specified Slots on the Recipients Side.
