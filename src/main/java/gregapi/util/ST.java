@@ -384,7 +384,7 @@ public class ST {
 			for (int aSlotTo : aSlotsTo) {
 				ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
 				int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
-				if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) continue;
+				if (tMovable < aMinMove || tMovable + (aStackTo == null ? 0 : aStackTo.stackSize) < aMinSize) continue;
 				// Actually Moving the Stack
 				return move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
 			}
@@ -410,7 +410,7 @@ public class ST {
 			for (int aSlotTo : aSlotsTo) {
 				ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
 				int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
-				if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) continue;
+				if (tMovable < aMinMove || tMovable + (aStackTo == null ? 0 : aStackTo.stackSize) < aMinSize) continue;
 				// Actually Moving the Stack
 				rMoved += move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
 				break;
@@ -424,17 +424,23 @@ public class ST {
 	public static int moveFrom(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom) {return moveFrom(aFrom, aTo, aSlotFrom, null, F, F, 64, 1, 64, 1);}
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static int moveFrom(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
+		DEB.println("FROM: 0");
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		DEB.println("FROM: 1");
 		if (aSlotFrom >= ((IInventory)aFrom.mTileEntity).getSizeInventory()) return 0;
+		DEB.println("FROM: 2");
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, new int[] {aSlotFrom}, aTo, aIgnoreSideFrom, aMaxMove, aMinMove);
+		DEB.println("FROM: 3");
 		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
 		
 		ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
 		if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && !aFilter.contains(aStackFrom, T)) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) return 0;
+		DEB.println("FROM: 4");
 		for (int aSlotTo : aSlotsTo) {
+			DEB.println("FROM: to = " + aSlotTo);
 			ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
 			int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
-			if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) continue;
+			if (tMovable < aMinMove || tMovable + (aStackTo == null ? 0 : aStackTo.stackSize) < aMinSize) continue;
 			// Actually Moving the Stack
 			return move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
 		}
@@ -445,18 +451,23 @@ public class ST {
 	public static int moveTo(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotTo) {return moveTo(aFrom, aTo, aSlotTo, null, F, F, 64, 1, 64, 1);}
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static int moveTo(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
+		DEB.println("TO: 0");
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		DEB.println("TO: 1");
 		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aIgnoreSideFrom, aMaxMove, aMinMove);
+		DEB.println("TO: 2");
 		
 		if (aSlotTo >= ((IInventory)aTo.mTileEntity).getSizeInventory()) return 0;
+		DEB.println("TO: 3");
 		
 		for (int aSlotFrom : aSlotsFrom) {
+			DEB.println("TO: from = " + aSlotFrom);
 			ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
 			if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && !aFilter.contains(aStackFrom, T)) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) continue;
 			ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
 			int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
-			if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) continue;
+			if (tMovable < aMinMove || tMovable + (aStackTo == null ? 0 : aStackTo.stackSize) < aMinSize) continue;
 			// Actually Moving the Stack
 			return move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
 		}
@@ -475,7 +486,7 @@ public class ST {
 				if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && !aFilter.contains(aStackFrom, T)) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) return 0;
 				ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
 				int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
-				if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) return 0;
+				if (tMovable < aMinMove || tMovable + (aStackTo == null ? 0 : aStackTo.stackSize) < aMinSize) return 0;
 				// Actually Moving the Stack
 				return move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
 			}
