@@ -189,7 +189,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			byte tSlot = (byte)((SIDES_AXIS_Z[mFacing]?aHitX:aHitZ) < 0.5 ? 0 : 1);
 			if (SIDES_TOP[aSide]) {
 				if (ST.valid(aStack)) {
-					if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) playClick();
+					if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot) > 0) playClick();
 					return T;
 				}
 				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {

@@ -262,7 +262,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 			}
 			if (SIDES_TOP[aSide] && aHitX > PX_P[2] && aHitX < PX_N[2] && aHitZ > PX_P[2] && aHitZ < PX_N[2]) {
 				if (aStack != null) for (byte i = 0; i < 6; i++) {
-					if (UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, i, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) return T;
+					if (ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, i) > 0) return T;
 				}
 				if (aStack != null) for (FluidTankGT tTank : mTanksOutput) if ((tStack = UT.Fluids.fillFluidContainer(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
@@ -286,7 +286,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 					return T;
 				}
 				if (aStack != null) for (byte i = 0; i < 6; i++) {
-					if (UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, i, null, F, (byte)64, (byte)1, (byte)64, (byte)1) > 0) return T;
+					if (ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, i) > 0) return T;
 				}
 			}
 			if (!slotHas(6)) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {

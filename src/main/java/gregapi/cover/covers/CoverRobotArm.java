@@ -30,11 +30,11 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.connectors.MultiTileEntityPipeItem;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author Gregorius Techneticies
@@ -49,28 +49,32 @@ public class CoverRobotArm extends AbstractCoverAttachment {
 	}
 	
 	@Override
-	public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
-		if (aData.mTileEntity instanceof MultiTileEntityPipeItem) aData.visual(aCoverSide, (short)1);
-		super.onCoverPlaced(aCoverSide, aData, aPlayer, aCover);
+	public void onCoverPlaced(byte aSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
+		if (aData.mTileEntity instanceof MultiTileEntityPipeItem) {
+			aData.visual(aSide, (short)1);
+			aData.value(aSide, (short)-1);
+		}
+		super.onCoverPlaced(aSide, aData, aPlayer, aCover);
 	}
 	
 	@Override
 	public long onToolClick(byte aSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_monkeywrench)) {
-			aData.visual(aSide, (short)(aData.mVisuals[aSide] == 0 || aData.mTileEntity instanceof MultiTileEntityPipeItem ? 1 : 0));
+			if (aData.mTileEntity instanceof MultiTileEntityPipeItem) {
+				aData.visual(aSide, (short)1);
+				if (aData.mValues[aSide] >= 0) aData.value(aSide, (short)(-1-aData.mValues[aSide]));
+				return 1000;
+			}
+			aData.visual(aSide, (short)(aData.mVisuals[aSide] == 0 ? 1 : 0));
 			return 1000;
 		}
 		if (aTool.equals(TOOL_screwdriver)) {
-			if (aSneaking) {
-				aData.value(aSide, (short)Math.max(0, aData.mValues[aSide]-1));
-			} else {
-				aData.value(aSide, UT.Code.bindShort(aData.mValues[aSide]+1));
-			}
-			if (aChatReturn != null) aChatReturn.add("Inserts into Slot: " + aData.mValues[aSide]);
+			aData.value(aSide, (short)UT.Code.bind(Short.MIN_VALUE, aData.mTileEntity instanceof MultiTileEntityPipeItem ? -1 : Short.MAX_VALUE, aData.mValues[aSide] + (aSneaking?-1:+1)));
+			if (aChatReturn != null) aChatReturn.add(aData.mValues[aSide] < 0 ? "Takes from Slot: " + (-1-aData.mValues[aSide]) : "Puts into Slot: " + aData.mValues[aSide]);
 			return 200;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) aChatReturn.add("Inserts into Slot: " + aData.mValues[aSide]);
+			if (aChatReturn != null) aChatReturn.add(aData.mValues[aSide] < 0 ? "Takes from Slot: " + (-1-aData.mValues[aSide]) : "Puts into Slot: " + aData.mValues[aSide]);
 			return 1;
 		}
 		return 0;
@@ -79,15 +83,26 @@ public class CoverRobotArm extends AbstractCoverAttachment {
 	@Override
 	public void onTickPre(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && SERVER_TIME % mTiming == 0 && !aData.mStopped && aData.mTileEntity instanceof IInventory) {
-			DelegatorTileEntity<TileEntity> tDelegator = aData.mTileEntity.getAdjacentTileEntity(aSide);
-			UT.Inventories.moveOneItemStackIntoSlot(aData.mVisuals[aSide]==0?aData.mTileEntity:tDelegator.mTileEntity, aData.mVisuals[aSide]!=0?aData.mTileEntity:tDelegator, aData.mVisuals[aSide]==0?aSide:tDelegator.mSideOfTileEntity, aData.mValues[aSide], null, F, 64, 1, 64, 1);
+			if (aData.mValues[aSide] < 0) {
+				if (aData.mVisuals[aSide] == 0) {
+					ST.moveFrom(new DelegatorTileEntity<>(aData.mTileEntity, aSide), aData.mTileEntity.getAdjacentTileEntity(aSide), -1-aData.mValues[aSide]);
+				} else {
+					ST.moveFrom(aData.mTileEntity.getAdjacentTileEntity(aSide), new DelegatorTileEntity<>(aData.mTileEntity, aSide), -1-aData.mValues[aSide]);
+				}
+			} else {
+				if (aData.mVisuals[aSide] == 0) {
+					ST.moveTo(new DelegatorTileEntity<>(aData.mTileEntity, aSide), aData.mTileEntity.getAdjacentTileEntity(aSide), aData.mValues[aSide]);
+				} else {
+					ST.moveTo(aData.mTileEntity.getAdjacentTileEntity(aSide), new DelegatorTileEntity<>(aData.mTileEntity, aSide), aData.mValues[aSide]);
+				}
+			}
 		}
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
-		aList.add(LH.Chat.CYAN + "Transfers a Stack every " + (mTiming==1?"Tick into a specific Slot":mTiming+" Ticks into a specific Slot"));
+		aList.add(LH.Chat.CYAN + "Transfers a Stack every " + (mTiming==1?"Tick from/to a specific Slot":mTiming+" Ticks from/to a specific Slot"));
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_MONKEY_WRENCH));
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 	}

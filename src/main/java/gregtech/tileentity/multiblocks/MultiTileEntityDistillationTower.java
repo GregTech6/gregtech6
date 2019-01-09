@@ -32,6 +32,7 @@ import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockMachine;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.inventory.IInventory;
@@ -138,11 +139,7 @@ public class MultiTileEntityDistillationTower extends TileEntityBase10MultiBlock
 	
 	@Override
 	public void doOutputItems() {
-		byte tAutoOutput = FACING_TO_SIDE[mFacing][mItemAutoOutput];
-		DelegatorTileEntity<TileEntity> tTileEntity = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord, getOffsetZN(mFacing, 3), mFacing, F);
-		if (tTileEntity != null) for (int i = 0; i < mRecipes.mOutputItemsCount; i++) {
-			UT.Inventories.moveOneItemStack(this, tTileEntity, tAutoOutput, tTileEntity.mSideOfTileEntity);
-		}
+		ST.moveAll(new DelegatorTileEntity<>(this, FACING_TO_SIDE[mFacing][mItemAutoOutput]), WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord, getOffsetZN(mFacing, 3), mFacing, F));
 	}
 	
 	@Override

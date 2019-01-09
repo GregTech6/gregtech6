@@ -30,11 +30,10 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.connectors.MultiTileEntityPipeItem;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
-import gregapi.util.UT;
+import gregapi.util.ST;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 
 /**
  * @author Gregorius Techneticies
@@ -66,8 +65,11 @@ public class CoverConveyor extends AbstractCoverAttachment {
 	@Override
 	public void onTickPre(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && SERVER_TIME % mTiming == 0 && !aData.mStopped && aData.mTileEntity instanceof IInventory) {
-			DelegatorTileEntity<TileEntity> tDelegator = aData.mTileEntity.getAdjacentTileEntity(aSide);
-			UT.Inventories.moveOneItemStack(aData.mVisuals[aSide]==0?aData.mTileEntity:tDelegator.mTileEntity, aData.mVisuals[aSide]!=0?aData.mTileEntity:tDelegator, aData.mVisuals[aSide]==0?aSide:tDelegator.mSideOfTileEntity, aData.mVisuals[aSide]!=0?aSide:tDelegator.mSideOfTileEntity);
+			if (aData.mVisuals[aSide]==0) {
+				ST.move(new DelegatorTileEntity<>(aData.mTileEntity, aSide), aData.mTileEntity.getAdjacentTileEntity(aSide));
+			} else {
+				ST.move(aData.mTileEntity.getAdjacentTileEntity(aSide), new DelegatorTileEntity<>(aData.mTileEntity, aSide));
+			}
 		}
 	}
 	

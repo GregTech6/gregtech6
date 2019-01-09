@@ -42,6 +42,12 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 		GT_API.STACKMAPS.add(map);
 	}
 	
+	public ItemStackSet(ItemStack... aStacks) {
+		map = new HashMap<>();
+		for (ItemStack aStack : aStacks) add(aStack);
+		GT_API.STACKMAPS.add(map);
+	}
+	
 	public ItemStackSet(Collection<? extends E> c) {
 		map = new HashMap<>(Math.max((int) (c.size()/.75f) + 1, 16));
 		addAll(c);

@@ -29,7 +29,9 @@ import java.util.Map;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.code.IItemContainer;
 import gregapi.code.ItemStackContainer;
+import gregapi.code.ItemStackSet;
 import gregapi.code.ModData;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -41,8 +43,10 @@ import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.food.IFoodStat;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
+import gregapi.tileentity.delegate.DelegatorTileEntity;
 import ic2.api.item.IC2Items;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFire;
 import net.minecraft.block.BlockRedstoneTorch;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.material.Material;
@@ -50,6 +54,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemFood;
@@ -67,6 +73,19 @@ import net.minecraftforge.fluids.IFluidContainerItem;
  * @author Gregorius Techneticies
  */
 public class ST {
+	public static boolean TE_PIPES = F, BC_PIPES = F;
+	
+	public static void checkAvailabilities() {
+		try {
+			cofh.api.transport.IItemDuct.class.getCanonicalName();
+			TE_PIPES = T;
+		} catch(Throwable e) {/**/}
+		try {
+			buildcraft.api.transport.IInjectable.class.getCanonicalName();
+			BC_PIPES = T;
+		} catch(Throwable e) {/**/}
+	}
+	
 	public static boolean equal (ItemStack aStack1, ItemStack aStack2) {return equal(aStack1, aStack2, F);}
 	public static boolean equal (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return aStack1 != null && aStack2 != null && equal_(aStack1, aStack2, aIgnoreNBT);}
 	public static boolean equal_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return item_(aStack1) == item_(aStack2) && equal(meta_(aStack1), meta_(aStack2)) && (aIgnoreNBT || (((nbt_(aStack1) == null) == (nbt_(aStack2) == null)) && (nbt_(aStack1) == null || nbt_(aStack1).equals(nbt_(aStack2)))));}
@@ -349,6 +368,291 @@ public class ST {
 	public static EntityItem entity (World aWorld, ChunkCoordinates aCoords, ItemStackContainer aStack                           ) {ItemStack rStack = aStack.toStack()                 ; if (invalid(rStack)) return null; return               entity_(aWorld, aCoords, rStack);}
 	public static EntityItem entity (World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                    ) {ItemStack rStack = aStack                           ; if (invalid(rStack)) return null; return               entity_(aWorld, aCoords, rStack);}
 	public static EntityItem entity_(World aWorld, ChunkCoordinates aCoords, ItemStack aStack                                    ) {return new EntityItem(aWorld, aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5, update_(aStack, aWorld, aCoords.posX, aCoords.posY, aCoords.posZ));}
+	
+	@SuppressWarnings("rawtypes")
+	public static int move(DelegatorTileEntity aFrom, DelegatorTileEntity aTo) {return move(aFrom, aTo, null, F, F, 64, 1, 64, 1);}
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static int move(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
+		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
+		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aIgnoreSideFrom, aMaxMove, aMinMove);
+		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
+		
+		for (int aSlotFrom : aSlotsFrom) {
+			ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
+			if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && !aFilter.contains(aStackFrom, T)) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) continue;
+			for (int aSlotTo : aSlotsTo) {
+				ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
+				int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
+				if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) continue;
+				// Actually Moving the Stack
+				return move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
+			}
+		}
+		return 0;
+	}
+	
+	
+	@SuppressWarnings("rawtypes")
+	public static int moveAll(DelegatorTileEntity aFrom, DelegatorTileEntity aTo) {return moveAll(aFrom, aTo, null, F, F, 64, 1, 64, 1);}
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static int moveAll(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
+		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
+		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aIgnoreSideFrom, aMaxMove, aMinMove);
+		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
+		
+		int rMoved = 0;
+		
+		for (int aSlotFrom : aSlotsFrom) {
+			ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
+			if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && !aFilter.contains(aStackFrom, T)) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) continue;
+			for (int aSlotTo : aSlotsTo) {
+				ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
+				int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
+				if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) continue;
+				// Actually Moving the Stack
+				rMoved += move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
+				break;
+			}
+		}
+		return rMoved;
+	}
+	
+	
+	@SuppressWarnings("rawtypes")
+	public static int moveFrom(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom) {return moveFrom(aFrom, aTo, aSlotFrom, null, F, F, 64, 1, 64, 1);}
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static int moveFrom(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
+		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		if (aSlotFrom >= ((IInventory)aFrom.mTileEntity).getSizeInventory()) return 0;
+		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, new int[] {aSlotFrom}, aTo, aIgnoreSideFrom, aMaxMove, aMinMove);
+		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
+		
+		ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
+		if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && !aFilter.contains(aStackFrom, T)) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) return 0;
+		for (int aSlotTo : aSlotsTo) {
+			ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
+			int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
+			if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) continue;
+			// Actually Moving the Stack
+			return move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
+		}
+		return 0;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public static int moveTo(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotTo) {return moveTo(aFrom, aTo, aSlotTo, null, F, F, 64, 1, 64, 1);}
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static int moveTo(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
+		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
+		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aIgnoreSideFrom, aMaxMove, aMinMove);
+		
+		if (aSlotTo >= ((IInventory)aTo.mTileEntity).getSizeInventory()) return 0;
+		
+		for (int aSlotFrom : aSlotsFrom) {
+			ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
+			if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && !aFilter.contains(aStackFrom, T)) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) continue;
+			ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
+			int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
+			if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) continue;
+			// Actually Moving the Stack
+			return move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
+		}
+		return 0;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public static int move(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom, int aSlotTo) {return move(aFrom, aTo, aSlotFrom, aSlotTo, null, F, F, 64, 1, 64, 1);}
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static int move(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom, int aSlotTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
+		if (aFrom.mTileEntity instanceof IInventory) {
+			if (aSlotFrom >= ((IInventory)aFrom.mTileEntity).getSizeInventory()) return 0;
+			if (aTo.mTileEntity instanceof IInventory) {
+				if (aSlotTo >= ((IInventory)aTo.mTileEntity).getSizeInventory()) return 0;
+				ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
+				if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && !aFilter.contains(aStackFrom, T)) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) return 0;
+				ItemStack aStackTo = ((IInventory)aTo.mTileEntity).getStackInSlot(aSlotTo);
+				int tMovable = Math.min(aMaxMove, canPut((IInventory)aTo.mTileEntity, aIgnoreSideTo ? SIDE_ANY : aTo.mSideOfTileEntity, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aStackFrom.getMaxStackSize())));
+				if (tMovable < aMinMove || tMovable + aStackTo.stackSize < aMinSize) return 0;
+				// Actually Moving the Stack
+				return move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
+			}
+			// Maybe the Recipient is a Pipe or something that causes Auto-Trash.
+			return put(aFrom, new int[] {aSlotFrom}, aTo, aIgnoreSideFrom, Math.min(aMaxSize, aMaxMove), Math.max(aMinSize, aMinMove));
+		}
+		return 0;
+	}
+	
+	public static int move(IInventory aInventory, int aSlotFrom, int aSlotTo) {
+		if (aSlotFrom == aSlotTo) return 0;
+		ItemStack aStackFrom = aInventory.getStackInSlot(aSlotFrom), aStackTo = aInventory.getStackInSlot(aSlotTo);
+		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aInventory, aStackFrom, aStackTo, aSlotFrom, aSlotTo, Math.min(aStackFrom.stackSize, Math.min(aInventory.getInventoryStackLimit(), aStackTo == null ? aStackFrom.getMaxStackSize() : aStackTo.getMaxStackSize() - aStackTo.stackSize))) : 0;
+	}
+	public static int move(IInventory aInventory, int aSlotFrom, int aSlotTo, int aCount) {
+		return move(aInventory, aInventory.getStackInSlot(aSlotFrom), aInventory.getStackInSlot(aSlotTo), aSlotFrom, aSlotTo, aCount);
+	}
+	public static int move(IInventory aInventory, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aInventory, aStackFrom, aStackTo, aSlotFrom, aSlotTo, aCount) : 0;
+	}
+	public static int move_(IInventory aInventory, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+		aInventory.decrStackSize(aSlotFrom, aCount);
+		aInventory.setInventorySlotContents(aSlotTo, aStackTo == null ? amount(aCount, aStackFrom) : size_(aStackTo.stackSize + aCount, aStackTo));
+		aInventory.markDirty();
+		return aCount;
+	}
+	public static int move(IInventory aFrom, IInventory aTo, int aSlotFrom, int aSlotTo) {
+		ItemStack aStackFrom = aFrom.getStackInSlot(aSlotFrom), aStackTo = aTo.getStackInSlot(aSlotTo);
+		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aFrom, aTo, aStackFrom, aStackTo, aSlotFrom, aSlotTo, Math.min(aStackFrom.stackSize, Math.min(aTo.getInventoryStackLimit(), aStackTo == null ? aStackFrom.getMaxStackSize() : aStackTo.getMaxStackSize() - aStackTo.stackSize))) : 0;
+	}
+	public static int move(IInventory aFrom, IInventory aTo, int aSlotFrom, int aSlotTo, int aCount) {
+		return move(aFrom, aTo, aFrom.getStackInSlot(aSlotFrom), aTo.getStackInSlot(aSlotTo), aSlotFrom, aSlotTo, aCount);
+	}
+	public static int move(IInventory aFrom, IInventory aTo, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aFrom, aTo, aStackFrom, aStackTo, aSlotFrom, aSlotTo, aCount) : 0;
+	}
+	public static int move_(IInventory aFrom, IInventory aTo, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+		aFrom.decrStackSize(aSlotFrom, aCount);
+		aTo.setInventorySlotContents(aSlotTo, aStackTo == null ? amount(aCount, aStackFrom) : size_(aStackTo.stackSize + aCount, aStackTo));
+		aFrom.markDirty();
+		aTo.markDirty();
+		return aCount;
+	}
+	
+	public static boolean canConnect(@SuppressWarnings("rawtypes") DelegatorTileEntity aDelegator) {
+		if (aDelegator.mTileEntity == null) return F;
+		if (TE_PIPES && aDelegator.mTileEntity instanceof cofh.api.transport.IItemDuct) return T;
+		if (BC_PIPES && aDelegator.mTileEntity instanceof buildcraft.api.transport.IInjectable) return ((buildcraft.api.transport.IInjectable)aDelegator.mTileEntity).canInjectItems(aDelegator.getForgeSideOfTileEntity());
+		if (aDelegator.mTileEntity instanceof IInventory && ((IInventory)aDelegator.mTileEntity).getSizeInventory() > 0) return T;
+		return F;
+	}
+	
+	
+	public static boolean canTake(IInventory aFrom, byte aSideFrom, int aSlotFrom, ItemStack aStackFrom) {
+		if (aFrom instanceof ISidedInventory) {
+			if (SIDES_INVALID[aSideFrom]) {
+				for (byte tSideFrom : ALL_SIDES_VALID) if (canTake_(aFrom, tSideFrom, aSlotFrom, aStackFrom)) return T;
+				return F;
+			}
+			return ((ISidedInventory)aFrom).canExtractItem(aSlotFrom, aStackFrom, aSideFrom);
+		}
+		return T;
+	}
+	public static boolean canTake_(IInventory aFrom, byte aSideFrom, int aSlotFrom, ItemStack aStackFrom) {
+		return !(aFrom instanceof ISidedInventory || ((ISidedInventory)aFrom).canExtractItem(aSlotFrom, aStackFrom, aSideFrom));
+	}
+	
+	
+	public static int canPut(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom) {
+		return canPut(aTo, aSideTo, aSlotTo, aStackFrom, aStackFrom.getMaxStackSize());
+	}
+	public static int canPut(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom, int aMaxSize) {
+		int rMaxMove = canPut_(aTo, aSlotTo, aStackFrom, Math.min(aMaxSize, aTo.getInventoryStackLimit()));
+		if (rMaxMove <= 0) return 0;
+		if (SIDES_INVALID[aSideTo]) {
+			for (byte tSideTo : ALL_SIDES_VALID) if (canPut_(aTo, tSideTo, aSlotTo, aStackFrom)) return rMaxMove;
+			return 0;
+		}
+		return canPut_(aTo, aSideTo, aSlotTo, aStackFrom) ? rMaxMove : 0;
+	}
+	public static int canPut(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom, ItemStack aStackTo) {
+		return canPut(aTo, aSideTo, aSlotTo, aStackFrom, aStackTo, aStackFrom.getMaxStackSize());
+	}
+	public static int canPut(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom, ItemStack aStackTo, int aMaxSize) {
+		int rMaxMove = canPut_(aTo, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aTo.getInventoryStackLimit()));
+		if (rMaxMove <= 0) return 0;
+		if (SIDES_INVALID[aSideTo]) {
+			for (byte tSideTo : ALL_SIDES_VALID) if (canPut_(aTo, tSideTo, aSlotTo, aStackFrom)) return rMaxMove;
+			return 0;
+		}
+		return canPut_(aTo, aSideTo, aSlotTo, aStackFrom) ? rMaxMove : 0;
+	}
+	public static boolean canPut_(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom) {
+		return (!(aTo instanceof ISidedInventory || ((ISidedInventory)aTo).canInsertItem(aSlotTo, aStackFrom, aSideTo))) && aTo.isItemValidForSlot(aSlotTo, aStackFrom);
+	}
+	public static int canPut_(IInventory aTo, int aSlotTo, ItemStack aStackFrom, int aMaxSize) {
+		return canPut_(aTo, aSlotTo, aStackFrom, aTo.getStackInSlot(aSlotTo), aMaxSize);
+	}
+	public static int canPut_(IInventory aTo, int aSlotTo, ItemStack aStackFrom, ItemStack aStackTo, int aMaxSize) {
+		return aStackTo == null ? aMaxSize : equal_(aStackTo, aStackFrom, F) ? aMaxSize - aStackTo.stackSize : 0;
+	}
+	
+	
+	public static int put(DelegatorTileEntity<IInventory> aFrom, int[] aSlotsFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, boolean aIgnoreSideFrom, int aMaxMove, int aMinMove) {
+		if (aTo.mTileEntity != null) {
+			if (TE_PIPES && aTo.mTileEntity instanceof cofh.api.transport.IItemDuct) {
+				for (int i = 0; i < aSlotsFrom.length; i++) {
+					ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotsFrom[i]);
+					if (aMinMove <= aStackFrom.stackSize) {
+						if (canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotsFrom[i], aStackFrom)) {
+							// Actually Moving the Stack
+							ItemStack tStackMoved = amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom);
+							ItemStack rStackMoved = ((cofh.api.transport.IItemDuct)aTo.mTileEntity).insertItem(aTo.getForgeSideOfTileEntity(), copy(tStackMoved));
+							byte rMoved = (byte)(tStackMoved.stackSize - (rStackMoved == null ? 0 : rStackMoved.stackSize));
+							if (rMoved > 0) {
+								aFrom.mTileEntity.decrStackSize(aSlotsFrom[i], rMoved);
+								aFrom.mTileEntity.markDirty();
+								return rMoved;
+							}
+						}
+					}
+				}
+				return 0;
+			}
+			if (BC_PIPES && aTo.mTileEntity instanceof buildcraft.api.transport.IInjectable) {
+				for (int i = 0; i < aSlotsFrom.length; i++) {
+					ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotsFrom[i]);
+					if (aMinMove <= aStackFrom.stackSize) {
+						if (canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotsFrom[i], aStackFrom)) {
+							// Actually Moving the Stack
+							ItemStack tStackMoved = amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom);
+							byte rMoved = (byte)((buildcraft.api.transport.IInjectable)aTo.mTileEntity).injectItem(copy(tStackMoved), F, aTo.getForgeSideOfTileEntity(), null);
+							if (rMoved >= aMinMove) {
+								rMoved = (byte)(((buildcraft.api.transport.IInjectable)aTo.mTileEntity).injectItem(amount(rMoved, tStackMoved), T, aTo.getForgeSideOfTileEntity(), null));
+								aFrom.mTileEntity.decrStackSize(aSlotsFrom[i], rMoved);
+								aFrom.mTileEntity.markDirty();
+								return rMoved;
+							}
+						}
+					}
+				}
+				return 0;
+			}
+		}
+		
+		Block aBlock = aTo.getBlock();
+		if (aBlock.getMaterial() == Material.lava || aBlock instanceof BlockFire || (aBlock == NB && aTo.mY < 1)) {
+			for (int i = 0; i < aSlotsFrom.length; i++) {
+				ItemStack aStack = aFrom.mTileEntity.getStackInSlot(aSlotsFrom[i]);
+				if (aMinMove <= aStack.stackSize) {
+					if (canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotsFrom[i], aStack)) {
+						// Actually Moving the Stack
+						ItemStack tStack = amount(Math.min(aStack.stackSize, aMaxMove), aStack);
+						GarbageGT.trash(tStack);
+						aFrom.mTileEntity.decrStackSize(aSlotsFrom[i], tStack.stackSize);
+						aFrom.mTileEntity.markDirty();
+						return (byte)tStack.stackSize;
+					}
+				}
+			}
+		} else if (!WD.hasCollide(aTo.mWorld, aTo.mX, aTo.mY, aTo.mZ, aBlock)) {
+			for (int i = 0; i < aSlotsFrom.length; i++) {
+				ItemStack aStack = aFrom.mTileEntity.getStackInSlot(aSlotsFrom[i]);
+				if (aMinMove <= aStack.stackSize) {
+					if (canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotsFrom[i], aStack)) {
+						// Actually Moving the Stack
+						ItemStack tStack = amount(Math.min(aStack.stackSize, aMaxMove), aStack);
+						place(aTo.mWorld, aTo.mX+0.5, aTo.mY+0.5, aTo.mZ+0.5, tStack);
+						aFrom.mTileEntity.decrStackSize(aSlotsFrom[i], tStack.stackSize);
+						aFrom.mTileEntity.markDirty();
+						return (byte)tStack.stackSize;
+					}
+				}
+			}
+		}
+		return 0;
+	}
 	
 	public static ItemStack emptySlot() {
 		return IL.Empty_Slot.get(0);

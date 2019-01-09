@@ -184,8 +184,8 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	public void sortIntoTheInputSlots() {
 		for (int i : SLOTS_CRAFTING) if (slotHas(i)) {
 			if (slot(i).stackSize == 0) slotKill(i);
-			if (slotHas(i)) for (int j : SLOTS_STORAGE) if (ST.equal(slot(i), slot(j))) UT.Inventories.moveStackFromSlotAToSlotB(this, this, i, j, (byte)64, (byte)1, (byte)64, (byte)1);
-			if (slotHas(i)) for (int j : SLOTS_STORAGE) if (!slotHas(j)) UT.Inventories.moveStackFromSlotAToSlotB(this, this, i, j, (byte)64, (byte)1, (byte)64, (byte)1);
+			if (slotHas(i)) for (int j : SLOTS_STORAGE) if (ST.equal(slot(i), slot(j))) ST.move(this, i, j);
+			if (slotHas(i)) for (int j : SLOTS_STORAGE) if (!slotHas(j)) ST.move(this, i, j);
 		}
 	}
 	

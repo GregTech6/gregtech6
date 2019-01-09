@@ -269,7 +269,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					mState |= B[2];
 				} else {
 					mClickCount = 0;
-					UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0, null, F, 64, 1, 64, 1);
+					ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
 				}
 			} else {
 				for (int i = 1; i < 13; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slotTake(i), F, worldObj, xCoord+0.5, yCoord+1, zCoord+0.5);

@@ -40,6 +40,7 @@ import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.connectors.ITileEntityConnector;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregtech.tileentity.tools.MultiTileEntityAnvil;
@@ -157,7 +158,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 					}
 					while (tMovedItems < mMode) {
-						int tMoved = UT.Inventories.moveOneItemStack(this, tDelegator, mFacing, tDelegator.mSideOfTileEntity, null, F, mMode, 1, mMode-tMovedItems, 1);
+						int tMoved = ST.move(new DelegatorTileEntity<>(this, mFacing), tDelegator, null, F, F, mMode, 1, mMode-tMovedItems, 1);
 						if (tMoved <= 0) break;
 						tMovedItems += tMoved;
 					}
@@ -169,7 +170,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 					if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 				}
 				if (tDelegator.mTileEntity != null && !(tDelegator.mTileEntity instanceof MultiTileEntityAnvil)) {
-					tMovedItems += UT.Inventories.moveOneItemStack(tDelegator.mTileEntity, this, tDelegator.mSideOfTileEntity, SIDE_TOP);
+					tMovedItems += ST.move(tDelegator, new DelegatorTileEntity<>(this, SIDE_TOP));
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
 						if (!slotHas(0)) {
@@ -191,7 +192,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 				while (oMovedItems != tMovedItems) {
 					oMovedItems = tMovedItems;
 					for (int i = 1, j = getSizeInventory(); i < j; i++) {
-						tMovedItems += UT.Inventories.moveStackFromSlotAToSlotB(this, this, i-1, i, mMode, 1, mMode, 1);
+						tMovedItems += ST.move(this, i-1, i);
 					}
 				}
 			}

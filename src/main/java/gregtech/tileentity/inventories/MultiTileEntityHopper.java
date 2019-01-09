@@ -171,7 +171,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 					}
 					while (tMovedItems + (mMode<=0?1:mMode) <= 64) {
-						int tMoved = UT.Inventories.moveOneItemStack(this, tDelegator, mFacing, tDelegator.mSideOfTileEntity, null, F, 64, 1, mMode<=0?64-tMovedItems:mMode, mMode<=0?1:mMode);
+						int tMoved = ST.move(new DelegatorTileEntity<>(this, mFacing), tDelegator, null, F, F, 64, 1, mMode<=0?64-tMovedItems:mMode, mMode<=0?1:mMode);
 						if (tMoved <= 0) break;
 						tMovedItems += tMoved;
 						if (mExactMode) break;
@@ -184,7 +184,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 					if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 				}
 				if (tDelegator.mTileEntity != null && !(tDelegator.mTileEntity instanceof MultiTileEntityAnvil)) {
-					tMovedItems += UT.Inventories.moveOneItemStack(tDelegator.mTileEntity, this, tDelegator.mSideOfTileEntity, SIDE_TOP);
+					tMovedItems += ST.move(tDelegator, new DelegatorTileEntity<>(this, SIDE_TOP));
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
 						for (int i = 0, j = getSizeInventory(); i < j; i++) if (!slotHas(i)) {
@@ -205,11 +205,11 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 						int tMaxSize = Math.min(l, slot(j).getMaxStackSize());
 						if (slotHas(i)) {
 							if (slot(i).stackSize < tMaxSize && ST.equal(slot(i), slot(j))) {
-								tMovedItems += UT.Inventories.moveStackFromSlotAToSlotB(this, this, j, i, 64, 1, 64, 1);
+								tMovedItems += ST.move(this, j, i);
 								if (slot(i).stackSize >= tMaxSize) break;
 							}
 						} else {
-							tMovedItems += UT.Inventories.moveStackFromSlotAToSlotB(this, this, j, i, 64, 1, 64, 1);
+							tMovedItems += ST.move(this, j, i);
 							if (slotHas(i) && slot(i).stackSize >= tMaxSize) break;
 						}
 					}

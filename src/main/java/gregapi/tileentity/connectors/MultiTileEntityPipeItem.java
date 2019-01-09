@@ -22,7 +22,6 @@ package gregapi.tileentity.connectors;
 import static gregapi.data.CS.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +30,7 @@ import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.code.ItemStackSet;
 import gregapi.code.TagData;
 import gregapi.cover.CoverData;
 import gregapi.cover.covers.CoverFilterItem;
@@ -203,10 +203,10 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 					CoverData tCovers = getCoverData();
 					if (tCovers != null && tCovers.mBehaviours[aSide] instanceof CoverFilterItem && tCovers.mNBTs[aSide] != null) {
 						ItemStack tStack = ST.load(tCovers.mNBTs[aSide], "gt.filter.item");
-						if (ST.valid(tStack)) return UT.Inventories.moveOneItemStack(aSender, tDelegator, SIDE_ANY, tDelegator.mSideOfTileEntity, Arrays.asList(tStack), tCovers.mVisuals[aSide] != 0, 64, 1, 64, 1) > 0;
+						if (ST.valid(tStack)) return ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator, new ItemStackSet<>(tStack), F, F, 64, 1, 64, 1) > 0;
 					}
 					// well normal case is this.
-					return UT.Inventories.moveOneItemStack(aSender, tDelegator, SIDE_ANY, tDelegator.mSideOfTileEntity) > 0;
+					return ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator) > 0;
 				}
 			}
 		}
@@ -244,7 +244,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	@Override public boolean canEmitItemsTo                 (byte aSide, Object aSender) {return (aSender != this || aSide != mLastReceivedFrom) && connected(aSide);}
 	@Override public boolean canAcceptItemsFrom             (byte aSide, Object aSender) {return connected(aSide);}
 	
-	@Override public boolean canConnect                     (byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {return (aDelegator.mTileEntity instanceof ISidedInventory ? aDelegator.mTileEntity instanceof ITileEntityCanDelegate || ((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(aDelegator.mSideOfTileEntity).length > 0 : (aDelegator.mTileEntity instanceof IInventory && ((IInventory)aDelegator.mTileEntity).getSizeInventory() > 0)) || UT.Inventories.isConnectableNonInventoryPipe(aDelegator.mTileEntity, aDelegator.mSideOfTileEntity);}
+	@Override public boolean canConnect                     (byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {return aDelegator.mTileEntity instanceof ISidedInventory ? aDelegator.mTileEntity instanceof ITileEntityCanDelegate || ((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(aDelegator.mSideOfTileEntity).length > 0 : ST.canConnect(aDelegator);}
 	
 	@Override public long getProgressValue                  (byte aSide) {return getPipeContent()*64;}
 	@Override public long getProgressMax                    (byte aSide) {return getMaxPipeCapacity()*64;}

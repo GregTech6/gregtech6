@@ -22,7 +22,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.09.17: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[WARNING] This Version needs excessive Testing for Item Movement related things in GT6, such as Item Pipes, Covers moving Items, Internal Inventory Management of the GT6 Crafting Tables and Hoppers, and more! Be careful!
+[FIXED] Aluminium-Hydroxide to Alumina Smelting is now fixed and doesnt x2 Aluminium anymore. So it Outputs only half as much Alumina. That was a Maths Hiccup on my end back then.
+[FIXED] Robot Arm Cover not working properly in certain cases. (Trying to fix this prompted me to use the Freetime I didn't waste on Factorio to actually fix the whole Inventory Item Movement System)
 
 
 6.09.16:

@@ -276,8 +276,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			if (mInventoryChanged || aTimer % 100 == 0) {
 				if (slotHas(1)) {
 					if ((mMode & B[0]) != 0 && slot(1).stackSize > 0) {
-						DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(SIDE_BOTTOM);
-						if (UT.Inventories.moveOneItemStack(this, tTileEntity, SIDE_BOTTOM, tTileEntity.mSideOfTileEntity) > 0) temp = T;
+						if (ST.move(new DelegatorTileEntity<>(this, SIDE_BOTTOM), getAdjacentInventory(SIDE_BOTTOM)) > 0) temp = T;
 					} else // else, because if it already tried to emit normally, then it doesn't need to check a second time.
 					if ((mMode & B[2]) != 0 && slot(1).stackSize > mMaxStorage) {
 						emitOverflow();
@@ -389,7 +388,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(SIDE_BOTTOM);
 		while (slotHas(1) && slot(1).stackSize > mMaxStorage) {
 			int tToBeMoved = UT.Code.bindStack(slot(1).stackSize - mMaxStorage);
-			if (UT.Inventories.moveOneItemStack(this, tTileEntity, SIDE_BOTTOM, tTileEntity.mSideOfTileEntity, null, F, tToBeMoved, 1, tToBeMoved, 1) <= 0) break;
+			if (ST.move(new DelegatorTileEntity<>(this, SIDE_BOTTOM), tTileEntity, null, F, F, tToBeMoved, 1, tToBeMoved, 1) <= 0) break;
 		}
 	}
 	

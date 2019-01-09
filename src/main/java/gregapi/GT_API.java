@@ -753,6 +753,7 @@ public class GT_API extends Abstract_Mod {
 		
 		EnergyCompat.checkAvailabilities();
 		ToolCompat.checkAvailabilities();
+		ST.checkAvailabilities();
 		
 		OUT.println(getModNameForLog() + ": If the Loading Bar somehow Freezes at this Point, then you definetly ran out of Memory or permgenspace, look at the other Logs to confirm it.");
 		OreDictManager.INSTANCE.onPostLoad();

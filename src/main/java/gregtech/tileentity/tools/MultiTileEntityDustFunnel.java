@@ -117,14 +117,8 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 			}
 			
 			if (temp || mInventoryChanged || aTimer % 100 == 0) {
-				if (slotHas(1)) {
-					DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(SIDE_BOTTOM);
-					UT.Inventories.moveOneItemStack(this, tTileEntity, SIDE_BOTTOM, tTileEntity.mSideOfTileEntity);
-				}
-				if (!slotHas(0)) {
-					DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(SIDE_TOP);
-					UT.Inventories.moveOneItemStack(tTileEntity.mTileEntity, this, tTileEntity.mSideOfTileEntity, SIDE_TOP);
-				}
+				if ( slotHas(1)) ST.move(new DelegatorTileEntity<>(this, SIDE_BOTTOM), getAdjacentInventory(SIDE_BOTTOM));
+				if (!slotHas(0)) ST.move(getAdjacentInventory(SIDE_TOP), new DelegatorTileEntity<>(this, SIDE_TOP));
 			}
 		}
 	}
@@ -132,7 +126,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
-			if (SIDES_TOP[aSide] && slot(0) == null) UT.Inventories.moveFromSlotToSlot(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0, null, F, (byte)64, (byte)1, (byte)64, (byte)1);
+			if (SIDES_TOP[aSide] && slot(0) == null) ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
 		}
 		return T;
 	}

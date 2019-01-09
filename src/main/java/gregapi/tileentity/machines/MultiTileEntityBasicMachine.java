@@ -609,19 +609,14 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		mCouldUseRecipe = F;
 		if (mRecipes == null) return DID_NOT_FIND_RECIPE;
 		
-		DelegatorTileEntity<IInventory> tInventory = null;
 		byte tAutoInput = FACING_TO_SIDE[mFacing][mItemAutoInput];
 		
 		if (aUseAutoInputs && !mDisabledItemInput && SIDES_VALID[tAutoInput]) {
-			tInventory = getItemInputTarget(tAutoInput);
-			if (tInventory != null && tInventory.mTileEntity == null) tInventory = null;
+			ST.moveAll(getItemInputTarget(tAutoInput), new DelegatorTileEntity<>(this, tAutoInput));
 		}
 		
 		ItemStack[] tInputs = new ItemStack[mRecipes.mInputItemsCount];
-		for (int i = 0; i < mRecipes.mInputItemsCount; i++) {
-			if (tInventory != null) UT.Inventories.moveOneItemStackIntoSlot(tInventory.mTileEntity, this, tInventory.mSideOfTileEntity, i, null, F, (byte)64, (byte)1, (byte)64, (byte)1);
-			tInputs[i] = slot(i);
-		}
+		for (int i = 0; i < mRecipes.mInputItemsCount; i++) tInputs[i] = slot(i);
 		
 		tAutoInput = FACING_TO_SIDE[mFacing][mFluidAutoInput];
 		if (aUseAutoInputs && !mDisabledFluidInput && SIDES_VALID[tAutoInput]) {
@@ -880,10 +875,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	public void doOutputItems() {
 		byte tAutoOutput = FACING_TO_SIDE[mFacing][mItemAutoOutput];
-		DelegatorTileEntity<TileEntity> tTileEntity = getItemOutputTarget(tAutoOutput);
-		if (tTileEntity != null) for (int i = 0; i < mRecipes.mOutputItemsCount; i++) {
-			UT.Inventories.moveOneItemStack(this, tTileEntity, tAutoOutput, tTileEntity.mSideOfTileEntity);
-		}
+		ST.moveAll(new DelegatorTileEntity<>(this, tAutoOutput), getItemOutputTarget(tAutoOutput));
 	}
 	
 	public void doOutputFluids() {

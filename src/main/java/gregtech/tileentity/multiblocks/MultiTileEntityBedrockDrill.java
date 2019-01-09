@@ -50,7 +50,6 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
@@ -142,8 +141,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
 			if (slotHas(0)) {
-				DelegatorTileEntity<IInventory> tDelegator = getAdjacentInventory(SIDE_TOP);
-				UT.Inventories.moveOneItemStack(this, tDelegator, SIDE_TOP, tDelegator.mSideOfTileEntity);
+				ST.move(new DelegatorTileEntity<>(this, SIDE_TOP), getAdjacentInventory(SIDE_TOP));
 			}
 			if (mEnergy >= 32768 && !slotHas(0) && checkStructure(F) && mTank.drainAll(100)) {
 				mEnergy -= 32768;

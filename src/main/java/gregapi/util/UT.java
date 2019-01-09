@@ -45,7 +45,6 @@ import gregapi.data.CS;
 import gregapi.data.CS.ArmorsGT;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.FluidsGT;
-import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PotionsGT;
@@ -75,8 +74,6 @@ import ic2.api.recipe.IMachineRecipeManagerExt;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFire;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -98,7 +95,6 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
@@ -110,7 +106,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.IChatComponent;
@@ -1264,7 +1259,7 @@ public class UT {
 			return aObjects.contains(aObject);
 		}
 		
-		public static final int[][] ASCENDING_ARRAYS = new int[256][];
+		public static final int[][] ASCENDING_ARRAYS = new int[1024][];
 		
 		public static int[] getAscendingArray(int aLength) {
 			if (aLength <= 0) return ZL_INTEGER;
@@ -2248,325 +2243,15 @@ public class UT {
 	}
 	
 	public static class Inventories {
-		public static boolean TE_CHECK = F, BC_CHECK = F, CHECK_ALL = T;
-		
-		public static void checkAvailabilities() {
-			if (CHECK_ALL) {
-				try {
-					Class<?> tClass = cofh.api.transport.IItemDuct.class;
-					tClass.getCanonicalName();
-					TE_CHECK = T;
-				} catch(Throwable e) {/**/}
-				try {
-					Class<?> tClass = buildcraft.api.transport.IInjectable.class;
-					tClass.getCanonicalName();
-					BC_CHECK = T;
-				} catch(Throwable e) {/**/}
-				CHECK_ALL = F;
-			}
-		}
-		
-		public static boolean isConnectableNonInventoryPipe(Object aTileEntity, int aSide) {
-			if (aTileEntity == null) return F;
-			checkAvailabilities();
-			if (TE_CHECK) if (aTileEntity instanceof cofh.api.transport.IItemDuct) return T;
-			if (BC_CHECK) if (aTileEntity instanceof buildcraft.api.transport.IInjectable) return ((buildcraft.api.transport.IInjectable)aTileEntity).canInjectItems(FORGE_DIR[aSide]);
-			return F;
-		}
-		
-		/**
-		 * Moves Stack from Inv-Slot to Pipe
-		 * @return the Amount of moved Items
-		 */
-		@SuppressWarnings("rawtypes")
-		public static byte moveStackIntoPipe(IInventory aTileEntity1, Object aTarget, int[] aGrabSlots, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
-			if (aTileEntity1 == null || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMaxMoveAtOnce <= 0 || aMinMoveAtOnce > aMaxMoveAtOnce) return 0;
-			
-			Object aTileEntity2 = aTarget;
-			if (aTarget instanceof DelegatorTileEntity) aTileEntity2 = ((DelegatorTileEntity)aTarget).mTileEntity;
-			
-			if (aTileEntity2 != null) {
-				checkAvailabilities();
-				if (TE_CHECK && aTileEntity2 instanceof cofh.api.transport.IItemDuct) {
-					for (int i = 0; i < aGrabSlots.length; i++) {
-						ItemStack aStack = aTileEntity1.getStackInSlot(aGrabSlots[i]);
-						if (ST.listed(aFilter, aStack, T, aInvertFilter)) {
-							if (isAllowedToTakeFromSlot(aTileEntity1, aGrabSlots[i], aGrabFrom, aStack)) {
-								if (Math.max(aMinMoveAtOnce, aMinTargetStackSize) <= aStack.stackSize) {
-									ItemStack tStack = ST.amount(Math.min(aStack.stackSize, Math.min(aMaxMoveAtOnce, aMaxTargetStackSize)), aStack);
-									ItemStack rStack = ((cofh.api.transport.IItemDuct)aTileEntity2).insertItem(FORGE_DIR[aPutTo], ST.copy(tStack));
-									byte tMovedItemCount = (byte)(tStack.stackSize - (rStack == null ? 0 : rStack.stackSize));
-									if (tMovedItemCount >= 1/*Math.max(aMinMoveAtOnce, aMinTargetStackSize)*/) {
-										//((cofh.api.transport.IItemConduit)aTileEntity2).insertItem(FORGE_DIR[aPutTo], copyAmount(tMovedItemCount, tStack), F);
-										aTileEntity1.decrStackSize(aGrabSlots[i], tMovedItemCount);
-										aTileEntity1.markDirty();
-										return tMovedItemCount;
-									}
-								}
-							}
-						}
-					}
-					return 0;
-				}
-				if (BC_CHECK && aTileEntity2 instanceof buildcraft.api.transport.IInjectable) {
-					for (int i = 0; i < aGrabSlots.length; i++) {
-						ItemStack aStack = aTileEntity1.getStackInSlot(aGrabSlots[i]);
-						if (ST.listed(aFilter, aStack, T, aInvertFilter)) {
-							if (isAllowedToTakeFromSlot(aTileEntity1, aGrabSlots[i], aGrabFrom, aStack)) {
-								if (Math.max(aMinMoveAtOnce, aMinTargetStackSize) <= aStack.stackSize) {
-									ItemStack tStack = ST.amount(Math.min(aStack.stackSize, Math.min(aMaxMoveAtOnce, aMaxTargetStackSize)), aStack);
-									byte tMovedItemCount = (byte)((buildcraft.api.transport.IInjectable)aTileEntity2).injectItem(ST.copy(tStack), F, FORGE_DIR[aPutTo], null);
-									if (tMovedItemCount >= Math.max(aMinMoveAtOnce, aMinTargetStackSize)) {
-										tMovedItemCount = (byte)(((buildcraft.api.transport.IInjectable)aTileEntity2).injectItem(ST.amount(tMovedItemCount, tStack), T, FORGE_DIR[aPutTo], null));
-										aTileEntity1.decrStackSize(aGrabSlots[i], tMovedItemCount);
-										aTileEntity1.markDirty();
-										return tMovedItemCount;
-									}
-								}
-							}
-						}
-					}
-					return 0;
-				}
-			}
-			
-			if (aTarget instanceof DelegatorTileEntity) {
-				Block aBlock = ((DelegatorTileEntity)aTarget).getBlock();
-				if (aBlock.getMaterial() == Material.lava || aBlock instanceof BlockFire || (aBlock == NB && ((DelegatorTileEntity)aTarget).mY < 1)) {
-					for (int i = 0; i < aGrabSlots.length; i++) {
-						ItemStack aStack = aTileEntity1.getStackInSlot(aGrabSlots[i]);
-						if (ST.listed(aFilter, aStack, T, aInvertFilter)) {
-							if (isAllowedToTakeFromSlot(aTileEntity1, aGrabSlots[i], aGrabFrom, aStack)) {
-								if (Math.max(aMinMoveAtOnce, aMinTargetStackSize) <= aStack.stackSize) {
-									ItemStack tStack = ST.amount(Math.min(aStack.stackSize, Math.min(aMaxMoveAtOnce, aMaxTargetStackSize)), aStack);
-									GarbageGT.trash(tStack);
-									aTileEntity1.decrStackSize(aGrabSlots[i], tStack.stackSize);
-									aTileEntity1.markDirty();
-									return (byte)tStack.stackSize;
-								}
-							}
-						}
-					}
-				} else if (!WD.hasCollide(((DelegatorTileEntity)aTarget).mWorld, ((DelegatorTileEntity)aTarget).mX, ((DelegatorTileEntity)aTarget).mY, ((DelegatorTileEntity)aTarget).mZ, aBlock)) {
-					for (int i = 0; i < aGrabSlots.length; i++) {
-						ItemStack aStack = aTileEntity1.getStackInSlot(aGrabSlots[i]);
-						if (ST.listed(aFilter, aStack, T, aInvertFilter)) {
-							if (isAllowedToTakeFromSlot(aTileEntity1, aGrabSlots[i], aGrabFrom, aStack)) {
-								if (Math.max(aMinMoveAtOnce, aMinTargetStackSize) <= aStack.stackSize) {
-									ItemStack tStack = ST.amount(Math.min(aStack.stackSize, Math.min(aMaxMoveAtOnce, aMaxTargetStackSize)), aStack);
-									ST.place(((DelegatorTileEntity)aTarget).mWorld, ((DelegatorTileEntity)aTarget).mX+0.5, ((DelegatorTileEntity)aTarget).mY+0.5, ((DelegatorTileEntity)aTarget).mZ+0.5, tStack);
-									aTileEntity1.decrStackSize(aGrabSlots[i], tStack.stackSize);
-									aTileEntity1.markDirty();
-									return (byte)tStack.stackSize;
-								}
-							}
-						}
-					}
-				}
-			}
-			return 0;
-		}
-		
-		/**
-		 * Moves Stack from Inv-Slot to Inv-Slot, without checking if its even allowed. (useful for internal Inventory Operations)
-		 * @return the Amount of moved Items
-		 */
-		public static byte moveStackFromSlotAToSlotB(IInventory aTileEntity, IInventory aTarget, int aGrabFrom, int aPutTo, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
-			if (aTileEntity == null || aTarget == null || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMaxMoveAtOnce <= 0 || aMinMoveAtOnce > aMaxMoveAtOnce || aGrabFrom < 0 || aGrabFrom >= aTileEntity.getSizeInventory() || aPutTo < 0 || aPutTo >= aTarget.getSizeInventory()) return 0;
-			
-			ItemStack tStack1 = aTileEntity.getStackInSlot(aGrabFrom), tStack2 = aTarget.getStackInSlot(aPutTo), tStack3 = null;
-			if (tStack1 != null) {
-				if (tStack2 != null && !ST.equal(tStack1, tStack2)) return 0;
-				tStack3 = ST.copy(tStack1);
-				aMaxTargetStackSize = (byte)Math.min(aMaxTargetStackSize, Math.min(tStack3.getMaxStackSize(), Math.min(tStack2==null?Integer.MAX_VALUE:tStack2.getMaxStackSize(), aTarget.getInventoryStackLimit())));
-				tStack3.stackSize = Math.min(tStack3.stackSize, aMaxTargetStackSize - (tStack2 == null?0:tStack2.stackSize));
-				if (tStack3.stackSize > aMaxMoveAtOnce) tStack3.stackSize = aMaxMoveAtOnce;
-				if (tStack3.stackSize + (tStack2==null?0:tStack2.stackSize) >= Math.min(tStack3.getMaxStackSize(), aMinTargetStackSize) && tStack3.stackSize >= aMinMoveAtOnce) {
-					tStack3 = aTileEntity.decrStackSize(aGrabFrom, tStack3.stackSize);
-					aTileEntity.markDirty();
-					if (tStack3 != null) {
-						if (tStack2 == null) {
-							aTarget.setInventorySlotContents(aPutTo, ST.copy(tStack3));
-							aTarget.markDirty();
-						} else {
-							tStack2.stackSize += tStack3.stackSize;
-							aTarget.markDirty();
-						}
-						return (byte)tStack3.stackSize;
-					}
-				}
-			}
-			return 0;
-		}
-		
-		public static boolean isAllowedToTakeFromSlot(IInventory aTileEntity, int aSlot, byte aSide, ItemStack aStack) {
-			if (SIDES_INVALID[aSide]) {
-				return isAllowedToTakeFromSlot(aTileEntity, aSlot, (byte)0, aStack)
-					|| isAllowedToTakeFromSlot(aTileEntity, aSlot, (byte)1, aStack)
-					|| isAllowedToTakeFromSlot(aTileEntity, aSlot, (byte)2, aStack)
-					|| isAllowedToTakeFromSlot(aTileEntity, aSlot, (byte)3, aStack)
-					|| isAllowedToTakeFromSlot(aTileEntity, aSlot, (byte)4, aStack)
-					|| isAllowedToTakeFromSlot(aTileEntity, aSlot, (byte)5, aStack);
-			}
-			if (aTileEntity instanceof ISidedInventory) return ((ISidedInventory)aTileEntity).canExtractItem(aSlot, aStack, aSide);
-			return T;
-		}
-		
-		public static boolean isAllowedToPutIntoSlot(IInventory aTileEntity, int aSlot, byte aSide, ItemStack aStack, int aMaxStackSize) {
-			ItemStack tStack = aTileEntity.getStackInSlot(aSlot);
-			if (tStack != null && (!ST.equal(tStack, aStack) || tStack.stackSize >= tStack.getMaxStackSize())) return F;
-			if (SIDES_INVALID[aSide]) {
-				return isAllowedToPutIntoSlot(aTileEntity, aSlot, (byte)0, aStack, aMaxStackSize)
-					|| isAllowedToPutIntoSlot(aTileEntity, aSlot, (byte)1, aStack, aMaxStackSize)
-					|| isAllowedToPutIntoSlot(aTileEntity, aSlot, (byte)2, aStack, aMaxStackSize)
-					|| isAllowedToPutIntoSlot(aTileEntity, aSlot, (byte)3, aStack, aMaxStackSize)
-					|| isAllowedToPutIntoSlot(aTileEntity, aSlot, (byte)4, aStack, aMaxStackSize)
-					|| isAllowedToPutIntoSlot(aTileEntity, aSlot, (byte)5, aStack, aMaxStackSize);
-			}
-			if (aTileEntity instanceof ISidedInventory && !((ISidedInventory)aTileEntity).canInsertItem(aSlot, aStack, aSide)) return F;
-			return aTileEntity.isItemValidForSlot(aSlot, aStack);
-		}
-		
-		/**
-		 * Moves Stack from Inv-Side to Inv-Side.
-		 * @return the Amount of moved Items
-		 */
-		public static byte moveOneItemStack(Object aTileEntity1, Object aTileEntity2, byte aGrabFrom, byte aPutTo) {
-			return moveOneItemStack(aTileEntity1, aTileEntity2, aGrabFrom, aPutTo, null, F, 64, 1, 64, 1);
-		}
-		
-		/**
-		 * Moves Stack from Inv-Side to Inv-Side.
-		 * @return the Amount of moved Items
-		 */
-		public static byte moveOneItemStack(Object aTileEntity1, Object aTileEntity2, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
-			if (aTileEntity1 instanceof IInventory) return moveOneItemStack((IInventory)aTileEntity1, aTileEntity2, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, T);
-			return 0;
-		}
-		
-		/**
-		 * This is only because I needed an additional Parameter for the Double Chest Check.
-		 */
-		@SuppressWarnings("rawtypes")
-		private static byte moveOneItemStack(IInventory aTileEntity1, Object aTarget, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce, boolean aDoCheckChests) {
-			if (aTileEntity1 == null || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMaxMoveAtOnce <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMinMoveAtOnce > aMaxMoveAtOnce) return 0;
-			
-			Object aTileEntity2 = aTarget;
-			if (aTarget instanceof DelegatorTileEntity) aTileEntity2 = ((DelegatorTileEntity)aTarget).mTileEntity;
-			
-			int[] tGrabSlots = null;
-			if (aTileEntity1 instanceof ISidedInventory) tGrabSlots = ((ISidedInventory)aTileEntity1).getAccessibleSlotsFromSide(aGrabFrom);
-			if (tGrabSlots == null) tGrabSlots = Code.getAscendingArray(aTileEntity1.getSizeInventory());
-			
-			if (aTileEntity2 instanceof IInventory) {
-				int[] tPutSlots = null;
-				if (aTileEntity2 instanceof ISidedInventory) tPutSlots = ((ISidedInventory)aTileEntity2).getAccessibleSlotsFromSide(aPutTo);
-				
-				if (tPutSlots == null) {
-					tPutSlots = new int[((IInventory)aTileEntity2).getSizeInventory()];
-					for (int i = 0; i < tPutSlots.length; i++) tPutSlots[i] = i;
-				}
-				
-				for (int i = 0; i < tGrabSlots.length; i++) {
-					for (int j = 0; j < tPutSlots.length; j++) {
-						if (ST.listed(aFilter, aTileEntity1.getStackInSlot(tGrabSlots[i]), T, aInvertFilter)) {
-							if (isAllowedToTakeFromSlot(aTileEntity1, tGrabSlots[i], aGrabFrom, aTileEntity1.getStackInSlot(tGrabSlots[i]))) {
-								if (isAllowedToPutIntoSlot((IInventory)aTileEntity2, tPutSlots[j], aPutTo, aTileEntity1.getStackInSlot(tGrabSlots[i]), aMaxTargetStackSize)) {
-									byte tMovedItemCount = moveStackFromSlotAToSlotB(aTileEntity1, (IInventory)aTileEntity2, tGrabSlots[i], tPutSlots[j], aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce);
-									if (tMovedItemCount > 0) return tMovedItemCount;
-								}
-							}
-						}
-					}
-				}
-				
-				if (aDoCheckChests) {
-					if (aTileEntity1 instanceof TileEntityChest) {
-						TileEntityChest tTileEntity1 = (TileEntityChest)aTileEntity1;
-						if (tTileEntity1.adjacentChestChecked) {
-							byte tAmount = 0;
-							if (tTileEntity1.adjacentChestXNeg != null) {
-								tAmount = moveOneItemStack(tTileEntity1.adjacentChestXNeg, aTileEntity2, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, F);
-							} else if (tTileEntity1.adjacentChestZNeg != null) {
-								tAmount = moveOneItemStack(tTileEntity1.adjacentChestZNeg, aTileEntity2, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, F);
-							} else if (tTileEntity1.adjacentChestXPos != null) {
-								tAmount = moveOneItemStack(tTileEntity1.adjacentChestXPos, aTileEntity2, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, F);
-							} else if (tTileEntity1.adjacentChestZPos != null) {
-								tAmount = moveOneItemStack(tTileEntity1.adjacentChestZPos, aTileEntity2, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, F);
-							}
-							if (tAmount != 0) return tAmount;
-						}
-					}
-					if (aTileEntity2 instanceof TileEntityChest) {
-						TileEntityChest tTileEntity2 = (TileEntityChest)aTileEntity2;
-						if (tTileEntity2.adjacentChestChecked) {
-							byte tAmount = 0;
-							if (tTileEntity2.adjacentChestXNeg != null) {
-								tAmount = moveOneItemStack(aTileEntity1, tTileEntity2.adjacentChestXNeg, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, F);
-							} else if (tTileEntity2.adjacentChestZNeg != null) {
-								tAmount = moveOneItemStack(aTileEntity1, tTileEntity2.adjacentChestZNeg, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, F);
-							} else if (tTileEntity2.adjacentChestXPos != null) {
-								tAmount = moveOneItemStack(aTileEntity1, tTileEntity2.adjacentChestXPos, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, F);
-							} else if (tTileEntity2.adjacentChestZPos != null) {
-								tAmount = moveOneItemStack(aTileEntity1, tTileEntity2.adjacentChestZPos, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce, F);
-							}
-							if (tAmount != 0) return tAmount;
-						}
-					}
-				}
-			}
-			
-			return moveStackIntoPipe(aTileEntity1, aTarget, tGrabSlots, aGrabFrom, aPutTo, aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce);
-		}
-		
-		/**
-		 * Moves Stack from Inv-Side to Inv-Slot.
-		 * @return the Amount of moved Items
-		 */
-		@SuppressWarnings("rawtypes")
-		public static byte moveOneItemStackIntoSlot(Object aTileEntity1, Object aTarget, byte aGrabFrom, int aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
-			if (aTileEntity1 == null || !(aTileEntity1 instanceof IInventory) || aPutTo < 0 || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMaxMoveAtOnce <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMinMoveAtOnce > aMaxMoveAtOnce) return 0;
-			
-			Object aTileEntity2 = aTarget;
-			if (aTarget instanceof DelegatorTileEntity) aTileEntity2 = ((DelegatorTileEntity)aTarget).mTileEntity;
-			
-			int[] tGrabSlots = null;
-			if (aTileEntity1 instanceof ISidedInventory) tGrabSlots = ((ISidedInventory)aTileEntity1).getAccessibleSlotsFromSide(aGrabFrom);
-			if (tGrabSlots == null) tGrabSlots = Code.getAscendingArray(((IInventory)aTileEntity1).getSizeInventory());
-			
-			if (aTileEntity2 != null && aTileEntity2 instanceof IInventory) {
-				for (int i = 0; i < tGrabSlots.length; i++) {
-					if (ST.listed(aFilter, ((IInventory)aTileEntity1).getStackInSlot(tGrabSlots[i]), T, aInvertFilter)) {
-						if (isAllowedToTakeFromSlot((IInventory)aTileEntity1, tGrabSlots[i], aGrabFrom, ((IInventory)aTileEntity1).getStackInSlot(tGrabSlots[i]))) {
-							if (isAllowedToPutIntoSlot((IInventory)aTileEntity2, aPutTo, SIDE_ANY, ((IInventory)aTileEntity1).getStackInSlot(tGrabSlots[i]), aMaxTargetStackSize)) {
-								byte tMovedItemCount = moveStackFromSlotAToSlotB((IInventory)aTileEntity1, (IInventory)aTileEntity2, tGrabSlots[i], aPutTo, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce);
-								if (tMovedItemCount > 0) return tMovedItemCount;
-							}
-						}
-					}
-				}
-			}
-			
-			moveStackIntoPipe(((IInventory)aTileEntity1), aTarget, tGrabSlots, aGrabFrom, OPPOSITES[aGrabFrom], aFilter, aInvertFilter, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce);
-			return 0;
-		}
-		
-		/**
-		 * Moves Stack from Inv-Slot to Inv-Slot.
-		 * @return the Amount of moved Items
-		 */
-		public static byte moveFromSlotToSlot(IInventory aTileEntity1, IInventory aTileEntity2, int aGrabFrom, int aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {
-			if (aTileEntity1 == null || aTileEntity2 == null || aGrabFrom < 0 || aPutTo < 0 || aMaxTargetStackSize <= 0 || aMinTargetStackSize <= 0 || aMaxMoveAtOnce <= 0 || aMinTargetStackSize > aMaxTargetStackSize || aMinMoveAtOnce > aMaxMoveAtOnce) return 0;
-			if (ST.listed(aFilter, aTileEntity1.getStackInSlot(aGrabFrom), T, aInvertFilter)) {
-				if (isAllowedToTakeFromSlot(aTileEntity1, aGrabFrom, SIDE_UNKNOWN, aTileEntity1.getStackInSlot(aGrabFrom))) {
-					if (isAllowedToPutIntoSlot(aTileEntity2, aPutTo, SIDE_UNKNOWN, aTileEntity1.getStackInSlot(aGrabFrom), aMaxTargetStackSize)) {
-						byte tMovedItemCount = moveStackFromSlotAToSlotB(aTileEntity1, aTileEntity2, aGrabFrom, aPutTo, aMaxTargetStackSize, aMinTargetStackSize, aMaxMoveAtOnce, aMinMoveAtOnce);
-						if (tMovedItemCount > 0) return tMovedItemCount;
-					}
-				}
-			}
-			return 0;
-		}
+		@Deprecated public static boolean isConnectableNonInventoryPipe(Object aTileEntity, int aSide) {return F;}
+		@Deprecated public static byte moveStackIntoPipe(IInventory aTileEntity1, Object aTarget, int[] aGrabSlots, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
+		@Deprecated public static byte moveStackFromSlotAToSlotB(IInventory aTileEntity, IInventory aTarget, int aGrabFrom, int aPutTo, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
+		@Deprecated public static boolean isAllowedToTakeFromSlot(IInventory aTileEntity, int aSlot, byte aSide, ItemStack aStack) {return F;}
+		@Deprecated public static boolean isAllowedToPutIntoSlot(IInventory aTileEntity, int aSlot, byte aSide, ItemStack aStack, int aMaxStackSize) {return F;}
+		@Deprecated public static byte moveOneItemStack(Object aTileEntity1, Object aTileEntity2, byte aGrabFrom, byte aPutTo) {return 0;}
+		@Deprecated public static byte moveOneItemStack(Object aTileEntity1, Object aTileEntity2, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
+		@Deprecated public static byte moveOneItemStackIntoSlot(Object aTileEntity1, Object aTarget, byte aGrabFrom, int aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
+		@Deprecated public static byte moveFromSlotToSlot(IInventory aTileEntity1, IInventory aTileEntity2, int aGrabFrom, int aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
 		
 		public static void removeNullStacksFromInventory(IInventory aInventory) {
 			if (aInventory != null) for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {

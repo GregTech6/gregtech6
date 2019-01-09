@@ -71,7 +71,7 @@ public class MultiTileEntityEnderGarbageDump extends TileEntityBase07Paintable i
 		if (aIsServerSide) {
 			DelegatorTileEntity<TileEntity> tDelegate = getAdjacentTileEntity(SIDE_BOTTOM, T, F);
 			if (!(tDelegate.mTileEntity instanceof MultiTileEntityEnderGarbageBin)) {
-				if (!GarbageGT.GARBAGE_ITEMS.isEmpty()) UT.Inventories.moveOneItemStack(this, tDelegate, SIDE_ANY, tDelegate.mSideOfTileEntity);
+				if (!GarbageGT.GARBAGE_ITEMS.isEmpty()) ST.move(new DelegatorTileEntity<>(this, SIDE_BOTTOM), tDelegate);
 				if (!GarbageGT.GARBAGE_FLUIDS.isEmpty()) if (tDelegate.mTileEntity instanceof IFluidHandler) UT.Fluids.move_(GarbageGT.GARBAGE_FLUIDS, tDelegate);
 			}
 		}
