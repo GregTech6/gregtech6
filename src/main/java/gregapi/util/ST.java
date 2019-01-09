@@ -540,7 +540,7 @@ public class ST {
 		return T;
 	}
 	public static boolean canTake_(IInventory aFrom, byte aSideFrom, int aSlotFrom, ItemStack aStackFrom) {
-		return !(aFrom instanceof ISidedInventory || ((ISidedInventory)aFrom).canExtractItem(aSlotFrom, aStackFrom, aSideFrom));
+		return !(aFrom instanceof ISidedInventory) || ((ISidedInventory)aFrom).canExtractItem(aSlotFrom, aStackFrom, aSideFrom);
 	}
 	
 	
@@ -569,7 +569,7 @@ public class ST {
 		return canPut_(aTo, aSideTo, aSlotTo, aStackFrom) ? rMaxMove : 0;
 	}
 	public static boolean canPut_(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom) {
-		return (!(aTo instanceof ISidedInventory || ((ISidedInventory)aTo).canInsertItem(aSlotTo, aStackFrom, aSideTo))) && aTo.isItemValidForSlot(aSlotTo, aStackFrom);
+		return (!(aTo instanceof ISidedInventory) || ((ISidedInventory)aTo).canInsertItem(aSlotTo, aStackFrom, aSideTo)) && aTo.isItemValidForSlot(aSlotTo, aStackFrom);
 	}
 	public static int canPut_(IInventory aTo, int aSlotTo, ItemStack aStackFrom, int aMaxSize) {
 		return canPut_(aTo, aSlotTo, aStackFrom, aTo.getStackInSlot(aSlotTo), aMaxSize);
@@ -582,38 +582,34 @@ public class ST {
 	public static int put(DelegatorTileEntity<IInventory> aFrom, int[] aSlotsFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, boolean aIgnoreSideFrom, int aMaxMove, int aMinMove) {
 		if (aTo.mTileEntity != null) {
 			if (TE_PIPES && aTo.mTileEntity instanceof cofh.api.transport.IItemDuct) {
-				for (int i = 0; i < aSlotsFrom.length; i++) {
-					ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotsFrom[i]);
-					if (aMinMove <= aStackFrom.stackSize) {
-						if (canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotsFrom[i], aStackFrom)) {
-							// Actually Moving the Stack
-							ItemStack tStackMoved = amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom);
-							ItemStack rStackMoved = ((cofh.api.transport.IItemDuct)aTo.mTileEntity).insertItem(aTo.getForgeSideOfTileEntity(), copy(tStackMoved));
-							byte rMoved = (byte)(tStackMoved.stackSize - (rStackMoved == null ? 0 : rStackMoved.stackSize));
-							if (rMoved > 0) {
-								aFrom.mTileEntity.decrStackSize(aSlotsFrom[i], rMoved);
-								aFrom.mTileEntity.markDirty();
-								return rMoved;
-							}
+				for (int aSlotFrom : aSlotsFrom) {
+					ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotFrom);
+					if (aStackFrom != null && aMinMove <= aStackFrom.stackSize && canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) {
+						// Actually Moving the Stack
+						ItemStack tStackMoved = amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom);
+						ItemStack rStackMoved = ((cofh.api.transport.IItemDuct)aTo.mTileEntity).insertItem(aTo.getForgeSideOfTileEntity(), copy(tStackMoved));
+						int rMoved = (tStackMoved.stackSize - (rStackMoved == null ? 0 : rStackMoved.stackSize));
+						if (rMoved > 0) {
+							aFrom.mTileEntity.decrStackSize(aSlotFrom, rMoved);
+							aFrom.mTileEntity.markDirty();
+							return rMoved;
 						}
 					}
 				}
 				return 0;
 			}
 			if (BC_PIPES && aTo.mTileEntity instanceof buildcraft.api.transport.IInjectable) {
-				for (int i = 0; i < aSlotsFrom.length; i++) {
-					ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotsFrom[i]);
-					if (aMinMove <= aStackFrom.stackSize) {
-						if (canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotsFrom[i], aStackFrom)) {
-							// Actually Moving the Stack
-							ItemStack tStackMoved = amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom);
-							byte rMoved = (byte)((buildcraft.api.transport.IInjectable)aTo.mTileEntity).injectItem(copy(tStackMoved), F, aTo.getForgeSideOfTileEntity(), null);
-							if (rMoved >= aMinMove) {
-								rMoved = (byte)(((buildcraft.api.transport.IInjectable)aTo.mTileEntity).injectItem(amount(rMoved, tStackMoved), T, aTo.getForgeSideOfTileEntity(), null));
-								aFrom.mTileEntity.decrStackSize(aSlotsFrom[i], rMoved);
-								aFrom.mTileEntity.markDirty();
-								return rMoved;
-							}
+				for (int aSlotFrom : aSlotsFrom) {
+					ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotFrom);
+					if (aStackFrom != null && aMinMove <= aStackFrom.stackSize && canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) {
+						// Actually Moving the Stack
+						ItemStack tStackMoved = amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom);
+						int rMoved = ((buildcraft.api.transport.IInjectable)aTo.mTileEntity).injectItem(copy(tStackMoved), F, aTo.getForgeSideOfTileEntity(), null);
+						if (rMoved >= aMinMove) {
+							rMoved = (((buildcraft.api.transport.IInjectable)aTo.mTileEntity).injectItem(amount(rMoved, tStackMoved), T, aTo.getForgeSideOfTileEntity(), null));
+							aFrom.mTileEntity.decrStackSize(aSlotFrom, rMoved);
+							aFrom.mTileEntity.markDirty();
+							return rMoved;
 						}
 					}
 				}
@@ -623,31 +619,26 @@ public class ST {
 		
 		Block aBlock = aTo.getBlock();
 		if (aBlock.getMaterial() == Material.lava || aBlock instanceof BlockFire || (aBlock == NB && aTo.mY < 1)) {
-			for (int i = 0; i < aSlotsFrom.length; i++) {
-				ItemStack aStack = aFrom.mTileEntity.getStackInSlot(aSlotsFrom[i]);
-				if (aMinMove <= aStack.stackSize) {
-					if (canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotsFrom[i], aStack)) {
-						// Actually Moving the Stack
-						ItemStack tStack = amount(Math.min(aStack.stackSize, aMaxMove), aStack);
-						GarbageGT.trash(tStack);
-						aFrom.mTileEntity.decrStackSize(aSlotsFrom[i], tStack.stackSize);
-						aFrom.mTileEntity.markDirty();
-						return (byte)tStack.stackSize;
-					}
+			for (int aSlotFrom : aSlotsFrom) {
+				ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotFrom);
+				if (aStackFrom != null && aMinMove <= aStackFrom.stackSize && canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) {
+					// Actually Moving the Stack
+					int rMoved = GarbageGT.trash(amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom));
+					aFrom.mTileEntity.decrStackSize(aSlotFrom, rMoved);
+					aFrom.mTileEntity.markDirty();
+					return rMoved;
 				}
 			}
 		} else if (!WD.hasCollide(aTo.mWorld, aTo.mX, aTo.mY, aTo.mZ, aBlock)) {
-			for (int i = 0; i < aSlotsFrom.length; i++) {
-				ItemStack aStack = aFrom.mTileEntity.getStackInSlot(aSlotsFrom[i]);
-				if (aMinMove <= aStack.stackSize) {
-					if (canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotsFrom[i], aStack)) {
-						// Actually Moving the Stack
-						ItemStack tStack = amount(Math.min(aStack.stackSize, aMaxMove), aStack);
-						place(aTo.mWorld, aTo.mX+0.5, aTo.mY+0.5, aTo.mZ+0.5, tStack);
-						aFrom.mTileEntity.decrStackSize(aSlotsFrom[i], tStack.stackSize);
-						aFrom.mTileEntity.markDirty();
-						return (byte)tStack.stackSize;
-					}
+			for (int aSlotFrom : aSlotsFrom) {
+				ItemStack aStackFrom = aFrom.mTileEntity.getStackInSlot(aSlotFrom);
+				if (aStackFrom != null && aMinMove <= aStackFrom.stackSize && canTake(aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) {
+					// Actually Moving the Stack
+					ItemStack tStack = amount(Math.min(aStackFrom.stackSize, aMaxMove), aStackFrom);
+					place(aTo.mWorld, aTo.mX+0.5, aTo.mY+0.5, aTo.mZ+0.5, tStack);
+					aFrom.mTileEntity.decrStackSize(aSlotFrom, tStack.stackSize);
+					aFrom.mTileEntity.markDirty();
+					return tStack.stackSize;
 				}
 			}
 		}
