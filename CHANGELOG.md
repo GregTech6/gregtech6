@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.09.24: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.09.23: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.09.22: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -21,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.17: (Not released yet)
+6.09.17:
 [WARNING]
 This Version needs excessive Testing for Item Movement related things in GT6, such as Item Pipes, Covers moving Items, Internal Inventory Management of the GT6 Crafting Tables and Hoppers, and more!
 Be careful! I tested a lot of them for their basic Functionality and they seem to still work, but who knows!
