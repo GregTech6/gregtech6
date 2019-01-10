@@ -781,18 +781,30 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public int invsize() {return 0;}
 	public NBTTagCompound slotNBT(int aIndex) {return null;}
 	
+	// Connectable Inventories
+	
+	public int[] getAccessibleSlotsOfConnectedInventory() {return UT.Code.getAscendingArray(invsize());}
+	
 	public int addStackToConnectedInventory(byte aSide, ItemStack aStack, boolean aOnlyAddIfItAlreadyHasItemsOfThatTypeOrIsDedicated) {
 		if (ST.invalid(aStack)) return 0;
-		int rCount = 0;
-		for (int i = 0, j = invsize(); i < j; i++) if (ST.equal(slot(i), aStack)) {
+		int rCount = 0, aCount = aStack.stackSize;
+		for (int tSlot : getAccessibleSlotsOfConnectedInventory()) if (ST.equal(slot(tSlot), aStack)) {
 			aOnlyAddIfItAlreadyHasItemsOfThatTypeOrIsDedicated = F;
-			int tChange = Math.min(aStack.stackSize, slot(i).getMaxStackSize() - slot(i).stackSize);
-			slot(i).stackSize += tChange;
+			int tChange = Math.min(aCount, slot(tSlot).getMaxStackSize() - slot(tSlot).stackSize);
+			slot(tSlot).stackSize += tChange;
 			rCount += tChange;
+			aCount -= tChange;
+			if (aCount <= 0) {
+				updateInventory();
+				return rCount;
+			}
 		}
-		if (!aOnlyAddIfItAlreadyHasItemsOfThatTypeOrIsDedicated) for (int i = 0, j = invsize(); i < j; i++) if (!slotHas(i)) {
-			slot(i, ST.amount(aStack.stackSize-rCount, aStack));
-			return aStack.stackSize;
+		if (!aOnlyAddIfItAlreadyHasItemsOfThatTypeOrIsDedicated) for (int tSlot : getAccessibleSlotsOfConnectedInventory()) if (!slotHas(tSlot)) {
+			slot(tSlot, ST.amount(aCount, aStack));
+			rCount += aCount;
+			aCount = 0;
+			updateInventory();
+			return rCount;
 		}
 		if (rCount > 0) updateInventory();
 		return rCount;
@@ -802,12 +814,15 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		if (ST.invalid(aStack)) return 0;
 		int rCount = 0;
 		if (!aOnlyRemoveIfItCanRemoveAllAtOnce || getAmountOfItemsInConnectedInventory(aSide, aStack, aStack.stackSize) >= aStack.stackSize) {
-			for (int i = 0, j = invsize(); i < j; i++) if (ST.equal(slot(i), aStack)) {
-				int tChange = Math.min(aStack.stackSize - rCount, slot(i).stackSize);
-				slot(i).stackSize -= tChange;
-				if (slot(i).stackSize <= 0) slotKill(i);
+			for (int tSlot : getAccessibleSlotsOfConnectedInventory()) if (ST.equal(slot(tSlot), aStack)) {
+				int tChange = Math.min(aStack.stackSize - rCount, slot(tSlot).stackSize);
+				slot(tSlot).stackSize -= tChange;
+				if (slot(tSlot).stackSize <= 0) slotKill(tSlot);
 				rCount += tChange;
-				if (rCount >= aStack.stackSize) break;
+				if (rCount >= aStack.stackSize) {
+					updateInventory();
+					return rCount;
+				}
 			}
 		}
 		if (rCount > 0) updateInventory();
@@ -817,7 +832,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public long getAmountOfItemsInConnectedInventory(byte aSide, ItemStack aStack, long aStopCountingAtThisNumber) {
 		if (ST.invalid(aStack)) return 0;
 		long rCount = 0;
-		for (int i = 0, j = invsize(); i < j; i++) if (ST.equal(slot(i), aStack) && (rCount += slot(i).stackSize) >= aStopCountingAtThisNumber) break;
+		for (int tSlot : getAccessibleSlotsOfConnectedInventory()) if (ST.equal(slot(tSlot), aStack) && (rCount += slot(tSlot).stackSize) >= aStopCountingAtThisNumber) break;
 		return rCount;
 	}
 	

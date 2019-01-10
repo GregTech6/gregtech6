@@ -616,7 +616,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 							if (aMouseclick == 0) {
 								// SHIFT LEFTCLICK
 								for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-									if (aPlayer.inventory.mainInventory[i] == null || tCraftedStack.stackSize + aPlayer.inventory.mainInventory[i].stackSize <= aPlayer.inventory.mainInventory[i].getMaxStackSize()) {
+									if (aPlayer.inventory.mainInventory[i] == null || (ST.equal(tCraftedStack, aPlayer.inventory.mainInventory[i]) && tCraftedStack.stackSize + aPlayer.inventory.mainInventory[i].stackSize <= aPlayer.inventory.mainInventory[i].getMaxStackSize())) {
 										boolean temp = F;
 										for (int j = 0; j < tCraftedStack.getMaxStackSize() / tCraftedStack.stackSize && ((MultiTileEntityAdvancedCraftingTable)mTileEntity).canDoCraftingOutput(); j++) {
 											if (!ST.equal(tStack = ((MultiTileEntityAdvancedCraftingTable)mTileEntity).getCraftingOutput(), tCraftedStack) || tStack.stackSize != tCraftedStack.stackSize) {
@@ -633,7 +633,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 							}
 							// SHIFT RIGHTCLICK
 							for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-								if (aPlayer.inventory.mainInventory[i] == null || tCraftedStack.stackSize + aPlayer.inventory.mainInventory[i].stackSize <= aPlayer.inventory.mainInventory[i].getMaxStackSize()) {
+								if (aPlayer.inventory.mainInventory[i] == null || (ST.equal(tCraftedStack, aPlayer.inventory.mainInventory[i]) && tCraftedStack.stackSize + aPlayer.inventory.mainInventory[i].stackSize <= aPlayer.inventory.mainInventory[i].getMaxStackSize())) {
 									for (int j = 0; j < tCraftedStack.getMaxStackSize() / tCraftedStack.stackSize && ((MultiTileEntityAdvancedCraftingTable)mTileEntity).canDoCraftingOutput(); j++) {
 										if (!ST.equal(tStack = ((MultiTileEntityAdvancedCraftingTable)mTileEntity).getCraftingOutput(), tCraftedStack) || tStack.stackSize != tCraftedStack.stackSize) {
 											detectAndSendChanges();

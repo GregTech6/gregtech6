@@ -27,6 +27,7 @@ This Version needs excessive Testing for Item Movement related things in GT6, su
 Be careful! I tested a lot of them for their basic Functionality and they seem to still work, but who knows!
 [FIXED] Aluminium-Hydroxide to Alumina Smelting is now fixed and doesnt x2 Aluminium anymore. So it Outputs only half as much Alumina. That was a Maths Hiccup on my end back then.
 [FIXED] Robot Arm Cover not working properly in certain cases. (Trying to fix this prompted me to use the Freetime I didn't waste on Factorio to actually fix the whole Inventory Item Movement System)
+[FIXED] A bunch of Bugs inside the Advanced Crafting Table.
 
 
 6.09.16:
