@@ -109,7 +109,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000}, crushedPurified    .mat(tMat, 1), new FluidStack[] {MT.H2SO4.fluid(7* U2, T)}, new FluidStack[] {MT.GreenVitriol.fluid(3*U, F), MT.H.gas(U, F)}, crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 3));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000}, crushedPurifiedTiny.mat(tMat, 9), new FluidStack[] {MT.H2SO4.fluid(7* U2, T)}, new FluidStack[] {MT.GreenVitriol.fluid(3*U, F), MT.H.gas(U, F)}, crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 3));
 		}
-		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Cu, MT.Au, MT.Nikolite, MT.Teslatite, MT.Electrotine, MT.OREMATS.Malachite, MT.OREMATS.Chalcopyrite, MT.OREMATS.Tetrahedrite}) {
+		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Cu, MT.Au, MT.Nikolite, MT.Teslatite, MT.Electrotine, MT.Azurite, MT.OREMATS.Malachite, MT.OREMATS.Chalcopyrite, MT.OREMATS.Tetrahedrite}) {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000}, crushedPurified    .mat(tMat, 1), new FluidStack[] {MT.H2SO4.fluid(7* U2, T)}, new FluidStack[] {MT.BlueVitriol.fluid(3*U, F), MT.H.gas(U, F)}, crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 3));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000}, crushedPurifiedTiny.mat(tMat, 9), new FluidStack[] {MT.H2SO4.fluid(7* U2, T)}, new FluidStack[] {MT.BlueVitriol.fluid(3*U, F), MT.H.gas(U, F)}, crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(tMat, 3));
 		}

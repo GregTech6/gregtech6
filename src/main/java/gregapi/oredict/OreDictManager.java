@@ -43,8 +43,10 @@ import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.item.IItemGT;
 import gregapi.item.IPrefixItem;
-import gregapi.oredict.IOreDictListenerEvent.OreDictRegistrationContainer;
-import gregapi.oredict.IOreDictRecyclableListener.OreDictRecyclingContainer;
+import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.oredict.event.IOreDictListenerRecyclable;
+import gregapi.oredict.event.IOreDictListenerEvent.OreDictRegistrationContainer;
+import gregapi.oredict.event.IOreDictListenerRecyclable.OreDictRecyclingContainer;
 import gregapi.recipes.Recipe;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -75,7 +77,7 @@ public final class OreDictManager {
 	private final Set<OreDictRegistrationContainer> mGlobalRegistrations = new HashSetNoNulls<>();
 	
 	/** These Listeners always get notified if an Item gets a recyclable ItemData Tag attached to it. */
-	private final Set<IOreDictRecyclableListener> mRecyclableOreDictListeners = new HashSetNoNulls<>();
+	private final Set<IOreDictListenerRecyclable> mRecyclableOreDictListeners = new HashSetNoNulls<>();
 	private final Set<OreDictRecyclingContainer> mRecyclableRegistrations = new HashSetNoNulls<>();
 	
 	/** Put OreDict Strings which should be registered as something else, right here using addReRegistration */
@@ -146,12 +148,12 @@ public final class OreDictManager {
 	 * This Function adds a global Listener for Recycling Events. These Events let you create Reversal Recipes inside your Machines, and contain all the Components, which can be recycled out of the passed ItemStack.
 	 * Unlike the Forge Event System, which replaced Eloraams better System, this Interface ensures, like the great old System, that also all the older Events, which have been called before your Listener-Registration, are getting passed onto your Listener.
 	 */
-	public void addListener(IOreDictRecyclableListener aListener) {
+	public void addListener(IOreDictListenerRecyclable aListener) {
 		if (GAPI.mStartedPostInit) addListenerInternal(aListener); else mBufferedListeners2.add(aListener);
 	}
 	
-	private Set<IOreDictRecyclableListener> mBufferedListeners2 = new HashSetNoNulls<>();
-	private void addListenerInternal(IOreDictRecyclableListener aListener) {
+	private Set<IOreDictListenerRecyclable> mBufferedListeners2 = new HashSetNoNulls<>();
+	private void addListenerInternal(IOreDictListenerRecyclable aListener) {
 		if (mRecyclableOreDictListeners.add(aListener)) for (OreDictRecyclingContainer tEvent : mRecyclableRegistrations) aListener.onRecycleableRegistration(new OreDictRecyclingContainer(tEvent));
 	}
 	
@@ -167,7 +169,7 @@ public final class OreDictManager {
 			UT.LoadingBar.step("Prefix Listeners");
 			for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) tPrefix.onPostLoad();
 			UT.LoadingBar.step("Recycling Listeners");
-			for (IOreDictRecyclableListener aListener : mBufferedListeners2) addListenerInternal(aListener);
+			for (IOreDictListenerRecyclable aListener : mBufferedListeners2) addListenerInternal(aListener);
 			mBufferedListeners2.clear();
 			mBufferedListeners2 = null;
 			UT.LoadingBar.finish();
@@ -602,7 +604,7 @@ public final class OreDictManager {
 		}
 		if (!aData.hasValidPrefixData() || aData.mPrefix.contains(TD.Prefix.RECYCLABLE)) {
 			OreDictRecyclingContainer tRegistration = new OreDictRecyclingContainer(aStack, aData);
-			for (IOreDictRecyclableListener tListener : mRecyclableOreDictListeners) tListener.onRecycleableRegistration(tRegistration);
+			for (IOreDictListenerRecyclable tListener : mRecyclableOreDictListeners) tListener.onRecycleableRegistration(tRegistration);
 			mRecyclableRegistrations.add(tRegistration);
 		}
 		return T;

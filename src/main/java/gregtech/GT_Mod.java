@@ -71,10 +71,10 @@ import gregapi.item.multiitem.behaviors.Behavior_Turn_Into;
 import gregapi.item.multiitem.behaviors.IBehavior;
 import gregapi.item.prefixitem.PrefixItem;
 import gregapi.network.NetworkHandler;
-import gregapi.oredict.IOreDictConfigurationComponent;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
+import gregapi.oredict.configurations.IOreDictConfigurationComponent;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.maps.RecipeMapReplicator;
 import gregapi.util.CR;
@@ -543,11 +543,18 @@ public class GT_Mod extends Abstract_Mod {
 			ORD.println("Materials:");
 			ORD.println("*"); ORD.println("*"); ORD.println("*");
 			
-			for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null) {
-				if (tMaterial.mToolTypes > 0) {
-					ORD.println(tMaterial.mNameInternal + "; T:" + tMaterial.mToolTypes + "; Q:" + tMaterial.mToolQuality + "; D:" + tMaterial.mToolDurability + "; S:" + tMaterial.mToolSpeed);
+			for (int i = 0; i < OreDictMaterial.MATERIAL_ARRAY.length; i++) {
+				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[i];
+				if (tMaterial == null) {
+					if (i >= 8000 && i < 10000) {
+						ORD.println(i + ": <RESERVED>");
+					}
 				} else {
-					ORD.println(tMaterial.mNameInternal);
+					if (tMaterial.mToolTypes > 0) {
+						ORD.println(i + ": " + tMaterial.mNameInternal + "; T:" + tMaterial.mToolTypes + "; Q:" + tMaterial.mToolQuality + "; D:" + tMaterial.mToolDurability + "; S:" + tMaterial.mToolSpeed);
+					} else {
+						ORD.println(i + ": " + tMaterial.mNameInternal);
+					}
 				}
 			}
 			

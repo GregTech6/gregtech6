@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.oredict;
+package gregapi.oredict.event;
 
 import static gregapi.data.CS.*;
 
@@ -25,6 +25,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.oredict.OreDictManager;
+import gregapi.oredict.OreDictPrefix;
 
 /**
  * @author Gregorius Techneticies

@@ -69,6 +69,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -768,6 +769,9 @@ public class CS {
 	
 	/** Gets set when the Player dies. Only works Client Side and gets lost when the Client restarts, but not when the Client just relogs. */
 	public static ChunkCoordinates LAST_DEATH_OF_THE_PLAYER = null;
+	
+	/** Gets set when a TileEntity gets broken, in order to be able to access it for Drops, even though it just got deleted. */
+	public static ThreadLocal<TileEntity> LAST_BROKEN_TILEENTITY = new ThreadLocal<>();
 	
 	/** If you have to give something a World Parameter but there is no World... (Dummy World) */
 	public static DummyWorld DW;

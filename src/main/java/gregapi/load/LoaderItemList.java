@@ -1178,7 +1178,7 @@ public class LoaderItemList implements Runnable {
 		IL.IC2_Food_Can_Spoiled                 .set(ST.mkic("filledTinCan"                                 , 1, 1));
 		IL.IC2_Food_Can_Poisonous               .set(ST.mkic("filledTinCan"                                 , 1, 2));
 		IL.IC2_Food_Can_Salmonella              .set(ST.mkic("filledTinCan"                                 , 1, 3));
-		IL.IC2_Industrial_Diamond               .set(ST.mkic("industrialDiamond"                            , 1, 0), OP.gem.dat(MT.TECH.DiamondIndustrial));
+		IL.IC2_Industrial_Diamond               .set(ST.mkic("industrialDiamond"                            , 1   ));
 		IL.IC2_Coal_Ball                        .set(ST.mkic("coalBall"                                     , 1   ), new OreDictItemData(MT.Coal, U*8));
 		IL.IC2_Compressed_Coal_Ball             .set(ST.mkic("compressedCoalBall"                           , 1   ), new OreDictItemData(MT.Coal, U*8));
 		IL.IC2_Compressed_Coal_Chunk            .set(ST.mkic("coalChunk"                                    , 1   ), new OreDictItemData(MT.Coal, U*64, MT.Obsidian, U*9));

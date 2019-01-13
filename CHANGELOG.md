@@ -1,32 +1,39 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
-6.09.24: (Not released yet)
+6.10.06: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.23: (Not released yet)
+6.10.05: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.22: (Not released yet)
+6.10.04: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.21: (Not released yet)
+6.10.03: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.20: (Not released yet)
+6.10.02: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.19: (Not released yet)
+6.10.01: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.09.18: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.10.00: (Not released yet)
+[FIXED] Chisels no longer work while sneaking, so now the Pocket Multitool is no longer accidentially doing Stuff.
+[FIXED] Placing Multiblock Parts next to an already formed Multiblock did not trigger a Force Reset for the Structural Checks. This was a problem for "expandable" Multiblocks like the Lightning Rod.
+[ADDED] Rocks now have a Tooltip stating that there is their Ore closeby, making it easier to know that they indicate Ores.
+[ADDED] Rotten Meat can now be used as an Ingredient for IC2 or Forestry Fertilizer.
+[ADDED] Phosphor containing Minerals such as Apatite can now be used for Flint and Tinder.
+
+
+//=== Version Number Jump due to slight changes in API ===//
 
 
 6.09.17:

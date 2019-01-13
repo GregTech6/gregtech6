@@ -28,10 +28,10 @@ import static gregapi.data.TD.Properties.*;
 import static gregapi.render.TextureSet.*;
 
 import gregapi.code.HashSetNoNulls;
-import gregapi.oredict.OreDictConfigurationComponent;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.configurations.OreDictConfigurationComponent;
 import gregapi.render.TextureSet;
 import gregapi.util.OM;
 import net.minecraft.enchantment.Enchantment;
@@ -995,6 +995,7 @@ public class MT {
 	
 	
 	Diamond                 = diamond       ( 8300, "Diamond"               , SET_DIAMOND           , 200, 255, 255, DYE_INDEX_White      )                                                                                                                             .uumMcfg( 1, C              , 4*U)                                                                                                                          ,
+	DiamondIndustrial       = diamond       ( 8423, "DiamondIndustrial"     , SET_DIAMOND           , 255, 255, 210, DYE_INDEX_Yellow     )                                                                                                                             .uumMcfg( 1, C              , 4*U)                                                                                                                          .aspects(TC.FABRICO    , 2).qual(3,  9.0,  1440,  3).setLocal("Industrial Diamond"),
 	ManaDiamond             = diamond       ( 8278, "Mana Diamond"          , SET_DIAMOND           , 128, 255, 255, DYE_INDEX_Cyan       ).put(MAGICAL, UNBURNABLE)                                                                                                    .setMcfg( 1, C              , 4*U, Ma               , 1*U)                                                                                                  .aspects(TC.PRAECANTIO , 2).qual(3, 10.0,  1280,  3),
 	ElvenDragonstone        = diamond       ( 8279, "Elven Dragonstone"     , SET_DIAMOND           , 240, 140, 240, DYE_INDEX_Magenta    ).put(MAGICAL, UNBURNABLE)                                                                                                    .setMcfg( 1, C              , 4*U, Ma               , 2*U)                                                                                                  .aspects(TC.PRAECANTIO , 4).qual(3, 12.0,  1280,  3).setLocal("Dragonstone"),
 	
@@ -1024,7 +1025,7 @@ public class MT {
 	Almandine               = garnet        ( 9101, "Almandine"             , SET_RUBY              , 255,   0,   0, DYE_INDEX_Red        ).put("GarnetRed")                                                                                                            .uumMcfg( 0, Al2O3          , 5*U, Fe               , 3*U, SiO2             , 9*U, O                , 3*U)                                                  .aspects(TC.METALLUM   , 1),
 	Grossular               = garnet        ( 9119, "Grossular"             , SET_RUBY              , 200, 100,   0, DYE_INDEX_Orange     ).put("GarnetOrange")                                                                                                         .uumMcfg( 0, Al2O3          , 5*U, Ca               , 3*U, SiO2             , 9*U, O                , 3*U)                                                  .aspects(TC.VOLATUS    , 1),
 	Pyrope                  = garnet        ( 9127, "Pyrope"                , SET_RUBY              , 120,  50, 100, DYE_INDEX_Purple     ).put("GarnetPurple")                                                                                                         .uumMcfg( 0, Al2O3          , 5*U, Mg               , 3*U, SiO2             , 9*U, O                , 3*U)                                                  .aspects(TC.SANO       , 1),
-	Spessartine             = garnet        ( 9129, "Spessartine"           , SET_RUBY              , 255, 100, 100, DYE_INDEX_Red        )                                                                                                                             .uumMcfg( 0, Al2O3          , 5*U, Mn               , 3*U, SiO2             , 9*U, O                , 3*U)                                                  .aspects(TC.METALLUM   , 1),
+	Spessartine             = garnet        ( 9129, "Spessartine"           , SET_RUBY              , 255, 100, 100, DYE_INDEX_Red        ).put("Garnet")                                                                                                               .uumMcfg( 0, Al2O3          , 5*U, Mn               , 3*U, SiO2             , 9*U, O                , 3*U)                                                  .aspects(TC.METALLUM   , 1),
 	Andradite               = garnet        ( 9102, "Andradite"             , SET_RUBY              , 150, 120,   0, DYE_INDEX_Yellow     ).put("GarnetYellow")                                                                                                         .uumMcfg( 0, Ca             , 3*U, Fe               , 2*U, SiO2             , 9*U, O                , 6*U)                                                  .aspects(TC.TUTAMEN    , 1),
 	Uvarovite               = garnet        ( 9135, "Uvarovite"             , SET_RUBY              , 180, 255, 180, DYE_INDEX_Lime       ).put("GarnetGreen")                                                                                                          .uumMcfg( 0, Ca             , 3*U, Cr               , 2*U, SiO2             , 9*U, O                , 6*U)                                                  .aspects(TC.MACHINA    , 1),
 	
@@ -1420,8 +1421,7 @@ public class MT {
 		Unknown                     = invalid("Unknown"                     ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT),
 		Cobblestone                 = invalid("Cobblestone"                 ).put(IGNORE_IN_COLOR_LOG, DONT_SHOW_THIS_COMPONENT).put(UNRECYCLABLE),
 		
-		DiamondIndustrial           = invalid("DiamondIndustrial"           ).stealLooks(Diamond    ).steal(Diamond     ).setLocal("Industrial Diamond" ).setAllToTheOutputOf(Diamond   ).put(IGNORE_IN_COLOR_LOG, AUTO_BLACKLIST, CRYSTAL, BRITTLE, VALUABLE, DECOMPOSABLE).addReRegistrations(Diamond),
-		RefinedIron                 = invalid("RefinedIron"                 ).stealLooks(HSLA       ).steal(WroughtIron ).setLocal("Refined Iron"       ).setAllToTheOutputOf(Fe        ).put(IGNORE_IN_COLOR_LOG, SMITHABLE, MELTING).addReRegistrationToThis(WroughtIron);
+		RefinedIron                 = invalid("RefinedIron"                 ).stealLooks(HSLA).steal(WroughtIron).setLocal("Refined Iron").setAllToTheOutputOf(Fe).put(IGNORE_IN_COLOR_LOG, SMITHABLE, MELTING).addReRegistrationToThis(WroughtIron);
 		
 		static {
 			ANY.init();

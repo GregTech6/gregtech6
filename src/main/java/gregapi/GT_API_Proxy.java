@@ -77,11 +77,11 @@ import gregapi.item.multiitem.MultiItemTool;
 import gregapi.network.packets.PacketConfig;
 import gregapi.network.packets.PacketDeathPoint;
 import gregapi.network.packets.PacketPrefix;
-import gregapi.oredict.IOreDictListenerItem;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.OreDictPrefix;
+import gregapi.oredict.listeners.IOreDictListenerItem;
 import gregapi.player.EntityFoodTracker;
 import gregapi.tileentity.ITileEntityGUI;
 import gregapi.tileentity.ITileEntityNeedsSaving;
@@ -224,6 +224,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent
 	public void onServerTick(ServerTickEvent aEvent) {
 		if (aEvent.side.isServer()) {
+			
+			// Making sure it is being free'd up in order to prevent exploits or Garbage Collection mishaps.
+			LAST_BROKEN_TILEENTITY.set(null);
+			
 			if (aEvent.phase == Phase.START) {
 				if (SERVER_TIME++ == 0) {
 					HashSetNoNulls<ItemStack> tStacks = new HashSetNoNulls<>(10000);

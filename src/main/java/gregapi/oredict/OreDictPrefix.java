@@ -44,6 +44,8 @@ import gregapi.data.TD;
 import gregapi.item.IItemGT;
 import gregapi.item.IPrefixItem;
 import gregapi.item.multiitem.MultiItemRandom;
+import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.oredict.listeners.IOreDictListenerItem;
 import gregapi.recipes.AdvancedCrafting1ToY;
 import gregapi.recipes.AdvancedCraftingXToY;
 import gregapi.render.TextureSet;

@@ -35,10 +35,10 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.oredict.IOreDictListenerEvent;
 import gregapi.oredict.OreDictItemData;
-import gregapi.oredict.OreDictListenerEvent_Names;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -386,6 +386,8 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), OM.dust(MT.DarkAsh, U*4), IL.FR_Fertilizer.get(16));
 		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), OM.dust(MT.VolcanicAsh, U*4), IL.FR_Fertilizer.get(16));
 		
+		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), OM.dust(MT.MeatRotten), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), OM.dust(MT.MeatRotten), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), ST.make(Blocks.sand, 2, W), IL.FR_Fertilizer.get(8));

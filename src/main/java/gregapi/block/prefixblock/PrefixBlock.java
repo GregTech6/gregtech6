@@ -92,9 +92,6 @@ import net.minecraftforge.event.ForgeEventFactory;
  * @author Gregorius Techneticies
  */
 public class PrefixBlock extends Block implements Runnable, ITileEntityProvider, IBlockSyncData, IRenderedBlock, IBlockToolable, IPrefixBlock {
-	/** There are quite some odd timings in the Block breaking Code which require the TileEntity to be buffered. */
-	public static final ThreadLocal<PrefixBlockTileEntity> TEMP_TILEENTITY = new ThreadLocal<>();
-	
 	public Drops mDrops;
 	public boolean mRegisterToOreDict = T;
 	
@@ -376,9 +373,9 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override
 	public void onBlockExploded(World aWorld, int aX, int aY, int aZ, Explosion aExplosion) {
 		if (aWorld.isRemote) return;
-		TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-		if (tTileEntity instanceof PrefixBlockTileEntity) TEMP_TILEENTITY.set((PrefixBlockTileEntity)tTileEntity);
-		OreDictMaterial aMaterial = getMetaMaterial(tTileEntity);
+		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
+		if (aTileEntity != null) LAST_BROKEN_TILEENTITY.set(aTileEntity);
+		OreDictMaterial aMaterial = getMetaMaterial(aTileEntity);
 		aWorld.setBlockToAir(aX, aY, aZ);
 		if (aMaterial != null && ((mCanExplode && aMaterial.contains(TD.Properties.EXPLOSIVE)) || (mCanBurn && aMaterial.contains(TD.Properties.FLAMMABLE) && mPrefix.mFamiliarPrefixes.contains(OP.dust)))) try {ExplosionGT.explode(aWorld, null, aX+0.5, aY+0.5, aZ+0.5, ((mPrefix.mAmount>0?mPrefix.mAmount:U)*0.7F)/U, T, T);} catch(StackOverflowError e) {ERR.println("WARNING: StackOverflow during Explosion has been prevented at: " + aX +" ; "+ aY +" ; "+ aZ);}
 	}
@@ -409,7 +406,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override
 	public void breakBlock(World aWorld, int aX, int aY, int aZ, Block aBlock, int par6) {
 		TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-		if (tTileEntity instanceof PrefixBlockTileEntity) TEMP_TILEENTITY.set((PrefixBlockTileEntity)tTileEntity);
+		if (tTileEntity != null) LAST_BROKEN_TILEENTITY.set(tTileEntity);
 		aWorld.removeTileEntity(aX, aY, aZ);
 	}
 	

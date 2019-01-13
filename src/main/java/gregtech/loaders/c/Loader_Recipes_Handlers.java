@@ -465,7 +465,6 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Nikolite               , NF                                ,   0,   1, NF, MT.Teslatite            , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Redstonia              , NF                                ,   0,   1, NF, MT.Redstone             , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Palis                  , NF                                ,   0,   1, NF, MT.Lapis                , NI, T, tConditionP));
-		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Diamantine             , NF                                ,   0,   1, NF, MT.Diamond              , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.VoidCrystal            , NF                                ,   0,   1, NF, MT.Coal                 , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.AnnealedCopper         , NF                                ,   0,   1, NF, MT.Cu                   , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.NeodymiumMagnetic      , NF                                ,   0,   1, NF, MT.Nd                   , NI, T, tConditionP));
@@ -483,6 +482,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Stone                , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Ash.mToThis) if (tMaterial != MT.Ash)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Ash                  , NI, T, tConditionP));
+		for (OreDictMaterial tMaterial : ANY.Diamond.mToThis) if (tMaterial != MT.Diamond)
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Diamond              , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Emerald.mToThis) if (tMaterial != MT.Emerald)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Emerald              , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : ANY.Sapphire.mToThis) if (tMaterial != MT.Sapphire)

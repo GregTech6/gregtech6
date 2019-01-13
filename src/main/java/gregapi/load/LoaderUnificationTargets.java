@@ -490,6 +490,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Skyroot                , ST.make(MD.AETHER, "skyrootStick", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Coffee                 , ST.mkic("coffeePowder", 1));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.HydratedCoal           , ST.mkic("hydratedCoalDust", 1));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondIndustrial      , ST.mkic("industrialDiamond", 1));
 		OreDictManager.INSTANCE.setTarget(OP.cell           , MT.Creosote               , ST.make(MD.RC, "fluid.creosote.cell", 1));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.GrC_Bamboo, "grc.bamboo", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.BoP, "bamboo", 1, 0));

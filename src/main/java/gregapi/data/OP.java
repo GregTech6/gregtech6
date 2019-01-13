@@ -29,10 +29,11 @@ import static gregapi.oredict.OreDictMaterialCondition.*;
 import gregapi.code.ICondition;
 import gregapi.code.ICondition.And;
 import gregapi.code.ICondition.Or;
-import gregapi.oredict.OreDictListenerItem_Washing;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialCondition;
 import gregapi.oredict.OreDictPrefix;
+import gregapi.oredict.listeners.OreDictListenerItem_Rocks;
+import gregapi.oredict.listeners.OreDictListenerItem_Washing;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Items;
@@ -510,6 +511,7 @@ public class OP {
 		dustImpure  .addListener(new OreDictListenerItem_Washing(dust, 3, dustTiny));
 		dustPure    .addListener(new OreDictListenerItem_Washing(dust, 4, dustTiny));
 		dustRefined .addListener(new OreDictListenerItem_Washing(dust, 5, dustTiny));
+		rockGt      .addListener(new OreDictListenerItem_Rocks());
 		
 		bottle.mContainerItem = ST.make(Items.glass_bottle, 1, 0);
 		

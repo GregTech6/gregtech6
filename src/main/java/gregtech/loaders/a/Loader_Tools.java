@@ -47,10 +47,10 @@ import gregapi.data.TC;
 import gregapi.data.TD;
 import gregapi.item.IItemEnergy;
 import gregapi.item.multiitem.MultiItemToolWithCompat;
-import gregapi.oredict.IOreDictListenerEvent;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
+import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.recipes.AdvancedCraftingTool;
 import gregapi.util.CR;
 import gregapi.util.ST;
@@ -172,7 +172,7 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', OP.gemChipped.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', OP.rockGt.dat(tMaterial));
 		}
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.NetherQuartz, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.Quartzite}) {
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.NetherQuartz, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.Quartzite, MT.Phosphorite, MT.Phosphorus, MT.PO4, MT.P, MT.Apatite}) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', OP.gem.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', OP.rockGt.dat(tMaterial));
 		}

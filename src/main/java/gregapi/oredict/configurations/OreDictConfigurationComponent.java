@@ -17,11 +17,12 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.oredict;
+package gregapi.oredict.configurations;
 
 import static gregapi.data.CS.*;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.oredict.OreDictMaterialStack;
 import gregapi.util.OM;
 
 /**

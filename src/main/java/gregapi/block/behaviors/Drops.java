@@ -27,6 +27,7 @@ import gregapi.block.prefixblock.PrefixBlock;
 import gregapi.block.prefixblock.PrefixBlockTileEntity;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.util.ST;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -51,13 +52,7 @@ public class Drops {
 	}
 	
 	public ArrayList<ItemStack> getDrops(PrefixBlock aBlock, World aWorld, int aX, int aY, int aZ, int aFortune, boolean aSilkTouch) {
-		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-		if (aTileEntity == null) {
-			aTileEntity = PrefixBlock.TEMP_TILEENTITY.get();
-			if (aTileEntity == null || aTileEntity.xCoord != aX || aTileEntity.yCoord != aY || aTileEntity.zCoord != aZ) {
-				return getDrops(aBlock, aWorld, aX, aY, aZ, (short)0, null, 0, F);
-			}
-		}
+		TileEntity aTileEntity = WD.te(aWorld, aX, aY, aZ, T);
 		return getDrops(aBlock, aWorld, aX, aY, aZ, aBlock.getMetaDataValue(aTileEntity), aTileEntity, aFortune, aSilkTouch);
 	}
 	

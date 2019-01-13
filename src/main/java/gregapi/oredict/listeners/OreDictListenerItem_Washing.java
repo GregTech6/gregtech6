@@ -17,14 +17,16 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.oredict;
+package gregapi.oredict.listeners;
 
 import static gregapi.data.CS.*;
 
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
 import gregapi.lang.LanguageHandler;
-import gregapi.oredict.IOreDictListenerItem.OreDictListenerItem;
+import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.OreDictPrefix;
+import gregapi.oredict.listeners.IOreDictListenerItem.OreDictListenerItem;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -76,7 +78,7 @@ public class OreDictListenerItem_Washing extends OreDictListenerItem {
 	}
 	
 	@Override
-	public String getListenerToolTip(ItemStack aStack) {
+	public String getListenerToolTip(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
 		return LanguageHandler.translate("gt.behaviour.washing", "Throw into Cauldron to clean this Item");
 	}
 }

@@ -56,11 +56,11 @@ import gregapi.data.TD;
 import gregapi.item.IItemGT;
 import gregapi.item.ItemFluidDisplay;
 import gregapi.old.Textures;
-import gregapi.oredict.IOreDictListenerItem;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.OreDictPrefix;
+import gregapi.oredict.listeners.IOreDictListenerItem;
 import gregapi.recipes.AdvancedCrafting1ToY;
 import gregapi.recipes.AdvancedCraftingXToY;
 import gregapi.render.ITexture;
@@ -285,13 +285,13 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		if (tData != null) {
 			if (tData.mPrefix != null) {
 				for (IOreDictListenerItem tListener : tData.mPrefix.mListenersItem) {
-					String tToolTip = tListener.getListenerToolTip(aEvent.itemStack);
+					String tToolTip = tListener.getListenerToolTip(tData.mPrefix, tData.mMaterial.mMaterial, aEvent.itemStack);
 					if (tToolTip != null) aEvent.toolTip.add(tToolTip);
 				}
 			}
 			for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) {
 				for (IOreDictListenerItem tListener : tMaterial.mMaterial.mListenersItem) {
-					String tToolTip = tListener.getListenerToolTip(aEvent.itemStack);
+					String tToolTip = tListener.getListenerToolTip(tData.mPrefix, tData.mMaterial.mMaterial, aEvent.itemStack);
 					if (tToolTip != null) aEvent.toolTip.add(tToolTip);
 				}
 			}

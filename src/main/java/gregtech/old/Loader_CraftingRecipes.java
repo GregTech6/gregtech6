@@ -446,7 +446,7 @@ public class Loader_CraftingRecipes implements Runnable {
 			if (CR.remout(ST.mkic("nanoSaber", 1))) CR.shaped(ST.mkic("nanoSaber", 1), DEF, "PI ", "PI ", "CLC", 'L', OP.battery.dat(MT.Master), 'I', ST.mkic("iridiumPlate", 1), 'P', OP.plate.dat(MT.Pt), 'C', OD_CIRCUITS[5]);
 		}
 		
-		if (CR.remout(ST.mkic("diamondDrill"   , 1))) CR.shaped(ST.mkic("diamondDrill"   , 1), DEF, " D ", "DMD", "TAT", 'M', ST.mkic("miningDrill", 1, W), 'D', OP.gem.dat(MT.TECH.DiamondIndustrial), 'T', OP.plate.dat(MT.Ti), 'A', OD_CIRCUITS[3]);
+		if (CR.remout(ST.mkic("diamondDrill"   , 1))) CR.shaped(ST.mkic("diamondDrill"   , 1), DEF, " D ", "DMD", "TAT", 'M', ST.mkic("miningDrill", 1, W), 'D', OP.gem.dat(MT.DiamondIndustrial), 'T', OP.plate.dat(MT.Ti), 'A', OD_CIRCUITS[3]);
 		if (CR.remout(ST.mkic("miningDrill"    , 1))) CR.shaped(ST.mkic("miningDrill"    , 1), DEF, " S ", "SCS", "SBS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
 		if (CR.remout(ST.mkic("chainsaw"       , 1))) CR.shaped(ST.mkic("chainsaw"       , 1), DEF, "BS ", "SCS", " SS", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));
 		if (CR.remout(ST.mkic("electricHoe"    , 1))) CR.shaped(ST.mkic("electricHoe"    , 1), DEF, "SS ", " C ", " B ", 'C', OD_CIRCUITS[1], 'B', OP.battery.dat(MT.Basic), 'S', ConfigsGT.RECIPES.get(ConfigCategories.Recipes.harderrecipes, "electricsteeltools", T)?OP.plate.dat(MT.StainlessSteel):OP.plate.dat(ANY.Fe));

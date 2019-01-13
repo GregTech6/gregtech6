@@ -178,7 +178,7 @@ public class ToolCompat {
 				}
 			}
 		}
-		if (aTool.equals(TOOL_chisel)) {
+		if (aTool.equals(TOOL_chisel) && !aSneaking) {
 			ItemStack tChiseledBlock = WD.stack(aWorld, aX, aY, aZ);
 			if (tChiseledBlock != null) {
 				Recipe tRecipe = RM.Chisel.findRecipe(null, null, T, Integer.MAX_VALUE, null, ZL_FS, tChiseledBlock);

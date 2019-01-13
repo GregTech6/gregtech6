@@ -276,6 +276,8 @@ public class WD {
 		if (aLoadUnloadedChunks || aWorld.blockExists(aCoords.posX, aCoords.posY, aCoords.posZ)) {
 			TileEntity rTileEntity = aWorld.getTileEntity(aCoords.posX, aCoords.posY, aCoords.posZ);
 			if (rTileEntity != null) return rTileEntity;
+			rTileEntity = LAST_BROKEN_TILEENTITY.get();
+			if (rTileEntity != null && rTileEntity.xCoord == aCoords.posX && rTileEntity.yCoord == aCoords.posY && rTileEntity.zCoord == aCoords.posZ) return rTileEntity;
 			Block tBlock = aWorld.getBlock(aCoords.posX, aCoords.posY, aCoords.posZ);
 			return tBlock instanceof IBlockTileEntity ? ((IBlockTileEntity)tBlock).getTileEntity(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ) : null;
 		}
@@ -287,6 +289,8 @@ public class WD {
 		if (aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ)) {
 			TileEntity rTileEntity = aWorld.getTileEntity(aX, aY, aZ);
 			if (rTileEntity != null) return rTileEntity;
+			rTileEntity = LAST_BROKEN_TILEENTITY.get();
+			if (rTileEntity != null && rTileEntity.xCoord == aX && rTileEntity.yCoord == aY && rTileEntity.zCoord == aZ) return rTileEntity;
 			Block tBlock = aWorld.getBlock(aX, aY, aZ);
 			return tBlock instanceof IBlockTileEntity ? ((IBlockTileEntity)tBlock).getTileEntity(aWorld, aX, aY, aZ) : null;
 		}

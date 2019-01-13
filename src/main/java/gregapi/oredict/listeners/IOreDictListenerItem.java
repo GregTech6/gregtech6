@@ -17,8 +17,10 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.oredict;
+package gregapi.oredict.listeners;
 
+import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.OreDictPrefix;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -34,7 +36,7 @@ public interface IOreDictListenerItem {
 	public void onTickInventory         (OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack, IInventory aInventory, int aIndex);
 	
 	/** Returns null if it doesn't provide a ToolTip for this Behaviour. */
-	public String getListenerToolTip    (ItemStack aStack);
+	public String getListenerToolTip    (OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack);
 	
 	/** Contains a Default implementation in case only one of the Events is actually needed. Extend this Class rather than the Interface, for more API-Security. */
 	public abstract class OreDictListenerItem implements IOreDictListenerItem {
@@ -59,7 +61,7 @@ public interface IOreDictListenerItem {
 		}
 		
 		@Override
-		public String getListenerToolTip(ItemStack aStack) {
+		public String getListenerToolTip(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
 			return null;
 		}
 	}

@@ -38,10 +38,10 @@ import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
-import gregapi.oredict.IOreDictListenerEvent;
 import gregapi.oredict.OreDictItemData;
-import gregapi.oredict.OreDictListenerEvent_Names;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -432,7 +432,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Press            .addRecipe2(T, 16,   64, IL.IC2_Compressed_Coal_Ball.get(8), OP.dust.mat(MT.Obsidian, 9), IL.IC2_Compressed_Coal_Chunk.get(1));
 		
 		RM.Compressor       .addRecipe1(T,256,  256, IL.IC2_Carbon_Mesh.get(1)                          , IL.IC2_Carbon_Plate.get(1));
-		RM.Compressor       .addRecipe1(T,256,  512, IL.IC2_Compressed_Coal_Chunk.get(1)                , IL.IC2_Industrial_Diamond.get(1));
+		RM.Compressor       .addRecipe1(T,256,  512, IL.IC2_Compressed_Coal_Chunk.get(1)                , OP.gem.mat(MT.DiamondIndustrial, 1));
 		RM.Compressor       .addRecipe1(T, 64,  128, IL.IC2_Coal_Ball.get(1)                            , IL.IC2_Compressed_Coal_Ball.get(1));
 		RM.Compressor       .addRecipe1(T, 64,  128, IL.IC2_Mixed_Metal_Ingot.get(1)                    , IL.IC2_Advanced_Alloy.get(1));
 		RM.Compressor       .addRecipe1(T, 16,   16, OM.dust(MT.Ir)                                     , ST.mkic("iridiumOre", 1));
@@ -489,6 +489,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		RM.Mixer            .addRecipe1(T, 16,   16, IL.IC2_Grin_Powder.get(1)                          , UT.Fluids.mul(tFluid, 1, 4, T), FL.Potion_Poison_2.make(250), ZL_IS);
 		
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatRotten    ), IL.IC2_Fertilizer.get(2));
 		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                   ), OM.dust(MT.S             ), IL.IC2_Fertilizer.get(2));
 		RM.Mixer            .addRecipe2(T, 16,   48, OM.dust(MT.CaCO3                   ), OM.dust(MT.Phosphorus    ), IL.IC2_Fertilizer.get(3));
 		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.CaCO3                   ), OM.dust(MT.PO4           ), IL.IC2_Fertilizer.get(2));

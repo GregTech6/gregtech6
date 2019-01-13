@@ -17,10 +17,11 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.oredict;
+package gregapi.oredict.event;
 
 import static gregapi.data.CS.*;
 
+import gregapi.oredict.OreDictManager;
 import net.minecraft.item.ItemStack;
 
 /**

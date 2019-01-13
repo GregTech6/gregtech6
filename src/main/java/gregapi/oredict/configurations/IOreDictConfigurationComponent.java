@@ -17,9 +17,10 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.oredict;
+package gregapi.oredict.configurations;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.oredict.OreDictMaterialStack;
 
 /**
  * @author Gregorius Techneticies

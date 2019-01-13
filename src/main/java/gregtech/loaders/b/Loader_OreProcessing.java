@@ -52,14 +52,14 @@ import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.item.IPrefixItem;
-import gregapi.oredict.IOreDictConfigurationComponent;
-import gregapi.oredict.IOreDictListenerEvent;
-import gregapi.oredict.IOreDictRecyclableListener;
-import gregapi.oredict.OreDictListenerEvent_Names;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.OreDictPrefix;
+import gregapi.oredict.configurations.IOreDictConfigurationComponent;
+import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.oredict.event.IOreDictListenerRecyclable;
+import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
@@ -263,7 +263,7 @@ public class Loader_OreProcessing implements Runnable {
 		}
 	}
 	
-	public static class RecyclingProcessing implements IOreDictRecyclableListener {
+	public static class RecyclingProcessing implements IOreDictListenerRecyclable {
 		@Override
 		public void onRecycleableRegistration(OreDictRecyclingContainer aEvent) {
 			if (aEvent.mItemData == null || ST.container(aEvent.mStack, T) != null || (aEvent.mItemData.mPrefix != null && aEvent.mItemData.mPrefix.containsAny(ORE_PROCESSING_DIRTY, ORE))) return;
@@ -292,7 +292,7 @@ public class Loader_OreProcessing implements Runnable {
 		}
 	}
 	
-	public static class RecyclingProcessingCrucibleFakeRecipes implements IOreDictRecyclableListener {
+	public static class RecyclingProcessingCrucibleFakeRecipes implements IOreDictListenerRecyclable {
 		@Override
 		public void onRecycleableRegistration(OreDictRecyclingContainer aEvent) {
 			if (aEvent.mItemData == null || (aEvent.mItemData.mPrefix != null && aEvent.mItemData.mPrefix.contains(INGOT_BASED))) return;

@@ -39,9 +39,9 @@ import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.old.Textures;
-import gregapi.oredict.IOreDictListenerEvent;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.render.IIconContainer;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -387,7 +387,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
 		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
 		if (aTool.equals(TOOL_prospector)) return aMeta == STONE && ToolCompat.prospectStone(this, aMeta, aQuality, aChatReturn, aWorld, aSide, aX, aY, aZ) ? 10000 : 0;
-		if (aTool.equals(TOOL_chisel)) {
+		if (aTool.equals(TOOL_chisel) && !aSneaking) {
 			switch(aMeta) {
 			case BRICK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, CRACK, 3); return mBlock == this ? 10000 : 5000; // Bricks to Cracked Brick
 			case SMOTH: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, CHISL, 3); return mBlock == this ? 10000 : 5000; // Smooth to Chiseled
@@ -397,7 +397,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			case WINDB: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDA, 3); return mBlock == this ? 10000 : 5000;
 			}
 		}
-		if (aTool.equals(TOOL_file)) {
+		if (aTool.equals(TOOL_file) && !aSneaking) {
 			switch(aMeta) {
 			case STONE: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SMOTH, 3); return mBlock == this ? 10000 : 5000; // Stone to Smooth
 			case BRICK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SBRIK, 3); return mBlock == this ? 10000 : 5000; // Bricks to Small Bricks
@@ -407,7 +407,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 			case WINDB: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDA, 3); return mBlock == this ? 10000 : 5000;
 			}
 		}
-		if (aTool.equals(TOOL_drill)) {
+		if (aTool.equals(TOOL_drill) && !aSneaking) {
 			if (mBlock == this && aPlayer instanceof EntityPlayer && aMeta == BRICK) {
 				for (int i = 0; i < ((EntityPlayer)aPlayer).inventory.mainInventory.length; i++) {
 					int tIndex = ((EntityPlayer)aPlayer).inventory.mainInventory.length-i-1;

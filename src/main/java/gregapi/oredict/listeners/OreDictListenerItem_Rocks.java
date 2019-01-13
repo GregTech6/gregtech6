@@ -17,29 +17,27 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.oredict;
+package gregapi.oredict.listeners;
 
-import gregapi.util.OM;
+import gregapi.data.LH;
+import gregapi.data.MT;
+import gregapi.data.TD;
+import gregapi.lang.LanguageHandler;
+import gregapi.oredict.OreDictMaterial;
+import gregapi.oredict.OreDictPrefix;
+import gregapi.oredict.listeners.IOreDictListenerItem.OreDictListenerItem;
 import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
  */
-public interface IOreDictRecyclableListener {
-	public void onRecycleableRegistration(OreDictRecyclingContainer aEvent);
+public class OreDictListenerItem_Rocks extends OreDictListenerItem {
+	public OreDictListenerItem_Rocks() {
+		LH.add("gt.behaviour.rocks", "Indicates occurence of ");
+	}
 	
-	public static class OreDictRecyclingContainer {
-		public final OreDictItemData mItemData;
-		public final ItemStack mStack;
-		
-		public OreDictRecyclingContainer(ItemStack aStack, OreDictItemData aItemData) {
-			mItemData = aItemData;
-			mStack = aStack.copy();
-		}
-		
-		public OreDictRecyclingContainer(OreDictRecyclingContainer aItemData) {
-			mItemData = OM.data_(aItemData.mStack);
-			mStack = aItemData.mStack.copy();
-		}
+	@Override
+	public String getListenerToolTip(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
+		return aMaterial == MT.MeteoricIron ? null : LanguageHandler.translate("gt.behaviour.rocks", "Indicates occurence of ") + (aMaterial.contains(TD.Properties.STONE)?LH.Chat.WHITE:LH.Chat.YELLOW) + aMaterial.mNameLocal;
 	}
 }
