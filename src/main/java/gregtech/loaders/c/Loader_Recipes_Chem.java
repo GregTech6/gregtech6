@@ -132,7 +132,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Wolframite  ,U * 6), MT.HCl         .fluid(U * 4, T)                                                            , NF                                , OM.dust(MT.MgCl2, U*3), OM.dust(MT.H2WO4, U*7));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Ferberite   ,U * 6), MT.HCl         .fluid(U * 4, T)                                                            , NF                                , OM.dust(MT.FeCl2, U*3), OM.dust(MT.H2WO4, U*7));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Huebnerite  ,U * 6), MT.HCl         .fluid(U * 4, T)                                                            , NF                                , OM.dust(MT.MnCl2, U*3), OM.dust(MT.H2WO4, U*7));
-		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Tungstate   ,U * 7), MT.HCl         .fluid(U * 2, T)                                                            , NF                                , OM.dust(MT.LiCl , U*2), OM.dust(MT.H2WO4, U*7));
+		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Tungstate   ,U * 7), MT.HCl         .fluid(U * 4, T)                                                            , NF                                , OM.dust(MT.LiCl , U*4), OM.dust(MT.H2WO4, U*7));
 		
 		
 		RM.Mixer        .addRecipe1(T, 16,   16, OP.dust.mat(MT.Pt      , 0), new FluidStack[] {MT.SO2.gas(3*U4, T), MT.O.gas(U4, T)}, new FluidStack[] {MT.SO3.gas(U, F)}, ZL_IS);

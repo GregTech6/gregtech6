@@ -114,7 +114,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 			box(aBlock, (1.0F-mDiameter)/2.0F, (1.0F-mDiameter)/2.0F, (1.0F-mDiameter)/2.0F, 1-(1.0F-mDiameter)/2.0F, 1-(1.0F-mDiameter)/2.0F, 1-(1.0F-mDiameter)/2.0F);
 			return T;
 		}
-		// TODO: I need to add the old optimisations back somehow.
+		// TODO: I need to add the old optimizations back somehow.
 		// Even though this Version is way more modular and can adjust to stuff much easier, it does also look bad when rendered with ambient occlusion.
 		if (aRenderPass <= 6) {
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity((byte)(aRenderPass - 1), F, F);

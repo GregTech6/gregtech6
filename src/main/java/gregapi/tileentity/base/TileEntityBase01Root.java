@@ -895,8 +895,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public boolean onDrawBlockHighlight2(DrawBlockHighlightEvent aEvent) {return F;}
 	
-	// TODO: Make final in 6.10.00 or so
-	public boolean onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
+	public final boolean onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
 		if (!SIDES_VALID[aEvent.target.sideHit] || onDrawBlockHighlight2(aEvent)) return T;
 		byte tConnections = 0; for (byte i = 0; i < 6; i++) if (isConnectedWrenchingOverlay(aEvent.currentItem, i)) tConnections |= (1 << i);
 		if (ST.valid(aEvent.currentItem) && isUsingWrenchingOverlay(aEvent.currentItem, (byte)aEvent.target.sideHit)) {

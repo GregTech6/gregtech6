@@ -28,8 +28,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.10.00: (Not released yet)
 [FIXED] Chisels no longer work while sneaking, so now the Pocket Multitool is no longer accidentially doing Stuff.
 [FIXED] Placing Multiblock Parts next to an already formed Multiblock did not trigger a Force Reset for the Structural Checks. This was a problem for "expandable" Multiblocks like the Lightning Rod.
-[ADDED] Rocks now have a Tooltip stating that there is their Ore closeby, making it easier to know that they indicate Ores.
-[ADDED] Rotten Meat can now be used as an Ingredient for IC2 or Forestry Fertilizer.
+[FIXED] Tungstate Bathing in Hydrochloric Acid. (Maths Issue)
+[ADDED] Rocks now have a Tooltip stating that there is their Ore closeby, making it easier to know that they indicate Ores in the first place.
+[ADDED] Rotten Meat can now be used as an Ingredient for IC2 and Forestry Fertilizer.
 [ADDED] Phosphor containing Minerals such as Apatite can now be used for Flint and Tinder.
 
 

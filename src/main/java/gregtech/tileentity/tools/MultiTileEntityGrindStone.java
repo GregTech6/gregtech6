@@ -27,6 +27,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.data.BI;
+import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.RM;
@@ -127,7 +128,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 			}
 			if (SIDES_VERTICAL[aSide] || ALONG_AXIS[mFacing][aSide]) {
 				// TODO SOUND
-				if (mStone != 0) UT.Sounds.play("dig.sand", 5, 1.0F, 1.0F, getCoords());
+				if (mStone != 0) UT.Sounds.play(SFX.MC_DIG_SAND, 5, 1.0F, 1.0F, getCoords());
 			}
 		}
 		return T;
