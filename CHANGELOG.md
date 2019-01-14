@@ -30,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Placing Multiblock Parts next to an already formed Multiblock did not trigger a Force Reset for the Structural Checks. This was a problem for "expandable" Multiblocks like the Lightning Rod.
 [FIXED] Tungstate Bathing in Hydrochloric Acid. (Maths Issue)
 [ADDED] Rocks now have a Tooltip stating that there is their Ore closeby, making it easier to know that they indicate Ores in the first place.
-[ADDED] Rotten Meat can now be used as an Ingredient for IC2 and Forestry Fertilizer.
+[ADDED] Meat/Fish can now be used as an Ingredient for IC2 and Forestry Fertilizer. Doesn't matter if it is rotten, cooked or raw, all Variants work as long as they are ground up.
 [ADDED] Phosphor containing Minerals such as Apatite can now be used for Flint and Tinder.
 
 
