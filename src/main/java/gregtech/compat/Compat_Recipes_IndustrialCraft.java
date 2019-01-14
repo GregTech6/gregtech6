@@ -489,6 +489,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		RM.Mixer            .addRecipe1(T, 16,   16, IL.IC2_Grin_Powder.get(1)                          , UT.Fluids.mul(tFluid, 1, 4, T), FL.Potion_Poison_2.make(250), ZL_IS);
 		
+		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.SoylentGreen  ), IL.IC2_Fertilizer.get(2));
 		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatRaw       ), IL.IC2_Fertilizer.get(2));
 		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.FishRaw       ), IL.IC2_Fertilizer.get(2));
 		RM.Mixer            .addRecipe2(T, 16,   32, IL.IC2_Scrap.get(1                 ), OM.dust(MT.MeatCooked    ), IL.IC2_Fertilizer.get(2));
