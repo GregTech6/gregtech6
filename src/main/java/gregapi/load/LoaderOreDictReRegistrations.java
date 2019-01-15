@@ -1013,10 +1013,10 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropHeartberry"                  , "listAllfruit");
 		OreDictManager.INSTANCE.addReRegistration("cropSwampberry"                  , "listAllfruit");
 		OreDictManager.INSTANCE.addReRegistration("cropJuniper"                     , "listAllfruit");
-		
 		OreDictManager.INSTANCE.addReRegistration("cropWyndberry"                   , "listAllfruit");
+		OreDictManager.INSTANCE.addReRegistration("cropRowanberry"                  , "listAllfruit");
+		OreDictManager.INSTANCE.addReRegistration("cropRowanberry"                  , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropWyndberry"                   , "listAllberry");
-		
 		OreDictManager.INSTANCE.addReRegistration("cropJuniper"                     , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropSwampberry"                  , "listAllberry");
 		OreDictManager.INSTANCE.addReRegistration("cropHeartberry"                  , "listAllberry");
@@ -1161,6 +1161,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("cropButternut"                   , "listAllnut");
 		OreDictManager.INSTANCE.addReRegistration("cropGingkoNut"                   , "listAllnut");
 		OreDictManager.INSTANCE.addReRegistration("cropCandlenut"                   , "listAllnut");
+		OreDictManager.INSTANCE.addReRegistration("seedMisc"                        , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedAspectrus"                   , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedPurplePear"                  , "listAllseed");
 		OreDictManager.INSTANCE.addReRegistration("seedCamellia"                    , "listAllseed");

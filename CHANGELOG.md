@@ -26,6 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.00: (Not released yet)
+[COMPAT] Witchery needed some updated Compat things, because of all the GT6 Stuff I did since last time I added Compat for it, such as the Wood Registry.
 [FIXED] Chisels no longer work while sneaking, so now the Pocket Multitool is no longer accidentially doing Stuff.
 [FIXED] Placing Multiblock Parts next to an already formed Multiblock did not trigger a Force Reset for the Structural Checks. This was a problem for "expandable" Multiblocks like the Lightning Rod.
 [FIXED] Tungstate Bathing in Hydrochloric Acid. (Maths Issue)

@@ -50,8 +50,6 @@ public class LoaderWoodDictionary implements Runnable {
 		Block
 		tBlock = ST.block(MD.MoCr, "MoCWoodPlank");
 		for (int i = 0; i <  2; i++) PlankData.PLANKS[44+i] = ST.make(tBlock, 1, i);
-		tBlock = ST.block(MD.WTCH, "witchwood");
-		for (int i = 0; i <  3; i++) PlankData.PLANKS[65+i] = ST.make(tBlock, 1, i);
 		PlankData.PLANKS[ 96] = ST.make(MD.RC, "cube", 1, 8);
 		PlankData.PLANKS[104] = ST.make(MD.BTL, "rubberTreePlanks", 1, 0);
 //      PlankData.PLANKS[105] = ST.make(MD.BTL, "weedwoodPlanks", 1, 0);
@@ -234,6 +232,16 @@ public class LoaderWoodDictionary implements Runnable {
 		// Alfheim Dreamwood Trees
 		if (MD.ALF.mLoaded) {
 			new SaplingEntry(IL.ALF_DreamSapling.wild(1), new WoodEntry(IL.ALF_DreamWood.wild(1), WoodDictionary.PLANKS.get(ST.block(MD.BOTA, "dreamwood"), 1), 2, 500), IL.ALF_DreamLeaves.wild(1));
+		}
+		// Witchery Trees
+		if (MD.WTCH.mLoaded) {
+			Block tPlank = ST.block(MD.WTCH, "witchwood"), tSlab = ST.block(MD.WTCH, "witchwoodslab");
+			
+			new SaplingEntry(ST.make(MD.WTCH, "witchsapling", 1, 0), new WoodEntry(ST.make(MD.WTCH, "witchlog", 1, 0), new PlankEntry(ST.make(tPlank, 1, 0), ST.make(tSlab, 1, 0), ST.make(MD.WTCH, "stairswoodrowan"   , 1, W), 65)), ST.make(MD.WTCH, "witchleaves", 1, 0));
+			new SaplingEntry(ST.make(MD.WTCH, "witchsapling", 1, 1), new WoodEntry(ST.make(MD.WTCH, "witchlog", 1, 1), new PlankEntry(ST.make(tPlank, 1, 1), ST.make(tSlab, 1, 1), ST.make(MD.WTCH, "stairswoodalder"   , 1, W), 66)), ST.make(MD.WTCH, "witchleaves", 1, 1));
+			new SaplingEntry(ST.make(MD.WTCH, "witchsapling", 1, 2), new WoodEntry(ST.make(MD.WTCH, "witchlog", 1, 2), new PlankEntry(ST.make(tPlank, 1, 2), ST.make(tSlab, 1, 2), ST.make(MD.WTCH, "stairswoodhawthorn", 1, W), 67)), ST.make(MD.WTCH, "witchleaves", 1, 2));
+			
+			for (int i = 0; i < 3; i++) CR.shaped(ST.make(tPlank, 1, i), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlab, 1, i));
 		}
 		// Extra Biomes Trees
 		if (MD.EBXL.mLoaded) {

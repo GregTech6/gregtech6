@@ -207,7 +207,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(2), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(2), ZL_IS);
 		}});
-		addListener("seedMelon", "seedStrawberry", "seedTurnip", "seedBeet", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new String[] {"seedMelon", "seedStrawberry", "seedTurnip", "seedBeet", "seedMisc"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(3), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(3), ZL_IS);
@@ -222,7 +222,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(5), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(5), ZL_IS);
 		}});
-		addListener("seedPumpkin", "seedDarkFruit", "seedAspectrus", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new String[] {"seedPumpkin", "seedDarkFruit", "seedAspectrus"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			RM.Squeezer .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(6), ZL_IS);
 			RM.Juicer   .addRecipe1(T, 16, 16, aEvent.mStack, NF, FL.Oil_Seed.make(6), ZL_IS);

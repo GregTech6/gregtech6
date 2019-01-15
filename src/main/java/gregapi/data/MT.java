@@ -1405,6 +1405,12 @@ public class MT {
 		Clay.setSmelting(Ceramic, U);
 		ClayBrown.setSmelting(Ceramic, U);
 		Netherrack.setSmelting(NetherBrick, U);
+		
+		ANY.init();
+		
+		// Making sure shit is statically loaded, damn it.
+		TECH.Brick.getClass();
+		DATA.Dye_Materials.getClass();
 	}
 	
 	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that use some, I got a few of them here. */
@@ -1424,8 +1430,6 @@ public class MT {
 		RefinedIron                 = invalid("RefinedIron"                 ).stealLooks(HSLA).steal(WroughtIron).setLocal("Refined Iron").setAllToTheOutputOf(Fe).put(IGNORE_IN_COLOR_LOG, SMITHABLE, MELTING).addReRegistrationToThis(WroughtIron);
 		
 		static {
-			ANY.init();
-			
 			OreDictMaterial.MATERIAL_ARRAY[9142] = MT.Asbestos;
 			
 			Ad                      .visDefault(Adamantine);

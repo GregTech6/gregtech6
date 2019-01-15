@@ -159,6 +159,8 @@ public class LoaderItemData implements Runnable {
 		OM.reg("cropSwampberry"                     , ST.make(MD.ERE, "food", 1, 14));
 		OM.reg("cropCabbage"                        , ST.make(MD.ERE, "food", 1, 15));
 		OM.reg("cropPricklyPair"                    , ST.make(MD.ERE, "food", 1, 17));
+		OM.reg("cropGarlic"                         , ST.make(MD.WTCH, "garlic", 1, 0));
+		OM.reg("cropRowanberry"                     , ST.make(MD.WTCH, "ingredient", 1, 63));
 		OM.reg("cropPapaya"                         , ST.make(MD.BINNIE_TREE, "food", 1, 40));
 		OM.reg("cropCurrants"                       , ST.make(MD.BINNIE_TREE, "food", 1, 41));
 		OM.reg("cropCurrants"                       , ST.make(MD.BINNIE_TREE, "food", 1, 42));
@@ -276,6 +278,12 @@ public class LoaderItemData implements Runnable {
 		OM.reg("dustRice"                           , ST.make(MD.Bamboo, "rawrice", 1, 0));
 		OM.reg("cropSoybean"                        , ST.make(MD.Bamboo, "itembean", 1, 0));
 		OM.reg("foodCustard"                        , ST.make(MD.MaCu, "food", 1, 3));
+		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedsmandrake", 1, 0));
+		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedswormwood", 1, 0));
+		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedssnowbell", 1, 0));
+		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedsartichoke", 1, 0));
+		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedswolfsbane", 1, 0));
+		OM.reg("seedMisc"                           , ST.make(MD.WTCH, "seedsbelladonna", 1, 0));
 		OM.reg("seedCanola"                         , ST.make(MD.RoC, "rotarycraft_item_canola", 1, 0));
 		OM.reg("seedThistle"                        , ST.make(MD.GrC_Milk, "grcmilk.SeedThistle", 1, 0));
 		OM.reg("seedCabbage"                        , ST.make(MD.ERE, "cabbageSeeds", 1, 0));
@@ -331,8 +339,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemFeather                       , ST.make(Items.feather, 1, W));
 		OM.reg(OD.itemLeather                       , ST.make(Items.leather, 1, W));
 		OM.reg(OD.itemLeatherTreated                , ST.make(MD.TG, "TechgunsAmmo", 1, 109));
+		OM.reg(OD.itemLeatherTreated                , ST.make(MD.WTCH, "ingredient", 1, 131));
+		OM.reg(OD.itemLeatherTreated                , ST.make(MD.WTCH, "ingredient", 1, 72));
 		OM.reg(OD.itemLeatherHardened               , ST.make(MD.HaC, "hardenedleatherItem", 1));
-		OM.reg(OD.itemLeatherImpregnated            , ST.make(MD.WTCH, "ingredient", 1, 72));
 		OM.reg(OD.itemLeather                       , ST.make(MD.ERE, "materials", 1, 49));
 		OM.reg(OD.itemLeather                       , ST.make(MD.MoCr, "hide", 1, 0));
 		OM.reg(OD.itemFur                           , ST.make(MD.MoCr, "fur", 1, 0));
@@ -377,8 +386,10 @@ public class LoaderItemData implements Runnable {
 		OM.reg("seedPurplePear"                     , ST.make(MD.BTL, "middleFruitSeeds", 1, 0));
 		OM.reg("foodMuttonraw"                      , ST.make(MD.GaSu, "mutton_raw", 1, 0));
 		OM.reg("foodMuttonraw"                      , ST.make(MD.EtFu, "mutton_raw", 1, 0));
+		OM.reg("foodMuttonraw"                      , ST.make(MD.WTCH, "ingredient", 1, 158));
 		OM.reg("foodMuttoncooked"                   , ST.make(MD.GaSu, "mutton_cooked", 1, 0));
 		OM.reg("foodMuttoncooked"                   , ST.make(MD.EtFu, "mutton_cooked", 1, 0));
+		OM.reg("foodMuttoncooked"                   , ST.make(MD.WTCH, "ingredient", 1, 159));
 		OM.reg("foodRabbitraw"                      , ST.make(MD.EtFu, "rabbit_raw", 1, 0));
 		OM.reg("foodRabbitcooked"                   , ST.make(MD.EtFu, "rabbit_cooked", 1, 0));
 		OM.reg(OD.container1000rubbertreesap        , ST.make(MD.IHL, "bucket_fluidRubberTreeSap", 1, 0));
@@ -1464,6 +1475,13 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BOTA, "livingrock1Stairs"                , 1,   W, MT.Livingrock         ,  U2* 3);
 		OM.data(MD.BOTA, "livingrock0Slab"                  , 1,   W, MT.Livingrock         ,  U2);
 		OM.data(MD.BOTA, "livingrock1Slab"                  , 1,   W, MT.Livingrock         ,  U2);
+		
+		
+		OM.data(MD.WTCH, "perpetualice"                     , 1,   W, MT.Ice                ,  U);
+		OM.data(MD.WTCH, "icestairs"                        , 1,   W, MT.Ice                ,  3* U4);
+		OM.data(MD.WTCH, "iceslab"                          , 1,   W, MT.Ice                ,  U2);
+		OM.data(MD.WTCH, "shadedglass"                      , 1,   W, MT.Glass              ,  U);
+		OM.data(MD.WTCH, "shadedglass_active"               , 1,   W, MT.Glass              ,  U);
 		
 		
 //      OM.data(MD.TCFM, "WandCaps"                         , 1,   0, MT.Alchemical         ,  5* U9);

@@ -122,7 +122,6 @@ public enum OD {
 	, itemLeather
 	, itemLeatherTreated
 	, itemLeatherHardened
-	, itemLeatherImpregnated
 	, itemSkin
 	, itemFur
 	, itemPelt

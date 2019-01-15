@@ -281,6 +281,7 @@ public class GT_Mod extends Abstract_Mod {
 		new Compat_Recipes_Mekanism             (MD.Mek           , this);
 		new Compat_Recipes_GalactiCraft         (MD.GC            , this);
 		new Compat_Recipes_Mystcraft            (MD.MYST          , this);
+		new Compat_Recipes_Witchery             (MD.WTCH          , this);
 		new Compat_Recipes_Thaumcraft           (MD.TC            , this);
 		new Compat_Recipes_ForbiddenMagic       (MD.TCFM          , this);
 		new Compat_Recipes_ArsMagica            (MD.ARS           , this);
