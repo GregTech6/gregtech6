@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.00: (Not released yet)
+6.10.00: (Not released yet, Friday Release because A: I did not actually do much, B: I accidentially slept through the time when Bear tests Stuff and C: I am waiting for the Results of the Article 13 Vote before making a Patreon Post)
 [COMPAT] Witchery needed some updated Compat things, because of all the GT6 Stuff I did since last time I added Compat for it, such as the Wood Registry.
 [FIXED] Chisels no longer work while sneaking, so now the Pocket Multitool is no longer accidentially doing Stuff.
 [FIXED] Placing Multiblock Parts next to an already formed Multiblock did not trigger a Force Reset for the Structural Checks. This was a problem for "expandable" Multiblocks like the Lightning Rod.
