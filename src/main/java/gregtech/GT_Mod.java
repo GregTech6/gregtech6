@@ -118,7 +118,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class GT_Mod extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
 	public static GT_Proxy gregtechproxy;
-	public static String MAJOR_VERSION = "610";
+	public static String VERSION = "${version}".substring(0, 7);
 	
 	public GT_Mod() {
 		GT = this;
@@ -146,10 +146,10 @@ public class GT_Mod extends Abstract_Mod {
 		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "gregtech.cfg");
 		Configuration tMainConfig = new Configuration(tFile);
 		
-		gregtechproxy.mSkeletonsShootGTArrows           = tMainConfig.get("general", "SkeletonsShootGTArrows"       , 16).getInt(16);
-		gregtechproxy.mFlintChance                      = tMainConfig.get("general", "FlintAndSteelChance"          , 30).getInt(30);
-		gregtechproxy.mDisableVanillaOres               = tMainConfig.get("general", "DisableVanillaOres"           , T).getBoolean(T);
-		mDisableIC2Ores                                 = tMainConfig.get("general", "DisableIC2Ores"               , T).getBoolean(T);
+		gregtechproxy.mSkeletonsShootGTArrows = tMainConfig.get("general", "SkeletonsShootGTArrows", 16).getInt(16);
+		gregtechproxy.mFlintChance            = tMainConfig.get("general", "FlintAndSteelChance"   , 30).getInt(30);
+		gregtechproxy.mDisableVanillaOres     = tMainConfig.get("general", "DisableVanillaOres"    , T).getBoolean(T);
+		mDisableIC2Ores                       = tMainConfig.get("general", "DisableIC2Ores"        , T).getBoolean(T);
 		
 		if (tMainConfig.get("general", "IncreaseDungeonLoot", T).getBoolean(T)) {
 			OUT.println(getModNameForLog() + ": Increasing general amount of Loot in Dungeon Chests and alike");
