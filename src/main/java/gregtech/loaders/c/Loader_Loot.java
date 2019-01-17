@@ -39,7 +39,7 @@ import net.minecraftforge.common.ChestGenHooks;
 public class Loader_Loot implements Runnable {
 	@Override
 	public void run() {
-		OUT.println("GT_Mod: Making sure GT6 Chests are used in Worldgen instead of vanilla ones.");
+		OUT.println("GT_Mod: Adding Loot and changing Vanilla Chests to GT6 Loot Chests");
 		
 		new ChestGenHooksChestReplacer(ChestGenHooks.DUNGEON_CHEST);
 		new ChestGenHooksChestReplacer(ChestGenHooks.MINESHAFT_CORRIDOR);

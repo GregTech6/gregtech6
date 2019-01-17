@@ -40,23 +40,22 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Copy implements Runnable {
 	@Override public void run() {
-		OUT.println("GT_Mod: Copying the Fluid Registry over to GT Machines.");
-		
+		OUT.println("GT_Mod: Copying the Fluid Registry to GT Machines.");
 		for (Map<String, FluidContainerData> tMap : UT.Fluids.sEmpty2Fluid2Data.values()) for (FluidContainerData tData : tMap.values()) {
-			ItemStack tEmpty = (tData.emptyContainer.getItem() == Items.bucket ? ST.container(tData.filledContainer, F) : tData.emptyContainer);
+			ItemStack tEmpty = (tData.emptyContainer.getItem() == Items.bucket || tData.emptyContainer.stackSize < 1 ? ST.container(tData.filledContainer, F) : tData.emptyContainer);
 			if (ST.valid(tEmpty)) RM.Canner.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), tEmpty, tData.fluid, NF, tData.filledContainer);
 		}
 		for (FluidContainerData tData : UT.Fluids.sFilled2Data.values()) {
 			RM.Canner.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), tData.filledContainer, NF, tData.fluid, ST.container(tData.filledContainer, T));
 			if (MD.FR.mLoaded) {
-			if (IL.FR_TinCapsule        .equal(tData.emptyContainer)) RM.Squeezer.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16),  500, tData.filledContainer, NF, tData.fluid, OM.ingot(MT.Sn));
-			if (IL.FR_WaxCapsule        .equal(tData.emptyContainer)) RM.Squeezer.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), 1000, tData.filledContainer, NF, tData.fluid, OM.dust(MT.WaxBee));
-			if (IL.FR_RefractoryCapsule .equal(tData.emptyContainer)) RM.Squeezer.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), 1000, tData.filledContainer, NF, tData.fluid, OM.dust(MT.WaxRefractory));
+			if (IL.FR_TinCapsule       .equal(tData.emptyContainer)) RM.Squeezer.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16),  500, tData.filledContainer, NF, tData.fluid, OM.ingot(MT.Sn));
+			if (IL.FR_WaxCapsule       .equal(tData.emptyContainer)) RM.Squeezer.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), 1000, tData.filledContainer, NF, tData.fluid, OM.dust(MT.WaxBee));
+			if (IL.FR_RefractoryCapsule.equal(tData.emptyContainer)) RM.Squeezer.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), 1000, tData.filledContainer, NF, tData.fluid, OM.dust(MT.WaxRefractory));
 			}
 		}
 		
 		if (MD.FR.mLoaded) {
-			OUT.println("GT_Mod: Copying all Forestry Centrifuge Recipes over to the GT Centrifuge.");
+			OUT.println("GT_Mod: Copying all of the Forestry Centrifuge/Squeezer Recipes to GT Machines");
 			try {
 				for (ICentrifugeRecipe tRecipe : RecipeManagers.centrifugeManager.recipes()) {
 					Map<ItemStack, Float> tMap = tRecipe.getAllProducts();
@@ -71,11 +70,7 @@ public class Loader_Recipes_Copy implements Runnable {
 						RM.Centrifuge.addRecipe(T, new ItemStack[] {tRecipe.getInput()}, tOutput, NI, tChances, null, null, tRecipe.getProcessingTime(), 16, 0);
 					}
 				}
-			} catch(Throwable e) {
-				if (D1) e.printStackTrace(ERR);
-			}
-			
-			OUT.println("GT_Mod: Copying all Forestry Squeezer Recipes over to the GT Squeezer.");
+			} catch(Throwable e) {e.printStackTrace(ERR);}
 			try {
 				for (ISqueezerRecipe tRecipe : RecipeManagers.squeezerManager.recipes()) {
 					ItemStack[] tInput = tRecipe.getResources();
@@ -83,9 +78,7 @@ public class Loader_Recipes_Copy implements Runnable {
 						RM.Squeezer.addRecipe(T, tInput, new ItemStack[] {tRecipe.getRemnants()}, NI, new long[] {Math.max(1, (long)(10000*tRecipe.getRemnantsChance()))}, null, new FluidStack[] {tRecipe.getFluidOutput()}, tRecipe.getProcessingTime(), 16, 0);
 					}
 				}
-			} catch(Throwable e) {
-				if (D1) e.printStackTrace(ERR);
-			}
+			} catch(Throwable e) {e.printStackTrace(ERR);}
 		}
 	}
 }

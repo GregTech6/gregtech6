@@ -103,6 +103,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
@@ -117,7 +118,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class GT_Mod extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
 	public static GT_Proxy gregtechproxy;
-	public static String MAJOR_VERSION = "609";
+	public static String MAJOR_VERSION = "610";
 	
 	public GT_Mod() {
 		GT = this;
@@ -148,9 +149,51 @@ public class GT_Mod extends Abstract_Mod {
 		gregtechproxy.mSkeletonsShootGTArrows           = tMainConfig.get("general", "SkeletonsShootGTArrows"       , 16).getInt(16);
 		gregtechproxy.mFlintChance                      = tMainConfig.get("general", "FlintAndSteelChance"          , 30).getInt(30);
 		gregtechproxy.mDisableVanillaOres               = tMainConfig.get("general", "DisableVanillaOres"           , T).getBoolean(T);
-		gregtechproxy.mDisableIC2Ores                   = tMainConfig.get("general", "DisableIC2Ores"               , T).getBoolean(T);
-		gregtechproxy.mIncreaseDungeonLoot              = tMainConfig.get("general", "IncreaseDungeonLoot"          , T).getBoolean(T);
-		gregtechproxy.mNerfedVanillaTools               = tMainConfig.get("general", "SmallerVanillaToolDurability" , T).getBoolean(T);
+		mDisableIC2Ores                                 = tMainConfig.get("general", "DisableIC2Ores"               , T).getBoolean(T);
+		
+		if (tMainConfig.get("general", "IncreaseDungeonLoot", T).getBoolean(T)) {
+			OUT.println(getModNameForLog() + ": Increasing general amount of Loot in Dungeon Chests and alike");
+			ChestGenHooks tChest;
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST                ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST              ); tChest.setMax(tChest.getMax()+12); tChest.setMin(tChest.getMin()+ 6);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST       ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST       ); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER   ); tChest.setMax(tChest.getMax()+ 2); tChest.setMin(tChest.getMin()+ 1);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR         ); tChest.setMax(tChest.getMax()+ 4); tChest.setMin(tChest.getMin()+ 2);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH         ); tChest.setMax(tChest.getMax()+12); tChest.setMin(tChest.getMin()+ 6);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING        ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR        ); tChest.setMax(tChest.getMax()+ 6); tChest.setMin(tChest.getMin()+ 3);
+			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY         ); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
+		}
+		if (tMainConfig.get("general", "SmallerVanillaToolDurability", T).getBoolean(T)) {
+			OUT.println(getModNameForLog() + ": Nerfing Vanilla Tool Durability");
+			Items.wooden_sword   .setMaxDamage(  4);
+			Items.wooden_pickaxe .setMaxDamage(  4);
+			Items.wooden_shovel  .setMaxDamage(  4);
+			Items.wooden_axe     .setMaxDamage(  4);
+			Items.wooden_hoe     .setMaxDamage(  4);
+			Items.stone_sword    .setMaxDamage( 16);
+			Items.stone_pickaxe  .setMaxDamage( 16);
+			Items.stone_shovel   .setMaxDamage( 16);
+			Items.stone_axe      .setMaxDamage( 16);
+			Items.stone_hoe      .setMaxDamage( 16);
+			Items.iron_sword     .setMaxDamage( 80);
+			Items.iron_pickaxe   .setMaxDamage( 80);
+			Items.iron_shovel    .setMaxDamage( 80);
+			Items.iron_axe       .setMaxDamage( 80);
+			Items.iron_hoe       .setMaxDamage( 80);
+			Items.golden_sword   .setMaxDamage(  8);
+			Items.golden_pickaxe .setMaxDamage(  8);
+			Items.golden_shovel  .setMaxDamage(  8);
+			Items.golden_axe     .setMaxDamage(  8);
+			Items.golden_hoe     .setMaxDamage(  8);
+			Items.diamond_sword  .setMaxDamage(240);
+			Items.diamond_pickaxe.setMaxDamage(240);
+			Items.diamond_shovel .setMaxDamage(240);
+			Items.diamond_axe    .setMaxDamage(240);
+			Items.diamond_hoe    .setMaxDamage(240);
+		}
+		
 		
 		BlockOcean.SPREAD_TO_AIR                        = tMainConfig.get("general", "OceanBlocksSpreadToAir"       , T).getBoolean(T);
 		
@@ -217,7 +260,6 @@ public class GT_Mod extends Abstract_Mod {
 			ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
 				new Loader_BlockResistance(),
 				new Loader_Fuels(),
-				new Loader_Crops(),
 				new Loader_Loot(),
 				
 				new Loader_Recipes_Woods(), // has to be before Vanilla!
@@ -414,9 +456,6 @@ public class GT_Mod extends Abstract_Mod {
 		if (IL.ERE_White_Stairs.exists())   RM.Bath.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.oak_stairs , 1, W)}, new ItemStack[] {IL.ERE_White_Stairs .get(1                               )}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_WATER[DYE_INDEX_White], 3, 4, T)}, ZL_FS, 102, 0, 0);
 		if (IL.ERE_White_Slab.exists())     RM.Bath.addFakeRecipe(F, new ItemStack[] {ST.make(Blocks.wooden_slab, 1, W)}, new ItemStack[] {IL.ERE_White_Slab   .get(1                               )}, null, null, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_WATER[DYE_INDEX_White], 1, 2, T)}, ZL_FS,  72, 0, 0);
 		
-		
-		
-		
 		if (CODE_CLIENT) {
 			for (OreDictMaterial aMaterial : OreDictMaterial.ALLOYS) {
 				for (IOreDictConfigurationComponent tAlloy : aMaterial.mAlloyCreationRecipes) {
@@ -501,14 +540,14 @@ public class GT_Mod extends Abstract_Mod {
 			}
 		});} catch(Throwable e) {/*Do nothing}
 		*/
-		if (MD.IC2.mLoaded && !MD.IC2C.mLoaded) try {
-		if (gregtechproxy.mDisableIC2Ores) Ic2Items.tinOre = Ic2Items.leadOre = Ic2Items.copperOre = Ic2Items.uraniumOre = null;
-		} catch (Throwable e) {e.printStackTrace(ERR);}
+		if (MD.IC2.mLoaded && !MD.IC2C.mLoaded) try {if (mDisableIC2Ores) Ic2Items.tinOre = Ic2Items.leadOre = Ic2Items.copperOre = Ic2Items.uraniumOre = null;} catch (Throwable e) {e.printStackTrace(ERR);}
 		if (MD.TE.mLoaded) {
 			ItemStack tPyrotheum = OP.dust.mat(MT.Pyrotheum, 1);
 			for (ItemStackContainer tStack : OP.ore.mRegisteredItems) CR.remove(tStack.toStack(), tPyrotheum);
 		}
 	}
+	
+	public boolean mDisableIC2Ores = T;
 	
 	@Override
 	public void onModServerStopping2(FMLServerStoppingEvent aEvent) {

@@ -380,6 +380,10 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC   , "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', OP.stick.dat(MT.Stone));
 		CR.shaped(gearGtSmall   .mat(MT.Stone           ,  1), CR.DEF_NAC   , "P ", " f", 'P', stoneSmooth);
 		
+		for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (!tMat.containsAny(TD.Properties.INVALID_MATERIAL, TD.Compounds.COATED) && tMat.mTargetRegistration == tMat)
+		CR.shaped(OP.gearGtSmall.mat(tMat, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "P ", tMat.contains(TD.Properties.WOOD)?" s":tMat.contains(TD.Properties.STONE)?" f":" h", 'P', OP.plate.dat(tMat));
+		
+		
 		RM.Slicer           .addRecipe2(T, 16,   16, ST.make(Items.paper, 1, W), IL.Shape_Slicer_Grid.get(0), plateTiny.mat(MT.Paper, 9));
 		
 		

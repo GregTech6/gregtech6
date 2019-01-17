@@ -29,7 +29,6 @@ import java.util.Scanner;
 import java.util.Set;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -44,7 +43,6 @@ import gregapi.block.metatype.BlockStones;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.ItemsGT;
@@ -54,10 +52,8 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.OP;
-import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
-import gregapi.util.CR;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -78,7 +74,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
@@ -100,7 +95,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	
 	public String mMessage = "";
 	
-	public boolean mDisableVanillaOres = T, mDisableIC2Ores = T, mIncreaseDungeonLoot = T, mNerfedVanillaTools = T, mVersionOutdated = F;
+	public boolean mDisableVanillaOres = T, mVersionOutdated = F;
 	public int mSkeletonsShootGTArrows = 16, mFlintChance = 30;
 	
 	public GT_Proxy() {
@@ -148,70 +143,11 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 			Scanner tScanner = new Scanner(new URL("http://gregtech.overminddl1.com/com/gregoriust/gregtech/message.txt").openStream());
 			while (tScanner.hasNextLine()) mMessage += tScanner.nextLine() + " ";
 			tScanner.close();
-			OUT.println("GT_Download_Thread: Downloaded News.");
+			if (mMessage.length() > 5) OUT.println("GT_Download_Thread: Downloaded News.");
 		} catch(Throwable e) {OUT.println("GT_Download_Thread: Failed downloading News!");}
 		
 		mSupporterListSilver.removeAll(mSupporterListGold);
 		}}).start();
-	}
-	
-	@Override
-	public void onProxyBeforePostInit(Abstract_Mod aMod, FMLPostInitializationEvent aEvent) {
-		if (mIncreaseDungeonLoot) {
-			OUT.println("GT_Mod: Increasing general amount of Loot in Dungeon Chests and alike");
-			ChestGenHooks tChest;
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST                ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST              ); tChest.setMax(tChest.getMax()+12); tChest.setMin(tChest.getMin()+ 6);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST       ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST       ); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER   ); tChest.setMax(tChest.getMax()+ 2); tChest.setMin(tChest.getMin()+ 1);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR         ); tChest.setMax(tChest.getMax()+ 4); tChest.setMin(tChest.getMin()+ 2);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH         ); tChest.setMax(tChest.getMax()+12); tChest.setMin(tChest.getMin()+ 6);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING        ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR        ); tChest.setMax(tChest.getMax()+ 6); tChest.setMin(tChest.getMin()+ 3);
-			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY         ); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
-		}
-		if (mNerfedVanillaTools) {
-			OUT.println("GT_Mod: Nerfing Vanilla Tool Durability");
-			Items.wooden_sword   .setMaxDamage(  4);
-			Items.wooden_pickaxe .setMaxDamage(  4);
-			Items.wooden_shovel  .setMaxDamage(  4);
-			Items.wooden_axe     .setMaxDamage(  4);
-			Items.wooden_hoe     .setMaxDamage(  4);
-			Items.stone_sword    .setMaxDamage( 16);
-			Items.stone_pickaxe  .setMaxDamage( 16);
-			Items.stone_shovel   .setMaxDamage( 16);
-			Items.stone_axe      .setMaxDamage( 16);
-			Items.stone_hoe      .setMaxDamage( 16);
-			Items.iron_sword     .setMaxDamage( 80);
-			Items.iron_pickaxe   .setMaxDamage( 80);
-			Items.iron_shovel    .setMaxDamage( 80);
-			Items.iron_axe       .setMaxDamage( 80);
-			Items.iron_hoe       .setMaxDamage( 80);
-			Items.golden_sword   .setMaxDamage(  8);
-			Items.golden_pickaxe .setMaxDamage(  8);
-			Items.golden_shovel  .setMaxDamage(  8);
-			Items.golden_axe     .setMaxDamage(  8);
-			Items.golden_hoe     .setMaxDamage(  8);
-			Items.diamond_sword  .setMaxDamage(240);
-			Items.diamond_pickaxe.setMaxDamage(240);
-			Items.diamond_shovel .setMaxDamage(240);
-			Items.diamond_axe    .setMaxDamage(240);
-			Items.diamond_hoe    .setMaxDamage(240);
-		}
-		
-		// TODO: Get rid of this old Garbage,
-		for (OreDictMaterial aMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL) && aMaterial.mTargetRegistration == aMaterial) {
-			long
-			tBits = CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC;
-			CR.shaped(OP.toolHeadWrench  .mat(aMaterial, 1), tBits, "hXW", "XRX", "WXd", 'X', OP.plate   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadWrench  .mat(aMaterial, 1), tBits, "hXW", "XRX", "WXd", 'X', OP.plateGem.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel), 'W', OP.screw.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadChainsaw.mat(aMaterial, 1), tBits, "SRS", "XhX", "SRS", 'X', OP.chain   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel), 'R', OP.ring.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadDrill   .mat(aMaterial, 1), tBits, "XSX", "XSX", "ShS", 'X', OP.plate   .dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
-			CR.shaped(OP.toolHeadDrill   .mat(aMaterial, 1), tBits, "XSX", "XSX", "ShS", 'X', OP.plateGem.dat(aMaterial), 'S', OP.plate.dat(ANY.Steel));
-			if (!aMaterial.contains(TD.Compounds.COATED))
-			CR.shaped(OP.gearGtSmall     .mat(aMaterial, 1), tBits | CR.DEF_NAC, "P ", aMaterial.contains(TD.Properties.WOOD)?" s":aMaterial.contains(TD.Properties.STONE)?" f":" h", 'P', OP.plate.dat(aMaterial));
-		}
 	}
 	
 	@SubscribeEvent
