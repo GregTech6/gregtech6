@@ -363,6 +363,20 @@ processResources {
 	}
 }
 
+task generateBuildInfo(type: Copy) {
+	def templateContext = [
+		version: project.buildInfo.tag,
+		mcversion: project.minecraft.version,
+		builddate: new Date().toString(),
+	]
+	inputs.properties templateContext
+	from 'src/template/java'
+	into "$buildDir/generated-source/java"
+	expand templateContext
+}
+sourceSets.main.java.srcDir "$buildDir/generated-source/java"
+compileJava.dependsOn generateBuildInfo
+
 task wrapper(type: Wrapper) {
 	gradleVersion = '3.5.1'
 }

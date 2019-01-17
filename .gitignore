@@ -34,6 +34,7 @@
 
 # Source
 !/src/main/java/**/*.java
+!/src/template/java/**/*.java
 
 # License Files inside the Mod
 !/src/main/resources/**/LICENSE*
