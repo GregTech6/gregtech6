@@ -357,7 +357,7 @@ public class LH {
 		add(EMITS_REDSTONE_FLUX_LOSS                    , "Can emit Redstone Flux (RF) with a Loss of");
 		add(ACCEPTS_REDSTONE_FLUX                       , "Can accept Redstone Flux (RF) losslessly");
 		add(ACCEPTS_REDSTONE_FLUX_LOSS                  , "Can accept Redstone Flux (RF) with a Loss of");
-		add(NO_GUI_CLICK_TO_LIMIT                       , "Click on Side with Empty Hand to set Limit");
+		add(NO_GUI_CLICK_TO_LIMIT                       , "Click on Side with Empty Hand to set Limit (Height and Sneak Sensitive)");
 		add(NO_GUI_CLICK_TO_INTERACT                    , "No GUI. Click to interact!");
 		add(NO_GUI_CLICK_TO_INVENTORY                   , "No GUI. Click to insert/extract Items!");
 		add(NO_GUI_CLICK_TO_TANK                        , "No GUI. Click with Fluid Container to interact!");
