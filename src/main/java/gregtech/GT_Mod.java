@@ -118,7 +118,6 @@ import net.minecraftforge.oredict.OreDictionary;
 public class GT_Mod extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
 	public static GT_Proxy gregtechproxy;
-	public static String VERSION = "${version}".substring(0, 7);
 	
 	public GT_Mod() {
 		GT = this;
