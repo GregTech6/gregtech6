@@ -30,9 +30,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Chisels no longer work while sneaking, so now the Pocket Multitool is no longer accidentially doing Stuff.
 [FIXED] Placing Multiblock Parts next to an already formed Multiblock did not trigger a Force Reset for the Structural Checks. This was a problem for "expandable" Multiblocks like the Lightning Rod.
 [FIXED] Tungstate Bathing in Hydrochloric Acid. (Maths Issue)
+[CHANGED] After this Version, the Version Checker should be a slight bit better automated, and no longer require me to upload a text file manually. It will check if the Major Version Number matches with the recent one, and it will ignore Versions ending on .00 (because those usually contain big Changes that make everything less stable)
 [ADDED] Rocks now have a Tooltip stating that there is their Ore closeby, making it easier to know that they indicate Ores in the first place.
 [ADDED] Meat/Fish/SoylentGreen can now be used as an Ingredient for IC2 and Forestry Fertilizer. Doesn't matter if it is rotten, cooked or raw, all Variants work as long as they are ground up.
 [ADDED] Phosphor containing Minerals such as Apatite can now be used for Flint and Tinder.
+[ADDED] The Measuring Pot can now be Limited to certain Fluid Amounts by Rightclicking its Side with an empty Hand. (Sneaking changes the increments/decrements)
 
 
 //=== Version Number Jump due to slight changes in API ===//

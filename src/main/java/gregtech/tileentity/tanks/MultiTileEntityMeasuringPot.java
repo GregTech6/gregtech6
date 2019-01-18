@@ -21,6 +21,10 @@ package gregtech.tileentity.tanks;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
+import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureFluid;
@@ -28,16 +32,70 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.tank.TileEntityBase10FluidContainerSyncSmall;
+import gregapi.util.UT;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMeasuringPot extends TileEntityBase10FluidContainerSyncSmall {
+	public long mCapacity = 1000;
+	
+	@Override
+	public void readFromNBT2(NBTTagCompound aNBT) {
+		super.readFromNBT2(aNBT);
+		mCapacity = mTank.getCapacity();
+		if (aNBT.hasKey(NBT_MODE)) mTank.setCapacity(aNBT.getLong(NBT_MODE));
+	}
+	
+	@Override
+	public void writeToNBT2(NBTTagCompound aNBT) {
+		if (mCapacity != mTank.getCapacity()) UT.NBT.setNumber(aNBT, NBT_MODE, mTank.getCapacity());
+		super.writeToNBT2(aNBT);
+	}
+	
+	@Override
+	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
+		if (mCapacity != mTank.getCapacity()) UT.NBT.setNumber(aNBT, NBT_MODE, mTank.getCapacity());
+		return super.writeItemNBT2(aNBT);
+	}
+	
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		super.addToolTips(aList, aStack, aF3_H);
+		aList.add(Chat.CYAN + LH.get(LH.NO_GUI_CLICK_TO_LIMIT));
+	}
+	
+	@Override
+	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aPlayer.getCurrentEquippedItem() == null && SIDES_HORIZONTAL[aSide]) {
+			if (isClientSide()) return T;
+			if (aHitY > PX_P[4]) {
+				if (aHitY > PX_P[6]) {
+					mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() + (aPlayer.isSneaking() ? 5 : 50)));
+				} else {
+					mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() + (aPlayer.isSneaking() ? 1 : 10)));
+				}
+			} else {
+				if (aHitY > PX_P[2]) {
+					mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() - (aPlayer.isSneaking() ? 1 : 10)));
+				} else {
+					mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() - (aPlayer.isSneaking() ? 5 : 50)));
+				}
+			}
+			UT.Entities.sendchat(aPlayer, "Limit: " + mTank.getCapacity() + "L");
+			return T;
+		}
+		return super.onBlockActivated3(aPlayer, aSide, aHitX, aHitY, aHitZ);
+	}
+	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		return mTank.getFluidAmount() <= 0 ? 5 : 6;
+		return mTank.isEmpty() ? 5 : 6;
 	}
 	
 	@Override
