@@ -39,6 +39,8 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
+import gregapi.tileentity.ITileEntityFunnelAccessible;
+import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
@@ -53,12 +55,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	private static int FLAME_RANGE = 2;
 	
 	protected short mEfficiency = 10000;
@@ -215,7 +218,7 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		return mRecipes.containsInput(aFluidToFill, this, NI) && !UT.Fluids.gas(aFluidToFill) ? mTank : null;
+		return mRecipes.containsInput(aFluidToFill, this, NI) ? mTank : null;
 	}
 	
 	@Override
@@ -232,6 +235,13 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
 		updateInventory();
 		return mTank.drain(aMaxDrain, aDoDrain);
+	}
+	
+	@Override
+	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
+		if (!mRecipes.containsInput(aFluid, this, NI)) return 0;
+		updateInventory();
+		return mTank.fill(aFluid, aDoFill);
 	}
 	
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mBurning?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]])): null;}

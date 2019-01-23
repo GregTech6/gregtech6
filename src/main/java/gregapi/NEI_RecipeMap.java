@@ -608,25 +608,31 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	
 	@Override
 	public void drawExtras(int aRecipeIndex) {
-		long tEUt       = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mEUt;
+		long tGUt       = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mEUt;
 		long tDuration  = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mDuration;
-		if (tEUt == 0) {
+		if (tGUt == 0) {
 			drawText(10, 93, "Tier: unspecified", 0xFF000000);
 		} else {
-			if (tEUt > 0) {
-				drawText(10, 73, "Costs: " + (tDuration*tEUt) + " GU", 0xFF000000);
-				drawText(10, 83, "Usage: " + tEUt + " GU/t" , 0xFF000000);
+			if (tGUt > 0) {
+				drawText    (10, 73, "Costs: "  + (tDuration*tGUt) + " GU"        , 0xFF000000);
 				if (mRecipeMap.mShowVoltageAmperageInNEI) {
-					drawText(10, 93, "Tier: " + tEUt / mRecipeMap.mPower + " GU", 0xFF000000);
-					drawText(10,103, "Power: " + mRecipeMap.mPower, 0xFF000000);
+					drawText(10, 83, "Usage: "  + tGUt + " GU/t"                  , 0xFF000000);
+					drawText(10, 93, "Tier: "   + tGUt / mRecipeMap.mPower + " GU", 0xFF000000);
+					drawText(10,103, "Power: "  + mRecipeMap.mPower               , 0xFF000000);
+				} else {
+					if (tGUt != 1)
+					drawText(10, 83, "Usage: "  + tGUt + " GU/t"                  , 0xFF000000);
 				}
 			} else {
-				tEUt *= -1;
-				drawText(10, 73, "Gain: " + (tDuration*tEUt) + " GU", 0xFF000000);
-				drawText(10, 83, "Output: " + tEUt + " GU/t", 0xFF000000);
+				tGUt *= -1;
+				drawText    (10, 73, "Gain: "   + (tDuration*tGUt) + " GU"        , 0xFF000000);
 				if (mRecipeMap.mShowVoltageAmperageInNEI) {
-					drawText(10, 93, "Tier: " + tEUt / mRecipeMap.mPower + " GU", 0xFF000000);
-					drawText(10,103, "Power: " + mRecipeMap.mPower, 0xFF000000);
+					drawText(10, 83, "Output: " + tGUt + " GU/t"                  , 0xFF000000);
+					drawText(10, 93, "Tier: "   + tGUt / mRecipeMap.mPower + " GU", 0xFF000000);
+					drawText(10,103, "Power: "  + mRecipeMap.mPower               , 0xFF000000);
+				} else {
+					if (tGUt != 1)
+					drawText(10, 83, "Output: " + tGUt + " GU/t"                  , 0xFF000000);
 				}
 			}
 		}

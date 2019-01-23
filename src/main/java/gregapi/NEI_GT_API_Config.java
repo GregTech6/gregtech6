@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import gregapi.data.MD;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.tileentity.tools.MultiTileEntityAdvancedCraftingTable.MultiTileEntityGUIClientAdvancedCraftingTable;
+import gregtech.BuildInfo;
 
 /**
  * @author Gregorius Techneticies
@@ -52,9 +53,8 @@ public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI {
 		return MD.GAPI.mName + " NEI Plugin";
 	}
 	
-	/** This is just the last time I was looking at this Version Number :P */
 	@Override
 	public String getVersion() {
-		return "6.09.12";
+		return BuildInfo.version;
 	}
 }
