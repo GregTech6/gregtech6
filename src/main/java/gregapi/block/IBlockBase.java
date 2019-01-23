@@ -29,6 +29,7 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public interface IBlockBase extends IBlock {
+	// TODO Change all the aMeta s into short for 6.11.00
 	public String name(int aMeta);
 	public boolean useGravity(int aMeta);
 	public boolean doesWalkSpeed(short aMeta);

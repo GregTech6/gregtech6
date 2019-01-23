@@ -406,10 +406,11 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOcean           ("ocean.seawater"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA); // IT IS IMPORTANT THAT OCEAN COMES BEFORE SWAMP!!!
 		new WorldgenSwamp           ("swamp.dirtywater" , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS); // IT IS IMPORTANT THAT SWAMP COMES AFTER OCEAN!!!
 		
-		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay       , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables, 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay       , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables, 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		
-		new WorldgenBlackSand       ("river.magnetite"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TROPICS);
+		new WorldgenBlackSand       ("river.magnetite"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS);
+		new WorldgenTurf            ("swamp.turf"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT);
 		
 		new WorldgenLogDry          ("log.dry"          , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
 		new WorldgenLogRotten       ("log.rotten"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);

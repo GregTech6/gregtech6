@@ -42,7 +42,7 @@ public class Textures {
 		
 		, ZPM_TOP, ZPM_SIDES, ZPM_BOTTOM
 		
-		, MUD, CLAY_BROWN
+		, MUD, CLAY_BROWN, TURF
 		, SAND_MAGNETITE
 		
 		, PATH_TOP, PATH_SIDE
@@ -397,7 +397,7 @@ public class Textures {
 		DIGGABLES = {
 			MUD,
 			CLAY_BROWN,
-			CLAY_BROWN,
+			TURF,
 			CLAY_BROWN,
 			CLAY_BROWN,
 			CLAY_BROWN,

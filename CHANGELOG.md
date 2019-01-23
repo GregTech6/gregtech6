@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.08: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.07: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.10.06: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +30,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.01: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Turf, a Material generating similar to Black Sand that drops Peat when harvested. Found in Swampy Areas.
+[ADDED] Twilight Forest now generates Clay, Turf and Black Sand.
+[ADDED] Fluidized Bed Burning Boxes
+Takes only specific Fuels like Charcoal/Coal/Coke/Peat and similar
+Requires molten Calcite to be dumped in, this effort will result in triple the Fuel Value.
+Outputs 4 times the HU/t the regular Burning Box Counterparts do, so the overall Burning Box Max Output is now 2048 HU/t, which should make one higher Tier of Large Boiler useable.
 
 
 6.10.00:

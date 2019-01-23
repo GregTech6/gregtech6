@@ -379,11 +379,14 @@ public class Loader_Recipes_Food implements Runnable {
 			RM.Mixer        .addRecipe2(T, 16,   16, aEvent.mStack, ST.make(Blocks.brown_mushroom, 1, W), NF, FL.Soup_Mushroom.make(1000), ZL_IS);
 		}});
 		addListener("listAllpropolis", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			for (OreDictMaterial tMat : ANY.Ash.mToThis)
+			for (OreDictMaterial tMat : ANY.Ash.mToThis) {
 			RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {ingot.mat(MT.Peat, 2), OM.dust(tMat, U*2), aEvent.mStack}, ingotDouble.mat(MT.PeatBituminous, 1));
+			RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {dust .mat(MT.Peat, 1), OM.dust(tMat, U  ), aEvent.mStack}, dust       .mat(MT.PeatBituminous, 1));
+			}
 		}});
 		addListener(OD.itemTar, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer        .addRecipe2(T, 16,   16, ingot.mat(MT.Peat, 1), aEvent.mStack, ingotDouble.mat(MT.PeatBituminous, 1));
+			RM.Mixer        .addRecipe2(T, 16,   16, dust .mat(MT.Peat, 1), aEvent.mStack, dust       .mat(MT.PeatBituminous, 2));
 		}});
 		
 		

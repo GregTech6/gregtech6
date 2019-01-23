@@ -87,7 +87,7 @@ public class Recipe {
 		public final long mNEISpecialValueMultiplier, mPower;
 		public final boolean mNEIAllowed, mShowVoltageAmperageInNEI, mNeedsOutputs;
 		public boolean mLogErrors = T;
-		/** Used to determine Input Tank Size. Contains the size of the largest FluidStack Input. */
+		/** Used to determine Input Tank Size. Contains the size of the largest FluidStack Input, but is almost always at least 1000. */
 		public int mMaxFluidInputSize = 1000;
 		/** The Config File corresponding to this Recipe Handler. Will be initialised by GT_API. */
 		public Config mConfigFile = null;

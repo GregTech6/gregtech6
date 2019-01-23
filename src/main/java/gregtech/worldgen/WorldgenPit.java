@@ -26,6 +26,7 @@ import java.util.Random;
 import java.util.Set;
 
 import gregapi.util.UT;
+import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -56,10 +57,10 @@ public class WorldgenPit extends WorldgenObject {
 		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
 		if (aRandom.nextInt(mDivider) > mChance || !(BIOMES_PLAINS.contains(aBiomes[7][7].biomeName) || BIOMES_SAVANNA.contains(aBiomes[7][7].biomeName))) return F;
 		
-		int tX = aMinX - 16, tZ = aMinZ -16;
+		int tX = aMinX - 16, tZ = aMinZ -16, tUpperBound = WD.dimTF(aWorld) ? 40 : 70, tLowerBound = WD.dimTF(aWorld) ? 30 : 56;
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (SHAPE[i][j]) {
 			Block tBlock = NB, tLastBlock = aWorld.getBlock(tX+i, 71, tZ+j);
-			for (int tY = 70, tGenerated = 0; tY > 56 && tGenerated < 7; tY--, tLastBlock = tBlock) {
+			for (int tY = tUpperBound, tGenerated = 0; tY > tLowerBound && tGenerated < 7; tY--, tLastBlock = tBlock) {
 				tBlock = aWorld.getBlock(tX+i, tY, tZ+j);
 				if (tBlock == mBlock && mMeta == aWorld.getBlockMetadata(tX+i, tY, tZ+j)) {tGenerated++; continue;}
 				if (!tBlock.isOpaqueCube()) {if (tGenerated > 0) break; continue;}

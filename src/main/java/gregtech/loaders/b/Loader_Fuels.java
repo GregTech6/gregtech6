@@ -24,12 +24,24 @@ import static gregapi.data.CS.*;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
+import gregapi.data.MT;
+import gregapi.data.OP;
+import gregapi.oredict.OreDictMaterial;
+import gregapi.util.OM;
 import gregapi.util.UT;
 
 
 public class Loader_Fuels implements Runnable {
 	@Override
 	public void run() {
+		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Charcoal, MT.Coal, MT.CoalCoke, MT.Lignite, MT.LigniteCoke, MT.Anthracite, MT.Prismane, MT.Lonsdaleite, MT.PetCoke, MT.Peat, MT.PeatBituminous}) {
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) *  9, OP.blockDust.mat(tMat, 1), FL.Calcite.make(648), NF, OM.dust(tMat, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U*9, F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK)     , OP.dust     .mat(tMat, 1), FL.Calcite.make( 72), NF, OM.dust(tMat, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U  , F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) /  4, OP.dustSmall.mat(tMat, 1), FL.Calcite.make( 18), NF, OM.dust(tMat, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U4 , F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) /  9, OP.dustTiny .mat(tMat, 1), FL.Calcite.make(  8), NF, OM.dust(tMat, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U9 , F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) / 72, OP.dustDiv72.mat(tMat, 1), FL.Calcite.make(  1), NF, OM.dust(tMat, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U72, F)));
+		}
+		
 		FM.Burn         .addRecipe0(T, - 64,  1, UT.Fluids.make("liquid_extra_heavy_oil", 1)        , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 48,  1, UT.Fluids.make("liquid_heavy_oil", 1)              , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 32,  1, UT.Fluids.make("liquid_medium_oil", 1)             , UT.Fluids.make("carbondioxide", 1), ZL_IS);
