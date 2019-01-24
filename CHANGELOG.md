@@ -29,12 +29,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.01: (Not released yet)
-[ADDED] Turf, a Material generating similar to Black Sand that drops Peat when harvested. Found in Swampy Areas.
+6.10.01:
+[ADDED] Turf, a Material generating similar to Black Sand that drops Peat when harvested. Found in Swampy Areas. No you cant actually make Peat like in Forestry, that is kinda unrealistic.
 [ADDED] Twilight Forest now generates Clay, Turf and Black Sand.
 [ADDED] Fluidized Bed Burning Boxes
 Takes only specific Fuels like Charcoal/Coal/Coke/Peat and similar
-Requires molten Calcite to be dumped in, this effort will result in triple the Fuel Value.
+Requires molten Calcite to be dumped in, this effort will result in triple the Fuel Value and half the Ashes.
+Note, that it is half a Unit of Calcite per full Unit of whatever Fuel you insert, so high quality Fuels are better.
 Outputs 4 times the HU/t the regular Burning Box Counterparts do, so the overall Burning Box Max Output is now 2048 HU/t, which should make one higher Tier of Large Boiler useable.
 
 
