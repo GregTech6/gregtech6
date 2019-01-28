@@ -442,7 +442,6 @@ task sourceJar(type: Jar) {
 	manifest {}
 	classifier = 'sources'
 	from sourceSets.main.allSource
-	include 'gregapi/**'
 }
 
 task devJar(type: Jar) {
