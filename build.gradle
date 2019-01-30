@@ -442,6 +442,7 @@ task sourceJar(type: Jar) {
 	manifest {}
 	classifier = 'sources'
 	from sourceSets.main.allSource
+	exclude 'assets/**', 'logos/**'
 }
 
 task devJar(type: Jar) {
