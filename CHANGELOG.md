@@ -26,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.02: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Tiny Covers should no longer intercept Tool Interactions.
 
 
 6.10.01:

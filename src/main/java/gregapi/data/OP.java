@@ -535,9 +535,10 @@ public class OP {
 			if (tPrefix1.mNameInternal.startsWith("cableGt" ) && tPrefix2.mNameInternal.startsWith("cableGt"    )) tPrefix1.addFamiliarPrefix(tPrefix2);
 		}
 		
-		// Items which are already there in vanilla MC and IC2.
+		// Items which are already there in vanilla MC and IC2, or make Issues like with Mekanism.
 		gem                 .disableItemGeneration(MT.Coal, MT.Charcoal, MT.NetherStar, MT.Diamond, MT.Emerald, MT.NetherQuartz, MT.EnderPearl, MT.EnderEye, MT.Flint, MT.Lapis);
-		dust                .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar, MT.Blaze);
+		dust                .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar, MT.Blaze, MT.RefinedObsidian, MT.RefinedGlowstone);
+		dustRefined         .disableItemGeneration(MT.Obsidian, MT.Glowstone);
 		stick               .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
 		ingot               .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick);
 		nugget              .disableItemGeneration(MT.Au);

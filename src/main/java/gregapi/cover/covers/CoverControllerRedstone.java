@@ -48,7 +48,7 @@ public class CoverControllerRedstone extends AbstractCoverAttachmentController {
 			if (aChatReturn != null) aChatReturn.add((aData.mValues[aSide] & B[0]) != 0 ? "Runs when Input is OFF" : "Runs when Input is ON");
 			return 1;
 		}
-		return 0;
+		return aData.mTileEntity.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSideClicked, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override

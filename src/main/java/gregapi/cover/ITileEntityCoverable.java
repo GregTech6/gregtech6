@@ -19,9 +19,12 @@
 
 package gregapi.cover;
 
+import java.util.List;
+
 import gregapi.tileentity.ITileEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -35,4 +38,5 @@ public interface ITileEntityCoverable extends ITileEntity {
 	public void receiveBlockUpdateFromCover();
 	public void sendBlockUpdateFromCover();
 	public boolean canTick();
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ);
 }

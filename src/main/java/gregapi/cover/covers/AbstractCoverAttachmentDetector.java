@@ -55,7 +55,7 @@ public abstract class AbstractCoverAttachmentDetector extends AbstractCoverAttac
 			}
 			return 1;
 		}
-		return 0;
+		return aData.mTileEntity.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSideClicked, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override

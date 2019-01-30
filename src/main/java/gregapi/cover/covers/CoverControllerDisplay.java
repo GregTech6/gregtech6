@@ -49,7 +49,7 @@ public class CoverControllerDisplay extends AbstractCoverAttachmentController {
 			aData.visual(aSide, (short)((aData.mVisuals[aSide] & 1023) | ((((aData.mVisuals[aSide] >>> 10) + 1) % sTexturesBase.length) << 10)));
 			return 100;
 		}
-		return 0;
+		return aData.mTileEntity.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSideClicked, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override
