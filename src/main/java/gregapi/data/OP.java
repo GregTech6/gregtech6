@@ -540,7 +540,7 @@ public class OP {
 		dust                .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar, MT.Blaze, MT.RefinedObsidian, MT.RefinedGlowstone);
 		dustRefined         .disableItemGeneration(MT.Obsidian, MT.Glowstone);
 		stick               .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
-		ingot               .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick);
+		ingot               .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick, MT.RefinedObsidian, MT.RefinedGlowstone);
 		nugget              .disableItemGeneration(MT.Au);
 		plate               .disableItemGeneration(MT.Paper);
 		bucket              .disableItemGeneration(MT.Empty, MT.Water, MT.Lava, MT.Milk);

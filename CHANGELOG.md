@@ -27,6 +27,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.02: (Not released yet)
 [FIXED] Tiny Covers should no longer intercept Tool Interactions.
+[ADDED] Barometer Gas Cylinder, which is a Measuring Pot but for Gasses with a Capacity of 8000 Liters (because Compressed Gas)
 
 
 6.10.01:
