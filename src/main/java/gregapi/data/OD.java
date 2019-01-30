@@ -100,6 +100,10 @@ public enum OD {
 	, itemGrassDry
 	, itemGrassMoldy
 	, itemGrassRotten
+	, baleGrass
+	, baleGrassDry
+	, baleGrassMoldy
+	, baleGrassRotten
 	, itemKey
 	, itemMud
 	, itemTar

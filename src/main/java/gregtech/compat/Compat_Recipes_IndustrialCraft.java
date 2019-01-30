@@ -37,7 +37,6 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.data.TD;
 import gregapi.old.GT_BaseCrop;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
@@ -142,6 +141,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.ic2_compressor(OP.blockIngot     .mat(MT.AnnealedCopper, 1), OP.plateDense.mat(MT.Cu, 1));
 		RM.ic2_compressor(OP.blockPlate     .mat(MT.AnnealedCopper, 1), OP.plateDense.mat(MT.Cu, 1));
 		RM.ic2_compressor(OP.blockSolid     .mat(MT.AnnealedCopper, 1), OP.plateDense.mat(MT.Cu, 1));
+		
+		RM.compact(ST.make(MD.IC2, "blockMachine2", 1, 2), 3, ST.make(MD.IC2, "blockMachine2", 1, 15));
 		
 		CR.shaped(IL.IC2_Machine.get(1), CR.DEF, "III", "I I", "III", 'I', OP.ingot.dat(MT.TECH.RefinedIron));
 		CR.remove(IL.IC2_Machine.get(1));
@@ -548,11 +549,11 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		addListener("cropIvy", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.pulverizing(aEvent.mStack, IL.IC2_Grin_Powder.get(1));
 		}});
-		addListener("flower", "itemPlantRemains", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.flower, OD.itemPlantRemains, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
 			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
 		}});
-		addListener(new String[] {"baleGrass", "baleGrassDry", "baleGrassMoldy", "baleGrassRotten"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.baleGrass, OD.baleGrassDry, OD.baleGrassMoldy, OD.baleGrassRotten, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.ic2_compressor(ST.amount( 1, aEvent.mStack), IL.IC2_Plantball.get(1));
 			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(1, aEvent.mStack), IL.IC2_Plantball.get(1));
 		}});
@@ -573,28 +574,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
 			}
 		}});
-		
-		OP.plantGtBerry.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (aEvent.mMaterial.contains(TD.Atomic.ANTIMATTER)) return;
-			RM.ic2_compressor(ST.amount(16, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount(16, aEvent.mStack), IL.IC2_Plantball.get(1));
-		}});
-		OP.plantGtBlossom.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (aEvent.mMaterial.contains(TD.Atomic.ANTIMATTER)) return;
-			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
-		}});
-		OP.plantGtTwig.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (aEvent.mMaterial.contains(TD.Atomic.ANTIMATTER)) return;
-			RM.ic2_compressor(ST.amount( 4, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount( 4, aEvent.mStack), IL.IC2_Plantball.get(1));
-		}});
-		OP.plantGtWart.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (aEvent.mMaterial.contains(TD.Atomic.ANTIMATTER)) return;
-			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
-			RM.Compressor.addRecipe1(T, 16, 16, ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
-		}});
-		
 		
 		//                                                                                                                                                                                                                                                                                                                                                 TIER,SIZE,    ,AH,HA,CH,FD,DF,CO,WD
 		new GT_BaseCrop("Indigo"                , "Eloraam"                 , OP.plantGtBlossom.mat(MT.Indigo, 1)               , null                                                                                                                                                                  , OP.plantGtBlossom.mat(MT.Indigo, 4)               , 2, 4,     0, 1, 4, 1, 1, 0, 4, 0, new String[] {"Flower"      , "Color", "Ingredient"});
