@@ -1009,6 +1009,7 @@ public class CS {
 	, NBT_PIPEBANDWIDTH             = "gt.pipebandwidth"            // Long
 	, NBT_PIPESIZE                  = "gt.pipesize"                 // Long
 	, NBT_PIPERENDER                = "gt.piperender"               // Byte
+	, NBT_LIQUIDPROOF               = "gt.liquidproof"              // Boolean
 	, NBT_GASPROOF                  = "gt.gasproof"                 // Boolean
 	, NBT_ACIDPROOF                 = "gt.acidproof"                // Boolean
 	, NBT_PLASMAPROOF               = "gt.plasmaproof"              // Boolean

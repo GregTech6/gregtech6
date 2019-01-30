@@ -37,7 +37,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraftforge.fluids.FluidStack;
 
 /**
  * @author Gregorius Techneticies
@@ -130,8 +129,6 @@ public class MultiTileEntityBarometerGasCylinder extends TileEntityBase09FluidCo
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[ 4], PX_P[ 0], PX_P[ 4], PX_N[ 4], PX_N[ 0], PX_N[ 4]);}
 	
 	@Override public float getSurfaceDistance(byte aSide) {return SIDES_VERTICAL[aSide]?0.0F:PX_P[ 4];}
-	
-	@Override public boolean isFluidAllowed(FluidStack aFluid) {return super.isFluidAllowed(aFluid) && UT.Fluids.gas(aFluid);}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.barometer.gas.cylinder";}
 }

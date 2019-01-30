@@ -73,7 +73,7 @@ import squeek.applecore.api.food.FoodValues;
  */
 public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Paintable implements ITileEntityConnectedTank, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_OnItemRightClick, IMTE_OnItemUseFirst, IMTE_AddToolTips, IFluidContainerItem {
 	public FluidTankGT mTank = new FluidTankGT(1000);
-	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F;
+	public boolean mLiquidProof = T, mGasProof = F, mAcidProof = F, mPlasmaProof = F;
 	public long mTemperatureMax = 0;
 	
 	@Override
@@ -81,6 +81,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_GASPROOF)) mGasProof = aNBT.getBoolean(NBT_GASPROOF);
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
+		if (aNBT.hasKey(NBT_LIQUIDPROOF)) mLiquidProof = aNBT.getBoolean(NBT_LIQUIDPROOF);
 		if (aNBT.hasKey(NBT_PLASMAPROOF)) mPlasmaProof = aNBT.getBoolean(NBT_PLASMAPROOF);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperatureMax = aNBT.getLong(NBT_TEMPERATURE); else mTemperatureMax = mMaterial.mMeltingPoint - 50;
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) mTank.setCapacity(aNBT.getLong(NBT_TANK_CAPACITY));
@@ -112,6 +113,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 			aList.add(Chat.CYAN + "Max: " + mTank.getCapacity() + " L");
 		}
 		aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_HEATPROOF) + LH.Chat.WHITE + mTemperatureMax + LH.Chat.RED + " K");
+		if (mLiquidProof    ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_LIQUIDPROOF));
 		if (mGasProof       ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
 		if (mAcidProof      ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		if (mPlasmaProof    ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
@@ -411,7 +413,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	}
 	
 	public boolean isFluidAllowed(FluidStack aFluid) {
-		return aFluid != null && !UT.Fluids.powerconducting(aFluid) && (mGasProof || !UT.Fluids.gas(aFluid)) && (mAcidProof || !UT.Fluids.acid(aFluid)) && (mPlasmaProof || !UT.Fluids.plasma(aFluid) && UT.Fluids.temperature(aFluid) <= mTemperatureMax);
+		return aFluid != null && !UT.Fluids.powerconducting(aFluid) && (UT.Fluids.gas(aFluid) ? mGasProof : mLiquidProof) && (mAcidProof || !UT.Fluids.acid(aFluid)) && (mPlasmaProof || !UT.Fluids.plasma(aFluid) && UT.Fluids.temperature(aFluid) <= mTemperatureMax);
 	}
 	
 	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.getFluidAmount() > 0 ? 1 : aDefault;}
