@@ -25,7 +25,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.02: (Not released yet)
+6.10.02:
+[NOTE] Got "sick" earlier this week, though unsure if that is counted as sick or an injury, wont eat certain types of Chocolate ever again because of that. At least I did not get any Blood Poisoning from that shit happening, and I'm fine again by now.
 [FIXED] Tiny Covers should no longer intercept Tool Interactions.
 [ADDED] Barometer Gas Cylinder, which is a Measuring Pot but for Gasses with a Capacity of 8000 Liters (because Compressed Gas)
 
