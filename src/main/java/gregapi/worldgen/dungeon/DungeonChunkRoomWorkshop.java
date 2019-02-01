@@ -161,9 +161,17 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		short tID = (short)(tAmount > 16000 ? 32734 : 32714);
 		FluidStack[] tDrinks = new FluidStack[] {FL.Purple_Drink.make(tAmount), FL.Purple_Drink.make(tAmount), FL.Purple_Drink.make(tAmount), FL.Vodka.make(tAmount), FL.Mead.make(tAmount), FL.Whiskey_GlenMcKenner.make(tAmount), FL.Wine_Grape_Purple.make(tAmount)};
 		
-		for (int i = 0; i < 2; i++) for (int j = 0; j < 2; j++) if (aData.mRandom.nextInt(3) > 0) for (int k = 0; k < 3; k++) {
-			aData.set(1+i, 1+k, 12+j, SIDE_UNKNOWN, tID, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
-			if (aData.mRandom.nextInt(3) == 0) break;
+		for (int i = 0; i < 2; i++) for (int j = 0; j < 2; j++) {
+			if (aData.mRandom.nextInt(3) > 0) for (int k = 0; k < 3; k++) {
+				aData.set(1+i, 1+k, 12+j, SIDE_UNKNOWN, tID, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
+				if (aData.mRandom.nextInt(3) == 0) break;
+			} else if (aData.mRandom.nextBoolean()) {
+				if (aData.mRandom.nextBoolean()) {
+					aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red, NBT_PAINTED, T), NBT_TANK), T, T);
+				} else {
+					aData.set(1+i, 1, 12+j, SIDE_UNKNOWN, 32056, new FluidTankGT(FL.Helium.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Yellow, NBT_PAINTED, T), NBT_TANK), T, T);
+				}
+			}
 		}
 		
 		return T;

@@ -47,6 +47,13 @@ public enum FL {
 	, Oxygen                    ("oxygen"                                                   , SIMPLE, GAS)
 	, Liquid_Oxygen             ("liquidoxygen"                                             , SIMPLE, LIQUID)
 	
+	, Hydrogen                  ("hydrogen"                                                 , GAS)
+	, Deuterium                 ("deuterium"                                                , GAS)
+	, Tritium                   ("tritium"                                                  , GAS)
+	
+	, Helium                    ("helium"                                                   , GAS)
+	, Helium_3                  ("helium-3"                                                 , GAS)
+	
 	, Steam                     ("steam"                                                    , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
 	, Steam_IC2                 ("ic2steam"                                                 , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
 	, Steam_IC2_Superheated     ("ic2superheatedsteam"                                      , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
@@ -338,6 +345,9 @@ public enum FL {
 	, Oil_HotCrude              ("hotcrude"                                                 , SIMPLE, LIQUID)
 	
 	, Kerosine                  ("kerosine"                 , "kerosene"                    , SIMPLE, LIQUID)
+	, Methane                   ("methane"                                                  , SIMPLE, GAS)
+	, Propane                   ("propane"                                                  , SIMPLE, GAS)
+	, Butane                    ("butane"                                                   , SIMPLE, GAS)
 	
 	, Glue                      ("glue"                                                     , SIMPLE, LIQUID)
 	, Latex                     ("latex"                    , "molten.latex"                , SIMPLE, LIQUID)
