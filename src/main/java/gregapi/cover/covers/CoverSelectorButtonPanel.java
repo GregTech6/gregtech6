@@ -53,6 +53,7 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 			float[] tCoords = UT.Code.getFacingCoordsClicked(aSideClicked, aHitX, aHitY, aHitZ);
 			byte tMode = UT.Code.bind4(((int)(tCoords[0] * 4) % 4) + ((int)(tCoords[1] * 4) % 4) * 4);
 			if (aData.mTileEntity.isServerSide()) aData.visual(aSide, (short)((aData.mVisuals[aSide] & ~15) | ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(tMode)));
+			if (aData.mValues[aSide] > 0) aData.value(aSide, (short)10);
 			return rReturn;
 		}
 		return F;
@@ -64,15 +65,31 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 			aData.visual(aSide, (short)((aData.mVisuals[aSide] + 16) % 64));
 			return 100;
 		}
+		if (aTool.equals(TOOL_screwdriver)) {
+			aData.value(aSide, (short)(aData.mValues[aSide] > 0 ? 0 : 1));
+			if (aChatReturn != null) aChatReturn.add(aData.mValues[aSide] > 0 ? "Buttons will reset" : "Buttons stay pressed");
+			return 10000;
+		}
 		return 0;
 	}
 	
 	@Override
 	public void onTickPost(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
-		if (aIsServerSide) aData.visual(aSide, (short)((aData.mVisuals[aSide] & ~15) | UT.Code.bind4(((ITileEntitySwitchableMode)aData.mTileEntity).getStateMode())));
+		if (!aData.mStopped && aIsServerSide) {
+			if (aData.mValues[aSide] > 1) {
+				aData.value(aSide, (short)(aData.mValues[aSide]-1));
+				if (aData.mValues[aSide] == 1) ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode((byte)0);
+			}
+			aData.visual(aSide, (short)((aData.mVisuals[aSide] & ~15) | UT.Code.bind4(((ITileEntitySwitchableMode)aData.mTileEntity).getStateMode())));
+		}
 	}
 	
-	@Override public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {super.addToolTips(aList, aStack, aF3_H); aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));}
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		super.addToolTips(aList, aStack, aF3_H);
+		aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));
+		aList.add(LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase[(aData.mVisuals[aSide] >> 4) & 3], sTextures[UT.Code.bind4(aData.mVisuals[aSide] & 15)]);}
 	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}

@@ -29,6 +29,7 @@ There is 4 Designs: Just unmarked Buttons, Numeric Buttons, Hexadecimal Buttons 
 If there is a Controller Cover that can turn off other Covers, then it can prevent the Buttons from being pressed on demand. This also applies to the Manual Selector Cover.
 The Panel will always have the Button appear Perma-Pressed that is corresponding to the Mode the attached Object is in.
 If a second Mode Selector is attached to the same Block it can set which Button appears to be pressed.
+The Button Panel itself can also be screwdrivered so that it automatically resets the Button to 0 after about 10 ticks.
 
 
 6.10.02:
