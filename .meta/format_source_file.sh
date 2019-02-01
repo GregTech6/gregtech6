@@ -1,9 +1,12 @@
 #!/bin/sh
 
-SOURCE_DIR=`dirname $0`
+SOURCE_DIR=$(dirname "$0")
 TAB=$(printf '\t')
 
-[ -z "$LICENSE_HEADER" ] && export LICENSE_HEADER="$(cat "$SOURCE_DIR/LICENSE.header")"
+if [ -z "$LICENSE_HEADER" ]; then
+	LICENSE_HEADER="$(cat "$SOURCE_DIR/LICENSE.header")"
+	export LICENSE_HEADER
+fi
 
 ORIGINAL_HEADER="$(sed '/^package/Q' "$1")"
 

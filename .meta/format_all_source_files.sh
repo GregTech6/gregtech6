@@ -2,9 +2,10 @@
 
 echo "Formatting all Source Files"
 
-SOURCE_DIR=`dirname $0`
+SOURCE_DIR=$(dirname "$0")
 
-export LICENSE_HEADER="$(cat "$SOURCE_DIR/LICENSE.header")"
+LICENSE_HEADER="$(cat "$SOURCE_DIR/LICENSE.header")"
+export LICENSE_HEADER
 
 if [ -z "$1" ]; then
 	find "$SOURCE_DIR/../src/main/java" -iname "*.java" -exec "$SOURCE_DIR/format_source_file.sh" {} \;
