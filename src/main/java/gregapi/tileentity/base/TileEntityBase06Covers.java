@@ -466,7 +466,7 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 			return ALONG_AXIS[aSide][tRenderPass]?null:mCovers.mBehaviours[tRenderPass].getCoverTextureHolder((byte)tRenderPass, mCovers, aSide);
 		}
 		tRenderPass /= 2;
-		return !ALONG_AXIS[aSide][tRenderPass] && ((mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isOpaque(aSide, mCovers)) || isCoverSurface(aSide, aRenderPass)) ? null : aSide == OPPOSITES[tRenderPass] || aShouldSideBeRendered[aSide] ? mCovers.mBehaviours[tRenderPass].getCoverTextureAttachment((byte)tRenderPass, mCovers, aSide) : null;
+		return !ALONG_AXIS[aSide][tRenderPass] && ((mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].isFullTexture(aSide, mCovers)) || isCoverSurface(aSide, aRenderPass)) ? null : aSide == OPPOSITES[tRenderPass] || aShouldSideBeRendered[aSide] ? mCovers.mBehaviours[tRenderPass].getCoverTextureAttachment((byte)tRenderPass, mCovers, aSide) : null;
 	}
 	
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {return 1;}

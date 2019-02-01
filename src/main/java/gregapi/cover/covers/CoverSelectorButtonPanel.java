@@ -52,7 +52,7 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 			boolean rReturn = F;
 			float[] tCoords = UT.Code.getFacingCoordsClicked(aSideClicked, aHitX, aHitY, aHitZ);
 			byte tMode = UT.Code.bind4(((int)(tCoords[0] * 4) % 4) + ((int)(tCoords[1] * 4) % 4) * 4);
-			if (aData.mTileEntity.isServerSide()) aData.visual(aSide, ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(tMode));
+			if (aData.mTileEntity.isServerSide()) aData.visual(aSide, (short)((aData.mVisuals[aSide] & ~15) | ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(tMode)));
 			return rReturn;
 		}
 		return F;

@@ -81,6 +81,7 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 	
 	@Override public boolean isSolid(byte aSide, CoverData aData) {return F;}
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return F;}
+	@Override public boolean isFullTexture(byte aCoverSide, CoverData aData) {return F;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	
 	public static final ITexture

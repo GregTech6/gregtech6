@@ -160,6 +160,11 @@ public interface ICover {
 	public boolean isOpaque(byte aCoverSide, CoverData aData);
 	
 	/**
+	 * @return if this side is a Full Texture
+	 */
+	public boolean isFullTexture(byte aCoverSide, CoverData aData);
+	
+	/**
 	 * @return if this side is Sealable
 	 */
 	public boolean isSealable(byte aCoverSide, CoverData aData);

@@ -63,6 +63,7 @@ public abstract class AbstractCoverDefault implements ICover {
 	@Override public boolean isSolid(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean isOpaque(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean isSealable(byte aCoverSide, CoverData aData) {return T;}
+	@Override public boolean isFullTexture(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean needsVisualsSaved(byte aCoverSide, CoverData aData) {return F;}
 	@Override public boolean onWalkOver(byte aCoverSide, CoverData aData, Entity aEntity) {return T;}
