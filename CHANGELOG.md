@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.03: (Not released yet)
+[ADDED] Gas Cylinders to GT6 Dungeons containing Propane or Helium.
 [ADDED]
 Button Panel back as a Cover.
 It is a Selector Cover like the other Manual Selector, just more convenient.

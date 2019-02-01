@@ -51,10 +51,10 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			if (aData.mRandom.nextBoolean()) {
 				int tType = aData.mRandom.nextInt(tIDs.length);
 				for (int i = 0; i < 2; i++) for (int j = 0; j < 3; j++) {
-					if (aData.mRandom.nextInt(3) > 0) for (int k = 0; k < 4; k++) {
+					if (aData.mRandom.nextBoolean()) for (int k = 0; k < 4; k++) {
 						aData.set(12+i, 1+k, 7+j, SIDE_UNKNOWN, tIDs[tType], new FluidTankGT(UT.Code.select(NF, tFluids[tType])).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
-						if (aData.mRandom.nextInt(3) == 0) break;
-					} else if (aData.mRandom.nextInt(3) > 0) {
+						if (aData.mRandom.nextBoolean()) break;
+					} else if (aData.mRandom.nextBoolean()) {
 						if (aData.mRandom.nextBoolean()) {
 							aData.set(12+i, 1, 7+j, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red, NBT_PAINTED, T), NBT_TANK), T, T);
 						} else {
@@ -68,10 +68,10 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			if (aData.mRandom.nextBoolean()) {
 				int tType = aData.mRandom.nextInt(tIDs.length);
 				for (int i = 0; i < 2; i++) for (int j = 0; j < 3; j++) {
-					if (aData.mRandom.nextInt(3) > 0) for (int k = 0; k < 4; k++) {
+					if (aData.mRandom.nextBoolean()) for (int k = 0; k < 4; k++) {
 						aData.set(1+i, 1+k, 7+j, SIDE_UNKNOWN, tIDs[tType], new FluidTankGT(UT.Code.select(NF, tFluids[tType])).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
-						if (aData.mRandom.nextInt(3) == 0) break;
-					} else if (aData.mRandom.nextInt(3) > 0) {
+						if (aData.mRandom.nextBoolean()) break;
+					} else if (aData.mRandom.nextBoolean()) {
 						if (aData.mRandom.nextBoolean()) {
 							aData.set(1+i, 1, 7+j, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red, NBT_PAINTED, T), NBT_TANK), T, T);
 						} else {
@@ -85,10 +85,10 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			if (aData.mRandom.nextBoolean()) {
 				int tType = aData.mRandom.nextInt(tIDs.length);
 				for (int i = 0; i < 3; i++) for (int j = 0; j < 2; j++) {
-					if (aData.mRandom.nextInt(3) > 0) for (int k = 0; k < 4; k++) {
+					if (aData.mRandom.nextBoolean()) for (int k = 0; k < 4; k++) {
 						aData.set(7+i, 1+k, 12+j, SIDE_UNKNOWN, tIDs[tType], new FluidTankGT(UT.Code.select(NF, tFluids[tType])).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
-						if (aData.mRandom.nextInt(3) == 0) break;
-					} else if (aData.mRandom.nextInt(3) > 0) {
+						if (aData.mRandom.nextBoolean()) break;
+					} else if (aData.mRandom.nextBoolean()) {
 						if (aData.mRandom.nextBoolean()) {
 							aData.set(7+i, 1, 12+j, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red, NBT_PAINTED, T), NBT_TANK), T, T);
 						} else {
@@ -102,10 +102,10 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			if (aData.mRandom.nextBoolean()) {
 				int tType = aData.mRandom.nextInt(tIDs.length);
 				for (int i = 0; i < 3; i++) for (int j = 0; j < 2; j++) {
-					if (aData.mRandom.nextInt(3) > 0) for (int k = 0; k < 4; k++) {
+					if (aData.mRandom.nextBoolean()) for (int k = 0; k < 4; k++) {
 						aData.set(7+i, 1+k, 1+j, SIDE_UNKNOWN, tIDs[tType], new FluidTankGT(UT.Code.select(NF, tFluids[tType])).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
-						if (aData.mRandom.nextInt(3) == 0) break;
-					} else if (aData.mRandom.nextInt(3) > 0) {
+						if (aData.mRandom.nextBoolean()) break;
+					} else if (aData.mRandom.nextBoolean()) {
 						if (aData.mRandom.nextBoolean()) {
 							aData.set(7+i, 1, 1+j, SIDE_UNKNOWN, 32055, new FluidTankGT(FL.Propane.make(8000)).writeToNBT(UT.NBT.make(NBT_COLOR, DYE_INT_Red, NBT_PAINTED, T), NBT_TANK), T, T);
 						} else {

@@ -504,7 +504,7 @@ public class MT {
 	Bth     = unknown       ( 2360, 650),
 	Bts     = unknown       ( 2370, 655),
 	Bto     = unknown       ( 2380, 660),
-	Mcg     = element       ( 2390, "Mac-Guffium"           , "Mcg"     , 239, 665, 200,  1000,  3.122, SET_SHINY, 200,  50, 150, 255).put(G_CONTAINERS, VALUABLE, "Bitriennium").aspects(TC.ALIENIS, 8, TC.PERMUTATIO, 8, TC.SPIRITUS, 8, TC.AURAM, 8, TC.VITIUM, 8, TC.RADIO, 8, TC.MAGNETO, 8, TC.ELECTRUM, 8, TC.NEBRISUM, 8, TC.STRONTIO, 8), Bte = Mcg,
+	Mcg     = element       ( 2390, "Mac-Guffium"           , "Mcg"     , 239, 665, 200,  1000,  3.122, SET_SHINY, 200,  50, 150, 255).put(G_CONTAINERS, VALUABLE, GLOWING, LIGHTING, "Bitriennium").aspects(TC.ALIENIS, 8, TC.PERMUTATIO, 8, TC.SPIRITUS, 8, TC.AURAM, 8, TC.VITIUM, 8, TC.RADIO, 8, TC.MAGNETO, 8, TC.ELECTRUM, 8, TC.NEBRISUM, 8, TC.STRONTIO, 8), Bte = Mcg,
 	Bqn     = unknown       ( 2400, 670),
 	Bqu     = unknown       ( 2410, 675),
 	Bqb     = unknown       ( 2420, 680),
