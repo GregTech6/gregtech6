@@ -78,6 +78,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Filter_Fluid.set(              addItem(tLastID =  1024, "Fluid Filter"                     , "Filters for a Fluid"                             , new CoverFilterFluid()                                , TC.stack(TC.MACHINA, 1), TC.stack(TC.ORDO, 1), TC.stack(TC.AQUA, 1)));
 		IL.Cover_Controller.set(                addItem(tLastID =  1025, "Cover Controller"                 , "Turns Redstone into ON/OFF State for Covers"     , new CoverControllerCovers()                           , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
 		IL.Cover_Shutter.set(                   addItem(tLastID =  1026, "Shutter Cover"                    , "Connects and Disconnects Pipes"                  , new CoverShutter()                                    , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Button_Selector.set(           addItem(tLastID =  1027, "Button Panel Selector"            , "Selector Cover that is controlled by Buttons"    , new CoverSelectorButtonPanel()                        , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 1)));
 		
 		CR.shaped(IL.Cover_Blank                    .get(1), CR.DEF_REV, "Sh" , "Pd"        , 'P', OP.plate.dat(MT.Al), 'S', OP.screw.dat(MT.Al));
 		CR.shaped(IL.Cover_Crafting                 .get(1), CR.DEF_REV,  "C" ,  "Q"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench);
@@ -106,6 +107,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Cover_Filter_Fluid             .get(1), CR.DEF_REV, "Z Z", " Q ", "Z Z", 'Q', IL.Cover_Blank, 'Z', OP.foil.dat(MT.Zn));
 		CR.shaped(IL.Cover_Controller               .get(1), CR.DEF_REV, "BW" , "CQ"        , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[2], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Items.comparator, 1, W));
 		CR.shaped(IL.Cover_Shutter                  .get(1), CR.DEF_REV, "TwT", "PQP", "TdT", 'Q', IL.Cover_Blank, 'P', OP.plate.dat(MT.StainlessSteel), 'T', OP.screw.dat(MT.StainlessSteel));
+		CR.shaped(IL.Cover_Button_Selector          .get(1), CR.DEF_REV, "BXB", "BQB", "BCB", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', IL.Circuit_Selector.wild(1));
 		
 		IL.Cover_Pressure_Valve.set(            addItem(tLastID =  2000, "Pressure Valve"                   , ""                                                , new CoverPressureValve()                              , TC.stack(TC.MACHINA, 1), TC.stack(TC.AER, 1), TC.stack(TC.VACUOS, 1)));
 		

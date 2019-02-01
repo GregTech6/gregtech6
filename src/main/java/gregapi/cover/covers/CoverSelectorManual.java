@@ -39,12 +39,12 @@ public class CoverSelectorManual extends AbstractCoverAttachmentSelector {
 	@Override
 	public void onCoverPlaced(byte aSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
 		super.onCoverPlaced(aSide, aData, aPlayer, aCover);
-		if (aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aSide, ((ITileEntitySwitchableMode)aData.mTileEntity).getStateMode());
+		if (aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aSide, UT.Code.bind4(((ITileEntitySwitchableMode)aData.mTileEntity).getStateMode()));
 	}
 	
 	@Override
 	public boolean onCoverClickedRight(byte aSide, CoverData aData, Entity aPlayer, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
-		if (aSide == aSideClicked && aData.mTileEntity instanceof ITileEntitySwitchableMode) {
+		if (!aData.mStopped && aSide == aSideClicked && aData.mTileEntity instanceof ITileEntitySwitchableMode) {
 			boolean rReturn = F;
 			byte tMode = UT.Code.bind4(aData.mVisuals[aSide]);
 			float[] tCoords = UT.Code.getFacingCoordsClicked(aSideClicked, aHitX, aHitY, aHitZ);

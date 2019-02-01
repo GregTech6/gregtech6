@@ -39,12 +39,12 @@ public class CoverSelectorRedstone extends AbstractCoverAttachmentSelector {
 	@Override
 	public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
 		super.onCoverPlaced(aCoverSide, aData, aPlayer, aCover);
-		if (aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aCoverSide, ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aCoverSide)));
+		if (!aData.mStopped && aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aCoverSide, ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aCoverSide)));
 	}
 	
 	@Override
 	public void onBlockUpdate(byte aCoverSide, CoverData aData) {
-		if (aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aCoverSide, ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aCoverSide)));
+		if (!aData.mStopped && aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aCoverSide, ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aCoverSide)));
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase, sTextures[UT.Code.bind4(aData.mVisuals[aSide])]);}

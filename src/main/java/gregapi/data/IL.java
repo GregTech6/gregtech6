@@ -362,7 +362,7 @@ public enum IL implements IItemContainer {
 	Cover_Blank,
 	Cover_Crafting,
 	Cover_Auto_Switch, Cover_Redstone_Switch, Cover_Auto_Switch_Redstone, Cover_Auto_Switch_01_Minute, Cover_Auto_Switch_05_Minute, Cover_Auto_Switch_10_Minute, Cover_Auto_Switch_20_Minute, Cover_Auto_Switch_30_Minute,
-	Cover_Redstone_Selector, Cover_Manual_Selector,
+	Cover_Redstone_Selector, Cover_Manual_Selector, Cover_Button_Selector,
 	Cover_Redstone_Emitter,
 	Cover_Pressure_Valve,
 	Cover_Machine_Display, Cover_Energy_Display,
