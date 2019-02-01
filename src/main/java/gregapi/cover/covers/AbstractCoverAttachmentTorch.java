@@ -76,6 +76,7 @@ public abstract class AbstractCoverAttachmentTorch extends AbstractCoverAttachme
 	
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
 	@Override public boolean isSolid(byte aSide, CoverData aData) {return F;}
+	@Override public boolean isOpaque(byte aSide, CoverData aData) {return F;}
 	
 	@Override public float[] getCoverBounds(byte aCoverSide, CoverData aData) {return BOXES_TORCHES[aCoverSide];}
 	@Override public float[] getHolderBounds(byte aCoverSide, CoverData aData) {return BOXES_TORCHES[aCoverSide];}

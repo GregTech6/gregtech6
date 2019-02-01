@@ -78,6 +78,7 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}
 	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
+	@Override public boolean isOpaque(byte aSide, CoverData aData) {return T;}
 	
 	public static final ITexture[] sTextures = new ITexture[] {
 		  BlockTextureDefault.get("machines/covers/buttonselector/0", F)
