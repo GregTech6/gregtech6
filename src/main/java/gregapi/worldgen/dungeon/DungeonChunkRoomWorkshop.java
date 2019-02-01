@@ -140,7 +140,7 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		aData.set   (14, 1,  3, SIDE_UNKNOWN, (1102+tCrucibleType), UT.NBT.make(NBT_FACING, SIDE_X_NEG), T, T);
 		aData.smooth(14, 1,  4);
 		aData.set   (11, 1,  1, Blocks.anvil, 3 | (aData.mRandom.nextInt(3) << 2), 0);
-		aData.set   (11, 1,  2, SIDE_UNKNOWN, 32703, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_STATE, 1+aData.mRandom.nextInt(4)), T, T);
+		aData.set   (12, 1,  1, SIDE_UNKNOWN, 32703, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_STATE, 1+aData.mRandom.nextInt(4)), T, T);
 		aData.set   (11, 1,  4, SIDE_UNKNOWN, (32034+aData.mRandom.nextInt(4)), null, T, T);
 		
 		aData.set   (14, 2,  2, SIDE_UNKNOWN, (1070+tCrucibleType), UT.NBT.make("gt.mold", tMoldShapes.isEmpty()?0:tMoldShapes.get(aData.mRandom.nextInt(tMoldShapes.size()))), T, T);
