@@ -206,6 +206,8 @@ public class TD {
 		public static final List<TagData> ALL_WEAK_TO_THUNDER               = new ArrayListNoNulls<>(F, EU);
 		/** Contains all known Energy Tags, which are weak to Fire, such as electricity. */
 		public static final List<TagData> ALL_WEAK_TO_FIRE                  = new ArrayListNoNulls<>(F, EU, CU);
+		/** Contains all known Energy Tags, which are weak to Fire, such as electricity. */
+		public static final List<TagData> ALL_HOT_COLD                      = new ArrayListNoNulls<>(F, HU, CU);
 		/** Contains all known Energy Tags, which have a limited consumption of Packets. */
 		public static final List<TagData> ALL_COMSUMPTION_LIMITED           = new ArrayListNoNulls<>(F, EU, RF, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO);
 		/** Contains all known Energy Tags, which use cause Explosions when the Machines are overloaded. */

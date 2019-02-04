@@ -417,7 +417,7 @@ public class Loader_Books implements Runnable {
 		tBook.add("Arrow"               +"\n===================\nOOOOO\nOOXOO\nOOXOO\nOXXXO\nOOOOO\n===================\n0.250 Units required");
 		tBook.add("Hoe"                 +"\n===================\nOOOOO\nOOXXO\nOXXXO\nOOOOO\nOOOOO\n===================\n2.000 Units required");
 		tBook.add("Sense/Scythe"        +"\n===================\nOOOOO\nOXXXX\nXXXXX\nOOOOO\nOOOOO\n===================\n3.000 Units required");
-		tBook.add("Plow"                +"\n===================\nXXXXX\nXXXXX\nXXXXX\nXXXXX\nOOXOO\n===================\n6.000 Units required");
+		tBook.add("Plow"                +"\n===================\nXXXXX\nXXXXX\nXXXXX\nXXXXX\nOOXOO\n===================\n4.000 Units required");
 		
 		UT.Books.createWrittenBook("Manual_Smeltery", "Smelting Crucible Manual", "GMWI (Gregorius Metal Working Industries)", ST.make(ItemsGT.BOOKS, 1, tBook.size()>50?32001:32000), tBook.toArray(ZL_STRING));
 		

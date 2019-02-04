@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.03: (Not released yet)
+[ADDED] Molds and Crucibles now accept Cryo-Units (CU) to cool down faster. Why you would do that on a Crucible, I dont know, but for Molds and Basins this is great.
 [ADDED] Gas Cylinders to GT6 Dungeons containing Propane or Helium.
 [ADDED]
 Button Panel back as a Cover.

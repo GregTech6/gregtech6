@@ -21,6 +21,7 @@ package gregtech.tileentity.tools;
 
 import static gregapi.data.CS.*;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOn
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
+import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.SFX;
@@ -58,6 +60,7 @@ import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
 import gregapi.tileentity.data.ITileEntityTemperature;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityMold;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -85,7 +88,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMold extends TileEntityBase07Paintable implements IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_GetSubItems, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataShort {
+public class MultiTileEntityMold extends TileEntityBase07Paintable implements ITileEntityEnergy, IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_GetSubItems, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataShort {
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	public static final Map<Integer, OreDictPrefix> MOLD_RECIPES = new HashMap<>();
@@ -613,6 +616,16 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IF
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean allowCovers            (byte aSide) {return F;}
+	
+	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == TD.Energy.CU;}
+	@Override public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return aEnergyType == TD.Energy.CU;}
+	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aEnergyType == TD.Energy.CU;}
+	@Override public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {if (aDoInject) {mTemperature = Math.max(200, mTemperature - Math.abs(aAmount * aSize));} return aAmount;}
+	@Override public long getEnergyDemanded(TagData aEnergyType, byte aSide, long aSize) {return mTemperature - 200;}
+	@Override public long getEnergySizeInputMin(TagData aEnergyType, byte aSide) {return 16;}
+	@Override public long getEnergySizeInputRecommended(TagData aEnergyType, byte aSide) {return 2048;}
+	@Override public long getEnergySizeInputMax(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.CU.AS_LIST;}
 	
 	// Inventory Stuff
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}

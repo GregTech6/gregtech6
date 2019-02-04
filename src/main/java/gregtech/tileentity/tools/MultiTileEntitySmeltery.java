@@ -101,7 +101,6 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	protected byte mDisplayedHeight = 0, oDisplayedHeight = 0, mCooldown = 100;
 	protected short mDisplayedFluid = -1, oDisplayedFluid = -1;
 	protected long mEnergy = 0, mTemperature = DEF_ENV_TEMP, oTemperature = 0;
-	protected TagData mEnergyTypeAccepted = TD.Energy.HU;
 	protected List<OreDictMaterialStack> mContent = new ArrayListNoNulls<>();
 	
 	@Override
@@ -111,7 +110,6 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperature = aNBT.getLong(NBT_TEMPERATURE);
 		if (aNBT.hasKey(NBT_TEMPERATURE+".old")) oTemperature = aNBT.getLong(NBT_TEMPERATURE+".old");
-		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
 		mContent = OreDictMaterialStack.loadList(NBT_MATERIALS, aNBT);
 	}
 	
@@ -126,7 +124,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X) + " 1 " + mEnergyTypeAccepted.getLocalisedNameShort() + " " + LH.get(LH.CONVERTS_TO_Y) + " +1 K " + LH.get(LH.CONVERTS_PER_Z) + " "+ KG_PER_ENERGY + "kg (at least "+getEnergySizeInputMin(mEnergyTypeAccepted, SIDE_ANY)+" Units per Tick required!)");
+		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X) + " 1 " + TD.Energy.HU.getLocalisedNameShort() + " " + LH.get(LH.CONVERTS_TO_Y) + " +1 K " + LH.get(LH.CONVERTS_PER_Z) + " "+ KG_PER_ENERGY + "kg (at least "+getEnergySizeInputMin(TD.Energy.HU, SIDE_ANY)+" Units per Tick required!)");
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + getTemperatureMax(SIDE_ANY) + " K)");
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_FIRE) + " ("+(FLAME_RANGE+1)+"m)");
@@ -284,13 +282,18 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		
 		if (mCooldown > 0) mCooldown--;
 		
-		if (tConversions > 0) {
+		if (tConversions != 0) {
 			mEnergy -= tConversions * tRequiredEnergy;
 			mTemperature += tConversions;
 			mCooldown = 100;
 		}
 		
-		if (mCooldown <= 0) {mCooldown = 10; if (mTemperature > tTemperature) mTemperature--; else if (mTemperature < tTemperature) mTemperature++;}
+		if (mCooldown <= 0) {
+			mCooldown = 10;
+			if (mTemperature > tTemperature) mTemperature--;
+		}
+		
+		if (mTemperature < tTemperature) mTemperature+= Math.min(10, tTemperature-mTemperature);
 		
 		if (mTemperature > getTemperatureMax(SIDE_INSIDE)) {
 			UT.Sounds.send(SFX.MC_FIZZ, this);
@@ -655,15 +658,15 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override public boolean isSideSolid2           (byte aSide) {return !SIDES_TOP[aSide];}
 	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
-	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
-	@Override public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted;}
-	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aEnergyType == mEnergyTypeAccepted && getSurfaceSizeAttachable(aSide) > 0.0F;}
-	@Override public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {if (aDoInject) {mEnergy += Math.abs(aAmount * aSize);} return aAmount;}
+	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && (aEnergyType == TD.Energy.HU || aEnergyType == TD.Energy.CU);}
+	@Override public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return aEnergyType == TD.Energy.HU || aEnergyType == TD.Energy.CU;}
+	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aEnergyType == TD.Energy.HU || aEnergyType == TD.Energy.CU;}
+	@Override public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {if (aDoInject) {if (aEnergyType == TD.Energy.CU) mEnergy -= Math.abs(aAmount * aSize); else mEnergy += Math.abs(aAmount * aSize);} return aAmount;}
 	@Override public long getEnergyDemanded(TagData aEnergyType, byte aSide, long aSize) {return Long.MAX_VALUE - mEnergy;}
 	@Override public long getEnergySizeInputMin(TagData aEnergyType, byte aSide) {return 16;}
 	@Override public long getEnergySizeInputRecommended(TagData aEnergyType, byte aSide) {return 2048;}
 	@Override public long getEnergySizeInputMax(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.ALL_HOT_COLD;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.smeltery";}
 }
