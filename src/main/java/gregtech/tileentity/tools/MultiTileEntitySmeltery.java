@@ -288,12 +288,9 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			mCooldown = 100;
 		}
 		
-		if (mCooldown <= 0) {
-			mCooldown = 10;
-			if (mTemperature > tTemperature) mTemperature--;
-		}
+		if (mCooldown <= 0) {mCooldown = 10; if (mTemperature > tTemperature) mTemperature--; if (mTemperature < tTemperature) mTemperature++;}
 		
-		if (mTemperature < tTemperature) mTemperature+= Math.min(10, tTemperature-mTemperature);
+		mTemperature = Math.max(mTemperature, Math.min(200, tTemperature));
 		
 		if (mTemperature > getTemperatureMax(SIDE_INSIDE)) {
 			UT.Sounds.send(SFX.MC_FIZZ, this);
