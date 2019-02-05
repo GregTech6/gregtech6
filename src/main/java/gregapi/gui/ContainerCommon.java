@@ -330,17 +330,25 @@ public class ContainerCommon extends Container {
 	@Override
 	public ItemStack slotClick(int aIndex, int aMouse, int aShift, EntityPlayer aPlayer) {
 		mTileEntity.markDirtyGUI();
+		Slot aSlot = (aIndex >= 0 && aIndex < inventorySlots.size()) ? (Slot)inventorySlots.get(aIndex) : null;
+		
+		try {
+			if (aSlot != null && mTileEntity.interceptClick(aIndex, aSlot.slotNumber, aPlayer, aShift == 1, aMouse != 0, aMouse, aShift)) {
+				ItemStack rStack = mTileEntity.slotClick(aIndex, aSlot.slotNumber, aPlayer, aShift == 1, aMouse != 0, aMouse, aShift);
+				detectAndSendChanges();
+				return rStack;
+			}
+		} catch (Throwable e) {e.printStackTrace(ERR); return null;}
 		
 		if (aIndex >= 0) {
-			if (inventorySlots.get(aIndex) == null || inventorySlots.get(aIndex) instanceof Slot_Holo) return null;
-			if (!(inventorySlots.get(aIndex) instanceof Slot_Armor)) if (aIndex < getAllSlotCount()) if (aIndex < getStartIndex() || aIndex >= getStartIndex() + getSlotCount()) return null;
+			if (aSlot == null || aSlot instanceof Slot_Holo) return null;
+			if (!(aSlot instanceof Slot_Armor)) if (aIndex < getAllSlotCount()) if (aIndex < getStartIndex() || aIndex >= getStartIndex() + getSlotCount()) return null;
 		}
 		
 		try {return super.slotClick(aIndex, aMouse, aShift, aPlayer);} catch (Throwable e) {e.printStackTrace(ERR);}
 		
 		ItemStack rStack = null;
 		InventoryPlayer aPlayerInventory = aPlayer.inventory;
-		Slot aSlot;
 		ItemStack tTempStack;
 		int tTempStackSize;
 		ItemStack aHoldStack;
@@ -360,7 +368,6 @@ public class ContainerCommon extends Container {
 					}
 				}
 			} else if (aShift == 1) {
-				aSlot = (Slot)inventorySlots.get(aIndex);
 				if (aSlot != null && aSlot.canTakeStack(aPlayer)) {
 					tTempStack = transferStackInSlot(aPlayer, aIndex);
 					if (tTempStack != null) {
@@ -374,7 +381,6 @@ public class ContainerCommon extends Container {
 				if (aIndex < 0) {
 					return null;
 				}
-				aSlot = (Slot)inventorySlots.get(aIndex);
 				if (aSlot != null) {
 					tTempStack = aSlot.getStack();
 					ItemStack tHeldStack = aPlayerInventory.getItemStack();
@@ -439,8 +445,6 @@ public class ContainerCommon extends Container {
 				}
 			}
 		} else if (aShift == 2 && aMouse >= 0 && aMouse < 9) {
-			aSlot = (Slot)inventorySlots.get(aIndex);
-
 			if (aSlot.canTakeStack(aPlayer)) {
 				tTempStack = aPlayerInventory.getStackInSlot(aMouse);
 				boolean var9 = tTempStack == null || aSlot.inventory == aPlayerInventory && aSlot.isItemValid(tTempStack);
@@ -473,7 +477,6 @@ public class ContainerCommon extends Container {
 				}
 			}
 		} else if (aShift == 3 && UT.Entities.hasInfiniteItems(aPlayer) && aPlayerInventory.getItemStack() == null && aIndex >= 0) {
-			aSlot = (Slot)inventorySlots.get(aIndex);
 			if (aSlot != null && aSlot.getHasStack()) {
 				tTempStack = ST.copy(aSlot.getStack());
 				tTempStack.stackSize = tTempStack.getMaxStackSize();

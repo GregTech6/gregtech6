@@ -470,6 +470,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override public Object getGUIClient(int aGUIID, EntityPlayer aPlayer) {return null;}
 	@Override public Object getGUIServer(int aGUIID, EntityPlayer aPlayer) {return null;}
 	
+	public boolean interceptClick(int aSlot, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {return F;}
+	public ItemStack slotClick(int aSlot, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {return null;}
 	public void killGUIs() {for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) ((EntityPlayer)tPlayer).closeScreen();}
 	public void rebootGUIs(int aGUIID) {for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) {((EntityPlayer)tPlayer).closeScreen(); openGUI((EntityPlayer)tPlayer, aGUIID);}}
 	public long getOpenGUIs() {long rGUIs = 0; for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) rGUIs++; return rGUIs;}

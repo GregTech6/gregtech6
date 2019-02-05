@@ -65,7 +65,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
@@ -513,6 +512,78 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ?                               new ContainerCommonDefault(aPlayer.inventory, this, 35, 36)  : new MultiTileEntityGUICommonAdvancedCraftingTable(aPlayer.inventory, this);}
 	
 	@Override
+	public boolean interceptClick(int aSlot, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
+		slotNull(aSlot);
+		if (aInvSlot == 30 && !aRightclick && aShiftclick) {setBluePrint(null); return T;}
+		return aInvSlot == 31 || aInvSlot == 32;
+	}
+	
+	@Override
+	public ItemStack slotClick(int aSlot, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
+		if (aInvSlot == 31) {
+			ItemStack tCraftedStack = getCraftingOutput(), tStack;
+			if (tCraftedStack != null) {
+				if (aShiftclick) {
+					if (aRightclick) {
+						// SHIFT RIGHTCLICK
+						for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
+							if (aPlayer.inventory.mainInventory[i] == null || (ST.equal(tCraftedStack, aPlayer.inventory.mainInventory[i]) && tCraftedStack.stackSize + aPlayer.inventory.mainInventory[i].stackSize <= aPlayer.inventory.mainInventory[i].getMaxStackSize())) {
+								for (int j = 0; j < tCraftedStack.getMaxStackSize() / tCraftedStack.stackSize && canDoCraftingOutput(); j++) {
+									if (!ST.equal(tStack = getCraftingOutput(), tCraftedStack) || tStack.stackSize != tCraftedStack.stackSize) {
+										return aPlayer.inventory.getItemStack();
+									}
+									aPlayer.inventory.mainInventory[i] = (consumeMaterials(aPlayer, aPlayer.inventory.mainInventory[i], i != 0 || j != 0));
+								}
+							}
+						}
+						return aPlayer.inventory.getItemStack();
+					}
+					// SHIFT LEFTCLICK
+					for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
+						if (aPlayer.inventory.mainInventory[i] == null || (ST.equal(tCraftedStack, aPlayer.inventory.mainInventory[i]) && tCraftedStack.stackSize + aPlayer.inventory.mainInventory[i].stackSize <= aPlayer.inventory.mainInventory[i].getMaxStackSize())) {
+							boolean temp = F;
+							for (int j = 0; j < tCraftedStack.getMaxStackSize() / tCraftedStack.stackSize && canDoCraftingOutput(); j++) {
+								if (!ST.equal(tStack = getCraftingOutput(), tCraftedStack) || tStack.stackSize != tCraftedStack.stackSize) {
+									return aPlayer.inventory.getItemStack();
+								}
+								aPlayer.inventory.mainInventory[i] = (consumeMaterials(aPlayer, aPlayer.inventory.mainInventory[i], i != 0 || j != 0));
+								temp = T;
+							}
+							if (temp) return aPlayer.inventory.getItemStack();
+						}
+					}
+					return aPlayer.inventory.getItemStack();
+				}
+				if (aRightclick) {
+					// RIGHTCLICK
+					for (int i = 0; i < tCraftedStack.getMaxStackSize() / tCraftedStack.stackSize && canDoCraftingOutput(); i++) {
+						if (!ST.equal(tStack = getCraftingOutput(), tCraftedStack) || tStack.stackSize != tCraftedStack.stackSize) {
+							return aPlayer.inventory.getItemStack();
+						}
+						aPlayer.inventory.setItemStack(consumeMaterials(aPlayer, aPlayer.inventory.getItemStack(), i != 0));
+					}
+					return aPlayer.inventory.getItemStack();
+				}
+				// LEFTCLICK
+				if (canDoCraftingOutput()) aPlayer.inventory.setItemStack(consumeMaterials(aPlayer, aPlayer.inventory.getItemStack(), F));
+				return aPlayer.inventory.getItemStack();
+			}
+			return null;
+		}
+		if (aInvSlot == 32) {
+			if (aSlot == 34) {
+				mFlushMode = T;
+				return null;
+			}
+			if (aSlot == 35) {
+				sortIntoTheInputSlots();
+				return null;
+			}
+		}
+		return null;
+	}
+	
+	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
 		int aIndex = aSide<2?aSide:aSide==mFacing?2:aSide==OPPOSITES[mFacing]?3:4;
@@ -587,94 +658,12 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 			addSlotToContainer(new Slot_Normal(mTileEntity, 34, 153, 64).setTooltip(LH.ADVCRAFTING_NEUTRAL_SLOT, LH.Chat.WHITE));
 			
 			addSlotToContainer(new Slot_Normal(mTileEntity, 30, 135, 28).setTooltip(LH.ADVCRAFTING_INSERT_BLUEPRINT, LH.Chat.WHITE));
+			
 			addSlotToContainer(new Slot_Holo(mTileEntity, 31, 135, 64, F, F, 1));
 			addSlotToContainer(new Slot_Holo(mTileEntity, 32, 153, 46, F, F, 1).setTooltip(LH.ADVCRAFTING_AUTOMATION_ACCESS, LH.Chat.WHITE));
 			addSlotToContainer(new Slot_Holo(mTileEntity, 32, 135, 46, F, F, 1).setTooltip(LH.ADVCRAFTING_PUT_TO_STORAGE, LH.Chat.WHITE));
 			
 			return super.addSlots(aInventoryPlayer);
-		}
-		
-		@Override
-		public ItemStack slotClick(int aSlotIndex, int aMouseclick, int aShifthold, EntityPlayer aPlayer) {
-			if (aSlotIndex < 21 || aSlotIndex > 35) return super.slotClick(aSlotIndex, aMouseclick, aShifthold, aPlayer);
-			try {
-				Slot tSlot = ((Slot)inventorySlots.get(aSlotIndex));
-				ItemStack tStack = tSlot.getStack();
-				if (tStack != null && tStack.stackSize <= 0) {
-					tSlot.putStack(null);
-					return aSlotIndex < 30 ? super.slotClick(aSlotIndex, aMouseclick, aShifthold, aPlayer) : null;
-				}
-				if (aSlotIndex == 32) {
-					if (aMouseclick == 0 && aShifthold == 1) {
-						((MultiTileEntityAdvancedCraftingTable)mTileEntity).setBluePrint(null);
-						return null;
-					}
-				} else if (aSlotIndex == 33) {
-					ItemStack tCraftedStack = ((MultiTileEntityAdvancedCraftingTable)mTileEntity).getCraftingOutput();
-					if (tCraftedStack != null) {
-						if (aShifthold == 1) {
-							if (aMouseclick == 0) {
-								// SHIFT LEFTCLICK
-								for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-									if (aPlayer.inventory.mainInventory[i] == null || (ST.equal(tCraftedStack, aPlayer.inventory.mainInventory[i]) && tCraftedStack.stackSize + aPlayer.inventory.mainInventory[i].stackSize <= aPlayer.inventory.mainInventory[i].getMaxStackSize())) {
-										boolean temp = F;
-										for (int j = 0; j < tCraftedStack.getMaxStackSize() / tCraftedStack.stackSize && ((MultiTileEntityAdvancedCraftingTable)mTileEntity).canDoCraftingOutput(); j++) {
-											if (!ST.equal(tStack = ((MultiTileEntityAdvancedCraftingTable)mTileEntity).getCraftingOutput(), tCraftedStack) || tStack.stackSize != tCraftedStack.stackSize) {
-												detectAndSendChanges();
-												return aPlayer.inventory.getItemStack();
-											}
-											aPlayer.inventory.mainInventory[i] = (((MultiTileEntityAdvancedCraftingTable)mTileEntity).consumeMaterials(aPlayer, aPlayer.inventory.mainInventory[i], i != 0 || j != 0));
-											temp = T;
-										}
-										if (temp) return aPlayer.inventory.getItemStack();
-									}
-								}
-								return aPlayer.inventory.getItemStack();
-							}
-							// SHIFT RIGHTCLICK
-							for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
-								if (aPlayer.inventory.mainInventory[i] == null || (ST.equal(tCraftedStack, aPlayer.inventory.mainInventory[i]) && tCraftedStack.stackSize + aPlayer.inventory.mainInventory[i].stackSize <= aPlayer.inventory.mainInventory[i].getMaxStackSize())) {
-									for (int j = 0; j < tCraftedStack.getMaxStackSize() / tCraftedStack.stackSize && ((MultiTileEntityAdvancedCraftingTable)mTileEntity).canDoCraftingOutput(); j++) {
-										if (!ST.equal(tStack = ((MultiTileEntityAdvancedCraftingTable)mTileEntity).getCraftingOutput(), tCraftedStack) || tStack.stackSize != tCraftedStack.stackSize) {
-											detectAndSendChanges();
-											return aPlayer.inventory.getItemStack();
-										}
-										aPlayer.inventory.mainInventory[i] = (((MultiTileEntityAdvancedCraftingTable)mTileEntity).consumeMaterials(aPlayer, aPlayer.inventory.mainInventory[i], i != 0 || j != 0));
-									}
-								}
-							}
-							return aPlayer.inventory.getItemStack();
-						}
-						if (aMouseclick == 0) {
-							// LEFTCLICK
-							if (((MultiTileEntityAdvancedCraftingTable)mTileEntity).canDoCraftingOutput()) aPlayer.inventory.setItemStack(((MultiTileEntityAdvancedCraftingTable)mTileEntity).consumeMaterials(aPlayer, aPlayer.inventory.getItemStack(), F));
-							detectAndSendChanges();
-							return aPlayer.inventory.getItemStack();
-						}
-						// RIGHTCLICK
-						for (int i = 0; i < tCraftedStack.getMaxStackSize() / tCraftedStack.stackSize && ((MultiTileEntityAdvancedCraftingTable)mTileEntity).canDoCraftingOutput(); i++) {
-							if (!ST.equal(tStack = ((MultiTileEntityAdvancedCraftingTable)mTileEntity).getCraftingOutput(), tCraftedStack) || tStack.stackSize != tCraftedStack.stackSize) {
-								detectAndSendChanges();
-								return aPlayer.inventory.getItemStack();
-							}
-							aPlayer.inventory.setItemStack(((MultiTileEntityAdvancedCraftingTable)mTileEntity).consumeMaterials(aPlayer, aPlayer.inventory.getItemStack(), i != 0));
-						}
-						detectAndSendChanges();
-						return aPlayer.inventory.getItemStack();
-					}
-					detectAndSendChanges();
-					return null;
-				} else if (aSlotIndex == 34) {
-					((MultiTileEntityAdvancedCraftingTable)mTileEntity).mFlushMode = T;
-					return null;
-				} else if (aSlotIndex == 35) {
-					((MultiTileEntityAdvancedCraftingTable)mTileEntity).sortIntoTheInputSlots();
-					return null;
-				}
-			} catch(Throwable e) {
-				e.printStackTrace(ERR);
-			}
-			return super.slotClick(aSlotIndex, aMouseclick, aShifthold, aPlayer);
 		}
 		
 		@Override
