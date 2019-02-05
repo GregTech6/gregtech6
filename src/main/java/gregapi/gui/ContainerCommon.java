@@ -333,8 +333,8 @@ public class ContainerCommon extends Container {
 		Slot aSlot = (aIndex >= 0 && aIndex < inventorySlots.size()) ? (Slot)inventorySlots.get(aIndex) : null;
 		
 		try {
-			if (aSlot != null && mTileEntity.interceptClick(aIndex, aSlot.slotNumber, aPlayer, aShift == 1, aMouse != 0, aMouse, aShift)) {
-				ItemStack rStack = mTileEntity.slotClick(aIndex, aSlot.slotNumber, aPlayer, aShift == 1, aMouse != 0, aMouse, aShift);
+			if (aSlot != null && mTileEntity.interceptClick(aIndex, aSlot.getSlotIndex(), aPlayer, aShift == 1, aMouse != 0, aMouse, aShift)) {
+				ItemStack rStack = mTileEntity.slotClick(aIndex, aSlot.getSlotIndex(), aPlayer, aShift == 1, aMouse != 0, aMouse, aShift);
 				detectAndSendChanges();
 				return rStack;
 			}
