@@ -31,14 +31,18 @@ import net.minecraft.entity.player.InventoryPlayer;
  */
 @SideOnly(Side.CLIENT)
 public class ContainerClientDefault extends ContainerClient {
-	public ContainerClientDefault(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, String aBackgroundPath) {
-		super(new ContainerCommonDefault(aInventoryPlayer, aTileEntity), aBackgroundPath);
-	}
-	
 	public ContainerClientDefault(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity) {
 		this(aInventoryPlayer, aTileEntity, RES_PATH_GUI + "chests/" + aTileEntity.getSizeInventoryGUI() + ".png");
 	}
-	
+	public ContainerClientDefault(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, String aBackgroundPath) {
+		this(aInventoryPlayer, aTileEntity, 0, aBackgroundPath);
+	}
+	public ContainerClientDefault(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aGUIID) {
+		this(aInventoryPlayer, aTileEntity, aGUIID, RES_PATH_GUI + "chests/" + aTileEntity.getSizeInventoryGUI() + ".png");
+	}
+	public ContainerClientDefault(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aGUIID, String aBackgroundPath) {
+		super(new ContainerCommonDefault(aInventoryPlayer, aTileEntity, aGUIID), aBackgroundPath);
+	}
 	public ContainerClientDefault(ContainerCommonDefault aContainer) {
 		super(aContainer, RES_PATH_GUI + "chests/" + aContainer.mSlotCount + ".png");
 	}

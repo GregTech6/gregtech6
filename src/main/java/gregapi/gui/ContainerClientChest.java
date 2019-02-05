@@ -36,8 +36,8 @@ import net.minecraft.util.StatCollector;
 public class ContainerClientChest extends ContainerClient {
 	private int mRows;
 	
-	public ContainerClientChest(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity) {
-		this(new ContainerCommonChest(aInventoryPlayer, aTileEntity));
+	public ContainerClientChest(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aGUIID) {
+		this(new ContainerCommonChest(aInventoryPlayer, aTileEntity, aGUIID));
 	}
 	
 	public ContainerClientChest(ContainerCommonChest aContainer) {

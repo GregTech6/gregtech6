@@ -508,18 +508,19 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@Override public FluidTankInfo[] getTankInfo(ForgeDirection aDirection) {return L1_FLUIDTANKINFO_DUMMY;}
 	
 	@SideOnly(Side.CLIENT)
-	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new ContainerClientDefault(   new ContainerCommonDefault(aPlayer.inventory, this, 35, 36)) : new MultiTileEntityGUIClientAdvancedCraftingTable(aPlayer.inventory, this);}
-	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ?                               new ContainerCommonDefault(aPlayer.inventory, this, 35, 36)  : new MultiTileEntityGUICommonAdvancedCraftingTable(aPlayer.inventory, this);}
+	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new ContainerClientDefault(   new ContainerCommonDefault(aPlayer.inventory, this, aGUIID, 35, 36)) : new MultiTileEntityGUIClientAdvancedCraftingTable(aPlayer.inventory, this, aGUIID);}
+	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ?                               new ContainerCommonDefault(aPlayer.inventory, this, aGUIID, 35, 36)  : new MultiTileEntityGUICommonAdvancedCraftingTable(aPlayer.inventory, this, aGUIID);}
 	
 	@Override
-	public boolean interceptClick(int aSlot, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
-		slotNull(aSlot);
+	public boolean interceptClick(int aGUIID, Slot_Normal aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
+		if (aGUIID != 0) return F;
+		slotNull(aInvSlot);
 		if (aInvSlot == 30 && !aRightclick && aShiftclick) {setBluePrint(null); return T;}
 		return aInvSlot == 31 || aInvSlot == 32;
 	}
 	
 	@Override
-	public ItemStack slotClick(int aSlot, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
+	public ItemStack slotClick(int aGUIID, Slot_Normal aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
 		if (aInvSlot == 31) {
 			ItemStack tCraftedStack = getCraftingOutput(), tStack;
 			if (tCraftedStack != null) {
@@ -571,14 +572,9 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 			return null;
 		}
 		if (aInvSlot == 32) {
-			if (aSlot == 34) {
-				mFlushMode = T;
-				return null;
-			}
-			if (aSlot == 35) {
-				sortIntoTheInputSlots();
-				return null;
-			}
+			if (aSlotIndex == 34) mFlushMode = T;
+			if (aSlotIndex == 35) sortIntoTheInputSlots();
+			return null;
 		}
 		return null;
 	}
@@ -615,8 +611,8 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@Override public String getTileEntityName() {return "gt.multitileentity.crafting.advanced";}
 	
 	public class MultiTileEntityGUICommonAdvancedCraftingTable extends ContainerCommon {
-		public MultiTileEntityGUICommonAdvancedCraftingTable(InventoryPlayer aInventoryPlayer, MultiTileEntityAdvancedCraftingTable aTileEntity) {
-			super(aInventoryPlayer, aTileEntity);
+		public MultiTileEntityGUICommonAdvancedCraftingTable(InventoryPlayer aInventoryPlayer, MultiTileEntityAdvancedCraftingTable aTileEntity, int aGUIID) {
+			super(aInventoryPlayer, aTileEntity, aGUIID);
 		}
 		
 		@Override
@@ -679,8 +675,8 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	
 	@SideOnly(Side.CLIENT)
 	public class MultiTileEntityGUIClientAdvancedCraftingTable extends ContainerClient {
-		public MultiTileEntityGUIClientAdvancedCraftingTable(InventoryPlayer aInventoryPlayer, MultiTileEntityAdvancedCraftingTable aTileEntity) {
-			super(new MultiTileEntityGUICommonAdvancedCraftingTable(aInventoryPlayer, aTileEntity), aTileEntity.mGUITexture);
+		public MultiTileEntityGUIClientAdvancedCraftingTable(InventoryPlayer aInventoryPlayer, MultiTileEntityAdvancedCraftingTable aTileEntity, int aGUIID) {
+			super(new MultiTileEntityGUICommonAdvancedCraftingTable(aInventoryPlayer, aTileEntity, aGUIID), aTileEntity.mGUITexture);
 		}
 	}
 }

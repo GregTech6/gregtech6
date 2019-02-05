@@ -27,12 +27,12 @@ import net.minecraft.entity.player.InventoryPlayer;
  */
 @invtweaks.api.container.ChestContainer(isLargeChest = true)
 public class ContainerCommonChest extends ContainerCommon {
-	public ContainerCommonChest(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity) {
-		super(aInventoryPlayer, aTileEntity);
+	public ContainerCommonChest(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aGUIID) {
+		super(aInventoryPlayer, aTileEntity, aGUIID);
 	}
 	
-	public ContainerCommonChest(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aOffset, int aSlotCount) {
-		super(aInventoryPlayer, aTileEntity, aOffset, aSlotCount);
+	public ContainerCommonChest(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aGUIID, int aOffset, int aSlotCount) {
+		super(aInventoryPlayer, aTileEntity, aGUIID, aOffset, aSlotCount);
 	}
 	
 	@Override

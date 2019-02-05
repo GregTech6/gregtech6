@@ -38,20 +38,26 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class ContainerCommon extends Container {
-	public final int mOffset, mSlotCount;
+	public final int mOffset, mSlotCount, mGUIID;
 	public ITileEntityInventoryGUI mTileEntity;
 	public InventoryPlayer mInventoryPlayer;
 
 	public ContainerCommon(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity) {
-		this(aInventoryPlayer, aTileEntity, 0, aTileEntity.getSizeInventoryGUI());
+		this(aInventoryPlayer, aTileEntity, 0);
 	}
-	
 	public ContainerCommon(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aOffset, int aSlotCount) {
+		this(aInventoryPlayer, aTileEntity, 0, aOffset, aSlotCount);
+	}
+	public ContainerCommon(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aGUIID) {
+		this(aInventoryPlayer, aTileEntity, aGUIID, 0, aTileEntity.getSizeInventoryGUI());
+	}
+	public ContainerCommon(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, int aGUIID, int aOffset, int aSlotCount) {
 		mInventoryPlayer = aInventoryPlayer;
 		mTileEntity = aTileEntity;
 		mTileEntity.openInventoryGUI();
 		mSlotCount = aSlotCount;
 		mOffset = aOffset;
+		mGUIID = aGUIID;
 		
 		int tOffset = addSlots(aInventoryPlayer);
 		if (doesBindPlayerInventory()) bindPlayerInventory(aInventoryPlayer, tOffset);
@@ -333,8 +339,8 @@ public class ContainerCommon extends Container {
 		Slot aSlot = (aIndex >= 0 && aIndex < inventorySlots.size()) ? (Slot)inventorySlots.get(aIndex) : null;
 		
 		try {
-			if (aSlot != null && mTileEntity.interceptClick(aIndex, aSlot.getSlotIndex(), aPlayer, aShift == 1, aMouse != 0, aMouse, aShift)) {
-				ItemStack rStack = mTileEntity.slotClick(aIndex, aSlot.getSlotIndex(), aPlayer, aShift == 1, aMouse != 0, aMouse, aShift);
+			if (aSlot instanceof Slot_Normal && mTileEntity.interceptClick(mGUIID, (Slot_Normal)aSlot, aIndex, aSlot.getSlotIndex(), aPlayer, aShift == 1, aMouse != 0, aMouse, aShift)) {
+				ItemStack rStack = mTileEntity.slotClick(mGUIID, (Slot_Normal)aSlot, aIndex, aSlot.getSlotIndex(), aPlayer, aShift == 1, aMouse != 0, aMouse, aShift);
 				detectAndSendChanges();
 				return rStack;
 			}

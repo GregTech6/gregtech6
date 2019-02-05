@@ -317,8 +317,8 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]])) : null;}
 	
 	@SideOnly(Side.CLIENT)
-	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new MultiTileEntityGUIClientBumbliaryScoop(aPlayer.inventory, this) : new MultiTileEntityGUIClientBumbliary(aPlayer.inventory, this);}
-	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new MultiTileEntityGUICommonBumbliaryScoop(aPlayer.inventory, this) : new MultiTileEntityGUICommonBumbliary(aPlayer.inventory, this);}
+	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new MultiTileEntityGUIClientBumbliaryScoop(aPlayer.inventory, this, aGUIID) : new MultiTileEntityGUIClientBumbliary(aPlayer.inventory, this, aGUIID);}
+	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new MultiTileEntityGUICommonBumbliaryScoop(aPlayer.inventory, this, aGUIID) : new MultiTileEntityGUICommonBumbliary(aPlayer.inventory, this, aGUIID);}
 	
 	public static final int SLOT_ROYAL = 7, SLOT_DRONE = 12
 	, SLOTS_COMBS[] = {0, 4, 5, 9, 10, 11, 14}
@@ -375,8 +375,8 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 	@Override public String getTileEntityName() {return "gt.multitileentity.bumbliary.advanced";}
 	
 	public class MultiTileEntityGUICommonBumbliary extends ContainerCommon {
-		public MultiTileEntityGUICommonBumbliary(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliaryAdvanced aTileEntity) {
-			super(aInventoryPlayer, aTileEntity);
+		public MultiTileEntityGUICommonBumbliary(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliaryAdvanced aTileEntity, int aGUIID) {
+			super(aInventoryPlayer, aTileEntity, aGUIID);
 		}
 		
 		@Override
@@ -413,8 +413,8 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 	}
 	
 	public class MultiTileEntityGUICommonBumbliaryScoop extends ContainerCommon {
-		public MultiTileEntityGUICommonBumbliaryScoop(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliaryAdvanced aTileEntity) {
-			super(aInventoryPlayer, aTileEntity);
+		public MultiTileEntityGUICommonBumbliaryScoop(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliaryAdvanced aTileEntity, int aGUIID) {
+			super(aInventoryPlayer, aTileEntity, aGUIID);
 		}
 		
 		@Override
@@ -452,15 +452,15 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 	
 	@SideOnly(Side.CLIENT)
 	public class MultiTileEntityGUIClientBumbliary extends ContainerClient {
-		public MultiTileEntityGUIClientBumbliary(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliaryAdvanced aTileEntity) {
-			super(new MultiTileEntityGUICommonBumbliary(aInventoryPlayer, aTileEntity), RES_PATH_GUI + "machines/BumbliaryAdvanced.png");
+		public MultiTileEntityGUIClientBumbliary(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliaryAdvanced aTileEntity, int aGUIID) {
+			super(new MultiTileEntityGUICommonBumbliary(aInventoryPlayer, aTileEntity, aGUIID), RES_PATH_GUI + "machines/BumbliaryAdvanced.png");
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public class MultiTileEntityGUIClientBumbliaryScoop extends ContainerClient {
-		public MultiTileEntityGUIClientBumbliaryScoop(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliaryAdvanced aTileEntity) {
-			super(new MultiTileEntityGUICommonBumbliaryScoop(aInventoryPlayer, aTileEntity), RES_PATH_GUI + "machines/BumbliaryAdvanced.png");
+		public MultiTileEntityGUIClientBumbliaryScoop(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliaryAdvanced aTileEntity, int aGUIID) {
+			super(new MultiTileEntityGUICommonBumbliaryScoop(aInventoryPlayer, aTileEntity, aGUIID), RES_PATH_GUI + "machines/BumbliaryAdvanced.png");
 		}
 	}
 }

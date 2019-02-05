@@ -317,8 +317,8 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(sOverlays[FACES_TBS[aSide]])) : null;}
 	
 	@SideOnly(Side.CLIENT)
-	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new MultiTileEntityGUIClientBumbliaryScoop(aPlayer.inventory, this) : new MultiTileEntityGUIClientBumbliary(aPlayer.inventory, this);}
-	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new MultiTileEntityGUICommonBumbliaryScoop(aPlayer.inventory, this) : new MultiTileEntityGUICommonBumbliary(aPlayer.inventory, this);}
+	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new MultiTileEntityGUIClientBumbliaryScoop(aPlayer.inventory, this, aGUIID) : new MultiTileEntityGUIClientBumbliary(aPlayer.inventory, this, aGUIID);}
+	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ? new MultiTileEntityGUICommonBumbliaryScoop(aPlayer.inventory, this, aGUIID) : new MultiTileEntityGUICommonBumbliary(aPlayer.inventory, this, aGUIID);}
 	
 	public static final int SLOT_ROYAL = 13, SLOT_DRONE = 22
 	, SLOTS_COMBS[] = {0, 1, 2, 6, 7, 8, 9, 10, 11, 15, 16, 17, 18, 19, 20, 24, 25, 26}
@@ -374,8 +374,8 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	@Override public String getTileEntityName() {return "gt.multitileentity.bumbliary";}
 	
 	public class MultiTileEntityGUICommonBumbliary extends ContainerCommon {
-		public MultiTileEntityGUICommonBumbliary(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliary aTileEntity) {
-			super(aInventoryPlayer, aTileEntity);
+		public MultiTileEntityGUICommonBumbliary(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliary aTileEntity, int aGUIID) {
+			super(aInventoryPlayer, aTileEntity, aGUIID);
 		}
 		
 		@Override
@@ -428,8 +428,8 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	}
 
 	public class MultiTileEntityGUICommonBumbliaryScoop extends ContainerCommon {
-		public MultiTileEntityGUICommonBumbliaryScoop(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliary aTileEntity) {
-			super(aInventoryPlayer, aTileEntity);
+		public MultiTileEntityGUICommonBumbliaryScoop(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliary aTileEntity, int aGUIID) {
+			super(aInventoryPlayer, aTileEntity, aGUIID);
 		}
 		
 		@Override
@@ -483,15 +483,15 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	
 	@SideOnly(Side.CLIENT)
 	public class MultiTileEntityGUIClientBumbliary extends ContainerClient {
-		public MultiTileEntityGUIClientBumbliary(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliary aTileEntity) {
-			super(new MultiTileEntityGUICommonBumbliary(aInventoryPlayer, aTileEntity), RES_PATH_GUI + "machines/Bumbliary.png");
+		public MultiTileEntityGUIClientBumbliary(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliary aTileEntity, int aGUIID) {
+			super(new MultiTileEntityGUICommonBumbliary(aInventoryPlayer, aTileEntity, aGUIID), RES_PATH_GUI + "machines/Bumbliary.png");
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public class MultiTileEntityGUIClientBumbliaryScoop extends ContainerClient {
-		public MultiTileEntityGUIClientBumbliaryScoop(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliary aTileEntity) {
-			super(new MultiTileEntityGUICommonBumbliaryScoop(aInventoryPlayer, aTileEntity), RES_PATH_GUI + "machines/Bumbliary.png");
+		public MultiTileEntityGUIClientBumbliaryScoop(InventoryPlayer aInventoryPlayer, MultiTileEntityBumbliary aTileEntity, int aGUIID) {
+			super(new MultiTileEntityGUICommonBumbliaryScoop(aInventoryPlayer, aTileEntity, aGUIID), RES_PATH_GUI + "machines/Bumbliary.png");
 		}
 	}
 }

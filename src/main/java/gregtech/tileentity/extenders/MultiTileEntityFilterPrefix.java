@@ -86,8 +86,8 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender {
 		}
 	}
 	
-	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUIClientFilterPrefix(aPlayer.inventory, this);}
-	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUICommonFilterPrefix(aPlayer.inventory, this);}
+	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUIClientFilterPrefix(aPlayer.inventory, this, aGUIID);}
+	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUICommonFilterPrefix(aPlayer.inventory, this, aGUIID);}
 	@Override public int getSizeInventoryGUI() {return 1;}
 	@Override public ItemStack getStackInSlotGUI(int aSlot) {return mCycle;}
 	@Override public ItemStack decrStackSizeGUI(int aSlot, int aDecrement) {return null;}
@@ -197,8 +197,8 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender {
 	}
 	
 	public class MultiTileEntityGUICommonFilterPrefix extends ContainerCommon {
-		public MultiTileEntityGUICommonFilterPrefix(InventoryPlayer aInventoryPlayer, MultiTileEntityFilterPrefix aTileEntity) {
-			super(aInventoryPlayer, aTileEntity);
+		public MultiTileEntityGUICommonFilterPrefix(InventoryPlayer aInventoryPlayer, MultiTileEntityFilterPrefix aTileEntity, int aGUIID) {
+			super(aInventoryPlayer, aTileEntity, aGUIID);
 		}
 		
 		@Override
@@ -231,8 +231,8 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender {
 	
 	@SideOnly(Side.CLIENT)
 	public class MultiTileEntityGUIClientFilterPrefix extends ContainerClient {
-		public MultiTileEntityGUIClientFilterPrefix(InventoryPlayer aInventoryPlayer, MultiTileEntityFilterPrefix aTileEntity) {
-			super(new MultiTileEntityGUICommonFilterPrefix(aInventoryPlayer, aTileEntity), RES_PATH_GUI + "machines/FilterPrefix.png");
+		public MultiTileEntityGUIClientFilterPrefix(InventoryPlayer aInventoryPlayer, MultiTileEntityFilterPrefix aTileEntity, int aGUIID) {
+			super(new MultiTileEntityGUICommonFilterPrefix(aInventoryPlayer, aTileEntity, aGUIID), RES_PATH_GUI + "machines/FilterPrefix.png");
 		}
 	}
 }

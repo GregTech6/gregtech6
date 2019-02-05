@@ -36,8 +36,8 @@ import net.minecraft.inventory.ICrafting;
 public class ContainerCommonBasicMachine extends ContainerCommon {
 	private RecipeMap mRecipes;
 	
-	public ContainerCommonBasicMachine(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, RecipeMap aRecipes) {
-		super(aInventoryPlayer, aTileEntity);
+	public ContainerCommonBasicMachine(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, RecipeMap aRecipes, int aGUIID) {
+		super(aInventoryPlayer, aTileEntity, aGUIID);
 		mRecipes = aRecipes;
 	}
 	

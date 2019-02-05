@@ -33,8 +33,8 @@ import net.minecraft.entity.player.InventoryPlayer;
 public class ContainerClientBasicMachine extends ContainerClient {
 	private RecipeMap mRecipes;
 	
-	public ContainerClientBasicMachine(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, RecipeMap aRecipes, String aGUITexture) {
-		super(new ContainerCommonBasicMachine(aInventoryPlayer, aTileEntity, aRecipes), aGUITexture);
+	public ContainerClientBasicMachine(InventoryPlayer aInventoryPlayer, ITileEntityInventoryGUI aTileEntity, RecipeMap aRecipes, int aGUIID, String aGUITexture) {
+		super(new ContainerCommonBasicMachine(aInventoryPlayer, aTileEntity, aRecipes, aGUIID), aGUITexture);
 		mRecipes = aRecipes;
 		mNEI = mRecipes.mNameNEI;
 	}

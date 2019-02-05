@@ -890,8 +890,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override public void onFacingChange(byte aPreviousFacing) {updateAccessibleSlots();}
 	
-	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new ContainerClientBasicMachine(aPlayer.inventory, this, mRecipes, mGUITexture);}
-	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new ContainerCommonBasicMachine(aPlayer.inventory, this, mRecipes);}
+	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new ContainerClientBasicMachine(aPlayer.inventory, this, mRecipes, aGUIID, mGUITexture);}
+	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new ContainerCommonBasicMachine(aPlayer.inventory, this, mRecipes, aGUIID);}
 	
 	@Override public byte getVisualData() {return (byte)((mActive?1:0)|(mRunning?2:0));}
 	

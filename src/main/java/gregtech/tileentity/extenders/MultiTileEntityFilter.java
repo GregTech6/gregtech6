@@ -73,8 +73,8 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 		return super.writeItemNBT2(aNBT);
 	}
 	
-	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUIClientFilter(aPlayer.inventory, this);}
-	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUICommonFilter(aPlayer.inventory, this);}
+	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUIClientFilter(aPlayer.inventory, this, aGUIID);}
+	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new MultiTileEntityGUICommonFilter(aPlayer.inventory, this, aGUIID);}
 	@Override public int getSizeInventoryGUI() {return mFilter==null?0:mFilter.length;}
 	@Override public ItemStack getStackInSlotGUI(int aSlot) {return mFilter[aSlot];}
 	@Override public ItemStack decrStackSizeGUI(int aSlot, int aDecrement) {mInventoryChanged = T; if (mFilter[aSlot] != null) {if (mFilter[aSlot].stackSize <= aDecrement) {ItemStack tStack = mFilter[aSlot]; mFilter[aSlot] = null; return tStack;} ItemStack rStack = mFilter[aSlot].splitStack(aDecrement); if (mFilter[aSlot].stackSize <= 0) mFilter[aSlot] = null; return rStack;} return null;}
@@ -186,8 +186,8 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 	}
 	
 	public class MultiTileEntityGUICommonFilter extends ContainerCommon {
-		public MultiTileEntityGUICommonFilter(InventoryPlayer aInventoryPlayer, MultiTileEntityFilter aTileEntity) {
-			super(aInventoryPlayer, aTileEntity);
+		public MultiTileEntityGUICommonFilter(InventoryPlayer aInventoryPlayer, MultiTileEntityFilter aTileEntity, int aGUIID) {
+			super(aInventoryPlayer, aTileEntity, aGUIID);
 		}
 		
 		@Override
@@ -242,8 +242,8 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 	public class MultiTileEntityGUIClientFilter extends ContainerClient {
 		private int mRows;
 		
-		public MultiTileEntityGUIClientFilter(InventoryPlayer aInventoryPlayer, MultiTileEntityFilter aTileEntity) {
-			super(new MultiTileEntityGUICommonFilter(aInventoryPlayer, aTileEntity), RES_PATH_GUI + "machines/Filter.png");
+		public MultiTileEntityGUIClientFilter(InventoryPlayer aInventoryPlayer, MultiTileEntityFilter aTileEntity, int aGUIID) {
+			super(new MultiTileEntityGUICommonFilter(aInventoryPlayer, aTileEntity, aGUIID), RES_PATH_GUI + "machines/Filter.png");
 			mRows = mContainer.mTileEntity.getSizeInventoryGUI() / 9 + (mContainer.mTileEntity.getSizeInventoryGUI() % 9 == 0 ? 0 : 1);
 			ySize = 114 + mRows * 18;
 		}

@@ -68,8 +68,8 @@ public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle impl
 	}
 	
 	@SideOnly(Side.CLIENT)
-	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new ContainerClientDefault( new ContainerCommonDefault(aPlayer.inventory, this, (aGUIID % 4) * 36, 36));}
-	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return                             new ContainerCommonDefault(aPlayer.inventory, this, (aGUIID % 4) * 36, 36);}
+	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new ContainerClientDefault( new ContainerCommonDefault(aPlayer.inventory, this, aGUIID, (aGUIID % 4) * 36, 36));}
+	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return                             new ContainerCommonDefault(aPlayer.inventory, this, aGUIID, (aGUIID % 4) * 36, 36);}
 	
 	@Override public boolean canDrop(int aSlot) {return T;}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[36*4];}
