@@ -23,10 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
@@ -37,8 +34,7 @@ import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
-import gregapi.tileentity.ITileEntityQuickObstructionCheck;
-import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.tileentity.base.TileEntityBase10Attachment;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.ITileEntityMold;
 import gregapi.util.UT;
@@ -59,7 +55,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityFaucet extends TileEntityBase09FacingSingle implements ITileEntityMold, IMTE_GetSubItems, IMTE_SetBlockBoundsBasedOnState, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements ITileEntityMold, IMTE_GetSubItems {
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	protected boolean mAcidProof = F, mAutoPull = F;
@@ -201,8 +197,6 @@ public class MultiTileEntityFaucet extends TileEntityBase09FacingSingle implemen
 		return aSide != mFacing || aShouldSideBeRendered[aSide] ? mTexture : null;
 	}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return null;}
-	
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool() {
 		switch(mFacing) {
@@ -228,21 +222,6 @@ public class MultiTileEntityFaucet extends TileEntityBase09FacingSingle implemen
 		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
-	@Override public float getSurfaceSize           (byte aSide) {return 0;}
-	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0;}
-	@Override public float getSurfaceDistance       (byte aSide) {return 0;}
-	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
-	@Override public boolean isSideSolid2           (byte aSide) {return F;}
-	@Override public boolean allowCovers            (byte aSide) {return F;}
-	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
-	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
-	@Override public boolean useSidePlacementRotation       () {return T;}
-	@Override public boolean useInversePlacementRotation    () {return T;}
-	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
-	@Override public byte getDefaultSide() {return SIDE_BACK;}
-	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.smeltery.drain";}
