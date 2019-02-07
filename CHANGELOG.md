@@ -30,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED]
 Button Panel back as a Cover.
 It is a Selector Cover like the other Manual Selector, just more convenient.
-There is 4 Designs: Just unmarked Buttons, Numeric Buttons, Hexadecimal Buttons and Bit Buttons.
+There is multiple Designs: For example unmarked Buttons, Numeric Buttons, Hexadecimal Buttons, Bit Buttons, and a Keypad looking Set of Buttons (Numbers don't correlate to the Redstone Signal except for the 0 - 15 one!).
 If there is a Controller Cover that can turn off other Covers, then it can prevent the Buttons from being pressed on demand. This also applies to the Manual Selector Cover.
 The Panel will always have the Button appear Perma-Pressed that is corresponding to the Mode the attached Object is in.
 If a second Mode Selector is attached to the same Block it can set which Button appears to be pressed.

@@ -271,12 +271,14 @@ public class LH {
 	
 	public static final void addEnergyToolTips(ITileEntityEnergy aTileEntity, List<String> aToolTips, TagData aEnergyTypeIN, TagData aEnergyTypeOUT, String aSidesIN, String aSidesOUT) {
 		if (aEnergyTypeIN != null) {
-		aToolTips.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + aTileEntity.getEnergySizeInputRecommended (aEnergyTypeIN , SIDE_ANY) + " " + aEnergyTypeIN .getChatFormat()   + aEnergyTypeIN .getLocalisedNameShort()    + Chat.WHITE + "/t ("+aTileEntity.getEnergySizeInputMin (aEnergyTypeIN , SIDE_ANY)+" to "+aTileEntity.getEnergySizeInputMax (aEnergyTypeIN , SIDE_ANY)+(UT.Code.stringInvalid(aSidesIN )?"":", "+aSidesIN )+")");
-		aToolTips.add(getToolTipRedstoneFluxAccept(aEnergyTypeIN));
+			long tMin = aTileEntity.getEnergySizeInputMin(aEnergyTypeOUT, SIDE_ANY), tRec = aTileEntity.getEnergySizeInputRecommended(aEnergyTypeOUT, SIDE_ANY), tMax = aTileEntity.getEnergySizeInputMax(aEnergyTypeOUT, SIDE_ANY);
+			aToolTips.add(Chat.GREEN + LH.get(LH.ENERGY_INPUT ) + ": " + Chat.WHITE + tRec + " " + aEnergyTypeIN .getChatFormat() + aEnergyTypeIN .getLocalisedNameShort() + Chat.WHITE + (tRec == tMin && tRec == tMax ? "/t" : "/t ("+tMin+" to "+tMax+(UT.Code.stringInvalid(aSidesIN )?"":", "+aSidesIN )+")"));
+			aToolTips.add(getToolTipRedstoneFluxAccept(aEnergyTypeIN));
 		}
 		if (aEnergyTypeOUT != null) {
-		aToolTips.add(Chat.RED      + LH.get(LH.ENERGY_OUTPUT)          + ": " + Chat.WHITE + aTileEntity.getEnergySizeOutputRecommended(aEnergyTypeOUT, SIDE_ANY) + " " + aEnergyTypeOUT.getChatFormat()   + aEnergyTypeOUT.getLocalisedNameShort()    + Chat.WHITE + "/t ("+aTileEntity.getEnergySizeOutputMin(aEnergyTypeOUT, SIDE_ANY)+" to "+aTileEntity.getEnergySizeOutputMax(aEnergyTypeOUT, SIDE_ANY)+(UT.Code.stringInvalid(aSidesOUT)?"":", "+aSidesOUT)+")");
-		aToolTips.add(getToolTipRedstoneFluxEmit(aEnergyTypeOUT));
+			long tMin = aTileEntity.getEnergySizeOutputMin(aEnergyTypeOUT, SIDE_ANY), tRec = aTileEntity.getEnergySizeOutputRecommended(aEnergyTypeOUT, SIDE_ANY), tMax = aTileEntity.getEnergySizeOutputMax(aEnergyTypeOUT, SIDE_ANY);
+			aToolTips.add(Chat.RED   + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + tRec + " " + aEnergyTypeOUT.getChatFormat() + aEnergyTypeOUT.getLocalisedNameShort() + Chat.WHITE + (tRec == tMin && tRec == tMax ? "/t" : "/t ("+tMin+" to "+tMax+(UT.Code.stringInvalid(aSidesOUT)?"":", "+aSidesOUT)+")"));
+			aToolTips.add(getToolTipRedstoneFluxEmit(aEnergyTypeOUT));
 		}
 	}
 	

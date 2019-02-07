@@ -62,7 +62,7 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 	@Override
 	public long onToolClick(byte aSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_chisel)) {
-			aData.visual(aSide, (short)((aData.mVisuals[aSide] + 16) % 64));
+			aData.visual(aSide, (short)((aData.mVisuals[aSide] + 16) & 127));
 			return 100;
 		}
 		if (aTool.equals(TOOL_screwdriver)) {
@@ -116,9 +116,13 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 		, BlockTextureDefault.get("machines/covers/buttonselector/15", F)
 	};
 	public static final ITexture[] sTexturesBase = new ITexture[] {
-		  BlockTextureDefault.get("machines/covers/buttonselector/underlay_blank", F)
-		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_numeric", F)
-		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_hex", F)
+		  BlockTextureDefault.get("machines/covers/buttonselector/underlay", F)
+		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_0_to_15", F)
+		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_0_to_F", F)
+		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_1_to_16", F)
+		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_16_1_to_15", F)
+		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_keypad_1_to_9", F)
+		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_keypad_9_to_1", F)
 		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_bits", F)
 	};
 	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/buttonselector/base");
