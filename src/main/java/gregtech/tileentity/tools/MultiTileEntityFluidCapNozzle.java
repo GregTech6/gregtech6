@@ -52,7 +52,7 @@ import net.minecraftforge.fluids.IFluidContainerItem;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityFluidFunnel extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityFluidCapNozzle extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	public boolean mAcidProof = F;
 	
 	@Override
@@ -65,7 +65,7 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase09FacingSingle imp
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_TANK));
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
-		aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_LIQUIDPROOF));
+		aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
 	}
 	
 	@Override
@@ -74,19 +74,19 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase09FacingSingle imp
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			if (aStack != null) {
 				FluidStack tFluid = UT.Fluids.getFluidForFilledItem(ST.amount(1, aStack), T);
-				if (!UT.Fluids.gas(tFluid, T) && tFluid.amount > 0 && (mAcidProof || !UT.Fluids.acid(tFluid))) {
+				if (UT.Fluids.gas(tFluid, F) && tFluid.amount > 0 && (mAcidProof || !UT.Fluids.acid(tFluid))) {
 					DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.mTileEntity instanceof ITileEntityFunnelAccessible) {
-						int tAmount = ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).funnelFill(tDelegator.mSideOfTileEntity, tFluid, F);
-						if (tAmount >= tFluid.amount && ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).funnelFill(tDelegator.mSideOfTileEntity, tFluid, T) > 0) {
-							UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
+						int tAmount = ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).capnozzleFill(tDelegator.mSideOfTileEntity, tFluid, F);
+						if (tAmount >= tFluid.amount && ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).capnozzleFill(tDelegator.mSideOfTileEntity, tFluid, T) > 0) {
+							UT.Sounds.send(SFX.MC_FIZZ, 1.0F, 2.0F, this);
 							aStack.stackSize--;
 							UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.container(ST.amount(1, aStack), T), T);
 							return T;
 						}
 						if (aStack.getItem() instanceof IFluidContainerItem && aStack.stackSize == 1) {
-							UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
-							((IFluidContainerItem)aStack.getItem()).drain(aStack, ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).funnelFill(tDelegator.mSideOfTileEntity, tFluid, T), T);
+							UT.Sounds.send(SFX.MC_FIZZ, 1.0F, 2.0F, this);
+							((IFluidContainerItem)aStack.getItem()).drain(aStack, ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).capnozzleFill(tDelegator.mSideOfTileEntity, tFluid, T), T);
 							return T;
 						}
 					}
@@ -137,13 +137,13 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase09FacingSingle imp
 	
 	// Icons
 	public static IIconContainer sColoreds[] = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/tools/funnel/colored/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/tools/funnel/colored/top"),
-		new Textures.BlockIcons.CustomIcon("machines/tools/funnel/colored/side"),
+		new Textures.BlockIcons.CustomIcon("machines/tools/capnozzle/colored/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/tools/capnozzle/colored/top"),
+		new Textures.BlockIcons.CustomIcon("machines/tools/capnozzle/colored/side"),
 	}, sOverlays[] = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/tools/funnel/overlay/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/tools/funnel/overlay/top"),
-		new Textures.BlockIcons.CustomIcon("machines/tools/funnel/overlay/side"),
+		new Textures.BlockIcons.CustomIcon("machines/tools/capnozzle/overlay/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/tools/capnozzle/overlay/top"),
+		new Textures.BlockIcons.CustomIcon("machines/tools/capnozzle/overlay/side"),
 	};
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return null;}
@@ -187,5 +187,5 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase09FacingSingle imp
 	@Override public boolean[] getValidSides() {return SIDES_BOTTOM_HORIZONTAL;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.funnel";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.capnozzle";}
 }

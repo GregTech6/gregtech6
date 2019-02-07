@@ -64,6 +64,7 @@ public class MultiTileEntityFluidNozzle extends TileEntityBase09FacingSingle imp
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_TANK));
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
+		aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
 	}
 	
 	@Override
@@ -78,7 +79,7 @@ public class MultiTileEntityFluidNozzle extends TileEntityBase09FacingSingle imp
 					FluidStack tNewFluid = tFluid.copy();
 					ItemStack tStack = UT.Fluids.fillFluidContainer(tNewFluid, ST.amount(1, aStack), T, T, T, T);
 					if (tFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, tFluid.amount - tNewFluid.amount, T) != null) {
-						UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 2.0F, getCoords());
+						UT.Sounds.send(SFX.MC_FIZZ, 1.0F, 2.0F, this);
 						aStack.stackSize--;
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 						return T;

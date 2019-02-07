@@ -26,4 +26,5 @@ import net.minecraftforge.fluids.FluidStack;
  */
 public interface ITileEntityFunnelAccessible extends ITileEntityUnloadable {
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill);
+	public int capnozzleFill(byte aSide, FluidStack aFluid, boolean aDoFill);
 }

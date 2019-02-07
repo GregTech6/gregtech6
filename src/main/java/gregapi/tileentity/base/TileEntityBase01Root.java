@@ -841,6 +841,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	// Quick Fix for newly added Functionality
 	
+	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {return 0;}
+	public int capnozzleFill(byte aSide, FluidStack aFluid, boolean aDoFill) {return funnelFill(aSide, aFluid, aDoFill);}
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {return null;}
 	public FluidStack nozzleDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {return tapDrain(aSide, aMaxDrain, aDoDrain);}   
 	

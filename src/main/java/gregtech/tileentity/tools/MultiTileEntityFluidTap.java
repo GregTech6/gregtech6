@@ -67,6 +67,7 @@ public class MultiTileEntityFluidTap extends TileEntityBase09FacingSingle implem
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_TANK));
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
+		aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_LIQUIDPROOF));
 	}
 	
 	@Override
@@ -93,8 +94,8 @@ public class MultiTileEntityFluidTap extends TileEntityBase09FacingSingle implem
 										((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity,  334, T);
 										tDelegator2.setMetaData((byte)(tMeta + 1));
 									}
-									UT.Sounds.send(worldObj, SFX.IC_SPRAY, 1.0F, 2.0F, getCoords());
-									UT.Sounds.send(worldObj, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, getCoords());
+									UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
+									UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
 								}
 								return T;
 							}
@@ -105,8 +106,8 @@ public class MultiTileEntityFluidTap extends TileEntityBase09FacingSingle implem
 							tFluid = tFluid.copy();
 							tFluid.amount = Math.min(tFluid.amount, UT.Fluids.lava(tFluid) ? 1000 : !UT.Fluids.water(tFluid) && tMaterial != null && tMaterial.mAmount > 0 ? UT.Code.bindInt(tMaterial.mAmount) : 250);
 							if (((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, UT.Code.bindInt(UT.Fluids.fill_(tDelegator2, tFluid, T)), T) != null) {
-								UT.Sounds.send(worldObj, SFX.IC_SPRAY, 1.0F, 2.0F, getCoords());
-								UT.Sounds.send(worldObj, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, getCoords());
+								UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
+								UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
 							}
 							return T;
 						}
@@ -115,7 +116,7 @@ public class MultiTileEntityFluidTap extends TileEntityBase09FacingSingle implem
 					FluidStack tNewFluid = tFluid.copy();
 					ItemStack tStack = UT.Fluids.fillFluidContainer(tNewFluid, ST.amount(1, aStack), T, T, T, T);
 					if (tFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tFluid.amount - tNewFluid.amount, T) != null) {
-						UT.Sounds.send(worldObj, SFX.IC_SPRAY, 1.0F, 2.0F, getCoords());
+						UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
 						aStack.stackSize--;
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 						return T;
