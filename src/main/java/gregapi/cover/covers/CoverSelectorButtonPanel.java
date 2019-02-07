@@ -91,7 +91,7 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 		aList.add(LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 	}
 	
-	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase[(aData.mVisuals[aSide] >> 4) & 3], sTextures[UT.Code.bind4(aData.mVisuals[aSide] & 15)]);}
+	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase[(aData.mVisuals[aSide] >> 4) & 7], sTextures[UT.Code.bind4(aData.mVisuals[aSide] & 15)]);}
 	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}
 	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
