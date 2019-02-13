@@ -27,7 +27,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.04: (Not released yet)
 [NOTE]
-Don't think I can do something this week, just too much emotional devastation with this bullshit and waiting for someone to finally kill it... https://juliareda.eu/2019/02/council-worst-article-13/
+https://juliareda.eu/2019/02/eu-copyright-final-text/
+https://juliareda.eu/2019/02/council-worst-article-13/
+Don't think I can do something this week, just too much emotional devastation with this bullshit and waiting for someone to finally kill it... 
 I'm gonna go back to bed trying to skip time and distract myself until they finally made a decision...
 There is btw a small Block of Text in my Game Plans about how I imagine Worldgen for the Game. It's the "The World" Paragraph.
 
