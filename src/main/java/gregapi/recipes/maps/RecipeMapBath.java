@@ -66,17 +66,17 @@ public class RecipeMapBath extends RecipeMap {
 			if (aEntry != null && ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank)) {
 				if (ST.valid(aEntry.mPlank)) {
 					if (IL.MaCu_Polished_Planks.exists())
-					addRecipe1(T, 0, 144, aEntry.mPlank, FL.Oil_Fish.make(1000), NF, IL.MaCu_Polished_Planks.get(1));
+					addRecipe1(F, 0, 144, aEntry.mPlank, FL.Oil_Fish.make(1000), NF, IL.MaCu_Polished_Planks.get(1));
 					
 					if (!IL.Treated_Planks.equal(aEntry.mPlank, F, T) && !IL.IE_Treated_Planks.equal(aEntry.mPlank, F, T)) {
 						ItemStack tTreated = IL.IE_Treated_Planks.get(1, IL.Treated_Planks.get(1));
 						for (FL tFluid : OILS)
-						addRecipe1(T, 0, 144, aEntry.mPlank, tFluid.make(100), NF, tTreated);
+						addRecipe1(F, 0, 144, aEntry.mPlank, tFluid.make(100), NF, tTreated);
 					}
 					if (IL.ERE_White_Planks.exists() && !IL.ERE_White_Planks.equal(aEntry.mPlank, F, T)) {
 						ItemStack tTreated = IL.ERE_White_Planks.get(1);
 						for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
-						addRecipe1(T, 0, 144, aEntry.mPlank, tFluid, NF, tTreated);
+						addRecipe1(F, 0, 144, aEntry.mPlank, tFluid, NF, tTreated);
 					}
 				}
 				
@@ -84,12 +84,12 @@ public class RecipeMapBath extends RecipeMap {
 					if (IL.IE_Treated_Stairs.exists() && !IL.IE_Treated_Stairs.equal(aEntry.mStair, F, T)) {
 						ItemStack tTreated = IL.IE_Treated_Stairs.get(1);
 						for (FL tFluid : OILS)
-						addRecipe1(T, 0, 102, aEntry.mStair, tFluid.make( 75), NF, tTreated);
+						addRecipe1(F, 0, 102, aEntry.mStair, tFluid.make( 75), NF, tTreated);
 					}
 					if (IL.ERE_White_Stairs.exists() && !IL.ERE_White_Stairs.equal(aEntry.mStair, F, T)) {
 						ItemStack tTreated = IL.ERE_White_Stairs.get(1);
 						for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
-						addRecipe1(T, 0, 102, aEntry.mStair, UT.Fluids.mul(tFluid, 3, 4, T), NF, tTreated);
+						addRecipe1(F, 0, 102, aEntry.mStair, UT.Fluids.mul(tFluid, 3, 4, T), NF, tTreated);
 					}
 				}
 				
@@ -97,12 +97,12 @@ public class RecipeMapBath extends RecipeMap {
 					if (!IL.Treated_Planks_Slab.equal(aEntry.mSlab, F, T) && !IL.IE_Treated_Slab.equal(aEntry.mSlab, F, T)) {
 						ItemStack tTreated = IL.IE_Treated_Slab.get(1, IL.Treated_Planks_Slab.get(1));
 						for (FL tFluid : OILS)
-						addRecipe1(T, 0,  72, aEntry.mSlab, tFluid.make( 50), NF, tTreated);
+						addRecipe1(F, 0,  72, aEntry.mSlab, tFluid.make( 50), NF, tTreated);
 					}
 					if (IL.ERE_White_Slab.exists() && !IL.ERE_White_Slab.equal(aEntry.mSlab, F, T)) {
 						ItemStack tTreated = IL.ERE_White_Slab.get(1);
 						for (FluidStack tFluid : DYE_FLUIDS[DYE_INDEX_White])
-						addRecipe1(T, 0,  72, aEntry.mSlab, UT.Fluids.mul(tFluid, 1, 2, T), NF, tTreated);
+						addRecipe1(F, 0,  72, aEntry.mSlab, UT.Fluids.mul(tFluid, 1, 2, T), NF, tTreated);
 					}
 				}
 			}
