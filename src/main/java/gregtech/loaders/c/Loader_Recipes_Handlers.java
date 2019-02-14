@@ -422,7 +422,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotQuintuple      , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, ingot         , 5, NI, NI, F, T, F, tConditionM));
 		}
 		
-		ICondition tConditionP = new Nor(PREFIX_UNUSED, PLANT_DROP, IS_CONTAINER, DUST_BASED, ORE, ORE_PROCESSING_BASED, scrapGt);
+		ICondition tConditionP = new Nor(PREFIX_UNUSED, PLANT_DROP, IS_CONTAINER, DUST_BASED, ORE, ORE_PROCESSING_BASED, scrapGt, plate, plank);
 		
 		
 		RM.Polarizer    .add(new RecipeMapHandlerMaterial(MT.Nd                     , NF                                , 128, 144, NF, MT.NeodymiumMagnetic    , NI, T, tConditionP));
