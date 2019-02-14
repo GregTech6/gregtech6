@@ -132,7 +132,7 @@ public class RecipeMapHandlerMaterial implements IRecipeMapHandler {
 		
 		FluidStack tFluid = UT.Fluids.mul(mFluidInputPerUnit, aPrefix.mAmount, U, T);
 		
-		return aMap.addRecipeX(F,T,F,F,T, mEUt, Math.max(1, getCosts(aPrefix)), tInputs, tFluid == null ? null : tFluid.amount > 0 ? tFluid : mFluidInputPerUnit, UT.Fluids.mul(mFluidOutputPerUnit, aPrefix.mAmount, U, F), tOutput) != null;
+		return aMap.addRecipeX(F,T,F,F,T, mEUt, Math.max(1, getCosts(aPrefix)), tInputs, tFluid == null ? null : tFluid.amount > 0 ? tFluid : aPrefix.mAmount > 0 ? UT.Fluids.amount(mFluidInputPerUnit, 1) : mFluidInputPerUnit, UT.Fluids.mul(mFluidOutputPerUnit, aPrefix.mAmount, U, F), tOutput) != null;
 	}
 	
 	public long getCosts(OreDictPrefix aPrefix) {
