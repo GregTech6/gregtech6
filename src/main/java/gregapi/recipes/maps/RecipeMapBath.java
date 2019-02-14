@@ -70,8 +70,11 @@ public class RecipeMapBath extends RecipeMap {
 					
 					if (!IL.Treated_Planks.equal(aEntry.mPlank, F, T) && !IL.IE_Treated_Planks.equal(aEntry.mPlank, F, T)) {
 						ItemStack tTreated = IL.IE_Treated_Planks.get(1, IL.Treated_Planks.get(1));
-						for (FL tFluid : OILS)
-						addRecipe1(F, 0, 144, aEntry.mPlank, tFluid.make(100), NF, tTreated);
+						for (FL tFluid : OILS) {
+							FluidStack tTest = tFluid.make(100);
+							DEB.println(tTest.amount);
+							addRecipe1(F, 0, 144, aEntry.mPlank, tTest, NF, tTreated);
+						}
 					}
 					if (IL.ERE_White_Planks.exists() && !IL.ERE_White_Planks.equal(aEntry.mPlank, F, T)) {
 						ItemStack tTreated = IL.ERE_White_Planks.get(1);

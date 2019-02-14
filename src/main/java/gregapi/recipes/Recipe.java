@@ -859,7 +859,7 @@ public class Recipe {
 		for (int i = 0; i < aFluidInputs .length; i++) aFluidInputs [i] = aFluidInputs [i].copy();
 		for (int i = 0; i < aFluidOutputs.length; i++) aFluidOutputs[i] = aFluidOutputs[i].copy();
 		
-		if (aOptimize)  {
+		if (aOptimize) {
 			for (int i = 0; i < aInputs.length; i++) if (aInputs[i] != NI && ST.meta_(aInputs[i]) != W) for (int j = 0; j < aOutputs.length; j++) {
 				if (ST.equal(aInputs[i], aOutputs[j])) {
 					if (aInputs[i].stackSize >= aOutputs[j].stackSize) {
