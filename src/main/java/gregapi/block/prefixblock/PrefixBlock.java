@@ -465,39 +465,74 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
-		// TODO: I directly inserted the Crate Drop Code here, instead of making a special registry.
+		// TODO: I directly inserted the Crate Drop Code here, instead of making a special registry. And I did not fix it when adding the 5 better Crates.
 		OreDictMaterial aMaterial = getMetaMaterial(aWorld, aX, aY, aZ);
 		if (!aWorld.isRemote && (aTool.equals(TOOL_screwdriver) || aTool.equals(TOOL_crowbar))) {
+			if (mPrefix == OP.crateGt64Gem) {
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
+				aWorld.setBlockToAir(aX, aY, aZ);
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.gem.mat(aMaterial, 64));
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
+			}
+			if (mPrefix == OP.crateGt64Dust) {
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
+				aWorld.setBlockToAir(aX, aY, aZ);
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.dust.mat(aMaterial, 64));
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
+			}
+			if (mPrefix == OP.crateGt64Ingot) {
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
+				aWorld.setBlockToAir(aX, aY, aZ);
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.ingot.mat(aMaterial, 64));
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
+			}
+			if (mPrefix == OP.crateGt64Plate) {
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
+				aWorld.setBlockToAir(aX, aY, aZ);
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plate.mat(aMaterial, 64));
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
+			}
+			if (mPrefix == OP.crateGt64PlateGem) {
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
+				aWorld.setBlockToAir(aX, aY, aZ);
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plateGem.mat(aMaterial, 64));
+				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
+				return 2000;
+			}
 			if (mPrefix == OP.crateGtGem) {
-				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.gem.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
 			}
 			if (mPrefix == OP.crateGtDust) {
-				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.dust.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
 			}
 			if (mPrefix == OP.crateGtIngot) {
-				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.ingot.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
 			}
 			if (mPrefix == OP.crateGtPlate) {
-				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plate.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
 			}
 			if (mPrefix == OP.crateGtPlateGem) {
-				UT.Sounds.send(aWorld, SFX.MC_BREAK, 1.0F, -1.0F, aX, aY, aZ);
+				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plateGem.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));

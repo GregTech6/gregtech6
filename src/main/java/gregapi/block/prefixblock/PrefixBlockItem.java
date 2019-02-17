@@ -134,7 +134,7 @@ public class PrefixBlockItem extends ItemBlock implements IItemUpdatable, IPrefi
 		if (mBlock.mGravity) aList.add(LH.Chat.ORANGE + LH.get(LH.TOOLTIP_GRAVITY));
 		OreDictMaterial aMaterial = mBlock.getMetaMaterial(getDamage(aStack));
 		aList.add(LH.getToolTipBlastResistance(field_150939_a, mBlock.mBaseResistance * (1+mBlock.getHarvestLevel(aMaterial==null?0:aMaterial.mToolQuality))));
-		if (mBlock.mPrefix == OP.crateGtGem || mBlock.mPrefix == OP.crateGtDust || mBlock.mPrefix == OP.crateGtIngot || mBlock.mPrefix == OP.crateGtPlate || mBlock.mPrefix == OP.crateGtPlateGem) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_OPEN_CROWBAR));
+		if (mBlock.mPrefix.contains(TD.Prefix.IS_CRATE)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_OPEN_CROWBAR));
 	}
 	
 	@Override

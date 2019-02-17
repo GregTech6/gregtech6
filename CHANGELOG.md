@@ -33,6 +33,10 @@ Don't think I can do something this week, just too much emotional devastation wi
 I'm gonna go back to bed trying to skip time and distract myself until they finally made a decision...
 There is btw a small Block of Text in my Game Plans about how I imagine Worldgen for the Game. It's the "The World" Paragraph.
 [FIXED] Treated Planks Recipe in Bath consuming 0 Creosote.
+[ADDED]
+Crates filled by the Boxinator now contain 64 Dusts/Ingots/Plates/Gems instead of 16. (unless you use Metal Chunks or Small Piles of Dust)
+The old Crates that do have 16 will continue to exist in a slightly renamed way and be somewhat available as Loot in certain places, like they did before.
+I added the 64-Crates instead of changing the 16-Crates, because there is an obvious exploitative Loophole people could cheat with (even if just by accident), and because I didn't want to make certain Loot even more ridiculous.
 
 
 6.10.03:

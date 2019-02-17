@@ -304,6 +304,12 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGtPlate                    , 1, NF,  16,16,     0, NF, plate                   ,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGtPlateGem                 , 1, NF,  16,16,     0, NF, plateGem                ,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
 		
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGt64Dust                   , 1, NF,  16,16,     0, NF, dust                    ,64, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGt64Gem                    , 1, NF,  16,16,     0, NF, gem                     ,64, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGt64Ingot                  , 1, NF,  16,16,     0, NF, ingot                   ,64, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGt64Plate                  , 1, NF,  16,16,     0, NF, plate                   ,64, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGt64PlateGem               , 1, NF,  16,16,     0, NF, plateGem                ,64, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
+		
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(blockDust                       , 1, NF,  16,16,     0, NF, dust                    , 9, NI, NI, T, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(blockGem                        , 1, NF,  16,16,     0, NF, gem                     , 9, NI, NI, T, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(blockIngot                      , 1, NF,  16,16,     0, NF, ingot                   , 9, NI, NI, T, F, F, ANTIMATTER.NOT));
@@ -314,20 +320,20 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crushedCentrifuged              , 1, NF,  16,16,     0, NF, crushedCentrifugedTiny  , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
 		
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dustSmall                       ,64, NF,  16,16,     0, NF, crateGtDust             , 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dust                            ,16, NF,  16,16,     0, NF, crateGtDust             , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(gem                             ,16, NF,  16,16,     0, NF, crateGtGem              , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(chunkGt                         ,64, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(ingot                           ,16, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plate                           ,16, NF,  16,16,     0, NF, crateGtPlate            , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plateGem                        ,16, NF,  16,16,     0, NF, crateGtPlateGem         , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dust                            ,64, NF,  16,16,     0, NF, crateGt64Dust           , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(gem                             ,64, NF,  16,16,     0, NF, crateGt64Gem            , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(ingot                           ,64, NF,  16,16,     0, NF, crateGt64Ingot          , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plate                           ,64, NF,  16,16,     0, NF, crateGt64Plate          , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plateGem                        ,64, NF,  16,16,     0, NF, crateGt64PlateGem       , 1, IL.Crate.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dustSmall                       ,64, NF,  16,16,     0, NF, crateGtDust             , 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dust                            ,16, NF,  16,16,     0, NF, crateGtDust             , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(gem                             ,16, NF,  16,16,     0, NF, crateGtGem              , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(chunkGt                         ,64, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate_Fireproof.get(1), NI, F, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(ingot                           ,16, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plate                           ,16, NF,  16,16,     0, NF, crateGtPlate            , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plateGem                        ,16, NF,  16,16,     0, NF, crateGtPlateGem         , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dust                            ,64, NF,  16,16,     0, NF, crateGt64Dust           , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(gem                             ,64, NF,  16,16,     0, NF, crateGt64Gem            , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(ingot                           ,64, NF,  16,16,     0, NF, crateGt64Ingot          , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plate                           ,64, NF,  16,16,     0, NF, crateGt64Plate          , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(plateGem                        ,64, NF,  16,16,     0, NF, crateGt64PlateGem       , 1, IL.Crate_Fireproof.get(1), NI, T, F, F, ANTIMATTER.NOT));
 		
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dustSmall                       ,36, NF,  16,16,     0, NF, blockDust               , 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dust                            , 9, NF,  16,16,     0, NF, blockDust               , 1, ST.tag( 9), NI, T, F, F, ANTIMATTER.NOT));

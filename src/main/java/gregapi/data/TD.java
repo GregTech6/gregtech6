@@ -220,10 +220,12 @@ public class TD {
 	
 	/** For Prefixes */
 	public static class Prefix {
-		/** If this Prefix is a Container */
+		/** If this Prefix is unused */
 		public static final TagData PREFIX_UNUSED                           = TagData.createTagData("PREFIX.PREFIX_UNUSED", "Unused Prefix");
 		/** If this Prefix is a Container */
 		public static final TagData IS_CONTAINER                            = TagData.createTagData("PREFIX.IS_CONTAINER", "Container");
+		/** If this Prefix is a Crate */
+		public static final TagData IS_CRATE                                = TagData.createTagData("PREFIX.IS_CRATE", "Crate");
 		/** If this Prefix is Material Based */
 		public static final TagData MATERIAL_BASED                          = TagData.createTagData("PREFIX.MATERIAL_BASED", "Material Based");
 		/** If this Prefix is normally used for Blocks */

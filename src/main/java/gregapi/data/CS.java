@@ -1390,7 +1390,8 @@ public class CS {
 		public static IPrefixBlock
 		casingMachine, casingMachineDouble, casingMachineQuadruple, casingMachineDense,
 		blockGem, blockDust, blockIngot, blockSolid, blockPlate, blockPlateGem,
-		crateGtGem, crateGtDust, crateGtIngot, crateGtPlate, crateGtPlateGem;
+		crateGtGem, crateGtDust, crateGtIngot, crateGtPlate, crateGtPlateGem,
+		crateGt64Gem, crateGt64Dust, crateGt64Ingot, crateGt64Plate, crateGt64PlateGem;
 		
 		/** Ore Blocks */
 		public static IPrefixBlock

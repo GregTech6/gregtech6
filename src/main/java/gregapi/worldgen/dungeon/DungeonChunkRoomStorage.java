@@ -39,7 +39,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 		if (!super.generate(aData)) return F;
 		
 		OreDictMaterial[] tGeneratedMaterials = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel};
-		IPrefixBlock[] tGeneratedCrates = {BlocksGT.crateGtDust, BlocksGT.crateGtPlate, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot};
+		IPrefixBlock[] tGeneratedCrates = {BlocksGT.crateGtDust, BlocksGT.crateGtPlate, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtDust, BlocksGT.crateGtPlate, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGt64Dust, BlocksGT.crateGt64Plate, BlocksGT.crateGt64Ingot, BlocksGT.crateGt64Ingot};
 		FluidStack[][] tFluids = {
 		  {FL.Oil_Creosote.make(16000), FL.Oil_Seed.make(16000), FL.lube(16000), FL.Glue.make(16000), FL.Latex.make(16000), FL.Holywater.make(16000), FL.Purple_Drink.make(16000)}
 		, {FL.Oil_Creosote.make(32000), FL.Oil_Seed.make(32000), FL.lube(32000), FL.Glue.make(32000), FL.Latex.make(32000), FL.Holywater.make(32000), FL.Purple_Drink.make(32000)}
@@ -117,100 +117,100 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 		}
 		
 		if (aData.mRandom.nextBoolean()) {
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 2,  3, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 2,  3, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 2,  3, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 2,  3, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 3,  3, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 3,  3, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 3,  3, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 3,  3, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 		}
 		if (aData.mRandom.nextBoolean()) {
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2,  3, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2,  3, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2,  3, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2,  3, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 3,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 3,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3,  3, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3,  3, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 3,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 3,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3,  3, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3,  3, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4,  1, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4,  2, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 		}
 		if (aData.mRandom.nextBoolean()) {
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2, 12, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2, 12, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 2, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 2, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 2, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 2, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 2, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3, 12, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3, 12, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 3, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 3, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 3, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 3, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 3, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  3, 3, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 		}
 		if (aData.mRandom.nextBoolean()) {
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2, 12, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2, 12, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 2, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 2, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 3, 12, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 3, 12, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 3, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 3, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 3, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 3, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4, 13, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
-			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4, 14, SIDE_UNKNOWN, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID, null, T, T);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 		}
 		return T;
 	}
