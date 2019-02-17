@@ -1989,7 +1989,8 @@ public class MT {
 			Forcillium                      .addOreByProducts(Th                    , Nd                        , RareEarth             );
 			FakeOsmium                      .addOreByProducts(Fe2O3                 , Sn                        , Cr                    );
 			Cd                              .addOreByProducts(OREMATS.Chalcopyrite  , OREMATS.Sphalerite        , Se                    );
-			OREMATS.Molybdenite             .addOreByProducts(Mo                    , Re                        , Os                    );
+			OREMATS.Powellite               .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Scheelite         );
+			OREMATS.Molybdenite             .addOreByProducts(OREMATS.Powellite     , OREMATS.Scheelite         , Re                    , Os);
 			OREMATS.Malachite               .addOreByProducts(Cu                    , OREMATS.BrownLimonite     , CaCO3                 , MT.Azurite);
 			OREMATS.Scheelite               .addOreByProducts(MnO2                  , Mo                        , Ca                    );
 			OREMATS.Tungstate               .addOreByProducts(MnO2                  , Ag                        , LiCl                  );

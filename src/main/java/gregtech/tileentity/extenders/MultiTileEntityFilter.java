@@ -21,11 +21,15 @@ package gregtech.tileentity.extenders;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.data.IL;
+import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.gui.ContainerClient;
 import gregapi.gui.ContainerCommon;
 import gregapi.gui.Slot_Holo;
@@ -33,6 +37,7 @@ import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
@@ -54,21 +59,25 @@ import net.minecraftforge.fluids.IFluidHandler;
  */
 public class MultiTileEntityFilter extends MultiTileEntityExtender {
 	public ItemStack[] mFilter = new ItemStack[54];
+	public boolean mInverted = F;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_INVERTED)) mInverted = aNBT.getBoolean(NBT_INVERTED);
 		for (int i = 0; i < mFilter.length; i++) mFilter[i] = ST.load(aNBT, NBT_INV_FILTER+"."+i);
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
+		UT.NBT.setBoolean(aNBT, NBT_INVERTED, mInverted);
 		for (int i = 0; i < mFilter.length; i++) ST.save(aNBT, NBT_INV_FILTER+"."+i, mFilter[i]);
 	}
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
+		UT.NBT.setBoolean(aNBT, NBT_INVERTED, mInverted);
 		for (int i = 0; i < mFilter.length; i++) ST.save(aNBT, NBT_INV_FILTER+"."+i, mFilter[i]);
 		return super.writeItemNBT2(aNBT);
 	}
@@ -85,15 +94,36 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 	@Override public String getTileEntityName() {return "gt.multitileentity.filter";}
 	
 	public boolean allowInput(ItemStack aStack) {
-		for (ItemStack tStack : mFilter) if (ST.valid(tStack) && ST.equal_(tStack, aStack, !tStack.hasTagCompound())) return T;
-		return F;
+		for (ItemStack tStack : mFilter) if (ST.valid(tStack) && ST.equal_(tStack, aStack, !tStack.hasTagCompound())) return !mInverted;
+		return mInverted;
 	}
 	public boolean allowInput(FluidStack aFluid) {
 		return aFluid != null && allowInput(aFluid.getFluid());
 	}
 	public boolean allowInput(Fluid aFluid) {
-		if (aFluid != null) for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && UT.Fluids.id(aFluid) == ST.meta_(tStack)) return T;
-		return F;
+		if (aFluid != null) for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && UT.Fluids.id(aFluid) == ST.meta_(tStack)) return !mInverted;
+		return mInverted;
+	}
+	
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		super.addToolTips(aList, aStack, aF3_H);
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+	}
+	
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (isClientSide()) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (aTool.equals(TOOL_screwdriver)) {
+			mInverted = !mInverted;
+			if (aChatReturn != null) aChatReturn.add(mInverted ? "Blacklist Filter" : "Whitelist Filter");
+			return 2000;
+		}
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			if (aChatReturn != null) aChatReturn.add(mInverted ? "Blacklist Filter" : "Whitelist Filter");
+			return 1;
+		}
+		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override

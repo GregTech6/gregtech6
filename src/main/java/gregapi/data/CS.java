@@ -1043,6 +1043,7 @@ public class CS {
 	, NBT_REDSTONE_3                = "gt.redstone.3"               // Byte
 	, NBT_REDSTONE_4                = "gt.redstone.4"               // Byte
 	, NBT_REDSTONE_5                = "gt.redstone.5"               // Byte
+	, NBT_INVERTED                  = "gt.inverted"                 // Boolean signalising if the Machine is set to inverse.
 	, NBT_REVERSED                  = "gt.reversed"                 // Boolean signalising if the Machine is set to reverse.
 	, NBT_STOPPED                   = "gt.stopped"                  // Boolean signalising if the Machine is set to stop.
 	, NBT_RUNNING                   = "gt.running"                  // Boolean signalising if the Machine is set up to run.
