@@ -176,16 +176,16 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer        .addRecipeX(T, 16,   64, new ItemStack[] {OP.gem .mat(MT.ChargedCertusQuartz, 1), OP.gem .mat(MT.NetherQuartz, 1), OP.dust.mat(MT.Redstone, 1)}, UT.Fluids.mul(tWater, 1, 2, T), NF, OP.gem .mat(MT.Fluix, 2));
 		RM.Mixer        .addRecipeX(T, 16,   64, new ItemStack[] {OP.dust.mat(MT.ChargedCertusQuartz, 1), OP.dust.mat(MT.NetherQuartz, 1), OP.dust.mat(MT.Redstone, 1)}, UT.Fluids.mul(tWater, 1, 2, T), NF, OP.dust.mat(MT.Fluix, 2));
 		
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.ConstructionFoam    )                   , UT.Fluids.mul(tWater, 1,10, T), MT.ConstructionFoam.liquid(U, F), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.ConstructionFoam), UT.Fluids.mul(tWater, 1,10, T), FL.CFoam.make(100), ZL_IS);
 		
 		for (OreDictMaterial tClay : ANY.Clay.mToThis) {
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Stone, MT.Concrete, MT.Gravel, MT.Soapstone, MT.Rhyolite, MT.Gneiss, MT.Shale, MT.Dolomite, MT.Chert, MT.Asbestos}) {
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
-		RM.Mixer.addRecipeX(T, 16,  256, new ItemStack[] {OM.dust(tRock, U* 6), OM.dust(tMat        , U * 2), OM.dust(tClay, U4)}, UT.Fluids.mul(tWater, 1), MT.ConstructionFoam.liquid(10*U, F), ZL_IS);
-		RM.Mixer.addRecipeX(T, 16,  256, new ItemStack[] {OM.dust(tRock, U*24), OM.dust(tMat        , U * 8), OM.dust(tClay, U )}, UT.Fluids.mul(tWater, 4), MT.ConstructionFoam.liquid(40*U, F), ZL_IS);
+		RM.Mixer.addRecipeX(T, 16,  256, new ItemStack[] {OM.dust(tRock, U* 6), OM.dust(tMat        , U * 2), OM.dust(tClay, U4)}, UT.Fluids.mul(tWater, 1), FL.CFoam.make(1000), ZL_IS);
+		RM.Mixer.addRecipeX(T, 16,  256, new ItemStack[] {OM.dust(tRock, U*24), OM.dust(tMat        , U * 8), OM.dust(tClay, U )}, UT.Fluids.mul(tWater, 4), FL.CFoam.make(4000), ZL_IS);
 		}
-		RM.Mixer.addRecipeX(T, 16,  256, new ItemStack[] {OM.dust(tRock, U* 6), ST.make(Blocks.sand ,  2, W), OM.dust(tClay, U4)}, UT.Fluids.mul(tWater, 1), MT.ConstructionFoam.liquid(10*U, F), ZL_IS);
-		RM.Mixer.addRecipeX(T, 16,  256, new ItemStack[] {OM.dust(tRock, U*24), ST.make(Blocks.sand ,  8, W), OM.dust(tClay, U )}, UT.Fluids.mul(tWater, 4), MT.ConstructionFoam.liquid(40*U, F), ZL_IS);
+		RM.Mixer.addRecipeX(T, 16,  256, new ItemStack[] {OM.dust(tRock, U* 6), ST.make(Blocks.sand ,  2, W), OM.dust(tClay, U4)}, UT.Fluids.mul(tWater, 1), FL.CFoam.make(1000), ZL_IS);
+		RM.Mixer.addRecipeX(T, 16,  256, new ItemStack[] {OM.dust(tRock, U*24), ST.make(Blocks.sand ,  8, W), OM.dust(tClay, U )}, UT.Fluids.mul(tWater, 4), FL.CFoam.make(4000), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Diorite, MT.Marble, MT.Chalk, MT.Livingrock, MT.Holystone}) {
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
@@ -442,9 +442,13 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipe0(T, 16,   16, new FluidStack[] {UT.Fluids.mul(tDye, 3, 2, T), MT.LinOil          .liquid(U50, T)}, UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[i], 2), ZL_IS);
 		RM.Mixer            .addRecipe0(T, 16,   16, new FluidStack[] {UT.Fluids.mul(tDye, 3, 2, T), MT.HempOil         .liquid(U50, T)}, UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[i], 2), ZL_IS);
 		}
-		RM.Mixer            .addRecipe0(T, 16,   16, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[i], 1, 9, T), MT.ConstructionFoam.liquid(U, T)}, DYED_C_FOAMS[i], ZL_IS);
+		RM.Mixer            .addRecipe0(T, 16,   16, new FluidStack[] {UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[i], 1, 9, T), FL.CFoam.make(100)}, DYED_C_FOAMS[i], ZL_IS);
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.Pd, U4), DYED_C_FOAMS[i], DYED_C_FOAMS_OWNED[i], ZL_IS);
 		RM.Mixer            .addRecipe1(T, 16,   64, OM.dust(MT.Pd), UT.Fluids.mul(DYED_C_FOAMS[i], 4), UT.Fluids.mul(DYED_C_FOAMS_OWNED[i], 4), ZL_IS);
+		// TODO: Foamer
+		for (String tFluid : FluidsGT.AIR) if (UT.Fluids.exists(tFluid))
+		RM.Injector         .addRecipe0(T, 16,   16, new FluidStack[] {DYED_C_FOAMS[i], UT.Fluids.make(tFluid, 1000)}, ZL_FS, ST.make(BlocksGT.CFoamFresh, 1, i));
+		RM.Drying           .addRecipe1(T, 16,   16, ST.make(BlocksGT.CFoamFresh, 1, i), ST.make(BlocksGT.CFoam, 1, i));
 		}
 		
 		for (OreDictMaterial tClay : ANY.Clay.mToThis) {

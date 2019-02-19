@@ -32,8 +32,10 @@ https://juliareda.eu/2019/02/council-worst-article-13/
 Didn't think I could do something last week, just too much emotional devastation with this bullshit and waiting for someone to finally kill it... 
 I'm gonna go back to bed trying to skip time and distract myself until they finally made a decision...
 There is btw a small Block of Text in my Game Plans about how I imagine Worldgen for the Game. It's the "The World" Paragraph.
-[FIXED] Treated Planks Recipe in Bath consuming 0 Creosote.
+[FIXED] Treated Planks Recipe in Bath consuming 0 Creosote, and some other Bugs with that same Recipe.
 [CHANGED] The Filter Blocks can now be Inverted with the Screwdriver.
+[CHANGED] The Recipe for CFoam + Scaffold = IC2 Reinforced Stone is now in the Dryer instead of the Bath.
+[ADDED] CFoam Fluid can now be made into Blocks by first foaming it with Air in the Injector and then Drying it in the Dryer.
 [ADDED]
 Crates filled by the Boxinator now contain 64 Dusts/Ingots/Plates/Gems instead of 16. (unless you use Metal Chunks or Small Piles of Dust)
 The old Crates that do have 16 will continue to exist in a slightly renamed way and be somewhat available as Loot in certain places, like they did before.

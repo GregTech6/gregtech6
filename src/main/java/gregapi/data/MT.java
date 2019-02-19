@@ -1919,6 +1919,7 @@ public class MT {
 			Pu                              .addOreByProducts(Pb                    , U_238                     , Am                    );
 			Th                              .addOreByProducts(Pb                    , U_238                     );
 			
+			S                               .addOreByProducts(Pyrite                , OREMATS.Sphalerite        , OREMATS.Cinnabar      , MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, OREMATS.Galena      , OREMATS.Stibnite      );
 			Se                              .addOreByProducts(Pyrite                , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
 			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      );
 			CaF2                            .addOreByProducts(OREMATS.Huebnerite    , Y                         , Ce                    , Fe2O3                 , Na                    , Ba                    );

@@ -332,7 +332,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.RollFormer   .addRecipe1(T,256,   16, OP.blockSolid.mat(tMat, 1)                         , IL.IC2_ShaftIron.get(1));
 		
 		for (FluidStack tFluid : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {
-		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tFluid, MT.ConstructionFoam.liquid(10*U, T), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tFluid, FL.CFoam.make(1000), ZL_IS);
 		}
 		
 		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Lapis, 1*U)                             , FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
@@ -460,8 +460,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Laminator        .addRecipe2(T, 16,  192, OP.plate.mat(MT.Rubber, 3), ST.mkic("ironCableItem"  , 1), ST.mkic("insulatedIronCableItem"  , 1));
 		
 		for (FluidStack tCFoam : DYED_C_FOAMS)
-		RM.Bath             .addRecipe1(T,  0,   64, IL.IC2_Scaffold_Iron.get(1)                        , tCFoam, NF, IL.IC2_Wall_Reinforced.get(1));
-		RM.Bath             .addRecipe1(T,  0,   64, IL.IC2_Scaffold_Iron.get(1)                        , MT.ConstructionFoam.liquid(U, T), NF, IL.IC2_Wall_Reinforced.get(1));
+		RM.Drying           .addRecipe1(T, 16,   16, IL.IC2_Scaffold_Iron.get(1)                        , tCFoam, NF, IL.IC2_Wall_Reinforced.get(1));
+		RM.Drying           .addRecipe1(T, 16,   16, IL.IC2_Scaffold_Iron.get(1)                        , FL.CFoam.make(100), NF, IL.IC2_Wall_Reinforced.get(1));
+		
 		RM.Bath             .addRecipe1(T,  0,   16, ST.mkic("dynamite", 1)                             , FL.Glue.make(125), NF, ST.mkic("stickyDynamite", 1));
 		
 		if (IL.ERE_Herbicide.exists())
