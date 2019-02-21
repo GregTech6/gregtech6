@@ -164,6 +164,12 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 64, 30, UT.Fluids.make("propane", 5)                       , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
 		FM.Gas          .addRecipe0(T, - 64, 40, UT.Fluids.make("propane", 5)                       , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
 		
+		FM.Burn         .addRecipe0(T, - 64, 21, UT.Fluids.make("ethylene", 7)                      , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));
+		FM.Gas          .addRecipe0(T, - 64, 28, UT.Fluids.make("ethylene", 7)                      , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));
+		
+		FM.Burn         .addRecipe0(T, - 64, 15, UT.Fluids.make("propylene", 5)                     , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
+		FM.Gas          .addRecipe0(T, - 64, 20, UT.Fluids.make("propylene", 5)                     , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
+		
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                        , FL.Lava_Pahoehoe.make(1), ZL_IS);
 //      FM.Hot          .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2hotwater", 1)                   , FL.DistW.make(1), ZL_ITEMSTACK);
 //      FM.Hot          .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2hotcoolant", 1)                 , FL.Coolant_IC2.make(1), ZL_ITEMSTACK);
