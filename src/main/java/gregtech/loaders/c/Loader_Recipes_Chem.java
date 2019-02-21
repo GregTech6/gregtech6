@@ -20,6 +20,7 @@
 package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 
 import gregapi.data.ANY;
 import gregapi.data.CS.FluidsGT;
@@ -223,6 +224,20 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		
 		
+		RM.DistillationTower.addRecipe0(F, 64, 512, new long[] { 9000,  9000,  9000}, new FluidStack[] {FL.Oil_ExtraHeavy.make(50)}, new FluidStack[] {FL.Oil_Fuel.make(70), FL.Diesel.make(45), FL.Kerosine.make(40), FL.Petrol.make(35), FL.Propane.make(10), FL.Butane.make(10), FL.lube(100)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1));
+		RM.DistillationTower.addRecipe0(F, 64, 384, new long[] { 7000,  7000,  7000}, new FluidStack[] {FL.Oil_Heavy     .make(50)}, new FluidStack[] {FL.Oil_Fuel.make(60), FL.Diesel.make(35), FL.Kerosine.make(35), FL.Petrol.make(30), FL.Propane.make(15), FL.Butane.make(15), FL.lube( 80)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1)); if (FL.Oil_Heavy2.exists())
+		RM.DistillationTower.addRecipe0(F, 64, 384, new long[] { 7000,  7000,  7000}, new FluidStack[] {FL.Oil_Heavy2    .make(50)}, new FluidStack[] {FL.Oil_Fuel.make(60), FL.Diesel.make(35), FL.Kerosine.make(35), FL.Petrol.make(30), FL.Propane.make(15), FL.Butane.make(15), FL.lube( 80)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1));
+		RM.DistillationTower.addRecipe0(F, 64, 256, new long[] { 5000,  5000,  5000}, new FluidStack[] {FL.Oil_Medium    .make(50)}, new FluidStack[] {FL.Oil_Fuel.make(50), FL.Diesel.make(25), FL.Kerosine.make(25), FL.Petrol.make(25), FL.Propane.make(25), FL.Butane.make(25), FL.lube( 50)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1));
+		RM.DistillationTower.addRecipe0(F, 64, 256, new long[] { 5000,  5000,  5000}, new FluidStack[] {FL.Oil_Normal    .make(50)}, new FluidStack[] {FL.Oil_Fuel.make(50), FL.Diesel.make(25), FL.Kerosine.make(25), FL.Petrol.make(25), FL.Propane.make(25), FL.Butane.make(25), FL.lube( 50)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1)); if (FL.Oil_HotCrude.exists())
+		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] { 5000,  5000,  5000}, new FluidStack[] {FL.Oil_HotCrude  .make(50)}, new FluidStack[] {FL.Oil_Fuel.make(50), FL.Diesel.make(25), FL.Kerosine.make(25), FL.Petrol.make(25), FL.Propane.make(25), FL.Butane.make(25), FL.lube( 50)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1));
+		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] { 3000,  3000,  3000}, new FluidStack[] {FL.Oil_Light     .make(50)}, new FluidStack[] {FL.Oil_Fuel.make(25), FL.Diesel.make(15), FL.Kerosine.make(15), FL.Petrol.make(15), FL.Propane.make(50), FL.Butane.make(50), FL.lube( 25)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1)); if (FL.Oil_Light2.exists())
+		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] { 3000,  3000,  3000}, new FluidStack[] {FL.Oil_Light2    .make(50)}, new FluidStack[] {FL.Oil_Fuel.make(25), FL.Diesel.make(15), FL.Kerosine.make(15), FL.Petrol.make(15), FL.Propane.make(50), FL.Butane.make(50), FL.lube( 25)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1));
+		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] { 2000,  2000,  2000}, new FluidStack[] {FL.Oil_Soulsand  .make(50)}, new FluidStack[] {FL.Oil_Fuel.make(20), FL.Diesel.make(10), FL.Kerosine.make(10), FL.Petrol.make(10), FL.Propane.make(10), FL.Butane.make(10), FL.lube( 80)}, dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.Plastic, 1));
+		
+		
+		
+		RM.SteamCracking.addRecipe0(F, 16,  128, new FluidStack[] {FL.Steam.make(2000), FL.Propane.make(100)}, new FluidStack[] {FL.Hydrogen.make( 2), FL.Methane.make(27), FL.Ethylene.make(42), FL.Propylene.make(19)}, ZL_IS);
+		RM.SteamCracking.addRecipe0(F, 16,  128, new FluidStack[] {FL.Steam.make(2000), FL.Butane .make(100)}, new FluidStack[] {FL.Hydrogen.make( 5), FL.Methane.make( 9), FL.Ethylene.make(78), FL.Propylene.make( 3)}, ZL_IS);
 		
 		
 		

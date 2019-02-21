@@ -92,10 +92,6 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 64,  9, UT.Fluids.make("nitrofuel", 1)                     , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64, 12, UT.Fluids.make("nitrofuel", 1)                     , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		
-		if (UT.Fluids.exists("lpg")) {
-		FM.Burn         .addRecipe0(T, - 64,  8, UT.Fluids.make("lpg", 1)                           , UT.Fluids.make("carbondioxide", 1), ZL_IS);
-		FM.Engine       .addRecipe0(T, - 64, 10, UT.Fluids.make("lpg", 1)                           , UT.Fluids.make("carbondioxide", 1), ZL_IS);
-		}
 		for (String tAlcohol : FluidsGT.RUM) if (UT.Fluids.exists(tAlcohol)) {
 		FM.Burn         .addRecipe0(T, - 16,  6, UT.Fluids.make(tAlcohol, 1)                        , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 16,  9, UT.Fluids.make(tAlcohol, 1)                        , UT.Fluids.make("carbondioxide", 1), ZL_IS);
@@ -157,6 +153,9 @@ public class Loader_Fuels implements Runnable {
 		if (UT.Fluids.exists("ic2biogas")) {
 		FM.Burn         .addRecipe0(T, - 16, 24, UT.Fluids.make("ic2biogas", 5)                     , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
 		FM.Gas          .addRecipe0(T, - 16, 30, UT.Fluids.make("ic2biogas", 5)                     , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
+		}
+		if (FL.LPG.exists()) {
+		FM.Burn         .addRecipe0(T, - 64, 42, UT.Fluids.make("lpg", 7)                           , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));
 		}
 		
 		FM.Burn         .addRecipe0(T, - 64, 42, UT.Fluids.make("butane", 7)                        , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));

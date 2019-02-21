@@ -344,10 +344,16 @@ public enum FL {
 	, Oil_Heavy2                ("heavyoil"                                                 , SIMPLE, LIQUID)
 	, Oil_HotCrude              ("hotcrude"                                                 , SIMPLE, LIQUID)
 	
-	, Kerosine                  ("kerosine"                 , "kerosene"                    , SIMPLE, LIQUID)
 	, Methane                   ("methane"                                                  , SIMPLE, GAS)
 	, Propane                   ("propane"                                                  , SIMPLE, GAS)
 	, Butane                    ("butane"                                                   , SIMPLE, GAS)
+	, Ethylene                  ("ethylene"                 , "ethene"                      , GAS)
+	, Propylene                 ("propylene"                , "propene"                     , GAS)
+	, Petrol                    ("petrol"                   , "gasoline"                    , SIMPLE, LIQUID)
+	, Fuel                      ("fuel"                                                     , SIMPLE, LIQUID)
+	, Diesel                    ("diesel"                                                   , SIMPLE, LIQUID)
+	, Kerosine                  ("kerosine"                 , "kerosene"                    , SIMPLE, LIQUID)
+	, LPG                       ("lpg"                                                      , LIQUID)
 	
 	, Glue                      ("glue"                                                     , SIMPLE, LIQUID)
 	, Latex                     ("latex"                    , "molten.latex"                , SIMPLE, LIQUID)

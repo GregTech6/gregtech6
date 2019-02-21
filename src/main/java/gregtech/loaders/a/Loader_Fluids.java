@@ -55,6 +55,8 @@ public class Loader_Fluids implements Runnable {
 		UT.Fluids.create("Helium-3"                 , "Helium-3"            , MT.He_3               , 2,   1000,   300);
 		UT.Fluids.create("Propane"                  , "Propane"             , MT.Propane            , 2,   1000,   300);
 		UT.Fluids.create("Butane"                   , "Butane"              , MT.Butane             , 2,   1000,   300);
+		UT.Fluids.create("Propylene"                , "Propylene"           , MT.Propylene          , 2,   1000,   300);
+		UT.Fluids.create("Ethylene"                 , "Ethylene"            , MT.Ethylene           , 2,   1000,   300);
 		UT.Fluids.create("dragonbreath"             , "Dragon's Breath"     , null                  , 2,   1000,   300, IL.EtFu_Dragon_Breath.get(1), IL.Bottle_Empty.get(1), 250).setDensity(100).setLuminosity(5);
 		UT.Fluids.create("netherair"                , "Nether Air"          , null                  , 2,   1000,   370).setDensity(0);
 		UT.Fluids.create("enderair"                 , "Ender Air"           , null                  , 2,   1000,   280).setDensity(0);
