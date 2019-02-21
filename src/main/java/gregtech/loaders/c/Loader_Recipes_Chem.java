@@ -236,8 +236,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		
 		
-		RM.SteamCracking.addRecipe0(F, 16,  128, new FluidStack[] {FL.Steam.make(2000), FL.Propane.make(100)}, new FluidStack[] {FL.Hydrogen.make( 2), FL.Methane.make(27), FL.Ethylene.make(42), FL.Propylene.make(19)}, ZL_IS);
-		RM.SteamCracking.addRecipe0(F, 16,  128, new FluidStack[] {FL.Steam.make(2000), FL.Butane .make(100)}, new FluidStack[] {FL.Hydrogen.make( 5), FL.Methane.make( 9), FL.Ethylene.make(78), FL.Propylene.make( 3)}, ZL_IS);
+		RM.SteamCracking.addRecipe0(F, 16,   64, new FluidStack[] {FL.Steam.make(1000), FL.Propane.make(100)}, new FluidStack[] {FL.Hydrogen.make( 2), FL.Methane.make(27), FL.Ethylene.make(42), FL.Propylene.make(19)}, ZL_IS);
+		RM.SteamCracking.addRecipe0(F, 16,   64, new FluidStack[] {FL.Steam.make(1000), FL.Butane .make(100)}, new FluidStack[] {FL.Hydrogen.make( 5), FL.Methane.make( 9), FL.Ethylene.make(78), FL.Propylene.make( 3)}, ZL_IS);
 		
 		
 		

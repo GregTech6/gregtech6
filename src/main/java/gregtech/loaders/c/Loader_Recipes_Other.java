@@ -332,8 +332,8 @@ public class Loader_Recipes_Other implements Runnable {
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Umber, MT.Kimberlite})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Brown));
 		
-		RM.Fermenter        .addRecipe1(T, 16,   24, ST.tag(0), FL.Biomass      .make(40), UT.Fluids.make("methane", 24), ZL_IS);
-		RM.Fermenter        .addRecipe1(T, 16,   24, ST.tag(0), FL.BiomassIC2   .make(40), UT.Fluids.make("methane", 24), ZL_IS);
+		RM.Fermenter        .addRecipe1(T, 16,   24, ST.tag(0), FL.Biomass   .make(40), FL.Methane.make(6), ZL_IS);
+		RM.Fermenter        .addRecipe1(T, 16,   24, ST.tag(0), FL.BiomassIC2.make(40), FL.Methane.make(6), ZL_IS);
 		
 		ItemStack x, y;
 		CR.remove(x = dust.mat(MT.S, 1), x, x, x, ST.make(Items.coal, 1, 0), x, x, x, x);
@@ -675,10 +675,10 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.generify(FL.Oil_Seed                             .make(1), FL.Oil_Plant.make(20));
 		RM.generify(UT.Fluids.make("biomass"                    , 1), UT.Fluids.make("ic2biomass", 1));
 		RM.generify(UT.Fluids.make("ic2biomass"                 , 1), UT.Fluids.make("biomass", 1));
-		RM.generify(UT.Fluids.make("methane"                    , 1), UT.Fluids.make("ic2biogas", 1));
-		RM.generify(UT.Fluids.make("ic2biogas"                  , 1), UT.Fluids.make("methane", 1));
-		RM.generify(UT.Fluids.make("gas_natural_gas"            , 1), UT.Fluids.make("methane", 1));
-		RM.generify(UT.Fluids.make("naturalgas"                 , 1), UT.Fluids.make("methane", 1));
+		RM.generify(FL.Methane                              .make(4), UT.Fluids.make("ic2biogas", 1));
+		RM.generify(UT.Fluids.make("ic2biogas"                  , 1), FL.Methane.make(4));
+		RM.generify(UT.Fluids.make("gas_natural_gas"            , 1), FL.Methane.make(1));
+		RM.generify(UT.Fluids.make("naturalgas"                 , 1), FL.Methane.make(1));
 		RM.generify(UT.Fluids.make("kerosine"                   , 1), UT.Fluids.make("kerosene", 1));
 		RM.generify(UT.Fluids.make("kerosene"                   , 1), UT.Fluids.make("kerosine", 1));
 		RM.generify(UT.Fluids.make("petrol"                     , 1), UT.Fluids.make("gasoline", 1));

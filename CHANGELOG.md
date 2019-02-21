@@ -35,6 +35,7 @@ There is btw a small Block of Text in my Game Plans about how I imagine Worldgen
 [FIXED] Treated Planks Recipe in Bath consuming 0 Creosote, and some other Bugs with that same Recipe.
 [CHANGED] The Filter Blocks can now be Inverted with the Screwdriver.
 [CHANGED] The Recipe for CFoam + Scaffold = IC2 Reinforced Stone is now in the Dryer instead of the Bath.
+[CHANGED] Quandrupled the Fuel Value of Natural Gas and Methane. Note, that I divided the amount of Methane from Biomass in a Fermenter by 4 aswell, same for the Generification of Methane into IC2 Biogas and back.
 [ADDED] Steam Cracking of Propane and Butane into other Materials. Soon going to be needed for making Plastic. Butane is better for Plastics than Propane by the way.
 [ADDED] CFoam Fluid can now be made into Blocks by first foaming it with Air in the Injector and then Drying it in the Dryer.
 [ADDED]

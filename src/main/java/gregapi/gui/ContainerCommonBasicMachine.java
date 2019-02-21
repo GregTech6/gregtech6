@@ -263,8 +263,8 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 		
 		addSlotToContainer(mRecipes.getSpecialSlot(mTileEntity, tIndex++, 80, 43));
 		
-		for (int i = 0; i < mRecipes.mInputFluidCount ; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++,  53 - (i%3)*18, 63 - (i/3)*18).setTooltip("You can extract using a Tap or Nozzle", LH.Chat.WHITE));
-		for (int i = 0; i < mRecipes.mOutputFluidCount; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++, 107 + (i%3)*18, 63 - (i/3)*18).setTooltip("You can extract using a Tap or Nozzle", LH.Chat.WHITE));
+		for (int i = 0; i < mRecipes.mInputFluidCount ; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++,  53 - (i%3)*18, 63 - (i/3)*18).setTooltip("Extract using a Tap or Nozzle", LH.Chat.WHITE));
+		for (int i = 0; i < mRecipes.mOutputFluidCount; i++) addSlotToContainer(new Slot_Render(mTileEntity, tIndex++, 107 + (i%3)*18, 63 - (i/3)*18).setTooltip("Extract using a Tap or Nozzle", LH.Chat.WHITE));
 		
 		return super.addSlots(aPlayerInventory);
 	}
