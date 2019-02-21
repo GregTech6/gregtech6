@@ -164,11 +164,11 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 64, 30, UT.Fluids.make("propane", 5)                       , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
 		FM.Gas          .addRecipe0(T, - 64, 40, UT.Fluids.make("propane", 5)                       , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
 		
-		FM.Burn         .addRecipe0(T, - 64, 21, UT.Fluids.make("ethylene", 7)                      , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));
-		FM.Gas          .addRecipe0(T, - 64, 28, UT.Fluids.make("ethylene", 7)                      , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));
+		FM.Burn         .addRecipe0(T, - 64,  4, UT.Fluids.make("ethylene", 1)                      , FL.DistW.make(1), UT.Fluids.make("carbondioxide", 1));
+		FM.Gas          .addRecipe0(T, - 64,  5, UT.Fluids.make("ethylene", 1)                      , FL.DistW.make(1), UT.Fluids.make("carbondioxide", 1));
 		
-		FM.Burn         .addRecipe0(T, - 64, 15, UT.Fluids.make("propylene", 5)                     , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
-		FM.Gas          .addRecipe0(T, - 64, 20, UT.Fluids.make("propylene", 5)                     , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
+		FM.Burn         .addRecipe0(T, - 64,  3, UT.Fluids.make("propylene", 1)                     , FL.DistW.make(1), UT.Fluids.make("carbondioxide", 1));
+		FM.Gas          .addRecipe0(T, - 64,  4, UT.Fluids.make("propylene", 1)                     , FL.DistW.make(1), UT.Fluids.make("carbondioxide", 1));
 		
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                        , FL.Lava_Pahoehoe.make(1), ZL_IS);
 //      FM.Hot          .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2hotwater", 1)                   , FL.DistW.make(1), ZL_ITEMSTACK);
@@ -182,7 +182,7 @@ public class Loader_Fuels implements Runnable {
 		
 		
 		
-		FM.Magic        .addRecipe0(T, - 16,  2, UT.Fluids.make("mercury", 1));
+		FM.Magic        .addRecipe0(T, - 64, 64, UT.Fluids.make("mercury", 1));
 		
 		
 //      new Recipe(new ItemStack(Items.lava_bucket), new ItemStack(Blocks.obsidian), OM.get(OP.ingot, MT.Copper, 1), OM.get(OP.ingot, MT.Tin, 1), OM.get(OP.ingot, MT.Electrum, 1), 30, 2);

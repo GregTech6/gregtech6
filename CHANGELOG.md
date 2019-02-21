@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.04: (Not released yet)
+6.10.04:
 [NOTE]
 https://juliareda.eu/2019/02/eu-copyright-final-text/
 https://juliareda.eu/2019/02/council-worst-article-13/
