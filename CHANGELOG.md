@@ -22,7 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.05: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] a Generifier Recipe Mess Up regarding generifying IC2 Biogas into Methane and back.
 
 
 6.10.04:
