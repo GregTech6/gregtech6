@@ -60,7 +60,7 @@ import net.minecraftforge.fluids.IFluidTank;
  */
 public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff {
 	protected boolean mStopped = F, mActive = F;
-	protected long mEnergy = 0, mInput = 32, mActiveData = 0;
+	protected long mEnergy = 0, mInput = 32, mActiveData = 0, mNextCheck = 0;
 	protected byte mActiveState = 0, mExplosionPrevention = 0;
 	protected TagData mEnergyType = TD.Energy.RU;
 	protected FluidTankGT mTank = new FluidTankGT(16000);
@@ -106,17 +106,15 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (mTank.getFluid() != null) UT.Fluids.move(mTank, getAdjacentTileEntity(tSide)); else break;
+			for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (!mTank.isEmpty()) UT.Fluids.move(mTank, getAdjacentTileEntity(tSide)); else break;
 			
 			if (mEnergy < 2048 || mStopped) {
 				mActive = F;
 			} else {
 				mActive = T;
-				if (mTank.getFluid() == null) {
+				if (mTank.isEmpty()) {
 					mIgnoreUnloadedChunks = F;
-					if ((mPumpList.isEmpty() && aTimer % 200 == 100) || aTimer % 72000 == 100) {
-						scanForFluid(getOffset(mFacing, 1), getOffsetX(mFacing), getOffsetZ(mFacing));
-					}
+					if (--mNextCheck < 0 || (mPumpList.isEmpty() && aTimer % 200 == 10)) scanForFluid(getOffset(mFacing, 1), getOffsetX(mFacing), getOffsetZ(mFacing));
 					while (!mPumpList.isEmpty() && !drainFluid(mPumpList.removeLast())) {/*Do nothing*/}
 					mIgnoreUnloadedChunks = T;
 				}
@@ -129,6 +127,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	private void scanForFluid(ChunkCoordinates aCoords, int aX, int aZ) {
 		mPumpList = new LinkedList<>();
 		mPumpedFluids.clear();
+		mNextCheck = 1000;
 		
 		int tDir = 0;
 		
@@ -163,6 +162,8 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			}
 			tNeedsToBeChecked = tWillBeCheckedNextTime;
 		}
+		
+		mNextCheck = mPumpList.size() * 200;
 	}
 	
 	private boolean addToList(int aX, int aY, int aZ, List<ChunkCoordinates> aWillBeCheckedNextTime, Set<ChunkCoordinates> aAlreadyChecked) {
@@ -316,6 +317,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyType.AS_LIST;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
+	@Override public void onFacingChange(byte aPreviousFacing) {mNextCheck = 20;}
 	
 	@Override public boolean getStateRunningPossible() {return T;}
 	@Override public boolean getStateRunningPassively() {return mActiveData != 0;}
