@@ -23,7 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.05: (Not released yet)
 [FIXED] a Generifier Recipe Mess Up regarding generifying IC2 Biogas into Methane and back.
-[IMPROVED] Rotational Pump doesn't check for Fluids that often anymore if it is connected to a huge body of Fluid. So the larger the area the less it checks. Also resets the internal Block List whenever it is Rotated with a Wrench.
+[IMPROVED] Rotational Pump doesn't check for Fluids that often anymore if it is connected to a huge body of Fluid. So the larger the area the less it checks. Also resets the internal Block List whenever it is Rotated with a Wrench. And it doesn't iterate over all Blocks within the same Tick, instead it does one iteration step per tick (should be 128 ticks at most in all general cases)
 
 
 6.10.04:

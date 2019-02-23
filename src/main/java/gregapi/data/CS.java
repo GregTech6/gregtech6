@@ -726,6 +726,7 @@ public class CS {
 	/** Zero-Length Array to save on Memory. */ public static final OreDictPrefix           [] ZL_OREDICTPREFIX     = new OreDictPrefix[0];
 	/** Zero-Length Array to save on Memory. */ public static final ObjectStack<?>          [] ZL_OBJECTSTACK       = new ObjectStack[0];
 	/** Zero-Length Array to save on Memory. */ public static final ForgeDirection          [] ZL_FORGEDIRECTION    = new ForgeDirection[0];
+	/** Zero-Length Array to save on Memory. */ public static final ChunkCoordinates        [] ZL_COORDS            = new ChunkCoordinates[0];
 	/** Zero-Length Array to save on Memory. */ public static final Recipe                  [] ZL_RECIPE            = new Recipe[0];
 	/** Zero-Length Array to save on Memory. */ public static final IIconContainer          [] ZL_IICONCONTAINER    = new IIconContainer[0], L6_IICONCONTAINER  = new IIconContainer[6], L1L6_IICONCONTAINER[] = new IIconContainer[][] {L6_IICONCONTAINER};
 	

@@ -25,9 +25,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.FL;
@@ -61,7 +59,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff {
 	protected boolean mStopped = F, mActive = F;
 	protected long mEnergy = 0, mInput = 32, mActiveData = 0, mNextCheck = 0;
-	protected byte mActiveState = 0, mExplosionPrevention = 0;
+	protected byte mActiveState = 0, mExplosionPrevention = 0, mDir = 0;
 	protected TagData mEnergyType = TD.Energy.RU;
 	protected FluidTankGT mTank = new FluidTankGT(16000);
 	
@@ -100,7 +98,9 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
+	public ArrayList<ChunkCoordinates> mCheckList = new ArrayList<>();
 	public LinkedList<ChunkCoordinates> mPumpList = new LinkedList<>();
+	public HashSetNoNulls<ChunkCoordinates> mChecked = new HashSetNoNulls<>();
 	public HashSetNoNulls<Block> mPumpedFluids = new HashSetNoNulls<>();
 	
 	@Override
@@ -112,11 +112,18 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 				mActive = F;
 			} else {
 				mActive = T;
-				if (mTank.isEmpty()) {
-					mIgnoreUnloadedChunks = F;
-					if (--mNextCheck < 0 || (mPumpList.isEmpty() && aTimer % 200 == 10)) scanForFluid(getOffset(mFacing, 1), getOffsetX(mFacing), getOffsetZ(mFacing));
-					while (!mPumpList.isEmpty() && !drainFluid(mPumpList.removeLast())) {/*Do nothing*/}
-					mIgnoreUnloadedChunks = T;
+				if (mCheckList.isEmpty()) {
+					if (--mNextCheck < 0 || (mPumpList.isEmpty() && aTimer % 200 == 10)) {
+						scanForFluid(getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing));
+					} else {
+						if (mTank.isEmpty()) {
+							mIgnoreUnloadedChunks = F;
+							while (!mPumpList.isEmpty() && !drainFluid(mPumpList.removeLast())) {/*Do nothing*/}
+							mIgnoreUnloadedChunks = T;
+						}
+					}
+				} else {
+					scanForFluid(getOffsetX(mFacing), getOffsetZ(mFacing));
 				}
 			}
 			
@@ -124,55 +131,54 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		}
 	}
 	
-	private void scanForFluid(ChunkCoordinates aCoords, int aX, int aZ) {
+	private void scanForFluid(int aX, int aZ) {
+		ChunkCoordinates[] tNeedsToBeChecked = mCheckList.toArray(ZL_COORDS);
+		mCheckList.clear();
+		
+		for (ChunkCoordinates tPos : tNeedsToBeChecked) {
+			if (tPos.posX < aX + 64) addToList(tPos.posX + 1, tPos.posY, tPos.posZ);
+			if (tPos.posX > aX - 64) addToList(tPos.posX - 1, tPos.posY, tPos.posZ);
+			if (tPos.posZ < aZ + 64) addToList(tPos.posX, tPos.posY, tPos.posZ + 1);
+			if (tPos.posZ > aZ - 64) addToList(tPos.posX, tPos.posY, tPos.posZ - 1);
+			if (mDir != 0          ) addToList(tPos.posX, tPos.posY + mDir, tPos.posZ);
+		}
+		
+		mNextCheck = mPumpList.size() * 100;
+	}
+	
+	private void scanForFluid(int aX, int aY, int aZ) {
 		mPumpList = new LinkedList<>();
 		mPumpedFluids.clear();
+		mCheckList.clear();
+		mChecked.clear();
 		mNextCheck = 1000;
-		
-		int tDir = 0;
 		
 		Block aBlock = getBlockAtSide(mFacing);
 		if (aBlock == Blocks.lava || aBlock == Blocks.flowing_lava) {
 			mPumpedFluids.add(Blocks.lava);
 			mPumpedFluids.add(Blocks.flowing_lava);
-			tDir = +1;
+			mDir = +1;
 		} else
 		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water) {
 			mPumpedFluids.add(Blocks.water);
 			mPumpedFluids.add(Blocks.flowing_water);
-			tDir = +1;
+			mDir = +1;
 		} else
 		if (aBlock instanceof IFluidBlock) {
 			mPumpedFluids.add(aBlock);
-			tDir = (((IFluidBlock)aBlock).getFluid().getDensity() < 0 ? -1 : +1);
+			mDir = (byte)(((IFluidBlock)aBlock).getFluid().getDensity() < 0 ? -1 : +1);
 		} else return;
 		
-		List<ChunkCoordinates> tNeedsToBeChecked = new ArrayListNoNulls<>(F, aCoords);
-		Set<ChunkCoordinates> tAlreadyAdded = new HashSetNoNulls<>(F, aCoords);
-		mPumpList.add(aCoords);
-		
-		while (!tNeedsToBeChecked.isEmpty()) {
-			List<ChunkCoordinates> tWillBeCheckedNextTime = new ArrayList<>();
-			for (ChunkCoordinates tPos : tNeedsToBeChecked) {
-				if (tPos.posX < aX + 64) addToList(tPos.posX + 1, tPos.posY, tPos.posZ, tWillBeCheckedNextTime, tAlreadyAdded);
-				if (tPos.posX > aX - 64) addToList(tPos.posX - 1, tPos.posY, tPos.posZ, tWillBeCheckedNextTime, tAlreadyAdded);
-				if (tPos.posZ < aZ + 64) addToList(tPos.posX, tPos.posY, tPos.posZ + 1, tWillBeCheckedNextTime, tAlreadyAdded);
-				if (tPos.posZ > aZ - 64) addToList(tPos.posX, tPos.posY, tPos.posZ - 1, tWillBeCheckedNextTime, tAlreadyAdded);
-				if (tDir != 0) addToList(tPos.posX, tPos.posY + tDir, tPos.posZ, tWillBeCheckedNextTime, tAlreadyAdded);
-			}
-			tNeedsToBeChecked = tWillBeCheckedNextTime;
-		}
-		
-		mNextCheck = mPumpList.size() * 200;
+		addToList(aX, aY, aZ);
 	}
 	
-	private boolean addToList(int aX, int aY, int aZ, List<ChunkCoordinates> aWillBeCheckedNextTime, Set<ChunkCoordinates> aAlreadyChecked) {
+	private boolean addToList(int aX, int aY, int aZ) {
 		ChunkCoordinates tCoordinate = new ChunkCoordinates(aX, aY, aZ);
-		if (aAlreadyChecked.add(tCoordinate)) {
+		if (mChecked.add(tCoordinate)) {
 			Block aBlock = getBlock(aX, aY, aZ);
 			if (mPumpedFluids.contains(aBlock)) {
 				mPumpList.add(tCoordinate);
-				aWillBeCheckedNextTime.add(tCoordinate);
+				mCheckList.add(tCoordinate);
 				return T;
 			}
 		}
@@ -317,7 +323,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyType.AS_LIST;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
-	@Override public void onFacingChange(byte aPreviousFacing) {mNextCheck = 20;}
+	@Override public void onFacingChange(byte aPreviousFacing) {mNextCheck = 20; mChecked.clear(); mCheckList.clear(); mPumpList.clear(); mPumpedFluids.clear();}
 	
 	@Override public boolean getStateRunningPossible() {return T;}
 	@Override public boolean getStateRunningPassively() {return mActiveData != 0;}
