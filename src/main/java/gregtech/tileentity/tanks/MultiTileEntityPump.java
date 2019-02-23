@@ -136,11 +136,11 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		mCheckList.clear();
 		
 		for (ChunkCoordinates tPos : tNeedsToBeChecked) {
+			if (mDir != 0) addToList(tPos.posX, tPos.posY + mDir, tPos.posZ);
 			if (tPos.posX < aX + 64) addToList(tPos.posX + 1, tPos.posY, tPos.posZ);
 			if (tPos.posX > aX - 64) addToList(tPos.posX - 1, tPos.posY, tPos.posZ);
 			if (tPos.posZ < aZ + 64) addToList(tPos.posX, tPos.posY, tPos.posZ + 1);
 			if (tPos.posZ > aZ - 64) addToList(tPos.posX, tPos.posY, tPos.posZ - 1);
-			if (mDir != 0          ) addToList(tPos.posX, tPos.posY + mDir, tPos.posZ);
 		}
 		
 		mNextCheck = mPumpList.size() * 100;
@@ -169,14 +169,15 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			mDir = (byte)(((IFluidBlock)aBlock).getFluid().getDensity() < 0 ? -1 : +1);
 		} else return;
 		
+		if (mDir != 0) while (mPumpedFluids.contains(getBlock(aX, aY + mDir, aZ))) aY += mDir;
+		
 		addToList(aX, aY, aZ);
 	}
 	
 	private boolean addToList(int aX, int aY, int aZ) {
 		ChunkCoordinates tCoordinate = new ChunkCoordinates(aX, aY, aZ);
 		if (mChecked.add(tCoordinate)) {
-			Block aBlock = getBlock(aX, aY, aZ);
-			if (mPumpedFluids.contains(aBlock)) {
+			if (mPumpedFluids.contains(getBlock(aX, aY, aZ))) {
 				mPumpList.add(tCoordinate);
 				mCheckList.add(tCoordinate);
 				return T;
