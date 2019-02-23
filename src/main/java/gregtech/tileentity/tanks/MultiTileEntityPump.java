@@ -120,6 +120,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 							mIgnoreUnloadedChunks = F;
 							while (!mPumpList.isEmpty() && !drainFluid(mPumpList.removeLast())) {/*Do nothing*/}
 							mIgnoreUnloadedChunks = T;
+							if (mPumpList.isEmpty()) mNextCheck = 10;
 						}
 					}
 				} else {
@@ -136,23 +137,30 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		mCheckList.clear();
 		
 		for (ChunkCoordinates tPos : tNeedsToBeChecked) {
-			if (mDir != 0) addToList(tPos.posX, tPos.posY + mDir, tPos.posZ);
+			if (mDir != 0 && mPumpedFluids.contains(getBlock(tPos.posX, tPos.posY + mDir, tPos.posZ))) {
+				mPumpList = new LinkedList<>();
+				mCheckList.clear();
+				mChecked.clear();
+				mNextCheck = 1000;
+				addToList(tPos.posX, tPos.posY + mDir, tPos.posZ);
+				return;
+			}
 			if (tPos.posX < aX + 64) addToList(tPos.posX + 1, tPos.posY, tPos.posZ);
 			if (tPos.posX > aX - 64) addToList(tPos.posX - 1, tPos.posY, tPos.posZ);
 			if (tPos.posZ < aZ + 64) addToList(tPos.posX, tPos.posY, tPos.posZ + 1);
 			if (tPos.posZ > aZ - 64) addToList(tPos.posX, tPos.posY, tPos.posZ - 1);
 		}
 		
-		mNextCheck = mPumpList.size() * 100;
+		mNextCheck = mPumpList.size() * 256;
 	}
 	
 	private void scanForFluid(int aX, int aY, int aZ) {
 		mPumpList = new LinkedList<>();
-		mPumpedFluids.clear();
 		mCheckList.clear();
 		mChecked.clear();
 		mNextCheck = 1000;
 		
+		mPumpedFluids.clear();
 		Block aBlock = getBlockAtSide(mFacing);
 		if (aBlock == Blocks.lava || aBlock == Blocks.flowing_lava) {
 			mPumpedFluids.add(Blocks.lava);
@@ -168,8 +176,6 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			mPumpedFluids.add(aBlock);
 			mDir = (byte)(((IFluidBlock)aBlock).getFluid().getDensity() < 0 ? -1 : +1);
 		} else return;
-		
-		if (mDir != 0) while (mPumpedFluids.contains(getBlock(aX, aY + mDir, aZ))) aY += mDir;
 		
 		addToList(aX, aY, aZ);
 	}
@@ -302,8 +308,8 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			if (aDoInject) overload(aSize, aEnergyType);
 			return aAmount;
 		}
-		if (mEnergy >= 4096) return 0;
-		long tInput = Math.min(4096 - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
+		if (mEnergy >= 8192) return 0;
+		long tInput = Math.min(8192 - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
 		if (aDoInject) mEnergy += tConsumed * aSize;
 		return tConsumed;
 	}
