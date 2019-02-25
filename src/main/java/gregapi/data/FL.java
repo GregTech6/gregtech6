@@ -335,7 +335,6 @@ public enum FL {
 	, Oil_Creosote              ("creosote"                                                 , SIMPLE, LIQUID, BATH)
 	, Oil_Soulsand              ("soulsandoil"                                              , SIMPLE, LIQUID)
 	, Oil_Normal                ("oil"                      , "oilgc"                       , SIMPLE, LIQUID)
-	, Oil_Fuel                  ("fuel"                     , "fuelgc"                      , SIMPLE, LIQUID)
 	, Oil_Light                 ("liquid_light_oil"                                         , SIMPLE, LIQUID)
 	, Oil_Medium                ("liquid_medium_oil"                                        , SIMPLE, LIQUID)
 	, Oil_Heavy                 ("liquid_heavy_oil"                                         , SIMPLE, LIQUID)
@@ -354,6 +353,10 @@ public enum FL {
 	, Diesel                    ("diesel"                                                   , SIMPLE, LIQUID)
 	, Kerosine                  ("kerosine"                 , "kerosene"                    , SIMPLE, LIQUID)
 	, LPG                       ("lpg"                                                      , LIQUID)
+	
+	, BioFuel                   ("biofuel"                                                  , SIMPLE, LIQUID)
+	, BioDiesel                 ("biodiesel"                                                , SIMPLE, LIQUID)
+	, BioEthanol                ("bioethanol"                                               , SIMPLE, LIQUID)
 	
 	, Glue                      ("glue"                                                     , SIMPLE, LIQUID)
 	, Latex                     ("latex"                    , "molten.latex"                , SIMPLE, LIQUID)

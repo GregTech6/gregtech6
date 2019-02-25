@@ -116,11 +116,11 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 16,  9, UT.Fluids.make("bioethanol", 1)                    , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 16, 12, UT.Fluids.make("bioethanol", 1)                    , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		
-		if (UT.Fluids.exists("biodiesel")) {
+		if (FL.BioDiesel.exists()) {
 		FM.Burn         .addRecipe0(T, - 16,  9, UT.Fluids.make("biodiesel", 1)                     , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 16, 12, UT.Fluids.make("biodiesel", 1)                     , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		}
-		if (UT.Fluids.exists("biofuel")) {
+		if (FL.BioFuel.exists()) {
 		FM.Burn         .addRecipe0(T, - 64,  9, UT.Fluids.make("biofuel", 1)                       , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64, 12, UT.Fluids.make("biofuel", 1)                       , UT.Fluids.make("carbondioxide", 1), ZL_IS);
 		}

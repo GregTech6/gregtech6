@@ -152,13 +152,13 @@ public class MultiTileEntityDistillationTower extends TileEntityBase10MultiBlock
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+7, getOffsetZN(mFacing, 3), mFacing, F);
 				} else if (UT.Fluids.is(tFluid, "butane")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+6, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "petrol", "gasoline")) {
+				} else if (UT.Fluids.is(tFluid, "petrol", "gasoline", "bioethanol")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+5, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "kerosene", "kerosine")) {
+				} else if (UT.Fluids.is(tFluid, "kerosene", "kerosine", "glycerol")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+4, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "diesel")) {
+				} else if (UT.Fluids.is(tFluid, "diesel", "biodiesel")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+3, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "fuel", "fueloil")) {
+				} else if (UT.Fluids.is(tFluid, "fuel", "fueloil", "biofuel")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+2, getOffsetZN(mFacing, 3), mFacing, F);
 				} else {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+1, getOffsetZN(mFacing, 3), mFacing, F);

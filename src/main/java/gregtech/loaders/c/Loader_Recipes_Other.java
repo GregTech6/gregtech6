@@ -156,12 +156,6 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		//----------------------------------------------------------------------------
 		
-		
-		RM.Distillery   .addRecipe1(T, 16,   24, ST.tag(0)              , FL.Biomass        .make(  40), UT.Fluids.make("bioethanol"    ,    12), FL.DistW.make(20));
-		RM.Distillery   .addRecipe1(T, 16,   24, ST.tag(0)              , FL.BiomassIC2     .make(  40), UT.Fluids.make("bioethanol"    ,    12), FL.DistW.make(20));
-		RM.Distillery   .addRecipe1(T, 16,   24, ST.tag(1)              , FL.Biomass        .make(  40), MT.Glycerol            .liquid (U50, F), FL.DistW.make(20));
-		RM.Distillery   .addRecipe1(T, 16,   24, ST.tag(1)              , FL.BiomassIC2     .make(  40), MT.Glycerol            .liquid (U50, F), FL.DistW.make(20));
-		
 		if (FL.Resin        .exists()) RM.Distillery.addRecipe1(T,T,F,F,F, 16, 16, ST.tag(0), FL.Resin          .make(10), UT.Fluids.make("turpentine", 6), FL.DistW.make(3));
 		if (FL.Resin_Spruce .exists()) RM.Distillery.addRecipe1(T,T,F,F,F, 16, 16, ST.tag(0), FL.Resin_Spruce   .make(10), UT.Fluids.make("turpentine", 6), FL.DistW.make(3));
 		
@@ -331,9 +325,6 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Pink));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Umber, MT.Kimberlite})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Brown));
-		
-		RM.Fermenter        .addRecipe1(T, 16,   24, ST.tag(0), FL.Biomass   .make(40), FL.Methane.make(6), ZL_IS);
-		RM.Fermenter        .addRecipe1(T, 16,   24, ST.tag(0), FL.BiomassIC2.make(40), FL.Methane.make(6), ZL_IS);
 		
 		ItemStack x, y;
 		CR.remove(x = dust.mat(MT.S, 1), x, x, x, ST.make(Items.coal, 1, 0), x, x, x, x);

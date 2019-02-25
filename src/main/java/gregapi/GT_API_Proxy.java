@@ -561,11 +561,15 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								EntityPlayer tPlayer = (EntityPlayer)aEvent.player.worldObj.playerEntities.get(i);
 								if (tPlayer == null) continue;
 								if ("Bear989Sr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									switch(tEmptySlots) {
-									case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You are full of shit, Bear!!!")); break;
-									case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Your Inventory is almost full, Bear!!")); break;
-									case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You should clean up your Inventory, Bear!")); break;
-									case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bear, your Inventory starts to get full.")); break;
+									if (tPlayer.posY < 20) {
+										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Stop making Holes in the Ground, Bear!"));
+									} else {
+										switch(tEmptySlots) {
+										case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You are full of shit, Bear!!!")); break;
+										case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Your Inventory is almost full, Bear!!")); break;
+										case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You should clean up your Inventory, Bear!")); break;
+										case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bear, your Inventory starts to get full.")); break;
+										}
 									}
 								} else if ("Bear989jr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, UT.NBT.addEnchantment(ST.make(Items.cookie, 1, 0, "Jr. Cookie"), Enchantment_WerewolfDamage.INSTANCE, 1), F);

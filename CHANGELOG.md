@@ -28,7 +28,10 @@ Rotational Pump doesn't check for Fluids that often anymore if it is connected t
 So the larger the area the less it checks.
 Also resets the internal Block List whenever it is Rotated with a Wrench.
 And it doesn't iterate over all Blocks within the same Tick, instead it does one iteration step per tick.
-It also does one Y-Level at a time, reducing Lag from scanning too huge amoutns of Fluid at once.
+It also does one Y-Level at a time, reducing Lag from scanning too huge amounts of Fluid at once, which for some reason lagged exponentially before.
+I did test it at the bottom of a Deep Ocean and it worked fine there, so I am pretty sure this Fix worked.
+[ADDED] Catalytic Cracking for Petrol and Fuel
+[ADDED] Distillation Tower Recipe for Biomass
 
 
 6.10.04:
