@@ -35,6 +35,7 @@ import gregapi.wooddict.BeamEntry;
 import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 public class Loader_Recipes_Woods implements Runnable {
@@ -77,6 +78,15 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,   32, ST.make(BlocksGT.Planks                            , 1, i), FL.Potion_FireResistance_1L.make(50), NF, ST.make(BlocksGT.PlanksFireProof                             , 1, i));
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0] , 1, i), FL.Potion_FireResistance_1L.make(25), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0]  , 1, i));
 		}
+		
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves, 1, 0), NF, FL.Latex.make(L/72), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves, 1, 8), NF, FL.Latex.make(L/72), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 0), NF, FL.Latex.make(L/4), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 8), NF, FL.Latex.make(L/4), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, OM.dust(MT.WoodRubber), NF, FL.Latex.make(L/9), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(Blocks.log, 1, 1), NF, FL.Resin_Spruce.make(50, FL.Resin), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.LogA, 1, 1), NF, FL.Sap_Maple.make(50), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.LogB, 1, 3), NF, FL.Sap_Rainbow.make(50), OM.dust(MT.Wood));
 		
 		if (IL.RC_Tie_Wood.exists()) {
 			if (IL.IE_Treated_Slab.exists())

@@ -576,25 +576,14 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Press        .addRecipeX(T, 16,  192, new ItemStack[] {IL.Shape_Press_Bullet_Casing_Large    .get(0), OP.dust        .mat(MT.Gunpowder, 1), OP.plateTiny.mat(MT.Brass, 9)}, OP.bulletGtLarge.mat(MT.Empty, 3));
 		
 		
-		
 		for (byte i = 0; i < 16; i++) {
 		RM.Drying       .addRecipe0(T, 16,   40, UT.Fluids.mul(DYE_FLUIDS_WATER [i], 1, 6, T), FL.DistW.make(20), dustTiny.mat(MT.DATA.Dye_Materials[i], 1));
 		RM.Drying       .addRecipe0(T, 16,   20, UT.Fluids.mul(DYE_FLUIDS_FLOWER[i], 1, 6, T), FL.DistW.make(10), dustTiny.mat(MT.DATA.Dye_Materials[i], 1));
 		}
 		
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves, 1, 0), NF, FL.Latex.make(L/72), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves, 1, 8), NF, FL.Latex.make(L/72), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 0), NF, FL.Latex.make(L/4), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 8), NF, FL.Latex.make(L/4), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, OM.dust(MT.WoodRubber), NF, FL.Latex.make(L/9), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(Blocks.log, 1, 1), NF, FL.Resin_Spruce.make(50, FL.Resin), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.LogA, 1, 1), NF, FL.Sap_Maple.make(50), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.LogB, 1, 3), NF, FL.Sap_Rainbow.make(50), OM.dust(MT.Wood));
-		
 		RM.Centrifuge   .addRecipe0(T, 64,   16, MT.FishOil.liquid( U2, T), MT.Hg.liquid(U144, F), ZL_IS);
-		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.Air         .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T));
-		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.Air_Nether  .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.SO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T));
-		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.Air_End     .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.He.gas(U500 , T), MT.Ne.gas(U500 , T), MT.Ar.gas(U500 , T));
+		
+		RM.Coagulator   .addRecipe0(T,  0,  256, FL.Latex.make(L/9), NF, nugget.mat(MT.Rubber, 1));
 		
 		for (FluidStack tFluid : new FluidStack[] {MT.He.gas(U, T), MT.Ne.gas(U, T), MT.Ar.gas(U, T), MT.Kr.gas(U, T), MT.Xe.gas(U, T), MT.Rn.gas(U, T)}) if (tFluid != null) {
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Si              , U9), new FluidStack[] {              tFluid    , MT.Si            .liquid(35* U9, T)}, NF, bouleGt.mat(MT.Si              , 1));
@@ -606,6 +595,7 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.NikolineAlloy       ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.NikolineAlloy .liquid(35*U  , T)}, NF, bouleGt.mat(MT.NikolineAlloy   , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.TeslatineAlloy      ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.TeslatineAlloy.liquid(35*U  , T)}, NF, bouleGt.mat(MT.TeslatineAlloy  , 9));
 		}
+		
 		
 		for (int i = 0; i < 16; i++)
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(10), OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4), IL.Rope.get(1));
@@ -628,10 +618,6 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		RM.CokeOven     .addRecipe1(T,  0,  3600, dust                      .mat(MT.Oilshale, 1), NF, MT.Oil        .liquid(  U40, F), dustTiny .mat(MT.Asphalt, 1));
 		RM.CokeOven     .addRecipe1(T,  0, 32400, blockDust                 .mat(MT.Oilshale, 1), NF, MT.Oil        .liquid(9*U40, F), dust     .mat(MT.Asphalt, 1));
-		
-		
-		
-		RM.Coagulator   .addRecipe0(T,  0,  256, FL.Latex.make(L/9), NF, nugget.mat(MT.Rubber, 1));
 		
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mNeutrons+tMaterial.mProtons > 0 && tMaterial.contains(TD.Atomic.ELEMENT) && !tMaterial.contains(TD.Atomic.ANTIMATTER)) {

@@ -22,16 +22,20 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.05: (Not released yet)
+[NOTE]
+Thank Speiger for me not spending Wednesday with Modding like I wanted, by reminding me of the existence of every damn Twitter Post about Article 11, 12 and 13.
+I always try to stay away from drama whenever possible, and it's already enough for me to check https://juliareda.eu every time I check my frikkin E-mail (which is like 30 times a day or so), I don't want to obsessively go through the backlog of hourly updates, thank you very much...
+That said, apparently Article 12 is just terrible as well, though it's more related to Publishers stealing even more money and rights from their Artists, and less related to the Internet itself.
+Now we need to wait for the final vote near the end of March, so that's gonna be a bit more than 4 weeks of anxiety...
 [FIXED] a Generifier Recipe Mess Up regarding generifying IC2 Biogas into Methane and back.
 [IMPROVED]
 Rotational Pump doesn't check for Fluids that often anymore if it is connected to a huge body of Fluid.
-So the larger the area the less it checks.
 Also resets the internal Block List whenever it is Rotated with a Wrench.
 And it doesn't iterate over all Blocks within the same Tick, instead it does one iteration step per tick.
 It also does one Y-Level at a time, reducing Lag from scanning too huge amounts of Fluid at once, which for some reason lagged exponentially before.
 I did test it at the bottom of a Deep Ocean and it worked fine there, so I am pretty sure this Fix worked.
 [ADDED] Catalytic Cracking for Petrol and Fuel.
-[ADDED] Distillation Tower Recipe for Biomass.
+[ADDED] Distillation Tower Recipe for Biomass. The Distillery itself is better for pure Ethanol Output, while the Distillaton Tower is better for allround Output.
 [ADDED]
 Recipes to turn Ethylene and Propylene into Plastic.
 I will not split up Polyethylene and Polypropylene into two different Materials, that just doesn't make any Gameplay sense with as little use as Plastic has.

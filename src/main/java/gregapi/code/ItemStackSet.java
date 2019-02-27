@@ -28,6 +28,8 @@ import java.util.Iterator;
 
 import gregapi.GT_API;
 import gregapi.util.ST;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -84,17 +86,21 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 	public boolean contains(Object aObject) {
 		return map.containsKey(aObject);
 	}
-	
 	public boolean contains(ItemStack aObject, boolean aWildCard) {
 		return map.containsKey(new ItemStackContainer(aObject)) || (aWildCard && map.containsKey(new ItemStackContainer(aObject         , W)));
 	}
-	
 	public boolean contains(ItemStackContainer aObject, boolean aWildCard) {
 		return map.containsKey(                       aObject ) || (aWildCard && map.containsKey(new ItemStackContainer(aObject.mItem, 1, W)));
 	}
 	
 	public boolean add(ItemStack aStack) {
 		return ST.valid(aStack) && map.put(new ItemStackContainer(aStack), OBJECT) == null;
+	}
+	public boolean add(Block aBlock) {
+		return aBlock != null && map.put(new ItemStackContainer(aBlock, 1, W), OBJECT) == null;
+	}
+	public boolean add(Item aItem) {
+		return aItem != null && map.put(new ItemStackContainer(aItem, 1, W), OBJECT) == null;
 	}
 	
 	@Override

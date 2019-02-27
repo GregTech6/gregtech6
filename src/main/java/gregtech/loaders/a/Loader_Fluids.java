@@ -585,22 +585,24 @@ public class Loader_Fluids implements Runnable {
 			}
 		}
 		
-		FL.Air.fluid().setDensity(0);
+		FL.Air       .fluid().setDensity(0);
+		FL.Air_Nether.fluid().setDensity(0);
+		FL.Air_End   .fluid().setDensity(0);
 		
 		if (IL.Cell_Air.exists()) {
 			FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Air.make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), T));
-			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air           .make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
-			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air_Nether    .make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
-			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air_End       .make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
+			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air       .make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
+			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air_Nether.make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
+			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air_End   .make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
 		}
 		
-		if (IL.FR_Ambrosia              .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Ambrosia         .make(1000), IL.FR_Ambrosia             .get(1), IL.FR_WaxCapsule.get(1), T));
-		if (IL.GrC_Honey_Jar            .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Honey            .make(1000), IL.GrC_Honey_Jar           .get(1), ST.make(Items.flower_pot, 1, 0)));
-		if (IL.BoP_Jar_Honey            .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Honey            .make( 500), IL.BoP_Jar_Honey           .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1))));
-		if (IL.BoP_Jar_Poison           .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Potion_Poison_2  .make( 500), IL.BoP_Jar_Poison          .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1))));
-		if (IL.TF_Vial_FieryTears       .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.FieryTears       .make(   L), IL.TF_Vial_FieryTears      .get(1), IL.Bottle_Empty.get(1)));
-		if (IL.TF_Vial_FieryBlood       .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.FieryBlood       .make(   L), IL.TF_Vial_FieryBlood      .get(1), IL.Bottle_Empty.get(1)));
-		if (IL.BOTA_Ender_Air_Bottle    .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Air_End          .make(1000), IL.BOTA_Ender_Air_Bottle   .get(1), IL.Bottle_Empty.get(1)));
+		if (IL.FR_Ambrosia          .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Ambrosia       .make(1000), IL.FR_Ambrosia          .get(1), IL.FR_WaxCapsule.get(1), T));
+		if (IL.GrC_Honey_Jar        .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Honey          .make(1000), IL.GrC_Honey_Jar        .get(1), ST.make(Items.flower_pot, 1, 0)));
+		if (IL.BoP_Jar_Honey        .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Honey          .make( 500), IL.BoP_Jar_Honey        .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1))));
+		if (IL.BoP_Jar_Poison       .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Potion_Poison_2.make( 500), IL.BoP_Jar_Poison       .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1))));
+		if (IL.TF_Vial_FieryTears   .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.FieryTears     .make(   L), IL.TF_Vial_FieryTears   .get(1), IL.Bottle_Empty.get(1)));
+		if (IL.TF_Vial_FieryBlood   .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.FieryBlood     .make(   L), IL.TF_Vial_FieryBlood   .get(1), IL.Bottle_Empty.get(1)));
+		if (IL.BOTA_Ender_Air_Bottle.exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Air_End        .make(1000), IL.BOTA_Ender_Air_Bottle.get(1), IL.Bottle_Empty.get(1)));
 		
 		/*
 		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison              .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
