@@ -1673,7 +1673,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.snow_layer, 1, W)                    , MT.Snow               ,     -1);
 		OM.data(ST.make(Blocks.redstone_lamp, 1, W)                 , ANY.Glowstone         ,  U * 4, MT.Redstone, U * 4);
 		OM.data(ST.make(Blocks.lit_redstone_lamp, 1, W)             , ANY.Glowstone         ,  U * 4, MT.Redstone, U * 4);
-		OM.data(ST.make(Items.bone                      , 1, W)     , MT.Bone               ,  U * 4);
+		OM.data(ST.make(Items.bone                      , 1, W)     , MT.Bone               ,  U * 2);
 		OM.data(ST.make(Items.clay_ball                 , 1, W)     , MT.Clay               ,  U * 1);
 		OM.data(ST.make(Blocks.clay                     , 1, W)     , MT.Clay               ,  U * 4);
 		OM.data(ST.make(Blocks.hardened_clay            , 1, W)     , MT.Ceramic            ,  U * 4);

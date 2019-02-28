@@ -469,7 +469,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.cobblestone, 1, W), OM.dust(MT.Stone));
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Blocks.stone, 1, W), OM.dust(MT.Stone));
 		RM.Shredder     .addRecipe1(T, 16, 32, IL.Module_Stone_Generator.get(0), OM.dust(MT.Stone));
-		RM.Shredder     .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(3));
+		RM.Shredder     .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(4));
 		RM.Shredder     .addRecipe1(T, 16, 32, ST.make(Items.blaze_rod, 1, W), ST.make(Items.blaze_powder, 4, 0));
 		RM.Shredder     .addRecipe1(T, 16,128,  6000, ST.make(Blocks.melon_block, 1, W), IL.Remains_Fruit.get(9));
 		
