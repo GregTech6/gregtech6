@@ -522,6 +522,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.asbestos"          , T,  20,  40,   8, MT.Asbestos                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		new WorldgenOresSmall("ore.small.eudialyte"         , T,  20,  40,   4, MT.Eudialyte                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM);
 		new WorldgenOresSmall("ore.small.azurite"           , T,  20,  40,   4, MT.Azurite                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM);
+		new WorldgenOresSmall("ore.small.zeolite"           , T,   1, 250,   1, MT.OREMATS.Zeolite              , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT);
 		new WorldgenOresSmall("ore.small.lapis"             , T,  20,  40,   4, MT.Lapis                        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER);
 		new WorldgenOresSmall("ore.small.redstone"          , T,   5,  20,   8, MT.Redstone                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_NETHER);
 		new WorldgenOresSmall("ore.small.graphite"          , T,   5,  10,   2, MT.Graphite                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_ASTEROIDS, GEN_NETHER);

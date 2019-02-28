@@ -34,11 +34,10 @@ Also resets the internal Block List whenever it is Rotated with a Wrench.
 And it doesn't iterate over all Blocks within the same Tick, instead it does one iteration step per tick.
 It also does one Y-Level at a time, reducing Lag from scanning too huge amounts of Fluid at once, which for some reason lagged exponentially before.
 I did test it at the bottom of a Deep Ocean and it worked fine there, so I am pretty sure this Fix worked.
+[CHANGED] Quad Compartment Drawers are now different for Automation accessing them. The Left two Drawers are for example only available on the Left, the Top two Drawers only from Top, etc. Front and Back both have all 4 Drawers accessible. This makes it a bit easier to space Machines closer to each other.
 [ADDED] Catalytic Cracking for Petrol and Fuel.
 [ADDED] Distillation Tower Recipe for Biomass. The Distillery itself is better for pure Ethanol Output, while the Distillaton Tower is better for allround Output.
-[ADDED]
-Recipes to turn Ethylene and Propylene into Plastic.
-I will not split up Polyethylene and Polypropylene into two different Materials, that just doesn't make any Gameplay sense with as little use as Plastic has.
+[ADDED] Recipes to turn Ethylene and Propylene into Plastic. I will not split up Polyethylene and Polypropylene into two different Materials, that just doesn't make any Gameplay sense with as little use as Plastic has.
 
 
 6.10.04:
