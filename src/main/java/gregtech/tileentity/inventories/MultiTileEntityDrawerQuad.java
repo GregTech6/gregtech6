@@ -27,6 +27,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
+import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.gui.ContainerClientDefault;
 import gregapi.gui.ContainerCommonDefault;
 import gregapi.old.Textures;
@@ -41,7 +43,9 @@ import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -51,6 +55,20 @@ import net.minecraft.tileentity.TileEntity;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, IMTE_GetSubItems {
+	public boolean mSidedAccess = F;
+	
+	@Override
+	public void readFromNBT2(NBTTagCompound aNBT) {
+		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_MODE)) mSidedAccess = aNBT.getBoolean(NBT_MODE);
+	}
+	
+	@Override
+	public void writeToNBT2(NBTTagCompound aNBT) {
+		super.writeToNBT2(aNBT);
+		UT.NBT.setBoolean(aNBT, NBT_MODE, mSidedAccess);
+	}
+	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
@@ -61,10 +79,27 @@ public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle impl
 	}
 	
 	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_INPUTS_MONKEY_WRENCH));
+		super.addToolTips(aList, aStack, aF3_H);
+	}
+	
+	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aSide != mFacing) return F;
 		float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
 		return openGUI(aPlayer, (tCoords[0] > 0.5 ? 1 : 0) | (tCoords[1] > 0.5 ? 2 : 0));
+	}
+	
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (isClientSide()) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (aTool.equals(TOOL_monkeywrench)) {
+			mSidedAccess = !mSidedAccess;
+			if (aChatReturn != null) aChatReturn.add("Automation-Access: " + (mSidedAccess?"Sided":"Anywhere"));
+			return 10000;
+		}
+		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -83,7 +118,7 @@ public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle impl
 	
 	@Override public boolean canDrop(int aSlot) {return T;}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[144];}
-	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return SLOTS[FACING_ROTATIONS[mFacing][aSide]];}
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return SLOTS[mSidedAccess ? FACING_ROTATIONS[mFacing][aSide] : SIDE_ANY];}
 	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return T;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
 	
