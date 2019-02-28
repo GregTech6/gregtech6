@@ -21,7 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.05: (Not released yet)
+6.10.05:
 [NOTE]
 Thank Speiger for me not spending Wednesday with Modding like I wanted, by reminding me of the existence of every damn Twitter Post about Article 11, 12 and 13.
 I always try to stay away from drama whenever possible, and it's already enough for me to check https://juliareda.eu every time I check my frikkin E-mail (which is like 30 times a day or so), I don't want to obsessively go through the backlog of hourly updates, thank you very much...
