@@ -88,7 +88,7 @@ public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle impl
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aSide != mFacing) return F;
 		float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
-		return openGUI(aPlayer, (tCoords[0] > 0.5 ? 1 : 0) | (tCoords[1] > 0.5 ? 2 : 0));
+		return isClientSide() || openGUI(aPlayer, (tCoords[0] > 0.5 ? 1 : 0) | (tCoords[1] > 0.5 ? 2 : 0));
 	}
 	
 	@Override
