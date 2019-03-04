@@ -40,6 +40,7 @@ import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class LoaderWoodDictionary implements Runnable {
 	@Override
@@ -65,12 +66,12 @@ public class LoaderWoodDictionary implements Runnable {
 		
 		
 		// Vanilla Trees
-		OM.reg(OD.plankWood, ST.make(Blocks.planks, 1, 0));
-		OM.reg(OD.plankWood, ST.make(Blocks.planks, 1, 1));
-		OM.reg(OD.plankWood, ST.make(Blocks.planks, 1, 2));
-		OM.reg(OD.plankWood, ST.make(Blocks.planks, 1, 3));
-		OM.reg(OD.plankWood, ST.make(Blocks.planks, 1, 4));
-		OM.reg(OD.plankWood, ST.make(Blocks.planks, 1, 5));
+		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 0));
+		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 1));
+		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 2));
+		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 3));
+		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 4));
+		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 5));
 		new SaplingEntry(ST.make(Blocks.sapling, 1, 0), new WoodEntry(ST.make(Blocks.log    , 1, 0), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 0), new PlankEntry(ST.make(Blocks.planks, 1, 0), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs     , 1, 0),  0))), ST.make(Blocks.leaves   , 1, 0));
 		new SaplingEntry(ST.make(Blocks.sapling, 1, 1), new WoodEntry(ST.make(Blocks.log    , 1, 1), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 1), new PlankEntry(ST.make(Blocks.planks, 1, 1), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs  , 1, 0),  1))), ST.make(Blocks.leaves   , 1, 1));
 		new SaplingEntry(ST.make(Blocks.sapling, 1, 2), new WoodEntry(ST.make(Blocks.log    , 1, 2), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 2), new PlankEntry(ST.make(Blocks.planks, 1, 2), ST.make(Blocks.wooden_slab, 1, 2), ST.make(Blocks.birch_stairs   , 1, 0),  2))), ST.make(Blocks.leaves   , 1, 2));
@@ -549,12 +550,12 @@ public class LoaderWoodDictionary implements Runnable {
 		}
 		// Chisel Planks
 		if (MD.CHSL.mLoaded) {
-			OM.reg(OD.plankWood, ST.make(MD.CHSL, "oak_planks"        , 1, W));
-			OM.reg(OD.plankWood, ST.make(MD.CHSL, "spruce_planks"     , 1, W));
-			OM.reg(OD.plankWood, ST.make(MD.CHSL, "birch_planks"      , 1, W));
-			OM.reg(OD.plankWood, ST.make(MD.CHSL, "jungle_planks"     , 1, W));
-			OM.reg(OD.plankWood, ST.make(MD.CHSL, "acacia_planks"     , 1, W));
-			OM.reg(OD.plankWood, ST.make(MD.CHSL, "dark_oak_planks"   , 1, W));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "oak_planks"        , 1, W));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "spruce_planks"     , 1, W));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "birch_planks"      , 1, W));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "jungle_planks"     , 1, W));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "acacia_planks"     , 1, W));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "dark_oak_planks"   , 1, W));
 			
 			new PlankEntry(ST.make(MD.CHSL, "oak_planks"        , 1, W), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs       , 1, 0));
 			new PlankEntry(ST.make(MD.CHSL, "spruce_planks"     , 1, W), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs    , 1, 0));

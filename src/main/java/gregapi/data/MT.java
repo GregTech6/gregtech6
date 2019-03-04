@@ -176,8 +176,9 @@ public class MT {
 		String tPlank = "plank"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.addAutoBlackListing(tPlank);
 		OreDictManager.INSTANCE.addReRegistration(tPlank, OD.plankAnyWood);
+		if ("Wood".equalsIgnoreCase(rMaterial.mNameInternal)) return rMaterial;
+		OreDictManager.INSTANCE.setAutomaticItemData(tPlank, new OreDictItemData(rMaterial, U));
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plate"+rMaterial.mNameInternal, tPlank);
-		if (!"Wood".equalsIgnoreCase(rMaterial.mNameInternal)) OreDictManager.INSTANCE.setAutomaticItemData(tPlank, new OreDictItemData(rMaterial, U));
 		return rMaterial;
 	}
 	
