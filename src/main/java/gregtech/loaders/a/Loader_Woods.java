@@ -86,12 +86,12 @@ public class Loader_Woods implements Runnable {
 		
 		for (int i = 0; i < 16; i++) {
 			if (i != 10) {
-				OM.reg(ST.make(BlocksGT.Planks          , 1, i), "plankWood");
-				OM.reg(ST.make(BlocksGT.PlanksFireProof , 1, i), "plankWood");
+				OM.reg(ST.make(BlocksGT.Planks          , 1, i), OD.plankWood);
+				OM.reg(ST.make(BlocksGT.PlanksFireProof , 1, i), OD.plankWood);
 			}
 			for (byte tSide : ALL_SIDES_VALID) {
-				OM.reg(ST.make(((BlockMetaType)BlocksGT.Planks          ).mSlabs[tSide], 1, i), "slabWood");
-				OM.reg(ST.make(((BlockMetaType)BlocksGT.PlanksFireProof ).mSlabs[tSide], 1, i), "slabWood");
+				OM.reg(ST.make(((BlockMetaType)BlocksGT.Planks          ).mSlabs[tSide], 1, i), OD.slabWood);
+				OM.reg(ST.make(((BlockMetaType)BlocksGT.PlanksFireProof ).mSlabs[tSide], 1, i), OD.slabWood);
 			}
 		}
 		
