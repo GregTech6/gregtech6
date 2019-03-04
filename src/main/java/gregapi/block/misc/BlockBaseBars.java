@@ -84,27 +84,28 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override
 	public boolean onItemUseFirst(ItemBlockBase aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aStack.stackSize == 0 || aWorld.isRemote) return F;
-		if (!aPlayer.isSneaking()) for (int i = 0; i < 2; i++) {
-			if (i == 1) {aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];}
-			if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
-			Block aBlock = WD.block(aWorld, aX, aY, aZ);
-			byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
-			if (aBlock == this) {
-				byte tMeta = (byte)(FACE_CONNECTION_COUNT[aMeta] == 3 ? 15-aMeta : aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
-				if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
-				if ((aMeta & tMeta) != 0 && SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SBIT[aSide] >> 2);
-				if ((aMeta & tMeta) == 0 && tMeta != 0) {
-					if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
-						aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
-						if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
+		if (!aPlayer.isSneaking()) {
+			for (int i = 0; i < 2; i++) {
+				if (i == 1) {aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];}
+				if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
+				Block aBlock = WD.block(aWorld, aX, aY, aZ);
+				byte  aMeta  = WD.meta (aWorld, aX, aY, aZ);
+				if (aBlock == this) {
+					byte tMeta = (byte)(FACE_CONNECTION_COUNT[aMeta] == 3 ? 15-aMeta : aHitX < aHitZ ? aHitX + aHitZ < 1 ? 4 : 2 : aHitX + aHitZ < 1 ? 1 : 8);
+					if ((aMeta & tMeta) != 0 || SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SIDES_AXIS_X[aSide] ? aHitZ < 0.5 ? 1 : 2 : aHitX < 0.5 ? 4 : 8);
+					if ((aMeta & tMeta) != 0 && SIDES_HORIZONTAL[aSide]) tMeta = (byte)(SBIT[aSide] >> 2);
+					if ((aMeta & tMeta) == 0 && tMeta != 0) {
+						if (WD.set(aWorld, aX, aY, aZ, this, aMeta | tMeta, 3)) {
+							aWorld.playSoundEffect(aX+0.5F, aY+0.5F, aZ+0.5F, stepSound.func_150496_b(), (stepSound.getVolume() + 1.0F) / 2.0F, stepSound.getPitch() * 0.8F);
+							if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
+						}
+						return T;
 					}
-					return T;
+					if (aMeta != 15) return F;
 				}
-				if (aMeta != 15) return F;
 			}
+			aX -= OFFSETS_X[aSide]; aY -= OFFSETS_Y[aSide]; aZ -= OFFSETS_Z[aSide];
 		}
-		
-		aX -= OFFSETS_X[aSide]; aY -= OFFSETS_Y[aSide]; aZ -= OFFSETS_Z[aSide];
 		
 		Block aBlock = WD.block(aWorld, aX, aY, aZ);
 		

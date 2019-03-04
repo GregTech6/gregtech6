@@ -1,6 +1,18 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.13: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.12: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.11: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.10.10: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
