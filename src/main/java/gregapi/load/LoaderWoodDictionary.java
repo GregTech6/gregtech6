@@ -550,12 +550,14 @@ public class LoaderWoodDictionary implements Runnable {
 		}
 		// Chisel Planks
 		if (MD.CHSL.mLoaded) {
-			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "oak_planks"        , 1, W));
-			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "spruce_planks"     , 1, W));
-			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "birch_planks"      , 1, W));
-			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "jungle_planks"     , 1, W));
-			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "acacia_planks"     , 1, W));
-			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "dark_oak_planks"   , 1, W));
+			for (int i = 1; i < 16; i++) {
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "oak_planks"        , 1, i));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "spruce_planks"     , 1, i));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "birch_planks"      , 1, i));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "jungle_planks"     , 1, i));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "acacia_planks"     , 1, i));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "dark_oak_planks"   , 1, i));
+			}
 			
 			new PlankEntry(ST.make(MD.CHSL, "oak_planks"        , 1, W), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs       , 1, 0));
 			new PlankEntry(ST.make(MD.CHSL, "spruce_planks"     , 1, W), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs    , 1, 0));

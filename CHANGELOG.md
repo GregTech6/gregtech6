@@ -30,7 +30,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.06: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Issue where the Bars Block somehow glitched Blocks away by being placed inside them instead of on them. That was a nice Bedrock Remover. XD
+[FIXED] Wooden Plank OreDict Issue when IC2-Exp is installed and removing "plankWood" Entries fro mthe OreDict for Blocks that have been registered using the Wildcard, such as Vanilla Wooden Planks.
 
 
 6.10.05:
