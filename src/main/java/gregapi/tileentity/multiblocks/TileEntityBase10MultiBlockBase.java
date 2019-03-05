@@ -155,7 +155,10 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 	@Override
 	public boolean checkStructure(boolean aForceReset) {
 		if (isClientSide()) return mStructureOkay;
-		if (mStructureChanged || aForceReset) mStructureOkay = checkStructure2();
+		if ((mStructureChanged || aForceReset) && mStructureOkay != checkStructure2()) {
+			mStructureOkay = !mStructureOkay;
+			updateClientData();
+		}
 		mStructureChanged = F;
 		return mStructureOkay;
 	}
@@ -166,6 +169,8 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 	}
 	
 	@Override public void onFacingChange(byte aPreviousFacing) {onStructureChange();}
+	@Override public final byte getDirectionData() {return (byte)((mFacing & 7) | (mStructureOkay ? 8 : 0));}
+	@Override public final void setDirectionData(byte aData) {mFacing = (byte)(aData & 7); mStructureOkay = ((aData & 8) != 0);}
 	
 	@Override public boolean doDefaultStructuralChecks() {return T;}
 	@Override public boolean canDrop(int aSlot) {return T;}

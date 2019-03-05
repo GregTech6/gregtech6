@@ -161,10 +161,10 @@ public class MultiTileEntityLargeTurbineSteam extends TileEntityBase11MultiBlock
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		switch(mFacing) {
-		case SIDE_X_NEG: case SIDE_X_POS: return box(aBlock,  0   , -0.99, -0.99,  1   ,  1.99,  1.99);
-		case SIDE_Y_NEG: case SIDE_Y_POS: return box(aBlock, -0.99,  0   , -0.99,  1.99,  1   ,  1.99);
-		case SIDE_Z_NEG: case SIDE_Z_POS: return box(aBlock, -0.99, -0.99,  0   ,  1.99,  1.99,  1   );
+		if (mStructureOkay) switch(mFacing) {
+		case SIDE_X_NEG: case SIDE_X_POS: return box(aBlock, -0.01, -0.99, -0.99,  1.01,  1.99,  1.99);
+		case SIDE_Y_NEG: case SIDE_Y_POS: return box(aBlock, -0.99, -0.01, -0.99,  1.99,  1.01,  1.99);
+		case SIDE_Z_NEG: case SIDE_Z_POS: return box(aBlock, -0.99, -0.99, -0.01,  1.99,  1.99,  1.01);
 		}
 		return F;
 	}
