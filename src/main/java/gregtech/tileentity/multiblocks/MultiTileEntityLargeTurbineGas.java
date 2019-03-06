@@ -85,7 +85,14 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	
 	@Override
 	public void doConversion(long aTimer) {
-		if (mStorage.mEnergy >= mConverter.mEnergyIN.mMax) mStorage.mEnergy = 0;
+		if (mStorage.mEnergy >= mConverter.mEnergyIN.mMax) {
+			// hacking my own code, lol
+			long tEnergy = mStorage.mEnergy;
+			mStorage.mEnergy = mConverter.mEnergyIN.mMax;
+			super.doConversion(aTimer);
+			mStorage.mEnergy = tEnergy - mConverter.mEnergyIN.mMax;
+			return;
+		}
 		if (!mInputTank.isEmpty() && !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf())) {
 			Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, mEnergyIN.mMax, NI, mInputTank.AS_ARRAY, ZL_IS);
 			if (tRecipe != null) {
@@ -99,10 +106,14 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 								mStorage.mEnergy = 0;
 							}
 						}
+						super.doConversion(aTimer);
+						return;
 					}
 				}
 			}
 		}
+		mStorage.mEnergy -= mConverter.mEnergyIN.mMax;
+		if (mStorage.mEnergy < 0) mStorage.mEnergy = 0;
 		super.doConversion(aTimer);
 	}
 	
