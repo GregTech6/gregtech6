@@ -86,16 +86,24 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	@Override
 	public void doConversion(long aTimer) {
 		mStopped = F; // TODO
+		DEB.println("======");
+		DEB.println("TEST A: " + (mStorage.mEnergy < mConverter.mEnergyIN.mMax) + ", " + !mInputTank.isEmpty() + ", " + !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf()));
 		if (mStorage.mEnergy < mConverter.mEnergyIN.mMax && !mInputTank.isEmpty() && !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf())) {
+			DEB.println("TEST B");
 			Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, mEnergyIN.mMax, NI, mInputTank.AS_ARRAY, ZL_IS);
 			if (tRecipe != null) {
+				DEB.println("TEST C: " + tRecipe.mEUt + " HU/t, " + tRecipe.mDuration + " ticks");
 				mLastRecipe = tRecipe;
 				if (tRecipe.mEUt < 0 && tRecipe.mDuration > 0) {
 					int tParallel = tRecipe.isRecipeInputEqual(UT.Code.bindInt(UT.Code.divup(mEnergyIN.mMax - mStorage.mEnergy, -tRecipe.mEUt * tRecipe.mDuration)), mInputTank.AS_ARRAY, ZL_IS);
+					DEB.println("TEST D: " + tParallel);
 					if (tParallel > 0) {
+						DEB.println("TEST E: " + (tParallel * tRecipe.mEUt * tRecipe.mDuration));
 						mStorage.mEnergy -= tParallel * tRecipe.mEUt * tRecipe.mDuration;
 						for (int i = 0; i < tRecipe.mFluidOutputs.length && i < mTanksOutput.length; i++) {
+							DEB.println("TEST F:" + i);
 							if (!mTanksOutput[i].fillAll(tRecipe.mFluidOutputs[i], tParallel)) {
+								DEB.println("TEST G");
 								mStorage.mEnergy = 0;
 								mStopped = T;
 							}
@@ -104,11 +112,12 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 				}
 			}
 		}
-		mStopped = T; // TODO
+		DEB.println("======");
+		mStopped = F; // TODO
 		super.doConversion(aTimer);
 	}
 	
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return mInputTank;} // TODO return !mStopped && mRecipes.containsInput(aFluidToFill, this, NI) ? mInputTank : null;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return /* TODO !mStopped && */mRecipes.containsInput(aFluidToFill, this, NI) ? mInputTank : null;}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
 	
 	@Override
