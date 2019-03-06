@@ -129,6 +129,31 @@ public class FluidTankGT implements IFluidTank {
 		return F;
 	}
 	
+	public boolean fillAll(FluidStack aFluid, int aMultiplier) {
+		if (aMultiplier <= 0) return T;
+		if (aMultiplier == 1) return fillAll(aFluid);
+		if (aFluid == null || aFluid.amount <= 0) return T;
+		if (mFluid == null) {
+			if (aFluid.amount * aMultiplier <= mCapacity || mVoidExcess) {
+				mFluid = aFluid.copy();
+				mFluid.amount *= aMultiplier;
+				return T;
+			}
+			return F;
+		}
+		if (mFluid.isFluidEqual(aFluid)) {
+			if (mFluid.amount + aFluid.amount * aMultiplier <= mCapacity) {
+				mFluid.amount += aFluid.amount * aMultiplier;
+				return T;
+			}
+			if (mVoidExcess) {
+				mFluid.amount = (int)mCapacity;
+				return T;
+			}
+		}
+		return F;
+	}
+	
 	public FluidTankGT setEmpty() {mFluid = NF; return this;}
 	public FluidTankGT setFluid(FluidStack aFluid) {mFluid = aFluid; return this;}
 	public FluidTankGT setCapacity(long aCapacity) {mCapacity = UT.Code.bindInt(aCapacity); return this;}
@@ -138,7 +163,8 @@ public class FluidTankGT implements IFluidTank {
 	public FluidTankGT setVoidExcess(boolean aVoidExcess) {mVoidExcess = aVoidExcess; return this;}
 	
 	public boolean isEmpty() {return mFluid == null;}
-	public boolean isFull() {return mFluid != null && mFluid.amount >= mCapacity;}
+	public boolean isFull() {return mFluid != null && mFluid.amount     >= mCapacity;}
+	public boolean isHalf() {return mFluid != null && mFluid.amount * 2 >= mCapacity;}
 	
 	@Override public FluidStack getFluid() {return mFluid;}
 	@Override public int getFluidAmount() {return mFluid == null ? 0 : mFluid.amount;}

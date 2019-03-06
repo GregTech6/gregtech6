@@ -23,42 +23,33 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import gregapi.code.TagData;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
-import gregapi.tileentity.ITileEntityUnloadable;
-import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
-import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
-import gregapi.tileentity.multiblocks.TileEntityBase11MultiBlockConverter;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityLargeTurbineSteam extends TileEntityBase11MultiBlockConverter implements IMultiBlockFluidHandler, IFluidHandler, ITileEntitySwitchableOnOff {
+public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbine {
 	public FluidTankGT[] mTanks = new FluidTankGT[] {new FluidTankGT(Integer.MAX_VALUE), new FluidTankGT(Integer.MAX_VALUE)};
 	public long mSteamCounter = 0, mEnergyProducedNextTick = 0; 
-	public short mTurbineWalls = 18022;
 	public static final int STEAM_PER_WATER = 170;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		if (aNBT.hasKey(NBT_DESIGN)) mTurbineWalls = aNBT.getShort(NBT_DESIGN);
 		if (aNBT.hasKey(NBT_ENERGY_SU)) mSteamCounter = aNBT.getLong(NBT_ENERGY_SU);
 		if (aNBT.hasKey(NBT_OUTPUT_SU)) mEnergyProducedNextTick = aNBT.getLong(NBT_OUTPUT_SU);
-		
+
 		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
 		mTanks[0].setCapacity((int)UT.Code.bind_(1, Integer.MAX_VALUE, mEnergyIN.mMax*4));
 		mTanks[1].setCapacity((int)UT.Code.bind_(1, Integer.MAX_VALUE, mEnergyIN.mMax)).setVoidExcess();
@@ -104,17 +95,6 @@ public class MultiTileEntityLargeTurbineSteam extends TileEntityBase11MultiBlock
 			return tSuccess;
 		}
 		return mStructureOkay;
-	}
-	
-	@Override
-	public boolean isInsideStructure(int aX, int aY, int aZ) {
-		return
-		aX >= xCoord-(SIDE_X_NEG==mFacing?0:SIDE_X_POS==mFacing?3:1) &&
-		aY >= yCoord-(SIDE_Y_NEG==mFacing?0:SIDE_Y_POS==mFacing?3:1) &&
-		aZ >= zCoord-(SIDE_Z_NEG==mFacing?0:SIDE_Z_POS==mFacing?3:1) &&
-		aX <= xCoord+(SIDE_X_POS==mFacing?0:SIDE_X_NEG==mFacing?3:1) &&
-		aY <= yCoord+(SIDE_Y_POS==mFacing?0:SIDE_Y_NEG==mFacing?3:1) &&
-		aZ <= zCoord+(SIDE_Z_POS==mFacing?0:SIDE_Z_NEG==mFacing?3:1);
 	}
 	
 	static {
@@ -169,27 +149,9 @@ public class MultiTileEntityLargeTurbineSteam extends TileEntityBase11MultiBlock
 		return F;
 	}
 	
-	public ITileEntityUnloadable mEmitter = null;
-	
-	@Override public TileEntity getEmittingTileEntity() {if (mEmitter == null || mEmitter.isDead()) {mEmitter = null; TileEntity tTileEntity = getTileEntityAtSideAndDistance(OPPOSITES[mFacing], 3); if (tTileEntity instanceof ITileEntityUnloadable) mEmitter = (ITileEntityUnloadable)tTileEntity;} return mEmitter == null ? this : (TileEntity)mEmitter;}
-	@Override public byte getEmittingSide() {return OPPOSITES[mFacing];}
-	@Override public boolean isInput (byte aSide) {return aSide == mFacing;}
-	@Override public boolean isOutput(byte aSide) {return aSide == OPPOSITES[mFacing];}
-	
-	@Override public byte getDefaultSide() {return SIDE_FRONT;}
-	@Override public boolean[] getValidSides() {return SIDES_VALID;}
-	
-	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return !mStopped && UT.Fluids.steam(aFluidToFill) ? mTanks[0] : null;}
-	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTanks[1];}
-	@Override protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return mTanks;}
 	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return !mStopped && UT.Fluids.steam(aFluidToFill) ? mTanks[0] : null;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return mTanks[1];}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
-	
-	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting && mEnergyOUT.isType(aEnergyType);}
-	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return F;}
-	
-	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.turbine.steam";}
 }
