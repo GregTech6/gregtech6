@@ -71,10 +71,10 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.gasblock.gasturbine.1"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.gasblock.gasturbine.2"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.gasblock.gasturbine.3"));
-		aList.add(Chat.ORANGE   + LH.get("gt.tooltip.gasblock.gasturbine.4"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.gasturbine.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.gasturbine.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.gasturbine.3"));
+		aList.add(Chat.ORANGE   + LH.get("gt.tooltip.multiblock.gasturbine.4"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -85,7 +85,8 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	
 	@Override
 	public void doConversion(long aTimer) {
-		if (!mInputTank.isEmpty() && !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf())) {
+		mStopped = F; // TODO
+		if (mStorage.mEnergy < mConverter.mEnergyIN.mMax && !mInputTank.isEmpty() && !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf())) {
 			Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, mEnergyIN.mMax, NI, mInputTank.AS_ARRAY, ZL_IS);
 			if (tRecipe != null) {
 				mLastRecipe = tRecipe;
@@ -103,16 +104,17 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 				}
 			}
 		}
+		mStopped = T; // TODO
 		super.doConversion(aTimer);
 	}
 	
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return !mStopped && mRecipes.containsInput(aFluidToFill, this, NI) ? mInputTank : null;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return mInputTank;} // TODO return !mStopped && mRecipes.containsInput(aFluidToFill, this, NI) ? mInputTank : null;}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
 	
 	@Override
 	protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
 		if (aFluidToDrain == null) {
-			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].getFluidAmount() != 0) return mTanksOutput[i];
+			for (int i = 0; i < mTanksOutput.length; i++) if (!mTanksOutput[i].isEmpty()) return mTanksOutput[i];
 		} else {
 			for (int i = 0; i < mTanksOutput.length; i++) if (UT.Fluids.equal(aFluidToDrain, mTanksOutput[i].getFluid(), F)) return mTanksOutput[i];
 		}

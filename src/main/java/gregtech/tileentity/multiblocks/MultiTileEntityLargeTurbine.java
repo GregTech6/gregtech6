@@ -87,6 +87,11 @@ public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiB
 	}
 	
 	@Override
+	public boolean allowCovers(byte aSide) {
+		return aSide != mFacing;
+	}
+	
+	@Override
 	public boolean isInsideStructure(int aX, int aY, int aZ) {
 		return
 		aX >= xCoord-(SIDE_X_NEG==mFacing?0:SIDE_X_POS==mFacing?3:1) &&
@@ -109,7 +114,7 @@ public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiB
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(aSide == mFacing && mActivity.mState > 0 ? mTextureActive : (aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3])) : null;
+		return aShouldSideBeRendered[aSide] || aSide == mFacing ? BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(aSide == mFacing && mActivity.mState > 0 ? mTextureActive : (aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3])) : null;
 	}
 	
 	public ITileEntityUnloadable mEmitter = null;

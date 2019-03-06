@@ -30,7 +30,6 @@ import gregapi.fluid.FluidTankGT;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.util.UT;
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
@@ -137,16 +136,6 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 			}
 		}
 		super.doConversion(aTimer);
-	}
-	
-	@Override
-	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		if (mStructureOkay) switch(mFacing) {
-		case SIDE_X_NEG: case SIDE_X_POS: return box(aBlock, -0.01, -0.99, -0.99,  1.01,  1.99,  1.99);
-		case SIDE_Y_NEG: case SIDE_Y_POS: return box(aBlock, -0.99, -0.01, -0.99,  1.99,  1.01,  1.99);
-		case SIDE_Z_NEG: case SIDE_Z_POS: return box(aBlock, -0.99, -0.99, -0.01,  1.99,  1.99,  1.01);
-		}
-		return F;
 	}
 	
 	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return !mStopped && UT.Fluids.steam(aFluidToFill) ? mTanks[0] : null;}
