@@ -1018,6 +1018,7 @@ public class CS {
 	, NBT_OPAQUE                    = "gt.opaque"                   // Boolean
 	, NBT_TRANSPARENT               = "gt.transparent"              // Boolean
 	, NBT_WASTE_ENERGY              = "gt.wasteenergy"              // Boolean
+	, NBT_LIMIT_CONSUMPTION         = "gt.limit.consumption"        // Boolean
 	, NBT_NEEDS_IGNITION            = "gt.needignite"               // Boolean
 	, NBT_USE_OUTPUT_TANK           = "gt.useouttank"               // Boolean
 	, NBT_FOAMED                    = "gt.foamed"                   // Boolean

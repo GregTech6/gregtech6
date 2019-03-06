@@ -34,7 +34,7 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 	public long mMultiplier = 1;
 	public byte mFactor = 1;
 	
-	public TE_Behavior_Energy_Converter(TileEntity aTileEntity, NBTTagCompound aNBT, TE_Behavior_Energy_Capacitor aStorage, TE_Behavior_Energy_Stats aEnergyIN, TE_Behavior_Energy_Stats aEnergyOUT, long aMultiplier, boolean aWasteEnergy, boolean aNegativeOutput) {
+	public TE_Behavior_Energy_Converter(TileEntity aTileEntity, NBTTagCompound aNBT, TE_Behavior_Energy_Capacitor aStorage, TE_Behavior_Energy_Stats aEnergyIN, TE_Behavior_Energy_Stats aEnergyOUT, long aMultiplier, boolean aWasteEnergy, boolean aNegativeOutput, boolean aLimitConsumption) {
 		super(aTileEntity, aNBT);
 		mStorage = aStorage;
 		mEnergyIN = aEnergyIN;
@@ -42,7 +42,7 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 		mMultiplier = aMultiplier;
 		mWasteEnergy = aWasteEnergy;
 		mSizeIrrelevant = TD.Energy.ALL_SIZE_IRRELEVANT.contains(mEnergyOUT.mType);
-		mLimitConsumption = TD.Energy.ALL_COMSUMPTION_LIMITED.contains(mEnergyIN.mType);
+		mLimitConsumption = aLimitConsumption;
 		if (aNegativeOutput) mFactor = -1;
 	}
 	

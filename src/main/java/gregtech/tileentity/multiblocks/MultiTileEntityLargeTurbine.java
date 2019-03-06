@@ -44,7 +44,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiBlockConverter implements IMultiBlockFluidHandler, IFluidHandler, ITileEntitySwitchableOnOff {
 	public short mTurbineWalls = 18022;
 	
-	public IIconContainer mTextureActive = new Textures.BlockIcons.CustomIcon("machines/multiblockmains/turbine_active");
+	public static final IIconContainer mTextureActive = new Textures.BlockIcons.CustomIcon("machines/multiblockmains/turbine_active");
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -114,7 +114,7 @@ public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiB
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aShouldSideBeRendered[aSide] || aSide == mFacing ? BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(aSide == mFacing && mActivity.mState > 0 ? mTextureActive : (aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3])) : null;
+		return aShouldSideBeRendered[aSide] || aSide == mFacing ? BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(aSide == mFacing && (mActivity.mActive || mActivity.mState > 0) ? mTextureActive : (aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3])) : null;
 	}
 	
 	public ITileEntityUnloadable mEmitter = null;

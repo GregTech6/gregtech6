@@ -75,7 +75,7 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	}
 	
 	public void readEnergyConverter(NBTTagCompound aNBT) {
-		mConverter  = new TE_Behavior_Energy_Converter  (this, aNBT, mStorage, mEnergyIN, mEnergyOUT, aNBT.hasKey(NBT_MULTIPLIER) ? aNBT.getLong(NBT_MULTIPLIER) : 1, aNBT.getBoolean(NBT_WASTE_ENERGY), F);
+		mConverter  = new TE_Behavior_Energy_Converter  (this, aNBT, mStorage, mEnergyIN, mEnergyOUT, aNBT.hasKey(NBT_MULTIPLIER) ? aNBT.getLong(NBT_MULTIPLIER) : 1, aNBT.getBoolean(NBT_WASTE_ENERGY), F, aNBT.hasKey(NBT_LIMIT_CONSUMPTION) ? aNBT.getBoolean(NBT_LIMIT_CONSUMPTION) : TD.Energy.ALL_COMSUMPTION_LIMITED.contains(mEnergyIN.mType));
 	}
 	
 	public void writeEnergyBehavior(NBTTagCompound aNBT) {
