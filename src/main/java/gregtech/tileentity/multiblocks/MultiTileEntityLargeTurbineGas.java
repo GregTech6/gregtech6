@@ -85,7 +85,8 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 	
 	@Override
 	public void doConversion(long aTimer) {
-		if (mStorage.mEnergy < mConverter.mEnergyIN.mMax && !mInputTank.isEmpty() && !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf())) {
+		if (mStorage.mEnergy >= mConverter.mEnergyIN.mMax) mStorage.mEnergy = 0;
+		if (!mInputTank.isEmpty() && !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf())) {
 			Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, mEnergyIN.mMax, NI, mInputTank.AS_ARRAY, ZL_IS);
 			if (tRecipe != null) {
 				mLastRecipe = tRecipe;

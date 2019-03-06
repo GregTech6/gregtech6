@@ -32,7 +32,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.10.06: (Not released yet)
 [FIXED] Issue where the Bars Block somehow glitched Blocks away by being placed inside them instead of on them. That was a nice Bedrock Remover. XD
 [FIXED] Wooden Plank OreDict Issue when IC2-Exp is installed and removing "plankWood" Entries fro mthe OreDict for Blocks that have been registered using the Wildcard, such as Vanilla Wooden Planks.
-[FIXED] Front Texture of the Steam Turbine. Now it's a full 3x3 Texture. But only when the Multiblock is fully formed.
+[FIXED] Front Texture of the Multiblock Turbines. Now it's a full 3x3 Texture. But only when the Multiblock is fully formed.
+[ADDED]
+Gas Turbine Multiblock.
+It turns Gaseous Fuels into Rotational Energy with 66.66% Efficiency, so it works just as well as a Boiler and a Steam Turbine, but only for specific Gasses ofcourse.
+But in addition to that, the Fuel is usually slightly more potent when used in a Gas Turbine, than when used in a Burning Box, so it works better overall while being cheaper too.
+The Structure of the Multiblock is identical to the Steam Turbine, in fact you can upgrade the Steam Turbine Controller to be a Gas Turbine Controller with a few additional Items.
 
 
 6.10.05:
