@@ -93,7 +93,7 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 			mStorage.mEnergy = tEnergy - mConverter.mEnergyIN.mMax;
 			return;
 		}
-		if (!mInputTank.isEmpty() && !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf())) {
+		if (!mStopped && !mInputTank.isEmpty() && !(mTanksOutput[0].isHalf() || mTanksOutput[1].isHalf() || mTanksOutput[2].isHalf())) {
 			Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, mEnergyIN.mMax, NI, mInputTank.AS_ARRAY, ZL_IS);
 			if (tRecipe != null) {
 				mLastRecipe = tRecipe;

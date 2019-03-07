@@ -124,7 +124,7 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 		if (mEnergyProducedNextTick > 0) {
 			mStorage.mEnergy += mEnergyProducedNextTick;
 			mEnergyProducedNextTick = 0;
-		} else if (mTanks[0].getFluidAmount() >= UT.Code.bindInt(getEnergySizeInputMin(mEnergyIN.mType, SIDE_ANY)) * 2) {
+		} else if (!mStopped && mTanks[0].getFluidAmount() >= UT.Code.bindInt(getEnergySizeInputMin(mEnergyIN.mType, SIDE_ANY)) * 2) {
 			int tSteam = mTanks[0].getFluidAmount();
 			mSteamCounter += tSteam;
 			mStorage.mEnergy += tSteam / 2;

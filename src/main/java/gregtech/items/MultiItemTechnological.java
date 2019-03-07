@@ -79,7 +79,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Controller.set(                addItem(tLastID =  1025, "Cover Controller"                 , "Turns Redstone into ON/OFF State for Covers"     , new CoverControllerCovers()                                , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
 		IL.Cover_Shutter.set(                   addItem(tLastID =  1026, "Shutter Cover"                    , "Connects and Disconnects Pipes"                  , new CoverShutter()                                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Cover_Button_Selector.set(           addItem(tLastID =  1027, "Button Panel Selector"            , "Selector Cover that is controlled by Buttons"    , new CoverSelectorButtonPanel()                             , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Warning.set(                   addItem(tLastID =  1028, "Warning Cover"                    , "Warns about certain Types of Danger"             , new CoverTextureMulti(T, "machines/covers/warning/", 18)   , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 1), TC.stack(TC.VINCULUM, 1)));
+		IL.Cover_Warning.set(                   addItem(tLastID =  1028, "Warning Cover"                    , "Warns about certain Types of Danger"             , new CoverTextureMulti(T, "machines/covers/warning/", 19)   , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 1), TC.stack(TC.VINCULUM, 1)));
 		
 		CR.shaped(IL.Cover_Blank                    .get(1), CR.DEF_REV, "Sh" , "Pd"        , 'P', OP.plate.dat(MT.Al), 'S', OP.screw.dat(MT.Al));
 		CR.shaped(IL.Cover_Crafting                 .get(1), CR.DEF_REV,  "C" ,  "Q"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench);
