@@ -48,8 +48,8 @@ public class CoverScaleEnergy extends AbstractCoverAttachmentScale {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return sTextureForeground;}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, sTextureForeground);}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, sTextureForeground);}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	
-	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/energyredstone/base"), sTextureForeground = BlockTextureDefault.get("machines/covers/energyredstone/circuit");
+	public static final ITexture sTextureForeground = BlockTextureDefault.get("machines/covers/energyredstone/circuit");
 }

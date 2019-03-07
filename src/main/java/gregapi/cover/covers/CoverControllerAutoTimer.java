@@ -33,17 +33,16 @@ import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
  */
 public class CoverControllerAutoTimer extends AbstractCoverAttachmentController {
 	public final int mTime;
-	public final ITexture mTextureBackground, mTextureForeground;
+	public final ITexture mTextureForeground;
 	
 	public CoverControllerAutoTimer(int aTime) {
 		mTime = Math.max(11, aTime);
-		mTextureBackground = BlockTextureDefault.get("machines/covers/autotimerswitch/"+mTime+"/base");
 		mTextureForeground = BlockTextureDefault.get("machines/covers/autotimerswitch/"+mTime+"/circuit");
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return mTextureForeground;}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? mTextureBackground : BlockTextureMulti.get(mTextureBackground, mTextureForeground);}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return mTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, mTextureForeground);}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	
 	@Override
 	public void onTickPre(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {

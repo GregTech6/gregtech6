@@ -83,8 +83,8 @@ public class CoverControllerDisplay extends AbstractCoverAttachmentController {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {short tVisuals = aData.mVisuals[aSide], tStyle = (short)((tVisuals >>> 10) % sTexturesBase.length); return BlockTextureMulti.get(sTexturesBase[tStyle], (tVisuals & B[5]) != 0 ? sTextures[tStyle][(tVisuals & B[0]) != 0 ? 1 : 0] : null, (tVisuals & B[6]) != 0 ? sTextures[tStyle][(tVisuals & B[1]) != 0 ? 3 : 2] : null, (tVisuals & B[7]) != 0 ? sTextures[tStyle][(tVisuals & B[2]) != 0 ? 5 : 4] : null, (tVisuals & B[8]) != 0 ? sTextures[tStyle][(tVisuals & B[3]) != 0 ? 7 : 6] : null, (tVisuals & B[9]) != 0 ? sTextures[tStyle][(tVisuals & B[4]) != 0 ? 9 : 8] : null);}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, getCoverTextureSurface(aSide, aData));}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
 	@Override public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {super.addToolTips(aList, aStack, aF3_H); aList.add(LH.get(LH.TOOL_TO_CHANGE_DESIGN_CHISEL));}
 	
@@ -116,8 +116,6 @@ public class CoverControllerDisplay extends AbstractCoverAttachmentController {
 		BlockTextureDefault.get("machines/covers/statusdisplay/bottom/base"),
 		BlockTextureDefault.get("machines/covers/statusdisplay/top/base")
 	};
-	
-	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/statusdisplay/base");
 	
 	@Override
 	public boolean getStateOnOff(byte aSide, CoverData aData) {

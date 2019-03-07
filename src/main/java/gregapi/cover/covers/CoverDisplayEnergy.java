@@ -46,8 +46,8 @@ public class CoverDisplayEnergy extends AbstractCoverAttachmentDisplay {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase, sTextures[(int)UT.Code.bind_(0, 10, aData.mVisuals[aSide])]);}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, getCoverTextureSurface(aSide, aData));}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	
 	public static final ITexture[] sTextures = new ITexture[] {
@@ -65,5 +65,4 @@ public class CoverDisplayEnergy extends AbstractCoverAttachmentDisplay {
 	};
 	
 	public static final ITexture sTexturesBase = BlockTextureDefault.get("machines/covers/energydisplay/underlay");
-	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/energydisplay/base");
 }

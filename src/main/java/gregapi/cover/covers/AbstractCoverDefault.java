@@ -28,6 +28,7 @@ import gregapi.cover.ICover;
 import gregapi.cover.ITileEntityCoverable;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
+import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -103,4 +104,6 @@ public abstract class AbstractCoverDefault implements ICover {
 	@Override public IFluidTank getFluidTankFillable(byte aCoverSide, CoverData aData, byte aSide, FluidStack aFluidToFill, IFluidTank aDefault) {return aDefault;}
 	@Override public IFluidTank getFluidTankDrainable(byte aCoverSide, CoverData aData, byte aSide, FluidStack aFluidToDrain, IFluidTank aDefault) {return aDefault;}
 	@Override public IFluidTank[] getFluidTanks(byte aCoverSide, CoverData aData, byte aSide, IFluidTank[] aDefault) {return aDefault;}
+	
+	public static final ITexture BACKGROUND_COVER = BlockTextureDefault.get("machines/covers/base");
 }

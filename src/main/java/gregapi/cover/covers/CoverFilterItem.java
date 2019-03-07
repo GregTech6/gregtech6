@@ -112,13 +112,12 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aCoverSide, CoverData aData) {return aData.mVisuals[aCoverSide]==0?sTextureNormal:sTextureInverted;}
-	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return ALONG_AXIS[aCoverSide][aTextureSide] ? BlockTextureMulti.get(sTextureBase, aData.mVisuals[aCoverSide]==0?sTextureNormal:sTextureInverted) : sTextureBase;}
-	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return sTextureBase;}
+	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return ALONG_AXIS[aCoverSide][aTextureSide] ? BlockTextureMulti.get(BACKGROUND_COVER, aData.mVisuals[aCoverSide]==0?sTextureNormal:sTextureInverted) : BACKGROUND_COVER;}
+	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	@Override public boolean needsVisualsSaved(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	
 	public static final ITexture
-	sTextureBase = BlockTextureDefault.get("machines/covers/filteritem/base"),
 	sTextureInverted = BlockTextureDefault.get("machines/covers/filteritem/inverted"),
 	sTextureNormal = BlockTextureDefault.get("machines/covers/filteritem/normal");
 }

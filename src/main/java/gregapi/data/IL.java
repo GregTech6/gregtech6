@@ -360,6 +360,7 @@ public enum IL implements IItemContainer {
 	Fuel_Can_Plastic_Empty, Fuel_Can_Plastic_Filled,
 	Upgrade_Battery, Upgrade_Overclocker, Upgrade_Muffler, Upgrade_Lock,
 	Cover_Blank,
+	Cover_Warning,
 	Cover_Crafting,
 	Cover_Auto_Switch, Cover_Redstone_Switch, Cover_Auto_Switch_Redstone, Cover_Auto_Switch_01_Minute, Cover_Auto_Switch_05_Minute, Cover_Auto_Switch_10_Minute, Cover_Auto_Switch_20_Minute, Cover_Auto_Switch_30_Minute,
 	Cover_Redstone_Selector, Cover_Manual_Selector, Cover_Button_Selector,

@@ -52,8 +52,8 @@ public class CoverSelectorTag extends AbstractCoverAttachmentSelector {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase, sTextures[mMode]);}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, getCoverTextureSurface(aSide, aData));}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	
 	public static final ITexture[] sTextures = new ITexture[] {
 		  BlockTextureDefault.get("machines/covers/selectortag/0", T)
@@ -75,5 +75,4 @@ public class CoverSelectorTag extends AbstractCoverAttachmentSelector {
 	};
 	
 	public static final ITexture sTexturesBase = BlockTextureDefault.get("machines/covers/selectortag/underlay");
-	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/selectortag/base");
 }

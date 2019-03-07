@@ -83,8 +83,8 @@ public class CoverSelectorManual extends AbstractCoverAttachmentSelector {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase, sTextures[UT.Code.bind4(aData.mVisuals[aSide])]);}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, getCoverTextureSurface(aSide, aData));}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
 	
 	public static final ITexture[] sTextures = new ITexture[] {
@@ -107,5 +107,4 @@ public class CoverSelectorManual extends AbstractCoverAttachmentSelector {
 	};
 	
 	public static final ITexture sTexturesBase = BlockTextureDefault.get("machines/covers/manualselector/underlay");
-	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/manualselector/base");
 }

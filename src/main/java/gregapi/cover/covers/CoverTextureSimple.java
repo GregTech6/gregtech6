@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import gregapi.cover.CoverData;
 import gregapi.cover.ITileEntityCoverable;
 import gregapi.data.CS.SFX;
+import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
@@ -44,8 +45,11 @@ public class CoverTextureSimple extends AbstractCoverDefault {
 		mSound = aSound;
 	}
 	
+	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return mTexture;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, getCoverTextureSurface(aSide, aData));}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
+	
 	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), mSound == null ? SFX.GT_SCREWDRIVER : mSound, 1.0F, 1.0F, aData.mTileEntity.getCoords());}
 	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), mSound == null ? SFX.MC_BREAK : mSound, 1.0F, -1.0F, aTileEntity.getCoords());}
-	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return mTexture;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return F;}
 }

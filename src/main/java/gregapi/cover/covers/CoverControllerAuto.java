@@ -34,10 +34,10 @@ public class CoverControllerAuto extends AbstractCoverAttachmentController {
 	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity instanceof ITileEntityRunningPossible) || !aData.mTileEntity.canTick() || super.interceptCoverPlacement(aCoverSide, aData, aPlayer);}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return sTextureForeground;}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, sTextureForeground);}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, sTextureForeground);}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	
-	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/autoswitch/base"), sTextureForeground = BlockTextureDefault.get("machines/covers/autoswitch/circuit");
+	public static final ITexture sTextureForeground = BlockTextureDefault.get("machines/covers/autoswitch/circuit");
 	
 	@Override
 	public boolean getStateOnOff(byte aSide, CoverData aData) {

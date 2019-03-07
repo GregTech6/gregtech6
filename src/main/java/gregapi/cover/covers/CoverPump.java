@@ -83,15 +83,14 @@ public class CoverPump extends AbstractCoverAttachment {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return aData.mVisuals[aSide]==0?sTextureOut:sTextureIn;}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? BlockTextureMulti.get(sTextureBase, aData.mVisuals[aSide]==0?sTextureOut:sTextureIn) : aSide == OPPOSITES[aTextureSide] ? BlockTextureMulti.get(sTextureBase, aData.mVisuals[aSide]!=0?sTextureOut:sTextureIn) : sTextureBase;}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBase;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? BlockTextureMulti.get(BACKGROUND_COVER, aData.mVisuals[aSide]==0?sTextureOut:sTextureIn) : aSide == OPPOSITES[aTextureSide] ? BlockTextureMulti.get(BACKGROUND_COVER, aData.mVisuals[aSide]!=0?sTextureOut:sTextureIn) : BACKGROUND_COVER;}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	@Override public boolean interceptFluidFill(byte aCoverSide, CoverData aData, byte aSide, FluidStack aFluidToFill) {return aData.mVisuals[aSide]==0;}
 	@Override public boolean interceptFluidDrain(byte aCoverSide, CoverData aData, byte aSide, FluidStack aFluidToDrain) {return aData.mVisuals[aSide]!=0;}
 	
 	public static final ITexture
-	sTextureBase = BlockTextureDefault.get("machines/covers/pump/base"),
 	sTextureIn = BlockTextureDefault.get("machines/covers/pump/in"),
 	sTextureOut = BlockTextureDefault.get("machines/covers/pump/out");
 }
