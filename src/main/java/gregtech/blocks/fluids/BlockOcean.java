@@ -26,6 +26,7 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.CS.BlocksGT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -95,13 +96,13 @@ public class BlockOcean extends BlockWaterlike {
 		
 		byte tOceanCounter = 0;
 		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls<>();
-		for (byte tSide : ALL_SIDES_BUT_TOP) if (aWorld.blockExists(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide])) {
-			tBlock = aWorld.getBlock(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);
-			byte tMeta = (byte)aWorld.getBlockMetadata(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);
+		for (byte tSide : ALL_SIDES_BUT_TOP) {
+			tBlock = WD.block(aWorld, aX, aY, aZ, tSide);
+			byte tMeta = WD.meta(aWorld, aX, aY, aZ, tSide);
 			if (tBlock == this) {
 				if (tMeta == 0) tOceanCounter++;
 			} else if (tBlock instanceof BlockWaterlike || tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
-				if (!(tBlock instanceof BlockWaterlike) || BIOMES_OCEAN_BEACH.contains(tBiome.biomeName)) tList.add(new ChunkCoordinates(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]));
+				if (!(tBlock instanceof BlockWaterlike && tBlock != BlocksGT.River) || BIOMES_OCEAN_BEACH.contains(tBiome.biomeName)) tList.add(new ChunkCoordinates(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]));
 				if (tMeta == 0) tOceanCounter++;
 			}
 		}

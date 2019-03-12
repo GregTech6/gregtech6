@@ -82,11 +82,14 @@ public class CoverDrain extends AbstractCoverAttachment {
 				} else
 				if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
 					if (aData.mTileEntity.getMetaDataAtSide(aSide) == 0) tFluid = FL.Lava.make(1000);
-				} else 
-				if (tBlock == BlocksGT.Ocean){
+				} else
+				if (tBlock == BlocksGT.River) {
+					UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make(16000), T);
+				} else
+				if (tBlock == BlocksGT.Ocean) {
 					UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Ocean.make(16000), T);
 				} else
-				if (tBlock == BlocksGT.Swamp){
+				if (tBlock == BlocksGT.Swamp) {
 					UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Dirty_Water.make(16000), T);
 				} else
 				if (tBlock instanceof IFluidBlock) tFluid = ((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), F);

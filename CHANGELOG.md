@@ -26,7 +26,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.07: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Gas Turbine will now empty its Input Tank when there is less Fuel than needed for a full Recipe. This makes switching Fuels easier.
+[ADDED] Dedicated River Blocks for Worldgen. This should fix some Issues, and also make Rivers slightly less dependant on Biomes.
 
 
 6.10.06:
@@ -39,6 +40,7 @@ Gas Turbine Multiblock.
 It turns Gaseous Fuels into Rotational Energy with 66.66% Efficiency, so it works just as well as a Boiler and a Steam Turbine, but only for specific Gasses ofcourse.
 But in addition to that, the Fuel is usually slightly more potent when used in a Gas Turbine, than when used in a Burning Box, so it works better overall while being cheaper too.
 The Structure of the Multiblock is identical to the Steam Turbine, in fact you can upgrade the Steam Turbine Controller to be a Gas Turbine Controller with a few additional Items.
+You have to get rid of the Exhaust Gasses and Liquids when running the Turbine, how you extract them is up to you. I used Pump Covers placed on Drums to do it in the Screenshot.
 
 
 6.10.05:

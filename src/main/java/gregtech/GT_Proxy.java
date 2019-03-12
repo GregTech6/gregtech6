@@ -251,6 +251,13 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges();
 						return;
 					}
+					if (tBlock == BlocksGT.River) {
+						ItemStack tStack = UT.Fluids.fillFluidContainer(FL.Water.make(Integer.MAX_VALUE), aStack, F, T, F, T);
+						if (tStack == null) return;
+						if (--aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
+						return;
+					}
 					if (tBlock == BlocksGT.Ocean) {
 						ItemStack tStack = UT.Fluids.fillFluidContainer(FL.Ocean.make(Integer.MAX_VALUE), aStack, F, T, F, T);
 						if (tStack == null) return;

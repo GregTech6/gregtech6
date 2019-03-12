@@ -34,6 +34,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.blocks.*;
 import gregtech.blocks.fluids.BlockOcean;
+import gregtech.blocks.fluids.BlockRiver;
 import gregtech.blocks.fluids.BlockSwamp;
 import gregtech.blocks.plants.BlockFlowersA;
 import gregtech.blocks.plants.BlockFlowersB;
@@ -114,6 +115,7 @@ public class Loader_Blocks implements Runnable {
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesGrass, 1, W), F, TC.stack(TC.MESSIS, 4));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesCrop , 1, W), F, TC.stack(TC.MESSIS, 4));
 		
+		BlocksGT.River                                                          = new BlockRiver                ("gt.block.river", UT.Fluids.fluid("riverwater"));
 		BlocksGT.Ocean                                                          = new BlockOcean                ("gt.block.ocean", UT.Fluids.fluid("seawater"));
 		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp", UT.Fluids.fluid("waterdirty"));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Ocean         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.TEMPESTAS, 3));

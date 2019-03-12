@@ -1403,7 +1403,7 @@ public class CS {
 		oreSmall    , oreSmallSandstone     , oreSmallNetherrack    , oreSmallEndstone  , oreSmallAtumLimestone     , oreSmallAtumSand, oreSmallGravel, oreSmallMud, oreSmallSand, oreSmallRedSand, oreSmallBedrock;
 		
 		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy;
-		public static BlockFluidClassic Ocean, Swamp;
+		public static BlockFluidClassic Ocean, Swamp, River;
 		
 		public static BlockBase Diggables, Sands, Paths, RockOres;
 		

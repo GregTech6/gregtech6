@@ -67,6 +67,7 @@ public enum FL {
 	
 	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER)
 	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER)
+	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER)
 	, Ice                       ("ice"                                                      , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
 	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
 	, Mineralsoda               ("mineralsoda"                                              , SIMPLE, LIQUID, FOOD)

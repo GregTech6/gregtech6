@@ -27,6 +27,7 @@ import java.util.Set;
 
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
+import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -52,10 +53,11 @@ public class WorldgenOcean extends WorldgenObject {
 		boolean temp = T;
 		for (String tName : aBiomeNames) if (BIOMES_OCEAN.contains(tName)) {temp = F; break;}
 		if (temp) return F;
+		int tHeight = WD.dimTF(aWorld) ? 31 : mHeight;
 		final ExtendedBlockStorage[] tStorages = aChunk.getBlockStorageArray();
 		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {
 			boolean tPlacedNone = T;
-			for (int tY = mHeight; tY > 0; tY--) {
+			for (int tY = tHeight; tY > 0; tY--) {
 				final ExtendedBlockStorage tStorage = tStorages[tY >> 4];
 				if (tStorage == null) continue;
 				final Block tBlock = tStorage.getBlockByExtId(tX, tY & 15, tZ);

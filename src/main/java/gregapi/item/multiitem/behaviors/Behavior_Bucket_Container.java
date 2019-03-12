@@ -59,6 +59,10 @@ public class Behavior_Bucket_Container extends AbstractBehaviorDefault {
 			}
 			return aStack;
 		}
+		if (tBlock == BlocksGT.River) {
+			aItem.fill(aStack, FL.Water.make(1000), T);
+			return aStack;
+		}
 		if (tBlock == BlocksGT.Ocean) {
 			aItem.fill(aStack, FL.Ocean.make(1000), T);
 			return aStack;

@@ -27,6 +27,7 @@ import gregapi.block.IBlockExtendedMetaData;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChunkCoordinates;
@@ -91,10 +92,10 @@ public class BlockSwamp extends BlockWaterlike {
 		
 		byte tSwampCounter = 0;
 		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls<>();
-		for (byte tSide : ALL_SIDES_BUT_TOP) if (aWorld.blockExists(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide])) {
-			tBlock = aWorld.getBlock(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);
+		for (byte tSide : ALL_SIDES_BUT_TOP) {
+			tBlock = WD.block(aWorld, aX, aY, aZ, tSide);
 			if (tBlock != NB) {
-				byte tMeta = (byte)aWorld.getBlockMetadata(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]);
+				byte tMeta = WD.meta(aWorld, aX, aY, aZ, tSide);
 				if (tBlock == this) {
 					if (tMeta == 0) tSwampCounter++;
 				} else if (tBlock instanceof BlockWaterlike) {
@@ -169,5 +170,5 @@ public class BlockSwamp extends BlockWaterlike {
 		return 0x0000ff00;
 	}
 	
-	public static boolean water(Block aBlock) {return aBlock == Blocks.water || aBlock == Blocks.flowing_water || aBlock == BlocksGT.Ocean;}
+	public static boolean water(Block aBlock) {return aBlock == Blocks.water || aBlock == Blocks.flowing_water || aBlock == BlocksGT.Ocean || aBlock == BlocksGT.River;}
 }

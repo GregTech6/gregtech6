@@ -29,7 +29,6 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
-import gregtech.blocks.fluids.BlockWaterlike;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -40,11 +39,11 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenSwamp extends WorldgenObject {
+public class WorldgenRiver extends WorldgenObject {
 	public int mHeight = 62;
 	
 	@SafeVarargs
-	public WorldgenSwamp(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
+	public WorldgenRiver(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mHeight = ConfigsGT.WORLDGEN.get(mCategory, "Height", mHeight);
 	}
@@ -52,7 +51,7 @@ public class WorldgenSwamp extends WorldgenObject {
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		boolean temp = T;
-		for (String tName : aBiomeNames) if (BIOMES_SWAMP.contains(tName)) {temp = F; break;}
+		for (String tName : aBiomeNames) if (BIOMES_RIVER.contains(tName) && !BIOMES_OCEAN.contains(tName)) {temp = F; break;}
 		if (temp) return F;
 		int tHeight = WD.dimTF(aWorld) ? 31 : mHeight;
 		final ExtendedBlockStorage[] tStorages = aChunk.getBlockStorageArray();
@@ -63,12 +62,12 @@ public class WorldgenSwamp extends WorldgenObject {
 				if (tStorage == null) continue;
 				final Block tBlock = tStorage.getBlockByExtId(tX, tY & 15, tZ);
 				if (tBlock.isOpaqueCube()) break;
-				if (tBlock == NB || tBlock == BlocksGT.Swamp || tBlock.isAir(aWorld, aMinX+tX, tY, aMinZ+tZ)) continue;
-				if (tBlock == Blocks.water || tBlock == Blocks.flowing_water || (tBlock instanceof BlockWaterlike && BIOMES_SWAMP.contains(aBiomes[tX][tZ].biomeName))) {
-					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.Swamp);
+				if (tBlock == NB || tBlock == BlocksGT.River || tBlock.isAir(aWorld, aMinX+tX, tY, aMinZ+tZ)) continue;
+				if (tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
+					tStorage.func_150818_a(tX, tY & 15, tZ, BlocksGT.River);
 					tStorage.setExtBlockMetadata(tX, tY & 15, tZ, 0);
 					if (tPlacedNone) {
-						aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 10+RNGSUS.nextInt(90));
+						aWorld.scheduleBlockUpdate(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River, 10+RNGSUS.nextInt(90));
 						tPlacedNone = F;
 					}
 					temp = T;

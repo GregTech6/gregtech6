@@ -205,7 +205,7 @@ public class RM {
 		int tSize = aBiomass.stackSize;
 		if (tSize <= 0) return F;
 		aBiomass = ST.amount(1, aBiomass);
-		for (String tFluid : FluidsGT.WATER) if (UT.Fluids.exists(tFluid))
+		for (String tFluid : FluidsGT.WATER) if (UT.Fluids.exists(tFluid) && !"riverwater".equals(tFluid))
 		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, UT.Fluids.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(1080    / tSize), ZL_IS);
 		for (String tFluid : FluidsGT.MILK ) if (UT.Fluids.exists(tFluid))
 		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, UT.Fluids.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(2160    / tSize), ZL_IS);

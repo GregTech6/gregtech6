@@ -98,7 +98,8 @@ public class MultiTileEntityLargeTurbineGas extends MultiTileEntityLargeTurbine 
 			if (tRecipe != null) {
 				mLastRecipe = tRecipe;
 				if (tRecipe.mEUt < 0 && tRecipe.mDuration > 0) {
-					int tParallel = tRecipe.isRecipeInputEqual(UT.Code.bindInt(UT.Code.divup(mEnergyIN.mMax - mStorage.mEnergy, -tRecipe.mEUt * tRecipe.mDuration)), mInputTank.AS_ARRAY, ZL_IS);
+					int tMax = UT.Code.bindInt(UT.Code.divup(mEnergyIN.mMax - mStorage.mEnergy, -tRecipe.mEUt * tRecipe.mDuration)), tParallel = tRecipe.isRecipeInputEqual(tMax, mInputTank.AS_ARRAY, ZL_IS);
+					if (tParallel < tMax) mInputTank.setEmpty();
 					if (tParallel > 0) {
 						mStorage.mEnergy -= tParallel * tRecipe.mEUt * tRecipe.mDuration;
 						for (int i = 0; i < tRecipe.mFluidOutputs.length && i < mTanksOutput.length; i++) {

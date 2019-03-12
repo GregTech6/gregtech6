@@ -61,6 +61,10 @@ public class Behavior_Bucket_Simple extends AbstractBehaviorDefault {
 		
 		if (mFluid == null) {
 			Block tFluidBlock = aWorld.getBlock(tX, tY, tZ);
+			if (tFluidBlock == BlocksGT.River) {
+				tBucket = UT.Fluids.fillFluidContainer(FL.Water.make(1000), aStack, F, T, F, T);
+				return tBucket == null ? aStack : tBucket;
+			}
 			if (tFluidBlock == BlocksGT.Ocean) {
 				tBucket = UT.Fluids.fillFluidContainer(FL.Ocean.make(1000), aStack, F, T, F, T);
 				return tBucket == null ? aStack : tBucket;

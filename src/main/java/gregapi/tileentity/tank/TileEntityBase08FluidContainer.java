@@ -304,6 +304,10 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 					}
 					return aStack;
 				}
+				if (tBlock == BlocksGT.River) {
+					aItem.fill(aStack, FL.Water.make(1000), T);
+					return aStack;
+				}
 				if (tBlock == BlocksGT.Ocean) {
 					aItem.fill(aStack, FL.Ocean.make(1000), T);
 					return aStack;

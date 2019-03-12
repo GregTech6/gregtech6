@@ -28,6 +28,7 @@ import java.util.List;
 
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -87,7 +88,8 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	
 	static {
 		LH.add("gt.tooltip.pump.1", "Usable to clear large Bodies of Fluid");
-		LH.add("gt.tooltip.pump.2", "Not suitable for infinite Fluid Sources!");
+		LH.add("gt.tooltip.pump.2", "Not suitable for making infinite Fluid Sources!");
+		LH.add("gt.tooltip.pump.3", "Use a Drain Cover for that instead!");
 	}
 	
 	@Override
@@ -95,6 +97,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		aList.add(Chat.CYAN + LH.get("gt.tooltip.pump.1"));
 		LH.addEnergyToolTips(this, aList, mEnergyType, null, LH.get(LH.FACE_BACK), null);
 		aList.add(Chat.ORANGE + LH.get("gt.tooltip.pump.2"));
+		aList.add(Chat.ORANGE + LH.get("gt.tooltip.pump.3"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -167,9 +170,10 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 			mPumpedFluids.add(Blocks.flowing_lava);
 			mDir = +1;
 		} else
-		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water) {
+		if (aBlock == Blocks.water || aBlock == Blocks.flowing_water || aBlock == BlocksGT.River) {
 			mPumpedFluids.add(Blocks.water);
 			mPumpedFluids.add(Blocks.flowing_water);
+			mPumpedFluids.add(BlocksGT.River);
 			mDir = +1;
 		} else
 		if (aBlock instanceof IFluidBlock) {
@@ -196,7 +200,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		Block aBlock = getBlock(aCoords);
 		byte aMeta = getMetaData(aCoords);
 		if (mPumpedFluids.contains(aBlock)) {
-			if (aBlock == Blocks.water || aBlock == Blocks.flowing_water) {
+			if (aBlock == Blocks.water || aBlock == Blocks.flowing_water || aBlock == BlocksGT.River) {
 				if (aMeta == 0) {
 					if (mTank.fillAll(FL.Water.make(1000))) {
 						mEnergy -= 2048;

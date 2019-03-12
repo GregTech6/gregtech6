@@ -347,8 +347,12 @@ public class WD {
 	
 	public static Block block(World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks) {return aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ) ? aWorld.getBlock(aX, aY, aZ) : NB;}
 	public static Block block(World aWorld, int aX, int aY, int aZ) {return aWorld.getBlock(aX, aY, aZ);}
+	public static Block block(World aWorld, int aX, int aY, int aZ, byte aSide, boolean aLoadUnloadedChunks) {return block(aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], aLoadUnloadedChunks);}
+	public static Block block(World aWorld, int aX, int aY, int aZ, byte aSide) {return block(aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);}
 	public static byte  meta (World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks) {return aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ) ? UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ)) : 0;}
 	public static byte  meta (World aWorld, int aX, int aY, int aZ) {return UT.Code.bind4(aWorld.getBlockMetadata(aX, aY, aZ));}
+	public static byte  meta (World aWorld, int aX, int aY, int aZ, byte aSide, boolean aLoadUnloadedChunks) {return meta(aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], aLoadUnloadedChunks);}
+	public static byte  meta (World aWorld, int aX, int aY, int aZ, byte aSide) {return meta(aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);}
 	
 	public static boolean set(World aWorld, int aX, int aY, int aZ, Block aBlock, long aMeta, long aFlags) {
 		return set(aWorld, aX, aY, aZ, aBlock, Code.bind4(aMeta), (byte)aFlags, aBlock.isOpaqueCube());
@@ -469,8 +473,8 @@ public class WD {
 	public static boolean water(Block aBlock) {return aBlock == Blocks.water || aBlock == Blocks.flowing_water;}
 	
 	public static boolean anywater(World aWorld, int aX, int aY, int aZ) {return anywater(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
-	public static boolean anywater(World aWorld, int aX, int aY, int aZ, Block aBlock) {return water(aWorld, aX, aY, aZ, aBlock) || aBlock == BlocksGT.Swamp || aBlock == BlocksGT.Ocean;}
-	public static boolean anywater(Block aBlock) {return water(aBlock) || aBlock == BlocksGT.Swamp || aBlock == BlocksGT.Ocean;}
+	public static boolean anywater(World aWorld, int aX, int aY, int aZ, Block aBlock) {return water(aWorld, aX, aY, aZ, aBlock) || aBlock == BlocksGT.Swamp || aBlock == BlocksGT.Ocean || aBlock == BlocksGT.River;}
+	public static boolean anywater(Block aBlock) {return water(aBlock) || aBlock == BlocksGT.Swamp || aBlock == BlocksGT.Ocean || aBlock == BlocksGT.River;}
 	
 	public static boolean bedrock(World aWorld, int aX, int aY, int aZ) {return bedrock(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
 	public static boolean bedrock(World aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock == Blocks.bedrock || (IL.BTL_Bedrock.exists() && IL.BTL_Bedrock.equal(aBlock));}
@@ -481,8 +485,8 @@ public class WD {
 	public static boolean grass(World aWorld, int aX, int aY, int aZ, Block aBlock, long aMeta) {return grass(aBlock, aMeta);}
 	public static boolean grass(Block aBlock, long aMeta) {
 		if (aBlock == Blocks.tallgrass) return T;
-		if (aBlock == Blocks.double_plant) return aMeta == 2 || aMeta == 3;
-		if (IL.TF_Tall_Grass.equal(aBlock)) return aMeta == 8 || aMeta == 10;
+		if (aBlock == Blocks.double_plant)  return aMeta ==  2 || aMeta ==  3;
+		if (IL.TF_Tall_Grass.equal(aBlock)) return aMeta ==  8 || aMeta == 10;
 		return IL.AETHER_Tall_Grass.equal(aBlock);
 	}
 	
