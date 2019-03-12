@@ -551,12 +551,12 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.nikolite"          , MD.RP     .mLoaded,  10,  40,   4, MT.Nikolite            , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
 		new WorldgenOresSmall("ore.small.teslatite"         , MD.BP     .mLoaded,  10,  40,   4, MT.Teslatite           , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
 		new WorldgenOresSmall("ore.small.electrotine"       , MD.PR     .mLoaded,  10,  40,   4, MT.Electrotine         , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.bischofite"        , MD.IHL    .mLoaded,  10,  60,   1, MT.OREMATS.Bischofite  , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
-		new WorldgenOresSmall("ore.small.datolite"          , MD.IHL    .mLoaded,  10,  60,   1, MT.Datolite            , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
-		new WorldgenOresSmall("ore.small.mica"              , MD.IHL    .mLoaded,  10,  60,   1, MT.OREMATS.Mica        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
-		new WorldgenOresSmall("ore.small.gypsum"            , MD.IHL    .mLoaded,  10,  60,   1, MT.OREMATS.Gypsum      , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
-		new WorldgenOresSmall("ore.small.potassiumfeldspar" , MD.IHL    .mLoaded,  10,  60,   1, MT.PotassiumFeldspar   , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
-		new WorldgenOresSmall("ore.small.trona"             , MD.IHL    .mLoaded,  10,  60,   1, MT.OREMATS.Trona       , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.bischofite"        , MD.IHL    .mLoaded,  40,  80,   1, MT.OREMATS.Bischofite  , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.datolite"          , MD.IHL    .mLoaded,  40,  80,   1, MT.Datolite            , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.mica"              , MD.IHL    .mLoaded,  40,  80,   1, MT.OREMATS.Mica        , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.gypsum"            , MD.IHL    .mLoaded,  40,  80,   1, MT.OREMATS.Gypsum      , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.potassiumfeldspar" , MD.IHL    .mLoaded,  40,  80,   1, MT.PotassiumFeldspar   , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.trona"             , MD.IHL    .mLoaded,  40,  80,   1, MT.OREMATS.Trona       , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		
 		
 		new WorldgenOresSmall("ore.small.diamond"           , T,   5,  10,   2, MT.Diamond                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_ASTEROIDS, GEN_MOON, GEN_NETHER);

@@ -34,6 +34,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregtech.blocks.fluids.BlockRiver;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -73,6 +74,7 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 			}
 			if (aMinX == -16 || aMinX == 0 || aMinZ == -16 || aMinZ == 0) {
 				Arrays.fill(aChunk.getBiomeArray(), (byte)BiomeGenBase.river.biomeID);
+				BlockRiver.PLACEMENT_ALLOWED = T;
 				for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
 					for (int k = -3; k < 64; k++) WD.set(aChunk, i, mHeight+k, j, NB, 0);
 					WD.set(aChunk, i, mHeight-4, j, BlocksGT.River, 0);
@@ -84,6 +86,7 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 					WD.set(aChunk, i, mHeight-10, j, Blocks.clay, 0);
 					for (int k = 1; k < mHeight-10; k++) WD.set(aChunk, i, k, j, Blocks.stone, 1);
 				}
+				BlockRiver.PLACEMENT_ALLOWED = F;
 				aWorld.setSpawnLocation(0, mHeight+3, 0);
 				return T;
 			}

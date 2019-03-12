@@ -59,6 +59,7 @@ import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT.Code;
 import gregapi.util.UT.Fluids;
+import gregtech.blocks.fluids.BlockWaterlike;
 import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
 import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
 import micdoodle8.mods.galacticraft.core.util.OxygenUtil;
@@ -473,8 +474,8 @@ public class WD {
 	public static boolean water(Block aBlock) {return aBlock == Blocks.water || aBlock == Blocks.flowing_water;}
 	
 	public static boolean anywater(World aWorld, int aX, int aY, int aZ) {return anywater(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
-	public static boolean anywater(World aWorld, int aX, int aY, int aZ, Block aBlock) {return water(aWorld, aX, aY, aZ, aBlock) || aBlock == BlocksGT.Swamp || aBlock == BlocksGT.Ocean || aBlock == BlocksGT.River;}
-	public static boolean anywater(Block aBlock) {return water(aBlock) || aBlock == BlocksGT.Swamp || aBlock == BlocksGT.Ocean || aBlock == BlocksGT.River;}
+	public static boolean anywater(World aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock instanceof BlockWaterlike || water(aWorld, aX, aY, aZ, aBlock);}
+	public static boolean anywater(Block aBlock) {return aBlock instanceof BlockWaterlike || water(aBlock);}
 	
 	public static boolean bedrock(World aWorld, int aX, int aY, int aZ) {return bedrock(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
 	public static boolean bedrock(World aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock == Blocks.bedrock || (IL.BTL_Bedrock.exists() && IL.BTL_Bedrock.equal(aBlock));}
