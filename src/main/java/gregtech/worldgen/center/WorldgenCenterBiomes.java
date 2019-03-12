@@ -75,9 +75,9 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 				Arrays.fill(aChunk.getBiomeArray(), (byte)BiomeGenBase.river.biomeID);
 				for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
 					for (int k = -3; k < 64; k++) WD.set(aChunk, i, mHeight+k, j, NB, 0);
-					WD.set(aChunk, i, mHeight-4, j, Blocks.water, 0);
-					WD.set(aChunk, i, mHeight-5, j, Blocks.water, 0);
-					WD.set(aChunk, i, mHeight-6, j, Blocks.water, 0);
+					WD.set(aChunk, i, mHeight-4, j, BlocksGT.River, 0);
+					WD.set(aChunk, i, mHeight-5, j, BlocksGT.River, 0);
+					WD.set(aChunk, i, mHeight-6, j, BlocksGT.River, 0);
 					WD.set(aChunk, i, mHeight-7, j, BlocksGT.Sands, 0);
 					WD.set(aChunk, i, mHeight-8, j, Blocks.gravel, 1);
 					WD.set(aChunk, i, mHeight-9, j, Blocks.clay, 0);

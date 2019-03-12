@@ -281,6 +281,21 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "tungsten_ore"                    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "zinc_ore"                        , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "thorium_ore"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreBischofite"                   , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreDatolite"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreStibnite"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreChromite"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreMica"                         , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreBauxite"                      , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreCinnabar"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreRockSalt"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreLimestone"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreGypsum"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreGyubnera"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreTrona"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "orePotassiumFeldspar"            , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreApatite"                      , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreSaltpeter"                    , null));
 		
 		
 		IL.Bottle_Empty                         .set(ST.make(Items.glass_bottle, 1, 0));
