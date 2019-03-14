@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.15: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.14: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.10.13: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -25,8 +33,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.07: (Not released yet)
+6.10.07:
+[NOTE]
+Turns out, Article 13 was designed to intentionally kill off Youtube and Facebook.
+Yet instead of doing that, it kills every Platform EXCEPT Youtube and Facebook, making them more powerful.
+And they are fully aware about killing Freedom of Expression aswell.
+https://twitter.com/Senficon/status/1105877337483169794
+I'm not much into USA Stuff, but I heard the Senate over there starts to do something Article 13 alike too, so watch out for Trump trying to do that, because I don't care enough about that Continent to follow its News, I already have enough Drama as is in Europe.
 [FIXED] Gas Turbine will now empty its Input Tank when there is less Fuel than needed for a full Recipe. This makes switching Fuels easier.
+[CHANGED] Most Gas Fuels now give regular Water instead of distilled Water.
 [ADDED]
 Dedicated River Blocks for Worldgen.
 This should fix some Issues, and also make Rivers slightly less dependant on the Biomes, like when Thaumcraft changes the Biome around them.

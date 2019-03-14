@@ -112,7 +112,7 @@ public class WorldgenBeacon extends WorldgenObject {
 			}
 		}
 		
-		aWorld.setSpawnLocation(0, mHeight+3, 0);
+		aWorld.setSpawnLocation(0, mHeight+5, 0);
 		return T;
 	}
 }

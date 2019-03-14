@@ -142,33 +142,33 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 16,  1, UT.Fluids.make("hydrogen", 2)                      , FL.DistW.make(3), ZL_IS);
 		FM.Gas          .addRecipe0(T, - 16,  2, UT.Fluids.make("hydrogen", 2)                      , FL.DistW.make(3), ZL_IS);
 		
-		FM.Burn         .addRecipe0(T, - 64, 24, UT.Fluids.make("methane", 5)                       , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
-		FM.Burn         .addRecipe0(T, - 64, 24, UT.Fluids.make("gas_natural_gas", 5)               , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
-		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("methane", 5)                       , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
-		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("gas_natural_gas", 5)               , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
+		FM.Burn         .addRecipe0(T, - 64, 24, UT.Fluids.make("methane", 5)                       , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
+		FM.Burn         .addRecipe0(T, - 64, 24, UT.Fluids.make("gas_natural_gas", 5)               , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
+		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("methane", 5)                       , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
+		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("gas_natural_gas", 5)               , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
 		if (UT.Fluids.exists("naturalgas")) {
-		FM.Burn         .addRecipe0(T, - 64, 24, UT.Fluids.make("naturalgas", 5)                    , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
-		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("naturalgas", 5)                    , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
+		FM.Burn         .addRecipe0(T, - 64, 24, UT.Fluids.make("naturalgas", 5)                    , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
+		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("naturalgas", 5)                    , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
 		}
 		if (UT.Fluids.exists("ic2biogas")) {
-		FM.Burn         .addRecipe0(T, - 64, 24, UT.Fluids.make("ic2biogas", 20)                    , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
-		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("ic2biogas", 20)                    , FL.DistW.make(6), UT.Fluids.make("carbondioxide", 3));
+		FM.Burn         .addRecipe0(T, - 64, 24, UT.Fluids.make("ic2biogas", 20)                    , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
+		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("ic2biogas", 20)                    , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
 		}
 		if (FL.LPG.exists()) {
-		FM.Burn         .addRecipe0(T, - 64, 42, UT.Fluids.make("lpg", 7)                           , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));
+		FM.Burn         .addRecipe0(T, - 64, 42, UT.Fluids.make("lpg", 7)                           , FL.Water.make(7), UT.Fluids.make("carbondioxide", 6));
 		}
 		
-		FM.Burn         .addRecipe0(T, - 64, 42, UT.Fluids.make("butane", 7)                        , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));
-		FM.Gas          .addRecipe0(T, - 64, 56, UT.Fluids.make("butane", 7)                        , FL.DistW.make(7), UT.Fluids.make("carbondioxide", 6));
+		FM.Burn         .addRecipe0(T, - 64, 42, UT.Fluids.make("butane", 7)                        , FL.Water.make(7), UT.Fluids.make("carbondioxide", 6));
+		FM.Gas          .addRecipe0(T, - 64, 56, UT.Fluids.make("butane", 7)                        , FL.Water.make(7), UT.Fluids.make("carbondioxide", 6));
 		
-		FM.Burn         .addRecipe0(T, - 64, 30, UT.Fluids.make("propane", 5)                       , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
-		FM.Gas          .addRecipe0(T, - 64, 40, UT.Fluids.make("propane", 5)                       , FL.DistW.make(5), UT.Fluids.make("carbondioxide", 4));
+		FM.Burn         .addRecipe0(T, - 64, 30, UT.Fluids.make("propane", 5)                       , FL.Water.make(5), UT.Fluids.make("carbondioxide", 4));
+		FM.Gas          .addRecipe0(T, - 64, 40, UT.Fluids.make("propane", 5)                       , FL.Water.make(5), UT.Fluids.make("carbondioxide", 4));
 		
-		FM.Burn         .addRecipe0(T, - 64,  4, UT.Fluids.make("ethylene", 1)                      , FL.DistW.make(1), UT.Fluids.make("carbondioxide", 1));
-		FM.Gas          .addRecipe0(T, - 64,  5, UT.Fluids.make("ethylene", 1)                      , FL.DistW.make(1), UT.Fluids.make("carbondioxide", 1));
+		FM.Burn         .addRecipe0(T, - 64,  4, UT.Fluids.make("ethylene", 1)                      , FL.Water.make(1), UT.Fluids.make("carbondioxide", 1));
+		FM.Gas          .addRecipe0(T, - 64,  5, UT.Fluids.make("ethylene", 1)                      , FL.Water.make(1), UT.Fluids.make("carbondioxide", 1));
 		
-		FM.Burn         .addRecipe0(T, - 64,  3, UT.Fluids.make("propylene", 1)                     , FL.DistW.make(1), UT.Fluids.make("carbondioxide", 1));
-		FM.Gas          .addRecipe0(T, - 64,  4, UT.Fluids.make("propylene", 1)                     , FL.DistW.make(1), UT.Fluids.make("carbondioxide", 1));
+		FM.Burn         .addRecipe0(T, - 64,  3, UT.Fluids.make("propylene", 1)                     , FL.Water.make(1), UT.Fluids.make("carbondioxide", 1));
+		FM.Gas          .addRecipe0(T, - 64,  4, UT.Fluids.make("propylene", 1)                     , FL.Water.make(1), UT.Fluids.make("carbondioxide", 1));
 		
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                        , FL.Lava_Pahoehoe.make(1), ZL_IS);
 //      FM.Hot          .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2hotwater", 1)                   , FL.DistW.make(1), ZL_ITEMSTACK);
