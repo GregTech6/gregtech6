@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import gregapi.code.TagData;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityUnloadable;
@@ -44,7 +43,8 @@ import net.minecraftforge.fluids.IFluidHandler;
 public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiBlockConverter implements IMultiBlockFluidHandler, IFluidHandler, ITileEntitySwitchableOnOff {
 	public short mTurbineWalls = 18022;
 	
-	public static final IIconContainer mTextureActive = new Textures.BlockIcons.CustomIcon("machines/multiblockmains/turbine_active");
+	public static final IIconContainer mTextureActive   = new Textures.BlockIcons.CustomIcon("machines/multiblockmains/turbine_active");
+	public static final IIconContainer mTextureInactive = new Textures.BlockIcons.CustomIcon("machines/multiblockmains/turbine");
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -103,8 +103,13 @@ public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiB
 	}
 	
 	@Override
+	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
+		return mStructureOkay ? 2 : 1;
+	}
+	
+	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		if (mStructureOkay) switch(mFacing) {
+		if (aRenderPass == 1) switch(mFacing) {
 		case SIDE_X_NEG: case SIDE_X_POS: return box(aBlock, -0.001, -0.999, -0.999,  1.001,  1.999,  1.999);
 		case SIDE_Y_NEG: case SIDE_Y_POS: return box(aBlock, -0.999, -0.001, -0.999,  1.999,  1.001,  1.999);
 		case SIDE_Z_NEG: case SIDE_Z_POS: return box(aBlock, -0.999, -0.999, -0.001,  1.999,  1.999,  1.001);
@@ -114,8 +119,7 @@ public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiB
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		if (aSide == mFacing) return BlockTextureMulti.get(BlockTextureDefault.get(mTexturesFront[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(mActivity.mState > 0 ? mTextureActive : mTexturesFront[FACES_TBS[aSide]+3]));
-		return aShouldSideBeRendered[aSide] && !mStructureOkay ? BlockTextureMulti.get(BlockTextureDefault.get((mTextures)[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get(mTextures[FACES_TBS[aSide]+3])) : null;
+		return aRenderPass == 0 ? super.getTexture(aBlock, aRenderPass, aSide, aShouldSideBeRendered) : aSide != mFacing ? null : BlockTextureDefault.get(mActivity.mState > 0 ? mTextureActive : mTextureInactive);
 	}
 	
 	public ITileEntityUnloadable mEmitter = null;

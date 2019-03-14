@@ -27,7 +27,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.07: (Not released yet)
 [FIXED] Gas Turbine will now empty its Input Tank when there is less Fuel than needed for a full Recipe. This makes switching Fuels easier.
-[ADDED] Dedicated River Blocks for Worldgen. This should fix some Issues, and also make Rivers slightly less dependant on Biomes.
+[ADDED]
+Dedicated River Blocks for Worldgen.
+This should fix some Issues, and also make Rivers slightly less dependant on the Biomes, like when Thaumcraft changes the Biome around them.
+Riverwater Blocks will not contaminate adjacent Water, and can also not be contaminated by Swampwater.
+They will create infinite Water Sources similar to Vanilla Water. Not that it would be needed, since all GT6 Methods of pulling Water will work without removing the Blocks.
+Vanilla Buckets wont work because its near impossible to hack them in order to let them do their Job right.
+But GT6 Wood Buckets, Jugs, Measuring Pots and similar, aswell as Vanilla Glass Bottles, will be able to work just fine.
 
 
 6.10.06:
@@ -41,6 +47,7 @@ It turns Gaseous Fuels into Rotational Energy with 66.66% Efficiency, so it work
 But in addition to that, the Fuel is usually slightly more potent when used in a Gas Turbine, than when used in a Burning Box, so it works better overall while being cheaper too.
 The Structure of the Multiblock is identical to the Steam Turbine, in fact you can upgrade the Steam Turbine Controller to be a Gas Turbine Controller with a few additional Items.
 You have to get rid of the Exhaust Gasses and Liquids when running the Turbine, how you extract them is up to you. I used Pump Covers placed on Drums to do it in the Screenshot.
+If you want to use this with a Bedrock Drill, remember you can downtransform the Power and also inject it into multiple Sides of the Drill.
 
 
 6.10.05:
