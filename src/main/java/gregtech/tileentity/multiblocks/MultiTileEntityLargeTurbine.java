@@ -119,7 +119,7 @@ public abstract class MultiTileEntityLargeTurbine extends TileEntityBase11MultiB
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass == 0 ? super.getTexture(aBlock, aRenderPass, aSide, aShouldSideBeRendered) : aSide != mFacing ? null : BlockTextureDefault.get(mActivity.mState > 0 ? mTextureActive : mTextureInactive);
+		return aRenderPass == 0 ? super.getTexture2(aBlock, aRenderPass, aSide, aShouldSideBeRendered) : aSide != mFacing ? null : BlockTextureDefault.get(mActivity.mState > 0 ? mTextureActive : mTextureInactive);
 	}
 	
 	public ITileEntityUnloadable mEmitter = null;

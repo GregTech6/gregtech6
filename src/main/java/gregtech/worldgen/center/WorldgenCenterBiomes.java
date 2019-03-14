@@ -223,9 +223,9 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 							WD.set(aChunk, i, mHeight  , j, Blocks.water, 0);
 							WD.set(aChunk, i, mHeight-1, j, BlocksGT.Diggables, 0);
 							WD.set(aChunk, i, mHeight-2, j, BlocksGT.Diggables, 0);
-							WD.set(aChunk, i, mHeight-3, j, BlocksGT.Diggables, 0);
-							WD.set(aChunk, i, mHeight-4, j, BlocksGT.Diggables, 0);
-							WD.set(aChunk, i, mHeight-5, j, BlocksGT.Diggables, 0);
+							WD.set(aChunk, i, mHeight-3, j, BlocksGT.Diggables, 2);
+							WD.set(aChunk, i, mHeight-4, j, BlocksGT.Diggables, 2);
+							WD.set(aChunk, i, mHeight-5, j, BlocksGT.Diggables, 2);
 							for (int k = 1; k < mHeight-5; k++) WD.set(aChunk, i, k, j, k < 32 ? BlocksGT.GraniteRed : BlocksGT.GraniteBlack, aRandom.nextBoolean()?2:0);
 							if (aRandom.nextInt(8) == 0) WD.set(aChunk, i, mHeight+1, j, BlocksGT.Glowtus, aRandom.nextInt(16));
 						}
