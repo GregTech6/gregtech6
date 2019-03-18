@@ -164,19 +164,19 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		RM.RollFormer           .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,   256, NF, railGt          , 4, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 2, NF,  16, 0,    64, NF, wireGt02        , 1, ST.tag( 2), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 4, NF,  16, 0,    64, NF, wireGt04        , 1, ST.tag( 4), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 8, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        ,12, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        ,16, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 2, NF,  16, 0,    64, NF, wireGt04        , 1, ST.tag( 4), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 4, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 6, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 8, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 2, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 3, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 4, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
-		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt08                        , 2, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, T, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 2, NF,  16, 0,    64, NF, wireGt02        , 1, ST.tag( 2), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 4, NF,  16, 0,    64, NF, wireGt04        , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 8, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        ,12, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        ,16, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 2, NF,  16, 0,    64, NF, wireGt04        , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 4, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 6, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt02                        , 8, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 2, NF,  16, 0,    64, NF, wireGt08        , 1, ST.tag( 8), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 3, NF,  16, 0,    64, NF, wireGt12        , 1, ST.tag(12), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt04                        , 4, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt08                        , 2, NF,  16, 0,    64, NF, wireGt16        , 1, ST.tag(16), NI, F, F, F, ANTIMATTER.NOT));
 		
 		RM.Welder               .add(new RecipeMapHandlerPrefix(ingot                           , 2, NF,  16, 0,    64, NF, ingotDouble     , 1, ST.tag( 2), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
 		RM.Welder               .add(new RecipeMapHandlerPrefix(ingot                           , 3, NF,  16, 0,    64, NF, ingotTriple     , 1, ST.tag( 3), NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, FLAMMABLE.NOT, SMITHABLE)));
@@ -298,6 +298,9 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtMedium                  , 1, NF,  16,16,     0, NF, round                   , 2, NI, bulletGtMedium .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtLarge                   , 1, NF,  16,16,     0, NF, round                   , 3, NI, bulletGtLarge  .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
 		
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(pipeQuadruple                   , 1, NF,  16,16,     0, NF, pipeMedium              , 4, NI, NI, F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(pipeNonuple                     , 1, NF,  16,16,     0, NF, pipeSmall               , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGtDust                     , 1, NF,  16,16,     0, NF, dust                    ,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGtGem                      , 1, NF,  16,16,     0, NF, gem                     ,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crateGtIngot                    , 1, NF,  16,16,     0, NF, ingot                   ,16, NI, IL.Crate.get(1), T, F, F, ANTIMATTER.NOT));
@@ -318,6 +321,9 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crushed                         , 1, NF,  16,16,     0, NF, crushedTiny             , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crushedPurified                 , 1, NF,  16,16,     0, NF, crushedPurifiedTiny     , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(crushedCentrifuged              , 1, NF,  16,16,     0, NF, crushedCentrifugedTiny  , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
+		
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(pipeMedium                      , 4, NF,  16,16,     0, NF, pipeQuadruple           , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));
+		RM.Boxinator    .add(new RecipeMapHandlerPrefix(pipeSmall                       , 9, NF,  16,16,     0, NF, pipeNonuple             , 1, ST.tag( 9), NI, F, F, F, ANTIMATTER.NOT));
 		
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(dustSmall                       ,64, NF,  16,16,     0, NF, crateGtDust             , 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Boxinator    .add(new RecipeMapHandlerPrefix(chunkGt                         ,64, NF,  16,16,     0, NF, crateGtIngot            , 1, IL.Crate.get(1), NI, F, F, F, ANTIMATTER.NOT));

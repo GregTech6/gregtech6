@@ -447,7 +447,8 @@ public class GT_API extends Abstract_Mod {
 			MT.NaNO3.setLocal("Nitre");
 			MT.Glyceryl.setLocal("Nitro");
 			MT.Gunpowder.setLocal("Boompowder");
-			MT.SulfuricAcid.setLocal("Sulphuric Acid");
+			MT.H2SO4.setLocal("Sulphuric Acid");
+			MT.H2S2O7.setLocal("Disulphuric Acid");
 			MT.Greenschist.setLocal("Green Shit");
 			MT.Blueschist.setLocal("Blue Shit");
 			MT.Nikolite.setLocal("Bluestone");

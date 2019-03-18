@@ -67,10 +67,11 @@ public class CoverPump extends AbstractCoverAttachment {
 	@Override
 	public void onTickPre(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && !aData.mStopped && SERVER_TIME % 20 == 5 && aData.mTileEntity instanceof IFluidHandler) {
+			long tThroughput = mThroughput, tMoved = 1;
 			if (aData.mVisuals[aSide]==0) {
-				UT.Fluids.move(new DelegatorTileEntity<>(aData.mTileEntity, aSide), aData.mTileEntity.getAdjacentTank(aSide), mThroughput);
+				while (tMoved > 0 && tThroughput > 0) tThroughput -= (tMoved = UT.Fluids.move(new DelegatorTileEntity<>(aData.mTileEntity, aSide), aData.mTileEntity.getAdjacentTank(aSide), tThroughput));
 			} else {
-				UT.Fluids.move(aData.mTileEntity.getAdjacentTank(aSide), new DelegatorTileEntity<>(aData.mTileEntity, aSide), mThroughput);
+				while (tMoved > 0 && tThroughput > 0) tThroughput -= (tMoved = UT.Fluids.move(aData.mTileEntity.getAdjacentTank(aSide), new DelegatorTileEntity<>(aData.mTileEntity, aSide), tThroughput));
 			}
 		}
 	}

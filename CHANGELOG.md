@@ -30,7 +30,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.08: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] The Pump Cover was not able to grab multiple different Fluids at the same tick, making the Quad-Pipe + Pump Combination unsuitable for the Gas Turbine. But now that should work.
+[CHANGED] Tungsten Trioxide (WO3) now has an Ingot form so it is easier to get it out of the Crucible.
 
 
 6.10.07:
