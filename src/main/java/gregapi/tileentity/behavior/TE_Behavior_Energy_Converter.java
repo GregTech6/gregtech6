@@ -58,17 +58,22 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 		UT.NBT.setBoolean(aNBT, NBT_CAN_ENERGY, mCanEmitEnergy);
 	}
 	
-	public boolean doConversion(long aTimer, TileEntity aEmitter, byte aSide, boolean aNegative) {
+	public boolean doConversion(long aTimer, TileEntity aEmitter, byte aSide, byte aMode, boolean aNegative) {
 		long tOutput = UT.Code.units(mStorage.mEnergy, mEnergyIN.mRec, mEnergyOUT.mRec, F);
-		mFast = (tOutput > mEnergyOUT.mRec);
+		if (aMode > 0) tOutput = Math.min(tOutput, UT.Code.units(mEnergyOUT.mMax, 16, 16-aMode, F));
 		mCanEmitEnergy = (tOutput >= mEnergyOUT.mMin);
+		mFast = (tOutput > mEnergyOUT.mRec);
 		mEmitsEnergy = F;
 		if (mCanEmitEnergy) {
-			if (tOutput > mEnergyOUT.mMax && mLimitConsumption) tOutput = mEnergyOUT.mMax; else if (tOutput > mEnergyOUT.mMax) {
-				if (aTimer > 2) return mOverloaded = T;
-				DEB.println("Machine overcharged on startup with: " + mStorage.mEnergy + " " + mEnergyOUT.mType.getLocalisedNameLong());
-				mStorage.mEnergy = 0;
-				return T;
+			if (tOutput > mEnergyOUT.mMax) {
+				if (mLimitConsumption) {
+					tOutput = mEnergyOUT.mMax;
+				} else {
+					if (aTimer > 2) return mOverloaded = T;
+					DEB.println("Machine overloaded on Chunkload with: " + mStorage.mEnergy + " " + mEnergyIN.mType.getLocalisedNameLong());
+					mStorage.mEnergy = 0;
+					return T;
+				}
 			}
 			if (mSizeIrrelevant) {
 				long tEmittedPackets = (SIDES_VALID[aSide] ? ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide, aNegative ? -1 : 1,                     tOutput*mMultiplier, aEmitter) : ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyOUT.mType, aNegative ? -1 : 1,                     tOutput*mMultiplier, (ITileEntityEnergy)aEmitter));
@@ -84,21 +89,26 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 				}
 			}
 		}
-		if (mWasteEnergy) mStorage.mEnergy = Math.max(0, mStorage.mEnergy-mEnergyIN.mMax);
+		if (mWasteEnergy) mStorage.mEnergy = Math.max(0, mStorage.mEnergy-UT.Code.units(mEnergyIN.mMax, 16, 16-aMode, T));
 		return mCanEmitEnergy;
 	}
 	
-	public boolean doBipolar(long aTimer, TileEntity aEmitter, byte aSidePos, byte aSideNeg) {
+	public boolean doBipolar(long aTimer, TileEntity aEmitter, byte aSidePos, byte aSideNeg, byte aMode) {
 		long tOutput = UT.Code.units(mStorage.mEnergy, mEnergyIN.mRec, mEnergyOUT.mRec, F);
-		mFast = (tOutput > mEnergyOUT.mRec);
+		if (aMode > 0) tOutput = Math.min(tOutput, UT.Code.units(mEnergyOUT.mMax, 16, 16-aMode, F));
 		mCanEmitEnergy = (tOutput >= mEnergyOUT.mMin);
+		mFast = (tOutput > mEnergyOUT.mRec);
 		mEmitsEnergy = F;
 		if (mCanEmitEnergy) {
-			if (tOutput > mEnergyOUT.mMax && mLimitConsumption) tOutput = mEnergyOUT.mMax; else if (tOutput > mEnergyOUT.mMax) {
-				if (aTimer > 2) return mOverloaded = T;
-				DEB.println("Machine overcharged on startup with: " + mStorage.mEnergy + " " + mEnergyOUT.mType.getLocalisedNameLong());
-				mStorage.mEnergy = 0;
-				return T;
+			if (tOutput > mEnergyOUT.mMax) {
+				if (mLimitConsumption) {
+					tOutput = mEnergyOUT.mMax;
+				} else {
+					if (aTimer > 2) return mOverloaded = T;
+					DEB.println("Machine overloaded on Chunkload with: " + mStorage.mEnergy + " " + mEnergyIN.mType.getLocalisedNameLong());
+					mStorage.mEnergy = 0;
+					return T;
+				}
 			}
 			if (mSizeIrrelevant) {
 				long
@@ -118,21 +128,26 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 				}
 			}
 		}
-		if (mWasteEnergy) mStorage.mEnergy = Math.max(0, mStorage.mEnergy-mEnergyIN.mMax);
+		if (mWasteEnergy) mStorage.mEnergy = Math.max(0, mStorage.mEnergy-UT.Code.units(mEnergyIN.mMax, 16, 16-aMode, T));
 		return mCanEmitEnergy;
 	}
 	
-	public boolean doTwinType(long aTimer, TileEntity aEmitter, byte aSide1, byte aSide2, TE_Behavior_Energy_Stats aEnergyOUT) {
+	public boolean doTwinType(long aTimer, TileEntity aEmitter, byte aSide1, byte aSide2, byte aMode, TE_Behavior_Energy_Stats aEnergyOUT) {
 		long tOutput = UT.Code.units(mStorage.mEnergy, mEnergyIN.mRec, mEnergyOUT.mRec, F);
-		mFast = (tOutput > mEnergyOUT.mRec);
+		if (aMode > 0) tOutput = Math.min(tOutput, UT.Code.units(mEnergyOUT.mMax, 16, 16-aMode, F));
 		mCanEmitEnergy = (tOutput >= mEnergyOUT.mMin);
+		mFast = (tOutput > mEnergyOUT.mRec);
 		mEmitsEnergy = F;
 		if (mCanEmitEnergy) {
-			if (tOutput > mEnergyOUT.mMax && mLimitConsumption) tOutput = mEnergyOUT.mMax; else if (tOutput > mEnergyOUT.mMax) {
-				if (aTimer > 2) return mOverloaded = T;
-				DEB.println("Machine overcharged on startup with: " + mStorage.mEnergy + " " + mEnergyOUT.mType.getLocalisedNameLong());
-				mStorage.mEnergy = 0;
-				return T;
+			if (tOutput > mEnergyOUT.mMax) {
+				if (mLimitConsumption) {
+					tOutput = mEnergyOUT.mMax;
+				} else {
+					if (aTimer > 2) return mOverloaded = T;
+					DEB.println("Machine overloaded on Chunkload with: " + mStorage.mEnergy + " " + mEnergyIN.mType.getLocalisedNameLong());
+					mStorage.mEnergy = 0;
+					return T;
+				}
 			}
 			if (mSizeIrrelevant) {
 				long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide1, 1, tOutput*mMultiplier, aEmitter);
@@ -164,7 +179,7 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 				}
 			}
 		}
-		if (mWasteEnergy) mStorage.mEnergy = Math.max(0, mStorage.mEnergy-mEnergyIN.mMax);
+		if (mWasteEnergy) mStorage.mEnergy = Math.max(0, mStorage.mEnergy-UT.Code.units(mEnergyIN.mMax, 16, 16-aMode, T));
 		return mCanEmitEnergy;
 	}
 }

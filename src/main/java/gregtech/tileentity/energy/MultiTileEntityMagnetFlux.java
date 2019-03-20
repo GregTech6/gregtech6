@@ -28,9 +28,10 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.energy.ITileEntityEnergyFluxHandler;
 import gregapi.tileentity.energy.TileEntityBase11Bipolar;
+import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import net.minecraft.block.Block;
 
-public class MultiTileEntityMagnetFlux extends TileEntityBase11Bipolar implements ITileEntityEnergyFluxHandler {
+public class MultiTileEntityMagnetFlux extends TileEntityBase11Bipolar implements ITileEntityEnergyFluxHandler, ITileEntitySwitchableMode {
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;

@@ -43,7 +43,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively {
 	protected boolean mStopped = F, mNegativeInput = F, oNegativeInput = F;
-	protected byte mExplosionPrevention = 0;
+	protected byte mExplosionPrevention = 0, mMode = 0;
 	
 	public TE_Behavior_Energy_Stats mEnergyIN = null, mEnergyOUT = null;
 	public TE_Behavior_Energy_Capacitor mStorage = null;
@@ -55,6 +55,7 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_STOPPED)) mStopped = aNBT.getBoolean(NBT_STOPPED);
 		mActivity = new TE_Behavior_Active_Trinary(this, aNBT);
+		if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
 		readEnergyBehavior(aNBT);
 		readEnergyConverter(aNBT);
 	}
@@ -63,6 +64,7 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mStopped);
+		aNBT.setByte(NBT_MODE, mMode);
 		mActivity.save(aNBT);
 		writeEnergyBehavior(aNBT);
 	}
@@ -113,7 +115,7 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	@Override public byte getVisualData() {return (byte)(mActivity.mState | (byte)(mNegativeInput ? B[7] : 0));}
 	
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doConversion(aTimer, this, SIDE_ANY, mNegativeInput && TD.Energy.ALL_NEGATIVE_ALLOWED.contains(mEnergyIN.mType) && TD.Energy.ALL_NEGATIVE_ALLOWED.contains(mEnergyOUT.mType));
+		mActivity.mActive = mConverter.doConversion(aTimer, this, SIDE_ANY, mMode, mNegativeInput && TD.Energy.ALL_NEGATIVE_ALLOWED.contains(mEnergyIN.mType) && TD.Energy.ALL_NEGATIVE_ALLOWED.contains(mEnergyOUT.mType));
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;
@@ -161,6 +163,8 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	public boolean setAdjacentOnOff(boolean aOnOff) {if (mConverter.mWasteEnergy) mStopped = !aOnOff; return !mStopped;}
 	public boolean setStateOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}
 	public boolean getStateOnOff() {return !mStopped;}
+	public byte setStateMode(byte aMode) {mMode = aMode; return mMode;}
+	public byte getStateMode() {return mMode;}
 	
 	// Stuff to Override
 	

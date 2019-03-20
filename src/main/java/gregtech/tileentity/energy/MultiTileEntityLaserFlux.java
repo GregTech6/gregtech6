@@ -31,10 +31,11 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.energy.ITileEntityEnergyFluxHandler;
 import gregapi.tileentity.energy.TileEntityBase10EnergyConverter;
 import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
+import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-public class MultiTileEntityLaserFlux extends TileEntityBase10EnergyConverter implements ITileEntityEnergyFluxHandler, ITileEntityAdjacentOnOff {
+public class MultiTileEntityLaserFlux extends TileEntityBase10EnergyConverter implements ITileEntityEnergyFluxHandler, ITileEntityAdjacentOnOff, ITileEntitySwitchableMode {
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);

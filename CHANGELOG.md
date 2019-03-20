@@ -32,6 +32,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.10.08: (Not released yet)
 [FIXED] The Pump Cover was not able to grab multiple different Fluids at the same tick, making the Quad-Pipe + Pump Combination unsuitable for the Gas Turbine. But now that should work.
 [CHANGED] Tungsten Trioxide (WO3) now has an Ingot form so it is easier to get it out of the Crucible.
+[ADDED] Recipes for the RF Powered Variants of Electric Energy Covnerters. Now it's no longer needed to MineTweaker them in. People can decide for themselves how balanced that is.
+[ADDED]
+Singleblock "EU->Other" and "RF->Other" Converters can now be adjusted with a Mode Selector Cover and similar.
+This includes Heaters, Magnets, Coolers, Motors and Lasers.
+Mode = 0 means Maximum, Mode = 1 means 15/16, 2 = 14/16, 8 = 1/2, 12 = 1/4, Modes above 12 may not be operable as they end up going below the Minimum Output of the Converter itself.
+Should you not supply enough Power to reach the Cap that the Mode has set, the Mode wont do anything, so this only makes sense if you have too much Power going in and want to limit it.
 
 
 6.10.07:

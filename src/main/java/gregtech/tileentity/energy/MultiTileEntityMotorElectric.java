@@ -28,10 +28,11 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.energy.ITileEntityEnergyElectricityAcceptor;
 import gregapi.tileentity.energy.TileEntityBase11Motor;
+import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 
-public class MultiTileEntityMotorElectric extends TileEntityBase11Motor implements ITileEntityEnergyElectricityAcceptor {
+public class MultiTileEntityMotorElectric extends TileEntityBase11Motor implements ITileEntityEnergyElectricityAcceptor, ITileEntitySwitchableMode {
 	@Override public void onWalkOver2(EntityLivingBase aEntity) {if (SIDES_TOP[mFacing] && mActivity.mState>0) {aEntity.rotationYaw=aEntity.rotationYaw+(mCounterClockwise?-5:+5)*(mConverter.mFast?2:1); aEntity.rotationYawHead=aEntity.rotationYawHead+(mCounterClockwise?-5:+5)*(mConverter.mFast?2:1);}}
 	
 	@Override

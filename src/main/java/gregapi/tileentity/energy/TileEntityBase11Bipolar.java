@@ -45,7 +45,7 @@ public abstract class TileEntityBase11Bipolar extends TileEntityBase10EnergyConv
 	
 	@Override
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doBipolar(aTimer, this, mFacing, OPPOSITES[mFacing]);
+		mActivity.mActive = mConverter.doBipolar(aTimer, this, mFacing, OPPOSITES[mFacing], mMode);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;

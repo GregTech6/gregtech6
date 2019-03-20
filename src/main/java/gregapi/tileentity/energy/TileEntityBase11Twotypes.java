@@ -55,7 +55,7 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
 	
 	@Override
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doTwinType(aTimer, this, mFacing, OPPOSITES[mFacing], mEnergyOUT2);
+		mActivity.mActive = mConverter.doTwinType(aTimer, this, mFacing, OPPOSITES[mFacing], mMode, mEnergyOUT2);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;

@@ -33,7 +33,7 @@ import net.minecraft.block.Block;
 public class MultiTileEntityEngineRotation extends TileEntityBase11Bipolar implements ITileEntityEnergyElectricityAcceptor {
 	@Override
 	public void doConversion(long aTimer) {
-		mActivity.mActive = mConverter.doBipolar(aTimer, this, aTimer % 32 < 16 ? OPPOSITES[mFacing] : mFacing, aTimer % 32 < 16 ? mFacing : OPPOSITES[mFacing]);
+		mActivity.mActive = mConverter.doBipolar(aTimer, this, aTimer % 32 < 16 ? OPPOSITES[mFacing] : mFacing, aTimer % 32 < 16 ? mFacing : OPPOSITES[mFacing], mMode);
 		if (mConverter.mOverloaded) {
 			overload(mStorage.mEnergy, mConverter.mEnergyOUT.mType);
 			mConverter.mOverloaded = F;

@@ -35,13 +35,14 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.energy.ITileEntityEnergyElectricityAcceptor;
 import gregapi.tileentity.energy.TileEntityBase10EnergyConverter;
 import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
+import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 
-public class MultiTileEntityHeaterElectric extends TileEntityBase10EnergyConverter implements ITileEntityEnergyElectricityAcceptor, ITileEntityAdjacentOnOff, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityHeaterElectric extends TileEntityBase10EnergyConverter implements ITileEntityEnergyElectricityAcceptor, ITileEntityAdjacentOnOff, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, ITileEntitySwitchableMode {
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mActivity.mState>0) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mConverter.mEnergyOUT.mRec / 10.0F));}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box((mFacing==SIDE_X_NEG?PX_P[2]:0), (mFacing==SIDE_Y_NEG?PX_P[2]:0), (mFacing==SIDE_Z_NEG?PX_P[2]:0), (mFacing==SIDE_X_POS?PX_N[2]:1), (mFacing==SIDE_Y_POS?PX_N[2]:1), (mFacing==SIDE_Z_POS?PX_N[2]:1));}
 	
