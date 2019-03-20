@@ -49,35 +49,35 @@ public interface ITileEntityMachineBlockUpdateable {
 		 * Causes a Machineblock Update
 		 * This update will cause surrounding MultiBlock Machines to update their Configuration.
 		 * You should call this Function in @Block.breakBlock and in @Block.onBlockAdded of your Machine.
-		 * @param aWorld is being the World
-		 * @param aX is the X-Coord of the update causing Block
-		 * @param aY is the Y-Coord of the update causing Block
-		 * @param aZ is the Z-Coord of the update causing Block
 		 */
 		public static boolean causeMachineUpdate(IHasWorldAndCoords aTileEntity, boolean aRemoved) {
 			if (aTileEntity.isServerSide()) new Thread(new MachineBlockUpdateRunnable(aTileEntity.getWorld(), aTileEntity.getCoords(), aTileEntity.getBlockOffset(0, 0, 0), aTileEntity.getMetaDataOffset(0, 0, 0), aRemoved), "Machine Block Updating").start();
 			return T;
 		}
-		
 		/**
 		 * Causes a Machineblock Update
 		 * This update will cause surrounding MultiBlock Machines to update their Configuration.
 		 * You should call this Function in @Block.breakBlock and in @Block.onBlockAdded of your Machine.
-		 * @param aWorld is being the World
-		 * @param aX is the X-Coord of the update causing Block
-		 * @param aY is the Y-Coord of the update causing Block
-		 * @param aZ is the Z-Coord of the update causing Block
+		 */
+		public static boolean causeMachineUpdate(World aWorld, int aX, int aY, int aZ, Block aBlock, byte aMeta, boolean aRemoved) {
+			if (!aWorld.isRemote) new Thread(new MachineBlockUpdateRunnable(aWorld, new ChunkCoordinates(aX, aY, aZ), aBlock, aMeta, aRemoved), "Machine Block Updating").start();
+			return T;
+		}
+		/**
+		 * Causes a Machineblock Update
+		 * This update will cause surrounding MultiBlock Machines to update their Configuration.
+		 * You should call this Function in @Block.breakBlock and in @Block.onBlockAdded of your Machine.
 		 */
 		public static boolean causeMachineUpdate(World aWorld, ChunkCoordinates aCoords, Block aBlock, byte aMeta, boolean aRemoved) {
 			if (!aWorld.isRemote) new Thread(new MachineBlockUpdateRunnable(aWorld, aCoords, aBlock, aMeta, aRemoved), "Machine Block Updating").start();
 			return T;
 		}
 		
+		
 		/**
 		 * Adds a Multi-Machine Block, like my Machine Casings for example.
 		 * You should call @causeMachineUpdate in @Block.breakBlock and in @Block.onBlockAdded of your registered Block.
 		 * You don't need to register TileEntities which implement @IMachineBlockUpdateable
-		 * @param aID the ID of your Block
 		 * @param aMeta the Metadata of the Blocks as Bitmask! -1 or ~0 for all Metavalues
 		 */
 		public static boolean registerMachineBlock(Block aBlock, int aMeta) {
@@ -86,7 +86,6 @@ public interface ITileEntityMachineBlockUpdateable {
 			MACHINE_BLOCKS.put(aBlock, aMeta);
 			return T;
 		}
-		
 		/**
 		 * Like above but with boolean Parameters instead of a BitMask
 		 */

@@ -81,7 +81,7 @@ public abstract class TileEntityBase10FacingDouble extends TileEntityBase09Facin
 				onFacingChange(oFacing, oSecondFacing);
 				checkCoverValidity();
 				doEnetUpdate();
-				if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(getWorld(), getCoords(), getBlock(getCoords()), getMetaData(getCoords()), F);
+				if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(this, F);
 				return 10000;
 			}
 		}
@@ -95,7 +95,7 @@ public abstract class TileEntityBase10FacingDouble extends TileEntityBase09Facin
 				onFacingChange(mFacing, oSecondFacing);
 				checkCoverValidity();
 				doEnetUpdate();
-				if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(getWorld(), getCoords(), getBlock(getCoords()), getMetaData(getCoords()), F);
+				if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(this, F);
 				return 10000;
 			}
 		}

@@ -69,7 +69,6 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
@@ -190,7 +189,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 				} catch(Throwable e) {e.printStackTrace(ERR);}
 				try {
 					if (aMTEContainer.mTileEntity instanceof IMTE_HasMultiBlockMachineRelevantData) {
-						if (((IMTE_HasMultiBlockMachineRelevantData)aMTEContainer.mTileEntity).hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, new ChunkCoordinates(aX, aY, aZ), aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, F);
+						if (((IMTE_HasMultiBlockMachineRelevantData)aMTEContainer.mTileEntity).hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, F);
 					}
 				} catch(Throwable e) {e.printStackTrace(ERR);}
 				try {
