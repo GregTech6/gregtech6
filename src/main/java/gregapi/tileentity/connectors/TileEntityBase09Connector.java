@@ -132,7 +132,18 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 				checkCoverValidity();
 				doEnetUpdate();
 				if (aNotify) ((ITileEntityConnector)tDelegator.mTileEntity).connect(tDelegator.mSideOfTileEntity, F);
-				if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(getWorld(), getCoords(), getBlock(getCoords()), getMetaData(getCoords()), F);
+				if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(this, F);
+				return T;
+			}
+			if (this instanceof ITileEntityRedstoneWire) {
+				byte oConnections = mConnections;
+				mConnections |= SBIT[aSide];
+				updateClientData();
+				causeBlockUpdate();
+				onConnectionChange(oConnections);
+				checkCoverValidity();
+				doEnetUpdate();
+				if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(this, F);
 				return T;
 			}
 		} else if (WD.air(tDelegator.mWorld, tDelegator.mX, tDelegator.mY, tDelegator.mZ) || canConnect(aSide, tDelegator)) {
@@ -143,7 +154,7 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 			onConnectionChange(oConnections);
 			checkCoverValidity();
 			doEnetUpdate();
-			if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(getWorld(), getCoords(), getBlock(getCoords()), getMetaData(getCoords()), F);
+			if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(this, F);
 			return T;
 		}
 		return connected(aSide);
@@ -162,7 +173,7 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 		onConnectionChange(oConnections);
 		checkCoverValidity();
 		doEnetUpdate();
-		if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(getWorld(), getCoords(), getBlock(getCoords()), getMetaData(getCoords()), F);
+		if (hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(this, F);
 		if (aNotify && tDelegator.mTileEntity instanceof ITileEntityConnector && SIDES_VALID[tDelegator.mSideOfTileEntity] && UT.Code.haveOneCommonElement(((ITileEntityConnector)tDelegator.mTileEntity).getConnectorTypes(tDelegator.mSideOfTileEntity), getConnectorTypes(aSide))) ((ITileEntityConnector)tDelegator.mTileEntity).disconnect(tDelegator.mSideOfTileEntity, F);
 		return T;
 	}

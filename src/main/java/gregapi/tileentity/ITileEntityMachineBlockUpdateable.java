@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gregapi.code.HashSetNoNulls;
+import gregapi.random.IHasWorldAndCoords;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -43,6 +44,20 @@ public interface ITileEntityMachineBlockUpdateable {
 	public static class Util {
 		/** The List of Blocks, which can conduct Machine Block Updates */
 		public static final Map<Block, Integer> MACHINE_BLOCKS = new HashMap<>();
+		
+		/**
+		 * Causes a Machineblock Update
+		 * This update will cause surrounding MultiBlock Machines to update their Configuration.
+		 * You should call this Function in @Block.breakBlock and in @Block.onBlockAdded of your Machine.
+		 * @param aWorld is being the World
+		 * @param aX is the X-Coord of the update causing Block
+		 * @param aY is the Y-Coord of the update causing Block
+		 * @param aZ is the Z-Coord of the update causing Block
+		 */
+		public static boolean causeMachineUpdate(IHasWorldAndCoords aTileEntity, boolean aRemoved) {
+			if (aTileEntity.isServerSide()) new Thread(new MachineBlockUpdateRunnable(aTileEntity.getWorld(), aTileEntity.getCoords(), aTileEntity.getBlockOffset(0, 0, 0), aTileEntity.getMetaDataOffset(0, 0, 0), aRemoved), "Machine Block Updating").start();
+			return T;
+		}
 		
 		/**
 		 * Causes a Machineblock Update
