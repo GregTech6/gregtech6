@@ -121,6 +121,15 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			mTanks = new FluidTankGT[] {new FluidTankGT(mCapacity)};
 		}
 		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
+		
+		if (worldObj != null && isServerSide() && mHasToAddTimer) {
+			if (WD.even(this)) {
+				GT_API_Proxy.SERVER_TICK_PRE.add(this);
+			} else {
+				GT_API_Proxy.SERVER_TICK_PR2.add(this);
+			}
+			mHasToAddTimer = F;
+		}
 	}
 	
 	@Override

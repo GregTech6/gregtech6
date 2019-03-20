@@ -97,6 +97,12 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 		if (aNBT.hasKey("gt.mtransfer")) mTransferredItems = aNBT.getLong("gt.mtransfer");
 		if (aNBT.hasKey(NBT_PIPESIZE)) mStepSize = aNBT.getLong(NBT_PIPESIZE);
 		if (aNBT.hasKey(NBT_PIPERENDER)) mRenderType = aNBT.getByte(NBT_PIPERENDER);
+		
+		if (worldObj != null && isServerSide() && mHasToAddTimer) {
+			GT_API_Proxy.SERVER_TICK_PRE.add(this);
+			GT_API_Proxy.SERVER_TICK_PR2.add(this);
+			mHasToAddTimer = F;
+		}
 	}
 	
 	@Override
@@ -158,6 +164,14 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 			GT_API_Proxy.SERVER_TICK_PR2.add(this);
 			mHasToAddTimer = F;
 		}
+	}
+	
+	@Override
+	public void onCoordinateChange() {
+		super.onCoordinateChange();
+		GT_API_Proxy.SERVER_TICK_PRE.remove(this);
+		GT_API_Proxy.SERVER_TICK_PR2.remove(this);
+		onUnregisterPre();
 	}
 	
 	@Override
