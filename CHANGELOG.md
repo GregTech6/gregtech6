@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.08: (Not released yet)
+6.10.08:
 [FIXED] Fluid Pipes were skipping the very first tick, resulting in Boilers slowly accumulating one tick worth of Steam over time, whenever the Chunk was loaded.
 [FIXED] Red Alloy Wiring and similar were not able to connect to Covers that are on Pipes or Electric Wires.
 [FIXED] The Pump Cover was not able to grab multiple different Fluids at the same tick, making the Quad-Pipe + Pump Combination unsuitable for the Gas Turbine. But now that should work.
