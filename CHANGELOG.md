@@ -34,6 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Red Alloy Wiring and similar were not able to connect to Covers that are on Pipes or Electric Wires.
 [FIXED] The Pump Cover was not able to grab multiple different Fluids at the same tick, making the Quad-Pipe + Pump Combination unsuitable for the Gas Turbine. But now that should work.
 [CHANGED] Tungsten Trioxide (WO3) now has an Ingot form so it is easier to get it out of the Crucible.
+[ADDED] When you harvest Blocks using a Chisel they will be chiseled. This mainly only works for vanilla Stone, Stone Bricks and all GT6 Stones.
 [ADDED] Recipes for the RF Powered Variants of Electric Energy Covnerters. Now it's no longer needed to MineTweaker them in. People can decide for themselves how balanced that is.
 [ADDED]
 Singleblock "EU->Other" and "RF->Other" Converters can now be adjusted with a Mode Selector Cover and similar.

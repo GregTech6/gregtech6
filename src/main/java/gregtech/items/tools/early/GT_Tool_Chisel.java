@@ -21,6 +21,9 @@ package gregtech.items.tools.early;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
+import gregapi.block.metatype.BlockStones;
 import gregapi.data.CS.SFX;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -29,59 +32,65 @@ import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_Chisel extends ToolStats {
-	@Override
-	public int getToolDamagePerBlockBreak() {
-		return 50;
-	}
+	@Override public int getToolDamagePerBlockBreak()                                       {return 50;}
+	@Override public int getToolDamagePerDropConversion()                                   {return 100;}
+	@Override public int getToolDamagePerContainerCraft()                                   {return 400;}
+	@Override public int getToolDamagePerEntityAttack()                                     {return 200;}
+	@Override public int getBaseQuality()                                                   {return 0;}
+	@Override public float getBaseDamage()                                                  {return 1.5F;}
+	@Override public float getSpeedMultiplier()                                             {return 1.0F;}
+	@Override public float getMaxDurabilityMultiplier()                                     {return 1.0F;}
+	@Override public boolean isMiningTool()                                                 {return T;}
+	@Override public boolean canCollect()                                                   {return T;}
 	
 	@Override
-	public int getToolDamagePerDropConversion() {
-		return 100;
-	}
-	
-	@Override
-	public int getToolDamagePerContainerCraft() {
-		return 400;
-	}
-	
-	@Override
-	public int getToolDamagePerEntityAttack() {
-		return 200;
-	}
-	
-	@Override
-	public int getBaseQuality() {
+	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
+		if (aBlock == Blocks.stone) {
+			aDrops.clear();
+			aDrops.add(ST.make(Blocks.stonebrick, 1, 3));
+			return 0;
+		}
+		if (aBlock == Blocks.stonebrick) {
+			aDrops.clear();
+			switch(aMetaData) {
+			case  0: aDrops.add(ST.make(Blocks.stonebrick, 1, 2)); break;
+			case  1: aDrops.add(ST.make(Blocks.mossy_cobblestone, 1, 0)); break;
+			case  2: aDrops.add(ST.make(Blocks.cobblestone, 1, 0)); break;
+			default: aDrops.add(ST.make(aBlock, 1, aMetaData)); break;
+			}
+			return 0;
+		}
+		if (aBlock instanceof BlockStones) {
+			aDrops.clear();
+			switch(aMetaData) {
+			case BlockStones.STONE: aDrops.add(ST.make(aBlock, 1, BlockStones.SMOTH)); break;
+			case BlockStones.BRICK: aDrops.add(ST.make(aBlock, 1, BlockStones.CRACK)); break;
+			case BlockStones.MBRIK: aDrops.add(ST.make(aBlock, 1, BlockStones.MCOBL)); break;
+			case BlockStones.CRACK: aDrops.add(ST.make(aBlock, 1, BlockStones.COBBL)); break;
+			case BlockStones.SMOTH: aDrops.add(ST.make(aBlock, 1, BlockStones.CHISL)); break;
+			case BlockStones.TILES: aDrops.add(ST.make(aBlock, 1, BlockStones.STILE)); break;
+			case BlockStones.SBRIK: aDrops.add(ST.make(aBlock, 1, BlockStones.STILE)); break;
+			case BlockStones.WINDA: aDrops.add(ST.make(aBlock, 1, BlockStones.WINDB)); break;
+			case BlockStones.WINDB: aDrops.add(ST.make(aBlock, 1, BlockStones.WINDA)); break;
+			default: aDrops.add(ST.make(aBlock, 1, aMetaData)); break;
+			}
+			return 0;
+		}
 		return 0;
-	}
-	
-	@Override
-	public float getBaseDamage() {
-		return 1.5F;
-	}
-	
-	@Override
-	public float getSpeedMultiplier() {
-		return 1.0F;
-	}
-	
-	@Override
-	public float getMaxDurabilityMultiplier() {
-		return 1.0F;
-	}
-	
-	@Override
-	public boolean isMiningTool() {
-		return false;
 	}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return tTool != null && tTool.equalsIgnoreCase(TOOL_chisel);
+		return (tTool != null && tTool.equalsIgnoreCase(TOOL_chisel)) || aBlock == Blocks.stone || aBlock == Blocks.stonebrick || aBlock instanceof BlockStones;
 	}
 	
 	@Override
@@ -101,6 +110,6 @@ public class GT_Tool_Chisel extends ToolStats {
 	
 	@Override
 	public String getDeathMessage() {
-		return "[VICTIM] got carved to death by [KILLER]";
+		return "[VICTIM] got a Statue made by [KILLER]";
 	}
 }
