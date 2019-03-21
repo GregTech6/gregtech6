@@ -70,18 +70,7 @@ public class GT_Tool_Chisel extends ToolStats {
 		}
 		if (aBlock instanceof BlockStones) {
 			aDrops.clear();
-			switch(aMetaData) {
-			case BlockStones.STONE: aDrops.add(ST.make(aBlock, 1, BlockStones.SMOTH)); break;
-			case BlockStones.BRICK: aDrops.add(ST.make(aBlock, 1, BlockStones.CRACK)); break;
-			case BlockStones.MBRIK: aDrops.add(ST.make(aBlock, 1, BlockStones.MCOBL)); break;
-			case BlockStones.CRACK: aDrops.add(ST.make(aBlock, 1, BlockStones.COBBL)); break;
-			case BlockStones.SMOTH: aDrops.add(ST.make(aBlock, 1, BlockStones.CHISL)); break;
-			case BlockStones.TILES: aDrops.add(ST.make(aBlock, 1, BlockStones.STILE)); break;
-			case BlockStones.SBRIK: aDrops.add(ST.make(aBlock, 1, BlockStones.STILE)); break;
-			case BlockStones.WINDA: aDrops.add(ST.make(aBlock, 1, BlockStones.WINDB)); break;
-			case BlockStones.WINDB: aDrops.add(ST.make(aBlock, 1, BlockStones.WINDA)); break;
-			default: aDrops.add(ST.make(aBlock, 1, aMetaData)); break;
-			}
+			aDrops.add(ST.make(aBlock, 1, BlockStones.CHISEL_MAPPINGS[aMetaData & 15]));
 			return 0;
 		}
 		return 0;

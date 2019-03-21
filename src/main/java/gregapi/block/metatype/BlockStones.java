@@ -76,6 +76,10 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	RNFBR =  8, RSTBR =  9,
 	TILES = 10, STILE = 11;
 	
+	public static final byte[]
+	  CHISEL_MAPPINGS = {SMOTH, COBBL, MCOBL, CRACK, COBBL, MCOBL, CHISL, CHISL, RNFBR, RSTBR, STILE, STILE, STILE, WINDB, WINDA, STILE}
+	;
+	
 	public final OreDictMaterial mMaterial;
 	@SuppressWarnings("rawtypes")
 	public final ItemStackSet[] mEqualBlocks = {new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(), new ItemStackSet(),};
@@ -388,17 +392,8 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
 		if (aTool.equals(TOOL_prospector)) return aMeta == STONE && ToolCompat.prospectStone(this, aMeta, aQuality, aChatReturn, aWorld, aSide, aX, aY, aZ) ? 10000 : 0;
 		if (aTool.equals(TOOL_chisel) && !aSneaking) {
-			switch(aMeta) {
-			case STONE: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, SMOTH, 3); return mBlock == this ? 10000 : 5000;
-			case BRICK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, CRACK, 3); return mBlock == this ? 10000 : 5000; // Bricks to Cracked Brick
-			case CRACK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, COBBL, 3); return mBlock == this ? 10000 : 5000;
-			case MBRIK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, MCOBL, 3); return mBlock == this ? 10000 : 5000;
-			case SMOTH: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, CHISL, 3); return mBlock == this ? 10000 : 5000; // Smooth to Chiseled
-			case TILES: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, STILE, 3); return mBlock == this ? 10000 : 5000; // Tile to Small Tile
-			case SBRIK: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, STILE, 3); return mBlock == this ? 10000 : 5000; // Small Bricks to Small Tile
-			case WINDA: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDB, 3); return mBlock == this ? 10000 : 5000;
-			case WINDB: aWorld.setBlockMetadataWithNotify(aX, aY, aZ, WINDA, 3); return mBlock == this ? 10000 : 5000;
-			}
+			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, CHISEL_MAPPINGS[aMeta & 15], 3);
+			return mBlock == this ? 10000 : 5000;
 		}
 		if (aTool.equals(TOOL_file) && !aSneaking) {
 			switch(aMeta) {
