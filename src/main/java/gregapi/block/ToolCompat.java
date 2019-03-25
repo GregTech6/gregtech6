@@ -361,7 +361,7 @@ public class ToolCompat {
 		}
 		
 		Random tRandom = new Random(aX^aY^aZ^aSide);
-		for (int i = 0, j = (int)(9+2*aQuality); i < j * 2; i++) {
+		for (int i = 0, j = (int)(9+2*aQuality); i < j * (1+aQuality); i++) {
 			tX = (int) (aX-4-aQuality+tRandom.nextInt(j));
 			tY = (int) (aY-4-aQuality+tRandom.nextInt(j));
 			tZ = (int) (aZ-4-aQuality+tRandom.nextInt(j));
