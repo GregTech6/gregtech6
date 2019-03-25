@@ -343,19 +343,19 @@ public class ToolCompat {
 			
 			tBlock = aWorld.getBlock(tX, tY, tZ);
 			if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LAVA, "There is Lava behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LAVA));
 				break;
 			}
 			if (tBlock instanceof BlockLiquid || tBlock instanceof IFluidBlock) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LIQUID, "There is a Liquid behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LIQUID));
 				break;
 			}
 			if (tBlock == Blocks.monster_egg || !WD.hasCollide(aWorld, tX, tY, tZ, tBlock)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_AIR, "There is an Air Pocket behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_AIR));
 				break;
 			}
 			if (i < 4) if (tBlock != aBlock || aMeta != aWorld.getBlockMetadata(tX, tY, tZ)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_CHANGE, "Material is changing behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_CHANGE));
 				break;
 			}
 		}
@@ -368,12 +368,12 @@ public class ToolCompat {
 			tBlock = aWorld.getBlock(tX, tY, tZ);
 			
 			OreDictItemData tAssotiation = OM.anyassociation((tBlock instanceof IBlockRetrievable ? ((IBlockRetrievable)tBlock).getItemStackFromBlock(aWorld, tX, tY, tZ, SIDE_INVALID) : ST.make(tBlock, 1, aWorld.getBlockMetadata(tX, tY, tZ))));
-			if (tAssotiation != null && tAssotiation.mPrefix.contains(TD.Prefix.ORE)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES, "Found traces of ") + tAssotiation.mMaterial.mMaterial.getLocal() + " Ore.");
+			if (tAssotiation != null && tAssotiation.mPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DENSE_ORE)) {
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES) + tAssotiation.mMaterial.mMaterial.getLocal() + " Ore.");
 				return T;
 			}
 		}
-		if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_NOTHING, "No traces of Ore found."));
+		if (aChatReturn != null && aChatReturn.isEmpty()) aChatReturn.add(LH.get(LH.PROSPECTING_NOTHING));
 		return T;
 	}
 }
