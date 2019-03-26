@@ -34,7 +34,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.09: (Not released yet)
+[NOTE] The Copyright Directive just passed in its ENTIRETY. The Internet is going to be dead in 2 years, if it isn't stopped last minute by Germany on April 9th, but considering Germany and France came up with all of this, I dont have high hopes...
 [FIXED] Power Conversion Rates for the Flux Dynamo now match the Electric Dynamo.
+[CHANGED] Prospecting no longer detects small Ores and now has a bigger Sample Density. Ores of normal Size are still found.
 
 
 6.10.08:
