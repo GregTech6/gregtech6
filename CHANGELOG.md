@@ -36,6 +36,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.10.09: (Not released yet)
 [NOTE] The Copyright Directive just passed in its ENTIRETY. The Internet is going to be dead in 2 years, if it isn't stopped last minute by Germany on April 9th, but considering Germany and France came up with all of this, I dont have high hopes...
 [FIXED] Power Conversion Rates for the Flux Dynamo now match the Electric Dynamo.
+[FIXED] Anvils were not showing if there was an Item on them, if the Item did not have any valid ItemData.
 [CHANGED] Prospecting no longer detects small Ores and now has a bigger Sample Density. Ores of normal Size are still found.
 
 

@@ -43,6 +43,7 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
+import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
@@ -144,37 +145,45 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		if (aIsServerSide) {
 			if (mInventoryChanged) {
 				mShapeA = mShapeB = 0;
-				mMaterialA = mMaterialB = 0;
-				OreDictItemData
-				tData = OM.anydata(slot(0));
-				if (tData != null) {
-					if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
-					if (tData.mPrefix != null) {
-						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1; else
-						if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2; else
-						if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeA = 2; else
-						if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3; else
-						if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3; else
-						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
-						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
-						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
-						mShapeA = 0;
+				if (slotHas(0)) {
+					mMaterialA = MT.Fe.mID;
+					OreDictItemData tData = OM.anydata(slot(0));
+					if (tData != null) {
+						if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
+						if (tData.mPrefix != null) {
+							if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1; else
+							if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeA = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
+							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
+							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
+							mShapeA = 0;
+						}
 					}
+				} else {
+					mMaterialA = 0;
 				}
-				tData = OM.anydata(slot(1));
-				if (tData != null) {
-					if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
-					if (tData.mPrefix != null) {
-						if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1; else
-						if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2; else
-						if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeB = 2; else
-						if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3; else
-						if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3; else
-						if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
-						if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
-						if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
-						mShapeB = 0;
+				if (slotHas(1)) {
+					mMaterialB = MT.Fe.mID;
+					OreDictItemData tData = OM.anydata(slot(1));
+					if (tData != null) {
+						if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
+						if (tData.mPrefix != null) {
+							if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1; else
+							if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeB = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
+							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
+							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
+							mShapeB = 0;
+						}
 					}
+				} else {
+					mMaterialB = 0;
 				}
 				updateClientData();
 			}
@@ -256,8 +265,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid.mIconIndexBlock, mMaterial.contains(TD.Properties.GLOWING));
-		mTextureA = (mMaterialA > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialA] != null ? BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], (mShapeA==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING)) : null);
-		mTextureB = (mMaterialB > 0 && OreDictMaterial.MATERIAL_ARRAY[mMaterialB] != null ? BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], (mShapeB==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING)) : null);
+		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], (mShapeA==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING)));
+		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], (mShapeB==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING)));
 		return mTextureB == null ? mTextureA == null ? 6 : 7 : 8;
 	}
 	
