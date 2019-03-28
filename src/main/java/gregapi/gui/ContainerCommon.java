@@ -499,17 +499,17 @@ public class ContainerCommon extends Container {
 		
 		mTileEntity.markDirtyGUI();
 		
-		//null checks and checks if the item can be stacked (maxStackSize > 1)
+		// null checks and checks if the item can be stacked (maxStackSize > 1)
 		if (getSlotCount() > 0 && tSlot != null && tSlot.getHasStack() && !(tSlot instanceof Slot_Holo)) {
 			ItemStack tStack = tSlot.getStack();
 			rStack = ST.copy(tStack);
 			
-			//TileEntity -> Player
+			// TileEntity -> Player
 			if (aIndex < getAllSlotCount()) {
 				if (doesBindPlayerInventory() && !mergeItemStack(tStack, getAllSlotCount(), getAllSlotCount()+36, T)) {
 					return null;
 				}
-			//Player -> TileEntity
+			// Player -> TileEntity
 			} else if (!mergeItemStack(tStack, getShiftClickStartIndex(), getShiftClickStartIndex()+getShiftClickSlotCount(), F)) {
 				return null;
 			}

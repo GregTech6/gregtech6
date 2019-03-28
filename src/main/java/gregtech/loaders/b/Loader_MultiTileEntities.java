@@ -193,6 +193,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Pb                    ,    0,   4.0F,   4.0F,  1);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bi                    ,   16,   4.0F,   4.0F,  2);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Sb                    ,   47,   4.0F,   4.0F,  2);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ni                    ,   22,   4.0F,   4.0F,  3);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bronze                ,    9,   7.0F,   7.0F,  3);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.FakeOsmium            ,   37,   2.0F,   2.0F,  3);
@@ -207,6 +208,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.HSLA                  ,   18,   6.0F,   6.0F,  6);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Au                    ,    2,   2.0F,   2.0F,  6);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ag                    ,    3,   2.0F,   2.0F,  6);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Mn                    ,   46,   6.0F,   6.0F,  6);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Manyullyn             ,   39,   3.0F,   3.0F,  6);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Knightmetal           ,   25,   7.0F,   7.0F,  7);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.SteelGalvanized       ,   19,   6.0F,   6.0F,  7);
@@ -228,6 +230,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TungstenCarbide       ,   17,  12.5F,  12.5F, 27);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DuraniumAlloy         ,   31,  20.0F,  20.0F, 27);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Draconium             ,   35,  50.0F,  50.0F, 27);
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ultimet               ,   48,  12.5F,  12.5F, 27);
 		metalset(aRegistry, aMetal, aMachine, aWooden, ANY.W                    ,   26,  10.0F,  10.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ir                    ,   15,  15.0F,  15.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Os                    ,   29,   3.0F,   3.0F, 36);
@@ -236,7 +239,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.TritaniumAlloy        ,   32,  30.0F,  30.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Ad                    ,   33, 100.0F, 100.0F, 36);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bedrock_HSLA_Alloy    ,   34, 100.0F, 100.0F, 36);
-		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DraconiumAwakened     ,   36, 100.0F, 100.0F, 36); // 46 is next
+		metalset(aRegistry, aMetal, aMachine, aWooden, MT.DraconiumAwakened     ,   36, 100.0F, 100.0F, 36); // 49 is next
 	}
 	
 	private static void crucible(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<? extends TileEntity> aClass) {

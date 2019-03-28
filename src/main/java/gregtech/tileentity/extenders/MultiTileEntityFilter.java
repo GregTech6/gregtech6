@@ -101,7 +101,8 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 		return aFluid != null && allowInput(aFluid.getFluid());
 	}
 	public boolean allowInput(Fluid aFluid) {
-		if (aFluid != null) for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && UT.Fluids.id(aFluid) == ST.meta_(tStack)) return !mInverted;
+		if (aFluid == null) return F;
+		for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && UT.Fluids.id(aFluid) == ST.meta_(tStack)) return !mInverted;
 		return mInverted;
 	}
 	
@@ -232,8 +233,35 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 		
 		@Override
 		public ItemStack slotClick(int aSlotIndex, int aMouseclick, int aShifthold, EntityPlayer aPlayer) {
-			if (aSlotIndex < 0 || aSlotIndex >= mTileEntity.getSizeInventoryGUI()) return super.slotClick(aSlotIndex, aMouseclick, aShifthold, aPlayer);
-			
+			if (aSlotIndex < 0 || aSlotIndex >= inventorySlots.size()) return super.slotClick(aSlotIndex, aMouseclick, aShifthold, aPlayer);
+			if (aSlotIndex >= mTileEntity.getSizeInventoryGUI()) {
+				if (aShifthold != 1) return super.slotClick(aSlotIndex, aMouseclick, aShifthold, aPlayer);
+				Slot tSlot = (Slot)inventorySlots.get(aSlotIndex);
+				if (tSlot != null) {
+					ItemStack tStack = tSlot.getStack();
+					if (tStack != null) {
+						if ((((MultiTileEntityFilter)mTileEntity).mModes & MODE_INV) == 0) {
+							FluidStack tFluid = UT.Fluids.getFluidForFilledItem(tStack, T);
+							if (tFluid != null && ((MultiTileEntityFilter)mTileEntity).allowInput(tFluid) == ((MultiTileEntityFilter)mTileEntity).mInverted) {
+								for (int i = 0; i < ((MultiTileEntityFilter)mTileEntity).mFilter.length; i++) if (ST.invalid(((MultiTileEntityFilter)mTileEntity).mFilter[i])) {
+									((MultiTileEntityFilter)mTileEntity).mFilter[i] = UT.Fluids.display(tFluid.getFluid());
+									detectAndSendChanges();
+									return null;
+								}
+							}
+						} else {
+							if (((MultiTileEntityFilter)mTileEntity).allowInput(tStack) == ((MultiTileEntityFilter)mTileEntity).mInverted) {
+								for (int i = 0; i < ((MultiTileEntityFilter)mTileEntity).mFilter.length; i++) if (ST.invalid(((MultiTileEntityFilter)mTileEntity).mFilter[i])) {
+									((MultiTileEntityFilter)mTileEntity).mFilter[i] = ST.amount(1, tStack);
+									detectAndSendChanges();
+									return null;
+								}
+							}
+						}
+					}
+				}
+				return null;
+			}
 			Slot tSlot = (Slot)inventorySlots.get(aSlotIndex);
 			if (tSlot != null) {
 				ItemStack tStack = aPlayer.inventory.getItemStack();
