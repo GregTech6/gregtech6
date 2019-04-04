@@ -29,14 +29,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.10: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.10.10:
+[NOTE] That's about it... still trying to distract myself as much as possible (and yes that involves Factorio by now) and sleeping way too much. Did some Spring Cleaning so that's nice I guess. Probably gonna skip Patreon Post...
+[ADDED] Voidmetal Drum, since it was missing.
 
 
 6.10.09:
 [NOTE]
 The Copyright Directive just passed in its ENTIRETY.
-The Internet is going to be dead in 2 years, if it isn't stopped last minute by Germany, France or Britain on April 9th.
+The Internet is going to be dead in 2 years, if it isn't stopped last minute by Germany, France or Britain on April 15th (Sweden alone isn't enough!).
 But considering Germany came up with all of this in order to buy French Votes for the Russian Gas Pipeline,
 France itself is already preparing its Laws for Categorizing and Filtering a day after it has passed, before it's even through the Council,
 And Britain wants to vote for it to then just blatantly blame it on Europe, like they already did in the Parliament.
@@ -46,7 +47,7 @@ P.S. I'm already looking up alternatives for the Public Internet, like Freenet. 
 [FIXED] Power Conversion Rates for the Flux Dynamo now match the Electric Dynamo.
 [FIXED] Anvils were not showing if there was an Item on them, if the Item did not have any valid ItemData.
 [CHANGED] Prospecting no longer detects small Ores and now has a bigger Sample Density. Ores of normal Size are still found.
-[ADDED] Antimony, Ultimet and Manganese Versions of Mass Storages, Hoppers etc.
+[ADDED] Antimony, Ultimet and Manganese Versions of Mass Storages, Shelves, Hoppers etc.
 [ADDED] The Filter Blocks now accept Shiftclicks.
 
 
