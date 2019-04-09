@@ -21,6 +21,8 @@ package gregtech.loaders.a;
 
 import static gregapi.data.CS.*;
 
+import gregapi.block.MaterialGas;
+import gregapi.block.MaterialOil;
 import gregapi.block.fluid.BlockBaseFluid;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
@@ -122,11 +124,11 @@ public class Loader_Blocks implements Runnable {
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Ocean         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.TEMPESTAS, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Swamp         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.VENENUM, 1));
 		
-		BlocksGT.OilExtraHeavy                                                  = new BlockBaseFluid            ("gt.block.fluid.oil.extraheavy"    , FL.Oil_ExtraHeavy.fluid(), 1000);
-		BlocksGT.OilHeavy                                                       = new BlockBaseFluid            ("gt.block.fluid.oil.heavy"         , FL.Oil_Heavy     .fluid(), 1000);
-		BlocksGT.OilMedium                                                      = new BlockBaseFluid            ("gt.block.fluid.oil.medium"        , FL.Oil_Medium    .fluid(), 1000);
-		BlocksGT.OilLight                                                       = new BlockBaseFluid            ("gt.block.fluid.oil.light"         , FL.Oil_Light     .fluid(), 1000);
-		BlocksGT.GasNatural                                                     = new BlockBaseFluid            ("gt.block.fluid.gas.natural"       , FL.Gas_Natural   .fluid(), 1000);
+		BlocksGT.OilExtraHeavy                                                  = new BlockBaseFluid            ("gt.block.fluid.oil.extraheavy"    , FL.Oil_ExtraHeavy.fluid(), 1000, MaterialOil.instance);
+		BlocksGT.OilHeavy                                                       = new BlockBaseFluid            ("gt.block.fluid.oil.heavy"         , FL.Oil_Heavy     .fluid(), 1000, MaterialOil.instance);
+		BlocksGT.OilMedium                                                      = new BlockBaseFluid            ("gt.block.fluid.oil.medium"        , FL.Oil_Medium    .fluid(), 1000, MaterialOil.instance);
+		BlocksGT.OilLight                                                       = new BlockBaseFluid            ("gt.block.fluid.oil.light"         , FL.Oil_Light     .fluid(), 1000, MaterialOil.instance);
+		BlocksGT.GasNatural                                                     = new BlockBaseFluid            ("gt.block.fluid.gas.natural"       , FL.Gas_Natural   .fluid(), 1000, MaterialGas.instance);
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.OilExtraHeavy , 1, W), F, TC.stack(TC.AQUA, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.OilHeavy      , 1, W), F, TC.stack(TC.AQUA, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 2));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.OilMedium     , 1, W), F, TC.stack(TC.AQUA, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 1));

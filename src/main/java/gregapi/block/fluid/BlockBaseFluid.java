@@ -26,6 +26,7 @@ import java.util.Random;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.block.MaterialGas;
 import gregapi.data.LH;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.UT;
@@ -52,7 +53,7 @@ public class BlockBaseFluid extends BlockFluidFinite {
 	public final Fluid mFluid;
 	
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability) {
-		this(aNameInternal, aFluid, aFlammability, /*aFluid.isGaseous()?Material.air:*/aFluid.getTemperature()>500?Material.lava:Material.water);
+		this(aNameInternal, aFluid, aFlammability, aFluid.isGaseous()?MaterialGas.instance:aFluid.getTemperature()>500?Material.lava:Material.water);
 	}
 	
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability, Material aMaterial) {

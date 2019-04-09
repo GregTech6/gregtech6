@@ -110,7 +110,7 @@ public class BlockOcean extends BlockWaterlike {
 		if (tBlock == this) {
 			if (WD.meta(aWorld, aX, aY-1, aZ) == 0) tOceanCounter++;
 		} else if (WD.anywater(tBlock)) {
-			tList.add(new ChunkCoordinates(aX, aY-1, aZ));
+			aWorld.setBlock(aX, aY-1, aZ, this, 0, 2);
 			if (WD.meta(aWorld, aX, aY-1, aZ) == 0) tOceanCounter++;
 		}
 		
