@@ -52,7 +52,7 @@ public class BlockBaseFluid extends BlockFluidFinite {
 	public final Fluid mFluid;
 	
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability) {
-		this(aNameInternal, aFluid, aFlammability, aFluid.getTemperature()>500?Material.lava:Material.water);
+		this(aNameInternal, aFluid, aFlammability, aFluid.isGaseous()?Material.air:aFluid.getTemperature()>500?Material.lava:Material.water);
 	}
 	
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability, Material aMaterial) {

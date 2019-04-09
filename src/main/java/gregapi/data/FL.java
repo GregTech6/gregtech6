@@ -344,6 +344,7 @@ public enum FL {
 	, Oil_Heavy2                ("heavyoil"                                                 , SIMPLE, LIQUID)
 	, Oil_HotCrude              ("hotcrude"                                                 , SIMPLE, LIQUID)
 	
+	, Gas_Natural               ("gas_natural_gas"          , "naturalgas"                  , SIMPLE, GAS)
 	, Methane                   ("methane"                                                  , SIMPLE, GAS)
 	, Propane                   ("propane"                                                  , SIMPLE, GAS)
 	, Butane                    ("butane"                                                   , SIMPLE, GAS)
@@ -368,14 +369,14 @@ public enum FL {
 	, Glass                     ("glass"                    , "molten.glass"                , SIMPLE, LIQUID)
 	, Sluice                    ("sluicejuice"                                              , SIMPLE, LIQUID)
 	
-	, Myst_Ink                  ("myst.ink.black"                                           , SIMPLE, LIQUID)
+	, Myst_Ink                  ("myst.ink.black"                                           , SIMPLE, LIQUID, ENCHANTED_EFFECT)
 	
-	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID) // 144 per Unit
-	, FieryBlood                ("fieryblood"                                               , LIQUID) // 144 per Unit
-	, FieryTears                ("fierytears"                                               , LIQUID) // 144 per Unit
-	, Mana_TE                   ("mana"                                                     , LIQUID) // 250 per Unit
-	, Ender                     ("molten.enderpearl"                                        , LIQUID) // 144 per Unit
-	, Ender_TE                  ("ender"                                                    , LIQUID) // 250 per Unit
+	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
+	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
+	, FieryTears                ("fierytears"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
+	, Mana_TE                   ("mana"                                                     , LIQUID, ENCHANTED_EFFECT) // 250 per Unit
+	, Ender                     ("molten.enderpearl"                                        , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
+	, Ender_TE                  ("ender"                                                    , LIQUID, ENCHANTED_EFFECT) // 250 per Unit
 	, Redstone                  ("molten.redstone"                                          , LIQUID) // 144 per Unit
 	, Redstone_TE               ("redstone"                                                 , LIQUID) // 100 per Unit
 	, Glowstone_TE              ("glowstone"                                                , GAS) // 250 per Unit

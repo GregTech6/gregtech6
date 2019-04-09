@@ -71,7 +71,7 @@ public class Loader_Fluids implements Runnable {
 		UT.Fluids.create("liquid_medium_oil"        , "Raw Oil"             , null                  , 1,   1000,   300);
 		UT.Fluids.create("liquid_light_oil"         , "Light Oil"           , null                  , 1,   1000,   300);
 		UT.Fluids.create("soulsandoil"              , "Soulsand Oil"        , null                  , 1,   1000,   300);
-		UT.Fluids.create("gas_natural_gas"          , "Natural Gas"         , null                  , 2,   1000,   300, FluidsGT.SIMPLE); // ~95% methane, ~5% ethane and trace amounts of propane and butane
+		UT.Fluids.create("gas_natural_gas"          , "Natural Gas"         , null                  , 2,   1000,   300); // ~95% methane, ~5% ethane and trace amounts of propane and butane
 		
 		UT.Fluids.create("liquidoxygen"             , "Liquid Oxygen"       , MT.O                  , 1,   1000,    85);
 		
@@ -80,26 +80,26 @@ public class Loader_Fluids implements Runnable {
 		UT.Fluids.create("UUAmplifier"              , "UU-Amplifier"        , MT.UUAmplifier        , 1,    100,   100);
 		UT.Fluids.create("ic2uumatter"              , "UU-Matter"           , MT.UUMatter           , 1,    100,   100);
 		UT.Fluids.create("ic2constructionfoam"      , "Construction Foam"   , MT.ConstructionFoam   , 1,    100,   300);
-		UT.Fluids.create("ic2distilledwater"        , "Distilled Water"     , MT.DistWater          , 1,   1000,   300, FluidsGT.SIMPLE);
+		UT.Fluids.create("ic2distilledwater"        , "Distilled Water"     , MT.DistWater          , 1,   1000,   300);
 		UT.Fluids.create("NitroFuel"                , "Nitro Fuel"          , MT.NitroFuel          , 1,   1000,   300);
-		UT.Fluids.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1,   1000,   300, FluidsGT.SIMPLE);
+		UT.Fluids.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1,   1000,   300);
 		UT.Fluids.create("oil"                      , "Oil"                 , MT.Oil                , 1,   1000,   300);
 		UT.Fluids.create("fuel"                     , "Fuel Oil"            , MT.Fuel               , 1,   1000,   300);
-		UT.Fluids.create("kerosine"                 , "Kerosine"            , MT.Kerosine           , 1,   1000,   300, FluidsGT.SIMPLE);
-		UT.Fluids.create("diesel"                   , "Diesel"              , MT.Diesel             , 1,   1000,   300, FluidsGT.SIMPLE);
-		UT.Fluids.create("petrol"                   , "Petrol"              , MT.Petrol             , 1,   1000,   300, FluidsGT.SIMPLE);
+		UT.Fluids.create("kerosine"                 , "Kerosine"            , MT.Kerosine           , 1,   1000,   300);
+		UT.Fluids.create("diesel"                   , "Diesel"              , MT.Diesel             , 1,   1000,   300);
+		UT.Fluids.create("petrol"                   , "Petrol"              , MT.Petrol             , 1,   1000,   300);
 		UT.Fluids.create("ic2biomass"               , "Biomass"             , MT.Biomass            , 1,   1000,   300);
 		UT.Fluids.create("biomass"                  , "Biomass"             , MT.Biomass            , 1,   1000,   300);
 		UT.Fluids.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
-		UT.Fluids.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1,   1000,   300, FluidsGT.SIMPLE);
-		UT.Fluids.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300, FluidsGT.ENCHANTED_EFFECT);
+		UT.Fluids.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1,   1000,   300);
+		UT.Fluids.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);
 		UT.Fluids.create("hotfryingoil"             , "Hot Frying Oil"      , MT.FryingOilHot       , 1,   1000,   400);
 		
-		UT.Fluids.create("fieryblood"               , "Fiery Blood"         , null                  , 1,      L,  1500, FluidsGT.ENCHANTED_EFFECT).setLuminosity(10);
-		UT.Fluids.create("fierytears"               , "Fiery Tears"         , null                  , 1,      L,  1500, FluidsGT.ENCHANTED_EFFECT).setLuminosity(10);
+		UT.Fluids.create("fieryblood"               , "Fiery Blood"         , null                  , 1,      L,  1500).setLuminosity(10);
+		UT.Fluids.create("fierytears"               , "Fiery Tears"         , null                  , 1,      L,  1500).setLuminosity(10);
 		
-		DYE_FLUIDS[0].add(UT.Fluids.make(UT.Fluids.create("squidink"    , "Squid Ink"       , null, 1, L, 300, FluidsGT.SIMPLE), L));
-		DYE_FLUIDS[4].add(UT.Fluids.make(UT.Fluids.create("indigo"      , "Indigo Dye"      , null, 1, L, 300, FluidsGT.SIMPLE), L));
+		DYE_FLUIDS[0].add(UT.Fluids.make(UT.Fluids.create("squidink"    , "Squid Ink"       , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
+		DYE_FLUIDS[4].add(UT.Fluids.make(UT.Fluids.create("indigo"      , "Indigo Dye"      , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
 		
 		IIconContainer
 		tDyeWaterMixed  = new Textures.BlockIcons.CustomIcon("fluids/dyes.water"),
@@ -108,9 +108,9 @@ public class Loader_Fluids implements Runnable {
 		tDyedCFoam      = new Textures.BlockIcons.CustomIcon("fluids/cfoam");
 		
 		for (byte i = 0; i < 16; i++) {
-			DYE_FLUIDS[i].add(DYE_FLUIDS_WATER      [i] = UT.Fluids.make(UT.Fluids.create("dye.watermixed." + DYE_OREDICTS_POST[i].toLowerCase(), tDyeWaterMixed    , "Water Mixed " + DYE_NAMES[i] + " Dye"    , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE), L));
-			DYE_FLUIDS[i].add(DYE_FLUIDS_FLOWER     [i] = UT.Fluids.make(UT.Fluids.create("dye.flower."     + DYE_OREDICTS_POST[i].toLowerCase(), tDyeFlower        , DYE_NAMES[i] + " Flower Dye"              , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE), L));
-			DYE_FLUIDS[i].add(DYE_FLUIDS_CHEMICAL   [i] = UT.Fluids.make(UT.Fluids.create("dye.chemical."   + DYE_OREDICTS_POST[i].toLowerCase(), tDyeChemical      , "Chemical " + DYE_NAMES[i] + " Dye"       , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE), L));
+			DYE_FLUIDS[i].add(DYE_FLUIDS_WATER      [i] = UT.Fluids.make(UT.Fluids.create("dye.watermixed." + DYE_OREDICTS_POST[i].toLowerCase(), tDyeWaterMixed    , "Water Mixed " + DYE_NAMES[i] + " Dye"    , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
+			DYE_FLUIDS[i].add(DYE_FLUIDS_FLOWER     [i] = UT.Fluids.make(UT.Fluids.create("dye.flower."     + DYE_OREDICTS_POST[i].toLowerCase(), tDyeFlower        , DYE_NAMES[i] + " Flower Dye"              , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
+			DYE_FLUIDS[i].add(DYE_FLUIDS_CHEMICAL   [i] = UT.Fluids.make(UT.Fluids.create("dye.chemical."   + DYE_OREDICTS_POST[i].toLowerCase(), tDyeChemical      , "Chemical " + DYE_NAMES[i] + " Dye"       , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
 			DYED_C_FOAMS                            [i] = UT.Fluids.make(UT.Fluids.create("cfoam."          + DYE_OREDICTS_POST[i].toLowerCase(), tDyedCFoam        , DYE_NAMES[i] + " C-Foam"                  , null, DYES[i], 1, 100, 300, NI, NI, 0), 100);
 			DYED_C_FOAMS_OWNED                      [i] = UT.Fluids.make(UT.Fluids.create("cfoam.owned."    + DYE_OREDICTS_POST[i].toLowerCase(), tDyedCFoam        , "Advanced " + DYE_NAMES[i] + " C-Foam"    , null, DYES[i], 1, 100, 300, NI, NI, 0), 100);
 		}

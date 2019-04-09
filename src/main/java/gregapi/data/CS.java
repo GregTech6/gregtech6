@@ -1310,6 +1310,7 @@ public class CS {
 		, NONSTANDARD = new HashSetNoNulls<>()
 		, BROKEN = new HashSetNoNulls<>()
 		, BATH = new HashSetNoNulls<>()
+		, DYE = new HashSetNoNulls<>()
 		
 		, STEAM = new HashSetNoNulls<>()
 		, POWER_CONDUCTING = new HashSetNoNulls<>()
@@ -1402,7 +1403,7 @@ public class CS {
 		oreBroken   , oreBrokenSandstone    , oreBrokenNetherrack   , oreBrokenEndstone , oreBrokenAtumLimestone    ,
 		oreSmall    , oreSmallSandstone     , oreSmallNetherrack    , oreSmallEndstone  , oreSmallAtumLimestone     , oreSmallAtumSand, oreSmallGravel, oreSmallMud, oreSmallSand, oreSmallRedSand, oreSmallBedrock;
 		
-		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy;
+		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy, GasNatural;
 		public static BlockFluidClassic Ocean, Swamp, River;
 		
 		public static BlockBase Diggables, Sands, Paths, RockOres;
