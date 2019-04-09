@@ -52,7 +52,7 @@ public class BlockBaseFluid extends BlockFluidFinite {
 	public final Fluid mFluid;
 	
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability) {
-		this(aNameInternal, aFluid, aFlammability, aFluid.isGaseous()?Material.air:aFluid.getTemperature()>500?Material.lava:Material.water);
+		this(aNameInternal, aFluid, aFlammability, /*aFluid.isGaseous()?Material.air:*/aFluid.getTemperature()>500?Material.lava:Material.water);
 	}
 	
 	public BlockBaseFluid(String aNameInternal, Fluid aFluid, int aFlammability, Material aMaterial) {
@@ -175,6 +175,7 @@ public class BlockBaseFluid extends BlockFluidFinite {
 	@Override public IIcon getIcon(int aSide, int aMeta) {return SIDES_VERTICAL[aSide]?mFluid.getStillIcon():mFluid.getFlowingIcon();}
 	@Override @SideOnly(Side.CLIENT) public int getRenderColor(int aMeta) {return mFluid.getColor();}
 	@Override @SideOnly(Side.CLIENT) public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return mFluid.getColor();}
+	@Override public boolean isAir(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
 	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}
 	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}

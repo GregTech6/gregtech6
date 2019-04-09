@@ -96,15 +96,22 @@ public class BlockOcean extends BlockWaterlike {
 		
 		byte tOceanCounter = 0;
 		ArrayListNoNulls<ChunkCoordinates> tList = new ArrayListNoNulls<>();
-		for (byte tSide : ALL_SIDES_BUT_TOP) {
+		for (byte tSide : ALL_SIDES_HORIZONTAL) {
 			tBlock = WD.block(aWorld, aX, aY, aZ, tSide);
-			byte tMeta = WD.meta(aWorld, aX, aY, aZ, tSide);
 			if (tBlock == this) {
-				if (tMeta == 0) tOceanCounter++;
-			} else if (tBlock instanceof BlockWaterlike || tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
+				if (WD.meta(aWorld, aX, aY, aZ, tSide) == 0) tOceanCounter++;
+			} else if (WD.anywater(tBlock)) {
 				if (!(tBlock instanceof BlockWaterlike && tBlock != BlocksGT.River) || BIOMES_OCEAN_BEACH.contains(tBiome.biomeName)) tList.add(new ChunkCoordinates(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]));
-				if (tMeta == 0) tOceanCounter++;
+				if (WD.meta(aWorld, aX, aY, aZ, tSide) == 0) tOceanCounter++;
 			}
+		}
+		
+		tBlock = WD.block(aWorld, aX, aY-1, aZ);
+		if (tBlock == this) {
+			if (WD.meta(aWorld, aX, aY-1, aZ) == 0) tOceanCounter++;
+		} else if (WD.anywater(tBlock)) {
+			tList.add(new ChunkCoordinates(aX, aY-1, aZ));
+			if (WD.meta(aWorld, aX, aY-1, aZ) == 0) tOceanCounter++;
 		}
 		
 		if (aWorld.getBlockMetadata(aX, aY, aZ) == 0) {
