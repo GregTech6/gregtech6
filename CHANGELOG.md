@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.11: (Not released yet)
+6.10.11:
 [NOTE] The Default Config Pack updated to disable IHLs annoying Worldgen.
 [ADDED] Natural Gas Pockets to Worldgen, similar to the Oil ones. Also increased yield of newly generated Bedrock Oil Springs. And no, Torches wont make Natural Gas explode, while it would be realistic, it would also be impossible to go mining if I did that.
 
