@@ -40,6 +40,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -157,6 +158,49 @@ public class BlockBaseFluid extends BlockFluidFinite {
 			if (tNew != east ) if (tNew > 0) {if (WD.setIfDiff(aWorld, aX+1, aY, aZ  , this, tNew-1, 2)) aWorld.scheduleBlockUpdate(aX+1, aY, aZ  , this, tickRate);} else aWorld.setBlockToAir(aX+1, aY, aZ  );
 		}
 		WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainder > 0 ? tSpread : tSpread - 1, 2);
+	}
+	
+	@Override
+	public int tryToFlowVerticallyInto(World aWorld, int aX, int aY, int aZ, int aAmount) {
+		int tY = aY + densityDir;
+		if (tY < 0 || tY >= aWorld.getHeight()) {
+			aWorld.setBlockToAir(aX, aY, aZ);
+			return 0;
+		}
+		Block tBlock = aWorld.getBlock(aX, tY, aZ);
+		if (tBlock == this) {
+			int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
+			if (tAmount > quantaPerBlock) {
+				aWorld.setBlock(aX, tY, aZ, this, quantaPerBlock - 1, 3);
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+				return tAmount - quantaPerBlock;
+			}
+			if (tAmount > 0) {
+				aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+				aWorld.setBlockToAir(aX, aY, aZ);
+				return 0;
+			}
+			return aAmount;
+		}
+		if (tBlock instanceof BlockFluidBase) {
+			if (densityDir < 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
+				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
+				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
+				// And don't just cast the result of world.getBlock directly like Forge does. Why the fuck do they call world.getBlock more than once for the Block below/above a Fluid...
+				aWorld.scheduleBlockUpdate(aX, aY, aZ, tBlock, ((BlockFluidBase)tBlock).tickRate(aWorld));
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+				return 0;
+			}
+			return aAmount;
+		}
+		if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
+			aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
+			aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+			aWorld.setBlockToAir(aX, aY, aZ);
+			return 0;
+		}
+		return aAmount;
 	}
 	
 	@Override

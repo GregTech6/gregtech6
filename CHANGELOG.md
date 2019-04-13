@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.19: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.18: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.10.17: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.12: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Vertical Flow Crash caused by colliding two different Forge Finite Fluid Blocks. Now at least my own Forge based finite Fluids wont crash from this dumb Bug anymore.
 
 
 6.10.11:
