@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.12: (Not released yet)
+6.10.12:
 [FIXED] Vertical Flow Crash caused by colliding two different Forge Finite Fluid Blocks. Now at least my own Forge based finite Fluids wont crash from this dumb Bug anymore.
 
 

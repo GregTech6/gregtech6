@@ -209,7 +209,7 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("gem"))                    return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Crystal";
 		} else
 		if (aMaterial == MT.InfusedAir || aMaterial == MT.InfusedDull || aMaterial == MT.InfusedEarth || aMaterial == MT.InfusedEntropy || aMaterial == MT.InfusedFire || aMaterial == MT.InfusedOrder || aMaterial == MT.InfusedVis || aMaterial == MT.InfusedWater || aMaterial == MT.InfusedBalance) {
-			if (aPrefix.mNameInternal.startsWith("ore"))                    return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Stone";
+			if (aPrefix.mNameInternal.startsWith("ore"))                    return aMaterial.mNameLocal + " Crystals";
 			if (aPrefix.mNameInternal.startsWith("gem"))                    return aPrefix.mMaterialPre + "Shard of " + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("crystal"))                return aPrefix.mMaterialPre + "Shard of " + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("plate"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Crystal Plate";
