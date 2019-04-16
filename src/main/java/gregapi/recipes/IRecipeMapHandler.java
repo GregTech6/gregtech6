@@ -19,6 +19,8 @@
 
 package gregapi.recipes;
 
+import static gregapi.data.CS.*;
+
 import gregapi.oredict.OreDictItemData;
 import gregapi.recipes.Recipe.RecipeMap;
 import net.minecraft.item.ItemStack;
@@ -41,4 +43,18 @@ public interface IRecipeMapHandler {
 	public boolean isDone();
 	
 	public boolean onAddedToMap(RecipeMap aMap);
+	
+	public static abstract class RecipeMapHandler implements IRecipeMapHandler {
+		public RecipeMapHandler() {/**/}
+		
+		@Override public boolean addRecipesUsing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {return F;}
+		@Override public boolean addRecipesProducing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {return F;}
+		@Override public boolean containsInput(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {return !isDone() && addRecipesUsing(aMap, aStack, aData);}
+		@Override public boolean addRecipesUsing(RecipeMap aMap, Fluid aFluid) {return F;}
+		@Override public boolean addRecipesProducing(RecipeMap aMap, Fluid aFluid) {return F;}
+		@Override public boolean containsInput(RecipeMap aMap, Fluid aFluid) {return !isDone() && addRecipesUsing(aMap, aFluid);}
+		@Override public boolean addAllRecipes(RecipeMap aMap) {return F;}
+		@Override public boolean onAddedToMap(RecipeMap aMap) {return T;}
+		@Override public boolean isDone() {return F;}
+	}
 }

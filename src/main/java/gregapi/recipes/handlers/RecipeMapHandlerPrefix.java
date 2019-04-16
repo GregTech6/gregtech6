@@ -27,7 +27,7 @@ import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
-import gregapi.recipes.IRecipeMapHandler;
+import gregapi.recipes.IRecipeMapHandler.RecipeMapHandler;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -40,7 +40,7 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 @SuppressWarnings("rawtypes")
-public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
+public class RecipeMapHandlerPrefix extends RecipeMapHandler {
 	protected ICondition mCondition;
 	protected final OreDictPrefix[] mInputPrefixes, mOutputPrefixes;
 	protected final byte[] mInputAmounts, mOutputAmounts;
@@ -142,12 +142,6 @@ public class RecipeMapHandlerPrefix implements IRecipeMapHandler {
 		if (isDone()) return F;
 		if (ST.equal(aStack, mAdditionalOutput)) return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
 		return aData != null && aData.hasValidMaterialData() && (UT.Code.contains(aData.mPrefix, mOutputPrefixes) || (mOutputPulverizedRemains && aData.mPrefix == OP.dust)) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
-	}
-	
-	@Override
-	public boolean containsInput(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
-		if (isDone()) return F;
-		return addRecipesUsing(aMap, aStack, aData);
 	}
 	
 	@Override

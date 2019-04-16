@@ -45,6 +45,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.recipes.AdvancedCrafting1ToY;
 import gregapi.recipes.AdvancedCraftingXToY;
+import gregapi.recipes.handlers.RecipeMapHandlerCrushing;
 import gregapi.recipes.handlers.RecipeMapHandlerMaterial;
 import gregapi.recipes.handlers.RecipeMapHandlerPrefix;
 import gregapi.recipes.handlers.RecipeMapHandlerPrefixForging;
@@ -74,6 +75,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(gem                             , 1, null, 0, NF,  16, 0,   256, NF, gemFlawed          , 2, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(gemFlawed                       , 1, null, 0, NF,  16, 0,   256, NF, gemChipped         , 2, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(gemChipped                      , 1, null, 0, NF,  16, 0,   256, NF, null               , 0, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
+		
+		RM.Crusher              .add(new RecipeMapHandlerCrushing());
 		
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(rockGt                          , 1, null, 0, NF,  16, 0,    16, NF, dustSmall          , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(crushedPurified                 , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
