@@ -22,6 +22,7 @@ package gregtech.loaders.c;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.MT;
@@ -352,18 +353,20 @@ public class Loader_Loot implements Runnable {
 	public static boolean addLoot(String aType, WeightedRandomChestContent aLoot) {
 		if (ST.invalid(aLoot.theItemId) || UT.Code.stringInvalid(aType)) {
 			ERR.println("Failed to add Loot: " + aLoot.theItemId + " to " + aType);
-			return false;
+			return F;
 		}
 		ChestGenHooks.addItem(aType, aLoot);
-		return true;
+		return T;
 	}
 	
 	public static boolean addLoot(String aType, int aChance, int aMin, int aMax, ItemStack aLoot) {
 		if (ST.invalid(aLoot) || aMin <= 0 || aMax <= 0 || UT.Code.stringInvalid(aType)) {
 			ERR.println("Failed to add Loot: " + aLoot + " to " + aType);
-			return false;
+			return F;
 		}
-		ChestGenHooks.addItem(aType, new WeightedRandomChestContent(aLoot, aMin, aMax, aChance));
-		return true;
+		if (ConfigsGT.WORLDGEN.get("loot." + aType, aLoot, T)) {
+			ChestGenHooks.addItem(aType, new WeightedRandomChestContent(aLoot, aMin, aMax, aChance));
+		}
+		return T;
 	}
 }
