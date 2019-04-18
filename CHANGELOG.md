@@ -32,7 +32,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.13: (Not released yet)
-[IMPROVED] Crusher now uses the Recipe Handler System instead of being hardcoded for Ore Crushing. May need some testing if everything works still. Also it now uses 2 Slots for outputting the same Crushed Ore, so "cheaty" Ore Multipliers in the Config work twice as good!
+[IMPROVED] The Crusher now uses the Recipe Handler System instead of being hardcoded for Ore Crushing. May need some testing if everything works still. Also it now uses 2 Slots for outputting the same Crushed Ore, so "cheaty" Ore Multipliers in the Config work twice as good!
+[IMPROVED] The Shredder now also uses the Recipe Handler System for most Recipes, specifically the ones related to OreDict Prefixes, also needs some testing.
 [ADDED] Configs to enable/disable GT6 Dungeon Loot, to the Worldgen Config File.
 
 

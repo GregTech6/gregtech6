@@ -400,7 +400,7 @@ public class Recipe {
 			if (ST.invalid(aStack)) return F;
 			if (mRecipeItemMap.containsKey(ST.item_(aStack), ST.meta_(aStack), T)) return T;
 			if (mRecipeMapHandlers.isEmpty()) return F;
-			OreDictItemData aData = OM.anydata_(aStack);
+			OreDictItemData aData = OM.data_(aStack);
 			for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.containsInput(this, aStack, aData)) return T;
 			return F;
 		}

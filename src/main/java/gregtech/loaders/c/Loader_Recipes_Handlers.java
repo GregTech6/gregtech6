@@ -49,6 +49,7 @@ import gregapi.recipes.handlers.RecipeMapHandlerCrushing;
 import gregapi.recipes.handlers.RecipeMapHandlerMaterial;
 import gregapi.recipes.handlers.RecipeMapHandlerPrefix;
 import gregapi.recipes.handlers.RecipeMapHandlerPrefixForging;
+import gregapi.recipes.handlers.RecipeMapHandlerPrefixShredding;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.loaders.b.Loader_OreProcessing.OreProcessing_CraftFrom;
@@ -112,16 +113,23 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(plate                           , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(plateGem                        , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
 		
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(chunk                           , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(rubble                          , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(pebbles                         , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(cluster                         , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(crushed                         , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  , 9, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(crushedPurified                 , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  ,18, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(crushedCentrifuged              , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  ,27, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(crushedTiny                     , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          , 9, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(crushedPurifiedTiny             , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,10, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(crushedCentrifugedTiny          , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,11, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(chunk                  , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(rubble                 , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(pebbles                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(clump                  , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(reduced                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crystalline            , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(cleanGravel            , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(cluster                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushed                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  , 9, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurified        , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  ,18, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifuged     , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  ,27, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedTiny            , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          , 9, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurifiedTiny    , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,10, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifugedTiny , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,11, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(RECYCLABLE) && !tPrefix.containsAny(ORE, ORE_PROCESSING_BASED, DUST_BASED)) {
+		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null, 0, NF,  16, 0,   256, NF, null               , 0, null       , 0, NI, NI, F, T, F, ANTIMATTER.NOT));
+		}
 		
 		RM.Compressor           .add(new RecipeMapHandlerPrefix(dust                            , 1, NF,  16, 0,   256, NF, plateGem        , 1, NI, NI, T, F, F, new Nor(gemLegendary, gemExquisite, gemFlawless, bouleGt, MT.Ice, ANTIMATTER, LAYERED, COATED)));
 		RM.Compressor           .add(new RecipeMapHandlerPrefix(compressed                      , 9, NF,  16, 0,   256, NF, plateDense      , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT)));
