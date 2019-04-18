@@ -117,8 +117,7 @@ public class MultiTileEntityAutoToolIgniter extends TileEntityBase09FacingSingle
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
 		aAmount = Math.min(aAmount, 1);
 		if (aDoInject && mEnergy < mInput * 10) {
-			if (mCoolDown <= 0) mEnergy += aSize * aAmount;
-			if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) overcharge(aSize, aEnergyType);
+			if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) overcharge(aSize, aEnergyType); else if (mCoolDown <= 0) mEnergy += aSize * aAmount;
 		}
 		return aAmount;
 	}
