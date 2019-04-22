@@ -314,7 +314,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
 		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
-			if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
+			if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && !OP.arrowGtWood.mRegisteredItems.isEmpty() && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
 				if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
 					aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, new ArrayListNoNulls<>(OP.arrowGtWood.mRegisteredItems).get(RNGSUS).toStack()));
 					aEvent.entity.setDead();

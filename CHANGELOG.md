@@ -34,7 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.14: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Multiblock Mixer, which works similar to the Centrifuge and can also process up to 256 of the same Recipe at once. (64 or less if the Recipe consumes Items, because stacksizes)
 
 
 6.10.13:

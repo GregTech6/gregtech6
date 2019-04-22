@@ -52,7 +52,7 @@ public class ArrayListNoNulls<E> extends ArrayList<E> {
 	}
 	
 	public E get(Random aRandom) {
-		return get(aRandom.nextInt(size()));
+		return isEmpty() ? null : get(aRandom.nextInt(size()));
 	}
 	
 	@Override
