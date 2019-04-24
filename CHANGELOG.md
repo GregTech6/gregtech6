@@ -33,8 +33,14 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.14: (Not released yet)
 [CHANGED] Multiblock Centrifuge can now process 16 rounds in parallel. This should make the cheap Recipes that cap at 1 process per tick more viable.
-[ADDED] Multiblock Electrolyzer. Workds almost exactly like the Multiblock Centrifuge, just with Electrolyzer Parts instead of Centrifuge Parts, and Electricity.
 [ADDED] Multiblock Mixer, which works similar to the Centrifuge and can also process up to 256 of the same Recipe at once. (64 or less if the Recipe consumes Items, because stacksizes)
+[ADDED]
+Multiblock Electrolyzer.
+Accepts anything between 512 and 4096 EU.
+It has a general 50% Efficiency penalty.
+BUT it has the Overclocking penalty removed entirely.
+Works almost exactly like the Multiblock Centrifuge, just with Electrolyzer Parts instead of Centrifuge Parts.
+Runs on Electricity, and whenever it starts up, it will change the color of the upper "Tanks" randomly, with a selection between Red, Green, Blue, Cyan, Magenta and Yellow.
 
 
 6.10.13:
