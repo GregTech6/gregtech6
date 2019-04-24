@@ -48,25 +48,25 @@ public class MultiTileEntityElectrolyzer extends TileEntityBase10MultiBlockMachi
 		if (worldObj.blockExists(tX-1, tY, tZ-1) && worldObj.blockExists(tX+1, tY, tZ-1) && worldObj.blockExists(tX-1, tY, tZ+1) && worldObj.blockExists(tX+1, tY, tZ+1)) {
 			boolean tSuccess = T;
 			
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ  , 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ  , 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY  , tZ  , 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ+1, 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ+1, 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY  , tZ+1, 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ+2, 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ+2, 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY  , tZ+2, 18005, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ  , 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ  , 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY  , tZ  , 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ+1, 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ+1, 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY  , tZ+1, 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ+2, 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ+2, 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY  , tZ+2, 18105, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_IN)) tSuccess = F;
 			
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+1, tZ  , 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ  , 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY+1, tZ  , 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+1, tZ+1, 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ+1, 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY+1, tZ+1, 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+1, tZ+2, 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ+2, 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY+1, tZ+2, 18005, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+1, tZ  , 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ  , 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY+1, tZ  , 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+1, tZ+1, 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ+1, 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY+1, tZ+1, 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+1, tZ+2, 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ+2, 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY+1, tZ+2, 18105, getMultiTileEntityRegistryID(), mActive?2+rng(6):0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_OUT)) tSuccess = F;
 			
 			return tSuccess;
 		}
