@@ -91,6 +91,9 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	, NO_ITEM_OUT           = 16
 	, NO_ITEM_IN            = 32
 	
+	, ONLY_IN               = NO_ENERGY_OUT | NO_FLUID_OUT | NO_ITEM_OUT
+	, ONLY_OUT              = NO_ENERGY_IN  | NO_FLUID_IN  | NO_ITEM_IN
+	
 	, NO_ENERGY             = NO_ENERGY_IN | NO_ENERGY_OUT
 	, NO_FLUID              = NO_FLUID_IN  | NO_FLUID_OUT
 	, NO_ITEM               = NO_ITEM_IN   | NO_ITEM_OUT

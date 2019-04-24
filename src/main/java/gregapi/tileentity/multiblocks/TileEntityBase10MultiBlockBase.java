@@ -163,14 +163,14 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 		return mStructureOkay;
 	}
 	
+	@Override public void onFacingChange(byte aPreviousFacing) {onStructureChange();}
+	@Override public final byte getDirectionData() {return (byte)((mFacing & 7) | (mStructureOkay ? 8 : 0));}
+	@Override public final void setDirectionData(byte aData) {mFacing = (byte)(aData & 7); mStructureOkay = ((aData & 8) != 0);}
+	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3])) : null;
 	}
-	
-	@Override public void onFacingChange(byte aPreviousFacing) {onStructureChange();}
-	@Override public final byte getDirectionData() {return (byte)((mFacing & 7) | (mStructureOkay ? 8 : 0));}
-	@Override public final void setDirectionData(byte aData) {mFacing = (byte)(aData & 7); mStructureOkay = ((aData & 8) != 0);}
 	
 	@Override public boolean doDefaultStructuralChecks() {return T;}
 	@Override public boolean canDrop(int aSlot) {return T;}

@@ -60,20 +60,51 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	
 	@Override
 	public long onToolClickMultiBlock(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ, ChunkCoordinates aFrom) {
-		return onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (rReturn > 0) return rReturn;
+		
+		if (isClientSide()) return 0;
+		
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			if (aChatReturn != null) onMagnifyingGlass(aChatReturn);
+			return 1;
+		}
+		return 0;
+	}
+	
+	public void onMagnifyingGlass(List<String> aChatReturn) {
+		if (checkStructure(F)) {
+			onMagnifyingGlass2(aChatReturn);
+		} else {
+			if (checkStructure(T)) {
+				aChatReturn.add("Structure did form just now!");
+			} else {
+				aChatReturn.add("Structure did not form!");
+			}
+		}
+	}
+	
+	public void onMagnifyingGlass2(List<String> aChatReturn) {
+		aChatReturn.add("Structure is formed already!");
 	}
 	
 	@Override
 	public boolean checkStructure(boolean aForceReset) {
 		if (isClientSide()) return mStructureOkay;
-		if (mStructureChanged || aForceReset) mStructureOkay = checkStructure2();
+		if ((mStructureChanged || aForceReset) && mStructureOkay != checkStructure2()) {
+			mStructureOkay = !mStructureOkay;
+			updateClientData();
+		}
 		mStructureChanged = F;
 		return mStructureOkay;
 	}
 	
+	@Override public void onFacingChange(byte aPreviousFacing) {onStructureChange();}
+	@Override public final byte getDirectionData() {return (byte)((mFacing & 7) | (mStructureOkay ? 8 : 0));}
+	@Override public final void setDirectionData(byte aData) {mFacing = (byte)(aData & 7); mStructureOkay = ((aData & 8) != 0);}
+	
 	@Override public int getDefaultTankCapacity() {return UT.Code.bindInt(Math.max(16000, mRecipes.mMaxFluidInputSize * 2L * mParallel));}
 	@Override public void updateAdjacentToggleableEnergySources() {/**/}
-	@Override public void onFacingChange(byte aPreviousFacing) {onStructureChange();}
 	
 	@Override public boolean doDefaultStructuralChecks() {return T;}
 	

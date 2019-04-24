@@ -52,7 +52,7 @@ public class MultiTileEntityMixer extends TileEntityBase10MultiBlockMachine {
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ  , 18002, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY  , tZ  , 18002, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ+1, 18002, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ+1, 18002, getMultiTileEntityRegistryID(), 2, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN  )) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ+1, 18002, getMultiTileEntityRegistryID(), 3, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN  )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY  , tZ+1, 18002, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY  , tZ+2, 18002, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY  , tZ+2, 18002, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
@@ -74,15 +74,15 @@ public class MultiTileEntityMixer extends TileEntityBase10MultiBlockMachine {
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.centrifuge.1", "3x3x2 of Stainless Steel Walls");
-		LH.add("gt.tooltip.multiblock.centrifuge.2", "Main Block centered on Side-Bottom and facing outwards");
+		LH.add("gt.tooltip.multiblock.mixer.1", "3x3x2 of Stainless Steel Walls");
+		LH.add("gt.tooltip.multiblock.mixer.2", "Main Block centered on Side-Bottom and facing outwards");
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.centrifuge.1"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.centrifuge.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.mixer.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.mixer.2"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
