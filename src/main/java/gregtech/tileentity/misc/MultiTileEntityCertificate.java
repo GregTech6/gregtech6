@@ -106,8 +106,8 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 		if (UT.Code.stringValid(tName)) {
 			ALREADY_RECEIVED.add(tName);
 			ALREADY_RECEIVED.add(tName.toLowerCase());
-			mGold = GT_Mod.gregtechproxy.mSupporterListGold.contains(tName.toLowerCase());
-			mSilver = GT_Mod.gregtechproxy.mSupporterListSilver.contains(tName.toLowerCase());
+			mGold = GT_Mod.gt_proxy.mSupporterListGold.contains(tName.toLowerCase());
+			mSilver = GT_Mod.gt_proxy.mSupporterListSilver.contains(tName.toLowerCase());
 		}
 	}
 	
@@ -115,8 +115,8 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 	public void setCustomName(String aName) {
 		super.setCustomName(aName);
 		if (UT.Code.stringValid(aName)) {
-			mGold = GT_Mod.gregtechproxy.mSupporterListGold.contains(aName.toLowerCase());
-			mSilver = GT_Mod.gregtechproxy.mSupporterListSilver.contains(aName.toLowerCase());
+			mGold = GT_Mod.gt_proxy.mSupporterListGold.contains(aName.toLowerCase());
+			mSilver = GT_Mod.gt_proxy.mSupporterListSilver.contains(aName.toLowerCase());
 		}
 	}
 	

@@ -46,7 +46,7 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 		if (aPlayer != null && SIDES_VALID[aSide] && !(aPlayer instanceof FakePlayer) && WD.obstructed(aWorld, aX, aY, aZ, aSide)) return F;
 		List<String> tChatReturn = new ArrayListNoNulls<>();
 		long tDamage = 10000;
-		if (RNGSUS.nextInt(100)<GT_Mod.gregtechproxy.mFlintChance) tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer != null && aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
+		if (RNGSUS.nextInt(100)<GT_Mod.gt_proxy.mFlintChance) tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aPlayer, tChatReturn, aPlayer==null?null:aPlayer.inventory, aPlayer != null && aPlayer.isSneaking(), aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);
 		if (aWorld.isRemote) return F;
 		if (aPlayer == null || !UT.Entities.hasInfiniteItems(aPlayer)) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(Math.max(10000, tDamage), 10000, 100, T), aPlayer);
@@ -77,7 +77,7 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 	
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
-		aList.add(LH.get("gt.behaviour.flintandtinder") + GT_Mod.gregtechproxy.mFlintChance + "%");
+		aList.add(LH.get("gt.behaviour.flintandtinder") + GT_Mod.gt_proxy.mFlintChance + "%");
 		return aList;
 	}
 }

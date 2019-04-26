@@ -117,7 +117,7 @@ import net.minecraftforge.oredict.OreDictionary;
 @Mod(modid=ModIDs.GT, name="GregTech", version="GT6-MC1710", dependencies="required-after:"+ModIDs.GAPI_POST)
 public class GT_Mod extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
-	public static GT_Proxy gregtechproxy;
+	public static GT_Proxy gt_proxy;
 	
 	public GT_Mod() {
 		GT = this;
@@ -145,10 +145,10 @@ public class GT_Mod extends Abstract_Mod {
 		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "gregtech.cfg");
 		Configuration tMainConfig = new Configuration(tFile);
 		
-		gregtechproxy.mSkeletonsShootGTArrows = tMainConfig.get("general", "SkeletonsShootGTArrows", 16).getInt(16);
-		gregtechproxy.mFlintChance            = tMainConfig.get("general", "FlintAndSteelChance"   , 30).getInt(30);
-		gregtechproxy.mDisableVanillaOres     = tMainConfig.get("general", "DisableVanillaOres"    , T).getBoolean(T);
-		mDisableIC2Ores                       = tMainConfig.get("general", "DisableIC2Ores"        , T).getBoolean(T);
+		gt_proxy.mSkeletonsShootGTArrows = tMainConfig.get("general", "SkeletonsShootGTArrows", 16).getInt(16);
+		gt_proxy.mFlintChance            = tMainConfig.get("general", "FlintAndSteelChance"   , 30).getInt(30);
+		gt_proxy.mDisableVanillaOres     = tMainConfig.get("general", "DisableVanillaOres"    , T).getBoolean(T);
+		mDisableIC2Ores                  = tMainConfig.get("general", "DisableIC2Ores"        , T).getBoolean(T);
 		
 		if (tMainConfig.get("general", "IncreaseDungeonLoot", T).getBoolean(T)) {
 			OUT.println(getModNameForLog() + ": Increasing general amount of Loot in Dungeon Chests and alike");
@@ -634,7 +634,7 @@ public class GT_Mod extends Abstract_Mod {
 	@Override public String getModID() {return MD.GT.mID;}
 	@Override public String getModName() {return MD.GT.mName;}
 	@Override public String getModNameForLog() {return "GT_Mod";}
-	@Override public Abstract_Proxy getProxy() {return gregtechproxy;}
+	@Override public Abstract_Proxy getProxy() {return gt_proxy;}
 	
 	@Mod.EventHandler public void onPreLoad         (FMLPreInitializationEvent  aEvent) {onModPreInit(aEvent);}
 	@Mod.EventHandler public void onLoad            (FMLInitializationEvent     aEvent) {onModInit(aEvent);}

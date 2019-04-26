@@ -4,13 +4,6 @@ This is the most recent Changelog. It also contains some of the changes inside t
 
 
 
-
-
-
-
-
-
-
 6.10.19: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -31,7 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.14: (Not released yet)
+6.10.14:
 [CHANGED] Multiblock Centrifuge can now process 16 rounds in parallel. This should make the cheap Recipes that cap at 1 process per tick more viable.
 [ADDED] Multiblock Mixer, which works similar to the Centrifuge and can also process up to 256 of the same Recipe at once. (64 or less if the Recipe consumes Items, because stacksizes)
 [ADDED]
