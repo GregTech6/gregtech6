@@ -47,13 +47,18 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 		super(aCategory);
 		mCategory = aCategory;
 		mHookToReplaceChestsOf = ChestGenHooks.getInfo(aCategory);
+		super.setMin(mHookToReplaceChestsOf.getMin());
+		super.setMax(mHookToReplaceChestsOf.getMax());
 		try {
 			Field tField = ChestGenHooks.class.getDeclaredField("chestInfo");
 			tField.setAccessible(T);
 			((HashMap)tField.get(null)).put(aCategory, this);
-		} catch(Throwable e) {
-			e.printStackTrace(ERR);
-		}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		try {
+			Field tField = ChestGenHooks.class.getDeclaredField("contents");
+			tField.setAccessible(T);
+			tField.set(this, tField.get(mHookToReplaceChestsOf));
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override
@@ -70,8 +75,8 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 	@Override public ItemStack getOneItem(Random aRandom) {return mHookToReplaceChestsOf.getOneItem(aRandom);}
 	@Override public int getMin() {return mHookToReplaceChestsOf.getMin();}
 	@Override public int getMax() {return mHookToReplaceChestsOf.getMax();}
-	@Override public void setMin(int aValue) {mHookToReplaceChestsOf.setMin(aValue);}
-	@Override public void setMax(int aValue) {mHookToReplaceChestsOf.setMax(aValue);}
+	@Override public void setMin(int aValue) {mHookToReplaceChestsOf.setMin(aValue); super.setMin(aValue);}
+	@Override public void setMax(int aValue) {mHookToReplaceChestsOf.setMax(aValue); super.setMax(aValue);}
 	
 	public static class WeightedRandomChestContentChestReplacer extends WeightedRandomChestContent {
 		public final WeightedRandomChestContent mContent;

@@ -1,7 +1,12 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.21: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
 
+
+6.10.20: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.19: (Not released yet)
@@ -21,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.15: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Minetweaker couldn't manipulate Loot Tables due to my Loot Chest Replacer.
 
 
 6.10.14:
