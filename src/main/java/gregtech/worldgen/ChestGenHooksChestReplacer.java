@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -42,6 +43,10 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 	public final ChestGenHooks mHookToReplaceChestsOf;
 	public final String mCategory;
 	
+	// MineTweaker does Reflection the wrong way...
+	@SuppressWarnings("rawtypes")
+	public ArrayList contents;
+	
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public ChestGenHooksChestReplacer(String aCategory) {
 		super(aCategory);
@@ -57,7 +62,7 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 		try {
 			Field tField = ChestGenHooks.class.getDeclaredField("contents");
 			tField.setAccessible(T);
-			tField.set(this, tField.get(mHookToReplaceChestsOf));
+			tField.set(this, contents = (ArrayList)(tField.get(mHookToReplaceChestsOf)));
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
