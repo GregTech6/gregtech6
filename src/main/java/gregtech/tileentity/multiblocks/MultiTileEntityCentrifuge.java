@@ -62,7 +62,7 @@ public class MultiTileEntityCentrifuge extends TileEntityBase10MultiBlockMachine
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ  , 18100, getMultiTileEntityRegistryID(), 2, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY+1, tZ  , 18100, getMultiTileEntityRegistryID(), 3, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+1, tZ+1, 18100, getMultiTileEntityRegistryID(), 4, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ+1, 18100, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ+1, 18100, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN  )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+2, tY+1, tZ+1, 18100, getMultiTileEntityRegistryID(), 5, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY+1, tZ+2, 18100, getMultiTileEntityRegistryID(), 6, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+1, tY+1, tZ+2, 18100, getMultiTileEntityRegistryID(), 7, MultiTileEntityMultiBlockPart.NO_ENERGY_IN    )) tSuccess = F;

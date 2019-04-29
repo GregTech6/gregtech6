@@ -27,6 +27,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.15: (Not released yet)
 [FIXED] Minetweaker couldn't manipulate Loot Tables due to my Loot Chest Replacer.
+[CHANGED] Multiblock Mixer and Centrifuge can now be powered from the Top Center Position too. Note, that the Top Center is now also "Power Only" and wont accept Items or Fluids.
+[ADDED]
+Multiblock Bathing Vat.
+The Size is 5x5x2, so 50 Blocks of total Volume.
+Can process up to 64 Bathing Recipes at once without increasing the Duration at all, so it acts like 64 Baths working in Parallel.
+It's not powered so no Overclocking Penalty or Input Stats.
 
 
 6.10.14:

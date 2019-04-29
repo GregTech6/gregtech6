@@ -113,7 +113,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	
 	protected void generateDungeonLoot() {
 		if (isServerSide()) {
-			if (UT.Code.stringValid(mDungeonLootNameFront)) {
+			if (UT.Code.stringValid(mDungeonLootNameFront)) try {
 				DummyInventory tDummyInventory = new DummyInventory(14);
 				WeightedRandomChestContent.generateChestContents(RNGSUS, ChestGenHooks.getItems(mDungeonLootNameFront, RNGSUS), tDummyInventory, ChestGenHooks.getCount(mDungeonLootNameFront, RNGSUS));
 				for (ItemStack tStack : tDummyInventory.mInventory) {
@@ -128,8 +128,8 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 				}
 				mDungeonLootNameFront = "";
 				updateInventory();
-			}
-			if (UT.Code.stringValid(mDungeonLootNameBack)) {
+			} catch(Throwable e) {e.printStackTrace(ERR);}
+			if (UT.Code.stringValid(mDungeonLootNameBack)) try {
 				DummyInventory tDummyInventory = new DummyInventory(14);
 				WeightedRandomChestContent.generateChestContents(RNGSUS, ChestGenHooks.getItems(mDungeonLootNameBack, RNGSUS), tDummyInventory, ChestGenHooks.getCount(mDungeonLootNameBack, RNGSUS));
 				for (ItemStack tStack : tDummyInventory.mInventory) {
@@ -144,7 +144,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 				}
 				mDungeonLootNameBack = "";
 				updateInventory();
-			}
+			} catch(Throwable e) {e.printStackTrace(ERR);}
 		}
 	}
 	

@@ -189,10 +189,10 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override public boolean renderBlock(Block aBlock, RenderBlocks aRenderer) {return T;}
 	
 	protected void generateDungeonLoot() {
-		if (isServerSide() && UT.Code.stringValid(mDungeonLootName)) {
+		if (isServerSide() && UT.Code.stringValid(mDungeonLootName)) try {
 			WeightedRandomChestContent.generateChestContents(RNGSUS, ChestGenHooks.getItems(mDungeonLootName, RNGSUS), this, ChestGenHooks.getCount(mDungeonLootName, RNGSUS));
 			mDungeonLootName = "";
-		}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
 	}
 	
 	@Override
