@@ -62,17 +62,12 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	public long onToolClickMultiBlock(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ, ChunkCoordinates aFrom) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0) return rReturn;
-		
-		if (isClientSide()) return 0;
-		
-		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) onMagnifyingGlass(aChatReturn);
-			return 1;
-		}
 		return 0;
 	}
 	
+	@Override
 	public void onMagnifyingGlass(List<String> aChatReturn) {
+		super.onMagnifyingGlass(aChatReturn);
 		if (checkStructure(F)) {
 			onMagnifyingGlass2(aChatReturn);
 		} else {

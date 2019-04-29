@@ -365,16 +365,18 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			}
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) {
-				aChatReturn.add((mMode & 1) != 0 ?"Only produce when Output is completely empty":"Produce whenever there is space");
-				aChatReturn.add(mDisabledItemInput?"Auto Item Input Disabled":"Auto Item Input Enabled");
-				aChatReturn.add(mDisabledItemOutput?"Auto Item Output Disabled":"Auto Item Output Enabled");
-				aChatReturn.add(mDisabledFluidInput?"Auto Fluid Input Disabled":"Auto Fluid Input Enabled");
-				aChatReturn.add(mDisabledFluidOutput?"Auto Fluid Output Disabled":"Auto Fluid Output Enabled");
-			}
+			if (aChatReturn != null) onMagnifyingGlass(aChatReturn);
 			return 1;
 		}
 		return 0;
+	}
+	
+	public void onMagnifyingGlass(List<String> aChatReturn) {
+		aChatReturn.add((mMode & 1) != 0 ?"Only produce when Output is completely empty":"Produce whenever there is space");
+		aChatReturn.add(mDisabledItemInput?"Auto Item Input Disabled":"Auto Item Input Enabled");
+		aChatReturn.add(mDisabledItemOutput?"Auto Item Output Disabled":"Auto Item Output Enabled");
+		aChatReturn.add(mDisabledFluidInput?"Auto Fluid Input Disabled":"Auto Fluid Input Enabled");
+		aChatReturn.add(mDisabledFluidOutput?"Auto Fluid Output Disabled":"Auto Fluid Output Enabled");
 	}
 	
 	@Override
