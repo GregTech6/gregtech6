@@ -317,7 +317,11 @@ public class Recipe {
 			return add(aRecipe, mLogErrors);
 		}
 		
-		public synchronized Recipe add(Recipe aRecipe, boolean aLogErrors) {
+		public Recipe add(Recipe aRecipe, boolean aLogErrors) {
+			return add(aRecipe, aLogErrors, !aRecipe.mFakeRecipe && aRecipe.mCanBeBuffered);
+		}
+		
+		public synchronized Recipe add(Recipe aRecipe, boolean aLogErrors, boolean aAddConfig) {
 			if (!aRecipe.mFakeRecipe) {
 				boolean tErrored = F, tFailed = F;
 				if (aRecipe.mInputs.length + aRecipe.mFluidInputs.length <= 0) {
@@ -360,7 +364,7 @@ public class Recipe {
 				return null;
 			}
 			
-			if (mConfigFile != null) {
+			if (aAddConfig && mConfigFile != null) {
 				String tConfigName = "";
 				if (aRecipe.mInputs.length > 0) tConfigName += ST.configNames(aRecipe.mInputs);
 				if (aRecipe.mFluidInputs.length > 0) tConfigName += UT.Fluids.configNames(aRecipe.mFluidInputs);
@@ -370,7 +374,7 @@ public class Recipe {
 				}
 			}
 			
-			if (!mRecipeList.add(aRecipe)) return null;
+			if (!aRecipe.mEnabled || !mRecipeList.add(aRecipe)) return null;
 			
 			mRecipeListSize++;
 			
@@ -481,7 +485,7 @@ public class Recipe {
 			if (oRecipe != null) if (!oRecipe.mFakeRecipe && oRecipe.mCanBeBuffered && oRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return oRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, oRecipe.mEUt)?oRecipe:null;
 			
 			// Because MineTweaker screws up at this.
-			if (/*SERVER_TIME > 0 && */mRecipeListSize != mRecipeList.size()) {
+			if (aLoop && mRecipeListSize != mRecipeList.size()) {
 				ERR.println("RecipeMap for " + mNameLocal + " got changed without re-initializing the HashMaps! This is a Bug of whatever Recipe Tweaker Mod you are using!");
 				reInit();
 			}
