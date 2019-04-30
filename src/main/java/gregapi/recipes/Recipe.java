@@ -73,6 +73,8 @@ public class Recipe {
 		public final Map<String, Collection<Recipe>> mRecipeFluidMap = new HashMap<>();
 		/** The List of all Recipes */
 		public final Collection<Recipe> mRecipeList;
+		/** Used to detect if MineTweaker fucked with the Recipe List without also fixing the HashMaps. */
+		public int mRecipeListSize = 0;
 		/** String used as an unlocalised Name. */
 		public final String mNameInternal;
 		/** String used as a localised Name in things that shouldn't be localised, like Config File Names. */
@@ -369,6 +371,9 @@ public class Recipe {
 			}
 			
 			if (!mRecipeList.add(aRecipe)) return null;
+			
+			mRecipeListSize++;
+			
 			for (FluidStack aFluid : aRecipe.mFluidInputs) if (aFluid != null) {
 				mMaxFluidInputSize = Math.max(mMaxFluidInputSize, aFluid.amount);
 				Collection<Recipe> tList = mRecipeFluidMap.get(aFluid.getFluid().getName());
@@ -385,6 +390,7 @@ public class Recipe {
 				OreDictManager.INSTANCE.setStackArray(T, tRecipe.mOutputs);
 				addToItemMap(tRecipe);
 			}
+			mRecipeListSize = mRecipeList.size();
 		}
 		
 		public boolean add(IRecipeMapHandler aRecipeMapHandler) {
@@ -473,6 +479,12 @@ public class Recipe {
 			// Check the Recipe which has been used last time in order to not have to search for it again, if possible.
 			if (aRecipe != null) if (!aRecipe.mFakeRecipe && aRecipe.mCanBeBuffered && aRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return aRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, aRecipe.mEUt)?oRecipe=aRecipe:null;
 			if (oRecipe != null) if (!oRecipe.mFakeRecipe && oRecipe.mCanBeBuffered && oRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return oRecipe.mEnabled&&UT.Code.abs_greater_equal(aSize*mPower, oRecipe.mEUt)?oRecipe:null;
+			
+			// Because MineTweaker screws up at this.
+			if (/*SERVER_TIME > 0 && */mRecipeListSize != mRecipeList.size()) {
+				ERR.println("RecipeMap for " + mNameLocal + " got changed without re-initializing the HashMaps! This is a Bug of whatever Recipe Tweaker Mod you are using!");
+				reInit();
+			}
 			
 			// Now look for the Recipes inside the Item HashMaps, but only when the Recipes usually have Items.
 			if (mInputItemsCount > 0) for (ItemStack tStack1 : aInputs) if (tStack1 != null) {
