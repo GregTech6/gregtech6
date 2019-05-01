@@ -128,7 +128,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurifiedTiny    , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,10, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifugedTiny , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,11, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(RECYCLABLE) && !tPrefix.containsAny(ORE, ORE_PROCESSING_BASED, DUST_BASED)) {
-		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null, 0, NF,  16, 0,   256, NF, null               , 0, null       , 0, NI, NI, F, T, F, ANTIMATTER.NOT));
+		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null, 0, NF,  16, 0,   256, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
 		}
 		
 		RM.Compressor           .add(new RecipeMapHandlerPrefix(dust                            , 1, NF,  16, 0,   256, NF, plateGem        , 1, NI, NI, T, F, F, new Nor(gemLegendary, gemExquisite, gemFlawless, bouleGt, MT.Ice, ANTIMATTER, LAYERED, COATED)));

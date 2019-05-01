@@ -1,6 +1,10 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.22: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.10.21: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -27,11 +31,23 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.15: (Not released yet)
 [FIXED] Minetweaker couldn't manipulate Loot Tables due to my Loot Chest Replacer.
+[CHANGED] Shredder Recipes for Materials that the Mortar can handle are now 16 times faster (and therefore cheaper).
 [CHANGED] Multiblock Mixer and Centrifuge can now be powered from the Top Center Position too. Note, that the Top Center is now also "Power Only" and wont accept Items or Fluids.
+[ADDED] Invar Tanks, Drums and Large Boilers. Same Stats as the Stainless ones, but not Acid Proof. Less reason to complain about Stainless Steel being used EVERYWHERE. :P
+[ADDED]
+Large Electric Oven.
+Made of 18 Invar Walls and 8 Nichrome Coil Blocks in an overall Sandwich shaped Hollow 3x3x3.
+It can run up to 64 Recipes in Parallel, though at its maximum Input of 4096 EU/t it can only do 4 Recipes per tick overall (80 Smelts per second), so the 64 is more for performance like in many other Machines.
+It has a 75% penalty to Efficiency due to the 50% of EU -> HU Conversion and due to the 50% I put on most Processing Multiblocks as offset to the lack of overclocking Penalty. It's still half as efficient as a regular HU powered Oven, when used with Electricity.
 [ADDED]
 Multiblock Bathing Vat.
 The Size is 5x5x2, so 50 Blocks of total Volume.
 Can process up to 64 Bathing Recipes at once without increasing the Duration at all, so it acts like 64 Baths working in Parallel.
+It's not powered so no Overclocking Penalty or Input Stats.
+[ADDED]
+Multiblock Coagulator Array.
+The Size is 5x5x2, so 50 Blocks of total Volume.
+Can process up to 64 Coagulation Recipes at once without increasing the Duration at all, so it acts like 64 Coagulators working in Parallel.
 It's not powered so no Overclocking Penalty or Input Stats.
 
 
