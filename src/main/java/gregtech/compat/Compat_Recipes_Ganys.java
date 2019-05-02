@@ -42,6 +42,8 @@ public class Compat_Recipes_Ganys extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 		if (MD.EtFu.mLoaded) {OUT.println("GT_Mod: Doing Recipes of the Future.");
 			ItemStack tEtFuturumPurpur = ST.make(MD.EtFu, "purpur_block", 1, 0), tEtFuturumPurpurPillar = ST.make(MD.EtFu, "purpur_pillar", 1, 0);
+			RM.sawing(16, 16, F, 100,               tEtFuturumPurpur, ST.make(MD.EtFu, "purpur_slab", 2, 0));
+			RM.sawing(16, 16, F, 100,               tEtFuturumPurpurPillar, ST.make(MD.EtFu, "purpur_slab", 2, 0));
 			CR.shapeless(                           tEtFuturumPurpur, CR.DEF, new Object[] {tEtFuturumPurpurPillar});
 			CR.shaped(                              ST.make(MD.EtFu, "slime", 1, 0), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES | CR.DEL_OTHER_NATIVE_RECIPES, "XXX", "XXX", "XXX", 'X', ST.make(Items.slime_ball, 1, W));
 			RM.ic2_compressor(                      ST.make(Items.slime_ball, 9, 0), ST.make(MD.EtFu, "slime", 1, 0));
@@ -80,6 +82,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 				CR.shapeless(tEtFuturumPurpur, CR.DEF, new Object[] {tChiselPurpur});
 				CR.shaped(ST.make(MD.EtFu, "purpur_stairs", 4, 0), CR.DEF_MIR, new Object[] {"P  ", "PP ", "PPP", 'P', ST.make(MD.CHSL, "purpur", 1, W)});
 				CR.shaped(ST.make(MD.EtFu, "purpur_slab", 6, 0), CR.DEF_MIR, new Object[] {"PPP", 'P', ST.make(MD.CHSL, "purpur", 1, W)});
+				RM.sawing(16, 16, F, 100, tChiselPurpur, ST.make(MD.EtFu, "purpur_slab", 2, 0));
 			}
 		}
 		if (MD.GaSu.mLoaded) {OUT.println("GT_Mod: Doing Recipes for Ganys Surface.");

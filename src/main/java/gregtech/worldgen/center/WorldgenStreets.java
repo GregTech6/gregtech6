@@ -79,7 +79,7 @@ public class WorldgenStreets extends WorldgenObject {
 							aWorld.setBlock(i, mHeight+1, j, NB, 0, 0);
 						} else {
 							aWorld.setBlock(i, mHeight  , j, BlocksGT.Concrete, DYE_INDEX_Gray, 0);
-							if (!GENERATE_BIOMES && (i == -32 || j == -32 || i == 31 || j == 31) && (!GENERATE_NEXUS || i < 0 || i == 31 || j != -32)) {
+							if (!GENERATE_BIOMES && (i == -32 || j == -32 || i == 31 || j == 31) && (!GENERATE_NEXUS || i < 0 || i == 31 || j != -32) && (!GENERATE_TESTING || j > 0 || i != 31 || j == -32)) {
 								aWorld.setBlock(i, mHeight+1, j, WD.even(i, 1, j)?BlocksGT.CFoam:BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
 								aWorld.setBlock(i, mHeight+2, j, WD.even(i, 2, j)?BlocksGT.CFoam:BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
 								aWorld.setBlock(i, mHeight+3, j, WD.even(i, 3, j)?BlocksGT.CFoam:BlocksGT.Concrete, DYE_INDEX_LightGray, 0);
