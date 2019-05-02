@@ -72,6 +72,10 @@ public class WorldgenCenterBiomes extends WorldgenObject {
 				Arrays.fill(aChunk.getBiomeArray(), (byte)BiomeGenBase.plains.biomeID);
 				return T;
 			}
+			if (GENERATE_TESTING && (aMinX == 32 || aMinX == 48) && (aMinZ == -32 || aMinZ == -48)) {
+				Arrays.fill(aChunk.getBiomeArray(), (byte)BiomeGenBase.plains.biomeID);
+				return T;
+			}
 			if (aMinX == -16 || aMinX == 0 || aMinZ == -16 || aMinZ == 0) {
 				Arrays.fill(aChunk.getBiomeArray(), (byte)BiomeGenBase.river.biomeID);
 				BlockRiver.PLACEMENT_ALLOWED = T;

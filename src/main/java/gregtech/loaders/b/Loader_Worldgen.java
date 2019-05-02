@@ -44,6 +44,7 @@ import gregtech.worldgen.center.WorldgenBeacon;
 import gregtech.worldgen.center.WorldgenCenterBiomes;
 import gregtech.worldgen.center.WorldgenNexus;
 import gregtech.worldgen.center.WorldgenStreets;
+import gregtech.worldgen.center.WorldgenTesting;
 import gregtech.worldgen.erebus.WorldgenErebusRocks;
 import gregtech.worldgen.mars.WorldgenMarsRocks;
 import gregtech.worldgen.moon.WorldgenMoonRocks;
@@ -444,6 +445,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenStreets         ("center.streets"   , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		new WorldgenNexus           ("center.nexus"     , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		new WorldgenBeacon          ("center.beacon"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenTesting         ("center.testing"   , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		
 		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		

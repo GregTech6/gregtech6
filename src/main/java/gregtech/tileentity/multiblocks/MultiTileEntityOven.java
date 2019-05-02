@@ -87,6 +87,7 @@ public class MultiTileEntityOven extends TileEntityBase10MultiBlockMachine {
 		LH.add("gt.tooltip.multiblock.oven.2", "3x3 Hollow of 8 Large Nichrome Coils");
 		LH.add("gt.tooltip.multiblock.oven.3", "3x3 of Invar Walls");
 		LH.add("gt.tooltip.multiblock.oven.4", "Main Block centered on Side-Bottom and facing outwards");
+		LH.add("gt.tooltip.multiblock.oven.5", "The Coils are not accepting any Inputs or Outputs.");
 	}
 	
 	@Override
@@ -96,6 +97,7 @@ public class MultiTileEntityOven extends TileEntityBase10MultiBlockMachine {
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.oven.2"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.oven.3"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.oven.4"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.oven.5"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
