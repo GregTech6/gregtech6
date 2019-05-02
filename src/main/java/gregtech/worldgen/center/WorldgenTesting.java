@@ -149,6 +149,7 @@ public class WorldgenTesting extends WorldgenObject {
 			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+4, -18, SIDE_UNKNOWN, (short)32727, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
 			
 			tRegistry.mBlock.placeBlock(aWorld, 34, mHeight+2, -18, SIDE_UNKNOWN, (short) 5033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 34, mHeight+3, -18, SIDE_UNKNOWN, (short)32739, null, T, T);
 			tRegistry.mBlock.placeBlock(aWorld, 34, mHeight+4, -18, SIDE_UNKNOWN, (short)32062, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
 			
 			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight+3, -18, SIDE_UNKNOWN, (short)32719, null, T, T);
@@ -182,8 +183,8 @@ public class WorldgenTesting extends WorldgenObject {
 			tRegistry.mBlock.placeBlock(aWorld, 40, mHeight+2, -18, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
 			tRegistry.mBlock.placeBlock(aWorld, 40, mHeight+3, -18, SIDE_UNKNOWN, (short)32735, null, T, T);
 			
-			tRegistry.mBlock.placeBlock(aWorld, 41, mHeight+2, -18, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
-			tRegistry.mBlock.placeBlock(aWorld, 41, mHeight+3, -18, SIDE_UNKNOWN, (short)32739, null, T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 41, mHeight+2, -18, SIDE_UNKNOWN, (short) 5033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
+			
 			
 			tRegistry.mBlock.placeBlock(aWorld, 42, mHeight+2, -18, SIDE_UNKNOWN, (short)32703, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_STATE, 4), T, T);
 			
@@ -194,6 +195,13 @@ public class WorldgenTesting extends WorldgenObject {
 			tRegistry.mBlock.placeBlock(aWorld, 44, mHeight+2, -20, SIDE_UNKNOWN, (short)32711, UT.NBT.make(NBT_FACING, SIDE_Y_POS, NBT_MODE, T), T, T);
 			tRegistry.mBlock.placeBlock(aWorld, 44, mHeight+2, -19, SIDE_UNKNOWN, (short)32702, null, T, T);
 			tRegistry.mBlock.placeBlock(aWorld, 44, mHeight+2, -18, SIDE_UNKNOWN, (short) 8033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
+			
+			WD.set                     (aWorld, 45, mHeight+2, -18, Blocks.ender_chest, 2, 3);
+			
+			WD.set                     (aWorld, 46, mHeight+2, -18, Blocks.crafting_table, 0, 3);
+			WD.set                     (aWorld, 46, mHeight+3, -18, Blocks.brewing_stand, 0, 3);
+			
+			WD.set                     (aWorld, 47, mHeight+2, -18, Blocks.anvil, 0, 3);
 		}
 		
 		aWorld.setSpawnLocation(0, mHeight+5, 0);
