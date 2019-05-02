@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.15: (Not released yet)
+6.10.15:
 [FIXED] Minetweaker couldn't manipulate Loot Tables due to my Loot Chest Replacer.
 [CHANGED] Shredder Recipes for Materials that the Mortar can handle are now 16 times faster (and therefore cheaper).
 [CHANGED] Multiblock Mixer and Centrifuge can now be powered from the Top Center Position too. Note, that the Top Center is now also "Power Only" and wont accept Items or Fluids.
