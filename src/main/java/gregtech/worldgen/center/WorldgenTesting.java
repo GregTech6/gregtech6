@@ -59,8 +59,8 @@ public class WorldgenTesting extends WorldgenObject {
 			for (int k = 1; k <= mHeight; k++) WD.set(aChunk, i, k, j, BlocksGT.Concrete, DYE_INDEX_Gray);
 			for (int k = mHeight+2; k < 256; k++) WD.set(aChunk, i, k, j, NB, 0);
 			
+			WD.set(aChunk, i, mHeight+ 1, j, BlocksGT.CFoam, DYE_INDEX_Gray);
 			if ((i == 0 && aMinX == 32) || (i == 15 && aMinX == 48) || (j == 0 && aMinZ == -48) || (j == 15 && aMinZ == -32)) {
-			WD.set(aChunk, i, mHeight+ 1, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
 			WD.set(aChunk, i, mHeight+ 2, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
 			WD.set(aChunk, i, mHeight+ 3, j, BlocksGT.CFoam, DYE_INDEX_Yellow);
 			WD.set(aChunk, i, mHeight+ 4, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
@@ -68,11 +68,10 @@ public class WorldgenTesting extends WorldgenObject {
 			WD.set(aChunk, i, mHeight+ 6, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
 			WD.set(aChunk, i, mHeight+ 7, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
 			WD.set(aChunk, i, mHeight+ 8, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
-			} else if ((i == 3 || i == 6 || i == 9 || i == 12) && (j == 3 || j == 6 || j == 9 || j == 12)) {
-			WD.set(aChunk, i, mHeight+ 1, j, BlocksGT.GlowGlass, DYE_INDEX_Yellow);
+			WD.set(aChunk, i, mHeight+ 9, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
+			} else if ((i != 2 && i != 6 && i != 9 && i != 13) && (j != 2 && j != 6 && j != 9 && j != 13)) {
 			WD.set(aChunk, i, mHeight+ 9, j, BlocksGT.GlowGlass, DYE_INDEX_LightBlue);
 			} else {
-			WD.set(aChunk, i, mHeight+ 1, j, BlocksGT.CFoam, DYE_INDEX_Gray);
 			WD.set(aChunk, i, mHeight+ 9, j, BlocksGT.CFoam, DYE_INDEX_LightGray);
 			}
 		}
