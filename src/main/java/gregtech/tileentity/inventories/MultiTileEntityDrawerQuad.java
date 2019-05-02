@@ -130,7 +130,7 @@ public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle impl
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		int aIndex = aSide<2?aSide:aSide==mFacing?2:aSide==OPPOSITES[mFacing]?3:4;
+		int aIndex = aSide==mFacing?2:aSide==OPPOSITES[mFacing]?3:aSide<2?aSide:4;
 		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[aIndex]));
 	}
 	

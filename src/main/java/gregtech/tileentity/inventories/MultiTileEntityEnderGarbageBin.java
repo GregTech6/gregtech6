@@ -72,7 +72,7 @@ public class MultiTileEntityEnderGarbageBin extends TileEntityBase07Paintable im
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
-		if (aIsServerSide && aTimer % 100 == 50 && !hasRedstoneIncoming()) GarbageGT.trash(getInventory());
+		if (aIsServerSide && (aTimer % 100 == 50 || mBlockUpdated) && !hasRedstoneIncoming()) GarbageGT.trash(getInventory());
 	}
 	
 	@Override

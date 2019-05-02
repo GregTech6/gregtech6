@@ -26,10 +26,16 @@ import java.util.Random;
 import java.util.Set;
 
 import gregapi.block.metatype.BlockMetaType;
+import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
+import gregapi.data.IL;
+import gregapi.tileentity.base.TileEntityBase06Covers;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -117,6 +123,77 @@ public class WorldgenTesting extends WorldgenObject {
 			WD.set(aChunk, 0, mHeight+ 5, 8, BlocksGT.CFoam, DYE_INDEX_Gray);
 			WD.set(aChunk, 0, mHeight+ 5, 9, BlocksGT.CFoam, DYE_INDEX_Gray);
 			WD.set(aChunk, 0, mHeight+ 5,10, BlocksGT.CFoam, DYE_INDEX_Gray);
+			
+			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
+			
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+2, -19, SIDE_UNKNOWN, (short) 7133, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+2, -20, SIDE_UNKNOWN, (short) 7133, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+2, -21, SIDE_UNKNOWN, (short) 7133, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+3, -19, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+3, -20, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+3, -21, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+4, -19, SIDE_UNKNOWN, (short) 6033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+4, -20, SIDE_UNKNOWN, (short) 6033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+4, -21, SIDE_UNKNOWN, (short) 6033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+5, -19, SIDE_UNKNOWN, (short) 6033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+5, -20, SIDE_UNKNOWN, (short) 6033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+5, -21, SIDE_UNKNOWN, (short) 6033, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+5, -22, SIDE_UNKNOWN, (short)14999, UT.NBT.make(NBT_ACTIVE_ENERGY, T), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+5, -23, SIDE_UNKNOWN, (short)14999, UT.NBT.make(NBT_ACTIVE_ENERGY, F), T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+2, -18, SIDE_UNKNOWN, (short)32057, null, T, T);
+			
+			WD.set                     (aWorld, 33, mHeight+2, -17, Blocks.crafting_table, 0, 3);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+3, -17, SIDE_UNKNOWN, (short)32737, null, T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 33, mHeight+4, -17, SIDE_UNKNOWN, (short)32727, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 34, mHeight+2, -17, SIDE_UNKNOWN, (short) 5033, UT.NBT.make(NBT_FACING, SIDE_Z_NEG), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 34, mHeight+4, -17, SIDE_UNKNOWN, (short)32062, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight+3, -17, SIDE_UNKNOWN, (short)32719, null, T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight+2, -17, SIDE_UNKNOWN, (short)26304, UT.NBT.make(NBT_CONNECTION, (byte)(SBIT_U | SBIT_D)), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight+1, -17, SIDE_UNKNOWN, (short)26304, UT.NBT.make(NBT_CONNECTION, (byte)(SBIT_U | SBIT_D)), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight  , -17, SIDE_UNKNOWN, (short)26304, UT.NBT.make(NBT_CONNECTION, (byte)(SBIT_U | SBIT_D)), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight-1, -17, SIDE_UNKNOWN, (short)26304, UT.NBT.make(NBT_CONNECTION, (byte)(SBIT_U | SBIT_D)), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight-2, -17, SIDE_UNKNOWN, (short)26304, UT.NBT.make(NBT_CONNECTION, (byte)(SBIT_U | SBIT_D)), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight-3, -17, SIDE_UNKNOWN, (short)26304, UT.NBT.make(NBT_CONNECTION, (byte)(SBIT_U | SBIT_D)), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight-4, -17, SIDE_UNKNOWN, (short)26304, UT.NBT.make(NBT_CONNECTION, (byte)(SBIT_U | SBIT_S)), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight-4, -16, SIDE_UNKNOWN, (short)26304, UT.NBT.make(NBT_CONNECTION, SBIT_N), T, T);
+			TileEntity tTileEntity = WD.te(aWorld, 36, mHeight-4, -16, T);
+			if (tTileEntity instanceof TileEntityBase06Covers) ((TileEntityBase06Covers)tTileEntity).setCoverItem(SIDE_Z_POS, IL.Cover_Drain.get(1), null, T, F);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 35, mHeight+2, -17, SIDE_UNKNOWN, (short)32705, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 35, mHeight+3, -17, SIDE_UNKNOWN, (short)32732, UT.NBT.make(NBT_FACING, SIDE_X_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 35, mHeight+4, -17, SIDE_UNKNOWN, (short)32750, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+			
+			WD.set                     (aWorld, 36, mHeight+2, -18, Blocks.cauldron, 0, 3);
+			tRegistry.mBlock.placeBlock(aWorld, 36, mHeight+3, -18, SIDE_UNKNOWN, (short)32732, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 37, mHeight+2, -17, SIDE_UNKNOWN, (short)32707, UT.NBT.make(NBT_FACING, SIDE_X_NEG), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 37, mHeight+3, -17, SIDE_UNKNOWN, (short)32732, UT.NBT.make(NBT_FACING, SIDE_X_NEG), T, T);
+			
+			WD.set                     (aWorld, 38, mHeight+2, -17, Blocks.crafting_table, 0, 3);
+			tRegistry.mBlock.placeBlock(aWorld, 38, mHeight+3, -17, SIDE_UNKNOWN, (short)32744, null, T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 39, mHeight+2, -17, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 39, mHeight+3, -17, SIDE_UNKNOWN, (short)32722, null, T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 40, mHeight+2, -17, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 40, mHeight+3, -17, SIDE_UNKNOWN, (short)32735, null, T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 41, mHeight+2, -17, SIDE_UNKNOWN, (short) 4033, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 41, mHeight+3, -17, SIDE_UNKNOWN, (short)32739, null, T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 42, mHeight+2, -17, SIDE_UNKNOWN, (short)32703, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+
+			tRegistry.mBlock.placeBlock(aWorld, 43, mHeight+2, -17, SIDE_UNKNOWN, (short)32048, null, T, T);
+			
+			tRegistry.mBlock.placeBlock(aWorld, 44, mHeight+1, -19, SIDE_UNKNOWN, (short)32709, null, T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 44, mHeight+1, -18, SIDE_UNKNOWN, (short) 8033, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 44, mHeight+2, -19, SIDE_UNKNOWN, (short)32711, UT.NBT.make(NBT_FACING, SIDE_Y_NEG, NBT_MODE, T), T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 44, mHeight+2, -18, SIDE_UNKNOWN, (short)32702, null, T, T);
+			tRegistry.mBlock.placeBlock(aWorld, 44, mHeight+2, -17, SIDE_UNKNOWN, (short) 8033, UT.NBT.make(NBT_FACING, SIDE_Z_POS), T, T);
 		}
 		
 		aWorld.setSpawnLocation(0, mHeight+5, 0);
