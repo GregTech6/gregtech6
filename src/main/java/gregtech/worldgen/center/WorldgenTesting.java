@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.util.WD;
@@ -69,11 +70,53 @@ public class WorldgenTesting extends WorldgenObject {
 			WD.set(aChunk, i, mHeight+ 7, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
 			WD.set(aChunk, i, mHeight+ 8, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
 			WD.set(aChunk, i, mHeight+ 9, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
-			} else if ((i != 2 && i != 6 && i != 9 && i != 13) && (j != 2 && j != 6 && j != 9 && j != 13)) {
-			WD.set(aChunk, i, mHeight+ 9, j, BlocksGT.GlowGlass, DYE_INDEX_LightBlue);
+			WD.set(aChunk, i, mHeight+10, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
+			WD.set(aChunk, i, mHeight+11, j, BlocksGT.CFoam, DYE_INDEX_Yellow);
+			WD.set(aChunk, i, mHeight+12, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
+			WD.set(aChunk, i, mHeight+13, j, BlocksGT.CFoam, DYE_INDEX_Gray);
+			} else if ((i != 1 && i != 5 && i != 10 && i != 14) && (j != 1 && j != 5 && j != 10 && j != 14)) {
+			WD.set(aChunk, i, mHeight+13, j, ((BlockMetaType)BlocksGT.GlowGlass).mSlabs[1], DYE_INDEX_LightBlue);
 			} else {
-			WD.set(aChunk, i, mHeight+ 9, j, BlocksGT.CFoam, DYE_INDEX_LightGray);
+			WD.set(aChunk, i, mHeight+13, j, ((BlockMetaType)BlocksGT.CFoam).mSlabs[1], DYE_INDEX_LightGray);
 			}
+		}
+		
+		if (aMinX == 32 && aMinZ == -32) {
+			WD.set(aChunk, 0, mHeight+ 2, 5, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 0, mHeight+ 2, 6, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 2, 7, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 2, 8, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 2, 9, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 2,10, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 1, mHeight+ 2, 6, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 1, mHeight+ 2, 9, BlocksGT.CFoam, DYE_INDEX_Gray);
+			
+			WD.set(aChunk, 0, mHeight+ 3, 5, BlocksGT.CFoam, DYE_INDEX_Yellow);
+			WD.set(aChunk, 0, mHeight+ 3, 6, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 3, 7, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 3, 8, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 3, 9, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 3,10, BlocksGT.CFoam, DYE_INDEX_Yellow);
+			WD.set(aChunk, 1, mHeight+ 3, 6, BlocksGT.CFoam, DYE_INDEX_Yellow);
+			WD.set(aChunk, 1, mHeight+ 3, 9, BlocksGT.CFoam, DYE_INDEX_Yellow);
+			
+			WD.set(aChunk, 0, mHeight+ 4, 5, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 0, mHeight+ 4, 6, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 4, 7, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 4, 8, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 4, 9, NB, 0);
+			WD.set(aChunk, 0, mHeight+ 4,10, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 1, mHeight+ 4, 6, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 1, mHeight+ 4, 7, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 1, mHeight+ 4, 8, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 1, mHeight+ 4, 9, BlocksGT.CFoam, DYE_INDEX_Gray);
+			
+			WD.set(aChunk, 0, mHeight+ 5, 5, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 0, mHeight+ 5, 6, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 0, mHeight+ 5, 7, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 0, mHeight+ 5, 8, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 0, mHeight+ 5, 9, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, 0, mHeight+ 5,10, BlocksGT.CFoam, DYE_INDEX_Gray);
 		}
 		
 		aWorld.setSpawnLocation(0, mHeight+5, 0);
