@@ -694,34 +694,34 @@ public class WD {
 				try {if (aTileEntity instanceof ic2.api.reactor.IReactorChamber) {
 					rEUAmount+=V[4];
 					aTileEntity = (TileEntity)(((ic2.api.reactor.IReactorChamber)aTileEntity).getReactor());
-				}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.reactor.IReactor) {
 					rEUAmount+=V[4];
-					rList.add("Heat: " + ((ic2.api.reactor.IReactor)aTileEntity).getHeat() + "/" + ((ic2.api.reactor.IReactor)aTileEntity).getMaxHeat()
+					rList.add( "Heat: " + ((ic2.api.reactor.IReactor)aTileEntity).getHeat() + "/" + ((ic2.api.reactor.IReactor)aTileEntity).getMaxHeat()
 							+ "  HEM: " + ((ic2.api.reactor.IReactor)aTileEntity).getHeatEffectModifier() + "  Base IC2-EU Output: " + ((ic2.api.reactor.IReactor)aTileEntity).getReactorEUEnergyOutput());
-				}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.tile.IWrenchable) {
 					rEUAmount+=V[3];
 					rList.add("Facing: " + ((ic2.api.tile.IWrenchable)aTileEntity).getFacing() + " / IC2 Wrench Drop Chance: " + (((ic2.api.tile.IWrenchable)aTileEntity).wrenchCanRemove(aPlayer)?(((ic2.api.tile.IWrenchable)aTileEntity).getWrenchDropRate()*100):0) + "%");
-				}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.energy.tile.IEnergySink) {
 					rEUAmount+=V[3];
 					rList.add("Demanded Energy: " + ((ic2.api.energy.tile.IEnergySink)aTileEntity).getDemandedEnergy() + " IC2-EU");
 					rList.add("Max Safe Input: " + V[((ic2.api.energy.tile.IEnergySink)aTileEntity).getSinkTier()] + " IC2-EU/t");
-				}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.energy.tile.IEnergySource) {
 					rEUAmount+=V[3];
 					rList.add("Max Energy Output: " + V[((ic2.api.energy.tile.IEnergySource)aTileEntity).getSourceTier()] + " IC2-EU/t");
-				}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.energy.tile.IEnergyConductor) {
 					rEUAmount+=V[3];
 					rList.add("Conduction Loss: " + ((ic2.api.energy.tile.IEnergyConductor)aTileEntity).getConductionLoss() + " IC2-EU/m");
-				}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				try {if (aTileEntity instanceof ic2.api.tile.IEnergyStorage) {
 					rEUAmount+=V[3];
 					rList.add("Contained Energy: " + ((ic2.api.tile.IEnergyStorage)aTileEntity).getStored() + " of " + ((ic2.api.tile.IEnergyStorage)aTileEntity).getCapacity() + " IC2-EU");
 					rList.add(((ic2.api.tile.IEnergyStorage)aTileEntity).isTeleporterCompatible(FORGE_DIR[aSide])?"Teleporter Compatible":"Not Teleporter Compatible");
-				}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
+				}} catch(NoClassDefFoundError e) {/* ignore */} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 			}
 		}
 		try {if (aBlock instanceof IBlockDebugable) {

@@ -113,20 +113,37 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(plate                           , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(plateGem                        , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR, new Or(BRITTLE, FOOD, WOOD))));
 		
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(chunk                  , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(rubble                 , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(pebbles                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(clump                  , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(reduced                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crystalline            , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(cleanGravel            , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(cluster                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushed                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  , 9, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurified        , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  ,18, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifuged     , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  ,27, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedTiny            , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          , 9, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurifiedTiny    , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,10, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
-		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifugedTiny , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,11, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(chunk                  , 1, null, 0, NF,  16, 0,    16, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(rubble                 , 1, null, 0, NF,  16, 0,    16, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(pebbles                , 1, null, 0, NF,  16, 0,    16, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(clump                  , 1, null, 0, NF,  16, 0,    16, NF, dust               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(reduced                , 1, null, 0, NF,  16, 0,    16, NF, dust               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crystalline            , 1, null, 0, NF,  16, 0,    16, NF, dust               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(cleanGravel            , 1, null, 0, NF,  16, 0,    16, NF, dust               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(cluster                , 1, null, 0, NF,  16, 0,    16, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushed                , 1, null, 0, NF,  16, 0,    16, NF, dust               , 1, dustDiv72  , 9, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurified        , 1, null, 0, NF,  16, 0,    16, NF, dust               , 1, dustDiv72  ,18, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifuged     , 1, null, 0, NF,  16, 0,    16, NF, dust               , 1, dustDiv72  ,27, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedTiny            , 1, null, 0, NF,  16, 0,    16, NF, dustDiv72          , 9, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurifiedTiny    , 1, null, 0, NF,  16, 0,    16, NF, dustDiv72          ,10, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifugedTiny , 1, null, 0, NF,  16, 0,    16, NF, dustDiv72          ,11, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR)));
+		
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(chunk                  , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(rubble                 , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(pebbles                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(clump                  , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(reduced                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crystalline            , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(cleanGravel            , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(cluster                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 2, dustTiny   , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushed                , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  , 9, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurified        , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  ,18, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifuged     , 1, null, 0, NF,  16, 0,   256, NF, dust               , 1, dustDiv72  ,27, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedTiny            , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          , 9, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurifiedTiny    , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,10, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifugedTiny , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,11, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
+		
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(RECYCLABLE) && !tPrefix.containsAny(ORE, ORE_PROCESSING_BASED, DUST_BASED)) {
 		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null, 0, NF,  16, 0,   256, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
