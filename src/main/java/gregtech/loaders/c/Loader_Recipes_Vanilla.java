@@ -560,7 +560,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Press        .addRecipe2(T, 16,   16, OP.dustTiny .mat(MT.Gunpowder, 36), ST.make(Blocks.sand,  1, W), ST.make(Blocks.tnt, 1, 0));
 		
 		
-		RM.Squeezer     .addRecipe1(T, 16,  128,  5000, ST.make(Blocks.melon_block      , 1, W), NF, FL.Juice_Melon.make(2250), IL.Remains_Fruit.get(9));
+		RM.Squeezer     .addRecipe1(T, 16,  128,  6000, ST.make(Blocks.melon_block      , 1, W), NF, FL.Juice_Melon.make(2250), IL.Remains_Fruit.get(9));
 		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 0), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 2), IL.Remains_Plant.get(1));
 		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 1), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue    ], 2), IL.Remains_Plant.get(1));
 		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 2), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 2), IL.Remains_Plant.get(1));

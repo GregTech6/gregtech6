@@ -725,7 +725,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Boxinator.addRecipe2(T, 16, 16, aEvent.mStack, IL.Pill_Empty.get(1), IL.Pill_Red.get(1));
 		}});
 		addListener("cropPumpkin", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.crop_veggie(aEvent.mStack, FL.Juice_Pumpkin, 250, 9000, "Canned Pumpkin", 0, 0, 0,12, 0);
+			RM.crop_veggie(aEvent.mStack, FL.Juice_Pumpkin, 1000, 9000, "Canned Pumpkin", 0, 0, 0,12, 0);
 		}});
 		
 		

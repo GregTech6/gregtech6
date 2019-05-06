@@ -94,7 +94,12 @@ public class MultiTileEntityMixer extends TileEntityBase10MultiBlockMachine {
 	
 	@Override
 	public void updateAdjacentToggleableEnergySources() {
-		DelegatorTileEntity<TileEntity> tDelegator = WD.te(worldObj, getOffsetXN(mFacing), yCoord-1, getOffsetZN(mFacing), SIDE_TOP, F);
+		DelegatorTileEntity<TileEntity>
+		tDelegator = WD.te(worldObj, getOffsetXN(mFacing), yCoord-1, getOffsetZN(mFacing), SIDE_TOP, F);
+		if (tDelegator.mTileEntity instanceof ITileEntitySwitchableOnOff && tDelegator.mTileEntity instanceof ITileEntityEnergy && ((ITileEntityEnergy)tDelegator.mTileEntity).isEnergyEmittingTo(mEnergyTypeAccepted, tDelegator.mSideOfTileEntity, T)) {
+			((ITileEntitySwitchableOnOff)tDelegator.mTileEntity).setStateOnOff(getStateOnOff());
+		}
+		tDelegator = WD.te(worldObj, getOffsetXN(mFacing), yCoord+2, getOffsetZN(mFacing), SIDE_BOTTOM, F);
 		if (tDelegator.mTileEntity instanceof ITileEntitySwitchableOnOff && tDelegator.mTileEntity instanceof ITileEntityEnergy && ((ITileEntityEnergy)tDelegator.mTileEntity).isEnergyEmittingTo(mEnergyTypeAccepted, tDelegator.mSideOfTileEntity, T)) {
 			((ITileEntitySwitchableOnOff)tDelegator.mTileEntity).setStateOnOff(getStateOnOff());
 		}
