@@ -95,12 +95,6 @@ public class MultiTileEntityElectrolyzer extends TileEntityBase10MultiBlockMachi
 	}
 	
 	@Override
-	public boolean onTickCheck(long aTimer) {
-		if (mActive != oActive) checkStructure(T);
-		return super.onTickCheck(aTimer);
-	}
-	
-	@Override
 	public void updateAdjacentToggleableEnergySources() {
 		DelegatorTileEntity<TileEntity> tDelegator = WD.te(worldObj, getOffsetXN(mFacing), yCoord-1, getOffsetZN(mFacing), SIDE_TOP, F);
 		if (tDelegator.mTileEntity instanceof ITileEntitySwitchableOnOff && tDelegator.mTileEntity instanceof ITileEntityEnergy && ((ITileEntityEnergy)tDelegator.mTileEntity).isEnergyEmittingTo(mEnergyTypeAccepted, tDelegator.mSideOfTileEntity, T)) {
@@ -120,6 +114,8 @@ public class MultiTileEntityElectrolyzer extends TileEntityBase10MultiBlockMachi
 	
 	@Override public DelegatorTileEntity<IInventory> getItemInputTarget(byte aSide) {return null;}
 	@Override public DelegatorTileEntity<IFluidHandler> getFluidInputTarget(byte aSide) {return null;}
+	
+	@Override public boolean refreshStructureOnActiveStateChange() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.electrolyzer";}
 }

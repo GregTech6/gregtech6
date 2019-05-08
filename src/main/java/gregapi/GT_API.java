@@ -548,18 +548,22 @@ public class GT_API extends Abstract_Mod {
 		if (tMainConfig.get("general", "hardermobspawners"          , T).getBoolean(T)) Blocks.mob_spawner.setHardness(500.0F);
 		if (tMainConfig.get("general", "blastresistantmobspawners"  , T).getBoolean(T)) Blocks.mob_spawner.setResistance(6000000.0F);
 		
-		FIRE_EXPLOSIONS                     = tMainConfig.get("machines", "explosions_by_fire"          , T).getBoolean(F);
-		RAIN_EXPLOSIONS                     = tMainConfig.get("machines", "explosions_by_rain"          , T).getBoolean(F);
-		WATER_EXPLOSIONS                    = tMainConfig.get("machines", "explosions_by_water"         , T).getBoolean(F);
-		THUNDER_EXPLOSIONS                  = tMainConfig.get("machines", "explosions_by_thunder"       , T).getBoolean(F);
-		OVERCHARGE_EXPLOSIONS               = tMainConfig.get("machines", "explosions_by_overload"      , T).getBoolean(F);
+		FIRE_EXPLOSIONS                     = tMainConfig.get("machines", "explode_by_fire"    , F).getBoolean(F);
+		RAIN_EXPLOSIONS                     = tMainConfig.get("machines", "explode_by_rain"    , F).getBoolean(F);
+		WATER_EXPLOSIONS                    = tMainConfig.get("machines", "explode_by_water"   , F).getBoolean(F);
+		THUNDER_EXPLOSIONS                  = tMainConfig.get("machines", "explode_by_thunder" , F).getBoolean(F);
+		OVERCHARGE_EXPLOSIONS               = tMainConfig.get("machines", "explode_by_overload", F).getBoolean(F);
+		FIRE_BREAKING                       = tMainConfig.get("machines", "break_by_fire"      , F).getBoolean(F);
+		RAIN_BREAKING                       = tMainConfig.get("machines", "break_by_rain"      , F).getBoolean(F);
+		WATER_BREAKING                      = tMainConfig.get("machines", "break_by_water"     , F).getBoolean(F);
+		THUNDER_BREAKING                    = tMainConfig.get("machines", "break_by_thunder"   , F).getBoolean(F);
+		OVERCHARGE_BREAKING                 = tMainConfig.get("machines", "break_by_overload"  , F).getBoolean(F);
 		
-		// TODO: Currently defaulting to false, remove that later
-		FIRE_EXPLOSIONS                     = F;
-		RAIN_EXPLOSIONS                     = F;
-		WATER_EXPLOSIONS                    = F;
-		THUNDER_EXPLOSIONS                  = F;
-		OVERCHARGE_EXPLOSIONS               = F;
+		if (FIRE_EXPLOSIONS      ) FIRE_BREAKING       = T;
+		if (RAIN_EXPLOSIONS      ) RAIN_BREAKING       = T;
+		if (WATER_EXPLOSIONS     ) WATER_BREAKING      = T;
+		if (THUNDER_EXPLOSIONS   ) THUNDER_BREAKING    = T;
+		if (OVERCHARGE_EXPLOSIONS) OVERCHARGE_BREAKING = T;
 		
 		if (CONFIG_HARDNESS_MULTIPLIER_SAND <= 0.0) CONFIG_HARDNESS_MULTIPLIER_SAND = 1.0;
 		if (CONFIG_HARDNESS_MULTIPLIER_ROCK <= 0.0) CONFIG_HARDNESS_MULTIPLIER_ROCK = 1.0;

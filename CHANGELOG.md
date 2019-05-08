@@ -25,8 +25,26 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.16: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.10.16: (Not released yet, Textures for new Stuff are currently not done yet)
+[ADDED] Configs to make Machines just break instead of Explode, when overcharged or getting in contact with weather. Boilers still explode though.
+[ADDED]
+Multiblock Sluice
+Made mostly out of Titanium
+Is 3x7x3 in Size.
+Can Process 64 of a Recipe in Parallel.
+Powered by RU, with 50% Efficiency though ofcourse no Overclocking Penalty.
+[ADDED]
+Multiblock Crusher
+Made mostly out of Tungstensteel
+Is 5x5x3 in Size
+Can Process 64 of a Recipe in Parallel.
+Powered by RU, with 50% Efficiency though ofcourse no Overclocking Penalty.
+[ADDED]
+Multiblock Shredder
+Made mostly out of Tungstensteel
+Is 5x5x3 in Size
+Can Process 64 of a Recipe in Parallel.
+Powered by RU, with 50% Efficiency though ofcourse no Overclocking Penalty.
 
 
 6.10.15:

@@ -48,7 +48,8 @@ public class MultiTileEntitySluice extends TileEntityBase10MultiBlockMachine {
 		tMinX = xCoord-(SIDE_X_NEG==mFacing?0:SIDE_X_POS==mFacing?6:1),
 		tMinZ = zCoord-(SIDE_Z_NEG==mFacing?0:SIDE_Z_POS==mFacing?6:1),
 		tMaxX = xCoord+(SIDE_X_POS==mFacing?0:SIDE_X_NEG==mFacing?6:1),
-		tMaxZ = zCoord+(SIDE_Z_POS==mFacing?0:SIDE_Z_NEG==mFacing?6:1);
+		tMaxZ = zCoord+(SIDE_Z_POS==mFacing?0:SIDE_Z_NEG==mFacing?6:1),
+		tD = (SIDES_AXIS_X[mFacing]?mActive?1:0:mActive?3:2);
 		
 		if (worldObj.blockExists(tMinX, yCoord, tMinZ) && worldObj.blockExists(tMaxX, yCoord+2, tMaxZ)) {
 			boolean tSuccess = T;
@@ -64,11 +65,11 @@ public class MultiTileEntitySluice extends TileEntityBase10MultiBlockMachine {
 				} else {
 				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX, yCoord+1, tZ, 18006, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 				}
-				// TODO: Sluice Parts
+				// TODO: Sluice Part Rotation and Activity
 				if (SIDES_AXIS_X[mFacing] ? Math.abs(tX-xCoord)==6 : Math.abs(tZ-zCoord)==6) {
-				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX, yCoord+2, tZ, 18006, getMultiTileEntityRegistryID(), 1, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_IN)) tSuccess = F;
+				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX, yCoord+2, tZ, 18106, getMultiTileEntityRegistryID(),tD, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_IN)) tSuccess = F;
 				} else {
-				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX, yCoord+2, tZ, 18006, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX, yCoord+2, tZ, 18106, getMultiTileEntityRegistryID(),tD, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 				}
 			}
 			return tSuccess;
@@ -80,6 +81,8 @@ public class MultiTileEntitySluice extends TileEntityBase10MultiBlockMachine {
 		LH.add("gt.tooltip.multiblock.sluice.1", "Two 3x7 Layers of Titanium Walls");
 		LH.add("gt.tooltip.multiblock.sluice.2", "3x7 Layer of Sluice Parts ontop of that");
 		LH.add("gt.tooltip.multiblock.sluice.3", "Main Block centered on Slim-Side-Bottom and facing outwards");
+		LH.add("gt.tooltip.multiblock.sluice.4", "Input only at the top of the Far Side");
+		LH.add("gt.tooltip.multiblock.sluice.5", "Output only at the bottom of the Close Side");
 	}
 	
 	@Override
@@ -88,6 +91,8 @@ public class MultiTileEntitySluice extends TileEntityBase10MultiBlockMachine {
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.sluice.1"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.sluice.2"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.sluice.3"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.sluice.4"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.sluice.5"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -130,6 +135,8 @@ public class MultiTileEntitySluice extends TileEntityBase10MultiBlockMachine {
 	
 	@Override public DelegatorTileEntity<IInventory> getItemInputTarget(byte aSide) {return null;}
 	@Override public DelegatorTileEntity<IFluidHandler> getFluidInputTarget(byte aSide) {return null;}
+	
+	@Override public boolean refreshStructureOnActiveStateChange() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.sluice";}
 }

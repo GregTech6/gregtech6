@@ -457,7 +457,15 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public void overcharge(long aVoltage, TagData aEnergyType) {
 		// Only explode if allowed
-		if (OVERCHARGE_EXPLOSIONS) if (TD.Energy.ALL_EXPLODING.contains(aEnergyType)) explode(UT.Code.tierMax(aVoltage)); else explode(0.1);
+		if (OVERCHARGE_EXPLOSIONS) {
+			if (TD.Energy.ALL_EXPLODING.contains(aEnergyType)) {
+				explode(UT.Code.tierMax(aVoltage));
+			} else {
+				explode(0.1);
+			}
+		} else if (OVERCHARGE_BREAKING) {
+			explode(0.1);
+		}
 		// Yes, I will annoy people with that a lot, even when they disable Explosions.
 		UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(aEnergyType)?SFX.IC_MACHINE_OVERLOAD:TD.Energy.ALL_KINETIC.contains(aEnergyType)?SFX.IC_MACHINE_INTERRUPT:SFX.MC_EXPLODE, 1, 1, getCoords());
 		// The Noise should make the position obvious.
@@ -709,7 +717,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		for (TagData tEnergyType : getEnergyTypes(SIDE_ANY)) {
 			if (TD.Energy.ALL_WEAK_TO_FIRE.contains(tEnergyType)) for (byte tSide : ALL_SIDES_VALID) {
 				if (!isFireProof(tSide) && getBlockAtSide(tSide) instanceof BlockFire && rng(10) == 0) {
-					if (FIRE_EXPLOSIONS) if (TD.Energy.ALL_EXPLODING.contains(tEnergyType)) explode(4.0); else explode(0.1);
+					if (FIRE_EXPLOSIONS) explode(TD.Energy.ALL_EXPLODING.contains(tEnergyType) ? 4.0 : 0.1); else if (FIRE_BREAKING) explode(0.1);
 					UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(tEnergyType)?SFX.IC_MACHINE_OVERLOAD:TD.Energy.ALL_KINETIC.contains(tEnergyType)?SFX.IC_MACHINE_INTERRUPT:SFX.MC_EXPLODE, 1, 1, getCoords());
 					DEB.println("Machine came into contact with Fire - Energy Type: " + tEnergyType.getLocalisedNameLong());
 					return F;
@@ -717,13 +725,13 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 			}
 			if (TD.Energy.ALL_WEAK_TO_WATER.contains(tEnergyType)) for (byte tSide : ALL_SIDES_BUT_BOTTOM) {
 				if (!isWaterProof(tSide) && WD.liquid(getBlockAtSide(tSide))) {
-					if (WATER_EXPLOSIONS) if (TD.Energy.ALL_EXPLODING.contains(tEnergyType)) explode(4.0); else explode(0.1);
+					if (WATER_EXPLOSIONS) explode(TD.Energy.ALL_EXPLODING.contains(tEnergyType) ? 4.0 : 0.1); else if (WATER_BREAKING) explode(0.1);
 					UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(tEnergyType)?SFX.IC_MACHINE_OVERLOAD:TD.Energy.ALL_KINETIC.contains(tEnergyType)?SFX.IC_MACHINE_INTERRUPT:SFX.MC_EXPLODE, 1, 1, getCoords());
 					DEB.println("Machine came into contact with Water - Energy Type: " + tEnergyType.getLocalisedNameLong());
 					return F;
 				}
 				if (!isRainProof(tSide) && worldObj.isRaining() && getBiome().rainfall > 0 && rng(100) == 0 && getRainAtSide(tSide)) {
-					if (RAIN_EXPLOSIONS) if (TD.Energy.ALL_EXPLODING.contains(tEnergyType)) explode(4.0); else explode(0.1);
+					if (RAIN_EXPLOSIONS) explode(TD.Energy.ALL_EXPLODING.contains(tEnergyType) ? 4.0 : 0.1); else if (RAIN_BREAKING) explode(0.1);
 					UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(tEnergyType)?SFX.IC_MACHINE_OVERLOAD:TD.Energy.ALL_KINETIC.contains(tEnergyType)?SFX.IC_MACHINE_INTERRUPT:SFX.MC_EXPLODE, 1, 1, getCoords());
 					DEB.println("Machine came into contact with Rain - Energy Type: " + tEnergyType.getLocalisedNameLong());
 					return F;
@@ -731,7 +739,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 			}
 			if (TD.Energy.ALL_WEAK_TO_THUNDER.contains(tEnergyType)) for (byte tSide : ALL_SIDES_BUT_BOTTOM) {
 				if (!isThunderProof(tSide) && worldObj.isThundering() && rng(1000) == 0 && getRainAtSide(tSide)) {
-					if (THUNDER_EXPLOSIONS) if (TD.Energy.ALL_EXPLODING.contains(tEnergyType)) explode(4.0); else explode(0.1);
+					if (THUNDER_EXPLOSIONS) explode(TD.Energy.ALL_EXPLODING.contains(tEnergyType) ? 4.0 : 0.1); else if (THUNDER_BREAKING) explode(0.1);
 					UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(tEnergyType)?SFX.IC_MACHINE_OVERLOAD:TD.Energy.ALL_KINETIC.contains(tEnergyType)?SFX.IC_MACHINE_INTERRUPT:SFX.MC_EXPLODE, 1, 1, getCoords());
 					DEB.println("Machine came into contact with Thunder - Energy Type: " + tEnergyType.getLocalisedNameLong());
 					return F;

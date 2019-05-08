@@ -84,6 +84,12 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	}
 	
 	@Override
+	public boolean onTickCheck(long aTimer) {
+		if (refreshStructureOnActiveStateChange() && (mActive != oActive || mRunning != oRunning)) checkStructure(T);
+		return super.onTickCheck(aTimer);
+	}
+	
+	@Override
 	public boolean checkStructure(boolean aForceReset) {
 		if (isClientSide()) return mStructureOkay;
 		if ((mStructureChanged || aForceReset) && mStructureOkay != checkStructure2()) {
@@ -106,6 +112,7 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	@Override public void onStructureChange() {mStructureChanged = T;}
 	
 	public abstract boolean checkStructure2();
+	public boolean refreshStructureOnActiveStateChange() {return F;}
 	
 	@Override public abstract DelegatorTileEntity<IInventory> getItemInputTarget(byte aSide);
 	@Override public abstract DelegatorTileEntity<TileEntity> getItemOutputTarget(byte aSide);

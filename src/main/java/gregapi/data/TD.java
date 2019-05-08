@@ -201,13 +201,13 @@ public class TD {
 		/** Contains all known Energy Tags, which are electric. */
 		public static final List<TagData> ALL_NEGATIVE_ALLOWED              = new ArrayListNoNulls<>(F, AU, QU, MU, KU, RU, EU);
 		/** Contains all known Energy Tags, which are weak to Water, such as electricity. */
-		public static final List<TagData> ALL_WEAK_TO_WATER                 = new ArrayListNoNulls<>(F, EU, HU);
+		public static final List<TagData> ALL_WEAK_TO_WATER                 = new ArrayListNoNulls<>(F, EU, HU, CU);
 		/** Contains all known Energy Tags, which are weak to Thunder, such as electricity. */
 		public static final List<TagData> ALL_WEAK_TO_THUNDER               = new ArrayListNoNulls<>(F, EU);
 		/** Contains all known Energy Tags, which are weak to Fire, such as electricity. */
 		public static final List<TagData> ALL_WEAK_TO_FIRE                  = new ArrayListNoNulls<>(F, EU, CU);
-		/** Contains all known Energy Tags, which are weak to Fire, such as electricity. */
-		public static final List<TagData> ALL_HOT_COLD                      = new ArrayListNoNulls<>(F, HU, CU);
+		/** Contains all known Energy Tags, which are Temperature based. */
+		public static final List<TagData> ALL_HOT_COLD                      = new ArrayListNoNulls<>(F, HU, CU, VIS_IGNIS);
 		/** Contains all known Energy Tags, which have a limited consumption of Packets. */
 		public static final List<TagData> ALL_COMSUMPTION_LIMITED           = new ArrayListNoNulls<>(F, EU, RF, VIS_ORDO, VIS_AER, VIS_AQUA, VIS_TERRA, VIS_IGNIS, VIS_PERDITIO);
 		/** Contains all known Energy Tags, which use cause Explosions when the Machines are overloaded. */
