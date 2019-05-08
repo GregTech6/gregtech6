@@ -28,15 +28,18 @@ import net.minecraft.util.IChatComponent;
  */
 public class DamageSources {
 	public static DamageSource getElectricDamage() {
-		return ic2.api.info.Info.DMG_ELECTRIC;
+		try {return ic2.api.info.Info.DMG_ELECTRIC;} catch(Throwable e) {/**/}
+		return getHeatDamage();
 	}
 	
 	public static DamageSource getRadioactiveDamage() {
-		return ic2.api.info.Info.DMG_RADIATION;
+		try {return ic2.api.info.Info.DMG_RADIATION;} catch(Throwable e) {/**/}
+		return getHeatDamage();
 	}
 	
 	public static DamageSource getNukeExplosionDamage() {
-		return ic2.api.info.Info.DMG_NUKE_EXPLOSION;
+		try {return ic2.api.info.Info.DMG_NUKE_EXPLOSION;} catch(Throwable e) {/**/}
+		return getHeatDamage();
 	}
 	
 	public static DamageSource getExplodingDamage() {
