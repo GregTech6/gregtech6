@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.16: (Not released yet, Textures for new Stuff are currently not done yet, because of that and because Bear needs time to test, this will be on Friday)
+6.10.16: (Not released yet, Textures for new Stuff are currently not done yet, because of that and because Bear needs time to test, and also because I need to do some IRL thing that I will mention later, this will be on Friday)
 [CHANGED] The Multi-Ingot to Plate, Foil, Item Casings, Small Spring and Ring Recipes in the Anvil now output Scraps in order to be less wasteful.
 [ADDED] Configs to make Machines just break instead of Explode, when overcharged or getting in contact with weather. Boilers still explode though.
 [ADDED]

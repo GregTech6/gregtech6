@@ -326,7 +326,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		switch(aRenderPass) {
 		case  0: return SIDES_TOP_HORIZONTAL[aSide] || aShouldSideBeRendered[aSide] ? mTextureAnvil : null;
 		case  1: return SIDES_HORIZONTAL[aSide] ? mTextureAnvil : null;
-		case  2: return !ALONG_AXIS[mFacing][aSide] || aShouldSideBeRendered[aSide] ? mTextureAnvil : null;
+		case  2: return mTextureAnvil;
 		case  3: return mTextureAnvil;
 		case  4: return mTextureAnvil;
 		case  5: return ALONG_AXIS[mFacing][aSide] ? BI.nei() : null;
