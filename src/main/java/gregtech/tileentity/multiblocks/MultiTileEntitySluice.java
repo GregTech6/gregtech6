@@ -49,7 +49,7 @@ public class MultiTileEntitySluice extends TileEntityBase10MultiBlockMachine {
 		tMinZ = zCoord-(SIDE_Z_NEG==mFacing?0:SIDE_Z_POS==mFacing?6:1),
 		tMaxX = xCoord+(SIDE_X_POS==mFacing?0:SIDE_X_NEG==mFacing?6:1),
 		tMaxZ = zCoord+(SIDE_Z_POS==mFacing?0:SIDE_Z_NEG==mFacing?6:1),
-		tD = (SIDES_AXIS_X[mFacing]?mActive?1:0:mActive?3:2);
+		tD = (mActive?mFacing+2:mFacing-2);
 		
 		if (worldObj.blockExists(tMinX, yCoord, tMinZ) && worldObj.blockExists(tMaxX, yCoord+2, tMaxZ)) {
 			boolean tSuccess = T;
