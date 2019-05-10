@@ -41,7 +41,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class MultiTileEntityShredder extends TileEntityBase10MultiBlockMachine {
 	@Override
 	public boolean checkStructure2() {
-		int tX = getOffsetXN(mFacing, 2)-2, tY = yCoord, tZ = getOffsetZN(mFacing, 2)-2, tD = (SIDES_AXIS_X[mFacing]?mActive?1:0:mActive?3:2);
+		int tX = getOffsetXN(mFacing, 2)-2, tY = yCoord, tZ = getOffsetZN(mFacing, 2)-2, tD = (SIDES_AXIS_Z[mFacing]?mActive?1:0:mActive?3:2);
 		if (worldObj.blockExists(tX-2, tY, tZ-2) && worldObj.blockExists(tX+2, tY, tZ-2) && worldObj.blockExists(tX-2, tY, tZ+2) && worldObj.blockExists(tX+2, tY, tZ+2)) {
 			boolean tSuccess = T;
 			
