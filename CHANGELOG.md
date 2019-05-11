@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.24: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.23: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.10.22: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.17: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Item Filter Covers on Item Pipes did not work in inverted Mode.
 
 
 6.10.16:
