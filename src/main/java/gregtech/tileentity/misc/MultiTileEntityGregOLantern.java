@@ -40,8 +40,8 @@ public class MultiTileEntityGregOLantern extends TileEntityBase09FacingSingle im
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public int getLightValue() {return 15;}
 	
-	@Override public float getExplosionResistance(Entity aExploder, double aExplosionX, double aExplosionY, double aExplosionZ) {return Blocks.lit_pumpkin.getExplosionResistance(aExploder);}
-	@Override public float getExplosionResistance() {return Blocks.lit_pumpkin.getExplosionResistance(null);}
+	@Override public float getExplosionResistance2(Entity aExploder, double aExplosionX, double aExplosionY, double aExplosionZ) {return Blocks.lit_pumpkin.getExplosionResistance(aExploder);}
+	@Override public float getExplosionResistance2() {return Blocks.lit_pumpkin.getExplosionResistance(null);}
 	@Override public float getBlockHardness() {return Blocks.lit_pumpkin.getBlockHardness(null, 0, 0, 0);}
 	
 	@Override public boolean isSurfaceSolid         (byte aSide) {return T;}

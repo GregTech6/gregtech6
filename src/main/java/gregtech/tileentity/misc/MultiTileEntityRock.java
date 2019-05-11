@@ -235,7 +235,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	@Override public boolean canEntityDestroy(Entity aEntity) {return !(aEntity instanceof EntityDragon);}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
-	@Override public float getExplosionResistance() {return 0;}
+	@Override public float getExplosionResistance2() {return 0;}
 	@Override public float getBlockHardness() {return 0.25F;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.rock";}

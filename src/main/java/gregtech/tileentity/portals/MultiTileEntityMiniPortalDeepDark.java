@@ -129,7 +129,7 @@ public class MultiTileEntityMiniPortalDeepDark extends MultiTileEntityMiniPortal
 	}
 	
 	@Override public float getBlockHardness() {return Blocks.stone.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
-	@Override public float getExplosionResistance() {return Blocks.stone.getExplosionResistance(null);}
+	@Override public float getExplosionResistance2() {return Blocks.stone.getExplosionResistance(null);}
 	
 	public ITexture sDeepDarkPortal = BlockTextureCopied.get(ST.block(MD.ExU, "dark_portal", Blocks.portal), SIDE_ANY, 0, UNCOLOURED, F, T, T), sDeepDarkPortalFrame = BlockTextureCopied.get(ST.block(MD.ExU, "block_bedrockium", Blocks.stone), SIDE_ANY, 0, UNCOLOURED, F, F, F);
 	@Override public ITexture getPortalTexture() {return sDeepDarkPortal;}

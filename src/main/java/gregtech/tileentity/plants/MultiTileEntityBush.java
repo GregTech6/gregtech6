@@ -343,7 +343,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	@Override public String getFacingTool() {return null;}
 	@Override public byte getDefaultSide() {return SIDE_UNDEFINED;}
 	@Override public boolean[] getValidSides() {return SIDES_ALL;}
-	@Override public float getExplosionResistance() {return 0.2F;}
+	@Override public float getExplosionResistance2() {return 0.2F;}
 	@Override public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return 300;}
 	@Override public int getFlammability(byte aSide, boolean aDefault) {return 300;}
 	@Override public boolean canDrop(int aSlot) {return F;}

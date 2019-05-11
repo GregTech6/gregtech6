@@ -127,7 +127,7 @@ public class MultiTileEntityMiniPortalTropics extends MultiTileEntityMiniPortal 
 	}
 	
 	@Override public float getBlockHardness() {return Blocks.grass.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
-	@Override public float getExplosionResistance() {return Blocks.grass.getExplosionResistance(null);}
+	@Override public float getExplosionResistance2() {return Blocks.grass.getExplosionResistance(null);}
 	
 	public ITexture sTropicsPortal = BlockTextureCopied.get(ST.block(MD.TROPIC, "tile.portal", Blocks.portal), SIDE_ANY, 0, UNCOLOURED, F, T, T), sTropicsPortalFrame = BlockTextureCopied.get(ST.block(MD.TROPIC, "tile.bambooBundle", Blocks.planks), SIDE_FRONT, 0, UNCOLOURED, F, F, F), sTropicsPortalInactive = BlockTextureCopied.get(Blocks.water, SIDE_TOP, 0, 0x0088ffcc, F, T, T);
 	@Override public ITexture getPortalTexture() {return sTropicsPortal;}

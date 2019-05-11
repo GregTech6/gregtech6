@@ -84,6 +84,6 @@ public class MultiTileEntitySapHoleMaple extends MultiTileEntityTreeHole {
 	@Override public ItemStack getResinItem(byte aSide) {return null;}
 	@Override public FluidStack getResinFluid(byte aSide) {return UT.Fluids.make("maplesap", 250);}
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? aSide != mFacing ? BlockTextureCopied.get(BlocksGT.LogA, SIDE_ANY, 1) : BlockTextureDefault.get(mHasResin?Textures.BlockIcons.LOG_SAP_MAPLE:Textures.BlockIcons.LOG_HOLE_MAPLE) : null;}
-	@Override public float getExplosionResistance() {return BlocksGT.LogA.getExplosionResistance(1);}
+	@Override public float getExplosionResistance2() {return BlocksGT.LogA.getExplosionResistance(1);}
 	@Override public String getTileEntityName() {return "gt.multitileentity.tree.maple.saphole";}
 }

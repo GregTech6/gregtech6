@@ -132,7 +132,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_MAX;}
 	
-	@Override public float getExplosionResistance() {return Blocks.bedrock.getExplosionResistance(null);}
+	@Override public float getExplosionResistance2() {return Blocks.bedrock.getExplosionResistance(null);}
 	@Override public float getBlockHardness() {return -1;}
 	
 	@Override public boolean isSurfaceSolid         (byte aSide) {return T;}

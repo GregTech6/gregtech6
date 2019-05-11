@@ -129,7 +129,7 @@ public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPo
 	}
 	
 	@Override public float getBlockHardness() {return Blocks.stone.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
-	@Override public float getExplosionResistance() {return Blocks.stone.getExplosionResistance(null);}
+	@Override public float getExplosionResistance2() {return Blocks.stone.getExplosionResistance(null);}
 	
 	public ITexture sBetweenlandsPortal = BlockTextureCopied.get(ST.block(MD.BTL, "treePortalBlock", Blocks.portal), SIDE_ANY, 0, UNCOLOURED, F, T, T), sBetweenlandsPortalFrame = BlockTextureCopied.get(ST.block(MD.BTL, "portalBark", Blocks.stone), SIDE_ANY, 0, UNCOLOURED, F, F, F), sBetweenlandsPortalInactive = BlockTextureCopied.get(Blocks.leaves, SIDE_ANY, 0, DYE_Green, F, F, F);
 	@Override public ITexture getPortalTexture() {return sBetweenlandsPortal;}

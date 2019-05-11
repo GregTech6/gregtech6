@@ -472,8 +472,11 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		DEB.println("Machine overcharged with: " + aVoltage + " " + aEnergyType.getLocalisedNameLong());
 	}
 	
-	public float getExplosionResistance(Entity aExploder, double aExplosionX, double aExplosionY, double aExplosionZ) {return getExplosionResistance();}
-	public float getExplosionResistance() {return 0;}
+	public float getExplosionResistance(Entity aExploder, double aExplosionX, double aExplosionY, double aExplosionZ) {return mExplosionStrength > 0 ? 0 : getExplosionResistance2(aExploder, aExplosionX, aExplosionY, aExplosionZ);}
+	public float getExplosionResistance() {return mExplosionStrength > 0 ? 0 : getExplosionResistance2();}
+	
+	public float getExplosionResistance2(Entity aExploder, double aExplosionX, double aExplosionY, double aExplosionZ) {return getExplosionResistance2();}
+	public float getExplosionResistance2() {return 0;}
 	
 	@SideOnly(Side.CLIENT)
 	@Override public Object getGUIClient(int aGUIID, EntityPlayer aPlayer) {return null;}

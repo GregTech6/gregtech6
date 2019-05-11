@@ -123,7 +123,7 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 	@Override public boolean isWood() {return T;}
 	@Override public boolean hasResin(byte aSide) {return aSide == mFacing && mHasResin;}
 	@Override public boolean extractResin(byte aSide) {if (!hasResin(aSide)) return F; mHasResin = F; updateClientData(); return T;}
-	@Override public float getExplosionResistance() {return BlocksGT.LogA.getExplosionResistance(0);}
+	@Override public float getExplosionResistance2() {return BlocksGT.LogA.getExplosionResistance(0);}
 	@Override public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return 300;}
 	@Override public int getFlammability(byte aSide, boolean aDefault) {return 300;}
 	@Override public boolean allowCovers(byte aSide) {return F;}

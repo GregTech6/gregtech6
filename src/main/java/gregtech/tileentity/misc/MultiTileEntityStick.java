@@ -110,7 +110,7 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	@Override public boolean canEntityDestroy(Entity aEntity) {return !(aEntity instanceof EntityDragon);}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
-	@Override public float getExplosionResistance() {return 0;}
+	@Override public float getExplosionResistance2() {return 0;}
 	@Override public float getBlockHardness() {return 0.25F;}
 	@Override public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return 300;}
 	@Override public int getFlammability(byte aSide, boolean aDefault) {return 300;}

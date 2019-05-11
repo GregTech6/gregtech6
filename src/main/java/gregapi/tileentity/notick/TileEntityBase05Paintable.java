@@ -105,7 +105,7 @@ public abstract class TileEntityBase05Paintable extends TileEntityBase04Covers i
 	@Override public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return mFlammability;}
 	@Override public int getFlammability(byte aSide, boolean aDefault) {return mFlammability;}
 	@Override public float getBlockHardness() {return mHardness;}
-	@Override public float getExplosionResistance() {return mResistance;}
+	@Override public float getExplosionResistance2() {return mResistance;}
 	
 	// Stuff to Override
 	public byte getVisualData() {return 0;}

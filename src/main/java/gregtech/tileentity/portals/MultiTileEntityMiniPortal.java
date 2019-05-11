@@ -259,7 +259,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	@Override public int getFireSpreadSpeed(byte aSide, boolean aDefault) {return 0;}
 	@Override public int getFlammability(byte aSide, boolean aDefault) {return 0;}
 	@Override public float getBlockHardness() {return Blocks.stone.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
-	@Override public float getExplosionResistance() {return Blocks.stone.getExplosionResistance(null);}
+	@Override public float getExplosionResistance2() {return Blocks.stone.getExplosionResistance(null);}
 	
 	@Override
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {

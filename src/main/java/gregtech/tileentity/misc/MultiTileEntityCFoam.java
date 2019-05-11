@@ -137,7 +137,7 @@ public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements I
 	
 	@Override public int getLightOpacity() {return mFoamDried ? LIGHT_OPACITY_MAX : LIGHT_OPACITY_WATER;}
 	
-	@Override public float getExplosionResistance() {return mFoamDried ? 24 : 6;}
+	@Override public float getExplosionResistance2() {return mFoamDried ? 24 : 6;}
 	
 	@Override public byte getVisualData() {return (byte)((mFoamDried ? 1 : 0)|(mOwnable ? 2 : 0));}
 	@Override public void setVisualData(byte aData) {mFoamDried = ((aData & 1) != 0); mOwnable = ((aData & 2) != 0);}

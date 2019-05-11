@@ -81,6 +81,6 @@ public class MultiTileEntitySapHoleRainbowood extends MultiTileEntityTreeHole {
 	@Override public ItemStack getResinItem(byte aSide) {return null;}
 	@Override public FluidStack getResinFluid(byte aSide) {return UT.Fluids.make("rainbowsap", 250);}
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? aSide != mFacing ? BlockTextureCopied.get(BlocksGT.LogB, SIDE_ANY, 3) : BlockTextureDefault.get(mHasResin?Textures.BlockIcons.LOG_SAP_RAINBOWOOD:Textures.BlockIcons.LOG_HOLE_RAINBOWOOD) : null;}
-	@Override public float getExplosionResistance() {return BlocksGT.LogB.getExplosionResistance(3);}
+	@Override public float getExplosionResistance2() {return BlocksGT.LogB.getExplosionResistance(3);}
 	@Override public String getTileEntityName() {return "gt.multitileentity.tree.rainbowood.saphole";}
 }

@@ -456,7 +456,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	}
 	
 	@Override public float getBlockHardness() {return 1;}
-	@Override public float getExplosionResistance() {return 0;}
+	@Override public float getExplosionResistance2() {return 0;}
 	
 	public static boolean ALLOW_3D_COINS = T, ALLOW_3D_COINS_INV = T;
 	

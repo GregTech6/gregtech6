@@ -181,7 +181,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override public String getTileEntityName() {return "gt.multitileentity.chest";}
 	@Override public void openInventoryGUI () {mUsingPlayers++;}
 	@Override public void closeInventoryGUI() {mUsingPlayers--;}
-	@Override public float getExplosionResistance() {return mResistance;}
+	@Override public float getExplosionResistance2() {return mResistance;}
 	@Override public float getBlockHardness() {return mHardness;}
 	@Override public int getComparatorInputOverride(byte aSide) {return Container.calcRedstoneFromInventory(this);}
 	@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return null;}

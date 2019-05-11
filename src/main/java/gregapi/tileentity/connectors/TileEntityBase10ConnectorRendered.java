@@ -180,7 +180,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		return T;
 	}
 	
-	@Override public float getExplosionResistance() {return Math.max(mFoam && mFoamDried ? 24 : 0, super.getExplosionResistance());}
+	@Override public float getExplosionResistance2() {return Math.max(mFoam && mFoamDried ? 24 : 0, super.getExplosionResistance2());}
 	
 	@Override
 	public byte getDirectionData() {

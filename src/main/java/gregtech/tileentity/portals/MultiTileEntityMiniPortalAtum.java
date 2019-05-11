@@ -130,7 +130,7 @@ public class MultiTileEntityMiniPortalAtum extends MultiTileEntityMiniPortal {
 	}
 	
 	@Override public float getBlockHardness() {return Blocks.stone.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
-	@Override public float getExplosionResistance() {return Blocks.stone.getExplosionResistance(null);}
+	@Override public float getExplosionResistance2() {return Blocks.stone.getExplosionResistance(null);}
 	
 	public ITexture sAtumPortal = BlockTextureCopied.get(ST.block(MD.ATUM, "tile.portal", Blocks.portal), SIDE_ANY, 0, UNCOLOURED, F, T, T), sAtumPortalFrame = BlockTextureCopied.get(ST.block(MD.ATUM, "tile.carvedBrick", BlocksGT.Limestone), SIDE_ANY, 0, UNCOLOURED, F, F, F);
 	@Override public ITexture getPortalTexture() {return sAtumPortal;}
