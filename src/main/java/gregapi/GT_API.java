@@ -411,6 +411,7 @@ public class GT_API extends Abstract_Mod {
 			MT.Cr.setLocal("Chrome");
 			MT.Cu.setLocal("Cooper");
 			MT.AnnealedCopper.setLocal("Anilled Cooper");
+			MT.Mg.setLocal("Manganesium");
 			MT.Mn.setLocal("Animenese");
 			MT.As.setLocal("Arse Nick");
 			MT.Br.setLocal("Bro, that's mine");
