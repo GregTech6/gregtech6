@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.17: (Not released yet, I've been working on a Script to automate some IRL thing for me, ended up learning a bit about shell scripts and stuff through that, unsure if there is gonna be significant features this week.)
+6.10.17:
 [FIXED] Item Filter Covers on Item Pipes did not work in inverted Mode.
 [FIXED] Item Pipes and Wires with Covers shredder properly now.
 [FIXED] Multiblock Sided IN/OUT Information Tooltips by simply removing them and adding that Info to the Multiblocks Construction Tooltip.
