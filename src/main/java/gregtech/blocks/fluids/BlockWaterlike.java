@@ -21,9 +21,12 @@ package gregtech.blocks.fluids;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
 import java.util.Random;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import gregapi.block.IBlockOnHeadInside;
+import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
@@ -32,8 +35,10 @@ import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.Vec3;
@@ -46,7 +51,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class BlockWaterlike extends BlockFluidClassic {
+public abstract class BlockWaterlike extends BlockFluidClassic implements IBlockOnHeadInside {
 	public final Fluid mFluid;
 	
 	public BlockWaterlike(String aName, Fluid aFluid) {
@@ -189,4 +194,18 @@ public abstract class BlockWaterlike extends BlockFluidClassic {
 	@Override public boolean getTickRandomly() {return F;}
 	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}
 	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
+	
+	public BlockWaterlike addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
+		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
+		return this;
+	}
+	
+	public List<int[]> mEffects = new ArrayListNoNulls<>();
+	
+	@Override
+	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
+		if (!mEffects.isEmpty() && (UT.Fluids.gas(mFluid) ? !UT.Entities.isWearingFullGasHazmat(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
+			for (int[] tEffects : mEffects) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
+		}
+	}
 }

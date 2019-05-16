@@ -105,6 +105,7 @@ public class MultiTileEntityCoagulator extends TileEntityBase10MultiBlockMachine
 	static {
 		LH.add("gt.tooltip.multiblock.coagulator.1", "5x5x2 of Stainless Steel Walls");
 		LH.add("gt.tooltip.multiblock.coagulator.2", "Main Block centered on Side-Bottom and facing outwards");
+		LH.add("gt.tooltip.multiblock.coagulator.3", "Input and Output at any Blocks");
 	}
 	
 	@Override
@@ -112,6 +113,7 @@ public class MultiTileEntityCoagulator extends TileEntityBase10MultiBlockMachine
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.coagulator.1"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.coagulator.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.coagulator.3"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

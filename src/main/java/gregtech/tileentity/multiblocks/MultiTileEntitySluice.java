@@ -81,8 +81,8 @@ public class MultiTileEntitySluice extends TileEntityBase10MultiBlockMachine {
 		LH.add("gt.tooltip.multiblock.sluice.1", "Two 3x7 Layers of Titanium Walls");
 		LH.add("gt.tooltip.multiblock.sluice.2", "3x7 Layer of Sluice Parts ontop of that");
 		LH.add("gt.tooltip.multiblock.sluice.3", "Main Block centered on Slim-Side-Bottom and facing outwards");
-		LH.add("gt.tooltip.multiblock.sluice.4", "Input only at the top of the Far Side");
-		LH.add("gt.tooltip.multiblock.sluice.5", "Output only at the bottom of the Close Side");
+		LH.add("gt.tooltip.multiblock.sluice.4", "Input only at the Top of the Far Side");
+		LH.add("gt.tooltip.multiblock.sluice.5", "Output only at the Bottom of the Close Side");
 	}
 	
 	@Override

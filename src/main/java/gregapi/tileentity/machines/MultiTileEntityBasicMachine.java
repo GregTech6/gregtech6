@@ -99,9 +99,9 @@ import net.minecraftforge.fluids.IFluidTank;
 })
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
 	public boolean mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
-	public byte mEnergyInputs = 0, mOutputBlocked = 0, mMode = 0;
-	public byte mItemInputs  = 0, mItemOutputs  = 0, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
-	public byte mFluidInputs = 0, mFluidOutputs = 0, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
+	public byte mEnergyInputs = 127, mOutputBlocked = 0, mMode = 0;
+	public byte mItemInputs  = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
+	public byte mFluidInputs = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
 	public int mParallel = 1;
 	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0;

@@ -76,6 +76,7 @@ public class MultiTileEntityCentrifuge extends TileEntityBase10MultiBlockMachine
 	static {
 		LH.add("gt.tooltip.multiblock.centrifuge.1", "3x3x2 of Centrifuge Parts");
 		LH.add("gt.tooltip.multiblock.centrifuge.2", "Main Block centered on Side-Bottom and facing outwards");
+		LH.add("gt.tooltip.multiblock.centrifuge.3", "Input and Output at any Blocks");
 	}
 	
 	@Override
@@ -83,6 +84,7 @@ public class MultiTileEntityCentrifuge extends TileEntityBase10MultiBlockMachine
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.centrifuge.1"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.centrifuge.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.centrifuge.3"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

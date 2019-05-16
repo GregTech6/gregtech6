@@ -21,12 +21,15 @@ package gregapi.block.fluid;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
 import java.util.Random;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.MaterialGas;
+import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.UT;
@@ -34,7 +37,9 @@ import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -48,7 +53,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class BlockBaseFluid extends BlockFluidFinite {
+public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInside {
 	public final String mNameInternal;
 	public final int mFlammability;
 	public final Fluid mFluid;
@@ -225,4 +230,18 @@ public class BlockBaseFluid extends BlockFluidFinite {
 	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
+	
+	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
+		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
+		return this;
+	}
+	
+	public List<int[]> mEffects = new ArrayListNoNulls<>();
+	
+	@Override
+	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
+		if (!mEffects.isEmpty() && (UT.Fluids.gas(mFluid) ? !UT.Entities.isWearingFullGasHazmat(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
+			for (int[] tEffects : mEffects) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
+		}
+	}
 }

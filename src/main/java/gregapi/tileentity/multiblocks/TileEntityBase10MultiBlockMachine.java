@@ -100,6 +100,11 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 		return mStructureOkay;
 	}
 	
+	@Override
+	public void addToolTipsSided(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		// Override to not show those Tooltips.
+	}
+	
 	@Override public void onFacingChange(byte aPreviousFacing) {onStructureChange();}
 	@Override public final byte getDirectionData() {return (byte)((mFacing & 7) | (mStructureOkay ? 8 : 0));}
 	@Override public final void setDirectionData(byte aData) {mFacing = (byte)(aData & 7); mStructureOkay = ((aData & 8) != 0);}

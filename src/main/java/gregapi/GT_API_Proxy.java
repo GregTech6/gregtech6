@@ -44,6 +44,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
+import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.IBlockOnWalkOver;
 import gregapi.block.IBlockPlacable;
 import gregapi.block.IBlockToolable;
@@ -375,9 +376,17 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent aEvent) {
+		int
+		tX = UT.Code.roundDown(aEvent.entityLiving.posX),
+		tY = UT.Code.roundDown(aEvent.entityLiving.getEyeHeight()),
+		tZ = UT.Code.roundDown(aEvent.entityLiving.posZ);
+		
+		Block tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
+		if (tBlock instanceof IBlockOnHeadInside) ((IBlockOnHeadInside)tBlock).onHeadInside(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
+		
 		if (aEvent.entityLiving.onGround) {
-			int tX = UT.Code.roundDown(aEvent.entityLiving.posX), tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F), tZ = UT.Code.roundDown(aEvent.entityLiving.posZ);
-			Block tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
+			tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F);
+			tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
 			if (IL.EtFu_Path.equal(tBlock) && BlocksGT.Paths != null && aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, BlocksGT.Paths, 0, 2)) tBlock = BlocksGT.Paths;
 			if (tBlock instanceof IBlockOnWalkOver) ((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 		}
