@@ -378,7 +378,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public void onLivingUpdate(LivingUpdateEvent aEvent) {
 		int
 		tX = UT.Code.roundDown(aEvent.entityLiving.posX),
-		tY = UT.Code.roundDown(aEvent.entityLiving.getEyeHeight()),
+		tY = UT.Code.roundDown(aEvent.entityLiving.posY + aEvent.entityLiving.getEyeHeight()),
 		tZ = UT.Code.roundDown(aEvent.entityLiving.posZ);
 		
 		Block tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
