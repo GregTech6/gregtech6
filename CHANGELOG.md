@@ -26,12 +26,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.18: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Sodium Persulfate Washing and Mercury Washing of certain Ores.
 
 
 6.10.17:
 [FIXED] Item Filter Covers on Item Pipes did not work in inverted Mode.
-[FIXED] Item Pipes and Wires with Covers shredder properly now.
+[FIXED] Item Pipes and Wires with Covers on them shredder properly now.
 [FIXED] Multiblock Sided IN/OUT Information Tooltips by simply removing them and adding that Info to the Multiblocks Construction Tooltip.
 [ADDED] Potion Effects to Swampwater, Oil and Natural Gas when you dont wear an appropriate Hazmat Suit.
 

@@ -259,6 +259,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		RM.Mixer.addRecipe1(T, 16, 64, OM.dust(MT.Silverwood        ), FL.Glue.make(500), NF, IL.Pellet_Wood.get(4));
 		for (OreDictMaterial tWood : ANY.Wood.mToThis)
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tWood), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
+		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Bark), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
 		RM.Compressor.addRecipe1(T, 16, 16, IL.Pellet_Wood.get(2), ST.make(BlocksGT.Planks, 1, 8));
 		
 		

@@ -275,8 +275,10 @@ public class Loader_Recipes_Ores implements Runnable {
 				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushed.dat(aMat)});
 				
 				ItemStack tByProductMercury = null, tByproductPersulfate = null;
-				if (aMat.contains(WASHING_MERCURY)) tByProductMercury = OM.dust(aMat, U9); else {for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_MERCURY) && ST.valid(tByProductMercury = OM.dust(tByProduct, U9))) break;}
-				if (aMat.contains(WASHING_PERSULFATE)) tByproductPersulfate = OM.dust(aMat, U9); else {for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_PERSULFATE) && ST.valid(tByproductPersulfate = OM.dust(tByProduct, U9))) break;}
+				for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_MERCURY) && ST.valid(tByProductMercury = OM.dust(tByProduct, U9))) break;
+				if (ST.invalid(tByProductMercury) && aMat.contains(WASHING_MERCURY)) tByProductMercury = OM.dust(aMat, U9);
+				for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_PERSULFATE) && ST.valid(tByproductPersulfate = OM.dust(tByProduct, U9))) break;
+				if (ST.invalid(tByproductPersulfate) && aMat.contains(WASHING_PERSULFATE)) tByproductPersulfate = OM.dust(aMat, U9);
 				
 				if (ENABLE_ADDING_IC2_OREWASHER_RECIPES) {
 				RM.ic2_orewasher(tCrushed                   , 1000                                          , crushedPurified       .mat(aMat, 1), crushedPurifiedTiny      .mat(UT.Code.select(0, aMat, aMat.mByProducts), 2), dust.mat(MT.Stone, 1));
