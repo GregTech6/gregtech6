@@ -472,29 +472,6 @@ public class Loader_OreProcessing implements Runnable {
 		}
 	}
 	
-	public static class OreProcessing_Welding implements IOreDictListenerEvent {
-		private final ICondition<OreDictMaterial> mCondition;
-		private final OreDictPrefix mTargetPrefix;
-		private final long mInputAmount, mOutputAmount;
-		
-		public OreProcessing_Welding(OreDictPrefix aTargetPrefix, long aInputAmount, long aOutputAmount, ICondition<OreDictMaterial> aCondition) {
-			mTargetPrefix = aTargetPrefix;
-			mCondition = aCondition;
-			mInputAmount = aInputAmount;
-			mOutputAmount = aOutputAmount;
-		}
-		
-		@Override
-		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (mCondition.isTrue(aEvent.mMaterial)) {
-				ItemStack tStack = mTargetPrefix.mat(aEvent.mMaterial, mOutputAmount);
-				if (tStack != null) {
-					RM.Welder.addRecipe2(T, 16, UT.Code.units(aEvent.mPrefix.mAmount*mInputAmount, U,  64+64*aEvent.mMaterial.mToolQuality, T), ST.tag(mInputAmount), ST.amount(mInputAmount, aEvent.mStack), tStack);
-				}
-			}
-		}
-	}
-	
 	public static class OreProcessing_Decomposition implements IOreDictListenerEvent {
 		private final ICondition<OreDictMaterial> mCondition;
 		private final RecipeMap mTargetRecipeMap;

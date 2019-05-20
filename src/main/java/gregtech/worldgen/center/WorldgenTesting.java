@@ -78,13 +78,14 @@ public class WorldgenTesting extends WorldgenObject {
 			WD.set(aChunk, i, mHeight+ 9, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
 			WD.set(aChunk, i, mHeight+10, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
 			WD.set(aChunk, i, mHeight+11, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
-			WD.set(aChunk, i, mHeight+12, j, BlocksGT.CFoam, DYE_INDEX_Yellow);
-			WD.set(aChunk, i, mHeight+13, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
-			WD.set(aChunk, i, mHeight+14, j, BlocksGT.CFoam, DYE_INDEX_Gray);
+			WD.set(aChunk, i, mHeight+12, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
+			WD.set(aChunk, i, mHeight+13, j, BlocksGT.CFoam, DYE_INDEX_Yellow);
+			WD.set(aChunk, i, mHeight+14, j, BlocksGT.CFoam, DYE_INDEX_LightBlue);
+			WD.set(aChunk, i, mHeight+15, j, BlocksGT.CFoam, DYE_INDEX_Gray);
 			} else if ((i != 1 && i != 5 && i != 10 && i != 14) && (j != 1 && j != 5 && j != 10 && j != 14)) {
-			WD.set(aChunk, i, mHeight+14, j, ((BlockMetaType)BlocksGT.GlowGlass).mSlabs[1], DYE_INDEX_LightBlue);
+			WD.set(aChunk, i, mHeight+15, j, ((BlockMetaType)BlocksGT.GlowGlass).mSlabs[1], DYE_INDEX_LightBlue);
 			} else {
-			WD.set(aChunk, i, mHeight+14, j, ((BlockMetaType)BlocksGT.CFoam).mSlabs[1], DYE_INDEX_LightGray);
+			WD.set(aChunk, i, mHeight+15, j, ((BlockMetaType)BlocksGT.CFoam).mSlabs[1], DYE_INDEX_LightGray);
 			}
 		}
 		
