@@ -149,11 +149,11 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (aTool.equals(TOOL_magnifyingglass) && UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ) == aSide) {
 			if (aChatReturn != null) {
 				boolean temp = T;
-				for (IFluidTank tTank : mTanks) {
-					FluidStack tFluid = tTank.getFluid();
+				for (FluidTankGT tTank : mTanks) {
+					FluidStack tFluid = tTank.get();
 					if (tFluid != null) {
 						temp = F;
-						aChatReturn.add("Contains: " + tFluid.amount + " L of " + UT.Fluids.name(tFluid, T) + " (" + (UT.Fluids.gas(tTank.getFluid()) ? "Gaseous" : "Liquid") + ")");
+						aChatReturn.add("Contains: " + tFluid.amount + " L of " + UT.Fluids.name(tFluid, T) + " (" + (UT.Fluids.gas(tTank.get()) ? "Gaseous" : "Liquid") + ")");
 					}
 				}
 				if (temp) aChatReturn.add("Pipe is empty");
@@ -208,24 +208,24 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	public void onServerTickPre(boolean aFirst) {
 		mTransferredAmount = 0;
 		
-		for (IFluidTank tTank : mTanks) {
-			FluidStack tFluid = tTank.getFluid();
+		for (FluidTankGT tTank : mTanks) {
+			FluidStack tFluid = tTank.get();
 			if (tFluid != null && tFluid.amount > 0) {
 				mTemperature = UT.Fluids.temperature(tFluid);
 				if (!mGasProof && UT.Fluids.gas(tFluid)) {
-					mTransferredAmount += Math.min(8, tTank.getFluidAmount());
+					mTransferredAmount += Math.min(8, tTank.amount());
 					GarbageGT.trash(tTank, 8);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				}
 				if (!mPlasmaProof && UT.Fluids.plasma(tFluid)) {
-					mTransferredAmount += Math.min(64, tTank.getFluidAmount());
+					mTransferredAmount += Math.min(64, tTank.amount());
 					GarbageGT.trash(tTank, 64);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				}
 				if (!mAcidProof && UT.Fluids.acid(tFluid)) {
-					mTransferredAmount += Math.min(16, tTank.getFluidAmount());
+					mTransferredAmount += Math.min(16, tTank.amount());
 					GarbageGT.trash(tTank, 16);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-1, -1, -1, +2, +2, +2))) UT.Entities.applyChemDamage(tEntity, 2);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
@@ -255,33 +255,42 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		mLastReceivedFrom = 0;
 	}
 	
-	public void distribute(byte[] aSides, IFluidTank aTank) {
+	public void distribute(byte[] aSides, FluidTankGT aTank) {
 		ArrayListNoNulls<DelegatorTileEntity<IFluidHandler>> tAdjacentTanks = new ArrayListNoNulls<>(), tAdjacentPipes = new ArrayListNoNulls<>();
 		DelegatorTileEntity<IFluidHandler> tTank;
 		
-		long tAmount = aTank.getFluidAmount();
+		long tAmount = aTank.amount();
 		if (tAmount <= 0) return;
 		byte tPipeCount = 1;
 		
-		for (byte aSide : aSides) if (canEmitFluidsTo(aSide) && !FACE_CONNECTED[aSide][mLastReceivedFrom] && (!hasCovers() || mCovers.mBehaviours[aSide] == null || !mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aTank.getFluid()))) {
+		for (byte aSide : aSides) if (canEmitFluidsTo(aSide) && !FACE_CONNECTED[aSide][mLastReceivedFrom] && (!hasCovers() || mCovers.mBehaviours[aSide] == null || !mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aTank.get()))) {
 			tTank = getAdjacentTank(aSide);
 			if (tTank.mTileEntity == null) {
-				if (tTank.getBlock() instanceof BlockCauldron) {
-					byte tMeta = tTank.getMetaData();
-					if (tMeta < 3 && UT.Fluids.water(aTank.getFluid()) && aTank.getFluidAmount() >= 334) {
-						aTank.drain(334, T);
-						tTank.setMetaData((byte)(tMeta + 1));
+				if (tTank.getBlock() instanceof BlockCauldron && aTank.amount() >= 334 && UT.Fluids.water(aTank.get())) {
+					switch(tTank.getMetaData()) {
+					case 0:
+						if (aTank.drainAll(1000)) {tTank.setMetaData(3); break;}
+						if (aTank.drainAll( 667)) {tTank.setMetaData(2); break;}
+						if (aTank.drainAll( 334)) {tTank.setMetaData(1); break;}
+						break;
+					case 1:
+						if (aTank.drainAll( 667)) {tTank.setMetaData(3); break;}
+						if (aTank.drainAll( 334)) {tTank.setMetaData(2); break;}
+						break;
+					case 2:
+						if (aTank.drainAll( 334)) {tTank.setMetaData(3); break;}
+						break;
 					}
 				}
 			} else {
 				if (tTank.mTileEntity instanceof MultiTileEntityPipeFluid) {
-					IFluidTank tTarget = ((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.getFluid());
-					if (tTarget != null && tTarget.getFluidAmount() < aTank.getFluidAmount()) {
-						tAmount += tTarget.getFluidAmount();
+					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
+					if (tTarget != null && tTarget.amount() < aTank.amount()) {
+						tAmount += tTarget.amount();
 						tPipeCount++;
 						tAdjacentTanks.add(tTank);
 					}
-				} else if (UT.Fluids.fill_(tTank, aTank.getFluid(), F) > 0) {
+				} else if (UT.Fluids.fill_(tTank, aTank.get(), F) > 0) {
 					tAdjacentTanks.add(tTank);
 				}
 			}
@@ -294,45 +303,37 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			tAmount++;
 		}
 		
-		if (tAmount > 0) for (int i = tAdjacentTanks.size(); i > 0 && aTank.getFluidAmount() > 0;) {
+		if (tAmount > 0) for (int i = tAdjacentTanks.size(); i > 0 && aTank.amount() > 0;) {
 			tTank = tAdjacentTanks.get(--i);
 			if (tTank.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				tAdjacentTanks.remove(i);
 				tAdjacentPipes.add(tTank);
-				IFluidTank tTarget = ((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.getFluid());
+				FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
 				if (tTarget != null) {
-					int tDrained = UT.Code.bindInt(UT.Fluids.fill_(tTank, aTank.drain(UT.Code.bindInt(tAmount-tTarget.getFluidAmount()), F), T));
-					mTransferredAmount += tDrained;
-					aTank.drain(tDrained, T);
+					mTransferredAmount += aTank.remove(UT.Fluids.fill_(tTank, aTank.get(tAmount-tTarget.amount()), T));
 				}
 			}
 		}
 		
 		if (!tAdjacentTanks.isEmpty()) {
-			tAmount = aTank.getFluidAmount() / tAdjacentTanks.size();
+			tAmount = aTank.amount() / tAdjacentTanks.size();
 			if (tAmount <= 0) {
-				while (aTank.getFluidAmount() > 0 && !tAdjacentTanks.isEmpty()) {
+				while (aTank.amount() > 0 && !tAdjacentTanks.isEmpty()) {
 					tAdjacentTanks.remove(tTank = tAdjacentTanks.get(rng(tAdjacentTanks.size())));
-					int tDrained = UT.Code.bindInt(UT.Fluids.fill_(tTank, aTank.drain(1, F), T));
-					mTransferredAmount += tDrained;
-					aTank.drain(tDrained, T);
+					mTransferredAmount += aTank.remove(UT.Fluids.fill_(tTank, aTank.get(1), T));
 				}
 			} else {
 				for (DelegatorTileEntity<IFluidHandler> tTank2 : tAdjacentTanks) {
-					int tDrained = UT.Code.bindInt(UT.Fluids.fill_(tTank2, aTank.drain(UT.Code.bindInt(tAmount), F), T));
-					mTransferredAmount += tDrained;
-					aTank.drain(tDrained, T);
+					mTransferredAmount += aTank.remove(UT.Fluids.fill_(tTank2, aTank.get(tAmount), T));
 				}
 			}
 		}
 		
-		if (!tAdjacentPipes.isEmpty() && aTank.getFluidAmount() > mCapacity / 2) {
-			tAmount = (aTank.getFluidAmount() - mCapacity / 2) / tAdjacentPipes.size();
+		if (!tAdjacentPipes.isEmpty() && aTank.amount() > mCapacity / 2) {
+			tAmount = (aTank.amount() - mCapacity / 2) / tAdjacentPipes.size();
 			if (tAmount > 0) {
 				for (DelegatorTileEntity<IFluidHandler> tPipe : tAdjacentPipes) {
-					int tDrained = UT.Code.bindInt(UT.Fluids.fill_(tPipe, aTank.drain(UT.Code.bindInt(tAmount), F), T));
-					mTransferredAmount += tDrained;
-					aTank.drain(tDrained, T);
+					mTransferredAmount += aTank.remove(UT.Fluids.fill_(tPipe, aTank.get(tAmount), T));
 				}
 			}
 		}
@@ -362,15 +363,15 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		if (SIDES_VALID[aSide] && !canAcceptFluidsFrom(aSide)) return null;
-		for (IFluidTank tTank : mTanks) if (UT.Fluids.equal(tTank.getFluid(), aFluidToFill)) return tTank;
-		for (IFluidTank tTank : mTanks) if (tTank.getFluid() == null) return tTank;
+		for (FluidTankGT tTank : mTanks) if (tTank.contains(aFluidToFill)) return tTank;
+		for (FluidTankGT tTank : mTanks) if (tTank.isEmpty()) return tTank;
 		return null;
 	}
 	
 	@Override
 	protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
 		if (SIDES_VALID[aSide] && !canEmitFluidsTo(aSide)) return null;
-		for (IFluidTank tTank : mTanks) if (UT.Fluids.equal(tTank.getFluid(), aFluidToDrain)) return tTank;
+		for (FluidTankGT tTank : mTanks) if (tTank.contains(aFluidToDrain)) return tTank;
 		return null;
 	}
 	
@@ -382,7 +383,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	
 	@Override public boolean canConnect                     (byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {return (aDelegator.mTileEntity instanceof IFluidHandler ? aDelegator.mTileEntity instanceof ITileEntityCanDelegate || UT.Code.exists(0, ((IFluidHandler)aDelegator.mTileEntity).getTankInfo(aDelegator.getForgeSideOfTileEntity())) : mCapacity >= 334 && aDelegator.getBlock() instanceof BlockCauldron);}
 	
-	@Override public long getGibblValue                     (byte aSide) {long rAmount = 0; for (IFluidTank tTank : mTanks) rAmount += tTank.getFluidAmount(); return rAmount;}
+	@Override public long getGibblValue                     (byte aSide) {long rAmount = 0; for (FluidTankGT tTank : mTanks) rAmount += tTank.amount(); return rAmount;}
 	@Override public long getGibblMax                       (byte aSide) {return mCapacity * mTanks.length;}
 	
 	@Override public long getProgressValue                  (byte aSide) {return mTransferredAmount;}

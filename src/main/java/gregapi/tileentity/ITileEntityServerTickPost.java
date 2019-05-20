@@ -23,7 +23,7 @@ package gregapi.tileentity;
 /**
  * @author Gregorius Techneticies
  */
-public interface ITileEntityServerTickPost extends ITileEntityUnloadable {
+public interface ITileEntityServerTickPost extends ITileEntityUnloadable, ITileEntityErrorable {
 	public void onServerTickPost(boolean aFirst);
 	public void onUnregisterPost();
 }

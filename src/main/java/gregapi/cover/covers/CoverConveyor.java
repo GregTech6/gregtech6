@@ -86,8 +86,8 @@ public class CoverConveyor extends AbstractCoverAttachment {
 	
 	@Override public boolean needsVisualsSaved(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
-	@Override public boolean interceptItemInsert(byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide) {return aData.mVisuals[aSide]==0;}
-	@Override public boolean interceptItemExtract(byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide) {return aData.mVisuals[aSide]!=0;}
+	@Override public boolean interceptItemInsert (byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide) {return aCoverSide == aSide && aData.mVisuals[aSide]==0;}
+	@Override public boolean interceptItemExtract(byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide) {return aCoverSide == aSide && aData.mVisuals[aSide]!=0;}
 	
 	public static final ITexture
 	sTextureIn = BlockTextureDefault.get("machines/covers/conveyor/in"),

@@ -166,6 +166,15 @@ public class FluidTankGT implements IFluidTank {
 	public boolean isFull() {return mFluid != null && mFluid.amount     >= mCapacity;}
 	public boolean isHalf() {return mFluid != null && mFluid.amount * 2 >= mCapacity;}
 	
+	public boolean contains(Fluid aFluid) {return mFluid.getFluid() == aFluid;}
+	public boolean contains(FluidStack aFluid) {return UT.Fluids.equal(mFluid, aFluid);}
+	
+	public int amount() {return mFluid == null ? 0 : mFluid.amount;}
+	public int amount(long aMax) {return mFluid == null || aMax <= 0 ? 0 : mFluid.amount < aMax ? mFluid.amount : (int)aMax;}
+	
+	public FluidStack get() {return mFluid;}
+	public FluidStack get(long aMax) {return mFluid == null || aMax <= 0 ? null : new FluidStack(mFluid, mFluid.amount < aMax ? mFluid.amount : (int)aMax);}
+	
 	@Override public FluidStack getFluid() {return mFluid;}
 	@Override public int getFluidAmount() {return mFluid == null ? 0 : mFluid.amount;}
 	@Override public int getCapacity() {return (int)mCapacity;}

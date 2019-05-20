@@ -322,7 +322,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						SERVER_TICK_PRE.remove(i--);
 						tTileEntity.onUnregisterPre();
 					} else {
-						tTileEntity.onServerTickPre(T);
+						try {
+							tTileEntity.onServerTickPre(T);
+						} catch(Throwable e) {
+							SERVER_TICK_PRE.remove(i--);
+							tTileEntity.setError("Server Tick Pre 1 - " + e);
+						}
 					}
 				}
 				for (int i = 0; i < SERVER_TICK_PR2.size(); i++) {
@@ -331,7 +336,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						SERVER_TICK_PR2.remove(i--);
 						tTileEntity.onUnregisterPre();
 					} else {
-						tTileEntity.onServerTickPre(F);
+						try {
+							tTileEntity.onServerTickPre(F);
+						} catch(Throwable e) {
+							SERVER_TICK_PR2.remove(i--);
+							tTileEntity.setError("Server Tick Pre 2 - " + e);
+						}
 					}
 				}
 				
@@ -357,7 +367,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						SERVER_TICK_POST.remove(i--);
 						tTileEntity.onUnregisterPost();
 					} else {
-						tTileEntity.onServerTickPost(T);
+						try {
+							tTileEntity.onServerTickPost(T);
+						} catch(Throwable e) {
+							SERVER_TICK_POST.remove(i--);
+							tTileEntity.setError("Server Tick Post 1 - " + e);
+						}
 					}
 				}
 				for (int i = 0; i < SERVER_TICK_PO2T.size(); i++) {
@@ -366,7 +381,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						SERVER_TICK_PO2T.remove(i--);
 						tTileEntity.onUnregisterPost();
 					} else {
-						tTileEntity.onServerTickPost(F);
+						try {
+							tTileEntity.onServerTickPost(F);
+						} catch(Throwable e) {
+							SERVER_TICK_PO2T.remove(i--);
+							tTileEntity.setError("Server Tick Post 2 - " + e);
+						}
 					}
 				}
 				EntityFoodTracker.tick();

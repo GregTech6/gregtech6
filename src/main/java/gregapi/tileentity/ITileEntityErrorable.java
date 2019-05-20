@@ -19,11 +19,10 @@
 
 package gregapi.tileentity;
 
-
 /**
  * @author Gregorius Techneticies
  */
-public interface ITileEntityServerTickPre extends ITileEntityUnloadable, ITileEntityErrorable {
-	public void onServerTickPre(boolean aFirst);
-	public void onUnregisterPre();
+public interface ITileEntityErrorable {
+	/** Sets an Error String. Should be used when Exceptions are thrown. */
+	public void setError(String aError);
 }

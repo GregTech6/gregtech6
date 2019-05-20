@@ -25,7 +25,7 @@ import net.minecraft.entity.Entity;
 /**
  * @author Gregorius Techneticies
  */
-public interface ITileEntity extends IHasWorldAndCoords, ITileEntityUnloadable {
+public interface ITileEntity extends IHasWorldAndCoords, ITileEntityUnloadable, ITileEntityErrorable {
 	/**
 	 * Sends a Block Event to the Client TileEntity, the byte Parameters are only for validation as Minecraft doesn't properly write Packet Data.
 	 * 
@@ -35,9 +35,6 @@ public interface ITileEntity extends IHasWorldAndCoords, ITileEntityUnloadable {
 	
 	/** @return the amount of Time this TileEntity has been loaded. */
 	public long getTimer();
-	
-	/** Sets an Error String. Should be used when Exceptions are thrown. */
-	public void setError(String aError);
 	
 	/**
 	 * YOU MUST HAVE THIS INSIDE YOUR BLOCK CODE!!!

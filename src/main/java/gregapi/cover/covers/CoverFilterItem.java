@@ -100,12 +100,14 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 	
 	@Override
 	public boolean interceptItemInsert(byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide) {
+		if (aCoverSide != aSide) return F;
 		if (aData.mStopped) return T;
 		if (aData.mNBTs[aCoverSide] == null || !aData.mNBTs[aCoverSide].hasKey("gt.filter.item")) return aData.mVisuals[aCoverSide] == 0;
 		return (aData.mVisuals[aCoverSide] == 0) != ST.equal(ST.load(aData.mNBTs[aCoverSide], "gt.filter.item"), aStack, T);
 	}
 	@Override
 	public boolean interceptItemExtract(byte aCoverSide, CoverData aData, int aSlot, ItemStack aStack, byte aSide) {
+		if (aCoverSide != aSide) return F;
 		if (aData.mStopped) return T;
 		if (aData.mNBTs[aCoverSide] == null || !aData.mNBTs[aCoverSide].hasKey("gt.filter.item")) return aData.mVisuals[aCoverSide] == 0;
 		return (aData.mVisuals[aCoverSide] == 0) != ST.equal(ST.load(aData.mNBTs[aCoverSide], "gt.filter.item"), aStack, T);

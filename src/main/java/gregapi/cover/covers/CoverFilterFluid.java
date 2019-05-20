@@ -104,12 +104,14 @@ public class CoverFilterFluid extends AbstractCoverAttachment {
 	
 	@Override
 	public boolean interceptFluidFill(byte aCoverSide, CoverData aData, byte aSide, FluidStack aFluidToFill) {
+		if (aCoverSide != aSide) return F;
 		if (aData.mStopped || aFluidToFill == null) return T;
 		if (aData.mNBTs[aCoverSide] == null || !aData.mNBTs[aCoverSide].hasKey("gt.filter.fluid")) return aData.mVisuals[aCoverSide] == 0;
 		return (aData.mVisuals[aCoverSide] == 0) != UT.Fluids.equal(UT.Fluids.load(aData.mNBTs[aCoverSide], "gt.filter.fluid"), aFluidToFill, T);
 	}
 	@Override
 	public boolean interceptFluidDrain(byte aCoverSide, CoverData aData, byte aSide, FluidStack aFluidToDrain) {
+		if (aCoverSide != aSide) return F;
 		if (aData.mStopped || aFluidToDrain == null) return T;
 		if (aData.mNBTs[aCoverSide] == null || !aData.mNBTs[aCoverSide].hasKey("gt.filter.fluid")) return aData.mVisuals[aCoverSide] == 0;
 		return (aData.mVisuals[aCoverSide] == 0) != UT.Fluids.equal(UT.Fluids.load(aData.mNBTs[aCoverSide], "gt.filter.fluid"), aFluidToDrain, T);
