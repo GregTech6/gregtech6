@@ -67,17 +67,18 @@ public interface IRenderedBlockObject {
 	public static class ErrorRenderer implements IRenderedBlockObjectSideCheck, IRenderedBlockObject {
 		public static final ErrorRenderer INSTANCE = new ErrorRenderer();
 		public ITexture mErrorTexture = BlockTextureDefault.get("system/error", T);
-		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mErrorTexture;}
-		@Override public boolean usesRenderPass(int aRenderPass, boolean[] aShouldSideBeRendered) {return T;}
-		@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {aBlock.setBlockBounds(-0.25F, -0.25F, -0.25F, 1.25F, 1.25F, 1.25F); return T;}
-		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 1;}
-		@Override public boolean renderItem(Block aBlock, RenderBlocks aRenderer) {return F;}
-		@Override public boolean renderFullBlockSide(Block aBlock, RenderBlocks aRenderer, byte aSide) {return T;}
-		@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return this;}
-		@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {return this;}
+		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {DEB.println("TEST A"); return mErrorTexture;}
+		@Override public boolean usesRenderPass(int aRenderPass, boolean[] aShouldSideBeRendered) {DEB.println("TEST B"); return T;}
+		@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {DEB.println("TEST C"); aBlock.setBlockBounds(-0.25F, -0.25F, -0.25F, 1.25F, 1.25F, 1.25F); return T;}
+		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {DEB.println("TEST D"); return 1;}
+		@Override public boolean renderItem(Block aBlock, RenderBlocks aRenderer) {DEB.println("TEST E"); return F;}
+		@Override public boolean renderFullBlockSide(Block aBlock, RenderBlocks aRenderer, byte aSide) {DEB.println("TEST F"); return T;}
+		@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {DEB.println("TEST G"); return this;}
+		@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {DEB.println("TEST H"); return this;}
 		
 		@Override
 		public boolean renderBlock(Block aBlock, RenderBlocks aRenderer, IBlockAccess aWorld, int aX, int aY, int aZ) {
+			DEB.println("RENDERING AT: " + aX + "  " + aY + "  " + aZ);
 			RendererBlockTextured.renderNegativeYFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
 			RendererBlockTextured.renderPositiveYFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
 			RendererBlockTextured.renderNegativeZFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
