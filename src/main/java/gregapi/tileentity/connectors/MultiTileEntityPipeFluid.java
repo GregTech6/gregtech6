@@ -317,7 +317,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			tTank = tAdjacentTanks.get(--i);
 			if (tTank.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				tAdjacentTanks.remove(i);
-				if (!((MultiTileEntityPipeFluid)tTank.mTileEntity).hasCovers() || ((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity] == null || !((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity].interceptFluidFill(tTank.mSideOfTileEntity, mCovers, tTank.mSideOfTileEntity, aTank.get())) {
+				if (!((MultiTileEntityPipeFluid)tTank.mTileEntity).hasCovers() || ((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity] == null || !((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity].interceptFluidFill(tTank.mSideOfTileEntity, ((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers, tTank.mSideOfTileEntity, aTank.get())) {
 					tAdjacentPipes.add(tTank);
 					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
 					if (tTarget != null) {
