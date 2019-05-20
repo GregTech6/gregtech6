@@ -137,6 +137,7 @@ import gregapi.recipes.AdvancedCraftingShaped;
 import gregapi.recipes.AdvancedCraftingShapeless;
 import gregapi.recipes.AdvancedCraftingTool;
 import gregapi.recipes.AdvancedCraftingXToY;
+import gregapi.render.IRenderedBlockObject.ErrorRenderer;
 import gregapi.render.ITexture;
 import gregapi.render.TextureSet;
 import gregapi.tileentity.energy.EnergyCompat;
@@ -188,6 +189,7 @@ public class GT_API extends Abstract_Mod {
 		
 		Textures.BlockIcons.VOID.toString();
 		Textures.ItemIcons .VOID.toString();
+		ErrorRenderer.INSTANCE.toString();
 		
 		try {
 			DW = new DummyWorld();
