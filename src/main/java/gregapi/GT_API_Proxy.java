@@ -327,6 +327,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						} catch(Throwable e) {
 							SERVER_TICK_PRE.remove(i--);
 							tTileEntity.setError("Server Tick Pre 1 - " + e);
+							e.printStackTrace(ERR);
 						}
 					}
 				}
@@ -341,6 +342,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						} catch(Throwable e) {
 							SERVER_TICK_PR2.remove(i--);
 							tTileEntity.setError("Server Tick Pre 2 - " + e);
+							e.printStackTrace(ERR);
 						}
 					}
 				}
@@ -372,6 +374,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						} catch(Throwable e) {
 							SERVER_TICK_POST.remove(i--);
 							tTileEntity.setError("Server Tick Post 1 - " + e);
+							e.printStackTrace(ERR);
 						}
 					}
 				}
@@ -386,6 +389,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						} catch(Throwable e) {
 							SERVER_TICK_PO2T.remove(i--);
 							tTileEntity.setError("Server Tick Post 2 - " + e);
+							e.printStackTrace(ERR);
 						}
 					}
 				}

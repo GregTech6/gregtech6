@@ -208,6 +208,16 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	public void onServerTickPre(boolean aFirst) {
 		mTransferredAmount = 0;
 		
+		@SuppressWarnings("rawtypes")
+		DelegatorTileEntity[] tAdjacentTanks = {
+		canEmitFluidsTo((byte)0) ? getAdjacentTank((byte)0) : null,
+		canEmitFluidsTo((byte)1) ? getAdjacentTank((byte)1) : null,
+		canEmitFluidsTo((byte)2) ? getAdjacentTank((byte)2) : null,
+		canEmitFluidsTo((byte)3) ? getAdjacentTank((byte)3) : null,
+		canEmitFluidsTo((byte)4) ? getAdjacentTank((byte)4) : null,
+		canEmitFluidsTo((byte)5) ? getAdjacentTank((byte)5) : null
+		};
+		
 		for (FluidTankGT tTank : mTanks) {
 			FluidStack tFluid = tTank.get();
 			if (tFluid != null && tFluid.amount > 0) {
@@ -249,13 +259,13 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				}
 			}
 			
-			distribute(ALL_SIDES_VALID, tTank);
+			distribute(tTank, tAdjacentTanks);
 		}
 		
 		mLastReceivedFrom = 0;
 	}
 	
-	public void distribute(byte[] aSides, FluidTankGT aTank) {
+	public void distribute(FluidTankGT aTank, DelegatorTileEntity<IFluidHandler>[] aAdjacentTanks) {
 		ArrayListNoNulls<DelegatorTileEntity<IFluidHandler>> tAdjacentTanks = new ArrayListNoNulls<>(), tAdjacentPipes = new ArrayListNoNulls<>();
 		DelegatorTileEntity<IFluidHandler> tTank;
 		
@@ -263,8 +273,8 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (tAmount <= 0) return;
 		byte tPipeCount = 1;
 		
-		for (byte aSide : aSides) if (canEmitFluidsTo(aSide) && !FACE_CONNECTED[aSide][mLastReceivedFrom] && (!hasCovers() || mCovers.mBehaviours[aSide] == null || !mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aTank.get()))) {
-			tTank = getAdjacentTank(aSide);
+		for (byte aSide : ALL_SIDES_VALID) if (aAdjacentTanks[aSide] != null && !FACE_CONNECTED[aSide][mLastReceivedFrom] && (!hasCovers() || mCovers.mBehaviours[aSide] == null || !mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aTank.get()))) {
+			tTank = aAdjacentTanks[aSide];
 			if (tTank.mTileEntity == null) {
 				if (tTank.getBlock() instanceof BlockCauldron && aTank.amount() >= 334 && UT.Fluids.water(aTank.get())) {
 					switch(tTank.getMetaData()) {
@@ -307,10 +317,12 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			tTank = tAdjacentTanks.get(--i);
 			if (tTank.mTileEntity instanceof MultiTileEntityPipeFluid) {
 				tAdjacentTanks.remove(i);
-				tAdjacentPipes.add(tTank);
-				FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
-				if (tTarget != null) {
-					mTransferredAmount += aTank.remove(UT.Fluids.fill_(tTank, aTank.get(tAmount-tTarget.amount()), T));
+				if (!((MultiTileEntityPipeFluid)tTank.mTileEntity).hasCovers() || ((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity] == null || !((MultiTileEntityPipeFluid)tTank.mTileEntity).mCovers.mBehaviours[tTank.mSideOfTileEntity].interceptFluidFill(tTank.mSideOfTileEntity, mCovers, tTank.mSideOfTileEntity, aTank.get())) {
+					tAdjacentPipes.add(tTank);
+					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
+					if (tTarget != null) {
+						mTransferredAmount += aTank.remove(UT.Fluids.fill_(tTank, aTank.get(tAmount-tTarget.amount()), T));
+					}
 				}
 			}
 		}
