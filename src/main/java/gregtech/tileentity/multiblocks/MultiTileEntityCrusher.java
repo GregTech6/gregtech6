@@ -23,12 +23,14 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.damage.DamageSources;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockMachine;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -41,7 +43,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class MultiTileEntityCrusher extends TileEntityBase10MultiBlockMachine {
 	@Override
 	public boolean checkStructure2() {
-		int tX = getOffsetXN(mFacing, 2)-2, tY = yCoord, tZ = getOffsetZN(mFacing, 2)-2, tD = (SIDES_AXIS_Z[mFacing]?mActive?1:0:mActive?3:2);
+		int tX = getOffsetXN(mFacing, 2)-2, tY = yCoord, tZ = getOffsetZN(mFacing, 2)-2, tD = (SIDES_AXIS_Z[mFacing]?mRunning?1:0:mRunning?3:2);
 		if (worldObj.blockExists(tX-2, tY, tZ-2) && worldObj.blockExists(tX+2, tY, tZ-2) && worldObj.blockExists(tX-2, tY, tZ+2) && worldObj.blockExists(tX+2, tY, tZ+2)) {
 			boolean tSuccess = T;
 			
@@ -149,6 +151,14 @@ public class MultiTileEntityCrusher extends TileEntityBase10MultiBlockMachine {
 	public boolean isInsideStructure(int aX, int aY, int aZ) {
 		int tX = getOffsetXN(mFacing, 2), tY = yCoord, tZ = getOffsetZN(mFacing, 2);
 		return aX >= tX - 2 && aY >= tY && aZ >= tZ - 2 && aX <= tX + 2 && aY <= tY + 2 && aZ <= tZ + 2;
+	}
+	
+	@Override
+	public void onWalkOver2(EntityLivingBase aEntity) {
+		super.onWalkOver2(aEntity);
+		if (mRunning && aEntity.posX >= xCoord - 1 && aEntity.posZ >= zCoord - 1 && aEntity.posX <= xCoord + 2 && aEntity.posZ <= zCoord + 2) {
+			aEntity.attackEntityFrom(DamageSources.getCrusherDamage(), 5.0F);
+		}
 	}
 	
 	@Override

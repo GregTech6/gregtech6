@@ -54,6 +54,14 @@ public class DamageSources {
 		return new DamageSourceSpike();
 	}
 	
+	public static DamageSource getShredderDamage() {
+		return new DamageSourceShredder();
+	}
+	
+	public static DamageSource getCrusherDamage() {
+		return new DamageSourceCrusher();
+	}
+	
 	public static DamageSource getHeatDamage() {
 		return new DamageSourceHeat();
 	}

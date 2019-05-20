@@ -27,6 +27,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.18: (Not released yet)
 [FIXED] Sodium Persulfate Washing and Mercury Washing of certain Ores.
+[FIXED] Fluid Pipes were treating non-matching Filters on adjacent Pipes like a valid target but got stuck because they couldn't actually transfer the Fluid.
+[ADDED] The Crusher and Shredder Multiblocks now deal damage to people ontop of them while active.
 
 
 6.10.17:
