@@ -122,18 +122,16 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
 				boolean temp = T;
-				for (IFluidTank tTank : mTanksInput) {
-					FluidStack tFluid = tTank.getFluid();
-					if (tFluid != null) {
+				for (FluidTankGT tTank : mTanksInput) {
+					if (!tTank.isEmpty()) {
 						temp = F;
-						aChatReturn.add("IN Contains: " + tFluid.amount + " L of " + UT.Fluids.name(tFluid, T) + " (" + (UT.Fluids.gas(tTank.getFluid()) ? "Gaseous" : "Liquid") + ")");
+						aChatReturn.add("IN Contains: " + tTank.amount() + " L of " + UT.Fluids.name(tTank, T) + " (" + (UT.Fluids.gas(tTank) ? "Gaseous" : "Liquid") + ")");
 					}
 				}
-				for (IFluidTank tTank : mTanksOutput) {
-					FluidStack tFluid = tTank.getFluid();
-					if (tFluid != null) {
+				for (FluidTankGT tTank : mTanksOutput) {
+					if (!tTank.isEmpty()) {
 						temp = F;
-						aChatReturn.add("OUT Contains: " + tFluid.amount + " L of " + UT.Fluids.name(tFluid, T) + " (" + (UT.Fluids.gas(tTank.getFluid()) ? "Gaseous" : "Liquid") + ")");
+						aChatReturn.add("OUT Contains: " + tTank.amount() + " L of " + UT.Fluids.name(tTank, T) + " (" + (UT.Fluids.gas(tTank) ? "Gaseous" : "Liquid") + ")");
 					}
 				}
 				if (temp) aChatReturn.add("Contains no Fluids");
@@ -162,13 +160,13 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 			
 			boolean tBreak = F;
 			mDisplay = 0;
-			for (IFluidTank tTank : mTanksOutput) if (tTank.getFluidAmount() > 0) {
+			for (FluidTankGT tTank : mTanksOutput) if (tTank.amount() > 0) {
 				mDisplay = (short)(-2-tTank.getFluid().getFluidID());
 				tBreak = T;
 				break;
 			}
 			if (!tBreak) {
-				for (IFluidTank tTank : mTanksInput) if (tTank.getFluidAmount() > 0) {
+				for (FluidTankGT tTank : mTanksInput) if (tTank.amount() > 0) {
 					mDisplay = (short)(-2-tTank.getFluid().getFluidID());
 					tBreak = T;
 					break;
@@ -196,8 +194,8 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 				return F;
 			}
 		}
-		for (int i = 0; i < mTanksOutput.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanksOutput[i].getFluidAmount() != 0) {
-			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!UT.Fluids.equal(mTanksOutput[i].getFluid(), aRecipe.mFluidOutputs[i], F) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || aRecipe.mFluidOutputs[i].getFluid().getDensity(aRecipe.mFluidOutputs[i]) < 0 || mTanksOutput[i].getFluidAmount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
+		for (int i = 0; i < mTanksOutput.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanksOutput[i].amount() != 0) {
+			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanksOutput[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || aRecipe.mFluidOutputs[i].getFluid().getDensity(aRecipe.mFluidOutputs[i]) < 0 || mTanksOutput[i].amount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
 				return F;
 			}
 		}
@@ -318,18 +316,18 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		for (int i = 0; i < mTanksInput.length; i++) if (UT.Fluids.equal(aFluidToFill, mTanksInput[i].getFluid(), F)) return mTanksInput[i];
+		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].contains(aFluidToFill)) return mTanksInput[i];
 		if (UT.Fluids.temperature(aFluidToFill) >= mMaterial.mMeltingPoint - 100 || aFluidToFill.getFluid().getDensity(aFluidToFill) < 0) return null;
-		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].getFluidAmount() == 0) return mTanksInput[i];
+		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].amount() == 0) return mTanksInput[i];
 		return null;
 	}
 	
 	@Override
 	protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
 		if (aFluidToDrain == null) {
-			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].getFluidAmount() != 0) return mTanksOutput[i];
+			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].amount() != 0) return mTanksOutput[i];
 		} else {
-			for (int i = 0; i < mTanksOutput.length; i++) if (UT.Fluids.equal(aFluidToDrain, mTanksOutput[i].getFluid(), F)) return mTanksOutput[i];
+			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].contains(aFluidToDrain)) return mTanksOutput[i];
 		}
 		return null;
 	}
@@ -454,8 +452,8 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 	@Override
 	public int removeFluidFromConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyRemoveIfItCanRemoveAllAtOnce) {
 		if (aFluid == NF) return 0;
-		for (FluidTankGT tTank : mTanksInput ) if (UT.Fluids.equal(tTank.getFluid(), aFluid)) if (tTank.getFluidAmount() >= (aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)tTank.remove(aFluid.amount);
-		for (FluidTankGT tTank : mTanksOutput) if (UT.Fluids.equal(tTank.getFluid(), aFluid)) if (tTank.getFluidAmount() >= (aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)tTank.remove(aFluid.amount);
+		for (FluidTankGT tTank : mTanksInput ) if (tTank.contains(aFluid)) if (tTank.amount() >= (aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)tTank.remove(aFluid.amount);
+		for (FluidTankGT tTank : mTanksOutput) if (tTank.contains(aFluid)) if (tTank.amount() >= (aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)tTank.remove(aFluid.amount);
 		return 0;
 	}
 	
@@ -463,8 +461,8 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 	public long getAmountOfFluidInConnectedTank(byte aSide, FluidStack aFluid) {
 		if (aFluid == NF) return 0;
 		long rAmount = 0;
-		for (FluidTankGT tTank : mTanksInput ) if (UT.Fluids.equal(tTank.getFluid(), aFluid)) rAmount += tTank.getFluidAmount();
-		for (FluidTankGT tTank : mTanksOutput) if (UT.Fluids.equal(tTank.getFluid(), aFluid)) rAmount += tTank.getFluidAmount();
+		for (FluidTankGT tTank : mTanksInput ) if (tTank.contains(aFluid)) rAmount += tTank.amount();
+		for (FluidTankGT tTank : mTanksOutput) if (tTank.contains(aFluid)) rAmount += tTank.amount();
 		return rAmount;
 	}
 	

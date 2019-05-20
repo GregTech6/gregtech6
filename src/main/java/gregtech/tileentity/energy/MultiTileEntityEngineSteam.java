@@ -78,7 +78,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
 		mTank.readFromNBT(aNBT, NBT_TANK+"."+0);
-		mTank.setCapacity((int)UT.Code.bind_(STEAM_PER_WATER, Integer.MAX_VALUE, STEAM_PER_WATER * mOutput));
+		mTank.setCapacity(STEAM_PER_WATER * mOutput);
 	}
 	
 	@Override
@@ -99,7 +99,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " " + STEAM_PER_WATER + " L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_TO_Y) + " " + (STEAM_PER_WATER / STEAM_PER_EU) + " " + mEnergyTypeEmitted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + UT.Code.units(mOutput*STEAM_PER_EU, mEfficiency*2, 10000, F) + " - " + UT.Code.units(mOutput*2*STEAM_PER_EU, mEfficiency, 10000, F)   + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE + "/t ("+LH.get(LH.FACE_BACK)+")");
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mTank.getCapacity()                                            + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE);
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mTank.capacity()                                               + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE);
 		aList.add(Chat.RED      + LH.get(LH.ENERGY_OUTPUT)          + ": " + Chat.WHITE + (mOutput/2) + " - " + (mOutput*2)                              + " " + mEnergyTypeEmitted.getChatFormat()  + mEnergyTypeEmitted.getLocalisedNameShort()    + Chat.WHITE + "/t ("+LH.get(LH.FACE_FRONT)+")");
 		aList.add(Chat.RED      + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                                      + " " + mEnergyTypeEmitted.getChatFormat()  + mEnergyTypeEmitted.getLocalisedNameShort()    + Chat.WHITE);
 		aList.add(Chat.ORANGE   + LH.get(LH.EMITS_USED_STEAM) + " ("+LH.get(LH.FACE_SIDES)+", 80%)");
@@ -119,11 +119,11 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		if (aIsServerSide) {
 			// Convert Steam to Energy
 			if (!mStopped) {
-				long tConversions = mTank.getFluidAmount() / STEAM_PER_WATER;
+				long tConversions = mTank.amount() / STEAM_PER_WATER;
 				if (tConversions > 0) {
 					mEnergy += UT.Code.units(tConversions * STEAM_PER_WATER / STEAM_PER_EU, 10000, mEfficiency, F);
-					mTank.getFluid().amount -= tConversions * STEAM_PER_WATER;
-					if (mTank.getFluidAmount() <= 0) mTank.setEmpty();
+					mTank.remove(tConversions * STEAM_PER_WATER);
+					if (mTank.amount() <= 0) mTank.setEmpty();
 					FluidStack tDistilledWater = FL.DistW.make(tConversions);
 					for (byte tDir : FACING_SIDES[mFacing]) {
 						if (tDistilledWater.amount <= 0) break;

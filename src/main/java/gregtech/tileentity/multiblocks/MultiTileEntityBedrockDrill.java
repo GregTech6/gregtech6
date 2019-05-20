@@ -185,7 +185,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		aChatReturn.add("Lubricant: " + mTank.getFluidAmount() + "L");
+		aChatReturn.add("Lubricant: " + mTank.amount() + "L");
 	}
 	
 	@Override public byte getDefaultSide() {return SIDE_UP;}

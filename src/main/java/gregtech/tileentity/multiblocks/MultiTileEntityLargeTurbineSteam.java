@@ -50,8 +50,8 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 		if (aNBT.hasKey(NBT_OUTPUT_SU)) mEnergyProducedNextTick = aNBT.getLong(NBT_OUTPUT_SU);
 
 		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
-		mTanks[0].setCapacity((int)UT.Code.bind_(1, Integer.MAX_VALUE, mEnergyIN.mMax*4));
-		mTanks[1].setCapacity((int)UT.Code.bind_(1, Integer.MAX_VALUE, mEnergyIN.mMax)).setVoidExcess();
+		mTanks[0].setCapacity(mEnergyIN.mMax*4);
+		mTanks[1].setCapacity(mEnergyIN.mMax).setVoidExcess();
 	}
 	
 	@Override
@@ -124,8 +124,8 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 		if (mEnergyProducedNextTick > 0) {
 			mStorage.mEnergy += mEnergyProducedNextTick;
 			mEnergyProducedNextTick = 0;
-		} else if (!mStopped && mTanks[0].getFluidAmount() >= UT.Code.bindInt(getEnergySizeInputMin(mEnergyIN.mType, SIDE_ANY)) * 2) {
-			int tSteam = mTanks[0].getFluidAmount();
+		} else if (!mStopped && mTanks[0].amount() >= getEnergySizeInputMin(mEnergyIN.mType, SIDE_ANY) * 2) {
+			long tSteam = mTanks[0].amount();
 			mSteamCounter += tSteam;
 			mStorage.mEnergy += tSteam / 2;
 			mEnergyProducedNextTick += tSteam / 2;

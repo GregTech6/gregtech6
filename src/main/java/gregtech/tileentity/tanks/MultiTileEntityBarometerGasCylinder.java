@@ -47,19 +47,19 @@ public class MultiTileEntityBarometerGasCylinder extends TileEntityBase09FluidCo
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		mCapacity = mTank.getCapacity();
+		mCapacity = mTank.capacity();
 		if (aNBT.hasKey(NBT_MODE)) mTank.setCapacity(aNBT.getLong(NBT_MODE));
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
-		if (mCapacity != mTank.getCapacity()) UT.NBT.setNumber(aNBT, NBT_MODE, mTank.getCapacity());
+		if (mCapacity != mTank.capacity()) UT.NBT.setNumber(aNBT, NBT_MODE, mTank.capacity());
 		super.writeToNBT2(aNBT);
 	}
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		if (mCapacity != mTank.getCapacity()) UT.NBT.setNumber(aNBT, NBT_MODE, mTank.getCapacity());
+		if (mCapacity != mTank.capacity()) UT.NBT.setNumber(aNBT, NBT_MODE, mTank.capacity());
 		return super.writeItemNBT2(aNBT);
 	}
 	
@@ -76,33 +76,33 @@ public class MultiTileEntityBarometerGasCylinder extends TileEntityBase09FluidCo
 			if (aHitY > PX_P[8]) {
 				if (aHitY > PX_P[12]) {
 					if (aHitY > PX_P[14]) {
-						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() + (aPlayer.isSneaking() ? 50 : 500)));
+						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.capacity() + (aPlayer.isSneaking() ? 50 : 500)));
 					} else {
-						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() + (aPlayer.isSneaking() ? 10 : 100)));
+						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.capacity() + (aPlayer.isSneaking() ? 10 : 100)));
 					}
 				} else {
 					if (aHitY > PX_P[10]) {
-						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() + (aPlayer.isSneaking() ?  5 :  50)));
+						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.capacity() + (aPlayer.isSneaking() ?  5 :  50)));
 					} else {
-						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() + (aPlayer.isSneaking() ?  1 :  10)));
+						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.capacity() + (aPlayer.isSneaking() ?  1 :  10)));
 					}
 				}
 			} else {
 				if (aHitY > PX_P[4]) {
 					if (aHitY > PX_P[6]) {
-						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() - (aPlayer.isSneaking() ?  1 :  10)));
+						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.capacity() - (aPlayer.isSneaking() ?  1 :  10)));
 					} else {
-						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() - (aPlayer.isSneaking() ?  5 :  50)));
+						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.capacity() - (aPlayer.isSneaking() ?  5 :  50)));
 					}
 				} else {
 					if (aHitY > PX_P[2]) {
-						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() - (aPlayer.isSneaking() ? 10 : 100)));
+						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.capacity() - (aPlayer.isSneaking() ? 10 : 100)));
 					} else {
-						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.getCapacity() - (aPlayer.isSneaking() ? 50 : 500)));
+						mTank.setCapacity(UT.Code.bind(1, mCapacity, mTank.capacity() - (aPlayer.isSneaking() ? 50 : 500)));
 					}
 				}
 			}
-			UT.Entities.sendchat(aPlayer, "Limit: " + mTank.getCapacity() + "L");
+			UT.Entities.sendchat(aPlayer, "Limit: " + mTank.capacity() + "L");
 			return T;
 		}
 		return super.onBlockActivated3(aPlayer, aSide, aHitX, aHitY, aHitZ);

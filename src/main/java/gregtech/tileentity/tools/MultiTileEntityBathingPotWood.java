@@ -47,9 +47,9 @@ import net.minecraftforge.fluids.IFluidTank;
 public class MultiTileEntityBathingPotWood extends MultiTileEntityBathingPot {
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		for (int i = 0; i < mTanksInput.length; i++) if (UT.Fluids.equal(aFluidToFill, mTanksInput[i].getFluid(), F)) return mTanksInput[i];
+		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].contains(aFluidToFill)) return mTanksInput[i];
 		if (!UT.Fluids.simple(aFluidToFill) || UT.Fluids.temperature(aFluidToFill) > mMaterial.mMeltingPoint || UT.Fluids.gas(aFluidToFill) || UT.Fluids.acid(aFluidToFill)) return null;
-		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].getFluidAmount() == 0) return mTanksInput[i];
+		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].amount() == 0) return mTanksInput[i];
 		return null;
 	}
 	

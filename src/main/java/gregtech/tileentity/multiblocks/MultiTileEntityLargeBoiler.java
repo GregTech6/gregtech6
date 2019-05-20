@@ -81,7 +81,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 		if (aNBT.hasKey(NBT_DESIGN)) mBoilerWalls = aNBT.getShort(NBT_DESIGN);
 		if (aNBT.hasKey(NBT_VISUAL)) mBarometer = aNBT.getByte(NBT_VISUAL);
 		if (aNBT.hasKey(NBT_CAPACITY)) mCapacity = aNBT.getLong(NBT_CAPACITY);
-		if (aNBT.hasKey(NBT_CAPACITY_SU)) mTanks[1].setCapacity(aNBT.getInteger(NBT_CAPACITY_SU));
+		if (aNBT.hasKey(NBT_CAPACITY_SU)) mTanks[1].setCapacity(aNBT.getLong(NBT_CAPACITY_SU));
 		if (aNBT.hasKey(NBT_OUTPUT_SU)) mOutput = aNBT.getLong(NBT_OUTPUT_SU);
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
@@ -180,15 +180,15 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
 			// Convert Water to Steam
-			long tConversions = Math.min(mTanks[1].getCapacity() / 2560, Math.min(mEnergy / 80, mTanks[0].getFluidAmount()));
+			long tConversions = Math.min(mTanks[1].capacity() / 2560, Math.min(mEnergy / 80, mTanks[0].amount()));
 			if (tConversions > 0) {
-				mTanks[0].getFluid().amount -= tConversions;
-				if (rng(10) == 0 && mEfficiency > 5000 && !UT.Fluids.distw(mTanks[0].getFluid())) {
+				mTanks[0].remove(tConversions);
+				if (rng(10) == 0 && mEfficiency > 5000 && !UT.Fluids.distw(mTanks[0])) {
 					mEfficiency -= tConversions;
 					if (mEfficiency < 5000) mEfficiency = 5000;
 				}
-				if (mTanks[0].getFluidAmount() <= 0) mTanks[0].setEmpty();
-				mTanks[1].setFluid(FL.Steam.make(mTanks[1].getFluidAmount() + UT.Code.units(tConversions, 10000, mEfficiency * 160, F)));
+				if (mTanks[0].amount() <= 0) mTanks[0].setEmpty();
+				mTanks[1].setFluid(FL.Steam.make(mTanks[1].amount() + UT.Code.units(tConversions, 10000, mEfficiency * 160, F)));
 				mEnergy -= tConversions * 80;
 				mCoolDownResetTimer = 128;
 			}
@@ -204,11 +204,11 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 				}
 			}
 			
-			long tAmount = mTanks[1].getFluidAmount() - mTanks[1].getCapacity() / 2;
+			long tAmount = mTanks[1].amount() - mTanks[1].capacity() / 2;
 			
 			// Emit Steam
 			if (tAmount > 0) {
-				FluidStack tDrainableSteam = mTanks[1].drain(UT.Code.bindInt(Math.min(tAmount > mTanks[1].getCapacity() / 4 ? mOutput * 2 : mOutput, tAmount)), F);
+				FluidStack tDrainableSteam = mTanks[1].drain(UT.Code.bindInt(Math.min(tAmount > mTanks[1].capacity() / 4 ? mOutput * 2 : mOutput, tAmount)), F);
 				
 				if (tDrainableSteam != null) {
 					int tTargets = 0;
@@ -260,10 +260,10 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 			}
 			
 			// Set Barometer
-			mBarometer = (byte)UT.Code.scale(mTanks[1].getFluidAmount(), mTanks[1].getCapacity(), 31, F);
+			mBarometer = (byte)UT.Code.scale(mTanks[1].amount(), mTanks[1].capacity(), 31, F);
 			
 			// Well the Boiler gets structural Damage when being too hot, or when being too full of Steam.
-			if ((mBarometer > 4 && !checkStructure(F)) || mEnergy > mCapacity || mTanks[1].getFluidAmount() >= mTanks[1].getCapacity()) {
+			if ((mBarometer > 4 && !checkStructure(F)) || mEnergy > mCapacity || mTanks[1].amount() >= mTanks[1].capacity()) {
 				explode();
 			}
 		}
@@ -282,7 +282,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 				if (mBarometer > 15) {
 					explode();
 				} else {
-					if (mEnergy+mTanks[1].getFluidAmount()/STEAM_PER_EU > 2000) UT.Entities.applyHeatDamage(aPlayer, (mEnergy+mTanks[1].getFluidAmount()/2) / 2000.0F);
+					if (mEnergy+mTanks[1].amount()/STEAM_PER_EU > 2000) UT.Entities.applyHeatDamage(aPlayer, (mEnergy+mTanks[1].amount()/2) / 2000.0F);
 					mTanks[1].setEmpty();
 					mEfficiency = 10000;
 					mEnergy = 0;
@@ -306,7 +306,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 		} else {
 			aChatReturn.add("No Calcification in this Boiler");
 		}
-		aChatReturn.add("Contained H2O: " + mTanks[0].getFluidAmount());
+		aChatReturn.add("Contained H2O: " + mTanks[0].amount());
 	}
 	
 	@Override
@@ -323,7 +323,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	
 	@Override
 	public void explode() {
-		explode(2+Math.max(1, Math.sqrt(mTanks[1].getFluidAmount()) / 1000.0));
+		explode(2+Math.max(1, Math.sqrt(mTanks[1].amount()) / 1000.0));
 	}
 	
 	@Override
@@ -384,8 +384,8 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return mTanks[1];}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
 	
-	@Override public long getGibblValue(byte aSide) {return mTanks[1].getFluidAmount();}
-	@Override public long getGibblMax(byte aSide) {return mTanks[1].getCapacity();}
+	@Override public long getGibblValue(byte aSide) {return mTanks[1].amount();}
+	@Override public long getGibblMax(byte aSide) {return mTanks[1].capacity();}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	

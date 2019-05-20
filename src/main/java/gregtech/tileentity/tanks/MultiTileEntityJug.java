@@ -41,7 +41,7 @@ import net.minecraft.util.AxisAlignedBB;
 public class MultiTileEntityJug extends TileEntityBase10FluidContainerSyncSmall implements IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration {
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		return mTank.getFluidAmount() <= 0 ? 5 : 6;
+		return mTank.amount() <= 0 ? 5 : 6;
 	}
 	
 	@Override

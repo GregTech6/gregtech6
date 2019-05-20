@@ -54,7 +54,7 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 		if (aNBT.hasKey(NBT_ENERGY_SU)) mSteamCounter = aNBT.getLong(NBT_ENERGY_SU);
 		if (aNBT.hasKey(NBT_OUTPUT_SU)) mEnergyProducedNextTick = aNBT.getLong(NBT_OUTPUT_SU);
 		mTank.readFromNBT(aNBT, NBT_TANK+"."+0);
-		mTank.setCapacity((int)UT.Code.bind_(1, Integer.MAX_VALUE, mConverter.mEnergyIN.mMax*4));
+		mTank.setCapacity(mConverter.mEnergyIN.mMax*4);
 	}
 	
 	@Override
@@ -76,8 +76,8 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 		if (mEnergyProducedNextTick > 0) {
 			mStorage.mEnergy += mEnergyProducedNextTick;
 			mEnergyProducedNextTick = 0;
-		} else if (mTank.getFluidAmount() >= UT.Code.bindInt(getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY)) * 2) {
-			int tSteam = mTank.getFluidAmount();
+		} else if (mTank.amount() >= getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY) * 2) {
+			long tSteam = mTank.amount();
 			mSteamCounter += tSteam;
 			mStorage.mEnergy += tSteam / 2;
 			mEnergyProducedNextTick += tSteam / 2;

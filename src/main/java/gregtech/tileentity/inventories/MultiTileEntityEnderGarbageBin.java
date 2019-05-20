@@ -37,7 +37,6 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
-import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -77,7 +76,7 @@ public class MultiTileEntityEnderGarbageBin extends TileEntityBase07Paintable im
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		for (int i = 0; i < GarbageGT.GARBAGE_FLUIDS.size(); i++) if (UT.Fluids.equal(aFluidToFill, GarbageGT.GARBAGE_FLUIDS.get(i).getFluid(), F)) return GarbageGT.GARBAGE_FLUIDS.get(i);
+		for (int i = 0; i < GarbageGT.GARBAGE_FLUIDS.size(); i++) if (GarbageGT.GARBAGE_FLUIDS.get(i).contains(aFluidToFill)) return GarbageGT.GARBAGE_FLUIDS.get(i);
 		FluidTankGT tTank = new FluidTankGT(Integer.MAX_VALUE).setPreventDraining().setVoidExcess();
 		GarbageGT.GARBAGE_FLUIDS.add(tTank);
 		return tTank;

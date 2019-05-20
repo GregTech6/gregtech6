@@ -58,6 +58,7 @@ import gregapi.data.TC.TC_AspectStack;
 import gregapi.data.TD;
 import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.fluid.FluidGT;
+import gregapi.fluid.FluidTankGT;
 import gregapi.item.IItemProjectile;
 import gregapi.network.packets.PacketSound;
 import gregapi.old.Textures;
@@ -151,72 +152,99 @@ public class UT {
 		public static boolean is(Fluid aFluid, String... aNames) {if (aFluid != null) for (String aName : aNames) if (aFluid.getName().equalsIgnoreCase(aName)) return T; return F;}
 		
 		public static ItemStack display(Fluid aFluid) {return aFluid == null ? null : display(make(aFluid, 0), F, F);}
-		public static ItemStack display(FluidStack aFluid, boolean aUseStackSize, boolean aLimitStackSize) {
+		public static ItemStack display(FluidStack aFluid, boolean aUseStackSize, boolean aLimitStackSize) {return display(aFluid, aFluid == null ? 0 : aFluid.amount, aUseStackSize, aLimitStackSize);}
+		public static ItemStack display(FluidTankGT aTank, boolean aUseStackSize, boolean aLimitStackSize) {return display(aTank.getFluid(), aTank.amount(), aUseStackSize, aLimitStackSize);}
+		public static ItemStack display(FluidStack aFluid, long aAmount, boolean aUseStackSize, boolean aLimitStackSize) {
 			if (aFluid == null || aFluid.getFluid() == null) return null;
-			ItemStack rStack = IL.Display_Fluid.getWithMeta(aUseStackSize ? aLimitStackSize ? UT.Code.bind7(aFluid.amount / 1000) : aFluid.amount / 1000 : 1, id_(aFluid));
+			ItemStack rStack = IL.Display_Fluid.getWithMeta(aUseStackSize ? aLimitStackSize ? UT.Code.bind7(aAmount / 1000) : aAmount / 1000 : 1, id_(aFluid));
 			if (rStack == null) return null;
 			NBTTagCompound tNBT = NBT.makeString("f", aFluid.getFluid().getName());
-			if (aFluid.amount != 0) NBT.setNumber(tNBT, "a", aFluid.amount);
+			if (aAmount != 0) NBT.setNumber(tNBT, "a", aAmount);
 			NBT.setNumber(tNBT, "h", temperature(aFluid));
 			NBT.setBoolean(tNBT, "s", gas(aFluid));
 			return NBT.set(rStack, tNBT);
 		}
 		
 		/** @return if that Liquid is Water or Distilled Water */
+		public static boolean water(IFluidTank aFluid) {return aFluid != null && water(aFluid.getFluid());}
+		/** @return if that Liquid is Water or Distilled Water */
 		public static boolean water(FluidStack aFluid) {return aFluid != null && water(aFluid.getFluid());}
 		/** @return if that Liquid is Water or Distilled Water */
 		public static boolean water(Fluid aFluid) {return aFluid != null && (aFluid == FluidRegistry.WATER || FL.DistW.is(aFluid));}
 		
+		/** @return if that Liquid is distilled Water */
+		public static boolean distw(IFluidTank aFluid) {return aFluid != null && distw(aFluid.getFluid());}
 		/** @return if that Liquid is distilled Water */
 		public static boolean distw(FluidStack aFluid) {return aFluid != null && distw(aFluid.getFluid());}
 		/** @return if that Liquid is distilled Water */
 		public static boolean distw(Fluid aFluid) {return aFluid != null && FL.DistW.is(aFluid);}
 		
 		/** @return if that Liquid is Lava */
+		public static boolean lava(IFluidTank aFluid) {return aFluid != null && lava(aFluid.getFluid());}
+		/** @return if that Liquid is Lava */
 		public static boolean lava(FluidStack aFluid) {return aFluid != null && lava(aFluid.getFluid());}
 		/** @return if that Liquid is Lava */
 		public static boolean lava(Fluid aFluid) {return aFluid != null && aFluid == FluidRegistry.LAVA;}
 		
+		/** @return if that Liquid is Steam */
+		public static boolean steam(IFluidTank aFluid) {return aFluid != null && steam(aFluid.getFluid());}
 		/** @return if that Liquid is Steam */
 		public static boolean steam(FluidStack aFluid) {return aFluid != null && steam(aFluid.getFluid());}
 		/** @return if that Liquid is Steam */
 		public static boolean steam(Fluid aFluid) {return aFluid != null && FL.Steam.is(aFluid);}
 		
 		/** @return if that Liquid is Milk */
+		public static boolean milk(IFluidTank aFluid) {return aFluid != null && milk(aFluid.getFluid());}
+		/** @return if that Liquid is Milk */
 		public static boolean milk(FluidStack aFluid) {return aFluid != null && milk(aFluid.getFluid());}
 		/** @return if that Liquid is Milk */
 		public static boolean milk(Fluid aFluid) {return aFluid != null && (FL.Milk.is(aFluid) || FL.MilkGrC.is(aFluid));}
 		
+		/** @return if that Liquid is Soy Milk */
+		public static boolean soym(IFluidTank aFluid) {return aFluid != null && soym(aFluid.getFluid());}
 		/** @return if that Liquid is Soy Milk */
 		public static boolean soym(FluidStack aFluid) {return aFluid != null && soym(aFluid.getFluid());}
 		/** @return if that Liquid is Soy Milk */
 		public static boolean soym(Fluid aFluid) {return aFluid != null && FL.MilkSoy.is(aFluid);}
 		
 		/** @return if that Liquid is Steam */
+		public static boolean anysteam(IFluidTank aFluid) {return aFluid != null && steam(aFluid.getFluid());}
+		/** @return if that Liquid is Steam */
 		public static boolean anysteam(FluidStack aFluid) {return aFluid != null && steam(aFluid.getFluid());}
 		/** @return if that Liquid is Steam */
 		public static boolean anysteam(Fluid aFluid) {return aFluid != null && FluidsGT.STEAM.contains(aFluid.getName());}
 		
+		/** @return if that Liquid is supposed to be conducting Power */
+		public static boolean powerconducting(IFluidTank aFluid) {return aFluid != null && powerconducting(aFluid.getFluid());}
 		/** @return if that Liquid is supposed to be conducting Power */
 		public static boolean powerconducting(FluidStack aFluid) {return aFluid != null && powerconducting(aFluid.getFluid());}
 		/** @return if that Liquid is supposed to be conducting Power */
 		public static boolean powerconducting(Fluid aFluid) {return aFluid != null && FluidsGT.POWER_CONDUCTING.contains(aFluid.getName());}
 		
 		/** @return if that Liquid is early-game and easy to handle */
+		public static boolean simple(IFluidTank aFluid) {return aFluid != null && simple(aFluid.getFluid());}
+		/** @return if that Liquid is early-game and easy to handle */
 		public static boolean simple(FluidStack aFluid) {return aFluid != null && simple(aFluid.getFluid());}
 		/** @return if that Liquid is early-game and easy to handle */
 		public static boolean simple(Fluid aFluid) {return aFluid != null && FluidsGT.SIMPLE.contains(aFluid.getName());}
 		
+		public static boolean acid(IFluidTank aFluid) {return aFluid != null && acid(aFluid.getFluid());}
 		public static boolean acid(FluidStack aFluid) {return aFluid != null && acid(aFluid.getFluid());}
 		public static boolean acid(Fluid aFluid) {return aFluid != null && FluidsGT.ACID.contains(aFluid.getName());}
 		
+		public static boolean plasma(IFluidTank aFluid) {return aFluid != null && plasma(aFluid.getFluid());}
 		public static boolean plasma(FluidStack aFluid) {return aFluid != null && plasma(aFluid.getFluid());}
 		public static boolean plasma(Fluid aFluid) {return aFluid != null && FluidsGT.PLASMA.contains(aFluid.getName());}
 		
+		public static boolean gas(IFluidTank aFluid, boolean aDefault) {return gas(aFluid.getFluid(), aDefault);}
+		public static boolean gas(IFluidTank aFluid) {return gas(aFluid.getFluid(), F);}
 		public static boolean gas(FluidStack aFluid, boolean aDefault) {return aFluid == null || aFluid.getFluid() == null ? aDefault : !FluidsGT.LIQUID.contains(aFluid.getFluid().getName()) && (aFluid.getFluid().isGaseous(aFluid) || FluidsGT.GAS.contains(aFluid.getFluid().getName()));}
 		public static boolean gas(FluidStack aFluid) {return gas(aFluid, F);}
 		public static boolean gas(Fluid aFluid, boolean aDefault) {return aFluid == null ? aDefault : !FluidsGT.LIQUID.contains(aFluid.getName()) && (aFluid.isGaseous() || FluidsGT.GAS.contains(aFluid.getName()));}
 		public static boolean gas(Fluid aFluid) {return gas(aFluid, F);}
+		
+		public static long temperature(IFluidTank aFluid) {return temperature(aFluid.getFluid());}
+		public static long temperature(IFluidTank aFluid, long aDefault) {return temperature(aFluid.getFluid(), aDefault);}
 		
 		public static long temperature(Fluid aFluid) {return temperature(aFluid, DEF_ENV_TEMP);}
 		public static long temperature(Fluid aFluid, long aDefault) {

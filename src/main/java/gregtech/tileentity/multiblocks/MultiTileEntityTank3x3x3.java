@@ -60,7 +60,7 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 		if (aNBT.hasKey(NBT_GASPROOF)) mGasProof = aNBT.getBoolean(NBT_GASPROOF);
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
 		if (aNBT.hasKey(NBT_PLASMAPROOF)) mPlasmaProof = aNBT.getBoolean(NBT_PLASMAPROOF);
-		mTank.setCapacity(aNBT.getInteger(NBT_TANK_CAPACITY));
+		mTank.setCapacity(aNBT.getLong(NBT_TANK_CAPACITY));
 		mTank.readFromNBT(aNBT, NBT_TANK);
 	}
 	
@@ -78,7 +78,7 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + "Max: " + mTank.getCapacity() + " L");
+		aList.add(Chat.CYAN     + "Max: " + mTank.capacity() + " L");
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.1"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.2"));
@@ -128,11 +128,10 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		FluidStack tFluid = mTank.getFluid();
-		if (tFluid == null) {
+		if (mTank.isEmpty()) {
 			aChatReturn.add("Tank is empty");
 		} else {
-			aChatReturn.add("Contains: " + tFluid.amount + " L of " + UT.Fluids.name(tFluid, T) + " (" + (UT.Fluids.gas(tFluid) ? "Gaseous" : "Liquid") + ")");
+			aChatReturn.add("Contains: " + mTank.amount() + " L of " + UT.Fluids.name(mTank, T) + " (" + (UT.Fluids.gas(mTank) ? "Gaseous" : "Liquid") + ")");
 		}
 	}
 	
@@ -142,8 +141,8 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 		if (aIsServerSide && checkStructure(F)) {
 			FluidStack tFluid = mTank.getFluid();
 			if (tFluid != null && tFluid.amount > 0) {
-				if (UT.Fluids.temperature(tFluid) >= mMaterial.mMeltingPoint && meltdown()) return;
-				if (!mAcidProof && UT.Fluids.acid(tFluid)) {
+				if (UT.Fluids.temperature(mTank) >= mMaterial.mMeltingPoint && meltdown()) return;
+				if (!mAcidProof && UT.Fluids.acid(mTank)) {
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					GarbageGT.trash(mTank);
 					int tX = getOffsetXN(mFacing), tY = getOffsetYN(mFacing), tZ = getOffsetZN(mFacing);
@@ -153,11 +152,11 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 					setToAir();
 					return;
 				}
-				if (!mPlasmaProof && UT.Fluids.plasma(tFluid)) {
+				if (!mPlasmaProof && UT.Fluids.plasma(mTank)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
-				if (!mGasProof && UT.Fluids.gas(tFluid)) {
+				if (!mGasProof && UT.Fluids.gas(mTank)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
@@ -165,7 +164,7 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
-				if (SIDES_HORIZONTAL[mFacing] || UT.Fluids.gas(tFluid) || (tFluid.getFluid().getDensity(tFluid)<0?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
+				if (SIDES_HORIZONTAL[mFacing] || UT.Fluids.gas(mTank) || (tFluid.getFluid().getDensity(tFluid)<0?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
 					if (UT.Fluids.move(mTank, getAdjacentTileEntity(mFacing)) > 0) updateInventory();
 				}
 			}
@@ -182,7 +181,7 @@ public abstract class MultiTileEntityTank3x3x3 extends TileEntityBase10MultiBloc
 			WD.burn(worldObj, tX+i, tY+j, tZ+k, F, F);
 			if (rng(4) == 0) worldObj.setBlock(tX+i, tY+j, tZ+k, Blocks.fire, 0, 3);
 		}
-		if (UT.Fluids.lava(mTank.getFluid()) && mTank.getFluidAmount() >= 1000) {
+		if (UT.Fluids.lava(mTank) && mTank.amount() >= 1000) {
 			mTank.remove(1000);
 			GarbageGT.trash(mTank);
 			worldObj.setBlock(tX, tY, tZ, Blocks.flowing_lava, 0, 3);

@@ -160,7 +160,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		mTanksInput = new FluidTankGT[mRecipes.mInputFluidCount];
 		for (int i = 0; i < mTanksInput.length; i++) mTanksInput[i] = new FluidTankGT(tCapacity).readFromNBT(aNBT, NBT_TANK+".in."+i);
 		mTanksOutput = new FluidTankGT[mRecipes.mOutputFluidCount];
-		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i] = new FluidTankGT(tCapacity).readFromNBT(aNBT, NBT_TANK+".out."+i);
+		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i] = new FluidTankGT(Long.MAX_VALUE).readFromNBT(aNBT, NBT_TANK+".out."+i);
 		
 		mOutputFluids = new FluidStack[mRecipes.mOutputFluidCount];
 		for (int i = 0; i < mOutputFluids.length; i++) mOutputFluids[i] = UT.Fluids.load(aNBT, NBT_TANK_OUT+"."+i);
@@ -414,8 +414,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			
 			if (mTimer % 600 == 5) doDefaultStructuralChecks();
 			
-			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i                       , UT.Fluids.display(mTanksInput [i].getFluid(), T, T));
-			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length  , UT.Fluids.display(mTanksOutput[i].getFluid(), T, T));
+			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i                       , UT.Fluids.display(mTanksInput [i], T, T));
+			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length  , UT.Fluids.display(mTanksOutput[i], T, T));
 		}
 	}
 	
@@ -502,9 +502,9 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override
 	public IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		if (!FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mFluidInputs]) return null;
-		for (int i = 0; i < mTanksInput.length; i++) if (UT.Fluids.equal(aFluidToFill, mTanksInput[i].getFluid(), F)) return mTanksInput[i];
+		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].contains(aFluidToFill)) return mTanksInput[i];
 		if (!mRecipes.containsInput(aFluidToFill, this, slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount))) return null;
-		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].getFluidAmount() == 0) return mTanksInput[i];
+		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].amount() == 0) return mTanksInput[i];
 		return null;
 	}
 	
@@ -512,9 +512,9 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
 		if (!FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mFluidOutputs]) return null;
 		if (aFluidToDrain == null) {
-			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].getFluidAmount() != 0) return mTanksOutput[i];
+			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].amount() != 0) return mTanksOutput[i];
 		} else {
-			for (int i = 0; i < mTanksOutput.length; i++) if (UT.Fluids.equal(aFluidToDrain, mTanksOutput[i].getFluid(), F)) return mTanksOutput[i];
+			for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].contains(aFluidToDrain)) return mTanksOutput[i];
 		}
 		return null;
 	}
@@ -582,8 +582,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			for (int j = 0; j < aRecipe.mFluidOutputs.length; j++) {
 				if (aRecipe.mFluidOutputs[j] == null) {
 					tRequiredEmptyTanks--;
-				} else for (int i = 0; i < mTanksOutput.length; i++) if (UT.Fluids.equal(mTanksOutput[i].getFluid(), aRecipe.mFluidOutputs[j], F)) {
-					if (mTanksOutput[i].getFluidAmount() > Math.max(16000, aRecipe.mFluidOutputs[j].amount*mParallel)) return 0;
+				} else for (int i = 0; i < mTanksOutput.length; i++) if (mTanksOutput[i].contains(aRecipe.mFluidOutputs[j])) {
+					if (mTanksOutput[i].amount() > Math.max(16000, aRecipe.mFluidOutputs[j].amount*mParallel)) return 0;
 					tRequiredEmptyTanks--;
 					break;
 				}
@@ -726,9 +726,9 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (mProgress >= mMaxProgress && (mStateOld&&!mStateNew || !TD.Energy.ALL_ALTERNATING.contains(mEnergyTypeAccepted))) {
 				for (int i = 0; i < mOutputItems.length; i++) if (mOutputItems[i] != null && addStackToSlot(mRecipes.mInputItemsCount+(i % mRecipes.mOutputItemsCount), mOutputItems[i])) {mSuccessful = T; mOutputItems[i] = null; break;}
 				for (int i = 0; i < mOutputFluids.length; i++) if (mOutputFluids[i] != null) for (int j = 0; j < mTanksOutput.length; j++) {
-					if (UT.Fluids.equal(mTanksOutput[j].getFluid(), mOutputFluids[i], F)) {
+					if (mTanksOutput[j].contains(mOutputFluids[i])) {
 						updateInventory();
-						mTanksOutput[j].getFluid().amount += mOutputFluids[i].amount;
+						mTanksOutput[j].add(mOutputFluids[i].amount);
 						mSuccessful = T;
 						mOutputFluids[i] = null;
 						break;
@@ -797,12 +797,12 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
-		for (IFluidTank tTank : mTanksInput) if (UT.Fluids.equal(aFluid, tTank.getFluid())) {
+		for (FluidTankGT tTank : mTanksInput) if (tTank.contains(aFluid)) {
 			updateInventory();
 			return tTank.fill(aFluid, aDoFill);
 		}
 		if (!mRecipes.containsInput(aFluid, this, slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount))) return 0;
-		for (IFluidTank tTank : mTanksInput) if (tTank.getFluid() == null) {
+		for (FluidTankGT tTank : mTanksInput) if (tTank.isEmpty()) {
 			updateInventory();
 			return tTank.fill(aFluid, aDoFill);
 		}
@@ -811,19 +811,19 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
-		for (IFluidTank tTank : mTanksOutput) if (tTank.getFluidAmount() > 0 && !UT.Fluids.gas(tTank.getFluid())) {
+		for (FluidTankGT tTank : mTanksOutput) if (tTank.amount() > 0 && !UT.Fluids.gas(tTank)) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
-		for (IFluidTank tTank : mTanksInput) if (tTank.getFluidAmount() > 0 && !UT.Fluids.gas(tTank.getFluid())) {
+		for (FluidTankGT tTank : mTanksInput) if (tTank.amount() > 0 && !UT.Fluids.gas(tTank)) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
-		for (IFluidTank tTank : mTanksOutput) if (tTank.getFluidAmount() > 0) {
+		for (FluidTankGT tTank : mTanksOutput) if (tTank.amount() > 0) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
-		for (IFluidTank tTank : mTanksInput) if (tTank.getFluidAmount() > 0) {
+		for (FluidTankGT tTank : mTanksInput) if (tTank.amount() > 0) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
@@ -832,19 +832,19 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public FluidStack nozzleDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
-		for (IFluidTank tTank : mTanksOutput) if (tTank.getFluidAmount() > 0 && UT.Fluids.gas(tTank.getFluid())) {
+		for (FluidTankGT tTank : mTanksOutput) if (tTank.amount() > 0 && UT.Fluids.gas(tTank)) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
-		for (IFluidTank tTank : mTanksInput) if (tTank.getFluidAmount() > 0 && UT.Fluids.gas(tTank.getFluid())) {
+		for (FluidTankGT tTank : mTanksInput) if (tTank.amount() > 0 && UT.Fluids.gas(tTank)) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
-		for (IFluidTank tTank : mTanksOutput) if (tTank.getFluidAmount() > 0) {
+		for (FluidTankGT tTank : mTanksOutput) if (tTank.amount() > 0) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
-		for (IFluidTank tTank : mTanksInput) if (tTank.getFluidAmount() > 0) {
+		for (FluidTankGT tTank : mTanksInput) if (tTank.amount() > 0) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
@@ -906,8 +906,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override public boolean hasWork() {return mMaxProgress > 0;}
 	@Override public long getProgressValue(byte aSide) {return mSuccessful ? getProgressMax(aSide) : mMinEnergy < 1 ? mProgress    : mProgress    / mMinEnergy + (mProgress    % mMinEnergy == 0 ? 0 : 1) ;}
 	@Override public long getProgressMax  (byte aSide) {return Math.max(1,                           mMinEnergy < 1 ? mMaxProgress : mMaxProgress / mMinEnergy + (mMaxProgress % mMinEnergy == 0 ? 0 : 1));}
-	@Override public long getGibblValue   (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].getFluidAmount(); for (int i = 0; i < mTanksOutput.length; i++) rGibbl += mTanksOutput[i].getFluidAmount(); return rGibbl;}
-	@Override public long getGibblMax     (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].getCapacity   (); for (int i = 0; i < mTanksOutput.length; i++) rGibbl += mTanksOutput[i].getCapacity   (); return rGibbl;}
+	@Override public long getGibblValue   (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].amount  (); return rGibbl;}
+	@Override public long getGibblMax     (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].capacity(); return rGibbl;}
 	
 	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0;}
 	@Override public boolean getStateRunningPassively() {return mRunning;}

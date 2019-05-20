@@ -80,7 +80,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		if (aNBT.hasKey(NBT_FUELMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_FUELMAP));
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
-		mTank.setCapacity(UT.Code.bindInt(mRate * 10));
+		mTank.setCapacity(mRate * 10);
 		mTank.readFromNBT(aNBT, NBT_TANK);
 	}
 	
@@ -172,11 +172,10 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
-				FluidStack tFluid = mTank.getFluid();
-				if (tFluid == null) {
+				if (mTank.isEmpty()) {
 					aChatReturn.add("Box is empty");
 				} else {
-					aChatReturn.add("Contains: " + tFluid.amount + " L of " + UT.Fluids.name(tFluid, T) + " (" + (UT.Fluids.gas(tFluid) ? "Gaseous" : "Liquid") + ")");
+					aChatReturn.add("Contains: " + mTank.amount() + " L of " + UT.Fluids.name(mTank, T) + " (" + (UT.Fluids.gas(mTank) ? "Gaseous" : "Liquid") + ")");
 				}
 			}
 			return 1;

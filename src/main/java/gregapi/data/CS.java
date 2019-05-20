@@ -1213,15 +1213,15 @@ public class CS {
 		}
 		public static int trash(FluidStack aFluid) {
 			if (aFluid == null || aFluid.amount <= 0) return 0;
-			for (FluidTankGT tGarbage : GARBAGE_FLUIDS) if (UT.Fluids.equal(aFluid, tGarbage.getFluid(), F)) {
+			for (FluidTankGT tGarbage : GARBAGE_FLUIDS) if (tGarbage.contains(aFluid)) {
 				tGarbage.add(aFluid.amount);
 				return aFluid.amount;
 			}
-			GARBAGE_FLUIDS.add(new FluidTankGT(aFluid.copy(), Integer.MAX_VALUE).setPreventDraining().setVoidExcess());
+			GARBAGE_FLUIDS.add(new FluidTankGT(aFluid.copy(), Long.MAX_VALUE).setPreventDraining().setVoidExcess());
 			return aFluid.amount;
 		}
 		public static int trash(IFluidTank aTank) {
-			return trash(aTank, Integer.MAX_VALUE);
+			return trash(aTank, Long.MAX_VALUE);
 		}
 		public static int trash(IFluidTank aTank, long aTrashed) {
 			if (aTank == null || aTrashed <= 0) return 0;
@@ -1283,9 +1283,9 @@ public class CS {
 				try {aNBT = CompressedStreamTools.read(aTargetFile);} catch (Throwable e) {e.printStackTrace(ERR);}
 				for (int i = 0; i < Integer.MAX_VALUE; i++) {
 					if (!aNBT.hasKey(""+i)) break;
-					FluidTankGT tTank = new FluidTankGT(Integer.MAX_VALUE).setPreventDraining().setVoidExcess();
+					FluidTankGT tTank = new FluidTankGT(Long.MAX_VALUE).setPreventDraining().setVoidExcess();
 					tTank.readFromNBT(aNBT, ""+i);
-					if (tTank.getFluidAmount() <= 0) continue;
+					if (tTank.amount() <= 0) continue;
 					GARBAGE_FLUIDS.add(tTank);
 				}
 			}

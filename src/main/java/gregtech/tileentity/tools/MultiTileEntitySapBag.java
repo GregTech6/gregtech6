@@ -59,7 +59,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_ACTIVE)) mFull = oFull = aNBT.getBoolean(NBT_ACTIVE);
-		mTank.setCapacity(aNBT.getInteger(NBT_TANK_CAPACITY));
+		mTank.setCapacity(aNBT.getLong(NBT_TANK_CAPACITY));
 		mTank.readFromNBT(aNBT, NBT_TANK);
 	}
 	
@@ -88,7 +88,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 					}
 				}
 			}
-			mFull = (mTank.getFluidAmount() > 0 || slotHas(0));
+			mFull = (mTank.amount() > 0 || slotHas(0));
 		}
 	}
 	

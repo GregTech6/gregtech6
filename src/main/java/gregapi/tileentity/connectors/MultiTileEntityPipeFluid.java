@@ -150,10 +150,9 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			if (aChatReturn != null) {
 				boolean temp = T;
 				for (FluidTankGT tTank : mTanks) {
-					FluidStack tFluid = tTank.get();
-					if (tFluid != null) {
+					if (!tTank.isEmpty()) {
 						temp = F;
-						aChatReturn.add("Contains: " + tFluid.amount + " L of " + UT.Fluids.name(tFluid, T) + " (" + (UT.Fluids.gas(tTank.get()) ? "Gaseous" : "Liquid") + ")");
+						aChatReturn.add("Contains: " + tTank.amount() + " L of " + UT.Fluids.name(tTank, T) + " (" + (UT.Fluids.gas(tTank) ? "Gaseous" : "Liquid") + ")");
 					}
 				}
 				if (temp) aChatReturn.add("Pipe is empty");
