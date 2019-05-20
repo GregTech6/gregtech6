@@ -494,7 +494,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	}
 	
 	@SideOnly(Side.CLIENT) public boolean renderItem(Block aBlock, RenderBlocks aRenderer) {return F;}
-	@SideOnly(Side.CLIENT) public boolean renderBlock(Block aBlock, RenderBlocks aRenderer) {return F;}
+	@SideOnly(Side.CLIENT) public boolean renderBlock(Block aBlock, RenderBlocks aRenderer, IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
 	@SideOnly(Side.CLIENT) public boolean usesRenderPass(int aRenderPass, boolean[] aShouldSideBeRendered) {return T;}
 	@SideOnly(Side.CLIENT) public boolean renderFullBlockSide(Block aBlock, RenderBlocks aRenderer, byte aSide) {return shouldSideBeRendered(aSide);}
 	@SideOnly(Side.CLIENT) public final IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return ERROR_MESSAGE == null ? passRenderingToObject2(aStack) : ErrorRenderer.INSTANCE;}

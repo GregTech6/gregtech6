@@ -156,7 +156,7 @@ public class MultiTileEntityShredder extends TileEntityBase10MultiBlockMachine {
 	@Override
 	public void onWalkOver2(EntityLivingBase aEntity) {
 		super.onWalkOver2(aEntity);
-		if (mRunning && aEntity.posX >= xCoord - 1 && aEntity.posZ >= zCoord - 1 && aEntity.posX <= xCoord + 2 && aEntity.posZ <= zCoord + 2) {
+		if (mRunning && aEntity.posX >= getOffsetXN(mFacing, 2) - 1 && aEntity.posZ >= getOffsetZN(mFacing, 2) - 1 && aEntity.posX <= getOffsetXN(mFacing, 2) + 2 && aEntity.posZ <= getOffsetZN(mFacing, 2) + 2) {
 			aEntity.attackEntityFrom(DamageSources.getShredderDamage(), 5.0F);
 		}
 	}

@@ -42,6 +42,7 @@ import gregapi.data.TD;
 import gregapi.event.BlockScanningEvent;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.tileentity.ITileEntity;
+import gregapi.tileentity.ITileEntityErrorable;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityProgress;
@@ -617,6 +618,12 @@ public class WD {
 			if (MD.GC.mLoaded && aBlock instanceof IPartialSealableBlock) rList.add(((IPartialSealableBlock)aBlock).isSealed(aWorld, aX, aY, aZ, FORGE_DIR[aSide ^ 1]) ? "Is Sealable on this Side" : "Is not Sealable on this Side");
 		} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 		if (aTileEntity != null) {
+			
+			if (aTileEntity instanceof ITileEntityErrorable) {
+				((ITileEntityErrorable)aTileEntity).setError("TEST ERROR!!!");
+			}
+			
+			
 			
 			try {if (aTileEntity instanceof ITileEntityWeight && ((ITileEntityWeight)aTileEntity).getWeightValue(aSide) > 0) {
 				rEUAmount+=V[3];

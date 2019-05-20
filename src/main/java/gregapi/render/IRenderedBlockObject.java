@@ -54,7 +54,7 @@ public interface IRenderedBlockObject {
 	
 	/** returning true stops all the other Rendering from happening. */
 	@SideOnly(Side.CLIENT)
-	public boolean renderBlock(Block aBlock, RenderBlocks aRenderer);
+	public boolean renderBlock(Block aBlock, RenderBlocks aRenderer, IBlockAccess aWorld, int aX, int aY, int aZ);
 	
 	/** return "this" if you want to use the functions above. */
 	@SideOnly(Side.CLIENT)
@@ -69,12 +69,22 @@ public interface IRenderedBlockObject {
 		public ITexture mErrorTexture = BlockTextureDefault.get("system/error", T);
 		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mErrorTexture;}
 		@Override public boolean usesRenderPass(int aRenderPass, boolean[] aShouldSideBeRendered) {return T;}
-		@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {return F;}
+		@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {aBlock.setBlockBounds(-0.25F, -0.25F, -0.25F, 1.25F, 1.25F, 1.25F); return T;}
 		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 1;}
 		@Override public boolean renderItem(Block aBlock, RenderBlocks aRenderer) {return F;}
-		@Override public boolean renderBlock(Block aBlock, RenderBlocks aRenderer) {return F;}
-		@Override public boolean renderFullBlockSide(Block aBlock, RenderBlocks aRenderer, byte aSide) {return F;}
+		@Override public boolean renderFullBlockSide(Block aBlock, RenderBlocks aRenderer, byte aSide) {return T;}
 		@Override public IRenderedBlockObject passRenderingToObject(ItemStack aStack) {return this;}
 		@Override public IRenderedBlockObject passRenderingToObject(IBlockAccess aWorld, int aX, int aY, int aZ) {return this;}
+		
+		@Override
+		public boolean renderBlock(Block aBlock, RenderBlocks aRenderer, IBlockAccess aWorld, int aX, int aY, int aZ) {
+			RendererBlockTextured.renderNegativeYFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
+			RendererBlockTextured.renderPositiveYFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
+			RendererBlockTextured.renderNegativeZFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
+			RendererBlockTextured.renderPositiveZFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
+			RendererBlockTextured.renderNegativeXFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
+			RendererBlockTextured.renderPositiveXFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, mErrorTexture, F, T, this);
+			return T;
+		}
 	}
 }

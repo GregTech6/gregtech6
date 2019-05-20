@@ -38,6 +38,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
+import net.minecraft.world.IBlockAccess;
 
 /**
  * @author Gregorius Techneticies
@@ -84,7 +85,7 @@ public class PrefixBlockTileEntity extends TileEntityBase01Root implements IRend
 	}
 	
 	@Override public boolean renderItem(Block aBlock, RenderBlocks aRenderer) {return F;}
-	@Override public boolean renderBlock(Block aBlock, RenderBlocks aRenderer) {return F;}
+	@Override public boolean renderBlock(Block aBlock, RenderBlocks aRenderer, IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
 	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {return F;}
 	@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 1;}
 	@Override public void readFromNBT(NBTTagCompound aNBT) {super.readFromNBT(aNBT); mMetaData = aNBT.getShort("m"); if (aNBT.hasKey("gt.nbt.drop")) mItemNBT = aNBT.getCompoundTag("gt.nbt.drop");}

@@ -128,12 +128,13 @@ public class RendererBlockTextured implements ISimpleBlockRenderingHandler, IIte
 				}
 				if (tNeedsToSetBounds) aBlock.setBlockBounds(0, 0, 0, 1, 1, 1);
 			} else {
-				if (tRenderer.renderBlock(aBlock, aRenderer)) {
+				boolean tNeedsToSetBounds = T;
+				if (tRenderer.renderBlock(aBlock, aRenderer, aWorld, aX, aY, aZ)) {
 					rReturn = T;
 				} else {
-					boolean tNeedsToSetBounds = T, tSides[] = new boolean[6];
-					if (aBlock instanceof IRenderedBlockObjectSideCheck) {
-						for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = ((IRenderedBlockObjectSideCheck)aBlock).renderFullBlockSide(aBlock, aRenderer, tSide);
+					boolean tSides[] = new boolean[6];
+					if (tRenderer instanceof IRenderedBlockObjectSideCheck) {
+						for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = ((IRenderedBlockObjectSideCheck)tRenderer).renderFullBlockSide(aBlock, aRenderer, tSide);
 					} else {
 						for (byte tSide : ALL_SIDES_VALID) tSides[tSide] = aBlock.shouldSideBeRendered(aWorld, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], tSide);
 					}
@@ -148,8 +149,8 @@ public class RendererBlockTextured implements ISimpleBlockRenderingHandler, IIte
 							if (renderPositiveXFacing(aWorld, aRenderer, aBlock, aX, aY, aZ, tRenderer.getTexture(aBlock, i, SIDE_X_POS, tSides), !tNeedsToSetBounds, tSides[SIDE_X_POS], tRenderer)) rReturn = T;
 						}
 					}
-					if (tNeedsToSetBounds) aBlock.setBlockBounds(0, 0, 0, 1, 1, 1);
 				}
+				if (tNeedsToSetBounds) aBlock.setBlockBounds(0, 0, 0, 1, 1, 1);
 			}
 		}
 		aRenderer.setRenderBoundsFromBlock(aBlock);
