@@ -70,14 +70,14 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 		aList.add(LH.Chat.ORANGE + "Gasses require Air or Tank in front!");
 	}
 	
-	@Override public float[] getCoverBounds(byte aCoverSide, CoverData aData) {return BOXES_VALVES[aCoverSide];}
+	@Override public float[] getCoverBounds (byte aCoverSide, CoverData aData) {return BOXES_VALVES[aCoverSide];}
 	@Override public float[] getHolderBounds(byte aCoverSide, CoverData aData) {return BOXES_VALVES[aCoverSide];}
 	
 	public static final float[][] BOXES_VALVES = new float[][] {{PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 8], PX_N[ 6]}, {PX_P[ 6], PX_P[ 8], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]}, {PX_P[ 6], PX_P[ 6], PX_P[ 0], PX_N[ 6], PX_N[ 6], PX_N[ 8]}, {PX_P[ 6], PX_P[ 6], PX_P[ 8], PX_N[ 6], PX_N[ 6], PX_N[ 0]}, {PX_P[ 0], PX_P[ 6], PX_P[ 6], PX_N[ 8], PX_N[ 6], PX_N[ 6]}, {PX_P[ 8], PX_P[ 6], PX_P[ 6], PX_N[ 0], PX_N[ 6], PX_N[ 6]}};
 	
-	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return sTextureFront;}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? sTextureFront : null;}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? null : sTextureSide;}
+	@Override public ITexture getCoverTextureSurface   (byte aSide, CoverData aData) {return sTextureFront;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? sTextureFront : sTextureSide;}
+	@Override public ITexture getCoverTextureHolder    (byte aSide, CoverData aData, byte aTextureSide) {return sTextureSide;}
 	
 	@Override public boolean isSolid(byte aSide, CoverData aData) {return F;}
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return F;}
