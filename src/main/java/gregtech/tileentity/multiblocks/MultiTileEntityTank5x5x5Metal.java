@@ -23,6 +23,6 @@ package gregtech.tileentity.multiblocks;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityTank5x5x5Metal extends MultiTileEntityTank3x3x3 {
+public class MultiTileEntityTank5x5x5Metal extends MultiTileEntityTank5x5x5 {
 	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.tank555.metal";}
 }
