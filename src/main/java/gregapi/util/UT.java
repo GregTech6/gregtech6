@@ -243,6 +243,10 @@ public class UT {
 		public static boolean gas(Fluid aFluid, boolean aDefault) {return aFluid == null ? aDefault : !FluidsGT.LIQUID.contains(aFluid.getName()) && (aFluid.isGaseous() || FluidsGT.GAS.contains(aFluid.getName()));}
 		public static boolean gas(Fluid aFluid) {return gas(aFluid, F);}
 		
+		public static boolean lighter(IFluidTank aFluid) {return aFluid != null && lighter(aFluid.getFluid());}
+		public static boolean lighter(FluidStack aFluid) {return aFluid != null && aFluid.getFluid() != null && aFluid.getFluid().getDensity(aFluid)<0;}
+		public static boolean lighter(Fluid aFluid) {return aFluid != null && aFluid.getDensity(make(aFluid, 1000)) < 0;}
+		
 		public static long temperature(IFluidTank aFluid) {return temperature(aFluid.getFluid());}
 		public static long temperature(IFluidTank aFluid, long aDefault) {return temperature(aFluid.getFluid(), aDefault);}
 		

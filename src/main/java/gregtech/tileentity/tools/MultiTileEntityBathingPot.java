@@ -195,7 +195,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 			}
 		}
 		for (int i = 0; i < mTanksOutput.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanksOutput[i].amount() != 0) {
-			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanksOutput[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || aRecipe.mFluidOutputs[i].getFluid().getDensity(aRecipe.mFluidOutputs[i]) < 0 || mTanksOutput[i].amount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
+			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanksOutput[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || UT.Fluids.lighter(aRecipe.mFluidOutputs[i]) || mTanksOutput[i].amount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
 				return F;
 			}
 		}
@@ -317,7 +317,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].contains(aFluidToFill)) return mTanksInput[i];
-		if (UT.Fluids.temperature(aFluidToFill) >= mMaterial.mMeltingPoint - 100 || aFluidToFill.getFluid().getDensity(aFluidToFill) < 0) return null;
+		if (UT.Fluids.temperature(aFluidToFill) >= mMaterial.mMeltingPoint - 100 || UT.Fluids.lighter(aFluidToFill)) return null;
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].amount() == 0) return mTanksInput[i];
 		return null;
 	}

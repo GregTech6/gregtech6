@@ -94,7 +94,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 				} else
 				if (tBlock instanceof IFluidBlock) tFluid = ((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), F);
 				
-				if (tFluid != null && (SIDES_HORIZONTAL[aSide] || UT.Fluids.gas(tFluid) || (tFluid.getFluid().getDensity(tFluid)<0?SIDES_BOTTOM:SIDES_TOP)[aSide])) {
+				if (tFluid != null && (SIDES_HORIZONTAL[aSide] || UT.Fluids.gas(tFluid) || (UT.Fluids.lighter(tFluid)?SIDES_BOTTOM:SIDES_TOP)[aSide])) {
 					if (UT.Fluids.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], tFluid, T)) {
 						if (tBlock instanceof IFluidBlock) {
 							((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), T);

@@ -178,7 +178,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		} else
 		if (aBlock instanceof IFluidBlock) {
 			mPumpedFluids.add(aBlock);
-			mDir = (byte)(((IFluidBlock)aBlock).getFluid().getDensity() < 0 ? -1 : +1);
+			mDir = (byte)(UT.Fluids.lighter(((IFluidBlock)aBlock).getFluid()) ? -1 : +1);
 		} else return;
 		
 		addToList(aX, aY, aZ);

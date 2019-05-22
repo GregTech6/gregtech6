@@ -38,29 +38,29 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
+public abstract class MultiTileEntityTank5x5x5 extends MultiTileEntityTank {
 	static {
-		LH.add("gt.tooltip.multiblock.tank3x3x3.1", "3x3x3 Hollow of the Block Walls you crafted this one with");
-		LH.add("gt.tooltip.multiblock.tank3x3x3.2", "This Block centered on Side/Top/Bottom and facing outwards");
-		LH.add("gt.tooltip.multiblock.tank3x3x3.3", "Auto-Emits Fluids from the Main Block if not against Gravity");
+		LH.add("gt.tooltip.multiblock.tank5x5x5.1", "5x5x5 Hollow of the Block Walls you crafted this one with");
+		LH.add("gt.tooltip.multiblock.tank5x5x5.2", "This Block centered on Side/Top/Bottom and facing outwards");
+		LH.add("gt.tooltip.multiblock.tank5x5x5.3", "Auto-Emits Fluids from the Main Block if not against Gravity");
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.1"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.2"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank3x3x3.3"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank5x5x5.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank5x5x5.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.tank5x5x5.3"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
 	@Override
 	public boolean checkStructure2() {
-		int tX = getOffsetXN(mFacing), tY = getOffsetYN(mFacing), tZ = getOffsetZN(mFacing);
-		if (worldObj.blockExists(tX-1, tY, tZ-1) && worldObj.blockExists(tX+1, tY, tZ-1) && worldObj.blockExists(tX-1, tY, tZ+1) && worldObj.blockExists(tX+1, tY, tZ+1)) {
+		int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
+		if (worldObj.blockExists(tX-2, tY, tZ-2) && worldObj.blockExists(tX+2, tY, tZ-2) && worldObj.blockExists(tX-2, tY, tZ+2) && worldObj.blockExists(tX+2, tY, tZ+2)) {
 			boolean tSuccess = T;
-			for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
-				if (i == 0 && j == 0 && k == 0) {
+			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
+				if (i*i <= 1 && j*j <= 1 && k*k <= 1) {
 					if (getAir(tX+i, tY+j, tZ+k)) worldObj.setBlockToAir(tX+i, tY+j, tZ+k); else tSuccess = F;
 				} else {
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, mTankWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID)) tSuccess = F;
@@ -73,8 +73,8 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 	
 	@Override
 	public boolean isInsideStructure(int aX, int aY, int aZ) {
-		int tX = getOffsetXN(mFacing), tY = getOffsetYN(mFacing), tZ = getOffsetZN(mFacing);
-		return aX >= tX - 1 && aY >= tY - 1 && aZ >= tZ - 1 && aX <= tX + 1 && aY <= tY + 1 && aZ <= tZ + 1;
+		int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
+		return aX >= tX - 2 && aY >= tY - 2 && aZ >= tZ - 2 && aX <= tX + 2 && aY <= tY + 2 && aZ <= tZ + 2;
 	}
 	
 	@Override
@@ -87,8 +87,8 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 				if (!mAcidProof && UT.Fluids.acid(mTank)) {
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					GarbageGT.trash(mTank);
-					int tX = getOffsetXN(mFacing), tY = getOffsetYN(mFacing), tZ = getOffsetZN(mFacing);
-					for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+					int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
+					for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
 						if (rng(3) == 0) worldObj.setBlockToAir(tX+i, tY+j, tZ+k);
 					}
 					setToAir();
@@ -106,7 +106,7 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
-				if (SIDES_HORIZONTAL[mFacing] || UT.Fluids.gas(mTank) || (UT.Fluids.lighter(tFluid)?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
+				if (SIDES_HORIZONTAL[mFacing] || UT.Fluids.gas(mTank) || (UT.Fluids.lighter(mTank)?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
 					if (UT.Fluids.move(mTank, getAdjacentTileEntity(mFacing)) > 0) updateInventory();
 				}
 			}
@@ -114,12 +114,11 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 	}
 	
 	public boolean meltdown() {
-		int tX = getOffsetXN(mFacing), tY = getOffsetYN(mFacing), tZ = getOffsetZN(mFacing);
-		for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+		int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
+		for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
 			WD.burn(worldObj, tX+i, tY+j, tZ+k, F, F);
 			if (rng(4) == 0) worldObj.setBlock(tX+i, tY+j, tZ+k, Blocks.fire, 0, 3);
 		}
-		if (UT.Fluids.lava(mTank) && mTank.drainAll(1000)) worldObj.setBlock(tX, tY, tZ, Blocks.flowing_lava, 0, 3);
 		GarbageGT.trash(mTank);
 		setToFire();
 		return T;

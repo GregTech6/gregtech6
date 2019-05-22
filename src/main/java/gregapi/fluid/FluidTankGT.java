@@ -239,7 +239,7 @@ public class FluidTankGT implements IFluidTank {
 	public FluidStack get() {return mFluid;}
 	public FluidStack get(long aMax) {return isEmpty() || aMax <= 0 ? null : new FluidStack(mFluid, UT.Code.bindInt(mAmount < aMax ? mAmount : aMax));}
 	
-	@Override public FluidStack getFluid() {mFluid.amount = UT.Code.bindInt(mAmount); return mFluid;}
+	@Override public FluidStack getFluid() {if (mFluid != null) mFluid.amount = UT.Code.bindInt(mAmount); return mFluid;}
 	@Override public int getFluidAmount() {return UT.Code.bindInt(mAmount);}
 	@Override public int getCapacity() {return UT.Code.bindInt(mCapacity);}
 	@Override public FluidTankInfo getInfo() {return new FluidTankInfo(isEmpty() ? null : mFluid.copy(), UT.Code.bindInt(mCapacity));}

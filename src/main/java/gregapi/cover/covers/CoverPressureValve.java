@@ -76,8 +76,8 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 	public static final float[][] BOXES_VALVES = new float[][] {{PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 8], PX_N[ 6]}, {PX_P[ 6], PX_P[ 8], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]}, {PX_P[ 6], PX_P[ 6], PX_P[ 0], PX_N[ 6], PX_N[ 6], PX_N[ 8]}, {PX_P[ 6], PX_P[ 6], PX_P[ 8], PX_N[ 6], PX_N[ 6], PX_N[ 0]}, {PX_P[ 0], PX_P[ 6], PX_P[ 6], PX_N[ 8], PX_N[ 6], PX_N[ 6]}, {PX_P[ 8], PX_P[ 6], PX_P[ 6], PX_N[ 0], PX_N[ 6], PX_N[ 6]}};
 	
 	@Override public ITexture getCoverTextureSurface   (byte aSide, CoverData aData) {return sTextureFront;}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? sTextureFront : sTextureSide;}
-	@Override public ITexture getCoverTextureHolder    (byte aSide, CoverData aData, byte aTextureSide) {return sTextureSide;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? sTextureFront : null;}
+	@Override public ITexture getCoverTextureHolder    (byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? null : sTextureSide;}
 	
 	@Override public boolean isSolid(byte aSide, CoverData aData) {return F;}
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return F;}

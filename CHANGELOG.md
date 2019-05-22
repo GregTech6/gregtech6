@@ -32,6 +32,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Fluid Pipes were treating non-matching Filters on adjacent Pipes like a valid target, but got stuck because they couldn't actually transfer the Fluid.
 [ADDED] Welder Recipes for the Multiblock Wall Parts. The Simple ones can still be made with Wrench and Hammer, but the Dense ones require a Tier 2 Welder now.
 [ADDED] The Crusher and Shredder Multiblocks now deal damage to people ontop of them while active.
+[ADDED] 5x5x5 Metal Fluid Tanks. Work pretty much like the 3x3x3 ones.
 
 
 6.10.17:

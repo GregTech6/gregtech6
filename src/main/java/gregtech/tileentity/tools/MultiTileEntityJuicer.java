@@ -118,7 +118,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	
 	protected boolean canOutput(Recipe aRecipe) {
 		for (int i = 0; i < mTanks.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanks[i].amount() != 0) {
-			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanks[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || aRecipe.mFluidOutputs[i].getFluid().getDensity(aRecipe.mFluidOutputs[i]) < 0 || mTanks[i].amount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
+			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanks[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || UT.Fluids.lighter(aRecipe.mFluidOutputs[i]) || mTanks[i].amount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
 				return F;
 			}
 		}

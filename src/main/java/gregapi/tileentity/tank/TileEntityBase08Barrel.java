@@ -198,7 +198,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 					} else {
 						if ((mMode & B[0]) != 0) {
 							byte[] tSides = ZL_BYTE;
-							if (UT.Fluids.gas(tFluid)) tSides = ALL_SIDES_VERTICAL; else if (tFluid.getFluid().getDensity(tFluid)<0) tSides = ALL_SIDES_TOP; else tSides = ALL_SIDES_BOTTOM;
+							if (UT.Fluids.gas(tFluid)) tSides = ALL_SIDES_VERTICAL; else if (UT.Fluids.lighter(tFluid)) tSides = ALL_SIDES_TOP; else tSides = ALL_SIDES_BOTTOM;
 							for (byte tSide : tSides) if (UT.Fluids.move(mTank, getAdjacentTank(tSide)) > 0) updateInventory();
 						}
 					}
