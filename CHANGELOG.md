@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.18: (Not released yet)
+6.10.18:
 [IMPROVED] All Fluid Tanks in GT6 are now using Long instead of Integer. Everything should still work properly. I seriously hope it does! (I had to scan through a ton of code to make sure of it)
 [FIXED] Rendering of Errored Blocks to no longer be invisible.
 [FIXED] Sodium Persulfate Washing and Mercury Washing of certain Ores.
