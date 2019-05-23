@@ -191,7 +191,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		RM.ClusterMill          .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,   256, NF, foil            , 4, NI, NI, T, F, F, new And(ANTIMATTER.NOT, SMITHABLE)));
 		
-		RM.RollFormer           .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,   256, NF, railGt          , 4, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
+		RM.RollFormer           .add(new RecipeMapHandlerPrefix(plate                           , 1, NF,  16, 0,    64, NF, railGt          , 4, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE)));
 		
 		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 2, NF,  16, 0,    64, NF, wireGt02        , 1, ST.tag( 2), NI, F, F, F, ANTIMATTER.NOT));
 		RM.Loom                 .add(new RecipeMapHandlerPrefix(wireGt01                        , 4, NF,  16, 0,    64, NF, wireGt04        , 1, ST.tag( 4), NI, F, F, F, ANTIMATTER.NOT));

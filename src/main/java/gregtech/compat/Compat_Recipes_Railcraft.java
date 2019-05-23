@@ -45,6 +45,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 
 public class Compat_Recipes_Railcraft extends CompatMods {
 	public Compat_Recipes_Railcraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -143,6 +144,14 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 			RM.LaserEngraver    .addRecipe2(T,512,512, OP.gem.mat(MT.Firestone, 1), ST.amount(0, aEvent.mStack), IL.RC_Firestone_Cut.get(1));
 		}});
 		}};
+		
+		
+		RM.Press.addRecipeX(F, 16, 64, new ItemStack[] {IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Au, 4), OP.dust     .mat(MT.Redstone, 1)}, IL.RC_Rail_Adv.get(4));
+		RM.Press.addRecipeX(F, 16, 16, new ItemStack[] {IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.Au, 1), OP.dustSmall.mat(MT.Redstone, 1)}, IL.RC_Rail_Adv.get(1));
+		RM.Press.addRecipeX(F, 16, 64, new ItemStack[] {IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Au, 4), OP.dust     .mat(MT.Blaze, 1)}, IL.RC_Rail_HS.get(4));
+		RM.Press.addRecipeX(F, 16, 16, new ItemStack[] {IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.Au, 1), OP.dustSmall.mat(MT.Blaze, 1)}, IL.RC_Rail_HS.get(1));
+		RM.Press.addRecipeX(F, 16, 16, new ItemStack[] {IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.Cu, 1)}, IL.RC_Rail_Electric.get(1));
+		RM.Press.addRecipeX(F, 16, 16, new ItemStack[] {IL.RC_Rail_Standard.get(1), OP.railGt.mat(MT.AnnealedCopper, 1)}, IL.RC_Rail_Electric.get(1));
 		
 		
 		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Al                ,  6), IL.RC_Rail_Standard.get( 1));
