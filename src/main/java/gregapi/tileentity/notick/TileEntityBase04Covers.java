@@ -280,6 +280,10 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 		return mCovers != null;
 	}
 	
+	public boolean isCovered(byte aSide) {
+		return mCovers != null && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null;
+	}
+	
 	public boolean usePipePlacementMode(byte aSide) {
 		return F;
 	}
@@ -511,11 +515,10 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 	
 	@Override
 	public boolean isUsingWrenchingOverlay(ItemStack aStack, byte aSide) {
+		if (ToolsGT.contains(TOOL_magnifyingglass, aStack)) return T;
 		if (!usePipePlacementMode(aSide)) return F;
-		if (hasCovers()) {
-			if (mCovers.mBehaviours[aSide] != null) return F;
-			return ToolsGT.contains(TOOL_crowbar, aStack) || CoverRegistry.get(aStack) != null;
-		}
-		return CoverRegistry.get(aStack) != null;
+		if (CoverRegistry.get(aStack) != null) return T;
+		if (hasCovers() && mCovers.mBehaviours[aSide] != null) return F;
+		return ToolsGT.contains(TOOL_crowbar, aStack);
 	}
 }

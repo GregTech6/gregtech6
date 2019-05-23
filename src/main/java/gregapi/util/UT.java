@@ -1545,7 +1545,6 @@ public class UT {
 		
 		/**
 		 * This Function determines the direction a Block gets when being Wrenched.
-		 * returns -1 if invalid. Even though that could never happen.
 		 */
 		public static byte getSideWrenching(byte aSide, float aHitX, float aHitY, float aHitZ) {
 			switch (aSide) {
@@ -1568,7 +1567,7 @@ public class UT {
 				if (aHitY > 0.75) return 1;
 				return aSide;
 			}
-			return -1;
+			return SIDE_INVALID;
 		}
 	}
 	

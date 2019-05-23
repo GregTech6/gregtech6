@@ -23,6 +23,8 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.LH;
+import gregapi.data.TD;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.MultiTileEntityBasicMachine;
 import gregapi.util.UT;
@@ -102,7 +104,7 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	
 	@Override
 	public void addToolTipsSided(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		// Override to not show those Tooltips.
+		if (mEnergyTypeAccepted != TD.Energy.TU) LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, null, null);
 	}
 	
 	@Override public void onFacingChange(byte aPreviousFacing) {onStructureChange();}

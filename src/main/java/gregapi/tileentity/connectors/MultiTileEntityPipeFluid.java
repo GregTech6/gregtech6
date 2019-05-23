@@ -146,18 +146,20 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (rReturn > 0) return rReturn;
 		if (isClientSide()) return 0;
 		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTanks);
-		if (aTool.equals(TOOL_magnifyingglass) && UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ) == aSide) {
-			if (aChatReturn != null) {
-				boolean temp = T;
-				for (FluidTankGT tTank : mTanks) {
-					if (!tTank.isEmpty()) {
-						temp = F;
-						aChatReturn.add("Contains: " + tTank.amount() + " L of " + UT.Fluids.name(tTank, T) + " (" + (UT.Fluids.gas(tTank) ? "Gaseous" : "Liquid") + ")");
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			if (!isCovered(UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ))) {
+				if (aChatReturn != null) {
+					boolean temp = T;
+					for (FluidTankGT tTank : mTanks) {
+						if (!tTank.isEmpty()) {
+							temp = F;
+							aChatReturn.add("Contains: " + tTank.amount() + " L of " + UT.Fluids.name(tTank, T) + " (" + (UT.Fluids.gas(tTank) ? "Gaseous" : "Liquid") + ")");
+						}
 					}
+					if (temp) aChatReturn.add("Pipe is empty");
 				}
-				if (temp) aChatReturn.add("Pipe is empty");
+				return mTanks.length;
 			}
-			return mTanks.length;
 		}
 		return 0;
 	}
