@@ -144,7 +144,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedPurifiedTiny    , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,10, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
 		RM.Shredder             .add(new RecipeMapHandlerPrefixShredding(crushedCentrifugedTiny , 1, null, 0, NF,  16, 0,   256, NF, dustDiv72          ,11, null       , 0, NI, NI, T, F, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
 		
-		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(RECYCLABLE) && !tPrefix.containsAny(ORE, ORE_PROCESSING_BASED, DUST_BASED) && !tPrefix.mNameInternal.startsWith("cableGt") && !tPrefix.mNameInternal.startsWith("wireGt") && !tPrefix.mNameInternal.startsWith("pipe")) {
+		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (tPrefix.contains(RECYCLABLE) && !tPrefix.containsAny(ORE, ORE_PROCESSING_BASED, DUST_BASED, IS_CONTAINER) && !tPrefix.mNameInternal.startsWith("cableGt") && !tPrefix.mNameInternal.startsWith("wireGt") && !tPrefix.mNameInternal.startsWith("pipe")) {
 		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null, 0, NF,  16, 0,    16, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Shredder             .add(new RecipeMapHandlerPrefix(tPrefix                         , 1, null, 0, NF,  16, 0,   256, NF, null               , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR.NOT)));
 		}
