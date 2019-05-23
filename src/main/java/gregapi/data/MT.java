@@ -1960,6 +1960,7 @@ public class MT {
 			Mn                              .addOreByProducts(MnO2                  , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
 			MnO2                            .addOreByProducts(OREMATS.Bromargyrite  , Fe2O3                     , OREMATS.Tantalite     , OREMATS.Chromite      );
 			OREMATS.Chromite                .addOreByProducts(MnO2                  , Fe2O3                     , Mg                    , OREMATS.Bromargyrite  );
+			OREMATS.Bromargyrite            .addOreByProducts(MnO2                  , Ag                        , OREMATS.Chromite      , OREMATS.Smithsonite   );
 			OREMATS.Pollucite               .addOreByProducts(Cs                    , Al2O3                     , Rb                    );
 			Asbestos                        .addOreByProducts(Asbestos              , SiO2                      , Mg                    );
 			Phosphorus                      .addOreByProducts(Phosphorite           , Apatite                   , CaF2                  , PO4                   );

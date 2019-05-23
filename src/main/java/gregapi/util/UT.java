@@ -2194,6 +2194,7 @@ public class UT {
 			return null;
 		}
 		
+		public static Object getFieldContent(Object aObject, String aField) {return getFieldContent(aObject, aField, T, T);}
 		public static Object getFieldContent(Object aObject, String aField, boolean aPrivate, boolean aLogErrors) {
 			try {
 				Field tField = (aObject instanceof Class)?((Class<?>)aObject).getDeclaredField(aField):(aObject instanceof String)?Class.forName((String)aObject).getDeclaredField(aField):aObject.getClass().getDeclaredField(aField);
