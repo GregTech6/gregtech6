@@ -85,6 +85,8 @@ import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.oredict.listeners.IOreDictListenerItem;
 import gregapi.player.EntityFoodTracker;
+import gregapi.random.IHasWorldAndCoords;
+import gregapi.tileentity.ITileEntityErrorable;
 import gregapi.tileentity.ITileEntityGUI;
 import gregapi.tileentity.ITileEntityNeedsSaving;
 import gregapi.tileentity.ITileEntityScheduledUpdate;
@@ -220,6 +222,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
+	public  static final List<IHasWorldAndCoords>         DELAYED_BLOCK_UPDATES          = new ArrayListNoNulls<>();
 	public  static       List<ITileEntityScheduledUpdate> SCHEDULED_TILEENTITY_UPDATES   = new ArrayListNoNulls<>();
 	private static       List<ITileEntityScheduledUpdate> SCHEDULED_TILEENTITY_UPDATES_2 = new ArrayListNoNulls<>();
 	
@@ -355,6 +358,17 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 					}
 				}
+				
+				for (IHasWorldAndCoords tTileEntity : DELAYED_BLOCK_UPDATES) {
+					try {
+						tTileEntity.getWorld().notifyBlocksOfNeighborChange(tTileEntity.getX(), tTileEntity.getY(), tTileEntity.getZ(), tTileEntity.getBlock(tTileEntity.getCoords()));
+					} catch(Throwable e) {
+						if (tTileEntity instanceof ITileEntityErrorable) ((ITileEntityErrorable)tTileEntity).setError("Delayed Block Update - " + e);
+						e.printStackTrace(ERR);
+					}
+				}
+				DELAYED_BLOCK_UPDATES.clear();
+				
 				
 				if (SERVER_TIME > 10) {
 					for (ITileEntityScheduledUpdate tTileEntity : SCHEDULED_TILEENTITY_UPDATES_2) if (!tTileEntity.isDead()) tTileEntity.onScheduledUpdate();

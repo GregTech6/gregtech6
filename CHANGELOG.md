@@ -22,7 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.19: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Redstone Conductor Covers, one of them takes Redstone in from the outside, the other emits whatever that Cover receives outwards. This should fix the Issue of not being able to Redstone Control Multiblocks by just adding those Covers to the Multiblock Walls to transmit Redstone through them.
 
 
 6.10.18:

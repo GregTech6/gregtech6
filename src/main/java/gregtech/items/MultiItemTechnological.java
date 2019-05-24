@@ -80,6 +80,8 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Shutter.set(                   addItem(tLastID =  1026, "Shutter Cover"                    , "Connects and Disconnects Pipes"                  , new CoverShutter()                                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Cover_Button_Selector.set(           addItem(tLastID =  1027, "Button Panel Selector"            , "Selector Cover that is controlled by Buttons"    , new CoverSelectorButtonPanel()                             , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Cover_Warning.set(                   addItem(tLastID =  1028, "Warning Cover"                    , "Warns about certain Types of Danger"             , new CoverTextureMulti(T, "machines/covers/warning/", 19)   , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 1), TC.stack(TC.VINCULUM, 1)));
+		IL.Cover_Redstone_Conductor_IN.set(     addItem(tLastID =  1029, "Redstone Conductor Cover (Accept)", "Redstone will transferred to emitting Conductors", new CoverRedstoneConductorIN()                             , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 1)));
+		IL.Cover_Redstone_Conductor_OUT.set(    addItem(tLastID =  1030, "Redstone Conductor Cover (Emit)"  , "Redstone of accepting Conductors will be emitted", new CoverRedstoneConductorOUT()                            , TC.stack(TC.MACHINA, 2), TC.stack(TC.VINCULUM, 1)));
 		
 		CR.shaped(IL.Cover_Blank                    .get(1), CR.DEF_REV, "Sh" , "Pd"        , 'P', OP.plate.dat(MT.Al), 'S', OP.screw.dat(MT.Al));
 		CR.shaped(IL.Cover_Crafting                 .get(1), CR.DEF_REV,  "C" ,  "Q"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench);
@@ -110,6 +112,12 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Cover_Shutter                  .get(1), CR.DEF_REV, "TwT", "PQP", "TdT", 'Q', IL.Cover_Blank, 'P', OP.plate.dat(MT.StainlessSteel), 'T', OP.screw.dat(MT.StainlessSteel));
 		CR.shaped(IL.Cover_Button_Selector          .get(1), CR.DEF_REV, "BXB", "BQB", "BCB", 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'B', ST.make(Blocks.stone_button, 1, W), 'X', IL.Circuit_Selector.wild(1));
 		CR.shaped(IL.Cover_Warning                  .get(1), CR.DEF_REV, "GB" , "YQ"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench, 'G', OD.itemGlue);
+		CR.shaped(IL.Cover_Redstone_Conductor_IN    .get(1), CR.DEF_REV,  "R" ,  "Q"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
+		CR.shaped(IL.Cover_Redstone_Conductor_OUT   .get(1), CR.DEF_REV,  "Q" ,  "R"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
+		
+		CR.shapeless(IL.Cover_Redstone_Conductor_IN .get(1), new Object[] {IL.Cover_Redstone_Conductor_OUT.get(1)});
+		CR.shapeless(IL.Cover_Redstone_Conductor_OUT.get(1), new Object[] {IL.Cover_Redstone_Conductor_IN .get(1)});
+		
 		
 		IL.Cover_Pressure_Valve.set(            addItem(tLastID =  2000, "Pressure Valve"                   , ""                                                , new CoverPressureValve()                              , TC.stack(TC.MACHINA, 1), TC.stack(TC.AER, 1), TC.stack(TC.VACUOS, 1)));
 		
