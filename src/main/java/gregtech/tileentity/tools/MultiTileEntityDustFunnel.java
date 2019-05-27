@@ -43,7 +43,6 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
-import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -117,8 +116,8 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 			}
 			
 			if (temp || mInventoryChanged || aTimer % 100 == 0) {
-				if ( slotHas(1)) ST.move(new DelegatorTileEntity<>(this, SIDE_BOTTOM), getAdjacentInventory(SIDE_BOTTOM));
-				if (!slotHas(0)) ST.move(getAdjacentInventory(SIDE_TOP), new DelegatorTileEntity<>(this, SIDE_TOP));
+				if ( slotHas(1)) ST.move(delegator(SIDE_BOTTOM), getAdjacentInventory(SIDE_BOTTOM));
+				if (!slotHas(0)) ST.move(getAdjacentInventory(SIDE_TOP), delegator(SIDE_TOP));
 			}
 		}
 	}

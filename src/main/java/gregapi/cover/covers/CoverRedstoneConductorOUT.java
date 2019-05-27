@@ -27,6 +27,8 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.util.UT;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
@@ -35,6 +37,12 @@ public class CoverRedstoneConductorOUT extends AbstractCoverAttachment {
 	@Override
 	public byte getRedstoneOutWeak(byte aCoverSide, CoverData aData, byte aDefaultRedstone) {
 		return UT.Code.bind4(aData.mValues[aCoverSide]);
+	}
+	
+	@Override
+	public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
+		super.onCoverPlaced(aCoverSide, aData, aPlayer, aCover);
+		onBlockUpdate(aCoverSide, aData);
 	}
 	
 	@Override

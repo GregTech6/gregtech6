@@ -37,7 +37,6 @@ import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
-import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
 import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
@@ -141,7 +140,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
 			if (slotHas(0)) {
-				ST.move(new DelegatorTileEntity<>(this, SIDE_TOP), getAdjacentInventory(SIDE_TOP));
+				ST.move(delegator(SIDE_TOP), getAdjacentInventory(SIDE_TOP));
 			}
 			if (mEnergy >= 32768 && !slotHas(0) && checkStructure(F) && mTank.drainAll(100)) {
 				mEnergy -= 32768;

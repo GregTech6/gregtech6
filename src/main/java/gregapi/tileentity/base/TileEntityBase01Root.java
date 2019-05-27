@@ -317,6 +317,10 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		return WD.te(worldObj, aCoords, T);
 	}
 	
+	public DelegatorTileEntity<TileEntity> delegator(byte aSide) {
+		return new DelegatorTileEntity<TileEntity>(this, aSide);
+	}
+	
 	@Override
 	public void sendBlockEvent(byte aID, byte aValue) {
 		NW_API.sendToAllPlayersInRange(new PacketBlockEvent(getCoords(), aID, aValue), worldObj, getCoords());

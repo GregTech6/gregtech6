@@ -165,6 +165,8 @@ public class Loader_Fluids implements Runnable {
 		UT.Fluids.createMolten(MT.WaxAmnesic        , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
 		UT.Fluids.createMolten(MT.WaxSoulful        , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
 		
+		UT.Fluids.createMolten(MT.Al2O3             , 504);
+		
 		/*
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
 			if (tMaterial.mLiquid == null && !tMaterial.contains(TD.Properties.INVALID_MATERIAL) && tMaterial.contains(TD.Properties.MELTING) && tMaterial.mTargetSmelting.mAmount > 0) {

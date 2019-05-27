@@ -164,7 +164,7 @@ public class MultiTileEntityExtender extends TileEntityBase10FacingDouble implem
 	
 	@Override
 	public DelegatorTileEntity<TileEntity> getDelegateTileEntity(byte aSide) {
-		if ((mModes & MODE_ALL) != MODE_ALL) return new DelegatorTileEntity<TileEntity>(this, aSide);
+		if ((mModes & MODE_ALL) != MODE_ALL) return delegator(aSide);
 		return getAdjacentTileEntity(getExtenderTargetSide(aSide), F, T);
 	}
 	

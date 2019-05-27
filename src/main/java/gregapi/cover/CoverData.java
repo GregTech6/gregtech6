@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
@@ -151,6 +152,10 @@ public class CoverData {
 	
 	public ItemStack getCoverItem(byte aSide) {
 		return mIDs[aSide] == 0 ? null : mBehaviours[aSide] == null ? ST.make(mIDs[aSide], 1, mMetas[aSide], mNBTs[aSide]==null||mNBTs[aSide].hasNoTags()?null:mNBTs[aSide]) : mBehaviours[aSide].getCoverItem(aSide, this);
+	}
+	
+	public DelegatorTileEntity<ITileEntityCoverable> delegator(byte aSide) {
+		return new DelegatorTileEntity<>(mTileEntity, aSide);
 	}
 	
 	public boolean requiresSync() {

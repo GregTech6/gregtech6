@@ -158,7 +158,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 					}
 					while (tMovedItems < mMode) {
-						int tMoved = ST.move(new DelegatorTileEntity<>(this, mFacing), tDelegator, null, F, F, F, mMode, 1, mMode-tMovedItems, 1);
+						int tMoved = ST.move(delegator(mFacing), tDelegator, null, F, F, F, mMode, 1, mMode-tMovedItems, 1);
 						if (tMoved <= 0) break;
 						tMovedItems += tMoved;
 					}
@@ -170,7 +170,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 					if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 				}
 				if (tDelegator.mTileEntity != null && !(tDelegator.mTileEntity instanceof MultiTileEntityAnvil)) {
-					tMovedItems += ST.move(tDelegator, new DelegatorTileEntity<>(this, SIDE_TOP));
+					tMovedItems += ST.move(tDelegator, delegator(SIDE_TOP));
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
 						if (!slotHas(0)) {

@@ -29,7 +29,6 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.connectors.MultiTileEntityPipeItem;
-import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -66,9 +65,9 @@ public class CoverConveyor extends AbstractCoverAttachment {
 	public void onTickPre(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && SERVER_TIME % mTiming == 0 && !aData.mStopped && aData.mTileEntity instanceof IInventory) {
 			if (aData.mVisuals[aSide]==0) {
-				ST.move(new DelegatorTileEntity<>(aData.mTileEntity, aSide), aData.mTileEntity.getAdjacentTileEntity(aSide));
+				ST.move(aData.delegator(aSide), aData.mTileEntity.getAdjacentTileEntity(aSide));
 			} else {
-				ST.move(aData.mTileEntity.getAdjacentTileEntity(aSide), new DelegatorTileEntity<>(aData.mTileEntity, aSide));
+				ST.move(aData.mTileEntity.getAdjacentTileEntity(aSide), aData.delegator(aSide));
 			}
 		}
 	}

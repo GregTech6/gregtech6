@@ -534,16 +534,14 @@ public class ST {
 	
 	public static boolean canTake(IInventory aFrom, byte aSideFrom, int aSlotFrom, ItemStack aStackFrom) {
 		if (aFrom instanceof ISidedInventory) {
-			if (SIDES_INVALID[aSideFrom]) {
-				for (byte tSideFrom : ALL_SIDES_VALID) if (canTake_(aFrom, tSideFrom, aSlotFrom, aStackFrom)) return T;
-				return F;
-			}
-			return ((ISidedInventory)aFrom).canExtractItem(aSlotFrom, aStackFrom, aSideFrom);
+			if (SIDES_VALID[aSideFrom]) return ((ISidedInventory)aFrom).canExtractItem(aSlotFrom, aStackFrom, aSideFrom);
+			for (byte tSideFrom : ALL_SIDES_VALID) if (((ISidedInventory)aFrom).canExtractItem(tSideFrom, aStackFrom, aSideFrom)) return T;
+			return F;
 		}
 		return T;
 	}
-	public static boolean canTake_(IInventory aFrom, byte aSideFrom, int aSlotFrom, ItemStack aStackFrom) {
-		return !(aFrom instanceof ISidedInventory) || ((ISidedInventory)aFrom).canExtractItem(aSlotFrom, aStackFrom, aSideFrom);
+	public static boolean canTake_(ISidedInventory aFrom, byte aSideFrom, int aSlotFrom, ItemStack aStackFrom) {
+		return aFrom.canExtractItem(aSlotFrom, aStackFrom, aSideFrom);
 	}
 	
 	
@@ -551,34 +549,18 @@ public class ST {
 		return canPut(aTo, aSideTo, aSlotTo, aStackFrom, aStackFrom.getMaxStackSize());
 	}
 	public static int canPut(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom, int aMaxSize) {
-		int rMaxMove = canPut_(aTo, aSlotTo, aStackFrom, Math.min(aMaxSize, aTo.getInventoryStackLimit()));
-		if (rMaxMove <= 0) return 0;
-		if (SIDES_INVALID[aSideTo]) {
-			for (byte tSideTo : ALL_SIDES_VALID) if (canPut_(aTo, tSideTo, aSlotTo, aStackFrom)) return rMaxMove;
-			return 0;
-		}
-		return canPut_(aTo, aSideTo, aSlotTo, aStackFrom) ? rMaxMove : 0;
+		return canPut(aTo, aSideTo, aSlotTo, aStackFrom, aTo.getStackInSlot(aSlotTo));
 	}
 	public static int canPut(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom, ItemStack aStackTo) {
 		return canPut(aTo, aSideTo, aSlotTo, aStackFrom, aStackTo, aStackFrom.getMaxStackSize());
 	}
 	public static int canPut(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom, ItemStack aStackTo, int aMaxSize) {
-		int rMaxMove = canPut_(aTo, aSlotTo, aStackFrom, aStackTo, Math.min(aMaxSize, aTo.getInventoryStackLimit()));
-		if (rMaxMove <= 0) return 0;
-		if (SIDES_INVALID[aSideTo]) {
-			for (byte tSideTo : ALL_SIDES_VALID) if (canPut_(aTo, tSideTo, aSlotTo, aStackFrom)) return rMaxMove;
-			return 0;
-		}
-		return canPut_(aTo, aSideTo, aSlotTo, aStackFrom) ? rMaxMove : 0;
-	}
-	public static boolean canPut_(IInventory aTo, byte aSideTo, int aSlotTo, ItemStack aStackFrom) {
-		return (!(aTo instanceof ISidedInventory) || ((ISidedInventory)aTo).canInsertItem(aSlotTo, aStackFrom, aSideTo)) && aTo.isItemValidForSlot(aSlotTo, aStackFrom);
-	}
-	public static int canPut_(IInventory aTo, int aSlotTo, ItemStack aStackFrom, int aMaxSize) {
-		return canPut_(aTo, aSlotTo, aStackFrom, aTo.getStackInSlot(aSlotTo), aMaxSize);
-	}
-	public static int canPut_(IInventory aTo, int aSlotTo, ItemStack aStackFrom, ItemStack aStackTo, int aMaxSize) {
-		return aStackTo == null ? aMaxSize : equal_(aStackTo, aStackFrom, F) ? aMaxSize - aStackTo.stackSize : 0;
+		int rMaxMove = (aStackTo == null ? Math.min(aMaxSize, aTo.getInventoryStackLimit()) : equal_(aStackTo, aStackFrom, F) ? Math.min(aMaxSize, aTo.getInventoryStackLimit()) - aStackTo.stackSize : 0);
+		if (rMaxMove <= 0 || !aTo.isItemValidForSlot(aSlotTo, aStackFrom)) return 0;
+		if (!(aTo instanceof ISidedInventory)) return rMaxMove;
+		if (SIDES_VALID[aSideTo]) return ((ISidedInventory)aTo).canInsertItem(aSlotTo, aStackFrom, aSideTo) ? rMaxMove : 0;
+		for (byte tSideTo : ALL_SIDES_VALID) if (((ISidedInventory)aTo).canInsertItem(aSlotTo, aStackFrom, tSideTo)) return rMaxMove;
+		return 0;
 	}
 	
 	

@@ -614,7 +614,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		byte tAutoInput = FACING_TO_SIDE[mFacing][mItemAutoInput];
 		
 		if (aUseAutoInputs && !mDisabledItemInput && SIDES_VALID[tAutoInput]) {
-			ST.moveAll(getItemInputTarget(tAutoInput), new DelegatorTileEntity<>(this, tAutoInput));
+			ST.moveAll(getItemInputTarget(tAutoInput), delegator(tAutoInput));
 		}
 		
 		ItemStack[] tInputs = new ItemStack[mRecipes.mInputItemsCount];
@@ -626,7 +626,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (tTileEntity != null && tTileEntity.mTileEntity != null) {
 				FluidTankInfo[] tInfos = tTileEntity.mTileEntity.getTankInfo(FORGE_DIR[tTileEntity.mSideOfTileEntity]);
 				if (tInfos != null) for (FluidTankInfo tInfo : tInfos) if (tInfo != null && tInfo.fluid != null && tInfo.fluid.amount > 0 && getFluidTankFillable(SIDE_ANY, tInfo.fluid) != null) {
-					if (UT.Fluids.move_(tTileEntity, new DelegatorTileEntity<IFluidHandler>(this, tAutoInput), tInfo.fluid) > 0) updateInventory();
+					if (UT.Fluids.move_(tTileEntity, delegator(tAutoInput), tInfo.fluid) > 0) updateInventory();
 				}
 			}
 		}
@@ -877,7 +877,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	public void doOutputItems() {
 		byte tAutoOutput = FACING_TO_SIDE[mFacing][mItemAutoOutput];
-		ST.moveAll(new DelegatorTileEntity<>(this, tAutoOutput), getItemOutputTarget(tAutoOutput));
+		ST.moveAll(delegator(tAutoOutput), getItemOutputTarget(tAutoOutput));
 	}
 	
 	public void doOutputFluids() {

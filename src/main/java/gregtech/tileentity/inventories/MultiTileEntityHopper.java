@@ -171,7 +171,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 					}
 					while (tMovedItems + (mMode<=0?1:mMode) <= 64) {
-						int tMoved = ST.move(new DelegatorTileEntity<>(this, mFacing), tDelegator, null, F, F, F, 64, 1, mMode<=0?64-tMovedItems:mMode, mMode<=0?1:mMode);
+						int tMoved = ST.move(delegator(mFacing), tDelegator, null, F, F, F, 64, 1, mMode<=0?64-tMovedItems:mMode, mMode<=0?1:mMode);
 						if (tMoved <= 0) break;
 						tMovedItems += tMoved;
 						if (mExactMode) break;
@@ -184,7 +184,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 					if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 				}
 				if (tDelegator.mTileEntity != null && !(tDelegator.mTileEntity instanceof MultiTileEntityAnvil)) {
-					tMovedItems += ST.move(tDelegator, new DelegatorTileEntity<>(this, SIDE_TOP));
+					tMovedItems += ST.move(tDelegator, delegator(SIDE_TOP));
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
 						for (int i = 0, j = getSizeInventory(); i < j; i++) if (!slotHas(i)) {

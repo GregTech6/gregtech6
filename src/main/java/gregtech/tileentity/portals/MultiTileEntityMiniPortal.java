@@ -318,7 +318,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	
 	@Override
 	public DelegatorTileEntity<TileEntity> getDelegateTileEntity(byte aSide) {
-		if (mTarget == null) return new DelegatorTileEntity<TileEntity>(this, aSide);
+		if (mTarget == null) return delegator(aSide);
 		return mTarget.getAdjacentTileEntity(OPPOSITES[aSide]);
 	}
 	

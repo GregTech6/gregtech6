@@ -111,7 +111,7 @@ public class ItemIntegratedCircuit extends ItemBase {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister aIconRegister) {
 		for (int i = 0; i < 25/*TODO mIcons.length*/; i++) mIcons[i] = aIconRegister.registerIcon(mModID + ":" + mName + "/" + (byte)(i&255));
-		// Useful hack to register Item Icons. That is why the Integrated Circuit Item has to exist always.
+		// Useful hack to register Item Icons. That is why the Selector Tag Item has to always exist.
 		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI) {
 			OUT.println("GT_Client: Setting up and loading Icon Register for Items");
 			GT_API.sItemIcons = aIconRegister;
