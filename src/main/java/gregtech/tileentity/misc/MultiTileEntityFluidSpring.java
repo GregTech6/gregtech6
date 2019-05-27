@@ -101,7 +101,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 		if (aIsServerSide) {
 			if (rng(mFluid.amount) == 0) {
 				Block tBlock = mFluid.getFluid().getBlock(), tAbove = getBlockAtSide(SIDE_UP);
-				byte tNeededMetaData = (byte)(tBlock instanceof BlockFluidFinite ? 7 : 0);
+				byte tNeededMetaData = (byte)(tBlock instanceof BlockFluidFinite ? 15 : 0);
 				if (tAbove == tBlock) {
 					if (getMetaDataAtSide(SIDE_UP) == tNeededMetaData) {
 						for (byte tSide : ALL_SIDES_HORIZONTAL) {

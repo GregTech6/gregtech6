@@ -175,10 +175,10 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		Block tBlock = aWorld.getBlock(aX, tY, aZ);
 		if (tBlock == this) {
 			int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
-			if (tAmount > quantaPerBlock) {
-				aWorld.setBlock(aX, tY, aZ, this, quantaPerBlock - 1, 3);
+			if (tAmount > 8) {
+				aWorld.setBlock(aX, tY, aZ, this, 8 - 1, 3);
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-				return tAmount - quantaPerBlock;
+				return tAmount - 8;
 			}
 			if (tAmount > 0) {
 				aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
@@ -230,6 +230,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
+	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
 	
 	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
 		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
