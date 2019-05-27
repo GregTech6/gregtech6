@@ -66,6 +66,7 @@ import gregapi.recipes.AdvancedCraftingXToY;
 import gregapi.render.ITexture;
 import gregapi.render.IconContainerCopied;
 import gregapi.render.RenderHelper;
+import gregapi.render.RendererBlockFluid;
 import gregapi.render.RendererBlockTextured;
 import gregapi.tileentity.render.ITileEntityOnDrawBlockHighlight;
 import gregapi.util.OM;
@@ -126,6 +127,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 	@SuppressWarnings("deprecation")
 	public void onProxyAfterPreInit(Abstract_Mod aMod, FMLPreInitializationEvent aEvent) {
 		RenderingRegistry.registerEntityRenderingHandler(PrefixBlockFallingEntity.class, new RenderFallingBlock());
+		RenderingRegistry.registerBlockHandler(new RendererBlockFluid(RenderingRegistry.getNextAvailableRenderId()));
 		RenderingRegistry.registerBlockHandler(new RendererBlockTextured(RenderingRegistry.getNextAvailableRenderId()));
 		// Check if OptiFine is loaded in order to disable some GT Render Hooks to fix Glitches.
 		ITexture.Util.OPTIFINE_LOADED = FMLClientHandler.instance().hasOptifine();

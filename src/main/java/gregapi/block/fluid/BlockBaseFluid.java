@@ -31,6 +31,7 @@ import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.MaterialGas;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
+import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -167,7 +168,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	
 	@Override
 	public int tryToFlowVerticallyInto(World aWorld, int aX, int aY, int aZ, int aAmount) {
-		int tY = aY + densityDir;
+		int tY = aY + (((densityDir > 0) != (aAmount > 8))?+1:-1);
 		if (tY < 0 || tY >= aWorld.getHeight()) {
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 0;
@@ -231,6 +232,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
+	@Override public int getRenderType() {return RendererBlockFluid.INSTANCE.mRenderID;}
 	
 	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
 		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});

@@ -28,6 +28,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
+import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -194,6 +195,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	@Override public boolean getTickRandomly() {return F;}
 	@Override public boolean canDisplace(IBlockAccess aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.canDisplace(aWorld, aX, aY, aZ);}
 	@Override public boolean displaceIfPossible(World aWorld, int aX, int aY, int aZ) {return !aWorld.getBlock(aX, aY, aZ).getMaterial().isLiquid() && super.displaceIfPossible(aWorld, aX, aY, aZ);}
+	@Override public int getRenderType() {return RendererBlockFluid.INSTANCE.mRenderID;}
 	
 	public BlockWaterlike addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
 		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});
