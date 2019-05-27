@@ -95,6 +95,15 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
+		// Flammability checks.
+		if (mFlammability > 0) for (byte tSide : ALL_SIDES_VALID) {
+			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide);
+			if (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire) {
+				WD.burn(aWorld, aX, aY, aZ, T, F);
+				return;
+			}
+		}
+		
 		boolean changed = F;
 		int tRemainingQuanta = aWorld.getBlockMetadata(aX, aY, aZ)+1, oRemainingQuanta = tRemainingQuanta;
 		
@@ -169,28 +178,16 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	public int tryToFlowVerticallyInto(World aWorld, int aX, int aY, int aZ, int aAmount) {
 		if (aY <= 0 || aY+1 >= aWorld.getHeight()) return aWorld.setBlockToAir(aX, aY, aZ) ? 0 : aAmount;
 		
+		// Compressed Fluid Blocks behave a little bit "jumpier" than normal ones. ;)
 		if (aAmount > 8) {
 			int tY = aY - densityDir;
 			Block tBlock = aWorld.getBlock(aX, tY, aZ);
 			
-			if (tBlock == this) {
-				int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
-				if (tAmount > 8) {
-					aWorld.setBlock(aX, tY, aZ, this, 8 - 1, 3);
-					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-					return tAmount - 8;
-				}
-				if (tAmount > 0) {
-					aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
-					// Called by the Block Update caused by setBlockToAir
-					// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-					aWorld.setBlockToAir(aX, aY, aZ);
-					return 0;
-				}
-				return aAmount;
-			}
-			if (tBlock instanceof BlockFluidBase) {
-				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
+			// Swap with any finite Fluid Blocks "above" this one unless they are also compressed.
+			if (tBlock instanceof BlockFluidFinite) {
+				int tMeta = aWorld.getBlockMetadata(aX, tY, aZ);
+				if (tMeta > 8) return aAmount;
+				aWorld.setBlock(aX, aY, aZ, tBlock, tMeta, 3);
 				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 				return 0;

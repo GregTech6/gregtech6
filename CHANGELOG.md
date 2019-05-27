@@ -25,6 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] GT6 Fluid Rendering Height, I also fixed it for a lot of Default Forge Fluids aswell, because the Default Rendering ID of them was easy to change.
 [CHANGED] Al2O3 (Alumina) in Fluid form has now 504 Liters per Unit instead of 144 Liters. This is to make it divisible by 7.
 [CHANGED] GT6 Fluid Springs for Oil and Natural Gas will now place more compressed 2000L Fluids per Block. In case of Oil the Fluid will turn into a short Fountain.
+[CHANGED] Oil and Natural Gas Fluid Blocks are now more flammable, when coming in contact with Lava or Fire Blocks. (but still not explosive in any way, also still wont do this for Torches, that would be too cruel)
 [ADDED] Redstone Conductor Covers, one of them takes Redstone in from the outside, the other emits whatever that Cover receives outwards. This should fix the Issue of not being able to Redstone Control Multiblocks by just adding those Covers to the Multiblock Walls to transmit Redstone through them.
 
 
