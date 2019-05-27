@@ -168,12 +168,13 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	
 	@Override
 	public int tryToFlowVerticallyInto(World aWorld, int aX, int aY, int aZ, int aAmount) {
-		int tY = aY + (((densityDir > 0) != (aAmount > 8))?+1:-1);
-		if (tY < 0 || tY >= aWorld.getHeight()) {
+		if (aY <= 0 || aY+1 >= aWorld.getHeight()) {
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 0;
 		}
+		int tY = aY + densityDir;
 		Block tBlock = aWorld.getBlock(aX, tY, aZ);
+		
 		if (tBlock == this) {
 			int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
 			if (tAmount > 8) {
@@ -205,6 +206,36 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 			aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 0;
+		}
+		if (aAmount >= 8) {
+			tY = aY - densityDir;
+			tBlock = aWorld.getBlock(aX, tY, aZ);
+			
+			if (tBlock == this) {
+				int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
+				if (tAmount > 8) {
+					aWorld.setBlock(aX, tY, aZ, this, 8 - 1, 3);
+					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+					return tAmount - 8;
+				}
+				if (tAmount > 0) {
+					aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
+					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+					aWorld.setBlockToAir(aX, aY, aZ);
+					return 0;
+				}
+				return aAmount;
+			}
+			
+			// Lets just jump up! Make a Fountain!
+			if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
+				// All but one Quanta will move up!
+				aWorld.setBlock(aX, tY, aZ, this, aAmount - 2, 3);
+				// Since it is a Jump, we will give it a fast reaction time!
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, 1);
+				// Leaving a minimal Block at the original location to make it more Fountain like.
+				return 1;
+			}
 		}
 		return aAmount;
 	}
