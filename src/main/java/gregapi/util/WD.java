@@ -508,11 +508,12 @@ public class WD {
 	public static boolean fire(World aWorld, ChunkCoordinates aCoords, boolean aCheckFlammability) {return fire(aWorld, aCoords.posX, aCoords.posY, aCoords.posZ, aCheckFlammability);}
 	public static boolean fire(World aWorld, int aX, int aY, int aZ, boolean aCheckFlammability) {
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
+		if (tBlock.getMaterial() == Material.lava || tBlock.getMaterial() == Material.fire) return F;
 		if (tBlock.getMaterial() == Material.carpet || tBlock.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ) == null) {
 			if (MD.TC.mLoaded && te(aWorld, aX, aY, aZ, T) instanceof INode) return F;
 			if (tBlock.getFlammability(aWorld, aX, aY, aZ, FORGE_DIR[SIDE_ANY]) > 0) return aWorld.setBlock(aX, aY, aZ, Blocks.fire, 0, 3);
 			if (aCheckFlammability) {
-				for (byte tSide : ALL_SIDES_VALID) if (aWorld.getBlock(aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide]).getFlammability(aWorld, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], FORGE_DIR_OPPOSITES[tSide]) > 0) return aWorld.setBlock(aX, aY, aZ, Blocks.fire);
+				for (byte tSide : ALL_SIDES_VALID) if (block(aWorld, aX, aY, aZ, tSide).getFlammability(aWorld, aX+OFFSETS_X[tSide], aY+OFFSETS_Y[tSide], aZ+OFFSETS_Z[tSide], FORGE_DIR_OPPOSITES[tSide]) > 0) return aWorld.setBlock(aX, aY, aZ, Blocks.fire);
 			} else {
 				return aWorld.setBlock(aX, aY, aZ, Blocks.fire, 0, 3);
 			}
