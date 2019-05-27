@@ -96,23 +96,22 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		boolean changed = F;
-		int quantaRemaining = aWorld.getBlockMetadata(aX, aY, aZ)+1;
+		int tRemainingQuanta = aWorld.getBlockMetadata(aX, aY, aZ)+1, oRemainingQuanta = tRemainingQuanta;
 		
-		int prevRemaining = quantaRemaining;
-		quantaRemaining = tryToFlowVerticallyInto(aWorld, aX, aY, aZ, quantaRemaining);
+		tRemainingQuanta = tryToFlowVerticallyInto(aWorld, aX, aY, aZ, tRemainingQuanta);
 		
-		if (quantaRemaining < 1) {
+		if (tRemainingQuanta < 1) {
 			updateFluidBlocks(aWorld, aX, aY, aZ);
 			return;
 		}
-		if (quantaRemaining != prevRemaining) {
+		if (tRemainingQuanta != oRemainingQuanta) {
 			changed = T;
-			if (quantaRemaining == 1) {
-				WD.setIfDiff(aWorld, aX, aY, aZ, this, quantaRemaining-1, 2);
+			if (tRemainingQuanta == 1) {
+				WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, 2);
 				updateFluidBlocks(aWorld, aX, aY, aZ);
 				return;
 			}
-		} else if (quantaRemaining == 1) {
+		} else if (tRemainingQuanta == 1) {
 			updateFluidBlocks(aWorld, aX, aY, aZ);
 			return;
 		}
@@ -122,12 +121,12 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		if (displaceIfPossible(aWorld, aX-1, aY, aZ  )) aWorld.setBlockToAir(aX-1, aY, aZ  );
 		if (displaceIfPossible(aWorld, aX+1, aY, aZ  )) aWorld.setBlockToAir(aX+1, aY, aZ  );
 		
-		int tTotal = quantaRemaining, tCount = 1;
+		int tTotal = tRemainingQuanta, tCount = 1;
 		
-		int north = getQuantaValueBelow(aWorld, aX  , aY, aZ-1, quantaRemaining-1);
-		int south = getQuantaValueBelow(aWorld, aX  , aY, aZ+1, quantaRemaining-1);
-		int west  = getQuantaValueBelow(aWorld, aX-1, aY, aZ  , quantaRemaining-1);
-		int east  = getQuantaValueBelow(aWorld, aX+1, aY, aZ  , quantaRemaining-1);
+		int north = getQuantaValueBelow(aWorld, aX  , aY, aZ-1, tRemainingQuanta-1);
+		int south = getQuantaValueBelow(aWorld, aX  , aY, aZ+1, tRemainingQuanta-1);
+		int west  = getQuantaValueBelow(aWorld, aX-1, aY, aZ  , tRemainingQuanta-1);
+		int east  = getQuantaValueBelow(aWorld, aX+1, aY, aZ  , tRemainingQuanta-1);
 		
 		if (north >= 0) {tCount++; tTotal += north;}
 		if (south >= 0) {tCount++; tTotal += south;}
@@ -136,7 +135,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		
 		if (tCount == 1) {
 			if (changed) {
-				WD.setIfDiff(aWorld, aX, aY, aZ, this, quantaRemaining-1, 2);
+				WD.setIfDiff(aWorld, aX, aY, aZ, this, tRemainingQuanta-1, 2);
 				updateFluidBlocks(aWorld, aX, aY, aZ);
 			}
 			return;
@@ -168,10 +167,49 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	
 	@Override
 	public int tryToFlowVerticallyInto(World aWorld, int aX, int aY, int aZ, int aAmount) {
-		if (aY <= 0 || aY+1 >= aWorld.getHeight()) {
-			aWorld.setBlockToAir(aX, aY, aZ);
-			return 0;
+		if (aY <= 0 || aY+1 >= aWorld.getHeight()) return aWorld.setBlockToAir(aX, aY, aZ) ? 0 : aAmount;
+		
+		if (aAmount > 8) {
+			int tY = aY - densityDir;
+			Block tBlock = aWorld.getBlock(aX, tY, aZ);
+			
+			if (tBlock == this) {
+				int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
+				if (tAmount > 8) {
+					aWorld.setBlock(aX, tY, aZ, this, 8 - 1, 3);
+					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+					return tAmount - 8;
+				}
+				if (tAmount > 0) {
+					aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
+					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+					aWorld.setBlockToAir(aX, aY, aZ);
+					return 0;
+				}
+				return aAmount;
+			}
+			if (tBlock instanceof BlockFluidBase) {
+				if (densityDir < 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
+					aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
+					aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
+					// And don't just cast the result of world.getBlock directly like Forge does. Why the fuck do they call world.getBlock more than once for the Block below/above a Fluid...
+					aWorld.scheduleBlockUpdate(aX, aY, aZ, tBlock, ((BlockFluidBase)tBlock).tickRate(aWorld));
+					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+					return 0;
+				}
+				return aAmount;
+			}
+			// Lets just jump up! Make a Fountain!
+			if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
+				// All but one Quanta will move up!
+				aWorld.setBlock(aX, tY, aZ, this, aAmount - 2, 3);
+				// Since it is a Jump, we will give it a fast reaction time!
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, 1);
+				// Leaving a minimal Block at the original location to make it more Fountain like.
+				return 1;
+			}
 		}
+		
 		int tY = aY + densityDir;
 		Block tBlock = aWorld.getBlock(aX, tY, aZ);
 		
@@ -206,36 +244,6 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 			aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 0;
-		}
-		if (aAmount >= 8) {
-			tY = aY - densityDir;
-			tBlock = aWorld.getBlock(aX, tY, aZ);
-			
-			if (tBlock == this) {
-				int tAmount = 1 + aWorld.getBlockMetadata(aX, tY, aZ) + aAmount;
-				if (tAmount > 8) {
-					aWorld.setBlock(aX, tY, aZ, this, 8 - 1, 3);
-					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-					return tAmount - 8;
-				}
-				if (tAmount > 0) {
-					aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
-					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-					aWorld.setBlockToAir(aX, aY, aZ);
-					return 0;
-				}
-				return aAmount;
-			}
-			
-			// Lets just jump up! Make a Fountain!
-			if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
-				// All but one Quanta will move up!
-				aWorld.setBlock(aX, tY, aZ, this, aAmount - 2, 3);
-				// Since it is a Jump, we will give it a fast reaction time!
-				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, 1);
-				// Leaving a minimal Block at the original location to make it more Fountain like.
-				return 1;
-			}
 		}
 		return aAmount;
 	}
