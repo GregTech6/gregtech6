@@ -83,12 +83,12 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		float green = (color >> 8 & 255) / 255.0F;
 		float blue = (color & 255) / 255.0F;
 		
-		BlockFluidBase theFluid = (BlockFluidBase) aBlock;
-		int bMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+		BlockFluidBase aFluid = (BlockFluidBase)aBlock;
+		int bMeta = aWorld.getBlockMetadata(aX, aY, aZ), aDir = UT.Fluids.dir(aFluid);
 		
-		boolean renderTop = aWorld.getBlock(aX, aY - UT.Fluids.dir(theFluid), aZ) != theFluid;
+		boolean renderTop = aWorld.getBlock(aX, aY - aDir, aZ) != aFluid;
 
-		boolean renderBottom = aBlock.shouldSideBeRendered(aWorld, aX, aY + UT.Fluids.dir(theFluid), aZ, 0) && aWorld.getBlock(aX, aY + UT.Fluids.dir(theFluid), aZ) != theFluid;
+		boolean renderBottom = aBlock.shouldSideBeRendered(aWorld, aX, aY + aDir, aZ, 0) && aWorld.getBlock(aX, aY + aDir, aZ) != aFluid;
 
 		boolean[] renderSides = new boolean[] {
 			aBlock.shouldSideBeRendered(aWorld, aX, aY, aZ - 1, 2), 
@@ -100,22 +100,22 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		if (!renderTop && !renderBottom && !renderSides[0] && !renderSides[1] && !renderSides[2] && !renderSides[3]) return F;
 		boolean rendered = F;
 		double heightNW, heightSW, heightSE, heightNE;
-		float flow11 = getFluidHeightForRender(aWorld, aX, aY, aZ, theFluid);
+		float flow11 = getFluidHeightForRender(aWorld, aX, aY, aZ, aFluid);
 
 		if (flow11 != 1) {
-			float flow00 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ - 1, theFluid);
-			float flow01 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ,     theFluid);
-			float flow02 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ + 1, theFluid);
-			float flow10 = getFluidHeightForRender(aWorld, aX,     aY, aZ - 1, theFluid);
-			float flow12 = getFluidHeightForRender(aWorld, aX,     aY, aZ + 1, theFluid);
-			float flow20 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ - 1, theFluid);
-			float flow21 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ,     theFluid);
-			float flow22 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ + 1, theFluid);
+			float flow00 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ - 1, aFluid);
+			float flow01 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ,     aFluid);
+			float flow02 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ + 1, aFluid);
+			float flow10 = getFluidHeightForRender(aWorld, aX,     aY, aZ - 1, aFluid);
+			float flow12 = getFluidHeightForRender(aWorld, aX,     aY, aZ + 1, aFluid);
+			float flow20 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ - 1, aFluid);
+			float flow21 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ,     aFluid);
+			float flow22 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ + 1, aFluid);
 
-			heightNW = getFluidHeightAverage(new float[]{ flow00, flow01, flow10, flow11 });
-			heightSW = getFluidHeightAverage(new float[]{ flow01, flow02, flow12, flow11 });
-			heightSE = getFluidHeightAverage(new float[]{ flow12, flow21, flow22, flow11 });
-			heightNE = getFluidHeightAverage(new float[]{ flow10, flow20, flow21, flow11 });
+			heightNW = getFluidHeightAverage(new float[] {flow00, flow01, flow10, flow11});
+			heightSW = getFluidHeightAverage(new float[] {flow01, flow02, flow12, flow11});
+			heightSE = getFluidHeightAverage(new float[] {flow12, flow21, flow22, flow11});
+			heightNE = getFluidHeightAverage(new float[] {flow10, flow20, flow21, flow11});
 		} else {
 			heightNW = flow11;
 			heightSW = flow11;
@@ -123,7 +123,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 			heightNE = flow11;
 		}
 
-		boolean rises = UT.Fluids.dir(theFluid) == 1;
+		boolean rises = aDir == 1;
 		if (aRenderer.renderAllFaces || renderTop) {
 			rendered = T;
 			IIcon iconStill = aBlock.getIcon(1, bMeta);
@@ -153,10 +153,10 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 				u2 = iconStill.getInterpolatedU(8.0F + (-zFlow - xFlow) * 16.0F);
 				v2 = iconStill.getInterpolatedV(8.0F + (-zFlow + xFlow) * 16.0F);
 				u1 = iconStill.getInterpolatedU(8.0F + (-zFlow + xFlow) * 16.0F);
-				v1 = iconStill.getInterpolatedV(8.0F + (zFlow + xFlow) * 16.0F);
-				u4 = iconStill.getInterpolatedU(8.0F + (zFlow + xFlow) * 16.0F);
-				v4 = iconStill.getInterpolatedV(8.0F + (zFlow - xFlow) * 16.0F);
-				u3 = iconStill.getInterpolatedU(8.0F + (zFlow - xFlow) * 16.0F);
+				v1 = iconStill.getInterpolatedV(8.0F + (+zFlow + xFlow) * 16.0F);
+				u4 = iconStill.getInterpolatedU(8.0F + (+zFlow + xFlow) * 16.0F);
+				v4 = iconStill.getInterpolatedV(8.0F + (+zFlow - xFlow) * 16.0F);
+				u3 = iconStill.getInterpolatedU(8.0F + (+zFlow - xFlow) * 16.0F);
 				v3 = iconStill.getInterpolatedV(8.0F + (-zFlow - xFlow) * 16.0F);
 			}
 

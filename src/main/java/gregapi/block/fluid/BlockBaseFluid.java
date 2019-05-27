@@ -182,31 +182,27 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 				}
 				if (tAmount > 0) {
 					aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
-					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+					// Called by the Block Update caused by setBlockToAir
+					// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 					aWorld.setBlockToAir(aX, aY, aZ);
 					return 0;
 				}
 				return aAmount;
 			}
 			if (tBlock instanceof BlockFluidBase) {
-				if (densityDir < 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
-					aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
-					aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
-					// And don't just cast the result of world.getBlock directly like Forge does. Why the fuck do they call world.getBlock more than once for the Block below/above a Fluid...
-					aWorld.scheduleBlockUpdate(aX, aY, aZ, tBlock, ((BlockFluidBase)tBlock).tickRate(aWorld));
-					aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
-					return 0;
-				}
-				return aAmount;
+				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
+				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
+				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+				return 0;
 			}
 			// Lets just jump up! Make a Fountain!
 			if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
+				// The Block left behind should stay for a bit.
+				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 50);
 				// All but one Quanta will move up!
 				aWorld.setBlock(aX, tY, aZ, this, aAmount - 2, 3);
 				// Since it is a Jump, we will give it a fast reaction time!
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, 1);
-				// But the Block left behind should stay for a bit.
-				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 50);
 				// Leaving a minimal Block at the original location to make it more Fountain like.
 				return 1;
 			}
@@ -224,7 +220,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 			}
 			if (tAmount > 0) {
 				aWorld.setBlock(aX, tY, aZ, this, tAmount - 1, 3);
-				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+				// Called by the Block Update caused by setBlockToAir
+				// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 				aWorld.setBlockToAir(aX, aY, aZ);
 				return 0;
 			}
@@ -234,8 +231,10 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 			if (densityDir < 0 ? getDensity(aWorld, aX, tY, aZ) > density : getDensity(aWorld, aX, tY, aZ) < density) {
 				aWorld.setBlock(aX, aY, aZ, tBlock, aWorld.getBlockMetadata(aX, tY, aZ), 3);
 				aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
-				// And don't just cast the result of world.getBlock directly like Forge does. Why the fuck do they call world.getBlock more than once for the Block below/above a Fluid...
-				aWorld.scheduleBlockUpdate(aX, aY, aZ, tBlock, ((BlockFluidBase)tBlock).tickRate(aWorld));
+				// And don't just cast the result of world.getBlock directly like Forge does.
+				// Why the fuck do they call world.getBlock more than once for the Block below/above a Fluid...
+				// Even worse I noticed that the Block Update caused by the second setBlock will schedule the update for the Block ANYWAYS!!!
+				// aWorld.scheduleBlockUpdate(aX, aY, aZ, tBlock, ((BlockFluidBase)tBlock).tickRate(aWorld));
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 				return 0;
 			}
@@ -243,7 +242,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		}
 		if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
 			aWorld.setBlock(aX, tY, aZ, this, aAmount - 1, 3);
-			aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
+			// Called by the Block Update caused by setBlockToAir
+			// aWorld.scheduleBlockUpdate(aX, tY, aZ, this, tickRate);
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 0;
 		}
