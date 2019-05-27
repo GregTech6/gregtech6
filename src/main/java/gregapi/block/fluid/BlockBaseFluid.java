@@ -195,7 +195,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 			// Lets just jump up! Make a Fountain!
 			if (tBlock == NB || displaceIfPossible(aWorld, aX, tY, aZ)) {
 				// The Block left behind should stay for a bit.
-				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 64 - aAmount * 4);
+				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 128 - aAmount * 4);
 				// All but one Quanta will move up!
 				aWorld.setBlock(aX, tY, aZ, this, aAmount - 2, 3);
 				// Since it is a Jump, we will give it a fast reaction time!
