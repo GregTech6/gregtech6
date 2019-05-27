@@ -205,6 +205,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 				aWorld.setBlock(aX, tY, aZ, this, aAmount - 2, 3);
 				// Since it is a Jump, we will give it a fast reaction time!
 				aWorld.scheduleBlockUpdate(aX, tY, aZ, this, 1);
+				// But the Block left behind should stay for a bit.
+				aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 50);
 				// Leaving a minimal Block at the original location to make it more Fountain like.
 				return 1;
 			}
