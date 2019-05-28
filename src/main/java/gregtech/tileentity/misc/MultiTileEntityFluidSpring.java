@@ -85,7 +85,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	
 	@Override
 	public boolean receiveDataShort(short aData, INetworkHandler aNetworkHandler) {
-		mFluid = UT.Fluids.make(UT.Fluids.fluid(aData), 1200);
+		mFluid = UT.Fluids.make(UT.Fluids.fluid(aData), 20);
 		return T;
 	}
 	
@@ -101,26 +101,33 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 		if (aIsServerSide) {
 			if (rng(mFluid.amount) == 0) {
 				Block tBlock = mFluid.getFluid().getBlock(), tAbove = getBlockAtSide(SIDE_UP);
-				byte tNeededMetaData = (byte)(tBlock instanceof BlockFluidFinite ? 15 : 0);
-				if (tAbove == tBlock) {
-					if (getMetaDataAtSide(SIDE_UP) == tNeededMetaData) {
-						for (byte tSide : ALL_SIDES_HORIZONTAL) {
-							tAbove = getBlock(xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide]);
-							if (tAbove == tBlock) {
-								if (tNeededMetaData != getMetaData(xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide])) {
-									worldObj.setBlock(xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide], tBlock, tNeededMetaData, 3);
+				if (tBlock instanceof BlockFluidFinite) {
+					if (tAbove == tBlock) {
+						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, UT.Code.bind4(getMetaDataAtSide(SIDE_UP)+8), 3);
+					} else if (tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
+						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 7, 3);
+					}
+				} else {
+					if (tAbove == tBlock) {
+						if (getMetaDataAtSide(SIDE_UP) == 0) {
+							for (byte tSide : ALL_SIDES_HORIZONTAL) {
+								tAbove = getBlock(xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide]);
+								if (tAbove == tBlock) {
+									if (0 != getMetaData(xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide])) {
+										worldObj.setBlock(xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide], tBlock, 0, 3);
+										break;
+									}
+								} else if (tAbove.isAir(worldObj, xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide])) {
+									worldObj.setBlock(xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide], tBlock, 0, 3);
 									break;
 								}
-							} else if (tAbove.isAir(worldObj, xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide])) {
-								worldObj.setBlock(xCoord+OFFSETS_X[tSide], yCoord+1, zCoord+OFFSETS_Z[tSide], tBlock, tNeededMetaData, 3);
-								break;
 							}
+						} else {
+							worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 						}
-					} else {
-						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, tNeededMetaData, 3);
+					} else if (tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
+						worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, 0, 3);
 					}
-				} else if (tAbove.isAir(worldObj, xCoord, yCoord+1, zCoord)) {
-					worldObj.setBlock(xCoord, yCoord+1, zCoord, tBlock, tNeededMetaData, 3);
 				}
 			}
 		}
