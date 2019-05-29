@@ -164,6 +164,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		FMLCommonHandler.instance().bus().register(this);
 	}
 	
+	public int addArmor(String aPrefix) {
+		return 0;
+	}
+	
 	public EntityPlayer getThePlayer() {
 		return null;
 	}

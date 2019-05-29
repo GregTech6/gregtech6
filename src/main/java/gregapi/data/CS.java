@@ -46,6 +46,7 @@ import gregapi.compat.thaumcraft.ICompatTC;
 import gregapi.config.Config;
 import gregapi.dummies.DummyWorld;
 import gregapi.fluid.FluidTankGT;
+import gregapi.item.ItemArmorBase;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.food.IFoodStat;
@@ -1464,6 +1465,15 @@ public class CS {
 		, HAZMATS_RADIOACTIVE = new ItemStackSet<>()
 		, HAZMATS_LIGHTNING = new ItemStackSet<>()
 		;
+		
+		public static ItemArmorBase[]
+		  HAZMAT_BIOCHEMGAS = new ItemArmorBase[4]
+		, HAZMAT_INSECTS = new ItemArmorBase[4]
+		, HAZMAT_FROST = new ItemArmorBase[4]
+		, HAZMAT_HEAT = new ItemArmorBase[4]
+		, HAZMAT_RADIOACTIVE = new ItemArmorBase[4]
+		, HAZMAT_UNIVERSAL = new ItemArmorBase[4]
+		;
 	}
 	
 	/** Contains the Tool IDs for my MetaTool. */
@@ -1909,14 +1919,16 @@ public class CS {
 	, TEX_DIR_ITEM              = TEX_DIR + "items/"
 	, TEX_DIR_MODEL             = TEX_DIR + "model/"
 	, TEX_DIR_BLOCK             = TEX_DIR + "blocks/"
+	, TEX_DIR_ARMOR             = TEX_DIR + "armor/"
 	, TEX_DIR_ENTITY            = TEX_DIR + "entity/"
 	, TEX_DIR_ASPECTS           = TEX_DIR + "aspects/"
 	
-	, RES_PATH                  = MD.GT.mID  + ":" + TEX_DIR
-	, RES_PATH_GUI              = MD.GT.mID  + ":" + TEX_DIR_GUI
-	, RES_PATH_ITEM             = MD.GT.mID  + ":"
-	, RES_PATH_BLOCK            = MD.GT.mID  + ":"
-	, RES_PATH_ENTITY           = MD.GT.mID  + ":" + TEX_DIR_ENTITY
+	, RES_PATH                  = MD.GT.mID + ":" + TEX_DIR
+	, RES_PATH_GUI              = MD.GT.mID + ":" + TEX_DIR_GUI
+	, RES_PATH_ITEM             = MD.GT.mID + ":"
+	, RES_PATH_BLOCK            = MD.GT.mID + ":"
+	, RES_PATH_ARMOR            = MD.GT.mID + ":" + TEX_DIR_ARMOR
+	, RES_PATH_ENTITY           = MD.GT.mID + ":" + TEX_DIR_ENTITY
 	, RES_PATH_API_ITEM         = MD.GAPI.mID + ":"
 	, RES_PATH_API_BLOCK        = MD.GAPI.mID + ":"
 	, RES_PATH_ASPECTS          = MD.GAPI.mID + ":" + TEX_DIR_ASPECTS

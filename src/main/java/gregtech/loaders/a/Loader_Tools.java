@@ -34,6 +34,7 @@ import gregapi.code.ICondition.Or;
 import gregapi.code.IItemContainer;
 import gregapi.config.ConfigCategories;
 import gregapi.data.ANY;
+import gregapi.data.CS.ArmorsGT;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.OreDictToolNames;
@@ -46,6 +47,7 @@ import gregapi.data.OP;
 import gregapi.data.TC;
 import gregapi.data.TD;
 import gregapi.item.IItemEnergy;
+import gregapi.item.ItemArmorBase;
 import gregapi.item.multiitem.MultiItemToolWithCompat;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
@@ -76,6 +78,52 @@ import net.minecraft.item.ItemStack;
 public class Loader_Tools implements Runnable {
 	@Override
 	public void run() {
+		ArmorsGT.HAZMATS_INSECTS    .add(ArmorsGT.HAZMAT_INSECTS    [0] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.insect.head"     , "Bumblesuit Mask"                  , "Full Set protects against any Bees"            , "hazard_insect"    , 0, new int[] {1, 1, 1, 1}, 128, 8, 0, F, T, "RRR", "RGR", "q l", 'R', OP.plate.dat(MT.Rubber), 'G', ST.make(Blocks.stained_glass_pane, 1, DYE_INDEX_White)));
+		ArmorsGT.HAZMATS_INSECTS    .add(ArmorsGT.HAZMAT_INSECTS    [1] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.insect.chest"    , "Bumblesuit Shirt"                 , "Full Set protects against any Bees"            , "hazard_insect"    , 1, new int[] {1, 1, 1, 1}, 128, 8, 0, F, T, "RqR", "RRR", "RRR", 'R', OP.plate.dat(MT.Rubber)));
+		ArmorsGT.HAZMATS_INSECTS    .add(ArmorsGT.HAZMAT_INSECTS    [2] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.insect.legs"     , "Bumblesuit Pants"                 , "Full Set protects against any Bees"            , "hazard_insect"    , 2, new int[] {1, 1, 1, 1}, 128, 8, 0, F, T, "RRR", "RqR", "RlR", 'R', OP.plate.dat(MT.Rubber)));
+		ArmorsGT.HAZMATS_INSECTS    .add(ArmorsGT.HAZMAT_INSECTS    [3] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.insect.boots"    , "Bumblesuit Boots"                 , "Full Set protects against any Bees"            , "hazard_insect"    , 3, new int[] {1, 1, 1, 1}, 128, 8, 0, F, T, "RlR", "RqR"       , 'R', OP.plate.dat(MT.Rubber)));
+		
+		ArmorsGT.HAZMATS_FROST      .add(ArmorsGT.HAZMAT_FROST      [0] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.frost.head"      , "Frost Hazard Suit Mask"           , "Full Set protects against Cold"                , "hazard_frost"     , 0, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "RRR", "RGR", "q l", 'R', OP.plate.dat(MT.Rubber), 'G', ST.make(Blocks.stained_glass_pane, 1, DYE_INDEX_Black)));
+		ArmorsGT.HAZMATS_FROST      .add(ArmorsGT.HAZMAT_FROST      [1] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.frost.chest"     , "Frost Hazard Suit Shirt"          , "Full Set protects against Cold"                , "hazard_frost"     , 1, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "RqR", "RRR", "RRR", 'R', OP.plate.dat(MT.Rubber)));
+		ArmorsGT.HAZMATS_FROST      .add(ArmorsGT.HAZMAT_FROST      [2] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.frost.legs"      , "Frost Hazard Suit Pants"          , "Full Set protects against Cold"                , "hazard_frost"     , 2, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "RRR", "RqR", "RlR", 'R', OP.plate.dat(MT.Rubber)));
+		ArmorsGT.HAZMATS_FROST      .add(ArmorsGT.HAZMAT_FROST      [3] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.frost.boots"     , "Frost Hazard Suit Boots"          , "Full Set protects against Cold"                , "hazard_frost"     , 3, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "RlR", "RqR"       , 'R', OP.plate.dat(MT.Rubber)));
+		
+		ArmorsGT.HAZMATS_HEAT       .add(ArmorsGT.HAZMAT_HEAT       [0] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.heat.head"       , "Heat Protection Suit Mask"        , "Full Set protects against Heat"                , "hazard_heat"      , 0, new int[] {1, 1, 1, 1}, 128, 8, 0, T, F, "FFF", "FGF", "x l", 'F', OP.foil.dat(MT.Al), 'G', ST.make(Blocks.stained_glass_pane, 1, DYE_INDEX_Black)));
+		ArmorsGT.HAZMATS_HEAT       .add(ArmorsGT.HAZMAT_HEAT       [1] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.heat.chest"      , "Heat Protection Suit Shirt"       , "Full Set protects against Heat"                , "hazard_heat"      , 1, new int[] {1, 1, 1, 1}, 128, 8, 0, T, F, "FxF", "FFF", "FFF", 'F', OP.foil.dat(MT.Al)));
+		ArmorsGT.HAZMATS_HEAT       .add(ArmorsGT.HAZMAT_HEAT       [2] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.heat.legs"       , "Heat Protection Suit Pants"       , "Full Set protects against Heat"                , "hazard_heat"      , 2, new int[] {1, 1, 1, 1}, 128, 8, 0, T, F, "FFF", "FxF", "FlF", 'F', OP.foil.dat(MT.Al)));
+		ArmorsGT.HAZMATS_HEAT       .add(ArmorsGT.HAZMAT_HEAT       [3] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.heat.boots"      , "Heat Protection Suit Boots"       , "Full Set protects against Heat"                , "hazard_heat"      , 3, new int[] {1, 1, 1, 1}, 128, 8, 0, T, F, "FlF", "FxF"       , 'F', OP.foil.dat(MT.Al)));
+		
+		ArmorsGT.HAZMATS_RADIOACTIVE.add(ArmorsGT.HAZMAT_RADIOACTIVE[0] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.radiation.head"  , "Radiation Hazard Suit Mask"       , "Full Set protects against Radiation"           , "hazard_radiation" , 0, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "LLL", "LGL", "x l", 'R', OP.plate.dat(MT.Pb), 'G', Blocks.glass_pane));
+		ArmorsGT.HAZMATS_RADIOACTIVE.add(ArmorsGT.HAZMAT_RADIOACTIVE[1] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.radiation.chest" , "Radiation Hazard Suit Shirt"      , "Full Set protects against Radiation"           , "hazard_radiation" , 1, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "LxL", "LLL", "LLL", 'R', OP.plate.dat(MT.Pb)));
+		ArmorsGT.HAZMATS_RADIOACTIVE.add(ArmorsGT.HAZMAT_RADIOACTIVE[2] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.radiation.legs"  , "Radiation Hazard Suit Pants"      , "Full Set protects against Radiation"           , "hazard_radiation" , 2, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "LLL", "LxL", "LlL", 'R', OP.plate.dat(MT.Pb)));
+		ArmorsGT.HAZMATS_RADIOACTIVE.add(ArmorsGT.HAZMAT_RADIOACTIVE[3] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.radiation.boots" , "Radiation Hazard Suit Boots"      , "Full Set protects against Radiation"           , "hazard_radiation" , 3, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "LlL", "LxL"       , 'R', OP.plate.dat(MT.Pb)));
+		
+										 ArmorsGT.HAZMAT_BIOCHEMGAS [0] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.biochemgas.head" , "Biochemical Gas Hazard Suit Mask" , "Full Set protects against Chemicals and Gasses", "hazard_biochemgas", 0, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "RRR", "RGR", "q l", 'R', OP.plate.dat(MT.Rubber), 'G', Blocks.glass_pane);
+										 ArmorsGT.HAZMAT_BIOCHEMGAS [1] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.biochemgas.chest", "Biochemical Gas Hazard Suit Shirt", "Full Set protects against Chemicals and Gasses", "hazard_biochemgas", 1, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "RqR", "RRR", "RRR", 'R', OP.plate.dat(MT.Rubber));
+										 ArmorsGT.HAZMAT_BIOCHEMGAS [2] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.biochemgas.legs" , "Biochemical Gas Hazard Suit Pants", "Full Set protects against Chemicals and Gasses", "hazard_biochemgas", 2, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "RRR", "RqR", "RlR", 'R', OP.plate.dat(MT.Rubber));
+										 ArmorsGT.HAZMAT_BIOCHEMGAS [3] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.biochemgas.boots", "Biochemical Gas Hazard Suit Boots", "Full Set protects against Chemicals and Gasses", "hazard_biochemgas", 3, new int[] {1, 1, 1, 1}, 128, 8, 0, F, F, "RlR", "RqR"       , 'R', OP.plate.dat(MT.Rubber));
+		
+										 ArmorsGT.HAZMAT_UNIVERSAL  [0] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.universal.head"  , "Universal Hazard Suit Mask"       , "Full Set protects against Hazards"             , "hazard_universal" , 0, new int[] {1, 1, 1, 1}, 128, 8, 0, T, T, "AlB", "CqD", "ExF", 'A', ST.make(ArmorsGT.HAZMAT_BIOCHEMGAS[0], 1, 0), 'B', ST.make(ArmorsGT.HAZMAT_INSECTS[0], 1, 0), 'C', ST.make(ArmorsGT.HAZMAT_FROST[0], 1, 0), 'D', ST.make(ArmorsGT.HAZMAT_HEAT[0], 1, 0), 'E', ST.make(ArmorsGT.HAZMAT_RADIOACTIVE[0], 1, 0), 'F', ST.make(Items.chainmail_helmet    , 1, 0));
+										 ArmorsGT.HAZMAT_UNIVERSAL  [1] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.universal.chest" , "Universal Hazard Suit Shirt"      , "Full Set protects against Hazards"             , "hazard_universal" , 1, new int[] {1, 1, 1, 1}, 128, 8, 0, T, T, "AlB", "CqD", "ExF", 'A', ST.make(ArmorsGT.HAZMAT_BIOCHEMGAS[1], 1, 0), 'B', ST.make(ArmorsGT.HAZMAT_INSECTS[1], 1, 0), 'C', ST.make(ArmorsGT.HAZMAT_FROST[1], 1, 0), 'D', ST.make(ArmorsGT.HAZMAT_HEAT[1], 1, 0), 'E', ST.make(ArmorsGT.HAZMAT_RADIOACTIVE[1], 1, 0), 'F', ST.make(Items.chainmail_chestplate, 1, 0));
+										 ArmorsGT.HAZMAT_UNIVERSAL  [2] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.universal.legs"  , "Universal Hazard Suit Pants"      , "Full Set protects against Hazards"             , "hazard_universal" , 2, new int[] {1, 1, 1, 1}, 128, 8, 0, T, T, "AlB", "CqD", "ExF", 'A', ST.make(ArmorsGT.HAZMAT_BIOCHEMGAS[2], 1, 0), 'B', ST.make(ArmorsGT.HAZMAT_INSECTS[2], 1, 0), 'C', ST.make(ArmorsGT.HAZMAT_FROST[2], 1, 0), 'D', ST.make(ArmorsGT.HAZMAT_HEAT[2], 1, 0), 'E', ST.make(ArmorsGT.HAZMAT_RADIOACTIVE[2], 1, 0), 'F', ST.make(Items.chainmail_leggings  , 1, 0));
+										 ArmorsGT.HAZMAT_UNIVERSAL  [3] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.universal.boots" , "Universal Hazard Suit Boots"      , "Full Set protects against Hazards"             , "hazard_universal" , 3, new int[] {1, 1, 1, 1}, 128, 8, 0, T, T, "AlB", "CqD", "ExF", 'A', ST.make(ArmorsGT.HAZMAT_BIOCHEMGAS[3], 1, 0), 'B', ST.make(ArmorsGT.HAZMAT_INSECTS[3], 1, 0), 'C', ST.make(ArmorsGT.HAZMAT_FROST[3], 1, 0), 'D', ST.make(ArmorsGT.HAZMAT_HEAT[3], 1, 0), 'E', ST.make(ArmorsGT.HAZMAT_RADIOACTIVE[3], 1, 0), 'F', ST.make(Items.chainmail_boots     , 1, 0));
+		
+		for (ItemArmorBase tArmor : ArmorsGT.HAZMAT_UNIVERSAL) {
+		ArmorsGT.HAZMATS_GAS        .add(tArmor);
+		ArmorsGT.HAZMATS_BIO        .add(tArmor);
+		ArmorsGT.HAZMATS_CHEM       .add(tArmor);
+		ArmorsGT.HAZMATS_INSECTS    .add(tArmor);
+		ArmorsGT.HAZMATS_FROST      .add(tArmor);
+		ArmorsGT.HAZMATS_HEAT       .add(tArmor);
+		ArmorsGT.HAZMATS_RADIOACTIVE.add(tArmor);
+		ArmorsGT.HAZMATS_LIGHTNING  .add(tArmor);
+		}
+		for (ItemArmorBase tArmor : ArmorsGT.HAZMAT_BIOCHEMGAS) {
+		ArmorsGT.HAZMATS_GAS        .add(tArmor);
+		ArmorsGT.HAZMATS_BIO        .add(tArmor);
+		ArmorsGT.HAZMATS_CHEM       .add(tArmor);
+		}
+		
 		ToolsGT.sMetaTool = new MultiItemToolWithCompat(MD.GT.mID, "gt.metatool.01");
 		
 		ToolsGT.add(ToolsGT.sMetaTool.addTool(ToolsGT.SWORD                     , "Sword"                           , ""                                                    , new GT_Tool_Sword()                                       .setMaterialAmount(OP.toolHeadSword                 .mAmount), OreDictToolNames.sword, OreDictToolNames.blade                                                                                           , TC.stack(TC.INSTRUMENTUM  , 2), TC.stack(TC.TELUM         , 4)                                                                ), TOOL_sword);

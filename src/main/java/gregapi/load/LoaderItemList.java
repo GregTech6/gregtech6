@@ -1224,10 +1224,6 @@ public class LoaderItemList implements Runnable {
 		IL.Upgrade_Overclocker                  .set(ST.mkic("overclockerUpgrade"                           , 1   ));
 		IL.Upgrade_Battery                      .set(ST.mkic("energyStorageUpgrade"                         , 1   ));
 		
-		ArmorsGT.HAZMATS_FROST                  .add(ST.mkic("hazmatHelmet"                                 , 1, W));
-		ArmorsGT.HAZMATS_FROST                  .add(ST.mkic("hazmatChestplate"                             , 1, W));
-		ArmorsGT.HAZMATS_FROST                  .add(ST.mkic("hazmatLeggings"                               , 1, W));
-		ArmorsGT.HAZMATS_FROST                  .add(ST.mkic("hazmatBoots"                                  , 1, W));
 		ArmorsGT.HAZMATS_FROST                  .add(ST.make(MD.TF, "item.arcticHelm"                       , 1, W));
 		ArmorsGT.HAZMATS_FROST                  .add(ST.make(MD.TF, "item.arcticPlate"                      , 1, W));
 		ArmorsGT.HAZMATS_FROST                  .add(ST.make(MD.TF, "item.arcticLegs"                       , 1, W));
@@ -1237,19 +1233,11 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_FROST                  .add(ST.make(MD.TF, "item.yetiLegs"                         , 1, W));
 		ArmorsGT.HAZMATS_FROST                  .add(ST.make(MD.TF, "item.yetiBoots"                        , 1, W));
 		
-		ArmorsGT.HAZMATS_HEAT                   .add(ST.mkic("hazmatHelmet"                                 , 1, W));
-		ArmorsGT.HAZMATS_HEAT                   .add(ST.mkic("hazmatChestplate"                             , 1, W));
-		ArmorsGT.HAZMATS_HEAT                   .add(ST.mkic("hazmatLeggings"                               , 1, W));
-		ArmorsGT.HAZMATS_HEAT                   .add(ST.mkic("hazmatBoots"                                  , 1, W));
 		ArmorsGT.HAZMATS_HEAT                   .add(ST.make(MD.HBM, "item.asbestos_helmet"                 , 1, W));
 		ArmorsGT.HAZMATS_HEAT                   .add(ST.make(MD.HBM, "item.asbestos_plate"                  , 1, W));
 		ArmorsGT.HAZMATS_HEAT                   .add(ST.make(MD.HBM, "item.asbestos_legs"                   , 1, W));
 		ArmorsGT.HAZMATS_HEAT                   .add(ST.make(MD.HBM, "item.asbestos_boots"                  , 1, W));
 		
-		ArmorsGT.HAZMATS_INSECTS                .add(ST.mkic("hazmatHelmet"                                 , 1, W));
-		ArmorsGT.HAZMATS_INSECTS                .add(ST.mkic("hazmatChestplate"                             , 1, W));
-		ArmorsGT.HAZMATS_INSECTS                .add(ST.mkic("hazmatLeggings"                               , 1, W));
-		ArmorsGT.HAZMATS_INSECTS                .add(ST.mkic("hazmatBoots"                                  , 1, W));
 		ArmorsGT.HAZMATS_INSECTS                .add(ST.make(MD.FR, "apiaristHelmet"                        , 1, W));
 		ArmorsGT.HAZMATS_INSECTS                .add(ST.make(MD.FR, "apiaristChest"                         , 1, W));
 		ArmorsGT.HAZMATS_INSECTS                .add(ST.make(MD.FR, "apiaristLegs"                          , 1, W));

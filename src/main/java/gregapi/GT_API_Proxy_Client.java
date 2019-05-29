@@ -113,6 +113,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 	}
 	
 	@Override
+	public int addArmor(String aPrefix) {
+		try {return RenderingRegistry.addNewArmourRendererPrefix(aPrefix);} catch(Throwable e) {/**/}
+		return 0;
+	}
+	
+	@Override
 	public EntityPlayer getThePlayer() {
 		return Minecraft.getMinecraft().thePlayer;
 	}

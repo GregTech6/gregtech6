@@ -452,12 +452,12 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	public boolean canEntityDestroy(IBlockAccess aWorld, int aX, int aY, int aZ, Entity aEntity) {
 		if (aEntity instanceof EntityDragon) {
 			if (mEnderDragonProof) return F;
-			OreDictMaterialStack aMaterial = getMaterialAtSide(aWorld, aX, aY, aZ, (byte)6);
+			OreDictMaterialStack aMaterial = getMaterialAtSide(aWorld, aX, aY, aZ, SIDE_ANY);
 			return aMaterial == null || !aMaterial.mMaterial.contains(TD.Properties.ENDER_DRAGON_PROOF);
 		}
 		if (aEntity instanceof EntityWither) {
 			if (mWitherProof) return F;
-			OreDictMaterialStack aMaterial = getMaterialAtSide(aWorld, aX, aY, aZ, (byte)6);
+			OreDictMaterialStack aMaterial = getMaterialAtSide(aWorld, aX, aY, aZ, SIDE_ANY);
 			return aMaterial == null || !aMaterial.mMaterial.contains(TD.Properties.WITHER_PROOF);
 		}
 		return T;
@@ -561,7 +561,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override
 	public void setExtendedMetaData(IBlockAccess aWorld, int aX, int aY, int aZ, short aMetaData) {
 		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-		if (aTileEntity == null && aWorld instanceof World) aTileEntity = WD.te((World)aWorld, aX, aY, aZ, createTileEntity((World)aWorld, aX, aY, aZ, (byte)6, aMetaData, null), F);
+		if (aTileEntity == null && aWorld instanceof World) aTileEntity = WD.te((World)aWorld, aX, aY, aZ, createTileEntity((World)aWorld, aX, aY, aZ, SIDE_ANY, aMetaData, null), F);
 		if (aTileEntity instanceof PrefixBlockTileEntity) ((PrefixBlockTileEntity)aTileEntity).mMetaData = aMetaData;
 		if (aWorld instanceof World && ((World)aWorld).isRemote) ((World)aWorld).markBlockForUpdate(aX, aY, aZ);
 	}
@@ -615,7 +615,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override
 	public void dropBlockAsItemWithChance(World aWorld, int aX, int aY, int aZ, int aMeta, float aChance, int aFortune) {
 		ArrayList<ItemStack> tList = mDrops.getDrops(this, aWorld, aX, aY, aZ, aFortune, F);
-		aChance = ForgeEventFactory.fireBlockHarvesting(tList, aWorld, this, aX, aY, aZ, aMeta, aFortune, aChance, F, harvesters.get());
+		aChance = ForgeEventFactory.fireBlockHarvesting(tList, aWorld, this, aX, aY, aZ, 0, aFortune, aChance, F, harvesters.get());
 		for (ItemStack tStack : tList) if (RNGSUS.nextFloat() <= aChance) dropBlockAsItem(aWorld, aX, aY, aZ, tStack);
 	}
 	
@@ -626,7 +626,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		boolean aSilkTouch = EnchantmentHelper.getSilkTouchModifier(aPlayer);
 		int aFortune = EnchantmentHelper.getFortuneModifier(aPlayer);
 		ArrayList<ItemStack> tList = mDrops.getDrops(this, aWorld, aX, aY, aZ, aFortune, aSilkTouch);
-		float aChance = ForgeEventFactory.fireBlockHarvesting(tList, aWorld, this, aX, aY, aZ, aMeta, aFortune, 1.0F, aSilkTouch, aPlayer);
+		float aChance = ForgeEventFactory.fireBlockHarvesting(tList, aWorld, this, aX, aY, aZ, 0, aFortune, 1.0F, aSilkTouch, aPlayer);
 		for (ItemStack tStack : tList) if (RNGSUS.nextFloat() <= aChance) dropBlockAsItem(aWorld, aX, aY, aZ, tStack);
 	}
 	
@@ -702,13 +702,13 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	protected boolean checkGravity(World aWorld, int aX, int aY, int aZ) {
 		if (mGravity && aY > 0 && aWorld.getTileEntity(aX, aY, aZ) != null && BlockFalling.func_149831_e(aWorld, aX, aY - 1, aZ)) {
 			if (!BlockFalling.fallInstantly && aWorld.checkChunksExist(aX-32, aY-32, aZ-32, aX+32, aY+32, aZ+32)) {
-				if (!aWorld.isRemote) aWorld.spawnEntityInWorld(new PrefixBlockFallingEntity(aWorld, aX+0.5, aY+0.5, aZ+0.5, this, getItemStackFromBlock(aWorld, aX, aY, aZ, (byte)1)));
+				if (!aWorld.isRemote) aWorld.spawnEntityInWorld(new PrefixBlockFallingEntity(aWorld, aX+0.5, aY+0.5, aZ+0.5, this, getItemStackFromBlock(aWorld, aX, aY, aZ, SIDE_UP)));
 			} else {
 				short tMetaData = getMetaDataValue(aWorld, aX, aY, aZ);
 				if (tMetaData > 0) {
 					aWorld.setBlockToAir(aX, aY, aZ);
 					while (BlockFalling.func_149831_e(aWorld, aX, aY-1, aZ) && aY > 0) --aY;
-					if (aY > 0) placeBlock(aWorld, aX, aY, aZ, (byte)1, tMetaData, null, F, T);
+					if (aY > 0) placeBlock(aWorld, aX, aY, aZ, SIDE_UP, tMetaData, null, F, T);
 				}
 			}
 			return T;
@@ -716,10 +716,10 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		return F;
 	}
 	
-	@Override public void receiveDataByte               (IBlockAccess aWorld, int aX, int aY, int aZ, byte   aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataShort              (IBlockAccess aWorld, int aX, int aY, int aZ, short  aData, INetworkHandler aNetworkHandler) {setExtendedMetaData(aWorld, aX, aY, aZ, aData);}
-	@Override public void receiveDataInteger            (IBlockAccess aWorld, int aX, int aY, int aZ, int    aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataLong               (IBlockAccess aWorld, int aX, int aY, int aZ, long   aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataByteArray          (IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler) {/**/}
-	@Override public void receiveDataName               (IBlockAccess aWorld, int aX, int aY, int aZ, String aData, INetworkHandler aNetworkHandler) {if (UT.Code.stringValid(aData)) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof PrefixBlockTileEntity) {if (((PrefixBlockTileEntity)aTileEntity).mItemNBT == null) ((PrefixBlockTileEntity)aTileEntity).mItemNBT = UT.NBT.make(); ((PrefixBlockTileEntity)aTileEntity).mItemNBT.setTag("display", UT.NBT.makeString(((PrefixBlockTileEntity)aTileEntity).mItemNBT.getCompoundTag("display"), "Name", aData));}}}
+	@Override public void receiveDataByte     (IBlockAccess aWorld, int aX, int aY, int aZ, byte   aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataShort    (IBlockAccess aWorld, int aX, int aY, int aZ, short  aData, INetworkHandler aNetworkHandler) {setExtendedMetaData(aWorld, aX, aY, aZ, aData);}
+	@Override public void receiveDataInteger  (IBlockAccess aWorld, int aX, int aY, int aZ, int    aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataLong     (IBlockAccess aWorld, int aX, int aY, int aZ, long   aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataByteArray(IBlockAccess aWorld, int aX, int aY, int aZ, byte[] aData, INetworkHandler aNetworkHandler) {/**/}
+	@Override public void receiveDataName     (IBlockAccess aWorld, int aX, int aY, int aZ, String aData, INetworkHandler aNetworkHandler) {if (UT.Code.stringValid(aData)) {TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ); if (aTileEntity instanceof PrefixBlockTileEntity) {if (((PrefixBlockTileEntity)aTileEntity).mItemNBT == null) ((PrefixBlockTileEntity)aTileEntity).mItemNBT = UT.NBT.make(); ((PrefixBlockTileEntity)aTileEntity).mItemNBT.setTag("display", UT.NBT.makeString(((PrefixBlockTileEntity)aTileEntity).mItemNBT.getCompoundTag("display"), "Name", aData));}}}
 }

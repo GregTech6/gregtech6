@@ -85,7 +85,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	
 	@Override
 	public boolean receiveDataShort(short aData, INetworkHandler aNetworkHandler) {
-		mFluid = UT.Fluids.make(UT.Fluids.fluid(aData), 20);
+		mFluid = UT.Fluids.make(UT.Fluids.fluid(aData), 600);
 		return T;
 	}
 	

@@ -206,7 +206,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	
 	@Override
 	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
-		if (!mEffects.isEmpty() && (UT.Fluids.gas(mFluid) ? !UT.Entities.isWearingFullGasHazmat(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
+		if (!mEffects.isEmpty() && (UT.Fluids.gas(mFluid) ? !UT.Entities.isImmuneToBreathingGasses(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
 			for (int[] tEffects : mEffects) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
 		}
 	}
