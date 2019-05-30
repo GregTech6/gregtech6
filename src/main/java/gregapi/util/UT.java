@@ -2146,9 +2146,13 @@ public class UT {
 		}
 		
 		public static Field setField(Object aObject, String aField, Object aValue) {
+			return setField(aObject.getClass(), aObject, aField, aValue);
+		}
+		
+		public static Field setField(Class<?> aClass, Object aObject, String aField, Object aValue) {
 			Field rField = null;
 			try {
-				rField = aObject.getClass().getDeclaredField(aField);
+				rField = aClass.getDeclaredField(aField);
 				rField.setAccessible(T);
 				rField.set(aObject, aValue);
 			} catch (Throwable e) {e.printStackTrace(DEB);}
