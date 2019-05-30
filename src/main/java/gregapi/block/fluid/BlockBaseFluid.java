@@ -272,7 +272,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return mFlammability;}
 	@Override public boolean canCollideCheck(int meta, boolean fullHit) {return fullHit && meta >= 7;}
-	@Override public int getRenderType() {return RendererBlockFluid.INSTANCE.mRenderID;}
+	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	
 	public BlockBaseFluid addEffect(int aEffectID, int aEffectDuration, int aEffectLevel) {
 		mEffects.add(new int[] {aEffectID, aEffectDuration, aEffectLevel});

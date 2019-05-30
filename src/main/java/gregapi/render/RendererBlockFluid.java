@@ -33,12 +33,12 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fluids.IFluidBlock;
 
 public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
-	public final int mRenderID;
+	public static int RENDER_ID = 0;
 	public static RendererBlockFluid INSTANCE;
 	
 	public RendererBlockFluid(int aRenderID) {
 		INSTANCE = this;
-		mRenderID = aRenderID;
+		RENDER_ID = aRenderID;
 	}
 	
 	static final float LIGHT_Y_NEG = 0.5F;
@@ -289,5 +289,5 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 	}
 	
 	@Override public boolean shouldRender3DInInventory(int modelId){ return F; }
-	@Override public int getRenderId() {return mRenderID;}
+	@Override public int getRenderId() {return RENDER_ID;}
 }

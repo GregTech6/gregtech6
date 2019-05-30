@@ -29,8 +29,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.20: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.10.20:
+[FIXED] a Serverside Crash because Mojang accesses Render IDs for Pathfinding on the Server...
 
 
 6.10.19:
