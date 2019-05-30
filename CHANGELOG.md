@@ -40,7 +40,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] GT6 Fluid Springs for Oil and Natural Gas will now place more compressed 2000L Fluids per Block. In case of Oil the Fluid will turn into a short Fountain.
 [CHANGED] Oil and Natural Gas Fluid Blocks are now more flammable, when coming in contact with Lava or Fire Blocks. (but still not explosive in any way, also still wont do this for Torches, that would be too cruel)
 [ADDED] Redstone Conductor Covers, one of them takes Redstone in from the outside, the other emits whatever that Cover receives outwards. This should fix the Issue of not being able to Redstone Control Multiblocks by just adding those Covers to the Multiblock Walls to transmit Redstone through them.
-[ADDED] Hazard Suits that protect you from specific Hazards. The Heat Hazmat doesn't do Lava and Fire yet. The Recipes for the Bumblesuit and the Frost Protection Suit are not finished yet, though the Bumblesuit does have a Rubber Foil based Recipe until I do some woven cloth stuff.
+[ADDED]
+Hazard Suits that protect you from specific Hazards.
+The Heat Hazmat doesn't do Lava and Fire yet.
+The Bumblesuit does protect against Forestry Bees too.
+The Recipes for the Bumblesuit and the Frost Protection Suit are not finished yet, though the Bumblesuit does have a Rubber Foil based Recipe until I do some woven cloth stuff.
 
 
 6.10.18:
