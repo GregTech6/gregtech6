@@ -133,7 +133,7 @@ public class ItemArmorBase extends ItemArmor implements IItemUpdatable, IItemGT,
 	}
 	
 	@Override public String getArmorTexture(ItemStack aStack, Entity aEntity, int aSlot, String aType) {return mArmorTexture;}
-	@Override public ArmorProperties getProperties(EntityLivingBase aPlayer, ItemStack aStack, DamageSource aSource, double aDamage, int aSlot) {return aSource.isUnblockable() ? null : new ArmorProperties(0, damageReduceAmount / 25.0, getMaxDamage() + 1 - aStack.getItemDamage());}
+	@Override public ArmorProperties getProperties(EntityLivingBase aPlayer, ItemStack aStack, DamageSource aSource, double aDamage, int aSlot) {return aSource.isUnblockable() ? new ArmorProperties(0, 0, 0) : new ArmorProperties(0, damageReduceAmount / 25.0, getMaxDamage() + 1 - aStack.getItemDamage());}
 	@Override public int getArmorDisplay(EntityPlayer aPlayer, ItemStack aStack, int aSlot) {return getArmorMaterial().getDamageReductionAmount(aSlot);}
 	@Override public void damageArmor(EntityLivingBase aEntity, ItemStack aStack, DamageSource aSource, int aDamage, int aSlot) {aStack.damageItem(aDamage, aEntity);}
 	@Override public boolean isMetalArmor(ItemStack aStack, EntityPlayer aPlayer) {return mMetalArmor;}
