@@ -57,6 +57,9 @@ public class Compat_Recipes_ImmersiveEngineering extends CompatMods {
 		RM.Compressor.addRecipe1(F, 64, 64, OP.plateGem.mat(MT.CoalCoke, 8), ST.make(MD.IE, "metal", 1, 20));
 		RM.ic2_compressor(OP.plateGem.mat(MT.CoalCoke, 8), ST.make(MD.IE, "metal", 1, 20));
 		
+		RM.Shredder.addRecipe1(F, 16, 64, ST.make(MD.IE, "metal", 1, 20), ST.make(MD.IE, "metal", 1, 19));
+		RM.pulverizing(ST.make(MD.IE, "metal", 1, 20), ST.make(MD.IE, "metal", 1, 19));
+		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener(new OreDictListenerEvent_TwoNames("cropHemp", OP.stick.dat(ANY.Wood)) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
 			RM.Loom.addRecipe2(T, 16, 64, ST.amount(8, aStack1), aStack2, ST.make(MD.IE, "material", 1, 4));
