@@ -41,6 +41,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
@@ -208,6 +209,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
 		if (!mEffects.isEmpty() && (UT.Fluids.gas(mFluid) ? !UT.Entities.isImmuneToBreathingGasses(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
 			for (int[] tEffects : mEffects) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
+			if (getMaterial() != Material.water) aEntity.attackEntityFrom(DamageSource.drown, 2.0F);
 		}
 	}
 }
