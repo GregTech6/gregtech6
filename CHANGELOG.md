@@ -26,6 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.21: (Not released yet)
+[IMPROVED] Ran all PNG Files through a PNG Optimizer to reduce Filesize (optipng).
 [FIXED] Fixed unavailability of HOP Graphite due to Coal Coke Dust not being Unificated.
 
 
