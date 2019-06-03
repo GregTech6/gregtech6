@@ -53,6 +53,7 @@ public class ItemStackContainer {
 	}
 	public ItemStackContainer(ItemStack aStack) {this(ST.item(aStack), ST.size(aStack), ST.meta(aStack));}
 	public ItemStackContainer(ItemStack aStack, long aMetaData) {this(ST.item(aStack), ST.size(aStack), aMetaData);}
+	public ItemStackContainer(ItemStack aStack, long aStackSize, long aMetaData) {this(ST.item(aStack), aStackSize, aMetaData);}
 	public ItemStackContainer(int aHashCode) {this(ST.toItem(aHashCode), 0, ST.toMeta(aHashCode));}
 	
 	public ItemStack toStack() {return mItem == null ? null : ST.make(mItem, 1, mMetaData);}

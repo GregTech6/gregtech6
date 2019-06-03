@@ -70,10 +70,22 @@ public class OreDictItemData {
 		}
 	}
 	
+	public OreDictItemData(OreDictMaterial aMaterial, OreDictPrefix aAmount, OreDictMaterialStack... aByProducts) {
+		this(OM.stack(aMaterial, aAmount), aByProducts);
+	}
 	public OreDictItemData(OreDictMaterial aMaterial, long aAmount, OreDictMaterialStack... aByProducts) {
 		this(OM.stack(aMaterial, aAmount), aByProducts);
 	}
 	
+	public OreDictItemData(OreDictMaterial aMaterial, OreDictPrefix aAmount, OreDictMaterial aByProduct, OreDictPrefix aByProductAmount) {
+		this(OM.stack(aMaterial, aAmount), OM.stack(aByProduct, aByProductAmount));
+	}
+	public OreDictItemData(OreDictMaterial aMaterial, OreDictPrefix aAmount, OreDictMaterial aByProduct, long aByProductAmount) {
+		this(OM.stack(aMaterial, aAmount), OM.stack(aByProduct, aByProductAmount));
+	}
+	public OreDictItemData(OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, OreDictPrefix aByProductAmount) {
+		this(OM.stack(aMaterial, aAmount), OM.stack(aByProduct, aByProductAmount));
+	}
 	public OreDictItemData(OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, long aByProductAmount) {
 		this(OM.stack(aMaterial, aAmount), OM.stack(aByProduct, aByProductAmount));
 	}

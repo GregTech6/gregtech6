@@ -41,11 +41,10 @@ import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
-import gregapi.item.IItemGT;
 import gregapi.item.IPrefixItem;
 import gregapi.oredict.event.IOreDictListenerEvent;
-import gregapi.oredict.event.IOreDictListenerRecyclable;
 import gregapi.oredict.event.IOreDictListenerEvent.OreDictRegistrationContainer;
+import gregapi.oredict.event.IOreDictListenerRecyclable;
 import gregapi.oredict.event.IOreDictListenerRecyclable.OreDictRecyclingContainer;
 import gregapi.recipes.Recipe;
 import gregapi.util.OM;
@@ -329,7 +328,7 @@ public final class OreDictManager {
 		
 		mAllRegisteredOres.add(aEvent.Ore);
 		
-		if (!(aEvent.Ore.getItem() instanceof IItemGT)) triggerVisibility(aEvent.Name);
+		if (!ST.isGT(aEvent.Ore)) triggerVisibility(aEvent.Name);
 		
 		if (!(mIgnoredNames.contains(aEvent.Name) || aEvent.Name.contains(" ") || aEvent.Name.contains("|") || aEvent.Name.contains("*") || aEvent.Name.contains(":") || aEvent.Name.contains(".") || aEvent.Name.contains("$"))) {
 			if (mBufferedRegistrations == null) {

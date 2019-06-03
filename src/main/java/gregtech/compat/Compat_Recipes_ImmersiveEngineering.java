@@ -28,13 +28,13 @@ import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
-import gregapi.oredict.event.OreDictListenerEvent_Names;
-import gregapi.oredict.event.OreDictListenerEvent_TwoNames;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
+import gregapi.oredict.event.OreDictListenerEvent_Names;
+import gregapi.oredict.event.OreDictListenerEvent_TwoNames;
 import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
@@ -53,6 +53,9 @@ public class Compat_Recipes_ImmersiveEngineering extends CompatMods {
 		CR.shapeless(ST.make(BlocksGT.Planks, 1, 10), CR.DEF, new Object[] {ST.make(MD.IE, "treatedWood", 1, 2)});
 		CR.shapeless(ST.make(MD.IE, "treatedWood", 1, 0), CR.DEF, new Object[] {ST.make(BlocksGT.Planks, 1, 10)});
 		CR.shapeless(ST.make(MD.IE, "treatedWood", 1, 0), CR.DEF, new Object[] {ST.make(BlocksGT.PlanksFireProof, 1, 10)});
+		
+		RM.Compressor.addRecipe1(F, 64, 64, OP.plateGem.mat(MT.CoalCoke, 8), ST.make(MD.IE, "metal", 1, 20));
+		RM.ic2_compressor(OP.plateGem.mat(MT.CoalCoke, 8), ST.make(MD.IE, "metal", 1, 20));
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener(new OreDictListenerEvent_TwoNames("cropHemp", OP.stick.dat(ANY.Wood)) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {

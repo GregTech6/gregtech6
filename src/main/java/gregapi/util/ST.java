@@ -37,6 +37,7 @@ import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.TD;
+import gregapi.item.IItemGT;
 import gregapi.item.IItemGTContainerTool;
 import gregapi.item.IItemUpdatable;
 import gregapi.item.multiitem.MultiItemRandom;
@@ -105,6 +106,10 @@ public class ST {
 	
 	public static boolean equalTools (ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return aStack1 != null && aStack2 != null && equalTools_(aStack1, aStack2, aIgnoreNBT);}
 	public static boolean equalTools_(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {return item_(aStack1) == item_(aStack2) && equal(meta_(aStack1), meta_(aStack2)) && (aIgnoreNBT || item_(aStack1) instanceof IItemGTContainerTool || (((nbt_(aStack1) == null) == (nbt_(aStack2) == null)) && (nbt_(aStack1) == null || nbt_(aStack1).equals(nbt_(aStack2)))));}
+	
+	public static boolean isGT (Item aItem) {return aItem instanceof IItemGT;}
+	public static boolean isGT (ItemStack aStack) {return aStack != null && isGT_(aStack);}
+	public static boolean isGT_(ItemStack aStack) {return isGT(aStack.getItem());}
 	
 	public static boolean   valid(ItemStack aStack) {return aStack != null && aStack.stackSize >= 0 && item_(aStack) != null;}
 	public static boolean invalid(ItemStack aStack) {return aStack == null || aStack.stackSize <  0 || item_(aStack) == null;}

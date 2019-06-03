@@ -349,11 +349,11 @@ public class LoaderItemList implements Runnable {
 		IL.RC_Crowbar_Thaumium                  .set(ST.make(MD.RC, "tool.crowbar.magic"                    , 1, 0), new OreDictItemData(MT.Thaumium, U*3));
 		IL.RC_Crowbar_Voidmetal                 .set(ST.make(MD.RC, "tool.crowbar.void"                     , 1, 0), new OreDictItemData(MT.VoidMetal, U*3));
 		
-		IL.Tool_Sword_Steel                     .set(ST.make(MD.RC, "tool.steel.sword"                      , 1, 0));
-		IL.Tool_Pickaxe_Steel                   .set(ST.make(MD.RC, "tool.steel.pickaxe"                    , 1, 0));
-		IL.Tool_Shovel_Steel                    .set(ST.make(MD.RC, "tool.steel.shovel"                     , 1, 0));
-		IL.Tool_Axe_Steel                       .set(ST.make(MD.RC, "tool.steel.axe"                        , 1, 0));
-		IL.Tool_Hoe_Steel                       .set(ST.make(MD.RC, "tool.steel.hoe"                        , 1, 0));
+		IL.Tool_Sword_Steel                     .set(ST.make(MD.RC, "tool.steel.sword"                      , 1, 0), new OreDictItemData(ANY.Steel, OP.toolHeadSword  , ANY.Wood, U2).setUseVanillaDamage());
+		IL.Tool_Pickaxe_Steel                   .set(ST.make(MD.RC, "tool.steel.pickaxe"                    , 1, 0), new OreDictItemData(ANY.Steel, OP.toolHeadPickaxe, ANY.Wood, U ).setUseVanillaDamage());
+		IL.Tool_Shovel_Steel                    .set(ST.make(MD.RC, "tool.steel.shovel"                     , 1, 0), new OreDictItemData(ANY.Steel, OP.toolHeadShovel , ANY.Wood, U ).setUseVanillaDamage());
+		IL.Tool_Axe_Steel                       .set(ST.make(MD.RC, "tool.steel.axe"                        , 1, 0), new OreDictItemData(ANY.Steel, OP.toolHeadAxe    , ANY.Wood, U ).setUseVanillaDamage());
+		IL.Tool_Hoe_Steel                       .set(ST.make(MD.RC, "tool.steel.hoe"                        , 1, 0), new OreDictItemData(ANY.Steel, OP.toolHeadHoe    , ANY.Wood, U ).setUseVanillaDamage());
 		
 		IL.RC_Creosote_Bottle                   .set(ST.make(MD.RC, "fluid.creosote.bottle"                 , 1, 0), null, "bottleCreosote", OD.container1000creosote);
 		IL.RC_Creosote_Bucket                   .set(ST.make(MD.RC, "fluid.creosote.bucket"                 , 1, 0), null, "bucketCreosote");
@@ -1212,11 +1212,11 @@ public class LoaderItemList implements Runnable {
 		IL.IC2_EnergyCrystal                    .set(ST.mkic("energyCrystal"                                , 1   ), new OreDictItemData(MT.EnergiumRed, U*9));
 		IL.IC2_LapotronCrystal                  .set(ST.mkic("lapotronCrystal"                              , 1   ), new OreDictItemData(MT.EnergiumRed, U*9));
 		
-		IL.Tool_Sword_Bronze                    .set(ST.mkic("bronzeSword"                                  , 1   ));
-		IL.Tool_Pickaxe_Bronze                  .set(ST.mkic("bronzePickaxe"                                , 1   ));
-		IL.Tool_Shovel_Bronze                   .set(ST.mkic("bronzeShovel"                                 , 1   ));
-		IL.Tool_Axe_Bronze                      .set(ST.mkic("bronzeAxe"                                    , 1   ));
-		IL.Tool_Hoe_Bronze                      .set(ST.mkic("bronzeHoe"                                    , 1   ));
+		IL.Tool_Sword_Bronze                    .set(ST.mkic("bronzeSword"                                  , 1   ), new OreDictItemData(MT.Bronze, OP.toolHeadSword  , ANY.Wood, U2).setUseVanillaDamage());
+		IL.Tool_Pickaxe_Bronze                  .set(ST.mkic("bronzePickaxe"                                , 1   ), new OreDictItemData(MT.Bronze, OP.toolHeadPickaxe, ANY.Wood, U ).setUseVanillaDamage());
+		IL.Tool_Shovel_Bronze                   .set(ST.mkic("bronzeShovel"                                 , 1   ), new OreDictItemData(MT.Bronze, OP.toolHeadShovel , ANY.Wood, U ).setUseVanillaDamage());
+		IL.Tool_Axe_Bronze                      .set(ST.mkic("bronzeAxe"                                    , 1   ), new OreDictItemData(MT.Bronze, OP.toolHeadAxe    , ANY.Wood, U ).setUseVanillaDamage());
+		IL.Tool_Hoe_Bronze                      .set(ST.mkic("bronzeHoe"                                    , 1   ), new OreDictItemData(MT.Bronze, OP.toolHeadHoe    , ANY.Wood, U ).setUseVanillaDamage());
 		IL.IC2_WireCutter                       .set(ST.mkic("cutter"                                       , 1   ));
 		
 		IL.Credit_Iron                          .set(ST.mkic("coin"                                         , 1   ));

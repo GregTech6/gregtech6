@@ -277,7 +277,7 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 							} else {
 								if (tStack.hasTagCompound()) {
 									tStack.setTagCompound(null);
-								} else if (!tStack.getItem().getHasSubtypes()) {
+								} else if (ST.isGT_(tStack) || !ST.item_(tStack).getHasSubtypes()) {
 									tStack.setItemDamage(W);
 								}
 							}

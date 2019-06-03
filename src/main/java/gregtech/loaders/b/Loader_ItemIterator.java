@@ -30,7 +30,6 @@ import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.item.IItemGT;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
@@ -71,7 +70,7 @@ public class Loader_ItemIterator implements Runnable {
 		Object tObject;
 		String tName;
 		
-		while (tIterator.hasNext()) if ((tObject = tIterator.next()) instanceof Item && !(tObject instanceof IItemGT)) {
+		while (tIterator.hasNext()) if ((tObject = tIterator.next()) instanceof Item && !ST.isGT((Item)tObject)) {
 			Item tItem = (Item)tObject;
 			if ((tName = tItem.getUnlocalizedName()) != null) {
 				if (tCheckCrowbar && tItem instanceof mods.railcraft.api.core.items.IToolCrowbar) {

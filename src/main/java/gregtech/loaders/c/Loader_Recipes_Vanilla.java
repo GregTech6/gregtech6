@@ -257,6 +257,45 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.hopper_minecart , 1, 0), ST.make(Blocks.hopper, 1, 0));
 		RM.boxunbox(ST.make(Items.minecart, 1, 0), ST.make(Items.tnt_minecart    , 1, 0), ST.make(Blocks.tnt, 1, 0));
 		
+		
+		RM.boxunbox(OP.toolHeadSword  .mat(MT.Wood   , 1), OP.stick.mat(MT.Wood, 1), ST.make(Items.wooden_sword     , 1, 0));
+		RM.boxunbox(OP.toolHeadSword  .mat(MT.Stone  , 1), OP.stick.mat(MT.Wood, 1), ST.make(Items.stone_sword      , 1, 0));
+		RM.boxunbox(OP.toolHeadSword  .mat(MT.Fe     , 1), OP.stick.mat(MT.Wood, 1), ST.make(Items.iron_sword       , 1, 0));
+		RM.boxunbox(OP.toolHeadSword  .mat(MT.Au     , 1), OP.stick.mat(MT.Wood, 1), ST.make(Items.golden_sword     , 1, 0));
+		RM.boxunbox(OP.toolHeadSword  .mat(MT.Diamond, 1), OP.stick.mat(MT.Wood, 1), ST.make(Items.diamond_sword    , 1, 0));
+		RM.boxunbox(OP.toolHeadSword  .mat(MT.Bronze , 1), OP.stick.mat(MT.Wood, 1), IL.Tool_Sword_Bronze  .getUndamaged(1));
+		RM.boxunbox(OP.toolHeadSword  .mat(MT.Steel  , 1), OP.stick.mat(MT.Wood, 1), IL.Tool_Sword_Steel   .getUndamaged(1));
+		RM.boxunbox(OP.toolHeadPickaxe.mat(MT.Wood   , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.wooden_pickaxe   , 1, 0));
+		RM.boxunbox(OP.toolHeadPickaxe.mat(MT.Stone  , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.stone_pickaxe    , 1, 0));
+		RM.boxunbox(OP.toolHeadPickaxe.mat(MT.Fe     , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.iron_pickaxe     , 1, 0));
+		RM.boxunbox(OP.toolHeadPickaxe.mat(MT.Au     , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.golden_pickaxe   , 1, 0));
+		RM.boxunbox(OP.toolHeadPickaxe.mat(MT.Diamond, 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.diamond_pickaxe  , 1, 0));
+		RM.boxunbox(OP.toolHeadPickaxe.mat(MT.Bronze , 1), OP.stick.mat(MT.Wood, 2), IL.Tool_Pickaxe_Bronze.getUndamaged(1));
+		RM.boxunbox(OP.toolHeadPickaxe.mat(MT.Steel  , 1), OP.stick.mat(MT.Wood, 2), IL.Tool_Pickaxe_Steel .getUndamaged(1));
+		RM.boxunbox(OP.toolHeadShovel .mat(MT.Wood   , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.wooden_shovel    , 1, 0));
+		RM.boxunbox(OP.toolHeadShovel .mat(MT.Stone  , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.stone_shovel     , 1, 0));
+		RM.boxunbox(OP.toolHeadShovel .mat(MT.Fe     , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.iron_shovel      , 1, 0));
+		RM.boxunbox(OP.toolHeadShovel .mat(MT.Au     , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.golden_shovel    , 1, 0));
+		RM.boxunbox(OP.toolHeadShovel .mat(MT.Diamond, 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.diamond_shovel   , 1, 0));
+		RM.boxunbox(OP.toolHeadShovel .mat(MT.Bronze , 1), OP.stick.mat(MT.Wood, 2), IL.Tool_Shovel_Bronze .getUndamaged(1));
+		RM.boxunbox(OP.toolHeadShovel .mat(MT.Steel  , 1), OP.stick.mat(MT.Wood, 2), IL.Tool_Shovel_Steel  .getUndamaged(1));
+		RM.boxunbox(OP.toolHeadAxe    .mat(MT.Wood   , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.wooden_axe       , 1, 0));
+		RM.boxunbox(OP.toolHeadAxe    .mat(MT.Stone  , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.stone_axe        , 1, 0));
+		RM.boxunbox(OP.toolHeadAxe    .mat(MT.Fe     , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.iron_axe         , 1, 0));
+		RM.boxunbox(OP.toolHeadAxe    .mat(MT.Au     , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.golden_axe       , 1, 0));
+		RM.boxunbox(OP.toolHeadAxe    .mat(MT.Diamond, 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.diamond_axe      , 1, 0));
+		RM.boxunbox(OP.toolHeadAxe    .mat(MT.Bronze , 1), OP.stick.mat(MT.Wood, 2), IL.Tool_Axe_Bronze    .getUndamaged(1));
+		RM.boxunbox(OP.toolHeadAxe    .mat(MT.Steel  , 1), OP.stick.mat(MT.Wood, 2), IL.Tool_Axe_Steel     .getUndamaged(1));
+		RM.boxunbox(OP.toolHeadHoe    .mat(MT.Wood   , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.wooden_hoe       , 1, 0));
+		RM.boxunbox(OP.toolHeadHoe    .mat(MT.Stone  , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.stone_hoe        , 1, 0));
+		RM.boxunbox(OP.toolHeadHoe    .mat(MT.Fe     , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.iron_hoe         , 1, 0));
+		RM.boxunbox(OP.toolHeadHoe    .mat(MT.Au     , 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.golden_hoe       , 1, 0));
+		RM.boxunbox(OP.toolHeadHoe    .mat(MT.Diamond, 1), OP.stick.mat(MT.Wood, 2), ST.make(Items.diamond_hoe      , 1, 0));
+		RM.boxunbox(OP.toolHeadHoe    .mat(MT.Bronze , 1), OP.stick.mat(MT.Wood, 2), IL.Tool_Hoe_Bronze    .getUndamaged(1));
+		RM.boxunbox(OP.toolHeadHoe    .mat(MT.Steel  , 1), OP.stick.mat(MT.Wood, 2), IL.Tool_Hoe_Steel     .getUndamaged(1));
+		
+		
+		
 		CR.shaped(ST.make(Items.chainmail_helmet        , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "RRR", "RhR"       , 'R', OP.ring.dat(ANY.Steel));
 		CR.shaped(ST.make(Items.chainmail_chestplate    , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "RhR", "RRR", "RRR", 'R', OP.ring.dat(ANY.Steel));
 		CR.shaped(ST.make(Items.chainmail_leggings      , 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "RRR", "RhR", "R R", 'R', OP.ring.dat(ANY.Steel));

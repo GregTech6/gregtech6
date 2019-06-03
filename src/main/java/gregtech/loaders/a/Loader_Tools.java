@@ -78,6 +78,7 @@ import net.minecraft.item.ItemStack;
 public class Loader_Tools implements Runnable {
 	@Override
 	public void run() {
+		// TODO Fix Temp Hazmat Recipes!
 		ArmorsGT.HAZMATS_INSECTS    .add(ArmorsGT.HAZMAT_INSECTS    [0] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.insect.head"     , "Bumblehead"                       , "Full Set protects against any Insects"         , "hazard_insects"   , 0, new int[] {1, 1, 1, 1}, 128, 8, 0, F, T, "RRR", "RGR", "q l", 'R', OP.foil.dat(MT.Rubber), 'G', ST.make(Blocks.stained_glass_pane, 1, 15-DYE_INDEX_Black)));
 		ArmorsGT.HAZMATS_INSECTS    .add(ArmorsGT.HAZMAT_INSECTS    [1] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.insect.chest"    , "Bumbleshirt"                      , "Full Set protects against any Insects"         , "hazard_insects"   , 1, new int[] {1, 1, 1, 1}, 128, 8, 0, F, T, "RqR", "RRR", "RRR", 'R', OP.foil.dat(MT.Rubber)));
 		ArmorsGT.HAZMATS_INSECTS    .add(ArmorsGT.HAZMAT_INSECTS    [2] = new ItemArmorBase(MD.GT.mID, "gt.armor.hazmat.insect.legs"     , "Bumblepants"                      , "Full Set protects against any Insects"         , "hazard_insects"   , 2, new int[] {1, 1, 1, 1}, 128, 8, 0, F, T, "RRR", "RqR", "RlR", 'R', OP.foil.dat(MT.Rubber)));

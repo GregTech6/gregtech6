@@ -21,8 +21,14 @@ package gregapi.item;
 
 
 /**
- * @author Gregorius Techneticies
+ * Empty Interface flagging an Item as GregTech controlled Item. This essentially means that the Item is more sane and less crash-y.
+ * 
+ * Setting an Item of this Type to Wildcard Metadata will not cause a Crash.
+ * The Internal Name of the Item wont be displayed in the Tooltip.
+ * It shows the Mod that a Material based GT Item originally came from.
+ * The Item Iteration Loading Step skips over Items with this Interface.
+ * Items with this Interface do not trigger visibility of Materials when registered to the OreDict.
  */
 public interface IItemGT {
-	/** Empty Interface flagging an Item as GregTech controlled Item. */
+	/**/
 }

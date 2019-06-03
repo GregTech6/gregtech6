@@ -26,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.21: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Fixed unavailability of HOP Graphite due to Coal Coke Dust not being Unificated.
 
 
 6.10.20:

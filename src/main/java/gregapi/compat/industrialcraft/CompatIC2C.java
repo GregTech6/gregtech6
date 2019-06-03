@@ -23,7 +23,6 @@ import static gregapi.data.CS.*;
 
 import gregapi.compat.CompatBase;
 import gregapi.data.MD;
-import gregapi.item.IItemGT;
 import gregapi.util.ST;
 import ic2.api.info.IC2Classic;
 import ic2.api.item.IWrenchHandler;
@@ -36,7 +35,7 @@ public class CompatIC2C extends CompatBase implements IWrenchHandler {
 		if (MD.IC2C.mLoaded) IC2Classic.registerWrenchHandler(this);
 	}
 	
-	@Override public boolean supportsItem(ItemStack aWrench) {return ST.valid(aWrench) && aWrench.getItem() instanceof IItemGT;}
+	@Override public boolean supportsItem(ItemStack aWrench) {return ST.valid(aWrench) && ST.isGT_(aWrench);}
 	@Override public boolean canWrench(ItemStack aWrench, int aX, int aY, int aZ, EntityPlayer aPlayer) {return F;}
 	@Override public void useWrench(ItemStack aWrench, int aX, int aY, int aZ, EntityPlayer aPlayer) {/**/}
 }

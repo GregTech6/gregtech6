@@ -50,14 +50,19 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 	public Compat_Recipes_BuildCraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing BC Recipes.");
-		long tBits = DEF_REV | DEL_OTHER_SHAPED_RECIPES | DEL_OTHER_NATIVE_RECIPES | ONLY_IF_HAS_OTHER_RECIPES;
+		long tBits = DEF | DEL_OTHER_SHAPED_RECIPES | DEL_OTHER_NATIVE_RECIPES | ONLY_IF_HAS_OTHER_RECIPES;
 		
-		CR.shaped(ST.make(MD.BC, "woodenGearItem"   , 1, 0), tBits, " X ", "X X", " X ", 'X', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(MD.BC, "stoneGearItem"    , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.stone, 'G', OP.gear.dat(ANY.Wood));
-		CR.shaped(ST.make(MD.BC, "stoneGearItem"    , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.cobblestone, 'G', OP.gear.dat(ANY.Wood));
-		CR.shaped(ST.make(MD.BC, "ironGearItem"     , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(ANY.Fe), 'G', OP.gear.dat(MT.Stone));
-		CR.shaped(ST.make(MD.BC, "goldGearItem"     , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Au), 'G', OP.gear.dat(ANY.Fe));
-		CR.shaped(ST.make(MD.BC, "diamondGearItem"  , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.gem.dat(ANY.Diamond), 'G', OP.gear.dat(MT.Au));
+		CR.shaped(ST.make(MD.BC, "woodenGearItem" , 1, 0), tBits, " X ", "X X", " X ", 'X', OP.stick.dat(ANY.Wood));
+		CR.shaped(ST.make(MD.BC, "stoneGearItem"  , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.stone, 'G', OP.gear.dat(ANY.Wood));
+		CR.shaped(ST.make(MD.BC, "stoneGearItem"  , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.cobblestone, 'G', OP.gear.dat(ANY.Wood));
+		CR.shaped(ST.make(MD.BC, "ironGearItem"   , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(ANY.Fe), 'G', OP.gear.dat(MT.Stone));
+		CR.shaped(ST.make(MD.BC, "goldGearItem"   , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Au), 'G', OP.gear.dat(ANY.Fe));
+		CR.shaped(ST.make(MD.BC, "diamondGearItem", 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.gem.dat(ANY.Diamond), 'G', OP.gear.dat(MT.Au));
+		CR.shapeless(ST.make(MD.BC, "woodenGearItem" , 1, 0), new Object[] {OP.gearGt.dat(ANY.Wood)});
+		CR.shapeless(ST.make(MD.BC, "stoneGearItem"  , 1, 0), new Object[] {OP.gearGt.dat(ANY.Stone)});
+		CR.shapeless(ST.make(MD.BC, "ironGearItem"   , 1, 0), new Object[] {OP.gearGt.dat(ANY.Fe)});
+		CR.shapeless(ST.make(MD.BC, "goldGearItem"   , 1, 0), new Object[] {OP.gearGt.dat(MT.Au)});
+		CR.shapeless(ST.make(MD.BC, "diamondGearItem", 1, 0), new Object[] {OP.gearGt.dat(ANY.Diamond)});
 		
 		if (MD.BC_SILICON.mLoaded) {
 			for (OreDictMaterial tMat : ANY.Iron.mToThis)

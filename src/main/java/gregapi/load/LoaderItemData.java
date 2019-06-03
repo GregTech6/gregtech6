@@ -1067,15 +1067,10 @@ public class LoaderItemData implements Runnable {
 		
 		
 		OM.data(MD.BC, "woodenGearItem"                     , 1,   0, ANY.Wood              ,  U * 2);
-		OM.data(MD.BC, "stoneGearItem"                      , 1,   0, ANY.Wood              ,  U * 2, ANY.Stone             ,  U * 4);
-		if (MD.IE.mLoaded) {
+		OM.data(MD.BC, "stoneGearItem"                      , 1,   0, ANY.Stone             ,  U * 4);
 		OM.data(MD.BC, "ironGearItem"                       , 1,   0, ANY.Fe                ,  U * 4);
 		OM.data(MD.BC, "goldGearItem"                       , 1,   0, MT.Au                 ,  U * 4);
-		} else {
-		OM.data(MD.BC, "ironGearItem"                       , 1,   0, ANY.Stone             ,  U * 4, ANY.Fe                ,  U * 4);
-		OM.data(MD.BC, "goldGearItem"                       , 1,   0, ANY.Fe                ,  U * 4, MT.Au                 ,  U * 4);
-		}
-		OM.data(MD.BC, "diamondGearItem"                    , 1,   0, MT.Au                 ,  U * 4, ANY.Diamond           ,  U * 4);
+		OM.data(MD.BC, "diamondGearItem"                    , 1,   0, ANY.Diamond           ,  U * 4);
 		
 		OM.data(MD.BC_FACTORY, "tankBlock"                  , 1,   W, MT.Glass              ,  U * 8);
 		
@@ -1088,19 +1083,10 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.EIO, "blockDarkIronBars"                 , 1,   W, MT.ObsidianSteel          ,  8* U3);
 		
 		
-		if (MD.IE.mLoaded) {
 		OM.data(MD.FR, "gearTin"                            , 1,   0, MT.Sn                 ,  U * 4);
 		OM.data(MD.FR, "gearCopper"                         , 1,   0, ANY.Cu                ,  U * 4);
 		OM.data(MD.FR, "gearBronze"                         , 1,   0, MT.Bronze             ,  U * 4);
-		} else if (MD.BC.mLoaded) {
-		OM.data(MD.FR, "gearTin"                            , 1,   0, ANY.Stone             ,  U * 4, MT.Sn                 ,  U * 4);
-		OM.data(MD.FR, "gearCopper"                         , 1,   0, ANY.Stone             ,  U * 4, ANY.Cu                ,  U * 4);
-		OM.data(MD.FR, "gearBronze"                         , 1,   0, ANY.Stone             ,  U * 4, MT.Bronze             ,  U * 4);
-		} else {
-		OM.data(MD.FR, "gearTin"                            , 1,   0, ANY.Stone             ,  U * 1, MT.Sn                 ,  U * 4);
-		OM.data(MD.FR, "gearCopper"                         , 1,   0, ANY.Stone             ,  U * 1, ANY.Cu                ,  U * 4);
-		OM.data(MD.FR, "gearBronze"                         , 1,   0, ANY.Stone             ,  U * 1, MT.Bronze             ,  U * 4);
-		}
+		
 		
 		
 		OM.data(MD.FRMB, "miscResources"                    , 1,  18, MT.InfusedAir         ,  U4);
@@ -1616,31 +1602,31 @@ public class LoaderItemData implements Runnable {
 		}
 		
 		
-		OM.dat2(ST.make(Items.wooden_sword, 1, 0)                   , ANY.Wood              ,  U * 2 + U2);
-		OM.dat2(ST.make(Items.wooden_pickaxe, 1, 0)                 , ANY.Wood              ,  U * 3 + U    );
-		OM.dat2(ST.make(Items.wooden_shovel, 1, 0)                  , ANY.Wood              ,  U * 1 + U    );
-		OM.dat2(ST.make(Items.wooden_axe, 1, 0)                     , ANY.Wood              ,  U * 3 + U    );
-		OM.dat2(ST.make(Items.wooden_hoe, 1, 0)                     , ANY.Wood              ,  U * 2 + U    );
-		OM.dat2(ST.make(Items.stone_sword, 1, 0)                    , ANY.Stone             ,  U * 2, ANY.Wood, U2);
-		OM.dat2(ST.make(Items.stone_pickaxe, 1, 0)                  , ANY.Stone             ,  U * 3, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.stone_shovel, 1, 0)                   , ANY.Stone             ,  U * 1, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.stone_axe, 1, 0)                      , ANY.Stone             ,  U * 3, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.stone_hoe, 1, 0)                      , ANY.Stone             ,  U * 2, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.iron_sword, 1, 0)                     , ANY.Fe                ,  U * 2, ANY.Wood, U2);
-		OM.dat2(ST.make(Items.iron_pickaxe, 1, 0)                   , ANY.Fe                ,  U * 3, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.iron_shovel, 1, 0)                    , ANY.Fe                ,  U * 1, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.iron_axe, 1, 0)                       , ANY.Fe                ,  U * 3, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.iron_hoe, 1, 0)                       , ANY.Fe                ,  U * 2, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.golden_sword, 1, 0)                   , MT.Au                 ,  U * 2, ANY.Wood, U2);
-		OM.dat2(ST.make(Items.golden_pickaxe, 1, 0)                 , MT.Au                 ,  U * 3, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.golden_shovel, 1, 0)                  , MT.Au                 ,  U * 1, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.golden_axe, 1, 0)                     , MT.Au                 ,  U * 3, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.golden_hoe, 1, 0)                     , MT.Au                 ,  U * 2, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.diamond_sword, 1, 0)                  , ANY.Diamond           ,  U * 2, ANY.Wood, U2);
-		OM.dat2(ST.make(Items.diamond_pickaxe, 1, 0)                , ANY.Diamond           ,  U * 3, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.diamond_shovel, 1, 0)                 , ANY.Diamond           ,  U * 1, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.diamond_axe, 1, 0)                    , ANY.Diamond           ,  U * 3, ANY.Wood, U   );
-		OM.dat2(ST.make(Items.diamond_hoe, 1, 0)                    , ANY.Diamond           ,  U * 2, ANY.Wood, U   );
+		OM.dat2(ST.make(Items.wooden_sword, 1, 0)                   , ANY.Wood              ,  OP.toolHeadSword  .mAmount + U2);
+		OM.dat2(ST.make(Items.wooden_pickaxe, 1, 0)                 , ANY.Wood              ,  OP.toolHeadPickaxe.mAmount + U );
+		OM.dat2(ST.make(Items.wooden_shovel, 1, 0)                  , ANY.Wood              ,  OP.toolHeadShovel .mAmount + U );
+		OM.dat2(ST.make(Items.wooden_axe, 1, 0)                     , ANY.Wood              ,  OP.toolHeadAxe    .mAmount + U );
+		OM.dat2(ST.make(Items.wooden_hoe, 1, 0)                     , ANY.Wood              ,  OP.toolHeadHoe    .mAmount + U );
+		OM.dat2(ST.make(Items.stone_sword, 1, 0)                    , ANY.Stone             ,  OP.toolHeadSword  .mAmount, ANY.Wood, U2);
+		OM.dat2(ST.make(Items.stone_pickaxe, 1, 0)                  , ANY.Stone             ,  OP.toolHeadPickaxe.mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.stone_shovel, 1, 0)                   , ANY.Stone             ,  OP.toolHeadShovel .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.stone_axe, 1, 0)                      , ANY.Stone             ,  OP.toolHeadAxe    .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.stone_hoe, 1, 0)                      , ANY.Stone             ,  OP.toolHeadHoe    .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.iron_sword, 1, 0)                     , ANY.Fe                ,  OP.toolHeadSword  .mAmount, ANY.Wood, U2);
+		OM.dat2(ST.make(Items.iron_pickaxe, 1, 0)                   , ANY.Fe                ,  OP.toolHeadPickaxe.mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.iron_shovel, 1, 0)                    , ANY.Fe                ,  OP.toolHeadShovel .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.iron_axe, 1, 0)                       , ANY.Fe                ,  OP.toolHeadAxe    .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.iron_hoe, 1, 0)                       , ANY.Fe                ,  OP.toolHeadHoe    .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.golden_sword, 1, 0)                   , MT.Au                 ,  OP.toolHeadSword  .mAmount, ANY.Wood, U2);
+		OM.dat2(ST.make(Items.golden_pickaxe, 1, 0)                 , MT.Au                 ,  OP.toolHeadPickaxe.mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.golden_shovel, 1, 0)                  , MT.Au                 ,  OP.toolHeadShovel .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.golden_axe, 1, 0)                     , MT.Au                 ,  OP.toolHeadAxe    .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.golden_hoe, 1, 0)                     , MT.Au                 ,  OP.toolHeadHoe    .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.diamond_sword, 1, 0)                  , ANY.Diamond           ,  OP.toolHeadSword  .mAmount, ANY.Wood, U2);
+		OM.dat2(ST.make(Items.diamond_pickaxe, 1, 0)                , ANY.Diamond           ,  OP.toolHeadPickaxe.mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.diamond_shovel, 1, 0)                 , ANY.Diamond           ,  OP.toolHeadShovel .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.diamond_axe, 1, 0)                    , ANY.Diamond           ,  OP.toolHeadAxe    .mAmount, ANY.Wood, U );
+		OM.dat2(ST.make(Items.diamond_hoe, 1, 0)                    , ANY.Diamond           ,  OP.toolHeadHoe    .mAmount, ANY.Wood, U );
 		OM.dat2(ST.make(Items.leather_helmet, 1, 0)                 , MT.Leather            ,  U * 5);
 		OM.dat2(ST.make(Items.leather_chestplate, 1, 0)             , MT.Leather            ,  U * 8);
 		OM.dat2(ST.make(Items.leather_leggings, 1, 0)               , MT.Leather            ,  U * 7);

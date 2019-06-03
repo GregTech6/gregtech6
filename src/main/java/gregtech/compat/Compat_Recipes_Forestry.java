@@ -57,10 +57,14 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 		OM.data(CR.get(null, OP.ingot.mat(MT.Sn, 1), null, OP.ingot.mat(MT.Sn, 1), null, OP.ingot.mat(MT.Sn, 1), null, null, null), new OreDictItemData(MT.Sn, U * 3));
 		
-		long tBits = DEF_REV | DEL_OTHER_SHAPED_RECIPES | DEL_OTHER_NATIVE_RECIPES | ONLY_IF_HAS_OTHER_RECIPES;
-		CR.shaped(ST.make(MD.FR, "gearTin"          , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Sn), 'G', OP.gear.dat(MT.Stone));
-		CR.shaped(ST.make(MD.FR, "gearCopper"       , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(ANY.Cu), 'G', OP.gear.dat(MT.Stone));
-		CR.shaped(ST.make(MD.FR, "gearBronze"       , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Bronze), 'G', OP.gear.dat(MT.Stone));
+		long tBits = DEF | DEL_OTHER_SHAPED_RECIPES | DEL_OTHER_NATIVE_RECIPES | ONLY_IF_HAS_OTHER_RECIPES;
+		CR.shaped(ST.make(MD.FR, "gearTin"   , 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Sn), 'G', OP.gear.dat(MT.Stone));
+		CR.shaped(ST.make(MD.FR, "gearCopper", 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(ANY.Cu), 'G', OP.gear.dat(MT.Stone));
+		CR.shaped(ST.make(MD.FR, "gearBronze", 1, 0), tBits, " X ", "XGX", " X ", 'X', OP.ingot.dat(MT.Bronze), 'G', OP.gear.dat(MT.Stone));
+		CR.shapeless(ST.make(MD.FR, "gearTin"   , 1, 0), new Object[] {OP.gearGt.dat(MT.Sn)});
+		CR.shapeless(ST.make(MD.FR, "gearCopper", 1, 0), new Object[] {OP.gearGt.dat(ANY.Cu)});
+		CR.shapeless(ST.make(MD.FR, "gearBronze", 1, 0), new Object[] {OP.gearGt.dat(MT.Bronze)});
+		
 		
 		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains, OD.itemPlantRemains});
 		CR.shapeless(IL.FR_Mulch.get(1), CR.DEF_NAC_NCC, new Object[] {OD.itemGrassMoldy, OD.itemGrassMoldy});

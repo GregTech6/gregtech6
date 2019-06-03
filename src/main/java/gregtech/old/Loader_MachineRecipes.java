@@ -154,12 +154,6 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addAssemblerRecipe(ST.make(Blocks.stone_slab, 3, 7), IL.RC_Rebar.get(1), IL.RC_Tie_Stone.get(1), 128, 8);
 		RA.addAssemblerRecipe(OM.get(OP.wireGt01, MT.Cu, 9), OM.get(OP.plate, MT.Pb, 2), NF, IL.RC_ShuntingWire.get(4), 1600, 4);
 		RA.addAssemblerRecipe(OM.get(OP.wireGt01, MT.AnnealedCopper, 9), OM.get(OP.plate, MT.Pb, 2), NF, IL.RC_ShuntingWire.get(4), 1600, 4);
-//      RA.addAssemblerRecipe(OM.get(OP.ingot, MT.Steel, 3), OM.get(OP.plate, MT.Au, 3), MT.Blaze.getMolten(L * 3), IL.RC_Rail_HS.get(8), 400, 4);
-//      RA.addAssemblerRecipe(IL.RC_Rail_Standard.get(3), OM.get(OP.plate, MT.Au, 3), MT.Redstone.getMolten(L * 3), IL.RC_Rail_Adv.get(8), 400, 4);
-		RA.addAssemblerRecipe(IL.RC_Rail_Standard.get(1), OM.get(OP.wireGt01, MT.Cu, 1), IL.RC_Rail_Electric.get(1), 50, 4);
-		RA.addAssemblerRecipe(IL.RC_Rail_Standard.get(1), OM.get(OP.wireGt01, MT.AnnealedCopper, 1), IL.RC_Rail_Electric.get(1), 50, 4);
-		RA.addAssemblerRecipe(IL.RC_Tie_Wood.get(6), OM.get(OP.plate, MT.Fe, 1), IL.RC_Rail_Wooden.get(6), 400, 4);
-		RA.addAssemblerRecipe(IL.RC_Tie_Wood.get(6), OM.get(OP.plate, MT.WroughtIron, 1), IL.RC_Rail_Wooden.get(6), 400, 4);
 		
 		for (ItemStack tRail : new ItemStack[] {IL.RC_Rail_Standard.get(6), IL.RC_Rail_Adv.get(6), IL.RC_Rail_Reinforced.get(6), IL.RC_Rail_Electric.get(6), IL.RC_Rail_HS.get(6), IL.RC_Rail_Wooden.get(6)}) {
 			for (ItemStack tBed : new ItemStack[] {IL.RC_Bed_Wood.get(1), IL.RC_Bed_Stone.get(1)}) {
@@ -179,45 +173,5 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addAssemblerRecipe(OM.get(OP.dust, MT.Redstone, 1), OM.get(OP.plate, MT.Fe, 4), ST.make(Items.compass, 1, 0), 400, 4);
 		RA.addAssemblerRecipe(OM.get(OP.dust, MT.Redstone, 1), OM.get(OP.plate, MT.WroughtIron, 4), ST.make(Items.compass, 1, 0), 400, 4);
 		RA.addAssemblerRecipe(OM.get(OP.dust, MT.Redstone, 1), OM.get(OP.plate, MT.Au, 4), ST.make(Items.clock, 1, 0), 400, 4);
-		
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadSword   , MT.Wood       , 1), OM.get(OP.stick, MT.Wood, 1), ST.make(Items.wooden_sword, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadSword   , MT.Stone      , 1), OM.get(OP.stick, MT.Wood, 1), ST.make(Items.stone_sword, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadSword   , MT.Fe         , 1), OM.get(OP.stick, MT.Wood, 1), ST.make(Items.iron_sword, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadSword   , MT.Au         , 1), OM.get(OP.stick, MT.Wood, 1), ST.make(Items.golden_sword, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadSword   , MT.Diamond    , 1), OM.get(OP.stick, MT.Wood, 1), ST.make(Items.diamond_sword, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadSword   , MT.Bronze     , 1), OM.get(OP.stick, MT.Wood, 1), IL.Tool_Sword_Bronze.getUndamaged(1), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadSword   , MT.Steel      , 1), OM.get(OP.stick, MT.Wood, 1), IL.Tool_Sword_Steel.getUndamaged(1), 100, 16);
-		
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadPickaxe , MT.Wood       , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.wooden_pickaxe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadPickaxe , MT.Stone      , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.stone_pickaxe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadPickaxe , MT.Fe         , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.iron_pickaxe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadPickaxe , MT.Au         , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.golden_pickaxe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadPickaxe , MT.Diamond    , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.diamond_pickaxe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadPickaxe , MT.Bronze     , 1), OM.get(OP.stick, MT.Wood, 2), IL.Tool_Pickaxe_Bronze.getUndamaged(1), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadPickaxe , MT.Steel      , 1), OM.get(OP.stick, MT.Wood, 2), IL.Tool_Pickaxe_Steel.getUndamaged(1), 100, 16);
-		
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadShovel  , MT.Wood       , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.wooden_shovel, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadShovel  , MT.Stone      , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.stone_shovel, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadShovel  , MT.Fe         , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.iron_shovel, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadShovel  , MT.Au         , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.golden_shovel, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadShovel  , MT.Diamond    , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.diamond_shovel, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadShovel  , MT.Bronze     , 1), OM.get(OP.stick, MT.Wood, 2), IL.Tool_Shovel_Bronze.getUndamaged(1), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadShovel  , MT.Steel      , 1), OM.get(OP.stick, MT.Wood, 2), IL.Tool_Shovel_Steel.getUndamaged(1), 100, 16);
-		
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadAxe     , MT.Wood       , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.wooden_axe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadAxe     , MT.Stone      , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.stone_axe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadAxe     , MT.Fe         , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.iron_axe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadAxe     , MT.Au         , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.golden_axe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadAxe     , MT.Diamond    , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.diamond_axe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadAxe     , MT.Bronze     , 1), OM.get(OP.stick, MT.Wood, 2), IL.Tool_Axe_Bronze.getUndamaged(1), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadAxe     , MT.Steel      , 1), OM.get(OP.stick, MT.Wood, 2), IL.Tool_Axe_Steel.getUndamaged(1), 100, 16);
-		
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadHoe     , MT.Wood       , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.wooden_hoe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadHoe     , MT.Stone      , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.stone_hoe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadHoe     , MT.Fe         , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.iron_hoe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadHoe     , MT.Au         , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.golden_hoe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadHoe     , MT.Diamond    , 1), OM.get(OP.stick, MT.Wood, 2), ST.make(Items.diamond_hoe, 1, 0), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadHoe     , MT.Bronze     , 1), OM.get(OP.stick, MT.Wood, 2), IL.Tool_Hoe_Bronze.getUndamaged(1), 100, 16);
-		RA.addAssemblerRecipe(OM.get(OP.toolHeadHoe     , MT.Steel      , 1), OM.get(OP.stick, MT.Wood, 2), IL.Tool_Hoe_Steel.getUndamaged(1), 100, 16);
 	}
 }

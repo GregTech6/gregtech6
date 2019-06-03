@@ -53,7 +53,6 @@ import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.TD;
-import gregapi.item.IItemGT;
 import gregapi.item.ItemFluidDisplay;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
@@ -275,18 +274,18 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		if (!(aItem instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
 			if (tData != null && tData.hasValidPrefixMaterialData()) {
 				if (tData.mBlackListed) {
-					if (aItem instanceof IItemGT)
+					if (ST.isGT(aItem))
 					aEvent.toolTip.add(LH.Chat.ORANGE + tData.toString());
 					else
 					aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta + LH.Chat.WHITE + " - " + LH.Chat.ORANGE + tData.toString());
 				} else {
-					if (aItem instanceof IItemGT)
+					if (ST.isGT(aItem))
 					aEvent.toolTip.add(LH.Chat.GREEN + tData.toString());
 					else
 					aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta + LH.Chat.WHITE + " - " + LH.Chat.GREEN + tData.toString());
 				}
 			} else {
-				if (!(aItem instanceof IItemGT))
+				if (!ST.isGT(aItem))
 				aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta);
 			}
 		}
@@ -392,7 +391,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			} else {
 				aEvent.toolTip.add(LH.Chat.DGRAY + "Enable F3+H Mode for Info about contained Materials.");
 			}
-			if (aItem instanceof IItemGT && tData.hasValidPrefixMaterialData()) {
+			if (ST.isGT(aItem) && tData.hasValidPrefixMaterialData()) {
 				if (tData.mMaterial.mMaterial.mOriginalMod == null) {
 					aEvent.toolTip.add(LH.Chat.BLUE + "Mod: Unknown (But definitely not GregTech)");
 				} else {
