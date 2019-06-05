@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.code.TagData;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
@@ -129,6 +130,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 						if (tDistilledWater.amount <= 0) break;
 						tDistilledWater.amount -= UT.Fluids.fill(getAdjacentTileEntity(tDir), tDistilledWater.copy(), T);
 					}
+					GarbageGT.trash(tDistilledWater);
 				}
 			}
 			
@@ -233,7 +235,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return aSide == OPPOSITES[mFacing] && FL.Steam.is(aFluidToFill) ? mTank : null;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return !mStopped && aSide == OPPOSITES[mFacing] && FL.Steam.is(aFluidToFill) ? mTank : null;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return null;}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTank.AS_ARRAY;}
 	

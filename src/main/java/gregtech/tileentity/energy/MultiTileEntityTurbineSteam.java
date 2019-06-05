@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -32,7 +33,6 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
-import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.TileEntityBase11Motor;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -79,16 +79,16 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 		} else if (mTank.amount() >= getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY) * 2) {
 			long tSteam = mTank.amount();
 			mSteamCounter += tSteam;
-			mStorage.mEnergy += tSteam / 2;
-			mEnergyProducedNextTick += tSteam / 2;
+			mStorage.mEnergy += tSteam / STEAM_PER_EU;
+			mEnergyProducedNextTick += tSteam / STEAM_PER_EU;
 			mTank.setEmpty();
 			if (mSteamCounter >= STEAM_PER_WATER) {
-				FluidStack tDrainableSteam = FL.DistW.make(mSteamCounter / STEAM_PER_WATER);
+				FluidStack tDistilledWater = FL.DistW.make(mSteamCounter / STEAM_PER_WATER);
 				for (byte tDir : FACING_SIDES[mFacing]) {
-					DelegatorTileEntity<IFluidHandler> tTank = getAdjacentTank(tDir);
-					if (tTank.mTileEntity != null) tDrainableSteam.amount -= UT.Fluids.fill_(tTank, tDrainableSteam.copy(), T);
-					if (tDrainableSteam.amount <= 0) break;
+					tDistilledWater.amount -= UT.Fluids.fill(getAdjacentTank(tDir), tDistilledWater.copy(), T);
+					if (tDistilledWater.amount <= 0) break;
 				}
+				GarbageGT.trash(tDistilledWater);
 				mSteamCounter %= STEAM_PER_WATER;
 			}
 		}
