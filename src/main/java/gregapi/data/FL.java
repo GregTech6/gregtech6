@@ -344,7 +344,7 @@ public enum FL {
 	, Oil_Heavy2                ("heavyoil"                                                 , SIMPLE, LIQUID)
 	, Oil_HotCrude              ("hotcrude"                                                 , SIMPLE, LIQUID)
 	
-	, Gas_Natural               ("gas_natural_gas"          , "naturalgas"                  , SIMPLE, GAS)
+	, Gas_Natural               ("gas_natural_gas"          , "naturalgas", "gas.natural"   , SIMPLE, GAS)
 	, Methane                   ("methane"                                                  , SIMPLE, GAS)
 	, Propane                   ("propane"                                                  , SIMPLE, GAS)
 	, Butane                    ("butane"                                                   , SIMPLE, GAS)

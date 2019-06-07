@@ -385,6 +385,28 @@ public class UT {
 		public static final Map<ItemStackContainer, FluidContainerData> sFilled2Data = new ItemStackMap<>();
 		public static final Map<ItemStackContainer, Map<String, FluidContainerData>> sEmpty2Fluid2Data = new ItemStackMap<>();
 		
+		public static void registerFluidContainer(FluidStack aFluid, ItemStack aFull, ItemStack aEmpty) {
+			registerFluidContainer(aFluid, aFull, aEmpty, F);
+		}
+		public static void registerFluidContainer(FluidStack aFluid, ItemStack aFull, ItemStack aEmpty, boolean aOverrideItem, boolean aOverrideFluid) {
+			registerFluidContainer(aFluid, aFull, aEmpty, F, aOverrideItem, aOverrideFluid);
+		}
+		public static void registerFluidContainer(FluidStack aFluid, ItemStack aFull, ItemStack aEmpty, boolean aNullEmpty) {
+			registerFluidContainer(aFluid, aFull, aEmpty, aNullEmpty, F, F);
+		}
+		public static void registerFluidContainer(FluidStack aFluid, ItemStack aFull, ItemStack aEmpty, boolean aNullEmpty, boolean aOverrideItem, boolean aOverrideFluid) {
+			if (aFluid == null || ST.invalid(aFull)) return;
+			registerFluidContainer(new FluidContainerData(aFluid, aFull, aEmpty, aNullEmpty), aOverrideItem, aOverrideFluid);
+		}
+		public static void registerFluidContainer(FluidContainerData aData) {
+			setFluidContainerData(aData);
+			FluidContainerRegistry.registerFluidContainer(aData);
+		}
+		public static void registerFluidContainer(FluidContainerData aData, boolean aOverrideItem, boolean aOverrideFluid) {
+			setFluidContainerData(aData, aOverrideItem, aOverrideFluid);
+			FluidContainerRegistry.registerFluidContainer(aData);
+		}
+		
 		public static void setFluidContainerData(FluidContainerData aData) {
 			setFluidContainerData(aData, F, F);
 		}

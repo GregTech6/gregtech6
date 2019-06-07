@@ -67,7 +67,6 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -208,19 +207,17 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 				}
 				if (tRandomData instanceof FluidStack) {
 					tRandomData = new FluidContainerData((FluidStack)tRandomData, ST.copy_(rStack), getContainerItem(rStack), T);
-					if (((FluidContainerData)tRandomData).emptyContainer != null)
+				//  if (((FluidContainerData)tRandomData).emptyContainer != null)
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
-					UT.Fluids.setFluidContainerData((FluidContainerData)tRandomData, T, F);
-					FluidContainerRegistry.registerFluidContainer((FluidContainerData)tRandomData);
+					UT.Fluids.registerFluidContainer((FluidContainerData)tRandomData, T, F);
 					continue;
 				}
 				if (tRandomData instanceof FluidContainerData) {
-					if (((FluidContainerData)tRandomData).emptyContainer != null)
+				//  if (((FluidContainerData)tRandomData).emptyContainer != null)
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
-					UT.Fluids.setFluidContainerData((FluidContainerData)tRandomData, T, F);
-					FluidContainerRegistry.registerFluidContainer((FluidContainerData)tRandomData);
+					UT.Fluids.registerFluidContainer((FluidContainerData)tRandomData, T, F);
 					continue;
 				}
 				if (tRandomData instanceof Runnable) {

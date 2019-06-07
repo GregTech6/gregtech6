@@ -40,8 +40,6 @@ import gregapi.util.UT;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.potion.Potion;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Fluids implements Runnable {
@@ -246,12 +244,12 @@ public class Loader_Fluids implements Runnable {
 		new FoodStatDrink(UT.Fluids.create("potion.invisibility.long.splash"            , "Stretched Splash Invisible Brew"         , null, 1, 1000, 300, ST.make(Items.potionitem, 1, 16462), IL.Bottle_Empty.get(1), 250).setLuminosity( 5)   , LH.Chat.CYAN  + "Invisibility (6:00)"     ,  0, 0.0F  ,   0, C+37,  0.00F, EnumAction.drink, T, F, F, Potion.invisibility     .id,7200, 0, 100);
 		
 		// Those Potions are broken duplicates, which cannot be improved with Redstone or Glowstone anymore, so I need to at least add them for emptying the Bottles.
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(UT.Fluids.make("potion.weakness"           , 250), ST.make(Items.potionitem, 1,  8232), NI, T));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(UT.Fluids.make("potion.slowness"           , 250), ST.make(Items.potionitem, 1,  8234), NI, T));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(UT.Fluids.make("potion.damage"             , 250), ST.make(Items.potionitem, 1,  8268), NI, T));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(UT.Fluids.make("potion.weakness.splash"    , 250), ST.make(Items.potionitem, 1, 16424), NI, T));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(UT.Fluids.make("potion.slowness.splash"    , 250), ST.make(Items.potionitem, 1, 16426), NI, T));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(UT.Fluids.make("potion.damage.splash"      , 250), ST.make(Items.potionitem, 1, 16460), NI, T));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.weakness"           , 250), ST.make(Items.potionitem, 1,  8232), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.slowness"           , 250), ST.make(Items.potionitem, 1,  8234), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.damage"             , 250), ST.make(Items.potionitem, 1,  8268), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.weakness.splash"    , 250), ST.make(Items.potionitem, 1, 16424), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.slowness.splash"    , 250), ST.make(Items.potionitem, 1, 16426), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.damage.splash"      , 250), ST.make(Items.potionitem, 1, 16460), IL.Bottle_Empty.get(1));
 		
 		// Et Futurum Lingering Potions
 		new FoodStatDrink(UT.Fluids.create("potion.damage.lingering"                    , "Lingering Harming Brew"                  , null, 1, 1000, 300, ST.make(MD.EtFu, "lingering_potion", 1,  8268), IL.Bottle_Empty.get(1), 250)                  , LH.Chat.RED   + "Instant Damage I"        ,  0, 0.0F  ,   0, C+37,  0.00F, EnumAction.drink, T, F, F, Potion.harm             .id,   0, 0, 100);
@@ -592,48 +590,46 @@ public class Loader_Fluids implements Runnable {
 		FL.Air_Nether.fluid().setDensity(0);
 		FL.Air_End   .fluid().setDensity(0);
 		
-		if (IL.Cell_Air.exists()) {
-			FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Air.make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), T));
-			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air       .make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
-			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air_Nether.make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
-			UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Air_End   .make(1000), IL.Cell_Air.get(1), IL.Cell_Empty.get(1), F), F, F);
-		}
+		UT.Fluids.registerFluidContainer(FL.Air            .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
+		UT.Fluids.registerFluidContainer(FL.Air_Nether     .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
+		UT.Fluids.registerFluidContainer(FL.Air_End        .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
+		UT.Fluids.registerFluidContainer(FL.Air_End        .make(1000), IL.BOTA_Ender_Air_Bottle .get(1), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(FL.FieryTears     .make(   L), IL.TF_Vial_FieryTears    .get(1), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(FL.FieryBlood     .make(   L), IL.TF_Vial_FieryBlood    .get(1), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(FL.Gas_Natural    .make(1000), ST.make(MD.MaCu, "fluids", 1,27), IL.Bottle_Empty.get(1));
+		UT.Fluids.registerFluidContainer(FL.Gas_Natural    .make(2000), ST.make(MD.MaCu, "fluids", 1, 2), ST.make(MD.MaCu, "fluids", 1, 20));
+		UT.Fluids.registerFluidContainer(FL.Ambrosia       .make(1000), IL.FR_Ambrosia           .get(1), IL.FR_WaxCapsule.get(1), T);
+		UT.Fluids.registerFluidContainer(FL.Honey          .make(1000), IL.GrC_Honey_Jar         .get(1), ST.make(Items.flower_pot, 1, 0));
+		UT.Fluids.registerFluidContainer(FL.Honey          .make( 500), IL.BoP_Jar_Honey         .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
+		UT.Fluids.registerFluidContainer(FL.Potion_Poison_2.make( 500), IL.BoP_Jar_Poison        .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
 		
-		if (IL.FR_Ambrosia          .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Ambrosia       .make(1000), IL.FR_Ambrosia          .get(1), IL.FR_WaxCapsule.get(1), T));
-		if (IL.GrC_Honey_Jar        .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Honey          .make(1000), IL.GrC_Honey_Jar        .get(1), ST.make(Items.flower_pot, 1, 0)));
-		if (IL.BoP_Jar_Honey        .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Honey          .make( 500), IL.BoP_Jar_Honey        .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1))));
-		if (IL.BoP_Jar_Poison       .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Potion_Poison_2.make( 500), IL.BoP_Jar_Poison       .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1))));
-		if (IL.TF_Vial_FieryTears   .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.FieryTears     .make(   L), IL.TF_Vial_FieryTears   .get(1), IL.Bottle_Empty.get(1)));
-		if (IL.TF_Vial_FieryBlood   .exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.FieryBlood     .make(   L), IL.TF_Vial_FieryBlood   .get(1), IL.Bottle_Empty.get(1)));
-		if (IL.BOTA_Ender_Air_Bottle.exists()) FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FL.Air_End        .make(1000), IL.BOTA_Ender_Air_Bottle.get(1), IL.Bottle_Empty.get(1)));
+		/* TODO
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison          .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison.long"   , 125), IL.Arrow_Head_Glass_Poison_Long     .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison.strong" , 125), IL.Arrow_Head_Glass_Poison_Strong   .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.slowness"      , 125), IL.Arrow_Head_Glass_Slowness        .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.slowness.long" , 125), IL.Arrow_Head_Glass_Slowness_Long   .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.weakness"      , 125), IL.Arrow_Head_Glass_Weakness        .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.weakness.long" , 125), IL.Arrow_Head_Glass_Weakness_Long   .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("holywater"            , 125), IL.Arrow_Head_Glass_Holy_Water      .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
 		
-		/*
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison              .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison.long"   , 125), IL.Arrow_Head_Glass_Poison_Long         .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison.strong" , 125), IL.Arrow_Head_Glass_Poison_Strong       .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.slowness"      , 125), IL.Arrow_Head_Glass_Slowness            .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.slowness.long" , 125), IL.Arrow_Head_Glass_Slowness_Long       .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.weakness"      , 125), IL.Arrow_Head_Glass_Weakness            .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.weakness.long" , 125), IL.Arrow_Head_Glass_Weakness_Long       .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("holywater"            , 125), IL.Arrow_Head_Glass_Holy_Water          .get(1), IL.Arrow_Head_Glass_Emtpy.get(1)));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison"        , 125), IL.Arrow_Wooden_Glass_Poison        .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison.long"   , 125), IL.Arrow_Wooden_Glass_Poison_Long   .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison.strong" , 125), IL.Arrow_Wooden_Glass_Poison_Strong .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.slowness"      , 125), IL.Arrow_Wooden_Glass_Slowness      .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.slowness.long" , 125), IL.Arrow_Wooden_Glass_Slowness_Long .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.weakness"      , 125), IL.Arrow_Wooden_Glass_Weakness      .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.weakness.long" , 125), IL.Arrow_Wooden_Glass_Weakness_Long .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("holywater"            , 125), IL.Arrow_Wooden_Glass_Holy_Water    .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1));
 		
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison"        , 125), IL.Arrow_Wooden_Glass_Poison            .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison.long"   , 125), IL.Arrow_Wooden_Glass_Poison_Long       .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison.strong" , 125), IL.Arrow_Wooden_Glass_Poison_Strong     .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.slowness"      , 125), IL.Arrow_Wooden_Glass_Slowness          .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.slowness.long" , 125), IL.Arrow_Wooden_Glass_Slowness_Long     .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.weakness"      , 125), IL.Arrow_Wooden_Glass_Weakness          .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.weakness.long" , 125), IL.Arrow_Wooden_Glass_Weakness_Long     .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("holywater"            , 125), IL.Arrow_Wooden_Glass_Holy_Water        .get(1), IL.Arrow_Wooden_Glass_Emtpy.get(1)));
-		
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison"        , 125), IL.Arrow_Plastic_Glass_Poison           .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison.long"   , 125), IL.Arrow_Plastic_Glass_Poison_Long      .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.poison.strong" , 125), IL.Arrow_Plastic_Glass_Poison_Strong    .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.slowness"      , 125), IL.Arrow_Plastic_Glass_Slowness         .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.slowness.long" , 125), IL.Arrow_Plastic_Glass_Slowness_Long    .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.weakness"      , 125), IL.Arrow_Plastic_Glass_Weakness         .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("potion.weakness.long" , 125), IL.Arrow_Plastic_Glass_Weakness_Long    .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1)));
-		FluidContainerRegistry.registerFluidContainer(new FluidContainerData(FluidRegistry.getFluidStack("holywater"            , 125), IL.Arrow_Plastic_Glass_Holy_Water       .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1)));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison"        , 125), IL.Arrow_Plastic_Glass_Poison       .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison.long"   , 125), IL.Arrow_Plastic_Glass_Poison_Long  .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.poison.strong" , 125), IL.Arrow_Plastic_Glass_Poison_Strong.get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.slowness"      , 125), IL.Arrow_Plastic_Glass_Slowness     .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.slowness.long" , 125), IL.Arrow_Plastic_Glass_Slowness_Long.get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.weakness"      , 125), IL.Arrow_Plastic_Glass_Weakness     .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("potion.weakness.long" , 125), IL.Arrow_Plastic_Glass_Weakness_Long.get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1));
+		UT.Fluids.registerFluidContainer(UT.Fluids.make("holywater"            , 125), IL.Arrow_Plastic_Glass_Holy_Water   .get(1), IL.Arrow_Plastic_Glass_Emtpy.get(1));
 		*/
 	}
 }
