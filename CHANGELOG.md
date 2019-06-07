@@ -25,10 +25,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.21: (Not released yet, Gonna be one day later because I am busy on Thursday)
+6.10.21: (Not released yet, Gonna be one day later because I was busy on Thursday)
 [IMPROVED] Ran all PNG Files through a PNG Optimizer to reduce Filesize (optipng). This reduced the total size of the GT6 Jar from 17.8 MiB to 15.7 MiB.
 [FIXED] Fixed unavailability of HOP Graphite due to Coal Coke Dust not being Unificated.
 [ADDED] Config for adding a minimum distance to 0,0 for the old type Worldgen Large Ores.
+[ADDED] Universal Plant Pot. Basically a way to place any Type of Crop ontop of a single decorative yet slightly difficult to craft Block.
 
 
 6.10.20:
