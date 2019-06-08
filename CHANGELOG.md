@@ -34,7 +34,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.21:
-[IMPROVED] Ran all PNG Files through a PNG Optimizer to reduce Filesize (optipng). This reduced the total size of the GT6 Jar from 17.8 MiB to 15.7 MiB. There might be some broken Textures where Minecraft somehow does not recognize Transparency. Please report any findings of this sort.
+[IMPROVED]
+Ran all PNG Files through a PNG Optimizer to reduce Filesize (optipng).
+This reduced the total size of the GT6 Jar from 17.8 MiB to 15.7 MiB.
+There might be some broken Textures where Minecraft somehow does not recognize Transparency.
+Please report any findings of this sort.
+Found so far: The Number "1" on Sensors and Mass Storages, Berry Bushes and Rainbow Tree Leaves.
 [FIXED] Fixed unavailability of HOP Graphite due to Coal Coke Dust not being Unificated.
 [FIXED] Maricultures Natural Gas Bottles were not obtainable through GT6 Natural Gas.
 [ADDED] Config for adding a minimum distance to 0,0 for the old type Worldgen Large Ores.
