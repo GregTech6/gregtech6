@@ -31,6 +31,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.22: (Not released yet, Friday because the Test Bear gets new Internet on Thursday)
 [FIXED] Very few PNG Files were somehow "grayscale" instead of "grayscale+alpha" resulting in java somehow messing up Transparency, even though all Image Editors could still see the transparency.
+[FIXED] Very few PNG Files were somehow much brighter than they were supposed to be, such as Gray colored Black Sand.
 
 
 6.10.21:
