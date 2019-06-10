@@ -30,14 +30,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.22: (Not released yet, Friday because the Test Bear gets new Internet on Thursday)
+[FIXED] Bushes were not working in Plant Pots.
 [FIXED] Very few PNG Files were somehow "grayscale" instead of "grayscale+alpha" resulting in java somehow messing up Transparency, even though all Image Editors could still see the transparency.
-[FIXED] Very few PNG Files were somehow much brighter than they were supposed to be, such as Gray colored Black Sand.
+[FIXED] Even fewer PNG Files were somehow much brighter than they were supposed to be, such as Gray colored Black Sand.
 
 
 6.10.21:
 [IMPROVED]
 Ran all PNG Files through a PNG Optimizer to reduce Filesize (optipng).
-This reduced the total size of the GT6 Jar from 17.8 MiB to 15.7 MiB.
+This reduced the total size of the GT6 Jar from 17.8 MiB to 15.7 MiB. (16.4 MiB after fixing the Issues next Version...)
 There might be some broken Textures where Minecraft somehow does not recognize Transparency.
 Please report any findings of this sort.
 Found so far: The Number "1" on Sensors and Mass Storages, all crushed Ores, Berry Bushes and Rainbow Tree Leaves.

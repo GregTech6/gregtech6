@@ -124,7 +124,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 						}
 					} else {
 						Block tBlock = getBlockAtSide(SIDE_BOTTOM);
-						mSpeed = (byte)(IL.AETHER_Grass_Enchanted.equal(tBlock) || IL.AETHER_Grass_Enchanted_Vanilla.equal(tBlock) ? 2 : BlocksGT.plantableGreens.contains(tBlock) ? 1 : 0);
+						mSpeed = (byte)(IL.AETHER_Grass_Enchanted.equal(tBlock) || IL.AETHER_Grass_Enchanted_Vanilla.equal(tBlock) ? 2 : BlocksGT.plantableGreens.contains(tBlock) || tBlock.canSustainPlant(worldObj, xCoord, yCoord-1, zCoord, FORGE_DIR[SIDE_UP], Blocks.yellow_flower) ? 1 : 0);
 					}
 					if (mSpeed > 0 && mStage < 3 && ST.valid(mBerry)) {
 						// Yes I know I should have chosen a better type of Timer than a byte overflow Timer.
@@ -190,7 +190,8 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 			updateClientData();
 			return T;
 		}
-		if (BlocksGT.plantableGreens.contains(aWorld.getBlock(aX, aY-1, aZ))) {
+		Block tBlock = aWorld.getBlock(aX, aY-1, aZ);
+		if (BlocksGT.plantableGreens.contains(tBlock) || tBlock.canSustainPlant(aWorld, aX, aY-1, aZ, FORGE_DIR[SIDE_UP], Blocks.yellow_flower)) {
 			mFacing = SIDE_UNDEFINED;
 			mSpeed = 1;
 			return T;
