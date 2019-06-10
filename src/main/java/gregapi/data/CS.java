@@ -1172,19 +1172,20 @@ public class CS {
 	
 	
 	public static class GarbageGT {
+		/** The List of Hazmat Armors */
+		public static ItemStackSet<ItemStackContainer> BLACKLIST = new ItemStackSet<>();
 		public static ItemStackMap<ItemStackContainer, ItemStack> GARBAGE_MAP_ITEMS = new ItemStackMap<>();
 		public static ArrayListNoNulls<ItemStack> GARBAGE_ITEMS = new ArrayListNoNulls<>();
 		public static ArrayListNoNulls<FluidTankGT> GARBAGE_FLUIDS = new ArrayListNoNulls<>();
 		
 		public static int trash(ItemStack aStack) {
-			if (ST.invalid(aStack) || aStack.stackSize <= 0 || ST.debug(aStack)) return 0;
+			if (ST.invalid(aStack) || aStack.stackSize <= 0 || BLACKLIST.contains(aStack, T)) return 0;
 			if (aStack.hasTagCompound()) {
 				for (ItemStack tGarbage : GARBAGE_ITEMS) if (ST.equal(aStack, tGarbage)) {
 					tGarbage.stackSize = UT.Code.bindInt((long)tGarbage.stackSize + (long)aStack.stackSize);
 					return aStack.stackSize;
 				}
-				aStack = aStack.copy();
-				GARBAGE_ITEMS.add(aStack);
+				GARBAGE_ITEMS.add(aStack.copy());
 				return aStack.stackSize;
 			}
 			ItemStack tGarbage = GARBAGE_MAP_ITEMS.get(ST.item_(aStack), ST.meta_(aStack));
@@ -1272,7 +1273,7 @@ public class CS {
 				for (int i = 0; i < Integer.MAX_VALUE; i++) {
 					if (!aNBT.hasKey(""+i)) break;
 					ItemStack aStack = ST.load(aNBT, ""+i);
-					if (aStack == null || aStack.stackSize <= 0) continue;
+					if (aStack == null || aStack.stackSize <= 0 || BLACKLIST.contains(aStack, T)) continue;
 					GARBAGE_ITEMS.add(aStack);
 				}
 			}

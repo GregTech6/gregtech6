@@ -29,6 +29,8 @@ import gregapi.block.prefixblock.PrefixBlock_;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ModData;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.GarbageGT;
+import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -48,6 +50,15 @@ public class Loader_Ores implements Runnable {
 	public void run() {
 		BlocksGT.oreBedrock                 = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.bedrock"          , OP.oreBedrock             , null, null, new Drops_None()          , BlockTextureCopied.get(Blocks.bedrock         , 0), Material.rock, Block.soundTypePiston  , TOOL_pickaxe,-1,3600000F,9999,9999,9999,0,0,0,1,1,1,F,F,T,T,T,T,F,F,F,F,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.oreSmallBedrock            = new PrefixBlock_(MD.GT, "gt.meta.ore.small.bedrock"           , OP.oreSmall               , null, null, new Drops_None()          , BlockTextureCopied.get(Blocks.bedrock         , 0), Material.rock, Block.soundTypePiston  , TOOL_pickaxe,-1,3600000F,9999,9999,9999,0,0,0,1,1,1,F,F,T,T,T,T,F,F,F,F,T,T,T,T, OreDictMaterial.MATERIAL_ARRAY);
+		
+		ItemsGT.DEBUG_ITEMS.add((Block)BlocksGT.oreBedrock);
+		ItemsGT.DEBUG_ITEMS.add((Block)BlocksGT.oreSmallBedrock);
+		
+		ItemsGT.ILLEGAL_DROPS.add((Block)BlocksGT.oreBedrock);
+		ItemsGT.ILLEGAL_DROPS.add((Block)BlocksGT.oreSmallBedrock);
+		
+		GarbageGT.BLACKLIST.add((Block)BlocksGT.oreBedrock);
+		GarbageGT.BLACKLIST.add((Block)BlocksGT.oreSmallBedrock);
 		
 		BlocksGT.oreBroken                  = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.default"          , OP.oreVanillastone        , null                                  , BlockTextureCopied.get(Blocks.cobblestone     , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.50F, 0.50F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.oreBrokenSandstone         = new PrefixBlock_(MD.GT, "gt.meta.ore.broken.sandstone"        , OP.oreSandstone           , null                                  , BlockTextureCopied.get(Blocks.sandstone       , 0), Material.rock, Block.soundTypeStone   , TOOL_pickaxe  , 0.30F, 0.40F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
@@ -70,44 +81,44 @@ public class Loader_Ores implements Runnable {
 		BlocksGT.oreSmallSand               = new PrefixBlock_(MD.GT, "gt.meta.ore.small.sand"              , OP.oreSmall               , new Drops_SmallOre(MT.Sand)           , BlockTextureCopied.get(Blocks.sand            , 0), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.oreSmallRedSand            = new PrefixBlock_(MD.GT, "gt.meta.ore.small.redsand"           , OP.oreSmall               , new Drops_SmallOre(MT.Sand)           , BlockTextureCopied.get(Blocks.sand            , 1), Material.sand, Block.soundTypeSand    , TOOL_shovel   , 0.40F, 0.60F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		
-		((PrefixBlock)BlocksGT.ore              ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBroken                , (PrefixBlock)BlocksGT.ore             );
-		((PrefixBlock)BlocksGT.oreSandstone     ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenSandstone       , (PrefixBlock)BlocksGT.oreSandstone    );
-		((PrefixBlock)BlocksGT.oreNetherrack    ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenNetherrack      , (PrefixBlock)BlocksGT.oreNetherrack   );
-		((PrefixBlock)BlocksGT.oreEndstone      ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenEndstone        , (PrefixBlock)BlocksGT.oreEndstone     );
+		((PrefixBlock)BlocksGT.ore          ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBroken          , (PrefixBlock)BlocksGT.ore          );
+		((PrefixBlock)BlocksGT.oreSandstone ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenSandstone , (PrefixBlock)BlocksGT.oreSandstone );
+		((PrefixBlock)BlocksGT.oreNetherrack).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenNetherrack, (PrefixBlock)BlocksGT.oreNetherrack);
+		((PrefixBlock)BlocksGT.oreEndstone  ).mDrops = new Drops((PrefixBlock)BlocksGT.oreBrokenEndstone  , (PrefixBlock)BlocksGT.oreEndstone  );
 		
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.stone          , 1, 0), BlocksGT.ore                   );
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.netherrack     , 1, 0), BlocksGT.oreNetherrack         );
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.end_stone      , 1, 0), BlocksGT.oreEndstone           );
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.gravel         , 1, 0), BlocksGT.oreGravel             );
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sandstone      , 1, 0), BlocksGT.oreSandstone          );
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sand           , 1, 0), BlocksGT.oreSand               );
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sand           , 1, 1), BlocksGT.oreRedSand            );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.stone     , 1, 0), BlocksGT.ore                );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.netherrack, 1, 0), BlocksGT.oreNetherrack      );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.end_stone , 1, 0), BlocksGT.oreEndstone        );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.gravel    , 1, 0), BlocksGT.oreGravel          );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sandstone , 1, 0), BlocksGT.oreSandstone       );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sand      , 1, 0), BlocksGT.oreSand            );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(Blocks.sand      , 1, 1), BlocksGT.oreRedSand         );
 		
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.stone          , 1, 0), BlocksGT.oreBroken             );
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.netherrack     , 1, 0), BlocksGT.oreBrokenNetherrack   );
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.end_stone      , 1, 0), BlocksGT.oreBrokenEndstone     );
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.gravel         , 1, 0), BlocksGT.oreGravel             );
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sandstone      , 1, 0), BlocksGT.oreBrokenSandstone    );
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sand           , 1, 0), BlocksGT.oreSand               );
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sand           , 1, 1), BlocksGT.oreRedSand            );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.stone     , 1, 0), BlocksGT.oreBroken          );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.netherrack, 1, 0), BlocksGT.oreBrokenNetherrack);
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.end_stone , 1, 0), BlocksGT.oreBrokenEndstone  );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.gravel    , 1, 0), BlocksGT.oreGravel          );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sandstone , 1, 0), BlocksGT.oreBrokenSandstone );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sand      , 1, 0), BlocksGT.oreSand            );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(Blocks.sand      , 1, 1), BlocksGT.oreRedSand         );
 		
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.stone           , 1, 0), BlocksGT.oreSmall              );
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.gravel          , 1, 0), BlocksGT.oreSmallGravel        );
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.netherrack      , 1, 0), BlocksGT.oreSmallNetherrack    );
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.end_stone       , 1, 0), BlocksGT.oreSmallEndstone      );
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sandstone       , 1, 0), BlocksGT.oreSmallSandstone     );
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand            , 1, 0), BlocksGT.oreSmallSand          );
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand            , 1, 1), BlocksGT.oreSmallRedSand       );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.stone      , 1, 0), BlocksGT.oreSmall           );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.gravel     , 1, 0), BlocksGT.oreSmallGravel     );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.netherrack , 1, 0), BlocksGT.oreSmallNetherrack );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.end_stone  , 1, 0), BlocksGT.oreSmallEndstone   );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sandstone  , 1, 0), BlocksGT.oreSmallSandstone  );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand       , 1, 0), BlocksGT.oreSmallSand       );
+		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(Blocks.sand       , 1, 1), BlocksGT.oreSmallRedSand    );
 		
-		BlocksGT.stoneOverridable.add(BlocksGT.ore                  );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreNetherrack        );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreEndstone          );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBroken            );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenNetherrack  );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenEndstone    );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmall             );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallGravel       );
-		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallNetherrack   );
+		BlocksGT.stoneOverridable.add(BlocksGT.ore                );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreNetherrack      );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreEndstone        );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBroken          );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenNetherrack);
+		BlocksGT.stoneOverridable.add(BlocksGT.oreBrokenEndstone  );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmall           );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallGravel     );
+		BlocksGT.stoneOverridable.add(BlocksGT.oreSmallNetherrack );
 		
 		//====================================================================================================//
 		
@@ -117,6 +128,15 @@ public class Loader_Ores implements Runnable {
 		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.Diggables    , 1, 0), BlocksGT.oreMud                );
 		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.Diggables    , 1, 0), BlocksGT.oreMud                );
 		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(BlocksGT.Diggables     , 1, 0), BlocksGT.oreSmallMud           );
+		
+		//====================================================================================================//
+		
+		for (Object tBlock : new Object[] {BlocksGT.ore, BlocksGT.oreSandstone, BlocksGT.oreNetherrack, BlocksGT.oreEndstone, BlocksGT.oreGravel, BlocksGT.oreMud, BlocksGT.oreSand, BlocksGT.oreRedSand, BlocksGT.oreBroken, BlocksGT.oreBrokenSandstone, BlocksGT.oreBrokenNetherrack, BlocksGT.oreBrokenEndstone, BlocksGT.oreSmall, BlocksGT.oreSmallSandstone, BlocksGT.oreSmallNetherrack, BlocksGT.oreSmallEndstone, BlocksGT.oreSmallGravel, BlocksGT.oreSmallMud, BlocksGT.oreSmallSand, BlocksGT.oreSmallRedSand}) {
+			for (int i = 0; i < 10; i++) {
+				GarbageGT.BLACKLIST.add((Block)tBlock, i);
+				ItemsGT.ILLEGAL_DROPS.add((Block)tBlock, i);
+			}
+		}
 		
 		//====================================================================================================//
 		
@@ -361,6 +381,14 @@ public class Loader_Ores implements Runnable {
 			tOre1.mRegisterToOreDict = tOre2.mRegisterToOreDict = tOre3.mRegisterToOreDict = F;
 		}
 		
+		for (int i = 0; i < 10; i++) {
+			GarbageGT.BLACKLIST.add(tOre1, i);
+			GarbageGT.BLACKLIST.add(tOre2, i);
+			GarbageGT.BLACKLIST.add(tOre3, i);
+			ItemsGT.ILLEGAL_DROPS.add(tOre1, i);
+			ItemsGT.ILLEGAL_DROPS.add(tOre2, i);
+			ItemsGT.ILLEGAL_DROPS.add(tOre3, i);
+		}
 		return T;
 	}
 	

@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import gregapi.data.ANY;
 import gregapi.data.CS.ArmorsGT;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -51,6 +52,9 @@ public class LoaderItemList implements Runnable {
 	
 	@Override
 	public void run() {
+		GarbageGT.BLACKLIST.add(ST.make(MD.TC, "ItemThaumonomicon"              , 1,42));
+		GarbageGT.BLACKLIST.add(ST.make(MD.RT, "opSpectreKey"                   , 1, W));
+		
 		ItemsGT.DEBUG_ITEMS.add(ST.make(MD.TC, "ItemThaumonomicon"              , 1,42));
 		ItemsGT.DEBUG_ITEMS.add(ST.make(MD.RT, "opSpectreKey"                   , 1, W));
 		

@@ -28,6 +28,7 @@ import gregapi.cover.covers.CoverTextureCanvas;
 import gregapi.data.*;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.BooksGT;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.OreDictToolNames;
 import gregapi.item.CreativeTab;
@@ -312,11 +313,11 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shaped(IL.Robot_Tip_File         .get(1), CR.DEF_REV, "wPh", "CMC", " X ", 'P', OP.plateCurved.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[3], 'M', IL.CONVEYERS   [3], 'X', OP.dust.dat(ANY.Diamond));
 		
 		IL.Tool_Remote_Activator.set(           addItem(tLastID =  9000, "Remote Activator"         , "", Behavior_Remote.INSTANCE, TC.stack(TC.MOTUS, 1), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Tool_Cheat.set(                      addItem(tLastID =  9001, "Debug Scanner"            , "", Behavior_Cropnalyzer.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, new Behavior_Scanner(Integer.MAX_VALUE), EnergyStatDebug.INSTANCE, TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
+		IL.Tool_Cheat.set(                      addItem(tLastID =  9001, "Debug Scanner"            , "", Behavior_Cropnalyzer.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, new Behavior_Scanner(Integer.MAX_VALUE), EnergyStatDebug.INSTANCE, TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
 		IL.Tool_Scanner.set(                    addItem(tLastID =  9002, "Portable Scanner"         , "", Behavior_Cropnalyzer.INSTANCE, new Behavior_Scanner(2), EnergyStat.makeTool(TD.Energy.EU, V[3]*8000, V[3], 2, ST.make(this, 1, tLastID)), TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
 		IL.Tool_Cropnalyzer.set(                addItem(tLastID =  9003, "Portable Cropnalyzer"     , "", Behavior_Cropnalyzer.INSTANCE, EnergyStat.makeTool(TD.Energy.EU, V[2]*8000, V[2], 2, ST.make(this, 1, tLastID)), TC.stack(TC.SENSUS, 5), TC.stack(TC.INSTRUMENTUM, 5), TC.stack(TC.HERBA, 5)));
 		
-		IL.Tool_Worldgen_Debugger.set(          addItem(tLastID =  9999, "Worldgen Debug Wand"      , "", Behavior_Worldgen_Debugger.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, TC.stack(TC.TERRA,10), TC.stack(TC.PRAECANTIO,10), TC.stack(TC.INSTRUMENTUM,10)));
+		IL.Tool_Worldgen_Debugger.set(          addItem(tLastID =  9999, "Worldgen Debug Wand"      , "", Behavior_Worldgen_Debugger.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, TC.stack(TC.TERRA,10), TC.stack(TC.PRAECANTIO,10), TC.stack(TC.INSTRUMENTUM,10)));
 		
 		CR.shaped(IL.Tool_Remote_Activator      .get(1), CR.DEF_REV, "TPE", "BCd", "xPT", 'P', OP.plate.dat(MT.Cr), 'T', OP.screw.dat(MT.Cr), 'C', OD_CIRCUITS[4], 'E', IL.EMITTERS[4], 'B', ST.make(Blocks.stone_button, 1, W));
 //      Moved to the Battery Section ofthe MTE Loader.

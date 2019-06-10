@@ -27,6 +27,8 @@ import gregapi.block.prefixblock.PrefixBlock;
 import gregapi.block.prefixblock.PrefixBlock_;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.GarbageGT;
+import gregapi.data.CS.ItemsGT;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -53,6 +55,14 @@ public class Loader_Late_Items_And_Blocks implements Runnable {
 					BlocksGT.stoneToNormalOres.put(new ItemStackContainer(tAtumStone, 1, i), BlocksGT.oreAtumLimestone);
 					BlocksGT.stoneToSmallOres .put(new ItemStackContainer(tAtumStone, 1, i), BlocksGT.oreSmallAtumLimestone);
 				}
+				for (int i = 0; i < 10; i++) {
+					ItemsGT.ILLEGAL_DROPS.add((Block)BlocksGT.oreBrokenAtumLimestone, i);
+					ItemsGT.ILLEGAL_DROPS.add((Block)BlocksGT.oreAtumLimestone, i);
+					ItemsGT.ILLEGAL_DROPS.add((Block)BlocksGT.oreSmallAtumLimestone, i);
+					GarbageGT.BLACKLIST.add((Block)BlocksGT.oreBrokenAtumLimestone, i);
+					GarbageGT.BLACKLIST.add((Block)BlocksGT.oreAtumLimestone, i);
+					GarbageGT.BLACKLIST.add((Block)BlocksGT.oreSmallAtumLimestone, i);
+				}
 			}
 			if (tAtumSand != NB) {
 				BlocksGT.oreAtumSand            = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.sand.atum"    , OP.oreStrangesand , null, null, null                              , BlockTextureCopied.get(tAtumSand  , 6, 0) , tAtumSand.getMaterial()   , tAtumSand.stepSound   , TOOL_shovel   , 2.0F, 2.0F,   0,   0, 999, 0, 0, 0, 1, 1, 1, F,F,F,F,T,T,F,F,T,T,T,T,T,F, OreDictMaterial.MATERIAL_ARRAY);
@@ -61,6 +71,12 @@ public class Loader_Late_Items_And_Blocks implements Runnable {
 					BlocksGT.stoneToNormalOres.put(new ItemStackContainer(tAtumSand, 1, i), BlocksGT.oreAtumSand);
 					BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(tAtumSand, 1, i), BlocksGT.oreAtumSand);
 					BlocksGT.stoneToSmallOres .put(new ItemStackContainer(tAtumSand, 1, i), BlocksGT.oreSmallAtumSand);
+				}
+				for (int i = 0; i < 10; i++) {
+					ItemsGT.ILLEGAL_DROPS.add((Block)BlocksGT.oreAtumSand, i);
+					ItemsGT.ILLEGAL_DROPS.add((Block)BlocksGT.oreSmallAtumSand, i);
+					GarbageGT.BLACKLIST.add((Block)BlocksGT.oreAtumSand, i);
+					GarbageGT.BLACKLIST.add((Block)BlocksGT.oreSmallAtumSand, i);
 				}
 			}
 		}

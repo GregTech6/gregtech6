@@ -31,6 +31,7 @@ import gregapi.cover.covers.CoverAsphalt;
 import gregapi.cover.covers.CoverTextureSimple;
 import gregapi.data.*;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PlankData;
 import gregapi.data.CS.SFX;
@@ -1812,6 +1813,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		ItemsGT.DEBUG_ITEMS.add(aRegistry.getItem(32710));
 		ItemsGT.ILLEGAL_DROPS.add(aRegistry.getItem(32710));
+		GarbageGT.BLACKLIST.add(aRegistry.getItem(32710));
 		
 		IL.Rope.set(aRegistry.getItem(32011));
 		IL.Rope_Silk.set(aRegistry.getItem(32012));

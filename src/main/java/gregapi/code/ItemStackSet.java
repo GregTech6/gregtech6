@@ -96,8 +96,14 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 	public boolean add(ItemStack aStack) {
 		return ST.valid(aStack) && map.put(new ItemStackContainer(aStack), OBJECT) == null;
 	}
+	public boolean add(Block aBlock, long aMeta) {
+		return aBlock != null && map.put(new ItemStackContainer(aBlock, 1, aMeta), OBJECT) == null;
+	}
 	public boolean add(Block aBlock) {
 		return aBlock != null && map.put(new ItemStackContainer(aBlock, 1, W), OBJECT) == null;
+	}
+	public boolean add(Item aItem, long aMeta) {
+		return aItem != null && map.put(new ItemStackContainer(aItem, 1, aMeta), OBJECT) == null;
 	}
 	public boolean add(Item aItem) {
 		return aItem != null && map.put(new ItemStackContainer(aItem, 1, W), OBJECT) == null;

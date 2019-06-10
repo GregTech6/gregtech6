@@ -30,6 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.GT_API;
 import gregapi.api.Abstract_Mod;
 import gregapi.data.CS.FluidsGT;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
@@ -69,6 +70,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 		if (!D1) ST.hide(this);
 		ItemsGT.DEBUG_ITEMS.add(this);
 		ItemsGT.ILLEGAL_DROPS.add(this);
+		GarbageGT.BLACKLIST.add(this);
 	}
 	
 	@Override

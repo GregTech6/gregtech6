@@ -29,6 +29,7 @@ import gregapi.compat.CompatMods;
 import gregapi.config.ConfigCategories;
 import gregapi.data.ANY;
 import gregapi.data.CS.ConfigsGT;
+import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -127,6 +128,7 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		} else {
 			ItemsGT.DEBUG_ITEMS.add(ST.make(MD.RC, "machine.alpha", 1, 4));
 			ItemsGT.ILLEGAL_DROPS.add(ST.make(MD.RC, "machine.alpha", 1, 4));
+			GarbageGT.BLACKLIST.add(ST.make(MD.RC, "machine.alpha", 1, 4));
 		}
 		
 		RM.pulverizing(ST.make(MD.RC, "cube.crushed.obsidian", 1), OP.dust.mat(MT.Obsidian, 7), OP.dust.mat(MT.Obsidian, 1), 25, T);
