@@ -51,6 +51,17 @@ public class MultiItemTechnological extends MultiItemRandom {
 	public void addItems() {
 		int tLastID = 0;
 		
+		for (int i = 0; i < 10; i++) {
+		IL.MOTORS[i].set(                       addItem(12000+i, "Compact Electric Motor ("+VN[i]+")"       , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
+		IL.PUMPS[i].set(                        addItem(12020+i, "Compact Electric Pump ("+VN[i]+")"        , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), TC.stack(TC.AQUA, 1+i), new CoverPump(250<<(2*i))));
+		IL.CONVEYERS[i].set(                    addItem(12040+i, "Compact Electric Conveyor ("+VN[i]+")"    , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), new CoverConveyor(512>>i)));
+		IL.PISTONS[i].set(                      addItem(12060+i, "Compact Electric Piston ("+VN[i]+")"      , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
+		IL.ROBOT_ARMS[i].set(                   addItem(12080+i, "Compact Robot Arm ("+VN[i]+")"            , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.HUMANUS, 1+i), new CoverRobotArm(512>>i)));
+		IL.FIELD_GENERATORS[i].set(             addItem(12100+i, "Compact Force Field Emitter ("+VN[i]+")"  , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.TUTAMEN, 1+i)));
+		IL.EMITTERS[i].set(                     addItem(12120+i, "Compact Signal Emitter ("+VN[i]+")"       , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.LUX, 1+i)));
+		IL.SENSORS[i].set(                      addItem(12140+i, "Compact Sensor ("+VN[i]+")"               , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.SENSUS, 1+i)));
+		}
+		
 		IL.Cover_Blank.set(                     addItem(tLastID =  1000, "Blank Cover"                      , "*BLANK*"                                         , new CoverTextureMulti(T, "machines/covers/blank/", 6)      , TC.stack(TC.MACHINA, 2)));
 		IL.Cover_Crafting.set(                  addItem(tLastID =  1001, "Crafting Table Cover"             , "A regular old Workbench as a Cover"              , new CoverCrafting("machines/covers/crafting/", 6)          , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 3)));
 		IL.Cover_Machine_Display.set(           addItem(tLastID =  1002, "Machine Status Display Cover"     , "Shows Machine Status and has ON/OFF Switch"      , new CoverControllerDisplay()                               , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 3)));
@@ -425,17 +436,6 @@ public class MultiItemTechnological extends MultiItemRandom {
 		RM.Canner.addRecipe1(T, 16, 128, IL.Comp_Laser_Gas_Empty.get(1), MT.HeNe    .gas(U, T), NF, IL.Comp_Laser_Gas_HeNe.get(1));
 		RM.Canner.addRecipe1(T, 16, 128, IL.Comp_Laser_Gas_Empty.get(1), MT.CO      .gas(U, T), NF, IL.Comp_Laser_Gas_CO.get(1));
 		RM.Canner.addRecipe1(T, 16, 128, IL.Comp_Laser_Gas_Empty.get(1), MT.CO2     .gas(U, T), NF, IL.Comp_Laser_Gas_CO2.get(1));
-		
-		for (int i = 0; i < 10; i++) {
-		IL.MOTORS[i].set(                       addItem(12000+i, "Compact Electric Motor ("+VN[i]+")"       , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
-		IL.PUMPS[i].set(                        addItem(12020+i, "Compact Electric Pump ("+VN[i]+")"        , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), TC.stack(TC.AQUA, 1+i), new CoverPump(250<<(2*i))));
-		IL.CONVEYERS[i].set(                    addItem(12040+i, "Compact Electric Conveyor ("+VN[i]+")"    , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), new CoverConveyor(512>>i)));
-		IL.PISTONS[i].set(                      addItem(12060+i, "Compact Electric Piston ("+VN[i]+")"      , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
-		IL.ROBOT_ARMS[i].set(                   addItem(12080+i, "Compact Robot Arm ("+VN[i]+")"            , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.HUMANUS, 1+i), new CoverRobotArm(512>>i)));
-		IL.FIELD_GENERATORS[i].set(             addItem(12100+i, "Compact Force Field Emitter ("+VN[i]+")"  , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.TUTAMEN, 1+i)));
-		IL.EMITTERS[i].set(                     addItem(12120+i, "Compact Signal Emitter ("+VN[i]+")"       , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.LUX, 1+i)));
-		IL.SENSORS[i].set(                      addItem(12140+i, "Compact Sensor ("+VN[i]+")"               , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.SENSUS, 1+i)));
-		}
 		
 		CR.shaped(IL.MOTORS[0].get(1), CR.DEF_REV   , "CWR", "WIW", "PWC", 'I', OP.bolt     .dat(MT.IronMagnetic)       , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'R', OP.stick.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[0]);
 		CR.shaped(IL.MOTORS[0].get(1), CR.DEF       , "CWR", "WIW", "PWC", 'I', OP.bolt     .dat(MT.SteelMagnetic)      , 'P', OP.plateCurved.dat(MT.DATA.Electric_T[0]), 'R', OP.stick.dat(MT.DATA.Electric_T[0]), 'W', OP.wireFine.dat(ANY.Cu), 'C', MT.DATA.CABLES_01[0]);
