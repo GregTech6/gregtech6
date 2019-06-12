@@ -54,6 +54,7 @@ public class MultiTileEntityLuminometer extends MultiTileEntitySensorTE {
 	@Override public IIconContainer getOverlayFront() {return sOverlayFront;}
 	@Override public IIconContainer getOverlayBack () {return sOverlayBack;}
 	@Override public IIconContainer getOverlaySide () {return sOverlaySide;}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	
 	public static IIconContainer
 	sTextureFront   = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/luminometer/colored/front"),
