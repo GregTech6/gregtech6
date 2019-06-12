@@ -232,6 +232,23 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedAetherGrass"      , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedGrass"            , null));
 		
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "glass_pane"                  , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_brown"    , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_red"      , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_purple"   , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_magenta"  , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_yellow"   , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_white"    , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_pink"     , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_lightgray", null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_brown"         , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_white"         , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_lightgray"     , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_yellow"        , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "glass"                       , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "glass2"                      , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_forestry"      , null));
+		
 		
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.UB, "igneousStone"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.UB, "metamorphicStone"                 , null));

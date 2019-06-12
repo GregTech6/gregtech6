@@ -30,6 +30,7 @@ import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.ANY;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.old.Textures;
@@ -50,6 +51,7 @@ public class BlockGlassGlow extends BlockColored {
 		super(ItemBlockMetaType.class, Material.glass, soundTypeGlass, aUnlocalised, "Glow Glass", null, 0.5F, 0.5F, 0, Textures.BlockIcons.GLASSES_CLEAR);
 		for (int i = 0; i < 16; i++) OM.data(ST.make(this, 1, i), new OreDictItemData(MT.Glass, U, ANY.Glowstone, U));
 		setLightLevel(1.0F);
+		BlocksGT.breakableGlass.add(this);
 	}
 	
 	@Override
@@ -61,6 +63,7 @@ public class BlockGlassGlow extends BlockColored {
 		super(aItemClass, aVanillaMaterial, aVanillaSoundType, aName, aDefaultLocalised, aMaterial, aResistanceMultiplier, aHardnessMultiplier, aHarvestLevel, aCount, aIcons, aSlabType, aBlock);
 		for (int i = 0; i < 16; i++) OM.data(ST.make(this, 1, i), new OreDictItemData(MT.Glass, U2, ANY.Glowstone, U2));
 		setLightLevel(1.0F);
+		BlocksGT.breakableGlass.add(this);
 	}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}

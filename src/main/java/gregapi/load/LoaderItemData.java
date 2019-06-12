@@ -1514,6 +1514,22 @@ public class LoaderItemData implements Runnable {
 		
 		
 		OM.data(MD.CHSL, "tallow"                           , 1,   W, MT.Tallow             ,  U * 9);
+		OM.data(MD.CHSL, "glass_pane"                       , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_pane_brown"         , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_pane_red"           , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_pane_purple"        , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_pane_magenta"       , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_pane_yellow"        , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_pane_white"         , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_pane_pink"          , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_pane_lightgray"     , 1,   W, MT.Glass              ,  3* U8);
+		OM.data(MD.CHSL, "stained_glass_brown"              , 1,   W, MT.Glass              ,  U * 1);
+		OM.data(MD.CHSL, "stained_glass_white"              , 1,   W, MT.Glass              ,  U * 1);
+		OM.data(MD.CHSL, "stained_glass_lightgray"          , 1,   W, MT.Glass              ,  U * 1);
+		OM.data(MD.CHSL, "stained_glass_yellow"             , 1,   W, MT.Glass              ,  U * 1);
+		OM.data(MD.CHSL, "glass"                            , 1,   W, MT.Glass              ,  U * 1);
+		OM.data(MD.CHSL, "glass2"                           , 1,   W, MT.Glass              ,  U * 1);
+		OM.data(MD.CHSL, "stained_glass_forestry"           , 1,   W, MT.Glass              ,  U * 1);
 		
 		
 		OM.data(MD.FM, "MeteorChips"                        , 1,   W, MT.Meteorite          ,  U * 1);
