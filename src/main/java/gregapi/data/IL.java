@@ -374,6 +374,7 @@ public enum IL implements IItemContainer {
 	Cover_Controller,
 	Cover_ActivityDetector, Cover_FluidDetector, Cover_ItemDetector, Cover_EnergyDetector,
 	Cover_Drain, Cover_Vent, Cover_Shutter, Cover_Filter_Item, Cover_Filter_Fluid,
+	Cover_Retriever_Item,
 	Cover_SolarPanel, Cover_SolarPanel_8V, Cover_SolarPanel_LV, Cover_SolarPanel_MV, Cover_SolarPanel_HV, Cover_SolarPanel_EV, Cover_SolarPanel_IV, Cover_SolarPanel_LuV, Cover_SolarPanel_ZPM, Cover_SolarPanel_UV,
 	Ingot_IridiumAlloy,
 	Dye_SquidInk, Dye_Bonemeal, Dye_Cactus, Dye_Cocoa,

@@ -33,6 +33,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Bushes were not working in Plant Pots.
 [FIXED] Very few PNG Files were somehow "grayscale" instead of "grayscale+alpha" resulting in java somehow messing up Transparency, even though all Image Editors could still see the transparency.
 [FIXED] Even fewer PNG Files were somehow much brighter than they were supposed to be, such as Gray colored Black Sand.
+[CHANGED] Circuits now have Roman Numerals on the top left of their Texture making Tiers easier to see at a quick glance.
+[ADDED]
+Item Retriever Cover.
+Similar to the Item Filter Cover it can only Filter for 1 Item (or Filter for all but 1 Item).
+Though you can just not Filter at all and make it take all Items stack by stack.
+It can only be placed on Item Pipes, and will pull Items from Inventories connected to the Pipe Network.
 
 
 6.10.21:
