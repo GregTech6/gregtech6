@@ -75,6 +75,9 @@ public class Loader_Blocks implements Runnable {
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Diggables                           = new BlockDiggable             ("gt.block.diggable"));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Diggables, 1, W), F, TC.stack(TC.TERRA, 2));
 		
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Grass                               = new BlockGrass                ("gt.block.grass"));
+		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Grass, 1, W), F, TC.stack(TC.TERRA, 2), TC.stack(TC.HERBA, 2));
+		
 		BlocksGT.Paths                                                          = new BlockPath                 ("gt.block.paths");
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Paths, 1, W), F, TC.stack(TC.TERRA, 2));
 		

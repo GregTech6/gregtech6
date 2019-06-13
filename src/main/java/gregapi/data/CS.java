@@ -347,42 +347,44 @@ public class CS {
 	;
 	
 	public static final short[]
-	DYE_None            = {255, 255, 255, 255},
-	DYE_Black           = { 32,  32,  32, 255},
-	DYE_Red             = {255,   0,   0, 255},
-	DYE_Green           = {  0, 255,   0, 255},
-	DYE_Brown           = { 96,  64,   0, 255},
-	DYE_Blue            = {  0,   0, 255, 255},
-	DYE_Purple          = {128,   0, 128, 255},
-	DYE_Cyan            = {  0, 255, 255, 255},
-	DYE_LightGray       = {192, 192, 192, 255},
-	DYE_Gray            = {128, 128, 128, 255},
-	DYE_Pink            = {255, 192, 192, 255},
-	DYE_Lime            = {128, 255, 128, 255},
-	DYE_Yellow          = {255, 255,   0, 255},
-	DYE_LightBlue       = {128, 128, 255, 255},
-	DYE_Magenta         = {255,   0, 255, 255},
-	DYE_Orange          = {255, 128,   0, 255},
-	DYE_White           = {255, 255, 255, 255};
+	  DYE_None              = {255, 255, 255, 255}
+	, DYE_Black             = { 32,  32,  32, 255}
+	, DYE_Red               = {255,   0,   0, 255}
+	, DYE_Green             = {  0, 255,   0, 255}
+	, DYE_Brown             = { 96,  64,   0, 255}
+	, DYE_Blue              = {  0,   0, 255, 255}
+	, DYE_Purple            = {128,   0, 128, 255}
+	, DYE_Cyan              = {  0, 255, 255, 255}
+	, DYE_LightGray         = {192, 192, 192, 255}
+	, DYE_Gray              = {128, 128, 128, 255}
+	, DYE_Pink              = {255, 192, 192, 255}
+	, DYE_Lime              = {128, 255, 128, 255}
+	, DYE_Yellow            = {255, 255,   0, 255}
+	, DYE_LightBlue         = {128, 128, 255, 255}
+	, DYE_Magenta           = {255,   0, 255, 255}
+	, DYE_Orange            = {255, 128,   0, 255}
+	, DYE_White             = {255, 255, 255, 255}
+	;
 	
 	public static final int
-	DYE_INT_None            = UT.Code.getRGBInt(DYE_None),
-	DYE_INT_Black           = UT.Code.getRGBInt(DYE_Black),
-	DYE_INT_Red             = UT.Code.getRGBInt(DYE_Red),
-	DYE_INT_Green           = UT.Code.getRGBInt(DYE_Green),
-	DYE_INT_Brown           = UT.Code.getRGBInt(DYE_Brown),
-	DYE_INT_Blue            = UT.Code.getRGBInt(DYE_Blue),
-	DYE_INT_Purple          = UT.Code.getRGBInt(DYE_Purple),
-	DYE_INT_Cyan            = UT.Code.getRGBInt(DYE_Cyan),
-	DYE_INT_LightGray       = UT.Code.getRGBInt(DYE_LightGray),
-	DYE_INT_Gray            = UT.Code.getRGBInt(DYE_Gray),
-	DYE_INT_Pink            = UT.Code.getRGBInt(DYE_Pink),
-	DYE_INT_Lime            = UT.Code.getRGBInt(DYE_Lime),
-	DYE_INT_Yellow          = UT.Code.getRGBInt(DYE_Yellow),
-	DYE_INT_LightBlue       = UT.Code.getRGBInt(DYE_LightBlue),
-	DYE_INT_Magenta         = UT.Code.getRGBInt(DYE_Magenta),
-	DYE_INT_Orange          = UT.Code.getRGBInt(DYE_Orange),
-	DYE_INT_White           = UT.Code.getRGBInt(DYE_White);
+	  DYE_INT_None            = UT.Code.getRGBInt(DYE_None)
+	, DYE_INT_Black           = UT.Code.getRGBInt(DYE_Black)
+	, DYE_INT_Red             = UT.Code.getRGBInt(DYE_Red)
+	, DYE_INT_Green           = UT.Code.getRGBInt(DYE_Green)
+	, DYE_INT_Brown           = UT.Code.getRGBInt(DYE_Brown)
+	, DYE_INT_Blue            = UT.Code.getRGBInt(DYE_Blue)
+	, DYE_INT_Purple          = UT.Code.getRGBInt(DYE_Purple)
+	, DYE_INT_Cyan            = UT.Code.getRGBInt(DYE_Cyan)
+	, DYE_INT_LightGray       = UT.Code.getRGBInt(DYE_LightGray)
+	, DYE_INT_Gray            = UT.Code.getRGBInt(DYE_Gray)
+	, DYE_INT_Pink            = UT.Code.getRGBInt(DYE_Pink)
+	, DYE_INT_Lime            = UT.Code.getRGBInt(DYE_Lime)
+	, DYE_INT_Yellow          = UT.Code.getRGBInt(DYE_Yellow)
+	, DYE_INT_LightBlue       = UT.Code.getRGBInt(DYE_LightBlue)
+	, DYE_INT_Magenta         = UT.Code.getRGBInt(DYE_Magenta)
+	, DYE_INT_Orange          = UT.Code.getRGBInt(DYE_Orange)
+	, DYE_INT_White           = UT.Code.getRGBInt(DYE_White)
+	;
 	
 	public static final byte
 	DYE_INDEX_Black         =  0,
@@ -1408,7 +1410,7 @@ public class CS {
 		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy, GasNatural;
 		public static BlockFluidClassic Ocean, Swamp, River;
 		
-		public static BlockBase Diggables, Sands, Paths, RockOres;
+		public static BlockBase Sands, Diggables, Grass, Paths, RockOres;
 		
 		public static IBlockBase FlowersA, FlowersB;
 		public static BlockBase Glowtus, Sapling, Leaves, BalesGrass, BalesCrop;
@@ -1438,10 +1440,10 @@ public class CS {
 		;
 		
 		public static final Set<Object> stoneOverridable = new HashSetNoNulls<>(F);
+		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
 		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow);
 		public static final Set<Object> plantableGreens  = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.farmland);
 		public static final Set<Object> plantableGrass   = new HashSetNoNulls<Object>(F, Blocks.grass);
-		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
 		
 		/** Blocks to not generate Ores in. */
 		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = new ItemStackSet<>();

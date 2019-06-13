@@ -50,7 +50,7 @@ public class Behavior_Place_Path extends AbstractBehaviorDefault {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		Block aBlock = WD.block(aWorld, aX, aY, aZ);
 		
-		if (aBlock == Blocks.grass || IL.BoP_Grass_Long.equal(aBlock) || IL.BoP_Grass_Origin.equal(aBlock) || IL.AETHER_Grass_Enchanted_Vanilla.equal(aBlock)) {
+		if (aBlock == Blocks.grass || aBlock == BlocksGT.Grass || IL.BoP_Grass_Long.equal(aBlock) || IL.BoP_Grass_Origin.equal(aBlock) || IL.AETHER_Grass_Enchanted_Vanilla.equal(aBlock)) {
 			if (BlocksGT.Paths != null) {
 				if (UT.Entities.hasInfiniteItems(aPlayer) || ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer)) {
 					UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
