@@ -405,47 +405,49 @@ public class Loader_Worldgen implements Runnable {
 		
 		
 		
-		new WorldgenOcean           ("ocean.seawater"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA); // IT IS IMPORTANT THAT OCEAN COMES BEFORE RIVER AND SWAMP!!!
-		new WorldgenRiver           ("river.riverwater" , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT); // IT IS IMPORTANT THAT RIVER COMES AFTER OCEAN AND BEFORE SWAMP!!!
-		new WorldgenSwamp           ("swamp.dirtywater" , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS); // IT IS IMPORTANT THAT SWAMP COMES AFTER RIVER AND OCEAN!!!
+		new WorldgenOcean           ("ocean.seawater"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA); // IT IS IMPORTANT THAT OCEAN COMES BEFORE RIVER AND SWAMP!!!
+		new WorldgenRiver           ("river.riverwater"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT); // IT IS IMPORTANT THAT RIVER COMES AFTER OCEAN AND BEFORE SWAMP!!!
+		new WorldgenSwamp           ("swamp.dirtywater"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS); // IT IS IMPORTANT THAT SWAMP COMES AFTER RIVER AND OCEAN!!!
 		
-		new WorldgenPit             ("pit.clay.vanilla" , T, Blocks.clay       , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenPit             ("pit.clay.brown"   , T, BlocksGT.Diggables, 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenDeepOcean       ("ocean.prismacorals", T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		
-		new WorldgenBlackSand       ("river.magnetite"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS);
-		new WorldgenTurf            ("swamp.turf"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT);
+		new WorldgenPit             ("pit.clay.vanilla"  , T, Blocks.clay       , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenPit             ("pit.clay.brown"    , T, BlocksGT.Diggables, 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		
-		new WorldgenLogDry          ("log.dry"          , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenLogRotten       ("log.rotten"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
-		new WorldgenLogMossy        ("log.mossy"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenLogFrozen       ("log.frozen"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenBlackSand       ("river.magnetite"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS);
+		new WorldgenTurf            ("swamp.turf"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT);
 		
-		new WorldgenTreeRubber      ("tree.rubber"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT);
-		new WorldgenTreeMaple       ("tree.maple"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenTreeWillow      ("tree.willow"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
-		new WorldgenTreeBlueMahoe   ("tree.bluemahoe"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
-		new WorldgenTreeHazel       ("tree.hazel"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
-		new WorldgenTreeCinnamon    ("tree.cinnamon"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
-		new WorldgenTreeRainbowood  ("tree.rainbowood"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM, GEN_AETHER);
+		new WorldgenLogDry          ("log.dry"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenLogRotten       ("log.rotten"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
+		new WorldgenLogMossy        ("log.mossy"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenLogFrozen       ("log.frozen"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
 		
-		new WorldgenRocks           ("rocks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ATUM);
-		new WorldgenAlfheimRocks    ("alfheim.rocks"    , T, GEN_ALFHEIM);
-		new WorldgenAetherRocks     ("aether.rocks"     , T, GEN_AETHER);
-		new WorldgenErebusRocks     ("erebus.rocks"     , T, GEN_EREBUS);
-		new WorldgenMoonRocks       ("moon.rocks"       , T, GEN_MOON);
-		new WorldgenMarsRocks       ("mars.rocks"       , T, GEN_MARS);
-		new WorldgenPlanetRocks     ("planet.rocks"     , T, GEN_PLANETS);
-		new WorldgenSticks          ("sticks"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM);
+		new WorldgenTreeRubber      ("tree.rubber"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT);
+		new WorldgenTreeMaple       ("tree.maple"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenTreeWillow      ("tree.willow"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS);
+		new WorldgenTreeBlueMahoe   ("tree.bluemahoe"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
+		new WorldgenTreeHazel       ("tree.hazel"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
+		new WorldgenTreeCinnamon    ("tree.cinnamon"     , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
+		new WorldgenTreeRainbowood  ("tree.rainbowood"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM, GEN_AETHER);
 		
-		new WorldgenGlowtus         ("plant.glowtus"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS);
-		new WorldgenBushes          ("plant.bush"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM);
-		new WorldgenHives           ("bumblehives"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ATUM, GEN_NETHER, GEN_END);
+		new WorldgenRocks           ("rocks"             , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ATUM);
+		new WorldgenAlfheimRocks    ("alfheim.rocks"     , T, GEN_ALFHEIM);
+		new WorldgenAetherRocks     ("aether.rocks"      , T, GEN_AETHER);
+		new WorldgenErebusRocks     ("erebus.rocks"      , T, GEN_EREBUS);
+		new WorldgenMoonRocks       ("moon.rocks"        , T, GEN_MOON);
+		new WorldgenMarsRocks       ("mars.rocks"        , T, GEN_MARS);
+		new WorldgenPlanetRocks     ("planet.rocks"      , T, GEN_PLANETS);
+		new WorldgenSticks          ("sticks"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM);
 		
-		new WorldgenCenterBiomes    ("center.biomes"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
-		new WorldgenStreets         ("center.streets"   , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
-		new WorldgenNexus           ("center.nexus"     , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
-		new WorldgenBeacon          ("center.beacon"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
-		new WorldgenTesting         ("center.testing"   , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenGlowtus         ("plant.glowtus"     , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS);
+		new WorldgenBushes          ("plant.bush"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM);
+		new WorldgenHives           ("bumblehives"       , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM, GEN_ATUM, GEN_NETHER, GEN_END);
+		
+		new WorldgenCenterBiomes    ("center.biomes"     , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenStreets         ("center.streets"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenNexus           ("center.nexus"      , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenBeacon          ("center.beacon"     , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenTesting         ("center.testing"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		
 		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		

@@ -58,7 +58,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (GENERATE_BIOMES && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
 		
-		final NoiseGenerator tNoise = new NoiseGenerator((int)aWorld.getSeed()).setFrequency(0.009F, 0.075F, 0.009F);
+		final NoiseGenerator tNoise = new NoiseGenerator(aWorld);
 		final ExtendedBlockStorage[] aStorages = aChunk.getBlockStorageArray();
 		final int tListSize = StoneLayer.LAYERS.size(), tListMax = tListSize-1, tMaxHeight = aChunk.getTopFilledSegment()+15;
 		
@@ -69,13 +69,13 @@ public class WorldgenStoneLayers extends WorldgenObject {
 			final BiomeGenBase aBiome = aBiomes[i][j];
 			
 			StoneLayer[] tScan = new StoneLayer[] {
-			  StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.getCellular1(tX, -2, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.getCellular1(tX, -1, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.getCellular1(tX,  0, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.getCellular1(tX,  1, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.getCellular1(tX,  2, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.getCellular1(tX,  3, tZ) + 1) / 2) * tListSize)))
-			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.getCellular1(tX,  4, tZ) + 1) / 2) * tListSize)))
+			  StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, -2, tZ) + 1) / 2) * tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, -1, tZ) + 1) / 2) * tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  0, tZ) + 1) / 2) * tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  1, tZ) + 1) / 2) * tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  2, tZ) + 1) / 2) * tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  3, tZ) + 1) / 2) * tListSize)))
+			, StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX,  4, tZ) + 1) / 2) * tListSize)))
 			};
 			
 			boolean tCanPlaceRocks = F;
@@ -183,7 +183,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 				
 				// And scan for next Block on the Stone Layer Type.
 				for (int t = 1; t < tScan.length; t++) tScan[t-1] = tScan[t];
-				tScan[6] = StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.getCellular1(tX, tY+4, tZ) + 1) / 2) * tListSize)));
+				tScan[6] = StoneLayer.LAYERS.get(Math.min(tListMax, (int)(((tNoise.get(tX, tY+4, tZ) + 1) / 2) * tListSize)));
 			}
 		}
 		return T;
