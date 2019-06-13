@@ -33,7 +33,6 @@ import gregapi.old.Textures;
 import gregapi.render.IconContainerCopied;
 import gregapi.util.CR;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,7 +44,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.FluidStack;
 
 public class BlockGrass extends BlockBaseMeta {
 	public BlockGrass(String aUnlocalised) {
@@ -78,11 +76,6 @@ public class BlockGrass extends BlockBaseMeta {
 		CR.shapeless(ST.make(this, 8, 1), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Lime     ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
 		CR.shapeless(ST.make(this, 8, 2), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Black    ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
 		CR.shapeless(ST.make(this, 8, 3), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_LightGray], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
-		
-		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Green    ]) RM.Bath.addRecipe1(T, 0, 16, ST.make(Blocks.grass, 1, W), UT.Fluids.mul(tDye, 1, 24, T), NF, ST.make(BlocksGT.Grass, 1, 0));
-		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Lime     ]) RM.Bath.addRecipe1(T, 0, 16, ST.make(Blocks.grass, 1, W), UT.Fluids.mul(tDye, 1, 24, T), NF, ST.make(BlocksGT.Grass, 1, 1));
-		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Black    ]) RM.Bath.addRecipe1(T, 0, 16, ST.make(Blocks.grass, 1, W), UT.Fluids.mul(tDye, 1, 24, T), NF, ST.make(BlocksGT.Grass, 1, 2));
-		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_LightGray]) RM.Bath.addRecipe1(T, 0, 16, ST.make(Blocks.grass, 1, W), UT.Fluids.mul(tDye, 1, 24, T), NF, ST.make(BlocksGT.Grass, 1, 3));
 	}
 	
 	static {
