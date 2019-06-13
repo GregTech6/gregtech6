@@ -35,9 +35,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Even fewer PNG Files were somehow much brighter than they were supposed to be, such as Gray colored Black Sand.
 [CHANGED] Circuits now have Roman Numerals on the top left of their Texture making Tiers easier to see at a quick glance.
 [ADDED]
-3 Shades of Grass.
+4 Shades of Grass (they are all a Shade of Green).
 The Grass doesn't spread, get eaten, need Light, spawn Mobs nor change its color because Biome.
-It is crafted with 8 pieces of regular Grass (use a Spade for Silk Touching it) and a Dye (Green, Lime or Black). Also possible in the Bathing Pot to save on Dyes.
+It is crafted with 8 pieces of regular Grass (use a Spade for Silk Touching it) and a Dye (Green, Lime, Black or Light Gray). Also possible in the Bathing Pot to save on Dyes.
 [ADDED]
 Item Retriever Cover.
 Similar to the Item Filter Cover it can only Filter for 1 Item (or Filter for all but 1 Item).

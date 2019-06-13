@@ -49,7 +49,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class BlockGrass extends BlockBaseMeta {
 	public BlockGrass(String aUnlocalised) {
-		super(null, aUnlocalised, Material.grass, soundTypeGrass, 3, Textures.BlockIcons.GRASSES_TOP);
+		super(null, aUnlocalised, Material.grass, soundTypeGrass, 4, Textures.BlockIcons.GRASSES_TOP);
 		LH.add(getUnlocalizedName()+ ".0.name", "Grass");
 		LH.add(getUnlocalizedName()+ ".1.name", "Grass");
 		LH.add(getUnlocalizedName()+ ".2.name", "Grass");
@@ -74,13 +74,15 @@ public class BlockGrass extends BlockBaseMeta {
 		RM.generify(ST.make(this, 1, W), ST.make(Blocks.grass, 1, 0));
 		CR.shapeless(ST.make(Blocks.grass, 1, 0), new Object[] {this});
 		
-		CR.shapeless(ST.make(this, 8, 0), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Green    ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
-		CR.shapeless(ST.make(this, 8, 1), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Lime     ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
-		CR.shapeless(ST.make(this, 8, 2), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Black    ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
+		CR.shapeless(ST.make(this, 8, 0), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Green    ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
+		CR.shapeless(ST.make(this, 8, 1), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Lime     ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
+		CR.shapeless(ST.make(this, 8, 2), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Black    ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
+		CR.shapeless(ST.make(this, 8, 3), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_LightGray], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
 		
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Green    ]) RM.Bath.addRecipe1(T, 0, 16, ST.make(Blocks.grass, 1, W), UT.Fluids.mul(tDye, 1, 24, T), NF, ST.make(BlocksGT.Grass, 1, 0));
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Lime     ]) RM.Bath.addRecipe1(T, 0, 16, ST.make(Blocks.grass, 1, W), UT.Fluids.mul(tDye, 1, 24, T), NF, ST.make(BlocksGT.Grass, 1, 1));
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Black    ]) RM.Bath.addRecipe1(T, 0, 16, ST.make(Blocks.grass, 1, W), UT.Fluids.mul(tDye, 1, 24, T), NF, ST.make(BlocksGT.Grass, 1, 2));
+		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_LightGray]) RM.Bath.addRecipe1(T, 0, 16, ST.make(Blocks.grass, 1, W), UT.Fluids.mul(tDye, 1, 24, T), NF, ST.make(BlocksGT.Grass, 1, 3));
 	}
 	
 	static {
