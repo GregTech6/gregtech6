@@ -109,6 +109,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (ST.equal(tStack, Blocks.sand        , 0)) {mDisplayedInput = -5;} else
 				if (ST.equal(tStack, Blocks.sand        , 1)) {mDisplayedInput = -6;} else
 				if (ST.equal(tStack, Blocks.grass       , W)) {mDisplayedInput = -7;} else
+				if (ST.equal(tStack, BlocksGT.Grass     , W)) {mDisplayedInput = -7;} else
 				if (ST.equal(tStack, Blocks.mycelium    , W)) {mDisplayedInput = -8;} else
 				if (ST.equal(tStack, Blocks.soul_sand   , W)) {mDisplayedInput = -9;} else
 				if (ST.equal(tStack, BlocksGT.Diggables , W)) {mDisplayedInput =-10;} else
@@ -169,6 +170,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 				if (ST.equal(tStack, Blocks.sand        , 0)) {mDisplayedOutput = -5;} else
 				if (ST.equal(tStack, Blocks.sand        , 1)) {mDisplayedOutput = -6;} else
 				if (ST.equal(tStack, Blocks.grass       , W)) {mDisplayedOutput = -7;} else
+				if (ST.equal(tStack, BlocksGT.Grass     , W)) {mDisplayedOutput = -7;} else
 				if (ST.equal(tStack, Blocks.mycelium    , W)) {mDisplayedOutput = -8;} else
 				if (ST.equal(tStack, Blocks.soul_sand   , W)) {mDisplayedOutput = -9;} else
 				if (ST.equal(tStack, BlocksGT.Diggables , W)) {mDisplayedOutput =-10;} else

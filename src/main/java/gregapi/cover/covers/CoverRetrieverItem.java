@@ -62,17 +62,16 @@ public class CoverRetrieverItem extends AbstractCoverAttachment {
 		if (aIsServerSide && !aData.mStopped && (SERVER_TIME % 20 == 15 || aData.mValues[aSide] != 0) && aData.mTileEntity instanceof ITileEntityItemPipe && ((ITileEntityItemPipe)aData.mTileEntity).pipeCapacityCheck()) {
 			aData.value(aSide, (short)0);
 			
-			ArrayList<ITileEntityItemPipe> tPipeList = new ArrayListNoNulls<>();
+			ArrayList<ITileEntityItemPipe> tUsedPipes = new ArrayListNoNulls<>();
 			ItemStack tStack = ST.load(aData.mNBTs[aSide], "gt.filter.item");
 			ItemStackSet<ItemStackContainer> tFilter = ST.invalid(tStack) ? null : new ItemStackSet<>(tStack);
 			DelegatorTileEntity<TileEntity> tTarget = aData.mTileEntity.getAdjacentTileEntity(aSide);
 			
-			for (ITileEntityItemPipe tTileEntity : UT.Code.sortByValuesAcending(ITileEntityItemPipe.Util.scanPipes((ITileEntityItemPipe)aData.mTileEntity, new HashMap<ITileEntityItemPipe, Long>(), 0, T, F)).keySet()) {
-				tPipeList.add(tTileEntity);
-				for (byte tSide : ALL_SIDES_VALID) if (tTileEntity.canAcceptItemsFrom(tSide, aData.mTileEntity)) {
-					DelegatorTileEntity<IInventory> tDelegator = tTileEntity.getAdjacentInventory(tSide);
+			for (ITileEntityItemPipe tPipe : UT.Code.sortByValuesAcending(ITileEntityItemPipe.Util.scanPipes((ITileEntityItemPipe)aData.mTileEntity, new HashMap<ITileEntityItemPipe, Long>(), 0, T, F)).keySet()) {
+				if (tUsedPipes.add(tPipe)) for (byte tSide : ALL_SIDES_VALID) if (tPipe.canAcceptItemsFrom(tSide, aData.mTileEntity) && (tSide != aSide || tPipe != aData.mTileEntity)) {
+					DelegatorTileEntity<IInventory> tDelegator = tPipe.getAdjacentInventory(tSide);
 					if (!(tDelegator.mTileEntity instanceof ITileEntityItemPipe) && ST.move(tDelegator, tTarget, tFilter, F, F, aData.mVisuals[aSide] != 0, 64, 1, 64, 1) > 0) {
-						for (ITileEntityItemPipe tPipe : tPipeList) tPipe.incrementTransferCounter(1);
+						for (ITileEntityItemPipe tUsedPipe : tUsedPipes) tUsedPipe.incrementTransferCounter(1);
 						return;
 					}
 				}

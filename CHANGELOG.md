@@ -29,12 +29,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.22: (Not released yet, Friday because the Test Bear gets new Internet on Thursday)
+6.10.22:
 [FIXED] Bushes were not working in Plant Pots.
 [FIXED] Very few PNG Files were somehow "grayscale" instead of "grayscale+alpha" resulting in java somehow messing up Transparency, even though all Image Editors could still see the transparency.
 [FIXED] Even fewer PNG Files were somehow much brighter than they were supposed to be, such as Gray colored Black Sand.
 [CHANGED] Circuits now have Roman Numerals on the top left of their Texture making Tiers easier to see at a quick glance.
-[CHANGED] Several Purified Ore Bathing Recipes now output slightly more Stuff. Platinum Group Sludge got buffed too after I found out it gives 12 times less Sludge than other Methods of getting Iridium from the same Ore...
+[CHANGED] Several Purified Ore Acid Bathing Recipes now output slightly more Stuff. Platinum Group Sludge got buffed too after I found out it gives 12 times less Sludge than other Methods of getting Iridium from the same Ore...
 [ADDED] Prismarine Pylons to Deep Ocean Biomes in order to make Prismarine available.
 [ADDED]
 4 Shades of Grass (they are all a Shade of Green).

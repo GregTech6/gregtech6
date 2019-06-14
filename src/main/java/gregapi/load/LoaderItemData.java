@@ -351,6 +351,10 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.itemString                        , ST.make(MD.MaCu, "crafting", 1, 0));
 		OM.reg(OD.itemMoss                          , ST.make(MD.CHSL, "ballomoss", 1, 0));
 		OM.reg(OD.craftingChest                     , ST.make(MD.CHSL, "present", 1, 0));
+		OM.reg("blockGlass"                         , ST.make(MD.CHSL, "glass", 1, W));
+		OM.reg("blockGlassColorless"                , ST.make(MD.CHSL, "glass", 1, W));
+		OM.reg("paneGlass"                          , ST.make(MD.CHSL, "glass_pane", 1, W));
+		OM.reg("paneGlassColorless"                 , ST.make(MD.CHSL, "glass_pane", 1, W));
 		OM.reg(OD.itemMoss                          , ST.make(MD.ERE, "materials", 1, 34));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "plantDrop", 1, 29));
 		OM.reg(OD.itemMoss                          , ST.make(MD.BTL, "plantDrop", 1, 30));
