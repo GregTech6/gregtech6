@@ -21,7 +21,6 @@ package gregapi.recipes;
 
 import static gregapi.data.CS.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -869,40 +868,41 @@ public class Recipe {
 		aFluidInputs  = UT.Code.getWithoutNulls(aFluidInputs ).toArray(ZL_FS);
 		aFluidOutputs = UT.Code.getWithoutNulls(aFluidOutputs).toArray(ZL_FS);
 		
+		int l = UT.Code.bindInt(aDuration / 16);
+		
 		for (int i = 0; i < aChances     .length; i++) if (aChances[i] <=  0) aChances[i] = 10000;
-		for (int i = 0; i < aInputs      .length; i++) aInputs [i] = ST.copy     (aInputs [i]);
-		for (int i = 0; i < aOutputs     .length; i++) aOutputs[i] = ST.validMeta(aOutputs[i]);
-		for (int i = 0; i < aFluidInputs .length; i++) aFluidInputs [i] = aFluidInputs [i].copy();
-		for (int i = 0; i < aFluidOutputs.length; i++) aFluidOutputs[i] = aFluidOutputs[i].copy();
+		for (int i = 0; i < aInputs      .length; i++) if (aInputs [i] != null) {aInputs [i] = ST.copy_     (aInputs [i]); if (aInputs [i].stackSize != 0) l = Math.min(aInputs [i].stackSize, l);}
+		for (int i = 0; i < aOutputs     .length; i++) if (aOutputs[i] != null) {aOutputs[i] = ST.validMeta_(aOutputs[i]); if (aOutputs[i].stackSize != 0) l = Math.min(aOutputs[i].stackSize, l);}
+		for (int i = 0; i < aFluidInputs .length; i++) {aFluidInputs [i] = aFluidInputs [i].copy(); if (aFluidInputs [i].amount != 0) l = Math.min(aFluidInputs [i].amount, l);}
+		for (int i = 0; i < aFluidOutputs.length; i++) {aFluidOutputs[i] = aFluidOutputs[i].copy(); if (aFluidOutputs[i].amount != 0) l = Math.min(aFluidOutputs[i].amount, l);}
 		
 		if (aOptimize) {
 			for (int i = 0; i < aInputs.length; i++) if (aInputs[i] != NI && ST.meta_(aInputs[i]) != W) for (int j = 0; j < aOutputs.length; j++) {
-				if (ST.equal(aInputs[i], aOutputs[j])) {
+				if (aOutputs[j] != null && ST.equal_(aInputs[i], aOutputs[j], F)) {
 					if (aInputs[i].stackSize >= aOutputs[j].stackSize) {
 						aInputs[i].stackSize -= aOutputs[j].stackSize;
+						l = Math.min(aInputs [i].stackSize, l);
 						aOutputs[j] = NI;
 					} else {
 						aOutputs[j].stackSize -= aInputs[i].stackSize;
+						l = Math.min(aOutputs[i].stackSize, l);
 					}
 				}
 			}
 			
-			if (aDuration >= 32) {
-				ArrayList<ItemStack> tList = new ArrayListNoNulls<>(Arrays.asList(aInputs));
-				tList.addAll(Arrays.asList(aOutputs));
-				
-				for (byte i = (byte)Math.min(tList.isEmpty()?1000:64, aDuration / 16); i > 1; i--) if (aDuration / i >= 16) {
-					boolean temp = T;
-					for (int j = 0, k = tList.size(); temp &&  j < k; j++) if (tList.get(j).stackSize  % i != 0) temp = F;
-					for (int j = 0; temp && j < aFluidInputs .length; j++) if (aFluidInputs [j].amount % i != 0) temp = F;
-					for (int j = 0; temp && j < aFluidOutputs.length; j++) if (aFluidOutputs[j].amount % i != 0) temp = F;
-					if (temp) {
-						for (int j = 0, k = tList.size();  j < k; j++) tList.get(j).stackSize  /= i;
-						for (int j = 0; j < aFluidInputs .length; j++) aFluidInputs [j].amount /= i;
-						for (int j = 0; j < aFluidOutputs.length; j++) aFluidOutputs[j].amount /= i;
-						aDuration /= i;
-						break;
-					}
+			for (; l > 1; l--) {
+				boolean temp = T;
+				for (int j = 0; temp && j < aInputs      .length; j++) if (aInputs [j] != null && aInputs [j].stackSize % l != 0) temp = F;
+				for (int j = 0; temp && j < aOutputs     .length; j++) if (aOutputs[j] != null && aOutputs[j].stackSize % l != 0) temp = F;
+				for (int j = 0; temp && j < aFluidInputs .length; j++) if (aFluidInputs [j].amount % l != 0) temp = F;
+				for (int j = 0; temp && j < aFluidOutputs.length; j++) if (aFluidOutputs[j].amount % l != 0) temp = F;
+				if (temp) {
+					for (int j = 0; j < aInputs      .length; j++) if (aInputs [j] != null) aInputs [j].stackSize /= l;
+					for (int j = 0; j < aOutputs     .length; j++) if (aOutputs[j] != null) aOutputs[j].stackSize /= l;
+					for (int j = 0; j < aFluidInputs .length; j++) aFluidInputs [j].amount /= l;
+					for (int j = 0; j < aFluidOutputs.length; j++) aFluidOutputs[j].amount /= l;
+					aDuration /= l;
+					break;
 				}
 			}
 		}
@@ -920,7 +920,5 @@ public class Recipe {
 		mDuration = aDuration;
 		mSpecialValue = aSpecialValue;
 		mEUt = aEUt;
-		
-//      checkCellBalance();
 	}
 }

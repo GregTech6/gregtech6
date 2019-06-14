@@ -147,7 +147,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 				if (rng(1000) == 0) mType = rng(BlocksGT.stones.length+1);
 				int tSelector = rng(128);
 				if (tSelector < mList.size()) {
-					OreDictMaterial tMaterial = rng(32) == 0 ? UT.Code.select(mList.get(tSelector), mList.get(tSelector).mByProducts) : mList.get(tSelector);
+					OreDictMaterial tMaterial = (rng(32) == 0 ? UT.Code.select(mList.get(tSelector), mList.get(tSelector).mByProducts) : mList.get(tSelector));
 					if (worldObj.provider.dimensionId == DIM_NETHER) {
 						slot(0, ST.make((Block)BlocksGT.oreBrokenNetherrack, 1, tMaterial.mID));
 // TODO             } else if (WD.dimERE(worldObj)) {
