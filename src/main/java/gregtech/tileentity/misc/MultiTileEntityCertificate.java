@@ -42,7 +42,7 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.util.UT;
-import gregtech.GT_Mod;
+import gregtech.GT6_Main;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -106,8 +106,8 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 		if (UT.Code.stringValid(tName)) {
 			ALREADY_RECEIVED.add(tName);
 			ALREADY_RECEIVED.add(tName.toLowerCase());
-			mGold = GT_Mod.gt_proxy.mSupporterListGold.contains(tName.toLowerCase());
-			mSilver = GT_Mod.gt_proxy.mSupporterListSilver.contains(tName.toLowerCase());
+			mGold = GT6_Main.gt_proxy.mSupporterListGold.contains(tName.toLowerCase());
+			mSilver = GT6_Main.gt_proxy.mSupporterListSilver.contains(tName.toLowerCase());
 		}
 	}
 	
@@ -115,8 +115,8 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 	public void setCustomName(String aName) {
 		super.setCustomName(aName);
 		if (UT.Code.stringValid(aName)) {
-			mGold = GT_Mod.gt_proxy.mSupporterListGold.contains(aName.toLowerCase());
-			mSilver = GT_Mod.gt_proxy.mSupporterListSilver.contains(aName.toLowerCase());
+			mGold = GT6_Main.gt_proxy.mSupporterListGold.contains(aName.toLowerCase());
+			mSilver = GT6_Main.gt_proxy.mSupporterListSilver.contains(aName.toLowerCase());
 		}
 	}
 	

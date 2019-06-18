@@ -115,11 +115,11 @@ import net.minecraftforge.oredict.OreDictionary;
  * @author Gregorius Techneticies
  */
 @Mod(modid=ModIDs.GT, name="GregTech", version="GT6-MC1710", dependencies="required-after:"+ModIDs.GAPI_POST)
-public class GT_Mod extends Abstract_Mod {
+public class GT6_Main extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
 	public static GT_Proxy gt_proxy;
 	
-	public GT_Mod() {
+	public GT6_Main() {
 		GT = this;
 		NW_GT = new NetworkHandler(MD.GT.mID, "GREG");
 	}
