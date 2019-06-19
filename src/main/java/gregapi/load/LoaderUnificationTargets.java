@@ -275,6 +275,12 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.CoalCoke               , ST.make(MD.RC, "cube", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.CoalCoke               , ST.make(MD.RC, "fuel.coke", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Firestone              , ST.make(MD.RC, "firestone.raw", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.S                      , ST.make(MD.RC, "ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreSandstone   , MT.KNO3                   , ST.make(MD.RC, "ore", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.oreBasalt      , MT.Diamond                , ST.make(MD.RC, "ore", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.oreBasalt      , MT.Emerald                , ST.make(MD.RC, "ore", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.oreBasalt      , MT.Lapis                  , ST.make(MD.RC, "ore", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Firestone              , ST.make(MD.RC, "ore", 1, 5));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Fe                     , ST.make(MD.RC, "part.plate", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Steel                  , ST.make(MD.RC, "part.plate", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.TinAlloy               , ST.make(MD.RC, "part.plate", 1, 2));
@@ -295,6 +301,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.CoalCoke               , ST.make(MD.IE, "material", 1, 6));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.CoalCoke               , ST.make(MD.IE, "metal", 1, 17));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.NetherQuartz           , ST.make(MD.IE, "metal", 1, 18));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , ST.make(MD.IE, "ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Bauxite        , ST.make(MD.IE, "ore", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Pb                     , ST.make(MD.IE, "ore", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ag                     , ST.make(MD.IE, "ore", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ni                     , ST.make(MD.IE, "ore", 1, 4));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.ChargedCertusQuartz    , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Draconium              , ST.make(MD.DE, "draconiumDust", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Draconium              , ST.make(MD.DE, "nugget", 1, 0));
@@ -468,6 +479,13 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Nougat                 , ST.make(MD.CANDY, "I84", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Nougat                 , ST.make(MD.CANDY, "B94", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Nougat                 , ST.make(MD.CANDY, "B91", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , ST.make(MD.TE_FOUNDATION, "Ore", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , ST.make(MD.TE_FOUNDATION, "Ore", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ag                     , ST.make(MD.TE_FOUNDATION, "Ore", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Pb                     , ST.make(MD.TE_FOUNDATION, "Ore", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ni                     , ST.make(MD.TE_FOUNDATION, "Ore", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Pt                     , ST.make(MD.TE_FOUNDATION, "Ore", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Mithril                , ST.make(MD.TE_FOUNDATION, "Ore", 1, 6));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Pyrotheum              , ST.make(MD.TE_FOUNDATION, "material", 1,  512));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cryotheum              , ST.make(MD.TE_FOUNDATION, "material", 1,  513));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Aerotheum              , ST.make(MD.TE_FOUNDATION, "material", 1,  514));

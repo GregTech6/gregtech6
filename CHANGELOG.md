@@ -26,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.23: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[IMPROVED] The Loading Step for Prefix Listeners is now much faster as I just casually kill off all MC Furnace Recipes that could potentially be wrong (dust to ingot, ore to ingot, ore to gem, etc) and then simply add the proper ones back later, so I do not have to check each and every Recipe individually.
 
 
 6.10.22:

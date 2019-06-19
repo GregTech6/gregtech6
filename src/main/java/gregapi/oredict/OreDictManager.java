@@ -166,17 +166,7 @@ public final class OreDictManager {
 			mBufferedListeners1.clear();
 			mBufferedListeners1 = null;
 			UT.LoadingBar.step("Prefix Listeners");
-			for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) {
-				DEB.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-				long tTime = -System.nanoTime();
-				tPrefix.onPostLoad();
-				tTime += System.nanoTime();
-				if (tTime >= 10000000L) {
-					DEB.println(tPrefix.mNameInternal);
-					DEB.println(tTime + "ns");
-					DEB.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-				}
-			}
+			for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) tPrefix.onPostLoad();
 			UT.LoadingBar.step("Recycling Listeners");
 			for (IOreDictListenerRecyclable aListener : mBufferedListeners2) addListenerInternal(aListener);
 			mBufferedListeners2.clear();
