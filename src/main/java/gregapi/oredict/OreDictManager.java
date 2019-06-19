@@ -169,7 +169,7 @@ public final class OreDictManager {
 			for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) {
 				long tStartTime = System.nanoTime();
 				tPrefix.onPostLoad();
-				DEB.println(tPrefix.mNameInternal + " " + System.nanoTime() - tStartTime);
+				DEB.println(tPrefix.mNameInternal + ": " + (System.nanoTime() - tStartTime));
 			}
 			UT.LoadingBar.step("Recycling Listeners");
 			for (IOreDictListenerRecyclable aListener : mBufferedListeners2) addListenerInternal(aListener);
