@@ -321,6 +321,12 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		addListener("foodHoneydrop", "dropHoney", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			CR.remove(ST.make(MD.HaC, "potItem", 1), aEvent.mStack);
 		}});
+		addListener("dustSugar", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "caramelItem", 1));
+		}});
+		addListener("dustRice", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "ricecakeItem", 1));
+		}});
 		addListener(OP.stick.dat(ANY.WoodNormal), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Loom.addRecipe2(T, 16,   16, ST.make(MD.HaC, "hardenedleatherItem", 1), ST.amount(8, aEvent.mStack), ST.make(Items.item_frame, 1, 0));
 		}});
@@ -329,10 +335,5 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		for (OreDictMaterial tMat : ANY.Wax.mToThis) {
 			RM.Laminator.addRecipe2(T, 16,   16, OP.foil.mat(tMat, 1), ST.make(Items.leather, 1, W), ST.make(MD.HaC, "hardenedleatherItem", 1));
 		}
-		
-		OP.dust.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (aEvent.mMaterial == MT.Sugar) RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "caramelItem", 1)); else
-			if (aEvent.mMaterial == MT.Rice) RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "ricecakeItem", 1));
-		}});
 	}
 }

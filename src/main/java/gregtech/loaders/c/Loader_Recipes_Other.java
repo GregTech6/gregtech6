@@ -48,7 +48,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Other implements Runnable {
 	@Override public void run() {
-		dust.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {if (aEvent.mMaterial.mReRegistrations.contains(ANY.Wax)) CR.remove(aEvent.mStack);}});
+		dust.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {if (aEvent.mMaterial.mReRegistrations.contains(ANY.Wax) && !ST.isGT_(aEvent.mStack)) CR.remove(aEvent.mStack);}});
 		
 		for (OreDictMaterial tWax : ANY.Wax.mToThis) {
 		RM.Compressor.addRecipe1(T, 16, 16, OM.dust(tWax, U ), plate.mat(tWax, 1));
@@ -64,14 +64,14 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipe2(T, 16, 64, OM.dust(MT.Cu, 3*U9), OM.dust(MT.Zn, U9), OM.dust(MT.Brass , 3*U9));
 		
 		for (OreDictMaterial tSapphire : ANY.Sapphire.mToThis) {
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Redstone      , 5*U ), OM.dust(MT.EnergiumRed, 9*U));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Redstone      , 5*U9), OM.dust(MT.EnergiumRed, U));
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Redstone      , 5*U ), OM.dust(MT.EnergiumRed , 9*U));
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Redstone      , 5*U9), OM.dust(MT.EnergiumRed ,   U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Nikolite      , 5*U ), OM.dust(MT.EnergiumCyan, 9*U));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Nikolite      , 5*U9), OM.dust(MT.EnergiumCyan, U));
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Nikolite      , 5*U9), OM.dust(MT.EnergiumCyan,   U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Teslatite     , 5*U ), OM.dust(MT.EnergiumCyan, 9*U));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Teslatite     , 5*U9), OM.dust(MT.EnergiumCyan, U));
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Teslatite     , 5*U9), OM.dust(MT.EnergiumCyan,   U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Electrotine   , 5*U ), OM.dust(MT.EnergiumCyan, 9*U));
-		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Electrotine   , 5*U9), OM.dust(MT.EnergiumCyan, U));
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Electrotine   , 5*U9), OM.dust(MT.EnergiumCyan,   U));
 		}
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {

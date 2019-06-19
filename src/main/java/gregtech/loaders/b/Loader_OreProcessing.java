@@ -130,25 +130,25 @@ public class Loader_OreProcessing implements Runnable {
 		sheetGt                     .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
 		foil                        .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, foil));
 		
-		scrapGt                     .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		rockGt                      .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dust                        .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustSmall                   .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustTiny                    .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustImpure                  .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustPure                    .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		dustRefined                 .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		rawOreChunk                 .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		chunk                       .addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
-		rubble                      .addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
-		pebbles                     .addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
-		cluster                     .addListener(new OreProcessing_Smelting(U*2, ANTIMATTER.NOT));
-		crushed                     .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedTiny                 .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedPurified             .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedPurifiedTiny         .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedCentrifuged          .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
-		crushedCentrifugedTiny      .addListener(new OreProcessing_Smelting( -1, ANTIMATTER.NOT));
+		scrapGt                     .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		rockGt                      .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		dust                        .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		dustSmall                   .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		dustTiny                    .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		dustImpure                  .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		dustPure                    .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		dustRefined                 .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		rawOreChunk                 .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		chunk                       .addListener(new OreProcessing_Smelting(U*2, new And(ANTIMATTER.NOT, FURNACE)));
+		rubble                      .addListener(new OreProcessing_Smelting(U*2, new And(ANTIMATTER.NOT, FURNACE)));
+		pebbles                     .addListener(new OreProcessing_Smelting(U*2, new And(ANTIMATTER.NOT, FURNACE)));
+		cluster                     .addListener(new OreProcessing_Smelting(U*2, new And(ANTIMATTER.NOT, FURNACE)));
+		crushed                     .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		crushedTiny                 .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		crushedPurified             .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		crushedPurifiedTiny         .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		crushedCentrifuged          .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
+		crushedCentrifugedTiny      .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
 		
 		rawOreChunk                 .addListener(new OreProcessing_Maceration(crushedTiny   , 3, ANTIMATTER.NOT));
 		chunk                       .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
@@ -327,52 +327,27 @@ public class Loader_OreProcessing implements Runnable {
 			if (COMPAT_IC2 != null && !(aOreStack.getItem() instanceof IPrefixItem)) COMPAT_IC2.valuable(ST.block(aOreStack), ST.meta_(aOreStack), 3);
 			aMaterial = aMaterial.mTargetCrushing.mMaterial;
 			if (aMaterial == null) return F;
-			OreDictMaterial tPrimaryByMaterial = null, tSecondaryByMaterial = null, tTertiaryByMaterial = null;
 			aOreStack = ST.amount(1, aOreStack);
+			aMultiplier = UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier);
 			
 			ItemStack
-			tGem = gem.mat(aMaterial, 1),
-			tSmeltInto = OM.ingot(aMaterial.mTargetSmelting),
-			tTiny = OM.dustOrIngot(aMaterial, U9),
-			tSmall = OM.dustOrIngot(aMaterial, U4),
-			tDust = dust.mat(aMaterial, tGem, 1),
-			tCleaned = crushedPurified.mat(aMaterial, tDust, 1),
-			tCrushed = crushed.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier)),
-			tPrimaryByProduct   = null, tPrimaryByProductSmall      = null, tPrimaryByProductTiny   = null,
-			tSecondaryByProduct = null, tSecondaryByProductSmall    = null, tSecondaryByProductTiny = null,
-			tTertiaryByProduct  = null, tTertiaryByProductSmall     = null, tTertiaryByProductTiny  = null;
+			tPrimaryByProductTiny   = null,
+			tSecondaryByProductTiny = null,
+			tTertiaryByProductTiny  = null;
 			
 			if (aMaterial == MT.Gneiss || aMaterial == MT.PetrifiedWood) {
 				RM.Crusher  .addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 4)));
 				RM.Hammer   .addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 3)));
 			}
 			
-			if (tSmeltInto == null) tSmeltInto = OM.gem(aMaterial.mTargetSmelting);
-			if (tCrushed == null) tCrushed = dustImpure.mat(aMaterial, ST.amount(UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier), ST.copyFirst(tCleaned, tDust, tGem)), aMaterial.mOreMultiplier * aMultiplier);
-			
 			ArrayList<ItemStack> tByProductStacks = new ArrayListNoNulls<>();
 			
 			for (OreDictMaterial tMat : aMaterial.mByProducts) {
 				ItemStack tByProduct = OM.dustOrIngot(tMat, U);
 				if (tByProduct != null) tByProductStacks.add(tByProduct);
-				if (tPrimaryByProduct == null) {
-					tPrimaryByMaterial = tMat;
-					tPrimaryByProduct = OM.dustOrIngot(tMat, U);
-					tPrimaryByProductSmall = OM.dustOrIngot(tMat, U4);
-					tPrimaryByProductTiny = OM.dustOrIngot(tMat, U9);
-				}
-				if (tSecondaryByProduct == null || tSecondaryByMaterial == tPrimaryByMaterial) {
-					tSecondaryByMaterial = tMat;
-					tSecondaryByProduct = OM.dustOrIngot(tMat, U);
-					tSecondaryByProductSmall = OM.dustOrIngot(tMat, U4);
-					tSecondaryByProductTiny = OM.dustOrIngot(tMat, U9);
-				}
-				if (tTertiaryByProduct == null || tTertiaryByMaterial == tPrimaryByMaterial || tTertiaryByMaterial == tSecondaryByMaterial) {
-					tTertiaryByMaterial = tMat;
-					tTertiaryByProduct = OM.dustOrIngot(tMat, U);
-					tTertiaryByProductSmall = OM.dustOrIngot(tMat, U4);
-					tTertiaryByProductTiny = OM.dustOrIngot(tMat, U9);
-				}
+				if (tPrimaryByProductTiny   == null) tPrimaryByProductTiny   = OM.dustOrIngot(tMat, U9); else
+				if (tSecondaryByProductTiny == null) tSecondaryByProductTiny = OM.dustOrIngot(tMat, U9); else
+				if (tTertiaryByProductTiny  == null) tTertiaryByProductTiny  = OM.dustOrIngot(tMat, U9);
 			}
 			
 			if (!tByProductStacks.isEmpty() && !mAlreadyListedOres.contains(aMaterial)) {
@@ -380,30 +355,12 @@ public class Loader_OreProcessing implements Runnable {
 				RM.ByProductList.addFakeRecipe(F, new ItemStack[] {oreVanillastone.mat(aMaterial, aOreStack, 1), dustImpure.mat(aMaterial, 1), dustPure.mat(aMaterial, 1), crushed.mat(aMaterial, 1), crushedPurified.mat(aMaterial, 1), crushedCentrifuged.mat(aMaterial, 1)}, tByProductStacks.toArray(ZL_IS), null, null, null, null, 0, 0, 0);
 			}
 			
-			if (tPrimaryByMaterial == null) tPrimaryByMaterial = aMaterial;
-			if (tPrimaryByProduct == null) tPrimaryByProduct = tDust;
-			if (tPrimaryByProductSmall == null) tPrimaryByProductSmall = tSmall;
-			if (tPrimaryByProductTiny == null) tPrimaryByProductTiny = tTiny;
-			
-			if (tSecondaryByMaterial == null) tSecondaryByMaterial = tPrimaryByMaterial;
-			if (tSecondaryByProduct == null) tSecondaryByProduct = tPrimaryByProduct;
-			if (tSecondaryByProductSmall == null) tSecondaryByProductSmall = tPrimaryByProductSmall;
+			if (tPrimaryByProductTiny == null) tPrimaryByProductTiny = OM.dustOrIngot(aMaterial, U9);
 			if (tSecondaryByProductTiny == null) tSecondaryByProductTiny = tPrimaryByProductTiny;
-			
-			if (tTertiaryByMaterial == null) tTertiaryByMaterial = tSecondaryByMaterial;
-			if (tTertiaryByProduct == null) tTertiaryByProduct = tSecondaryByProduct;
-			if (tTertiaryByProductSmall == null) tTertiaryByProductSmall = tSecondaryByProductSmall;
 			if (tTertiaryByProductTiny == null) tTertiaryByProductTiny = tSecondaryByProductTiny;
 			
-			if (tSmeltInto != null && aMaterial.contains(FURNACE)) {
-				RM.add_smelting(aOreStack, tSmeltInto);
-			} else {
-				RM.rem_smelting(aOreStack);
-			}
-			
-			if (tCrushed != null && tCleaned != null && aPrefix.contains(DUST_ORE)) {
-				RM.Sifting.addRecipe1(T, 16, 256, new long[] {10000, 1500, 1000, 500}, aOreStack, ST.amount(UT.Code.units(aMaterial.mTargetCrushing.mAmount, U, tCrushed.stackSize * 2, F), tCleaned), ST.amount(tCrushed.stackSize, tPrimaryByProductTiny), ST.amount(tCrushed.stackSize, tSecondaryByProductTiny), ST.amount(tCrushed.stackSize, tTertiaryByProductTiny));
-			}
+			if (aMaterial.contains(FURNACE)) if (!RM.add_smelting(aOreStack, OM.ingot(aMaterial.mTargetSmelting))) RM.add_smelting(aOreStack, OM.gem(aMaterial.mTargetSmelting));
+			if (aPrefix.contains(DUST_ORE)) RM.Sifting.addRecipe1(T, 16, 256, new long[] {10000, 10000, 1500, 1000, 500}, aOreStack, crushedPurified.mat(aMaterial, aMultiplier), crushedPurified.mat(aMaterial, aMultiplier), ST.amount(aMultiplier, tPrimaryByProductTiny), ST.amount(aMultiplier, tSecondaryByProductTiny), ST.amount(aMultiplier, tTertiaryByProductTiny));
 			return T;
 		}
 	}
@@ -516,13 +473,7 @@ public class Loader_OreProcessing implements Runnable {
 		
 		@Override
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (mCondition.isTrue(aEvent.mMaterial)) {
-				if (aEvent.mMaterial.contains(FURNACE)) {
-					RM.add_smelting(aEvent.mStack, OM.ingot(aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units(UT.Code.units(aEvent.mMaterial.mTargetSmelting.mAmount, U, aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mAmount, F), U, mTargetAmount<0?aEvent.mPrefix.mAmount:mTargetAmount, F)));
-				} else {
-					RM.rem_smelting(aEvent.mStack);
-				}
-			}
+			if (mCondition.isTrue(aEvent.mMaterial)) RM.add_smelting(aEvent.mStack, OM.ingot(aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units(UT.Code.units(aEvent.mMaterial.mTargetSmelting.mAmount, U, aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mAmount, F), U, mTargetAmount<0?aEvent.mPrefix.mAmount:mTargetAmount, F)));
 		}
 	}
 	
