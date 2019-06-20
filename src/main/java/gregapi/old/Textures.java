@@ -41,6 +41,7 @@ public class Textures {
 		, FLUID_SPRING, GREG_O_LANTERN
 		
 		, ZPM_TOP, ZPM_SIDES, ZPM_BOTTOM
+		, DUCT_TAPE
 		
 		, MUD, CLAY_BROWN, TURF
 		, SAND_MAGNETITE

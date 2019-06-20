@@ -44,6 +44,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.MgCl2   ), UT.Fluids.mul(tFluid, 6      ), NF, OP.dust.mat(MT.OREMATS.Bischofite, 1));
 		
 		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Si), UT.Fluids.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.SiO2, U*3));
+		RM.Mixer        .addRecipe1(T, 16,   64, OM.dust(MT.Mn), UT.Fluids.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.MnO2, U*1));
 		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.Na), UT.Fluids.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.NaOH, U*3));
 		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.K ), UT.Fluids.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.KOH , U*3));
 		RM.Mixer        .addRecipe1(T, 16,  256, OM.dust(MT.Li), UT.Fluids.mul(tFluid, 3), MT.H.gas(U*1, F), OM.dust(MT.LiOH, U*3));
@@ -62,9 +63,19 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Electrolyzer .addRecipe1(T, 16, 1280, OP.dustSmall   .mat(MT.LiCl, 1), new FluidStack[] {UT.Fluids.mul(tFluid, 3, 4, T)}, new FluidStack[] {MT.Cl.gas(U8, F), MT.H.gas(3*U8, F), MT.O.gas(U8, F)}, OM.dust(MT.LiOH, 3*U8));
 		RM.Electrolyzer .addRecipe1(T, 16, 5120, OP.dust        .mat(MT.LiCl, 1), new FluidStack[] {UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.Cl.gas(U2, F), MT.H.gas(3*U2, F), MT.O.gas(U2, F)}, OM.dust(MT.LiOH, 3*U2));
 		
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.BlueVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Cu, U*1));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.GreenVitriol  .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Fe, U*1));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.RedVitriol    .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Co, U*1));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.PinkVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Mg, U*1));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.CyanVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Ni, U*1));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.WhiteVitriol  .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Zn, U*1));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.GrayVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Mn, U*1));
+		RM.Electrolyzer .addRecipe1(T, 64,   96, ST.tag(1), new FluidStack[] {MT.MartianVitriol.liquid(U2*17, T), UT.Fluids.mul(tFluid, 3, 2, T)}, new FluidStack[] {MT.H2SO4.liquid(U2*21, T), MT.O.gas(U2, F)}, OM.dust(MT.Fe, U*1));
 		
-		RM.Bath         .addRecipe1(T,  0, 2048, OP.dust.mat(MT.Mn, 1), UT.Fluids.mul(tFluid, 6), NF, OP.dust.mat(MT.MnO2, 1));
+		RM.Lightning    .addRecipe0(T,256,   64, new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.O.gas(U, T)}, MT.H2O2.liquid(U*4, F), ZL_IS);
 		
+		RM.Bath         .addRecipe1(T,  0, 2048, OM.dust(MT.Mn), UT.Fluids.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.MnO2, U*1));
+		RM.Bath         .addRecipe1(T,  0, 2048, OM.dust(MT.Si), UT.Fluids.mul(tFluid, 6), MT.H.gas(U*4, F), OM.dust(MT.SiO2, U*1));
 		
 		RM.Bath         .addRecipe1(T,  0, 2048, OP.dust.mat(MT.KAlO2 , 4), UT.Fluids.mul(tFluid, 6), NF, OP.dust.mat(MT.AlO3H3, 7), OP.dust.mat(MT.KOH , 3));
 		RM.Bath         .addRecipe1(T,  0, 2048, OP.dust.mat(MT.NaAlO2, 4), UT.Fluids.mul(tFluid, 6), NF, OP.dust.mat(MT.AlO3H3, 7), OP.dust.mat(MT.NaOH, 3));
@@ -108,14 +119,14 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.NaCl                ,U * 2), MT.H2SO4       .liquid(U* 7, T)                                                            , MT.HCl            .fluid(U * 2, F), OM.dust(MT.NaHSO4, U*7));
 		RM.Mixer        .addRecipe1(T, 16,   32, OM.dust(MT.K2SO4               ,U * 1), MT.H2SO4       .liquid(U* 1, T)                                                            , NF                                , OM.dust(MT.KHSO4, U*2));
 		RM.Mixer        .addRecipe1(T, 16,   32, OM.dust(MT.Na2SO4              ,U * 1), MT.H2SO4       .liquid(U* 1, T)                                                            , NF                                , OM.dust(MT.NaHSO4, U*2));
-		RM.Mixer        .addRecipe1(T, 16,  304, OM.dust(MT.K2S                 ,U * 3), MT.H2O2        .fluid(U *16, T)                                                            , MT.H2O            .liquid(U*12, F), OM.dust(MT.K2SO4, U*7));
-		RM.Mixer        .addRecipe1(T, 16,  304, OM.dust(MT.Na2S                ,U * 3), MT.H2O2        .fluid(U *16, T)                                                            , MT.H2O            .liquid(U*12, F), OM.dust(MT.Na2SO4, U*7));
+		RM.Mixer        .addRecipe1(T, 16,  304, OM.dust(MT.K2S                 ,U * 3), MT.H2O2        .liquid(U*16, T)                                                            , MT.H2O            .liquid(U*12, F), OM.dust(MT.K2SO4, U*7));
+		RM.Mixer        .addRecipe1(T, 16,  304, OM.dust(MT.Na2S                ,U * 3), MT.H2O2        .liquid(U*16, T)                                                            , MT.H2O            .liquid(U*12, F), OM.dust(MT.Na2SO4, U*7));
 		RM.Mixer        .addRecipe1(T, 16,  176, OM.dust(MT.NaCl                ,U * 3), new FluidStack[] {MT.SO2.gas(U*3, T), MT.O.gas(U*1, T), MT.SaltWater.liquid(U*4, T)}       , MT.HCl            .fluid(U * 4, F), OM.dust(MT.Na2SO4, U*7));
 		RM.Mixer        .addRecipe0(T, 16,  800, new FluidStack[] {MT.Glycerol.fluid(U*14, T), MT.HNO3.liquid(U*15, T), MT.H2SO4.liquid(U*21, T)}                                   , MT.Glyceryl       .fluid(U *20, F), MT.SO2.gas(U*6, F)); // + 18 Units of Water + 1 Unit of Oxygen
 		RM.Mixer        .addRecipe0(T, 16,   48, new FluidStack[] {MT.NO.gas(U*2, T), MT.O.gas(U, T)}                                                                               , MT.NO2            .gas  (U * 3, F), ZL_IS);
 		RM.Mixer        .addRecipe0(T, 16,   32, new FluidStack[] {MT.H.gas(U, T), MT.F.gas(U, T)}                                                                                  , MT.HF             .gas  (U * 2, F), ZL_IS);
 		RM.Mixer        .addRecipe0(T, 16,   24, new FluidStack[] {MT.H.gas(U, T), MT.S.liquid(U2, T)}                                                                              , MT.H2S            .gas  (U2* 3, F), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16,  160, new FluidStack[] {MT.NO2.gas(U*6, T), MT.H2O2.fluid(U*4, T)}                                                                       , MT.HNO3           .liquid(U*10, F), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16,  160, new FluidStack[] {MT.NO2.gas(U*6, T), MT.H2O2.liquid(U*4, T)}                                                                      , MT.HNO3           .liquid(U*10, F), ZL_IS);
 		RM.Mixer        .addRecipe0(T, 16,  176, new FluidStack[] {MT.SO3.gas(U*4, T), MT.H2SO4.liquid(U*7, T)}                                                                     , MT.H2S2O7         .liquid(U*11, F), ZL_IS);
 		RM.HeatMixer    .addRecipe0(T, 16,   48, new FluidStack[] {MT.H2S.gas(U*2, T), MT.SO2.gas(U*1, T)}                                                                          , MT.H2O            .liquid(U* 2, F), OM.dust(MT.S, U));
 		RM.Mixer        .addRecipe2(T, 16,   48, OP.dust.mat(MT.Na, 2), OP.dust.mat(MT.S, 1), OP.dust.mat(MT.Na2S, 3));
@@ -195,7 +206,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		
 		RM.Lightning    .addRecipe0(T,256,   16, new FluidStack[] {MT.N.gas(U100, T), MT.O.gas(U100, T)}, MT.NO.gas(U100 * 2, F), ZL_IS);
-		
+		RM.Lightning    .addRecipe1(T,256,  512, OM.dust(MT.K2S , U * 3), MT.O.gas(U*4, T), NF, OM.dust(MT.K2SO4 , U*7));
+		RM.Lightning    .addRecipe1(T,256,  512, OM.dust(MT.Na2S, U * 3), MT.O.gas(U*4, T), NF, OM.dust(MT.Na2SO4, U*7));
 		
 		// C12H22O11 + 6 KNO3 -> 9 CO + 3 N2 + 11 H2O + 3 K2CO3 ; (Rocket Candy)
 		

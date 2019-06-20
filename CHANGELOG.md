@@ -27,6 +27,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.23: (Not released yet, Friday again because bear said it's better on Fridays anyways)
 [IMPROVED] The Loading Step for Prefix Listeners is now much faster as I just casually kill off all MC Furnace Recipes that could potentially be wrong (dust to ingot, ore to ingot, ore to gem, etc) and then simply add the proper ones back later, so I do not have to check each and every Recipe individually.
+[CHANGED] Vitriol Electrolyzation Recipe. Now requires Selector Tag 1 instead of 0 and also needs Water, but it will output Sulfuric Acid directly.
+[CHANGED] Mn + H2O to MnO2 Recipe now outputs Hydrogen.
+[ADDED] The Lightning Processor can now produce H2O2, K2SO4 and Na2SO4.
+[ADDED]
+Duct Tape!
+For the purpose of making Mass Storages carryable.
+Note that depending on the amount of stored Items more durability is used in order to make the Mass Storage moveable.
+There is multiple Tiers of Tape, the basic one having a Limit of 10000, Duct Tape having 100000 and "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84" having a Limit of 10 Million.
+The Tapes act like Tools, similar to Sprays, so I might add a functionality for using Tape on other things.
 
 
 6.10.22:

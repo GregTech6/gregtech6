@@ -901,6 +901,7 @@ public class CS {
 	, TOOL_solderingmetal   = "solderingmetal"
 	, TOOL_thermometer      = "thermometer"
 	, TOOL_prospector       = "prospector"
+	, TOOL_ducttape         = "ducttape"
 	;
 	
 	static {
@@ -940,6 +941,7 @@ public class CS {
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_solderingmetal  , "Soldering Metal");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_thermometer     , "Thermometer");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_prospector      , "Prospector");
+		LH.add(TOOL_LOCALISER_PREFIX + TOOL_ducttape        , "Duct Tape");
 		
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_rotator           , "Rotating things");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_igniter           , "Igniting things");
@@ -977,6 +979,7 @@ public class CS {
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_solderingmetal    , "");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_thermometer       , "Measuring Temperature");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_prospector        , "Prospecting for Ores in an Area");
+		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_ducttape          , "");
 	}
 	
 	/** A Set of different NBT Keys I use for Stuff. */

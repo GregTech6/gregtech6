@@ -97,7 +97,7 @@ public class MultiTileEntityMassStorageBox extends MultiTileEntityMassStorage {
 		if (!aShouldSideBeRendered[aSide]) return null;
 		if (aRenderPass == 0) {
 			int aIndex = aSide<2?aSide:aSide==mFacing?2:aSide==OPPOSITES[mFacing]?3:4;
-			return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[aIndex]));
+			return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[aIndex]), (mMode & B[3]) == 0 ? null : BlockTextureDefault.get(Textures.BlockIcons.DUCT_TAPE));
 		}
 		if (aSide == mFacing) {
 			return BlockTextureDefault.get(BI.decimalDigit(slot(1).stackSize, 4-aRenderPass), slot(1).stackSize < mMaxStorage ? CA_WHITE : CA_RED_255, F, T, T, T);

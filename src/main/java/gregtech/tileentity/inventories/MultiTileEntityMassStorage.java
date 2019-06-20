@@ -72,6 +72,10 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		mMode = aNBT.getByte(NBT_MODE);
 		if (aNBT.hasKey(NBT_CAPACITY)) mMaxStorage = aNBT.getInteger(NBT_CAPACITY);
 		if (aNBT.hasKey(NBT_INPUT)) mPartialUnits = aNBT.getLong(NBT_INPUT);
+		if (aNBT.hasKey(NBT_STATE)) {
+			mMode &= ~B[3];
+			slot(1, ST.load(aNBT, NBT_STATE)); 
+		}
 	}
 	
 	@Override
@@ -83,6 +87,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
+		if ((mMode & B[3]) != 0) ST.save(aNBT, NBT_STATE, slot(1));
 		if (isClientSide() && slotHas(1)) aNBT.setTag("display", UT.NBT.makeString(aNBT.getCompoundTag("display"), "Name", slot(1).getDisplayName()));
 		return super.writeItemNBT2(aNBT);
 	}
@@ -100,6 +105,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TAPE));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -139,6 +145,17 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 				return 2000;
 			}
 		}
+		if (aTool.equals(TOOL_ducttape)) {
+			if ((mMode & B[3]) != 0 || !slotHas(1)) return 0;
+			if (slot(1).stackSize > aRemainingDurability) {
+				aChatReturn.add("Not enough Tape left to contain the Items!");
+				return 0;
+			}
+			mMode |= B[3];
+			updateClientData();
+			updateInventory();
+			return Math.max(100, slot(1).stackSize);
+		}
 		if (aTool.equals(TOOL_cutter)) {
 			mMode ^= B[2];
 			aChatReturn.add((mMode & B[2]) == 0 ? "Won't emit Overflow" : "Will emit Overflow to Inventories below");
@@ -171,6 +188,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 				aChatReturn.add((mMode & B[0]) == 0 ? "Won't fill Inventories below" : "Will fill Inventories below");
 				aChatReturn.add((mMode & B[1]) == 0 ? "Filter stays when empty" : "Filter resets when empty");
 				aChatReturn.add((mMode & B[2]) == 0 ? "Won't emit Overflow" : "Will emit Overflow to Inventories below");
+				if ((mMode & B[3]) != 0) aChatReturn.add("Will keep content when harvested.");
 			}
 			return 1;
 		}
@@ -179,7 +197,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aSide != mFacing) return F;
+		if (aSide != mFacing || (mMode & B[3]) != 0) return F;
 		float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
 		if (tCoords[0] < PX_P[1] || tCoords[0] > PX_N[1] || tCoords[1] < PX_P[1] || tCoords[1] > PX_N[1]) return F;
 		if (isServerSide() && aPlayer != null) {
@@ -270,7 +288,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
-		if (aIsServerSide) {
+		if (aIsServerSide && (mMode & B[3]) == 0) {
 			if (slotHas(0)) slot(0, insertItems(slot(0), F));
 			boolean temp = F;
 			if (mInventoryChanged || aTimer % 100 == 0) {
@@ -317,7 +335,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	/** @return Items Leftover after inserting. */
 	public ItemStack insertItems(ItemStack aStack, boolean aCheckForNEI) {
-		if (ST.invalid(aStack)) return null;
+		if (ST.invalid(aStack) || (mMode & B[3]) != 0) return null;
 		
 		if (!slotHas(1)) {
 			if (aCheckForNEI && aStack.stackSize == NEI_INFINITE) {
@@ -393,6 +411,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	}
 	
 	public boolean allowInsertion(ItemStack aStack) {
+		if ((mMode & B[3]) != 0) return F;
 		if (ST.equal(slot(1), aStack)) return T;
 		OreDictItemData tData = OM.data_(slot(1)), aData = OM.data_(aStack);
 		if (tData != null && aData != null && tData.hasValidPrefixData() && aData.hasValidPrefixData() && tData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < tData.mPrefix.mAmount) {
@@ -402,7 +421,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	}
 	
 	public boolean isFaceVisible() {
-		return SIDES_HORIZONTAL[mFacing] && (!hasCovers()||mCovers.mBehaviours[mFacing]==null||!mCovers.mBehaviours[mFacing].isOpaque(mFacing, mCovers));
+		return SIDES_HORIZONTAL[mFacing] && (mMode & B[3]) == 0 && (!hasCovers()||mCovers.mBehaviours[mFacing]==null||!mCovers.mBehaviours[mFacing].isOpaque(mFacing, mCovers));
 	}
 	
 	@Override
@@ -442,14 +461,14 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[2];}
 	@Override public int getInventoryStackLimit() {return Math.min(slotHas(1) ? getMaxContent() - slot(1).stackSize : getMaxContent(), 64);}
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ACCESSIBLE_SLOTS;}
-	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == 0 && (!SIDES_BOTTOM[aSide] || (mMode & B[0]) == 0) && (!slotHas(1) || (slot(1).stackSize < getMaxContent() && allowInsertion(aStack)));}
-	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == 0 || (slotHas(1) && slot(1).stackSize > 0);}
+	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == 0 && (mMode & B[3]) == 0 && (!SIDES_BOTTOM[aSide] || (mMode & B[0]) == 0) && (!slotHas(1) || (slot(1).stackSize < getMaxContent() && allowInsertion(aStack)));}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == 0 || (slotHas(1) && slot(1).stackSize > 0 && (mMode & B[3]) == 0);}
 	@Override public boolean allowZeroStacks(int aSlot) {return aSlot == 1 && ((mMode & B[1]) == 0 || mPartialUnits > 0);}
 	@Override public void adjacentInventoryUpdated(byte aSide, IInventory aTileEntity) {if (SIDES_BOTTOM[aSide]) updateInventory();}
 	@Override public long getAmountOfItemsInConnectedInventory(byte aSide, ItemStack aStack, long aStopCountingAtThisNumber) {return slotHas(1) && ST.equal(slot(1), aStack) ? slot(1).stackSize : 0;}
 	@Override public long getProgressValue(byte aSide) {return slotHas(1) ? slot(1).stackSize : 0;}
 	@Override public long getProgressMax(byte aSide) {return mMaxStorage;}
-	@Override public boolean canDrop(int aInventorySlot) {return T;}
+	@Override public boolean canDrop(int aInventorySlot) {return aInventorySlot != 1 || (mMode & B[3]) == 0;}
 	
 	@Override
 	public boolean breakBlock() {
@@ -462,6 +481,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	@Override
 	public int addStackToConnectedInventory(byte aSide, ItemStack aStack, boolean aOnlyAddIfItAlreadyHasItemsOfThatTypeOrIsDedicated) {
+		if ((mMode & B[3]) != 0) return 0;
 		if (!aOnlyAddIfItAlreadyHasItemsOfThatTypeOrIsDedicated || slotHas(1)) {
 			ItemStack tStack = insertItems(aStack, F);
 			if (tStack == null) return aStack.stackSize;
@@ -472,6 +492,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	@Override
 	public int removeStackFromConnectedInventory(byte aSide, ItemStack aStack, boolean aOnlyRemoveIfItCanRemoveAllAtOnce) {
+		if ((mMode & B[3]) != 0) return 0;
 		if (slotHas(1) && ST.equal(slot(1), aStack)) {
 			if (aOnlyRemoveIfItCanRemoveAllAtOnce && slot(1).stackSize < aStack.stackSize) return 0;
 			int tAmount = Math.min(aStack.stackSize, slot(1).stackSize);

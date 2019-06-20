@@ -338,6 +338,28 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		CR.shapeless(IL.Compass_North.get(1), CR.DEF, new Object[] {ST.make(Items.compass, 1, W)});
 		
 		
+		IL.Tape.set(                            addItem(tLastID = 12000, "Tape", "Full Roll", TC.stack(TC.PANNUS, 1), TC.stack(TC.LIMUS, 1)));
+		IL.Tape_Used.set(                       addItem(tLastID = 12001, "Tape", "Used Roll", TC.stack(TC.PANNUS, 1), TC.stack(TC.LIMUS, 1)));
+		CR.shaped(IL.Tape.get(1), CR.DEF, "PPP", " G ", 'P', OD.paperEmpty, 'G', OD.itemGlue);
+		tBehaviour = new Behavior_Duct_Tape(null, IL.Tape_Used.get(1), IL.Tape.get(1), 0, 10000);
+		addItemBehavior(12000, tBehaviour);
+		addItemBehavior(12001, tBehaviour);
+		
+		IL.Duct_Tape.set(                       addItem(tLastID = 12002, "Duct Tape", "Full Roll", TC.stack(TC.FABRICO, 1), TC.stack(TC.LIMUS, 1), OD.craftingDuctTape));
+		IL.Duct_Tape_Used.set(                  addItem(tLastID = 12003, "Duct Tape", "Used Roll", TC.stack(TC.FABRICO, 1), TC.stack(TC.LIMUS, 1)));
+		CR.shaped(IL.Duct_Tape.get(1), CR.DEF, "PPP", " G ", 'P', OP.foil.dat(MT.Plastic), 'G', OD.itemGlue);
+		tBehaviour = new Behavior_Duct_Tape(null, IL.Duct_Tape_Used.get(1), IL.Duct_Tape.get(1), 1, 100000);
+		addItemBehavior(12002, tBehaviour);
+		addItemBehavior(12003, tBehaviour);
+		
+		IL.Brain_Tape.set(                      addItem(tLastID = 12008, "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84", "Full Roll", TC.stack(TC.TUTAMEN, 1), TC.stack(TC.LIMUS, 1), OD.craftingDuctTape));
+		IL.Brain_Tape_Used.set(                 addItem(tLastID = 12009, "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84", "Used Roll", TC.stack(TC.TUTAMEN, 1), TC.stack(TC.LIMUS, 1), OD.craftingDuctTape));
+		CR.shaped(IL.Brain_Tape.get(1), CR.DEF, "PPP", " G ", 'P', OP.foil.dat(ANY.W), 'G', OD.itemGlue);
+		tBehaviour = new Behavior_Duct_Tape(null, IL.Brain_Tape_Used.get(1), IL.Brain_Tape.get(1), 2, 10000000);
+		addItemBehavior(12008, tBehaviour);
+		addItemBehavior(12009, tBehaviour);
+		
+		
 		
 		IL.Key_Iron.set(                        addItem(tLastID = 30000, "Iron Key"    , "", OD.itemKey, new OreDictItemData(ANY.Iron  , U4), Behavior_Key.INSTANCE, TC.stack(TC.MACHINA, 1))); CR.shaped(IL.Key_Iron    .get(3), CR.DEF_NCC, "fPx", 'P', OP.plate.dat(ANY.Iron));
 		IL.Key_Gold.set(                        addItem(tLastID = 30001, "Gold Key"    , "", OD.itemKey, new OreDictItemData(MT.Au     , U4), Behavior_Key.INSTANCE, TC.stack(TC.MACHINA, 1))); CR.shaped(IL.Key_Gold    .get(3), CR.DEF_NCC, "fPx", 'P', OP.plate.dat(MT.Au));

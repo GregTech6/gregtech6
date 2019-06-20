@@ -378,7 +378,7 @@ public enum IL implements IItemContainer {
 	Cover_SolarPanel, Cover_SolarPanel_8V, Cover_SolarPanel_LV, Cover_SolarPanel_MV, Cover_SolarPanel_HV, Cover_SolarPanel_EV, Cover_SolarPanel_IV, Cover_SolarPanel_LuV, Cover_SolarPanel_ZPM, Cover_SolarPanel_UV,
 	Ingot_IridiumAlloy,
 	Dye_SquidInk, Dye_Bonemeal, Dye_Cactus, Dye_Cocoa,
-	Duct_Tape,
+	Tape,Tape_Used, Duct_Tape, Duct_Tape_Used, Brain_Tape, Brain_Tape_Used,
 	Dynamite, Dynamite_Strong,
 	Paper_Printed_Pages, Paper_Printed_Pages_Many,
 	Paper_Magic_Empty, Paper_Magic_Page, Paper_Magic_Pages,

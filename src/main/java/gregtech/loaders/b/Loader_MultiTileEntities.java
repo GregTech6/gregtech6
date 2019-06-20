@@ -111,20 +111,20 @@ public class Loader_MultiTileEntities implements Runnable {
 		MultiTileEntityRegistry aRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		
 		MultiTileEntityBlock
-		  aMetal        = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "iron"            , Material.iron                 , Block.soundTypeMetal  , TOOL_pickaxe      , 0, 0, 15, F, F)
-		, aMetalChips   = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "iron"            , Material.iron                 , Block.soundTypeMetal  , TOOL_shovel       , 0, 0, 15, F, F)
-		, aMetalWires   = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "machine"         , MaterialMachines.instance     , Block.soundTypeMetal  , TOOL_cutter       , 0, 0, 15, F, F)
-		, aMachine      = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "machine"         , MaterialMachines.instance     , Block.soundTypeMetal  , TOOL_wrench       , 0, 0, 15, F, F)
-		, aWooden       = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "wood"            , Material.wood                 , Block.soundTypeWood   , TOOL_axe          , 0, 0, 15, F, F)
-		, aBush         = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "leaves"          , Material.leaves               , Block.soundTypeGrass  , TOOL_axe          , 0, 0, 15, F, F)
-		, aStone        = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "rock"            , Material.rock                 , Block.soundTypeStone  , TOOL_pickaxe      , 0, 0, 15, F, F)
-		, aWool         = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "cloth"           , Material.cloth                , Block.soundTypeCloth  , TOOL_shears       , 0, 0, 15, F, F)
-		, aTNT          = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "tnt"             , Material.tnt                  , Block.soundTypeGrass  , TOOL_pickaxe      , 0, 0, 15, F, F)
-		, aUtilMetal    = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "redstoneLight"   , Material.redstoneLight        , Block.soundTypeMetal  , TOOL_pickaxe      , 0, 0, 15, F, F)
-		, aUtilStone    = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "redstoneLight"   , Material.redstoneLight        , Block.soundTypeStone  , TOOL_pickaxe      , 0, 0, 15, F, F)
-		, aUtilWood     = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "redstoneLight"   , Material.redstoneLight        , Block.soundTypeWood   , TOOL_axe          , 0, 0, 15, F, F)
-		, aUtilWool     = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "redstoneLight"   , Material.redstoneLight        , Block.soundTypeCloth  , TOOL_shears       , 0, 0, 15, F, F)
-		, aHive         = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "rock"            , MaterialScoopable.instance    , Block.soundTypeWood   , TOOL_scoop        , 0, 0, 15, F, F)
+		  aMetal      = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "iron"         , Material.iron             , Block.soundTypeMetal, TOOL_pickaxe, 0, 0, 15, F, F)
+		, aMetalChips = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "iron"         , Material.iron             , Block.soundTypeMetal, TOOL_shovel , 0, 0, 15, F, F)
+		, aMetalWires = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "machine"      , MaterialMachines.instance , Block.soundTypeMetal, TOOL_cutter , 0, 0, 15, F, F)
+		, aMachine    = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "machine"      , MaterialMachines.instance , Block.soundTypeMetal, TOOL_wrench , 0, 0, 15, F, F)
+		, aWooden     = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "wood"         , Material.wood             , Block.soundTypeWood , TOOL_axe    , 0, 0, 15, F, F)
+		, aBush       = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "leaves"       , Material.leaves           , Block.soundTypeGrass, TOOL_axe    , 0, 0, 15, F, F)
+		, aStone      = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "rock"         , Material.rock             , Block.soundTypeStone, TOOL_pickaxe, 0, 0, 15, F, F)
+		, aWool       = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "cloth"        , Material.cloth            , Block.soundTypeCloth, TOOL_shears , 0, 0, 15, F, F)
+		, aTNT        = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "tnt"          , Material.tnt              , Block.soundTypeGrass, TOOL_pickaxe, 0, 0, 15, F, F)
+		, aUtilMetal  = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "redstoneLight", Material.redstoneLight    , Block.soundTypeMetal, TOOL_pickaxe, 0, 0, 15, F, F)
+		, aUtilStone  = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "redstoneLight", Material.redstoneLight    , Block.soundTypeStone, TOOL_pickaxe, 0, 0, 15, F, F)
+		, aUtilWood   = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "redstoneLight", Material.redstoneLight    , Block.soundTypeWood , TOOL_axe    , 0, 0, 15, F, F)
+		, aUtilWool   = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "redstoneLight", Material.redstoneLight    , Block.soundTypeCloth, TOOL_shears , 0, 0, 15, F, F)
+		, aHive       = MultiTileEntityBlock.getOrCreate(MD.GT.mID, "rock"         , MaterialScoopable.instance, Block.soundTypeWood , TOOL_scoop  , 0, 0, 15, F, F)
 		;
 		
 		storages    (aRegistry, aMetal, aMetalChips, aMetalWires, aMachine, aWooden, aBush, aStone, aWool, aTNT, aHive, aUtilMetal, aUtilStone, aUtilWood, aUtilWool, MT.NULL, null);

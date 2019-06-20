@@ -268,7 +268,7 @@ public class GT6_Main extends Abstract_Mod {
 				if (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0) {
 					OreDictItemData tData2 = OM.anydata(tEntry.getValue());
 					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
-						if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tIterator.remove();
+						tIterator.remove();
 					}
 				}
 			}
