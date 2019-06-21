@@ -27,6 +27,7 @@ import java.util.List;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirstClient;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataInteger;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
@@ -61,7 +62,7 @@ import net.minecraftforge.client.ForgeHooksClient;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, ITileEntityProgress, ITileEntityAdjacentInventoryUpdatable, IMTE_SyncDataInteger, IMTE_SyncDataShort, IMTE_OnRegistrationFirstClient {
+public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, ITileEntityProgress, ITileEntityAdjacentInventoryUpdatable, IMTE_GetMaxStackSize, IMTE_SyncDataInteger, IMTE_SyncDataShort, IMTE_OnRegistrationFirstClient {
 	public int oStacksize = 0, mMaxStorage = 1000000;
 	public long mPartialUnits = 0;
 	public byte mMode = 0;
@@ -84,7 +85,10 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		if ((mMode & B[3]) != 0) ST.save(aNBT, NBT_STATE, slot(1));
+		if ((mMode & B[3]) != 0) {
+			aNBT.setByte(NBT_MODE, mMode);
+			ST.save(aNBT, NBT_STATE, slot(1));
+		}
 		if (isClientSide() && slotHas(1)) aNBT.setTag("display", UT.NBT.makeString(aNBT.getCompoundTag("display"), "Name", slot(1).getDisplayName()));
 		return super.writeItemNBT2(aNBT);
 	}
@@ -475,6 +479,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	@Override public long getProgressValue(byte aSide) {return slotHas(1) ? slot(1).stackSize : 0;}
 	@Override public long getProgressMax(byte aSide) {return mMaxStorage;}
 	@Override public boolean canDrop(int aInventorySlot) {return aInventorySlot != 1 || (mMode & B[3]) == 0;}
+	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return slotHas(1) ? 1 : aDefault;}
 	
 	@Override
 	public boolean breakBlock() {
