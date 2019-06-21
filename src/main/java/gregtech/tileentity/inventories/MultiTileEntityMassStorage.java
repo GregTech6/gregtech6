@@ -72,10 +72,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		mMode = aNBT.getByte(NBT_MODE);
 		if (aNBT.hasKey(NBT_CAPACITY)) mMaxStorage = aNBT.getInteger(NBT_CAPACITY);
 		if (aNBT.hasKey(NBT_INPUT)) mPartialUnits = aNBT.getLong(NBT_INPUT);
-		if (aNBT.hasKey(NBT_STATE)) {
-			mMode &= ~B[3];
-			slot(1, ST.load(aNBT, NBT_STATE)); 
-		}
+		if (aNBT.hasKey(NBT_STATE)) slot(1, ST.load(aNBT, NBT_STATE)); 
 	}
 	
 	@Override
@@ -99,6 +96,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		if (slotHas(1)) aList.add(Chat.YELLOW + slot(1).getDisplayName() + Chat.GRAY + ": " + Chat.WHITE + slot(1).stackSize);
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.1") + mMaxStorage);
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.2"));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CUTTER));
@@ -106,6 +104,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TAPE));
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_UNTAPE));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -155,6 +154,13 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			updateClientData();
 			updateInventory();
 			return Math.max(100, slot(1).stackSize);
+		}
+		if (aTool.equals(TOOL_scissors) || aTool.equals(TOOL_knife)) {
+			if ((mMode & B[3]) == 0) return 0;
+			mMode &= ~B[3];
+			updateClientData();
+			updateInventory();
+			return 1000;
 		}
 		if (aTool.equals(TOOL_cutter)) {
 			mMode ^= B[2];

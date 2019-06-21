@@ -37,6 +37,7 @@ For the purpose of making Mass Storages carryable.
 Note that depending on the amount of stored Items more durability is used in order to make the Mass Storage moveable.
 There is multiple Tiers of Tape, the basic one having a Limit of 10000, Duct Tape having 100000 and "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84" having a Limit of 10 Million.
 The Tapes act like Tools, similar to Sprays, so I might add a functionality for using Tape on other things.
+You have to manually remove the Tape from a placed Mass Storage or Item Barrel again to use them. For this you can use Scissors or Knives.
 
 
 6.10.22:
