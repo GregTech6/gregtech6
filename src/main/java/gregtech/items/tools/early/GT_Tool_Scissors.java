@@ -21,9 +21,11 @@ package gregtech.items.tools.early;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.CS.SFX;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Shears;
+import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.behaviors.Behavior_TripwireCutting;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
@@ -93,6 +95,7 @@ public class GT_Tool_Scissors extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_knife, SFX.MC_DIG_CLOTH, getToolDamagePerContainerCraft(), !canBlock()));
 		aItem.addItemBehavior(aID, new Behavior_Shears(100));
 		aItem.addItemBehavior(aID, new Behavior_TripwireCutting(100));
 	}
