@@ -49,7 +49,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  * 
- * Class containing Recipe Maps, for Fuel Maps for into gregapi.data.FM
+ * Class containing Recipe Maps, for Fuel Maps go into gregapi.data.FM
  */
 @SuppressWarnings("deprecation")
 public class RM {
@@ -293,11 +293,17 @@ public class RM {
 		return NI;
 	}
 	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput) {
-		return add_smelting(aInput, aOutput, 0);
+		return add_smelting(aInput, aOutput, 0, T);
+	}
+	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput, boolean aRemoveOthers) {
+		return add_smelting(aInput, aOutput, 0, aRemoveOthers);
 	}
 	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput, float aEXP) {
+		return add_smelting(aInput, aOutput, aEXP, T);
+	}
+	public static boolean add_smelting(ItemStack aInput, ItemStack aOutput, float aEXP, boolean aRemoveOthers) {
 		if (ST.invalid(aInput) || ST.invalid(aOutput)) return F;
-		rem_smelting(aInput);
+		if (aRemoveOthers) rem_smelting(aInput);
 		aOutput = OM.get_(aOutput);
 		if (ST.container(aInput, F) != null || ST.equal_(aInput, aOutput, F) || !ConfigsGT.RECIPES.get(ConfigCategories.Machines.smelting, aInput, T)) return F;
 		FurnaceRecipes.smelting().func_151394_a(aInput, ST.copy_(aOutput), aEXP);

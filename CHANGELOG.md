@@ -1,6 +1,18 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.32: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.31: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.30: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.10.29: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +34,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.24: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Some Furnace Recipes being missing due to me accidentially removing most of my own Furnace Recipes in the previous Versions change. XD
+[CHANGED] Smelting any Material based thing other than Dusts and Scraps in a Furnace will give EXP depending on the Tool Quality of the Material + 1.
+[CHANGED] IC2-Exp Pahoehoe Lava will now give slightly more outputs when centrifuged, but also uses more Power.
 
 
 6.10.23:
@@ -38,6 +52,7 @@ Note that depending on the amount of stored Items more durability is used in ord
 There is multiple Tiers of Tape, the basic one having a Limit of 10000, Duct Tape having 100000 and "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84" having a Limit of 10 Million.
 The Tapes act like Tools, similar to Sprays, so I might add a functionality for using Tape on other things.
 You have to manually remove the Tape from a placed Mass Storage or Item Barrel again to use them. For this you can use Scissors or Knives.
+Partial Dusts and Stuff will not be picked up and just drop on the Floor.
 
 
 6.10.22:
@@ -596,7 +611,7 @@ Added Miniature Aether Portal, 128m Error Margin and 1:1 Distance. Requires a GT
 [NOTE] The Default Config Pack updated again to disable GalaxySpace Worldgen on the Overworld.
 [NOTE] Moved everything over to Kubuntu. Also using Shell Scripts is waaay better than using Batch Files. I should have done that back on Windows, since it does have Powershell...
 [FIXED] Did a minor Code Refactoring thanks to updating Eclipse to Photon.
-[FIXED] IC2C Iron -> Steel Exploit
+[FIXED] IC2-Classic Iron -> Steel Exploit
 [FIXED] Minor Code Issue inside the Prefix Filters readFromNBT Function. (it used the Prefix Parser instead of the way faster Prefix Map)
 [FIXED] Major Code Issue that has caused about 2 frikkin Minutes of extra Startup Time! I made those 2mins into 4secs now, so yeah GT6 loads faster now. Hurray!
 [IMPROVED] OreDictPrefix Parsing should take slightly less time now. Might reduce Loading Screen Times a little.
@@ -913,7 +928,7 @@ Some of Gany's Wood Stuff is now OreDict Supported, Chest and Workbench wise.
 [FIXED] Silk Touch on GT6 Rock Types works now.
 [FIXED] Capenters Blocks are now properly harvestable by GT6 Tools the way the Carpenters Blocks are intended to be harvested (so Pickaxe for stoned Blocks etc).
 [FIXED] Boxinator Wood Plank Recipe not using enough Planks resulting in a Dupe Glitch.
-[FIXED] IC2Exp Fuel Rod Recycling to now give Zirconium. And it also has to happen in a Tier 3 GT6 Centrifuge now.
+[FIXED] IC2-Exp Fuel Rod Recycling to now give Zirconium. And it also has to happen in a Tier 3 GT6 Centrifuge now.
 [FIXED] GT6 Block Explosions cannot harm Withers, Ender Dragons and most modded Bosses anymore.
 [FIXED] TNT Blocks not being triggered by GT6 Tools that ignite Stuff.
 [CHANGED] Fluid Pipes now have to be clicked with the Magnifying Glass in their middle, in order for the content to be displayed.
@@ -1077,7 +1092,7 @@ Nexus Building at the Center of the Overworld (Disabled in Config per default), 
 
 6.06.05:
 [COMPAT] The 7 Botania Quartzes get handled properly by my Machines and Recipes now.
-[FIXED] Plenty of Bugs with: Wrenches in IC2C, wrong Tooltips on Spikes, GT6 Cinnamon Bark harvesting without Pams installed, Glass/Sulfur not being Mortarable, and more.
+[FIXED] Plenty of Bugs with: Wrenches in IC2-Classic, wrong Tooltips on Spikes, GT6 Cinnamon Bark harvesting without Pams installed, Glass/Sulfur not being Mortarable, and more.
 [CHANGED] I just noticed that my "registering TechGuns Ammo as not auto-insertable to the Storage Inserter" was pretty much useless, since the Mod actually has an Ammo Inventory (which isn't and wont be scanned by said Storage Inserter), that I didn't think about when doing that. So that Registration will be undone for everything of TG.
 [CHANGED] Mortar Recipes can now accept larger Items like Ingots, Plates and Gems if the Materials they are made of are Brittle! Coal, Salt, Redstone, Sulfur, Stone and similar count as Brittle.
 [ADDED] Rubber Pipes. They are the only Pipes that can directly be "broken" by Hand (kindof like unscrewing a Rubber Hose). Also changed the Max Temperature on Wooden, Plastic (97°C) and Rubber Pipes, so Steam is no option for those ever! if you don't like their Black Color, then paint them. :P
@@ -1661,7 +1676,7 @@ They will generate in Forests and Plains with random Berry Type.
 
 
 6.05.29:
-[FIXED] Jugs and Measuring Pots crashing when rightclicking a TileEntity while filled with Water and with IC2Classic being installed instead of IC2exp.
+[FIXED] Jugs and Measuring Pots crashing when rightclicking a TileEntity while filled with Water and with IC2-Classic being installed instead of IC2-Exp.
 [FIXED] Club did not give Time to Strike Achievement.
 [CHANGED] You can now only drink from placed Jugs if you click their Top.
 [ADDED] Jugs, Cups and Measuring Pots now get filled with Water when they are in the Rain.
@@ -3076,7 +3091,7 @@ You can rightclick Fluids into and out of it, if there is a mixing recipe using 
 [FIXED] Default Unification Targets not getting set properly, causing them to be overridden by the PrefixItems and PrefixBlocks.
 [FIXED] A Server Issue when doing certain things with GT Tools.
 [FIXED] Not being able to use Fluids in Electrolyzer due to Recipes only existing for Dusts.
-[ADDED] C-Foam. Better than IC2s Foam and also available in the 6 types of GT Slabs.
+[ADDED] C-Foam. Better than IC2 Foam and also available in the 6 types of GT Slabs.
 [ADDED] precolored C-Foam Spray also added the regular Spray Paint.
 [ADDED] C-Foam removal and C-Foam hardening Spray.
 [ADDED] C-Foam to GT Pipes and Wires. Also makes them as Blast Resistant as regular C-Foam Blocks.

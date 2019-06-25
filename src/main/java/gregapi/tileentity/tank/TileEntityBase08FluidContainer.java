@@ -103,14 +103,10 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (mTank.amount() > 0) {
-			aList.add(Chat.CYAN + mTank.amount() + " L of " + UT.Fluids.name(mTank, T) + " (" + (UT.Fluids.gas(mTank) ? "Gaseous" : "Liquid") + "; Max: "+mTank.capacity()+" L)");
-			if (mTank.amount() >= 250 && isDrinkable()) {
-				FoodStatFluid.INSTANCE.addAdditionalToolTips(aStack.getItem(), aList, aStack, aF3_H);
-				if (aStack.stackSize != 1) aList.add(LH.Chat.RED + LH.get(LH.REQUIREMENT_UNSTACKED));
-			}
-		} else {
-			aList.add(Chat.CYAN + "Max: " + mTank.capacity() + " L");
+		aList.add(Chat.CYAN + mTank.contentcap());
+		if (mTank.has(250) && isDrinkable()) {
+			FoodStatFluid.INSTANCE.addAdditionalToolTips(aStack.getItem(), aList, aStack, aF3_H);
+			if (aStack.stackSize != 1) aList.add(LH.Chat.RED + LH.get(LH.REQUIREMENT_UNSTACKED));
 		}
 		aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_HEATPROOF) + LH.Chat.WHITE + mTemperatureMax + LH.Chat.RED + " K");
 		if (mLiquidProof    ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_LIQUIDPROOF));
@@ -141,13 +137,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 			return GarbageGT.trash(mTank, 1000);
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) {
-				if (mTank.isEmpty()) {
-					aChatReturn.add("Container is empty");
-				} else {
-					aChatReturn.add("Contains: " + mTank.amount() + " L of " + UT.Fluids.name(mTank, T) + " (" + (UT.Fluids.gas(mTank) ? "Gaseous" : "Liquid") + ")");
-				}
-			}
+			if (aChatReturn != null) aChatReturn.add(mTank.content());
 			return 1;
 		}
 		return 0;
@@ -402,8 +392,8 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	
 	@Override
 	public int removeFluidFromConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyRemoveIfItCanRemoveAllAtOnce) {
-		if (!mTank.contains(aFluid) || mTank.amount() < (aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return 0;
-		return (int)mTank.remove(aFluid.amount);
+		if (mTank.contains(aFluid) && mTank.has(aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)mTank.remove(aFluid.amount);
+		return 0;
 	}
 	
 	@Override
@@ -412,14 +402,14 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	}
 	
 	public boolean isDrinkable() {
-		return this instanceof IMTE_GetFoodValues && mTank.amount() >= 250 && DrinksGT.REGISTER.containsKey(mTank.name());
+		return this instanceof IMTE_GetFoodValues && mTank.has(250) && DrinksGT.REGISTER.containsKey(mTank.name());
 	}
 	
 	public boolean isFluidAllowed(FluidStack aFluid) {
 		return aFluid != null && !UT.Fluids.powerconducting(aFluid) && (UT.Fluids.gas(aFluid) ? mGasProof : mLiquidProof) && (mAcidProof || !UT.Fluids.acid(aFluid)) && (mPlasmaProof || !UT.Fluids.plasma(aFluid) && UT.Fluids.temperature(aFluid) <= mTemperatureMax);
 	}
 	
-	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.amount() > 0 ? 1 : aDefault;}
+	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.has() ? 1 : aDefault;}
 	
 	public boolean canWaterCrops() {return F;}
 	public boolean canPickUpFluids() {return F;}

@@ -130,26 +130,6 @@ public class Loader_OreProcessing implements Runnable {
 		sheetGt                     .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
 		foil                        .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, foil));
 		
-		scrapGt                     .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		rockGt                      .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		dust                        .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		dustSmall                   .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		dustTiny                    .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		dustImpure                  .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		dustPure                    .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		dustRefined                 .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		rawOreChunk                 .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		chunk                       .addListener(new OreProcessing_Smelting(U*2, new And(ANTIMATTER.NOT, FURNACE)));
-		rubble                      .addListener(new OreProcessing_Smelting(U*2, new And(ANTIMATTER.NOT, FURNACE)));
-		pebbles                     .addListener(new OreProcessing_Smelting(U*2, new And(ANTIMATTER.NOT, FURNACE)));
-		cluster                     .addListener(new OreProcessing_Smelting(U*2, new And(ANTIMATTER.NOT, FURNACE)));
-		crushed                     .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		crushedTiny                 .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		crushedPurified             .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		crushedPurifiedTiny         .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		crushedCentrifuged          .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		crushedCentrifugedTiny      .addListener(new OreProcessing_Smelting( -1, new And(ANTIMATTER.NOT, FURNACE)));
-		
 		rawOreChunk                 .addListener(new OreProcessing_Maceration(crushedTiny   , 3, ANTIMATTER.NOT));
 		chunk                       .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
 		rubble                      .addListener(new OreProcessing_Maceration(dust          , 2, ANTIMATTER.NOT));
@@ -459,21 +439,6 @@ public class Loader_OreProcessing implements Runnable {
 					if (tStackOutputs.size() > 0 || tFluidOutputs.size() > 0) mTargetRecipeMap.addRecipe(T, new ItemStack[] {ST.amount(tComponents.getCommonDivider(), aEvent.mStack)}, tStackOutputs.toArray(ZL_IS), NI, ZL_LONG, ZL_FS, tFluidOutputs.toArray(ZL_FS), UT.Code.units(tAmount, U, 256, T), (tAmount * 16) / U, 0);
 				}
 			}
-		}
-	}
-	
-	public static class OreProcessing_Smelting implements IOreDictListenerEvent {
-		private final ICondition<OreDictMaterial> mCondition;
-		private final long mTargetAmount;
-		
-		public OreProcessing_Smelting(long aTargetAmount, ICondition<OreDictMaterial> aCondition) {
-			mTargetAmount = aTargetAmount;
-			mCondition = aCondition;
-		}
-		
-		@Override
-		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (mCondition.isTrue(aEvent.mMaterial)) RM.add_smelting(aEvent.mStack, OM.ingot(aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units(UT.Code.units(aEvent.mMaterial.mTargetSmelting.mAmount, U, aEvent.mMaterial.mTargetSmelting.mMaterial.mTargetSolidifying.mAmount, F), U, mTargetAmount<0?aEvent.mPrefix.mAmount:mTargetAmount, F)));
 		}
 	}
 	

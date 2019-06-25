@@ -109,7 +109,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
 			mDisplay = 0;
-			for (FluidTankGT tTank : mTanks) if (tTank.amount() > 0) {
+			for (FluidTankGT tTank : mTanks) if (tTank.has()) {
 				mDisplay = (short)(tTank.getFluid().getFluidID()+1);
 				break;
 			}
@@ -117,8 +117,8 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	}
 	
 	protected boolean canOutput(Recipe aRecipe) {
-		for (int i = 0; i < mTanks.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanks[i].amount() != 0) {
-			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanks[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || UT.Fluids.lighter(aRecipe.mFluidOutputs[i]) || mTanks[i].amount() > Math.max(999, aRecipe.mFluidOutputs[i].amount)))) {
+		for (int i = 0; i < mTanks.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanks[i].has()) {
+			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanks[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || UT.Fluids.lighter(aRecipe.mFluidOutputs[i]) || mTanks[i].has(Math.max(1000, 1+aRecipe.mFluidOutputs[i].amount))))) {
 				return F;
 			}
 		}
@@ -199,7 +199,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	@Override
 	protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
 		if (aFluidToDrain == null) {
-			for (int i = 0; i < mTanks.length; i++) if (mTanks[i].amount() != 0) return mTanks[i];
+			for (int i = 0; i < mTanks.length; i++) if (mTanks[i].has()) return mTanks[i];
 		} else {
 			for (int i = 0; i < mTanks.length; i++) if (mTanks[i].contains(aFluidToDrain)) return mTanks[i];
 		}
@@ -307,7 +307,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	@Override
 	public int removeFluidFromConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyRemoveIfItCanRemoveAllAtOnce) {
 		if (aFluid == NF) return 0;
-		for (FluidTankGT tTank : mTanks) if (tTank.contains(aFluid)) if (tTank.amount() >= (aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)tTank.remove(aFluid.amount);
+		for (FluidTankGT tTank : mTanks) if (tTank.contains(aFluid)) if (tTank.has(aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)tTank.remove(aFluid.amount);
 		return 0;
 	}
 	

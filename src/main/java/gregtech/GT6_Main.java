@@ -26,7 +26,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -72,7 +71,6 @@ import gregapi.item.multiitem.behaviors.Behavior_Turn_Into;
 import gregapi.item.multiitem.behaviors.IBehavior;
 import gregapi.item.prefixitem.PrefixItem;
 import gregapi.network.NetworkHandler;
-import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
@@ -104,7 +102,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.config.Configuration;
@@ -256,28 +253,15 @@ public class GT6_Main extends Abstract_Mod {
 		new CompatMods(MD.MC, this) {@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 			// Clearing the AE Grindstone Recipe List, so we don't need to worry about pre-existing Recipes.
 			if (MD.AE.mLoaded) AEApi.instance().registries().grinder().getRecipes().clear();
-			
+			// We ain't got Water in that Water Bottle. That would be an infinite Water Exploit.
 			for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
-			
-			// Just out right remove all Furnace Recipes, that both Input and Output OreDicted Stuff at the same time, GregTech will add the right ones later anyways.
-			@SuppressWarnings("unchecked")
-			Iterator<Entry<ItemStack, ItemStack>> tIterator = FurnaceRecipes.smelting().getSmeltingList().entrySet().iterator();
-			while (tIterator.hasNext()) {
-				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-				OreDictItemData tData1 = OM.anydata(tEntry.getKey());
-				if (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0) {
-					OreDictItemData tData2 = OM.anydata(tEntry.getValue());
-					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
-						tIterator.remove();
-					}
-				}
-			}
 			
 			ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
 				new Loader_BlockResistance(),
 				new Loader_Fuels(),
 				new Loader_Loot(),
 				
+				new Loader_Recipes_Furnace(), // has to be before everything else!
 				new Loader_Recipes_Woods(), // has to be before Vanilla!
 				new Loader_Recipes_Vanilla(), // has to be after Woods!
 				new Loader_Recipes_Temporary(),

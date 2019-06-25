@@ -94,7 +94,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 		if (mTank.isEmpty()) {
 			aChatReturn.add("Tank is empty");
 		} else {
-			aChatReturn.add("Contains: " + mTank.amount() + " L of " + UT.Fluids.name(mTank, T) + " (" + (UT.Fluids.gas(mTank) ? "Gaseous" : "Liquid") + ")");
+			aChatReturn.add(mTank.content());
 		}
 	}
 	

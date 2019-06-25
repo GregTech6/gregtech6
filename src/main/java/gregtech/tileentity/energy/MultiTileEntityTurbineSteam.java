@@ -76,7 +76,7 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 		if (mEnergyProducedNextTick > 0) {
 			mStorage.mEnergy += mEnergyProducedNextTick;
 			mEnergyProducedNextTick = 0;
-		} else if (mTank.amount() >= getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY) * 2) {
+		} else if (mTank.has(getEnergySizeInputMin(mConverter.mEnergyIN.mType, SIDE_ANY) * 2)) {
 			long tSteam = mTank.amount();
 			mSteamCounter += tSteam;
 			mStorage.mEnergy += tSteam / STEAM_PER_EU;

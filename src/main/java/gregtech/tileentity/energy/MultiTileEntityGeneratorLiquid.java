@@ -171,13 +171,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		if (aTool.equals(TOOL_extinguisher  ) && (aSide == mFacing || aPlayer == null)) {mBurning = F; mCooldown =   0; return 10000;}
 		
 		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) {
-				if (mTank.isEmpty()) {
-					aChatReturn.add("Box is empty");
-				} else {
-					aChatReturn.add("Contains: " + mTank.amount() + " L of " + UT.Fluids.name(mTank, T) + " (" + (UT.Fluids.gas(mTank) ? "Gaseous" : "Liquid") + ")");
-				}
-			}
+			if (aChatReturn != null) aChatReturn.add(mTank.content());
 			return 1;
 		}
 		return 0;

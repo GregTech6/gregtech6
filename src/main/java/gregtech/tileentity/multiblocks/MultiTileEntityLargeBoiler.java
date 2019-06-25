@@ -187,7 +187,6 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 					mEfficiency -= tConversions;
 					if (mEfficiency < 5000) mEfficiency = 5000;
 				}
-				if (mTanks[0].amount() <= 0) mTanks[0].setEmpty();
 				mTanks[1].setFluid(FL.Steam.make(mTanks[1].amount() + UT.Code.units(tConversions, 10000, mEfficiency * 160, F)));
 				mEnergy -= tConversions * 80;
 				mCoolDownResetTimer = 128;
@@ -263,7 +262,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 			mBarometer = (byte)UT.Code.scale(mTanks[1].amount(), mTanks[1].capacity(), 31, F);
 			
 			// Well the Boiler gets structural Damage when being too hot, or when being too full of Steam.
-			if ((mBarometer > 4 && !checkStructure(F)) || mEnergy > mCapacity || mTanks[1].amount() >= mTanks[1].capacity()) {
+			if ((mBarometer > 4 && !checkStructure(F)) || mEnergy > mCapacity || mTanks[1].isFull()) {
 				explode();
 			}
 		}
@@ -306,7 +305,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 		} else {
 			aChatReturn.add("No Calcification in this Boiler");
 		}
-		aChatReturn.add("Contained H2O: " + mTanks[0].amount());
+		aChatReturn.add(mTanks[0].content("WARNING: NO WATER!!!"));
 	}
 	
 	@Override

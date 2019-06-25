@@ -175,14 +175,14 @@ public class Loader_Fuels implements Runnable {
 		FM.Gas          .addRecipe0(T, - 64,  4, UT.Fluids.make("propylene", 1)                     , FL.Water.make(1), UT.Fluids.make("carbondioxide", 1));
 		
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                        , FL.Lava_Pahoehoe.make(1), ZL_IS);
-//      FM.Hot          .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2hotwater", 1)                   , FL.DistW.make(1), ZL_ITEMSTACK);
-//      FM.Hot          .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2hotcoolant", 1)                 , FL.Coolant_IC2.make(1), ZL_ITEMSTACK);
+//      FM.Hot          .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2hotwater", 1)                   , FL.DistW.make(1), ZL_IS);
+//      FM.Hot          .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2hotcoolant", 1)                 , FL.Coolant_IC2.make(1), ZL_IS);
 		
 		
 		
 		FM.Turbine      .addRecipe0(T, - 16, 10/STEAM_PER_EU, UT.Fluids.make("steam", 160)          , FL.DistW.make(1), ZL_IS);
-//      FM.Turbine      .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2steam", 100)                    , UT.Fluids.make("ic2hotwater", 1), ZL_ITEMSTACK);
-//      FM.Turbine      .addRecipe0(T, -128,  X, UT.Fluids.make("ic2superheatedsteam", 1)           , UT.Fluids.make("ic2steam", 1), ZL_ITEMSTACK);
+//      FM.Turbine      .addRecipe0(T, - 16,  X, UT.Fluids.make("ic2steam", 100)                    , UT.Fluids.make("ic2hotwater", 1), ZL_IS);
+//      FM.Turbine      .addRecipe0(T, -128,  X, UT.Fluids.make("ic2superheatedsteam", 1)           , UT.Fluids.make("ic2steam", 1), ZL_IS);
 		
 		
 		

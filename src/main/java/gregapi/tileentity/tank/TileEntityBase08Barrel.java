@@ -93,12 +93,8 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (mTank.amount() > 0) {
-			aList.add(mTank.amount() + " L of " + UT.Fluids.name(mTank, T) + " (" + (UT.Fluids.gas(mTank) ? "Gaseous" : "Liquid") + "; Max: "+mTank.capacity()+" L)");
-			if ((mMode & B[1]) != 0) aList.add(Chat.CYAN + "Sealed (" + mSealedTime + ")");
-		} else {
-			aList.add(Chat.CYAN + "Max: " + mTank.capacity() + " L");
-		}
+		aList.add(Chat.CYAN + mTank.contentcap());
+		if (mTank.has() && (mMode & B[1]) != 0) aList.add(Chat.CYAN + "Sealed (" + mSealedTime + ")");
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
 		if (mGasProof       ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
@@ -136,16 +132,12 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
-				if (mTank.isEmpty()) {
-					aChatReturn.add("Tank is empty");
-				} else {
-					aChatReturn.add("Contains: " + mTank.amount() + " L of " + UT.Fluids.name(mTank, T) + " (" + (UT.Fluids.gas(mTank) ? "Gaseous" : "Liquid") + ")");
-					if ((mMode & B[1]) != 0) {
-						if (mMaxSealedTime > 0) {
-							aChatReturn.add("Sealed (" + mSealedTime + " / " + mMaxSealedTime + ")");
-						} else {
-							aChatReturn.add("Sealed");
-						}
+				aChatReturn.add(mTank.content());
+				if (!mTank.isEmpty() && (mMode & B[1]) != 0) {
+					if (mMaxSealedTime > 0) {
+						aChatReturn.add("Sealed (" + mSealedTime + " / " + mMaxSealedTime + ")");
+					} else {
+						aChatReturn.add("Sealed");
 					}
 				}
 			}
@@ -208,7 +200,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	}
 	
 	public boolean meltdown() {
-		if (UT.Fluids.lava(mTank) && mTank.amount() >= 1000) {
+		if (UT.Fluids.lava(mTank) && mTank.has(1000)) {
 			mTank.remove(1000);
 			GarbageGT.trash(mTank);
 			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 0, 3);
@@ -266,7 +258,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	@Override public long getProgressMax(byte aSide) {return mMaxSealedTime;}
 	@Override public boolean canDrop(int aSlot) {return F;}
 	
-	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.amount() > 0 ? 1 : aDefault;}
+	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.has() ? 1 : aDefault;}
 	
 	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return (mMode & B[1]) != 0 ? null : mTank;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return (mMode & B[1]) != 0 ? null : mTank;}
@@ -283,8 +275,8 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	
 	@Override
 	public int removeFluidFromConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyRemoveIfItCanRemoveAllAtOnce) {
-		if (!mTank.contains(aFluid) || mTank.amount() < (aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return 0;
-		return (int)mTank.remove(aFluid.amount);
+		if (mTank.contains(aFluid) && mTank.has(aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)mTank.remove(aFluid.amount);
+		return 0;
 	}
 	
 	@Override

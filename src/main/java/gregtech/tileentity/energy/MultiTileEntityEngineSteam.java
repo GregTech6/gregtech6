@@ -124,7 +124,6 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 				if (tConversions > 0) {
 					mEnergy += UT.Code.units(tConversions * STEAM_PER_WATER / STEAM_PER_EU, 10000, mEfficiency, F);
 					mTank.remove(tConversions * STEAM_PER_WATER);
-					if (mTank.amount() <= 0) mTank.setEmpty();
 					FluidStack tDistilledWater = FL.DistW.make(tConversions);
 					for (byte tDir : FACING_SIDES[mFacing]) {
 						if (tDistilledWater.amount <= 0) break;

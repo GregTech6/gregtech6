@@ -94,6 +94,7 @@ public class FluidTankGT implements IFluidTank {
 		return aNBT;
 	}
 	
+	public FluidStack drain(int aDrained) {return drain(aDrained, T);}
 	@Override
 	public FluidStack drain(int aDrained, boolean aDoDrain) {
 		if (isEmpty() || aDrained <= 0) return null;
@@ -141,6 +142,7 @@ public class FluidTankGT implements IFluidTank {
 		return aFilled;
 	}
 	
+	public int fill(FluidStack aFluid) {return fill(aFluid, T);}
 	@Override
 	public int fill(FluidStack aFluid, boolean aDoFill) {
 		if (aFluid == null) return 0;
@@ -229,12 +231,20 @@ public class FluidTankGT implements IFluidTank {
 	public boolean contains(Fluid aFluid) {return mFluid != null && mFluid.getFluid() == aFluid;}
 	public boolean contains(FluidStack aFluid) {return UT.Fluids.equal(mFluid, aFluid);}
 	
+	public boolean has(long aAmount) {return mAmount >= aAmount;}
+	public boolean has() {return mAmount > 0;}
+	
 	public long amount() {return isEmpty() ? 0 : mAmount;}
 	public long amount(long aMax) {return isEmpty() || aMax <= 0 ? 0 : mAmount < aMax ? mAmount : aMax;}
 	
 	public long capacity() {return mCapacity;}
 	
 	public String name() {return mFluid == null ? null : mFluid.getFluid().getName();}
+	public String name(boolean aLocalised) {return UT.Fluids.name(mFluid, aLocalised);}
+	
+	public String content() {return content("Empty");}
+	public String content(String aEmptyMessage) {return mFluid == null ? aEmptyMessage : amount() + " L of " + name(T) + " (" + (UT.Fluids.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
+	public String contentcap() {return mFluid == null ? "Capacity: " + mCapacity + " L" : amount() + " L of " + name(T) + " (" + (UT.Fluids.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+mCapacity+" L)";}
 	
 	public FluidStack get() {return mFluid;}
 	public FluidStack get(long aMax) {return isEmpty() || aMax <= 0 ? null : new FluidStack(mFluid, UT.Code.bindInt(mAmount < aMax ? mAmount : aMax));}

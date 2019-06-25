@@ -93,7 +93,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " 1 L " + UT.Fluids.name(FluidRegistry.WATER, T) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + UT.Fluids.name(FL.Steam.make(0), true) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
+		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " 1 L " + UT.Fluids.name(FluidRegistry.WATER, T) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)                        + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE + "/t ("+LH.get(LH.FACE_ANY)+")");
 		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                     + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE);
@@ -120,7 +120,6 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 					mEfficiency -= tConversions;
 					if (mEfficiency < 5000) mEfficiency = 5000;
 				}
-				if (mTanks[0].amount() <= 0) mTanks[0].setEmpty();
 				mTanks[1].setFluid(FL.Steam.make(mTanks[1].amount() + UT.Code.units(tConversions, 10000, mEfficiency * 160, F)));
 				mEnergy -= tConversions * 80;
 				mCoolDownResetTimer = 128;
@@ -146,7 +145,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 			mBarometer = (byte)UT.Code.scale(mTanks[1].amount(), mTanks[1].capacity(), 31, F);
 			
 			// Well the Boiler gets structural Damage when being too hot, or when being too full of Steam.
-			if (mEnergy > mCapacity || mTanks[1].amount() >= mTanks[1].capacity()) {
+			if (mEnergy > mCapacity || mTanks[1].isFull()) {
 				explode();
 			}
 		}
@@ -187,7 +186,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 				} else {
 					aChatReturn.add("No Calcification in this Boiler");
 				}
-				aChatReturn.add("Contained H2O: " + mTanks[0].amount());
+				aChatReturn.add(mTanks[0].content("WARNING: NO WATER!!!"));
 			}
 			return 1;
 		}
