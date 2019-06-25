@@ -1316,6 +1316,7 @@ public class CS {
 		, ENCHANTED_EFFECT = new HashSetNoNulls<>()
 		, NONSTANDARD = new HashSetNoNulls<>()
 		, BROKEN = new HashSetNoNulls<>()
+		, INFINITE = new HashSetNoNulls<>() // Marks things that are stupidly easy to obtain, except Water and Milk.
 		, BATH = new HashSetNoNulls<>()
 		, DYE = new HashSetNoNulls<>()
 		

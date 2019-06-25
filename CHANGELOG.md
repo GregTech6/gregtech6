@@ -36,7 +36,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.10.24: (Not released yet)
 [FIXED] Some Furnace Recipes being missing due to me accidentially removing most of my own Furnace Recipes in the previous Versions change. XD
 [CHANGED] Smelting any Material based thing other than Dusts and Scraps in a Furnace will give EXP depending on the Tool Quality of the Material + 1.
-[CHANGED] IC2-Exp Pahoehoe Lava will now give slightly more outputs when centrifuged, but also uses more Power.
+[CHANGED] IC2-Exp "Pahoehoe Lava" will now give slightly more outputs when centrifuged, but also uses more Power.
+[ADDED] The Generifier can now turn IC2 Steam and IC2 Superheated Steam into regular Steam. It will go by the Power Value instead of the Water Amount, so no Power is lost, but it might lead to an infinite Water Recipe Loop or at least a "Turn Power into Water" Loop.
+[ADDED]
+Heat Exchangers
+Turns Lava into "Pahoehoe Lava" and generates 80 HU/L or 80000 HU/Block from it. Same goes for IC2 Hot Coolant to Coolant.
+Be aware that IC2 Hot Coolant cannot be stored in GT6 Tanks, as it is a power conducting Fluid just like Steam!
 
 
 6.10.23:

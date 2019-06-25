@@ -41,9 +41,9 @@ public enum FL {
 	, UUM                       ("ic2uumatter"                                              , SIMPLE, LIQUID)
 	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID)
 	
-	, Air                       ("air"                                                      , SIMPLE, GAS, AIR)
-	, Air_Nether                ("netherair"                                                , SIMPLE, GAS, AIR)
-	, Air_End                   ("enderair"                                                 , SIMPLE, GAS, AIR)
+	, Air                       ("air"                                                      , SIMPLE, GAS, AIR, INFINITE)
+	, Air_Nether                ("netherair"                                                , SIMPLE, GAS, AIR, INFINITE)
+	, Air_End                   ("enderair"                                                 , SIMPLE, GAS, AIR, INFINITE)
 	, Oxygen                    ("oxygen"                                                   , SIMPLE, GAS)
 	, Liquid_Oxygen             ("liquidoxygen"                                             , SIMPLE, LIQUID)
 	
@@ -59,23 +59,25 @@ public enum FL {
 	, Steam_IC2_Superheated     ("ic2superheatedsteam"                                      , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
 	
 	, Coolant_IC2               ("ic2coolant"                                               , SIMPLE, LIQUID)
+	, Coolant_IC2_Hot           ("ic2hotcoolant"                                            , SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Freezing_Ooze             ("ooze"                                                     , SIMPLE, LIQUID, BROKEN)
 	
 	, Lava                      ("lava"                                                     , SIMPLE, LIQUID)
 	, Lava_Pahoehoe             ("ic2pahoehoelava"                                          , SIMPLE, LIQUID)
-	, Lava_Pure                 ("purelava"                                                 , SIMPLE, LIQUID, BROKEN) // Lycanite Lava, Warning: Infinite like vanilla Water!
+	, Lava_Pure                 ("purelava"                                                 , SIMPLE, LIQUID, BROKEN, INFINITE) // Lycanite Lava, Warning: Infinite like vanilla Water!
 	
 	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER)
 	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER)
 	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER)
+	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER)
 	, Ice                       ("ice"                                                      , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
 	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
 	, Mineralsoda               ("mineralsoda"                                              , SIMPLE, LIQUID, FOOD)
 	, Soda                      ("soda"                                                     , SIMPLE, LIQUID, FOOD)
 	, Tropics_Water             ("tropicswater"                                             , SIMPLE, LIQUID)
-	, Ocean                     ("seawater"                                                 , SIMPLE, LIQUID)
+	, Ocean                     ("seawater"                                                 , SIMPLE, LIQUID, INFINITE)
 	, OceanGrC                  ("grccore.saltwater"                                        , SIMPLE, LIQUID)
-	, Dirty_Water               ("waterdirty"                                               , SIMPLE, LIQUID)
+	, Dirty_Water               ("waterdirty"                                               , SIMPLE, LIQUID, INFINITE)
 	, Stagnant_Water            ("stagnantwater"                                            , SIMPLE, LIQUID)
 	, Swampwater                ("swampwater"                                               , SIMPLE, LIQUID)
 	, Saltwater                 ("saltwater"                                                , SIMPLE, LIQUID)

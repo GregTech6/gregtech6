@@ -667,6 +667,8 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.generify(UT.Fluids.make("gasoline"                   , 1), UT.Fluids.make("petrol", 1));
 		RM.generify(UT.Fluids.make("fuel"                       , 1), UT.Fluids.make("fueloil", 1));
 		RM.generify(UT.Fluids.make("fueloil"                    , 1), UT.Fluids.make("fuel", 1));
+		RM.generify(FL.Steam_IC2_Superheated                .make(1), FL.Steam.make(3));
+		RM.generify(FL.Steam_IC2                            .make(1), FL.Steam.make(1));
 		RM.generify(FL.DistW                                .make(1), FL.Water.make(1));
 		RM.generify(FL.Oil_Lin                              .make(1), FL.Oil_Seed.make(1));
 		RM.generify(FL.Oil_Hemp                             .make(1), FL.Oil_Seed.make(1));
