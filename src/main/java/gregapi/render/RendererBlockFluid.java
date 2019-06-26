@@ -41,12 +41,8 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		RENDER_ID = aRenderID;
 	}
 	
-	static final float LIGHT_Y_NEG = 0.5F;
-	static final float LIGHT_Y_POS = 1.0F;
-	static final float LIGHT_XZ_NEG = 0.8F;
-	static final float LIGHT_XZ_POS = 0.6F;
+	private static final float MAX_FLUID_HEIGHT = 0.8888889F, LIGHT_Y_NEG = 0.5F, LIGHT_Y_POS = 1.0F, LIGHT_XZ_NEG = 0.8F, LIGHT_XZ_POS = 0.6F;
 	static final double RENDER_OFFSET = 0.0010000000474974513D;
-	static final float MAX_FLUID_HEIGHT = 0.8888889F;
 	
 	public float getFluidHeightAverage(float[] aFlow) {
 		float total = 0, end = 0;
@@ -62,13 +58,14 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		return end;
 	}
 	
-	public float getFluidHeightForRender(IBlockAccess aWorld, int aX, int aY, int aZ, BlockFluidBase aFluidBlock) {
-		if (aWorld.getBlock(aX, aY, aZ) == aFluidBlock) {
-			Block verticalOrigin = aWorld.getBlock(aX, aY - UT.Fluids.dir(aFluidBlock), aZ);
-			if (verticalOrigin.getMaterial().isLiquid() || verticalOrigin instanceof IFluidBlock) return 1;
-			if (aWorld.getBlockMetadata(aX, aY, aZ) >= aFluidBlock.getMaxRenderHeightMeta()) return MAX_FLUID_HEIGHT;
+	public float getFluidHeightForRender(IBlockAccess aWorld, int aX, int aY, int aZ, BlockFluidBase aFluidBlock, Block aBlock) {
+		if (aBlock == null) aBlock = aWorld.getBlock(aX, aY, aZ);
+		if (aBlock == aFluidBlock) {
+			Block tBlockAbove = aWorld.getBlock(aX, aY - UT.Fluids.dir(aFluidBlock), aZ);
+			if (tBlockAbove.getMaterial().isLiquid() || tBlockAbove instanceof IFluidBlock) return 1;
+			return UT.Code.bindF(aFluidBlock.getQuantaPercentage(aWorld, aX, aY, aZ)) * MAX_FLUID_HEIGHT;
 		}
-		return !aWorld.getBlock(aX, aY, aZ).getMaterial().isSolid() && aWorld.getBlock(aX, aY - UT.Fluids.dir(aFluidBlock), aZ) == aFluidBlock ? 1 : aFluidBlock.getQuantaPercentage(aWorld, aX, aY, aZ) * MAX_FLUID_HEIGHT;
+		return !aBlock.getMaterial().isSolid() && aWorld.getBlock(aX, aY - UT.Fluids.dir(aFluidBlock), aZ) == aFluidBlock ? 1 : UT.Code.bindF(aFluidBlock.getQuantaPercentage(aWorld, aX, aY, aZ)) * MAX_FLUID_HEIGHT;
 	}
 	
 	@Override public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {/**/}
@@ -100,17 +97,17 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		if (!renderTop && !renderBottom && !renderSides[0] && !renderSides[1] && !renderSides[2] && !renderSides[3]) return F;
 		boolean rendered = F;
 		double heightNW, heightSW, heightSE, heightNE;
-		float flow11 = getFluidHeightForRender(aWorld, aX, aY, aZ, aFluid);
+		float flow11 = getFluidHeightForRender(aWorld, aX, aY, aZ, aFluid, aBlock);
 
 		if (flow11 != 1) {
-			float flow00 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ - 1, aFluid);
-			float flow01 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ,     aFluid);
-			float flow02 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ + 1, aFluid);
-			float flow10 = getFluidHeightForRender(aWorld, aX,     aY, aZ - 1, aFluid);
-			float flow12 = getFluidHeightForRender(aWorld, aX,     aY, aZ + 1, aFluid);
-			float flow20 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ - 1, aFluid);
-			float flow21 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ,     aFluid);
-			float flow22 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ + 1, aFluid);
+			float flow00 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ - 1, aFluid, null);
+			float flow01 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ,     aFluid, null);
+			float flow02 = getFluidHeightForRender(aWorld, aX - 1, aY, aZ + 1, aFluid, null);
+			float flow10 = getFluidHeightForRender(aWorld, aX,     aY, aZ - 1, aFluid, null);
+			float flow12 = getFluidHeightForRender(aWorld, aX,     aY, aZ + 1, aFluid, null);
+			float flow20 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ - 1, aFluid, null);
+			float flow21 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ,     aFluid, null);
+			float flow22 = getFluidHeightForRender(aWorld, aX + 1, aY, aZ + 1, aFluid, null);
 
 			heightNW = getFluidHeightAverage(new float[] {flow00, flow01, flow10, flow11});
 			heightSW = getFluidHeightAverage(new float[] {flow01, flow02, flow12, flow11});

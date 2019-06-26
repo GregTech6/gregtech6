@@ -184,11 +184,16 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 	
 	@SubscribeEvent
 	public void onTextureStitchedPre(TextureStitchEvent.Pre aEvent) {
-		// You should thank me for fixing this Fluid Bug. Seriously, people just don't set the Icons of their registered Fluids...
+		// You should thank me for fixing this Fluid Bug. Seriously, some people just don't set the Icons of their registered Fluids...
 		for (Fluid aFluid : FluidRegistry.getRegisteredFluids().values()) {
 			if (aFluid.getIcon() == null || FluidsGT.BROKEN.contains(aFluid.getName())) {
-				Block tBlock = aFluid.getBlock();
-				if (tBlock != null && tBlock != NB) try {aFluid.setIcons(tBlock.getIcon(0, 0));} catch(Throwable e) {e.printStackTrace(DEB);}
+				try {
+					Block tBlock = aFluid.getBlock();
+					aFluid.setIcons((tBlock != null && tBlock != NB ? tBlock : Blocks.water).getIcon(0, 0));
+				} catch(Throwable e) {
+					e.printStackTrace(DEB);
+					try {aFluid.setIcons(Blocks.water.getIcon(0, 0));} catch(Throwable f) {f.printStackTrace(DEB);}
+				}
 			}
 		}
 	}

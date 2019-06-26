@@ -118,20 +118,27 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 			if (mEnergy < mRate * 2) {
 				// Will be set back to true if the Recipe finds enough Fuel.
 				mRunning = F;
-				// Output isn't allowed to be filled.
+				// Output isn't allowed to be completely filled.
 				if (!mTanks[1].has(mRate * 20)) {
 					// Find and apply fitting Recipe.
 					Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, mTanks[0].AS_ARRAY, ZL_IS);
-					if (tRecipe != null && (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) && tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
-						mRunning = T;
-						mLastRecipe = tRecipe;
-						mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
-						if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
-						// Use as much as needed to keep up the Power per Tick.
-						while (mEnergy < mRate * 2 && (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) && tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
-							mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
-							if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
-							if (mTanks[0].isEmpty()) break;
+					if (tRecipe != null) {
+						if (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) {
+							if (tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
+								mRunning = T;
+								mLastRecipe = tRecipe;
+								mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
+								if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
+								// Use as much as needed to keep up the Power per Tick.
+								while (mEnergy < mRate * 2 && (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) && tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
+									mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
+									if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
+									if (mTanks[0].isEmpty()) break;
+								}
+							} else {
+								// set remaining Fluid to null, in case the Fuel Type needs to be swapped out.
+								mTanks[0].setEmpty();
+							}
 						}
 					} else {
 						// set remaining Fluid to null, in case the Fuel Type needs to be swapped out.

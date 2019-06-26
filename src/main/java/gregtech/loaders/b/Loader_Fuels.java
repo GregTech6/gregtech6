@@ -175,12 +175,12 @@ public class Loader_Fuels implements Runnable {
 		FM.Gas          .addRecipe0(T, - 64,  4, UT.Fluids.make("propylene", 1)                     , FL.Water.make(1), UT.Fluids.make("carbondioxide", 1));
 		
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                        , FL.Lava_Pahoehoe.make(1), ZL_IS);
-		FM.Hot          .addRecipe0(T, -  1,  1, FL.Water_Hot.make(1)                               , FL.Water.make(1), ZL_IS);
+		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Hot.make(1)                               , FL.Water.make(1), ZL_IS);
 		FM.Hot          .addRecipe0(T, - 10,  1, FL.Coolant_IC2_Hot.make(1)                         , FL.Coolant_IC2.make(1), ZL_IS);
 		
 		FM.Turbine      .addRecipe0(T, - 16,  5, FL.Steam.make(160)                                 , FL.DistW.make(1), ZL_IS);
 //      FM.Turbine      .addRecipe0(T, - 10,  5, FL.Steam_IC2.make(100)                             , FL.DistW.make(1), ZL_IS);
-//      FM.Turbine      .addRecipe0(T, - 10, 15, FL.Steam_IC2_Superheated.make(100)                 , FL.DistW.make(1), ZL_IS);
+//      FM.Turbine      .addRecipe0(T, - 30,  5, FL.Steam_IC2_Superheated.make(100)                 , FL.DistW.make(1), ZL_IS);
 		
 		
 		
