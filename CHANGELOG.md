@@ -41,7 +41,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] The Generifier can now turn IC2 Steam and IC2 Superheated Steam into regular Steam. It will go by the Power Value instead of the Water Amount, so no Power is lost, but it might lead to an infinite Water Recipe Loop or at least a "Turn Power into Water" Loop.
 [ADDED]
 Heat Exchangers
-Turns Lava into "Pahoehoe Lava" and generates 80 HU/L or 80000 HU/Block from it. Same goes for IC2 Hot Coolant to Coolant.
+Turns Lava into "Pahoehoe Lava" and generates 80 HU/L or 80000 HU/Block from it. Same goes for IC2 Hot Coolant to Coolant (20HU/L).
 Be aware that IC2 Hot Coolant cannot be stored in GT6 Tanks, as it is a power conducting Fluid just like Steam!
 
 
