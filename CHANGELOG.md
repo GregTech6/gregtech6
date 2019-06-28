@@ -33,7 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.24: (Not released yet)
+6.10.24:
 [FIXED] The Fluid Rendering Height Fix from 6.10.19 was slightly broken for other Mods. Now it works again.
 [FIXED] Some Furnace Recipes being missing due to me accidentially removing most of my own Furnace Recipes in the previous Versions change. XD
 [CHANGED] Smelting any Material based thing other than Dusts and Scraps in a Furnace will give EXP depending on the Tool Quality of the Material + 1.

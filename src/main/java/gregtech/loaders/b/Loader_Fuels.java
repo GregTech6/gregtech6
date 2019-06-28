@@ -159,7 +159,7 @@ public class Loader_Fuels implements Runnable {
 		FM.Gas          .addRecipe0(T, - 64, 30, UT.Fluids.make("ic2biogas", 20)                    , FL.Water.make(6), UT.Fluids.make("carbondioxide", 3));
 		}
 		if (FL.LPG.exists()) {
-		FM.Burn         .addRecipe0(T, - 64, 42, UT.Fluids.make("lpg", 7)                           , FL.Water.make(7), UT.Fluids.make("carbondioxide", 6));
+		FM.Burn         .addRecipe0(T, - 64, 42, FL.LPG.make(7)                                     , FL.Water.make(7), UT.Fluids.make("carbondioxide", 6));
 		}
 		
 		FM.Burn         .addRecipe0(T, - 64, 42, UT.Fluids.make("butane", 7)                        , FL.Water.make(7), UT.Fluids.make("carbondioxide", 6));
