@@ -36,7 +36,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.10.24:
 [FIXED] The Fluid Rendering Height Fix from 6.10.19 was slightly broken for other Mods. Now it works again.
 [FIXED] Some Furnace Recipes being missing due to me accidentially removing most of my own Furnace Recipes in the previous Versions change. XD
-[CHANGED] Smelting any Material based thing other than Dusts and Scraps in a Furnace will give EXP depending on the Tool Quality of the Material + 1.
+[CHANGED] Smelting any Material based thing other than Dusts and Scraps in a Furnace should give EXP depending on the Tool Quality of the Material + 1.
 [CHANGED] IC2-Exp "Pahoehoe Lava" will now give slightly more outputs when centrifuged, but also uses more Power.
 [ADDED] The Generifier can now turn IC2 Steam and IC2 Superheated Steam into regular Steam. It will go by the Power Value instead of the Water Amount, so no Power is lost, but it might lead to an infinite Water Recipe Loop or at least a "Turn Power into Water" Loop.
 [ADDED]

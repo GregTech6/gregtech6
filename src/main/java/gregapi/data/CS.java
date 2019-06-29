@@ -781,7 +781,28 @@ public class CS {
 	/** If you have to give something a World Parameter but there is no World... (Dummy World) */
 	public static DummyWorld DW;
 	/** Dimension Types that I use as parameter for my WorldGenerators, aside from the Vanilla Dimension IDs none of these IDs is accurate as they are just the Defaults of their Respective Mods! */
-	public static final int DIM_UNKNOWN = Integer.MAX_VALUE, DIM_OVERWORLD = 0, DIM_NETHER = -1, DIM_END = 1, DIM_ENVM = -2, DIM_MOON = 2, DIM_MARS = 3, DIM_ASTEROIDS = 4, DIM_PLANETS = 5, DIM_AETHER = 6, DIM_TWILIGHT = 7, DIM_ATUM = 17, DIM_BETWEENLANDS = 20, DIM_CANDY = 23, DIM_EREBUS = 66, DIM_ALFHEIM = 105, DIM_DEEPDARK = -100, DIM_LASTMILLENIUM = -112, DIM_TROPICS = -127;
+	public static final int DIM_UNKNOWN = Integer.MAX_VALUE
+	, DIM_OVERWORLD = 0
+	, DIM_NETHER = -1
+	, DIM_END = 1
+	, DIM_ENVM = -2
+	, DIM_MOON = 2
+	, DIM_MARS = 3
+	, DIM_ASTEROIDS = 4
+	, DIM_PLANETS = 5
+	, DIM_AETHER = 6
+	, DIM_TWILIGHT = 7
+	, DIM_ATUM = 17
+	, DIM_BETWEENLANDS = 20
+	, DIM_FROZEN_HEARTH = 21
+	, DIM_SOUL_FOREST = 22
+	, DIM_CANDY = 23
+	, DIM_EREBUS = 66
+	, DIM_ALFHEIM = 105
+	, DIM_DEEPDARK = -100
+	, DIM_LASTMILLENIUM = -112
+	, DIM_TROPICS = -127
+	;
 	
 	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
@@ -1687,6 +1708,8 @@ public class CS {
 		, WARPBOOK          = "warpbook"
 		, ARS               = "arsmagica2"
 		, CANDY             = "candycraftmod"
+		, ABYSSAL           = "abyssalcraft"
+		, SOULFOREST        = "soulforest"
 		
 		, RC                = "Railcraft"
 		

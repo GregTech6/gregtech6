@@ -204,6 +204,17 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I96"                               , 1,   W), (byte)  1);
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.CANDY, "I102"                              , 1,   W), (byte)  1);
 		}
+		if (MD.ABYSSAL.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "portalplacer"                    , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "dreadkey"                        , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "portalplacerjzh"                 , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "portalplacerdl"                  , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "abyssalnomicon"                  , 1,   W), (byte)  3);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "necronomicon"                    , 1,   W), (byte)  1);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "necronomicon_omt"                , 1,   W), (byte)  3);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "necronomicon_dre"                , 1,   W), (byte)  5);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.ABYSSAL, "necronomicon_cor"                , 1,   W), (byte)  6);
+		}
 		if (MD.IHL.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.IHL, "guidebook"                           , 1,   W), (byte) 48);
 		}
