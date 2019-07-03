@@ -113,6 +113,7 @@ public enum IL implements IItemContainer {
 	TF_Log_Oak, TF_Log_Canopy, TF_Log_Mangrove, TF_Log_Darkwood,
 	TF_Log_Time, TF_Log_Trans, TF_Log_Mine, TF_Log_Sorting,
 	HiL_Ironwood,
+	ABYSSAL_Crate, ABYSSAL_Lava,
 	ATUM_Scarab, ATUM_Limestone, ATUM_Limecobble,
 	TROPIC_Chest, TROPIC_Bamboo, TROPIC_Stick, TROPIC_Log_Palm, TROPIC_Log_Mahogany, TROPIC_Sand_Coral, TROPIC_Sand_Foamy, TROPIC_Sand_Black, TROPIC_Sand_Mineral, TROPIC_Sand_Pure,
 	TROPIC_Sapling_Palm, TROPIC_Sapling_Mahogany, TROPIC_Sapling_Grapefruit, TROPIC_Sapling_Lemon, TROPIC_Sapling_Lime, TROPIC_Sapling_Orange,

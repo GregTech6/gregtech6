@@ -450,10 +450,10 @@ public class MT {
 	Uob     = unknown( 1820,  384),
 	Uot     = unknown( 1830,  388),
 	Uoq     = unknown( 1840,  392),
-	Uop     = unknown( 1850,  396),
-	Uoh     = unknown( 1860,  400),
-	Uos     = unknown( 1870,  405),
-	Uoo     = unknown( 1880,  410),
+	An      = element( 1850, "Abyssalnite"           , "An"      , 185, 396, 1500, 3000, 15.0, SET_METALLIC  ,  90,  40, 170, 255).qual(3, 8.0, 1600, 3).put(G_INGOT_MACHINE_ORES, UUM, METAL, SMITHABLE, MELTING, EXTRUDER, "Unoctpentium").aspects(TC.METALLUM, 3, TC.VACUOS, 2), Uop = An,
+	Cor     = element( 1860, "Coralium"              , "Cor"     , 186, 400, 2000, 4000, 20.0, SET_RUBY      ,  20, 160, 110, 255).qual(3,12.0, 3200, 3).put(G_INGOT_MACHINE_ORES, UUM, METAL, SMITHABLE, MELTING, EXTRUDER, G_GEM_ORES, "Unocthexium", "LiquifiedCoralium").aspects(TC.METALLUM, 3, TC.PERDITIO, 2), Uoh = Cor,
+	Dr      = element( 1870, "Dreadium"              , "Dr"      , 187, 405, 2500, 5000, 25.0, SET_METALLIC  , 170,   0,   0, 255).qual(3,16.0, 4800, 4).put(G_INGOT_MACHINE_ORES, UUM, METAL, SMITHABLE, MELTING, EXTRUDER, "Unoctseptium").aspects(TC.METALLUM, 3, TC.TENEBRAE, 2), Uos = Dr,
+	Etx     = element( 1880, "Ethaxium"              , "Etx"     , 188, 410, 3000, 6000, 30.0, SET_METALLIC  , 160, 170, 150, 255).qual(3,20.0, 6400, 4).put(G_INGOT_MACHINE_ORES, UUM, METAL, SMITHABLE, MELTING, EXTRUDER, "Unoctoctium").aspects(TC.METALLUM, 3, TC.VITIUM, 2), Uoo = Etx,
 	Uoe     = unknown( 1890,  415),
 	Uen     = unknown( 1900,  420),
 	Ueu     = unknown( 1910,  425),
@@ -2403,6 +2403,7 @@ public class MT {
 			DarkMatter.mHandleMaterial = Diamond;
 			RedMatter.mHandleMaterial = DarkMatter;
 			Desh.mHandleMaterial = Desh;
+			Etx.mHandleMaterial = Etx;
 			Vb.mHandleMaterial = VibraniumSteel.mHandleMaterial = VibraniumSilver.mHandleMaterial = VibraniumSteel;
 			Vibramantium.mHandleMaterial = Vibramantium;
 			VoidMetal.mHandleMaterial = InfusedAir.mHandleMaterial = InfusedBalance.mHandleMaterial = InfusedDull.mHandleMaterial = InfusedEarth.mHandleMaterial = InfusedEntropy.mHandleMaterial = InfusedFire.mHandleMaterial = InfusedOrder.mHandleMaterial = InfusedWater.mHandleMaterial = InfusedVis.mHandleMaterial = MD.TC.mLoaded?Thaumium:DamascusSteel;

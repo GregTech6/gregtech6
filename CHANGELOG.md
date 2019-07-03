@@ -30,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.25: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff.
 
 
 6.10.24:
@@ -294,7 +294,7 @@ I did test it at the bottom of a Deep Ocean and it worked fine there, so I am pr
 [NOTE]
 https://juliareda.eu/2019/02/eu-copyright-final-text/
 https://juliareda.eu/2019/02/council-worst-article-13/
-Didn't think I could do something last week, just too much emotional devastation with this bullshit and waiting for someone to finally kill it... 
+Didn't think I could do something last week, just too much emotional devastation with this bullshit and waiting for someone to finally kill it...
 I'm gonna go back to bed trying to skip time and distract myself until they finally made a decision...
 There is btw a small Block of Text in my Game Plans about how I imagine Worldgen for the Game. It's the "The World" Paragraph.
 [FIXED] Treated Planks Recipe in Bath consuming 0 Creosote, and some other Bugs with that same Recipe.

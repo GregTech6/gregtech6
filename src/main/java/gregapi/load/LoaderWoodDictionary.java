@@ -54,7 +54,6 @@ public class LoaderWoodDictionary implements Runnable {
 		for (int i = 0; i <  2; i++) PlankData.PLANKS[44+i] = ST.make(tBlock, 1, i);
 		PlankData.PLANKS[ 96] = ST.make(MD.RC, "cube", 1, 8);
 		PlankData.PLANKS[104] = ST.make(MD.BTL, "rubberTreePlanks", 1, 0);
-//      PlankData.PLANKS[105] = ST.make(MD.BTL, "weedwoodPlanks", 1, 0);
 		PlankData.PLANKS[106] = IL.BTL_Portal_Bark.get(1);
 		PlankData.PLANKS[107] = IL.BTL_Weedwood_Bark.get(1);
 		PlankData.PLANKS[108] = IL.BTL_Weedwood_RottenBark.get(1);
@@ -62,7 +61,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 185 is next!
+		// No Gaps in this List, so 187 is next!
 		
 		
 		// Vanilla Trees
@@ -250,6 +249,13 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.WTCH, "witchsapling", 1, 2), new WoodEntry(ST.make(MD.WTCH, "witchlog", 1, 2), new PlankEntry(ST.make(tPlank, 1, 2), ST.make(tSlab, 1, 2), ST.make(MD.WTCH, "stairswoodhawthorn", 1, W), 67)), ST.make(MD.WTCH, "witchleaves", 1, 2));
 			
 			for (int i = 0; i < 3; i++) CR.shaped(ST.make(tPlank, 1, i), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlab, 1, i));
+		}
+		// Abyssalcraft Trees
+		if (MD.ABYSSAL.mLoaded) {
+			new SaplingEntry(ST.make(MD.ABYSSAL, "dltsapling", 1, 0), new WoodEntry(ST.make(MD.ABYSSAL, "dltlog", 1, 0), new PlankEntry(ST.make(MD.ABYSSAL, "dltplank", 1, 0), ST.make(MD.ABYSSAL, "dltslab1", 1, 0), ST.make(MD.ABYSSAL, "dltstairs", 1, 0), 185)), ST.make(MD.ABYSSAL, "dltleaves", 1, 0));
+			new SaplingEntry(ST.make(MD.ABYSSAL, "dreadsapling", 1, 0), new WoodEntry(ST.make(MD.ABYSSAL, "dreadlog", 1, 0), new PlankEntry(ST.make(MD.ABYSSAL, "dreadplank", 1, 0), 186)), ST.make(MD.ABYSSAL, "dreadleaves", 1, 0));
+			
+			CR.shaped(ST.make(MD.ABYSSAL, "dltplank", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ABYSSAL, "dltslab1", 1, 0));
 		}
 		// Extra Biomes Trees
 		if (MD.EBXL.mLoaded) {
