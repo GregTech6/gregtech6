@@ -1689,6 +1689,7 @@ public class CS {
 		, IHL               = "ihl"
 		
 		, FMB               = "ForgeMicroblock"
+		, FUNK              = "funkylocomotion"
 		, BAUBLES           = "Baubles"
 		
 		, TC                = "Thaumcraft"

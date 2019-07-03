@@ -610,6 +610,10 @@ public class WD {
 		rList.add("--- X: " + aX + " Y: " + aY + " Z: " + aZ + " ---");
 		try {
 			rList.add("Name: " + (aTileEntity instanceof IInventory && Code.stringValid(((IInventory)aTileEntity).getInventoryName()) ? ((IInventory)aTileEntity).getInventoryName() : aBlock.getUnlocalizedName()) + "  MetaData: " + aMeta);
+			if (aScanLevel >= 10) {
+				rList.add("Block Class: " + aBlock.getClass());
+				if (aTileEntity != null) rList.add("TileEntity Class: " + aTileEntity.getClass());
+			}
 			float tResistance = aBlock.getExplosionResistance(aPlayer, aWorld, aX, aY, aZ, aPlayer.posX, aPlayer.posY, aPlayer.posZ);
 			rList.add("Hardness: " + aBlock.getBlockHardness(aWorld, aX, aY, aZ) + "  Blast Resistance: " + tResistance + (tResistance < 16 ? " (TNT Blastable)" : " (TNT Proof)"));
 			int tHarvestLevel = aBlock.getHarvestLevel(aMeta);

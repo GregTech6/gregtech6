@@ -30,6 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.25: (Not released yet)
+[COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF.
 [COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff.
 
 

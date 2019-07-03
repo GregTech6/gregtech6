@@ -43,6 +43,7 @@ public class MD {
 	, IHL               = new ModData(ModIDs.IHL                , "IHL")
 	
 	, FMB               = new ModData(ModIDs.FMB                , "Forge Microblocks")
+	, FUNK              = new ModData(ModIDs.FUNK               , "Funky Locomotion")
 	, BAUBLES           = new ModData(ModIDs.BAUBLES            , "Baubles")
 	
 	, TC                = new ModData(ModIDs.TC                 , "Thaumcraft")
