@@ -1597,6 +1597,11 @@ public class MT {
 			FishRotten              .put(MD.MaCu);
 			TiO2                    .put(MD.MaCu);
 			
+			An                      .put(MD.ABYSSAL).visDefault();
+			Cor                     .put(MD.ABYSSAL).visDefault();
+			Dr                      .put(MD.ABYSSAL).visDefault();
+			Etx                     .put(MD.ABYSSAL).visDefault();
+			
 			AmberDominican          .put(MD.Fossil).visDefault();
 			
 			Draconium               .put(MD.DE).visDefault();

@@ -253,7 +253,7 @@ public class LoaderWoodDictionary implements Runnable {
 		// Abyssalcraft Trees
 		if (MD.ABYSSAL.mLoaded) {
 			new SaplingEntry(ST.make(MD.ABYSSAL, "dltsapling", 1, 0), new WoodEntry(ST.make(MD.ABYSSAL, "dltlog", 1, 0), new PlankEntry(ST.make(MD.ABYSSAL, "dltplank", 1, 0), ST.make(MD.ABYSSAL, "dltslab1", 1, 0), ST.make(MD.ABYSSAL, "dltstairs", 1, 0), 185)), ST.make(MD.ABYSSAL, "dltleaves", 1, 0));
-			new SaplingEntry(ST.make(MD.ABYSSAL, "dreadsapling", 1, 0), new WoodEntry(ST.make(MD.ABYSSAL, "dreadlog", 1, 0), new PlankEntry(ST.make(MD.ABYSSAL, "dreadplank", 1, 0), 186)), ST.make(MD.ABYSSAL, "dreadleaves", 1, 0));
+			new SaplingEntry(ST.make(MD.ABYSSAL, "dreadsapling", 1, 0), new WoodEntry(ST.make(MD.ABYSSAL, "dreadlog", 1, 0), new PlankEntry(ST.make(MD.ABYSSAL, "dreadplanks", 1, 0), 186)), ST.make(MD.ABYSSAL, "dreadleaves", 1, 0));
 			
 			CR.shaped(ST.make(MD.ABYSSAL, "dltplank", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ABYSSAL, "dltslab1", 1, 0));
 		}
