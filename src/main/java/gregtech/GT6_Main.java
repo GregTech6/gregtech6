@@ -281,6 +281,7 @@ public class GT6_Main extends Abstract_Mod {
 		
 		new Compat_Recipes_Ganys                (MD.GAPI          , this);
 		new Compat_Recipes_Chisel               (MD.CHSL          , this);
+		new Compat_Recipes_FunkyLocomotion      (MD.FUNK          , this);
 		new Compat_Recipes_BetterBeginnings     (MD.BB            , this);
 		new Compat_Recipes_IndustrialCraft      (MD.IC2           , this);
 		new Compat_Recipes_IndustrialCraft_Scrap(MD.IC2           , this);

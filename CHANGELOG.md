@@ -30,8 +30,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.25: (Not released yet)
-[COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF.
-[COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff.
+[COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF. Don't be scared about wasting Power, those Motors just have a huge Storage of 64000 EU (= 256000 RF).
+[COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff such as using Spades on its Grass Types.
+[COMPAT] Soul Forest is not going to get Compat, it's just too bad of a Mod...
 
 
 6.10.24:

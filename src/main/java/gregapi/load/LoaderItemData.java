@@ -1100,6 +1100,12 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.FRMB, "miscResources"                    , 1,  23, MT.InfusedEntropy     ,  U4);
 		
 		
+		OM.data(MD.FUNK, "frame"                            , 1,   W, ANY.Steel             ,  U * 1);
+		OM.data(MD.FUNK, "frame2"                           , 1,   W, ANY.Steel             ,  U * 1);
+		OM.data(MD.FUNK, "frame3"                           , 1,   W, ANY.Steel             ,  U * 1);
+		OM.data(MD.FUNK, "frame4"                           , 1,   W, ANY.Steel             ,  U * 1);
+		
+		
 		OM.data(MD.TE, "material"                           , 1,   0, ANY.Fe                ,  U * 2, MT.Redstone           ,  U * 1, MT.Glass          ,  U * 2);
 		OM.data(MD.TE, "material"                           , 1,   1, MT.Au                 ,  U * 1, MT.Redstone           ,  U * 2);
 		OM.data(MD.TE, "material"                           , 1,   2, MT.Ag                 ,  U * 1, MT.Redstone           ,  U * 2);
