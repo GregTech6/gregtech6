@@ -582,8 +582,8 @@ public class UT {
 			switch (aState) {
 			case STATE_SOLID:           rFluid.setViscosity(10000); break;
 			case STATE_LIQUID:          rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
-			case STATE_GASEOUS:         rFluid.setViscosity(  200); rFluid.setDensity(  -100); FluidsGT.GAS.add(aName); break;
-			case STATE_PLASMA:          rFluid.setViscosity(   10); rFluid.setDensity(-10000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
+			case STATE_GASEOUS:         rFluid.setViscosity(  200); rFluid.setDensity(   -100); FluidsGT.GAS.add(aName); break;
+			case STATE_PLASMA:          rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
 			case 4:                     rFluid.setViscosity( 1000); break;
 			}
 			
@@ -604,7 +604,7 @@ public class UT {
 				case STATE_PLASMA:  aMaterial.plasma(UT.Fluids.make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
 				}
 				// Translating Real Life Density to that weird Integer based Density System.
-				if (aMaterial.mGramPerCubicCentimeter > 0) {
+				if (aMaterial.mGramPerCubicCentimeter > 0 && (aState == STATE_LIQUID || aState == STATE_GASEOUS)) {
 					if (aMaterial.mGramPerCubicCentimeter > WEIGHT_AIR_G_PER_CUBIC_CENTIMETER) {
 						rFluid.setDensity(UT.Code.bindInt((long)(1000 * aMaterial.mGramPerCubicCentimeter)));
 					} else if (aMaterial.mGramPerCubicCentimeter < WEIGHT_AIR_G_PER_CUBIC_CENTIMETER) {

@@ -51,14 +51,14 @@ public class Loader_Fluids implements Runnable {
 		//-----
 		
 		UT.Fluids.create("Helium-3"                 , "Helium-3"            , MT.He_3               , 2,   1000,   300);
-		UT.Fluids.create("Propane"                  , "Propane"             , MT.Propane            , 2,   1000,   300);
-		UT.Fluids.create("Butane"                   , "Butane"              , MT.Butane             , 2,   1000,   300);
+		UT.Fluids.create("Propane"                  , "Propane"             , MT.Propane            , 2,   1000,   300).setDensity(-1000);
+		UT.Fluids.create("Butane"                   , "Butane"              , MT.Butane             , 2,   1000,   300).setDensity(-1000);
 		UT.Fluids.create("Propylene"                , "Propylene"           , MT.Propylene          , 2,   1000,   300);
 		UT.Fluids.create("Ethylene"                 , "Ethylene"            , MT.Ethylene           , 2,   1000,   300);
 		UT.Fluids.create("dragonbreath"             , "Dragon's Breath"     , null                  , 2,   1000,   300, IL.EtFu_Dragon_Breath.get(1), IL.Bottle_Empty.get(1), 250).setDensity(100).setLuminosity(5);
 		UT.Fluids.create("netherair"                , "Nether Air"          , null                  , 2,   1000,   370).setDensity(0);
 		UT.Fluids.create("enderair"                 , "Ender Air"           , null                  , 2,   1000,   280).setDensity(0);
-		UT.Fluids.create("Steam"                    , "Steam"               , MT.Water              , 2, 160000, C+100);
+		UT.Fluids.create("Steam"                    , "Steam"               , MT.Water              , 2, 160000, C+100).setDensity(-1000);
 		MT.Ice.mGas = MT.Water.mGas;
 		MT.Water.mGas.getFluid().setTemperature((int)(C+100)).setGaseous(T);
 		
@@ -73,8 +73,8 @@ public class Loader_Fluids implements Runnable {
 		
 		UT.Fluids.create("liquidoxygen"             , "Liquid Oxygen"       , MT.O                  , 1,   1000,    85);
 		
-		UT.Fluids.create("chargedmatter"            , "Charged Matter"      , null                  , 1,      1,     1).setLuminosity(15);
-		UT.Fluids.create("neutralmatter"            , "Neutral Matter"      , null                  , 1,      1,     1).setLuminosity(15);
+		UT.Fluids.create("chargedmatter"            , "Charged Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
+		UT.Fluids.create("neutralmatter"            , "Neutral Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
 		UT.Fluids.create("UUAmplifier"              , "UU-Amplifier"        , MT.UUAmplifier        , 1,    100,   100);
 		UT.Fluids.create("ic2uumatter"              , "UU-Matter"           , MT.UUMatter           , 1,    100,   100);
 		UT.Fluids.create("ic2constructionfoam"      , "Construction Foam"   , MT.ConstructionFoam   , 1,    100,   300);

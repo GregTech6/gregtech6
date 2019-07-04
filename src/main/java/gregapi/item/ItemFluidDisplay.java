@@ -131,7 +131,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			
 			float tDensity = aFluid.getDensity(tFluid);
 			if (tDensity > 0) {
-				aList.add(LH.Chat.GREEN + "Heavier than or equal to Air (moves down)" + LH.Chat.GRAY);
+				aList.add(LH.Chat.GREEN + "Heavier than Air (moves down)" + LH.Chat.GRAY);
 			} else if (tDensity < 0) {
 				aList.add(LH.Chat.GREEN + "Lighter than Air (moves up)" + LH.Chat.GRAY);
 			} else {
