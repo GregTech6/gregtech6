@@ -85,7 +85,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.delate(IL.IC2_Carbon_Fiber.get(1));
 		CR.delate(IL.IC2_Machine.get(1));
 		CR.delate(IL.IC2_EnergyCrystal.get(1));
-		CR.delate(ST.mkic("industrialTnt", 1));
+		CR.delate(IL.IC2_ITNT.get(1));
 		CR.delate(IL.Cell_Empty.get(1));
 		CR.delate(IL.IC2_Fertilizer.get(1));
 		CR.delate(IL.IC2_Spray_WeedEx.get(1));
@@ -485,7 +485,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.generify(IL.Circuit_Basic.get(1)     , ST.mkic("electronicCircuit", 1));
 		RM.generify(IL.Circuit_Advanced.get(1)  , ST.mkic("advancedCircuit", 1));
 		
-		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Blocks.tnt, 1, W)                          , OM.dust(MT.Na2SO3, U*1), ST.mkic("industrialTnt", 1));
+		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Blocks.tnt, 1, W)                          , OM.dust(MT.Na2SO3, U*1), IL.IC2_ITNT.get(1));
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Items.flint, 1, W)                         , OM.dust(MT.Coal, U*8), IL.IC2_Coal_Ball.get(1));
 		
 		for (FluidStack tFluid : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {

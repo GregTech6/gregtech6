@@ -153,6 +153,7 @@ public enum IL implements IItemContainer {
 	ICBM_Concrete,
 	IC2_Debug,
 	IC2_Fertilizer, IC2_Grin_Powder, IC2_Spray_WeedEx,
+	IC2_ITNT,
 	IC2_Scaffold, IC2_Scaffold_Iron,
 	IC2_Foam, IC2_Foam_Reinforced, IC2_Wall, IC2_Wall_Reinforced, IC2_Glass_Reinforced,
 	IC2_Scrap, IC2_Scrapbox,

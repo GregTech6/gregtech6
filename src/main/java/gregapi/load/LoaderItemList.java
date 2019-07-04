@@ -1197,6 +1197,7 @@ public class LoaderItemList implements Runnable {
 		IL.Cell_CFoam                           .set(ST.mkic("CFCell"                                       , 1   ), OP.cell.dat(MT.ConstructionFoam));
 		}
 		
+		IL.IC2_ITNT                             .set(ST.mkic("industrialTnt"                                , 1   ));
 		IL.IC2_Iridium_Ore                      .set(ST.mkic("iridiumOre"                                   , 1   ), new OreDictItemData(MT.Ir, U));
 		IL.IC2_Scaffold                         .set(ST.mkic("scaffold"                                     , 1   ), new OreDictItemData(ANY.Wood, 9*U8));
 		IL.IC2_Scaffold_Iron                    .set(ST.mkic("ironScaffold"                                 , 1   ), new OreDictItemData(ANY.Fe, 15*U32));

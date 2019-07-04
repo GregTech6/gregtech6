@@ -30,9 +30,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.25: (Not released yet)
+[NOTE] Soul Forest is not going to get Compat, it's just too bad of a Mod... Putting Titanium Gems on Sticks to make Titanium Rods just overdid it for me, along with giving each item its own ID and not registering literally anything to the OreDict, not that I would want it considering all the exploits that would cause...
 [COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF. Don't be scared about wasting Power, those Motors just have a huge Storage of 64000 EU (= 256000 RF).
 [COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff such as using Spades on its Grass Types.
-[COMPAT] Soul Forest is not going to get Compat, it's just too bad of a Mod...
+[ADDED]
+Implosion Compressor
+It works almost just like in ye olden Days. You insert Gem Dust, a Selector Tag and your Explosive of choice and BOOM it makes the Gem or Gem Plate you wanted.
+There will ofcourse be Noise complaints as this thing definitely does an Explosion Sound anytime it processes something.
+The Multiblock is a hollow 3x3x3 of Dense Tungstensteel Walls, while the Main Block is centered at the Bottom of whichever Side it is facing.
+Explosives Supported are Vanilla TNT (8), IC2 ITNT (4), GT6 Dynamite (2) and GT6 Strong Dynamite (1).
 
 
 6.10.24:

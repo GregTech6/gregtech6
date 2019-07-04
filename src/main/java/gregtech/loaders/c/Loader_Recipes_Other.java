@@ -601,6 +601,38 @@ public class Loader_Recipes_Other implements Runnable {
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.TeslatineAlloy      ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.TeslatineAlloy.liquid(35*U  , T)}, NF, bouleGt.mat(MT.TeslatineAlloy  , 9));
 		}
 		
+		for (ItemStack tTNT : new ItemStack[] {ST.make(Blocks.tnt, 8, W), IL.IC2_ITNT.get(4), IL.Dynamite.get(2), IL.Dynamite_Strong.get(1)}) if (ST.valid(tTNT)) {
+			for (OreDictMaterial tMat : ANY.Diamond.mToThis) {OreDictMaterial tOutput = MT.DiamondIndustrial;
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(0)}, OP.plateGem    .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(1)}, OP.gem         .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 2), ST.mul(4, tTNT), ST.tag(2)}, OP.gemFlawless .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 4), ST.mul(8, tTNT), ST.tag(3)}, OP.gemExquisite.mat(tOutput, 1));
+			}
+			for (OreDictMaterial tMat : ANY.Sapphire.mToThis) {OreDictMaterial tOutput = MT.Sapphire;
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(0)}, OP.plateGem    .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(1)}, OP.gem         .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 2), ST.mul(4, tTNT), ST.tag(2)}, OP.gemFlawless .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 4), ST.mul(8, tTNT), ST.tag(3)}, OP.gemExquisite.mat(tOutput, 1));
+			}
+			for (OreDictMaterial tMat : ANY.Emerald.mToThis) {OreDictMaterial tOutput = MT.Emerald;
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(0)}, OP.plateGem    .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(1)}, OP.gem         .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 2), ST.mul(4, tTNT), ST.tag(2)}, OP.gemFlawless .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 4), ST.mul(8, tTNT), ST.tag(3)}, OP.gemExquisite.mat(tOutput, 1));
+			}
+			for (OreDictMaterial tMat : ANY.Garnet.mToThis) {OreDictMaterial tOutput = tMat;
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(0)}, OP.plateGem    .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(1)}, OP.gem         .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 2), ST.mul(4, tTNT), ST.tag(2)}, OP.gemFlawless .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 4), ST.mul(8, tTNT), ST.tag(3)}, OP.gemExquisite.mat(tOutput, 1));
+			}
+			for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Topaz, MT.BlueTopaz, MT.Tanzanite, MT.Amazonite, MT.Alexandrite, MT.Opal, MT.OnyxRed, MT.OnyxBlack, MT.Jasper, MT.Olivine, MT.Amethyst, MT.Dioptase, MT.Craponite}) {OreDictMaterial tOutput = tMat;
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(0)}, OP.plateGem    .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(1)}, OP.gem         .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 2), ST.mul(4, tTNT), ST.tag(2)}, OP.gemFlawless .mat(tOutput, 1));
+				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 4), ST.mul(8, tTNT), ST.tag(3)}, OP.gemExquisite.mat(tOutput, 1));
+			}
+		}
 		
 		for (int i = 0; i < 16; i++)
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(10), OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4), IL.Rope.get(1));
