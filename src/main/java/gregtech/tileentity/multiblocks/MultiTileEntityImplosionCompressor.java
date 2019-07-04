@@ -50,7 +50,7 @@ public class MultiTileEntityImplosionCompressor extends TileEntityBase10MultiBlo
 				if (i == 0 && j == 0 && k == 0) {
 					if (getAir(tX+i, tY+j, tZ+k)) worldObj.setBlockToAir(tX+i, tY+j, tZ+k); else tSuccess = F;
 				} else {
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18024, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.EVERYTHING)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18023, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.EVERYTHING)) tSuccess = F;
 				}
 			}
 			return tSuccess;
