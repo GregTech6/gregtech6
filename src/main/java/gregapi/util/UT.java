@@ -595,11 +595,23 @@ public class UT {
 			}
 			
 			if (aMaterial != null) {
-				if (aMaterial.contains(TD.Properties.ACID)) FluidsGT.ACID.add(aName);
+				if (aMaterial.contains(TD.Properties.ACID    )) FluidsGT.ACID.add(aName);
+				if (aMaterial.contains(TD.Properties.GLOWING )) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 5));
+				if (aMaterial.contains(TD.Properties.LIGHTING)) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 15));
 				switch (aState) {
 				case STATE_LIQUID:  aMaterial.liquid(UT.Fluids.make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
 				case STATE_GASEOUS: aMaterial.gas   (UT.Fluids.make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
 				case STATE_PLASMA:  aMaterial.plasma(UT.Fluids.make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
+				}
+				// Translating Real Life Density to that weird Integer based Density System.
+				if (aMaterial.mGramPerCubicCentimeter > 0) {
+					if (aMaterial.mGramPerCubicCentimeter > WEIGHT_AIR_G_PER_CUBIC_CENTIMETER) {
+						rFluid.setDensity(UT.Code.bindInt((long)(1000 * aMaterial.mGramPerCubicCentimeter)));
+					} else if (aMaterial.mGramPerCubicCentimeter < WEIGHT_AIR_G_PER_CUBIC_CENTIMETER) {
+						rFluid.setDensity(UT.Code.bindInt((long)(-0.1 / aMaterial.mGramPerCubicCentimeter)));
+					} else {
+						rFluid.setDensity(0);
+					}
 				}
 			}
 			
