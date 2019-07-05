@@ -626,7 +626,7 @@ public class Loader_Recipes_Other implements Runnable {
 				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 2), ST.mul(4, tTNT), ST.tag(2)}, OP.gemFlawless .mat(tOutput, 1));
 				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 4), ST.mul(8, tTNT), ST.tag(3)}, OP.gemExquisite.mat(tOutput, 1));
 			}
-			for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Topaz, MT.BlueTopaz, MT.Tanzanite, MT.Amazonite, MT.Alexandrite, MT.Opal, MT.OnyxRed, MT.OnyxBlack, MT.Jasper, MT.Olivine, MT.Amethyst, MT.Dioptase, MT.Craponite}) {OreDictMaterial tOutput = tMat;
+			for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Spinel, MT.BalasRuby, MT.Topaz, MT.BlueTopaz, MT.Tanzanite, MT.Amazonite, MT.Alexandrite, MT.Opal, MT.OnyxRed, MT.OnyxBlack, MT.Jasper, MT.Olivine, MT.Amethyst, MT.Dioptase, MT.Craponite}) {OreDictMaterial tOutput = tMat;
 				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(0)}, OP.plateGem    .mat(tOutput, 1));
 				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 1),           tTNT , ST.tag(1)}, OP.gem         .mat(tOutput, 1));
 				RM.ImplosionCompressor.addRecipeX(T,  0,  256, new ItemStack[] {OP.dust.mat(tMat, 2), ST.mul(4, tTNT), ST.tag(2)}, OP.gemFlawless .mat(tOutput, 1));

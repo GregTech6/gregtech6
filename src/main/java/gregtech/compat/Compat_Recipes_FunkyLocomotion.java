@@ -39,9 +39,11 @@ public class Compat_Recipes_FunkyLocomotion extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Funky Locomotion Recipes.");
 		CR.shaped(ST.make(MD.FUNK, "pusher" , 1, 0), CR.DEF_REM_REV_NCC, "FFF", "IPI", "IDI", 'P', OD.craftingPiston, 'D', OP.gem.dat(ANY.Diamond), 'I', OP.plate.dat(MT.Invar), 'F', OP.foil.dat(MT.Enderium));
 		CR.shaped(ST.make(MD.FUNK, "pusher" , 1, 6), CR.DEF_REM_REV_NCC, " G ", "RMR", " R ", 'M', ST.make(MD.FUNK, "pusher", 1, 0), 'R', OD.itemRedstone, 'G', OD.itemGlue);
-		CR.shaped(ST.make(MD.FUNK, "slider" , 1, 0), CR.DEF_REM_REV_NCC, " S ", "LPL", " L ", 'P', OD.craftingPiston, 'L', OP.gem.dat(MT.Lapis), 'S', OP.wireFine.dat(MT.Signalum));
-		CR.shaped(ST.make(MD.FUNK, "booster", 1, 0), CR.DEF_REM_REV_NCC, "EEE", "IPI", "IMI", 'P', OD.craftingPiston, 'M', ST.make(MD.FUNK, "pusher", 1, 0), 'I', OP.plate.dat(MT.Invar), 'E', OP.plate.dat(MT.Electrum));
-		CR.shaped(ST.make(MD.FUNK, "booster", 1, 0), CR.DEF_NCC        , "EEE", "IPI", "IMI", 'P', OD.craftingPiston, 'M', ST.make(MD.FUNK, "pusher", 1, 6), 'I', OP.plate.dat(MT.Invar), 'E', OP.plate.dat(MT.Electrum));
+		CR.shaped(ST.make(MD.FUNK, "slider" , 1, 0), CR.DEF_REM_REV_NCC, " S ", "LML", " L ", 'M', ST.make(MD.FUNK, "pusher", 1, 0), 'L', OP.gem.dat(MT.Lapis), 'S', OP.wireFine.dat(MT.Signalum));
+		CR.shaped(ST.make(MD.FUNK, "slider" , 1, 0), CR.DEF_NCC        , " S ", "LML", " L ", 'M', ST.make(MD.FUNK, "pusher", 1, 6), 'L', OP.gem.dat(MT.Lapis), 'S', OP.wireFine.dat(MT.Signalum));
+		CR.shaped(ST.make(MD.FUNK, "booster", 1, 0), CR.DEF_REM_REV_NCC, "EEE", "IPI", "IMI", 'M', ST.make(MD.FUNK, "pusher", 1, 0), 'P', OD.craftingPiston, 'I', OP.plate.dat(MT.Invar), 'E', OP.plate.dat(MT.Electrum));
+		CR.shaped(ST.make(MD.FUNK, "booster", 1, 0), CR.DEF_NCC        , "EEE", "IPI", "IMI", 'M', ST.make(MD.FUNK, "pusher", 1, 6), 'P', OD.craftingPiston, 'I', OP.plate.dat(MT.Invar), 'E', OP.plate.dat(MT.Electrum));
+		CR.shaped(ST.make(MD.FUNK, "booster", 1, 0), CR.DEF_NCC        , "EEE", "IPI", "IMI", 'M', ST.make(MD.FUNK, "slider", 1, 0), 'P', OD.craftingPiston, 'I', OP.plate.dat(MT.Invar), 'E', OP.plate.dat(MT.Electrum));
 		CR.shaped(ST.make(MD.FUNK, "frame"  , 7, 0), CR.DEF_REM_NCC    , "PPP", "S S", "PPP", 'P', OP.plate.dat(ANY.Steel), 'S', OP.stick.dat(ANY.Steel));
 	}
 }
