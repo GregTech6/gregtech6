@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.25: (Not released yet)
+6.10.25:
 [NOTE] Soul Forest is not going to get Compat, it's just too bad of a Mod... Putting Titanium Gems on Sticks to make Titanium Rods just overdid it for me, along with giving each item its own ID and not registering literally anything to the OreDict, not that I would want it considering all the exploits that would cause...
 [COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF. Don't be scared about wasting Power, those Motors just have a huge Storage of 64000 EU (= 256000 RF).
 [COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff such as using Spades on its Grass Types.
