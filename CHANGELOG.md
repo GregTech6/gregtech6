@@ -34,6 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] Funky Locomotion should now accept GT6 Electricity just like it does RF. Don't be scared about wasting Power, those Motors just have a huge Storage of 64000 EU (= 256000 RF).
 [COMPAT] Abyssalcraft Material Data has been added. And some similar standard Greg Compat Stuff such as using Spades on its Grass Types.
 [FIXED] Fluid Densities did not match up with the Material Densities, but now they do.
+[FIXED] Electrolyzation of Eudialite is now possible.
 [ADDED]
 Implosion Compressor
 It works almost just like in ye olden Days. You insert Gem Dust, a Selector Tag and your Explosive of choice and BOOM it makes the Gem or Gem Plate you wanted.
