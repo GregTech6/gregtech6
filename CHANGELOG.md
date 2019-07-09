@@ -26,7 +26,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.26: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Universal Spade wasnt able to harvest all Rails like the Crowbar was.
+[ADDED] Tier 3 Crystallization Crucibles can now do colored Sapphire Boules. The Lathe can also make Boules into Long Rods now.
 
 
 6.10.25:

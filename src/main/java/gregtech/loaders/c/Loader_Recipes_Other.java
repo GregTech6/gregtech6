@@ -591,14 +591,29 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Coagulator   .addRecipe0(T,  0,  256, FL.Latex.make(L/9), NF, nugget.mat(MT.Rubber, 1));
 		
 		for (FluidStack tFluid : new FluidStack[] {MT.He.gas(U, T), MT.Ne.gas(U, T), MT.Ar.gas(U, T), MT.Kr.gas(U, T), MT.Xe.gas(U, T), MT.Rn.gas(U, T)}) if (tFluid != null) {
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Si              , U9), new FluidStack[] {              tFluid    , MT.Si            .liquid(35* U9, T)}, NF, bouleGt.mat(MT.Si              , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.RedstoneAlloy   , U9), new FluidStack[] {              tFluid    , MT.RedstoneAlloy .liquid(35* U9, T)}, NF, bouleGt.mat(MT.RedstoneAlloy   , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.NikolineAlloy   , U9), new FluidStack[] {              tFluid    , MT.NikolineAlloy .liquid(35* U9, T)}, NF, bouleGt.mat(MT.NikolineAlloy   , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.TeslatineAlloy  , U9), new FluidStack[] {              tFluid    , MT.TeslatineAlloy.liquid(35* U9, T)}, NF, bouleGt.mat(MT.TeslatineAlloy  , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Si                  ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.Si            .liquid(35*U  , T)}, NF, bouleGt.mat(MT.Si              , 9));
-			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.RedstoneAlloy       ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.RedstoneAlloy .liquid(35*U  , T)}, NF, bouleGt.mat(MT.RedstoneAlloy   , 9));
-			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.NikolineAlloy       ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.NikolineAlloy .liquid(35*U  , T)}, NF, bouleGt.mat(MT.NikolineAlloy   , 9));
-			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.TeslatineAlloy      ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.TeslatineAlloy.liquid(35*U  , T)}, NF, bouleGt.mat(MT.TeslatineAlloy  , 9));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Si             ,  U9), new FluidStack[] {              tFluid    , MT.Si            .liquid(35*U9, T)}, NF, bouleGt.mat(MT.Si              , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.RedstoneAlloy  ,  U9), new FluidStack[] {              tFluid    , MT.RedstoneAlloy .liquid(35*U9, T)}, NF, bouleGt.mat(MT.RedstoneAlloy   , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.NikolineAlloy  ,  U9), new FluidStack[] {              tFluid    , MT.NikolineAlloy .liquid(35*U9, T)}, NF, bouleGt.mat(MT.NikolineAlloy   , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.TeslatineAlloy ,  U9), new FluidStack[] {              tFluid    , MT.TeslatineAlloy.liquid(35*U9, T)}, NF, bouleGt.mat(MT.TeslatineAlloy  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Si                  ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.Si            .liquid(35*U , T)}, NF, bouleGt.mat(MT.Si              , 9));
+			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.RedstoneAlloy       ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.RedstoneAlloy .liquid(35*U , T)}, NF, bouleGt.mat(MT.RedstoneAlloy   , 9));
+			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.NikolineAlloy       ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.NikolineAlloy .liquid(35*U , T)}, NF, bouleGt.mat(MT.NikolineAlloy   , 9));
+			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.TeslatineAlloy      ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.TeslatineAlloy.liquid(35*U , T)}, NF, bouleGt.mat(MT.TeslatineAlloy  , 9));
+			
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Al2O3          ,  U3), new FluidStack[] {              tFluid    , MT.Al2O3         .liquid(29*U3, T)}, NF, bouleGt.mat(MT.Sapphire        , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Mg             ,2*U3), new FluidStack[] {              tFluid    , MT.Al2O3         .liquid(10*U3, T)}, NF, bouleGt.mat(MT.GreenSapphire   , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Ti             ,2*U3), new FluidStack[] {              tFluid    , MT.Al2O3         .liquid(10*U3, T)}, NF, bouleGt.mat(MT.YellowSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Cu             ,2*U3), new FluidStack[] {              tFluid    , MT.Al2O3         .liquid(10*U3, T)}, NF, bouleGt.mat(MT.OrangeSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Fe             ,2*U3), new FluidStack[] {              tFluid    , MT.Al2O3         .liquid(10*U3, T)}, NF, bouleGt.mat(MT.BlueSapphire    , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.V              ,2*U3), new FluidStack[] {              tFluid    , MT.Al2O3         .liquid(10*U3, T)}, NF, bouleGt.mat(MT.PurpleSapphire  , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  18000, OM.dust(MT.Cr             ,2*U3), new FluidStack[] {              tFluid    , MT.Al2O3         .liquid(10*U3, T)}, NF, bouleGt.mat(MT.Ruby            , 1));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Al2O3          ,  U ), new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.Al2O3         .liquid(29*U , T)}, NF, bouleGt.mat(MT.Sapphire        , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Mg             ,2*U ), new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)}, NF, bouleGt.mat(MT.GreenSapphire   , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Ti             ,2*U ), new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)}, NF, bouleGt.mat(MT.YellowSapphire  , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Cu             ,2*U ), new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)}, NF, bouleGt.mat(MT.OrangeSapphire  , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Fe             ,2*U ), new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)}, NF, bouleGt.mat(MT.BlueSapphire    , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.V              ,2*U ), new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)}, NF, bouleGt.mat(MT.PurpleSapphire  , 3));
+			RM.CrystallisationCrucible.addRecipe1(T,512,  52000, OM.dust(MT.Cr             ,2*U ), new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.Al2O3         .liquid(10*U , T)}, NF, bouleGt.mat(MT.Ruby            , 3));
 		}
 		
 		for (ItemStack tTNT : new ItemStack[] {ST.make(Blocks.tnt, 8, W), IL.IC2_ITNT.get(4), IL.Dynamite.get(2), IL.Dynamite_Strong.get(1)}) if (ST.valid(tTNT)) {
