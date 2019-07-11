@@ -231,6 +231,9 @@ public class Loader_Recipes_Food implements Runnable {
 		addListener("listAllfishraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OM.is_("listAllmeatsubstitute", aEvent.mStack) || ST.container(aEvent.mStack, T) != null) return;
 			OreDictItemData tData = OM.anydata_(aEvent.mStack);
+			
+			RM.generify(aEvent.mStack, ST.make(Items.fish, 1, 0));
+			
 			if (tData == null) {
 				RM.Mortar.addRecipe1(T, 16, 16, aEvent.mStack, OM.dust(MT.FishRaw));
 			} else if (tData.mPrefix == null) {

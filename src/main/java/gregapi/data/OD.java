@@ -115,6 +115,7 @@ public enum OD {
 	, itemLubricantEarly
 	, itemResin
 	, itemRubber
+	, itemSalt
 	, itemFlint
 	, itemPearl
 	, itemString
@@ -132,6 +133,9 @@ public enum OD {
 	, itemFertilizer
 	, itemPlantRemains
 	, itemGhastTear
+	, itemSilicon
+	, itemCertusQuartz
+	, itemNetherQuartz
 	, fruitBait
 	, grainBait
 	, veggieBait

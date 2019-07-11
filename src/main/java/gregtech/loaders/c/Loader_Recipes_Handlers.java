@@ -76,6 +76,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(gem                             , 1, null, 0, NF,  16, 0,   256, NF, gemFlawed          , 2, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(gemFlawed                       , 1, null, 0, NF,  16, 0,   256, NF, gemChipped         , 2, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(gemChipped                      , 1, null, 0, NF,  16, 0,   256, NF, null               , 0, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
+		RM.Crusher              .add(new RecipeMapHandlerPrefix(bouleGt                         , 1, null, 0, NF,  16, 0,   256, NF, gem                , 4, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		
 		RM.Crusher              .add(new RecipeMapHandlerCrushing());
 		

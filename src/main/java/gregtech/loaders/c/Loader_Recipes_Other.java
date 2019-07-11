@@ -592,10 +592,12 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		for (FluidStack tFluid : new FluidStack[] {MT.He.gas(U, T), MT.Ne.gas(U, T), MT.Ar.gas(U, T), MT.Kr.gas(U, T), MT.Xe.gas(U, T), MT.Rn.gas(U, T)}) if (tFluid != null) {
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Si             ,  U9), new FluidStack[] {              tFluid    , MT.Si            .liquid(35*U9, T)}, NF, bouleGt.mat(MT.Si              , 1));
+			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Ge             ,  U9), new FluidStack[] {              tFluid    , MT.Ge            .liquid(35*U9, T)}, NF, bouleGt.mat(MT.Ge              , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.RedstoneAlloy  ,  U9), new FluidStack[] {              tFluid    , MT.RedstoneAlloy .liquid(35*U9, T)}, NF, bouleGt.mat(MT.RedstoneAlloy   , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.NikolineAlloy  ,  U9), new FluidStack[] {              tFluid    , MT.NikolineAlloy .liquid(35*U9, T)}, NF, bouleGt.mat(MT.NikolineAlloy   , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.TeslatineAlloy ,  U9), new FluidStack[] {              tFluid    , MT.TeslatineAlloy.liquid(35*U9, T)}, NF, bouleGt.mat(MT.TeslatineAlloy  , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Si                  ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.Si            .liquid(35*U , T)}, NF, bouleGt.mat(MT.Si              , 9));
+			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Ge                  ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.Ge            .liquid(35*U , T)}, NF, bouleGt.mat(MT.Ge              , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.RedstoneAlloy       ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.RedstoneAlloy .liquid(35*U , T)}, NF, bouleGt.mat(MT.RedstoneAlloy   , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.NikolineAlloy       ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.NikolineAlloy .liquid(35*U , T)}, NF, bouleGt.mat(MT.NikolineAlloy   , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.TeslatineAlloy      ), new FluidStack[] {UT.Fluids.mul(tFluid, 9), MT.TeslatineAlloy.liquid(35*U , T)}, NF, bouleGt.mat(MT.TeslatineAlloy  , 9));

@@ -51,12 +51,9 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.battery, MT.Advanced              , ST.mkic("advBattery", 1, W));
 		OM.reg("calclavia:BATTERY"                  , ST.mkic("reBattery", 1));
 		OM.reg("calclavia:BATTERY"                  , ST.mkic("chargedReBattery", 1, W));
-		OM.reg("itemCertusQuartz"                   , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 1));
-		OM.reg("itemCertusQuartz"                   , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10));
-		OM.reg("itemNetherQuartz"                   , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11));
-		OM.reg(OD.craftingQuartz                    , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 1));
-		OM.reg(OD.craftingQuartz                    , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10));
-		OM.reg(OD.craftingQuartz                    , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11));
+		OM.reg(OD.itemCertusQuartz                  , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 1));
+		OM.reg(OD.itemCertusQuartz                  , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10));
+		OM.reg(OD.itemNetherQuartz                  , ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11));
 		OM.reg(OD.craftingWireCopper                , ST.mkic("insulatedCopperCableItem", 1));
 		OM.reg(OD.craftingWireGold                  , ST.mkic("insulatedGoldCableItem", 1));
 		OM.reg(OD.craftingWireIron                  , ST.mkic("insulatedIronCableItem", 1));
