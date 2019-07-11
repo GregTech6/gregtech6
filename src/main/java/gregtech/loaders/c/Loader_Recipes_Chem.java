@@ -63,14 +63,17 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Electrolyzer .addRecipe1(T, 16, 1280, OP.dustSmall   .mat(MT.LiCl, 1), new FluidStack[] {UT.Fluids.mul(tFluid, 3, 4, T)}, new FluidStack[] {MT.Cl.gas(U8, F), MT.H.gas(3*U8, F), MT.O.gas(U8, F)}, OM.dust(MT.LiOH, 3*U8));
 		RM.Electrolyzer .addRecipe1(T, 16, 5120, OP.dust        .mat(MT.LiCl, 1), new FluidStack[] {UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.Cl.gas(U2, F), MT.H.gas(3*U2, F), MT.O.gas(U2, F)}, OM.dust(MT.LiOH, 3*U2));
 		
-		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.BlueVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Cu, U*1));
-		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.GreenVitriol  .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Fe, U*1));
-		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.RedVitriol    .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Co, U*1));
-		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.PinkVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Mg, U*1));
-		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.CyanVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Ni, U*1));
-		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.WhiteVitriol  .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Zn, U*1));
-		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.GrayVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid(U * 7, T), MT.O.gas(U , F)}, OM.dust(MT.Mn, U*1));
-		RM.Electrolyzer .addRecipe1(T, 64,   96, ST.tag(1), new FluidStack[] {MT.MartianVitriol.liquid(U2*17, T), UT.Fluids.mul(tFluid, 3, 2, T)}, new FluidStack[] {MT.H2SO4.liquid(U2*21, T), MT.O.gas(U2, F)}, OM.dust(MT.Fe, U*1));
+		
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.BlueVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)}, OM.dust(MT.Cu));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.GreenVitriol  .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)}, OM.dust(MT.Fe));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.RedVitriol    .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)}, OM.dust(MT.Co));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.PinkVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)}, OM.dust(MT.Mg));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.CyanVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)}, OM.dust(MT.Ni));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.WhiteVitriol  .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)}, OM.dust(MT.Zn));
+		RM.Electrolyzer .addRecipe1(T, 64,   64, ST.tag(1), new FluidStack[] {MT.GrayVitriol   .liquid(U * 6, T), UT.Fluids.mul(tFluid, 3      )}, new FluidStack[] {MT.H2SO4.liquid( 7*U , T), MT.O.gas(  U , F)}, OM.dust(MT.Mn));
+		RM.Electrolyzer .addRecipe1(T, 64,   96, ST.tag(1), new FluidStack[] {MT.MartianVitriol.liquid(U2*17, T), UT.Fluids.mul(tFluid, 9, 2, T)}, new FluidStack[] {MT.H2SO4.liquid(21*U2, T), MT.O.gas(3*U2, F)}, OM.dust(MT.Fe));
+		RM.Electrolyzer .addRecipe1(T, 64,   96, ST.tag(1), new FluidStack[] {MT.VitriolOfClay .liquid(U2*17, T), UT.Fluids.mul(tFluid, 9, 2, T)}, new FluidStack[] {MT.H2SO4.liquid(21*U2, T)                   }, OM.dust(MT.Al2O3, 5*U2));
+		
 		
 		RM.Lightning    .addRecipe0(T,256,   64, new FluidStack[] {UT.Fluids.mul(tFluid, 3), MT.O.gas(U, T)}, MT.H2O2.liquid(U*4, F), ZL_IS);
 		
