@@ -47,11 +47,11 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	public boolean addRecipesUsing(RecipeMap aMap, ItemStack aInput, OreDictItemData aData) {
 		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mMaterial.mMaterial.containsAny(TD.Atomic.ANTIMATTER, TD.Prefix.DUST_ORE)) return F;
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
-		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreMultiplier * aData.mMaterial.mMaterial.mOreProcessingMultiplier * (aData.mPrefix.contains(TD.Prefix.DENSE_ORE) ? 2 : 1);
+		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreMultiplier * aData.mMaterial.mMaterial.mOreProcessingMultiplier;
 		
 		if (aData.mPrefix == orePoor) {
-			ItemStack tOutput = OP.crushedTiny          .mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F));
-			if (tOutput == null) tOutput = OP.dustTiny  .mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F));
+			ItemStack tOutput = OP.crushedTiny          .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F)));
+			if (tOutput == null) tOutput = OP.dustTiny  .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F)));
 			return ST.valid(tOutput) && null != aMap.addRecipe(new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInput)}, new ItemStack[] {tOutput}, null, null, ZL_FS, ZL_FS, Math.max(1, 16*tOutput.stackSize*Math.max(1, aData.mMaterial.mMaterial.mToolQuality+1)), 16, 0));
 		}
 		if (aData.mPrefix == oreSmall || aData.mPrefix == oreRich || aData.mPrefix == oreNormal) {
@@ -59,17 +59,22 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 			return F;
 		}
 		ItemStack[] tOutputs = new ItemStack[aMap.mOutputItemsCount];
-		tOutputs[0] = OP.crushed.mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, aMultiplier, F));
-		if (tOutputs[0] == null) tOutputs[0] = OP.dust.mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, aMultiplier, F));
-		if (tOutputs[0] == null) tOutputs[0] = OP.gem.mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, aMultiplier, F));
+		tOutputs[0] = OP.crushed.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
+		if (tOutputs[0] == null) tOutputs[0] = OP.dust.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
+		if (tOutputs[0] == null) tOutputs[0] = OP.gem.mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, aMultiplier, F)));
 		if (tOutputs[0] == null) return F;
-		tOutputs[1] = ST.copy_(tOutputs[0]);
 		int i = 1, tDuration = 128*tOutputs[0].stackSize*Math.max(1, aData.mMaterial.mMaterial.mToolQuality+1);
+		tOutputs[i++] = ST.copy_(tOutputs[0]);
+		if (aData.mPrefix.contains(TD.Prefix.DENSE_ORE)) {
+			tOutputs[i++] = ST.copy_(tOutputs[0]);
+			tOutputs[i++] = ST.copy_(tOutputs[0]);
+			tDuration *= 2;
+		}
 		for (OreDictMaterialStack tMaterial : aData.mPrefix.mByProducts) {
 			tDuration += UT.Code.units(tMaterial.mAmount, U, 64*Math.max(1, tMaterial.mMaterial.mToolQuality+1), T);
-			if (i < tOutputs.length - 1) {
+			if (i < tOutputs.length) {
 				ItemStack tStack = OM.dust(tMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetCrushing.mAmount, F));
-				if (tStack != null) tOutputs[++i] = tStack;
+				if (tStack != null) tOutputs[i++] = tStack;
 			}
 		}
 		return null != aMap.addRecipe(new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInput)}, tOutputs, null, null, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0));

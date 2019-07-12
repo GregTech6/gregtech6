@@ -319,6 +319,26 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "orePotassiumFeldspar"            , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreApatite"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreSaltpeter"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "basalt"                          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "granite"                         , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "andesite"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "diorite"                         , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "limestone"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "shale"                           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "slate"                           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "schist"                          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "gneiss"                          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "dolomite"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "rhyolite"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "pumice"                          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "conglomerate"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "pegmatite"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "chert"                           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "phosphorous_ore"                 , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "gypsum"                          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "sulfur_ore"                      , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "nitrate_ore"                     , null));
+		
 		
 		
 		IL.Bottle_Empty                         .set(ST.make(Items.glass_bottle, 1, 0));
