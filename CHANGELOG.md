@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.26: (Not released yet)
+6.10.26:
 [NOTE] I'll probably have to reschedule the Release Cycle in some way, due to real life Stuff that takes away two days of each week from now on.
 [COMPAT] The Mineralogy Mods Rock Types are now generated with my Stone Layer Generator. Note that I wouldn't recommend that Mod as it generates Sand, Sandstone and Gravel Layers that I cannot replace.
 [FIXED] Universal Spade wasnt able to harvest all Rails like the Crowbar was.
