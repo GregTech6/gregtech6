@@ -1743,6 +1743,7 @@ public class CS {
 		, UB                = "UndergroundBiomes"
 		, COG               = "CustomOreGen"
 		, PFAA              = "PFAAGeologica"
+		, MIN               = "mineralogy"
 		
 		, FR                = "Forestry"
 		, FRMB              = "MagicBees"

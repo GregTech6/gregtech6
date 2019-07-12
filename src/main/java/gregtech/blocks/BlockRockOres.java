@@ -41,27 +41,30 @@ public class BlockRockOres extends BlockBaseMeta {
 	public static float[] HARDNESS_LEVELS = {0.5F, 0.5F, 1.0F, 1.0F, 2.0F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F};
 	
 	public BlockRockOres(String aUnlocalised) {
-		super(null, aUnlocalised, Material.rock, soundTypeStone, 6, Textures.BlockIcons.ROCK_ORES);
+		super(null, aUnlocalised, Material.rock, soundTypeStone, 7, Textures.BlockIcons.ROCK_ORES);
 		LH.add(getUnlocalizedName()+ ".0.name", "Anthracite Coal");
 		LH.add(getUnlocalizedName()+ ".1.name", "Lignite Coal");
 		LH.add(getUnlocalizedName()+ ".2.name", "Salt");
 		LH.add(getUnlocalizedName()+ ".3.name", "Rock Salt");
 		LH.add(getUnlocalizedName()+ ".4.name", "Bauxite");
 		LH.add(getUnlocalizedName()+ ".5.name", "Oil Shale");
+		LH.add(getUnlocalizedName()+ ".6.name", "Gypsum");
 		
-		OM.reg(ST.make(this, 1, 0), OP.ore.dat(MT.Coal));
-		OM.reg(ST.make(this, 1, 1), OP.ore.dat(MT.Lignite));
-		OM.reg(ST.make(this, 1, 2), OP.ore.dat(MT.NaCl));
-		OM.reg(ST.make(this, 1, 3), OP.ore.dat(MT.KCl));
-		OM.reg(ST.make(this, 1, 4), OP.ore.dat(MT.OREMATS.Bauxite));
-		OM.reg(ST.make(this, 1, 5), OP.ore.dat(MT.Oilshale));
+		OM.reg(ST.make(this, 1, 0), OP.oreDense.dat(MT.Coal));
+		OM.reg(ST.make(this, 1, 1), OP.oreDense.dat(MT.Lignite));
+		OM.reg(ST.make(this, 1, 2), OP.oreDense.dat(MT.NaCl));
+		OM.reg(ST.make(this, 1, 3), OP.oreDense.dat(MT.KCl));
+		OM.reg(ST.make(this, 1, 4), OP.oreDense.dat(MT.OREMATS.Bauxite));
+		OM.reg(ST.make(this, 1, 5), OP.oreDense.dat(MT.Oilshale));
+		OM.reg(ST.make(this, 1, 6), OP.oreDense.dat(MT.OREMATS.Gypsum));
 		
-		StoneLayer.LAYERS.add(new StoneLayer(this, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Coal));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 1, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Lignite));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 2, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.NaCl));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 3, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.KCl));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 4, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.OREMATS.Bauxite));
-		StoneLayer.LAYERS.add(new StoneLayer(this, 5, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Oilshale));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 0, MT.Coal));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 1, MT.Lignite));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 2, MT.NaCl));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 3, MT.KCl));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 4, MT.OREMATS.Bauxite));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 5, MT.Oilshale));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 6, MT.OREMATS.Gypsum));
 	}
 	
 	@Override public boolean useGravity(int aMeta) {return F;}

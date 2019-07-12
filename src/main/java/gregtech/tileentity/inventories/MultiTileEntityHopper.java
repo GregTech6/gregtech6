@@ -188,7 +188,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
 						for (int i = 0, j = getSizeInventory(); i < j; i++) if (!slotHas(i)) {
-							slot(i, WD.suck(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ()));
+							slot(i, WD.suck(tDelegator));
 							if (slotHas(i)) {
 								tMovedItems += slot(i).stackSize;
 								updateInventory();
@@ -238,7 +238,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	@Override public boolean isSurfaceSolid         (byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return SIDES_TOP[aSide];}
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(getSizeInventory());}
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return aSide != mFacing;}

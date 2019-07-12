@@ -155,8 +155,8 @@ public class Loader_Ores implements Runnable {
 		OreDictPrefix[] tPrefix;
 		OreDictMaterial[] tDrops;
 		
-		tPrefix = new OreDictPrefix[] {OP.oreBasalt, OP.oreShale, OP.oreSandstone, OP.oreLimestone, OP.oreVanillastone/*Slate*/, OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreVanillastone, OP.oreBlueschist, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
-		tDrops  = new OreDictMaterial[] {MT.Basalt, MT.Shale, MT.Sand, MT.Limestone, MT.Stone/*MT.Slate*/, MT.Rhyolite, MT.Chalk, MT.Marble, MT.Dolomite, MT.Blueschist/* More of a Neutral Gray */, MT.Chert, MT.Gabbro, MT.Dacite};
+		tPrefix = new OreDictPrefix[] {OP.oreBasalt, OP.oreShale, OP.oreSandstone, OP.oreLimestone, OP.oreSlate, OP.oreVanillastone, OP.oreVanillastone, OP.oreMarble, OP.oreVanillastone, OP.oreBlueschist, OP.oreVanillastone, OP.oreVanillastone, OP.oreVanillastone};
+		tDrops  = new OreDictMaterial[] {MT.Basalt, MT.Shale, MT.Sand, MT.Limestone, MT.Slate, MT.Rhyolite, MT.Chalk, MT.Marble, MT.Dolomite, MT.Blueschist/* More of a Neutral Gray */, MT.Chert, MT.Gabbro, MT.Dacite};
 		for (int i = 0; i < 13; i++) rockset(MD.EB, "enhancedbiomes.tile.stoneEB", i, i, "enhancedbiomes.tile.stoneCobbleEB", i, "eb.stone."+i, tPrefix[i], tDrops[i]);
 		
 		
@@ -220,6 +220,22 @@ public class Loader_Ores implements Runnable {
 		
 		rockset(MD.RC, "cube"                           , 6, "rc.abyssal"           , OP.oreBasalt              , MT.Basalt);
 		rockset(MD.RC, "cube"                           , 7, "rc.quarried"          , OP.oreMarble              , MT.Marble);
+		
+		rockset(MD.MIN, "basalt"                        , 0, "min.basalt"           , OP.oreBasalt              , MT.Basalt);
+		rockset(MD.MIN, "granite"                       , 0, "min.granite"          , OP.oreVanillagranite      , MT.Granite);
+		rockset(MD.MIN, "andesite"                      , 0, "min.andesite"         , OP.oreAndesite            , MT.Andesite);
+		rockset(MD.MIN, "diorite"                       , 0, "min.diorite"          , OP.oreDiorite             , MT.Diorite);
+		rockset(MD.MIN, "limestone"                     , 0, "min.limestone"        , OP.oreLimestone           , MT.Limestone);
+		rockset(MD.MIN, "shale"                         , 0, "min.shale"            , OP.oreShale               , MT.Shale);
+		rockset(MD.MIN, "slate"                         , 0, "min.slate"            , OP.oreSlate               , MT.Slate);
+		rockset(MD.MIN, "schist"                        , 0, "min.schist"           , OP.oreBlueschist          , MT.Blueschist);
+		rockset(MD.MIN, "gneiss"                        , 0, "min.gneiss"           , OP.oreVanillastone        , MT.Gneiss);
+		rockset(MD.MIN, "dolomite"                      , 0, "min.dolomite"         , OP.oreVanillastone        , MT.Dolomite);
+		rockset(MD.MIN, "rhyolite"                      , 0, "min.rhyolite"         , OP.oreVanillastone        , MT.Rhyolite);
+		rockset(MD.MIN, "pumice"                        , 0, "min.pumice"           , OP.oreVanillastone        , MT.Stone);
+		rockset(MD.MIN, "conglomerate"                  , 0, "min.conglomerate"     , OP.oreVanillastone        , MT.Stone);
+		rockset(MD.MIN, "pegmatite"                     , 0, "min.pegmatite"        , OP.oreVanillastone        , MT.Stone);
+		rockset(MD.MIN, "chert"                         , 0, "min.chert"            , OP.oreVanillastone        , MT.Chert);
 		
 		if (MD.BOTA.mLoaded) {
 		rockset(MD.BOTA, ST.block(MD.BOTA, "livingrock"), 0, 0, ST.block(MD.ALF, "LivingCobble"), 0, "botania.livingrock", OP.oreLivingrock, MT.Livingrock, 1.0F, 1.0F, 0, F, F, T);
@@ -340,7 +356,7 @@ public class Loader_Ores implements Runnable {
 	
 	public static boolean rockset(ModData aMod, Block aRock, int aMetaA, int aMetaB, Block aCobble, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
 		if (aMod.mLoaded) {
-			if (aRock == NB || aRock == null) return F;
+			if (aRock == NB || aRock == null) throw new IllegalArgumentException("The Stone of the Mod '" + aMod.mID + "' with the Category '" + aName + "' is missing despite the Mod being loaded.");
 			if (aCobble == NB || aCobble == null) {aCobble = aRock; aMeta = aMetaA;}
 		} else {
 			aPrefix = OP.oreVanillastone;

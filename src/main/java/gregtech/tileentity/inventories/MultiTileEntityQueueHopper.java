@@ -174,7 +174,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
 						if (!slotHas(0)) {
-							slot(0, WD.suck(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ()));
+							slot(0, WD.suck(tDelegator));
 							if (slotHas(0)) {
 								tMovedItems += slot(0).stackSize;
 								updateInventory();
@@ -219,7 +219,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 	@Override public boolean isSurfaceSolid         (byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return SIDES_TOP[aSide];}
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return new int[] {0, getSizeInventory() - 1};}
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return aSlot == 0;}

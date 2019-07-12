@@ -52,10 +52,10 @@ public class StoneLayer {
 		this(aStone, 0, aStone, 1, aStone, 2, ((BlockStones)aStone).mMaterial, aOres);
 	}
 	public StoneLayer(Block aStone, OreDictMaterial aMaterial, StoneLayerOres... aOres) {
-		this(aStone, 0, aStone, 0, aStone, 0, aMaterial, aOres);
+		this(aStone, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, aMaterial, aOres);
 	}
 	public StoneLayer(Block aStone, long aMetaStone, OreDictMaterial aMaterial, StoneLayerOres... aOres) {
-		this(aStone, aMetaStone, aStone, aMetaStone, aStone, aMetaStone, aMaterial, aOres);
+		this(aStone, aMetaStone, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, aMaterial, aOres);
 	}
 	public StoneLayer(Block aStone, long aMetaStone, Block aCobble, long aMetaCobble, OreDictMaterial aMaterial, StoneLayerOres... aOres) {
 		this(aStone, aMetaStone, aCobble, aMetaCobble, aCobble, aMetaCobble, aMaterial, aOres);

@@ -41,6 +41,7 @@ import gregapi.data.MD;
 import gregapi.data.TD;
 import gregapi.event.BlockScanningEvent;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.random.IHasWorldAndCoords;
 import gregapi.tileentity.ITileEntity;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.data.ITileEntityGibbl;
@@ -111,6 +112,7 @@ import twilightforest.TwilightForestMod;
  * @author Gregorius Techneticies
  */
 public class WD {
+	public static ItemStack suck(IHasWorldAndCoords aCoordinates) {return suck(aCoordinates.getWorld(), aCoordinates.getX(), aCoordinates.getY(), aCoordinates.getZ());}
 	public static ItemStack suck(World aWorld, double aX, double aY, double aZ) {return suck(aWorld, aX, aY, aZ, 1, 1, 1);}
 	@SuppressWarnings("unchecked")
 	public static ItemStack suck(World aWorld, double aX, double aY, double aZ, double aL, double aH, double aW) {
