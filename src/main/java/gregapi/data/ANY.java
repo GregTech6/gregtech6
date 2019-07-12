@@ -57,6 +57,7 @@ public class ANY {
 	Coal            = any("Any Coal/Carbon"     ),
 	Si              = any("Any Silicon"         ),
 	SiO2            = any("Any Silicon Dioxide" ),
+	Quartz          = any("Any Quartz"          ),
 	W               = any("Any Tungsten"        ),
 	ThaumCrystal    = any("Any Thaumic Crystal" ),
 	Wood            = any("Any Wood"            ),
@@ -94,7 +95,8 @@ public class ANY {
 		C               .stealLooks(MT.C              ).steal(MT.C              ).setLocal("Carbon"             ).setAllToTheOutputOf(MT.C              ).put(                              ).addReRegistrationToThis(MT.C, MT.Graphite, MT.Graphene);
 		Coal            .stealLooks(MT.C              ).steal(MT.C              ).setLocal("Carbon"             ).setAllToTheOutputOf(MT.C              ).put(                              ).addReRegistrationToThis(MT.C, MT.Graphite, MT.Graphene, MT.CoalCoke, MT.Coal, MT.Charcoal);
 		Si              .stealLooks(MT.Si             ).steal(MT.Si             ).setLocal("Silicon"            ).setAllToTheOutputOf(MT.Si             ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.Si);
-		SiO2            .stealLooks(MT.SiO2           ).steal(MT.SiO2           ).setLocal("Silicon Dioxide"    ).setAllToTheOutputOf(MT.SiO2           ).put(BRITTLE, MELTING              ).addReRegistrationToThis(MT.SiO2, MT.Glass, MT.Flint, MT.NetherQuartz, MT.Quartzite, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.SunnyQuartz, MT.SmokeyQuartz, MT.LavenderQuartz, MT.ManaQuartz, MT.RedQuartz, MT.ElvenQuartz, MT.BlazeQuartz);
+		SiO2            .stealLooks(MT.SiO2           ).steal(MT.SiO2           ).setLocal("Silicon Dioxide"    ).setAllToTheOutputOf(MT.SiO2           ).put(BRITTLE, MELTING              ).addReRegistrationToThis(MT.SiO2, MT.Glass, MT.Flint, MT.Quartzite);
+		Quartz          .stealLooks(MT.NetherQuartz   ).steal(MT.NetherQuartz   ).setLocal("Quartz"             ).setAllToTheOutputOf(MT.SiO2           ).put(BRITTLE, MELTING, QUARTZ      ).addReRegistrationToThis(MT.Quartzite);
 		W               .stealLooks(MT.W              ).steal(MT.W              ).setLocal("Tungsten"           ).setAllToTheOutputOf(MT.W              ).put(SMITHABLE, MELTING            ).addReRegistrationToThis(MT.W, MT.TungstenSintered);
 		ThaumCrystal    .stealLooks(MT.InfusedBalance ).steal(MT.InfusedDull                                                                            ).put(DONT_SHOW_THIS_COMPONENT      );
 		WoodDefault     .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Normal Wood"        ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE               ).addReRegistrationToThis(MT.Wood, MT.Peanutwood).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
