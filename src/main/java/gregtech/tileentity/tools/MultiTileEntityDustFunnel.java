@@ -98,19 +98,22 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 			
 			if (mContent == null || mContent.mAmount < DUST_TYPES[mMode].mAmount) {
 				OreDictItemData tData = OM.anydata(slot(0));
-				if (OM.prefixcontainsmaterialmatches(tData, mContent == null || mContent.mAmount == 0 ? null : mContent.mMaterial, TD.Prefix.DUST_BASED)) {
-					mContent = OM.stack(tData.mMaterial.mMaterial, tData.mMaterial.mAmount + (mContent == null ? 0 : mContent.mAmount));
-					decrStackSize(0, 1);
+				if (OM.prefixcontainsmaterialmatches(tData, mContent == null ? null : mContent.mMaterial, TD.Prefix.DUST_BASED)) {
+					int tSize = (int)UT.Code.divup(DUST_TYPES[mMode].mAmount - (mContent == null ? 0 : mContent.mAmount), tData.mMaterial.mAmount);
+					mContent = OM.stack(tData.mMaterial.mMaterial, tData.mMaterial.mAmount * tSize + (mContent == null ? 0 : mContent.mAmount));
+					decrStackSize(0, tSize);
+					temp = T;
 				}
 			}
 			
-			mDust = (mContent != null && (mContent.mAmount > 0 || slot(1) != null) ? mContent.mMaterial.mID : 0);
+			mDust = (mContent != null && (mContent.mAmount > 0 || slotHas(1)) ? mContent.mMaterial.mID : 0);
 			
-			if (mContent != null && slot(1) == null && mContent.mAmount >= DUST_TYPES[mMode].mAmount) {
+			if (mContent != null && !slotHas(1) && mContent.mAmount >= DUST_TYPES[mMode].mAmount) {
 				ItemStack tStack = DUST_TYPES[mMode].mat(mContent.mMaterial, 1);
 				if (tStack != null) {
 					slot(1, tStack);
 					mContent.mAmount -= DUST_TYPES[mMode].mAmount;
+					if (mContent.mAmount <= 0) mContent = null;
 					temp = T;
 				}
 			}
@@ -124,9 +127,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (isServerSide()) {
-			if (SIDES_TOP[aSide] && slot(0) == null) ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
-		}
+		if (isServerSide() && SIDES_TOP[aSide] && !slotHas(0)) ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
 		return T;
 	}
 	
@@ -251,9 +252,9 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
-		if (aSlot == 0 && slot(0) == null && SIDES_TOP_HORIZONTAL[aSide]) {
+		if (aSlot == 0 && !slotHas(0) && SIDES_TOP_HORIZONTAL[aSide]) {
 			OreDictItemData tData = OM.anydata(aStack);
-			return OM.prefixcontains(tData, TD.Prefix.DUST_BASED) && (mContent == null || mContent.mAmount == 0 || mContent.mMaterial == tData.mMaterial.mMaterial) && DUST_TYPES[mMode].mat(tData.mMaterial.mMaterial, 1) != null;
+			return OM.prefixcontainsmaterialmatches(tData, mContent == null ? null : mContent.mMaterial, TD.Prefix.DUST_BASED) && DUST_TYPES[mMode].mat(tData.mMaterial.mMaterial, 1) != null;
 		}
 		return F;
 	}
@@ -262,7 +263,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	
 	@Override
 	public boolean breakBlock() {
-		if (isServerSide() && mContent != null && mContent.mAmount > 0) ST.drop(worldObj, getCoords(), OM.dust(mContent));
+		if (isServerSide()) ST.drop(worldObj, getCoords(), OM.dust(mContent));
 		return super.breakBlock();
 	}
 	

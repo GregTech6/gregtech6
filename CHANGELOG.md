@@ -22,11 +22,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.27: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] A Bug that made the Dust Funnel way slower than intended. It essentially only converted one single Item per tick into Dust Percentage, instead of one Stack.
 
 
 6.10.26:
-[NOTE] I'll probably have to reschedule the Release Cycle in some way, due to real life Stuff that takes away two days of each week from now on.
+[NOTE] I'll probably have to reschedule the Release Cycle in some way, due to real life Stuff that takes away two days of each week from now on. Most likely Sunday/Monday.
 [COMPAT] The Mineralogy Mods Rock Types are now generated with my Stone Layer Generator. Note that I wouldn't recommend that Mod as it generates Sand, Sandstone and Gravel Layers that I cannot replace.
 [FIXED] Universal Spade wasnt able to harvest all Rails like the Crowbar was.
 [FIXED] You can now put Covers on the Top of Hoppers and Queue Hoppers.
