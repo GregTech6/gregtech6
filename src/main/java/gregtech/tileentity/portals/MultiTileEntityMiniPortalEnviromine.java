@@ -111,7 +111,6 @@ public class MultiTileEntityMiniPortalEnviromine extends MultiTileEntityMiniPort
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListEnviromineSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListEnviromineSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

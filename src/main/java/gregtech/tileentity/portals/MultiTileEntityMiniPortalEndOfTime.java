@@ -111,7 +111,6 @@ public class MultiTileEntityMiniPortalEndOfTime extends MultiTileEntityMiniPorta
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListEndOfTimeSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListEndOfTimeSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

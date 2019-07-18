@@ -128,7 +128,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 						xRedstone[tSide] = -1;
 						wRedstone[tSide] =  0;
 					} else {
-						if (wRedstone[tSide] >= 100) {
+						if (wRedstone[tSide] >= 20) {
 							if (mRedstone[tSide] != 0) {
 								mRedstone[tSide]  = 0;
 								causeBlockUpdate();
@@ -146,7 +146,7 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 						xComparator[tSide] = -1;
 						wComparator[tSide] =  0;
 					} else {
-						if (wComparator[tSide] >= 100) {
+						if (wComparator[tSide] >= 20) {
 							if (mComparator[tSide] != 0) {
 								mComparator[tSide]  = 0;
 								causeBlockUpdate();
@@ -175,17 +175,15 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 		
 		if (aIsServerSide) {
 			// Scan Redstone
-			if (mTarget != null) {
-				for (byte tSide : ALL_SIDES_VALID) {
-					mTarget.xRedstone  [OPPOSITES[tSide]] = (byte)UT.Code.bind_(mTarget.xRedstone  [OPPOSITES[tSide]], 15, getRedstoneIncoming  (tSide));
-					mTarget.xComparator[OPPOSITES[tSide]] = (byte)UT.Code.bind_(mTarget.xComparator[OPPOSITES[tSide]], 15, getComparatorIncoming(tSide));
-				}
+			if (mTarget != null) for (byte tSide : ALL_SIDES_VALID) {
+				mTarget.xRedstone  [OPPOSITES[tSide]] = (byte)UT.Code.bind_(mTarget.xRedstone  [OPPOSITES[tSide]], 15, getRedstoneIncoming  (tSide));
+				mTarget.xComparator[OPPOSITES[tSide]] = (byte)UT.Code.bind_(mTarget.xComparator[OPPOSITES[tSide]], 15, getComparatorIncoming(tSide));
 			}
 		}
 	}
 	
 	public void setPortalActive() {if (!mActive) {mActive = T; addThisPortalToLists(); causeBlockUpdate();}}
-	public void setPortalInactive() {if (mActive) {mActive = F; removeThisPortalFromLists(); for (byte tSide : ALL_SIDES_VALID) {mRedstone[tSide] = 0; mComparator[tSide] = 0;} causeBlockUpdate();}}
+	public void setPortalInactive() {if (mActive) {disableThisPortal(); causeBlockUpdate();}}
 	
 	@Override
 	public boolean onTickCheck(long aTimer) {
@@ -206,14 +204,28 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	
 	@Override
 	public void invalidate() {
-		removeThisPortalFromLists();
+		disableThisPortal();
 		super.invalidate();
 	}
 	
 	@Override
 	public void onChunkUnload() {
-		removeThisPortalFromLists();
+		disableThisPortal();
 		super.onChunkUnload();
+	}
+	
+	public void disableThisPortal() {
+		mActive = F;
+		for (byte tSide : ALL_SIDES_VALID) {
+			mRedstone[tSide] = 0;
+			mComparator[tSide] = 0;
+			if (mTarget != null) {
+				mTarget.xRedstone  [OPPOSITES[tSide]] = 0;
+				mTarget.xComparator[OPPOSITES[tSide]] = 0;
+			}
+		}
+		removeThisPortalFromLists();
+		mTarget = null;
 	}
 	
 	@Override

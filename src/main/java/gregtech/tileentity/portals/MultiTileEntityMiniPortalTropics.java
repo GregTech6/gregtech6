@@ -110,7 +110,6 @@ public class MultiTileEntityMiniPortalTropics extends MultiTileEntityMiniPortal 
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListTropicSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListTropicSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

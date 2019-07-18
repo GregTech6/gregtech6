@@ -113,7 +113,6 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListAlfheimSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListAlfheimSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

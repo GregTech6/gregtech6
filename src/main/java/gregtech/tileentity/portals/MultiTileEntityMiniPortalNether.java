@@ -113,7 +113,6 @@ public class MultiTileEntityMiniPortalNether extends MultiTileEntityMiniPortal i
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListNetherSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListNetherSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

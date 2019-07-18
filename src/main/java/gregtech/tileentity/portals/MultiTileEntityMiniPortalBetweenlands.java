@@ -111,7 +111,6 @@ public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPo
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListBetweenlandsSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListBetweenlandsSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

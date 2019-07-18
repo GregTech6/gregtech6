@@ -111,7 +111,6 @@ public class MultiTileEntityMiniPortalErebus extends MultiTileEntityMiniPortal {
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListErebusSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListErebusSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

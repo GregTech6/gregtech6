@@ -111,7 +111,6 @@ public class MultiTileEntityMiniPortalDeepDark extends MultiTileEntityMiniPortal
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListDeepDarkSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListDeepDarkSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

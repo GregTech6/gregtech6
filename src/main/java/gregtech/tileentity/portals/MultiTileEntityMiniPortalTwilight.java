@@ -112,7 +112,6 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListTwilightSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListTwilightSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override

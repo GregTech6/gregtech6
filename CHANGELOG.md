@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.10.27: (Not released yet)
 [FIXED] A Bug that made the Dust Funnel way slower than intended. It essentially only converted one single Item per tick into Dust Percentage, instead of one Stack.
+[FIXED] Some Redstone thing with the Mini Portals. They should now react faster to the other end being disabled or unloaded.
 
 
 6.10.26:

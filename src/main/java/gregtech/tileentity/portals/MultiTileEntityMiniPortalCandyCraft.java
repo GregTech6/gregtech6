@@ -111,7 +111,6 @@ public class MultiTileEntityMiniPortalCandyCraft extends MultiTileEntityMiniPort
 	public void removeThisPortalFromLists() {
 		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListCandySide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 		if (sListCandySide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		mTarget = null;
 	}
 	
 	@Override
