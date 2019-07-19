@@ -35,7 +35,6 @@ import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterial;
-import gregapi.oredict.OreDictPrefix;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
@@ -675,8 +674,26 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.CokeOven     .addRecipe1(T,  0, 32400, blockDust                 .mat(MT.Oilshale, 1), NF, MT.Oil        .liquid(9*U40, F), dust     .mat(MT.Asphalt, 1));
 		
 		
-		OreDictPrefix tPrefixes[] = {OP.foil, OP.plate, OP.wireFine, OP.wireGt01, OP.rotor};
-		for (int i = 0; i < tPrefixes.length; i++) RM.Nanofab.addRecipe2(T, 16, UT.Code.divup(tPrefixes[i].mAmount, U256), ST.tag(i), OM.dust(MT.C, tPrefixes[i].mAmount), tPrefixes[i].mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag(0), OP.dustDiv72.mat(MT.C,18), OP.foil.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag(0), OP.dustSmall.mat(MT.C, 1), OP.foil.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(0), OP.dust     .mat(MT.C, 1), OP.foil.mat(MT.Graphene, 4));
+		
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(1), OP.dustTiny .mat(MT.C, 9), OP.plate.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(1), OP.dustSmall.mat(MT.C, 4), OP.plate.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(1), OP.dust     .mat(MT.C, 1), OP.plate.mat(MT.Graphene, 1));
+		
+		RM.Nanofab.addRecipe2(T, 16,  32, ST.tag(2), OP.dustDiv72.mat(MT.C, 9), OP.wireFine.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag(2), OP.dustSmall.mat(MT.C, 1), OP.wireFine.mat(MT.Graphene, 2));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(2), OP.dust     .mat(MT.C, 1), OP.wireFine.mat(MT.Graphene, 8));
+		
+		RM.Nanofab.addRecipe2(T, 16, 128, ST.tag(3), OP.dustDiv72.mat(MT.C,36), OP.wireGt01.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(3), OP.dustTiny .mat(MT.C, 9), OP.wireGt01.mat(MT.Graphene, 2));
+		RM.Nanofab.addRecipe2(T, 16, 128, ST.tag(3), OP.dustSmall.mat(MT.C, 2), OP.wireGt01.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(3), OP.dust     .mat(MT.C, 1), OP.wireGt01.mat(MT.Graphene, 2));
+		
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(4), OP.dustSmall.mat(MT.C,17), OP.rotor.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16,1024, ST.tag(4), OP.dust     .mat(MT.C,17), OP.rotor.mat(MT.Graphene, 4));
+		
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mNeutrons+tMaterial.mProtons > 0 && tMaterial.contains(TD.Atomic.ELEMENT) && !tMaterial.contains(TD.Atomic.ANTIMATTER)) {
 			ItemStack tInput = OM.dust(tMaterial);      if (tInput != null)         RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*65536, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons));

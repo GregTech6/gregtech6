@@ -241,7 +241,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		RM.Centrifuge       .addRecipe0(T, 64,  64, FL.Air       .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T));
 		RM.Centrifuge       .addRecipe0(T, 64,  64, FL.Air_Nether.make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.SO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T));
-		RM.Centrifuge       .addRecipe0(T, 64,  64, FL.Air_End   .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.He.gas(U500 , T), MT.Ne.gas(U500 , T), MT.Ar.gas(U500 , T));
+		RM.Centrifuge       .addRecipe0(T, 64,  64, FL.Air_End   .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.Kr.gas(U1000, T), MT.Xe.gas(U1000, T), MT.Rn.gas(U1000, T));
 		
 		
 		RM.Fermenter        .addRecipe1(T, 16,  24, ST.tag(0), FL.Biomass   .make(40), FL.Methane.make(8), ZL_IS);

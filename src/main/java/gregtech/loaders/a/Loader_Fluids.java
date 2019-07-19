@@ -50,7 +50,6 @@ public class Loader_Fluids implements Runnable {
 		
 		//-----
 		
-		UT.Fluids.create("Helium-3"                 , "Helium-3"            , MT.He_3               , 2,   1000,   300);
 		UT.Fluids.create("Propane"                  , "Propane"             , MT.Propane            , 2,   1000,   300).setDensity(-1000);
 		UT.Fluids.create("Butane"                   , "Butane"              , MT.Butane             , 2,   1000,   300).setDensity(-1000);
 		UT.Fluids.create("Propylene"                , "Propylene"           , MT.Propylene          , 2,   1000,   300);

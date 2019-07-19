@@ -33,6 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A Bug that made the Dust Funnel way slower than intended. It essentially only converted one single Item per tick into Dust Percentage, instead of one Stack.
 [FIXED] Some Redstone thing with the Mini Portals. They should now react faster to the other end being disabled or unloaded.
 [CHANGED] The Higher Tier Smelters now use Carbon Crucibles instead of Tungsten Crucibles.
+[CHANGED] Ender Air when centrifuged gives Krypton, Xenon and Radon now, instead of Helium, Neon and Argon.
 [ADDED]
 Nanoscale Fabricator, or Nanofab for short.
 The Main Purpose of this Device is to create certain Graphene based Products such as Wires, Foils, Plates and Rotors out of Carbon Dust (see Sugar+Acid Recipe).
