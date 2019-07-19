@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.10.34: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.10.33: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.10.32: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -24,6 +32,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.10.27: (Not released yet)
 [FIXED] A Bug that made the Dust Funnel way slower than intended. It essentially only converted one single Item per tick into Dust Percentage, instead of one Stack.
 [FIXED] Some Redstone thing with the Mini Portals. They should now react faster to the other end being disabled or unloaded.
+[CHANGED] The Higher Tier Smelters now use Carbon Crucibles instead of Tungsten Crucibles.
+[ADDED]
+Nanoscale Fabricator, or Nanofab for short.
+The Main Purpose of this Device is to create certain Graphene based Products such as Wires, Foils, Plates and Rotors out of Carbon Dust (see Sugar+Acid Recipe).
+This makes the creation of several previously unavailable Graphene Products possible. Including the Carbon Crucibles and their Accessories (Yes I know those usually are Graphite, but this is more of a Game Balance than a Realism thing).
+IC2 Carbon Fibers got way nerfed as they are now behind the Nanofab in the Tech Tree.
+You will need Small Lasers in the Crafting Recipe and Electricity for this to work. Because of the precision required I wont let this thing run on LU, as that is more for large Scale Production like Welding.
 
 
 6.10.26:

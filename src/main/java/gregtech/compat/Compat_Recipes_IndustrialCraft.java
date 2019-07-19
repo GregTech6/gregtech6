@@ -450,9 +450,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		for (OreDictMaterial tMat : ANY.Iron.mToThis)
 		RM.Wiremill         .addRecipe1(T, 16,  128, (tMat==MT.Enori?OP.plateGem:OP.plate).mat(tMat, 1) , ST.mkic("ironCableItem", 6));
 		RM.Wiremill         .addRecipe1(T, 16,  128, OP.plate.mat(MT.Au, 1)                             , ST.mkic("goldCableItem", 6));
-		for (OreDictMaterial tMat : ANY.C.mToThis)
-		RM.Wiremill         .addRecipe1(T, 64,  128, OM.dust(tMat, U*4)                                 , IL.IC2_Carbon_Fiber.get(1));
-		RM.Wiremill         .addRecipe1(T, 64,  128, OM.dust(MT.Coal, U*8)                              , IL.IC2_Carbon_Fiber.get(1));
 		
 		RM.Laminator        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Rubber, 1), ST.mkic("tinCableItem"   , 1), ST.mkic("insulatedTinCableItem"   , 1));
 		RM.Laminator        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Rubber, 1), ST.mkic("copperCableItem", 1), ST.mkic("insulatedCopperCableItem", 1));
@@ -470,6 +467,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Canner           .addRecipe2(T, 16,   16, IL.IC2_Grin_Powder.get(1)                          , IL.Spray_Empty.get(1)                 , IL.IC2_Spray_WeedEx.get(1));
 		RM.Canner           .addRecipe1(T, 16,   16, IL.Spray_Empty.get(1)                              , FL.Potion_Poison_2.make(250)      , NF, IL.IC2_Spray_WeedEx.get(1));
 		
+		RM.Loom             .addRecipe2(T, 64,  128, ST.tag(0)                                          , OP.wireFine.mat(MT.Graphene, 32)      , IL.IC2_Carbon_Fiber.get(1));
 		RM.Loom             .addRecipe2(T, 64,  128, ST.tag(0)                                          , IL.IC2_Carbon_Fiber.get(2)            , IL.IC2_Carbon_Mesh.get(1));
 		
 		if (IL.IC2_Sapling_Rubber.exists())
