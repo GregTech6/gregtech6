@@ -67,7 +67,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
-		mContent = OreDictMaterialStack.load(NBT_MATERIALS, aNBT);
+		if (aNBT.hasKey(NBT_MATERIALS)) mContent = OreDictMaterialStack.load(NBT_MATERIALS, aNBT);
 	}
 	
 	@Override
@@ -98,7 +98,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 			
 			if (mContent == null || mContent.mAmount < DUST_TYPES[mMode].mAmount) {
 				OreDictItemData tData = OM.anydata(slot(0));
-				if (OM.prefixcontainsmaterialmatches(tData, mContent == null ? null : mContent.mMaterial, TD.Prefix.DUST_BASED)) {
+				if (OM.prefixcontainsmaterialmatches(tData, mContent == null || mContent.mMaterial == MT.NULL ? null : mContent.mMaterial, TD.Prefix.DUST_BASED)) {
 					int tSize = (int)UT.Code.divup(DUST_TYPES[mMode].mAmount - (mContent == null ? 0 : mContent.mAmount), tData.mMaterial.mAmount);
 					mContent = OM.stack(tData.mMaterial.mMaterial, tData.mMaterial.mAmount * tSize + (mContent == null ? 0 : mContent.mAmount));
 					decrStackSize(0, tSize);
