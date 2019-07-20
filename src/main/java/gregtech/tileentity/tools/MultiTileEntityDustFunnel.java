@@ -149,7 +149,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	
 	@Override
 	public boolean onTickCheck(long aTimer) {
-		return super.onTickCheck(aTimer) || mDust != oDust;
+		return super.onTickCheck(aTimer) || (mDust != oDust && isTopVisible());
 	}
 	
 	@Override
@@ -213,22 +213,26 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 		if (aRenderPass == 0 && aSide == 0) {
 			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
 			
-			mTextureSides       = BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides   , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlaySides));
-			mTextureBottom      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
+			mTextureSides         = BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides   , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlaySides));
+			mTextureBottom        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
 			
 			if (mDust == 0) {
-				mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop       , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayTop)  , BlockTextureDefault.get(sTextureHole  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+				mTextureInput     = BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop     , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayTop)     , BlockTextureDefault.get(sTextureHole, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
 			} else {
 				if (UT.Code.exists(mDust, OreDictMaterial.MATERIAL_ARRAY)) {
 					OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDust];
-					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING))                   , BlockTextureDefault.get(sTextureHole  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING)), BlockTextureDefault.get(sTextureHole, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
 				} else {
-					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F)                                                                 , BlockTextureDefault.get(sTextureHole  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F)                                              , BlockTextureDefault.get(sTextureHole, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
 				}
 			}
 		}
 		
 		return SIDES_TOP[aSide] ? aRenderPass == 0 ? mTextureInput : null : SIDES_BOTTOM[aSide] ? mTextureBottom : mTextureSides;
+	}
+	
+	public boolean isTopVisible() {
+		return !hasCovers() || mCovers.mBehaviours[SIDE_TOP]==null || !mCovers.mBehaviours[SIDE_TOP].isOpaque(SIDE_TOP, mCovers);
 	}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
@@ -239,7 +243,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	@Override public boolean isSurfaceSolid         (byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_TOP[aSide];}
 	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_TOP[aSide];}
-	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return SIDES_TOP[aSide];}
 	
 	// Inventory Stuff
 	@Override public void adjacentInventoryUpdated(byte aSide, IInventory aTileEntity) {if (SIDES_VERTICAL[aSide]) updateInventory();}

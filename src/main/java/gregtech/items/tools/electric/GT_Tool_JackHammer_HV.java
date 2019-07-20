@@ -26,6 +26,8 @@ import java.util.List;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.SFX;
 import gregapi.data.RM;
+import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.behaviors.Behavior_Switch_Metadata;
 import gregapi.old.Textures;
 import gregapi.recipes.Recipe;
 import gregapi.render.IIconContainer;
@@ -33,10 +35,17 @@ import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
+	public final int mSwitchIndex;
+	
+	public GT_Tool_JackHammer_HV(int aSwitchIndex) {
+		mSwitchIndex = aSwitchIndex;
+	}
+	
 	@Override
 	public int getToolDamagePerBlockBreak() {
 		return 200;
@@ -97,7 +106,7 @@ public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase("pickaxe")) || aBlock.getMaterial() == Material.rock || aBlock.getMaterial() == Material.glass || aBlock.getMaterial() == Material.ice || aBlock.getMaterial() == Material.packedIce;
+		return (tTool != null && tTool.equalsIgnoreCase("pickaxe")) || aBlock == Blocks.monster_egg || aBlock.getMaterial() == Material.rock || aBlock.getMaterial() == Material.glass || aBlock.getMaterial() == Material.ice || aBlock.getMaterial() == Material.packedIce;
 	}
 	
 	@Override
@@ -126,6 +135,11 @@ public class GT_Tool_JackHammer_HV extends GT_Tool_MiningDrill_LV {
 			rConversions++;
 		}
 		return rConversions;
+	}
+	
+	@Override
+	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID, new Behavior_Switch_Metadata(mSwitchIndex));
 	}
 	
 	@Override

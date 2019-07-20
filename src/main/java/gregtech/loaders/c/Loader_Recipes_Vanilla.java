@@ -159,21 +159,32 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.stick                       , 1, 0), DEF, "s", "X", 'X', OP.treeSapling);
 		CR.shaped(ST.make(Items.stick                       , 1, 0), DEF, "k", "X", 'X', OP.treeSapling);
 		
-		CR.shaped(ST.make(Blocks.torch, 1, 0), DEF_NAC, "X", "S", 'X', IL.Grass_Dry                 , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.S)             , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.S)            , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.P)             , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.P)            , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.Phosphorus)    , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.Phosphorus)   , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OD.itemResin                 , 'S', OP.stick.dat(ANY.Wood));
+		CR.shaped(ST.make(Blocks.torch, 1, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', IL.Grass_Dry                 );
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.S)             );
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.S)            );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.P)             );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.P)            );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.Phosphorus)    );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.Phosphorus)   );
+		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OD.itemResin                 );
 		
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "WC", "S ", 'C', "container1000rubbertreesap"   , 'W', ST.make(Blocks.wool, 1, W), 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "WC", "S ", 'C', "container1000spruceresin"     , 'W', ST.make(Blocks.wool, 1, W), 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "WC", "S ", 'C', "container1000maplesap"        , 'W', ST.make(Blocks.wool, 1, W), 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "WC", "S ", 'C', "container250maplesap"         , 'W', ST.make(Blocks.wool, 1, W), 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "WC", "S ", 'C', "container1000creosote"        , 'W', ST.make(Blocks.wool, 1, W), 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "WC", "S ", 'C', "container250creosote"         , 'W', ST.make(Blocks.wool, 1, W), 'S', OP.stick.dat(ANY.Wood));
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000rubbertreesap, 'W', ST.make(Blocks.wool, 1, W));
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000spruceresin  , 'W', ST.make(Blocks.wool, 1, W));
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000maplesap     , 'W', ST.make(Blocks.wool, 1, W));
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container250maplesap      , 'W', ST.make(Blocks.wool, 1, W));
+		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000rainbowsap   , 'W', ST.make(Blocks.wool, 1, W));
+		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container250rainbowsap    , 'W', ST.make(Blocks.wool, 1, W));
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000creosote     , 'W', ST.make(Blocks.wool, 1, W));
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container250creosote      , 'W', ST.make(Blocks.wool, 1, W));
+		
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "WCW", "WSW", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000rubbertreesap, 'W', OD.itemString);
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "WCW", "WSW", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000spruceresin  , 'W', OD.itemString);
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "WCW", "WSW", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000maplesap     , 'W', OD.itemString);
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "WCW", "WSW", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container250maplesap      , 'W', OD.itemString);
+		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "WCW", "WSW", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000rainbowsap   , 'W', OD.itemString);
+		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "WCW", "WSW", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container250rainbowsap    , 'W', OD.itemString);
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "WCW", "WSW", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000creosote     , 'W', OD.itemString);
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "WCW", "WSW", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container250creosote      , 'W', OD.itemString);
 		
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", F)) {
 		CR.remove(ST.make(Items.coal, 1, 0), NI, NI, ST.make(Items.stick, 1, 0));
@@ -521,8 +532,10 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		}
 		
 		for (FluidStack tDye : DYE_FLUIDS[i]) {
-		if (i != DYE_INDEX_White)
+		if (i != DYE_INDEX_White) {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.wool, 1, 0)             , UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(Blocks.wool                     , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.carpet, 1, 0)           , UT.Fluids.mul(tDye, 1,32, T), NF, ST.make(Blocks.carpet                   , 1, 15-i));
+		}
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.glass, 1, 0)            , UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(Blocks.stained_glass            , 1, 15-i));
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.hardened_clay, 1, 0)    , UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(Blocks.stained_hardened_clay    , 1, 15-i));
 		}

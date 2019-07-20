@@ -259,8 +259,7 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Loom         .addRecipe2(T, 16, 16, ST.tag(10), ST.amount(4, aEvent.mStack), IL.Rope.get(1));
 			RM.Loom         .addRecipe2(T, 16, 16, ST.tag( 0), ST.amount(9, aEvent.mStack), ST.make(Blocks.wool, 1, 0));
 			RM.Loom         .addRecipe2(T, 16, 16, ST.tag( 1), ST.amount(3, aEvent.mStack), ST.make(Items.string, 1, 0));
-			RM.Squeezer     .addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, FL.lube(15), IL.Remains_Plant.get(1));
-			RM.Juicer       .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.lube(10), IL.Remains_Plant.get(1));
+			RM.crop(aEvent.mStack, FL.Oil_Hemp, 100, IL.Remains_Plant.get(1), 3000, null, null, 0, 0, 0, 0, 0);
 		}});
 		addListener("cropFlax", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Loom         .addRecipe2(T, 16, 16, ST.tag( 0), ST.amount(4, aEvent.mStack), ST.make(Blocks.wool, 1, 0));

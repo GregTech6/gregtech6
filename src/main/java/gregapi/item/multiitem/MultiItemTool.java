@@ -59,6 +59,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -423,7 +424,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public float getDigSpeed(ItemStack aStack, Block aBlock, int aMetaData) {
-		if (aBlock == NB) return 0;
+		if (aBlock == NB || aBlock == Blocks.bedrock) return 0;
 		if (aBlock instanceof BlockTorch || IL.GC_Torch_Glowstone.equal(aBlock) || IL.AETHER_Torch_Ambrosium.equal(aBlock) || (aMetaData == 1 && IL.TC_Block_Air.equal(aBlock))) return 10;
 		if (!isItemStackUsable(aStack)) return 0;
 		IToolStats tStats = getToolStats(aStack);

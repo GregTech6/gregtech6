@@ -63,6 +63,10 @@ public enum OD {
 	, container250rubbertreesap
 	, container1000spruceresin
 	, container250spruceresin
+	, container1000rainbowsap
+	, container250rainbowsap
+	, container1000maplesap
+	, container250maplesap
 	, container1000latex
 	, container250latex
 	, container1000lubricant

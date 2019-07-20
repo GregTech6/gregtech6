@@ -170,6 +170,8 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 			, addItem(++tLastID, "Wooden Bucket", "Dirty Water (you cannot place this!)"    , TC.stack(TC.ARBOR, 2), TC.stack(TC.AQUA       , 1), TC.stack(TC.VENENUM, 1), new Behavior_Switch_Metadata(2000 + i*100)                 , tData.copy(), FL.Dirty_Water.make(1000)                                               )
 			, addItem(++tLastID, "Wooden Bucket", "Lubricant"                               , TC.stack(TC.ARBOR, 2), TC.stack(TC.LIMUS      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.LubRoCant.make(1000), FL.Lubricant.make(1000)                        , OD.container1000lubricant)
 			, addItem(++tLastID, "Wooden Bucket", "Milk (you cannot drink out of Buckets!)" , TC.stack(TC.ARBOR, 2), TC.stack(TC.VENENUM    , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Milk_Spoiled.make(1000)                                              )
+			, addItem(++tLastID, "Wooden Bucket", "Maple Sap"                               , TC.stack(TC.ARBOR, 2), TC.stack(TC.FAMES      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Sap_Maple.make(1000)                                                 , OD.container1000maplesap)
+			, addItem(++tLastID, "Wooden Bucket", "Rainbow Sap"                             , TC.stack(TC.ARBOR, 2), TC.stack(TC.AURAM      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Sap_Rainbow.make(1000)                                               , OD.container1000rainbowsap)
 			);
 		}
 		

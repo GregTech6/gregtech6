@@ -79,7 +79,7 @@ public class GT_Tool_Chisel extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_chisel)) || aBlock == Blocks.stone || aBlock == Blocks.stonebrick || aBlock instanceof BlockStones;
+		return (tTool != null && tTool.equalsIgnoreCase(TOOL_chisel)) || aBlock == Blocks.monster_egg || aBlock == Blocks.stone || aBlock == Blocks.stonebrick || aBlock instanceof BlockStones;
 	}
 	
 	@Override

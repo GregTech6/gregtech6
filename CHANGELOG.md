@@ -30,10 +30,14 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.27: (Not released yet)
+[FIXED] Some Mining Tools were not able to harvest Silverfish properly.
 [FIXED] A Bug that made the Dust Funnel way slower than intended. It essentially only converted one single Item per tick into Dust Percentage, instead of one Stack.
 [FIXED] Some Redstone thing with the Mini Portals. They should now react faster to the other end being disabled or unloaded.
 [CHANGED] The Higher Tier Smelters now use Carbon Crucibles instead of Tungsten Crucibles.
 [CHANGED] Ender Air when centrifuged gives Krypton, Xenon and Radon now, instead of Helium, Neon and Argon.
+[CHANGED] Dust Funnel wont do visual Updates anymore if an opaque Cover is ontop of it.
+[ADDED] Jackhammer Mode to not break Ores while mining. Note that this does not apply to those huge Layers of Salt, Coal or Bauxite Ore and the likes, only regular Ores.
+[ADDED] Wooden Buckets for Maple and Rainbow Sap. They can both be used to make Torches too now. The Glass Bottle Variants work too. Also String has no longer to be crafted into Wool to make those Torches.
 [ADDED]
 Nanoscale Fabricator, or Nanofab for short.
 The Main Purpose of this Device is to create certain Graphene based Products such as Wires, Foils, Plates and Rotors out of Carbon Dust (see Sugar+Acid Recipe).
