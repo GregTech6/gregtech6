@@ -129,7 +129,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000}, crushedPurified    .mat(tMat, 1), new FluidStack[] {MT.AquaRegia.fluid(39*U4, T)}, new FluidStack[] {MT.ChloroplatinicAcid.fluid(18*U4, F), MT.NO.gas(6*U4, F), FL.Water.make(4500)}, crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(MT.PlatinumGroupSludge, 36));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000}, crushedPurifiedTiny.mat(tMat, 9), new FluidStack[] {MT.AquaRegia.fluid(39*U4, T)}, new FluidStack[] {MT.ChloroplatinicAcid.fluid(18*U4, F), MT.NO.gas(6*U4, F), FL.Water.make(4500)}, crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(MT.PlatinumGroupSludge, 36));
 		}
-		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Graphite, MT.Graphene, MT.Coal, MT.Anthracite, MT.Lignite, MT.Prismane, MT.Lonsdaleite}) {
+		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Graphite, MT.Coal, MT.Anthracite, MT.Lignite, MT.Prismane, MT.Lonsdaleite}) {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000}, crushedPurified    .mat(tMat, 1), new FluidStack[] {MT.HF.gas(U2, T)}, ZL_FS, crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(MT.Graphite, 9));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000}, crushedPurifiedTiny.mat(tMat, 9), new FluidStack[] {MT.HF.gas(U2, T)}, ZL_FS, crushedCentrifuged.mat(tMat, 1), crushedCentrifugedTiny.mat(MT.Graphite, 9));
 		}

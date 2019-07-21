@@ -66,12 +66,12 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.generify(                            ST.make(Blocks.double_plant, 1, 4), ST.make(MD.EtFu, "rose", 6, 0));
 			RM.generify(                            ST.make(MD.EtFu, "rose", 6, 0), ST.make(Blocks.double_plant, 1, 4));
 			RM.generify(                            tEtFuturumPurpurPillar, tEtFuturumPurpur);
-			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1  .make(125), FL.Dragon_Breath.make(125));
-			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1L .make(125), FL.Dragon_Breath.make(125));
-			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1S .make(125), FL.Dragon_Breath.make(125));
-			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LS.make(125), FL.Dragon_Breath.make(125));
-			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1D .make(125), FL.Dragon_Breath.make(125));
-			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LD.make(125), FL.Dragon_Breath.make(125));
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1  .make(125), FL.Dragon_Breath.make(125), ZL_IS);
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1L .make(125), FL.Dragon_Breath.make(125), ZL_IS);
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1S .make(125), FL.Dragon_Breath.make(125), ZL_IS);
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LS.make(125), FL.Dragon_Breath.make(125), ZL_IS);
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1D .make(125), FL.Dragon_Breath.make(125), ZL_IS);
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LD.make(125), FL.Dragon_Breath.make(125), ZL_IS);
 			
 			
 			CR.delate(IL.EtFu_Granite.get(1));
