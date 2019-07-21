@@ -174,6 +174,9 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 		super.onTick(aTimer, aIsServerSide);
 		
 		if (aIsServerSide) {
+			// Check if Target is still valid, because you never know how Minecraft screws you over.
+			if (mActive && (mTarget == null ? aTimer % 100 == 5 : mTarget.isDead())) findTargetPortal();
+			
 			// Scan Redstone
 			if (mTarget != null) for (byte tSide : ALL_SIDES_VALID) {
 				mTarget.xRedstone  [OPPOSITES[tSide]] = (byte)UT.Code.bind_(mTarget.xRedstone  [OPPOSITES[tSide]], 15, getRedstoneIncoming  (tSide));

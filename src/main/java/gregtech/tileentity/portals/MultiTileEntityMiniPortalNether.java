@@ -66,7 +66,7 @@ public class MultiTileEntityMiniPortalNether extends MultiTileEntityMiniPortal i
 		if (worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalNether tTarget : sListNetherSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalNether tTarget : sListNetherSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord*8, tZDifference = zCoord-tTarget.zCoord*8;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -78,7 +78,7 @@ public class MultiTileEntityMiniPortalNether extends MultiTileEntityMiniPortal i
 				}
 			} else if (worldObj.provider.dimensionId == DIM_NETHER) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalNether tTarget : sListWorldSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalNether tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord*8, tZDifference = tTarget.zCoord-zCoord*8;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {

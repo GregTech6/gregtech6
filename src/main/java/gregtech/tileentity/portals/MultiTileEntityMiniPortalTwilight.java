@@ -65,7 +65,7 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 		if (MD.TF.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 512*512;
-				for (MultiTileEntityMiniPortalTwilight tTarget : sListTwilightSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalTwilight tTarget : sListTwilightSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -77,7 +77,7 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 				}
 			} else if (WD.dimTF(worldObj)) {
 				long tShortestDistance = 512*512;
-				for (MultiTileEntityMiniPortalTwilight tTarget : sListWorldSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalTwilight tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {

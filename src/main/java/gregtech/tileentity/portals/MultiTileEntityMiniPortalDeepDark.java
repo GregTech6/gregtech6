@@ -64,7 +64,7 @@ public class MultiTileEntityMiniPortalDeepDark extends MultiTileEntityMiniPortal
 		if (MD.ExU.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalDeepDark tTarget : sListDeepDarkSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalDeepDark tTarget : sListDeepDarkSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -76,7 +76,7 @@ public class MultiTileEntityMiniPortalDeepDark extends MultiTileEntityMiniPortal
 				}
 			} else if (WD.dimDD(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalDeepDark tTarget : sListWorldSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalDeepDark tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {

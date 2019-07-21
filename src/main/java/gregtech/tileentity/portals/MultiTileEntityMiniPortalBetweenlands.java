@@ -64,7 +64,7 @@ public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPo
 		if (MD.BTL.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalBetweenlands tTarget : sListBetweenlandsSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalBetweenlands tTarget : sListBetweenlandsSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -76,7 +76,7 @@ public class MultiTileEntityMiniPortalBetweenlands extends MultiTileEntityMiniPo
 				}
 			} else if (WD.dimBTL(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalBetweenlands tTarget : sListWorldSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalBetweenlands tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {

@@ -63,7 +63,7 @@ public class MultiTileEntityMiniPortalTropics extends MultiTileEntityMiniPortal 
 		if (MD.TROPIC.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalTropics tTarget : sListTropicSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalTropics tTarget : sListTropicSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -75,7 +75,7 @@ public class MultiTileEntityMiniPortalTropics extends MultiTileEntityMiniPortal 
 				}
 			} else if (WD.dimTROPIC(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalTropics tTarget : sListWorldSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalTropics tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {

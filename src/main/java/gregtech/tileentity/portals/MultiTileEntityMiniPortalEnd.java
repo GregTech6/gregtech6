@@ -62,7 +62,7 @@ public class MultiTileEntityMiniPortalEnd extends MultiTileEntityMiniPortal {
 		if (worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 512*512;
-				for (MultiTileEntityMiniPortalEnd tTarget : sListEndSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalEnd tTarget : sListEndSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord*128, tZDifference = zCoord-tTarget.zCoord*128;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -74,7 +74,7 @@ public class MultiTileEntityMiniPortalEnd extends MultiTileEntityMiniPortal {
 				}
 			} else if (worldObj.provider.dimensionId == DIM_END) {
 				long tShortestDistance = 512*512;
-				for (MultiTileEntityMiniPortalEnd tTarget : sListWorldSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalEnd tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord*128, tZDifference = tTarget.zCoord-zCoord*128;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {

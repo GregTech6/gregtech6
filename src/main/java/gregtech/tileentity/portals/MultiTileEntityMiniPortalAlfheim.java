@@ -66,7 +66,7 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 		if (MD.ALF.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalAlfheim tTarget : sListAlfheimSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalAlfheim tTarget : sListAlfheimSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -78,7 +78,7 @@ public class MultiTileEntityMiniPortalAlfheim extends MultiTileEntityMiniPortal 
 				}
 			} else if (WD.dimALF(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalAlfheim tTarget : sListWorldSide) if (tTarget != this) {
+				for (MultiTileEntityMiniPortalAlfheim tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
