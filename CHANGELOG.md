@@ -36,6 +36,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The Higher Tier Smelters now use Carbon Crucibles instead of Tungsten Crucibles.
 [CHANGED] Ender Air when centrifuged gives Krypton, Xenon and Radon now, instead of Helium, Neon and Argon.
 [CHANGED] Dust Funnel wont do visual Updates anymore if an opaque Cover is ontop of it.
+[ADDED] Titanium-Gold Alloy can now be mixed.
+[ADDED] Ender Bumblebees can now produce Chorus Fruit, and Chorus Fruit can now be mixed with any type of Fire Potions to make Dragon Breath when Et Futurum is installed.
 [ADDED] Jackhammer Mode to not break Ores while mining. Note that this does not apply to those huge Layers of Salt, Coal or Bauxite Ore and the likes, only regular Ores.
 [ADDED] Wooden Buckets for Maple and Rainbow Sap. They can both be used to make Torches too now. The Glass Bottle Variants work too. Also String has no longer to be crafted into Wool to make those Torches.
 [ADDED]

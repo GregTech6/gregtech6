@@ -148,7 +148,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Water     .get(1), NF, FL.Water           .make(1000), OM.dust(MT.WaxBee)                 );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Magic     .get(1), NF, FL.Ambrosia        .make( 100), OM.dust(MT.WaxMagic)               );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Nether    .get(1), NF, FL.Blaze           .make(   L), OM.dust(MT.WaxRefractory)          );
-		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_End       .get(1), NF, FL.Dragon_Breath   .make( 125), OM.dust(MT.Endstone)               , IL.FR_Propolis_Pulsating.get(1));
+		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000,  1000}        , IL.Comb_End       .get(1), NF, FL.Dragon_Breath   .make( 125), OM.dust(MT.Endstone)               , IL.FR_Propolis_Pulsating.get(1), IL.EtFu_Chorus_Fruit.get(1));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Rock      .get(1), NF, FL.Concrete        .make(   L), OM.dust(MT.Stone)                  );
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Jungle    .get(1), NF, MT.Chocolate     .liquid(U, T), OM.dust(MT.Cocoa)                  , IL.FR_Propolis_Silky.get(1));
 		RM.Centrifuge.addRecipe1(T, 16, 64, new long[] {10000,  1000}               , IL.Comb_Frozen    .get(1), NF, FL.Ice             .make(1000), OM.dust(MT.Ice)                    );

@@ -561,7 +561,7 @@ public class TD {
 		G_BLAZE                     = new TagData[] {DUSTS, PLANTS, STICKS, PROJECTILES},
 		G_PEARL                     = new TagData[] {DUSTS, PLANTS, PLATES, GEMS},
 		G_PEARL_TRANSPARENT         = new TagData[] {DUSTS, PLANTS, PLATES, GEMS, LENSES, TD.Properties.TRANSPARENT},
-		G_GLASS                     = new TagData[] {DUSTS, PLANTS, PLATES, STICKS, GEMS, ARMORS, LENSES, TD.Properties.TRANSPARENT},
+		G_GLASS                     = new TagData[] {DUSTS, PLANTS, PLATES, PROJECTILES, STICKS, GEMS, ARMORS, LENSES, TD.Properties.TRANSPARENT},
 		G_QUARTZ                    = new TagData[] {DUSTS, PLANTS, PLATES, PROJECTILES, STICKS, GEMS},
 		G_QUARTZ_ORES               = new TagData[] {DUSTS, PLANTS, PLATES, PROJECTILES, STICKS, GEMS, DIRTY_DUSTS, ORES},
 		G_GEM                       = new TagData[] {DUSTS, PLANTS, PLATES, PROJECTILES, STICKS, GEMS, ARMORS},

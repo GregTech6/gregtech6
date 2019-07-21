@@ -25,6 +25,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -65,6 +66,13 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.generify(                            ST.make(Blocks.double_plant, 1, 4), ST.make(MD.EtFu, "rose", 6, 0));
 			RM.generify(                            ST.make(MD.EtFu, "rose", 6, 0), ST.make(Blocks.double_plant, 1, 4));
 			RM.generify(                            tEtFuturumPurpurPillar, tEtFuturumPurpur);
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1  .make(125), FL.Dragon_Breath.make(125));
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1L .make(125), FL.Dragon_Breath.make(125));
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1S .make(125), FL.Dragon_Breath.make(125));
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LS.make(125), FL.Dragon_Breath.make(125));
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1D .make(125), FL.Dragon_Breath.make(125));
+			RM.Mixer.addRecipe1(T, 16, 16,          IL.EtFu_Chorus_Fruit.get(1), FL.Potion_FireResistance_1LD.make(125), FL.Dragon_Breath.make(125));
+			
 			
 			CR.delate(IL.EtFu_Granite.get(1));
 			CR.delate(IL.EtFu_Diorite.get(1));
@@ -72,6 +80,7 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			CR.delate(IL.EtFu_Granite_Smooth.get(1));
 			CR.delate(IL.EtFu_Diorite_Smooth.get(1));
 			CR.delate(IL.EtFu_Andesite_Smooth.get(1));
+			
 			
 			if (MD.CHSL.mLoaded) {
 				ItemStack tChiselPurpur = ST.make(MD.CHSL, "purpur", 1, 0);

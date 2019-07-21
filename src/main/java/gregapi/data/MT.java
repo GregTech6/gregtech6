@@ -1837,6 +1837,7 @@ public class MT {
 			Fe                      .addEnchantmentForTools(Enchantment.sharpness, 1);
 			IronMagnetic            .addEnchantmentForTools(Enchantment.sharpness, 1);
 			Ice                     .addEnchantmentForTools(Enchantment.sharpness, 1);
+			Glass                   .addEnchantmentForTools(Enchantment.sharpness, 1);
 			Bronze                  .addEnchantmentForTools(Enchantment.sharpness, 1);
 			GildedIron              .addEnchantmentForTools(Enchantment.sharpness, 1);
 			PulsatingIron           .addEnchantmentForTools(Enchantment.sharpness, 1);
@@ -1862,7 +1863,6 @@ public class MT {
 			StainlessSteel          .addEnchantmentForTools(Enchantment.sharpness, 3);
 			Knightmetal             .addEnchantmentForTools(Enchantment.sharpness, 3);
 			ShadowIron              .addEnchantmentForTools(Enchantment.sharpness, 3);
-			Glass                   .addEnchantmentForTools(Enchantment.sharpness, 3);
 			BlackSteel              .addEnchantmentForTools(Enchantment.sharpness, 3);
 			RedSteel                .addEnchantmentForTools(Enchantment.sharpness, 3);
 			BlueSteel               .addEnchantmentForTools(Enchantment.sharpness, 3);
