@@ -557,8 +557,6 @@ public class OP {
 		gem                 .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3);
 		bouleGt             .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy, MT.TeslatineAlloy, MT.Sapphire, MT.GreenSapphire, MT.YellowSapphire, MT.OrangeSapphire, MT.BlueSapphire, MT.PurpleSapphire, MT.Ruby);
 		plateTiny           .forceItemGeneration(MT.Paper);
-		wireFine            .forceItemGeneration(MT.Graphene);
-		foil                .forceItemGeneration(MT.Graphene);
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
 			switch (tMaterial.mPriorityPrefixIndex) {

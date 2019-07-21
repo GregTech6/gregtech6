@@ -52,6 +52,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix("molten.silicon"    ,  1, "molten.redstone"     ,  1                                                        , "molten.redstonealloy"    ,  1);
 		mix("molten.silicon"    ,  1, "molten.nikolite"     ,  1                                                        , "molten.nikolinealloy"    ,  1);
 		mix("molten.silicon"    ,  1, "molten.teslatite"    ,  1                                                        , "molten.teslatinealloy"   ,  1);
+		mix("molten.gold"       ,  1, "molten.titanium"     ,  3                                                        , "molten.titaniumgold"     ,  4);
 		mix("molten.gold"       ,  1, "molten.bronze"       ,  1                                                        , "molten.hepatizon"        ,  2);
 		mix("molten.gold"       ,  1, "molten.silver"       ,  1                                                        , "molten.electrum"         ,  2);
 		mix("molten.tin"        ,  9, "molten.antimony"     ,  1                                                        , "molten.solderingalloy"   , 10);
