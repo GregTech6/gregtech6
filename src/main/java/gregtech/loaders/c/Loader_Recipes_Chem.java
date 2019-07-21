@@ -297,7 +297,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.V                       ), MT.O.gas( 5*U2 , T), NF                      , OM.dust(MT.V2O5, 7*U2));
 		RM.Roasting     .addRecipe1(T, 16,  128, OM.dust(MT.Cr                      ), MT.O.gas( 2*U  , T), NF                      , OM.dust(MT.CrO2,   U ));
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S                       ), MT.O.gas( 2*U  , T), MT.SO2.gas( 3*U  , F)   , ZL_IS);
-		for (OreDictMaterial tMat : ANY.C.mToThis)
+		for (OreDictMaterial tMat : ANY.C.mToThis) if (tMat != MT.Graphene)
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(tMat                       ), MT.O.gas( 2*U  , T), MT.CO2.gas( 3*U  , F)   , ZL_IS);
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Charcoal                ), MT.O.gas( 2*U  , T), MT.CO2.gas( 3*U  , F)   , ZL_IS);
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.Coal                    ), MT.O.gas( 4*U  , T), MT.CO2.gas( 6*U  , F)   , ZL_IS);
