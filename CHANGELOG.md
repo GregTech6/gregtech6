@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.27: (Not released yet, gonna be Monday afternoon or early evening)
+6.10.27:
 [FIXED] Mini Portal Chunkloading Issues. Now I just validate the Targets more often.
 [FIXED] Some Mining Tools were not able to harvest Silverfish properly.
 [FIXED] A Bug that made the Dust Funnel way slower than intended. It essentially only converted one single Item per tick into Dust Percentage, instead of one Stack.
