@@ -93,6 +93,7 @@ public class LH {
 	, REQUIREMENT_AIR_IN_FRONT = "gt.lang.requirement.air.front"
 	, REQUIREMENT_EMPTY_ASHES = "gt.lang.requirement.empty.ashes"
 	, REQUIREMENT_IGNITE_FIRE = "gt.lang.requirement.ignite.fire"
+	, REQUIREMENT_MOLTEN_CALCITE = "gt.lang.requirement.molten.calcite"
 	, REQUIREMENT_WATER = "gt.lang.requirement.water"
 	, REQUIREMENT_WATER_ANY = "gt.lang.requirement.water.any"
 	, REQUIREMENT_WATER_PURE = "gt.lang.requirement.water.pure"
@@ -351,6 +352,7 @@ public class LH {
 		add(REQUIREMENT_AIR_IN_FRONT                    , "Requires Air in front to work!");
 		add(REQUIREMENT_EMPTY_ASHES                     , "Requires Ashes to be extracted regularly!");
 		add(REQUIREMENT_IGNITE_FIRE                     , "Requires ignition by Flint and Tinder or similar!");
+		add(REQUIREMENT_MOLTEN_CALCITE                  , "Requires to be filled with Molten Calcite!");
 		add(REQUIREMENT_WATER                           , "Requires input of Water!");
 		add(REQUIREMENT_WATER_ANY                       , "Requires input of any Water!");
 		add(REQUIREMENT_WATER_PURE                      , "Requires any Water. Use distilled Water for best efficiency!");

@@ -23,9 +23,11 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.GT_API_Proxy;
 import gregapi.computer.ITileEntityComputerizable;
 import gregapi.data.BI;
 import gregapi.render.IIconContainer;
+import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
@@ -38,7 +40,7 @@ import net.minecraft.tileentity.TileEntity;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor implements ITileEntityComputerizable {
+public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor implements ITileEntityComputerizable, ITileEntityServerTickPost {
 	public static final byte
 	  MODE_COUNT    = 8
 	  
@@ -65,6 +67,11 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 		mIndex = aNBT.getInteger("gt.sensor.index");
 		mValues = aNBT.getIntArray("gt.sensor.array");
 		if (mValues.length < 1) mValues = new int[1];
+		
+		if (worldObj != null && isServerSide() && mHasToAddTimer) {
+			GT_API_Proxy.SERVER_TICK_PO2T.add(this);
+			mHasToAddTimer = F;
+		}
 	}
 	
 	@Override
@@ -84,9 +91,29 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 		return aNBT;
 	}
 	
+	private boolean mHasToAddTimer = T;
+	
+	@Override public void onUnregisterPost() {mHasToAddTimer = T;}
+	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
-		if (aIsServerSide && (getTickRate() < 2 || aTimer % getTickRate() == 0)) {
+		super.onTick2(aTimer, aIsServerSide);
+		if (aIsServerSide && mHasToAddTimer) {
+			GT_API_Proxy.SERVER_TICK_PO2T.add(this);
+			mHasToAddTimer = F;
+		}
+	}
+	
+	@Override
+	public void onCoordinateChange() {
+		super.onCoordinateChange();
+		GT_API_Proxy.SERVER_TICK_PO2T.remove(this);
+		onUnregisterPost();
+	}
+	
+	@Override
+	public void onServerTickPost(boolean aFirst) {
+		if (getTickRate() < 2 || SERVER_TIME % getTickRate() == 0) {
 			mIndex = ((mIndex + 1) % mValues.length);
 			mDisplayedNumber = mSetNumber = UT.Code.bind16(mSetNumber);
 			

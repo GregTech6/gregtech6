@@ -26,7 +26,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.10.28: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] All Sensors now run during the End of the Tick instead of the normal Tick, this should give much more consistent Results.
+[ADDED] Tachometer Sensor for RU on Axles.
 
 
 6.10.27:
