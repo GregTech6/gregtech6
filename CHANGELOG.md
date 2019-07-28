@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.28: (Not released yet)
+6.10.28:
 [NOTE] Having over 30°C three days in a row kinda did a number on me, so not much being done, at least programming wise, I did do some other Stuff in the Basement, where it's colder.
 [CHANGED] All Sensors now run during the End of the Tick instead of the normal Tick, this should give much more consistent Results.
 [ADDED] Tachometer Sensor for RU on Axles.
