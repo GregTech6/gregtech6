@@ -49,7 +49,7 @@ import net.minecraft.tileentity.TileEntity;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress {
-	public long mTransferredPower = 0, mTransferredSpeed = 0, mTransferredEnergy = 0, mPower = 1, mSpeed = 32;
+	public long mTransferredPower = 0, mTransferredSpeed = 0, mTransferredEnergy = 0, mTransferredLast = 0, mPower = 1, mSpeed = 32;
 	public byte mRotationDir = 0, oRotationDir = 0;
 	
 	@Override
@@ -77,6 +77,7 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		
 		if (aIsServerSide) {
 			if (mTransferredSpeed == 0 && aTimer > 5) mRotationDir = 0;
+			mTransferredLast = mTransferredEnergy;
 			mTransferredEnergy = mTransferredSpeed = mTransferredPower = 0;
 		}
 	}

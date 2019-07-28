@@ -58,7 +58,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetOreDictItemData, IMTE_AddToolTips {
 	public boolean mJammed = F, mUsedGear = F, mGearsWork = F, mIgnorePower = F;
-	public long mMaxThroughPut = 64, mCurrentSpeed = 0, mCurrentPower = 0;
+	public long mMaxThroughPut = 64, mCurrentSpeed = 0, mCurrentPower = 0, mTransferredLast = 0;
 	public short mAxleGear = 0, mRotationData = 0, oRotationData = 0;
 	public byte mInputtedSides = 0, mOrder = 0;
 	
@@ -166,6 +166,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
+			mTransferredLast = Math.abs(mCurrentPower * mCurrentSpeed);
 			if (mUsedGear && mCurrentPower > 0) {
 				boolean temp = T;
 				while (temp) {
@@ -182,6 +183,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 					if (++mOrder >= 6) mOrder = 0;
 				}
 			}
+			mTransferredLast -= Math.abs(mCurrentPower * mCurrentSpeed);
 			if (!mUsedGear) mRotationData = 0;
 			mUsedGear = F;
 		}
