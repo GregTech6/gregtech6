@@ -447,22 +447,22 @@ public class Loader_Recipes_Handlers implements Runnable {
 		ICondition tConditionM = new And(ANTIMATTER.NOT, COATED.NOT);
 		
 		for (int i = 0; i < 4; i++) if (tFluids[i] != null) {
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(blockSolid          , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 7 * 16, 1000, T), 32, tMultiplier[i] * 7 * 16, 0, NF, plate         , 8, NI, NI, T, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(stickLong           , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, stick         , 2, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(stick               , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, bolt          , 4, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(plate               , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, plateTiny     , 8, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(plateGem            , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, plateGemTiny  , 8, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemChipped          , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, plateGemTiny  , 2, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemFlawed           , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 2 * 16, 1000, T), 32, tMultiplier[i] * 2 * 16, 0, NF, plateGemTiny  , 4, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(gem                 , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 96, tMultiplier[i]     * 16, 0, NF, plateGem      , 1, NI, NI, T, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemFlawless         , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 96, tMultiplier[i]     * 16, 0, NF, plateGem      , 2, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemExquisite        , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 96, tMultiplier[i] * 3 * 16, 0, NF, plateGem      , 4, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemLegendary        , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 7 * 16, 1000, T), 96, tMultiplier[i] * 7 * 16, 0, NF, plateGem      , 8, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(bouleGt             , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, plateGem      , 4, NI, NI, T, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotDouble         , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, ingot         , 2, NI, NI, T, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotTriple         , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 2 * 16, 1000, T), 32, tMultiplier[i] * 2 * 16, 0, NF, ingot         , 3, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotQuadruple      , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, ingot         , 4, NI, NI, F, T, F, tConditionM));
-		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotQuintuple      , 1, UT.Fluids.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, ingot         , 5, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(blockSolid          , 1, FL.mul(tFluids[i], tMultiplier[i] * 7 * 16, 1000, T), 32, tMultiplier[i] * 7 * 16, 0, NF, plate         , 8, NI, NI, T, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(stickLong           , 1, FL.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, stick         , 2, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(stick               , 1, FL.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, bolt          , 4, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(plate               , 1, FL.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, plateTiny     , 8, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(plateGem            , 1, FL.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, plateGemTiny  , 8, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemChipped          , 1, FL.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, plateGemTiny  , 2, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemFlawed           , 1, FL.mul(tFluids[i], tMultiplier[i] * 2 * 16, 1000, T), 32, tMultiplier[i] * 2 * 16, 0, NF, plateGemTiny  , 4, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(gem                 , 1, FL.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 96, tMultiplier[i]     * 16, 0, NF, plateGem      , 1, NI, NI, T, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemFlawless         , 1, FL.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 96, tMultiplier[i]     * 16, 0, NF, plateGem      , 2, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemExquisite        , 1, FL.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 96, tMultiplier[i] * 3 * 16, 0, NF, plateGem      , 4, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(gemLegendary        , 1, FL.mul(tFluids[i], tMultiplier[i] * 7 * 16, 1000, T), 96, tMultiplier[i] * 7 * 16, 0, NF, plateGem      , 8, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(bouleGt             , 1, FL.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, plateGem      , 4, NI, NI, T, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotDouble         , 1, FL.mul(tFluids[i], tMultiplier[i]     * 16, 1000, T), 32, tMultiplier[i]     * 16, 0, NF, ingot         , 2, NI, NI, T, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotTriple         , 1, FL.mul(tFluids[i], tMultiplier[i] * 2 * 16, 1000, T), 32, tMultiplier[i] * 2 * 16, 0, NF, ingot         , 3, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotQuadruple      , 1, FL.mul(tFluids[i], tMultiplier[i] * 3 * 16, 1000, T), 32, tMultiplier[i] * 3 * 16, 0, NF, ingot         , 4, NI, NI, F, T, F, tConditionM));
+		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotQuintuple      , 1, FL.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, ingot         , 5, NI, NI, F, T, F, tConditionM));
 		}
 		
 		ICondition tConditionP = new Nor(PREFIX_UNUSED, PLANT_DROP, IS_CONTAINER, DUST_BASED, ORE, ORE_PROCESSING_BASED, scrapGt);

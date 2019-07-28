@@ -50,7 +50,7 @@ public class RecipeMapFluidCanner extends RecipeMap {
 		Recipe rRecipe = super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 		if (aInputs == null || aInputs.length <= 0 || rRecipe != null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		for (ItemStack tInput : aInputs) if (ST.valid(tInput)) {
-			FluidStack tFluid = UT.Fluids.getFluidForFilledItem(tInput, T);
+			FluidStack tFluid = FL.getFluid(tInput, T);
 			if (tFluid != null) {
 				return FL.Error.is(tFluid) ? null : new Recipe(F, F, F, new ItemStack[] {ST.amount(1, tInput)}, new ItemStack[] {ST.container(tInput, T)}, null, null, ZL_FS, new FluidStack[] {tFluid}, Math.max(tFluid.amount / 64, 16), 16, 0);
 			} else if (aFluids != null && aFluids.length > 0 && aFluids[0] != null && !FL.Error.is(aFluids[0])) {
@@ -60,8 +60,8 @@ public class RecipeMapFluidCanner extends RecipeMap {
 						return new Recipe(F, F, F, new ItemStack[] {ST.amount(1, tInput)}, new ItemStack[] {ST.copyAmountAndMeta(1, 0, tInput)}, null, null, new FluidStack[] {tMeta <= 0 ? NF : FL.Liquid_Oxygen.make(UT.Code.units(tMeta, 2700, 250, T))}, ZL_FS, tMeta <= 0 ? 1 : 64, 16, 0);
 					}
 				}
-				ItemStack tOutput = UT.Fluids.fillFluidContainer(aFluids[0], tInput, F, T, F, F);
-				tFluid = UT.Fluids.getFluidForFilledItem(tOutput, T);
+				ItemStack tOutput = FL.fill(aFluids[0], tInput, F, T, F, F);
+				tFluid = FL.getFluid(tOutput, T);
 				if (tFluid != null) return new Recipe(F, F, F, new ItemStack[] {ST.amount(1, tInput)}, new ItemStack[] {tOutput}, null, null, new FluidStack[] {tFluid}, ZL_FS, Math.max(tFluid.amount / 64, 16), 16, 0);
 			}
 		}

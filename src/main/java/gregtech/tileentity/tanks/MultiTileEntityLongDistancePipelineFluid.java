@@ -25,6 +25,7 @@ import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_HasMultiBlockMachineRelevantData;
 import gregapi.code.HashSetNoNulls;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
@@ -195,7 +196,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	
 	@Override
 	public int fill(ForgeDirection aSide, FluidStack aFluid, boolean aDoFill) {
-		if (checkTarget() && UT.Fluids.temperature(aFluid) <= mTemperature) {
+		if (checkTarget() && FL.temperature(aFluid) <= mTemperature) {
 			DelegatorTileEntity<IFluidHandler> tTileEntity = mTarget.getAdjacentTank(OPPOSITES[mTarget.mFacing]);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.fill(tTileEntity.getForgeSideOfTileEntity(), aFluid, aDoFill);
 		}
@@ -211,7 +212,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	}
 	@Override
 	public boolean canFill(ForgeDirection aSide, Fluid aFluid) {
-		if (checkTarget() && UT.Fluids.temperature(aFluid) <= mTemperature) {
+		if (checkTarget() && FL.temperature(aFluid) <= mTemperature) {
 			DelegatorTileEntity<IFluidHandler> tTileEntity = mTarget.getAdjacentTank(OPPOSITES[mTarget.mFacing]);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.canFill(tTileEntity.getForgeSideOfTileEntity(), aFluid);
 		}

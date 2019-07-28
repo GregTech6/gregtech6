@@ -21,13 +21,13 @@ package gregtech.tileentity.tanks;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.FL;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.tank.TileEntityBase08Barrel;
-import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -39,7 +39,7 @@ public class MultiTileEntityBarrelWood extends TileEntityBase08Barrel {
 	
 	@Override
 	public boolean allowFluid(FluidStack aFluid) {
-		return super.allowFluid(aFluid) && UT.Fluids.simple(aFluid);
+		return super.allowFluid(aFluid) && FL.simple(aFluid);
 	}
 	
 	@Override

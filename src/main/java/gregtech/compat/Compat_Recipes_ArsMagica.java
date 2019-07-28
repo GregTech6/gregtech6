@@ -26,6 +26,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -36,7 +37,6 @@ import gregapi.oredict.event.OreDictListenerEvent_ThreeNames;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -54,7 +54,7 @@ public class Compat_Recipes_ArsMagica extends CompatMods {
 		}});
 		}};
 		
-		RM.Injector.addRecipe2(T, 16, 16, IL.Bottle_Empty.get(1)                                , ST.make(Items.wheat_seeds, 1, W), UT.Fluids.make("potion.mundane", 250), NF, ST.make(MD.ARS, "lesserManaPotion", 1, 0));
+		RM.Injector.addRecipe2(T, 16, 16, IL.Bottle_Empty.get(1)                                , ST.make(Items.wheat_seeds, 1, W), FL.make("potion.mundane", 250), NF, ST.make(MD.ARS, "lesserManaPotion", 1, 0));
 		RM.Injector.addRecipe2(T, 16, 16, ST.make(Items.potionitem                  , 1,   64)  , ST.make(Items.wheat_seeds, 1, W), ST.make(MD.ARS, "lesserManaPotion", 1, 0));
 		RM.Injector.addRecipe2(T, 16, 16, ST.make(Items.potionitem                  , 1,16384)  , ST.make(Items.wheat_seeds, 1, W), ST.make(MD.ARS, "standardManaPotion", 1, 0));
 		RM.Injector.addRecipe2(T, 16, 16, ST.make(MD.ARS, "lesserManaPotion"        , 1,    0)  , OM.dust(MT.Gunpowder), ST.make(MD.ARS, "standardManaPotion", 1, 0));

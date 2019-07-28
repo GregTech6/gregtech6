@@ -38,7 +38,6 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -533,11 +532,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		for (FluidStack tDye : DYE_FLUIDS[i]) {
 		if (i != DYE_INDEX_White) {
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.wool, 1, 0)             , UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(Blocks.wool                     , 1, 15-i));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.carpet, 1, 0)           , UT.Fluids.mul(tDye, 1,32, T), NF, ST.make(Blocks.carpet                   , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.wool, 1, 0)             , FL.mul(tDye, 1,16, T), NF, ST.make(Blocks.wool                     , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.carpet, 1, 0)           , FL.mul(tDye, 1,32, T), NF, ST.make(Blocks.carpet                   , 1, 15-i));
 		}
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.glass, 1, 0)            , UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(Blocks.stained_glass            , 1, 15-i));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.hardened_clay, 1, 0)    , UT.Fluids.mul(tDye, 1,16, T), NF, ST.make(Blocks.stained_hardened_clay    , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.glass, 1, 0)            , FL.mul(tDye, 1,16, T), NF, ST.make(Blocks.stained_glass            , 1, 15-i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Blocks.hardened_clay, 1, 0)    , FL.mul(tDye, 1,16, T), NF, ST.make(Blocks.stained_hardened_clay    , 1, 15-i));
 		}
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(0), OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4), ST.make(Blocks.wool, 1, i));
 		}
@@ -612,19 +611,19 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		
 		RM.Squeezer     .addRecipe1(T, 16,  128,  6000, ST.make(Blocks.melon_block      , 1, W), NF, FL.Juice_Melon.make(2250), IL.Remains_Fruit.get(9));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 0), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 1), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue    ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 2), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 3), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 4), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 5), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Orange       ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 6), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 7), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Pink         ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 8), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.yellow_flower    , 1, 0), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow       ], 2), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  4000, ST.make(Blocks.double_plant     , 1, 1), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 3), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  4000, ST.make(Blocks.double_plant     , 1, 4), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 3), IL.Remains_Plant.get(1));
-		RM.Squeezer     .addRecipe1(T, 16,   16,  4000, ST.make(Blocks.double_plant     , 1, 5), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Pink         ], 3), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 0), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 1), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue    ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 2), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 3), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 4), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 5), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Orange       ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 6), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 7), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Pink         ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.red_flower       , 1, 8), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  2000, ST.make(Blocks.yellow_flower    , 1, 0), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow       ], 2), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  4000, ST.make(Blocks.double_plant     , 1, 1), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 3), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  4000, ST.make(Blocks.double_plant     , 1, 4), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 3), IL.Remains_Plant.get(1));
+		RM.Squeezer     .addRecipe1(T, 16,   16,  4000, ST.make(Blocks.double_plant     , 1, 5), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Pink         ], 3), IL.Remains_Plant.get(1));
 		RM.Squeezer     .addRecipe1(T, 16,   16, 10000, ST.make(Blocks.double_plant     , 1, 0), NF, FL.Oil_Sunflower.make(100), ST.make(Items.dye, 2, DYE_INDEX_Yellow));
 		RM.Squeezer     .addRecipe1(T, 16,   16,  7000, ST.make(Blocks.cactus           , 1, W), NF, FL.Juice_Cactus.make(100), IL.Dye_Cactus.get(2));
 		RM.Squeezer     .addRecipe1(T, 16,   16,  4000, ST.make(Items.reeds             , 1, W), NF, FL.Juice_Reed.make(100), IL.Remains_Plant.get(1));
@@ -645,24 +644,24 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   16, 10000, ST.make(Items.poisonous_potato  , 1, W), NF, FL.Potion_Poison_1.make(250), NI);
 		RM.Squeezer     .addRecipe1(T, 16,   16, 10000, ST.make(Items.spider_eye        , 1, W), NF, FL.Potion_Poison_1.make(250), OM.dust(MT.MeatRaw, U2));
 		RM.Squeezer     .addRecipe1(T, 16,   32, 10000, ST.make(Items.fish              , 1, 3), NF, FL.Potion_Poison_2.make(250), OM.dust(MT.FishRaw, U));
-		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_apple      , 1, 0), NF, UT.Fluids.make("potion.goldenapplejuice", 250), OM.dust(MT.Au, U*2));
-		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_apple      , 1, 1), NF, UT.Fluids.make("potion.idunsapplejuice", 250), OM.dust(MT.Au, U*18));
-		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_carrot     , 1, 0), NF, UT.Fluids.make("goldencarrotjuice", 250), OM.dust(MT.Au, 2*U9));
-		RM.Squeezer     .addRecipe1(T, 16,   16, 10000, IL.Dye_SquidInk                 .get(1), NF, UT.Fluids.make("squidink", 2*L), NI);
+		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_apple      , 1, 0), NF, FL.make("potion.goldenapplejuice", 250), OM.dust(MT.Au, U*2));
+		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_apple      , 1, 1), NF, FL.make("potion.idunsapplejuice", 250), OM.dust(MT.Au, U*18));
+		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_carrot     , 1, 0), NF, FL.make("goldencarrotjuice", 250), OM.dust(MT.Au, 2*U9));
+		RM.Squeezer     .addRecipe1(T, 16,   16, 10000, IL.Dye_SquidInk                 .get(1), NF, FL.make("squidink", 2*L), NI);
 		
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 0), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 1), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue    ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 2), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 3), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 4), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 5), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Orange       ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 6), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 7), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Pink         ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 8), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.yellow_flower    , 1, 0), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow       ], 1), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  6000, ST.make(Blocks.double_plant     , 1, 1), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 2), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  6000, ST.make(Blocks.double_plant     , 1, 4), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 2), IL.Remains_Plant.get(1));
-		RM.Juicer       .addRecipe1(T, 16,   16,  6000, ST.make(Blocks.double_plant     , 1, 5), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Pink         ], 2), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 0), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 1), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightBlue    ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 2), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 3), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 4), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 5), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Orange       ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 6), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 7), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Pink         ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.red_flower       , 1, 8), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_LightGray    ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  3000, ST.make(Blocks.yellow_flower    , 1, 0), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow       ], 1), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  6000, ST.make(Blocks.double_plant     , 1, 1), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Magenta      ], 2), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  6000, ST.make(Blocks.double_plant     , 1, 4), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Red          ], 2), IL.Remains_Plant.get(1));
+		RM.Juicer       .addRecipe1(T, 16,   16,  6000, ST.make(Blocks.double_plant     , 1, 5), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Pink         ], 2), IL.Remains_Plant.get(1));
 		RM.Juicer       .addRecipe1(T, 16,   16, 10000, ST.make(Blocks.double_plant     , 1, 0), NF, FL.Oil_Sunflower.make(75), ST.make(Items.dye, 2, 11));
 		RM.Juicer       .addRecipe1(T, 16,   16,  9000, ST.make(Blocks.cactus           , 1, W), NF, FL.Juice_Cactus.make(75), IL.Dye_Cactus.get(2));
 		RM.Juicer       .addRecipe1(T, 16,   16,  5000, ST.make(Items.reeds             , 1, W), NF, FL.Juice_Reed.make(75), IL.Remains_Plant.get(1));
@@ -683,7 +682,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Juicer       .addRecipe1(T, 16,   16, 10000, ST.make(Items.poisonous_potato  , 1, W), NF, FL.Potion_Poison_1.make(125), NI);
 		RM.Juicer       .addRecipe1(T, 16,   16, 10000, ST.make(Items.spider_eye        , 1, W), NF, FL.Potion_Poison_1.make(125), OM.dust(MT.MeatRaw, U2));
 		RM.Juicer       .addRecipe1(T, 16,   32, 10000, ST.make(Items.fish              , 1, 3), NF, FL.Potion_Poison_2.make(125), OM.dust(MT.FishRaw, U));
-		RM.Juicer       .addRecipe1(T, 16,   16, 10000, IL.Dye_SquidInk                 .get(1), NF, UT.Fluids.make("squidink", 3*L/2), NI);
+		RM.Juicer       .addRecipe1(T, 16,   16, 10000, IL.Dye_SquidInk                 .get(1), NF, FL.make("squidink", 3*L/2), NI);
 		
 		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.golden_apple , 1, 0), MT.Au.liquid(U*64, T), NF, ST.make(Items.golden_apple, 1, 1));
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.carrot       , 1, W), MT.Au.liquid(8*U9, T), NF, ST.make(Items.golden_carrot, 1, 0));
@@ -708,9 +707,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.Centrifuge   .addRecipe1(T, 16,   16, OM.dust(MT.SlimyBone), NF, FL.Slime_Green.make(250), OM.dust(MT.Bone));
 		RM.Centrifuge   .addRecipe1(T, 16,   16, ST.make(Items.magma_cream, 1, W), NF, FL.Slime_Green.make(250), ST.make(Items.blaze_powder, 1, 0));
-		for (String tFluid : FluidsGT.SLIME) if (UT.Fluids.exists(tFluid)) {
-		RM.Centrifuge   .addRecipe0(T, 16,   64, UT.Fluids.make(tFluid, 250), FL.Latex.make(L/2), FL.Glue.make(250));
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Blaze), UT.Fluids.make(tFluid, 250), NF, ST.make(Items.magma_cream, 1, 0));
+		for (String tFluid : FluidsGT.SLIME) if (FL.exists(tFluid)) {
+		RM.Centrifuge   .addRecipe0(T, 16,   64, FL.make(tFluid, 250), FL.Latex.make(L/2), FL.Glue.make(250));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Blaze), FL.make(tFluid, 250), NF, ST.make(Items.magma_cream, 1, 0));
 		}
 		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {

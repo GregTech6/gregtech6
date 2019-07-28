@@ -232,7 +232,7 @@ public class DungeonData extends WorldAndCoords {
 		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, aFluid.make(250)));
 	}
 	public boolean cup(int aX, int aY, int aZ, Fluid aFluid) {
-		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, UT.Fluids.make(aFluid, 250)));
+		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, FL.make(aFluid, 250)));
 	}
 	
 	public boolean set(int aX, int aY, int aZ, Block aBlock) {

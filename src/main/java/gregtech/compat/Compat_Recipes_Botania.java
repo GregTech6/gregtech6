@@ -35,7 +35,6 @@ import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import vazkii.botania.api.BotaniaAPI;
 
 public class Compat_Recipes_Botania extends CompatMods {
@@ -62,8 +61,8 @@ public class Compat_Recipes_Botania extends CompatMods {
 		RM.Juicer       .addRecipe1(T, 16, 128, IL.ALF_Ice.get(1), NF, FL.Ice.make(1000), NI);
 		}
 		
-		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, UT.Fluids.make("mushroomsoup", 500), ZL_IS);
-		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, UT.Fluids.make("mushroomsoup", 500), ZL_IS);
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, FL.make("mushroomsoup", 500), ZL_IS);
+		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, FL.make("mushroomsoup", 500), ZL_IS);
 		for (int i = 0; i < 16; i++) {
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "petal", 1, i), NF, DYE_FLUIDS_FLOWER[15-i], ST.make(MD.BOTA, "dye", 1, i));
 		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "petal", 1, i), NF, DYE_FLUIDS_FLOWER[15-i], ST.make(MD.BOTA, "dye", 1, i));

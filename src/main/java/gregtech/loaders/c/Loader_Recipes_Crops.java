@@ -39,7 +39,6 @@ import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.oredict.event.OreDictListenerEvent_TwoNames;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -57,8 +56,8 @@ public class Loader_Recipes_Crops implements Runnable {
 			RM.Mixer    .addRecipeX(T, 16, 16, new ItemStack[] {aStack1, aStack2, OM.dust(MT.ArcaneAsh), OM.dust(MT.Vinteum)}, OM.dust(MT.VinteumPurified));
 		}});
 		addListener("flowerCerublossom", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Squeezer .addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 2), IL.Remains_Plant.get(1));
-			RM.Juicer   .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 1), IL.Remains_Plant.get(1));
+			RM.Squeezer .addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 2), IL.Remains_Plant.get(1));
+			RM.Juicer   .addRecipe1(T, 16, 16, 3000, aEvent.mStack, NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 1), IL.Remains_Plant.get(1));
 			RM.ic2_extractor(aEvent.mStack, dust.mat(MT.Blue, 3));
 		}});
 		addListener("flowerDesertNova", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

@@ -526,8 +526,8 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 	
 	public void make(int aSpeciesID, String aName, String aTooltip) {
 		for (int i : new int[] {0, 1, 4}) {
-		for (String tFluid : FluidsGT.HONEY) if (UT.Fluids.exists(tFluid))
-		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {UT.Fluids.make(tFluid, 10)}  , null, 64, 16, 0);
+		for (String tFluid : FluidsGT.HONEY) if (FL.exists(tFluid))
+		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {FL.make(tFluid, 10)}  , null, 64, 16, 0);
 		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i), OP.plateTiny.mat(MT.Paper, 1)}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5)}, null, null, new FluidStack[] {FL.Honeydew.make(10)}        , null, 64, 16, 0);
 		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null     , null,  1, 16, 0);
 		RM.Bumblelyzer.addFakeRecipe(F, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Was already scanned, auto-skipping")}, new ItemStack[] {ST.make(this, 1, aSpeciesID+i+5, "Just passed to the Output")}, null, null, null     , null,  1, 16, 0);

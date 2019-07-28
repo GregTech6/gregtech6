@@ -97,7 +97,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		mTank.writeToNBT(aNBT, NBT_TANK);
-		if (isClientSide() && !mTank.isEmpty()) aNBT.setTag("display", UT.NBT.makeString(aNBT.getCompoundTag("display"), "Name", UT.Fluids.name(mTank, T)));
+		if (isClientSide() && !mTank.isEmpty()) aNBT.setTag("display", UT.NBT.makeString(aNBT.getCompoundTag("display"), "Name", FL.name(mTank, T)));
 		return super.writeItemNBT2(aNBT);
 	}
 	
@@ -148,13 +148,13 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 		if (isClientSide()) return T;
 		
 		ItemStack aStack = aPlayer.getCurrentEquippedItem(), tStack = ST.container(ST.amount(1, aStack), T);
-		FluidStack tFluid = UT.Fluids.getFluidForFilledItem(ST.amount(1, aStack), T);
+		FluidStack tFluid = FL.getFluid(ST.amount(1, aStack), T);
 		if (aStack != null && isFluidAllowed(tFluid) && mTank.fillAll(tFluid)) {
 			aStack.stackSize--;
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 			return T;
 		}
-		if (aStack != null) if ((tStack = UT.Fluids.fillFluidContainer(mTank, ST.amount(1, aStack), T, T, T, T)) != null) {
+		if (aStack != null) if ((tStack = FL.fill(mTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 			aStack.stackSize--;
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 			return T;
@@ -209,7 +209,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || aStack.stackSize != 1) return F;
 		if (canWaterCrops()) {
 			FluidStack mFluid = aItem.getFluid(aStack);
-			if (UT.Fluids.water(mFluid)) {
+			if (FL.water(mFluid)) {
 				Block aBlock = aWorld.getBlock(aX, aY, aZ);
 				int aMeta = aWorld.getBlockMetadata(aX, aY, aZ);
 				
@@ -406,7 +406,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 	}
 	
 	public boolean isFluidAllowed(FluidStack aFluid) {
-		return aFluid != null && !UT.Fluids.powerconducting(aFluid) && (UT.Fluids.gas(aFluid) ? mGasProof : mLiquidProof) && (mAcidProof || !UT.Fluids.acid(aFluid)) && (mPlasmaProof || !UT.Fluids.plasma(aFluid) && UT.Fluids.temperature(aFluid) <= mTemperatureMax);
+		return aFluid != null && !FL.powerconducting(aFluid) && (FL.gas(aFluid) ? mGasProof : mLiquidProof) && (mAcidProof || !FL.acid(aFluid)) && (mPlasmaProof || !FL.plasma(aFluid) && FL.temperature(aFluid) <= mTemperatureMax);
 	}
 	
 	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.has() ? 1 : aDefault;}

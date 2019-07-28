@@ -191,7 +191,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 			}
 		}
 		for (int i = 0; i < mTanksOutput.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanksOutput[i].has()) {
-			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanksOutput[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || UT.Fluids.lighter(aRecipe.mFluidOutputs[i]) || mTanksOutput[i].has(Math.max(1000, 1+aRecipe.mFluidOutputs[i].amount))))) {
+			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanksOutput[i].contains(aRecipe.mFluidOutputs[i]) || FL.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || FL.lighter(aRecipe.mFluidOutputs[i]) || mTanksOutput[i].has(Math.max(1000, 1+aRecipe.mFluidOutputs[i].amount))))) {
 				return F;
 			}
 		}
@@ -227,9 +227,9 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 				return T;
 			}
 			ItemStack aStack = aPlayer.getCurrentEquippedItem(), tStack = ST.container(ST.amount(1, aStack), T);
-			FluidStack tFluid = UT.Fluids.getFluidForFilledItem(ST.amount(1, aStack), T);
+			FluidStack tFluid = FL.getFluid(ST.amount(1, aStack), T);
 			
-			if (aStack != null && tFluid != null && UT.Fluids.fillAll_(this, SIDE_ANY, tFluid, T)) {
+			if (aStack != null && tFluid != null && FL.fillAll_(this, SIDE_ANY, tFluid, T)) {
 				aStack.stackSize--;
 				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 				return T;
@@ -238,23 +238,23 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 				if (aStack != null) for (byte i = 0; i < 6; i++) {
 					if (ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, i) > 0) return T;
 				}
-				if (aStack != null) for (FluidTankGT tTank : mTanksOutput) if ((tStack = UT.Fluids.fillFluidContainer(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
+				if (aStack != null) for (FluidTankGT tTank : mTanksOutput) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 					return T;
 				}
-				if (aStack != null) for (FluidTankGT tTank : mTanksInput) if ((tStack = UT.Fluids.fillFluidContainer(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
+				if (aStack != null) for (FluidTankGT tTank : mTanksInput) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 					return T;
 				}
 			} else {
-				if (aStack != null) for (FluidTankGT tTank : mTanksOutput) if ((tStack = UT.Fluids.fillFluidContainer(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
+				if (aStack != null) for (FluidTankGT tTank : mTanksOutput) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 					return T;
 				}
-				if (aStack != null) for (FluidTankGT tTank : mTanksInput) if ((tStack = UT.Fluids.fillFluidContainer(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
+				if (aStack != null) for (FluidTankGT tTank : mTanksInput) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 					return T;
@@ -313,7 +313,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].contains(aFluidToFill)) return mTanksInput[i];
-		if (UT.Fluids.temperature(aFluidToFill) >= mMaterial.mMeltingPoint - 100 || UT.Fluids.lighter(aFluidToFill)) return null;
+		if (FL.temperature(aFluidToFill) >= mMaterial.mMeltingPoint - 100 || FL.lighter(aFluidToFill)) return null;
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].isEmpty()) return mTanksInput[i];
 		return null;
 	}
@@ -388,7 +388,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 			if (mDisplay == 0 || SIDE_TOP != aSide) return null;
 			if (mDisplay < -1) {
 				Fluid tFluid = FluidRegistry.getFluid(-mDisplay-2);
-				return tFluid == null ? BlockTextureCopied.get(Blocks.water, SIDE_ANY, 0, UNCOLOURED, F, F, F) : BlockTextureFluid.get(UT.Fluids.make(tFluid, 1000));
+				return tFluid == null ? BlockTextureCopied.get(Blocks.water, SIDE_ANY, 0, UNCOLOURED, F, F, F) : BlockTextureFluid.get(FL.make(tFluid, 1000));
 			}
 			if (UT.Code.exists(mDisplay, OreDictMaterial.MATERIAL_ARRAY)) return BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mDisplay], OP.blockDust, OreDictMaterial.MATERIAL_ARRAY[mDisplay].contains(TD.Properties.GLOWING));
 			return BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_128, F);

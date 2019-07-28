@@ -156,7 +156,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.largeboiler.2"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.largeboiler.3"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.largeboiler.4"));
-		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " 1 L " + UT.Fluids.name(FluidRegistry.WATER, true) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + UT.Fluids.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
+		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " 1 L " + FL.name(FluidRegistry.WATER, true) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + FL.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)                        + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE + "/t (Heat Acceptors)");
 		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                     + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE);
@@ -183,7 +183,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 			long tConversions = Math.min(mTanks[1].capacity() / 2560, Math.min(mEnergy / 80, mTanks[0].amount()));
 			if (tConversions > 0) {
 				mTanks[0].remove(tConversions);
-				if (rng(10) == 0 && mEfficiency > 5000 && !UT.Fluids.distw(mTanks[0])) {
+				if (rng(10) == 0 && mEfficiency > 5000 && !FL.distw(mTanks[0])) {
 					mEfficiency -= tConversions;
 					if (mEfficiency < 5000) mEfficiency = 5000;
 				}
@@ -223,11 +223,11 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 					
 					long[] tTargetAmounts = new long[tDelegators.length];
 					
-					for (int i = 0; i < tDelegators.length; i++) if (tDelegators[i].mTileEntity instanceof IFluidHandler && (tTargetAmounts[i] = UT.Fluids.fill_(tDelegators[i], tDrainableSteam, F)) > 0) tTargets++; else tDelegators[i] = null;
+					for (int i = 0; i < tDelegators.length; i++) if (tDelegators[i].mTileEntity instanceof IFluidHandler && (tTargetAmounts[i] = FL.fill_(tDelegators[i], tDrainableSteam, F)) > 0) tTargets++; else tDelegators[i] = null;
 					
 					if (tTargets == 1) {
 						for (int i = 0; i < tDelegators.length; i++) if (tDelegators[i] != null) {
-							UT.Fluids.move_(mTanks[1], tDelegators[i], tDrainableSteam.amount);
+							FL.move_(mTanks[1], tDelegators[i], tDrainableSteam.amount);
 							break;
 						}
 					} else if (tTargets > 1 && tDrainableSteam.amount >= tTargets) {
@@ -235,24 +235,24 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 							int tMoveable = tDrainableSteam.amount, tOriginalTargets = tTargets;
 							for (int i = 0; i < tDelegators.length; i++) if (tDelegators[i] != null) {
 								if (tTargetAmounts[i] <= tDrainableSteam.amount / tOriginalTargets) {
-									tMoveable -= UT.Fluids.move_(mTanks[1], tDelegators[i], tDrainableSteam.amount / tOriginalTargets);
+									tMoveable -= FL.move_(mTanks[1], tDelegators[i], tDrainableSteam.amount / tOriginalTargets);
 									tDelegators[i] = null;
 									if (--tTargets < 2) break;
 								}
 							}
 							if (tTargets == 1) {
 								for (int i = 0; i < tDelegators.length; i++) if (tDelegators[i] != null) {
-									UT.Fluids.move_(mTanks[1], tDelegators[i], tMoveable);
+									FL.move_(mTanks[1], tDelegators[i], tMoveable);
 									break;
 								}
 							} else if (tTargets > 1 && tMoveable >= tTargets) {
 								for (int i = 0; i < tDelegators.length; i++) if (tDelegators[i] != null) {
-									tMoveable -= UT.Fluids.move_(mTanks[1], tDelegators[i], tMoveable / tTargets);
+									tMoveable -= FL.move_(mTanks[1], tDelegators[i], tMoveable / tTargets);
 									if (--tTargets < 1) break;
 								}
 							}
 						} else {
-							for (int i = 0; i < tDelegators.length; i++) if (tDelegators[i] != null) UT.Fluids.move_(mTanks[1], tDelegators[i], tTargetAmounts[i]);
+							for (int i = 0; i < tDelegators.length; i++) if (tDelegators[i] != null) FL.move_(mTanks[1], tDelegators[i], tTargetAmounts[i]);
 						}
 					}
 				}
@@ -376,10 +376,10 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
-	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return UT.Fluids.water(aFluidToFill) ? mTanks[0] : null;}
+	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return FL.water(aFluidToFill) ? mTanks[0] : null;}
 	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTanks[1];}
 	@Override protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return mTanks;}
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return UT.Fluids.water(aFluidToFill) ? mTanks[0] : null;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return FL.water(aFluidToFill) ? mTanks[0] : null;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return mTanks[1];}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTanks;}
 	

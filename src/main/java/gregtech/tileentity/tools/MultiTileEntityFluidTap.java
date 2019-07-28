@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
@@ -72,14 +73,14 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment {
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
 			if (tDelegator.mTileEntity instanceof ITileEntityTapAccessible) {
 				FluidStack tFluid = ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, F);
-				if (!UT.Fluids.gas(tFluid, T) && tFluid.amount > 0 && (mAcidProof || !UT.Fluids.acid(tFluid))) {
+				if (!FL.gas(tFluid, T) && tFluid.amount > 0 && (mAcidProof || !FL.acid(tFluid))) {
 					ItemStack aStack = aPlayer.getCurrentEquippedItem();
 					if (aStack == null) {
 						DelegatorTileEntity<TileEntity> tDelegator2 = getAdjacentTileEntity(SIDE_BOTTOM);
 						if (tDelegator2.mTileEntity == null) {
 							if (tDelegator2.getBlock() instanceof BlockCauldron) {
 								byte tMeta = tDelegator2.getMetaData();
-								if (tMeta < 3 && UT.Fluids.water(tFluid) && tFluid.amount >= 334) {
+								if (tMeta < 3 && FL.water(tFluid) && tFluid.amount >= 334) {
 									if (tFluid.amount >= 1000 && tMeta <= 0) {
 										((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, 1000, T);
 										tDelegator2.setMetaData((byte)(tMeta + 3));
@@ -100,8 +101,8 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment {
 						if (tDelegator2.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator2.mTileEntity instanceof MultiTileEntityMixingBowl) {
 							OreDictMaterialStack tMaterial = OreDictMaterial.FLUID_MAP.get(tFluid.getFluid().getName());
 							tFluid = tFluid.copy();
-							tFluid.amount = Math.min(tFluid.amount, UT.Fluids.lava(tFluid) ? 1000 : !UT.Fluids.water(tFluid) && tMaterial != null && tMaterial.mAmount > 0 ? UT.Code.bindInt(tMaterial.mAmount) : 250);
-							if (((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, UT.Code.bindInt(UT.Fluids.fill_(tDelegator2, tFluid, T)), T) != null) {
+							tFluid.amount = Math.min(tFluid.amount, FL.lava(tFluid) ? 1000 : !FL.water(tFluid) && tMaterial != null && tMaterial.mAmount > 0 ? UT.Code.bindInt(tMaterial.mAmount) : 250);
+							if (((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, UT.Code.bindInt(FL.fill_(tDelegator2, tFluid, T)), T) != null) {
 								UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
 								UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
 							}
@@ -110,7 +111,7 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment {
 						return T;
 					}
 					FluidStack tNewFluid = tFluid.copy();
-					ItemStack tStack = UT.Fluids.fillFluidContainer(tNewFluid, ST.amount(1, aStack), T, T, T, T);
+					ItemStack tStack = FL.fill(tNewFluid, ST.amount(1, aStack), T, T, T, T);
 					if (tFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, tFluid.amount - tNewFluid.amount, T) != null) {
 						UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this);
 						aStack.stackSize--;

@@ -31,6 +31,7 @@ import cpw.mods.fml.common.Optional;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.ModIDs;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.TD;
@@ -259,7 +260,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 		Long[] tStats = getFluidContainerStats(aStack);
 		if (tStats != null && tStats[0] > 0) {
 			FluidStack tFluid = getFluidContent(aStack);
-			aList.add(LH.Chat.BLUE + ((tFluid==null?"No Fluids Contained":UT.Fluids.name(tFluid, T))) + LH.Chat.GRAY);
+			aList.add(LH.Chat.BLUE + ((tFluid==null?"No Fluids Contained":FL.name(tFluid, T))) + LH.Chat.GRAY);
 			aList.add(LH.Chat.BLUE + ((tFluid==null?0:tFluid.amount) + "L / " + tStats[0] + "L") + LH.Chat.GRAY);
 		}
 		
@@ -297,11 +298,11 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	public int fill(ItemStack aStack, FluidStack aFluid, boolean doFill) {
 		if (aStack == null || aStack.stackSize != 1) return 0;
 		
-		ItemStack tStack = UT.Fluids.fillFluidContainer(aFluid, aStack, F, F, F, F);
+		ItemStack tStack = FL.fill(aFluid, aStack, F, F, F, F);
 		if (tStack != null) {
 			aStack.setItemDamage(ST.meta_(tStack));
 			aStack.func_150996_a(tStack.getItem());
-			return UT.Fluids.getFluidForFilledItem(tStack, F).amount;
+			return FL.getFluid(tStack, F).amount;
 		}
 		
 		Long[] tStats = getFluidContainerStats(aStack);
@@ -346,7 +347,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	public FluidStack drain(ItemStack aStack, int aMaxDrain, boolean aDoDrain) {
 		if (aStack == null || aStack.stackSize != 1) return null;
 		
-		FluidStack tFluid = UT.Fluids.getFluidForFilledItem(aStack, F);
+		FluidStack tFluid = FL.getFluid(aStack, F);
 		if (tFluid != null && aMaxDrain >= tFluid.amount) {
 			if (aDoDrain) {
 				ItemStack tStack = ST.container(aStack, F);
@@ -379,14 +380,14 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	
 	public FluidStack getFluidContent(ItemStack aStack) {
 		Long[] tStats = getFluidContainerStats(aStack);
-		if (tStats == null || tStats[0] <= 0) return UT.Fluids.getFluidForFilledItem(aStack, F);
-		return UT.Fluids.load(aStack.getTagCompound(), "gt.fluidcontent");
+		if (tStats == null || tStats[0] <= 0) return FL.getFluid(aStack, F);
+		return FL.load(aStack.getTagCompound(), "gt.fluidcontent");
 	}
 	
 	public void setFluidContent(ItemStack aStack, FluidStack aFluid) {
 		NBTTagCompound tNBT = aStack.getTagCompound();
 		if (tNBT == null) tNBT = UT.NBT.make(); else tNBT.removeTag("gt.fluidcontent");
-		if (aFluid != null && aFluid.amount > 0) UT.Fluids.save(tNBT, "gt.fluidcontent", aFluid);
+		if (aFluid != null && aFluid.amount > 0) FL.save(tNBT, "gt.fluidcontent", aFluid);
 		UT.NBT.set(aStack, tNBT);
 		isItemStackUsable(aStack);
 	}

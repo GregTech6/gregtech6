@@ -42,7 +42,6 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -116,18 +115,18 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 			, LH.add("gt.research.page.1." + tKey, "You have discovered a way of filling a Bucket with aqua essentia in order to simply get Water.")
 			, COMPAT_TC.addCrucibleRecipe(tKey, ST.make(Items.bucket            , 1, W), ST.make(Items.water_bucket, 1, 0), TC.stack(TC.AQUA, 4))
 			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Cell_Empty                   .get(1), IL.Cell_Water.get(1), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_MagicCapsule              .get(1), UT.Fluids.fillFluidContainer(FL.Water.make(16000), IL.FR_MagicCapsule              .get(1), F, F), TC.stack(TC.AQUA,10))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_TinCapsule                .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_TinCapsule                .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_WaxCapsule                .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_WaxCapsule                .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_RefractoryCapsule         .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.FR_RefractoryCapsule         .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Copper         .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Copper         .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Tin            .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Tin            .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Zinc           .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Zinc           .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Lead           .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Lead           .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bismuth        .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Bismuth        .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Brass          .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Brass          .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bronze         .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_Bronze         .get(1), F, F), TC.stack(TC.AQUA, 4))
-			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_BismuthBronze  .get(1), UT.Fluids.fillFluidContainer(FL.Water.make( 1000), IL.Wooden_Bucket_BismuthBronze  .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_MagicCapsule              .get(1), FL.fill(FL.Water.make(16000), IL.FR_MagicCapsule              .get(1), F, F), TC.stack(TC.AQUA,10))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_TinCapsule                .get(1), FL.fill(FL.Water.make( 1000), IL.FR_TinCapsule                .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_WaxCapsule                .get(1), FL.fill(FL.Water.make( 1000), IL.FR_WaxCapsule                .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.FR_RefractoryCapsule         .get(1), FL.fill(FL.Water.make( 1000), IL.FR_RefractoryCapsule         .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Copper         .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Copper         .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Tin            .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Tin            .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Zinc           .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Zinc           .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Lead           .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Lead           .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bismuth        .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Bismuth        .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Brass          .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Brass          .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_Bronze         .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_Bronze         .get(1), F, F), TC.stack(TC.AQUA, 4))
+			, COMPAT_TC.addCrucibleRecipe(tKey, IL.Wooden_Bucket_BismuthBronze  .get(1), FL.fill(FL.Water.make( 1000), IL.Wooden_Bucket_BismuthBronze  .get(1), F, F), TC.stack(TC.AQUA, 4))
 		);
 		tMat = MT.Zn;
 		COMPAT_TC.addResearch(tKey = TRANSZINC

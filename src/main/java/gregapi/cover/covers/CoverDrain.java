@@ -30,7 +30,6 @@ import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
@@ -64,7 +63,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 						} else {
 							temp = aData.mTileEntity.getRainOffset(OFFSETS_X[aSide], OFFSETS_Y[aSide]  , OFFSETS_Z[aSide]) && (SIDES_TOP[aSide] || aData.mTileEntity.getBlockOffset(OFFSETS_X[aSide], -1, OFFSETS_Z[aSide]).isSideSolid(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getY()-1, aData.mTileEntity.getOffsetZ(aSide), FORGE_DIR[SIDE_TOP]));
 						}
-						if (temp) UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make((long)Math.max(1, tBiome.rainfall*10000) * (aData.mTileEntity.getWorld().isThundering()?2:1)), T);
+						if (temp) FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make((long)Math.max(1, tBiome.rainfall*10000) * (aData.mTileEntity.getWorld().isThundering()?2:1)), T);
 					}
 				}
 			}
@@ -74,7 +73,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 				if (tBlock == Blocks.water || tBlock == Blocks.flowing_water) {
 					if (aData.mTileEntity.getMetaDataAtSide(aSide) == 0) {
 						if (WD.infiniteWater(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide))) {
-							UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make(16000), T);
+							FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make(16000), T);
 						} else {
 							tFluid = FL.Water.make(1000);
 						}
@@ -84,18 +83,18 @@ public class CoverDrain extends AbstractCoverAttachment {
 					if (aData.mTileEntity.getMetaDataAtSide(aSide) == 0) tFluid = FL.Lava.make(1000);
 				} else
 				if (tBlock == BlocksGT.River) {
-					UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make(16000), T);
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make(16000), T);
 				} else
 				if (tBlock == BlocksGT.Ocean) {
-					UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Ocean.make(16000), T);
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Ocean.make(16000), T);
 				} else
 				if (tBlock == BlocksGT.Swamp) {
-					UT.Fluids.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Dirty_Water.make(16000), T);
+					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Dirty_Water.make(16000), T);
 				} else
 				if (tBlock instanceof IFluidBlock) tFluid = ((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), F);
 				
-				if (tFluid != null && (SIDES_HORIZONTAL[aSide] || UT.Fluids.gas(tFluid) || (UT.Fluids.lighter(tFluid)?SIDES_BOTTOM:SIDES_TOP)[aSide])) {
-					if (UT.Fluids.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], tFluid, T)) {
+				if (tFluid != null && (SIDES_HORIZONTAL[aSide] || FL.gas(tFluid) || (FL.lighter(tFluid)?SIDES_BOTTOM:SIDES_TOP)[aSide])) {
+					if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], tFluid, T)) {
 						if (tBlock instanceof IFluidBlock) {
 							((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aSide), aData.mTileEntity.getOffsetY(aSide), aData.mTileEntity.getOffsetZ(aSide), T);
 						} else {

@@ -94,12 +94,12 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			
 			if (aNBT == null) {
 				tAmount = 0;
-				tFluid = UT.Fluids.make(aFluid, (int)tAmount);
-				tGas = UT.Fluids.gas(tFluid);
-				tTemperature = UT.Fluids.temperature(tFluid);
+				tFluid = FL.make(aFluid, (int)tAmount);
+				tGas = FL.gas(tFluid);
+				tTemperature = FL.temperature(tFluid);
 			} else {
 				tAmount = aNBT.getLong("a");
-				tFluid = UT.Fluids.make(aFluid, (int)tAmount);
+				tFluid = FL.make(aFluid, (int)tAmount);
 				tGas = aNBT.getBoolean("s");
 				tTemperature = aNBT.getLong("h");
 			}
@@ -121,7 +121,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			
 			aList.add(LH.Chat.RED + "Temperature: " + tTemperature + " K" + LH.Chat.GRAY);
 			
-			if (UT.Fluids.plasma(tFluid)) {
+			if (FL.plasma(tFluid)) {
 				aList.add(LH.Chat.GREEN + "State: " + LH.Chat.YELLOW + "Plasma" + (!aFluid.isGaseous(tFluid) ? LH.Chat.RED + " (Warning: Considered a Liquid by Mods other than GT!)" : LH.Chat.ORANGE + " (Note: Considered a Gas by Mods other than GT!)") + LH.Chat.GRAY);
 			} else if (tGas) {
 				aList.add(LH.Chat.GREEN + "State: " + LH.Chat.CYAN + "Gas" + (!aFluid.isGaseous(tFluid) ? LH.Chat.RED + " (Warning: Considered a Liquid by Mods other than GT!)" : "") + LH.Chat.GRAY);
@@ -138,14 +138,14 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				aList.add(LH.Chat.GREEN + "As dense as Air (still moves down)" + LH.Chat.GRAY);
 			}
 			
-			if (UT.Fluids.powerconducting(aFluid)) {
+			if (FL.powerconducting(aFluid)) {
 				aList.add(LH.Chat.DGREEN + "This is a Power Conducting Fluid" + LH.Chat.GRAY);
 				aList.add(LH.Chat.ORANGE + "Cannot be stored in regular GT6 Tanks" + LH.Chat.GRAY);
 			}
-			if (UT.Fluids.simple(aFluid)) {
+			if (FL.simple(aFluid)) {
 				aList.add(LH.Chat.DGREEN + "This is a simple Fluid" + LH.Chat.GRAY);
 			}
-			if (UT.Fluids.acid(aFluid)) {
+			if (FL.acid(aFluid)) {
 				aList.add(LH.Chat.ORANGE + "Acidic! Handle with Care!" + LH.Chat.GRAY);
 			}
 			if (FL.Lubricant.is(aFluid) || FL.LubRoCant.is(aFluid)) {
@@ -242,13 +242,13 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	
 	@Override
 	public String getUnlocalizedName(ItemStack aStack) {
-		if (aStack != null) return UT.Fluids.name(FluidRegistry.getFluid(ST.meta_(aStack)), F);
+		if (aStack != null) return FL.name(FluidRegistry.getFluid(ST.meta_(aStack)), F);
 		return "";
 	}
 	
 	@Override
 	public String getItemStackDisplayName(ItemStack aStack) {
-		if (aStack != null) return UT.Fluids.name(FluidRegistry.getFluid(ST.meta_(aStack)), T);
+		if (aStack != null) return FL.name(FluidRegistry.getFluid(ST.meta_(aStack)), T);
 		return "";
 	}
 	
@@ -264,9 +264,9 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	@SuppressWarnings("unchecked")
 	public void getSubItems(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {
 		if (D1) for (int i = 0, j = FluidRegistry.getMaxID(); i <= j; i++) {
-			Fluid tFluid = UT.Fluids.fluid(i);
+			Fluid tFluid = FL.fluid(i);
 			if (tFluid != null && !FluidsGT.FLUID_RENAMINGS.containsKey(tFluid.getName()) && !FL.Error.is(tFluid)) {
-				ItemStack tStack = UT.Fluids.display(tFluid);
+				ItemStack tStack = FL.display(tFluid);
 				if (tStack != null) aList.add(tStack);
 			}
 		}
@@ -299,11 +299,11 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			if (UT.Code.stringInvalid(aName)) return;
 			String tName = FluidsGT.FLUID_RENAMINGS.get(aName);
 			if (UT.Code.stringValid(tName)) aName = tName;
-			Fluid tFluid = UT.Fluids.fluid_(aName);
+			Fluid tFluid = FL.fluid_(aName);
 			if (tFluid != null) ST.meta_(aStack, tFluid.getID());
 			return;
 		}
-		Fluid tFluid = UT.Fluids.fluid(ST.meta_(aStack));
+		Fluid tFluid = FL.fluid(ST.meta_(aStack));
 		if (tFluid == null) ST.meta_(aStack, W); else {aStack.setTagCompound(UT.NBT.makeString("f", tFluid.getName()));}
 	}
 	@Override
@@ -319,9 +319,9 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null) {
 			long tAmount = aNBT.getLong("a");
-			if (tAmount > 0) rFluid = UT.Fluids.make(tFluid, tAmount);
+			if (tAmount > 0) rFluid = FL.make(tFluid, tAmount);
 		}
-		return rFluid == null ? UT.Fluids.make(tFluid, 0) : rFluid;
+		return rFluid == null ? FL.make(tFluid, 0) : rFluid;
 	}
 	
 	@Override

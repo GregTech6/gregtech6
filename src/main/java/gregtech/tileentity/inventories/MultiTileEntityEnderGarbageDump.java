@@ -26,6 +26,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.GarbageGT;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
@@ -38,7 +39,6 @@ import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -72,7 +72,7 @@ public class MultiTileEntityEnderGarbageDump extends TileEntityBase07Paintable i
 			DelegatorTileEntity<TileEntity> tDelegate = getAdjacentTileEntity(SIDE_BOTTOM, T, F);
 			if (!(tDelegate.mTileEntity instanceof MultiTileEntityEnderGarbageBin)) {
 				if (!GarbageGT.GARBAGE_ITEMS.isEmpty()) ST.move(delegator(SIDE_BOTTOM), tDelegate);
-				if (!GarbageGT.GARBAGE_FLUIDS.isEmpty()) if (tDelegate.mTileEntity instanceof IFluidHandler) UT.Fluids.move_(GarbageGT.GARBAGE_FLUIDS, tDelegate);
+				if (!GarbageGT.GARBAGE_FLUIDS.isEmpty()) if (tDelegate.mTileEntity instanceof IFluidHandler) FL.move_(GarbageGT.GARBAGE_FLUIDS, tDelegate);
 			}
 		}
 	}
@@ -135,14 +135,14 @@ public class MultiTileEntityEnderGarbageDump extends TileEntityBase07Paintable i
 	
 	@Override
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
-		for (FluidTankGT tTank : GarbageGT.GARBAGE_FLUIDS) if (tTank.has() && !UT.Fluids.gas(tTank)) return tTank.drain(aMaxDrain, aDoDrain);
+		for (FluidTankGT tTank : GarbageGT.GARBAGE_FLUIDS) if (tTank.has() && !FL.gas(tTank)) return tTank.drain(aMaxDrain, aDoDrain);
 		for (FluidTankGT tTank : GarbageGT.GARBAGE_FLUIDS) if (tTank.has()) return tTank.drain(aMaxDrain, aDoDrain);
 		return NF;
 	}
 	
 	@Override
 	public FluidStack nozzleDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
-		for (FluidTankGT tTank : GarbageGT.GARBAGE_FLUIDS) if (tTank.has() &&  UT.Fluids.gas(tTank)) return tTank.drain(aMaxDrain, aDoDrain);
+		for (FluidTankGT tTank : GarbageGT.GARBAGE_FLUIDS) if (tTank.has() &&  FL.gas(tTank)) return tTank.drain(aMaxDrain, aDoDrain);
 		for (FluidTankGT tTank : GarbageGT.GARBAGE_FLUIDS) if (tTank.has()) return tTank.drain(aMaxDrain, aDoDrain);
 		return NF;
 	}

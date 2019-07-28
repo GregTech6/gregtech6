@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.FL;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterialStack;
@@ -45,7 +46,7 @@ public class RecipeMapShredder extends RecipeMapSpecialSingleInput {
 	@Override
 	protected Recipe getRecipeFor(ItemStack aInput) {
 		OreDictItemData aData = OM.anydata(aInput);
-		if (aData == null || (aData.mPrefix != null && aData.mPrefix.containsAny(TD.Prefix.DUST_BASED, TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) || (aData.mMaterial != null && aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER)) || UT.Fluids.getFluidForFilledItem(aInput, T) != null) return null;
+		if (aData == null || (aData.mPrefix != null && aData.mPrefix.containsAny(TD.Prefix.DUST_BASED, TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) || (aData.mMaterial != null && aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER)) || FL.getFluid(aInput, T) != null) return null;
 		List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 		for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) if (tMaterial.mMaterial.mTargetPulver.mAmount > 0) OM.stack(UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetPulver.mAmount, F), tMaterial.mMaterial.mTargetPulver.mMaterial).addToList(tList);
 		if (tList.isEmpty()) return null;

@@ -34,6 +34,7 @@ import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.OP;
@@ -220,20 +221,20 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		for (FluidTankGT tTank : mTanks) {
 			FluidStack tFluid = tTank.get();
 			if (tFluid != null && tFluid.amount > 0) {
-				mTemperature = UT.Fluids.temperature(tFluid);
-				if (!mGasProof && UT.Fluids.gas(tFluid)) {
+				mTemperature = FL.temperature(tFluid);
+				if (!mGasProof && FL.gas(tFluid)) {
 					mTransferredAmount += Math.min(8, tTank.amount());
 					GarbageGT.trash(tTank, 8);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				}
-				if (!mPlasmaProof && UT.Fluids.plasma(tFluid)) {
+				if (!mPlasmaProof && FL.plasma(tFluid)) {
 					mTransferredAmount += Math.min(64, tTank.amount());
 					GarbageGT.trash(tTank, 64);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 				}
-				if (!mAcidProof && UT.Fluids.acid(tFluid)) {
+				if (!mAcidProof && FL.acid(tFluid)) {
 					mTransferredAmount += Math.min(16, tTank.amount());
 					GarbageGT.trash(tTank, 16);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
@@ -275,7 +276,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		for (byte aSide : ALL_SIDES_VALID) if (aAdjacentTanks[aSide] != null && !FACE_CONNECTED[aSide][mLastReceivedFrom] && (!hasCovers() || mCovers.mBehaviours[aSide] == null || !mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, aTank.get()))) {
 			tTank = aAdjacentTanks[aSide];
 			if (tTank.mTileEntity == null) {
-				if (tTank.getBlock() instanceof BlockCauldron && aTank.amount() >= 334 && UT.Fluids.water(aTank.get())) {
+				if (tTank.getBlock() instanceof BlockCauldron && aTank.amount() >= 334 && FL.water(aTank.get())) {
 					switch(tTank.getMetaData()) {
 					case 0:
 						if (aTank.drainAll(1000)) {tTank.setMetaData(3); break;}
@@ -299,7 +300,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 						tPipeCount++;
 						tAdjacentTanks.add(tTank);
 					}
-				} else if (UT.Fluids.fill_(tTank, aTank.get(), F) > 0) {
+				} else if (FL.fill_(tTank, aTank.get(), F) > 0) {
 					tAdjacentTanks.add(tTank);
 				}
 			}
@@ -320,7 +321,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 					tAdjacentPipes.add(tTank);
 					FluidTankGT tTarget = (FluidTankGT)((MultiTileEntityPipeFluid)tTank.mTileEntity).getFluidTankFillable2(tTank.mSideOfTileEntity, aTank.get());
 					if (tTarget != null) {
-						mTransferredAmount += aTank.remove(UT.Fluids.fill_(tTank, aTank.get(tAmount-tTarget.amount()), T));
+						mTransferredAmount += aTank.remove(FL.fill_(tTank, aTank.get(tAmount-tTarget.amount()), T));
 					}
 				}
 			}
@@ -331,11 +332,11 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			if (tAmount <= 0) {
 				while (aTank.amount() > 0 && !tAdjacentTanks.isEmpty()) {
 					tAdjacentTanks.remove(tTank = tAdjacentTanks.get(rng(tAdjacentTanks.size())));
-					mTransferredAmount += aTank.remove(UT.Fluids.fill_(tTank, aTank.get(1), T));
+					mTransferredAmount += aTank.remove(FL.fill_(tTank, aTank.get(1), T));
 				}
 			} else {
 				for (DelegatorTileEntity<IFluidHandler> tTank2 : tAdjacentTanks) {
-					mTransferredAmount += aTank.remove(UT.Fluids.fill_(tTank2, aTank.get(tAmount), T));
+					mTransferredAmount += aTank.remove(FL.fill_(tTank2, aTank.get(tAmount), T));
 				}
 			}
 		}
@@ -344,7 +345,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			tAmount = (aTank.amount() - mCapacity / 2) / tAdjacentPipes.size();
 			if (tAmount > 0) {
 				for (DelegatorTileEntity<IFluidHandler> tPipe : tAdjacentPipes) {
-					mTransferredAmount += aTank.remove(UT.Fluids.fill_(tPipe, aTank.get(tAmount), T));
+					mTransferredAmount += aTank.remove(FL.fill_(tPipe, aTank.get(tAmount), T));
 				}
 			}
 		}

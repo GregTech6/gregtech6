@@ -31,6 +31,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnBlockAdded;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnWalkOver;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.TagData;
+import gregapi.data.FL;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -358,7 +359,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public boolean canFill(ForgeDirection aDirection, Fluid aFluid) {
 		if ((mMode & NO_FLUID_IN) != 0) return F;
 		byte aSide = UT.Code.side(aDirection);
-		if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, UT.Fluids.make(aFluid, 1))) return F;
+		if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, FL.make(aFluid, 1))) return F;
 		ITileEntityMultiBlockController tTileEntity = getTarget(T);
 		if (tTileEntity instanceof IMultiBlockFluidHandler) return ((IMultiBlockFluidHandler)tTileEntity).canFill(this, UT.Code.side(aDirection), aFluid);
 		return F;
@@ -367,7 +368,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public boolean canDrain(ForgeDirection aDirection, Fluid aFluid) {
 		if ((mMode & NO_FLUID_OUT) != 0) return F;
 		byte aSide = UT.Code.side(aDirection);
-		if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, UT.Fluids.make(aFluid, 1))) return F;
+		if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, FL.make(aFluid, 1))) return F;
 		ITileEntityMultiBlockController tTileEntity = getTarget(T);
 		if (tTileEntity instanceof IMultiBlockFluidHandler) return ((IMultiBlockFluidHandler)tTileEntity).canDrain(this, UT.Code.side(aDirection), aFluid);
 		return F;

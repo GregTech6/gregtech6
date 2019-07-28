@@ -21,13 +21,13 @@ package gregtech.tileentity.energy;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.FL;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
-import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
@@ -38,7 +38,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public class MultiTileEntityGeneratorGas extends MultiTileEntityGeneratorLiquid implements ITileEntityAdjacentOnOff {
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		return mRecipes.containsInput(aFluidToFill, this, NI) && UT.Fluids.gas(aFluidToFill) ? mTank : null;
+		return mRecipes.containsInput(aFluidToFill, this, NI) && FL.gas(aFluidToFill) ? mTank : null;
 	}
 	
 	@Override public boolean setAdjacentOnOff(boolean aOnOff) {if (mBurning && !aOnOff) {mBurning = F; mCooldown = 0;} return mBurning;}

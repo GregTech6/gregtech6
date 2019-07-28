@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
@@ -33,7 +34,6 @@ import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockMachine;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -148,23 +148,23 @@ public class MultiTileEntityDistillationTower extends TileEntityBase10MultiBlock
 			FluidStack tFluid = tTank.getFluid();
 			if (tFluid != null && tFluid.amount > 0) {
 				DelegatorTileEntity<TileEntity> tDelegator = null;
-				if (UT.Fluids.is(tFluid, "propane", "methane")) {
+				if (FL.is(tFluid, "propane", "methane")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+7, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "butane")) {
+				} else if (FL.is(tFluid, "butane")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+6, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "petrol", "gasoline", "bioethanol")) {
+				} else if (FL.is(tFluid, "petrol", "gasoline", "bioethanol")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+5, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "kerosene", "kerosine", "glycerol")) {
+				} else if (FL.is(tFluid, "kerosene", "kerosine", "glycerol")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+4, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "diesel", "biodiesel")) {
+				} else if (FL.is(tFluid, "diesel", "biodiesel")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+3, getOffsetZN(mFacing, 3), mFacing, F);
-				} else if (UT.Fluids.is(tFluid, "fuel", "fueloil", "biofuel")) {
+				} else if (FL.is(tFluid, "fuel", "fueloil", "biofuel")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+2, getOffsetZN(mFacing, 3), mFacing, F);
 				} else {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+1, getOffsetZN(mFacing, 3), mFacing, F);
 				}
 				
-				if (UT.Fluids.move(tTank, tDelegator) > 0) updateInventory();
+				if (FL.move(tTank, tDelegator) > 0) updateInventory();
 			}
 		}
 	}

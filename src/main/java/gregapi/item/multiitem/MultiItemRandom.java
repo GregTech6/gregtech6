@@ -38,6 +38,7 @@ import gregapi.code.TagData;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
 import gregapi.data.CS.ModIDs;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -210,14 +211,14 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable, squ
 				//  if (((FluidContainerData)tRandomData).emptyContainer != null)
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
-					UT.Fluids.registerFluidContainer((FluidContainerData)tRandomData, T, F);
+					FL.reg((FluidContainerData)tRandomData, T, F);
 					continue;
 				}
 				if (tRandomData instanceof FluidContainerData) {
 				//  if (((FluidContainerData)tRandomData).emptyContainer != null)
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).emptyContainer, ((FluidContainerData)tRandomData).fluid, NF, ((FluidContainerData)tRandomData).filledContainer);
 				//  RM.Canner.addRecipe1(T, 16, Math.max(((FluidContainerData)tRandomData).fluid.amount / 64, 16), ((FluidContainerData)tRandomData).filledContainer, NF, ((FluidContainerData)tRandomData).fluid, ST.container(((FluidContainerData)tRandomData).filledContainer, F));
-					UT.Fluids.registerFluidContainer((FluidContainerData)tRandomData, T, F);
+					FL.reg((FluidContainerData)tRandomData, T, F);
 					continue;
 				}
 				if (tRandomData instanceof Runnable) {

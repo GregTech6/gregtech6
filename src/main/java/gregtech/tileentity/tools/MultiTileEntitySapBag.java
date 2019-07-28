@@ -27,6 +27,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.data.CS.GarbageGT;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
@@ -111,7 +112,7 @@ public class MultiTileEntitySapBag extends TileEntityBase09FacingSingle implemen
 				return T;
 			}
 			ItemStack aStack = aPlayer.getCurrentEquippedItem(), tStack;
-			if (aStack != null) if ((tStack = UT.Fluids.fillFluidContainer(mTank, ST.amount(1, aStack), T, T, T, T)) != null) {
+			if (aStack != null) if ((tStack = FL.fill(mTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 				aStack.stackSize--;
 				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 				return T;

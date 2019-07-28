@@ -27,6 +27,7 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -102,7 +103,7 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 	}
 	public boolean allowInput(Fluid aFluid) {
 		if (aFluid == null) return F;
-		for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && UT.Fluids.id(aFluid) == ST.meta_(tStack)) return !mInverted;
+		for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && FL.id(aFluid) == ST.meta_(tStack)) return !mInverted;
 		return mInverted;
 	}
 	
@@ -199,7 +200,7 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 	public boolean canFill(ForgeDirection aDirection, Fluid aFluid) {
 		byte aSide = UT.Code.side(aDirection);
 		if ((mModes & MODE_TANK) != 0 && (aSide == mFacing || allowInput(aFluid))) {
-			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, UT.Fluids.make(aFluid, 1))) return F;
+			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidFill(aSide, mCovers, aSide, FL.make(aFluid, 1))) return F;
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getAdjacentTank(getExtenderTargetSide(aSide), F, T);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.canFill(tTileEntity.getForgeSideOfTileEntity(), aFluid);
 		}
@@ -209,7 +210,7 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 	public boolean canDrain(ForgeDirection aDirection, Fluid aFluid) {
 		byte aSide = UT.Code.side(aDirection);
 		if ((mModes & MODE_TANK) != 0 && (aSide != mFacing || allowInput(aFluid))) {
-			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, UT.Fluids.make(aFluid, 1))) return F;
+			if (hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null && mCovers.mBehaviours[aSide].interceptFluidDrain(aSide, mCovers, aSide, FL.make(aFluid, 1))) return F;
 			DelegatorTileEntity<IFluidHandler> tTileEntity = getAdjacentTank(getExtenderTargetSide(aSide), F, T);
 			if (tTileEntity.mTileEntity != null) return tTileEntity.mTileEntity.canDrain(tTileEntity.getForgeSideOfTileEntity(), aFluid);
 		}
@@ -241,10 +242,10 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 					ItemStack tStack = tSlot.getStack();
 					if (tStack != null) {
 						if ((((MultiTileEntityFilter)mTileEntity).mModes & MODE_INV) == 0) {
-							FluidStack tFluid = UT.Fluids.getFluidForFilledItem(tStack, T);
+							FluidStack tFluid = FL.getFluid(tStack, T);
 							if (tFluid != null && ((MultiTileEntityFilter)mTileEntity).allowInput(tFluid) == ((MultiTileEntityFilter)mTileEntity).mInverted) {
 								for (int i = 0; i < ((MultiTileEntityFilter)mTileEntity).mFilter.length; i++) if (ST.invalid(((MultiTileEntityFilter)mTileEntity).mFilter[i])) {
-									((MultiTileEntityFilter)mTileEntity).mFilter[i] = UT.Fluids.display(tFluid.getFluid());
+									((MultiTileEntityFilter)mTileEntity).mFilter[i] = FL.display(tFluid.getFluid());
 									detectAndSendChanges();
 									return null;
 								}
@@ -271,9 +272,9 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 						tSlot.putStack(null);
 					} else {
 						if (tStack != null) {
-							FluidStack tFluid = UT.Fluids.getFluidForFilledItem(tStack, T);
+							FluidStack tFluid = FL.getFluid(tStack, T);
 							if (tFluid != null && (((MultiTileEntityFilter)mTileEntity).mModes & MODE_TANK) != 0) {
-								tSlot.putStack(UT.Fluids.display(tFluid.getFluid()));
+								tSlot.putStack(FL.display(tFluid.getFluid()));
 							} else {
 								if (tStack.hasTagCompound()) {
 									tStack.setTagCompound(null);
@@ -284,9 +285,9 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 						}
 					}
 				} else {
-					FluidStack tFluid = UT.Fluids.getFluidForFilledItem(tStack, T);
+					FluidStack tFluid = FL.getFluid(tStack, T);
 					if (tFluid != null && (((MultiTileEntityFilter)mTileEntity).mModes & MODE_INV) == 0) {
-						tSlot.putStack(UT.Fluids.display(tFluid.getFluid()));
+						tSlot.putStack(FL.display(tFluid.getFluid()));
 					} else {
 						tSlot.putStack(ST.amount(1, tStack));
 					}

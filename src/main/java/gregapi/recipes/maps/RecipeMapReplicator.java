@@ -113,6 +113,6 @@ public class RecipeMapReplicator extends RecipeMap {
 		return null;
 	}
 	
-	@Override public boolean containsInput(FluidStack aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return super.containsInput(aFluid, aTileEntity, aSpecialSlot) || UT.Fluids.is(aFluid, "neutralmatter", "chargedmatter");}
-	@Override public boolean containsInput(Fluid aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return super.containsInput(aFluid, aTileEntity, aSpecialSlot) || UT.Fluids.is(aFluid, "neutralmatter", "chargedmatter");}
+	@Override public boolean containsInput(FluidStack aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return super.containsInput(aFluid, aTileEntity, aSpecialSlot) || FL.is(aFluid, "neutralmatter", "chargedmatter");}
+	@Override public boolean containsInput(Fluid aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return super.containsInput(aFluid, aTileEntity, aSpecialSlot) || FL.is(aFluid, "neutralmatter", "chargedmatter");}
 }

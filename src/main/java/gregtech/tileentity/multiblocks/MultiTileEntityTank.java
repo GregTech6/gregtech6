@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.data.CS.GarbageGT;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
@@ -32,7 +33,6 @@ import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
-import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -99,7 +99,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 	}
 	
 	public boolean allowFluid(FluidStack aFluid) {
-		return !UT.Fluids.powerconducting(aFluid) && UT.Fluids.temperature(aFluid) < mMaterial.mMeltingPoint;
+		return !FL.powerconducting(aFluid) && FL.temperature(aFluid) < mMaterial.mMeltingPoint;
 	}
 	
 	@Override

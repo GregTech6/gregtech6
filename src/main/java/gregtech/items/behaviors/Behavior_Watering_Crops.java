@@ -22,6 +22,7 @@ package gregtech.items.behaviors;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -42,7 +43,7 @@ public class Behavior_Watering_Crops extends AbstractBehaviorDefault {
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float hitX, float hitY, float hitZ) {
 		if (aWorld.isRemote || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		FluidStack mFluid = ((IFluidContainerItem)aItem).getFluid(aStack);
-		if (UT.Fluids.water(mFluid)) {
+		if (FL.water(mFluid)) {
 			TileEntity tTileEntity = WD.te(aWorld, aX, aY, aZ, F);
 			try {if (tTileEntity instanceof ICropTile) {
 				int tHydration = ((ICropTile)tTileEntity).getHydrationStorage();

@@ -27,6 +27,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsWood;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.FL;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.tileentity.ITileEntityTreeHole;
@@ -83,7 +84,7 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 		ItemStack aStack = aPlayer.getCurrentEquippedItem();
 		if (aStack != null && aStack.getItem() instanceof ItemBlock) return F;
 		if (isServerSide() && hasResin(aSide)) {
-			ItemStack tResin = getResinItem(aSide), tStack = UT.Fluids.fillFluidContainer(getResinFluid(aSide), ST.amount(1, aStack), T, T, T, T);
+			ItemStack tResin = getResinItem(aSide), tStack = FL.fill(getResinFluid(aSide), ST.amount(1, aStack), T, T, T, T);
 			if ((tStack != null || tResin != null) && extractResin(aSide)) {
 				if (tResin != null) {
 					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tResin, T);

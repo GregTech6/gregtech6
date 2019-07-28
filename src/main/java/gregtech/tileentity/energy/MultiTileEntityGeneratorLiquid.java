@@ -27,6 +27,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
+import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -199,7 +200,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		return mRecipes.containsInput(aFluidToFill, this, NI) && !UT.Fluids.gas(aFluidToFill) ? mTank : null;
+		return mRecipes.containsInput(aFluidToFill, this, NI) && !FL.gas(aFluidToFill) ? mTank : null;
 	}
 	
 	@Override

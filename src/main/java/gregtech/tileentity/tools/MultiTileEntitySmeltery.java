@@ -405,15 +405,15 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 					}
 				}
 				if (aStack != null) {
-					FluidStack tFluid = UT.Fluids.getFluidForFilledItem(ST.amount(1, aStack), T);
+					FluidStack tFluid = FL.getFluid(ST.amount(1, aStack), T);
 					if (tFluid == null) {
 						if (tLightest != null && tLightest.mMaterial.mLiquid != null) {
-							long tTemperature = UT.Fluids.temperature(tLightest.mMaterial.mLiquid);
+							long tTemperature = FL.temperature(tLightest.mMaterial.mLiquid);
 							if (mTemperature >= tLightest.mMaterial.mMeltingPoint && (tTemperature < 320 || mTemperature >= tTemperature)) {
 								tFluid = tLightest.mMaterial.liquid(tLightest.mAmount, F);
 								if (!FL.Error.is(tFluid)) {
 									int tAmount = tFluid.amount;
-									ItemStack tStack = UT.Fluids.fillFluidContainer(tFluid, ST.amount(1, aStack), T, T, T, T);
+									ItemStack tStack = FL.fill(tFluid, ST.amount(1, aStack), T, T, T, T);
 									if (ST.valid(tStack)) {
 										tLightest.mAmount -= UT.Code.units(tAmount - tFluid.amount, tLightest.mMaterial.mLiquid.amount, tLightest.mMaterial.mLiquidUnit, T);
 										aStack.stackSize--;
@@ -424,18 +424,18 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 							}
 						}
 					} else {
-						if (!UT.Fluids.gas(tFluid, T) && !UT.Fluids.acid(tFluid)) {
+						if (!FL.gas(tFluid, T) && !FL.acid(tFluid)) {
 							ItemStack tStack = ST.container(ST.amount(1, aStack), T);
 							OreDictMaterialStack tFluidData = OreDictMaterial.FLUID_MAP.get(tFluid.getFluid().getName());
 							if (tFluidData != null) {
-								if (UT.Fluids.equal(tFluidData.mMaterial.mLiquid, tFluid)) {
-									if (addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mMaterial.mLiquid.amount, tFluidData.mMaterial.mLiquidUnit, F))), UT.Code.bind(UT.Fluids.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
+								if (FL.equal(tFluidData.mMaterial.mLiquid, tFluid)) {
+									if (addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mMaterial.mLiquid.amount, tFluidData.mMaterial.mLiquidUnit, F))), UT.Code.bind(FL.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
 										aStack.stackSize--;
 										UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 										return T;
 									}
 								} else {
-									if (addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mAmount, U, F))), UT.Code.bind(UT.Fluids.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
+									if (addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mAmount, U, F))), UT.Code.bind(FL.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
 										aStack.stackSize--;
 										UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 										return T;

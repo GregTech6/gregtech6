@@ -37,6 +37,7 @@ import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
 import gregapi.code.ItemStackSet;
 import gregapi.config.Config;
+import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -295,7 +296,7 @@ public final class OreDictManager {
 	public void onFluidContainerRegistration(FluidContainerRegisterEvent aFluidEvent) {
 		if (aFluidEvent.data.filledContainer.getItem() == Items.potionitem && ST.meta_(aFluidEvent.data.filledContainer) == 0) aFluidEvent.data.fluid.amount = 0;
 		addToBlacklist(aFluidEvent.data.emptyContainer);
-		UT.Fluids.setFluidContainerData(aFluidEvent.data, F, F);
+		FL.set(aFluidEvent.data, F, F);
 	}
 	
 	@SubscribeEvent
@@ -594,7 +595,7 @@ public final class OreDictManager {
 			aStack = ST.amount(1, aStack);
 		}
 		if (!aData.mBlackListed) aData.mBlackListed = isBlacklisted(aStack);
-		if (!aData.mBlocked) aData.mBlocked = (aData.mBlackListed || ST.block(aStack) != NB || UT.Fluids.getFluidForFilledItem(aStack, true) != null || (aStack.getItem() instanceof IFluidContainerItem && ((IFluidContainerItem)aStack.getItem()).getCapacity(aStack) > 0));
+		if (!aData.mBlocked) aData.mBlocked = (aData.mBlackListed || ST.block(aStack) != NB || FL.getFluid(aStack, T) != null || (aStack.getItem() instanceof IFluidContainerItem && ((IFluidContainerItem)aStack.getItem()).getCapacity(aStack) > 0));
 		sItemStack2DataMap.put(new ItemStackContainer(aStack), aData);
 		if (aData.hasValidMaterialData()) {
 			long tValidMaterialAmount = aData.mMaterial.mMaterial.contains(TD.Processing.UNRECYCLABLE)?0:aData.mMaterial.mAmount>=0?aData.mMaterial.mAmount:U;

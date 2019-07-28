@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
@@ -69,8 +70,8 @@ public class MultiTileEntityFluidCapNozzle extends TileEntityBase10Attachment {
 		if (isServerSide()) {
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			if (aStack != null) {
-				FluidStack tFluid = UT.Fluids.getFluidForFilledItem(ST.amount(1, aStack), T);
-				if (UT.Fluids.gas(tFluid, F) && tFluid.amount > 0 && (mAcidProof || !UT.Fluids.acid(tFluid))) {
+				FluidStack tFluid = FL.getFluid(ST.amount(1, aStack), T);
+				if (FL.gas(tFluid, F) && tFluid.amount > 0 && (mAcidProof || !FL.acid(tFluid))) {
 					DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.mTileEntity instanceof ITileEntityFunnelAccessible) {
 						int tAmount = ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).capnozzleFill(tDelegator.mSideOfTileEntity, tFluid, F);

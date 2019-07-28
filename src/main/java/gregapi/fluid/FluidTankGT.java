@@ -21,6 +21,7 @@ package gregapi.fluid;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.FL;
 import gregapi.util.UT;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.Fluid;
@@ -37,15 +38,15 @@ public class FluidTankGT implements IFluidTank {
 	public FluidTankGT(FluidStack aFluid) {mFluid = aFluid; if (aFluid != null) {mCapacity = aFluid.amount; mAmount = aFluid.amount;}}
 	public FluidTankGT(FluidStack aFluid, long aCapacity) {mFluid = aFluid; mCapacity = aCapacity; mAmount = (aFluid == null ? 0 : aFluid.amount);}
 	public FluidTankGT(long aCapacity) {mCapacity = aCapacity;}
-	public FluidTankGT(Fluid aFluid, long aAmount) {this(UT.Fluids.make(aFluid, aAmount)); mAmount = aAmount;}
-	public FluidTankGT(Fluid aFluid, long aAmount, long aCapacity) {this(UT.Fluids.make(aFluid, aAmount), aCapacity); mAmount = aAmount;}
-	public FluidTankGT(NBTTagCompound aNBT, long aCapacity) {mCapacity = aCapacity; if (aNBT != null && !aNBT.hasNoTags()) {mFluid = UT.Fluids.load_(aNBT); mAmount = (isEmpty() ? 0 : aNBT.hasKey("LAmount") ? aNBT.getLong("LAmount") : mFluid.amount);}}
+	public FluidTankGT(Fluid aFluid, long aAmount) {this(FL.make(aFluid, aAmount)); mAmount = aAmount;}
+	public FluidTankGT(Fluid aFluid, long aAmount, long aCapacity) {this(FL.make(aFluid, aAmount), aCapacity); mAmount = aAmount;}
+	public FluidTankGT(NBTTagCompound aNBT, long aCapacity) {mCapacity = aCapacity; if (aNBT != null && !aNBT.hasNoTags()) {mFluid = FL.load_(aNBT); mAmount = (isEmpty() ? 0 : aNBT.hasKey("LAmount") ? aNBT.getLong("LAmount") : mFluid.amount);}}
 	
 	public FluidTankGT readFromNBT(NBTTagCompound aNBT, String aKey) {
 		if (aNBT.hasKey(aKey)) {
 			aNBT = aNBT.getCompoundTag(aKey);
 			if (aNBT != null && !aNBT.hasNoTags()) {
-				mFluid = UT.Fluids.load_(aNBT);
+				mFluid = FL.load_(aNBT);
 				mAmount = (isEmpty() ? 0 : aNBT.hasKey("LAmount") ? aNBT.getLong("LAmount") : mFluid.amount);
 			}
 		}
@@ -229,7 +230,7 @@ public class FluidTankGT implements IFluidTank {
 	public boolean isHalf() {return mFluid != null && mAmount * 2 >= mCapacity;}
 	
 	public boolean contains(Fluid aFluid) {return mFluid != null && mFluid.getFluid() == aFluid;}
-	public boolean contains(FluidStack aFluid) {return UT.Fluids.equal(mFluid, aFluid);}
+	public boolean contains(FluidStack aFluid) {return FL.equal(mFluid, aFluid);}
 	
 	public boolean has(long aAmount) {return mAmount >= aAmount;}
 	public boolean has() {return mAmount > 0;}
@@ -240,11 +241,11 @@ public class FluidTankGT implements IFluidTank {
 	public long capacity() {return mCapacity;}
 	
 	public String name() {return mFluid == null ? null : mFluid.getFluid().getName();}
-	public String name(boolean aLocalised) {return UT.Fluids.name(mFluid, aLocalised);}
+	public String name(boolean aLocalised) {return FL.name(mFluid, aLocalised);}
 	
 	public String content() {return content("Empty");}
-	public String content(String aEmptyMessage) {return mFluid == null ? aEmptyMessage : amount() + " L of " + name(T) + " (" + (UT.Fluids.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
-	public String contentcap() {return mFluid == null ? "Capacity: " + mCapacity + " L" : amount() + " L of " + name(T) + " (" + (UT.Fluids.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+mCapacity+" L)";}
+	public String content(String aEmptyMessage) {return mFluid == null ? aEmptyMessage : amount() + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
+	public String contentcap() {return mFluid == null ? "Capacity: " + mCapacity + " L" : amount() + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+mCapacity+" L)";}
 	
 	public FluidStack get() {return mFluid;}
 	public FluidStack get(long aMax) {return isEmpty() || aMax <= 0 ? null : new FluidStack(mFluid, UT.Code.bindInt(mAmount < aMax ? mAmount : aMax));}

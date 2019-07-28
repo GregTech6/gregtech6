@@ -22,6 +22,7 @@ package gregapi.recipes.handlers;
 import static gregapi.data.CS.*;
 
 import gregapi.code.ICondition;
+import gregapi.data.FL;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
@@ -124,7 +125,7 @@ public class RecipeMapHandlerMaterial extends RecipeMapHandler {
 		ItemStack tOutput = aPrefix.mat(mOutputMaterial, 1);
 		if (ST.invalid(tOutput)) return F;
 		
-		return aMap.addRecipeX(F,T,F,F,T, mEUt, Math.max(1, getCosts(aPrefix)), tInputs, UT.Fluids.mul(mFluidInputPerUnit, aPrefix.mAmount, U, T), UT.Fluids.mul(mFluidOutputPerUnit, aPrefix.mAmount, U, F), tOutput) != null;
+		return aMap.addRecipeX(F,T,F,F,T, mEUt, Math.max(1, getCosts(aPrefix)), tInputs, FL.mul(mFluidInputPerUnit, aPrefix.mAmount, U, T), FL.mul(mFluidOutputPerUnit, aPrefix.mAmount, U, F), tOutput) != null;
 	}
 	
 	public long getCosts(OreDictPrefix aPrefix) {

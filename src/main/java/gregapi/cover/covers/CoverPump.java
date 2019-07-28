@@ -24,12 +24,12 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.cover.CoverData;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.connectors.MultiTileEntityPipeFluid;
-import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -68,9 +68,9 @@ public class CoverPump extends AbstractCoverAttachment {
 		if (aIsServerSide && !aData.mStopped && SERVER_TIME % 20 == 5 && aData.mTileEntity instanceof IFluidHandler) {
 			long tThroughput = mThroughput, tMoved = 1;
 			if (aData.mVisuals[aSide]==0) {
-				while (tMoved > 0 && tThroughput > 0) tThroughput -= (tMoved = UT.Fluids.move(aData.delegator(aSide), aData.mTileEntity.getAdjacentTank(aSide), tThroughput));
+				while (tMoved > 0 && tThroughput > 0) tThroughput -= (tMoved = FL.move(aData.delegator(aSide), aData.mTileEntity.getAdjacentTank(aSide), tThroughput));
 			} else {
-				while (tMoved > 0 && tThroughput > 0) tThroughput -= (tMoved = UT.Fluids.move(aData.mTileEntity.getAdjacentTank(aSide), aData.delegator(aSide), tThroughput));
+				while (tMoved > 0 && tThroughput > 0) tThroughput -= (tMoved = FL.move(aData.mTileEntity.getAdjacentTank(aSide), aData.delegator(aSide), tThroughput));
 			}
 		}
 	}

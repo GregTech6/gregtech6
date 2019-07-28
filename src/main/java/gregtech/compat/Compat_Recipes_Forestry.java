@@ -42,7 +42,6 @@ import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -138,8 +137,8 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Laminator    .addRecipe2(T, 16,   64, OP.foil.mat(MT.WaxRefractory,  8), tFenceA, tFenceB);
 		}
 		
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logs"          , 1, 22), NF, UT.Fluids.make("maplesap", 25), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logsFireproof" , 1, 22), NF, UT.Fluids.make("maplesap", 25), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logs"          , 1, 22), NF, FL.make("maplesap", 25), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logsFireproof" , 1, 22), NF, FL.make("maplesap", 25), OM.dust(MT.Wood));
 		
 		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Sn                             , 1), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Tin      .get(1));
 		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Bronze                         , 3), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Bronze   .get(1));
@@ -317,7 +316,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("dropHoney", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-		if (UT.Fluids.getFluidForFilledItem(aEvent.mStack, T) != null || OM.is_("bucketHoney", aEvent.mStack) || OM.is_("bottleHoney", aEvent.mStack)) return;
+		if (FL.getFluid(aEvent.mStack, T) != null || OM.is_("bucketHoney", aEvent.mStack) || OM.is_("bottleHoney", aEvent.mStack)) return;
 		RM.Canner       .addRecipe2(T, 16,   16, ST.amount(4, aEvent.mStack), IL.FR_WaxCapsule.get(1), IL.FR_HoneyPot.get(1));
 		}});
 		addListener("listAllwheats", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

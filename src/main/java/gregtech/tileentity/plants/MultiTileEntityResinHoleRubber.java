@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureCopied;
@@ -30,7 +31,6 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.misc.MultiTileEntityTreeHole;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -73,7 +73,7 @@ public class MultiTileEntityResinHoleRubber extends MultiTileEntityTreeHole {
 	
 	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return isClientSide() ? super.getDrops(aFortune, aSilkTouch) : new ArrayListNoNulls<>(F, ST.make(BlocksGT.LogA, 1, 0));}
 	@Override public ItemStack getResinItem(byte aSide) {return IL.IC2_Resin.get(1, IL.Resin.get(1));}
-	@Override public FluidStack getResinFluid(byte aSide) {return UT.Fluids.make("fluidrubbertreesap", 250);}
+	@Override public FluidStack getResinFluid(byte aSide) {return FL.make("fluidrubbertreesap", 250);}
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? aSide != mFacing ? BlockTextureCopied.get(BlocksGT.LogA, SIDE_ANY, 0) : BlockTextureDefault.get(mHasResin?Textures.BlockIcons.LOG_RESIN_RUBBER:Textures.BlockIcons.LOG_HOLE_RUBBER) : null;}
 	@Override public float getExplosionResistance2() {return BlocksGT.LogA.getExplosionResistance(0);}
 	@Override public String getTileEntityName() {return "gt.multitileentity.tree.rubber.resinhole";}

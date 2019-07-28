@@ -19,7 +19,7 @@
 
 package gregtech.tileentity.multiblocks;
 
-import gregapi.util.UT;
+import gregapi.data.FL;
 import net.minecraftforge.fluids.FluidStack;
 
 
@@ -29,7 +29,7 @@ import net.minecraftforge.fluids.FluidStack;
 public class MultiTileEntityTank3x3x3Wood extends MultiTileEntityTank3x3x3 {
 	@Override
 	public boolean allowFluid(FluidStack aFluid) {
-		return super.allowFluid(aFluid) && UT.Fluids.simple(aFluid);
+		return super.allowFluid(aFluid) && FL.simple(aFluid);
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.tank.wooden";}

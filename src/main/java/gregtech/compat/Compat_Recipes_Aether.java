@@ -27,6 +27,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.CS.OreDictToolNames;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -36,7 +37,6 @@ import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
@@ -83,10 +83,10 @@ public class Compat_Recipes_Aether extends CompatMods {
 		
 		RM.biomass(ST.make(MD.AETHER, "purpleFlower", 16, W));
 		RM.biomass(ST.make(MD.AETHER, "whiteRose", 16, W));
-		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower" , 1, W), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
-		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "whiteRose"    , 1, W), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White], 2), OM.dust(MT.White));
-		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower"   , 1, W), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
-		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "whiteRose"      , 1, W), NF, UT.Fluids.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White], 2), OM.dust(MT.White));
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower" , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
+		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "whiteRose"    , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White], 2), OM.dust(MT.White));
+		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "purpleFlower"   , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
+		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.AETHER, "whiteRose"      , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White], 2), OM.dust(MT.White));
 		RM.ic2_extractor(ST.make(MD.AETHER, "purpleFlower"  , 1, W), ST.make(Items.dye, 3, DYE_INDEX_Purple));
 		RM.ic2_extractor(ST.make(MD.AETHER, "whiteRose"     , 1, W), OM.dust(MT.White, U*3));
 	}

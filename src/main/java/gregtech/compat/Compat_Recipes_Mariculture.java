@@ -35,7 +35,6 @@ import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Items;
 
 public class Compat_Recipes_Mariculture extends CompatMods {
@@ -56,15 +55,15 @@ public class Compat_Recipes_Mariculture extends CompatMods {
 		RM.Bath             .addRecipe1(T,  0,   16, ST.make(Items.netherbrick      , 1, W), FL.Lava.make(100)      , NF, ST.make(MD.MaCu, "crafting", 1,14));
 		RM.Bath             .addRecipe1(T,  0,   16, ST.make(Items.brick            , 1, W), FL.Lava.make(250)      , NF, ST.make(MD.MaCu, "crafting", 1,14));
 		
-		RM.Mixer            .addRecipe1(T, 16,   48, OM.dust(MT.Sugar               ), FL.Milk   .make(500), UT.Fluids.make("custard", 500), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.Sugar           , U4), FL.Milk   .make(125), UT.Fluids.make("custard", 125), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OP.gemChipped.mat(MT.Sugar ,  1), FL.Milk   .make(125), UT.Fluids.make("custard", 125), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   48, OM.dust(MT.Sugar               ), FL.MilkGrC.make(500), UT.Fluids.make("custard", 500), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.Sugar           , U4), FL.MilkGrC.make(125), UT.Fluids.make("custard", 125), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OP.gemChipped.mat(MT.Sugar ,  1), FL.MilkGrC.make(125), UT.Fluids.make("custard", 125), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   48, OM.dust(MT.Sugar               ), FL.MilkSoy.make(500), UT.Fluids.make("custard", 500), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.Sugar           , U4), FL.MilkSoy.make(125), UT.Fluids.make("custard", 125), ZL_IS);
-		RM.Mixer            .addRecipe1(T, 16,   16, OP.gemChipped.mat(MT.Sugar ,  1), FL.MilkSoy.make(125), UT.Fluids.make("custard", 125), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   48, OM.dust(MT.Sugar               ), FL.Milk   .make(500), FL.make("custard", 500), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.Sugar           , U4), FL.Milk   .make(125), FL.make("custard", 125), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OP.gemChipped.mat(MT.Sugar ,  1), FL.Milk   .make(125), FL.make("custard", 125), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   48, OM.dust(MT.Sugar               ), FL.MilkGrC.make(500), FL.make("custard", 500), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.Sugar           , U4), FL.MilkGrC.make(125), FL.make("custard", 125), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OP.gemChipped.mat(MT.Sugar ,  1), FL.MilkGrC.make(125), FL.make("custard", 125), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   48, OM.dust(MT.Sugar               ), FL.MilkSoy.make(500), FL.make("custard", 500), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(MT.Sugar           , U4), FL.MilkSoy.make(125), FL.make("custard", 125), ZL_IS);
+		RM.Mixer            .addRecipe1(T, 16,   16, OP.gemChipped.mat(MT.Sugar ,  1), FL.MilkSoy.make(125), FL.make("custard", 125), ZL_IS);
 		
 		RM.Squeezer         .addRecipe1(T, 16,   16, ST.make(MD.MaCu, "plant_static", 1, 0), IL.MaCu_Dye_Green.get(1));
 		RM.Squeezer         .addRecipe1(T, 16,   16, ST.make(MD.MaCu, "plant_static", 1, 1), IL.MaCu_Dye_Green.get(1));

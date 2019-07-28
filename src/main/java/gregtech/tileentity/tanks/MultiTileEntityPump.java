@@ -109,7 +109,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (!mTank.isEmpty()) UT.Fluids.move(mTank, getAdjacentTileEntity(tSide)); else break;
+			for (byte tSide : ALL_SIDES_VALID_BUT_AXIS[mFacing]) if (!mTank.isEmpty()) FL.move(mTank, getAdjacentTileEntity(tSide)); else break;
 			
 			if (mEnergy < 2048 || mStopped) {
 				mActive = F;
@@ -178,7 +178,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 		} else
 		if (aBlock instanceof IFluidBlock) {
 			mPumpedFluids.add(aBlock);
-			mDir = (byte)(UT.Fluids.lighter(((IFluidBlock)aBlock).getFluid()) ? -1 : +1);
+			mDir = (byte)(FL.lighter(((IFluidBlock)aBlock).getFluid()) ? -1 : +1);
 		} else return;
 		
 		addToList(aX, aY, aZ);

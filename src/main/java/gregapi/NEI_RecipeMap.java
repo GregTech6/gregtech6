@@ -44,6 +44,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ItemsGT;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.TD;
@@ -373,8 +374,8 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				break;
 			}
 			
-			for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(UT.Fluids.display(aRecipe.mFluidInputs [i], T, F),  53 - (i%3)*18, 63 - (i/3)*18));
-			for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(UT.Fluids.display(aRecipe.mFluidOutputs[i], T, F), 107 + (i%3)*18, 63 - (i/3)*18));
+			for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(FL.display(aRecipe.mFluidInputs [i], T, F),  53 - (i%3)*18, 63 - (i/3)*18));
+			for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(FL.display(aRecipe.mFluidOutputs[i], T, F), 107 + (i%3)*18, 63 - (i/3)*18));
 		}
 	}
 	
@@ -494,9 +495,9 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			}
 			
 			if (!ItemsGT.NEI_DONT_SHOW_FLUIDS.contains(aResult, T)) {
-				FluidStack tFluid = UT.Fluids.getFluidForFilledItem(aResult, T);
+				FluidStack tFluid = FL.getFluid(aResult, T);
 				if (tFluid != null) {
-					tResults.add(UT.Fluids.display(tFluid, F, F));
+					tResults.add(FL.display(tFluid, F, F));
 					for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) {
 						if (tData.fluid.isFluidEqual(tFluid)) tResults.add(ST.copy(tData.filledContainer));
 					}
@@ -534,9 +535,9 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			}
 			
 			if (!ItemsGT.NEI_DONT_SHOW_FLUIDS.contains(aInput, T)) {
-				FluidStack tFluid = UT.Fluids.getFluidForFilledItem(aInput, T);
+				FluidStack tFluid = FL.getFluid(aInput, T);
 				if (tFluid != null) {
-					tInputs.add(UT.Fluids.display(tFluid, F, F));
+					tInputs.add(FL.display(tFluid, F, F));
 					for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) {
 						if (tData.fluid.isFluidEqual(tFluid)) tInputs.add(ST.copy(tData.filledContainer));
 					}

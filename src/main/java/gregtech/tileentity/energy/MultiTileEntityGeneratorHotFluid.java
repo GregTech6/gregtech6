@@ -27,6 +27,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
+import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -151,7 +152,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 			// Out of Fuel I guess.
 			if (mEnergy <= 0) {mEnergy = 0; mRunning = F;}
 			// Output used Liquid to the Front.
-			if (mTanks[1].has()) UT.Fluids.move(delegator(mFacing), getAdjacentTank(mFacing));
+			if (mTanks[1].has()) FL.move(delegator(mFacing), getAdjacentTank(mFacing));
 		}
 	}
 	

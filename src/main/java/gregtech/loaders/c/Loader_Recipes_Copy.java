@@ -26,13 +26,13 @@ import java.util.Map;
 import forestry.api.recipes.ICentrifugeRecipe;
 import forestry.api.recipes.ISqueezerRecipe;
 import forestry.api.recipes.RecipeManagers;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.RM;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
@@ -41,11 +41,11 @@ import net.minecraftforge.fluids.FluidStack;
 public class Loader_Recipes_Copy implements Runnable {
 	@Override public void run() {
 		OUT.println("GT_Mod: Copying the Fluid Registry to GT Machines.");
-		for (Map<String, FluidContainerData> tMap : UT.Fluids.sEmpty2Fluid2Data.values()) for (FluidContainerData tData : tMap.values()) {
+		for (Map<String, FluidContainerData> tMap : FL.EMPTY_TO_FLUID_TO_DATA.values()) for (FluidContainerData tData : tMap.values()) {
 			ItemStack tEmpty = (tData.emptyContainer.getItem() == Items.bucket || tData.emptyContainer.stackSize < 1 ? ST.container(tData.filledContainer, F) : tData.emptyContainer);
 			if (ST.valid(tEmpty)) RM.Canner.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), tEmpty, tData.fluid, NF, tData.filledContainer);
 		}
-		for (FluidContainerData tData : UT.Fluids.sFilled2Data.values()) {
+		for (FluidContainerData tData : FL.FULL_TO_DATA.values()) {
 			RM.Canner.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16), tData.filledContainer, NF, tData.fluid, ST.container(tData.filledContainer, T));
 			if (MD.FR.mLoaded) {
 			if (IL.FR_TinCapsule       .equal(tData.emptyContainer)) RM.Squeezer.addRecipe1(T, 16, Math.max(tData.fluid.amount / 64, 16),  500, tData.filledContainer, NF, tData.fluid, OM.ingot(MT.Sn));
@@ -74,7 +74,7 @@ public class Loader_Recipes_Copy implements Runnable {
 			try {
 				for (ISqueezerRecipe tRecipe : RecipeManagers.squeezerManager.recipes()) {
 					ItemStack[] tInput = tRecipe.getResources();
-					if (tInput.length == 1 && UT.Fluids.getFluidForFilledItem(tInput[0], T) == null) {
+					if (tInput.length == 1 && FL.getFluid(tInput[0], T) == null) {
 						RM.Squeezer.addRecipe(T, tInput, new ItemStack[] {tRecipe.getRemnants()}, NI, new long[] {Math.max(1, (long)(10000*tRecipe.getRemnantsChance()))}, null, new FluidStack[] {tRecipe.getFluidOutput()}, tRecipe.getProcessingTime(), 16, 0);
 					}
 				}

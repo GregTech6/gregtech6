@@ -48,8 +48,8 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Centrifuge   .addRecipe1(T, 64,  144, OM.dust(MT.DarkAsh, U*2), OM.dust(MT.Ash), IL.TE_Slag.get(1, IL.IE_Slag.get(1, OM.dust(MT.Ash))));
 		
 		for (FluidStack tWater : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {
-		RM.Mixer                .addRecipe1(T, 16,   16, OM.dust(MT.SluiceSand, U9) , UT.Fluids.mul(tWater, 1,10, T), FL.Sluice.make(100), ZL_IS);
-		RM.Mixer                .addRecipe1(T, 16,   16, OM.dust(MT.SluiceSand)     , UT.Fluids.mul(tWater, 9,10, T), FL.Sluice.make(900), ZL_IS);
+		RM.Mixer                .addRecipe1(T, 16,   16, OM.dust(MT.SluiceSand, U9) , FL.mul(tWater, 1,10, T), FL.Sluice.make(100), ZL_IS);
+		RM.Mixer                .addRecipe1(T, 16,   16, OM.dust(MT.SluiceSand)     , FL.mul(tWater, 9,10, T), FL.Sluice.make(900), ZL_IS);
 		}
 		RM.Drying               .addRecipe0(T, 16,  100, FL.Sluice.make(100), FL.DistW.make(50), OM.dust(MT.SluiceSand,  U9));
 		RM.Centrifuge           .addRecipe0(T, 64,   16, new long[] { 9640, 100, 100, 100, 100, 100}, FL.Sluice.make(100), FL.Water.make(50)    , dustTiny  .mat(MT.Stone, 1), dustTiny.mat(MT.Fe, 1), dustTiny.mat(MT.Cu, 1), dustTiny.mat(MT.Sn, 1), dustTiny.mat(MT.Zn, 1), dustTiny.mat(MT.Cr, 1));

@@ -127,7 +127,7 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 			if (aMaterial.mAmount >= U) {
 				FluidStack tFluid = aMaterial.mMaterial.liquid(U, F);
 				if (FL.Error.is(tFluid)) return 0;
-				if (UT.Fluids.fillAll(tDelegator, tFluid, T)) return U;
+				if (FL.fillAll(tDelegator, tFluid, T)) return U;
 			}
 			return 0;
 		}

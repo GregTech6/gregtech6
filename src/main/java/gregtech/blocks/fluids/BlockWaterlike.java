@@ -27,6 +27,7 @@ import java.util.Random;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
@@ -66,7 +67,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		LH.add(getLocalizedName()+".name", getLocalizedName()); // WAILA is retarded...
 		LH.add(getUnlocalizedName()+".name", getLocalizedName());
 		LH.add(getUnlocalizedName(), getLocalizedName());
-		setFluidStack(UT.Fluids.make(aFluid, 1000));
+		setFluidStack(FL.make(aFluid, 1000));
 		setTickRandomly(F);
 		ST.hide(this);
 	}
@@ -74,7 +75,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	@Override
 	public FluidStack drain(World aWorld, int aX, int aY, int aZ, boolean aDoDrain) {
 		if (aDoDrain) aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
-		return UT.Fluids.make(getFluid(), 1000);
+		return FL.make(getFluid(), 1000);
 	}
 	
 	@Override
@@ -188,8 +189,8 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	}
 	
 	@Override public boolean isSourceBlock(IBlockAccess aWorld, int aX, int aY, int aZ) {return aWorld.getBlock(aX, aY, aZ) instanceof BlockWaterlike && aWorld.getBlockMetadata(aX, aY, aZ) == 0;}
-	@Override public final String getUnlocalizedName() {return UT.Fluids.name(mFluid, F);}
-	@Override public String getLocalizedName() {return UT.Fluids.name(mFluid, T);}
+	@Override public final String getUnlocalizedName() {return FL.name(mFluid, F);}
+	@Override public String getLocalizedName() {return FL.name(mFluid, T);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
 	@Override public int getLightOpacity() {return 16;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return Blocks.water.getIcon(aSide, aMeta);}
@@ -207,7 +208,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	
 	@Override
 	public void onHeadInside(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
-		if (!mEffects.isEmpty() && (UT.Fluids.gas(mFluid) ? !UT.Entities.isImmuneToBreathingGasses(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
+		if (!mEffects.isEmpty() && (FL.gas(mFluid) ? !UT.Entities.isImmuneToBreathingGasses(aEntity) : !UT.Entities.isWearingFullChemHazmat(aEntity))) {
 			for (int[] tEffects : mEffects) aEntity.addPotionEffect(new PotionEffect(tEffects[0], tEffects[1], tEffects[2], F));
 			if (getMaterial() != Material.water) aEntity.attackEntityFrom(DamageSource.drown, 2.0F);
 		}

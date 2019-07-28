@@ -25,6 +25,7 @@ import java.util.List;
 
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
@@ -83,8 +84,8 @@ public abstract class MultiTileEntityTank5x5x5 extends MultiTileEntityTank {
 		if (aIsServerSide && checkStructure(F)) {
 			FluidStack tFluid = mTank.getFluid();
 			if (tFluid != null && tFluid.amount > 0) {
-				if (UT.Fluids.temperature(mTank) >= mMaterial.mMeltingPoint && meltdown()) return;
-				if (!mAcidProof && UT.Fluids.acid(mTank)) {
+				if (FL.temperature(mTank) >= mMaterial.mMeltingPoint && meltdown()) return;
+				if (!mAcidProof && FL.acid(mTank)) {
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					GarbageGT.trash(mTank);
 					int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
@@ -94,11 +95,11 @@ public abstract class MultiTileEntityTank5x5x5 extends MultiTileEntityTank {
 					setToAir();
 					return;
 				}
-				if (!mPlasmaProof && UT.Fluids.plasma(mTank)) {
+				if (!mPlasmaProof && FL.plasma(mTank)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
-				if (!mGasProof && UT.Fluids.gas(mTank)) {
+				if (!mGasProof && FL.gas(mTank)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
@@ -106,8 +107,8 @@ public abstract class MultiTileEntityTank5x5x5 extends MultiTileEntityTank {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
-				if (SIDES_HORIZONTAL[mFacing] || UT.Fluids.gas(mTank) || (UT.Fluids.lighter(mTank)?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
-					if (UT.Fluids.move(mTank, getAdjacentTileEntity(mFacing)) > 0) updateInventory();
+				if (SIDES_HORIZONTAL[mFacing] || FL.gas(mTank) || (FL.lighter(mTank)?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
+					if (FL.move(mTank, getAdjacentTileEntity(mFacing)) > 0) updateInventory();
 				}
 			}
 		}

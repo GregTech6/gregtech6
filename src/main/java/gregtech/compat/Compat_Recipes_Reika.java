@@ -39,7 +39,6 @@ import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -56,20 +55,20 @@ public class Compat_Recipes_Reika extends CompatMods {
 			}});
 			}};
 			RM.Shredder         .addRecipe1(T, 16,  144, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 1), ST.make(MD.RoC, "rotarycraft_item_canola", 9, 2));
-			RM.Squeezer         .addRecipe1(T, 16,  144, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 1), NF, UT.Fluids.make("rc lubricant", 405, "lubricant"), NI);
-			RM.Squeezer         .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 2), NF, UT.Fluids.make("rc lubricant",  90, "lubricant"), NI);
-			RM.Juicer           .addRecipe1(T, 16,  144, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 1), NF, UT.Fluids.make("rc lubricant", 270, "lubricant"), NI);
-			RM.Juicer           .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 2), NF, UT.Fluids.make("rc lubricant",  60, "lubricant"), NI);
+			RM.Squeezer         .addRecipe1(T, 16,  144, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 1), NF, FL.make("rc lubricant", 405, "lubricant"), NI);
+			RM.Squeezer         .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 2), NF, FL.make("rc lubricant",  90, "lubricant"), NI);
+			RM.Juicer           .addRecipe1(T, 16,  144, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 1), NF, FL.make("rc lubricant", 270, "lubricant"), NI);
+			RM.Juicer           .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 2), NF, FL.make("rc lubricant",  60, "lubricant"), NI);
 			
 			RM.Compressor       .addRecipe1(T,512, 1024, OM.dust(MT.Bedrock, U*8), ST.make(Blocks.bedrock, 1, 0));
 			
 			for (FluidStack tRedstone : new FluidStack[] {FL.Redstone.make(L), FL.Redstone_TE.make(100)}) if (tRedstone != null) {
-			RM.Bath             .addRecipe1(T,  0,   64, IL.Circuit_Board_HSLA_Circuit.get(1), UT.Fluids.mul(tRedstone, 2, 9, T), NF, ST.make(MD.RoC, "rotarycraft_item_borecraft", 1, 4));
-			RM.Bath             .addRecipe1(T,  0,   64, IL.Circuit_Board_Power_Module.get(1), UT.Fluids.mul(tRedstone, 2, 9, T), NF, ST.make(MD.RoC, "rotarycraft_item_misccraft", 1, 2));
+			RM.Bath             .addRecipe1(T,  0,   64, IL.Circuit_Board_HSLA_Circuit.get(1), FL.mul(tRedstone, 2, 9, T), NF, ST.make(MD.RoC, "rotarycraft_item_borecraft", 1, 4));
+			RM.Bath             .addRecipe1(T,  0,   64, IL.Circuit_Board_Power_Module.get(1), FL.mul(tRedstone, 2, 9, T), NF, ST.make(MD.RoC, "rotarycraft_item_misccraft", 1, 2));
 			}
 			
-			RM.Centrifuge       .addRecipe1(T, 16,   64,  8000, IL.RoC_Comb_Slippery        .get(1), NF, UT.Fluids.make("rc lubricant",  50, "lubricant",  50), IL.RoC_Propolis_Slippery.get(1));
-			RM.Centrifuge       .addRecipe1(T, 16,   64       , IL.RoC_Propolis_Slippery    .get(1), NF, UT.Fluids.make("rc lubricant", 150, "lubricant", 150), ZL_IS);
+			RM.Centrifuge       .addRecipe1(T, 16,   64,  8000, IL.RoC_Comb_Slippery        .get(1), NF, FL.make("rc lubricant",  50, "lubricant",  50), IL.RoC_Propolis_Slippery.get(1));
+			RM.Centrifuge       .addRecipe1(T, 16,   64       , IL.RoC_Propolis_Slippery    .get(1), NF, FL.make("rc lubricant", 150, "lubricant", 150), ZL_IS);
 			
 			CR.delate(MD.RoC, "rotarycraft_item_powders", 7);
 			CR.delate(MD.RoC, "rotarycraft_item_powders", 6);

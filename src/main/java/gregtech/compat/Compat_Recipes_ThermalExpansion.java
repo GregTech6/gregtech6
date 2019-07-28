@@ -43,7 +43,6 @@ import gregapi.recipes.handlers.RecipeMapHandlerPrefix;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -113,39 +112,39 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		RM.Bath             .addRecipe1(T,  0,   16, new long[] {10000,   750}, OP.crushed.mat(MT.Desh              , 1), tPyrotheum, NF, OM.ingot(MT.Desh          , 5*U4), IL.TE_Slag_Rich.get(1));
 		}
 		
-		UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Redstone  .make(1440), ST.make(MD.TE_FOUNDATION, "bucket", 1, 0), ST.make(Items.bucket, 1, 0), F), F, F);
-		UT.Fluids.setFluidContainerData(new FluidContainerData(FL.Ender     .make( 576), ST.make(MD.TE_FOUNDATION, "bucket", 1, 2), ST.make(Items.bucket, 1, 0), F), F, F);
+		FL.set(new FluidContainerData(FL.Redstone  .make(1440), ST.make(MD.TE_FOUNDATION, "bucket", 1, 0), ST.make(Items.bucket, 1, 0), F), F, F);
+		FL.set(new FluidContainerData(FL.Ender     .make( 576), ST.make(MD.TE_FOUNDATION, "bucket", 1, 2), ST.make(Items.bucket, 1, 0), F), F, F);
 		
 		for (FluidStack tRedstone : new FluidStack[] {FL.Redstone.make(L), FL.Redstone_TE.make(100)}) {
-			RM.Injector     .addRecipe1(T, 16, 16, ST.make(Items.snowball, 1, W)    , UT.Fluids.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
-			RM.Injector     .addRecipe1(T, 16, 16, OP.dustSmall.mat(MT.Snow, 1)     , UT.Fluids.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
-			RM.Injector     .addRecipe1(T, 16, 16, OP.dustSmall.mat(MT.Ice, 1)      , UT.Fluids.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
-			RM.Injector     .addRecipe1(T, 16, 64, ST.make(Blocks.snow, 1, W)       , UT.Fluids.mul(tRedstone, 8), NF, OP.dust.mat(MT.Blizz, 4));
-			RM.Injector     .addRecipe1(T, 16, 64, OP.dust.mat(MT.Snow, 1)          , UT.Fluids.mul(tRedstone, 8), NF, OP.dust.mat(MT.Blizz, 4));
-			RM.Injector     .addRecipe1(T, 16, 64, OP.dust.mat(MT.Ice, 1)           , UT.Fluids.mul(tRedstone, 8), NF, OP.dust.mat(MT.Blizz, 4));
+			RM.Injector     .addRecipe1(T, 16, 16, ST.make(Items.snowball, 1, W)    , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
+			RM.Injector     .addRecipe1(T, 16, 16, OP.dustSmall.mat(MT.Snow, 1)     , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
+			RM.Injector     .addRecipe1(T, 16, 16, OP.dustSmall.mat(MT.Ice, 1)      , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
+			RM.Injector     .addRecipe1(T, 16, 64, ST.make(Blocks.snow, 1, W)       , FL.mul(tRedstone, 8), NF, OP.dust.mat(MT.Blizz, 4));
+			RM.Injector     .addRecipe1(T, 16, 64, OP.dust.mat(MT.Snow, 1)          , FL.mul(tRedstone, 8), NF, OP.dust.mat(MT.Blizz, 4));
+			RM.Injector     .addRecipe1(T, 16, 64, OP.dust.mat(MT.Ice, 1)           , FL.mul(tRedstone, 8), NF, OP.dust.mat(MT.Blizz, 4));
 			for (OreDictMaterial tMat : ANY.SiO2.mToThis)
-			RM.Injector     .addRecipe1(T, 16, 16, OM.dust(tMat)                    , UT.Fluids.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blitz, 1));
-			RM.Injector     .addRecipe1(T, 16, 16, OP.dust.mat(MT.Stone, 1)         , UT.Fluids.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blitz, 1));
-			RM.Injector     .addRecipe1(T, 16, 16, ST.make(Blocks.sand, 1, W)       , UT.Fluids.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blitz, 1));
+			RM.Injector     .addRecipe1(T, 16, 16, OM.dust(tMat)                    , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blitz, 1));
+			RM.Injector     .addRecipe1(T, 16, 16, OP.dust.mat(MT.Stone, 1)         , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blitz, 1));
+			RM.Injector     .addRecipe1(T, 16, 16, ST.make(Blocks.sand, 1, W)       , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blitz, 1));
 			
-			RM.Injector     .addRecipe1(T, 16, 16, OP.dust.mat(MT.Obsidian, 1)      , UT.Fluids.mul(tRedstone, 2), NF, OP.dust.mat(MT.Basalz, 1));
+			RM.Injector     .addRecipe1(T, 16, 16, OP.dust.mat(MT.Obsidian, 1)      , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Basalz, 1));
 		}
 		
 		if (MD.TE_DYNAMICS.mLoaded) {
 			OUT.println("GT_Mod: Doing Thermal Dynamics Recipes.");
 			for (FluidStack tEnder : new FluidStack[] {FL.Ender.make(L), FL.Ender_TE.make(250)}) {
-			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 0)    , UT.Fluids.mul(tEnder,  4), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 2));
-			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 0)    , UT.Fluids.mul(tEnder,  4), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 2));
+			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 0)    , FL.mul(tEnder,  4), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 2));
+			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 0)    , FL.mul(tEnder,  4), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 2));
 			}
 			for (FluidStack tRedstone : new FluidStack[] {FL.Redstone.make(L), FL.Redstone_TE.make(100)}) {
-			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 5)    , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 4));
-			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 3)    , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 2));
-			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 0)    , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 6));
-			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 1)    , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 7));
-			RM.Canner           .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 5)    , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 4));
-			RM.Canner           .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 3)    , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 2));
-			RM.Canner           .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 0)    , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 6));
-			RM.Canner           .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 1)    , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 7));
+			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 5)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 4));
+			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 3)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 2));
+			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 0)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 6));
+			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 1)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 7));
+			RM.Canner           .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 5)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 4));
+			RM.Canner           .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 3)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 2));
+			RM.Canner           .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 0)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 6));
+			RM.Canner           .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 1)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 7));
 			}
 			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 0)    , FL.Glowstone_TE.make(200), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 2));
 			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 1)    , FL.Glowstone_TE.make(200), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 3));
@@ -162,24 +161,24 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 			OUT.println("GT_Mod: Doing Thermal Expansion Recipes.");
 			
 			for (FluidStack tEnder : new FluidStack[] {FL.Ender.make(L), FL.Ender_TE.make(250)}) {
-			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,10)                          , UT.Fluids.mul(tEnder,  4), NF, ST.make(MD.TE, "Frame", 1,11));
-			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , UT.Fluids.mul(tEnder,  4), NF, ST.make(MD.TE, "Plate", 1, 3));
-			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,10)                          , UT.Fluids.mul(tEnder,  4), NF, ST.make(MD.TE, "Frame", 1,11));
-			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , UT.Fluids.mul(tEnder,  4), NF, ST.make(MD.TE, "Plate", 1, 3));
+			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,10)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Frame", 1,11));
+			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Plate", 1, 3));
+			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,10)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Frame", 1,11));
+			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Plate", 1, 3));
 			}
 			for (FluidStack tRedstone : new FluidStack[] {FL.Redstone.make(L), FL.Redstone_TE.make(100)}) {
-			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Au        , 1)                        , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 1));
-			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Ag        , 1)                        , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 2));
-			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Electrum  , 1)                        , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 3));
-			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , UT.Fluids.mul(tRedstone, 10), NF, ST.make(MD.TE, "Plate", 1, 1));
-			RM.Injector         .addRecipe1(T, 16,  360, ST.make(MD.TE, "Frame", 1, 6)                          , UT.Fluids.mul(tRedstone, 40), NF, ST.make(MD.TE, "Frame", 1, 7));
-			RM.Injector         .addRecipe1(T, 16,  360, ST.make(MD.TE, "Frame", 1, 8)                          , UT.Fluids.mul(tRedstone, 40), NF, ST.make(MD.TE, "Frame", 1, 9));
-			RM.Canner           .addRecipe1(T, 16,   16, OP.spring.mat(MT.Au        , 1)                        , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 1));
-			RM.Canner           .addRecipe1(T, 16,   16, OP.spring.mat(MT.Ag        , 1)                        , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 2));
-			RM.Canner           .addRecipe1(T, 16,   16, OP.spring.mat(MT.Electrum  , 1)                        , UT.Fluids.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 3));
-			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , UT.Fluids.mul(tRedstone, 10), NF, ST.make(MD.TE, "Plate", 1, 1));
-			RM.Canner           .addRecipe1(T, 16,  360, ST.make(MD.TE, "Frame", 1, 6)                          , UT.Fluids.mul(tRedstone, 40), NF, ST.make(MD.TE, "Frame", 1, 7));
-			RM.Canner           .addRecipe1(T, 16,  360, ST.make(MD.TE, "Frame", 1, 8)                          , UT.Fluids.mul(tRedstone, 40), NF, ST.make(MD.TE, "Frame", 1, 9));
+			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Au        , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 1));
+			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Ag        , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 2));
+			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Electrum  , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 3));
+			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , FL.mul(tRedstone, 10), NF, ST.make(MD.TE, "Plate", 1, 1));
+			RM.Injector         .addRecipe1(T, 16,  360, ST.make(MD.TE, "Frame", 1, 6)                          , FL.mul(tRedstone, 40), NF, ST.make(MD.TE, "Frame", 1, 7));
+			RM.Injector         .addRecipe1(T, 16,  360, ST.make(MD.TE, "Frame", 1, 8)                          , FL.mul(tRedstone, 40), NF, ST.make(MD.TE, "Frame", 1, 9));
+			RM.Canner           .addRecipe1(T, 16,   16, OP.spring.mat(MT.Au        , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 1));
+			RM.Canner           .addRecipe1(T, 16,   16, OP.spring.mat(MT.Ag        , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 2));
+			RM.Canner           .addRecipe1(T, 16,   16, OP.spring.mat(MT.Electrum  , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 3));
+			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , FL.mul(tRedstone, 10), NF, ST.make(MD.TE, "Plate", 1, 1));
+			RM.Canner           .addRecipe1(T, 16,  360, ST.make(MD.TE, "Frame", 1, 6)                          , FL.mul(tRedstone, 40), NF, ST.make(MD.TE, "Frame", 1, 7));
+			RM.Canner           .addRecipe1(T, 16,  360, ST.make(MD.TE, "Frame", 1, 8)                          , FL.mul(tRedstone, 40), NF, ST.make(MD.TE, "Frame", 1, 9));
 			}
 			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , FL.Glowstone_TE.make(1000), NF, ST.make(MD.TE, "Plate", 1, 2));
 			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,12)                          , FL.Glowstone_TE.make(1000), NF, ST.make(MD.TE, "Light", 1, 0));

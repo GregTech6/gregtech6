@@ -40,7 +40,6 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -110,10 +109,10 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 			
 			RM.sawing(16, 16, F, 10, ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipestructurecobblestone", 1, W), ST.make(MD.BC_TRANSPORT, "pipePlug", 4, 0));
 			
-			for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Red     ]) RM.Bath.addRecipe1(T, 0, 16, OP.wireFine.mat(MT.RedAlloy, 1), UT.Fluids.mul(tDye, 1, 8, T), NF, ST.make(MD.BC_TRANSPORT, "pipeWire", 1, 0));
-			for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Blue    ]) RM.Bath.addRecipe1(T, 0, 16, OP.wireFine.mat(MT.RedAlloy, 1), UT.Fluids.mul(tDye, 1, 8, T), NF, ST.make(MD.BC_TRANSPORT, "pipeWire", 1, 1));
-			for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Green   ]) RM.Bath.addRecipe1(T, 0, 16, OP.wireFine.mat(MT.RedAlloy, 1), UT.Fluids.mul(tDye, 1, 8, T), NF, ST.make(MD.BC_TRANSPORT, "pipeWire", 1, 2));
-			for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Yellow  ]) RM.Bath.addRecipe1(T, 0, 16, OP.wireFine.mat(MT.RedAlloy, 1), UT.Fluids.mul(tDye, 1, 8, T), NF, ST.make(MD.BC_TRANSPORT, "pipeWire", 1, 3));
+			for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Red     ]) RM.Bath.addRecipe1(T, 0, 16, OP.wireFine.mat(MT.RedAlloy, 1), FL.mul(tDye, 1, 8, T), NF, ST.make(MD.BC_TRANSPORT, "pipeWire", 1, 0));
+			for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Blue    ]) RM.Bath.addRecipe1(T, 0, 16, OP.wireFine.mat(MT.RedAlloy, 1), FL.mul(tDye, 1, 8, T), NF, ST.make(MD.BC_TRANSPORT, "pipeWire", 1, 1));
+			for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Green   ]) RM.Bath.addRecipe1(T, 0, 16, OP.wireFine.mat(MT.RedAlloy, 1), FL.mul(tDye, 1, 8, T), NF, ST.make(MD.BC_TRANSPORT, "pipeWire", 1, 2));
+			for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Yellow  ]) RM.Bath.addRecipe1(T, 0, 16, OP.wireFine.mat(MT.RedAlloy, 1), FL.mul(tDye, 1, 8, T), NF, ST.make(MD.BC_TRANSPORT, "pipeWire", 1, 3));
 			
 			RM.Assembler        .addRecipe2(T, 16,   16, ST.make(Blocks.gravel      , 1, W), ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemscobblestone", 1, 0), ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipestructurecobblestone", 1, 0));
 			RM.Assembler        .addRecipe2(T, 16,   16, ST.make(Blocks.cobblestone , 2, W), ST.make(Blocks.glass, 1, W), ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemscobblestone", 1, 0));

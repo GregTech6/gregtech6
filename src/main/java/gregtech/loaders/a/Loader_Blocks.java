@@ -34,7 +34,6 @@ import gregapi.data.TC;
 import gregapi.old.Textures;
 import gregapi.util.CR;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregtech.blocks.*;
 import gregtech.blocks.fluids.BlockOcean;
 import gregtech.blocks.fluids.BlockRiver;
@@ -122,9 +121,9 @@ public class Loader_Blocks implements Runnable {
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesGrass, 1, W), F, TC.stack(TC.MESSIS, 4));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BalesCrop , 1, W), F, TC.stack(TC.MESSIS, 4));
 		
-		BlocksGT.River                                                          = new BlockRiver                ("gt.block.river", UT.Fluids.fluid("riverwater"));
-		BlocksGT.Ocean                                                          = new BlockOcean                ("gt.block.ocean", UT.Fluids.fluid("seawater"));
-		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp", UT.Fluids.fluid("waterdirty")).addEffect(Potion.hunger.id, 300, 0).addEffect(Potion.confusion.id, 120, 0);
+		BlocksGT.River                                                          = new BlockRiver                ("gt.block.river", FL.River_Water.fluid());
+		BlocksGT.Ocean                                                          = new BlockOcean                ("gt.block.ocean", FL.Ocean      .fluid());
+		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp", FL.Dirty_Water.fluid()).addEffect(Potion.hunger.id, 300, 0).addEffect(Potion.confusion.id, 120, 0);
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Ocean         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.TEMPESTAS, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Swamp         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.VENENUM, 1));
 		

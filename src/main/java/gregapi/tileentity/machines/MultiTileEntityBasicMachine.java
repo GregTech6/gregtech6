@@ -32,6 +32,7 @@ import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ModIDs;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -163,7 +164,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i] = new FluidTankGT(Long.MAX_VALUE).readFromNBT(aNBT, NBT_TANK+".out."+i);
 		
 		mOutputFluids = new FluidStack[mRecipes.mOutputFluidCount];
-		for (int i = 0; i < mOutputFluids.length; i++) mOutputFluids[i] = UT.Fluids.load(aNBT, NBT_TANK_OUT+"."+i);
+		for (int i = 0; i < mOutputFluids.length; i++) mOutputFluids[i] = FL.load(aNBT, NBT_TANK_OUT+"."+i);
 		
 		mOutputItems = new ItemStack[mRecipes.mOutputItemsCount];
 		for (int i = 0; i < mOutputItems.length; i++) mOutputItems[i] = ST.load(aNBT, NBT_INV_OUT+"."+i);
@@ -240,7 +241,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		
 		for (int i = 0; i < mTanksInput .length; i++) mTanksInput [i].writeToNBT(aNBT, NBT_TANK+".in." +i);
 		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i].writeToNBT(aNBT, NBT_TANK+".out."+i);
-		for (int i = 0; i < mOutputFluids.length; i++) UT.Fluids.save(aNBT, NBT_TANK_OUT+"."+i, mOutputFluids[i]);
+		for (int i = 0; i < mOutputFluids.length; i++) FL.save(aNBT, NBT_TANK_OUT+"."+i, mOutputFluids[i]);
 		for (int i = 0; i < mOutputItems.length; i++) ST.save(aNBT, NBT_INV_OUT+"."+i, mOutputItems[i]);
 	}
 	
@@ -414,8 +415,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			
 			if (mTimer % 600 == 5) doDefaultStructuralChecks();
 			
-			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i                       , UT.Fluids.display(mTanksInput [i], T, T));
-			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length  , UT.Fluids.display(mTanksOutput[i], T, T));
+			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i                       , FL.display(mTanksInput [i], T, T));
+			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length  , FL.display(mTanksOutput[i], T, T));
 		}
 	}
 	
@@ -626,7 +627,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (tTileEntity != null && tTileEntity.mTileEntity != null) {
 				FluidTankInfo[] tInfos = tTileEntity.mTileEntity.getTankInfo(FORGE_DIR[tTileEntity.mSideOfTileEntity]);
 				if (tInfos != null) for (FluidTankInfo tInfo : tInfos) if (tInfo != null && tInfo.fluid != null && tInfo.fluid.amount > 0 && getFluidTankFillable(SIDE_ANY, tInfo.fluid) != null) {
-					if (UT.Fluids.move_(tTileEntity, delegator(tAutoInput), tInfo.fluid) > 0) updateInventory();
+					if (FL.move_(tTileEntity, delegator(tAutoInput), tInfo.fluid) > 0) updateInventory();
 				}
 			}
 		}
@@ -811,11 +812,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
-		for (FluidTankGT tTank : mTanksOutput) if (tTank.has() && !UT.Fluids.gas(tTank)) {
+		for (FluidTankGT tTank : mTanksOutput) if (tTank.has() && !FL.gas(tTank)) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
-		for (FluidTankGT tTank : mTanksInput) if (tTank.has() && !UT.Fluids.gas(tTank)) {
+		for (FluidTankGT tTank : mTanksInput) if (tTank.has() && !FL.gas(tTank)) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
@@ -832,11 +833,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public FluidStack nozzleDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
-		for (FluidTankGT tTank : mTanksOutput) if (tTank.has() && UT.Fluids.gas(tTank)) {
+		for (FluidTankGT tTank : mTanksOutput) if (tTank.has() && FL.gas(tTank)) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
-		for (FluidTankGT tTank : mTanksInput) if (tTank.has() && UT.Fluids.gas(tTank)) {
+		for (FluidTankGT tTank : mTanksInput) if (tTank.has() && FL.gas(tTank)) {
 			updateInventory();
 			return tTank.drain(aMaxDrain, aDoDrain);
 		}
@@ -883,7 +884,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public void doOutputFluids() {
 		for (IFluidTank tCheck : mTanksOutput) {
 			FluidStack tFluid = tCheck.getFluid();
-			if (tFluid != null && tFluid.getFluid() != null) {if (UT.Fluids.move(mTanksOutput, getFluidOutputTarget(FACING_TO_SIDE[mFacing][mFluidAutoOutput], tFluid.getFluid())) > 0) updateInventory(); return;}
+			if (tFluid != null && tFluid.getFluid() != null) {if (FL.move(mTanksOutput, getFluidOutputTarget(FACING_TO_SIDE[mFacing][mFluidAutoOutput], tFluid.getFluid())) > 0) updateInventory(); return;}
 		}
 	}
 	

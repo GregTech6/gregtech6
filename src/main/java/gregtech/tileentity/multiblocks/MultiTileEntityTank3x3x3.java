@@ -25,6 +25,7 @@ import java.util.List;
 
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
@@ -83,8 +84,8 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 		if (aIsServerSide && checkStructure(F)) {
 			FluidStack tFluid = mTank.getFluid();
 			if (tFluid != null && tFluid.amount > 0) {
-				if (UT.Fluids.temperature(mTank) >= mMaterial.mMeltingPoint && meltdown()) return;
-				if (!mAcidProof && UT.Fluids.acid(mTank)) {
+				if (FL.temperature(mTank) >= mMaterial.mMeltingPoint && meltdown()) return;
+				if (!mAcidProof && FL.acid(mTank)) {
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					GarbageGT.trash(mTank);
 					int tX = getOffsetXN(mFacing), tY = getOffsetYN(mFacing), tZ = getOffsetZN(mFacing);
@@ -94,11 +95,11 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 					setToAir();
 					return;
 				}
-				if (!mPlasmaProof && UT.Fluids.plasma(mTank)) {
+				if (!mPlasmaProof && FL.plasma(mTank)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
-				if (!mGasProof && UT.Fluids.gas(mTank)) {
+				if (!mGasProof && FL.gas(mTank)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
@@ -106,8 +107,8 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
-				if (SIDES_HORIZONTAL[mFacing] || UT.Fluids.gas(mTank) || (UT.Fluids.lighter(tFluid)?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
-					if (UT.Fluids.move(mTank, getAdjacentTileEntity(mFacing)) > 0) updateInventory();
+				if (SIDES_HORIZONTAL[mFacing] || FL.gas(mTank) || (FL.lighter(tFluid)?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
+					if (FL.move(mTank, getAdjacentTileEntity(mFacing)) > 0) updateInventory();
 				}
 			}
 		}
@@ -119,7 +120,7 @@ public abstract class MultiTileEntityTank3x3x3 extends MultiTileEntityTank {
 			WD.burn(worldObj, tX+i, tY+j, tZ+k, F, F);
 			if (rng(4) == 0) worldObj.setBlock(tX+i, tY+j, tZ+k, Blocks.fire, 0, 3);
 		}
-		if (UT.Fluids.lava(mTank) && mTank.drainAll(1000)) worldObj.setBlock(tX, tY, tZ, Blocks.flowing_lava, 0, 3);
+		if (FL.lava(mTank) && mTank.drainAll(1000)) worldObj.setBlock(tX, tY, tZ, Blocks.flowing_lava, 0, 3);
 		GarbageGT.trash(mTank);
 		setToFire();
 		return T;

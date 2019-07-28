@@ -22,6 +22,7 @@ package gregtech.tileentity.tools;
 import static gregapi.data.CS.*;
 
 import gregapi.data.BI;
+import gregapi.data.FL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -48,7 +49,7 @@ public class MultiTileEntityBathingPotWood extends MultiTileEntityBathingPot {
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].contains(aFluidToFill)) return mTanksInput[i];
-		if (!UT.Fluids.simple(aFluidToFill) || UT.Fluids.temperature(aFluidToFill) > mMaterial.mMeltingPoint || UT.Fluids.gas(aFluidToFill) || UT.Fluids.acid(aFluidToFill)) return null;
+		if (!FL.simple(aFluidToFill) || FL.temperature(aFluidToFill) > mMaterial.mMeltingPoint || FL.gas(aFluidToFill) || FL.acid(aFluidToFill)) return null;
 		for (int i = 0; i < mTanksInput.length; i++) if (mTanksInput[i].isEmpty()) return mTanksInput[i];
 		return null;
 	}

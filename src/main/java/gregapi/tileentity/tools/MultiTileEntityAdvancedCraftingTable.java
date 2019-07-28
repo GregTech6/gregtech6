@@ -30,6 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -339,8 +340,8 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 					if (isServerSide()) {
 						// Try to draw from adjacent connectable Tanks to refill Container Item.
 						if (tContainer2 != null) {
-							FluidStack tFluidContained = UT.Fluids.getFluidForFilledItem(slot(j), T);
-							if (tFluidContained != null && ST.equal(slot(j), UT.Fluids.fillFluidContainer(tFluidContained, tContainer2, F, T, F, T), F)) {
+							FluidStack tFluidContained = FL.getFluid(slot(j), T);
+							if (tFluidContained != null && ST.equal(slot(j), FL.fill(tFluidContained, tContainer2, F, T, F, T), F)) {
 								for (byte tSide : ALL_SIDES_VALID) {
 									DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 									if (tDelegator.mTileEntity instanceof ITileEntityConnectedTank && ((ITileEntityConnectedTank)tDelegator.mTileEntity).removeFluidFromConnectedTank(tDelegator.mSideOfTileEntity, tFluidContained, T) >= tFluidContained.amount) {
@@ -464,7 +465,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	
 	@Override
 	public boolean canFill(ForgeDirection aDirection, Fluid aFluid) {
-		return aFluid != null && fill(aDirection, UT.Fluids.make(aFluid, Integer.MAX_VALUE), F) > 0;
+		return aFluid != null && fill(aDirection, FL.make(aFluid, Integer.MAX_VALUE), F) > 0;
 	}
 	
 	@Override
@@ -472,11 +473,11 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		if (aFluid == null || aFluid.amount <= 0) return 0;
 		
 		for (int i : SLOTS_TOOLS) {
-			ItemStack tOutput = UT.Fluids.fillFluidContainer(aFluid, slot(i), F, T, F, T);
+			ItemStack tOutput = FL.fill(aFluid, slot(i), F, T, F, T);
 			if (tOutput != null) {
 				if (slot(i).stackSize == 1) {
 					if (aDoFill) slot(i, tOutput);
-					return UT.Fluids.getFluidForFilledItem(tOutput, T).amount * tOutput.stackSize;
+					return FL.getFluid(tOutput, T).amount * tOutput.stackSize;
 				}
 				for (int j : SLOTS_TOOLS) {
 					if (!slotHas(j) || (ST.equal(tOutput, slot(j)) && slot(j).stackSize + tOutput.stackSize <= tOutput.getMaxStackSize())) {
@@ -489,7 +490,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 								slot(j, tOutput);
 							}
 						}
-						return UT.Fluids.getFluidForFilledItem(tOutput, T).amount * tOutput.stackSize;
+						return FL.getFluid(tOutput, T).amount * tOutput.stackSize;
 					}
 				}
 			}

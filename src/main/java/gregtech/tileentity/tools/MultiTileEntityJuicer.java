@@ -30,6 +30,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOn
 import gregapi.data.BI;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.RM;
@@ -118,7 +119,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 	
 	protected boolean canOutput(Recipe aRecipe) {
 		for (int i = 0; i < mTanks.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanks[i].has()) {
-			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanks[i].contains(aRecipe.mFluidOutputs[i]) || UT.Fluids.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || UT.Fluids.lighter(aRecipe.mFluidOutputs[i]) || mTanks[i].has(Math.max(1000, 1+aRecipe.mFluidOutputs[i].amount))))) {
+			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanks[i].contains(aRecipe.mFluidOutputs[i]) || FL.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || FL.lighter(aRecipe.mFluidOutputs[i]) || mTanks[i].has(Math.max(1000, 1+aRecipe.mFluidOutputs[i].amount))))) {
 				return F;
 			}
 		}
@@ -150,7 +151,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 			}
 			
 			ItemStack tStack = null;
-			if (aStack != null) for (FluidTankGT tTank : mTanks) if ((tStack = UT.Fluids.fillFluidContainer(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
+			if (aStack != null) for (FluidTankGT tTank : mTanks) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 				aStack.stackSize--;
 				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 				return T;
@@ -261,8 +262,8 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 		case  4: return SIDE_TOP    == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop    , mRGBa), BlockTextureDefault.get(sOverlayTop    )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
 		case  5:
 			if (mDisplay <= 0 || SIDE_TOP != aSide) return null;
-			Fluid tFluid = UT.Fluids.fluid(mDisplay-1);
-			return tFluid == null ? BlockTextureCopied.get(Blocks.water, SIDE_ANY, 0, UNCOLOURED, F, F, F) : BlockTextureFluid.get(UT.Fluids.make(tFluid, 1000));
+			Fluid tFluid = FL.fluid(mDisplay-1);
+			return tFluid == null ? BlockTextureCopied.get(Blocks.water, SIDE_ANY, 0, UNCOLOURED, F, F, F) : BlockTextureFluid.get(FL.make(tFluid, 1000));
 		case  6: return SIDE_TOP    == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleTop, mRGBa), BlockTextureDefault.get(sOverlayMiddleTop)):SIDE_BOTTOM == aSide ? null : BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleSide, mRGBa), BlockTextureDefault.get(sOverlayMiddleSide));
 		case  7: return SIDE_TOP    == aSide?BI.nei():null;
 		}

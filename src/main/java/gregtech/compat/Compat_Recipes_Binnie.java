@@ -36,7 +36,6 @@ import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraftforge.fluids.FluidStack;
@@ -50,10 +49,10 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 			addListener("dustSmallAnyWax", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-				RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, UT.Fluids.make("turpentine", 10), NF, ST.make(MD.BINNIE_TREE, "misc", 1, 4));
+				RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.make("turpentine", 10), NF, ST.make(MD.BINNIE_TREE, "misc", 1, 4));
 			}});
 			addListener("dustAnyWax", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-				RM.Mixer    .addRecipe1(T, 16,   64, aEvent.mStack, UT.Fluids.make("turpentine", 40), NF, ST.make(MD.BINNIE_TREE, "misc", 4, 4));
+				RM.Mixer    .addRecipe1(T, 16,   64, aEvent.mStack, FL.make("turpentine", 40), NF, ST.make(MD.BINNIE_TREE, "misc", 4, 4));
 			}});
 			}};
 		}
@@ -99,15 +98,15 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Damp       .get(1), NF, FL.Water.make(500), IL.BINNIE_Propolis_Water.get(1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Milk       .get(1), NF, FL.Milk.make(400), OM.dust(MT.WaxBee));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Fruit      .get(1), NF, FL.Juice.make(400), OM.dust(MT.WaxBee));
-			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Seed       .get(1), NF, UT.Fluids.make("seedoil", 400), OM.dust(MT.WaxBee));
-			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Alcohol    .get(1), NF, UT.Fluids.make("short.mead", 400), OM.dust(MT.WaxBee));
-			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Coffee     .get(1), NF, UT.Fluids.make("potion.coffee", 500), OM.dust(MT.WaxBee), OM.dust(MT.Coffee, 3*U4));
+			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Seed       .get(1), NF, FL.make("seedoil", 400), OM.dust(MT.WaxBee));
+			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Alcohol    .get(1), NF, FL.make("short.mead", 400), OM.dust(MT.WaxBee));
+			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Coffee     .get(1), NF, FL.make("potion.coffee", 500), OM.dust(MT.WaxBee), OM.dust(MT.Coffee, 3*U4));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Mint       .get(1), NF, FL.Honey.make(80), OM.dust(MT.WaxBee), OM.dust(MT.Mint, 3*U4));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Citrus     .get(1), ZL_FS, new FluidStack[] {FL.Juice_Orange.make(100), FL.Juice_Persimmon.make(100), FL.Juice_Lemon.make(100), FL.Juice_Lime.make(100), FL.Juice_Kiwi.make(100)}, OM.dust(MT.WaxBee));
-			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Venom      .get(1), NF, UT.Fluids.make("poison", 200), OM.dust(MT.WaxBee, 8*U9));
-			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Glacial    .get(1), NF, UT.Fluids.make("liquidnitrogen", 200), OM.dust(MT.WaxBee));
+			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Venom      .get(1), NF, FL.make("poison", 200), OM.dust(MT.WaxBee, 8*U9));
+			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Glacial    .get(1), NF, FL.make("liquidnitrogen", 200), OM.dust(MT.WaxBee));
 			
-			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000,  9000}                  , IL.BINNIE_Comb_Fungal     .get(1), NF, UT.Fluids.make("mushroomsoup", 1000), ST.make(Blocks.red_mushroom_block, 1, 0), ST.make(Blocks.brown_mushroom_block, 1, 0));
+			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000,  9000}                  , IL.BINNIE_Comb_Fungal     .get(1), NF, FL.make("mushroomsoup", 1000), ST.make(Blocks.red_mushroom_block, 1, 0), ST.make(Blocks.brown_mushroom_block, 1, 0));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Peat       .get(1), NF, FL.Honey.make(50), IL.BINNIE_Propolis_Peat.get(1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Mulch      .get(1), NF, FL.Honey.make(50), OM.dust(MT.WaxBee), IL.FR_Mulch.get(1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Decomposed .get(1), NF, FL.Honey.make(50), OM.dust(MT.WaxBee), IL.FR_Compost.get(1));

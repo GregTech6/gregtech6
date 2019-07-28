@@ -22,6 +22,7 @@ package gregapi.render;
 import static gregapi.data.CS.*;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import gregapi.data.FL;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -61,11 +62,11 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 	public float getFluidHeightForRender(IBlockAccess aWorld, int aX, int aY, int aZ, BlockFluidBase aFluidBlock, Block aBlock) {
 		if (aBlock == null) aBlock = aWorld.getBlock(aX, aY, aZ);
 		if (aBlock == aFluidBlock) {
-			Block tBlockAbove = aWorld.getBlock(aX, aY - UT.Fluids.dir(aFluidBlock), aZ);
+			Block tBlockAbove = aWorld.getBlock(aX, aY - FL.dir(aFluidBlock), aZ);
 			if (tBlockAbove.getMaterial().isLiquid() || tBlockAbove instanceof IFluidBlock) return 1;
 			return UT.Code.bindF(aFluidBlock.getQuantaPercentage(aWorld, aX, aY, aZ)) * MAX_FLUID_HEIGHT;
 		}
-		return !aBlock.getMaterial().isSolid() && aWorld.getBlock(aX, aY - UT.Fluids.dir(aFluidBlock), aZ) == aFluidBlock ? 1 : UT.Code.bindF(aFluidBlock.getQuantaPercentage(aWorld, aX, aY, aZ)) * MAX_FLUID_HEIGHT;
+		return !aBlock.getMaterial().isSolid() && aWorld.getBlock(aX, aY - FL.dir(aFluidBlock), aZ) == aFluidBlock ? 1 : UT.Code.bindF(aFluidBlock.getQuantaPercentage(aWorld, aX, aY, aZ)) * MAX_FLUID_HEIGHT;
 	}
 	
 	@Override public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {/**/}
@@ -81,7 +82,7 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 		float blue = (color & 255) / 255.0F;
 		
 		BlockFluidBase aFluid = (BlockFluidBase)aBlock;
-		int bMeta = aWorld.getBlockMetadata(aX, aY, aZ), aDir = UT.Fluids.dir(aFluid);
+		int bMeta = aWorld.getBlockMetadata(aX, aY, aZ), aDir = FL.dir(aFluid);
 		
 		boolean renderTop = aWorld.getBlock(aX, aY - aDir, aZ) != aFluid;
 

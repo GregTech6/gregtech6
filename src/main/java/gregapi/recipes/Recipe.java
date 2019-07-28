@@ -342,9 +342,9 @@ public class Recipe {
 					if (aLogErrors) {
 						DEB.println("Recipe Map: " + mNameInternal);
 						DEB.println("Input Items:  " + ST.names(aRecipe.mInputs));
-						DEB.println("Input Fluid:  " + UT.Fluids.configNames(aRecipe.mFluidInputs));
+						DEB.println("Input Fluid:  " + FL.configNames(aRecipe.mFluidInputs));
 						DEB.println("Output Items: " + ST.names(aRecipe.mOutputs));
-						DEB.println("Output Fluid: " + UT.Fluids.configNames(aRecipe.mFluidOutputs));
+						DEB.println("Output Fluid: " + FL.configNames(aRecipe.mFluidOutputs));
 						int i = 0; for (StackTraceElement tElement : new Exception().getStackTrace()) if (!tElement.getClassName().equals(RecipeMap.class.getName())) if (i++<5 && !tElement.getClassName().startsWith("sun")) ERR.println("\tat " + tElement); else break;
 					}
 					if (tFailed) return null;
@@ -355,9 +355,9 @@ public class Recipe {
 				if (D1) {
 					DEB.println("Compat: The Fluid for a Recipe has not been found! This might just be for a Mod that is not installed!");
 					DEB.println("Input Items:  " + ST.names(aRecipe.mInputs));
-					DEB.println("Input Fluid:  " + UT.Fluids.configNames(aRecipe.mFluidInputs));
+					DEB.println("Input Fluid:  " + FL.configNames(aRecipe.mFluidInputs));
 					DEB.println("Output Items: " + ST.names(aRecipe.mOutputs));
-					DEB.println("Output Fluid: " + UT.Fluids.configNames(aRecipe.mFluidOutputs));
+					DEB.println("Output Fluid: " + FL.configNames(aRecipe.mFluidOutputs));
 					int i = 0; for (StackTraceElement tElement : new Exception().getStackTrace()) if (!tElement.getClassName().equals(RecipeMap.class.getName())) if (i++<5 && !tElement.getClassName().startsWith("sun")) DEB.println("\tat " + tElement); else break;
 				}
 				return null;
@@ -366,7 +366,7 @@ public class Recipe {
 			if (aAddConfig && mConfigFile != null) {
 				String tConfigName = "";
 				if (aRecipe.mInputs.length > 0) tConfigName += ST.configNames(aRecipe.mInputs);
-				if (aRecipe.mFluidInputs.length > 0) tConfigName += UT.Fluids.configNames(aRecipe.mFluidInputs);
+				if (aRecipe.mFluidInputs.length > 0) tConfigName += FL.configNames(aRecipe.mFluidInputs);
 				if (UT.Code.stringValid(tConfigName)) {
 					aRecipe.mDuration = mConfigFile.get(mNameLocalUnderscored, tConfigName, aRecipe.mEnabled?aRecipe.mDuration:0);
 					aRecipe.mEnabled = (aRecipe.mDuration > 0);
@@ -558,7 +558,7 @@ public class Recipe {
 		public List<Recipe> getNEIRecipes(ItemStack... aOutputs) {
 			for (ItemStack aOutput : aOutputs) if (ST.valid(aOutput)) {
 				if (IL.Display_Fluid.equal(aOutput, T, T)) {
-					Fluid tFluid = UT.Fluids.fluid(ST.meta_(aOutput));
+					Fluid tFluid = FL.fluid(ST.meta_(aOutput));
 					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, tFluid);
 				} else {
 					OreDictItemData tData = OM.data_(aOutput);
@@ -570,7 +570,7 @@ public class Recipe {
 				for (ItemStack aOutput : aOutputs) if (aOutput != null) {
 					if (IL.Display_Fluid.equal(aOutput, T, T)) {
 						for (FluidStack tOutput : tRecipe.mFluidOutputs) {
-							if (ST.meta_(aOutput) >= 0 && UT.Fluids.id(tOutput) == ST.meta_(aOutput)) {
+							if (ST.meta_(aOutput) >= 0 && FL.id(tOutput) == ST.meta_(aOutput)) {
 								rList.add(tRecipe);
 								break;
 							}
@@ -591,7 +591,7 @@ public class Recipe {
 		public List<Recipe> getNEIUsages(ItemStack... aInputs) {
 			for (ItemStack aInput : aInputs) if (ST.valid(aInput)) {
 				if (IL.Display_Fluid.equal(aInput, T, T)) {
-					Fluid tFluid = UT.Fluids.fluid(ST.meta_(aInput));
+					Fluid tFluid = FL.fluid(ST.meta_(aInput));
 					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, tFluid);
 				} else {
 					OreDictItemData tData = OM.data_(aInput);
@@ -603,7 +603,7 @@ public class Recipe {
 				for (ItemStack aInput : aInputs) if (aInput != null) {
 					if (IL.Display_Fluid.equal(aInput, T, T)) {
 						for (FluidStack tInput : tRecipe.mFluidInputs) {
-							if (ST.meta_(aInput) >= 0 && UT.Fluids.id(tInput) == ST.meta_(aInput)) {
+							if (ST.meta_(aInput) >= 0 && FL.id(tInput) == ST.meta_(aInput)) {
 								rList.add(tRecipe);
 								break;
 							}
@@ -702,7 +702,7 @@ public class Recipe {
 	
 	public FluidStack[] getFluidOutputs(Random aRandom, int aProcessCount) {
 		FluidStack[] rArray = new FluidStack[mFluidOutputs.length];
-		for (int i = 0; i < rArray.length; i++) rArray[i] = UT.Fluids.mul(getFluidOutput(i), aProcessCount);
+		for (int i = 0; i < rArray.length; i++) rArray[i] = FL.mul(getFluidOutput(i), aProcessCount);
 		return rArray;
 	}
 	
@@ -834,8 +834,8 @@ public class Recipe {
 		mSpecialItems = aRecipe.mSpecialItems;
 		mChances = Arrays.copyOf(aRecipe.mChances, aRecipe.mChances.length);
 		mMaxChances = Arrays.copyOf(aRecipe.mMaxChances, aRecipe.mMaxChances.length);
-		mFluidInputs = UT.Fluids.copyArray(aRecipe.mFluidInputs);
-		mFluidOutputs = UT.Fluids.copyArray(aRecipe.mFluidOutputs);
+		mFluidInputs = FL.copy(aRecipe.mFluidInputs);
+		mFluidOutputs = FL.copy(aRecipe.mFluidOutputs);
 		mEUt = aRecipe.mEUt;
 		mDuration = aRecipe.mDuration;
 		mSpecialValue = aRecipe.mSpecialValue;

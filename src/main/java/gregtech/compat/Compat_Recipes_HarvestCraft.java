@@ -43,7 +43,6 @@ import gregapi.oredict.event.OreDictListenerEvent_TwoNames;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
@@ -141,7 +140,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "chiliItem", 1), FL.Sauce_Chili.make(100), NF, ST.make(MD.HaC, "extremechiliItem", 1));
 		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(MD.HaC, "chiliItem", 1), OM.dust(MT.Chili), ST.make(MD.HaC, "extremechiliItem", 1));
 		
-		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "royaljellyItem", 1), FL.Honeydew.make(40), UT.Fluids.make("potion.ambrosia", 80), ZL_IS);
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "royaljellyItem", 1), FL.Honeydew.make(40), FL.make("potion.ambrosia", 80), ZL_IS);
 		
 		if (IL.GrC_Starter_Culture.exists()) {
 		RM.Mixer    .addRecipe1(T, 16,   16, IL.GrC_Starter_Culture.get(1), FL.Milk   .make( 250), NF, tYogurt);
@@ -156,14 +155,14 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		RM.Mixer    .addRecipe1(F, 16,   16, ST.amount(0, tYogurt), FL.MilkGrC.make( 250), NF, tYogurt);
 		RM.Mixer    .addRecipe1(F, 16,   16, ST.amount(0, tYogurt), FL.MilkSoy.make( 250), NF, tYogurt);
 		
-		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.snowball, 1, W)  , UT.Fluids.make("chocolatemilk"            ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Snow, U4)           , UT.Fluids.make("chocolatemilk"            ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
-		RM.Mixer    .addRecipe1(T, 16,   64, ST.make(Blocks.snow, 1, W)     , UT.Fluids.make("chocolatemilk"            , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
-		RM.Mixer    .addRecipe1(T, 16,   64, OM.dust(MT.Snow)               , UT.Fluids.make("chocolatemilk"            , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
-		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.snowball, 1, W)  , UT.Fluids.make("potion.darkchocolatemilk" ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Snow, U4)           , UT.Fluids.make("potion.darkchocolatemilk" ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
-		RM.Mixer    .addRecipe1(T, 16,   64, ST.make(Blocks.snow, 1, W)     , UT.Fluids.make("potion.darkchocolatemilk" , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
-		RM.Mixer    .addRecipe1(T, 16,   64, OM.dust(MT.Snow)               , UT.Fluids.make("potion.darkchocolatemilk" , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.snowball, 1, W)  , FL.make("chocolatemilk"            ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Snow, U4)           , FL.make("chocolatemilk"            ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   64, ST.make(Blocks.snow, 1, W)     , FL.make("chocolatemilk"            , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   64, OM.dust(MT.Snow)               , FL.make("chocolatemilk"            , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(Items.snowball, 1, W)  , FL.make("potion.darkchocolatemilk" ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Snow, U4)           , FL.make("potion.darkchocolatemilk" ,  250) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   64, ST.make(Blocks.snow, 1, W)     , FL.make("potion.darkchocolatemilk" , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   64, OM.dust(MT.Snow)               , FL.make("potion.darkchocolatemilk" , 1000) , NF, ST.make(MD.HaC, "chocolatemilkshakeItem", 4));
 		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.Milk   .make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
 		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.MilkGrC.make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
 		RM.Mixer    .addRecipe0(T, 16,   16, new FluidStack[] {FL.MilkSoy.make( 250), FL.Smoothie_Strawberry.make(200)}, ZL_FS, ST.make(MD.HaC, "strawberrymilkshakeItem", 1));
@@ -239,11 +238,11 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {aEvent.mStack, OM.dust(MT.PepperBlack), OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon)}, ST.make(MD.HaC, "garammasalaItem", 4));
 		}});
 		addListener("cropRadish", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), IL.Food_Cucumber_Sliced.get( 3), aEvent.mStack}, UT.Fluids.make("potion.vinegar",  125), NF, ST.make(MD.HaC, "summerradishsaladItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), IL.Food_Cucumber_Sliced.get( 3), aEvent.mStack}, FL.make("potion.vinegar",  125), NF, ST.make(MD.HaC, "summerradishsaladItem", 1));
 		}});
 		addListener("cropCabbage", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Carrot_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, UT.Fluids.make("mayo",  125), NF, ST.make(MD.HaC, "coleslawItem", 1));
-			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Carrot_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, UT.Fluids.make("mayo",  500), NF, ST.make(MD.HaC, "coleslawItem", 4));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Carrot_Sliced.get( 3), OM.dust(MT.PepperBlack, U4), aEvent.mStack}, FL.make("mayo",  125), NF, ST.make(MD.HaC, "coleslawItem", 1));
+			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Carrot_Sliced.get(12), OM.dust(MT.PepperBlack), ST.amount(3, aEvent.mStack)}, FL.make("mayo",  500), NF, ST.make(MD.HaC, "coleslawItem", 4));
 		}});
 		addListener("cropBean", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {IL.Food_Onion_Sliced.get( 3), OM.dust(MT.FishCooked   ), aEvent.mStack}, ST.make(MD.HaC, "chiliItem", 1));
@@ -310,8 +309,8 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		addListener("foodBaconcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null && !OM.is_("listAllmeatsubstitute", aEvent.mStack)) {
 			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatebaconItem", 1));
-			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, UT.Fluids.make("maplesyrup", 50), NF, ST.make(MD.HaC, "maplecandiedbaconItem", 1));
-			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, UT.Fluids.make("rainbowsap", 50), NF, ST.make(MD.HaC, "epicbaconItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.make("maplesyrup", 50), NF, ST.make(MD.HaC, "maplecandiedbaconItem", 1));
+			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.make("rainbowsap", 50), NF, ST.make(MD.HaC, "epicbaconItem", 1));
 			}
 		}});
 		addListener("foodScrapmeat", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

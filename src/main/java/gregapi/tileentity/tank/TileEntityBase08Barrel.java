@@ -27,6 +27,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.RM;
@@ -152,18 +153,18 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		if (aIsServerSide) {
 			FluidStack tFluid = mTank.getFluid();
 			if (tFluid != null && tFluid.amount > 0) {
-				if (UT.Fluids.temperature(tFluid) >= mMaterial.mMeltingPoint && meltdown()) return;
-				if (!mAcidProof && UT.Fluids.acid(tFluid)) {
+				if (FL.temperature(tFluid) >= mMaterial.mMeltingPoint && meltdown()) return;
+				if (!mAcidProof && FL.acid(tFluid)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
 					setToAir();
 					return;
 				}
-				if (!mPlasmaProof && UT.Fluids.plasma(tFluid)) {
+				if (!mPlasmaProof && FL.plasma(tFluid)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
-				if (!mGasProof && UT.Fluids.gas(tFluid)) {
+				if (!mGasProof && FL.gas(tFluid)) {
 					GarbageGT.trash(mTank);
 					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
 				} else
@@ -174,7 +175,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 					if ((mMode & B[1]) != 0) {
 						if (mMaxSealedTime == 0) {
 							mRecipe = RM.Fermenter.findRecipe(this, mRecipe, T, Long.MAX_VALUE, NI, new FluidStack[] {mTank.getFluid()}, ST.tag(0));
-							if (mRecipe != null && mRecipe.mFluidInputs.length > 0 && mRecipe.mFluidOutputs.length > 0 && !UT.Fluids.gas(mRecipe.mFluidInputs[0]) && !UT.Fluids.gas(mRecipe.mFluidOutputs[0])) {
+							if (mRecipe != null && mRecipe.mFluidInputs.length > 0 && mRecipe.mFluidOutputs.length > 0 && !FL.gas(mRecipe.mFluidInputs[0]) && !FL.gas(mRecipe.mFluidOutputs[0])) {
 								mMaxSealedTime = (mRecipe.mDuration * mRecipe.mEUt * mTank.amount()) / mRecipe.mFluidInputs[0].amount;
 							} else {
 								mRecipe = null;
@@ -182,7 +183,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 						}
 						mSealedTime++;
 						if (mRecipe != null && mMaxSealedTime > 0 && mSealedTime >= mMaxSealedTime) {
-							mTank.setFluid(UT.Fluids.mul(mRecipe.mFluidOutputs[0], mTank.amount(), mRecipe.mFluidInputs[0].amount, F));
+							mTank.setFluid(FL.mul(mRecipe.mFluidOutputs[0], mTank.amount(), mRecipe.mFluidInputs[0].amount, F));
 							mMaxSealedTime = 0;
 							mSealedTime = 0;
 							mRecipe = null;
@@ -190,8 +191,8 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 					} else {
 						if ((mMode & B[0]) != 0) {
 							byte[] tSides = ZL_BYTE;
-							if (UT.Fluids.gas(tFluid)) tSides = ALL_SIDES_VERTICAL; else if (UT.Fluids.lighter(tFluid)) tSides = ALL_SIDES_TOP; else tSides = ALL_SIDES_BOTTOM;
-							for (byte tSide : tSides) if (UT.Fluids.move(mTank, getAdjacentTank(tSide)) > 0) updateInventory();
+							if (FL.gas(tFluid)) tSides = ALL_SIDES_VERTICAL; else if (FL.lighter(tFluid)) tSides = ALL_SIDES_TOP; else tSides = ALL_SIDES_BOTTOM;
+							for (byte tSide : tSides) if (FL.move(mTank, getAdjacentTank(tSide)) > 0) updateInventory();
 						}
 					}
 				}
@@ -200,7 +201,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	}
 	
 	public boolean meltdown() {
-		if (UT.Fluids.lava(mTank) && mTank.has(1000)) {
+		if (FL.lava(mTank) && mTank.has(1000)) {
 			mTank.remove(1000);
 			GarbageGT.trash(mTank);
 			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 0, 3);
@@ -213,7 +214,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	}
 	
 	public boolean allowFluid(FluidStack aFluid) {
-		return !UT.Fluids.powerconducting(aFluid) && UT.Fluids.temperature(aFluid) < mMaterial.mMeltingPoint;
+		return !FL.powerconducting(aFluid) && FL.temperature(aFluid) < mMaterial.mMeltingPoint;
 	}
 	
 	@Override
@@ -229,9 +230,9 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	@Override
 	public int fill(ItemStack aStack, FluidStack aFluid, boolean aDoFill) {
 		if (!allowFluid(aFluid)) return 0;
-		if (!mGasProof && UT.Fluids.gas(aFluid)) return 0;
-		if (!mAcidProof && UT.Fluids.acid(aFluid)) return 0;
-		if (!mPlasmaProof && UT.Fluids.plasma(aFluid)) return 0;
+		if (!mGasProof && FL.gas(aFluid)) return 0;
+		if (!mAcidProof && FL.acid(aFluid)) return 0;
+		if (!mPlasmaProof && FL.plasma(aFluid)) return 0;
 		int tFilled = mTank.fill(aFluid, aDoFill);
 		if (tFilled > 0 && aDoFill) UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return tFilled;

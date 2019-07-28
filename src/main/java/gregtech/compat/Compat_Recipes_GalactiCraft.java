@@ -202,7 +202,7 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 			for (byte i = 0; i < 16; i++){
 				CR.shaped(ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i), CR.DEF_NAC_NCC, "GGG", "GDG", "GGG", 'G', ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), 'D', DYE_OREDICTS[i]);
 				for (FluidStack tDye : DYE_FLUIDS[i])
-				RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), UT.Fluids.mul(tDye, 1, 16, T), NF, ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i));
+				RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i));
 			}
 			
 			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_4  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_4  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(3500, 2700, 250, T))}, ZL_FS, 64, 16, 0);

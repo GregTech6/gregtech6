@@ -35,6 +35,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.ModIDs;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.TD;
 import gregapi.gui.ContainerCommon;
 import gregapi.gui.Slot_Normal;
@@ -578,13 +579,13 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public boolean canFill(ForgeDirection aDirection, Fluid aFluid) {
 		if (aFluid == null) return F;
-		IFluidTank tTank = getFluidTankFillable(UT.Code.side(aDirection), UT.Fluids.make(aFluid, 0));
+		IFluidTank tTank = getFluidTankFillable(UT.Code.side(aDirection), FL.make(aFluid, 0));
 		return tTank != null && (tTank.getFluid() == null || tTank.getFluid().getFluid() == aFluid);
 	}
 	
 	public boolean canDrain(ForgeDirection aDirection, Fluid aFluid) {
 		if (aFluid == null) return F;
-		IFluidTank tTank = getFluidTankDrainable(UT.Code.side(aDirection), UT.Fluids.make(aFluid, 0));
+		IFluidTank tTank = getFluidTankDrainable(UT.Code.side(aDirection), FL.make(aFluid, 0));
 		return tTank != null && (tTank.getFluid() != null && tTank.getFluid().getFluid() == aFluid);
 	}
 	
@@ -631,13 +632,13 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public boolean canFill(MultiTileEntityMultiBlockPart aPart, byte aDirection, Fluid aFluid) {
 		if (aFluid == null) return F;
-		IFluidTank tTank = getFluidTankFillable(aPart, UT.Code.side(aDirection), UT.Fluids.make(aFluid, 0));
+		IFluidTank tTank = getFluidTankFillable(aPart, UT.Code.side(aDirection), FL.make(aFluid, 0));
 		return tTank != null && (tTank.getFluid() == null || tTank.getFluid().getFluid() == aFluid);
 	}
 	
 	public boolean canDrain(MultiTileEntityMultiBlockPart aPart, byte aDirection, Fluid aFluid) {
 		if (aFluid == null) return F;
-		IFluidTank tTank = getFluidTankDrainable(aPart, UT.Code.side(aDirection), UT.Fluids.make(aFluid, 0));
+		IFluidTank tTank = getFluidTankDrainable(aPart, UT.Code.side(aDirection), FL.make(aFluid, 0));
 		return tTank != null && (tTank.getFluid() != null && tTank.getFluid().getFluid() == aFluid);
 	}
 	

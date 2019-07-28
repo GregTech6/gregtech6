@@ -90,7 +90,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.SPRAY_CAN_DYES_USED[i].set(          addItem(tLastID +    1          , "Spray Paint ("+DYE_NAMES[i]+")", "Used", TC.stack(TC.SENSUS, 3), TD.Creative.HIDDEN));
 		tBehaviour = new Behavior_Spray_Color(IL.Spray_Empty.get(1), IL.SPRAY_CAN_DYES_USED[i].get(1), IL.SPRAY_CAN_DYES[i].get(1), 512, i);
 		addItemBehavior(tLastID, tBehaviour); addItemBehavior(tLastID+1, tBehaviour);
-		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), UT.Fluids.mul(DYE_FLUIDS_CHEMICAL[i], 16), NF, IL.SPRAY_CAN_DYES[i].get(1));
+		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYE_FLUIDS_CHEMICAL[i], 16), NF, IL.SPRAY_CAN_DYES[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_DYES_USED[i].get(1), IL.SPRAY_CAN_DYES[i].get(1));
 		
 		
@@ -99,7 +99,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.SPRAY_CAN_FOAM_USED[i].set(          addItem(tLastID +    1          , "C-Foam Spray ("+DYE_NAMES[i]+")", "Used", TC.stack(TC.TERRA, 1), TC.stack(TC.FABRICO, 1), TD.Creative.HIDDEN));
 		tBehaviour = new Behavior_Spray_Foam(IL.Spray_Empty.get(1), IL.SPRAY_CAN_FOAM_USED[i].get(1), IL.SPRAY_CAN_FOAM[i].get(1), 256, i, F);
 		addItemBehavior(tLastID, tBehaviour); addItemBehavior(tLastID+1, tBehaviour);
-		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), UT.Fluids.mul(DYED_C_FOAMS[i], 256), NF, IL.SPRAY_CAN_FOAM[i].get(1));
+		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYED_C_FOAMS[i], 256), NF, IL.SPRAY_CAN_FOAM[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_FOAM_USED[i].get(1), IL.SPRAY_CAN_FOAM[i].get(1), ST.make(BlocksGT.CFoamFresh, 1, i), ST.make(BlocksGT.CFoam, 1, i));
 		
 		
@@ -108,7 +108,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.SPRAY_CAN_FOAM_OWNED_USED[i].set(    addItem(tLastID +    1          , "Advanced C-Foam Spray ("+DYE_NAMES[i]+")", "Used (C-Foam only breakable by Owner once dry)", TC.stack(TC.TERRA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.SPIRITUS, 1), TD.Creative.HIDDEN));
 		tBehaviour = new Behavior_Spray_Foam(IL.Spray_Empty.get(1), IL.SPRAY_CAN_FOAM_OWNED_USED[i].get(1), IL.SPRAY_CAN_FOAM_OWNED[i].get(1), 256, i, T);
 		addItemBehavior(tLastID, tBehaviour); addItemBehavior(tLastID+1, tBehaviour);
-		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), UT.Fluids.mul(DYED_C_FOAMS_OWNED[i], 256), NF, IL.SPRAY_CAN_FOAM_OWNED[i].get(1));
+		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYED_C_FOAMS_OWNED[i], 256), NF, IL.SPRAY_CAN_FOAM_OWNED[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_FOAM_OWNED_USED[i].get(1), IL.SPRAY_CAN_FOAM_OWNED[i].get(1));
 		}
 		
@@ -161,7 +161,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 			ItemsGT.addNEIRedirects(tBucket
 			, addItem(++tLastID, "Wooden Bucket", "Water"                                   , TC.stack(TC.ARBOR, 2), TC.stack(TC.AQUA       , 2), new Behavior_Bucket_Simple(ST.make(Items.water_bucket, 1, 0))                       , tData.copy(), FL.Water.make(1000), FL.DistW.make(1000), FL.River_Water.make(1000)     , OD.container1000water)
 			, addItem(++tLastID, "Wooden Bucket", "Milk (you cannot drink out of Buckets!)" , TC.stack(TC.ARBOR, 2), TC.stack(TC.SANO       , 2), new Behavior_Bucket_Simple(ST.make(Items.milk_bucket, 1, 0))                        , tData.copy(), FL.Milk.make(1000), FL.MilkGrC.make(1000)                               , OD.container1000milk)
-			, addItem(++tLastID, "Wooden Bucket", "Latex"                                   , TC.stack(TC.ARBOR, 2), TC.stack(TC.LIMUS      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Latex.make(1000), UT.Fluids.make("molten.latex", 1000)               , OD.container1000latex)
+			, addItem(++tLastID, "Wooden Bucket", "Latex"                                   , TC.stack(TC.ARBOR, 2), TC.stack(TC.LIMUS      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Latex.make(1000), FL.make("molten.latex", 1000)               , OD.container1000latex)
 			, addItem(++tLastID, "Wooden Bucket", "Creosote Oil"                            , TC.stack(TC.ARBOR, 2), TC.stack(TC.IGNIS      , 2), new Behavior_Bucket_Simple(IL.RC_Creosote_Bucket.get(1))                            , tData.copy(), FL.Oil_Creosote.make(1000)                                              , OD.container1000creosote)
 			, addItem(++tLastID, "Wooden Bucket", "Sea Water (you cannot place this!)"      , TC.stack(TC.ARBOR, 2), TC.stack(TC.TEMPESTAS  , 2), new Behavior_Switch_Metadata(2000 + i*100)                                          , tData.copy(), FL.Ocean.make(1000), FL.OceanGrC.make(1000), FL.Tropics_Water.make(1000))
 			, addItem(++tLastID, "Wooden Bucket", "Rubber Tree Sap"                         , TC.stack(TC.ARBOR, 2), TC.stack(TC.LIMUS      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Resin_Rubber.make(1000)                                              , OD.container1000rubbertreesap)

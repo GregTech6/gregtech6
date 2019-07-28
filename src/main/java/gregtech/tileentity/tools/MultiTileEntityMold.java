@@ -42,6 +42,7 @@ import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MT;
@@ -639,12 +640,12 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	
 	@Override
 	public boolean canFill(ForgeDirection aDirection, Fluid aFluid) {
-		return aFluid != null && fill(aDirection, UT.Fluids.make(aFluid, Integer.MAX_VALUE), F) > 0;
+		return aFluid != null && fill(aDirection, FL.make(aFluid, Integer.MAX_VALUE), F) > 0;
 	}
 	
 	@Override
 	public int fill(ForgeDirection aDirection, FluidStack aFluid, boolean aDoFill) {
-		if (aFluid == null || aFluid.amount <= 0 || UT.Fluids.gas(aFluid) || mContent != null || slot(0) != null) return 0;
+		if (aFluid == null || aFluid.amount <= 0 || FL.gas(aFluid) || mContent != null || slot(0) != null) return 0;
 		OreDictMaterialStack aFluidRatio = OreDictMaterial.FLUID_MAP.get(aFluid.getFluid().getName()), aMaterial = null;
 		if (aFluidRatio == null || aFluidRatio.mAmount <= 0) return 0;
 		aMaterial = OM.stack(aFluidRatio.mMaterial, UT.Code.units(aFluid.amount, aFluidRatio.mAmount, U, F));
@@ -657,7 +658,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		if (aMaterial.mAmount >= rAmount) {
 			if (aDoFill) {
 				mContent = OM.stack(aMaterial.mMaterial, tRequiredAmount);
-				mTemperature = Math.max(UT.Fluids.temperature(aFluid), aMaterial.mMaterial.mMeltingPoint);
+				mTemperature = Math.max(FL.temperature(aFluid), aMaterial.mMaterial.mMeltingPoint);
 			}
 			return UT.Code.bindInt(UT.Code.units(rAmount, U, aFluidRatio.mAmount, T));
 		}

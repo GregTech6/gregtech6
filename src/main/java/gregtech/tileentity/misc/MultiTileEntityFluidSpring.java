@@ -55,19 +55,19 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		if (aNBT.hasKey("gt.spring")) mFluid = UT.Fluids.load(aNBT, "gt.spring");
+		if (aNBT.hasKey("gt.spring")) mFluid = FL.load(aNBT, "gt.spring");
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
-		UT.Fluids.save(aNBT, "gt.spring", mFluid);
+		FL.save(aNBT, "gt.spring", mFluid);
 	}
 	
 	@Override
 	public final NBTTagCompound writeItemNBT(NBTTagCompound aNBT) {
 		aNBT = super.writeItemNBT(aNBT);
-		UT.Fluids.save(aNBT, "gt.spring", mFluid);
+		FL.save(aNBT, "gt.spring", mFluid);
 		return aNBT;
 	}
 	
@@ -85,7 +85,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	
 	@Override
 	public boolean receiveDataShort(short aData, INetworkHandler aNetworkHandler) {
-		mFluid = UT.Fluids.make(UT.Fluids.fluid(aData), 600);
+		mFluid = FL.make(FL.fluid(aData), 600);
 		return T;
 	}
 	

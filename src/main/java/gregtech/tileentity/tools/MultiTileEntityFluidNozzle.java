@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.data.CS.SFX;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
@@ -69,11 +70,11 @@ public class MultiTileEntityFluidNozzle extends TileEntityBase10Attachment {
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
 			if (tDelegator.mTileEntity instanceof ITileEntityTapAccessible) {
 				FluidStack tFluid = ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, F);
-				if (UT.Fluids.gas(tFluid, F) && tFluid.amount > 0 && (mAcidProof || !UT.Fluids.acid(tFluid))) {
+				if (FL.gas(tFluid, F) && tFluid.amount > 0 && (mAcidProof || !FL.acid(tFluid))) {
 					ItemStack aStack = aPlayer.getCurrentEquippedItem();
 					if (aStack == null) return T;
 					FluidStack tNewFluid = tFluid.copy();
-					ItemStack tStack = UT.Fluids.fillFluidContainer(tNewFluid, ST.amount(1, aStack), T, T, T, T);
+					ItemStack tStack = FL.fill(tNewFluid, ST.amount(1, aStack), T, T, T, T);
 					if (tFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, tFluid.amount - tNewFluid.amount, T) != null) {
 						UT.Sounds.send(SFX.MC_FIZZ, 1.0F, 2.0F, this);
 						aStack.stackSize--;

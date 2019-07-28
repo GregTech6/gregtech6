@@ -36,6 +36,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.TD;
@@ -59,7 +60,6 @@ import gregapi.tileentity.machines.ITileEntityRunningSuccessfully;
 import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT.Code;
-import gregapi.util.UT.Fluids;
 import gregtech.blocks.fluids.BlockWaterlike;
 import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
 import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
@@ -693,7 +693,7 @@ public class WD {
 				rEUAmount+=V[3];
 				FluidTankInfo[] tTanks = ((IFluidHandler)aTileEntity).getTankInfo(FORGE_DIR[aSide]);
 				if (tTanks != null) for (byte i = 0; i < tTanks.length; i++) {
-					rList.add("Tank " + i + ": " + (tTanks[i].fluid==null?0:tTanks[i].fluid.amount) + " / " + tTanks[i].capacity + " " + Fluids.name(tTanks[i].fluid, T));
+					rList.add("Tank " + i + ": " + (tTanks[i].fluid==null?0:tTanks[i].fluid.amount) + " / " + tTanks[i].capacity + " " + FL.name(tTanks[i].fluid, T));
 				}
 			}} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 			

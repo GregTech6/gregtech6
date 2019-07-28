@@ -21,6 +21,7 @@ package gregapi.render;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.FL;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -88,7 +89,7 @@ public class BlockTextureFluid implements ITexture {
 	}
 	
 	public BlockTextureFluid(Fluid aFluid, boolean aAllowAlpha) {
-		this(UT.Fluids.make(aFluid, 0), aAllowAlpha);
+		this(FL.make(aFluid, 0), aAllowAlpha);
 	}
 	
 	public BlockTextureFluid(Fluid aFluid) {

@@ -85,7 +85,7 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 			if (mSteamCounter >= STEAM_PER_WATER) {
 				FluidStack tDistilledWater = FL.DistW.make(mSteamCounter / STEAM_PER_WATER);
 				for (byte tDir : FACING_SIDES[mFacing]) {
-					tDistilledWater.amount -= UT.Fluids.fill(getAdjacentTank(tDir), tDistilledWater.copy(), T);
+					tDistilledWater.amount -= FL.fill(getAdjacentTank(tDir), tDistilledWater.copy(), T);
 					if (tDistilledWater.amount <= 0) break;
 				}
 				GarbageGT.trash(tDistilledWater);
@@ -100,7 +100,7 @@ public class MultiTileEntityTurbineSteam extends TileEntityBase11Motor implement
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return T;}
 	@Override public boolean allowCovers            (byte aSide) {return T;}
 	
-	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return isInput(aSide) && !mStopped && UT.Fluids.steam(aFluidToFill) ? mTank : null;}
+	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return isInput(aSide) && !mStopped && FL.steam(aFluidToFill) ? mTank : null;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return null;}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return isOutput(aSide) ? null : mTank.AS_ARRAY;}
 	
