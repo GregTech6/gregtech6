@@ -2973,22 +2973,24 @@ public class UT {
 	
 	public static boolean addSimpleIC2MachineRecipe(IMachineRecipeManager aRecipeManager, ItemStack aInput, NBTTagCompound aNBT, Object... aOutput) {
 		if (!MD.IC2.mLoaded || ST.invalid(aInput) || aOutput == null || aRecipeManager == null) return F;
-		aOutput = Code.getWithoutNulls(aOutput).toArray(ZL);
-		if (aOutput.length == 0) return F;
-		OreDictItemData tOreName = OM.association_(aInput);
-		if (aRecipeManager instanceof IMachineRecipeManagerExt) {
-			if (tOreName != null) {
-				((IMachineRecipeManagerExt)aRecipeManager).addRecipe((IRecipeInput)COMPAT_IC2.makeInput(tOreName.toString(), aInput.stackSize), aNBT, T, OreDictManager.INSTANCE.getStackArray(T, aOutput));
+		try {
+			aOutput = Code.getWithoutNulls(aOutput).toArray(ZL);
+			if (aOutput.length == 0) return F;
+			OreDictItemData tOreName = OM.association_(aInput);
+			if (aRecipeManager instanceof IMachineRecipeManagerExt) {
+				if (tOreName != null) {
+					((IMachineRecipeManagerExt)aRecipeManager).addRecipe((IRecipeInput)COMPAT_IC2.makeInput(tOreName.toString(), aInput.stackSize), aNBT, T, OreDictManager.INSTANCE.getStackArray(T, aOutput));
+				} else {
+					((IMachineRecipeManagerExt)aRecipeManager).addRecipe((IRecipeInput)COMPAT_IC2.makeInput(aInput), aNBT, T, OreDictManager.INSTANCE.getStackArray(T, aOutput));
+				}
 			} else {
-				((IMachineRecipeManagerExt)aRecipeManager).addRecipe((IRecipeInput)COMPAT_IC2.makeInput(aInput), aNBT, T, OreDictManager.INSTANCE.getStackArray(T, aOutput));
+				if (tOreName != null) {
+					aRecipeManager.addRecipe((IRecipeInput)COMPAT_IC2.makeInput(tOreName.toString(), aInput.stackSize), aNBT, OreDictManager.INSTANCE.getStackArray(T, aOutput));
+				} else {
+					aRecipeManager.addRecipe((IRecipeInput)COMPAT_IC2.makeInput(aInput), aNBT, OreDictManager.INSTANCE.getStackArray(T, aOutput));
+				}
 			}
-		} else {try {
-			if (tOreName != null) {
-				aRecipeManager.addRecipe((IRecipeInput)COMPAT_IC2.makeInput(tOreName.toString(), aInput.stackSize), aNBT, OreDictManager.INSTANCE.getStackArray(T, aOutput));
-			} else {
-				aRecipeManager.addRecipe((IRecipeInput)COMPAT_IC2.makeInput(aInput), aNBT, OreDictManager.INSTANCE.getStackArray(T, aOutput));
-			}
-		} catch(Throwable e) {/**/}}
+		} catch(Throwable e) {/**/}
 		return T;
 	}
 	

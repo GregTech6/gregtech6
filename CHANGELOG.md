@@ -24,7 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.10.29: (Not released yet)
 [FIXED] Jackhammer not placing Torches anymore, the Mode Switch accidentially overrode it.
 [CHANGED] Oil Shale can be used as Fuel now, it's only as efficient as non-coked Lignite, but it works. You get Stone as "Ashes" from burning it.
-[WIP] Working on the GT6 Version of an AE or Logistics System. Note, that this isn't gonna be a Storage GUI, this is purely for automation!
+[WIP] Working on the GT6 Version of an AE or Logistics System. Note, that this isn't gonna be a Storage GUI or Crafting on Demand, this is purely for automation!
 
 
 6.10.28:
