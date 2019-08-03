@@ -40,6 +40,7 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.ITileEntityTapAccessible;
+import gregapi.tileentity.connectors.ITileEntityLogistics;
 import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.data.ITileEntityTemperature;
@@ -74,7 +75,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable implements ITileEntityEnergy, IMTE_OnWalkOver, ITileEntityTemperature, ITileEntityGibbl, ITileEntityProgress, ITileEntityWeight, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergyDataCapacitor, ITileEntityAdjacentInventoryUpdatable, IFluidHandler, IMTE_OnBlockAdded, IMTE_BreakBlock, ITileEntityRunningSuccessfully, ITileEntitySwitchableMode, ITileEntitySwitchableOnOff {
+public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable implements ITileEntityEnergy, ITileEntityLogistics, IMTE_OnWalkOver, ITileEntityTemperature, ITileEntityGibbl, ITileEntityProgress, ITileEntityWeight, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergyDataCapacitor, ITileEntityAdjacentInventoryUpdatable, IFluidHandler, IMTE_OnBlockAdded, IMTE_BreakBlock, ITileEntityRunningSuccessfully, ITileEntitySwitchableMode, ITileEntitySwitchableOnOff {
 	public ChunkCoordinates mTargetPos = null;
 	
 	public ITileEntityMultiBlockController mTarget = null;
@@ -82,9 +83,9 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	protected IIconContainer[][] mTextures = L1L6_IICONCONTAINER;
 	
 	public short mDesign = 0;
-	public byte mMode = 0;
+	public int mMode = 0;
 	
-	public static final byte
+	public static final int
 	  EVERYTHING            = 0
 	
 	, NO_ENERGY_OUT         = 1
@@ -93,13 +94,14 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	, NO_FLUID_IN           = 8
 	, NO_ITEM_OUT           = 16
 	, NO_ITEM_IN            = 32
-	
-	, ONLY_IN               = NO_ENERGY_OUT | NO_FLUID_OUT | NO_ITEM_OUT
-	, ONLY_OUT              = NO_ENERGY_IN  | NO_FLUID_IN  | NO_ITEM_IN
+	, NO_LOGISTICS          = 64
 	
 	, NO_ENERGY             = NO_ENERGY_IN | NO_ENERGY_OUT
 	, NO_FLUID              = NO_FLUID_IN  | NO_FLUID_OUT
 	, NO_ITEM               = NO_ITEM_IN   | NO_ITEM_OUT
+	
+	, ONLY_IN               = NO_ENERGY_OUT | NO_FLUID_OUT | NO_ITEM_OUT | NO_LOGISTICS
+	, ONLY_OUT              = NO_ENERGY_IN  | NO_FLUID_IN  | NO_ITEM_IN  | NO_LOGISTICS
 	
 	, ONLY_ENERGY_OUT       = ~NO_ENERGY_OUT
 	, ONLY_ENERGY_IN        = ~NO_ENERGY_IN
@@ -110,6 +112,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	, ONLY_ITEM_FLUID_OUT   = ~(NO_ITEM_OUT | NO_FLUID_OUT)
 	, ONLY_ITEM_FLUID_IN    = ~(NO_ITEM_IN  | NO_FLUID_IN)
 	
+	, ONLY_LOGISTICS        = ~NO_LOGISTICS
 	, ONLY_ENERGY           = ~NO_ENERGY
 	, ONLY_FLUID            = ~NO_FLUID
 	, ONLY_ITEM             = ~NO_ITEM
@@ -123,7 +126,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_TARGET)) {mTargetPos = new ChunkCoordinates(UT.Code.bindInt(aNBT.getLong(NBT_TARGET_X)), UT.Code.bindInt(aNBT.getLong(NBT_TARGET_Y)), UT.Code.bindInt(aNBT.getLong(NBT_TARGET_Z)));}
 		if (aNBT.hasKey(NBT_DESIGN)) mDesign = UT.Code.unsignB(aNBT.getByte(NBT_DESIGN));
-		if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
+		if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getInteger(NBT_MODE);
 		
 		if (CODE_CLIENT) {
 			if (GT_API.sBlockIcons == null && aNBT.hasKey(NBT_TEXTURE)) {
@@ -150,7 +153,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		if (mDesign != 0) aNBT.setByte(NBT_DESIGN, (byte)mDesign);
-		if (mMode   != 0) aNBT.setByte(NBT_MODE, mMode);
+		if (mMode   != 0) aNBT.setInteger(NBT_MODE, mMode);
 		if (mTargetPos != null) {
 		UT.NBT.setBoolean(aNBT, NBT_TARGET, T);
 		UT.NBT.setNumber(aNBT, NBT_TARGET_X, mTargetPos.posX);
@@ -196,7 +199,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 		return aCheckValidity ? mTarget != null && mTarget.checkStructure(F) ? mTarget : null : mTarget;
 	}
 	
-	public void setTarget(ITileEntityMultiBlockController aTarget, int aDesign, byte aMode) {
+	public void setTarget(ITileEntityMultiBlockController aTarget, int aDesign, int aMode) {
 		mTarget = aTarget;
 		mTargetPos = (mTarget == null ? null : mTarget.getCoords());
 		mMode = aMode;
@@ -656,6 +659,14 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public void onWalkOver(EntityLivingBase aEntity) {
 		ITileEntityMultiBlockController tTileEntity = getTarget(T);
 		if (tTileEntity instanceof IMTE_OnWalkOver) ((IMTE_OnWalkOver)tTileEntity).onWalkOver(aEntity);
+	}
+	
+	@Override
+	public boolean canLogistics(byte aSide) {
+		if ((mMode & NO_LOGISTICS) != 0) return F;
+		ITileEntityMultiBlockController tTileEntity = getTarget(T);
+		if (tTileEntity instanceof ITileEntityLogistics) return ((ITileEntityLogistics)tTileEntity).canLogistics(aSide);
+		return F;
 	}
 	
 	// Useless Garbage :P

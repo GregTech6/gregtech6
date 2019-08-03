@@ -29,6 +29,7 @@ import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
+import gregapi.tileentity.connectors.ITileEntityLogistics;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
 import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
@@ -46,7 +47,7 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler {
+public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityLogistics, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler {
 	public static final int MAX_STORAGE_CPU_COUNT = 108;
 	
 	public long mEnergy = 0;
@@ -57,12 +58,12 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
+		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
 		mEnergy = aNBT.getLong(NBT_ENERGY);
 		mCPU_Logic = aNBT.getInteger("gt.cpu.logic");
 		mCPU_Control = aNBT.getInteger("gt.cpu.control");
 		mCPU_Storage = aNBT.getInteger("gt.cpu.storage");
 		mCPU_Conversion = aNBT.getInteger("gt.cpu.conversion");
-		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
 		for (int i = 0; i < mTanks.length; i++) mTanks[i] = new FluidTankGT(16000).readFromNBT(aNBT, NBT_TANK+"."+i);
 	}
 	
@@ -105,9 +106,9 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 						tSuccess = F;
 					}
 				} else if (i*i == 4 || j*j == 4 || k*k == 4) {
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18008, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18008, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_LOGISTICS & MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
 				} else {
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18299, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18299, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_LOGISTICS)) tSuccess = F;
 				}
 			}
 			if (mCPU_Storage > MAX_STORAGE_CPU_COUNT) mCPU_Storage = MAX_STORAGE_CPU_COUNT;
@@ -117,7 +118,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.logisticscore.1", "5x5x5 Frame made out of Galvanized Steel Walls");
+		LH.add("gt.tooltip.multiblock.logisticscore.1", "5x5x5 Frame made out of Galvanized Steel Walls (Power Input Here)");
 		LH.add("gt.tooltip.multiblock.logisticscore.2", "3x3x3 Core of any Multiblock Processor Units (Customizable)");
 		LH.add("gt.tooltip.multiblock.logisticscore.3", "The Six 3x3 Walls need to be Ventilation Units");
 		LH.add("gt.tooltip.multiblock.logisticscore.4", "Main Side-Wall-Center facing outwards");
@@ -198,6 +199,8 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		mEnergy += aAmount * aSize;
 		return aAmount;
 	}
+	
+	@Override public boolean canLogistics(byte aSide) {return T;}
 	
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
 	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F);}

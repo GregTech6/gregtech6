@@ -1,30 +1,56 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
-6.10.34: (Not released yet)
+6.11.09: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.33: (Not released yet)
+6.11.08: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.32: (Not released yet)
+6.11.07: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.31: (Not released yet)
+6.11.06: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.30: (Not released yet)
+6.11.05: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.10.29: (Not released yet)
+6.11.04: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.03: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.02: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.01: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.00: (Not released yet)
 [FIXED] Jackhammer not placing Torches anymore, the Mode Switch accidentially overrode it.
 [CHANGED] Oil Shale can be used as Fuel now, it's only as efficient as non-coked Lignite, but it works. You get Stone as "Ashes" from burning it.
-[WIP] Working on the GT6 Version of an AE or Logistics System. Note, that this isn't gonna be a Storage GUI or Crafting on Demand, this is purely for automation!
+[CHANGED] Atlarus (Metallurgy) is now available through Bedrock Drill and UUM.
+[ADDED] GT5Us three HSS Steels.
+[WIP]
+Working on the GT6 Version of an AE or Logistics System.
+Note, that this isn't gonna be a Storage GUI or Crafting on Demand, this is purely for automation!
+I hope I at least get the Basics done til Sunday.
+You are going to need at least 110 Crystal Processors of varying Types to craft this thing, I would go and craft at least their Sockets in preparation if I were you. ;)
+This thing is gonna be customizable, so which Processors you choose can determine what Type of Management it will do best/fastest.
+
+
+//=== Version Number Jump due to changes in the Multiblock API ===//
 
 
 6.10.28:

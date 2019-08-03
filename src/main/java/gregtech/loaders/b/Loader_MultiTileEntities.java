@@ -47,6 +47,7 @@ import gregapi.tileentity.connectors.MultiTileEntityPipeFluid;
 import gregapi.tileentity.connectors.MultiTileEntityPipeItem;
 import gregapi.tileentity.connectors.MultiTileEntityWireElectric;
 import gregapi.tileentity.connectors.MultiTileEntityWireLaser;
+import gregapi.tileentity.connectors.MultiTileEntityWireLogistics;
 import gregapi.tileentity.connectors.MultiTileEntityWireRedstone;
 import gregapi.tileentity.connectors.MultiTileEntityWireRedstoneInsulated;
 import gregapi.tileentity.machines.MultiTileEntityBasicMachine;
@@ -1034,6 +1035,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.TungstenSteel;        aRegistry.add("Graphene Gas Turbine Main Housing"                   , "Multiblock Machines", 17233, 17101, MultiTileEntityLargeTurbineGas.class     , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  12.5F, NBT_RESISTANCE,  12.5F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "gasturbine"              , NBT_DESIGN, 18023, NBT_INPUT,  24576, NBT_OUTPUT,  16384, NBT_WASTE_ENERGY, F, NBT_LIMIT_CONSUMPTION, T, NBT_ENERGY_ACCEPTED, TD.Energy.HU, NBT_ENERGY_EMITTED, TD.Energy.RU, NBT_FUELMAP, FM.Gas), "PwP", "BMC", "PEP", 'M', aRegistry.getItem(17213), 'B', "gt:re-battery3", 'C', OD_CIRCUITS[6], 'E', IL.MOTORS[3], 'P', OP.plateDense.dat(MT.W));
 		aMat = MT.Ad;                   aRegistry.add("Vibramantium Gas Turbine Main Housing"               , "Multiblock Machines", 17234, 17101, MultiTileEntityLargeTurbineGas.class     , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 100.0F, NBT_RESISTANCE, 100.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "gasturbine"              , NBT_DESIGN, 18025, NBT_INPUT, 196608, NBT_OUTPUT, 131072, NBT_WASTE_ENERGY, F, NBT_LIMIT_CONSUMPTION, T, NBT_ENERGY_ACCEPTED, TD.Energy.HU, NBT_ENERGY_EMITTED, TD.Energy.RU, NBT_FUELMAP, FM.Gas), "PwP", "BMC", "PEP", 'M', aRegistry.getItem(17214), 'B', "gt:re-battery4", 'C', OD_CIRCUITS[6], 'E', IL.MOTORS[4], 'P', OP.plateDense.dat(MT.Ad));
 		
+		aMat = MT.SteelGalvanized;      aRegistry.add("Logistics Core"                                      , "Logistics"          , 17997, 17997, MultiTileEntityLogisticsCore.class       , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   6.0F, NBT_RESISTANCE,   6.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "logisticscore"           , NBT_ENERGY_ACCEPTED, TD.Energy.EU), "CCC", "PMP", "CCC", 'M', OP.casingMachine.dat(aMat), 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6]);
 		aMat = ANY.W;                   aRegistry.add("Lightning Rod Electric Output"                       , "Multiblock Machines", 17998, 17101, MultiTileEntityLightningRod.class        , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "lightningrod"            , NBT_ENERGY_EMITTED, TD.Energy.EU, NBT_CAPACITY, 18000 * VREC[6]), "CWC", "PMP", "CWC", 'M', OP.casingMachine.dat(aMat), 'W', OP.wireGt16.dat(MT.NiobiumTitanium), 'P', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6]);
 		aMat = MT.Ti;                   aRegistry.add("Bedrock Mining Drill Controller"                     , "Multiblock Machines", 17999, 17101, MultiTileEntityBedrockDrill.class        , aMat.mToolQuality, 16, aMachine   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   9.0F, NBT_RESISTANCE,   9.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TEXTURE, "bedrockdrill"            , NBT_RECIPEMAP, RM.BedrockOreList, NBT_ENERGY_ACCEPTED, TD.Energy.RU), "PYP", "CMC", "GIG", 'M', OP.casingMachineDense.dat(aMat), 'G', OP.gearGt.dat(MT.TungstenSteel), 'I', OP.toolHeadDrill.dat(MT.TungstenSteel), 'P', IL.Processor_Crystal_Ruby, 'Y', IL.CONVEYERS[5], 'C', OD_CIRCUITS[6]);
 	}
@@ -1497,8 +1499,15 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.DraconiumAwakened; OreDictManager.INSTANCE.setTarget_(OP.capcellcon, aMat, aRegistry.add("Capsule-Cell-Container ("+aMat.getLocal()+")", "Fluid Containers", 32623, 32719, MultiTileEntityCell.class, 0, 64, aUtilMetal   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   6.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_TANK_CAPACITY, 1000, NBT_PLASMAPROOF, T, NBT_GASPROOF, T, NBT_ACIDPROOF, T, NBT_TEMPERATURE, aMat.mMeltingPoint-50 )), T, F, T);
 		// 32631 is next
 		
+		
+		
 		aClass = MultiTileEntityWireLaser.class;
 		aRegistry.add("Laser Fiber Wire", "Laser Wires", 24900, 24900, aClass, aMat.mToolQuality, 64, aMetalWires, UT.NBT.make(NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "PGR", "DxD", "RGP", 'P', OP.plate.dat(MT.Ag), 'G', Blocks.glass, 'D', OP.gem.dat(ANY.Diamond), 'R', OD.itemRedstone);
+		
+		
+		aClass = MultiTileEntityWireLogistics.class;
+		aRegistry.add("Logistics Wire", "Logistics", 24901, 17997, aClass, aMat.mToolQuality, 64, aMetalWires, UT.NBT.make(NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "POP", "EFx", "POP", 'F', aRegistry.getItem(24900), 'O', OP.wireGt01.dat(MT.Os), 'P', OP.foil.dat(MT.Plastic), 'E', OP.gem.dat(ANY.Emerald));
+		
 		
 		aClass = MultiTileEntityPipeItem.class;
 		MultiTileEntityPipeItem.addItemPipes(25000, 25202, 32768,   1, T, T, aRegistry, aMachine    , aClass, MT.Brass);

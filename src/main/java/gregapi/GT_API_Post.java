@@ -122,7 +122,6 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.OREMATS.Pentlandite  .addOreByProducts(MT.Meutoite       );
 			MT.OREMATS.Magnesite    .addOreByProducts(MT.Lemurite       );
 			MT.OREMATS.Stibnite     .addOreByProducts(MT.Ceruclase      );
-			MT.TiO2                 .addOreByProducts(MT.Atlarus        );
 			MT.OREMATS.Garnierite   .addOreByProducts(MT.Oureclase      );
 			MT.OREMATS.Cooperite    .addOreByProducts(MT.Kalendrite     );
 			MT.OREMATS.Ilmenite     .addOreByProducts(MT.Orichalcum     );

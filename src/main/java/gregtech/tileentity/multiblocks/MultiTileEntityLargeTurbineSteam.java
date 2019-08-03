@@ -79,7 +79,7 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 			mEmitter = null;
 			boolean tSuccess = T;
 			for (int tX = tMinX; tX <= tMaxX; tX++) for (int tY = tMinY; tY <= tMaxY; tY++) for (int tZ = tMinZ; tZ <= tMaxZ; tZ++) {
-				byte tBits = 0;
+				int tBits = 0;
 				if (tX == tOutX && tY == tOutY && tZ == tOutZ) {
 					tBits = MultiTileEntityMultiBlockPart.ONLY_ENERGY_OUT;
 				} else {
