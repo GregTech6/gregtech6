@@ -32,7 +32,6 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
-import gregapi.tileentity.energy.ITileEntityEnergy;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
@@ -47,7 +46,7 @@ public class MultiTileEntityWireLogistics extends TileEntityBase10ConnectorRende
 	
 	@Override
 	public boolean canConnect(byte aSide, DelegatorTileEntity<TileEntity> aDelegator) {
-		if (aDelegator.mTileEntity instanceof ITileEntityEnergy) return ((ITileEntityEnergy)aDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.LU, aDelegator.mSideOfTileEntity, T) || ((ITileEntityEnergy)aDelegator.mTileEntity).isEnergyEmittingTo(TD.Energy.LU, aDelegator.mSideOfTileEntity, T);
+		if (aDelegator.mTileEntity instanceof ITileEntityLogistics) return ((ITileEntityLogistics)aDelegator.mTileEntity).canLogistics(aDelegator.mSideOfTileEntity);
 		return F;
 	}
 	

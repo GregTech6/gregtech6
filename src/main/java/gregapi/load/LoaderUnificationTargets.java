@@ -335,6 +335,13 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.DraconiumAwakened      , ST.make(MD.DE, "nugget", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.DraconiumAwakened      , ST.make(MD.DE, "draconicIngot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.DraconiumAwakened      , ST.make(MD.DE, "draconicBlock", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.CrystalMatrix          , ST.make(MD.AV, "Resource", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.CosmicNeutronium       , ST.make(MD.AV, "Resource", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.CosmicNeutronium       , ST.make(MD.AV, "Resource", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Infinity               , ST.make(MD.AV, "Resource", 1, 6));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.CosmicNeutronium       , ST.make(MD.AV, "Resource_Block", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Infinity               , ST.make(MD.AV, "Resource_Block", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.CrystalMatrix          , ST.make(MD.AV, "Crystal_Matrix", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2SO4                  , ST.make(MD.FZ, "acid", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.AquaRegia              , ST.make(MD.FZ, "acid", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Netherrack             , ST.make(MD.FZ, "nether_powder", 1, 1));

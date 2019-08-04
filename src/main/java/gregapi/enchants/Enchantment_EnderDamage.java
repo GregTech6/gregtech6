@@ -53,6 +53,7 @@ public class Enchantment_EnderDamage extends EnchantmentDamage {
 		MT.AstralSilver     .addEnchantmentForTools(this, 5);
 		MT.Desichalkos      .addEnchantmentForTools(this, 6);
 		MT.VibraniumSilver  .addEnchantmentForTools(this,10);
+		MT.Infinity         .addEnchantmentForTools(this,10);
 		INSTANCE = this;
 	}
 	

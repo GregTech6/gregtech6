@@ -168,6 +168,7 @@ public class MD {
 	, HQM               = new ModData(ModIDs.HQM                , "Hardcore Questing Mode")
 	
 	, DE                = new ModData(ModIDs.DE                 , "Draconic Evolution")
+	, AV                = new ModData(ModIDs.AV                 , "Avaritia")
 	
 	, EB                = new ModData(ModIDs.EB                 , "Enhanced Biomes")
 	, EBXL              = new ModData(ModIDs.EBXL               , "Extra Biomes XL")

@@ -57,6 +57,7 @@ public class Enchantment_SlimeDamage extends EnchantmentDamage {
 		MT.AnnealedCopper   .addEnchantmentForTools(this, 5);
 		MT.Hepatizon        .addEnchantmentForTools(this, 5);
 		MT.Vyroxeres        .addEnchantmentForTools(this, 5);
+		MT.Infinity         .addEnchantmentForTools(this,10);
 		INSTANCE = this;
 	}
 	

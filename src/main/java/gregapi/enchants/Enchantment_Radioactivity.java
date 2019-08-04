@@ -50,6 +50,7 @@ public class Enchantment_Radioactivity extends EnchantmentDamage {
 		MT.Am_241           .addEnchantmentForTools(this, 4).addEnchantmentForArmors(this, 4);
 		MT.Nq_528           .addEnchantmentForTools(this, 4).addEnchantmentForArmors(this, 4);
 		MT.Nq_522           .addEnchantmentForTools(this, 5).addEnchantmentForArmors(this, 5);
+		MT.CosmicNeutronium .addEnchantmentForTools(this,10).addEnchantmentForArmors(this,10);
 		INSTANCE = this;
 	}
 	

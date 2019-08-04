@@ -1812,6 +1812,7 @@ public class CS {
 		, HQM               = "HardcoreQuesting"
 		
 		, DE                = "DraconicEvolution"
+		, AV                = "Avaritia"
 		
 		, EB                = "enhancedbiomes"
 		, EBXL              = "ExtrabiomesXL"

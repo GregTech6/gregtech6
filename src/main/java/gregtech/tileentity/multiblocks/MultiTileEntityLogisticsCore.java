@@ -88,7 +88,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 			mCPU_Storage = 0;
 			mCPU_Conversion = 0;
 			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
-				if (i*i <= 1 && j*j <= 1 && k*k <= 1) {
+				if (i*i + j*j + k*k < 4) {
 					if (ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18200, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) {
 						mCPU_Logic++;
 						mCPU_Control++;
@@ -105,7 +105,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					} else {
 						tSuccess = F;
 					}
-				} else if (i*i == 4 || j*j == 4 || k*k == 4) {
+				} else if (i*i + j*j + k*k > 6) {
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18008, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_LOGISTICS & MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
 				} else {
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18299, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_LOGISTICS)) tSuccess = F;
@@ -121,7 +121,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		LH.add("gt.tooltip.multiblock.logisticscore.1", "5x5x5 Frame made out of Galvanized Steel Walls (Power Input Here)");
 		LH.add("gt.tooltip.multiblock.logisticscore.2", "3x3x3 Core of any Multiblock Processor Units (Customizable)");
 		LH.add("gt.tooltip.multiblock.logisticscore.3", "The Six 3x3 Walls need to be Ventilation Units");
-		LH.add("gt.tooltip.multiblock.logisticscore.4", "Main Side-Wall-Center facing outwards");
+		LH.add("gt.tooltip.multiblock.logisticscore.4", "Main centered at any Side facing outwards");
 		LH.add("gt.tooltip.multiblock.logisticscore.5", "At least one of each Processor Type needed (Or use a Versatile one)");
 		LH.add("gt.tooltip.multiblock.logisticscore.6", "Logic Processors increase Operation Count by 1");
 		LH.add("gt.tooltip.multiblock.logisticscore.7", "Control Processors increase Maximum Network Range by 1m");
@@ -188,11 +188,11 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	}
 	
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
-	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
+	@Override public boolean[] getValidSides() {return SIDES_VALID;}
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
-		if (mEnergy > 40000) return 0;
+		if (mEnergy > 1000000) return 0;
 		aSize = Math.abs(aSize);
 		if (!aDoInject) return aAmount;
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {explode(6); return aAmount;}
