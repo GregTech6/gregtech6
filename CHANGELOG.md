@@ -37,7 +37,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.00: (Not released yet)
+6.11.00:
 [FIXED] Jackhammer not placing Torches anymore, the Mode Switch accidentially overrode it.
 [CHANGED] Oil Shale can be used as Fuel now, it's only as efficient as non-coked Lignite, but it works. You get Stone as "Ashes" from burning it.
 [CHANGED] Atlarus (Metallurgy) is now available through Bedrock Drill and UUM.
