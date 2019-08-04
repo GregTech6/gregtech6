@@ -664,7 +664,7 @@ public class UT {
 			rNBT.setString("author", aAuthor);
 			NBTTagList tNBTList = new NBTTagList();
 			for (short i = 0; i < aPages.length; i++) {
-				if (aPages[i].length() < 256) tNBTList.appendTag(new NBTTagString(aPages[i])); else ERR.println("WARNING: String for Page of written Book too long! -> " + aPages[i]);
+				if (aPages[i].length() < 256) tNBTList.appendTag(new NBTTagString(aPages[i])); else if (aLogging) ERR.println("WARNING: String for Page of written Book too long! ->\n" + aPages[i]);
 			}
 			rNBT.setTag("pages", tNBTList);
 			if (aLogging) DEB.println("NOTE: Added Book to Book List  -  Mapping: '"+aMapping+"'  -  Name: '"+aTitle+"'  -  Author: '"+aAuthor+"'");

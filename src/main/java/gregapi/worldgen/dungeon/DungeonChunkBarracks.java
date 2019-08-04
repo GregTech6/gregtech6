@@ -94,7 +94,7 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 			aData.set(14, 1, 11, Blocks.crafting_table, 0, 2);
 		}
 
-		FluidStack[] tDrinks = FL.array(NF, NF, NF, NF, NF, FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Vodka.make(250), FL.Mead.make(250), FL.Whiskey_GlenMcKenner.make(250), FL.Wine_Grape_Purple.make(250)};
+		FluidStack[] tDrinks = FL.array(NF, NF, NF, NF, NF, FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Vodka.make(250), FL.Mead.make(250), FL.Whiskey_GlenMcKenner.make(250), FL.Wine_Grape_Purple.make(250));
 
 		aData.set( 1, 2,  4, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);
 		aData.set( 1, 2, 11, SIDE_UNKNOWN, 32739, new FluidTankGT(UT.Code.select(NF, tDrinks)).writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), NBT_TANK), T, T);

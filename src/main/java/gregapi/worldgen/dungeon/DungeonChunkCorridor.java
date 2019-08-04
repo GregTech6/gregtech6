@@ -133,18 +133,18 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 		 || WD.liquid(aData.mWorld, aData.mX+ 8, aData.mY+4, aData.mZ+ 7) || WD.liquid(aData.mWorld, aData.mX+ 8, aData.mY+4, aData.mZ+ 8)
 		 || aData.mWorld.canBlockSeeTheSky(aData.mX+ 7, aData.mY+4, aData.mZ+ 7) || aData.mWorld.canBlockSeeTheSky(aData.mX+ 7, aData.mY+4, aData.mZ+ 8)
 		 || aData.mWorld.canBlockSeeTheSky(aData.mX+ 8, aData.mY+4, aData.mZ+ 7) || aData.mWorld.canBlockSeeTheSky(aData.mX+ 8, aData.mY+4, aData.mZ+ 8)) {
-			aData.glassglow        (7, 4, 7);
-			aData.glassglow        (7, 4, 8);
-			aData.glassglow        (8, 4, 7);
-			aData.glassglow        (8, 4, 8);
+			aData.glassglow(7, 4, 7);
+			aData.glassglow(7, 4, 8);
+			aData.glassglow(8, 4, 7);
+			aData.glassglow(8, 4, 8);
 		} else {
-			aData.redstoned    (7, 4, 7);
-			aData.lamp        (7, 4, 8, 0);
-			aData.lamp        (8, 4, 7, 0);
-			aData.redstoned    (8, 4, 8);
+			aData.redstoned(7, 4, 7);
+			aData.lamp     (7, 4, 8, 0);
+			aData.lamp     (8, 4, 7, 0);
+			aData.redstoned(8, 4, 8);
 		}
 
-		FluidStack[] tDrinks = FL.array(NF, NF, NF, NF, NF, FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Vodka.make(250), FL.Mead.make(250), FL.Whiskey_GlenMcKenner.make(250), FL.Wine_Grape_Purple.make(250)};
+		FluidStack[] tDrinks = FL.array(NF, NF, NF, NF, NF, FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Purple_Drink.make(250), FL.Vodka.make(250), FL.Mead.make(250), FL.Whiskey_GlenMcKenner.make(250), FL.Wine_Grape_Purple.make(250));
 
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {
 			for (int tX = 10; tX <= 15; tX++) for (int tZ =  5; tZ <= 10; tZ++) for (int tY = 0; tY <= 4; tY++) {
