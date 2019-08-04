@@ -86,39 +86,44 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public int mMode = 0;
 	
 	public static final int
-	  EVERYTHING            = 0
+	  EVERYTHING                 = 0
 	
-	, NO_ENERGY_OUT         = 1
-	, NO_ENERGY_IN          = 2
-	, NO_FLUID_OUT          = 4
-	, NO_FLUID_IN           = 8
-	, NO_ITEM_OUT           = 16
-	, NO_ITEM_IN            = 32
-	, NO_LOGISTICS          = 64
+	, NO_ENERGY_OUT              = 1
+	, NO_ENERGY_IN               = 2
+	, NO_FLUID_OUT               = 4
+	, NO_FLUID_IN                = 8
+	, NO_ITEM_OUT                = 16
+	, NO_ITEM_IN                 = 32
+	, NO_LOGISTICS               = 64
 	
-	, NO_ENERGY             = NO_ENERGY_IN | NO_ENERGY_OUT
-	, NO_FLUID              = NO_FLUID_IN  | NO_FLUID_OUT
-	, NO_ITEM               = NO_ITEM_IN   | NO_ITEM_OUT
+	, NO_ENERGY                  = NO_ENERGY_IN | NO_ENERGY_OUT
+	, NO_FLUID                   = NO_FLUID_IN  | NO_FLUID_OUT
+	, NO_ITEM                    = NO_ITEM_IN   | NO_ITEM_OUT
 	
-	, ONLY_IN               = NO_ENERGY_OUT | NO_FLUID_OUT | NO_ITEM_OUT | NO_LOGISTICS
-	, ONLY_OUT              = NO_ENERGY_IN  | NO_FLUID_IN  | NO_ITEM_IN  | NO_LOGISTICS
+	, ONLY_IN                    = NO_ENERGY_OUT | NO_FLUID_OUT | NO_ITEM_OUT | NO_LOGISTICS
+	, ONLY_OUT                   = NO_ENERGY_IN  | NO_FLUID_IN  | NO_ITEM_IN  | NO_LOGISTICS
 	
-	, ONLY_ENERGY_OUT       = ~NO_ENERGY_OUT
-	, ONLY_ENERGY_IN        = ~NO_ENERGY_IN
-	, ONLY_FLUID_OUT        = ~NO_FLUID_OUT
-	, ONLY_FLUID_IN         = ~NO_FLUID_IN
-	, ONLY_ITEM_OUT         = ~NO_ITEM_OUT
-	, ONLY_ITEM_IN          = ~NO_ITEM_IN
-	, ONLY_ITEM_FLUID_OUT   = ~(NO_ITEM_OUT | NO_FLUID_OUT)
-	, ONLY_ITEM_FLUID_IN    = ~(NO_ITEM_IN  | NO_FLUID_IN)
+	, ONLY_ENERGY_OUT            = ~NO_ENERGY_OUT
+	, ONLY_ENERGY_IN             = ~NO_ENERGY_IN
+	, ONLY_FLUID_OUT             = ~NO_FLUID_OUT
+	, ONLY_FLUID_IN              = ~NO_FLUID_IN
+	, ONLY_ITEM_OUT              = ~NO_ITEM_OUT
+	, ONLY_ITEM_IN               = ~NO_ITEM_IN
+	, ONLY_ITEM_FLUID_OUT        = ~(NO_ITEM_OUT | NO_FLUID_OUT)
+	, ONLY_ITEM_FLUID_IN         = ~(NO_ITEM_IN  | NO_FLUID_IN )
+	, ONLY_ITEM_FLUID_ENERGY_OUT = ~(NO_ITEM_OUT | NO_FLUID_OUT | NO_ENERGY_OUT)
+	, ONLY_ITEM_FLUID_ENERGY_IN  = ~(NO_ITEM_IN  | NO_FLUID_IN  | NO_ENERGY_IN )
 	
-	, ONLY_LOGISTICS        = ~NO_LOGISTICS
-	, ONLY_ENERGY           = ~NO_ENERGY
-	, ONLY_FLUID            = ~NO_FLUID
-	, ONLY_ITEM             = ~NO_ITEM
-	, ONLY_ITEM_FLUID       = ~(NO_ITEM | NO_FLUID)
+	, ONLY_LOGISTICS             = ~NO_LOGISTICS
+	, ONLY_ENERGY                = ~NO_ENERGY
+	, ONLY_FLUID                 = ~NO_FLUID
+	, ONLY_ITEM                  = ~NO_ITEM
+	, ONLY_ITEM_FLUID            = ~(NO_ITEM  | NO_FLUID )
+	, ONLY_ITEM_FLUID_ENERGY     = ~(NO_ITEM  | NO_FLUID | NO_ENERGY)
+	, ONLY_ITEM_ENERGY           = ~(NO_ITEM  | NO_ENERGY)
+	, ONLY_FLUID_ENERGY          = ~(NO_FLUID | NO_ENERGY)
 	
-	, NOTHING               = ~EVERYTHING
+	, NOTHING                    = ~EVERYTHING
 	;
 	
 	@Override
