@@ -55,7 +55,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe0(T, 16,   64, new FluidStack[] {FL.mul(tFluid, 3), MT.SO3.gas(U*4, T)}, MT.H2SO4.fluid(U*7, F), ZL_IS);
 		RM.Mixer        .addRecipe0(T, 16,  192, new FluidStack[] {FL.mul(tFluid, 3), MT.NO2.gas(U*9, T)}, MT.HNO3.liquid(U*10, F), MT.NO.gas(U*2, F));
 		
-		RM.Mixer        .addRecipe0(T, 16,  224, new FluidStack[] {FL.mul(tFluid, 3), MT.H2S2O7.liquid(U*11, T)}, MT.H2SO4.liquid(U*14, F));
+		RM.Mixer        .addRecipe0(T, 16,  224, new FluidStack[] {FL.mul(tFluid, 3), MT.H2S2O7.liquid(U*11, T)}, MT.H2SO4.liquid(U*14, F), ZL_IS);
 		
 		RM.Electrolyzer .addRecipe1(T, 16, 1280, OP.dustSmall   .mat(MT.NaCl, 1), new FluidStack[] {FL.mul(tFluid, 3, 4, T)}, new FluidStack[] {MT.Cl.gas(U8, F), MT.H.gas(3*U8, F), MT.O.gas(U8, F)}, OM.dust(MT.NaOH, 3*U8));
 		RM.Electrolyzer .addRecipe1(T, 16, 5120, OP.dust        .mat(MT.NaCl, 1), new FluidStack[] {FL.mul(tFluid, 3      )}, new FluidStack[] {MT.Cl.gas(U2, F), MT.H.gas(3*U2, F), MT.O.gas(U2, F)}, OM.dust(MT.NaOH, 3*U2));
