@@ -60,6 +60,6 @@ public class RecipeMapShredder extends RecipeMapSpecialSingleInput {
 			}
 		}
 		if (!UT.Code.exists(0, tOutputs)) return null;
-		return new Recipe(F, F, F, new ItemStack[] {ST.amount(1, aInput)}, tOutputs, null, null, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0);
+		return new Recipe(F, F, F, ST.array(ST.amount(1, aInput)), tOutputs, null, null, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0);
 	}
 }

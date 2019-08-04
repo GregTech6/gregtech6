@@ -541,7 +541,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Loom         .addRecipe2(T, 16,   16, ST.tag(0), OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4), ST.make(Blocks.wool, 1, i));
 		}
 		
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(125), FL.DistW.make(100)}) {
+		for (FluidStack tWater : FL.array(FL.Water.make(125), FL.DistW.make(100))) {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.reeds, 1, W)             , tWater, NF, ST.make(Items.paper, 1, 0));
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Paper)                      , tWater, NF, ST.make(Items.paper, 1, 0));
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Clay)                       , tWater, NF, ST.make(Items.clay_ball, 1, 0));
@@ -562,7 +562,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Loom         .addRecipe2(T, 64,  128, ST.make(Items.leather, 6, W), OP.plate                                 .mat(MT.Au      , 8), ST.make(Items.golden_horse_armor, 1, 0));
 		RM.Loom         .addRecipe2(T, 64,  128, ST.make(Items.leather, 6, W), OP.plateGem                              .mat(MT.Diamond , 8), ST.make(Items.diamond_horse_armor, 1, 0));
 		for (OreDictMaterial tMat2 : ANY.Steel.mToThis)
-		RM.Loom         .addRecipeX(T, 64,  128, new ItemStack[] {ST.make(Items.leather, 6, W), OP.ring.mat(tMat2, 2), OP.stick.mat(tMat2, 3)}, ST.make(Items.saddle, 1, 0));
+		RM.Loom         .addRecipeX(T, 64,  128, ST.array(ST.make(Items.leather, 6, W), OP.ring.mat(tMat2, 2), OP.stick.mat(tMat2, 3)), ST.make(Items.saddle, 1, 0));
 		
 		RM.Loom         .addRecipe2(T, 16,  128, ST.tag(4), ST.make(Items.leather, 5, W), ST.make(Items.leather_helmet, 1, 0));
 		RM.Loom         .addRecipe2(T, 16,  128, ST.tag(5), ST.make(Items.leather, 8, W), ST.make(Items.leather_chestplate, 1, 0));
@@ -688,17 +688,17 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.carrot       , 1, W), MT.Au.liquid(8*U9, T), NF, ST.make(Items.golden_carrot, 1, 0));
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(Items.melon        , 1, W), MT.Au.liquid(8*U9, T), NF, ST.make(Items.speckled_melon, 1, 0));
 		RM.Mixer        .addRecipe2(T, 16,   16, ST.make(Items.melon        , 1, W), OP.nugget.mat(MT.Au, 8), ST.make(Items.speckled_melon, 1, 0));
-		RM.Mixer        .addRecipe0(T, 16,   16, new FluidStack[] {FL.Water.make(50), FL.Lava.make(1000)}, NF, ST.make(Blocks.obsidian, 1, 0));
-		RM.Mixer        .addRecipe0(T, 16,   16, new FluidStack[] {FL.DistW.make(50), FL.Lava.make(1000)}, NF, ST.make(Blocks.obsidian, 1, 0));
+		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.Water.make(50), FL.Lava.make(1000)), NF, ST.make(Blocks.obsidian, 1, 0));
+		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.DistW.make(50), FL.Lava.make(1000)), NF, ST.make(Blocks.obsidian, 1, 0));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.Water.make(3000), NF, IL.Clay_Ball_Brown.get(4));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Redrock), FL.DistW.make(3000), NF, IL.Clay_Ball_Brown.get(4));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.EnderPearl), OM.dust(MT.Blaze), OM.dust(MT.EnderEye));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Sugar              ), ST.make(Items.spider_eye, 1, W), ST.make(Blocks.brown_mushroom, 1, W)}, ST.make(Items.fermented_spider_eye, 1, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar , 4), ST.make(Items.spider_eye, 1, W), ST.make(Blocks.brown_mushroom, 1, W)}, ST.make(Items.fermented_spider_eye, 1, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Coal               ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)}, ST.make(Items.fire_charge, 3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Charcoal           ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)}, ST.make(Items.fire_charge, 3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.CoalCoke           ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)}, ST.make(Items.fire_charge, 3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.LigniteCoke        ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)}, ST.make(Items.fire_charge, 3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Sugar              ), ST.make(Items.spider_eye, 1, W), ST.make(Blocks.brown_mushroom, 1, W)), ST.make(Items.fermented_spider_eye, 1, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OP.gemChipped.mat(MT.Sugar , 4), ST.make(Items.spider_eye, 1, W), ST.make(Blocks.brown_mushroom, 1, W)), ST.make(Items.fermented_spider_eye, 1, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Coal               ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Charcoal           ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.CoalCoke           ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.LigniteCoke        ), OM.dust(MT.Blaze), OM.dust(MT.Gunpowder)), ST.make(Items.fire_charge, 3, 0));
 		
 		
 		RM.Electrolyzer .addRecipe1(T, 16, 3000, ST.tag(0), FL.DistW.make(3000), MT.H.gas(2*U, F), MT.O.gas(U, F));

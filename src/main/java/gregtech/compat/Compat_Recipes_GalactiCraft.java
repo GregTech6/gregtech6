@@ -56,9 +56,9 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 			for (OreDictMaterial tMat : ANY.Steel.mToThis) {
 			ItemStack
 			tStack = OP.plate.mat(tMat, 1);
-			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, new ItemStack[] {tStack, OP.plate.mat(MT.Al, 1), OP.plate.mat(MT.Bronze, 1)}, ST.make(MD.GC, "item.heavyPlating", 1, 0));
+			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, ST.array(tStack, OP.plate.mat(MT.Al, 1), OP.plate.mat(MT.Bronze, 1)), ST.make(MD.GC, "item.heavyPlating", 1, 0));
 			tStack = OP.compressed.mat(tMat, 1);
-			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, new ItemStack[] {tStack, OP.compressed.mat(MT.Al, 1), OP.compressed.mat(MT.Bronze, 1)}, ST.make(MD.GC, "item.heavyPlating", 1, 0));
+			if (ST.valid(tStack)) RM.Press.addRecipeX(T, 16, 256, ST.array(tStack, OP.compressed.mat(MT.Al, 1), OP.compressed.mat(MT.Bronze, 1)), ST.make(MD.GC, "item.heavyPlating", 1, 0));
 			}
 			
 			CR.delate(MD.GC, "tile.landingPad");
@@ -122,9 +122,9 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				}
 			}
 			
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_1  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_1  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units( 900, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_2  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_2  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(1800, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_3  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_3  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(2700, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_1  .wild(1)), ST.array(IL.GC_OxyTank_1  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units( 900, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_2  .wild(1)), ST.array(IL.GC_OxyTank_2  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(1800, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_3  .wild(1)), ST.array(IL.GC_OxyTank_3  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(2700, 2700, 250, T))), ZL_FS, 64, 16, 0);
 		}
 		if (MD.GC_PLANETS.mLoaded) {
 			OUT.println("GT_Mod: Doing Galacticraft Planets Recipes.");
@@ -205,10 +205,10 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i));
 			}
 			
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_4  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_4  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(3500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_5  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_5  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4000, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_6  .wild(1)}, new ItemStack[] {IL.GC_OxyTank_6  .get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, new ItemStack[] {IL.GC_OxyTank_Env.wild(1)}, new ItemStack[] {IL.GC_OxyTank_Env.get(1)}, null, null, new FluidStack[] {FL.Liquid_Oxygen.make(UT.Code.units( 500, 2700, 250, T))}, ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_4  .wild(1)), ST.array(IL.GC_OxyTank_4  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(3500, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_5  .wild(1)), ST.array(IL.GC_OxyTank_5  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(4000, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_6  .wild(1)), ST.array(IL.GC_OxyTank_6  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_Env.wild(1)), ST.array(IL.GC_OxyTank_Env.get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units( 500, 2700, 250, T))), ZL_FS, 64, 16, 0);
 		}
 	}
 }

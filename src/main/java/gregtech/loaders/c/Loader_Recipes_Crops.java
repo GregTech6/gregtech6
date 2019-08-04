@@ -53,7 +53,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		
 		addListener(new OreDictListenerEvent_TwoNames("flowerCerublossom", "flowerDesertNova") {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
-			RM.Mixer    .addRecipeX(T, 16, 16, new ItemStack[] {aStack1, aStack2, OM.dust(MT.ArcaneAsh), OM.dust(MT.Vinteum)}, OM.dust(MT.VinteumPurified));
+			RM.Mixer    .addRecipeX(T, 16, 16, ST.array(aStack1, aStack2, OM.dust(MT.ArcaneAsh), OM.dust(MT.Vinteum)), OM.dust(MT.VinteumPurified));
 		}});
 		addListener("flowerCerublossom", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Squeezer .addRecipe1(T, 16, 16, 2000, aEvent.mStack, NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Blue], 2), IL.Remains_Plant.get(1));

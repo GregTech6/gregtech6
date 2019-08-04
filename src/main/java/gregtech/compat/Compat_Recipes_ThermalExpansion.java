@@ -115,7 +115,7 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		FL.set(new FluidContainerData(FL.Redstone  .make(1440), ST.make(MD.TE_FOUNDATION, "bucket", 1, 0), ST.make(Items.bucket, 1, 0), F), F, F);
 		FL.set(new FluidContainerData(FL.Ender     .make( 576), ST.make(MD.TE_FOUNDATION, "bucket", 1, 2), ST.make(Items.bucket, 1, 0), F), F, F);
 		
-		for (FluidStack tRedstone : new FluidStack[] {FL.Redstone.make(L), FL.Redstone_TE.make(100)}) {
+		for (FluidStack tRedstone : FL.array(FL.Redstone.make(L), FL.Redstone_TE.make(100))) {
 			RM.Injector     .addRecipe1(T, 16, 16, ST.make(Items.snowball, 1, W)    , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
 			RM.Injector     .addRecipe1(T, 16, 16, OP.dustSmall.mat(MT.Snow, 1)     , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
 			RM.Injector     .addRecipe1(T, 16, 16, OP.dustSmall.mat(MT.Ice, 1)      , FL.mul(tRedstone, 2), NF, OP.dust.mat(MT.Blizz, 1));
@@ -132,11 +132,11 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		
 		if (MD.TE_DYNAMICS.mLoaded) {
 			OUT.println("GT_Mod: Doing Thermal Dynamics Recipes.");
-			for (FluidStack tEnder : new FluidStack[] {FL.Ender.make(L), FL.Ender_TE.make(250)}) {
+			for (FluidStack tEnder : FL.array(FL.Ender.make(L), FL.Ender_TE.make(250))) {
 			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 0)    , FL.mul(tEnder,  4), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 2));
 			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 0)    , FL.mul(tEnder,  4), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_64", 1, 2));
 			}
-			for (FluidStack tRedstone : new FluidStack[] {FL.Redstone.make(L), FL.Redstone_TE.make(100)}) {
+			for (FluidStack tRedstone : FL.array(FL.Redstone.make(L), FL.Redstone_TE.make(100))) {
 			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 5)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 4));
 			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 3)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_0" , 1, 2));
 			RM.Injector         .addRecipe1(T, 16,   16, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 0)    , FL.mul(tRedstone,  2), NF, ST.make(MD.TE_DYNAMICS, "ThermalDynamics_32", 1, 6));
@@ -160,13 +160,13 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 		if (MD.TE.mLoaded) {
 			OUT.println("GT_Mod: Doing Thermal Expansion Recipes.");
 			
-			for (FluidStack tEnder : new FluidStack[] {FL.Ender.make(L), FL.Ender_TE.make(250)}) {
+			for (FluidStack tEnder : FL.array(FL.Ender.make(L), FL.Ender_TE.make(250))) {
 			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,10)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Frame", 1,11));
 			RM.Injector         .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Plate", 1, 3));
 			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Frame", 1,10)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Frame", 1,11));
 			RM.Canner           .addRecipe1(T, 16,   80, ST.make(MD.TE, "Plate", 1, 0)                          , FL.mul(tEnder,  4), NF, ST.make(MD.TE, "Plate", 1, 3));
 			}
-			for (FluidStack tRedstone : new FluidStack[] {FL.Redstone.make(L), FL.Redstone_TE.make(100)}) {
+			for (FluidStack tRedstone : FL.array(FL.Redstone.make(L), FL.Redstone_TE.make(100))) {
 			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Au        , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 1));
 			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Ag        , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 2));
 			RM.Injector         .addRecipe1(T, 16,   16, OP.spring.mat(MT.Electrum  , 1)                        , FL.mul(tRedstone,  2), NF, ST.make(MD.TE, "material", 1, 3));
@@ -192,37 +192,37 @@ public class Compat_Recipes_ThermalExpansion extends CompatMods {
 			
 			
 			for (OreDictMaterial tMat : new OreDictMaterial[] {MT.KNO3, MT.NaNO3}) {
-			RM.Mixer            .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.IE_Slag        .get(1), OM.dust(MT.Charcoal, U*1)}, IL.TE_Phyto_Gro_Rich.get(32));
-			RM.Mixer            .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.TE_Slag_Rich   .get(1), OM.dust(MT.Charcoal, U*1)}, IL.TE_Phyto_Gro_Rich.get(32));
-			RM.Mixer            .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.TE_Slag        .get(1), OM.dust(MT.Charcoal, U*1)}, IL.TE_Phyto_Gro.get(32));
+			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.IE_Slag        .get(1), OM.dust(MT.Charcoal, U*1)), IL.TE_Phyto_Gro_Rich.get(32));
+			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.TE_Slag_Rich   .get(1), OM.dust(MT.Charcoal, U*1)), IL.TE_Phyto_Gro_Rich.get(32));
+			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.TE_Slag        .get(1), OM.dust(MT.Charcoal, U*1)), IL.TE_Phyto_Gro.get(32));
 			for (OreDictMaterial tWood : ANY.Wood.mToThis) {
 				if (ANY.WoodDefault.mToThis.contains(tWood)) {
 					if (IL.IE_Slag.exists())
-					RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.IE_Slag        .get(1), OM.dust(tWood, U*2)}, IL.TE_Phyto_Gro_Rich.get( 8));
-					RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.TE_Slag_Rich   .get(1), OM.dust(tWood, U*2)}, IL.TE_Phyto_Gro_Rich.get( 8));
-					RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.TE_Slag        .get(1), OM.dust(tWood, U*2)}, IL.TE_Phyto_Gro.get(8));
+					RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.IE_Slag        .get(1), OM.dust(tWood, U*2)), IL.TE_Phyto_Gro_Rich.get( 8));
+					RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.TE_Slag_Rich   .get(1), OM.dust(tWood, U*2)), IL.TE_Phyto_Gro_Rich.get( 8));
+					RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.TE_Slag        .get(1), OM.dust(tWood, U*2)), IL.TE_Phyto_Gro.get(8));
 				} else {
 					if (IL.IE_Slag.exists())
-					RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.IE_Slag        .get(1), OM.dust(tWood, U*2)}, IL.TE_Phyto_Gro_Rich.get(16));
-					RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.TE_Slag_Rich   .get(1), OM.dust(tWood, U*2)}, IL.TE_Phyto_Gro_Rich.get(16));
-					RM.Mixer    .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(tMat, U*1), IL.TE_Slag        .get(1), OM.dust(tWood, U*2)}, IL.TE_Phyto_Gro.get(16));
+					RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.IE_Slag        .get(1), OM.dust(tWood, U*2)), IL.TE_Phyto_Gro_Rich.get(16));
+					RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.TE_Slag_Rich   .get(1), OM.dust(tWood, U*2)), IL.TE_Phyto_Gro_Rich.get(16));
+					RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(tMat, U*1), IL.TE_Slag        .get(1), OM.dust(tWood, U*2)), IL.TE_Phyto_Gro.get(16));
 				}
 			}}
 			
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 			addListener(new OreDictListenerEvent_TwoNames(OP.dust.dat(ANY.Wood), OD.slimeball) {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2) {
 				if (IL.IE_Slag.exists())
-				RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {aStack1, IL.IE_Slag.get(1), aStack2}, ST.make(MD.TE, "florb", 4, 0));
-				RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {aStack1, IL.TE_Slag.get(1), aStack2}, ST.make(MD.TE, "florb", 4, 0));
-				RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {aStack1, IL.TE_Slag_Rich.get(1), aStack2}, ST.make(MD.TE, "florb", 4, 0));
-				RM.Loom         .addRecipeX(T, 16,   16, new ItemStack[] {ST.amount(4, aStack1), ST.make(Items.string, 4, W), aStack2}, ST.make(MD.TE, "Sponge", 1, 1));
+				RM.Mixer        .addRecipeX(T, 16,   16, ST.array(aStack1, IL.IE_Slag.get(1), aStack2), ST.make(MD.TE, "florb", 4, 0));
+				RM.Mixer        .addRecipeX(T, 16,   16, ST.array(aStack1, IL.TE_Slag.get(1), aStack2), ST.make(MD.TE, "florb", 4, 0));
+				RM.Mixer        .addRecipeX(T, 16,   16, ST.array(aStack1, IL.TE_Slag_Rich.get(1), aStack2), ST.make(MD.TE, "florb", 4, 0));
+				RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.amount(4, aStack1), ST.make(Items.string, 4, W), aStack2), ST.make(MD.TE, "Sponge", 1, 1));
 			}});
 			addListener(OP.dust.dat(ANY.Wood), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 				if (IL.IE_Slag.exists())
-				RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {aEvent.mStack, IL.IE_Slag.get(1), ST.make(Items.magma_cream, 1, W)}, ST.make(MD.TE, "florb", 4, 1));
-				RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {aEvent.mStack, IL.TE_Slag.get(1), ST.make(Items.magma_cream, 1, W)}, ST.make(MD.TE, "florb", 4, 1));
-				RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {aEvent.mStack, IL.TE_Slag_Rich.get(1), ST.make(Items.magma_cream, 1, W)}, ST.make(MD.TE, "florb", 4, 1));
-				RM.Loom         .addRecipeX(T, 16,   16, new ItemStack[] {ST.amount(4, aEvent.mStack), ST.make(Items.string, 4, W), ST.make(Items.magma_cream, 1, W)}, ST.make(MD.TE, "Sponge", 1, 2));
+				RM.Mixer        .addRecipeX(T, 16,   16, ST.array(aEvent.mStack, IL.IE_Slag.get(1), ST.make(Items.magma_cream, 1, W)), ST.make(MD.TE, "florb", 4, 1));
+				RM.Mixer        .addRecipeX(T, 16,   16, ST.array(aEvent.mStack, IL.TE_Slag.get(1), ST.make(Items.magma_cream, 1, W)), ST.make(MD.TE, "florb", 4, 1));
+				RM.Mixer        .addRecipeX(T, 16,   16, ST.array(aEvent.mStack, IL.TE_Slag_Rich.get(1), ST.make(Items.magma_cream, 1, W)), ST.make(MD.TE, "florb", 4, 1));
+				RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.amount(4, aEvent.mStack), ST.make(Items.string, 4, W), ST.make(Items.magma_cream, 1, W)), ST.make(MD.TE, "Sponge", 1, 2));
 			}});
 			}};
 		}

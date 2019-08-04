@@ -52,11 +52,11 @@ public class RecipeMapMicrowave extends RecipeMapNonGTRecipes {
 		ItemStack tOutput = RM.get_smelting(aInputs[0], F, null);
 		
 		if (ST.equal(aInputs[0], Items.book)) {
-			return new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {ST.book("Manual_Microwave")}, null, null, null, null, 32, 4, 0);
+			return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(ST.book("Manual_Microwave")), null, null, null, null, 32, 4, 0);
 		}
 		
 		// Check Container Item of Input since it is around the Input, then the Input itself, then Container Item of Output and last check the Output itself
-		for (ItemStack tStack : new ItemStack[] {ST.container(aInputs[0], T), aInputs[0], ST.container(tOutput, T), tOutput}) if (ST.valid(tStack)) {
+		for (ItemStack tStack : ST.array(ST.container(aInputs[0], T), aInputs[0], ST.container(tOutput, T), tOutput)) if (ST.valid(tStack)) {
 			if (ST.equal(tStack, Blocks.netherrack)
 			 || ST.equal(tStack, Blocks.tnt)
 			 || ST.equal(tStack, Items.egg)
@@ -99,7 +99,7 @@ public class RecipeMapMicrowave extends RecipeMapNonGTRecipes {
 			
 		}
 		
-		return tOutput == null ? null : new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {tOutput}, null, null, null, null, 32, 4, 0);
+		return tOutput == null ? null : new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, null, null, 32, 4, 0);
 	}
 	
 	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return RM.get_smelting(aStack, F, null) != null;}

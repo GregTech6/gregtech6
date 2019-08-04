@@ -442,7 +442,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		GameRegistry.addRecipe(new AdvancedCraftingXToY(wireGt08                ,  2, wireGt16                  , 1, F));
 		
 		
-		FluidStack[] tFluids = new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000), FL.Lubricant.make(1000), FL.LubRoCant.make(1000)};
+		FluidStack[] tFluids = FL.array(FL.Water.make(1000), FL.DistW.make(1000), FL.Lubricant.make(1000), FL.LubRoCant.make(1000));
 		long[] tMultiplier = new long[] {4, 3, 1, 1};
 		ICondition tConditionM = new And(ANTIMATTER.NOT, COATED.NOT);
 		

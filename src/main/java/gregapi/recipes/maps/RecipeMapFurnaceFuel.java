@@ -63,9 +63,9 @@ public class RecipeMapFurnaceFuel extends RecipeMap {
 								tMaterial.mAmount += UT.Code.units(aMaterial.mAmount, U, aMaterial.mMaterial.mTargetBurning.mAmount, F);
 						}
 					}
-					rRecipe = new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {OM.dust(tMaterial)}, null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
+					rRecipe = new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(OM.dust(tMaterial)), null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
 				} else {
-					rRecipe = new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {tContainer}, null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
+					rRecipe = new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tContainer), null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
 				}
 				rRecipe.mCanBeBuffered = (aInputs[0].getTagCompound() == null);
 				if (rRecipe.mCanBeBuffered) addRecipe(rRecipe, F, F, T);

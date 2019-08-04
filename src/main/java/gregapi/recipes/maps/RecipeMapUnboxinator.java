@@ -27,6 +27,7 @@ import gregapi.data.IL;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
+import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -44,7 +45,7 @@ public class RecipeMapUnboxinator extends RecipeMap {
 		ItemStack tOutput = COMPAT_IC2.scrapbox(aInputs[0]);
 		if (tOutput == null) return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 		// Due to its randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-		return new Recipe(F, F, F, new ItemStack[] {IL.IC2_Scrapbox.get(1)}, new ItemStack[] {tOutput}, null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		return new Recipe(F, F, F, ST.array(IL.IC2_Scrapbox.get(1)), ST.array(tOutput), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 	}
 	
 	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return IL.IC2_Scrapbox.equal(aStack, F, T) || super.containsInput(aStack, aTileEntity, aSpecialSlot);}

@@ -37,7 +37,6 @@ import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 
 public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 	public Compat_Recipes_AppliedEnergistics(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -50,7 +49,7 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		
 		RM.add_smelting(ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45), ST.make(MD.AE, "tile.BlockSkyStone", 1, 0));
 		
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Olivine), OM.dust(MT.RareEarth), OM.dust(MT.Basalt), OM.dust(MT.Obsidian)}, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Olivine), OM.dust(MT.RareEarth), OM.dust(MT.Basalt), OM.dust(MT.Obsidian)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45));
 		
 		RM.Shredder     .addRecipe1(T, 64,   16, ST.make(MD.AE, "tile.BlockSkyStone", 1, W), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 45));
 		RM.Shredder     .addRecipe1(T, 64,  128, ST.make(MD.AE, "tile.BlockSkyChest", 1, W), ST.make(MD.AE, "item.ItemMultiMaterial", 8, 45));
@@ -70,9 +69,9 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		RM.Press        .addRecipe2(T, 16,   64, ST.make(MD.AE, "item.ItemMultiMaterial", 0, 19), OP.blockSolid.mat(tMat, 1), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 19));
 		}
 		
-		RM.Press        .addRecipeX(T, 16,   64, new ItemStack[] {ST.make(MD.AE, "item.ItemMultiMaterial", 1, 16), OM.dust(MT.Redstone), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20)}, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 23));
-		RM.Press        .addRecipeX(T, 16,   64, new ItemStack[] {ST.make(MD.AE, "item.ItemMultiMaterial", 1, 17), OM.dust(MT.Redstone), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20)}, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 24));
-		RM.Press        .addRecipeX(T, 16,   64, new ItemStack[] {ST.make(MD.AE, "item.ItemMultiMaterial", 1, 18), OM.dust(MT.Redstone), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20)}, ST.make(MD.AE, "item.ItemMultiMaterial", 1, 22));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.make(MD.AE, "item.ItemMultiMaterial", 1, 16), OM.dust(MT.Redstone), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 23));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.make(MD.AE, "item.ItemMultiMaterial", 1, 17), OM.dust(MT.Redstone), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 24));
+		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.make(MD.AE, "item.ItemMultiMaterial", 1, 18), OM.dust(MT.Redstone), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 22));
 		
 		RM.Autoclave    .addRecipe2(T,  0, 1500, ST.make(MD.AE, "item.ItemCrystalSeed", 1,    0), ST.tag(2), FL.Steam.make(48000), FL.DistW.make(225), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10));
 		RM.Autoclave    .addRecipe2(T,  0, 1500, ST.make(MD.AE, "item.ItemCrystalSeed", 1,  600), ST.tag(2), FL.Steam.make(48000), FL.DistW.make(225), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11));

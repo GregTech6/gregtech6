@@ -39,15 +39,15 @@ public class Loader_MachineRecipes implements Runnable {
 	@Override
 	public void run() {
 		gregapi.old.IGT_RecipeAdder RA = gregapi.old.IGT_RecipeAdder.NON_WORKING;
-		
+
 //      RA.addPrinterRecipe(OM.get(OP.plateDouble, MT.Paper, 1), UT.Fluids.make("squidink", (int)L / 4), NI, IL.Paper_Punch_Card_Empty.get(1), 100, 2);
 //      RA.addPrinterRecipe(IL.Paper_Punch_Card_Empty.get(1), UT.Fluids.make("squidink", (int)L / 4), IL.Tool_DataStick.getWithName(0, "With Punch Card Data"), IL.Paper_Punch_Card_Encoded.get(1), 100, 2);
-		
+
 //      RA.addFormingPressRecipe(ST.make(Blocks.glass, 1, W), IL.Shape_Mold_Arrow.get(0), IL.Arrow_Head_Glass_Emtpy .get(1),  64,   4);
-		
+
 //      for (OreDictMaterial tMat : MT.VALUES) if (tMat.mStandardMoltenFluid != null && tMat.contains(SubTag.SOLDERING_MATERIAL)) {
 //          int tMultiplier = tMat.contains(SubTag.SOLDERING_MATERIAL_BAD) ? 4 : tMat.contains(SubTag.SOLDERING_MATERIAL_GOOD) ? 1 : 2;
-//          for (ItemStack tPlate : new ItemStack[] {OM.get(OP.plate, MT.Fe, 1), OM.get(OP.plate, MT.WroughtIron, 1), OM.get(OP.plate, MT.Al, 1)}) {
+//          for (ItemStack tPlate : ST.array(OM.get(OP.plate, MT.Fe, 1), OM.get(OP.plate, MT.WroughtIron, 1), OM.get(OP.plate, MT.Al, 1)}) {
 //              RA.addAssemblerRecipe(ST.make(Blocks.lever                          , 1, W) , tPlate, tMat.getMolten((L * tMultiplier) / 2), IL.Cover_Controller.get(1)         , 800, 16);
 //              RA.addAssemblerRecipe(ST.make(Blocks.redstone_torch                 , 1, W) , tPlate, tMat.getMolten((L * tMultiplier) / 2), IL.Cover_ActivityDetector.get(1)       , 800, 16);
 //              RA.addAssemblerRecipe(ST.make(Blocks.heavy_weighted_pressure_plate  , 1, W) , tPlate, tMat.getMolten((L * tMultiplier) / 2), IL.Cover_FluidDetector.get(1)      , 800, 16);
@@ -55,7 +55,7 @@ public class Loader_MachineRecipes implements Runnable {
 //              RA.addAssemblerRecipe(ST.makeIC2("ecMeter"                  , 1)    , tPlate, tMat.getMolten((L * tMultiplier) / 2), IL.Cover_EnergyDetector.get(1)     , 800, 16);
 //          }
 //      }
-		
+
 //      RA.addAssemblerRecipe(ST.make(Blocks.redstone_torch, 2, W)                                          , OM.get(OP.dust, MT.Redstone, 1)       , MT.Concrete.getMolten(L)      , ST.make(Items.repeater, 1, 0)                                         , 800,    1);
 //      RA.addAssemblerRecipe(ST.make(Items.leather, 1, W)                                                  , ST.make(Items.lead, 1, W)                                     , MT.Glue.getFluid( 50)         , ST.make(Items.name_tag, 1, 0)                                         , 100,    8);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Paper, 8)                     , ST.make(Items.compass, 1, W)                                  , NF                                    , ST.make(Items.map, 1, 0)                                              , 100,    8);
@@ -84,8 +84,8 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addAssemblerRecipe(IL.Food_Buns_Sliced.get(1)     , IL.Food_Cheese_Sliced.get(3)                                  , NF                                    , IL.Food_Burger_Cheese.get(1)                                          , 100,    4);
 		RA.addAssemblerRecipe(IL.Food_Dough_Flat.get(1)      , OM.get(OP.dust, MT.MeatCooked, 1) , NF                                    , IL.Food_Pizza_Meat_Raw.get(1)                                         , 100,    4);
 		RA.addAssemblerRecipe(IL.Food_Dough_Flat.get(1)      , IL.Food_Cheese_Sliced.get(3)                                  , NF                                    , IL.Food_Pizza_Cheese_Raw.get(1)                                           , 100,    4);
-		
-		
+
+
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Talc, 1)     , FluidRegistry.getFluid("oil")     , FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Soapstone, 1), FluidRegistry.getFluid("oil")     , FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Redstone, 1) , FluidRegistry.getFluid("oil")     , FluidRegistry.getFluid("lubricant"), F);
@@ -95,29 +95,29 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Talc, 1)     , FluidRegistry.getFluid("seedoil") , FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Soapstone, 1), FluidRegistry.getFluid("seedoil") , FluidRegistry.getFluid("lubricant"), F);
 		RA.addBrewingRecipe(OM.get(OP.dust, MT.Redstone, 1) , FluidRegistry.getFluid("seedoil") , FluidRegistry.getFluid("lubricant"), F);
-		
-		
+
+
 //      RM.pulverizing(ST.make(Items.item_frame, 1, W), ST.make(Items.leather, 1), OM.dust(MT.Wood, OP.stick.mMaterialAmount * 4), 95, F);
 //      RM.pulverizing(ST.make(Items.bow, 1, 0), ST.make(Items.string, 3), OM.dust(MT.Wood, OP.stick.mMaterialAmount * 3), 95, F);
-		
+
 //      RA.addCannerRecipe(OM.get(OP.cell, Materials.Nitrogen, 16), ItemList.Spray_Empty.get(1), ItemList.Spray_Ice.get(1), ItemList.Cell_Empty.get(16), 1600, 2);
-		
+
 //      RA.addFusionReactorRecipe(OM.get(OP.cell, MT.D  , 1), OM.get(OP.cell, MT.T      , 1), OM.get(OP.cellPlasma, MT.He, 1), 128, -4096, 40000000);
 //      RA.addFusionReactorRecipe(OM.get(OP.cell, MT.D  , 1), OM.get(OP.cell, MT.He_3   , 1), OM.get(OP.cellPlasma, MT.He, 1), 128, -2048, 60000000);
 //      RA.addFusionReactorRecipe(OM.get(OP.cell, MT.Li , 1), OM.get(OP.cell, MT.W      , 1), OM.get(OP.dust, MT.Ir, 1), 512, -32768, 150000000);
 //      RA.addFusionReactorRecipe(OM.get(OP.cell, MT.Be , 1), OM.get(OP.cell, MT.W      , 1), OM.get(OP.dust, MT.Pt, 1), 512, -32768, 100000000);
-		
+
 		RA.addImplosionRecipe(IL.IC2_Compressed_Coal_Chunk.get(1), 8, OP.gem.mat(MT.DiamondIndustrial, 1), OM.get(OP.dustTiny, MT.DarkAsh, 4));
-		
+
 //      RA.addDistillationRecipe(OM.get(OP.cell, MT.Oil     , 16), 32, OM.get(OP.cell, MT.Fuel, 16), OM.get(OP.cell, MT.SulfuricAcid, 16), OM.get(OP.cell, MT.Glyceryl, 1), OM.get(OP.cell, MT.Methane, 15), 4000, 64);
 //      RA.addDistillationRecipe(OM.get(OP.cell, MT.Biomass ,  3), 0, OM.get(OP.cell, MT.Ethanol, 1), OM.get(OP.cell, MT.Water, 1), IL.Cell_Empty.get(1), IL.IC2_Fertilizer.get(1), 500, 64);
-		
+
 //      RA.addChemicalRecipe(OM.get(OP.dust, MT.Sn          , 1), OM.get(OP.dust, MT.Saltpeter  , 1), MT.Glass.getMolten(L * 6)     , NF                                            , ST.make(MD.RC, "tile.railcraft.glass", 6)         ,   50);
-		
+
 		RA.addVacuumFreezerRecipe(ST.mkic("reactorCoolantSimple", 1, W), ST.mkic("reactorCoolantSimple", 1), 100);
 		RA.addVacuumFreezerRecipe(ST.mkic("reactorCoolantTriple", 1, W), ST.mkic("reactorCoolantTriple", 1), 300);
 		RA.addVacuumFreezerRecipe(ST.mkic("reactorCoolantSix"   , 1, W), ST.mkic("reactorCoolantSix"   , 1), 600);
-		
+
 		if (!ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", F))
 		RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood          , 1), ST.make(Items.coal, 1, W), ST.make(Blocks.torch, 4, 0), 400, 1);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Au            , 2), ST.tag(2), ST.make(Blocks.light_weighted_pressure_plate, 1, 0), 200, 4);
@@ -154,15 +154,15 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addAssemblerRecipe(ST.make(Blocks.stone_slab, 3, 7), IL.RC_Rebar.get(1), IL.RC_Tie_Stone.get(1), 128, 8);
 		RA.addAssemblerRecipe(OM.get(OP.wireGt01, MT.Cu, 9), OM.get(OP.plate, MT.Pb, 2), NF, IL.RC_ShuntingWire.get(4), 1600, 4);
 		RA.addAssemblerRecipe(OM.get(OP.wireGt01, MT.AnnealedCopper, 9), OM.get(OP.plate, MT.Pb, 2), NF, IL.RC_ShuntingWire.get(4), 1600, 4);
-		
-		for (ItemStack tRail : new ItemStack[] {IL.RC_Rail_Standard.get(6), IL.RC_Rail_Adv.get(6), IL.RC_Rail_Reinforced.get(6), IL.RC_Rail_Electric.get(6), IL.RC_Rail_HS.get(6), IL.RC_Rail_Wooden.get(6)}) {
-			for (ItemStack tBed : new ItemStack[] {IL.RC_Bed_Wood.get(1), IL.RC_Bed_Stone.get(1)}) {
+
+		for (ItemStack tRail : ST.array(IL.RC_Rail_Standard.get(6), IL.RC_Rail_Adv.get(6), IL.RC_Rail_Reinforced.get(6), IL.RC_Rail_Electric.get(6), IL.RC_Rail_HS.get(6), IL.RC_Rail_Wooden.get(6))) {
+			for (ItemStack tBed : ST.array(IL.RC_Bed_Wood.get(1), IL.RC_Bed_Stone.get(1))) {
 				RA.addAssemblerRecipe(tBed, tRail, CR.get(tRail, NI, tRail, tRail, tBed, tRail, tRail, NI, tRail), 400, 4);
-//              RA.addAssemblerRecipe(tBed, tRail, MT.Redstone.getMolten(L  ), CR.getOutput(new ItemStack[] {tRail, NI, tRail, tRail, tBed, tRail, tRail, OM.get(OP.dust, MT.Redstone, 1), tRail}), 400, 4);
-//              RA.addAssemblerRecipe(tBed, tRail, MT.Redstone.getMolten(L*2), CR.getOutput(new ItemStack[] {tRail, OM.get(OP.dust, MT.Redstone, 1), tRail, tRail, tBed, tRail, tRail, OM.get(OP.dust, MT.Redstone, 1), tRail}), 400, 4);
+//              RA.addAssemblerRecipe(tBed, tRail, MT.Redstone.getMolten(L  ), CR.getOutput(ST.array(tRail, NI, tRail, tRail, tBed, tRail, tRail, OM.get(OP.dust, MT.Redstone, 1), tRail}), 400, 4);
+//              RA.addAssemblerRecipe(tBed, tRail, MT.Redstone.getMolten(L*2), CR.getOutput(ST.array(tRail, OM.get(OP.dust, MT.Redstone, 1), tRail, tRail, tBed, tRail, tRail, OM.get(OP.dust, MT.Redstone, 1), tRail}), 400, 4);
 			}
 		}
-		
+
 		RA.addAssemblerRecipe(ST.mkic("carbonFiber", 2), ST.tag(2), ST.mkic("carbonMesh", 1), 800, 2);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Al, 4), ST.mkic("generator", 1), ST.mkic("waterMill", 2), 6400, 8);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Fe, 5), ST.make(Blocks.chest, 1, W), ST.make(Blocks.hopper, 1, 0), 800, 2);

@@ -93,13 +93,13 @@ import net.minecraftforge.fluids.FluidRegistry;
  * @author Gregorius Techneticies
  */
 public class GT_API_Proxy_Client extends GT_API_Proxy {
-	
+
 	public GT_API_Proxy_Client() {
 		super();
 		CODE_SERVER = T;
 		CODE_CLIENT = T;
 		CODE_UNCHECKED = F;
-		
+
 		for (int i = 0; i < 4; i++) {
 			sPosR.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Force.mRGBa[i], MT.Pyrotheum.mRGBa[i], MT.Sunnarium.mRGBa[i], MT.Glowstone.mRGBa[i], MT.Mcg.mRGBa[i], MT.Thaumium.mRGBa[i], MT.InfusedVis.mRGBa[i], MT.InfusedAir.mRGBa[i], MT.InfusedFire.mRGBa[i], MT.FierySteel.mRGBa[i], MT.Firestone.mRGBa[i], MT.ArcaneAsh.mRGBa[i]));
 			sPosG.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Force.mRGBa[i], MT.Pyrotheum.mRGBa[i], MT.Sunnarium.mRGBa[i], MT.Glowstone.mRGBa[i], MT.InfusedAir.mRGBa[i], MT.InfusedEarth.mRGBa[i]));
@@ -110,24 +110,24 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			sRainbow.addAll(Arrays.asList(MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.InfusedBalance.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.Shimmerwood.mRGBa[i], MT.Shimmerwood.mRGBa[i]));
 		}
 	}
-	
+
 	@Override
 	public int addArmor(String aPrefix) {
 		try {return RenderingRegistry.addNewArmourRendererPrefix(aPrefix);} catch(Throwable e) {/**/}
 		return 0;
 	}
-	
+
 	@Override
 	public EntityPlayer getThePlayer() {
 		return Minecraft.getMinecraft().thePlayer;
 	}
-	
+
 	@Override
 	public boolean sendUseItemPacket(EntityPlayer aPlayer, World aWorld, ItemStack aStack) {
 		Minecraft.getMinecraft().playerController.sendUseItem(aPlayer, aWorld, aStack);
 		return T;
 	}
-	
+
 	@Override
 	@SuppressWarnings("deprecation")
 	public void onProxyAfterPreInit(Abstract_Mod aMod, FMLPreInitializationEvent aEvent) {
@@ -137,7 +137,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		FluidRegistry.renderIdFluid = RendererBlockFluid.RENDER_ID;
 		// Check if OptiFine is loaded in order to disable some GT Render Hooks to fix Glitches.
 		ITexture.Util.OPTIFINE_LOADED = FMLClientHandler.instance().hasOptifine();
-		
+
 		switch (new Date().getMonth()) {// Not going to use Calendar, because it fucking crashes with Missing Resource Exception...
 		case  8:
 			Textures.BlockIcons.LEAVES[1] = Textures.BlockIcons.LEAVES_MAPLE_YELLOW;
@@ -157,12 +157,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			break;
 		}
 	}
-	
+
 	@Override
 	public void onProxyBeforeInit(Abstract_Mod aMod, FMLInitializationEvent aEvent) {
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) LH.add("gt.material." + tMaterial.mNameInternal, tMaterial.mNameLocal);
 	}
-	
+
 	@Override
 	public void onProxyAfterInit(Abstract_Mod aMod, FMLInitializationEvent aEvent) {
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) {
@@ -170,7 +170,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			tPrefix.mNameLocal = LH.get("oredict.prefix." + tPrefix.mNameInternal, tPrefix.mNameLocal);
 		}
 	}
-	
+
 	@Override
 	public void onProxyAfterPostInit(Abstract_Mod aMod, FMLPostInitializationEvent aEvent) {
 		// Initialising the List of Decorative Plank Icons
@@ -179,9 +179,9 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			if (tBlock != null && tBlock != NB) PlankData.PLANK_ICONS[i] = new IconContainerCopied(tBlock, ST.meta_(PlankData.PLANKS[i]), SIDE_ANY);
 		}
 	}
-	
+
 	public static final List<short[]> sRainbow = new ArrayListNoNulls<>(), sPosR = new ArrayListNoNulls<>(), sPosG = new ArrayListNoNulls<>(), sPosB = new ArrayListNoNulls<>(), sPosA = new ArrayListNoNulls<>(), sNegR = new ArrayListNoNulls<>(), sNegG = new ArrayListNoNulls<>(), sNegB = new ArrayListNoNulls<>(), sNegA = new ArrayListNoNulls<>();
-	
+
 	@SubscribeEvent
 	public void onTextureStitchedPre(TextureStitchEvent.Pre aEvent) {
 		// You should thank me for fixing this Fluid Bug. Seriously, some people just don't set the Icons of their registered Fluids...
@@ -197,12 +197,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent aEvent) {
 		if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI || ST.invalid(aEvent.itemStack)) return;
 		if (!DISPLAY_TEMP_TOOLTIP) {DISPLAY_TEMP_TOOLTIP = T; return;}
-		
+
 		if (UT.NBT.getNBT(aEvent.itemStack).getBoolean("gt.err.oredict.output")) {
 			aEvent.toolTip.clear();
 			aEvent.toolTip.add(0, "A Recipe used an OreDict Item as Output directly, without copying it before!");
@@ -211,14 +211,14 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			aEvent.toolTip.add(3, "The Owner of the RECIPE, NOT the Owner of the Item!");
 			return;
 		}
-		
+
 		String aRegName = ST.regName(aEvent.itemStack);
 		if (aRegName == null) aRegName = "ERROR: THIS ITEM HAS NOT BEEN REGISTERED!!!";
 		short aMeta = ST.meta_(aEvent.itemStack);
 		byte aBlockMeta = (byte)(UT.Code.inside(0, 15, aMeta) ? aMeta : 0);
 		Block aBlock = ST.block(aEvent.itemStack);
 		Item aItem = ST.item(aEvent.itemStack);
-		
+
 		if (aEvent.itemStack.getTagCompound() == null) {
 			if (aBlock == Blocks.dirt && aBlockMeta == 1) {
 				aEvent.toolTip.set(0, "Coarse Dirt");
@@ -233,19 +233,19 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				}
 			}
 		}
-		
-		
-		
-		
+
+
+
+
 		if (ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.contains(aEvent.itemStack, T)) {
 			aEvent.toolTip.add(LH.Chat.BLINKING_RED + "Recipe has been removed in favour of the GregTech Ender Garbage Bin");
 		}
-		
-		
+
+
 		ICover tCover = CoverRegistry.get(aEvent.itemStack);
 		if (tCover != null) tCover.addToolTips(aEvent.toolTip, aEvent.itemStack, aEvent.showAdvancedItemTooltips);
-		
-		
+
+
 		if (aBlock != NB && aBlock != null) {
 			if (IL.TC_Warded_Glass.equal(aEvent.itemStack, F, T)) {
 				aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, 999));
@@ -262,20 +262,20 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aBlock.getHarvestTool(aBlockMeta), "Pickaxe") + " ("+aBlock.getHarvestLevel(aBlockMeta)+")");
 			}
 		}
-		
-		
+
+
 		if (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aEvent.itemStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aEvent.itemStack, W))) {
 			aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_SHELFABLE));
 		}
-		
-		
+
+
 		if (aItem.isBeaconPayment(aEvent.itemStack)) {
 			aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_BEACON_PAYMENT));
 		}
-		
-		
+
+
 		OreDictItemData tData = OM.anydata_(aEvent.itemStack);
-		
+
 		if (!(aItem instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
 			if (tData != null && tData.hasValidPrefixMaterialData()) {
 				if (tData.mBlackListed) {
@@ -294,7 +294,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta);
 			}
 		}
-		
+
 		if (tData != null) {
 			if (tData.mPrefix != null) {
 				for (IOreDictListenerItem tListener : tData.mPrefix.mListenersItem) {
@@ -308,7 +308,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (tToolTip != null) aEvent.toolTip.add(tToolTip);
 				}
 			}
-			
+
 			if (tData.hasValidMaterialData()) {
 				boolean tShowMaterialToolInfo = tData.mMaterial.mMaterial.mToolTypes > 0 && (tData.mPrefix != null || (aEvent.itemStack.getMaxStackSize() > 1 && tData.mByProducts.length == 0 && tData.mMaterial.mAmount <= U));
 				if (tShowMaterialToolInfo) {
@@ -320,7 +320,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				if (tData.hasValidPrefixData()) {
 					if (tData.mPrefix.contains(TD.Prefix.NEEDS_SHARPENING   )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_SHARPENING));
 					if (tData.mPrefix.contains(TD.Prefix.NEEDS_HANDLE       )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_HANDLE) + LH.Chat.WHITE + tData.mMaterial.mMaterial.mHandleMaterial.getLocal());
-					
+
 					ArrayListNoNulls<Integer> tShapelessAmounts = new ArrayListNoNulls<>();
 					for (AdvancedCrafting1ToY tHandler : tData.mPrefix.mShapelessManagersSingle ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(1);
 					for (AdvancedCraftingXToY tHandler : tData.mPrefix.mShapelessManagers       ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(tHandler.mInputCount);
@@ -330,9 +330,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					}
 				}
 				if (tShowMaterialToolInfo) {
-					if (!tData.mMaterial.mMaterial.mEnchantmentTools.isEmpty()) {
+					switch(tData.mMaterial.mMaterial.mEnchantmentTools.size()) {
+					case 0:
+						break;
+					case 1: case 2: case 3:
 						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
-						for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools ) {
+						for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
 							if (tEnchantment.mObject == Enchantment.fortune) {
 								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fortune   .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.looting .getTranslatedName((int)tEnchantment.mAmount));
 							} else if (tEnchantment.mObject == Enchantment.knockback) {
@@ -343,14 +346,28 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 								aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
 							}
 						}
+						break;
+					default:
+						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_TOOL_ENCHANTS));
+						break;
 					}
-					if (!tData.mMaterial.mMaterial.mEnchantmentArmors.isEmpty() && (tData.mPrefix == null || !tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE))) {
+
+					if (tData.mPrefix == null || !tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE))
+					switch(tData.mMaterial.mMaterial.mEnchantmentArmors.size()) {
+					case 0:
+						break;
+					case 1: case 2: case 3:
 						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_ARMOR_ENCHANTS));
 						for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentArmors) {
 							aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
 						}
+						break;
+					default:
+						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_ARMOR_ENCHANTS));
+						break;
 					}
 				}
+
 				if (tData.hasValidPrefixData()) {
 					if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
 						aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
@@ -409,24 +426,24 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 		}
 	}
-	
+
 	public boolean mNeedsToHideMicroblocks = T;
-	
+
 	@SubscribeEvent
 	public void onClientTickEvent(ClientTickEvent aEvent) {
 		if (aEvent.phase == Phase.END) {
 			// Now for hiding stuff from NEI that should have never been there in the first place.
 			if (mNeedsToHideMicroblocks) {
-				if (!SHOW_MICROBLOCKS && NEI) for (ItemStack aStack : new ItemStack[] {ST.make(MD.FMB, "microblock", 1, W), ST.make(MD.ExU, "microblocks", 1, W), ST.make(MD.AE, "item.ItemFacade", 1, W)}) if (ST.valid(aStack)) {
+				if (!SHOW_MICROBLOCKS && NEI) for (ItemStack aStack : ST.array(ST.make(MD.FMB, "microblock", 1, W), ST.make(MD.ExU, "microblocks", 1, W), ST.make(MD.AE, "item.ItemFacade", 1, W))) if (ST.valid(aStack)) {
 					ST.hide(aStack);
-					
+
 					List<ItemStack> tList = new ArrayListNoNulls<>();
 					aStack.getItem().getSubItems(aStack.getItem(), CreativeTabs.tabAllSearch, tList);
 					for (ItemStack tStack : tList) ST.hide(tStack);
 				}
 				mNeedsToHideMicroblocks = F;
 			}
-			
+
 			switch((int)(CLIENT_TIME % 10)) {
 			case   0: LH.Chat.RAINBOW_FAST = LH.Chat.RED; LH.Chat.BLINKING_CYAN = LH.Chat.CYAN; LH.Chat.BLINKING_RED = LH.Chat.RED; break;
 			case   1: LH.Chat.RAINBOW_FAST = LH.Chat.ORANGE; break;
@@ -439,7 +456,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			case   8: LH.Chat.RAINBOW_FAST = LH.Chat.PURPLE; break;
 			case   9: LH.Chat.RAINBOW_FAST = LH.Chat.PINK; break;
 			}
-			
+
 			switch((int)(CLIENT_TIME % 50)) {
 			case   0: LH.Chat.RAINBOW = LH.Chat.RED; break;
 			case   5: LH.Chat.RAINBOW = LH.Chat.ORANGE; break;
@@ -452,7 +469,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			case  40: LH.Chat.RAINBOW = LH.Chat.PURPLE; break;
 			case  45: LH.Chat.RAINBOW = LH.Chat.PINK; break;
 			}
-			
+
 			switch((int)(CLIENT_TIME % 250)) {
 			case   0: LH.Chat.RAINBOW_SLOW = LH.Chat.RED; break;
 			case  25: LH.Chat.RAINBOW_SLOW = LH.Chat.ORANGE; break;
@@ -465,7 +482,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			case 200: LH.Chat.RAINBOW_SLOW = LH.Chat.PURPLE; break;
 			case 225: LH.Chat.RAINBOW_SLOW = LH.Chat.PINK; break;
 			}
-			
+
 			int tDirection = (CLIENT_TIME % 100 < 50 ? +1 : -1);
 			for (short[] tArray : sPosR) tArray[0] = UT.Code.bind8(tArray[0]+tDirection);
 			for (short[] tArray : sPosG) tArray[1] = UT.Code.bind8(tArray[1]+tDirection);
@@ -475,11 +492,11 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			for (short[] tArray : sNegG) tArray[1] = UT.Code.bind8(tArray[1]-tDirection);
 			for (short[] tArray : sNegB) tArray[2] = UT.Code.bind8(tArray[2]-tDirection);
 			for (short[] tArray : sNegA) tArray[3] = UT.Code.bind8(tArray[3]-tDirection);
-			
+
 			boolean
 			tNR = UT.Code.inside(  0,  99, (CLIENT_TIME/2) % 300), tNG = UT.Code.inside( 50, 149, (CLIENT_TIME/2) % 300), tNB = UT.Code.inside(100, 199, (CLIENT_TIME/2) % 300),
 			tPR = UT.Code.inside(100, 199, (CLIENT_TIME/2) % 300), tPG = UT.Code.inside(150, 249, (CLIENT_TIME/2) % 300), tPB = UT.Code.inside(200, 299, (CLIENT_TIME/2) % 300);
-			
+
 			for (short[] tArray : sRainbow) {
 			if (tPR) tArray[0] = UT.Code.bind8(tArray[0] + 1);
 			if (tPG) tArray[1] = UT.Code.bind8(tArray[1] + 1);
@@ -488,11 +505,11 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			if (tNG) tArray[1] = UT.Code.bind8(tArray[1] - 1);
 			if (tNB) tArray[2] = UT.Code.bind8(tArray[2] - 1);
 			}
-			
+
 			CLIENT_TIME++;
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
 		Block aBlock = aEvent.player.worldObj.getBlock(aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ);
@@ -504,6 +521,6 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 		}
 	}
-	
+
 	private static List<Block> ROTATABLE_VANILLA_BLOCKS = Arrays.asList(Blocks.piston, Blocks.sticky_piston, Blocks.furnace, Blocks.lit_furnace, Blocks.dropper, Blocks.dispenser, Blocks.chest, Blocks.trapped_chest, Blocks.ender_chest, Blocks.hopper, Blocks.pumpkin, Blocks.lit_pumpkin);
 }

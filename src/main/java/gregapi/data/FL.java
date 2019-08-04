@@ -568,7 +568,7 @@ public enum FL {
 	
 	
 	
-	public static FluidStack[] make(FluidStack... aFluids) {return aFluids;}
+	public static FluidStack[] array(FluidStack... aFluids) {return aFluids;}
 	
 	public static int id (IFluidTank aTank) {return aTank == null ? -1 : id_(aTank);}
 	public static int id_(IFluidTank aTank) {return id(aTank.getFluid());}

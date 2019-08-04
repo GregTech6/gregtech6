@@ -45,7 +45,6 @@ import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 public class Compat_Recipes_Thaumcraft extends CompatMods {
 	public Compat_Recipes_Thaumcraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -68,14 +67,14 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		
 		RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.string, 1, W), MT.Tallow.liquid(U*2, T), NF, ST.make(MD.TC, "blockCandle", 3, 0));
 		
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Beef.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OM.dust(MT.Sugar)               , IL.TC_Nugget_Fish     .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Beef.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Fish     .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)}, IL.TC_Triple_Meat_Treat.get(1));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Beef.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Pork.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OM.dust(MT.Sugar)               , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OM.dust(MT.Sugar)               , IL.TC_Nugget_Fish     .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Beef.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Fish.wild(1), IL.TC_Nugget_Pork.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Fish     .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
 		
 		RM.compact(ST.make(Items.rotten_flesh, 9, W), 9, IL.TC_Block_Flesh.get(1));
 		RM.unpack(IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));

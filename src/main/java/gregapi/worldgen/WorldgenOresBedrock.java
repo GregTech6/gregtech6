@@ -53,7 +53,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	public final boolean mIndicatorRocks, mIndicatorFlowers;
 	public final Block mFlower;
 	public final byte mFlowerMeta;
-	
+
 	public static boolean CAN_GENERATE_BEDROCK_ORE = T;
 
 	@SafeVarargs
@@ -71,7 +71,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 		mMaterial           = OreDictMaterial.get(  ConfigsGT.WORLDGEN.get(mCategory, "Ore"                 , aPrimary.mNameInternal));
 		mIndicatorRocks     =                       ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"      , aIndicatorRocks);
 		mIndicatorFlowers   =                       ConfigsGT.WORLDGEN.get(mCategory, "IndicatorFlowers"    , aFlower != null && aFlower != NB);
-		
+
 		if (mIndicatorFlowers && (aFlower == null || aFlower == NB)) {
 			mFlower = Blocks.yellow_flower;
 			mFlowerMeta = 0;
@@ -79,9 +79,9 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			mFlower = aFlower;
 			mFlowerMeta = UT.Code.bind4(aFlowerMeta);
 		}
-		
+
 		if (mEnabled) OreDictManager.INSTANCE.triggerVisibility("ore"+mMaterial.mNameInternal);
-		
+
 		if (mMaterial.mID <= 0) {
 			ERR.println("The Material is not valid for Ores: " + mMaterial);
 			mInvalid = T;
@@ -89,34 +89,34 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			ItemStack[] tOres = new ItemStack[mMaterial.mByProducts.size() + 2];
 			tOres[0] = ST.make((Block)BlocksGT.oreBroken, 1, mMaterial.mID);
 			tOres[tOres.length-1] = OP.dustImpure.mat(MT.Bedrock, 1);
-			
+
 			long[] tChances = new long[tOres.length];
 			tChances[0] = (tChances.length > 2 ? 9687 : 10000);
 			tChances[tChances.length-1] = 10;
-			
+
 			for (int i = 0, j = mMaterial.mByProducts.size(); i < j; i++) {
 				OreDictMaterial tByProduct = mMaterial.mByProducts.get(i);
 				tOres[i+1] = ST.make((Block)BlocksGT.oreBroken, 1, (tByProduct.mID>0?tByProduct:mMaterial).mID);
 				tChances[i+1] = UT.Code.divup(10000, (32 * (tChances.length - 2)));
 			}
-			
-			RM.BedrockOreList.addFakeRecipe(F, new ItemStack[] {ST.make((Block)BlocksGT.oreBedrock, 1, mMaterial.mID)}, tOres, null, tChances, null, null, 0, 0, 0);
+
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, mMaterial.mID)), tOres, null, tChances, null, null, 0, 0, 0);
 		}
 	}
-	
+
 	@Override
 	public void reset(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		CAN_GENERATE_BEDROCK_ORE = T;
 	}
-	
+
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (!CAN_GENERATE_BEDROCK_ORE || aRandom.nextInt(mProbability) != 0) return F;
 		if (GENERATE_BIOMES && aWorld.provider.dimensionId == 0 && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
-		
+
 		if (WD.bedrock(aWorld, aMinX+8, 0, aMinZ+8)) {
 			CAN_GENERATE_BEDROCK_ORE = F;
-			
+
 			if ((mIndicatorRocks || mIndicatorFlowers) && (!(GENERATE_STREETS && aWorld.provider.dimensionId == 0) || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) {
 				ItemStack tRock = OP.rockGt.mat(mMaterial, 1);
 				if (ST.valid(tRock)) {
@@ -144,7 +144,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 					}
 				}
 			}
-			
+
 			int[] tDistances = new int[] {0, 3, 6, 8, 9, 7, 4};
 			for (int tY = 1; tY < 7; tY++) for (int tX = -tDistances[tY]; tX <= tDistances[tY]; tX++) for (int tZ = -tDistances[tY]; tZ <= tDistances[tY]; tZ++) {
 				WD.removeBedrock(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ);

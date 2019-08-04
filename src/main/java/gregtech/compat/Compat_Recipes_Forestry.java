@@ -45,7 +45,6 @@ import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_Forestry extends CompatMods {
 	public Compat_Recipes_Forestry(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -270,10 +269,10 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Squeezer     .addRecipe1(T, 16,   64                                     , IL.FR_Ice_Shard           .get(1), NF, FL.Ice.make(1000), ZL_IS);
 		RM.Squeezer     .addRecipe1(T, 16,   64                                     , IL.FR_Phosphor            .get(1), NF, FL.Lava.make(1000), ZL_IS);
 		
-		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Propolis            .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L  ), FL.Glue.make( 250)}, ZL_IS);
-		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Propolis_Sticky     .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L/4), FL.Glue.make(1000)}, ZL_IS);
-		RM.Centrifuge   .addRecipe1(T, 16,   64,   100                              , IL.FR_Propolis_Pulsating  .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L/4), FL.Glue.make( 125)}, OM.dust(MT.EnderPearl, U9));
-		RM.Centrifuge   .addRecipe1(T, 16,   64,  6000                              , IL.FR_Propolis_Silky      .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L/4), FL.Glue.make( 125)}, IL.FR_Silk.get(1));
+		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Propolis            .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), ZL_IS);
+		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Propolis_Sticky     .get(1), ZL_FS, FL.array(FL.Latex.make(L/4), FL.Glue.make(1000)), ZL_IS);
+		RM.Centrifuge   .addRecipe1(T, 16,   64,   100                              , IL.FR_Propolis_Pulsating  .get(1), ZL_FS, FL.array(FL.Latex.make(L/4), FL.Glue.make( 125)), OM.dust(MT.EnderPearl, U9));
+		RM.Centrifuge   .addRecipe1(T, 16,   64,  6000                              , IL.FR_Propolis_Silky      .get(1), ZL_FS, FL.array(FL.Latex.make(L/4), FL.Glue.make( 125)), IL.FR_Silk.get(1));
 		
 //      RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Comb_Honey          .get(1), NF, FL.Honey   .make( 90), OM.dust(MT.WaxBee));
 		RM.Centrifuge   .addRecipe1(T, 16,   64                                     , IL.FR_Comb_Cocoa          .get(1)                           , OM.dust(MT.WaxBee), OM.dust(MT.Cocoa, U2));
@@ -375,12 +374,12 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.DarkAsh, 3*U)           , ST.make(Blocks.dirt, 1, W), IL.FR_Compost.get(1));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.VolcanicAsh, 2*U)       , ST.make(Blocks.dirt, 1, W), IL.FR_Compost.get(1));
 		
-		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), new FluidStack[] {FL.Honey   .make(600), FL.Honeydew.make(200), FL.Potion_Awkward.make(750)}, new FluidStack[] {FL.Potion_Heal_1.make(750)}, ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), new FluidStack[] {FL.Honey   .make(600), FL.Honeydew.make(200), FL.Potion_Thick  .make(750)}, new FluidStack[] {FL.Potion_Heal_2.make(750)}, ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), new FluidStack[] {FL.HoneyGrC.make(600), FL.Honeydew.make(200), FL.Potion_Awkward.make(750)}, new FluidStack[] {FL.Potion_Heal_1.make(750)}, ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), new FluidStack[] {FL.HoneyGrC.make(600), FL.Honeydew.make(200), FL.Potion_Thick  .make(750)}, new FluidStack[] {FL.Potion_Heal_2.make(750)}, ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), new FluidStack[] {FL.HoneyBoP.make(600), FL.Honeydew.make(200), FL.Potion_Awkward.make(750)}, new FluidStack[] {FL.Potion_Heal_1.make(750)}, ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), new FluidStack[] {FL.HoneyBoP.make(600), FL.Honeydew.make(200), FL.Potion_Thick  .make(750)}, new FluidStack[] {FL.Potion_Heal_2.make(750)}, ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), FL.array(FL.Honey   .make(600), FL.Honeydew.make(200), FL.Potion_Awkward.make(750)), FL.array(FL.Potion_Heal_1.make(750)), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), FL.array(FL.Honey   .make(600), FL.Honeydew.make(200), FL.Potion_Thick  .make(750)), FL.array(FL.Potion_Heal_2.make(750)), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), FL.array(FL.HoneyGrC.make(600), FL.Honeydew.make(200), FL.Potion_Awkward.make(750)), FL.array(FL.Potion_Heal_1.make(750)), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), FL.array(FL.HoneyGrC.make(600), FL.Honeydew.make(200), FL.Potion_Thick  .make(750)), FL.array(FL.Potion_Heal_2.make(750)), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), FL.array(FL.HoneyBoP.make(600), FL.Honeydew.make(200), FL.Potion_Awkward.make(750)), FL.array(FL.Potion_Heal_1.make(750)), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   64, ST.make(Items.melon, 1, W), FL.array(FL.HoneyBoP.make(600), FL.Honeydew.make(200), FL.Potion_Thick  .make(750)), FL.array(FL.Potion_Heal_2.make(750)), ZL_IS);
 		
 		RM.Mixer        .addRecipe2(T, 16,   64, IL.FR_Pollen_Cluster.get(3)        , IL.FR_Propolis            .get(6), ZL_FS, FL.Slime_Green.make(250), ZL_IS);
 		
@@ -389,28 +388,28 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), OM.dust(MT.DarkAsh, U*4), IL.FR_Fertilizer.get(16));
 		RM.Mixer        .addRecipe2(T, 16,   16, OP.gem.mat(MT.Apatite, 1), OM.dust(MT.VolcanicAsh, U*4), IL.FR_Fertilizer.get(16));
 		
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), OM.dust(MT.SoylentGreen), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), OM.dust(MT.SoylentGreen), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), OM.dust(MT.MeatRaw     ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), OM.dust(MT.MeatRaw     ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), OM.dust(MT.FishRaw     ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), OM.dust(MT.FishRaw     ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), OM.dust(MT.MeatCooked  ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), OM.dust(MT.MeatCooked  ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), OM.dust(MT.FishCooked  ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), OM.dust(MT.FishCooked  ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), OM.dust(MT.MeatRotten  ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), OM.dust(MT.MeatRotten  ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), OM.dust(MT.FishRotten  ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), OM.dust(MT.FishRotten  ), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.NaNO3), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
-		RM.Mixer        .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.KNO3 ), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)}, IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.SoylentGreen), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.SoylentGreen), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.MeatRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.MeatRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.FishRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.FishRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.MeatCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.MeatCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.FishCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.FishCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.MeatRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.MeatRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.FishRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.FishRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), ST.make(Blocks.sand, 2, W), IL.FR_Fertilizer.get(8));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.Ash, U*8), IL.FR_Fertilizer.get(16));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.DarkAsh, U*4), IL.FR_Fertilizer.get(16));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.VolcanicAsh, U*4), IL.FR_Fertilizer.get(16));
 		
-		RM.Mixer        .addRecipeX(T, 16,   64, new ItemStack[] {ST.make(Blocks.sand, 4, W), ST.make(Blocks.dirt, 4, W), IL.FR_Mulch.get(1)}, ST.make(MD.FR, "soil", 8, 1));
+		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(ST.make(Blocks.sand, 4, W), ST.make(Blocks.dirt, 4, W), IL.FR_Mulch.get(1)), ST.make(MD.FR, "soil", 8, 1));
 		
 		for (FL tFluid : new FL[] {FL.Water, FL.DistW, FL.Ocean, FL.OceanGrC, FL.Tropics_Water}) if (tFluid.exists()) {
 		if (IL.IC2_Fertilizer.exists())

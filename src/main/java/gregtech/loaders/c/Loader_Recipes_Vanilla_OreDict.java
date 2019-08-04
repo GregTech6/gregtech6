@@ -90,9 +90,9 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Mixer        .addRecipe1(T, 16,   16, aEvent.mStack, FL.DistW.make(200), FL.Glue.make(250), ZL_IS);
 			RM.Mixer        .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(MT.Blaze), ST.make(Items.magma_cream, 1, 0));
 			for (byte i = 0; i < 16; i++)
-			RM.Loom         .addRecipeX(T, 16,   16, new ItemStack[] {ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4)}, ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, new ItemStack[] {ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.Cu, 4)}, ST.make(Items.lead, 2, 0));
-			RM.Loom         .addRecipeX(T, 16,   16, new ItemStack[] {ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)}, ST.make(Items.lead, 2, 0));
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.DATA.Dye_Materials[15-i], 4)), ST.make(Items.lead, 2, 0));
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, OP.plantGtFiber.mat(MT.Cu, 4)), ST.make(Items.lead, 2, 0));
+			RM.Loom         .addRecipeX(T, 16,   16, ST.array(ST.tag(3), aEvent.mStack, ST.make(Items.string, 4, W)), ST.make(Items.lead, 2, 0));
 		}});
 		addListener(OD.slimeballPink, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Squeezer     .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Slime_Pink.make(250, FL.Slime_Green), ZL_IS);
@@ -162,7 +162,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 					CR.shapeless(ST.amount(tPlank.stackSize / (NERFED_WOOD?2:1), tPlank), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {ST.make(ST.item_(aEvent.mStack), 1, i)});
 				}
 			} else {
-				ItemStack tPlank = CR.get(new ItemStack[] {aEvent.mStack});
+				ItemStack tPlank = CR.get(ST.array(aEvent.mStack));
 				if (tPlank != null) {
 					ItemStack tPlanks = ST.copy(tPlank);
 					tPlanks.stackSize = (tPlanks.stackSize * 3) / 2;

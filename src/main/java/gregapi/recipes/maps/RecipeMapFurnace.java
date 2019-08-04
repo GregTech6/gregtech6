@@ -43,7 +43,7 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 		if (aInputs == null || aInputs.length <= 0 || aInputs[0] == null) return null;
 		if (aRecipe != null && aRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return aRecipe;
 		ItemStack tOutput = RM.get_smelting(aInputs[0], F, null);
-		return tOutput == null ? null : new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {tOutput}, null, null, null, null, 16, 16, 0);
+		return tOutput == null ? null : new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, null, null, 16, 16, 0);
 	}
 	
 	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return RM.get_smelting(aStack, F, null) != null;}

@@ -38,8 +38,8 @@ public class Compat_Recipes_Mystcraft extends CompatMods {
 		CR.delate(IL.Myst_Ink_Vial.get(1));
 		
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Black]) {
-		RM.Mixer            .addRecipe0(T, 16,   16, new FluidStack[] {tDye, FL.Water.make(125)}, FL.Myst_Ink.make(500), ZL_IS);
-		RM.Mixer            .addRecipe0(T, 16,   16, new FluidStack[] {tDye, FL.DistW.make(125)}, FL.Myst_Ink.make(500), ZL_IS);
+		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(tDye, FL.Water.make(125)), FL.Myst_Ink.make(500), ZL_IS);
+		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(tDye, FL.DistW.make(125)), FL.Myst_Ink.make(500), ZL_IS);
 		}
 	}
 }

@@ -69,39 +69,39 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class NEI_RecipeMap extends TemplateRecipeHandler {
 	protected final RecipeMap mRecipeMap;
-	
+
 	public static final int sOffsetX = 5, sOffsetY = 11;
-	
+
 	public NEI_RecipeMap(RecipeMap aRecipeMap) {
 		mRecipeMap = aRecipeMap;
 		transferRects.add(new RecipeTransferRect(new Rectangle(70-sOffsetX, 24-sOffsetY, 36, 18), getOverlayIdentifier()));
-		
+
 		if (!NEI_GT_API_Config.ADDED) {
 			FMLInterModComms.sendRuntimeMessage(GAPI, "NEIPlugins", "register-crafting-handler", MD.GAPI.mID+"@"+getRecipeName()+"@"+getOverlayIdentifier());
 			GuiCraftingRecipe.craftinghandlers.add(this);
 			GuiUsageRecipe.usagehandlers.add(this);
 		}
 	}
-	
+
 	@Override
 	public TemplateRecipeHandler newInstance() {
 		return new NEI_RecipeMap(mRecipeMap);
 	}
-	
+
 	public class FixedPositionedStack extends PositionedStack {
 		public boolean permutated = F;
 		public final int mChance, mMaxChance;
-		
+
 		public FixedPositionedStack(Object object, int x, int y) {
 			this(object, x, y, 0, 0);
 		}
-		
+
 		public FixedPositionedStack(Object object, int x, int y, int aChance, int aMaxChance) {
 			super(object, x-sOffsetX, y-sOffsetY, T);
 			mMaxChance = aMaxChance;
 			mChance = aChance;
 		}
-		
+
 		@Override
 		public void generatePermutations() {
 			if (permutated) return;
@@ -122,39 +122,39 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				}
 			}
 			
-			items = tDisplayStacks.toArray(new ItemStack[0]);
-			if (items.length == 0) items = new ItemStack[] {ST.make(Blocks.fire, 1, 0)};
+			items = tDisplayStacks.toArray(ZL_IS);
+			if (items.length == 0) items = ST.array(ST.make(Blocks.fire, 1, 0));
 			permutated = T;
 			setPermutationToRender(0);
 		}
 	}
-	
+
 	public class CachedDefaultRecipe extends CachedRecipe {
 		public final Recipe mRecipe;
-		
+
 		public final List<PositionedStack>  mOutputs    = new ArrayListNoNulls<>();
 		public final List<PositionedStack>  mInputs     = new ArrayListNoNulls<>();
-		
+
 		@Override
 		public List<PositionedStack> getIngredients() {
 			return getCycledIngredients(cycleticks / 10, this.mInputs);
 		}
-		
+
 		@Override
 		public PositionedStack getResult() {
 			return null;
 		}
-		
+
 		@Override
 		public List<PositionedStack> getOtherStacks() {
 			return mOutputs;
 		}
-		
+
 		public CachedDefaultRecipe(Recipe aRecipe) {
 			mRecipe = aRecipe;
-			
+
 			int tStartIndex = 0;
-			
+
 			switch (mRecipeMap.mInputItemsCount) {
 			case  0:
 				break;
@@ -261,12 +261,12 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				if (aRecipe.getRepresentativeInput(tStartIndex) != null) mInputs.add(new FixedPositionedStack(aRecipe.getRepresentativeInput(tStartIndex), 53, 61)); tStartIndex++;
 				break;
 			}
-			
+
 			if (aRecipe.mSpecialItems != null) mInputs.add(new FixedPositionedStack(aRecipe.mSpecialItems,  80, 43));
 			if (!mRecipeMap.mRecipeMachineList.isEmpty()) mInputs.add(new FixedPositionedStack(mRecipeMap.mRecipeMachineList, 152, 83));
-			
+
 			tStartIndex = 0;
-			
+
 			switch (mRecipeMap.mOutputItemsCount) {
 			case  0:
 				break;
@@ -373,17 +373,17 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				if (aRecipe.getOutput(tStartIndex) != null) mOutputs.add(new FixedPositionedStack(aRecipe.getOutput(tStartIndex), 143, 61, aRecipe.getOutputChance(tStartIndex), aRecipe.getMaxChance(tStartIndex))); tStartIndex++;
 				break;
 			}
-			
+
 			for (int i = 0; i < aRecipe.mFluidInputs .length && i < mRecipeMap.mInputFluidCount ; i++) if (aRecipe.mFluidInputs [i] != null && aRecipe.mFluidInputs [i].getFluid() != null) mInputs .add(new FixedPositionedStack(FL.display(aRecipe.mFluidInputs [i], T, F),  53 - (i%3)*18, 63 - (i/3)*18));
 			for (int i = 0; i < aRecipe.mFluidOutputs.length && i < mRecipeMap.mOutputFluidCount; i++) if (aRecipe.mFluidOutputs[i] != null && aRecipe.mFluidOutputs[i].getFluid() != null) mOutputs.add(new FixedPositionedStack(FL.display(aRecipe.mFluidOutputs[i], T, F), 107 + (i%3)*18, 63 - (i/3)*18));
 		}
 	}
-	
+
 	static {
 		GuiContainerManager.addInputHandler(new GT_RectHandler());
 		GuiContainerManager.addTooltipHandler(new GT_RectHandler());
 	}
-	
+
 	public static class GT_RectHandler implements IContainerInputHandler, IContainerTooltipHandler {
 		@Override
 		public boolean mouseClicked(GuiContainer gui, int mousex, int mousey, int button) {
@@ -393,36 +393,36 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			}
 			return F;
 		}
-		
+
 		@Override
 		public boolean lastKeyTyped(GuiContainer gui, char keyChar, int keyCode) {
 			return F;
 		}
-		
+
 		public boolean canHandle(GuiContainer gui) {
 			return gui instanceof ContainerClient && UT.Code.stringValid(((ContainerClient)gui).mNEI);
 		}
-		
+
 		@Override
 		public List<String> handleTooltip(GuiContainer gui, int mousex, int mousey, List<String> currenttip) {
 			if (canHandle(gui) && currenttip.isEmpty() && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1]))) currenttip.add("Recipes");
 			return currenttip;
 		}
-		
+
 		private boolean transferRect(GuiContainer gui, boolean usage) {
 			return canHandle(gui) && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1])) && (usage ? GuiUsageRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]) : GuiCraftingRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]));
 		}
-		
+
 		@Override
 		public List<String> handleItemDisplayName(GuiContainer gui, ItemStack itemstack, List<String> currenttip) {
 			return currenttip;
 		}
-		
+
 		@Override
 		public List<String> handleItemTooltip(GuiContainer gui, ItemStack itemstack, int mousex, int mousey, List<String> currenttip) {
 			return currenttip;
 		}
-		
+
 		@Override
 		public boolean keyTyped(GuiContainer gui, char keyChar, int keyCode) {
 			return false;
@@ -458,7 +458,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			//
 		}
 	}
-	
+
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results) {
 		if (outputId.equals(getOverlayIdentifier())) {
@@ -467,23 +467,23 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			super.loadCraftingRecipes(outputId, results);
 		}
 	}
-	
+
 	@Override
 	public void loadCraftingRecipes(ItemStack aResult) {
 		if (ST.invalid(aResult)) return;
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aResult);
-			
+
 			ArrayList<ItemStack> tResults = new ArrayListNoNulls<>();
 			tResults.add(aResult);
 			tResults.add(OM.get_(aResult));
-			
+
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aResult));
 			if (tRedirects != null) tResults.addAll(tRedirects);
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aResult, W));
 			if (tRedirects != null) tResults.addAll(tRedirects);
-			
+
 			if (tPrefixMaterial != null && !tPrefixMaterial.mBlackListed) {
 				if (tPrefixMaterial.mMaterial.mMaterial.mID > 0 && BlocksGT.ore != null && BlocksGT.oreBroken != null && tPrefixMaterial.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
 					tResults.add(ST.make((Block)BlocksGT.ore, 1, tPrefixMaterial.mMaterial.mMaterial.mID));
@@ -493,7 +493,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 					tResults.add(tPrefix.mat(tPrefixMaterial.mMaterial.mMaterial, 1));
 				}
 			}
-			
+
 			if (!ItemsGT.NEI_DONT_SHOW_FLUIDS.contains(aResult, T)) {
 				FluidStack tFluid = FL.getFluid(aResult, T);
 				if (tFluid != null) {
@@ -503,7 +503,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 					}
 				}
 			}
-			
+
 			ArrayList<Recipe> tRecipes = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeMap.getNEIRecipes(tResults.toArray(ZL_IS))) if (!tRecipes.contains(tRecipe)) tRecipes.add(tRecipe);
 			for (Recipe tRecipe : tRecipes) arecipes.add(new CachedDefaultRecipe(tRecipe));
@@ -511,29 +511,29 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			e.printStackTrace(ERR);
 		}
 	}
-	
+
 	@Override
 	public void loadUsageRecipes(ItemStack aInput) {
 		if (ST.invalid(aInput)) return;
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aInput);
-			
+
 			ArrayList<ItemStack> tInputs = new ArrayListNoNulls<>();
 			tInputs.add(aInput);
 			tInputs.add(OreDictManager.INSTANCE.getStack_(F, aInput));
-			
+
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aInput));
 			if (tRedirects != null) tInputs.addAll(tRedirects);
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aInput, W));
 			if (tRedirects != null) tInputs.addAll(tRedirects);
-			
+
 			if (tPrefixMaterial != null) {
 				for (OreDictPrefix tPrefix : tPrefixMaterial.mPrefix.mFamiliarPrefixes) {
 					tInputs.add(tPrefix.mat(tPrefixMaterial.mMaterial.mMaterial, 1));
 				}
 			}
-			
+
 			if (!ItemsGT.NEI_DONT_SHOW_FLUIDS.contains(aInput, T)) {
 				FluidStack tFluid = FL.getFluid(aInput, T);
 				if (tFluid != null) {
@@ -543,7 +543,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 					}
 				}
 			}
-			
+
 			ArrayList<Recipe> tRecipes = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeMap.getNEIUsages(tInputs.toArray(ZL_IS))) if (!tRecipes.contains(tRecipe)) tRecipes.add(tRecipe);
 			for (Recipe tRecipe : tRecipes) arecipes.add(new CachedDefaultRecipe(tRecipe));
@@ -551,12 +551,12 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			e.printStackTrace(ERR);
 		}
 	}
-	
+
 	@Override
 	public String getOverlayIdentifier() {
 		return mRecipeMap.mNameNEI;
 	}
-	
+
 	@Override
 	public void drawBackground(int recipe) {
 		GL11.glColor4f(1, 1, 1, 1);
@@ -565,26 +565,26 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		GuiDraw.changeTexture(getGuiTexture());
 		GuiDraw.drawTexturedModalRect(-5, -8, 0, 3, 176,  79);
 	}
-	
+
 	public static void drawText(int aX, int aY, String aString, int aColor) {
 		Minecraft.getMinecraft().fontRenderer.drawString(aString, aX, aY, aColor);
 	}
-	
+
 	@Override
 	public int recipiesPerPage() {
 		return 1;
 	}
-	
+
 	@Override
 	public String getRecipeName() {
 		return LanguageHandler.translate(mRecipeMap.mNameInternal, mRecipeMap.mNameInternal);
 	}
-	
+
 	@Override
 	public String getGuiTexture() {
 		return UT.Code.stringValid(mRecipeMap.mGUIPath) ? mRecipeMap.mGUIPath : RES_PATH_GUI + mRecipeMap.mNameInternal + ".png";
 	}
-	
+
 	@Override
 	public List<String> handleItemTooltip(GuiRecipe gui, ItemStack aStack, List<String> currenttip, int aRecipeIndex) {
 		CachedRecipe tObject = arecipes.get(aRecipeIndex);
@@ -606,7 +606,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		}
 		return currenttip;
 	}
-	
+
 	@Override
 	public void drawExtras(int aRecipeIndex) {
 		long tGUt       = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mEUt;

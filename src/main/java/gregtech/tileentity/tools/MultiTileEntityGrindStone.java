@@ -56,26 +56,26 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 	protected byte mClickCount = 0, mStone = 0, oStone = 0;
 	protected RecipeMap mRecipes = RM.Sharpening;
 	protected Recipe mLastRecipe = null;
-	
+
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_STATE)) mStone = aNBT.getByte(NBT_STATE);
 		if (aNBT.hasKey(NBT_RECIPEMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_RECIPEMAP));
 	}
-	
+
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		aNBT.setByte(NBT_STATE, mStone);
 	}
-	
+
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		aNBT.setByte(NBT_STATE, mStone);
 		return aNBT;
 	}
-	
+
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
@@ -84,9 +84,9 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT) + " (" + LH.get(LH.FACE_ANYBUT_SIDES) + ")");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
-	
+
 	@Override public boolean attachCoversFirst(byte aSide) {return F;}
-	
+
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aSide != mFacing && !SIDES_TOP[aSide]) return F;
@@ -110,7 +110,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 					Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
 					if (tRecipe != null) {
 						mLastRecipe = tRecipe;
-						if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, new ItemStack[] {aStack})) {
+						if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
 							for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
 							if (!UT.Entities.hasInfiniteItems(aPlayer)) mStone--;
 							aPlayer.addExhaustion((tRecipe.mEUt * tRecipe.mDuration) / 10000.0F);
@@ -133,32 +133,32 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 		}
 		return T;
 	}
-	
+
 	@Override
 	public boolean onTickCheck(long aTimer) {
 		return super.onTickCheck(aTimer) || mStone != oStone;
 	}
-	
+
 	@Override
 	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
 		super.onTickResetChecks(aTimer, aIsServerSide);
 		oStone = mStone;
 	}
-	
+
 	@Override
 	public void setVisualData(byte aData) {
 		mStone = aData;
 	}
-	
+
 	@Override public byte getVisualData() {return mStone;}
 	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
-	
+
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return 6;
 	}
-	
+
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
@@ -171,7 +171,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 		}
 		return F;
 	}
-	
+
 	public static IIconContainer
 	sTextureLegs    = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/legs"),
 	sTextureAxle    = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/colored/axle"),
@@ -181,33 +181,33 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 	sOverlayAxle    = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/axle"),
 	sOverlayStone   = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/stone"),
 	sOverlayBottom  = new Textures.BlockIcons.CustomIcon("machines/tools/grindstone/overlay/bottom");
-	
+
 	private ITexture mTextureLegs, mTextureAxle, mTextureStone, mTextureBottom;
-	
+
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (aRenderPass == 0 && aSide == 0) {
 			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
-			
+
 			mTextureLegs        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
 			mTextureAxle        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureAxle    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayAxle));
 			mTextureStone       = BlockTextureMulti.get(BlockTextureDefault.get(sTextureStone   , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayStone));
 			mTextureBottom      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
 		}
-		
+
 		if (aRenderPass == 0) return mStone!=0&&SIDES_TOP[aSide]?BI.nei():null;
 		if (aRenderPass == 1) return mTextureBottom;
 		if (aRenderPass == 4) return mTextureAxle;
 		if (aRenderPass == 5) return mStone!=0?mTextureStone:null;
 		return mTextureLegs;
 	}
-	
+
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
-	
+
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[2], PX_P[0], PX_P[2], PX_N[2], PX_N[1], PX_N[2]);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[2], PX_P[0], PX_P[2], PX_N[2], PX_N[1], PX_N[2]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, PX_P[2], PX_P[0], PX_P[2], PX_N[2], PX_N[1], PX_N[2]);}
-	
+
 	@Override public float getSurfaceSize           (byte aSide) {return SIDES_BOTTOM[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return SIDES_BOTTOM[aSide]?1.0F:0.0F;}
 	@Override public float getSurfaceDistance       (byte aSide) {return 0.0F;}
@@ -215,8 +215,8 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean isSideSolid2           (byte aSide) {return SIDES_BOTTOM[aSide];}
 	@Override public boolean allowCovers            (byte aSide) {return F;}
-	
+
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
-	
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.sharpener.grindstone";}
 }

@@ -33,19 +33,18 @@ import gregapi.data.RM;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Items;
-import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_MagicBees extends CompatMods {
 	public Compat_Recipes_MagicBees(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Magic Bees Recipes.");
-		RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.FRMB_Propolis_Unstable .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L  ), FL.Glue.make( 250)}, ZL_IS);
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Breezey  .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L  ), FL.Glue.make( 250)}, OM.dust(MT.InfusedAir, U3));
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Burning  .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L  ), FL.Glue.make( 250)}, OM.dust(MT.InfusedFire, U3));
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Flowing  .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L  ), FL.Glue.make( 250)}, OM.dust(MT.InfusedWater, U3));
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Stony    .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L  ), FL.Glue.make( 250)}, OM.dust(MT.InfusedEarth, U3));
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Ordered  .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L  ), FL.Glue.make( 250)}, OM.dust(MT.InfusedOrder, U3));
-		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Chaotic  .get(1), ZL_FS, new FluidStack[] {FL.Latex.make(L  ), FL.Glue.make( 250)}, OM.dust(MT.InfusedEntropy, U3));
+		RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.FRMB_Propolis_Unstable .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), ZL_IS);
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Breezey  .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), OM.dust(MT.InfusedAir, U3));
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Burning  .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), OM.dust(MT.InfusedFire, U3));
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Flowing  .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), OM.dust(MT.InfusedWater, U3));
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Stony    .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), OM.dust(MT.InfusedEarth, U3));
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Ordered  .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), OM.dust(MT.InfusedOrder, U3));
+		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 9000}                         , IL.FRMB_Propolis_Chaotic  .get(1), ZL_FS, FL.array(FL.Latex.make(L  ), FL.Glue.make( 250)), OM.dust(MT.InfusedEntropy, U3));
 		
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000, 10000}                  , ST.make(MD.FRMB, "comb", 1, 0), NF, FL.Honey   .make( 60), OM.dust(MT.WaxBee, 8*U9), OM.dust(MT.WaxMagic, U9));
 		RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] {10000, 10000}                  , ST.make(MD.FRMB, "comb", 1, 1), NF, FL.Honey   .make( 10), OM.dust(MT.WaxRefractory, 8*U9));

@@ -187,6 +187,8 @@ public class LH {
 	, TOOLTIP_SHELFABLE = "gt.lang.shelfable"
 	, TOOLTIP_POSSIBLE_TOOL_ENCHANTS = "gt.lang.tool.enchants"
 	, TOOLTIP_POSSIBLE_ARMOR_ENCHANTS = "gt.lang.armor.enchants"
+	, TOOLTIP_TOO_MANY_TOOL_ENCHANTS = "gt.lang.tool.enchants.too.many"
+	, TOOLTIP_TOO_MANY_ARMOR_ENCHANTS = "gt.lang.armor.enchants.too.many"
 	, TOOLTIP_CONTAINED_MATERIALS = "gt.lang.contained.materials"
 	, TOOLTIP_FLAMMABLE_AND_EXPLOSIVE = "gt.lang.flammable.explosive"
 	, TOOLTIP_FLAMMABLE = "gt.lang.flammable"
@@ -446,6 +448,8 @@ public class LH {
 		add(TOOLTIP_SHELFABLE                           , "Can be placed inside a GT Bookshelf");
 		add(TOOLTIP_POSSIBLE_TOOL_ENCHANTS              , "Possible Tool Enchantments:");
 		add(TOOLTIP_POSSIBLE_ARMOR_ENCHANTS             , "Possible Armor Enchantments:");
+		add(TOOLTIP_TOO_MANY_TOOL_ENCHANTS              , "Too Many Tool Enchantments to List");
+		add(TOOLTIP_TOO_MANY_ARMOR_ENCHANTS             , "Too Many Armor Enchantments to List");
 		add(TOOLTIP_CONTAINED_MATERIALS                 , "Contained Materials:");
 		add(TOOLTIP_FLAMMABLE_AND_EXPLOSIVE             , "Flammable and Explosive!");
 		add(TOOLTIP_FLAMMABLE                           , "Flammable!");

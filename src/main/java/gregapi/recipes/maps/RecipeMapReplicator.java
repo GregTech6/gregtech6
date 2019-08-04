@@ -87,11 +87,11 @@ public class RecipeMapReplicator extends RecipeMap {
 	
 	public static Recipe getReplicatorRecipe(OreDictMaterial aMaterial, ItemStack aUSB) {
 		if (aMaterial.contains(TD.Processing.UUM) && !aMaterial.contains(TD.Atomic.ANTIMATTER)) {
-			FluidStack[] tMatters = new FluidStack[] {aMaterial.mNeutrons<=0?NF:FL.MatterNeutral.make(aMaterial.mNeutrons), aMaterial.mProtons<=0?NF:FL.MatterCharged.make(aMaterial.mProtons)};
+			FluidStack[] tMatters = FL.array(aMaterial.mNeutrons<=0?NF:FL.MatterNeutral.make(aMaterial.mNeutrons), aMaterial.mProtons<=0?NF:FL.MatterCharged.make(aMaterial.mProtons));
 			long tPower = (aMaterial.mProtons+aMaterial.mNeutrons) * 65536;
 			if (aMaterial.mMeltingPoint <= DEF_ENV_TEMP) {
 				FluidStack tFluidOutput = aMaterial.fluid(DEF_ENV_TEMP, U, F);
-				if (!FL.Error.is(tFluidOutput)) return new Recipe(F, F, T, new ItemStack[] {ST.amount(0, aUSB)}, ZL_IS, null, null, tMatters, new FluidStack[] {tFluidOutput}, tPower, 1, 0).setNoBuffering();
+				if (!FL.Error.is(tFluidOutput)) return new Recipe(F, F, T, ST.array(ST.amount(0, aUSB)), ZL_IS, null, null, tMatters, FL.array(tFluidOutput), tPower, 1, 0).setNoBuffering();
 			}
 			ItemStack tOutput = NI;
 			if (aMaterial.mPriorityPrefix != null) tOutput = aMaterial.mPriorityPrefix.mat(aMaterial, 1);
@@ -105,10 +105,10 @@ public class RecipeMapReplicator extends RecipeMap {
 					if (FL.Error.is(tFluidOutput)) tFluidOutput = aMaterial.gas(U, F);
 					if (FL.Error.is(tFluidOutput)) tFluidOutput = aMaterial.plasma(U, F);
 					if (FL.Error.is(tFluidOutput)) return null;
-					return new Recipe(F, F, T, new ItemStack[] {ST.amount(0, aUSB)}, ZL_IS, null, null, tMatters, new FluidStack[] {tFluidOutput}, tPower, 1, 0).setNoBuffering();
+					return new Recipe(F, F, T, ST.array(ST.amount(0, aUSB)), ZL_IS, null, null, tMatters, FL.array(tFluidOutput), tPower, 1, 0).setNoBuffering();
 				}
 			}
-			return new Recipe(F, F, T, new ItemStack[] {ST.amount(0, aUSB)}, new ItemStack[] {tOutput}, null, null, tMatters, null, tPower, 1, 0).setNoBuffering();
+			return new Recipe(F, F, T, ST.array(ST.amount(0, aUSB)), ST.array(tOutput), null, null, tMatters, null, tPower, 1, 0).setNoBuffering();
 		}
 		return null;
 	}

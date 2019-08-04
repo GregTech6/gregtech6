@@ -88,7 +88,7 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		}
 		
 		
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(250), FL.DistW.make(250)}) {
+		for (FluidStack tWater : FL.array(FL.Water.make(250), FL.DistW.make(250))) {
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Rice), tWater, NF, ST.make(MD.AA, "itemMisc", 1, 9));
 		RM.Mixer        .addRecipe1(T, 16,   16, ST.make(MD.AA, "itemMisc", 1, 9), tWater, NF, ST.make(MD.AA, "itemMisc", 1, 12));
 		}

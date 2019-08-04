@@ -91,8 +91,8 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase[(aData.mVisuals[aSide] >> 4) & 7], sTextures[UT.Code.bind4(aData.mVisuals[aSide] & 15)]);}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, getCoverTextureSurface(aSide, aData));}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTexturesBase[0] : BlockTextureMulti.get(sTexturesBase[0], getCoverTextureSurface(aSide, aData));}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTexturesBase[0];}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return T;}
 	
@@ -124,5 +124,4 @@ public class CoverSelectorButtonPanel extends AbstractCoverAttachmentSelector {
 		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_keypad_9_to_1", F)
 		, BlockTextureDefault.get("machines/covers/buttonselector/underlay_bits", F)
 	};
-	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/buttonselector/base");
 }

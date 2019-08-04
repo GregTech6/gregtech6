@@ -40,7 +40,6 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_Reika extends CompatMods {
@@ -62,7 +61,7 @@ public class Compat_Recipes_Reika extends CompatMods {
 			
 			RM.Compressor       .addRecipe1(T,512, 1024, OM.dust(MT.Bedrock, U*8), ST.make(Blocks.bedrock, 1, 0));
 			
-			for (FluidStack tRedstone : new FluidStack[] {FL.Redstone.make(L), FL.Redstone_TE.make(100)}) if (tRedstone != null) {
+			for (FluidStack tRedstone : FL.array(FL.Redstone.make(L), FL.Redstone_TE.make(100))) if (tRedstone != null) {
 			RM.Bath             .addRecipe1(T,  0,   64, IL.Circuit_Board_HSLA_Circuit.get(1), FL.mul(tRedstone, 2, 9, T), NF, ST.make(MD.RoC, "rotarycraft_item_borecraft", 1, 4));
 			RM.Bath             .addRecipe1(T,  0,   64, IL.Circuit_Board_Power_Module.get(1), FL.mul(tRedstone, 2, 9, T), NF, ST.make(MD.RoC, "rotarycraft_item_misccraft", 1, 2));
 			}
@@ -74,10 +73,10 @@ public class Compat_Recipes_Reika extends CompatMods {
 			CR.delate(MD.RoC, "rotarycraft_item_powders", 6);
 			CR.shapeless(ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6), CR.DEF, new Object[] {OP.dustSmall.dat(MT.Redstone), OP.dustSmall.dat(MT.Coal), OP.dustSmall.dat(ANY.Salt), OP.dustSmall.dat(MT.Gunpowder)});
 			CR.shapeless(ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6), CR.DEF, new Object[] {OD.itemRedstone, OP.dust.dat(MT.Coal), OP.dust.dat(ANY.Salt), OP.dust.dat(MT.Gunpowder)});
-			RM.Mixer            .addRecipeX(T, 16,   64, new ItemStack[] {OM.dust(MT.Redstone, U*1), OM.dust(MT.Coal, U*1), OM.dust(MT.NaCl,U*1), OM.dust(MT.Gunpowder, U*1)}, ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));
-			RM.Mixer            .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Redstone, U4 ), OM.dust(MT.Coal, U4 ), OM.dust(MT.NaCl,U4 ), OM.dust(MT.Gunpowder, U4 )}, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6));
-			RM.Mixer            .addRecipeX(T, 16,   64, new ItemStack[] {OM.dust(MT.Redstone, U*1), OM.dust(MT.Coal, U*1), OM.dust(MT.KCl, U*1), OM.dust(MT.Gunpowder, U*1)}, ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));
-			RM.Mixer            .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Redstone, U4 ), OM.dust(MT.Coal, U4 ), OM.dust(MT.KCl, U4 ), OM.dust(MT.Gunpowder, U4 )}, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6));
+			RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone, U*1), OM.dust(MT.Coal, U*1), OM.dust(MT.NaCl,U*1), OM.dust(MT.Gunpowder, U*1)), ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));
+			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone, U4 ), OM.dust(MT.Coal, U4 ), OM.dust(MT.NaCl,U4 ), OM.dust(MT.Gunpowder, U4 )), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6));
+			RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone, U*1), OM.dust(MT.Coal, U*1), OM.dust(MT.KCl, U*1), OM.dust(MT.Gunpowder, U*1)), ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));
+			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone, U4 ), OM.dust(MT.Coal, U4 ), OM.dust(MT.KCl, U4 ), OM.dust(MT.Gunpowder, U4 )), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6));
 		}
 		if (MD.ReC.mLoaded) {
 			OUT.println("GT_Mod: Doing ReactorCraft Recipes.");
@@ -86,8 +85,8 @@ public class Compat_Recipes_Reika extends CompatMods {
 			OUT.println("GT_Mod: Doing ElectriCraft Recipes.");
 			CR.delate(MD.ElC, "electricraft_item_crafting", 3);
 			for (OreDictMaterial tMat1 : ANY.Glowstone.mToThis) for (OreDictMaterial tMat2 : ANY.SiO2.mToThis) for (OreDictMaterial tMat3 : ANY.Diamond.mToThis) {
-			RM.Mixer            .addRecipeX(T, 16,   32, new ItemStack[] {OM.dust(MT.Redstone, U*4), OM.dust(tMat1, U*1), OM.dust(MT.Lapis, U*1), OM.dust(tMat2, U*1), OM.dust(tMat3, U*1)}, ST.make(MD.ElC, "electricraft_item_crafting", 2, 3));
-			RM.Mixer            .addRecipeX(T, 16,   16, new ItemStack[] {OM.dust(MT.Redstone, U*2), OM.dust(tMat1, U2 ), OM.dust(MT.Lapis, U2 ), OM.dust(tMat2, U2 ), OM.dust(tMat3, U2 )}, ST.make(MD.ElC, "electricraft_item_crafting", 1, 3));
+			RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone, U*4), OM.dust(tMat1, U*1), OM.dust(MT.Lapis, U*1), OM.dust(tMat2, U*1), OM.dust(tMat3, U*1)), ST.make(MD.ElC, "electricraft_item_crafting", 2, 3));
+			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone, U*2), OM.dust(tMat1, U2 ), OM.dust(MT.Lapis, U2 ), OM.dust(tMat2, U2 ), OM.dust(tMat3, U2 )), ST.make(MD.ElC, "electricraft_item_crafting", 1, 3));
 			}
 		}
 		if (MD.CrC.mLoaded) {

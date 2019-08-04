@@ -88,7 +88,7 @@ public class RecipeMapHammer extends RecipeMapSpecialSingleInput {
 		if (aData.mPrefix == orePoor) {
 			ItemStack tOutput = OP.crushedTiny          .mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, 2 * aMultiplier, F));
 			if (tOutput == null) tOutput = OP.dustTiny  .mat(aCrushedMat, UT.Code.units(aCrushedAmount, U, 2 * aMultiplier, F));
-			return tOutput == null ? null : new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInput)}, new ItemStack[] {tOutput}, null, null, ZL_FS, ZL_FS, Math.max(1, 16*tOutput.stackSize*Math.max(1, aData.mMaterial.mMaterial.mToolQuality+1)), 16, 0);
+			return tOutput == null ? null : new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), ST.array(tOutput), null, null, ZL_FS, ZL_FS, Math.max(1, 16*tOutput.stackSize*Math.max(1, aData.mMaterial.mMaterial.mToolQuality+1)), 16, 0);
 		}
 		if (aData.mPrefix == oreSmall || aData.mPrefix == oreRich || aData.mPrefix == oreNormal) {
 			// TODO
@@ -106,6 +106,6 @@ public class RecipeMapHammer extends RecipeMapSpecialSingleInput {
 				if (tStack != null) tOutputs[++i] = tStack;
 			}
 		}
-		return new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInput)}, tOutputs, null, null, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0);
+		return new Recipe(F, F, T, ST.array(ST.amount(1, aInput)), tOutputs, null, null, ZL_FS, ZL_FS, Math.max(1, tDuration), 16, 0);
 	}
 }

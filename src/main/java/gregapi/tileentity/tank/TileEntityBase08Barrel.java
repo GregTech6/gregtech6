@@ -63,7 +63,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	public long mSealedTime = 0, mMaxSealedTime = 0;
 	public Recipe mRecipe = null;
 	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F;
-	
+
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -75,7 +75,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		mTank.setCapacity(aNBT.getLong(NBT_TANK_CAPACITY));
 		mTank.readFromNBT(aNBT, NBT_TANK);
 	}
-	
+
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
@@ -83,7 +83,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		UT.NBT.setNumber(aNBT, NBT_PROGRESS, mSealedTime);
 		mTank.writeToNBT(aNBT, NBT_TANK);
 	}
-	
+
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		if (mMode != 0) aNBT.setByte(NBT_MODE, mMode);
@@ -91,7 +91,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		mTank.writeToNBT(aNBT, NBT_TANK);
 		return super.writeItemNBT2(aNBT);
 	}
-	
+
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + mTank.contentcap());
@@ -106,7 +106,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
-	
+
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
@@ -146,7 +146,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
@@ -174,7 +174,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 				} else {
 					if ((mMode & B[1]) != 0) {
 						if (mMaxSealedTime == 0) {
-							mRecipe = RM.Fermenter.findRecipe(this, mRecipe, T, Long.MAX_VALUE, NI, new FluidStack[] {mTank.getFluid()}, ST.tag(0));
+							mRecipe = RM.Fermenter.findRecipe(this, mRecipe, T, Long.MAX_VALUE, NI, FL.array(mTank.getFluid()), ST.tag(0));
 							if (mRecipe != null && mRecipe.mFluidInputs.length > 0 && mRecipe.mFluidOutputs.length > 0 && !FL.gas(mRecipe.mFluidInputs[0]) && !FL.gas(mRecipe.mFluidOutputs[0])) {
 								mMaxSealedTime = (mRecipe.mDuration * mRecipe.mEUt * mTank.amount()) / mRecipe.mFluidInputs[0].amount;
 							} else {
@@ -199,7 +199,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 			}
 		}
 	}
-	
+
 	public boolean meltdown() {
 		if (FL.lava(mTank) && mTank.has(1000)) {
 			mTank.remove(1000);
@@ -212,21 +212,21 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		WD.burn(worldObj, getCoords(), F, F);
 		return T;
 	}
-	
+
 	public boolean allowFluid(FluidStack aFluid) {
 		return !FL.powerconducting(aFluid) && FL.temperature(aFluid) < mMaterial.mMeltingPoint;
 	}
-	
+
 	@Override
 	public FluidStack getFluid(ItemStack aStack) {
 		return mTank.getFluid();
 	}
-	
+
 	@Override
 	public int getCapacity(ItemStack aStack) {
 		return mTank.getCapacity();
 	}
-	
+
 	@Override
 	public int fill(ItemStack aStack, FluidStack aFluid, boolean aDoFill) {
 		if (!allowFluid(aFluid)) return 0;
@@ -237,49 +237,49 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		if (tFilled > 0 && aDoFill) UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return tFilled;
 	}
-	
+
 	@Override
 	public FluidStack drain(ItemStack aStack, int aMaxDrain, boolean aDoDrain) {
 		FluidStack tDrained = mTank.drain(aMaxDrain, aDoDrain);
 		if (tDrained != NF && aDoDrain) UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return tDrained;
 	}
-	
+
 	@Override
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
 		return mTank.fill(aFluid, aDoFill);
 	}
-	
+
 	@Override
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
 		return mTank.drain(aMaxDrain, aDoDrain);
 	}
-	
+
 	@Override public long getProgressValue(byte aSide) {return mSealedTime;}
 	@Override public long getProgressMax(byte aSide) {return mMaxSealedTime;}
 	@Override public boolean canDrop(int aSlot) {return F;}
-	
+
 	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return mTank.has() ? 1 : aDefault;}
-	
+
 	@Override protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {return (mMode & B[1]) != 0 ? null : mTank;}
 	@Override protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {return (mMode & B[1]) != 0 ? null : mTank;}
 	@Override protected IFluidTank[] getFluidTanks2(byte aSide) {return mTank.AS_ARRAY;}
-	
+
 	@Override public ItemStack getRotten(ItemStack aStack) {return mMaterial.contains(TD.Properties.BETWEENLANDS) ? aStack : IItemRottable.RottingUtil.rotting(aStack, (IFluidContainerItem)aStack.getItem());}
 	@Override public ItemStack getRotten(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {return mMaterial.contains(TD.Properties.BETWEENLANDS) ? aStack : IItemRottable.RottingUtil.rotting(aStack, (IFluidContainerItem)aStack.getItem());}
-	
+
 	@Override
 	public int addFluidToConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyAddIfItAlreadyHasFluidsOfThatTypeOrIsDedicated) {
 		if (aFluid == NF || (mTank.isEmpty() && aOnlyAddIfItAlreadyHasFluidsOfThatTypeOrIsDedicated)) return 0;
 		return mTank.fill(aFluid, T);
 	}
-	
+
 	@Override
 	public int removeFluidFromConnectedTank(byte aSide, FluidStack aFluid, boolean aOnlyRemoveIfItCanRemoveAllAtOnce) {
 		if (mTank.contains(aFluid) && mTank.has(aOnlyRemoveIfItCanRemoveAllAtOnce ? aFluid.amount : 1)) return (int)mTank.remove(aFluid.amount);
 		return 0;
 	}
-	
+
 	@Override
 	public long getAmountOfFluidInConnectedTank(byte aSide, FluidStack aFluid) {
 		return mTank.contains(aFluid) ? mTank.amount() : 0;

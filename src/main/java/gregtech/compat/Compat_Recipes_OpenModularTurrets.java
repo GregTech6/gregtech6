@@ -41,7 +41,6 @@ import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import net.minecraft.item.ItemStack;
 
 public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 	public Compat_Recipes_OpenModularTurrets(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -99,18 +98,18 @@ public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 		OM.data(MD.OMT, "blazingClayCraftable", 32, W, ANY.Clay, U*4, MT.Redstone, U*4, MT.Blaze, U);
 		
 		for (OreDictMaterial tMat : ANY.Clay.mToThis) {
-		RM.Mixer.addRecipeX(T, 16, 512, new ItemStack[] {OP.dust.mat(tMat, 4), OP.dust.mat(MT.Redstone, 4), OP.dust     .mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
-		RM.Mixer.addRecipeX(T, 16, 128, new ItemStack[] {OP.dust.mat(tMat, 1), OP.dust.mat(MT.Redstone, 1), OP.dustSmall.mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable",  8, 0));
+		RM.Mixer.addRecipeX(T, 16, 512, ST.array(OP.dust.mat(tMat, 4), OP.dust.mat(MT.Redstone, 4), OP.dust     .mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
+		RM.Mixer.addRecipeX(T, 16, 128, ST.array(OP.dust.mat(tMat, 1), OP.dust.mat(MT.Redstone, 1), OP.dustSmall.mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable",  8, 0));
 		}
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("itemClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer.addRecipeX(T, 16, 512, new ItemStack[] {ST.amount(4, aEvent.mStack), OP.dust.mat(MT.Redstone, 4), OP.dust      .mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
-			RM.Mixer.addRecipeX(T, 16, 128, new ItemStack[] {aEvent.mStack              , OP.dust.mat(MT.Redstone, 1), OP.dustSmall .mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable",  8, 0));
+			RM.Mixer.addRecipeX(T, 16, 512, ST.array(ST.amount(4, aEvent.mStack), OP.dust.mat(MT.Redstone, 4), OP.dust      .mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
+			RM.Mixer.addRecipeX(T, 16, 128, ST.array(aEvent.mStack              , OP.dust.mat(MT.Redstone, 1), OP.dustSmall .mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable",  8, 0));
 		}});
 		addListener("blockClay", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer.addRecipeX(T, 16, 512, new ItemStack[] {aEvent.mStack              , OP.dust.mat(MT.Redstone, 4), OP.dust      .mat(MT.Blaze, 1)}, ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
-			RM.Mixer.addRecipeX(T, 16, 512, new ItemStack[] {aEvent.mStack              , OP.dust.mat(MT.Redstone, 4), OP.dustSmall .mat(MT.Blaze, 4)}, ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
+			RM.Mixer.addRecipeX(T, 16, 512, ST.array(aEvent.mStack              , OP.dust.mat(MT.Redstone, 4), OP.dust      .mat(MT.Blaze, 1)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
+			RM.Mixer.addRecipeX(T, 16, 512, ST.array(aEvent.mStack              , OP.dust.mat(MT.Redstone, 4), OP.dustSmall .mat(MT.Blaze, 4)), ST.make(MD.OMT, "blazingClayCraftable", 32, 0));
 		}});
 		}};
 	}

@@ -56,7 +56,7 @@ public class RecipeMapChisel extends RecipeMap {
 					ItemStack tOutput = ST.amount(1, tList.get(0));
 					tSize--;
 					for (int i = 0; i < tSize; i++) if (ST.equal(aInputs[0], tList.get(i))) {tOutput = ST.amount(1, tList.get(i+1)); break;}
-					return new Recipe(F, F, T, new ItemStack[] {ST.amount(1, aInputs[0])}, new ItemStack[] {tOutput}, null, null, null, null, 96, 12, 0);
+					return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, null, null, 96, 12, 0);
 				}
 			}
 		}

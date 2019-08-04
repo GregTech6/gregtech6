@@ -23,7 +23,6 @@ import static gregapi.data.CS.*;
 
 import gregapi.data.FL;
 import gregapi.data.RM;
-import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Alloys implements Runnable {
 	@Override public void run() {
@@ -69,12 +68,12 @@ public class Loader_Recipes_Alloys implements Runnable {
 	}
 	
 	private static void mix(String aInput1, int aIn1Amount, String aInput2, int aIn2Amount, String aOutput, int aOutAmount) {
-		RM.Mixer.addRecipe0(T, 16, aOutAmount, new FluidStack[] {FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount)}, FL.make_(aOutput, aOutAmount), ZL_IS);
+		RM.Mixer.addRecipe0(T, 16, aOutAmount, FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
 	}
 	private static void mix(String aInput1, int aIn1Amount, String aInput2, int aIn2Amount, String aInput3, int aIn3Amount, String aOutput, int aOutAmount) {
-		RM.Mixer.addRecipe0(T, 16, aOutAmount, new FluidStack[] {FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount), FL.make_(aInput3, aIn3Amount)}, FL.make_(aOutput, aOutAmount), ZL_IS);
+		RM.Mixer.addRecipe0(T, 16, aOutAmount, FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount), FL.make_(aInput3, aIn3Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
 	}
 	private static void mix(String aInput1, int aIn1Amount, String aInput2, int aIn2Amount, String aInput3, int aIn3Amount, String aInput4, int aIn4Amount, String aOutput, int aOutAmount) {
-		RM.Mixer.addRecipe0(T, 16, aOutAmount, new FluidStack[] {FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount), FL.make_(aInput3, aIn3Amount), FL.make_(aInput4, aIn4Amount)}, FL.make_(aOutput, aOutAmount), ZL_IS);
+		RM.Mixer.addRecipe0(T, 16, aOutAmount, FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount), FL.make_(aInput3, aIn3Amount), FL.make_(aInput4, aIn4Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
 	}
 }

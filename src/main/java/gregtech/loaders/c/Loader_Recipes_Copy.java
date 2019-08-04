@@ -36,7 +36,6 @@ import gregapi.util.ST;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
-import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Copy implements Runnable {
 	@Override public void run() {
@@ -67,7 +66,7 @@ public class Loader_Recipes_Copy implements Runnable {
 							tOutput[i] = tEntry.getKey();
 							tChances[i++] = Math.max(1, (long)(10000*tEntry.getValue()));
 						}
-						RM.Centrifuge.addRecipe(T, new ItemStack[] {tRecipe.getInput()}, tOutput, NI, tChances, null, null, tRecipe.getProcessingTime(), 16, 0);
+						RM.Centrifuge.addRecipe(T, ST.array(tRecipe.getInput()), tOutput, NI, tChances, null, null, tRecipe.getProcessingTime(), 16, 0);
 					}
 				}
 			} catch(Throwable e) {e.printStackTrace(ERR);}
@@ -75,7 +74,7 @@ public class Loader_Recipes_Copy implements Runnable {
 				for (ISqueezerRecipe tRecipe : RecipeManagers.squeezerManager.recipes()) {
 					ItemStack[] tInput = tRecipe.getResources();
 					if (tInput.length == 1 && FL.getFluid(tInput[0], T) == null) {
-						RM.Squeezer.addRecipe(T, tInput, new ItemStack[] {tRecipe.getRemnants()}, NI, new long[] {Math.max(1, (long)(10000*tRecipe.getRemnantsChance()))}, null, new FluidStack[] {tRecipe.getFluidOutput()}, tRecipe.getProcessingTime(), 16, 0);
+						RM.Squeezer.addRecipe(T, tInput, ST.array(tRecipe.getRemnants()), NI, new long[] {Math.max(1, (long)(10000*tRecipe.getRemnantsChance()))}, null, FL.array(tRecipe.getFluidOutput()), tRecipe.getProcessingTime(), 16, 0);
 					}
 				}
 			} catch(Throwable e) {e.printStackTrace(ERR);}

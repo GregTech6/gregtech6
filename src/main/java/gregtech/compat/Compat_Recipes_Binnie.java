@@ -38,7 +38,6 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_Binnie extends CompatMods {
 	public Compat_Recipes_Binnie(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -102,7 +101,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Alcohol    .get(1), NF, FL.make("short.mead", 400), OM.dust(MT.WaxBee));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Coffee     .get(1), NF, FL.make("potion.coffee", 500), OM.dust(MT.WaxBee), OM.dust(MT.Coffee, 3*U4));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Mint       .get(1), NF, FL.Honey.make(80), OM.dust(MT.WaxBee), OM.dust(MT.Mint, 3*U4));
-			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Citrus     .get(1), ZL_FS, new FluidStack[] {FL.Juice_Orange.make(100), FL.Juice_Persimmon.make(100), FL.Juice_Lemon.make(100), FL.Juice_Lime.make(100), FL.Juice_Kiwi.make(100)}, OM.dust(MT.WaxBee));
+			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Citrus     .get(1), ZL_FS, FL.array(FL.Juice_Orange.make(100), FL.Juice_Persimmon.make(100), FL.Juice_Lemon.make(100), FL.Juice_Lime.make(100), FL.Juice_Kiwi.make(100)), OM.dust(MT.WaxBee));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Venom      .get(1), NF, FL.make("poison", 200), OM.dust(MT.WaxBee, 8*U9));
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Glacial    .get(1), NF, FL.make("liquidnitrogen", 200), OM.dust(MT.WaxBee));
 			

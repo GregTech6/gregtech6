@@ -38,7 +38,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Potions implements Runnable {
 	@Override public void run() {
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)}) {
+		for (FluidStack tWater : FL.array(FL.Water.make(750), FL.DistW.make(750))) {
 		RM.Distillery   .addRecipe1(T, 16,   48, ST.make(Items.nether_wart      , 1,  W), tWater, FL.Potion_Awkward     .make(750), ZL_IS);
 		
 		RM.Distillery   .addRecipe1(T, 16,   48, ST.make(Items.magma_cream      , 1,  W), tWater, FL.Potion_Mundane     .make(750), ZL_IS);
@@ -66,8 +66,8 @@ public class Loader_Recipes_Potions implements Runnable {
 		RM.Distillery   .addRecipe1(T, 16,   48, ST.make(Items.ghast_tear       , 1,  W), FL.Potion_Thick   .make(750), FL.Potion_Regen_2           .make(750), ZL_IS);
 		
 		
-		for (ItemStack tStack : new ItemStack[] {OP.dust.mat(MT.Sugar, 1), OP.dustSmall.mat(MT.Sugar, 4), OP.dustTiny.mat(MT.Sugar, 9), gemChipped.mat(MT.Sugar, 4)}) if (tStack != null) {
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)})
+		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Sugar, 1), OP.dustSmall.mat(MT.Sugar, 4), OP.dustTiny.mat(MT.Sugar, 9), gemChipped.mat(MT.Sugar, 4))) if (tStack != null) {
+		for (FluidStack tWater : FL.array(FL.Water.make(750), FL.DistW.make(750)))
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, tWater                       , FL.Potion_Mundane       .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Mundane  .make(750), FL.Purple_Drink         .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Awkward  .make(750), FL.Potion_Speed_1       .make(750), ZL_IS);
@@ -75,32 +75,32 @@ public class Loader_Recipes_Potions implements Runnable {
 		}
 		
 		
-		for (ItemStack tStack : new ItemStack[] {OP.dust.mat(MT.Blaze, 1), OP.dustSmall.mat(MT.Blaze, 4), OP.dustTiny.mat(MT.Blaze, 9)}) if (tStack != null) {
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)})
+		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Blaze, 1), OP.dustSmall.mat(MT.Blaze, 4), OP.dustTiny.mat(MT.Blaze, 9))) if (tStack != null) {
+		for (FluidStack tWater : FL.array(FL.Water.make(750), FL.DistW.make(750)))
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, tWater                       , FL.Potion_Mundane       .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Awkward  .make(750), FL.Potion_Strength_1    .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Thick    .make(750), FL.Potion_Strength_2    .make(750), ZL_IS);
 		}
 		
 		
-		for (ItemStack tStack : new ItemStack[] {ST.make(Items.spider_eye, 1, W), IL.Food_Potato_Poisonous.get(1), ST.make(Blocks.red_mushroom, 1, W)}) if (tStack != null) {
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)})
+		for (ItemStack tStack : ST.array(ST.make(Items.spider_eye, 1, W), IL.Food_Potato_Poisonous.get(1), ST.make(Blocks.red_mushroom, 1, W))) if (tStack != null) {
+		for (FluidStack tWater : FL.array(FL.Water.make(750), FL.DistW.make(750)))
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, tWater                       , FL.Potion_Mundane       .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Awkward  .make(750), FL.Potion_Poison_1      .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Thick    .make(750), FL.Potion_Poison_2      .make(750), ZL_IS);
 		}
 		
 		
-		for (ItemStack tStack : new ItemStack[] {OP.plantGtWart.mat(MT.Glowstone, 1), IL.EtFu_Rabbit_Foot.get(1), IL.TF_Mushgloom.get(1)}) if (tStack != null) {
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)})
+		for (ItemStack tStack : ST.array(OP.plantGtWart.mat(MT.Glowstone, 1), IL.EtFu_Rabbit_Foot.get(1), IL.TF_Mushgloom.get(1))) if (tStack != null) {
+		for (FluidStack tWater : FL.array(FL.Water.make(750), FL.DistW.make(750)))
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, tWater                       , FL.Potion_Mundane       .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Awkward  .make(750), FL.Potion_Jump_1        .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Thick    .make(750), FL.Potion_Jump_2        .make(750), ZL_IS);
 		}
 		
 		
-		for (ItemStack tStack : new ItemStack[] {ST.make(Items.fermented_spider_eye, 1, W)}) if (tStack != null) {
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)})
+		for (ItemStack tStack : ST.array(ST.make(Items.fermented_spider_eye, 1, W))) if (tStack != null) {
+		for (FluidStack tWater : FL.array(FL.Water.make(750), FL.DistW.make(750)))
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, tWater                                   , FL.Potion_Mundane               .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Thick                .make(750), FL.Potion_Weakness_1            .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Awkward              .make(750), FL.Potion_Weakness_1            .make(750), ZL_IS);
@@ -174,8 +174,8 @@ public class Loader_Recipes_Potions implements Runnable {
 		}
 		
 		
-		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) for (ItemStack tStack : new ItemStack[] {OP.dust.mat(tMat, 1), OP.dustSmall.mat(tMat, 4), OP.dustTiny.mat(tMat, 9)}) if (tStack != null) {
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)})
+		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) for (ItemStack tStack : ST.array(OP.dust.mat(tMat, 1), OP.dustSmall.mat(tMat, 4), OP.dustTiny.mat(tMat, 9))) if (tStack != null) {
+		for (FluidStack tWater : FL.array(FL.Water.make(750), FL.DistW.make(750)))
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, tWater                                   , FL.Potion_Thick                 .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Harm_1               .make(750), FL.Potion_Harm_2                .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Heal_1               .make(750), FL.Potion_Heal_2                .make(750), ZL_IS);
@@ -231,8 +231,8 @@ public class Loader_Recipes_Potions implements Runnable {
 		}
 		
 		
-		for (ItemStack tStack : new ItemStack[] {OP.dust.mat(MT.Redstone, 1), OP.dustSmall.mat(MT.Redstone, 4), OP.dustTiny.mat(MT.Redstone, 9)}) if (tStack != null) {
-		for (FluidStack tWater : new FluidStack[] {FL.Water.make(750), FL.DistW.make(750)})
+		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Redstone, 1), OP.dustSmall.mat(MT.Redstone, 4), OP.dustTiny.mat(MT.Redstone, 9))) if (tStack != null) {
+		for (FluidStack tWater : FL.array(FL.Water.make(750), FL.DistW.make(750)))
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, tWater                                   , FL.Potion_Mundane               .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Speed_1              .make(750), FL.Potion_Speed_1L              .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Strength_1           .make(750), FL.Potion_Strength_1L           .make(750), ZL_IS);
@@ -288,7 +288,7 @@ public class Loader_Recipes_Potions implements Runnable {
 		}
 		
 		
-		for (ItemStack tStack : new ItemStack[] {OP.dust.mat(MT.Gunpowder, 1), OP.dustSmall.mat(MT.Gunpowder, 4), OP.dustTiny.mat(MT.Gunpowder, 9)}) if (tStack != null) {
+		for (ItemStack tStack : ST.array(OP.dust.mat(MT.Gunpowder, 1), OP.dustSmall.mat(MT.Gunpowder, 4), OP.dustTiny.mat(MT.Gunpowder, 9))) if (tStack != null) {
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Harm_1               .make(750), FL.Potion_Harm_1S               .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Heal_1               .make(750), FL.Potion_Heal_1S               .make(750), ZL_IS);
 		RM.Distillery   .addRecipe1(T, 16,   48, tStack, FL.Potion_Jump_1               .make(750), FL.Potion_Jump_1S               .make(750), ZL_IS);
@@ -323,36 +323,36 @@ public class Loader_Recipes_Potions implements Runnable {
 		
 		
 		
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Harm_1S               .make(30)}, FL.Potion_Harm_1D               .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Heal_1S               .make(30)}, FL.Potion_Heal_1D               .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Jump_1S               .make(30)}, FL.Potion_Jump_1D               .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Speed_1S              .make(30)}, FL.Potion_Speed_1D              .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Strength_1S           .make(30)}, FL.Potion_Strength_1D           .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Regen_1S              .make(30)}, FL.Potion_Regen_1D              .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Poison_1S             .make(30)}, FL.Potion_Poison_1D             .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_FireResistance_1S     .make(30)}, FL.Potion_FireResistance_1D     .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_NightVision_1S        .make(30)}, FL.Potion_NightVision_1D        .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Weakness_1S           .make(30)}, FL.Potion_Weakness_1D           .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Slowness_1S           .make(30)}, FL.Potion_Slowness_1D           .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_WaterBreathing_1S     .make(30)}, FL.Potion_WaterBreathing_1D     .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Invisibility_1S       .make(30)}, FL.Potion_Invisibility_1D       .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Harm_2S               .make(30)}, FL.Potion_Harm_2D               .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Heal_2S               .make(30)}, FL.Potion_Heal_2D               .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Jump_2S               .make(30)}, FL.Potion_Jump_2D               .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Speed_2S              .make(30)}, FL.Potion_Speed_2D              .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Strength_2S           .make(30)}, FL.Potion_Strength_2D           .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Regen_2S              .make(30)}, FL.Potion_Regen_2D              .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Poison_2S             .make(30)}, FL.Potion_Poison_2D             .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Speed_1LS             .make(30)}, FL.Potion_Speed_1LD             .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Strength_1LS          .make(30)}, FL.Potion_Strength_1LD          .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Regen_1LS             .make(30)}, FL.Potion_Regen_1LD             .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Poison_1LS            .make(30)}, FL.Potion_Poison_1LD            .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_FireResistance_1LS    .make(30)}, FL.Potion_FireResistance_1LD    .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_NightVision_1LS       .make(30)}, FL.Potion_NightVision_1LD       .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Weakness_1LS          .make(30)}, FL.Potion_Weakness_1LD          .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Slowness_1LS          .make(30)}, FL.Potion_Slowness_1LD          .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_WaterBreathing_1LS    .make(30)}, FL.Potion_WaterBreathing_1LD    .make(30), ZL_IS);
-		RM.Mixer        .addRecipe0(T, 16, 16, new FluidStack[] {FL.Dragon_Breath.make(10), FL.Potion_Invisibility_1LS      .make(30)}, FL.Potion_Invisibility_1LD      .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Harm_1S               .make(30)), FL.Potion_Harm_1D               .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Heal_1S               .make(30)), FL.Potion_Heal_1D               .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Jump_1S               .make(30)), FL.Potion_Jump_1D               .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Speed_1S              .make(30)), FL.Potion_Speed_1D              .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Strength_1S           .make(30)), FL.Potion_Strength_1D           .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Regen_1S              .make(30)), FL.Potion_Regen_1D              .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Poison_1S             .make(30)), FL.Potion_Poison_1D             .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_FireResistance_1S     .make(30)), FL.Potion_FireResistance_1D     .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_NightVision_1S        .make(30)), FL.Potion_NightVision_1D        .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Weakness_1S           .make(30)), FL.Potion_Weakness_1D           .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Slowness_1S           .make(30)), FL.Potion_Slowness_1D           .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_WaterBreathing_1S     .make(30)), FL.Potion_WaterBreathing_1D     .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Invisibility_1S       .make(30)), FL.Potion_Invisibility_1D       .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Harm_2S               .make(30)), FL.Potion_Harm_2D               .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Heal_2S               .make(30)), FL.Potion_Heal_2D               .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Jump_2S               .make(30)), FL.Potion_Jump_2D               .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Speed_2S              .make(30)), FL.Potion_Speed_2D              .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Strength_2S           .make(30)), FL.Potion_Strength_2D           .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Regen_2S              .make(30)), FL.Potion_Regen_2D              .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Poison_2S             .make(30)), FL.Potion_Poison_2D             .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Speed_1LS             .make(30)), FL.Potion_Speed_1LD             .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Strength_1LS          .make(30)), FL.Potion_Strength_1LD          .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Regen_1LS             .make(30)), FL.Potion_Regen_1LD             .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Poison_1LS            .make(30)), FL.Potion_Poison_1LD            .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_FireResistance_1LS    .make(30)), FL.Potion_FireResistance_1LD    .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_NightVision_1LS       .make(30)), FL.Potion_NightVision_1LD       .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Weakness_1LS          .make(30)), FL.Potion_Weakness_1LD          .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Slowness_1LS          .make(30)), FL.Potion_Slowness_1LD          .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_WaterBreathing_1LS    .make(30)), FL.Potion_WaterBreathing_1LD    .make(30), ZL_IS);
+		RM.Mixer        .addRecipe0(T, 16, 16, FL.array(FL.Dragon_Breath.make(10), FL.Potion_Invisibility_1LS      .make(30)), FL.Potion_Invisibility_1LD      .make(30), ZL_IS);
 		
 		
 		

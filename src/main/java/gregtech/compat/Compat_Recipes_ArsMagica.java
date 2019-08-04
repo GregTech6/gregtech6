@@ -50,7 +50,7 @@ public class Compat_Recipes_ArsMagica extends CompatMods {
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener(new OreDictListenerEvent_ThreeNames("flowerCerublossom", "flowerDesertNova", "foodSugarDough") {@Override public void onOreRegistration(ItemStack aStack1, ItemStack aStack2, ItemStack aStack3) {
-		RM.Mixer.addRecipeX(T, 16, 16, new ItemStack[] {aStack1, aStack2, ST.amount(2, aStack3)}, ST.make(MD.ARS, "manaCake", 3, 0));
+		RM.Mixer.addRecipeX(T, 16, 16, ST.array(aStack1, aStack2, ST.amount(2, aStack3)), ST.make(MD.ARS, "manaCake", 3, 0));
 		}});
 		}};
 		

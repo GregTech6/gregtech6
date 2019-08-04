@@ -23,8 +23,10 @@ import static gregapi.data.CS.*;
 
 import java.util.Collection;
 
+import gregapi.data.FL;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
+import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -53,6 +55,6 @@ public class RecipeMapFuel extends RecipeMap {
 	}
 	
 	public Recipe addFuel(ItemStack aInput, ItemStack aOutput, FluidStack aFluidInput, FluidStack aFluidOutput, long aChance, long aFuelValueInEU) {
-		return addRecipe(T, new ItemStack[] {aInput}, new ItemStack[] {aOutput}, null, new long[] {aChance}, new FluidStack[] {aFluidInput}, new FluidStack[] {aFluidOutput}, 0, 0, aFuelValueInEU);
+		return addRecipe(T, ST.array(aInput), ST.array(aOutput), null, new long[] {aChance}, FL.array(aFluidInput), FL.array(aFluidOutput), 0, 0, aFuelValueInEU);
 	}
 }

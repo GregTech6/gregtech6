@@ -361,7 +361,7 @@ public final class OreDictManager {
 			if (aPrefix == null || aMaterial == null || !aEvent.Name.equals(aPrefix.mNameInternal+aMaterial.mNameInternal)) {aPrefix = null; aMaterial = null;}
 		}
 		
-		if (mAutoBlackListedNames.contains(aEvent.Name) || mAutoBlackListedMods.contains(aEvent.Name)) addToBlacklist_(aEvent.Ore);
+		if (mAutoBlackListedNames.contains(aEvent.Name) || mAutoBlackListedMods.contains(aModID)) addToBlacklist_(aEvent.Ore);
 		
 		if (aPrefix == null) aPrefix = OreDictPrefix.get(aEvent.Name);
 		
@@ -396,7 +396,9 @@ public final class OreDictManager {
 					if (aMaterial.contains(TD.Properties.AUTO_BLACKLIST)) addToBlacklist_(aEvent.Ore);
 					for (OreDictMaterial tReRegisteredMaterial : aMaterial.mReRegistrations) registerOreSafe(aPrefix.mNameInternal + tReRegisteredMaterial.mNameInternal, aEvent.Ore);
 					if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
-						if (aPrefix == OP.ore) {
+						if (MD.TFC.mLoaded && aModID.equalsIgnoreCase(MD.TFC.mID) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
+							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
+						} else if (aPrefix == OP.ore) {
 							addItemData_(aEvent.Ore, aPrefix.dat(aMaterial));
 						} else if (aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, F, T);

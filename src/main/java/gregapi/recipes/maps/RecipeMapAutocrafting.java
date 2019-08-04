@@ -126,7 +126,7 @@ public class RecipeMapAutocrafting extends RecipeMap {
 		
 		for (ItemStack tInput : tInputs) if (OM.is_("gt:autocrafterinfinite", tInput)) tInput.stackSize = 0;
 		
-		return new Recipe(T, F, T, tInputs.toArray(new ItemStack[tInputs.size()]), tOutputs.toArray(new ItemStack[tOutputs.size()]), null, null, null, null, 1024, 16, 0);
+		return new Recipe(T, F, T, tInputs.toArray(ZL_IS), tOutputs.toArray(ZL_IS), null, null, null, null, 1024, 16, 0);
 	}
 	
 	public ItemStack[] getBlueprint(IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {

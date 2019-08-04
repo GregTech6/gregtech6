@@ -164,12 +164,12 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Generifier   .addRecipe1(T, F, F, F, F, 0, 1, ST.make(MD.IC2, "item.itemMatter", 1, 0), NF, FL.UUM.make(1), ZL_IS);
 		RM.Generifier   .addRecipe0(T, F, F, F, F, 0, 1, FL.UUM.make(1), NF, ST.make(MD.IC2, "item.itemMatter", 1, 0));
 		
-		RM.Mixer        .addRecipeX(T, 16,   48, new ItemStack[] {IL.IC2_Scrap.get(2), IL.IC2_Fertilizer.get(1), IL.Dye_Bonemeal.get(1) }, FL.Potion_Poison_2   .make( 250), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer"   ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,  192, new ItemStack[] {IL.IC2_Scrap.get(8), IL.IC2_Fertilizer.get(4), OM.dust(MT.Ca)         }, FL.Potion_Poison_2   .make(1000), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer"   , 12, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, new ItemStack[] {OM.dust(MT.Coal), OM.dust(MT.Clay), OM.dust(MT.Redstone)              }, FL.Water             .make(1000), NF, ST.make(MD.IC2, "constructionFoam"             ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, new ItemStack[] {OM.dust(MT.Coal), OM.dust(MT.Clay), OM.dust(MT.Redstone)              }, FL.DistW             .make(1000), NF, ST.make(MD.IC2, "constructionFoam"             ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, new ItemStack[] {OM.dust(MT.Coal), OM.dust(MT.ClayBrown), OM.dust(MT.Redstone)         }, FL.Water             .make(1000), NF, ST.make(MD.IC2, "constructionFoam"             ,  3, 0));
-		RM.Mixer        .addRecipeX(T, 16,   48, new ItemStack[] {OM.dust(MT.Coal), OM.dust(MT.ClayBrown), OM.dust(MT.Redstone)         }, FL.DistW             .make(1000), NF, ST.make(MD.IC2, "constructionFoam"             ,  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(IL.IC2_Scrap.get(2), IL.IC2_Fertilizer.get(1), IL.Dye_Bonemeal.get(1)), FL.Potion_Poison_2   .make( 250), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer"   ,  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,  192, ST.array(IL.IC2_Scrap.get(8), IL.IC2_Fertilizer.get(4), OM.dust(MT.Ca)        ), FL.Potion_Poison_2   .make(1000), NF, ST.make(MD.IC2, "item.itemSpecialFertilizer"   , 12, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.Clay), OM.dust(MT.Redstone)             ), FL.Water             .make(1000), NF, ST.make(MD.IC2, "constructionFoam"             ,  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.Clay), OM.dust(MT.Redstone)             ), FL.DistW             .make(1000), NF, ST.make(MD.IC2, "constructionFoam"             ,  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.ClayBrown), OM.dust(MT.Redstone)        ), FL.Water             .make(1000), NF, ST.make(MD.IC2, "constructionFoam"             ,  3, 0));
+		RM.Mixer        .addRecipeX(T, 16,   48, ST.array(OM.dust(MT.Coal), OM.dust(MT.ClayBrown), OM.dust(MT.Redstone)        ), FL.DistW             .make(1000), NF, ST.make(MD.IC2, "constructionFoam"             ,  3, 0));
 		
 		RM.Compressor   .addRecipe1(T, 16,   32, ST.make(MD.IC2, "item.itemScrapMetal", 8, 0), ST.make(MD.IC2, "item.scrapMetalChunk", 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, IL.IC2_Plantball.get(1), ST.make(MD.IC2, "item.itemFuelPlantCmpr", 1, 0));
@@ -178,7 +178,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Compressor   .addRecipe1(T, 16,   16, ST.make(MD.IC2, "constructionFoam", 1, 0), ST.make(MD.IC2, "item.itemPartPellet", 1, 0));
 		
 		ItemStack tCoalDust = OM.dust(MT.Coal);
-		for (ItemStack tStack : new ItemStack[] {
+		for (ItemStack tStack : ST.array(
 			ST.make(MD.IC2, "item.itemCellUranEmpty", 1, 0),
 			ST.make(MD.IC2, "item.itemEnrichedUranStuff", 1, 100),
 			ST.make(MD.IC2, "item.itemEnrichedUranStuff", 1, 101),
@@ -191,14 +191,14 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 			ST.make(MD.IC2, "item.itemEnrichedUranStuff", 1, 202),
 			ST.make(MD.IC2, "item.itemEnrichedUranStuff", 1, 203),
 			ST.make(MD.IC2, "item.itemEnrichedUranStuff", 1, 204)
-			}) if (ST.valid(tStack)) {
+			)) if (ST.valid(tStack)) {
 			ItemStack rStack = CR.get(tStack, tCoalDust);
 			if (ST.valid(rStack)) RM.Canner.addRecipe2(T, 16, 16, tStack, tCoalDust, rStack);
 		}
 		
 		boolean temp = T;
 		
-		for (ItemStack tStack : new ItemStack[] {
+		for (ItemStack tStack : ST.array(
 			OM.ingot(MT.U_238),
 			ST.make(MD.IC2, "item.itemEnrichedUranStuff", 1, 0),
 			ST.make(MD.IC2, "item.itemEnrichedUranStuff", 1, 1),
@@ -207,7 +207,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 			ST.make(MD.IC2, "item.itemEnrichedUranStuff", 1, 4),
 			ST.make(MD.IC2, "item.itemFuelPlantCmpr", 1, 0),
 			ST.make(MD.IC2, "item.itemFuelCoalCmpr", 1, 0)
-			}) if (ST.valid(tStack)) {
+			)) if (ST.valid(tStack)) {
 			ItemStack rStack = CR.get(tStack, IL.Cell_Empty.get(1));
 			if (ST.valid(rStack)) {
 				RM.Canner.addRecipe2(T, 16, 16, tStack, IL.Cell_Empty.get(1), rStack);
@@ -331,7 +331,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		for (OreDictMaterial tMat : ANY.Fe.mToThis) if (tMat != MT.Enori)
 		RM.RollFormer   .addRecipe1(T,256,   16, OP.blockSolid.mat(tMat, 1)                         , IL.IC2_ShaftIron.get(1));
 		
-		for (FluidStack tFluid : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {
+		for (FluidStack tFluid : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
 		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tFluid, FL.CFoam.make(1000), ZL_IS);
 		}
 		
@@ -422,7 +422,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Autoclave        .addRecipe2(T,  0, 3000, OM.dust(MT.EnergiumRed, U*9), ST.tag(9), FL.Steam.make(96000), FL.DistW.make(450), IL.IC2_EnergyCrystal.get(1));
 		
 		RM.Boxinator        .addRecipe2(T, 16,   16, IL.IC2_Scrap.get(9), ST.tag(9), IL.IC2_Scrapbox.get(1));
-		RM.Unboxinator      .addFakeRecipe(F, new ItemStack[] {IL.IC2_Scrapbox.get(1)}, new ItemStack[] {IL.IC2_Scrapbox.getWithName(1, "Random Drops, see Scrapbox Handler")}, null, ZL_LONG, ZL_FS, ZL_FS, 16, 16, 0);
+		RM.Unboxinator      .addFakeRecipe(F, ST.array(IL.IC2_Scrapbox.get(1)), ST.array(IL.IC2_Scrapbox.getWithName(1, "Random Drops, see Scrapbox Handler")), null, ZL_LONG, ZL_FS, ZL_FS, 16, 16, 0);
 		
 		if (IL.ERE_Herbicide.exists())
 		RM.Shredder         .addRecipe1(T, 16,   16, IL.ERE_Herbicide.get(1)                        , IL.IC2_Grin_Powder.get(1));
@@ -430,7 +430,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Shredder         .addRecipe1(T, 16,   16, ST.make(Items.spider_eye, 1, W)                , IL.IC2_Grin_Powder.get(2));
 		
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis)
-		RM.Press            .addRecipeX(T, 64,  256, new ItemStack[] {IL.IC2_Advanced_Alloy.get(4), OP.plate.mat(MT.Ir, 4), OP.gem.mat(tMat, 1)}, IL.IC2_Iridium_Alloy.get(1));
+		RM.Press            .addRecipeX(T, 64,  256, ST.array(IL.IC2_Advanced_Alloy.get(4), OP.plate.mat(MT.Ir, 4), OP.gem.mat(tMat, 1)), IL.IC2_Iridium_Alloy.get(1));
 		RM.Press            .addRecipe2(T, 16,   64, IL.IC2_Compressed_Coal_Ball.get(8), OP.dust.mat(MT.Obsidian, 9), IL.IC2_Compressed_Coal_Chunk.get(1));
 		
 		RM.Compressor       .addRecipe1(T,256,  256, IL.IC2_Carbon_Mesh.get(1)                          , IL.IC2_Carbon_Plate.get(1));
@@ -486,7 +486,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Blocks.tnt, 1, W)                          , OM.dust(MT.Na2SO3, U*1), IL.IC2_ITNT.get(1));
 		RM.Mixer            .addRecipe2(T, 16,   32, ST.make(Items.flint, 1, W)                         , OM.dust(MT.Coal, U*8), IL.IC2_Coal_Ball.get(1));
 		
-		for (FluidStack tFluid : new FluidStack[] {FL.Water.make(1000), FL.DistW.make(1000)}) {
+		for (FluidStack tFluid : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
 		
 		RM.Mixer            .addRecipe1(T, 16,   16, IL.IC2_Grin_Powder.get(1)                          , UT.Fluids.mul(tFluid, 1, 4, T), FL.Potion_Poison_2.make(250), ZL_IS);
 		
@@ -537,8 +537,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		}
 		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) if (tMat != MT.Enori) {
-		RM.Welder           .addRecipeX(T, 16,  128, new ItemStack[] {OP.ingot.mat(tMat, 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)}, IL.IC2_Mixed_Metal_Ingot.get(1));
-		RM.Welder           .addRecipeX(T, 16,  256, new ItemStack[] {OP.plate.mat(tMat, 1), OP.plate.mat(MT.Bronze, 1), OP.plate.mat(MT.Sn, 1)}, IL.IC2_Mixed_Metal_Ingot.get(1));
+		RM.Welder           .addRecipeX(T, 16,  128, ST.array(OP.ingot.mat(tMat, 1), OP.ingot.mat(MT.Bronze, 1), OP.ingot.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
+		RM.Welder           .addRecipeX(T, 16,  256, ST.array(OP.plate.mat(tMat, 1), OP.plate.mat(MT.Bronze, 1), OP.plate.mat(MT.Sn, 1)), IL.IC2_Mixed_Metal_Ingot.get(1));
 		}
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
@@ -580,25 +580,25 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		new GT_BaseCrop("Oil Berries"           , "Spacetoad"               , OP.plantGtBerry.mat(MT.Oil, 1)                    , null                                                                                                                                                                  , null                                              , 9, 4, 27000, 1, 4, 6, 1, 2, 1,12, new String[] {"Reed"        , "Fire", "Dark", "Rotten", "Coal", "Oil", "Berry"});
 		new GT_BaseCrop("Bobsyeruncle Ranks"    , "GenerikB"                , OP.plantGtBerry.mat(MT.Emerald, 1)                , null                                                                                                                                                                  , null                                              ,11, 4, 16500, 1, 4, 4, 0, 8, 2, 9, new String[] {"Vine"        , "Shiny", "Emerald", "Berylium", "Crystal"});
 		new GT_BaseCrop("Diareed"               , "Direwolf20"              , OP.dustTiny.mat(MT.Diamond ,1)                    , null                                                                                                                                                                  , null                                              ,12, 4, 36000, 1, 4, 5, 0,10, 2,10, new String[] {"Reed"        , "Fire", "Shiny", "Coal", "Diamond", "Crystal"});
-		new GT_BaseCrop("Withereed"             , "CovertJaguar"            , OP.dust.mat(MT.Coal, 1)                           , new ItemStack[] {ST.make(Items.coal, 1, 0), ST.make(Items.coal, 1, 0)}                                                                                                , null                                              , 8, 4, 24000, 1, 4, 2, 0, 4, 1, 6, new String[] {"Reed"        , "Fire", "Undead", "Coal", "Rotten", "Wither"});
-		new GT_BaseCrop("Blaze Reed"            , "Mr. Brain"               , ST.make(Items.blaze_powder, 1, 0)                 , new ItemStack[] {ST.make(Items.blaze_rod, 1, 0)}                                                                                                                      , null                                              ,10, 4,  9000, 1, 4, 4, 0, 8, 2,10, new String[] {"Reed"        , "Fire", "Blaze", "Sulfur"});
-		new GT_BaseCrop("Eggplant"              , "Link"                    , ST.make(Items.egg, 1, 0)                          , new ItemStack[] {ST.make(Items.chicken, 1, 0), ST.make(Items.feather, 1, 0), ST.make(Items.feather, 1, 0), ST.make(Items.feather, 1, 0)}                              , null                                              , 6, 3,   900, 2, 3, 0, 4, 1, 0, 0, new String[] {"Flower"      , "Food", "Chicken", "Egg", "Feather", "Addictive"});
+		new GT_BaseCrop("Withereed"             , "CovertJaguar"            , OP.dust.mat(MT.Coal, 1)                           , ST.array(ST.make(Items.coal, 1, 0), ST.make(Items.coal, 1, 0))                                                                                                , null                                              , 8, 4, 24000, 1, 4, 2, 0, 4, 1, 6, new String[] {"Reed"        , "Fire", "Undead", "Coal", "Rotten", "Wither"});
+		new GT_BaseCrop("Blaze Reed"            , "Mr. Brain"               , ST.make(Items.blaze_powder, 1, 0)                 , ST.array(ST.make(Items.blaze_rod, 1, 0))                                                                                                                      , null                                              ,10, 4,  9000, 1, 4, 4, 0, 8, 2,10, new String[] {"Reed"        , "Fire", "Blaze", "Sulfur"});
+		new GT_BaseCrop("Eggplant"              , "Link"                    , ST.make(Items.egg, 1, 0)                          , ST.array(ST.make(Items.chicken, 1, 0), ST.make(Items.feather, 1, 0), ST.make(Items.feather, 1, 0), ST.make(Items.feather, 1, 0))                              , null                                              , 6, 3,   900, 2, 3, 0, 4, 1, 0, 0, new String[] {"Flower"      , "Food", "Chicken", "Egg", "Feather", "Addictive"});
 		new GT_BaseCrop("Corium"                , "Gregorius Techneticies"  , ST.make(Items.leather, 1, 0)                      , null                                                                                                                                                                  , null                                              , 6, 4,     0, 1, 4, 0, 2, 3, 1, 0, new String[] {"Vine"        , "Cow", "Silk"});
-		new GT_BaseCrop("Corpse Plant"          , "Mr. Kenny"               , ST.make(Items.rotten_flesh, 1, 0)                 , new ItemStack[] {IL.Dye_Bonemeal.get(1), IL.Dye_Bonemeal.get(1), ST.make(Items.bone, 1, 0)}                                                                           , null                                              , 5, 4,     0, 1, 4, 0, 2, 1, 0, 3, new String[] {"Vine"        , "Food", "Toxic", "Undead", "Rotten"});
+		new GT_BaseCrop("Corpse Plant"          , "Mr. Kenny"               , ST.make(Items.rotten_flesh, 1, 0)                 , ST.array(IL.Dye_Bonemeal.get(1), IL.Dye_Bonemeal.get(1), ST.make(Items.bone, 1, 0))                                                                           , null                                              , 5, 4,     0, 1, 4, 0, 2, 1, 0, 3, new String[] {"Vine"        , "Food", "Toxic", "Undead", "Rotten"});
 		new GT_BaseCrop("Creeper Weed"          , "General Spaz"            , OP.dust.mat(MT.Gunpowder, 1)                      , null                                                                                                                                                                  , null                                              , 7, 4,     0, 1, 4, 3, 0, 5, 1, 3, new String[] {"Vine"        , "Creeper", "Explosive", "Fire", "Sulfur", "Saltpeter", "Coal"});
-		new GT_BaseCrop("Ender Bloom"           , "RichardG"                , OP.dust.mat(MT.EnderPearl, 1)                     , new ItemStack[] {ST.make(Items.ender_pearl, 1, 0), ST.make(Items.ender_pearl, 1, 0), ST.make(Items.ender_eye, 1, 0)}                                                  , null                                              ,10, 4, 15000, 1, 4, 5, 0, 2, 1, 6, new String[] {"Flower"      , "Shiny", "Ender"});
-		new GT_BaseCrop("Meat Rose"             , "VintageBeef"             , ST.make(Items.dye, 1, 9)                          , new ItemStack[] {ST.make(Items.beef, 1, 0), ST.make(Items.porkchop, 1, 0), ST.make(Items.chicken, 1, 0), ST.make(Items.fish, 1, 0)}                                   , null                                              , 7, 4,  1500, 1, 4, 0, 4, 1, 3, 0, new String[] {"Flower"      , "Food", "Cow", "Fish", "Chicken", "Pig"});
+		new GT_BaseCrop("Ender Bloom"           , "RichardG"                , OP.dust.mat(MT.EnderPearl, 1)                     , ST.array(ST.make(Items.ender_pearl, 1, 0), ST.make(Items.ender_pearl, 1, 0), ST.make(Items.ender_eye, 1, 0))                                                  , null                                              ,10, 4, 15000, 1, 4, 5, 0, 2, 1, 6, new String[] {"Flower"      , "Shiny", "Ender"});
+		new GT_BaseCrop("Meat Rose"             , "VintageBeef"             , ST.make(Items.dye, 1, 9)                          , ST.array(ST.make(Items.beef, 1, 0), ST.make(Items.porkchop, 1, 0), ST.make(Items.chicken, 1, 0), ST.make(Items.fish, 1, 0))                                   , null                                              , 7, 4,  1500, 1, 4, 0, 4, 1, 3, 0, new String[] {"Flower"      , "Food", "Cow", "Fish", "Chicken", "Pig"});
 		new GT_BaseCrop("Milkwart"              , "Mr. Brain"               , OP.plantGtWart.mat(MT.Milk, 1)                    , null                                                                                                                                                                  , OP.plantGtWart.mat(MT.Milk, 1)                    , 6, 3,   900, 1, 3, 0, 3, 0, 1, 0, new String[] {"Wart"        , "Food", "Milk", "Cow", "Ingredient"});
 		new GT_BaseCrop("Glowshrooms"           , "Speiger"                 , OP.plantGtWart.mat(MT.Glowstone, 1)               , null                                                                                                                                                                  , OP.plantGtWart.mat(MT.Glowstone, 1)               , 6, 3,  2400, 1, 3, 5, 0, 0, 2, 0, new String[] {"Wart"        , "Shiny", "Ingredient"});
 		new GT_BaseCrop("Slime Plant"           , "Neowulf"                 , ST.make(Items.slime_ball, 1, 0)                   , null                                                                                                                                                                  , null                                              , 6, 4,     0, 3, 4, 3, 0, 0, 0, 2, new String[] {"Bush"        , "Slime", "Bouncy", "Sticky"});
-		new GT_BaseCrop("Spidernip"             , "Ms. Muffet"              , ST.make(Items.string, 1, 0)                       , new ItemStack[] {ST.make(Items.spider_eye, 1, 0), ST.make(Blocks.web, 1, 0)}                                                                                          , null                                              , 4, 4,   600, 1, 4, 2, 1, 4, 1, 3, new String[] {"Flower"      , "Toxic", "Silk", "Spider", "Ingredient", "Addictive"});
+		new GT_BaseCrop("Spidernip"             , "Ms. Muffet"              , ST.make(Items.string, 1, 0)                       , ST.array(ST.make(Items.spider_eye, 1, 0), ST.make(Blocks.web, 1, 0))                                                                                          , null                                              , 4, 4,   600, 1, 4, 2, 1, 4, 1, 3, new String[] {"Flower"      , "Toxic", "Silk", "Spider", "Ingredient", "Addictive"});
 		new GT_BaseCrop("Tear Stalks"           , "Neowulf"                 , ST.make(Items.ghast_tear, 1, 0)                   , null                                                                                                                                                                  , null                                              , 8, 4,  2400, 1, 4, 1, 2, 0, 0, 0, new String[] {"Reed"        , "Healing", "Nether", "Ingredient", "Ghast"});
 		new GT_BaseCrop("Tine"                  , "Gregorius Techneticies"  , OP.plantGtTwig.mat(MT.Sn, 1)                      , null                                                                                                                                                                  , null                                              , 5, 3, 15000, 2, 3, 2, 0, 3, 0, 0, new String[] {"Bush"        , "Shiny", "Metal", "Pine", "Tin"});
 		new GT_BaseCrop("Coppon"                , "Mr. Brain"               , OP.plantGtFiber.mat(MT.Cu, 1)                     , null                                                                                                                                                                  , null                                              , 6, 3, 18000, 2, 3, 2, 0, 1, 1, 1, new String[] {"Bush"        , "Shiny", "Metal", "Cotton", "Copper"});
 		new GT_BaseCrop("Argentia"              , "Eloraam"                 , OP.plantGtBlossom.mat(MT.Ag, 1)                   , null                                                                                                                                                                  , null                                              , 7, 4, 21000, 3, 4, 2, 0, 1, 0, 0, new String[] {"Reed"        , "Shiny", "Metal", "Silver"});
 		new GT_BaseCrop("Plumbilia"             , "KingLemming"             , OP.plantGtBlossom.mat(MT.Pb, 1)                   , null                                                                                                                                                                  , null                                              , 6, 4, 18000, 3, 4, 2, 0, 3, 1, 1, new String[] {"Reed"        , "Heavy", "Metal", "Lead"});
-		new GT_BaseCrop("Steeleaf Ranks"        , "Benimatic"               , OP.nugget.mat(MT.Steeleaf, 1)                     , new ItemStack[] {OP.ingot.mat(MT.Steeleaf, 1)}                                                                                                                        , null                                              ,10, 4, 30000, 1, 4, 3, 0, 7, 2, 8, new String[] {"Vine"        , "Metal", "Iron"});
-		new GT_BaseCrop("Liveroots"             , "Benimatic"               , OP.dust.mat(MT.LiveRoot, 1)                       , new ItemStack[] {IL.TF_LiveRoot.get(1)}                                                                                                                               , null                                              , 8, 4,     0, 1, 4, 2, 0, 5, 2, 6, new String[] {"Vine"        , "Wood"});
+		new GT_BaseCrop("Steeleaf Ranks"        , "Benimatic"               , OP.nugget.mat(MT.Steeleaf, 1)                     , ST.array(OP.ingot.mat(MT.Steeleaf, 1))                                                                                                                        , null                                              ,10, 4, 30000, 1, 4, 3, 0, 7, 2, 8, new String[] {"Vine"        , "Metal", "Iron"});
+		new GT_BaseCrop("Liveroots"             , "Benimatic"               , OP.dust.mat(MT.LiveRoot, 1)                       , ST.array(IL.TF_LiveRoot.get(1))                                                                                                                               , null                                              , 8, 4,     0, 1, 4, 2, 0, 5, 2, 6, new String[] {"Vine"        , "Wood"});
 		//                                                                                                                                                                                                                                                                                                                                                 TIER,SIZE,    ,AH,HA,CH,FD,DF,CO,WD
 		new GT_BaseCrop("Rye"                   , "Binnie"                  , IL.Crop_Rye.get(1)                                , null                                                                                                                                                                  , IL.Crop_Rye.get(1)                                , 1, 7,     0, 2, 7, 0, 4, 0, 0, 2, new String[] {"Wheat"       , "Food", "Grain"});
 		new GT_BaseCrop("Barley"                , "Glitchfiend"             , IL.Crop_Barley.get(1)                             , null                                                                                                                                                                  , IL.Crop_Barley.get(1)                             , 1, 7,     0, 2, 7, 0, 4, 0, 0, 2, new String[] {"Wheat"       , "Food", "Grain"});
@@ -616,7 +616,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		new GT_BaseCrop("Red Grapes"            , "Pam"                     , IL.Food_Grapes_Red.get(1)                         , null                                                                                                                                                                  , IL.Food_Grapes_Red.get(4)                         , 3, 4,     0, 3, 4, 1, 4, 0, 2, 3, new String[] {"Vine"        , "Food", "Fruit"});
 		new GT_BaseCrop("White Grapes"          , "Binnie"                  , IL.Food_Grapes_White.get(1)                       , null                                                                                                                                                                  , IL.Food_Grapes_White.get(4)                       , 3, 4,     0, 3, 4, 1, 4, 0, 0, 3, new String[] {"Vine"        , "Food", "Fruit"});
 		new GT_BaseCrop("Green Grapes"          , "Gwafu"                   , IL.Food_Grapes_Green.get(1)                       , null                                                                                                                                                                  , IL.Food_Grapes_Green.get(4)                       , 3, 4,     0, 3, 4, 1, 4, 0, 1, 3, new String[] {"Vine"        , "Food", "Fruit"});
-		new GT_BaseCrop("Purple Grapes"         , "Gregorius Techneticies"  , IL.Food_Grapes_Purple.get(1)                      , new ItemStack[] {IL.Food_Grapes_Purple.getWithName(1, "Member Berries")}                                                                                              , IL.Food_Grapes_Purple.get(4)                      , 3, 4,     0, 3, 4, 1, 4, 0, 2, 3, new String[] {"Vine"        , "Food", "Fruit", "Member?"});
+		new GT_BaseCrop("Purple Grapes"         , "Gregorius Techneticies"  , IL.Food_Grapes_Purple.get(1)                      , ST.array(IL.Food_Grapes_Purple.getWithName(1, "Member Berries"))                                                                                              , IL.Food_Grapes_Purple.get(4)                      , 3, 4,     0, 3, 4, 1, 4, 0, 2, 3, new String[] {"Vine"        , "Food", "Fruit", "Member?"});
 		new GT_BaseCrop("Blueberry Bush"        , "Pam"                     , IL.Food_Blueberry.get(1)                          , null                                                                                                                                                                  , IL.Food_Blueberry.get(4)                          , 3, 5,     0, 4, 5, 1, 4, 1, 4, 2, new String[] {"Bush"        , "Food", "Fruit", "Berry", "Color"});
 		new GT_BaseCrop("Gooseberry Bush"       , "Pam"                     , IL.Food_Gooseberry.get(1)                         , null                                                                                                                                                                  , IL.Food_Gooseberry.get(4)                         , 3, 5,     0, 4, 5, 1, 4, 1, 1, 2, new String[] {"Bush"        , "Food", "Fruit", "Berry"});
 		new GT_BaseCrop("Candleberry Bush"      , "Pam"                     , IL.Food_Candleberry.get(1)                        , null                                                                                                                                                                  , IL.Food_Candleberry.get(4)                        , 3, 5,     0, 4, 5, 3, 3, 1, 0, 2, new String[] {"Bush"        , "Food", "Fruit", "Berry", "Wax"});

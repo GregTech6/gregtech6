@@ -41,7 +41,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Jackhammer not placing Torches anymore, the Mode Switch accidentially overrode it.
 [CHANGED] Oil Shale can be used as Fuel now, it's only as efficient as non-coked Lignite, but it works. You get Stone as "Ashes" from burning it.
 [CHANGED] Atlarus (Metallurgy) is now available through Bedrock Drill and UUM.
-[ADDED] GT5Us three HSS Steels. Osmiridium and Carborundum IV Wires. Carborundum Coils (The Large Electric Oven can alternatively accept those too). Roaster Recipes for Carbon Monoxide from Carbon Dioxide.
+[ADDED] GT5Us three HSS Steels.
+[ADDED] Osmiridium and Carborundum IV Wires.
+[ADDED] Carborundum Coils (The Large Electric Oven can alternatively accept those too).
+[ADDED] Roaster Recipes for Carbon Monoxide from Carbon Dioxide.
+[ADDED] Railcraft H.S. Rails and Adv. Rails can now be made with Silver, Electrum or Platinum.
 [WIP]
 Working on the GT6 Version of an AE or Logistics System.
 Note, that this isn't gonna be a Storage GUI or Crafting on Demand, this is purely for automation!

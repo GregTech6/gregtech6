@@ -294,393 +294,393 @@ public class Loader_Recipes_Replace implements Runnable {
 	private static final String HAM = "h", FIL = "f", NGT = "I", PLT = "P", CRV = "C", ROD = "R", ___ = " ";
 	
 	public static final RecipeReplacer[] sRecipesMat = {
-		  new RecipeReplacer(new ItemStack[]
-				{INGT, null, INGT
+		  new RecipeReplacer(ST.array
+				(INGT, null, INGT
 				,INGT, INGT, INGT
-				,null, INGT, null})
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, null, INGT
+				,null, INGT, null))
+		, new RecipeReplacer(ST.array
+				(INGT, null, INGT
 				,INGT, null, INGT
-				,INGT, INGT, INGT})
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, null
+				,INGT, INGT, INGT))
+		, new RecipeReplacer(ST.array
+				(null, INGT, null
 				,INGT, INGT, INGT
-				,INGT, null, INGT})
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, INGT
+				,INGT, null, INGT))
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, INGT
 				,INGT, null, INGT
-				,null, null, null}
+				,null, null, null)
 				, "Helmet"
 				, PLT+PLT+PLT
 				, CRV+HAM+CRV)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, null, INGT
+		, new RecipeReplacer(ST.array
+				(INGT, null, INGT
 				,INGT, INGT, INGT
-				,INGT, INGT, INGT}
+				,INGT, INGT, INGT)
 				, "ChestPlate"
 				, PLT+HAM+PLT
 				, CRV+PLT+CRV
 				, CRV+PLT+CRV)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, INGT
 				,INGT, null, INGT
-				,INGT, null, INGT}
+				,INGT, null, INGT)
 				, "Pants"
 				, PLT+CRV+PLT
 				, CRV+HAM+CRV
 				, CRV+___+CRV)
-		, new RecipeReplacer(new ItemStack[]
-				{null, null, null
+		, new RecipeReplacer(ST.array
+				(null, null, null
 				,INGT, null, INGT
-				,INGT, null, INGT}
+				,INGT, null, INGT)
 				, "Boots"
 				, PLT+___+PLT
 				, CRV+HAM+CRV)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, null, null
+		, new RecipeReplacer(ST.array
+				(INGT, null, null
 				,null, INGT, null
-				,null, null, null}
+				,null, null, null)
 				, "Shears"
 				, HAM+PLT
 				, PLT+FIL)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, null
+		, new RecipeReplacer(ST.array
+				(null, INGT, null
 				,INGT, null, null
-				,null, null, null}
+				,null, null, null)
 				, "Shears"
 				, HAM+PLT
 				, PLT+FIL)
 	};
 	
 	public static final RecipeReplacer[] sRecipesRod = {
-		  new RecipeReplacer(new ItemStack[]
-				{null, INGT, null
+		  new RecipeReplacer(ST.array
+				(null, INGT, null
 				,null, INGT, null
-				,null, STCK, null}
+				,null, STCK, null)
 				, "Sword"
 				, ___+PLT+___
 				, FIL+PLT+HAM
 				, ___+ROD+___)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, INGT
 				,null, STCK, null
-				,null, STCK, null}
+				,null, STCK, null)
 				, "Pickaxe"
 				, PLT+NGT+NGT
 				, FIL+ROD+HAM
 				, ___+ROD+___)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, null
+		, new RecipeReplacer(ST.array
+				(null, INGT, null
 				,null, STCK, null
-				,null, STCK, null}
+				,null, STCK, null)
 				, "Shovel"
 				, FIL+PLT+HAM
 				, ___+ROD+___
 				, ___+ROD+___)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, null
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
 				,INGT, STCK, null
-				,null, STCK, null}
+				,null, STCK, null)
 				, "Axe"
 				, PLT+NGT+HAM
 				, PLT+ROD+___
 				, FIL+ROD+___)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(null, INGT, INGT
 				,null, STCK, INGT
-				,null, STCK, null}
+				,null, STCK, null)
 				, "Axe"
 				, PLT+NGT+HAM
 				, PLT+ROD+___
 				, FIL+ROD+___)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, null
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
 				,null, STCK, null
-				,null, STCK, null}
+				,null, STCK, null)
 				, "Hoe"
 				, PLT+NGT+HAM
 				, FIL+ROD+___
 				, ___+ROD+___)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(null, INGT, INGT
 				,null, STCK, null
-				,null, STCK, null}
+				,null, STCK, null)
 				, "Hoe"
 				, PLT+NGT+HAM
 				, FIL+ROD+___
 				, ___+ROD+___)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, null
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
 				,INGT, null, null
-				,INGT, INGT, STCK}
+				,INGT, INGT, STCK)
 				, "Sickle"
 				, PLT+PLT+___
 				, PLT+FIL+HAM
 				, PLT+PLT+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(null, INGT, INGT
 				,null, null, INGT
-				,STCK, INGT, INGT}
+				,STCK, INGT, INGT)
 				, "Sickle"
 				, PLT+PLT+___
 				, PLT+FIL+HAM
 				, PLT+PLT+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, null
+		, new RecipeReplacer(ST.array
+				(null, INGT, null
 				,INGT, null, null
-				,null, INGT, STCK}
+				,null, INGT, STCK)
 				, "Sickle"
 				, ___+PLT+___
 				, PLT+FIL+___
 				, HAM+PLT+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, null
+		, new RecipeReplacer(ST.array
+				(null, INGT, null
 				,null, null, INGT
-				,STCK, INGT, null}
+				,STCK, INGT, null)
 				, "Sickle"
 				, ___+PLT+___
 				, PLT+FIL+___
 				, HAM+PLT+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, null
+		, new RecipeReplacer(ST.array
+				(null, INGT, null
 				,INGT, null, INGT
-				,null, null, STCK}
+				,null, null, STCK)
 				, "Sickle"
 				, ___+PLT+___
 				, PLT+FIL+___
 				, HAM+PLT+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, null
+		, new RecipeReplacer(ST.array
+				(null, INGT, null
 				,INGT, null, INGT
-				,STCK, null, null}
+				,STCK, null, null)
 				, "Sickle"
 				, ___+PLT+___
 				, PLT+FIL+___
 				, HAM+PLT+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,null, INGT, null
-				,null, INGT, null}
+				,null, INGT, null)
 				, "Sword"
 				, ___+ROD+___
 				, FIL+PLT+HAM
 				, ___+PLT+___)
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,null, STCK, null
-				,INGT, INGT, INGT}
+				,INGT, INGT, INGT)
 				, "Pickaxe"
 				, ___+ROD+___
 				, FIL+ROD+HAM
 				, PLT+NGT+NGT)
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,null, STCK, null
-				,null, INGT, null}
+				,null, INGT, null)
 				, "Shovel"
 				, ___+ROD+___
 				, ___+ROD+___
 				, FIL+PLT+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,INGT, STCK, null
-				,INGT, INGT, null}
+				,INGT, INGT, null)
 				, "Axe"
 				, FIL+ROD+___
 				, PLT+ROD+___
 				, PLT+NGT+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,null, STCK, INGT
-				,null, INGT, INGT}
+				,null, INGT, INGT)
 				, "Axe"
 				, FIL+ROD+___
 				, PLT+ROD+___
 				, PLT+NGT+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,null, STCK, null
-				,INGT, INGT, null}
+				,INGT, INGT, null)
 				, "Hoe"
 				, ___+ROD+___
 				, FIL+ROD+___
 				, PLT+NGT+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,null, STCK, null
-				,null, INGT, INGT}
+				,null, INGT, INGT)
 				, "Hoe"
 				, ___+ROD+___
 				, FIL+ROD+___
 				, PLT+NGT+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(null, INGT, INGT
 				,null, STCK, INGT
-				,STCK, null, null}
+				,STCK, null, null)
 				, "Halberd"
 				, PLT+PLT+HAM
 				, PLT+ROD+___
 				, FIL+___+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, null
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
 				,INGT, STCK, null
-				,null, null, STCK}
+				,null, null, STCK)
 				, "Halberd"
 				, PLT+PLT+HAM
 				, PLT+ROD+___
 				, FIL+___+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, null, INGT
+		, new RecipeReplacer(ST.array
+				(null, null, INGT
 				,null, STCK, null
-				,STCK, null, null}
+				,STCK, null, null)
 				, "Spear"
 				, PLT+HAM+___
 				, FIL+ROD+___
 				, ___+___+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, null, null
+		, new RecipeReplacer(ST.array
+				(INGT, null, null
 				,null, STCK, null
-				,null, null, STCK}
+				,null, null, STCK)
 				, "Spear"
 				, PLT+HAM+___
 				, FIL+ROD+___
 				, ___+___+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, null, INGT
+		, new RecipeReplacer(ST.array
+				(null, null, INGT
 				,null, INGT, null
-				,STCK, null, null}
+				,STCK, null, null)
 				, "LongSword"
 				, PLT+HAM+___
 				, FIL+PLT+___
 				, ___+___+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, null, null
+		, new RecipeReplacer(ST.array
+				(INGT, null, null
 				,null, INGT, null
-				,null, null, STCK}
+				,null, null, STCK)
 				, "LongSword"
 				, PLT+HAM+___
 				, FIL+PLT+___
 				, ___+___+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{null, null, INGT
+		, new RecipeReplacer(ST.array
+				(null, null, INGT
 				,null, STCK, null
-				,null, null, null}
+				,null, null, null)
 				, "Knife"
 				, HAM+PLT
 				, ROD+FIL)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, STCK, null
+		, new RecipeReplacer(ST.array
+				(INGT, STCK, null
 				,null, null, null
-				,null, null, null}
+				,null, null, null)
 				, "Knife"
 				, FIL+HAM
 				, PLT+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{STCK, INGT, null
+		, new RecipeReplacer(ST.array
+				(STCK, INGT, null
 				,null, null, null
-				,null, null, null}
+				,null, null, null)
 				, "Knife"
 				, FIL+HAM
 				, PLT+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, null, null
+		, new RecipeReplacer(ST.array
+				(INGT, null, null
 				,STCK, null, null
-				,null, null, null}
+				,null, null, null)
 				, "Knife"
 				, PLT+FIL
 				, ROD+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{STCK, null, null
+		, new RecipeReplacer(ST.array
+				(STCK, null, null
 				,INGT, null, null
-				,null, null, null}
+				,null, null, null)
 				, "Knife"
 				, PLT+FIL
 				, ROD+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, INGT
 				,INGT, INGT, INGT
-				,null, STCK, null})
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, null
+				,null, STCK, null))
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
 				,INGT, INGT, STCK
-				,INGT, INGT, null})
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, INGT
+				,INGT, INGT, null))
+		, new RecipeReplacer(ST.array
+				(null, INGT, INGT
 				,STCK, INGT, INGT
-				,null, INGT, INGT})
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+				,null, INGT, INGT))
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,INGT, INGT, INGT
-				,INGT, INGT, INGT})
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, INGT
+				,INGT, INGT, INGT))
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, INGT
 				,INGT, STCK, INGT
-				,INGT, STCK, INGT}
+				,INGT, STCK, INGT)
 				, "Paxel"
 				, PLT+NGT+PLT
 				, NGT+ROD+NGT
 				, PLT+ROD+PLT)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, INGT
 				,INGT, STCK, INGT
-				,null, STCK, null}
+				,null, STCK, null)
 				, "WarAxe"
 				, PLT+PLT+PLT
 				, PLT+ROD+PLT
 				, FIL+ROD+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, null
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
 				,INGT, STCK, STCK
-				,INGT, INGT, null})
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, INGT
+				,INGT, INGT, null))
+		, new RecipeReplacer(ST.array
+				(null, INGT, INGT
 				,STCK, STCK, INGT
-				,null, INGT, INGT}
+				,null, INGT, INGT)
 				, null)
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,INGT, STCK, INGT
-				,INGT, INGT, INGT})
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, STCK, INGT
+				,INGT, INGT, INGT))
+		, new RecipeReplacer(ST.array
+				(INGT, STCK, INGT
 				,INGT, STCK, INGT
-				,null, STCK, null}
+				,null, STCK, null)
 				, "WarHammer"
 				, PLT+ROD+PLT
 				, PLT+ROD+PLT
 				, FIL+ROD+HAM)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, null
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
 				,STCK, STCK, STCK
-				,INGT, INGT, null})
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, INGT
+				,INGT, INGT, null))
+		, new RecipeReplacer(ST.array
+				(null, INGT, INGT
 				,STCK, STCK, STCK
-				,null, INGT, INGT})
-		, new RecipeReplacer(new ItemStack[]
-				{null, STCK, null
+				,null, INGT, INGT))
+		, new RecipeReplacer(ST.array
+				(null, STCK, null
 				,INGT, STCK, INGT
-				,INGT, STCK, INGT})
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, null
+				,INGT, STCK, INGT))
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
 				,STCK, null, INGT
-				,STCK, null, null}
+				,STCK, null, null)
 				, "Scythe"
 				, NGT+PLT+HAM
 				, ROD+FIL+PLT
 				, ROD+___+___)
-		, new RecipeReplacer(new ItemStack[]
-				{null, INGT, INGT
+		, new RecipeReplacer(ST.array
+				(null, INGT, INGT
 				,INGT, null, STCK
-				,null, null, STCK}
+				,null, null, STCK)
 				, "Scythe"
 				, HAM+PLT+NGT
 				, PLT+FIL+ROD
 				, ___+___+ROD)
-		, new RecipeReplacer(new ItemStack[]
-				{INGT, INGT, STCK
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, STCK
 				,null, STCK, null
-				,STCK, null, null}
+				,STCK, null, null)
 				, "Scythe"
 				, PLT+PLT+ROD
 				, FIL+ROD+HAM

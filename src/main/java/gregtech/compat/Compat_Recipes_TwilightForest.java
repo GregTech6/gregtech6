@@ -38,7 +38,6 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 
 public class Compat_Recipes_TwilightForest extends CompatMods {
 	public Compat_Recipes_TwilightForest(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -77,7 +76,7 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.sawing(64,512, F, 50, ST.make(MD.TF, "tile.GiantObsidian"    , 1, 0), ST.make(Blocks.obsidian, 64, 0));
 		RM.sawing(64, 16, F, 50, ST.make(MD.TF, "tile.GiantLeaves"      , 1, 0), ST.make(Blocks.leaves, 64, 0));
 		
-		RM.Mixer.addRecipeX(T, 16, 64, new ItemStack[] {OM.dust(MT.Redstone, 4*U), IL.TF_BorerEssence.get(4), ST.make(Items.ghast_tear, 1, W)}, IL.TF_Carminite.get(1));
+		RM.Mixer.addRecipeX(T, 16, 64, ST.array(OM.dust(MT.Redstone, 4*U), IL.TF_BorerEssence.get(4), ST.make(Items.ghast_tear, 1, W)), IL.TF_Carminite.get(1));
 		
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.TF, "item.arcticFur", 5), ST.make(MD.TF, "item.arcticHelm", 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(5), ST.make(MD.TF, "item.arcticFur", 8), ST.make(MD.TF, "item.arcticPlate", 1));

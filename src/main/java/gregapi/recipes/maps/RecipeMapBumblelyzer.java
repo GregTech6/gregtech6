@@ -56,15 +56,15 @@ public class RecipeMapBumblelyzer extends RecipeMap {
 				for (ItemStack aInput : aInputs) if (ST.valid(aInput)) {
 					if (aInput.getItem() instanceof IItemBumbleBee) {
 						if (((IItemBumbleBee)aInput.getItem()).bumbleType(aInput) < 5)
-						return new Recipe(F, F, F, new ItemStack[] {aInput, OP.plateTiny.mat(MT.Paper, aInput.stackSize)}, new ItemStack[] {((IItemBumbleBee)aInput.getItem()).bumbleScan(aInput)}, null, null, new FluidStack[] {FL.amount(aFluids[0], 10)}, null, 64, 16, 0);
-						return new Recipe(F, F, F, new ItemStack[] {aInput}, new ItemStack[] {aInput}, null, null, null, null, 1, 16, 0);
+						return new Recipe(F, F, F, ST.array(aInput, OP.plateTiny.mat(MT.Paper, aInput.stackSize)), ST.array(((IItemBumbleBee)aInput.getItem()).bumbleScan(aInput)), null, null, FL.array(FL.amount(aFluids[0], 10)), null, 64, 16, 0);
+						return new Recipe(F, F, F, ST.array(aInput), ST.array(aInput), null, null, null, null, 1, 16, 0);
 					}
 					if (IL.FR_Bee_Drone.equal(aInput, T, T) || IL.FR_Bee_Princess.equal(aInput, T, T) || IL.FR_Bee_Queen.equal(aInput, T, T)) try {
 						Object tIndividual = AlleleManager.alleleRegistry.getIndividual(aInput);
-						if (tIndividual == null || !((IIndividual)tIndividual).analyze()) return new Recipe(F, F, F, new ItemStack[] {aInput}, new ItemStack[] {aInput}, null, null, null, null, 1, 16, 0);
+						if (tIndividual == null || !((IIndividual)tIndividual).analyze()) return new Recipe(F, F, F, ST.array(aInput), ST.array(aInput), null, null, null, null, 1, 16, 0);
 						ItemStack rOutput = ST.copy(aInput);
 						((IIndividual)tIndividual).writeToNBT(UT.NBT.getOrCreate(rOutput));
-						return new Recipe(F, F, F, new ItemStack[] {aInput}, new ItemStack[] {rOutput}, null, null, new FluidStack[] {FL.amount(aFluids[0], 50)}, null, 64, 16, 0);
+						return new Recipe(F, F, F, ST.array(aInput), ST.array(rOutput), null, null, FL.array(FL.amount(aFluids[0], 50)), null, 64, 16, 0);
 					} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
 			}
