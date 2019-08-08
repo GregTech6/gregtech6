@@ -218,7 +218,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		// C12H22O11 + 6 KNO3 -> 9 CO + 3 N2 + 11 H2O + 3 K2CO3 ; (Rocket Candy)
 		
-		for (OreDictMaterial tMat : ANY.Coal.mToThis) {
+		for (OreDictMaterial tMat : ANY.Coal.mToThis) if (tMat != MT.Graphene) {
 		RM.Electrolyzer .addRecipe2(T, 16, 6144, OP.blockDust   .mat(tMat, 1), OP.dust      .mat(MT.Al2O3, 30), FL.array(MT.Na3AlF6.liquid(U24 , T), MT.AlF3.liquid(U12, T)), FL.array(MT.CO2.gas(U *27, F), MT.F.gas(7*U80 , F)), OM.dust(MT.Al, U *12));
 		RM.Electrolyzer .addRecipe2(T, 16, 6144, OP.blockDust   .mat(tMat, 1), OP.ingot     .mat(MT.Al2O3, 30), FL.array(MT.Na3AlF6.liquid(U24 , T), MT.AlF3.liquid(U12, T)), FL.array(MT.CO2.gas(U *27, F), MT.F.gas(7*U80 , F)), OM.dust(MT.Al, U *12));
 		RM.Electrolyzer .addRecipe2(T, 16, 2048, OP.dust        .mat(tMat, 3), OP.dust      .mat(MT.Al2O3, 10), FL.array(MT.Na3AlF6.liquid(U72 , T), MT.AlF3.liquid(U36, T)), FL.array(MT.CO2.gas(U * 9, F), MT.F.gas(7*U240, F)), OM.dust(MT.Al, U * 4));

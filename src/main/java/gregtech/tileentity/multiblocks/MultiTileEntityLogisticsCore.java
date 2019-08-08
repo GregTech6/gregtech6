@@ -165,7 +165,11 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 			
 			if (SERVER_TIME % 20 == 19 && checkStructure(F)) {
 				// Scan for Network.
-				//  int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
+				// TODO: Make sure Covers that are turned off are ignored!
+				// TODO: Interface for Mass Storages and Filter Blocks.
+				// TODO: Filtered Priority Mode.
+				@SuppressWarnings("unused")
+				int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 				
 				@SuppressWarnings("unused")
 				List<DelegatorTileEntity<TileEntity>>
@@ -199,8 +203,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				
 				for (int i = 0; i < mCPU_Logic; i++) {
 					
-					
-					// Something along these lines but I still need to figure out the Filtering better.
+					// Something along these lines, but I still need to figure out the Filtering better.
 					
 					boolean tBreak = F;
 					for (DelegatorTileEntity<TileEntity> tImport : tFluidImportsGeneric) {

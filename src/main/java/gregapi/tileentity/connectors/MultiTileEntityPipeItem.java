@@ -126,7 +126,10 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (!isClientSide() && aTool.equals(TOOL_monkeywrench)) {
+		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (rReturn > 0) return rReturn;
+		if (isClientSide()) return 0;
+		if (aTool.equals(TOOL_monkeywrench)) {
 			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
 			if (FACE_CONNECTED[aTargetSide][mDisabledInputs]) {
 				if (FACE_CONNECTED[aTargetSide][mDisabledOutputs]) {
@@ -144,10 +147,18 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 				}
 			}
 			if (aChatReturn != null) {
-				aChatReturn.add(FACE_CONNECTED[aTargetSide][mDisabledInputs]?"Accepting from selected Side disabled":"Accepting from selected Side enabled");
-				aChatReturn.add(FACE_CONNECTED[aTargetSide][mDisabledOutputs]?"Emitting to selected Side disabled":"Emitting to selected Side enabled");
+				aChatReturn.add(FACE_CONNECTED[aTargetSide][mDisabledInputs ]?"Accepting from selected Side disabled":"Accepting from selected Side enabled");
+				aChatReturn.add(FACE_CONNECTED[aTargetSide][mDisabledOutputs]?"Emitting to selected Side disabled"   :"Emitting to selected Side enabled");
 			}
 			return 2500;
+		}
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+			if (aChatReturn != null) {
+				aChatReturn.add(FACE_CONNECTED[aTargetSide][mDisabledInputs ]?"Accepting from selected Side disabled":"Accepting from selected Side enabled");
+				aChatReturn.add(FACE_CONNECTED[aTargetSide][mDisabledOutputs]?"Emitting to selected Side disabled"   :"Emitting to selected Side enabled");
+			}
+			return 1;
 		}
 		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 	}
