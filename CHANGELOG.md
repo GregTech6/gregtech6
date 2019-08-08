@@ -34,7 +34,42 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.01: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[WIP]
+There is Logistics Wire specific Covers for marking things as Import/Export/Storage.
+Each of these 3 Types of Marking has 3 additional Subtypes, Generic/FilteredFluid/FilteredItem. You will be able to Intercraft them easily.
+When you attach a Generic Typed Storage or Export Cover to the Side of the Wire that faces a Mass Storage or GT6 Filter Block, it will count the Cover as Semi-Filtered for sake of Export Priorities, but as Filtered for Import Priorities.
+The Logistics Core will perform one Action per Second per Logic Core. An Action only counts if something has actually been moved.
+Fluids will always be handeled first and Items last for each Action.
+It is going to be able to perform the following Actions for now in this order:
+ Generic  Import  -> Filtered Export
+ Filtered Import  -> Filtered Export
+ Generic  Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+ Filtered Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+ Generic  Import  -> Generic Export
+ Filtered Import  -> Generic Export
+ Generic  Import  -> Filtered Storage
+ Filtered Import  -> Filtered Storage
+ Generic  Import  -> Semi-Filtered Storage (Mass Storages for example)
+ Filtered Import  -> Semi-Filtered Storage (Mass Storages for example)
+ Generic  Import  -> Generic Storage
+ Filtered Import  -> Generic Storage
+ Generic  Storage -> Filtered Export
+ Filtered Storage -> Filtered Export
+ Generic  Storage -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+ Filtered Storage -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+ Generic  Storage -> Generic Export
+ Filtered Storage -> Generic Export
+ Generic  Storage -> Filtered Storage
+ Generic  Storage -> Semi-Filtered Storage (Mass Storages for example)
+ Unknown  Stuff   -> Dump Bus (that is where random Stuff goes, that got inserted by accident or so, has a dedicated Cover)
+As you can see:
+It will first try to take the most Generic Stuff and then try to put it into the most Filtered Target.
+Direct Transactions are preferred over usage of Storage at all times.
+Mass Storages count as Filtered Storages, but they are treated after all the other Filtered Storages.
+The System does not like using Generic Storage and will defragment it into Filtered and Semi-Filtered Storages, when it has nothing better to do. It wont do Semi-Filtered Storage to Filtered Storage.
+Should you have a Dump Bus and the System has absolutely nothing else to do, it will put everything that is not filtered anywhere into whatever is connected to it. (likely a Chest, or maybe even the Ender Garbage Bin but that would be a bit dumb, if you make changes to the System on a regular basis)
+If you want to filter for more than one thing at a time, you will have to use the Filter Blocks and attach an Export Bus to those.
+
 
 
 6.11.00:

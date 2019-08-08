@@ -24,12 +24,16 @@ import static gregapi.data.CS.*;
 import java.util.Collection;
 import java.util.List;
 
+import gregapi.code.ArrayListNoNulls;
+import gregapi.code.ItemStackSet;
 import gregapi.code.TagData;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
 import gregapi.tileentity.connectors.ITileEntityLogistics;
+import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
 import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
@@ -37,9 +41,12 @@ import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
+import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
@@ -157,23 +164,94 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		if (aIsServerSide) {
 			
 			if (SERVER_TIME % 20 == 19 && checkStructure(F)) {
-				if (mCPU_Control > 0) {
-					// Scan for Network.
+				// Scan for Network.
 				//  int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
-					// Make one List of Emitters, one for Storage and one for Receivers.
-					
-					
-					
-					
-					
-				}
+				
+				@SuppressWarnings("unused")
+				List<DelegatorTileEntity<TileEntity>>
+				  tStackImportsGeneric  = new ArrayListNoNulls<>()
+				, tStackImportsSemi     = new ArrayListNoNulls<>()
+				, tStackImportsFiltered = new ArrayListNoNulls<>()
+				, tStackExportsGeneric  = new ArrayListNoNulls<>()
+				, tStackExportsSemi     = new ArrayListNoNulls<>()
+				, tStackExportsFiltered = new ArrayListNoNulls<>()
+				, tStackStorageGeneric  = new ArrayListNoNulls<>()
+				, tStackStorageSemi     = new ArrayListNoNulls<>()
+				, tStackStorageFiltered = new ArrayListNoNulls<>()
+				, tStackDumps           = new ArrayListNoNulls<>()
+				, tFluidImportsGeneric  = new ArrayListNoNulls<>()
+				, tFluidImportsSemi     = new ArrayListNoNulls<>()
+				, tFluidImportsFiltered = new ArrayListNoNulls<>()
+				, tFluidExportsGeneric  = new ArrayListNoNulls<>()
+				, tFluidExportsSemi     = new ArrayListNoNulls<>()
+				, tFluidExportsFiltered = new ArrayListNoNulls<>()
+				, tFluidStorageGeneric  = new ArrayListNoNulls<>()
+				, tFluidStorageSemi     = new ArrayListNoNulls<>()
+				, tFluidStorageFiltered = new ArrayListNoNulls<>()
+				, tFluidDumps           = new ArrayListNoNulls<>()
+				;
+				
+				
+				
+				
+				
+				
+				
 				for (int i = 0; i < mCPU_Logic; i++) {
-					// Do Stuff on Network.
+					
+					
+					// Something along these lines but I still need to figure out the Filtering better.
+					
+					boolean tBreak = F;
+					for (DelegatorTileEntity<TileEntity> tImport : tFluidImportsGeneric) {
+						for (DelegatorTileEntity<TileEntity> tExport : tFluidExportsFiltered) {
+							// TODO REQUIRES FILTER!
+							if (FL.move(tImport, tExport, 16000L * mCPU_Conversion) > 0) {tBreak = T; break;}
+						}
+						if (tBreak) break;
+					}
+					if (tBreak) continue;
+					for (DelegatorTileEntity<TileEntity> tImport : tStackImportsGeneric) {
+						for (DelegatorTileEntity<TileEntity> tExport : tStackExportsFiltered) {
+							for (int j = 0; j < mCPU_Conversion; j++) {
+								// TODO REPLACE FILTER!
+								if (ST.move(tImport, tExport, new ItemStackSet<>(ST.make(Blocks.air, 1, 0)), F, F, F, 64, 1, 64, 1) > 0) {tBreak = T; continue;}
+								break;
+							}
+							if (tBreak) break;
+						}
+						if (tBreak) break;
+					}
+					if (tBreak) continue;
 					
 					
 					
 					
 					
+					
+					// Generic  Import  -> Filtered Export
+					// Filtered Import  -> Filtered Export
+					// Generic  Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					// Filtered Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					// Generic  Import  -> Generic Export
+					// Filtered Import  -> Generic Export
+					// Generic  Import  -> Filtered Storage
+					// Filtered Import  -> Filtered Storage
+					// Generic  Import  -> Semi-Filtered Storage (Mass Storages for example)
+					// Filtered Import  -> Semi-Filtered Storage (Mass Storages for example)
+					// Generic  Import  -> Generic Storage
+					// Filtered Import  -> Generic Storage
+					// Generic  Storage -> Filtered Export
+					// Filtered Storage -> Filtered Export
+					// Generic  Storage -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					// Filtered Storage -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					// Generic  Storage -> Generic Export
+					// Filtered Storage -> Generic Export
+					// Generic  Storage -> Filtered Storage
+					// Generic  Storage -> Semi-Filtered Storage (Mass Storages for example)
+					// Unknown  Stuff   -> Dump Bus (that is where random Stuff goes, that got inserted by accident or so)
+					
+					break;
 				}
 			}
 		}
