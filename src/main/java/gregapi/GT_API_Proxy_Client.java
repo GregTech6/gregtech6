@@ -329,11 +329,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 						aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_SHAPELESS_CRAFT) + LH.Chat.WHITE + tShapelessAmounts);
 					}
 				}
-				if (tShowMaterialToolInfo) {
-					switch(tData.mMaterial.mMaterial.mEnchantmentTools.size()) {
+				if (tShowMaterialToolInfo && tData.mMaterial.mMaterial.mEnchantmentTools.size() + tData.mMaterial.mMaterial.mEnchantmentArmors.size() > 0) {
+					boolean tIsTool = (tData.mPrefix != null && tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE));
+					switch(tIsTool ? Math.min(1, tData.mMaterial.mMaterial.mEnchantmentTools.size()) : tData.mMaterial.mMaterial.mEnchantmentTools.size()) {
 					case 0:
 						break;
-					case 1: case 2: case 3:
+					case 1: case 2: case 3: case 4:
 						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_POSSIBLE_TOOL_ENCHANTS));
 						for (ObjectStack<Enchantment> tEnchantment : tData.mMaterial.mMaterial.mEnchantmentTools) {
 							if (tEnchantment.mObject == Enchantment.fortune) {
@@ -351,8 +352,8 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 						aEvent.toolTip.add(LH.Chat.PURPLE + LH.get(LH.TOOLTIP_TOO_MANY_TOOL_ENCHANTS));
 						break;
 					}
-
-					if (tData.mPrefix == null || !tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE))
+					
+					if (!tIsTool)
 					switch(tData.mMaterial.mMaterial.mEnchantmentArmors.size()) {
 					case 0:
 						break;
@@ -367,7 +368,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 						break;
 					}
 				}
-
+				
 				if (tData.hasValidPrefixData()) {
 					if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
 						aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));

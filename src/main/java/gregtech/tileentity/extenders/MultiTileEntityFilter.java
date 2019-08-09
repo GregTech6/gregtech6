@@ -27,6 +27,8 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.code.ItemStackContainer;
+import gregapi.code.ItemStackSet;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -35,6 +37,7 @@ import gregapi.gui.ContainerClient;
 import gregapi.gui.ContainerCommon;
 import gregapi.gui.Slot_Holo;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFiltered;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -58,7 +61,7 @@ import net.minecraftforge.fluids.IFluidHandler;
  * 
  * An example implementation of a Miniature Nether Portal with my MultiTileEntity System.
  */
-public class MultiTileEntityFilter extends MultiTileEntityExtender {
+public class MultiTileEntityFilter extends MultiTileEntityExtender implements ITileEntityLogisticsSemiFiltered {
 	public ItemStack[] mFilter = new ItemStack[54];
 	public boolean mInverted = F;
 	
@@ -105,6 +108,11 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender {
 		if (aFluid == null) return F;
 		for (ItemStack tStack : mFilter) if (IL.Display_Fluid.equal(tStack, T, T) && FL.id(aFluid) == ST.meta_(tStack)) return !mInverted;
 		return mInverted;
+	}
+	
+	@Override
+	public ItemStackSet<ItemStackContainer> getLogisticsFilter(byte aSide) {
+		return mInverted ? null : new ItemStackSet<>(mFilter);
 	}
 	
 	@Override

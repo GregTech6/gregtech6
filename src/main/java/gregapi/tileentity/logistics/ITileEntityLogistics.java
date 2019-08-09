@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregapi.tileentity.connectors;
+package gregapi.tileentity.logistics;
 
 /**
  * @author Gregorius Techneticies

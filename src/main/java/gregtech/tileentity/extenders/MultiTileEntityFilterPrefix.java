@@ -26,6 +26,7 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ItemStackContainer;
+import gregapi.code.ItemStackSet;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -36,6 +37,7 @@ import gregapi.gui.Slot_Holo;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFiltered;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -57,7 +59,7 @@ import net.minecraftforge.fluids.IFluidHandler;
  * 
  * An example implementation of a Miniature Nether Portal with my MultiTileEntity System.
  */
-public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender {
+public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender implements ITileEntityLogisticsSemiFiltered {
 	public OreDictPrefix mFilter = null;
 	public ItemStack mCycle = null;
 	public boolean mInverted = F;
@@ -115,6 +117,11 @@ public class MultiTileEntityFilterPrefix extends MultiTileEntityExtender {
 	}
 	public boolean allowInput(Fluid aFluid) {
 		return T;
+	}
+	
+	@Override
+	public ItemStackSet<ItemStackContainer> getLogisticsFilter(byte aSide) {
+		return mInverted || mFilter == null ? null : mFilter.mRegisteredItems;
 	}
 	
 	@Override

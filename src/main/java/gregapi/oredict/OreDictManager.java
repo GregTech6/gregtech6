@@ -733,6 +733,10 @@ public final class OreDictManager {
 	public static List<ItemStack> getOres(OreDictPrefix aPrefix, OreDictMaterial aMaterial, boolean aTransformWildcardBlocksTo16) {
 		return getOres(aPrefix.mNameInternal + aMaterial.mNameInternal, aTransformWildcardBlocksTo16);
 	}
+	/** @return a Copy of the OreDictionary.getOres() List */
+	public static List<ItemStack> getOres(OreDictPrefix aPrefix, OreDictMaterialStack aMaterial, boolean aTransformWildcardBlocksTo16) {
+		return getOres(aPrefix.mNameInternal + aMaterial.mMaterial.mNameInternal, aTransformWildcardBlocksTo16);
+	}
 	
 	/** @return a Copy of the OreDictionary.getOres() List */
 	public static List<ItemStack> getOres(Object aOreName, boolean aTransformWildcardBlocksTo16) {

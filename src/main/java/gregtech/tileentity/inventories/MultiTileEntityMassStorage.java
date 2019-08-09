@@ -32,18 +32,23 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistrationFirstCl
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataInteger;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
+import gregapi.code.ItemStackContainer;
+import gregapi.code.ItemStackSet;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.oredict.OreDictItemData;
+import gregapi.oredict.OreDictManager;
 import gregapi.render.RenderHelper;
 import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
 import gregapi.tileentity.ITileEntityConnectedInventory;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFiltered;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -62,7 +67,7 @@ import net.minecraftforge.client.ForgeHooksClient;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, ITileEntityProgress, ITileEntityAdjacentInventoryUpdatable, IMTE_GetMaxStackSize, IMTE_SyncDataInteger, IMTE_SyncDataShort, IMTE_OnRegistrationFirstClient {
+public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, ITileEntityLogisticsSemiFiltered, ITileEntityProgress, ITileEntityAdjacentInventoryUpdatable, IMTE_GetMaxStackSize, IMTE_SyncDataInteger, IMTE_SyncDataShort, IMTE_OnRegistrationFirstClient {
 	public int oStacksize = 0, mMaxStorage = 1000000;
 	public long mPartialUnits = 0;
 	public byte mMode = 0;
@@ -348,6 +353,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (ST.invalid(aStack) || (mMode & B[3]) != 0) return null;
 		
 		if (!slotHas(1)) {
+			mLogisticsCache = null;
 			if (aCheckForNEI && aStack.stackSize == NEI_INFINITE) {
 				slot(1, ST.amount(mMaxStorage, aStack));
 				mPartialUnits = 0;
@@ -428,6 +434,31 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			return (tData.mPrefix.contains(TD.Prefix.DUST_BASED) && aData.mPrefix.contains(TD.Prefix.DUST_BASED)) || (tData.mPrefix.contains(TD.Prefix.INGOT_BASED) && aData.mPrefix.contains(TD.Prefix.INGOT_BASED));
 		}
 		return F;
+	}
+	
+	private ItemStackSet<ItemStackContainer> mLogisticsCache = null;
+	
+	@Override
+	public ItemStackSet<ItemStackContainer> getLogisticsFilter(byte aSide) {
+		if (!slotHas(1)) return mLogisticsCache = null;
+		if (mLogisticsCache != null) return mLogisticsCache;
+		mLogisticsCache = new ItemStackSet<>(slot(1));
+		OreDictItemData tData = OM.data_(slot(1));
+		if (tData != null && tData.hasValidPrefixMaterialData()) {
+			if (tData.mPrefix.contains(TD.Prefix.DUST_BASED)) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.blockDust , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.dust      , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.dustSmall , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.dustTiny  , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.dustDiv72 , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			} else if (tData.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
+				for (ItemStack tStack : OreDictManager.getOres(OP.blockIngot, tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.ingot     , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.chunkGt   , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+				for (ItemStack tStack : OreDictManager.getOres(OP.nugget    , tData.mMaterial, F)) mLogisticsCache.add(tStack);
+			}
+		}
+		return mLogisticsCache;
 	}
 	
 	public boolean isFaceVisible() {

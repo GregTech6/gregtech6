@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
+import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.code.TagData;
 import gregapi.data.FL;
@@ -32,10 +33,10 @@ import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
-import gregapi.tileentity.connectors.ITileEntityLogistics;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
+import gregapi.tileentity.logistics.ITileEntityLogistics;
 import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
 import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
@@ -43,10 +44,10 @@ import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
@@ -168,11 +169,13 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				// TODO: Make sure Covers that are turned off are ignored!
 				// TODO: Interface for Mass Storages and Filter Blocks.
 				// TODO: Filtered Priority Mode.
+				// TODO: Validate that Filtered Busses actually have a Filter before adding them to Lists.
 				@SuppressWarnings("unused")
 				int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 				
-				@SuppressWarnings("unused")
-				List<DelegatorTileEntity<TileEntity>>
+				ItemStackSet<ItemStackContainer> tFilteredFor = new ItemStackSet<>();
+				
+				List<LogisticsData>
 				  tStackImportsGeneric  = new ArrayListNoNulls<>()
 				, tStackImportsSemi     = new ArrayListNoNulls<>()
 				, tStackImportsFiltered = new ArrayListNoNulls<>()
@@ -192,7 +195,6 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				, tFluidStorageGeneric  = new ArrayListNoNulls<>()
 				, tFluidStorageSemi     = new ArrayListNoNulls<>()
 				, tFluidStorageFiltered = new ArrayListNoNulls<>()
-				, tFluidDumps           = new ArrayListNoNulls<>()
 				;
 				
 				
@@ -202,23 +204,90 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				
 				
 				for (int i = 0; i < mCPU_Logic; i++) {
-					
-					// Something along these lines, but I still need to figure out the Filtering better.
-					
+					// Generic  Import  -> Filtered Export
+					if (moveFluids(tFluidImportsGeneric , tFluidExportsFiltered)) continue;
+					if (moveStacks(tStackImportsGeneric , tStackExportsFiltered)) continue;
+					// Semi     Import  -> Filtered Export
+					if (moveFluids(tFluidImportsSemi    , tFluidExportsFiltered)) continue;
+					if (moveStacks(tStackImportsSemi    , tStackExportsFiltered)) continue;
+					// Filtered Import  -> Filtered Export
+					if (moveFluids(tFluidImportsFiltered, tFluidExportsFiltered)) continue;
+					if (moveStacks(tStackImportsFiltered, tStackExportsFiltered)) continue;
+					// Generic  Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					if (moveFluids(tFluidImportsGeneric , tFluidExportsSemi)) continue;
+					if (moveStacks(tStackImportsGeneric , tStackExportsSemi)) continue;
+					// Semi     Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					if (moveFluids(tFluidImportsSemi    , tFluidExportsSemi)) continue;
+					if (moveStacks(tStackImportsSemi    , tStackExportsSemi)) continue;
+					// Filtered Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					if (moveFluids(tFluidImportsFiltered, tFluidExportsSemi)) continue;
+					if (moveStacks(tStackImportsFiltered, tStackExportsSemi)) continue;
+					// Generic  Import  -> Generic Export
+					if (moveFluids(tFluidImportsGeneric , tFluidExportsGeneric)) continue;
+					if (moveStacks(tStackImportsGeneric , tStackExportsGeneric)) continue;
+					// Semi     Import  -> Generic Export
+					if (moveFluids(tFluidImportsSemi    , tFluidExportsGeneric)) continue;
+					if (moveStacks(tStackImportsSemi    , tStackExportsGeneric)) continue;
+					// Filtered Import  -> Generic Export
+					if (moveFluids(tFluidImportsFiltered, tFluidExportsGeneric)) continue;
+					if (moveStacks(tStackImportsFiltered, tStackExportsGeneric)) continue;
+					// Generic  Import  -> Filtered Storage
+					if (moveFluids(tFluidImportsGeneric , tFluidStorageFiltered)) continue;
+					if (moveStacks(tStackImportsGeneric , tStackStorageFiltered)) continue;
+					// Semi     Import  -> Filtered Storage
+					if (moveFluids(tFluidImportsSemi    , tFluidStorageFiltered)) continue;
+					if (moveStacks(tStackImportsSemi    , tStackStorageFiltered)) continue;
+					// Filtered Import  -> Filtered Storage
+					if (moveFluids(tFluidImportsFiltered, tFluidStorageFiltered)) continue;
+					if (moveStacks(tStackImportsFiltered, tStackStorageFiltered)) continue;
+					// Generic  Import  -> Semi-Filtered Storage (Mass Storages for example)
+					if (moveFluids(tFluidImportsGeneric , tFluidStorageSemi)) continue;
+					if (moveStacks(tStackImportsGeneric , tStackStorageSemi)) continue;
+					// Semi     Import  -> Semi-Filtered Storage (Mass Storages for example)
+					if (moveFluids(tFluidImportsSemi    , tFluidStorageSemi)) continue;
+					if (moveStacks(tStackImportsSemi    , tStackStorageSemi)) continue;
+					// Filtered Import  -> Semi-Filtered Storage (Mass Storages for example)
+					if (moveFluids(tFluidImportsFiltered, tFluidStorageSemi)) continue;
+					if (moveStacks(tStackImportsFiltered, tStackStorageSemi)) continue;
+					// Generic  Import  -> Generic Storage
+					if (moveFluids(tFluidImportsGeneric , tFluidStorageGeneric)) continue;
+					if (moveStacks(tStackImportsGeneric , tStackStorageGeneric)) continue;
+					// Semi     Import  -> Generic Storage
+					if (moveFluids(tFluidImportsSemi    , tFluidStorageGeneric)) continue;
+					if (moveStacks(tStackImportsSemi    , tStackStorageGeneric)) continue;
+					// Filtered Import  -> Generic Storage
+					if (moveFluids(tFluidImportsFiltered, tFluidStorageGeneric)) continue;
+					if (moveStacks(tStackImportsFiltered, tStackStorageGeneric)) continue;
+					// Generic  Storage -> Filtered Export
+					if (moveFluids(tFluidStorageGeneric , tFluidExportsFiltered)) continue;
+					if (moveStacks(tStackStorageGeneric , tStackExportsFiltered)) continue;
+					// Filtered Storage -> Filtered Export
+					if (moveFluids(tFluidStorageFiltered, tFluidExportsFiltered)) continue;
+					if (moveStacks(tStackStorageFiltered, tStackExportsFiltered)) continue;
+					// Generic  Storage -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					if (moveFluids(tFluidStorageGeneric , tFluidExportsSemi)) continue;
+					if (moveStacks(tStackStorageGeneric , tStackExportsSemi)) continue;
+					// Filtered Storage -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
+					if (moveFluids(tFluidStorageFiltered, tFluidExportsSemi)) continue;
+					if (moveStacks(tStackStorageFiltered, tStackExportsSemi)) continue;
+					// Generic  Storage -> Generic Export
+					if (moveFluids(tFluidStorageGeneric , tFluidExportsGeneric)) continue;
+					if (moveStacks(tStackStorageGeneric , tStackExportsGeneric)) continue;
+					// Filtered Storage -> Generic Export
+					if (moveFluids(tFluidStorageFiltered, tFluidExportsGeneric)) continue;
+					if (moveStacks(tStackStorageFiltered, tStackExportsGeneric)) continue;
+					// Generic  Storage -> Filtered Storage
+					if (moveFluids(tFluidStorageGeneric , tFluidStorageFiltered)) continue;
+					if (moveStacks(tStackStorageGeneric , tStackStorageFiltered)) continue;
+					// Generic  Storage -> Semi-Filtered Storage (Mass Storages for example)
+					if (moveFluids(tFluidStorageGeneric , tFluidStorageSemi)) continue;
+					if (moveStacks(tStackStorageGeneric , tStackStorageSemi)) continue;
+					// Unknown Stuff    -> Dump Bus (that is where random Stuff goes, that got inserted by accident or so)
 					boolean tBreak = F;
-					for (DelegatorTileEntity<TileEntity> tImport : tFluidImportsGeneric) {
-						for (DelegatorTileEntity<TileEntity> tExport : tFluidExportsFiltered) {
-							// TODO REQUIRES FILTER!
-							if (FL.move(tImport, tExport, 16000L * mCPU_Conversion) > 0) {tBreak = T; break;}
-						}
-						if (tBreak) break;
-					}
-					if (tBreak) continue;
-					for (DelegatorTileEntity<TileEntity> tImport : tStackImportsGeneric) {
-						for (DelegatorTileEntity<TileEntity> tExport : tStackExportsFiltered) {
+					for (LogisticsData tImport : tStackStorageGeneric) {
+						for (LogisticsData tExport : tStackDumps) {
 							for (int j = 0; j < mCPU_Conversion; j++) {
-								// TODO REPLACE FILTER!
-								if (ST.move(tImport, tExport, new ItemStackSet<>(ST.make(Blocks.air, 1, 0)), F, F, F, 64, 1, 64, 1) > 0) {tBreak = T; continue;}
+								if (ST.move(tImport.mTarget, tExport.mTarget, tFilteredFor, F, F, T, 64, 1, 64, 1) > 0) {tBreak = T; continue;}
 								break;
 							}
 							if (tBreak) break;
@@ -232,27 +301,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					
 					
 					
-					// Generic  Import  -> Filtered Export
-					// Filtered Import  -> Filtered Export
-					// Generic  Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
-					// Filtered Import  -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
-					// Generic  Import  -> Generic Export
-					// Filtered Import  -> Generic Export
-					// Generic  Import  -> Filtered Storage
-					// Filtered Import  -> Filtered Storage
-					// Generic  Import  -> Semi-Filtered Storage (Mass Storages for example)
-					// Filtered Import  -> Semi-Filtered Storage (Mass Storages for example)
-					// Generic  Import  -> Generic Storage
-					// Filtered Import  -> Generic Storage
-					// Generic  Storage -> Filtered Export
-					// Filtered Storage -> Filtered Export
-					// Generic  Storage -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
-					// Filtered Storage -> Semi-Filtered Export (Mass Storages and Filter Blocks for example)
-					// Generic  Storage -> Generic Export
-					// Filtered Storage -> Generic Export
-					// Generic  Storage -> Filtered Storage
-					// Generic  Storage -> Semi-Filtered Storage (Mass Storages for example)
-					// Unknown  Stuff   -> Dump Bus (that is where random Stuff goes, that got inserted by accident or so)
+					
 					
 					break;
 				}
@@ -260,10 +309,83 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		}
 	}
 	
+	public boolean moveFluids(List<LogisticsData> aImports, List<LogisticsData> aExports) {
+		for (LogisticsData aImport : aImports) for (LogisticsData aExport : aExports) if (moveFluids(aImport, aExport)) return T;
+		return F;
+	}
+	
+	public boolean moveStacks(List<LogisticsData> aImports, List<LogisticsData> aExports) {
+		for (LogisticsData aImport : aImports) for (LogisticsData aExport : aExports) if (moveStacks(aImport, aExport)) return T;
+		return F;
+	}
+	
+	public boolean moveFluids(LogisticsData aImport, LogisticsData aExport) {
+		if (aImport.mIsFiltered) {
+			if (aExport.mIsFiltered) {
+				if (aImport.mFluidFilter == aExport.mFluidFilter && FL.move(aImport.mTarget, aExport.mTarget, FL.make(aImport.mFluidFilter, 16000L * mCPU_Conversion)) > 0) return T;
+			} else {
+				if (FL.move(aImport.mTarget, aExport.mTarget, FL.make(aImport.mFluidFilter, 16000L * mCPU_Conversion)) > 0) return T;
+			}
+		} else {
+			if (aExport.mIsFiltered) {
+				if (FL.move(aImport.mTarget, aExport.mTarget, FL.make(aExport.mFluidFilter, 16000L * mCPU_Conversion)) > 0) return T;
+			} else {
+				if (FL.move(aImport.mTarget, aExport.mTarget, 16000L * mCPU_Conversion) > 0) return T;
+			}
+		}
+		return F;
+	}
+	
+	public boolean moveStacks(LogisticsData aImport, LogisticsData aExport) {
+		boolean tReturn = F;
+		if (aImport.mIsFiltered) {
+			if (aExport.mIsFiltered) {
+				if (ST.equal(aImport.mItemFilter, aExport.mItemFilter, T)) for (int j = 0; j < mCPU_Conversion; j++) {
+					if (ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, 64, 1, 64, 1) > 0) {tReturn = T; continue;}
+					break;
+				}
+			} else {
+				for (int j = 0; j < mCPU_Conversion; j++) {
+					if (ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, 64, 1, 64, 1) > 0) {tReturn = T; continue;}
+					break;
+				}
+			}
+		} else {
+			if (aExport.mIsFiltered) {
+				for (int j = 0; j < mCPU_Conversion; j++) {
+					if (ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, 64, 1, 64, 1) > 0) {tReturn = T; continue;}
+					break;
+				}
+			} else {
+				for (int j = 0; j < mCPU_Conversion; j++) {
+					if (ST.move(aImport.mTarget, aExport.mTarget, null, F, F, F, 64, 1, 64, 1) > 0) {tReturn = T; continue;}
+					break;
+				}
+			}
+		}
+		return tReturn;
+	}
+	
+	static class LogisticsData {
+		public final DelegatorTileEntity<TileEntity> mTarget;
+		public final Fluid mFluidFilter;
+		public final ItemStack mItemFilter;
+		public final boolean mIsFiltered, mIsFluid, mIsItem;
+		
+		public LogisticsData(DelegatorTileEntity<TileEntity> aTarget, Fluid aFluidFilter, ItemStack aItemFilter, boolean aIsFiltered, boolean aIsItem, boolean aIsFluid) {
+			mTarget = aTarget;
+			mFluidFilter = aFluidFilter;
+			mItemFilter = aItemFilter;
+			mIsFiltered = aIsFiltered;
+			mIsFluid = aIsFluid;
+			mIsItem = aIsItem;
+		}
+	}
+	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
 		aChatReturn.add(mCPU_Logic + " Logic Processors");
-		aChatReturn.add(mCPU_Control + " Control Processors");
+		aChatReturn.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
 		aChatReturn.add(mCPU_Storage + " Storage Processors");
 		aChatReturn.add(mCPU_Conversion + " Conversion Processors");
 	}
