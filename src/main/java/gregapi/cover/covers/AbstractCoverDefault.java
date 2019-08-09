@@ -48,6 +48,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public abstract class AbstractCoverDefault implements ICover {
 	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return F;}
 	@Override public boolean interceptCoverRemoval(byte aCoverSide, CoverData aData, Entity aPlayer) {return F;}
+	@Override public void onCoverLoaded(byte aCoverSide, CoverData aData) {/**/}
 	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.GT_SCREWDRIVER, 1.0F, 1.0F, aData.mTileEntity.getCoords());}
 	@Override public void onCoverRemove(byte aCoverSide, CoverData aData, Entity aPlayer) {/**/}
 	@Override public void onTickPre (byte aCoverSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {/**/}

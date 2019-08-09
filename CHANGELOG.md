@@ -34,6 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.01: (Not released yet)
+[FIXED] Mode Selector Covers did not save their Modes when already attached to a Block that you just placed, despite them visually showing the Mode.
 [WIP]
 There is Logistics Wire specific Covers for marking things as Import/Export/Storage.
 Each of these 3 Types of Marking has 3 additional Subtypes, Generic/FilteredFluid/FilteredItem. You will be able to Intercraft them easily.

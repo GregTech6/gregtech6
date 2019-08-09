@@ -51,6 +51,7 @@ public class CoverData {
 		setIDs(aIDs, aMetas);
 		mStopped = aStopped;
 		mTileEntity = aTileEntity;
+		try {for (byte tSide : ALL_SIDES_VALID) if (mBehaviours[tSide] != null) mBehaviours[tSide].onCoverLoaded(tSide, this);} catch(Throwable e) {e.printStackTrace(ERR); mTileEntity.setError("Cover Loaded:" + e);}
 	}
 	
 	public CoverData(ITileEntityCoverable aTileEntity, NBTTagCompound aNBT) {

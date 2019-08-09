@@ -41,6 +41,11 @@ public class CoverSelectorRedstone extends AbstractCoverAttachmentSelector {
 		super.onCoverPlaced(aCoverSide, aData, aPlayer, aCover);
 		if (!aData.mStopped && aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aCoverSide, ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aCoverSide)));
 	}
+	@Override
+	public void onCoverLoaded(byte aSide, CoverData aData) {
+		super.onCoverLoaded(aSide, aData);
+		if (aData.mTileEntity instanceof ITileEntitySwitchableMode) ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aSide));
+	}
 	
 	@Override
 	public void onBlockUpdate(byte aCoverSide, CoverData aData) {

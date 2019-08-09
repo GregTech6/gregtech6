@@ -40,6 +40,12 @@ import net.minecraftforge.fluids.IFluidTank;
  */
 public interface ICover {
 	/**
+	 * Called when the Cover got successfully loaded.
+	 * @param aPlayer CAN be null!
+	 */
+	public void onCoverLoaded(byte aCoverSide, CoverData aData);
+	
+	/**
 	 * Called when the Cover got successfully placed.
 	 * @param aPlayer CAN be null!
 	 */

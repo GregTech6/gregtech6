@@ -45,6 +45,11 @@ public class CoverSelectorTag extends AbstractCoverAttachmentSelector {
 		super.onCoverPlaced(aSide, aData, aPlayer, aCover);
 		if (aData.mTileEntity instanceof ITileEntitySwitchableMode) ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(mMode);
 	}
+	@Override
+	public void onCoverLoaded(byte aSide, CoverData aData) {
+		super.onCoverLoaded(aSide, aData);
+		if (aData.mTileEntity instanceof ITileEntitySwitchableMode) ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(mMode);
+	}
 	
 	@Override
 	public void onTickPre(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
