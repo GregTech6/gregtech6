@@ -868,16 +868,16 @@ public class MultiItemTechnological extends MultiItemRandom {
 		
 		
 		
-		CR.shaped(IL.Cover_Logistics_Fluid_Export   .get(1), CR.DEF_REV, "  w", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Fluid_Import   .get(1), CR.DEF_REV, " w ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Fluid_Storage  .get(1), CR.DEF_REV, "w  ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Item_Export    .get(1), CR.DEF_REV, "  r", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Item_Import    .get(1), CR.DEF_REV, " r ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Item_Storage   .get(1), CR.DEF_REV, "r  ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Generic_Export .get(1), CR.DEF_REV, "  d", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Generic_Import .get(1), CR.DEF_REV, " d ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Generic_Storage.get(1), CR.DEF_REV, "d  ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
-		CR.shaped(IL.Cover_Logistics_Dump           .get(1), CR.DEF_REV, "   ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Fluid_Export   .get(1), CR.DEF_REV, "  w", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Fluid_Import   .get(1), CR.DEF_REV, " w ", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Fluid_Storage  .get(1), CR.DEF_REV, "w  ", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Item_Export    .get(1), CR.DEF_REV, "  r", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Item_Import    .get(1), CR.DEF_REV, " r ", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Item_Storage   .get(1), CR.DEF_REV, "r  ", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Generic_Export .get(1), CR.DEF_REV, "  d", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Generic_Import .get(1), CR.DEF_REV, " d ", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Generic_Storage.get(1), CR.DEF_REV, "d  ", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Dump           .get(1), CR.DEF_REV, "   ", "EQS", "WCW", 'Q', IL.Cover_Blank, 'E', IL.Processor_Crystal_Emerald, 'S', IL.Processor_Crystal_Sapphire, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
 		
 		
 		

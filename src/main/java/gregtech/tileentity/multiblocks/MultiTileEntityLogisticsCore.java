@@ -355,7 +355,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 						if (tLogistics.getWorld() == worldObj) for (byte tSide : ALL_SIDES_VALID) if (tLogistics.canLogistics(tSide)) {
 							if (Math.abs(tLogistics.getOffsetX(tSide) - tX) <= mCPU_Control + 2 && Math.abs(tLogistics.getOffsetY(tSide) - tY) <= mCPU_Control + 2 && Math.abs(tLogistics.getOffsetZ(tSide) - tZ) <= mCPU_Control + 2) {
 								DelegatorTileEntity<TileEntity> tAdjacent = tLogistics.getAdjacentTileEntity(tSide);
-								if (tScanned.add(tAdjacent.mTileEntity) && tAdjacent.mTileEntity instanceof ITileEntityLogistics && ((ITileEntityLogistics)tAdjacent.mTileEntity).canLogistics(tAdjacent.mSideOfTileEntity)) tScanningNext.add((ITileEntityLogistics)tAdjacent.mTileEntity);
+								if (tAdjacent.mTileEntity instanceof ITileEntityLogistics && ((ITileEntityLogistics)tAdjacent.mTileEntity).canLogistics(tAdjacent.mSideOfTileEntity) && tScanned.add(tAdjacent.mTileEntity)) tScanningNext.add((ITileEntityLogistics)tAdjacent.mTileEntity);
 							}
 						}
 					}
@@ -364,16 +364,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					tScanningNext.clear();
 				}
 				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				for (int i = 0; i < mCPU_Logic; i++) {
+				for (int i = 0; i < mCPU_Logic; i++) if (mEnergy >= mCPU_Conversion * 64) {
 					boolean tBreak = F;
 					
 					for (List<LogisticsData>[] tExports : tExports1) {
@@ -403,7 +394,12 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					for (LogisticsData tImport : tStackStorageGeneric) {
 						for (LogisticsData tExport : tStackDumps) {
 							for (int j = 0; j < mCPU_Conversion; j++) {
-								if (ST.move(tImport.mTarget, tExport.mTarget, tFilteredFor, F, F, T, 64, 1, 64, 1) > 0) {tBreak = T; continue;}
+								long tMoved = ST.move(tImport.mTarget, tExport.mTarget, tFilteredFor, F, F, T, 64, 1, 64, 1);
+								if (tMoved > 0) {
+									mEnergy -= tMoved;
+									tBreak = T;
+									continue;
+								}
 								break;
 							}
 							if (tBreak) break;
@@ -436,15 +432,33 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	public boolean moveFluids(LogisticsData aImport, LogisticsData aExport) {
 		if (aImport.mFluidFilter != null) {
 			if (aExport.mFluidFilter != null) {
-				if (aImport.mFluidFilter == aExport.mFluidFilter && FL.move(aImport.mTarget, aExport.mTarget, FL.make(aImport.mFluidFilter, 16000L * mCPU_Conversion)) > 0) return T;
+				if (aImport.mFluidFilter == aExport.mFluidFilter) {
+					long tMoved = FL.move(aImport.mTarget, aExport.mTarget, FL.make(aImport.mFluidFilter, 16000L * mCPU_Conversion));
+					if (tMoved > 0) {
+						mEnergy -= UT.Code.divup(tMoved, 250);
+						return T;
+					}
+				}
 			} else {
-				if (FL.move(aImport.mTarget, aExport.mTarget, FL.make(aImport.mFluidFilter, 16000L * mCPU_Conversion)) > 0) return T;
+				long tMoved = FL.move(aImport.mTarget, aExport.mTarget, FL.make(aImport.mFluidFilter, 16000L * mCPU_Conversion));
+				if (tMoved > 0) {
+					mEnergy -= UT.Code.divup(tMoved, 250);
+					return T;
+				}
 			}
 		} else {
 			if (aExport.mFluidFilter != null) {
-				if (FL.move(aImport.mTarget, aExport.mTarget, FL.make(aExport.mFluidFilter, 16000L * mCPU_Conversion)) > 0) return T;
+				long tMoved = FL.move(aImport.mTarget, aExport.mTarget, FL.make(aExport.mFluidFilter, 16000L * mCPU_Conversion));
+				if (tMoved > 0) {
+					mEnergy -= UT.Code.divup(tMoved, 250);
+					return T;
+				}
 			} else {
-				if (FL.move(aImport.mTarget, aExport.mTarget, 16000L * mCPU_Conversion) > 0) return T;
+				long tMoved = FL.move(aImport.mTarget, aExport.mTarget, 16000L * mCPU_Conversion);
+				if (tMoved > 0) {
+					mEnergy -= UT.Code.divup(tMoved, 250);
+					return T;
+				}
 			}
 		}
 		return F;
@@ -455,24 +469,44 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		if (aImport.mItemFilter != null) {
 			if (aExport.mItemFilter != null) {
 				if (ST.equal(aImport.mItemFilter, aExport.mItemFilter, T)) for (int j = 0; j < mCPU_Conversion; j++) {
-					if (ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, 64, 1, 64, 1) > 0) {tReturn = T; continue;}
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, 64, 1, 64, 1);
+					if (tMoved > 0) {
+						mEnergy -= tMoved;
+						tReturn = T;
+						continue;
+					}
 					break;
 				}
 			} else {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					if (ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, 64, 1, 64, 1) > 0) {tReturn = T; continue;}
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, 64, 1, 64, 1);
+					if (tMoved > 0) {
+						mEnergy -= tMoved;
+						tReturn = T;
+						continue;
+					}
 					break;
 				}
 			}
 		} else {
 			if (aExport.mItemFilter != null) {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					if (ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, 64, 1, 64, 1) > 0) {tReturn = T; continue;}
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, 64, 1, 64, 1);
+					if (tMoved > 0) {
+						mEnergy -= tMoved;
+						tReturn = T;
+						continue;
+					}
 					break;
 				}
 			} else {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					if (ST.move(aImport.mTarget, aExport.mTarget, null, F, F, F, 64, 1, 64, 1) > 0) {tReturn = T; continue;}
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, null, F, F, F, 64, 1, 64, 1);
+					if (tMoved > 0) {
+						mEnergy -= tMoved;
+						tReturn = T;
+						continue;
+					}
 					break;
 				}
 			}
@@ -509,6 +543,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
+		aChatReturn.add("Power: " + mEnergy);
 		aChatReturn.add(mCPU_Logic + " Logic Processors");
 		aChatReturn.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
 		aChatReturn.add(mCPU_Storage + " Storage Processors");
@@ -520,7 +555,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
-		if (mEnergy > 1000000) return 0;
+		if (mEnergy > mCPU_Logic * mCPU_Conversion * 256) return 0;
 		aSize = Math.abs(aSize);
 		if (!aDoInject) return aAmount;
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {explode(6); return aAmount;}
@@ -538,7 +573,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	@Override public long getEnergySizeInputMin(TagData aEnergyType, byte aSide) {return   512;}
 	@Override public long getEnergySizeInputMax(TagData aEnergyType, byte aSide) {return 16384;}
 	@Override public long getEnergyStored(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mEnergy : 0;}
-	@Override public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? 1000000 : 0;}
+	@Override public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mCPU_Logic * mCPU_Conversion * 256 : 0;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	

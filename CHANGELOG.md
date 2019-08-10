@@ -39,7 +39,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [WIP]
 I decided to make the Core Cheaper by making it possible to use Galvanized Walls instead of CPUs. You still need one of each (like just one Versatile one), but you wont need 27 Quadcore Units anymore.
 You can also have multiple Logistics Cores for one Network if you really run out of CPU space or something.
-There is Logistics Wire specific Covers for marking things as Import/Export/Storage.
+There is Logistics Wire specific Covers for marking things as Import/Export/Storage. These Covers can also be placed on the Logistics Core itself.
 Each of these 3 Types of Marking has 3 additional Subtypes, Generic/FilteredFluid/FilteredItem. You will be able to Intercraft them easily.
 When you attach a Generic Typed Storage or Export Cover to the Side of the Wire that faces a Mass Storage or GT6 Filter Block, it will count the Cover as Semi-Filtered for sake of Export Priorities, but as Filtered for Import Priorities.
 If you use a Miniature Portal to make the Logistics Network go into a different Dimension, the Range in that Dimension is always limited to one Block, so make as much out of that one Block as you can.
@@ -74,7 +74,7 @@ Mass Storages count as Filtered Storages, but they are treated after all the oth
 The System does not like using Generic Storage and will defragment it into Filtered and Semi-Filtered Storages, when it has nothing better to do. It wont do Semi-Filtered Storage to Filtered Storage.
 Should you have a Dump Bus and the System has absolutely nothing else to do, it will put everything that is not filtered anywhere into whatever is connected to it. (likely a Chest, or maybe even the Ender Garbage Bin but that would be a bit dumb, if you make changes to the System on a regular basis)
 If you want to filter for more than one thing at a time, you will have to use the Filter Blocks and attach an Export Bus to those.
-
+The Priority of each Logistics Bus Cover can be adjusted with the Screwdriver if you dont wanna use the Default.
 
 
 6.11.00:
@@ -90,7 +90,7 @@ If you want to filter for more than one thing at a time, you will have to use th
 Working on the GT6 Version of an AE or Logistics System.
 Note, that this isn't gonna be a Storage GUI or Crafting on Demand, this is purely for automation!
 I hope I at least get the Basics done til Sunday.
-You are going to need at least 10 Crystal Processors of varying Types to craft this thing, I would go and craft at least their Sockets in preparation if I were you. ;)
+You are going to need at least 12 Crystal Processors of varying Types to craft this thing, I would go and craft at least their Sockets in preparation if I were you. ;)
 This thing is gonna be customizable, so which Processors you choose can determine what Type of Management it will do best/fastest.
 
 
