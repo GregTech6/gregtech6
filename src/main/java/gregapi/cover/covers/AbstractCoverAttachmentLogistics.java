@@ -1,0 +1,75 @@
+/**
+ * Copyright (c) 2018 Gregorius Techneticies
+ *
+ * This file is part of GregTech.
+ *
+ * GregTech is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * GregTech is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package gregapi.cover.covers;
+
+import static gregapi.data.CS.*;
+
+import java.util.List;
+
+import gregapi.cover.CoverData;
+import gregapi.data.LH;
+import gregapi.render.BlockTextureMulti;
+import gregapi.render.ITexture;
+import net.minecraft.entity.Entity;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+
+/**
+ * @author Gregorius Techneticies
+ */
+public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAttachment {
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		super.addToolTips(aList, aStack, aF3_H);
+		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+	}
+	
+	@Override
+	public long onToolClick(byte aCoverSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
+		if (aTool.equals(TOOL_screwdriver)) {
+			aData.value(aCoverSide, (short)((aData.mValues[aCoverSide] + 1) % 4));
+			if (aChatReturn != null) {
+				switch(aData.mValues[aCoverSide]) {
+				case 0: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Unmodified)"); break;
+				case 1: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Generic)"); break;
+				case 2: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Semi-Filtered)"); break;
+				case 3: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Filtered)"); break;
+				}
+			}
+			return 10000;
+		}
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			if (aChatReturn != null) {
+				switch(aData.mValues[aCoverSide]) {
+				case 0: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Unmodified)"); break;
+				case 1: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Generic)"); break;
+				case 2: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Semi-Filtered)"); break;
+				case 3: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Filtered)"); break;
+				}
+			}
+			return 1;
+		}
+		return 0;
+	}
+	
+	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return ALONG_AXIS[aCoverSide][aTextureSide] ? BlockTextureMulti.get(BACKGROUND_COVER, getCoverTextureSurface(aCoverSide, aData)) : BACKGROUND_COVER;}
+	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
+	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
+}

@@ -756,8 +756,8 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.generify(FL.make("resin"                      , 1), FL.make("spruceresin", 1));
 		RM.generify(FL.make("sulfuricacid"               , 1), FL.make("acid", 1));
 		RM.generify(FL.make("acid"                       , 1), FL.make("sulfuricacid", 1));
-		RM.generify(FL.Oil_Plant                     .make(20),FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Seed                      .make(1), FL.Oil_Plant.make(20));
+		RM.generify(FL.Oil_Plant                     .make(2), FL.Oil_Seed.make(1));
+		RM.generify(FL.Oil_Seed                      .make(1), FL.Oil_Plant.make(2));
 		RM.generify(FL.make("biomass"                    , 1), FL.make("ic2biomass", 1));
 		RM.generify(FL.make("ic2biomass"                 , 1), FL.make("biomass", 1));
 		RM.generify(FL.Methane                       .make(1), FL.make("ic2biogas", 4));

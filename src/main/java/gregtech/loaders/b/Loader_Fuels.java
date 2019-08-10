@@ -61,7 +61,7 @@ public class Loader_Fuels implements Runnable {
 		if (FL.Oil_Canola.exists())
 		FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Canola.make(1)                       , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.Oil_Plant.exists())
-		FM.Burn         .addRecipe0(T, -  1,  1, FL.Oil_Plant.make(10)                       , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, -  1,  1, FL.Oil_Plant.make(1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.exists("heavyoil"))
 		FM.Burn         .addRecipe0(T, - 48,  1, FL.make("heavyoil", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.exists("hotcrude"))

@@ -28,7 +28,6 @@ import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -41,7 +40,9 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class CoverLogisticsFluidStorage extends AbstractCoverAttachment {
+public class CoverLogisticsFluidStorage extends AbstractCoverAttachmentLogistics {
+	public static final CoverLogisticsFluidStorage INSTANCE = new CoverLogisticsFluidStorage();
+	
 	public CoverLogisticsFluidStorage() {}
 	
 	@Override
@@ -62,21 +63,21 @@ public class CoverLogisticsFluidStorage extends AbstractCoverAttachment {
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
 				if (aData.mNBTs[aCoverSide] == null) {
-					aChatReturn.add("Stores Anything!");
+					aChatReturn.add("Stores Anything! (Priority: " + aData.mValues[aCoverSide] + ")");
 					aData.mNBTs[aCoverSide] = null;
 				} else {
 					FluidStack tFluid = FL.load(aData.mNBTs[aCoverSide], "gt.filter.fluid");
 					if (tFluid == null) {
-						aChatReturn.add("Stores Anything!");
+						aChatReturn.add("Stores Anything! (Priority: " + aData.mValues[aCoverSide] + ")");
 						aData.mNBTs[aCoverSide] = null;
 					} else {
-						aChatReturn.add("Stores: " + LH.Chat.CYAN + tFluid.getFluid().getName());
+						aChatReturn.add("Stores: " + LH.Chat.CYAN + tFluid.getFluid().getName() + " (Priority: " + aData.mValues[aCoverSide] + ")");
 					}
 				}
 			}
 			return 1;
 		}
-		return 0;
+		return super.onToolClick(aCoverSide, aData, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSideClicked, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override
@@ -98,9 +99,6 @@ public class CoverLogisticsFluidStorage extends AbstractCoverAttachment {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aCoverSide, CoverData aData) {return sTexture;}
-	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return ALONG_AXIS[aCoverSide][aTextureSide] ? BlockTextureMulti.get(BACKGROUND_COVER, sTexture) : BACKGROUND_COVER;}
-	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
-	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	
 	public static final ITexture sTexture = BlockTextureDefault.get("machines/covers/logistics/fluid/storage");
 }

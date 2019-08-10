@@ -26,6 +26,6 @@ import gregapi.tileentity.ITileEntityUnloadable;
 /**
  * @author Gregorius Techneticies
  */
-public interface ITileEntityLogisticsSemiFiltered extends ITileEntityUnloadable {
+public interface ITileEntityLogisticsSemiFilteredItem extends ITileEntityUnloadable {
 	public ItemStackSet<ItemStackContainer> getLogisticsFilter(byte aSide);
 }

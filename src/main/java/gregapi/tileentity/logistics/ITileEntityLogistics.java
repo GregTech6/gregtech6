@@ -19,9 +19,11 @@
 
 package gregapi.tileentity.logistics;
 
+import gregapi.cover.ITileEntityCoverable;
+
 /**
  * @author Gregorius Techneticies
  */
-public interface ITileEntityLogistics {
+public interface ITileEntityLogistics extends ITileEntityCoverable {
 	public boolean canLogistics(byte aSide);
 }

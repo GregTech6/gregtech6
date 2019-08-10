@@ -27,7 +27,6 @@ import gregapi.cover.CoverData;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -39,7 +38,9 @@ import net.minecraft.item.ItemStack;
 /**
  * @author Gregorius Techneticies
  */
-public class CoverLogisticsItemExport extends AbstractCoverAttachment {
+public class CoverLogisticsItemExport extends AbstractCoverAttachmentLogistics {
+	public static final CoverLogisticsItemExport INSTANCE = new CoverLogisticsItemExport();
+	
 	public CoverLogisticsItemExport() {}
 	
 	@Override
@@ -60,21 +61,21 @@ public class CoverLogisticsItemExport extends AbstractCoverAttachment {
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
 				if (aData.mNBTs[aCoverSide] == null) {
-					aChatReturn.add("Exports Anything!");
+					aChatReturn.add("Exports Anything! (Priority: " + aData.mValues[aCoverSide] + ")");
 					aData.mNBTs[aCoverSide] = null;
 				} else {
 					ItemStack tStack = ST.load(aData.mNBTs[aCoverSide], "gt.filter.item");
 					if (ST.invalid(tStack)) {
-						aChatReturn.add("Exports Anything!");
+						aChatReturn.add("Exports Anything! (Priority: " + aData.mValues[aCoverSide] + ")");
 						aData.mNBTs[aCoverSide] = null;
 					} else {
-						aChatReturn.add("Exports: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
+						aChatReturn.add("Exports: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack) + " (Priority: " + aData.mValues[aCoverSide] + ")");
 					}
 				}
 			}
 			return 1;
 		}
-		return 0;
+		return super.onToolClick(aCoverSide, aData, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSideClicked, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override
@@ -93,9 +94,6 @@ public class CoverLogisticsItemExport extends AbstractCoverAttachment {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aCoverSide, CoverData aData) {return sTexture;}
-	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return ALONG_AXIS[aCoverSide][aTextureSide] ? BlockTextureMulti.get(BACKGROUND_COVER, sTexture) : BACKGROUND_COVER;}
-	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
-	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	
 	public static final ITexture sTexture = BlockTextureDefault.get("machines/covers/logistics/item/export");
 }

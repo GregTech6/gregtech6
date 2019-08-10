@@ -19,23 +19,19 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
 import gregapi.cover.CoverData;
 import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 
 /**
  * @author Gregorius Techneticies
  */
-public class CoverLogisticsGenericExport extends AbstractCoverAttachment {
+public class CoverLogisticsGenericExport extends AbstractCoverAttachmentLogistics {
+	public static final CoverLogisticsGenericExport INSTANCE = new CoverLogisticsGenericExport();
+	
 	public CoverLogisticsGenericExport() {}
 	
 	@Override public ITexture getCoverTextureSurface(byte aCoverSide, CoverData aData) {return sTexture;}
-	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return ALONG_AXIS[aCoverSide][aTextureSide] ? BlockTextureMulti.get(BACKGROUND_COVER, sTexture) : BACKGROUND_COVER;}
-	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
-	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	
 	public static final ITexture sTexture = BlockTextureDefault.get("machines/covers/logistics/generic/export");
 }

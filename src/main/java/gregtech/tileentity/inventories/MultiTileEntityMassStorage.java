@@ -48,7 +48,7 @@ import gregapi.tileentity.ITileEntityConnectedInventory;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
-import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFiltered;
+import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFilteredItem;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -67,7 +67,7 @@ import net.minecraftforge.client.ForgeHooksClient;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, ITileEntityLogisticsSemiFiltered, ITileEntityProgress, ITileEntityAdjacentInventoryUpdatable, IMTE_GetMaxStackSize, IMTE_SyncDataInteger, IMTE_SyncDataShort, IMTE_OnRegistrationFirstClient {
+public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, ITileEntityLogisticsSemiFilteredItem, ITileEntityProgress, ITileEntityAdjacentInventoryUpdatable, IMTE_GetMaxStackSize, IMTE_SyncDataInteger, IMTE_SyncDataShort, IMTE_OnRegistrationFirstClient {
 	public int oStacksize = 0, mMaxStorage = 1000000;
 	public long mPartialUnits = 0;
 	public byte mMode = 0;

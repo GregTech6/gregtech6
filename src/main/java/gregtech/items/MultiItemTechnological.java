@@ -50,51 +50,76 @@ public class MultiItemTechnological extends MultiItemRandom {
 	@Override
 	public void addItems() {
 		int tLastID = 0;
-
+		
 		for (int i = 0; i < 10; i++) {
-		IL.MOTORS[i].set(                       addItem(12000+i, "Compact Electric Motor ("+VN[i]+")"       , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
-		IL.PUMPS[i].set(                        addItem(12020+i, "Compact Electric Pump ("+VN[i]+")"        , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), TC.stack(TC.AQUA, 1+i), new CoverPump(250<<(2*i))));
-		IL.CONVEYERS[i].set(                    addItem(12040+i, "Compact Electric Conveyor ("+VN[i]+")"    , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), new CoverConveyor(512>>i)));
-		IL.PISTONS[i].set(                      addItem(12060+i, "Compact Electric Piston ("+VN[i]+")"      , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
-		IL.ROBOT_ARMS[i].set(                   addItem(12080+i, "Compact Robot Arm ("+VN[i]+")"            , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.HUMANUS, 1+i), new CoverRobotArm(512>>i)));
-		IL.FIELD_GENERATORS[i].set(             addItem(12100+i, "Compact Force Field Emitter ("+VN[i]+")"  , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.TUTAMEN, 1+i)));
-		IL.EMITTERS[i].set(                     addItem(12120+i, "Compact Signal Emitter ("+VN[i]+")"       , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.LUX, 1+i)));
-		IL.SENSORS[i].set(                      addItem(12140+i, "Compact Sensor ("+VN[i]+")"               , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.SENSUS, 1+i)));
+		IL.MOTORS[i].set(                       addItem(12000+i, "Compact Electric Motor ("+VN[i]+")"     , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
+		IL.PUMPS[i].set(                        addItem(12020+i, "Compact Electric Pump ("+VN[i]+")"      , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), TC.stack(TC.AQUA, 1+i), new CoverPump(250<<(2*i))));
+		IL.CONVEYERS[i].set(                    addItem(12040+i, "Compact Electric Conveyor ("+VN[i]+")"  , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.ITER, 1+i), new CoverConveyor(512>>i)));
+		IL.PISTONS[i].set(                      addItem(12060+i, "Compact Electric Piston ("+VN[i]+")"    , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.MOTUS, 1+i)));
+		IL.ROBOT_ARMS[i].set(                   addItem(12080+i, "Compact Robot Arm ("+VN[i]+")"          , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.HUMANUS, 1+i), new CoverRobotArm(512>>i)));
+		IL.FIELD_GENERATORS[i].set(             addItem(12100+i, "Compact Force Field Emitter ("+VN[i]+")", "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.TUTAMEN, 1+i)));
+		IL.EMITTERS[i].set(                     addItem(12120+i, "Compact Signal Emitter ("+VN[i]+")"     , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.LUX, 1+i)));
+		IL.SENSORS[i].set(                      addItem(12140+i, "Compact Sensor ("+VN[i]+")"             , "", TC.stack(TC.ELECTRUM, 1+i), TC.stack(TC.MACHINA, 1+i), TC.stack(TC.SENSUS, 1+i)));
 		}
-
-		IL.Cover_Blank.set(                     addItem(tLastID =  1000, "Blank Cover"                      , "*BLANK*"                                         , new CoverTextureMulti(T, "machines/covers/blank/", 6)      , TC.stack(TC.MACHINA, 2)));
-		IL.Cover_Crafting.set(                  addItem(tLastID =  1001, "Crafting Table Cover"             , "A regular old Workbench as a Cover"              , new CoverCrafting("machines/covers/crafting/", 6)          , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 3)));
-		IL.Cover_Machine_Display.set(           addItem(tLastID =  1002, "Machine Status Display Cover"     , "Shows Machine Status and has ON/OFF Switch"      , new CoverControllerDisplay()                               , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 3)));
-		IL.Cover_Auto_Switch.set(               addItem(tLastID =  1003, "Automatic Machine Switch"         , "Automatically turns Machines ON/OFF when needed" , new CoverControllerAuto()                                  , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 3)));
-		IL.Cover_Energy_Display.set(            addItem(tLastID =  1004, "Energy Display Cover"             , "Displays contained Energy"                       , new CoverDisplayEnergy()                                   , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 2), TC.stack(TC.POTENTIA, 1)));
-		IL.Cover_Redstone_Switch.set(           addItem(tLastID =  1005, "Redstone Machine Switch"          , "Turns Machines ON/OFF using Redstone"            , new CoverControllerRedstone()                              , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
-		IL.Cover_Auto_Switch_Redstone.set(      addItem(tLastID =  1006, "Auto Redstone Machine Switch"     , "Turns ON/OFF using Redstone but lets it finish"  , new CoverControllerAutoRedstone()                          , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 3)));
-		IL.Cover_Redstone_Selector.set(         addItem(tLastID =  1007, "Redstone Selector"                , "Selector Cover that is controlled by Redstone"   , new CoverSelectorRedstone()                                , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
-		IL.Cover_Manual_Selector.set(           addItem(tLastID =  1008, "Manual Selector"                  , "Selector Cover that is controlled by Buttons"    , new CoverSelectorManual()                                  , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
-		IL.Cover_Auto_Switch_01_Minute.set(     addItem(tLastID =  1009, "Auto Reboot Switch (1 min)"       , "Attempts to Reboot a Machine every Minute"       , new CoverControllerAutoTimer( 1200)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Auto_Switch_05_Minute.set(     addItem(tLastID =  1010, "Auto Reboot Switch (5 mins)"      , "Attempts to Reboot a Machine every 5 Minutes"    , new CoverControllerAutoTimer( 6000)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Auto_Switch_10_Minute.set(     addItem(tLastID =  1011, "Auto Reboot Switch (10 mins)"     , "Attempts to Reboot a Machine every 10 Minutes"   , new CoverControllerAutoTimer(12000)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Auto_Switch_20_Minute.set(     addItem(tLastID =  1012, "Auto Reboot Switch (20 mins)"     , "Attempts to Reboot a Machine every 20 Minutes"   , new CoverControllerAutoTimer(24000)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Auto_Switch_30_Minute.set(     addItem(tLastID =  1013, "Auto Reboot Switch (30 mins)"     , "Attempts to Reboot a Machine every 30 Minutes"   , new CoverControllerAutoTimer(36000)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Scale_Energy.set(              addItem(tLastID =  1014, "Energy Sensor"                    , "Emits depending on Energy stored"                , new CoverScaleEnergy()                                     , TC.stack(TC.MACHINA, 2), TC.stack(TC.POTENTIA, 1)));
-		IL.Cover_Detector_Possible.set(         addItem(tLastID =  1015, "Activity Detector (Possible)"     , "Emits when Machine could run"                    , new CoverDetectorRunningPossible()                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Detector_Passively.set(        addItem(tLastID =  1016, "Activity Detector (Running)"      , "Emits when Machine is running"                   , new CoverDetectorRunningPassively()                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Detector_Actively.set(         addItem(tLastID =  1017, "Activity Detector (Processing)"   , "Emits when Machine is processing"                , new CoverDetectorRunningActively()                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Scale_Progress.set(            addItem(tLastID =  1018, "Progress Sensor"                  , "Emits depending on Progress"                     , new CoverScaleProgress()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.FABRICO, 1)));
-		IL.Cover_Detector_Success.set(          addItem(tLastID =  1019, "Activity Detector (Success)"      , "Emits when Machine produced something"           , new CoverDetectorRunningSuccessfully()                     , TC.stack(TC.MACHINA, 2), TC.stack(TC.FABRICO, 1)));
-		IL.Cover_Drain.set(                     addItem(tLastID =  1020, "Drain"                            , ""                                                , new CoverDrain()                                           , TC.stack(TC.MACHINA, 1), TC.stack(TC.AQUA, 1), TC.stack(TC.VACUOS, 1)));
-		IL.Cover_Redstone_Emitter.set(          addItem(tLastID =  1021, "Redstone Emitter"                 , "Emits a constant Redstone Signal"                , new CoverRedstoneEmitter()                                 , TC.stack(TC.MACHINA, 1), TC.stack(TC.POTENTIA, 1)));
-		IL.Cover_Vent.set(                      addItem(tLastID =  1022, "Air Vent"                         , "Ventilates Air into Tanks and Pipes"             , new CoverVent()                                            , TC.stack(TC.MACHINA, 1), TC.stack(TC.AER, 1), TC.stack(TC.VACUOS, 1)));
-		IL.Cover_Filter_Item.set(               addItem(tLastID =  1023, "Item Filter"                      , "Filters for an Item"                             , new CoverFilterItem()                                      , TC.stack(TC.MACHINA, 1), TC.stack(TC.ORDO, 1), TC.stack(TC.ITER, 1)));
-		IL.Cover_Filter_Fluid.set(              addItem(tLastID =  1024, "Fluid Filter"                     , "Filters for a Fluid"                             , new CoverFilterFluid()                                     , TC.stack(TC.MACHINA, 1), TC.stack(TC.ORDO, 1), TC.stack(TC.AQUA, 1)));
-		IL.Cover_Controller.set(                addItem(tLastID =  1025, "Cover Controller"                 , "Turns Redstone into ON/OFF State for Covers"     , new CoverControllerCovers()                                , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
-		IL.Cover_Shutter.set(                   addItem(tLastID =  1026, "Shutter Cover"                    , "Connects and Disconnects Pipes"                  , new CoverShutter()                                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Button_Selector.set(           addItem(tLastID =  1027, "Button Panel Selector"            , "Selector Cover that is controlled by Buttons"    , new CoverSelectorButtonPanel()                             , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Cover_Warning.set(                   addItem(tLastID =  1028, "Warning Cover"                    , "Warns about certain Types of Danger"             , new CoverTextureMulti(T, "machines/covers/warning/", 19)   , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 1), TC.stack(TC.VINCULUM, 1)));
-		IL.Cover_Redstone_Conductor_IN.set(     addItem(tLastID =  1029, "Redstone Conductor Cover (Accept)", "Redstone will transferred to emitting Conductors", new CoverRedstoneConductorIN()                             , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 1)));
-		IL.Cover_Redstone_Conductor_OUT.set(    addItem(tLastID =  1030, "Redstone Conductor Cover (Emit)"  , "Redstone of accepting Conductors will be emitted", new CoverRedstoneConductorOUT()                            , TC.stack(TC.MACHINA, 2), TC.stack(TC.VINCULUM, 1)));
-		IL.Cover_Retriever_Item.set(            addItem(tLastID =  1031, "Item Retriever Cover"             , "Pulls Items from the attached Pipe Network"      , new CoverRetrieverItem()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 1), TC.stack(TC.VACUOS, 1), TC.stack(TC.ITER, 1)));
-
+		
+		IL.Cover_Blank.set(                     addItem(tLastID =  1000, "Blank Cover"                           , "*BLANK*"                                         , new CoverTextureMulti(T, "machines/covers/blank/", 6)      , TC.stack(TC.MACHINA, 2)));
+		IL.Cover_Crafting.set(                  addItem(tLastID =  1001, "Crafting Table Cover"                  , "A regular old Workbench as a Cover"              , new CoverCrafting("machines/covers/crafting/", 6)          , TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 3)));
+		IL.Cover_Machine_Display.set(           addItem(tLastID =  1002, "Machine Status Display Cover"          , "Shows Machine Status and has ON/OFF Switch"      , new CoverControllerDisplay()                               , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 3)));
+		IL.Cover_Auto_Switch.set(               addItem(tLastID =  1003, "Automatic Machine Switch"              , "Automatically turns Machines ON/OFF when needed" , new CoverControllerAuto()                                  , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 3)));
+		IL.Cover_Energy_Display.set(            addItem(tLastID =  1004, "Energy Display Cover"                  , "Displays contained Energy"                       , new CoverDisplayEnergy()                                   , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 2), TC.stack(TC.POTENTIA, 1)));
+		IL.Cover_Redstone_Switch.set(           addItem(tLastID =  1005, "Redstone Machine Switch"               , "Turns Machines ON/OFF using Redstone"            , new CoverControllerRedstone()                              , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
+		IL.Cover_Auto_Switch_Redstone.set(      addItem(tLastID =  1006, "Auto Redstone Machine Switch"          , "Turns ON/OFF using Redstone but lets it finish"  , new CoverControllerAutoRedstone()                          , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 3)));
+		IL.Cover_Redstone_Selector.set(         addItem(tLastID =  1007, "Redstone Selector"                     , "Selector Cover that is controlled by Redstone"   , new CoverSelectorRedstone()                                , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
+		IL.Cover_Manual_Selector.set(           addItem(tLastID =  1008, "Manual Selector"                       , "Selector Cover that is controlled by Buttons"    , new CoverSelectorManual()                                  , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
+		IL.Cover_Auto_Switch_01_Minute.set(     addItem(tLastID =  1009, "Auto Reboot Switch (1 min)"            , "Attempts to Reboot a Machine every Minute"       , new CoverControllerAutoTimer( 1200)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Auto_Switch_05_Minute.set(     addItem(tLastID =  1010, "Auto Reboot Switch (5 mins)"           , "Attempts to Reboot a Machine every 5 Minutes"    , new CoverControllerAutoTimer( 6000)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Auto_Switch_10_Minute.set(     addItem(tLastID =  1011, "Auto Reboot Switch (10 mins)"          , "Attempts to Reboot a Machine every 10 Minutes"   , new CoverControllerAutoTimer(12000)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Auto_Switch_20_Minute.set(     addItem(tLastID =  1012, "Auto Reboot Switch (20 mins)"          , "Attempts to Reboot a Machine every 20 Minutes"   , new CoverControllerAutoTimer(24000)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Auto_Switch_30_Minute.set(     addItem(tLastID =  1013, "Auto Reboot Switch (30 mins)"          , "Attempts to Reboot a Machine every 30 Minutes"   , new CoverControllerAutoTimer(36000)                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Scale_Energy.set(              addItem(tLastID =  1014, "Energy Sensor"                         , "Emits depending on Energy stored"                , new CoverScaleEnergy()                                     , TC.stack(TC.MACHINA, 2), TC.stack(TC.POTENTIA, 1)));
+		IL.Cover_Detector_Possible.set(         addItem(tLastID =  1015, "Activity Detector (Possible)"          , "Emits when Machine could run"                    , new CoverDetectorRunningPossible()                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Detector_Passively.set(        addItem(tLastID =  1016, "Activity Detector (Running)"           , "Emits when Machine is running"                   , new CoverDetectorRunningPassively()                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Detector_Actively.set(         addItem(tLastID =  1017, "Activity Detector (Processing)"        , "Emits when Machine is processing"                , new CoverDetectorRunningActively()                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Scale_Progress.set(            addItem(tLastID =  1018, "Progress Sensor"                       , "Emits depending on Progress"                     , new CoverScaleProgress()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.FABRICO, 1)));
+		IL.Cover_Detector_Success.set(          addItem(tLastID =  1019, "Activity Detector (Success)"           , "Emits when Machine produced something"           , new CoverDetectorRunningSuccessfully()                     , TC.stack(TC.MACHINA, 2), TC.stack(TC.FABRICO, 1)));
+		IL.Cover_Drain.set(                     addItem(tLastID =  1020, "Drain"                                 , ""                                                , new CoverDrain()                                           , TC.stack(TC.MACHINA, 1), TC.stack(TC.AQUA, 1), TC.stack(TC.VACUOS, 1)));
+		IL.Cover_Redstone_Emitter.set(          addItem(tLastID =  1021, "Redstone Emitter"                      , "Emits a constant Redstone Signal"                , new CoverRedstoneEmitter()                                 , TC.stack(TC.MACHINA, 1), TC.stack(TC.POTENTIA, 1)));
+		IL.Cover_Vent.set(                      addItem(tLastID =  1022, "Air Vent"                              , "Ventilates Air into Tanks and Pipes"             , new CoverVent()                                            , TC.stack(TC.MACHINA, 1), TC.stack(TC.AER, 1), TC.stack(TC.VACUOS, 1)));
+		IL.Cover_Filter_Item.set(               addItem(tLastID =  1023, "Item Filter"                           , "Filters for an Item"                             , new CoverFilterItem()                                      , TC.stack(TC.MACHINA, 1), TC.stack(TC.ORDO, 1), TC.stack(TC.ITER, 1)));
+		IL.Cover_Filter_Fluid.set(              addItem(tLastID =  1024, "Fluid Filter"                          , "Filters for a Fluid"                             , new CoverFilterFluid()                                     , TC.stack(TC.MACHINA, 1), TC.stack(TC.ORDO, 1), TC.stack(TC.AQUA, 1)));
+		IL.Cover_Controller.set(                addItem(tLastID =  1025, "Cover Controller"                      , "Turns Redstone into ON/OFF State for Covers"     , new CoverControllerCovers()                                , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 2)));
+		IL.Cover_Shutter.set(                   addItem(tLastID =  1026, "Shutter Cover"                         , "Connects and Disconnects Pipes"                  , new CoverShutter()                                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Button_Selector.set(           addItem(tLastID =  1027, "Button Panel Selector"                 , "Selector Cover that is controlled by Buttons"    , new CoverSelectorButtonPanel()                             , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Cover_Warning.set(                   addItem(tLastID =  1028, "Warning Cover"                         , "Warns about certain Types of Danger"             , new CoverTextureMulti(T, "machines/covers/warning/", 19)   , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 1), TC.stack(TC.VINCULUM, 1)));
+		IL.Cover_Redstone_Conductor_IN.set(     addItem(tLastID =  1029, "Redstone Conductor Cover (Accept)"     , "Redstone will transferred to emitting Conductors", new CoverRedstoneConductorIN()                             , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 1)));
+		IL.Cover_Redstone_Conductor_OUT.set(    addItem(tLastID =  1030, "Redstone Conductor Cover (Emit)"       , "Redstone of accepting Conductors will be emitted", new CoverRedstoneConductorOUT()                            , TC.stack(TC.MACHINA, 2), TC.stack(TC.VINCULUM, 1)));
+		IL.Cover_Retriever_Item.set(            addItem(tLastID =  1031, "Item Retriever Cover"                  , "Pulls Items from the attached Pipe Network"      , new CoverRetrieverItem()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 1), TC.stack(TC.VACUOS, 1), TC.stack(TC.ITER, 1)));
+		
+		
+		IL.Cover_Logistics_Fluid_Export.set(    addItem(tLastID =  1090, "Filtered Logistics Export Bus (Fluid)" , "For use with Logistics Cores and Wiring"         , CoverLogisticsFluidExport.INSTANCE                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Fluid_Import.set(    addItem(tLastID =  1091, "Filtered Logistics Import Bus (Fluid)" , "For use with Logistics Cores and Wiring"         , CoverLogisticsFluidImport.INSTANCE                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Fluid_Storage.set(   addItem(tLastID =  1092, "Filtered Logistics Storage Bus (Fluid)", "For use with Logistics Cores and Wiring"         , CoverLogisticsFluidStorage.INSTANCE                        , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Item_Export.set(     addItem(tLastID =  1093, "Filtered Logistics Export Bus (Item)"  , "For use with Logistics Cores and Wiring"         , CoverLogisticsItemExport.INSTANCE                          , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Item_Import.set(     addItem(tLastID =  1094, "Filtered Logistics Import Bus (Item)"  , "For use with Logistics Cores and Wiring"         , CoverLogisticsItemImport.INSTANCE                          , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Item_Storage.set(    addItem(tLastID =  1095, "Filtered Logistics Storage Bus (Item)" , "For use with Logistics Cores and Wiring"         , CoverLogisticsItemStorage.INSTANCE                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Generic_Export.set(  addItem(tLastID =  1096, "Generic Logistics Export Bus"          , "For use with Logistics Cores and Wiring"         , CoverLogisticsGenericExport.INSTANCE                       , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Generic_Import.set(  addItem(tLastID =  1097, "Generic Logistics Import Bus"          , "For use with Logistics Cores and Wiring"         , CoverLogisticsGenericImport.INSTANCE                       , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Generic_Storage.set( addItem(tLastID =  1098, "Generic Logistics Storage Bus"         , "For use with Logistics Cores and Wiring"         , CoverLogisticsGenericStorage.INSTANCE                      , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		IL.Cover_Logistics_Dump.set(            addItem(tLastID =  1099, "Logistics Dump Bus (Item)"             , "For use with Logistics Cores and Wiring"         , CoverLogisticsGenericDump.INSTANCE                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 2), TC.stack(TC.PERMUTATIO, 4), TC.stack(TC.ITER, 4)));
+		
+		CR.shapeless(IL.Cover_Logistics_Fluid_Export   .get(1), new Object[] {IL.Cover_Logistics_Dump           .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Fluid_Import   .get(1), new Object[] {IL.Cover_Logistics_Fluid_Export   .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Fluid_Storage  .get(1), new Object[] {IL.Cover_Logistics_Fluid_Import   .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Item_Export    .get(1), new Object[] {IL.Cover_Logistics_Fluid_Storage  .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Item_Import    .get(1), new Object[] {IL.Cover_Logistics_Item_Export    .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Item_Storage   .get(1), new Object[] {IL.Cover_Logistics_Item_Import    .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Generic_Export .get(1), new Object[] {IL.Cover_Logistics_Item_Storage   .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Generic_Import .get(1), new Object[] {IL.Cover_Logistics_Generic_Export .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Generic_Storage.get(1), new Object[] {IL.Cover_Logistics_Generic_Import .get(1)});
+		CR.shapeless(IL.Cover_Logistics_Dump           .get(1), new Object[] {IL.Cover_Logistics_Generic_Storage.get(1)});
+		
+		
+		
 		CR.shaped(IL.Cover_Blank                    .get(1), CR.DEF_REV, "Sh" , "Pd"        , 'P', OP.plate.dat(MT.Al), 'S', OP.screw.dat(MT.Al));
 		CR.shaped(IL.Cover_Crafting                 .get(1), CR.DEF_REV,  "C" ,  "Q"        , 'Q', IL.Cover_Blank, 'C', OD.craftingWorkBench);
 		CR.shaped(IL.Cover_Machine_Display          .get(1), CR.DEF_REV, "LLB", "CQW"       , 'Q', IL.Cover_Blank, 'C', OD_CIRCUITS[1], 'W', MT.DATA.CABLES_01[1], 'B', ST.make(Blocks.lever, 1, W), 'L', OP.wireGt01.dat(MT.Lumium));
@@ -127,7 +152,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		CR.shaped(IL.Cover_Redstone_Conductor_IN    .get(1), CR.DEF_REV,  "R" ,  "Q"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
 		CR.shaped(IL.Cover_Redstone_Conductor_OUT   .get(1), CR.DEF_REV,  "Q" ,  "R"        , 'Q', IL.Cover_Blank, 'R', OP.wireGt01.dat(MT.RedAlloy));
 		CR.shaped(IL.Cover_Retriever_Item           .get(1), CR.DEF_REV, "RPR", "CQC"       , 'Q', IL.Cover_Filter_Item, 'P', IL.PISTONS[1], 'C', OD_CIRCUITS[3], 'R', OP.plateCurved.dat(MT.Electrum));
-
+		
 		CR.shapeless(IL.Cover_Redstone_Conductor_IN .get(1), new Object[] {IL.Cover_Redstone_Conductor_OUT.get(1)});
 		CR.shapeless(IL.Cover_Redstone_Conductor_OUT.get(1), new Object[] {IL.Cover_Redstone_Conductor_IN .get(1)});
 
@@ -836,12 +861,26 @@ public class MultiItemTechnological extends MultiItemRandom {
 
 		CR.shaped(IL.Processor_Crystal_Empty.get(1), CR.DEF_REV, "CLC", "LBL", "CLC", 'C', OD_CIRCUITS[6], 'B', IL.Circuit_Plate_Platinum, 'L', IL.Comp_Laser_Gas_HeNe);
 
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 16, IL.Processor_Crystal_Empty   .get(1), IL.Circuit_Crystal_Diamond     .get(1), IL.Processor_Crystal_Diamond   .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 16, IL.Processor_Crystal_Empty   .get(1), IL.Circuit_Crystal_Ruby        .get(1), IL.Processor_Crystal_Ruby      .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 16, IL.Processor_Crystal_Empty   .get(1), IL.Circuit_Crystal_Emerald     .get(1), IL.Processor_Crystal_Emerald   .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 16, IL.Processor_Crystal_Empty   .get(1), IL.Circuit_Crystal_Sapphire    .get(1), IL.Processor_Crystal_Sapphire  .get(1));
-
-
+		RM.Press.addRecipe2(T, F, F, F, T, 16, 16, IL.Processor_Crystal_Empty.get(1), IL.Circuit_Crystal_Diamond .get(1), IL.Processor_Crystal_Diamond .get(1));
+		RM.Press.addRecipe2(T, F, F, F, T, 16, 16, IL.Processor_Crystal_Empty.get(1), IL.Circuit_Crystal_Ruby    .get(1), IL.Processor_Crystal_Ruby    .get(1));
+		RM.Press.addRecipe2(T, F, F, F, T, 16, 16, IL.Processor_Crystal_Empty.get(1), IL.Circuit_Crystal_Emerald .get(1), IL.Processor_Crystal_Emerald .get(1));
+		RM.Press.addRecipe2(T, F, F, F, T, 16, 16, IL.Processor_Crystal_Empty.get(1), IL.Circuit_Crystal_Sapphire.get(1), IL.Processor_Crystal_Sapphire.get(1));
+		
+		
+		
+		CR.shaped(IL.Cover_Logistics_Fluid_Export   .get(1), CR.DEF_REV, "  w", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Fluid_Import   .get(1), CR.DEF_REV, " w ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Fluid_Storage  .get(1), CR.DEF_REV, "w  ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Item_Export    .get(1), CR.DEF_REV, "  r", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Item_Import    .get(1), CR.DEF_REV, " r ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Item_Storage   .get(1), CR.DEF_REV, "r  ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Generic_Export .get(1), CR.DEF_REV, "  d", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Generic_Import .get(1), CR.DEF_REV, " d ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Generic_Storage.get(1), CR.DEF_REV, "d  ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		CR.shaped(IL.Cover_Logistics_Dump           .get(1), CR.DEF_REV, "   ", "CPC", "WQW", 'Q', IL.Cover_Blank, 'P', IL.Processor_Crystal_Emerald, 'C', OD_CIRCUITS[6], 'W', OP.wireGt01.dat(MT.Os));
+		
+		
+		
 		IL.USB_Stick_1.set(                     addItem(tLastID = 32001, "USB 1.0 Stick"                    , "Stores Data"                                     , OD_USB_STICKS[1], Behavior_DataStorage.INSTANCE, TC.stack(TC.COGNITO, 3), TC.stack(TC.ELECTRUM, 1)));
 		IL.USB_Stick_2.set(                     addItem(tLastID = 32002, "USB 2.0 Stick"                    , "Stores Data"                                     , OD_USB_STICKS[2], Behavior_DataStorage.INSTANCE, TC.stack(TC.COGNITO, 4), TC.stack(TC.ELECTRUM, 2), TC.stack(TC.MOTUS, 1)));
 		IL.USB_Stick_3.set(                     addItem(tLastID = 32003, "USB 3.0 Stick"                    , "Stores Data"                                     , OD_USB_STICKS[3], Behavior_DataStorage.INSTANCE, TC.stack(TC.COGNITO, 5), TC.stack(TC.ELECTRUM, 3), TC.stack(TC.MOTUS, 2)));

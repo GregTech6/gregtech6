@@ -35,10 +35,14 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.01: (Not released yet)
 [FIXED] Mode Selector Covers did not save their Modes when already attached to a Block that you just placed, despite them visually showing the Mode.
+[CHANGED] You now get 10 times more Seed Oil from Seeds. The Forestry Ratio is just way too low. The Immersive Engineering Plant Oil from generification got adjusted too though!
 [WIP]
+I decided to make the Core Cheaper by making it possible to use Galvanized Walls instead of CPUs. You still need one of each (like just one Versatile one), but you wont need 27 Quadcore Units anymore.
+You can also have multiple Logistics Cores for one Network if you really run out of CPU space or something.
 There is Logistics Wire specific Covers for marking things as Import/Export/Storage.
 Each of these 3 Types of Marking has 3 additional Subtypes, Generic/FilteredFluid/FilteredItem. You will be able to Intercraft them easily.
 When you attach a Generic Typed Storage or Export Cover to the Side of the Wire that faces a Mass Storage or GT6 Filter Block, it will count the Cover as Semi-Filtered for sake of Export Priorities, but as Filtered for Import Priorities.
+If you use a Miniature Portal to make the Logistics Network go into a different Dimension, the Range in that Dimension is always limited to one Block, so make as much out of that one Block as you can.
 The Logistics Core will perform one Action per Second per Logic Core. An Action only counts if something has actually been moved.
 Fluids will always be handeled first and Items last for each Action.
 It is going to be able to perform the following Actions for now in this order:
@@ -86,7 +90,7 @@ If you want to filter for more than one thing at a time, you will have to use th
 Working on the GT6 Version of an AE or Logistics System.
 Note, that this isn't gonna be a Storage GUI or Crafting on Demand, this is purely for automation!
 I hope I at least get the Basics done til Sunday.
-You are going to need at least 110 Crystal Processors of varying Types to craft this thing, I would go and craft at least their Sockets in preparation if I were you. ;)
+You are going to need at least 10 Crystal Processors of varying Types to craft this thing, I would go and craft at least their Sockets in preparation if I were you. ;)
 This thing is gonna be customizable, so which Processors you choose can determine what Type of Management it will do best/fastest.
 
 

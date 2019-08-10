@@ -37,7 +37,7 @@ import gregapi.gui.ContainerClient;
 import gregapi.gui.ContainerCommon;
 import gregapi.gui.Slot_Holo;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
-import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFiltered;
+import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFilteredItem;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -61,7 +61,7 @@ import net.minecraftforge.fluids.IFluidHandler;
  * 
  * An example implementation of a Miniature Nether Portal with my MultiTileEntity System.
  */
-public class MultiTileEntityFilter extends MultiTileEntityExtender implements ITileEntityLogisticsSemiFiltered {
+public class MultiTileEntityFilter extends MultiTileEntityExtender implements ITileEntityLogisticsSemiFilteredItem {
 	public ItemStack[] mFilter = new ItemStack[54];
 	public boolean mInverted = F;
 	
