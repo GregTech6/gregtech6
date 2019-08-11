@@ -329,7 +329,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	@Override
 	public boolean onTickCheck(long aTimer) {
-		return super.onTickCheck(aTimer) || (isFaceVisible() && (slotHas(1) ? SERVER_TIME % (Math.abs(slot(1).stackSize - oStacksize) > 64 ? 10 : 20) == 0 : oStacksize != 0));
+		return super.onTickCheck(aTimer) || (isFaceVisible() && (slotHas(1) ? slot(1).stackSize != oStacksize && SERVER_TIME % (Math.abs(slot(1).stackSize - oStacksize) > 64 ? 10 : 20) == 0 : oStacksize != 0));
 	}
 	
 	@Override

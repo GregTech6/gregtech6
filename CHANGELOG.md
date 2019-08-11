@@ -34,6 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.01: (Not released yet)
+[FIXED] Mass Storages were causing a graphical update every second regardless of their Number changing or not. That was a nice FPS and Network Lag...
 [FIXED] Mode Selector Covers did not save their Modes when already attached to a Block that you just placed, despite them visually showing the Mode.
 [CHANGED] The Distillation Tower now accepts more Power per tick. This should make everything able to run faster if so desired.
 [CHANGED] You now get 10 times more Seed Oil from Seeds. The Forestry Ratio is just way too low. The Immersive Engineering Plant Oil from generification got adjusted too though!
