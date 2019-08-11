@@ -42,8 +42,8 @@ I decided to make the Core Cheaper by making it possible to use Galvanized Walls
 You can also have multiple Logistics Cores for one Network if you really run out of CPU space or something.
 There is Logistics Wire specific Covers for marking things as Import/Export/Storage. These Covers can also be placed on the Logistics Core itself.
 Each of these 3 Types of Marking has 3 additional Subtypes, Generic/FilteredFluid/FilteredItem. You will be able to Intercraft them easily.
-When you attach a Generic Typed Storage or Export Cover to the Side of the Wire that faces a Mass Storage or GT6 Filter Block, it will count the Cover as Semi-Filtered for sake of Export Priorities, but as Filtered for Import Priorities.
-If you use a Miniature Portal to make the Logistics Network go into a different Dimension, the Range in that Dimension is always limited to one Block, so make as much out of that one Block as you can.
+When you attach a Generic Typed Storage or Export Cover to the Side of the Wire that faces a Mass Storage or GT6 Filter Block, it will count the Cover as Semi-Filtered for sake of Priorities.
+If you use Miniature Portals to make the Logistics Network go into a different Dimension or simply out of Range, the Range at that Destination is always limited to one Block, so make as much out of that one Block as you can.
 The Logistics Core will perform one Action per Second per Logic Core. An Action only counts if something has actually been moved.
 Fluids will always be handeled first and Items last for each Action.
 It is going to be able to perform the following Actions for now in this order:

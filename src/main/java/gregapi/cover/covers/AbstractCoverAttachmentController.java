@@ -37,7 +37,11 @@ public abstract class AbstractCoverAttachmentController extends AbstractCoverAtt
 		super.onCoverRemove(aCoverSide, aData, aPlayer);
 		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(T);
 	}
-	
+	@Override
+	public void onCoverLoaded(byte aCoverSide, CoverData aData) {
+		super.onCoverLoaded(aCoverSide, aData);
+		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(getStateOnOff(aCoverSide, aData));
+	}
 	@Override
 	public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
 		super.onCoverPlaced(aCoverSide, aData, aPlayer, aCover);

@@ -26,7 +26,6 @@ import java.util.List;
 import gregapi.cover.CoverData;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -67,10 +66,10 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 			}
 			return 1;
 		}
-		return 0;
+		return super.onToolClick(aCoverSide, aData, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSideClicked, aHitX, aHitY, aHitZ);
 	}
 	
-	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return ALONG_AXIS[aCoverSide][aTextureSide] ? BlockTextureMulti.get(sTextureBase, getCoverTextureSurface(aCoverSide, aData)) : sTextureBase;}
+	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return aCoverSide == aTextureSide ? getCoverTextureSurface(aCoverSide, aData) : sTextureBase;}
 	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return sTextureBase;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	
