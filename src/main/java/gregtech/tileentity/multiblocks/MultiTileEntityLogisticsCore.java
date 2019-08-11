@@ -50,6 +50,7 @@ import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -545,11 +546,22 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		aChatReturn.add("Power: " + mEnergy);
+		aChatReturn.add("Power: " + mEnergy + " EU");
+		aChatReturn.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + " EU/t)");
 		aChatReturn.add(mCPU_Logic + " Logic Processors");
 		aChatReturn.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
 		aChatReturn.add(mCPU_Storage + " Storage Processors (Note: For now useless, might be used later)");
 		aChatReturn.add(mCPU_Conversion + " Conversion Processors");
+	}
+	
+	@Override
+	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (isServerSide() && aPlayer != null) {
+			List<String> tChat = new ArrayListNoNulls<>();
+			onMagnifyingGlass2(tChat);
+			UT.Entities.sendchat(aPlayer, tChat, F);
+		}
+		return T;
 	}
 	
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
