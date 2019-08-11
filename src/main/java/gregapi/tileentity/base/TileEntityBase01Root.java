@@ -527,6 +527,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	@Override
 	public byte getRedstoneIncoming(byte aSide) {
+		if (worldObj == null) return 0;
 		if (SIDES_INVALID[aSide]) {
 			byte rRedstone = 0;
 			for (byte tSide : ALL_SIDES_VALID) {
@@ -540,6 +541,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	@Override
 	public byte getComparatorIncoming(byte aSide) {
+		if (worldObj == null) return 0;
 		Block tBlock = getBlockAtSide(aSide);
 		return tBlock.hasComparatorInputOverride()?UT.Code.bind4(tBlock.getComparatorInputOverride(worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide), OPPOSITES[aSide])):getRedstoneIncoming(aSide);
 	}

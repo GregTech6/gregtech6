@@ -27,6 +27,7 @@ import gregapi.cover.CoverData;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
+import gregapi.tileentity.logistics.ITileEntityLogistics;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -35,6 +36,8 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAttachment {
+	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity instanceof ITileEntityLogistics && ((ITileEntityLogistics)aData.mTileEntity).canLogistics(SIDE_ANY));}
+	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);

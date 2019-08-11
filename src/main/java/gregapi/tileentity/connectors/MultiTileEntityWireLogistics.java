@@ -51,7 +51,7 @@ public class MultiTileEntityWireLogistics extends TileEntityBase10ConnectorRende
 		return F;
 	}
 	
-	@Override public boolean canLogistics(byte aSide) {return connected(aSide);}
+	@Override public boolean canLogistics(byte aSide) {return connected(aSide) || SIDES_INVALID[aSide];}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	@Override public boolean isObstructingBlockAt(byte aSide) {return F;} // Btw, Wires have this but Pipes don't. This is because Wires are flexible, while Pipes aren't.

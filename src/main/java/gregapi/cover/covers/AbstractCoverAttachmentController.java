@@ -35,22 +35,22 @@ public abstract class AbstractCoverAttachmentController extends AbstractCoverAtt
 	@Override
 	public void onCoverRemove(byte aCoverSide, CoverData aData, Entity aPlayer) {
 		super.onCoverRemove(aCoverSide, aData, aPlayer);
-		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(T);
+		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff && aData.mTileEntity.getWorld() != null) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(T);
 	}
 	@Override
 	public void onCoverLoaded(byte aCoverSide, CoverData aData) {
 		super.onCoverLoaded(aCoverSide, aData);
-		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(getStateOnOff(aCoverSide, aData));
+		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff && aData.mTileEntity.getWorld() != null) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(getStateOnOff(aCoverSide, aData));
 	}
 	@Override
 	public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
 		super.onCoverPlaced(aCoverSide, aData, aPlayer, aCover);
-		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(getStateOnOff(aCoverSide, aData));
+		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff && aData.mTileEntity.getWorld() != null) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(getStateOnOff(aCoverSide, aData));
 	}
 	
 	@Override
 	public void onBlockUpdate(byte aCoverSide, CoverData aData) {
-		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(getStateOnOff(aCoverSide, aData));
+		if (aData.mTileEntity instanceof ITileEntitySwitchableOnOff && aData.mTileEntity.getWorld() != null) ((ITileEntitySwitchableOnOff)aData.mTileEntity).setStateOnOff(getStateOnOff(aCoverSide, aData));
 	}
 	
 	@Override
