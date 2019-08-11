@@ -108,6 +108,8 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		RM.pulverizing(ST.make(this, 1, 0), OM.dust(MT.Wheat));
 		RM.pulverizing(ST.make(this, 1, 1), OM.dust(MT.Wheat));
 		
+		RM.biomass(ST.make(this, 8, W));
+		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(this, 1, 0), OM.dust(MT.Yellow));
 		RM.ic2_extractor(ST.make(this, 1, 1), OM.dust(MT.Yellow));

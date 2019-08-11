@@ -21,9 +21,12 @@ package gregapi.tileentity.connectors;
 
 import static gregapi.data.CS.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetDebugInfo;
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.SFX;
@@ -48,7 +51,7 @@ import net.minecraft.tileentity.TileEntity;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress {
+public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo {
 	public long mTransferredPower = 0, mTransferredSpeed = 0, mTransferredEnergy = 0, mTransferredLast = 0, mPower = 1, mSpeed = 32;
 	public byte mRotationDir = 0, oRotationDir = 0;
 	
@@ -150,6 +153,8 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	
 	@Override public long getProgressValue                  (byte aSide) {return mTransferredPower;}
 	@Override public long getProgressMax                    (byte aSide) {return mPower;}
+	
+	@Override public ArrayList<String> getDebugInfo(int aScanLevel) {return aScanLevel > 0 ? new ArrayListNoNulls<>(F, "Transferred Power: " + mTransferredEnergy) : null;}
 	
 	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.AXLES[(mConnections & 12) != 0 ? 0 : (mConnections & 48) != 0 ? 2 : 1][aSide][mRotationDir], mRGBa);}
 	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.AXLES[(mConnections & 12) != 0 ? 0 : (mConnections & 48) != 0 ? 2 : 1][aSide][mRotationDir], mRGBa);}

@@ -20,6 +20,7 @@
 package gregapi.block.multitileentity;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -343,5 +344,9 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_GetOreDictItemData extends IMultiTileEntity {
 		/** Gets called to determine OreDictItemData, this is a List with the first element being the Default OreDictItemData, followed by Covers and Stuff. */
 		public List<OreDictItemData> getOreDictItemData(List<OreDictItemData> aList);
+	}
+	
+	public static interface IMTE_GetDebugInfo extends IMultiTileEntity {
+		public ArrayList<String> getDebugInfo(int aScanLevel);
 	}
 }

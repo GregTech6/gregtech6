@@ -98,6 +98,8 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 4)});
 		CR.shapeless(OM.dust(MT.Purple), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 5)});
 		
+		RM.biomass(ST.make(this, 8, W));
+		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(this, 1, 0), ST.make(Items.stick, 2, 0));
 		RM.ic2_extractor(ST.make(this, 1, 1), ST.make(Items.stick, 2, 0));

@@ -36,7 +36,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.11.01: (Not released yet)
 [FIXED] Mode Selector Covers did not save their Modes when already attached to a Block that you just placed, despite them visually showing the Mode.
 [CHANGED] You now get 10 times more Seed Oil from Seeds. The Forestry Ratio is just way too low. The Immersive Engineering Plant Oil from generification got adjusted too though!
-[WIP]
+[ADDED]
+Logistics Core
 I decided to make the Core Cheaper by making it possible to use Galvanized Walls instead of CPUs. You still need one of each (like just one Versatile one), but you wont need 27 Quadcore Units anymore.
 You can also have multiple Logistics Cores for one Network if you really run out of CPU space or something.
 There is Logistics Wire specific Covers for marking things as Import/Export/Storage. These Covers can also be placed on the Logistics Core itself.

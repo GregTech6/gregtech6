@@ -40,6 +40,8 @@ public class Enchantment_WerewolfDamage extends EnchantmentDamage {
 		super(Config.addIDConfig(ConfigCategories.IDs.enchantments, "Werebane", 12), 2, -1);
 		LH.add(getName(), "Werebane");
 		MT.Ir               .addEnchantmentForTools(this, 6);
+		MT.Osmiridium       .addEnchantmentForTools(this, 6);
+		MT.HSSS             .addEnchantmentForTools(this, 6);
 		MT.Ag               .addEnchantmentForTools(this, 4);
 		MT.Electrum         .addEnchantmentForTools(this, 3);
 		MT.BlackBronze      .addEnchantmentForTools(this, 2);

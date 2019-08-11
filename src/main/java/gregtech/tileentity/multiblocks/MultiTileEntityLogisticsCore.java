@@ -175,7 +175,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
 			
-			if (SERVER_TIME % 20 == 19 && checkStructure(F)) {
+			if (SERVER_TIME % 20 == 19 && checkStructure(F) && mEnergy >= mCPU_Logic * mCPU_Conversion * 64L) {
 				int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 				
 				ItemStackSet<ItemStackContainer> tFilteredFor = new ItemStackSet<>();
@@ -364,7 +364,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					tScanningNext.clear();
 				}
 				
-				for (int i = 0; i < mCPU_Logic; i++) if (mEnergy >= mCPU_Conversion * 64) {
+				for (int i = 0; i < mCPU_Logic; i++) {
 					boolean tBreak = F;
 					
 					for (List<LogisticsData>[] tExports : tExports1) {
@@ -568,10 +568,8 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
 	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F);}
 	@Override public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted;}
-	@Override public long getEnergyDemanded(TagData aEnergyType, byte aSide, long aSize) {return 4096;}
-	@Override public long getEnergySizeInputRecommended(TagData aEnergyType, byte aSide) {return 8192;}
-	@Override public long getEnergySizeInputMin(TagData aEnergyType, byte aSide) {return   512;}
-	@Override public long getEnergySizeInputMax(TagData aEnergyType, byte aSide) {return 16384;}
+	@Override public long getEnergyDemanded(TagData aEnergyType, byte aSide, long aSize) {return 1024;}
+	@Override public long getEnergySizeInputRecommended(TagData aEnergyType, byte aSide) {return 512;}
 	@Override public long getEnergyStored(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mEnergy : 0;}
 	@Override public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mCPU_Logic * mCPU_Conversion * 256 : 0;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
