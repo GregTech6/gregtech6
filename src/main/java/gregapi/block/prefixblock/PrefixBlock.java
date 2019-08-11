@@ -563,7 +563,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
 		if (aTileEntity == null && aWorld instanceof World) aTileEntity = WD.te((World)aWorld, aX, aY, aZ, createTileEntity((World)aWorld, aX, aY, aZ, SIDE_ANY, aMetaData, null), F);
 		if (aTileEntity instanceof PrefixBlockTileEntity) ((PrefixBlockTileEntity)aTileEntity).mMetaData = aMetaData;
-		if (aWorld instanceof World && ((World)aWorld).isRemote) ((World)aWorld).markBlockForUpdate(aX, aY, aZ);
+		if (aWorld instanceof World && ((World)aWorld).isRemote) WD.update(aWorld, aX, aY, aZ);
 	}
 	
 	@Override

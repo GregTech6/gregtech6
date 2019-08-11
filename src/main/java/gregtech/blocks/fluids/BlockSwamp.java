@@ -63,13 +63,13 @@ public class BlockSwamp extends BlockWaterlike {
 		
 		if (aWorld.doChunksNearChunkExist(aX, aY, aZ, 33)) {
 			aWorld.func_147451_t(aX, aY, aZ);
-			aWorld.markBlockForUpdate(aX, aY, aZ);
+			WD.update(aWorld, aX, aY, aZ);
 			if (aY > 0) {
 				if (aWorld.getBlock(aX, aY-1, aZ) == this) {
 					aWorld.scheduleBlockUpdate(aX, aY-1, aZ, this, tickRate);
 				} else {
 					aWorld.func_147451_t(aX, aY-1, aZ);
-					aWorld.markBlockForUpdate(aX, aY-1, aZ);
+					WD.update(aWorld, aX, aY-1, aZ);
 				}
 			}
 		} else {

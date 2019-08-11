@@ -210,7 +210,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 		if (aStack.getTagCompound() != null && aStack.getTagCompound().hasKey("gt.dungeonloot")) aList.add("Dungeon Loot: "+aStack.getTagCompound().getString("gt.dungeonloot"));
 	}
 	
-	@Override public boolean receiveDataByte(byte aData, INetworkHandler aNetworkHandler) {mUsingPlayers = aData; worldObj.markBlockForUpdate(xCoord, yCoord, zCoord); return true;}
+	@Override public boolean receiveDataByte(byte aData, INetworkHandler aNetworkHandler) {mUsingPlayers = aData; return T;}
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {

@@ -135,9 +135,9 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.logisticscore.1" , "5x5x5 Frame made out of Galvanized Steel Walls (Power Input Here)");
-		LH.add("gt.tooltip.multiblock.logisticscore.2" , "3x3x3 Core of any Multiblock Processor Units (Customizable)");
-		LH.add("gt.tooltip.multiblock.logisticscore.3" , "The Six 3x3 Walls need to be Ventilation Units");
+		LH.add("gt.tooltip.multiblock.logisticscore.1" , "5x5x5 Frame made out of 44 Galvanized Steel Walls (Power Input Here)");
+		LH.add("gt.tooltip.multiblock.logisticscore.2" , "3x3x3 Core of 27 of any Multiblock Processor Units (Customizable)");
+		LH.add("gt.tooltip.multiblock.logisticscore.3" , "The Six 3x3 Walls need to be 53 Ventilation Units");
 		LH.add("gt.tooltip.multiblock.logisticscore.4" , "Main centered at any Side facing outwards");
 		LH.add("gt.tooltip.multiblock.logisticscore.5" , "At least one of each Processor Type needed (Or use a Versatile one)");
 		LH.add("gt.tooltip.multiblock.logisticscore.6" , "You can replace CPUs with Walls should you not be able to afford that many.");
@@ -550,7 +550,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		aChatReturn.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + " EU/t)");
 		aChatReturn.add(mCPU_Logic + " Logic Processors");
 		aChatReturn.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
-		aChatReturn.add(mCPU_Storage + " Storage Processors (Note: For now useless, might be used later)");
+		aChatReturn.add(mCPU_Storage + " Storage Processors (Note: For now useless)");
 		aChatReturn.add(mCPU_Conversion + " Conversion Processors");
 	}
 	

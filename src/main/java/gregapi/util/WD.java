@@ -26,6 +26,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import gregapi.GT_API;
 import gregapi.block.BlockBase;
 import gregapi.block.IBlockDebugable;
 import gregapi.block.IBlockExtendedMetaData;
@@ -36,6 +37,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -347,6 +349,16 @@ public class WD {
 	public static ItemStack stack(World aWorld, int aX, int aY, int aZ) {
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
 		return ST.make(tBlock, 1, tBlock instanceof IBlockExtendedMetaData ? ((IBlockExtendedMetaData)tBlock).getExtendedMetaData(aWorld, aX, aY, aZ) : aWorld.getBlockMetadata(aX, aY, aZ));
+	}
+	
+	public static void update(IBlockAccess aWorld, int aX, int aY, int aZ) {
+		((World)aWorld).markBlockForUpdate(aX, aY, aZ);
+		if (CLIENT_BLOCKUPDATE_SOUNDS && CODE_CLIENT) {
+			EntityPlayer tPlayer = GT_API.api_proxy.getThePlayer();
+			if (tPlayer != null && Math.abs(tPlayer.posX - aX) < 16 && Math.abs(tPlayer.posY - aY) < 16 && Math.abs(tPlayer.posZ - aZ) < 16) {
+				UT.Sounds.play(SFX.MC_FIREWORK_LAUNCH, 5, 1.0F, 1.0F, aX, aY, aZ);
+			}
+		}
 	}
 	
 	public static Block block(World aWorld, int aX, int aY, int aZ, boolean aLoadUnloadedChunks) {return aLoadUnloadedChunks || aWorld.blockExists(aX, aY, aZ) ? aWorld.getBlock(aX, aY, aZ) : NB;}
