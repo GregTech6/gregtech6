@@ -353,10 +353,10 @@ public class WD {
 	
 	public static void update(IBlockAccess aWorld, int aX, int aY, int aZ) {
 		((World)aWorld).markBlockForUpdate(aX, aY, aZ);
-		if (CLIENT_BLOCKUPDATE_SOUNDS && CODE_CLIENT) {
+		if (CLIENT_BLOCKUPDATE_SOUNDS && CODE_CLIENT && CLIENT_TIME > 100) {
 			EntityPlayer tPlayer = GT_API.api_proxy.getThePlayer();
 			if (tPlayer != null && Math.abs(tPlayer.posX - aX) < 16 && Math.abs(tPlayer.posY - aY) < 16 && Math.abs(tPlayer.posZ - aZ) < 16) {
-				UT.Sounds.play(SFX.MC_FIREWORK_LAUNCH, 5, 1.0F, 1.0F, aX, aY, aZ);
+				UT.Sounds.play(SFX.MC_FIREWORK_LAUNCH, 1, 1.0F, 1.0F, aX, aY, aZ);
 			}
 		}
 	}
