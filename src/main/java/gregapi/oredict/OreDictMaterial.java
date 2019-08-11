@@ -426,6 +426,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** Sets the Molecule Configuration or Components of this Material. Calculates the Average of the MainStats and sets them. */
 	public OreDictMaterial setMoleculeConfiguration(IOreDictConfigurationComponent aComponents) {
 		mComponents = aComponents;
+		long tMaxMelt = Long.MAX_VALUE;
 		double tDivider = 0.0D, tProtons = 0.0D, tElectrons = 0.0D, tNeutrons = 0.0D, tMass = 0.0D, tGramPerCubicCentimeter = 0.0D, tMeltingPoint = 0.0D, tBoilingPoint = 0.0D, tPlasmaPoint = 0.0D;
 		for (OreDictMaterialStack tMaterial : aComponents.getComponents()) tDivider += tMaterial.mAmount;
 		for (OreDictMaterialStack tMaterial : aComponents.getComponents()) {
@@ -437,12 +438,13 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 			tMeltingPoint           += (tMaterial.mMaterial.mMeltingPoint           * tMaterial.mAmount) / tDivider;
 			tBoilingPoint           += (tMaterial.mMaterial.mBoilingPoint           * tMaterial.mAmount) / tDivider;
 			tPlasmaPoint            += (tMaterial.mMaterial.mPlasmaPoint            * tMaterial.mAmount) / tDivider;
+			tMaxMelt = Math.min(tMaxMelt, tMaterial.mMaterial.mBoilingPoint-20);
 		}
 		mProtons = (long)tProtons;
 		mElectrons = (long)tElectrons;
 		mNeutrons = (long)tNeutrons;
 		mMass = (long)tMass;
-		mMeltingPoint = (long)tMeltingPoint;
+		mMeltingPoint = Math.min(tMaxMelt, (long)tMeltingPoint);
 		mBoilingPoint = Math.max(mMeltingPoint+1, (long)tBoilingPoint);
 		mPlasmaPoint = Math.max(mBoilingPoint+1, (long)tPlasmaPoint);
 		mGramPerCubicCentimeter = tGramPerCubicCentimeter;
