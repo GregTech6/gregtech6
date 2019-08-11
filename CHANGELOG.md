@@ -40,6 +40,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Logistics Core
 I decided to make the Core Cheaper by making it possible to use Galvanized Walls instead of CPUs. You still need one of each (like just one Versatile one), but you wont need 27 Quadcore Units anymore.
 You can also have multiple Logistics Cores for one Network if you really run out of CPU space or something.
+Consumes 20EU/t + (1EU/t per CPU) regardless of if it does something or not, 1EU per moved Item (so 64EU per full Stack), and 1EU per moved 250L (it will round up to 1EU if it is less than 250L).
 There is Logistics Wire specific Covers for marking things as Import/Export/Storage. These Covers can also be placed on the Logistics Core itself.
 Each of these 3 Types of Marking has 3 additional Subtypes, Generic/FilteredFluid/FilteredItem. You will be able to Intercraft them easily.
 When you attach a Generic Typed Storage or Export Cover to the Side of the Wire that faces a Mass Storage or GT6 Filter Block, it will count the Cover as Semi-Filtered for sake of Priorities.

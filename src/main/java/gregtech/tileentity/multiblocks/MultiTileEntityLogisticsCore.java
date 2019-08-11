@@ -174,8 +174,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
-			
-			if (SERVER_TIME % 20 == 19 && checkStructure(F) && mEnergy >= mCPU_Logic * mCPU_Conversion * 64L) {
+			if (SERVER_TIME % 20 == 19 && checkStructure(F) && mEnergy >= 128 + mCPU_Logic * mCPU_Conversion * 64L) {
 				int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 				
 				ItemStackSet<ItemStackContainer> tFilteredFor = new ItemStackSet<>();
@@ -416,6 +415,9 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					break;
 				}
 			}
+			
+			mEnergy -= 20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion;
+			if (mEnergy < 0) mEnergy = 0;
 		}
 	}
 	
@@ -546,7 +548,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		aChatReturn.add("Power: " + mEnergy);
 		aChatReturn.add(mCPU_Logic + " Logic Processors");
 		aChatReturn.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
-		aChatReturn.add(mCPU_Storage + " Storage Processors");
+		aChatReturn.add(mCPU_Storage + " Storage Processors (Note: For now useless, might be used later)");
 		aChatReturn.add(mCPU_Conversion + " Conversion Processors");
 	}
 	
