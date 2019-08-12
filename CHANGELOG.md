@@ -33,7 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.01: (Not released yet, Monday Release due to the likelihood of Bugs that Bear needs to find, and maybe I need to adjust some Recipes still)
+6.11.01: (Not released yet, Release coming very soon within a couple hours or less)
 [FIXED] Mass Storages were causing a graphical update every second regardless of their Number changing or not. That was a nice FPS and Network Lag...
 [FIXED] Mode Selector Covers did not save their Modes when already attached to a Block that you just placed, despite them visually showing the Mode.
 [CHANGED] The Distillation Tower now accepts more Power per tick. This should make everything able to run faster if so desired.

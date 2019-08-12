@@ -63,12 +63,12 @@ public class CoverLogisticsFluidStorage extends AbstractCoverAttachmentLogistics
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
 				if (aData.mNBTs[aCoverSide] == null) {
-					aChatReturn.add("Stores Anything! (Priority: " + aData.mValues[aCoverSide] + ")");
+					aChatReturn.add("No Filter Set! (Priority: " + aData.mValues[aCoverSide] + ")");
 					aData.mNBTs[aCoverSide] = null;
 				} else {
 					FluidStack tFluid = FL.load(aData.mNBTs[aCoverSide], "gt.filter.fluid");
 					if (tFluid == null) {
-						aChatReturn.add("Stores Anything! (Priority: " + aData.mValues[aCoverSide] + ")");
+						aChatReturn.add("No Filter Set! (Priority: " + aData.mValues[aCoverSide] + ")");
 						aData.mNBTs[aCoverSide] = null;
 					} else {
 						aChatReturn.add("Stores: " + LH.Chat.CYAN + tFluid.getFluid().getName() + " (Priority: " + aData.mValues[aCoverSide] + ")");

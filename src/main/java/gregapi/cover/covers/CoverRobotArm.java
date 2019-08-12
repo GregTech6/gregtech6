@@ -84,15 +84,15 @@ public class CoverRobotArm extends AbstractCoverAttachment {
 		if (aIsServerSide && SERVER_TIME % mTiming == 0 && !aData.mStopped && aData.mTileEntity instanceof IInventory) {
 			if (aData.mValues[aSide] < 0) {
 				if (aData.mVisuals[aSide] == 0) {
-					ST.moveFrom(aData.delegator(aSide), aData.mTileEntity.getAdjacentTileEntity(aSide), -1-aData.mValues[aSide], null, T, F, F, 64, 1, 64, 1);
+					ST.moveFrom(aData.delegator(aSide), aData.mTileEntity.getAdjacentTileEntity(aSide), -1-aData.mValues[aSide], null, T, F, F, T, 64, 1, 64, 1);
 				} else {
-					ST.moveFrom(aData.mTileEntity.getAdjacentTileEntity(aSide), aData.delegator(aSide), -1-aData.mValues[aSide], null, T, F, F, 64, 1, 64, 1);
+					ST.moveFrom(aData.mTileEntity.getAdjacentTileEntity(aSide), aData.delegator(aSide), -1-aData.mValues[aSide], null, T, F, F, T, 64, 1, 64, 1);
 				}
 			} else {
 				if (aData.mVisuals[aSide] == 0) {
-					ST.moveTo(aData.delegator(aSide), aData.mTileEntity.getAdjacentTileEntity(aSide), aData.mValues[aSide], null, F, T, F, 64, 1, 64, 1);
+					ST.moveTo(aData.delegator(aSide), aData.mTileEntity.getAdjacentTileEntity(aSide), aData.mValues[aSide], null, F, T, F, T, 64, 1, 64, 1);
 				} else {
-					ST.moveTo(aData.mTileEntity.getAdjacentTileEntity(aSide), aData.delegator(aSide), aData.mValues[aSide], null, F, T, F, 64, 1, 64, 1);
+					ST.moveTo(aData.mTileEntity.getAdjacentTileEntity(aSide), aData.delegator(aSide), aData.mValues[aSide], null, F, T, F, T, 64, 1, 64, 1);
 				}
 			}
 		}

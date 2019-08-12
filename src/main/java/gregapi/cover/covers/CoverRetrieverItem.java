@@ -70,7 +70,7 @@ public class CoverRetrieverItem extends AbstractCoverAttachment {
 			for (ITileEntityItemPipe tPipe : UT.Code.sortByValuesAcending(ITileEntityItemPipe.Util.scanPipes((ITileEntityItemPipe)aData.mTileEntity, new HashMap<ITileEntityItemPipe, Long>(), 0, T, F)).keySet()) {
 				if (tUsedPipes.add(tPipe)) for (byte tSide : ALL_SIDES_VALID) if (tPipe.canAcceptItemsFrom(tSide, aData.mTileEntity) && (tSide != aSide || tPipe != aData.mTileEntity)) {
 					DelegatorTileEntity<IInventory> tDelegator = tPipe.getAdjacentInventory(tSide);
-					if (!(tDelegator.mTileEntity instanceof ITileEntityItemPipe) && ST.move(tDelegator, tTarget, tFilter, F, F, aData.mVisuals[aSide] != 0, 64, 1, 64, 1) > 0) {
+					if (!(tDelegator.mTileEntity instanceof ITileEntityItemPipe) && ST.move(tDelegator, tTarget, tFilter, F, F, aData.mVisuals[aSide] != 0, T, 64, 1, 64, 1) > 0) {
 						for (ITileEntityItemPipe tUsedPipe : tUsedPipes) tUsedPipe.incrementTransferCounter(1);
 						return;
 					}

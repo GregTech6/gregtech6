@@ -1503,11 +1503,11 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		
 		aClass = MultiTileEntityWireLaser.class;
-		aRegistry.add("Laser Fiber Wire", "Laser Wires", 24900, 24900, aClass, aMat.mToolQuality, 64, aMetalWires, UT.NBT.make(NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "PGR", "DxD", "RGP", 'P', OP.plate.dat(MT.Ag), 'G', Blocks.glass, 'D', OP.gem.dat(ANY.Diamond), 'R', OD.itemRedstone);
+		aRegistry.add("Laser Fiber Wire", "Laser Wires", 24900, 24900, aClass, 3, 64, aMetalWires, UT.NBT.make(NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "PGR", "DxD", "RGP", 'P', OP.plate.dat(MT.Ag), 'G', Blocks.glass, 'D', OP.gem.dat(ANY.Diamond), 'R', OD.itemRedstone);
 		
 		
 		aClass = MultiTileEntityWireLogistics.class;
-		aRegistry.add("Logistics Wire", "Logistics", 24901, 17997, aClass, aMat.mToolQuality, 64, aMetalWires, UT.NBT.make(NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "PEP", "dFx", "POP", 'F', aRegistry.getItem(24900), 'O', OP.wireGt01.dat(MT.Os), 'P', OP.foil.dat(MT.Plastic), 'E', OP.gem.dat(ANY.Emerald));
+		aRegistry.add("Logistics Wire", "Logistics", 24901, 17997, aClass, 3, 64, aMetalWires, UT.NBT.make(NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "PEP", "dFx", "POP", 'F', aRegistry.getItem(24900), 'O', OP.wireGt01.dat(MT.Os), 'P', OP.foil.dat(MT.Plastic), 'E', OP.gem.dat(ANY.Emerald));
 		
 		
 		aClass = MultiTileEntityPipeItem.class;

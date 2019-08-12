@@ -394,7 +394,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					for (LogisticsData tImport : tStackStorageGeneric) {
 						for (LogisticsData tExport : tStackDumps) {
 							for (int j = 0; j < mCPU_Conversion; j++) {
-								long tMoved = ST.move(tImport.mTarget, tExport.mTarget, tFilteredFor, F, F, T, 64, 1, 64, 1);
+								long tMoved = ST.move(tImport.mTarget, tExport.mTarget, tFilteredFor, F, F, T, F, 64, 1, 64, 1);
 								if (tMoved > 0) {
 									mEnergy -= tMoved;
 									tBreak = T;
@@ -472,7 +472,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		if (aImport.mItemFilter != null) {
 			if (aExport.mItemFilter != null) {
 				if (ST.equal(aImport.mItemFilter, aExport.mItemFilter, T)) for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, 64, 1, 64, 1);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
 					if (tMoved > 0) {
 						mEnergy -= tMoved;
 						tReturn = T;
@@ -482,7 +482,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				}
 			} else {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, 64, 1, 64, 1);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
 					if (tMoved > 0) {
 						mEnergy -= tMoved;
 						tReturn = T;
@@ -494,7 +494,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		} else {
 			if (aExport.mItemFilter != null) {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, 64, 1, 64, 1);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
 					if (tMoved > 0) {
 						mEnergy -= tMoved;
 						tReturn = T;
@@ -504,7 +504,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				}
 			} else {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, null, F, F, F, 64, 1, 64, 1);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, null, F, F, F, F, 64, 1, 64, 1);
 					if (tMoved > 0) {
 						mEnergy -= tMoved;
 						tReturn = T;
@@ -545,20 +545,15 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	}
 	
 	@Override
-	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		aChatReturn.add("Power: " + mEnergy + " EU");
-		aChatReturn.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + " EU/t)");
-		aChatReturn.add(mCPU_Logic + " Logic Processors");
-		aChatReturn.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
-		aChatReturn.add(mCPU_Storage + " Storage Processors (Note: For now useless)");
-		aChatReturn.add(mCPU_Conversion + " Conversion Processors");
-	}
-	
-	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (isServerSide() && aPlayer != null) {
+		if (isServerSide() && aPlayer != null && checkStructure(F)) {
 			List<String> tChat = new ArrayListNoNulls<>();
-			onMagnifyingGlass2(tChat);
+			tChat.add("Power: " + mEnergy + " EU");
+			tChat.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + " EU/t)");
+			tChat.add(mCPU_Logic + " Logic Processors");
+			tChat.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
+			tChat.add(mCPU_Storage + " Storage Processors (Note: For now useless)");
+			tChat.add(mCPU_Conversion + " Conversion Processors");
 			UT.Entities.sendchat(aPlayer, tChat, F);
 		}
 		return T;

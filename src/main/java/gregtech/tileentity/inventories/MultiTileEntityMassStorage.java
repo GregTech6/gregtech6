@@ -422,7 +422,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		DelegatorTileEntity<IInventory> tTileEntity = getAdjacentInventory(SIDE_BOTTOM);
 		while (slotHas(1) && slot(1).stackSize > mMaxStorage) {
 			int tToBeMoved = UT.Code.bindStack(slot(1).stackSize - mMaxStorage);
-			if (ST.move(delegator(SIDE_BOTTOM), tTileEntity, null, F, F, F, tToBeMoved, 1, tToBeMoved, 1) <= 0) break;
+			if (ST.move(delegator(SIDE_BOTTOM), tTileEntity, null, F, F, F, T, tToBeMoved, 1, tToBeMoved, 1) <= 0) break;
 		}
 	}
 	

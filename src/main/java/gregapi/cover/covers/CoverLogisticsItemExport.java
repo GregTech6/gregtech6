@@ -61,12 +61,12 @@ public class CoverLogisticsItemExport extends AbstractCoverAttachmentLogistics {
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
 				if (aData.mNBTs[aCoverSide] == null) {
-					aChatReturn.add("Exports Anything! (Priority: " + aData.mValues[aCoverSide] + ")");
+					aChatReturn.add("No Filter Set! (Priority: " + aData.mValues[aCoverSide] + ")");
 					aData.mNBTs[aCoverSide] = null;
 				} else {
 					ItemStack tStack = ST.load(aData.mNBTs[aCoverSide], "gt.filter.item");
 					if (ST.invalid(tStack)) {
-						aChatReturn.add("Exports Anything! (Priority: " + aData.mValues[aCoverSide] + ")");
+						aChatReturn.add("No Filter Set! (Priority: " + aData.mValues[aCoverSide] + ")");
 						aData.mNBTs[aCoverSide] = null;
 					} else {
 						aChatReturn.add("Exports: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack) + " (Priority: " + aData.mValues[aCoverSide] + ")");
