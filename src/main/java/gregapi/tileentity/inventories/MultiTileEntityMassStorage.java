@@ -463,7 +463,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	// Default implementation for Logistics Stuffs
 	public boolean canLogistics(byte aSide) {return T;}
-	public int getLogisticsPriorityItem() {return 2;}
+	public int getLogisticsPriorityItem() {return slotHas(1) ? 2 : 1;}
 	public int getLogisticsPriorityFluid() {return 0;}
 	
 	
