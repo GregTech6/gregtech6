@@ -26,14 +26,6 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.03:
-[FIXED] AGAIN Some weirdly low Melting Points for some Materials.
-
-
-6.11.02: DO NOT USE! MELTING POINTS ARE BROKEN FOR SOME MATERIALS
-[FIXED] Some weirdly low Melting Points for some Materials.
-
-
-6.11.01: DO NOT USE! MELTING POINTS ARE BROKEN FOR SOME MATERIALS
 [FIXED] Mass Storages were causing a graphical update every second regardless of their Number changing or not. That was a nice FPS and Network Lag...
 [FIXED] Mode Selector Covers did not save their Modes when already attached to a Block that you just placed, despite them visually showing the Mode.
 [CHANGED] The Distillation Tower now accepts more Power per tick. This should make everything able to run faster if so desired.
@@ -79,6 +71,14 @@ The System does not like using Generic Storage and will defragment it into Filte
 Should you have a Dump Bus and the System has absolutely nothing else to do, it will put everything that is not filtered anywhere into whatever is connected to it. (likely a Chest, or maybe even the Ender Garbage Bin but that would be a bit dumb, if you make changes to the System on a regular basis)
 If you want to filter for more than one thing at a time, you will have to use the Filter Blocks and attach a Generic Export Bus to those.
 The Priority of each Logistics Bus Cover can be adjusted with the Screwdriver if you dont wanna use the Default.
+
+
+6.11.02:
+[BROKEN] DO NOT USE!
+
+
+6.11.01:
+[BROKEN] DO NOT USE!
 
 
 6.11.00:
