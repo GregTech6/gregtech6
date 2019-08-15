@@ -383,7 +383,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public final boolean doDamage(ItemStack aStack, long aAmount, EntityLivingBase aPlayer) {
 		if (!isItemStackUsable(aStack)) return F;
 		IItemEnergy tElectric = getEnergyStats(aStack);
-		if (tElectric == null || RNGSUS.nextInt(25) == 0) {
+		if (tElectric == null || RNGSUS.nextInt(Math.max(5, getPrimaryMaterial(aStack, MT.NULL).mToolQuality * 25)) == 0) {
 			long tNewDamage = getToolDamage(aStack) + aAmount;
 			setToolDamage(aStack, tNewDamage);
 			if (tNewDamage >= getToolMaxDamage(aStack)) {

@@ -443,7 +443,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		mElectrons = (long)tElectrons;
 		mNeutrons = (long)tNeutrons;
 		mMass = (long)tMass;
-		mMeltingPoint = Math.min(1, (long)tMeltingPoint);
+		mMeltingPoint = Math.max(1, (long)tMeltingPoint);
 		mBoilingPoint = Math.max(mMeltingPoint+1, (long)tBoilingPoint);
 		mPlasmaPoint = Math.max(mBoilingPoint+1, (long)tPlasmaPoint);
 		mGramPerCubicCentimeter = tGramPerCubicCentimeter;
