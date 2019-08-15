@@ -175,7 +175,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
-			if (SERVER_TIME % 20 == 19 && checkStructure(F) && mEnergy >= 128 + mCPU_Logic * mCPU_Conversion * 64L) {
+			if (SERVER_TIME % 20 == 0 && checkStructure(F) && mEnergy >= 128 + mCPU_Logic * mCPU_Conversion * 64L) {
 				int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 				
 				ItemStackSet<ItemStackContainer> tFilteredFor = new ItemStackSet<>();
@@ -363,6 +363,8 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					tScanning.addAll(tScanningNext);
 					tScanningNext.clear();
 				}
+				
+				
 				
 				for (int i = 0; i < mCPU_Logic; i++) {
 					boolean tBreak = F;

@@ -29,8 +29,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.02: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.11.02:
+[FIXED] Some weirdly low Melting Points for some Materials.
 
 
 6.11.01:
