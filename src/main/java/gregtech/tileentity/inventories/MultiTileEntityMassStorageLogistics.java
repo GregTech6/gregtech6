@@ -21,10 +21,6 @@ package gregtech.tileentity.inventories;
 
 import static gregapi.data.CS.*;
 
-import java.util.List;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.BI;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -32,20 +28,13 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.inventories.MultiTileEntityMassStorage;
+import gregapi.tileentity.logistics.ITileEntityLogisticsStorage;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMassStorageStandard extends MultiTileEntityMassStorage implements IMTE_GetSubItems {
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
-	
+public class MultiTileEntityMassStorageLogistics extends MultiTileEntityMassStorage implements ITileEntityLogisticsStorage {
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return slotHas(1) && aShouldSideBeRendered[mFacing] && isFaceVisible()?7:1;
@@ -133,7 +122,7 @@ public class MultiTileEntityMassStorageStandard extends MultiTileEntityMassStora
 			case 5: return BlockTextureDefault.get(BI.CHAR_PERCENT  , CA_RED_255, F, T, T, T);
 			case 6: return null;
 			}
-			return BlockTextureDefault.get(BI.decimalDigit(slot(1).stackSize, 6-aRenderPass), CA_WHITE, F, T, T, T);
+			return BlockTextureDefault.get(BI.decimalDigit(slot(1).stackSize, 6-aRenderPass), CA_CYAN_255, F, T, T, T);
 		}
 		return null;
 	}
@@ -152,18 +141,18 @@ public class MultiTileEntityMassStorageStandard extends MultiTileEntityMassStora
 	
 	// Icons
 	public static IIconContainer sColoreds[] = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/colored/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/colored/top"),
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/colored/front"),
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/colored/back"),
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/colored/side"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/colored/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/colored/top"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/colored/front"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/colored/back"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/colored/side"),
 	}, sOverlays[] = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/overlay/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/overlay/top"),
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/overlay/front"),
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/overlay/back"),
-		new Textures.BlockIcons.CustomIcon("machines/massstorage/standard/overlay/side"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/overlay/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/overlay/top"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/overlay/front"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/overlay/back"),
+		new Textures.BlockIcons.CustomIcon("machines/massstorage/logistics/overlay/side"),
 	};
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.massstorage.standard";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.massstorage.logistics";}
 }

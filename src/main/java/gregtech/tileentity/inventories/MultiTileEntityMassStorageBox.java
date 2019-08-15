@@ -27,6 +27,7 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
+import gregapi.tileentity.inventories.MultiTileEntityMassStorage;
 import net.minecraft.block.Block;
 
 /**

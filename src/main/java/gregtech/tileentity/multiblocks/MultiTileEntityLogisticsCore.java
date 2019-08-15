@@ -42,6 +42,7 @@ import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
 import gregapi.tileentity.logistics.ITileEntityLogistics;
 import gregapi.tileentity.logistics.ITileEntityLogisticsSemiFilteredItem;
+import gregapi.tileentity.logistics.ITileEntityLogisticsStorage;
 import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
 import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
@@ -236,6 +237,22 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				
 				while (!tScanning.isEmpty()) {
 					for (ITileEntityLogistics tLogistics : tScanning) {
+						if (tLogistics instanceof ITileEntityLogisticsStorage) {
+							switch(((ITileEntityLogisticsStorage)tLogistics).getLogisticsPriorityFluid()) {
+							case  1: tFluidStorageGeneric .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
+							case  2: tFluidStorageSemi    .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
+							case  3: tFluidStorageFiltered.add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
+							}
+							switch(((ITileEntityLogisticsStorage)tLogistics).getLogisticsPriorityItem()) {
+							case  1: tStackStorageGeneric .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
+							case  2: tStackStorageSemi    .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
+							case  3: tStackStorageFiltered.add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
+							}
+							if (tLogistics instanceof ITileEntityLogisticsSemiFilteredItem) {
+								tFilteredFor.addAll(((ITileEntityLogisticsSemiFilteredItem)tLogistics).getLogisticsFilter(SIDE_ANY));
+							}
+						}
+						
 						CoverData tCovers = tLogistics.getCoverData();
 						if (tCovers != null && !tCovers.mStopped) {
 							for (byte tSide : ALL_SIDES_VALID) if (tCovers.mBehaviours[tSide] instanceof AbstractCoverAttachmentLogistics) {

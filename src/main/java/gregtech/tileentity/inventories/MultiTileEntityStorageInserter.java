@@ -29,6 +29,7 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityConnectedInventory;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
+import gregapi.tileentity.inventories.MultiTileEntityMassStorage;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;

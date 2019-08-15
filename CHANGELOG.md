@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.11.11: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.10: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.11.09: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.04: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Logistics Mass Storage, works like regular Mass Storage, but also conducts the Logistics Signal to adjacent Blocks like Logistics Wire, while connecting the Storage itself to the Logistics Network too.
 
 
 6.11.03:

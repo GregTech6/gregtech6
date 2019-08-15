@@ -115,6 +115,11 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 	}
 	
 	@Override
+	public boolean addAll(Collection<? extends E> c) {
+		return c != null && addAll(c);
+	}
+	
+	@Override
 	public boolean remove(Object aStack) {
 		return map.remove(aStack) == OBJECT;
 	}

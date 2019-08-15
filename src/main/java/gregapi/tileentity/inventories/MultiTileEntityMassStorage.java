@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.tileentity.inventories;
+package gregapi.tileentity.inventories;
 
 import static gregapi.data.CS.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -460,6 +460,13 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		}
 		return mLogisticsCache;
 	}
+	
+	// Default implementation for Logistics Stuffs
+	public boolean canLogistics(byte aSide) {return T;}
+	public int getLogisticsPriorityItem() {return 2;}
+	public int getLogisticsPriorityFluid() {return 0;}
+	
+	
 	
 	public boolean isFaceVisible() {
 		return SIDES_HORIZONTAL[mFacing] && (mMode & B[3]) == 0 && (!hasCovers()||mCovers.mBehaviours[mFacing]==null||!mCovers.mBehaviours[mFacing].isOpaque(mFacing, mCovers));
