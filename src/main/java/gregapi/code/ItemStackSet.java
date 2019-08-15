@@ -116,7 +116,7 @@ public class ItemStackSet<E extends ItemStackContainer> extends AbstractSet<E> {
 	
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
-		return c != null && addAll(c);
+		return c != null && super.addAll(c);
 	}
 	
 	@Override

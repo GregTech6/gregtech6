@@ -26,6 +26,10 @@ import gregapi.data.RM;
 
 public class Loader_Recipes_Alloys implements Runnable {
 	@Override public void run() {
+		
+		RM.Smelter.addRecipe0(T, 16, 16, FL.make("molten.copper", 1), FL.make("molten.annealedcopper", 1), ZL_IS);
+		RM.Smelter.addRecipe0(T, 16, 16, FL.make("molten.iron"  , 1), FL.make("molten.wroughtiron"   , 1), ZL_IS);
+		
 		for (String tCopper : new String[] {"molten.copper", "molten.annealedcopper"}) {
 		mix(tCopper               ,  1, "molten.nickel"       ,  1                                                        , "molten.constantan"       ,  2);
 		mix(tCopper               ,  3, "molten.tin"          ,  1                                                        , "molten.bronze"           ,  4);
