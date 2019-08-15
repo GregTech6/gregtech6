@@ -427,7 +427,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** Sets the Molecule Configuration or Components of this Material. Calculates the Average of the MainStats and sets them. */
 	public OreDictMaterial setMoleculeConfiguration(IOreDictConfigurationComponent aComponents) {
 		mComponents = aComponents;
-		double tDivider = 0.0D, tProtons = 0.0D, tElectrons = 0.0D, tNeutrons = 0.0D, tMass = 0.0D, tGramPerCubicCentimeter = 0.0D, tMeltingPoint = 0.0D, tBoilingPoint = 0.0D, tPlasmaPoint = 0.0D;
+		double tDivider = 0, tProtons = 0, tElectrons = 0, tNeutrons = 0, tMass = 0, tGramPerCubicCentimeter = 0, tMeltingPoint = 0, tBoilingPoint = 0, tPlasmaPoint = 0;
 		for (OreDictMaterialStack tMaterial : aComponents.getComponents()) tDivider += tMaterial.mAmount;
 		for (OreDictMaterialStack tMaterial : aComponents.getComponents()) {
 			tProtons                += (tMaterial.mMaterial.mProtons                * tMaterial.mAmount) / UD;
