@@ -297,116 +297,6 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 						CoverData tCovers = tLogistics.getCoverData();
 						if (tCovers != null && !tCovers.mStopped) {
 							for (byte tSide : ALL_SIDES_VALID) if (tCovers.mBehaviours[tSide] instanceof AbstractCoverAttachmentLogistics) {
-								DelegatorTileEntity<TileEntity> tAdjacent = tLogistics.getAdjacentTileEntity(tSide);
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidExport.INSTANCE) {
-									FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
-									if (tFluid != null && tFluid.getFluid() != null) {
-										switch(tCovers.mValues[tSide]) {
-										case  1: tFluidExportsGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										case  2: tFluidExportsSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										default: tFluidExportsFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										}
-									}
-									continue;
-								}
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidImport.INSTANCE) {
-									FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
-									if (tFluid != null && tFluid.getFluid() != null) {
-										switch(tCovers.mValues[tSide]) {
-										case  1: tFluidImportsGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										case  2: tFluidImportsSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										default: tFluidImportsFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										}
-									}
-									continue;
-								}
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidStorage.INSTANCE) {
-									FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
-									if (tFluid != null && tFluid.getFluid() != null) {
-										switch(tCovers.mValues[tSide]) {
-										case  1: tFluidStorageGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										case  2: tFluidStorageSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										default: tFluidStorageFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
-										}
-									}
-									continue;
-								}
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsItemExport.INSTANCE) {
-									ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
-									if (ST.valid(tStack)) {
-										tFilteredFor.add(tStack);
-										switch(tCovers.mValues[tSide]) {
-										case  1: tStackExportsGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
-										case  2: tStackExportsSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
-										default: tStackExportsFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
-										}
-									}
-									continue;
-								}
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsItemImport.INSTANCE) {
-									ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
-									if (ST.valid(tStack)) {
-										tFilteredFor.add(tStack);
-										switch(tCovers.mValues[tSide]) {
-										case  1: tStackImportsGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
-										case  2: tStackImportsSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
-										default: tStackImportsFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
-										}
-									}
-									continue;
-								}
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsItemStorage.INSTANCE) {
-									ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
-									if (ST.valid(tStack)) {
-										tFilteredFor.add(tStack);
-										switch(tCovers.mValues[tSide]) {
-										case  1: tStackStorageGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
-										case  2: tStackStorageSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
-										default: tStackStorageFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
-										}
-									}
-									continue;
-								}
-								LogisticsData tTarget = new LogisticsData(tAdjacent);
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericDump.INSTANCE) {
-									tStackDumps.add(tTarget);
-									continue;
-								}
-								int tDefault = tCovers.mValues[tSide];
-								boolean aAllowFluids = T;
-								if (tAdjacent.mTileEntity instanceof ITileEntityLogisticsSemiFilteredItem) {
-									aAllowFluids = F;
-									ItemStackSet<ItemStackContainer> tFilter = ((ITileEntityLogisticsSemiFilteredItem)tAdjacent.mTileEntity).getLogisticsFilter(tAdjacent.mSideOfTileEntity);
-									if (tFilter != null) {
-										tFilteredFor.addAll(tFilter);
-										if (tDefault == 0) tDefault = 2;
-									}
-								}
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericExport.INSTANCE) {
-									switch(tDefault) {
-									default: if (aAllowFluids) tFluidExportsGeneric .add(tTarget); tStackExportsGeneric .add(tTarget); break;
-									case  2: if (aAllowFluids) tFluidExportsSemi    .add(tTarget); tStackExportsSemi    .add(tTarget); break;
-									case  3: if (aAllowFluids) tFluidExportsFiltered.add(tTarget); tStackExportsFiltered.add(tTarget); break;
-									}
-									continue;
-								}
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericImport.INSTANCE) {
-									switch(tDefault) {
-									default: if (aAllowFluids) tFluidImportsGeneric .add(tTarget); tStackImportsGeneric .add(tTarget); break;
-									case  2: if (aAllowFluids) tFluidImportsSemi    .add(tTarget); tStackImportsSemi    .add(tTarget); break;
-									case  3: if (aAllowFluids) tFluidImportsFiltered.add(tTarget); tStackImportsFiltered.add(tTarget); break;
-									}
-									continue;
-								}
-								if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericStorage.INSTANCE) {
-									switch(tDefault) {
-									default: if (aAllowFluids) tFluidStorageGeneric .add(tTarget); tStackStorageGeneric .add(tTarget); break;
-									case  2: if (aAllowFluids) tFluidStorageSemi    .add(tTarget); tStackStorageSemi    .add(tTarget); break;
-									case  3: if (aAllowFluids) tFluidStorageFiltered.add(tTarget); tStackStorageFiltered.add(tTarget); break;
-									}
-									continue;
-								}
-								
 								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPULogic.INSTANCE) {
 									tCovers.visual(tSide, (short)(tCPU_Logic <= 0 ? 0 : tCPU_Logic >= mCPU_Logic ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Logic-tCPU_Logic)*9L) / mCPU_Logic))));
 									continue;
@@ -422,6 +312,120 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPUConversion.INSTANCE) {
 									tCovers.visual(tSide, (short)(tCPU_Conversion <= 0 ? 0 : tCPU_Conversion >= mCPU_Conversion ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Conversion-tCPU_Conversion)*9L) / mCPU_Conversion))));
 									continue;
+								}
+								
+								DelegatorTileEntity<TileEntity> tAdjacent = tLogistics.getAdjacentTileEntity(tSide);
+								if (tAdjacent.mTileEntity instanceof ITileEntityLogistics && ((ITileEntityLogistics)tAdjacent.mTileEntity).canLogistics(SIDE_ANY)) {
+									// Ignore those ones to reduce likelihood of infinite Loops.
+								} else {
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidExport.INSTANCE) {
+										FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
+										if (tFluid != null && tFluid.getFluid() != null) {
+											switch(tCovers.mValues[tSide]) {
+											case  1: tFluidExportsGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											case  2: tFluidExportsSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											default: tFluidExportsFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											}
+										}
+										continue;
+									}
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidImport.INSTANCE) {
+										FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
+										if (tFluid != null && tFluid.getFluid() != null) {
+											switch(tCovers.mValues[tSide]) {
+											case  1: tFluidImportsGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											case  2: tFluidImportsSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											default: tFluidImportsFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											}
+										}
+										continue;
+									}
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidStorage.INSTANCE) {
+										FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
+										if (tFluid != null && tFluid.getFluid() != null) {
+											switch(tCovers.mValues[tSide]) {
+											case  1: tFluidStorageGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											case  2: tFluidStorageSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											default: tFluidStorageFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
+											}
+										}
+										continue;
+									}
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsItemExport.INSTANCE) {
+										ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
+										if (ST.valid(tStack)) {
+											tFilteredFor.add(tStack);
+											switch(tCovers.mValues[tSide]) {
+											case  1: tStackExportsGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
+											case  2: tStackExportsSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
+											default: tStackExportsFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
+											}
+										}
+										continue;
+									}
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsItemImport.INSTANCE) {
+										ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
+										if (ST.valid(tStack)) {
+											tFilteredFor.add(tStack);
+											switch(tCovers.mValues[tSide]) {
+											case  1: tStackImportsGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
+											case  2: tStackImportsSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
+											default: tStackImportsFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
+											}
+										}
+										continue;
+									}
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsItemStorage.INSTANCE) {
+										ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
+										if (ST.valid(tStack)) {
+											tFilteredFor.add(tStack);
+											switch(tCovers.mValues[tSide]) {
+											case  1: tStackStorageGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
+											case  2: tStackStorageSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
+											default: tStackStorageFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
+											}
+										}
+										continue;
+									}
+									LogisticsData tTarget = new LogisticsData(tAdjacent);
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericDump.INSTANCE) {
+										tStackDumps.add(tTarget);
+										continue;
+									}
+									int tDefault = tCovers.mValues[tSide];
+									boolean aAllowFluids = T;
+									if (tAdjacent.mTileEntity instanceof ITileEntityLogisticsSemiFilteredItem) {
+										aAllowFluids = F;
+										ItemStackSet<ItemStackContainer> tFilter = ((ITileEntityLogisticsSemiFilteredItem)tAdjacent.mTileEntity).getLogisticsFilter(tAdjacent.mSideOfTileEntity);
+										if (tFilter != null) {
+											tFilteredFor.addAll(tFilter);
+											if (tDefault == 0) tDefault = 2;
+										}
+									}
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericExport.INSTANCE) {
+										switch(tDefault) {
+										default: if (aAllowFluids) tFluidExportsGeneric .add(tTarget); tStackExportsGeneric .add(tTarget); break;
+										case  2: if (aAllowFluids) tFluidExportsSemi    .add(tTarget); tStackExportsSemi    .add(tTarget); break;
+										case  3: if (aAllowFluids) tFluidExportsFiltered.add(tTarget); tStackExportsFiltered.add(tTarget); break;
+										}
+										continue;
+									}
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericImport.INSTANCE) {
+										switch(tDefault) {
+										default: if (aAllowFluids) tFluidImportsGeneric .add(tTarget); tStackImportsGeneric .add(tTarget); break;
+										case  2: if (aAllowFluids) tFluidImportsSemi    .add(tTarget); tStackImportsSemi    .add(tTarget); break;
+										case  3: if (aAllowFluids) tFluidImportsFiltered.add(tTarget); tStackImportsFiltered.add(tTarget); break;
+										}
+										continue;
+									}
+									if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericStorage.INSTANCE) {
+										switch(tDefault) {
+										default: if (aAllowFluids) tFluidStorageGeneric .add(tTarget); tStackStorageGeneric .add(tTarget); break;
+										case  2: if (aAllowFluids) tFluidStorageSemi    .add(tTarget); tStackStorageSemi    .add(tTarget); break;
+										case  3: if (aAllowFluids) tFluidStorageFiltered.add(tTarget); tStackStorageFiltered.add(tTarget); break;
+										}
+										continue;
+									}
 								}
 							}
 						}
