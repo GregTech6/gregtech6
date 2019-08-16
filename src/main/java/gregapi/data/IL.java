@@ -382,6 +382,7 @@ public enum IL implements IItemContainer {
 	Cover_Logistics_Fluid_Export, Cover_Logistics_Fluid_Import, Cover_Logistics_Fluid_Storage,
 	Cover_Logistics_Item_Export, Cover_Logistics_Item_Import, Cover_Logistics_Item_Storage,
 	Cover_Logistics_Dump,
+	Cover_Logistics_Display_CPU_Logic, Cover_Logistics_Display_CPU_Control, Cover_Logistics_Display_CPU_Storage, Cover_Logistics_Display_CPU_Conversion,
 	Cover_SolarPanel, Cover_SolarPanel_8V, Cover_SolarPanel_LV, Cover_SolarPanel_MV, Cover_SolarPanel_HV, Cover_SolarPanel_EV, Cover_SolarPanel_IV, Cover_SolarPanel_LuV, Cover_SolarPanel_ZPM, Cover_SolarPanel_UV,
 	Ingot_IridiumAlloy,
 	Dye_SquidInk, Dye_Bonemeal, Dye_Cactus, Dye_Cocoa,

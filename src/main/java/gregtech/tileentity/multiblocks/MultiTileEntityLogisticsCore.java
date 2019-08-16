@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import gregapi.GT_API_Proxy;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
@@ -37,6 +38,7 @@ import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
+import gregapi.tileentity.ITileEntityServerTickPre;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
@@ -63,12 +65,13 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityLogistics, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler {
+public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityLogistics, ITileEntityServerTickPre, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler {
 	public static final int MAX_STORAGE_CPU_COUNT = 108;
 	
 	public long mEnergy = 0;
 	public TagData mEnergyTypeAccepted = TD.Energy.EU;
 	public int mCPU_Logic = 0, mCPU_Control = 0, mCPU_Storage = 0, mCPU_Conversion = 0;
+	public int oCPU_Logic = 0, oCPU_Control = 0, oCPU_Storage = 0, oCPU_Conversion = 0;
 	public FluidTankGT[] mTanks = new FluidTankGT[MAX_STORAGE_CPU_COUNT];
 	
 	@Override
@@ -80,7 +83,16 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		mCPU_Control = aNBT.getInteger("gt.cpu.control");
 		mCPU_Storage = aNBT.getInteger("gt.cpu.storage");
 		mCPU_Conversion = aNBT.getInteger("gt.cpu.conversion");
+		oCPU_Logic = aNBT.getInteger("gt.cpu.logic.used");
+		oCPU_Control = aNBT.getInteger("gt.cpu.control.used");
+		oCPU_Storage = aNBT.getInteger("gt.cpu.storage.used");
+		oCPU_Conversion = aNBT.getInteger("gt.cpu.conversion.used");
 		for (int i = 0; i < mTanks.length; i++) mTanks[i] = new FluidTankGT(16000).readFromNBT(aNBT, NBT_TANK+"."+i);
+		
+		if (worldObj != null && isServerSide() && mHasToAddTimer) {
+			GT_API_Proxy.SERVER_TICK_PRE.add(this);
+			mHasToAddTimer = F;
+		}
 	}
 	
 	@Override
@@ -90,6 +102,10 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		UT.NBT.setNumber(aNBT, "gt.cpu.control", mCPU_Control);
 		UT.NBT.setNumber(aNBT, "gt.cpu.storage", mCPU_Storage);
 		UT.NBT.setNumber(aNBT, "gt.cpu.conversion", mCPU_Conversion);
+		UT.NBT.setNumber(aNBT, "gt.cpu.logic.used", oCPU_Logic);
+		UT.NBT.setNumber(aNBT, "gt.cpu.control.used", oCPU_Control);
+		UT.NBT.setNumber(aNBT, "gt.cpu.storage.used", oCPU_Storage);
+		UT.NBT.setNumber(aNBT, "gt.cpu.conversion.used", oCPU_Conversion);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		for (int i = 0; i < mTanks.length; i++) mTanks[i].writeToNBT(aNBT, NBT_TANK+"." +i);
 	}
@@ -155,12 +171,12 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.logisticscore.2"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.logisticscore.3"));
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.logisticscore.4"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.logisticscore.5"));
-		aList.add(Chat.CYAN     + LH.get("gt.tooltip.multiblock.logisticscore.6"));
-		aList.add(Chat.CYAN     + LH.get("gt.tooltip.multiblock.logisticscore.7"));
-		aList.add(Chat.CYAN     + LH.get("gt.tooltip.multiblock.logisticscore.8"));
-		aList.add(Chat.CYAN     + LH.get("gt.tooltip.multiblock.logisticscore.9"));
-		aList.add(Chat.CYAN     + LH.get("gt.tooltip.multiblock.logisticscore.10"));
+		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.5"));
+		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.6"));
+		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.7"));
+		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.8"));
+		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.9"));
+		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.10"));
 		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "512 to 16384 " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort() + Chat.WHITE + "/t");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -171,12 +187,37 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		return aX >= tX - 2 && aY >= tY - 2 && aZ >= tZ - 2 && aX <= tX + 2 && aY <= tY + 2 && aZ <= tZ + 2;
 	}
 	
+	private boolean mHasToAddTimer = T;
+	
+	@Override public void onUnregisterPre() {mHasToAddTimer = T;}
+	
 	@Override
-	@SuppressWarnings("unchecked")
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
-		if (aIsServerSide) {
-			if (SERVER_TIME % 20 == 0 && checkStructure(F) && mEnergy >= 128 + mCPU_Logic * mCPU_Conversion * 64L) {
+		if (aIsServerSide && mHasToAddTimer) {
+			GT_API_Proxy.SERVER_TICK_PRE.add(this);
+			mHasToAddTimer = F;
+		}
+	}
+	
+	@Override
+	public void onCoordinateChange() {
+		super.onCoordinateChange();
+		GT_API_Proxy.SERVER_TICK_PRE.remove(this);
+		onUnregisterPre();
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public void onServerTickPre(boolean aFirst) {
+		if (SERVER_TIME % 20 == 0) {
+			int tCPU_Logic = oCPU_Logic, tCPU_Control = oCPU_Control, tCPU_Storage = oCPU_Storage, tCPU_Conversion = oCPU_Conversion;
+			oCPU_Logic = 0;
+			oCPU_Control = 0;
+			oCPU_Storage = 0;
+			oCPU_Conversion = 0;
+			
+			if (checkStructure(F) && mEnergy >= 128 + mCPU_Logic * mCPU_Conversion * 64L) {
 				int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 				
 				ItemStackSet<ItemStackContainer> tFilteredFor = new ItemStackSet<>();
@@ -365,12 +406,30 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 									}
 									continue;
 								}
+								
+								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPULogic.INSTANCE) {
+									tCovers.visual(tSide, (short)(tCPU_Logic <= 0 ? 0 : tCPU_Logic >= mCPU_Logic ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Logic-tCPU_Logic)*9L) / mCPU_Logic))));
+									continue;
+								}
+								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPUControl.INSTANCE) {
+									tCovers.visual(tSide, (short)(tCPU_Control <= 0 ? 0 : tCPU_Control >= mCPU_Control ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Control-tCPU_Control)*9L) / mCPU_Control))));
+									continue;
+								}
+								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPUStorage.INSTANCE) {
+									tCovers.visual(tSide, (short)(tCPU_Storage <= 0 ? 0 : tCPU_Storage >= mCPU_Storage ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Storage-tCPU_Storage)*9L) / mCPU_Storage))));
+									continue;
+								}
+								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPUConversion.INSTANCE) {
+									tCovers.visual(tSide, (short)(tCPU_Conversion <= 0 ? 0 : tCPU_Conversion >= mCPU_Conversion ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Conversion-tCPU_Conversion)*9L) / mCPU_Conversion))));
+									continue;
+								}
 							}
 						}
 						
-						
 						if (tLogistics.getWorld() == worldObj) for (byte tSide : ALL_SIDES_VALID) if (tLogistics.canLogistics(tSide)) {
-							if (Math.abs(tLogistics.getOffsetX(tSide) - tX) <= mCPU_Control + 2 && Math.abs(tLogistics.getOffsetY(tSide) - tY) <= mCPU_Control + 2 && Math.abs(tLogistics.getOffsetZ(tSide) - tZ) <= mCPU_Control + 2) {
+							int tMaxDistance = Math.max(Math.abs(tLogistics.getOffsetX(tSide) - tX), Math.max(Math.abs(tLogistics.getOffsetY(tSide) - tY), Math.abs(tLogistics.getOffsetZ(tSide) - tZ)));
+							if (tMaxDistance <= mCPU_Control + 2) {
+								oCPU_Control = Math.max(oCPU_Control, tMaxDistance-2);
 								DelegatorTileEntity<TileEntity> tAdjacent = tLogistics.getAdjacentTileEntity(tSide);
 								if (tAdjacent.mTileEntity instanceof ITileEntityLogistics && ((ITileEntityLogistics)tAdjacent.mTileEntity).canLogistics(tAdjacent.mSideOfTileEntity) && tScanned.add(tAdjacent.mTileEntity)) tScanningNext.add((ITileEntityLogistics)tAdjacent.mTileEntity);
 							}
@@ -381,11 +440,10 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					tScanningNext.clear();
 				}
 				
-				
-				
-				for (int i = 0; i < mCPU_Logic; i++) {
+				while (++oCPU_Logic <= mCPU_Logic) {
 					boolean tBreak = F;
 					
+					// Import Export Business
 					for (List<LogisticsData>[] tExports : tExports1) {
 						for (List<LogisticsData>[] tImports : tImports1) {
 							if (moveFluids(tImports[0], tExports[0])) {tBreak = T; break;}
@@ -394,7 +452,6 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 						if (tBreak) break;
 					}
 					if (tBreak) continue;
-					
 					for (List<LogisticsData>[] tExports : tExports2) {
 						for (List<LogisticsData>[] tImports : tImports2) {
 							if (moveFluids(tImports[0], tExports[0])) {tBreak = T; break;}
@@ -404,17 +461,19 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					}
 					if (tBreak) continue;
 					
+					// Defragmentation
 					if (moveFluids(tFluidStorageGeneric, tFluidStorageFiltered)) continue;
 					if (moveStacks(tStackStorageGeneric, tStackStorageFiltered)) continue;
-					
 					if (moveFluids(tFluidStorageGeneric, tFluidStorageSemi)) continue;
 					if (moveStacks(tStackStorageGeneric, tStackStorageSemi)) continue;
 					
+					// Dump
 					for (LogisticsData tImport : tStackStorageGeneric) {
 						for (LogisticsData tExport : tStackDumps) {
 							for (int j = 0; j < mCPU_Conversion; j++) {
 								long tMoved = ST.move(tImport.mTarget, tExport.mTarget, tFilteredFor, F, F, T, F, 64, 1, 64, 1);
 								if (tMoved > 0) {
+									oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 									mEnergy -= tMoved;
 									tBreak = T;
 									continue;
@@ -427,18 +486,15 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 					}
 					if (tBreak) continue;
 					
-					
-					
-					
-					
-					
+					// Core didn't actually get used.
+					oCPU_Logic--;
 					break;
 				}
 			}
-			
-			mEnergy -= 20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion;
-			if (mEnergy < 0) mEnergy = 0;
 		}
+		
+		mEnergy -= 20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion;
+		if (mEnergy < 0) mEnergy = 0;
 	}
 	
 	public boolean moveFluids(List<LogisticsData> aImports, List<LogisticsData> aExports) {
@@ -457,6 +513,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				if (aImport.mFluidFilter == aExport.mFluidFilter) {
 					long tMoved = FL.move(aImport.mTarget, aExport.mTarget, FL.make(aImport.mFluidFilter, 16000L * mCPU_Conversion));
 					if (tMoved > 0) {
+						oCPU_Conversion = (int)Math.max(oCPU_Conversion, UT.Code.divup(tMoved, 16000L));
 						mEnergy -= UT.Code.divup(tMoved, 250);
 						return T;
 					}
@@ -464,6 +521,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 			} else {
 				long tMoved = FL.move(aImport.mTarget, aExport.mTarget, FL.make(aImport.mFluidFilter, 16000L * mCPU_Conversion));
 				if (tMoved > 0) {
+					oCPU_Conversion = (int)Math.max(oCPU_Conversion, UT.Code.divup(tMoved, 16000L));
 					mEnergy -= UT.Code.divup(tMoved, 250);
 					return T;
 				}
@@ -472,12 +530,14 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 			if (aExport.mFluidFilter != null) {
 				long tMoved = FL.move(aImport.mTarget, aExport.mTarget, FL.make(aExport.mFluidFilter, 16000L * mCPU_Conversion));
 				if (tMoved > 0) {
+					oCPU_Conversion = (int)Math.max(oCPU_Conversion, UT.Code.divup(tMoved, 16000L));
 					mEnergy -= UT.Code.divup(tMoved, 250);
 					return T;
 				}
 			} else {
 				long tMoved = FL.move(aImport.mTarget, aExport.mTarget, 16000L * mCPU_Conversion);
 				if (tMoved > 0) {
+					oCPU_Conversion = (int)Math.max(oCPU_Conversion, UT.Code.divup(tMoved, 16000L));
 					mEnergy -= UT.Code.divup(tMoved, 250);
 					return T;
 				}
@@ -493,6 +553,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				if (ST.equal(aImport.mItemFilter, aExport.mItemFilter, T)) for (int j = 0; j < mCPU_Conversion; j++) {
 					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
 					if (tMoved > 0) {
+						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
 						tReturn = T;
 						continue;
@@ -503,6 +564,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				for (int j = 0; j < mCPU_Conversion; j++) {
 					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
 					if (tMoved > 0) {
+						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
 						tReturn = T;
 						continue;
@@ -515,6 +577,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				for (int j = 0; j < mCPU_Conversion; j++) {
 					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
 					if (tMoved > 0) {
+						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
 						tReturn = T;
 						continue;
@@ -525,6 +588,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				for (int j = 0; j < mCPU_Conversion; j++) {
 					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, null, F, F, F, F, 64, 1, 64, 1);
 					if (tMoved > 0) {
+						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
 						tReturn = T;
 						continue;

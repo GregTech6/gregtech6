@@ -176,6 +176,7 @@ public class MultiTileEntityRegistry {
 		assert aClassContainer != null;
 		LH.add(mNameInternal+"."+aClassContainer.mID+".name", aLocalised);
 		mRegistry.put(aClassContainer.mID, aClassContainer);
+		mLastRegisteredID = aClassContainer.mID;
 		mRegistrations.add(aClassContainer);
 		if (!mCreativeTabs.containsKey(aClassContainer.mCreativeTabID)) mCreativeTabs.put(aClassContainer.mCreativeTabID, new CreativeTab(mNameInternal+"."+aClassContainer.mCreativeTabID, aCategoricalName, Item.getItemFromBlock(mBlock), aClassContainer.mCreativeTabID));
 		if (sRegisteredTileEntities.add(aClassContainer.mCanonicalTileEntity.getClass())) {
@@ -205,6 +206,9 @@ public class MultiTileEntityRegistry {
 		return getItem(aClassContainer.mID);
 	}
 	
+	public short mLastRegisteredID = W;
+	
+	public ItemStack getItem() {return getItem(mLastRegisteredID, 1, null);}
 	public ItemStack getItem(int aID) {return getItem(aID, 1, null);}
 	public ItemStack getItem(int aID, NBTTagCompound aNBT) {return getItem(aID, 1, aNBT);}
 	public ItemStack getItem(int aID, long aAmount) {return getItem(aID, aAmount, null);}

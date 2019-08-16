@@ -135,7 +135,7 @@ public class CoverData {
 	}
 	
 	public CoverData visual(byte aSide, short aVisual) {
-		if (mVisuals[aSide] != aVisual) {mVisuals[aSide] = aVisual; mVisualsToSync[aSide] = T;}
+		if (mVisuals[aSide] != aVisual) {mVisuals[aSide] = aVisual; mVisualsToSync[aSide] = T; mTileEntity.updateCoverVisuals();}
 		return this;
 	}
 	

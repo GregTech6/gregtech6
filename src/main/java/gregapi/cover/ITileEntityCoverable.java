@@ -37,6 +37,7 @@ public interface ITileEntityCoverable extends ITileEntity {
 	public void openCoverGUI(byte aSide, EntityPlayer aPlayer);
 	public void receiveBlockUpdateFromCover();
 	public void sendBlockUpdateFromCover();
+	public void updateCoverVisuals();
 	public boolean canTick();
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ);
 }

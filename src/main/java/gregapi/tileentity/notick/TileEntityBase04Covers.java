@@ -289,6 +289,11 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 	}
 	
 	@Override
+	public void updateCoverVisuals() {
+		updateClientData();
+	}
+	
+	@Override
 	public boolean canTick() {
 		return F;
 	}

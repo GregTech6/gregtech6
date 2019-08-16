@@ -49,12 +49,12 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
-		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		if (usePriorities()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 	}
 	
 	@Override
 	public long onToolClick(byte aCoverSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
-		if (aTool.equals(TOOL_screwdriver)) {
+		if (aTool.equals(TOOL_screwdriver) && usePriorities()) {
 			aData.value(aCoverSide, (short)((aData.mValues[aCoverSide] + 1) % 4));
 			if (aChatReturn != null) {
 				switch(aData.mValues[aCoverSide]) {
@@ -66,7 +66,7 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 			}
 			return 10000;
 		}
-		if (aTool.equals(TOOL_magnifyingglass)) {
+		if (aTool.equals(TOOL_magnifyingglass) && usePriorities()) {
 			if (aChatReturn != null) {
 				switch(aData.mValues[aCoverSide]) {
 				case 0: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Unmodified)"); break;
@@ -83,6 +83,8 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 	@Override public ITexture getCoverTextureAttachment(byte aCoverSide, CoverData aData, byte aTextureSide) {return aCoverSide == aTextureSide ? getCoverTextureSurface(aCoverSide, aData) : sTextureBase;}
 	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return sTextureBase;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
+	
+	public boolean usePriorities() {return T;}
 	
 	public static final ITexture sTextureBase = BlockTextureDefault.get("machines/covers/logistics/base");
 }

@@ -279,6 +279,11 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	}
 	
 	@Override
+	public void updateCoverVisuals() {
+		//
+	}
+	
+	@Override
 	public boolean canTick() {
 		return T;
 	}
