@@ -37,15 +37,13 @@ public abstract class AbstractCoverAttachmentDetector extends AbstractCoverAttac
 	@Override
 	public long onToolClick(byte aSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_cutter)) {
-			aData.visual(aSide, (short)(aData.mVisuals[aSide] ^ B[0]));
+			aData.visual(aSide, (short)(aData.mVisuals[aSide] ^ B[0]), T);
 			if (aChatReturn != null) aChatReturn.add((aData.mVisuals[aSide] & B[0]) != 0 ? "Emits strong Redstone" : "Emits weak Redstone");
-			aData.mTileEntity.sendBlockUpdateFromCover();
 			return 1000;
 		}
 		if (aTool.equals(TOOL_screwdriver)) {
-			aData.visual(aSide, (short)(aData.mVisuals[aSide] ^ B[1]));
+			aData.visual(aSide, (short)(aData.mVisuals[aSide] ^ B[1]), T);
 			if (aChatReturn != null) aChatReturn.add((aData.mVisuals[aSide] & B[1]) != 0 ? "Emits when Condition FALSE" : "Emits when Condition TRUE");
-			aData.mTileEntity.sendBlockUpdateFromCover();
 			return 1000;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {

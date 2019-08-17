@@ -19,6 +19,8 @@
 
 package gregapi.cover.covers;
 
+import static gregapi.data.CS.*;
+
 import gregapi.cover.CoverData;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -36,11 +38,7 @@ public class CoverDetectorRunningActively extends AbstractCoverAttachmentDetecto
 	@Override
 	public void onTickPost(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && aData.mTileEntity instanceof ITileEntityRunningActively) {
-			byte tNewValue = UT.Code.bind4(((ITileEntityRunningActively)aData.mTileEntity).getStateRunningActively() ? 15 : 0);
-			if (aData.mValues[aSide] != tNewValue) {
-				aData.value(aSide, tNewValue);
-				aData.mTileEntity.sendBlockUpdateFromCover();
-			}
+			aData.value(aSide, UT.Code.bind4(((ITileEntityRunningActively)aData.mTileEntity).getStateRunningActively() ? 15 : 0), T);
 		}
 	}
 	

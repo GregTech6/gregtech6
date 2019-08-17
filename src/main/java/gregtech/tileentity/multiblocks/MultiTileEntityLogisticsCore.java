@@ -210,6 +210,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onServerTickPre(boolean aFirst) {
+		// Sync up with other Stuff that happens to check for visual Updates every 20 Ticks to reduce Lag.
 		if (SERVER_TIME % 20 == 0) {
 			int tCPU_Logic = oCPU_Logic, tCPU_Control = oCPU_Control, tCPU_Storage = oCPU_Storage, tCPU_Conversion = oCPU_Conversion;
 			oCPU_Logic = 0;
@@ -298,19 +299,23 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 						if (tCovers != null && !tCovers.mStopped) {
 							for (byte tSide : ALL_SIDES_VALID) if (tCovers.mBehaviours[tSide] instanceof AbstractCoverAttachmentLogistics) {
 								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPULogic.INSTANCE) {
-									tCovers.visual(tSide, (short)(tCPU_Logic <= 0 ? 0 : tCPU_Logic >= mCPU_Logic ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Logic-tCPU_Logic)*9L) / mCPU_Logic))));
+									tCovers.value (tSide, (short)(tCPU_Logic <= 0 ? 0 : tCPU_Logic >= mCPU_Logic ? 15 : 14-(int)Math.max(0, Math.min(13, ((mCPU_Logic-tCPU_Logic)*14L) / mCPU_Logic))), T);
+									tCovers.visual(tSide, (short)(tCPU_Logic <= 0 ? 0 : tCPU_Logic >= mCPU_Logic ? 10 :  9-(int)Math.max(0, Math.min( 8, ((mCPU_Logic-tCPU_Logic)* 9L) / mCPU_Logic))));
 									continue;
 								}
 								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPUControl.INSTANCE) {
-									tCovers.visual(tSide, (short)(tCPU_Control <= 0 ? 0 : tCPU_Control >= mCPU_Control ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Control-tCPU_Control)*9L) / mCPU_Control))));
+									tCovers.value (tSide, (short)(tCPU_Control <= 0 ? 0 : tCPU_Control >= mCPU_Control ? 15 : 14-(int)Math.max(0, Math.min(13, ((mCPU_Control-tCPU_Control)*14L) / mCPU_Control))), T);
+									tCovers.visual(tSide, (short)(tCPU_Control <= 0 ? 0 : tCPU_Control >= mCPU_Control ? 10 :  9-(int)Math.max(0, Math.min( 8, ((mCPU_Control-tCPU_Control)* 9L) / mCPU_Control))));
 									continue;
 								}
 								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPUStorage.INSTANCE) {
-									tCovers.visual(tSide, (short)(tCPU_Storage <= 0 ? 0 : tCPU_Storage >= mCPU_Storage ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Storage-tCPU_Storage)*9L) / mCPU_Storage))));
+									tCovers.value (tSide, (short)(tCPU_Storage <= 0 ? 0 : tCPU_Storage >= mCPU_Storage ? 15 : 14-(int)Math.max(0, Math.min(13, ((mCPU_Storage-tCPU_Storage)*14L) / mCPU_Storage))), T);
+									tCovers.visual(tSide, (short)(tCPU_Storage <= 0 ? 0 : tCPU_Storage >= mCPU_Storage ? 10 :  9-(int)Math.max(0, Math.min( 8, ((mCPU_Storage-tCPU_Storage)* 9L) / mCPU_Storage))));
 									continue;
 								}
 								if (tCovers.mBehaviours[tSide] == CoverLogisticsDisplayCPUConversion.INSTANCE) {
-									tCovers.visual(tSide, (short)(tCPU_Conversion <= 0 ? 0 : tCPU_Conversion >= mCPU_Conversion ? 10 : 9-(int)Math.max(0, Math.min(8, ((mCPU_Conversion-tCPU_Conversion)*9L) / mCPU_Conversion))));
+									tCovers.value (tSide, (short)(tCPU_Conversion <= 0 ? 0 : tCPU_Conversion >= mCPU_Conversion ? 15 : 14-(int)Math.max(0, Math.min(13, ((mCPU_Conversion-tCPU_Conversion)*14L) / mCPU_Conversion))), T);
+									tCovers.visual(tSide, (short)(tCPU_Conversion <= 0 ? 0 : tCPU_Conversion >= mCPU_Conversion ? 10 :  9-(int)Math.max(0, Math.min( 8, ((mCPU_Conversion-tCPU_Conversion)* 9L) / mCPU_Conversion))));
 									continue;
 								}
 								
@@ -636,7 +641,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		if (isServerSide() && aPlayer != null && checkStructure(F)) {
 			List<String> tChat = new ArrayListNoNulls<>();
 			tChat.add("Power: " + mEnergy + " EU");
-			tChat.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + " EU/t)");
+			tChat.add("Comsumption: " + (20+mCPU_Logic+mCPU_Control+mCPU_Storage+mCPU_Conversion) + " EU/t");
 			tChat.add(mCPU_Logic + " Logic Processors");
 			tChat.add(mCPU_Control + " Control Processors (Range: "+(2+mCPU_Control)+"m, Cubic AoE)");
 			tChat.add(mCPU_Storage + " Storage Processors (Note: For now useless)");

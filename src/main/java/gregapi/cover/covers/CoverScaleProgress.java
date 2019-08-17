@@ -19,6 +19,8 @@
 
 package gregapi.cover.covers;
 
+import static gregapi.data.CS.*;
+
 import gregapi.cover.CoverData;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -37,11 +39,7 @@ public class CoverScaleProgress extends AbstractCoverAttachmentScale {
 	public void onTickPost(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && aData.mTileEntity instanceof ITileEntityProgress) {
 			long tProgress = ((ITileEntityProgress)aData.mTileEntity).getProgressValue(aSide), tMax = ((ITileEntityProgress)aData.mTileEntity).getProgressMax(aSide);
-			byte tNewValue = UT.Code.bind4(tProgress <= 0 || tMax <= 0 ? 0 : tProgress >= tMax ? 15 : 14-(int)Math.max(0, Math.min(13, ((tMax-tProgress)*14L) / tMax)));
-			if (aData.mValues[aSide] != tNewValue) {
-				aData.value(aSide, tNewValue);
-				aData.mTileEntity.sendBlockUpdateFromCover();
-			}
+			aData.value(aSide, UT.Code.bind4(tProgress <= 0 || tMax <= 0 ? 0 : tProgress >= tMax ? 15 : 14-(int)Math.max(0, Math.min(13, ((tMax-tProgress)*14L) / tMax))), T);
 		}
 	}
 	

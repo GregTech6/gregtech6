@@ -61,15 +61,9 @@ public abstract class AbstractCoverAttachmentTorch extends AbstractCoverAttachme
 	public void onTickPost(byte aSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
 		if (aIsServerSide && aData.mTileEntity instanceof MultiTileEntityWireRedstoneInsulated) {
 			if (condition(aSide, aData, aTimer, aIsServerSide, aReceivedBlockUpdate, aReceivedInventoryUpdate)) {
-				if (aData.mVisuals[aSide] == 0) {
-					aData.visual(aSide, (short)1);
-					aData.mTileEntity.sendBlockUpdateFromCover();
-				}
+				if (aData.mVisuals[aSide] == 0) aData.visual(aSide, (short)1, T);
 			} else {
-				if (aData.mVisuals[aSide] != 0) {
-					aData.visual(aSide, (short)0);
-					aData.mTileEntity.sendBlockUpdateFromCover();
-				}
+				if (aData.mVisuals[aSide] != 0) aData.visual(aSide, (short)0, T);
 			}
 		}
 	}

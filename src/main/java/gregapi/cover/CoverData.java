@@ -130,12 +130,26 @@ public class CoverData {
 	}
 	
 	public CoverData value(byte aSide, short aValue) {
-		mValues[aSide] = aValue;
+		return value(aSide, aValue, F);
+	}
+	public CoverData value(byte aSide, short aValue, boolean aBlockUpdate) {
+		if (mValues[aSide] != aValue) {
+			mValues[aSide]  = aValue;
+			if (aBlockUpdate) mTileEntity.sendBlockUpdateFromCover();
+		}
 		return this;
 	}
 	
 	public CoverData visual(byte aSide, short aVisual) {
-		if (mVisuals[aSide] != aVisual) {mVisuals[aSide] = aVisual; mVisualsToSync[aSide] = T; mTileEntity.updateCoverVisuals();}
+		return visual(aSide, aVisual, F);
+	}
+	public CoverData visual(byte aSide, short aVisual, boolean aBlockUpdate) {
+		if (mVisuals[aSide] != aVisual) {
+			mVisuals[aSide]  = aVisual;
+			mVisualsToSync[aSide] = T;
+			mTileEntity.updateCoverVisuals();
+			if (aBlockUpdate) mTileEntity.sendBlockUpdateFromCover();
+		}
 		return this;
 	}
 	

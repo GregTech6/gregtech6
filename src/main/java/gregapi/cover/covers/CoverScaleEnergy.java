@@ -19,6 +19,8 @@
 
 package gregapi.cover.covers;
 
+import static gregapi.data.CS.*;
+
 import gregapi.code.TagData;
 import gregapi.cover.CoverData;
 import gregapi.render.BlockTextureDefault;
@@ -39,11 +41,7 @@ public class CoverScaleEnergy extends AbstractCoverAttachmentScale {
 		if (aIsServerSide && aData.mTileEntity instanceof ITileEntityEnergyDataCapacitor && !((ITileEntityEnergyDataCapacitor)aData.mTileEntity).getEnergyCapacitorTypes(aSide).isEmpty()) {
 			TagData tEnergyType = ((ITileEntityEnergyDataCapacitor)aData.mTileEntity).getEnergyCapacitorTypes(aSide).iterator().next();
 			long tStored = ((ITileEntityEnergyDataCapacitor)aData.mTileEntity).getEnergyStored(tEnergyType, aSide), tCapacity = ((ITileEntityEnergyDataCapacitor)aData.mTileEntity).getEnergyCapacity(tEnergyType, aSide);
-			byte tNewValue = UT.Code.bind4(tStored <= 0 || tCapacity <= 0 ? 0 : tStored >= tCapacity ? 15 : 14-(int)Math.max(0, Math.min(13, ((tCapacity-tStored)*14L) / tCapacity)));
-			if (aData.mValues[aSide] != tNewValue) {
-				aData.value(aSide, tNewValue);
-				aData.mTileEntity.sendBlockUpdateFromCover();
-			}
+			aData.value(aSide, UT.Code.bind4(tStored <= 0 || tCapacity <= 0 ? 0 : tStored >= tCapacity ? 15 : 14-(int)Math.max(0, Math.min(13, ((tCapacity-tStored)*14L) / tCapacity))), T);
 		}
 	}
 	

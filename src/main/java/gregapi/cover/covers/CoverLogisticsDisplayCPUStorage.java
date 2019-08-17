@@ -30,15 +30,12 @@ import gregapi.util.UT;
 /**
  * @author Gregorius Techneticies
  */
-public class CoverLogisticsDisplayCPUStorage extends AbstractCoverAttachmentLogistics {
+public class CoverLogisticsDisplayCPUStorage extends AbstractCoverAttachmentLogisticsDisplay {
 	public static final CoverLogisticsDisplayCPUStorage INSTANCE = new CoverLogisticsDisplayCPUStorage();
 	
 	public CoverLogisticsDisplayCPUStorage() {}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase, sTextures[(int)UT.Code.bind_(0, 10, aData.mVisuals[aSide])]);}
-	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
-	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
-	@Override public boolean usePriorities() {return F;}
 	
 	public static final ITexture[] sTextures = new ITexture[] {
 		  BlockTextureDefault.get("machines/covers/logistics/display/cpu_storage/0", T)
