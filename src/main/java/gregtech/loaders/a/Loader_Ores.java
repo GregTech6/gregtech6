@@ -356,8 +356,17 @@ public class Loader_Ores implements Runnable {
 	
 	public static boolean rockset(ModData aMod, Block aRock, int aMetaA, int aMetaB, Block aCobble, int aMeta, String aName, OreDictPrefix aPrefix, OreDictMaterial aDrops, float aBaseHardness, float aBaseResistance, int aHarvestLevelMinimum, boolean aGravity, boolean aEnderDragonProof, boolean aStoneOverrideable) {
 		if (aMod.mLoaded) {
-			if (aRock == NB || aRock == null) throw new IllegalArgumentException("The Stone of the Mod '" + aMod.mID + "' with the Category '" + aName + "' is missing despite the Mod being loaded.");
-			if (aCobble == NB || aCobble == null) {aCobble = aRock; aMeta = aMetaA;}
+			if (aRock == NB || aRock == null) {
+				if (D1) throw new IllegalArgumentException("The Stone of the Mod '" + aMod.mID + "' with the Category '" + aName + "' is missing despite the Mod being loaded.");
+				aPrefix = OP.oreVanillastone;
+				aRock = Blocks.stone;
+				aCobble = Blocks.cobblestone;
+				aMeta = aMetaA = aMetaB = aHarvestLevelMinimum = 0;
+				aBaseHardness = aBaseResistance = 1;
+				aGravity = aEnderDragonProof = F;
+			} else {
+				if (aCobble == NB || aCobble == null) {aCobble = aRock; aMeta = aMetaA;}
+			}
 		} else {
 			aPrefix = OP.oreVanillastone;
 			aRock = Blocks.stone;
@@ -368,9 +377,9 @@ public class Loader_Ores implements Runnable {
 		}
 		
 		PrefixBlock
-		tOre1 = new PrefixBlock_(MD.GT, "gt.meta.ore.normal."+aName, aPrefix        , aMod.mLoaded ? null                       : ((PrefixBlock)BlocksGT.ore        ).mDrops, BlockTextureCopied.get(aRock  , aMetaA==W?0:aMetaA), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness  , aBaseResistance  ,  0, aHarvestLevelMinimum, aGravity    , aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY),
+		tOre1 = new PrefixBlock_(MD.GT, "gt.meta.ore.normal."+aName, aPrefix        , aMod.mLoaded ? null                       : ((PrefixBlock)BlocksGT.ore        ).mDrops, BlockTextureCopied.get(aRock  , aMetaA==W?0:aMetaA), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness  , aBaseResistance  ,  0, aHarvestLevelMinimum, aGravity, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY),
 		tOre2 = new PrefixBlock_(MD.GT, "gt.meta.ore.broken."+aName, aPrefix        , aMod.mLoaded ? null                       : ((PrefixBlock)BlocksGT.oreBroken  ).mDrops, BlockTextureCopied.get(aCobble, aMeta ==W?0:aMeta ), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness/2, aBaseResistance/2, -1, aHarvestLevelMinimum, T       , aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY),
-		tOre3 = new PrefixBlock_(MD.GT, "gt.meta.ore.small." +aName, OP.oreSmall    , aMod.mLoaded ? new Drops_SmallOre(aDrops) : ((PrefixBlock)BlocksGT.oreSmall   ).mDrops, BlockTextureCopied.get(aRock  , aMetaA==W?0:aMetaA), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness  , aBaseResistance  , -1, aHarvestLevelMinimum, aGravity    , aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
+		tOre3 = new PrefixBlock_(MD.GT, "gt.meta.ore.small." +aName, OP.oreSmall    , aMod.mLoaded ? new Drops_SmallOre(aDrops) : ((PrefixBlock)BlocksGT.oreSmall   ).mDrops, BlockTextureCopied.get(aRock  , aMetaA==W?0:aMetaA), Material.rock, Block.soundTypeStone, TOOL_pickaxe, aBaseHardness  , aBaseResistance  , -1, aHarvestLevelMinimum, aGravity, aEnderDragonProof, OreDictMaterial.MATERIAL_ARRAY);
 		
 		if (aMod.mLoaded) {
 			if (aStoneOverrideable) {
