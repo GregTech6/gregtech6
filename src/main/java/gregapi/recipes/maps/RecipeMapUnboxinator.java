@@ -57,6 +57,4 @@ public class RecipeMapUnboxinator extends RecipeMap {
 		}
 		return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 	}
-	
-	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return IL.IC2_Scrapbox.equal(aStack, F, T) || IL.LOOTBAGS_Bag_0.equal(aStack, T, T) || super.containsInput(aStack, aTileEntity, aSpecialSlot);}
 }
