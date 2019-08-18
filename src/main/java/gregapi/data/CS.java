@@ -1743,6 +1743,7 @@ public class CS {
 		, ENCHIRIDION       = "Enchiridion"
 		, ENCHIRIDION2      = "Enchiridion2"
 		, LOSTBOOKS         = "LostBooks"
+		, LOOTBAGS          = "lootbags"
 		, EUREKA            = "eureka"
 		
 		, UB                = "UndergroundBiomes"

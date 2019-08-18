@@ -21,14 +21,9 @@ package gregapi.cover.covers;
 
 import static gregapi.data.CS.*;
 
-import java.util.List;
-
 import gregapi.cover.CoverData;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
-import net.minecraft.entity.Entity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
@@ -37,15 +32,6 @@ public class CoverLogisticsGenericDump extends AbstractCoverAttachmentLogistics 
 	public static final CoverLogisticsGenericDump INSTANCE = new CoverLogisticsGenericDump();
 	
 	public CoverLogisticsGenericDump() {}
-	
-	@Override
-	public long onToolClick(byte aCoverSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
-		if (aTool.equals(TOOL_magnifyingglass) || aTool.equals(TOOL_screwdriver)) {
-			if (aChatReturn != null) aChatReturn.add("Priority: Always Last");
-			return 1;
-		}
-		return 0;
-	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aCoverSide, CoverData aData) {return sTexture;}
 	@Override public boolean usePriorities() {return F;}

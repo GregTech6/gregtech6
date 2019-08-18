@@ -28,6 +28,7 @@ import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -41,11 +42,20 @@ public class RecipeMapUnboxinator extends RecipeMap {
 	
 	@Override
 	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {
-		if (aInputs == null || aInputs.length <= 0 || COMPAT_IC2 == null || !IL.IC2_Scrapbox.equal(aInputs[0], F, T)) return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
-		ItemStack tOutput = COMPAT_IC2.scrapbox(aInputs[0]);
-		if (tOutput == null) return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
-		// Due to its randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-		return new Recipe(F, F, F, ST.array(IL.IC2_Scrapbox.get(1)), ST.array(tOutput), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		if (aInputs == null || aInputs.length <= 0) return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
+		if (COMPAT_IC2 != null && IL.IC2_Scrapbox.equal(aInputs[0], F, T)) {
+			ItemStack tOutput = COMPAT_IC2.scrapbox(aInputs[0]);
+			if (tOutput == null) return new Recipe(F, F, F, aInputs, aInputs, null, null, null, null, 1, 1, 0);
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(IL.IC2_Scrapbox.get(1)), ST.array(tOutput), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
+		if ("lootbags:lootbag".equalsIgnoreCase(ST.regName(aInputs[0]))) {
+			ItemStack tBag = ST.amount(1, aInputs[0]);
+			UT.Reflection.callPrivateMethod(tBag.getItem().getClass(), "generateInventory", tBag);
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(ST.amount(1, aInputs[0])), tBag.hasTagCompound() ? (ItemStack[])UT.Reflection.callPublicMethod(tBag.getItem().getClass(), "getInventory", tBag) : ZL_IS, null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
+		return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 	}
 	
 	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return IL.IC2_Scrapbox.equal(aStack, F, T) || super.containsInput(aStack, aTileEntity, aSpecialSlot);}

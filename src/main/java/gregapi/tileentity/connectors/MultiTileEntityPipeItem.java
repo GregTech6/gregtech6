@@ -154,7 +154,7 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
-			if (aChatReturn != null) {
+			if (aChatReturn != null && !isCovered(aTargetSide)) {
 				aChatReturn.add(FACE_CONNECTED[aTargetSide][mDisabledInputs ]?"Accepting from selected Side disabled":"Accepting from selected Side enabled");
 				aChatReturn.add(FACE_CONNECTED[aTargetSide][mDisabledOutputs]?"Emitting to selected Side disabled"   :"Emitting to selected Side enabled");
 			}

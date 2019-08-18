@@ -2256,7 +2256,7 @@ public class UT {
 		public static Object callPublicMethod(Object aObject, String aMethod, Object... aParameters) {
 			return callMethod(aObject, aMethod, F, F, T, aParameters);
 		}
-
+		
 		public static Object callPrivateMethod(Object aObject, String aMethod, Object... aParameters) {
 			return callMethod(aObject, aMethod, T, F, T, aParameters);
 		}
@@ -2272,13 +2272,13 @@ public class UT {
 						tParameterTypes[i] = aParameters[i].getClass();
 					}
 					if (!aUseUpperCasedDataTypes) {
-						if (tParameterTypes[i] == Boolean.class ) tParameterTypes[i] = boolean.class;   else
-						if (tParameterTypes[i] == Byte.class    ) tParameterTypes[i] = byte.class;      else
-						if (tParameterTypes[i] == Short.class   ) tParameterTypes[i] = short.class;     else
-						if (tParameterTypes[i] == Integer.class ) tParameterTypes[i] = int.class;       else
-						if (tParameterTypes[i] == Long.class    ) tParameterTypes[i] = long.class;      else
-						if (tParameterTypes[i] == Float.class   ) tParameterTypes[i] = float.class;     else
-						if (tParameterTypes[i] == Double.class  ) tParameterTypes[i] = double.class;
+						if (tParameterTypes[i] == Boolean.class) tParameterTypes[i] = boolean.class; else
+						if (tParameterTypes[i] == Byte.class   ) tParameterTypes[i] = byte.class;    else
+						if (tParameterTypes[i] == Short.class  ) tParameterTypes[i] = short.class;   else
+						if (tParameterTypes[i] == Integer.class) tParameterTypes[i] = int.class;     else
+						if (tParameterTypes[i] == Long.class   ) tParameterTypes[i] = long.class;    else
+						if (tParameterTypes[i] == Float.class  ) tParameterTypes[i] = float.class;   else
+						if (tParameterTypes[i] == Double.class ) tParameterTypes[i] = double.class;
 					}
 				}
 				

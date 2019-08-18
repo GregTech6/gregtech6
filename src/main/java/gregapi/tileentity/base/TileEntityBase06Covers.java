@@ -271,7 +271,7 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 	}
 	
 	public boolean isCovered(byte aSide) {
-		return mCovers != null && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null;
+		return hasCovers() && SIDES_VALID[aSide] && mCovers.mBehaviours[aSide] != null;
 	}
 	
 	public boolean usePipePlacementMode(byte aSide) {

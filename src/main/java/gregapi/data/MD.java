@@ -94,6 +94,7 @@ public class MD {
 	, ENCHIRIDION       = new ModData(ModIDs.ENCHIRIDION        , "Enchiridion")
 	, ENCHIRIDION2      = new ModData(ModIDs.ENCHIRIDION2       , "Enchiridion")
 	, LOSTBOOKS         = new ModData(ModIDs.LOSTBOOKS          , "Lost Books")
+	, LOOTBAGS          = new ModData(ModIDs.LOOTBAGS           , "Lootbags")
 	, EUREKA            = new ModData(ModIDs.EUREKA             , "Eureka")
 	
 	, UB                = new ModData(ModIDs.UB                 , "Underground Biomes")
