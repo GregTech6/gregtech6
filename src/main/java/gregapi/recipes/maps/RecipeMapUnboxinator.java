@@ -49,7 +49,7 @@ public class RecipeMapUnboxinator extends RecipeMap {
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
 			return new Recipe(F, F, F, ST.array(IL.IC2_Scrapbox.get(1)), ST.array(tOutput), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 		}
-		if ("lootbags:lootbag".equalsIgnoreCase(ST.regName(aInputs[0]))) {
+		if (IL.LOOTBAGS_Bag_0.equal(aInputs[0], T, T)) {
 			ItemStack tBag = ST.amount(1, aInputs[0]);
 			UT.Reflection.callPrivateMethod(tBag.getItem().getClass(), "generateInventory", tBag);
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
@@ -58,5 +58,5 @@ public class RecipeMapUnboxinator extends RecipeMap {
 		return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 	}
 	
-	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return IL.IC2_Scrapbox.equal(aStack, F, T) || "lootbags:lootbag".equalsIgnoreCase(ST.regName(aStack)) || super.containsInput(aStack, aTileEntity, aSpecialSlot);}
+	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return IL.IC2_Scrapbox.equal(aStack, F, T) || IL.LOOTBAGS_Bag_0.equal(aStack, T, T) || super.containsInput(aStack, aTileEntity, aSpecialSlot);}
 }

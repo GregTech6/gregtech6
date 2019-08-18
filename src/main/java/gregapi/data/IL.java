@@ -94,6 +94,7 @@ public enum IL implements IItemContainer {
 	RoC_Propolis_Slippery,
 	RoC_Comb_Slippery,
 	JABBA_Dolly, JABBA_Dolly_Diamond,
+	LOOTBAGS_Bag_0, LOOTBAGS_Bag_1, LOOTBAGS_Bag_2, LOOTBAGS_Bag_3, LOOTBAGS_Bag_4,
 	Myst_Desk_Block, Myst_Desk_Item, Myst_Bookstand, Myst_Lectern, Myst_Crystal, Myst_Receptacle, Myst_Ink_Mixer, Myst_Book_Binder, Myst_Ink_Vial,
 	ARS_Cerublossom, ARS_DesertNova,
 	BOTA_Paintslinger,

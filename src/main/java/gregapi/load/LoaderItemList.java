@@ -431,6 +431,12 @@ public class LoaderItemList implements Runnable {
 		IL.Myst_Ink_Mixer                       .set(ST.make(MD.MYST, "BlockInkMixer"                       , 1, 0)); // Requires Rotation Calls
 		IL.Myst_Book_Binder                     .set(ST.make(MD.MYST, "BlockBookBinder"                     , 1, 0)); // Requires Rotation Calls
 		
+		IL.LOOTBAGS_Bag_0                       .set(ST.make(MD.LOOTBAGS, "lootbag"                         , 1, 0));
+		IL.LOOTBAGS_Bag_1                       .set(ST.make(MD.LOOTBAGS, "lootbag"                         , 1, 1));
+		IL.LOOTBAGS_Bag_2                       .set(ST.make(MD.LOOTBAGS, "lootbag"                         , 1, 2));
+		IL.LOOTBAGS_Bag_3                       .set(ST.make(MD.LOOTBAGS, "lootbag"                         , 1, 3));
+		IL.LOOTBAGS_Bag_4                       .set(ST.make(MD.LOOTBAGS, "lootbag"                         , 1, 4));
+		
 		IL.CHSL_Present                         .set(ST.make(MD.CHSL, "present"                             , 1, W), new OreDictItemData(ANY.Wood, 8*U), OD.craftingChest);
 		
 		IL.BOTA_Ender_Air_Bottle                .set(ST.make(MD.BOTA, "manaResource"                        , 1,15));
