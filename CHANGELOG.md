@@ -29,13 +29,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.04: (Not released yet)
+6.11.04:
 [COMPAT] The Lootbags Mod can now have its Bags unboxed by the Unboxinator.
 [FIXED] A few less important things.
 [CHANGED] The Unboxinator now has 12 Output Slots.
 [ADDED] The Smelter can now turn Molten Copper into Molten Annealed Copper, and Molten Iron into Molten Wrought Iron.
 [ADDED] Logistics Mass Storage, works like regular Mass Storage, but also conducts the Logistics Signal to adjacent Blocks like Logistics Wire, while connecting the Storage itself to the Logistics Network too.
-[ADDED] Logistics CPU Display Covers that show the load of each Type of CPU Core so that you know what to upgrade next.
+[ADDED] Logistics CPU Display Covers that show the load of each Type of CPU Core so that you know what to upgrade next. They also emit Redstone based on CPU Load.
 
 
 6.11.03:

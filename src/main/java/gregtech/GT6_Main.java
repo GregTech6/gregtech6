@@ -117,12 +117,12 @@ import net.minecraftforge.oredict.OreDictionary;
 public class GT6_Main extends Abstract_Mod {
 	@SidedProxy(modId = ModIDs.GT, clientSide = "gregtech.GT_Client", serverSide = "gregtech.GT_Server")
 	public static GT_Proxy gt_proxy;
-
+	
 	public GT6_Main() {
 		GT = this;
 		NW_GT = new NetworkHandler(MD.GT.mID, "GREG");
 	}
-
+	
 	@Override
 	public void onModPreInit2(FMLPreInitializationEvent aEvent) {
 		try {
