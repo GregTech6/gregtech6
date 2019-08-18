@@ -22,9 +22,6 @@ package gregapi.recipes.maps;
 import static gregapi.data.CS.*;
 
 import java.util.Collection;
-import java.util.UUID;
-
-import com.mojang.authlib.GameProfile;
 
 import gregapi.data.IL;
 import gregapi.random.IHasWorldAndCoords;
@@ -33,8 +30,6 @@ import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.WorldServer;
-import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.fluids.FluidStack;
 
 /**
@@ -56,15 +51,12 @@ public class RecipeMapUnboxinator extends RecipeMap {
 		}
 		if ("lootbags:lootbag".equalsIgnoreCase(ST.regName(aInputs[0]))) {
 			ItemStack tBag = ST.amount(1, aInputs[0]);
-		//  UT.Reflection.callPrivateMethod(tBag.getItem().getClass(), "generateInventory", tBag); // Didn't work
-			if (aTileEntity != null && aTileEntity.getWorld() instanceof WorldServer) {
-				tBag.getItem().onItemRightClick(tBag, aTileEntity.getWorld(), FakePlayerFactory.get((WorldServer)aTileEntity.getWorld(), new GameProfile(new UUID(346904523763707246L, 2525780580378250837L), "LootBagOpener")));
-			}
+			UT.Reflection.callPrivateMethod(tBag.getItem().getClass(), "generateInventory", tBag);
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-			return new Recipe(F, F, F, ST.array(ST.amount(1, aInputs[0])), /*tBag.hasTagCompound() ? */(ItemStack[])UT.Reflection.callPublicMethod(tBag.getItem().getClass(), "getInventory", tBag)/* : ZL_IS*/, null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+			return new Recipe(F, F, F, ST.array(ST.amount(1, aInputs[0])), tBag.hasTagCompound() ? (ItemStack[])UT.Reflection.callPublicMethod(tBag.getItem().getClass(), "getInventory", tBag) : ZL_IS, null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 		}
 		return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 	}
 	
-	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return IL.IC2_Scrapbox.equal(aStack, F, T) || super.containsInput(aStack, aTileEntity, aSpecialSlot);}
+	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return IL.IC2_Scrapbox.equal(aStack, F, T) || "lootbags:lootbag".equalsIgnoreCase(ST.regName(aStack)) || super.containsInput(aStack, aTileEntity, aSpecialSlot);}
 }

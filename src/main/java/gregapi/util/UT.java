@@ -2282,7 +2282,9 @@ public class UT {
 					}
 				}
 				
-				Method tMethod = (aObject instanceof Class)?((Class<?>)aObject).getMethod(aMethod, tParameterTypes):aObject.getClass().getMethod(aMethod, tParameterTypes);
+				Method tMethod = aPrivate?
+				(aObject instanceof Class)?((Class<?>)aObject).getDeclaredMethod(aMethod, tParameterTypes):aObject.getClass().getDeclaredMethod(aMethod, tParameterTypes):
+				(aObject instanceof Class)?((Class<?>)aObject).getMethod        (aMethod, tParameterTypes):aObject.getClass().getMethod        (aMethod, tParameterTypes);
 				if (aPrivate) tMethod.setAccessible(T);
 				return tMethod.invoke(aObject, aParameters);
 			} catch (Throwable e) {
