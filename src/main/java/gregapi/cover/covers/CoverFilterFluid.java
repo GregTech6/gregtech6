@@ -62,7 +62,7 @@ public class CoverFilterFluid extends AbstractCoverAttachment {
 			return 1000;
 		}
 		if (aTool.equals(TOOL_softhammer)) {
-			aData.mNBTs[aCoverSide] = null;
+			if (aData.mNBTs[aCoverSide] != null) aData.mNBTs[aCoverSide].removeTag("gt.filter.fluid");
 			return 10000;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {

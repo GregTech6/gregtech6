@@ -55,7 +55,7 @@ public class CoverLogisticsItemExport extends AbstractCoverAttachmentLogistics {
 	@Override
 	public long onToolClick(byte aCoverSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_softhammer)) {
-			aData.mNBTs[aCoverSide] = null;
+			if (aData.mNBTs[aCoverSide] != null) aData.mNBTs[aCoverSide].removeTag("gt.filter.item");
 			return 10000;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
@@ -71,6 +71,12 @@ public class CoverLogisticsItemExport extends AbstractCoverAttachmentLogistics {
 					} else {
 						aChatReturn.add("Exports: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack) + " (Priority: " + aData.mValues[aCoverSide] + ")");
 					}
+				}
+				int tTargetSize = ((aData.mValues[aCoverSide] >> 2) & 127);
+				if (tTargetSize == 0) {
+					aChatReturn.add("Variable Target Stacksize");
+				} else {
+					aChatReturn.add("Target Stacksize: " + tTargetSize);
 				}
 			}
 			return 1;
@@ -94,6 +100,8 @@ public class CoverLogisticsItemExport extends AbstractCoverAttachmentLogistics {
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aCoverSide, CoverData aData) {return sTexture;}
+	
+	@Override public boolean useTargetStackSize() {return T;}
 	
 	public static final ITexture sTexture = BlockTextureDefault.get("machines/covers/logistics/item/export");
 }

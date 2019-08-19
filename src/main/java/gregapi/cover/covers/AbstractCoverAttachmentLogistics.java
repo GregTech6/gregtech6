@@ -50,12 +50,13 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
 		if (usePriorities()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		if (useTargetStackSize()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CUTTER));
 	}
 	
 	@Override
 	public long onToolClick(byte aCoverSide, CoverData aData, String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSideClicked, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_screwdriver) && usePriorities()) {
-			aData.value(aCoverSide, (short)((aData.mValues[aCoverSide] + 1) % 4));
+			aData.value(aCoverSide, (short)((aData.mValues[aCoverSide]&~3)|((aData.mValues[aCoverSide] + 1) & 3)));
 			if (aChatReturn != null) {
 				switch(aData.mValues[aCoverSide]) {
 				case 0: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Unmodified)"); break;
@@ -66,13 +67,33 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 			}
 			return 10000;
 		}
-		if (aTool.equals(TOOL_magnifyingglass) && usePriorities()) {
+		if (aTool.equals(TOOL_cutter) && useTargetStackSize()) {
+			aData.value(aCoverSide, (short)((aData.mValues[aCoverSide]&3)|(((((aData.mValues[aCoverSide] >> 2) + 1) % 65) << 2))));
 			if (aChatReturn != null) {
+				int tTargetSize = ((aData.mValues[aCoverSide] >> 2) & 127);
+				if (tTargetSize == 0) {
+					aChatReturn.add("Variable Target Stacksize");
+				} else {
+					aChatReturn.add("Target Stacksize: " + tTargetSize);
+				}
+			}
+			return 1000;
+		}
+		if (aTool.equals(TOOL_magnifyingglass)) {
+			if (aChatReturn != null && usePriorities()) {
 				switch(aData.mValues[aCoverSide]) {
 				case 0: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Unmodified)"); break;
 				case 1: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Generic)"); break;
 				case 2: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Semi-Filtered)"); break;
 				case 3: aChatReturn.add("Priority: " + aData.mValues[aCoverSide] + " (Filtered)"); break;
+				}
+			}
+			if (aChatReturn != null && useTargetStackSize()) {
+				int tTargetSize = ((aData.mValues[aCoverSide] >> 2) & 127);
+				if (tTargetSize == 0) {
+					aChatReturn.add("Variable Target Stacksize");
+				} else {
+					aChatReturn.add("Target Stacksize: " + tTargetSize);
 				}
 			}
 			return 1;
@@ -84,6 +105,7 @@ public abstract class AbstractCoverAttachmentLogistics extends AbstractCoverAtta
 	@Override public ITexture getCoverTextureHolder(byte aCoverSide, CoverData aData, byte aTextureSide) {return sTextureBase;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	
+	public boolean useTargetStackSize() {return F;}
 	public boolean usePriorities() {return T;}
 	
 	public static final ITexture sTextureBase = BlockTextureDefault.get("machines/covers/logistics/base");

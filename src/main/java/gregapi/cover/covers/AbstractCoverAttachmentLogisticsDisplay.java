@@ -50,5 +50,6 @@ public abstract class AbstractCoverAttachmentLogisticsDisplay extends AbstractCo
 	
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
+	@Override public boolean useTargetStackSize() {return F;}
 	@Override public boolean usePriorities() {return F;}
 }

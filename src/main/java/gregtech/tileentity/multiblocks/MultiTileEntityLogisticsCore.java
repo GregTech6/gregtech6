@@ -326,7 +326,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 									if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidExport.INSTANCE) {
 										FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
 										if (tFluid != null && tFluid.getFluid() != null) {
-											switch(tCovers.mValues[tSide]) {
+											switch(tCovers.mValues[tSide] & 3) {
 											case  1: tFluidExportsGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
 											case  2: tFluidExportsSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
 											default: tFluidExportsFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
@@ -337,7 +337,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 									if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidImport.INSTANCE) {
 										FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
 										if (tFluid != null && tFluid.getFluid() != null) {
-											switch(tCovers.mValues[tSide]) {
+											switch(tCovers.mValues[tSide] & 3) {
 											case  1: tFluidImportsGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
 											case  2: tFluidImportsSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
 											default: tFluidImportsFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
@@ -348,7 +348,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 									if (tCovers.mBehaviours[tSide] == CoverLogisticsFluidStorage.INSTANCE) {
 										FluidStack tFluid = FL.load(tCovers.mNBTs[tSide], "gt.filter.fluid");
 										if (tFluid != null && tFluid.getFluid() != null) {
-											switch(tCovers.mValues[tSide]) {
+											switch(tCovers.mValues[tSide] & 3) {
 											case  1: tFluidStorageGeneric .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
 											case  2: tFluidStorageSemi    .add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
 											default: tFluidStorageFiltered.add(new LogisticsData(tAdjacent, tFluid.getFluid())); break;
@@ -360,10 +360,10 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 										ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
 										if (ST.valid(tStack)) {
 											tFilteredFor.add(tStack);
-											switch(tCovers.mValues[tSide]) {
-											case  1: tStackExportsGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
-											case  2: tStackExportsSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
-											default: tStackExportsFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
+											switch(tCovers.mValues[tSide] & 3) {
+											case  1: tStackExportsGeneric .add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
+											case  2: tStackExportsSemi    .add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
+											default: tStackExportsFiltered.add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
 											}
 										}
 										continue;
@@ -372,10 +372,10 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 										ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
 										if (ST.valid(tStack)) {
 											tFilteredFor.add(tStack);
-											switch(tCovers.mValues[tSide]) {
-											case  1: tStackImportsGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
-											case  2: tStackImportsSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
-											default: tStackImportsFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
+											switch(tCovers.mValues[tSide] & 3) {
+											case  1: tStackImportsGeneric .add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
+											case  2: tStackImportsSemi    .add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
+											default: tStackImportsFiltered.add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
 											}
 										}
 										continue;
@@ -384,20 +384,20 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 										ItemStack tStack = ST.load(tCovers.mNBTs[tSide], "gt.filter.item");
 										if (ST.valid(tStack)) {
 											tFilteredFor.add(tStack);
-											switch(tCovers.mValues[tSide]) {
-											case  1: tStackStorageGeneric .add(new LogisticsData(tAdjacent, tStack)); break;
-											case  2: tStackStorageSemi    .add(new LogisticsData(tAdjacent, tStack)); break;
-											default: tStackStorageFiltered.add(new LogisticsData(tAdjacent, tStack)); break;
+											switch(tCovers.mValues[tSide] & 3) {
+											case  1: tStackStorageGeneric .add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
+											case  2: tStackStorageSemi    .add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
+											default: tStackStorageFiltered.add(new LogisticsData(tAdjacent, tStack, (tCovers.mValues[tSide] >> 2) & 127)); break;
 											}
 										}
 										continue;
 									}
-									LogisticsData tTarget = new LogisticsData(tAdjacent);
+									LogisticsData tTarget = new LogisticsData(tAdjacent, (tCovers.mValues[tSide] >> 2) & 127);
 									if (tCovers.mBehaviours[tSide] == CoverLogisticsGenericDump.INSTANCE) {
 										tStackDumps.add(tTarget);
 										continue;
 									}
-									int tDefault = tCovers.mValues[tSide];
+									int tDefault = (tCovers.mValues[tSide] & 3);
 									boolean aAllowFluids = T;
 									if (tAdjacent.mTileEntity instanceof ITileEntityLogisticsSemiFilteredItem) {
 										aAllowFluids = F;
@@ -560,23 +560,23 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		if (aImport.mItemFilter != null) {
 			if (aExport.mItemFilter != null) {
 				if (ST.equal(aImport.mItemFilter, aExport.mItemFilter, T)) for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
 					if (tMoved > 0) {
 						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
 						tReturn = T;
-						continue;
+						if (aImport.mStackSize == 0 && aExport.mStackSize == 0) continue;
 					}
 					break;
 				}
 			} else {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aImport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
 					if (tMoved > 0) {
 						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
 						tReturn = T;
-						continue;
+						if (aImport.mStackSize == 0 && aExport.mStackSize == 0) continue;
 					}
 					break;
 				}
@@ -584,23 +584,23 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		} else {
 			if (aExport.mItemFilter != null) {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, F, 64, 1, 64, 1);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, new ItemStackSet<>(aExport.mItemFilter), F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
 					if (tMoved > 0) {
 						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
 						tReturn = T;
-						continue;
+						if (aImport.mStackSize == 0 && aExport.mStackSize == 0) continue;
 					}
 					break;
 				}
 			} else {
 				for (int j = 0; j < mCPU_Conversion; j++) {
-					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, null, F, F, F, F, 64, 1, 64, 1);
+					long tMoved = ST.move(aImport.mTarget, aExport.mTarget, null, F, F, F, F, aExport.mStackSize == 0 ? 64 : aExport.mStackSize, aExport.mStackSize == 0 ? 1 : aExport.mStackSize, aImport.mStackSize == 0 ? 64 : aImport.mStackSize, aImport.mStackSize == 0 ? 1 : aImport.mStackSize);
 					if (tMoved > 0) {
 						oCPU_Conversion = Math.max(oCPU_Conversion, j+1);
 						mEnergy -= tMoved;
 						tReturn = T;
-						continue;
+						if (aImport.mStackSize == 0 && aExport.mStackSize == 0) continue;
 					}
 					break;
 				}
@@ -613,26 +613,49 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		public final DelegatorTileEntity<TileEntity> mTarget;
 		public final Fluid mFluidFilter;
 		public final ItemStack mItemFilter;
-		
+		public final int mStackSize;
+
+		public LogisticsData(DelegatorTileEntity<TileEntity> aTarget, Fluid aFluidFilter, ItemStack aItemFilter, int aStackSize) {
+			mTarget = aTarget;
+			mFluidFilter = aFluidFilter;
+			mItemFilter = aItemFilter;
+			mStackSize = aStackSize;
+		}
 		public LogisticsData(DelegatorTileEntity<TileEntity> aTarget, Fluid aFluidFilter, ItemStack aItemFilter) {
 			mTarget = aTarget;
 			mFluidFilter = aFluidFilter;
 			mItemFilter = aItemFilter;
+			mStackSize = 0;
+		}
+		public LogisticsData(DelegatorTileEntity<TileEntity> aTarget, ItemStack aItemFilter, int aStackSize) {
+			mTarget = aTarget;
+			mFluidFilter = null;
+			mItemFilter = aItemFilter;
+			mStackSize = aStackSize;
 		}
 		public LogisticsData(DelegatorTileEntity<TileEntity> aTarget, ItemStack aItemFilter) {
 			mTarget = aTarget;
 			mFluidFilter = null;
 			mItemFilter = aItemFilter;
+			mStackSize = 0;
 		}
 		public LogisticsData(DelegatorTileEntity<TileEntity> aTarget, Fluid aFluidFilter) {
 			mTarget = aTarget;
 			mFluidFilter = aFluidFilter;
 			mItemFilter = null;
+			mStackSize = 0;
+		}
+		public LogisticsData(DelegatorTileEntity<TileEntity> aTarget, int aStackSize) {
+			mTarget = aTarget;
+			mFluidFilter = null;
+			mItemFilter = null;
+			mStackSize = aStackSize;
 		}
 		public LogisticsData(DelegatorTileEntity<TileEntity> aTarget) {
 			mTarget = aTarget;
 			mFluidFilter = null;
 			mItemFilter = null;
+			mStackSize = 0;
 		}
 	}
 	

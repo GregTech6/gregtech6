@@ -19,6 +19,8 @@
 
 package gregapi.cover.covers;
 
+import static gregapi.data.CS.*;
+
 import gregapi.cover.CoverData;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
@@ -32,6 +34,8 @@ public class CoverLogisticsGenericImport extends AbstractCoverAttachmentLogistic
 	public CoverLogisticsGenericImport() {}
 	
 	@Override public ITexture getCoverTextureSurface(byte aCoverSide, CoverData aData) {return sTexture;}
+	
+	@Override public boolean useTargetStackSize() {return T;}
 	
 	public static final ITexture sTexture = BlockTextureDefault.get("machines/covers/logistics/generic/import");
 }

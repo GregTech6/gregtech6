@@ -26,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.05: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Regulator Mode to Item Import and Item Export Covers. Use Wirecutter to set the exact Stacksize. Also works with the Generic Imports and Exports for Items.
 
 
 6.11.04:
