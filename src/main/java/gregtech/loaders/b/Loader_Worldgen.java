@@ -665,15 +665,19 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresLarge("ore.large.copper"            , T, T,  10,  30,     80,   4,  24, MT.OREMATS.Chalcopyrite     , MT.Fe2O3                  , MT.Pyrite                         , MT.Cu                             , ORE_OVERWORLD, ORE_TWILIGHT, ORE_EREBUS, ORE_ATUM, ORE_BETWEENLANDS, ORE_MARS, ORE_NETHER);
 		new WorldgenOresLarge("ore.large.netherquartz"      , T, T,  40,  80,     80,   5,  24, MT.NetherQuartz             , MT.NetherQuartz           , MT.NetherQuartz                   , MT.NetherQuartz                   , ORE_NETHER);
 		new WorldgenOresLarge("ore.large.sulfur"            , T, T,   5,  20,    100,   5,  24, MT.S                        , MT.OREMATS.Arsenopyrite   , MT.Pyrite                         , MT.OREMATS.Sphalerite             , ORE_NETHER);
-		new WorldgenOresLarge("ore.large.syrmorite"         , T, T,  30,  45,    160,   2,  32, MT.Syrmorite                , MT.Syrmorite              , MT.Syrmorite                      , MT.Syrmorite                      , ORE_BETWEENLANDS);
-		new WorldgenOresLarge("ore.large.octine"            , T, T,  10,  25,     40,   1,  32, MT.Octine                   , MT.Octine                 , MT.Octine                         , MT.Octine                         , ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.adamantium"        , T, T,  10, 120,      5,   2,  16, MT.OREMATS.BrownLimonite    , MT.OREMATS.YellowLimonite , MT.Fe2O3                          , MT.Adamantine                     , ORE_MARS);
 		new WorldgenOresLarge("ore.large.naquadah"          , T, T,  10,  60,     10,   4,  32, MT.Nq                       , MT.Nq                     , MT.Nq                             , MT.Nq_528                         , ORE_MARS, GEN_PLANETS, ORE_ASTEROIDS, ORE_END);
 		new WorldgenOresLarge("ore.large.trinium"           , T, T,  10,  90,    100,   1,  12, MT.Ke                       , MT.Ke                     , MT.Ke                             , MT.Ke                             , ORE_MARS, GEN_PLANETS, ORE_ASTEROIDS);
 		new WorldgenOresLarge("ore.large.dolamide"          , T, T,   5,  60,     40,   3,  16, MT.Dolamide                 , MT.Dolamide               , MT.OREMATS.DuraniumHexabromide    , MT.OREMATS.DuraniumHexaastatide   , ORE_MARS, GEN_PLANETS, ORE_ASTEROIDS);
 		new WorldgenOresLarge("ore.large.moonmars"          , T, T,  10,  90,    240,   1,   8, MT.OREMATS.Magnesite        , MT.MnO2                   , MT.Al2O3                          , MT.TiO2                           , ORE_MARS, GEN_PLANETS, ORE_MOON);
-		new WorldgenOresLarge("ore.large.desh"              , T, T,  10,  90,    100,   3,  16, MT.Desh                     , MT.Desh                   , MT.Desh                           , MT.Desh                           , ORE_MARS);
 		new WorldgenOresLarge("ore.large.cheese"            , T, T,  10,  90,    100,   3,  16, MT.Cheese                   , MT.Cheese                 , MT.Cheese                         , MT.Se                             , ORE_MOON);
+		if (MD.GC.mLoaded) {
+		new WorldgenOresLarge("ore.large.desh"              , T, T,  10,  90,    100,   3,  16, MT.Desh                     , MT.Desh                   , MT.Desh                           , MT.Desh                           , ORE_MARS);
+		}
+		if (MD.BTL.mLoaded) {
+		new WorldgenOresLarge("ore.large.syrmorite"         , T, T,  30,  45,    160,   2,  32, MT.Syrmorite                , MT.Syrmorite              , MT.Syrmorite                      , MT.Syrmorite                      , ORE_BETWEENLANDS);
+		new WorldgenOresLarge("ore.large.octine"            , T, T,  10,  25,     40,   1,  32, MT.Octine                   , MT.Octine                 , MT.Octine                         , MT.Octine                         , ORE_BETWEENLANDS);
+		}
 		
 		for (int i = 0, j = ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AmountOfCustomLargeVeinSlots", 0); i < j; i++) {
 		new WorldgenOresLarge("ore.large.custom" + (i<10?"0":"") + i, F, T, 0, 0, 0, 0, 0, MT.NULL, MT.NULL, MT.NULL, MT.NULL, ORE_ALL);

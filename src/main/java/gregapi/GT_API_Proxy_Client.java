@@ -93,7 +93,7 @@ import net.minecraftforge.fluids.FluidRegistry;
  * @author Gregorius Techneticies
  */
 public class GT_API_Proxy_Client extends GT_API_Proxy {
-
+	
 	public GT_API_Proxy_Client() {
 		super();
 		CODE_SERVER = T;
@@ -107,27 +107,27 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			sNegR.addAll(Arrays.asList(MT.InfusedEntropy.mRGBa[i], MT.NetherStar.mRGBa[i]));
 			sNegG.addAll(Arrays.asList(MT.InfusedEntropy.mRGBa[i], MT.NetherStar.mRGBa[i]));
 			sNegB.addAll(Arrays.asList(MT.InfusedEntropy.mRGBa[i], MT.NetherStar.mRGBa[i]));
-			sRainbow.addAll(Arrays.asList(MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.InfusedBalance.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.Shimmerwood.mRGBa[i], MT.Shimmerwood.mRGBa[i]));
+			sRainbow.addAll(Arrays.asList(MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.InfusedBalance.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.Shimmerwood.mRGBa[i], MT.Shimmerwood.mRGBa[i]));
 		}
 	}
-
+	
 	@Override
 	public int addArmor(String aPrefix) {
 		try {return RenderingRegistry.addNewArmourRendererPrefix(aPrefix);} catch(Throwable e) {/**/}
 		return 0;
 	}
-
+	
 	@Override
 	public EntityPlayer getThePlayer() {
 		return Minecraft.getMinecraft().thePlayer;
 	}
-
+	
 	@Override
 	public boolean sendUseItemPacket(EntityPlayer aPlayer, World aWorld, ItemStack aStack) {
 		Minecraft.getMinecraft().playerController.sendUseItem(aPlayer, aWorld, aStack);
 		return T;
 	}
-
+	
 	@Override
 	@SuppressWarnings("deprecation")
 	public void onProxyAfterPreInit(Abstract_Mod aMod, FMLPreInitializationEvent aEvent) {
