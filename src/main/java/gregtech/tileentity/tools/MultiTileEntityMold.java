@@ -31,12 +31,10 @@ import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.TagData;
 import gregapi.data.CS.GarbageGT;
@@ -68,12 +66,10 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.Achievement;
@@ -89,7 +85,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMold extends TileEntityBase07Paintable implements ITileEntityEnergy, IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_GetSubItems, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataShort {
+public class MultiTileEntityMold extends TileEntityBase07Paintable implements ITileEntityEnergy, IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_SyncDataShort {
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	public static final Map<Integer, OreDictPrefix> MOLD_RECIPES = new HashMap<>();
@@ -669,11 +665,6 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	@Override public FluidStack drain(ForgeDirection aDirection, int aAmountToDrain, boolean aDoDrain) {return NF;}
 	@Override public boolean canDrain(ForgeDirection aDirection, Fluid aFluid) {return F;}
 	@Override public FluidTankInfo[] getTankInfo(ForgeDirection aDirection) {return L1_FLUIDTANKINFO_DUMMY;}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.mold";}
 	

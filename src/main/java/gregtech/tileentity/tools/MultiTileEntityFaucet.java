@@ -23,8 +23,6 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
@@ -40,12 +38,10 @@ import gregapi.tileentity.machines.ITileEntityMold;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -55,7 +51,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements ITileEntityMold, IMTE_GetSubItems {
+public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements ITileEntityMold {
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	protected boolean mAcidProof = F, mAutoPull = F;
@@ -215,11 +211,6 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 		case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 1], PX_P[ 5], PX_N[12], PX_N[10], PX_N[ 5]); break;
 		case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 1], PX_P[ 5], PX_N[ 0], PX_N[10], PX_N[ 5]); break;
 		}
-	}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}

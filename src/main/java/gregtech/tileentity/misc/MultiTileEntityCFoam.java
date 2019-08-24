@@ -26,10 +26,8 @@ import java.util.UUID;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPlayerRelativeBlockHardness;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.LH;
@@ -41,10 +39,8 @@ import gregapi.tileentity.ITileEntityFoamable;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -52,7 +48,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements ITileEntityFoamable, IMTE_GetPlayerRelativeBlockHardness, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_GetSubItems, IMTE_OnRegistration {
+public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements ITileEntityFoamable, IMTE_GetPlayerRelativeBlockHardness, IMTE_AddToolTips, IMTE_OnPlaced, IMTE_OnRegistration {
 	public boolean mFoamDried = F, mOwnable = F;
 	
 	@Override
@@ -150,9 +146,9 @@ public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements I
 	@Override public boolean driedFoam              (byte aSide) {return mFoamDried;}
 	@Override public boolean ownedFoam              (byte aSide) {return mOwnable;}
 	@Override public boolean applyFoam              (byte aSide, Entity aPlayer, short[] aCFoamRGB, byte aVanillaColor, boolean aOwnable) {return F;}
-	@Override public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {return F;}
 	@Override public boolean addDefaultCollisionBoxToList() {return T;}
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
+	@Override public boolean showInCreative() {return F;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.cfoam.scaffold.wood";}
 }

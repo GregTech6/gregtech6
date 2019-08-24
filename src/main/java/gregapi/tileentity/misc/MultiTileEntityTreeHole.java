@@ -23,9 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsWood;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.network.INetworkHandler;
@@ -34,11 +32,9 @@ import gregapi.tileentity.ITileEntityTreeHole;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -46,7 +42,7 @@ import net.minecraft.nbt.NBTTagCompound;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSingle implements ITileEntityTreeHole, IMTE_GetSubItems, IMTE_IsWood {
+public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSingle implements ITileEntityTreeHole, IMTE_IsWood {
 	public boolean mHasResin = F;
 	
 	@Override
@@ -130,6 +126,6 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 	@Override public boolean allowCovers(byte aSide) {return F;}
 	@Override public byte getDefaultSide() {return SIDE_BACK;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
-	@Override public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {return F;}
+	@Override public boolean showInCreative() {return F;}
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 }

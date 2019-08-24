@@ -25,8 +25,6 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.gui.ContainerClientDefault;
@@ -42,11 +40,9 @@ import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -54,7 +50,7 @@ import net.minecraft.tileentity.TileEntity;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory, IMTE_GetSubItems {
+public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle implements ITileEntityConnectedInventory {
 	public boolean mSidedAccess = F;
 	
 	@Override
@@ -121,11 +117,6 @@ public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle impl
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return SLOTS[mSidedAccess ? FACING_ROTATIONS[mFacing][aSide] : SIDE_ANY];}
 	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return T;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {

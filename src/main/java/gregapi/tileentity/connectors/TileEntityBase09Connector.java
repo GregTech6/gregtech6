@@ -24,9 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.cover.ITileEntityCoverable;
 import gregapi.data.LH;
@@ -37,11 +35,9 @@ import gregapi.tileentity.base.TileEntityBase08Directional;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -50,7 +46,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase09Connector extends TileEntityBase08Directional implements ITileEntityConnector, IMTE_OnPlaced, IMTE_AddToolTips, IMTE_GetSubItems {
+public abstract class TileEntityBase09Connector extends TileEntityBase08Directional implements ITileEntityConnector, IMTE_OnPlaced, IMTE_AddToolTips {
 	protected byte mConnections = 0;
 	
 	@Override
@@ -97,11 +93,6 @@ public abstract class TileEntityBase09Connector extends TileEntityBase08Directio
 			}
 		}
 		return T;
-	}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
 	@Override public byte getDirectionData() {return (byte)(mConnections & (byte)63);}

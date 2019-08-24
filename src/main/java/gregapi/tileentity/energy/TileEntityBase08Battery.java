@@ -28,7 +28,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnlyPlaceableWhenSneaking;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
@@ -58,7 +57,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable implements ITileEntityQuickObstructionCheck, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IItemEnergy, IMTE_GetSubItems, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_AddToolTips {
+public abstract class TileEntityBase08Battery extends TileEntityBase07Paintable implements ITileEntityQuickObstructionCheck, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IItemEnergy, IMTE_GetMaxStackSize, IMTE_OnlyPlaceableWhenSneaking, IMTE_AddToolTips {
 	public long mEnergy = 0, mSize = 32, mCapacity = 32000;
 	public byte mDisplayedEnergy = 0;
 	public TagData mType = TD.Energy.EU;

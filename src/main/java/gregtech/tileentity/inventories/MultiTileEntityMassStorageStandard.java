@@ -21,10 +21,6 @@ package gregtech.tileentity.inventories;
 
 import static gregapi.data.CS.*;
 
-import java.util.List;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.BI;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -33,19 +29,11 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.inventories.MultiTileEntityMassStorage;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMassStorageStandard extends MultiTileEntityMassStorage implements IMTE_GetSubItems {
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
-	
+public class MultiTileEntityMassStorageStandard extends MultiTileEntityMassStorage {
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return slotHas(1) && aShouldSideBeRendered[mFacing] && isFaceVisible()?7:1;

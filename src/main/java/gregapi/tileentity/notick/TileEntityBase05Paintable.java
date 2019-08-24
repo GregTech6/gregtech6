@@ -21,13 +21,17 @@ package gregapi.tileentity.notick;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetBlockHardness;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetExplosionResistance;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetFireSpreadSpeed;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetFlammability;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightOpacity;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataByte;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataByteArray;
+import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.MT;
 import gregapi.item.IItemColorableRGB;
 import gregapi.network.INetworkHandler;
@@ -35,13 +39,15 @@ import gregapi.network.IPacket;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.tileentity.ITileEntityDecolorable;
 import gregapi.util.UT;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase05Paintable extends TileEntityBase04Covers implements IItemColorableRGB, ITileEntityDecolorable, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_SyncDataByte, IMTE_SyncDataByteArray, IMTE_GetFlammability, IMTE_GetFireSpreadSpeed, IMTE_GetLightOpacity {
+public abstract class TileEntityBase05Paintable extends TileEntityBase04Covers implements IItemColorableRGB, ITileEntityDecolorable, IMTE_GetSubItems, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_SyncDataByte, IMTE_SyncDataByteArray, IMTE_GetFlammability, IMTE_GetFireSpreadSpeed, IMTE_GetLightOpacity {
 	protected boolean mIsPainted = F;
 	protected int mRGBa = UNCOLORED, mFlammability = 0;
 	protected float mHardness = 3.0F, mResistance = 3.0F;
@@ -106,8 +112,10 @@ public abstract class TileEntityBase05Paintable extends TileEntityBase04Covers i
 	@Override public int getFlammability(byte aSide, boolean aDefault) {return mFlammability;}
 	@Override public float getBlockHardness() {return mHardness;}
 	@Override public float getExplosionResistance2() {return mResistance;}
+	@Override public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {return showInCreative();}
 	
 	// Stuff to Override
 	public byte getVisualData() {return 0;}
 	public void setVisualData(byte aData) {/**/}
+	public boolean showInCreative() {return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;}
 }

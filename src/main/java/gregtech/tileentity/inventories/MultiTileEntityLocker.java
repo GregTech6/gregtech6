@@ -21,10 +21,6 @@ package gregtech.tileentity.inventories;
 
 import static gregapi.data.CS.*;
 
-import java.util.List;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.CS.SFX;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -38,9 +34,7 @@ import gregapi.tileentity.machines.ITileEntityRunningSuccessfully;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -48,7 +42,7 @@ import net.minecraft.tileentity.TileEntity;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityLocker extends TileEntityBase09FacingSingle implements IMTE_GetSubItems, ITileEntityRunningSuccessfully {
+public class MultiTileEntityLocker extends TileEntityBase09FacingSingle implements ITileEntityRunningSuccessfully {
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
@@ -89,11 +83,6 @@ public class MultiTileEntityLocker extends TileEntityBase09FacingSingle implemen
 	@Override public boolean getStateRunningPossible    () {return UT.Code.containsSomething(getInventory());}
 	@Override public boolean getStateRunningActively    () {return UT.Code.containsSomething(getInventory());}
 	@Override public boolean getStateRunningSuccessfully() {return UT.Code.containsSomething(getInventory());}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {

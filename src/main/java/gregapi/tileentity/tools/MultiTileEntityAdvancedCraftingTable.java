@@ -27,8 +27,6 @@ import java.util.List;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -58,7 +56,6 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -83,7 +80,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible, IMTE_GetSubItems {
+public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible {
 	public boolean mFlushMode = F, mBlocked16 = F, mBlocked36 = F, mFilter16 = F, mFilter36 = F, mDoSound = T, mUpdatedGrid = T;
 	public String mGUITexture = RES_PATH_GUI + "machines/AdvancedCraftingTable.png";
 	
@@ -603,11 +600,6 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	};
 	
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
-	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.crafting.advanced";}
 	

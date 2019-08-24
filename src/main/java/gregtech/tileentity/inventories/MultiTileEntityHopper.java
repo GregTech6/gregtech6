@@ -23,8 +23,6 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -47,11 +45,9 @@ import gregtech.tileentity.tools.MultiTileEntityAnvil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.command.IEntitySelector;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -60,7 +56,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implements ITileEntityAdjacentInventoryUpdatable, IMTE_GetSubItems {
+public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implements ITileEntityAdjacentInventoryUpdatable {
 	public byte mMode = 0;
 	public boolean mCheckNextTick = T, mExactMode = F, mMovedLastTick = T;
 	
@@ -225,11 +221,6 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 				}
 			}
 		}
-	}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
 	@Override public float getSurfaceDistance       (byte aSide) {return 0.0F;}

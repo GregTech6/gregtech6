@@ -25,9 +25,7 @@ import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetEnchantPowerBonus;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BooksGT;
 import gregapi.data.CS.PlankData;
@@ -47,14 +45,12 @@ import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -64,7 +60,7 @@ import net.minecraftforge.common.ChestGenHooks;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle implements ITileEntityBookShelf, IMTE_GetSubItems, IMTE_GetEnchantPowerBonus, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
+public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle implements ITileEntityBookShelf, IMTE_GetEnchantPowerBonus, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
 	public byte mDisplay[] = new byte[28], mRedstoneDelay = 0;
 	
 	public IIconContainer mShelfIcon = Textures.BlockIcons.RENDERING_ERROR;
@@ -250,11 +246,6 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	@Override
 	public byte isProvidingWeakPower2(byte aSide) {
 		return (byte)(mRedstoneDelay == 0 ? 0 : 15);
-	}
-	
-	@Override
-	public boolean getSubItems(MultiTileEntityBlockInternal aBlock, Item aItem, CreativeTabs aTab, List<ItemStack> aList, short aID) {
-		return SHOW_HIDDEN_MATERIALS || !mMaterial.mHidden;
 	}
 	
 	@Override
