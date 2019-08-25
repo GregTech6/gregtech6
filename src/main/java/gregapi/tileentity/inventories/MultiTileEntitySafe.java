@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPlayerRelativeBlockHardness;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.gui.ContainerClientDefault;
@@ -44,7 +43,7 @@ import net.minecraftforge.common.ChestGenHooks;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntitySafe extends TileEntityBase09FacingSingle implements IMTE_GetPlayerRelativeBlockHardness, IMTE_GetSubItems {
+public abstract class MultiTileEntitySafe extends TileEntityBase09FacingSingle implements IMTE_GetPlayerRelativeBlockHardness {
 	public String mDungeonLootName = "";
 	
 	@Override

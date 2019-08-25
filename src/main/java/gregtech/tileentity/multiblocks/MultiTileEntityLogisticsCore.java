@@ -280,18 +280,22 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 				while (!tScanning.isEmpty()) {
 					for (ITileEntityLogistics tLogistics : tScanning) {
 						if (tLogistics instanceof ITileEntityLogisticsStorage) {
-							switch(((ITileEntityLogisticsStorage)tLogistics).getLogisticsPriorityFluid()) {
-							case  1: tFluidStorageGeneric .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
-							case  2: tFluidStorageSemi    .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
-							case  3: tFluidStorageFiltered.add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
-							}
-							switch(((ITileEntityLogisticsStorage)tLogistics).getLogisticsPriorityItem()) {
-							case  1: tStackStorageGeneric .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
-							case  2: tStackStorageSemi    .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
-							case  3: tStackStorageFiltered.add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY))); break;
-							}
+							tFilteredFor.add(((ITileEntityLogisticsStorage)tLogistics).getLogisticsFilterItem());
+							
 							if (tLogistics instanceof ITileEntityLogisticsSemiFilteredItem) {
 								tFilteredFor.addAll(((ITileEntityLogisticsSemiFilteredItem)tLogistics).getLogisticsFilter(SIDE_ANY));
+							}
+							
+							switch (((ITileEntityLogisticsStorage)tLogistics).getLogisticsPriorityFluid()) {
+							case  1: tFluidStorageGeneric .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY), ((ITileEntityLogisticsStorage)tLogistics).getLogisticsFilterFluid())); break;
+							case  2: tFluidStorageSemi    .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY), ((ITileEntityLogisticsStorage)tLogistics).getLogisticsFilterFluid())); break;
+							case  3: tFluidStorageFiltered.add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY), ((ITileEntityLogisticsStorage)tLogistics).getLogisticsFilterFluid())); break;
+							}
+							
+							switch (((ITileEntityLogisticsStorage)tLogistics).getLogisticsPriorityItem()) {
+							case  1: tStackStorageGeneric .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY), ((ITileEntityLogisticsStorage)tLogistics).getLogisticsFilterItem())); break;
+							case  2: tStackStorageSemi    .add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY), ((ITileEntityLogisticsStorage)tLogistics).getLogisticsFilterItem())); break;
+							case  3: tStackStorageFiltered.add(new LogisticsData(new DelegatorTileEntity<>((TileEntity)tLogistics, SIDE_ANY), ((ITileEntityLogisticsStorage)tLogistics).getLogisticsFilterItem())); break;
 							}
 						}
 						

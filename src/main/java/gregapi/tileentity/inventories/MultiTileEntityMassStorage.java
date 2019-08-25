@@ -63,6 +63,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.Explosion;
 import net.minecraftforge.client.ForgeHooksClient;
+import net.minecraftforge.fluids.Fluid;
 
 /**
  * @author Gregorius Techneticies
@@ -465,8 +466,8 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	public boolean canLogistics(byte aSide) {return T;}
 	public int getLogisticsPriorityItem() {return slotHas(1) ? 2 : 1;}
 	public int getLogisticsPriorityFluid() {return 0;}
-	
-	
+	public Fluid getLogisticsFilterFluid() {return null;}
+	public ItemStack getLogisticsFilterItem() {return null;}
 	
 	public boolean isFaceVisible() {
 		return SIDES_HORIZONTAL[mFacing] && (mMode & B[3]) == 0 && (!hasCovers()||mCovers.mBehaviours[mFacing]==null||!mCovers.mBehaviours[mFacing].isOpaque(mFacing, mCovers));

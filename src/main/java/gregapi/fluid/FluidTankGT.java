@@ -247,6 +247,8 @@ public class FluidTankGT implements IFluidTank {
 	public String content(String aEmptyMessage) {return mFluid == null ? aEmptyMessage : amount() + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
 	public String contentcap() {return mFluid == null ? "Capacity: " + mCapacity + " L" : amount() + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+mCapacity+" L)";}
 	
+	public Fluid fluid() {return mFluid == null ? null : mFluid.getFluid();}
+	
 	public FluidStack get() {return mFluid;}
 	public FluidStack get(long aMax) {return isEmpty() || aMax <= 0 ? null : new FluidStack(mFluid, UT.Code.bindInt(mAmount < aMax ? mAmount : aMax));}
 	

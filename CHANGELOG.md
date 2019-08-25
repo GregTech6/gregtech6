@@ -28,6 +28,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.11.05: (Not released yet)
 [COMPAT] Added some more Stuff for Infinity Ingots, Awakened Draconium and Desh to be used for in GT6.
 [FIXED] A few less important things.
+[ADDED] Logistics Tank. Also capable of storing pretty much anything, even Plasma and really hot Stuffs, due to havinga Field Emitter in the Recipe.
 [ADDED] Regulator Mode to Item Import and Item Export Covers. Use Wirecutter to set the exact Stacksize. Also works with the Generic Imports and Exports for Items.
 
 
