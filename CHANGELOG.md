@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.11.13: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.12: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.11.11: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -25,7 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.05: (Not released yet, bear cant test today so Monday release it is)
+6.11.05:
 [COMPAT] Added some more Stuff for Infinity Ingots, Awakened Draconium and Desh to be used for in GT6.
 [FIXED] A few less important things.
 [ADDED] Logistics Tanks with 1 Million Liter Capacity. Also capable of storing pretty much anything, even Plasma and really hot Stuffs, due to having a Field Emitter in the Recipe.
