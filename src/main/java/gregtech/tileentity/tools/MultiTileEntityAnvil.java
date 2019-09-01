@@ -160,6 +160,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
 							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
 							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
+							if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeA = 7; else
+							if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeA = 7; else
 							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeA = 7; else
 							mShapeA = 0;
 						}
@@ -181,6 +183,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
 							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
 							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
+							if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeB = 7; else
+							if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeB = 7; else
 							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeB = 7; else
 							mShapeB = 0;
 						}
