@@ -201,10 +201,15 @@ public class GT_API extends Abstract_Mod {
 			ERR.println("======================================================================================================");
 		}
 		
-		IconsGT.INDEX_BLOCK_GAS         = TextureSet.addToAll(MD.GT.mID, F, "gas");
-		IconsGT.INDEX_BLOCK_PLASMA      = TextureSet.addToAll(MD.GT.mID, F, "plasma");
-		IconsGT.INDEX_BLOCK_MOLTEN      = TextureSet.addToAll(MD.GT.mID, F, "molten");
-		IconsGT.INDEX_BLOCK_PIPE_SIDE   = TextureSet.addToAll(MD.GT.mID, F, "pipeSide");
+		IconsGT.INDEX_BLOCK_GAS       = TextureSet.addToAll(MD.GT.mID, F, "gas");
+		IconsGT.INDEX_BLOCK_PLASMA    = TextureSet.addToAll(MD.GT.mID, F, "plasma");
+		IconsGT.INDEX_BLOCK_MOLTEN    = TextureSet.addToAll(MD.GT.mID, F, "molten");
+		IconsGT.INDEX_BLOCK_PIPE_SIDE = TextureSet.addToAll(MD.GT.mID, F, "pipeSide");
+		
+		OP.ore              .addTextureSet(MD.GT, F);
+		OP.oreGravel        .addTextureSet(MD.GT, F);
+		OP.oreDense         .addTextureSet(MD.GT, F);
+		OP.oreBedrock       .addTextureSet(MD.GT, F);
 		
 		OP.pipeTiny         .addTextureSet(MD.GT, F);
 		OP.pipeSmall        .addTextureSet(MD.GT, F);

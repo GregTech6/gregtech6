@@ -223,9 +223,9 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 			} else {
 				if (UT.Code.exists(mDust, OreDictMaterial.MATERIAL_ARRAY)) {
 					OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDust];
-					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING)), BlockTextureDefault.get(sTextureHole, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(tMaterial, OP.blockDust.mIconIndexBlock), BlockTextureDefault.get(sTextureHole, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
 				} else {
-					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F)                                              , BlockTextureDefault.get(sTextureHole, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
+					mTextureInput = BlockTextureMulti.get(BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_64, F)   , BlockTextureDefault.get(sTextureHole, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayHole));
 				}
 			}
 		}

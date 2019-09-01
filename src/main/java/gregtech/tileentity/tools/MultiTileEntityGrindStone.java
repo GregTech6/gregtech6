@@ -189,10 +189,10 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 		if (aRenderPass == 0 && aSide == 0) {
 			boolean tGlow = mMaterial.contains(TD.Properties.GLOWING);
 
-			mTextureLegs        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
-			mTextureAxle        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureAxle    , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayAxle));
-			mTextureStone       = BlockTextureMulti.get(BlockTextureDefault.get(sTextureStone   , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayStone));
-			mTextureBottom      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
+			mTextureLegs        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureLegs  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayLegs));
+			mTextureAxle        = BlockTextureMulti.get(BlockTextureDefault.get(sTextureAxle  , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayAxle));
+			mTextureStone       = BlockTextureMulti.get(BlockTextureDefault.get(sTextureStone , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayStone));
+			mTextureBottom      = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlayBottom));
 		}
 
 		if (aRenderPass == 0) return mStone!=0&&SIDES_TOP[aSide]?BI.nei():null;

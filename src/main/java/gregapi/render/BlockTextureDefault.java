@@ -21,6 +21,7 @@ package gregapi.render;
 
 import static gregapi.data.CS.*;
 
+import gregapi.data.TD;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
@@ -56,6 +57,9 @@ public class BlockTextureDefault implements ITexture {
 	}
 	public static BlockTextureDefault get(OreDictMaterial aMaterial, int aTextureSetIndex, short[] aRGBa, boolean aGlow, boolean aEnableAO) {
 		return CODE_CLIENT||CODE_UNCHECKED?new BlockTextureDefault(aMaterial, aTextureSetIndex, aRGBa, aGlow, aEnableAO):null;
+	}
+	public static BlockTextureDefault get(OreDictMaterial aMaterial, OreDictPrefix aPrefix) {
+		return CODE_CLIENT||CODE_UNCHECKED?new BlockTextureDefault(aMaterial, aPrefix):null;
 	}
 	public static BlockTextureDefault get(OreDictMaterial aMaterial, OreDictPrefix aPrefix, boolean aGlow) {
 		return CODE_CLIENT||CODE_UNCHECKED?new BlockTextureDefault(aMaterial, aPrefix, aGlow):null;
@@ -144,6 +148,9 @@ public class BlockTextureDefault implements ITexture {
 	}
 	public BlockTextureDefault(OreDictMaterial aMaterial, int aTextureSetIndex, short[] aRGBa, boolean aGlow, boolean aEnableAO) {
 		this(aMaterial.mTextureSetsBlock.get(aTextureSetIndex), aRGBa, F, aGlow, F, aEnableAO);
+	}
+	public BlockTextureDefault(OreDictMaterial aMaterial, OreDictPrefix aPrefix) {
+		this(aMaterial, aPrefix, aMaterial.fRGBa[aPrefix.mState], aMaterial.contains(TD.Properties.GLOWING));
 	}
 	public BlockTextureDefault(OreDictMaterial aMaterial, OreDictPrefix aPrefix, boolean aGlow) {
 		this(aMaterial, aPrefix, aMaterial.fRGBa[aPrefix.mState], aGlow);

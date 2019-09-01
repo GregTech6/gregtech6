@@ -220,7 +220,7 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 			mTextureSides[2] = BlockTextureMulti.get(BlockTextureDefault.get(sTextureSide       , mRGBa, F, tGlow, F, F), BlockTextureDefault.get(sOverlaySide));
 			if (mDisplayedMetal != 0 && UT.Code.exists(mDisplayedMetal, OreDictMaterial.MATERIAL_ARRAY)) {
 				OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedMetal];
-				mTextureContent = BlockTextureDefault.get(tMaterial, OP.blockSolid.mIconIndexBlock, tMaterial.contains(TD.Properties.GLOWING));
+				mTextureContent = BlockTextureDefault.get(tMaterial, OP.blockSolid.mIconIndexBlock);
 			} else {
 				mTextureContent = null;
 			}

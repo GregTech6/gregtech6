@@ -288,11 +288,11 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mTexture == null) {
 				if (aMaterial != null && aMaterial.mTextureSetsBlock != null)
 				return BlockTextureDefault.get(aMaterial, mPrefix, mCanGlow && aMaterial.contains(TD.Properties.GLOWING));
-				return BlockTextureDefault.get(MT.NULL, mPrefix, F);
+				return BlockTextureDefault.get(MT.NULL, mPrefix);
 			}
 			if (aMaterial != null && aMaterial.mTextureSetsBlock != null)
 			return BlockTextureMulti.get(mTexture, BlockTextureDefault.get(aMaterial, mPrefix, mCanGlow && aMaterial.contains(TD.Properties.GLOWING)));
-			return BlockTextureMulti.get(mTexture, BlockTextureDefault.get(MT.NULL, mPrefix, F));
+			return BlockTextureMulti.get(mTexture, BlockTextureDefault.get(MT.NULL, mPrefix));
 		}
 		return null;
 	}

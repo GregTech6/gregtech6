@@ -219,7 +219,7 @@ public class Loader_OreProcessing implements Runnable {
 		@Override
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (mCondition.isTrue(aEvent.mMaterial)) {
-				CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(BlockTextureDefault.get(aEvent.mMaterial, mTargetPrefix, aEvent.mMaterial.contains(GLOWING))));
+				CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(BlockTextureDefault.get(aEvent.mMaterial, mTargetPrefix)));
 			}
 		}
 	}
@@ -237,7 +237,7 @@ public class Loader_OreProcessing implements Runnable {
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (mCondition.isTrue(aEvent.mMaterial) && ST.block(aEvent.mStack) == NB && CoverRegistry.get(aEvent.mStack) == null) {
 				ITexture[] tTextures = new ITexture[mTargetPrefixes.length];
-				for (int i = 0; i < tTextures.length; i++) tTextures[i] = BlockTextureDefault.get(aEvent.mMaterial, mTargetPrefixes[i], aEvent.mMaterial.contains(GLOWING));
+				for (int i = 0; i < tTextures.length; i++) tTextures[i] = BlockTextureDefault.get(aEvent.mMaterial, mTargetPrefixes[i]);
 				CoverRegistry.put(aEvent.mStack, new CoverTextureMulti(aEvent.mMaterial != MT.Paper, tTextures));
 			}
 		}

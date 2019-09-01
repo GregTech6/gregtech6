@@ -36,7 +36,6 @@ import gregapi.data.LH.Chat;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
-import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -390,7 +389,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 				Fluid tFluid = FluidRegistry.getFluid(-mDisplay-2);
 				return tFluid == null ? BlockTextureCopied.get(Blocks.water, SIDE_ANY, 0, UNCOLOURED, F, F, F) : BlockTextureFluid.get(FL.make(tFluid, 1000));
 			}
-			if (UT.Code.exists(mDisplay, OreDictMaterial.MATERIAL_ARRAY)) return BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mDisplay], OP.blockDust, OreDictMaterial.MATERIAL_ARRAY[mDisplay].contains(TD.Properties.GLOWING));
+			if (UT.Code.exists(mDisplay, OreDictMaterial.MATERIAL_ARRAY)) return BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mDisplay], OP.blockDust);
 			return BlockTextureDefault.get(MT.NULL, OP.blockDust, CA_GRAY_128, F);
 		case  6: return SIDE_TOP    == aSide?BI.nei():null;
 		case  7: return SIDE_TOP    != aSide?SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTableBottom, mRGBa), BlockTextureDefault.get(sOverlayTableBottom)):BlockTextureMulti.get(BlockTextureDefault.get(sTextureTableSide, mRGBa), BlockTextureDefault.get(sOverlayTableSide)):null;

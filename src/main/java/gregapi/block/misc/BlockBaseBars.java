@@ -197,7 +197,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	
 	public static abstract class BarRendererBase implements IRenderedBlockObject {
 		public ITexture mTexture;
-		public BarRendererBase(OreDictMaterial aMat) {mTexture = BlockTextureDefault.get(aMat, OP.blockSolid, F);}
+		public BarRendererBase(OreDictMaterial aMat) {mTexture = BlockTextureDefault.get(aMat, OP.blockSolid);}
 		
 		@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 20;}
 		@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mTexture;}
