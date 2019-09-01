@@ -199,6 +199,7 @@ public enum IL implements IItemContainer {
 	Measuring_Pot, Measuring_Pot_Raw,
 	Ceramic_Jug, Ceramic_Jug_Raw,
 	Porcelain_Cup,
+	Compound_Bronze, Compound_Brass, Compound_BismuthBronze,
 	Paper_Blueprint_Empty, Paper_Blueprint_Used,
 	Pellet_Wood,
 	Rope, Rope_Silk, Rope_Grass, Rope_Plastic,

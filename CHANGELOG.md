@@ -30,7 +30,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.06: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Mortarable Crushed Ores can now be Anvil Hammered into Dust.
+[ADDED] A Bronze/Brass/BismuthBronze Compound Item that can be made with Nuggets, Scraps, Tiny Dusts in the Mixing Bowl.
 
 
 6.11.05:

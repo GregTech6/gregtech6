@@ -19,4 +19,5 @@ echo '[quote]'
 sed -n '/Not released yet/d;/^[0-9]\+.[0-9]\+.[0-9]\+:/{p;:l n;p;/^\r*$/q;b l}' "$PROJECT_PATH/CHANGELOG.md"
 echo '[/quote]'
 echo "And as always, the [Patreon Post](https://www.patreon.com/gregoriust/overview) should follow up later today or somewhen tomorrow. ;)"
+echo "<sup>unless Patreon is broken.</sup>"
 

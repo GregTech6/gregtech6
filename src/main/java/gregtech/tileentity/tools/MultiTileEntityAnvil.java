@@ -45,6 +45,7 @@ import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
+import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.machines.ITileEntityAnvil;
@@ -159,6 +160,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
 							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
 							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
+							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeA = 7; else
 							mShapeA = 0;
 						}
 					}
@@ -179,6 +181,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
 							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
 							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
+							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeB = 7; else
 							mShapeB = 0;
 						}
 					}
@@ -265,8 +268,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid.mIconIndexBlock, mMaterial.contains(TD.Properties.GLOWING));
-		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], (mShapeA==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING)));
-		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], (mShapeB==6?OP.blockGem:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING)));
+		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeA==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], (mShapeA==6?OP.blockGem:mShapeA==7?OP.ore:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING))));
+		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeB==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], (mShapeB==6?OP.blockGem:mShapeB==7?OP.ore:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING))));
 		return mTextureB == null ? mTextureA == null ? 6 : 7 : 8;
 	}
 	
@@ -305,6 +308,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  4: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 2], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
 			case  5: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
+			case  7: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
 			}
 		case  7:
@@ -315,6 +319,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  4: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 2], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
 			case  5: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
+			case  7: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
 			}
 		}

@@ -71,6 +71,14 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		int tLastID = 0;
 		IBehavior<MultiItem> tBehaviour;
 		
+		IL.Compound_Bronze.set(                 addItem(tLastID =     0, "Bronze Compound"              , "Put in Furnace to smelt it"      , new OreDictItemData(MT.Bronze       , U9), TC.stack(TC.METALLUM, 1)));
+		IL.Compound_Brass.set(                  addItem(tLastID =     1, "Brass Compound"               , "Put in Furnace to smelt it"      , new OreDictItemData(MT.Brass        , U9), TC.stack(TC.METALLUM, 1)));
+		IL.Compound_BismuthBronze.set(          addItem(tLastID =     2, "Bismuth Bronze Compound"      , "Put in Furnace to smelt it"      , new OreDictItemData(MT.BismuthBronze, U9), TC.stack(TC.METALLUM, 1)));
+		
+		RM.add_smelting(IL.Compound_Bronze       .get(1), OP.nugget.mat(MT.Bronze, 1));
+		RM.add_smelting(IL.Compound_Brass        .get(1), OP.nugget.mat(MT.Brass, 1));
+		RM.add_smelting(IL.Compound_BismuthBronze.get(1), OP.nugget.mat(MT.BismuthBronze, 1));
+		
 		IL.Ceramic_Jug_Raw.set(                 addItem(tLastID =   996, "Raw Clay Jug"                 , "Put in Furnace to harden it"     , new OreDictItemData(MT.Clay, U*6), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
 		IL.Measuring_Pot_Raw.set(               addItem(tLastID =   997, "Raw Measuring Pot"            , "Put in Furnace to harden it"     , new OreDictItemData(MT.Clay, U*4), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
 		IL.Food_Can_Empty.set(                  addItem(tLastID =   998, "Empty Food Can"               , "Used for canning Food"           , new OreDictItemData(MT.TinAlloy, OP.plateCurved.mAmount), TC.stack(TC.VACUOS, 1), TC.stack(TC.FABRICO, 1)));
