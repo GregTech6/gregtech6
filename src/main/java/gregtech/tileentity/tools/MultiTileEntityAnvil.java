@@ -268,8 +268,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureAnvil = BlockTextureDefault.get(mMaterial, OP.blockSolid.mIconIndexBlock, mMaterial.contains(TD.Properties.GLOWING));
-		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeA==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], (mShapeA==6?OP.blockGem:mShapeA==7?OP.ore:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING))));
-		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeB==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], (mShapeB==6?OP.blockGem:mShapeB==7?OP.ore:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING))));
+		mTextureA = (mMaterialA <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialA] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeA==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialA], (mShapeA==6?OP.blockGem:mShapeA==7?OP.oreVanillastone:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialA].contains(TD.Properties.GLOWING))));
+		mTextureB = (mMaterialB <= 0 ? null : OreDictMaterial.MATERIAL_ARRAY[mMaterialB] == null ? BlockTextureCopied.get(Blocks.iron_block) : BlockTextureMulti.get(mShapeB==7?BlockTextureCopied.get(Blocks.stone):null, BlockTextureDefault.get(OreDictMaterial.MATERIAL_ARRAY[mMaterialB], (mShapeB==6?OP.blockGem:mShapeB==7?OP.oreVanillastone:OP.blockSolid).mIconIndexBlock, OreDictMaterial.MATERIAL_ARRAY[mMaterialB].contains(TD.Properties.GLOWING))));
 		return mTextureB == null ? mTextureA == null ? 6 : 7 : 8;
 	}
 	
