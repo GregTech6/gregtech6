@@ -29,7 +29,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.06: (Not released yet)
+6.11.06:
+[NOTE] I know its not much but the Heat and some busy IRL Stuff got me, it should get colder next week. ;)
 [CHANGED] Multiblock Wall Welding Recipes are now Selector Tag 10 instead of 4.
 [ADDED] Mortarable Crushed Ores can now be Anvil Hammered into Dust.
 [ADDED] A Bronze/Brass/BismuthBronze Compound Item that can be made with Nuggets, Scraps, Tiny Dusts in the Mixing Bowl.
