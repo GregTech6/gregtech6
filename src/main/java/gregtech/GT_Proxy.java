@@ -53,8 +53,10 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.OP;
+import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -310,9 +312,19 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						return;
 					}
 				} else if (aStack.getItem() == Items.stick) {
-					if (aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32073, 1).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32073).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
 						aEvent.setCanceled(T);
 						if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer) && --aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+					}
+				} else {
+					OreDictItemData tData = OM.anyassociation_(aStack);
+					if (tData != null) {
+						if (tData.mPrefix == OP.rockGt) {
+							if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32074, ST.save(null, NBT_VALUE, ST.amount(1, aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+								aEvent.setCanceled(T);
+								if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer) && --aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+							}
+						}
 					}
 				}
 			}
