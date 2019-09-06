@@ -29,7 +29,6 @@ import gregapi.util.WD;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.event.ForgeEventFactory;
 
 public class Behavior_Place_Torch extends AbstractBehaviorDefault {
 	public static final Behavior_Place_Torch INSTANCE = new Behavior_Place_Torch();
@@ -47,11 +46,7 @@ public class Behavior_Place_Torch extends AbstractBehaviorDefault {
 					if (UT.Entities.hasInfiniteItems(aPlayer)) {
 						tStack.stackSize = tOldSize;
 					} else {
-						if (tStack.stackSize <= 0) {
-							ForgeEventFactory.onPlayerDestroyItem(aPlayer, tStack);
-							aPlayer.inventory.mainInventory[tIndex] = null;
-						}
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						ST.use(aPlayer, tIndex, tStack, 0);
 					}
 					return T;
 				}

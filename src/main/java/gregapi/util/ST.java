@@ -53,6 +53,7 @@ import net.minecraft.block.BlockTorch;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
@@ -68,6 +69,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
 /**
@@ -236,6 +238,35 @@ public class ST {
 	}
 	public static ItemStack update_(ItemStack aStack, Entity aEntity) {
 		return update_(aStack, aEntity.worldObj, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+	}
+	
+	public static boolean use(Entity aPlayer, ItemStack aStack) {
+		return use(aPlayer, -1, aStack, 1);
+	}
+	public static boolean use(Entity aPlayer, ItemStack aStack, long aAmount) {
+		return use(aPlayer, -1, aStack, aAmount);
+	}
+	public static boolean use(Entity aPlayer, int aIndex, ItemStack aStack) {
+		return use(aPlayer, aIndex, aStack, 1);
+	}
+	public static boolean use(Entity aPlayer, int aIndex, ItemStack aStack, long aAmount) {
+		if (UT.Entities.hasInfiniteItems(aPlayer)) return T;
+		if (aStack.stackSize >= aAmount) {
+			aStack.stackSize -= aAmount;
+			if (aPlayer instanceof EntityPlayer) {
+				if (aStack.stackSize <= 0) {
+					ForgeEventFactory.onPlayerDestroyItem((EntityPlayer)aPlayer, aStack);
+					if (aIndex >= 0 && aIndex < ((EntityPlayer)aPlayer).inventory.mainInventory.length) {
+						((EntityPlayer)aPlayer).inventory.mainInventory[aIndex] = null;
+					}
+				}
+				if (!aPlayer.worldObj.isRemote && ((EntityPlayer)aPlayer).openContainer != null) {
+					((EntityPlayer)aPlayer).openContainer.detectAndSendChanges();
+				}
+			}
+			return T;
+		}
+		return F;
 	}
 	
 	public static ItemStack[] copyArray(ItemStack... aStacks) {

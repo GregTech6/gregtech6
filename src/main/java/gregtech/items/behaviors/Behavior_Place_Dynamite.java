@@ -25,13 +25,13 @@ import gregapi.data.IL;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.event.ForgeEventFactory;
 
 public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 	public static final Behavior_Place_Dynamite INSTANCE = new Behavior_Place_Dynamite();
@@ -56,11 +56,7 @@ public class Behavior_Place_Dynamite extends AbstractBehaviorDefault {
 						tStack.stackSize = tOldSize;
 					} else {
 						((MultiItemTool)aItem).doDamage(aStack, 100, aPlayer);
-						if (tStack.stackSize <= 0) {
-							ForgeEventFactory.onPlayerDestroyItem(aPlayer, tStack);
-							aPlayer.inventory.mainInventory[tIndex] = null;
-						}
-						if (aPlayer.openContainer != null) aPlayer.openContainer.detectAndSendChanges();
+						ST.use(aPlayer, tIndex, tStack, 0);
 					}
 					tStack.setTagCompound(tOldTag);
 					return T;

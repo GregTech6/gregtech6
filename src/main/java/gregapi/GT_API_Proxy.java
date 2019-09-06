@@ -132,7 +132,6 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
@@ -835,8 +834,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
-							if (aStack.getItemDamage() >= aStack.getMaxDamage()) aStack.stackSize--;
-							if (aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
 							aEvent.setCanceled(T);
 						}
 						return;
@@ -847,8 +845,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
-							if (aStack.getItemDamage() >= aStack.getMaxDamage()) aStack.stackSize--;
-							if (aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
 							aEvent.setCanceled(T);
 						}
 						return;

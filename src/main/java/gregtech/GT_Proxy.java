@@ -78,7 +78,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
@@ -245,33 +244,32 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 							if (aStack.stackSize == 1) {
 								aEvent.entityPlayer.inventory.mainInventory[aEvent.entityPlayer.inventory.currentItem] = ST.make(Items.potionitem, 1, 0);
 							} else {
-								aStack.stackSize--;
+								ST.use(aEvent.entityPlayer, aStack);
 								UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, ST.make(Items.potionitem, 1, 0), F);
 							}
 						}
 						if (!WD.infiniteWater(aEvent.world, tTarget.blockX, tTarget.blockY, tTarget.blockZ)) aEvent.world.setBlockToAir(tTarget.blockX, tTarget.blockY, tTarget.blockZ);
-						if (aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
 						if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges();
 						return;
 					}
 					if (tBlock == BlocksGT.River) {
 						ItemStack tStack = FL.fill(FL.Water.make(Integer.MAX_VALUE), aStack, F, T, F, T);
 						if (tStack == null) return;
-						if (--aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					if (tBlock == BlocksGT.Ocean) {
 						ItemStack tStack = FL.fill(FL.Ocean.make(Integer.MAX_VALUE), aStack, F, T, F, T);
 						if (tStack == null) return;
-						if (--aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					if (tBlock == BlocksGT.Swamp) {
 						ItemStack tStack = FL.fill(FL.Dirty_Water.make(Integer.MAX_VALUE), aStack, F, T, F, T);
 						if (tStack == null) return;
-						if (--aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
 						return;
 					}
@@ -294,8 +292,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					if (!aEvent.world.isRemote && !UT.Entities.hasInfiniteItems(aEvent.entityPlayer) && RNGSUS.nextInt(100) >= mFlintChance) {
 						aEvent.setCanceled(T);
 						aStack.damageItem(1, aEvent.entityPlayer);
-						if (aStack.getItemDamage() >= aStack.getMaxDamage()) aStack.stackSize--;
-						if (aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+						if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
 						return;
 					}
 					List<String> tChatReturn = new ArrayListNoNulls<>();
@@ -306,23 +303,27 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						UT.Sounds.send(aEvent.world, SFX.MC_IGNITE, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
 						if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer)) {
 							aStack.damageItem(UT.Code.bindInt(UT.Code.units(tDamage, 10000, 1, T)), aEvent.entityPlayer);
-							if (aStack.getItemDamage() >= aStack.getMaxDamage()) aStack.stackSize--;
-							if (aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
 						}
 						return;
 					}
 				} else if (aStack.getItem() == Items.stick) {
 					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32073).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+						ST.use(aEvent.entityPlayer, aStack);
 						aEvent.setCanceled(T);
-						if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer) && --aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+					}
+				} else if (aStack.getItem() == Items.flint) {
+					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32074, ST.save(null, NBT_VALUE, ST.amount(1, aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+						ST.use(aEvent.entityPlayer, aStack);
+						aEvent.setCanceled(T);
 					}
 				} else {
 					OreDictItemData tData = OM.anyassociation_(aStack);
 					if (tData != null) {
 						if (tData.mPrefix == OP.rockGt) {
 							if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32074, ST.save(null, NBT_VALUE, ST.amount(1, aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+								ST.use(aEvent.entityPlayer, aStack);
 								aEvent.setCanceled(T);
-								if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer) && --aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
 							}
 						}
 					}

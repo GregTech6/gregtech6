@@ -37,7 +37,6 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -46,7 +45,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.event.ForgeEventFactory;
 
 public class BlockConcrete extends BlockColored implements IBlockToolable {
 	public BlockConcrete(String aUnlocalised) {
@@ -73,13 +71,7 @@ public class BlockConcrete extends BlockColored implements IBlockToolable {
 					ItemStack tStack = ((EntityPlayer)aPlayer).inventory.mainInventory[tIndex];
 					if (OM.is("stickAnyIronOrSteel", tStack)) {
 						if (WD.set(aWorld, aX, aY, aZ, BlocksGT.ConcreteReinforced, WD.meta(aWorld, aX, aY, aZ), 3)) {
-							if (!UT.Entities.hasInfiniteItems(aPlayer)) {
-								if (--tStack.stackSize <= 0) {
-									ForgeEventFactory.onPlayerDestroyItem(((EntityPlayer)aPlayer), tStack);
-									((EntityPlayer)aPlayer).inventory.mainInventory[tIndex] = null;
-								}
-								if (((EntityPlayer)aPlayer).openContainer != null) ((EntityPlayer)aPlayer).openContainer.detectAndSendChanges();
-							}
+							ST.use(aPlayer, tIndex, tStack);
 							return 10000;
 						}
 						break;

@@ -59,7 +59,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.event.ForgeEventFactory;
 
 public class BlockStones extends BlockMetaType implements IOreDictListenerEvent, IBlockToolable, Runnable {
 	public static final boolean[]
@@ -443,13 +442,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 					ItemStack tStack = ((EntityPlayer)aPlayer).inventory.mainInventory[tIndex];
 					if (OM.is("stickAnyIronOrSteel", tStack)) {
 						if (aWorld.setBlockMetadataWithNotify(aX, aY, aZ, RNFBR, 3)) {
-							if (!UT.Entities.hasInfiniteItems(aPlayer)) {
-								if (--tStack.stackSize <= 0) {
-									ForgeEventFactory.onPlayerDestroyItem(((EntityPlayer)aPlayer), tStack);
-									((EntityPlayer)aPlayer).inventory.mainInventory[tIndex] = null;
-								}
-								if (((EntityPlayer)aPlayer).openContainer != null) ((EntityPlayer)aPlayer).openContainer.detectAndSendChanges();
-							}
+							ST.use(aPlayer, tIndex, tStack);
 							return 10000;
 						}
 						break;
