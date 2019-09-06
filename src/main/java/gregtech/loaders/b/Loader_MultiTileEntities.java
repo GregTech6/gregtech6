@@ -78,14 +78,7 @@ import gregtech.tileentity.extenders.MultiTileEntityExtenderController;
 import gregtech.tileentity.extenders.MultiTileEntityFilter;
 import gregtech.tileentity.extenders.MultiTileEntityFilterPrefix;
 import gregtech.tileentity.inventories.*;
-import gregtech.tileentity.misc.MultiTileEntityBumbleHive;
-import gregtech.tileentity.misc.MultiTileEntityCFoam;
-import gregtech.tileentity.misc.MultiTileEntityCertificate;
-import gregtech.tileentity.misc.MultiTileEntityCoin;
-import gregtech.tileentity.misc.MultiTileEntityFluidSpring;
-import gregtech.tileentity.misc.MultiTileEntityGregOLantern;
-import gregtech.tileentity.misc.MultiTileEntityRock;
-import gregtech.tileentity.misc.MultiTileEntityStick;
+import gregtech.tileentity.misc.*;
 import gregtech.tileentity.multiblocks.*;
 import gregtech.tileentity.panels.MultiTileEntityPanelAsphalt;
 import gregtech.tileentity.panels.MultiTileEntityPanelCFoam;
@@ -1705,7 +1698,9 @@ public class Loader_MultiTileEntities implements Runnable {
 		aRegistry.add("Berry Bush"                                          , "Untyped"                             , 32759, 32764, MultiTileEntityBush.class                               ,                 0, 64, aBush          , UT.NBT.make(NBT_HARDNESS, 0.5F, NBT_RESISTANCE, 0.3F));
 		aRegistry.add("Greg o'Lantern"                                      , "Untyped"                             , 32758, 32764, MultiTileEntityGregOLantern.class                       ,                 0, 64, aUtilWood      , null, "Pk", "T ", 'P', Blocks.pumpkin, 'T', Blocks.torch);
 		aRegistry.add("Rock"                                                , "Untyped"                             , 32757, 32764, MultiTileEntityRock.class                               ,                 0, 64, aUtilStone     , null);
+		aRegistry.add("Rock"                                                , "Untyped"                             , 32074, 32764, MultiTileEntityRockPlaced.class                         ,                 0, 64, aUtilStone     , null);
 		aRegistry.add("Stick"                                               , "Untyped"                             , 32756, 32764, MultiTileEntityStick.class                              ,                 0, 64, aUtilWood      , null);
+		aRegistry.add("Stick"                                               , "Untyped"                             , 32073, 32764, MultiTileEntityStickPlaced.class                        ,                 0, 64, aUtilWood      , null);
 		aRegistry.add("Bumble Hive"                                         , "Untyped"                             , 32755, 32764, MultiTileEntityBumbleHive.class                         ,                 0, 64, aHive          , null);
 		
 		for (int i = 0; i < 16; i++) {
@@ -1741,7 +1736,7 @@ public class Loader_MultiTileEntities implements Runnable {
 			}
 		}
 		
-		// 32073 is next, up to 32351
+		// 32075 is next, up to 32351
 		
 		aMat = MT.Brown;            aRegistry.add("Rope"                                                , "Ropes"                               , 32011, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_FLAMMABILITY,100),  " S",  "SS",  "Sq", 'S', "cropHemp");
 		aMat = MT.White;            aRegistry.add("Silk Rope"                                           , "Ropes"                               , 32012, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid)                      ),  " S",  "SS",  "Sq", 'S', Items.string);

@@ -23,9 +23,6 @@ import static gregapi.data.CS.*;
 
 import java.util.Iterator;
 
-import gregapi.config.ConfigCategories;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.ToolsGT;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -51,10 +48,7 @@ public class Loader_ItemIterator implements Runnable {
 		
 		OUT.println("GT_Mod: Scanning Food for the Canning Machine, and Wrenches/Crowbars for the Config.");
 		
-		boolean tCheckCrowbar = F, tCheckWrench = F, tCheckCans = (IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists());
-		
-		try {buildcraft.api.tools.IToolWrench          .class.getCanonicalName(); tCheckWrench  = T;} catch(Throwable e) {/*Do nothing*/}
-		try {mods.railcraft.api.core.items.IToolCrowbar.class.getCanonicalName(); tCheckCrowbar = T;} catch(Throwable e) {/*Do nothing*/}
+		boolean tCheckCans = (IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists());
 		
 		if (tCheckCans) {
 		RM.Canner.addRecipe2(T, 16, 64, ST.make(Items.rotten_flesh , 1, W), IL.IC2_Food_Can_Empty.get( 4), IL.IC2_Food_Can_Spoiled  .get( 4, IL.IC2_Food_Can_Filled.get(4)));
@@ -73,16 +67,6 @@ public class Loader_ItemIterator implements Runnable {
 		while (tIterator.hasNext()) if ((tObject = tIterator.next()) instanceof Item && !ST.isGT((Item)tObject)) {
 			Item tItem = (Item)tObject;
 			if ((tName = tItem.getUnlocalizedName()) != null) {
-				if (tCheckCrowbar && tItem instanceof mods.railcraft.api.core.items.IToolCrowbar) {
-					if (!tItem.isDamageable() && !(COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(ST.make(tItem, 1, 0)))) {
-						if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "infiniteDurabilityRCCrowbars", F) && CR.remout(ST.make(tItem, 1, W))) OUT.println("GT_Mod: Removed infinite RC Crowbar: " + ST.regName(tItem));
-					} else if (ToolsGT.add(TOOL_crowbar, ST.make(tItem, 1, W))) OUT.println("GT_Mod: Registered valid RC Crowbar: " + ST.regName(tItem));
-				}
-				if (tCheckWrench && tItem instanceof buildcraft.api.tools.IToolWrench) {
-					if (!tItem.isDamageable() && !(COMPAT_EU_ITEM != null && COMPAT_EU_ITEM.is(ST.make(tItem, 1, 0)))) {
-						if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "infiniteDurabilityBCWrenches", F) && CR.remout(ST.make(tItem, 1, W))) OUT.println("GT_Mod: Removed infinite BC Wrench: " + ST.regName(tItem));
-					} else if (ToolsGT.add(TOOL_wrench, ST.make(tItem, 1, W))) OUT.println("GT_Mod: Registered valid BC Wrench: " + ST.regName(tItem));
-				}
 				if (tCheckCans && tItem instanceof ItemFood && tItem != IL.IC2_Food_Can_Filled.item() && tItem != IL.IC2_Food_Can_Spoiled.item()) {
 					int tFoodValue = ((ItemFood)tItem).func_150905_g(ST.make(tItem, 1, 0));
 					if (tFoodValue > 0) RM.Canner.addRecipe2(T, 16, 16*tFoodValue, ST.make(tItem, 1, W), IL.IC2_Food_Can_Empty.get(tFoodValue), IL.IC2_Food_Can_Filled.get(tFoodValue), ST.container(ST.make(tItem, 1, 0), T));

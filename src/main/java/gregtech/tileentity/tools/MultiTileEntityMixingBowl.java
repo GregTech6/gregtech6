@@ -218,13 +218,13 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
-
+			
 			if (SIDES_TOP[aSide]) {
 				float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
 				if (tCoords[0] <= PX_P[2] && tCoords[1] <= PX_P[2]) return T;
 				if (!UT.Entities.isPlayer(aPlayer)) return T;
 				if (ToolsGT.contains(TOOL_mixer, aStack)) return F;
-
+				
 				ItemStack[] tInputItems  = ST.array(slot(0), slot(1), slot(2), slot(3), slot(4), slot(5));
 				Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], NI, mTanksInput, tInputItems);
 				if (tRecipe != null) {
@@ -240,14 +240,14 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 					}
 				}
 			}
-
+			
 			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(6), T)) {
 				slotKill(6);
 				return T;
 			}
 			ItemStack tStack = ST.container(ST.amount(1, aStack), T);
 			FluidStack tFluid = FL.getFluid(ST.amount(1, aStack), T);
-
+			
 			if (aStack != null && tFluid != null && FL.fillAll_(this, SIDE_ANY, tFluid, T)) {
 				aStack.stackSize--;
 				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);

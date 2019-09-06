@@ -26,7 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.07: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[NOTE] The Default Config Pack updated to disable Pneumaticrafts crashy Oil Worldgen (still crashes sometimes though...) and its Update Checker.
 
 
 6.11.06:

@@ -260,6 +260,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public OreDictMaterial mTargetRegistration = this;
 	/** The Material which is the target for selecting the preferred Tool Handle. */
 	public OreDictMaterial mHandleMaterial = this;
+	
+	
 	/** The Targets for certain kinds of Processing for this Material */
 	public OreDictMaterialStack
 	mTargetCrushing     = OM.stack(this, U),

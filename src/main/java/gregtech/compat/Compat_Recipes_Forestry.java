@@ -51,7 +51,7 @@ public class Compat_Recipes_Forestry extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Forestry Recipes.");
 		CR.remove(OM.ingot(MT.Sn), OM.ingot(MT.Cu), NI, OM.ingot(MT.Cu), OM.ingot(MT.Cu));
-		CR.delate(MD.FR, "honeyedSlice", "letters");
+		CR.delate(MD.FR, "honeyedSlice", "letters", "wrench");
 		
 		OM.data(CR.get(null, OP.ingot.mat(MT.Sn, 1), null, OP.ingot.mat(MT.Sn, 1), null, OP.ingot.mat(MT.Sn, 1), null, null, null), new OreDictItemData(MT.Sn, U * 3));
 		

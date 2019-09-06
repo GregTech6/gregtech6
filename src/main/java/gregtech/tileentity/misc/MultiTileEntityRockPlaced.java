@@ -17,26 +17,20 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.compat;
+package gregtech.tileentity.misc;
 
 import static gregapi.data.CS.*;
 
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import gregapi.api.Abstract_Mod;
-import gregapi.code.ModData;
-import gregapi.compat.CompatMods;
-import gregapi.data.MD;
-import gregapi.data.RM;
-import gregapi.util.CR;
-import gregapi.util.ST;
+import gregapi.code.ArrayListNoNulls;
+import net.minecraft.item.ItemStack;
 
-public class Compat_Recipes_OpenComputers extends CompatMods {
-	public Compat_Recipes_OpenComputers(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
+/**
+ * @author Gregorius Techneticies
+ */
+public class MultiTileEntityRockPlaced extends MultiTileEntityRock {
+	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return new ArrayListNoNulls<>(F, mRock);}
 	
-	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Open Computers Recipes.");
-		RM.rem_smelting(ST.make(MD.OC, "item", 1, 30));
-		CR.delate(ST.make(MD.OC, "item", 1, 30));
-		CR.delate(MD.OC, "wrench");
-		CR.shapeless(ST.make(MD.OC, "item", 1, 32), new Object[] {OD_CIRCUITS[3]});
-	}
+	@Override public ItemStack getDefaultRock(int aAmount) {return mRock;}
+	
+	@Override public String getTileEntityName() {return "gt.multitileentity.rock.placed";}
 }

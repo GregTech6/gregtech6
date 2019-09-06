@@ -772,13 +772,13 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (!mDisabledItemOutput && SIDES_VALID[mItemAutoOutput]) {
 			boolean
 			tOutputEmpty = T;
-			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slot(i) != null) {tOutputEmpty = F; break;}
+			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slotHas(i)) {tOutputEmpty = F; break;}
 			
 			// Output not Empty && (Successfully produced something || just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Output has been blocked since 256 active ticks || Check once every Minute)
 			if (!tOutputEmpty && (mSuccessful || mIgnited || mInventoryChanged || !mRunning || mOutputBlocked == 1 || aTimer%1200 == 5)) doOutputItems();
 			
 			tOutputEmpty = T;
-			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slot(i) != null) {tOutputEmpty = F; mOutputBlocked++; break;}
+			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slotHas(i)) {tOutputEmpty = F; mOutputBlocked++; break;}
 			
 			if (tOutputEmpty) mOutputBlocked = 0;
 		}
@@ -787,7 +787,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public boolean doInactive(long aTimer) {
-		if (mActive) doSoundInterrupt();
+		if (mActive) {
+			doSoundInterrupt();
+			doOutputItems();
+		}
 		if (CONSTANT_ENERGY) mProgress = 0;
 		if (mRunning || mIgnited || mInventoryChanged || aTimer%1200 == 5) {
 			if (!checkStructure(F)) checkStructure(T);

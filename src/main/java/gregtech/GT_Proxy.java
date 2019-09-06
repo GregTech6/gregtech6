@@ -40,6 +40,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import gregapi.block.IBlockToolable;
 import gregapi.block.metatype.BlockStones;
+import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.config.ConfigCategories;
@@ -300,11 +301,18 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 					if (tDamage > 0) {
 						aEvent.setCanceled(T);
-						aStack.damageItem(UT.Code.bindInt(UT.Code.units(tDamage, 10000, 1, T)), aEvent.entityPlayer);
 						UT.Sounds.send(aEvent.world, SFX.MC_IGNITE, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
-						if (aStack.getItemDamage() >= aStack.getMaxDamage()) aStack.stackSize--;
-						if (aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+						if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer)) {
+							aStack.damageItem(UT.Code.bindInt(UT.Code.units(tDamage, 10000, 1, T)), aEvent.entityPlayer);
+							if (aStack.getItemDamage() >= aStack.getMaxDamage()) aStack.stackSize--;
+							if (aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
+						}
 						return;
+					}
+				} else if (aStack.getItem() == Items.stick) {
+					if (aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32073, 1).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+						aEvent.setCanceled(T);
+						if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer) && --aStack.stackSize <= 0) ForgeEventFactory.onPlayerDestroyItem(aEvent.entityPlayer, aStack);
 					}
 				}
 			}
