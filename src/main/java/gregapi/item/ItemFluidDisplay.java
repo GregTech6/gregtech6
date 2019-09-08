@@ -119,7 +119,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				if (UT.Code.stringValid(tMaterial.mMaterial.mTooltipChemical)) aList.add(LH.Chat.YELLOW + tMaterial.mMaterial.mTooltipChemical);
 			}
 			
-			aList.add(LH.Chat.RED + "Temperature: " + tTemperature + " K" + LH.Chat.GRAY);
+			aList.add(LH.Chat.RED + "Temperature: " + tTemperature + " K (" + (tTemperature-C) + "°C)" + LH.Chat.GRAY);
 			
 			if (FL.plasma(tFluid)) {
 				aList.add(LH.Chat.GREEN + "State: " + LH.Chat.YELLOW + "Plasma" + (!aFluid.isGaseous(tFluid) ? LH.Chat.RED + " (Warning: Considered a Liquid by Mods other than GT!)" : LH.Chat.ORANGE + " (Note: Considered a Gas by Mods other than GT!)") + LH.Chat.GRAY);

@@ -49,10 +49,10 @@ public class Loader_Fluids implements Runnable {
 		
 		//-----
 		
-		FL.create("Propane"                  , "Propane"             , MT.Propane            , 2,   1000,   300).setDensity(-1000);
-		FL.create("Butane"                   , "Butane"              , MT.Butane             , 2,   1000,   300).setDensity(-1000);
-		FL.create("Propylene"                , "Propylene"           , MT.Propylene          , 2,   1000,   300);
-		FL.create("Ethylene"                 , "Ethylene"            , MT.Ethylene           , 2,   1000,   300);
+		FL.create("Propane"                  , "Propane"             , MT.Propane            , 2).setDensity(-1000);
+		FL.create("Butane"                   , "Butane"              , MT.Butane             , 2).setDensity(-1000);
+		FL.create("Propylene"                , "Propylene"           , MT.Propylene          , 2);
+		FL.create("Ethylene"                 , "Ethylene"            , MT.Ethylene           , 2);
 		FL.create("dragonbreath"             , "Dragon's Breath"     , null                  , 2,   1000,   300, IL.EtFu_Dragon_Breath.get(1), IL.Bottle_Empty.get(1), 250).setDensity(100).setLuminosity(5);
 		FL.create("netherair"                , "Nether Air"          , null                  , 2,   1000,   370).setDensity(0);
 		FL.create("enderair"                 , "Ender Air"           , null                  , 2,   1000,   280).setDensity(0);
@@ -62,12 +62,12 @@ public class Loader_Fluids implements Runnable {
 		
 		//-----
 		
-		FL.create("liquid_extra_heavy_oil"   , "Very Heavy Oil"      , null                  , 1,   1000,   300);
-		FL.create("liquid_heavy_oil"         , "Heavy Oil"           , null                  , 1,   1000,   300);
-		FL.create("liquid_medium_oil"        , "Raw Oil"             , null                  , 1,   1000,   300);
-		FL.create("liquid_light_oil"         , "Light Oil"           , null                  , 1,   1000,   300);
-		FL.create("soulsandoil"              , "Soulsand Oil"        , null                  , 1,   1000,   300);
-		FL.create("gas_natural_gas"          , "Natural Gas"         , null                  , 2,   1000,   300); // ~95% methane, ~5% ethane and trace amounts of propane and butane
+		FL.create("liquid_extra_heavy_oil"   , "Very Heavy Oil"      , null                  , 1);
+		FL.create("liquid_heavy_oil"         , "Heavy Oil"           , null                  , 1);
+		FL.create("liquid_medium_oil"        , "Raw Oil"             , null                  , 1);
+		FL.create("liquid_light_oil"         , "Light Oil"           , null                  , 1);
+		FL.create("soulsandoil"              , "Soulsand Oil"        , null                  , 1);
+		FL.create("gas_natural_gas"          , "Natural Gas"         , null                  , 2); // ~95% methane, ~5% ethane and trace amounts of propane and butane
 		
 		FL.create("liquidoxygen"             , "Liquid Oxygen"       , MT.O                  , 1,   1000,    85);
 		
@@ -76,18 +76,20 @@ public class Loader_Fluids implements Runnable {
 		FL.create("UUAmplifier"              , "UU-Amplifier"        , MT.UUAmplifier        , 1,    100,   100);
 		FL.create("ic2uumatter"              , "UU-Matter"           , MT.UUMatter           , 1,    100,   100);
 		FL.create("ic2constructionfoam"      , "Construction Foam"   , MT.ConstructionFoam   , 1,    100,   300);
-		FL.create("ic2distilledwater"        , "Distilled Water"     , MT.DistWater          , 1,   1000,   300);
-		FL.create("NitroFuel"                , "Nitro Fuel"          , MT.NitroFuel          , 1,   1000,   300);
-		FL.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1,   1000,   300);
-		FL.create("oil"                      , "Oil"                 , MT.Oil                , 1,   1000,   300);
-		FL.create("fuel"                     , "Fuel Oil"            , MT.Fuel               , 1,   1000,   300);
-		FL.create("kerosine"                 , "Kerosine"            , MT.Kerosine           , 1,   1000,   300);
-		FL.create("diesel"                   , "Diesel"              , MT.Diesel             , 1,   1000,   300);
-		FL.create("petrol"                   , "Petrol"              , MT.Petrol             , 1,   1000,   300);
-		FL.create("ic2biomass"               , "Biomass"             , MT.Biomass            , 1,   1000,   300);
-		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1,   1000,   300);
+		FL.create("ic2distilledwater"        , "Distilled Water"     , MT.DistWater          , 1);
+		FL.create("NitroFuel"                , "Nitro Fuel"          , MT.NitroFuel          , 1);
+		FL.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1);
+		FL.create("oil"                      , "Oil"                 , MT.Oil                , 1);
+		FL.create("fuel"                     , "Fuel Oil"            , MT.Fuel               , 1);
+		FL.create("kerosine"                 , "Kerosine"            , MT.Kerosine           , 1);
+		FL.create("diesel"                   , "Diesel"              , MT.Diesel             , 1);
+		FL.create("petrol"                   , "Petrol"              , MT.Petrol             , 1);
+		FL.create("ic2biomass"               , "Biomass"             , MT.Biomass            , 1);
+		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1);
+		FL.create("ic2coolant"               , "Coolant"             , null                  , 1);
+		FL.create("ic2hotcoolant"            , "Hot Coolant"         , null                  , 1,   1000,  1200);
 		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
-		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1,   1000,   300);
+		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
 		FL.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);
 		FL.create("hotfryingoil"             , "Hot Frying Oil"      , MT.FryingOilHot       , 1,   1000,   400);
 		

@@ -27,6 +27,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.07: (Not released yet)
 [NOTE] The Default Config Pack updated to disable Pneumaticrafts crashy Oil Worldgen (still crashes sometimes though...) and its Update Checker.
+[CHANGED] Fluid Tooltips now also show Temperature in Celsius in addition to Kelvin.
+[ADDED] IC2 Coolant Fluids when IC2 isn't installed.
+[ADDED] Lead Multiblock Walls.
 [ADDED] Rocks and vanilla Sticks can now be placed on the Floor with Sneak Click.
 
 
