@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.11.15: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.14: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.11.13: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +30,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.08: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Inventory Refill now also works with any Food that is aligned in the same Column, just like identical Items in the same Column of your Inventory already do.
 
 
 6.11.07:

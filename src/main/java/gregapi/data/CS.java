@@ -1473,6 +1473,7 @@ public class CS {
 		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
 		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow);
 		public static final Set<Object> plantableGreens  = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.farmland);
+		public static final Set<Object> plantableTrees   = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt);
 		public static final Set<Object> plantableGrass   = new HashSetNoNulls<Object>(F, Blocks.grass);
 		
 		/** Blocks to not generate Ores in. */

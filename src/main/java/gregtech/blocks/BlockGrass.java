@@ -67,6 +67,7 @@ public class BlockGrass extends BlockBaseMeta {
 		
 		BlocksGT.harvestableSpade.add(this);
 		BlocksGT.plantableGreens.add(this);
+		BlocksGT.plantableTrees.add(this);
 		BlocksGT.plantableGrass.add(this);
 		
 		RM.generify(ST.make(this, 1, W), ST.make(Blocks.grass, 1, 0));

@@ -704,23 +704,23 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (tInv[tSlot] == null || tInv[tSlot].stackSize == 0) {
 			if (tSlot < 9) {
-				if (ST.equal(tCompare, tInv[tSlot+27], T)) {
-				if (ST.equal(tCompare, tInv[tSlot+18], T)) {
-				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+27], T) || (ST.food(tCompare) > 0 && ST.food(tInv[tSlot+27]) > 0)) {
+				if (ST.equal(tCompare, tInv[tSlot+18], T) || (ST.food(tCompare) > 0 && ST.food(tInv[tSlot+18]) > 0)) {
+				if (ST.equal(tCompare, tInv[tSlot+ 9], T) || (ST.food(tCompare) > 0 && ST.food(tInv[tSlot+ 9]) > 0)) {
 				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				tInv[tSlot] = tInv[tSlot+27]; tInv[tSlot+27] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				return;
 			}
 			if (tSlot < 18) {
-				if (ST.equal(tCompare, tInv[tSlot+18], T)) {
-				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+18], T) || (ST.food(tCompare) > 0 && ST.food(tInv[tSlot+18]) > 0)) {
+				if (ST.equal(tCompare, tInv[tSlot+ 9], T) || (ST.food(tCompare) > 0 && ST.food(tInv[tSlot+ 9]) > 0)) {
 				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				return;
 			}
 			if (tSlot < 27) {
-				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+ 9], T) || (ST.food(tCompare) > 0 && ST.food(tInv[tSlot+ 9]) > 0)) {
 				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				return;
 			}

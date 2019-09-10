@@ -234,6 +234,18 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedAetherGrass"      , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedGrass"            , null));
 		
+		BlocksGT.plantableTrees.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"   , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.BoP, "originGrass"                  , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.BoP, "longGrass"                    , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.BoP, "bopGrass"                     , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.BoP, "newBopGrass"                  , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.BTL, "swampGrass"                   , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.BTL, "slimyGrass"                   , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.BOTA, "altGrass"                    , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "aetherGrass"               , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "enchantedAetherGrass"      , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "enchantedGrass"            , null));
+		
 		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "glass_pane"                  , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_brown"    , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_red"      , null));

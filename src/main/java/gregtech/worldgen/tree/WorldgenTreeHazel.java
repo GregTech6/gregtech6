@@ -48,7 +48,7 @@ public class WorldgenTreeHazel extends WorldgenObject {
 		for (String tName : aBiomeNames) if (BIOMES_HAZEL.contains(tName)) {temp = F; break;}
 		if (temp) return F;
 		int tX = aRandom.nextInt(16), tZ = aRandom.nextInt(16);
-		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) if (BlocksGT.plantableGrass.contains(aChunk.getBlock(tX, tY, tZ))) return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aMinX + tX, tY+1, aMinZ + tZ, (byte)4, aRandom);
+		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) if (BlocksGT.plantableTrees.contains(aChunk.getBlock(tX, tY, tZ))) return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aMinX + tX, tY+1, aMinZ + tZ, (byte)4, aRandom);
 		return F;
 	}
 }
