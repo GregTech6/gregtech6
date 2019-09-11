@@ -434,6 +434,9 @@ public class CS {
 	@SuppressWarnings("unchecked")
 	public static final ArrayListNoNulls<FluidStack>[] DYE_FLUIDS = new ArrayListNoNulls[] {new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>()};
 	
+	/** Offset for Rendering Text on Surfaces. */
+	public static final float PX_OFFSET = 0.005F;
+	
 	/** Array with length 17 containing the Coordinates of Pixels from 0/16 to 16/16 */
 	public static final float[] PX_P = {
 		  0.0000F, 0.0625F, 0.1250F, 0.1875F

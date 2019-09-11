@@ -151,7 +151,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 	}
 
 	@Override public byte getVisualData() {return mStone;}
-	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
+	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 
 	@Override

@@ -578,7 +578,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 				
 				glPushMatrix();
 				
-				glTranslated(aX+0.5+OFFSETS_X[tTileEntity.mFacing]*0.501-OFFSETS_Z[tTileEntity.mFacing]*0.25, aY+0.625, aZ+0.5+OFFSETS_Z[tTileEntity.mFacing]*0.501+OFFSETS_X[tTileEntity.mFacing]*0.25);
+				glTranslated(aX+0.5+OFFSETS_X[tTileEntity.mFacing]*0.502-OFFSETS_Z[tTileEntity.mFacing]*0.25, aY+0.625, aZ+0.5+OFFSETS_Z[tTileEntity.mFacing]*0.502+OFFSETS_X[tTileEntity.mFacing]*0.25);
 				glRotatef(180, 0, 0, 1);
 				glRotatef(COMPASS_FROM_SIDE[tTileEntity.mFacing] * 90, 0, 1, 0);
 				

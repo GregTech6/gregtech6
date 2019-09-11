@@ -207,7 +207,7 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 	@Override public void setVisualData(byte aData) {mBurning = ((aData & 1) != 0);}
 	
 	@Override public byte getVisualData() {return (byte)(mBurning?1:0);}
-	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
+	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 	
 	@Override

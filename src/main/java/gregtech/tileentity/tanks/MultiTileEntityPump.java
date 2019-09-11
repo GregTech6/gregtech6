@@ -44,6 +44,7 @@ import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -336,7 +337,7 @@ public class MultiTileEntityPump extends TileEntityBase09FacingSingle implements
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	@Override public void onFacingChange(byte aPreviousFacing) {mNextCheck = 20; mChecked.clear(); mCheckList.clear(); mPumpList.clear(); mPumpedFluids.clear();}
 	
-	@Override public boolean getStateRunningPossible() {return T;}
+	@Override public boolean getStateRunningPossible() {return !mPumpList.isEmpty() || WD.liquid(getBlockAtSide(mFacing));}
 	@Override public boolean getStateRunningPassively() {return mActiveData != 0;}
 	@Override public boolean getStateRunningActively() {return mActiveData != 0 && !mPumpedFluids.isEmpty();}
 	@Override public boolean setStateOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}

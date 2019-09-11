@@ -122,7 +122,7 @@ public class MultiTileEntityAutoToolIgniter extends TileEntityBase09FacingSingle
 		return aAmount;
 	}
 	
-	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
+	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public byte getVisualData() {return mSendSound;}
 	
 	@Override public boolean setStateOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}

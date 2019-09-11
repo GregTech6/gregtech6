@@ -190,7 +190,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 	}
 	
 	@Override public byte getVisualData() {return (byte)(mRunning?1:0);}
-	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
+	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 	
 	@Override

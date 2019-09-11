@@ -195,7 +195,7 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	}
 	
 	@Override public byte getVisualData() {return (byte)(mBurning?1:0);}
-	@Override public byte getDefaultSide() {return SIDE_SOUTH;}
+	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 	
 	@Override

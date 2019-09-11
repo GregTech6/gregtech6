@@ -44,50 +44,50 @@ public class MultiTileEntityMassStorageBox extends MultiTileEntityMassStorage {
 		if (aRenderPass == 0) return F;
 		if (mFacing == SIDE_X_NEG) {
 			switch (aRenderPass) {
-			case 1: box(aBlock, PX_P[0]-0.005F, PX_P[12], PX_P[ 4], PX_N[ 0], PX_N[ 2], PX_N[10]); return T;
-			case 2: box(aBlock, PX_P[0]-0.005F, PX_P[12], PX_P[ 6], PX_N[ 0], PX_N[ 2], PX_N[ 8]); return T;
-			case 3: box(aBlock, PX_P[0]-0.005F, PX_P[12], PX_P[ 8], PX_N[ 0], PX_N[ 2], PX_N[ 6]); return T;
-			case 4: box(aBlock, PX_P[0]-0.005F, PX_P[12], PX_P[10], PX_N[ 0], PX_N[ 2], PX_N[ 4]); return T;
+			case 1: box(aBlock, PX_P[0]-PX_OFFSET, PX_P[12], PX_P[ 4], PX_N[ 0], PX_N[ 2], PX_N[10]); return T;
+			case 2: box(aBlock, PX_P[0]-PX_OFFSET, PX_P[12], PX_P[ 6], PX_N[ 0], PX_N[ 2], PX_N[ 8]); return T;
+			case 3: box(aBlock, PX_P[0]-PX_OFFSET, PX_P[12], PX_P[ 8], PX_N[ 0], PX_N[ 2], PX_N[ 6]); return T;
+			case 4: box(aBlock, PX_P[0]-PX_OFFSET, PX_P[12], PX_P[10], PX_N[ 0], PX_N[ 2], PX_N[ 4]); return T;
 			}
 		}
 		if (mFacing == SIDE_X_POS) {
 			switch (aRenderPass) {
-			case 1: box(aBlock, PX_P[ 0], PX_P[12], PX_P[10], PX_N[0]+0.005F, PX_N[ 2], PX_N[ 4]); return T;
-			case 2: box(aBlock, PX_P[ 0], PX_P[12], PX_P[ 8], PX_N[0]+0.005F, PX_N[ 2], PX_N[ 6]); return T;
-			case 3: box(aBlock, PX_P[ 0], PX_P[12], PX_P[ 6], PX_N[0]+0.005F, PX_N[ 2], PX_N[ 8]); return T;
-			case 4: box(aBlock, PX_P[ 0], PX_P[12], PX_P[ 4], PX_N[0]+0.005F, PX_N[ 2], PX_N[10]); return T;
+			case 1: box(aBlock, PX_P[ 0], PX_P[12], PX_P[10], PX_N[0]+PX_OFFSET, PX_N[ 2], PX_N[ 4]); return T;
+			case 2: box(aBlock, PX_P[ 0], PX_P[12], PX_P[ 8], PX_N[0]+PX_OFFSET, PX_N[ 2], PX_N[ 6]); return T;
+			case 3: box(aBlock, PX_P[ 0], PX_P[12], PX_P[ 6], PX_N[0]+PX_OFFSET, PX_N[ 2], PX_N[ 8]); return T;
+			case 4: box(aBlock, PX_P[ 0], PX_P[12], PX_P[ 4], PX_N[0]+PX_OFFSET, PX_N[ 2], PX_N[10]); return T;
 			}
 		}
 		if (mFacing == SIDE_Z_NEG) {
 			switch (aRenderPass) {
-			case 1: box(aBlock, PX_P[10], PX_P[12], PX_P[0]-0.005F, PX_N[ 4], PX_N[ 2], PX_N[ 0]); return T;
-			case 2: box(aBlock, PX_P[ 8], PX_P[12], PX_P[0]-0.005F, PX_N[ 6], PX_N[ 2], PX_N[ 0]); return T;
-			case 3: box(aBlock, PX_P[ 6], PX_P[12], PX_P[0]-0.005F, PX_N[ 8], PX_N[ 2], PX_N[ 0]); return T;
-			case 4: box(aBlock, PX_P[ 4], PX_P[12], PX_P[0]-0.005F, PX_N[10], PX_N[ 2], PX_N[ 0]); return T;
+			case 1: box(aBlock, PX_P[10], PX_P[12], PX_P[0]-PX_OFFSET, PX_N[ 4], PX_N[ 2], PX_N[ 0]); return T;
+			case 2: box(aBlock, PX_P[ 8], PX_P[12], PX_P[0]-PX_OFFSET, PX_N[ 6], PX_N[ 2], PX_N[ 0]); return T;
+			case 3: box(aBlock, PX_P[ 6], PX_P[12], PX_P[0]-PX_OFFSET, PX_N[ 8], PX_N[ 2], PX_N[ 0]); return T;
+			case 4: box(aBlock, PX_P[ 4], PX_P[12], PX_P[0]-PX_OFFSET, PX_N[10], PX_N[ 2], PX_N[ 0]); return T;
 			}
 		}
 		if (mFacing == SIDE_Z_POS) {
 			switch (aRenderPass) {
-			case 1: box(aBlock, PX_P[ 4], PX_P[12], PX_P[ 0], PX_N[10], PX_N[ 2], PX_N[0]+0.005F); return T;
-			case 2: box(aBlock, PX_P[ 6], PX_P[12], PX_P[ 0], PX_N[ 8], PX_N[ 2], PX_N[0]+0.005F); return T;
-			case 3: box(aBlock, PX_P[ 8], PX_P[12], PX_P[ 0], PX_N[ 6], PX_N[ 2], PX_N[0]+0.005F); return T;
-			case 4: box(aBlock, PX_P[10], PX_P[12], PX_P[ 0], PX_N[ 4], PX_N[ 2], PX_N[0]+0.005F); return T;
+			case 1: box(aBlock, PX_P[ 4], PX_P[12], PX_P[ 0], PX_N[10], PX_N[ 2], PX_N[0]+PX_OFFSET); return T;
+			case 2: box(aBlock, PX_P[ 6], PX_P[12], PX_P[ 0], PX_N[ 8], PX_N[ 2], PX_N[0]+PX_OFFSET); return T;
+			case 3: box(aBlock, PX_P[ 8], PX_P[12], PX_P[ 0], PX_N[ 6], PX_N[ 2], PX_N[0]+PX_OFFSET); return T;
+			case 4: box(aBlock, PX_P[10], PX_P[12], PX_P[ 0], PX_N[ 4], PX_N[ 2], PX_N[0]+PX_OFFSET); return T;
 			}
 		}
 		if (mFacing == SIDE_Y_NEG) {
 			switch (aRenderPass) {
-			case 1: box(aBlock, PX_P[ 4], PX_P[0]-0.005F, PX_P[12], PX_N[10], PX_N[ 0], PX_N[ 2]); return T;
-			case 2: box(aBlock, PX_P[ 6], PX_P[0]-0.005F, PX_P[12], PX_N[ 8], PX_N[ 0], PX_N[ 2]); return T;
-			case 3: box(aBlock, PX_P[ 8], PX_P[0]-0.005F, PX_P[12], PX_N[ 6], PX_N[ 0], PX_N[ 2]); return T;
-			case 4: box(aBlock, PX_P[10], PX_P[0]-0.005F, PX_P[12], PX_N[ 4], PX_N[ 0], PX_N[ 2]); return T;
+			case 1: box(aBlock, PX_P[ 4], PX_P[0]-PX_OFFSET, PX_P[12], PX_N[10], PX_N[ 0], PX_N[ 2]); return T;
+			case 2: box(aBlock, PX_P[ 6], PX_P[0]-PX_OFFSET, PX_P[12], PX_N[ 8], PX_N[ 0], PX_N[ 2]); return T;
+			case 3: box(aBlock, PX_P[ 8], PX_P[0]-PX_OFFSET, PX_P[12], PX_N[ 6], PX_N[ 0], PX_N[ 2]); return T;
+			case 4: box(aBlock, PX_P[10], PX_P[0]-PX_OFFSET, PX_P[12], PX_N[ 4], PX_N[ 0], PX_N[ 2]); return T;
 			}
 		}
 		if (mFacing == SIDE_Y_POS) {
 			switch (aRenderPass) {
-			case 1: box(aBlock, PX_P[ 4], PX_P[ 0], PX_P[ 2], PX_N[10], PX_N[0]+0.005F, PX_N[12]); return T;
-			case 2: box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 2], PX_N[ 8], PX_N[0]+0.005F, PX_N[12]); return T;
-			case 3: box(aBlock, PX_P[ 8], PX_P[ 0], PX_P[ 2], PX_N[ 6], PX_N[0]+0.005F, PX_N[12]); return T;
-			case 4: box(aBlock, PX_P[10], PX_P[ 0], PX_P[ 2], PX_N[ 4], PX_N[0]+0.005F, PX_N[12]); return T;
+			case 1: box(aBlock, PX_P[ 4], PX_P[ 0], PX_P[ 2], PX_N[10], PX_N[0]+PX_OFFSET, PX_N[12]); return T;
+			case 2: box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 2], PX_N[ 8], PX_N[0]+PX_OFFSET, PX_N[12]); return T;
+			case 3: box(aBlock, PX_P[ 8], PX_P[ 0], PX_P[ 2], PX_N[ 6], PX_N[0]+PX_OFFSET, PX_N[12]); return T;
+			case 4: box(aBlock, PX_P[10], PX_P[ 0], PX_P[ 2], PX_N[ 4], PX_N[0]+PX_OFFSET, PX_N[12]); return T;
 			}
 		}
 		return F;
