@@ -148,6 +148,11 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {
+		for (Object tEntity : aWorld.loadedEntityList) if (tEntity instanceof EntityPlayer) {
+			if (ST.equal(((EntityPlayer)tEntity).getCurrentEquippedItem(), this) && ((EntityPlayer)tEntity).getDistanceSq(aX, aY, aZ) <= 25) {
+				return  AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+1       , aY+1, aZ+1       );
+			}
+		}
 		switch (aWorld.getBlockMetadata(aX, aY, aZ)) {
 		case  1: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ         , aX+1       , aY+1, aZ+PX_P[ 1]);
 		case  2: return AxisAlignedBB.getBoundingBox(aX         , aY, aZ+PX_P[15], aX+1       , aY+1, aZ+1       );
@@ -159,6 +164,12 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess aWorld, int aX, int aY, int aZ) {
+		if (aWorld instanceof World) for (Object tEntity : ((World)aWorld).loadedEntityList) if (tEntity instanceof EntityPlayer) {
+			if (ST.equal(((EntityPlayer)tEntity).getCurrentEquippedItem(), this) && ((EntityPlayer)tEntity).getDistanceSq(aX, aY, aZ) <= 25) {
+				setBlockBounds(0, 0, 0, 1, 1, 1);
+				return;
+			}
+		}
 		switch (aWorld.getBlockMetadata(aX, aY, aZ)) {
 		case  1: setBlockBounds(0, 0, 0, 1, 1, PX_P[ 1]); return;
 		case  2: setBlockBounds(0, 0, PX_P[15], 1, 1, 1); return;
