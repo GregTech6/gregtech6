@@ -64,6 +64,9 @@ public class BlockTextureFluid implements ITexture {
 	public static BlockTextureFluid get(Fluid aFluid) {
 		return CODE_CLIENT?new BlockTextureFluid(aFluid):null;
 	}
+	public static BlockTextureFluid get(FL aFluid) {
+		return CODE_CLIENT?new BlockTextureFluid(aFluid.fluid()):null;
+	}
 	
 	public BlockTextureFluid(FluidStack aFluid, boolean aAllowAlpha) {
 		if (aFluid == null || aFluid.getFluid() == null) {

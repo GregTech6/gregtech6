@@ -226,11 +226,11 @@ public class MultiTileEntityEngineFlux extends TileEntityBase09FacingSingle impl
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch (aRenderPass) {
-		case 0: box(aBlock, PX_P[                         1], PX_P[                       1], PX_P[                       1], PX_N[                       1], PX_N[                       1], PX_N[                       1]); return T;
-		case 1: box(aBlock, PX_P[                         0], PX_P[                       0], PX_P[                       0], PX_N[SIDES_AXIS_X[mFacing]?14: 0], PX_N[SIDES_AXIS_Y[mFacing]?14: 0], PX_N[SIDES_AXIS_Z[mFacing]?14: 0]); return T;
-		case 2: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?14: 0], PX_P[SIDES_AXIS_Y[mFacing]?14: 0], PX_P[SIDES_AXIS_Z[mFacing]?14: 0], PX_N[                        0], PX_N[                       0], PX_N[                       0]); return T;
-		case 3: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 4], PX_P[SIDES_AXIS_Y[mFacing]? 0: 4], PX_P[SIDES_AXIS_Z[mFacing]? 0: 4], PX_N[SIDES_AXIS_X[mFacing]? 0: 4], PX_N[SIDES_AXIS_Y[mFacing]? 0: 4], PX_N[SIDES_AXIS_Z[mFacing]? 0: 4]); return T;
-		case 4: box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 3], PX_P[SIDES_AXIS_Y[mFacing]? 0: 3], PX_P[SIDES_AXIS_Z[mFacing]? 0: 3], PX_N[SIDES_AXIS_X[mFacing]? 0: 3], PX_N[SIDES_AXIS_Y[mFacing]? 0: 3], PX_N[SIDES_AXIS_Z[mFacing]? 0: 3]); return T;
+		case 0: return box(aBlock, PX_P[                         1], PX_P[                       1], PX_P[                       1], PX_N[                       1], PX_N[                       1], PX_N[                       1]);
+		case 1: return box(aBlock, PX_P[                         0], PX_P[                       0], PX_P[                       0], PX_N[SIDES_AXIS_X[mFacing]?14: 0], PX_N[SIDES_AXIS_Y[mFacing]?14: 0], PX_N[SIDES_AXIS_Z[mFacing]?14: 0]);
+		case 2: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]?14: 0], PX_P[SIDES_AXIS_Y[mFacing]?14: 0], PX_P[SIDES_AXIS_Z[mFacing]?14: 0], PX_N[                        0], PX_N[                       0], PX_N[                       0]);
+		case 3: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 4], PX_P[SIDES_AXIS_Y[mFacing]? 0: 4], PX_P[SIDES_AXIS_Z[mFacing]? 0: 4], PX_N[SIDES_AXIS_X[mFacing]? 0: 4], PX_N[SIDES_AXIS_Y[mFacing]? 0: 4], PX_N[SIDES_AXIS_Z[mFacing]? 0: 4]);
+		case 4: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 0: 3], PX_P[SIDES_AXIS_Y[mFacing]? 0: 3], PX_P[SIDES_AXIS_Z[mFacing]? 0: 3], PX_N[SIDES_AXIS_X[mFacing]? 0: 3], PX_N[SIDES_AXIS_Y[mFacing]? 0: 3], PX_N[SIDES_AXIS_Z[mFacing]? 0: 3]);
 		}
 		return F;
 	}

@@ -29,6 +29,11 @@ import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
+import gregapi.old.Textures;
+import gregapi.render.BlockTextureDefault;
+import gregapi.render.BlockTextureFluid;
+import gregapi.render.BlockTextureMulti;
+import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.ITileEntityTapAccessible;
@@ -159,7 +164,59 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	}
 	
 	@Override
+	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
+		return 11;
+	}
+	
+	@Override
+	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+		switch (aRenderPass) {
+		case SIDE_X_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]);
+		case SIDE_Y_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[14], PX_N[ 0]);
+		case SIDE_Z_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]);
+		case SIDE_X_POS: return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
+		case SIDE_Y_POS: return box(aBlock, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
+		case SIDE_Z_POS: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
+		
+		case  6: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[12], PX_N[ 2], PX_N[12]);
+		case  7: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[12], PX_N[12], PX_N[ 2], PX_N[ 2]);
+		case  8: return box(aBlock, PX_P[12], PX_P[ 2], PX_P[ 2], PX_N[ 2], PX_N[ 2], PX_N[12]);
+		case  9: return box(aBlock, PX_P[12], PX_P[ 2], PX_P[12], PX_N[ 2], PX_N[ 2], PX_N[ 2]);
+		
+		case 10: return box(aBlock, PX_P[ 2]+PX_OFFSET, PX_P[ 2], PX_P[ 2]+PX_OFFSET, PX_N[ 2]-PX_OFFSET, PX_N[ 2], PX_N[ 2]-PX_OFFSET);
+		}
+		return F;
+	}
+	
+	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
+		if (aRenderPass < 6) {
+			if (!ALONG_AXIS[aRenderPass][aSide]) {
+				return null;
+			}
+			if (aRenderPass == mFacing) {
+				return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[4], mRGBa), BlockTextureDefault.get(sOverlays[4]));
+			}
+			if (aRenderPass == mSecondFacing) {
+				return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[5], mRGBa), BlockTextureDefault.get(sOverlays[5]));
+			}
+			if (aRenderPass == aSide && isCovered(aSide)) {
+				return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get(sOverlays[3]));
+			}
+		}
+		
+		switch (aRenderPass) {
+		case  0:
+			return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get(sOverlays[0]));
+		case  1:
+			return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get(sOverlays[1]));
+		case  2: case  3: case  4: case  5:
+			return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get(sOverlays[2]));
+		case  6: case  7: case  8: case  9:
+			return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Green, T), BlockTextureDefault.get(sOverlays[6]));
+		case 10:
+			return BlockTextureFluid.get(FL.Coolant_IC2);
+		}
 		return null;
 	}
 	
@@ -172,6 +229,24 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override public boolean getStateRunningPassively() {return mRunning;}
 	@Override public boolean getStateRunningPossible() {return mRunning;}
 	@Override public boolean getStateRunningActively() {return mRunning;}
+	
+	public static IIconContainer sColoreds[] = new IIconContainer[] {
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/top"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/side1"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/side2"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/face1"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/face2"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/rod")
+	}, sOverlays[] = new IIconContainer[] {
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/top"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/side1"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/side2"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/face1"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/face2"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/rod")
+	};
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core";}
 }

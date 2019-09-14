@@ -22,6 +22,7 @@ package gregapi.config;
 public enum ConfigCategories {
 	news,
 	general,
+	visibility,
 	machineconfig,
 	specialunificationtargets;
 

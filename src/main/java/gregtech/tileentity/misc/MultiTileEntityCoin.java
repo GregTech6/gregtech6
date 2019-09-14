@@ -33,6 +33,7 @@ import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.config.ConfigCategories;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.data.LH;
 import gregapi.data.MT;
@@ -463,8 +464,8 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onRegistrationClient(MultiTileEntityRegistry aRegistry, short aID) {
-		ALLOW_3D_COINS = ConfigsGT.CLIENT.get("general", "use3DCoins", ALLOW_3D_COINS);
-		ALLOW_3D_COINS_INV = ConfigsGT.CLIENT.get("general", "use3DCoinsInv", ALLOW_3D_COINS_INV);
+		ALLOW_3D_COINS = ConfigsGT.CLIENT.get(ConfigCategories.general, "use3DCoins", ALLOW_3D_COINS);
+		ALLOW_3D_COINS_INV = ConfigsGT.CLIENT.get(ConfigCategories.general, "use3DCoinsInv", ALLOW_3D_COINS_INV);
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.coin";}

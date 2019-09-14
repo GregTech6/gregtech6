@@ -29,6 +29,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.GT_API;
 import gregapi.api.Abstract_Mod;
+import gregapi.config.ConfigCategories;
+import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
@@ -67,7 +69,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 		mName = "gt.display.fluid";
 		LH.add(mName + ".name", "Fluid Display");
 		GameRegistry.registerItem(this, mName, MD.GAPI.mID);
-		if (!D1) ST.hide(this);
+		if (ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTFluidDisplay", T)) ST.hide(this);
 		ItemsGT.DEBUG_ITEMS.add(this);
 		ItemsGT.ILLEGAL_DROPS.add(this);
 		GarbageGT.BLACKLIST.add(this);

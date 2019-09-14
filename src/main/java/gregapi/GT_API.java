@@ -594,16 +594,16 @@ public class GT_API extends Abstract_Mod {
 		tMainConfig.save();
 		tStackConfig.save();
 		
-		SHOW_HIDDEN_ITEMS                   = ConfigsGT.CLIENT.get("visibility" , "HiddenGTItems"           , F);
-		SHOW_HIDDEN_MATERIALS               = ConfigsGT.CLIENT.get("visibility" , "HiddenGTMaterials"       , F);
-		SHOW_HIDDEN_PREFIXES                = ConfigsGT.CLIENT.get("visibility" , "HiddenGTPrefixes"        , F);
-		SHOW_MICROBLOCKS                    = ConfigsGT.CLIENT.get("visibility" , "MicroBlocks"             , F);
-		SHOW_ORE_BLOCK_PREFIXES             = ConfigsGT.CLIENT.get("visibility" , "OreBlocks"               , F);
-		SHOW_INTERNAL_NAMES                 = ConfigsGT.CLIENT.get("visibility" , "InternalNames"           , F);
-		SHOW_CHEM_FORMULAS                  = ConfigsGT.CLIENT.get("visibility" , "ChemTooltips"            , T);
+		SHOW_HIDDEN_ITEMS                   = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTItems"           , F);
+		SHOW_HIDDEN_MATERIALS               = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTMaterials"       , F);
+		SHOW_HIDDEN_PREFIXES                = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTPrefixes"        , F);
+		SHOW_MICROBLOCKS                    = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "MicroBlocks"             , F);
+		SHOW_ORE_BLOCK_PREFIXES             = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "OreBlocks"               , F);
+		SHOW_INTERNAL_NAMES                 = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "InternalNames"           , F);
+		SHOW_CHEM_FORMULAS                  = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "ChemTooltips"            , T);
 		
-		ITexture.Util.GT_ALPHA_BLENDING     = ConfigsGT.CLIENT.get("general"    , "useGTAlphaBlending"      , ITexture.Util.GT_ALPHA_BLENDING);
-		ITexture.Util.MC_ALPHA_BLENDING     = ConfigsGT.CLIENT.get("general"    , "useMCAlphaBlending"      , ITexture.Util.MC_ALPHA_BLENDING);
+		ITexture.Util.GT_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useGTAlphaBlending"      , ITexture.Util.GT_ALPHA_BLENDING);
+		ITexture.Util.MC_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useMCAlphaBlending"      , ITexture.Util.MC_ALPHA_BLENDING);
 		
 		ConfigsGT.SPECIAL                   = new Config("Other.cfg");
 		ConfigsGT.RECIPES                   = new Config("Recipes.cfg");
