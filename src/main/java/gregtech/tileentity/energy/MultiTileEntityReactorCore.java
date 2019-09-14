@@ -178,10 +178,10 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		case SIDE_Y_POS: return box(aBlock, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		case SIDE_Z_POS: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		
-		case  6: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[12], PX_N[ 2], PX_N[12]);
-		case  7: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[12], PX_N[12], PX_N[ 2], PX_N[ 2]);
-		case  8: return box(aBlock, PX_P[12], PX_P[ 2], PX_P[ 2], PX_N[ 2], PX_N[ 2], PX_N[12]);
-		case  9: return box(aBlock, PX_P[12], PX_P[ 2], PX_P[12], PX_N[ 2], PX_N[ 2], PX_N[ 2]);
+		case  6: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[10], PX_N[ 2], PX_N[10]);
+		case  7: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[10], PX_N[10], PX_N[ 2], PX_N[ 2]);
+		case  8: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[ 2], PX_N[ 2], PX_N[ 2], PX_N[10]);
+		case  9: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[10], PX_N[ 2], PX_N[ 2], PX_N[ 2]);
 		
 		case 10: return box(aBlock, PX_P[ 2]+PX_OFFSET, PX_P[ 2], PX_P[ 2]+PX_OFFSET, PX_N[ 2]-PX_OFFSET, PX_N[ 2], PX_N[ 2]-PX_OFFSET);
 		}
