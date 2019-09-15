@@ -68,7 +68,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	public int mNeutronCounts[] = new int[] {0,0,0,0}, oNeutronCounts[] = new int[] {0,0,0,0};
 	public long mEnergy = 0;
 	public boolean mRunning = F, oRunning = F;
-	public FluidTankGT[] mTanks = {new FluidTankGT(16000), new FluidTankGT(16000)};
+	public FluidTankGT[] mTanks = {new FluidTankGT(32000), new FluidTankGT(32000)};
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -104,7 +104,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	
 	static {
 		LH.add("gt.tooltip.reactorcore.1", "Primary Facing Emits Hot Coolant.");
-		LH.add("gt.tooltip.reactorcore.2", "Secondary Facing Emits Cold Coolant when nearly full.");
+		LH.add("gt.tooltip.reactorcore.2", "Secondary Facing Emits Cold Coolant when over half full.");
 	}
 	
 	@Override
@@ -192,8 +192,8 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 				tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
 			}
 			
-			if (mTanks[0].has()) FL.move(mTanks[0], getAdjacentTank(mSecondFacing));
-			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing      ));
+			if (mTanks[0].isHalf()) FL.move(mTanks[0], getAdjacentTank(mSecondFacing), mTanks[0].amount() - mTanks[0].capacity() / 2);
+			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing));
 		} else {
 			long tTotalNeutronCount = 0;
 			for (int i = 0; i < 4; i++) tTotalNeutronCount += (oNeutronCounts[i] = mNeutronCounts[i]);
@@ -269,8 +269,15 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 			}
 			return 0;
 		}
-		if (aTool.equals(TOOL_thermometer)) {// TODO Geiger Counter
+		if (aTool.equals(TOOL_geigercounter)) {
 			if (aChatReturn != null) {
+				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
+			}
+			return 10000;
+		}
+		if (aTool.equals(TOOL_thermometer)) {// TODO Remove Neutron Levels
+			if (aChatReturn != null) {
+				aChatReturn.add("Heat Levels: " + mEnergy + " NU");
 				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
 			}
 			return 10000;
@@ -428,7 +435,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[aRenderPass] : ALONG_AXIS[aRenderPass][aSide] ? mTextures[aRenderPass == aSide && isCovered(aSide) ? 3 : 2] : null;
+		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[aRenderPass] : mTextures[aRenderPass == aSide && isCovered(aSide) ? 3 : 2];
 	}
 	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mRunning) {UT.Entities.applyHeatDamage(aEntity, 5); UT.Entities.applyRadioactivity(aEntity, 3, 1);}}
