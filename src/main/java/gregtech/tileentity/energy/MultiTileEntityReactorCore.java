@@ -126,6 +126,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
+		if (aIsServerSide) DEB.println("REGULAR TICK");
 		if (aIsServerSide && mHasToAddTimer) {
 			GT_API_Proxy.SERVER_TICK_POST.add(this);
 			GT_API_Proxy.SERVER_TICK_PO2T.add(this);
@@ -151,6 +152,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onServerTickPost(boolean aFirst) {
+		DEB.println("POST TICK: " + aFirst);
 		if (aFirst) {
 			DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacents[] = new DelegatorTileEntity[4], tAdjacent;
 			DelegatorTileEntity
@@ -228,7 +230,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	public int tickRod1(int aSlot) {
 		if (slotHas(aSlot)) {
 			mNeutronCounts[aSlot] += 128;
-			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 8);
+			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 8); // Goes up to 820 if surrounded, or 512 in a 2x2
 		}
 		mNeutronCounts[aSlot] = 0;
 		return 0;
@@ -279,7 +281,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		}
 		if (aTool.equals(TOOL_thermometer)) {// TODO Remove Neutron Levels
 			if (aChatReturn != null) {
-				aChatReturn.add("Heat Levels: " + mEnergy + " NU");
+				aChatReturn.add("Heat Levels: " + (mEnergy < 20 ? "None" : mEnergy + " NU"));
 				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
 			}
 			return 10000;
