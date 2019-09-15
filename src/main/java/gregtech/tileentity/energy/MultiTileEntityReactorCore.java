@@ -126,7 +126,6 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
-		if (aIsServerSide) DEB.println("REGULAR TICK");
 		if (aIsServerSide && mHasToAddTimer) {
 			GT_API_Proxy.SERVER_TICK_POST.add(this);
 			GT_API_Proxy.SERVER_TICK_PO2T.add(this);
@@ -152,7 +151,6 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onServerTickPost(boolean aFirst) {
-		DEB.println("POST TICK: " + aFirst);
 		if (aFirst) {
 			DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacents[] = new DelegatorTileEntity[4], tAdjacent;
 			DelegatorTileEntity
@@ -200,6 +198,8 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 			long tTotalNeutronCount = 0;
 			for (int i = 0; i < 4; i++) tTotalNeutronCount += (oNeutronCounts[i] = mNeutronCounts[i]);
 			
+			DEB.println("Total Neutron Count: " + tTotalNeutronCount);
+			
 			tTotalNeutronCount = UT.Code.divup(tTotalNeutronCount, 128);
 			
 			if (tTotalNeutronCount > 0) for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tTotalNeutronCount, yCoord-tTotalNeutronCount, zCoord-tTotalNeutronCount, xCoord+1+tTotalNeutronCount, yCoord+1+tTotalNeutronCount, zCoord+1+tTotalNeutronCount))) {
@@ -213,15 +213,15 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 			if (tickRod2(2)) mRunning = T;
 			if (tickRod2(3)) mRunning = T;
 			
+			DEB.println("Power Total: " + mEnergy);
 			if (mEnergy >= 20) {
 				// TODO Heat up different Coolants
 				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(mEnergy / 20) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(mEnergy / 20))) {
 					mTanks[0].remove(mEnergy / 20);
-					mEnergy %= 20;
 				} else {
 					// TODO explode(0.1);
-					UT.Sounds.send(SFX.MC_EXPLODE, this);
 				}
+				mEnergy %= 20;
 			}
 		}
 	}
@@ -230,7 +230,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	public int tickRod1(int aSlot) {
 		if (slotHas(aSlot)) {
 			mNeutronCounts[aSlot] += 128;
-			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 8); // Goes up to 820 if surrounded, or 512 in a 2x2
+			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 8); // Goes up to 820 if surrounded, or 512 each in a 2x2
 		}
 		mNeutronCounts[aSlot] = 0;
 		return 0;
@@ -240,7 +240,10 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	public boolean tickRod2(int aSlot) {
 		mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
 		if (slotHas(aSlot)) {
+			DEB.println("Power Before: " + mEnergy);
+			DEB.println("Neutron Count: " + oNeutronCounts[aSlot]);
 			mEnergy += oNeutronCounts[aSlot];
+			DEB.println("Power After: " + mEnergy);
 			// TODO ROD DURABILITY
 			return T;
 		}
