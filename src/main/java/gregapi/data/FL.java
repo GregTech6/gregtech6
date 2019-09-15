@@ -570,12 +570,12 @@ public enum FL {
 	
 	public static FluidStack[] array(FluidStack... aFluids) {return aFluids;}
 	
-	public static int id (IFluidTank aTank) {return aTank == null ? -1 : id_(aTank);}
-	public static int id_(IFluidTank aTank) {return id(aTank.getFluid());}
-	public static int id (FluidStack aFluid) {return aFluid == null ? -1 : id_(aFluid);}
-	public static int id_(FluidStack aFluid) {return id(aFluid.getFluid());}
-	public static int id (Fluid aFluid) {return aFluid == null ? -1 : id_(aFluid);}
-	public static int id_(Fluid aFluid) {return FluidRegistry.getFluidID(aFluid);}
+	public static short id (IFluidTank aTank) {return aTank == null ? -1 : id_(aTank);}
+	public static short id_(IFluidTank aTank) {return id(aTank.getFluid());}
+	public static short id (FluidStack aFluid) {return aFluid == null ? -1 : id_(aFluid);}
+	public static short id_(FluidStack aFluid) {return id(aFluid.getFluid());}
+	public static short id (Fluid aFluid) {return aFluid == null ? -1 : id_(aFluid);}
+	public static short id_(Fluid aFluid) {return (short)FluidRegistry.getFluidID(aFluid);}
 	
 	public static Fluid fluid (int aID) {return aID < 0 ? null : FluidRegistry.getFluid(aID);}
 	public static Fluid fluid (String aFluidName) {return Code.stringInvalid(aFluidName) ? null : fluid_(aFluidName);}

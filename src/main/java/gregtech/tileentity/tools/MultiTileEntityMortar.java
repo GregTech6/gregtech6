@@ -32,9 +32,9 @@ import gregapi.data.BI;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
-import gregapi.data.MT;
 import gregapi.data.RM;
 import gregapi.old.Textures;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.BlockTextureDefault;
@@ -57,11 +57,15 @@ import net.minecraft.util.AxisAlignedBB;
 public class MultiTileEntityMortar extends TileEntityBase07Paintable implements ITileEntityQuickObstructionCheck, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips {
 	protected RecipeMap mRecipes = RM.Mortar;
 	protected Recipe mLastRecipe = null;
+	public byte mStyle = 0;
+	
+	public static final OreDictMaterial MORTAR_MATERIALS[] = {ANY.Steel, ANY.Sapphire, ANY.Diamond};
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_RECIPEMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_RECIPEMAP));
+		if (aNBT.hasKey(NBT_DESIGN)) mStyle = aNBT.getByte(NBT_DESIGN);
 	}
 	
 	@Override
@@ -145,7 +149,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 		case  1: return SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
 		case  3: return SIDE_Z_NEG  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureInsides, mRGBa), BlockTextureDefault.get(sOverlayInsides)):SIDE_Z_POS  == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureSides , mRGBa), BlockTextureDefault.get(sOverlaySides )):SIDE_TOP == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop, mRGBa), BlockTextureDefault.get(sOverlayTop)):null;
 		case  4: return SIDE_TOP    == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureTop    , mRGBa), BlockTextureDefault.get(sOverlayTop    )):SIDE_BOTTOM == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureBottom, mRGBa), BlockTextureDefault.get(sOverlayBottom)):null;
-		case  5: return SIDE_TOP    == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleTop, ANY.Steel.fRGBaSolid), BlockTextureDefault.get(sOverlayMiddleTop)):SIDE_BOTTOM == aSide ? null : BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleSide, MT.Steel.fRGBaSolid), BlockTextureDefault.get(sOverlayMiddleSide));
+		case  5: return SIDE_TOP    == aSide?BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleTop, MORTAR_MATERIALS[mStyle % MORTAR_MATERIALS.length].fRGBaSolid), BlockTextureDefault.get(sOverlayMiddleTop)):SIDE_BOTTOM == aSide ? null : BlockTextureMulti.get(BlockTextureDefault.get(sTextureMiddleSide, MORTAR_MATERIALS[mStyle % MORTAR_MATERIALS.length].fRGBaSolid), BlockTextureDefault.get(sOverlayMiddleSide));
 		case  6: return SIDE_TOP    == aSide?BI.nei():null;
 		}
 		return null;

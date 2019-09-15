@@ -403,7 +403,7 @@ public class LH {
 		add(TOOL_TO_SET_CONNECTIONS_PRE                 , "Use ");
 		add(TOOL_TO_SET_CONNECTIONS_POST                , " to set Connections");
 		add(TOOL_TO_HARVEST                             , "Tool to Harvest");
-		add(TOOL_TO_TAKE_PINCERS                        , "Use Pincers to extract Items while Hot");
+		add(TOOL_TO_TAKE_PINCERS                        , "Use Pincers to extract Items");
 		add(TOOL_HINT_USE_SNEAK                         , "Use Tool and Sneak for more options");
 		add(WEAPON_SNEAK_RIGHTCLICK_TO_RELOAD           , "Sneak Rightclick to Reload");
 		add(WIRE_STATS_LOSSLESS                         , "Transfers Power losslessly");

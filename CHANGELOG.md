@@ -35,6 +35,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 360 000 000 000 HU per Unit of U-235 at Max Efficiency.
 [CHANGED] I decided to give Lead a darker Color.
 [CHANGED] Inventory Refill now also works with any Food that is aligned in the same Column, just like identical Items in the same Column of your Inventory already do.
+[ADDED] Diamond and Sapphire Mortars. Gating them behind Iron doesn't make that much sense.
+[WIP]
+Nuclear Reactor Core.
 
 
 6.11.07:
