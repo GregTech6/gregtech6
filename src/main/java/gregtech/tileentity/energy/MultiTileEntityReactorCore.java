@@ -214,9 +214,11 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 			if (mEnergy >= 20) {
 				// TODO Heat up different Coolants
 				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(mEnergy / 20) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(mEnergy / 20))) {
+					mTanks[0].remove(mEnergy / 20);
 					mEnergy %= 20;
 				} else {
-					explode(0);
+					// TODO explode(0.1);
+					UT.Sounds.send(SFX.MC_EXPLODE, this);
 				}
 			}
 		}
@@ -226,7 +228,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	public int tickRod1(int aSlot) {
 		if (slotHas(aSlot)) {
 			mNeutronCounts[aSlot] += 128;
-			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 6); // goes towards 768
+			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 8);
 		}
 		mNeutronCounts[aSlot] = 0;
 		return 0;
@@ -236,7 +238,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	public boolean tickRod2(int aSlot) {
 		mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
 		if (slotHas(aSlot)) {
-			mEnergy += oNeutronCounts[aSlot] / 8; // TODO REMOVE THE /8 AFTER TESTING
+			mEnergy += oNeutronCounts[aSlot];
 			// TODO ROD DURABILITY
 			return T;
 		}
