@@ -47,6 +47,8 @@ import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase10FacingDouble;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
+import gregapi.tileentity.machines.ITileEntitySwitchableMode;
+import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -64,17 +66,20 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, IMTE_SyncDataShort, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, IMTE_SyncDataShort, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	public int mNeutronCounts[] = new int[] {0,0,0,0}, oNeutronCounts[] = new int[] {0,0,0,0};
 	public long mEnergy = 0;
-	public boolean mRunning = F, oRunning = F;
+	public byte mMode = 0;
+	public boolean mRunning = F, oRunning = F, mStopped = F;
 	public FluidTankGT[] mTanks = {new FluidTankGT(32000), new FluidTankGT(32000)};
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
+		mMode = aNBT.getByte(NBT_MODE);
 		mEnergy = aNBT.getLong(NBT_ENERGY);
 		mRunning = aNBT.getBoolean(NBT_ACTIVE);
+		mStopped = aNBT.getBoolean(NBT_STOPPED);
 		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0");
 		mTanks[1].readFromNBT(aNBT, NBT_TANK+".1");
 		for (int i = 0; i < 4; i++) {
@@ -92,8 +97,10 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
+		UT.NBT.setNumber(aNBT, NBT_MODE, mMode);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mRunning);
+		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mStopped);
 		mTanks[0].writeToNBT(aNBT, NBT_TANK+".0");
 		mTanks[1].writeToNBT(aNBT, NBT_TANK+".1");
 		for (int i = 0; i < 4; i++) {
@@ -152,53 +159,54 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onServerTickPost(boolean aFirst) {
 		if (aFirst) {
-			DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacents[] = new DelegatorTileEntity[4], tAdjacent;
-			DelegatorTileEntity
-			tAdjacentTE = getAdjacentTileEntity(SIDE_Z_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[0] = tAdjacentTE;
-			tAdjacentTE = getAdjacentTileEntity(SIDE_Z_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[1] = tAdjacentTE;
-			tAdjacentTE = getAdjacentTileEntity(SIDE_X_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[2] = tAdjacentTE;
-			tAdjacentTE = getAdjacentTileEntity(SIDE_X_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[3] = tAdjacentTE;
-			
-			int
-			tNeutronCount = tickRod1(0);
-			if (tNeutronCount != 0) {
-				mNeutronCounts[0] += acceptNeutrons(1, tNeutronCount);
-				mNeutronCounts[0] += acceptNeutrons(2, tNeutronCount);
-				tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-				tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+			if (mStopped) {
+				//
+			} else {
+				DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacents[] = new DelegatorTileEntity[4], tAdjacent;
+				DelegatorTileEntity
+				tAdjacentTE = getAdjacentTileEntity(SIDE_Z_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[0] = tAdjacentTE;
+				tAdjacentTE = getAdjacentTileEntity(SIDE_Z_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[1] = tAdjacentTE;
+				tAdjacentTE = getAdjacentTileEntity(SIDE_X_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[2] = tAdjacentTE;
+				tAdjacentTE = getAdjacentTileEntity(SIDE_X_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[3] = tAdjacentTE;
+				
+				int
+				tNeutronCount = tickRod1(0);
+				if (tNeutronCount != 0) {
+					mNeutronCounts[0] += acceptNeutrons(1, tNeutronCount);
+					mNeutronCounts[0] += acceptNeutrons(2, tNeutronCount);
+					tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
+					tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+				}
+				
+				tNeutronCount = tickRod1(1);
+				if (tNeutronCount != 0) {
+					mNeutronCounts[1] += acceptNeutrons(0, tNeutronCount);
+					mNeutronCounts[1] += acceptNeutrons(3, tNeutronCount);
+					tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+					tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
+				}
+				
+				tNeutronCount = tickRod1(2);
+				if (tNeutronCount != 0) {
+					mNeutronCounts[2] += acceptNeutrons(0, tNeutronCount);
+					mNeutronCounts[2] += acceptNeutrons(3, tNeutronCount);
+					tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+					tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
+				}
+				
+				tNeutronCount = tickRod1(3);
+				if (tNeutronCount != 0) {
+					mNeutronCounts[3] += acceptNeutrons(1, tNeutronCount);
+					mNeutronCounts[3] += acceptNeutrons(2, tNeutronCount);
+					tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
+					tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+				}
 			}
-			
-			tNeutronCount = tickRod1(1);
-			if (tNeutronCount != 0) {
-				mNeutronCounts[1] += acceptNeutrons(0, tNeutronCount);
-				mNeutronCounts[1] += acceptNeutrons(3, tNeutronCount);
-				tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-				tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-			}
-			
-			tNeutronCount = tickRod1(2);
-			if (tNeutronCount != 0) {
-				mNeutronCounts[2] += acceptNeutrons(0, tNeutronCount);
-				mNeutronCounts[2] += acceptNeutrons(3, tNeutronCount);
-				tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-				tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-			}
-			
-			tNeutronCount = tickRod1(3);
-			if (tNeutronCount != 0) {
-				mNeutronCounts[3] += acceptNeutrons(1, tNeutronCount);
-				mNeutronCounts[3] += acceptNeutrons(2, tNeutronCount);
-				tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-				tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-			}
-			
 			if (mTanks[0].isHalf()) FL.move(mTanks[0], getAdjacentTank(mSecondFacing), mTanks[0].amount() - mTanks[0].capacity() / 2);
 			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing));
 		} else {
 			long tTotalNeutronCount = 0;
 			for (int i = 0; i < 4; i++) tTotalNeutronCount += (oNeutronCounts[i] = mNeutronCounts[i]);
-			
-			DEB.println("Total Neutron Count: " + tTotalNeutronCount);
 			
 			tTotalNeutronCount = UT.Code.divup(tTotalNeutronCount, 128);
 			
@@ -213,7 +221,6 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 			if (tickRod2(2)) mRunning = T;
 			if (tickRod2(3)) mRunning = T;
 			
-			DEB.println("Power Total: " + mEnergy);
 			if (mEnergy >= 20) {
 				// TODO Heat up different Coolants
 				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(mEnergy / 20) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(mEnergy / 20))) {
@@ -240,10 +247,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	public boolean tickRod2(int aSlot) {
 		mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
 		if (slotHas(aSlot)) {
-			DEB.println("Power Before: " + mEnergy);
-			DEB.println("Neutron Count: " + oNeutronCounts[aSlot]);
 			mEnergy += oNeutronCounts[aSlot];
-			DEB.println("Power After: " + mEnergy);
 			// TODO ROD DURABILITY
 			return T;
 		}
@@ -362,10 +366,11 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	
 	@Override
 	public void setVisualData(byte aData) {
-		mRunning = ((aData & 1) != 0);
+		mRunning = ((aData & 16) != 0);
+		mMode = (byte)(aData & 15);
 	}
 	
-	@Override public byte getVisualData() {return (byte)(mRunning?1:0);}
+	@Override public byte getVisualData() {return (byte)(mRunning?16|mMode:mMode);}
 	@Override public byte getDefaultSide() {return SIDE_BOTTOM;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}
 	
@@ -458,6 +463,10 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override public boolean getStateRunningPassively() {return mRunning;}
 	@Override public boolean getStateRunningPossible() {return mRunning;}
 	@Override public boolean getStateRunningActively() {return mRunning;}
+	@Override public boolean setStateOnOff(boolean aOnOff) {return mStopped = !aOnOff;}
+	@Override public boolean getStateOnOff() {return !mStopped;}
+	@Override public byte setStateMode(byte aMode) {return mMode = aMode;}
+	@Override public byte getStateMode() {return mMode;}
 	
 	public static IIconContainer sColoreds[] = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/bottom"),

@@ -114,8 +114,9 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 			// Check if it is ready to burn or emit Energy.
 			if (mBurning || mCooldown > 0) {
 				// Emit buffered Energy. And yes if you use a strong enough Fuel, that Energy would stay buffered even while the Burning Box is Off. This is very intended and represents partially used Fuel.
-				if (mEnergy > 0) {
-					mEnergy -= Math.max(1, Math.max(mRate / 2, ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, 1, Math.min(mRate, mEnergy), this)));
+				if (mEnergy >= mRate) {
+					ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, 1, Math.min(mRate, mEnergy), this);
+					mEnergy -= mRate;
 					// Burn surrounding Area.
 					if (mEfficiency < 1 || rng(mEfficiency) == 0) {
 						WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), T);

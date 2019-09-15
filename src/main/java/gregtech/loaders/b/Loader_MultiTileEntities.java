@@ -581,7 +581,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		
 		// Reactors
-		aMat = MT.Pb;                   aRegistry.add("Reactor Core"                                    , "Reactors",  9200,  9200, MultiTileEntityReactorCore.class  , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid)), "   ", " M ", "   ", 'M', OP.casingMachineDense.dat(aMat));
+		aMat = MT.Pb;                   aRegistry.add("Reactor Core"                                    , "Reactors",  9200,  9200, MultiTileEntityReactorCore.class  , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid))/* TODO, "   ", " M ", "   ", 'M', OP.casingMachineDense.dat(aMat)*/);
 		
 		
 		// Steam Turbines
