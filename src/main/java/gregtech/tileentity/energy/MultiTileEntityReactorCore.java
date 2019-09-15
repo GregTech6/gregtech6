@@ -21,11 +21,13 @@ package gregtech.tileentity.energy;
 
 import static gregapi.data.CS.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
@@ -43,11 +45,13 @@ import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase10FacingDouble;
+import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -60,16 +64,23 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
-	protected boolean mRunning = F, oRunning = F;
-	protected FluidTankGT[] mTanks = {new FluidTankGT(16000), new FluidTankGT(16000)};
+public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, IMTE_SyncDataShort, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+	public int mNeutronCounts[] = new int[] {0,0,0,0}, oNeutronCounts[] = new int[] {0,0,0,0};
+	public long mEnergy = 0;
+	public boolean mRunning = F, oRunning = F;
+	public FluidTankGT[] mTanks = {new FluidTankGT(16000), new FluidTankGT(16000)};
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
+		mEnergy = aNBT.getLong(NBT_ENERGY);
 		mRunning = aNBT.getBoolean(NBT_ACTIVE);
 		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0");
 		mTanks[1].readFromNBT(aNBT, NBT_TANK+".1");
+		for (int i = 0; i < 4; i++) {
+			mNeutronCounts[i] = aNBT.getInteger(NBT_VALUE+".m."+i);
+			oNeutronCounts[i] = aNBT.getInteger(NBT_VALUE+".o."+i);
+		}
 		
 		if (worldObj != null && isServerSide() && mHasToAddTimer) {
 			GT_API_Proxy.SERVER_TICK_POST.add(this);
@@ -81,9 +92,14 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
+		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mRunning);
 		mTanks[0].writeToNBT(aNBT, NBT_TANK+".0");
 		mTanks[1].writeToNBT(aNBT, NBT_TANK+".1");
+		for (int i = 0; i < 4; i++) {
+			UT.NBT.setNumber(aNBT, NBT_VALUE+".m."+i, mNeutronCounts[i]);
+			UT.NBT.setNumber(aNBT, NBT_VALUE+".o."+i, oNeutronCounts[i]);
+		}
 	}
 	
 	static {
@@ -98,6 +114,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TAKE_PINCERS));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_MEASURE_GEIGER_COUNTER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -124,20 +141,116 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		onUnregisterPost();
 	}
 	
-	// 0 and 1 are at SIDE_X_NEG
-	// 0 and 2 are at SIDE_Z_NEG
-	// 2 and 3 are at SIDE_X_POS
-	// 1 and 3 are at SIDE_Z_POS
+	private static final int[] S2103 = new int[] {0,0,2,1,0,3,0}, S0312 = new int[] {0,0,0,3,1,2,0};
+	
+	// 0 and 2 are at SIDE_Z_NEG    1 3      -->X+
+	// 1 and 3 are at SIDE_Z_POS  2|0 2|0   |0 2
+	// 0 and 1 are at SIDE_X_NEG  3|1 3|1   v1 3
+	// 2 and 3 are at SIDE_X_POS    0 2     Z+
 	
 	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onServerTickPost(boolean aFirst) {
 		if (aFirst) {
-			// TODO EMIT NEUTRONS
-			if (mTanks[0].has()) FL.move(delegator(mSecondFacing), getAdjacentTank(mSecondFacing));
-			if (mTanks[1].has()) FL.move(delegator(mFacing      ), getAdjacentTank(mFacing      ));
+			DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacents[] = new DelegatorTileEntity[4], tAdjacent;
+			DelegatorTileEntity
+			tAdjacentTE = getAdjacentTileEntity(SIDE_Z_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[0] = tAdjacentTE;
+			tAdjacentTE = getAdjacentTileEntity(SIDE_Z_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[1] = tAdjacentTE;
+			tAdjacentTE = getAdjacentTileEntity(SIDE_X_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[2] = tAdjacentTE;
+			tAdjacentTE = getAdjacentTileEntity(SIDE_X_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[3] = tAdjacentTE;
+			
+			int
+			tNeutronCount = tickRod1(0);
+			if (tNeutronCount != 0) {
+				mNeutronCounts[0] += acceptNeutrons(1, tNeutronCount);
+				mNeutronCounts[0] += acceptNeutrons(2, tNeutronCount);
+				tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
+				tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+			}
+			
+			tNeutronCount = tickRod1(1);
+			if (tNeutronCount != 0) {
+				mNeutronCounts[1] += acceptNeutrons(0, tNeutronCount);
+				mNeutronCounts[1] += acceptNeutrons(3, tNeutronCount);
+				tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+				tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
+			}
+			
+			tNeutronCount = tickRod1(2);
+			if (tNeutronCount != 0) {
+				mNeutronCounts[2] += acceptNeutrons(0, tNeutronCount);
+				mNeutronCounts[2] += acceptNeutrons(3, tNeutronCount);
+				tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+				tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
+			}
+			
+			tNeutronCount = tickRod1(3);
+			if (tNeutronCount != 0) {
+				mNeutronCounts[3] += acceptNeutrons(1, tNeutronCount);
+				mNeutronCounts[3] += acceptNeutrons(2, tNeutronCount);
+				tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.acceptNeutrons(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
+				tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.acceptNeutrons(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+			}
+			
+			if (mTanks[0].has()) FL.move(mTanks[0], getAdjacentTank(mSecondFacing));
+			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing      ));
 		} else {
-			// TODO REACT TO NEUTRONS
+			long tTotalNeutronCount = 0;
+			for (int i = 0; i < 4; i++) tTotalNeutronCount += (oNeutronCounts[i] = mNeutronCounts[i]);
+			
+			tTotalNeutronCount = UT.Code.divup(tTotalNeutronCount, 128);
+			
+			if (tTotalNeutronCount > 0) for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tTotalNeutronCount, yCoord-tTotalNeutronCount, zCoord-tTotalNeutronCount, xCoord+1+tTotalNeutronCount, yCoord+1+tTotalNeutronCount, zCoord+1+tTotalNeutronCount))) {
+				UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tTotalNeutronCount, 10), (int)tTotalNeutronCount);
+			}
+			
+			mRunning = (tTotalNeutronCount != 0);
+			
+			if (tickRod2(0)) mRunning = T;
+			if (tickRod2(1)) mRunning = T;
+			if (tickRod2(2)) mRunning = T;
+			if (tickRod2(3)) mRunning = T;
+			
+			if (mEnergy >= 20) {
+				// TODO Heat up different Coolants
+				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(mEnergy / 20) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(mEnergy / 20))) {
+					mEnergy %= 20;
+				} else {
+					explode(0);
+				}
+			}
 		}
+	}
+	
+	// TODO
+	public int tickRod1(int aSlot) {
+		if (slotHas(aSlot)) {
+			mNeutronCounts[aSlot] += 128;
+			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 6); // goes towards 768
+		}
+		mNeutronCounts[aSlot] = 0;
+		return 0;
+	}
+	
+	// TODO
+	public boolean tickRod2(int aSlot) {
+		mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
+		if (slotHas(aSlot)) {
+			mEnergy += oNeutronCounts[aSlot] / 8; // TODO REMOVE THE /8 AFTER TESTING
+			// TODO ROD DURABILITY
+			return T;
+		}
+		return F;
+	}
+	
+	// TODO
+	public int acceptNeutrons(int aSlot, int aNeutrons) {
+		if (slotHas(aSlot)) {
+			mNeutronCounts[aSlot] += aNeutrons;
+			return 0;
+		}
+		// return reflected Neutrons
+		return 0;
 	}
 	
 	@Override
@@ -155,6 +268,12 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 				return 10000;
 			}
 			return 0;
+		}
+		if (aTool.equals(TOOL_thermometer)) {// TODO Geiger Counter
+			if (aChatReturn != null) {
+				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
+			}
+			return 10000;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
@@ -199,29 +318,31 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		short tDisplay = FL.id_(mTanks[0]);
-		if (aSendAll) return getClientDataPacketByteArray(aSendAll, UT.Code.toByteS(tDisplay, 0), UT.Code.toByteS(tDisplay, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa)
+		if (aSendAll) return getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), UT.Code.toByteS(tDisplay, 0), UT.Code.toByteS(tDisplay, 1)
 		, UT.Code.toByteS(ST.id(slot(0)), 0), UT.Code.toByteS(ST.id(slot(0)), 1), UT.Code.toByteS(ST.meta(slot(0)), 0), UT.Code.toByteS(ST.meta(slot(0)), 1)
 		, UT.Code.toByteS(ST.id(slot(1)), 0), UT.Code.toByteS(ST.id(slot(1)), 1), UT.Code.toByteS(ST.meta(slot(1)), 0), UT.Code.toByteS(ST.meta(slot(1)), 1)
 		, UT.Code.toByteS(ST.id(slot(2)), 0), UT.Code.toByteS(ST.id(slot(2)), 1), UT.Code.toByteS(ST.meta(slot(2)), 0), UT.Code.toByteS(ST.meta(slot(2)), 1)
 		, UT.Code.toByteS(ST.id(slot(3)), 0), UT.Code.toByteS(ST.id(slot(3)), 1), UT.Code.toByteS(ST.meta(slot(3)), 0), UT.Code.toByteS(ST.meta(slot(3)), 1)
 		);
-		return getClientDataPacketByteArray(aSendAll, UT.Code.toByteS(tDisplay, 0), UT.Code.toByteS(tDisplay, 1));
+		return getClientDataPacketShort(aSendAll, tDisplay);
 	}
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		if (aData.length > 1) {
-			mTanks[0].setFluid(FL.make(UT.Code.combine(aData[0], aData[1]), mTanks[0].getCapacity()));
-			if (aData.length > 4) {
-				mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[2]), UT.Code.unsignB(aData[3]), UT.Code.unsignB(aData[4])});
-				if (aData.length > 20) {
-					slot(0, ST.make(UT.Code.combine(aData[ 5], aData[ 6]), 1, UT.Code.combine(aData[ 7], aData[ 8])));
-					slot(1, ST.make(UT.Code.combine(aData[ 9], aData[10]), 1, UT.Code.combine(aData[11], aData[12])));
-					slot(2, ST.make(UT.Code.combine(aData[13], aData[14]), 1, UT.Code.combine(aData[15], aData[16])));
-					slot(3, ST.make(UT.Code.combine(aData[17], aData[18]), 1, UT.Code.combine(aData[19], aData[20])));
-				}
-			}
-		}
+		super.receiveDataByteArray(aData, aNetworkHandler);
+		int i = 5;
+		if (aData.length <= i) return T;
+		mTanks[0].setFluid(FL.make(UT.Code.combine(aData[i++], aData[i++]), mTanks[0].getCapacity()));
+		slot(0, ST.make(UT.Code.combine(aData[i++], aData[i++]), 1, UT.Code.combine(aData[i++], aData[i++])));
+		slot(1, ST.make(UT.Code.combine(aData[i++], aData[i++]), 1, UT.Code.combine(aData[i++], aData[i++])));
+		slot(2, ST.make(UT.Code.combine(aData[i++], aData[i++]), 1, UT.Code.combine(aData[i++], aData[i++])));
+		slot(3, ST.make(UT.Code.combine(aData[i++], aData[i++]), 1, UT.Code.combine(aData[i++], aData[i++])));
+		return T;
+	}
+	
+	@Override
+	public boolean receiveDataShort(short aData, INetworkHandler aNetworkHandler) {
+		mTanks[0].setFluid(FL.make(aData, mTanks[0].getCapacity()));
 		return T;
 	}
 	
@@ -295,10 +416,10 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		case SIDE_Y_POS: return box(aBlock, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		case SIDE_Z_POS: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		
-		case  6: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[10], PX_N[ 2], PX_N[10]); // 0 and 1 are at SIDE_X_NEG
-		case  7: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[10], PX_N[10], PX_N[ 2], PX_N[ 2]); // 0 and 2 are at SIDE_Z_NEG
-		case  8: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[ 2], PX_N[ 2], PX_N[ 2], PX_N[10]); // 2 and 3 are at SIDE_X_POS
-		case  9: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[10], PX_N[ 2], PX_N[ 2], PX_N[ 2]); // 1 and 3 are at SIDE_Z_POS
+		case  6: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[10], PX_N[ 2], PX_N[10]);
+		case  7: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[10], PX_N[10], PX_N[ 2], PX_N[ 2]);
+		case  8: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[ 2], PX_N[ 2], PX_N[ 2], PX_N[10]);
+		case  9: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[10], PX_N[ 2], PX_N[ 2], PX_N[ 2]);
 		
 		case 10: return box(aBlock, PX_P[ 2]+PX_OFFSET, PX_P[ 2], PX_P[ 2]+PX_OFFSET, PX_N[ 2]-PX_OFFSET, PX_N[ 2], PX_N[ 2]-PX_OFFSET);
 		}
@@ -307,12 +428,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		if (aRenderPass >= 6 || aRenderPass < 2)      return mTextures[aRenderPass];
-		if (!ALONG_AXIS[aRenderPass][aSide])          return null;
-		if (aRenderPass == mFacing)                   return mTextures[4];
-		if (aRenderPass == mSecondFacing)             return mTextures[5];
-		if (aRenderPass == aSide && isCovered(aSide)) return mTextures[3];
-		return mTextures[2];
+		return aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[aRenderPass] : ALONG_AXIS[aRenderPass][aSide] ? mTextures[aRenderPass == aSide && isCovered(aSide) ? 3 : 2] : null;
 	}
 	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mRunning) {UT.Entities.applyHeatDamage(aEntity, 5); UT.Entities.applyRadioactivity(aEntity, 3, 1);}}

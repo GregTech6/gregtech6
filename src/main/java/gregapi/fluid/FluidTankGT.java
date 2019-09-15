@@ -165,6 +165,7 @@ public class FluidTankGT implements IFluidTank {
 	}
 	
 	public boolean canFillAll(FluidStack aFluid) {return aFluid == null || aFluid.amount <= 0 || (isEmpty() ? mVoidExcess || aFluid.amount <= mCapacity : contains(aFluid) && (mVoidExcess || mAmount + aFluid.amount <= mCapacity));}
+	public boolean canFillAll(long aAmount) {return aAmount <= 0 || mVoidExcess || mAmount + aAmount <= mCapacity;}
 	
 	public boolean fillAll(FluidStack aFluid) {
 		if (aFluid == null || aFluid.amount <= 0) return T;

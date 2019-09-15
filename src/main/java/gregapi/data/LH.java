@@ -139,6 +139,7 @@ public class LH {
 	, TOOL_TO_UNCOVER_CROWBAR = "gt.lang.use.crowbar.to.uncover"
 	, TOOL_TO_DECALCIFY_CHISEL = "gt.lang.use.chisel.to.decalcify"
 	, TOOL_TO_DETAIL_MAGNIFYINGGLASS = "gt.lang.use.magnifyingglass.to.detail"
+	, TOOL_TO_MEASURE_GEIGER_COUNTER = "gt.lang.use.geigercoutner.to.measure"
 	, TOOL_TO_REMOVE_SHOVEL = "gt.lang.use.shovel.to.empty"
 	, TOOL_TO_CHANGE_DESIGN_CHISEL = "gt.lang.use.chisel.to.switch.design"
 	, TOOL_TO_HARVEST = "gt.lang.tool.to.harvest"
@@ -387,6 +388,7 @@ public class LH {
 		add(TOOL_TO_UNCOVER_CROWBAR                     , "Use Crowbar to remove Covers");
 		add(TOOL_TO_DECALCIFY_CHISEL                    , "Use Chisel to decalcify");
 		add(TOOL_TO_DETAIL_MAGNIFYINGGLASS              , "Use Magnifying Glass to see Details");
+		add(TOOL_TO_MEASURE_GEIGER_COUNTER              , "Use Geiger Counter to Measure");
 		add(TOOL_TO_TOGGLE_INPUTS_MONKEY_WRENCH         , "Use Monkey Wrench to toggle Inputs");
 		add(TOOL_TO_TOGGLE_OUTPUTS_MONKEY_WRENCH        , "Use Monkey Wrench to toggle Outputs");
 		add(TOOL_TO_TOGGLE_AUTO_INPUTS_MONKEY_WRENCH    , "Use Monkey Wrench to toggle automatic Inputs");

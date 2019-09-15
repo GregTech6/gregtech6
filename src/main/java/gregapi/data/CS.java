@@ -897,7 +897,6 @@ public class CS {
 	, TOOL_igniter          = "igniter"
 	, TOOL_extinguisher     = "extinguisher"
 	, TOOL_whacker          = "whacker"
-	, TOOL_magnifyingglass  = "magnifyingglass"
 	, TOOL_wrench           = "wrench"
 	, TOOL_monkeywrench     = "monkeywrench"
 	, TOOL_crowbar          = "crowbar"
@@ -929,6 +928,8 @@ public class CS {
 	, TOOL_solderingtool    = "solderingtool"
 	, TOOL_solderingmetal   = "solderingmetal"
 	, TOOL_thermometer      = "thermometer"
+	, TOOL_magnifyingglass  = "magnifyingglass"
+	, TOOL_geigercounter    = "geigercounter"
 	, TOOL_prospector       = "prospector"
 	, TOOL_ducttape         = "ducttape"
 	;
@@ -940,7 +941,6 @@ public class CS {
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_whacker         , "Whacking Tool");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_wrench          , "Wrench");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_monkeywrench    , "Monkey Wrench");
-		LH.add(TOOL_LOCALISER_PREFIX + TOOL_magnifyingglass , "Magnifying Glass");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_crowbar         , "Crowbar");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_pincers         , "Pincers");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_axe             , "Axe");
@@ -969,6 +969,8 @@ public class CS {
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_solderingtool   , "Soldering Tool");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_solderingmetal  , "Soldering Metal");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_thermometer     , "Thermometer");
+		LH.add(TOOL_LOCALISER_PREFIX + TOOL_magnifyingglass , "Magnifying Glass");
+		LH.add(TOOL_LOCALISER_PREFIX + TOOL_geigercounter   , "Geiger Counter");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_prospector      , "Prospector");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_ducttape        , "Duct Tape");
 		
