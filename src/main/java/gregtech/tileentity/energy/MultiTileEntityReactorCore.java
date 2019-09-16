@@ -235,7 +235,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	
 	// TODO
 	public int tickRod1(int aSlot) {
-		if (slotHas(aSlot)) {
+		if (slotHas(aSlot) && (mMode & (1 << aSlot)) == 0) {
 			mNeutronCounts[aSlot] += 128;
 			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 8); // Goes up to 820 if surrounded, or 512 each in a 2x2
 		}

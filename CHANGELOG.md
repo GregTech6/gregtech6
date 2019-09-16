@@ -33,6 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A Bug that made any Burning Boxes and the Heat Exchanger consume half as much Fuel as they should. The Rate of Output was unaffected.
 [FIXED] GT6 Bar Placement Code for the Catwalk/Cage Bars Block.
 [FIXED] The Activity Detector for "Running Possible" did not work on Rotational Pumps.
+[CHANGED] Tungsten Burning Boxes and Heat Exchangers now have 100% instead of 95% Efficiency.
 [CHANGED] Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 360 000 000 000 HU per Unit of U-235 at Max Efficiency.
 [CHANGED] I decided to give Lead a darker Color.
 [CHANGED] Inventory Refill now also works with any Food that is aligned in the same Column, just like identical Items in the same Column of your Inventory already do.
