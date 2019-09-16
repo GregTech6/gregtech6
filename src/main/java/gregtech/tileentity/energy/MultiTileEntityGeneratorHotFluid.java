@@ -151,7 +151,8 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 				}
 			}
 			// Out of Fuel I guess.
-			if (mEnergy <= 0) {mEnergy = 0; mRunning = F;}
+			if (mEnergy <     0) mEnergy = 0;
+			if (mEnergy < mRate) mRunning = F;
 			// Output used Liquid to the Front.
 			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing));
 		}

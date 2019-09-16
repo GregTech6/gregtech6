@@ -25,8 +25,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.09: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.11.09:
+[FIXED] A Burning Box Issue.
 
 
 6.11.08:
