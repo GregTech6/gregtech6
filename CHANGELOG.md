@@ -1,6 +1,22 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.11.19: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.18: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.17: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.16: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.11.15: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -29,7 +45,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Tungsten Burning Boxes and Heat Exchangers now have 100% instead of 95% Efficiency.
 [CHANGED] Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 36 000 000 000 HU per Unit of U-235 at Max Efficiency.
 [CHANGED] I decided to give Lead a darker Color.
-[CHANGED] Inventory Refill now also works with any Food that is aligned in the same Column, just like identical Items in the same Column of your Inventory already do.
+[CHANGED] Inventory Refill now also works with any Food that is aligned in the same Column, just like identical Items in the same Column of your Inventory already do. At least it's supposed to.
 [ADDED] Diamond and Sapphire Mortars. Gating them behind Iron doesn't make that much sense.
 [WIP]
 Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD

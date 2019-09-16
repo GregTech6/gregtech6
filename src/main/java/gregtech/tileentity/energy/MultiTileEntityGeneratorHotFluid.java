@@ -223,7 +223,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 		return mTanks[mTanks[1].has() ? 1 : 0].drain(aMaxDrain, aDoDrain);
 	}
 	
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? SIDES_TOP[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[1])) : aSide == mFacing ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[3])) : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[0])) : null;}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? SIDES_TOP[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[1])) : aSide == mFacing ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[3])) : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[2])) : null;}
 	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mRunning) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mRate / 10.0F));}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, 0, 0, 1, 0.875, 1);}
