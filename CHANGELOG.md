@@ -21,15 +21,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.10: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
-
-
-6.11.09:
-[FIXED] A Burning Box Issue.
-
-
-6.11.08:
+6.11.10:
+[FIXED] A Burning Box Issue in the previous broken Version.
 [FIXED] A Bug that made any Burning Boxes and the Heat Exchanger consume half as much Fuel as they should. The Rate of Output was unaffected.
 [FIXED] GT6 Bar Placement Code for the Catwalk/Cage Bars Block.
 [FIXED] The Activity Detector for "Running Possible" did not work on Rotational Pumps.
@@ -42,6 +35,14 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD
 Uranium-235 will be worth about 36 000 000 000 HU at Max Efficiency, so a /10 nerf compared to what it is IRL (if you compare to the Ingame Value of Coal).
 If you go least Efficiency (which is 10% of the normal Maximum) you will end up with about 3 600 000 000 HU per Uranium-235, or 1 800 000 000 HU per Rod (Since Rods are gonna be half an Ingot worth).
+
+
+6.11.09:
+[BROKEN] DO NOT USE!
+
+
+6.11.08:
+[BROKEN] DO NOT USE!
 
 
 6.11.07:

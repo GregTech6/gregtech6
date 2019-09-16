@@ -100,9 +100,9 @@ import net.minecraftforge.fluids.IFluidTank;
 })
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
 	public boolean mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
-	public byte mEnergyInputs = SBIT_A, mOutputBlocked = 0, mMode = 0;
-	public byte mItemInputs  = SBIT_A, mItemOutputs  = SBIT_A, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
-	public byte mFluidInputs = SBIT_A, mFluidOutputs = SBIT_A, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
+	public byte mEnergyInputs = 127, mOutputBlocked = 0, mMode = 0;
+	public byte mItemInputs  = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
+	public byte mFluidInputs = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
 	public int mParallel = 1;
 	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0;
@@ -284,27 +284,29 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	public void addToolTipsSided(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		String tSideNames = "";
-		if (mEnergyInputs != SBIT_A && mEnergyTypeAccepted != TD.Energy.TU) {
-			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mEnergyInputs]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide]);}
+		if (mEnergyTypeAccepted != TD.Energy.TU) {
+			if (mEnergyInputs != 127) {
+				for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mEnergyInputs]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide]);}
+				tSideNames = "";
+			}
 			LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, tSideNames, null);
-			tSideNames = "";
 		}
-		if (mItemInputs != SBIT_A) {
+		if (mItemInputs != 127) {
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs  ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoInput  ?" (auto)":"");}
 			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.ITEM_INPUT)     + ": " + Chat.WHITE + tSideNames);
 			tSideNames = "";
 		}
-		if (mItemOutputs != SBIT_A) {
+		if (mItemOutputs != 127) {
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemOutputs ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoOutput ?" (auto)":"");}
 			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.ITEM_OUTPUT)    + ": " + Chat.WHITE + tSideNames);
 			tSideNames = "";
 		}
-		if (mFluidInputs != SBIT_A) {
+		if (mFluidInputs != 127) {
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidInputs ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoInput ?" (auto)":"");}
 			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.FLUID_INPUT)    + ": " + Chat.WHITE + tSideNames);
 			tSideNames = "";
 		}
-		if (mFluidOutputs != SBIT_A) {
+		if (mFluidOutputs != 127) {
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidOutputs]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoOutput?" (auto)":"");}
 			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.FLUID_OUTPUT)   + ": " + Chat.WHITE + tSideNames);
 		}
