@@ -37,8 +37,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] I decided to give Lead a darker Color.
 [CHANGED] Inventory Refill now also works with any Food that is aligned in the same Column, just like identical Items in the same Column of your Inventory already do.
 [ADDED] Diamond and Sapphire Mortars. Gating them behind Iron doesn't make that much sense.
-[WIP]
-Nuclear Reactor Core.
+[WIP] Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I wanted to setup random new hardware first. XD
 
 
 6.11.07:
