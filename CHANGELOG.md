@@ -34,11 +34,14 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] GT6 Bar Placement Code for the Catwalk/Cage Bars Block.
 [FIXED] The Activity Detector for "Running Possible" did not work on Rotational Pumps.
 [CHANGED] Tungsten Burning Boxes and Heat Exchangers now have 100% instead of 95% Efficiency.
-[CHANGED] Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 360 000 000 000 HU per Unit of U-235 at Max Efficiency.
+[CHANGED] Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 36 000 000 000 HU per Unit of U-235 at Max Efficiency.
 [CHANGED] I decided to give Lead a darker Color.
 [CHANGED] Inventory Refill now also works with any Food that is aligned in the same Column, just like identical Items in the same Column of your Inventory already do.
 [ADDED] Diamond and Sapphire Mortars. Gating them behind Iron doesn't make that much sense.
-[WIP] Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I wanted to setup random new hardware first. XD
+[WIP]
+Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD
+Uranium-235 will be worth about 36 000 000 000 HU at Max Efficiency, so a /10 nerf compared to what it is IRL (if you compare to the Ingame Value of Coal).
+If you go least Efficiency (which is 10% of the normal Maximum) you will end up with about 3 600 000 000 HU per Uranium-235, or 1 800 000 000 HU per Rod (Since Rods are gonna be half an Ingot worth).
 
 
 6.11.07:

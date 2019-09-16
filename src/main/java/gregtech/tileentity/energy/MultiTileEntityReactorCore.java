@@ -237,7 +237,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	public int tickRod1(int aSlot) {
 		if (slotHas(aSlot) && (mMode & (1 << aSlot)) == 0) {
 			mNeutronCounts[aSlot] += 128;
-			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 8); // Goes up to 820 if surrounded, or 512 each in a 2x2
+			return 128 + (int)UT.Code.divup(oNeutronCounts[aSlot], 8); // Goes up to 1280 if surrounded, or 512 each in a 2x2
 		}
 		mNeutronCounts[aSlot] = 0;
 		return 0;
@@ -402,7 +402,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		return mTanks[mTanks[1].has() ? 1 : 0].drain(aMaxDrain, aDoDrain);
 	}
 	
-	public ITexture mTextures[] = new ITexture[11];
+	public ITexture mTextures[] = new ITexture[15];
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
@@ -412,11 +412,36 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		mTextures[ 3] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get(sOverlays[3]));
 		mTextures[ 4] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[4], mRGBa), BlockTextureDefault.get(sOverlays[4]));
 		mTextures[ 5] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[5], mRGBa), BlockTextureDefault.get(sOverlays[5]));
-		mTextures[ 6] = (slotHas(0) ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Red   , T), BlockTextureDefault.get(sOverlays[6])) : null);
-		mTextures[ 7] = (slotHas(1) ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Yellow, T), BlockTextureDefault.get(sOverlays[6])) : null);
-		mTextures[ 8] = (slotHas(2) ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Green , T), BlockTextureDefault.get(sOverlays[6])) : null);
-		mTextures[ 9] = (slotHas(3) ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Blue  , T), BlockTextureDefault.get(sOverlays[6])) : null);
 		mTextures[10] = (mTanks[0].has() ? BlockTextureFluid.get(mTanks[0]) : null);
+		
+		if (slotHas(0)) {
+			mTextures[ 6] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Red   , T), BlockTextureDefault.get(sOverlays[6]));
+			mTextures[11] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[7], DYE_INT_Red   , T), BlockTextureDefault.get(sOverlays[7]));
+		} else {
+			mTextures[ 6] = null;
+			mTextures[11] = null;
+		}
+		if (slotHas(1)) {
+			mTextures[ 7] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Yellow, T), BlockTextureDefault.get(sOverlays[6]));
+			mTextures[12] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[7], DYE_INT_Yellow, T), BlockTextureDefault.get(sOverlays[7]));
+		} else {
+			mTextures[ 7] = null;
+			mTextures[12] = null;
+		}
+		if (slotHas(2)) {
+			mTextures[ 8] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Green , T), BlockTextureDefault.get(sOverlays[6]));
+			mTextures[13] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[7], DYE_INT_Green , T), BlockTextureDefault.get(sOverlays[7]));
+		} else {
+			mTextures[ 8] = null;
+			mTextures[13] = null;
+		}
+		if (slotHas(3)) {
+			mTextures[ 9] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[6], DYE_INT_Blue  , T), BlockTextureDefault.get(sOverlays[6]));
+			mTextures[14] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[7], DYE_INT_Blue  , T), BlockTextureDefault.get(sOverlays[7]));
+		} else {
+			mTextures[ 9] = null;
+			mTextures[14] = null;
+		}
 		return 11;
 	}
 	
@@ -435,10 +460,10 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		case SIDE_Y_POS: return box(aBlock, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		case SIDE_Z_POS: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		
-		case  6: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[10], PX_N[ 2], PX_N[10]);
-		case  7: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[10], PX_N[10], PX_N[ 2], PX_N[ 2]);
-		case  8: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[ 2], PX_N[ 2], PX_N[ 2], PX_N[10]);
-		case  9: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[10], PX_N[ 2], PX_N[ 2], PX_N[ 2]);
+		case  6: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[10], PX_N[ 0]+PX_OFFSET, PX_N[10]);
+		case  7: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[10], PX_N[10], PX_N[ 0]+PX_OFFSET, PX_N[ 2]);
+		case  8: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[ 2], PX_N[ 2], PX_N[ 0]+PX_OFFSET, PX_N[10]);
+		case  9: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[10], PX_N[ 2], PX_N[ 0]+PX_OFFSET, PX_N[ 2]);
 		
 		case 10: return box(aBlock, PX_P[ 2]+PX_OFFSET, PX_P[ 2], PX_P[ 2]+PX_OFFSET, PX_N[ 2]-PX_OFFSET, PX_N[ 2], PX_N[ 2]-PX_OFFSET);
 		}
@@ -447,7 +472,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[aRenderPass] : mTextures[aRenderPass == aSide && isCovered(aSide) ? 3 : 2];
+		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[SIDES_VERTICAL[aSide] && aRenderPass < 10 ? aRenderPass+5 : aRenderPass] : mTextures[aRenderPass == aSide && isCovered(aSide) ? 3 : 2];
 	}
 	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mRunning) {UT.Entities.applyHeatDamage(aEntity, 5); UT.Entities.applyRadioactivity(aEntity, 3, 1);}}
@@ -475,7 +500,8 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/side2"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/face1"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/face2"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/rod")
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/rod1"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/rod2")
 	}, sOverlays[] = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/bottom"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/top"),
@@ -483,7 +509,8 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/side2"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/face1"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/face2"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/rod")
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/rod1"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/rod2")
 	};
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core";}
