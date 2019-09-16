@@ -443,7 +443,11 @@ public class CS {
 		, 0.2500F, 0.3125F, 0.3750F, 0.4375F
 		, 0.5000F, 0.5625F, 0.6250F, 0.6875F
 		, 0.7500F, 0.8125F, 0.8750F, 0.9375F
-		, 1.0000F}, PIXELS_POS = PX_P;
+		, 1.0000F, 1.0625F, 1.1250F, 1.1875F
+		, 1.2500F, 1.3125F, 1.3750F, 1.4375F
+		, 1.5000F, 1.5625F, 1.6250F, 1.6875F
+		, 1.7500F, 1.8125F, 1.8750F, 1.9375F
+		, 2.0000F}, PIXELS_POS = PX_P;
 	
 	/** Array with length 17 containing the Coordinates of Pixels from 16/16 to 0/16 */
 	public static final float[] PX_N = {
@@ -451,7 +455,11 @@ public class CS {
 		, 0.7500F, 0.6875F, 0.6250F, 0.5625F
 		, 0.5000F, 0.4375F, 0.3750F, 0.3125F
 		, 0.2500F, 0.1875F, 0.1250F, 0.0625F
-		, 0.0000F}, PIXELS_NEG = PX_N;
+		, 0.0000F,-0.0625F,-0.1250F,-0.1875F
+		,-0.2500F,-0.3125F,-0.3750F,-0.4375F
+		,-0.5000F,-0.5625F,-0.6250F,-0.6875F
+		,-0.7500F,-0.8125F,-0.8750F,-0.9375F
+		,-1.0000F}, PIXELS_NEG = PX_N;
 	
 	/** Different Side Variables for easier comprehension. */
 	public static final byte        SIDE_Y_NEG  = 0, SIDE_BOTTOM    = 0, SIDE_DOWN      = 0,

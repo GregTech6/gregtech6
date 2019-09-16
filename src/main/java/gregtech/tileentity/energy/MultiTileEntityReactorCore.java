@@ -460,10 +460,10 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		case SIDE_Y_POS: return box(aBlock, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		case SIDE_Z_POS: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		
-		case  6: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[10], PX_N[ 0]+PX_OFFSET, PX_N[10]);
-		case  7: return box(aBlock, PX_P[ 2], PX_P[ 2], PX_P[10], PX_N[10], PX_N[ 0]+PX_OFFSET, PX_N[ 2]);
-		case  8: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[ 2], PX_N[ 2], PX_N[ 0]+PX_OFFSET, PX_N[10]);
-		case  9: return box(aBlock, PX_P[10], PX_P[ 2], PX_P[10], PX_N[ 2], PX_N[ 0]+PX_OFFSET, PX_N[ 2]);
+		case  6: return box(aBlock, PX_P[ 2], PX_P[ 1], PX_P[ 2], PX_N[10], PX_P[17], PX_N[10]);
+		case  7: return box(aBlock, PX_P[ 2], PX_P[ 1], PX_P[10], PX_N[10], PX_P[17], PX_N[ 2]);
+		case  8: return box(aBlock, PX_P[10], PX_P[ 1], PX_P[ 2], PX_N[ 2], PX_P[17], PX_N[10]);
+		case  9: return box(aBlock, PX_P[10], PX_P[ 1], PX_P[10], PX_N[ 2], PX_P[17], PX_N[ 2]);
 		
 		case 10: return box(aBlock, PX_P[ 2]+PX_OFFSET, PX_P[ 2], PX_P[ 2]+PX_OFFSET, PX_N[ 2]-PX_OFFSET, PX_N[ 2], PX_N[ 2]-PX_OFFSET);
 		}
@@ -472,7 +472,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[SIDES_VERTICAL[aSide] && aRenderPass < 10 ? aRenderPass+5 : aRenderPass] : mTextures[aRenderPass == aSide && isCovered(aSide) ? 3 : 2];
+		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[SIDES_VERTICAL[aSide] && aRenderPass != 10 && aRenderPass > 1 ? aRenderPass+5 : aRenderPass] : mTextures[aRenderPass == aSide && isCovered(aSide) ? 3 : 2];
 	}
 	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mRunning) {UT.Entities.applyHeatDamage(aEntity, 5); UT.Entities.applyRadioactivity(aEntity, 3, 1);}}
