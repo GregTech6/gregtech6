@@ -119,10 +119,10 @@ public interface IItemBumbleBee {
 			setTemperatureMax   (rBumbleTag, getTemperatureMax  (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB));
 			setRainproof        (rBumbleTag, getRainproof       (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB));
 			setStormproof       (rBumbleTag, getStormproof      (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB));
-			setDayActive        (rBumbleTag, getDayActive       (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB));
 			setNightActive      (rBumbleTag, getNightActive     (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB));
-			setOutsideActive    (rBumbleTag, getOutsideActive   (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB));
+			setDayActive        (rBumbleTag, getDayActive       (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB) || !getNightActive(rBumbleTag));
 			setInsideActive     (rBumbleTag, getInsideActive    (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB));
+			setOutsideActive    (rBumbleTag, getOutsideActive   (aRandom.nextBoolean()?tBumbleTagA:tBumbleTagB) || !getInsideActive(rBumbleTag));
 			return rBumbleTag;
 		}
 		
@@ -133,10 +133,10 @@ public interface IItemBumbleBee {
 			setHumidityMax(rBumbleTag, aBiome.rainfall + 0.05F + aRandom.nextInt(21)/100.0F);
 			setTemperatureMin(rBumbleTag, aTemperature - 5 - aRandom.nextInt(11));
 			setTemperatureMax(rBumbleTag, aTemperature + 5 + aRandom.nextInt(11));
-			setOffspring        (rBumbleTag,    1+aRandom.nextInt(     4));
-			setWorkForce        (rBumbleTag,    1+aRandom.nextInt( 10000));
-			setAggressiveness   (rBumbleTag,  100+aRandom.nextInt(  9901));
-			setLifeSpan         (rBumbleTag, 1200+aRandom.nextInt(142801));
+			setOffspring     (rBumbleTag,    1+aRandom.nextInt(     4));
+			setWorkForce     (rBumbleTag,    1+aRandom.nextInt( 10000));
+			setAggressiveness(rBumbleTag,  100+aRandom.nextInt(  9901));
+			setLifeSpan      (rBumbleTag, 1200+aRandom.nextInt(142801));
 			if (aHasSky) {
 				setOutsideActive(rBumbleTag, T);
 				if (aRandom.nextInt(10000) < aBiome.rainfall * 10000) setRainproof(rBumbleTag, T);

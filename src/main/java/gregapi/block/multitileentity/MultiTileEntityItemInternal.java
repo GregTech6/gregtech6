@@ -42,16 +42,20 @@ import gregapi.item.IItemColorableRGB;
 import gregapi.item.IItemEnergy;
 import gregapi.item.IItemGT;
 import gregapi.item.IItemNoGTOverride;
+import gregapi.item.IItemReactorRod;
 import gregapi.item.IItemRottable;
 import gregapi.item.IItemUpdatable;
 import gregapi.oredict.IOreDictItemDataOverrideItem;
 import gregapi.oredict.OreDictItemData;
+import gregapi.render.BlockTextureCopied;
+import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntity;
 import gregapi.tileentity.ITileEntityFoamable;
 import gregapi.tileentity.ITileEntityMachineBlockUpdateable;
 import gregapi.util.OM;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore;
 import ic2.api.item.IElectricItemManager;
 import ic2.api.item.ISpecialElectricItem;
 import micdoodle8.mods.galacticraft.api.item.IItemElectric;
@@ -85,7 +89,7 @@ import vazkii.botania.api.subtile.SubTileEntity;
 , @Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.item.IItemElectric", modid = ModIDs.GC)
 , @Optional.Interface(iface = "vazkii.botania.api.item.IFlowerPlaceable", modid = ModIDs.BOTA)
 })
-public class MultiTileEntityItemInternal extends ItemBlock implements squeek.applecore.api.food.IEdible, IItemUpdatable, IItemColorableRGB, IOreDictItemDataOverrideItem, IItemGT, IItemNoGTOverride, IFluidContainerItem, ISpecialElectricItem, IElectricItemManager, IItemEnergy, IItemElectric, IItemRottable, IFlowerPlaceable {
+public class MultiTileEntityItemInternal extends ItemBlock implements squeek.applecore.api.food.IEdible, IItemReactorRod, IItemUpdatable, IItemColorableRGB, IOreDictItemDataOverrideItem, IItemGT, IItemNoGTOverride, IFluidContainerItem, ISpecialElectricItem, IElectricItemManager, IItemEnergy, IItemElectric, IItemRottable, IFlowerPlaceable {
 	public final MultiTileEntityBlockInternal mBlock;
 	
 	public MultiTileEntityItemInternal(Block aBlock) {
@@ -441,6 +445,45 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemRottable) return ((IItemRottable)tTileEntityContainer.mTileEntity).getRotten(aStack, aWorld, aX, aY, aZ);
 		return IItemRottable.RottingUtil.rotting(aStack, this);
 	}
+	
+	
+	@Override
+	public boolean isReactorRod(ItemStack aStack) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).isReactorRod(aStack);
+		return F;
+	}
+	@Override
+	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronEmission(aReactor, aSlot, aStack);
+		return 0;
+	}
+	@Override
+	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronReaction(aReactor, aSlot, aStack);
+		return F;
+	}
+	@Override
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronReflection(aReactor, aSlot, aStack, aNeutrons);
+		return 0;
+	}
+	@Override
+	public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodTextureSides(aReactor, aSlot, aStack);
+		return BlockTextureCopied.get(Blocks.cobblestone);
+	}
+	@Override
+	public ITexture getReactorRodTextureTop(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodTextureTop(aReactor, aSlot, aStack);
+		return BlockTextureCopied.get(Blocks.cobblestone);
+	}
+	
 	
 	@Override
 	public boolean isEnergyType(TagData aEnergyType, ItemStack aStack, boolean aEmitting) {

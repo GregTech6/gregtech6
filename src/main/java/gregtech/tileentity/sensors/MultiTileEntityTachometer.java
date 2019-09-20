@@ -28,7 +28,7 @@ import gregapi.render.IIconContainer;
 import gregapi.tileentity.connectors.MultiTileEntityAxle;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.MultiTileEntitySensorTE;
-import gregtech.tileentity.energy.MultiTileEntityGearBox;
+import gregtech.tileentity.energy.transformers.MultiTileEntityGearBox;
 import net.minecraft.tileentity.TileEntity;
 
 /**

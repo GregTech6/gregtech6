@@ -1452,6 +1452,7 @@ public class MT {
 			Al                      .setOreMultiplier( 2).setCrushing(Al2O3, U);
 			Ti                      .setOreMultiplier( 2).setCrushing(TiO2, U);
 			W                       .setOreMultiplier( 2).setCrushing(OREMATS.Scheelite, U);
+			U_238                   .setOreMultiplier( 2).setCrushing(OREMATS.Uraninite, U);
 			Amber                   .setOreMultiplier( 2);
 			Zircon                  .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);

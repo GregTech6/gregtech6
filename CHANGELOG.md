@@ -34,7 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.11: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[WIP] Nuclear Stuff still in actual progress.
 
 
 6.11.10:

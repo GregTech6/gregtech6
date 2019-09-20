@@ -72,7 +72,22 @@ import gregtech.tileentity.batteries.lu.MultiTileEntityBatteryLU8192;
 import gregtech.tileentity.batteries.qu.MultiTileEntityZPM;
 import gregtech.tileentity.computer.MultiTileEntityHDDSwitch;
 import gregtech.tileentity.computer.MultiTileEntityUSBSwitch;
-import gregtech.tileentity.energy.*;
+import gregtech.tileentity.energy.converters.*;
+import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorFluidBed;
+import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorGas;
+import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorHotFluid;
+import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorLiquid;
+import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorSolid;
+import gregtech.tileentity.energy.generators.MultiTileEntitySolarPanelElectric;
+import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore;
+import gregtech.tileentity.energy.storage.MultiTileEntityBatteryBox;
+import gregtech.tileentity.energy.storage.MultiTileEntityBatteryBoxLarge;
+import gregtech.tileentity.energy.storage.MultiTileEntityCrystalCharger;
+import gregtech.tileentity.energy.storage.MultiTileEntityCrystalChargerLarge;
+import gregtech.tileentity.energy.transformers.MultiTileEntityGearBox;
+import gregtech.tileentity.energy.transformers.MultiTileEntityLongDistanceTransformer;
+import gregtech.tileentity.energy.transformers.MultiTileEntityTransformerElectric;
+import gregtech.tileentity.energy.transformers.MultiTileEntityTransformerRotation;
 import gregtech.tileentity.extenders.MultiTileEntityExtender;
 import gregtech.tileentity.extenders.MultiTileEntityExtenderController;
 import gregtech.tileentity.extenders.MultiTileEntityFilter;
@@ -580,8 +595,17 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.TungstenSteel;        aRegistry.add("Dense Heat Exchanger (" + aMat.getLocal() + ")"      , "Heat Exchangers"                     ,  9158,  9103, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  12.5F, NBT_RESISTANCE,  12.5F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_FUELMAP, FM.Hot, NBT_EFFICIENCY,  9000, NBT_OUTPUT, 512, NBT_ENERGY_EMITTED, TD.Energy.HU), "PCP", "OwO", "PMP", 'M', OP.casingMachineQuadruple.dat(aMat), 'O', OP.pipeLarge.dat(ANY.Cu), 'P', OP.plateQuadruple.dat(MT.Pb), 'C', OP.plateDense.dat(MT.AnnealedCopper));
 		
 		
-		// Reactors
+		// Reactor Stuffs
 		aMat = MT.Pb;                   aRegistry.add("Reactor Core"                                    , "Reactors",  9200,  9200, MultiTileEntityReactorCore.class  , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid))/* TODO, "   ", " M ", "   ", 'M', OP.casingMachineDense.dat(aMat)*/);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		// Steam Turbines

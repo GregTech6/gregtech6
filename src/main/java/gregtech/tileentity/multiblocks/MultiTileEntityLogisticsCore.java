@@ -177,7 +177,7 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.8"));
 		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.9"));
 		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.logisticscore.10"));
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "512 to 1024 " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort() + Chat.WHITE + "/t");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "256 to 1024 " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort() + Chat.WHITE + "/t");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -697,7 +697,9 @@ public class MultiTileEntityLogisticsCore extends TileEntityBase10MultiBlockBase
 	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F);}
 	@Override public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted;}
 	@Override public long getEnergyDemanded(TagData aEnergyType, byte aSide, long aSize) {return 1024;}
+	@Override public long getEnergySizeInputMax        (TagData aEnergyType, byte aSide) {return 1024;}
 	@Override public long getEnergySizeInputRecommended(TagData aEnergyType, byte aSide) {return 512;}
+	@Override public long getEnergySizeInputMin        (TagData aEnergyType, byte aSide) {return 256;}
 	@Override public long getEnergyStored(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mEnergy : 0;}
 	@Override public long getEnergyCapacity(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted ? mCPU_Logic * mCPU_Conversion * 256 : 0;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}

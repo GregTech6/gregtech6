@@ -230,6 +230,10 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.U_238               , 9), dust.mat(MT.Al, 1), crushedCentrifugedTiny.mat(MT.U_238, 12));
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.U_238               , 1), dust.mat(MT.Mg, 1), crushedCentrifugedTiny.mat(MT.U_238, 12));
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.U_238               , 9), dust.mat(MT.Mg, 1), crushedCentrifugedTiny.mat(MT.U_238, 12));
+		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.U_235               , 1), dust.mat(MT.Al, 1), crushedCentrifugedTiny.mat(MT.U_235, 12));
+		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.U_235               , 9), dust.mat(MT.Al, 1), crushedCentrifugedTiny.mat(MT.U_235, 12));
+		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.U_235               , 1), dust.mat(MT.Mg, 1), crushedCentrifugedTiny.mat(MT.U_235, 12));
+		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.U_235               , 9), dust.mat(MT.Mg, 1), crushedCentrifugedTiny.mat(MT.U_235, 12));
 		
 		
 		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Li          , 1), dustTiny.mat(MT.Li        , 1), dustTiny.mat(MT.Li_6, 8));
