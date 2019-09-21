@@ -214,18 +214,20 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 			
 			mRunning = (tCalc != 0);
 			
+			long tEnergy = mEnergy;
+			
 			if (getReactorRodNeutronReaction(0)) mRunning = T;
 			if (getReactorRodNeutronReaction(1)) mRunning = T;
 			if (getReactorRodNeutronReaction(2)) mRunning = T;
 			if (getReactorRodNeutronReaction(3)) mRunning = T;
 			
-			oEnergy = mEnergy / EU_PER_COOLANT;
-			mEnergy %= EU_PER_COOLANT;
+			oEnergy = mEnergy - tEnergy;
+			tEnergy = mEnergy/EU_PER_COOLANT;
 			
-			if (oEnergy > 0) {
+			if (tEnergy > 0) {
 				// TODO Heat up different Coolants
-				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(oEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(oEnergy))) {
-					mTanks[0].remove(oEnergy);
+				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
+					mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
 				} else {
 					// TODO explode(0.1);
 					tCalc *= 2;
@@ -233,7 +235,6 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 						UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), tCalc);
 					}
 				}
-				oEnergy *= EU_PER_COOLANT;
 			}
 		}
 	}
