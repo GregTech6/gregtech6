@@ -1596,8 +1596,8 @@ public class MT {
 			InductiveAlloy          .put(MD.RoC);
 			Prismane                .put(MD.RoC);
 			Lonsdaleite             .put(MD.RoC);
+			Cd_In_Ag_Alloy          .put(MD.RoC);
 			HSLA                    .put(MD.RoC).visDefault();
-			Cd_In_Ag_Alloy          .put(MD.RoC).visDefault();
 			SpringSteel             .put(MD.RoC).visDefault();
 			AluminiumAlloy          .put(MD.RoC).visDefault();
 			TungstenSintered        .put(MD.RoC).visDefault();

@@ -34,7 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.11: (Not released yet)
-[WIP] Nuclear Stuff still in actual progress, but I wont write more stuff about it until its finalized to minimize false information.
+[WIP] Nuclear Stuff still in actual progress, but I wont write more stuff about it until its finalized to minimize false information, and maybe also because I'm not in the mood to write Stuff this week, I prefer actually doing stuff this time! :D
 [ADDED] Indium as a Byproduct of Sphalerite and Chalcopyrite, because it is needed for Neutron Absorbers.
 
 
