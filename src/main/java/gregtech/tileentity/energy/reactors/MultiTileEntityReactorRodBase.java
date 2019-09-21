@@ -21,9 +21,13 @@ package gregtech.tileentity.energy.reactors;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.data.LH;
 import gregapi.item.IItemReactorRod;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -38,7 +42,13 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable implements IItemReactorRod, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable implements IItemReactorRod, IMTE_AddToolTips, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(LH.Chat.CYAN + "Empty Reactor Rod, transparent to Neutrons.");
+		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
+	}
+	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		return SIDES_HORIZONTAL[aSide] ? getReactorRodTextureSides(null, 0, null) : getReactorRodTextureTop(null, 0, null);
@@ -68,4 +78,6 @@ public abstract class MultiTileEntityReactorRodBase extends TileEntityBase07Pain
 	@Override public ITexture getReactorRodTextureTop  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa, F), BlockTextureDefault.get(sOverlays[0]));}
 	
 	@Override public boolean canDrop(int aSlot) {return F;}
+	
+	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.rods.empty";}
 }

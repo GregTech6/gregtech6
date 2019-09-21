@@ -192,6 +192,7 @@ public enum IL implements IItemContainer {
 //  Credit_Copper, Credit_Silver, Credit_Gold, Credit_Platinum, Credit_Osmium,
 //  Credit_Greg_Copper, Credit_Greg_Cupronickel, Credit_Greg_Silver, Credit_Greg_Gold, Credit_Greg_Platinum, Credit_Greg_Osmium, Credit_Greg_Naquadah, Credit_Greg_Neutronium,
 //  Coin_Gold_Ancient, Coin_Doge, Coin_Chocolate,
+	Reactor_Rod_Empty,
 	Cell_Universal_Fluid,
 	Cell_Empty, Cell_Water, Cell_Lava, Cell_Air, Cell_CFoam, Cell_UUM,
 	// If you want the filled Variants, just fill them using the Fluid Container Registry.

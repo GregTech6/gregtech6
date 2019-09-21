@@ -34,7 +34,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.11: (Not released yet)
-[WIP] Nuclear Stuff still in actual progress.
+[WIP] Nuclear Stuff still in actual progress, but I wont write more stuff about it until its finalized to minimize false information.
+[ADDED] Indium as a Byproduct of Sphalerite and Chalcopyrite, because it is needed for Neutron Absorbers.
 
 
 6.11.10:
@@ -51,6 +52,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD
 Uranium-235 will be worth about 36 000 000 000 HU at Max Efficiency, so a /10 nerf compared to what it is IRL (if you compare to the Ingame Value of Coal).
 If you go least Efficiency (which is 10% of the normal Maximum) you will end up with about 3 600 000 000 HU per Uranium-235, or 1 800 000 000 HU per Rod (Since Rods are gonna be half an Ingot worth).
+Note: The Maths will be slightly different than what I said, but this is a good estimate for the order of magnitude. Thorium would last ~57 IRL days but has low Output for example.
 
 
 6.11.09:

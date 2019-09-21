@@ -202,7 +202,7 @@ public class Loader_Recipes_Extruder implements Runnable {
 				RM.Extruder.addRecipe2(T, F, F, F, T, tEUt, tCostsPerIngot   ,            tStack , IL.Shape_SimpleEx_Bottle             .get(0), IL.Pill_Empty.get(1));
 				} else
 				if (tMaterial == MT.Zr) {
-				RM.Extruder.addRecipe2(T, F, F, F, F, tEUt, tCostsPerIngot   ,            tStack , IL.Shape_Extruder_Cell               .get(0), IL.IC2_Fuel_Rod_Empty.get(1));
+				RM.Extruder.addRecipe2(T, F, F, F, F, tEUt, tCostsPerIngot   ,            tStack , IL.Shape_Extruder_Cell               .get(0), IL.Reactor_Rod_Empty.get(1));
 				} else
 				if (tMaterial == MT.Glass) {
 				if (!ST.equal(tStack, OP.plateGem.mat(MT.Glass, 1), T)) {

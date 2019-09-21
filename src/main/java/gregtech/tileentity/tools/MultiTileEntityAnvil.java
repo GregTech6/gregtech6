@@ -85,7 +85,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		UT.NBT.setNumber(aNBT, NBT_DURABILITY, mDurability);
-		return aNBT;
+		return super.writeItemNBT2(aNBT);
 	}
 	
 	@Override

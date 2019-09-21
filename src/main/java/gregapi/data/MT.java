@@ -2015,11 +2015,11 @@ public class MT {
 			
 			S                               .addOreByProducts(Pyrite                , OREMATS.Sphalerite        , OREMATS.Cinnabar      , MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, OREMATS.Galena      , OREMATS.Stibnite      );
 			Se                              .addOreByProducts(Pyrite                , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
-			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      );
+			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
 			CaF2                            .addOreByProducts(OREMATS.Huebnerite    , Y                         , Ce                    , Fe2O3                 , Na                    , Ba                    );
 			OREMATS.Sperrylite              .addOreByProducts(Sb                    , Cu                        , Fe2O3                 , Rh                    , Pt                    );
 			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                 , S                         , Co                    , OREMATS.Sperrylite    );
-			OREMATS.Sphalerite              .addOreByProducts(Cd                    , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    );
+			OREMATS.Sphalerite              .addOreByProducts(Cd                    , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    , In                    );
 			OREMATS.Tetrahedrite            .addOreByProducts(Cu                    , Sb                        , Zn                    , OREMATS.Kesterite     );
 			Pyrite                          .addOreByProducts(S                     , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
 			Sn                              .addOreByProducts(OREMATS.Molybdenite   , OREMATS.Wolframite        , CaF2                  , OREMATS.Arsenopyrite  , OREMATS.Stannite      , OREMATS.Sperrylite    , OREMATS.Huebnerite    , Apatite); // Tourmaline

@@ -21,26 +21,70 @@ package gregtech.tileentity.energy.reactors;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
+import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodBase {
+	public long mDurability = 0;
+	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8;
+	
+	@Override
+	public void readFromNBT2(NBTTagCompound aNBT) {
+		super.readFromNBT2(aNBT);
+		mDurability = aNBT.getLong(aNBT.hasKey(NBT_DURABILITY) ? NBT_DURABILITY : NBT_MAXDURABILITY);
+		if (aNBT.hasKey(NBT_NUCLEAR_SELF )) mNeutronSelf  = aNBT.getInteger(NBT_NUCLEAR_SELF );
+		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther = aNBT.getInteger(NBT_NUCLEAR_OTHER);
+		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv   = aNBT.getInteger(NBT_NUCLEAR_DIV  );
+	}
+	
+	@Override
+	public void writeToNBT2(NBTTagCompound aNBT) {
+		super.writeToNBT2(aNBT);
+		UT.NBT.setNumber(aNBT, NBT_DURABILITY, mDurability);
+	}
+	
+	@Override
+	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
+		UT.NBT.setNumber(aNBT, NBT_DURABILITY, mDurability);
+		return super.writeItemNBT2(aNBT);
+	}
+	
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		if (mDurability > 0) {
+			aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + (mDurability / 1200) + LH.Chat.CYAN   + " Minutes");
+			aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther        + LH.Chat.PURPLE + " Neutrons/t");
+			aList.add(LH.Chat.GREEN  + "Idle: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
+			aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv);
+		} else {
+			aList.add(LH.Chat.RED    + "Depleted");
+		}
+		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
+	}
+	
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		aReactor.mNeutronCounts[aSlot] += 128;
-		return 128 + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot], 8); // For 128 it goes up to 1280 if surrounded, or 512 each in a 2x2
+		if (mDurability > 0) {
+			aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
+			return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot], mNeutronDiv); // For 128 and 8 it goes up to 1280 if surrounded, or 512 each in a 2x2
+		}
+		return 0;
 	}
 	
 	@Override
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot];
-		// TODO ROD DURABILITY
+		if (mDurability > 0) mDurability--; else mDurability = -1;
 		return T;
 	}
 	

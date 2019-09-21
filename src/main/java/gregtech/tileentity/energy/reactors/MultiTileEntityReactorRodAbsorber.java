@@ -21,12 +21,21 @@ package gregtech.tileentity.energy.reactors;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
+import gregapi.data.LH;
 import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityReactorRodAbsorber extends MultiTileEntityReactorRodBase {
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(LH.Chat.CYAN + "Absorbs Neutrons and emits Heat to Coolant");
+		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
+	}
+	
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		return 0;

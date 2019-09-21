@@ -367,7 +367,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Press        .addRecipe2(T, 64,   64, OP.ingot.mat(MT.U_238, 6)                          , OP.ingot.mat(MT.Pu, 3)        , ST.mkic("MOXFuel", 1));
 		
 		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("UranFuel", 1)                             , IL.IC2_Fuel_Rod_Empty.get(1)  , ST.mkic("reactorUraniumSimple", 1, 1));
+		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("UranFuel", 1)                             , IL.Reactor_Rod_Empty.get(1)      , ST.mkic("reactorUraniumSimple", 1, 1));
 		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("MOXFuel", 1)                              , IL.IC2_Fuel_Rod_Empty.get(1)  , ST.mkic("reactorMOXSimple", 1, 1));
+		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("MOXFuel", 1)                              , IL.Reactor_Rod_Empty.get(1)      , ST.mkic("reactorMOXSimple", 1, 1));
 		
 		RM.Centrifuge   .addRecipe1(T, 512, 128, ST.mkic("reactorDepletedUraniumSimple", 1)         , OP.dust.mat(MT.Zr, 1), OP.dust.mat(MT.U_238,  4), OP.dustTiny.mat(MT.Pu, 1));
 		RM.Centrifuge   .addRecipe1(T, 512, 256, ST.mkic("reactorDepletedUraniumDual", 1)           , OP.dust.mat(MT.Zr, 2), OP.dust.mat(MT.U_238,  8), OP.dustTiny.mat(MT.Pu, 2), OP.dust.mat(MT.Fe, 1));
