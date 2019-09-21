@@ -545,6 +545,8 @@ public enum FL {
 	public int id() {return FluidRegistry.getFluidID(mName);}
 	public Fluid fluid() {return FluidRegistry.getFluid(mName);}
 	public boolean exists() {return FluidRegistry.getFluid(mName) != null;}
+	public ItemStack display() {return display(make(0), F, F);}
+	public ItemStack display(long aAmount) {return display(make(aAmount), aAmount, F, F);}
 	
 	public FluidStack make (long aAmount) {return make (mName, aAmount);}
 	public FluidStack make_(long aAmount) {return make_(mName, aAmount);}

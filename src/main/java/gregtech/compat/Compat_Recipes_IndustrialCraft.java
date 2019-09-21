@@ -335,9 +335,6 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Mixer        .addRecipe1(T, 16,   16, ST.mkic("constructionFoamPowder", 1)               , tFluid, FL.CFoam.make(1000), ZL_IS);
 		}
 		
-		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Lapis, 1*U)                             , FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
-		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Lapis, 2*U)                             , FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
-		
 		RM.Compressor   .addRecipe1(T, 16,   16, OM.dust(MT.U_238)                                  , ST.mkic("Uran238", 1));
 		RM.Compressor   .addRecipe1(T, 16,   16, OM.dust(MT.U_235)                                  , ST.mkic("Uran235", 1));
 		RM.Compressor   .addRecipe1(T, 16,   16, OM.dust(MT.Pu)                                     , ST.mkic("Plutonium", 1));

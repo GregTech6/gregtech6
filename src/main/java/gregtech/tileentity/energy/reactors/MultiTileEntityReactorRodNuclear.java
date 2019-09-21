@@ -73,6 +73,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		if (--mDurability <= 0) mDurability = -1;
+		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 		return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot], mNeutronDiv); // For 128 and 8 it goes up to 1280 if surrounded, or 512 each in a 2x2
 	}
@@ -80,11 +82,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot];
-		if (mDurability > 0) {
-			mDurability--;
-			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
-		} else {
-			mDurability = -1;
+		if (mDurability <= 0) {
 			ST.meta(aStack, mDepleted);
 			ST.nbt(aStack, null);
 		}
