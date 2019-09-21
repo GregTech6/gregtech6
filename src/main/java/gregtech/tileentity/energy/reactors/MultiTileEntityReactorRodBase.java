@@ -34,6 +34,7 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
+import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -42,7 +43,7 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable implements IItemReactorRod, IMTE_AddToolTips, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable implements IItemReactorRod, ITileEntityQuickObstructionCheck, IMTE_AddToolTips, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + "Empty Reactor Rod, transparent to Neutrons.");
@@ -67,7 +68,17 @@ public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable imp
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
 	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
 	
-	@Override public float getSurfaceDistance(byte aSide) {return SIDES_VERTICAL[aSide]?0.0F:PX_P[ 6];}
+	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
+	
+	@Override public float getSurfaceSize           (byte aSide) {return 0.0F;}
+	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0.0F;}
+	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_VERTICAL[aSide]?0.0F:PX_P[ 6];}
+	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
+	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
+	@Override public boolean isSideSolid2           (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean attachCoversFirst      (byte aSide) {return F;}
+	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
 	
 	@Override public boolean  isReactorRod(ItemStack aStack) {return T;}
 	@Override public int      getReactorRodNeutronEmission  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return 0;}

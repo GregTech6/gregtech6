@@ -69,7 +69,7 @@ import net.minecraftforge.fluids.IFluidTank;
  */
 public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, IMTE_SyncDataShort, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	public int mNeutronCounts[] = new int[] {0,0,0,0}, oNeutronCounts[] = new int[] {0,0,0,0};
-	public long mEnergy = 0;
+	public long mEnergy = 0, oEnergy = 0;
 	public byte mMode = 0;
 	public boolean mRunning = F, oRunning = F, mStopped = F;
 	public FluidTankGT[] mTanks = {new FluidTankGT(64000), new FluidTankGT(64000)};
@@ -206,30 +206,34 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 			if (mTanks[0].isHalf()) FL.move(mTanks[0], getAdjacentTank(mSecondFacing), mTanks[0].amount() - mTanks[0].capacity() / 2);
 			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing));
 		} else {
-			long tTotalNeutronCount = 0;
-			for (int i = 0; i < 4; i++) tTotalNeutronCount += (oNeutronCounts[i] = mNeutronCounts[i]);
+			int tCalc = (int)UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
 			
-			tTotalNeutronCount = UT.Code.divup(tTotalNeutronCount, 128);
-			
-			if (tTotalNeutronCount > 0) for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tTotalNeutronCount, yCoord-tTotalNeutronCount, zCoord-tTotalNeutronCount, xCoord+1+tTotalNeutronCount, yCoord+1+tTotalNeutronCount, zCoord+1+tTotalNeutronCount))) {
-				UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tTotalNeutronCount, 10), (int)tTotalNeutronCount);
+			if (tCalc > 0) for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
+				UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), tCalc);
 			}
 			
-			mRunning = (tTotalNeutronCount != 0);
+			mRunning = (tCalc != 0);
 			
 			if (getReactorRodNeutronReaction(0)) mRunning = T;
 			if (getReactorRodNeutronReaction(1)) mRunning = T;
 			if (getReactorRodNeutronReaction(2)) mRunning = T;
 			if (getReactorRodNeutronReaction(3)) mRunning = T;
 			
-			if (mEnergy >= 20) {
+			oEnergy = mEnergy / EU_PER_COOLANT;
+			mEnergy %= EU_PER_COOLANT;
+			
+			if (oEnergy > 0) {
 				// TODO Heat up different Coolants
-				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(mEnergy / 20) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(mEnergy / 20))) {
-					mTanks[0].remove(mEnergy / 20);
+				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(oEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(oEnergy))) {
+					mTanks[0].remove(oEnergy);
 				} else {
 					// TODO explode(0.1);
+					tCalc *= 2;
+					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
+						UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), tCalc);
+					}
 				}
-				mEnergy %= 20;
+				oEnergy *= EU_PER_COOLANT;
 			}
 		}
 	}
@@ -275,7 +279,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		}
 		if (aTool.equals(TOOL_thermometer)) {// TODO Remove Neutron Levels
 			if (aChatReturn != null) {
-				aChatReturn.add("Heat Levels: " + (mEnergy < 20 ? "None" : mEnergy + " NU"));
+				aChatReturn.add("Heat Levels: " + (oEnergy <= 0 ? "None" : oEnergy + " NU"));
 				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
 			}
 			return 10000;

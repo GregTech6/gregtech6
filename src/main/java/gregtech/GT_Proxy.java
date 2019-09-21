@@ -116,7 +116,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 			String tVersion = javax.xml.xpath.XPathFactory.newInstance().newXPath().compile("metadata/versioning/release/text()").evaluate(javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().parse((new URL("https://gregtech.overminddl1.com/com/gregoriust/gregtech/gregtech_1.7.10/maven-metadata.xml")).openConnection().getInputStream()), javax.xml.xpath.XPathConstants.STRING).toString().substring(0, 7);
 			// Check if the first 4 Characters of the Version Number are the same, quick and dirty check that doesn't require Number parsing.
 			// And just ignore the first Version of each Major Release, since that one is usually the buggiest.
-			mVersionOutdated = !tVersion.endsWith("00") && !BuildInfo.version.startsWith(tVersion.substring(0, 4));
+			mVersionOutdated = !tVersion.endsWith("00") && !tVersion.endsWith("01") && !BuildInfo.version.startsWith(tVersion.substring(0, 4));
 			
 			OUT.println("GT_Download_Thread: Current Version = '" + BuildInfo.version.substring(0, 7) + "'; Recent Version = '" + tVersion + "'; Majorly Outdated = " + (mVersionOutdated?"Yes":"No"));
 		} catch(Throwable e) {OUT.println("GT_Download_Thread: Failed Downloading Version Number of the latest Major Version!");}

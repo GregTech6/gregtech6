@@ -27,6 +27,7 @@ import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -37,6 +38,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodBase {
 	public long mDurability = 0;
 	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8;
+	public short mDepleted = -1;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -45,6 +47,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (aNBT.hasKey(NBT_NUCLEAR_SELF )) mNeutronSelf  = aNBT.getInteger(NBT_NUCLEAR_SELF );
 		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther = aNBT.getInteger(NBT_NUCLEAR_OTHER);
 		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv   = aNBT.getInteger(NBT_NUCLEAR_DIV  );
+		if (aNBT.hasKey(NBT_VALUE        )) mDepleted     = aNBT.getShort(NBT_VALUE);
 	}
 	
 	@Override
@@ -61,30 +64,30 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		if (mDurability > 0) {
-			aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + (mDurability / 1200) + LH.Chat.CYAN   + " Minutes");
-			aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther        + LH.Chat.PURPLE + " Neutrons/t");
-			aList.add(LH.Chat.GREEN  + "Idle: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
-			aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv);
-		} else {
-			aList.add(LH.Chat.RED    + "Depleted");
-		}
-		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
+		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + (mDurability / 1200) + LH.Chat.CYAN   + " Minutes");
+		aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther        + LH.Chat.PURPLE + " Neutrons/t");
+		aList.add(LH.Chat.GREEN  + "Idle: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
+		aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv);
+		aList.add(LH.Chat.DGRAY  + "Used in Nuclear Reactor Core");
 	}
 	
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		if (mDurability > 0) {
-			aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
-			return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot], mNeutronDiv); // For 128 and 8 it goes up to 1280 if surrounded, or 512 each in a 2x2
-		}
-		return 0;
+		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
+		return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot], mNeutronDiv); // For 128 and 8 it goes up to 1280 if surrounded, or 512 each in a 2x2
 	}
 	
 	@Override
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot];
-		if (mDurability > 0) mDurability--; else mDurability = -1;
+		if (mDurability > 0) {
+			mDurability--;
+			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
+		} else {
+			mDurability = -1;
+			ST.meta(aStack, mDepleted);
+			ST.nbt(aStack, null);
+		}
 		return T;
 	}
 	
