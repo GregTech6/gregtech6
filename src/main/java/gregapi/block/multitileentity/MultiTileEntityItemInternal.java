@@ -472,15 +472,15 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		return 0;
 	}
 	@Override
-	public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+	public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
-		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodTextureSides(aReactor, aSlot, aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodTextureSides(aReactor, aSlot, aStack, aActive);
 		return BlockTextureCopied.get(Blocks.cobblestone);
 	}
 	@Override
-	public ITexture getReactorRodTextureTop(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+	public ITexture getReactorRodTextureTop(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
-		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodTextureTop(aReactor, aSlot, aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodTextureTop(aReactor, aSlot, aStack, aActive);
 		return BlockTextureCopied.get(Blocks.cobblestone);
 	}
 	
