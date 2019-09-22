@@ -287,9 +287,9 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (mEnergyTypeAccepted != TD.Energy.TU) {
 			if (mEnergyInputs != 127) {
 				for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mEnergyInputs]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide]);}
-				tSideNames = "";
 			}
 			LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, tSideNames, null);
+			tSideNames = "";
 		}
 		if (mItemInputs != 127) {
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs  ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoInput  ?" (auto)":"");}

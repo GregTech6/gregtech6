@@ -43,6 +43,7 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.tileentity.behavior.TE_Behavior_Active_Trinary;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
@@ -63,19 +64,19 @@ import net.minecraftforge.fluids.IFluidTank;
 public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	private static int FLAME_RANGE = 2;
 	
-	protected short mEfficiency = 10000;
-	protected long mEnergy = 0, mRate = 1;
-	protected boolean mRunning = F, oRunning = F;
-	protected TagData mEnergyTypeEmitted = TD.Energy.HU;
-	protected RecipeMap mRecipes = FM.Hot;
-	protected Recipe mLastRecipe = null;
-	protected FluidTankGT[] mTanks = {new FluidTankGT(1000), new FluidTankGT(Long.MAX_VALUE)};
+	public short mEfficiency = 10000;
+	public long mEnergy = 0, mRate = 1;
+	public TagData mEnergyTypeEmitted = TD.Energy.HU;
+	public RecipeMap mRecipes = FM.Hot;
+	public Recipe mLastRecipe = null;
+	public FluidTankGT[] mTanks = {new FluidTankGT(1000), new FluidTankGT(Long.MAX_VALUE)};
+	public TE_Behavior_Active_Trinary mActivity = null;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		mEnergy = aNBT.getLong(NBT_ENERGY);
-		mRunning = aNBT.getBoolean(NBT_ACTIVE);
+		mActivity = new TE_Behavior_Active_Trinary(this, aNBT);
 		if (aNBT.hasKey(NBT_OUTPUT)) mRate = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_FUELMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_FUELMAP));
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
@@ -89,7 +90,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
-		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mRunning);
+		mActivity.save(aNBT);
 		mTanks[0].writeToNBT(aNBT, NBT_TANK+".0");
 		mTanks[1].writeToNBT(aNBT, NBT_TANK+".1");
 	}
@@ -121,7 +122,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 			// Check if it needs to use more Fuel, or if the buffered Energy is enough.
 			if (mEnergy < mRate * 2) {
 				// Will be set back to true if the Recipe finds enough Fuel.
-				mRunning = F;
+				mActivity.mActive = F;
 				// Output isn't allowed to be completely filled.
 				if (!mTanks[1].has(mRate * 20)) {
 					// Find and apply fitting Recipe.
@@ -129,7 +130,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 					if (tRecipe != null) {
 						if (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) {
 							if (tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
-								mRunning = T;
+								mActivity.mActive = T;
 								mLastRecipe = tRecipe;
 								mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
 								if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
@@ -152,7 +153,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 			}
 			// Out of Fuel I guess.
 			if (mEnergy <     0) mEnergy = 0;
-			if (mEnergy < mRate) mRunning = F;
+			if (mEnergy < mRate) mActivity.mActive = F;
 			// Output used Liquid to the Front.
 			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing));
 		}
@@ -177,21 +178,15 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 	
 	@Override
 	public boolean onTickCheck(long aTimer) {
-		return mRunning != oRunning || super.onTickCheck(aTimer);
-	}
-	
-	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
-		oRunning = mRunning;
+		return mActivity.check(F) || super.onTickCheck(aTimer);
 	}
 	
 	@Override
 	public void setVisualData(byte aData) {
-		mRunning = ((aData & 1) != 0);
+		mActivity.mState = (byte)(aData & 127);
 	}
 	
-	@Override public byte getVisualData() {return (byte)(mRunning?1:0);}
+	@Override public byte getVisualData() {return mActivity.mState;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_BOTTOM_HORIZONTAL;}
 	
@@ -223,9 +218,9 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 		return mTanks[mTanks[1].has() ? 1 : 0].drain(aMaxDrain, aDoDrain);
 	}
 	
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? SIDES_TOP[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[1])) : aSide == mFacing ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[3])) : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mRunning?sOverlaysActive:sOverlays)[2])) : null;}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? SIDES_TOP[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[1])) : aSide == mFacing ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[3])) : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[2])) : null;}
 	
-	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mRunning) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mRate / 10.0F));}
+	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mActivity.mState > 0) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mRate / 10.0F));}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, 0, 0, 1, 0.875, 1);}
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return ZL_IS;}
@@ -239,9 +234,9 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 	@Override public long getEnergySizeOutputMax(TagData aEnergyType, byte aSide) {return mRate;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
-	@Override public boolean getStateRunningPassively() {return mRunning;}
-	@Override public boolean getStateRunningPossible() {return mRunning;}
-	@Override public boolean getStateRunningActively() {return mRunning;}
+	@Override public boolean getStateRunningPassively() {return mActivity.mActive;}
+	@Override public boolean getStateRunningPossible() {return mActivity.mActive;}
+	@Override public boolean getStateRunningActively() {return mActivity.mActive;}
 	
 	// Icons
 	public static IIconContainer[] sColoreds = new IIconContainer[] {

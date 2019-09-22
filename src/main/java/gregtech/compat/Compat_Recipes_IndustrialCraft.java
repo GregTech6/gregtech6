@@ -354,6 +354,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		RM.biomass(IL.IC2_Biochaff.get(1), 32);
 		
+		RM.generify(IL.IC2_Fuel_Rod_Empty.get(1), IL.Reactor_Rod_Empty.get(1));
+		RM.generify(IL.Reactor_Rod_Empty.get(1), IL.IC2_Fuel_Rod_Empty.get(1));
+		
 		RM.RollBender   .addRecipe1(T, 16,  128, OP.casingSmall.mat(MT.Zr, 2)                       , IL.IC2_Fuel_Rod_Empty.get(1));
 		
 		RM.Press        .addRecipe2(T, 64,  192, ST.mkic("Uran238",18)                              , ST.mkic("Uran235", 1)         , ST.mkic("UranFuel", 3));

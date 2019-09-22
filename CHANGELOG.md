@@ -39,18 +39,19 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED]
 Nuclear Reactor and all the relevant Rods.
 So here is the thing, this Reactor is more me experimenting with Game Mechanics than actually being balanced and well thought out. So please experiment with it in Creative, and have Fun with it. ^^
-I had to nerf it multiple times and while the Math is very simple in the Code, it's still complicated in the real World, and found out the easiest by literally experimenting around, but I will give it a shot at explaining:
+I had to nerf it multiple times and while the Math is very simple in the Code, it's still complicated in the real World, and found out the easiest way by literally experimenting around, but I will give it a shot at explaining:
 Every Nuclear Fuel Rod emits X Neutrons to each of the 4 Rods around it, and Y Neutrons to itself. Thing is, the more Neutrons a Rod has (compared to its Self Neutrons), the more Neutrons it will emit too!
 This would obviously lead to exponential growth, if I didn't divide the emitted extra Neutrons by a Number that is six or greater (also seen as "Factor" in the Tooltip).
 The Fuel Rods have Tooltips for showing the IRL Time they have left and the Neutron related Stats.
 Also available are Neutron Reflector Rods, which simply reflect the Neutrons sent outside by a Rod back onto the Rod itself.
 And Neutron Absorber Rods that emit twice the Power per Neutron, compared to a Fuel Rod, but at the cost of not using the Neutrons to increase overall Output. I found that actually increases Fuel Efficiency in some cases even.
 Depleted Fuel Rods will later be Centrifugable into more Byproducts than now. I just didn't research the appropriate Byproducts yet on Wikipedia.
-As long as you have enough Coolant inside the Reactor to convert all the Heat into Hot Coolant, also called Heatant, it will never explode.
+As long as you have enough Coolant inside the Reactor to convert all the Heat into Hot Coolant, also called Heatant, it will never explode. Also make sure the Heatant doesn't build up either.
 But please wear a Radiation Compatible Hazard Suit whenever you get close to it, because it does radiate every living being closeby depending on how powerful the Fuel is.
 The Reactor Core can also easily be used like an RTG from IC2 if you use Low Power Fuels with it and place a Heat Exchanger right ontop of it, might even be useful as a Crucible Heater.
 It can be turned ON/OFF by other Machines, it can also turn single Rods ON/OFF using Mode Switches.
 Hot and Cold Coolant can be emitted from the Reactor Core using the Primary and Secondary Facing. This makes Reactor Building more convenient.
+Rightclick on the Top to insert Rod, Pincers to extract Rods. Make sure the Reactor is OFF while inserting Stuffs or it will instantly start running.
 Hint: It is possible to use Universal Extenders and Mini Portals to do all sorts of whacky bullshit with the Reactor.
 
 
