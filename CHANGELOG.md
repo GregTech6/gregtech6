@@ -50,6 +50,7 @@ As long as you have enough Coolant inside the Reactor to convert all the Heat in
 But please wear a Radiation Compatible Hazard Suit whenever you get close to it, because it does radiate every living being closeby depending on how powerful the Fuel is.
 The Reactor Core can also easily be used like an RTG from IC2 if you use Low Power Fuels with it and place a Heat Exchanger right ontop of it, might even be useful as a Crucible Heater.
 It can be turned ON/OFF by other Machines, it can also turn single Rods ON/OFF using Mode Switches.
+Hot and Cold Coolant can be emitted from the Reactor Core using the Primary and Secondary Facing. This makes Reactor Building more convenient.
 Hint: It is possible to use Universal Extenders and Mini Portals to do all sorts of whacky bullshit with the Reactor.
 
 

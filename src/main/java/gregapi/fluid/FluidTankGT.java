@@ -32,7 +32,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public class FluidTankGT implements IFluidTank {
 	private FluidStack mFluid;
 	private long mCapacity, mAmount = 0;
-	private boolean mPreventDraining = F, mVoidExcess = F;
+	private boolean mPreventDraining = F, mVoidExcess = F, mChangedFluids = F;
 	public final FluidTankGT[] AS_ARRAY = new FluidTankGT[] {this};
 	
 	public FluidTankGT(FluidStack aFluid) {mFluid = aFluid; if (aFluid != null) {mCapacity = aFluid.amount; mAmount = aFluid.amount;}}
@@ -104,7 +104,10 @@ public class FluidTankGT implements IFluidTank {
 		if (aDoDrain) {
 			mAmount -= aDrained;
 			if (mAmount <= 0) {
-				if (!mPreventDraining) mFluid = null;
+				if (!mPreventDraining) {
+					mFluid = null;
+					mChangedFluids = T;
+				}
 				mAmount = 0;
 			}
 		}
@@ -115,7 +118,10 @@ public class FluidTankGT implements IFluidTank {
 		if (isEmpty() || mAmount < aDrained) return F;
 		mAmount -= aDrained;
 		if (mAmount <= 0) {
-			if (!mPreventDraining) mFluid = null;
+			if (!mPreventDraining) {
+				mFluid = null;
+				mChangedFluids = T;
+			}
 			mAmount = 0;
 		}
 		return T;
@@ -126,7 +132,10 @@ public class FluidTankGT implements IFluidTank {
 		if (mAmount < aDrained) aDrained = mAmount;
 		mAmount -= aDrained;
 		if (mAmount <= 0) {
-			if (!mPreventDraining) mFluid = null;
+			if (!mPreventDraining) {
+				mFluid = null;
+				mChangedFluids = T;
+			}
 			mAmount = 0;
 		}
 		return aDrained;
@@ -150,6 +159,7 @@ public class FluidTankGT implements IFluidTank {
 		if (aDoFill) {
 			if (isEmpty()) {
 				mFluid = aFluid.copy();
+				mChangedFluids = T;
 				mAmount = Math.min(mCapacity, aFluid.amount);
 				return mVoidExcess ? aFluid.amount : (int)mAmount;
 			}
@@ -172,6 +182,7 @@ public class FluidTankGT implements IFluidTank {
 		if (isEmpty()) {
 			if (aFluid.amount <= mCapacity || mVoidExcess) {
 				mFluid = aFluid.copy();
+				mChangedFluids = T;
 				mAmount = aFluid.amount;
 				if (mAmount > mCapacity) mAmount = mCapacity;
 				return T;
@@ -198,6 +209,7 @@ public class FluidTankGT implements IFluidTank {
 		if (isEmpty()) {
 			if (aFluid.amount * aMultiplier <= mCapacity || mVoidExcess) {
 				mFluid = aFluid.copy();
+				mChangedFluids = T;
 				mAmount = aFluid.amount * aMultiplier;
 				if (mAmount > mCapacity) mAmount = mCapacity;
 				return T;
@@ -217,9 +229,9 @@ public class FluidTankGT implements IFluidTank {
 		return F;
 	}
 	
-	public FluidTankGT setEmpty() {mFluid = null; mAmount = 0; return this;}
-	public FluidTankGT setFluid(FluidStack aFluid) {mFluid = aFluid; mAmount = (aFluid == null ? 0 : aFluid.amount); return this;}
-	public FluidTankGT setFluid(FluidStack aFluid, long aAmount) {mFluid = aFluid; mAmount = (aFluid == null ? 0 : aAmount); return this;}
+	public FluidTankGT setEmpty() {mFluid = null; mChangedFluids = T; mAmount = 0; return this;}
+	public FluidTankGT setFluid(FluidStack aFluid) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aFluid.amount); return this;}
+	public FluidTankGT setFluid(FluidStack aFluid, long aAmount) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aAmount); return this;}
 	public FluidTankGT setCapacity(long aCapacity) {mCapacity = UT.Code.bindInt(aCapacity); return this;}
 	public FluidTankGT setPreventDraining() {return setPreventDraining(T);}
 	public FluidTankGT setPreventDraining(boolean aPrevent) {mPreventDraining = aPrevent; return this;}
@@ -235,6 +247,10 @@ public class FluidTankGT implements IFluidTank {
 	
 	public boolean has(long aAmount) {return mAmount >= aAmount;}
 	public boolean has() {return mAmount > 0;}
+	
+	public boolean check() {if (mChangedFluids) {mChangedFluids = F; return T;} return F;}
+	public boolean update() {return mChangedFluids = T;}
+	public boolean changed() {return mChangedFluids;}
 	
 	public long amount() {return isEmpty() ? 0 : mAmount;}
 	public long amount(long aMax) {return isEmpty() || aMax <= 0 ? 0 : mAmount < aMax ? mAmount : aMax;}

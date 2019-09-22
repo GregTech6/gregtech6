@@ -27,7 +27,6 @@ import java.util.List;
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
@@ -67,11 +66,11 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, IMTE_SyncDataShort, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	public int mNeutronCounts[] = new int[] {0,0,0,0}, oNeutronCounts[] = new int[] {0,0,0,0};
 	public long mEnergy = 0, oEnergy = 0;
 	public byte mMode = 0;
-	public boolean mRunning = F, oRunning = F, mStopped = F;
+	public boolean mRunning = F, mStopped = F;
 	public FluidTankGT[] mTanks = {new FluidTankGT(64000), new FluidTankGT(64000)};
 	
 	@Override
@@ -134,10 +133,16 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
-		if (aIsServerSide && mHasToAddTimer) {
-			GT_API_Proxy.SERVER_TICK_POST.add(this);
-			GT_API_Proxy.SERVER_TICK_PO2T.add(this);
-			mHasToAddTimer = F;
+		if (aIsServerSide) {
+			if (mHasToAddTimer) {
+				GT_API_Proxy.SERVER_TICK_POST.add(this);
+				GT_API_Proxy.SERVER_TICK_PO2T.add(this);
+				mHasToAddTimer = F;
+			}
+			if (mTanks[0].isHalf()) FL.move(mTanks[0], getAdjacentTank(mSecondFacing), mTanks[0].amount() - mTanks[0].capacity() / 2);
+			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing));
+			
+			if (mTanks[0].check()) updateClientData();
 		}
 	}
 	
@@ -203,8 +208,6 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 					tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
 				}
 			}
-			if (mTanks[0].isHalf()) FL.move(mTanks[0], getAdjacentTank(mSecondFacing), mTanks[0].amount() - mTanks[0].capacity() / 2);
-			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing));
 		} else {
 			int tCalc = (int)UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
 			
@@ -312,30 +315,28 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		return T;
 	}
 	
-	protected short oDisplay = -1;
+	protected byte oVisual = 0;
 	
 	@Override
 	public boolean onTickCheck(long aTimer) {
-		return mRunning != oRunning || FL.id_(mTanks[0]) != oDisplay || super.onTickCheck(aTimer);
+		return oVisual != getVisualData() || super.onTickCheck(aTimer);
 	}
 	
 	@Override
 	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
 		super.onTickResetChecks(aTimer, aIsServerSide);
-		oDisplay = FL.id_(mTanks[0]);
-		oRunning = mRunning;
+		oVisual = getVisualData();
 	}
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		short tDisplay = FL.id_(mTanks[0]);
-		if (aSendAll) return getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), UT.Code.toByteS(tDisplay, 0), UT.Code.toByteS(tDisplay, 1)
+		if (aSendAll) return getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), UT.Code.toByteS(FL.id_(mTanks[0]), 0), UT.Code.toByteS(FL.id_(mTanks[0]), 1)
 		, UT.Code.toByteS(ST.id(slot(0)), 0), UT.Code.toByteS(ST.id(slot(0)), 1), UT.Code.toByteS(ST.meta(slot(0)), 0), UT.Code.toByteS(ST.meta(slot(0)), 1)
 		, UT.Code.toByteS(ST.id(slot(1)), 0), UT.Code.toByteS(ST.id(slot(1)), 1), UT.Code.toByteS(ST.meta(slot(1)), 0), UT.Code.toByteS(ST.meta(slot(1)), 1)
 		, UT.Code.toByteS(ST.id(slot(2)), 0), UT.Code.toByteS(ST.id(slot(2)), 1), UT.Code.toByteS(ST.meta(slot(2)), 0), UT.Code.toByteS(ST.meta(slot(2)), 1)
 		, UT.Code.toByteS(ST.id(slot(3)), 0), UT.Code.toByteS(ST.id(slot(3)), 1), UT.Code.toByteS(ST.meta(slot(3)), 0), UT.Code.toByteS(ST.meta(slot(3)), 1)
 		);
-		return getClientDataPacketShort(aSendAll, tDisplay);
+		return getClientDataPacketByte(aSendAll, getVisualData());
 	}
 	
 	@Override
@@ -352,18 +353,13 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	}
 	
 	@Override
-	public boolean receiveDataShort(short aData, INetworkHandler aNetworkHandler) {
-		mTanks[0].setFluid(FL.make(aData, mTanks[0].getCapacity()));
-		return T;
-	}
-	
-	@Override
 	public void setVisualData(byte aData) {
+		mStopped = ((aData & 32) != 0);
 		mRunning = ((aData & 16) != 0);
 		mMode = (byte)(aData & 15);
 	}
 	
-	@Override public byte getVisualData() {return (byte)(mRunning?16|mMode:mMode);}
+	@Override public byte getVisualData() {return (byte)(mStopped?mRunning?mMode|48:mMode|32:mRunning?mMode|16:mMode);}
 	@Override public byte getDefaultSide() {return SIDE_BOTTOM;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}
 	

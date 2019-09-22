@@ -77,7 +77,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (--mDurability <= 0) mDurability = -1;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
-		return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv); // For 128 and 8 it goes up to 1280 if surrounded, or 512 each in a 2x2
+		return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
 	}
 	
 	@Override
