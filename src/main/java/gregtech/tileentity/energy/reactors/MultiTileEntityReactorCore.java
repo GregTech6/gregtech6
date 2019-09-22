@@ -229,7 +229,8 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
 					mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
 				} else {
-					// TODO explode(0.1);
+					// explode(0.1); // TODO proper explosion.
+					UT.Sounds.send(SFX.MC_EXPLODE, this);
 					tCalc *= 2;
 					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
 						UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), tCalc);
@@ -468,7 +469,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[SIDES_VERTICAL[aSide] && aRenderPass != 10 && aRenderPass > 1 ? aRenderPass+5 : aRenderPass] : mTextures[aRenderPass == aSide && isCovered(aSide) ? 3 : 2];
+		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[SIDES_VERTICAL[aSide] && aRenderPass != 10 && aRenderPass > 1 ? aRenderPass+5 : aRenderPass] : mTextures[aRenderPass < 6 && isCovered((byte)aRenderPass) ? 3 : 2];
 	}
 	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mRunning) {UT.Entities.applyHeatDamage(aEntity, 5); UT.Entities.applyRadioactivity(aEntity, 3, 1);}}
