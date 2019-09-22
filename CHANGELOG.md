@@ -40,15 +40,16 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nuclear Reactor and all the relevant Rods.
 So here is the thing, this Reactor is more me experimenting with Game Mechanics than actually being balanced and well thought out. So please experiment with it in Creative, and have Fun with it. ^^
 I had to nerf it multiple times and while the Math is very simple in the Code, it's still complicated in the real World, and found out the easiest by literally experimenting around, but I will give it a shot at explaining:
-Every Nuclear Fuel Rod emits X Neutrons to each of the 4 Rods around it, and Y Neutrons to itself. Thing is, the more Neutrons a Rod has, the more Neutrons it will emit too!
+Every Nuclear Fuel Rod emits X Neutrons to each of the 4 Rods around it, and Y Neutrons to itself. Thing is, the more Neutrons a Rod has (compared to its Self Neutrons), the more Neutrons it will emit too!
 This would obviously lead to exponential growth, if I didn't divide the emitted extra Neutrons by a Number that is six or greater (also seen as "Factor" in the Tooltip).
 The Fuel Rods have Tooltips for showing the IRL Time they have left and the Neutron related Stats.
 Also available are Neutron Reflector Rods, which simply reflect the Neutrons sent outside by a Rod back onto the Rod itself.
-And Neutron Absorber Rods that emit twice the Power per Neutron compared to a Fuel Rod, but at the cost of not using the Neutrons to increase overall Output.
+And Neutron Absorber Rods that emit twice the Power per Neutron, compared to a Fuel Rod, but at the cost of not using the Neutrons to increase overall Output. I found that actually increases Fuel Efficiency in some cases even.
 Depleted Fuel Rods will later be Centrifugable into more Byproducts than now. I just didn't research the appropriate Byproducts yet on Wikipedia.
 As long as you have enough Coolant inside the Reactor to convert all the Heat into Hot Coolant, also called Heatant, it will never explode.
 But please wear a Radiation Compatible Hazard Suit whenever you get close to it, because it does radiate every living being closeby depending on how powerful the Fuel is.
 The Reactor Core can also easily be used like an RTG from IC2 if you use Low Power Fuels with it and place a Heat Exchanger right ontop of it, might even be useful as a Crucible Heater.
+It can be turned ON/OFF by other Machines, it can also turn single Rods ON/OFF using Mode Switches.
 Hint: It is possible to use Universal Extenders and Mini Portals to do all sorts of whacky bullshit with the Reactor.
 
 
@@ -62,11 +63,7 @@ Hint: It is possible to use Universal Extenders and Mini Portals to do all sorts
 [CHANGED] I decided to give Lead a darker Color.
 [CHANGED] Inventory Refill now also works with any Food that is aligned in the same Column, just like identical Items in the same Column of your Inventory already do. At least it's supposed to.
 [ADDED] Diamond and Sapphire Mortars. Gating them behind Iron doesn't make that much sense.
-[WIP]
-Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD
-Uranium-235 will be worth about 36 000 000 000 HU at Max Efficiency, so a /10 nerf compared to what it is IRL (if you compare to the Ingame Value of Coal).
-If you go least Efficiency (which is 10% of the normal Maximum) you will end up with about 3 600 000 000 HU per Uranium-235, or 1 800 000 000 HU per Rod (Since Rods are gonna be half an Ingot worth).
-Note: The Maths will be slightly different than what I said, but this is a good estimate for the order of magnitude. Thorium would last ~57 IRL days but has low Output for example.
+[WIP] Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD
 
 
 6.11.09:

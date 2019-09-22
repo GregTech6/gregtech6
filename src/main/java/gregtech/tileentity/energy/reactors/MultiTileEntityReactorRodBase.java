@@ -28,6 +28,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.data.LH;
+import gregapi.data.MT;
 import gregapi.item.IItemReactorRod;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -52,7 +53,7 @@ public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable imp
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return SIDES_HORIZONTAL[aSide] ? getReactorRodTextureSides(null, 0, null) : getReactorRodTextureTop(null, 0, null);
+		return SIDES_HORIZONTAL[aSide] ? getReactorRodTextureSides(null, 0, null, T) : getReactorRodTextureTop(null, 0, null, T);
 	}
 	
 	public static IIconContainer sColoreds[] = new IIconContainer[] {
@@ -85,8 +86,8 @@ public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable imp
 	@Override public boolean  getReactorRodNeutronReaction  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return F;}
 	@Override public int      getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {return 0;}
 	
-	@Override public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa, F), BlockTextureDefault.get(sOverlays[1]));}
-	@Override public ITexture getReactorRodTextureTop  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa, F), BlockTextureDefault.get(sOverlays[0]));}
+	@Override public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa, F), BlockTextureDefault.get(sOverlays[1], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}
+	@Override public ITexture getReactorRodTextureTop  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa, F), BlockTextureDefault.get(sOverlays[0], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}
 	
 	@Override public boolean canDrop(int aSlot) {return F;}
 	

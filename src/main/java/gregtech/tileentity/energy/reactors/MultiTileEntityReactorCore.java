@@ -241,19 +241,19 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	}
 	
 	public int getReactorRodNeutronEmission(int aSlot) {
-		if (slotHas(aSlot) && (mMode & (1 << aSlot)) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronEmission(this, aSlot, slot(aSlot));
+		if (slotHas(aSlot) && (mMode & B[aSlot]) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronEmission(this, aSlot, slot(aSlot));
 		mNeutronCounts[aSlot] = 0;
 		return 0;
 	}
 	
 	public boolean getReactorRodNeutronReaction(int aSlot) {
 		mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
-		if (slotHas(aSlot) && (mMode & (1 << aSlot)) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReaction(this, aSlot, slot(aSlot));
+		if (slotHas(aSlot) && (mMode & B[aSlot]) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReaction(this, aSlot, slot(aSlot));
 		return F;
 	}
 	
 	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons) {
-		if (slotHas(aSlot) && (mMode & (1 << aSlot)) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReflection(this, aSlot, slot(aSlot), aNeutrons);
+		if (slotHas(aSlot) && (mMode & B[aSlot]) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReflection(this, aSlot, slot(aSlot), aNeutrons);
 		return 0;
 	}
 	
@@ -281,7 +281,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		}
 		if (aTool.equals(TOOL_thermometer)) {// TODO Remove Neutron Levels
 			if (aChatReturn != null) {
-				aChatReturn.add("Heat Levels: " + (oEnergy <= 0 ? "None" : oEnergy + " NU"));
+				aChatReturn.add("Heat Levels: " + (oEnergy <= 0 ? "None" : oEnergy + " HU"));
 				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
 			}
 			return 10000;
@@ -409,32 +409,32 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		ItemStack
 		aStack = slot(0);
 		if (ST.item(aStack) instanceof IItemReactorRod) {
-			mTextures[ 6] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 0, aStack);
-			mTextures[11] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 0, aStack);
+			mTextures[ 6] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 0, aStack, !mStopped && (mMode & B[0]) == 0);
+			mTextures[11] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 0, aStack, !mStopped && (mMode & B[0]) == 0);
 		} else {
 			mTextures[ 6] = null;
 			mTextures[11] = null;
 		}
 		aStack = slot(1);
 		if (ST.item(aStack) instanceof IItemReactorRod) {
-			mTextures[ 7] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 1, aStack);
-			mTextures[12] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 1, aStack);
+			mTextures[ 7] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 1, aStack, !mStopped && (mMode & B[1]) == 0);
+			mTextures[12] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 1, aStack, !mStopped && (mMode & B[1]) == 0);
 		} else {
 			mTextures[ 7] = null;
 			mTextures[12] = null;
 		}
 		aStack = slot(2);
 		if (ST.item(aStack) instanceof IItemReactorRod) {
-			mTextures[ 8] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 2, aStack);
-			mTextures[13] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 2, aStack);
+			mTextures[ 8] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 2, aStack, !mStopped && (mMode & B[2]) == 0);
+			mTextures[13] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 2, aStack, !mStopped && (mMode & B[2]) == 0);
 		} else {
 			mTextures[ 8] = null;
 			mTextures[13] = null;
 		}
 		aStack = slot(3);
 		if (ST.item(aStack) instanceof IItemReactorRod) {
-			mTextures[ 9] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 3, aStack);
-			mTextures[14] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 3, aStack);
+			mTextures[ 9] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 3, aStack, !mStopped && (mMode & B[3]) == 0);
+			mTextures[14] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 3, aStack, !mStopped && (mMode & B[3]) == 0);
 		} else {
 			mTextures[ 9] = null;
 			mTextures[14] = null;
