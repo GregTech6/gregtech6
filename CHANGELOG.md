@@ -39,6 +39,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED]
 Nuclear Reactor and all the relevant Rods.
 So here is the thing, this Reactor is more me experimenting with Game Mechanics than actually being balanced and well thought out. So please experiment with it in Creative, and have Fun with it. ^^
+The IC2-Type Coolant will be used for keeping this current Bbehavior, other Coolants might have different Mechanics in the future, this way I wont fuck over pre-existing Setups.
 I had to nerf it multiple times and while the Math is very simple in the Code, it's still complicated in the real World, and found out the easiest way by literally experimenting around, but I will give it a shot at explaining:
 Every Nuclear Fuel Rod emits X Neutrons to each of the 4 Rods around it, and Y Neutrons to itself. Thing is, the more Neutrons a Rod has (compared to its Self Neutrons), the more Neutrons it will emit too!
 This would obviously lead to exponential growth, if I didn't divide the emitted extra Neutrons by a Number that is six or greater (also seen as "Factor" in the Tooltip).

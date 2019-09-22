@@ -111,9 +111,9 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
 			// Emit buffered Energy. And yes if you use a strong enough Fuel, that Energy would stay buffered even while the Box is Off. This is very intended and represents partially used Fuel.
-			if (mEnergy >= mRate) {
+			if (mEnergy > 0) {
 				ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, 1, Math.min(mRate, mEnergy), this);
-				mEnergy -= mRate;
+				mEnergy -= Math.min(mRate, mEnergy);
 				// Burn surrounding Area.
 				if (mEfficiency < 1 || rng(mEfficiency) == 0) {
 					WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), T);
@@ -152,8 +152,7 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 				}
 			}
 			// Out of Fuel I guess.
-			if (mEnergy <     0) mEnergy = 0;
-			if (mEnergy < mRate) mActivity.mActive = F;
+			if (mEnergy < 0) mEnergy = 0;
 			// Output used Liquid to the Front.
 			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(mFacing));
 		}
