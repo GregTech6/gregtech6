@@ -307,6 +307,7 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 				int tSlot = aHitX < 0.5 ? aHitZ < 0.5 ? 0 : 1 : aHitZ < 0.5 ? 2 : 3;
 				if (!slotHas(tSlot) && ST.use(aPlayer, aStack)) {
 					slot(tSlot, ST.amount(1, aStack));
+					if (mTanks[0].isEmpty()) mStopped = T;
 					UT.Sounds.send(SFX.MC_CLICK, this);
 					updateClientData();
 				}
