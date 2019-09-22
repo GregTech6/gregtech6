@@ -33,7 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.11: (Not released yet)
+6.11.11:
 [ADDED] Recipes for Coolant when IC2-Exp is not installed. Also Coolant Recipes can be seen when looking up Recipes for the Reactor Core in NEI.
 [ADDED] Indium as a Byproduct of Sphalerite and Chalcopyrite, because it is needed for Neutron Absorbers.
 [ADDED]
