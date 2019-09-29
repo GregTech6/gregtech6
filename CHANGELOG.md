@@ -29,8 +29,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.12: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.11.12: (Not released yet, sorry for the long time of doing pretty much nothing this week, the Temperature went all Yoyo on me)
+[CHANGED] Chloroplatinic and Chloroauric Acids, and Stannic Chloride now have slightly different electrolyzation Recipes.
+[ADDED] Ludicrite Rod from that one Reactor Mod, just forgot to add it. XD
 
 
 6.11.11:
