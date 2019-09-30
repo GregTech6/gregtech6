@@ -370,14 +370,6 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		//----------------------------------------------------------------------------
 		
-		RM.pack(rockGt.mat(MT.Stone         , 4), ST.make(Blocks.cobblestone, 1, 0));
-		RM.pack(rockGt.mat(MT.Netherrack    , 4), ST.make(Blocks.netherrack, 1, 0));
-		RM.pack(rockGt.mat(MT.Endstone      , 4), ST.make(Blocks.end_stone, 1, 0));
-		
-		CR.shaped(ST.make(Blocks.cobblestone            ,1,0), CR.DEF_NAC   , "XX", "XX", 'X', rockGt.dat(MT.Stone));
-		CR.shaped(ST.make(Blocks.netherrack             ,1,0), CR.DEF_NAC   , "XX", "XX", 'X', rockGt.dat(MT.Netherrack));
-		CR.shaped(ST.make(Blocks.end_stone              ,1,0), CR.DEF_NAC   , "XX", "XX", 'X', rockGt.dat(MT.Endstone));
-		
 		CR.shaped(stick         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC   , "X" , "X" , 'X', rockGt.dat(MT.PetrifiedWood));
 		CR.shaped(plate         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC   , "XX", "XX", 'X', rockGt.dat(MT.PetrifiedWood));
 		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC   , "b ", " X", 'X', plate.dat(MT.Paper));

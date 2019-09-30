@@ -20,6 +20,7 @@
 package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 import static gregapi.util.CR.*;
 
 import gregapi.config.ConfigCategories;
@@ -128,6 +129,21 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(OP.stickLong   .mat(MT.IronMagnetic, 1), DEF_NAC, new Object[] {OP.stickLong   .dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
 		
 		CR.shaped(IL.Dye_Bonemeal                           .get(1), DEF, "h", "X", 'X', ST.make(Items.bone, 1, W));
+		
+		
+		
+		RM.pack(rockGt.mat(MT.Stone         , 4), ST.make(Blocks.cobblestone, 1, 0));
+		RM.pack(rockGt.mat(MT.Netherrack    , 4), ST.make(Blocks.netherrack, 1, 0));
+		RM.pack(rockGt.mat(MT.Endstone      , 4), ST.make(Blocks.end_stone, 1, 0));
+		
+		CR.shaped(ST.make(Blocks.netherrack                 , 1, 0), DEF    , "XX", "XX", 'X', rockGt.dat(MT.Netherrack));
+		CR.shaped(ST.make(Blocks.end_stone                  , 1, 0), DEF    , "XX", "XX", 'X', rockGt.dat(MT.Endstone));
+		CR.shaped(ST.make(Blocks.cobblestone                , 1, 0), DEF    , "XX", "XX", 'X', OP.rockGt.dat(MT.Stone));
+		CR.shaped(ST.make(Blocks.stone_stairs               , 1, 0), DEF_MIR, " X", "XX", 'X', OP.rockGt.dat(MT.Stone));
+		CR.shaped(ST.make(Blocks.stone_slab                 , 1, 3), DEF    , "  ", "XX", 'X', OP.rockGt.dat(MT.Stone));
+		CR.shaped(ST.make(Blocks.stone_stairs               , 4, 0), DEF_MIR, " X", "XX", 'X', Blocks.cobblestone);
+		CR.shaped(ST.make(Blocks.stone_slab                 , 4, 3), DEF    , "  ", "XX", 'X', Blocks.cobblestone);
+		
 		CR.shaped(ST.make(Blocks.gravel                     , 1, 0), DEF, "h", "X", 'X', ST.make(Blocks.cobblestone, 1, 0));
 		CR.shaped(ST.make(Blocks.cobblestone                , 1, 0), DEF, "h", "X", 'X', ST.make(Blocks.stone, 1, 0));
 		CR.shaped(ST.make(Blocks.stonebrick                 , 1, 2), DEF, "h", "X", 'X', ST.make(Blocks.stonebrick, 1, 0));
@@ -470,6 +486,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Compressor   .addRecipe1(T, 16,   64, OM.dust(MT.Glowstone, 4*U), ST.make(Blocks.glowstone, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Blaze), OP.plate.mat(MT.Blaze, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Lapis), OP.plateGem.mat(MT.Lapis, 1));
+		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Asbestos), OP.plate.mat(MT.Asbestos, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Lazurite), OP.plateGem.mat(MT.Lazurite, 1));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Sodalite), OP.plateGem.mat(MT.Sodalite, 1));
 		

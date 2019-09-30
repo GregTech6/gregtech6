@@ -29,9 +29,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.12: (Not released yet, sorry for the long time of doing pretty much nothing this week, the Temperature went all Yoyo on me)
-[CHANGED] Chloroplatinic and Chloroauric Acids, and Stannic Chloride now have slightly different electrolyzation Recipes.
+6.11.12:
+[CHANGED] Chloroplatinic and Chloroauric Acids, and Stannic Chloride now have slightly different electrolyzation Recipes. Still not quite realistic from what I found out from comments afterwards, but definitely more convenient.
+[ADDED] Vanilla Cobble Stairs and Slabs should be possible with GT6 Rock Types now in a 2x2 Grid. Please be aware that Cobble Slabs need to use the lower half of the 2x2 Grid to craft.
 [ADDED] Ludicrite Rod from that one Reactor Mod, just forgot to add it. XD
+[ADDED] Recipe for Frost Hazmat using Asbestos Plates.
 
 
 6.11.11:
