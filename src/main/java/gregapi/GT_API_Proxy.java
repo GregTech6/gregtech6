@@ -703,28 +703,25 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			tInv[tSlot] = null;
 		}
 		
-		boolean tCheckFood = (ST.food(tCompare) > 0) && (aEvent.original.getItemUseAction() == EnumAction.eat || aEvent.original.getItemUseAction() == EnumAction.drink);
-		
-		if (tInv[tSlot] == null || tInv[tSlot].stackSize == 0) {
-			if (tCheckFood) aEvent.entityPlayer.clearItemInUse();
+		if (ST.food(tCompare) <= 0 && aEvent.original.getItemUseAction() != EnumAction.eat && aEvent.original.getItemUseAction() != EnumAction.drink && (tInv[tSlot] == null || tInv[tSlot].stackSize == 0)) {
 			if (tSlot < 9) {
-				if (tCheckFood ? ST.food(tInv[tSlot+27]) > 0 : ST.equal(tCompare, tInv[tSlot+27], T)) {
-				if (tCheckFood ? ST.food(tInv[tSlot+18]) > 0 : ST.equal(tCompare, tInv[tSlot+18], T)) {
-				if (tCheckFood ? ST.food(tInv[tSlot+ 9]) > 0 : ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+27], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+18], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
 				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				tInv[tSlot] = tInv[tSlot+27]; tInv[tSlot+27] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				return;
 			}
 			if (tSlot < 18) {
-				if (tCheckFood ? ST.food(tInv[tSlot+18]) > 0 : ST.equal(tCompare, tInv[tSlot+18], T)) {
-				if (tCheckFood ? ST.food(tInv[tSlot+ 9]) > 0 : ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+18], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
 				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				tInv[tSlot] = tInv[tSlot+18]; tInv[tSlot+18] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				return;
 			}
 			if (tSlot < 27) {
-				if (tCheckFood ? ST.food(tInv[tSlot+ 9]) > 0 : ST.equal(tCompare, tInv[tSlot+ 9], T)) {
+				if (ST.equal(tCompare, tInv[tSlot+ 9], T)) {
 				tInv[tSlot] = tInv[tSlot+ 9]; tInv[tSlot+ 9] = null; if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges(); return;}
 				return;
 			}
