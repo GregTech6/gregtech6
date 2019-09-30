@@ -749,13 +749,7 @@ public class ST {
 	
 	public static int food(ItemStack aStack) {
 		if (invalid(aStack)) return 0;
-		if (item_(aStack) instanceof ItemFood) {
-			try {
-				return ((ItemFood)item_(aStack)).func_150905_g(aStack);
-			} catch(Throwable e) {
-				return 1;
-			}
-		}
+		if (item_(aStack) instanceof ItemFood) {try {return ((ItemFood)item_(aStack)).func_150905_g(aStack);} catch(Throwable e) {return 1;}}
 		if (item_(aStack) instanceof MultiItemRandom) {
 			IFoodStat tStat = ((MultiItemRandom)item_(aStack)).mFoodStats.get(meta_(aStack));
 			return tStat == null ? 0 : tStat.getFoodLevel(item_(aStack), aStack, null);
@@ -765,13 +759,7 @@ public class ST {
 	
 	public static float saturation(ItemStack aStack) {
 		if (invalid(aStack)) return 0;
-		if (item_(aStack) instanceof ItemFood) {
-			try {
-				return ((ItemFood)item_(aStack)).func_150906_h(aStack);
-			} catch(Throwable e) {
-				return 0.5F;
-			}
-		}
+		if (item_(aStack) instanceof ItemFood) {try {return ((ItemFood)item_(aStack)).func_150906_h(aStack);} catch(Throwable e) {return 0.5F;}}
 		if (item_(aStack) instanceof MultiItemRandom) {
 			IFoodStat tStat = ((MultiItemRandom)item_(aStack)).mFoodStats.get(meta_(aStack));
 			return tStat == null ? 0 : tStat.getSaturation(item_(aStack), aStack, null);

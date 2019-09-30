@@ -690,9 +690,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public void onPlayerDestroyItem(PlayerDestroyItemEvent aEvent) {
 		if (!UT.Entities.isPlayer(aEvent.entityPlayer) || aEvent.original == null || UT.Entities.hasInfiniteItems(aEvent.entityPlayer)) return;
 		ItemStack[] tInv = aEvent.entityPlayer.inventory.mainInventory;
-		if (aEvent.entityPlayer.inventory.mainInventory.length != 36) return;
+		if (tInv.length != 36) return;
 		int tSlot = aEvent.entityPlayer.inventory.currentItem;
-		ItemStack tCompare = aEvent.original;
+		ItemStack tCompare = ST.amount(1, aEvent.original);
 		if (tCompare == null || OP.scrapGt.contains(tCompare)) tCompare = ST.make(ToolsGT.sMetaTool, 1, W);
 		
 		if (OP.scrapGt.contains(tInv[tSlot])) {
