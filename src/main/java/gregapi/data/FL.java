@@ -374,7 +374,7 @@ public enum FL {
 	
 	, Gas_Natural               ("gas_natural_gas"          , "naturalgas", "gas.natural"   , SIMPLE, GAS)
 	, Methane                   ("methane"                                                  , SIMPLE, GAS)
-	, Liquid_Methane            ("liquid:liquidmethane"                                     , SIMPLE, LIQUID, THERMOS)
+	, Liquid_Methane            ("liquidmethane"                                            , SIMPLE, LIQUID, THERMOS)
 	, Propane                   ("propane"                                                  , SIMPLE, GAS)
 	, Butane                    ("butane"                                                   , SIMPLE, GAS)
 	, Ethylene                  ("ethylene"                 , "ethene"                      , GAS)
