@@ -750,51 +750,5 @@ public class Loader_Recipes_Other implements Runnable {
 			tFluid = tMaterial.gas(U, T);               if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*65536, tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons));
 			tFluid = tMaterial.plasma(U, T);            if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*65536, tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons));
 		}
-		
-		RM.generify(FL.make("molten.meteoriciron"        , 1), FL.make("molten.iron", 1));
-		RM.generify(FL.make("molten.wroughtiron"         , 1), FL.make("molten.iron", 1));
-		RM.generify(FL.Redstone_TE                   .make(25),FL.Redstone.make(36));
-		RM.generify(FL.Redstone                      .make(36),FL.Redstone_TE.make(25));
-		RM.generify(FL.Lubricant                     .make(1), FL.LubRoCant.make(1));
-		RM.generify(FL.LubRoCant                     .make(1), FL.Lubricant.make(1));
-		RM.generify(FL.Oil_Canola                    .make(2), FL.lube(1));
-		RM.generify(FL.make("molten.latex"               , 1), FL.Latex.make(1));
-		RM.generify(FL.Latex                         .make(1), FL.make("molten.latex", 1));
-		RM.generify(FL.Slime_Pink                    .make(1), FL.Slime_Green.make(1));
-		RM.generify(FL.Honey                         .make(1), FL.HoneyGrC.make(1));
-		RM.generify(FL.HoneyGrC                      .make(1), FL.HoneyBoP.make(1));
-		RM.generify(FL.HoneyBoP                      .make(1), FL.Honey.make(1));
-		RM.generify(FL.Milk                          .make(1), FL.MilkGrC.make(1));
-		RM.generify(FL.MilkGrC                       .make(1), FL.Milk.make(1));
-		RM.generify(FL.make("for.honeydew"               , 1), FL.Honeydew.make(1));
-		RM.generify(FL.make("spruceresin"                , 1), FL.make("resin", 1));
-		RM.generify(FL.make("resin"                      , 1), FL.make("spruceresin", 1));
-		RM.generify(FL.make("sulfuricacid"               , 1), FL.make("acid", 1));
-		RM.generify(FL.make("acid"                       , 1), FL.make("sulfuricacid", 1));
-		RM.generify(FL.Oil_Plant                     .make(2), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Seed                      .make(1), FL.Oil_Plant.make(2));
-		RM.generify(FL.make("biomass"                    , 1), FL.make("ic2biomass", 1));
-		RM.generify(FL.make("ic2biomass"                 , 1), FL.make("biomass", 1));
-		RM.generify(FL.Methane                       .make(1), FL.make("ic2biogas", 4));
-		RM.generify(FL.make("ic2biogas"                  , 4), FL.Methane.make(1));
-		RM.generify(FL.make("gas_natural_gas"            , 1), FL.Methane.make(1));
-		RM.generify(FL.make("naturalgas"                 , 1), FL.Methane.make(1));
-		RM.generify(FL.make("gas.natural"                , 1), FL.Methane.make(1));
-		RM.generify(FL.make("kerosine"                   , 1), FL.make("kerosene", 1));
-		RM.generify(FL.make("kerosene"                   , 1), FL.make("kerosine", 1));
-		RM.generify(FL.make("petrol"                     , 1), FL.make("gasoline", 1));
-		RM.generify(FL.make("gasoline"                   , 1), FL.make("petrol", 1));
-		RM.generify(FL.make("fuel"                       , 1), FL.make("fueloil", 1));
-		RM.generify(FL.make("fueloil"                    , 1), FL.make("fuel", 1));
-		RM.generify(FL.Steam_IC2_Superheated         .make(1), FL.Steam.make(3));
-		RM.generify(FL.Steam_IC2                     .make(1), FL.Steam.make(1));
-		RM.generify(FL.DistW                         .make(1), FL.Water.make(1));
-		RM.generify(FL.Oil_Lin                       .make(1), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Hemp                      .make(1), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Olive                     .make(1), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Sunflower                 .make(1), FL.Oil_Seed.make(1));
-		RM.generify(FL.Oil_Nut                       .make(1), FL.Oil_Seed.make(1));
-		
-		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid)) RM.generify(FL.make(tFluid, 1), FL.Juice.make(1));
 	}
 }
