@@ -79,7 +79,8 @@ import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorHotFluid;
 import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorLiquid;
 import gregtech.tileentity.energy.generators.MultiTileEntityGeneratorSolid;
 import gregtech.tileentity.energy.generators.MultiTileEntitySolarPanelElectric;
-import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore;
+import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore1x1;
+import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore2x2;
 import gregtech.tileentity.energy.reactors.MultiTileEntityReactorRodAbsorber;
 import gregtech.tileentity.energy.reactors.MultiTileEntityReactorRodBase;
 import gregtech.tileentity.energy.reactors.MultiTileEntityReactorRodDepleted;
@@ -601,7 +602,8 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		
 		// Reactor Stuffs
-		aMat = MT.Pb;                   aRegistry.add("Nuclear Reactor Core"                          , "Reactors",  9200,  9200, MultiTileEntityReactorCore.class        , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid)), "PCP", "CMC", "PCP", 'M', OP.casingMachineDense.dat(aMat), 'C', IL.Processor_Crystal_Ruby, 'P', IL.PISTONS[4]); ItemsGT.addNEIRedirects(aRegistry.getItem(), FL.Coolant_IC2.display(), FL.Coolant_IC2_Hot.display());
+		aMat = MT.Pb;                   aRegistry.add("Nuclear Reactor Core (1x1)"                    , "Reactors",  9300,  9200, MultiTileEntityReactorCore1x1.class     , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid)), "CP" , "wM"        , 'M', OP.casingMachineDense.dat(aMat), 'C', IL.Processor_Crystal_Ruby, 'P', IL.PISTONS[4]); ItemsGT.addNEIRedirects(aRegistry.getItem(), FL.Coolant_IC2.display(), FL.Coolant_IC2_Hot.display());
+		aMat = MT.Pb;                   aRegistry.add("Nuclear Reactor Core (2x2)"                    , "Reactors",  9200,  9200, MultiTileEntityReactorCore2x2.class     , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid)), "PCP", "CMC", "PCP", 'M', OP.casingMachineDense.dat(aMat), 'C', IL.Processor_Crystal_Ruby, 'P', IL.PISTONS[4]); ItemsGT.addNEIRedirects(aRegistry.getItem(), FL.Coolant_IC2.display(), FL.Coolant_IC2_Hot.display());
 		
 		
 		aMat = MT.Zr;                   aRegistry.add("Empty Reactor Rod"                             , "Reactors",  9201,  9200, MultiTileEntityReactorRodBase.class     , aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,  10.0F, NBT_RESISTANCE,  10.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid))); IL.Reactor_Rod_Empty.set(aRegistry.getItem(), new OreDictItemData(MT.Zr, U));

@@ -21,7 +21,6 @@ package gregtech.tileentity.energy.reactors;
 
 import static gregapi.data.CS.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import gregapi.GT_API_Proxy;
@@ -35,25 +34,15 @@ import gregapi.fluid.FluidTankGT;
 import gregapi.item.IItemReactorRod;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
-import gregapi.old.Textures;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureFluid;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase10FacingDouble;
-import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
-import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -66,7 +55,7 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
 	public int mNeutronCounts[] = new int[] {0,0,0,0}, oNeutronCounts[] = new int[] {0,0,0,0};
 	public long mEnergy = 0, oEnergy = 0;
 	public byte mMode = 0;
@@ -154,109 +143,22 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		onUnregisterPost();
 	}
 	
-	private static final int[] S2103 = new int[] {0,0,2,1,0,3,0}, S0312 = new int[] {0,0,0,3,1,2,0};
+	public static final int[] S2103 = new int[] {0,0,2,1,0,3,0}, S0312 = new int[] {0,0,0,3,1,2,0};
 	
 	// 0 and 2 are at SIDE_Z_NEG    1 3      -->X+
 	// 1 and 3 are at SIDE_Z_POS  2|0 2|0   |0 2
 	// 0 and 1 are at SIDE_X_NEG  3|1 3|1   v1 3
 	// 2 and 3 are at SIDE_X_POS    0 2     Z+
 	
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void onServerTickPost(boolean aFirst) {
-		if (aFirst) {
-			if (mStopped) {
-				//
-			} else {
-				DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacents[] = new DelegatorTileEntity[4], tAdjacent;
-				DelegatorTileEntity
-				tAdjacentTE = getAdjacentTileEntity(SIDE_Z_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[0] = tAdjacentTE;
-				tAdjacentTE = getAdjacentTileEntity(SIDE_Z_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[1] = tAdjacentTE;
-				tAdjacentTE = getAdjacentTileEntity(SIDE_X_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[2] = tAdjacentTE;
-				tAdjacentTE = getAdjacentTileEntity(SIDE_X_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[3] = tAdjacentTE;
-				
-				int
-				tNeutronCount = getReactorRodNeutronEmission(0);
-				if (tNeutronCount != 0) {
-					mNeutronCounts[0] += getReactorRodNeutronReflection(1, tNeutronCount);
-					mNeutronCounts[0] += getReactorRodNeutronReflection(2, tNeutronCount);
-					tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-					tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-				}
-				
-				tNeutronCount = getReactorRodNeutronEmission(1);
-				if (tNeutronCount != 0) {
-					mNeutronCounts[1] += getReactorRodNeutronReflection(0, tNeutronCount);
-					mNeutronCounts[1] += getReactorRodNeutronReflection(3, tNeutronCount);
-					tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-					tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-				}
-				
-				tNeutronCount = getReactorRodNeutronEmission(2);
-				if (tNeutronCount != 0) {
-					mNeutronCounts[2] += getReactorRodNeutronReflection(0, tNeutronCount);
-					mNeutronCounts[2] += getReactorRodNeutronReflection(3, tNeutronCount);
-					tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-					tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-				}
-				
-				tNeutronCount = getReactorRodNeutronEmission(3);
-				if (tNeutronCount != 0) {
-					mNeutronCounts[3] += getReactorRodNeutronReflection(1, tNeutronCount);
-					mNeutronCounts[3] += getReactorRodNeutronReflection(2, tNeutronCount);
-					tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-					tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-				}
-			}
-		} else {
-			int tCalc = (int)UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
-			
-			if (tCalc > 0) for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
-				UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), tCalc);
-			}
-			
-			mRunning = (tCalc != 0);
-			
-			long tEnergy = mEnergy;
-			
-			if (getReactorRodNeutronReaction(0)) mRunning = T;
-			if (getReactorRodNeutronReaction(1)) mRunning = T;
-			if (getReactorRodNeutronReaction(2)) mRunning = T;
-			if (getReactorRodNeutronReaction(3)) mRunning = T;
-			
-			oEnergy = mEnergy - tEnergy;
-			tEnergy = mEnergy/EU_PER_COOLANT;
-			
-			if (tEnergy > 0) {
-				// TODO Heat up different Coolants
-				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
-					mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
-				} else {
-					// explode(0.1); // TODO proper explosion.
-					UT.Sounds.send(SFX.MC_EXPLODE, this);
-					tCalc *= 2;
-					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
-						UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), tCalc);
-					}
-				}
-			}
-		}
-	}
-	
 	public int getReactorRodNeutronEmission(int aSlot) {
-		if (slotHas(aSlot) && (mMode & B[aSlot]) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronEmission(this, aSlot, slot(aSlot));
-		mNeutronCounts[aSlot] = 0;
 		return 0;
 	}
 	
 	public boolean getReactorRodNeutronReaction(int aSlot) {
-		mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
-		if (slotHas(aSlot) && (mMode & B[aSlot]) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReaction(this, aSlot, slot(aSlot));
 		return F;
 	}
 	
 	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons) {
-		if (slotHas(aSlot) && (mMode & B[aSlot]) == 0 && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReflection(this, aSlot, slot(aSlot), aNeutrons);
 		return 0;
 	}
 	
@@ -392,87 +294,9 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 		return mTanks[mTanks[1].has() ? 1 : 0].drain(aMaxDrain, aDoDrain);
 	}
 	
-	public ITexture mTextures[] = new ITexture[15];
-	
-	@Override
-	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTextures[ 0] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get(sOverlays[0]));
-		mTextures[ 1] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get(sOverlays[1]));
-		mTextures[ 2] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get(sOverlays[2]));
-		mTextures[ 3] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get(sOverlays[3]));
-		mTextures[ 4] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[4], mRGBa), BlockTextureDefault.get(sOverlays[4]));
-		mTextures[ 5] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[5], mRGBa), BlockTextureDefault.get(sOverlays[5]));
-		mTextures[10] = (mTanks[0].has() ? BlockTextureFluid.get(mTanks[0]) : null);
-		ItemStack
-		aStack = slot(0);
-		if (ST.item(aStack) instanceof IItemReactorRod) {
-			mTextures[ 6] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 0, aStack, !mStopped && (mMode & B[0]) == 0);
-			mTextures[11] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 0, aStack, !mStopped && (mMode & B[0]) == 0);
-		} else {
-			mTextures[ 6] = null;
-			mTextures[11] = null;
-		}
-		aStack = slot(1);
-		if (ST.item(aStack) instanceof IItemReactorRod) {
-			mTextures[ 7] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 1, aStack, !mStopped && (mMode & B[1]) == 0);
-			mTextures[12] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 1, aStack, !mStopped && (mMode & B[1]) == 0);
-		} else {
-			mTextures[ 7] = null;
-			mTextures[12] = null;
-		}
-		aStack = slot(2);
-		if (ST.item(aStack) instanceof IItemReactorRod) {
-			mTextures[ 8] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 2, aStack, !mStopped && (mMode & B[2]) == 0);
-			mTextures[13] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 2, aStack, !mStopped && (mMode & B[2]) == 0);
-		} else {
-			mTextures[ 8] = null;
-			mTextures[13] = null;
-		}
-		aStack = slot(3);
-		if (ST.item(aStack) instanceof IItemReactorRod) {
-			mTextures[ 9] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureSides(this, 3, aStack, !mStopped && (mMode & B[3]) == 0);
-			mTextures[14] = ((IItemReactorRod)ST.item_(aStack)).getReactorRodTextureTop  (this, 3, aStack, !mStopped && (mMode & B[3]) == 0);
-		} else {
-			mTextures[ 9] = null;
-			mTextures[14] = null;
-		}
-		return 11;
-	}
-	
-	@Override
-	public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {
-		return aRenderPass < 6 || (aRenderPass == 6 && slotHas(0)) || (aRenderPass == 7 && slotHas(1)) || (aRenderPass == 8 && slotHas(2)) || (aRenderPass == 9 && slotHas(3)) || (aRenderPass == 10 && mTanks[0].has());
-	}
-	
-	@Override
-	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		switch (aRenderPass) {
-		case SIDE_X_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]);
-		case SIDE_Y_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[14], PX_N[ 0]);
-		case SIDE_Z_NEG: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]);
-		case SIDE_X_POS: return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
-		case SIDE_Y_POS: return box(aBlock, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
-		case SIDE_Z_POS: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
-		
-		case  6: return box(aBlock, PX_P[ 2], PX_P[ 1], PX_P[ 2], PX_N[10], PX_P[17], PX_N[10]);
-		case  7: return box(aBlock, PX_P[ 2], PX_P[ 1], PX_P[10], PX_N[10], PX_P[17], PX_N[ 2]);
-		case  8: return box(aBlock, PX_P[10], PX_P[ 1], PX_P[ 2], PX_N[ 2], PX_P[17], PX_N[10]);
-		case  9: return box(aBlock, PX_P[10], PX_P[ 1], PX_P[10], PX_N[ 2], PX_P[17], PX_N[ 2]);
-		
-		case 10: return box(aBlock, PX_P[ 2]+PX_OFFSET, PX_P[ 2], PX_P[ 2]+PX_OFFSET, PX_N[ 2]-PX_OFFSET, PX_N[ 2], PX_N[ 2]-PX_OFFSET);
-		}
-		return F;
-	}
-	
-	@Override
-	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[SIDES_VERTICAL[aSide] && aRenderPass != 10 && aRenderPass > 1 ? aRenderPass+5 : aRenderPass] : mTextures[aRenderPass < 6 && isCovered((byte)aRenderPass) ? 3 : 2];
-	}
-	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mRunning) {UT.Entities.applyHeatDamage(aEntity, 5); UT.Entities.applyRadioactivity(aEntity, 3, 1);}}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[1], PX_P[1], PX_P[1], PX_N[1], PX_N[1], PX_N[1]);}
 	
-	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[4];}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ZL_INTEGER;}
@@ -484,24 +308,8 @@ public class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble imp
 	@Override public boolean getStateRunningActively() {return mRunning;}
 	@Override public boolean setStateOnOff(boolean aOnOff) {return mStopped = !aOnOff;}
 	@Override public boolean getStateOnOff() {return !mStopped;}
-	@Override public byte setStateMode(byte aMode) {return mMode = aMode;}
-	@Override public byte getStateMode() {return mMode;}
-	
-	public static IIconContainer sColoreds[] = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/top"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/side1"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/side2"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/face1"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/colored/face2")
-	}, sOverlays[] = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/bottom"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/top"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/side1"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/side2"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/face1"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core/overlay/face2")
-	};
+	public byte setStateMode(byte aMode) {return mMode = aMode;}
+	public byte getStateMode() {return mMode;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core";}
 }

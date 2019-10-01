@@ -26,7 +26,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.13: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED]
+1x1 Reactor Core.
+Yes it is possible to mix 1x1 and 2x2 Reactors with each other
+But apart from saving Material on Neutron Reflectors and Absorbers its not THAT useful to mix them, because fuel Rods in a 1x1 Reactor will split their Neutron Emissions in half over the 2 adjacent Slots of the 2x2 Reactor.
 
 
 6.11.12:
