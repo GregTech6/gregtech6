@@ -26,6 +26,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.13: (Not released yet)
+[CHANGED] Bark can now be used to make Paper and Dynamite.
 [ADDED] Liquid Methane from GalaxySpace should now be convertable to 643 Liters of regular Gaseous Methane.
 [ADDED]
 1x1 Reactor Core.

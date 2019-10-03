@@ -158,13 +158,13 @@ public class Loader_Recipes_Other implements Runnable {
 		addListener(OD.itemGrassDry, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Loom             .addRecipe2(T, 16,   16, ST.tag(10), ST.amount(7, aEvent.mStack), IL.Rope_Grass.get(1));
 		}});
-		addListener(dustTiny.dat(ANY.Wood), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(dustTiny.dat(ANY.Wood), dustTiny.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32, aEvent.mStack, MT.Glyceryl.fluid( U9, T), NF, OM.dust(MT.Dynamite,2*U9));
 		}});
-		addListener(dustSmall.dat(ANY.Wood), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(dustSmall.dat(ANY.Wood), dustSmall.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32, aEvent.mStack, MT.Glyceryl.fluid( U4, T), NF, OM.dust(MT.Dynamite,  U2));
 		}});
-		addListener(dust.dat(ANY.Wood), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(dust.dat(ANY.Wood), dust.dat(MT.Bark), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer            .addRecipe1(T, 16,   32, aEvent.mStack, MT.Glyceryl.fluid( U , T), NF, OM.dust(MT.Dynamite,2*U ));
 			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, FL.Water.make(125), NF, ST.make(Items.paper, 1, 0));
 			RM.Bath             .addRecipe1(T,  0,   16, aEvent.mStack, FL.DistW.make(100), NF, ST.make(Items.paper, 1, 0));
