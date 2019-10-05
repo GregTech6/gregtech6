@@ -53,6 +53,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.
 		RM.generify(FL.make("molten.meteoriciron"        , 1), FL.make("molten.iron", 1));
 		RM.generify(FL.make("molten.wroughtiron"         , 1), FL.make("molten.iron", 1));
+		RM.generify(FL.make("molten.osmiumelemental"     , 1), FL.make("molten.osmium", 1));
 		RM.generify(FL.Redstone_TE                   .make(25),FL.Redstone.make(36));
 		RM.generify(FL.Redstone                      .make(36),FL.Redstone_TE.make(25));
 		RM.generify(FL.Lubricant                     .make(1), FL.LubRoCant.make(1));

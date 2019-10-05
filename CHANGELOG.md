@@ -26,6 +26,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.13: (Not released yet)
+[FIXED] Mekanisms Fake Osmium being used in Mixer Alloying Recipes for Osmiridium instead of Real Osmium by accident.
+[CHANGED] Mixer Recipes for Alloys now have a Selector Tag in them! (Also added a few useful shortcuts for Mixer Alloying thanks to that)
 [CHANGED] Bark can now be used to make Paper and Dynamite.
 [ADDED] Liquid Methane from GalaxySpace should now be convertable to 643 Liters of regular Gaseous Methane.
 [ADDED]
