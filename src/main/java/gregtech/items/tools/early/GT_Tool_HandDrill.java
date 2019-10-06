@@ -17,12 +17,9 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.items.tools.electric;
+package gregtech.items.tools.early;
 
 import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.List;
 
 import gregapi.data.CS.SFX;
 import gregapi.data.MT;
@@ -31,69 +28,23 @@ import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
-import gregtech.items.behaviors.Behavior_Place_Dynamite;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntityCaveSpider;
-import net.minecraft.entity.monster.EntitySpider;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-public class GT_Tool_Drill_LV extends ToolStats {
-	public static final List<String> mEffectiveList = Arrays.asList(
-		EntityCaveSpider.class.getName(),
-		EntitySpider.class.getName(),
-		"EntityTFHedgeSpider",
-		"EntityTFKingSpider",
-		"EntityTFSwarmSpider",
-		"EntityTFTowerBroodling"
-	);
-	
-	@Override
-	public float getNormalDamageAgainstEntity(float aOriginalDamage, Entity aEntity, ItemStack aStack, EntityPlayer aPlayer) {
-		String tName = aEntity.getClass().getName();
-		tName = tName.substring(tName.lastIndexOf(".")+1);
-		return mEffectiveList.contains(tName)?aOriginalDamage*2:aOriginalDamage;
-	}
-	
-	@Override
-	public int getToolDamagePerBlockBreak() {
-		return 200;
-	}
-	
-	@Override
-	public int getToolDamagePerDropConversion() {
-		return 100;
-	}
-	
-	@Override
-	public int getToolDamagePerContainerCraft() {
-		return 100;
-	}
-	
-	@Override
-	public int getToolDamagePerEntityAttack() {
-		return 400;
-	}
-	
-	@Override
-	public int getBaseQuality() {
-		return 0;
-	}
-	
+public class GT_Tool_HandDrill extends ToolStats {
 	@Override
 	public float getBaseDamage() {
-		return 1.5F;
+		return 0.5F;
 	}
 	
 	@Override
 	public float getSpeedMultiplier() {
-		return 1.0F;
+		return 0.5F;
 	}
 	
 	@Override
 	public float getMaxDurabilityMultiplier() {
-		return 1.0F;
+		return 0.25F;
 	}
 	
 	@Override
@@ -112,22 +63,21 @@ public class GT_Tool_Drill_LV extends ToolStats {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return !aIsToolHead ? Textures.ItemIcons.TIP_ELECTRIC_DRILL : Textures.ItemIcons.HANDLE_ELECTRIC_DRILL;
+		return aIsToolHead ? Textures.ItemIcons.HAND_DRILL : Textures.ItemIcons.VOID;
 	}
 	
 	@Override
 	public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
-		return !aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.StainlessSteel).mRGBaSolid;
+		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mRGBaSolid : UNCOLOURED;
 	}
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_drill, SFX.GT_SCREWDRIVER, 100, !canBlock()));
-		aItem.addItemBehavior(aID, Behavior_Place_Dynamite.INSTANCE);
 	}
 	
 	@Override
 	public String getDeathMessage() {
-		return "[VICTIM] needed help with a few holes and [KILLER] gladly helped";
+		return "[VICTIM] has been tortured by [KILLER]";
 	}
 }

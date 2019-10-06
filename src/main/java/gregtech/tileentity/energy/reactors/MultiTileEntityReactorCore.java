@@ -182,10 +182,9 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 			}
 			return 10000;
 		}
-		if (aTool.equals(TOOL_thermometer)) {// TODO Remove Neutron Levels
+		if (aTool.equals(TOOL_thermometer)) {
 			if (aChatReturn != null) {
 				aChatReturn.add("Heat Levels: " + (oEnergy <= 0 ? "None" : oEnergy + " HU"));
-				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
 			}
 			return 10000;
 		}

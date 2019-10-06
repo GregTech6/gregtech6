@@ -153,10 +153,9 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			}
 			return 10000;
 		}
-		if (aTool.equals(TOOL_thermometer)) {// TODO Remove Neutron Levels
+		if (aTool.equals(TOOL_thermometer)) {
 			if (aChatReturn != null) {
 				aChatReturn.add("Heat Levels: " + (oEnergy <= 0 ? "None" : oEnergy + " HU"));
-				aChatReturn.add("Neutron Levels: " + (oNeutronCounts[0] + oNeutronCounts[1] + oNeutronCounts[2] + oNeutronCounts[3]) + "n");
 			}
 			return 10000;
 		}
