@@ -25,11 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.14: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
-
-
-6.11.13:
+6.11.14:
 [FIXED] Mekanisms Fake Osmium being used in Mixer Alloying Recipes for Osmiridium instead of Real Osmium by accident.
 [CHANGED] Mixer Recipes for Alloys now have a Selector Tag in them! (Also added a few useful shortcuts for Mixer Alloying thanks to that)
 [CHANGED] Bark can now be used to make Paper and Dynamite.
@@ -41,6 +37,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 1x1 Reactor Core.
 Yes it is possible to mix 1x1 and 2x2 Reactors with each other
 But apart from saving Material on Neutron Reflectors and Absorbers its not THAT useful to mix them, because fuel Rods in a 1x1 Reactor will split their Neutron Emissions in half over the 2 adjacent Slots of the 2x2 Reactor.
+
+
+6.11.13:
+[BROKEN] DO NOT USE!
 
 
 6.11.12:
