@@ -323,7 +323,7 @@ public class WD {
 		return (!MD.GC.mLoaded || !(aWorld.provider instanceof IGalacticraftWorldProvider)) && !hasCollide(aWorld, aX, aY, aZ);
 	}
 	
-	/** @return the regular Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */
+	/** @return the regular Environment Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */
 	public static long envTemp(World aWorld, int aX, int aY, int aZ) {
 		return envTemp(aWorld.getBiomeGenForCoords(aX, aZ), aX, aY, aZ);
 	}
