@@ -247,10 +247,6 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Electrolyzer .addRecipe1(T, 16, 1280, ST.tag(0), FL.array(MT.SaltWater.liquid(U, T)   ), FL.array(MT.Cl.gas(U8, F), MT.H.gas( 3*U8, F), MT.O.gas(   U8, F)), OM.dust(MT.NaOH, 3*U8));
 		
 		
-		RM.Centrifuge       .addRecipe0(T, 64,  64, FL.Air       .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T));
-		RM.Centrifuge       .addRecipe0(T, 64,  64, FL.Air_Nether.make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.SO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T));
-		RM.Centrifuge       .addRecipe0(T, 64,  64, FL.Air_End   .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.Kr.gas(U1000, T), MT.Xe.gas(U1000, T), MT.Rn.gas(U1000, T));
-		
 		
 		RM.Fermenter        .addRecipe1(T, 16,  24, ST.tag(0), FL.Biomass   .make(40), FL.Methane.make(8), ZL_IS);
 		RM.Fermenter        .addRecipe1(T, 16,  24, ST.tag(0), FL.BiomassIC2.make(40), FL.Methane.make(8), ZL_IS);
@@ -273,6 +269,11 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] {3000, 3000}, FL.array(FL.Oil_Light     .make( 50)), FL.array(FL.Fuel.make(25), FL.Diesel.make(15), FL.Kerosine.make(15), FL.Petrol.make(15), FL.Propane.make(50), FL.Butane.make(50), FL.lube( 25)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1)); if (FL.Oil_Light2.exists())
 		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] {3000, 3000}, FL.array(FL.Oil_Light2    .make( 50)), FL.array(FL.Fuel.make(25), FL.Diesel.make(15), FL.Kerosine.make(15), FL.Petrol.make(15), FL.Propane.make(50), FL.Butane.make(50), FL.lube( 25)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1));
 		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] {2000, 2000}, FL.array(FL.Oil_Soulsand  .make( 50)), FL.array(FL.Fuel.make(20), FL.Diesel.make(10), FL.Kerosine.make(10), FL.Petrol.make(10), FL.Propane.make(10), FL.Butane.make(10), FL.lube( 80)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1));
+		
+		
+		RM.CryoDistillationTower.addRecipe0(T, 64,  64, FL.Air       .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T));
+		RM.CryoDistillationTower.addRecipe0(T, 64,  64, FL.Air_Nether.make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.SO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T));
+		RM.CryoDistillationTower.addRecipe0(T, 64,  64, FL.Air_End   .make(200), MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.Kr.gas(U1000, T), MT.Xe.gas(U1000, T), MT.Rn.gas(U1000, T));
 		
 		
 		RM.SteamCracking    .addRecipe0(F, 16,  64, FL.array(FL.Steam.make(1000), FL.Propane.make(100)), FL.array(FL.Hydrogen.make( 2), FL.Methane.make(27), FL.Ethylene.make(42), FL.Propylene.make(19)), ZL_IS);

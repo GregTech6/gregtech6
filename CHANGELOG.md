@@ -1,6 +1,26 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.12.00: (Not released yet, this is probably the last Version before I start my own Game, unless I screw up Releases again and need Quickfixes because tired or something)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.24: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.23: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.22: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.21: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.11.20: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,7 +42,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.15: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Cryo Distillation Tower for separating Air into other Gasses. The old Centrifuge Recipe for that does no longer exist.
 
 
 6.11.14:
