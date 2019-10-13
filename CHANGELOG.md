@@ -42,7 +42,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.15: (Not released yet)
+[REMOVED] Dirty/Impure/Pure Piles of Dust do no longer generate Items unless they are from Stone. This will make existing Impure Piles useless, so get rid of them. (Note: I already removed them from all outputs, so you should actually not have any that stem from non-Stone anymore, except the ones from Mekanism if that is installed, but those stay too)
+[CHANGED] Small Ores will now drop regular Dust instead of Impure Dust as a Stone Byproduct Pile. This means Impure Bedrock Dust should be the only Impure Pile of Dust to remain obtainable.
+[CHANGED] Certus Quartz and Nether Quartz related Sifting Recipes are now more streamlined, and also dont output Charged Certus Quartz Dust anymore.
+[CHANGED] The Ore Byproduct List now has the Indicator Rocks instead of Purified Dusts.
+[CHANGED] Regular Distillation Tower now uses Nonuple Pipes instead of Gears in its Recipe.
 [ADDED] Cryo Distillation Tower for separating Air into other Gasses. The old Centrifuge Recipe for that does no longer exist.
+[ADDED] Large Autoclave. Can do 16 Processes at once.
 
 
 6.11.14:

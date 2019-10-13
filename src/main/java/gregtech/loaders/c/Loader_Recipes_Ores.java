@@ -205,6 +205,13 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {10000, 10, 40, 150, 200, 400, 500}, crushedPurifiedTiny.mat(MT.OREMATS.CassiteriteSand , 9), crushedCentrifuged.mat(MT.OREMATS.CassiteriteSand , 1), gemExquisite.mat(MT.Zircon, 1), gemFlawless.mat(MT.Zircon, 1), gem.mat(MT.Zircon, 1), gemFlawed.mat(MT.Zircon, 1), gemChipped.mat(MT.Zircon, 1), dust.mat(MT.Zircon, 1));
 		
 		
+		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {7000, 1000, 5000}, crushedPurified    .mat(MT.ChargedCertusQuartz, 1), gem.mat(MT.ChargedCertusQuartz, 1), gem.mat(MT.CertusQuartz, 1), dust.mat(MT.CertusQuartz, 1));
+		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {7000, 1000, 5000}, crushedPurifiedTiny.mat(MT.ChargedCertusQuartz, 9), gem.mat(MT.ChargedCertusQuartz, 1), gem.mat(MT.CertusQuartz, 1), dust.mat(MT.CertusQuartz, 1));
+		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {1000, 7000, 5000}, crushedPurified    .mat(MT.CertusQuartz       , 1), gem.mat(MT.ChargedCertusQuartz, 1), gem.mat(MT.CertusQuartz, 1), dust.mat(MT.CertusQuartz, 1));
+		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {1000, 7000, 5000}, crushedPurifiedTiny.mat(MT.CertusQuartz       , 9), gem.mat(MT.ChargedCertusQuartz, 1), gem.mat(MT.CertusQuartz, 1), dust.mat(MT.CertusQuartz, 1));
+		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurified    .mat(MT.NetherQuartz       , 1), gem.mat(MT.NetherQuartz       , 1), dust.mat(MT.NetherQuartz, 1));
+		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {      8000, 5000}, crushedPurifiedTiny.mat(MT.NetherQuartz       , 9), gem.mat(MT.NetherQuartz       , 1), dust.mat(MT.NetherQuartz, 1));
+		
 		
 		RM.Sifting              .addRecipe1(T, 16,  200, new long[] {9900, 500, 500}        , ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1));
 		RM.MagneticSeparator    .addRecipe1(T, 16,  144, new long[] {9900, 500, 500, 500}   , ST.make(BlocksGT.Sands, 1, 0), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Stone, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));

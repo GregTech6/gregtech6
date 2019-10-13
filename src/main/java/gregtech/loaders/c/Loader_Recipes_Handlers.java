@@ -65,7 +65,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 	public void run() {
 		RM.Sifting              .add(new RecipeMapHandlerPrefix(pebbles                         , 1, null           , 0, NF,  16, 0,   512, NF, dust                    , 3, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		
-		RM.Crusher              .add(new RecipeMapHandlerPrefix(rockGt                          , 1, null           , 0, NF,  16, 0,    16, NF, dustSmall               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Crusher              .add(new RecipeMapHandlerPrefix(rockGt                          , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(rawOreChunk                     , 1, null           , 0, NF,  16, 0,    64, NF, crushedTiny             , 3, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(chunk                           , 1, null           , 0, NF,  16, 0,   128, NF, rubble                  , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(rubble                          , 1, null           , 0, NF,  16, 0,   128, NF, pebbles                 , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
@@ -80,7 +80,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		RM.Crusher              .add(new RecipeMapHandlerCrushing());
 		
-		RM.Mortar               .add(new RecipeMapHandlerPrefix(rockGt                          , 1, null           , 0, NF,  16, 0,    16, NF, dustSmall               , 1, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
+		RM.Mortar               .add(new RecipeMapHandlerPrefix(rockGt                          , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(crushedPurified                 , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(crushedPurifiedTiny             , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
 		RM.Mortar               .add(new RecipeMapHandlerPrefix(crushedCentrifuged              , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, F, T, F, new And(ANTIMATTER.NOT, MORTAR)));
@@ -525,6 +525,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		tConditionP = SIMPLIFIABLE;
 		
+		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.ChargedCertusQuartz    , NF                                ,   0,   1, NF, MT.CertusQuartz         , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Teslatite              , NF                                ,   0,   1, NF, MT.Nikolite             , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Nikolite               , NF                                ,   0,   1, NF, MT.Teslatite            , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.Redstonia              , NF                                ,   0,   1, NF, MT.Redstone             , NI, T, tConditionP));

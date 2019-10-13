@@ -100,7 +100,7 @@ public class Drops_SmallOre extends Drops {
 					}
 				}
 			}
-			if (mSecondaryDrop != null && tRandom.nextInt(3+aFortune)>1) rList.add(OP.dustImpure.mat(mSecondaryDrop.mTargetCrushing.mMaterial, 1));
+			if (mSecondaryDrop != null && tRandom.nextInt(3+aFortune)>1) rList.add(OP.dust.mat(mSecondaryDrop.mTargetCrushing.mMaterial, 1));
 		}
 		return rList;
 	}

@@ -211,9 +211,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.rockGt.dat(MT.Coal)                       , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.Coal)                          , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.Coal)                         , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dustImpure.dat(MT.Coal)                   , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dustPure.dat(MT.Coal)                     , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dustRefined.dat(MT.Coal)                  , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.crushed.dat(MT.Coal)                      , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.crushedPurified.dat(MT.Coal)              , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.crushedCentrifuged.dat(MT.Coal)           , 'S', OP.stick.dat(ANY.Wood));
@@ -221,9 +218,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.rockGt.dat(MT.CoalCoke)                   , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.CoalCoke)                      , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.CoalCoke)                     , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "X", "S", 'X', OP.dustImpure.dat(MT.CoalCoke)               , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "X", "S", 'X', OP.dustPure.dat(MT.CoalCoke)                 , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "X", "S", 'X', OP.dustRefined.dat(MT.CoalCoke)              , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "X", "S", 'X', OP.crushed.dat(MT.CoalCoke)                  , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "X", "S", 'X', OP.crushedPurified.dat(MT.CoalCoke)          , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 8, 0), DEF_NAC, "X", "S", 'X', OP.crushedCentrifuged.dat(MT.CoalCoke)       , 'S', OP.stick.dat(ANY.Wood));
@@ -231,9 +225,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.torch, 1, 0), DEF_NAC, "X", "S", 'X', OP.rockGt.dat(MT.Lignite)                    , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.Lignite)                       , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.Lignite)                      , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.dustImpure.dat(MT.Lignite)                , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.dustPure.dat(MT.Lignite)                  , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.dustRefined.dat(MT.Lignite)               , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.crushed.dat(MT.Lignite)                   , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.crushedPurified.dat(MT.Lignite)           , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.crushedCentrifuged.dat(MT.Lignite)        , 'S', OP.stick.dat(ANY.Wood));
@@ -241,9 +232,6 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC, "X", "S", 'X', OP.rockGt.dat(MT.LigniteCoke)                , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.gem.dat(MT.LigniteCoke)                   , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dust.dat(MT.LigniteCoke)                  , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dustImpure.dat(MT.LigniteCoke)            , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dustPure.dat(MT.LigniteCoke)              , 'S', OP.stick.dat(ANY.Wood));
-		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.dustRefined.dat(MT.LigniteCoke)           , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.crushed.dat(MT.LigniteCoke)               , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.crushedPurified.dat(MT.LigniteCoke)       , 'S', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC, "X", "S", 'X', OP.crushedCentrifuged.dat(MT.LigniteCoke)    , 'S', OP.stick.dat(ANY.Wood));

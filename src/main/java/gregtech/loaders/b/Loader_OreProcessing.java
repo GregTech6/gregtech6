@@ -309,19 +309,19 @@ public class Loader_OreProcessing implements Runnable {
 			if (aMaterial == null) return F;
 			aOreStack = ST.amount(1, aOreStack);
 			aMultiplier = UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier);
-
+			
 			ItemStack
 			tPrimaryByProductTiny   = null,
 			tSecondaryByProductTiny = null,
 			tTertiaryByProductTiny  = null;
-
+			
 			if (aMaterial == MT.Gneiss || aMaterial == MT.PetrifiedWood) {
 				RM.Crusher  .addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 4)));
 				RM.Hammer   .addRecipe1(T, 16, 64, aOreStack, OP.rockGt.mat(aMaterial, UT.Code.bindStack(aMaterial.mOreMultiplier * aMultiplier * 3)));
 			}
-
+			
 			ArrayList<ItemStack> tByProductStacks = new ArrayListNoNulls<>();
-
+			
 			for (OreDictMaterial tMat : aMaterial.mByProducts) {
 				ItemStack tByProduct = OM.dustOrIngot(tMat, U);
 				if (tByProduct != null) tByProductStacks.add(tByProduct);
@@ -329,16 +329,16 @@ public class Loader_OreProcessing implements Runnable {
 				if (tSecondaryByProductTiny == null) tSecondaryByProductTiny = OM.dustOrIngot(tMat, U9); else
 				if (tTertiaryByProductTiny  == null) tTertiaryByProductTiny  = OM.dustOrIngot(tMat, U9);
 			}
-
+			
 			if (!tByProductStacks.isEmpty() && !mAlreadyListedOres.contains(aMaterial)) {
 				mAlreadyListedOres.add(aMaterial);
-				RM.ByProductList.addFakeRecipe(F, ST.array(oreVanillastone.mat(aMaterial, aOreStack, 1), dustImpure.mat(aMaterial, 1), dustPure.mat(aMaterial, 1), crushed.mat(aMaterial, 1), crushedPurified.mat(aMaterial, 1), crushedCentrifuged.mat(aMaterial, 1)), tByProductStacks.toArray(ZL_IS), null, null, null, null, 0, 0, 0);
+				RM.ByProductList.addFakeRecipe(F, ST.array(oreVanillastone.mat(aMaterial, aOreStack, 1), rockGt.mat(aMaterial, 1), dustImpure.mat(aMaterial, 1), crushed.mat(aMaterial, 1), crushedPurified.mat(aMaterial, 1), crushedCentrifuged.mat(aMaterial, 1)), tByProductStacks.toArray(ZL_IS), null, null, null, null, 0, 0, 0);
 			}
-
+			
 			if (tPrimaryByProductTiny == null) tPrimaryByProductTiny = OM.dustOrIngot(aMaterial, U9);
 			if (tSecondaryByProductTiny == null) tSecondaryByProductTiny = tPrimaryByProductTiny;
 			if (tTertiaryByProductTiny == null) tTertiaryByProductTiny = tSecondaryByProductTiny;
-
+			
 			if (aMaterial.contains(FURNACE)) if (!RM.add_smelting(aOreStack, OM.ingot(aMaterial.mTargetSmelting))) RM.add_smelting(aOreStack, OM.gem(aMaterial.mTargetSmelting));
 			if (aPrefix.contains(DUST_ORE)) RM.Sifting.addRecipe1(T, 16, 256, new long[] {10000, 10000, 1500, 1000, 500}, aOreStack, crushedPurified.mat(aMaterial, aMultiplier), crushedPurified.mat(aMaterial, aMultiplier), ST.amount(aMultiplier, tPrimaryByProductTiny), ST.amount(aMultiplier, tSecondaryByProductTiny), ST.amount(aMultiplier, tTertiaryByProductTiny));
 			return T;
