@@ -41,7 +41,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class MultiTileEntityAutoclave extends TileEntityBase10MultiBlockMachine {
 	@Override
 	public boolean checkStructure2() {
-		int tX = getOffsetXN(mFacing, 2)-1, tY = yCoord, tZ = getOffsetZN(mFacing, 2)-1;
+		int tX = getOffsetXN(mFacing, 1)-1, tY = yCoord, tZ = getOffsetZN(mFacing, 1)-1;
 		if (worldObj.blockExists(tX-2, tY, tZ-2) && worldObj.blockExists(tX+2, tY, tZ-2) && worldObj.blockExists(tX-2, tY, tZ+2) && worldObj.blockExists(tX+2, tY, tZ+2)) {
 			boolean tSuccess = T;
 			
@@ -81,7 +81,7 @@ public class MultiTileEntityAutoclave extends TileEntityBase10MultiBlockMachine 
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.autoclave.1", "3x3x3 Hollow of Stainless Steel Walls");
+		LH.add("gt.tooltip.multiblock.autoclave.1", "3x3x3 Hollow of Dense Stainless Steel Walls");
 		LH.add("gt.tooltip.multiblock.autoclave.2", "Main Block centered on Side-Bottom and facing outwards");
 		LH.add("gt.tooltip.multiblock.autoclave.3", "Input and Output at any Blocks");
 	}
@@ -97,8 +97,8 @@ public class MultiTileEntityAutoclave extends TileEntityBase10MultiBlockMachine 
 	
 	@Override
 	public boolean isInsideStructure(int aX, int aY, int aZ) {
-		int tX = getOffsetXN(mFacing, 2), tY = yCoord, tZ = getOffsetZN(mFacing, 2);
-		return aX >= tX - 2 && aY >= tY && aZ >= tZ - 2 && aX <= tX + 2 && aY <= tY + 2 && aZ <= tZ + 2;
+		int tX = getOffsetXN(mFacing, 1), tY = yCoord, tZ = getOffsetZN(mFacing, 1);
+		return aX >= tX - 1 && aY >= tY && aZ >= tZ - 1 && aX <= tX + 1 && aY <= tY + 2 && aZ <= tZ + 1;
 	}
 	
 	@Override
