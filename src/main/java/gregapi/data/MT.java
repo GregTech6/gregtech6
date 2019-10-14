@@ -2071,9 +2071,9 @@ public class MT {
 			
 			BlackQuartz                     .addOreByProducts(OREMATS.Barite        );
 			NetherQuartz                    .addOreByProducts(Netherrack            , OREMATS.Barite            );
-			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , ChargedCertusQuartz   , Fe2O3);
-			CertusQuartz                    .addOreByProducts(Quartzite             , ChargedCertusQuartz       , OREMATS.Barite        );
-			ChargedCertusQuartz             .addOreByProducts(CertusQuartz          , Quartzite                 , OREMATS.Barite        );
+			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , Fe2O3);
+			CertusQuartz                    .addOreByProducts(Quartzite             , OREMATS.Barite            );
+			ChargedCertusQuartz             .addOreByProducts(Quartzite             , OREMATS.Barite            );
 			
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar      , RareEarth                 , Glowstone             );
 			Os                              .addOreByProducts(Ir                    , Pt                        , Ru                    );
