@@ -42,6 +42,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -182,6 +185,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override
 	@SuppressWarnings("unchecked")
 	public void addCollisionBoxesToList(World aWorld, int aX, int aY, int aZ, AxisAlignedBB aAABB, @SuppressWarnings("rawtypes") List aList, Entity aEntity) {
+		if (aEntity instanceof EntityItem || aEntity instanceof EntityXPOrb || aEntity instanceof IProjectile) return;
 		byte tMeta = WD.meta(aWorld, aX, aY, aZ);
 		AxisAlignedBB tBox;
 		// Z- = 1, Z+ = 2, X- = 4, X+ = 8

@@ -689,6 +689,7 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		
 		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag( 0), dustDiv72.mat(MT.C,18), foil.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 0), dustTiny .mat(MT.C, 9), foil.mat(MT.Graphene, 4));
 		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag( 0), dustSmall.mat(MT.C, 1), foil.mat(MT.Graphene, 1));
 		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 0), dust     .mat(MT.C, 1), foil.mat(MT.Graphene, 4));
 		
@@ -706,6 +707,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 3), dust     .mat(MT.C, 1), casingSmall.mat(MT.Graphene, 2));
 		
 		RM.Nanofab.addRecipe2(T, 16,  32, ST.tag( 4), dustDiv72.mat(MT.C, 9), wireFine.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 4), dustTiny .mat(MT.C, 9), wireFine.mat(MT.Graphene, 8));
 		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag( 4), dustSmall.mat(MT.C, 1), wireFine.mat(MT.Graphene, 2));
 		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 4), dust     .mat(MT.C, 1), wireFine.mat(MT.Graphene, 8));
 		
@@ -715,6 +717,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 5), dust     .mat(MT.C, 1), wireGt01.mat(MT.Graphene, 2));
 		
 		RM.Nanofab.addRecipe2(T, 16,  32, ST.tag( 6), dustDiv72.mat(MT.C, 9), bolt.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 6), dustTiny .mat(MT.C, 9), bolt.mat(MT.Graphene, 8));
 		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag( 6), dustSmall.mat(MT.C, 1), bolt.mat(MT.Graphene, 2));
 		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 6), dust     .mat(MT.C, 1), bolt.mat(MT.Graphene, 8));
 		
@@ -728,6 +731,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 8), dust     .mat(MT.C, 1), stickLong.mat(MT.Graphene, 1));
 		
 		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag( 9), dustDiv72.mat(MT.C,18), ring.mat(MT.Graphene, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 9), dustTiny .mat(MT.C, 9), ring.mat(MT.Graphene, 4));
 		RM.Nanofab.addRecipe2(T, 16,  64, ST.tag( 9), dustSmall.mat(MT.C, 1), ring.mat(MT.Graphene, 1));
 		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag( 9), dust     .mat(MT.C, 1), ring.mat(MT.Graphene, 4));
 		
@@ -741,6 +745,26 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		RM.Nanofab.addRecipe2(T, 16,1088, ST.tag(12), dustSmall.mat(MT.C,17), rotor.mat(MT.Graphene, 1));
 		RM.Nanofab.addRecipe2(T, 16,4352, ST.tag(12), dust     .mat(MT.C,17), rotor.mat(MT.Graphene, 4));
+		
+		RM.Nanofab.addRecipe2(T, 16, 128, ST.tag(13), dustDiv72.mat(MT.C,36), pipeTiny.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(13), dustTiny .mat(MT.C, 9), pipeTiny.mat(MT.C, 2));
+		RM.Nanofab.addRecipe2(T, 16, 128, ST.tag(13), dustSmall.mat(MT.C, 2), pipeTiny.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(13), dust     .mat(MT.C, 1), pipeTiny.mat(MT.C, 2));
+		
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(14), dustTiny .mat(MT.C, 9), pipeSmall.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(14), dustSmall.mat(MT.C, 4), pipeSmall.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16, 256, ST.tag(14), dust     .mat(MT.C, 1), pipeSmall.mat(MT.C, 1));
+		
+		RM.Nanofab.addRecipe2(T, 16, 768, ST.tag(15), dustTiny .mat(MT.C,27), pipeMedium.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16, 768, ST.tag(15), dustSmall.mat(MT.C,12), pipeMedium.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16, 768, ST.tag(15), dust     .mat(MT.C, 3), pipeMedium.mat(MT.C, 1));
+		
+		RM.Nanofab.addRecipe2(T, 16,1536, ST.tag(16), dustTiny .mat(MT.C,54), pipeLarge.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16,1536, ST.tag(16), dustSmall.mat(MT.C,24), pipeLarge.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16,1536, ST.tag(16), dust     .mat(MT.C, 6), pipeLarge.mat(MT.C, 1));
+		
+		RM.Nanofab.addRecipe2(T, 16,3072, ST.tag(17), dustSmall.mat(MT.C,48), pipeHuge.mat(MT.C, 1));
+		RM.Nanofab.addRecipe2(T, 16,3072, ST.tag(17), dust     .mat(MT.C,12), pipeHuge.mat(MT.C, 1));
 		
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mNeutrons+tMaterial.mProtons > 0 && tMaterial.contains(TD.Atomic.ELEMENT) && !tMaterial.contains(TD.Atomic.ANTIMATTER)) {
