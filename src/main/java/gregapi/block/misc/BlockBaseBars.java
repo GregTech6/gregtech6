@@ -134,13 +134,13 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public int damageDropped(int aMeta) {return 0;}
 	@Override public int quantityDropped(int aMeta, int aFortune, Random aRandom) {return aMeta == 0 ? 1 : FACE_CONNECTION_COUNT[aMeta];}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 5;}
 	@Override public float getExplosionResistance(int aMeta) {return 5;}
-	@Override public boolean isSideSolid(int aMeta, byte aSide) {return F;}
-	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
+	@Override public boolean doesPistonPush(short aMeta) {return T;}
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
+	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ) {return F;}
+	@Override public boolean isSideSolid(int aMeta, byte aSide) {return F;}
 	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
 	@Override public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return T;}
 	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs aTab, @SuppressWarnings("rawtypes") List aList) {aList.add(ST.make(aItem, 1, 0));}
@@ -148,6 +148,7 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override public ItemStack getPickBlock(MovingObjectPosition aTarget, World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer) {return ST.make(this, 1, 0);}
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return null;}
+	@Override public boolean canCollideCheck(int aMeta, boolean aHoldingBoat) {return F;}
 	
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {
