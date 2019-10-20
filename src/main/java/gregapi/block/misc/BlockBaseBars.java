@@ -148,7 +148,6 @@ public abstract class BlockBaseBars extends BlockBaseSealable implements IRender
 	@Override public ItemStack getPickBlock(MovingObjectPosition aTarget, World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer) {return ST.make(this, 1, 0);}
 	
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return null;}
-	@Override public boolean canCollideCheck(int aMeta, boolean aHoldingBoat) {return F;}
 	
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {
