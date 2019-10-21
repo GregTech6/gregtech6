@@ -37,9 +37,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.16: (Not released yet)
+6.11.16:
 [CHANGED] Bars Block now lets Items, XP Orbs and Projectiles (Arrows and such, somehow Enderpearls and Snowballs don't work) go through from all directions, making it more useful for Mob Grinders and physical Defenses.
-[CHANGED] Cryo Distillation Tower now Outputs condensed Ice. Let's just assume that no matter where the Air comes from, there is at least a little bit of humidity.
+[CHANGED] Cryo Distillation Tower now Outputs condensed Ice. Let's just assume that no matter where the Air comes from, there is at least a little bit of humidity. Also Dark Ash for Nether Air.
 [ADDED] Recipe for Carbon Pipes in the Nanoscale Fabricator.
 [ADDED] Tantalum Hafnium Carbide, Melting Point 4263K. Crucible Equipment, Burning Boxes, Pipes, Drums and Capsule Cell Containers included.
 
