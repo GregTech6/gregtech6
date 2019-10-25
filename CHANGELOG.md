@@ -34,7 +34,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.17: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Long Distance Wires/Pipes now actually know when they are a Receiver when they are looked at with Magnifying Glass.
 
 
 6.11.16:

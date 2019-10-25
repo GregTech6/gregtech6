@@ -117,8 +117,13 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
-				aChatReturn.add(checkTarget() ? "Has Target" : "Has no loaded Target");
-				if (mTargetPos != null) aChatReturn.add("Target should be around: X: " + mTargetPos.posX + " Y: " + mTargetPos.posY + " Z: " + mTargetPos.posZ);
+				if (mSender != null && !mSender.isDead() && mSender.mTarget == this) {
+					aChatReturn.add("Is the Target");
+					aChatReturn.add("Sender is at: X: " + mSender.xCoord + " Y: " + mSender.yCoord + " Z: " + mSender.zCoord);
+				} else {
+					aChatReturn.add(checkTarget() ? "Has Target" : "Has no loaded Target");
+					if (mTargetPos != null) aChatReturn.add("Target should be around: X: " + mTargetPos.posX + " Y: " + mTargetPos.posY + " Z: " + mTargetPos.posZ);
+				}
 			}
 			return 1;
 		}
