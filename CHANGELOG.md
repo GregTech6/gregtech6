@@ -38,8 +38,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED]
 3x3x3 Multiblock Crucible.
 It is 100 Units in Size with 27*16=432 Units worth of Capacity.
-The Heat Efficiency compared to a normal filled Crucible is about twice as good as long as your batches are large enough.
-Due to me experimenting with Rendering and not wanting to go back on it, the Crucible will permanently glow in the Dark to prevent Light glitches. XD
+The Heat Efficiency compared to a normal filled Crucible is about twice as good, as long as your Batches are large enough.
+Due to me experimenting with Rendering and not wanting to go back on it (way too stupid effort to make it work properly), the Crucible will permanently glow in the Dark to prevent Light glitches, may have a bit of Z Fighting at the Top Corners, and might render Covers weirdly.
 
 
 6.11.16:

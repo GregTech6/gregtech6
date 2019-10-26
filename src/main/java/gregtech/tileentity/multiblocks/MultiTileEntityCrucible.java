@@ -594,12 +594,12 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		if (mStructureOkay) switch(aRenderPass) {
-		case  0: box(aBlock,-1.0, 0.0,-1.0,-0.5, 3.0, 2.0); return T;
-		case  1: box(aBlock,-1.0, 0.0,-1.0, 2.0, 3.0,-0.5); return T;
-		case  2: box(aBlock, 1.5, 0.0,-1.0, 2.0, 3.0, 2.0); return T;
-		case  3: box(aBlock,-1.0, 0.0, 1.5, 2.0, 3.0, 2.0); return T;
-		case  4: box(aBlock,-1.0, 0.0,-1.0, 2.0, 1.2, 2.0); return T;
-		case  5: box(aBlock,-1.0, 0.0,-1.0, 2.0, 1.2+(UT.Code.unsignB(mDisplayedHeight) / 150.0), 2.0); return T;
+		case  0: box(aBlock,-0.999, 0.0,-0.999,-0.500, 3.000, 1.999); return T;
+		case  1: box(aBlock,-0.999, 0.0,-0.999, 1.999, 3.000,-0.500); return T;
+		case  2: box(aBlock, 1.500, 0.0,-0.999, 1.999, 3.000, 1.999); return T;
+		case  3: box(aBlock,-0.999, 0.0, 1.500, 1.999, 3.000, 1.999); return T;
+		case  4: box(aBlock,-0.999, 0.0,-0.999, 1.999, 1.125, 1.999); return T;
+		case  5: box(aBlock,-0.999, 0.0,-0.999, 1.999, 1.125+(UT.Code.unsignB(mDisplayedHeight) / 150.0), 1.999); return T;
 		}
 		return T;
 	}
@@ -648,7 +648,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		}
 	}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[14], PX_N[14], PX_N[14]);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 0], PX_P[ 2], PX_P[ 0], PX_N[ 0], PX_N[ 2], PX_N[ 0]);}
 	@Override public boolean addDefaultCollisionBoxToList() {return T;}
 	@Override public boolean allowCovers(byte aSide) {return F;}
 	
