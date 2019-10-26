@@ -35,7 +35,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.17: (Not released yet)
 [FIXED] Long Distance Wires/Pipes now actually know when they are a Receiver when they are looked at with Magnifying Glass.
-[ADDED] 3x3x3 Multiblock Crucible.
+[ADDED]
+3x3x3 Multiblock Crucible.
+It is 100 Units in Size with 27*16=432 Units worth of Capacity.
+The Heat Efficiency compared to a normal filled Crucible is about twice as good as long as your batches are large enough.
+Due to me experimenting with Rendering and not wanting to go back on it, the Crucible will permanently glow in the Dark to prevent Light glitches. XD
 
 
 6.11.16:

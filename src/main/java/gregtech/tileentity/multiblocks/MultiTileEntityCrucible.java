@@ -50,6 +50,7 @@ import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.configurations.IOreDictConfigurationComponent;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
+import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.data.ITileEntityTemperature;
@@ -567,7 +568,6 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING));
 		if (UT.Code.exists(mDisplayedFluid, OreDictMaterial.MATERIAL_ARRAY)) {
 			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedFluid];
 			if (tMaterial == MT.Lava) {
@@ -587,7 +587,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		switch(aRenderPass) {
+		if (mStructureOkay) switch(aRenderPass) {
 		case  0: box(aBlock,-1.0, 0.0,-1.0,-0.5, 3.0, 2.0); return T;
 		case  1: box(aBlock,-1.0, 0.0,-1.0, 2.0, 3.0,-0.5); return T;
 		case  2: box(aBlock, 1.5, 0.0,-1.0, 2.0, 3.0, 2.0); return T;
@@ -595,20 +595,20 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		case  4: box(aBlock,-1.0, 0.0,-1.0, 2.0, 0.5, 2.0); return T;
 		case  5: box(aBlock,-1.0, 0.0,-1.0, 2.0, 0.5+(UT.Code.unsignB(mDisplayedHeight) / 105.0), 2.0); return T;
 		}
-		return F;
+		return T;
 	}
 	
-	private ITexture mTexture, mTextureMolten;
+	private ITexture mTextureMolten;
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: case  2: return SIDES_AXIS_Z[aSide]||aSide==SIDE_BOTTOM?null:mTexture;
-		case  1: case  3: return SIDES_AXIS_X[aSide]||aSide==SIDE_BOTTOM?null:mTexture;
-		case  4: return SIDES_VERTICAL[aSide]?mTexture:null;
+		case  0: case  2: return SIDES_AXIS_Z[aSide]||aSide==SIDE_BOTTOM?null:BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
+		case  1: case  3: return SIDES_AXIS_X[aSide]||aSide==SIDE_BOTTOM?null:BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
+		case  4: return SIDES_VERTICAL[aSide]?BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T)):null;
 		case  5: return mDisplayedHeight != 0 && SIDES_TOP[aSide]?mTextureMolten:null;
 		}
-		return mTexture;
+		return BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
 	}
 	
 	@Override
