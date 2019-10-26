@@ -61,6 +61,7 @@ import gregapi.tileentity.machines.ITileEntityCrucible;
 import gregapi.tileentity.machines.ITileEntityMold;
 import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
 import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
+import gregapi.tileentity.multiblocks.IMultiBlockInventory;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
@@ -94,7 +95,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler {
+public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler {
 	private static int GAS_RANGE = 5, FLAME_RANGE = 5;
 	private static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
 	private static double HEAT_RESISTANCE_BONUS = 1.05;
@@ -205,7 +206,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			return;
 		}
 		
-		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord, yCoord+PX_P[2], zCoord, 1, 3, 1));
+		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord-0.5, yCoord+PX_P[2], zCoord-0.5, 2, 3, 2));
 		
 		ItemStack tStack = slot(0);
 		
@@ -415,6 +416,11 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	@Override
 	public boolean breakBlock() {
 		while (!mContent.isEmpty()) GarbageGT.trash(mContent.remove(0));
+		for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) if (i != 0 || j != 0) {
+			ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 0, j, mWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN);
+			ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 1, j, mWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_CRUCIBLE);
+			ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 2, j, mWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID);
+		}
 		return super.breakBlock();
 	}
 	
@@ -592,8 +598,8 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		case  1: box(aBlock,-1.0, 0.0,-1.0, 2.0, 3.0,-0.5); return T;
 		case  2: box(aBlock, 1.5, 0.0,-1.0, 2.0, 3.0, 2.0); return T;
 		case  3: box(aBlock,-1.0, 0.0, 1.5, 2.0, 3.0, 2.0); return T;
-		case  4: box(aBlock,-1.0, 0.0,-1.0, 2.0, 0.5, 2.0); return T;
-		case  5: box(aBlock,-1.0, 0.0,-1.0, 2.0, 0.5+(UT.Code.unsignB(mDisplayedHeight) / 105.0), 2.0); return T;
+		case  4: box(aBlock,-1.0, 0.0,-1.0, 2.0, 1.2, 2.0); return T;
+		case  5: box(aBlock,-1.0, 0.0,-1.0, 2.0, 1.2+(UT.Code.unsignB(mDisplayedHeight) / 150.0), 2.0); return T;
 		}
 		return T;
 	}
@@ -642,39 +648,16 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		}
 	}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[14], PX_N[ 8], PX_N[14]);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 2], PX_P[ 2], PX_P[ 2], PX_N[14], PX_N[14], PX_N[14]);}
 	@Override public boolean addDefaultCollisionBoxToList() {return T;}
+	@Override public boolean allowCovers(byte aSide) {return F;}
 	
 	// Inventory Stuff
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
-	@Override public boolean canDrop(int aInventorySlot) {return T;}
-	
-	private static final int[] ACCESSIBLE_SLOTS = new int[] {0};
-	
-	@Override
-	public int[] getAccessibleSlotsFromSide2(byte aSide) {
-		return ACCESSIBLE_SLOTS;
-	}
-	
-	@Override
-	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
-		return !slotHas(0);
-	}
-	
-	@Override
-	public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {
-		return F;
-	}
-	
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(1);}
+	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
 	@Override public int getInventoryStackLimit() {return 64;}
-	
-	@Override public float getSurfaceSize           (byte aSide) {return 1.0F;}
-	@Override public float getSurfaceSizeAttachable (byte aSide) {return 1.0F;}
-	@Override public float getSurfaceDistance       (byte aSide) {return 0.0F;}
-	@Override public boolean isSurfaceSolid         (byte aSide) {return !SIDES_TOP[aSide];}
-	@Override public boolean isSurfaceOpaque2       (byte aSide) {return !SIDES_TOP[aSide];}
-	@Override public boolean isSideSolid2           (byte aSide) {return !SIDES_TOP[aSide];}
-	@Override public boolean allowCovers            (byte aSide) {return F;}
 	
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && (aEnergyType == TD.Energy.HU || aEnergyType == TD.Energy.CU);}
 	@Override public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return aEnergyType == TD.Energy.HU || aEnergyType == TD.Energy.CU;}
