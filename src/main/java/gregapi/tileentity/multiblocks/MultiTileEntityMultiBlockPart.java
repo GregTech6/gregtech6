@@ -48,6 +48,8 @@ import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
 import gregapi.tileentity.logistics.ITileEntityLogistics;
+import gregapi.tileentity.machines.ITileEntityCrucible;
+import gregapi.tileentity.machines.ITileEntityMold;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntityRunningPassively;
 import gregapi.tileentity.machines.ITileEntityRunningPossible;
@@ -75,7 +77,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable implements ITileEntityEnergy, ITileEntityLogistics, IMTE_OnWalkOver, ITileEntityTemperature, ITileEntityGibbl, ITileEntityProgress, ITileEntityWeight, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergyDataCapacitor, ITileEntityAdjacentInventoryUpdatable, IFluidHandler, IMTE_OnBlockAdded, IMTE_BreakBlock, ITileEntityRunningSuccessfully, ITileEntitySwitchableMode, ITileEntitySwitchableOnOff {
+public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable implements ITileEntityEnergy, ITileEntityCrucible, ITileEntityLogistics, IMTE_OnWalkOver, ITileEntityTemperature, ITileEntityGibbl, ITileEntityProgress, ITileEntityWeight, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergyDataCapacitor, ITileEntityAdjacentInventoryUpdatable, IFluidHandler, IMTE_OnBlockAdded, IMTE_BreakBlock, ITileEntityRunningSuccessfully, ITileEntitySwitchableMode, ITileEntitySwitchableOnOff {
 	public ChunkCoordinates mTargetPos = null;
 	
 	public ITileEntityMultiBlockController mTarget = null;
@@ -95,13 +97,14 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	, NO_ITEM_OUT                = 16
 	, NO_ITEM_IN                 = 32
 	, NO_LOGISTICS               = 64
+	, NO_CRUCIBLE                = 128
 	
 	, NO_ENERGY                  = NO_ENERGY_IN | NO_ENERGY_OUT
 	, NO_FLUID                   = NO_FLUID_IN  | NO_FLUID_OUT
 	, NO_ITEM                    = NO_ITEM_IN   | NO_ITEM_OUT
 	
-	, ONLY_IN                    = NO_ENERGY_OUT | NO_FLUID_OUT | NO_ITEM_OUT | NO_LOGISTICS
-	, ONLY_OUT                   = NO_ENERGY_IN  | NO_FLUID_IN  | NO_ITEM_IN  | NO_LOGISTICS
+	, ONLY_IN                    = NO_ENERGY_OUT | NO_FLUID_OUT | NO_ITEM_OUT | NO_LOGISTICS | NO_CRUCIBLE
+	, ONLY_OUT                   = NO_ENERGY_IN  | NO_FLUID_IN  | NO_ITEM_IN  | NO_LOGISTICS | NO_CRUCIBLE
 	
 	, ONLY_ENERGY_OUT            = ~NO_ENERGY_OUT
 	, ONLY_ENERGY_IN             = ~NO_ENERGY_IN
@@ -114,6 +117,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	, ONLY_ITEM_FLUID_ENERGY_OUT = ~(NO_ITEM_OUT | NO_FLUID_OUT | NO_ENERGY_OUT)
 	, ONLY_ITEM_FLUID_ENERGY_IN  = ~(NO_ITEM_IN  | NO_FLUID_IN  | NO_ENERGY_IN )
 	
+	, ONLY_CRUCIBLE              = ~NO_CRUCIBLE
 	, ONLY_LOGISTICS             = ~NO_LOGISTICS
 	, ONLY_ENERGY                = ~NO_ENERGY
 	, ONLY_FLUID                 = ~NO_FLUID
@@ -671,6 +675,14 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 		if ((mMode & NO_LOGISTICS) != 0) return F;
 		ITileEntityMultiBlockController tTileEntity = getTarget(T);
 		if (tTileEntity instanceof ITileEntityLogistics) return ((ITileEntityLogistics)tTileEntity).canLogistics(aSide);
+		return F;
+	}
+	
+	@Override
+	public boolean fillMoldAtSide(ITileEntityMold aMold, byte aSide, byte aSideOfMold) {
+		if ((mMode & NO_CRUCIBLE) != 0) return F;
+		ITileEntityMultiBlockController tTileEntity = getTarget(T);
+		if (tTileEntity instanceof ITileEntityCrucible) return ((ITileEntityCrucible)tTileEntity).fillMoldAtSide(aMold, aSide, aSideOfMold);
 		return F;
 	}
 	

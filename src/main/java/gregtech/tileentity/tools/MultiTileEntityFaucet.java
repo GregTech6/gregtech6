@@ -34,6 +34,7 @@ import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase10Attachment;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.machines.ITileEntityCrucible;
 import gregapi.tileentity.machines.ITileEntityMold;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -82,8 +83,8 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 		if (aIsServerSide) {
 			if (mAutoPull ? mTimer % 50 == 0 : mBlockUpdated && hasRedstoneIncoming()) {
 				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
-				if (tDelegator.mTileEntity instanceof MultiTileEntitySmeltery) {
-					((MultiTileEntitySmeltery)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, mFacing);
+				if (tDelegator.mTileEntity instanceof ITileEntityCrucible) {
+					((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, mFacing);
 				}
 			}
 		}
@@ -134,7 +135,7 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
-			if (tDelegator.mTileEntity instanceof MultiTileEntitySmeltery) ((MultiTileEntitySmeltery)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, mFacing);
+			if (tDelegator.mTileEntity instanceof ITileEntityCrucible) ((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, mFacing);
 		}
 		return T;
 	}
@@ -164,21 +165,21 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 		case 0:
 			switch(mFacing) {
 			case SIDE_Z_NEG: box(aBlock, PX_P[ 6], PX_P[ 1], PX_P[ 0], PX_N[ 6], PX_N[14], PX_N[12]); return T;
-			default     : box(aBlock, PX_P[ 6], PX_P[ 1], PX_P[12], PX_N[ 6], PX_N[14], PX_N[ 0]); return T;
+			default        : box(aBlock, PX_P[ 6], PX_P[ 1], PX_P[12], PX_N[ 6], PX_N[14], PX_N[ 0]); return T;
 			case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 1], PX_P[ 6], PX_N[12], PX_N[14], PX_N[ 6]); return T;
 			case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 1], PX_P[ 6], PX_N[ 0], PX_N[14], PX_N[ 6]); return T;
 			}
 		case 1:
 			switch(mFacing) {
 			case SIDE_Z_NEG: box(aBlock, PX_P[ 5], PX_P[ 2], PX_P[ 0], PX_N[10], PX_N[10], PX_N[12]); return T;
-			default     : box(aBlock, PX_P[ 5], PX_P[ 2], PX_P[12], PX_N[10], PX_N[10], PX_N[ 0]); return T;
+			default        : box(aBlock, PX_P[ 5], PX_P[ 2], PX_P[12], PX_N[10], PX_N[10], PX_N[ 0]); return T;
 			case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 2], PX_P[ 5], PX_N[12], PX_N[10], PX_N[10]); return T;
 			case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 2], PX_P[ 5], PX_N[ 0], PX_N[10], PX_N[10]); return T;
 			}
 		case 2:
 			switch(mFacing) {
 			case SIDE_Z_NEG: box(aBlock, PX_P[10], PX_P[ 2], PX_P[ 0], PX_N[ 5], PX_N[10], PX_N[12]); return T;
-			default     : box(aBlock, PX_P[10], PX_P[ 2], PX_P[12], PX_N[ 5], PX_N[10], PX_N[ 0]); return T;
+			default        : box(aBlock, PX_P[10], PX_P[ 2], PX_P[12], PX_N[ 5], PX_N[10], PX_N[ 0]); return T;
 			case SIDE_X_NEG: box(aBlock, PX_P[ 0], PX_P[ 2], PX_P[10], PX_N[12], PX_N[10], PX_N[ 5]); return T;
 			case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 2], PX_P[10], PX_N[ 0], PX_N[10], PX_N[ 5]); return T;
 			}

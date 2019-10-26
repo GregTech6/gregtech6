@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.tileentity.tools;
+package gregtech.tileentity.multiblocks;
 
 import static gregapi.data.CS.*;
 
@@ -27,10 +27,8 @@ import java.util.List;
 import java.util.Set;
 
 import gregapi.GT_API_Proxy;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
@@ -54,12 +52,17 @@ import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityServerTickPost;
-import gregapi.tileentity.base.TileEntityBase07Paintable;
 import gregapi.tileentity.data.ITileEntityTemperature;
 import gregapi.tileentity.data.ITileEntityWeight;
 import gregapi.tileentity.energy.ITileEntityEnergy;
+import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
 import gregapi.tileentity.machines.ITileEntityCrucible;
 import gregapi.tileentity.machines.ITileEntityMold;
+import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
+import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
+import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
+import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
+import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -85,25 +88,29 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.IFluidHandler;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
-	private static int GAS_RANGE = 3, FLAME_RANGE = 3;
-	private static long MAX_AMOUNT = 16*U, KG_PER_ENERGY = 100;
-	private static double HEAT_RESISTANCE_BONUS = 1.25;
+public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler {
+	private static int GAS_RANGE = 5, FLAME_RANGE = 5;
+	private static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
+	private static double HEAT_RESISTANCE_BONUS = 1.05;
 	
 	protected boolean mAcidProof = F;
-	protected byte mDisplayedHeight = 0, oDisplayedHeight = 0, mCooldown = 100;
-	protected short mDisplayedFluid = -1, oDisplayedFluid = -1;
+	protected byte mDisplayedHeight = 0, mCooldown = 100;
+	protected short mDisplayedFluid = -1;
 	protected long mEnergy = 0, mTemperature = DEF_ENV_TEMP, oTemperature = 0;
 	protected List<OreDictMaterialStack> mContent = new ArrayListNoNulls<>();
+	
+	public short mWalls = 18002;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		mEnergy = aNBT.getLong(NBT_ENERGY);
+		if (aNBT.hasKey(NBT_DESIGN)) mWalls = aNBT.getShort(NBT_DESIGN);
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperature = aNBT.getLong(NBT_TEMPERATURE);
 		if (aNBT.hasKey(NBT_TEMPERATURE+".old")) oTemperature = aNBT.getLong(NBT_TEMPERATURE+".old");
@@ -120,7 +127,45 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	}
 	
 	@Override
+	public boolean checkStructure2() {
+		boolean tSuccess = T;
+		
+		if (getAir(xCoord, yCoord+1, zCoord)) worldObj.setBlockToAir(xCoord, yCoord+1, zCoord); else tSuccess = F;
+		if (getAir(xCoord, yCoord+2, zCoord)) worldObj.setBlockToAir(xCoord, yCoord+2, zCoord); else tSuccess = F;
+		
+		for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) if (i != 0 || j != 0) {
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 0, j, mWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 1, j, mWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_CRUCIBLE)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 2, j, mWalls, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
+		}
+		
+		if (tSuccess) for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) if (i != 0 || j != 0) {
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 0, j, mWalls, getMultiTileEntityRegistryID(), 4, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 1, j, mWalls, getMultiTileEntityRegistryID(), 4, MultiTileEntityMultiBlockPart.ONLY_CRUCIBLE)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, 2, j, mWalls, getMultiTileEntityRegistryID(), 4, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
+		}
+		
+		return tSuccess;
+	}
+	
+	@Override
+	public boolean isInsideStructure(int aX, int aY, int aZ) {
+		return aX >= xCoord - 1 && aY >= yCoord && aZ >= zCoord - 1 && aX <= xCoord + 1 && aY <= yCoord + 2 && aZ <= zCoord + 1;
+	}
+	
+	static {
+		LH.add("gt.tooltip.multiblock.crucible.1", "3x3x3 Hollow of Walls with opening on Top.");
+		LH.add("gt.tooltip.multiblock.crucible.2", "Main at Bottom-Center.");
+		LH.add("gt.tooltip.multiblock.crucible.3", "Energy IN from Bottom Layer, Stuff IN from Top Half.");
+		LH.add("gt.tooltip.multiblock.crucible.4", "Molds usable at second Layer of Walls");
+	}
+	
+	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.crucible.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.crucible.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.crucible.3"));
 		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X) + " 1 " + TD.Energy.HU.getLocalisedNameShort() + " " + LH.get(LH.CONVERTS_TO_Y) + " +1 K " + LH.get(LH.CONVERTS_PER_Z) + " "+ KG_PER_ENERGY + "kg (at least "+getEnergySizeInputMin(TD.Energy.HU, SIDE_ANY)+" Units per Tick required!)");
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_MELTDOWN) + " (" + getTemperatureMax(SIDE_ANY) + " K)");
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
@@ -151,11 +196,17 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onServerTickPost(boolean aFirst) {
-		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord+PX_P[2], yCoord+PX_P[2], zCoord+PX_P[2], PX_N[4], 1, PX_N[4]));
+		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord);
+		
+		if (!checkStructure(F)) {
+			if (SERVER_TIME % 10 == 0) {if (mTemperature > tTemperature) mTemperature--; if (mTemperature < tTemperature) mTemperature++;}
+			mTemperature = Math.max(mTemperature, Math.min(200, tTemperature));
+			return;
+		}
+		
+		if (!slotHas(0)) slot(0, WD.suck(worldObj, xCoord, yCoord+PX_P[2], zCoord, 1, 3, 1));
 		
 		ItemStack tStack = slot(0);
-		
-		long tTemperature = WD.envTemp(worldObj, xCoord, yCoord, zCoord);
 		
 		if (ST.valid(tStack)) {
 			OreDictItemData tData = OM.anydata_(tStack);
@@ -181,7 +232,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 				UT.Sounds.send(SFX.MC_FIZZ, this);
 				if (tMaterial.mMaterial.mBoilingPoint >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, (tMaterial.mMaterial.mBoilingPoint - 300) / 25.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				if (tMaterial.mMaterial.mBoilingPoint >= 2000) for (int j = 0, k = Math.max(1, UT.Code.bindInt((9 * tMaterial.mAmount) / U)); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
-				if (tMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) explode(UT.Code.scale(tMaterial.mAmount, MAX_AMOUNT, 6, F));
+				if (tMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) explode(UT.Code.scale(tMaterial.mAmount, MAX_AMOUNT, 8, F));
 				return;
 			} else if (!mAcidProof && tMaterial.mMaterial.contains(TD.Properties.ACID)) {
 				GarbageGT.trash(mContent.remove(i--));
@@ -260,7 +311,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			OM.stack(tPreferredAlloy, tPreferredRecipe.getCommonDivider() * tMaxConversions).addToList(mContent);
 		}
 		
-		double tWeight = mMaterial.getWeight(U*7);
+		double tWeight = mMaterial.getWeight(U*100);
 		long tTotal = 0;
 		OreDictMaterialStack tLightest = null;
 		
@@ -272,8 +323,10 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		
 		oTemperature = mTemperature;
 		
+		short tDisplayedFluid = mDisplayedFluid, tDisplayedHeight = mDisplayedHeight;
 		mDisplayedHeight = (byte)UT.Code.scale(tTotal, MAX_AMOUNT, 255, F);
 		mDisplayedFluid = (tLightest == null || tLightest.mMaterial.mMeltingPoint > mTemperature ? -1 : tLightest.mMaterial.mID);
+		if (mDisplayedFluid != tDisplayedFluid || mDisplayedHeight != tDisplayedHeight) updateClientData();
 		
 		long tRequiredEnergy = 1 + (long)(tWeight / KG_PER_ENERGY), tConversions = mEnergy / tRequiredEnergy;
 		
@@ -293,7 +346,11 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			UT.Sounds.send(SFX.MC_FIZZ, this);
 			if (mTemperature >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyHeatDamage(tLiving, (mTemperature - 300) / 25.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 			for (int j = 0, k = UT.Code.bindInt(mTemperature / 25); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
-			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
+			for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) {
+				worldObj.setBlock(xCoord+i, yCoord  , zCoord+j, Blocks.flowing_lava, 1, 3);
+				worldObj.setBlock(xCoord+i, yCoord+1, zCoord+j, Blocks.flowing_lava, 1, 3);
+				worldObj.setBlock(xCoord+i, yCoord+2, zCoord+j, Blocks.flowing_lava, 1, 3);
+			}
 			return;
 		}
 	}
@@ -497,30 +554,15 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	}
 	
 	@Override
-	public boolean onTickCheck(long aTimer) {
-		return super.onTickCheck(aTimer) || mDisplayedHeight != oDisplayedHeight || mDisplayedFluid != oDisplayedFluid;
-	}
-	
-	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
-		oDisplayedFluid = mDisplayedFluid;
-		oDisplayedHeight = mDisplayedHeight;
-	}
-	
-	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		if (aSendAll) return getClientDataPacketByteArray(T, mDisplayedHeight, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
-		if (mDisplayedFluid != oDisplayedFluid) return getClientDataPacketByteArray(F, mDisplayedHeight, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1));
-		return getClientDataPacketByteArray(F, mDisplayedHeight);
+		return getClientDataPacketByteArray(T, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), mDisplayedHeight, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1));
 	}
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		mDisplayedHeight = aData[0];
-		if (aData.length >= 3) mDisplayedFluid = UT.Code.combine(aData[1], aData[2]);
-		if (aData.length >= 6) mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[3]), UT.Code.unsignB(aData[4]), UT.Code.unsignB(aData[5])});
-		return T;
+		mDisplayedHeight = aData[5];
+		mDisplayedFluid = UT.Code.combine(aData[6], aData[7]);
+		return super.receiveDataByteArray(aData, aNetworkHandler);
 	}
 	
 	@Override
@@ -546,12 +588,12 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[14], PX_N[ 0], PX_N[ 0]); return T;
-		case  1: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[14]); return T;
-		case  2: box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
-		case  3: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]); return T;
-		case  4: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[14], PX_N[ 0]); return T;
-		case  5: box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[ 0], PX_N[ 0], 0.125F+(UT.Code.unsignB(mDisplayedHeight) / 292.571428F), PX_N[ 0]); return T;
+		case  0: box(aBlock,-1.0, 0.0,-1.0,-0.5, 3.0, 2.0); return T;
+		case  1: box(aBlock,-1.0, 0.0,-1.0, 2.0, 3.0,-0.5); return T;
+		case  2: box(aBlock, 1.5, 0.0,-1.0, 2.0, 3.0, 2.0); return T;
+		case  3: box(aBlock,-1.0, 0.0, 1.5, 2.0, 3.0, 2.0); return T;
+		case  4: box(aBlock,-1.0, 0.0,-1.0, 2.0, 0.5, 2.0); return T;
+		case  5: box(aBlock,-1.0, 0.0,-1.0, 2.0, 0.5+(UT.Code.unsignB(mDisplayedHeight) / 105.0), 2.0); return T;
 		}
 		return F;
 	}
@@ -600,17 +642,8 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		}
 	}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0.125, 0.125, 0.125, 0.875, 0.875, 0.875);}
-	@Override public boolean addDefaultCollisionBoxToList() {return F;}
-	
-	@Override
-	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
-		box(aAABB, aList, PX_P[14], PX_P[ 1], PX_P[ 1], PX_N[ 1], PX_N[ 1], PX_N[ 1]);
-		box(aAABB, aList, PX_P[ 1], PX_P[ 1], PX_P[14], PX_N[ 1], PX_N[ 1], PX_N[ 1]);
-		box(aAABB, aList, PX_P[ 1], PX_P[ 1], PX_P[ 1], PX_N[14], PX_N[ 1], PX_N[ 1]);
-		box(aAABB, aList, PX_P[ 1], PX_P[ 1], PX_P[ 1], PX_N[ 1], PX_N[ 1], PX_N[14]);
-		box(aAABB, aList, PX_P[ 1], PX_P[ 1], PX_P[ 1], PX_N[ 1], PX_N[14], PX_N[ 1]);
-	}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 2], PX_P[ 0], PX_P[ 2], PX_N[14], PX_N[ 8], PX_N[14]);}
+	@Override public boolean addDefaultCollisionBoxToList() {return T;}
 	
 	// Inventory Stuff
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
@@ -625,17 +658,12 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
-		return SIDES_TOP[aSide] && !slotHas(0);
+		return !slotHas(0);
 	}
 	
 	@Override
 	public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {
 		return F;
-	}
-	
-	@Override
-	public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		return SIDES_BOTTOM_HORIZONTAL[aSide] && super.checkObstruction(aPlayer, aSide, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override public int getInventoryStackLimit() {return 64;}
@@ -658,5 +686,5 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	@Override public long getEnergySizeInputMax(TagData aEnergyType, byte aSide) {return Long.MAX_VALUE;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return TD.Energy.ALL_HOT_COLD;}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.smeltery";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.crucible";}
 }

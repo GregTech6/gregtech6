@@ -60,6 +60,7 @@ import gregapi.tileentity.base.TileEntityBase07Paintable;
 import gregapi.tileentity.data.ITileEntityTemperature;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
+import gregapi.tileentity.machines.ITileEntityCrucible;
 import gregapi.tileentity.machines.ITileEntityMold;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -180,7 +181,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 			
 			if ((mInventoryChanged || mTimer % 50 == 0 || (mBlockUpdated && mUseRedstone)) && (!mUseRedstone || hasRedstoneIncoming()) && mContent == null && mAutoPullDirections != 0) for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mAutoPullDirections]) {
 				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-				if (tDelegator.mTileEntity instanceof MultiTileEntitySmeltery) ((MultiTileEntitySmeltery)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide);
+				if (tDelegator.mTileEntity instanceof ITileEntityCrucible) ((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide);
 			}
 		}
 		
@@ -274,8 +275,8 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 					for (byte tSide2 : ALL_SIDES_HORIZONTAL) {
 						if (isMoldInputSide(tSide2)) {
 							DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide2);
-							if (tDelegator.mTileEntity instanceof MultiTileEntitySmeltery) {
-								((MultiTileEntitySmeltery)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide2);
+							if (tDelegator.mTileEntity instanceof ITileEntityCrucible) {
+								((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide2);
 								return T;
 							}
 						}
@@ -283,8 +284,8 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 				} else {
 					if (isMoldInputSide(tSide)) {
 						DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
-						if (tDelegator.mTileEntity instanceof MultiTileEntitySmeltery) {
-							((MultiTileEntitySmeltery)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide);
+						if (tDelegator.mTileEntity instanceof ITileEntityCrucible) {
+							((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide);
 							return T;
 						}
 					}

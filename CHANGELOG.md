@@ -35,6 +35,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.17: (Not released yet)
 [FIXED] Long Distance Wires/Pipes now actually know when they are a Receiver when they are looked at with Magnifying Glass.
+[ADDED] 3x3x3 Multiblock Crucible.
 
 
 6.11.16:
