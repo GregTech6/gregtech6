@@ -27,8 +27,6 @@ import java.util.List;
 import java.util.Set;
 
 import gregapi.GT_API_Proxy;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
@@ -87,7 +85,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -95,7 +92,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler {
+public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler {
 	private static int GAS_RANGE = 5, FLAME_RANGE = 5;
 	private static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
 	private static double HEAT_RESISTANCE_BONUS = 1.05;
@@ -158,7 +155,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	static {
 		LH.add("gt.tooltip.multiblock.crucible.1", "3x3x3 Hollow of Walls with opening on Top.");
 		LH.add("gt.tooltip.multiblock.crucible.2", "Main at Bottom-Center.");
-		LH.add("gt.tooltip.multiblock.crucible.3", "Energy IN from Bottom Layer, Stuff IN from Top Half.");
+		LH.add("gt.tooltip.multiblock.crucible.3", "Energy IN from Bottom Layer, Stuff IN from Top Layer.");
 		LH.add("gt.tooltip.multiblock.crucible.4", "Molds usable at second Layer of Walls");
 	}
 	
@@ -618,9 +615,11 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	}
 	
 	@Override
-	public void onEntityCollidedWithBlock(Entity aEntity) {
+	public void onWalkOver2(EntityLivingBase aEntity) {
+		super.onWalkOver2(aEntity);
+		
 		if (mTemperature > 320 && UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mTemperature / 100.0F))) {
-			if (aEntity instanceof EntityLivingBase && !((EntityLivingBase)aEntity).isEntityAlive()) {
+			if (!aEntity.isEntityAlive()) {
 				if (aEntity instanceof EntityVillager || aEntity instanceof EntityWitch) {
 					addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(2*U, MT.SoylentGreen)), C+37);
 				} else if (aEntity instanceof EntitySnowman) {
@@ -648,9 +647,9 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		}
 	}
 	
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 0], PX_P[ 2], PX_P[ 0], PX_N[ 0], PX_N[ 2], PX_N[ 0]);}
-	@Override public boolean addDefaultCollisionBoxToList() {return T;}
 	@Override public boolean allowCovers(byte aSide) {return F;}
+	@Override public byte getDefaultSide() {return SIDE_UP;}
+	@Override public boolean[] getValidSides() {return SIDES_NONE;}
 	
 	// Inventory Stuff
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
