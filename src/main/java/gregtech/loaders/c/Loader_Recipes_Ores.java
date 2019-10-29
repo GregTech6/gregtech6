@@ -271,7 +271,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		
 		final long[] tSluice = {10000, 300, 300, 300, 300, 300, 300, 300, 300}, tMagnet = {10000, 600, 600, 600, 600, 600};
 		
-		for (OreDictMaterial aMat : OreDictMaterial.MATERIAL_ARRAY) if (aMat != null && !aMat.contains(ANTIMATTER)) {
+		for (OreDictMaterial aMat : OreDictMaterial.MATERIAL_ARRAY) if (aMat != null && !aMat.contains(ANTIMATTER) && aMat != MT.Bedrock) {
 			ItemStack tDust = dust.mat(aMat, 1);
 			if (ST.invalid(tDust)) continue;
 			
