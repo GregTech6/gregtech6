@@ -252,7 +252,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			for (OreDictMaterialStack tComponent : tPreferredRecipe.getUndividedComponents()) {
 				for (OreDictMaterialStack tContent : mContent) {
 					if (tContent.mMaterial == tComponent.mMaterial) {
-						tContent.mAmount -= (tMaxConversions * tComponent.mAmount) / U;
+						tContent.mAmount -= (tMaxConversions * (tComponent.mAmount / U));
 						break;
 					}
 				}

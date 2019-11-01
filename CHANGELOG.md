@@ -30,10 +30,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.18: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] A bunch of Multiblock Crucible Bugs.
 
 
 6.11.17:
+[BUG] Alloying Stuff in the Multiblock Crucible can sometimes dupe Resources.
 [FIXED] Long Distance Wires/Pipes now actually know when they are a Receiver when they are looked at with Magnifying Glass.
 [ADDED]
 3x3x3 Multiblock Crucible.

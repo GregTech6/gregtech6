@@ -129,6 +129,7 @@ public class MultiTileEntityLongDistancePipelineItem extends TileEntityBase09Fac
 	}
 	
 	private void scanPipes(boolean aBurnWires) {
+		if (mSender != null && !mSender.isDead() && mSender.mTarget == this) return;
 		mIgnoreUnloadedChunks = F;
 		mTargetPos = getCoords();
 		mTarget = this;
@@ -161,13 +162,13 @@ public class MultiTileEntityLongDistancePipelineItem extends TileEntityBase09Fac
 					} else {
 						TileEntity tTileEntity = getTileEntity(aCoords);
 						if (tTileEntity != this && tTileEntity instanceof MultiTileEntityLongDistancePipelineItem) {
-						//  if (tWires.contains(((MultiTileEntityLongDistancePipelineItem)tTileEntity).getOffset(((MultiTileEntityLongDistancePipelineItem)tTileEntity).mFacing, 1))) {
+							if (tWires.contains(((MultiTileEntityLongDistancePipelineItem)tTileEntity).getOffset(((MultiTileEntityLongDistancePipelineItem)tTileEntity).mFacing, 1))) {
 								mTarget = (MultiTileEntityLongDistancePipelineItem)tTileEntity;
 								mTargetPos = mTarget.getCoords();
 								mIgnoreUnloadedChunks = T;
 								return;
-						//  }
-						//  tOldChecks.remove(aCoords);
+							}
+							tOldChecks.remove(aCoords);
 						}
 					}
 				}

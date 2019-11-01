@@ -101,6 +101,12 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 	}
 	
 	@Override
+	public void onCoordinateChange() {
+		super.onCoordinateChange();
+		checkStructure(T);
+	}
+	
+	@Override
 	public void onTickFirst2(boolean aIsServerSide) {
 		super.onTickFirst2(aIsServerSide);
 		if (aIsServerSide) checkStructure(T);

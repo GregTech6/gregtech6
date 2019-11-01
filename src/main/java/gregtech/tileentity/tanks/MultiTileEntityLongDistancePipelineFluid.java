@@ -137,6 +137,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	}
 	
 	private void scanPipes(boolean aBurnWires) {
+		if (mSender != null && !mSender.isDead() && mSender.mTarget == this) return;
 		mIgnoreUnloadedChunks = F;
 		mTargetPos = getCoords();
 		mTarget = this;

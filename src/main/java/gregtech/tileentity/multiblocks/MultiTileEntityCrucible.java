@@ -95,7 +95,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler {
 	private static int GAS_RANGE = 5, FLAME_RANGE = 5;
 	private static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
-	private static double HEAT_RESISTANCE_BONUS = 1.05;
+	private static double HEAT_RESISTANCE_BONUS = 1.10;
 	
 	protected boolean mAcidProof = F;
 	protected byte mDisplayedHeight = 0, mCooldown = 100;
@@ -302,7 +302,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			for (OreDictMaterialStack tComponent : tPreferredRecipe.getUndividedComponents()) {
 				for (OreDictMaterialStack tContent : mContent) {
 					if (tContent.mMaterial == tComponent.mMaterial) {
-						tContent.mAmount -= (tMaxConversions * tComponent.mAmount) / U;
+						tContent.mAmount -= (tMaxConversions * (tComponent.mAmount / U));
 						break;
 					}
 				}
@@ -355,7 +355,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	}
 	
 	public boolean addMaterialStacks(List<OreDictMaterialStack> aList, long aTemperature) {
-		if (OM.total(mContent)+OM.total(aList) <= MAX_AMOUNT) {
+		if (checkStructure(F) && OM.total(mContent)+OM.total(aList) <= MAX_AMOUNT) {
 			double tWeight1 = OM.weight(mContent)+mMaterial.getWeight(U*7), tWeight2 = OM.weight(aList);
 			if (tWeight1+tWeight2 > 0) mTemperature = aTemperature + (mTemperature>aTemperature?+1:-1)*UT.Code.units(Math.abs(mTemperature - aTemperature), (long)(tWeight1+tWeight2), (long)tWeight1, F);
 			for (OreDictMaterialStack tMaterial : aList) {
@@ -386,7 +386,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	
 	@Override
 	public boolean isMoldInputSide(byte aSide) {
-		return SIDES_TOP[aSide];
+		return SIDES_TOP[aSide] && checkStructure(F);
 	}
 	
 	@Override
@@ -425,6 +425,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (!checkStructure(F)) return F;
 		if (SIDES_TOP[aSide]) {
 			if (isServerSide() && aPlayer != null) {
 				ItemStack aStack = aPlayer.getCurrentEquippedItem();
@@ -511,7 +512,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	
 	@Override
 	public boolean fillMoldAtSide(ITileEntityMold aMold, byte aSide, byte aSideOfMold) {
-		for (OreDictMaterialStack tContent : mContent) if (tContent != null && mTemperature >= tContent.mMaterial.mMeltingPoint) {
+		if (checkStructure(F)) for (OreDictMaterialStack tContent : mContent) if (tContent != null && mTemperature >= tContent.mMaterial.mMeltingPoint) {
 			long tAmount = aMold.fillMold(tContent, mTemperature, aSideOfMold);
 			if (tAmount > 0) {
 				tContent.mAmount -= tAmount;
@@ -525,7 +526,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (aTool.equals(TOOL_thermometer)) {if (aChatReturn != null) aChatReturn.add("Temperature: " + mTemperature + "K"); return 10000;}
-		if (aTool.equals(TOOL_shovel) && SIDES_TOP[aSide] && aPlayer instanceof EntityPlayer) {
+		if (aTool.equals(TOOL_shovel) && SIDES_TOP[aSide] && checkStructure(F) && aPlayer instanceof EntityPlayer) {
 			OreDictMaterialStack tLightest = null;
 			for (OreDictMaterialStack tMaterial : mContent) if (tLightest == null || tMaterial.mMaterial.mGramPerCubicCentimeter < tLightest.mMaterial.mGramPerCubicCentimeter) tLightest = tMaterial;
 			if (tLightest != null && mTemperature < tLightest.mMaterial.mMeltingPoint) {
