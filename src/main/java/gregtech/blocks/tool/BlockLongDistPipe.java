@@ -21,10 +21,10 @@ package gregtech.blocks.tool;
 
 import static gregapi.data.CS.*;
 
+import gregapi.block.MaterialMachines;
 import gregapi.block.misc.BlockBaseMachineUpdate;
 import gregapi.data.LH;
 import gregapi.render.IIconContainer;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -33,7 +33,7 @@ public class BlockLongDistPipe extends BlockBaseMachineUpdate {
 	public final long[] mTemperatures;
 	
 	public BlockLongDistPipe(String aUnlocalised, IIconContainer[] aIcons, long[] aTemperatures) {
-		super(null, aUnlocalised, Material.iron, soundTypeMetal, 5, aIcons, ~0);
+		super(null, aUnlocalised, MaterialMachines.instance, soundTypeMetal, 5, aIcons, ~0);
 		mTemperatures = aTemperatures;
 		LH.add(aUnlocalised+".0.name" , "Long Distance Item Pipeline");
 		for (int i = 1; i < mMaxMeta; i++) LH.add(aUnlocalised+"."+i+".name" , "Long Distance Fluid Pipeline ("+mTemperatures[i]+" K)");

@@ -41,7 +41,6 @@ import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregtech.blocks.tool.BlockLongDistPipe;
-import gregtech.blocks.tool.BlockLongDistWire;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -189,7 +188,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	@Override public boolean getStateOnOff() {return !mStopped;}
 	
 	@Override public void onCoordinateChange() {super.onCoordinateChange(); mTargetPos = null; mSender = null;}
-	@Override public void onMachineBlockUpdate(ChunkCoordinates aCoords, Block aBlock, byte aMeta, boolean aRemoved) {if (aBlock instanceof BlockLongDistWire) {mTargetPos = null; mSender = null;}}
+	@Override public void onMachineBlockUpdate(ChunkCoordinates aCoords, Block aBlock, byte aMeta, boolean aRemoved) {if (aBlock instanceof BlockLongDistPipe) {mTargetPos = null; mSender = null;}}
 	@Override public boolean hasMultiBlockMachineRelevantData() {return T;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}

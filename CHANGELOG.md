@@ -31,6 +31,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.18: (Not released yet)
 [FIXED] A bunch of Multiblock Crucible Bugs.
+[CHANGED] Steel is now made with Air instead of Carbon! In order to supply Air to the Crucible just slap an Engine at it and pump in Kinetic Units (KU).
 
 
 6.11.17:
