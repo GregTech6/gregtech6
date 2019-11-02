@@ -418,8 +418,10 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public OreDictMaterial addAlloyingRecipe(IOreDictConfigurationComponent aConfiguration) {
 		ALLOYS.add(this);
 		for (OreDictMaterialStack tMaterial : aConfiguration.getUndividedComponents()) {
-			if (mMeltingPoint >= tMaterial.mMaterial.mBoilingPoint) mMeltingPoint = Math.max(C+20, tMaterial.mMaterial.mBoilingPoint-20);
-			if (mMeltingPoint >= tMaterial.mMaterial.mBoilingPoint) ERR.println("The Alloy '" + mNameInternal + "' cannot be created due to the Melting Point being higher than the Boiling Point of its Component '" + tMaterial.mMaterial.mNameInternal + "'");
+			if (tMaterial.mMaterial != MT.Air) {
+				if (mMeltingPoint >= tMaterial.mMaterial.mBoilingPoint) mMeltingPoint = Math.max(C+20, tMaterial.mMaterial.mBoilingPoint-20);
+				if (mMeltingPoint >= tMaterial.mMaterial.mBoilingPoint) ERR.println("The Alloy '" + mNameInternal + "' cannot be created due to the Melting Point being higher than the Boiling Point of its Component '" + tMaterial.mMaterial.mNameInternal + "'");
+			}
 			tMaterial.mMaterial.mAlloyComponentReferences.add(this);
 		}
 		mAlloyCreationRecipes.add(aConfiguration);
