@@ -44,7 +44,6 @@ import gregtech.blocks.tool.BlockLongDistPipe;
 import gregtech.blocks.tool.BlockLongDistWire;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -98,7 +97,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 		if (isClientSide()) return 0;
 		
 		if (aTool.equals(TOOL_softhammer)) {
-			scanPipes(F);
+			scanPipes();
 			return 10000;
 		}
 		if (aTool.equals(TOOL_magnifyingglass)) {
@@ -119,7 +118,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 	public boolean checkTarget() {
 		if (mStopped || isClientSide()) return F;
 		if (mTargetPos == null || mTemperature <= 0) {
-			scanPipes(F);
+			scanPipes();
 		} else if (mTarget == null || mTarget.isDead()) {
 			mTarget = null;
 			if (worldObj.blockExists(mTargetPos.posX, mTargetPos.posY, mTargetPos.posZ)) {
@@ -136,7 +135,7 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 		return mTarget.mSender == this;
 	}
 	
-	private void scanPipes(boolean aBurnWires) {
+	private void scanPipes() {
 		if (mSender != null && !mSender.isDead() && mSender.mTarget == this) return;
 		mIgnoreUnloadedChunks = F;
 		mTargetPos = getCoords();
@@ -165,10 +164,6 @@ public class MultiTileEntityLongDistancePipelineFluid extends TileEntityBase09Fa
 						if (tOldChecks.add(tCoords = new ChunkCoordinates(aCoords.posX, aCoords.posY - 1, aCoords.posZ))) tNewChecks.add(tCoords);
 						if (tOldChecks.add(tCoords = new ChunkCoordinates(aCoords.posX, aCoords.posY, aCoords.posZ + 1))) tNewChecks.add(tCoords);
 						if (tOldChecks.add(tCoords = new ChunkCoordinates(aCoords.posX, aCoords.posY, aCoords.posZ - 1))) tNewChecks.add(tCoords);
-						if (aBurnWires) {
-							WD.burn(worldObj, aCoords, T, F);
-							worldObj.setBlock(aCoords.posX, aCoords.posY, aCoords.posZ, Blocks.fire, 0, 3);
-						}
 					} else {
 						TileEntity tTileEntity = getTileEntity(aCoords);
 						if (tTileEntity != this && tTileEntity instanceof MultiTileEntityLongDistancePipelineFluid) {
