@@ -235,7 +235,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		
 		for (int i = 0; i < mContent.size(); i++) {
 			OreDictMaterialStack tMaterial = mContent.get(i);
-			if (tMaterial == null || tMaterial.mMaterial == MT.NULL || tMaterial.mAmount <= 0) {
+			if (tMaterial == null || tMaterial.mMaterial == MT.NULL || tMaterial.mMaterial == MT.Air || tMaterial.mAmount <= 0) {
 				GarbageGT.trash(mContent.remove(i--));
 			} else if (tMaterial.mMaterial.mGramPerCubicCentimeter <= WEIGHT_AIR_G_PER_CUBIC_CENTIMETER) {
 				GarbageGT.trash(mContent.remove(i--));
