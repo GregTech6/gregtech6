@@ -119,7 +119,8 @@ public enum FL {
 	, HoneyGrC                  ("grc.honey"                                                , SIMPLE, LIQUID, FOOD, HONEY, NONSTANDARD)
 	, HoneyBoP                  ("honey"                                                    , SIMPLE, LIQUID, FOOD, HONEY, NONSTANDARD)
 	, Honeydew                  ("honeydew"                 , "for.honeydew"                , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
-	, Ambrosia                  ("potion.ambrosia"                                          , SIMPLE, LIQUID, FOOD)
+	, Ambrosia                  ("potion.ambrosia"                                          , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
+	, RoyalJelly                ("royaljelly"                                               , SIMPLE, LIQUID, FOOD)
 	
 	, Biomass                   ("biomass"                                                  , SIMPLE, LIQUID)
 	, BiomassIC2                ("ic2biomass"                                               , SIMPLE, LIQUID)

@@ -62,6 +62,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify(FL.make("molten.latex"               , 1), FL.Latex.make(1));
 		RM.generify(FL.Latex                         .make(1), FL.make("molten.latex", 1));
 		RM.generify(FL.Slime_Pink                    .make(1), FL.Slime_Green.make(1));
+		RM.generify(FL.RoyalJelly                    .make(1), FL.Honey.make(10));
 		RM.generify(FL.Honey                         .make(1), FL.HoneyGrC.make(1));
 		RM.generify(FL.HoneyGrC                      .make(1), FL.HoneyBoP.make(1));
 		RM.generify(FL.HoneyBoP                      .make(1), FL.Honey.make(1));

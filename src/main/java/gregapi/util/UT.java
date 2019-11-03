@@ -1634,7 +1634,7 @@ public class UT {
 			else if (aFirstValue instanceof Double)            rNBT.setDouble( aFirstKey, (Double)                 aFirstValue);
 			else if (aFirstValue instanceof String)            rNBT.setString( aFirstKey, (String)                 aFirstValue);
 			else if (aFirstValue instanceof NBTBase)           rNBT.setTag(    aFirstKey, (NBTBase)                aFirstValue);
-			else if (aFirstValue instanceof FluidStack)        rNBT.setTag(    aFirstKey, Fluids.save((FluidStack) aFirstValue));
+			else if (aFirstValue instanceof FluidStack)        rNBT.setTag(    aFirstKey, FL.save((FluidStack)     aFirstValue));
 			else if (aFirstValue instanceof OreDictMaterial)   rNBT.setString( aFirstKey, ((OreDictMaterial)       aFirstValue).mNameInternal);
 			else if (aFirstValue instanceof RecipeMap)         rNBT.setString( aFirstKey, ((RecipeMap)             aFirstValue).mNameInternal);
 			else                                               rNBT.setString( aFirstKey, aFirstValue.toString());
@@ -1650,7 +1650,7 @@ public class UT {
 				else if (aTags[i] instanceof Double)           rNBT.setDouble( aTags[i-1].toString(), (Double)                 aTags[i]);
 				else if (aTags[i] instanceof String)           rNBT.setString( aTags[i-1].toString(), (String)                 aTags[i]);
 				else if (aTags[i] instanceof NBTBase)          rNBT.setTag(    aTags[i-1].toString(), (NBTBase)                aTags[i]);
-				else if (aTags[i] instanceof FluidStack)       rNBT.setTag(    aTags[i-1].toString(), Fluids.save((FluidStack) aTags[i]));
+				else if (aTags[i] instanceof FluidStack)       rNBT.setTag(    aTags[i-1].toString(), FL.save((FluidStack)     aTags[i]));
 				else if (aTags[i] instanceof OreDictMaterial)  rNBT.setString( aTags[i-1].toString(), ((OreDictMaterial)       aTags[i]).mNameInternal);
 				else if (aTags[i] instanceof RecipeMap)        rNBT.setString( aTags[i-1].toString(), ((RecipeMap)             aTags[i]).mNameInternal);
 				else                                           rNBT.setString( aTags[i-1].toString(), aTags[i].toString());
@@ -1672,7 +1672,7 @@ public class UT {
 				else if (aTags[i] instanceof Double)           aNBT.setDouble(     aTags[i-1].toString(), (Double)                 aTags[i]);
 				else if (aTags[i] instanceof String)           aNBT.setString(     aTags[i-1].toString(), (String)                 aTags[i]);
 				else if (aTags[i] instanceof NBTBase)          aNBT.setTag(        aTags[i-1].toString(), (NBTBase)                aTags[i]);
-				else if (aTags[i] instanceof FluidStack)       aNBT.setTag(        aTags[i-1].toString(), Fluids.save((FluidStack) aTags[i]));
+				else if (aTags[i] instanceof FluidStack)       aNBT.setTag(        aTags[i-1].toString(), FL.save((FluidStack)     aTags[i]));
 				else if (aTags[i] instanceof OreDictMaterial)  aNBT.setString(     aTags[i-1].toString(), ((OreDictMaterial)       aTags[i]).mNameInternal);
 				else if (aTags[i] instanceof RecipeMap)        aNBT.setString(     aTags[i-1].toString(), ((RecipeMap)             aTags[i]).mNameInternal);
 				else                                           aNBT.setString(     aTags[i-1].toString(), aTags[i].toString());

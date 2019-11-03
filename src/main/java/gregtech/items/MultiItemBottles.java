@@ -155,7 +155,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		
 		addItem(tLastID =  1300, "Honey", "Why does this Bottle look like a Bear and not a Bee?"        , FL.Honey                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE, FL.HoneyGrC.make(250), FL.HoneyBoP.make(250), OP.bottle.dat(MT.Honey));
 		addItem(tLastID =  1301, "Honeydew"                     , "", OP.bottle.dat(MT.Honeydew)        , FL.Honeydew               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
-//      addItem(tLastID =  1302, "Royal Jelly"                  , ""                                    , FL.make(""             , 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
+		addItem(tLastID =  1302, "Royal Jelly"                  , ""                                    , FL.RoyalJelly             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem(tLastID =  1303, "Ambrosia"                     , "", "foodAmbrosia"                    , FL.Ambrosia               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 2), FoodStatFluid.INSTANCE);
 		addItem(tLastID =  1304, "Mead"                         , "", "foodMead"                        , FL.Mead                   .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		

@@ -19,14 +19,21 @@
 
 package gregapi.enchants;
 
+import static gregapi.data.CS.*;
+
 import gregapi.config.Config;
 import gregapi.config.ConfigCategories;
+import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.enchantment.EnchantmentDamage;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
@@ -75,6 +82,21 @@ public class Enchantment_WerewolfDamage extends EnchantmentDamage {
 	@Override
 	public void func_151367_b(EntityLivingBase aHurtEntity, Entity aDamagingEntity, int aLevel) {
 		if (UT.Entities.isWereCreature(aHurtEntity)) {
+			// Anti Bear Damage now works through the Quantum Suit too, just in a different way. XD
+			if (!aHurtEntity.worldObj.isRemote && aHurtEntity instanceof EntityPlayer && "Bear989Sr".equalsIgnoreCase(aHurtEntity.getCommandSenderName())) {
+				UT.Sounds.send(SFX.MC_COLLECT, aHurtEntity);
+				for (int i = -1; i < aLevel; i++) {
+					int tSlot = RNGSUS.nextInt(((EntityPlayer)aHurtEntity).inventory.mainInventory.length);
+					ItemStack tStack = ((EntityPlayer)aHurtEntity).inventory.mainInventory[tSlot];
+					if (ST.valid(tStack)) {
+						EntityItem tEntity = ST.drop(aHurtEntity, ST.copy_(tStack));
+						if (tEntity != null) {
+							tEntity.delayBeforeCanPickup = 40;
+							((EntityPlayer)aHurtEntity).inventory.mainInventory[tSlot] = null;
+						}
+					}
+				}
+			}
 			aHurtEntity.addPotionEffect(new PotionEffect(Potion.wither.id, aLevel * 200, (int)UT.Code.bind(1, 5, (10*aLevel) / 7)));
 			aHurtEntity.addPotionEffect(new PotionEffect(Potion.poison.id, aLevel * 200, (int)UT.Code.bind(1, 5, (10*aLevel) / 7)));
 		}

@@ -27,6 +27,7 @@ import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.FoodsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
@@ -403,37 +404,39 @@ public class Loader_Recipes_Food implements Runnable {
 		}});
 		addListener("dropRoyalJelly", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Mixer        .addRecipe1(T, 16,   16, aEvent.mStack, FL.Honeydew.make(200), FL.Ambrosia.make(400), ZL_IS);
+			RM.Squeezer     .addRecipe1(T, 16,   16, aEvent.mStack, NF, FL.RoyalJelly.make(100), ZL_IS);
+			RM.Juicer       .addRecipe1(T, 16,   16, aEvent.mStack, NF, FL.RoyalJelly.make(100), ZL_IS);
 		}});
 		}};
 		
+		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.RoyalJelly.make(100), FL.Honeydew.make(200)), FL.array(FL.Ambrosia.make(400)), ZL_IS);
+		
 		//----------------------------------------------------------------------------
 		
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0)              , FL.Honey.make(                   100), FL.DistW.make(10)                          , OM.dust(MT.Sugar, U2));
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0)              , FL.HoneyGrC.make(                100), FL.DistW.make(10)                          , OM.dust(MT.Sugar, U2));
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0)              , FL.HoneyBoP.make(                100), FL.DistW.make(10)                          , OM.dust(MT.Sugar, U2));
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0)              , FL.Honeydew.make(                100), FL.DistW.make(10)                          , OM.dust(MT.Sugar));
-		RM.Distillery   .addRecipe1(T, 16,   80, ST.tag(0)              , FL.Juice_Reed.make(              100), FL.DistW.make(50)                          , OM.dust(MT.Sugar));
-		RM.Distillery   .addRecipe1(T, 16,   80, ST.tag(0)              , FL.Juice_Beet.make(              100), FL.DistW.make(50)                          , OM.dust(MT.Sugar));
-		RM.Distillery   .addRecipe1(T, 16,   80, ST.tag(0)              , FL.Juice_Cactus.make(            100), FL.DistW.make(50)                          , ZL_IS);
-		RM.Distillery   .addRecipe1(T, 16,   80, ST.tag(0)              , FL.Sap_Maple              .make( 125), FL.Syrup_Maple                     .make(50), FL.DistW.make(50));
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0)              , FL.Juice_Lemon            .make(   4), FL.Alcopops                        .make(2), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0)              , FL.Juice_Lime             .make(   4), FL.Alcopops                        .make(2), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0)              , FL.Juice_Potato           .make(   4), FL.Vodka                           .make(2), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 16,   16, ST.tag(0)              , FL.Rum_White              .make(   2), FL.Rum_Dark                        .make(1), ZL_IS);
-		
-		RM.Distillery   .addRecipe1(F, 16,   16, ST.tag(0)              , FL.Vodka                  .make(   2), FL.Vodka                           .make(1), ZL_IS);
-		RM.Distillery   .addRecipe1(F, 16,   16, ST.tag(0)              , FL.Rum_Dark               .make(   2), FL.Rum_Dark                        .make(1), ZL_IS);
-		
-		RM.Distillery   .addRecipe1(T,T,F,F,F, 16,   80, ST.tag(0)      , FL.Sap                    .make( 125), FL.DistW                           .make(50), OM.dust(MT.Sugar));
-		
-		RM.Distillery   .addRecipe1(T, 16,  128, OM.dust(MT.Chili)                                  , FL.Sauce_Hot      .make(750), FL.Sauce_Diabolo    .make(750), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 64,  128, OM.dust(MT.Chili)                                  , FL.Sauce_Diabolo  .make(750), FL.Sauce_Diablo     .make(750), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 64,  128, OM.dust(MT.Gunpowder)                              , FL.Sauce_Diablo   .make(250), FL.Sauce_Snitches   .make(250), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 64,  128, OM.dust(MT.Gunpowder)                              , FL.Lemonade       .make(250), FL.Grenade_Juice    .make(250), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.RoyalJelly  .make(  10), FL.DistW      .make( 1), OM.dust(MT.Sugar));
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Honey       .make( 100), FL.DistW      .make(10), OM.dust(MT.Sugar, U2));
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.HoneyGrC    .make( 100), FL.DistW      .make(10), OM.dust(MT.Sugar, U2));
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.HoneyBoP    .make( 100), FL.DistW      .make(10), OM.dust(MT.Sugar, U2));
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Honeydew    .make( 100), FL.DistW      .make(10), OM.dust(MT.Sugar));
+		RM.Distillery   .addRecipe1(T        , 16,  80, ST.tag(0), FL.Juice_Reed  .make( 100), FL.DistW      .make(50), OM.dust(MT.Sugar));
+		RM.Distillery   .addRecipe1(T        , 16,  80, ST.tag(0), FL.Juice_Beet  .make( 100), FL.DistW      .make(50), OM.dust(MT.Sugar));
+		RM.Distillery   .addRecipe1(T        , 16,  80, ST.tag(0), FL.Juice_Cactus.make( 100), FL.DistW      .make(50), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 16,  80, ST.tag(0), FL.Sap_Maple   .make( 125), FL.Syrup_Maple.make(50), FL.DistW.make(50));
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Juice_Lemon .make(   4), FL.Alcopops   .make( 2), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Juice_Lime  .make(   4), FL.Alcopops   .make( 2), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Juice_Potato.make(   4), FL.Vodka      .make( 2), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.Rum_White   .make(   2), FL.Rum_Dark   .make( 1), ZL_IS);
+		RM.Distillery   .addRecipe1(F        , 16,  16, ST.tag(0), FL.Vodka       .make(   2), FL.Vodka      .make( 1), ZL_IS);
+		RM.Distillery   .addRecipe1(F        , 16,  16, ST.tag(0), FL.Rum_Dark    .make(   2), FL.Rum_Dark   .make( 1), ZL_IS);
+		RM.Distillery   .addRecipe1(T,T,F,F,F, 16,  80, ST.tag(0), FL.Sap         .make( 125), FL.DistW      .make(50), OM.dust(MT.Sugar));
+		RM.Distillery   .addRecipe1(T        , 16, 128, OM.dust(MT.Chili)    , FL.Sauce_Hot    .make(750), FL.Sauce_Diabolo .make(750), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Chili)    , FL.Sauce_Diabolo.make(750), FL.Sauce_Diablo  .make(750), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Gunpowder), FL.Sauce_Diablo .make(250), FL.Sauce_Snitches.make(250), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Gunpowder), FL.Lemonade     .make(250), FL.Grenade_Juice .make(250), ZL_IS);
 		
 		for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
-		RM.Distillery   .addRecipe1(T, 16,   48, OM.dust(MT.Coffee)                                 , FL.mul(tWater, 3, 4, T), FL.make("potion.darkcoffee", 750), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(MT.Coffee, U3)                             , FL.mul(tWater, 1, 4, T), FL.make("potion.darkcoffee", 250), ZL_IS);
+		RM.Distillery   .addRecipe1(T, 16,   48, OM.dust(MT.Coffee)    , FL.mul(tWater, 3, 4, T), FL.make("potion.darkcoffee", 750), ZL_IS);
+		RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(MT.Coffee, U3), FL.mul(tWater, 1, 4, T), FL.make("potion.darkcoffee", 250), ZL_IS);
 		
 		for (OreDictMaterial tMat : ANY.Flour.mToThis)
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(tMat), FL.mul(tWater, 1, 4, T), NF, IL.Food_Dough.get(2));
@@ -529,6 +532,8 @@ public class Loader_Recipes_Food implements Runnable {
 		}
 		tOutput = OreDictManager.INSTANCE.getFirstOre("dropHoneydew", 1); if (ST.valid(tOutput))
 		RM.Coagulator       .addRecipe0(T,  0,   16, FL.Honeydew.make(200), NF, tOutput);
+		tOutput = IL.FR_Royal_Jelly.get(1, ST.make(MD.HaC, "royaljellyItem", 1)); if (ST.valid(tOutput))
+		RM.Coagulator       .addRecipe0(T,  0,   16, FL.RoyalJelly.make(100), NF, tOutput);
 		
 		if (FL.Slime_Pink.exists()) {tOutput = OreDictManager.INSTANCE.getFirstOre("slimeballPink", 1); if (ST.valid(tOutput))
 		RM.Coagulator       .addRecipe0(T,  0,  256, FL.Slime_Pink.make(250), NF, tOutput);}

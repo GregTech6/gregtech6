@@ -207,18 +207,19 @@ public class RM {
 		int tSize = aBiomass.stackSize;
 		if (tSize <= 0) return F;
 		aBiomass = ST.amount(1, aBiomass);
-		for (String tFluid : FluidsGT.WATER) if (UT.Fluids.exists(tFluid) && !"riverwater".equals(tFluid))
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, UT.Fluids.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(1080    / tSize), ZL_IS);
-		for (String tFluid : FluidsGT.MILK ) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, UT.Fluids.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(2160    / tSize), ZL_IS);
-		for (String tFluid : FluidsGT.JUICE) if (UT.Fluids.exists(tFluid) && !"potion.idunsapplejuice".equals(tFluid) && !"potion.goldenapplejuice".equals(tFluid) && !"goldencarrotjuice".equals(tFluid))
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, UT.Fluids.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(3240    / tSize), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, UT.Fluids.make("potion.idunsapplejuice" , 1080 / tSize), FL.BiomassIC2.make(2099520 / tSize), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, UT.Fluids.make("potion.goldenapplejuice", 1080 / tSize), FL.BiomassIC2.make(233280  / tSize), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, UT.Fluids.make("goldencarrotjuice"      , 1080 / tSize), FL.BiomassIC2.make(25920   / tSize), ZL_IS);
-		for (String tFluid : FluidsGT.HONEY) if (UT.Fluids.exists(tFluid))
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, UT.Fluids.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(3240    / tSize), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Honeydew.make(                         1080 / tSize), FL.BiomassIC2.make(3240    / tSize), ZL_IS);
+		for (String tFluid : FluidsGT.WATER) if (FL.exists(tFluid) && !"riverwater".equals(tFluid))
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(1080    / tSize), ZL_IS);
+		for (String tFluid : FluidsGT.MILK ) if (FL.exists(tFluid))
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(2160    / tSize), ZL_IS);
+		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid) && !"potion.idunsapplejuice".equals(tFluid) && !"potion.goldenapplejuice".equals(tFluid) && !"goldencarrotjuice".equals(tFluid))
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(3240    / tSize), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("potion.idunsapplejuice" , 1080 / tSize), FL.BiomassIC2.make(2099520 / tSize), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("potion.goldenapplejuice", 1080 / tSize), FL.BiomassIC2.make(233280  / tSize), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("goldencarrotjuice"      , 1080 / tSize), FL.BiomassIC2.make(25920   / tSize), ZL_IS);
+		for (String tFluid : FluidsGT.HONEY) if (FL.exists(tFluid))
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(3240    / tSize), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Honeydew.make(                  1080 / tSize), FL.BiomassIC2.make(3240    / tSize), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.RoyalJelly.make(                1080 / tSize), FL.BiomassIC2.make(32400   / tSize), ZL_IS);
 		return T;
 	}
 	
@@ -238,7 +239,7 @@ public class RM {
 		Cutter.addRecipe1(T, aEUt, aDuration*4, aInput, FL.Water.make(aLubricantAmount*4), NF, aOutputs);
 		Cutter.addRecipe1(T, aEUt, aDuration*3, aInput, FL.DistW.make(aLubricantAmount*3), NF, aOutputs);
 		if (!aIsFoodItem) for (String tFluidName : FluidsGT.LUBRICANT) {
-			FluidStack tFluid = UT.Fluids.make(tFluidName, aLubricantAmount);
+			FluidStack tFluid = FL.make(tFluidName, aLubricantAmount);
 			if (tFluid != null) Cutter.addRecipe1(T, aEUt, aDuration, aInput, tFluid, NF, aOutputs);
 		}
 		return T;
