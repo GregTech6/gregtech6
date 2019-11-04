@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.18: (soon)
+6.11.18:
 [FIXED] A bunch of Multiblock Crucible Bugs.
 [CHANGED] Steel is now made with Air instead of Carbon! In order to supply Air to the Crucible just slap an Engine at it and pump in Kinetic Units (KU).
 [ADDED] Made Royal Jelly a Liquid now. Should make some Recipes work better. Royal Jelly can be used like Honey in a lot of Recipes, usually being 10 times more efficient in some way or another.
