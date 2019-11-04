@@ -186,7 +186,7 @@ public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle 
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return ALONG_AXIS[aSide][mFacing]?0.5F:1.0F;}
 	@Override public boolean isSideSolid2           (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
-	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {

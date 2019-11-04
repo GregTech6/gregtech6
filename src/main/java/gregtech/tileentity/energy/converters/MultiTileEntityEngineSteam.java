@@ -214,7 +214,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 	@Override public float getSurfaceSizeAttachable (byte aSide) {return ALONG_AXIS[aSide][mFacing]?0.5F:0.25F;}
 	@Override public boolean isSideSolid2           (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
-	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean allowCovers            (byte aSide) {return ALONG_AXIS[aSide][mFacing];}
 	
 	@Override public boolean getStateRunningPossible() {return T;}
 	@Override public boolean getStateRunningPassively() {return mActive;}

@@ -84,7 +84,7 @@ public class Enchantment_WerewolfDamage extends EnchantmentDamage {
 		if (UT.Entities.isWereCreature(aHurtEntity)) {
 			// Anti Bear Damage now works through the Quantum Suit too, just in a different way. XD
 			if (!aHurtEntity.worldObj.isRemote && aHurtEntity instanceof EntityPlayer && "Bear989Sr".equalsIgnoreCase(aHurtEntity.getCommandSenderName())) {
-				UT.Sounds.send(SFX.MC_COLLECT, aHurtEntity);
+				UT.Sounds.send(SFX.MC_FIREWORK_LARGE, aHurtEntity);
 				for (int i = -1; i < aLevel; i++) {
 					int tSlot = RNGSUS.nextInt(((EntityPlayer)aHurtEntity).inventory.mainInventory.length);
 					ItemStack tStack = ((EntityPlayer)aHurtEntity).inventory.mainInventory[tSlot];
