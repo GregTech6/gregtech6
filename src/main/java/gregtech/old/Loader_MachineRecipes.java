@@ -107,7 +107,7 @@ public class Loader_MachineRecipes implements Runnable {
 //      RA.addFusionReactorRecipe(OM.get(OP.cell, MT.Li , 1), OM.get(OP.cell, MT.W      , 1), OM.get(OP.dust, MT.Ir, 1), 512, -32768, 150000000);
 //      RA.addFusionReactorRecipe(OM.get(OP.cell, MT.Be , 1), OM.get(OP.cell, MT.W      , 1), OM.get(OP.dust, MT.Pt, 1), 512, -32768, 100000000);
 
-		RA.addImplosionRecipe(IL.IC2_Compressed_Coal_Chunk.get(1), 8, OP.gem.mat(MT.DiamondIndustrial, 1), OM.get(OP.dustTiny, MT.DarkAsh, 4));
+		RA.addImplosionRecipe(IL.IC2_Compressed_Coal_Chunk.get(1), 8, OP.gem.mat(MT.DiamondIndustrial, 1), OM.get(OP.dustTiny, MT.Ash, 4));
 
 //      RA.addDistillationRecipe(OM.get(OP.cell, MT.Oil     , 16), 32, OM.get(OP.cell, MT.Fuel, 16), OM.get(OP.cell, MT.SulfuricAcid, 16), OM.get(OP.cell, MT.Glyceryl, 1), OM.get(OP.cell, MT.Methane, 15), 4000, 64);
 //      RA.addDistillationRecipe(OM.get(OP.cell, MT.Biomass ,  3), 0, OM.get(OP.cell, MT.Ethanol, 1), OM.get(OP.cell, MT.Water, 1), IL.Cell_Empty.get(1), IL.IC2_Fertilizer.get(1), 500, 64);
