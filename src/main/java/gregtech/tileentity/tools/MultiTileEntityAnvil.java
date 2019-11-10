@@ -38,6 +38,7 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
+import gregapi.item.multiitem.MultiItemTool;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.oredict.OreDictItemData;
@@ -147,67 +148,65 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 		if (aIsServerSide) {
 			if (mInventoryChanged) {
 				mShapeA = mShapeB = 0;
-				if (slotHas(0)) {
-					if (ToolsGT.contains(TOOL_hammer, slot(0))) {
-						// TODO
-						mMaterialA = MT.Steel.mID;
-						mShapeA = 8;
-					} else if (ToolsGT.contains(TOOL_hammer, slot(1))) {
-						// TODO
-						mMaterialA = MT.Wood.mID;
-						mShapeA = 9;
-					} else {
-						mMaterialA = MT.Fe.mID;
-						OreDictItemData tData = OM.anydata(slot(0));
-						if (tData != null) {
-							if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
-							if (tData.mPrefix != null) {
-								if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1; else
-								if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2; else
-								if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeA = 2; else
-								if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3; else
-								if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3; else
-								if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
-								if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
-								if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
-								if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeA = 7; else
-								if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeA = 7; else
-								if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeA = 7; else
-								mShapeA = 0;
-							}
+				if (ToolsGT.contains(TOOL_hammer, slot(0))) {
+					mMaterialA = MultiItemTool.getPrimaryMaterial(slot(0), MT.Steel).mID;
+					if (mMaterialA <= 0) mMaterialA = MT.Steel.mID;
+					mShapeA = 8;
+				} else if (ToolsGT.contains(TOOL_hammer, slot(1))) {
+					mMaterialA = MultiItemTool.getSecondaryMaterial(slot(1), MT.Wood).mID;
+					if (mMaterialA <= 0) mMaterialA = MT.Wood.mID;
+					mShapeA = 9;
+				} else if (slotHas(0)) {
+					mMaterialA = MT.Fe.mID;
+					OreDictItemData tData = OM.anydata(slot(0));
+					if (tData != null) {
+						if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
+						if (tData.mPrefix != null) {
+							if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1; else
+							if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeA = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
+							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
+							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
+							if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeA = 7; else
+							if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeA = 7; else
+							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeA = 7; else
+							mShapeA = 0;
 						}
 					}
 				} else {
 					mMaterialA = 0;
 				}
-				if (slotHas(1)) {
-					if (ToolsGT.contains(TOOL_hammer, slot(1))) {
-						// TODO
-						mMaterialB = MT.Steel.mID;
-						mShapeB = 8;
-					} else if (ToolsGT.contains(TOOL_hammer, slot(0))) {
-						// TODO
-						mMaterialB = MT.Wood.mID;
-						mShapeB = 9;
-					} else {
-						mMaterialB = MT.Fe.mID;
-						OreDictItemData tData = OM.anydata(slot(1));
-						if (tData != null) {
-							if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
-							if (tData.mPrefix != null) {
-								if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1; else
-								if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2; else
-								if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeB = 2; else
-								if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3; else
-								if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3; else
-								if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
-								if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
-								if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
-								if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeB = 7; else
-								if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeB = 7; else
-								if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeB = 7; else
-								mShapeB = 0;
-							}
+				
+				
+				if (ToolsGT.contains(TOOL_hammer, slot(1))) {
+					mMaterialB = MultiItemTool.getPrimaryMaterial(slot(1), MT.Steel).mID;
+					if (mMaterialB <= 0) mMaterialB = MT.Steel.mID;
+					mShapeB = 8;
+				} else if (ToolsGT.contains(TOOL_hammer, slot(0))) {
+					mMaterialB = MultiItemTool.getSecondaryMaterial(slot(0), MT.Steel).mID;
+					if (mMaterialB <= 0) mMaterialB = MT.Wood.mID;
+					mShapeB = 9;
+				} else if (slotHas(1)) {
+					mMaterialB = MT.Fe.mID;
+					OreDictItemData tData = OM.anydata(slot(1));
+					if (tData != null) {
+						if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
+						if (tData.mPrefix != null) {
+							if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1; else
+							if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeB = 2; else
+							if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3; else
+							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
+							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
+							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
+							if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeB = 7; else
+							if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeB = 7; else
+							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeB = 7; else
+							mShapeB = 0;
 						}
 					}
 				} else {
@@ -349,7 +348,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  5: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
 			case  7: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
-			case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 2], PX_N[SIDES_AXIS_X[mFacing]? 5:11], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5:11]);
+			case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 2], PX_N[SIDES_AXIS_X[mFacing]? 5:10], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5:10]);
 			case  9: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_P[13], PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
 			}
@@ -362,7 +361,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  5: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
 			case  7: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
-			case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5:11], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5:11], PX_N[SIDES_AXIS_X[mFacing]? 5: 2], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 2]);
+			case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5:10], PX_N[SIDES_AXIS_X[mFacing]? 5: 2], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 2]);
 			case  9: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_P[13], PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
 			}
@@ -409,7 +408,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[2];}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI);}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return !ToolsGT.contains(TOOL_hammer, slot(0)) && !ToolsGT.contains(TOOL_hammer, slot(1)) && (RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI));}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
 	
 	@Override

@@ -27,6 +27,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.19: (Not released yet)
 [CHANGED] The Iron Recipes now require Carbon instead of Dark Ash (well a Carbon Version of those Recipes already existed before), and Carbon can be supplied by Coal and Charcoal now. This made Dark Ash much more useless, but also stops you from burning shit for the sake of getting Dark Ash. I looked up the IRL Recipes again and did not see the need to introduce a new Flux.
+[ADDED] Hammers can now be placed on Anvils.
 
 
 6.11.18:
