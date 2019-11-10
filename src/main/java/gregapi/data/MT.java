@@ -1002,7 +1002,7 @@ public class MT {
 	
 	
 	Diamond                 = diamond       ( 8300, "Diamond"               , SET_DIAMOND           , 200, 255, 255, DYE_INDEX_White      )                                                                                                                             .uumMcfg( 1, C              , 4*U)                                                                                                                          ,
-	DiamondPink             = diamond       ( 8424, "Pink Diamond"          , SET_DIAMOND           , 192,  99, 144, DYE_INDEX_Pink       )                                                                                                                             .uumMcfg( 1, C              , 4*U)                                                                                                                          ,
+	DiamondPink             = diamond       ( 8424, "Pink Diamond"          , SET_DIAMOND           , 240, 140, 140, DYE_INDEX_Pink       )                                                                                                                             .uumMcfg( 1, C              , 4*U)                                                                                                                          ,
 	DiamondIndustrial       = diamond       ( 8423, "DiamondIndustrial"     , SET_DIAMOND           , 255, 255, 210, DYE_INDEX_Yellow     )                                                                                                                             .uumMcfg( 1, C              , 4*U)                                                                                                                          .aspects(TC.FABRICO    , 2).qual(3,  9.0,  1440,  3).setLocal("Industrial Diamond"),
 	ManaDiamond             = diamond       ( 8278, "Mana Diamond"          , SET_DIAMOND           , 128, 255, 255, DYE_INDEX_Cyan       ).put(MAGICAL, UNBURNABLE)                                                                                                    .setMcfg( 1, C              , 4*U, Ma               , 1*U)                                                                                                  .aspects(TC.PRAECANTIO , 2).qual(3, 10.0,  1280,  3),
 	ElvenDragonstone        = diamond       ( 8279, "Elven Dragonstone"     , SET_DIAMOND           , 240, 140, 240, DYE_INDEX_Magenta    ).put(MAGICAL, UNBURNABLE)                                                                                                    .setMcfg( 1, C              , 4*U, Ma               , 2*U)                                                                                                  .aspects(TC.PRAECANTIO , 4).qual(3, 12.0,  1280,  3).setLocal("Dragonstone"),
@@ -1071,13 +1071,13 @@ public class MT {
 	Jade                    = valgem        ( 8321, "Jade"                  , SET_LAPIS             , 100, 255, 125, 255).lens(DYE_INDEX_Green      ).put(MD.ERE)                                                                                                                                                                                                                                                                   .aspects(TC.VITREUS, 3, TC.LUCRUM                   , 6).qual(3,  8.0,   512,  2),
 	
 	/*
-	PinkFluorite            = valgem        (00000, "Pink Fluorite"         , SET_RUBY              , 226, 117, 148, 127),
-	YellowFluorite          = valgem        (00000, "Yellow Fluorite"       , SET_RUBY              , 206, 182,  80, 127),
-	RedFluorite             = valgem        (00000, "Red Fluorite"          , SET_RUBY              , 226,  56,  65, 127),
-	WhiteFluorite           = valgem        (00000, "White Fluorite"        , SET_RUBY              , 180, 180, 180, 127),
-	BlueFluorite            = valgem        (00000, "Blue Fluorite"         , SET_RUBY              ,  88, 172, 180, 127),
-	BlackFluorite           = valgem        (00000, "Black Fluorite"        , SET_RUBY              ,  48,  48,  48, 127),
-	GreenFluorite           = valgem        (00000, "Green Fluorite"        , SET_RUBY              ,  37, 168,  35, 127),
+	PinkFluorite            = valgem        (00000, "Pink Fluorite"         , SET_RUBY              , 226, 117, 148, 127).uumMcfg( 0, CaF2           , 1*U),
+	YellowFluorite          = valgem        (00000, "Yellow Fluorite"       , SET_RUBY              , 206, 182,  80, 127).uumMcfg( 0, CaF2           , 1*U),
+	RedFluorite             = valgem        (00000, "Red Fluorite"          , SET_RUBY              , 226,  56,  65, 127).uumMcfg( 0, CaF2           , 1*U),
+	WhiteFluorite           = valgem        (00000, "White Fluorite"        , SET_RUBY              , 180, 180, 180, 127).uumMcfg( 0, CaF2           , 1*U),
+	BlueFluorite            = valgem        (00000, "Blue Fluorite"         , SET_RUBY              ,  88, 172, 180, 127).uumMcfg( 0, CaF2           , 1*U),
+	BlackFluorite           = valgem        (00000, "Black Fluorite"        , SET_RUBY              ,  48,  48,  48, 127).uumMcfg( 0, CaF2           , 1*U),
+	GreenFluorite           = valgem        (00000, "Green Fluorite"        , SET_RUBY              ,  37, 168,  35, 127).uumMcfg( 0, CaF2           , 1*U),
 	
 	BrownAventurine         = valgem        (00000, "Brown Aventurine"      , SET_RUBY              , 185, 110,  35, 127),
 	YellowAventurine        = valgem        (00000, "Yellow Aventurine"     , SET_RUBY              , 200, 179, 121, 127),

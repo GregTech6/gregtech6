@@ -398,6 +398,8 @@ public final class OreDictManager {
 					if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
 						if (MD.TFC.mLoaded && aModID.equalsIgnoreCase(MD.TFC.mID) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
+						} else if (aPrefix == OP.gem && MD.RH.mLoaded && aModID.equalsIgnoreCase(MD.RH.mID)) {
+							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
 						} else if (aPrefix == OP.ore) {
 							addItemData_(aEvent.Ore, aPrefix.dat(aMaterial));
 						} else if (aPrefix.contains(TD.Prefix.UNIFICATABLE)) {

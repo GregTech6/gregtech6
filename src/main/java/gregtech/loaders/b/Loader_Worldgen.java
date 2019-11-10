@@ -428,6 +428,7 @@ public class Loader_Worldgen implements Runnable {
 		);
 		StoneLayer.put(BlocksGT.GraniteBlack, BlocksGT.Basalt
 		, new StoneLayerOres(MT.Diamond                 , U64,  0, 32)
+		, new StoneLayerOres(MT.DiamondPink             , U48,  0, 32, BIOMES_JUNGLE)
 		, new StoneLayerOres(MT.Graphite                , U8 ,  0, 32)
 		);
 		StoneLayer.put(BlocksGT.GraniteBlack, BlocksGT.GraniteRed
