@@ -31,6 +31,7 @@ import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.BI;
 import gregapi.data.CS.SFX;
+import gregapi.data.CS.ToolsGT;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.MT;
@@ -147,46 +148,66 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			if (mInventoryChanged) {
 				mShapeA = mShapeB = 0;
 				if (slotHas(0)) {
-					mMaterialA = MT.Fe.mID;
-					OreDictItemData tData = OM.anydata(slot(0));
-					if (tData != null) {
-						if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
-						if (tData.mPrefix != null) {
-							if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1; else
-							if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2; else
-							if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeA = 2; else
-							if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3; else
-							if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3; else
-							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
-							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
-							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
-							if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeA = 7; else
-							if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeA = 7; else
-							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeA = 7; else
-							mShapeA = 0;
+					if (ToolsGT.contains(TOOL_hammer, slot(0))) {
+						// TODO
+						mMaterialA = MT.Steel.mID;
+						mShapeA = 8;
+					} else if (ToolsGT.contains(TOOL_hammer, slot(1))) {
+						// TODO
+						mMaterialA = MT.Wood.mID;
+						mShapeA = 9;
+					} else {
+						mMaterialA = MT.Fe.mID;
+						OreDictItemData tData = OM.anydata(slot(0));
+						if (tData != null) {
+							if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialA = tData.mMaterial.mMaterial.mID;
+							if (tData.mPrefix != null) {
+								if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeA = 1; else
+								if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeA = 2; else
+								if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeA = 2; else
+								if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeA = 3; else
+								if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeA = 3; else
+								if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeA = 4; else
+								if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeA = 5; else
+								if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeA = 6; else
+								if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeA = 7; else
+								if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeA = 7; else
+								if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeA = 7; else
+								mShapeA = 0;
+							}
 						}
 					}
 				} else {
 					mMaterialA = 0;
 				}
 				if (slotHas(1)) {
-					mMaterialB = MT.Fe.mID;
-					OreDictItemData tData = OM.anydata(slot(1));
-					if (tData != null) {
-						if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
-						if (tData.mPrefix != null) {
-							if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1; else
-							if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2; else
-							if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeB = 2; else
-							if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3; else
-							if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3; else
-							if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
-							if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
-							if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
-							if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeB = 7; else
-							if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeB = 7; else
-							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeB = 7; else
-							mShapeB = 0;
+					if (ToolsGT.contains(TOOL_hammer, slot(1))) {
+						// TODO
+						mMaterialB = MT.Steel.mID;
+						mShapeB = 8;
+					} else if (ToolsGT.contains(TOOL_hammer, slot(0))) {
+						// TODO
+						mMaterialB = MT.Wood.mID;
+						mShapeB = 9;
+					} else {
+						mMaterialB = MT.Fe.mID;
+						OreDictItemData tData = OM.anydata(slot(1));
+						if (tData != null) {
+							if (tData.mMaterial != null && tData.mMaterial.mMaterial.mID > 0) mMaterialB = tData.mMaterial.mMaterial.mID;
+							if (tData.mPrefix != null) {
+								if (tData.mPrefix.mNameInternal.startsWith("ingot")) mShapeB = 1; else
+								if (tData.mPrefix.mNameInternal.startsWith("plate")) mShapeB = 2; else
+								if (tData.mPrefix.mNameInternal.startsWith("plank")) mShapeB = 2; else
+								if (tData.mPrefix.mNameInternal.startsWith("stick")) mShapeB = 3; else
+								if (tData.mPrefix.mNameInternal.startsWith("wire" )) mShapeB = 3; else
+								if (tData.mPrefix.mNameInternal.startsWith("chunk")) mShapeB = 4; else
+								if (tData.mPrefix.mNameInternal.startsWith("ring" )) mShapeB = 5; else
+								if (tData.mPrefix.mNameInternal.startsWith("gem"  )) mShapeB = 6; else
+								if (tData.mPrefix.mNameInternal.startsWith("ore"  )) mShapeB = 7; else
+								if (tData.mPrefix.mNameInternal.startsWith("rock" )) mShapeB = 7; else
+								if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) mShapeB = 7; else
+								mShapeB = 0;
+							}
 						}
 					}
 				} else {
@@ -203,9 +224,24 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			if (aHitY < PX_P[4]) return T;
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			byte tSlot = (byte)((SIDES_AXIS_Z[mFacing]?aHitX:aHitZ) < 0.5 ? 0 : 1);
+			boolean tHasHammer = (ToolsGT.contains(TOOL_hammer, slot(0)) || ToolsGT.contains(TOOL_hammer, slot(1)));
+			
 			if (SIDES_TOP[aSide]) {
+				if (tHasHammer) {
+					if (slotHas(0) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(0), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
+						slotKill(0);
+						updateInventory();
+						return T;
+					}
+					if (slotHas(1) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(1), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
+						slotKill(1);
+						updateInventory();
+						return T;
+					}
+					return T;
+				}
 				if (ST.valid(aStack)) {
-					if ((RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot) > 0) playClick();
+					if (((ToolsGT.contains(TOOL_hammer, aStack) && !slotHas(0) && !slotHas(1)) || RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot) > 0) playClick();
 					return T;
 				}
 				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
@@ -313,6 +349,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  5: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6: 2], PX_N[SIDES_AXIS_X[mFacing]? 6:10], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6:10]);
 			case  7: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
+			case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 2], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 2], PX_N[SIDES_AXIS_X[mFacing]? 5:11], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5:11]);
+			case  9: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_P[13], PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 1], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 1], PX_N[SIDES_AXIS_X[mFacing]? 5: 9], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 9]);
 			}
 		case  7:
@@ -324,6 +362,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			case  5: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 3], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
 			case  6: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 6:10], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 6:10], PX_N[SIDES_AXIS_X[mFacing]? 6: 2], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 6: 2]);
 			case  7: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
+			case  8: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5:11], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5:11], PX_N[SIDES_AXIS_X[mFacing]? 5: 2], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 2]);
+			case  9: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 7: 1], PX_P[13], PX_P[SIDES_AXIS_Z[mFacing]? 7: 1], PX_N[SIDES_AXIS_X[mFacing]? 7: 1], PX_N[ 1], PX_N[SIDES_AXIS_Z[mFacing]? 7: 1]);
 			default: return box(aBlock, PX_P[SIDES_AXIS_X[mFacing]? 5: 9], PX_P[12], PX_P[SIDES_AXIS_Z[mFacing]? 5: 9], PX_N[SIDES_AXIS_X[mFacing]? 5: 1], PX_N[ 0], PX_N[SIDES_AXIS_Z[mFacing]? 5: 1]);
 			}
 		}
