@@ -783,6 +783,9 @@ public class Loader_Recipes_Crops implements Runnable {
 		addListener("cropSpiceleaf", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Boxinator.addRecipe2(T, 16, 16, aEvent.mStack, IL.Pill_Empty.get(1), IL.Pill_Blue.get(1));
 		}});
+		addListener("cropTruffle", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.crop_veggie(aEvent.mStack, FL.Oil_Seed, 100, 5000, "Canned Truffles", 0, 0, 0, 4, 0);
+		}});
 		
 		
 		}};

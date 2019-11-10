@@ -210,6 +210,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		aMat = ANY.Wood; for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf" , "Storage"     ,i+7000, 32751, MultiTileEntityBookShelf.class           , aMat.mToolQuality , 16, aWooden   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i    , NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i    ])), ST.invalid(PlankData.PLANKS[i    ]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i    ]});
 		aMat = ANY.Wood; for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf" , "Storage"     ,i+7900, 32751, MultiTileEntityBookShelf.class           , aMat.mToolQuality , 16, aWooden   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i+100, NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i+100])), ST.invalid(PlankData.PLANKS[i+100]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i+100]});
+		aMat = ANY.Wood; for (int i = 0; i < 100; i++) aRegistry.add("Wooden Bookshelf" , "Storage"     ,i+7800, 32751, MultiTileEntityBookShelf.class           , aMat.mToolQuality , 16, aWooden   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 2.0F, NBT_RESISTANCE, 2.0F, NBT_FLAMMABILITY, 150, NBT_TEXTURE, i+200, NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i+200])), ST.invalid(PlankData.PLANKS[i+200]) ? ZL : new Object[] {"PPP", "sfr", "PPP", 'P', PlankData.PLANKS[i+200]});
 		
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Pb                    ,    0,   4.0F,   4.0F,  1);
 		metalset(aRegistry, aMetal, aMachine, aWooden, MT.Bi                    ,   16,   4.0F,   4.0F,  2);
@@ -1832,8 +1833,17 @@ public class Loader_MultiTileEntities implements Runnable {
 				CoverRegistry.put(tPanel, new CoverTextureSimple(BlockTextureCopied.get(Blocks.planks), SFX.MC_DIG_WOOD));
 			}
 		}
+		for (int i = 0; i < 100; i++) {
+			ItemStack tPanel = aRegistry.add("Wooden Panel", "Panels", i+32252, 32500, MultiTileEntityPanelWood.class, 0, 16, aWooden, UT.NBT.make(NBT_TEXTURE, i+200, NBT_HIDDEN, ST.invalid(PlankData.PLANKS[i+200])));
+			if (ST.valid(PlankData.PLANKS[i+200])) {
+				CR.shaped(ST.amount(6, tPanel), CR.DEF_REV_NCC_MIR, "TsT", "TPT", "TdT", 'P', PlankData.PLANKS[i+200], 'T', OP.screw.dat(ANY.Iron));
+				CoverRegistry.put(tPanel, new CoverTextureSimple(BlockTextureDefault.get(PlankData.PLANK_ICONS[i+200]), SFX.MC_DIG_WOOD));
+			} else {
+				CoverRegistry.put(tPanel, new CoverTextureSimple(BlockTextureCopied.get(Blocks.planks), SFX.MC_DIG_WOOD));
+			}
+		}
 		
-		// 32084 is next, up to 32351
+		// 32084 is next, up to 32251
 		
 		aMat = MT.Brown;            aRegistry.add("Rope"                                                , "Ropes"                               , 32011, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_FLAMMABILITY,100),  " S",  "SS",  "Sq", 'S', "cropHemp");
 		aMat = MT.White;            aRegistry.add("Silk Rope"                                           , "Ropes"                               , 32012, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid)                      ),  " S",  "SS",  "Sq", 'S', Items.string);

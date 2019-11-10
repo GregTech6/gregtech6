@@ -509,6 +509,8 @@ public class OP {
 	liquid                      = unused("liquid"                       ).setCategoryName("Liquids"),
 	chipset                     = unused("chipset"                      ).setCategoryName("Chipsets"),
 	boule                       = unused("boule"                        ).setCategoryName("Boules"),
+	lump                        = unused("lump"                         ).setCategoryName("Lumps"),
+	pellet                      = unused("pellet"                       ).setCategoryName("Pellets"),
 	bars                        = unused("bars"                         ).setCategoryName("Bars"),
 	bar                         = unused("bar"                          ).setCategoryName("Bars");
 	

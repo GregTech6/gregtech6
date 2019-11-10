@@ -34,12 +34,14 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.wooddict.BeamEntry;
+import gregapi.wooddict.LeafEntry;
 import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.SaplingEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class LoaderWoodDictionary implements Runnable {
@@ -49,9 +51,10 @@ public class LoaderWoodDictionary implements Runnable {
 		
 		// Initializing the List of Decorative Planks
 		PlankData.PLANKS[ 43] = ST.make(MD.TCFM, "TaintPlank", 1, 0);
-		Block
-		tBlock = ST.block(MD.MoCr, "MoCWoodPlank");
-		for (int i = 0; i <  2; i++) PlankData.PLANKS[44+i] = ST.make(tBlock, 1, i);
+		Block tBlock = ST.block(MD.MoCr, "MoCWoodPlank");
+		PlankData.PLANKS[ 44] = ST.make(tBlock, 1, 0);
+		PlankData.PLANKS[ 45] = ST.make(tBlock, 1, 1);
+		PlankData.PLANKS[ 46] = ST.make(tBlock, 1, 2);
 		PlankData.PLANKS[ 96] = ST.make(MD.RC, "cube", 1, 8);
 		PlankData.PLANKS[104] = ST.make(MD.BTL, "rubberTreePlanks", 1, 0);
 		PlankData.PLANKS[106] = IL.BTL_Portal_Bark.get(1);
@@ -61,7 +64,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 187 is next!
+		// No Gaps in this List, so 219 is next!
 		
 		
 		// Vanilla Trees
@@ -506,6 +509,97 @@ public class LoaderWoodDictionary implements Runnable {
 			new WoodEntry(ST.make(tLog, 1, 37), WoodDictionary.PLANKS.get(tPlank, 26));
 			new WoodEntry(ST.make(tLog, 1, 38), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 1), ST.make(MD.HaC, "cinnamonItem", 1, 0, IL.Food_Cinnamon), MT.Cinnamon);
 			new WoodEntry(ST.make(tLog, 1, 39), WoodDictionary.PLANKS.get(tPlank, 34));
+		}
+		// Rockhounding Woods
+		if (MD.RH.mLoaded) {
+			Block tPlankA = ST.block(MD.RH, "globbypotato_rockhounding_fossilWoodPlanks"), tPlankB = ST.block(MD.RH, "globbypotato_rockhounding_mobPlanks");
+			Block tSlabA  = ST.block(MD.RH, "globbypotato_rockhounding_fossilSlabs"     ), tSlabB  = ST.block(MD.RH, "globbypotato_rockhounding_mobSlabs");
+			Item  tStickA = ST.item (MD.RH, "globbypotato_rockhounding_fossilSticks"    ), tStickB = ST.item (MD.RH, "globbypotato_rockhounding_mobSticks");
+			
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_bogLogs"   , 1, 0), new PlankEntry(ST.make(tPlankA, 1, 0), ST.make(tSlabA, 1, 0), ST.make(MD.RH, "globbypotato_rockhounding_bogOakStairs"           , 1, 0), MT.Wood, 187, ST.make(tStickA, 1, 0)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_bogLogs"   , 1, 1), new PlankEntry(ST.make(tPlankA, 1, 1), ST.make(tSlabA, 1, 1), ST.make(MD.RH, "globbypotato_rockhounding_bogSpruceStairs"        , 1, 0), MT.Wood, 188, ST.make(tStickA, 1, 1)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_bogLogs"   , 1, 2), new PlankEntry(ST.make(tPlankA, 1, 2), ST.make(tSlabA, 1, 2), ST.make(MD.RH, "globbypotato_rockhounding_bogBirchStairs"         , 1, 0), MT.Wood, 189, ST.make(tStickA, 1, 2)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_bogLogs"   , 1, 3), new PlankEntry(ST.make(tPlankA, 1, 3), ST.make(tSlabA, 1, 3), ST.make(MD.RH, "globbypotato_rockhounding_bogPetrifiedStairs"     , 1, 0), MT.Wood, 190, ST.make(tStickA, 1, 3)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_fossilLogs", 1, 0), new PlankEntry(ST.make(tPlankA, 1, 4), ST.make(tSlabA, 1, 4), ST.make(MD.RH, "globbypotato_rockhounding_fossilPalmStairs"       , 1, 0), MT.Wood, 191, ST.make(tStickA, 1, 4)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_fossilLogs", 1, 1), new PlankEntry(ST.make(tPlankA, 1, 5), ST.make(tSlabA, 1, 5), ST.make(MD.RH, "globbypotato_rockhounding_fossilOpalizedStairs"   , 1, 0), MT.Wood, 192, ST.make(tStickA, 1, 5)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_fossilLogs", 1, 2), new PlankEntry(ST.make(tPlankA, 1, 6), ST.make(tSlabA, 1, 6), ST.make(MD.RH, "globbypotato_rockhounding_fossilRainbowStairs"    , 1, 0), MT.Wood, 193, ST.make(tStickA, 1, 6)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_fossilLogs", 1, 3), new PlankEntry(ST.make(tPlankA, 1, 7), ST.make(tSlabA, 1, 7), ST.make(MD.RH, "globbypotato_rockhounding_fossilAraucariaStairs"  , 1, 0), MT.Wood, 194, ST.make(tStickA, 1, 7)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_swampLogs" , 1, 0), new PlankEntry(ST.make(tPlankA, 1, 8), ST.make(tSlabA, 1, 8), ST.make(MD.RH, "globbypotato_rockhounding_swampKauriStairs"       , 1, 0), MT.Wood, 195, ST.make(tStickA, 1, 8)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_swampLogs" , 1, 1), new PlankEntry(ST.make(tPlankA, 1, 9), ST.make(tSlabA, 1, 9), ST.make(MD.RH, "globbypotato_rockhounding_swampPipeStairs"        , 1, 0), MT.Wood, 196, ST.make(tStickA, 1, 9)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_swampLogs" , 1, 2), new PlankEntry(ST.make(tPlankA, 1,10), ST.make(tSlabA, 1,10), ST.make(MD.RH, "globbypotato_rockhounding_swampMophaneStairs"     , 1, 0), MT.Wood, 197, ST.make(tStickA, 1,10)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_swampLogs" , 1, 3), new PlankEntry(ST.make(tPlankA, 1,11), ST.make(tSlabA, 1,11), ST.make(MD.RH, "globbypotato_rockhounding_swampDriftwoodStairs"   , 1, 0), MT.Wood, 198, ST.make(tStickA, 1,11)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_coldLogs"  , 1, 0), new PlankEntry(ST.make(tPlankA, 1,12), ST.make(tSlabA, 1,12), ST.make(MD.RH, "globbypotato_rockhounding_coldAzuriteStairs"      , 1, 0), MT.Wood, 199, ST.make(tStickA, 1,12)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_coldLogs"  , 1, 1), new PlankEntry(ST.make(tPlankA, 1,13), ST.make(tSlabA, 1,13), ST.make(MD.RH, "globbypotato_rockhounding_coldBeechStairs"        , 1, 0), MT.Wood, 200, ST.make(tStickA, 1,13)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_coldLogs"  , 1, 2), new PlankEntry(ST.make(tPlankA, 1,14), ST.make(tSlabA, 1,14), ST.make(MD.RH, "globbypotato_rockhounding_coldTeredoStairs"       , 1, 0), MT.Wood, 201, ST.make(tStickA, 1,14)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_coldLogs"  , 1, 3), new PlankEntry(ST.make(tPlankA, 1,15), ST.make(tSlabA, 1,15), ST.make(MD.RH, "globbypotato_rockhounding_coldRedwoodStairs"      , 1, 0), MT.Wood, 202, ST.make(tStickA, 1,15)));
+			
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogs"   , 1, 0), new PlankEntry(ST.make(tPlankB, 1, 0), ST.make(tSlabB, 1, 0), ST.make(MD.RH, "globbypotato_rockhounding_zombieMobStairs"        , 1, 0), MT.Wood, 203, ST.make(tStickB, 1, 0)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogs"   , 1, 1), new PlankEntry(ST.make(tPlankB, 1, 1), ST.make(tSlabB, 1, 1), ST.make(MD.RH, "globbypotato_rockhounding_creeperMobStairs"       , 1, 0), MT.Wood, 204, ST.make(tStickB, 1, 1)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogs"   , 1, 2), new PlankEntry(ST.make(tPlankB, 1, 2), ST.make(tSlabB, 1, 2), ST.make(MD.RH, "globbypotato_rockhounding_skeletonMobStairs"      , 1, 0), MT.Wood, 205, ST.make(tStickB, 1, 2)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogs"   , 1, 3), new PlankEntry(ST.make(tPlankB, 1, 3), ST.make(tSlabB, 1, 3), ST.make(MD.RH, "globbypotato_rockhounding_endermanMobStairs"      , 1, 0), MT.Wood, 206, ST.make(tStickB, 1, 3)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsB"  , 1, 0), new PlankEntry(ST.make(tPlankB, 1, 4), ST.make(tSlabB, 1, 4), ST.make(MD.RH, "globbypotato_rockhounding_witchMobStairs"         , 1, 0), MT.Wood, 207, ST.make(tStickB, 1, 4)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsB"  , 1, 1), new PlankEntry(ST.make(tPlankB, 1, 5), ST.make(tSlabB, 1, 5), ST.make(MD.RH, "globbypotato_rockhounding_slimeMobStairs"         , 1, 0), MT.Wood, 208, ST.make(tStickB, 1, 5)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsB"  , 1, 2), new PlankEntry(ST.make(tPlankB, 1, 6), ST.make(tSlabB, 1, 6), ST.make(MD.RH, "globbypotato_rockhounding_pigzombieMobStairs"     , 1, 0), MT.Wood, 209, ST.make(tStickB, 1, 6)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsB"  , 1, 3), new PlankEntry(ST.make(tPlankB, 1, 7), ST.make(tSlabB, 1, 7), ST.make(MD.RH, "globbypotato_rockhounding_witherMobStairs"        , 1, 0), MT.Wood, 210, ST.make(tStickB, 1, 7)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsC"  , 1, 0), new PlankEntry(ST.make(tPlankB, 1, 8), ST.make(tSlabB, 1, 8), ST.make(MD.RH, "globbypotato_rockhounding_spiderMobStairs"        , 1, 0), MT.Wood, 211, ST.make(tStickB, 1, 8)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsC"  , 1, 1), new PlankEntry(ST.make(tPlankB, 1, 9), ST.make(tSlabB, 1, 9), ST.make(MD.RH, "globbypotato_rockhounding_ghastMobStairs"         , 1, 0), MT.Wood, 212, ST.make(tStickB, 1, 9)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsC"  , 1, 2), new PlankEntry(ST.make(tPlankB, 1,10), ST.make(tSlabB, 1,10), ST.make(MD.RH, "globbypotato_rockhounding_blazeMobStairs"         , 1, 0), MT.Wood, 213, ST.make(tStickB, 1,10)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsC"  , 1, 3), new PlankEntry(ST.make(tPlankB, 1,11), ST.make(tSlabB, 1,11), ST.make(MD.RH, "globbypotato_rockhounding_magmaMobStairs"         , 1, 0), MT.Wood, 214, ST.make(tStickB, 1,11)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsD"  , 1, 0), new PlankEntry(ST.make(tPlankB, 1,12), ST.make(tSlabB, 1,12), ST.make(MD.RH, "globbypotato_rockhounding_witchBMobStairs"        , 1, 0), MT.Wood, 215, ST.make(tStickB, 1,12)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsD"  , 1, 1), new PlankEntry(ST.make(tPlankB, 1,13), ST.make(tSlabB, 1,13), ST.make(MD.RH, "globbypotato_rockhounding_spiderBMobStairs"       , 1, 0), MT.Wood, 216, ST.make(tStickB, 1,13)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsD"  , 1, 2), new PlankEntry(ST.make(tPlankB, 1,14), ST.make(tSlabB, 1,14), ST.make(MD.RH, "globbypotato_rockhounding_zombieBMobStairs"       , 1, 0), MT.Wood, 217, ST.make(tStickB, 1,14)));
+			new WoodEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLogsD"  , 1, 3), new PlankEntry(ST.make(tPlankB, 1,15), ST.make(tSlabB, 1,15), ST.make(MD.RH, "globbypotato_rockhounding_endermanBMobStairs"     , 1, 0), MT.Wood, 218, ST.make(tStickB, 1,15)));
+			
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_bogOakStairs"           , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_bogSpruceStairs"        , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_bogBirchStairs"         , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_bogPetrifiedStairs"     , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_fossilPalmStairs"       , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_fossilOpalizedStairs"   , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_fossilRainbowStairs"    , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_fossilAraucariaStairs"  , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_swampKauriStairs"       , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_swampPipeStairs"        , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_swampMophaneStairs"     , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_swampDriftwoodStairs"   , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_coldAzuriteStairs"      , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_coldBeechStairs"        , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_coldTeredoStairs"       , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_coldRedwoodStairs"      , 1, 0), OD.stairWood);
+			
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_zombieMobStairs"        , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_creeperMobStairs"       , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_skeletonMobStairs"      , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_endermanMobStairs"      , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_witchMobStairs"         , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_slimeMobStairs"         , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_pigzombieMobStairs"     , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_witherMobStairs"        , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_spiderMobStairs"        , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_ghastMobStairs"         , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_blazeMobStairs"         , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_magmaMobStairs"         , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_witchBMobStairs"        , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_spiderBMobStairs"       , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_zombieBMobStairs"       , 1, 0), OD.stairWood);
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_endermanBMobStairs"     , 1, 0), OD.stairWood);
+			
+			for (int i = 0; i < 4; i++) {
+				new LeafEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLeaves" , 1, i));
+				new LeafEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLeavesB", 1, i));
+				new LeafEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLeavesC", 1, i));
+				new LeafEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLeavesD", 1, i));
+				OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_mobLeaves" , 1, i), OP.treeLeaves);
+				OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_mobLeavesB", 1, i), OP.treeLeaves);
+				OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_mobLeavesC", 1, i), OP.treeLeaves);
+				OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_mobLeavesD", 1, i), OP.treeLeaves);
+			}
+			for (int i = 0; i < 16; i++) {
+				CR.shaped(ST.make(tPlankA, 1, i), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlabA, 1, i));
+				CR.shaped(ST.make(tPlankB, 1, i), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlabB, 1, i));
+				OM.reg(ST.make(tSlabA, 1, i), OD.slabWood);
+				OM.reg(ST.make(tSlabB, 1, i), OD.slabWood);
+			}
 		}
 		// Erebus Trees
 		if (MD.ERE.mLoaded) {

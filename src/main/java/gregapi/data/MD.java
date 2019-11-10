@@ -102,6 +102,7 @@ public class MD {
 	, COG               = new ModData(ModIDs.COG                , "Custom Ore Generation")
 	, PFAA              = new ModData(ModIDs.PFAA               , "Per Fabrica Ad Astra")
 	, MIN               = new ModData(ModIDs.MIN                , "Mineralogy")
+	, RH                = new ModData(ModIDs.RH                 , "Rockhounding")
 	
 	, FR                = new ModData(ModIDs.FR                 , "Forestry")
 	, FRMB              = new ModData(ModIDs.FRMB               , "Magic Bees")

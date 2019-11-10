@@ -1555,8 +1555,8 @@ public class CS {
 	}
 	
 	public static class PlankData {
-		public static ItemStack[] PLANKS = new ItemStack[200];
-		public static IIconContainer[] PLANK_ICONS = new IIconContainer[200];
+		public static ItemStack[] PLANKS = new ItemStack[300];
+		public static IIconContainer[] PLANK_ICONS = new IIconContainer[300];
 		
 		static {
 			PLANKS[0] = ST.make(Blocks.planks, 1, 0);
@@ -1770,6 +1770,7 @@ public class CS {
 		, COG               = "CustomOreGen"
 		, PFAA              = "PFAAGeologica"
 		, MIN               = "mineralogy"
+		, RH                = "globbypotato_rockhounding"
 		
 		, FR                = "Forestry"
 		, FRMB              = "MagicBees"
