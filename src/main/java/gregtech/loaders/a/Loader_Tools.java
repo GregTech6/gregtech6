@@ -220,7 +220,11 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Jasper}) {
+		for (OreDictMaterial tMaterial : ANY.Jasper.mToThis) {
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		}
+		for (OreDictMaterial tMaterial : ANY.TigerEye.mToThis) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}

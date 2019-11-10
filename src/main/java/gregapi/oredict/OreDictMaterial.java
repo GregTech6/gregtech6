@@ -156,7 +156,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public static OreDictMaterial createMaterial(int aID, String aNameOreDict, String aLocalName) {
 		aID = (aID < 0 || aID >= MATERIAL_ARRAY.length || aID == W ? -1 : aID);
 		// Replace all Spaces and Minuses, and capitalise the String.
-		aNameOreDict = UT.Code.capitalise(aNameOreDict.replaceAll(" ", "").replaceAll("-", "").replaceAll("/", ""));
+		aNameOreDict = UT.Code.capitalise(aNameOreDict.replaceAll(" ", "").replaceAll("-", "").replaceAll("'", "").replaceAll("/", ""));
 		// That would cause really bad shit to happen.
 		if (aNameOreDict.isEmpty())
 		throw new IllegalArgumentException("This OreDict Name is not usable, due to being an empty String, after stripping all the minuses and spaces.");

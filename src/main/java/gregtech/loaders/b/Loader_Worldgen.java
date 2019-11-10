@@ -90,7 +90,18 @@ public class Loader_Worldgen implements Runnable {
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(Blocks.stone, 0, Blocks.cobblestone, 0, Blocks.mossy_cobblestone, 0, MT.Stone
 		, new StoneLayerOres(MT.Fe2O3                   , U6 , 30, 70)
-		, new StoneLayerOres(MT.Jasper                  , U64, 40, 64, BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.Jasper                  , U64, 32, 64, BIOMES_MOUNTAINS)
+		, new StoneLayerOres(MT.JasperBlue              , U64, 32, 64, BIOMES_FROZEN)
+		, new StoneLayerOres(MT.JasperGreen             , U64, 32, 64, BIOMES_DESERT)
+		, new StoneLayerOres(MT.JasperYellow            , U64, 32, 64, BIOMES_SAVANNA)
+		, new StoneLayerOres(MT.JasperRainforest        , U64, 32, 64, BIOMES_JUNGLE)
+		, new StoneLayerOres(MT.JasperOcean             , U64, 32, 64, BIOMES_OCEAN_BEACH)
+		, new StoneLayerOres(MT.TigerEyeYellow          , U64, 32, 64, BIOMES_TAIGA)
+		, new StoneLayerOres(MT.TigerEyeGreen           , U64, 32, 64, BIOMES_SWAMP)
+		, new StoneLayerOres(MT.TigerEyeRed             , U64, 32, 64, BIOMES_PLAINS)
+		, new StoneLayerOres(MT.TigerEyeBlue            , U64, 32, 64, BIOMES_RIVER_LAKE)
+		, new StoneLayerOres(MT.TigerEyeBlack           , U64, 32, 64, BIOMES_MESA)
+		, new StoneLayerOres(MT.TigerIron               , U64, 32, 64, BIOMES_SHROOM)
 		));
 		
 		

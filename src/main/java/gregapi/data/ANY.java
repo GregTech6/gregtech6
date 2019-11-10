@@ -39,6 +39,8 @@ public class ANY {
 	Sapphire        = any("Any Sapphire"        ),
 	Emerald         = any("Any Emerald"         ),
 	Garnet          = any("Any Garnet"          ),
+	Jasper          = any("Any Jasper"          ),
+	TigerEye        = any("Any Tiger Eye"       ),
 	Prismarine      = any("Any Prismarine"      ),
 	Grains          = any("Any Grains"          ),
 	Flour           = any("Any Flour"           ),
@@ -78,6 +80,8 @@ public class ANY {
 		Sapphire        .stealLooks(MT.BlueSapphire   ).steal(MT.Sapphire       ).setLocal("Sapphire"           ).setAllToTheOutputOf(MT.Sapphire       ).put(CRYSTAL, VALUABLE             );
 		Emerald         .stealLooks(MT.Emerald        ).steal(MT.Emerald        ).setLocal("Emerald"            ).setAllToTheOutputOf(MT.Emerald        ).put(CRYSTAL, VALUABLE             ).addReRegistrationToThis(MT.Emeradic);
 		Garnet          .stealLooks(MT.Spessartine    ).steal(MT.Spessartine    ).setLocal("Garnet"                                                     ).put(CRYSTAL, VALUABLE             );
+		Jasper          .stealLooks(MT.Jasper         ).steal(MT.Jasper         ).setLocal("Jasper"                                                     ).put(CRYSTAL, VALUABLE             );
+		TigerEye        .stealLooks(MT.TigerEyeYellow ).steal(MT.TigerEyeYellow ).setLocal("Tiger Eye"                                                  ).put(CRYSTAL, VALUABLE             );
 		Prismarine      .stealLooks(MT.PrismarineLight).steal(MT.PrismarineLight).setLocal("Prismarine"         ).setAllToTheOutputOf(MT.PrismarineLight).put(CRYSTAL                       ).addReRegistrationToThis(MT.PrismarineLight, MT.PrismarineDark);
 		Grains          .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Grains"             ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE       );
 		Flour           .stealLooks(MT.Wheat          ).steal(MT.Wheat          ).setLocal("Flour"              ).setAllToTheOutputOf(MT.Wheat          ).put(FOOD, MORTAR, FLAMMABLE       ).addReRegistrationToThis(MT.Wheat, MT.Rye, MT.Oat, MT.Barley, MT.Potato);
