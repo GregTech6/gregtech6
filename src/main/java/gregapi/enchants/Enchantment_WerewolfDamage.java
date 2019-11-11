@@ -61,6 +61,7 @@ public class Enchantment_WerewolfDamage extends EnchantmentDamage {
 		MT.Craponite        .addEnchantmentForTools(this,10);
 		MT.Tc               .addEnchantmentForTools(this,10);
 		MT.Infinity         .addEnchantmentForTools(this,10);
+		MT.DiamondPink      .addEnchantmentForTools(this,10);
 		INSTANCE = this;
 	}
 	
