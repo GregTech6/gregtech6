@@ -239,10 +239,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		UT.NBT.setBoolean(aNBT, NBT_TANK_DISABLED_IN, mDisabledFluidInput);
 		UT.NBT.setBoolean(aNBT, NBT_TANK_DISABLED_OUT, mDisabledFluidOutput);
 		
-		for (int i = 0; i < mTanksInput .length; i++) mTanksInput [i].writeToNBT(aNBT, NBT_TANK+".in." +i);
-		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i].writeToNBT(aNBT, NBT_TANK+".out."+i);
+		for (int i = 0; i < mTanksInput  .length; i++) mTanksInput [i].writeToNBT(aNBT, NBT_TANK+".in." +i);
+		for (int i = 0; i < mTanksOutput .length; i++) mTanksOutput[i].writeToNBT(aNBT, NBT_TANK+".out."+i);
 		for (int i = 0; i < mOutputFluids.length; i++) FL.save(aNBT, NBT_TANK_OUT+"."+i, mOutputFluids[i]);
-		for (int i = 0; i < mOutputItems.length; i++) ST.save(aNBT, NBT_INV_OUT+"."+i, mOutputItems[i]);
+		for (int i = 0; i < mOutputItems .length; i++) ST.save(aNBT, NBT_INV_OUT +"."+i, mOutputItems [i]);
 	}
 	
 	@Override
