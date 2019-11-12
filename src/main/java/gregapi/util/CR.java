@@ -658,16 +658,16 @@ public class CR {
 	/**
 	 * Yes "Delate" is a pun on Delete and Late. :P
 	 * Removes a Crafting Recipe after Post Init.
-	 * @param aOutput The output of the Recipe.
+	 * @param The output of the Recipe.
 	 */
 	public static void delate(ModData aMod, String... aNames) {if (aMod.mLoaded) for (String aName : aNames) delate(aMod, aName, W);}
 	
 	/**
 	 * Yes "Delate" is a pun on Delete and Late. :P
 	 * Removes a Crafting Recipe after Post Init.
-	 * @param aOutput The output of the Recipe.
+	 * @param The output of the Recipe.
 	 */
-	public static void delate(ModData aMod, String aName, int... aMetaData) {for (int tMetaData : aMetaData) delate(ST.make(aMod, aName, 1, tMetaData));}
+	public static void delate(ModData aMod, String aName, int aMetaData, int... aOtherMetaData) {Item aItem = ST.item(aMod, aName); if (aItem == null) return; delate(ST.make(aItem, 1, aMetaData)); for (int tMetaData : aOtherMetaData) delate(ST.make(aItem, 1, tMetaData));}
 	
 	/**
 	 * Removes a Crafting Recipe and gives you the former output of it.
