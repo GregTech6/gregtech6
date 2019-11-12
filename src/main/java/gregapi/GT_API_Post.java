@@ -109,11 +109,19 @@ public class GT_API_Post extends Abstract_Mod {
 		, ST.item(MD.FR, "letters")
 		, ST.item(MD.FZ, "acid")
 		}) if (tItem != null) tItem.setMaxDamage(0).setHasSubtypes(T);
-
+		
+		OM.blacklist(ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 1));
+		OM.blacklist(ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 2));
+		OM.blacklist(ST.make(MD.TC, "ItemResource", 1,18));
+		OM.blacklist(ST.make(MD.FZ, "diamond_shard", 1, W));
+		OM.blacklist(ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, W));
+		OM.blacklist(ST.make(MD.ERE, "encrustedDiamond", 1, W));
+		OM.blacklist(ST.make(MD.BTL, "groundStuff", 1, 16));
+		
 		new LoaderItemList().run();
 		new LoaderItemData().run();
 		new LoaderUnificationTargets().run();
-
+		
 		if (MD.MET.mLoaded) {
 			MT.OREMATS.Bauxite      .addOreByProducts(MT.Alduorite      );
 			MT.OREMATS.Chalcopyrite .addOreByProducts(MT.Infuscolium    );

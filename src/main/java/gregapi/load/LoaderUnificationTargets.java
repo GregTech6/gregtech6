@@ -19,13 +19,10 @@
 
 package gregapi.load;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictManager;
-import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -602,12 +599,5 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.casingSmall    , MT.Bronze                 , ST.mkic("casingbronze", 1));
 		OreDictManager.INSTANCE.setTarget(OP.casingSmall    , MT.Steel                  , ST.mkic("casingadviron", 1));
 		}
-		OM.blacklist(ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 1));
-		OM.blacklist(ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 2));
-		OM.blacklist(ST.make(MD.TC, "ItemResource", 1,18));
-		OM.blacklist(ST.make(MD.FZ, "diamond_shard", 1, W));
-		OM.blacklist(ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, W));
-		OM.blacklist(ST.make(MD.ERE, "encrustedDiamond", 1, W));
-		OM.blacklist(ST.make(MD.BTL, "groundStuff", 1, 16));
 	}
 }
