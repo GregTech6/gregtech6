@@ -41,7 +41,6 @@ public class LoaderOreDictReRegistrations implements Runnable {
 	public void run() {
 		OreDictManager.INSTANCE.addAutoBlackListing("stoneBowl");
 		OreDictManager.INSTANCE.addAutoBlackListing("shardNether");
-		OreDictManager.INSTANCE.addAutoBlackListing("gemFluorite");
 		OreDictManager.INSTANCE.addAutoBlackListing("gemCoal");
 		OreDictManager.INSTANCE.addAutoBlackListing("gemCharcoal");
 		OreDictManager.INSTANCE.addAutoBlackListing("gemDiamond");

@@ -414,6 +414,15 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.SteelMagnetic          , ST.make(MD.ReC, "reactorcraft_item_crafting", 1,10));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.U_238                  , ST.make(MD.ReC, "reactorcraft_item_crafting", 1,14));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.TungstenCarbide        , ST.make(MD.ReC, "reactorcraft_item_crafting", 1,17));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.FluoriteBlue           , ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.FluoritePink           , ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.FluoriteOrange         , ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.FluoriteMagenta        , ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.FluoriteGreen          , ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.FluoriteRed            , ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.FluoriteWhite          , ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, 6));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.FluoriteYellow         , ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, 7));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.CaF2                   , ST.make(MD.RoC, "rotarycraft_item_modingots", 1, 52));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Netherrack             , ST.make(MD.RoC, "rotarycraft_item_powders", 1, 0));
 //      OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Tar                    , ST.make(MD.RoC, "rotarycraft_item_powders", 1, 1));
 //      OreDictManager.INSTANCE.setTarget(OP.dust           , MT.SludgeOrganic          , ST.make(MD.RoC, "rotarycraft_item_powders", 1, 2)); smelts into ethanol
@@ -597,6 +606,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OM.blacklist(ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 2));
 		OM.blacklist(ST.make(MD.TC, "ItemResource", 1,18));
 		OM.blacklist(ST.make(MD.FZ, "diamond_shard", 1, W));
+		OM.blacklist(ST.make(MD.ReC, "reactorcraft_item_fluorite", 1, W));
 		OM.blacklist(ST.make(MD.ERE, "encrustedDiamond", 1, W));
 		OM.blacklist(ST.make(MD.BTL, "groundStuff", 1, 16));
 	}
