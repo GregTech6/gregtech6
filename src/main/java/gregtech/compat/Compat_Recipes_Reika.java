@@ -30,7 +30,6 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
-import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.OreDictMaterial;
@@ -40,6 +39,7 @@ import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 public class Compat_Recipes_Reika extends CompatMods {
@@ -48,6 +48,8 @@ public class Compat_Recipes_Reika extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 		if (MD.RoC.mLoaded) {
 			OUT.println("GT_Mod: Doing RotaryCraft Recipes.");
+			CR.delate(MD.RoC, "rotarycraft_item_borecraft", 13, 14);
+			CR.delate(MD.RoC, "rotarycraft_item_shaftcraft", 0, 2, 9, 10);
 			new OreDictListenerEvent_Names(OP.seed) {@Override public void addAllListeners() {
 			addListener("seedCanola", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Shredder         .addRecipe1(T, 16,   16, aEvent.mStack, ST.make(MD.RoC, "rotarycraft_item_canola", 1, 2));
@@ -69,17 +71,24 @@ public class Compat_Recipes_Reika extends CompatMods {
 			RM.Centrifuge       .addRecipe1(T, 16,   64,  8000, IL.RoC_Comb_Slippery        .get(1), NF, FL.make("rc lubricant",  50, "lubricant",  50), IL.RoC_Propolis_Slippery.get(1));
 			RM.Centrifuge       .addRecipe1(T, 16,   64       , IL.RoC_Propolis_Slippery    .get(1), NF, FL.make("rc lubricant", 150, "lubricant", 150), ZL_IS);
 			
-			CR.delate(MD.RoC, "rotarycraft_item_powders", 7);
-			CR.delate(MD.RoC, "rotarycraft_item_powders", 6);
-			CR.shapeless(ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6), CR.DEF, new Object[] {OP.dustSmall.dat(MT.Redstone), OP.dustSmall.dat(MT.Coal), OP.dustSmall.dat(ANY.Salt), OP.dustSmall.dat(MT.Gunpowder)});
-			CR.shapeless(ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6), CR.DEF, new Object[] {OD.itemRedstone, OP.dust.dat(MT.Coal), OP.dust.dat(ANY.Salt), OP.dust.dat(MT.Gunpowder)});
-			RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone, U*1), OM.dust(MT.Coal, U*1), OM.dust(MT.NaCl,U*1), OM.dust(MT.Gunpowder, U*1)), ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));
-			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone, U4 ), OM.dust(MT.Coal, U4 ), OM.dust(MT.NaCl,U4 ), OM.dust(MT.Gunpowder, U4 )), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6));
-			RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone, U*1), OM.dust(MT.Coal, U*1), OM.dust(MT.KCl, U*1), OM.dust(MT.Gunpowder, U*1)), ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));
-			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone, U4 ), OM.dust(MT.Coal, U4 ), OM.dust(MT.KCl, U4 ), OM.dust(MT.Gunpowder, U4 )), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6));
+			
+			RM.Freezer          .addRecipe1(T, 16,  256, ST.tag(0), MT.CO2.gas(U*8, T), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 11));
+			
+			
+			CR.delate(MD.RoC, "rotarycraft_item_powders", 6, 7);
+			RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone, U ), OM.dust(MT.Coal, U ), OM.dust(MT.NaCl,U ), OM.dust(MT.Gunpowder, U )), ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));
+			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone, U4), OM.dust(MT.Coal, U4), OM.dust(MT.NaCl,U4), OM.dust(MT.Gunpowder, U4)), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6));
+			RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone, U ), OM.dust(MT.Coal, U ), OM.dust(MT.KCl, U ), OM.dust(MT.Gunpowder, U )), ST.make(MD.RoC, "rotarycraft_item_powders", 4, 6));
+			RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone, U4), OM.dust(MT.Coal, U4), OM.dust(MT.KCl, U4), OM.dust(MT.Gunpowder, U4)), ST.make(MD.RoC, "rotarycraft_item_powders", 1, 6));
 		}
 		if (MD.ReC.mLoaded) {
 			OUT.println("GT_Mod: Doing ReactorCraft Recipes.");
+			final ItemStack tQuicklime = ST.make(MD.ReC, "reactorcraft_item_raw", 1, 4);
+			new OreDictListenerEvent_Names(OP.seed) {@Override public void addAllListeners() {
+			addListener("gemAnyCalcite", "dustAnyCalcite", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, tQuicklime);
+			}});
+			}};
 		}
 		if (MD.ElC.mLoaded) {
 			OUT.println("GT_Mod: Doing ElectriCraft Recipes.");

@@ -5,6 +5,10 @@ This is the most recent Changelog. It also contains some of the changes inside t
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
+6.11.25: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.11.24: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -22,13 +26,16 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.20: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[COMPAT] Rotarycraft Dry Ice can be made with Freezer now.
+[COMPAT] The Reactorcraft Fluorite Crystals are now OreDicted by Color and properly compatible in Recipes if that matters to anyone.
+[ADDED] The 9 Colors of Fluorite as small Ores.
 
 
 6.11.19:
 [COMPAT] Wood and some Gems from the Rockhounding Mod are now supported.
 [CHANGED] The Iron Recipes now require Carbon instead of Dark Ash (well a Carbon Version of those Recipes already existed before), and Carbon can be supplied by Coal and Charcoal now. This made Dark Ash much more useless, but also stops you from burning shit for the sake of getting Dark Ash. I looked up the IRL Recipes again and did not see the need to introduce a new Flux.
 [ADDED] Hammers can now be placed on Anvils.
+[ADDED] Pink Diamonds, Jasper and TigerEyes to Ore Gen in Stone Layers. Pink Diamonds are super rare and Jungle specific btw.
 
 
 6.11.18:

@@ -350,6 +350,9 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "gypsum"                          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "sulfur_ore"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "nitrate_ore"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ReC, "reactorcraft_block_fluoriteore"  , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ReC, "reactorcraft_block_ore"          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ElC, "electricraft_block_ore"          , null));
 		
 		
 		

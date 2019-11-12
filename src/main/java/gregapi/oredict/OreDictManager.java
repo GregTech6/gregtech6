@@ -37,6 +37,7 @@ import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
 import gregapi.code.ItemStackSet;
 import gregapi.config.Config;
+import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -398,7 +399,7 @@ public final class OreDictManager {
 					if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
 						if (MD.TFC.mLoaded && aModID.equalsIgnoreCase(MD.TFC.mID) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
-						} else if (aPrefix == OP.gem && MD.RH.mLoaded && aModID.equalsIgnoreCase(MD.RH.mID)) {
+						} else if (aPrefix == OP.gem && MD.RH.mLoaded && aModID.equalsIgnoreCase(MD.RH.mID) && (!MD.ReC.mLoaded || aMaterial == MT.FluoriteBlack || !ANY.CaF2.mToThis.contains(aMaterial))) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
 						} else if (aPrefix == OP.ore) {
 							addItemData_(aEvent.Ore, aPrefix.dat(aMaterial));

@@ -667,7 +667,7 @@ public class CR {
 	 * Removes a Crafting Recipe after Post Init.
 	 * @param aOutput The output of the Recipe.
 	 */
-	public static void delate(ModData aMod, String aName, int aMetaData) {delate(ST.make(aMod, aName, 1, aMetaData));}
+	public static void delate(ModData aMod, String aName, int... aMetaData) {for (int tMetaData : aMetaData) delate(ST.make(aMod, aName, 1, tMetaData));}
 	
 	/**
 	 * Removes a Crafting Recipe and gives you the former output of it.
