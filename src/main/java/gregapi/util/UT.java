@@ -1510,6 +1510,18 @@ public class UT {
 		/** Translates Amount of aUnit1 to Amount of aUnit2. */
 		public static long units(long aAmount, long aOriginalUnit, long aTargetUnit, boolean aRoundUp) {
 			if (aOriginalUnit == aTargetUnit || aOriginalUnit == 0) return aAmount;
+			if (aOriginalUnit %   aTargetUnit == 0) {aOriginalUnit /=   aTargetUnit;   aTargetUnit = 1;} else
+			if (aTargetUnit   % aOriginalUnit == 0) {  aTargetUnit /= aOriginalUnit; aOriginalUnit = 1;}
+			return Math.max(0, ((aAmount * aTargetUnit) / aOriginalUnit) + (aRoundUp && (aAmount * aTargetUnit) % aOriginalUnit > 0 ? 1 : 0));
+		}
+		
+		/** Translates Amount of aUnit1 to Amount of aUnit2. With additional checks to avoid 64 Bit Overflow. */
+		public static long units_(long aAmount, long aOriginalUnit, long aTargetUnit, boolean aRoundUp) {
+			if (aOriginalUnit == aTargetUnit || aOriginalUnit == 0) return aAmount;
+			if (aOriginalUnit %   aTargetUnit == 0) {aOriginalUnit /=   aTargetUnit;   aTargetUnit = 1;} else
+			if (aTargetUnit   % aOriginalUnit == 0) {  aTargetUnit /= aOriginalUnit; aOriginalUnit = 1;} else {
+			if (aOriginalUnit %  648 == 0 && aTargetUnit %  648 == 0) {aOriginalUnit /=  648; aTargetUnit /=  648;}
+			if (aOriginalUnit % 1000 == 0 && aTargetUnit % 1000 == 0) {aOriginalUnit /= 1000; aTargetUnit /= 1000;}}
 			return Math.max(0, ((aAmount * aTargetUnit) / aOriginalUnit) + (aRoundUp && (aAmount * aTargetUnit) % aOriginalUnit > 0 ? 1 : 0));
 		}
 		

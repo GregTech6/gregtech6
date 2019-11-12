@@ -28,6 +28,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.11.20: (Not released yet)
 [COMPAT] Rotarycraft Dry Ice can be made with Freezer now.
 [COMPAT] The Reactorcraft Fluorite Crystals are now OreDicted by Color and properly compatible in Recipes if that matters to anyone.
+[FIXED] Crucible Issue with Graphite and other things that just vanished when you inserted too much of them at once.
 [ADDED] The 9 Colors of Fluorite as small Ores.
 
 

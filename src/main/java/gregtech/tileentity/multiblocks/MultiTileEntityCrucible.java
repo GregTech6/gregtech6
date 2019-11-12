@@ -273,7 +273,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			for (OreDictMaterialStack tComponent : tPreferredRecipe.getUndividedComponents()) {
 				for (OreDictMaterialStack tContent : mContent) {
 					if (tContent.mMaterial == tComponent.mMaterial) {
-						tContent.mAmount -= (tMaxConversions * (tComponent.mAmount / U));
+						tContent.mAmount -= UT.Code.units_(tMaxConversions, U, tComponent.mAmount, T);
 						break;
 					}
 				}
@@ -303,12 +303,12 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && oTemperature <  tMaterial.mMaterial.mMeltingPoint) {
 				int tSize = mContent.size();
 				mContent.remove(i--);
-				OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(mContent);
+				OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(mContent);
 				if (tSize == mContent.size()) i++;
 			} else if (mTemperature <  tMaterial.mMaterial.mMeltingPoint && oTemperature >= tMaterial.mMaterial.mMeltingPoint) {
 				int tSize = mContent.size();
 				mContent.remove(i--);
-				OM.stack(tMaterial.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSolidifying.mAmount, F)).addToList(mContent);
+				OM.stack(tMaterial.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSolidifying.mAmount, F)).addToList(mContent);
 				if (tSize == mContent.size()) i++;
 			}
 		}
@@ -363,10 +363,14 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			if (tWeight1+tWeight2 > 0) mTemperature = aTemperature + (mTemperature>aTemperature?+1:-1)*UT.Code.units(Math.abs(mTemperature - aTemperature), (long)(tWeight1+tWeight2), (long)tWeight1, F);
 			for (OreDictMaterialStack tMaterial : aList) {
 				if (mTemperature >= tMaterial.mMaterial.mMeltingPoint) {
-					OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(mContent);
+					if (aTemperature <  tMaterial.mMaterial.mMeltingPoint) {
+						OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(mContent);
+					} else {
+						tMaterial.addToList(mContent);
+					}
 				} else {
 					if (aTemperature >= tMaterial.mMaterial.mMeltingPoint) {
-						OM.stack(tMaterial.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSolidifying.mAmount, F)).addToList(mContent);
+						OM.stack(tMaterial.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSolidifying.mAmount, F)).addToList(mContent);
 					} else {
 						tMaterial.addToList(mContent);
 					}
