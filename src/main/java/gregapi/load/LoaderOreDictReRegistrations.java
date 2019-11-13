@@ -231,6 +231,13 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockGraphite"           , "blockIngotGraphite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockBlutonium"          , "blockIngotBlutonium");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockLudicrite"          , "blockIngotLudicrite");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockBoron"              , "blockIngotBoron");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockNiobium"            , "blockIngotNiobium");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockBismuth"            , "blockIngotBismuth");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockLithium"            , "blockIngotLithium");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockCobalt"             , "blockIngotCobalt");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockChrome"             , "blockIngotChrome");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockChromium"           , "blockIngotChromium");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockSilver"             , "blockIngotSilver");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockGold"               , "blockIngotGold");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockPlatinum"           , "blockIngotPlatinum");

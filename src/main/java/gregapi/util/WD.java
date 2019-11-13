@@ -317,7 +317,7 @@ public class WD {
 	}
 	
 	public static boolean oxygen(World aWorld, int aX, int aY, int aZ) {
-		return !MD.GC.mLoaded || !(aWorld.provider instanceof IGalacticraftWorldProvider) || OxygenUtil.checkTorchHasOxygen(aWorld, NB, aX, aY, aZ);
+		return  !MD.GC.mLoaded || !(aWorld.provider instanceof IGalacticraftWorldProvider) || OxygenUtil.checkTorchHasOxygen(aWorld, NB, aX, aY, aZ);
 	}
 	public static boolean collectable_air(World aWorld, int aX, int aY, int aZ) {
 		return (!MD.GC.mLoaded || !(aWorld.provider instanceof IGalacticraftWorldProvider)) && !hasCollide(aWorld, aX, aY, aZ);

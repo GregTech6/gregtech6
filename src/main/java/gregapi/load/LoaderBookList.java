@@ -247,6 +247,10 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.CrC, "chromaticraft_item_help"             , 1,   W), (byte) 24);
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.CrC, "chromaticraft_item_fragment"         , 1,   W), (byte) 28);
 		}
+		if (MD.RH.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.RH, "globbypotato_rockhounding_miscItems"  , 1,   8), (byte)  7);
+			BooksGT.BOOK_REGISTER.put(ST.make(MD.RH, "globbypotato_rockhounding_modBooks"   , 1,   W), (byte)  1);
+		}
 		if (MD.IE.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.IE, "blueprint"                            , 1,   W), (byte) 28);
 			BooksGT.BOOK_REGISTER.put(ST.make(MD.IE, "tool"                                 , 1,   3), (byte) 41);

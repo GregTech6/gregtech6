@@ -29,6 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] Rotarycraft Dry Ice can be made with Freezer now.
 [COMPAT] The Reactorcraft Fluorite Crystals are now OreDicted by Color and properly compatible in Recipes if that matters to anyone.
 [FIXED] Crucible Issue with Graphite and other things that just vanished when you inserted too much of them at once.
+[CHANGED] Crucibles in Galacticraft Planets now require Oxygen above them in order to be able to get Air from KU to make Steel.
 [ADDED] The 9 Colors of Fluorite as small Ores.
 
 
