@@ -36,12 +36,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockRockOres extends BlockBaseMeta {
-	public static byte[] HARVEST_LEVELS = {0, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	public static byte[] HARVEST_LEVELS = {0, 0, 1, 1, 2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0};
 	public static int[] BURN_LEVELS = {100, 100, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	public static float[] HARDNESS_LEVELS = {0.5F, 0.5F, 1.0F, 1.0F, 2.0F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F};
+	public static float[] HARDNESS_LEVELS = {0.5F, 0.5F, 1.0F, 1.0F, 2.0F, 0.5F, 0.5F, 1.0F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F, 0.5F};
 	
 	public BlockRockOres(String aUnlocalised) {
-		super(null, aUnlocalised, Material.rock, soundTypeStone, 7, Textures.BlockIcons.ROCK_ORES);
+		super(null, aUnlocalised, Material.rock, soundTypeStone, 8, Textures.BlockIcons.ROCK_ORES);
 		LH.add(getUnlocalizedName()+ ".0.name", "Anthracite Coal");
 		LH.add(getUnlocalizedName()+ ".1.name", "Lignite Coal");
 		LH.add(getUnlocalizedName()+ ".2.name", "Salt");
@@ -49,6 +49,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		LH.add(getUnlocalizedName()+ ".4.name", "Bauxite");
 		LH.add(getUnlocalizedName()+ ".5.name", "Oil Shale");
 		LH.add(getUnlocalizedName()+ ".6.name", "Gypsum");
+		LH.add(getUnlocalizedName()+ ".7.name", "Milky Quartz");
 		
 		OM.reg(ST.make(this, 1, 0), OP.oreDense.dat(MT.Coal));
 		OM.reg(ST.make(this, 1, 1), OP.oreDense.dat(MT.Lignite));
@@ -57,6 +58,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		OM.reg(ST.make(this, 1, 4), OP.oreDense.dat(MT.OREMATS.Bauxite));
 		OM.reg(ST.make(this, 1, 5), OP.oreDense.dat(MT.Oilshale));
 		OM.reg(ST.make(this, 1, 6), OP.oreDense.dat(MT.OREMATS.Gypsum));
+		OM.reg(ST.make(this, 1, 7), OP.oreDense.dat(MT.MilkyQuartz));
 		
 		StoneLayer.LAYERS.add(new StoneLayer(this, 0, MT.Coal));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 1, MT.Lignite));
@@ -65,6 +67,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		StoneLayer.LAYERS.add(new StoneLayer(this, 4, MT.OREMATS.Bauxite));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 5, MT.Oilshale));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 6, MT.OREMATS.Gypsum));
+		StoneLayer.LAYERS.add(new StoneLayer(this, 7, MT.MilkyQuartz));
 	}
 	
 	@Override public boolean useGravity(int aMeta) {return F;}

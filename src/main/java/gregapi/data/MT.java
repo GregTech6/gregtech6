@@ -1081,17 +1081,15 @@ public class MT {
 	Jade                    = valgem        ( 8321, "Jade"                  , SET_LAPIS             , 100, 255, 125, 255).lens(DYE_INDEX_Green      ).put(MD.ERE)                                                                                                                                                                                                                                                                   .aspects(TC.VITREUS, 3, TC.LUCRUM                   , 6).qual(3,  8.0,   512,  2),
 	
 	/*
-	BrownAventurine         = valgem        (00000, "Brown Aventurine"      , SET_RUBY              , 185, 110,  35, 127),
-	YellowAventurine        = valgem        (00000, "Yellow Aventurine"     , SET_RUBY              , 200, 179, 121, 127),
-	GreenAventurine         = valgem        (00000, "Green Aventurine"      , SET_RUBY              ,  66, 189, 133, 127),
-	BlackAventurine         = valgem        (00000, "Black Aventurine"      , SET_RUBY              ,  50,  50,  50, 127),
-	BlueAventurine          = valgem        (00000, "Blue Aventurine"       , SET_RUBY              ,  67, 103, 138, 127),
-	RedAventurine           = valgem        (00000, "Red Aventurine"        , SET_RUBY              , 116,  46,  33, 127),
+	AventurineBrown         = valgem        (00000, "Brown Aventurine"      , SET_RUBY              , 185, 110,  35, 127),
+	AventurineYellow        = valgem        (00000, "Yellow Aventurine"     , SET_RUBY              , 200, 179, 121, 127),
+	AventurineGreen         = valgem        (00000, "Green Aventurine"      , SET_RUBY              ,  66, 189, 133, 127),
+	AventurineBlack         = valgem        (00000, "Black Aventurine"      , SET_RUBY              ,  50,  50,  50, 127),
+	AventurineBlue          = valgem        (00000, "Blue Aventurine"       , SET_RUBY              ,  67, 103, 138, 127),
+	AventurineRed           = valgem        (00000, "Red Aventurine"        , SET_RUBY              , 116,  46,  33, 127),
 	
-	MilkyQuartz             = valgem        (00000, "Milky Quartz"          , SET_RUBY              , 179, 179, 179, 127),
-	
-	Moonstone               = valgem        (00000, "Moonstone"             , SET_RUBY              , 166, 174, 171, 127),
 	Sunstone                = valgem        (00000, "Sunstone"              , SET_RUBY              , 194, 136, 108, 127),
+	Moonstone               = valgem        (00000, "Moonstone"             , SET_RUBY              , 166, 174, 171, 127),
 	Bloodstone              = valgem        (00000, "Bloodstone"            , SET_RUBY              ,  71,  98,  70, 127),
 	Wonderstone             = valgem        (00000, "Wonderstone"           , SET_RUBY              , 166, 136, 115, 127),
 	
@@ -1202,6 +1200,7 @@ public class MT {
 	ElvenQuartz             = quartz        ( 8399, "Elven Quartz"          , SET_QUARTZ            , 210, 255, 210, 255).put(CRYSTALLISABLE)                                                                                                                           .setMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS, 1, TC.ALIENIS      , 1).qual(1, 2.5, 64, 2),
 	NetherQuartz            = quartz        ( 8346, "Nether Quartz"         , SET_QUARTZ            , 230, 210, 210, 255).put(CRYSTALLISABLE, "Quartz")                                                                                                                 .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS                     , 1).qual(1, 2.5, 32, 1),
 	BlackQuartz             = quartz        ( 8374, "QuartzBlack"           , SET_QUARTZ            ,  20,  20,  20, 255).put(CRYSTALLISABLE, DECOMPOSABLE, CENTRIFUGE)                                                                                                 .uumMcfg( 1, SiO2           , 1*U, C                , 1*U)                                                                                                  .aspects(TC.POTENTIA, 1, TC.VITREUS, 1, TC.TENEBRAE     , 1).qual(1, 2.5, 32, 1).setLocal("Black Quartz"),
+	MilkyQuartz             = quartz        ( 8445, "Milky Quartz"          , SET_QUARTZ            , 210, 210, 210, 255).put(CRYSTALLISABLE)                                                                                                                           .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS                     , 1).qual(1, 2.5, 32, 1),
 	CertusQuartz            = quartz        ( 8347, "Certus Quartz"         , SET_QUARTZ            , 210, 210, 230, 255).put(CRYSTALLISABLE, MD.AE)                                                                                                                    .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS                     , 1).qual(1, 5.0, 32, 1),
 	ChargedCertusQuartz     = quartz        ( 8348, "Charged Certus Quartz" , SET_QUARTZ            , 210, 210, 230, 255).put(GLOWING, MD.AE)                                                                                                                           .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 2, TC.VITREUS                     , 1).steal(CertusQuartz).setPulver(CertusQuartz, U),
 	Fluix                   = quartz        ( 8389, "Fluix"                 , SET_QUARTZ            , 120,  70, 140, 255).put(CRYSTALLISABLE, MD.AE)                                                                                                                    .uumMcfg( 2, SiO2           , 2*U, Redstone         , 1*U)                                                                                                  .aspects(TC.POTENTIA, 2, TC.VITREUS, 1, TC.LUX          , 1),
