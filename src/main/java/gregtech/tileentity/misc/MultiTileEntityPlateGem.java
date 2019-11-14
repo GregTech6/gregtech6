@@ -42,93 +42,18 @@ public class MultiTileEntityPlateGem extends MultiTileEntityPlaceable {
 	
 	@Override
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTextureSides = BlockTextureDefault.get(sTextureSides, UT.Code.getRGBaInt(mMaterial.fRGBaSolid), mMaterial.contains(TD.Properties.GLOWING));
-		mTextureTop   = BlockTextureDefault.get(sTextureTop  , UT.Code.getRGBaInt(mMaterial.fRGBaSolid), mMaterial.contains(TD.Properties.GLOWING));
-		return mSize;
+		mTextureSides = BlockTextureDefault.get(sTextureSides, mMaterial.fRGBaSolid, F, mMaterial.contains(TD.Properties.GLOWING), F, F);
+		mTextureTop   = BlockTextureDefault.get(sTextureTop  , mMaterial.fRGBaSolid, F, mMaterial.contains(TD.Properties.GLOWING), F, T);
+		return (int)UT.Code.bind(mSize, 1, 4);
 	}
 	
 	@Override
 	public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch (aRenderPass) {
-		case  0: return box(aBlock, 0.03125, PX_P[ 0], 0.03125, 0.46875, PX_P[ 1], 0.46875);
-		case  1: return box(aBlock, 0.03125, PX_P[ 0], 0.53125, 0.46875, PX_P[ 1], 0.96875);
-		case  2: return box(aBlock, 0.53125, PX_P[ 0], 0.03125, 0.96875, PX_P[ 1], 0.46875);
-		case  3: return box(aBlock, 0.53125, PX_P[ 0], 0.53125, 0.96875, PX_P[ 1], 0.96875);
-		
-		case  4: return box(aBlock, 0.03125, PX_P[ 1], 0.03125, 0.46875, PX_P[ 2], 0.46875);
-		case  5: return box(aBlock, 0.03125, PX_P[ 1], 0.53125, 0.46875, PX_P[ 2], 0.96875);
-		case  6: return box(aBlock, 0.53125, PX_P[ 1], 0.03125, 0.96875, PX_P[ 2], 0.46875);
-		case  7: return box(aBlock, 0.53125, PX_P[ 1], 0.53125, 0.96875, PX_P[ 2], 0.96875);
-		
-		case  8: return box(aBlock, 0.03125, PX_P[ 2], 0.03125, 0.46875, PX_P[ 3], 0.46875);
-		case  9: return box(aBlock, 0.03125, PX_P[ 2], 0.53125, 0.46875, PX_P[ 3], 0.96875);
-		case 10: return box(aBlock, 0.53125, PX_P[ 2], 0.03125, 0.96875, PX_P[ 3], 0.46875);
-		case 11: return box(aBlock, 0.53125, PX_P[ 2], 0.53125, 0.96875, PX_P[ 3], 0.96875);
-		
-		case 12: return box(aBlock, 0.03125, PX_P[ 3], 0.03125, 0.46875, PX_P[ 4], 0.46875);
-		case 13: return box(aBlock, 0.03125, PX_P[ 3], 0.53125, 0.46875, PX_P[ 4], 0.96875);
-		case 14: return box(aBlock, 0.53125, PX_P[ 3], 0.03125, 0.96875, PX_P[ 4], 0.46875);
-		case 15: return box(aBlock, 0.53125, PX_P[ 3], 0.53125, 0.96875, PX_P[ 4], 0.96875);
-		
-		case 16: return box(aBlock, 0.03125, PX_P[ 4], 0.03125, 0.46875, PX_P[ 5], 0.46875);
-		case 17: return box(aBlock, 0.03125, PX_P[ 4], 0.53125, 0.46875, PX_P[ 5], 0.96875);
-		case 18: return box(aBlock, 0.53125, PX_P[ 4], 0.03125, 0.96875, PX_P[ 5], 0.46875);
-		case 19: return box(aBlock, 0.53125, PX_P[ 4], 0.53125, 0.96875, PX_P[ 5], 0.96875);
-		
-		case 20: return box(aBlock, 0.03125, PX_P[ 5], 0.03125, 0.46875, PX_P[ 6], 0.46875);
-		case 21: return box(aBlock, 0.03125, PX_P[ 5], 0.53125, 0.46875, PX_P[ 6], 0.96875);
-		case 22: return box(aBlock, 0.53125, PX_P[ 5], 0.03125, 0.96875, PX_P[ 6], 0.46875);
-		case 23: return box(aBlock, 0.53125, PX_P[ 5], 0.53125, 0.96875, PX_P[ 6], 0.96875);
-		
-		case 24: return box(aBlock, 0.03125, PX_P[ 6], 0.03125, 0.46875, PX_P[ 7], 0.46875);
-		case 25: return box(aBlock, 0.03125, PX_P[ 6], 0.53125, 0.46875, PX_P[ 7], 0.96875);
-		case 26: return box(aBlock, 0.53125, PX_P[ 6], 0.03125, 0.96875, PX_P[ 7], 0.46875);
-		case 27: return box(aBlock, 0.53125, PX_P[ 6], 0.53125, 0.96875, PX_P[ 7], 0.96875);
-		
-		case 28: return box(aBlock, 0.03125, PX_P[ 7], 0.03125, 0.46875, PX_P[ 8], 0.46875);
-		case 29: return box(aBlock, 0.03125, PX_P[ 7], 0.53125, 0.46875, PX_P[ 8], 0.96875);
-		case 30: return box(aBlock, 0.53125, PX_P[ 7], 0.03125, 0.96875, PX_P[ 8], 0.46875);
-		case 31: return box(aBlock, 0.53125, PX_P[ 7], 0.53125, 0.96875, PX_P[ 8], 0.96875);
-		
-		case 32: return box(aBlock, 0.03125, PX_P[ 8], 0.03125, 0.46875, PX_P[ 9], 0.46875);
-		case 33: return box(aBlock, 0.03125, PX_P[ 8], 0.53125, 0.46875, PX_P[ 9], 0.96875);
-		case 34: return box(aBlock, 0.53125, PX_P[ 8], 0.03125, 0.96875, PX_P[ 9], 0.46875);
-		case 35: return box(aBlock, 0.53125, PX_P[ 8], 0.53125, 0.96875, PX_P[ 9], 0.96875);
-		
-		case 36: return box(aBlock, 0.03125, PX_P[ 9], 0.03125, 0.46875, PX_P[10], 0.46875);
-		case 37: return box(aBlock, 0.03125, PX_P[ 9], 0.53125, 0.46875, PX_P[10], 0.96875);
-		case 38: return box(aBlock, 0.53125, PX_P[ 9], 0.03125, 0.96875, PX_P[10], 0.46875);
-		case 39: return box(aBlock, 0.53125, PX_P[ 9], 0.53125, 0.96875, PX_P[10], 0.96875);
-		
-		case 40: return box(aBlock, 0.03125, PX_P[10], 0.03125, 0.46875, PX_P[11], 0.46875);
-		case 41: return box(aBlock, 0.03125, PX_P[10], 0.53125, 0.46875, PX_P[11], 0.96875);
-		case 42: return box(aBlock, 0.53125, PX_P[10], 0.03125, 0.96875, PX_P[11], 0.46875);
-		case 43: return box(aBlock, 0.53125, PX_P[10], 0.53125, 0.96875, PX_P[11], 0.96875);
-		
-		case 44: return box(aBlock, 0.03125, PX_P[11], 0.03125, 0.46875, PX_P[12], 0.46875);
-		case 45: return box(aBlock, 0.03125, PX_P[11], 0.53125, 0.46875, PX_P[12], 0.96875);
-		case 46: return box(aBlock, 0.53125, PX_P[11], 0.03125, 0.96875, PX_P[12], 0.46875);
-		case 47: return box(aBlock, 0.53125, PX_P[11], 0.53125, 0.96875, PX_P[12], 0.96875);
-		
-		case 48: return box(aBlock, 0.03125, PX_P[12], 0.03125, 0.46875, PX_P[13], 0.46875);
-		case 49: return box(aBlock, 0.03125, PX_P[12], 0.53125, 0.46875, PX_P[13], 0.96875);
-		case 50: return box(aBlock, 0.53125, PX_P[12], 0.03125, 0.96875, PX_P[13], 0.46875);
-		case 51: return box(aBlock, 0.53125, PX_P[12], 0.53125, 0.96875, PX_P[13], 0.96875);
-		
-		case 52: return box(aBlock, 0.03125, PX_P[13], 0.03125, 0.46875, PX_P[14], 0.46875);
-		case 53: return box(aBlock, 0.03125, PX_P[13], 0.53125, 0.46875, PX_P[14], 0.96875);
-		case 54: return box(aBlock, 0.53125, PX_P[13], 0.03125, 0.96875, PX_P[14], 0.46875);
-		case 55: return box(aBlock, 0.53125, PX_P[13], 0.53125, 0.96875, PX_P[14], 0.96875);
-		
-		case 56: return box(aBlock, 0.03125, PX_P[14], 0.03125, 0.46875, PX_P[15], 0.46875);
-		case 57: return box(aBlock, 0.03125, PX_P[14], 0.53125, 0.46875, PX_P[15], 0.96875);
-		case 58: return box(aBlock, 0.53125, PX_P[14], 0.03125, 0.96875, PX_P[15], 0.46875);
-		case 59: return box(aBlock, 0.53125, PX_P[14], 0.53125, 0.96875, PX_P[15], 0.96875);
-		
-		case 60: return box(aBlock, 0.03125, PX_P[15], 0.03125, 0.46875, PX_P[16], 0.46875);
-		case 61: return box(aBlock, 0.03125, PX_P[15], 0.53125, 0.46875, PX_P[16], 0.96875);
-		case 62: return box(aBlock, 0.53125, PX_P[15], 0.03125, 0.96875, PX_P[16], 0.46875);
-		case 63: return box(aBlock, 0.53125, PX_P[15], 0.53125, 0.96875, PX_P[16], 0.96875);
+		case  0: return box(aBlock, 0.03125, PX_P[ 0], 0.03125, 0.46875, PX_P[mSize / 4 + (mSize % 4 == 1 ? 1 : 0)], 0.46875);
+		case  1: return box(aBlock, 0.03125, PX_P[ 0], 0.53125, 0.46875, PX_P[mSize / 4 + (mSize % 4 == 2 ? 1 : 0)], 0.96875);
+		case  2: return box(aBlock, 0.53125, PX_P[ 0], 0.03125, 0.96875, PX_P[mSize / 4 + (mSize % 4 == 3 ? 1 : 0)], 0.46875);
+		case  3: return box(aBlock, 0.53125, PX_P[ 0], 0.53125, 0.96875, PX_P[mSize / 4                           ], 0.96875);
 		}
 		return T;
 	}

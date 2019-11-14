@@ -42,8 +42,8 @@ public class MultiTileEntityIngot extends MultiTileEntityPlaceable {
 	
 	@Override
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTextureSides = BlockTextureDefault.get(sTextureSides, UT.Code.getRGBaInt(mMaterial.fRGBaSolid), mMaterial.contains(TD.Properties.GLOWING));
-		mTextureTop   = BlockTextureDefault.get(sTextureTop  , UT.Code.getRGBaInt(mMaterial.fRGBaSolid), mMaterial.contains(TD.Properties.GLOWING));
+		mTextureSides = BlockTextureDefault.get(sTextureSides, mMaterial.fRGBaSolid, F, mMaterial.contains(TD.Properties.GLOWING), F, F);
+		mTextureTop   = BlockTextureDefault.get(sTextureTop  , mMaterial.fRGBaSolid, F, mMaterial.contains(TD.Properties.GLOWING), F, T);
 		return mSize;
 	}
 	
