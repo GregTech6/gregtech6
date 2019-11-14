@@ -63,7 +63,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public static final Map<String, OreDictMaterial> MATERIAL_MAP = new HashMap<>();
 	/** The Amount of the Stack represents how many Liters make up one Unit. */
 	public static final Map<String, OreDictMaterialStack> FLUID_MAP = new HashMap<>();
-	public static final OreDictMaterial[] MATERIAL_ARRAY = new OreDictMaterial[32767];
+	public static final OreDictMaterial[] MATERIAL_ARRAY = new OreDictMaterial[32768];
 	public static final Set<OreDictMaterial> ALLOYS = new HashSetNoNulls<>();
 	public static int sHashID = 0;
 	private static final Set<String> INVALID_STRINGS_TO_START_A_MATERIAL_NAME = new HashSetNoNulls<>(Arrays.asList("Mul", "Div", "Rich", "Poor", "Raw", "Impure", "Pure", "Dirty", "Refined", "Tiny", "Small", "Normal", "Medium", "Large", "Huge", "Dense", "Alloy", "Head", "Tool", "Helmet", "Chestplate", "Leggings", "Boots", "Centrifuged", "Purified", "Quintuple", "Quadruple", "Triple", "Double", "Hot", "Uncut", "Polished", "Chipped", "Flawed", "Flawless", "Exquisite", "Gt", "Long", "Plasma", "Gas", "Liquid", "Solid", "Gem", "Dust", "Ingot", "Plate", "Block", "Leaves", "Sapling", "Mossy", "Brick", "Crack", "Chisel", "Broken", "Compact", "Curve", "Mixed", "Mixable"));
