@@ -44,16 +44,16 @@ public class MultiTileEntityPlate extends MultiTileEntityPlaceable {
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureSides = BlockTextureDefault.get(sTextureSides, mMaterial.fRGBaSolid, F, mMaterial.contains(TD.Properties.GLOWING), F, F);
 		mTextureTop   = BlockTextureDefault.get(sTextureTop  , mMaterial.fRGBaSolid, F, mMaterial.contains(TD.Properties.GLOWING), F, T);
-		return (int)UT.Code.bind(mSize, 1, 4);
+		return (int)UT.Code.bind(mSize, 0, 4);
 	}
 	
 	@Override
 	public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch (aRenderPass) {
-		case  0: return box(aBlock, 0.03125, PX_P[ 0], 0.03125, 0.46875, PX_P[mSize / 4 + (mSize % 4 == 1 ? 1 : 0)], 0.46875);
-		case  1: return box(aBlock, 0.03125, PX_P[ 0], 0.53125, 0.46875, PX_P[mSize / 4 + (mSize % 4 == 2 ? 1 : 0)], 0.96875);
-		case  2: return box(aBlock, 0.53125, PX_P[ 0], 0.03125, 0.96875, PX_P[mSize / 4 + (mSize % 4 == 3 ? 1 : 0)], 0.46875);
-		case  3: return box(aBlock, 0.53125, PX_P[ 0], 0.53125, 0.96875, PX_P[mSize / 4                           ], 0.96875);
+		case  0: return box(aBlock, 0.03125, PX_P[ 0], 0.03125, 0.46875, PX_P[mSize / 4 + (mSize % 4 > 0 ? 1 : 0)], 0.46875);
+		case  1: return box(aBlock, 0.03125, PX_P[ 0], 0.53125, 0.46875, PX_P[mSize / 4 + (mSize % 4 > 1 ? 1 : 0)], 0.96875);
+		case  2: return box(aBlock, 0.53125, PX_P[ 0], 0.03125, 0.96875, PX_P[mSize / 4 + (mSize % 4 > 2 ? 1 : 0)], 0.46875);
+		case  3: return box(aBlock, 0.53125, PX_P[ 0], 0.53125, 0.96875, PX_P[mSize / 4                          ], 0.96875);
 		}
 		return T;
 	}

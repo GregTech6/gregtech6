@@ -104,7 +104,7 @@ public abstract class MultiTileEntityPlaceable extends TileEntityBase03MultiTile
 		}
 		if (UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, mStack), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5)) {
 			playCollect();
-			if (mStack.stackSize-- <= 0) return setToAir();
+			if (--mStack.stackSize <= 0) return setToAir();
 			mSize = ST.size(mStack);
 			updateClientData();
 		};
