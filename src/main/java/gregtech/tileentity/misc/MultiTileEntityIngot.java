@@ -22,7 +22,10 @@ package gregtech.tileentity.misc;
 import static gregapi.data.CS.*;
 
 import gregapi.data.OP;
+import gregapi.data.TD;
+import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
+import gregapi.render.IIconContainer;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -33,9 +36,14 @@ import net.minecraft.util.MovingObjectPosition;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityIngot extends MultiTileEntityPlaceable {
+	public static IIconContainer
+	sTextureSides       = new Textures.BlockIcons.CustomIcon("machines/placeables/ingot/sides"),
+	sTextureTop         = new Textures.BlockIcons.CustomIcon("machines/placeables/ingot/top");
+	
 	@Override
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid);
+		mTextureSides = BlockTextureDefault.get(sTextureSides, UT.Code.getRGBaInt(mMaterial.fRGBaSolid), mMaterial.contains(TD.Properties.GLOWING));
+		mTextureTop   = BlockTextureDefault.get(sTextureTop  , UT.Code.getRGBaInt(mMaterial.fRGBaSolid), mMaterial.contains(TD.Properties.GLOWING));
 		return mSize;
 	}
 	

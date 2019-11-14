@@ -54,7 +54,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public abstract class MultiTileEntityPlaceable extends TileEntityBase03MultiTileEntities implements IMTE_SyncDataByteArray, IMTE_CanEntityDestroy, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
 	public ItemStack mStack;
-	public ITexture mTexture;
+	public ITexture mTextureSides, mTextureTop;
 	public OreDictMaterial mMaterial = MT.Empty;
 	byte mSize = 1;
 	
@@ -123,7 +123,7 @@ public abstract class MultiTileEntityPlaceable extends TileEntityBase03MultiTile
 		return T;
 	}
 	
-	@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mTexture;}
+	@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return SIDES_HORIZONTAL[aSide] ? mTextureSides : mTextureTop;}
 	
 	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
 	@Override public boolean isSurfaceOpaque        (byte aSide) {return F;}
