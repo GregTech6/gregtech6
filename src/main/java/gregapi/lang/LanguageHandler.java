@@ -354,6 +354,11 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Brick";
 		} else
+		if (aMaterial == MT.Lignite || aMaterial == MT.LigniteCoke || aMaterial == MT.Charcoal || aMaterial == MT.Coal || aMaterial == MT.CoalCoke || aMaterial == MT.Anthracite || aMaterial == MT.Prismane || aMaterial == MT.Lonsdaleite || aMaterial == MT.PetCoke || aMaterial == MT.HydratedCoal) {
+			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Brick";
+			if (aPrefix.mNameInternal.startsWith("chunkGt"))                return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chunk";
+			if (aPrefix.mNameInternal.startsWith("nugget"))                 return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pellet";
+		} else
 		if (aMaterial == MT.Sugar) {
 			if (aPrefix == OP.gemChipped)                                   return "Sugar Cubes";
 		} else
