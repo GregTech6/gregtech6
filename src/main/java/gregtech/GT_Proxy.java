@@ -333,6 +333,18 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 									aEvent.setCanceled(T);
 								}
 							}
+							if (tData.mPrefix == OP.plate) {
+								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32085, ST.save(null, NBT_VALUE, ST.copy(aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize);
+									aEvent.setCanceled(T);
+								}
+							}
+							if (tData.mPrefix == OP.plateGem) {
+								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32086, ST.save(null, NBT_VALUE, ST.copy(aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
+									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize);
+									aEvent.setCanceled(T);
+								}
+							}
 						}
 					}
 				}

@@ -1799,7 +1799,9 @@ public class Loader_MultiTileEntities implements Runnable {
 		aRegistry.add("Rock"                                                , "Untyped"                             , 32074, 32764, MultiTileEntityRockPlaced.class                         ,                 0, 64, aUtilStone     , null);
 		aRegistry.add("Stick"                                               , "Untyped"                             , 32756, 32764, MultiTileEntityStick.class                              ,                 0, 64, aUtilWood      , null);
 		aRegistry.add("Stick"                                               , "Untyped"                             , 32073, 32764, MultiTileEntityStickPlaced.class                        ,                 0, 64, aUtilWood      , null);
-		aRegistry.add("Ingots"                                              , "Untyped"                             , 32084, 32764, MultiTileEntityIngot.class                              ,                 0, 64, aMetalChips    , null);
+		aRegistry.add("Ingots"                                              , "Untyped"                             , 32084, 32764, MultiTileEntityIngot.class                              ,                 0, 64, aUtilMetal     , null);
+		aRegistry.add("Plates"                                              , "Untyped"                             , 32085, 32764, MultiTileEntityPlate.class                              ,                 0, 64, aUtilMetal     , null);
+		aRegistry.add("Gem Plates"                                          , "Untyped"                             , 32086, 32764, MultiTileEntityPlateGem.class                           ,                 0, 64, aUtilStone     , null);
 		aRegistry.add("Bumble Hive"                                         , "Untyped"                             , 32755, 32764, MultiTileEntityBumbleHive.class                         ,                 0, 64, aHive          , null);
 		
 		for (int i = 0; i < 16; i++) {
@@ -1844,7 +1846,7 @@ public class Loader_MultiTileEntities implements Runnable {
 			}
 		}
 		
-		// 32085 is next, up to 32251
+		// 32087 is next, up to 32251
 		
 		aMat = MT.Brown;            aRegistry.add("Rope"                                                , "Ropes"                               , 32011, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_FLAMMABILITY,100),  " S",  "SS",  "Sq", 'S', "cropHemp");
 		aMat = MT.White;            aRegistry.add("Silk Rope"                                           , "Ropes"                               , 32012, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid)                      ),  " S",  "SS",  "Sq", 'S', Items.string);

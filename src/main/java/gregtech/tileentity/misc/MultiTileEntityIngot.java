@@ -21,113 +21,18 @@ package gregtech.tileentity.misc;
 
 import static gregapi.data.CS.*;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanEntityDestroy;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetBlockHardness;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetExplosionResistance;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightOpacity;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsSideSolid;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataByteArray;
-import gregapi.code.ArrayListNoNulls;
-import gregapi.data.MT;
 import gregapi.data.OP;
-import gregapi.network.INetworkHandler;
-import gregapi.network.IPacket;
-import gregapi.oredict.OreDictItemData;
-import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureDefault;
-import gregapi.render.ITexture;
-import gregapi.tileentity.ITileEntityQuickObstructionCheck;
-import gregapi.tileentity.notick.TileEntityBase03MultiTileEntities;
-import gregapi.util.OM;
-import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MovingObjectPosition;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityIngot extends TileEntityBase03MultiTileEntities implements IMTE_SyncDataByteArray, IMTE_CanEntityDestroy, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
-	public ItemStack mIngot;
-	public ITexture mTexture;
-	public OreDictMaterial mMaterial = MT.Empty;
-	byte mSize = 1;
-	
-	@Override
-	public void readFromNBT2(NBTTagCompound aNBT) {
-		mIngot = ST.load(aNBT, NBT_VALUE);
-		if (ST.valid(mIngot)) {
-			mSize = UT.Code.bindStack(ST.size(mIngot));
-			OreDictItemData tData = OM.anydata(mIngot);
-			if (tData != null && tData.hasValidMaterialData() && tData.mMaterial.mMaterial.mID > 0) mMaterial = tData.mMaterial.mMaterial;
-		}
-		super.readFromNBT2(aNBT);
-	}
-	
-	@Override
-	public void writeToNBT2(NBTTagCompound aNBT) {
-		super.writeToNBT2(aNBT);
-		ST.save(aNBT, NBT_VALUE, mIngot);
-	}
-	
-	@Override
-	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return new ArrayListNoNulls<>(F, mIngot);
-	}
-	
-	@Override
-	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (isClientSide()) return T;
-		ItemStack aStack = aPlayer.getCurrentEquippedItem();
-		if (ST.invalid(mIngot) || mIngot.stackSize <= 0) return setToAir();
-		if (ST.equal(aStack, mIngot)) {
-			if (mIngot.stackSize >= 64) return T;
-			if (mIngot.stackSize + aStack.stackSize > 64) {
-				aStack.stackSize -= (64-mIngot.stackSize);
-				mIngot.stackSize = 64;
-				mSize = ST.size(mIngot);
-				updateClientData();
-				playCollect();
-				return T;
-			}
-			mIngot.stackSize += aStack.stackSize;
-			mSize = ST.size(mIngot);
-			updateClientData();
-			aStack.stackSize = 0;
-			playCollect();
-			return T;
-		}
-		if (UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, mIngot), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5)) {
-			playCollect();
-			if (mIngot.stackSize-- <= 0) return setToAir();
-			mSize = ST.size(mIngot);
-			updateClientData();
-		};
-		return T;
-	}
-	
-	@Override
-	public IPacket getClientDataPacket(boolean aSendAll) {
-		return getClientDataPacketByteArray(aSendAll, UT.Code.toByteS(mMaterial.mID, 0), UT.Code.toByteS(mMaterial.mID, 1), mSize);
-	}
-	
-	@Override
-	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
-		mMaterial = OreDictMaterial.MATERIAL_ARRAY[UT.Code.bind15(UT.Code.combine(aData[0], aData[1]))];
-		mSize = aData[2];
-		return T;
-	}
-	
-	@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return mTexture;}
-	
+public class MultiTileEntityIngot extends MultiTileEntityPlaceable {
 	@Override
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid);
@@ -212,20 +117,12 @@ public class MultiTileEntityIngot extends TileEntityBase03MultiTileEntities impl
 		return T;
 	}
 	
+	@Override public ItemStack getPickBlock(MovingObjectPosition aTarget) {return OP.ingot.mat(mMaterial, 1);}
+	@Override public ItemStack getStackFromBlock(byte aSide) {return OP.ingot.mat(mMaterial, 1);}
+	
 	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, 0, 0, 0, 1, UT.Code.divup(mSize, 8) / 8.0F, 1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(0, 0, 0, 1, UT.Code.divup(mSize, 8) / 8.0F, 1);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return mSize < 8 ? null : box(0, 0, 0, 1, (mSize / 8) / 8.0F, 1);}
-	
-	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
-	@Override public boolean isSurfaceOpaque        (byte aSide) {return F;}
-	@Override public boolean isSideSolid            (byte aSide) {return F;}
-	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
-	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
-	@Override public boolean canEntityDestroy(Entity aEntity) {return !(aEntity instanceof EntityDragon);}
-	
-	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
-	@Override public float getExplosionResistance2() {return 0;}
-	@Override public float getBlockHardness() {return 0.25F;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.ingot";}
 }
