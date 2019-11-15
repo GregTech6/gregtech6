@@ -332,7 +332,7 @@ public class Loader_OreProcessing implements Runnable {
 			
 			if (!tByProductStacks.isEmpty() && !mAlreadyListedOres.contains(aMaterial)) {
 				mAlreadyListedOres.add(aMaterial);
-				RM.ByProductList.addFakeRecipe(F, ST.array(oreVanillastone.mat(aMaterial, aOreStack, 1), rockGt.mat(aMaterial, 1), dustImpure.mat(aMaterial, 1), crushed.mat(aMaterial, 1), crushedPurified.mat(aMaterial, 1), crushedCentrifuged.mat(aMaterial, 1)), tByProductStacks.toArray(ZL_IS), null, null, null, null, 0, 0, 0);
+				RM.ByProductList.addFakeRecipe(F, ST.array(oreVanillastone.mat(aMaterial, aOreStack, 1), rockGt.mat(aMaterial, 1), dustImpure.mat(aMaterial, 1, dust.mat(aMaterial, 1)), crushed.mat(aMaterial, 1), crushedPurified.mat(aMaterial, 1), crushedCentrifuged.mat(aMaterial, 1)), tByProductStacks.toArray(ZL_IS), null, null, null, null, 0, 0, 0);
 			}
 			
 			if (tPrimaryByProductTiny == null) tPrimaryByProductTiny = OM.dustOrIngot(aMaterial, U9);
