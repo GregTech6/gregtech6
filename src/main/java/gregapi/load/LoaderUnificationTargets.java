@@ -579,6 +579,18 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.GrC_Bamboo, "grc.bamboo", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.BoP, "bamboo", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.TROPIC, "bambooStick", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , ST.make(MD.ELN, "Eln.Ore", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Pb                     , ST.make(MD.ELN, "Eln.Ore", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.W                      , ST.make(MD.ELN, "Eln.Ore", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Cinnabar       , ST.make(MD.ELN, "Eln.Ore", 1, 6));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.W                      , ST.make(MD.ELN, "Eln.sharedItem", 1,  517));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Li2Fe2O4               , ST.make(MD.ELN, "Eln.sharedItem", 1,  518));
+		OreDictManager.INSTANCE.setTarget(OP.chunkGt        , MT.Hg                     , ST.make(MD.ELN, "Eln.sharedItem", 1,  520));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Lapis                  , ST.make(MD.ELN, "Eln.sharedItem", 1,  579));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Diamond                , ST.make(MD.ELN, "Eln.sharedItem", 1,  580));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Rubber                 , ST.make(MD.ELN, "Eln.sharedItem", 1, 4097));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondIndustrial      , ST.make(MD.ELN, "Eln.sharedItem", 1, 4420));
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Si                     , ST.make(MD.ELN, "Eln.sharedItem", 1, 7697));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Empty                  , ST.make(Items.glass_bottle, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Water                  , ST.make(Items.potionitem, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));

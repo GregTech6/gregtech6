@@ -90,9 +90,11 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.itemPelt               , "pelt");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.itemRubber             , "ingotRubber");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.itemResin              , "itemRawRubber");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.itemResin              , "materialResin");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.itemGlue               , "glue");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OP.stone                  , "stoneSmooth");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OP.cobblestone            , "stoneCobble");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("itemAnthracite"          , "gemAnthracite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("obsidianRod"             , "stickObsidian");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("obsidian"                , "blockSolidObsidian");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("stoneObsidian"           , "blockSolidObsidian");

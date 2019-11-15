@@ -125,6 +125,7 @@ public class MD {
 	, MgC               = new ModData(ModIDs.MgC                , "Magneticraft")
 	, BR                = new ModData(ModIDs.BR                 , "Big Reactors")
 	, HBM               = new ModData(ModIDs.HBM                , "HBM's Nuclear Tech")
+	, ELN               = new ModData(ModIDs.ELN                , "Electrical Age")
 	
 	, DRGN              = new ModData(ModIDs.DRGN               , "Dragon API")
 	, RoC               = new ModData(ModIDs.RoC                , "RotaryCraft")

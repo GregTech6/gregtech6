@@ -25,12 +25,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.20: (Not released yet)
+6.11.20: (Not released yet, gonna be Sunday because I'm getting a Root Canal on Monday, "hurray")
+[COMPAT] Electrical Age had some work done Itemwise. Still need to test its Power System.
 [COMPAT] Rotarycraft Dry Ice can be made with Freezer now.
 [COMPAT] The Reactorcraft Fluorite Crystals are now OreDicted by Color and properly compatible in Recipes if that matters to anyone.
 [FIXED] Crucible Issue with Graphite and other things that just vanished when you inserted too much of them at once.
 [CHANGED] Crucibles in Galacticraft Planets now require Oxygen above them in order to be able to get Air from KU to make Steel.
-[ADDED] Coal, Charcoal, Coke etc. Bricks. They are Ingots, meaning Nuggets and Chunks also exist for them. Vanilla Coal and Charcoal can easily be handcrafted to the more shapely Bricks.
+[ADDED] Coal, Charcoal, Coke etc. Bricks. They are Ingots, meaning Nuggets and Chunks also exist for them (meaning better Fuel regulation). Vanilla Coal and Charcoal can easily be handcrafted to the more shapely Bricks.
 [ADDED] Ingots, Plates and Gem Plates can now be placed in World.
 [ADDED] The 9 Colors of Fluorite as small Ores.
 [ADDED] Milky Quartz Rock Layer. Purpose being a Surface Level Quartz Ore so you dont need to go to the Nether. Totally not because Rockhounding has that Quartz Type and I did not add a Surface Quartz yet. (Quartzite does not count)

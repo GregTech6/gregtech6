@@ -191,6 +191,7 @@ dependencies {
 	compile "codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev"
 	compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
 	compile "codechicken:NotEnoughItems:1.7.10-1.0.5.120:dev"
+	compileOnly "net.electricalage.eln:ElectricalAge-jrddunbr:1.16.3:dev"
 	compileOnly "net.sengir.forestry:forestry_1.7.10:4.2.16.64:dev"
 	compileOnly "com.mod-buildcraft:buildcraft:7.1.23:dev"
 	compileOnly "com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf"
@@ -280,6 +281,7 @@ dependencies {
 	//compileOnly "mrtjp:ProjectRed:1.7.10-4.7.0pre11.52:dev"
 	//compileOnly "net.bdew:bdlib:1.9.4.110-mc1.7.10:dev"
 	//compileOnly "net.bdew:gendustry:1.6.4-133-mc1.7.10:dev"
+	//compileOnly "net.electricalage.eln:ElectricalAge-jrddunbr:1.16.3:dev"
 	//compileOnly "net.machinemuse:ModularPowersuits:1.7.10-0.11.1.114" // Hack
 	//compileOnly "net.machinemuse:Numina:0.4.1.105" // Hack
 	//compileOnly "net.sengir.forestry:forestry_1.7.10:4.2.16.64:dev"

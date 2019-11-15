@@ -128,7 +128,8 @@ public class CR {
 				if (RECIPES_TO_DELATE.contains(tRecipe.getRecipeOutput(), T)) tList.remove(i--);
 			}
 		}
-		for (IRecipe tRecipe : BUFFER) GameRegistry.addRecipe(tRecipe);
+		// This setting is not meant to speed up load times, its meant to just make Crafting Recipes less visible in NEI
+		if (!DISABLE_GT6_CRAFTING_RECIPES) for (IRecipe tRecipe : BUFFER) GameRegistry.addRecipe(tRecipe);
 		BUFFER.clear();
 	}
 	
@@ -445,7 +446,7 @@ public class CR {
 		
 		if (tThereWasARecipe || !aOnlyAddIfThereIsAnyRecipeOutputtingThis) {
 			if (BUFFERING && aBuffered)
-				BUFFER.add (new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
+				BUFFER.add(new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
 			else
 				GameRegistry.addRecipe(new AdvancedCraftingShaped(ST.copy_(aResult), aDismantleable, aRemovable, aKeepNBT, !aNotAutoCraftable, aEnchantmentsAdded, aEnchantmentLevelsAdded, aRecipe).setMirrored(aMirrored));
 		}
