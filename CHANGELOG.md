@@ -39,7 +39,7 @@ Like look at all this crap I got done this week, I actually did things, instead 
 [CHANGED] Some Glass alike Gems now use a Slimeball alike Pearly Texture.
 [ADDED] Coal, Charcoal, Coke etc. Bricks. They are Ingots, meaning Nuggets and Chunks also exist for them (meaning better Fuel regulation). Vanilla Coal and Charcoal can easily be handcrafted to the more shapely Bricks.
 [ADDED] Ingots, Plates and Gem Plates can now be placed in World.
-[ADDED] The 9 Colors of Fluorite as small Ores.
+[ADDED] The 9 Colors of Fluorite as well as the 6 Colors of Aventurine as small Ores.
 [ADDED] Milky Quartz Rock Layer. Purpose being a Surface Level Quartz Ore so you dont need to go to the Nether. Totally not because Rockhounding has that Quartz Type and I did not add a Surface Quartz yet. (Quartzite does not count)
 
 
