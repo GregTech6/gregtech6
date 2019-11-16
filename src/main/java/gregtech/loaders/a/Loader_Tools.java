@@ -228,6 +228,10 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
+		for (OreDictMaterial tMaterial : ANY.Aventurine.mToThis) {
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gemChipped.dat(tMaterial));
+		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
+		}
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.NetherQuartz, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.Quartzite, MT.Phosphorite, MT.Phosphorus, MT.PO4, MT.P, MT.Apatite}) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gem.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));

@@ -562,11 +562,12 @@ public class GT_API_Post extends Abstract_Mod {
 				MT.Cryotheum            .addEnchantmentForArmors(tEnchant, 1);
 			}
 			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(tEnchant.getName())) {
-				for (OreDictMaterial tMat : ANY.Emerald .mToThis) tMat.addEnchantmentForTools(tEnchant, 5);
-				for (OreDictMaterial tMat : ANY.Sapphire.mToThis) tMat.addEnchantmentForTools(tEnchant, 3);
-				for (OreDictMaterial tMat : ANY.Garnet  .mToThis) tMat.addEnchantmentForTools(tEnchant, 2);
-				for (OreDictMaterial tMat : ANY.Jasper  .mToThis) tMat.addEnchantmentForTools(tEnchant, 2);
-				for (OreDictMaterial tMat : ANY.TigerEye.mToThis) tMat.addEnchantmentForTools(tEnchant, 4);
+				for (OreDictMaterial tMat : ANY.Emerald   .mToThis) tMat.addEnchantmentForTools(tEnchant, 5);
+				for (OreDictMaterial tMat : ANY.Sapphire  .mToThis) tMat.addEnchantmentForTools(tEnchant, 3);
+				for (OreDictMaterial tMat : ANY.Garnet    .mToThis) tMat.addEnchantmentForTools(tEnchant, 2);
+				for (OreDictMaterial tMat : ANY.Jasper    .mToThis) tMat.addEnchantmentForTools(tEnchant, 2);
+				for (OreDictMaterial tMat : ANY.TigerEye  .mToThis) tMat.addEnchantmentForTools(tEnchant, 4);
+				for (OreDictMaterial tMat : ANY.Aventurine.mToThis) tMat.addEnchantmentForTools(tEnchant, 3);
 				MT.Spinel               .addEnchantmentForTools(tEnchant, 3);
 				MT.BalasRuby            .addEnchantmentForTools(tEnchant, 3);
 				MT.OnyxBlack            .addEnchantmentForTools(tEnchant, 3);
