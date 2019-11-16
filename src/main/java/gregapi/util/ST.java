@@ -852,7 +852,11 @@ public class ST {
 	public static ItemStack load(NBTTagCompound aNBT) {
 		if (aNBT == null || aNBT.hasNoTags()) return null;
 		ItemStack rStack = make(Item.getItemById(aNBT.getShort("id")), aNBT.getInteger("Count"), aNBT.getShort("Damage"), aNBT.hasKey("tag", 10)?aNBT.getCompoundTag("tag"):null);
-		if (rStack == null) return null;
+		if (rStack == null) if (aNBT.hasKey("od")) {
+			rStack = OreDictManager.INSTANCE.getStack(aNBT.getString("od"), aNBT.getInteger("Count"));
+			if (rStack == null) return null;
+		} else return null;
+		// Does anyone even migrate IC2exp Items anymore? This is only used when updating from IC2-Non-Exp to IC2-Exp.
 		if (item_(rStack).getClass().getName().startsWith("ic2.core.migration")) item_(rStack).onUpdate(rStack, DW, null, 0, F);
 		return update_(OM.get_(rStack));
 	}
@@ -867,13 +871,17 @@ public class ST {
 	
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(ItemStack aStack) {
-		if (invalid(aStack)) return null;
+		if (aStack == null || aStack.stackSize < 0) return null;
+		Item tItem = item_(aStack);
+		if (tItem == null) return null;
 		NBTTagCompound rNBT = UT.NBT.make();
 		aStack = OM.get_(aStack);
-		rNBT.setShort("id", (short)Item.getIdFromItem(item_(aStack)));
+		rNBT.setShort("id", (short)Item.getIdFromItem(tItem));
 		UT.NBT.setNumber(rNBT, "Count", aStack.stackSize);
 		rNBT.setShort("Damage", meta_(aStack));
 		if (aStack.hasTagCompound()) rNBT.setTag("tag", aStack.getTagCompound());
+		OreDictItemData tData = OM.anyassociation_(aStack);
+		if (tData != null) rNBT.setString("od", tData.toString());
 		return rNBT;
 	}
 }

@@ -31,6 +31,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [COMPAT] The Reactorcraft Fluorite Crystals are now OreDicted by Color and properly compatible in Recipes if that matters to anyone.
 [FIXED] Crucible Issue with Graphite and other things that just vanished when you inserted too much of them at once.
 [CHANGED] Crucibles in Galacticraft Planets now require Oxygen above them in order to be able to get Air from KU to make Steel.
+[ADDED] There is now Code in place to make sure OreDicted Items from other Mods are not deleted from GT6 Storages (Mass Storages, Compartment Drawers, Advanced Crafting Tables, GT Chests etc, not Player Inventories!) should you uninstall those other Mods. This will fix the underlying Issue of mandatory Unification for certain badly written Mods killing your well earned Items when you uninstall them.
 [ADDED] Coal, Charcoal, Coke etc. Bricks. They are Ingots, meaning Nuggets and Chunks also exist for them (meaning better Fuel regulation). Vanilla Coal and Charcoal can easily be handcrafted to the more shapely Bricks.
 [ADDED] Ingots, Plates and Gem Plates can now be placed in World.
 [ADDED] The 9 Colors of Fluorite as small Ores.
