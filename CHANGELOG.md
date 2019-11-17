@@ -25,11 +25,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.20: (Not released yet, gonna be Sunday because I'm getting a Root Canal on Monday, "hurray")
+6.11.20:
 [NOTE]
 It has been over a year since I ran at "full Energy" due to Asthma. I'm glad that my motivation is finally back in full capacity, regardless of which project I'm working on!
 Like look at all this crap I got done this week. I actually did things, instead of spending half the day in Bed and working only one or two days a week, instead of almost every day now!
-[COMPAT] Electrical Age had some work done Itemwise. Still need to test its Power System.
+[COMPAT] Electrical Age had some work done Itemwise. But not gonna do its Power System.
 [COMPAT] Rotarycraft Dry Ice can be made with Freezer now.
 [COMPAT] The Reactorcraft Fluorite Crystals are now OreDicted by Color and properly compatible in Recipes if that matters to anyone.
 [IMPROVED] There is now Code in place to make sure OreDicted Items from other Mods are not deleted from GT6 Storages (Mass Storages, Compartment Drawers, Advanced Crafting Tables, GT Chests etc, not Player Inventories!) should you uninstall those other Mods. This will fix the underlying Issue of mandatory Unification for certain badly written Mods killing your well earned Items when you uninstall them.
@@ -37,7 +37,7 @@ Like look at all this crap I got done this week. I actually did things, instead 
 [CHANGED] Crucibles in Galacticraft Planets now require Oxygen above them in order to be able to get Air from KU to make Steel.
 [CHANGED] Ruby now uses the same Texture Set that Sapphires have to make more clear that Rubies are technically Sapphires, and so they are less confused. Ofcourse I thought about Fools Rubies too. ;)
 [CHANGED] Some Glass alike Gems now use a Slimeball alike Pearly Texture.
-[ADDED] Coal, Charcoal, Coke etc. Bricks. They are Ingots, meaning Nuggets and Chunks also exist for them (meaning better Fuel regulation). Vanilla Coal and Charcoal can easily be handcrafted to the more shapely Bricks.
+[ADDED] Coal, Charcoal, Coke etc. Bricks. They are Ingots, meaning Nuggets and Chunks also exist for them (meaning better Fuel regulation). Vanilla Coal and Charcoal can easily be handcrafted and generified to the more shapely Bricks and vice versa.
 [ADDED] Ingots, Plates and Gem Plates can now be placed in World.
 [ADDED] The 9 Colors of Fluorite as well as the 6 Colors of Aventurine as small Ores.
 [ADDED] Milky Quartz Rock Layer. Purpose being a Surface Level Quartz Ore so you dont need to go to the Nether. Totally not because Rockhounding has that Quartz Type and I did not add a Surface Quartz yet. (Quartzite does not count)
