@@ -28,7 +28,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.11.20: (Not released yet, gonna be Sunday because I'm getting a Root Canal on Monday, "hurray")
 [NOTE]
 It has been over a year since I ran at "full Energy" due to Asthma. I'm glad that my motivation is finally back in full capacity, regardless of which project I'm working on!
-Like look at all this crap I got done this week, I actually did things, instead of spending half the day in Bed and working only one or two days a week, instead of almost every day now!
+Like look at all this crap I got done this week. I actually did things, instead of spending half the day in Bed and working only one or two days a week, instead of almost every day now!
 [COMPAT] Electrical Age had some work done Itemwise. Still need to test its Power System.
 [COMPAT] Rotarycraft Dry Ice can be made with Freezer now.
 [COMPAT] The Reactorcraft Fluorite Crystals are now OreDicted by Color and properly compatible in Recipes if that matters to anyone.

@@ -1502,8 +1502,8 @@ public class MT {
 		DATA.Dye_Materials.getClass();
 	}
 	
-	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL, I got a few of them here. */
-	@Deprecated public static final OreDictMaterial Silver = Ag, Aluminium = Al, Bismuth = Bi, Lead = Pb, Argon = Ar, Copper = Cu, Gold = Au, Iron = Fe, Titanium = Ti, Calcite = CaCO3;
+	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL or Tinkers Gregworks, I got a few of them here. */
+	@Deprecated public static final OreDictMaterial Trinium = Ke, Vibranium = Vb, Naquadah = Nq, NaquadahEnriched = Nq_528, Naquadria = Nq_522, Adamantium = Ad, Silver = Ag, Aluminium = Al, Bismuth = Bi, Lead = Pb, Argon = Ar, Copper = Cu, Gold = Au, Iron = Fe, Titanium = Ti, Calcite = CaCO3, Tungsten = W, Beryllium = Be, Chromium = Cr, Manganese = Mn, Cobalt = Co, Cobalt60 = Co-60, Nickel = Ni, Arsenic = As, Zirconium = Zr, Molybdenum = Mo, Technetium = Tc, Palladium = Pd, Neodymium = Nd, OsmiumElemental = Os, Iridium = Ir, Platinum = Pt, Thorium = Th, Uranium = U_238, Uranium235 = U_235, Plutonium = Pu, Plutonium241 = Pu_241, Plutonium243 = Pu_243, Americium = Am, Americium241 = Am_241;
 	
 	/** Technical Materials, which are only there for Recipes and such. */
 	public static class TECH {
