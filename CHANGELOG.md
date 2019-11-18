@@ -22,7 +22,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.21: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Compatibility with Tinkers Gregworks for GT6. It broke whenever I renamed some Variables.
+[FIXED] Lack of certain Types of Support/Recipes for Milky Quartz. Now it should be just as compatible with GT6 as Nether Quartz.
 
 
 6.11.20:

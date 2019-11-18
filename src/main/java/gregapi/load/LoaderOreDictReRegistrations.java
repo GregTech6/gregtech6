@@ -1245,7 +1245,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("chipsetGold"      , new OreDictItemData(MT.Redstone, U, MT.Au, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("chipsetDiamond"   , new OreDictItemData(MT.Redstone, U, ANY.Diamond, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("chipsetPulsating" , new OreDictItemData(MT.Redstone, U2, MT.EnderPearl, U2));
-		OreDictManager.INSTANCE.setAutomaticItemData("chipsetQuartz"    , new OreDictItemData(MT.Redstone, U, MT.NetherQuartz, U));
+		OreDictManager.INSTANCE.setAutomaticItemData("chipsetQuartz"    , new OreDictItemData(MT.Redstone, U, ANY.SiO2, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("chipsetComp"      , new OreDictItemData(MT.Redstone, U*4));
 		OreDictManager.INSTANCE.setAutomaticItemData("chipsetEmerald"   , new OreDictItemData(MT.Redstone, U, ANY.Emerald, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("ForciciumItem", new OreDictItemData(MT.Forcicium, U));

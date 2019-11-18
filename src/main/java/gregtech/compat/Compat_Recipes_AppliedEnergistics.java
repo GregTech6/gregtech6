@@ -124,6 +124,9 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		addListener("gemNetherQuartz", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.ae_grinder(10, aEvent.mStack, OP.dust.mat(MT.NetherQuartz, 1));
 		}});
+		addListener("gemMilkyQuartz", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.ae_grinder(10, aEvent.mStack, OP.dust.mat(MT.MilkyQuartz, 1));
+		}});
 		addListener("gemFluix", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.ae_grinder(10, aEvent.mStack, OP.dust.mat(MT.Fluix, 1));
 		}});

@@ -2276,8 +2276,9 @@ public class MT {
 			BlackQuartz                     .addOreByProducts(OREMATS.Barite        );
 			NetherQuartz                    .addOreByProducts(Netherrack            , OREMATS.Barite            );
 			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , Fe2O3);
-			CertusQuartz                    .addOreByProducts(Quartzite             , OREMATS.Barite            );
-			ChargedCertusQuartz             .addOreByProducts(Quartzite             , OREMATS.Barite            );
+			MilkyQuartz                     .addOreByProducts(CertusQuartz          , OREMATS.Barite            );
+			CertusQuartz                    .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
+			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar      , RareEarth                 , Glowstone             );
 			Os                              .addOreByProducts(Ir                    , Pt                        , Ru                    );
@@ -2897,7 +2898,7 @@ public class MT {
 		BasalticMineralSand     = oredustcent   ( 9003, "Basaltic Mineral Sand"     , SET_SAND              ,  40,  50,  40, 255).put(MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                 )                           .setMcfg( 0, Magnetite      , 1*U, Basalt           , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
 		GraniticMineralSand     = oredustcent   ( 9004, "Granitic Mineral Sand"     , SET_SAND              ,  40,  60,  60, 255).put(MORTAR, MELTING, MOLTEN, MAGNETIC_PASSIVE                                 )                           .setMcfg( 0, Magnetite      , 1*U, Granite          , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.MAGNETO, 1),
 		GarnetSand              = oredustcent   ( 9005, "Garnet Sand"               , SET_SAND              , 200, 100,   0, 255).put(MORTAR, BLACKLISTED_SMELTER                                               )                           .setMcfg( 0, Almandine      , 2*U, Andradite        , 2*U, Grossular        , 2*U, Pyrope           , 2*U, Spessartine      , 2*U, Uvarovite        , 1*U)  ,
-		QuartzSand              = oredustcent   ( 9006, "Quartz Sand"               , SET_SAND              , 200, 200, 200, 255).put(MORTAR, BLACKLISTED_SMELTER, QUARTZ                                       ).setSmelting(SiO2, U3)     .setMcfg( 0, CertusQuartz   , 1*U, Quartzite        , 1*U)                                                                                                  ;
+		QuartzSand              = oredustcent   ( 9006, "Quartz Sand"               , SET_SAND              , 200, 200, 200, 255).put(MORTAR, BLACKLISTED_SMELTER, QUARTZ                                       ).setSmelting(SiO2, U3)     .setMcfg( 0, CertusQuartz   , 1*U, MilkyQuartz      , 1*U)                                                                                                  ;
 	}
 	
 	/** The "I don't care" Section, everything I don't want to do anything with right now, is right here. Just to make the Material Finder shut up about them. But I do see potential uses in some of these Materials. */
