@@ -41,8 +41,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 		// TODO: Graphite Electrodes are made from petroleum coke after it is mixed with coal tar pitch. They are then extruded and shaped, baked to carbonize the binder (pitch) and finally graphitized by heating it to temperatures approaching 3273K.
 		RM.Extruder.addRecipe2(T, 512, 512, OP.dust.mat(MT.Graphite, 1), IL.Shape_Extruder_Rod.get(0), OP.stick.mat(MT.Graphite, 1));
 		// TODO: Better Coolant Item than Lapis.
-		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis, 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
-		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		// TODO: Just no Ender IO Compat Handler and for this small thing I wont make a new Class.
 		CR.delate(MD.EIO, "itemYetaWrench");
 		
