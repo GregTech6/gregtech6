@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 Gregorius Techneticies
+ * Copyright (c) 2019 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -743,7 +743,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.DATA.Flux_T[3];       aRegistry.add("Flux Magnet (" + aMat.getLocal() + ")"               , "Magnets"                             , 11033, 10031, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_INPUT, 2048, NBT_OUTPUT,  256, NBT_WASTE_ENERGY, T, NBT_ENERGY_ACCEPTED, TD.Energy.RF, NBT_ENERGY_EMITTED, TD.Energy.MU), "SSS", "SMS", "SSS", 'M', aRegistry.getItem(10033), 'S', OP.stickLong.dat(aMat));
 		aMat = MT.DATA.Flux_T[4];       aRegistry.add("Flux Magnet (" + aMat.getLocal() + ")"               , "Magnets"                             , 11034, 10031, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_INPUT, 8192, NBT_OUTPUT, 1024, NBT_WASTE_ENERGY, T, NBT_ENERGY_ACCEPTED, TD.Energy.RF, NBT_ENERGY_EMITTED, TD.Energy.MU), "SSS", "SMS", "SSS", 'M', aRegistry.getItem(10034), 'S', OP.stickLong.dat(aMat));
 		aMat = MT.DATA.Flux_T[5];       aRegistry.add("Flux Magnet (" + aMat.getLocal() + ")"               , "Magnets"                             , 11035, 10031, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_INPUT,32768, NBT_OUTPUT, 4096, NBT_WASTE_ENERGY, T, NBT_ENERGY_ACCEPTED, TD.Energy.RF, NBT_ENERGY_EMITTED, TD.Energy.MU), "SSS", "SMS", "SSS", 'M', aRegistry.getItem(10035), 'S', OP.stickLong.dat(aMat));
-		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+																																																																																																																																							 
 		
 		// Transformers
 		aClass = MultiTileEntityTransformerElectric.class;

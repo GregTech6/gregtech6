@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 Gregorius Techneticies
+ * Copyright (c) 2019 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.tileentity.misc;
+package gregapi.tileentity.misc;
 
 import static gregapi.data.CS.*;
 

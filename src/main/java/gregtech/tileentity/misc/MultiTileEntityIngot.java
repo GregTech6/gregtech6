@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 Gregorius Techneticies
+ * Copyright (c) 2019 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import gregapi.data.TD;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.IIconContainer;
+import gregapi.tileentity.misc.MultiTileEntityPlaceable;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
