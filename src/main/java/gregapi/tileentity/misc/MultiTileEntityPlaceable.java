@@ -56,7 +56,7 @@ public abstract class MultiTileEntityPlaceable extends TileEntityBase03MultiTile
 	public ItemStack mStack;
 	public ITexture mTextureSides, mTextureTop;
 	public OreDictMaterial mMaterial = MT.Empty;
-	byte mSize = 1;
+	public byte mSize = 1;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
