@@ -100,7 +100,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		addItemBehavior(tLastID, tBehaviour); addItemBehavior(tLastID+1, tBehaviour);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYE_FLUIDS_CHEMICAL[i], 16), NF, IL.SPRAY_CAN_DYES[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_DYES_USED[i].get(1), IL.SPRAY_CAN_DYES[i].get(1));
-		
+		RM.Other.addFakeRecipe(F, ST.array(IL.SPRAY_CAN_DYES[i].get(1), IL.SPRAY_CAN_DYES_USED[i].get(1), ST.make(Blocks.wool, 1, 0)), ST.array(ST.make(Blocks.wool, 1, 15-i)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		
 		IL.SPRAY_CAN_FOAM[i].set(               addItem(tLastID =  1100 + 2 * i , "C-Foam Spray ("+DYE_NAMES[i]+")", "Full", TC.stack(TC.TERRA, 2), TC.stack(TC.FABRICO, 2)));
@@ -109,7 +109,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		addItemBehavior(tLastID, tBehaviour); addItemBehavior(tLastID+1, tBehaviour);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYED_C_FOAMS[i], 256), NF, IL.SPRAY_CAN_FOAM[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_FOAM_USED[i].get(1), IL.SPRAY_CAN_FOAM[i].get(1), ST.make(BlocksGT.CFoamFresh, 1, i), ST.make(BlocksGT.CFoam, 1, i));
-		
+		RM.Other.addFakeRecipe(F, ST.array(IL.SPRAY_CAN_FOAM[i].get(1), IL.SPRAY_CAN_FOAM_USED[i].get(1)), ST.array(ST.make(BlocksGT.CFoamFresh, 1, i), ST.make(BlocksGT.CFoam, 1, i)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		
 		IL.SPRAY_CAN_FOAM_OWNED[i].set(         addItem(tLastID =  1132 + 2 * i , "Advanced C-Foam Spray ("+DYE_NAMES[i]+")", "Full (C-Foam only breakable by Owner once dry)", TC.stack(TC.TERRA, 2), TC.stack(TC.FABRICO, 2), TC.stack(TC.SPIRITUS, 2)));
@@ -118,6 +118,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		addItemBehavior(tLastID, tBehaviour); addItemBehavior(tLastID+1, tBehaviour);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYED_C_FOAMS_OWNED[i], 256), NF, IL.SPRAY_CAN_FOAM_OWNED[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_FOAM_OWNED_USED[i].get(1), IL.SPRAY_CAN_FOAM_OWNED[i].get(1));
+		RM.Other.addFakeRecipe(F, ST.array(IL.SPRAY_CAN_FOAM_OWNED[i].get(1), IL.SPRAY_CAN_FOAM_OWNED_USED[i].get(1)), ST.array(ST.make(BlocksGT.CFoamFresh, 1, i, "Player-Owned C-Foam"), ST.make(BlocksGT.CFoam, 1, i, "Player-Owned C-Foam")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		}
 		
 		

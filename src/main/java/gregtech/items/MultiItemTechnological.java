@@ -96,6 +96,10 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Retriever_Item.set(                  addItem(tLastID =  1031, "Item Retriever Cover"                  , "Pulls Items from the attached Pipe Network"      , new CoverRetrieverItem()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 1), TC.stack(TC.VACUOS, 1), TC.stack(TC.ITER, 1)));
 		
 		
+		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(1000), FL.Ocean.make(1000), FL.Swampwater.make(1000)), 0, 0, 0);
+		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Vent .get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Air.make(1000), FL.Air_Nether.make(1000), FL.Air_End.make(1000)), 0, 0, 0);
+		
+		
 		IL.Cover_Logistics_Display_CPU_Logic.set(     addItem(tLastID =  1086, "Logistics Display (CPU Logic)"         , "For use with Logistics Cores and Wiring"         , CoverLogisticsDisplayCPULogic.INSTANCE                     , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 2), TC.stack(TC.ITER, 1)));
 		IL.Cover_Logistics_Display_CPU_Control.set(   addItem(tLastID =  1087, "Logistics Display (CPU Control)"       , "For use with Logistics Cores and Wiring"         , CoverLogisticsDisplayCPUControl.INSTANCE                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 2), TC.stack(TC.ITER, 1)));
 		IL.Cover_Logistics_Display_CPU_Storage.set(   addItem(tLastID =  1088, "Logistics Display (CPU Storage)"       , "For use with Logistics Cores and Wiring"         , CoverLogisticsDisplayCPUStorage.INSTANCE                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 2), TC.stack(TC.ITER, 1)));

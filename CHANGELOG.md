@@ -25,6 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Compatibility with Tinkers Gregworks for GT6. It broke whenever I renamed some Variables.
 [FIXED] Lack of certain Types of Support/Recipes for Milky Quartz. Now it should be just as compatible with GT6 as Nether Quartz.
 [CHANGED] Lazurite and Sodalite can now be used to make IC2 Coolant too.
+[ADDED] NEI Handler for "Other Relations" which is dedicated for random helpful Information, such as "Air Vent -> Air" or "Drain -> Water".
 
 
 6.11.20:
