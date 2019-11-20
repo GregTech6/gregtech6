@@ -17,4 +17,3 @@ else
 fi
 
 echo "Done formatting all Source Files"
-
