@@ -24,6 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.11.21: (Not released yet)
 [FIXED] Compatibility with Tinkers Gregworks for GT6. It broke whenever I renamed some Variables.
 [FIXED] Lack of certain Types of Support/Recipes for Milky Quartz. Now it should be just as compatible with GT6 as Nether Quartz.
+[FIXED] Rails are now no longer considered Furnace Fuel even though they have Wood in them. This caused Issues with the Railcraft Tunnelbore and should be fixed now.
 [CHANGED] Lazurite and Sodalite can now be used to make IC2 Coolant too.
 [ADDED] NEI Handler for "Other Relations" which is dedicated for random helpful Information, such as "Air Vent -> Air" or "Drain -> Water".
 

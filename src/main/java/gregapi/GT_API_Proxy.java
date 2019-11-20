@@ -103,6 +103,7 @@ import gregapi.util.WD;
 import gregapi.worldgen.GT6WorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockJukebox.TileEntityJukebox;
+import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -1123,6 +1124,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	public int getBurnTime(ItemStack aFuel) {
 		if (ST.invalid(aFuel) || FL.getFluid(aFuel, T) != null) return 0;
 		Block aBlock = ST.block(aFuel);
+		if (aBlock instanceof BlockRailBase) return 0;
 		if (aBlock == Blocks.red_mushroom_block || aBlock == Blocks.brown_mushroom_block) return (3 * TICKS_PER_SMELT) / 2;
 		if (aBlock == BlocksGT.BalesGrass) return (9 * TICKS_PER_SMELT) / ((ST.meta_(aFuel) & 3) == 1 ? 2 : 4);
 		if (aBlock instanceof BlockBaseBale) return (9 * TICKS_PER_SMELT) / 4;
