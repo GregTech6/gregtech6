@@ -338,7 +338,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.delate(ST.make(Items.golden_apple, 1, 1));
 		CR.delate(ST.make(Items.golden_carrot, 1, 0));
 		
-		CR.shapeless(ST.make(Items.arrow, 1, 0), DEF_NCC, new Object[] {"itemFlint", OP.arrowGtWood.dat(MT.Empty)});
+		CR.shapeless(ST.make(Items.arrow, 1, 0), DEF_NCC, new Object[] {OD.itemFlint, OP.arrowGtWood.dat(MT.Empty)});
 		
 		CR.shaped(ST.make(Blocks.stained_glass, 8, 0), DEF, "GGG", "GDG", "GGG", 'G', ST.make(Blocks.glass, 1, 0), 'D', DYE_OREDICTS[15]);
 		CR.shaped(ST.make(Items.bowl, 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankWood);

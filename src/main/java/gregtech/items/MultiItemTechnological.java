@@ -96,7 +96,7 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Retriever_Item.set(                  addItem(tLastID =  1031, "Item Retriever Cover"                  , "Pulls Items from the attached Pipe Network"      , new CoverRetrieverItem()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 1), TC.stack(TC.VACUOS, 1), TC.stack(TC.ITER, 1)));
 		
 		
-		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(1000), FL.Ocean.make(1000), FL.Swampwater.make(1000)), 0, 0, 0);
+		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(1000), FL.Ocean.make(1000), FL.Dirty_Water.make(1000)), 0, 0, 0);
 		RM.Other.addFakeRecipe(F, ST.array(IL.Cover_Vent .get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Air.make(1000), FL.Air_Nether.make(1000), FL.Air_End.make(1000)), 0, 0, 0);
 		
 		

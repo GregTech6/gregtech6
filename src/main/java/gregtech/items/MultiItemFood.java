@@ -95,8 +95,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		ItemsGT.addNEIRedirects(IL.Bale_Oats    .get(1), IL.Crop_Oats       .get(1));
 		ItemsGT.addNEIRedirects(IL.Bale_Barley  .get(1), IL.Crop_Barley     .get(1));
 		ItemsGT.addNEIRedirects(IL.Bale_Rice    .get(1), IL.Crop_Rice       .get(1));
-		RM.Other.addFakeRecipe(F, ST.array(ST.make(ToolsGT.sMetaTool, 1, ToolsGT.KNIFE, "Just cut Tall Grass with this"), ST.make(ToolsGT.sMetaTool, 1, ToolsGT.SENSE, "Or cut Tall Grass with this"), ST.make(Blocks.tallgrass, 1, 0)), ST.array(IL.Grass.get(1), IL.Bale.get(1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
-		RM.Other.addFakeRecipe(F, ST.array(IL.Bale.get(1, "Put the Bale Outside")), ST.array(IL.Bale_Dry.get(1, "When its dry Outside"), IL.Bale_Moldy.get(1, "When its wet Outside"), IL.Bale_Rotten.get(1, "When its wet Outside and more time passed"), IL.Grass_Dry.get(1, "When its dry Outside"), IL.Grass_Moldy.get(1, "When its wet Outside"), IL.Grass_Rotten.get(1, "When its wet Outside and more time passed")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		RM.Other.addFakeRecipe(F, ST.array(ST.make(ToolsGT.sMetaTool, 1, ToolsGT.KNIFE, "Just cut Tall Grass with this"), ST.make(ToolsGT.sMetaTool, 1, ToolsGT.SENSE, "Or cut Tall Grass with this"), ST.make(Blocks.tallgrass, 1, 1)), ST.array(IL.Grass.get(1), IL.Bale.get(1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		RM.Other.addFakeRecipe(F, ST.array(IL.Bale.getWithName(1, "Put the Bale Outside")), ST.array(IL.Bale_Dry.getWithName(1, "When its dry Outside"), IL.Bale_Moldy.getWithName(1, "When its wet Outside"), IL.Bale_Rotten.getWithName(1, "When its wet Outside and more time passed"), IL.Grass_Dry.getWithName(1, "When its dry Outside"), IL.Grass_Moldy.getWithName(1, "When its wet Outside"), IL.Grass_Rotten.getWithName(1, "When its wet Outside and more time passed")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		
 		

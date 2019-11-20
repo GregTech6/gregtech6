@@ -100,7 +100,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		addItemBehavior(tLastID, tBehaviour); addItemBehavior(tLastID+1, tBehaviour);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYE_FLUIDS_CHEMICAL[i], 16), NF, IL.SPRAY_CAN_DYES[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_DYES_USED[i].get(1), IL.SPRAY_CAN_DYES[i].get(1));
-		RM.Other.addFakeRecipe(F, ST.array(IL.SPRAY_CAN_DYES[i].get(1), IL.SPRAY_CAN_DYES_USED[i].get(1), ST.make(Blocks.wool, 1, 0)), ST.array(ST.make(Blocks.wool, 1, 15-i)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		RM.Other.addFakeRecipe(F, ST.array(IL.SPRAY_CAN_DYES[i].get(1), IL.SPRAY_CAN_DYES_USED[i].get(1), ST.make(Blocks.wool, 1, 0), ST.make(Blocks.glass_pane, 1, 0), ST.make(Blocks.glass, 1, 0), ST.make(Blocks.hardened_clay, 1, 0)), ST.array(NI, NI, ST.make(Blocks.wool, 1, 15-i), ST.make(Blocks.stained_glass_pane, 1, 15-i), ST.make(Blocks.stained_glass, 1, 15-i), ST.make(Blocks.stained_hardened_clay, 1, 15-i)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		
 		IL.SPRAY_CAN_FOAM[i].set(               addItem(tLastID =  1100 + 2 * i , "C-Foam Spray ("+DYE_NAMES[i]+")", "Full", TC.stack(TC.TERRA, 2), TC.stack(TC.FABRICO, 2)));
