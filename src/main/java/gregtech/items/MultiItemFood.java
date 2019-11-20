@@ -27,6 +27,7 @@ import gregapi.data.CS.BushesGT;
 import gregapi.data.CS.FoodsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.OreDictToolNames;
+import gregapi.data.CS.ToolsGT;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItemRandom;
@@ -94,8 +95,12 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		ItemsGT.addNEIRedirects(IL.Bale_Oats    .get(1), IL.Crop_Oats       .get(1));
 		ItemsGT.addNEIRedirects(IL.Bale_Barley  .get(1), IL.Crop_Barley     .get(1));
 		ItemsGT.addNEIRedirects(IL.Bale_Rice    .get(1), IL.Crop_Rice       .get(1));
-
-
+		RM.Other.addFakeRecipe(F, ST.array(ST.make(ToolsGT.sMetaTool, 1, ToolsGT.KNIFE, "Just cut Tall Grass with this"), ST.make(ToolsGT.sMetaTool, 1, ToolsGT.SENSE, "Or cut Tall Grass with this"), ST.make(Blocks.tallgrass, 1, 0)), ST.array(IL.Grass.get(1), IL.Bale.get(1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		RM.Other.addFakeRecipe(F, ST.array(IL.Bale.get(1, "Put the Bale Outside")), ST.array(IL.Bale_Dry.get(1, "When its dry Outside"), IL.Bale_Moldy.get(1, "When its wet Outside"), IL.Bale_Rotten.get(1, "When its wet Outside and more time passed"), IL.Grass_Dry.get(1, "When its dry Outside"), IL.Grass_Moldy.get(1, "When its wet Outside"), IL.Grass_Rotten.get(1, "When its wet Outside and more time passed")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		
+		
+		
+		
 		IL.Cerublossom.set(                         addItem(tLastID = 12010, "Cerublossom"                              , "Used for magical Purposes"                                   , new Behavior_Turn_Into(IL.ARS_Cerublossom ), IL.ARS_Cerublossom   .exists() ? TD.Creative.HIDDEN : "flowerCerublossom"    , TC.stack(TC.HERBA, 1), TC.stack(TC.PRAECANTIO, 1), TC.stack(TC.LUX, 1)));
 		IL.DesertNova.set(                          addItem(tLastID = 12011, "Desert Nova"                              , "Used for magical Purposes"                                   , new Behavior_Turn_Into(IL.ARS_DesertNova  ), IL.ARS_DesertNova    .exists() ? TD.Creative.HIDDEN : "flowerDesertNova"     , TC.stack(TC.HERBA, 1), TC.stack(TC.PRAECANTIO, 1), TC.stack(TC.LUX, 1)));
 
