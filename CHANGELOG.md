@@ -27,6 +27,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Rails are now no longer considered Furnace Fuel even though they have Wood in them. This caused Issues with the Railcraft Tunnelbore and should be fixed now.
 [CHANGED] Lazurite and Sodalite can now be used to make IC2 Coolant too.
 [ADDED] NEI Handler for "Other Relations" which is dedicated for random helpful Information, such as "Air Vent -> Air" or "Drain -> Water".
+[ADDED] Adamantium Gearboxes and Axles as a high Tier, so that it's never impossible to transmit large amounts of Power.
 
 
 6.11.20:
