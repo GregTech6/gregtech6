@@ -1901,6 +1901,7 @@ public class CS {
 		, OB                = "OpenBlocks"
 		, MNTL              = "Mantle"
 		, TiC               = "TConstruct"
+		, MF2               = "minefantasy2"
 		, FZ                = "factorization"
 		, BWM               = "weaponmod"
 		, OMT               = "openmodularturrets"

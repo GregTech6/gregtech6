@@ -232,6 +232,7 @@ public class MD {
 	, OB                = new ModData(ModIDs.OB                 , "Open Blocks")
 	, MNTL              = new ModData(ModIDs.MNTL               , "Mantle")
 	, TiC               = new ModData(ModIDs.TiC                , "Tinkers Construct")
+	, MF2               = new ModData(ModIDs.MF2                , "MineFantasy II")
 	, FZ                = new ModData(ModIDs.FZ                 , "Factorization")
 	, BWM               = new ModData(ModIDs.BWM                , "Balkon's Weapon Mod")
 	, OMT               = new ModData(ModIDs.OMT                , "Open Modular Turrets")

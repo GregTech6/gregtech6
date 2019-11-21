@@ -58,20 +58,29 @@ public class ItemStackMap<K extends ItemStackContainer, V> extends HashMap<ItemS
 	public V get(long aID, long aMeta) {
 		return get(new ItemStackContainer(aID, 1, aMeta));
 	}
-	
 	public V get(Item aItem, long aMeta) {
 		return get(new ItemStackContainer(aItem, 1, aMeta));
 	}
-	
 	public V get(Block aBlock, long aMeta) {
 		return get(new ItemStackContainer(aBlock, 1, aMeta));
 	}
-	
 	public V get(ModData aMod, String aName, long aMeta) {
 		return aMod.mLoaded ? get(new ItemStackContainer(ST.make(aMod, aName, 1, aMeta))) : null;
 	}
 	
 	public V put(ItemStack aKey, V aValue) {
 		return put(new ItemStackContainer(aKey), aValue);
+	}
+	public V put(long aID, long aMeta, V aValue) {
+		return put(new ItemStackContainer(aID, 1, aMeta), aValue);
+	}
+	public V put(Item aItem, long aMeta, V aValue) {
+		return put(new ItemStackContainer(aItem, 1, aMeta), aValue);
+	}
+	public V put(Block aBlock, long aMeta, V aValue) {
+		return put(new ItemStackContainer(aBlock, 1, aMeta), aValue);
+	}
+	public V put(ModData aMod, String aName, long aMeta, V aValue) {
+		return put(new ItemStackContainer(ST.make(aMod, aName, 1, aMeta)), aValue);
 	}
 }

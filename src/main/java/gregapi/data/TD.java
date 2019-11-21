@@ -384,6 +384,8 @@ public class TD {
 		public static final TagData MEAT                                    = TagData.createTagData("PROPERTIES.MEAT", "Meat");
 		/** If this Material is some kind of Rotten */
 		public static final TagData ROTTEN                                  = TagData.createTagData("PROPERTIES.ROTTEN", "Rotten");
+		/** If this Material is some kind of Coal */
+		public static final TagData COAL                                    = TagData.createTagData("PROPERTIES.COAL", "Coal");
 		/** If this Material is some kind of Stone */
 		public static final TagData STONE                                   = TagData.createTagData("PROPERTIES.STONE", "Stone");
 		/** If this Material is some kind of Pearl */
@@ -446,9 +448,9 @@ public class TD {
 		public static final TagData DONT_SHOW_THIS_COMPONENT                = TagData.createTagData("PROPERTIES.DONT_SHOW_THIS_COMPONENT", "Not shown as Component");
 		
 		/** Contains all known Property Tags. */
-		public static final List<TagData> ALL                               = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, LIGHTING, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, HAS_COLOR, AUTO_BLACKLIST, AUTO_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG, UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT));
+		public static final List<TagData> ALL                               = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, LIGHTING, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, HAS_COLOR, AUTO_BLACKLIST, AUTO_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG, UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT));
 		/** Contains all relevant Property Tags. */
-		public static final List<TagData> ALL_RELEVANTS                     = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF));
+		public static final List<TagData> ALL_RELEVANTS                     = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF));
 	}
 	
 	/** Describing the kind of binding the Compound Material is having */
