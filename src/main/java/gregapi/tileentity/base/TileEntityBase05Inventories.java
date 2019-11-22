@@ -53,7 +53,7 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 			for (int i = 0; i < tList.tagCount(); i++) {
 				NBTTagCompound tNBT = tList.getCompoundTagAt(i);
 				int tSlot = tNBT.getShort("s");
-				if (tSlot >= 0 && tSlot < mInventory.length) mInventory[tSlot] = ST.load(tNBT);
+				if (tSlot >= 0 && tSlot < mInventory.length) mInventory[tSlot] = ST.load(tNBT, getDefaultStack(tSlot));
 			}
 		}
 	}
@@ -110,6 +110,8 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	public abstract boolean canDrop(int aSlot);
 	public boolean breakDrop(int aSlot) {return T;}
 	public boolean canSave  (int aSlot) {return T;}
+	/** Returns a Stack to be put into that Slot in case of a Mod being uninstalled causing a Loading Error for the original ItemStack. For example Shelves just replace the missing Item with a normal Book instead. */
+	public ItemStack getDefaultStack(int aSlot) {return null;}
 	
 	// These Functions are intentionally duplicates of the Functions above.
 	@Override public int getSizeInventoryGUI() {return mInventory==null?0:mInventory.length;}

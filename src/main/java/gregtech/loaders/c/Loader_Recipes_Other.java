@@ -85,6 +85,11 @@ public class Loader_Recipes_Other implements Runnable {
 		}
 		}
 		
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(MT.KNO3, U  ), OM.dust(MT.NaNO3, U  ), OM.dust(MT.Niter, 2*U  ));
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(MT.KNO3, U4 ), OM.dust(MT.NaNO3, U4 ), OM.dust(MT.Niter, 2*U4 ));
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(MT.KNO3, U9 ), OM.dust(MT.NaNO3, U9 ), OM.dust(MT.Niter, 2*U9 ));
+		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(MT.KNO3, U72), OM.dust(MT.NaNO3, U72), OM.dust(MT.Niter, 2*U72));
+		
 		for (OreDictMaterial tSapphire : ANY.Sapphire.mToThis) {
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U ), OM.dust(MT.Redstone   , 5*U ), OM.dust(MT.EnergiumRed , 9*U));
 		RM.Mixer.addRecipe2(T, 16,  144, OM.dust(tSapphire, 4*U9), OM.dust(MT.Redstone   , 5*U9), OM.dust(MT.EnergiumRed ,   U));
@@ -136,7 +141,7 @@ public class Loader_Recipes_Other implements Runnable {
 		addListener(rockGt.dat(MT.Netherrack), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, rockGt.mat(MT.NetherBrick, 1));}});
 		
 		
-		addListener(new Object[] {OD.itemRubber, "ingotIron", "oreCoal", "oreIron", "oreGold", "oreRedstone", "oreLapis", "oreDiamond", "oreEmerald", "oreBauxite", "oreAluminium", "oreTitanium", "oreTungsten"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new Object[] {OD.itemRubber, "ingotIron", "oreCoal", "oreIron", "oreHematite", "oreMagnetite", "oreBogIron", "oreSiderite", "oreTaconite", "oreGold", "oreRedstone", "oreLapis", "oreDiamond", "oreEmerald", "oreBauxite", "oreAluminium", "oreTitanium", "oreTungsten", "oreSulfur", "oreSaltpeter", "oreNiter"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.rem_smelting(aEvent.mStack);
 		}});
 		addListener(OD.itemResin, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -188,6 +193,8 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.NaNO3, U*4)), tWater, NF, OM.dust(MT.Cryotheum, 8*U));
 		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), OM.dust(MT.KNO3)), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
 		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.KNO3, U*4)), tWater, NF, OM.dust(MT.Cryotheum, 8*U));
+		RM.CryoMixer    .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), OM.dust(MT.Niter)), FL.mul(tWater, 1, 4, T), NF, OM.dust(MT.Cryotheum, 2*U));
+		RM.CryoMixer    .addRecipeX(T, 16,  128, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.Niter, U*4)), tWater, NF, OM.dust(MT.Cryotheum, 8*U));
 		
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(gem .mat(MT.ChargedCertusQuartz, 1), gem .mat(MT.NetherQuartz, 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, gem .mat(MT.Fluix, 2));
 		RM.Mixer        .addRecipeX(T, 16,   64, ST.array(dust.mat(MT.ChargedCertusQuartz, 1), dust.mat(MT.NetherQuartz, 1), dust.mat(MT.Redstone, 1)), FL.mul(tWater, 1, 2, T), NF, dust.mat(MT.Fluix, 2));
@@ -516,8 +523,21 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Coal       , U9), OM.dust(MT.S, U9), OM.dust(MT.KNO3 , U9)), OM.dust(MT.Gunpowder,    U3));
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Charcoal   , U9), OM.dust(MT.S, U9), OM.dust(MT.KNO3 , U9)), OM.dust(MT.Gunpowder, 2* U9));
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis)
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blitz), OM.dust(MT.KNO3 ), OM.dust(tMat)), OM.dust(MT.Aerotheum, 2*U));
-		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blitz), OM.dust(MT.KNO3 ), ST.make(Blocks.sand, 1, W)), OM.dust(MT.Aerotheum, 2*U));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blitz), OM.dust(MT.KNO3), OM.dust(tMat)), OM.dust(MT.Aerotheum, 2*U));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blitz), OM.dust(MT.KNO3), ST.make(Blocks.sand, 1, W)), OM.dust(MT.Aerotheum, 2*U));
+		
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.C          ,U*2), OM.dust(MT.S    ), OM.dust(MT.Niter    )), OM.dust(MT.Gunpowder, 3*U  ));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Coal           ), OM.dust(MT.S    ), OM.dust(MT.Niter    )), OM.dust(MT.Gunpowder, 3*U  ));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Charcoal       ), OM.dust(MT.S    ), OM.dust(MT.Niter    )), OM.dust(MT.Gunpowder, 2*U  ));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.C        ,2* U4), OM.dust(MT.S, U4), OM.dust(MT.Niter, U4)), OM.dust(MT.Gunpowder, 3* U4));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Coal       , U4), OM.dust(MT.S, U4), OM.dust(MT.Niter, U4)), OM.dust(MT.Gunpowder, 3* U4));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Charcoal   , U4), OM.dust(MT.S, U4), OM.dust(MT.Niter, U4)), OM.dust(MT.Gunpowder,    U2));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.C        ,2* U9), OM.dust(MT.S, U9), OM.dust(MT.Niter, U9)), OM.dust(MT.Gunpowder,    U3));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Coal       , U9), OM.dust(MT.S, U9), OM.dust(MT.Niter, U9)), OM.dust(MT.Gunpowder,    U3));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Charcoal   , U9), OM.dust(MT.S, U9), OM.dust(MT.Niter, U9)), OM.dust(MT.Gunpowder, 2* U9));
+		for (OreDictMaterial tMat : ANY.SiO2.mToThis)
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blitz), OM.dust(MT.Niter), OM.dust(tMat)), OM.dust(MT.Aerotheum, 2*U));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blitz), OM.dust(MT.Niter), ST.make(Blocks.sand, 1, W)), OM.dust(MT.Aerotheum, 2*U));
 		
 		
 		
@@ -530,6 +550,10 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), OM.dust(MT.Snow,  U4), OM.dust(MT.KNO3)), OM.dust(MT.Cryotheum, 2*U));
 		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), ST.make(Blocks.snow, 1, W), OM.dust(MT.KNO3, U*4)), OM.dust(MT.Cryotheum, 8*U));
 		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.Snow), OM.dust(MT.KNO3, U*4)), OM.dust(MT.Cryotheum, 8*U));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), ST.make(Items.snowball, 1, W), OM.dust(MT.Niter)), OM.dust(MT.Cryotheum, 2*U));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), OM.dust(MT.Snow,  U4), OM.dust(MT.Niter)), OM.dust(MT.Cryotheum, 2*U));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), ST.make(Blocks.snow, 1, W), OM.dust(MT.Niter, U*4)), OM.dust(MT.Cryotheum, 8*U));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.Snow), OM.dust(MT.Niter, U*4)), OM.dust(MT.Cryotheum, 8*U));
 		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Fe             ), OM.dust(MT.LiveRoot), OM.dust(MT.Au,  U9)), OM.dust(MT.IronWood, U*2));
 		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.GildedIron          ), OM.dust(MT.LiveRoot  ), OM.dust(MT.IronWood,   U*2));
 		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Bi                  ), OM.dust(MT.Brass, 4*U  ), OM.dust(MT.BismuthBronze, 5*U2));

@@ -529,7 +529,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.sphalerite"        , T, T,   3000, MT.OREMATS.Sphalerite           , (Block)BlocksGT.FlowersA,  3, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.smithsonite"       , T, T,   3000, MT.OREMATS.Smithsonite          , (Block)BlocksGT.FlowersA,  3, GEN_FLOOR); // TODO Flower
 		new WorldgenOresBedrock("ore.bedrock.pentlandite"       , T, T,   3000, MT.OREMATS.Pentlandite          , (Block)BlocksGT.FlowersA,  4, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.saltpeter"         , T, T,   3000, MT.KNO3                         , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.saltpeter"         , T, T,   3000, MT.Niter                        , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
 		new WorldgenOresBedrock("ore.bedrock.bauxite"           , T, T,   2000, MT.OREMATS.Bauxite              , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
 		new WorldgenOresBedrock("ore.bedrock.cassiterite"       , T, T,   2000, MT.OREMATS.Cassiterite          , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
 		new WorldgenOresBedrock("ore.bedrock.chalcopyrite"      , T, T,   2000, MT.OREMATS.Chalcopyrite         , (Block)BlocksGT.FlowersA,  2, GEN_FLOOR);
@@ -576,8 +576,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.ambrosium"         , T,  30, 120,  64, MT.Ambrosium                    , GEN_AETHER);
 		new WorldgenOresSmall("ore.small.zanite"            , T,  30, 120,  16, MT.Zanite                       , GEN_AETHER);
 		new WorldgenOresSmall("ore.small.netherquartz"      , T,  30, 120,  64, MT.NetherQuartz                 , GEN_NETHER);
-		new WorldgenOresSmall("ore.small.saltpeter"         , T,  10,  60,   8, MT.KNO3                         , GEN_NETHER);
-		new WorldgenOresSmall("ore.small.sodiumnitrate"     , T,  10,  60,   8, MT.NaNO3                        , GEN_NETHER);
+		new WorldgenOresSmall("ore.small.niter"             , T,  10,  60,  16, MT.Niter                        , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.sulfur_n"          , T,  10,  60,  32, MT.S                            , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.sulfur_o"          , T,   5,  15,   8, MT.S                            , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS);
 		

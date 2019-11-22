@@ -963,7 +963,7 @@ public class MT {
 	
 	
 	Graphite                = oredustdcmp   ( 9174, "Graphite"              , SET_DULL              , 128, 128, 128, 255).put(BLACKLISTED_SMELTER, BRITTLE, MORTAR, STICKS)                                                                                             .uumMcfg( 0, C              , 1*U)                                                                                                                          .qual(1, 5.0, 32, 2).setSmelting(C, U2).setBurning(Ash, U4).heat(1700, C.mBoilingPoint),
-	Niter                   = cent          ( 8206, "Niter"                 , SET_FLINT             , 255, 200, 200, 255).put(G_GEM_ORES, CRYSTAL, BRITTLE, MORTAR)                                                                                                     .setMcfg( 0, KNO3           , 1*U)                                                                                                                          ,
+	Niter                   = oredustcent   ( 8206, "Niter"                 , SET_FLINT             , 255, 200, 200, 255).put(G_GEM_ORES, CRYSTAL, BRITTLE, MORTAR)                                                                                                     .uumMcfg( 0, KNO3           , 1*U, NaNO3            , 1*U)                                                                                                  ,
 	Phosphorus              = cent          ( 8208, "Phosphorus"            , SET_FLINT             , 255, 255,   0, 255).put(G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, EXPLOSIVE, MD.FR, "Phosphorous")                                                                  .uumMcfg( 0, Ca             , 3*U, PO4              , 2*U)                                                                                                  ,
 	Apatite                 = elec          ( 8209, "Apatite"               , SET_DIAMOND           , 120, 180, 250, 255).put(G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, CRYSTAL, CRYSTALLISABLE, MD.FR)                                                                   .uumMcfg( 0, Ca             , 5*U, PO4              , 3*U, Cl               , 1*U)                                                                          .aspects(TC.MESSIS, 2),
 	Phosphorite             = elec          ( 8226, "Phosphorite"           , SET_DIAMOND           ,  50,  50,  65, 255).put(G_GEM_ORES, FLAMMABLE, BRITTLE, MORTAR, CRYSTAL, CRYSTALLISABLE)                                                                          .uumMcfg( 0, Ca             , 5*U, PO4              , 3*U, F                , 1*U)                                                                          .aspects(TC.MESSIS, 2),
@@ -2396,8 +2396,8 @@ public class MT {
 			CaCO3                           .addOreByProducts(OREMATS.Malachite     );
 			Netherrack                      .addOreByProducts(S                     );
 			Flint                           .addOreByProducts(Obsidian              );
-			NaNO3                           .addOreByProducts(KNO3                  );
-			KNO3                            .addOreByProducts(NaNO3                 );
+			NaNO3                           .addOreByProducts(KNO3                  , Niter                     );
+			KNO3                            .addOreByProducts(NaNO3                 , Niter                     );
 			Niter                           .addOreByProducts(KNO3                  , NaNO3                     );
 			Endstone                        .addOreByProducts(He_3                  );
 			Hf                              .addOreByProducts(Zircon                );

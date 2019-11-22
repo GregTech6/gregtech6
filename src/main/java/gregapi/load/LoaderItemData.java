@@ -769,6 +769,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.IC2, "blockBasalt"         , 1, 0));
 		OM.reg(OP.stone, MT.Basalt                              , ST.make(MD.RC, "brick.abyssal"        , 1, W));
 		OM.reg(OP.stone, MT.Marble                              , ST.make(MD.RC, "brick.quarried"       , 1, W));
+		OM.reg(OP.stone, MT.Limestone                           , ST.make(MD.MF2, "limestone"           , 1, W));
 		OM.reg(OP.blockSolid, MT.Obsidian                       , ST.make(Blocks.obsidian               , 1, W));
 		OM.reg(OP.stoneMossy                                    , ST.make(Blocks.mossy_cobblestone      , 1, W));
 		OM.reg(OP.stoneCobble                                   , ST.make(Blocks.mossy_cobblestone      , 1, W));
@@ -783,6 +784,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.stone, MT.Netherrack                          , ST.make(Blocks.netherrack             , 1, W));
 		OM.reg(OP.stone, MT.NetherBrick                         , ST.make(Blocks.nether_brick           , 1, W));
 		OM.reg(OP.stone, MT.Endstone                            , ST.make(Blocks.end_stone              , 1, W));
+		
 		
 		OM.data(MD.LycM_Demon, "demoncrystal"               , 1,   W, MT.Glowstone          , U*4);
 		

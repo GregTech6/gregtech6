@@ -392,20 +392,28 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.SoylentGreen), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.SoylentGreen), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Niter), OM.dust(MT.SoylentGreen), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.MeatRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.MeatRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Niter), OM.dust(MT.MeatRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.FishRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.FishRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Niter), OM.dust(MT.FishRaw     ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.MeatCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.MeatCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Niter), OM.dust(MT.MeatCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.FishCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.FishCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Niter), OM.dust(MT.FishCooked  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.MeatRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.MeatRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Niter), OM.dust(MT.MeatRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), OM.dust(MT.FishRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), OM.dust(MT.FishRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Niter), OM.dust(MT.FishRotten  ), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.NaNO3), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.KNO3 ), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
+		RM.Mixer        .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Niter), ST.make(Blocks.dirt, 2, W), ST.make(Blocks.sand, 2, W)), IL.FR_Fertilizer.get(2));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), ST.make(Blocks.sand, 2, W), IL.FR_Fertilizer.get(8));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.Ash, U*8), IL.FR_Fertilizer.get(16));
 		RM.Mixer        .addRecipe2(T, 16,   16, OM.dust(MT.Apatite), OM.dust(MT.DarkAsh, U*4), IL.FR_Fertilizer.get(16));

@@ -845,17 +845,25 @@ public class ST {
 	
 	/** Loads an ItemStack properly. */
 	public static ItemStack load(NBTTagCompound aNBT, String aTagName) {
-		return aNBT == null ? null : load(aNBT.getCompoundTag(aTagName));
+		return aNBT == null ? null : load(aNBT.getCompoundTag(aTagName), NI);
+	}
+	/** Loads an ItemStack properly. */
+	public static ItemStack load(NBTTagCompound aNBT, String aTagName, ItemStack aDefault) {
+		return aNBT == null ? null : load(aNBT.getCompoundTag(aTagName), aDefault);
 	}
 	
 	/** Loads an ItemStack properly. */
 	public static ItemStack load(NBTTagCompound aNBT) {
+		return load(aNBT, NI);
+	}
+	/** Loads an ItemStack properly. */
+	public static ItemStack load(NBTTagCompound aNBT, ItemStack aDefault) {
 		if (aNBT == null || aNBT.hasNoTags()) return null;
 		ItemStack rStack = make(Item.getItemById(aNBT.getShort("id")), aNBT.getInteger("Count"), aNBT.getShort("Damage"), aNBT.hasKey("tag", 10)?aNBT.getCompoundTag("tag"):null);
 		if (rStack == null) if (aNBT.hasKey("od")) {
 			rStack = OreDictManager.INSTANCE.getStack(aNBT.getString("od"), aNBT.getInteger("Count"));
-			if (rStack == null) return null;
-		} else return null;
+			if (rStack == null) return aDefault == null ? null : update_(OM.get_(aDefault));
+		} else return aDefault == null ? null : update_(OM.get_(aDefault));
 		// Does anyone even migrate IC2exp Items anymore? This is only used when updating from IC2-Non-Exp to IC2-Exp.
 		if (item_(rStack).getClass().getName().startsWith("ic2.core.migration")) item_(rStack).onUpdate(rStack, DW, null, 0, F);
 		return update_(OM.get_(rStack));

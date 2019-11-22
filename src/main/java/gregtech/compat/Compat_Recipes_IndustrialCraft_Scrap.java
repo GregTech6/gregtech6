@@ -109,6 +109,7 @@ public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 			COMPAT_IC2.scrapbox(1.50F, OP.scrapGt.mat(MT.S                  , 1));
 			COMPAT_IC2.scrapbox(2.00F, OP.scrapGt.mat(MT.KNO3               , 1));
 			COMPAT_IC2.scrapbox(2.00F, OP.scrapGt.mat(MT.NaNO3              , 1));
+			COMPAT_IC2.scrapbox(2.00F, OP.scrapGt.mat(MT.Niter              , 1));
 			COMPAT_IC2.scrapbox(2.00F, OP.scrapGt.mat(MT.Lazurite           , 1));
 			COMPAT_IC2.scrapbox(2.00F, OP.scrapGt.mat(MT.Pyrite             , 1));
 			COMPAT_IC2.scrapbox(2.00F, OP.scrapGt.mat(MT.CaCO3              , 1));
