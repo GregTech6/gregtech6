@@ -332,6 +332,15 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "orePotassiumFeldspar"            , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreApatite"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IHL, "oreSaltpeter"                    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreCoalRich"                     , null)); // The other two MF2 Ore Blocks are not safe for removal due to lack of Material Data for them.
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreNitre"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreSulfur"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreTin"                          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreCopper"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreSilver"                       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreTungsten"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreBorax"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MF2, "oreKaolinite"                    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "basalt"                          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "granite"                         , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MIN, "andesite"                        , null));
@@ -354,7 +363,6 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ReC, "reactorcraft_block_fluoriteore"  , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ReC, "reactorcraft_block_ore"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ElC, "electricraft_block_ore"          , null));
-		
 		
 		
 		IL.Bottle_Empty                         .set(ST.make(Items.glass_bottle, 1, 0));

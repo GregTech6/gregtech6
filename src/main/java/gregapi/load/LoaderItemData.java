@@ -394,6 +394,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg("foodRabbitcooked"                   , ST.make(MD.EtFu, "rabbit_cooked", 1, 0));
 		OM.reg(OD.container1000rubbertreesap        , ST.make(MD.IHL, "bucket_fluidRubberTreeSap", 1, 0));
 		OM.reg(OD.container1000spruceresin          , ST.make(MD.IHL, "bucket_SpruceResin", 1, 0));
+		OM.reg("foodDough"                          , ST.make(MD.MF2, "MF_UFooddough", 1, 0));
 		OM.reg("foodCheese"                         , ST.make(MD.GC, "item.cheeseCurd", 1, W));
 		OM.reg("foodCheese"                         , ST.make(MD.AA, "itemFood", 1, 0));
 		OM.reg("foodCarrotjuice"                    , ST.make(MD.AA, "itemFood", 1, 2));
