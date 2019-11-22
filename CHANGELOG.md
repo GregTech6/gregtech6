@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.21: (Not released yet)
 [COMPAT] Some MineFantasy II Stuff is now supported, but not much of it.
+[COMPAT] Water Blocks from the Streams Mod count as Infinite now, just like River Blocks. Please be aware those Stream Blocks do spawn vanilla flowing Water around them which do NOT count.
 [FIXED] Compatibility with Tinkers Gregworks for GT6. It broke whenever I renamed some Variables.
 [FIXED] Lack of certain Types of Support/Recipes for Milky Quartz. Now it should be just as compatible with GT6 as Nether Quartz.
 [FIXED] Rails are now no longer considered Furnace Fuel even though they have Wood in them. This caused Issues with the Railcraft Tunnelbore and should be fixed now.
