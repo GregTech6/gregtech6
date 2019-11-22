@@ -1349,6 +1349,12 @@ public class UT {
 			return rArray;
 		}
 		
+		public static String stringValidate(Object aString) {
+			if (aString == null) return "";
+			String rString = aString.toString();
+			return rString == null ? "" : rString;
+		}
+		
 		public static boolean stringValid(Object aString) {
 			return aString != null && !aString.toString().isEmpty();
 		}

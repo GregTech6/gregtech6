@@ -82,6 +82,8 @@ public class MD {
 	
 	, MET               = new ModData("Metallurgy"              , "Metallurgy")
 	
+	, Streams           = new ModData("streams"                 , "Streams")
+	
 	, ZTONES            = new ModData(ModIDs.ZTONES             , "Ztones")
 	, CHSL              = new ModData(ModIDs.CHSL               , "Chisel")
 	

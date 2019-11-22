@@ -2221,7 +2221,7 @@ public class MT {
 			for (OreDictMaterial tMat : ANY.CaF2.mToThis)
 			tMat                            .addOreByProducts(OREMATS.Huebnerite    , Y                         , Ce                    , Fe2O3                 , Na                    , Ba                    );
 			
-			S                               .addOreByProducts(Pyrite                , OREMATS.Sphalerite        , OREMATS.Cinnabar      , MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, OREMATS.Galena      , OREMATS.Stibnite      );
+			S                               .addOreByProducts(Pyrite                , OREMATS.Sphalerite        , OREMATS.Cinnabar      , MT.OREMATS.Chalcopyrite, MT.OREMATS.Arsenopyrite, OREMATS.Galena      , OREMATS.Stibnite      , OREMATS.Gypsum);
 			Se                              .addOreByProducts(Pyrite                , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
 			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
 			OREMATS.Sperrylite              .addOreByProducts(Sb                    , Cu                        , Fe2O3                 , Rh                    , Pt                    );
@@ -2394,6 +2394,7 @@ public class MT {
 			MeteoricSteel                   .addOreByProducts(Fe2O3                 );
 			Graphite                        .addOreByProducts(C                     );
 			CaCO3                           .addOreByProducts(OREMATS.Malachite     );
+			OREMATS.Gypsum                  .addOreByProducts(S                     );
 			Netherrack                      .addOreByProducts(S                     );
 			Flint                           .addOreByProducts(Obsidian              );
 			NaNO3                           .addOreByProducts(KNO3                  , Niter                     );

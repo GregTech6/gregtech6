@@ -488,9 +488,11 @@ public class WD {
 	public static boolean water(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock == Blocks.water || aBlock == Blocks.flowing_water;}
 	public static boolean water(Block aBlock) {return aBlock == Blocks.water || aBlock == Blocks.flowing_water;}
 	
+	public static boolean waterstream(Block aBlock) {return MD.Streams.mLoaded && UT.Code.stringValidate(ST.regName(aBlock)).startsWith("streams:river/tile.water");}
+	
 	public static boolean anywater(IBlockAccess aWorld, int aX, int aY, int aZ) {return anywater(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
-	public static boolean anywater(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock instanceof BlockWaterlike || water(aWorld, aX, aY, aZ, aBlock);}
-	public static boolean anywater(Block aBlock) {return aBlock instanceof BlockWaterlike || water(aBlock);}
+	public static boolean anywater(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock instanceof BlockWaterlike || water(aWorld, aX, aY, aZ, aBlock) || waterstream(aBlock);}
+	public static boolean anywater(Block aBlock) {return aBlock instanceof BlockWaterlike || water(aBlock) || waterstream(aBlock);}
 	
 	public static boolean bedrock(World aWorld, int aX, int aY, int aZ) {return bedrock(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
 	public static boolean bedrock(World aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock == Blocks.bedrock || (IL.BTL_Bedrock.exists() && IL.BTL_Bedrock.equal(aBlock));}
@@ -510,7 +512,7 @@ public class WD {
 	public static boolean easyRep(World aWorld, int aX, int aY, int aZ, Block aBlock) {return air(aWorld, aX, aY, aZ, aBlock) || aBlock instanceof BlockBush || aBlock.isLeaves(aWorld, aX, aY, aZ) || aBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);}
 	
 	public static boolean infiniteWater(World aWorld, int aX, int aY, int aZ) {return (MD.TF.mLoaded && aWorld.provider.dimensionId == TwilightForestMod.dimensionID ? UT.Code.inside(21, 31, aY) : UT.Code.inside(52, 62, aY)) && BIOMES_RIVER_LAKE.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName);}
-	public static boolean infiniteWater(World aWorld, int aX, int aY, int aZ, Block aBlock) {return (aBlock == Blocks.water || aBlock == Blocks.flowing_water) && (MD.TF.mLoaded && aWorld.provider.dimensionId == TwilightForestMod.dimensionID ? UT.Code.inside(21, 31, aY) : UT.Code.inside(52, 62, aY)) && BIOMES_RIVER_LAKE.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName);}
+	public static boolean infiniteWater(World aWorld, int aX, int aY, int aZ, Block aBlock) {return waterstream(aBlock) || ((aBlock == Blocks.water || aBlock == Blocks.flowing_water) && (MD.TF.mLoaded && aWorld.provider.dimensionId == TwilightForestMod.dimensionID ? UT.Code.inside(21, 31, aY) : UT.Code.inside(52, 62, aY)) && BIOMES_RIVER_LAKE.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName));}
 	
 	public static boolean hasCollide(World aWorld, int aX, int aY, int aZ) {return hasCollide(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
 	public static boolean hasCollide(World aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock.isOpaqueCube() || aBlock.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ) != null;}

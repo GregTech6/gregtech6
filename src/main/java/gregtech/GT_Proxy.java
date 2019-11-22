@@ -252,7 +252,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						if (aEvent.entityPlayer.openContainer != null) aEvent.entityPlayer.openContainer.detectAndSendChanges();
 						return;
 					}
-					if (tBlock == BlocksGT.River) {
+					if (tBlock == BlocksGT.River || WD.waterstream(tBlock)) {
 						ItemStack tStack = FL.fill(FL.Water.make(Integer.MAX_VALUE), aStack, F, T, F, T);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);

@@ -20,6 +20,7 @@
 package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.FL;
@@ -30,6 +31,8 @@ import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.OM;
+import gregapi.util.ST;
+import net.minecraft.init.Blocks;
 
 /**
  * @author Gregorius Techneticies
@@ -50,8 +53,21 @@ public class Loader_Recipes_Temporary implements Runnable {
 		// TODO: Just no Ender IO Compat Handler and for this small thing I wont make a new Class.
 		CR.delate(MD.EIO, "itemYetaWrench");
 		
-		
-		
+		// Too lazy to make another Compat Handler Class for this Mod ID.
+		if (MD.RH.mLoaded) {
+			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {5000, 5000}, IL.RH_Sand_Olivine.get(1), OP.gem.mat(MT.Olivine, 1), OP.dust.mat(MT.Olivine, 1));
+			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9000, 1000}, IL.RH_Sand_Gypsum .get(1), OP.dust.mat(MT.OREMATS.Gypsum, 1), OP.dust.mat(MT.S, 1));
+			
+			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.RH_Sand_Magnetite.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1));
+			RM.MagneticSeparator.addRecipe1(T, 16, 144, new long[] {9900, 500, 500, 500}, IL.RH_Sand_Magnetite.get(1), dust.mat(MT.OREMATS.Magnetite, 1), rockGt.mat(MT.Basalt, 1), nugget.mat(MT.Au, 1), dustTiny.mat(MT.Au, 2));
+			RM.Centrifuge       .addRecipe1(T, 16, 256, new long[] {9000, 1000}         , IL.RH_Sand_Magnetite.get(1), dust.mat(MT.OREMATS.Magnetite, 1), dust.mat(MT.V2O5, 1));
+			
+			if (MD.TROPIC.mLoaded) {
+				RM.Sifting      .addRecipe1(T, 16, 200, new long[] {9900, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 200, 100, 50}, IL.RH_Sand_Coral.get(1), IL.TROPIC_Sand_Pure.get(1), ST.make(MD.TROPIC, "shell", 1, 0), ST.make(MD.TROPIC, "shell", 1, 1), ST.make(MD.TROPIC, "shell", 1, 2), ST.make(MD.TROPIC, "shell", 1, 3), ST.make(MD.TROPIC, "shell", 1, 4), ST.make(MD.TROPIC, "shell", 1, 5), ST.make(MD.TROPIC, "pearl", 1, 0), ST.make(MD.TROPIC, "pearl", 1, 1), OP.gem.mat(MT.Azurite, 1), OP.gem.mat(MT.Eudialyte, 1), OP.gem.mat(MT.Zr, 1));
+			} else {
+				RM.Sifting      .addRecipe1(T, 16, 200, new long[] {9900, 200, 100, 50}, IL.RH_Sand_Coral.get(1), ST.make(Blocks.sand, 1, 0), OP.gem.mat(MT.Azurite, 1), OP.gem.mat(MT.Eudialyte, 1), OP.gem.mat(MT.Zr, 1));
+			}
+		}
 		
 		
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.

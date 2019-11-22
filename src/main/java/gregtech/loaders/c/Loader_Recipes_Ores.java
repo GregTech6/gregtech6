@@ -197,6 +197,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		
 		
 		
+		
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {10000, 10, 40, 150, 200, 400, 500}, crushedPurified    .mat(MT.Sn                      , 1), crushedCentrifuged.mat(MT.Sn                      , 1), gemExquisite.mat(MT.Zircon, 1), gemFlawless.mat(MT.Zircon, 1), gem.mat(MT.Zircon, 1), gemFlawed.mat(MT.Zircon, 1), gemChipped.mat(MT.Zircon, 1), dust.mat(MT.Zircon, 1));
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {10000, 10, 40, 150, 200, 400, 500}, crushedPurifiedTiny.mat(MT.Sn                      , 9), crushedCentrifuged.mat(MT.Sn                      , 1), gemExquisite.mat(MT.Zircon, 1), gemFlawless.mat(MT.Zircon, 1), gem.mat(MT.Zircon, 1), gemFlawed.mat(MT.Zircon, 1), gemChipped.mat(MT.Zircon, 1), dust.mat(MT.Zircon, 1));
 		RM.Sifting      .addRecipe1(T, 16,  128, new long[] {10000, 10, 40, 150, 200, 400, 500}, crushedPurified    .mat(MT.OREMATS.Cassiterite     , 1), crushedCentrifuged.mat(MT.OREMATS.Cassiterite     , 1), gemExquisite.mat(MT.Zircon, 1), gemFlawless.mat(MT.Zircon, 1), gem.mat(MT.Zircon, 1), gemFlawed.mat(MT.Zircon, 1), gemChipped.mat(MT.Zircon, 1), dust.mat(MT.Zircon, 1));

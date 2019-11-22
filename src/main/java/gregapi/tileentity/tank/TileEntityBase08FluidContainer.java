@@ -293,7 +293,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 					}
 					return aStack;
 				}
-				if (tBlock == BlocksGT.River) {
+				if (tBlock == BlocksGT.River || WD.waterstream(tBlock)) {
 					aItem.fill(aStack, FL.Water.make(1000), T);
 					return aStack;
 				}

@@ -82,7 +82,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 				if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
 					if (aData.mTileEntity.getMetaDataAtSide(aSide) == 0) tFluid = FL.Lava.make(1000);
 				} else
-				if (tBlock == BlocksGT.River) {
+				if (tBlock == BlocksGT.River || WD.waterstream(tBlock)) {
 					FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aSide], FL.Water.make(16000), T);
 				} else
 				if (tBlock == BlocksGT.Ocean) {

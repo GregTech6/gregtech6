@@ -117,6 +117,7 @@ public enum IL implements IItemContainer {
 	HiL_Ironwood,
 	ABYSSAL_Crate, ABYSSAL_Lava,
 	ATUM_Scarab, ATUM_Limestone, ATUM_Limecobble,
+	RH_Sand_Magnetite, RH_Sand_Olivine, RH_Sand_Coral, RH_Sand_Gypsum,
 	TROPIC_Chest, TROPIC_Bamboo, TROPIC_Stick, TROPIC_Log_Palm, TROPIC_Log_Mahogany, TROPIC_Sand_Coral, TROPIC_Sand_Foamy, TROPIC_Sand_Black, TROPIC_Sand_Mineral, TROPIC_Sand_Pure,
 	TROPIC_Sapling_Palm, TROPIC_Sapling_Mahogany, TROPIC_Sapling_Grapefruit, TROPIC_Sapling_Lemon, TROPIC_Sapling_Lime, TROPIC_Sapling_Orange,
 	TROPIC_Leaves_Palm, TROPIC_Leaves_Mahogany, TROPIC_Leaves_Kapok, TROPIC_Leaves_Grapefruit, TROPIC_Leaves_Lemon, TROPIC_Leaves_Lime, TROPIC_Leaves_Orange, TROPIC_Leaves_Fruit,
