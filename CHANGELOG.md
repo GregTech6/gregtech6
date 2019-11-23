@@ -28,6 +28,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Compatibility with Tinkers Gregworks for GT6. It broke whenever I renamed some Variables.
 [FIXED] Lack of certain Types of Support/Recipes for Milky Quartz. Now it should be just as compatible with GT6 as Nether Quartz.
 [FIXED] Rails are now no longer considered Furnace Fuel even though they have Wood in them. This caused Issues with the Railcraft Tunnelbore and should be fixed now.
+[FIXED] Long Distance Electric Transformers are no longer infinitely producing Energy when IC2 is installed. HOW THE FUCK DID THIS NEVER GET NOTICED!?!
 [CHANGED] Lazurite and Sodalite can now be used to make IC2 Coolant too.
 [CHANGED] I decided Niter is now a 50:50 mix of KNO3 and NaNO3, that way mixing those two together can be used to craft it if needed. Also KNO3 and NaNO3 Ores have now been replaced by Niter Ores. Should you want to separate KNO3 and NaNO3 for certain Chemical Recipes, use a Centrifuge. Most Mixing Bowl Recipes such as Gunpowder allow Niter too now.
 [CHANGED] Dryer and Distillery are no longer subject to Overclocking Penalties.

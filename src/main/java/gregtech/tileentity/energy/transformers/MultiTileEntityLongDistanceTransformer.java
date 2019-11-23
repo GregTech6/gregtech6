@@ -250,13 +250,16 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 			if (aDoInject) mTarget.overcharge(aSize, aEnergyType);
 			return aAmount;
 		}
-		long tConsumed = ITileEntityEnergy.Util.emitEnergyToNetwork(mTarget.mEnergyTypeEmitted, aSize*aSign, aAmount, mTarget);
-		mTarget.mActive = mActive = (mActive || tConsumed > 0);
-		return tConsumed;
+		if (aDoInject) {
+			long tConsumed = ITileEntityEnergy.Util.emitEnergyToNetwork(mTarget.mEnergyTypeEmitted, aSize*aSign, aAmount, mTarget);
+			mTarget.mActive = mActive = (mActive || tConsumed > 0);
+			return tConsumed;
+		}
+		return aAmount;
 	}
 	
-	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || checkTarget()) &&  (SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return                                     (SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || checkTarget()) && (SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return                                    (SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mEnergyTypeAccepted, mEnergyTypeEmitted);}
 	
 	@Override public double getDemandedEnergy() {return checkTarget() ? super.getDemandedEnergy() : 0;}
