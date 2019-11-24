@@ -34,6 +34,7 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.OreDictMaterial;
@@ -97,6 +98,8 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 				ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 1, 0));
 				CR.delate(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 0);
 			}
+			
+			CR.shaped(ST.make(MD.BC_TRANSPORT, "gateCopier", 1, 0), tBits, "PGP", "PPP", " P ", 'G', MD.BC_SILICON.mLoaded ? ST.make(MD.BC_SILICON, "redstoneChipset", 1, W) : OD.itemRedstone, 'P', OP.plate.dat(ANY.Iron));
 			
 			CR.delate(MD.BC_TRANSPORT, "pipeWaterproof");
 			RM.Distillery   .addRecipe1(T, 16,   16, IL.Dye_Cactus.get(1), FL.Water.make(50), NF, ST.make(MD.BC_TRANSPORT, "pipeWaterproof", 1, 0));

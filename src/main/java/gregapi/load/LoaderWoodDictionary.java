@@ -585,6 +585,8 @@ public class LoaderWoodDictionary implements Runnable {
 			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_zombieBMobStairs"       , 1, 0), OD.stairWood);
 			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_endermanBMobStairs"     , 1, 0), OD.stairWood);
 			
+			OM.reg(ST.make(MD.RH, "globbypotato_rockhounding_coldLogs"               , 1, W), OD.logWood);
+			
 			for (int i = 0; i < 4; i++) {
 				new LeafEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLeaves" , 1, i));
 				new LeafEntry(ST.make(MD.RH, "globbypotato_rockhounding_mobLeavesB", 1, i));

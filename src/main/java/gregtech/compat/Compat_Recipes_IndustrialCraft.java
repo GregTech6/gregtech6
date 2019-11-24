@@ -86,10 +86,11 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.delate(IL.IC2_Machine.get(1));
 		CR.delate(IL.IC2_EnergyCrystal.get(1));
 		CR.delate(IL.IC2_ITNT.get(1));
-		CR.delate(IL.Cell_Empty.get(1));
+		CR.delate(IL.IC2_Mixed_Metal_Ingot.get(1));
 		CR.delate(IL.IC2_Fertilizer.get(1));
 		CR.delate(IL.IC2_Spray_WeedEx.get(1));
 		CR.delate(IL.IC2_Food_Can_Empty.get(1));
+		CR.delate(IL.Cell_Empty.get(1));
 		CR.delate(IL.Cell_Universal_Fluid.get(1));
 		
 		CR.remove(ST.make(Items.lava_bucket, 1, 0), IL.Cell_Empty.get(1));
@@ -283,6 +284,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 			if (D1) e.printStackTrace(ERR);
 		}
 		
+		CR.delate(ST.mkic("MOXFuel", 1));
+		CR.delate(ST.mkic("UranFuel", 1));
+		CR.delate(ST.mkic("RTGPellets", 1));
 		CR.delate(IL.IC2_Energium_Dust.get(1));
 		
 		CR.shaped(IL.IC2_Iridium_Ore.get(1), CR.DEF_NAC_NCC, "XXX", "XXX", "XXX", 'X', IL.IC2_Iridium_Shard);
@@ -367,9 +371,9 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Press        .addRecipe2(T, 64,   64, OP.ingot.mat(MT.U_238, 6)                          , OP.ingot.mat(MT.Pu, 3)        , ST.mkic("MOXFuel", 1));
 		
 		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("UranFuel", 1)                             , IL.IC2_Fuel_Rod_Empty.get(1)  , ST.mkic("reactorUraniumSimple", 1, 1));
-		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("UranFuel", 1)                             , IL.Reactor_Rod_Empty.get(1)      , ST.mkic("reactorUraniumSimple", 1, 1));
+		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("UranFuel", 1)                             , IL.Reactor_Rod_Empty.get(1)   , ST.mkic("reactorUraniumSimple", 1, 1));
 		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("MOXFuel", 1)                              , IL.IC2_Fuel_Rod_Empty.get(1)  , ST.mkic("reactorMOXSimple", 1, 1));
-		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("MOXFuel", 1)                              , IL.Reactor_Rod_Empty.get(1)      , ST.mkic("reactorMOXSimple", 1, 1));
+		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("MOXFuel", 1)                              , IL.Reactor_Rod_Empty.get(1)   , ST.mkic("reactorMOXSimple", 1, 1));
 		
 		RM.Centrifuge   .addRecipe1(T, 512, 128, ST.mkic("reactorDepletedUraniumSimple", 1)         , OP.dust.mat(MT.Zr, 1), OP.dust.mat(MT.U_238,  4), OP.dustTiny.mat(MT.Pu, 1));
 		RM.Centrifuge   .addRecipe1(T, 512, 256, ST.mkic("reactorDepletedUraniumDual", 1)           , OP.dust.mat(MT.Zr, 2), OP.dust.mat(MT.U_238,  8), OP.dustTiny.mat(MT.Pu, 2), OP.dust.mat(MT.Fe, 1));
@@ -471,6 +475,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		
 		RM.Loom             .addRecipe2(T, 64,  128, ST.tag(0)                                          , OP.wireFine.mat(MT.Graphene, 32)      , IL.IC2_Carbon_Fiber.get(1));
 		RM.Loom             .addRecipe2(T, 64,  128, ST.tag(0)                                          , IL.IC2_Carbon_Fiber.get(2)            , IL.IC2_Carbon_Mesh.get(1));
+		RM.Loom             .addRecipe2(T, 64,  256, ST.tag(1)                                          , OP.wireFine.mat(MT.Graphene, 64)      , IL.IC2_Carbon_Mesh.get(1));
 		
 		if (IL.IC2_Sapling_Rubber.exists())
 		RM.Squeezer         .addRecipe1(T, 16,   64, IL.IC2_Sapling_Rubber.get(1)                       , NF, FL.Latex.make(L/ 4), NI);
