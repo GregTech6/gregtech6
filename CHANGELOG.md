@@ -21,7 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.21: (Not released yet, Sunday Release because Bear said its a better testing Day for him right now)
+6.11.21:
 [COMPAT] Some MineFantasy II Stuff is now supported, but not much of it.
 [COMPAT] Soil Types of Enhanced Biomes now have more individualised Sifting Recipes.
 [COMPAT] Water Blocks from the Streams Mod count as Infinite now, just like River Blocks. Please be aware those Stream Blocks do spawn vanilla flowing Water around them which do NOT count.
