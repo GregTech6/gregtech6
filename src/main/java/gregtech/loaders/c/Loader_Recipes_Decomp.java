@@ -49,16 +49,16 @@ public class Loader_Recipes_Decomp implements Runnable {
 					ArrayListNoNulls<ItemStack> tStackOutputs = new ArrayListNoNulls<>();
 					ArrayListNoNulls<FluidStack> tFluidOutputs = new ArrayListNoNulls<>();
 					long tAmount = 0;
-
+					
 					for (OreDictMaterialStack tMaterial : tComponents.getUndividedComponents()) {
 						tAmount += tMaterial.mAmount;
 						if (tMaterial.mMaterial.mMeltingPoint <= DEF_ENV_TEMP && tFluidOutputs.add(tMaterial.mMaterial.fluid(tMaterial.mAmount, F))) continue;
 						if (tStackOutputs.add(OM.dust(tMaterial.mMaterial.mTargetPulver.mMaterial, UT.Code.units(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetPulver.mAmount, F)))) continue;
 					}
-
+					
 					if (tStackOutputs.size() > 0 || tFluidOutputs.size() > 0) for (RecipeMap tRecipeMap : tRecipeMaps) {
 						boolean temp = T;
-
+						
 						if (temp && tRecipeMap.mInputFluidCount > 0) {
 							FluidStack
 							aFluid = aMaterial.liquid(tComponents.getCommonDivider() * U, T);
@@ -67,17 +67,17 @@ public class Loader_Recipes_Decomp implements Runnable {
 								if (tRecipeMap == RM.Electrolyzer) {
 									tRecipeMap.addRecipe1(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), ST.tag(0), FL.array(aFluid), UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
 								} else {
-									tRecipeMap.addRecipe0(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), FL.array(aFluid), UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
+									tRecipeMap.addRecipe0(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T)           , FL.array(aFluid), UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
 								}
 							}
-
+							
 							aFluid = aMaterial.gas(tComponents.getCommonDivider() * U, T);
 							if (!FL.Error.is(aFluid)) {
 								temp = F;
 								if (tRecipeMap == RM.Electrolyzer) {
 									tRecipeMap.addRecipe1(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), ST.tag(0), FL.array(aFluid), UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
 								} else {
-									tRecipeMap.addRecipe0(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), FL.array(aFluid), UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
+									tRecipeMap.addRecipe0(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T)           , FL.array(aFluid), UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
 								}
 							}
 						}
@@ -89,7 +89,7 @@ public class Loader_Recipes_Decomp implements Runnable {
 								if (tRecipeMap == RM.Electrolyzer) {
 									tRecipeMap.addRecipe2(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), ST.tag(0), aStack, ZL_FS, UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
 								} else {
-									tRecipeMap.addRecipe1(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T), aStack, ZL_FS, UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
+									tRecipeMap.addRecipe1(T, T, F, F, F, Math.max(16, (tAmount * 14) / U), UT.Code.units(tAmount, U, 292, T)           , aStack, ZL_FS, UT.Code.makeArray(new FluidStack[tRecipeMap.mOutputFluidCount], tFluidOutputs.toArray(ZL_FS)), UT.Code.makeArray(new ItemStack[tRecipeMap.mOutputItemsCount], tStackOutputs.toArray(ZL_IS)));
 								}
 							}
 						}
