@@ -18,6 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.22: (Not released yet)
+[CHANGED] Nerfed ZPMs again to be 500 times less, and therefore exactly as much as they were pre-buff.
 [WIP]
 ZPM Decharger.
 One for QU and one for EU, so you have to decide if you just wanna use a ZPM for Massfabs, or if you also wanna use it for Electricity but then inefficiently convert from EU to QU.
@@ -152,7 +153,7 @@ Hint: It is possible to use Universal Extenders and Mini Portals to do all sorts
 [FIXED] GT6 Bar Placement Code for the Catwalk/Cage Bars Block.
 [FIXED] The Activity Detector for "Running Possible" did not work on Rotational Pumps.
 [CHANGED] Tungsten Burning Boxes and Heat Exchangers now have 100% instead of 95% Efficiency.
-[CHANGED] Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 36 000 000 000 HU per Unit of U-235 at Max Efficiency.
+[CHANGED] Note: Later nerfed back again! - Newly generated ZPMs now have 500 times more Energy (10^15 QU), due to me realising just how ridiculous Nuclear Energy is going to be in regards of Power with 36 000 000 000 HU per Unit of U-235 at Max Efficiency.
 [CHANGED] I decided to give Lead a darker Color.
 [ADDED] Diamond and Sapphire Mortars. Gating them behind Iron doesn't make that much sense.
 [WIP] Nuclear Reactor Core. Not gonna be done this week... Took a bit too long to do, and I want to setup random new irl hardware first. XD
