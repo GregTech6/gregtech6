@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Collection;
 import java.util.List;
 
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -51,6 +52,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	public long mEnergy = 0, mInput = 32, mOutput = 32;
 	public byte mActiveState = 0, mMode = 0;
 	public TagData mEnergyType = TD.Energy.QU;
+	public TagData mEnergyTypeOut = TD.Energy.QU;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -62,7 +64,8 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 		if (aNBT.hasKey(NBT_ACTIVE)) mActive = aNBT.getBoolean(NBT_ACTIVE);
 		if (aNBT.hasKey(NBT_INPUT)) mInput = aNBT.getLong(NBT_INPUT);
 		if (aNBT.hasKey(NBT_OUTPUT)) mOutput = aNBT.getLong(NBT_OUTPUT);
-		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyType = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
+		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyType = mEnergyTypeOut = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
+		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyType = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
 	}
 	
 	@Override
@@ -89,7 +92,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	}
 	
 	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		LH.addEnergyToolTips(this, aList, mEnergyType, mEnergyType, getLocalisedInputSide(), getLocalisedOutputSide());
+		LH.addEnergyToolTips(this, aList, mEnergyType, mEnergyTypeOut, getLocalisedInputSide(), getLocalisedOutputSide());
 	}
 	
 	@Override
@@ -130,7 +133,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 				
 				if (mMode != 0) tOutput = Math.min(mMode, tOutput);
 				if (!mStopped && tOutput > 0) {
-					long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyType, mOutput, tOutput, this);
+					long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeOut, mOutput, tOutput, this);
 					mEmitsEnergy = (tEmittedPackets > 0);
 					mEnergy -= mOutput * tEmittedPackets;
 				}
@@ -151,6 +154,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 		} else {
 			mActiveState = 2;
 		}
+		if (!invempty()) mActiveState |= 4;
 		return tActiveState != mActiveState || super.onTickCheck(aTimer);
 	}
 	
@@ -176,10 +180,10 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new ContainerCommonDefault(aPlayer.inventory, this, aGUIID);}
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return UT.Code.getAscendingArray(getSizeInventory());}
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return aStack != null && aStack.getItem() instanceof IItemEnergy;}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return aStack != null && aStack.getItem() instanceof IItemEnergy && (((IItemEnergy)aStack.getItem()).isEnergyType(mEnergyType, aStack, F) || ((IItemEnergy)aStack.getItem()).isEnergyType(mEnergyType, aStack, T));}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
 	
-	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEnergyType == mEnergyType;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEnergyType == (aEmitting ? mEnergyTypeOut : mEnergyType);}
 	@Override public boolean isEnergyCapacitorType          (TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyType;}
 	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return                                 (SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
 	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) &&  (SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
@@ -189,7 +193,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
 	@Override public long getEnergyStored                   (TagData aEnergyType, byte aSide) {long rAmount = 0; for (ItemStack tStack : getInventory()) if (tStack != null && tStack.getItem() instanceof IItemEnergy) rAmount += ((IItemEnergy)tStack.getItem()).getEnergyStored  (aEnergyType, tStack); return rAmount;}
 	@Override public long getEnergyCapacity                 (TagData aEnergyType, byte aSide) {long rAmount = 0; for (ItemStack tStack : getInventory()) if (tStack != null && tStack.getItem() instanceof IItemEnergy) rAmount += ((IItemEnergy)tStack.getItem()).getEnergyCapacity(aEnergyType, tStack); return rAmount;}
-	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyType.AS_LIST;}
+	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return new ArrayListNoNulls<>(F, mEnergyType, mEnergyTypeOut);}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyType.AS_LIST;}
 	
 	@Override public long getProgressValue(byte aSide) {return mEnergy;}

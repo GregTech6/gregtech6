@@ -18,7 +18,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.22: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[WIP]
+ZPM Decharger.
+One for QU and one for EU, so you have to decide if you just wanna use a ZPM for Massfabs, or if you also wanna use it for Electricity but then inefficiently convert from EU to QU.
 
 
 6.11.21:

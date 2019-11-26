@@ -126,7 +126,7 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 	@Override public boolean isUseableByPlayerGUI(EntityPlayer aPlayer) {return !isDead() && allowInteraction(aPlayer) && aPlayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64D;}
 	@Override public void openInventoryGUI() {openInventory();}
 	@Override public void closeInventoryGUI() {closeInventory();}
-	@Override public boolean isItemValidForSlotGUI(int aSlot, ItemStack aStack) {return T;}
+	@Override public boolean isItemValidForSlotGUI(int aSlot, ItemStack aStack) {return isItemValidForSlot(aSlot, aStack);}
 	@Override public boolean canTakeOutOfSlotGUI(int aSlot) {return T;}
 	
 	@Override
