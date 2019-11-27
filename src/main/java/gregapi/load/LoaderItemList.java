@@ -303,6 +303,7 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.FR, "resources"                        , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GC, "tile.gcBlockCore"                 , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GC_GALAXYSPACE, "leadore"              , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GC_GALAXYSPACE, "ores"                 , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.IE, "ore"                              , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.TC, "blockCustomOre"                   , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.TE_FOUNDATION, "Ore"                   , null));
