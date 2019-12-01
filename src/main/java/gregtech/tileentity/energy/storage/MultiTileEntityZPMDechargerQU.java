@@ -23,22 +23,23 @@ import static gregapi.data.CS.*;
 
 import gregapi.data.IL;
 import gregapi.old.Textures;
+import gregapi.old.Textures.BlockIcons;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
-import gregapi.tileentity.energy.ITileEntityEnergyElectricityAcceptor;
 import gregapi.tileentity.energy.TileEntityBase10EnergyBatBox;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-public class MultiTileEntityZPMDechargerQU extends TileEntityBase10EnergyBatBox implements ITileEntityEnergyElectricityAcceptor {
+public class MultiTileEntityZPMDechargerQU extends TileEntityBase10EnergyBatBox {
 	@Override public boolean isItemValidForSlot(int aSlot, ItemStack aStack) {return IL.ZPM.equal(aStack, F, T);}
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return IL.ZPM.equal(aStack, F, T);}
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
+		if (aSide == OPPOSITES[mFacing]) return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get(sOverlays[mActiveState & 3][2]), (mActiveState & 4) == 0 ? null : BlockTextureDefault.get(BlockIcons.ZPM_TOP, (mActiveState & 3) == 0 ? 0x804000 : 0xffdd00, (mActiveState & 3) != 0));
 		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aSide==mFacing?0:1], mRGBa), BlockTextureDefault.get(sOverlays[mActiveState & 3][aSide==mFacing?0:1]));
 	}
 	

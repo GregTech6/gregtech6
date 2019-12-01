@@ -18,11 +18,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.22: (Not released yet)
+[FIXED] Mode Selector Covers now update their visuals whenever a Block Update happens. This only ever happened if someone was dumb enough to use 2 Mode Selector Covers on the same Block.
 [FIXED] GalaxySpace Ores were not recognized for removal.
 [CHANGED] Nerfed ZPMs again to be 500 times less, and therefore exactly as much as they were pre-buff. I decided instead of realism the ZPM has to be a convenience.
-[WIP]
-ZPM Decharger.
-One for QU and one for EU, so you have to decide if you just wanna use a ZPM for Massfabs, or if you also wanna use it for Electricity but then inefficiently convert from EU to QU.
+[ADDED] ZPM Dechargers. One for QU and one for EU, so you have to decide if you just wanna use a ZPM for Massfabs, or if you also wanna use it for Electricity but then inefficiently convert from EU to QU.
 
 
 6.11.21:

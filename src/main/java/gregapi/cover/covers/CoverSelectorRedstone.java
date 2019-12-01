@@ -46,10 +46,9 @@ public class CoverSelectorRedstone extends AbstractCoverAttachmentSelector {
 		super.onCoverLoaded(aSide, aData);
 		if (aData.mTileEntity instanceof ITileEntitySwitchableMode) ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aSide));
 	}
-	
 	@Override
-	public void onBlockUpdate(byte aCoverSide, CoverData aData) {
-		if (!aData.mStopped && aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aCoverSide, ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aCoverSide)));
+	public void onBlockUpdate(byte aSide, CoverData aData) {
+		if (!aData.mStopped && aData.mTileEntity instanceof ITileEntitySwitchableMode) aData.visual(aSide, ((ITileEntitySwitchableMode)aData.mTileEntity).setStateMode(aData.mTileEntity.getRedstoneIncoming(aSide)));
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return BlockTextureMulti.get(sTexturesBase, sTextures[UT.Code.bind4(aData.mVisuals[aSide])]);}
