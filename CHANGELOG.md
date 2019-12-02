@@ -1,7 +1,11 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
-6.12.00: (Not released yet, this is probably the last Version before I start my own Game, unless I screw up Releases again and need Quickfixes because tired or something)
+6.12.00: (Not released yet, this is probably the last Version before I start my own Game, unless I screw up Releases again and need Quickfixes because tired or something, this should come out around New Years Day, Explosions for Reactors are gonna be enabled.)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.11.26: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
@@ -17,7 +21,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.22: (Not released yet)
+6.11.22:
+[NOTE] Enabled Weather and Fire Related Explosions now. But not the Overcharge ones.
 [COMPAT] Plantmegapack has had some Stuff done such as its Bamboo Types being Wood Types now.
 [FIXED] Mode Selector Covers now update their visuals whenever a Block Update happens. This only ever happened if someone was dumb enough to use 2 Mode Selector Covers on the same Block.
 [FIXED] GalaxySpace Ores were not recognized for removal.

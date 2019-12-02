@@ -559,15 +559,15 @@ public class GT_API extends Abstract_Mod {
 		if (tMainConfig.get("general", "hardermobspawners"          , T).getBoolean(T)) Blocks.mob_spawner.setHardness(500.0F);
 		if (tMainConfig.get("general", "blastresistantmobspawners"  , T).getBoolean(T)) Blocks.mob_spawner.setResistance(6000000.0F);
 		
-		FIRE_EXPLOSIONS                     = tMainConfig.get("machines", "explode_by_fire"    , F).getBoolean(F);
-		RAIN_EXPLOSIONS                     = tMainConfig.get("machines", "explode_by_rain"    , F).getBoolean(F);
-		WATER_EXPLOSIONS                    = tMainConfig.get("machines", "explode_by_water"   , F).getBoolean(F);
-		THUNDER_EXPLOSIONS                  = tMainConfig.get("machines", "explode_by_thunder" , F).getBoolean(F);
+		FIRE_EXPLOSIONS                     = tMainConfig.get("machines", "explode_by_fire"    , T).getBoolean(T);
+		RAIN_EXPLOSIONS                     = tMainConfig.get("machines", "explode_by_rain"    , T).getBoolean(T);
+		WATER_EXPLOSIONS                    = tMainConfig.get("machines", "explode_by_water"   , T).getBoolean(T);
+		THUNDER_EXPLOSIONS                  = tMainConfig.get("machines", "explode_by_thunder" , T).getBoolean(T);
 		OVERCHARGE_EXPLOSIONS               = tMainConfig.get("machines", "explode_by_overload", F).getBoolean(F);
-		FIRE_BREAKING                       = tMainConfig.get("machines", "break_by_fire"      , F).getBoolean(F);
-		RAIN_BREAKING                       = tMainConfig.get("machines", "break_by_rain"      , F).getBoolean(F);
-		WATER_BREAKING                      = tMainConfig.get("machines", "break_by_water"     , F).getBoolean(F);
-		THUNDER_BREAKING                    = tMainConfig.get("machines", "break_by_thunder"   , F).getBoolean(F);
+		FIRE_BREAKING                       = tMainConfig.get("machines", "break_by_fire"      , T).getBoolean(T);
+		RAIN_BREAKING                       = tMainConfig.get("machines", "break_by_rain"      , T).getBoolean(T);
+		WATER_BREAKING                      = tMainConfig.get("machines", "break_by_water"     , T).getBoolean(T);
+		THUNDER_BREAKING                    = tMainConfig.get("machines", "break_by_thunder"   , T).getBoolean(T);
 		OVERCHARGE_BREAKING                 = tMainConfig.get("machines", "break_by_overload"  , F).getBoolean(F);
 		
 		if (FIRE_EXPLOSIONS      ) FIRE_BREAKING       = T;
