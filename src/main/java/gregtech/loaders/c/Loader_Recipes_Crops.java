@@ -119,7 +119,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		
 		
-		addListener("cropRice", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener("cropRice", "cropWildRice", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OP.dust.contains(aEvent.mStack)) return;
 			RM.Drying       .addRecipe1(T, 16, 40, aEvent.mStack, NF, FL.DistW.make(20), IL.Grass_Dry.get(1));
 			RM.Mixer        .addRecipe1(T, 16, 16, aEvent.mStack, FL.DistW.make(250), FL.Mash_Rice.make(250), ZL_IS);
@@ -337,7 +337,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		
 		
-		addListener("cropPeanut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener("cropPeanut", "cropPeanuts", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.crop_nut(aEvent.mStack, 100, OP.dustSmall.mat(MT.Peanut, 4), 8000, "Canned Peanuts");
 			RM.ae_grinder(4, aEvent.mStack, OP.dustSmall.mat(MT.Peanut, 2), OP.dustSmall.mat(MT.Peanut, 1), 0.5F, OP.dustSmall.mat(MT.Peanut, 1), 0.5F);
 		}});

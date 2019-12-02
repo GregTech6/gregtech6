@@ -1823,6 +1823,7 @@ public class CS {
 		, GoG               = "GrimoireOfGaia"
 		, PdC               = "psychedelicraft"
 		, Bamboo            = "BambooMod"
+		, PMP               = "plantmegapack"
 		, Fossil            = "fossil"
 		, GrC               = "Growthcraft"
 		, GrC_Apples        = "Growthcraft|Apples"

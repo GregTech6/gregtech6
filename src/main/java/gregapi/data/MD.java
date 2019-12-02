@@ -157,6 +157,7 @@ public class MD {
 	, GoG               = new ModData(ModIDs.GoG                , "Grimoire of Gaia")
 	, PdC               = new ModData(ModIDs.PdC                , "Psychedelicraft") // Wait, why did I add some compat to this Drug Mod again!?!
 	, Bamboo            = new ModData(ModIDs.Bamboo             , "Bamboo Mod")
+	, PMP               = new ModData(ModIDs.PMP                , "Plant Mega Pack")
 	, Fossil            = new ModData(ModIDs.Fossil             , "Fossils and Archeology")
 	, GrC               = new ModData(ModIDs.GrC                , "Growthcraft")
 	, GrC_Apples        = new ModData(ModIDs.GrC_Apples         , "Growthcraft Apples")

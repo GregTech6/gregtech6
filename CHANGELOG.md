@@ -18,6 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.22: (Not released yet)
+[COMPAT] Plantmegapack has had some Stuff done such as its Bamboo Types being Wood Types now.
 [FIXED] Mode Selector Covers now update their visuals whenever a Block Update happens. This only ever happened if someone was dumb enough to use 2 Mode Selector Covers on the same Block.
 [FIXED] GalaxySpace Ores were not recognized for removal.
 [CHANGED] Nerfed ZPMs again to be 500 times less, and therefore exactly as much as they were pre-buff. I decided instead of realism the ZPM has to be a convenience.

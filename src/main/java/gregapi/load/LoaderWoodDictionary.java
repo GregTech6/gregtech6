@@ -64,7 +64,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 224 is next!
+		// No Gaps in this List, so 233 is next!
 		
 		
 		// Vanilla Trees
@@ -602,6 +602,15 @@ public class LoaderWoodDictionary implements Runnable {
 				CR.shaped(ST.make(tPlankB, 1, i), CR.DEF_NCC, "S", "S", 'S', ST.make(tSlabB, 1, i));
 				OM.reg(ST.make(tSlabA, 1, i), OD.slabWood);
 				OM.reg(ST.make(tSlabB, 1, i), OD.slabWood);
+			}
+		}
+		// Plant Mega Pack Bamboo
+		if (MD.PMP.mLoaded) {
+			final String[] tNames = {"bambooAsper", "bambooFargesiaRobusta", "bambooGiantTimber", "bambooGolden", "bambooMoso", "bambooShortTassled", "bambooTimorBlack", "bambooTropicalBlue", "bambooWetForest"};
+			for (int i = 0; i < 9; i++) {
+				new PlankEntry(ST.make(MD.PMP, tNames[i]+"Block", 1, 0), ST.make(MD.PMP, tNames[i]+"Slab", 1, 0), ST.make(MD.PMP, tNames[i]+"Stairs", 1, 0), MT.Bamboo, 224+i, ST.make(MD.PMP, tNames[i]+"Pole", 1, 0), 4, 4, 4);
+				CR.shaped(ST.make(MD.PMP, tNames[i]+"Block", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.PMP, tNames[i]+"Slab", 1, 0));
+				OM.reg(ST.make(MD.PMP, tNames[i]+"Slab", 1, 0), OD.slabWood);
 			}
 		}
 		// MineFantasy II Trees

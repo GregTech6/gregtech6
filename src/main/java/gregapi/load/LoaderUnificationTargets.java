@@ -525,6 +525,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Curry                  , ST.make(MD.HaC, "currypowderItem", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxPlant               , ST.make(MD.HaC, "waxItem", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxBee                 , ST.make(MD.HaC, "beeswaxItem", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Corn                   , ST.make(MD.PMP, "foodCornFlour", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Rice                   , ST.make(MD.PMP, "foodCookedRice", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Wood                   , ST.make(MD.FR, "woodPulp", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxBee                 , ST.make(MD.FR, "beeswax", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxRefractory          , ST.make(MD.FR, "refractoryWax", 1, 0));
@@ -614,6 +616,15 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , ST.make(MD.IC2, "tinOre"        , 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , ST.make(MD.IC2, "uraniumOre"    , 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.cell           , MT.Creosote               , ST.make(MD.RC, "fluid.creosote.cell", 1));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooAsperPole", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooFargesiaRobustaPole", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooGiantTimberPole", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooGoldenPole", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooMosoPole", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooShortTassledPole", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooTimorBlackPole", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooTropicalBluePole", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.PMP, "bambooWetForestPole", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.GrC_Bamboo, "grc.bamboo", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.BoP, "bamboo", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Bamboo                 , ST.make(MD.TROPIC, "bambooStick", 1, 0));
