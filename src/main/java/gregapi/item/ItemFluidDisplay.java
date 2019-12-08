@@ -38,6 +38,7 @@ import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
 import gregapi.data.MD;
+import gregapi.fluid.FluidGT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.recipes.Recipe;
@@ -203,6 +204,12 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 						}
 					}
 				}
+			}
+			
+			if (aFluid instanceof FluidGT) {
+				aList.add(LH.Chat.DGRAY + "Fluid owned by GT6" + LH.Chat.GRAY);
+			} else {
+				aList.add(LH.Chat.DGRAY + "Fluid NOT owned by GT6" + LH.Chat.GRAY);
 			}
 		}
 	}

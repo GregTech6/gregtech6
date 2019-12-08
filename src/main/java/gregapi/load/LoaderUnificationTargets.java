@@ -93,9 +93,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Co                     , ST.make(MD.GC_GALAXYSPACE, "ores", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ni                     , ST.make(MD.GC_GALAXYSPACE, "ores", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.BlueSapphire           , ST.make(MD.GC_GALAXYSPACE, "ores", 1, 2));
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.BlueSapphire           , ST.make(MD.GC_GALAXYSPACE, "ores", 1, 3));
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , ST.make(MD.GC_GALAXYSPACE, "ores", 1, 4));
-		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.BlueSapphire           , ST.make(MD.GC_GALAXYSPACE, "ores", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , ST.make(MD.GC_GALAXYSPACE, "ores", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.BlueSapphire           , ST.make(MD.GC_GALAXYSPACE, "ores", 1, 4));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.BlueSapphire           , ST.make(MD.GC_GALAXYSPACE, "item.BasicItems", 1, 6));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Dolomite               , ST.make(MD.GC_GALAXYSPACE, "item.BasicItems", 1, 5));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Co                     , ST.make(MD.GC_GALAXYSPACE, "item.Ingots", 1, 0));

@@ -18,7 +18,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.23: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[NOTE] I'm sick since Thursday Evening, that's why this Release is so small. I hate going outside...
+[FIXED] Dust Ores were able to be Crushed due to a derp in the Code. They were supposed to be Sifting Only.
 
 
 6.11.22:

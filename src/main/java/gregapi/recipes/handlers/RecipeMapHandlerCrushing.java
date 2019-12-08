@@ -45,7 +45,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	
 	@Override
 	public boolean addRecipesUsing(RecipeMap aMap, ItemStack aInput, OreDictItemData aData) {
-		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mMaterial.mMaterial.containsAny(TD.Atomic.ANTIMATTER, TD.Prefix.DUST_ORE)) return F;
+		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.contains(TD.Prefix.DUST_ORE) || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER)) return F;
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
 		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreMultiplier * aData.mMaterial.mMaterial.mOreProcessingMultiplier;
 		
