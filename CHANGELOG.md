@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.11.23: (Not released yet)
 [NOTE] I'm sick since Thursday Evening, that's why this Release is so small. I hate going outside...
 [FIXED] Dust Ores were able to be Crushed due to a derp in the Code. They were supposed to be Sifting Only.
+[CHANGED] Gearboxes wont jam anymore if mismatching Power enters them, but they will WASTE most of it now when mismatching! Note that Power coming from the opposite rotation will STILL jam the Gears!
 
 
 6.11.22:

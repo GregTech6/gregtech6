@@ -300,10 +300,14 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				// Why even bother calculating that, if it goes through the Axle anyways and the Axle has no Gears on it.
 				if (AXIS_XYZ[(mAxleGear >>> 6) & 3][aSide]) return ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.RU, aSpeed, aPower, this, getAdjacentTileEntity(OPPOSITES[aSide]));
 			}
-			if (tRotationData != mRotationData || Math.abs(aSpeed) != mCurrentSpeed) {
+			if (tRotationData != mRotationData) {
 				// Gears are jamming!
 				mRotationData = 0;
 				mJammed = T;
+				return aPower;
+			}
+			if (Math.abs(aSpeed) != mCurrentSpeed) {
+				// Gears are not accepting the Power!
 				return aPower;
 			}
 			if (mIgnorePower) return 0;
