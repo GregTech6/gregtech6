@@ -14,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.24: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Botania Ingot Shiftclicking on Beacon resulting in placing Ingot instead of summoning Spirits.
 
 
 6.11.23:

@@ -327,7 +327,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 									aEvent.setCanceled(T);
 								}
 							}
-							if (tData.mPrefix == OP.ingot) {
+							if (tData.mPrefix == OP.ingot) if (!MD.BOTA.mLoaded || tData.mMaterial.mMaterial.mOriginalMod != MD.BOTA || Blocks.beacon != aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z)) {
 								if (MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32084, ST.save(null, NBT_VALUE, ST.copy(aStack))).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
 									ST.use(aEvent.entityPlayer, aStack, aStack.stackSize);
 									aEvent.setCanceled(T);
