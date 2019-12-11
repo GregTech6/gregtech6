@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.24: (Not released yet)
 [FIXED] Botania Ingot Shiftclicking on Beacon resulting in placing Ingot instead of summoning Spirits.
+[CHANGED] Chemtubes can now be used for setting Fluid Filters.
 
 
 6.11.23:
