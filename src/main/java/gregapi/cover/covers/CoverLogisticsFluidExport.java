@@ -27,8 +27,11 @@ import gregapi.cover.CoverData;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.data.TD;
+import gregapi.oredict.OreDictItemData;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
@@ -87,7 +90,13 @@ public class CoverLogisticsFluidExport extends AbstractCoverAttachmentLogistics 
 				ItemStack tStack = ((EntityPlayer)aPlayer).getCurrentEquippedItem();
 				if (ST.valid(tStack)) {
 					FluidStack tFluid = FL.getFluid(tStack, T);
-					if (tFluid != null && tFluid.getFluid() != null) {
+					if (tFluid == null) {
+						OreDictItemData tData = OM.anyassociation_(tStack);
+						if (tData != null && tData.mPrefix.contains(TD.Prefix.IS_CONTAINER) && !tData.mPrefix.contains(TD.Prefix.IS_CRATE)) {
+							tFluid = tData.mMaterial.mMaterial.fluid(U, T);
+						}
+					}
+					if (tFluid != null && tFluid.getFluid() != null && !FL.Error.is(tFluid)) {
 						aData.mNBTs[aCoverSide] = FL.save(null, "gt.filter.fluid", tFluid);
 						UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
 						UT.Entities.sendchat(aPlayer, "Exports: " + LH.Chat.CYAN + tFluid.getFluid().getName());
