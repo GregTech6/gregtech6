@@ -88,7 +88,7 @@ public class RecipeMapReplicator extends RecipeMap {
 	public static Recipe getReplicatorRecipe(OreDictMaterial aMaterial, ItemStack aUSB) {
 		if (aMaterial.contains(TD.Processing.UUM) && !aMaterial.contains(TD.Atomic.ANTIMATTER)) {
 			FluidStack[] tMatters = FL.array(aMaterial.mNeutrons<=0?NF:FL.MatterNeutral.make(aMaterial.mNeutrons), aMaterial.mProtons<=0?NF:FL.MatterCharged.make(aMaterial.mProtons));
-			long tPower = (aMaterial.mProtons+aMaterial.mNeutrons) * 65536;
+			long tPower = (aMaterial.mProtons+aMaterial.mNeutrons) * 256;
 			if (aMaterial.mMeltingPoint <= DEF_ENV_TEMP) {
 				FluidStack tFluidOutput = aMaterial.fluid(DEF_ENV_TEMP, U, F);
 				if (!FL.Error.is(tFluidOutput)) return new Recipe(F, F, T, ST.array(ST.amount(0, aUSB)), ZL_IS, null, null, tMatters, FL.array(tFluidOutput), tPower, 1, 0).setNoBuffering();

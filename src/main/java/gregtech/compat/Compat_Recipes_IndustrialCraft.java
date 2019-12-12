@@ -149,8 +149,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.remove(IL.IC2_Machine.get(1));
 		CR.shapeless(OP.ingot.mat(MT.Fe, 8), new Object[] {IL.IC2_Machine});
 		
-		RM.Massfab      .addRecipe1(T, 1, 32768, IL.IC2_Scrap                               .get(36), ST.make(MD.IC2, "item.itemMatter", 1, 0));
-		RM.Massfab      .addRecipe1(T, 1, 32768, IL.IC2_Scrapbox                            .get( 4), ST.make(MD.IC2, "item.itemMatter", 1, 0));
+		RM.Massfab      .addRecipe1(T, 1, 32768, IL.IC2_Scrap                        .get(36), ST.make(MD.IC2, "item.itemMatter", 1, 0));
+		RM.Massfab      .addRecipe1(T, 1, 32768, IL.IC2_Scrapbox                     .get( 4), ST.make(MD.IC2, "item.itemMatter", 1, 0));
 		RM.Massfab      .addRecipe1(T, 1, 32768, ST.make(MD.IC2, "item.itemScrapMetal", 2, 0), ST.make(MD.IC2, "item.itemMatter", 1, 0));
 		
 		RM.Shredder     .addRecipe1(T, 16,   16, IL.IC2_Plantball.get(1)        , ST.make(Blocks.dirt, 1, 0));
