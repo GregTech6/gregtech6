@@ -14,12 +14,14 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.24: (Not released yet)
+[FIXED] Taped Mass Storages were voiding Items when used with the Storage Inserter. I'm sorry for anyone losing Resources due to that.
 [FIXED] Botania Ingot Shiftclicking on Beacon resulting in placing Ingot instead of summoning Spirits.
 [CHANGED] Chemtubes can now be used for setting Fluid Filters.
 [CHANGED]
 The Matter Replicators are working 256 times faster/cheaper now, and Matter Fabricators are half as fast now (to offset the cheapness).
 This means the actual Matter Fabrication is gonna be the Bottleneck now, and it also means that it's easier to produce on Demand, if you have enough Matter fabricated in advance.
 I did this because Multiblock Matter Replicators don't make sense since they could only do one Material at a time. (And I also dont wanna deal with all the USB Blueprint Stuff for a Multiblock)
+[CHANGED] Matter Fabricators and Matter Replicators now no longer require constant Power Input and can be interrupted without losing Progress. Same goes for Time Based Machines such as Bath, Coagulator, Coke Oven, Generifier and Autoclave.
 [ADDED]
 Matter Fabricator Multiblock.
 Accepts any Power Input between 1 and 524288 QU/t and has a 100% Efficiency. (Made to accept ZPM Levels of Quantum Power)

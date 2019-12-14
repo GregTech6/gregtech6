@@ -351,7 +351,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	/** @return Items Leftover after inserting. */
 	public ItemStack insertItems(ItemStack aStack, boolean aCheckForNEI) {
-		if (ST.invalid(aStack) || (mMode & B[3]) != 0) return null;
+		if (ST.invalid(aStack) || (mMode & B[3]) != 0) return aStack;
 		
 		if (!slotHas(1)) {
 			mLogisticsCache = null;

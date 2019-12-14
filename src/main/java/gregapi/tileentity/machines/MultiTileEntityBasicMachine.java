@@ -99,7 +99,7 @@ import net.minecraftforge.fluids.IFluidTank;
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
 })
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
-	public boolean mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
+	public boolean mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
 	public byte mEnergyInputs = 127, mOutputBlocked = 0, mMode = 0;
 	public byte mItemInputs  = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
 	public byte mFluidInputs = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
@@ -130,6 +130,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_STATE+".old")) mStateOld = aNBT.getBoolean(NBT_STATE+".old");
 		if (aNBT.hasKey(NBT_NEEDS_IGNITION)) mRequiresIgnition = aNBT.getBoolean(NBT_NEEDS_IGNITION);
 		if (aNBT.hasKey(NBT_CHEAP_OVERCLOCKING)) mCheapOverclocking = aNBT.getBoolean(NBT_CHEAP_OVERCLOCKING);
+		if (aNBT.hasKey(NBT_NO_CONSTANT_POWER)) mNoConstantEnergy = aNBT.getBoolean(NBT_NO_CONSTANT_POWER);
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_INPUT)) {mInput = aNBT.getLong(NBT_INPUT); mInputMin = mInput / 2; mInputMax = mInput * 2;}
 		if (aNBT.hasKey(NBT_INPUT_MIN)) {mInputMin = aNBT.getLong(NBT_INPUT_MIN);}
@@ -801,7 +802,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			doSoundInterrupt();
 			doOutputItems();
 		}
-		if (CONSTANT_ENERGY) mProgress = 0;
+		if (CONSTANT_ENERGY && !mNoConstantEnergy) mProgress = 0;
 		if (mRunning || mIgnited || mInventoryChanged || aTimer%1200 == 5) {
 			if (!checkStructure(F)) checkStructure(T);
 			checkRecipe(F, T);

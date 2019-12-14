@@ -1101,6 +1101,7 @@ public class CS {
 	, NBT_STOPPED                   = "gt.stopped"                  // Boolean signalising if the Machine is set to stop.
 	, NBT_RUNNING                   = "gt.running"                  // Boolean signalising if the Machine is set up to run.
 	, NBT_CHEAP_OVERCLOCKING        = "gt.cheap.overclocking"       // Boolean
+	, NBT_NO_CONSTANT_POWER         = "gt.no.constant.power"        // Boolean
 	, NBT_EFFICIENCY                = "gt.eff"                      // Short from 0 to 10000 describing the Efficiency of a Generator or Converter.
 	, NBT_MULTIPLIER                = "gt.multiplier"               // Number
 	, NBT_INV_SIZE                  = "gt.invsize"                  // Short
