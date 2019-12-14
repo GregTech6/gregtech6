@@ -867,7 +867,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public boolean doSoundInterrupt() {
-		return UT.Sounds.send(mRequiresIgnition?SFX.MC_FIZZ:SFX.IC_MACHINE_INTERRUPT, this);
+		return UT.Sounds.send(mRequiresIgnition?SFX.MC_FIZZ:mNoConstantEnergy?SFX.IC_MACHINE_INTERRUPT:SFX.MC_CLICK, this);
 	}
 	
 	public boolean checkStructure(boolean aForceReset) {

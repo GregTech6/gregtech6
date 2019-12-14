@@ -31,6 +31,7 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OD;
+import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterial;
@@ -820,11 +821,22 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mNeutrons+tMaterial.mProtons > 0 && tMaterial.contains(TD.Atomic.ELEMENT) && !tMaterial.contains(TD.Atomic.ANTIMATTER)) {
-			ItemStack tInput = OM.dust(tMaterial);      if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons));
-			tInput = OM.ingot(tMaterial);               if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons));
-			FluidStack tFluid = tMaterial.liquid(U, T); if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072, tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons));
-			tFluid = tMaterial.gas(U, T);               if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072, tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons));
-			tFluid = tMaterial.plasma(U, T);            if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072, tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons));
+			ItemStack
+			tInput = OP.dust.mat(tMaterial, 1);         if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = OP.ingot.mat(tMaterial, 1);        if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = OP.plate.mat(tMaterial, 1);        if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = OP.plateGem.mat(tMaterial, 1);     if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = OP.gem.mat(tMaterial, 1);          if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			
+			tInput = OP.blockDust.mat(tMaterial, 1);    if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = OP.blockIngot.mat(tMaterial, 1);   if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = OP.blockPlate.mat(tMaterial, 1);   if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = OP.blockPlateGem.mat(tMaterial, 1);if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = OP.blockGem.mat(tMaterial, 1);     if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			
+			FluidStack tFluid = tMaterial.liquid(U, T); if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tFluid = tMaterial.gas(U, T);               if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tFluid = tMaterial.plasma(U, T);            if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
 		}
 	}
 }

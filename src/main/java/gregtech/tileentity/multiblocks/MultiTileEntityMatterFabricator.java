@@ -224,7 +224,7 @@ public class MultiTileEntityMatterFabricator extends TileEntityBase10MultiBlockM
 	static {
 		LH.add("gt.tooltip.multiblock.matterfabricator.1", "5x5x5 'Hollow' of 97 Dense Lead Walls");
 		LH.add("gt.tooltip.multiblock.matterfabricator.2", "3x3x3 'Hollow' with 26 Osmium Coils inside the 5x5x5");
-		LH.add("gt.tooltip.multiblock.matterfabricator.3", "5x5 Ring of 16 Regular Galvanized Walls ontop");
+		LH.add("gt.tooltip.multiblock.matterfabricator.3", "5x5 Ring of 16 Regular Galvanized Steel Walls ontop");
 		LH.add("gt.tooltip.multiblock.matterfabricator.4", "4 Control Quadcore Processor Units in that Ring");
 		LH.add("gt.tooltip.multiblock.matterfabricator.5", "4 Conversion Quadcore Processor Units in that Ring");
 		LH.add("gt.tooltip.multiblock.matterfabricator.6", "1 Versatile Quadcore Processor Unit in the center of that Ring");

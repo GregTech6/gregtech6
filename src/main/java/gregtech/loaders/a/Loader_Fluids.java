@@ -73,8 +73,8 @@ public class Loader_Fluids implements Runnable {
 		
 		FL.create("chargedmatter"            , "Charged Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
 		FL.create("neutralmatter"            , "Neutral Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
-		FL.create("UUAmplifier"              , "UU-Amplifier"        , MT.UUAmplifier        , 1,    100,   100);
-		FL.create("ic2uumatter"              , "UU-Matter"           , MT.UUMatter           , 1,    100,   100);
+		FL.create("UUAmplifier"              , "UU-Amplifier"        , MT.UUAmplifier        , 1,      1,   100);
+		FL.create("ic2uumatter"              , "UU-Matter"           , MT.UUMatter           , 1,      1,   100);
 		FL.create("ic2constructionfoam"      , "Construction Foam"   , MT.ConstructionFoam   , 1,    100,   300);
 		FL.create("ic2distilledwater"        , "Distilled Water"     , MT.DistWater          , 1);
 		FL.create("NitroFuel"                , "Nitro Fuel"          , MT.NitroFuel          , 1);
