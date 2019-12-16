@@ -99,7 +99,7 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 	static {
 		LH.add("gt.tooltip.multiblock.steamturbine.1", "3x3x4 of the Block you crafted this one with");
 		LH.add("gt.tooltip.multiblock.steamturbine.2", "Main centered on the 3x3 facing outwards");
-		LH.add("gt.tooltip.multiblock.steamturbine.3", "Input only possible at Main Block");
+		LH.add("gt.tooltip.multiblock.steamturbine.3", "Input only possible at frontal 3x3");
 		LH.add("gt.tooltip.multiblock.steamturbine.4", "Distilled Water can be pumped out at Bottom Layer");
 	}
 	
