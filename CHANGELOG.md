@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.24: (Not released yet)
+6.11.24:
 [FIXED] Taped Mass Storages were voiding Items when used with the Storage Inserter. I'm sorry for anyone losing Resources due to that.
 [FIXED] Botania Ingot Shiftclicking on Beacon resulting in placing Ingot instead of summoning Spirits.
 [CHANGED] Adamantium, Gaia, Bedrock-HSLA and Draconium Fluid Pipes now have a higher Capacity.
@@ -25,7 +25,7 @@ I did this because Multiblock Matter Replicators don't make sense since they cou
 [CHANGED] Matter Fabricators and Matter Replicators now no longer require constant Power Input and can be interrupted without losing Progress. Same goes for Time Based Machines such as Bath, Coagulator, Coke Oven, Generifier and Autoclave.
 [ADDED]
 Matter Fabricator Multiblock.
-Accepts any Power Input between 1 and 524288 QU/t and has a 100% Efficiency. (Made to accept ZPM Levels of Quantum Power)
+Accepts any Power Input between 1 and 2097152 QU/t and has a 100% Efficiency. (Made to accept ZPM Levels of Quantum Power)
 Made with a crapload of Lead (to shield against "radiation" from making the Matter), Osmium Coils and Quadcore CPUs.
 
 
