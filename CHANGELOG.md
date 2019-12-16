@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.11.24: (Not released yet)
 [FIXED] Taped Mass Storages were voiding Items when used with the Storage Inserter. I'm sorry for anyone losing Resources due to that.
 [FIXED] Botania Ingot Shiftclicking on Beacon resulting in placing Ingot instead of summoning Spirits.
+[CHANGED] Adamantium, Gaia, Bedrock-HSLA and Draconium Fluid Pipes now have a higher Capacity.
 [CHANGED] Chemtubes can now be used for setting Fluid Filters.
 [CHANGED]
 The Matter Replicators are working 256 times faster/cheaper now, and Matter Fabricators are half as fast now (to offset the cheapness).

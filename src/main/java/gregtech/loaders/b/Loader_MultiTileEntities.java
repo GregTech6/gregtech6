@@ -1673,18 +1673,18 @@ public class Loader_MultiTileEntities implements Runnable {
 		MultiTileEntityPipeFluid.addFluidPipes(26220, 26142,        400, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.TungstenSteel);
 		MultiTileEntityPipeFluid.addFluidPipes(26240, 26142,        450, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.TungstenCarbide);
 		MultiTileEntityPipeFluid.addFluidPipes(26440, 26142,        500, T, T, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.Ir);
-		MultiTileEntityPipeFluid.addFluidPipes(26560, 26142,        500, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.GaiaSpirit);
-		MultiTileEntityPipeFluid.addFluidPipes(26380, 26142,       1000, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Draconium);
-		MultiTileEntityPipeFluid.addFluidPipes(26420, 26142,       2000, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.DraconiumAwakened);
+		MultiTileEntityPipeFluid.addFluidPipes(26560, 26142,       1000, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.GaiaSpirit);
+		MultiTileEntityPipeFluid.addFluidPipes(26380, 26142,       2500, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Draconium);
+		MultiTileEntityPipeFluid.addFluidPipes(26420, 26142,      10000, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.DraconiumAwakened);
 		MultiTileEntityPipeFluid.addFluidPipes(26600, 26142, 1000000000, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Infinity);
-		MultiTileEntityPipeFluid.addFluidPipes(26300, 26142,       2000, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Ad);
-		MultiTileEntityPipeFluid.addFluidPipes(26320, 26142,        500, T, F, F, F, F, T, T, aRegistry, aMachine     , aClass, MT.Bedrock_HSLA_Alloy);
+		MultiTileEntityPipeFluid.addFluidPipes(26300, 26142,      10000, T, T, T, F, F, T, T, aRegistry, aMachine     , aClass, MT.Ad);
+		MultiTileEntityPipeFluid.addFluidPipes(26320, 26142,       1000, T, F, F, F, F, T, T, aRegistry, aMachine     , aClass, MT.Bedrock_HSLA_Alloy);
 		MultiTileEntityPipeFluid.addFluidPipes(26460, 26142,        250, T, T, F, F, F, T, T, aRegistry, aMachine     , aClass, MT.Thaumium);
 		MultiTileEntityPipeFluid.addFluidPipes(26540, 26142,        250, T, T, F, F, F, T, T, aRegistry, aMachine     , aClass, MT.Manasteel);
 		MultiTileEntityPipeFluid.addFluidPipes(26480, 26142,        500, T, T, F, F, F, T, T, aRegistry, aMachine     , aClass, MT.VoidMetal);
 		MultiTileEntityPipeFluid.addFluidPipes(26580, 26142,        500, T, T, F, F, F, T, T, aRegistry, aMachine     , aClass, MT.Terrasteel);
 		MultiTileEntityPipeFluid.addFluidPipes(26500, 26142,       1000, T, F, F, F, F, F, T, aRegistry, aMachine     , aClass, MT.C);
-		MultiTileEntityPipeFluid.addFluidPipes(26640, 26142,        200, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.Ta4HfC5);
+		MultiTileEntityPipeFluid.addFluidPipes(26640, 26142,        300, T, F, F, T, F, T, T, aRegistry, aMachine     , aClass, MT.Ta4HfC5);
 		
 		CR.shaped(OP.pipeTiny   .mat(MT.Wood, 1), CR.DEF_REV_NCC, "  s", " W ", "r  ", 'W', OD.slabWood);
 		CR.shaped(OP.pipeSmall  .mat(MT.Wood, 1), CR.DEF_REV_NCC, "  s", " W ", "r  ", 'W', OD.plankWood);
