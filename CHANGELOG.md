@@ -10,7 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.25: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Matter Fabricator Multiblock now uses Ventilation Units instead of Galvanized Steel Walls.
 
 
 6.11.24:
