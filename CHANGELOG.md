@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.25: (Not released yet)
 [CHANGED] Matter Fabricator Multiblock now uses Ventilation Units instead of Galvanized Steel Walls.
+[WIP] Fusion Reactor. Gonna be an Octagon fitting in a 19x19 Square.
 
 
 6.11.24:
