@@ -135,6 +135,7 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 	
 	static {
 		LH.add("gt.tooltip.multiblock.fusionreactor.1", "For Construction Instructions read the Manual.");
+		LH.add("gt.tooltip.multiblock.fusionreactor.2", "144 Iridium Coils, 576 Regular Tungstensteel Walls.");
 	}
 	
 	@Override

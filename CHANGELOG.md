@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.25: (Not released yet)
 [CHANGED] Matter Fabricator Multiblock now uses Ventilation Units instead of Galvanized Steel Walls.
+[ADDED] Fluid Display Items can now rightclick fill Blocks with their Fluid directly.
 [WIP] Fusion Reactor. Gonna be an Octagon fitting in a 19x19 Square.
 
 
