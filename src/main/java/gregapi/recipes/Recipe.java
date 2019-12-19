@@ -678,6 +678,11 @@ public class Recipe {
 		return new Recipe(this);
 	}
 	
+	public Recipe setSpecialNumber(long aNumber) {
+		mSpecialValue = aNumber;
+		return this;
+	}
+	
 	public Recipe setNoBuffering() {
 		mCanBeBuffered = F;
 		return this;

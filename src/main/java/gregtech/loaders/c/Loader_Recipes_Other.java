@@ -820,15 +820,14 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Nanofab.addRecipe2(T, 16,3072, ST.tag(17), dust     .mat(MT.C,12), pipeHuge.mat(MT.C, 1));
 		
 		
-		// TODO Better Values for Power generation, also make sure all Fluids exist.
-		RM.Fusion.addRecipe1(T, -16,  7300000, ST.tag(1), FL.array(MT.D     .fluid(U*2, T)                       ), FL.array(MT.He_3  .fluid(  U2, F), MT.T     .fluid(  U2, F)), ZL_IS);
-		RM.Fusion.addRecipe1(T, -16, 11300000, ST.tag(1), FL.array(MT.T     .fluid(U*2, T)                       ), FL.array(MT.He    .fluid(  U , F)), ZL_IS);
-		RM.Fusion.addRecipe1(T, -16, 12900000, ST.tag(1), FL.array(MT.He_3  .fluid(U*2, T)                       ), FL.array(MT.He    .fluid(  U , F)), ZL_IS);
-		RM.Fusion.addRecipe1(T, -16, 17600000, ST.tag(2), FL.array(MT.D     .fluid(U  , T), MT.T   .fluid(U  , T)), FL.array(MT.He    .fluid(  U , F)), ZL_IS);
-		RM.Fusion.addRecipe1(T, -16, 18300000, ST.tag(2), FL.array(MT.D     .fluid(U  , T), MT.He_3.fluid(U  , T)), FL.array(MT.He    .fluid(  U , F)), ZL_IS);
-		RM.Fusion.addRecipe1(T, -16, 26400000, ST.tag(2), FL.array(MT.T     .fluid(U  , T), MT.He_3.fluid(U  , T)), FL.array(MT.He    .fluid(3*U4, F), MT.D     .fluid(  U4, F)), ZL_IS);
-		RM.Fusion.addRecipe1(T, -16, 33360000, ST.tag(2), FL.array(MT.D     .fluid(U  , T), MT.Li_6.fluid(U  , T)), FL.array(MT.He    .fluid(3*U8, F), MT.He_3  .fluid(  U8, F), MT.Li    .fluid(  U8, F), MT.Be_7  .fluid(  U8, F)), ZL_IS);
-		RM.Fusion.addRecipe1(T, -16, 16900000, ST.tag(2), FL.array(MT.He_3  .fluid(U  , T), MT.Li_6.fluid(U  , T)), FL.array(MT.He    .fluid(2*U , F)), ZL_IS);
+		RM.Fusion.addRecipe1(T, -8192,  7300000, ST.tag(1), FL.array(MT.D     .gas   (U*2, T)                        ), FL.array(MT.He_3  .gas   (  U2, F), MT.T     .gas   (  U2, F)                                                      ), ZL_IS).setSpecialNumber( 7300000L*8192L*32L);
+		RM.Fusion.addRecipe1(T, -8192, 11300000, ST.tag(1), FL.array(MT.T     .gas   (U*2, T)                        ), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS).setSpecialNumber(11300000L*8192L*32L);
+		RM.Fusion.addRecipe1(T, -8192, 12900000, ST.tag(1), FL.array(MT.He_3  .gas   (U*2, T)                        ), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS).setSpecialNumber(12900000L*8192L*32L);
+		RM.Fusion.addRecipe1(T, -8192, 17600000, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.T   .gas   (U  , T)), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS).setSpecialNumber(17600000L*8192L*32L);
+		RM.Fusion.addRecipe1(T, -8192, 18300000, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.He_3.gas   (U  , T)), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS).setSpecialNumber(18300000L*8192L*32L);
+		RM.Fusion.addRecipe1(T, -8192, 26400000, ST.tag(2), FL.array(MT.T     .gas   (U  , T), MT.He_3.gas   (U  , T)), FL.array(MT.He    .gas   (3*U4, F), MT.D     .gas   (  U4, F)                                                      ), ZL_IS).setSpecialNumber(26400000L*8192L*32L);
+		RM.Fusion.addRecipe1(T, -8192, 33360000, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (3*U8, F), MT.He_3  .gas   (  U8, F), MT.Li    .liquid(  U8, F), MT.Be_7  .liquid(  U8, F)), ZL_IS).setSpecialNumber(33360000L*8192L*32L);
+		RM.Fusion.addRecipe1(T, -8192, 16900000, ST.tag(2), FL.array(MT.He_3  .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (2*U , F)                                                                                 ), ZL_IS).setSpecialNumber(16900000L*8192L*32L);
 		
 		
 		

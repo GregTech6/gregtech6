@@ -1008,8 +1008,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	
 	/** Gets the Fluid of this Material at a certain Temperature. */
 	public FluidStack fluid(long aTemperature, long aMaterialAmount, boolean aRoundUp) {
-		if (aTemperature >= mPlasmaPoint) return plasma(aMaterialAmount, aRoundUp);
-		if (aTemperature >= mBoilingPoint) return gas(aMaterialAmount, aRoundUp);
+		if (aTemperature >= mPlasmaPoint ) return plasma(aMaterialAmount, aRoundUp);
+		if (aTemperature >= mBoilingPoint) return gas   (aMaterialAmount, aRoundUp);
 		if (aTemperature >= mMeltingPoint) return liquid(aMaterialAmount, aRoundUp);
 		return FL.Error.make(1000);
 	}
