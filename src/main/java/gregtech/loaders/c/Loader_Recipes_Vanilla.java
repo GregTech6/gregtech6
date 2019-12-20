@@ -173,14 +173,23 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.stick                       , 1, 0), DEF, "s", "X", 'X', OP.treeSapling);
 		CR.shaped(ST.make(Items.stick                       , 1, 0), DEF, "k", "X", 'X', OP.treeSapling);
 		
-		CR.shaped(ST.make(Blocks.torch, 1, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', IL.Grass_Dry                 );
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.S)             );
-		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.S)            );
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.P)             );
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.P)            );
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.Phosphorus)    );
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.Phosphorus)   );
-		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OD.itemResin                 );
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.S)                        );
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.S)                       );
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushed.dat(MT.S)                    );
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedPurified.dat(MT.S)            );
+		CR.shaped(ST.make(Blocks.torch, 2, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedCentrifuged.dat(MT.S)         );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.P)                        );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.P)                       );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushed.dat(MT.P)                    );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedPurified.dat(MT.P)            );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedCentrifuged.dat(MT.P)         );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.gem.dat(MT.Phosphorus)               );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.dust.dat(MT.Phosphorus)              );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushed.dat(MT.Phosphorus)           );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedPurified.dat(MT.Phosphorus)   );
+		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OP.crushedCentrifuged.dat(MT.Phosphorus));
+		CR.shaped(ST.make(Blocks.torch, 4, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OD.itemResin                            );
+		CR.shaped(ST.make(Blocks.torch, 1, 0), DEF_NAC,  "X" ,  "S" , 'S', OP.stick.dat(ANY.Wood), 'X', OD.itemGrassDry                         );
 		
 		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000rubbertreesap, 'W', ST.make(Blocks.wool, 1, W));
 		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC,  "WC",  "S ", 'S', OP.stick.dat(ANY.Wood), 'C', OD.container1000spruceresin  , 'W', ST.make(Blocks.wool, 1, W));

@@ -1100,6 +1100,7 @@ public class CS {
 	, NBT_REVERSED                  = "gt.reversed"                 // Boolean signalising if the Machine is set to reverse.
 	, NBT_STOPPED                   = "gt.stopped"                  // Boolean signalising if the Machine is set to stop.
 	, NBT_RUNNING                   = "gt.running"                  // Boolean signalising if the Machine is set up to run.
+	, NBT_SPECIAL_IS_START_ENERGY   = "gt.special.start.energy"     // Boolean
 	, NBT_CHEAP_OVERCLOCKING        = "gt.cheap.overclocking"       // Boolean
 	, NBT_NO_CONSTANT_POWER         = "gt.no.constant.power"        // Boolean
 	, NBT_EFFICIENCY                = "gt.eff"                      // Short from 0 to 10000 describing the Efficiency of a Generator or Converter.

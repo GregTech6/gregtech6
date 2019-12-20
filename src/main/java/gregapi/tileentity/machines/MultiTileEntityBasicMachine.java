@@ -99,14 +99,14 @@ import net.minecraftforge.fluids.IFluidTank;
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
 })
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
-	public boolean mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
-	public byte mEnergyInputs = 127, mOutputBlocked = 0, mMode = 0;
-	public byte mItemInputs  = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
-	public byte mFluidInputs = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
+	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
+	public byte mEnergyInputs = 127, mEnergyOutput = SIDE_UNDEFINED, mOutputBlocked = 0, mMode = 0;
+	public byte mItemInputs   = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
+	public byte mFluidInputs  = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
 	public int mParallel = 1;
-	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0;
-	public TagData mEnergyTypeAccepted = TD.Energy.TU;
+	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0, mOutputEnergy = 0, mChargeRequirement = 0;
+	public TagData mEnergyTypeAccepted = TD.Energy.TU, mEnergyTypeEmitted = TD.Energy.QU, mEnergyTypeCharged = TD.Energy.TU;
 	public Recipe mLastRecipe = null;
 	public FluidTankGT[] mTanksInput = ZL_FT, mTanksOutput = ZL_FT;
 	public ItemStack[] mOutputItems = ZL_IS;
@@ -131,6 +131,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_NEEDS_IGNITION)) mRequiresIgnition = aNBT.getBoolean(NBT_NEEDS_IGNITION);
 		if (aNBT.hasKey(NBT_CHEAP_OVERCLOCKING)) mCheapOverclocking = aNBT.getBoolean(NBT_CHEAP_OVERCLOCKING);
 		if (aNBT.hasKey(NBT_NO_CONSTANT_POWER)) mNoConstantEnergy = aNBT.getBoolean(NBT_NO_CONSTANT_POWER);
+		if (aNBT.hasKey(NBT_SPECIAL_IS_START_ENERGY)) mSpecialIsStartEnergy = aNBT.getBoolean(NBT_SPECIAL_IS_START_ENERGY);
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_INPUT)) {mInput = aNBT.getLong(NBT_INPUT); mInputMin = mInput / 2; mInputMax = mInput * 2;}
 		if (aNBT.hasKey(NBT_INPUT_MIN)) {mInputMin = aNBT.getLong(NBT_INPUT_MIN);}
@@ -155,7 +156,13 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_TANK_DISABLED_IN)) mDisabledFluidInput = aNBT.getBoolean(NBT_TANK_DISABLED_IN);
 		if (aNBT.hasKey(NBT_TANK_DISABLED_OUT)) mDisabledFluidOutput = aNBT.getBoolean(NBT_TANK_DISABLED_OUT);
 		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
+		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED_2)) mEnergyTypeCharged = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED_2));
 		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED_SIDES)) mEnergyInputs = (byte)(aNBT.getByte(NBT_ENERGY_ACCEPTED_SIDES) | SBIT_A);
+		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
+		if (aNBT.hasKey(NBT_ENERGY_EMITTED_SIDES)) mEnergyOutput = aNBT.getByte(NBT_ENERGY_EMITTED_SIDES);
+		if (aNBT.hasKey(NBT_OUTPUT)) mOutputEnergy = aNBT.getByte(NBT_OUTPUT);
+		if (aNBT.hasKey(NBT_INPUT_EU)) mChargeRequirement = aNBT.getByte(NBT_INPUT_EU);
+		
 		
 		int tCapacity = getDefaultTankCapacity();
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) tCapacity = UT.Code.bindInt(aNBT.getLong(NBT_TANK_CAPACITY));
@@ -228,6 +235,9 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		UT.NBT.setNumber(aNBT, NBT_MINENERGY, mMinEnergy);
 		UT.NBT.setNumber(aNBT, NBT_PROGRESS, mProgress);
 		UT.NBT.setNumber(aNBT, NBT_MAXPROGRESS, mMaxProgress);
+		UT.NBT.setNumber(aNBT, NBT_OUTPUT, mOutputEnergy);
+		UT.NBT.setNumber(aNBT, NBT_INPUT_EU, mChargeRequirement);
+		
 		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mActive);
 		UT.NBT.setBoolean(aNBT, NBT_RUNNING, mRunning);
 		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mStopped);
@@ -331,7 +341,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			return 10000;
 		}
 		if (aTool.equals(TOOL_softhammer)) {
-			mProgress = mMinEnergy = mMaxProgress = 0;
+			mProgress = mMinEnergy = mMaxProgress = mOutputEnergy = mChargeRequirement = 0;
 			mOutputFluids = ZL_FS;
 			mOutputItems = ZL_IS;
 			updateInventory();
@@ -400,7 +410,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public void onTickFailed(long aTimer, boolean aIsServerSide) {
 		super.onTickFailed(aTimer, aIsServerSide);
 		// Just to prevent Infinite Item dupes in case this happens during the Processing Functions.
-		mProgress = mMinEnergy = mMaxProgress = 0;
+		mProgress = mMinEnergy = mMaxProgress = mOutputEnergy = mChargeRequirement = 0;
 		mOutputFluids = ZL_FS;
 		mOutputItems = ZL_IS;
 	}
@@ -418,7 +428,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
 			if (mBlockUpdated) updateAdjacentToggleableEnergySources();
-			if (mEnergyTypeAccepted == TD.Energy.TU && !mStopped) mEnergy++;
+			if (!mStopped) {
+				if (mEnergyTypeAccepted == TD.Energy.TU) mEnergy++;
+				if (mChargeRequirement > 0 && mEnergyTypeCharged == TD.Energy.TU) mChargeRequirement--;
+			}
 			
 			if (!mDisabledFluidOutput && SIDES_VALID[mFluidAutoOutput]) doOutputFluids();
 			
@@ -452,22 +465,33 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
 		if (mStopped) return 0;
-		if (aDoInject) mStateNew = (aSize > 0);
 		aSize = Math.abs(aSize);
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {
 			if (aDoInject) overcharge(aSize, aEnergyType);
 			return aAmount;
 		}
-		long tInput = Math.min(mInputMax - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
-		if (aDoInject) mEnergy += tConsumed * aSize;
-		return tConsumed;
+		if (aEnergyType == mEnergyTypeCharged && mChargeRequirement > 0) {
+			if (aDoInject) mChargeRequirement -= aSize * aAmount;
+			return aAmount;
+		}
+		if (aEnergyType == mEnergyTypeAccepted) {
+			if (aDoInject) mStateNew = (aSize > 0);
+			long tInput = Math.min(mInputMax - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
+			if (aDoInject) mEnergy += tConsumed * aSize;
+			return tConsumed;
+		}
+		return 0;
 	}
 	
-	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
+	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyTypeEmitted : aEnergyType == mEnergyTypeAccepted || aEnergyType == mEnergyTypeCharged;}
 	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mEnergyInputs] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) &&                FACING_ROTATIONS[mFacing][aSide]==mEnergyOutput  && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
 	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return mInputMin;}
 	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
 	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return mInputMax;}
+	@Override public long getEnergySizeOutputMin            (TagData aEnergyType, byte aSide) {return 1;}
+	@Override public long getEnergySizeOutputRecommended    (TagData aEnergyType, byte aSide) {return mInputMax;}
+	@Override public long getEnergySizeOutputMax            (TagData aEnergyType, byte aSide) {return Integer.MAX_VALUE;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
 	// Inventory Stuff
@@ -686,18 +710,25 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			}
 		}
 		
-		mOutputItems = tRecipe.getOutputs(RNGSUS, tMaxProcessCount);
+		if (!mActive && mSpecialIsStartEnergy) mChargeRequirement = tRecipe.mSpecialValue;
+		
+		mOutputItems  = tRecipe.getOutputs(RNGSUS, tMaxProcessCount);
 		mOutputFluids = tRecipe.getFluidOutputs(RNGSUS, tMaxProcessCount);
 		
-		if (mParallelDuration) {
-			mMinEnergy = Math.max(1, (mEnergyTypeAccepted == TD.Energy.RF ? tRecipe.mEUt * RF_PER_EU : mEnergyTypeAccepted == TD.Energy.TU ? tRecipe.mEUt : tRecipe.mEUt));
-			mMaxProgress = Math.max(1, UT.Code.units(mMinEnergy * Math.max(1, tRecipe.mDuration) * tMaxProcessCount, mEfficiency, 10000, T));
+		if (tRecipe.mEUt < 0) {
+			mOutputEnergy = -tRecipe.mEUt;
+			mMaxProgress = tRecipe.mDuration;
+			mMinEnergy = 1;
 		} else {
-			mMinEnergy = Math.max(1, (mEnergyTypeAccepted == TD.Energy.RF ? tRecipe.mEUt * RF_PER_EU * tMaxProcessCount : mEnergyTypeAccepted == TD.Energy.TU ? tRecipe.mEUt : tRecipe.mEUt * tMaxProcessCount));
-			mMaxProgress = Math.max(1, UT.Code.units(mMinEnergy * Math.max(1, tRecipe.mDuration), mEfficiency, 10000, T));
+			if (mParallelDuration) {
+				mMinEnergy = Math.max(1, (mEnergyTypeAccepted == TD.Energy.RF ? tRecipe.mEUt * RF_PER_EU : mEnergyTypeAccepted == TD.Energy.TU ? tRecipe.mEUt : tRecipe.mEUt));
+				mMaxProgress = Math.max(1, UT.Code.units(mMinEnergy * Math.max(1, tRecipe.mDuration) * tMaxProcessCount, mEfficiency, 10000, T));
+			} else {
+				mMinEnergy = Math.max(1, (mEnergyTypeAccepted == TD.Energy.RF ? tRecipe.mEUt * RF_PER_EU * tMaxProcessCount : mEnergyTypeAccepted == TD.Energy.TU ? tRecipe.mEUt : tRecipe.mEUt * tMaxProcessCount));
+				mMaxProgress = Math.max(1, UT.Code.units(mMinEnergy * Math.max(1, tRecipe.mDuration), mEfficiency, 10000, T));
+			}
+			if (mMinEnergy > 0 && !mCheapOverclocking) while (mMinEnergy < mInputMin && mMinEnergy * 4 <= mInputMax) {mMinEnergy *= 4; mMaxProgress *= 2;}
 		}
-		
-		if (mMinEnergy > 0 && !mCheapOverclocking) while (mMinEnergy < mInputMin && mMinEnergy * 4 <= mInputMax) {mMinEnergy *= 4; mMaxProgress *= 2;}
 		
 		removeAllDroppableNullStacks();
 		return FOUND_AND_SUCCESSFULLY_USED_RECIPE;
@@ -732,9 +763,12 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		
 		mSuccessful = F;
 		
-		if (mMaxProgress > 0) {
+		if (mMaxProgress > 0 && mChargeRequirement <= 0) {
 			rActive = T;
-			if (mProgress <= mMaxProgress) mProgress += aEnergy;
+			if (mProgress <= mMaxProgress) {
+				if (mOutputEnergy > 0) doOutputEnergy();
+				mProgress += aEnergy;
+			}
 			if (mProgress >= mMaxProgress && (mStateOld&&!mStateNew || !TD.Energy.ALL_ALTERNATING.contains(mEnergyTypeAccepted))) {
 				for (int i = 0; i < mOutputItems.length; i++) if (mOutputItems[i] != null && addStackToSlot(mRecipes.mInputItemsCount+(i % mRecipes.mOutputItemsCount), mOutputItems[i])) {mSuccessful = T; mOutputItems[i] = null; break;}
 				for (int i = 0; i < mOutputFluids.length; i++) if (mOutputFluids[i] != null) for (int j = 0; j < mTanksOutput.length; j++) {
@@ -757,11 +791,15 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				
 				if (UT.Code.containsSomething(mOutputItems) || UT.Code.containsSomething(mOutputFluids)) {
 					mMinEnergy = 0;
+					mOutputEnergy = 0;
+					mChargeRequirement = 0;
 					mProgress = mMaxProgress;
 				} else {
 					mProgress -= mMaxProgress; // this way the leftover energy can be used on the next processed thing, unless it gets stuck on an output.
 					mMinEnergy = 0;
 					mMaxProgress = 0;
+					mOutputEnergy = 0;
+					mChargeRequirement = 0;
 					mOutputItems = ZL_IS;
 					mOutputFluids = ZL_FS;
 					mSuccessful = T;
@@ -902,6 +940,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		}
 	}
 	
+	public void doOutputEnergy() {
+		ITileEntityEnergy.Util.emitEnergyToSide(mEnergyTypeEmitted, FACING_TO_SIDE[mFacing][mEnergyOutput], mOutputEnergy, 1, this);
+	}
+	
 	public void onProcessStarted() {/**/}
 	public void onProcessFinished() {/**/}
 	
@@ -918,13 +960,13 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(mTexturesMaterial[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mActive||worldObj==null?mTexturesActive:mRunning?mTexturesRunning:mTexturesInactive)[FACING_ROTATIONS[mFacing][aSide]])) : null;}
 	
 	@Override public boolean canSave(int aSlot) {return !IL.Display_Fluid.equal(slot(aSlot), T, T);}
-	@Override public boolean hasWork() {return mMaxProgress > 0;}
+	@Override public boolean hasWork() {return mMaxProgress > 0 || mChargeRequirement > 0;}
 	@Override public long getProgressValue(byte aSide) {return mSuccessful ? getProgressMax(aSide) : mMinEnergy < 1 ? mProgress    : mProgress    / mMinEnergy + (mProgress    % mMinEnergy == 0 ? 0 : 1) ;}
 	@Override public long getProgressMax  (byte aSide) {return Math.max(1,                           mMinEnergy < 1 ? mMaxProgress : mMaxProgress / mMinEnergy + (mMaxProgress % mMinEnergy == 0 ? 0 : 1));}
 	@Override public long getGibblValue   (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].amount  (); return rGibbl;}
 	@Override public long getGibblMax     (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].capacity(); return rGibbl;}
 	
-	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0;}
+	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0 || mChargeRequirement > 0;}
 	@Override public boolean getStateRunningPassively() {return mRunning;}
 	@Override public boolean getStateRunningActively() {return mActive;}
 	@Override public boolean getStateRunningSuccessfully() {return mSuccessful;}
