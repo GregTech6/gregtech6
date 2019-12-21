@@ -347,9 +347,9 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S), FL.make(tFluid, 8000), MT.SO2.gas(3*U, F), ZL_IS);
 		}
 		
-		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.DistW.make(100000)), FL.array(MT.HDO.liquid(U10, F)), ZL_IS);
-		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Water.make(100000)), FL.array(MT.HDO.liquid(U10, F)), ZL_IS);
-		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.HDO  .liquid(U, T)), FL.array(MT.D2O.liquid(U10, F)), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.DistW.make(100000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Water.make(100000)), FL.array(MT.HDO.liquid(U10, F), MT.D2O.liquid(U100, F), MT.T2O.liquid(U1000, F)), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.HDO  .liquid(U, T)), FL.array(MT.D2O.liquid(U10, F), MT.T2O.liquid(U100, F)), ZL_IS);
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.D2O  .liquid(U, T)), FL.array(MT.T2O.liquid(U10, F)), ZL_IS);
 		
 		RM.Freezer      .addRecipe1(T, 16,  256, ST.tag(0), MT.O.gas(U, T), MT.O.liquid(U, T), ZL_IS);

@@ -246,32 +246,59 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.U_235               , 9), dust.mat(MT.Mg, 1), crushedCentrifugedTiny.mat(MT.U_235, 12));
 		
 		
-		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Be          , 1), dustTiny.mat(MT.Be        , 1), dustTiny.mat(MT.Be_7, 8));
-		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Be          , 1), dust    .mat(MT.Be        , 1), dustTiny.mat(MT.Be_7, 8));
-		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Li          , 1), dustTiny.mat(MT.Li        , 1), dustTiny.mat(MT.Li_6, 8));
-		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Li          , 1), dust    .mat(MT.Li        , 1), dustTiny.mat(MT.Li_6, 8));
-		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  150,  150}, crushedCentrifugedTiny .mat(MT.C           , 1), dustTiny.mat(MT.C         , 1), dustTiny.mat(MT.C_13, 8), dustTiny.mat(MT.C_14, 8));
-		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 1350, 1350}, crushedCentrifuged     .mat(MT.C           , 1), dust    .mat(MT.C         , 1), dustTiny.mat(MT.C_13, 8), dustTiny.mat(MT.C_14, 8));
-		RM.Centrifuge   .addRecipe1(T, 512, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Co          , 1), dustTiny.mat(MT.Co        , 1), dustTiny.mat(MT.Co_60, 8));
-		RM.Centrifuge   .addRecipe1(T, 512,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Co          , 1), dust    .mat(MT.Co        , 1), dustTiny.mat(MT.Co_60, 8));
-		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.U_238       , 1), dustTiny.mat(MT.U_238     , 1), dustTiny.mat(MT.U_235, 8));
-		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.U_238       , 1), dust    .mat(MT.U_238     , 1), dustTiny.mat(MT.U_235, 8));
-		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  150,  150}, crushedCentrifugedTiny .mat(MT.Pu          , 1), dustTiny.mat(MT.Pu        , 1), dustTiny.mat(MT.Pu_241, 8), dustTiny.mat(MT.Pu_243, 8));
-		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 1350, 1350}, crushedCentrifuged     .mat(MT.Pu          , 1), dust    .mat(MT.Pu        , 1), dustTiny.mat(MT.Pu_241, 8), dustTiny.mat(MT.Pu_243, 8));
-		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Am          , 1), dustTiny.mat(MT.Am        , 1), dustTiny.mat(MT.Am_241, 8));
-		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Am          , 1), dust    .mat(MT.Am        , 1), dustTiny.mat(MT.Am_241, 8));
-		RM.Centrifuge   .addRecipe1(T,1536, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Fl          , 1), dustTiny.mat(MT.Fl        , 1), dustTiny.mat(MT.Fl_298, 8));
-		RM.Centrifuge   .addRecipe1(T,1536,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Fl          , 1), dust    .mat(MT.Fl        , 1), dustTiny.mat(MT.Fl_298, 8));
-		RM.Centrifuge   .addRecipe1(T,2048, 256, new long[] {10000,  150,  150}, crushedCentrifugedTiny .mat(MT.Nq          , 1), dustTiny.mat(MT.Nq        , 1), dustTiny.mat(MT.Nq_522, 8), dustTiny.mat(MT.Nq_528, 8));
-		RM.Centrifuge   .addRecipe1(T,2048,2304, new long[] {10000, 1350, 1350}, crushedCentrifuged     .mat(MT.Nq          , 1), dust    .mat(MT.Nq        , 1), dustTiny.mat(MT.Nq_522, 8), dustTiny.mat(MT.Nq_528, 8));
-		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedCentrifugedTiny .mat(MT.Cyanite     , 1), dustTiny.mat(MT.Cyanite   , 1), dustTiny.mat(MT.Cyanite, 8));
-		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedCentrifuged     .mat(MT.Cyanite     , 1), dust    .mat(MT.Cyanite   , 1), dustTiny.mat(MT.Cyanite, 8));
-		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedCentrifugedTiny .mat(MT.Yellorium   , 1), dustTiny.mat(MT.Yellorium , 1), dustTiny.mat(MT.Yellorium, 8));
-		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedCentrifuged     .mat(MT.Yellorium   , 1), dust    .mat(MT.Yellorium , 1), dustTiny.mat(MT.Yellorium, 8));
-		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedCentrifugedTiny .mat(MT.Blutonium   , 1), dustTiny.mat(MT.Blutonium , 1), dustTiny.mat(MT.Blutonium, 8));
-		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedCentrifuged     .mat(MT.Blutonium   , 1), dust    .mat(MT.Blutonium , 1), dustTiny.mat(MT.Blutonium, 8));
-		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedCentrifugedTiny .mat(MT.Ludicrite   , 1), dustTiny.mat(MT.Ludicrite , 1), dustTiny.mat(MT.Ludicrite, 8));
-		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedCentrifuged     .mat(MT.Ludicrite   , 1), dust    .mat(MT.Ludicrite , 1), dustTiny.mat(MT.Ludicrite, 8));
+		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedPurifiedTiny    .mat(MT.Be          , 1), crushedCentrifugedTiny .mat(MT.Be        , 1), crushedCentrifugedTiny .mat(MT.Be_7, 8));
+		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 2700      }, crushedPurified        .mat(MT.Be          , 1), crushedCentrifuged     .mat(MT.Be        , 1), crushedCentrifugedTiny .mat(MT.Be_7, 8));
+		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedPurifiedTiny    .mat(MT.Li          , 1), crushedCentrifugedTiny .mat(MT.Li        , 1), crushedCentrifugedTiny .mat(MT.Li_6, 8));
+		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 2700      }, crushedPurified        .mat(MT.Li          , 1), crushedCentrifuged     .mat(MT.Li        , 1), crushedCentrifugedTiny .mat(MT.Li_6, 8));
+		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  150,  150}, crushedPurifiedTiny    .mat(MT.C           , 1), crushedCentrifugedTiny .mat(MT.C         , 1), crushedCentrifugedTiny .mat(MT.C_13, 8), dustTiny.mat(MT.C_14, 8));
+		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 1350, 1350}, crushedPurified        .mat(MT.C           , 1), crushedCentrifuged     .mat(MT.C         , 1), crushedCentrifugedTiny .mat(MT.C_13, 8), dustTiny.mat(MT.C_14, 8));
+		RM.Centrifuge   .addRecipe1(T, 512, 256, new long[] {10000,  300      }, crushedPurifiedTiny    .mat(MT.Co          , 1), crushedCentrifugedTiny .mat(MT.Co        , 1), crushedCentrifugedTiny .mat(MT.Co_60, 8));
+		RM.Centrifuge   .addRecipe1(T, 512,2304, new long[] {10000, 2700      }, crushedPurified        .mat(MT.Co          , 1), crushedCentrifuged     .mat(MT.Co        , 1), crushedCentrifugedTiny .mat(MT.Co_60, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  300      }, crushedPurifiedTiny    .mat(MT.U_238       , 1), crushedCentrifugedTiny .mat(MT.U_238     , 1), crushedCentrifugedTiny .mat(MT.U_235, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 2700      }, crushedPurified        .mat(MT.U_238       , 1), crushedCentrifuged     .mat(MT.U_238     , 1), crushedCentrifugedTiny .mat(MT.U_235, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  150,  150}, crushedPurifiedTiny    .mat(MT.Pu          , 1), crushedCentrifugedTiny .mat(MT.Pu        , 1), crushedCentrifugedTiny .mat(MT.Pu_241, 8), dustTiny.mat(MT.Pu_243, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 1350, 1350}, crushedPurified        .mat(MT.Pu          , 1), crushedCentrifuged     .mat(MT.Pu        , 1), crushedCentrifugedTiny .mat(MT.Pu_241, 8), dustTiny.mat(MT.Pu_243, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  300      }, crushedPurifiedTiny    .mat(MT.Am          , 1), crushedCentrifugedTiny .mat(MT.Am        , 1), crushedCentrifugedTiny .mat(MT.Am_241, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 2700      }, crushedPurified        .mat(MT.Am          , 1), crushedCentrifuged     .mat(MT.Am        , 1), crushedCentrifugedTiny .mat(MT.Am_241, 8));
+		RM.Centrifuge   .addRecipe1(T,1536, 256, new long[] {10000,  300      }, crushedPurifiedTiny    .mat(MT.Fl          , 1), crushedCentrifugedTiny .mat(MT.Fl        , 1), crushedCentrifugedTiny .mat(MT.Fl_298, 8));
+		RM.Centrifuge   .addRecipe1(T,1536,2304, new long[] {10000, 2700      }, crushedPurified        .mat(MT.Fl          , 1), crushedCentrifuged     .mat(MT.Fl        , 1), crushedCentrifugedTiny .mat(MT.Fl_298, 8));
+		RM.Centrifuge   .addRecipe1(T,2048, 256, new long[] {10000,  150,  150}, crushedPurifiedTiny    .mat(MT.Nq          , 1), crushedCentrifugedTiny .mat(MT.Nq        , 1), crushedCentrifugedTiny .mat(MT.Nq_522, 8), dustTiny.mat(MT.Nq_528, 8));
+		RM.Centrifuge   .addRecipe1(T,2048,2304, new long[] {10000, 1350, 1350}, crushedPurified        .mat(MT.Nq          , 1), crushedCentrifuged     .mat(MT.Nq        , 1), crushedCentrifugedTiny .mat(MT.Nq_522, 8), dustTiny.mat(MT.Nq_528, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedPurifiedTiny    .mat(MT.Cyanite     , 1), crushedCentrifugedTiny .mat(MT.Cyanite   , 1), crushedCentrifugedTiny .mat(MT.Cyanite, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedPurified        .mat(MT.Cyanite     , 1), crushedCentrifuged     .mat(MT.Cyanite   , 1), crushedCentrifugedTiny .mat(MT.Cyanite, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedPurifiedTiny    .mat(MT.Yellorium   , 1), crushedCentrifugedTiny .mat(MT.Yellorium , 1), crushedCentrifugedTiny .mat(MT.Yellorium, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedPurified        .mat(MT.Yellorium   , 1), crushedCentrifuged     .mat(MT.Yellorium , 1), crushedCentrifugedTiny .mat(MT.Yellorium, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedPurifiedTiny    .mat(MT.Blutonium   , 1), crushedCentrifugedTiny .mat(MT.Blutonium , 1), crushedCentrifugedTiny .mat(MT.Blutonium, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedPurified        .mat(MT.Blutonium   , 1), crushedCentrifuged     .mat(MT.Blutonium , 1), crushedCentrifugedTiny .mat(MT.Blutonium, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedPurifiedTiny    .mat(MT.Ludicrite   , 1), crushedCentrifugedTiny .mat(MT.Ludicrite , 1), crushedCentrifugedTiny .mat(MT.Ludicrite, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedPurified        .mat(MT.Ludicrite   , 1), crushedCentrifuged     .mat(MT.Ludicrite , 1), crushedCentrifugedTiny .mat(MT.Ludicrite, 8));
+		
+		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Be          , 1), dustTiny               .mat(MT.Be        , 1), dustTiny               .mat(MT.Be_7, 8));
+		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Be          , 1), dust                   .mat(MT.Be        , 1), dustTiny               .mat(MT.Be_7, 8));
+		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Li          , 1), dustTiny               .mat(MT.Li        , 1), dustTiny               .mat(MT.Li_6, 8));
+		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Li          , 1), dust                   .mat(MT.Li        , 1), dustTiny               .mat(MT.Li_6, 8));
+		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  150,  150}, crushedCentrifugedTiny .mat(MT.C           , 1), dustTiny               .mat(MT.C         , 1), dustTiny               .mat(MT.C_13, 8), dustTiny.mat(MT.C_14, 8));
+		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 1350, 1350}, crushedCentrifuged     .mat(MT.C           , 1), dust                   .mat(MT.C         , 1), dustTiny               .mat(MT.C_13, 8), dustTiny.mat(MT.C_14, 8));
+		RM.Centrifuge   .addRecipe1(T, 512, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Co          , 1), dustTiny               .mat(MT.Co        , 1), dustTiny               .mat(MT.Co_60, 8));
+		RM.Centrifuge   .addRecipe1(T, 512,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Co          , 1), dust                   .mat(MT.Co        , 1), dustTiny               .mat(MT.Co_60, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.U_238       , 1), dustTiny               .mat(MT.U_238     , 1), dustTiny               .mat(MT.U_235, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.U_238       , 1), dust                   .mat(MT.U_238     , 1), dustTiny               .mat(MT.U_235, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  150,  150}, crushedCentrifugedTiny .mat(MT.Pu          , 1), dustTiny               .mat(MT.Pu        , 1), dustTiny               .mat(MT.Pu_241, 8), dustTiny.mat(MT.Pu_243, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 1350, 1350}, crushedCentrifuged     .mat(MT.Pu          , 1), dust                   .mat(MT.Pu        , 1), dustTiny               .mat(MT.Pu_241, 8), dustTiny.mat(MT.Pu_243, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Am          , 1), dustTiny               .mat(MT.Am        , 1), dustTiny               .mat(MT.Am_241, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Am          , 1), dust                   .mat(MT.Am        , 1), dustTiny               .mat(MT.Am_241, 8));
+		RM.Centrifuge   .addRecipe1(T,1536, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Fl          , 1), dustTiny               .mat(MT.Fl        , 1), dustTiny               .mat(MT.Fl_298, 8));
+		RM.Centrifuge   .addRecipe1(T,1536,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Fl          , 1), dust                   .mat(MT.Fl        , 1), dustTiny               .mat(MT.Fl_298, 8));
+		RM.Centrifuge   .addRecipe1(T,2048, 256, new long[] {10000,  150,  150}, crushedCentrifugedTiny .mat(MT.Nq          , 1), dustTiny               .mat(MT.Nq        , 1), dustTiny               .mat(MT.Nq_522, 8), dustTiny.mat(MT.Nq_528, 8));
+		RM.Centrifuge   .addRecipe1(T,2048,2304, new long[] {10000, 1350, 1350}, crushedCentrifuged     .mat(MT.Nq          , 1), dust                   .mat(MT.Nq        , 1), dustTiny               .mat(MT.Nq_522, 8), dustTiny.mat(MT.Nq_528, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedCentrifugedTiny .mat(MT.Cyanite     , 1), dustTiny               .mat(MT.Cyanite   , 1), dustTiny               .mat(MT.Cyanite, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedCentrifuged     .mat(MT.Cyanite     , 1), dust                   .mat(MT.Cyanite   , 1), dustTiny               .mat(MT.Cyanite, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedCentrifugedTiny .mat(MT.Yellorium   , 1), dustTiny               .mat(MT.Yellorium , 1), dustTiny               .mat(MT.Yellorium, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedCentrifuged     .mat(MT.Yellorium   , 1), dust                   .mat(MT.Yellorium , 1), dustTiny               .mat(MT.Yellorium, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedCentrifugedTiny .mat(MT.Blutonium   , 1), dustTiny               .mat(MT.Blutonium , 1), dustTiny               .mat(MT.Blutonium, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedCentrifuged     .mat(MT.Blutonium   , 1), dust                   .mat(MT.Blutonium , 1), dustTiny               .mat(MT.Blutonium, 8));
+		RM.Centrifuge   .addRecipe1(T,1024, 256, new long[] {10000,  600      }, crushedCentrifugedTiny .mat(MT.Ludicrite   , 1), dustTiny               .mat(MT.Ludicrite , 1), dustTiny               .mat(MT.Ludicrite, 8));
+		RM.Centrifuge   .addRecipe1(T,1024,2304, new long[] {10000, 5400      }, crushedCentrifuged     .mat(MT.Ludicrite   , 1), dust                   .mat(MT.Ludicrite , 1), dustTiny               .mat(MT.Ludicrite, 8));
 		
 		
 		final long[] tSluice = {10000, 300, 300, 300, 300, 300, 300, 300, 300}, tMagnet = {10000, 600, 600, 600, 600, 600};
@@ -292,10 +319,10 @@ public class Loader_Recipes_Ores implements Runnable {
 				CR.shapeless(gemFlawed.mat(aMat, 1), CR.DEF_NAC_NCC | CR.ONLY_IF_HAS_RESULT, new Object[] {crushed.dat(aMat)});
 				
 				ItemStack tByProductMercury = null, tByproductPersulfate = null;
-				for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_MERCURY) && ST.valid(tByProductMercury = OM.dust(tByProduct, U9))) break;
-				if (ST.invalid(tByProductMercury) && aMat.contains(WASHING_MERCURY)) tByProductMercury = OM.dust(aMat, U9);
-				for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_PERSULFATE) && ST.valid(tByproductPersulfate = OM.dust(tByProduct, U9))) break;
-				if (ST.invalid(tByproductPersulfate) && aMat.contains(WASHING_PERSULFATE)) tByproductPersulfate = OM.dust(aMat, U9);
+				for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_MERCURY) && ST.valid(tByProductMercury = OP.crushedPurifiedTiny.mat(tByProduct, OM.dust(tByProduct, U9), 1))) break;
+				if (ST.invalid(tByProductMercury) && aMat.contains(WASHING_MERCURY)) tByProductMercury = OP.crushedPurifiedTiny.mat(aMat, OM.dust(aMat, U9), 1);
+				for (OreDictMaterial tByProduct : aMat.mByProducts) if (tByProduct.contains(WASHING_PERSULFATE) && ST.valid(tByproductPersulfate = OP.crushedPurifiedTiny.mat(tByProduct, OM.dust(tByProduct, U9), 1))) break;
+				if (ST.invalid(tByproductPersulfate) && aMat.contains(WASHING_PERSULFATE)) tByproductPersulfate = OP.crushedPurifiedTiny.mat(aMat, OM.dust(aMat, U9), 1);
 				
 				if (ENABLE_ADDING_IC2_OREWASHER_RECIPES) {
 				RM.ic2_orewasher(tCrushed                   , 1000                                          , crushedPurified       .mat(aMat, 1), crushedPurifiedTiny      .mat(UT.Code.select(0, aMat, aMat.mByProducts), 2), dust.mat(MT.Stone, 1));

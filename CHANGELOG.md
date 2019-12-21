@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.25: (Not released yet)
 [CHANGED] Matter Fabricator Multiblock now uses Ventilation Units instead of Galvanized Steel Walls.
+[ADDED] A few new Ore Processing Recipes to make getting Lithium-6 possible and Nuclear Ore Refinement more possible.
 [ADDED] Fluid Display Items can now rightclick fill Blocks with their Fluid directly.
 [WIP] Fusion Reactor. Gonna be an Octagon fitting in a 19x19 Square. If you dont know what an Octagon is, the Sesame Street has you covered https://www.youtube.com/watch?v=_7jpz_55EdM
 

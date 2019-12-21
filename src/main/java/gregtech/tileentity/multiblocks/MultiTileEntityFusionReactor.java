@@ -73,7 +73,7 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18045, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 					
-					if (getAir(tX+i, tY+2, tZ+j)) worldObj.setBlockToAir(tX+i, tY+2, tZ+j); else tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18002, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+3, tZ+j, 18045, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 					
@@ -150,9 +150,10 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 	static {
 		LH.add("gt.tooltip.multiblock.fusionreactor.1", "For Construction Instructions read the Manual.");
 		LH.add("gt.tooltip.multiblock.fusionreactor.2", "144 Iridium Coils, 576 Regular Tungstensteel Walls.");
-		LH.add("gt.tooltip.multiblock.fusionreactor.3", "Energy Output at the Electric Interfaces");
-		LH.add("gt.tooltip.multiblock.fusionreactor.4", "Laser Input at the 'Glass' Ring");
-		LH.add("gt.tooltip.multiblock.fusionreactor.5", "Items and Fluids are handeled at the normal Walls");
+		LH.add("gt.tooltip.multiblock.fusionreactor.3", "36 Regular Stainless Steel Walls.");
+		LH.add("gt.tooltip.multiblock.fusionreactor.4", "Energy Output at the Electric Interfaces");
+		LH.add("gt.tooltip.multiblock.fusionreactor.5", "Laser Input at the 'Glass' Ring");
+		LH.add("gt.tooltip.multiblock.fusionreactor.6", "Items and Fluids are handeled at the normal Walls");
 	}
 	
 	@Override
@@ -163,6 +164,7 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.3"));
 		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.4"));
 		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.5"));
+		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.6"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

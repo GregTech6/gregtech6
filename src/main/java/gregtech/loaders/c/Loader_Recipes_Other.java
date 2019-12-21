@@ -820,7 +820,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Nanofab.addRecipe2(T, 16,3072, ST.tag(17), dust     .mat(MT.C,12), pipeHuge.mat(MT.C, 1));
 		
 		
-		// TODO Vibranium
+		// TODO Vibranium, maybe using Beryllium-7
 		
 		RM.Fusion.addRecipe1(T, -8192,  730, ST.tag(1), FL.array(MT.D     .gas   (U*2, T)                        ), FL.array(MT.He_3  .gas   (  U2, F), MT.T     .gas   (  U2, F)                                                      ), ZL_IS).setSpecialNumber( 730L*8192L*16L);
 		RM.Fusion.addRecipe1(T, -8192, 1130, ST.tag(1), FL.array(MT.T     .gas   (U*2, T)                        ), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS).setSpecialNumber(1130L*8192L*16L);
