@@ -821,6 +821,7 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		
 		// TODO Vibranium
+		// TODO Centrifuging Heavy Water
 		
 		RM.Fusion.addRecipe1(T, -8192,  730, ST.tag(1), FL.array(MT.D     .gas   (U*2, T)                        ), FL.array(MT.He_3  .gas   (  U2, F), MT.T     .gas   (  U2, F)                                                      ), ZL_IS).setSpecialNumber( 730L*8192L*16L);
 		RM.Fusion.addRecipe1(T, -8192, 1130, ST.tag(1), FL.array(MT.T     .gas   (U*2, T)                        ), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS).setSpecialNumber(1130L*8192L*16L);

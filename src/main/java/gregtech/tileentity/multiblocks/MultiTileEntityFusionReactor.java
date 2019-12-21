@@ -26,9 +26,11 @@ import java.util.List;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockMachine;
+import gregapi.util.WD;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -48,21 +50,33 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 			for (int i = 0; i < 19; i++) for (int j = 0; j < 19; j++) {
 				if (OCTAGONS[0][i][j]) {
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
+					if ((i == 0 && (j == 9 || j == -9)) || (j == 0 && (i == 9 || i == -9))) {
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18003, getMultiTileEntityRegistryID(), 2, MultiTileEntityMultiBlockPart.ONLY_ENERGY_OUT)) tSuccess = F;
+					} else {
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18003, getMultiTileEntityRegistryID(), mActive ? 6 : 5, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+					}
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+3, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
 				}
 				if (OCTAGONS[1][i][j]) {
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY  , tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
+					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18045, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+3, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+4, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
 				}
 				if (OCTAGONS[2][i][j]) {
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY  , tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
+					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18045, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+					
 					if (getAir(tX+i, tY+2, tZ+j)) worldObj.setBlockToAir(tX+i, tY+2, tZ+j); else tSuccess = F;
+					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+3, tZ+j, 18045, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+4, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
 				}
 			}
@@ -142,6 +156,7 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN  + LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.1"));
+		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.2"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
@@ -161,8 +176,16 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 		return getAdjacentTileEntity(SIDE_BOTTOM);
 	}
 	
+	@Override
+	public void doOutputEnergy() {
+		int tX = getOffsetXN(mFacing, 2), tY = yCoord+2, tZ = getOffsetZN(mFacing, 2);
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (ITileEntityEnergy.Util.insertEnergyInto(mEnergyTypeEmitted, mOutputEnergy, 1, this, WD.te(worldObj, tX+OFFSETS_X[tSide]*10, tY, tZ+OFFSETS_Z[tSide]*10, OPPOSITES[tSide], F)) > 0) return;
+	}
+	
 	@Override public DelegatorTileEntity<IInventory> getItemInputTarget(byte aSide) {return null;}
 	@Override public DelegatorTileEntity<IFluidHandler> getFluidInputTarget(byte aSide) {return null;}
+	
+	@Override public boolean refreshStructureOnActiveStateChange() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.fusionreactor";}
 }

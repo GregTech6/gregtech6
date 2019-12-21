@@ -484,8 +484,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyTypeEmitted : aEnergyType == mEnergyTypeAccepted || aEnergyType == mEnergyTypeCharged;}
-	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mEnergyInputs] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
-	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) &&                FACING_ROTATIONS[mFacing][aSide]==mEnergyOutput  && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) &&                   FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mEnergyInputs] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && (SIDES_INVALID[mEnergyOutput] || FACING_ROTATIONS[mFacing][aSide]==mEnergyOutput) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
 	@Override public long getEnergySizeInputMin             (TagData aEnergyType, byte aSide) {return mInputMin;}
 	@Override public long getEnergySizeInputRecommended     (TagData aEnergyType, byte aSide) {return mInput;}
 	@Override public long getEnergySizeInputMax             (TagData aEnergyType, byte aSide) {return mInputMax;}
@@ -944,7 +944,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		ITileEntityEnergy.Util.emitEnergyToSide(mEnergyTypeEmitted, FACING_TO_SIDE[mFacing][mEnergyOutput], mOutputEnergy, 1, this);
 	}
 	
-	public void onProcessStarted() {/**/}
+	public void onProcessStarted () {/**/}
 	public void onProcessFinished() {/**/}
 	
 	@Override public void onFacingChange(byte aPreviousFacing) {updateAccessibleSlots();}
