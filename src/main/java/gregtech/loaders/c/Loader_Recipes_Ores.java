@@ -87,10 +87,10 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Centrifuge           .addRecipe1(T, 64,   16, new long[] {9000,10000, 1000                  }, ST.make(Blocks.sand, 1, 1), ST.make(Blocks.sand, 1, 0), dustTiny.mat(MT.Fe, 1), dustDiv72.mat(MT.Diamond, 1));
 		RM.Centrifuge           .addRecipe1(T, 64,  128, new long[] {9000, 8000, 2000, 2000            }, ST.make(Blocks.soul_sand, 1, W), NF, FL.Oil_Soulsand.make(50), ST.make(Blocks.sand, 1, 0), dustSmall.mat(MT.Niter, 1), dustTiny.mat(MT.Coal, 1), dustTiny.mat(MT.Bone, 1));
 		RM.Centrifuge           .addRecipe1(T, 64,   64, new long[] {5625, 9900, 5625,  625            }, OM.dust(MT.Netherrack ), dustTiny.mat(MT.Redstone, 1), dustSmall.mat(MT.S, 1), dustTiny.mat(MT.Coal, 1), dustTiny.mat(MT.Au, 1));
-		RM.Centrifuge           .addRecipe1(T, 64,  128, new long[] {9000,  625, 2500                  }, OM.dust(MT.Endstone   ), NF, MT.He.gas(U8, F), ST.make(Blocks.sand, 1, 0), dustTiny.mat(MT.Pt, 1), dustTiny.mat(MT.WO3, 1));
-		RM.Centrifuge           .addRecipe1(T, 64,  128, new long[] {9000,  625,  625                  }, OM.dust(MT.SpaceRock  ), NF, MT.He.gas(U8, F), ST.make(Blocks.sand, 1, 0), dustTiny.mat(MT.Pt, 1), dustTiny.mat(MT.MeteoricIron, 1));
-		RM.Centrifuge           .addRecipe1(T, 64,  128, new long[] {9000, 5000, 4000, 3000, 1000,  500}, OM.dust(MT.MoonRock   ), NF, NF, dustSmall.mat(MT.Basalt, 3), dustTiny.mat(MT.SiO2, 1), dustTiny.mat(MT.Al2O3, 1), dustTiny.mat(OREMATS.Ilmenite, 1), dustTiny.mat(MT.RareEarth, 1), dustTiny.mat(MT.Pt, 1));
+		RM.Centrifuge           .addRecipe1(T, 64,  128, new long[] {9000,  625, 2500                  }, OM.dust(MT.Endstone   ), ZL_FS, FL.array(MT.He.gas(U8, F), MT.He_3.gas(U20, F), MT.NO2.gas(U4, F), MT.CO2.gas(U4, F), MT.H.gas(U8, F), MT.D.gas(U8, F)), ST.make(Blocks.sand, 1, 0), dustTiny.mat(MT.Pt, 1), dustTiny.mat(MT.WO3, 1));
+		RM.Centrifuge           .addRecipe1(T, 64,  128, new long[] {9000,  625,  625                  }, OM.dust(MT.SpaceRock  ), ZL_FS, FL.array(MT.He.gas(U8, F), MT.He_3.gas(U20, F), MT.NO2.gas(U4, F), MT.CO2.gas(U4, F), MT.H.gas(U8, F), MT.D.gas(U8, F)), ST.make(Blocks.sand, 1, 0), dustTiny.mat(MT.Pt, 1), dustTiny.mat(MT.MeteoricIron, 1));
 		RM.Centrifuge           .addRecipe1(T, 64,  256, new long[] {9000, 9000, 9000, 9000, 9000, 1000}, OM.dust(MT.MoonTurf   ), ZL_FS, FL.array(MT.He.gas(U8, F), MT.He_3.gas(U20, F), MT.NO2.gas(U4, F), MT.CO2.gas(U4, F), MT.H.gas(U8, F), MT.D.gas(U8, F)), dustTiny.mat(MT.SiO2, 2), dustTiny.mat(MT.Basalt, 2), dustTiny.mat(MT.Al2O3, 1), dustTiny.mat(MT.OREMATS.Ilmenite, 1), dustTiny.mat(MT.MnO2, 1), dustTiny.mat(MT.MeteoricIron, 1));
+		RM.Centrifuge           .addRecipe1(T, 64,  128, new long[] {9000, 5000, 4000, 3000, 1000,  500}, OM.dust(MT.MoonRock   ), NF, NF, dustSmall.mat(MT.Basalt, 3), dustTiny.mat(MT.SiO2, 1), dustTiny.mat(MT.Al2O3, 1), dustTiny.mat(OREMATS.Ilmenite, 1), dustTiny.mat(MT.RareEarth, 1), dustTiny.mat(MT.Pt, 1));
 		// TODO MARS ROCKS AND SAND => Ice
 		
 		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Mg, MT.Pyrope, MT.Olivine, MT.OREMATS.Magnesite}) {
@@ -246,6 +246,8 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.U_235               , 9), dust.mat(MT.Mg, 1), crushedCentrifugedTiny.mat(MT.U_235, 12));
 		
 		
+		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Be          , 1), dustTiny.mat(MT.Be        , 1), dustTiny.mat(MT.Be_7, 8));
+		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Be          , 1), dust    .mat(MT.Be        , 1), dustTiny.mat(MT.Be_7, 8));
 		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  300      }, crushedCentrifugedTiny .mat(MT.Li          , 1), dustTiny.mat(MT.Li        , 1), dustTiny.mat(MT.Li_6, 8));
 		RM.Centrifuge   .addRecipe1(T, 256,2304, new long[] {10000, 2700      }, crushedCentrifuged     .mat(MT.Li          , 1), dust    .mat(MT.Li        , 1), dustTiny.mat(MT.Li_6, 8));
 		RM.Centrifuge   .addRecipe1(T, 256, 256, new long[] {10000,  150,  150}, crushedCentrifugedTiny .mat(MT.C           , 1), dustTiny.mat(MT.C         , 1), dustTiny.mat(MT.C_13, 8), dustTiny.mat(MT.C_14, 8));

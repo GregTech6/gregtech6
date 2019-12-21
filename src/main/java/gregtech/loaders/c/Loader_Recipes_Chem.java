@@ -240,6 +240,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(FL.Water.make(3000)         ), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F)));
 		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(FL.DistW.make(3000)         ), FL.array(MT.H.gas(U*2, F), MT.O.gas(U, F)));
+		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(MT.D2O.liquid(U*3, T)       ), FL.array(MT.D.gas(U*2, F), MT.O.gas(U, F)));
+		RM.Electrolyzer .addRecipe1(T, 16, 3840, ST.tag(0), FL.array(MT.T2O.liquid(U*3, T)       ), FL.array(MT.T.gas(U*2, F), MT.O.gas(U, F)));
 		if (FL.Tropics_Water.exists())
 		RM.Electrolyzer .addRecipe1(T, 16,20480, ST.tag(0), FL.array(FL.Tropics_Water.make(16000)), FL.array(MT.Cl.gas(U4, F), MT.H.gas(83*U8, F), MT.O.gas(41*U8, F)), OM.dust(MT.NaOH, 3*U8));
 		if (FL.OceanGrC.exists())
@@ -345,8 +347,10 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Roasting     .addRecipe1(T, 16,   16, OM.dust(MT.S), FL.make(tFluid, 8000), MT.SO2.gas(3*U, F), ZL_IS);
 		}
 		
-		
-		
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.DistW.make(100000)), FL.array(MT.HDO.liquid(U10, F)), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(FL.Water.make(100000)), FL.array(MT.HDO.liquid(U10, F)), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.HDO  .liquid(U, T)), FL.array(MT.D2O.liquid(U10, F)), ZL_IS);
+		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.D2O  .liquid(U, T)), FL.array(MT.T2O.liquid(U10, F)), ZL_IS);
 		
 		RM.Freezer      .addRecipe1(T, 16,  256, ST.tag(0), MT.O.gas(U, T), MT.O.liquid(U, T), ZL_IS);
 		

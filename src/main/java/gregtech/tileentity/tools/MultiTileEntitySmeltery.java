@@ -539,7 +539,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedFluid];
 			if (tMaterial == MT.Lava) {
 				mTextureMolten = BlockTextureCopied.get(Blocks.lava);
-			} else if (tMaterial == MT.Water) {
+			} else if (tMaterial == MT.H2O) {
 				mTextureMolten = BlockTextureCopied.get(Blocks.water);
 			} else if (tMaterial == MT.Glowstone) {
 				mTextureMolten = BlockTextureCopied.get(Blocks.glowstone);

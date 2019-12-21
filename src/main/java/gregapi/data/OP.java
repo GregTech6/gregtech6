@@ -551,8 +551,8 @@ public class OP {
 		ingot               .disableItemGeneration(MT.Fe, MT.Au, MT.NetherBrick, MT.RefinedObsidian, MT.RefinedGlowstone);
 		nugget              .disableItemGeneration(MT.Au);
 		plate               .disableItemGeneration(MT.Paper);
-		bucket              .disableItemGeneration(MT.Empty, MT.Water, MT.Lava, MT.Milk);
-		bottle              .disableItemGeneration(MT.Empty, MT.Water);
+		bucket              .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
+		bottle              .disableItemGeneration(MT.Empty, MT.H2O);
 		
 		gemChipped          .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Sugar);
 		gemFlawed           .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3);

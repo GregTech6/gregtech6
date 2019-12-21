@@ -56,9 +56,9 @@ public class Loader_Fluids implements Runnable {
 		FL.create("dragonbreath"             , "Dragon's Breath"     , null                  , 2,   1000,   300, IL.EtFu_Dragon_Breath.get(1), IL.Bottle_Empty.get(1), 250).setDensity(100).setLuminosity(5);
 		FL.create("netherair"                , "Nether Air"          , null                  , 2,   1000,   370).setDensity(0);
 		FL.create("enderair"                 , "Ender Air"           , null                  , 2,   1000,   280).setDensity(0);
-		FL.create("Steam"                    , "Steam"               , MT.Water              , 2, 160000, C+100).setDensity(-1000);
-		MT.Ice.mGas = MT.Water.mGas;
-		MT.Water.mGas.getFluid().setTemperature((int)(C+100)).setGaseous(T);
+		FL.create("Steam"                    , "Steam"               , MT.H2O                , 2, 160000, C+100).setDensity(-1000);
+		MT.Ice.mGas = MT.H2O.mGas;
+		MT.H2O.mGas.getFluid().setTemperature((int)(C+100)).setGaseous(T);
 		
 		//-----
 		

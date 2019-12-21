@@ -49,16 +49,16 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 			
 			for (int i = 0; i < 19; i++) for (int j = 0; j < 19; j++) {
 				if (OCTAGONS[0][i][j]) {
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
-					if ((i == 0 && (j == 9 || j == -9)) || (j == 0 && (i == 9 || i == -9))) {
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
+					if ((i == 9 && (j == 0 || j == 18)) || (j == 9 && (i == 0 || i == 18))) {
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18003, getMultiTileEntityRegistryID(), 2, MultiTileEntityMultiBlockPart.ONLY_ENERGY_OUT)) tSuccess = F;
 					} else {
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18003, getMultiTileEntityRegistryID(), mActive ? 6 : 5, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18003, getMultiTileEntityRegistryID(), mActive ? 6 : 5, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
 					}
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+3, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+3, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
 				}
 				if (OCTAGONS[1][i][j]) {
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY  , tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY  , tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
 					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 					
@@ -66,10 +66,10 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+3, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 					
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+4, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+4, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
 				}
 				if (OCTAGONS[2][i][j]) {
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY  , tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY  , tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
 					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18045, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 					
@@ -77,7 +77,7 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+3, tZ+j, 18045, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 					
-					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+4, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID_ENERGY)) tSuccess = F;
+					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+4, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
 				}
 			}
 			return tSuccess;
@@ -150,6 +150,9 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 	static {
 		LH.add("gt.tooltip.multiblock.fusionreactor.1", "For Construction Instructions read the Manual.");
 		LH.add("gt.tooltip.multiblock.fusionreactor.2", "144 Iridium Coils, 576 Regular Tungstensteel Walls.");
+		LH.add("gt.tooltip.multiblock.fusionreactor.3", "Energy Output at the Electric Interfaces");
+		LH.add("gt.tooltip.multiblock.fusionreactor.4", "Laser Input at the 'Glass' Ring");
+		LH.add("gt.tooltip.multiblock.fusionreactor.5", "Items and Fluids are handeled at the normal Walls");
 	}
 	
 	@Override
@@ -157,6 +160,9 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 		aList.add(Chat.CYAN  + LH.get(LH.STRUCTURE) + ":");
 		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.1"));
 		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.2"));
+		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.3"));
+		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.4"));
+		aList.add(Chat.WHITE + LH.get("gt.tooltip.multiblock.fusionreactor.5"));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	

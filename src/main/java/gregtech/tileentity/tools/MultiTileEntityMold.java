@@ -460,7 +460,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[tDisplayedFluid];
 			if (tMaterial == MT.Lava) {
 				mTextureMolten = BlockTextureCopied.get(Blocks.lava);
-			} else if (tMaterial == MT.Water) {
+			} else if (tMaterial == MT.H2O) {
 				mTextureMolten = BlockTextureCopied.get(Blocks.water);
 			} else if (mDisplayedFluid < 0) {
 				if (tMaterial == MT.Stone) {

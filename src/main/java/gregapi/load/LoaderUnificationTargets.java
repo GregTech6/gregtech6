@@ -640,7 +640,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.DiamondIndustrial      , ST.make(MD.ELN, "Eln.sharedItem", 1, 4420));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Si                     , ST.make(MD.ELN, "Eln.sharedItem", 1, 7697));
 		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Empty                  , ST.make(Items.glass_bottle, 1, 0));
-		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.Water                  , ST.make(Items.potionitem, 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.bottle         , MT.H2O                    , ST.make(Items.potionitem, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Coal                   , ST.make(Blocks.coal_ore, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Fe                     , ST.make(Blocks.iron_ore, 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Lapis                  , ST.make(Blocks.lapis_ore, 1, 0));

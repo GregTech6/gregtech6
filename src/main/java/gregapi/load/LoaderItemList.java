@@ -1223,7 +1223,7 @@ public class LoaderItemList implements Runnable {
 		ST.item(MD.BINNIE, "containerGlass", Items.potionitem).setContainerItem(Items.glass_bottle);
 		
 		IL.Cell_Empty                           .set(ST.mkic("cell"                                         , 1   ), OP.cell.dat(MT.Empty));
-		IL.Cell_Water                           .set(ST.mkic("waterCell"                                    , 1   ), OP.cell.dat(MT.Water), OD.container1000water);
+		IL.Cell_Water                           .set(ST.mkic("waterCell"                                    , 1   ), OP.cell.dat(MT.H2O ), OD.container1000water);
 		IL.Cell_Lava                            .set(ST.mkic("lavaCell"                                     , 1   ), OP.cell.dat(MT.Lava), OD.container1000lava);
 		IL.Cell_Air                             .set(ST.mkic("airCell"                                      , 1   ), OP.cell.dat(MT.Air));
 		OP.cell.mContainerItem =                     ST.mkic("cell"                                         , 1   , OreDictManager.INSTANCE.getFirstOre("cellEmpty", 1));
