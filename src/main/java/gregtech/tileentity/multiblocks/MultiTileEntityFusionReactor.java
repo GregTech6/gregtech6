@@ -43,8 +43,8 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMachine {
 	@Override
 	public boolean checkStructure2() {
-		int tX = getOffsetXN(mFacing, 2)-9, tY = yCoord, tZ = getOffsetZN(mFacing, 2)-9;
-		if (worldObj.blockExists(tX, tY, tZ) && worldObj.blockExists(tX+18, tY, tZ) && worldObj.blockExists(tX, tY, tZ+18) && worldObj.blockExists(tX+18, tY, tZ+18)) {
+		int tX = getOffsetXN(mFacing, 2), tY = yCoord, tZ = getOffsetZN(mFacing, 2);
+		if (worldObj.blockExists(tX-9, tY, tZ-9) && worldObj.blockExists(tX+9, tY, tZ-9) && worldObj.blockExists(tX-9, tY, tZ+9) && worldObj.blockExists(tX+9, tY, tZ+9)) {
 			boolean tSuccess = T;
 			
 			int tVersatile = 12, tLogic = 12, tControl = 3;
@@ -85,6 +85,8 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY, tZ+3, 18008, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX  , tY, tZ+4, 18008, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 			}
+			
+			tX -= 9; tZ -= 9;
 			
 			for (int i = 0; i < 19; i++) for (int j = 0; j < 19; j++) {
 				if (OCTAGONS[0][i][j]) {
