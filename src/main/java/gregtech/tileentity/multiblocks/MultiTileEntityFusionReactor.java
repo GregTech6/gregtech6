@@ -49,7 +49,7 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 		if (worldObj.blockExists(tX-9, tY, tZ-9) && worldObj.blockExists(tX+9, tY, tZ-9) && worldObj.blockExists(tX-9, tY, tZ+9) && worldObj.blockExists(tX+9, tY, tZ+9)) {
 			boolean tSuccess = T;
 			
-			int tVersatile = 12, tLogic = 12, tControl = 3;
+			int tVersatile = 3, tLogic = 12, tControl = 12;
 			
 			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
 				if (i*i + j*j + k*k < 4) {
