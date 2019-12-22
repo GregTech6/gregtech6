@@ -23,8 +23,10 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.CS.SFX;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.tileentity.ITileEntityUnloadable;
+import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -46,10 +48,14 @@ public interface ITileEntityMultiBlockController extends ITileEntityUnloadable, 
 			if (tTileEntity == aController) return T;
 			if (tTileEntity instanceof MultiTileEntityMultiBlockPart && ((MultiTileEntityMultiBlockPart)tTileEntity).getMultiTileEntityID() == aRegistryMeta && ((MultiTileEntityMultiBlockPart)tTileEntity).getMultiTileEntityRegistryID() == aRegistryID) {
 				ITileEntityMultiBlockController tTarget = ((MultiTileEntityMultiBlockPart)tTileEntity).getTarget(F);
-				if (tTarget != aController && tTarget != null && tTarget.isInsideStructure(aX, aY, aZ)) return F;
+				if (tTarget != aController && tTarget != null && tTarget.isInsideStructure(aX, aY, aZ)) {
+					UT.Sounds.send(aController.getWorld(), SFX.MC_FIREWORK_LAUNCH, 1.0F, 1.0F, aX, aY, aZ);
+					return F;
+				}
 				((MultiTileEntityMultiBlockPart)tTileEntity).setTarget(aController, aDesign, aMode);
 				return T;
 			}
+			UT.Sounds.send(aController.getWorld(), SFX.MC_FIREWORK_BLAST_FAR, 1.0F, 1.0F, aX, aY, aZ);
 			return F;
 		}
 		

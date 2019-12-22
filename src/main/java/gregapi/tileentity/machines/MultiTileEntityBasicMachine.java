@@ -277,6 +277,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		
 		if (mCheapOverclocking)
 		aList.add(Chat.YELLOW + LH.get(LH.CHEAP_OVERCLOCKING));
+		if (mEfficiency != 10000)
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		
 		addToolTipsSided(aList, aStack, aF3_H);
@@ -285,7 +286,9 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		aList.add(Chat.ORANGE   + LH.get(LH.REQUIREMENT_IGNITE_FIRE));
 		
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
+		if (SIDES_VALID[mFluidAutoInput] || SIDES_VALID[mItemAutoInput])
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_AUTO_INPUTS_MONKEY_WRENCH));
+		if (SIDES_VALID[mFluidAutoOutput] || SIDES_VALID[mItemAutoOutput])
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_RESET_SOFT_HAMMER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
