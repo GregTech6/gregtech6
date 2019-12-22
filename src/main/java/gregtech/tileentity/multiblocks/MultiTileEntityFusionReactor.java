@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
@@ -30,6 +31,7 @@ import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockMachine;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -65,9 +67,15 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 				} else {
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+j, tZ+k, 18299, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 				}
+				if (!tSuccess) {
+					DEB.println("X: " + (tX+i) + " Y: " + (tY+j) + " Z: " + (tZ+k) + "; --- i: " + i + " j: " + j + " k: " + k);
+					UT.Sounds.send(worldObj, SFX.MC_ANVIL_LAND, 1.0F, 1.0F, tX+i, tY+j, tZ+k);
+				}
 			}
 			
 			if (tVersatile > 0 || tLogic > 0 || tControl > 0) tSuccess = F;
+			
+			if (!tSuccess) DEB.println("Cores Mismatch: V: " + tVersatile + " L: " + tLogic + " C: " + tControl);
 			
 			if (mFacing != SIDE_X_NEG) {
 				if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX-3, tY, tZ  , 18008, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
@@ -119,6 +127,10 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+1, tZ+j, 18045, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
 					
 					if (!ITileEntityMultiBlockController.Util.checkAndSetTarget(this, tX+i, tY+2, tZ+j, 18003, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ITEM_FLUID)) tSuccess = F;
+				}
+				if (!tSuccess) {
+					DEB.println("X: " + (tX+i) + " Y: " + (tY) + " Z: " + (tZ+j) + "; --- i: " + i + " j: " + j);
+					UT.Sounds.send(worldObj, SFX.MC_ANVIL_LAND, 1.0F, 1.0F, tX+i, tY, tZ+j);
 				}
 			}
 			return tSuccess;
