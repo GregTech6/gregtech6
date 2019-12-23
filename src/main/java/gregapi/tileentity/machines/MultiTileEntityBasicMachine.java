@@ -405,10 +405,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	public void onMagnifyingGlass(List<String> aChatReturn) {
 		aChatReturn.add((mMode & 1) != 0 ?"Only produce when Output is completely empty":"Produce whenever there is space");
-		aChatReturn.add(mDisabledItemInput?"Auto Item Input Disabled":"Auto Item Input Enabled");
-		aChatReturn.add(mDisabledItemOutput?"Auto Item Output Disabled":"Auto Item Output Enabled");
-		aChatReturn.add(mDisabledFluidInput?"Auto Fluid Input Disabled":"Auto Fluid Input Enabled");
-		aChatReturn.add(mDisabledFluidOutput?"Auto Fluid Output Disabled":"Auto Fluid Output Enabled");
+		if (SIDES_VALID[mItemAutoInput  ]) aChatReturn.add(mDisabledItemInput  ?"Auto Item Input Disabled"  :"Auto Item Input Enabled"  );
+		if (SIDES_VALID[mItemAutoOutput ]) aChatReturn.add(mDisabledItemOutput ?"Auto Item Output Disabled" :"Auto Item Output Enabled" );
+		if (SIDES_VALID[mFluidAutoInput ]) aChatReturn.add(mDisabledFluidInput ?"Auto Fluid Input Disabled" :"Auto Fluid Input Enabled" );
+		if (SIDES_VALID[mFluidAutoOutput]) aChatReturn.add(mDisabledFluidOutput?"Auto Fluid Output Disabled":"Auto Fluid Output Enabled");
 	}
 	
 	@Override
@@ -729,7 +729,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (tRecipe.mEUt < 0) {
 			mOutputEnergy = -tRecipe.mEUt;
 			mMaxProgress = tRecipe.mDuration;
-			mMinEnergy = 1;
+			mMinEnergy = 0;
 		} else {
 			if (mParallelDuration) {
 				mMinEnergy = Math.max(1, (mEnergyTypeAccepted == TD.Energy.RF ? tRecipe.mEUt * RF_PER_EU : mEnergyTypeAccepted == TD.Energy.TU ? tRecipe.mEUt : tRecipe.mEUt));
@@ -746,7 +746,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void doWork(long aTimer) {
-		if (mEnergy >= mInputMin && mEnergy >= mMinEnergy && checkStructure(F)) {
+		if ((mEnergy >= mInputMin || mEnergyTypeAccepted == TD.Energy.TU) && mEnergy >= mMinEnergy && checkStructure(F)) {
 			mActive = doActive(aTimer, Math.min(mInputMax, mEnergy));
 			mRunning = T;
 		} else {
