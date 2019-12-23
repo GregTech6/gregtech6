@@ -13,7 +13,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Matter Fabricator Multiblock now uses Ventilation Units instead of Galvanized Steel Walls.
 [ADDED] A few new Ore Processing Recipes to make getting Lithium-6 possible and Nuclear Ore Refinement more possible.
 [ADDED] Fluid Display Items can now rightclick fill Blocks with their Fluid directly.
-[WIP] Fusion Reactor. Gonna be an Octagon fitting in a 19x19 Square. If you dont know what an Octagon is, the Sesame Street has you covered https://www.youtube.com/watch?v=_7jpz_55EdM
+[ADDED]
+Fusion Reactor. 
+An Octagon fitting in a 19x19 Square. If you dont know what an Octagon is, the Sesame Street has you covered https://www.youtube.com/watch?v=_7jpz_55EdM
+The Center has a Computer shaped Cube in it.
+Its GUI has Instructions as to how to build it in simple 3 Pictures. The Tooltip states how much of each thing you need.
+You need to power the thing with Laser Units in order to start it up, but once it is running you can turn off the Lasers. Laser will have to go into the "Glass" Windows of the Ring.
+8192 EU/t Output on the Sides that have the Electric Interface on it.
 
 
 6.11.24:
