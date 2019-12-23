@@ -191,7 +191,7 @@ public class MultiTileEntityFusionReactor extends TileEntityBase10MultiBlockMach
 	static {
 		LH.add("gt.tooltip.multiblock.fusionreactor.1", "For Construction Instructions read the Manual or the GUI.");
 		LH.add("gt.tooltip.multiblock.fusionreactor.2", "144 Iridium Coils, 576 Regular Tungstensteel Walls, 50 Ventilation Units.");
-		LH.add("gt.tooltip.multiblock.fusionreactor.3", "36 Regular Stainless Steel Walls, 65 Galvanized Steel Walls.");
+		LH.add("gt.tooltip.multiblock.fusionreactor.3", "36 Regular Stainless Steel Walls, 53 Galvanized Steel Walls.");
 		LH.add("gt.tooltip.multiblock.fusionreactor.4", "3 Versatile, 12 Logic and 12 Control Quadcore Processing Units.");
 		LH.add("gt.tooltip.multiblock.fusionreactor.5", "Energy Output at the Electric Interfaces");
 		LH.add("gt.tooltip.multiblock.fusionreactor.6", "Laser Input at the 'Glass' Ring");

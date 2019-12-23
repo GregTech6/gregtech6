@@ -51,6 +51,6 @@ public class BlockStonesGT extends BlockStones {
 	
 	@Override
 	public boolean canEntityDestroy(IBlockAccess aWorld, int aX, int aY, int aZ, Entity aEntity) {
-		return aEntity instanceof EntityWither ? !mWitherProof : T;
+		return (mWitherProof && aEntity instanceof EntityWither) ? F : super.canEntityDestroy(aWorld, aX, aY, aZ, aEntity);
 	}
 }
