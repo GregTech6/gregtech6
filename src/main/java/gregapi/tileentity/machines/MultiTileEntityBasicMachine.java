@@ -475,6 +475,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
 		if (mStopped) return 0;
+		boolean tPositive = (aSize > 0);
 		aSize = Math.abs(aSize);
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {
 			if (aDoInject) overcharge(aSize, aEnergyType);
@@ -485,7 +486,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			return aAmount;
 		}
 		if (aEnergyType == mEnergyTypeAccepted) {
-			if (aDoInject) mStateNew = (aSize > 0);
+			if (aDoInject) mStateNew = tPositive;
 			long tInput = Math.min(mInputMax - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
 			if (aDoInject) mEnergy += tConsumed * aSize;
 			return tConsumed;
@@ -773,14 +774,14 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		
 		mSuccessful = F;
 		
-		if (mMaxProgress > 0 && mChargeRequirement <= 0) {
+		if (mMaxProgress > 0 && !(mSpecialIsStartEnergy && mChargeRequirement > 0)) {
 			rActive = T;
 			if (mProgress <= mMaxProgress) {
 				if (mOutputEnergy > 0) doOutputEnergy();
 				mProgress += aEnergy;
 			}
 			if (mProgress >= mMaxProgress && (mStateOld&&!mStateNew || !TD.Energy.ALL_ALTERNATING.contains(mEnergyTypeAccepted))) {
-				for (int i = 0; i < mOutputItems.length; i++) if (mOutputItems[i] != null && addStackToSlot(mRecipes.mInputItemsCount+(i % mRecipes.mOutputItemsCount), mOutputItems[i])) {mSuccessful = T; mOutputItems[i] = null; break;}
+				for (int i = 0; i < mOutputItems .length; i++) if (mOutputItems [i] != null && addStackToSlot(mRecipes.mInputItemsCount+(i % mRecipes.mOutputItemsCount), mOutputItems[i])) {mSuccessful = T; mOutputItems[i] = null; break;}
 				for (int i = 0; i < mOutputFluids.length; i++) if (mOutputFluids[i] != null) for (int j = 0; j < mTanksOutput.length; j++) {
 					if (mTanksOutput[j].contains(mOutputFluids[i])) {
 						updateInventory();

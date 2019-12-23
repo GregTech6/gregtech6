@@ -71,7 +71,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 		mName = "gt.display.fluid";
 		LH.add(mName + ".name", "Fluid Display");
 		GameRegistry.registerItem(this, mName, MD.GAPI.mID);
-		if (ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTFluidDisplay", T)) ST.hide(this);
+		if (ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTFluidDisplay", F)) ST.hide(this);
 		ItemsGT.DEBUG_ITEMS.add(this);
 		ItemsGT.ILLEGAL_DROPS.add(this);
 		GarbageGT.BLACKLIST.add(this);
