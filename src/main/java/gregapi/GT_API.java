@@ -607,13 +607,11 @@ public class GT_API extends Abstract_Mod {
 		ITexture.Util.GT_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useGTAlphaBlending"      , ITexture.Util.GT_ALPHA_BLENDING);
 		ITexture.Util.MC_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useMCAlphaBlending"      , ITexture.Util.MC_ALPHA_BLENDING);
 		
-		ConfigsGT.SPECIAL                   = new Config("Other.cfg");
 		ConfigsGT.RECIPES                   = new Config("Recipes.cfg");
-		ConfigsGT.MACHINES                  = new Config("Machines.cfg");
 		ConfigsGT.WORLDGEN                  = new Config("WorldGenerationNew.cfg");
 		ConfigsGT.MATERIAL                  = new Config("Materials.cfg");
-		ConfigsGT.OVERPOWERED               = new Config("Overpowered.cfg");
 		ConfigsGT.OREPROCESSING             = new Config("OreProcessing.cfg");
+		ConfigsGT.OVERPOWERED = ConfigsGT.MACHINES = ConfigsGT.SPECIAL = new Config("GregTech.cfg");
 		
 		GT6WorldGenerator.PFAA = (ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AutoDetectPFAA", T) && MD.PFAA.mLoaded);
 		

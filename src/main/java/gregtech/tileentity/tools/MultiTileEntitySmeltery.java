@@ -233,6 +233,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			OM.stack(tPreferredAlloy, tPreferredRecipe.getCommonDivider() * tMaxConversions).addToList(mContent);
 		}
 		
+		List<OreDictMaterialStack> tToBeAdded = new ArrayListNoNulls<>();
 		for (int i = 0; i < mContent.size(); i++) {
 			OreDictMaterialStack tMaterial = mContent.get(i);
 			if (tMaterial == null || tMaterial.mMaterial == MT.NULL || tMaterial.mMaterial == MT.Air || tMaterial.mAmount <= 0) {
@@ -253,15 +254,19 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 				setToAir();
 				return;
 			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && oTemperature <  tMaterial.mMaterial.mMeltingPoint) {
-				int tSize = mContent.size();
 				mContent.remove(i--);
-				OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(mContent);
-				if (tSize == mContent.size()) i++;
+				OM.stack(tMaterial.mMaterial.mTargetSmelting.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSmelting.mAmount, F)).addToList(tToBeAdded);
 			} else if (mTemperature <  tMaterial.mMaterial.mMeltingPoint && oTemperature >= tMaterial.mMaterial.mMeltingPoint) {
-				int tSize = mContent.size();
 				mContent.remove(i--);
-				OM.stack(tMaterial.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSolidifying.mAmount, F)).addToList(mContent);
-				if (tSize == mContent.size()) i++;
+				OM.stack(tMaterial.mMaterial.mTargetSolidifying.mMaterial, UT.Code.units_(tMaterial.mAmount, U, tMaterial.mMaterial.mTargetSolidifying.mAmount, F)).addToList(tToBeAdded);
+			}
+		}
+		for (int i = 0; i < tToBeAdded.size(); i++) {
+			OreDictMaterialStack tMaterial = tToBeAdded.get(i);
+			if (tMaterial == null || tMaterial.mMaterial == MT.NULL || tMaterial.mMaterial == MT.Air || tMaterial.mAmount <= 0) {
+				GarbageGT.trash(tToBeAdded.remove(i--));
+			} else {
+				tMaterial.addToList(mContent);
 			}
 		}
 		
