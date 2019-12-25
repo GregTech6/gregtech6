@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.26: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Normal Electrolyzer, centrifuge, Distillery and Dryer now can process multiple things in Parallel (ofcourse for increase of overall Duration).
 
 
 6.11.25:
@@ -20,6 +20,7 @@ The Center has a Computer shaped Cube in it.
 Its GUI has Instructions as to how to build it in simple 3 Pictures. The Tooltip states how much of each thing you need.
 You need to power the thing with Laser Units in order to start it up, but once it is running you can turn off the Lasers. Laser will have to go into the "Glass" Windows of the Ring.
 8192 EU/t Output on the Sides that have the Electric Interface on it.
+There is no Auto-Input or Auto-Output Holes for Items or Fluids on the Reactor. You have to push/pull using external Devices.
 
 
 6.11.24:
