@@ -316,20 +316,28 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemInputs  ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoInput  ?" (auto)":"");}
 			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.ITEM_INPUT)     + ": " + Chat.WHITE + tSideNames);
 			tSideNames = "";
+		} else if (SIDES_VALID[mItemAutoInput]) {
+			aList.add(Chat.GREEN + LH.get(LH.ITEM_INPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mItemAutoInput]) + " (auto, otherwise any)");
 		}
 		if (mItemOutputs != 127) {
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mItemOutputs ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mItemAutoOutput ?" (auto)":"");}
 			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.ITEM_OUTPUT)    + ": " + Chat.WHITE + tSideNames);
 			tSideNames = "";
+		} else if (SIDES_VALID[mItemAutoOutput]) {
+			aList.add(Chat.RED + LH.get(LH.ITEM_OUTPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mItemAutoOutput]) + " (auto, otherwise any)");
 		}
 		if (mFluidInputs != 127) {
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidInputs ]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoInput ?" (auto)":"");}
 			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.GREEN   + LH.get(LH.FLUID_INPUT)    + ": " + Chat.WHITE + tSideNames);
 			tSideNames = "";
+		} else if (SIDES_VALID[mFluidAutoInput]) {
+			aList.add(Chat.GREEN + LH.get(LH.FLUID_INPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mFluidAutoInput]) + " (auto, otherwise any)");
 		}
 		if (mFluidOutputs != 127) {
 			for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mFluidOutputs]) {tSideNames += (UT.Code.stringValid(tSideNames)?", ":"")+LH.get(LH.FACES[tSide])+(tSide==mFluidAutoOutput?" (auto)":"");}
 			if (UT.Code.stringValid(tSideNames)) aList.add(Chat.RED     + LH.get(LH.FLUID_OUTPUT)   + ": " + Chat.WHITE + tSideNames);
+		} else if (SIDES_VALID[mFluidAutoOutput]) {
+			aList.add(Chat.RED + LH.get(LH.FLUID_OUTPUT) + ": " + Chat.WHITE + LH.get(LH.FACES[mFluidAutoOutput]) + " (auto, otherwise any)");
 		}
 	}
 	
