@@ -47,7 +47,6 @@ import gregapi.util.CR;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -91,7 +90,7 @@ public class MultiTileEntityRegistry {
 	private static final HashSetNoNulls<Class<?>> sRegisteredTileEntities = new HashSetNoNulls<>();
 	private final HashSetNoNulls<Class<?>> mRegisteredTileEntities = new HashSetNoNulls<>();
 	
-	public HashMap<Short, CreativeTabs> mCreativeTabs = new HashMap<>();
+	public HashMap<Short, CreativeTab> mCreativeTabs = new HashMap<>();
 	public Map<Short, MultiTileEntityClassContainer> mRegistry = new HashMap<>();
 	public List<MultiTileEntityClassContainer> mRegistrations = new ArrayListNoNulls<>();
 	

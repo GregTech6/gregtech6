@@ -35,6 +35,7 @@ import gregapi.data.CS.GarbageGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PlankData;
 import gregapi.data.CS.SFX;
+import gregapi.item.CreativeTab;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
@@ -783,9 +784,13 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.DATA.Electric_T[7];   aRegistry.add("Long Distance Transformer Endpoint ("+VN[7]+")"      , "Long Distance Transport"             , 10067, 10060, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_INPUT, V[7], NBT_OUTPUT, V[7], NBT_WASTE_ENERGY, F, NBT_ENERGY_ACCEPTED, TD.Energy.EU, NBT_ENERGY_EMITTED, TD.Energy.EU), "WMW", "MxM", "WMW", 'M', aRegistry.getItem(10047), 'W', OP.cableGt04.dat(MT.AnnealedCopper));
 		aMat = MT.DATA.Electric_T[8];   aRegistry.add("Long Distance Transformer Endpoint ("+VN[8]+")"      , "Long Distance Transport"             , 10068, 10060, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_INPUT, V[8], NBT_OUTPUT, V[8], NBT_WASTE_ENERGY, F, NBT_ENERGY_ACCEPTED, TD.Energy.EU, NBT_ENERGY_EMITTED, TD.Energy.EU), "WMW", "MxM", "WMW", 'M', aRegistry.getItem(10048), 'W', OP.cableGt04.dat(MT.AnnealedCopper));
 		
-		ST.item(BlocksGT.LongDistPipe01).setCreativeTab(aRegistry.mCreativeTabs.get((short)10060));
-		ST.item(BlocksGT.LongDistWire01).setCreativeTab(aRegistry.mCreativeTabs.get((short)10060));
-		
+		CreativeTab tTab = aRegistry.mCreativeTabs.get((short)10060);
+		if (tTab != null) {
+			ST.item(BlocksGT.LongDistPipe01).setCreativeTab(tTab);
+			ST.item(BlocksGT.LongDistWire01).setCreativeTab(tTab);
+		} else {
+			ERR.print("The Tab did not exist!");
+		}
 		
 		
 		// BC Lasers
