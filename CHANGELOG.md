@@ -1,12 +1,34 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
-6.12.00: (Not released yet, this is probably the last Version before I start my own Game, unless I screw up Releases again and need Quickfixes because tired or something, this should come out around New Years Day, Explosions for Reactors are gonna be enabled.)
+6.12.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.12.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.12.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.12.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.12.00: (Not released yet, this is probably the last major Version before I start my own Game, unless I screw up Releases again and need Quickfixes because tired or something, this should come out around New Years Day or slightly after, Explosions for Reactors are gonna be enabled.)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.11.26: (Not released yet)
-[CHANGED] Normal Electrolyzer, centrifuge, Distillery and Dryer now can process multiple things in Parallel (ofcourse for increase of overall Duration).
+[NOTE] Should any of the WIP things mentioned here not come out before the year is over, I will definitely still add them before I leave most of Minecraft behind, so dont worry. ^^
+[CHANGED] Normal Electrolyzer, Centrifuge, Distillery and Dryer now can process multiple things in Parallel (ofcourse for increase of overall Duration).
+[WIP] Fuel -> Rotation - Engine
+[WIP] Multiblock Fermenter
+[WIP] Multiblock Heat Exchanger
+[WIP] A Mold-Extender for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
+[NOTE TO MYSELF] Do not forget to make sure that looping 4 of those Extenders together might cause a Stackoverflow Error.
 
 
 6.11.25:
