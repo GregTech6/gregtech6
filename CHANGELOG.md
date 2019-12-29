@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.11.26: (Not released yet)
 [NOTE] Should any of the WIP things mentioned here not come out before the year is over, I will definitely still add them before I leave most of Minecraft behind, so dont worry. ^^
+[FIXED] The Ender Garbage System and some other things, did not save their contents properly when the Server was shut down because of Forge "resetting the Item and Block IDs to what they were when the Client was started" for no reason whatsoever.
 [CHANGED] Normal Electrolyzer, Centrifuge, Distillery and Dryer now can process multiple things in Parallel (ofcourse for increase of overall Duration).
 [WIP] Fuel -> Rotation - Engine
 [WIP] Multiblock Fermenter
