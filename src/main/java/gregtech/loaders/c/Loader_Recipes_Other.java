@@ -828,8 +828,10 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Fusion.addRecipe1(F, -8192, 2640, ST.tag(2), FL.array(MT.T     .gas   (U  , T), MT.He_3.gas   (U  , T)), FL.array(MT.He    .gas   (3*U4, F), MT.D     .gas   (  U4, F)                                                      ), ZL_IS                ).setSpecialNumber( 2640L*8192L*16L);
 		RM.Fusion.addRecipe1(F, -8192, 3336, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (3*U8, F), MT.He_3  .gas   (  U8, F), MT.Li    .liquid(  U8, F), MT.Be_7  .liquid(  U8, F)), ZL_IS                ).setSpecialNumber( 3336L*8192L*16L);
 		RM.Fusion.addRecipe1(F, -8192, 1690, ST.tag(2), FL.array(MT.He_3  .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (2*U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 1690L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192,14956, ST.tag(2), FL.array(MT.Ad    .liquid(U  , T), MT.Be_7.liquid(U  , T)), FL.array(MT.W     .liquid(  U , F), MT.He    .gas   (16*U, F), MT.He_3  .gas   (24*U, F), MT.T     .gas   (24*U, F)), OP.dust.mat(MT.Vb, 1)).setSpecialNumber(14956L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192,  546, ST.tag(2), FL.array(MT.H     .gas   (U  , T), MT.B_11.liquid(U  , T)), FL.array(MT.He    .gas   (3*U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 8469L*8192L*16L);
 		
+		
+		RM.Fusion.addRecipe1(F, -8192, 1956, ST.tag(2), FL.array(MT.Ad    .liquid(U  , T), MT.Be_7.liquid(U  , T)), FL.array(MT.W     .liquid(  U , F), MT.He    .gas   (16*U, F), MT.He_3  .gas   (24*U, F), MT.T     .gas   (24*U, F)), OP.dust.mat(MT.Vb, 1)).setSpecialNumber(94956L*8192L*16L);
 		
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mNeutrons+tMaterial.mProtons > 0 && tMaterial.contains(TD.Atomic.ELEMENT) && !tMaterial.contains(TD.Atomic.ANTIMATTER)) {

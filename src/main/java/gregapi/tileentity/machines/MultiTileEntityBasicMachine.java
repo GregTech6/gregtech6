@@ -107,7 +107,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public int mParallel = 1;
 	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0, mOutputEnergy = 0, mChargeRequirement = 0;
 	public TagData mEnergyTypeAccepted = TD.Energy.TU, mEnergyTypeEmitted = TD.Energy.QU, mEnergyTypeCharged = TD.Energy.TU;
-	public Recipe mLastRecipe = null;
+	public Recipe mLastRecipe = null, mCurrentRecipe = null;
 	public FluidTankGT[] mTanksInput = ZL_FT, mTanksOutput = ZL_FT;
 	public ItemStack[] mOutputItems = ZL_IS;
 	public FluidStack[] mOutputFluids = ZL_FS;
@@ -729,10 +729,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			}
 		}
 		
-		if (!mActive && mSpecialIsStartEnergy) mChargeRequirement = tRecipe.mSpecialValue;
+		if (mSpecialIsStartEnergy && (!mActive || (mCurrentRecipe != null && mCurrentRecipe != tRecipe))) mChargeRequirement = tRecipe.mSpecialValue;
 		
-		mOutputItems  = tRecipe.getOutputs(RNGSUS, tMaxProcessCount);
-		mOutputFluids = tRecipe.getFluidOutputs(RNGSUS, tMaxProcessCount);
+		mCurrentRecipe = tRecipe;
+		mOutputItems   = tRecipe.getOutputs(RNGSUS, tMaxProcessCount);
+		mOutputFluids  = tRecipe.getFluidOutputs(RNGSUS, tMaxProcessCount);
 		
 		if (tRecipe.mEUt < 0) {
 			mOutputEnergy = -tRecipe.mEUt;
