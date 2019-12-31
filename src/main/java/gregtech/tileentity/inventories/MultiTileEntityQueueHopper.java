@@ -138,6 +138,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 	}
 	
 	@Override
+	@SuppressWarnings("rawtypes")
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
@@ -147,9 +148,8 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 			} else if ((mInventoryChanged || mCheckNextTick || mBlockUpdated || aTimer % 64 == 32) && !hasRedstoneIncoming()) {
 				mCheckNextTick = F;
 				if (!SIDES_TOP[mFacing] && !invempty()) {
-					DelegatorTileEntity<IInventory> tDelegator = getAdjacentInventory(mFacing);
+					DelegatorTileEntity tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.getBlock() instanceof BlockRailBase) {
-						@SuppressWarnings("rawtypes")
 						List tList = worldObj.getEntitiesWithinAABBExcludingEntity(null, tDelegator.box(0, 0, 0, 1, 1, 1), IEntitySelector.selectInventories);
 						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 					}
@@ -159,9 +159,8 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 						tMovedItems += tMoved;
 					}
 				}
-				DelegatorTileEntity<IInventory> tDelegator = getAdjacentInventory(SIDE_TOP);
+				DelegatorTileEntity tDelegator = getAdjacentTileEntity(SIDE_TOP);
 				if (tDelegator.getBlock() instanceof BlockRailBase) {
-					@SuppressWarnings("rawtypes")
 					List tList = worldObj.getEntitiesWithinAABBExcludingEntity(null, tDelegator.box(0, 0, 0, 1, 1, 1), IEntitySelector.selectInventories);
 					if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
 				}
