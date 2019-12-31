@@ -40,6 +40,7 @@ public class Config implements Runnable {
 	public static Configuration sConfigFileIDs;
 	private static boolean sIDConfigNeedsSaving = F;
 	private boolean mUsesDefaultsInNames = T;
+	public boolean mSaveOnEdit = T;
 	
 	public static int addIDConfig(Object aCategory, String aName, int aDefault) {
 		if (UT.Code.stringInvalid(aName)) return aDefault;
@@ -87,7 +88,7 @@ public class Config implements Runnable {
 		if (UT.Code.stringInvalid(aName)) return aDefault;
 		Property tProperty = mConfig.get(aCategory.toString().replaceAll("\\|", "_"), (aName+(mUsesDefaultsInNames?"_"+aDefault:"")).replaceAll("\\|", "_"), aDefault);
 		boolean rResult = tProperty.getBoolean(aDefault);
-		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && !tProperty.wasRead()) mConfig.save();
+		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && mSaveOnEdit && !tProperty.wasRead()) mConfig.save();
 		return rResult;
 	}
 	
@@ -99,7 +100,7 @@ public class Config implements Runnable {
 		if (UT.Code.stringInvalid(aName)) return UT.Code.bindInt(aDefault);
 		Property tProperty = mConfig.get(aCategory.toString().replaceAll("\\|", "_"), (aName+(mUsesDefaultsInNames?"_"+UT.Code.bindInt(aDefault):"")).replaceAll("\\|", "_"), UT.Code.bindInt(aDefault));
 		int rResult = tProperty.getInt(UT.Code.bindInt(aDefault));
-		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && !tProperty.wasRead()) mConfig.save();
+		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && mSaveOnEdit && !tProperty.wasRead()) mConfig.save();
 		return rResult;
 	}
 	
@@ -111,7 +112,7 @@ public class Config implements Runnable {
 		if (UT.Code.stringInvalid(aName)) return aDefault;
 		Property tProperty = mConfig.get(aCategory.toString().replaceAll("\\|", "_"), (aName+(mUsesDefaultsInNames?"_"+aDefault:"")).replaceAll("\\|", "_"), aDefault);
 		String rResult = tProperty.getString();
-		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && !tProperty.wasRead()) mConfig.save();
+		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && mSaveOnEdit && !tProperty.wasRead()) mConfig.save();
 		return rResult;
 	}
 	
@@ -120,7 +121,7 @@ public class Config implements Runnable {
 		if (UT.Code.stringInvalid(aName)) return aDefault;
 		Property tProperty = mConfig.get(aCategory.toString().replaceAll("\\|", "_"), (aName+(mUsesDefaultsInNames?"_"+aDefault.mNameInternal:"")).replaceAll("\\|", "_"), aDefault.mNameInternal);
 		OreDictMaterial rResult = OreDictMaterial.get(tProperty.getString());
-		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && !tProperty.wasRead()) mConfig.save();
+		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && mSaveOnEdit && !tProperty.wasRead()) mConfig.save();
 		return rResult;
 	}
 	
@@ -132,7 +133,7 @@ public class Config implements Runnable {
 		if (UT.Code.stringInvalid(aName)) return aDefault;
 		Property tProperty = mConfig.get(aCategory.toString().replaceAll("\\|", "_"), (aName+(mUsesDefaultsInNames?"_"+aDefault:"")).replaceAll("\\|", "_"), aDefault);
 		double rResult = tProperty.getDouble(aDefault);
-		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && !tProperty.wasRead()) mConfig.save();
+		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && mSaveOnEdit && !tProperty.wasRead()) mConfig.save();
 		return rResult;
 	}
 	

@@ -97,8 +97,11 @@ public class RecipeMapHandlerMaterial extends RecipeMapHandler {
 	
 	public boolean addAllRecipesInternal(RecipeMap aMap) {
 		if (isDone()) return F;
+		aMap.mConfigFile.mSaveOnEdit = F;
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) addRecipeForPrefix(aMap, tPrefix);
 		mAlreadyAddedAllRecipes = T;
+		aMap.mConfigFile.mSaveOnEdit = T;
+		aMap.mConfigFile.mConfig.save();
 		return T;
 	}
 	

@@ -21,10 +21,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.11.26: (Not released yet)
+6.11.26: (Not released yet, bear forgot today is testing day, guess that gives me one more day to work on this. XD)
 [FIXED] The Ender Garbage System and some other things, did not save their contents properly when the Server was shut down because of Forge "resetting the Item and Block IDs to what they were when the Client was started" for no reason whatsoever.
 [FIXED] You can no longer jumpstart a Fusion Reaction using a cheap Fuel just to run an expensive Fuel afterwards for nearly free.
 [FIXED] Multiblock Baths, Coagulators and Centrifuges were conducting Logistics like the Logistics Core.
+[FIXED] Part of the NEI Lag Spike Issue when clicking the Progress Bar for the Recipe List.
 [CHANGED] Normal Electrolyzer, Centrifuge, Distillery and Dryer now can process multiple things in Parallel (ofcourse for increase of overall Duration).
 [CHANGED] Adamantium has its Melting Point lowered by 200K to 5225K. Now it can actually be molten properly in the highest Tier non-Adamantium Crucible.
 [ADDED] Recipe for Vibranium using the Fusion Reactor and molten Adamantium with Beryllium-7. It's also a good working Fusion Fuel as in outputs lots of Tritium, Helium-3 and Helium.
