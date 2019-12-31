@@ -901,6 +901,9 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		return this;
 	}
 	
+	public OreDictMaterial aspects_met_rad(long aMetallum, long aRadio) {
+		return addAspects(TC.stack(TC.METALLUM, aMetallum), TC.stack(TC.RADIO, aRadio));
+	}
 	public OreDictMaterial aspects(TC aAspect1, long aAmount1) {
 		return addAspects(TC.stack(aAspect1, aAmount1));
 	}

@@ -18,23 +18,23 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.12.00: (Not released yet, this is probably the last major Version before I start my own Game, unless I screw up Releases again and need Quickfixes because tired or something, this should come out around New Years Day or slightly after, Explosions for Reactors are gonna be enabled.)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[NOTE] I will definitely still add the WIP things before I leave most of Minecraft behind, don't worry. ^^
+[WIP] Fuel -> Rotation - Engine
+[WIP] Multiblock Heat Exchanger
+[WIP] A Mold-Extender for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
+[NOTE TO MYSELF] Do not forget to make sure that looping 4 of those Extenders together might cause a Stackoverflow Error.
 
 
-6.11.26: (Not released yet, bear forgot today is testing day, guess that gives me one more day to work on this. XD)
+6.11.26: (Should be out in less than an hour unless there is problems)
 [FIXED] The Ender Garbage System and some other things, did not save their contents properly when the Server was shut down because of Forge "resetting the Item and Block IDs to what they were when the Client was started" for no reason whatsoever.
 [FIXED] You can no longer jumpstart a Fusion Reaction using a cheap Fuel just to run an expensive Fuel afterwards for nearly free.
 [FIXED] Multiblock Baths, Coagulators and Centrifuges were conducting Logistics like the Logistics Core.
 [FIXED] Part of the NEI Lag Spike Issue when clicking the Progress Bar for the Recipe List.
 [CHANGED] Normal Electrolyzer, Centrifuge, Distillery and Dryer now can process multiple things in Parallel (ofcourse for increase of overall Duration).
 [CHANGED] Adamantium has its Melting Point lowered by 200K to 5225K. Now it can actually be molten properly in the highest Tier non-Adamantium Crucible.
+[ADDED] More Fusion Recipes in general. Not all are useful, but if you want to get rid of Helium, you can do that now.
 [ADDED] Recipe for Vibranium using the Fusion Reactor and molten Adamantium with Beryllium-7. It's also a good working Fusion Fuel as in outputs lots of Tritium, Helium-3 and Helium.
 [ADDED] Multiblock Fermenter. Should make Biomass Production much less bothersome.
-[NOTE] Should any of the WIP things mentioned here not come out before the year is over, I will definitely still add them before I leave most of Minecraft behind, so don't worry. ^^
-[WIP] Fuel -> Rotation - Engine
-[WIP] Multiblock Heat Exchanger
-[WIP] A Mold-Extender for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
-[NOTE TO MYSELF] Do not forget to make sure that looping 4 of those Extenders together might cause a Stackoverflow Error.
 
 
 6.11.25:

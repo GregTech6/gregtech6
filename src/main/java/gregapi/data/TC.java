@@ -56,7 +56,7 @@ public class TC {
 		}
 		
 		public List<TC_AspectStack> addToAspectList(List<TC_AspectStack> aList) {
-			if (mAmount == 0) return aList;
+			if (mAmount <= 0) return aList;
 			for (TC_AspectStack tAspect : aList) if (tAspect.mAspect == mAspect || (tAspect.mAspect.mAspect != null && tAspect.mAspect.mAspect == mAspect.mAspect)) {tAspect.mAmount += mAmount; return aList;}
 			aList.add(copy());
 			return aList;
