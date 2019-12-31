@@ -25,7 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [NOTE TO MYSELF] Do not forget to make sure that looping 4 of those Extenders together might cause a Stackoverflow Error.
 
 
-6.11.26: (Should be out in less than an hour unless there is problems)
+6.11.26:
 [FIXED] The Ender Garbage System and some other things, did not save their contents properly when the Server was shut down because of Forge "resetting the Item and Block IDs to what they were when the Client was started" for no reason whatsoever.
 [FIXED] You can no longer jumpstart a Fusion Reaction using a cheap Fuel just to run an expensive Fuel afterwards for nearly free.
 [FIXED] Multiblock Baths, Coagulators and Centrifuges were conducting Logistics like the Logistics Core.
