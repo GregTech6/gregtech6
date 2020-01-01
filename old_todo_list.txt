@@ -1,0 +1,1586 @@
+My old List of random shit I wanted to do. Quite a big one, most of the full sentences in this Document are copypasted from somewhere. 
+
+-----
+
+Forge Bugs to fix, which would make things much easier:
+Lava ignores actual flammability when placing Fire.
+Ice Blocks harvesting Event Order is wrong and therefore cannot be modified.
+FMLProxyPacket Bug for literally any larger Modpacks
+Usage of after:* and before:* will cause crashes when used for Mod Loading Order.
+
+-----
+
+Yeah,the first step is electrolyzing (NH4)2SO4 solution containing H2SO4 to prepare (NH4)2S2O8.There is also a saying that 60% sulfuric acid can be used for electrolysis to directly prepare H2S2O8.
+Then stepwise hydrolysis in normal water and 1atm.
+The reaction mechanism is as follows.
+H2S2O8+H2O—→H2SO4+H2SO5
+H2SO5+H2O—→H2SO4+H2O2
+If you want to extract hydrogen peroxide, you can use a vacuum distillation method.
+
+Reactor Raytrace for Radiation
+Neutron Count Measurements for Sensors
++1 Total Neutron per tick on Rods or RNG Neutron counts
+In reality, the treatment of chloroauric acid/chloroplatinic acid is not reduced by zinc and decomposed by heating
+
+AE Processors more expensive
+Redstone Graphing Device.
+Sunflower duplication for Bumblebees?
+MC Sponge prevents spreading of Waterlike Blocks.
+Silicon to SiO2 use Steam instead of Water
+
+Strength and Resistance Potion Buff whenever you respawn
+
+Axle/Gearbox -> Rotate Entities standing on it
+Axle -> Move Entities standing on it Sideways
+Luminosensor => Light Update Bug?
+
+Hydrogen Peroxide. It can be made by electrolyzing ammonium persulfate in sulfuric acid to get ammonium peroxydisulfate. Mixing that with water gives hydrogen peroxide and the ammonium persulfate back.
+Why is there no way to break potassium bisulfate back down into sulfur, oxygen, and potassium? I'm trying to make some nicads and this seems to be where my potassium us.
+Maybe try bathing silver minerals with nitric acid to get silver nitrate (don’t get it on your hands! )…
+
+Potassium hydroxide + sulfur dioxide = potassium sulfite + water (I don’t know why potassium sulfite doesn’t have a recipe like sodium sulfite… )
+Sodium/potassium hydroxide+sulfuric acid = sodium/potassium bisulfate+water (or sodium/potassium sulfate which may require a selector label to control the ratio of reactions… )
+Sodium/potassium bisulfate + sodium/potassium hydroxide = sodium/potassium sulfate + water (although not useful, this reaction is really feasible)
+Sodium/potassium sulfite + hydrogen peroxide = sodium/potassium sulfate + water (which can make sodium/potassium sulfite useful, perhaps adding a sulfur dioxide + hydrogen peroxide recipe to sulfuric acid like nitric acid)
+Sodium/potassium bisulfate = drying = sodium/potassium pyrosulfate + distilled water (although sodium/potassium pyrosulfate is temporarily not good for use, but this reaction allows it to be available, is also a viable recipe… )
+Hydrosulfuric acid + sodium/potassium hydroxide = sodium/potassium sulfide (I don’t remember if there’s any recipe… But at least hydrosulfuric acid can be used to make it useful, not just to recover sulfur from sulfur dioxide.
+Hydrogen peroxide ==manganese dioxide catalysis== water + oxygen:
+Although oxygen is obviously much cheaper than hydrogen peroxide, it is still feasible as a laboratory oxygen production method.
+Carbonate + hydrochloric acid = chloride + carbon dioxide + water:
+The method of making carbon dioxide (usually calcium carbonate (marble) that can be learned in class) is at least feasible, although carbon dioxide is basically useless exhaust gas.
+Magnesium + Nitrogen = Burner Mixer = Magnesium Nitride,Magnesium Nitride + Water = Ammonia + Magnesium Hydroxide:
+A feasible ammonia treatment, although I still hope to add the Haber Process…
+Magnesium + Carbon Dioxide =Burner mixer= Magnesium Oxide + Carbon Monoxide: At least it is feasible and can prove that CO2 fire extinguishers cannot extinguish magnesium combustion…
+Solvents: Some solvents can be added in some reactions (especially in organic reactions). Solvents are not consumed like catalysts. Solvents can be used to make chemical production more complex and reasonable.
+
+I just saw a more general way to produce nitric oxide than GT6 in reality… Nitric oxide and water are produced by ammonia and oxygen at high temperatures using platinum-rhodium alloy catalysts. There is this recipe in the chemical reactor of GT5. I don’t know what machine is used in GT6 to process this recipe. It’s more reasonable than GT6 is now.
+
+1. To be able to disassemble machines instead of shredding them.
+2. Adding the Sabatier or Fischer-Tropsch reaction for Methane production, dumping all the useless carbon dioxide/monoxide and hydrogen to make sweet methan :3
+4. Some sort of backpacks or toolboxes, way too many tools for such a small inventory.
+5. Logic gates like in Red Power or Project Red, it's hard to automate complex crucible recipes without logic gates(don't mind me sitting 30 minutes smelting stainless steel). I wouldn't mind having them require power :)
+6. Adding some of the IC2 stuff like wind and water mills and a crop system to finally dump IC2 too. Crossing fingers for Nuclear reactors hehe.
+7. It would be lovely to combine metals in the Smelter, that would make Logic gate semi-unneeded.
+
+Atum Shrubs and Bushes -> Sticks
+Mode Reader Cover
+
+Redstone Diode Torch Cover, with IN and OUT Modes
+
+Cerium: It can be obtained from bastnaesite or centrifugal rare earth. It is useless in GT5 and is not an ideal material for tools. It can make some special alloys and catalysts in reality, but GT6 does not seem to need these alloys…
+Selenium: Byproducts of minerals such as cinnabar. Because GT printers don’t need selenium drums, I think it can be used to make higher tier solar panels…
+Germanium: Byproducts of stannite and kesterite, GT6 does not seem to need germanium to participate in the more complex semiconductor industry… Maybe they can be used as photoelectric components and catalysts? (Germans should be able to do that)
+Ruthenium and Rhodium: Maybe the best use of platinum mud or byproduct as an “expensive waste” is as a catalyst…
+Sulfite: I don’t know what use it is… Maybe they can be used to restore? Sodium dithionite (commonly known as “insurance powder”) is a reductant, which can be used for bleaching and synthesis of thiourea, etc.
+Pyrosulfate: They are not normally available, they are useless, and I don’t know why they are added… They seem to dissolve some metal oxides like persulfates.
+
+TEST OCEAN LIGHT OPACITY (I kinda did and nobody reported anything so might be fixed)
+Grass Blocks grow under Ocean Water for some reason.
+
+Geostrata -> Rock Types
+
+Saw Blades on Axles
+
+KCl + Green Vitriol
+
+If you like that then you should look up some of the other early recipes for producing acids,
+Oil of vitriol, sulfuric acid, could be created by roasting sulfur and potassium nitrate in presence of steam or by roasting green vitriol in an iron retort.
+Can you produce or mine iron sulfate in-game? I can’t remember, you should be able to get it by roasting pyrite FeS2 to get iron(III)sulfate Fe2(SO4)3 which when heated to about 750K or so gives FeO2 and SO3 iron oxide and sulfur trioxide.
+
+check chubacabra meat mutton drops (lycanides mobs)
+Generifier Prismarine?
+Invar Lighter Recipe?
+
+Galaxyspace Radiation Pills, iterate through potion effect classes
+
+Pipes + Creosote = Keep NBT?
+
+Aether Slider Boss Pickaxe requirement.
+Holy Bumblebees: Bumblepope, DONT FORGET AETHER WORLDGEN
+Aether Portal Wooden Water Bucket Exploit
+Aether Grass and Dirt Block Sifting
+Holystone to Rocks clubbing and crafting
+Crystal Apple Crop
+Saw Skyroot and Weedwood Leaves
+Chromite
+
+Spawn Protection Beacon
+
+Timbering: Lots of Quicklime + Some Lard + Water = Whitewash, that plus Dirt + Straw = Dorb
+
+Fuel Value Tooltips for Solid Fuels.
+"Soft" Tag for Copper and Gold
+Spade -> Snow Layers Silk Touching, Plow with Silk Touch aswell
+SiO2 to Silicon, check Quartzes and Stuff
+Lava Block check for Lycanites Lava Blocks
+Harvestcraft Cotton to String/Wool in Loom
+Growthcraft Apple Core Removal via Unification
+Drink Dispenser
+
+
+@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event) {
+		boolean rightEvent = event.action == Action.RIGHT_CLICK_AIR;
+		ItemStack stack = event.entityPlayer.getCurrentEquippedItem();
+		boolean correctStack = stack != null && stack.getItem() == Items.glass_bottle;
+		boolean ender = event.world.provider.dimensionId == 1;
+
+		if(rightEvent && correctStack && ender) {
+			MovingObjectPosition pos = ToolCommons.raytraceFromEntity(event.world, event.entityPlayer, false, 5F);
+
+			if(pos == null) {
+				ItemStack stack1 = new ItemStack(this, 1, 15);
+				event.entityPlayer.addStat(ModAchievements.enderAirMake, 1);
+
+				if(!event.entityPlayer.inventory.addItemStackToInventory(stack1))
+					event.entityPlayer.dropPlayerItemWithRandomChoice(stack1, true);
+
+				stack.stackSize--;
+				if(stack.stackSize == 0)
+					event.entityPlayer.inventory.setInventorySlotContents(event.entityPlayer.inventory.currentItem, null);
+
+				if(event.world.isRemote)
+					event.entityPlayer.swingItem();
+				else event.world.playSoundAtEntity(event.entityPlayer, "random.pop", 0.5F, 1F);
+			}
+		}
+	}
+
+
+
+Additional Smelting Targets in Materials
+
+Tool Knockback depending on Toolstats
+
+Bush + Taint + Taint Fruit
+
+Rope => Leash
+
+Cooking Board Block, Knife = Cutting, Rolling Pin = Flattening Dough and Stuff
+
+Magic Bumbles more obtainable
+
+Compass Waypoint
+
+Liquid Oxygen back to Gaseous Oxygen, Condenser?
+
+Forestry Soldering Iron crafting Recipe take over from Carpenter
+
+Botania: Placing an infused incense stick on an incense plate and igniting it releases the effect of the brew in a 24 block radius. It is kinda like a beacon, but it will die at some point. Currently we can only ignite it with vanilla flint and ‘steel’. It would be nice if we do it using the mentioned tools.
+
+Botania Compat needs some Updates.
+Remaining TechGuns Material Data and Recipes need to be done.
+
+Pulse Former Torch Cover
+
+COMPAT: Thaumic Tinkerer
+
+Filling a Crate with 64 Torches
+
+Canned Air
+
+Hay Bales and Grass Bales = -7 Fall Damage
+
+Slime on Walls inside Slimechunks but only on Rock Walls between Y-5 and Y-24
+
+Palm Tree with Coconuts.
+Pams alike Hazelnuts and Coconuts.
+
+IRL Zirconium Dioxide (2988K/4570K Melting/Boiling point) is used as a high temperature ceramic crucible material, but there is no such crucible in GT6 (and I am not sure if adding it would break progression)
+apparently, pure ZrO2 is highly susceptible to thermal stress, and it is doped with other minerals such as Yttria to gain desirable thermal/mechanical properties
+Doesn't say anything about how they produce YSZ from Zirconium metal unfortunately
+
+Bullets will pass through:
+Leaves (check via Material.leaves)
+Webs
+Mob Spawners
+Vines, Lily Pads, Glowtus, Sugarcanes and Cactii
+Iron Bars (check Chisel and Open Modular Turrets!)
+Fences (check Carpenters Blocks!)
+Glass (make it Shatter too; Panes, Blocks and Coloreds; dont go through reinforced Glass Types)
+Bullets wont pass through:
+Liquids
+
+Add 16 colored Cotton Items similar to the colored Strings
+Terra Wart => Ethanol, special Recipe, also Terra Wart drink (similar effects as milk)
+Microwaved Lemons and Limes give more Juice
+Melon "Shale?" and other Food Scrap
+Macerating BC Pipes
+Shiftclicking Items on the ground like stacks on stacks
+Add Poor Ores
+Concrete Boots that make you unable to Swim up
+Carbon Crucible => Wikipedia
+Bed which does not set your spawn point
+Mossy Stone Recipe
+KNIFE + MOSSY BLOCK or LOG = Moss
+Glowstone and Aerotheum Centrifuge Recipes need to be re-evaluated, or a Vapourizer is needed!
+
+KITCHEN:
+Microwave
+Toaster
+Cotton Candy Maker (Sugar Dust to Cotton Candy)
+Coffee Maker
+Oven
+Grill
+Cooking Pot
+
+STORAGE & TRANSPORT:
+Sorter Block that lets sorted Stuff go one way and unsorted Stuff go another way. (like the one in older GTs)
+Ceramic Pipe
+Bag to transport non-unsafe Dusts, just like Crates
+Wooden Cabinet for sideways access of Chest alike Storges like Compartment Drawer
+Stack Storage for similar unstackable Items. (Filing Cabinet Style; Enchantments and Tool Damage being different)
+Ceramic Vase for storing Items inside, but with a limited overall Stacksize. (Similar to TFC, I kinda did that with Item Barrels and Tape already)
+
+TOOLS:
+Golf Club Bag (Multitool; contains Putter, Wedge, Iron and Driver; Shoots Enderpearls far further than by hand)
+Measuring Rope (depth of Oceans, or distance to Floor), Measuring Tape.
+Assassination Knife + Invisibility + Attacker wearing no Armor = huge damage
+Spider Web Spray
+Chlorine Spray on Mobs = Poison Effect (except undead or golems)
+Plunger on Fluid Pipes work on a longer distance than 1 Pipe?
+Ore Scanner Item
+Magnifying Glass => Seeing Spawnable Areas, Firestarting at Day
+Key Mold and Key Press
+Slingshot => Rock, Mud Ball, Clay, Rounds
+Mattock from QwerTech:
+_____
+X____
+XXX__
+XXXXX
+X__XX
+
+POWER:
+Li-Se Batteries
+Proper Lithium Solution Fluid https://en.wikipedia.org/wiki/Ethylene_carbonate
+Hydrogen Power Cell
+Electric Condensator
+Hydraulics
+working lasers = blindness
+Labeled Electric Wires
+Cola Power (see One Piece)
+More Fuel Mixing
+Jet Burning Boxes
+Fluidized Bed Reactors
+Multiblock Gas Turbine
+Electric Outlets
+
+MACHINES:
+Coater (Paper + Glue = Letter, Stamp)
+Foamer (move CFoam Bathing Iron Scaffolds to this; Wet CFoam Blocks)
+Vapourizer
+Improve Beer Brewing
+Hot Sauces => Bath mixing for Potion Effects
+Haber Process
+
+COVERS AND REDSTONE:
+Pipe Valves
+Barometer Cover
+Pipe Upgrades such as Barometers
+Cover that emits a set Redstone Signal.
+Conditional Emitter "Cover" for Red Alloy Cables, which only emits if the signal is greater than, smaller than or equal to a set Number.
+Code Panel, which emits a constant 1 Signal, which will be increased by 1 strength whenever the Code is wrong (so that one can make a 3 strikes and you're out Rule), also display amount of strikes!
+Bulls Eye Block (not Cover) that shows the content of the first filled Tank inside a Block.
+Item Inserter (Rightclick the Block with an Item and it will go into the thing behind, maybe as Cover)
+The 4th Wall: Look at it and it emits Redstone.
+Cover that emits Redstone when the Block it is attached to is BUD-ed
+One-Way Receiver Covers for Red Alloy Wires
+Observer Blocks
+Graphene Filter Cover that takes Water like a Drain and gives Distilled Water.
+
+DIRT:
+Mud + Clay + Wheat = Cheaper Version of Bricks?
+Compost as Dirt alike Block
+Special Concrete Bucket/Pot to place wet Concrete (DIGGABLES) with
+Several Dirt-alike Resources
+
+ROCKS:
+Breccia
+Chalk
+Chert
+Dolomite
+Gneiss
+Granulite
+Hornblendite
+Monzonite
+Peridotite
+Rhyolite
+Slate
+Soapstone Asbestos Talc Glauconite
+
+GT6 DUNGEON:
+Infinite Mining Area (some Bedrock Ore)
+Traps
+
+MATERIAL:
+Bio Plastics (but requires regular platic for the bio plastic creating machine to be crafted)
+Magnesium Oxide, melting point 3098K. This is typically produced by heating magnesite to 2300K.
+Tar from Soulsand and Oil (TarPitch  -  RGB:  28,  17,   7  -  Tar pitch bar ; TarPitch  -  RGB:  57,  40,  37  -  Small piece of tar pitch)
+Previously, hydrogen peroxide was prepared industrially by hydrolysis of the ammonium peroxydisulfate, which was itself obtained by the electrolysis of a solution of ammonium bisulfate (NH4HSO4) in sulfuric acid: (NH4)2S2O8 + 2 H2O → H2O2 + 2 (NH4)HSO4
+Oilsand Items -> Oil; Worldgen
+Bronze/Brass Compound Item
+http://www.engineeringtoolbox.com/molybdenum-alloys-melting-points-d_1438.html
+https://en.wikipedia.org/wiki/Ultra-high-temperature_ceramics
+C-14 Diamonds for Circuits
+Laterite (Redrock)
+Al-26 -> Invisibility
+Phlebotnium, Reflectium, Dinklebergium
+Hardness, Resistance, Voltage, Amperage, Loss stored in Materials
+Look up "Glowing in the Dark"-Chemicals per Color
+Volcanic Ashes (AshVolvanic) -> Concrete, Basalt
+VANTA Black Carbon Nanotube Material that is pure Blackness
+Tantalum Steel Alloy (Tantalum fabricated sheets, plates, rods, wires	- High temperature furnace parts	Melting point is 2996°C although protective atmosphere or high vacuum required)
+New State for formable Metal Temperatures or similar.
+Soulsand Dust Item Set with 9 dust per soul sand block.
+Sterling Silver => Signalum Recipe
+Trinitrotoluene (TNT)
+Barite Bentonite Lubricant?
+
+FOOD:
+Rootbeer + Rootbeer Soda
+Squidicle and other Popsicles
+4 Nether Stars + Soda = TFS Soda
+Rat Burgers
+Greggy Meal
+Nutella on Bread
+Coconut vinegar, made from fermented coconut milk. A cloudy white liquid
+Pomegranate vinegar
+GT Soybeans
+Beer+Water=Duff
+Vodka+Juice
+Carrot Pizza
+Energy Drink
+PB&J Sandwich Tooltip "still here, still selling fake Doors"
+Coal Coke => Coke-a-Coal-a & Diet Coke
+"Fountain Stew" Drink of Sugar
+Tortilla Hat/Sombrero
+Can of woop ass
+Muffin ("It's Muffin Time!" Tooltip with asdf Muffin Icon at around 12:30, otherwise "Somebody kill me!" at a normal Muffin)
+Peach + Brown Shroom + other Stuff = Goomba Cake
+Terra Wart
+Chili
+Cheese
+Cactus Water (as Drink) => Fire Water => Cacti Don Juan
+"Mind" Cracker
+Noodles (knife/cutting)
+Salty Water § + Noodles	=> Noodle Soup
+			=> Noodle Soup + Chilly			=> Noodles with Chilly Sauce (hidden, Fire Resist, flaming)
+			=> Noodle Soup + Mince Meat/4TC-Nuggets	=> Noodles with Mince Meat Sauce + Tomato		=> Spaghetti Bolognese (hidden)
+			=> Noodle Soup + Tomato			=> Noodles with Tomato Sauce + Mince Meat/4TC.Nuggets	=> Spaghetti Bolognese (hidden)
+			=> Noodle Soup + Carrot			=> Noodles with Carrot Soup + Chicken			=> Noodles in Carrot Soup with Chicken (hidden)
+			=> Noodle Soup + Chicken		=> Noodle Soup with Chicken + Carrots			=> Noodles in Carrot Soup with Chicken (hidden)
+			=> Noodle Soup + Egg			=> Noodle Soup with Eggs + Onions			=> Ramen (hidden)
+			=> Noodle Soup + Onion			=> Noodle Soup with Onions + Eggs			=> Ramen (hidden)
+			=> Noodle Soup + Golden Carrot		=> Clear Noodle Soup (hidden, Invisibility)
+Snackers (Tooltip, You aren't you after you ate a Snackers)
+
+COMPAT:
+Pneumaticraft
+Magneticraft
+Forestry Impregnated Casing and similar Stuff
+Certain Machines heating up nearby players, such as the heater/burning box
+Geostrata Lava Rocks, Centrifuge?
+
+TFC:
+Grass Cutting and Items
+Clay Crucible made of Fireclay
+Sifting recipes for TFC dirt => vanilla dirt/sand/gravel/clay
+
+MOON:
+O, Si, Fe, Ca, Al, Mg, Mn, Ti, Basalt, Feldspar, Olivine
+
+DOCUMENTATION:
+Extender explanation Picture
+The Legend of Sengir Book
+Guide to Painting GT Blocks
+50 Shades of Wood by Villager #42
+Add a Book with modded Stuff you should try out! or spam mail XD
+
+IMPROVEMENTS:
+Chem Stuff for Air, Lava, Water and Cauldron contact of Items, whole API needed.
+Wrench Overlay for Vanilla.
+Kinetic Engines TESR
+Renderer, make it so every texture is tiled instead of stretched...
+Safe opening animation
+NEI Usage Button on Machine => Recipes processable by Machine
+Fix Crate Textures for Gems.
+
+BUGS?:
+Check electric tools enchantment tooltips
+
+OPTIMIZATIONS:
+Shelf Book Textures
+GT Network Handler to sync GUIs
+
+AUDIO:
+Try to create a better Wrench Sound.
+Portable Scanner -> Actual Tricorder Sound
+
+ADV BUTTON STUFF:
+EASY, MEDIUM, HARD, EXTREME, OPEN DOOR, CLOSE DOOR, DOOR, OPEN, CLOSE, HELP, CALL, BUTTON, SWITCH, ONLINE, OFFLINE, MUFFIN, MOTOR, HEAT, BELL, DOOR BELL, MUSIC, FUNKY, DO NOT PUSH!, FAN, VENT, DANGER, ALARM, EMERGENCY, SHUT DOWN, START, STOP, FIRE, VALVE, ON, OFF, ACTIVATE, REBOOT, POWER, LASER, DOOM, APOCALYPSE, KILL, EXTERMINATE, DECONTAMINATE, CLEAN, MINE
+Voltages ULV to MAXV, Pentagram (also upside down), GT Logo, Gear Logo
+Hazard Icons. Bio, Electro, Laser, ahh damnit just look up chisel
+
+RANDOM:
+Papers & Pencil
+Villager AI + Vending Machines
+Chemtubes = Research for Material Dictionaries and Scanners
+Data Storage Block that can copy USB Data. Maybe some sort of fake Computer Interface. (nothing programmable, just an USB Terminal)
+Player on Fire without Hazmat and with Explosive Materials = Boom
+Conveyor Belts (autofill Inventories when items either collide with side or when they would fall down into something)
+Fire Distinguisher Achievement when using Extinguisher
+
+IC2 CROPS:
+VintageBeef Crop
+Lazuweed discovered by MacGamer
+Quartz Crop for Etho
+Twig Reeds
+
+CROPS:
+Special Soil Blocks for each Crop Type
+Fertilizing and Watering Soil instead of the Crop should be available.
+Have the Soil Save the Nutrients and Hydration
+Worms and other Insects being able to be home to Soils.
+3x3 of Glass/Glowstone (any block that has material glass) up to 5m above a Crop + Sunlight will increase growth.
+Also the Glass can be placed diagonally and doesnt have to be a flat 3x3, and GT Glass Slabs should definitely count.
+Lamps can cause the same Growth effect.
+Thorns don't work if you wear Clothes that are made of Metal, AT THE HEIGHT AT WHICH THE CROP SPIKES YOU. So Shoes and Pants for bottom, chest and helmet for Top.
+Possible Genes:
+Thorns: Adds a Collision Box and hurts on contact like ground Spikes (if dense it makes the large Collision Box hurt too).
+Dense: Adds a Collision Box, but lets Items fall through.
+Opaque: Makes the Plant non-see-through, like a Block or a Slab.
+
+
+
+https://en.wikipedia.org/wiki/Composition_of_Mars
+
+Mars is the "Red Planet" for a very good reason: its surface is made of a thick layer of oxidized iron dust and rocks of the same color. Maybe another name for Mars could be "Rusty." But the ruddy surface does not tell the whole story of the composition of this world.
+
+Dusty crust
+The dust that covers the surface of Mars is fine like talcum powder. Beneath the layer of dust, the Martian crust consists mostly of volcanic basalt rock. The soil of Mars also holds nutrients such as sodium, potassium, chloride and magnesium. The crust is between 6 and 30 miles (10 and 50 kilometers) thick, according to NASA.
+
+Mars' crust is thought to be one piece. Unlike Earth, the red planet has no tectonic plates that ride on the mantle to reshape the terrain. Since there is little to no movement in the crust, molten rock flowed to the surface at the same point for successive eruptions, building up into the huge volcanoes that dot the Martian surface.
+
+Dusty, glass-rich sand dunes like these found just south of the north polar ice cap could cover much of Mars. (False color image)
+That doesn't mean the crust sits quietly. New research has found that powerful landslides may speed down Martian slopes at up to 450 mph (725 km/h).
+
+"The calculated velocity of landslides (often well in excess of 100 m/s and up to 200 m/s at peak) compares well with velocity estimates based on the run-up of the landslides on mounds," researchers wrote in a study published in The European Physical Journal Plus.
+
+"We conclude that ice may have been an important medium of lubrication of landslides on Mars, even in equatorial areas like Valles Marineris" (the Grand Canyon of Mars).
+
+Any life that ever existed on Mars would have had to cope with the radiation, perhaps by thriving underground. While astronomers continue to search for past or present signs of biology on Mars, no convincing evidence has yet been found.
+
+Mantle and core
+Evidence suggests there have been no volcanic eruptions for millions of years, however. The mantle that lies beneath the crust is largely dormant. It is made up primarily of silicon, oxygen, iron, and magnesium and probably has the consistency of soft rocky paste. It is probably about 770 to 1,170 miles (1,240 to 1,880 km) thick, according to NASA.
+
+The center of Mars likely has a solid core composed of iron, nickel and sulfur. It is estimated to be between 930 and 1,300 miles (1,500 and 2,100 km) in diameter. The core does not move, and therefore Mars lacks a planet-wide magnetic field. Instead, it has sporadic field lines that scientists have nicknamed "Christmas Lights." Without a global magnetic field, radiation bombards the planet making it relatively inhospitable compared to Earth. [Infographic: Inside Planet Mars]
+
+Water and atmosphere
+Mars is too cold for liquid water to exist for any length of time, but features on the surface suggest that water once flowed on Mars. Today, water exists in the form of ice in the soil, and in sheets of ice in the polar ice caps. The temperature on Mars ranges from 70 degrees Fahrenheit (20 degrees Celsius) to about minus 225 degrees Fahrenheit (minus 153 degrees Celsius).
+
+Credit: NASA/JPL-Caltech/Univ. of Arizona
+
+
+The atmosphere of Mars is too thin to easily support life as we know it. It is about 95 percent carbon dioxide. The extremely thin air on Mars can also become very dusty. Dust from the planet's surface is routinely kicked up into the atmosphere by giant dust devils— not unlike tornadoes on Earth. At times, the red planet can be partly or wholly consumed by dust storms.
+
+At times, it even snows on Mars. The Martian snowflakes, made of carbon dioxide rather than water, are thought to be about the size of red blood cells. Flakes in the north measure between 8 to 22 microns and those in the south are just 4 to 13 microns.
+
+Although the surface of Mars today is inhospitable for life as we know it, planetary scientists are finding signs that suggest the world may have been hospitable in the past. For instance, NASA's Curiosity rover discovered the element boron, which plays a role in stabilizing sugars needed to make RNA, a key for life.
+
+"Because borates may play an important role in making RNA — one of the building blocks of life — finding boron on Mars further opens the possibility that life could have once arisen on the planet," Patrick Gasda, a postdoctoral researcher at Los Alamos National Laboratory in Los Alamos, New Mexico and lead author of the study, said in a statement.
+
+"Essentially, this tells us that the conditions from which life could have potentially grown may have existed on ancient Mars, independent from Earth."
+
+
+
+
+
+
+
+https://en.wikipedia.org/wiki/Composition_of_Mars
+https://en.wikipedia.org/wiki/Tourmaline
+https://en.wikipedia.org/wiki/Rheniite
+https://en.wikipedia.org/wiki/Boric_acid
+https://en.wikipedia.org/wiki/Kroll_process
+https://en.wikipedia.org/wiki/Crystal_bar_process
+https://en.wikipedia.org/wiki/Iron_bacteria
+https://en.wikipedia.org/wiki/Neutron_capture#Neutron_absorbers
+https://en.wikipedia.org/wiki/Zirconium_alloy
+https://en.wikipedia.org/wiki/Superalloy
+https://en.wikipedia.org/wiki/Synthetic_diamond
+https://en.wikipedia.org/wiki/Magnetic_refrigeration
+https://en.wikipedia.org/wiki/List_of_emerging_technologies
+https://en.wikipedia.org/wiki/Haynes_International#Ultimet
+https://en.wikipedia.org/wiki/Roasting_%28metallurgy%29
+https://en.wikipedia.org/wiki/Oil_refinery
+https://en.wikipedia.org/wiki/Fractional_distillation
+https://en.wikipedia.org/wiki/Hydroponics
+https://en.wikipedia.org/wiki/Kimberlite
+https://en.wikipedia.org/wiki/Jade
+https://en.wikipedia.org/wiki/Stanene
+https://en.wikipedia.org/wiki/Methane
+https://en.wikipedia.org/wiki/Aqua_regia
+https://en.wikipedia.org/wiki/Wohlwill_process
+https://en.wikipedia.org/wiki/Platinum_group
+https://en.wikipedia.org/wiki/Maraging_steel
+https://en.wikipedia.org/wiki/Ammonium_paratungstate
+https://upload.wikimedia.org/wikipedia/commons/6/60/RefineryFlow.png
+http://forum.industrial-craft.net/index.php?page=Thread&postID=180230#post180230
+http://avestia.com/MMME2014_Proceedings/papers/72.pdf
+https://gist.github.com/Vexatos/b93716cba196360895f9
+
+
+Ammonium paratungstate
+Tungsten ores frequently occur in association with sulfides and arsenides, which can be removed by roasting.
+In order to produce ammonium paratungstate (APT), an intermediate compound in production of the pure metal, ores may be decomposed by acid leaching or by the autoclave-soda process.
+In the latter process, the ground ore is maintained for 11/2 to 4 hours in a solution of 10–18 percent sodium carbonate at temperatures of 190° to 230° C and under a pressure of 14.1–24.6 kilograms per square centimetre.
+Prior to the removal of unreacted gangue by filtration, the acidity is adjusted to pH 9–9.5, and aluminum and manganese sulfates are added at 70°–80° C and stirred for one hour.
+This can eliminate phosphorus and arsenic and reduce silica to a level of 0.03–0.06 percent.
+Molybdenum is removed by adding sodium sulfide at 80°–85° C at a pH of 10, holding for one hour, and then acidifying the solution to pH 2.5–3 and stirring for seven to nine hours to precipitate molybdenum sulfide.
+The remaining sodium tungstate solution can be further purified by a liquid ion-exchange process, using an organic extractant consisting of 7 percent alamine-336, 7 percent decanol, and 86 percent kerosene.
+During the countercurrent flow of the extractant through the solution, tungstate ions transfer from the aqueous phase to the organic phase.
+The tungsten is then stripped from the extractant into an ammonia solution containing ammonium tungstate.
+The resultant APT solution is sent to an evaporator for crystallization.
+
+
+
+I got to thinking about sulfuric acid, and wondering why we can't mix it with bases, like sodium hydroxide ( lye ). That should give sodium sulfate. It appears instead there is a recipe to make sodium sulfate from sodium sulfide and hydrogen peroxide, but there is no recipe to make peroxide.
+
+
+(10:57:33 PM) Retep: you should add https://en.wikipedia.org/wiki/Chlorine_trifluoride
+(10:57:41 PM) Retep: It's needed for nuclear reactor fuel processing
+(10:58:11 PM) Retep: >The main use of ClF3 is to produce uranium hexafluoride, UF6, as part of nuclear fuel processing and reprocessing, by the fluorination of uranium metal:
+
+https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html
+
+(3:12:00 PM) Vexaton: If you want, 2 NaCl + CaCO3 → Na2CO3 + CaCl2
+(3:12:09 PM) Vexaton: And you DEFINITELY have calcium carbonate
+(3:12:09 PM) Greg: add it to the chart
+(3:12:12 PM) Vexaton: that's ordinary limestone
+(3:12:14 PM) Greg: caco3?
+(3:12:17 PM) Vexaton: Yes
+(3:12:20 PM) Greg: yup
+(3:12:34 PM) Vexaton: so yea, limestone + rock salt -> sodium carbonate
+
+(7:33:10 PM) Jkenyonc: in chromaticraft you empower crystals by throwing them in liquid chroma with chroma berries and waiting
+(7:33:19 PM) Jkenyonc: you could add a bath recipe that does the same thing
+(7:33:25 PM) Jkenyonc: (it consumes the liquid chroma) takes 5 minutes
+(10:03:26 PM) Tesseract: Since normally it's like this:
+(10:03:50 PM) Tesseract: You put the liquid chroma down, you drop in 24 berries (They are consumed and the chroma takes the color of the berries)
+(10:04:05 PM) Tesseract: And then you put in the shards, for some period of time
+(10:04:09 PM) Tesseract: 5 mins or something
+(10:04:25 PM) Tesseract: Then, they react, and the liquid chroma turns white (default color) again
+(10:04:32 PM) Tesseract: And you get your boosted shards
+
+(5:56:24 PM) Retep: ah fuck yes
+(5:56:26 PM) Retep: hey greg http://nuclear.lu.se/database/masses/
+(5:56:53 PM) Retep: Put in _any_ element and you'll get the binding energy in electron volts
+(5:57:16 PM) Greg: including nonexisting ones?
+(5:57:46 PM) Retep: So basically, take the binding energy in electron volts, multiply by the number of atoms in a unit of mass
+(5:58:30 PM) Retep: which gives you the amount of energy you have to put in to pull the atoms apart in that unit of mass
+(5:59:36 PM) Retep: okay, binding energy is energy expended to pull the atom apart
+(5:59:47 PM) Retep: mass defect is the energy gained when the nucleus is formed
+(6:00:42 PM) Retep: The closer you get to Nickel-62, the lower the binding energy per nucleon becomes
+(6:01:00 PM) Retep: this is where the energy from splitting uranium or fusing hydrogen comes from
+(6:01:43 PM) Retep: errr, binding energy becomes higher closer to Nuckel 62
+(6:01:47 PM) Retep: *Nickel
+(6:04:08 PM) Retep: which actually would mean... replicating matter from protons/neutrons would give off energy
+(6:04:21 PM) Retep: while breaking down scrap into protons/neutrons would consume fucktons of energy
+(6:05:06 PM) Retep: You know how much energy a nuclear bomb gives off?
+(6:06:05 PM) Retep: that pales in comparison to the energy given off when forming atoms, and the energy required to pull apart atoms
+
+(2:49:29 PM) Retep: have some articles greg
+(2:49:31 PM) Retep: https://en.wikipedia.org/wiki/Nuclear_fission_product
+(2:49:34 PM) Retep: https://en.wikipedia.org/wiki/Fission_product_yield
+(2:49:38 PM) Retep: https://en.wikipedia.org/wiki/Fission_products_%28by_element%29
+(2:49:41 PM) Retep: https://en.wikipedia.org/wiki/Long-lived_fission_product
+(2:50:16 PM) Retep: https://en.wikipedia.org/wiki/Reprocessed_uranium
+(2:50:26 PM) Retep: https://en.wikipedia.org/wiki/Reactor-grade_plutonium(2:52:56 PM) Retep: oh, here's some really cool tables
+(2:52:57 PM) Retep: https://www-nds.iaea.org/wimsd/fpyield.htm
+Uranium 235 = 3 000 000 times Coal (120 000 HU) = 360 000 000 000 HU per Enriched Uranium as overall ratio, 9->1 Reactor Uranium, 9->1 again for Weapon Uranium
+Vibranium Neutron Reflectors with Infinite Durability and ~90% reflection efficiency.
+
+(11:11:02 PM) Retep: crude oil is about 30% alkanes
+(11:11:06 PM) Retep: 49% napthenes
+(11:11:10 PM) Retep: 15% aromatics
+(11:11:14 PM) Retep: and 6% asphaltics
+
+(11:28:56 PM) SpwnX: well, calcium carbonate can be turned into calcium oxide
+(11:29:00 PM) SpwnX: via heating
+(11:29:10 PM) SpwnX: (CaCO3 + heat -> CaO + CO2)
+(11:35:25 PM) SpwnX: a recipe would be 5 CaCO3 dust + 3 SiO2 dust + 1 gypsum dust
+(11:36:33 PM) SpwnX: for cement dust, then it is used on cf powder (1 cement dust, 2 sand and 3 gravel for 6 CF powder)
+Asbestos/Chrysotile
+
+(3:27:14 PM) Vexatos: simplified: you just need 1 Nitrogen (N2), 3 Hydrogen (H2), a pure magnetite catalyst and about 100m³ of space. Then about 300 bar and 500°C
+(3:27:35 PM) Vexatos: will get you 2 Ammonia
+
+(3:50:41 PM) Vexatos: because N2 + 3H2 -> 2NH3
+(3:51:12 PM) Vexatos: 2 NH3 + CO2 -> H2NCOONH4
+
+(8:22:58 PM) Vexatos: so yea, should produce
+(8:23:01 PM) Vexatos:  <Vexatos> From a normal refinery you get LPG, light oil, kerosene, diesel and heavy oil
+(8:23:07 PM) Vexatos:  <Vexatos> LPG being methant to butane
+(8:23:07 PM) Vexatos:  <Vexatos> light oil being pentane to octane
+(8:23:08 PM) Vexatos:  <Vexatos> kerosene is nonane to Tetradecane
+(8:23:13 PM) Vexatos:  <Vexatos> pentadecane to octadecane is diesel
+(8:23:13 PM) Vexatos:  <Vexatos> and anything above is heavy oil
+add helium extraction (like 1/20th) to oil destillation!
+
+Gem Cutting and Polishing for Ore Processing
+(11:29:41 AM) Retep: >In this process, a tiny sapphire seed crystal is dipped into a crucible made of the precious metal iridium or molybdenum,[46] containing molten alumina, and then slowly withdrawn upward at a rate of 1 to 100 mm per hour.
+(11:29:57 AM) Retep: oh hey, apparently people _do_ use iridium and molybdenum crucibles in reality
+(11:30:08 AM) Retep: in this case to create sapphires from alumina
+(11:30:41 AM) Retep: Maybe one day greg will realize that sapphire dust is just alumina dust and let us create sapphires from alumina dust
+
+(7:33:22 PM) Retep: > Steam cracker units are facilities in which a feedstock such as naphtha, liquefied petroleum gas (LPG), ethane, propane or butane is thermally cracked through the use of steam in a bank of pyrolysis furnaces to produce lighter hydrocarbons.
+(7:34:00 PM) Retep: come on greg, https://en.wikipedia.org/wiki/Cracking_(chemistry)
+
+(11:35:32 PM) Retep: You need to add the bayer process to turn bauxite into alumina
+(11:35:46 PM) Retep: and then from there electrolysis into aluminium
+(11:37:11 PM) Retep: well more specifically the Hall–Héroult process to turn alumina into aluminum
+(11:37:23 PM) Retep: >dissolving aluminium oxide (alumina) in molten cryolite, and electrolysing the molten salt bath
+(11:38:01 PM) Retep: >As natural cryolite is too rare to be used for this purpose, synthetic  sodium aluminium fluoride is produced from the common mineral fluorite.
+(11:38:08 PM) Retep: come on greg, give us a use for fluorite :D
+(11:40:16 PM) Retep: It'll also give you a reason to have a proper alumina material, instead of calling it "sapphire dust"
+
+(12:11:46 PM) Retep: just checking on your progress on the Czochralski proces
+(12:11:54 PM) Greg: Xd
+(12:12:31 PM) Retep: for silicon specifically
+(12:12:32 PM) Retep: >This process is normally performed in an inert atmosphere, such as argon, in an inert chamber, such as quartz.
+(12:12:42 PM) Retep: and you need High-purity, semiconductor-grade silicon (only a few parts per million of impurities)
+(12:13:04 PM) Greg: so I need a quartz crucible with argon gas?
+(12:13:37 PM) Greg: do helium or other noble gasses work too?
+(12:14:22 PM) Retep: anything that is inert
+(12:14:36 PM) Greg: air for sure isnt
+(12:14:38 PM) Retep: so other noble gases are probably fine too
+(12:16:14 PM) Greg: but the important thing is that it doesnt react with silicon, right?
+(12:20:40 PM) Retep: very important yes
+(12:21:24 PM) Retep: >Ferrosilicon,  an iron-silicon alloy that contains varying ratios of elemental silicon  and iron, accounts for about 80% of the world's production of elemental  silicon
+(12:21:25 PM) Retep: huh
+(12:21:34 PM) Retep: so they don't make it from silica typically
+(12:22:13 PM) Retep: >Metallurgical grade silicon is commercially prepared by the reaction of high-purity silica with wood, charcoal, and coal in an electric arc furnace using carbon electrodes. At temperatures over 1,900 °C (3,450 °F), the carbon in the aforementioned materials and the silicon undergo the chemical reaction:
+(12:22:18 PM) Retep: >SiO2 + 2 C ? Si + 2 CO
+(12:22:22 PM) Retep: Better write that down greg :D
+(12:22:42 PM) Retep: >Liquid silicon collects in the bottom of the furnace, which is then  drained and cooled. The silicon produced in this manner is called metallurgical grade silicon and is at least 98% pure.
+(12:23:00 PM) Retep: >silicon is the single most important additive to aluminium to improve its casting properties
+(12:24:55 PM) Retep: of course, for electronic grade silicon, you need a different process
+(12:25:36 PM) Retep: molten salt electrolysis of silica or other silicon compounds
+(12:28:09 PM) Retep: man, so many things react with silicon
+(12:31:52 PM) Retep: alternatively you can purify silicon using the siemens process
+(12:33:03 PM) Retep: where you first need trichlorosilane where "Trichlorosilane is produced by treating powdered metallurgical grade silicon with blowing hydrogen chloride at 300 °C"
+(12:34:33 PM) Retep: and then blow the trichlorosilane gas at 1150 °C over pure silicon seed rods until polycrystalline silicon forms
+(12:34:48 PM) Retep: okay, there's a lot of different methods to purify silicon
+(12:36:31 PM) Retep: You can have fun reading it if you want https://en.wikipedia.org/wiki/Silicon#Production
+(8:37:16 PM) Retep: Photolithography, also termed optical lithography or UV lithography, is a process used in microfabrication to pattern parts of a thin film or the bulk of a substrate. It uses light to transfer a geometric pattern from a photomask to a light-sensitive chemical "photoresist", or simply "resist," on the substrate.
+(8:37:30 PM) Retep: A series of chemical treatments  then either engraves the exposure pattern into, or enables deposition  of a new material in the desired pattern upon, the material underneath  the photo resist. For example, in complex integrated circuits, a modern CMOS wafer will go through the photolithographic cycle up to 50 times.
+(8:38:14 PM) Retep: https://upload.wikimedia.org/wikipedia/commons/b/b0/Photolithography_etching_process.svg
+(8:38:57 PM) Retep: anyway, after lithography, you'd then cut the wafer up, and get a random number of chips
+(8:39:33 PM) Retep: you'd also have a circuit board made from fibreglass with copper traces in it
+(8:39:53 PM) Retep: and you'd attach the chip to the circuit board to get a finished thing that you can use for stuff
+
+For ammonia production, it can be done in a major tech-tree related multiblock machine.
+The overall process can be the Haber process. Which takes nitrogen and hydrogen, uses the iron-based catalyst made from Fe, K2O, CaO, SiO2, and Al2O3, produces ammonia directly in high pressure and temperature.
+Ammonia can be very useful. The product of ammonia and acids can be made to fertilizers. Ammonium nitrite can be a poor man’s explosive. It is also the key reactant for nitric acid production.
+For nitric acid production, it can be done in the Ostwald process. The process can be devided into two steps.
+The first step takes ammonia and oxygen, uses platinum with thorium, produces nitrite monoxide and water.
+The second step can be simplified to producing nitric acid from nitrite monoxide, oxygen and water.
+Nitric acid can be used in making fertilizers and explosives including nitrocellulose, nitroglycerin, TNT and more.
+
+
+Could something like an Nd:YAG Rod fit?
+You could have a double crystallization crucible recipe:
+Yttrium Dust + Molten Aluminium + Oxygen ---> Yttrium Aluminium Garnet
+Tiny Neodymium Pile + Molten Yttrium Aluminium Garnet + [Helium, Neon or Argon] ---> Nd:YAG Boule
+(As far as Minecraft recipes go, this isn't dramatically far from the truth)
+Then you can cut or lathe to get the rods, perhaps forming thicker rods first for
+higher tier, which can then be cut or lathed down to multiple lower tier rods.
+
+
+
+============================
+Outputting Unknown Materials
+============================
+
+oreberryEssence
+
+dustHOPGraphite
+ingotHOPGraphite
+
+dustTough
+ingotTough
+
+ingotMana
+ingotInfinity
+ingotRunicSteel
+ingotCrystalMatrix
+ingotCosmicNeutronium
+
+ingotFiery
+ingotDemonic
+
+dustInfusedTeslatite
+
+
+
+============================
+Outputting Colors of unknown Materials
+============================
+Rod  -  RGB: 180, 180, 197  -  Paper Tool Rod;
+Rod  -  RGB: 78, 59, 113  -  Obsidian Tool Rod;
+Rod  -  RGB: 56, 113, 46  -  Cactus Tool Rod;
+Rod  -  RGB: 95, 95, 95  -  Stone Tool Rod;
+
+
+Dark  -  RGB: 22, 20, 19  -  Smokey Quartz;
+Unstable  -  RGB: 252, 252, 252  -  Mobius "Unstable/Stable" Ingot;
+Unstable  -  RGB: 252, 252, 252  -  Unstable Ingot;
+Unstable  -  RGB: 252, 252, 252  -  Semi-stable Nugget;
+Essence  -  RGB: 185, 162, 94  -  Gold Oreberry;
+Blueslime  -  RGB: 73, 127, 128  -  Slime Tool Rod;
+Slime  -  RGB: 81, 128, 73  -  Slime Tool Rod;
+Fluix  -  RGB: 88, 67, 115  -  Fluix Crystal;
+Fluix  -  RGB: 89, 73, 116  -  Pure Fluix Crystal;
+Fluix  -  RGB: 87, 71, 94  -  Fluix Dust;
+Fluix  -  RGB: 118, 94, 139  -  Fluix Pearl;
+HOPGraphite  -  RGB: 31, 31, 31  -  HOP Graphite Ingot;
+HOPGraphite  -  RGB: 26, 26, 26  -  HOP Graphite Dust;
+Gyubnera  -  RGB: 97, 96, 90  -  Crushed gyubnera ore;
+Gyubnera  -  RGB: 44, 41, 34  -  Crushed pufified gyubnera ore;
+Turpentine  -  RGB: 149, 152, 142  -  Turpentine cell;
+LeadPlumbate  -  RGB: 214, 63, 0  -  Red lead (minium);
+LithiumOxide  -  RGB: 244, 244, 254  -  Lithium oxide;
+MineralOil  -  RGB: 143, 142, 134  -  Mineral oil cell;
+SodiumSulfate  -  RGB: 241, 240, 230  -  Sodium sulfate;
+Acetylene  -  RGB: 124, 128, 127  -  Acetylene cell;
+PotassiumSulphate  -  RGB: 210, 210, 200  -  Potassium sulphate;
+Quicklime  -  RGB: 227, 233, 237  -  Quicklime;
+TungstenOxide  -  RGB: 220, 231, 39  -  Tungsten oxide;
+HotTungsten  -  RGB: 250, 250, 215  -  Hot tungsten plate;
+SodiumZeolite  -  RGB: 235, 241, 220  -  Sodium zeolite;
+HydrogenChloride  -  RGB: 139, 154, 125  -  Hydrogen chloride cell;
+SulfuricAnhydride  -  RGB: 140, 143, 136  -  Sulfuric anhydride cell;
+SodiumHydroxide  -  RGB: 229, 241, 243  -  Sodium hydroxide;
+PlatinumGroupSludge  -  RGB: 71, 71, 71  -  Platinum group metals sludge;
+PlatinumGroupSludge  -  RGB: 48, 48, 48  -  Tiny pile of platinum group metals sludge;
+NatriumHydroxideDissolvedInWater  -  RGB: 151, 156, 136  -  Natrium hydroxide solution cell;
+SodiumHydrogenSulfate  -  RGB: 217, 232, 215  -  Sodium hydrogen sulfate;
+TungsticAcid  -  RGB: 247, 222, 103  -  Tungstic acid;
+RubberTreeSap  -  RGB: 156, 155, 153  -  Rubber tree sap cell;
+IronOxide  -  RGB: 112, 9, 4  -  Iron oxide (III);
+IronOxide  -  RGB: 176, 27, 22  -  Tiny pile of iron oxide dust;
+Carborundum  -  RGB: 78, 79, 79  -  Carborundum dust;
+Basalz  -  RGB: 100, 81, 81  -  Basalz Powder;
+OleicAcid  -  RGB: 128, 148, 136  -  Oleic acid cell;
+Datolite  -  RGB: 213, 227, 194  -  Milled datolite;
+CablingColophony  -  RGB: 161, 153, 142  -  Cabling colophony cell;
+LiquidGlass  -  RGB: 110, 152, 153  -  Liquid glass cell;
+BoricAcid  -  RGB: 213, 221, 248  -  Boric acid;
+ManganeseOxide  -  RGB: 74, 48, 38  -  Tiny pile of manganese oxide dust;
+ManganeseOxide  -  RGB: 56, 31, 24  -  Manganese oxide;
+CalciumCarbide  -  RGB: 165, 174, 173  -  Calcium carbide;
+BoronCarbide  -  RGB: 153, 153, 153  -  Boron carbide;
+BoronCarbide  -  RGB: 153, 156, 151  -  Boron carbide electrode;
+Bischofite  -  RGB: 211, 214, 220  -  Milled bischofite;
+MagnesiumOxide  -  RGB: 241, 231, 239  -  Magnesium oxide
+IridiumAndSodiumOxide  -  RGB: 106, 106, 106  -  Iridium and sodium oxide;
+Irongraphite  -  RGB: 134, 133, 133  -  Irongraphite dust;
+OsmiumTetroxide  -  RGB: 150, 155, 155  -  Osmium tetroxide cell;
+FuelOil  -  RGB: 122, 107, 94  -  Fuel oil (masut) cell;
+Limemilk  -  RGB: 149, 147, 152  -  Limemilk cell;
+CalciumTungstate  -  RGB: 224, 220, 201  -  Calcium tungstate;
+CalciumChloride  -  RGB: 228, 231, 209  -  Calcium chloride;
+LithiumChloride  -  RGB: 212, 225, 224  -  Lithium chloride;
+SodiumZeoliteCoked  -  RGB: 32, 33, 30  -  Coked sodium zeolite;
+BlueVitriolDissolvedInWater  -  RGB: 110, 141, 157  -  Blue Vitriol water solution cell;
+SpruceResin  -  RGB: 161, 147, 116  -  Spruce resin cell;
+NickelSulfateDissolvedInWater  -  RGB: 124, 158, 113  -  Nickel sulfate water solution cell;
+AntimonyOxide  -  RGB: 233, 238, 190  -  Antimony oxide;
+SodiumPeroxide  -  RGB: 254, 247, 205  -  Sodium peroxide;
+SodiumPeroxide  -  RGB: 153, 155, 155  -  Sodium peroxide cell;
+SodiumAluminate  -  RGB: 225, 231, 245  -  Sodium aluminate;
+Trichlorosilane  -  RGB: 117, 144, 139  -  Trichlorosilane cell;
+SiliconTetrachloride  -  RGB: 110, 122, 114  -  Silicon tetrachloride cell;
+NatriumTungstateDissolvedInWater  -  RGB: 150, 151, 154  -  Natrium tungstate solution cell;
+
+DiamondCopper  -  RGB: 132, 104, 86  -  Enriched Copper Dust;
+EnrichedCopper  -  RGB: 138, 126, 95  -  Enriched Copper Ingot;
+Leather  -  RGB: 141, 65, 37  -  Leather;
+Dark  -  RGB: 22, 20, 19  -  Smokey Quartz;
+CrystalFlux  -  RGB: 187, 44, 53  -  Flux Crystal;
+Quicklime  -  RGB: 227, 233, 237  -  Quicklime;
+RubberTreeSap  -  RGB: 156, 155, 153  -  Rubber tree sap cell;
+Carborundum  -  RGB: 78, 79, 79  -  Carborundum dust;
+OsmiumTetroxide  -  RGB: 150, 155, 155  -  Osmium tetroxide cell;
+SodiumPeroxide  -  RGB: 153, 155, 155  -  Sodium peroxide cell;
+SodiumPeroxide  -  RGB: 254, 247, 205  -  Sodium peroxide;
+
+
+dustTinyManganeseOxide
+dustBischofite
+plateHotTungsten
+dustBoricAcid
+dustSodiumAluminate
+dustTungsticAcid
+cellNickelSulfateDissolvedInWater
+dustSodiumSulfate
+dustSodiumZeolite
+oreBischofite
+dustDatolite
+dustInfusedTeslatite
+dustMagnesiumOxide
+cellHydrogenChloride
+cellLimemilk
+dustIrongraphite
+dustSodiumZeoliteCoked
+cellAcetylene
+cellBlueVitriolDissolvedInWater
+dustAntimonyOxide
+cellSpruceResin
+ingotFiery
+cellTurpentine
+cellOleicAcid
+dustSodiumHydrogenSulfate
+cellNatriumTungstateDissolvedInWater
+dustIridiumAndSodiumOxide
+cellLiquidGlass
+dustBoronCarbide
+cellSiliconTetrachloride
+cellMineralOil
+dustLithiumChloride
+oreDatolite
+dustHOPGraphite
+dustTinyIronOxide
+cellNatriumHydroxideDissolvedInWater
+stickBoronCarbide
+ingotMana
+ingotHOPGraphite
+dustLeadPlumbate
+dustCalciumTungstate
+dustManganeseOxide
+dustTungstenOxide
+dustCalciumChloride
+cellFuelOil
+dustIronOxide
+dustPotassiumSulphate
+dustLithiumOxide
+dustSodiumHydroxide
+dustCalciumCarbide
+cellTrichlorosilane
+cellSulfuricAnhydride
+cellCablingColophony
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ingotAwesomeite
+ingotGelidEnderium
+dustInfusedTeslatite
+oreHeeInstabilityOrb
+ingotMangalloy
+oreHeeEndium
+gemGelid
+ingotImpureAwesomeite
+oreHeeStardust
+oreHeeEndPowder
+ingotPureAwesomeite
+oreHeeIgneousRock
+
+ingotTough
+dustInfusedTeslatite
+ingotInfinity
+ingotCrystalMatrix
+oreOilShale
+ingotRed_aurum
+ingotFiery
+ingotCosmicNeutronium
+dustHOPGraphite
+ingotMana
+ingotHOPGraphite
+ingotRunicSteel
+oreBituminousCoal
+dustGelatinPowder
+oreBogIron
+ingotDemonic
+oreRealgar
+oreAnthracite
+ingotDrulloy
+dustTough
+
+
+dustTinyManganeseOxide
+dustBischofite
+plateHotTungsten
+dustBoricAcid
+dustSodiumAluminate
+dustTungsticAcid
+cellNickelSulfateDissolvedInWater
+dustSodiumSulfate
+dustSodiumZeolite
+oreBischofite
+dustDatolite
+dustMagnesiumOxide
+cellHydrogenChloride
+cellLimemilk
+dustPorcelain
+dustIrongraphite
+dustSodiumZeoliteCoked
+cellAcetylene
+cellBlueVitriolDissolvedInWater
+dustAntimonyOxide
+cellSpruceResin
+cellTurpentine
+cellOleicAcid
+dustSodiumHydrogenSulfate
+crushedPurifiedGyubnera
+cellNatriumTungstateDissolvedInWater
+dustIridiumAndSodiumOxide
+cellLiquidGlass
+dustBoronCarbide
+cellSiliconTetrachloride
+cellMineralOil
+dustLithiumChloride
+oreDatolite
+dustTinyIronOxide
+cellNatriumHydroxideDissolvedInWater
+stickBoronCarbide
+ingotMana
+dustLeadPlumbate
+dustCalciumTungstate
+dustManganeseOxide
+dustTungstenOxide
+dustCalciumChloride
+cellFuelOil
+dustIronOxide
+dustPotassiumSulphate
+dustLithiumOxide
+dustSodiumHydroxide
+dustCalciumCarbide
+cellTrichlorosilane
+cellSulfuricAnhydride
+cellCablingColophony
+
+
+All the Rounding Errors for Plastic Stuffs someone sent me:
+
+gt.block.longdistpipe.01.3.name (Plastic - 1729728000) -> plastic 2666mb (Plastic - 1729295568)
+gt.multiitem.randomtools.30009.name (Plastic - 108108000) -> plastic 166mb (Plastic - 107675568)
+gt.multiitem.randomtools.5010.name (Plastic - 864864000) -> plastic 1333mb (Plastic - 864647784)
+gt.multiitem.randomtools.5013.name (Plastic - 864864000) -> plastic 1333mb (Plastic - 864647784)
+gt.multiitem.technological.29993.name (Lava - 810810000) -> lava 138mb (Lava - 805620816)
+gt.multiitem.technological.30000.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+gt.multiitem.technological.30012.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+gt.multitileentity.26060.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+gt.multitileentity.26061.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+gt.multitileentity.32014.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+gt.multitileentity.32058.name (Rubber - 264264000) -> molten.rubber 58mb (Rubber - 261261000)
+gt.multitileentity.32059.name (Plastic - 960960000) -> plastic 1481mb (Plastic - 960647688)
+gt.multitileentity.32468.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32469.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32470.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32471.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32472.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32473.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32474.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32475.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32476.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32477.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32478.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32479.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32480.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32481.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32482.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32483.name (ConstructionFoam - 108108000) -> ic2constructionfoam 16mb (ConstructionFoam - 103783680)
+gt.multitileentity.32709.name (Lava - 3243240000) -> lava 555mb (Lava - 3239996760)
+gt.multitileentity.32747.name (Plastic - 864864000) -> plastic 1333mb (Plastic - 864647784)
+gt.multitileentity.32766.name (Lava - 5189184000) -> lava 888mb (Lava - 5183994816)
+gt.multitileentity.6993.name (Plastic - 1873872000) -> plastic 2888mb (Plastic - 1873295424)
+gt.multitileentity.6994.name (Plastic - 1873872000) -> plastic 2888mb (Plastic - 1873295424)
+gt.multitileentity.6995.name (Plastic - 1873872000) -> plastic 2888mb (Plastic - 1873295424)
+gt.multitileentity.6996.name (Plastic - 1873872000) -> plastic 2888mb (Plastic - 1873295424)
+oredict.arrowGtPlasticAdamantine.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAdamantite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAdamantium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAlexandrite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAlmandine.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAluminiumAlloy.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAmazonite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAmber.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAmbrosium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAmericium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAmericium241.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAmethyst.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAmethystEnder.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAmordrine.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAndesite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAndradite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAntiAdamantium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAntiVibranium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAquamarine.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticArdite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticArsenic.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticAtlarus.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBalasRuby.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBamboo.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBasalt.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBedrock.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBedrockHSLAAlloy.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBeryllium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBetweenstone.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBixbite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBlazeQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBlueschist.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticBlueTopaz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticCarborundum.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticCarmot.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticCelenegil.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticCertusQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticCeruclase.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticChargedCertusQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticChert.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticChromiumDioxide.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticCobalt60.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticConductiveIron.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticContinuum.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticCraponite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDacite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDarkIron.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDarkMatter.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDeepIron.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDesh.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDesichalkos.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDiamantine.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDiamond.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDiamondIndustrial.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDioptase.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDiorite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDominicanAmber.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDreamwood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDuralumin.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticDuranium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticEclogite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticElectricalSteel.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticElectrumFlux.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticElvenDragonstone.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticElvenElementium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticElvenQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticElvorium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticEmeradic.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticEmerald.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticEmpty.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticEndium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticEndstone.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticEnergeticAlloy.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticEximite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticFirestone.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticFlint.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticForce.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticFrezarite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGabbro.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGaiaSpirit.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGlowstoneRefined.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGneiss.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGoshenite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGranite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGraniteBlack.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGraniteRed.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGravitite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGreatwood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGreenschist.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGreywacke.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticGrossular.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticHaderoth.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticHeliodor.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticHolystone.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticHSLASpringSteel.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticIce.name (Water - 144144000) -> water 222mb (Water - 143999856)
+oredict.arrowGtPlasticIgnatius.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticInfusedAir.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticInfusedEarth.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticInfusedEntropy.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticInfusedFire.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticInfusedOrder.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticInfusedWater.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticInolashite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticJade.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticJasper.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticKalendrite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticKanthal.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticKimberlite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticKomatiite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticLavenderQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticLivingrock.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticLivingwood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticManaDiamond.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticManaQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticManasteel.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticMarble.name (Calcite - 96096000) -> molten.calcite 21mb (Calcite - 94594500)
+oredict.arrowGtPlasticMarshmallow.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticMarsSand.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticMauftrium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticMaxixe.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticMigmatite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticMoonTurf.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticMorganite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticMuspelheimPower.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNaquadah.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNaquadahEnriched.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNaquadria.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNetherBrick.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNetherQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNetherrack.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNetherStar.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNichrome.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticNiflheimPower.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticObsidian.name (Lava - 144144000) -> lava 24mb (Lava - 140107968)
+oredict.arrowGtPlasticObsidianRefined.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticObsidianSteel.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticOlivine.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticOnyxBlack.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticOnyxRed.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticOpal.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticOrichalcum.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticOriharukon.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticOsmiridium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticOureclase.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPalis.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPalladium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPeanutWood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPetrifiedWood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPitstone.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPlastic.name (Plastic - 312312000) -> plastic 481mb (Plastic - 311999688)
+oredict.arrowGtPlasticPlutonium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPlutonium241.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPlutonium243.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPrismarine.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPrismarineDark.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPrometheum.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPulsatingIron.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticPyrope.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticQuartzBlack.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticQuartzite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticRedMatter.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticRedMeteor.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticRedQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticRedrock.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticRhyolite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticRoseGold.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticRubber.name (Rubber - 96096000) -> molten.rubber 21mb (Rubber - 94594500)
+oredict.arrowGtPlasticSanguinite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticShadowIron.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticShadowSteel.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticShale.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticShimmerwood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSiltstone.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSilverwood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSkyroot.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSlimyBone.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSmokeyQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSoularium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSpessartine.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSpinel.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSterlingSilver.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticSunnyQuartz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTanzanite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTartarite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTechnetium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTerrasteel.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticThorium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTitaniumAluminide.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTitaniumGold.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTitaniumIridium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTopaz.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTrinaquadalloy.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTrinitanium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTrinium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTritanium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticTungstenCarbide.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticUmber.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticUranium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticUranium235.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticUvarovite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticValonite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVibramantium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVibranium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVibraniumSilver.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVibraniumSteel.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVibrantAlloy.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVinteum.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVinteumPurified.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVoidCrystal.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVulcanite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticVyroxeres.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticWeedwood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticWood.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticWoodPolished.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticWoodRubber.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticWoodSealed.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticZanite.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticZircon.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtPlasticZirconium.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.arrowGtWoodIce.name (Water - 144144000) -> water 222mb (Water - 143999856)
+oredict.arrowGtWoodMarble.name (Calcite - 96096000) -> molten.calcite 21mb (Calcite - 94594500)
+oredict.arrowGtWoodObsidian.name (Lava - 144144000) -> lava 24mb (Lava - 140107968)
+oredict.arrowGtWoodPlastic.name (Plastic - 96096000) -> plastic 148mb (Plastic - 95999904)
+oredict.arrowGtWoodRubber.name (Rubber - 96096000) -> molten.rubber 21mb (Rubber - 94594500)
+oredict.blockDustAluminiumHydroxide.name (Alumina - 2084940000) -> molten.alumina 462mb (Alumina - 2081079000)
+oredict.blockDustTungsticAcid.name (TungstenTrioxide - 3335904000) -> molten.tungstentrioxide 740mb (TungstenTrioxide - 3333330000)
+oredict.blockDustVanadiumPentoxide.name (Vanadium - 833976000) -> molten.vanadium 185mb (Vanadium - 833332500)
+oredict.boltBlueSapphire.name (Alumina - 60810750) -> molten.alumina 13mb (Alumina - 58558500)
+oredict.boltGreenSapphire.name (Alumina - 60810750) -> molten.alumina 13mb (Alumina - 58558500)
+oredict.boltObsidian.name (Lava - 81081000) -> lava 13mb (Lava - 75891816)
+oredict.boltOrangeSapphire.name (Alumina - 60810750) -> molten.alumina 13mb (Alumina - 58558500)
+oredict.boltPlastic.name (Plastic - 54054000) -> plastic 83mb (Plastic - 53837784)
+oredict.boltPurpleSapphire.name (Alumina - 60810750) -> molten.alumina 13mb (Alumina - 58558500)
+oredict.boltRuby.name (Alumina - 60810750) -> molten.alumina 13mb (Alumina - 58558500)
+oredict.boltSapphire.name (Alumina - 60810750) -> molten.alumina 13mb (Alumina - 58558500)
+oredict.boltSteeleaf.name (Steel - 20270250) -> molten.steel 4mb (Steel - 18018000)
+oredict.boltYellowSapphire.name (Alumina - 60810750) -> molten.alumina 13mb (Alumina - 58558500)
+oredict.casingSmallObsidian.name (Lava - 324324000) -> lava 55mb (Lava - 321080760)
+oredict.casingSmallPlastic.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.chainObsidian.name (Lava - 648648000) -> lava 111mb (Lava - 647999352)
+oredict.chainPlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.chemtubeEmpty.name (Glass - 216216000) -> glass 333mb (Glass - 215999784)
+oredict.chunkGtPlastic.name (Plastic - 108108000) -> plastic 166mb (Plastic - 107675568)
+oredict.crushedCentrifugedAluminiumHydroxide.name (Alumina - 318532500) -> molten.alumina 70mb (Alumina - 315315000)
+oredict.crushedCentrifugedBlueSapphire.name (Alumina - 668918250) -> molten.alumina 148mb (Alumina - 666666000)
+oredict.crushedCentrifugedCassiterite.name (Tin - 668918250) -> molten.tin 148mb (Tin - 666666000)
+oredict.crushedCentrifugedGreenSapphire.name (Alumina - 668918250) -> molten.alumina 148mb (Alumina - 666666000)
+oredict.crushedCentrifugedOrangeSapphire.name (Alumina - 668918250) -> molten.alumina 148mb (Alumina - 666666000)
+oredict.crushedCentrifugedPurpleSapphire.name (Alumina - 668918250) -> molten.alumina 148mb (Alumina - 666666000)
+oredict.crushedCentrifugedPyrolusite.name (Manganese - 668918250) -> molten.manganese 148mb (Manganese - 666666000)
+oredict.crushedCentrifugedRuby.name (Alumina - 668918250) -> molten.alumina 148mb (Alumina - 666666000)
+oredict.crushedCentrifugedSapphire.name (Alumina - 668918250) -> molten.alumina 148mb (Alumina - 666666000)
+oredict.crushedCentrifugedTetrahedrite.name (Copper - 222972750) -> molten.copper 49mb (Copper - 220720500)
+oredict.crushedCentrifugedTinyAluminiumHydroxide.name (Alumina - 35392500) -> molten.alumina 7mb (Alumina - 31531500)
+oredict.crushedCentrifugedTinyAzurite.name (Copper - 11011000) -> molten.copper 2mb (Copper - 9009000)
+oredict.crushedCentrifugedTinyBlueSapphire.name (Alumina - 74324250) -> molten.alumina 16mb (Alumina - 72072000)
+oredict.crushedCentrifugedTinyCassiterite.name (Tin - 74324250) -> molten.tin 16mb (Tin - 72072000)
+oredict.crushedCentrifugedTinyChalcopyrite.name (Copper - 22022000) -> molten.copper 4mb (Copper - 18018000)
+oredict.crushedCentrifugedTinyChalk.name (Calcite - 66066000) -> molten.calcite 14mb (Calcite - 63063000)
+oredict.crushedCentrifugedTinyCinnabar.name (Mercury - 33033000) -> mercury 7mb (Mercury - 31531500)
+oredict.crushedCentrifugedTinyGalena.name (Lead - 33033000) -> molten.lead 7mb (Lead - 31531500)
+oredict.crushedCentrifugedTinyGreenSapphire.name (Alumina - 74324250) -> molten.alumina 16mb (Alumina - 72072000)
+oredict.crushedCentrifugedTinyMalachite.name (Copper - 16516500) -> molten.copper 3mb (Copper - 13513500)
+oredict.crushedCentrifugedTinyOrangeSapphire.name (Alumina - 74324250) -> molten.alumina 16mb (Alumina - 72072000)
+oredict.crushedCentrifugedTinyPurpleSapphire.name (Alumina - 74324250) -> molten.alumina 16mb (Alumina - 72072000)
+oredict.crushedCentrifugedTinyPyrolusite.name (Manganese - 74324250) -> molten.manganese 16mb (Manganese - 72072000)
+oredict.crushedCentrifugedTinyRuby.name (Alumina - 74324250) -> molten.alumina 16mb (Alumina - 72072000)
+oredict.crushedCentrifugedTinySapphire.name (Alumina - 74324250) -> molten.alumina 16mb (Alumina - 72072000)
+oredict.crushedCentrifugedTinyTetrahedrite.name (Copper - 24774750) -> molten.copper 5mb (Copper - 22522500)
+oredict.crushedCentrifugedTinyVanadiumPentoxide.name (Vanadium - 14157000) -> molten.vanadium 3mb (Vanadium - 13513500)
+oredict.crushedCentrifugedTinyYellowSapphire.name (Alumina - 74324250) -> molten.alumina 16mb (Alumina - 72072000)
+oredict.crushedCentrifugedVanadiumPentoxide.name (Vanadium - 127413000) -> molten.vanadium 28mb (Vanadium - 126126000)
+oredict.crushedCentrifugedYellowSapphire.name (Alumina - 668918250) -> molten.alumina 148mb (Alumina - 666666000)
+oredict.crushedPurifiedAluminiumHydroxide.name (Alumina - 289575000) -> molten.alumina 64mb (Alumina - 288288000)
+oredict.crushedPurifiedTinyAluminiumHydroxide.name (Alumina - 32175000) -> molten.alumina 7mb (Alumina - 31531500)
+oredict.crushedPurifiedTinyAzurite.name (Copper - 10010000) -> molten.copper 2mb (Copper - 9009000)
+oredict.crushedPurifiedTinyChalcopyrite.name (Copper - 20020000) -> molten.copper 4mb (Copper - 18018000)
+oredict.crushedPurifiedTinyChalk.name (Calcite - 60060000) -> molten.calcite 13mb (Calcite - 58558500)
+oredict.crushedPurifiedTinyCinnabar.name (Mercury - 30030000) -> mercury 6mb (Mercury - 27027000)
+oredict.crushedPurifiedTinyGalena.name (Lead - 30030000) -> molten.lead 6mb (Lead - 27027000)
+oredict.crushedPurifiedTinyMalachite.name (Copper - 15015000) -> molten.copper 3mb (Copper - 13513500)
+oredict.crushedPurifiedTinyVanadiumPentoxide.name (Vanadium - 12870000) -> molten.vanadium 2mb (Vanadium - 9009000)
+oredict.crushedPurifiedVanadiumPentoxide.name (Vanadium - 115830000) -> molten.vanadium 25mb (Vanadium - 112612500)
+oredict.dustAluminiumHydroxide.name (Alumina - 231660000) -> molten.alumina 51mb (Alumina - 229729500)
+oredict.dustDiv72AluminiumHydroxide.name (Alumina - 3217500) -> molten.alumina 0mb (Alumina - 0)
+oredict.dustDiv72Azurite.name (Copper - 1001000) -> molten.copper 0mb (Copper - 0)
+oredict.dustDiv72BlueSapphire.name (Alumina - 6756750) -> molten.alumina 1mb (Alumina - 4504500)
+oredict.dustDiv72Cassiterite.name (Tin - 6756750) -> molten.tin 1mb (Tin - 4504500)
+oredict.dustDiv72Chalcopyrite.name (Copper - 2002000) -> molten.copper 0mb (Copper - 0)
+oredict.dustDiv72Chalk.name (Calcite - 6006000) -> molten.calcite 1mb (Calcite - 4504500)
+oredict.dustDiv72Cinnabar.name (Mercury - 3003000) -> mercury 0mb (Mercury - 0)
+oredict.dustDiv72ConstructionFoam.name (ConstructionFoam - 9009000) -> ic2constructionfoam 1mb (ConstructionFoam - 6486480)
+oredict.dustDiv72FerricChloride.name (FerrousChloride - 6756750) -> molten.ferrouschloride 1mb (FerrousChloride - 4504500)
+oredict.dustDiv72Galena.name (Lead - 3003000) -> molten.lead 0mb (Lead - 0)
+oredict.dustDiv72Glass.name (Glass - 9009000) -> glass 13mb (Glass - 8432424)
+oredict.dustDiv72GreenSapphire.name (Alumina - 6756750) -> molten.alumina 1mb (Alumina - 4504500)
+oredict.dustDiv72Ice.name (Water - 9009000) -> water 13mb (Water - 8432424)
+oredict.dustDiv72Malachite.name (Copper - 1501500) -> molten.copper 0mb (Copper - 0)
+oredict.dustDiv72Marble.name (Calcite - 6006000) -> molten.calcite 1mb (Calcite - 4504500)
+oredict.dustDiv72Obsidian.name (Lava - 9009000) -> lava 1mb (Lava - 5837832)
+oredict.dustDiv72OrangeSapphire.name (Alumina - 6756750) -> molten.alumina 1mb (Alumina - 4504500)
+oredict.dustDiv72Plastic.name (Plastic - 6006000) -> plastic 9mb (Plastic - 5837832)
+oredict.dustDiv72PurpleSapphire.name (Alumina - 6756750) -> molten.alumina 1mb (Alumina - 4504500)
+oredict.dustDiv72Pyrolusite.name (Manganese - 6756750) -> molten.manganese 1mb (Manganese - 4504500)
+oredict.dustDiv72Rubber.name (Rubber - 6006000) -> molten.rubber 1mb (Rubber - 4504500)
+oredict.dustDiv72Ruby.name (Alumina - 6756750) -> molten.alumina 1mb (Alumina - 4504500)
+oredict.dustDiv72Sapphire.name (Alumina - 6756750) -> molten.alumina 1mb (Alumina - 4504500)
+oredict.dustDiv72Snow.name (Water - 9009000) -> water 13mb (Water - 8432424)
+oredict.dustDiv72Steeleaf.name (Steel - 2252250) -> molten.steel 0mb (Steel - 0)
+oredict.dustDiv72Tetrahedrite.name (Copper - 2252250) -> molten.copper 0mb (Copper - 0)
+oredict.dustDiv72TungsticAcid.name (TungstenTrioxide - 5148000) -> molten.tungstentrioxide 1mb (TungstenTrioxide - 4504500)
+oredict.dustDiv72VanadiumPentoxide.name (Vanadium - 1287000) -> molten.vanadium 0mb (Vanadium - 0)
+oredict.dustDiv72YellowSapphire.name (Alumina - 6756750) -> molten.alumina 1mb (Alumina - 4504500)
+oredict.dustObsidian.name (Lava - 648648000) -> lava 111mb (Lava - 647999352)
+oredict.dustPlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.dustSmallAluminiumHydroxide.name (Alumina - 57915000) -> molten.alumina 12mb (Alumina - 54054000)
+oredict.dustSmallObsidian.name (Lava - 162162000) -> lava 27mb (Lava - 157621464)
+oredict.dustSmallPlastic.name (Plastic - 108108000) -> plastic 166mb (Plastic - 107675568)
+oredict.dustSmallTungsticAcid.name (TungstenTrioxide - 92664000) -> molten.tungstentrioxide 20mb (TungstenTrioxide - 90090000)
+oredict.dustSmallVanadiumPentoxide.name (Vanadium - 23166000) -> molten.vanadium 5mb (Vanadium - 22522500)
+oredict.dustTinyAluminiumHydroxide.name (Alumina - 25740000) -> molten.alumina 5mb (Alumina - 22522500)
+oredict.dustTinyAzurite.name (Copper - 8008000) -> molten.copper 1mb (Copper - 4504500)
+oredict.dustTinyChalcopyrite.name (Copper - 16016000) -> molten.copper 3mb (Copper - 13513500)
+oredict.dustTinyChalk.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.dustTinyCinnabar.name (Mercury - 24024000) -> mercury 5mb (Mercury - 22522500)
+oredict.dustTinyConstructionFoam.name (ConstructionFoam - 72072000) -> ic2constructionfoam 11mb (ConstructionFoam - 71351280)
+oredict.dustTinyGalena.name (Lead - 24024000) -> molten.lead 5mb (Lead - 22522500)
+oredict.dustTinyGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.dustTinyIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.dustTinyMalachite.name (Copper - 12012000) -> molten.copper 2mb (Copper - 9009000)
+oredict.dustTinyMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.dustTinyObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.dustTinyPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.dustTinyRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.dustTinySnow.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.dustTinyTungsticAcid.name (TungstenTrioxide - 41184000) -> molten.tungstentrioxide 9mb (TungstenTrioxide - 40540500)
+oredict.dustTinyVanadiumPentoxide.name (Vanadium - 10296000) -> molten.vanadium 2mb (Vanadium - 9009000)
+oredict.dustTungsticAcid.name (TungstenTrioxide - 370656000) -> molten.tungstentrioxide 82mb (TungstenTrioxide - 369369000)
+oredict.dustVanadiumPentoxide.name (Vanadium - 92664000) -> molten.vanadium 20mb (Vanadium - 90090000)
+oredict.foilPlastic.name (Plastic - 108108000) -> plastic 166mb (Plastic - 107675568)
+oredict.gearGtObsidian.name (Lava - 2594592000) -> lava 444mb (Lava - 2591997408)
+oredict.gearGtPlastic.name (Plastic - 1729728000) -> plastic 2666mb (Plastic - 1729295568)
+oredict.gearGtSmallObsidian.name (Lava - 648648000) -> lava 111mb (Lava - 647999352)
+oredict.gearGtSmallPlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.ingotDoublePlastic.name (Plastic - 864864000) -> plastic 1333mb (Plastic - 864647784)
+oredict.ingotPlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.ingotQuadruplePlastic.name (Plastic - 1729728000) -> plastic 2666mb (Plastic - 1729295568)
+oredict.ingotQuintuplePlastic.name (Plastic - 2162160000) -> plastic 3333mb (Plastic - 2161943784)
+oredict.nuggetPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.nuggetRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.plantGtBerryAluminiumHydroxide.name (Alumina - 25740000) -> molten.alumina 5mb (Alumina - 22522500)
+oredict.plantGtBerryAzurite.name (Copper - 8008000) -> molten.copper 1mb (Copper - 4504500)
+oredict.plantGtBerryChalcopyrite.name (Copper - 16016000) -> molten.copper 3mb (Copper - 13513500)
+oredict.plantGtBerryChalk.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plantGtBerryCinnabar.name (Mercury - 24024000) -> mercury 5mb (Mercury - 22522500)
+oredict.plantGtBerryConstructionFoam.name (ConstructionFoam - 72072000) -> ic2constructionfoam 11mb (ConstructionFoam - 71351280)
+oredict.plantGtBerryGalena.name (Lead - 24024000) -> molten.lead 5mb (Lead - 22522500)
+oredict.plantGtBerryGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.plantGtBerryIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtBerryLava.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plantGtBerryMalachite.name (Copper - 12012000) -> molten.copper 2mb (Copper - 9009000)
+oredict.plantGtBerryMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plantGtBerryObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plantGtBerryPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.plantGtBerryRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.plantGtBerrySnow.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtBerryTungsticAcid.name (TungstenTrioxide - 41184000) -> molten.tungstentrioxide 9mb (TungstenTrioxide - 40540500)
+oredict.plantGtBerryVanadiumPentoxide.name (Vanadium - 10296000) -> molten.vanadium 2mb (Vanadium - 9009000)
+oredict.plantGtBerryWater.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtBerryWaterDistilled.name (WaterDistilled - 72072000) -> ic2distilledwater 111mb (WaterDistilled - 71999928)
+oredict.plantGtBlossomAluminiumHydroxide.name (Alumina - 25740000) -> molten.alumina 5mb (Alumina - 22522500)
+oredict.plantGtBlossomAzurite.name (Copper - 8008000) -> molten.copper 1mb (Copper - 4504500)
+oredict.plantGtBlossomChalcopyrite.name (Copper - 16016000) -> molten.copper 3mb (Copper - 13513500)
+oredict.plantGtBlossomChalk.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plantGtBlossomCinnabar.name (Mercury - 24024000) -> mercury 5mb (Mercury - 22522500)
+oredict.plantGtBlossomConstructionFoam.name (ConstructionFoam - 72072000) -> ic2constructionfoam 11mb (ConstructionFoam - 71351280)
+oredict.plantGtBlossomGalena.name (Lead - 24024000) -> molten.lead 5mb (Lead - 22522500)
+oredict.plantGtBlossomGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.plantGtBlossomIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtBlossomLava.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plantGtBlossomMalachite.name (Copper - 12012000) -> molten.copper 2mb (Copper - 9009000)
+oredict.plantGtBlossomMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plantGtBlossomObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plantGtBlossomPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.plantGtBlossomRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.plantGtBlossomSnow.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtBlossomTungsticAcid.name (TungstenTrioxide - 41184000) -> molten.tungstentrioxide 9mb (TungstenTrioxide - 40540500)
+oredict.plantGtBlossomVanadiumPentoxide.name (Vanadium - 10296000) -> molten.vanadium 2mb (Vanadium - 9009000)
+oredict.plantGtBlossomWater.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtBlossomWaterDistilled.name (WaterDistilled - 72072000) -> ic2distilledwater 111mb (WaterDistilled - 71999928)
+oredict.plantGtFiberAluminiumHydroxide.name (Alumina - 25740000) -> molten.alumina 5mb (Alumina - 22522500)
+oredict.plantGtFiberAzurite.name (Copper - 8008000) -> molten.copper 1mb (Copper - 4504500)
+oredict.plantGtFiberChalcopyrite.name (Copper - 16016000) -> molten.copper 3mb (Copper - 13513500)
+oredict.plantGtFiberChalk.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plantGtFiberCinnabar.name (Mercury - 24024000) -> mercury 5mb (Mercury - 22522500)
+oredict.plantGtFiberConstructionFoam.name (ConstructionFoam - 72072000) -> ic2constructionfoam 11mb (ConstructionFoam - 71351280)
+oredict.plantGtFiberGalena.name (Lead - 24024000) -> molten.lead 5mb (Lead - 22522500)
+oredict.plantGtFiberGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.plantGtFiberIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtFiberLava.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plantGtFiberMalachite.name (Copper - 12012000) -> molten.copper 2mb (Copper - 9009000)
+oredict.plantGtFiberMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plantGtFiberObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plantGtFiberPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.plantGtFiberRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.plantGtFiberSnow.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtFiberTungsticAcid.name (TungstenTrioxide - 41184000) -> molten.tungstentrioxide 9mb (TungstenTrioxide - 40540500)
+oredict.plantGtFiberVanadiumPentoxide.name (Vanadium - 10296000) -> molten.vanadium 2mb (Vanadium - 9009000)
+oredict.plantGtFiberWater.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtFiberWaterDistilled.name (WaterDistilled - 72072000) -> ic2distilledwater 111mb (WaterDistilled - 71999928)
+oredict.plantGtTwigAluminiumHydroxide.name (Alumina - 25740000) -> molten.alumina 5mb (Alumina - 22522500)
+oredict.plantGtTwigAzurite.name (Copper - 8008000) -> molten.copper 1mb (Copper - 4504500)
+oredict.plantGtTwigChalcopyrite.name (Copper - 16016000) -> molten.copper 3mb (Copper - 13513500)
+oredict.plantGtTwigChalk.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plantGtTwigCinnabar.name (Mercury - 24024000) -> mercury 5mb (Mercury - 22522500)
+oredict.plantGtTwigConstructionFoam.name (ConstructionFoam - 72072000) -> ic2constructionfoam 11mb (ConstructionFoam - 71351280)
+oredict.plantGtTwigGalena.name (Lead - 24024000) -> molten.lead 5mb (Lead - 22522500)
+oredict.plantGtTwigGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.plantGtTwigIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtTwigLava.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plantGtTwigMalachite.name (Copper - 12012000) -> molten.copper 2mb (Copper - 9009000)
+oredict.plantGtTwigMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plantGtTwigObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plantGtTwigPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.plantGtTwigRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.plantGtTwigSnow.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtTwigTungsticAcid.name (TungstenTrioxide - 41184000) -> molten.tungstentrioxide 9mb (TungstenTrioxide - 40540500)
+oredict.plantGtTwigVanadiumPentoxide.name (Vanadium - 10296000) -> molten.vanadium 2mb (Vanadium - 9009000)
+oredict.plantGtTwigWater.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plantGtTwigWaterDistilled.name (WaterDistilled - 72072000) -> ic2distilledwater 111mb (WaterDistilled - 71999928)
+oredict.plantGtWartAluminiumHydroxide.name (Alumina - 57915000) -> molten.alumina 12mb (Alumina - 54054000)
+oredict.plantGtWartLava.name (Lava - 162162000) -> lava 27mb (Lava - 157621464)
+oredict.plantGtWartObsidian.name (Lava - 162162000) -> lava 27mb (Lava - 157621464)
+oredict.plantGtWartPlastic.name (Plastic - 108108000) -> plastic 166mb (Plastic - 107675568)
+oredict.plantGtWartTungsticAcid.name (TungstenTrioxide - 92664000) -> molten.tungstentrioxide 20mb (TungstenTrioxide - 90090000)
+oredict.plantGtWartVanadiumPentoxide.name (Vanadium - 23166000) -> molten.vanadium 5mb (Vanadium - 22522500)
+oredict.plateCurvedObsidian.name (Lava - 648648000) -> lava 111mb (Lava - 647999352)
+oredict.plateCurvedPlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.plateDoublePlastic.name (Plastic - 864864000) -> plastic 1333mb (Plastic - 864647784)
+oredict.plateGemTinyAzurite.name (Copper - 8008000) -> molten.copper 1mb (Copper - 4504500)
+oredict.plateGemTinyGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.plateGemTinyIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.plateGemTinyMalachite.name (Copper - 12012000) -> molten.copper 2mb (Copper - 9009000)
+oredict.plateObsidian.name (Lava - 648648000) -> lava 111mb (Lava - 647999352)
+oredict.platePlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.plateQuadruplePlastic.name (Plastic - 1729728000) -> plastic 2666mb (Plastic - 1729295568)
+oredict.plateQuintuplePlastic.name (Plastic - 2162160000) -> plastic 3333mb (Plastic - 2161943784)
+oredict.plateTinyMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.plateTinyObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.plateTinyPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.plateTinyRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.ringObsidian.name (Lava - 162162000) -> lava 27mb (Lava - 157621464)
+oredict.ringPlastic.name (Plastic - 108108000) -> plastic 166mb (Plastic - 107675568)
+oredict.rotorObsidian.name (Lava - 2756754000) -> lava 472mb (Lava - 2755456704)
+oredict.rotorPlastic.name (Plastic - 1837836000) -> plastic 2833mb (Plastic - 1837619784)
+oredict.roundGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.roundIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.roundMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.roundObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.roundPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.roundRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.scrapGtAluminiumHydroxide.name (Alumina - 25740000) -> molten.alumina 5mb (Alumina - 22522500)
+oredict.scrapGtAzurite.name (Copper - 8008000) -> molten.copper 1mb (Copper - 4504500)
+oredict.scrapGtChalcopyrite.name (Copper - 16016000) -> molten.copper 3mb (Copper - 13513500)
+oredict.scrapGtChalk.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.scrapGtCinnabar.name (Mercury - 24024000) -> mercury 5mb (Mercury - 22522500)
+oredict.scrapGtConstructionFoam.name (ConstructionFoam - 72072000) -> ic2constructionfoam 11mb (ConstructionFoam - 71351280)
+oredict.scrapGtGalena.name (Lead - 24024000) -> molten.lead 5mb (Lead - 22522500)
+oredict.scrapGtGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.scrapGtIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.scrapGtMalachite.name (Copper - 12012000) -> molten.copper 2mb (Copper - 9009000)
+oredict.scrapGtMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.scrapGtObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.scrapGtPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.scrapGtRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.scrapGtSnow.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.scrapGtTungsticAcid.name (TungstenTrioxide - 41184000) -> molten.tungstentrioxide 9mb (TungstenTrioxide - 40540500)
+oredict.scrapGtVanadiumPentoxide.name (Vanadium - 10296000) -> molten.vanadium 2mb (Vanadium - 9009000)
+oredict.screwAzurite.name (Copper - 8008000) -> molten.copper 1mb (Copper - 4504500)
+oredict.screwGlass.name (Glass - 72072000) -> glass 111mb (Glass - 71999928)
+oredict.screwIce.name (Water - 72072000) -> water 111mb (Water - 71999928)
+oredict.screwMalachite.name (Copper - 12012000) -> molten.copper 2mb (Copper - 9009000)
+oredict.screwMarble.name (Calcite - 48048000) -> molten.calcite 10mb (Calcite - 45045000)
+oredict.screwObsidian.name (Lava - 72072000) -> lava 12mb (Lava - 70053984)
+oredict.screwPlastic.name (Plastic - 48048000) -> plastic 74mb (Plastic - 47999952)
+oredict.screwRubber.name (Rubber - 48048000) -> molten.rubber 10mb (Rubber - 45045000)
+oredict.springPlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.springSmallPlastic.name (Plastic - 108108000) -> plastic 166mb (Plastic - 107675568)
+oredict.stickLongObsidian.name (Lava - 648648000) -> lava 111mb (Lava - 647999352)
+oredict.stickLongPlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.stickObsidian.name (Lava - 324324000) -> lava 55mb (Lava - 321080760)
+oredict.stickPlastic.name (Plastic - 216216000) -> plastic 333mb (Plastic - 215999784)
+oredict.toolHeadArrowIce.name (Water - 144144000) -> water 222mb (Water - 143999856)
+oredict.toolHeadArrowMarble.name (Calcite - 96096000) -> molten.calcite 21mb (Calcite - 94594500)
+oredict.toolHeadArrowObsidian.name (Lava - 144144000) -> lava 24mb (Lava - 140107968)
+oredict.toolHeadArrowPlastic.name (Plastic - 96096000) -> plastic 148mb (Plastic - 95999904)
+oredict.toolHeadArrowRubber.name (Rubber - 96096000) -> molten.rubber 21mb (Rubber - 94594500)
+oredict.toolHeadAxeGlass.name (Glass - 1873872000) -> glass 2888mb (Glass - 1873295424)
+oredict.toolHeadAxeIce.name (Water - 1873872000) -> water 2888mb (Water - 1873295424)
+oredict.toolHeadAxeMarble.name (Calcite - 1249248000) -> molten.calcite 277mb (Calcite - 1247746500)
+oredict.toolHeadAxeObsidian.name (Lava - 1873872000) -> lava 320mb (Lava - 1868106240)
+oredict.toolHeadAxePlastic.name (Plastic - 1249248000) -> plastic 1925mb (Plastic - 1248647400)
+oredict.toolHeadAxeRubber.name (Rubber - 1249248000) -> molten.rubber 277mb (Rubber - 1247746500)
+oredict.toolHeadHammerObsidian.name (Lava - 3891888000) -> lava 666mb (Lava - 3887996112)
+oredict.toolHeadHoeGlass.name (Glass - 1225224000) -> glass 1888mb (Glass - 1224647424)
+oredict.toolHeadHoeIce.name (Water - 1225224000) -> water 1888mb (Water - 1224647424)
+oredict.toolHeadHoeMarble.name (Calcite - 816816000) -> molten.calcite 181mb (Calcite - 815314500)
+oredict.toolHeadHoeObsidian.name (Lava - 1225224000) -> lava 209mb (Lava - 1220106888)
+oredict.toolHeadHoePlastic.name (Plastic - 816816000) -> plastic 1259mb (Plastic - 816647832)
+oredict.toolHeadHoeRubber.name (Rubber - 816816000) -> molten.rubber 181mb (Rubber - 815314500)
+oredict.toolHeadPickaxeGlass.name (Glass - 1873872000) -> glass 2888mb (Glass - 1873295424)
+oredict.toolHeadPickaxeIce.name (Water - 1873872000) -> water 2888mb (Water - 1873295424)
+oredict.toolHeadPickaxeMarble.name (Calcite - 1249248000) -> molten.calcite 277mb (Calcite - 1247746500)
+oredict.toolHeadPickaxeObsidian.name (Lava - 1873872000) -> lava 320mb (Lava - 1868106240)
+oredict.toolHeadPickaxePlastic.name (Plastic - 1249248000) -> plastic 1925mb (Plastic - 1248647400)
+oredict.toolHeadPickaxeRubber.name (Rubber - 1249248000) -> molten.rubber 277mb (Rubber - 1247746500)
+oredict.toolHeadPlowGlass.name (Glass - 2522520000) -> glass 3888mb (Glass - 2521943424)
+oredict.toolHeadPlowIce.name (Water - 2522520000) -> water 3888mb (Water - 2521943424)
+oredict.toolHeadPlowMarble.name (Calcite - 1681680000) -> molten.calcite 373mb (Calcite - 1680178500)
+oredict.toolHeadPlowObsidian.name (Lava - 2522520000) -> lava 432mb (Lava - 2521943424)
+oredict.toolHeadPlowPlastic.name (Plastic - 1681680000) -> plastic 2592mb (Plastic - 1681295616)
+oredict.toolHeadPlowRubber.name (Rubber - 1681680000) -> molten.rubber 373mb (Rubber - 1680178500)
+oredict.toolHeadRawArrowObsidian.name (Lava - 162162000) -> lava 27mb (Lava - 157621464)
+oredict.toolHeadRawArrowPlastic.name (Plastic - 108108000) -> plastic 166mb (Plastic - 107675568)
+oredict.toolHeadRawAxeObsidian.name (Lava - 1945944000) -> lava 333mb (Lava - 1943998056)
+oredict.toolHeadRawHoeObsidian.name (Lava - 1297296000) -> lava 222mb (Lava - 1295998704)
+oredict.toolHeadRawHoePlastic.name (Plastic - 864864000) -> plastic 1333mb (Plastic - 864647784)
+oredict.toolHeadRawPickaxeObsidian.name (Lava - 1945944000) -> lava 333mb (Lava - 1943998056)
+oredict.toolHeadRawPlowObsidian.name (Lava - 2594592000) -> lava 444mb (Lava - 2591997408)
+oredict.toolHeadRawPlowPlastic.name (Plastic - 1729728000) -> plastic 2666mb (Plastic - 1729295568)
+oredict.toolHeadRawShovelObsidian.name (Lava - 648648000) -> lava 111mb (Lava - 647999352)
+oredict.toolHeadRawShovelPlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.toolHeadRawSpadeObsidian.name (Lava - 648648000) -> lava 111mb (Lava - 647999352)
+oredict.toolHeadRawSpadePlastic.name (Plastic - 432432000) -> plastic 666mb (Plastic - 431999568)
+oredict.toolHeadRawSwordObsidian.name (Lava - 1297296000) -> lava 222mb (Lava - 1295998704)
+oredict.toolHeadRawSwordPlastic.name (Plastic - 864864000) -> plastic 1333mb (Plastic - 864647784)
+oredict.toolHeadShovelGlass.name (Glass - 576576000) -> glass 888mb (Glass - 575999424)
+oredict.toolHeadShovelIce.name (Water - 576576000) -> water 888mb (Water - 575999424)
+oredict.toolHeadShovelMarble.name (Calcite - 384384000) -> molten.calcite 85mb (Calcite - 382882500)
+oredict.toolHeadShovelObsidian.name (Lava - 576576000) -> lava 98mb (Lava - 572107536)
+oredict.toolHeadShovelPlastic.name (Plastic - 384384000) -> plastic 592mb (Plastic - 383999616)
+oredict.toolHeadShovelRubber.name (Rubber - 384384000) -> molten.rubber 85mb (Rubber - 382882500)
+oredict.toolHeadSpadeGlass.name (Glass - 576576000) -> glass 888mb (Glass - 575999424)
+oredict.toolHeadSpadeIce.name (Water - 576576000) -> water 888mb (Water - 575999424)
+oredict.toolHeadSpadeMarble.name (Calcite - 384384000) -> molten.calcite 85mb (Calcite - 382882500)
+oredict.toolHeadSpadeObsidian.name (Lava - 576576000) -> lava 98mb (Lava - 572107536)
+oredict.toolHeadSpadePlastic.name (Plastic - 384384000) -> plastic 592mb (Plastic - 383999616)
+oredict.toolHeadSpadeRubber.name (Rubber - 384384000) -> molten.rubber 85mb (Rubber - 382882500)
+oredict.toolHeadSwordGlass.name (Glass - 1225224000) -> glass 1888mb (Glass - 1224647424)
+oredict.toolHeadSwordIce.name (Water - 1225224000) -> water 1888mb (Water - 1224647424)
+oredict.toolHeadSwordMarble.name (Calcite - 816816000) -> molten.calcite 181mb (Calcite - 815314500)
+oredict.toolHeadSwordObsidian.name (Lava - 1225224000) -> lava 209mb (Lava - 1220106888)
+oredict.toolHeadSwordPlastic.name (Plastic - 816816000) -> plastic 1259mb (Plastic - 816647832)
+oredict.toolHeadSwordRubber.name (Rubber - 816816000) -> molten.rubber 181mb (Rubber - 815314500)
+oredict.wireFinePlastic.name (Plastic - 54054000) -> plastic 83mb (Plastic - 53837784)
+oredict.wireFineSteeleaf.name (Steel - 20270250) -> molten.steel 4mb (Steel - 18018000)
+Red Sand (Glass - 432432000) -> glass 666mb (Glass - 431999568)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

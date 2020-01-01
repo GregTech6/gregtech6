@@ -2403,6 +2403,7 @@ public class MT {
 			Graphite                        .addOreByProducts(C                     );
 			CaCO3                           .addOreByProducts(OREMATS.Malachite     );
 			OREMATS.Gypsum                  .addOreByProducts(S                     );
+			OREMATS.Borax                   .addOreByProducts(B                     );
 			Netherrack                      .addOreByProducts(S                     );
 			Flint                           .addOreByProducts(Obsidian              );
 			NaNO3                           .addOreByProducts(KNO3                  , Niter                     );

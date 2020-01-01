@@ -837,8 +837,6 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Fusion.addRecipe1(F, -8192, 1690, ST.tag(2), FL.array(MT.He_3  .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (2*U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 1690L*8192L*16L);
 		RM.Fusion.addRecipe1(F, -8192,  736, ST.tag(2), FL.array(MT.He    .gas   (U  , T), MT.Be_8.liquid(U  , T)), FL.array(MT.C     .liquid(  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber(  736L*8192L*16L);
 		RM.Fusion.addRecipe1(F, -8192,  716, ST.tag(2), FL.array(MT.He    .gas   (U  , T), MT.C   .liquid(U  , T)), FL.array(MT.O     .gas   (  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber(  716L*8192L*16L);
-		
-		
 		RM.Fusion.addRecipe1(F, -8192, 1956, ST.tag(2), FL.array(MT.Ad    .liquid(U  , T), MT.Be_7.liquid(U  , T)), FL.array(MT.W     .liquid(  U , F), MT.He    .gas   (16*U, F), MT.He_3  .gas   (24*U, F), MT.T     .gas   (24*U, F)), OP.dust.mat(MT.Vb, 1)).setSpecialNumber(94956L*8192L*16L);
 		
 		
