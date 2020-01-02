@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.12.00: (Not released yet, this is probably the last major Version before I start my own Game, unless I screw up Releases again and need Quickfixes because tired or something, this should come out around New Years Day or slightly after, Explosions for Reactors are gonna be enabled.)
 [NOTE] I will definitely still add the WIP things before I leave most of Minecraft behind, don't worry. ^^
+[FIXED] A long going Bug in the Steam Engines that made it impossible to run them at their upper Limit. I would still not recommend running them that fast but I cant tell you what not to do.
 [WIP] Fuel -> Rotation - Engine
 [WIP] Multiblock Heat Exchanger
 [WIP] A Mold-Extender for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.

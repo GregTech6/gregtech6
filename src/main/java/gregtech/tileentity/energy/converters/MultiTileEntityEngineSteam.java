@@ -150,12 +150,16 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 				if (mTimer % 600 == 5) doDefaultStructuralChecks();
 			}
 			
-			// Well the Engine stops if it has too much Steam and just vents everything.
+			// Well the Engine stops if it has too much Steam and just vents everything, unless it freshly entered the State.
 			if (mEnergy >= mCapacity) {
 				mEnergy = mCapacity - 1;
-				mStopped = T;
-				mTank.setEmpty();
-				UT.Sounds.send(SFX.MC_FIZZ, this);
+				if (mState > 30) {
+					mStopped = T;
+					mTank.setEmpty();
+					UT.Sounds.send(SFX.MC_FIZZ, this);
+				} else {
+					mState = 31;
+				}
 			}
 			
 			// Release the Energy when inactive.
