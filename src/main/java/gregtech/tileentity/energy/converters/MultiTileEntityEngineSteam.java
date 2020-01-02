@@ -78,8 +78,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 		if (aNBT.hasKey(NBT_OUTPUT)) mOutput = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
-		mTank.readFromNBT(aNBT, NBT_TANK+"."+0);
-		mTank.setCapacity(STEAM_PER_WATER * mOutput);
+		mTank.readFromNBT(aNBT, NBT_TANK+"."+0).setCapacity(STEAM_PER_WATER * mOutput * 2);
 	}
 	
 	@Override
@@ -134,7 +133,7 @@ public class MultiTileEntityEngineSteam extends TileEntityBase09FacingSingle imp
 			}
 			
 			// Set State
-			if (SERVER_TIME % 20 == 0) mState = (byte)UT.Code.scale(mEnergy, mCapacity, 31, F);
+			if (SERVER_TIME % 20 == 0) mState = (byte)Math.min(31, UT.Code.scale(mEnergy, mCapacity, 32, F));
 			
 			// Set the output depending on how "hot" the state of the Engine is.
 			long tOutput = (mOutput * (mState + 1)) / 16;
