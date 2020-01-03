@@ -265,7 +265,7 @@ public class Loader_OreProcessing implements Runnable {
 			
 			FluidStack tFluid = null;
 			OreDictMaterialStack tMaterial = null;
-			for (OreDictMaterialStack iMaterial : tList) if (iMaterial.mMaterial.mLiquid != null && FL.temperature(iMaterial.mMaterial.mLiquid) < 4618) {
+			for (OreDictMaterialStack iMaterial : tList) if (iMaterial.mMaterial.mLiquid != null) {
 				if (tFluid == null) {
 					tMaterial = iMaterial;
 					tFluid = iMaterial.mMaterial.liquid(iMaterial.mAmount, F);
