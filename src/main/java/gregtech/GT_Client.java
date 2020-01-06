@@ -207,8 +207,8 @@ public class GT_Client extends GT_Proxy {
 					}
 					if (mVersionOutdated) {
 						aEvent.player.addChatComponentMessage(new ChatComponentText("Major GT6 Update released, for details visit"));
-						tLink = new ChatComponentText(LH.Chat.BLUE + "https://gregtech.overminddl1.com/1.7.10");
-						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://gregtech.overminddl1.com/1.7.10"));
+						tLink = new ChatComponentText(LH.Chat.BLUE + "https://gregtech.mechaenetia.com/1.7.10");
+						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://gregtech.mechaenetia.com/1.7.10"));
 						aEvent.player.addChatComponentMessage(tLink);
 						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable checker in the clientside GregTech.cfg");
 						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigsGT.CLIENT.mConfig.getConfigFile().getAbsolutePath()));
@@ -219,6 +219,7 @@ public class GT_Client extends GT_Proxy {
 							int tVersion = Integer.parseInt(((String)Class.forName("ic2.core.IC2").getField("VERSION").get(null)).substring(4, 7));
 							if (tVersion < 827) {
 								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Please update IndustrialCraft!"));
+								// IC2 Site doesn't support https.
 								tLink = new ChatComponentText(LH.Chat.BLUE + "http://ic2api.player.to:8080/job/IC2_experimental/827/");
 								tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://ic2api.player.to:8080/job/IC2_experimental/827/"));
 								aEvent.player.addChatComponentMessage(tLink);
@@ -226,7 +227,7 @@ public class GT_Client extends GT_Proxy {
 						} catch(Throwable e) {/**/}
 					}
 					if (MD.COG.mLoaded && !MD.PFAA.mLoaded && ConfigsGT.CLIENT.get(ConfigCategories.general, "warnings_customoregen", T)) {
-						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! CustomOreGen will fuck up all GregTech Worldgen with its Default Configs!"));
+						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! CustomOreGen will screw up all GregTech Worldgen with its Default Configs!"));
 						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "If you don't even use CustomOreGen, I would highly recommend you to remove it!"));
 						tLink = new ChatComponentText(LH.Chat.DGRAY + "disable warning in the clientside GregTech.cfg");
 						tLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigsGT.CLIENT.mConfig.getConfigFile().getAbsolutePath()));

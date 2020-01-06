@@ -375,12 +375,12 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("MOXFuel", 1)                              , IL.IC2_Fuel_Rod_Empty.get(1)  , ST.mkic("reactorMOXSimple", 1, 1));
 		RM.Canner       .addRecipe2(T, 16,   16, ST.mkic("MOXFuel", 1)                              , IL.Reactor_Rod_Empty.get(1)   , ST.mkic("reactorMOXSimple", 1, 1));
 		
-		RM.Centrifuge   .addRecipe1(T, 512, 128, ST.mkic("reactorDepletedUraniumSimple", 1)         , OP.dust.mat(MT.Zr, 1), OP.dust.mat(MT.U_238,  4), OP.dustTiny.mat(MT.Pu, 1));
-		RM.Centrifuge   .addRecipe1(T, 512, 256, ST.mkic("reactorDepletedUraniumDual", 1)           , OP.dust.mat(MT.Zr, 2), OP.dust.mat(MT.U_238,  8), OP.dustTiny.mat(MT.Pu, 2), OP.dust.mat(MT.Fe, 1));
-		RM.Centrifuge   .addRecipe1(T, 512, 512, ST.mkic("reactorDepletedUraniumQuad", 1)           , OP.dust.mat(MT.Zr, 4), OP.dust.mat(MT.U_238, 16), OP.dustTiny.mat(MT.Pu, 4), OP.dust.mat(MT.Fe, 3), OP.dust.mat(MT.Cu, 2));
-		RM.Centrifuge   .addRecipe1(T, 512, 128, ST.mkic("reactorDepletedMOXSimple", 1)             , OP.dust.mat(MT.Zr, 1), OP.dustTiny.mat(MT.Pu, 28));
-		RM.Centrifuge   .addRecipe1(T, 512, 256, ST.mkic("reactorDepletedMOXDual", 1)               , OP.dust.mat(MT.Zr, 2), OP.dustTiny.mat(MT.Pu, 56), OP.dust.mat(MT.Fe, 1));
-		RM.Centrifuge   .addRecipe1(T, 512, 512, ST.mkic("reactorDepletedMOXQuad", 1)               , OP.dust.mat(MT.Zr, 4), OP.dustTiny.mat(MT.Pu, 64), OP.dust.mat(MT.Fe, 3), OP.dust.mat(MT.Cu, 2), OP.dustTiny.mat(MT.Pu, 48));
+		RM.Centrifuge   .addRecipe1(T, 512, 128, ST.mkic("reactorDepletedUraniumSimple", 1)         , OP.dust.mat(MT.Zr, 1), OP.crushedCentrifugedTiny.mat(MT.Pu,  1), OP.crushedCentrifuged.mat(MT.U_238,  3));
+		RM.Centrifuge   .addRecipe1(T, 512, 256, ST.mkic("reactorDepletedUraniumDual", 1)           , OP.dust.mat(MT.Zr, 2), OP.crushedCentrifugedTiny.mat(MT.Pu,  2), OP.crushedCentrifuged.mat(MT.U_238,  6), OP.dust.mat(MT.Fe, 1));
+		RM.Centrifuge   .addRecipe1(T, 512, 512, ST.mkic("reactorDepletedUraniumQuad", 1)           , OP.dust.mat(MT.Zr, 4), OP.crushedCentrifugedTiny.mat(MT.Pu,  4), OP.crushedCentrifuged.mat(MT.U_238, 12), OP.dust.mat(MT.Fe, 3), OP.dust.mat(MT.Cu, 2));
+		RM.Centrifuge   .addRecipe1(T, 512, 128, ST.mkic("reactorDepletedMOXSimple", 1)             , OP.dust.mat(MT.Zr, 1), OP.crushedCentrifugedTiny.mat(MT.Pu, 21));
+		RM.Centrifuge   .addRecipe1(T, 512, 256, ST.mkic("reactorDepletedMOXDual", 1)               , OP.dust.mat(MT.Zr, 2), OP.crushedCentrifugedTiny.mat(MT.Pu, 42), OP.dust.mat(MT.Fe, 1));
+		RM.Centrifuge   .addRecipe1(T, 512, 512, ST.mkic("reactorDepletedMOXQuad", 1)               , OP.dust.mat(MT.Zr, 4), OP.crushedCentrifugedTiny.mat(MT.Pu, 64), OP.dust.mat(MT.Fe, 3), OP.dust.mat(MT.Cu, 2), OP.crushedCentrifugedTiny.mat(MT.Pu, 20));
 		RM.Centrifuge   .addRecipe1(T, 512, 512, ST.mkic("RTGPellets", 1)                           , OP.dust.mat(MT.Fe,54), OP.dust.mat(MT.Pu, 3));
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {

@@ -113,9 +113,10 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		new Thread(new Runnable() {@Override public void run() {
 		
 		if (ConfigsGT.CLIENT.get(ConfigCategories.news, "version_checker", T)) try {
-			String tVersion = javax.xml.xpath.XPathFactory.newInstance().newXPath().compile("metadata/versioning/release/text()").evaluate(javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().parse((new URL("https://gregtech.overminddl1.com/com/gregoriust/gregtech/gregtech_1.7.10/maven-metadata.xml")).openConnection().getInputStream()), javax.xml.xpath.XPathConstants.STRING).toString().substring(0, 7);
+			// Using http because Java screws up https on Windows at times.
+			String tVersion = javax.xml.xpath.XPathFactory.newInstance().newXPath().compile("metadata/versioning/release/text()").evaluate(javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().parse((new URL("http://gregtech.mechaenetia.com/com/gregoriust/gregtech/gregtech_1.7.10/maven-metadata.xml")).openConnection().getInputStream()), javax.xml.xpath.XPathConstants.STRING).toString().substring(0, 7);
 			// Check if the first 4 Characters of the Version Number are the same, quick and dirty check that doesn't require Number parsing.
-			// And just ignore the first Version of each Major Release, since that one is usually the buggiest.
+			// And just ignore the first Versions of each Major Release, since that one is usually the buggiest or a quickfix.
 			mVersionOutdated = !tVersion.endsWith("00") && !tVersion.endsWith("01") && !BuildInfo.version.startsWith(tVersion.substring(0, 4));
 			
 			OUT.println("GT_Download_Thread: Current Version = '" + BuildInfo.version.substring(0, 7) + "'; Recent Version = '" + tVersion + "'; Majorly Outdated = " + (mVersionOutdated?"Yes":"No"));
@@ -140,7 +141,8 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
 		try {
-			Scanner tScanner = new Scanner(new URL("http://gregtech.overminddl1.com/com/gregoriust/gregtech/message.txt").openStream());
+			// Using http because Java screws up https on Windows at times.
+			Scanner tScanner = new Scanner(new URL("http://gregtech.mechaenetia.com/com/gregoriust/gregtech/message.txt").openStream());
 			while (tScanner.hasNextLine()) mMessage += tScanner.nextLine() + " ";
 			tScanner.close();
 			if (mMessage.length() > 5) OUT.println("GT_Download_Thread: Downloaded News.");
@@ -462,7 +464,8 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	
 	public boolean downloadSupporterListSilverFromMain() {
 		try {
-			Scanner tScanner = new Scanner(new URL("http://gregtech.overminddl1.com/com/gregoriust/gregtech/supporterlist.txt").openStream());
+			// Using http because Java screws up https on Windows at times.
+			Scanner tScanner = new Scanner(new URL("http://gregtech.mechaenetia.com/com/gregoriust/gregtech/supporterlist.txt").openStream());
 			while (tScanner.hasNextLine()) mSupporterListSilver.add(tScanner.nextLine().toLowerCase());
 			tScanner.close();
 			return mSupporterListSilver.size() > 3;
@@ -472,7 +475,8 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	
 	public boolean downloadSupporterListGoldFromMain() {
 		try {
-			Scanner tScanner = new Scanner(new URL("http://gregtech.overminddl1.com/com/gregoriust/gregtech/supporterlistgold.txt").openStream());
+			// Using http because Java screws up https on Windows at times.
+			Scanner tScanner = new Scanner(new URL("http://gregtech.mechaenetia.com/com/gregoriust/gregtech/supporterlistgold.txt").openStream());
 			while (tScanner.hasNextLine()) mSupporterListGold.add(tScanner.nextLine().toLowerCase());
 			tScanner.close();
 			return mSupporterListGold.size() > 3;

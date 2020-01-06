@@ -17,7 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.12.00: (Not released yet, this is probably the last major Version before I start my own Game, unless I screw up Releases again and need Quickfixes because tired or something, this should come out around New Years Day or slightly after, Explosions for Reactors are gonna be enabled.)
+6.12.00: (Not released yet, this is probably the last major Version before I start my own Game, this should come out somewhen in January (not gonna be the weekly kind because preparing for my Game too), Explosions for Reactors are gonna be enabled.)
 [NOTE] I will definitely still add the WIP things before I leave most of Minecraft behind, don't worry. ^^
 [FIXED] A long going Bug in the Steam Engines that made it impossible to run them at their upper Limit. I would still not recommend running them that fast but I cant tell you what not to do.
 [WIP] Fuel -> Rotation - Engine
@@ -982,7 +982,7 @@ Added Miniature Aether Portal, 128m Error Margin and 1:1 Distance. Requires a GT
 [ADDED] Tooltips for Fluid Display Items to show Fuel Values.
 
 
-//=== Version Number Jump because 1. that Material Unit thing above and 2. I will post a Link to the new GregTech Forums afterwards. (And yes I do know that the Forums wont be frequented too much, but it's a nice experiment, before I start my own Game with that same Forum, for whenever I do that. The IC2 Forums are ofcourse still going to stay a valid place to talk to me. ^^) https://forum.gregtech.overminddl1.com ===//
+//=== Version Number Jump because 1. that Material Unit thing above and 2. I will post a Link to the new GregTech Forums afterwards. (And yes I do know that the Forums wont be frequented too much, but it's a nice experiment, before I start my own Game with that same Forum, for whenever I do that. The IC2 Forums are ofcourse still going to stay a valid place to talk to me. ^^) https://forum.mechaenetia.com ===//
 
 
 6.07.24:
@@ -4347,4 +4347,4 @@ Railcraft Names for Items being outdated causing some Recipes to be removed.
 1.7.10 but savegame incompatible with GT5 and it will stay savegame incompatible forever, because of huge changes making it impossible
 
 
-Well you made it all the way down here. Here have a reward, this is the Link to the Secret Testing Version https://gregtech.overminddl1.com/secretdownloads/ but be warned, it can break a lot of shit. Note to Wiki Editors: Please don't redistribute this Link or any hint of this Link existing here, it might be dangerous for stupid people and I don't want them to hurt themselves.
+Well you made it all the way down here. Here have a reward, this is the Link to the Secret Testing Version https://gregtech.mechaenetia.com/secretdownloads/ but be warned, it can break a lot of shit. Note to Wiki Editors: Please don't redistribute this Link or any hint of this Link existing here, it might be dangerous for stupid people and I don't want them to hurt themselves.
