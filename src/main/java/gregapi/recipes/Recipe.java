@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -89,7 +89,9 @@ public class Recipe {
 		public final boolean mNEIAllowed, mShowVoltageAmperageInNEI, mNeedsOutputs;
 		public boolean mLogErrors = T;
 		/** Used to determine Input Tank Size. Contains the size of the largest FluidStack Input, but is almost always at least 1000. */
-		public int mMaxFluidInputSize = 1000;
+		public int mMaxFluidInputSize  = 1000;
+		/** Used to determine Output Tank Size. Contains the size of the largest FluidStack Output, but is almost always at least 1000. */
+		public int mMaxFluidOutputSize = 1000;
 		/** The Config File corresponding to this Recipe Handler. Will be initialised by GT_API. */
 		public Config mConfigFile = null;
 		
@@ -382,6 +384,9 @@ public class Recipe {
 				Collection<Recipe> tList = mRecipeFluidMap.get(aFluid.getFluid().getName());
 				if (tList == null) mRecipeFluidMap.put(aFluid.getFluid().getName(), tList = new HashSet<>(1));
 				tList.add(aRecipe);
+			}
+			for (FluidStack aFluid : aRecipe.mFluidOutputs) if (aFluid != null) {
+				mMaxFluidOutputSize = Math.max(mMaxFluidOutputSize, aFluid.amount);
 			}
 			return addToItemMap(aRecipe);
 		}

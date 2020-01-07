@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -189,7 +189,8 @@ public class RecipeMapHandlerPrefix extends RecipeMapHandler {
 	
 	@Override
 	public boolean onAddedToMap(RecipeMap aMap) {
-		if (mFluidInputPerUnit != null) aMap.mMaxFluidInputSize = Math.max(mFlatFluidCosts ? mFluidInputPerUnit.amount : mFluidInputPerUnit.amount * 4, aMap.mMaxFluidInputSize);
+		if (mFluidInputPerUnit  != null) aMap.mMaxFluidInputSize  = Math.max(mFlatFluidCosts ? mFluidInputPerUnit.amount : mFluidInputPerUnit.amount * 4, aMap.mMaxFluidInputSize);
+		if (mFluidOutputPerUnit != null) aMap.mMaxFluidOutputSize = Math.max(mFluidOutputPerUnit.amount * 16, aMap.mMaxFluidOutputSize);
 		return T;
 	}
 	

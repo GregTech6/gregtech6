@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import gregapi.code.TagData;
+import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -40,6 +41,7 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
+import gregapi.tileentity.behavior.TE_Behavior_Active_Trinary;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
@@ -56,43 +58,42 @@ import net.minecraftforge.fluids.IFluidTank;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively {
-	protected short mEfficiency = 10000;
-	protected long mEnergy = 0, mRate = 1;
-	protected boolean mBurning = F, oBurning = F;
-	protected TagData mEnergyTypeEmitted = TD.Energy.RU;
-	protected RecipeMap mRecipes = FM.Engine;
-	protected Recipe mLastRecipe = null;
-	protected FluidTankGT mTankInput = new FluidTankGT(1000), mTankOutput = new FluidTankGT(10000);
+	public short mEfficiency = 10000;
+	public long mEnergy = 0, mRate = 32;
+	public TagData mEnergyTypeEmitted = TD.Energy.RU;
+	public RecipeMap mRecipes = FM.Engine;
+	public Recipe mLastRecipe = null;
+	public FluidTankGT[] mTanks = {new FluidTankGT(1000), new FluidTankGT(1000)};
+	public TE_Behavior_Active_Trinary mActivity = null;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		mEnergy = aNBT.getLong(NBT_ENERGY);
-		mBurning = aNBT.getBoolean(NBT_ACTIVE);
+		mActivity = new TE_Behavior_Active_Trinary(this, aNBT);
 		if (aNBT.hasKey(NBT_OUTPUT)) mRate = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_FUELMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_FUELMAP));
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
-		mTankInput.setCapacity(mRate * 10);
-		mTankInput.readFromNBT(aNBT, NBT_TANK);
-		mTankOutput.setCapacity(mRate * 100);
-		mTankOutput.readFromNBT(aNBT, NBT_TANK_OUT);
+		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0").setCapacity(mRate * 10);
+		mTanks[1].readFromNBT(aNBT, NBT_TANK+".1").setCapacity(mRate * 10);
 	}
 	
 	@Override
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
-		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mBurning);
-		mTankInput.writeToNBT(aNBT, NBT_TANK);
-		mTankOutput.writeToNBT(aNBT, NBT_TANK_OUT);
+		mActivity.save(aNBT);
+		mTanks[0].writeToNBT(aNBT, NBT_TANK+".0");
+		mTanks[1].writeToNBT(aNBT, NBT_TANK+".1");
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN     + LH.get(LH.RECIPES)        + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
+		aList.add(Chat.CYAN     + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal));
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
 		LH.addEnergyToolTips(this, aList, null, mEnergyTypeEmitted, null, LH.get(LH.FACE_FRONT));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -101,25 +102,34 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
 			if (mEnergy >= mRate) {
-				ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, 1, Math.min(mRate, mEnergy), this);
+				ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, mRate, 1, this);
 				mEnergy -= mRate;
 			}
 			if (mEnergy < mRate * 2) {
-				mBurning = F;
-				Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, mTankInput.AS_ARRAY, ZL_IS);
-				if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, mTankInput.AS_ARRAY, ZL_IS)) {
-					mBurning = T;
-					mLastRecipe = tRecipe;
-					mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
-					while (mEnergy < mRate * 2 && tRecipe.isRecipeInputEqual(T, F, mTankInput.AS_ARRAY, ZL_IS)) {
-						mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
-						if (mTankInput.isEmpty()) break;
+				mActivity.mActive = F;
+				Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, mTanks[0].AS_ARRAY, ZL_IS);
+				if (tRecipe != null) {
+					if (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) {
+						if (tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
+							mActivity.mActive = T;
+							mLastRecipe = tRecipe;
+							mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
+							if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
+							while (mEnergy < mRate * 2 && (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) && tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
+								mEnergy += UT.Code.units(Math.abs(tRecipe.mEUt * tRecipe.mDuration), 10000, mEfficiency, F);
+								if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
+								if (mTanks[0].isEmpty()) break;
+							}
+						} else {
+							mTanks[0].setEmpty();
+						}
 					}
 				} else {
-					mTankInput.setEmpty();
+					mTanks[0].setEmpty();
 				}
-				if (mEnergy < 0) mEnergy = 0;
 			}
+			if (mEnergy < 0) mEnergy = 0;
+			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(OPPOSITES[mFacing]));
 		}
 	}
 	
@@ -132,8 +142,8 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 		
 		if (aTool.equals(TOOL_magnifyingglass)) {
 			if (aChatReturn != null) {
-				aChatReturn.add(mTankInput .content());
-				aChatReturn.add(mTankOutput.content());
+				aChatReturn.add("Input: "  + mTanks[0].content());
+				aChatReturn.add("Output: " + mTanks[1].content());
 			}
 			return 1;
 		}
@@ -142,82 +152,77 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	
 	@Override
 	public boolean onTickCheck(long aTimer) {
-		return mBurning != oBurning || super.onTickCheck(aTimer);
-	}
-	
-	@Override
-	public void onTickResetChecks(long aTimer, boolean aIsServerSide) {
-		super.onTickResetChecks(aTimer, aIsServerSide);
-		oBurning = mBurning;
+		return mActivity.check(F) || super.onTickCheck(aTimer);
 	}
 	
 	@Override
 	public void setVisualData(byte aData) {
-		mBurning = ((aData & 1) != 0);
+		mActivity.mState = (byte)(aData & 127);
 	}
 	
-	@Override public byte getVisualData() {return (byte)(mBurning?1:0);}
+	@Override public byte getVisualData() {return mActivity.mState;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
-	@Override public boolean[] getValidSides() {return SIDES_VALID;}
+	@Override public boolean[] getValidSides() {return SIDES_BOTTOM_HORIZONTAL;}
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		return mRecipes.containsInput(aFluidToFill, this, NI) ? mTankInput : null;
+		return mRecipes.containsInput(aFluidToFill, this, NI) ? mTanks[0] : null;
 	}
 	
 	@Override
 	protected IFluidTank getFluidTankDrainable2(byte aSide, FluidStack aFluidToDrain) {
-		return mTankOutput;
+		return mTanks[1];
 	}
 	
 	@Override
 	protected IFluidTank[] getFluidTanks2(byte aSide) {
-		return new IFluidTank[] {mTankInput, mTankOutput};
+		return mTanks;
+	}
+	
+	@Override
+	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
+		if (!mRecipes.containsInput(aFluid, this, NI)) return 0;
+		updateInventory();
+		return mTanks[0].fill(aFluid, aDoFill);
 	}
 	
 	@Override
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
 		updateInventory();
-		return mTankOutput.has() ? mTankOutput.drain(aMaxDrain, aDoDrain) : mTankInput.drain(aMaxDrain, aDoDrain);
+		return mTanks[mTanks[1].has() ? 1 : 0].drain(aMaxDrain, aDoDrain);
 	}
 	
-	@Override
-	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoDrain) {
-		updateInventory();
-		return mTankInput.fill(aFluid, aDoDrain);
-	}
-	
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mBurning?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]])): null;}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mActivity.mActive?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]])): null;}
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return ZL_IS;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting && aEnergyType == mEnergyTypeEmitted;}
-	@Override public boolean isEnergyEmittingTo(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == mFacing && super.isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo(TagData aEnergyType, byte aSide, boolean aTheoretical) {return SIDES_TOP[aSide] && super.isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
 	@Override public long getEnergyOffered(TagData aEnergyType, byte aSide, long aSize) {return Math.min(mRate, mEnergy);}
 	@Override public long getEnergySizeOutputRecommended(TagData aEnergyType, byte aSide) {return mRate;}
 	@Override public long getEnergySizeOutputMin(TagData aEnergyType, byte aSide) {return mRate;}
 	@Override public long getEnergySizeOutputMax(TagData aEnergyType, byte aSide) {return mRate;}
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeEmitted.AS_LIST;}
 	
-	@Override public boolean getStateRunningPassively() {return mBurning;}
-	@Override public boolean getStateRunningPossible() {return mBurning;}
-	@Override public boolean getStateRunningActively() {return mBurning;}
+	@Override public boolean getStateRunningPassively() {return mActivity.mActive;}
+	@Override public boolean getStateRunningPossible() {return mActivity.mActive;}
+	@Override public boolean getStateRunningActively() {return mActivity.mActive;}
 	
 	// Icons
 	public static IIconContainer[] sColoreds = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/colored/front"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/colored/back"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/colored/sides"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/colored/front"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/colored/back"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/colored/sides"),
 	}, sOverlays = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/overlay/front"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/overlay/back"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/overlay/sides"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/overlay/front"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/overlay/back"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/overlay/sides"),
 	}, sOverlaysActive = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/overlay_active/front"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/overlay_active/back"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/engine_liquid/overlay_active/sides"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/overlay_active/front"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/overlay_active/back"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/overlay_active/sides"),
 	};
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.generator.engine_liquid";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.generator.motor_liquid";}
 }
