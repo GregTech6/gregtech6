@@ -192,7 +192,13 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 		return mTanks[mTanks[1].has() ? 1 : 0].drain(aMaxDrain, aDoDrain);
 	}
 	
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mActivity.mActive?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]])): null;}
+	@Override
+	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
+		if (!aShouldSideBeRendered[aSide]) return null;
+		if (aSide == mFacing)              return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get((mActivity.mActive?sOverlaysActive:sOverlays)[0]));
+		if (aSide == OPPOSITES[mFacing])   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mActivity.mActive?sOverlaysActive:sOverlays)[1]));
+										   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mActivity.mActive?sOverlaysActive:sOverlays)[2]));
+	}
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return ZL_IS;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}

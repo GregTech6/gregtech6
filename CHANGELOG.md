@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.12.00: (Not released yet, this is probably the last major Version before I start my own Game, this should come out somewhen in January (not gonna be the weekly kind because preparing for my Game too), Explosions for Reactors are gonna be enabled.)
 [NOTE] I will definitely still add the WIP things before I leave most of Minecraft behind, don't worry. ^^
 [FIXED] A long going Bug in the Steam Engines that made it impossible to run them at their upper Limit. I would still not recommend running them that fast but I cant tell you what not to do.
+[CHANGED] Large Fermenter Auto-Emits Items and Fluids at different places now. Fluids stay at the same Position, Items are one block above.
 [ADDED] Diesel Engines for easier usage of Rotational Units. They run at 16, 32, 64, 128, 256 and 512 RU/t depending on Tier.
 [WIP] Multiblock Heat Exchanger
 [WIP] A Mold-Extender for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
