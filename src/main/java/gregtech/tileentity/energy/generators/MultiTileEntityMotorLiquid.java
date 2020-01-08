@@ -43,6 +43,7 @@ import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.behavior.TE_Behavior_Active_Trinary;
 import gregapi.tileentity.energy.ITileEntityEnergy;
+import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -58,7 +59,8 @@ import net.minecraftforge.fluids.IFluidTank;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively {
+public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively, ITileEntityAdjacentOnOff {
+	public boolean mStopped = F;
 	public short mEfficiency = 10000;
 	public long mEnergy = 0, mRate = 32;
 	public TagData mEnergyTypeEmitted = TD.Energy.RU;
@@ -72,6 +74,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 		super.readFromNBT2(aNBT);
 		mEnergy = aNBT.getLong(NBT_ENERGY);
 		mActivity = new TE_Behavior_Active_Trinary(this, aNBT);
+		if (aNBT.hasKey(NBT_STOPPED)) mStopped = aNBT.getBoolean(NBT_STOPPED);
 		if (aNBT.hasKey(NBT_OUTPUT)) mRate = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_FUELMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_FUELMAP));
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
@@ -84,6 +87,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
+		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mStopped);
 		mActivity.save(aNBT);
 		mTanks[0].writeToNBT(aNBT, NBT_TANK+".0");
 		mTanks[1].writeToNBT(aNBT, NBT_TANK+".1");
@@ -106,7 +110,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 				ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, mRate, 1, this);
 				mEnergy -= mRate;
 			}
-			if (mEnergy < mRate * 2) {
+			if (mEnergy < mRate * 2 && !mStopped) {
 				mActivity.mActive = F;
 				Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, mTanks[0].AS_ARRAY, ZL_IS);
 				if (tRecipe != null) {
@@ -130,9 +134,10 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 				}
 			}
 			if (mEnergy < 0) mEnergy = 0;
+			
 			if (mTanks[1].has()) {
 				FL.move(mTanks[1], getAdjacentTank(OPPOSITES[mFacing]));
-				if (FL.gas(mTanks[1]) && !WD.hasCollide(worldObj, OFFSETS_X[OPPOSITES[mFacing]], OFFSETS_Y[OPPOSITES[mFacing]], OFFSETS_Z[OPPOSITES[mFacing]])) {
+				if (FL.gas(mTanks[1]) && !WD.hasCollide(worldObj, getOffset(OPPOSITES[mFacing], 1))) {
 					mTanks[1].setEmpty();
 				}
 			}
@@ -158,7 +163,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	
 	@Override
 	public boolean onTickCheck(long aTimer) {
-		return mActivity.check(F) || super.onTickCheck(aTimer);
+		return mActivity.check(mStopped) || super.onTickCheck(aTimer);
 	}
 	
 	@Override
@@ -220,6 +225,9 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	@Override public boolean getStateRunningPassively() {return mActivity.mActive;}
 	@Override public boolean getStateRunningPossible() {return mActivity.mActive;}
 	@Override public boolean getStateRunningActively() {return mActivity.mActive;}
+	@Override public boolean setAdjacentOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}
+	@Override public boolean setStateOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}
+	@Override public boolean getStateOnOff() {return !mStopped;}
 	
 	// Icons
 	public static IIconContainer[] sColoreds = new IIconContainer[] {

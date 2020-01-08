@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -54,8 +54,8 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_STOPPED)) mStopped = aNBT.getBoolean(NBT_STOPPED);
-		mActivity = new TE_Behavior_Active_Trinary(this, aNBT);
 		if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
+		mActivity = new TE_Behavior_Active_Trinary(this, aNBT);
 		readEnergyBehavior(aNBT);
 		readEnergyConverter(aNBT);
 	}
