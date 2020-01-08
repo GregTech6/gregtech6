@@ -45,6 +45,7 @@ import gregapi.tileentity.behavior.TE_Behavior_Active_Trinary;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -129,7 +130,12 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 				}
 			}
 			if (mEnergy < 0) mEnergy = 0;
-			if (mTanks[1].has()) FL.move(mTanks[1], getAdjacentTank(OPPOSITES[mFacing]));
+			if (mTanks[1].has()) {
+				FL.move(mTanks[1], getAdjacentTank(OPPOSITES[mFacing]));
+				if (FL.gas(mTanks[1]) && !WD.hasCollide(worldObj, OFFSETS_X[OPPOSITES[mFacing]], OFFSETS_Y[OPPOSITES[mFacing]], OFFSETS_Z[OPPOSITES[mFacing]])) {
+					mTanks[1].setEmpty();
+				}
+			}
 		}
 	}
 	
@@ -195,16 +201,16 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		if (aSide == mFacing)              return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get((mActivity.mActive?sOverlaysActive:sOverlays)[0]));
-		if (aSide == OPPOSITES[mFacing])   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mActivity.mActive?sOverlaysActive:sOverlays)[1]));
-										   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mActivity.mActive?sOverlaysActive:sOverlays)[2]));
+		if (aSide == mFacing)              return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[0]));
+		if (aSide == OPPOSITES[mFacing])   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[1]));
+										   return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mActivity.mState > 0?sOverlaysActive:sOverlays)[2]));
 	}
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return ZL_IS;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
 	
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting && aEnergyType == mEnergyTypeEmitted;}
-	@Override public boolean isEnergyEmittingTo(TagData aEnergyType, byte aSide, boolean aTheoretical) {return SIDES_TOP[aSide] && super.isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
+	@Override public boolean isEnergyEmittingTo(TagData aEnergyType, byte aSide, boolean aTheoretical) {return aSide == mFacing && super.isEnergyEmittingTo(aEnergyType, aSide, aTheoretical);}
 	@Override public long getEnergyOffered(TagData aEnergyType, byte aSide, long aSize) {return Math.min(mRate, mEnergy);}
 	@Override public long getEnergySizeOutputRecommended(TagData aEnergyType, byte aSide) {return mRate;}
 	@Override public long getEnergySizeOutputMin(TagData aEnergyType, byte aSide) {return mRate;}
