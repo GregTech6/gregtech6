@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -134,7 +134,7 @@ public class MultiTileEntityShredder extends TileEntityBase10MultiBlockMachine {
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.shredder.1", "5x5x3 'Basin' of 57 Tungstensteel Walls");
+		LH.add("gt.tooltip.multiblock.shredder.1", "5x5x3 'Basin' of 56 Tungstensteel Walls");
 		LH.add("gt.tooltip.multiblock.shredder.2", "3x3x2 Filling with Shredder Blades");
 		LH.add("gt.tooltip.multiblock.shredder.3", "Main Block centered on Side-Bottom and facing outwards");
 		LH.add("gt.tooltip.multiblock.shredder.4", "Input only at Shredder Blades, Output at Bottom Layer");

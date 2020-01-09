@@ -21,8 +21,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [NOTE] I will definitely still add the WIP things before I leave most of Minecraft behind, don't worry. ^^
 [FIXED] A long going Bug in the Steam Engines that made it impossible to run them at their upper Limit. I would still not recommend running them that fast but I cant tell you what not to do.
 [CHANGED] Large Fermenter Auto-Emits Items and Fluids at different places now. Fluids stay at the same Position, Items are one block above.
-[ADDED] Diesel Engines for easier usage of Rotational Units. They run at 16, 32, 64, 128, 256 and 512 RU/t depending on Tier.
+[ADDED] Singleblock Diesel Engines for easier usage of Rotational Units. They run at 16, 32, 64, 128, 256 and 512 RU/t depending on Tier.
 [ADDED] A Crossing for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
+[ADDED] Squeezer Multiblock, even though it was not on the List. It was easy to just copy most of the Large Shredder to do this, also it was kinda needed for the Fermenter.
 [WIP] Multiblock Heat Exchanger
 
 

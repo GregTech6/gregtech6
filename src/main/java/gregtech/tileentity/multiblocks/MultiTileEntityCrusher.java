@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -134,7 +134,7 @@ public class MultiTileEntityCrusher extends TileEntityBase10MultiBlockMachine {
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.crusher.1", "5x5x3 'Basin' of 57 Tungstensteel Walls");
+		LH.add("gt.tooltip.multiblock.crusher.1", "5x5x3 'Basin' of 56 Tungstensteel Walls");
 		LH.add("gt.tooltip.multiblock.crusher.2", "3x3x2 Filling with Crusher Wheels");
 		LH.add("gt.tooltip.multiblock.crusher.3", "Main Block centered on Side-Bottom and facing outwards");
 		LH.add("gt.tooltip.multiblock.crusher.4", "Input only at Crusher Wheels, Output at Bottom Layer");
