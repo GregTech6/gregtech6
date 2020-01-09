@@ -22,9 +22,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A long going Bug in the Steam Engines that made it impossible to run them at their upper Limit. I would still not recommend running them that fast but I cant tell you what not to do.
 [CHANGED] Large Fermenter Auto-Emits Items and Fluids at different places now. Fluids stay at the same Position, Items are one block above.
 [ADDED] Diesel Engines for easier usage of Rotational Units. They run at 16, 32, 64, 128, 256 and 512 RU/t depending on Tier.
+[ADDED] A Crossing for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
 [WIP] Multiblock Heat Exchanger
-[WIP] A Mold-Extender for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
-[NOTE TO MYSELF] Do not forget to make sure that looping 4 of those Extenders together might cause a Stackoverflow Error.
 
 
 6.11.26:

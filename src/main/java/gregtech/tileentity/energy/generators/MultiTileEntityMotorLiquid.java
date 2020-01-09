@@ -173,7 +173,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	
 	@Override public byte getVisualData() {return mActivity.mState;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
-	@Override public boolean[] getValidSides() {return SIDES_BOTTOM_HORIZONTAL;}
+	@Override public boolean[] getValidSides() {return SIDES_VALID;}
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
