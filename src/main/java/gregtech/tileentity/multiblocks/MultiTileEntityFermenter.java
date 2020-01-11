@@ -130,7 +130,7 @@ public class MultiTileEntityFermenter extends TileEntityBase10MultiBlockMachine 
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.fermenter.1", "5x5 of Heat Acceptors as bottom Layer");
+		LH.add("gt.tooltip.multiblock.fermenter.1", "5x5 of Heat Transmitters as bottom Layer");
 		LH.add("gt.tooltip.multiblock.fermenter.2", "5x5x2 of Stainless Steel Walls");
 		LH.add("gt.tooltip.multiblock.fermenter.3", "Main Block centered on Side-Middle and facing outwards");
 		LH.add("gt.tooltip.multiblock.fermenter.4", "Walls accept Input, Top Back emits Items, Bottom Back emits Fluids");

@@ -101,7 +101,8 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
 					mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
 				} else {
-					// explode(0.1); // TODO proper explosion.
+					// TODO proper explosion.
+					explode(8);
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
 					tCalc *= 2;
 					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {

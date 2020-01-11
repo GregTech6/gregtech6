@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -47,6 +47,7 @@ public class PlayerModelRenderer extends RenderPlayer {
 	private ResourceLocation getResource(String aPlayer) {
 		aPlayer = aPlayer.toLowerCase();
 		if (aPlayer.equalsIgnoreCase("GregoriusT"))     return mResources[3];
+		if (aPlayer.equalsIgnoreCase("OvermindDL1"))    return mResources[3];
 		if (aPlayer.equalsIgnoreCase("Mine_Sasha"))     return mResources[4];
 		if (aPlayer.equalsIgnoreCase("Mr_Brain"))       return mResources[2];
 		if (aPlayer.equalsIgnoreCase("Friedi4321"))     return mResources[0];

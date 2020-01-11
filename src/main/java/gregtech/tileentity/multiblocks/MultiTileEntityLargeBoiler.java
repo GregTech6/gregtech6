@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -143,7 +143,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.largeboiler.1", "3x3 Base of Heat Acceptors");
+		LH.add("gt.tooltip.multiblock.largeboiler.1", "3x3 Base of Heat Transmitters");
 		LH.add("gt.tooltip.multiblock.largeboiler.2", "3x3x3 Hollow of the Block you crafted this one with");
 		LH.add("gt.tooltip.multiblock.largeboiler.3", "Main centered on Side-Bottom of Boiler facing outwards");
 		LH.add("gt.tooltip.multiblock.largeboiler.4", "Input only possible at Bottom Layer of Boiler");
