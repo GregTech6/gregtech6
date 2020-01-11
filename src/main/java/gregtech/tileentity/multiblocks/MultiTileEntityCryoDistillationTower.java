@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -91,7 +91,7 @@ public class MultiTileEntityCryoDistillationTower extends TileEntityBase10MultiB
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.cryodistillationtower.1", "3x3 Base of Heat Acceptors. They can also transfer Cold. ;)");
+		LH.add("gt.tooltip.multiblock.cryodistillationtower.1", "3x3 Base of Heat Transmitters. They can also transfer Cold. ;)");
 		LH.add("gt.tooltip.multiblock.cryodistillationtower.2", "3x3x8 of Distillation Tower Parts");
 		LH.add("gt.tooltip.multiblock.cryodistillationtower.3", "Main centered on Side-Bottom of Tower facing outwards");
 		LH.add("gt.tooltip.multiblock.cryodistillationtower.4", "Outputs automatically to the Holes on the Backside");

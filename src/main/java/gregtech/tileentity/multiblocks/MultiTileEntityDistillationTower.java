@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -91,7 +91,7 @@ public class MultiTileEntityDistillationTower extends TileEntityBase10MultiBlock
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.distillationtower.1", "3x3 Base of Heat Acceptors");
+		LH.add("gt.tooltip.multiblock.distillationtower.1", "3x3 Base of Heat Transmitters");
 		LH.add("gt.tooltip.multiblock.distillationtower.2", "3x3x8 of Distillation Tower Parts");
 		LH.add("gt.tooltip.multiblock.distillationtower.3", "Main centered on Side-Bottom of Tower facing outwards");
 		LH.add("gt.tooltip.multiblock.distillationtower.4", "Outputs automatically to the Holes on the Backside");

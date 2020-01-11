@@ -24,7 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Singleblock Diesel Engines for easier usage of Rotational Units. They run at 16, 32, 64, 128, 256 and 512 RU/t depending on Tier.
 [ADDED] A Crossing for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
 [ADDED] Squeezer Multiblock, even though it was not on the List. It was easy to just copy most of the Multiblock Shredder to do this, also it was kinda needed for the Multiblock Fermenter.
-[ADDED] Multiblock Heat Exchanger.
+[ADDED] Multiblock Heat Exchanger. 16384 HU/t split evenly over the 8 Heat Transmitter Outputs, so cover them all up in Heat Accepting things or some large Heat Accepting Multiblock.
 
 
 6.11.26:

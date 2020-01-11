@@ -158,7 +158,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.largeboiler.4"));
 		aList.add(Chat.CYAN     + LH.get(LH.CONVERTS_FROM_X)        + " 1 L " + FL.name(FluidRegistry.WATER, true) + " " + LH.get(LH.CONVERTS_TO_Y) + " 160 L " + FL.name(FL.Steam.make(0), T) + " " + LH.get(LH.CONVERTS_USING_Z) + " 80 " + mEnergyTypeAccepted.getLocalisedNameShort());
 		aList.add(LH.getToolTipEfficiency(mEfficiency));
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)                        + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE + "/t (Heat Acceptors)");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_INPUT)           + ": " + Chat.WHITE + (mOutput/STEAM_PER_EU)                        + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE + "/t (Heat Transmitters)");
 		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                     + " " + mEnergyTypeAccepted.getChatFormat() + mEnergyTypeAccepted.getLocalisedNameShort()   + Chat.WHITE);
 		aList.add(Chat.RED      + LH.get(LH.ENERGY_OUTPUT)          + ": " + Chat.WHITE + UT.Code.units(mOutput, 10000, mEfficiency, F) + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE + "/t (Pipe Holes)");
 		aList.add(Chat.RED      + LH.get(LH.ENERGY_CAPACITY)        + ": " + Chat.WHITE + mCapacity                                     + " " + TD.Energy.STEAM.getChatFormat()     + TD.Energy.STEAM.getLocalisedNameLong()        + Chat.WHITE);
