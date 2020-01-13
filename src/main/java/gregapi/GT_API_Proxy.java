@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -227,7 +227,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
-	public  static final List<IHasWorldAndCoords>         DELAYED_BLOCK_UPDATES          = new ArrayListNoNulls<>();
+	public  static       List<IHasWorldAndCoords>         DELAYED_BLOCK_UPDATES          = new ArrayListNoNulls<>();
+	private static       List<IHasWorldAndCoords>         DELAYED_BLOCK_UPDATES_2        = new ArrayListNoNulls<>();
 	public  static       List<ITileEntityScheduledUpdate> SCHEDULED_TILEENTITY_UPDATES   = new ArrayListNoNulls<>();
 	private static       List<ITileEntityScheduledUpdate> SCHEDULED_TILEENTITY_UPDATES_2 = new ArrayListNoNulls<>();
 	
@@ -364,7 +365,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					}
 				}
 				
-				for (IHasWorldAndCoords tTileEntity : DELAYED_BLOCK_UPDATES) {
+				DELAYED_BLOCK_UPDATES_2.clear();
+				@SuppressWarnings("rawtypes")
+				List tList = DELAYED_BLOCK_UPDATES_2;
+				DELAYED_BLOCK_UPDATES_2 = DELAYED_BLOCK_UPDATES;
+				DELAYED_BLOCK_UPDATES = tList;
+				for (IHasWorldAndCoords tTileEntity : DELAYED_BLOCK_UPDATES_2) {
 					try {
 						tTileEntity.getWorld().notifyBlocksOfNeighborChange(tTileEntity.getX(), tTileEntity.getY(), tTileEntity.getZ(), tTileEntity.getBlock(tTileEntity.getCoords()));
 					} catch(Throwable e) {
@@ -372,13 +378,18 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						e.printStackTrace(ERR);
 					}
 				}
-				DELAYED_BLOCK_UPDATES.clear();
-				
 				
 				if (SERVER_TIME > 10) {
-					for (ITileEntityScheduledUpdate tTileEntity : SCHEDULED_TILEENTITY_UPDATES_2) if (!tTileEntity.isDead()) tTileEntity.onScheduledUpdate();
+					for (ITileEntityScheduledUpdate tTileEntity : SCHEDULED_TILEENTITY_UPDATES_2) if (!tTileEntity.isDead()) {
+						try {
+							tTileEntity.onScheduledUpdate();
+						} catch(Throwable e) {
+							if (tTileEntity instanceof ITileEntityErrorable) ((ITileEntityErrorable)tTileEntity).setError("Scheduled TileEntity Update - " + e);
+							e.printStackTrace(ERR);
+						}
+					}
 					SCHEDULED_TILEENTITY_UPDATES_2.clear();
-					List<ITileEntityScheduledUpdate> tList = SCHEDULED_TILEENTITY_UPDATES_2;
+					tList = SCHEDULED_TILEENTITY_UPDATES_2;
 					SCHEDULED_TILEENTITY_UPDATES_2 = SCHEDULED_TILEENTITY_UPDATES;
 					SCHEDULED_TILEENTITY_UPDATES = tList;
 					
