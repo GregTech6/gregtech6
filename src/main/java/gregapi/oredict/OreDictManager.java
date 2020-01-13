@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -304,11 +304,21 @@ public final class OreDictManager {
 	public void onOreRegistration1(OreRegisterEvent aEvent) {
 		ModContainer tContainer = Loader.instance().activeModContainer();
 		String aModID = tContainer==null||mIsRunningInIterationMode?"UNKNOWN":tContainer.getModId();
+		String aRegName = ST.regName(aEvent.Ore);
+		if (UT.Code.stringInvalid(aRegName)) return;
 		
 		if (GT != null) {
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
-			// Note: This has been fixed on TC Side, so I can remove it in later MC versions.
+			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
 			if (aModID.equals(MD.TC.mID) && aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
+			// OreDictPrefix Conflict caused by Galacticraft fixing its OreDict Registrations a little bit late to use Plates instead of Compressed Stuff now.
+			// Note: This can be removed in later MC Versions too, since Galacticraft either does not update or since it has already fixed itself by now.
+			if (aRegName.length() >= 26 && aRegName.startsWith("Gala") && aEvent.Name.startsWith("plate")) {
+				if (aRegName.equalsIgnoreCase("GalacticraftMars:item.itemBasicAsteroids")) return;
+				if (aRegName.equalsIgnoreCase("GalaxySpace:item.CompressedPlates")) return;
+				if (aRegName.equalsIgnoreCase("GalacticraftCore:item.basicItem")) return;
+				if (aRegName.equalsIgnoreCase("GalacticraftMars:item.null")) return;
+			}
 			// Needed to fix a RotaryCraft value thing. Those are actually small piles of Dust.
 			// I had to do this instead of convincing Reika, because it is only a GT balance Issue, that wouldn't exist without GT.
 			// Basically those two things are outputted 4 times too much (1 Plank = 1 Pulp and not 4) and therefore would be small Piles of Dust and not regular ones.
@@ -324,7 +334,7 @@ public final class OreDictManager {
 			}
 		}
 		
-//      GT_Log.ore.println(aModID + " -> " + aEvent.Name);
+		//ORD.println(aModID + " → " + aRegName + " → " + aEvent.Name);
 		
 		aEvent.Ore.stackSize = 1;
 		
