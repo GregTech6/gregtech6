@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -91,8 +91,8 @@ public class MultiItemTechnological extends MultiItemRandom {
 		IL.Cover_Shutter.set(                         addItem(tLastID =  1026, "Shutter Cover"                         , "Connects and Disconnects Pipes"                  , new CoverShutter()                                         , TC.stack(TC.MACHINA, 2), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Cover_Button_Selector.set(                 addItem(tLastID =  1027, "Button Panel Selector"                 , "Selector Cover that is controlled by Buttons"    , new CoverSelectorButtonPanel()                             , TC.stack(TC.MACHINA, 1), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Cover_Warning.set(                         addItem(tLastID =  1028, "Warning Cover"                         , "Warns about certain Types of Danger"             , new CoverTextureMulti(T, "machines/covers/warning/", 19)   , TC.stack(TC.MACHINA, 1), TC.stack(TC.SENSUS, 1), TC.stack(TC.VINCULUM, 1)));
-		IL.Cover_Redstone_Conductor_IN.set(           addItem(tLastID =  1029, "Redstone Conductor Cover (Accept)"     , "Redstone will transferred to emitting Conductors", new CoverRedstoneConductorIN()                             , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 1)));
-		IL.Cover_Redstone_Conductor_OUT.set(          addItem(tLastID =  1030, "Redstone Conductor Cover (Emit)"       , "Redstone of accepting Conductors will be emitted", new CoverRedstoneConductorOUT()                            , TC.stack(TC.MACHINA, 2), TC.stack(TC.VINCULUM, 1)));
+		IL.Cover_Redstone_Conductor_IN.set(           addItem(tLastID =  1029, "Redstone Conductor Cover (Accept)"     , "Redstone will transfer to emitting Conductors"   , new CoverRedstoneConductorIN()                             , TC.stack(TC.MACHINA, 2), TC.stack(TC.SENSUS, 1)));
+		IL.Cover_Redstone_Conductor_OUT.set(          addItem(tLastID =  1030, "Redstone Conductor Cover (Emit)"       , "Redstone of accepting Conductors gets emitted"   , new CoverRedstoneConductorOUT()                            , TC.stack(TC.MACHINA, 2), TC.stack(TC.VINCULUM, 1)));
 		IL.Cover_Retriever_Item.set(                  addItem(tLastID =  1031, "Item Retriever Cover"                  , "Pulls Items from the attached Pipe Network"      , new CoverRetrieverItem()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITO, 1), TC.stack(TC.VACUOS, 1), TC.stack(TC.ITER, 1)));
 		
 		
