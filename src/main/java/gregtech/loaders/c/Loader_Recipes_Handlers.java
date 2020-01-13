@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -480,7 +480,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Cutter       .add(new RecipeMapHandlerPrefix(ingotQuintuple      , 1, FL.mul(tFluids[i], tMultiplier[i] * 4 * 16, 1000, T), 32, tMultiplier[i] * 4 * 16, 0, NF, ingot         , 5, NI, NI, F, T, F, tConditionM));
 		}
 		
-		ICondition tConditionP = new Nor(PREFIX_UNUSED, PLANT_DROP, IS_CONTAINER, DUST_BASED, ORE, ORE_PROCESSING_BASED, scrapGt);
+		ICondition tConditionP = new Nor(PREFIX_UNUSED, PLANT_DROP, IS_CONTAINER, DUST_BASED, ORE, ORE_PROCESSING_BASED, scrapGt, ingotHot);
 		
 		
 		RM.Polarizer    .add(new RecipeMapHandlerMaterial(MT.Nd                     , NF                                , 128, 144, NF, MT.NeodymiumMagnetic    , NI, T, tConditionP));
@@ -524,7 +524,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.FierySteel           , NI, T, tConditionP));
 		}
 		
-		tConditionP = SIMPLIFIABLE;
+		tConditionP = new And(SIMPLIFIABLE, ingotHot.NOT);
 		
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.NetherQuartz           , NF                                ,   0,   1, NF, MT.MilkyQuartz          , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.ChargedCertusQuartz    , NF                                ,   0,   1, NF, MT.CertusQuartz         , NI, T, tConditionP));
