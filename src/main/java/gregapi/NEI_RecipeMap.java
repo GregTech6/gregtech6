@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -24,6 +24,8 @@ import static gregapi.data.CS.*;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
@@ -425,7 +427,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 
 		@Override
 		public boolean keyTyped(GuiContainer gui, char keyChar, int keyCode) {
-			return false;
+			return F;
 		}
 
 		@Override
@@ -445,7 +447,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 
 		@Override
 		public boolean mouseScrolled(GuiContainer gui, int mousex, int mousey, int scrolled) {
-			return false;
+			return F;
 		}
 
 		@Override
@@ -458,11 +460,47 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			//
 		}
 	}
-
+	
+	/** Thanks to codewarrior for doing this, because Greg was way too lazy to do it. */
+	public void sortRecipes() {
+		if (arecipes.size() > 500) return;
+		Collections.sort(arecipes, new Comparator<CachedRecipe>() {@Override public int compare(CachedRecipe aRecipe1, CachedRecipe aRecipe2) {
+			Recipe tRecipe1 = ((CachedDefaultRecipe)aRecipe1).mRecipe, tRecipe2 = ((CachedDefaultRecipe)aRecipe2).mRecipe;
+			int
+			tCompare = Long.compare(tRecipe1.mEUt, tRecipe2.mEUt);
+			if (tCompare != 0) return tCompare;
+			tCompare = Integer.compare(tRecipe1.mFluidInputs.length, tRecipe2.mFluidInputs.length);
+			if (tCompare != 0) return tCompare;
+			if (tRecipe1.mFluidInputs.length > 0) {
+				tCompare = tRecipe1.mFluidInputs[0].getUnlocalizedName().compareTo(tRecipe2.mFluidInputs[0].getUnlocalizedName());
+				if (tCompare != 0) return tCompare;
+			}
+			tCompare = Integer.compare(tRecipe1.mInputs.length, tRecipe2.mInputs.length);
+			if (tCompare != 0) return tCompare;
+			if (tRecipe1.mInputs.length > 0) {
+				ItemStack tInput1 = tRecipe1.mInputs[0], tInput2 = tRecipe2.mInputs[0];
+				if (tInput1 != null) {
+					if (tInput2 == null) return -1;
+					OreDictItemData tData1 = OM.anydata_(tInput1), tData2 = OM.anydata_(tInput2);
+					if (tData1 != null && !tData1.mBlackListed) {
+						if (tData2 == null || tData2.mBlackListed) return -1;
+						tCompare = tData1.mMaterial.mMaterial.toString().compareTo(tData2.mMaterial.mMaterial.toString());
+						if (tCompare != 0) return tCompare;
+						tCompare = Long.compare(tData1.mMaterial.mAmount, tData2.mMaterial.mAmount);
+						if (tCompare != 0) return tCompare;
+					} else if (tData2 != null && !tData2.mBlackListed) return 1;
+					return tInput1.getDisplayName().compareTo(tInput2.getDisplayName());
+				} else if (tInput2 != null) return 1;
+			}
+			return 0;
+		}});
+	}
+	
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results) {
 		if (outputId.equals(getOverlayIdentifier())) {
 			for (Recipe tRecipe : mRecipeMap.getNEIAllRecipes()) arecipes.add(new CachedDefaultRecipe(tRecipe));
+			sortRecipes();
 		} else {
 			super.loadCraftingRecipes(outputId, results);
 		}
@@ -507,6 +545,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			ArrayList<Recipe> tRecipes = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeMap.getNEIRecipes(tResults.toArray(ZL_IS))) if (!tRecipes.contains(tRecipe)) tRecipes.add(tRecipe);
 			for (Recipe tRecipe : tRecipes) arecipes.add(new CachedDefaultRecipe(tRecipe));
+			sortRecipes();
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
@@ -547,6 +586,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			ArrayList<Recipe> tRecipes = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeMap.getNEIUsages(tInputs.toArray(ZL_IS))) if (!tRecipes.contains(tRecipe)) tRecipes.add(tRecipe);
 			for (Recipe tRecipe : tRecipes) arecipes.add(new CachedDefaultRecipe(tRecipe));
+			sortRecipes();
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
