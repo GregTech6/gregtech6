@@ -461,9 +461,9 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		}
 	}
 	
-	/** Thanks to codewarrior for doing this, because Greg was way too lazy to do it. */
+	/** Thanks to codewarrior for doing most of this, because Greg was way too lazy to do it, but not lazy enough to not fix it. XD */
 	public void sortRecipes() {
-		if (arecipes.size() > 500) return;
+		if (arecipes.size() > 1000) return;
 		Collections.sort(arecipes, new Comparator<CachedRecipe>() {@Override public int compare(CachedRecipe aRecipe1, CachedRecipe aRecipe2) {
 			Recipe tRecipe1 = ((CachedDefaultRecipe)aRecipe1).mRecipe, tRecipe2 = ((CachedDefaultRecipe)aRecipe2).mRecipe;
 			int
@@ -472,25 +472,30 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			tCompare = Integer.compare(tRecipe1.mFluidInputs.length, tRecipe2.mFluidInputs.length);
 			if (tCompare != 0) return tCompare;
 			if (tRecipe1.mFluidInputs.length > 0) {
-				tCompare = tRecipe1.mFluidInputs[0].getUnlocalizedName().compareTo(tRecipe2.mFluidInputs[0].getUnlocalizedName());
+				tCompare = FL.regName(tRecipe1.mFluidInputs[0]).compareTo(FL.regName(tRecipe2.mFluidInputs[0]));
 				if (tCompare != 0) return tCompare;
 			}
 			tCompare = Integer.compare(tRecipe1.mInputs.length, tRecipe2.mInputs.length);
 			if (tCompare != 0) return tCompare;
 			if (tRecipe1.mInputs.length > 0) {
 				ItemStack tInput1 = tRecipe1.mInputs[0], tInput2 = tRecipe2.mInputs[0];
-				if (tInput1 != null) {
-					if (tInput2 == null) return -1;
+				if (ST.valid(tInput1)) {
+					if (ST.invalid(tInput2)) return -1;
 					OreDictItemData tData1 = OM.anydata_(tInput1), tData2 = OM.anydata_(tInput2);
 					if (tData1 != null && !tData1.mBlackListed) {
 						if (tData2 == null || tData2.mBlackListed) return -1;
-						tCompare = tData1.mMaterial.mMaterial.toString().compareTo(tData2.mMaterial.mMaterial.toString());
+						tCompare = tData1.mMaterial.mMaterial.mNameInternal.compareTo(tData2.mMaterial.mMaterial.mNameInternal);
 						if (tCompare != 0) return tCompare;
 						tCompare = Long.compare(tData1.mMaterial.mAmount, tData2.mMaterial.mAmount);
 						if (tCompare != 0) return tCompare;
 					} else if (tData2 != null && !tData2.mBlackListed) return 1;
-					return tInput1.getDisplayName().compareTo(tInput2.getDisplayName());
-				} else if (tInput2 != null) return 1;
+					tCompare = Long.compare(tRecipe1.mDuration, tRecipe2.mDuration);
+					if (tCompare != 0) return tCompare;
+					tCompare = ST.regName(tInput1).compareTo(ST.regName(tInput2));
+					if (tCompare != 0) return tCompare;
+					return Short.compare(ST.meta_(tInput1), ST.meta_(tInput2));
+				}
+				if (ST.valid(tInput2)) return 1;
 			}
 			return 0;
 		}});

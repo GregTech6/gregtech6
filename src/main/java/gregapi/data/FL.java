@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -574,6 +574,13 @@ public enum FL {
 	
 	
 	public static FluidStack[] array(FluidStack... aFluids) {return aFluids;}
+	
+	public static String regName (IFluidTank aTank) {return aTank == null ? null : regName_(aTank);}
+	public static String regName_(IFluidTank aTank) {return regName(aTank.getFluid());}
+	public static String regName (FluidStack aFluid) {return aFluid == null ? null : regName_(aFluid);}
+	public static String regName_(FluidStack aFluid) {return regName(aFluid.getFluid());}
+	public static String regName (Fluid aFluid) {return aFluid == null ? null : regName_(aFluid);}
+	public static String regName_(Fluid aFluid) {return FluidRegistry.getFluidName(aFluid);}
 	
 	public static short id (IFluidTank aTank) {return aTank == null ? -1 : id_(aTank);}
 	public static short id_(IFluidTank aTank) {return id(aTank.getFluid());}
