@@ -30,6 +30,9 @@ Silicon to SiO2 use Steam instead of Water
 
 Strength and Resistance Potion Buff whenever you respawn
 
+Palm Tree with Coconuts. (please note that the work is already partially done since Palm Planks already exist)
+Pams alike Hazelnuts and Coconuts.
+
 Axle/Gearbox -> Rotate Entities standing on it
 Axle -> Move Entities standing on it Sideways
 Luminosensor => Light Update Bug?
@@ -182,9 +185,6 @@ Canned Air
 Hay Bales and Grass Bales = -7 Fall Damage
 
 Slime on Walls inside Slimechunks but only on Rock Walls between Y-5 and Y-24
-
-Palm Tree with Coconuts. (please note that the work is already partially done since Palm Planks already exist)
-Pams alike Hazelnuts and Coconuts.
 
 IRL Zirconium Dioxide (2988K/4570K Melting/Boiling point) is used as a high temperature ceramic crucible material, but there is no such crucible in GT6 (and I am not sure if adding it would break progression)
 apparently, pure ZrO2 is highly susceptible to thermal stress, and it is doped with other minerals such as Yttria to gain desirable thermal/mechanical properties
