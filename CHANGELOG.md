@@ -17,7 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.12.00: (Not released yet, will be Tuesday because Bear)
+6.12.00:
 [NOTE] Bugfix Releases will still happen ofcourse. ;)
 [FIXED] A long going Bug in the Steam Engines that made it impossible to run them at their upper Limit. I would still not recommend running them that fast but I cant tell you what not to do.
 [CHANGED] Large Fermenter Auto-Emits Items and Fluids at different places now. Fluids stay at the same Position, Items are one block above.
