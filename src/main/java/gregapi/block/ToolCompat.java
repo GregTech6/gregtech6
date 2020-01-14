@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -242,7 +242,7 @@ public class ToolCompat {
 		}
 		if (aTool.equals(TOOL_prospector)) {
 			if (prospectOre(aBlock, aMeta, aChatReturn, aWorld, aX, aY, aZ)) return 100;
-			if (aBlock != Blocks.obsidian && (aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) || WD.stone(aBlock, aMeta))) {
+			if (aBlock != Blocks.obsidian && aBlock != BlocksGT.RockOres && (aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) || WD.stone(aBlock, aMeta))) {
 				if (prospectStone(aBlock, aMeta, aQuality, aChatReturn, aWorld, aSide, aX, aY, aZ)) return 10000;
 			}
 			return 0;
@@ -367,10 +367,12 @@ public class ToolCompat {
 			tZ = (int) (aZ-4-aQuality+tRandom.nextInt(j));
 			tBlock = aWorld.getBlock(tX, tY, tZ);
 			
-			OreDictItemData tAssotiation = OM.anyassociation((tBlock instanceof IBlockRetrievable ? ((IBlockRetrievable)tBlock).getItemStackFromBlock(aWorld, tX, tY, tZ, SIDE_INVALID) : ST.make(tBlock, 1, aWorld.getBlockMetadata(tX, tY, tZ))));
-			if (tAssotiation != null && tAssotiation.mPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DENSE_ORE)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES, "Found traces of ") + tAssotiation.mMaterial.mMaterial.getLocal() + " Ore.");
-				return T;
+			if (tBlock != NB && tBlock != Blocks.obsidian && tBlock != BlocksGT.RockOres) {
+				OreDictItemData tAssotiation = OM.anyassociation((tBlock instanceof IBlockRetrievable ? ((IBlockRetrievable)tBlock).getItemStackFromBlock(aWorld, tX, tY, tZ, SIDE_INVALID) : ST.make(tBlock, 1, aWorld.getBlockMetadata(tX, tY, tZ))));
+				if (tAssotiation != null && tAssotiation.mPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DENSE_ORE)) {
+					if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES, "Found traces of ") + tAssotiation.mMaterial.mMaterial.getLocal() + " Ore.");
+					return T;
+				}
 			}
 		}
 		if (aChatReturn != null && aChatReturn.isEmpty()) aChatReturn.add(LH.get(LH.PROSPECTING_NOTHING, "No traces of Ore found."));
