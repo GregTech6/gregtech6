@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A long going Bug in the Steam Engines that made it impossible to run them at their upper Limit. I would still not recommend running them that fast but I cant tell you what not to do.
 [CHANGED] Large Fermenter Auto-Emits Items and Fluids at different places now. Fluids stay at the same Position, Items are one block above.
 [CHANGED] Reactors can explode now.
+[CHANGED] Welder has 9 Input slots now. Because someone wanted to add GalaxySpace Recipes to it via MineTweaker.
 [ADDED] NEI Recipes for GT6 Machines are more sorted now thanks to a Code submission by codewarrior.
 [ADDED] Singleblock Diesel Engines for easier usage of Rotational Units. They run at 16, 32, 64, 128, 256 and 512 RU/t depending on Tier.
 [ADDED] A Crossing for Crucibles so that more Molds can be around one Crucible without having to use limited Universal Extenders.
