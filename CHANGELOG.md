@@ -14,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.12.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] A doubled up Magnifying Glass Tooltip on the Large Heat Exchanger.
 
 
 6.12.00:
