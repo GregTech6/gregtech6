@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -108,6 +108,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TAKE_PINCERS));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_MEASURE_GEIGER_COUNTER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
@@ -176,9 +177,17 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 			}
 			return 0;
 		}
+		if (aTool.equals(TOOL_softhammer)) {
+			mStopped = !mStopped;
+			if (aChatReturn != null) {
+				aChatReturn.add(mStopped?"Reactor Block is OFF":"Reactor Block is ON");
+			}
+			return 10000;
+		}
 		if (aTool.equals(TOOL_geigercounter)) {
 			if (aChatReturn != null) {
 				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
+				aChatReturn.add(mStopped?"Reactor Block is OFF":"Reactor Block is ON");
 			}
 			return 10000;
 		}
@@ -192,6 +201,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 			if (aChatReturn != null) {
 				aChatReturn.add("Input: "  + mTanks[0].content());
 				aChatReturn.add("Output: " + mTanks[1].content());
+				aChatReturn.add(mStopped?"Reactor Block is OFF":"Reactor Block is ON");
 			}
 			return 1;
 		}
@@ -206,7 +216,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 				int tSlot = aHitX < 0.5 ? aHitZ < 0.5 ? 0 : 1 : aHitZ < 0.5 ? 2 : 3;
 				if (!slotHas(tSlot) && ST.use(aPlayer, aStack)) {
 					slot(tSlot, ST.amount(1, aStack));
-					if (mTanks[0].isEmpty()) mStopped = T;
+					mStopped = T;
 					UT.Sounds.send(SFX.MC_CLICK, this);
 					updateClientData();
 				}

@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.12.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 [FIXED] A doubled up Magnifying Glass Tooltip on the Large Heat Exchanger.
 [FIXED] Large Heat Exchanger did not let Pipes connect to its Output.
+[FIXED] The ON/OFF State of a Reactor while setting it up is more consistent now. Also Soft Hammers can turn it ON/OFF too now.
 
 
 6.12.00:
