@@ -174,21 +174,9 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		if (aTool.equals(TOOL_geigercounter)) {
 			if (aChatReturn != null) {
 				aChatReturn.add("Neutron Levels: " + oNeutronCounts[0] + "n; " + oNeutronCounts[1] + "n; " + oNeutronCounts[2] + "n; " + oNeutronCounts[3] + "n");
+				aChatReturn.add(mStopped?"Reactor Block is OFF":"Reactor Block is ON");
 			}
 			return 10000;
-		}
-		if (aTool.equals(TOOL_thermometer)) {
-			if (aChatReturn != null) {
-				aChatReturn.add("Heat Levels: " + (oEnergy <= 0 ? "None" : oEnergy + " HU"));
-			}
-			return 10000;
-		}
-		if (aTool.equals(TOOL_magnifyingglass)) {
-			if (aChatReturn != null) {
-				aChatReturn.add("Input: "  + mTanks[0].content());
-				aChatReturn.add("Output: " + mTanks[1].content());
-			}
-			return 1;
 		}
 		return 0;
 	}
@@ -201,7 +189,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 				int tSlot = aHitX < 0.5 ? aHitZ < 0.5 ? 0 : 1 : aHitZ < 0.5 ? 2 : 3;
 				if (!slotHas(tSlot) && ST.use(aPlayer, aStack)) {
 					slot(tSlot, ST.amount(1, aStack));
-					if (mTanks[0].isEmpty()) mStopped = T;
+					mStopped = T;
 					UT.Sounds.send(SFX.MC_CLICK, this);
 					updateClientData();
 				}
