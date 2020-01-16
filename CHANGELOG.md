@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.12.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 [FIXED] A doubled up Magnifying Glass Tooltip on the Large Heat Exchanger.
+[FIXED] Large Heat Exchanger did not let Pipes connect to its Output.
 
 
 6.12.00:

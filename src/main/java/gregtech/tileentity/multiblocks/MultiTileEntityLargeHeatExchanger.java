@@ -46,12 +46,13 @@ import gregapi.util.WD;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityLargeHeatExchanger extends TileEntityBase10MultiBlockBase implements ITileEntityRunningActively, ITileEntityEnergy, IMultiBlockFluidHandler, IMultiBlockEnergy {
+public class MultiTileEntityLargeHeatExchanger extends TileEntityBase10MultiBlockBase implements IFluidHandler, ITileEntityRunningActively, ITileEntityEnergy, IMultiBlockFluidHandler, IMultiBlockEnergy {
 	public short mEfficiency = 10000;
 	public long mEnergy = 0, mRate = 8;
 	public TagData mEnergyTypeEmitted = TD.Energy.HU;
