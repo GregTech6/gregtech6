@@ -59,7 +59,7 @@ public class MultiTileEntityCrossing extends TileEntityBase07Paintable implement
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 			if (tDelegator.mTileEntity instanceof ITileEntityCrucible) {
 				rReturn = ((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(aMold, tDelegator.mSideOfTileEntity, aSideOfMold);
-				break;
+				if (rReturn) break;
 			}
 		}
 		mLock = F;
