@@ -18,6 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Large Heat Exchanger did not let Pipes connect to its Output.
 [FIXED] The ON/OFF State of a Reactor while setting it up is more consistent now. Also Soft Hammers can turn it ON/OFF too now.
 [FIXED] Crucible Crossings were rather directional when chained together.
+[CHANGED] Purified and Refined Coal Ore in the Coke Oven will give 5 Chunks of Coke instead of 1 Gem.
 
 
 6.12.00:
