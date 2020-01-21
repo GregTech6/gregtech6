@@ -10,10 +10,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.12.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 
 
-6.12.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.12.01:
 [FIXED] A doubled up Magnifying Glass Tooltip on the Large Heat Exchanger.
 [FIXED] Large Heat Exchanger did not let Pipes connect to its Output.
 [FIXED] The ON/OFF State of a Reactor while setting it up is more consistent now. Also Soft Hammers can turn it ON/OFF too now.
