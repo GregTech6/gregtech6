@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -279,6 +279,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		if (!aDoInject) return mIgnorePower ? 0 : aPower;
 		
 		if (Math.abs(aSpeed) > mMaxThroughPut) {
+			if (mTimer < 10) return aPower;
 			UT.Sounds.send(SFX.MC_BREAK, this);
 			byte tCount = FACE_CONNECTION_COUNT[mAxleGear & 63];
 			if (tCount > 0) {
