@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -20,7 +20,7 @@
 package gregapi.api.example;
 
 /**
- * @author Max Mustermann
+ * @author Your Name Here, also might be worth replacing that automatically generated Copyright notice with your LPGL compatible License/Name instead of mine.
  * 
  * An example implementation for a Mod using my System. Copy and rename this File into your source Directory.
  * 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -23,7 +23,7 @@ import gregapi.api.Abstract_Proxy;
 
 
 /**
- * @author Max Mustermann
+ * @author Your Name Here, also might be worth replacing that automatically generated Copyright notice with your LPGL compatible License/Name instead of mine.
  * 
  * An example implementation for a Serverside Proxy using my System.
  */
