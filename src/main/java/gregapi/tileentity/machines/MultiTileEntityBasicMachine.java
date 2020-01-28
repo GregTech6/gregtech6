@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -698,7 +698,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 			tMaxProcessCount = canOutput(tRecipe);
 			if (tMaxProcessCount <= 0) return FOUND_RECIPE_BUT_DID_NOT_MEET_REQUIREMENTS;
-			if (aApplyRecipe) aApplyRecipe = (!mRequiresIgnition || mIgnited || mSuccessful || mActive);
+			if (aApplyRecipe) aApplyRecipe = (!mRequiresIgnition || mIgnited || mActive);
 			if (!tRecipe.isRecipeInputEqual(aApplyRecipe, F, mTanksOutput, tInputs)) return FOUND_RECIPE_BUT_DID_NOT_MEET_REQUIREMENTS;
 			mCouldUseRecipe = T;
 			if (!aApplyRecipe) return FOUND_AND_COULD_HAVE_USED_RECIPE;
@@ -711,7 +711,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 			tMaxProcessCount = canOutput(tRecipe);
 			if (tMaxProcessCount <= 0) return FOUND_RECIPE_BUT_DID_NOT_MEET_REQUIREMENTS;
-			if (aApplyRecipe) aApplyRecipe = (!mRequiresIgnition || mIgnited || mSuccessful || mActive);
+			if (aApplyRecipe) aApplyRecipe = (!mRequiresIgnition || mIgnited || mActive);
 			if (!tRecipe.isRecipeInputEqual(aApplyRecipe, F, mTanksInput, tInputs)) return FOUND_RECIPE_BUT_DID_NOT_MEET_REQUIREMENTS;
 			mCouldUseRecipe = T;
 			if (!aApplyRecipe) return FOUND_AND_COULD_HAVE_USED_RECIPE;
@@ -762,23 +762,24 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (mTimer > 20) {
 				mActive = doInactive(aTimer);
 				mRunning = F;
+				mIgnited = F;
 			}
 			mSuccessful = F;
 		}
 		mEnergy -= mInputMax; if (mEnergy < 0) mEnergy = 0;
-		mIgnited = F;
 	}
 	
 	public boolean doActive(long aTimer, long aEnergy) {
 		boolean rActive = F;
 		
 		if (mMaxProgress <= 0) {
-			// Successfully produced something || just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Check once every Minute
-			if ((mIgnited || mSuccessful || mInventoryChanged || !mRunning || aTimer%1200 == 5) && checkRecipe(!mStopped, T) == FOUND_AND_SUCCESSFULLY_USED_RECIPE) {
+			// Successfully produced something or just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Check once every Minute
+			if ((mIgnited || mInventoryChanged || !mRunning || aTimer%1200 == 5) && checkRecipe(!mStopped, T) == FOUND_AND_SUCCESSFULLY_USED_RECIPE) {
 				onProcessStarted();
 			} else {
 				mProgress = 0;
 			}
+			if (mTimer > 10) mIgnited = F;
 		}
 		
 		mSuccessful = F;
@@ -795,7 +796,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					if (mTanksOutput[j].contains(mOutputFluids[i])) {
 						updateInventory();
 						mTanksOutput[j].add(mOutputFluids[i].amount);
-						mSuccessful = T;
+						mSuccessful = mIgnited = T;
 						mOutputFluids[i] = null;
 						break;
 					}
@@ -803,7 +804,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				for (int i = 0; i < mOutputFluids.length; i++) if (mOutputFluids[i] != null) for (int j = 0; j < mTanksOutput.length; j++) {
 					if (mTanksOutput[j].isEmpty()) {
 						mTanksOutput[j].setFluid(mOutputFluids[i]);
-						mSuccessful = T;
+						mSuccessful = mIgnited = T;
 						mOutputFluids[i] = null;
 						break;
 					}
@@ -822,7 +823,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					mChargeRequirement = 0;
 					mOutputItems = ZL_IS;
 					mOutputFluids = ZL_FS;
-					mSuccessful = T;
+					mSuccessful = mIgnited = T;
 					
 					for (byte tSide : ALL_SIDES_VALID_FIRST[FACING_TO_SIDE[mFacing][mItemAutoOutput]]) if (FACE_CONNECTED[FACING_ROTATIONS[mFacing][tSide]][mItemOutputs]) {
 						DelegatorTileEntity<TileEntity> tDelegator = getItemOutputTarget(tSide);
@@ -843,8 +844,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			tOutputEmpty = T;
 			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slotHas(i)) {tOutputEmpty = F; break;}
 			
-			// Output not Empty && (Successfully produced something || just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Output has been blocked since 256 active ticks || Check once every Minute)
-			if (!tOutputEmpty && (mSuccessful || mIgnited || mInventoryChanged || !mRunning || mOutputBlocked == 1 || aTimer%1200 == 5)) doOutputItems();
+			// Output not Empty && (Successfully produced something or just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Output has been blocked since 256 active ticks || Check once every Minute)
+			if (!tOutputEmpty && (mIgnited || mInventoryChanged || !mRunning || mOutputBlocked == 1 || aTimer%1200 == 5)) doOutputItems();
 			
 			tOutputEmpty = T;
 			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slotHas(i)) {tOutputEmpty = F; mOutputBlocked++; break;}
