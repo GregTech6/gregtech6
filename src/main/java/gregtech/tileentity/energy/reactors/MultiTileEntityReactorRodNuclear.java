@@ -68,7 +68,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + (mDurability / 1200) + LH.Chat.CYAN   + " Minutes");
 		aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther        + LH.Chat.PURPLE + " Neutrons/t");
 		aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
-		aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv);
+		aList.add(LH.Chat.YELLOW + "Criticality: "    + LH.Chat.WHITE + "1/" + mNeutronDiv);
 		aList.add(LH.Chat.DGRAY  + "Used in Nuclear Reactor Core");
 	}
 	
