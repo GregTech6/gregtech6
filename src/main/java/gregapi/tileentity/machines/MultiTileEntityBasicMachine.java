@@ -759,7 +759,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			mActive = doActive(aTimer, Math.min(mInputMax, mEnergy));
 			mRunning = T;
 		} else {
-			if (mTimer > 20) {
+			if (aTimer > 40) {
 				mActive = doInactive(aTimer);
 				mRunning = F;
 				mIgnited = F;
@@ -779,7 +779,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			} else {
 				mProgress = 0;
 			}
-			if (mTimer > 10) mIgnited = F;
+			if (aTimer > 40) mIgnited = F;
 		}
 		
 		mSuccessful = F;
