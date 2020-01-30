@@ -110,6 +110,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TAKE_PINCERS));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_MEASURE_GEIGER_COUNTER));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_MEASURE_THERMOMETER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}

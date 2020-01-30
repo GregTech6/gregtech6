@@ -19,40 +19,44 @@
 
 package gregtech.tileentity.sensors;
 
+import static gregapi.data.CS.*;
+
 import gregapi.data.BI;
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.MultiTileEntitySensorTE;
+import gregapi.util.UT;
 import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore;
 import net.minecraft.tileentity.TileEntity;
-
-import static gregapi.data.CS.CA_RED_255;
 
 /**
  * @author Gregorius Techneticies, Erik3003
  */
-public class MultiTileEntityGeigercounter extends MultiTileEntitySensorTE {
-	static {LH.add("gt.tooltip.sensor.geiger_counter", "Measures number of neutrons");}
-	@Override public String getSensorDescription() {return LH.get("gt.tooltip.sensor.geiger_counter");}
+public class MultiTileEntityGeigerCounter extends MultiTileEntitySensorTE {
+	static {LH.add("gt.tooltip.sensor.geigercounter", "Measures Neutron Energy Levels");}
+	@Override public String getSensorDescription() {return LH.get("gt.tooltip.sensor.geigercounter");}
 	
 	@Override
 	public long getCurrentValue(DelegatorTileEntity<TileEntity> aDelegator) {
 		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) {
-			int[] oNeutronCounts = ((MultiTileEntityReactorCore)aDelegator.mTileEntity).oNeutronCounts;
-			return oNeutronCounts[0] + oNeutronCounts[1] + oNeutronCounts[2] + oNeutronCounts[3];
+			return UT.Code.sum(((MultiTileEntityReactorCore)aDelegator.mTileEntity).oNeutronCounts);
 		}
 		return 0;
 	}
 	
 	@Override
 	public long getCurrentMax(DelegatorTileEntity<TileEntity> aDelegator) {
-		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) return ((MultiTileEntityReactorCore)aDelegator.mTileEntity).oEnergy;
+		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) {
+			if (FL.Coolant_IC2.is(((MultiTileEntityReactorCore)aDelegator.mTileEntity).mTanks[0])) return ((MultiTileEntityReactorCore)aDelegator.mTileEntity).mTanks[0].getCapacity();
+			return Long.MAX_VALUE;
+		}
 		return 0;
 	}
 	
-	@Override public short[] getSymbolColor() {return CA_RED_255;}
+	@Override public short[] getSymbolColor() {return CA_GREEN_255;}
 	@Override public IIconContainer getSymbolIcon() {return BI.CHAR_NEUTRON;}
 	@Override public IIconContainer getTextureFront() {return sTextureFront;}
 	@Override public IIconContainer getTextureBack () {return sTextureBack;}
@@ -69,5 +73,5 @@ public class MultiTileEntityGeigercounter extends MultiTileEntitySensorTE {
 	sOverlayBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/geigercounter/overlay/back"),
 	sOverlaySide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/geigercounter/overlay/side");
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.geiger_counter";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.geigercounter";}
 }
