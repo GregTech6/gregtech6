@@ -34,12 +34,15 @@ import static gregapi.data.CS.CA_RED_255;
  * @author Gregorius Techneticies, Erik3003
  */
 public class MultiTileEntityGeigercounter extends MultiTileEntitySensorTE {
-	static {LH.add("gt.tooltip.sensor.geigercounter", "Measures neutons of a reactor");}
-	@Override public String getSensorDescription() {return LH.get("gt.tooltip.sensor.geigercounter");}
+	static {LH.add("gt.tooltip.sensor.geiger_counter", "Measures number of neutrons");}
+	@Override public String getSensorDescription() {return LH.get("gt.tooltip.sensor.geiger_counter");}
 	
 	@Override
 	public long getCurrentValue(DelegatorTileEntity<TileEntity> aDelegator) {
-		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) return ((MultiTileEntityReactorCore)aDelegator.mTileEntity).oEnergy;
+		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) {
+		    int[] oNeutronCounts = ((MultiTileEntityReactorCore)aDelegator.mTileEntity).oNeutronCounts;
+		    return oNeutronCounts[0] + oNeutronCounts[1] + oNeutronCounts[2] + oNeutronCounts[3];
+        }
 		return 0;
 	}
 	
@@ -50,7 +53,7 @@ public class MultiTileEntityGeigercounter extends MultiTileEntitySensorTE {
 	}
 	
 	@Override public short[] getSymbolColor() {return CA_RED_255;}
-	@Override public IIconContainer getSymbolIcon() {return BI.CHAR_KELVIN;}
+	@Override public IIconContainer getSymbolIcon() {return BI.CHAR_NEUTRON;}
 	@Override public IIconContainer getTextureFront() {return sTextureFront;}
 	@Override public IIconContainer getTextureBack () {return sTextureBack;}
 	@Override public IIconContainer getTextureSide () {return sTextureSide;}
@@ -66,5 +69,5 @@ public class MultiTileEntityGeigercounter extends MultiTileEntitySensorTE {
 	sOverlayBack    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/geigercounter/overlay/back"),
 	sOverlaySide    = new Textures.BlockIcons.CustomIcon("machines/redstone/sensors/geigercounter/overlay/side");
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.geigercounter";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.redstone.sensors.geiger_counter";}
 }
