@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,8 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
+import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.gui.ContainerClient;
 import gregapi.gui.ContainerCommon;
 import gregapi.gui.Slot_Normal;
@@ -83,7 +85,8 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		// TODO
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_ACCESS_SCOOP));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_MEASURE_THERMOMETER));
 	}
 	
 	@Override

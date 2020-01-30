@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -140,6 +140,8 @@ public class LH {
 	, TOOL_TO_DECALCIFY_CHISEL = "gt.lang.use.chisel.to.decalcify"
 	, TOOL_TO_DETAIL_MAGNIFYINGGLASS = "gt.lang.use.magnifyingglass.to.detail"
 	, TOOL_TO_MEASURE_GEIGER_COUNTER = "gt.lang.use.geigercoutner.to.measure"
+	, TOOL_TO_MEASURE_THERMOMETER = "gt.lang.use.thermometer.to.measure"
+	, TOOL_TO_ACCESS_SCOOP = "gt.lang.use.scoop.to.access"
 	, TOOL_TO_REMOVE_SHOVEL = "gt.lang.use.shovel.to.empty"
 	, TOOL_TO_CHANGE_DESIGN_CHISEL = "gt.lang.use.chisel.to.switch.design"
 	, TOOL_TO_HARVEST = "gt.lang.tool.to.harvest"
@@ -389,6 +391,8 @@ public class LH {
 		add(TOOL_TO_DECALCIFY_CHISEL                    , "Use Chisel to decalcify");
 		add(TOOL_TO_DETAIL_MAGNIFYINGGLASS              , "Use Magnifying Glass to see Details");
 		add(TOOL_TO_MEASURE_GEIGER_COUNTER              , "Use Geiger Counter to Measure");
+		add(TOOL_TO_MEASURE_THERMOMETER                 , "Use Thermometer to Measure");
+		add(TOOL_TO_ACCESS_SCOOP                        , "Use Scoop to extract (Bumble-)Bees");
 		add(TOOL_TO_TOGGLE_INPUTS_MONKEY_WRENCH         , "Use Monkey Wrench to toggle Inputs");
 		add(TOOL_TO_TOGGLE_OUTPUTS_MONKEY_WRENCH        , "Use Monkey Wrench to toggle Outputs");
 		add(TOOL_TO_TOGGLE_AUTO_INPUTS_MONKEY_WRENCH    , "Use Monkey Wrench to toggle automatic Inputs");

@@ -131,6 +131,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		if (mAcidProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_FIRE) + " ("+(FLAME_RANGE+1)+"m)");
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_MEASURE_THERMOMETER));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_REMOVE_SHOVEL));
 	}
 	

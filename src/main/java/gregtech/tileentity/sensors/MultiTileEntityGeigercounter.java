@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 Gregorius Techneticies
  *
  * This file is part of GregTech.
  *
@@ -40,9 +40,9 @@ public class MultiTileEntityGeigercounter extends MultiTileEntitySensorTE {
 	@Override
 	public long getCurrentValue(DelegatorTileEntity<TileEntity> aDelegator) {
 		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) {
-		    int[] oNeutronCounts = ((MultiTileEntityReactorCore)aDelegator.mTileEntity).oNeutronCounts;
-		    return oNeutronCounts[0] + oNeutronCounts[1] + oNeutronCounts[2] + oNeutronCounts[3];
-        }
+			int[] oNeutronCounts = ((MultiTileEntityReactorCore)aDelegator.mTileEntity).oNeutronCounts;
+			return oNeutronCounts[0] + oNeutronCounts[1] + oNeutronCounts[2] + oNeutronCounts[3];
+		}
 		return 0;
 	}
 	
