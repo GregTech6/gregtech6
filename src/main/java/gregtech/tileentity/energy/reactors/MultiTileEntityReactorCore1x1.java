@@ -54,7 +54,6 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onServerTickPost(boolean aFirst) {
-		if (SERVER_TIME % 20 != 0) return;
 		if (aFirst) {
 			if (mStopped) {
 				//

@@ -39,17 +39,18 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodBase {
 	public long mDurability = 0;
-	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8;
+	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8, mNeutronOptimum = 128;
 	public short mDepleted = -1;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		mDurability = aNBT.getLong(aNBT.hasKey(NBT_DURABILITY) ? NBT_DURABILITY : NBT_MAXDURABILITY);
-		if (aNBT.hasKey(NBT_NUCLEAR_SELF )) mNeutronSelf  = aNBT.getInteger(NBT_NUCLEAR_SELF );
-		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther = aNBT.getInteger(NBT_NUCLEAR_OTHER);
-		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv   = aNBT.getInteger(NBT_NUCLEAR_DIV  );
-		if (aNBT.hasKey(NBT_VALUE        )) mDepleted     = aNBT.getShort(NBT_VALUE);
+		if (aNBT.hasKey(NBT_NUCLEAR_SELF )) mNeutronSelf    = aNBT.getInteger(NBT_NUCLEAR_SELF );
+		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther   = aNBT.getInteger(NBT_NUCLEAR_OTHER);
+		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv     = aNBT.getInteger(NBT_NUCLEAR_DIV  );
+		if (aNBT.hasKey(NBT_NUCLEAR_OPTI )) mNeutronOptimum = aNBT.getInteger(NBT_NUCLEAR_OPTI);
+		if (aNBT.hasKey(NBT_VALUE        )) mDepleted       = aNBT.getShort(NBT_VALUE);
 	}
 	
 	@Override
@@ -66,20 +67,26 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + (mDurability / 1200) + LH.Chat.CYAN   + " Minutes");
+		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + mDurability          + LH.Chat.CYAN   + "00 Neutrons");
 		aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther        + LH.Chat.PURPLE + " Neutrons/t");
-		aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
+		// Tool tip commented out because always the same as the emission right now, so unused.
+		//aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
+		aList.add(LH.Chat.GREEN  + "Optimum: "   + LH.Chat.WHITE + mNeutronOptimum      + LH.Chat.PURPLE + " Neutrons/t");
 		aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv);
 		aList.add(LH.Chat.DGRAY  + "Used in Nuclear Reactor Core");
 	}
 	
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		if (--mDurability <= 0) mDurability = -1;
-		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 		int tNeutronDiv = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronDiv * 2 : mNeutronDiv;
-		return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, tNeutronDiv);
+		int tEmission = mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, tNeutronDiv);
+		double tEfficiencyFactor = 5d * Math.min(Math.abs(-(1d/(double)mNeutronOptimum) * ((double)tEmission - (double)mNeutronOptimum)) + 0.5d , 1d);
+		//double tEfficiencyFactor = 5d * (Math.pow(Math.abs(Math.cos(Math.PI * (double)Math.max(Math.min(tEmission, 2 * mNeutronOptimum), 0) * (1d / 2d * (double)mNeutronOptimum))) - 1d, 7d) * 1.0d + 1d);
+		tEmission = (int)UT.Code.divup((int)((double)tEmission * tEfficiencyFactor), 100);
+		mDurability = tEmission > mDurability ? -1 : mDurability - tEmission;
+		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
+		return tEmission;
 	}
 	
 	@Override

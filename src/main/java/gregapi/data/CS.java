@@ -1049,6 +1049,7 @@ public class CS {
 	, NBT_NUCLEAR_SELF              = "gt.nuclear.self"             // Number
 	, NBT_NUCLEAR_OTHER             = "gt.nuclear.other"            // Number
 	, NBT_NUCLEAR_DIV               = "gt.nuclear.div"              // Number
+	, NBT_NUCLEAR_OPTI				= "gt.nuclear.opti"				// Number
 	, NBT_DURABILITY                = "gt.durability"               // Number
 	, NBT_MAXDURABILITY             = "gt.maxdurability"            // Number
 	, NBT_QUALITY                   = "gt.quality"                  // Byte
