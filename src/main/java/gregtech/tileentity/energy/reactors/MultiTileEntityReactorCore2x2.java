@@ -26,6 +26,7 @@ import java.util.List;
 
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
+import gregapi.data.FM;
 import gregapi.item.IItemReactorRod;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -55,6 +56,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onServerTickPost(boolean aFirst) {
+		//if (SERVER_TIME % 20 != 0) return;
 		if (aFirst) {
 			if (mStopped) {
 				//
@@ -116,13 +118,21 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 			if (getReactorRodNeutronReaction(3)) mRunning = T;
 			
 			oEnergy = mEnergy - tEnergy;
-			tEnergy = mEnergy/EU_PER_COOLANT;
-			
-			if (tEnergy > 0) {
-				// TODO Heat up different Coolants
-				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
-					mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
-				} else {
+
+			if (mEnergy > 0) {
+				boolean willExplode = false;
+				if (FL.Coolant_IC2.is(mTanks[0])) {
+					tEnergy = mEnergy/EU_PER_COOLANT;
+					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
+						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+					} else {willExplode = true;}
+				} else if (FL.DistW.is(mTanks[0])) {
+					tEnergy = mEnergy / 80;
+					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Steam.make(tEnergy * 160))) {
+						mEnergy -= mTanks[0].remove(tEnergy) * 80;
+					} else {willExplode = true;}
+				} else {willExplode = true;}
+				if (willExplode) {
 					// TODO proper explosion.
 					explode(10);
 					UT.Sounds.send(SFX.MC_EXPLODE, this);

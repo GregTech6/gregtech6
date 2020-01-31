@@ -59,7 +59,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	public byte mMode = 0;
 	public boolean mRunning = F, mStopped = F;
 	public FluidTankGT[] mTanks = {new FluidTankGT(64000), new FluidTankGT(64000)};
-	
+
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -236,7 +236,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		return FL.Coolant_IC2.is(aFluidToFill) ? mTanks[0] : null; // TODO MULTIPLE COOLANT TYPES
+		return FL.Coolant_IC2.is(aFluidToFill) || FL.DistW.is(aFluidToFill) ? mTanks[0] : null; // TODO MULTIPLE COOLANT TYPES
 	}
 	
 	@Override
@@ -251,7 +251,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	
 	@Override
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
-		if (!FL.Coolant_IC2.is(aFluid)) return 0; // TODO MULTIPLE COOLANT TYPES
+		if (!(FL.Coolant_IC2.is(aFluid) || !FL.DistW.is(aFluid))) return 0; // TODO MULTIPLE COOLANT TYPES
 		updateInventory();
 		return mTanks[0].fill(aFluid, aDoFill);
 	}

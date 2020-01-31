@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.render.BlockTextureDefault;
@@ -77,7 +78,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (--mDurability <= 0) mDurability = -1;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
-		return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
+		int tNeutronDiv = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronDiv * 2 : mNeutronDiv;
+		return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, tNeutronDiv);
 	}
 	
 	@Override
