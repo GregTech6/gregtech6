@@ -48,7 +48,7 @@ public class MultiTileEntityReactorRodReflector extends MultiTileEntityReactorRo
 	
 	@Override
 	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
-		return aNeutrons;
+		return aReactor.mStopped ? 0 : aNeutrons;
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.rods.reflector";}
