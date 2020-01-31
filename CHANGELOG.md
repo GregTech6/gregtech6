@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Gearboxes sometimes breaking/overloading on World Load.
 [FIXED] Some Issue with Coke Ovens and other Ignition based Basic Machines, hopefully.
 [FIXED] Bumbliaries lacking Tooltips.
+[FIXED] Made Tooltips for Power Input/Output of Machines now have a special verbiage for a Minimum of "1 Unit per Tick" or less, by saying "up to MAX per Tick" instead.
 [ADDED] Geiger Counter Sensor courtesy of Erik3003.
 
 
