@@ -92,6 +92,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			long tEnergy = mEnergy;
 			
 			if (getReactorRodNeutronReaction(0)) mRunning = T;
+
 			oEnergy = mEnergy - tEnergy;
 
 			if (mEnergy > 0) {

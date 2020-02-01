@@ -99,9 +99,9 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	static {
 		LH.add("gt.tooltip.reactorcore.1", "Primary Facing Emits Hot Coolant.");
 		LH.add("gt.tooltip.reactorcore.2", "Secondary Facing Emits Cold Coolant when over half full.");
-        LH.add("gt.tooltip.reactorcore.3", "Using Distilled Water as Reactor Coolant has no special effects.");
-        LH.add("gt.tooltip.reactorcore.4", "Using Coolant as Reactor Coolant has these special effects:");
-        LH.add("gt.tooltip.reactorcore.5", "Fuel Rods have four times the Emission and half the Factor.");
+		LH.add("gt.tooltip.reactorcore.3", "Using Distilled Water as Reactor Coolant has no special effects.");
+		LH.add("gt.tooltip.reactorcore.4", "Using Coolant as Reactor Coolant has these special effects:");
+		LH.add("gt.tooltip.reactorcore.5", "Fuel Rods have four times the Emission and half the Factor.");
 	}
 	
 	@Override
