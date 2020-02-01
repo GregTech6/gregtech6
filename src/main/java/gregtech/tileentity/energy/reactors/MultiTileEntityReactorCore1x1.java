@@ -109,7 +109,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 				} else {willExplode = true;}
 				if (willExplode) {
 					// TODO proper explosion.
-					explode(10);
+					explode(8);
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
 					tCalc *= 2;
 					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
