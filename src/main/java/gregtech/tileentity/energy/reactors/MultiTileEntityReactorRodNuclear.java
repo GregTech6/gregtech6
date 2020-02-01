@@ -67,21 +67,26 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + mDurability          + LH.Chat.CYAN   + "00 Neutrons");
+		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + mDurability          + LH.Chat.WHITE  + "00" + LH.Chat.CYAN   + " Neutrons");
 		aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther        + LH.Chat.PURPLE + " Neutrons/t");
 		// Tool tip commented out because always the same as the emission right now, so unused.
-		//aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
+		// aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
 		aList.add(LH.Chat.GREEN  + "Optimum: "   + LH.Chat.WHITE + mNeutronOptimum      + LH.Chat.PURPLE + " Neutrons/t");
 		aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv);
+		if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This fuel is" + LH.Chat.BLINKING_RED + " critical");
 		aList.add(LH.Chat.DGRAY  + "Used in Nuclear Reactor Core");
 	}
 	
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 		int tNeutronDiv = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronDiv * 2 : mNeutronDiv;
-		int tEmission = mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, tNeutronDiv);
-		int tEfficiencyFactor = (int)UT.Code.divup((int)(tEmission * 5d * Math.min(Math.abs(-(1d/(double)mNeutronOptimum) * ((double)tEmission - (double)mNeutronOptimum)) + 0.5d , 1d)), 100);
+		int tNeutronSelf = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronSelf * 4 : mNeutronSelf;
+		int tNeutronOther = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronOther * 4 : mNeutronOther;
+
+		aReactor.mNeutronCounts[aSlot] += tNeutronSelf;
+		int tEmission = tNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-tNeutronSelf, tNeutronDiv);
+		// Only called every second, so cost for 20 ticks times 5 outputs (self + 4 sides) but divided by 100 because 1 durability = 100 neutrons, so 100/100 = 1
+		int tEfficiencyFactor = (int)(tEmission * Math.min(Math.abs(-(1d/(double)mNeutronOptimum) * ((double)tEmission - (double)mNeutronOptimum)) + 0.5d , 1d));
 		mDurability = tEfficiencyFactor > mDurability ? -1 : mDurability - tEfficiencyFactor;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return tEmission;

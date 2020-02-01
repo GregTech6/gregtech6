@@ -99,13 +99,19 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	static {
 		LH.add("gt.tooltip.reactorcore.1", "Primary Facing Emits Hot Coolant.");
 		LH.add("gt.tooltip.reactorcore.2", "Secondary Facing Emits Cold Coolant when over half full.");
+        LH.add("gt.tooltip.reactorcore.3", "Using Distilled Water as Reactor Coolant has no special effects.");
+        LH.add("gt.tooltip.reactorcore.4", "Using Coolant as Reactor Coolant has these special effects:");
+        LH.add("gt.tooltip.reactorcore.5", "Fuel Rods have four times the Emission and half the Factor.");
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get("gt.tooltip.reactorcore.1"));
 		aList.add(Chat.CYAN     + LH.get("gt.tooltip.reactorcore.2"));
-		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
+        aList.add(Chat.GREEN    + LH.get("gt.tooltip.reactorcore.3"));
+        aList.add(Chat.GREEN    + LH.get("gt.tooltip.reactorcore.4"));
+        aList.add(Chat.WHITE    + LH.get("gt.tooltip.reactorcore.5"));
+        aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TAKE_PINCERS));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
@@ -236,7 +242,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		return FL.Coolant_IC2.is(aFluidToFill) || FL.DistW.is(aFluidToFill) ? mTanks[0] : null; // TODO MULTIPLE COOLANT TYPES
+		return FL.Coolant_IC2.is(aFluidToFill) || FL.DistW.is(aFluidToFill) ? mTanks[0] : null;
 	}
 	
 	@Override
@@ -251,7 +257,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	
 	@Override
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
-		if (!(FL.Coolant_IC2.is(aFluid) || !FL.DistW.is(aFluid))) return 0; // TODO MULTIPLE COOLANT TYPES
+		if (!(FL.Coolant_IC2.is(aFluid) || !FL.DistW.is(aFluid))) return 0;
 		updateInventory();
 		return mTanks[0].fill(aFluid, aDoFill);
 	}
