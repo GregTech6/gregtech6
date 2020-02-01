@@ -49,7 +49,7 @@ public class MultiTileEntityReactorRodAbsorber extends MultiTileEntityReactorRod
 	
 	@Override
 	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
-		aReactor.mNeutronCounts[aSlot] += aReactor.mStopped ? 0 : aNeutrons;
+		aReactor.mNeutronCounts[aSlot] += aNeutrons;
 		return 0;
 	}
 	
