@@ -101,13 +101,13 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 			}
 		} else {
 			int tCalc = (int)UT.Code.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
-			
+
 			if (tCalc > 0) for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
 				UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), tCalc);
 			}
-			
+
 			mRunning = (tCalc != 0);
-			
+
 			long tEnergy = mEnergy;
 			
 			if (getReactorRodNeutronReaction(0)) mRunning = T;
@@ -116,13 +116,21 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 			if (getReactorRodNeutronReaction(3)) mRunning = T;
 			
 			oEnergy = mEnergy - tEnergy;
-			tEnergy = mEnergy/EU_PER_COOLANT;
-			
-			if (tEnergy > 0) {
-				// TODO Heat up different Coolants
-				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
-					mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
-				} else {
+
+			if (mEnergy > 0) {
+				boolean willExplode = false;
+				if (FL.Coolant_IC2.is(mTanks[0])) {
+					tEnergy = mEnergy/EU_PER_COOLANT;
+					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
+						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+					} else {willExplode = true;}
+				} else if (FL.DistW.is(mTanks[0])) {
+					tEnergy = mEnergy / 80;
+					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Steam.make(tEnergy * 160))) {
+						mEnergy -= mTanks[0].remove(tEnergy) * 80;
+					} else {willExplode = true;}
+				} else {willExplode = true;}
+				if (willExplode) {
 					// TODO proper explosion.
 					explode(10);
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
@@ -137,6 +145,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 	
 	@Override
 	public int getReactorRodNeutronEmission(int aSlot) {
+		if (SERVER_TIME % 20 != 1) return 0;
 		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronEmission(this, aSlot, slot(aSlot));
 		mNeutronCounts[aSlot] = 0;
 		return 0;
@@ -144,7 +153,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 	
 	@Override
 	public boolean getReactorRodNeutronReaction(int aSlot) {
-		mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
+		if (SERVER_TIME % 20 == 0) mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
 		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReaction(this, aSlot, slot(aSlot));
 		return F;
 	}

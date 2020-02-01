@@ -92,15 +92,23 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			long tEnergy = mEnergy;
 			
 			if (getReactorRodNeutronReaction(0)) mRunning = T;
-			
+
 			oEnergy = mEnergy - tEnergy;
-			tEnergy = mEnergy/EU_PER_COOLANT;
-			
-			if (tEnergy > 0) {
-				// TODO Heat up different Coolants
-				if (FL.Coolant_IC2.is(mTanks[0]) && mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
-					mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
-				} else {
+
+			if (mEnergy > 0) {
+				boolean willExplode = false;
+				if (FL.Coolant_IC2.is(mTanks[0])) {
+					tEnergy = mEnergy/EU_PER_COOLANT;
+					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
+						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+					} else {willExplode = true;}
+				} else if (FL.DistW.is(mTanks[0])) {
+					tEnergy = mEnergy / 80;
+					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Steam.make(tEnergy * 160))) {
+						mEnergy -= mTanks[0].remove(tEnergy) * 80;
+					} else {willExplode = true;}
+				} else {willExplode = true;}
+				if (willExplode) {
 					// TODO proper explosion.
 					explode(8);
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
@@ -115,6 +123,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 	
 	@Override
 	public int getReactorRodNeutronEmission(int aSlot) {
+		if (SERVER_TIME % 20 != 1) return 0;
 		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronEmission(this, 0, slot(0));
 		mNeutronCounts[0] = 0;
 		return 0;
@@ -122,7 +131,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 	
 	@Override
 	public boolean getReactorRodNeutronReaction(int aSlot) {
-		mNeutronCounts[0] -= oNeutronCounts[0];
+		if (SERVER_TIME % 20 == 0) mNeutronCounts[0] -= oNeutronCounts[0];
 		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronReaction(this, 0, slot(0));
 		return F;
 	}

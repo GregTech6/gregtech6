@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.render.BlockTextureDefault;
@@ -38,17 +39,18 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodBase {
 	public long mDurability = 0;
-	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8;
+	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8, mNeutronOptimum = 128;
 	public short mDepleted = -1;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		mDurability = aNBT.getLong(aNBT.hasKey(NBT_DURABILITY) ? NBT_DURABILITY : NBT_MAXDURABILITY);
-		if (aNBT.hasKey(NBT_NUCLEAR_SELF )) mNeutronSelf  = aNBT.getInteger(NBT_NUCLEAR_SELF );
-		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther = aNBT.getInteger(NBT_NUCLEAR_OTHER);
-		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv   = aNBT.getInteger(NBT_NUCLEAR_DIV  );
-		if (aNBT.hasKey(NBT_VALUE        )) mDepleted     = aNBT.getShort(NBT_VALUE);
+		if (aNBT.hasKey(NBT_NUCLEAR_SELF )) mNeutronSelf    = aNBT.getInteger(NBT_NUCLEAR_SELF );
+		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther   = aNBT.getInteger(NBT_NUCLEAR_OTHER);
+		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv     = aNBT.getInteger(NBT_NUCLEAR_DIV  );
+		if (aNBT.hasKey(NBT_NUCLEAR_OPTI )) mNeutronOptimum = aNBT.getInteger(NBT_NUCLEAR_OPTI);
+		if (aNBT.hasKey(NBT_VALUE        )) mDepleted       = aNBT.getShort(NBT_VALUE);
 	}
 	
 	@Override
@@ -65,19 +67,29 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + (mDurability / 1200) + LH.Chat.CYAN   + " Minutes");
+		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + mDurability          + LH.Chat.WHITE  + "00" + LH.Chat.CYAN   + " Neutrons");
 		aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther        + LH.Chat.PURPLE + " Neutrons/t");
-		aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
+		// Tool tip commented out because always the same as the emission right now, so unused.
+		// aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf         + LH.Chat.PURPLE + " Neutrons/t");
+		aList.add(LH.Chat.GREEN  + "Optimum: "   + LH.Chat.WHITE + mNeutronOptimum      + LH.Chat.PURPLE + " Neutrons/t");
 		aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv);
+		if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This fuel is" + LH.Chat.BLINKING_RED + " critical");
 		aList.add(LH.Chat.DGRAY  + "Used in Nuclear Reactor Core");
 	}
 	
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		if (--mDurability <= 0) mDurability = -1;
+		int tNeutronDiv = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronDiv * 2 : mNeutronDiv;
+		int tNeutronSelf = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronSelf * 4 : mNeutronSelf;
+		int tNeutronOther = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronOther * 4 : mNeutronOther;
+
+		aReactor.mNeutronCounts[aSlot] += tNeutronSelf;
+		int tEmission = tNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-tNeutronSelf, tNeutronDiv);
+		// Only called every second, so cost for 20 ticks times 5 outputs (self + 4 sides) but divided by 100 because 1 durability = 100 neutrons, so 100/100 = 1
+		int tEfficiencyFactor = (int)(tEmission * Math.min(Math.abs(-(1d/(double)mNeutronOptimum) * ((double)tEmission - (double)mNeutronOptimum)) + 0.5d , 1d));
+		mDurability = tEfficiencyFactor > mDurability ? -1 : mDurability - tEfficiencyFactor;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
-		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
-		return mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
+		return tEmission;
 	}
 	
 	@Override
