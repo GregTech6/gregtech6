@@ -81,10 +81,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 		int tNeutronDiv = FL.Coolant_IC2.is(aReactor.mTanks[0]) ? mNeutronDiv * 2 : mNeutronDiv;
 		int tEmission = mNeutronOther + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, tNeutronDiv);
-		double tEfficiencyFactor = 5d * Math.min(Math.abs(-(1d/(double)mNeutronOptimum) * ((double)tEmission - (double)mNeutronOptimum)) + 0.5d , 1d);
-		//double tEfficiencyFactor = 5d * (Math.pow(Math.abs(Math.cos(Math.PI * (double)Math.max(Math.min(tEmission, 2 * mNeutronOptimum), 0) * (1d / 2d * (double)mNeutronOptimum))) - 1d, 7d) * 1.0d + 1d);
-		tEmission = (int)UT.Code.divup((int)((double)tEmission * tEfficiencyFactor), 100);
-		mDurability = tEmission > mDurability ? -1 : mDurability - tEmission;
+		int tEfficiencyFactor = (int)UT.Code.divup((int)(tEmission * 5d * Math.min(Math.abs(-(1d/(double)mNeutronOptimum) * ((double)tEmission - (double)mNeutronOptimum)) + 0.5d , 1d)), 100);
+		mDurability = tEfficiencyFactor > mDurability ? -1 : mDurability - tEfficiencyFactor;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return tEmission;
 	}
