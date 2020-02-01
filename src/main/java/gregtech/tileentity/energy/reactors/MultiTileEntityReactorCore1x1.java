@@ -122,7 +122,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 	
 	@Override
 	public int getReactorRodNeutronEmission(int aSlot) {
-		if (slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronEmission(this, 0, slot(0));
+		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronEmission(this, 0, slot(0));
 		mNeutronCounts[0] = 0;
 		return 0;
 	}
@@ -130,13 +130,13 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 	@Override
 	public boolean getReactorRodNeutronReaction(int aSlot) {
 		mNeutronCounts[0] -= oNeutronCounts[0];
-		if (slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronReaction(this, 0, slot(0));
+		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronReaction(this, 0, slot(0));
 		return F;
 	}
 	
 	@Override
 	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons) {
-		if (slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronReflection(this, 0, slot(0), aNeutrons);
+		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronReflection(this, 0, slot(0), aNeutrons);
 		return 0;
 	}
 	
