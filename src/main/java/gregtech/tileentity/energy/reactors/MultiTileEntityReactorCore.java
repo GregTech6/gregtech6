@@ -108,10 +108,10 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get("gt.tooltip.reactorcore.1"));
 		aList.add(Chat.CYAN     + LH.get("gt.tooltip.reactorcore.2"));
-        aList.add(Chat.GREEN    + LH.get("gt.tooltip.reactorcore.3"));
-        aList.add(Chat.GREEN    + LH.get("gt.tooltip.reactorcore.4"));
-        aList.add(Chat.WHITE    + LH.get("gt.tooltip.reactorcore.5"));
-        aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
+		aList.add(Chat.GREEN    + LH.get("gt.tooltip.reactorcore.3"));
+		aList.add(Chat.GREEN    + LH.get("gt.tooltip.reactorcore.4"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.reactorcore.5"));
+		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TAKE_PINCERS));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_SOFT_HAMMER));
