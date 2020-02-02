@@ -157,7 +157,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 	
 	@Override
 	public boolean getReactorRodNeutronReaction(int aSlot) {
-		mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
+		if (SERVER_TIME % 20 == 19) mNeutronCounts[aSlot] -= oNeutronCounts[aSlot];
 		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReaction(this, aSlot, slot(aSlot));
 		return F;
 	}
