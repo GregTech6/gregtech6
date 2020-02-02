@@ -221,8 +221,12 @@ public class CS {
 	public static int EU_PER_LAVA = 80;
 	/** The value of how many Energy Units a Liter of Hot Coolant also known as Heatant is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
 	public static int EU_PER_COOLANT = 20;
+	/** The value of how many Energy Units a Liter of Water needs to turn into Steam. */
+	public static int EU_PER_WATER = 80;
 	/** The value of how much Steam an Energy Unit is worth. The Standard is 2 Steam = 1 EU. */
 	public static int STEAM_PER_EU = 2;
+	/** The value of how much Steam a Liter of Water is worth. The Standard is 160 Steam = 1 Water. */
+	public static int STEAM_PER_WATER = 160;
 	
 	/** A few Default Values for Light Opacity. */
 	public static final int LIGHT_OPACITY_NONE = 0, LIGHT_OPACITY_LEAVES = 1, LIGHT_OPACITY_WATER = 3, LIGHT_OPACITY_MAX = 255;

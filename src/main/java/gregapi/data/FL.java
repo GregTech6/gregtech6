@@ -564,8 +564,8 @@ public enum FL {
 	
 	public boolean is(IFluidTank aTank) {return is(aTank.getFluid());}
 	public boolean is(FluidStack aFluid) {return aFluid != null && is(aFluid.getFluid());}
-	public boolean is(Fluid aFluid) {return aFluid != null && aFluid.getName().equalsIgnoreCase(mName);}
-	public boolean is(String aFluidName) {return aFluidName != null && aFluidName.equalsIgnoreCase(mName);}
+	public boolean is(Fluid aFluid) {return aFluid != null && is(aFluid.getName());}
+	public boolean is(String aFluidName) {return mName.equalsIgnoreCase(aFluidName);}
 	public boolean is(Collection<String> aFluidSet) {return aFluidSet.contains(mName);}
 	
 	
@@ -621,42 +621,42 @@ public enum FL {
 	/** @return if that Liquid is Water or Distilled Water */
 	public static boolean water(FluidStack aFluid) {return aFluid != null && water(aFluid.getFluid());}
 	/** @return if that Liquid is Water or Distilled Water */
-	public static boolean water(Fluid aFluid) {return aFluid != null && (aFluid == FluidRegistry.WATER || FL.DistW.is(aFluid));}
+	public static boolean water(Fluid aFluid) {return aFluid == FluidRegistry.WATER || FL.DistW.is(aFluid);}
 	
 	/** @return if that Liquid is distilled Water */
 	public static boolean distw(IFluidTank aFluid) {return aFluid != null && distw(aFluid.getFluid());}
 	/** @return if that Liquid is distilled Water */
 	public static boolean distw(FluidStack aFluid) {return aFluid != null && distw(aFluid.getFluid());}
 	/** @return if that Liquid is distilled Water */
-	public static boolean distw(Fluid aFluid) {return aFluid != null && FL.DistW.is(aFluid);}
+	public static boolean distw(Fluid aFluid) {return FL.DistW.is(aFluid);}
 	
 	/** @return if that Liquid is Lava */
 	public static boolean lava(IFluidTank aFluid) {return aFluid != null && lava(aFluid.getFluid());}
 	/** @return if that Liquid is Lava */
 	public static boolean lava(FluidStack aFluid) {return aFluid != null && lava(aFluid.getFluid());}
 	/** @return if that Liquid is Lava */
-	public static boolean lava(Fluid aFluid) {return aFluid != null && aFluid == FluidRegistry.LAVA;}
+	public static boolean lava(Fluid aFluid) {return aFluid == FluidRegistry.LAVA;}
 	
 	/** @return if that Liquid is Steam */
 	public static boolean steam(IFluidTank aFluid) {return aFluid != null && steam(aFluid.getFluid());}
 	/** @return if that Liquid is Steam */
 	public static boolean steam(FluidStack aFluid) {return aFluid != null && steam(aFluid.getFluid());}
 	/** @return if that Liquid is Steam */
-	public static boolean steam(Fluid aFluid) {return aFluid != null && FL.Steam.is(aFluid);}
+	public static boolean steam(Fluid aFluid) {return FL.Steam.is(aFluid);}
 	
 	/** @return if that Liquid is Milk */
 	public static boolean milk(IFluidTank aFluid) {return aFluid != null && milk(aFluid.getFluid());}
 	/** @return if that Liquid is Milk */
 	public static boolean milk(FluidStack aFluid) {return aFluid != null && milk(aFluid.getFluid());}
 	/** @return if that Liquid is Milk */
-	public static boolean milk(Fluid aFluid) {return aFluid != null && (FL.Milk.is(aFluid) || FL.MilkGrC.is(aFluid));}
+	public static boolean milk(Fluid aFluid) {return FL.Milk.is(aFluid) || FL.MilkGrC.is(aFluid);}
 	
 	/** @return if that Liquid is Soy Milk */
 	public static boolean soym(IFluidTank aFluid) {return aFluid != null && soym(aFluid.getFluid());}
 	/** @return if that Liquid is Soy Milk */
 	public static boolean soym(FluidStack aFluid) {return aFluid != null && soym(aFluid.getFluid());}
 	/** @return if that Liquid is Soy Milk */
-	public static boolean soym(Fluid aFluid) {return aFluid != null && FL.MilkSoy.is(aFluid);}
+	public static boolean soym(Fluid aFluid) {return FL.MilkSoy.is(aFluid);}
 	
 	/** @return if that Liquid is Steam */
 	public static boolean anysteam(IFluidTank aFluid) {return aFluid != null && steam(aFluid.getFluid());}

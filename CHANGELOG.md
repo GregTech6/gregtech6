@@ -16,6 +16,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Bumbliaries lacking Tooltips.
 [FIXED] Reactor Rods in general were not ON/OFF sensitive.
 [FIXED] Made Tooltips for Power Input/Output of Machines now have a special verbiage for a Minimum of "1 Unit per Tick" or less, by saying "up to MAX per Tick" instead.
+[ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware.
 [ADDED] Geiger Counter Sensor courtesy of Erik3003.
 
 

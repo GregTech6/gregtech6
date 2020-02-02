@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1079,6 +1079,10 @@ public class UT {
 		public static int roundDown(double aNumber) {
 			int rRounded = (int)aNumber;
 			return rRounded > aNumber ? rRounded-1 : rRounded;
+		}
+		public static int roundUp(double aNumber) {
+			int rRounded = (int)aNumber;
+			return rRounded < aNumber ? rRounded+1 : rRounded;
 		}
 		
 		/** @return an unsigned representation of this Byte. */

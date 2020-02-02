@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,7 +29,7 @@ import net.minecraft.item.ItemStack;
 public interface IItemReactorRod {
 	/** @return if a Reactor would accept this Item as a Part of it. */
 	public boolean  isReactorRod(ItemStack aStack);
-	/** @return the amount of Neutrons emitted by the Rod to each of the 4 surrounding Rods. */
+	/** @return the amount of Neutrons emitted by the Rod to each of the 4 surrounding Rods. Only called once every 20 ticks. */
 	public int      getReactorRodNeutronEmission  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
 	/** @return if the Reactor would be considered "Active" after calculating the Ticking of the Rod itself. */
 	public boolean  getReactorRodNeutronReaction  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
