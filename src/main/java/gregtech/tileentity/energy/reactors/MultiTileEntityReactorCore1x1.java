@@ -106,18 +106,18 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			oEnergy = mEnergy - tEnergy;
 			
 			if (mEnergy > 0) {
-				boolean tIsExploding = T;
+				boolean tIsExploding = F;
 				if (FL.Coolant_IC2.is(mTanks[0])) {
 					tEnergy = mEnergy / EU_PER_COOLANT;
 					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Coolant_IC2_Hot.make(tEnergy))) {
 						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
-					} else {tIsExploding = T;}
+					} else tIsExploding = T;
 				} else if (FL.distw(mTanks[0])) {
 					tEnergy = mEnergy / EU_PER_WATER;
 					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Steam.make(tEnergy * STEAM_PER_WATER))) {
 						mEnergy -= mTanks[0].remove(tEnergy) * EU_PER_WATER;
-					} else {tIsExploding = T;}
-				} else {tIsExploding = T;}
+					} else tIsExploding = T;
+				} else tIsExploding = T;
 				
 				if (tIsExploding) {
 					// TODO proper explosion.
