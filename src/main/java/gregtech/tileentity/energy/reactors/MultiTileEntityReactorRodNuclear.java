@@ -105,7 +105,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 			aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 			long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
 			// Only called every second, so cost for 20 ticks times 5 outputs (self + 4 sides) but divided by 100 because 1 durability = 100 neutrons, so 100/100 = 1
-			long tEfficiencyFactor = UT.Code.roundUp(tEmission * Math.min(0.5+Math.abs((-1.0/mNeutronOptimum) * (tEmission - mNeutronOptimum)), 1.0));
+			long tEfficiencyFactor = UT.Code.roundUp(tEmission * ((Math.min(0.5+Math.abs((-1.0/mNeutronOptimum) * (tEmission - mNeutronOptimum)), 1.0) - 1.0) *  1.5 + 1.0));
 			mDurability = tEfficiencyFactor > mDurability ? -1 : mDurability - tEfficiencyFactor;
 			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 			return UT.Code.bindInt(tEmission);
