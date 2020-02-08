@@ -74,14 +74,12 @@ public class MultiTileEntityReactorRodBreeder extends MultiTileEntityReactorRodB
 	@Override
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot] / 2;
-		// Every 1000 Neutrons/tick, 20% extra gets added multiplicative, scaling into infinity
-		// The curve is very steep to make high temperature breeder reactors effective
-		// Low temperature breeder reactors are also pretty effective, considering they can breed four rods at a time
-		// and also benefit from this bonus to some degree
-		mDurability -= UT.Code.roundUp((double)aReactor.oNeutronCounts[aSlot] * Math.pow(1.2d, (double)aReactor.mNeutronCounts[aSlot] / 1000d));
+		mDurability -= UT.Code.roundUp((double)aReactor.oNeutronCounts[aSlot] * Math.pow(1.5d, (double)aReactor.oNeutronCounts[aSlot] / 500d));
 		if (mDurability <= 0) {
 			ST.meta(aStack, mProduct);
 			ST.nbt(aStack, null);
+			mDurability = 0;
+			aReactor.updateClientData();
 		}
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return T;
