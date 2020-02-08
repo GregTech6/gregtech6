@@ -102,7 +102,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (FL.distw(aReactor.mTanks[0])) {
 			aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 			long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
-			long tDurabilityLoss = tEmission < mNeutronMax ? 2000 : UT.Code.divup(8000 * tEmission, mNeutronMax);
+			long tDurabilityLoss = (tEmission * 4 + mNeutronSelf) < mNeutronMax ? 2000 : UT.Code.divup(8000 * (tEmission * 4 + mNeutronSelf), mNeutronMax);
 			mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
 			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 			return UT.Code.bindInt(tEmission);
