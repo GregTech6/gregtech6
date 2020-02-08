@@ -39,7 +39,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodBase {
 	public long mDurability = 0;
-	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8, mNeutronOptimum = 128;
+	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8, mNeutronMax = 128;
 	public short mDepleted = -1;
 	
 	@Override
@@ -49,7 +49,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (aNBT.hasKey(NBT_NUCLEAR_SELF )) mNeutronSelf    = aNBT.getInteger(NBT_NUCLEAR_SELF );
 		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther   = aNBT.getInteger(NBT_NUCLEAR_OTHER);
 		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv     = aNBT.getInteger(NBT_NUCLEAR_DIV  );
-		if (aNBT.hasKey(NBT_NUCLEAR_OPTI )) mNeutronOptimum = aNBT.getInteger(NBT_NUCLEAR_OPTI);
+		if (aNBT.hasKey(NBT_NUCLEAR_MAX	 )) mNeutronMax 	= aNBT.getInteger(NBT_NUCLEAR_MAX);
 		if (aNBT.hasKey(NBT_VALUE        )) mDepleted       = aNBT.getShort(NBT_VALUE);
 	}
 	
@@ -68,20 +68,19 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.DGRAY  + "Used in Nuclear Reactor Core");
+		aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + (mDurability / 120000) + LH.Chat.CYAN   + " Minutes");
 		// Tooltip Cycles every 10 Seconds with this commented in. For use when Tooltip becomes too large later on. Change %2 to amount of Cases.
 //      switch ((int)((CLIENT_TIME / 200) % 2)) {
 //      case 0:
 			aList.add(LH.Chat.CYAN   + "When used with Distilled Water:");
-			aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + mDurability            + LH.Chat.CYAN   + " Neutrons");
 			aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther          + LH.Chat.PURPLE + " Neutrons/t");
 			aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf           + LH.Chat.PURPLE + " Neutrons/t");
-			aList.add(LH.Chat.GREEN  + "Optimum: "   + LH.Chat.WHITE + mNeutronOptimum        + LH.Chat.PURPLE + " Neutrons/t");
+			aList.add(LH.Chat.GREEN  + "Maximum: "   + LH.Chat.WHITE + mNeutronMax		      + LH.Chat.PURPLE + " Neutrons/t");
 			aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv     + LH.Chat.GRAY);
 			if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
 //          break;
 //      case 1:
 			aList.add(LH.Chat.CYAN   + "When used with IC2 Coolant:");
-			aList.add(LH.Chat.CYAN   + "Remaining: " + LH.Chat.WHITE + (mDurability / 120000) + LH.Chat.CYAN   + " Minutes");
 			aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther*4        + LH.Chat.PURPLE + " Neutrons/t");
 			aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf*4         + LH.Chat.PURPLE + " Neutrons/t");
 			aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv*2   + LH.Chat.GRAY);
@@ -93,7 +92,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	// Gets called every 20 Ticks.
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		if (FL.Coolant_IC2.is(aReactor.mTanks[0])) {
-			// Loss of Durability to be changed once the System below this legacy case has been proven.
+			// TODO: Change Loss of Durability to be changed once the System below this legacy case has been proven.
 			mDurability -= 2000;
 			if (mDurability <= 0) mDurability = -1;
 			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
@@ -101,12 +100,10 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 			return mNeutronOther * 4 + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf * 4, mNeutronDiv * 2);
 		}
 		if (FL.distw(aReactor.mTanks[0])) {
-			// TODO Requires Revision by Erik to see if his Maths still work as intended.
 			aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 			long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
-			// Only called every second, so cost for 20 ticks times 5 outputs (self + 4 sides) but divided by 100 because 1 durability = 100 neutrons, so 100/100 = 1
-			long tEfficiencyFactor = UT.Code.roundUp(tEmission * ((Math.min(0.5+Math.abs((-1.0/mNeutronOptimum) * (tEmission - mNeutronOptimum)), 1.0) - 1.0) *  1.5 + 1.0));
-			mDurability = tEfficiencyFactor > mDurability ? -1 : mDurability - tEfficiencyFactor;
+			long tDurabilityLoss = tEmission < mNeutronMax ? 2000 : UT.Code.divup(8000 * tEmission, mNeutronMax);
+			mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
 			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 			return UT.Code.bindInt(tEmission);
 		}
