@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Some Issue with Coke Ovens and other Ignition based Basic Machines, hopefully.
 [FIXED] Bumbliaries were lacking Tooltips.
 [FIXED] Reactor Rods in general were not ON/OFF sensitive.
+[FIXED] The Running-Possible Sensors now also return Redstone when the Output happens to be blocked at that moment.
 [FIXED] Made Tooltips for Power Input/Output of Machines now have a special verbiage for a Minimum of "1 Unit per Tick" or less, by saying "up to MAX per Tick" instead.
 [ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware. Also it is not tested or finished yet!
 [ADDED] Geiger Counter Sensor courtesy of Erik3003.

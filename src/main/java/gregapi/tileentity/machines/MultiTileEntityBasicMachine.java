@@ -848,8 +848,13 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			tOutputEmpty = T;
 			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slotHas(i)) {tOutputEmpty = F; break;}
 			
-			// Output not Empty && (Successfully produced something or just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Output has been blocked since 256 active ticks || Check once every Minute)
-			if (!tOutputEmpty && (mIgnited > 0 || mInventoryChanged || !mRunning || mOutputBlocked == 1 || aTimer%1200 == 5)) doOutputItems();
+			// Output not Empty && (Successfully produced something or just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Output has been blocked since 256 active ticks || Check once every 10 Seconds)
+			if (!tOutputEmpty && (mIgnited > 0 || mInventoryChanged || !mRunning || mOutputBlocked == 1 || aTimer%200 == 5)) {
+				boolean tInventoryChanged = mInventoryChanged;
+				mInventoryChanged = F;
+				doOutputItems();
+				if (mInventoryChanged) mOutputBlocked = 0; else mInventoryChanged |= tInventoryChanged;
+			}
 			
 			tOutputEmpty = T;
 			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slotHas(i)) {tOutputEmpty = F; mOutputBlocked++; break;}
@@ -991,7 +996,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override public long getGibblValue   (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].amount  (); return rGibbl;}
 	@Override public long getGibblMax     (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].capacity(); return rGibbl;}
 	
-	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0 || mChargeRequirement > 0 || mOutputBlocked != 0;}
+	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0 || mChargeRequirement > 0 || (!mDisabledItemOutput && mOutputBlocked != 0);}
 	@Override public boolean getStateRunningPassively() {return mRunning;}
 	@Override public boolean getStateRunningActively() {return mActive;}
 	@Override public boolean getStateRunningSuccessfully() {return mSuccessful;}
