@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -86,8 +86,8 @@ public class Loader_Fluids implements Runnable {
 		FL.create("petrol"                   , "Petrol"              , MT.Petrol             , 1);
 		FL.create("ic2biomass"               , "Biomass"             , MT.Biomass            , 1);
 		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1);
-		FL.create("ic2coolant"               , "Coolant"             , null                  , 1);
-		FL.create("ic2hotcoolant"            , "Heatant"             , null                  , 1,   1000,  1200);
+		FL.create("ic2coolant"               , "Industrial Coolant"  , null                  , 1);
+		FL.create("ic2hotcoolant"            , "Industrial Heatant"  , null                  , 1,   1000,  1200);
 		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
 		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
 		FL.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);

@@ -369,7 +369,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		}
 		if (aTool.equals(TOOL_igniter)) {
 			if (mRequiresIgnition) {
-				mIgnited = 30;
+				mIgnited = 40;
 				return 10000;
 			}
 			return 0;
@@ -765,10 +765,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				mActive = doInactive(aTimer);
 				mRunning = F;
 			}
-			if (mIgnited > 0) mIgnited--;
 			mSuccessful = F;
 		}
 		mEnergy -= mInputMax; if (mEnergy < 0) mEnergy = 0;
+		if (mIgnited > 0) mIgnited--;
 	}
 	
 	public boolean doActive(long aTimer, long aEnergy) {
@@ -781,7 +781,6 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			} else {
 				mProgress = 0;
 			}
-			if (mIgnited > 0) mIgnited--;
 		}
 		
 		mSuccessful = F;
@@ -799,7 +798,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 						updateInventory();
 						mTanksOutput[j].add(mOutputFluids[i].amount);
 						mSuccessful = T;
-						mIgnited = 30;
+						mIgnited = 40;
 						mOutputFluids[i] = null;
 						break;
 					}
@@ -808,7 +807,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					if (mTanksOutput[j].isEmpty()) {
 						mTanksOutput[j].setFluid(mOutputFluids[i]);
 						mSuccessful = T;
-						mIgnited = 30;
+						mIgnited = 40;
 						mOutputFluids[i] = null;
 						break;
 					}
@@ -828,7 +827,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					mOutputItems = ZL_IS;
 					mOutputFluids = ZL_FS;
 					mSuccessful = T;
-					mIgnited = 30;
+					mIgnited = 40;
 					
 					for (byte tSide : ALL_SIDES_VALID_FIRST[FACING_TO_SIDE[mFacing][mItemAutoOutput]]) if (FACE_CONNECTED[FACING_ROTATIONS[mFacing][tSide]][mItemOutputs]) {
 						DelegatorTileEntity<TileEntity> tDelegator = getItemOutputTarget(tSide);
@@ -992,7 +991,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override public long getGibblValue   (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].amount  (); return rGibbl;}
 	@Override public long getGibblMax     (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].capacity(); return rGibbl;}
 	
-	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0 || mChargeRequirement > 0;}
+	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0 || mChargeRequirement > 0 || mOutputBlocked != 0;}
 	@Override public boolean getStateRunningPassively() {return mRunning;}
 	@Override public boolean getStateRunningActively() {return mActive;}
 	@Override public boolean getStateRunningSuccessfully() {return mSuccessful;}

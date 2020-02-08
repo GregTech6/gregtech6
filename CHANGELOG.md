@@ -1,6 +1,14 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.12.06: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.12.05: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.12.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
@@ -13,10 +21,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 [FIXED] Gearboxes sometimes breaking/overloading on World Load.
 [FIXED] Some Issue with Coke Ovens and other Ignition based Basic Machines, hopefully.
-[FIXED] Bumbliaries lacking Tooltips.
+[FIXED] Bumbliaries were lacking Tooltips.
 [FIXED] Reactor Rods in general were not ON/OFF sensitive.
 [FIXED] Made Tooltips for Power Input/Output of Machines now have a special verbiage for a Minimum of "1 Unit per Tick" or less, by saying "up to MAX per Tick" instead.
-[ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware. Also it is not tested yet!
+[ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware. Also it is not tested or finished yet!
 [ADDED] Geiger Counter Sensor courtesy of Erik3003.
 
 
