@@ -21,6 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 [FIXED] IC2-Classic Watermills should now accept Ocean and River Water. This requires a pending update on the IC2-Classic Side aswell.
 [FIXED] Bedrock Ores did not generate Indicator Flowers and Indicator Rocks in Twilight Forest due to its Terrains normal Height of Y31 instead of Y63.
+[FIXED] The Code that made Plates, Ingots and Rocks placeable did not check if the Stack was already a Block, meaning it just replaced things like Greatwood Planks or Silverwood Planks with the Stack-of-Plates Block.
 [FIXED] Gearboxes sometimes breaking/overloading on World Load.
 [FIXED] Some Issue with Coke Ovens and other Ignition based Basic Machines, hopefully.
 [FIXED] Bumbliaries were lacking Tooltips.
