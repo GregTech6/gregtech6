@@ -17,9 +17,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.12.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game, or playing Factorio...)
+6.12.02: (Not released yet, happens whenever I think enough Bugs are fixed due to the Update Notification, In the meantime Bear is still testing GT6, while I'm playing Factorio for a bit)
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 [FIXED] IC2-Classic Watermills should now accept Ocean and River Water. This requires a pending update on the IC2-Classic Side aswell.
+[FIXED] GT6 Tools should now work with Treecapitator installed as long as Treecapitator detects them as valid Tools.
 [FIXED] Bedrock Ores did not generate Indicator Flowers and Indicator Rocks in Twilight Forest due to its Terrains normal Height of Y31 instead of Y63.
 [FIXED] The Code that made Plates, Ingots and Rocks placeable did not check if the Stack was already a Block, meaning it just replaced things like Greatwood Planks or Silverwood Planks with the Stack-of-Plates Block.
 [FIXED] Gearboxes sometimes breaking/overloading on World Load.
@@ -28,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Reactor Rods in general were not ON/OFF sensitive.
 [FIXED] The Running-Possible Sensors now also return Redstone when the Output happens to be blocked at that moment.
 [FIXED] Made Tooltips for Power Input/Output of Machines now have a special verbiage for a Minimum of "1 Unit per Tick" or less, by saying "up to MAX per Tick" instead.
-[ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware. Also it is not tested or finished yet!
+[ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware. Also it is not tested or finished yet! Also Reactor Explosions are disabled yet again until.
 [ADDED] Geiger Counter Sensor courtesy of Erik3003.
 
 

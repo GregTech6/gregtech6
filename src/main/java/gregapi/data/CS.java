@@ -1821,6 +1821,7 @@ public class CS {
 		, OC                = "OpenComputers"
 		, CC                = "ComputerCraft"
 		
+		, TreeCap           = "Treecapitator"
 		, HaC               = "harvestcraft"
 		, CookBook          = "cookingbook"
 		, APC               = "AppleCore"
