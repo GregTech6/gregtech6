@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Reactors blew up when no Coolant was in them while a minimal amount of Power was left over and they did not have any Rods.
 [FIXED] IC2-Classic Watermills should now accept Ocean and River Water. This requires a pending update on the IC2-Classic Side aswell.
 [FIXED] GT6 Tools should now work with Treecapitator installed as long as Treecapitator detects them as valid Tools.
+[FIXED] A Rare NEI Recipe List Crash. (Concurrent Modification Exception when clicking Progress Bar)
 [FIXED] Bedrock Ores did not generate Indicator Flowers and Indicator Rocks in Twilight Forest due to its Terrains normal Height of Y31 instead of Y63.
 [FIXED] The Code that made Plates, Ingots and Rocks placeable did not check if the Stack was already a Block, meaning it just replaced things like Greatwood Planks or Silverwood Planks with the Stack-of-Plates Block.
 [FIXED] Gearboxes sometimes breaking/overloading on World Load.
