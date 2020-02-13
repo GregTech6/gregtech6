@@ -133,9 +133,11 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Steam.make(tEnergy * STEAM_PER_WATER))) {
 						mEnergy -= mTanks[0].remove(tEnergy) * EU_PER_WATER;
 					} else tIsExploding = T;
-				} else tIsExploding = T;
+				} else if (mTanks[0].isEmpty()) {
+					if (mEnergy > EU_PER_WATER) tIsExploding = T;
+				}
 				
-				if (tIsExploding) {
+				if (tIsExploding && !invempty()) {
 					// TODO proper explosion.
 					// explode(10); // TODO Keep commented out until Reactor System has been tested well enough.
 					UT.Sounds.send(SFX.MC_EXPLODE, this);

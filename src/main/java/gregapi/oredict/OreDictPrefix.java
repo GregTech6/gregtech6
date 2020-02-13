@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -464,7 +464,14 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 				if (!aEvent.mMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
 					if (COMPAT_TC != null && !(aEvent.mStack.getItem() instanceof IEssentiaContainerItem) && !(aEvent.mStack.getItem() instanceof MultiItemRandom)) {
 						List<TC_AspectStack> tAspects = new ArrayListNoNulls<>();
-						for (TC_AspectStack tAspect : mAspects) tAspect.addToAspectList(tAspects);
+						for (TC_AspectStack tAspect : mAspects) {
+							if (tAspect.mAspect == TC.METALLUM && !aEvent.mMaterial.mHasMetallum) {
+								// replacing Metallum with Ordo for non-metallic Stuff.
+								TC.stack(TC.ORDO, tAspect.mAmount).addToAspectList(tAspects);
+							} else {
+								tAspect.addToAspectList(tAspects);
+							}
+						}
 						if (mAmount >= U || mAmount < 0) for (TC_AspectStack tAspect : aEvent.mMaterial.mAspects) tAspect.addToAspectList(tAspects);
 						COMPAT_TC.registerThaumcraftAspectsToItem(ST.amount(1, aEvent.mStack), tAspects, aEvent.mOreDictName);
 					}

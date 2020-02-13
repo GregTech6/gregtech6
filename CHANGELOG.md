@@ -19,6 +19,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.12.02: (Not released yet, happens whenever I think enough Bugs are fixed due to the Update Notification, In the meantime Bear is still testing GT6, while I'm playing Factorio for a bit)
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
+[FIXED] Thaumcraft Aspects for Nuggets and Ingots now check if they are supposed to be Metallum, and if not, then they will replace it with Ordo.
+[FIXED] Reactors blew up when no Coolant was in them while a minimal amount of Power was left over and they did not have any Rods.
 [FIXED] IC2-Classic Watermills should now accept Ocean and River Water. This requires a pending update on the IC2-Classic Side aswell.
 [FIXED] GT6 Tools should now work with Treecapitator installed as long as Treecapitator detects them as valid Tools.
 [FIXED] Bedrock Ores did not generate Indicator Flowers and Indicator Rocks in Twilight Forest due to its Terrains normal Height of Y31 instead of Y63.
