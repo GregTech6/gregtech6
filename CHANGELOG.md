@@ -32,7 +32,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Reactor Rods in general were not ON/OFF sensitive.
 [FIXED] The Running-Possible Sensors now also return Redstone when the Output happens to be blocked at that moment.
 [FIXED] Made Tooltips for Power Input/Output of Machines now have a special verbiage for a Minimum of "1 Unit per Tick" or less, by saying "up to MAX per Tick" instead.
-[ADDED] Snow Golems can have their poop picked up by GT6 Hoppers automatically, without constantly breaking the Block.
+[ADDED] Snow Golems can have their poop picked up by GT6 Hoppers automatically without constantly breaking a Snow Layer Block. Also works with Et Futurums silent replacement for Snow Golems, yes I luckily noticed that...
 [ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware. Also it is not tested or finished yet! Also Reactor Explosions are disabled yet again until.
 [ADDED] Geiger Counter Sensor courtesy of Erik3003.
 

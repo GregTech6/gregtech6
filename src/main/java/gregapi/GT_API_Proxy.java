@@ -447,18 +447,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		Block tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
 		if (tBlock instanceof IBlockOnHeadInside) ((IBlockOnHeadInside)tBlock).onHeadInside(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 
-		DEB.println("TEST START: " + aEvent.entityLiving.getClass());
 		if (aEvent.entityLiving.onGround) {
-			DEB.println("TEST 1: " + aEvent.entityLiving.getClass());
 			tY = UT.Code.roundDown(aEvent.entityLiving.boundingBox.minY-0.001F);
 			tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
 			if (IL.EtFu_Path.equal(tBlock) && BlocksGT.Paths != null && aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, BlocksGT.Paths, 0, 2)) tBlock = BlocksGT.Paths;
-			if (tBlock instanceof IBlockOnWalkOver) {
-				DEB.println("TEST 2: " + aEvent.entityLiving.getClass());
-				((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
-			}
+			if (tBlock instanceof IBlockOnWalkOver) ((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 		}
-		DEB.println("TEST END: " + aEvent.entityLiving.getClass());
 	}
 	
 	@SubscribeEvent
