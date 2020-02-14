@@ -155,7 +155,7 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	
 	@Override
 	public void onWalkOver2(EntityLivingBase aEntity) {
-		if (aEntity.getClass() == EntitySnowman.class || "EntityNewSnowGolem".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aEntity))) {
+		if (isServerSide() && (aEntity.getClass() == EntitySnowman.class || "EntityNewSnowGolem".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aEntity)))) {
 			int i = getSizeInventory(); while (--i>=0) if (addStackToSlot(i, ST.make(Items.snowball, 1, 0))) break;
 		}
 	}
