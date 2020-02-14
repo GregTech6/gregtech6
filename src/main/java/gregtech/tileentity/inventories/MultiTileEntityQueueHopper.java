@@ -143,16 +143,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 	@Override
 	public void onWalkOver2(EntityLivingBase aEntity) {
 		if (aEntity.getClass() == EntitySnowman.class) {
-			int i = getSizeInventory()-1;
-			if (!slotHas(i)) {
-				slot(i, ST.make(Items.snowball, 1, 0));
-				updateInventory();
-				
-			} else if (ST.equal(slot(i), Items.snowball, 0, F) && slot(i).stackSize < 16) {
-				slot(i).stackSize++;
-				updateInventory();
-				
-			}
+			addStackToSlot(getSizeInventory()-1, ST.make(Items.snowball, 1, 0));
 		}
 	}
 	

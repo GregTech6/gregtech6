@@ -155,17 +155,10 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	
 	@Override
 	public void onWalkOver2(EntityLivingBase aEntity) {
+		DEB.println("TEST A: " + aEntity.getClass());
 		if (aEntity.getClass() == EntitySnowman.class) {
-			int i = getSizeInventory();
-			while (i-->0) if (!slotHas(i)) {
-				slot(i, ST.make(Items.snowball, 1, 0));
-				updateInventory();
-				break;
-			} else if (ST.equal(slot(i), Items.snowball, 0, F) && slot(i).stackSize < 16) {
-				slot(i).stackSize++;
-				updateInventory();
-				break;
-			}
+			DEB.println("TEST B: " + aEntity.getClass());
+			int i = getSizeInventory(); while (--i>=0) if (addStackToSlot(i, ST.make(Items.snowball, 1, 0))) break;
 		}
 	}
 	
