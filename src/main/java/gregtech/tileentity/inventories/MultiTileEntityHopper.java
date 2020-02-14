@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,7 +46,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntitySnowman;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -155,11 +158,11 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
+			int tMovedItems = 0;
 			if (mMovedLastTick) {
 				mMovedLastTick = F;
 			} else if ((mInventoryChanged || mCheckNextTick || mBlockUpdated || aTimer % 64 == 32) && !hasRedstoneIncoming()) {
 				mCheckNextTick = F;
-				int tMovedItems = 0;
 				if (!SIDES_TOP[mFacing] && !invempty()) {
 					DelegatorTileEntity tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.getBlock() instanceof BlockRailBase) {
@@ -174,21 +177,36 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 					}
 				}
 				DelegatorTileEntity tDelegator = getAdjacentTileEntity(SIDE_TOP);
-				if (tDelegator.getBlock() instanceof BlockRailBase) {
-					List tList = worldObj.getEntitiesWithinAABBExcludingEntity(null, tDelegator.box(0, 0, 0, 1, 1, 1), IEntitySelector.selectInventories);
-					if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
-				}
-				if (tDelegator.mTileEntity != null && !(tDelegator.mTileEntity instanceof MultiTileEntityAnvil)) {
-					tMovedItems += ST.move(tDelegator, delegator(SIDE_TOP));
-				} else {
-					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
-						for (int i = 0, j = getSizeInventory(); i < j; i++) if (!slotHas(i)) {
-							slot(i, WD.suck(tDelegator));
-							if (slotHas(i)) {
-								tMovedItems += slot(i).stackSize;
-								updateInventory();
-							}
+				Block tBlock = tDelegator.getBlock();
+				if (tBlock == Blocks.snow_layer) {
+					List tList = worldObj.getEntitiesWithinAABB(EntitySnowman.class, tDelegator.box(0, 1, 0, 1, 2, 1));
+					if (tList != null && !tList.isEmpty()) {
+						int i = getSizeInventory();
+						while (i-->0) if (!slotHas(i)) {
+							slot(i, ST.make(Items.snowball, 16, 0));
+							tMovedItems += 16;
+							updateInventory();
 							break;
+						}
+					}
+				} else {
+					if (tBlock instanceof BlockRailBase) {
+						List tList = worldObj.getEntitiesWithinAABBExcludingEntity(null, tDelegator.box(0, 0, 0, 1, 1, 1), IEntitySelector.selectInventories);
+						if (tList != null && !tList.isEmpty()) tDelegator = new DelegatorTileEntity<>((IInventory)tList.get(0), tDelegator);
+					}
+					if (tDelegator.mTileEntity != null && !(tDelegator.mTileEntity instanceof MultiTileEntityAnvil)) {
+						tMovedItems += ST.move(tDelegator, delegator(SIDE_TOP));
+					} else {
+						if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
+							int i = getSizeInventory();
+							while (i-->0) if (!slotHas(i)) {
+								slot(i, WD.suck(tDelegator));
+								if (slotHas(i)) {
+									tMovedItems += slot(i).stackSize;
+									updateInventory();
+								}
+								break;
+							}
 						}
 					}
 				}
