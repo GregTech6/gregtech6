@@ -17,7 +17,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.12.02: (Not released yet, happens whenever I think enough Bugs are fixed due to the Update Notification, In the meantime Bear is still testing GT6, while I'm playing Factorio for a bit. To be released 29th of February or 1st of March if nothing bad gets bugreported)
+6.12.02:
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 [FIXED] TerraFirmaCraft Attack Damage Multiplier for GT6 Tools to be 80 instead of 10 and actually showing in the Tooltip.
 [FIXED] Thaumcraft Aspects for Nuggets and Ingots now check if they are supposed to be Metallum, and if not, then they will replace it with Ordo.
