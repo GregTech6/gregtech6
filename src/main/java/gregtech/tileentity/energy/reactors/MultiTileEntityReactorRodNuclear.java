@@ -117,6 +117,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (mDurability <= 0) {
 			ST.meta(aStack, mDepleted);
 			ST.nbt(aStack, null);
+			aReactor.updateClientData();
 		}
 		return T;
 	}
