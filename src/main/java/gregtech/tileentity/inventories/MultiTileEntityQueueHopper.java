@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,7 +46,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntitySnowman;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -138,6 +141,13 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 	}
 	
 	@Override
+	public void onWalkOver2(EntityLivingBase aEntity) {
+		if (isServerSide() && (aEntity.getClass() == EntitySnowman.class || "EntityNewSnowGolem".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aEntity)))) {
+			addStackToSlot(getSizeInventory()-1, ST.make(Items.snowball, 1, 0));
+		}
+	}
+	
+	@Override
 	@SuppressWarnings("rawtypes")
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
@@ -157,6 +167,7 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 						int tMoved = ST.move(delegator(mFacing), tDelegator, null, F, F, F, T, mMode, 1, mMode-tMovedItems, 1);
 						if (tMoved <= 0) break;
 						tMovedItems += tMoved;
+						
 					}
 				}
 				DelegatorTileEntity tDelegator = getAdjacentTileEntity(SIDE_TOP);
@@ -168,12 +179,14 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 					tMovedItems += ST.move(tDelegator, delegator(SIDE_TOP));
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
-						if (!slotHas(0)) {
-							slot(0, WD.suck(tDelegator));
-							if (slotHas(0)) {
-								tMovedItems += slot(0).stackSize;
+						int i = getSizeInventory()-1;
+						if (!slotHas(i)) {
+							slot(i, WD.suck(tDelegator));
+							if (slotHas(i)) {
+								tMovedItems += slot(i).stackSize;
 								updateInventory();
 							}
+							
 						}
 					}
 				}
@@ -181,7 +194,6 @@ public class MultiTileEntityQueueHopper extends TileEntityBase09FacingSingle imp
 					mMovedLastTick = T;
 				}
 			}
-			
 			if (mInventoryChanged) {
 				int oMovedItems = -1;
 				while (oMovedItems != tMovedItems) {

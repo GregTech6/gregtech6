@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,7 @@ package gregtech.loaders.a;
 
 import static gregapi.data.CS.*;
 
+import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.block.MaterialGas;
 import gregapi.block.MaterialOil;
 import gregapi.block.fluid.BlockBaseFluid;
@@ -28,12 +29,14 @@ import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.FL;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TC;
 import gregapi.old.Textures;
 import gregapi.util.CR;
 import gregapi.util.ST;
+import gregapi.util.UT;
 import gregtech.blocks.*;
 import gregtech.blocks.fluids.BlockOcean;
 import gregtech.blocks.fluids.BlockRiver;
@@ -43,6 +46,8 @@ import gregtech.blocks.plants.BlockFlowersB;
 import gregtech.blocks.plants.BlockGlowtus;
 import gregtech.blocks.tool.*;
 import net.minecraft.block.Block;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.potion.Potion;
 
 public class Loader_Blocks implements Runnable {
@@ -126,6 +131,10 @@ public class Loader_Blocks implements Runnable {
 		BlocksGT.Swamp                                                          = new BlockSwamp                ("gt.block.swamp", FL.Dirty_Water.fluid()).addEffect(Potion.hunger.id, 300, 0).addEffect(Potion.confusion.id, 120, 0);
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Ocean         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.TEMPESTAS, 3));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Swamp         , 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.VENENUM, 1));
+		NBTTagList tNBTList = new NBTTagList();
+		tNBTList.appendTag(new NBTTagString(ST.regName(BlocksGT.River)));
+		tNBTList.appendTag(new NBTTagString(ST.regName(BlocksGT.Ocean)));
+		FMLInterModComms.sendMessage(MD.IC2C.mID, "watergen", UT.NBT.make("blocks", tNBTList));
 		
 		BlocksGT.OilExtraHeavy                                                  = new BlockBaseFluid            ("gt.block.fluid.oil.extraheavy"    , FL.Oil_ExtraHeavy.fluid(), 1000, MaterialOil.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0).addEffect(Potion.blindness.id, 60, 1);
 		BlocksGT.OilHeavy                                                       = new BlockBaseFluid            ("gt.block.fluid.oil.heavy"         , FL.Oil_Heavy     .fluid(), 1000, MaterialOil.instance).addEffect(Potion.poison.id, 300, 0).addEffect(Potion.confusion.id, 120, 0).addEffect(Potion.blindness.id, 60, 1);

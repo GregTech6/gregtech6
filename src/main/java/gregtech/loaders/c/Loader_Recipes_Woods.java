@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,6 +20,8 @@
 package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
+
+import java.util.Arrays;
 
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.CS.BlocksGT;
@@ -88,6 +90,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.LogA, 1, 1), NF, FL.Sap_Maple.make(50), OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.LogB, 1, 3), NF, FL.Sap_Rainbow.make(50), OM.dust(MT.Wood));
 		
+		
 		if (IL.RC_Tie_Wood.exists()) {
 			if (IL.IE_Treated_Slab.exists())
 			RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slab    .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
@@ -98,15 +101,21 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shapeless(IL.Plank.get(NERFED_WOOD?2:4), CR.DEF_NAC_NCC, new Object[] {IL.RC_Creosote_Wood});
 		}
 		
+		
 		for (WoodEntry aEntry : WoodDictionary.WOODS.values()) {
 			if (aEntry.mBeamEntry != null)
 			RM.debarking(                      aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
 			RM.pulverizing(                    aEntry.mLog, OP.dust.mat(aEntry.mMaterialWood, aEntry.mPlankCountBuzz), aEntry.mBark, 50, F);
 			RM.sawing(16, 128, F, 4,           aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
-			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
 			RM.lathing(16, 80,                 aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
 			if (IL.RC_Creosote_Wood.exists())
 			RM.Bath.addRecipe1(T, 0, 16,       aEntry.mLog, FL.Oil_Creosote.make(1000), NF, IL.RC_Creosote_Wood.get(1));
+			
+			if (aEntry.mCreosoteAmount > 0 || aEntry.mCharcoalCount > 0) {
+				ItemStack[] tOutputs = new ItemStack[aEntry.mCharcoalCount];
+				if (tOutputs.length > 0) Arrays.fill(tOutputs, OP.gem.mat(MT.Charcoal, 1));
+				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), tOutputs);
+			}
 			
 			CR.remove(ST.validMeta(1, aEntry.mLog));
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NAC_NCC, "sLf", 'L', aEntry.mLog);
@@ -119,8 +128,13 @@ public class Loader_Recipes_Woods implements Runnable {
 			RM.generify(                       aEntry.mBeam, IL.Beam.get(1));
 			RM.pulverizing(                    aEntry.mBeam, OP.dust.mat(aEntry.mMaterialBeam, aEntry.mPlankCountBuzz));
 			RM.sawing(16, 128, F, 4,           aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
-			RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), aEntry.mCharcoalCount < 1 ? NI : OP.gem.mat(MT.Charcoal, aEntry.mCharcoalCount));
 			RM.lathing(16, 80,                 aEntry.mBeam, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialBeam));
+			
+			if (aEntry.mCreosoteAmount > 0 || aEntry.mCharcoalCount > 0) {
+				ItemStack[] tOutputs = new ItemStack[aEntry.mCharcoalCount];
+				if (tOutputs.length > 0) Arrays.fill(tOutputs, OP.gem.mat(MT.Charcoal, 1));
+				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), tOutputs);
+			}
 			
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NAC_NCC, "sBf", 'B', aEntry.mBeam);
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mPlankCountSaw :aEntry.mPlankCountBuzz , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, "s", "B", 'B', aEntry.mBeam);

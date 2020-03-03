@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -103,20 +103,20 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, mMaterial.mID)), tOres, null, tChances, null, null, 0, 0, 0);
 		}
 	}
-
+	
 	@Override
 	public void reset(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		CAN_GENERATE_BEDROCK_ORE = T;
 	}
-
+	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (!CAN_GENERATE_BEDROCK_ORE || aRandom.nextInt(mProbability) != 0) return F;
 		if (GENERATE_BIOMES && aWorld.provider.dimensionId == 0 && aMinX >= -96 && aMinX <= 80 && aMinZ >= -96 && aMinZ <= 80) return F;
-
+		
 		if (WD.bedrock(aWorld, aMinX+8, 0, aMinZ+8)) {
 			CAN_GENERATE_BEDROCK_ORE = F;
-
+			int tHeight = WD.dimTF(aWorld) ? 30 : 62;
 			if ((mIndicatorRocks || mIndicatorFlowers) && (!(GENERATE_STREETS && aWorld.provider.dimensionId == 0) || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) {
 				ItemStack tRock = OP.rockGt.mat(mMaterial, 1);
 				if (ST.valid(tRock)) {
@@ -124,7 +124,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 					if (tRegistry != null) {
 						for (int i = 0; i < 32; i++) {
 							int tX = aMinX+aRandom.nextInt(32)-8, tZ = aMinZ+aRandom.nextInt(32)-8;
-							for (int tY = 127; tY > 62; tY--) {
+							for (int tY = 127; tY > tHeight; tY--) {
 								Block tContact = aWorld.getBlock(tX, tY, tZ);
 								if (tContact.getMaterial().isLiquid()) break;
 								if (!tContact.isOpaqueCube()) continue;
@@ -144,7 +144,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 					}
 				}
 			}
-
+			
 			int[] tDistances = new int[] {0, 3, 6, 8, 9, 7, 4};
 			for (int tY = 1; tY < 7; tY++) for (int tX = -tDistances[tY]; tX <= tDistances[tY]; tX++) for (int tZ = -tDistances[tY]; tZ <= tDistances[tY]; tZ++) {
 				WD.removeBedrock(aWorld, aMinX+8+tX, tY, aMinZ+8+tZ);

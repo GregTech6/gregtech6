@@ -25,7 +25,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -524,10 +523,9 @@ public class Recipe {
 			
 			// Apply Recipe Map Handlers to "discover" new Recipes.
 			if (aLoop && !mRecipeMapHandlers.isEmpty()) {
-				Iterator<IRecipeMapHandler> tIterator = mRecipeMapHandlers.iterator();
-				while (tIterator.hasNext()) {
-					IRecipeMapHandler tHandler = tIterator.next();
-					if (tHandler.isDone()) tIterator.remove();
+				for (int i = 0; i < mRecipeMapHandlers.size(); i++) {
+					IRecipeMapHandler tHandler = mRecipeMapHandlers.get(i);
+					if (tHandler.isDone()) mRecipeMapHandlers.remove(tHandler);
 				}
 				if (!mRecipeMapHandlers.isEmpty()) {
 					aLoop = F;
@@ -547,12 +545,11 @@ public class Recipe {
 		}
 		
 		public List<Recipe> getNEIAllRecipes() {
-			Iterator<IRecipeMapHandler> tIterator = mRecipeMapHandlers.iterator();
 			long tTimeBefore = System.currentTimeMillis();
-			while (tIterator.hasNext()) {
-				IRecipeMapHandler tHandler = tIterator.next();
+			for (int i = 0; i < mRecipeMapHandlers.size(); i++) {
+				IRecipeMapHandler tHandler = mRecipeMapHandlers.get(i);
 				tHandler.addAllRecipes(this);
-				if (tHandler.isDone()) tIterator.remove();
+				if (tHandler.isDone()) mRecipeMapHandlers.remove(tHandler);
 				if (System.currentTimeMillis() - tTimeBefore > 60000) break;
 			}
 			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls<>();

@@ -99,8 +99,8 @@ import net.minecraftforge.fluids.IFluidTank;
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
 })
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
-	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mIgnited = F, mParallelDuration = F, mCanUseOutputTanks = F;
-	public byte mEnergyInputs = 127, mEnergyOutput = SIDE_UNDEFINED, mOutputBlocked = 0, mMode = 0;
+	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mParallelDuration = F, mCanUseOutputTanks = F;
+	public byte mEnergyInputs = 127, mEnergyOutput = SIDE_UNDEFINED, mOutputBlocked = 0, mMode = 0, mIgnited = 0;
 	public byte mItemInputs   = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
 	public byte mFluidInputs  = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
@@ -143,6 +143,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_PROGRESS)) {mProgress = aNBT.getLong(NBT_PROGRESS);}
 		if (aNBT.hasKey(NBT_MAXPROGRESS)) {mMaxProgress = aNBT.getLong(NBT_MAXPROGRESS);}
 		if (aNBT.hasKey(NBT_MODE)) mMode = aNBT.getByte(NBT_MODE);
+		if (aNBT.hasKey(NBT_IGNITION)) mIgnited = aNBT.getByte(NBT_IGNITION);
 		if (aNBT.hasKey(NBT_INV_SIDE_IN)) mItemInputs = (byte)(aNBT.getByte(NBT_INV_SIDE_IN) | SBIT_A);
 		if (aNBT.hasKey(NBT_INV_SIDE_OUT)) mItemOutputs = (byte)(aNBT.getByte(NBT_INV_SIDE_OUT) | SBIT_A);
 		if (aNBT.hasKey(NBT_INV_SIDE_AUTO_IN)) mItemAutoInput = aNBT.getByte(NBT_INV_SIDE_AUTO_IN);
@@ -245,6 +246,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		UT.NBT.setBoolean(aNBT, NBT_STATE+".old", mStateOld);
 		
 		UT.NBT.setNumber(aNBT, NBT_MODE, mMode);
+		UT.NBT.setNumber(aNBT, NBT_IGNITION, mIgnited);
 		UT.NBT.setBoolean(aNBT, NBT_INV_DISABLED_IN, mDisabledItemInput);
 		UT.NBT.setBoolean(aNBT, NBT_INV_DISABLED_OUT, mDisabledItemOutput);
 		UT.NBT.setBoolean(aNBT, NBT_TANK_DISABLED_IN, mDisabledFluidInput);
@@ -367,7 +369,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		}
 		if (aTool.equals(TOOL_igniter)) {
 			if (mRequiresIgnition) {
-				mIgnited = T;
+				mIgnited = 40;
 				return 10000;
 			}
 			return 0;
@@ -698,7 +700,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 			tMaxProcessCount = canOutput(tRecipe);
 			if (tMaxProcessCount <= 0) return FOUND_RECIPE_BUT_DID_NOT_MEET_REQUIREMENTS;
-			if (aApplyRecipe) aApplyRecipe = (!mRequiresIgnition || mIgnited || mActive);
+			if (aApplyRecipe) aApplyRecipe = (!mRequiresIgnition || mIgnited > 0 || mActive);
 			if (!tRecipe.isRecipeInputEqual(aApplyRecipe, F, mTanksOutput, tInputs)) return FOUND_RECIPE_BUT_DID_NOT_MEET_REQUIREMENTS;
 			mCouldUseRecipe = T;
 			if (!aApplyRecipe) return FOUND_AND_COULD_HAVE_USED_RECIPE;
@@ -711,7 +713,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 			tMaxProcessCount = canOutput(tRecipe);
 			if (tMaxProcessCount <= 0) return FOUND_RECIPE_BUT_DID_NOT_MEET_REQUIREMENTS;
-			if (aApplyRecipe) aApplyRecipe = (!mRequiresIgnition || mIgnited || mActive);
+			if (aApplyRecipe) aApplyRecipe = (!mRequiresIgnition || mIgnited > 0 || mActive);
 			if (!tRecipe.isRecipeInputEqual(aApplyRecipe, F, mTanksInput, tInputs)) return FOUND_RECIPE_BUT_DID_NOT_MEET_REQUIREMENTS;
 			mCouldUseRecipe = T;
 			if (!aApplyRecipe) return FOUND_AND_COULD_HAVE_USED_RECIPE;
@@ -762,11 +764,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (aTimer > 40) {
 				mActive = doInactive(aTimer);
 				mRunning = F;
-				mIgnited = F;
 			}
 			mSuccessful = F;
 		}
 		mEnergy -= mInputMax; if (mEnergy < 0) mEnergy = 0;
+		if (mIgnited > 0) mIgnited--;
 	}
 	
 	public boolean doActive(long aTimer, long aEnergy) {
@@ -774,12 +776,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		
 		if (mMaxProgress <= 0) {
 			// Successfully produced something or just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Check once every Minute
-			if ((mIgnited || mInventoryChanged || !mRunning || aTimer%1200 == 5) && checkRecipe(!mStopped, T) == FOUND_AND_SUCCESSFULLY_USED_RECIPE) {
+			if ((mIgnited > 0 || mInventoryChanged || !mRunning || aTimer%1200 == 5) && checkRecipe(!mStopped, T) == FOUND_AND_SUCCESSFULLY_USED_RECIPE) {
 				onProcessStarted();
 			} else {
 				mProgress = 0;
 			}
-			if (aTimer > 40) mIgnited = F;
 		}
 		
 		mSuccessful = F;
@@ -796,7 +797,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					if (mTanksOutput[j].contains(mOutputFluids[i])) {
 						updateInventory();
 						mTanksOutput[j].add(mOutputFluids[i].amount);
-						mSuccessful = mIgnited = T;
+						mSuccessful = T;
+						mIgnited = 40;
 						mOutputFluids[i] = null;
 						break;
 					}
@@ -804,7 +806,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				for (int i = 0; i < mOutputFluids.length; i++) if (mOutputFluids[i] != null) for (int j = 0; j < mTanksOutput.length; j++) {
 					if (mTanksOutput[j].isEmpty()) {
 						mTanksOutput[j].setFluid(mOutputFluids[i]);
-						mSuccessful = mIgnited = T;
+						mSuccessful = T;
+						mIgnited = 40;
 						mOutputFluids[i] = null;
 						break;
 					}
@@ -823,7 +826,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					mChargeRequirement = 0;
 					mOutputItems = ZL_IS;
 					mOutputFluids = ZL_FS;
-					mSuccessful = mIgnited = T;
+					mSuccessful = T;
+					mIgnited = 40;
 					
 					for (byte tSide : ALL_SIDES_VALID_FIRST[FACING_TO_SIDE[mFacing][mItemAutoOutput]]) if (FACE_CONNECTED[FACING_ROTATIONS[mFacing][tSide]][mItemOutputs]) {
 						DelegatorTileEntity<TileEntity> tDelegator = getItemOutputTarget(tSide);
@@ -844,8 +848,13 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			tOutputEmpty = T;
 			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slotHas(i)) {tOutputEmpty = F; break;}
 			
-			// Output not Empty && (Successfully produced something or just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Output has been blocked since 256 active ticks || Check once every Minute)
-			if (!tOutputEmpty && (mIgnited || mInventoryChanged || !mRunning || mOutputBlocked == 1 || aTimer%1200 == 5)) doOutputItems();
+			// Output not Empty && (Successfully produced something or just got ignited || Some Inventory Stuff changes || The Machine has just been turned ON || Output has been blocked since 256 active ticks || Check once every 10 Seconds)
+			if (!tOutputEmpty && (mIgnited > 0 || mInventoryChanged || !mRunning || mOutputBlocked == 1 || aTimer%200 == 5)) {
+				boolean tInventoryChanged = mInventoryChanged;
+				mInventoryChanged = F;
+				doOutputItems();
+				if (mInventoryChanged) mOutputBlocked = 0; else mInventoryChanged |= tInventoryChanged;
+			}
 			
 			tOutputEmpty = T;
 			for (int i = mRecipes.mInputItemsCount, j = i + mRecipes.mOutputItemsCount; i < j; i++) if (slotHas(i)) {tOutputEmpty = F; mOutputBlocked++; break;}
@@ -862,7 +871,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			doOutputItems();
 		}
 		if (CONSTANT_ENERGY && !mNoConstantEnergy) mProgress = 0;
-		if (mRunning || mIgnited || mInventoryChanged || aTimer%1200 == 5) {
+		if (mRunning || mIgnited > 0 || mInventoryChanged || aTimer%1200 == 5) {
 			if (!checkStructure(F)) checkStructure(T);
 			checkRecipe(F, T);
 		}
@@ -987,7 +996,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override public long getGibblValue   (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].amount  (); return rGibbl;}
 	@Override public long getGibblMax     (byte aSide) {long rGibbl = 0; for (int i = 0; i < mTanksInput.length; i++) rGibbl += mTanksInput[i].capacity(); return rGibbl;}
 	
-	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0 || mChargeRequirement > 0;}
+	@Override public boolean getStateRunningPossible() {return mCouldUseRecipe || mActive || mMaxProgress > 0 || mChargeRequirement > 0 || (mIgnited > 0 && !mDisabledItemOutput && mOutputBlocked != 0);}
 	@Override public boolean getStateRunningPassively() {return mRunning;}
 	@Override public boolean getStateRunningActively() {return mActive;}
 	@Override public boolean getStateRunningSuccessfully() {return mSuccessful;}

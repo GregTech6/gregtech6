@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -147,6 +147,7 @@ public class MD {
 	, OC                = new ModData(ModIDs.OC                 , "Open Computers")
 	, CC                = new ModData(ModIDs.CC                 , "ComputerCraft")
 	
+	, TreeCap           = new ModData(ModIDs.TreeCap            , "Treecapitator")
 	, HaC               = new ModData(ModIDs.HaC                , "HarvestCraft")
 	, CookBook          = new ModData(ModIDs.CookBook           , "Cooking for Blockheads")
 	, APC               = new ModData(ModIDs.APC                , "AppleCore")

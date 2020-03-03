@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -224,6 +224,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public float mHeatDamage = 0.0F;
 	/** If this Material is hidden */
 	public boolean mHidden = F;
+	/** If this Material contains the Metallum Aspect. */
+	public boolean mHasMetallum = F;
 	/** g/cm^3 of this Material at Room Temperature. 0 Means that it is not determined. */
 	public double mGramPerCubicCentimeter = 1.0;
 	/** The Colors of this Material in its 4 different states. Any change to these 4 final Arrays will be reflected in the Color of the Material at that state. */
@@ -897,7 +899,10 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	}
 	
 	public OreDictMaterial addAspects(TC_AspectStack... aAspects) {
-		for (TC_AspectStack tAspect : aAspects) tAspect.addToAspectList(mAspects);
+		for (TC_AspectStack tAspect : aAspects) {
+			if (tAspect.mAspect == TC.METALLUM) mHasMetallum = T;
+			tAspect.addToAspectList(mAspects);
+		}
 		return this;
 	}
 	

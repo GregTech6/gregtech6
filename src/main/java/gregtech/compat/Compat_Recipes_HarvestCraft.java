@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -294,7 +294,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		}});
 		addListener("listAllfishraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null && !OM.is_("listAllmeatsubstitute", aEvent.mStack))
-			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fishtrapbaitItem", 4));
+			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fishtrapbaitItem", 8));
 		}});
 		addListener("listAllfruit", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.container(aEvent.mStack, T) == null)

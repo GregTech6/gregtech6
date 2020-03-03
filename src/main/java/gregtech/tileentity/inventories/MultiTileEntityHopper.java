@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,7 +46,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntitySnowman;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -151,15 +154,22 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 	}
 	
 	@Override
+	public void onWalkOver2(EntityLivingBase aEntity) {
+		if (isServerSide() && (aEntity.getClass() == EntitySnowman.class || "EntityNewSnowGolem".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aEntity)))) {
+			int i = getSizeInventory(); while (--i>=0) if (addStackToSlot(i, ST.make(Items.snowball, 1, 0))) break;
+		}
+	}
+	
+	@Override
 	@SuppressWarnings("rawtypes")
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
+			int tMovedItems = 0;
 			if (mMovedLastTick) {
 				mMovedLastTick = F;
 			} else if ((mInventoryChanged || mCheckNextTick || mBlockUpdated || aTimer % 64 == 32) && !hasRedstoneIncoming()) {
 				mCheckNextTick = F;
-				int tMovedItems = 0;
 				if (!SIDES_TOP[mFacing] && !invempty()) {
 					DelegatorTileEntity tDelegator = getAdjacentTileEntity(mFacing);
 					if (tDelegator.getBlock() instanceof BlockRailBase) {
@@ -182,7 +192,8 @@ public class MultiTileEntityHopper extends TileEntityBase09FacingSingle implemen
 					tMovedItems += ST.move(tDelegator, delegator(SIDE_TOP));
 				} else {
 					if (!WD.visOpq(tDelegator.getWorld(), tDelegator.getX(), tDelegator.getY(), tDelegator.getZ(), F, T)) {
-						for (int i = 0, j = getSizeInventory(); i < j; i++) if (!slotHas(i)) {
+						int i = getSizeInventory();
+						while (i-->0) if (!slotHas(i)) {
 							slot(i, WD.suck(tDelegator));
 							if (slotHas(i)) {
 								tMovedItems += slot(i).stackSize;

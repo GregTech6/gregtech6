@@ -117,11 +117,13 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Steam.make(tEnergy * STEAM_PER_WATER))) {
 						mEnergy -= mTanks[0].remove(tEnergy) * EU_PER_WATER;
 					} else tIsExploding = T;
-				} else tIsExploding = T;
+				} else if (mTanks[0].isEmpty()) {
+					if (mEnergy > EU_PER_WATER) tIsExploding = T;
+				}
 				
-				if (tIsExploding) {
+				if (tIsExploding && !invempty()) {
 					// TODO proper explosion.
-					// explode(8); // TODO Keep commented out until Reactor System has been tested well enough.
+					// explode( 8); // TODO Keep commented out until Reactor System has been tested well enough.
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
 					tCalc *= 2;
 					for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {

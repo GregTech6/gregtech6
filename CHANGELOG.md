@@ -1,22 +1,43 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.12.06: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
+6.12.05: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.12.04: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.12.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Pam's Harvestcraft Fishtrap Bait Recipe for Mixing Bowl had a lower amount of Output than intended.
+[CHANGED] More Reactor Test Stuffs from Erik3003.
 
 
-6.12.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game, or playing Factorio...)
+6.12.02:
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
+[FIXED] TerraFirmaCraft Attack Damage Multiplier for GT6 Tools to be 80 instead of 10 and actually showing in the Tooltip.
+[FIXED] Thaumcraft Aspects for Nuggets and Ingots now check if they are supposed to be Metallum, and if not, then they will replace it with Ordo.
+[FIXED] Reactors blew up when no Coolant was in them while a minimal amount of Power was left over and they did not have any Rods.
+[FIXED] IC2-Classic Watermills should now accept Ocean and River Water. This requires a pending update on the IC2-Classic Side aswell.
+[FIXED] GT6 Tools should now work with Treecapitator installed as long as Treecapitator detects them as valid Tools.
+[FIXED] A Rare NEI Recipe List Crash. (Concurrent Modification Exception when clicking Progress Bar)
+[FIXED] Bedrock Ores did not generate Indicator Flowers and Indicator Rocks in Twilight Forest due to its Terrains normal Height of Y31 instead of Y63.
+[FIXED] The Code that made Plates, Ingots and Rocks placeable did not check if the Stack was already a Block, meaning it just replaced things like Greatwood Planks or Silverwood Planks with the Stack-of-Plates Block.
 [FIXED] Gearboxes sometimes breaking/overloading on World Load.
 [FIXED] Some Issue with Coke Ovens and other Ignition based Basic Machines, hopefully.
-[FIXED] Bumbliaries lacking Tooltips.
+[FIXED] Bumbliaries were lacking Tooltips.
 [FIXED] Reactor Rods in general were not ON/OFF sensitive.
+[FIXED] The Running-Possible Sensors now also return Redstone when the Output happens to be blocked at that moment.
 [FIXED] Made Tooltips for Power Input/Output of Machines now have a special verbiage for a Minimum of "1 Unit per Tick" or less, by saying "up to MAX per Tick" instead.
-[ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware. Also it is not tested yet!
+[CHANGED] Coke Ovens now have 9 Output Slots due to the Recipe that outputs 5/6 Chunks of Coal Coke, so that each Coke Chunk gets 1 Slot.
+[ADDED] Chili Crop which was missing.
+[ADDED] Snow Golems can have their poop picked up by GT6 Hoppers automatically without constantly breaking a Snow Layer Block. Also works with Et Futurums silent replacement for Snow Golems, yes I luckily noticed that...
+[ADDED] Reactors can use Distilled Water as Coolant, but that uses a different System so beware. Also it is not tested or finished yet! Also Reactor Explosions are disabled yet again until.
 [ADDED] Geiger Counter Sensor courtesy of Erik3003.
 
 

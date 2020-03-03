@@ -320,7 +320,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						aEvent.setCanceled(T);
 					}
 				} else {
-					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking()) {
+					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && ST.block(aStack) == NB) {
 						OreDictItemData tData = OM.anyassociation_(aStack);
 						if (tData != null) {
 							if (tData.mPrefix == OP.rockGt) {

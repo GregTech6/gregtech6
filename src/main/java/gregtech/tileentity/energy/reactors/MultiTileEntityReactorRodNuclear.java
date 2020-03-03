@@ -49,7 +49,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (aNBT.hasKey(NBT_NUCLEAR_SELF )) mNeutronSelf    = aNBT.getInteger(NBT_NUCLEAR_SELF );
 		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther   = aNBT.getInteger(NBT_NUCLEAR_OTHER);
 		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv     = aNBT.getInteger(NBT_NUCLEAR_DIV  );
-		if (aNBT.hasKey(NBT_NUCLEAR_MAX	 )) mNeutronMax 	= aNBT.getInteger(NBT_NUCLEAR_MAX);
+		if (aNBT.hasKey(NBT_NUCLEAR_MAX  )) mNeutronMax     = aNBT.getInteger(NBT_NUCLEAR_MAX);
 		if (aNBT.hasKey(NBT_VALUE        )) mDepleted       = aNBT.getShort(NBT_VALUE);
 	}
 	
@@ -75,7 +75,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 			aList.add(LH.Chat.CYAN   + "When used with Distilled Water:");
 			aList.add(LH.Chat.GREEN  + "Emission: "  + LH.Chat.WHITE + mNeutronOther          + LH.Chat.PURPLE + " Neutrons/t");
 			aList.add(LH.Chat.GREEN  + "Self: "      + LH.Chat.WHITE + mNeutronSelf           + LH.Chat.PURPLE + " Neutrons/t");
-			aList.add(LH.Chat.GREEN  + "Maximum: "   + LH.Chat.WHITE + mNeutronMax		      + LH.Chat.PURPLE + " Neutrons/t");
+			aList.add(LH.Chat.GREEN  + "Maximum: "   + LH.Chat.WHITE + mNeutronMax            + LH.Chat.PURPLE + " Neutrons/t");
 			aList.add(LH.Chat.YELLOW + "Factor: "    + LH.Chat.WHITE + "1/" + mNeutronDiv     + LH.Chat.GRAY);
 			if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
 //          break;
