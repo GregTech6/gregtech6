@@ -32,29 +32,6 @@ import net.minecraft.nbt.NBTTagCompound;
  * @author Gregorius Techneticies, Erik3003
  */
 public class MultiTileEntityReactorRodModerator extends MultiTileEntityReactorRodBase {
-	public short mModeration = 0;
-	public short oModeration = 0;
-
-	@Override
-	public void readFromNBT2(NBTTagCompound aNBT) {
-		super.readFromNBT2(aNBT);
-		mModeration = aNBT.getShort(NBT_NUCLEAR_MOD);
-		oModeration = aNBT.getShort(NBT_NUCLEAR_MOD + ".o");
-	}
-
-	@Override
-	public void writeToNBT2(NBTTagCompound aNBT) {
-		super.writeToNBT2(aNBT);
-		UT.NBT.setNumber(aNBT, NBT_NUCLEAR_MOD, mModeration);
-		UT.NBT.setNumber(aNBT, NBT_NUCLEAR_MOD + ".o", oModeration);
-	}
-
-	@Override
-	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
-		UT.NBT.setNumber(aNBT, NBT_NUCLEAR_MOD, mModeration);
-		UT.NBT.setNumber(aNBT, NBT_NUCLEAR_MOD + ".o", oModeration);
-		return super.writeItemNBT2(aNBT);
-	}
 
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
@@ -64,25 +41,18 @@ public class MultiTileEntityReactorRodModerator extends MultiTileEntityReactorRo
 	
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		mModeration = 0;
-		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
-		return 0;
+		return aReactor.oNeutronCounts[aSlot];
 	}
 	
 	@Override
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		oModeration = mModeration;
-		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return F;
 	}
 	
 	@Override
 	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
-		if (aNeutrons > 0) {
-			mModeration++;
-			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
-		}
-		return oModeration * aNeutrons;
+		aReactor.mNeutronCounts[aSlot] += aNeutrons;
+		return 0;
 	}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.rods.moderator";}
