@@ -20,6 +20,7 @@
 package gregtech.tileentity.energy.reactors;
 
 import gregapi.data.LH;
+import gregapi.item.ReactorRodModerationState;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
@@ -86,8 +87,8 @@ public class MultiTileEntityReactorRodBreeder extends MultiTileEntityReactorRodB
 	}
 	
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
-		aReactor.mNeutronCounts[aSlot] += aNeutrons;
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, ReactorRodModerationState aState) {
+		if (aState == ReactorRodModerationState.NORMAL) aReactor.mNeutronCounts[aSlot] += aNeutrons;
 		return 0;
 	}
 	

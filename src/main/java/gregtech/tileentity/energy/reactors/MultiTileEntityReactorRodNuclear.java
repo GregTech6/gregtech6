@@ -26,6 +26,7 @@ import java.util.List;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MT;
+import gregapi.item.ReactorRodModerationState;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
@@ -41,6 +42,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	public long mDurability = 0;
 	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8, mNeutronMax = 128;
 	public short mDepleted = -1;
+	public boolean mModerated = false, oModerated = false;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -50,6 +52,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther   = aNBT.getInteger(NBT_NUCLEAR_OTHER);
 		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv     = aNBT.getInteger(NBT_NUCLEAR_DIV  );
 		if (aNBT.hasKey(NBT_NUCLEAR_MAX  )) mNeutronMax     = aNBT.getInteger(NBT_NUCLEAR_MAX);
+		if (aNBT.hasKey(NBT_NUCLEAR_MOD	 )) mModerated		= aNBT.getBoolean(NBT_NUCLEAR_MOD);
+		if (aNBT.hasKey(NBT_NUCLEAR_MOD+".o")) oModerated		= aNBT.getBoolean(NBT_NUCLEAR_MOD+".o");
 		if (aNBT.hasKey(NBT_VALUE        )) mDepleted       = aNBT.getShort(NBT_VALUE);
 	}
 	
@@ -57,11 +61,15 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	public void writeToNBT2(NBTTagCompound aNBT) {
 		super.writeToNBT2(aNBT);
 		UT.NBT.setNumber(aNBT, NBT_DURABILITY, mDurability);
+		UT.NBT.setBoolean(aNBT, NBT_NUCLEAR_MOD, mModerated);
+		UT.NBT.setBoolean(aNBT, NBT_NUCLEAR_MOD+".o", oModerated);
 	}
 	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		UT.NBT.setNumber(aNBT, NBT_DURABILITY, mDurability);
+		UT.NBT.setBoolean(aNBT, NBT_NUCLEAR_MOD, mModerated);
+		UT.NBT.setBoolean(aNBT, NBT_NUCLEAR_MOD+".o", oModerated);
 		return super.writeItemNBT2(aNBT);
 	}
 	
@@ -91,6 +99,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	// Gets called every 20 Ticks.
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		oModerated = mModerated;
+		mModerated = false;
 		if (FL.Coolant_IC2.is(aReactor.mTanks[0])) {
 			// TODO: Change Loss of Durability to be changed once the System below this legacy case has been proven.
 			mDurability -= 2000;
@@ -124,7 +134,11 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	
 	@Override
 	// Gets called every 20 Ticks.
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, ReactorRodModerationState aState) {
+		if (aState != ReactorRodModerationState.NORMAL) {
+			mModerated = true;
+			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
+		}
 		aReactor.mNeutronCounts[aSlot] += aNeutrons;
 		return 0;
 	}
@@ -133,7 +147,12 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	public int getReactorRodNeutronMaximum(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		return mNeutronMax;
 	}
-	
+
+	@Override
+	public ReactorRodModerationState isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		return oModerated ? ReactorRodModerationState.MODERATED : ReactorRodModerationState.NORMAL;
+	}
+
 	@Override public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa, T), BlockTextureDefault.get(sOverlays[1], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}
 	@Override public ITexture getReactorRodTextureTop  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa, T), BlockTextureDefault.get(sOverlays[0], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}
 	

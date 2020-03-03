@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.data.LH;
+import gregapi.item.ReactorRodModerationState;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -48,7 +49,7 @@ public class MultiTileEntityReactorRodAbsorber extends MultiTileEntityReactorRod
 	}
 	
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, ReactorRodModerationState aState) {
 		aReactor.mNeutronCounts[aSlot] += aNeutrons;
 		return 0;
 	}

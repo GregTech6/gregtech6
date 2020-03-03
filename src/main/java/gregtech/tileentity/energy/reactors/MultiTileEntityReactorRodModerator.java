@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.data.LH;
+import gregapi.item.ReactorRodModerationState;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -50,10 +51,15 @@ public class MultiTileEntityReactorRodModerator extends MultiTileEntityReactorRo
 	}
 	
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
-		aReactor.mNeutronCounts[aSlot] += aNeutrons;
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, ReactorRodModerationState aState) {
+		if (aState != ReactorRodModerationState.MODERATOR) aReactor.mNeutronCounts[aSlot] += aNeutrons;
 		return 0;
 	}
-	
+
+	@Override
+	public ReactorRodModerationState isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		return ReactorRodModerationState.MODERATOR;
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.rods.moderator";}
 }
