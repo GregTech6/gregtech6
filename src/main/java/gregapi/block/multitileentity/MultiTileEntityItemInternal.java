@@ -472,6 +472,12 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		return 0;
 	}
 	@Override
+	public int getReactorRodNeutronMaximum(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronMaximum(aReactor, aSlot, aStack);
+		return 0;
+	}
+	@Override
 	public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodTextureSides(aReactor, aSlot, aStack, aActive);

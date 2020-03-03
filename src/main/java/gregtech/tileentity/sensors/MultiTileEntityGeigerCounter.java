@@ -24,10 +24,12 @@ import static gregapi.data.CS.*;
 import gregapi.data.BI;
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.item.IItemReactorRod;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.MultiTileEntitySensorTE;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore;
 import net.minecraft.tileentity.TileEntity;
@@ -49,9 +51,16 @@ public class MultiTileEntityGeigerCounter extends MultiTileEntitySensorTE {
 	
 	@Override
 	public long getCurrentMax(DelegatorTileEntity<TileEntity> aDelegator) {
+		// TODO: Remove special case for Coolant Reactor once durability system is forwarded to it
 		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) {
-			if (FL.Coolant_IC2.is(((MultiTileEntityReactorCore)aDelegator.mTileEntity).mTanks[0])) return ((MultiTileEntityReactorCore)aDelegator.mTileEntity).mTanks[0].getCapacity();
-			return Long.MAX_VALUE;
+			MultiTileEntityReactorCore TE = (MultiTileEntityReactorCore)aDelegator.mTileEntity;
+			if (FL.Coolant_IC2.is(TE.mTanks[0])) return TE.mTanks[0].getCapacity();
+			int tMaximum = 0;
+			tMaximum += TE.slotHas(0) && ST.item(TE.slot(0)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(0))).getReactorRodNeutronMaximum(TE, 0, TE.slot(0)) : 0;
+			tMaximum += TE.slotHas(1) && ST.item(TE.slot(1)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(1))).getReactorRodNeutronMaximum(TE, 1, TE.slot(1)) : 0;
+			tMaximum += TE.slotHas(2) && ST.item(TE.slot(2)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(2))).getReactorRodNeutronMaximum(TE, 2, TE.slot(2)) : 0;
+			tMaximum += TE.slotHas(3) && ST.item(TE.slot(3)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(3))).getReactorRodNeutronMaximum(TE, 3, TE.slot(3)) : 0;
+			return tMaximum;
 		}
 		return 0;
 	}
