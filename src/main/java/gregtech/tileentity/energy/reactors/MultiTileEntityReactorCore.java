@@ -32,7 +32,6 @@ import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
 import gregapi.item.IItemReactorRod;
-import gregapi.item.ReactorRodModerationState;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
 import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.ITileEntityTapAccessible;
@@ -153,8 +152,8 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	// 0 and 1 are at SIDE_X_NEG  3|1 3|1   v1 3
 	// 2 and 3 are at SIDE_X_POS    0 2     Z+
 
-	public ReactorRodModerationState isReactorRodModerated(int aSlot) {
-		return ReactorRodModerationState.NORMAL;
+	public boolean isReactorRodModerated(int aSlot) {
+		return false;
 	}
 
 	public int getReactorRodNeutronEmission(int aSlot) {
@@ -165,7 +164,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 		return F;
 	}
 	
-	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons, ReactorRodModerationState aState) {
+	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons, boolean aModerated) {
 		return 0;
 	}
 	

@@ -37,14 +37,7 @@ import gregapi.data.CS.ModIDs;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.TD;
-import gregapi.item.CreativeTab;
-import gregapi.item.IItemColorableRGB;
-import gregapi.item.IItemEnergy;
-import gregapi.item.IItemGT;
-import gregapi.item.IItemNoGTOverride;
-import gregapi.item.IItemReactorRod;
-import gregapi.item.IItemRottable;
-import gregapi.item.IItemUpdatable;
+import gregapi.item.*;
 import gregapi.oredict.IOreDictItemDataOverrideItem;
 import gregapi.oredict.OreDictItemData;
 import gregapi.render.BlockTextureCopied;
@@ -453,6 +446,14 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).isReactorRod(aStack);
 		return F;
 	}
+
+	@Override
+	public boolean isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).isModerated(aReactor, aSlot, aStack);
+		return false;
+	}
+
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
@@ -466,9 +467,9 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		return F;
 	}
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
-		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronReflection(aReactor, aSlot, aStack, aNeutrons);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronReflection(aReactor, aSlot, aStack, aNeutrons, aModerated);
 		return 0;
 	}
 	@Override

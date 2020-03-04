@@ -26,7 +26,6 @@ import java.util.List;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MT;
-import gregapi.item.ReactorRodModerationState;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
@@ -102,22 +101,16 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		oModerated = mModerated;
 		mModerated = false;
 		if (FL.Coolant_IC2.is(aReactor.mTanks[0])) {
-			// TODO: Change Loss of Durability to be changed once the System below this legacy case has been proven.
-			mDurability -= 2000;
-			if (mDurability <= 0) mDurability = -1;
-			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
-			aReactor.mNeutronCounts[aSlot] += mNeutronSelf*4;
-			return mNeutronOther * 4 + (int)UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf * 4, mNeutronDiv * 2);
+			mNeutronOther *= 4;
+			mNeutronSelf *= 4;
+			mNeutronDiv *= 2;
 		}
-		if (FL.distw(aReactor.mTanks[0])) {
-			aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
-			long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
-			long tDurabilityLoss = (tEmission * 4 + mNeutronSelf) < mNeutronMax ? 2000 : UT.Code.divup(8000 * (tEmission * 4 + mNeutronSelf), mNeutronMax);
-			mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
-			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
-			return UT.Code.bindInt(tEmission);
-		}
-		return 0;
+		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
+		long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
+		long tDurabilityLoss = (tEmission * 4 + mNeutronSelf) < mNeutronMax ? 2000 : UT.Code.divup(8000 * (tEmission * 4 + mNeutronSelf), mNeutronMax);
+		mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
+		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
+		return UT.Code.bindInt(tEmission);
 	}
 	
 	@Override
@@ -134,8 +127,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	
 	@Override
 	// Gets called every 20 Ticks.
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, ReactorRodModerationState aState) {
-		if (aState != ReactorRodModerationState.NORMAL) {
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
+		if (aModerated) {
 			mModerated = true;
 			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		}
@@ -149,8 +142,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	}
 
 	@Override
-	public ReactorRodModerationState isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		return oModerated ? ReactorRodModerationState.MODERATED : ReactorRodModerationState.NORMAL;
+	public boolean isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		return oModerated;
 	}
 
 	@Override public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa, T), BlockTextureDefault.get(sOverlays[1], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}

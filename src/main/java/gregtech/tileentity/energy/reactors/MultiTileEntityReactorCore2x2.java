@@ -27,7 +27,6 @@ import java.util.List;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.item.IItemReactorRod;
-import gregapi.item.ReactorRodModerationState;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.old.Textures;
@@ -70,39 +69,39 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 					tAdjacentTE = getAdjacentTileEntity(SIDE_X_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[3] = tAdjacentTE;
 					
 					int tNeutronCount = getReactorRodNeutronEmission(0);
-					ReactorRodModerationState tState = isReactorRodModerated(0);
-					if (tNeutronCount != 0) {
-						mNeutronCounts[0] += getReactorRodNeutronReflection(1, tNeutronCount, tState);
-						mNeutronCounts[0] += getReactorRodNeutronReflection(2, tNeutronCount, tState);
-						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tState);
-						tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tState);
+					boolean tModerated = isReactorRodModerated(0);
+					if (tNeutronCount != 0 || tModerated) {
+						mNeutronCounts[0] += getReactorRodNeutronReflection(1, tNeutronCount, tModerated);
+						mNeutronCounts[0] += getReactorRodNeutronReflection(2, tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
 					}
 					
 					tNeutronCount = getReactorRodNeutronEmission(1);
-					tState = isReactorRodModerated(1);
-					if (tNeutronCount != 0) {
-						mNeutronCounts[1] += getReactorRodNeutronReflection(0, tNeutronCount, tState);
-						mNeutronCounts[1] += getReactorRodNeutronReflection(3, tNeutronCount, tState);
-						tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tState);
-						tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tState);
+					tModerated = isReactorRodModerated(1);
+					if (tNeutronCount != 0 || tModerated) {
+						mNeutronCounts[1] += getReactorRodNeutronReflection(0, tNeutronCount, tModerated);
+						mNeutronCounts[1] += getReactorRodNeutronReflection(3, tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[1] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
 					}
 					
 					tNeutronCount = getReactorRodNeutronEmission(2);
-					tState = isReactorRodModerated(2);
-					if (tNeutronCount != 0) {
-						mNeutronCounts[2] += getReactorRodNeutronReflection(0, tNeutronCount, tState);
-						mNeutronCounts[2] += getReactorRodNeutronReflection(3, tNeutronCount, tState);
-						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tState);
-						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tState);
+					tModerated = isReactorRodModerated(2);
+					if (tNeutronCount != 0 || tModerated) {
+						mNeutronCounts[2] += getReactorRodNeutronReflection(0, tNeutronCount, tModerated);
+						mNeutronCounts[2] += getReactorRodNeutronReflection(3, tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[2] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
 					}
 					
 					tNeutronCount = getReactorRodNeutronEmission(3);
-					tState = isReactorRodModerated(3);
-					if (tNeutronCount != 0) {
-						mNeutronCounts[3] += getReactorRodNeutronReflection(1, tNeutronCount, tState);
-						mNeutronCounts[3] += getReactorRodNeutronReflection(2, tNeutronCount, tState);
-						tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tState);
-						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tState);
+					tModerated = isReactorRodModerated(3);
+					if (tNeutronCount != 0 || tModerated) {
+						mNeutronCounts[3] += getReactorRodNeutronReflection(1, tNeutronCount, tModerated);
+						mNeutronCounts[3] += getReactorRodNeutronReflection(2, tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[3] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
 					}
 				}
 			}
@@ -169,15 +168,15 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 	}
 	
 	@Override
-	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons, ReactorRodModerationState aState) {
-		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReflection(this, aSlot, slot(aSlot), aNeutrons, aState);
+	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons, boolean aModerated) {
+		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).getReactorRodNeutronReflection(this, aSlot, slot(aSlot), aNeutrons, aModerated);
 		return 0;
 	}
 
 	@Override
-	public ReactorRodModerationState isReactorRodModerated(int aSlot) {
+	public boolean isReactorRodModerated(int aSlot) {
 		if (!mStopped && (mMode & B[aSlot]) == 0 && slotHas(aSlot) && ST.item(slot(aSlot)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(aSlot))).isModerated(this, aSlot, slot(aSlot));
-		return ReactorRodModerationState.NORMAL;
+		return false;
 	}
 	
 	@Override

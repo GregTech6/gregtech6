@@ -30,7 +30,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOn
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.item.IItemReactorRod;
-import gregapi.item.ReactorRodModerationState;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -83,10 +82,10 @@ public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable imp
 	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
 	
 	@Override public boolean  isReactorRod(ItemStack aStack) {return T;}
-	@Override public ReactorRodModerationState isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return ReactorRodModerationState.NORMAL;}
+	@Override public boolean  isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return false;}
 	@Override public int      getReactorRodNeutronEmission  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return 0;}
 	@Override public boolean  getReactorRodNeutronReaction  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return F;}
-	@Override public int      getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, ReactorRodModerationState aState) {return 0;}
+	@Override public int      getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {return 0;}
 	@Override public int      getReactorRodNeutronMaximum   (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return 0;}
 	
 	@Override public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa, F), BlockTextureDefault.get(sOverlays[1], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}
