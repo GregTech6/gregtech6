@@ -29,6 +29,7 @@ import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.UT;
+import net.minecraftforge.fluids.FluidStack;
 
 
 public class Loader_Fuels implements Runnable {
@@ -167,25 +168,32 @@ public class Loader_Fuels implements Runnable {
 		
 		FM.Burn         .addRecipe0(T, - 64, 30, FL.make("propane", 5)                       , FL.Water.make(5), FL.make("carbondioxide", 4));
 		FM.Gas          .addRecipe0(T, - 64, 40, FL.make("propane", 5)                       , FL.Water.make(5), FL.make("carbondioxide", 4));
-		
-		FM.Burn         .addRecipe0(T, - 64,  4, FL.make("ethylene", 1)                      , FL.Water.make(1), FL.make("carbondioxide", 1));
-		FM.Gas          .addRecipe0(T, - 64,  5, FL.make("ethylene", 1)                      , FL.Water.make(1), FL.make("carbondioxide", 1));
-		
-		FM.Burn         .addRecipe0(T, - 64,  3, FL.make("propylene", 1)                     , FL.Water.make(1), FL.make("carbondioxide", 1));
-		FM.Gas          .addRecipe0(T, - 64,  4, FL.make("propylene", 1)                     , FL.Water.make(1), FL.make("carbondioxide", 1));
-		
-		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                 , FL.Lava_Pahoehoe.make(1), ZL_IS);
+
+		FM.Burn.addRecipe0(T, -64, 4, FL.make("ethylene", 1), FL.Water.make(1), FL.make("carbondioxide", 1));
+		FM.Gas.addRecipe0(T, -64, 5, FL.make("ethylene", 1), FL.Water.make(1), FL.make("carbondioxide", 1));
+
+		FM.Burn.addRecipe0(T, -64, 3, FL.make("propylene", 1), FL.Water.make(1), FL.make("carbondioxide", 1));
+		FM.Gas.addRecipe0(T, -64, 4, FL.make("propylene", 1), FL.Water.make(1), FL.make("carbondioxide", 1));
+
+		FM.Hot.addRecipe0(T, -16, EU_PER_LAVA / 16, FL.Lava.make(1), FL.Lava_Pahoehoe.make(1), ZL_IS);
 		if (FL.Water_Hot.exists())
-		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Hot.make(1)                        , FL.Water.make(1), ZL_IS);
-		FM.Hot          .addRecipe0(T, -EU_PER_COOLANT, 1, FL.Coolant_IC2_Hot.make(1)        , FL.Coolant_IC2.make(1), ZL_IS);
-		
-		FM.Turbine      .addRecipe0(T, - 16,  5, FL.Steam.make(160)                          , FL.DistW.make(1), ZL_IS);
+			FM.Hot.addRecipe0(T, -2, 1, FL.Water_Hot.make(1), FL.Water.make(1), ZL_IS);
+		FM.Hot.addRecipe0(T, -EU_PER_COOLANT, 1, FL.Coolant_IC2_Hot.make(1), FL.Coolant_IC2.make(1), ZL_IS);
+
+		FM.Hot.addRecipe0(T, -EU_PER_COOLANT, 1, FL.Hot_Molten_Sodium.make(1), FL.amount(MT.Na.mLiquid, 1), ZL_IS);
+		FM.Hot.addRecipe0(T, -EU_PER_COOLANT, 1, FL.Hot_Molten_Tin.make(1), FL.amount(MT.Sn.mLiquid, 1), ZL_IS);
+		FM.Hot.addRecipe0(T, -EU_PER_COOLANT, 1, FL.Hot_Heavy_Water.make(1), FL.amount(MT.D2O.mLiquid, 1), ZL_IS);
+		FM.Hot.addRecipe0(T, -EU_PER_COOLANT, 1, FL.Hot_Semi_Heavy_Water.make(1), FL.amount(MT.HDO.mLiquid, 1), ZL_IS);
+		FM.Hot.addRecipe0(T, -EU_PER_COOLANT, 1, FL.Hot_Super_Heavy_Water.make(1), FL.amount(MT.T2O.mLiquid, 1), ZL_IS);
+		FM.Hot.addRecipe0(T, -EU_PER_COOLANT, 1, FL.Hot_Carbon_Dioxide.make(1), FL.amount(MT.CO2.mGas, 1), ZL_IS);
+		FM.Hot.addRecipe0(T, -EU_PER_COOLANT, 1, FL.Hot_Helium.make(1), FL.amount(MT.He.mGas, 1), ZL_IS);
+
+		FM.Turbine.addRecipe0(T, -16, 5, FL.Steam.make(160), FL.DistW.make(1), ZL_IS);
 //      FM.Turbine      .addRecipe0(T, - 10,  5, FL.Steam_IC2.make(100)                      , FL.DistW.make(1), ZL_IS);
 //      FM.Turbine      .addRecipe0(T, - 30,  5, FL.Steam_IC2_Superheated.make(100)          , FL.DistW.make(1), ZL_IS);
-		
-		
-		
-		FM.Magic        .addRecipe0(T, - 64, 64, FL.make("mercury", 1));
+
+
+		FM.Magic.addRecipe0(T, -64, 64, FL.make("mercury", 1));
 		
 		
 //      new Recipe(new ItemStack(Items.lava_bucket), new ItemStack(Blocks.obsidian), OM.get(OP.ingot, MT.Copper, 1), OM.get(OP.ingot, MT.Tin, 1), OM.get(OP.ingot, MT.Electrum, 1), 30, 2);

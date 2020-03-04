@@ -77,27 +77,14 @@ public enum FL {
 	, Deuterium                 ("deuterium"                                                , GAS)
 	, Tritium                   ("tritium"                                                  , GAS)
 	, Helium                    ("helium"                                                   , GAS)
-	, Helium_3                  ("helium-3"                                                 , GAS)
-	, Neon                      ("neon"                                                     , GAS)
-	, Argon                     ("argon"                                                    , GAS)
-	
-	, Steam                     ("steam"                                                    , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
-	, Steam_IC2                 ("ic2steam"                                                 , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
-	, Steam_IC2_Superheated     ("ic2superheatedsteam"                                      , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
-	
-	, Coolant_IC2               ("ic2coolant"                                               , SIMPLE, LIQUID)
-	, Coolant_IC2_Hot           ("ic2hotcoolant"                                            , SIMPLE, LIQUID, POWER_CONDUCTING)
-	, Freezing_Ooze             ("ooze"                                                     , SIMPLE, LIQUID, BROKEN)
-	
-	, Lava                      ("lava"                                                     , SIMPLE, LIQUID)
-	, Lava_Pahoehoe             ("ic2pahoehoelava"                                          , SIMPLE, LIQUID)
-	, Lava_Pure                 ("purelava"                                                 , SIMPLE, LIQUID, BROKEN, INFINITE) // Lycanite Lava, Warning: Infinite like vanilla Water!
-	
-	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER)
-	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER)
-	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER)
-	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER)
-	, Ice                       ("ice"                                                      , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
+	, Helium_3                  ("helium-3"                                                 , GAS), Neon("neon", GAS), Argon("argon", GAS), Steam("steam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Steam_IC2("ic2steam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Steam_IC2_Superheated("ic2superheatedsteam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Coolant_IC2("ic2coolant", SIMPLE, LIQUID), Coolant_IC2_Hot("ic2hotcoolant", SIMPLE, LIQUID, POWER_CONDUCTING), Freezing_Ooze("ooze", SIMPLE, LIQUID, BROKEN), Hot_Molten_Sodium("hotmoltensodium", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Molten_Tin("hotmoltentin", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Heavy_Water("hotheavywater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Semi_Heavy_Water("hotsemiheavywater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Super_Heavy_Water("hotsuperheavywater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Carbon_Dioxide("hotcarbondioxide", SIMPLE, GAS, POWER_CONDUCTING), Hot_Helium("hothelium", SIMPLE, GAS, POWER_CONDUCTING)
+
+	//, Hot_Molten_Salt			("hotmoltensalt"											, SIMPLE, LIQUID, POWER_CONDUCTING)
+	//, Hot_Molten_Thorium_Salt	("hotmoltenthoriumsalt"										, SIMPLE, LIQUID, POWER_CONDUCTING)
+
+	, Lava("lava", SIMPLE, LIQUID), Lava_Pahoehoe("ic2pahoehoelava", SIMPLE, LIQUID), Lava_Pure("purelava", SIMPLE, LIQUID, BROKEN, INFINITE) // Lycanite Lava, Warning: Infinite like vanilla Water!
+
+	, Water("water", SIMPLE, LIQUID, FOOD, WATER), DistW("ic2distilledwater", SIMPLE, LIQUID, FOOD, WATER), River_Water("riverwater", SIMPLE, LIQUID, FOOD, WATER), Water_Hot("ic2hotwater", SIMPLE, LIQUID, FOOD, WATER), Ice("ice", SIMPLE, LIQUID, FOOD, WATER, THERMOS)
 	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
 	, Mineralsoda               ("mineralsoda"                                              , SIMPLE, LIQUID, FOOD)
 	, Soda                      ("soda"                                                     , SIMPLE, LIQUID, FOOD)
@@ -508,34 +495,38 @@ public enum FL {
 	, Potion_WaterBreathing_1S  ("potion.waterbreathing.splash"                             , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
 	, Potion_WaterBreathing_1LS ("potion.waterbreathing.long.splash"                        , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
 	, Potion_WaterBreathing_1D  ("potion.waterbreathing.lingering"                          , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_WaterBreathing_1LD ("potion.waterbreathing.long.lingering"                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Invisibility_1     ("potion.invisibility"                                      , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Invisibility_1L    ("potion.invisibility.long"                                 , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Invisibility_1S    ("potion.invisibility.splash"                               , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Invisibility_1LS   ("potion.invisibility.long.splash"                          , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Invisibility_1D    ("potion.invisibility.lingering"                            , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	, Potion_Invisibility_1LD   ("potion.invisibility.long.lingering"                       , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH)
-	;
-	
+	, Potion_WaterBreathing_1LD ("potion.waterbreathing.long.lingering"                     , SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH), Potion_Invisibility_1("potion.invisibility", SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH), Potion_Invisibility_1L("potion.invisibility.long", SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH), Potion_Invisibility_1S("potion.invisibility.splash", SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH), Potion_Invisibility_1LS("potion.invisibility.long.splash", SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH), Potion_Invisibility_1D("potion.invisibility.lingering", SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH), Potion_Invisibility_1LD("potion.invisibility.long.lingering", SIMPLE, LIQUID, POTION, ENCHANTED_EFFECT, BATH);
+
 	public final String mName;
-	
-	private FL(String aName, Collection<String>... aFluidSets) {
+
+	FL(String aName, Collection<String>... aFluidSets) {
 		mName = aName;
-		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName);}
+		for (Collection<String> aFluidSet : aFluidSets) {
+			aFluidSet.add(mName);
+		}
 	}
-	private FL(String aName, String aOldName, Collection<String>... aFluidSets) {
+
+	FL(String aName, String aOldName, Collection<String>... aFluidSets) {
 		mName = aName;
 		FluidsGT.NONSTANDARD.add(aOldName);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName, mName);
-		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName); aFluidSet.add(aOldName);}
+		for (Collection<String> aFluidSet : aFluidSets) {
+			aFluidSet.add(mName);
+			aFluidSet.add(aOldName);
+		}
 	}
-	private FL(String aName, String aOldName1, String aOldName2, Collection<String>... aFluidSets) {
+
+	FL(String aName, String aOldName1, String aOldName2, Collection<String>... aFluidSets) {
 		mName = aName;
 		FluidsGT.NONSTANDARD.add(aOldName1);
 		FluidsGT.NONSTANDARD.add(aOldName2);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName1, mName);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName2, mName);
-		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName); aFluidSet.add(aOldName1); aFluidSet.add(aOldName2);}
+		for (Collection<String> aFluidSet : aFluidSets) {
+			aFluidSet.add(mName);
+			aFluidSet.add(aOldName1);
+			aFluidSet.add(aOldName2);
+		}
 	}
 	
 	

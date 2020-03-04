@@ -30,6 +30,7 @@ import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
+import gregapi.data.MT;
 import gregapi.fluid.FluidTankGT;
 import gregapi.item.IItemReactorRod;
 import gregapi.tileentity.ITileEntityFunnelAccessible;
@@ -54,12 +55,13 @@ import net.minecraftforge.fluids.IFluidTank;
  * @author Gregorius Techneticies
  */
 public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
-	public int mNeutronCounts[] = new int[] {0,0,0,0}, oNeutronCounts[] = new int[] {0,0,0,0};
+	public int[] mNeutronCounts = new int[]{0, 0, 0, 0};
+	public int[] oNeutronCounts = new int[]{0, 0, 0, 0};
 	public long mEnergy = 0, oEnergy = 0;
 	public byte mMode = 0;
 	public boolean mRunning = F, mStopped = F;
 	public FluidTankGT[] mTanks = {new FluidTankGT(64000), new FluidTankGT(64000)};
-	
+
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -242,7 +244,15 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
-		return FL.Coolant_IC2.is(aFluidToFill) || FL.distw(aFluidToFill) ? mTanks[0] : null;
+		return FL.Coolant_IC2.is(aFluidToFill) ||
+				FL.distw(aFluidToFill) ||
+				MT.Sn.mLiquid.isFluidEqual(aFluidToFill) ||
+				MT.Na.mLiquid.isFluidEqual(aFluidToFill) ||
+				MT.HDO.mLiquid.isFluidEqual(aFluidToFill) ||
+				MT.D2O.mLiquid.isFluidEqual(aFluidToFill) ||
+				MT.T2O.mLiquid.isFluidEqual(aFluidToFill) ||
+				MT.He.mGas.isFluidEqual(aFluidToFill) ||
+				MT.CO2.mGas.isFluidEqual(aFluidToFill) ? mTanks[0] : null;
 	}
 	
 	@Override
@@ -254,14 +264,23 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	protected IFluidTank[] getFluidTanks2(byte aSide) {
 		return mTanks;
 	}
-	
+
+
 	@Override
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
-		if (!(FL.Coolant_IC2.is(aFluid) || !FL.distw(aFluid))) return 0;
+		if (!(FL.Coolant_IC2.is(aFluid) ||
+				FL.distw(aFluid) ||
+				MT.Sn.mLiquid.isFluidEqual(aFluid) ||
+				MT.Na.mLiquid.isFluidEqual(aFluid) ||
+				MT.HDO.mLiquid.isFluidEqual(aFluid) ||
+				MT.D2O.mLiquid.isFluidEqual(aFluid) ||
+				MT.T2O.mLiquid.isFluidEqual(aFluid) ||
+				MT.He.mGas.isFluidEqual(aFluid) ||
+				MT.CO2.mGas.isFluidEqual(aFluid))) return 0;
 		updateInventory();
 		return mTanks[0].fill(aFluid, aDoFill);
 	}
-	
+
 	@Override
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
 		updateInventory();

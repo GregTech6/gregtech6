@@ -78,25 +78,39 @@ public class Loader_Fluids implements Runnable {
 		FL.create("ic2constructionfoam"      , "Construction Foam"   , MT.ConstructionFoam   , 1,    100,   300);
 		FL.create("ic2distilledwater"        , "Distilled Water"     , MT.DistWater          , 1);
 		FL.create("NitroFuel"                , "Nitro Fuel"          , MT.NitroFuel          , 1);
-		FL.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1);
-		FL.create("oil"                      , "Oil"                 , MT.Oil                , 1);
-		FL.create("fuel"                     , "Fuel Oil"            , MT.Fuel               , 1);
-		FL.create("kerosine"                 , "Kerosine"            , MT.Kerosine           , 1);
-		FL.create("diesel"                   , "Diesel"              , MT.Diesel             , 1);
-		FL.create("petrol"                   , "Petrol"              , MT.Petrol             , 1);
-		FL.create("ic2biomass"               , "Biomass"             , MT.Biomass            , 1);
-		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1);
-		FL.create("ic2coolant"               , "Industrial Coolant"  , null                  , 1);
-		FL.create("ic2hotcoolant"            , "Industrial Heatant"  , null                  , 1,   1000,  1200);
-		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
-		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
-		FL.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);
-		FL.create("hotfryingoil"             , "Hot Frying Oil"      , MT.FryingOilHot       , 1,   1000,   400);
-		
-		FL.create("fieryblood"               , "Fiery Blood"         , null                  , 1,      L,  1500).setLuminosity(10);
-		FL.create("fierytears"               , "Fiery Tears"         , null                  , 1,      L,  1500).setLuminosity(10);
-		
-		DYE_FLUIDS[0].add(FL.make(FL.create("squidink"    , "Squid Ink"       , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
+		FL.create("lubricant", "Lubricant", MT.Lubricant, 1);
+		FL.create("oil", "Oil", MT.Oil, 1);
+		FL.create("fuel", "Fuel Oil", MT.Fuel, 1);
+		FL.create("kerosine", "Kerosine", MT.Kerosine, 1);
+		FL.create("diesel", "Diesel", MT.Diesel, 1);
+		FL.create("petrol", "Petrol", MT.Petrol, 1);
+		FL.create("ic2biomass", "Biomass", MT.Biomass, 1);
+		FL.create("biomass", "Biomass", MT.Biomass, 1);
+		FL.create("ic2coolant", "Industrial Coolant", null, 1);
+		FL.create("ic2hotcoolant", "Industrial Heatant", null, 1, 1000, 1200);
+
+		FL.create("hotmoltensodium", "Hot Molten Sodium", null, 1, 1000, 1100);
+		FL.create("hotmoltentin", "Hot Molten Tin", null, 1, 1000, 2800);
+
+		FL.create("hotheavywater", "Hot Heavy Water", null, 1, 1000, 600);
+		FL.create("hotsemiheavywater", "Hot Semiheavy Water", null, 1, 1000, 550);
+		FL.create("hotsuperheavywater", "Hot Tritiated Water", null, 1, 1000, 650);
+
+		FL.create("hotcarbondioxide", "Hot Carbon Dioxide", null, 1, 1000, 950);
+		FL.create("hothelium", "Hot Helium", null, 1, 1000, 1150);
+
+		//FL.create("hotmoltensalt"			, "Hot Molten Salt"  					, null                  , 1,   1000,  1650);
+		//FL.create("hotmoltenthoriumsalt"	, "Hot Liquid Fluoride Thorium"  		, null                  , 1,   1000,  950);
+
+		FL.create("ic2pahoehoelava", "Pahoehoe Lava", null, 1, 1000, 1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
+		FL.create("bioethanol", "Bio Ethanol", MT.Ethanol, 1);
+		FL.create("mcguffium", "Mc Guffium 239", MT.Mcg, 1, L, 300);
+		FL.create("hotfryingoil", "Hot Frying Oil", MT.FryingOilHot, 1, 1000, 400);
+
+		FL.create("fieryblood", "Fiery Blood", null, 1, L, 1500).setLuminosity(10);
+		FL.create("fierytears", "Fiery Tears", null, 1, L, 1500).setLuminosity(10);
+
+		DYE_FLUIDS[0].add(FL.make(FL.create("squidink", "Squid Ink", null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
 		DYE_FLUIDS[4].add(FL.make(FL.create("indigo"      , "Indigo Dye"      , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
 		
 		IIconContainer
