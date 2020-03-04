@@ -23,6 +23,9 @@ import gregapi.render.ITexture;
 import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore;
 import net.minecraft.item.ItemStack;
 
+/**
+ * @author Gregorius Techneticies
+ */
 public interface IItemReactorRod {
 	/** @return if a Reactor would accept this Item as a Part of it. */
 	public boolean  isReactorRod(ItemStack aStack);
