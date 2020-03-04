@@ -45,34 +45,62 @@ import net.minecraft.util.AxisAlignedBB;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable implements IItemReactorRod, ITileEntityQuickObstructionCheck, IMTE_AddToolTips, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
-	@Override
-	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.CYAN + "Empty Reactor Rod, transparent to Neutrons.");
-		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
-	}
-	
+	public static IIconContainer[] sColoreds = new IIconContainer[]{
+			new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/colored/top"),
+			new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/colored/sides")
+	};
+
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		return SIDES_HORIZONTAL[aSide] ? getReactorRodTextureSides(null, 0, null, T) : getReactorRodTextureTop(null, 0, null, T);
 	}
-	
-	public static IIconContainer sColoreds[] = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/colored/top"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/colored/sides")
-	}, sOverlays[] = new IIconContainer[] {
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/overlay/top"),
-		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/overlay/sides")
+
+	public static IIconContainer[] sOverlays = new IIconContainer[]{
+			new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/overlay/top"),
+			new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/overlay/sides")
 	};
-	
-	@Override public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]); return T;}
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool () {return box(PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock)  {box(aBlock, PX_P[ 6], PX_P[ 0], PX_P[ 6], PX_N[ 6], PX_N[ 0], PX_N[ 6]);}
-	
-	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
-	
-	@Override public float getSurfaceSize           (byte aSide) {return 0.0F;}
-	@Override public float getSurfaceSizeAttachable (byte aSide) {return 0.0F;}
+
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(LH.Chat.CYAN + "Empty Reactor Rod, transparent to Neutrons");
+		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
+	}
+
+	@Override
+	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+		box(aBlock, PX_P[6], PX_P[0], PX_P[6], PX_N[6], PX_N[0], PX_N[6]);
+		return T;
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool() {
+		return box(PX_P[6], PX_P[0], PX_P[6], PX_N[6], PX_N[0], PX_N[6]);
+	}
+
+	@Override
+	public AxisAlignedBB getSelectedBoundingBoxFromPool() {
+		return box(PX_P[6], PX_P[0], PX_P[6], PX_N[6], PX_N[0], PX_N[6]);
+	}
+
+	@Override
+	public void setBlockBoundsBasedOnState(Block aBlock) {
+		box(aBlock, PX_P[6], PX_P[0], PX_P[6], PX_N[6], PX_N[0], PX_N[6]);
+	}
+
+	@Override
+	public int getLightOpacity() {
+		return LIGHT_OPACITY_NONE;
+	}
+
+	@Override
+	public float getSurfaceSize(byte aSide) {
+		return 0.0F;
+	}
+
+	@Override
+	public float getSurfaceSizeAttachable(byte aSide) {
+		return 0.0F;
+	}
 	@Override public float getSurfaceDistance       (byte aSide) {return SIDES_VERTICAL[aSide]?0.0F:PX_P[ 6];}
 	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}

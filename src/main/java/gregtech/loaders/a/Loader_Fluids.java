@@ -94,7 +94,7 @@ public class Loader_Fluids implements Runnable {
 
 		FL.create("hotheavywater", "Hot Heavy Water", null, 1, 1000, 600);
 		FL.create("hotsemiheavywater", "Hot Semiheavy Water", null, 1, 1000, 550);
-		FL.create("hotsuperheavywater", "Hot Tritiated Water", null, 1, 1000, 650);
+		FL.create("hottritiatedwater", "Hot Tritiated Water", null, 1, 1000, 650);
 
 		FL.create("hotcarbondioxide", "Hot Carbon Dioxide", null, 1, 1000, 950);
 		FL.create("hothelium", "Hot Helium", null, 1, 1000, 1150);

@@ -350,39 +350,39 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 						mEnergy -= mTanks[0].remove(tEnergy) * EU_PER_WATER;
 					} else tIsExploding = T;
 				} else if (MT.Sn.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
-					tEnergy = mEnergy / EU_PER_COOLANT;
+					tEnergy = mEnergy / EU_PER_TIN;
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Molten_Tin.make(tEnergy))) {
-						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+						mEnergy -= EU_PER_TIN * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
 				} else if (MT.Na.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
-					tEnergy = mEnergy / EU_PER_COOLANT;
+					tEnergy = mEnergy / EU_PER_SODIUM;
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Molten_Sodium.make(tEnergy))) {
-						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+						mEnergy -= EU_PER_SODIUM * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
 				} else if (MT.HDO.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
-					tEnergy = mEnergy / EU_PER_COOLANT;
+					tEnergy = mEnergy / EU_PER_SEMI_HEAVY_WATER;
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Semi_Heavy_Water.make(tEnergy))) {
-						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+						mEnergy -= EU_PER_SEMI_HEAVY_WATER * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
 				} else if (MT.D2O.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
-					tEnergy = mEnergy / EU_PER_COOLANT;
+					tEnergy = mEnergy / EU_PER_HEAVY_WATER;
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Heavy_Water.make(tEnergy))) {
-						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+						mEnergy -= EU_PER_HEAVY_WATER * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
 				} else if (MT.T2O.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
-					tEnergy = mEnergy / EU_PER_COOLANT;
-					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Super_Heavy_Water.make(tEnergy))) {
-						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+					tEnergy = mEnergy / EU_PER_TRITIATED_WATER;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Tritiated_Water.make(tEnergy))) {
+						mEnergy -= EU_PER_TRITIATED_WATER * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
 				} else if (MT.CO2.mGas.isFluidEqual(mTanks[0].getFluid())) {
-					tEnergy = mEnergy / EU_PER_COOLANT;
+					tEnergy = mEnergy / EU_PER_CO2;
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Carbon_Dioxide.make(tEnergy))) {
-						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+						mEnergy -= EU_PER_CO2 * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
 				} else if (MT.He.mGas.isFluidEqual(mTanks[0].getFluid())) {
-					tEnergy = mEnergy / EU_PER_COOLANT;
+					tEnergy = mEnergy / EU_PER_HELIUM;
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Helium.make(tEnergy))) {
-						mEnergy -= EU_PER_COOLANT * mTanks[0].remove(tEnergy);
+						mEnergy -= EU_PER_HELIUM * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
 				} else if (mTanks[0].isEmpty()) {
 					if (mEnergy > EU_PER_WATER) tIsExploding = T;

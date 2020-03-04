@@ -213,26 +213,52 @@ public class CS {
 	public static final int RF_PER_EU =  4;
 	/** The value of how many Fuel Ticks a Furnace Smelt has. */
 	public static int TICKS_PER_SMELT = 200;
-	/** The value of how many Energy Units are worth a Furnace Tick in regards of Fuel -> Energy */
+	/**
+	 * The value of how many Energy Units are worth a Furnace Tick in regards of Fuel -> Energy
+	 */
 	public static int EU_PER_FURNACE_TICK = 25;
-	/** The value of how many Energy Units are worth a Smelt Operation in regards of Energy -> Smelt, because many Mods including IC2 have cheaper smelting. In GT, I go for a Max Efficiency of 19.53125 times that value, so 256 GU per Furnace Operation. */
+	/**
+	 * The value of how many Energy Units are worth a Smelt Operation in regards of Energy -> Smelt, because many Mods including IC2 have cheaper smelting. In GT, I go for a Max Efficiency of 19.53125 times that value, so 256 GU per Furnace Operation.
+	 */
 	public static int EU_PER_SMELT = 256;
-	/** The value of how many Energy Units a Liter of Lava is worth. It is worth about 180 to 333 RF in TE. Well, I go for 320 RF in GT, meaning 80 GU or 80000 GU per Bucket. */
+	/**
+	 * The value of how many Energy Units a Liter of Lava is worth. It is worth about 180 to 333 RF in TE. Well, I go for 320 RF in GT, meaning 80 GU or 80000 GU per Bucket.
+	 */
 	public static int EU_PER_LAVA = 80;
-	/** The value of how many Energy Units a Liter of Hot Coolant also known as Heatant is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
+	/**
+	 * The value of how many Energy Units a Liter of Hot Coolant also known as Heatant is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6.
+	 */
 	public static int EU_PER_COOLANT = 20;
-	/** The value of how many Energy Units a Liter of Water needs to turn into Steam. */
+	/**
+	 * The value of how many Energy Units a Liter of Water needs to turn into Steam.
+	 */
 	public static int EU_PER_WATER = 80;
-	/** The value of how much Steam an Energy Unit is worth. The Standard is 2 Steam = 1 EU. */
+	/**
+	 * Side Bits for quick reference.
+	 */
+	public static final byte[] SBIT = {1, 2, 4, 8, 16, 32, 64};
+	public static final byte[] SIDE_BITS = SBIT;
+	public static final byte SBIT_D = 1;
+	public static final byte SBIT_U = 2;
+	public static final byte SBIT_L = 4;
+	public static final byte SBIT_F = 8;
+	public static final byte SBIT_R = 16;
+	/**
+	 * The value of how much Steam an Energy Unit is worth. The Standard is 2 Steam = 1 EU.
+	 */
 	public static int STEAM_PER_EU = 2;
-	/** The value of how much Steam a Liter of Water is worth. The Standard is 160 Steam = 1 Water. */
+	/**
+	 * The value of how much Steam a Liter of Water is worth. The Standard is 160 Steam = 1 Water.
+	 */
 	public static int STEAM_PER_WATER = 160;
-	
-	/** A few Default Values for Light Opacity. */
+
+	/**
+	 * A few Default Values for Light Opacity.
+	 */
 	public static final int LIGHT_OPACITY_NONE = 0, LIGHT_OPACITY_LEAVES = 1, LIGHT_OPACITY_WATER = 3, LIGHT_OPACITY_MAX = 255;
-	
+
 	public static final Set<String>
-	  BIOMES_RIVER              = new HashSetNoNulls<>(F, BiomeGenBase.river.biomeName, BiomeGenBase.frozenRiver.biomeName, "Lush River", "Estuary", "Twilight Stream", "Tropical River") // "Creek Bed" Unsure whether to add this
+			BIOMES_RIVER = new HashSetNoNulls<>(F, BiomeGenBase.river.biomeName, BiomeGenBase.frozenRiver.biomeName, "Lush River", "Estuary", "Twilight Stream", "Tropical River") // "Creek Bed" Unsure whether to add this
 	, BIOMES_RIVER_LAKE         = new HashSetNoNulls<>(F, BiomeGenBase.river.biomeName, BiomeGenBase.frozenRiver.biomeName, "Lush River", "Estuary", "Twilight Stream", "Tropical River", "Tropical Lake", "Twilight Lake", "Lake", "Oasis") // "Ephemeral Lake", "Ephemeral Lake Edge" those are vapourizing Lakes that vanish depending on Season.
 	, BIOMES_OCEAN              = new HashSetNoNulls<>(F, BiomeGenBase.ocean.biomeName, BiomeGenBase.frozenOcean.biomeName, BiomeGenBase.deepOcean.biomeName, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean")
 	, BIOMES_OCEAN_BEACH        = new HashSetNoNulls<>(F, BiomeGenBase.ocean.biomeName, BiomeGenBase.frozenOcean.biomeName, BiomeGenBase.deepOcean.biomeName, BiomeGenBase.beach.biomeName, BiomeGenBase.coldBeach.biomeName, BiomeGenBase.stoneBeach.biomeName, BiomeGenBase.mushroomIslandShore.biomeName, "Coral Reef", "Kelp Forest", "Mangrove", "Ocean Oil Field", "Improved Oceans", "Tropical Ocean", "Tropical Beach")
@@ -546,28 +572,50 @@ public class CS {
 	
 	/** Insert Facing and a Connectivity BitMask to see if it is connecting to that Side. Technically this is a simple Bit Operation, but accessing an Array with "FACE_CONNECTED[aSide][aConnections]" just looks nicer than "(aConnections & (1 << aSide) != 0)". */
 	public static final boolean[][] FACE_CONNECTED = {
-		{F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T},
-		{F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T,F,F,T,T},
-		{F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T,F,F,F,F,T,T,T,T},
-		{F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T},
-		{F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T},
-		{F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T},
-		{F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T}
+		{F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F, T},
+			{F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F, T, T},
+			{F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F, T, T, T, T},
+			{F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T},
+			{F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T},
+			{F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T},
+			{F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T}
 	};
-	
-	/** Fast lookup to see how many Connections a Mask has. It is recommended to do either &63 or &127 on the Index depending on how you use it. */
-	public static final byte[]              FACE_CONNECTION_COUNT = {0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7};
-	
-	/** Side Bits for quick reference.*/
-	public static final byte                SBIT[] = { 1, 2, 4, 8,16,32,64}, SIDE_BITS[] = SBIT, SBIT_D = 1, SBIT_U = 2, SBIT_L = 4, SBIT_F = 8, SBIT_R = 16, SBIT_B = 32, SBIT_N = 4, SBIT_S = 8, SBIT_W = 16, SBIT_E = 32, SBIT_A = 64, SBIT_I = 64;
-	
-	/** Those are not representing actual directions! They are for the "FACING_ROTATIONS" Array-Map */
-	public static final byte                SIDE_LEFT = 2, SIDE_FRONT = 3, SIDE_RIGHT = 4, SIDE_BACK = 5;
-	
-	/** Converts Sides to a Top-Bottom-Side Value, this limits the Range to a Number between [0 and 2] */
-	public static final byte[]              FACES_TBS = { 0, 1, 2, 2, 2, 2, 2};
-	/** Side->Opposite Mappings. */
-	public static final byte[]              OPPOSITES = { 1, 0, 3, 2, 5, 4, 6};
+
+	/**
+	 * Fast lookup to see how many Connections a Mask has. It is recommended to do either &63 or &127 on the Index depending on how you use it.
+	 */
+	public static final byte[] FACE_CONNECTION_COUNT = {0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7};
+	public static final byte SBIT_B = 32;
+	public static final byte SBIT_N = 4;
+	public static final byte SBIT_S = 8;
+	public static final byte SBIT_W = 16;
+	public static final byte SBIT_E = 32;
+	public static final byte SBIT_A = 64;
+	public static final byte SBIT_I = 64;
+	/**
+	 * An Array containing all Sides which follow the Condition, in order to iterate over them for example.
+	 */
+	public static final byte[] ALL_SIDES = {0, 1, 2, 3, 4, 5, 6};
+	public static final byte[] ALL_SIDES_MIDDLE = {6, 0, 1, 2, 3, 4, 5};
+	public static final byte[] ALL_SIDES_MIDDLE_UP = {6, 1, 2, 3, 4, 5, 0};
+	public static final byte[] ALL_SIDES_MIDDLE_DOWN = {6, 0, 2, 3, 4, 5, 1};
+	public static final byte[] ALL_SIDES_VALID = {0, 1, 2, 3, 4, 5};
+	public static final byte[][] ALL_SIDES_VALID_ORDER = {{0, 1, 2, 3, 4, 5}, {1, 2, 3, 4, 5, 0}, {2, 3, 4, 5, 0, 1}, {3, 4, 5, 0, 1, 2}, {4, 5, 0, 1, 2, 3}, {5, 0, 1, 2, 3, 4}, {0, 1, 2, 3, 4, 5}};
+	public static final byte[][] ALL_SIDES_VALID_FIRST = {{0, 1, 2, 3, 4, 5}, {1, 0, 2, 3, 4, 5}, {2, 0, 1, 3, 4, 5}, {3, 0, 1, 2, 4, 5}, {4, 0, 1, 2, 3, 5}, {5, 0, 1, 2, 3, 4}, {0, 1, 2, 3, 4, 5}};
+
+	/**
+	 * Those are not representing actual directions! They are for the "FACING_ROTATIONS" Array-Map
+	 */
+	public static final byte SIDE_LEFT = 2, SIDE_FRONT = 3, SIDE_RIGHT = 4, SIDE_BACK = 5;
+
+	/**
+	 * Converts Sides to a Top-Bottom-Side Value, this limits the Range to a Number between [0 and 2]
+	 */
+	public static final byte[] FACES_TBS = {0, 1, 2, 2, 2, 2, 2};
+	/**
+	 * Side->Opposite Mappings.
+	 */
+	public static final byte[] OPPOSITES = {1, 0, 3, 2, 5, 4, 6};
 	/** Side->Offset Mappings. */
 	public static final byte[]              OFFSETS_X = { 0, 0, 0, 0,-1,+1, 0},
 											OFFSETS_Y = {-1,+1, 0, 0, 0, 0, 0},
@@ -577,47 +625,56 @@ public class CS {
 	public static final ForgeDirection[]    FORGE_DIR = {ForgeDirection.DOWN, ForgeDirection.UP, ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.WEST, ForgeDirection.EAST, ForgeDirection.UNKNOWN};
 	/** Side->Opposite Mappings with ForgeDirection. */
 	public static final ForgeDirection[]    FORGE_DIR_OPPOSITES = {ForgeDirection.UP, ForgeDirection.DOWN, ForgeDirection.SOUTH, ForgeDirection.NORTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.UNKNOWN};
-	
-	/** Compass alike Array for the proper ordering of North, East, South and West. */
-	public static final byte[]              COMPASS_DIRECTIONS      = {SIDE_NORTH, SIDE_EAST, SIDE_SOUTH, SIDE_WEST};
-	/** Side -> Compass Direction. Defaults to North if wrong value. */
-	public static final byte[]              COMPASS_FROM_SIDE       = { 0, 0, 0, 2, 3, 1, 0};
-	
-	/** Used for Meta => Side */
-	public static final byte[]              VALIDATE                = { 0, 1, 2, 3, 4, 5, 0, 0, 0, 1, 2, 3, 4, 5, 0, 0},
-											VALIDATE_VERTICAL       = { 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-											VALIDATE_HORIZONTAL     = { 3, 3, 2, 3, 4, 5, 3, 3, 3, 3, 2, 3, 4, 5, 3, 3};
-	
-	/** An Array containing all Sides which follow the Condition, in order to iterate over them for example. */
-	public static final byte[]              ALL_SIDES                   =  {0,1,2,3,4,5,6},
-											ALL_SIDES_MIDDLE            =  {6,0,1,2,3,4,5},
-											ALL_SIDES_MIDDLE_UP         =  {6,1,2,3,4,5,0},
-											ALL_SIDES_MIDDLE_DOWN       =  {6,0,2,3,4,5,1},
-											ALL_SIDES_VALID             =  {0,1,2,3,4,5  },
-											ALL_SIDES_VALID_ORDER[]     = {{0,1,2,3,4,5  },{1,2,3,4,5,0  },{2,3,4,5,0,1  },{3,4,5,0,1,2  },{4,5,0,1,2,3  },{5,0,1,2,3,4  },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_FIRST[]     = {{0,1,2,3,4,5  },{1,0,2,3,4,5  },{2,0,1,3,4,5  },{3,0,1,2,4,5  },{4,0,1,2,3,5  },{5,0,1,2,3,4  },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_ONLY[]      = {{0            },{1            },{2            },{3            },{4            },{5            },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_BUT[]       = {{  1,2,3,4,5  },{0  ,2,3,4,5  },{0,1  ,3,4,5  },{0,1,2  ,4,5  },{0,1,2,3  ,5  },{0,1,2,3,4    },{0,1,2,3,4,5  }},
-											ALL_SIDES_VALID_BUT_AXIS[]  = {{    2,3,4,5  },{    2,3,4,5  },{0,1    ,4,5  },{0,1    ,4,5  },{0,1,2,3      },{0,1,2,3      },{0,1,2,3,4,5  }},
-											ALL_SIDES_THIS_AND_ANY[]    = {{0          ,6},{1          ,6},{2          ,6},{3          ,6},{4          ,6},{5          ,6},{0,1,2,3,4,5,6}},
-											ALL_SIDES_VERTICAL          =  {0,1},
-											ALL_SIDES_BOTTOM            =  {0},
-											ALL_SIDES_TOP               =  {1},
-											ALL_SIDES_HORIZONTAL        =  {2,3,4,5},
-											ALL_SIDES_HORIZONTAL_UP     =  {2,3,4,5,1},
-											ALL_SIDES_HORIZONTAL_DOWN   =  {2,3,4,5,0},
-											ALL_SIDES_BUT_TOP           =  {0,2,3,4,5},
-											ALL_SIDES_BUT_BOTTOM        =  {1,2,3,4,5},
-											ALL_SIDES_X                 =  {4,5},
-											ALL_SIDES_Y                 =  {0,1},
-											ALL_SIDES_Z                 =  {2,3};
-	
-	/** For Facing Checks. */
-	public static final boolean[]           SIDES_BOTTOM            = {T,F,F,F,F,F,F},
-											SIDES_TOP               = {F,T,F,F,F,F,F},
-											SIDES_LEFT              = {F,F,T,F,F,F,F},
-											SIDES_FRONT             = {F,F,F,T,F,F,F},
-											SIDES_RIGHT             = {F,F,F,F,T,F,F},
+
+	/**
+	 * Compass alike Array for the proper ordering of North, East, South and West.
+	 */
+	public static final byte[] COMPASS_DIRECTIONS = {SIDE_NORTH, SIDE_EAST, SIDE_SOUTH, SIDE_WEST};
+	/**
+	 * Side -> Compass Direction. Defaults to North if wrong value.
+	 */
+	public static final byte[] COMPASS_FROM_SIDE = {0, 0, 0, 2, 3, 1, 0};
+
+	/**
+	 * Used for Meta => Side
+	 */
+	public static final byte[] VALIDATE = {0, 1, 2, 3, 4, 5, 0, 0, 0, 1, 2, 3, 4, 5, 0, 0},
+			VALIDATE_VERTICAL = {0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+			VALIDATE_HORIZONTAL = {3, 3, 2, 3, 4, 5, 3, 3, 3, 3, 2, 3, 4, 5, 3, 3};
+	public static final byte[][] ALL_SIDES_VALID_ONLY = {{0}, {1}, {2}, {3}, {4}, {5}, {0, 1, 2, 3, 4, 5}};
+	public static final byte[][] ALL_SIDES_VALID_BUT = {{1, 2, 3, 4, 5}, {0, 2, 3, 4, 5}, {0, 1, 3, 4, 5}, {0, 1, 2, 4, 5}, {0, 1, 2, 3, 5}, {0, 1, 2, 3, 4}, {0, 1, 2, 3, 4, 5}};
+	public static final byte[][] ALL_SIDES_VALID_BUT_AXIS = {{2, 3, 4, 5}, {2, 3, 4, 5}, {0, 1, 4, 5}, {0, 1, 4, 5}, {0, 1, 2, 3}, {0, 1, 2, 3}, {0, 1, 2, 3, 4, 5}};
+	public static final byte[][] ALL_SIDES_THIS_AND_ANY = {{0, 6}, {1, 6}, {2, 6}, {3, 6}, {4, 6}, {5, 6}, {0, 1, 2, 3, 4, 5, 6}};
+	public static final byte[] ALL_SIDES_VERTICAL = {0, 1};
+	public static final byte[] ALL_SIDES_BOTTOM = {0};
+	public static final byte[] ALL_SIDES_TOP = {1};
+	public static final byte[] ALL_SIDES_HORIZONTAL = {2, 3, 4, 5};
+	public static final byte[] ALL_SIDES_HORIZONTAL_UP = {2, 3, 4, 5, 1};
+	public static final byte[] ALL_SIDES_HORIZONTAL_DOWN = {2, 3, 4, 5, 0};
+	public static final byte[] ALL_SIDES_BUT_TOP = {0, 2, 3, 4, 5};
+	public static final byte[] ALL_SIDES_BUT_BOTTOM = {1, 2, 3, 4, 5};
+	public static final byte[] ALL_SIDES_X = {4, 5};
+	public static final byte[] ALL_SIDES_Y = {0, 1};
+	public static final byte[] ALL_SIDES_Z = {2, 3};
+	/**
+	 * Pillar Stuff for more understandable references.
+	 */
+	public static final byte PILLAR_X = 4;
+	public static final byte PILLAR_Y = 0;
+	public static final byte PILLAR_Z = 8;
+	public static final byte PILLAR_BITS = 12;
+	public static final byte PILLAR_DATA = 3;
+	public static final byte PILLAR_RENDER = 31;
+	public static final byte[] PILLARS_X = {4, 5, 6, 7};
+
+	/**
+	 * For Facing Checks.
+	 */
+	public static final boolean[] SIDES_BOTTOM = {T, F, F, F, F, F, F},
+			SIDES_TOP = {F, T, F, F, F, F, F},
+			SIDES_LEFT = {F, F, T, F, F, F, F},
+			SIDES_FRONT = {F, F, F, T, F, F, F},
+			SIDES_RIGHT = {F, F, F, F,T,F,F},
 											SIDES_BACK              = {F,F,F,F,F,T,F},
 											SIDES_INVALID           = {F,F,F,F,F,F,T},
 											SIDES_VALID             = {T,T,T,T,T,T,F},
@@ -656,108 +713,191 @@ public class CS {
 		{F,F,F,F,F,F,F}
 	},
 	SIDES_EQUAL = {
-		{T,F,F,F,F,F,T},
-		{F,T,F,F,F,F,T},
-		{F,F,T,F,F,F,T},
-		{F,F,F,T,F,F,T},
-		{F,F,F,F,T,F,T},
-		{F,F,F,F,F,T,T},
-		{T,T,T,T,T,T,T}
+			{T, F, F, F, F, F, T},
+			{F, T, F, F, F, F, T},
+			{F, F, T, F, F, F, T},
+			{F, F, F, T, F, F, T},
+			{F, F, F, F, T, F, T},
+			{F, F, F, F, F, T, T},
+			{T, T, T, T, T, T, T}
 	},
-	SIDES_UNEQUAL = {
-		{F,T,T,T,T,T,F},
-		{T,F,T,T,T,T,F},
-		{T,T,F,T,T,T,F},
-		{T,T,T,F,T,T,F},
-		{T,T,T,T,F,T,F},
-		{T,T,T,T,T,F,F},
-		{F,F,F,F,F,F,F}
-	},
-	AXIS_XYZ = {
-		SIDES_NONE,
-		SIDES_AXIS_X,
-		SIDES_AXIS_Y,
-		SIDES_AXIS_Z
+			SIDES_UNEQUAL = {
+					{F, T, T, T, T, T, F},
+					{T, F, T, T, T, T, F},
+					{T, T, F, T, T, T, F},
+					{T, T, T, F, T, T, F},
+					{T, T, T, T, F, T, F},
+					{T, T, T, T, T, F, F},
+					{F, F, F, F, F, F, F}
+			},
+			AXIS_XYZ = {
+					SIDES_NONE,
+					SIDES_AXIS_X,
+					SIDES_AXIS_Y,
+					SIDES_AXIS_Z
+			};
+	public static final byte[] PILLARS_Y = {0, 1, 2, 3};
+	public static final byte[] PILLARS_Z = {8, 9, 10, 11};
+	public static final byte[] PILLAR_BITS_SIDE = {0, 0, 8, 8, 4, 4, 0};
+	public static final byte[][] PILLAR_DATA_SIDE = {
+			{0, 0, 8, 8, 4, 4, 0}, {1, 1, 9, 9, 5, 5, 1}, {2, 2, 10, 10, 6, 6, 2}, {3, 3, 11, 11, 7, 7, 3}
+			, {0, 0, 8, 8, 4, 4, 0}, {1, 1, 9, 9, 5, 5, 1}, {2, 2, 10, 10, 6, 6, 2}, {3, 3, 11, 11, 7, 7, 3}
+			, {0, 0, 8, 8, 4, 4, 0}, {1, 1, 9, 9, 5, 5, 1}, {2, 2, 10, 10, 6, 6, 2}, {3, 3, 11, 11, 7, 7, 3}
+			, {0, 0, 8, 8, 4, 4, 0}, {1, 1, 9, 9, 5, 5, 1}, {2, 2, 10, 10, 6, 6, 2}, {3, 3, 11, 11, 7, 7, 3}
 	};
-	
-	/** Pillar Stuff for more understandable references. */
-	public static final byte PILLAR_X = 4, PILLAR_Y = 0, PILLAR_Z = 8, PILLAR_BITS = 12, PILLAR_DATA = 3, PILLAR_RENDER = 31
-	, PILLARS_X[] = {4,5,6,7}, PILLARS_Y[] = {0,1,2,3}, PILLARS_Z[] = {8,9,10,11}
-	, PILLAR_BITS_SIDE[] = {0,0,8,8,4,4,0}
-	, PILLAR_DATA_SIDE[][] = {
-	  {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
-	, {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
-	, {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
-	, {0,0,8,8,4,4,0}, {1,1,9,9,5,5,1}, {2,2,10,10,6,6,2}, {3,3,11,11,7,7,3}
-	};
-	/** Pillar Axis Stuff for more understandable references. */
-	public static final boolean[][] PILLAR_TO_AXIS = {
-		SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
-		SIDES_AXIS_X, SIDES_AXIS_X, SIDES_AXIS_X, SIDES_AXIS_X,
-		SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z,
-		SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
-	};
-	
-	public static final boolean[] TRUE_6 = {T,T,T,T,T,T};
-	
-	/** To Scan Coordinates in a somewhat "close stuff gets scanned first" order. */
+	/**
+	 * To Scan Coordinates in a somewhat "close stuff gets scanned first" order.
+	 */
 	public static final int[]
-	  SCAN_NEG_0 = {0}
-	, SCAN_NEG_1 = {0, -1, +1}
-	, SCAN_NEG_2 = {0, -1, +1, -2, +2}
-	, SCAN_NEG_3 = {0, -1, +1, -2, +2, -3, +3}
-	, SCAN_NEG_4 = {0, -1, +1, -2, +2, -3, +3, -4, +4}
-	, SCAN_NEG_5 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5}
-	, SCAN_NEG_6 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6}
-	, SCAN_NEG_7 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7}
-	, SCAN_NEG_8 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7, -8, +8}
-	, SCAN_NEG_9 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7, -8, +8, -9, +9}
-	
-	, SCAN_POS_0 = {0}
-	, SCAN_POS_1 = {0, +1, -1}
-	, SCAN_POS_2 = {0, +1, -1, +2, -2}
-	, SCAN_POS_3 = {0, +1, -1, +2, -2, +3, -3}
-	, SCAN_POS_4 = {0, +1, -1, +2, -2, +3, -3, +4, -4}
-	, SCAN_POS_5 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5}
-	, SCAN_POS_6 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6}
-	, SCAN_POS_7 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7}
-	, SCAN_POS_8 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7, +8, -8}
-	, SCAN_POS_9 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7, +8, -8, +9, -9}
-	
-	, SCANS_POS[] = {SCAN_POS_0, SCAN_POS_1, SCAN_POS_2, SCAN_POS_3, SCAN_POS_4, SCAN_POS_5, SCAN_POS_6, SCAN_POS_7, SCAN_POS_8, SCAN_POS_9}
-	, SCANS_NEG[] = {SCAN_NEG_0, SCAN_NEG_1, SCAN_NEG_2, SCAN_NEG_3, SCAN_NEG_4, SCAN_NEG_5, SCAN_NEG_6, SCAN_NEG_7, SCAN_NEG_8, SCAN_NEG_9}
-	;
-	
-	/** Zero-Length Array to save on Memory. */ public static final Object                  [] ZL                   = new Object[0], ZL_OBJECT = ZL;
-	/** Zero-Length Array to save on Memory. */ public static final byte                    [] ZL_BYTE              = new byte[0];
-	/** Zero-Length Array to save on Memory. */ public static final short                   [] ZL_SHORT             = new short[0];
-	/** Zero-Length Array to save on Memory. */ public static final int                     [] ZL_INTEGER           = new int[0];
-	/** Zero-Length Array to save on Memory. */ public static final long                    [] ZL_LONG              = new long[0];
-	/** Zero-Length Array to save on Memory. */ public static final float                   [] ZL_FLOAT             = new float[0];
-	/** Zero-Length Array to save on Memory. */ public static final double                  [] ZL_DOUBLE            = new double[0];
-	/** Zero-Length Array to save on Memory. */ public static final String                  [] ZL_STRING            = new String[0];
+			SCAN_NEG_0 = {0};
+	public static final int[] SCAN_NEG_1 = {0, -1, +1};
+	public static final int[] SCAN_NEG_2 = {0, -1, +1, -2, +2};
+	public static final int[] SCAN_NEG_3 = {0, -1, +1, -2, +2, -3, +3};
+	public static final int[] SCAN_NEG_4 = {0, -1, +1, -2, +2, -3, +3, -4, +4};
+	public static final int[] SCAN_NEG_5 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5};
+	public static final int[] SCAN_NEG_6 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6};
+	/**
+	 * Pillar Axis Stuff for more understandable references.
+	 */
+	public static final boolean[][] PILLAR_TO_AXIS = {
+			SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
+			SIDES_AXIS_X, SIDES_AXIS_X, SIDES_AXIS_X, SIDES_AXIS_X,
+			SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z,
+			SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
+	};
+
+	public static final boolean[] TRUE_6 = {T, T, T, T, T, T};
+	public static final int[] SCAN_NEG_7 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7};
+	public static final int[] SCAN_NEG_8 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7, -8, +8};
+	public static final int[] SCAN_NEG_9 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7, -8, +8, -9, +9};
+	public static final int[] SCAN_POS_0 = {0};
+	public static final int[] SCAN_POS_1 = {0, +1, -1};
+	public static final int[] SCAN_POS_2 = {0, +1, -1, +2, -2};
+	public static final int[] SCAN_POS_3 = {0, +1, -1, +2, -2, +3, -3};
+	public static final int[] SCAN_POS_4 = {0, +1, -1, +2, -2, +3, -3, +4, -4};
+	public static final int[] SCAN_POS_5 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5};
+	public static final int[] SCAN_POS_6 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6};
+	public static final int[] SCAN_POS_7 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7};
+	public static final int[] SCAN_POS_8 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7, +8, -8};
+	public static final int[] SCAN_POS_9 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7, +8, -8, +9, -9};
+	public static final int[][] SCANS_POS = {SCAN_POS_0, SCAN_POS_1, SCAN_POS_2, SCAN_POS_3, SCAN_POS_4, SCAN_POS_5, SCAN_POS_6, SCAN_POS_7, SCAN_POS_8, SCAN_POS_9};
+	public static final int[][] SCANS_NEG = {SCAN_NEG_0, SCAN_NEG_1, SCAN_NEG_2, SCAN_NEG_3, SCAN_NEG_4, SCAN_NEG_5, SCAN_NEG_6, SCAN_NEG_7, SCAN_NEG_8, SCAN_NEG_9};
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final IIconContainer[] ZL_IICONCONTAINER = new IIconContainer[0];
+	public static final IIconContainer[] L6_IICONCONTAINER = new IIconContainer[6];
+	public static final IIconContainer[][] L1L6_IICONCONTAINER = new IIconContainer[][]{L6_IICONCONTAINER};
+	/**
+	 * Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load!
+	 */
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject>
+			GEN_OVERWORLD = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_GT = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_PFAA = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_NETHER = new ArrayListNoNulls<>();
+
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final Object[] ZL = new Object[0], ZL_OBJECT = ZL;
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final byte[] ZL_BYTE = new byte[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final short[] ZL_SHORT = new short[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final int[] ZL_INTEGER = new int[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final long[] ZL_LONG = new long[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final float[] ZL_FLOAT = new float[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final double[] ZL_DOUBLE = new double[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final String                  [] ZL_STRING            = new String[0];
 	/** Zero-Length Array to save on Memory. */ public static final ItemStack               [] ZL_IS                = new ItemStack[0], ZL_ITEMSTACK = ZL_IS;
 	/** Zero-Length Array to save on Memory. */ public static final ItemStackContainer      [] ZL_ISC               = new ItemStackContainer[0];
 	/** Zero-Length Array to save on Memory. */ public static final FluidStack              [] ZL_FS                = new FluidStack[0], ZL_FLUIDSTACK = ZL_FS;
 	/** Zero-Length Array to save on Memory. */ public static final FluidTankGT             [] ZL_FT                = new FluidTankGT[0], ZL_FLUIDTANKGT = ZL_FT;
-	/** Zero-Length Array to save on Memory. */ public static final TagData                 [] ZL_TD                = new TagData[0], ZL_TAGDATA = ZL_TD;
-	/** Zero-Length Array to save on Memory. */ public static final OreDictMaterial         [] ZL_MT                = new OreDictMaterial[0], ZL_MATERIAL = ZL_MT;
-	/** Zero-Length Array to save on Memory. */ public static final OreDictMaterialStack    [] ZL_MS                = new OreDictMaterialStack[0], ZL_MATERIALSTACK = ZL_MS;
-	/** Zero-Length Array to save on Memory. */ public static final Enchantment             [] ZL_ENCHANTMENT       = new Enchantment[0];
-	/** Zero-Length Array to save on Memory. */ public static final FluidTank               [] ZL_FLUIDTANK         = new FluidTank[0];
-	/** Zero-Length Array to save on Memory. */ public static final IFluidTank              [] ZL_IFLUIDTANK        = new IFluidTank[0];
-	/** Zero-Length Array to save on Memory. */ public static final FluidTankInfo           [] ZL_FLUIDTANKINFO     = new FluidTankInfo[0], L1_FLUIDTANKINFO_DUMMY = new FluidTankInfo[] {new FluidTankInfo(null, Integer.MAX_VALUE)};
-	/** Zero-Length Array to save on Memory. */ public static final OreDictItemData         [] ZL_OREDICTITEMDATA   = new OreDictItemData[0];
-	/** Zero-Length Array to save on Memory. */ public static final OreDictPrefix           [] ZL_OREDICTPREFIX     = new OreDictPrefix[0];
-	/** Zero-Length Array to save on Memory. */ public static final ObjectStack<?>          [] ZL_OBJECTSTACK       = new ObjectStack[0];
-	/** Zero-Length Array to save on Memory. */ public static final ForgeDirection          [] ZL_FORGEDIRECTION    = new ForgeDirection[0];
-	/** Zero-Length Array to save on Memory. */ public static final ChunkCoordinates        [] ZL_COORDS            = new ChunkCoordinates[0];
-	/** Zero-Length Array to save on Memory. */ public static final Recipe                  [] ZL_RECIPE            = new Recipe[0];
-	/** Zero-Length Array to save on Memory. */ public static final IIconContainer          [] ZL_IICONCONTAINER    = new IIconContainer[0], L6_IICONCONTAINER  = new IIconContainer[6], L1L6_IICONCONTAINER[] = new IIconContainer[][] {L6_IICONCONTAINER};
-	
-	/** This way it is possible to have a Call Hierarchy of NullPointers in ItemStack based Functions, and also because most of the time I don't know what kind of Data Type the "null" stands for, when there are shitloads of Parameters for a Function */
+	/** Zero-Length Array to save on Memory. */ public static final TagData                 [] ZL_TD = new TagData[0], ZL_TAGDATA = ZL_TD;
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final OreDictMaterial[] ZL_MT = new OreDictMaterial[0], ZL_MATERIAL = ZL_MT;
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final OreDictMaterialStack[] ZL_MS = new OreDictMaterialStack[0], ZL_MATERIALSTACK = ZL_MS;
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final Enchantment[] ZL_ENCHANTMENT = new Enchantment[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final FluidTank[] ZL_FLUIDTANK = new FluidTank[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final IFluidTank[] ZL_IFLUIDTANK = new IFluidTank[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final FluidTankInfo[] ZL_FLUIDTANKINFO = new FluidTankInfo[0], L1_FLUIDTANKINFO_DUMMY = new FluidTankInfo[]{new FluidTankInfo(null, Integer.MAX_VALUE)};
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final OreDictItemData[] ZL_OREDICTITEMDATA = new OreDictItemData[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final OreDictPrefix[] ZL_OREDICTPREFIX = new OreDictPrefix[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final ObjectStack<?>[] ZL_OBJECTSTACK = new ObjectStack[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final ForgeDirection[] ZL_FORGEDIRECTION = new ForgeDirection[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final ChunkCoordinates[] ZL_COORDS = new ChunkCoordinates[0];
+	/**
+	 * Zero-Length Array to save on Memory.
+	 */
+	public static final Recipe[] ZL_RECIPE = new Recipe[0];
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_AETHER = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_END = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_MOON = new ArrayListNoNulls<>();
+
+	/**
+	 * This way it is possible to have a Call Hierarchy of NullPointers in ItemStack based Functions, and also because most of the time I don't know what kind of Data Type the "null" stands for, when there are shitloads of Parameters for a Function
+	 */
 	public static final ItemStack NI = null;
-	
+
 	/** This way it is possible to have a Call Hierarchy of NullPointers in FluidStack based Functions, and also because most of the time I don't know what kind of Data Type the "null" stands for, when there are shitloads of Parameters for a Function */
 	public static final FluidStack NF = null;
 	
@@ -802,80 +942,108 @@ public class CS {
 	
 	/** If you have to give something a World Parameter but there is no World... (Dummy World) */
 	public static DummyWorld DW;
-	/** Dimension Types that I use as parameter for my WorldGenerators, aside from the Vanilla Dimension IDs none of these IDs is accurate as they are just the Defaults of their Respective Mods! */
-	public static final int DIM_UNKNOWN = Integer.MAX_VALUE
-	, DIM_OVERWORLD = 0
-	, DIM_NETHER = -1
-	, DIM_END = 1
-	, DIM_ENVM = -2
-	, DIM_MOON = 2
-	, DIM_MARS = 3
-	, DIM_ASTEROIDS = 4
-	, DIM_PLANETS = 5
-	, DIM_AETHER = 6
-	, DIM_TWILIGHT = 7
-	, DIM_ATUM = 17
-	, DIM_BETWEENLANDS = 20
-	, DIM_FROZEN_HEARTH = 21
-	, DIM_SOUL_FOREST = 22
-	, DIM_CANDY = 23
-	, DIM_EREBUS = 66
-	, DIM_ALFHEIM = 105
-	, DIM_DEEPDARK = -100
-	, DIM_LASTMILLENIUM = -112
-	, DIM_TROPICS = -127
-	;
-	
-	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
+	/**
+	 * Dimension Types that I use as parameter for my WorldGenerators, aside from the Vanilla Dimension IDs none of these IDs is accurate as they are just the Defaults of their Respective Mods!
+	 */
+	public static final int DIM_UNKNOWN = Integer.MAX_VALUE, DIM_OVERWORLD = 0, DIM_NETHER = -1, DIM_END = 1, DIM_ENVM = -2, DIM_MOON = 2, DIM_MARS = 3, DIM_ASTEROIDS = 4, DIM_PLANETS = 5, DIM_AETHER = 6, DIM_TWILIGHT = 7, DIM_ATUM = 17, DIM_BETWEENLANDS = 20, DIM_FROZEN_HEARTH = 21, DIM_SOUL_FOREST = 22, DIM_CANDY = 23, DIM_EREBUS = 66, DIM_ALFHEIM = 105, DIM_DEEPDARK = -100, DIM_LASTMILLENIUM = -112, DIM_TROPICS = -127;
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_MARS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_PLANETS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_ASTEROIDS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_TWILIGHT = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_EREBUS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_BETWEENLANDS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_ATUM = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_DEEPDARK = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_ENVM = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_ALFHEIM = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_TROPICS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> GEN_CANDY = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject>[] GEN_FLOOR = new List[]{GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY};
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject>[] GEN_ALL = new List[]{GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS};
+	/**
+	 * Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load!
+	 */
 	@SuppressWarnings("unchecked")
 	public static final List<WorldgenObject>
-	  GEN_OVERWORLD     = new ArrayListNoNulls<>()
-	, GEN_GT            = new ArrayListNoNulls<>()
-	, GEN_PFAA          = new ArrayListNoNulls<>()
-	, GEN_NETHER        = new ArrayListNoNulls<>()
-	, GEN_AETHER        = new ArrayListNoNulls<>()
-	, GEN_END           = new ArrayListNoNulls<>()
-	, GEN_MOON          = new ArrayListNoNulls<>()
-	, GEN_MARS          = new ArrayListNoNulls<>()
-	, GEN_PLANETS       = new ArrayListNoNulls<>()
-	, GEN_ASTEROIDS     = new ArrayListNoNulls<>()
-	, GEN_TWILIGHT      = new ArrayListNoNulls<>()
-	, GEN_EREBUS        = new ArrayListNoNulls<>()
-	, GEN_BETWEENLANDS  = new ArrayListNoNulls<>()
-	, GEN_ATUM          = new ArrayListNoNulls<>()
-	, GEN_DEEPDARK      = new ArrayListNoNulls<>()
-	, GEN_ENVM          = new ArrayListNoNulls<>()
-	, GEN_ALFHEIM       = new ArrayListNoNulls<>()
-	, GEN_TROPICS       = new ArrayListNoNulls<>()
-	, GEN_CANDY         = new ArrayListNoNulls<>()
-	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY}
-	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
-	;
-	
-	/** Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load! */
+			ORE_OVERWORLD = new ArrayListNoNulls<>();
 	@SuppressWarnings("unchecked")
-	public static final List<WorldgenObject>
-	  ORE_OVERWORLD     = new ArrayListNoNulls<>()
-	, ORE_PFAA          = new ArrayListNoNulls<>()
-	, ORE_NETHER        = new ArrayListNoNulls<>()
-	, ORE_AETHER        = new ArrayListNoNulls<>()
-	, ORE_END           = new ArrayListNoNulls<>()
-	, ORE_MOON          = new ArrayListNoNulls<>()
-	, ORE_MARS          = new ArrayListNoNulls<>()
-	, ORE_PLANETS       = new ArrayListNoNulls<>()
-	, ORE_ASTEROIDS     = new ArrayListNoNulls<>()
-	, ORE_TWILIGHT      = new ArrayListNoNulls<>()
-	, ORE_EREBUS        = new ArrayListNoNulls<>()
-	, ORE_BETWEENLANDS  = new ArrayListNoNulls<>()
-	, ORE_ATUM          = new ArrayListNoNulls<>()
-	, ORE_DEEPDARK      = new ArrayListNoNulls<>()
-	, ORE_ENVM          = new ArrayListNoNulls<>()
-	, ORE_ALFHEIM       = new ArrayListNoNulls<>()
-	, ORE_TROPICS       = new ArrayListNoNulls<>()
-	, ORE_CANDY         = new ArrayListNoNulls<>()
-	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY}
-	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
-	;
+	public static final List<WorldgenObject> ORE_PFAA = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_NETHER = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_AETHER = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_END = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_MOON = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_MARS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_PLANETS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_ASTEROIDS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_TWILIGHT = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_EREBUS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_BETWEENLANDS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_ATUM = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_DEEPDARK = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_ENVM = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_ALFHEIM = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_TROPICS = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject> ORE_CANDY = new ArrayListNoNulls<>();
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject>[] ORE_FLOOR = new List[]{ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY};
+	@SuppressWarnings("unchecked")
+	public static final List<WorldgenObject>[] ORE_ALL = new List[]{ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS};
+	/**
+	 * The value of how many Energy Units a Liter of Semiheavy Water needs to turn into Hot Semiheavy Water.
+	 */
+	public static int EU_PER_SEMI_HEAVY_WATER = 30;
+	/**
+	 * The value of how many Energy Units a Liter of Heavy Water needs to turn into Hot Heavy Water.
+	 */
+	public static int EU_PER_HEAVY_WATER = 40;
+	/**
+	 * The value of how many Energy Units a Liter of Heavy Water needs to turn into Hot Tritiated Water.
+	 */
+	public static int EU_PER_TRITIATED_WATER = 50;
+	/**
+	 * The value of how many Energy Units a Liter of Molten Sodium needs to turn into Hot Molten Sodium.
+	 */
+	public static int EU_PER_SODIUM = 30;
+	/**
+	 * The value of how many Energy Units a Liter of Molten Tin needs to turn into Hot Molten Tin.
+	 */
+	public static int EU_PER_TIN = 40;
+	/**
+	 * The value of how many Energy Units a Liter of Carbon Dioxide needs to turn into Hot Carbon Dioxide.
+	 */
+	public static int EU_PER_CO2 = 10;
+	/** The value of how many Energy Units a Liter of Helium needs to turn into Hot Helium. */
+	public static int EU_PER_HELIUM = 15;
 	
 	/** For Internal Usage. Even though after 2 years I still don't use this one... */
 	public static INetworkHandler NW_GT;

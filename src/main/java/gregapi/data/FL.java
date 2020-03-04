@@ -65,34 +65,14 @@ public enum FL {
 	, UUM                       ("ic2uumatter"                                              , LIQUID, ENCHANTED_EFFECT)
 	, MatterNeutral             ("neutralmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	, MatterCharged             ("chargedmatter"                                            , LIQUID, ENCHANTED_EFFECT)
-	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID)
-	
-	, Air                       ("air"                                                      , SIMPLE, GAS, AIR)
-	, Air_Nether                ("netherair"                                                , SIMPLE, GAS, AIR)
-	, Air_End                   ("enderair"                                                 , SIMPLE, GAS, AIR)
-	, Oxygen                    ("oxygen"                                                   , SIMPLE, GAS)
-	, Liquid_Oxygen             ("liquidoxygen"                                             , SIMPLE, LIQUID)
-	
-	, Hydrogen                  ("hydrogen"                                                 , GAS)
-	, Deuterium                 ("deuterium"                                                , GAS)
-	, Tritium                   ("tritium"                                                  , GAS)
-	, Helium                    ("helium"                                                   , GAS)
-	, Helium_3                  ("helium-3"                                                 , GAS), Neon("neon", GAS), Argon("argon", GAS), Steam("steam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Steam_IC2("ic2steam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Steam_IC2_Superheated("ic2superheatedsteam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Coolant_IC2("ic2coolant", SIMPLE, LIQUID), Coolant_IC2_Hot("ic2hotcoolant", SIMPLE, LIQUID, POWER_CONDUCTING), Freezing_Ooze("ooze", SIMPLE, LIQUID, BROKEN), Hot_Molten_Sodium("hotmoltensodium", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Molten_Tin("hotmoltentin", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Heavy_Water("hotheavywater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Semi_Heavy_Water("hotsemiheavywater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Super_Heavy_Water("hotsuperheavywater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Carbon_Dioxide("hotcarbondioxide", SIMPLE, GAS, POWER_CONDUCTING), Hot_Helium("hothelium", SIMPLE, GAS, POWER_CONDUCTING)
+	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID), Air("air", SIMPLE, GAS, AIR), Air_Nether("netherair", SIMPLE, GAS, AIR), Air_End("enderair", SIMPLE, GAS, AIR), Oxygen("oxygen", SIMPLE, GAS), Liquid_Oxygen("liquidoxygen", SIMPLE, LIQUID), Hydrogen("hydrogen", GAS), Deuterium("deuterium", GAS), Tritium("tritium", GAS), Helium("helium", GAS), Helium_3("helium-3", GAS), Neon("neon", GAS), Argon("argon", GAS), Steam("steam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Steam_IC2("ic2steam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Steam_IC2_Superheated("ic2superheatedsteam", SIMPLE, GAS, STEAM, POWER_CONDUCTING), Coolant_IC2("ic2coolant", SIMPLE, LIQUID), Coolant_IC2_Hot("ic2hotcoolant", SIMPLE, LIQUID, POWER_CONDUCTING), Freezing_Ooze("ooze", SIMPLE, LIQUID, BROKEN), Hot_Molten_Sodium("hotmoltensodium", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Molten_Tin("hotmoltentin", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Heavy_Water("hotheavywater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Semi_Heavy_Water("hotsemiheavywater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Tritiated_Water("hottritiatedwater", SIMPLE, LIQUID, POWER_CONDUCTING), Hot_Carbon_Dioxide("hotcarbondioxide", SIMPLE, GAS, POWER_CONDUCTING), Hot_Helium("hothelium", SIMPLE, GAS, POWER_CONDUCTING)
 
 	//, Hot_Molten_Salt			("hotmoltensalt"											, SIMPLE, LIQUID, POWER_CONDUCTING)
 	//, Hot_Molten_Thorium_Salt	("hotmoltenthoriumsalt"										, SIMPLE, LIQUID, POWER_CONDUCTING)
 
 	, Lava("lava", SIMPLE, LIQUID), Lava_Pahoehoe("ic2pahoehoelava", SIMPLE, LIQUID), Lava_Pure("purelava", SIMPLE, LIQUID, BROKEN, INFINITE) // Lycanite Lava, Warning: Infinite like vanilla Water!
 
-	, Water("water", SIMPLE, LIQUID, FOOD, WATER), DistW("ic2distilledwater", SIMPLE, LIQUID, FOOD, WATER), River_Water("riverwater", SIMPLE, LIQUID, FOOD, WATER), Water_Hot("ic2hotwater", SIMPLE, LIQUID, FOOD, WATER), Ice("ice", SIMPLE, LIQUID, FOOD, WATER, THERMOS)
-	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
-	, Mineralsoda               ("mineralsoda"                                              , SIMPLE, LIQUID, FOOD)
-	, Soda                      ("soda"                                                     , SIMPLE, LIQUID, FOOD)
-	, Tropics_Water             ("tropicswater"                                             , SIMPLE, LIQUID)
-	, Ocean                     ("seawater"                                                 , SIMPLE, LIQUID)
-	, OceanGrC                  ("grccore.saltwater"                                        , SIMPLE, LIQUID)
-	, Dirty_Water               ("waterdirty"                                               , SIMPLE, LIQUID)
-	, Stagnant_Water            ("stagnantwater"                                            , SIMPLE, LIQUID)
+	, Water("water", SIMPLE, LIQUID, FOOD, WATER), DistW("ic2distilledwater", SIMPLE, LIQUID, FOOD, WATER), River_Water("riverwater", SIMPLE, LIQUID, FOOD, WATER), Water_Hot("ic2hotwater", SIMPLE, LIQUID, FOOD, WATER), Ice("ice", SIMPLE, LIQUID, FOOD, WATER, THERMOS), Mineralwater("potion.mineralwater", SIMPLE, LIQUID, FOOD), Mineralsoda("mineralsoda", SIMPLE, LIQUID, FOOD), Soda("soda", SIMPLE, LIQUID, FOOD), Tropics_Water("tropicswater", SIMPLE, LIQUID), Ocean("seawater", SIMPLE, LIQUID), OceanGrC("grccore.saltwater", SIMPLE, LIQUID), Dirty_Water("waterdirty", SIMPLE, LIQUID), Stagnant_Water("stagnantwater", SIMPLE, LIQUID)
 	, Swampwater                ("swampwater"                                               , SIMPLE, LIQUID)
 	, Saltwater                 ("saltwater"                                                , SIMPLE, LIQUID)
 	, Holywater                 ("holywater"                                                , SIMPLE, LIQUID)
