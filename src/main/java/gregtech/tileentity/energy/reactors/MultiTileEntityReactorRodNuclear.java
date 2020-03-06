@@ -115,7 +115,6 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	// Gets called every 20 Ticks.
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-
 		if (FL.Coolant_IC2.is(aReactor.mTanks[0])) {
 			mNeutronOther *= 4;
 			mNeutronSelf *= 4;
@@ -175,6 +174,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	public boolean isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		oModerated = mModerated;
 		mModerated = false;
+		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return oModerated;
 	}
 

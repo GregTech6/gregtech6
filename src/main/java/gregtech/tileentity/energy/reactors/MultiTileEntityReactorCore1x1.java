@@ -218,7 +218,8 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			// It is == 19 because the Sensors react to == 0, so this is the realistic fastest a Sensor can display.
 			if (SERVER_TIME % 20 == 19) {
 				if (mStopped) {
-					//
+					// Calls isReactorRodModerated to update moderation states
+					isReactorRodModerated(0);
 				} else {
 					DelegatorTileEntity<MultiTileEntityReactorCore>[] tAdjacents = new DelegatorTileEntity[4];
 					DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacent;
