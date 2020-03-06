@@ -352,4 +352,15 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core.1x1";}
+
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? new int[]{0} : ZL_INTEGER;}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return mStopped && aStack != null && aSlot == 0 && ST.item(aStack) instanceof IItemReactorRod && ((IItemReactorRod) ST.item_(aStack)).isReactorRod(aStack) && !slotHas(0);}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return mStopped && aStack != null && aSlot == 0;}
+	@Override public int getInventoryStackLimit() {return 1;};
+
+	@Override
+	public void updateInventory() {
+		super.updateInventory();
+		updateClientData();
+	}
 }

@@ -32,6 +32,7 @@ import gregapi.tileentity.machines.MultiTileEntitySensorTE;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore;
+import gregtech.tileentity.energy.reactors.MultiTileEntityReactorCore2x2;
 import net.minecraft.tileentity.TileEntity;
 
 /**
@@ -56,10 +57,12 @@ public class MultiTileEntityGeigerCounter extends MultiTileEntitySensorTE {
 			MultiTileEntityReactorCore TE = (MultiTileEntityReactorCore)aDelegator.mTileEntity;
 			if (FL.Coolant_IC2.is(TE.mTanks[0])) return TE.mTanks[0].getCapacity();
 			int tMaximum = 0;
-			tMaximum += TE.slotHas(0) && ST.item(TE.slot(0)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(0))).getReactorRodNeutronMaximum(TE, 0, TE.slot(0)) : 0;
-			tMaximum += TE.slotHas(1) && ST.item(TE.slot(1)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(1))).getReactorRodNeutronMaximum(TE, 1, TE.slot(1)) : 0;
-			tMaximum += TE.slotHas(2) && ST.item(TE.slot(2)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(2))).getReactorRodNeutronMaximum(TE, 2, TE.slot(2)) : 0;
-			tMaximum += TE.slotHas(3) && ST.item(TE.slot(3)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(3))).getReactorRodNeutronMaximum(TE, 3, TE.slot(3)) : 0;
+			tMaximum += !TE.slotNull(0) && TE.slotHas(0) && ST.item(TE.slot(0)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(0))).getReactorRodNeutronMaximum(TE, 0, TE.slot(0)) : 0;
+			if (TE instanceof MultiTileEntityReactorCore2x2) {
+				tMaximum += TE.slotHas(1) && ST.item(TE.slot(1)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(1))).getReactorRodNeutronMaximum(TE, 1, TE.slot(1)) : 0;
+				tMaximum += TE.slotHas(2) && ST.item(TE.slot(2)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(2))).getReactorRodNeutronMaximum(TE, 2, TE.slot(2)) : 0;
+				tMaximum += TE.slotHas(3) && ST.item(TE.slot(3)) instanceof IItemReactorRod ? ((IItemReactorRod) ST.item(TE.slot(3))).getReactorRodNeutronMaximum(TE, 3, TE.slot(3)) : 0;
+			}
 			return tMaximum;
 		}
 		return 0;

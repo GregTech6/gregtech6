@@ -424,4 +424,15 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 	public String getTileEntityName() {
 		return "gt.multitileentity.generator.reactor.core";
 	} // Yeah Namign Convention doesnt work on the first one I added, just imagine a ".2x2" at the end of this String.
+
+    @Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? new int[]{0,1,2,3} : ZL_INTEGER;}
+    @Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return (mStopped || (mMode & B[aSlot]) != 0) && aStack != null && ST.item(aStack) instanceof IItemReactorRod && ((IItemReactorRod) ST.item_(aStack)).isReactorRod(aStack) && !slotHas(aSlot);}
+    @Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return (mStopped || (mMode & B[aSlot]) != 0) && aStack != null;}
+    @Override public int getInventoryStackLimit() {return 1;};
+
+    @Override
+    public void updateInventory() {
+        super.updateInventory();
+        updateClientData();
+    }
 }

@@ -99,16 +99,20 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	}
 	
 	static {
-		LH.add("gt.tooltip.reactorcore.1", "Primary Facing Emits Hot Coolant.");
-		LH.add("gt.tooltip.reactorcore.2", "Secondary Facing Emits Cold Coolant when over half full.");
-		LH.add("gt.tooltip.reactorcore.3", "Choice of Coolant can have special Effects.");
+		LH.add("gt.tooltip.reactorcore.1", "Reactor Slots can be accessed from the Top and Bottom Side.");
+		LH.add("gt.tooltip.reactorcore.2", "Accessing a reactor slot is only possible when the slot or the reactor is off.");
+		LH.add("gt.tooltip.reactorcore.3", "Primary Facing Emits Hot Coolant.");
+		LH.add("gt.tooltip.reactorcore.4", "Secondary Facing Emits Cold Coolant when over half full.");
+		LH.add("gt.tooltip.reactorcore.5", "Choice of Coolant can have special Effects.");
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get("gt.tooltip.reactorcore.1"));
 		aList.add(Chat.CYAN     + LH.get("gt.tooltip.reactorcore.2"));
-		aList.add(Chat.GREEN    + LH.get("gt.tooltip.reactorcore.3"));
+		aList.add(Chat.CYAN     + LH.get("gt.tooltip.reactorcore.3"));
+		aList.add(Chat.CYAN     + LH.get("gt.tooltip.reactorcore.4"));
+		aList.add(Chat.GREEN    + LH.get("gt.tooltip.reactorcore.5"));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TAKE_PINCERS));
