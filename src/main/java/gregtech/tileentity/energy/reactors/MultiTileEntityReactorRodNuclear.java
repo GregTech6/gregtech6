@@ -115,8 +115,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	// Gets called every 20 Ticks.
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		oModerated = mModerated;
-		mModerated = false;
+
 		if (FL.Coolant_IC2.is(aReactor.mTanks[0])) {
 			mNeutronOther *= 4;
 			mNeutronSelf *= 4;
@@ -135,6 +134,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 		long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
 		long tDurabilityLoss = (tEmission * 4 + mNeutronSelf) < mNeutronMax ? 2000 : UT.Code.divup(8000 * (tEmission * 4 + mNeutronSelf), mNeutronMax);
+		if (oModerated) tDurabilityLoss *= 2;
 		mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return UT.Code.bindInt(tEmission);
@@ -144,7 +144,6 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	// Gets called every Tick.
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		int tDivider = 1;
-		if (oModerated) tDivider *= 2;
 		if (MT.Na.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) tDivider *= 6;
 		else if (MT.Sn.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) tDivider *= 3;
 		aReactor.mEnergy += UT.Code.divup(aReactor.oNeutronCounts[aSlot], tDivider);
@@ -174,6 +173,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 
 	@Override
 	public boolean isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		oModerated = mModerated;
+		mModerated = false;
 		return oModerated;
 	}
 

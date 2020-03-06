@@ -341,8 +341,11 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 
 	@Override
 	public boolean isReactorRodModerated(int aSlot) {
-		if (slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod)
-			return ((IItemReactorRod) ST.item(slot(0))).isModerated(this, 0, slot(0));
+		if (slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) {
+			boolean isModerated = ((IItemReactorRod) ST.item(slot(0))).isModerated(this, 0, slot(0));
+			if (mStopped) return false;
+			return isModerated;
+		}
 		return false;
 	}
 	
