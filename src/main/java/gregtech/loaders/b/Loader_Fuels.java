@@ -35,11 +35,11 @@ public class Loader_Fuels implements Runnable {
 	@Override
 	public void run() {
 		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Charcoal, MT.Coal, MT.CoalCoke, MT.Lignite, MT.LigniteCoke, MT.Anthracite, MT.Prismane, MT.Lonsdaleite, MT.PetCoke, MT.Peat, MT.PeatBituminous}) {
-			FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) *  9, OP.blockDust.mat(tMat, 1), FL.Calcite.make(648), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U*9, F)));
-			FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK)     , OP.dust     .mat(tMat, 1), FL.Calcite.make( 72), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U  , F)));
-			FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) /  4, OP.dustSmall.mat(tMat, 1), FL.Calcite.make( 18), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U4 , F)));
-			FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) /  9, OP.dustTiny .mat(tMat, 1), FL.Calcite.make(  8), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U9 , F)));
-			FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) / 72, OP.dustDiv72.mat(tMat, 1), FL.Calcite.make(  1), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U72, F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) *  9, OP.blockDust.mat(tMat, 1), FL.Calcite.make(648), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U*9, F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK)     , OP.dust     .mat(tMat, 1), FL.Calcite.make( 72), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U  , F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) /  4, OP.dustSmall.mat(tMat, 1), FL.Calcite.make( 18), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U4 , F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) /  9, OP.dustTiny .mat(tMat, 1), FL.Calcite.make(  8), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U9 , F)));
+		FM.FluidBed     .addRecipe1(T, -1, (tMat.mFurnaceBurnTime * 3 * EU_PER_FURNACE_TICK) / 72, OP.dustDiv72.mat(tMat, 1), FL.Calcite.make(  1), NF, OM.dust(tMat.mTargetBurning.mMaterial, UT.Code.units(tMat.mTargetBurning.mAmount, U*2, U72, F)));
 		}
 
 		FM.Burn         .addRecipe0(T, - 64,  1, FL.make("liquid_extra_heavy_oil", 1)        , FL.make("carbondioxide", 1), ZL_IS);
@@ -59,26 +59,26 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Lin.make(1)                          , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Seed.make(1)                         , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.Oil_Canola.exists())
-			FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Canola.make(1)                       , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, -  2,  1, FL.Oil_Canola.make(1)                       , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.Oil_Plant.exists())
-			FM.Burn         .addRecipe0(T, -  1,  1, FL.Oil_Plant.make(1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, -  1,  1, FL.Oil_Plant.make(1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.exists("heavyoil"))
-			FM.Burn         .addRecipe0(T, - 48,  1, FL.make("heavyoil", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 48,  1, FL.make("heavyoil", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.exists("hotcrude"))
-			FM.Burn         .addRecipe0(T, - 32,  1, FL.make("hotcrude", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 32,  1, FL.make("hotcrude", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.exists("lightoil"))
-			FM.Burn         .addRecipe0(T, - 24,  1, FL.make("lightoil", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 24,  1, FL.make("lightoil", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 
 		if (FL.exists("kerosene")) {
-			FM.Burn         .addRecipe0(T, - 64,  5, FL.make("kerosene", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 64,  7, FL.make("kerosene", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("kerosene", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("kerosene", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("kerosine", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("kerosine", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 
 		if (FL.exists("gasoline")) {
-			FM.Burn         .addRecipe0(T, - 64,  5, FL.make("gasoline", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 64,  7, FL.make("gasoline", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("gasoline", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("gasoline", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("petrol", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("petrol", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
@@ -93,48 +93,48 @@ public class Loader_Fuels implements Runnable {
 		FM.Engine       .addRecipe0(T, - 64, 12, FL.make("nitrofuel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);
 
 		for (String tAlcohol : FluidsGT.RUM) if (FL.exists(tAlcohol)) {
-			FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		for (String tAlcohol : FluidsGT.WHISKEY) if (FL.exists(tAlcohol)) {
-			FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		for (String tAlcohol : FluidsGT.VINEGAR) if (FL.exists(tAlcohol)) {
-			FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		for (String tAlcohol : new String[] {"vodka", "binnie.vodka"}) if (FL.exists(tAlcohol)) {
-			FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		for (String tAlcohol : new String[] {"potion.dragonblood", "potion.goldencider", "potion.notchesbrew"}) if (FL.exists(tAlcohol)) {
-			FM.Burn         .addRecipe0(T, - 16, 12, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 16, 18, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16, 12, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16, 18, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		}
 
 		FM.Burn         .addRecipe0(T, - 16,  9, FL.make("bioethanol", 1)                    , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 16, 12, FL.make("bioethanol", 1)                    , FL.make("carbondioxide", 1), ZL_IS);
 
 		if (FL.BioDiesel.exists()) {
-			FM.Burn         .addRecipe0(T, - 16,  9, FL.make("biodiesel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 16, 12, FL.make("biodiesel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  9, FL.make("biodiesel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16, 12, FL.make("biodiesel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		if (FL.BioFuel.exists()) {
-			FM.Burn         .addRecipe0(T, - 64,  9, FL.make("biofuel", 1)                       , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 64, 12, FL.make("biofuel", 1)                       , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 64,  9, FL.make("biofuel", 1)                       , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 64, 12, FL.make("biofuel", 1)                       , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		if (FL.exists("hootch")) {
-			FM.Burn         .addRecipe0(T, - 16,  5, FL.make("hootch", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 16,  6, FL.make("hootch", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  5, FL.make("hootch", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16,  6, FL.make("hootch", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		if (FL.exists("fire_water")) {
-			FM.Burn         .addRecipe0(T, - 32,  9, FL.make("fire_water", 1)                    , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 32, 10, FL.make("fire_water", 1)                    , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 32,  9, FL.make("fire_water", 1)                    , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 32, 10, FL.make("fire_water", 1)                    , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		if (FL.exists("rocket_fuel")) {
-			FM.Burn         .addRecipe0(T, - 64,  4, FL.make("rocket_fuel", 1)                   , FL.make("carbondioxide", 1), ZL_IS);
-			FM.Engine       .addRecipe0(T, - 64,  5, FL.make("rocket_fuel", 1)                   , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 64,  4, FL.make("rocket_fuel", 1)                   , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 64,  5, FL.make("rocket_fuel", 1)                   , FL.make("carbondioxide", 1), ZL_IS);
 		}
 
 
@@ -147,19 +147,19 @@ public class Loader_Fuels implements Runnable {
 		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("methane", 5)                       , FL.Water.make(6), FL.make("carbondioxide", 3));
 		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("gas_natural_gas", 5)               , FL.Water.make(6), FL.make("carbondioxide", 3));
 		if (FL.exists("naturalgas")) {
-			FM.Burn         .addRecipe0(T, - 64, 24, FL.make("naturalgas", 5)                    , FL.Water.make(6), FL.make("carbondioxide", 3));
-			FM.Gas          .addRecipe0(T, - 64, 30, FL.make("naturalgas", 5)                    , FL.Water.make(6), FL.make("carbondioxide", 3));
+		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("naturalgas", 5)                    , FL.Water.make(6), FL.make("carbondioxide", 3));
+		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("naturalgas", 5)                    , FL.Water.make(6), FL.make("carbondioxide", 3));
 		}
 		if (FL.exists("gas.natural")) {
-			FM.Burn         .addRecipe0(T, - 64, 24, FL.make("gas.natural", 5)                   , FL.Water.make(6), FL.make("carbondioxide", 3));
-			FM.Gas          .addRecipe0(T, - 64, 30, FL.make("gas.natural", 5)                   , FL.Water.make(6), FL.make("carbondioxide", 3));
+		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("gas.natural", 5)                   , FL.Water.make(6), FL.make("carbondioxide", 3));
+		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("gas.natural", 5)                   , FL.Water.make(6), FL.make("carbondioxide", 3));
 		}
 		if (FL.exists("ic2biogas")) {
-			FM.Burn         .addRecipe0(T, - 64, 24, FL.make("ic2biogas", 20)                    , FL.Water.make(6), FL.make("carbondioxide", 3));
-			FM.Gas          .addRecipe0(T, - 64, 30, FL.make("ic2biogas", 20)                    , FL.Water.make(6), FL.make("carbondioxide", 3));
+		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("ic2biogas", 20)                    , FL.Water.make(6), FL.make("carbondioxide", 3));
+		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("ic2biogas", 20)                    , FL.Water.make(6), FL.make("carbondioxide", 3));
 		}
 		if (FL.LPG.exists()) {
-			FM.Burn         .addRecipe0(T, - 64, 42, FL.LPG.make(7)                                     , FL.Water.make(7), FL.make("carbondioxide", 6));
+		FM.Burn         .addRecipe0(T, - 64, 42, FL.LPG.make(7)                                     , FL.Water.make(7), FL.make("carbondioxide", 6));
 		}
 
 		FM.Burn         .addRecipe0(T, - 64, 42, FL.make("butane", 7)                        , FL.Water.make(7), FL.make("carbondioxide", 6));
@@ -176,8 +176,8 @@ public class Loader_Fuels implements Runnable {
 
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                 , FL.Lava_Pahoehoe.make(1), ZL_IS);
 		if (FL.Water_Hot.exists())
-			FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Hot.make(1)                        , FL.Water.make(1)				, ZL_IS);
-		FM.Hot          .addRecipe0(T, -EU_PER_COOLANT			, 1, FL.Coolant_IC2_Hot.make(1)			, FL.Coolant_IC2.make(1)		, ZL_IS);
+		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Hot.make(1)                        , FL.Water.make(1), ZL_IS);
+		FM.Hot          .addRecipe0(T, -EU_PER_COOLANT			, 1, FL.Coolant_IC2_Hot.make(1)        	, FL.Coolant_IC2.make(1)		, ZL_IS);
 		FM.Hot			.addRecipe0(T, -EU_PER_SODIUM			, 1, FL.Hot_Molten_Sodium.make(1)		, FL.amount(MT.Na.mLiquid, 1)	, ZL_IS);
 		FM.Hot			.addRecipe0(T, -EU_PER_TIN				, 1, FL.Hot_Molten_Tin.make(1)			, FL.amount(MT.Sn.mLiquid, 1)	, ZL_IS);
 		FM.Hot			.addRecipe0(T, -EU_PER_HEAVY_WATER		, 1, FL.Hot_Heavy_Water.make(1)			, FL.amount(MT.D2O.mLiquid, 1), ZL_IS);
@@ -185,7 +185,6 @@ public class Loader_Fuels implements Runnable {
 		FM.Hot			.addRecipe0(T, -EU_PER_TRITIATED_WATER	, 1, FL.Hot_Tritiated_Water.make(1)		, FL.amount(MT.T2O.mLiquid, 1), ZL_IS);
 		FM.Hot			.addRecipe0(T, -EU_PER_CO2				, 1, FL.Hot_Carbon_Dioxide.make(1)		, FL.amount(MT.CO2.mGas, 1)	, ZL_IS);
 		FM.Hot			.addRecipe0(T, -EU_PER_HELIUM			, 1, FL.Hot_Helium.make(1)				, FL.amount(MT.He.mGas, 1)	, ZL_IS);
-
 
 		FM.Turbine      .addRecipe0(T, - 16,  5, FL.Steam.make(160)                          , FL.DistW.make(1), ZL_IS);
 //      FM.Turbine      .addRecipe0(T, - 10,  5, FL.Steam_IC2.make(100)                      , FL.DistW.make(1), ZL_IS);

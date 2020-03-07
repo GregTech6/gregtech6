@@ -61,7 +61,7 @@ import net.minecraftforge.fluids.IFluidTank;
  */
 @SuppressWarnings("unchecked")
 public enum FL {
-	Error                     ("error")
+	  Error                     ("error")
 	, UUM                       ("ic2uumatter"                                              , LIQUID, ENCHANTED_EFFECT)
 	, MatterNeutral             ("neutralmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	, MatterCharged             ("chargedmatter"                                            , LIQUID, ENCHANTED_EFFECT)
@@ -96,7 +96,6 @@ public enum FL {
 	, Hot_Tritiated_Water		("hottritiatedwater"										, SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Hot_Carbon_Dioxide		("hotcarbondioxide"											, SIMPLE, GAS, POWER_CONDUCTING)
 	, Hot_Helium				("hothelium"												, SIMPLE, GAS, POWER_CONDUCTING)
-
 	, Lava                      ("lava"                                                     , SIMPLE, LIQUID)
 	, Lava_Pahoehoe             ("ic2pahoehoelava"                                          , SIMPLE, LIQUID)
 	, Lava_Pure                 ("purelava"                                                 , SIMPLE, LIQUID, BROKEN, INFINITE) // Lycanite Lava, Warning: Infinite like vanilla Water!
@@ -1012,11 +1011,11 @@ public enum FL {
 		for (Set<String> tSet : aFluidList) tSet.add(aName);
 
 		switch (aState) {
-			case STATE_SOLID:           rFluid.setViscosity(10000); break;
-			case STATE_LIQUID:          rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
-			case STATE_GASEOUS:         rFluid.setViscosity(  200); rFluid.setDensity(   -100); FluidsGT.GAS.add(aName); break;
-			case STATE_PLASMA:          rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
-			case 4:                     rFluid.setViscosity( 1000); break;
+		case STATE_SOLID:           rFluid.setViscosity(10000); break;
+		case STATE_LIQUID:          rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
+		case STATE_GASEOUS:         rFluid.setViscosity(  200); rFluid.setDensity(   -100); FluidsGT.GAS.add(aName); break;
+		case STATE_PLASMA:          rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
+		case 4:                     rFluid.setViscosity( 1000); break;
 		}
 
 		if (!FluidRegistry.registerFluid(rFluid)) {
@@ -1031,9 +1030,9 @@ public enum FL {
 			if (aMaterial.contains(TD.Properties.GLOWING )) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 5));
 			if (aMaterial.contains(TD.Properties.LIGHTING)) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 15));
 			switch (aState) {
-				case STATE_LIQUID:  aMaterial.liquid(make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
-				case STATE_GASEOUS: aMaterial.gas   (make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
-				case STATE_PLASMA:  aMaterial.plasma(make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
+			case STATE_LIQUID:  aMaterial.liquid(make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
+			case STATE_GASEOUS: aMaterial.gas   (make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
+			case STATE_PLASMA:  aMaterial.plasma(make(rFluid, UT.Code.bindInt(aAmountPerUnit))); break;
 			}
 			// Translating Real Life Density to that weird Integer based Density System.
 			if (aMaterial.mGramPerCubicCentimeter > 0 && (aState == STATE_LIQUID || aState == STATE_GASEOUS)) {

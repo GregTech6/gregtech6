@@ -88,11 +88,6 @@ public class Loader_Fluids implements Runnable {
 		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1);
 		FL.create("ic2coolant"               , "Industrial Coolant"  , null                  , 1);
 		FL.create("ic2hotcoolant"            , "Industrial Heatant"  , null                  , 1,   1000,  1200);
-		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
-		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
-		FL.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);
-		FL.create("hotfryingoil"             , "Hot Frying Oil"      , MT.FryingOilHot       , 1,   1000,   400);
-
 		FL.create("hotmoltensodium"			 , "Hot Molten Sodium"	, null		, 1, 1000, 1100);
 		FL.create("hotmoltentin" 			 , "Hot Molten Tin"		, null		, 1, 1000, 2800);
 
@@ -105,7 +100,10 @@ public class Loader_Fluids implements Runnable {
 
 		//FL.create("hotmoltensalt"			, "Hot Molten Salt"  					, null                  , 1,   1000,  1650);
 		//FL.create("hotmoltenthoriumsalt"	, "Hot Liquid Fluoride Thorium"  		, null                  , 1,   1000,  950);
-
+		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
+		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
+		FL.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);
+		FL.create("hotfryingoil"             , "Hot Frying Oil"      , MT.FryingOilHot       , 1,   1000,   400);
 
 		FL.create("fieryblood"               , "Fiery Blood"         , null                  , 1,      L,  1500).setLuminosity(10);
 		FL.create("fierytears"               , "Fiery Tears"         , null                  , 1,      L,  1500).setLuminosity(10);
@@ -114,10 +112,10 @@ public class Loader_Fluids implements Runnable {
 		DYE_FLUIDS[4].add(FL.make(FL.create("indigo"      , "Indigo Dye"      , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
 
 		IIconContainer
-				tDyeWaterMixed  = new Textures.BlockIcons.CustomIcon("fluids/dyes.water"),
-				tDyeFlower      = new Textures.BlockIcons.CustomIcon("fluids/dyes.flower"),
-				tDyeChemical    = new Textures.BlockIcons.CustomIcon("fluids/dyes.chemical"),
-				tDyedCFoam      = new Textures.BlockIcons.CustomIcon("fluids/cfoam");
+		tDyeWaterMixed  = new Textures.BlockIcons.CustomIcon("fluids/dyes.water"),
+		tDyeFlower      = new Textures.BlockIcons.CustomIcon("fluids/dyes.flower"),
+		tDyeChemical    = new Textures.BlockIcons.CustomIcon("fluids/dyes.chemical"),
+		tDyedCFoam      = new Textures.BlockIcons.CustomIcon("fluids/cfoam");
 
 		for (byte i = 0; i < 16; i++) {
 			DYE_FLUIDS[i].add(DYE_FLUIDS_WATER      [i] = FL.make(FL.create("dye.watermixed." + DYE_OREDICTS_POST[i].toLowerCase(), tDyeWaterMixed    , "Water Mixed " + DYE_NAMES[i] + " Dye"    , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
@@ -135,7 +133,7 @@ public class Loader_Fluids implements Runnable {
 		MT.Aerotheum.gas(FL.make("aerotheum", 250));
 
 		FluidStack
-				tFluid = FL.make("mana", 250);
+		tFluid = FL.make("mana", 250);
 		if (tFluid != null) {
 			MT.Magic.liquid(tFluid);
 		}
