@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.12.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
 [FIXED] Pam's Harvestcraft Fishtrap Bait Recipe for Mixing Bowl had a lower amount of Output than intended.
+[FIXED] Thaumcraft Golems were not chopping GT6 Logs, because it checks for the wrong OreDict String.
 [CHANGED] More Reactor Test Stuffs from Erik3003.
 
 
