@@ -221,7 +221,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				if (tDamage + tMagicDamage > 0) {
 					boolean tCriticalHit = aPlayer.fallDistance > 0 && !aPlayer.onGround && !aPlayer.isOnLadder() && !aPlayer.isInWater() && !aPlayer.isPotionActive(Potion.blindness) && aPlayer.ridingEntity == null && aEntity instanceof EntityLivingBase;
 					if (tCriticalHit && tDamage > 0) tDamage *= 1.5;
-					float tFullDamage = (MD.TFC.mLoaded ? (tDamage+tMagicDamage) * 80 : (tDamage+tMagicDamage));
+					float tFullDamage = (MD.TFC.mLoaded || MD.TFCP.mLoaded ? (tDamage+tMagicDamage) * 80 : (tDamage+tMagicDamage));
 					// Avoiding the Betweenlands Damage Cap in a fair way. Only Betweenlands Materials will avoid it. And maybe some super Lategame Items.
 					if (MD.BTL.mLoaded && aEntity.getClass().getName().startsWith("thebetweenlands") && getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) {
 						float tDamageToDeal = tFullDamage;
@@ -287,7 +287,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			aList.add(LH.Chat.WHITE + "Durability: " + LH.Chat.GREEN + (tMaxDamage - tDamage) + " / " + tMaxDamage + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + tMaterial.getLocal() + LH.Chat.YELLOW + " lvl " + getHarvestLevel(aStack, "") + LH.Chat.GRAY);
 			float tCombat = getToolCombatDamage(aStack);
-			aList.add(LH.Chat.WHITE + "Attack Damage: " + LH.Chat.BLUE + "+" + ((MD.TFC.mLoaded ? tCombat * 80 : tCombat) + LH.Chat.RED + " (= " + (MD.TFC.mLoaded ? ((tCombat+1)*40) + ")" : ((tCombat+1)/2) + " Hearts)"))  + LH.Chat.GRAY);
+			aList.add(LH.Chat.WHITE + "Attack Damage: " + LH.Chat.BLUE + "+" + (((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? tCombat * 80 : tCombat) + LH.Chat.RED + " (= " + ((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? ((tCombat+1)*40) + ")" : ((tCombat+1)/2) + " Hearts)"))  + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * getPrimaryMaterial(aStack, MT.NULL).mToolSpeed) + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + "Crafting Uses: " + LH.Chat.GREEN + UT.Code.divup(getEnergyStats(aStack) == null ? tMaxDamage - tDamage : getEnergyStored(TD.Energy.EU, aStack), tStats.getToolDamagePerContainerCraft()) + LH.Chat.GRAY);
 			if (MD.BTL.mLoaded && tMaterial.contains(TD.Properties.BETWEENLANDS)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));

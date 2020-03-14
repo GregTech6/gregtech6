@@ -79,6 +79,7 @@ public class MD {
 	, MO                = new ModData(ModIDs.MO                 , "Matter Overdrive")
 	
 	, TFC               = new ModData(ModIDs.TFC                , "TerraFirmaCraft")
+	, TFCP              = new ModData(ModIDs.TFCP               , "TerraFirmaCraft Plus")
 	
 	, MET               = new ModData("Metallurgy"              , "Metallurgy")
 	

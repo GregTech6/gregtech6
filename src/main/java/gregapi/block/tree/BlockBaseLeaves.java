@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -90,7 +90,7 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.treeLeaves.mDefaultStackSize);}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return mIcons[(aMeta&7)|(Blocks.leaves.isOpaqueCube()?8:0)].getIcon(0);}
 	@Override public ArrayList<ItemStack> onSheared(ItemStack aItem, IBlockAccess aWorld, int aX, int aY, int aZ, int aFortune) {return new ArrayListNoNulls<>(F, ST.make(this, 1, aWorld.getBlockMetadata(aX, aY, aZ) & 7));}
-	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return MD.TFC.mLoaded ? null : super.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ);}
+	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return MD.TFC.mLoaded || MD.TFCP.mLoaded ? null : super.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ);}
 	@Override public void onOxygenAdded(World aWorld, int aX, int aY, int aZ) {/**/}
 	@Override public void onOxygenRemoved(World aWorld, int aX, int aY, int aZ) {if (!aWorld.isRemote) {aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 201+RNGSUS.nextInt(100)); return;}}
 	
@@ -127,7 +127,7 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 		if (!WD.oxygen(aWorld, aX, aY, aZ)) {aWorld.setBlockToAir(aX, aY, aZ); return;}
 		int aMeta = aWorld.getBlockMetadata(aX, aY, aZ);
 		if (aMeta < 8) return;
-		if (!MD.TFC.mLoaded || aRandom.nextInt(4) == 0) dropBlockAsItem(aWorld, aX, aY, aZ, aMeta, 0);
+		if (!(MD.TFC.mLoaded || MD.TFCP.mLoaded) || aRandom.nextInt(4) == 0) dropBlockAsItem(aWorld, aX, aY, aZ, aMeta, 0);
 		aWorld.setBlockToAir(aX, aY, aZ);
 	}
 	

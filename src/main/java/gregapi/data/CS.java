@@ -1757,6 +1757,7 @@ public class CS {
 		, MO                = "mo"
 		
 		, TFC               = "terrafirmacraft"
+		, TFCP              = "terrafirmacraftplus"
 		
 		, ZTONES            = "Ztones"
 		, CHSL              = "chisel"
