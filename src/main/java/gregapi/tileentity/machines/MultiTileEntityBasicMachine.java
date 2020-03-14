@@ -162,7 +162,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED_SIDES)) mEnergyOutput = aNBT.getByte(NBT_ENERGY_EMITTED_SIDES);
 		if (aNBT.hasKey(NBT_OUTPUT)) mOutputEnergy = aNBT.getByte(NBT_OUTPUT);
-		if (aNBT.hasKey(NBT_INPUT_EU)) mChargeRequirement = aNBT.getByte(NBT_INPUT_EU);
+		if (aNBT.hasKey(NBT_INPUT_EU)) mChargeRequirement = aNBT.getLong(NBT_INPUT_EU);
 		
 		
 		int tCapacity = getDefaultTankCapacity();
