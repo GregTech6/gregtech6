@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -111,7 +111,7 @@ public abstract class MultiTileEntitySafe extends TileEntityBase09FacingSingle i
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ZL_INTEGER;}
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return F;}
-	@Override public void onExploded(Explosion aExplosion) {worldObj.setBlockToAir(xCoord, yCoord, zCoord);}
+	@Override public void onExploded(Explosion aExplosion) {setToAir();}
 	
 	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new ContainerClientDefault(aPlayer.inventory, this, aGUIID);}
 	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new ContainerCommonDefault(aPlayer.inventory, this, aGUIID);}

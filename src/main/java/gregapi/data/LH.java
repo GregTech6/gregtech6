@@ -200,6 +200,7 @@ public class LH {
 	, TOOLTIP_BLAST_RESISTANCE_GHAST = "gt.lang.blast.resist.ghast.proof"
 	, TOOLTIP_BLAST_RESISTANCE_CREEPER = "gt.lang.blast.resist.creeper.proof"
 	, TOOLTIP_BLAST_RESISTANCE_TNT = "gt.lang.blast.resist.tnt.proof"
+	, TOOLTIP_BLAST_RESISTANCE_DYNAMITE = "gt.lang.blast.resist.dynamite.proof"
 	, TOOLTIP_BLAST_RESISTANCE_NOT_NUKE = "gt.lang.blast.resist.nuke.not"
 	, TOOLTIP_BETWEENLANDS_RESISTANCE = "gt.lang.betweenlands.resist"
 	, PROSPECTING_LAVA = "gt.lang.prospecting.lava"
@@ -237,7 +238,7 @@ public class LH {
 	
 	public static final String percent(long aNumber) {return (aNumber/100) + ((aNumber%100)>9?"."+aNumber%100:".0"+(aNumber%100));}
 	
-	public static final String getToolTipBlastResistance(Block aBlock, double aResistance) {return Chat.WHITE + get(LH.TOOLTIP_BLASTRESISTANCE) + Chat.ORANGE + ((int)aResistance) + "." + (((int)(aResistance * 10)) % 10) + (aResistance < 4 ? Chat.BLINKING_RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TERRIBLE) : aResistance < 12 ? Chat.RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_GHAST) : aResistance < 16 ? Chat.YELLOW + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_CREEPER) : aResistance < 3330 || !MD.IC2.mLoaded || (aBlock != NB && aBlock != null && COMPAT_IC2 != null && COMPAT_IC2.isExplosionWhitelisted(aBlock)) ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TNT) : Chat.BLINKING_CYAN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_NOT_NUKE));}
+	public static final String getToolTipBlastResistance(Block aBlock, double aResistance) {return Chat.WHITE + get(LH.TOOLTIP_BLASTRESISTANCE) + Chat.ORANGE + ((int)aResistance) + "." + (((int)(aResistance * 10)) % 10) + (aResistance < 4 ? Chat.BLINKING_RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TERRIBLE) : aResistance < 12 ? Chat.RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_GHAST) : aResistance < 16 ? Chat.YELLOW + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_CREEPER) : aResistance <= 40 ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TNT) : aResistance < 3330 || (aBlock != NB && aBlock != null && COMPAT_IC2 != null && COMPAT_IC2.isExplosionWhitelisted(aBlock)) ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_DYNAMITE) : Chat.BLINKING_CYAN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_NOT_NUKE));}
 	
 	public static final String getToolTipEfficiency(long aEfficiency) {aEfficiency = Math.abs(aEfficiency); return Chat.YELLOW + get(EFFICIENCY) + ": " + Chat.WHITE + percent(aEfficiency) + "%";}
 	
@@ -249,12 +250,12 @@ public class LH {
 			if (TD.Energy.ALL_EU.contains(aEnergyOUT.mType)) {
 				aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec, aEnergyOUT.mRec*aMultiplier, F)));
 			} else {
-				if (aEnergyOUT.mType == TD.Energy.RF        ) aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec*RF_PER_EU, aEnergyOUT.mRec*aMultiplier, F)));
+				if (aEnergyOUT.mType == TD.Energy.RF  ) aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec*RF_PER_EU, aEnergyOUT.mRec*aMultiplier, F)));
 			}
 		} else {
 			if (TD.Energy.ALL_EU.contains(aEnergyOUT.mType)) {
-				if (aEnergyIN.mType == TD.Energy.RF     ) aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec, aEnergyOUT.mRec*aMultiplier*RF_PER_EU, F)));
-				if (aEnergyIN.mType == TD.Energy.STEAM  ) aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec, aEnergyOUT.mRec*aMultiplier*STEAM_PER_EU, F)));
+				if (aEnergyIN.mType == TD.Energy.RF   ) aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec, aEnergyOUT.mRec*aMultiplier*RF_PER_EU, F)));
+				if (aEnergyIN.mType == TD.Energy.STEAM) aList.add(LH.getToolTipEfficiency(UT.Code.units(10000, aEnergyIN.mRec, aEnergyOUT.mRec*aMultiplier*STEAM_PER_EU, F)));
 			}
 		}
 	}
@@ -464,7 +465,8 @@ public class LH {
 		add(TOOLTIP_BLAST_RESISTANCE_GHAST              , "(Ghast Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_CREEPER            , "(Creeper Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_TNT                , "(TNT Proof)");
-		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes will go right through!)");
+		add(TOOLTIP_BLAST_RESISTANCE_DYNAMITE           , "(Strong Dynamite Proof)");
+		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes still go right through!)");
 		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the Effects of the Betweenlands");
 		add(PROSPECTING_LAVA                            , "There is Lava behind this Rock.");
 		add(PROSPECTING_LIQUID                          , "There is a Liquid behind this Rock.");

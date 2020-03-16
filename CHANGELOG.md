@@ -18,6 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Thaumcraft Golems were not chopping GT6 Logs, because it checks for the wrong OreDict String.
 [FIXED] 7 Bits are definitely not enough to store Numbers that can go up to 12 Billion. Fusion Reactor Start Energy is now properly saved when unloaded.
 [FIXED] Terrafirmacraft Plus not being detected as Terrafirmacraft.
+[CHANGED] Blastproofness Tooltip now also mentions Strong Dynamite Proofness and doesn't stop at TNT-Proof anymore.
 [CHANGED] NEI Fuel Lists are now no longer listing the confusing and irrelevant EU/t Value.
 [CHANGED] More Reactor Test Stuffs from Erik3003.
 
