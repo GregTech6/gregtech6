@@ -50,7 +50,7 @@ public class MultiTileEntitySafeMechanical extends MultiTileEntitySafe {
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		if (aNBT.hasKey(NBT_OWNER)) mOwner = UUID.fromString(aNBT.getString(NBT_OWNER));
+		if (aNBT.hasKey(NBT_OWNER) && !OWNERSHIP_RESET) mOwner = UUID.fromString(aNBT.getString(NBT_OWNER));
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public class MultiTileEntitySafeMechanical extends MultiTileEntitySafe {
 	
 	@Override
 	public boolean allowInteraction(Entity aEntity) {
-		if (mOwner == null && aEntity != null) {
+		if (mOwner == null && aEntity != null && !OWNERSHIP_RESET) {
 			mOwner = aEntity.getUniqueID();
 			updateClientData();
 		}

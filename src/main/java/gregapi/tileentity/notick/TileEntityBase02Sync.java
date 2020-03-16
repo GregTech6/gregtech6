@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -37,7 +37,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
  */
 public abstract class TileEntityBase02Sync extends TileEntityBase01Root implements ITileEntitySynchronising, ITileEntityScheduledUpdate {
 	/** Gets set if/when needed. */
-	public UUID mOwner;
+	public UUID mOwner = null;
 	
 	public TileEntityBase02Sync() {
 		super(F);

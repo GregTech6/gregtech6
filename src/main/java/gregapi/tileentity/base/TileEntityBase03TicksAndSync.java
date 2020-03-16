@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,6 +35,9 @@ import net.minecraft.entity.player.EntityPlayerMP;
  * TileEntity with Network Code
  */
 public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02AdjacentTEBuffer implements ITileEntitySynchronising {
+	/** Gets set if/when needed. */
+	public UUID mOwner = null;
+	
 	/** Variable for seeing if the Tick Function is called right now. */
 	public boolean mIsRunningTick = F;
 	
@@ -43,9 +46,6 @@ public abstract class TileEntityBase03TicksAndSync extends TileEntityBase02Adjac
 	
 	/** Gets set to true when the Block received a Block Update. */
 	public boolean mBlockUpdated = F;
-	
-	/** Gets set if/when needed. */
-	public UUID mOwner = null;
 	
 	/** @return a Packet containing all Data which has to be synchronised to the Client */
 	public abstract IPacket getClientDataPacket(boolean aSendAll);
