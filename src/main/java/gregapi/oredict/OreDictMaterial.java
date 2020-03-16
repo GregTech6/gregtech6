@@ -707,12 +707,12 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	
 	@Deprecated public OreDictMaterial setQuality(float aToolSpeed, long aToolDurability, long aToolQuality) {return qual(3, aToolSpeed, aToolDurability, aToolQuality);}
 	
-	public OreDictMaterial qual(long aQuality) {return qual(0, 1.0F, 64, aQuality);}
+	public OreDictMaterial qual(long aHarvestLevel) {return qual(mToolTypes, mToolSpeed, mToolDurability, aHarvestLevel);}
 	public OreDictMaterial qual(float aSpeed, long aDurability, long aQuality) {return qual(3, aSpeed, aDurability, aQuality);}
 	/** Sets the Tool Quality of this Material. */
 	public OreDictMaterial qual(long aType, double aSpeed, long aDurability, long aQuality) {
 		mToolTypes = UT.Code.bind2(aType);
-		mToolDurability = aDurability;
+		mToolDurability = Math.max(1, aDurability);
 		mToolQuality = UT.Code.bind4(aQuality);
 		mToolSpeed = (float)aSpeed;
 		if (aType > 0) put(TD.Properties.HAS_TOOL_STATS, TD.ItemGenerator.PARTS, TD.ItemGenerator.STICKS, TD.ItemGenerator.PLATES);
