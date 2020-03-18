@@ -13,11 +13,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.12.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.12.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Factorio)
 [FIXED] Pam's Harvestcraft Fishtrap Bait Recipe for Mixing Bowl had a lower amount of Output than intended.
 [FIXED] Thaumcraft Golems were not chopping GT6 Logs, because it checks for the wrong OreDict String.
 [FIXED] 7 Bits are definitely not enough to store Numbers that can go up to 12 Billion. Fusion Reactor Start Energy is now properly saved when unloaded.
 [FIXED] Terrafirmacraft Plus not being detected as Terrafirmacraft.
+[FIXED] Clay Ore that comes from Hematite Bedrock Drilling is now processable.
 [CHANGED] Blastproofness Tooltip now also mentions Strong Dynamite Proofness and doesn't stop at TNT-Proof anymore.
 [CHANGED] NEI Fuel Lists are now no longer listing the confusing and irrelevant EU/t Value.
 [CHANGED] More Reactor Test Stuffs from Erik3003.
