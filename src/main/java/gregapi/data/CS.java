@@ -83,84 +83,84 @@ import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * @author Gregorius Techneticies
- *
+ * 
  * Class containing useful Constants and Lists.
- *
+ * 
  * Mainly made for use with static imports.
  * I am doing this to have a better Table alike view on my Code, so I can change things faster using the Block Selection Mode of eclipse.
- *
+ * 
  * For static imports in Eclipse go to "Window > Preferences > Java > Editor > Content Assist > Favorites" to set static importable Constant Classes such as this one as AutoCompleteable.
  */
 public class CS {
 	/** The Object containing the actual Mod GregTech and its API. */
 	public static Abstract_Mod GT, GAPI, GAPI_POST;
-
+	
 	// unused: A, D, E, G, H, I, J, K, M, N, O, P, Q, R, S
-
+	
 	/** Because "true" and "false" are too long. Some Programmers might wanna kill me for that, but this looks much better than true and false, and also it is better to have something that is not 4 and 5 Characters long, because of symmetry */
 	public static final boolean T = true, F = false;
-
+	
 	/** Character Set with all Numbers */
 	public static final HashSet<Character> Ch_N = new HashSet<>(Arrays.asList('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'));
 	/** Character Set with all lowercased Characters */
 	public static final HashSet<Character> Ch_L = new HashSet<>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'));
 	/** Character Set with all uppercased Characters */
 	public static final HashSet<Character> Ch_U = new HashSet<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'));
-
+	
 	/** The first 32 Bits */
 	public static final int[] B = {1<<0,1<<1,1<<2,1<<3,1<<4,1<<5,1<<6,1<<7,1<<8,1<<9,1<<10,1<<11,1<<12,1<<13,1<<14,1<<15,1<<16,1<<17,1<<18,1<<19,1<<20,1<<21,1<<22,1<<23,1<<24,1<<25,1<<26,1<<27,1<<28,1<<29,1<<30,1<<31};
-
+	
 	/**
 	 * Renamed from "MATERIAL_UNIT" to just "U"
-	 *
+	 * 
 	 * This is worth exactly one normal Item.
-	 * This Constant can be divided by many commonly used Numbers such as
+	 * This Constant can be divided by many commonly used Numbers such as 
 	 * 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20, 21, 22, 24, 25, ... 64, 81, 96, 144 or 1000
 	 * without loosing precision and is for that reason used as Unit of Amount.
 	 * But it is also small enough to be multiplied with larger Numbers.
-	 *
+	 * 
 	 * This is used to determine the amount of Material contained inside a prefixed Ore.
 	 * For example Nugget = U / 9 as it contains out of 1/9th of an Ingot.
 	 */
 	public static final long U = 648648000, U2 = U/2, U3 = U/3, U4 = U/4, U5 = U/5, U6 = U/6, U7 = U/7, U8 = U/8, U9 = U/9, U10 = U/10, U11 = U/11, U12 = U/12, U13 = U/13, U14 = U/14, U15 = U/15, U16 = U/16, U17 = U/17, U18 = U/18, U20 = U/20, U24 = U/24, U25 = U/25, U32 = U/32, U36 = U/36, U40 = U/40, U48 = U/48, U50 = U/50, U64 = U/64, U72 = U/72, U80 = U/80, U96 = U/96, U100 = U/100, U128 = U/128, U144 = U/144, U192 = U/192, U200 = U/200, U240 = U/240, U256 = U/256, U288 = U/288, U480 = U/480, U500 = U/500, U512 = U/512, U1000 = U/1000, U1440 = U/1440;
 	/** The Double Version of the Material Unit "U" */
 	public static final double UD = U;
-
+	
 	/**
 	 * Renamed from "FLUID_MATERIAL_UNIT" to just "L"
-	 *
+	 * 
 	 * Fluid per Material Unit (Prime Factors: 3 * 3 * 2 * 2 * 2 * 2)
 	 */
 	public static final long L = 144;
-
+	
 	/** The offset between Celsius and Kelvin. */
 	public static final long C = 273; // 273.15 IRL
-
+	
 	/** The Default Environment Temperature in Kelvin */
 	public static final long DEF_ENV_TEMP = C + 20, DEFAULT_ENVIRONMENT_TEMPERATURE = C + 20; // 293.15 IRL
-
+	
 	/** The Item WildCard Tag. Even shorter than the "-1" of the past */
 	public static final short W = OreDictionary.WILDCARD_VALUE;
-
+	
 	/** Used Client Side as a placeholder for "is owned by someone other than you" */
 	public static final UUID NOT_YOU = new UUID(+1, -1);
-
+	
 	/** The Size of an infinite NEI ItemStack */
 	public static final byte NEI_INFINITE = 111;
-
+	
 	/** The Voltage Tiers. */
 	public static final long[]
 	VMIN    = { 1, 16,  64,  256, 1024,  4096, 16384,  65536,  262144, 1048576,  4194304, 16777216,  67108864,  268435456, 1073741824L,  4294967296L},
 	VREC    = { 8, 32, 128,  512, 2048,  8192, 32768, 131072,  524288, 2097152,  8388608, 33554432, 134217728,  536870912, 2147483648L,  8589934592L},
 	VMAX    = {16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576, 4194304, 16777216, 67108864, 268435456, 1073741824, 4294967296L, 17179869184L},
 	V       = { 8, 32, 128,  512, 2048,  8192, 32768, 131072,  524288, 2097152,  8388608, 33554432, 134217728,  536870912, 2147483648L,  8589934592L};
-
+	
 	/** The short Names for the Voltages */
 	public static final String[] VN = {"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "PUV1", "PUV2", "PUV3", "PUV4", "PUV5", "\u03A9V", "\u03A9V"};
-
+	
 	/** The long Names for the Voltages */
 	public static final String[] VOLTAGE_NAMES = {"Ultra Low Voltage", "Low Voltage", "Medium Voltage", "High Voltage", "Extreme Voltage", "Insane Voltage", "Ludicrous Voltage", "ZPM Voltage", "Ultimate Voltage", "Post Ultimate Voltage 1", "Post Ultimate Voltage 2", "Post Ultimate Voltage 3", "Post Ultimate Voltage 4", "Post Ultimate Voltage 5", "Omega Voltage", "Omega Voltage"};
-
+	
 	/** The short Names for the USB Sticks */
 	public static final String[] OD_USB_STICKS = {"gt:usbstick0", "gt:usbstick1", "gt:usbstick2", "gt:usbstick3", "gt:usbstick4", "gt:usbstick5", "gt:usbstick6", "gt:usbstick7", "gt:usbstick8", "gt:usbstick9"};
 	/** The short Names for the USB Cables */
@@ -169,7 +169,7 @@ public class CS {
 	public static final String[] OD_USB_DRIVES = {"gt:usbdrive0", "gt:usbdrive1", "gt:usbdrive2", "gt:usbdrive3", "gt:usbdrive4", "gt:usbdrive5", "gt:usbdrive6", "gt:usbdrive7", "gt:usbdrive8", "gt:usbdrive9"};
 	/** The short Names for the Circuits */
 	public static final String[] OD_CIRCUITS = {"gt:circuit0", "gt:circuit1", "gt:circuit2", "gt:circuit3", "gt:circuit4", "gt:circuit5", "gt:circuit6", "gt:circuit7", "gt:circuit8", "gt:circuit9"};
-
+	
 	/** Subtext Numbers. */
 	public static final String[] NUM_SUB = {
 	  "\u2080", "\u2081", "\u2082", "\u2083", "\u2084", "\u2085", "\u2086", "\u2087", "\u2088", "\u2089"
@@ -221,30 +221,16 @@ public class CS {
 	public static int EU_PER_LAVA = 80;
 	/** The value of how many Energy Units a Liter of Hot Coolant also known as Heatant is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
 	public static int EU_PER_COOLANT = 20;
-	/** The value of how many Energy Units a Liter of Semiheavy Water needs to turn into Hot Semiheavy Water. */
-	public static int EU_PER_SEMI_HEAVY_WATER = 30;
-	/** The value of how many Energy Units a Liter of Heavy Water needs to turn into Hot Heavy Water. */
-	public static int EU_PER_HEAVY_WATER = 40;
-	/** The value of how many Energy Units a Liter of Heavy Water needs to turn into Hot Tritiated Water. */
-	public static int EU_PER_TRITIATED_WATER = 50;
-	/** The value of how many Energy Units a Liter of Molten Sodium needs to turn into Hot Molten Sodium. */
-	public static int EU_PER_SODIUM = 30;
-	/** The value of how many Energy Units a Liter of Molten Tin needs to turn into Hot Molten Tin. */
-	public static int EU_PER_TIN = 40;
-	/** The value of how many Energy Units a Liter of Carbon Dioxide needs to turn into Hot Carbon Dioxide. */
-	public static int EU_PER_CO2 = 10;
-	/** The value of how many Energy Units a Liter of Helium needs to turn into Hot Helium. */
-	public static int EU_PER_HELIUM = 15;
 	/** The value of how many Energy Units a Liter of Water needs to turn into Steam. */
 	public static int EU_PER_WATER = 80;
 	/** The value of how much Steam an Energy Unit is worth. The Standard is 2 Steam = 1 EU. */
 	public static int STEAM_PER_EU = 2;
 	/** The value of how much Steam a Liter of Water is worth. The Standard is 160 Steam = 1 Water. */
 	public static int STEAM_PER_WATER = 160;
-
+	
 	/** A few Default Values for Light Opacity. */
 	public static final int LIGHT_OPACITY_NONE = 0, LIGHT_OPACITY_LEAVES = 1, LIGHT_OPACITY_WATER = 3, LIGHT_OPACITY_MAX = 255;
-
+	
 	public static final Set<String>
 	  BIOMES_RIVER              = new HashSetNoNulls<>(F, BiomeGenBase.river.biomeName, BiomeGenBase.frozenRiver.biomeName, "Lush River", "Estuary", "Twilight Stream", "Tropical River") // "Creek Bed" Unsure whether to add this
 	, BIOMES_RIVER_LAKE         = new HashSetNoNulls<>(F, BiomeGenBase.river.biomeName, BiomeGenBase.frozenRiver.biomeName, "Lush River", "Estuary", "Twilight Stream", "Tropical River", "Tropical Lake", "Twilight Lake", "Lake", "Oasis") // "Ephemeral Lake", "Ephemeral Lake Edge" those are vapourizing Lakes that vanish depending on Season.
@@ -278,20 +264,20 @@ public class CS {
 	, BIOMES_MARS               = new HashSetNoNulls<>(F, "Mars", "mars", "marsFlat")
 	, BIOMES_ASTEROIDS          = new HashSetNoNulls<>(F, "Asteroids", "asteroids")
 	, BIOMES_SPACE              = new HashSetNoNulls<>(F, "Space", "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat", "Asteroids", "asteroids", "space", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea");
-
+	
 	// "Wasteland City", "Fens", "Carr", "Kakadu", "Scree", "Scrub", "Riparian Zone", "Basin", "Badlands", "Outback", "Tropical Islands", "Tropical Archipelago", "Windy Island", "Volcano Island", "Volcano", "Volcano M"
-
+	
 	/** Stores the Coordinates that any given Player last interacted with. */
 	public static final Map<EntityPlayer, ChunkCoordinates> PLAYER_LAST_CLICKED = new IdentityHashMap<>();
-
+	
 	/** a Random generator so I don't need to instantiate a new one all the time. */
 	public static final Random RNGSUS = new Random(), RANDOM = RNGSUS;
-
+	
 	/** Current Time on the Server, since the last Reboot. */
 	public static long SERVER_TIME = 0;
 	/** Current Time on the Client. Used for Animations. */
 	public static long CLIENT_TIME = 0;
-
+	
 	/** If I ever need to talk in Chat. XD */
 	public static final String CHAT_GREG = LH.Chat.WHITE+"<"+LH.Chat.BLUE+"GregoriusT"+LH.Chat.WHITE+">";
 	/** The Colour White as RGB Short Array. */
@@ -299,7 +285,7 @@ public class CS {
 	/** The Colour White as simple Integer (0x00ffffff). */
 	public static final int UNCOLORED = 16777215;
 	public static final int ALL_NON_ALPHA_COLOR = 0x00ffffff;
-
+	
 	public static final int[] RAINBOW_ARRAY = {
 		0xff0000,
 		0xff4000,
@@ -326,7 +312,7 @@ public class CS {
 		0xff0080,
 		0xff0040,
 	};
-
+	
 	/** Some Colour Arrays */
 	public static final short[]
 	  CA_WHITE              = {255, 255, 255, 255}
@@ -370,7 +356,7 @@ public class CS {
 	, CA_LIGHT_YELLOW_64    = { 64,  64,  32, 255}
 	, CA_LIGHT_YELLOW_32    = { 32,  32,  16, 255}
 	;
-
+	
 	public static final short[]
 	  DYE_None              = {255, 255, 255, 255}
 	, DYE_Black             = { 32,  32,  32, 255}
@@ -390,7 +376,7 @@ public class CS {
 	, DYE_Orange            = {255, 128,   0, 255}
 	, DYE_White             = {255, 255, 255, 255}
 	;
-
+	
 	public static final int
 	  DYE_INT_None            = UT.Code.getRGBInt(DYE_None)
 	, DYE_INT_Black           = UT.Code.getRGBInt(DYE_Black)
@@ -410,7 +396,7 @@ public class CS {
 	, DYE_INT_Orange          = UT.Code.getRGBInt(DYE_Orange)
 	, DYE_INT_White           = UT.Code.getRGBInt(DYE_White)
 	;
-
+	
 	public static final byte
 	DYE_INDEX_Black         =  0,
 	DYE_INDEX_Red           =  1,
@@ -428,35 +414,35 @@ public class CS {
 	DYE_INDEX_Magenta       = 13,
 	DYE_INDEX_Orange        = 14,
 	DYE_INDEX_White         = 15;
-
+	
 	public static final String[] DYE_NAMES                  = {"Black", "Red", "Green", "Brown", "Blue", "Purple", "Cyan", "Light Gray", "Gray", "Pink", "Lime", "Yellow", "Light Blue", "Magenta", "Orange", "White"};
 	public static final String[] DYE_OREDICTS               = {"dyeBlack", "dyeRed", "dyeGreen", "dyeBrown", "dyeBlue", "dyePurple", "dyeCyan", "dyeLightGray", "dyeGray", "dyePink", "dyeLime", "dyeYellow", "dyeLightBlue", "dyeMagenta", "dyeOrange", "dyeWhite"};
 	public static final String[] DYE_OREDICTS_CERAMIC       = {"dyeCeramicBlack", "dyeCeramicRed", "dyeCeramicGreen", "dyeCeramicBrown", "dyeCeramicBlue", "dyeCeramicPurple", "dyeCeramicCyan", "dyeCeramicLightGray", "dyeCeramicGray", "dyeCeramicPink", "dyeCeramicLime", "dyeCeramicYellow", "dyeCeramicLightBlue", "dyeCeramicMagenta", "dyeCeramicOrange", "dyeCeramicWhite"};
 	public static final String[] DYE_OREDICTS_MIXABLE       = {"dyeMixableBlack", "dyeMixableRed", "dyeMixableGreen", "dyeMixableBrown", "dyeMixableBlue", "dyeMixablePurple", "dyeMixableCyan", "dyeMixableLightGray", "dyeMixableGray", "dyeMixablePink", "dyeMixableLime", "dyeMixableYellow", "dyeMixableLightBlue", "dyeMixableMagenta", "dyeMixableOrange", "dyeMixableWhite"};
 	public static final String[] DYE_OREDICTS_LENS          = {"craftingLensBlack", "craftingLensRed", "craftingLensGreen", "craftingLensBrown", "craftingLensBlue", "craftingLensPurple", "craftingLensCyan", "craftingLensLightGray", "craftingLensGray", "craftingLensPink", "craftingLensLime", "craftingLensYellow", "craftingLensLightBlue", "craftingLensMagenta", "craftingLensOrange", "craftingLensWhite"};
 	public static final String[] DYE_OREDICTS_POST          = {"Black", "Red", "Green", "Brown", "Blue", "Purple", "Cyan", "LightGray", "Gray", "Pink", "Lime", "Yellow", "LightBlue", "Magenta", "Orange", "White"};
-
+	
 	public static final short[][] DYES                      = {DYE_Black, DYE_Red, DYE_Green, DYE_Brown, DYE_Blue, DYE_Purple, DYE_Cyan, DYE_LightGray, DYE_Gray, DYE_Pink, DYE_Lime, DYE_Yellow, DYE_LightBlue, DYE_Magenta, DYE_Orange, DYE_White};
 	public static final short[][] DYES_INVERTED             = {DYES[15], DYES[14], DYES[13], DYES[12], DYES[11], DYES[10], DYES[ 9], DYES[ 8], DYES[ 7], DYES[ 6], DYES[ 5], DYES[ 4], DYES[ 3], DYES[ 2], DYES[ 1], DYES[ 0]};
-
+	
 	public static final int[] DYES_INT                      = {DYE_INT_Black, DYE_INT_Red, DYE_INT_Green, DYE_INT_Brown, DYE_INT_Blue, DYE_INT_Purple, DYE_INT_Cyan, DYE_INT_LightGray, DYE_INT_Gray, DYE_INT_Pink, DYE_INT_Lime, DYE_INT_Yellow, DYE_INT_LightBlue, DYE_INT_Magenta, DYE_INT_Orange, DYE_INT_White};
 	public static final int[] DYES_INT_INVERTED             = {DYES_INT[15], DYES_INT[14], DYES_INT[13], DYES_INT[12], DYES_INT[11], DYES_INT[10], DYES_INT[ 9], DYES_INT[ 8], DYES_INT[ 7], DYES_INT[ 6], DYES_INT[ 5], DYES_INT[ 4], DYES_INT[ 3], DYES_INT[ 2], DYES_INT[ 1], DYES_INT[ 0]};
-
+	
 	public static final FluidStack[] DYED_C_FOAMS           = new FluidStack[16];
 	public static final FluidStack[] DYED_C_FOAMS_OWNED     = new FluidStack[16];
-
+	
 	public static final FluidStack[] DYE_FLUIDS_WATER       = new FluidStack[16];
 	public static final FluidStack[] DYE_FLUIDS_FLOWER      = new FluidStack[16];
 	public static final FluidStack[] DYE_FLUIDS_CHEMICAL    = new FluidStack[16];
 	public static final FluidStack[][] DYE_FLUIDCATEGORIES  = {DYE_FLUIDS_WATER, DYE_FLUIDS_FLOWER, DYE_FLUIDS_CHEMICAL};
-
-
+	
+	
 	@SuppressWarnings("unchecked")
 	public static final ArrayListNoNulls<FluidStack>[] DYE_FLUIDS = new ArrayListNoNulls[] {new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>(), new ArrayListNoNulls<FluidStack>()};
-
+	
 	/** Offset for Rendering Text on Surfaces. */
 	public static final float PX_OFFSET = 0.005F;
-
+	
 	/** Array with length 17 containing the Coordinates of Pixels from 0/16 to 16/16 */
 	public static final float[] PX_P = {
 		  0.0000F, 0.0625F, 0.1250F, 0.1875F
@@ -468,7 +454,7 @@ public class CS {
 		, 1.5000F, 1.5625F, 1.6250F, 1.6875F
 		, 1.7500F, 1.8125F, 1.8750F, 1.9375F
 		, 2.0000F}, PIXELS_POS = PX_P;
-
+	
 	/** Array with length 17 containing the Coordinates of Pixels from 16/16 to 0/16 */
 	public static final float[] PX_N = {
 		  1.0000F, 0.9375F, 0.8750F, 0.8125F
@@ -480,7 +466,7 @@ public class CS {
 		,-0.5000F,-0.5625F,-0.6250F,-0.6875F
 		,-0.7500F,-0.8125F,-0.8750F,-0.9375F
 		,-1.0000F}, PIXELS_NEG = PX_N;
-
+	
 	/** Different Side Variables for easier comprehension. */
 	public static final byte        SIDE_Y_NEG  = 0, SIDE_BOTTOM    = 0, SIDE_DOWN      = 0,
 									SIDE_Y_POS  = 1, SIDE_TOP       = 1, SIDE_UP        = 1,
@@ -489,7 +475,7 @@ public class CS {
 									SIDE_X_NEG  = 4, SIDE_WEST      = 4,
 									SIDE_X_POS  = 5, SIDE_EAST      = 5, // Also a Side with a stupidly mirrored Texture
 									SIDE_ANY    = 6, SIDE_UNKNOWN   = 6, SIDE_INVALID = 6, SIDE_INSIDE = 6, SIDE_UNDEFINED = 6;
-
+	
 	/**
 	 * [Facing,Side]->Side Mappings for Blocks, which don't face up- and downwards.
 	 * 0 = bottom, 1 = top, 2 = left, 3 = front, 4 = right, 5 = back, 6 = undefined.
@@ -503,7 +489,7 @@ public class CS {
 		{0,1,4,2,5,3,6},
 		{0,1,2,3,4,5,6}
 	};
-
+	
 	/**
 	 * [Facing,Side]->Orientation Mappings for Blocks, which don't face up- and downwards.
 	 * 0 = bottom, 1 = top, 2 = left, 3 = front, 4 = right, 5 = back, 6 = undefined.
@@ -517,14 +503,14 @@ public class CS {
 		{0,1,3,5,2,4,6},
 		{0,1,2,3,4,5,6}
 	};
-
+	
 	/** Gives you the Sides, which are not the Front nor the Back of the Facing. */
 	public static final byte[][] FACING_SIDES = {{2,3,4,5},{2,3,4,5},{0,1,4,5},{0,1,4,5},{0,1,2,3},{0,1,2,3},{}};
 	/** Gives you the Sides, which are the Front and the Back, with the Front being the first one. */
 	public static final byte[][] FACING_FRONT_BACK = {{0,1},{1,0},{2,3},{3,2},{4,5},{5,4},{}};
 	/** Gives you the Sides, which are the Front and the Back, with the Back being the first one. */
 	public static final byte[][] FACING_BACK_FRONT = {{1,0},{0,1},{3,2},{2,3},{5,4},{4,5},{}};
-
+	
 	/** Checks if two Sides are along the same Axis */
 	public static final boolean[][] ALONG_AXIS = {
 		{T,T,F,F,F,F,F},
@@ -535,7 +521,7 @@ public class CS {
 		{F,F,F,F,T,T,F},
 		{F,F,F,F,F,F,T}
 	};
-
+	
 	/** Checks if two Sides are along the shifted Axis */
 	public static final boolean[][] ALONG_AXIS_1 = {
 		{F,F,T,T,F,F,F},
@@ -546,7 +532,7 @@ public class CS {
 		{T,T,F,F,F,F,F},
 		{F,F,F,F,F,F,F}
 	};
-
+	
 	/** Checks if two Sides are along the double shifted Axis */
 	public static final boolean[][] ALONG_AXIS_2 = {
 		{F,F,F,F,T,T,F},
@@ -557,7 +543,7 @@ public class CS {
 		{F,F,T,T,F,F,F},
 		{F,F,F,F,F,F,F}
 	};
-
+	
 	/** Insert Facing and a Connectivity BitMask to see if it is connecting to that Side. Technically this is a simple Bit Operation, but accessing an Array with "FACE_CONNECTED[aSide][aConnections]" just looks nicer than "(aConnections & (1 << aSide) != 0)". */
 	public static final boolean[][] FACE_CONNECTED = {
 		{F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T},
@@ -568,16 +554,16 @@ public class CS {
 		{F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T},
 		{F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T}
 	};
-
+	
 	/** Fast lookup to see how many Connections a Mask has. It is recommended to do either &63 or &127 on the Index depending on how you use it. */
 	public static final byte[]              FACE_CONNECTION_COUNT = {0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7};
-
+	
 	/** Side Bits for quick reference.*/
 	public static final byte                SBIT[] = { 1, 2, 4, 8,16,32,64}, SIDE_BITS[] = SBIT, SBIT_D = 1, SBIT_U = 2, SBIT_L = 4, SBIT_F = 8, SBIT_R = 16, SBIT_B = 32, SBIT_N = 4, SBIT_S = 8, SBIT_W = 16, SBIT_E = 32, SBIT_A = 64, SBIT_I = 64;
-
+	
 	/** Those are not representing actual directions! They are for the "FACING_ROTATIONS" Array-Map */
 	public static final byte                SIDE_LEFT = 2, SIDE_FRONT = 3, SIDE_RIGHT = 4, SIDE_BACK = 5;
-
+	
 	/** Converts Sides to a Top-Bottom-Side Value, this limits the Range to a Number between [0 and 2] */
 	public static final byte[]              FACES_TBS = { 0, 1, 2, 2, 2, 2, 2};
 	/** Side->Opposite Mappings. */
@@ -586,22 +572,22 @@ public class CS {
 	public static final byte[]              OFFSETS_X = { 0, 0, 0, 0,-1,+1, 0},
 											OFFSETS_Y = {-1,+1, 0, 0, 0, 0, 0},
 											OFFSETS_Z = { 0, 0,-1,+1, 0, 0, 0};
-
+	
 	/** Side->ForgeDirection Mappings. */
 	public static final ForgeDirection[]    FORGE_DIR = {ForgeDirection.DOWN, ForgeDirection.UP, ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.WEST, ForgeDirection.EAST, ForgeDirection.UNKNOWN};
 	/** Side->Opposite Mappings with ForgeDirection. */
 	public static final ForgeDirection[]    FORGE_DIR_OPPOSITES = {ForgeDirection.UP, ForgeDirection.DOWN, ForgeDirection.SOUTH, ForgeDirection.NORTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.UNKNOWN};
-
+	
 	/** Compass alike Array for the proper ordering of North, East, South and West. */
 	public static final byte[]              COMPASS_DIRECTIONS      = {SIDE_NORTH, SIDE_EAST, SIDE_SOUTH, SIDE_WEST};
 	/** Side -> Compass Direction. Defaults to North if wrong value. */
 	public static final byte[]              COMPASS_FROM_SIDE       = { 0, 0, 0, 2, 3, 1, 0};
-
+	
 	/** Used for Meta => Side */
 	public static final byte[]              VALIDATE                = { 0, 1, 2, 3, 4, 5, 0, 0, 0, 1, 2, 3, 4, 5, 0, 0},
 											VALIDATE_VERTICAL       = { 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 											VALIDATE_HORIZONTAL     = { 3, 3, 2, 3, 4, 5, 3, 3, 3, 3, 2, 3, 4, 5, 3, 3};
-
+	
 	/** An Array containing all Sides which follow the Condition, in order to iterate over them for example. */
 	public static final byte[]              ALL_SIDES                   =  {0,1,2,3,4,5,6},
 											ALL_SIDES_MIDDLE            =  {6,0,1,2,3,4,5},
@@ -625,7 +611,7 @@ public class CS {
 											ALL_SIDES_X                 =  {4,5},
 											ALL_SIDES_Y                 =  {0,1},
 											ALL_SIDES_Z                 =  {2,3};
-
+	
 	/** For Facing Checks. */
 	public static final boolean[]           SIDES_BOTTOM            = {T,F,F,F,F,F,F},
 											SIDES_TOP               = {F,T,F,F,F,F,F},
@@ -648,7 +634,7 @@ public class CS {
 											SIDES_TOP_HORIZONTAL    = {F,T,T,T,T,T,F},
 											SIDES_BOTTOM_HORIZONTAL = {T,F,T,T,T,T,F},
 											SIDES_ITEM_RENDER       = {T,T,T,T,T,T,F};
-
+	
 	/** For Facing Checks. */
 	public static final boolean[][]
 	SIDES_ANY_BUT = {
@@ -693,7 +679,7 @@ public class CS {
 		SIDES_AXIS_Y,
 		SIDES_AXIS_Z
 	};
-
+	
 	/** Pillar Stuff for more understandable references. */
 	public static final byte PILLAR_X = 4, PILLAR_Y = 0, PILLAR_Z = 8, PILLAR_BITS = 12, PILLAR_DATA = 3, PILLAR_RENDER = 31
 	, PILLARS_X[] = {4,5,6,7}, PILLARS_Y[] = {0,1,2,3}, PILLARS_Z[] = {8,9,10,11}
@@ -711,9 +697,9 @@ public class CS {
 		SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z, SIDES_AXIS_Z,
 		SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y, SIDES_AXIS_Y,
 	};
-
+	
 	public static final boolean[] TRUE_6 = {T,T,T,T,T,T};
-
+	
 	/** To Scan Coordinates in a somewhat "close stuff gets scanned first" order. */
 	public static final int[]
 	  SCAN_NEG_0 = {0}
@@ -726,7 +712,7 @@ public class CS {
 	, SCAN_NEG_7 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7}
 	, SCAN_NEG_8 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7, -8, +8}
 	, SCAN_NEG_9 = {0, -1, +1, -2, +2, -3, +3, -4, +4, -5, +5, -6, +6, -7, +7, -8, +8, -9, +9}
-
+	
 	, SCAN_POS_0 = {0}
 	, SCAN_POS_1 = {0, +1, -1}
 	, SCAN_POS_2 = {0, +1, -1, +2, -2}
@@ -737,11 +723,11 @@ public class CS {
 	, SCAN_POS_7 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7}
 	, SCAN_POS_8 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7, +8, -8}
 	, SCAN_POS_9 = {0, +1, -1, +2, -2, +3, -3, +4, -4, +5, -5, +6, -6, +7, -7, +8, -8, +9, -9}
-
+	
 	, SCANS_POS[] = {SCAN_POS_0, SCAN_POS_1, SCAN_POS_2, SCAN_POS_3, SCAN_POS_4, SCAN_POS_5, SCAN_POS_6, SCAN_POS_7, SCAN_POS_8, SCAN_POS_9}
 	, SCANS_NEG[] = {SCAN_NEG_0, SCAN_NEG_1, SCAN_NEG_2, SCAN_NEG_3, SCAN_NEG_4, SCAN_NEG_5, SCAN_NEG_6, SCAN_NEG_7, SCAN_NEG_8, SCAN_NEG_9}
 	;
-
+	
 	/** Zero-Length Array to save on Memory. */ public static final Object                  [] ZL                   = new Object[0], ZL_OBJECT = ZL;
 	/** Zero-Length Array to save on Memory. */ public static final byte                    [] ZL_BYTE              = new byte[0];
 	/** Zero-Length Array to save on Memory. */ public static final short                   [] ZL_SHORT             = new short[0];
@@ -768,35 +754,35 @@ public class CS {
 	/** Zero-Length Array to save on Memory. */ public static final ChunkCoordinates        [] ZL_COORDS            = new ChunkCoordinates[0];
 	/** Zero-Length Array to save on Memory. */ public static final Recipe                  [] ZL_RECIPE            = new Recipe[0];
 	/** Zero-Length Array to save on Memory. */ public static final IIconContainer          [] ZL_IICONCONTAINER    = new IIconContainer[0], L6_IICONCONTAINER  = new IIconContainer[6], L1L6_IICONCONTAINER[] = new IIconContainer[][] {L6_IICONCONTAINER};
-
+	
 	/** This way it is possible to have a Call Hierarchy of NullPointers in ItemStack based Functions, and also because most of the time I don't know what kind of Data Type the "null" stands for, when there are shitloads of Parameters for a Function */
 	public static final ItemStack NI = null;
-
+	
 	/** This way it is possible to have a Call Hierarchy of NullPointers in FluidStack based Functions, and also because most of the time I don't know what kind of Data Type the "null" stands for, when there are shitloads of Parameters for a Function */
 	public static final FluidStack NF = null;
-
+	
 	/** This way it is possible to have a Call Hierarchy of NullPointers in Block based Functions, and also because most of the time I don't know what kind of Data Type the "null" stands for, when there are shitloads of Parameters for a Function */
 	public static final Block NB = Blocks.air;
-
+	
 	/** The Logs: Debug, Output, Error, OreDict and Material List. */
 	public static PrintStream DEB = new LogBuffer(), OUT = new LogBuffer(), ERR = new LogBuffer(), ORD = new LogBuffer(), MAT_LOG = null;
-
+	
 	/** States of Matter */
 	public static final byte STATE_SOLID = 0, STATE_LIQUID = 1, STATE_GASEOUS = 2, STATE_PLASMA = 3;
-
+	
 	/** The weight of Air at Atmospheric Pressure per Cubic Centimetre. */
 	public static final double WEIGHT_AIR_G_PER_CUBIC_CENTIMETER = 0.0012;
 	/** The weight of Air at Atmospheric Pressure per Cubic Meter. */
 	public static final double WEIGHT_AIR_KG_PER_CUBIC_METER = 1.2;
 	/** The weight of Air at Atmospheric Pressure per Material Unit. */
 	public static final double WEIGHT_AIR_KG_PER_UNIT = WEIGHT_AIR_KG_PER_CUBIC_METER / 9;
-
+	
 	/** Not really Constants, but they set using the Config and therefore should be constant. */
 	@SuppressWarnings("deprecation")
 	public static boolean D1 = F, D2 = F, D3 = F, CLIENT_BLOCKUPDATE_SOUNDS = F, NEI = F, APRIL_FOOLS = (new Date().getMonth() == 3 && new Date().getDate() <= 3), TOOL_SOUNDS = T, EMIT_EU_AS_RF = F, DISABLE_GT6_CRAFTING_RECIPES = F, ENABLE_ADDING_IC2_MACERATOR_RECIPES = T, DISABLE_ALL_IC2_MACERATOR_RECIPES = F, ENABLE_ADDING_IC2_EXTRACTOR_RECIPES = T, DISABLE_ALL_IC2_EXTRACTOR_RECIPES = F, ENABLE_ADDING_IC2_COMPRESSOR_RECIPES = T, DISABLE_ALL_IC2_COMPRESSOR_RECIPES = F, ENABLE_ADDING_IC2_OREWASHER_RECIPES = T, DISABLE_ALL_IC2_OREWASHER_RECIPES = F, ENABLE_ADDING_IC2_CENTRIFUGE_RECIPES = T, DISABLE_ALL_IC2_CENTRIFUGE_RECIPES = F, FAST_LEAF_DECAY = T, NERFED_WOOD = T, FOOD_OVERDOSE_DEATH = T, SPAWN_ZONE_MOB_PROTECTION = T, CONSTANT_ENERGY = T, RAIN_EXPLOSIONS = F, WATER_EXPLOSIONS = F, THUNDER_EXPLOSIONS = F, FIRE_EXPLOSIONS = F, OVERCHARGE_EXPLOSIONS = F, FIRE_BREAKING = F, RAIN_BREAKING = F, WATER_BREAKING = F, THUNDER_BREAKING = F, OVERCHARGE_BREAKING = F, SHOW_MICROBLOCKS = F, SHOW_CHEM_FORMULAS = T, SHOW_INTERNAL_NAMES = F, SHOW_HIDDEN_MATERIALS = F, SHOW_HIDDEN_PREFIXES = F, SHOW_ORE_BLOCK_PREFIXES = F, SHOW_HIDDEN_ITEMS = F, DRINKS_ALWAYS_DRINKABLE = F, HUNGER_BY_INVENTORY_WEIGHT = F, INVENTORY_UNIFICATION = T, XP_ORB_COMBINING = T, ADVENTURE_MODE_KIT = F, SURVIVAL_INTO_ADVENTURE_MODE = F, DISPLAY_TEMP_TOOLTIP = T, GENERATE_STONE = T, GENERATE_STREETS = F, GENERATE_NEXUS = F, GENERATE_TESTING = F, GENERATE_BEACON = F, GENERATE_BIOMES = F;
 	/** This means that Client or Server specific Base Files are definitely existing and loaded! Not if the World is actually client side or server side! */
 	public static boolean CODE_UNCHECKED = T, CODE_CLIENT = F, CODE_SERVER = F;
-
+	
 	/** Not really Constants, but they set using the Config and therefore should be constant. */
 	public static double HARDNESS_MULTIPLIER_SAND = 1.0, HARDNESS_MULTIPLIER_ROCK = 1.0, HARDNESS_MULTIPLIER_ORES = 1.0;
 	/** Those are the values derived directly by the Configuration File. DO NOT USE THEM, USE THE VALUES ABOVE INSTEAD!!! */
@@ -807,13 +793,13 @@ public class CS {
 	public static int ENTITY_CRAMMING = 3;
 	/** Item Related */
 	public static int ITEM_DESPAWN_TIME = 6000;
-
+	
 	/** Gets set when the Player dies. Only works Client Side and gets lost when the Client restarts, but not when the Client just relogs. */
 	public static ChunkCoordinates LAST_DEATH_OF_THE_PLAYER = null;
-
+	
 	/** Gets set when a TileEntity gets broken, in order to be able to access it for Drops, even though it just got deleted. */
 	public static ThreadLocal<TileEntity> LAST_BROKEN_TILEENTITY = new ThreadLocal<>();
-
+	
 	/** If you have to give something a World Parameter but there is no World... (Dummy World) */
 	public static DummyWorld DW;
 	/** Dimension Types that I use as parameter for my WorldGenerators, aside from the Vanilla Dimension IDs none of these IDs is accurate as they are just the Defaults of their Respective Mods! */
@@ -839,7 +825,7 @@ public class CS {
 	, DIM_LASTMILLENIUM = -112
 	, DIM_TROPICS = -127
 	;
-
+	
 	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
 	public static final List<WorldgenObject>
@@ -865,7 +851,7 @@ public class CS {
 	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY}
 	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
 	;
-
+	
 	/** Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
 	public static final List<WorldgenObject>
@@ -890,13 +876,13 @@ public class CS {
 	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY}
 	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
 	;
-
+	
 	/** For Internal Usage. Even though after 2 years I still don't use this one... */
 	public static INetworkHandler NW_GT;
-
+	
 	/** For using the API internal Network Functionality for the already existing Packets. */
 	public static INetworkHandler NW_API, NW_AP2;
-
+	
 	/** Used to register IC2 Stuff, this Object might be null if IC2 isn't installed. */
 	public static ICompatIC2        COMPAT_IC2;
 	/** Used to register IC2 Stuff, this Object might be null if IC2 isn't installed. */
@@ -913,10 +899,10 @@ public class CS {
 	public static ICompatFR         COMPAT_FR;
 	/** Used to register GalactiCraft Stuff, this Object might be null if GalactiCraft isn't installed. */
 	public static ICompatGC         COMPAT_GC;
-
+	
 	/** Date and Time of when the Game launched. */
 	public static final String DATE_OF_GAME_START = UT.Code.dateAndTime();
-
+	
 	/** A Set of different Tool Names. */
 	public static final String
 	  TOOL_LOCALISER_PREFIX = "gt.lang.tool.name."
@@ -961,7 +947,7 @@ public class CS {
 	, TOOL_prospector       = "prospector"
 	, TOOL_ducttape         = "ducttape"
 	;
-
+	
 	static {
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_rotator         , "Rotation Tool");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_igniter         , "Igniting Tool");
@@ -1001,7 +987,7 @@ public class CS {
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_geigercounter   , "Geiger Counter");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_prospector      , "Prospector");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_ducttape        , "Duct Tape");
-
+		
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_rotator           , "Rotating things");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_igniter           , "Igniting things");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_extinguisher      , "Extinguishing things");
@@ -1040,7 +1026,7 @@ public class CS {
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_prospector        , "Prospecting for Ores in an Area");
 		LH.add(TOOL_TOOLTIP_PREFIX + TOOL_ducttape          , "");
 	}
-
+	
 	/** A Set of different NBT Keys I use for Stuff. */
 	public static final String
 	  NBT_HIDDEN                    = "gt.hidden"                   // Boolean
@@ -1068,7 +1054,6 @@ public class CS {
 	, NBT_NUCLEAR_OTHER             = "gt.nuclear.other"            // Number
 	, NBT_NUCLEAR_DIV               = "gt.nuclear.div"              // Number
 	, NBT_NUCLEAR_MAX               = "gt.nuclear.max"             // Number
-	, NBT_NUCLEAR_MOD               = "gt.nuclear.mod"             // Number
 	, NBT_DURABILITY                = "gt.durability"               // Number
 	, NBT_MAXDURABILITY             = "gt.maxdurability"            // Number
 	, NBT_QUALITY                   = "gt.quality"                  // Byte
@@ -1162,15 +1147,15 @@ public class CS {
 	, NBT_REPLICATOR_DATA           = "gt.replicator.data"          // Short
 	, NBT_REACTOR_SETUP             = "gt.reactor.setup"            // Short
 	, NBT_REACTOR_SETUP_NAME        = "gt.reactor.setup.name"       // String
-
+	
 	, NBT_RECYCLING_COMPS           = "gt.recycling.comps"          // List of Components for the Disassembler.
 	, NBT_RECYCLING_MATS            = "gt.recycling.mats"           // List of Materials this Item recycles into. OM.anydata(ItemStack aStack) will check for this NBT, but only AFTER the Server already started!
 	, NBT_FUEL_VALUE                = "gt.fuelvalue"                // Short
 	, NBT_EFFECTS                   = "gt.effects"                  // Compound
-
+	
 	, NBT_MATERIAL                  = "gt.material"                 // String containing the Material Name.
 	, NBT_MATERIALS                 = "gt.materials"                // Containing the Data of an Array of Material Stacks.
-
+	
 	, NBT_ENERGY_EMITTED            = "gt.energy.emitted"           // String containing the Type of emitted Energy.
 	, NBT_ENERGY_EMITTED_2          = "gt.energy.emitted.2"         // String containing the Type of emitted Energy.
 	, NBT_ENERGY_EMITTED_SIDES      = "gt.energy.emitted.sides"     // String containing the Type of emitted Energy.
@@ -1180,7 +1165,7 @@ public class CS {
 	, NBT_ENERGY_EMITTED_BACK       = "gt.energy.emitted.back"      // String containing the Type of emitted Energy.
 	, NBT_ENERGY_EMITTED_LEFT       = "gt.energy.emitted.left"      // String containing the Type of emitted Energy.
 	, NBT_ENERGY_EMITTED_RIGHT      = "gt.energy.emitted.right"     // String containing the Type of emitted Energy.
-
+	
 	, NBT_ENERGY_ACCEPTED           = "gt.energy.accepted"          // String containing the Type of accepted Energy.
 	, NBT_ENERGY_ACCEPTED_2         = "gt.energy.accepted.2"        // String containing the Type of accepted Energy.
 	, NBT_ENERGY_ACCEPTED_SIDES     = "gt.energy.accepted.sides"    // String containing the Type of accepted Energy.
@@ -1190,7 +1175,7 @@ public class CS {
 	, NBT_ENERGY_ACCEPTED_BACK      = "gt.energy.accepted.back"     // String containing the Type of accepted Energy.
 	, NBT_ENERGY_ACCEPTED_LEFT      = "gt.energy.accepted.left"     // String containing the Type of accepted Energy.
 	, NBT_ENERGY_ACCEPTED_RIGHT     = "gt.energy.accepted.right"    // String containing the Type of accepted Energy.
-
+	
 	, NBT_INPUT                     = "gt.input"                    // Long containing a generic Energy Variable.
 	, NBT_INPUT_MIN                 = "gt.input.min"                // Long containing a generic Energy Variable.
 	, NBT_INPUT_MAX                 = "gt.input.max"                // Long containing a generic Energy Variable.
@@ -1203,7 +1188,7 @@ public class CS {
 	, NBT_INPUT_AU                  = "gt.input.au"                 // Long containing a specified Energy Variable.
 	, NBT_INPUT_MJ                  = "gt.input.mj"                 // Long containing a specified Energy Variable.
 	, NBT_INPUT_RF                  = "gt.input.rf"                 // Long containing a specified Energy Variable.
-
+	
 	, NBT_OUTPUT                    = "gt.output"                   // Long containing a generic Energy Variable.
 	, NBT_OUTPUT_MIN                = "gt.output.min"               // Long containing a generic Energy Variable.
 	, NBT_OUTPUT_MAX                = "gt.output.max"               // Long containing a generic Energy Variable.
@@ -1216,7 +1201,7 @@ public class CS {
 	, NBT_OUTPUT_AU                 = "gt.output.au"                // Long containing a specified Energy Variable.
 	, NBT_OUTPUT_MJ                 = "gt.output.mj"                // Long containing a specified Energy Variable.
 	, NBT_OUTPUT_RF                 = "gt.output.rf"                // Long containing a specified Energy Variable.
-
+	
 	, NBT_ENERGY                    = "gt.energy"                   // Long containing a generic Energy Variable.
 	, NBT_ENERGY_EU                 = "gt.energy.eu"                // Long containing a specified Energy Variable.
 	, NBT_ENERGY_RU                 = "gt.energy.ru"                // Long containing a specified Energy Variable.
@@ -1227,7 +1212,7 @@ public class CS {
 	, NBT_ENERGY_AU                 = "gt.energy.au"                // Long containing a specified Energy Variable.
 	, NBT_ENERGY_MJ                 = "gt.energy.mj"                // Long containing a specified Energy Variable.
 	, NBT_ENERGY_RF                 = "gt.energy.rf"                // Long containing a specified Energy Variable.
-
+	
 	, NBT_CAPACITY                  = "gt.capacity"                 // Long containing a generic Energy Variable as Capacity.
 	, NBT_CAPACITY_EU               = "gt.capacity.eu"              // Long containing a specified Energy Variable as Capacity.
 	, NBT_CAPACITY_RU               = "gt.capacity.ru"              // Long containing a specified Energy Variable as Capacity.
@@ -1239,18 +1224,18 @@ public class CS {
 	, NBT_CAPACITY_MJ               = "gt.capacity.mj"              // Long containing a specified Energy Variable as Capacity.
 	, NBT_CAPACITY_RF               = "gt.capacity.rf"              // Long containing a specified Energy Variable as Capacity.
 	;
-
+	
 	/** List of Visually Full Opaque Blocks. For minor Render optimisations. */
 	public static final HashSetNoNulls<Block> VISUALLY_OPAQUE_BLOCKS = new HashSetNoNulls<>(F, Blocks.bedrock, Blocks.command_block, Blocks.hardened_clay, Blocks.stained_hardened_clay, Blocks.gravel, Blocks.sand, Blocks.sandstone, Blocks.end_stone, Blocks.nether_brick, Blocks.netherrack, Blocks.obsidian, Blocks.planks, Blocks.log, Blocks.log2, Blocks.stone, Blocks.cobblestone, Blocks.mossy_cobblestone, Blocks.grass, Blocks.dirt, Blocks.clay, Blocks.stonebrick, Blocks.redstone_block, Blocks.glowstone, Blocks.redstone_lamp, Blocks.lit_redstone_lamp, Blocks.lit_redstone_ore, Blocks.pumpkin, Blocks.melon_block);
-
-
+	
+	
 	public static class GarbageGT {
 		/** The List of Hazmat Armors */
 		public static ItemStackSet<ItemStackContainer> BLACKLIST = new ItemStackSet<>();
 		public static ItemStackMap<ItemStackContainer, ItemStack> GARBAGE_MAP_ITEMS = new ItemStackMap<>();
 		public static ArrayListNoNulls<ItemStack> GARBAGE_ITEMS = new ArrayListNoNulls<>();
 		public static ArrayListNoNulls<FluidTankGT> GARBAGE_FLUIDS = new ArrayListNoNulls<>();
-
+		
 		public static int trash(ItemStack aStack) {
 			if (ST.invalid(aStack) || aStack.stackSize <= 0 || BLACKLIST.contains(aStack, T)) return 0;
 			if (aStack.hasTagCompound()) {
@@ -1321,22 +1306,22 @@ public class CS {
 			if (aMaterial == null || aMaterial.mAmount < OP.scrapGt.mAmount) return 0;
 			return trash(OP.scrapGt.mat(aMaterial.mMaterial, aMaterial.mAmount / OP.scrapGt.mAmount));
 		}
-
-
+		
+		
 		public static void onServerSave(File aSaveLocation) {
 			File aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.items.dat");
 			if (!aTargetFile.exists()) {try {aTargetFile.createNewFile();} catch (Throwable e) {e.printStackTrace(ERR);}}
 			NBTTagCompound aNBT = UT.NBT.make();
 			for (int i = 0; i < GARBAGE_ITEMS.size(); i++) ST.save(aNBT, ""+i, GARBAGE_ITEMS.get(i));
 			try {CompressedStreamTools.write(aNBT, aTargetFile);} catch (Throwable e) {e.printStackTrace(ERR);}
-
+			
 			aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.fluids.dat");
 			if (!aTargetFile.exists()) {try {aTargetFile.createNewFile();} catch (Throwable e) {e.printStackTrace(ERR);}}
 			aNBT = UT.NBT.make();
 			for (int i = 0; i < GARBAGE_FLUIDS.size(); i++) GARBAGE_FLUIDS.get(i).writeToNBT(aNBT, ""+i);
 			try {CompressedStreamTools.write(aNBT, aTargetFile);} catch (Throwable e) {e.printStackTrace(ERR);}
 		}
-
+		
 		public static void onServerLoad(File aSaveLocation) {
 			GARBAGE_ITEMS.clear();
 			File aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.items.dat");
@@ -1350,7 +1335,7 @@ public class CS {
 					GARBAGE_ITEMS.add(aStack);
 				}
 			}
-
+			
 			GARBAGE_FLUIDS.clear();
 			aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.fluids.dat");
 			if (aTargetFile.exists()) {
@@ -1366,14 +1351,14 @@ public class CS {
 			}
 		}
 	}
-
+	
 	public static class DrinksGT {
 		public static Map<String, IFoodStat> REGISTER = new HashMap<>();
 	}
-
+	
 	public static class FluidsGT {
 		public static Map<String, String> FLUID_RENAMINGS = new HashMap<>();
-
+		
 		public static Set<String>
 		  SIMPLE = new HashSetNoNulls<>(F, "sewage", "poison")
 		, ACID = new HashSetNoNulls<>(F, "acid", "creeper_acid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
@@ -1387,13 +1372,13 @@ public class CS {
 		, INFINITE = new HashSetNoNulls<>() // Marks things that are stupidly easy to obtain, except Water and Milk.
 		, BATH = new HashSetNoNulls<>()
 		, DYE = new HashSetNoNulls<>()
-
+		
 		, STEAM = new HashSetNoNulls<>()
 		, POWER_CONDUCTING = new HashSetNoNulls<>()
 		, LUBRICANT = new HashSetNoNulls<>()
 		, THERMOS = new HashSetNoNulls<>(F, "coffee")
 		, POTION = new HashSetNoNulls<>()
-
+		
 		, FOOD = new HashSetNoNulls<>(F, "coffee")
 		, JUICE = new HashSetNoNulls<>()
 		, FRUIT_JUICE = new HashSetNoNulls<>()
@@ -1404,7 +1389,7 @@ public class CS {
 		, TEA = new HashSetNoNulls<>()
 		, COOKING_OIL = new HashSetNoNulls<>()
 		, SLIME = new HashSetNoNulls<>()
-
+		
 		, ALCOHOLIC = new HashSetNoNulls<>()
 		, VINEGAR = new HashSetNoNulls<>()
 		, RUM = new HashSetNoNulls<>()
@@ -1417,19 +1402,19 @@ public class CS {
 		, LIQUEUR = new HashSetNoNulls<>()
 		, WHISKEY = new HashSetNoNulls<>()
 		;
-
+		
 		static {
 			SIMPLE.addAll(FOOD);
 		}
 	}
-
+	
 	/** Contains used Potion Effects. IDs are to be set on API postInit. */
 	public static class PotionsGT {
 		public static int
 		ID_RADIATION = -2,
 		ID_HYPOTHERMIA = -3, ID_HEATSTROKE = -4, ID_FROSTBITE = -5, ID_DEHYDRATION = -6, ID_INSANITY = -7;
 	}
-
+	
 	public static class BushesGT {
 		public static final ItemStackMap<ItemStackContainer, int[]> MAP = new ItemStackMap<>();
 		public static int[] get(ItemStack aStack) {return MAP.containsKey(new ItemStackContainer(aStack)) ? MAP.get(new ItemStackContainer(aStack)) : MAP.get(new ItemStackContainer(aStack, 1, W));}
@@ -1437,7 +1422,7 @@ public class CS {
 		public static void put(ItemStack aStack, int aBush, int aBloom, int aImmature, int aBerry) {if (!MAP.containsKey(new ItemStackContainer(aStack))) MAP.put(new ItemStackContainer(aStack), new int[] {aBush, aBloom, aImmature, aBerry});}
 		public static void override(ItemStack aStack, int... aColors) {MAP.put(new ItemStackContainer(aStack), aColors);}
 	}
-
+	
 	public static class FoodsGT {
 		public static final ItemStackMap<ItemStackContainer, int[]> MAP = new ItemStackMap<>();
 		public static int[] get(ItemStack aStack) {return MAP.containsKey(new ItemStackContainer(aStack)) ? MAP.get(new ItemStackContainer(aStack)) : MAP.get(new ItemStackContainer(aStack, 1, W));}
@@ -1445,7 +1430,7 @@ public class CS {
 		public static void put(ItemStack aStack, int aAlcohol, int aCaffeine, int aDehydration, int aSugar, int aFat) {if (!MAP.containsKey(new ItemStackContainer(aStack))) MAP.put(new ItemStackContainer(aStack), new int[] {aAlcohol, aCaffeine, aDehydration, aSugar, aFat});}
 		public static void override(ItemStack aStack, int... aStats) {MAP.put(new ItemStackContainer(aStack), aStats);}
 	}
-
+	
 	/** Contains GT Items and Item related References. */
 	public static class ItemsGT {
 		/** The MultiItems */
@@ -1458,13 +1443,13 @@ public class CS {
 		public static final ItemStackSet<ItemStackContainer> SHOW_RESISTANCE = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD = new ItemStackSet<>();
 		public static final ItemStackSet<ItemStackContainer> NEI_DONT_SHOW_FLUIDS = new ItemStackSet<>();
-
+		
 		public static boolean addNEIRedirect(ItemStack aStack, ItemStack... aRedirects) {if (aStack == null) return F; ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(aStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(aStack), tList = new ArrayListNoNulls<>()); return tList.addAll(Arrays.asList(aRedirects));}
 		public static boolean addNEIRedirects(Block aBlock) {ItemStack[] tRedirects = new ItemStack[16]; for (int i = 0; i < tRedirects.length; i++) tRedirects[i] = ST.make(aBlock, 1, i); return addNEIRedirects(tRedirects);}
 		public static boolean addNEIRedirects(ItemStack... aRedirects) {for (ItemStack tStack : aRedirects) if (ST.valid(tStack)) {ArrayListNoNulls<ItemStack> tList = sNEIRedirects.get(new ItemStackContainer(tStack)); if (tList == null) sNEIRedirects.put(new ItemStackContainer(tStack), tList = new ArrayListNoNulls<>()); tList.addAll(Arrays.asList(aRedirects));} return T;}
 		public static final Map<ItemStackContainer, ArrayListNoNulls<ItemStack>> sNEIRedirects = new ItemStackMap<>();
 	}
-
+	
 	/** Contains GT Blocks and Block related References. */
 	public static class BlocksGT {
 		public static IPrefixBlock
@@ -1472,30 +1457,30 @@ public class CS {
 		blockGem, blockDust, blockIngot, blockSolid, blockPlate, blockPlateGem,
 		crateGtGem, crateGtDust, crateGtIngot, crateGtPlate, crateGtPlateGem,
 		crateGt64Gem, crateGt64Dust, crateGt64Ingot, crateGt64Plate, crateGt64PlateGem;
-
+		
 		/** Ore Blocks */
 		public static IPrefixBlock
 		ore         , oreSandstone          , oreNetherrack         , oreEndstone       , oreAtumLimestone          , oreAtumSand, oreGravel, oreMud, oreSand, oreRedSand, oreBedrock,
 		oreBroken   , oreBrokenSandstone    , oreBrokenNetherrack   , oreBrokenEndstone , oreBrokenAtumLimestone    ,
 		oreSmall    , oreSmallSandstone     , oreSmallNetherrack    , oreSmallEndstone  , oreSmallAtumLimestone     , oreSmallAtumSand, oreSmallGravel, oreSmallMud, oreSmallSand, oreSmallRedSand, oreSmallBedrock;
-
+		
 		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy, GasNatural;
 		public static BlockFluidClassic Ocean, Swamp, River;
-
+		
 		public static BlockBase Sands, Diggables, Grass, Paths, RockOres;
-
+		
 		public static IBlockBase FlowersA, FlowersB;
 		public static BlockBase Glowtus, Sapling, Leaves, BalesGrass, BalesCrop;
 		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, Planks, PlanksFireProof;
-
+		
 		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass, Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium, Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
 		public static BlockBase LongDistWire01, LongDistPipe01;
-
+		
 		public static IBlockBase
 		RailAluminium, RailBronze, RailStainlessSteel, RailSteel, RailTitanium, RailTungsten, RailTungstenCarbide, RailTungstenSteel,
 		RailAluminiumBooster, RailBronzeBooster, RailStainlessSteelBooster, RailSteelBooster, RailTitaniumBooster, RailTungstenBooster, RailTungstenCarbideBooster, RailTungstenSteelBooster,
 		RailAluminiumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenCarbideDetector, RailTungstenSteelDetector;
-
+		
 		/** GT6 Stone Type. */
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark;
 		/** Contains all GT6 Stone Types. */
@@ -1503,33 +1488,33 @@ public class CS {
 		public static BlockBase[] stones = {GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark};
 		/** Contains the Ore Blocks for all the GT6 Type Stones, corresponding to the Array above. */
 		public static IPrefixBlock[] ores_normal = new IPrefixBlock[stones.length], ores_broken = new IPrefixBlock[stones.length], ores_small = new IPrefixBlock[stones.length];
-
+		
 		/** Mappings for Stones to their correspondent Ores. No WildCard allowed! Register all 16 MetaData Values here instead. */
 		public static Map<ItemStackContainer, IBlockPlacable>
 		  stoneToNormalOres = new ItemStackMap<>()
 		, stoneToBrokenOres = new ItemStackMap<>()
 		, stoneToSmallOres  = new ItemStackMap<>()
 		;
-
+		
 		public static final Set<Object> stoneOverridable = new HashSetNoNulls<>(F);
 		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
 		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow);
 		public static final Set<Object> plantableGreens  = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.farmland);
 		public static final Set<Object> plantableTrees   = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt);
 		public static final Set<Object> plantableGrass   = new HashSetNoNulls<Object>(F, Blocks.grass);
-
+		
 		/** Blocks to not generate Ores in. */
 		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = new ItemStackSet<>();
-
+		
 		public static final Set<Object> FLOWERS = new HashSetNoNulls<Object>(F, Blocks.yellow_flower, Blocks.red_flower);
-
+		
 		public static final Block[] POT_FLOWER_TILES = {Blocks.cactus, Blocks.brown_mushroom, Blocks.red_mushroom, Blocks.yellow_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower};
 		public static final byte [] POT_FLOWER_METAS = {0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
-
+		
 		public static final Block[] FLOWER_TILES = {Blocks.yellow_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower};
 		public static final byte [] FLOWER_METAS = {0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
 	}
-
+	
 	public static class ArmorsGT {
 		/** The List of Hazmat Armors */
 		public static final ItemStackSet<ItemStackContainer>
@@ -1542,7 +1527,7 @@ public class CS {
 		, HAZMATS_RADIOACTIVE = new ItemStackSet<>()
 		, HAZMATS_LIGHTNING = new ItemStackSet<>()
 		;
-
+		
 		public static ItemArmorBase[]
 		  HAZMAT_BIOCHEMGAS = new ItemArmorBase[4]
 		, HAZMAT_INSECTS = new ItemArmorBase[4]
@@ -1552,7 +1537,7 @@ public class CS {
 		, HAZMAT_UNIVERSAL = new ItemArmorBase[4]
 		;
 	}
-
+	
 	/** Contains the Tool IDs for my MetaTool. */
 	public static class ToolsGT {
 		public static final short
@@ -1561,11 +1546,11 @@ public class CS {
 		, POCKET_MULTITOOL = 1000, POCKET_KNIFE = 1002, POCKET_SAW = 1004, POCKET_FILE = 1006, POCKET_SCREWDRIVER = 1008, POCKET_WIRECUTTER = 1010, POCKET_SCISSORS = 1012, POCKET_CHISEL = 1014
 		, PISTOL = 5000
 		;
-
+		
 		public static MultiItemTool sMetaTool;
-
+		
 		// If you plan do use this to detect Crafting Items, DON'T! Use OreDict for detecting Crafting Items being Tools!
-
+		
 		private static final ItemStackSet<ItemStackContainer> TOOL_LIST = new ItemStackSet<>();
 		private static final Map<String, ItemStackSet<ItemStackContainer>> TOOL_LISTS = new HashMap<>();
 		private static ItemStackSet<ItemStackContainer> get(String aToolType) {ItemStackSet<ItemStackContainer> rSet = TOOL_LISTS.get(aToolType); if (rSet == null) TOOL_LISTS.put(aToolType, rSet = new ItemStackSet<>()); return rSet;}
@@ -1576,17 +1561,17 @@ public class CS {
 		public static boolean add(String aToolType, ItemStack aStack) {if (TOOL_LIST.add(aStack)) return get(aToolType).add(aStack); return F;}
 		public static boolean add(ItemStack aStack, String aToolType) {if (TOOL_LIST.add(aStack)) return get(aToolType).add(aStack); return F;}
 	}
-
+	
 	public static class PlankData {
 		public static ItemStack[] PLANKS = new ItemStack[300];
 		public static IIconContainer[] PLANK_ICONS = new IIconContainer[300];
-
+		
 		static {
 			PLANKS[0] = ST.make(Blocks.planks, 1, 0);
 			Arrays.fill(PLANK_ICONS, new IconContainerCopied(Blocks.planks, 0, 0));
 		}
 	}
-
+	
 	/** Contains the IDs for my Book Shelf Stuff. */
 	public static class BooksGT {
 		//   0 = null
@@ -1637,10 +1622,10 @@ public class CS {
 		// 255 = Stone (this one is supposed to just fill the Shelf)
 		public static final ITexture[] BOOK_TEXTURES_BACK = new ITexture[256];
 		public static final ITexture[] BOOK_TEXTURES_SIDE = new ITexture[256];
-
+		
 		public static final ItemStackMap<ItemStackContainer, Byte> BOOK_REGISTER = new ItemStackMap<>();
 	}
-
+	
 	/** Contains typical Tool OreDict Names. */
 	public static class OreDictToolNames {
 		public static final String
@@ -1686,12 +1671,12 @@ public class CS {
 		bendingcylinder = "craftingToolBendingCylinder",
 		bendingcylindersmall = "craftingToolBendingCylinderSmall";
 	}
-
+	
 	/** Contains TextureSet Indices for non OreDictPrefixed Stuff. */
 	public static class IconsGT {
 		public static int INDEX_BLOCK_MOLTEN = 0, INDEX_BLOCK_GAS = 0, INDEX_BLOCK_PLASMA = 0, INDEX_BLOCK_PIPE_SIDE = 0;
 	}
-
+	
 	/** Files */
 	public static class DirectoriesGT {
 		public static File
@@ -1701,7 +1686,7 @@ public class CS {
 		CONFIG_GT,
 		CONFIG_RECIPES;
 	}
-
+	
 	/** Configs */
 	public static class ConfigsGT {
 		public static Config
@@ -1714,32 +1699,32 @@ public class CS {
 		OVERPOWERED = null,
 		OREPROCESSING = null;
 	}
-
+	
 	/** Class Containing MOD ID Strings used in GT, since they are very common Parameters. */
 	public static class ModIDs {
 		/** MOD ID Strings */
 		@SuppressWarnings("hiding")
 		public static final String
 		  MC                = "minecraft"
-
+		  
 		, GT                = "gregtech"
 		, GAPI              = "gregapi"
 		, GAPI_POST         = "gregapi_post"
-
+		
 		, QT                = "qwertech"
-
+		
 		, WAILA             = "Waila"
-
+		
 		, IC2               = "IC2"
 		, IC2C              = "IC2-Classic-Spmod"
-
+		
 		, NC                = "IC2NuclearControl"
 		, IHL               = "ihl"
-
+		
 		, FMB               = "ForgeMicroblock"
 		, FUNK              = "funkylocomotion"
 		, BAUBLES           = "Baubles"
-
+		
 		, TC                = "Thaumcraft"
 		, TCFM              = "ForbiddenMagic"
 		, BOTA              = "Botania"
@@ -1759,27 +1744,28 @@ public class CS {
 		, CANDY             = "candycraftmod"
 		, ABYSSAL           = "abyssalcraft"
 		, SOULFOREST        = "soulforest"
-
+		
 		, RC                = "Railcraft"
-
+		
 		, IE                = "ImmersiveEngineering"
-
+		
 		, TE                = "ThermalExpansion"
 		, TE_FOUNDATION     = "ThermalFoundation"
 		, TE_DYNAMICS       = "ThermalDynamics"
-
+		
 		, AE                = "appliedenergistics2"
 		, MO                = "mo"
-
+		
 		, TFC               = "terrafirmacraft"
+		, TFCP              = "terrafirmacraftplus"
 
 		, ZTONES            = "Ztones"
 		, CHSL              = "chisel"
-
+		
 		, EtFu              = "etfuturum"
 		, BB                = "betterbeginnings"
 		, DYNAMIC_TREES     = "dynamictrees"
-
+		
 		, BbLC              = "BiblioCraft"
 		, CARP              = "CarpentersBlocks"
 		, BETTER_RECORDS    = "betterrecords"
@@ -1788,13 +1774,13 @@ public class CS {
 		, LOSTBOOKS         = "LostBooks"
 		, LOOTBAGS          = "lootbags"
 		, EUREKA            = "eureka"
-
+		
 		, UB                = "UndergroundBiomes"
 		, COG               = "CustomOreGen"
 		, PFAA              = "PFAAGeologica"
 		, MIN               = "mineralogy"
 		, RH                = "globbypotato_rockhounding"
-
+		
 		, FR                = "Forestry"
 		, FRMB              = "MagicBees"
 		, BINNIE            = "BinnieCore"
@@ -1803,7 +1789,7 @@ public class CS {
 		, BINNIE_GENETICS   = "Genetics"
 		, BINNIE_BOTANY     = "Botany"
 		, BINNIE_PATCHER    = "BinniePatcher"
-
+		
 		, MFR               = "MineFactoryReloaded"
 		, PnC               = "PneumaticCraft"
 		, ExU               = "ExtraUtilities"
@@ -1812,30 +1798,30 @@ public class CS {
 		, RT                = "RandomThings"
 		, AA                = "ActuallyAdditions"
 		, JABBA             = "JABBA"
-
+		
 		, MgC               = "Magneticraft"
 		, BR                = "BigReactors"
 		, HBM               = "hbm"
 		, ELN               = "Eln"
-
+		
 		, DRGN              = "DragonAPI"
 		, RoC               = "RotaryCraft"
 		, ReC               = "ReactorCraft"
 		, ElC               = "ElectriCraft"
 		, CrC               = "ChromatiCraft"
-
+		
 		, VOLTZ             = "voltzengine"
 		, MFFS              = "mffs"
 		, ICBM              = "icbmclassic"
 		, ATSCI             = "atomicscience"
-
+		
 		, Mek               = "Mekanism"
 		, Mek_Tools         = "MekanismTools"
 		, Mek_Generators    = "MekanismGenerators"
-
+		
 		, OC                = "OpenComputers"
 		, CC                = "ComputerCraft"
-
+		
 		, TreeCap           = "Treecapitator"
 		, HaC               = "harvestcraft"
 		, CookBook          = "cookingbook"
@@ -1859,28 +1845,28 @@ public class CS {
 		, GrC_Hops          = "Growthcraft|Hops"
 		, GrC_Milk          = "Growthcraft|Milk"
 		, GrC_Rice          = "Growthcraft|Rice"
-
+		
 		, CrGu              = "craftguide"
 		, SmAc              = "SimpleAchievements"
 		, HQM               = "HardcoreQuesting"
-
+		
 		, DE                = "DraconicEvolution"
 		, AV                = "Avaritia"
-
+		
 		, EB                = "enhancedbiomes"
 		, EBXL              = "ExtrabiomesXL"
 		, BoP               = "BiomesOPlenty"
 		, HiL               = "Highlands"
-
+		
 		, ATG               = "ATG"
 		, RTG               = "RTG"
 		, RWG               = "RWG"
-
+		
 		, GaSu              = "ganyssurface"
 		, GaNe              = "ganysnether"
 		, GaEn              = "ganysend"
 		, WdSt              = "woodstuff"
-
+		
 		, LycM              = "lycanitesmobs"
 		, LycM_Fresh        = "freshwatermobs"
 		, LycM_Salt         = "saltwatermobs"
@@ -1894,7 +1880,7 @@ public class CS {
 		, LycM_Inferno      = "infernomobs"
 		, LycM_Demon        = "demonmobs"
 		, LycM_Shadow       = "shadowmobs"
-
+		
 		, BC                = "BuildCraft|Core"
 		, BC_SILICON        = "BuildCraft|Silicon"
 		, BC_TRANSPORT      = "BuildCraft|Transport"
@@ -1902,7 +1888,7 @@ public class CS {
 		, BC_ENERGY         = "BuildCraft|Energy"
 		, BC_BUILDERS       = "BuildCraft|Builders"
 		, BC_ROBOTICS       = "BuildCraft|Robotics"
-
+		
 		, RP                = "Redpower"
 		, BP                = "bluepower"
 		, PR                = "ProjRed|Core"
@@ -1914,15 +1900,15 @@ public class CS {
 		, PR_COMPATIBILITY  = "ProjRed|Compatibility"
 		, PR_FABRICATION    = "ProjRed|Fabrication"
 		, PR_ILLUMINATION   = "ProjRed|Illumination"
-
+		
 		, WR_CBE_C          = "WR-CBE|Core"
 		, WR_CBE_A          = "WR-CBE|Addons"
 		, WR_CBE_L          = "WR-CBE|Logic"
-
+		
 		, COFH_API          = "CoFHAPI"
 		, COFH_API_ENERGY   = "CoFHAPI|energy"
 		, COFH_CORE         = "CoFHCore"
-
+		
 		, OB                = "OpenBlocks"
 		, MNTL              = "Mantle"
 		, TiC               = "TConstruct"
@@ -1931,7 +1917,7 @@ public class CS {
 		, BWM               = "weaponmod"
 		, OMT               = "openmodularturrets"
 		, TG                = "Techguns"
-
+		
 		, FM                = "meteors"
 		, GC                = "GalacticraftCore"
 		, GC_PLANETS        = "GalacticraftMars"
@@ -1941,7 +1927,7 @@ public class CS {
 		, MD8               = "Micdoodlecore"
 		;
 	}
-
+	
 	/** Class Containing Sound Strings used in GT. */
 	public static class SFX {
 		/** Sound Strings */
@@ -1976,11 +1962,11 @@ public class CS {
 		, MC_SHEARS             = "mob.sheep.shear"
 		, MC_SLIME_BIG          = "mob.slime.big"
 		, MC_SLIME_SMALL        = "mob.slime.small"
-
+		
 		, GT_BEEP               = MD.GAPI.mID.toLowerCase() + ":" + "gt.beep"
 		, GT_WRENCH             = MD.GAPI.mID.toLowerCase() + ":" + "gt.wrench"
 		, GT_SCREWDRIVER        = MD.GAPI.mID.toLowerCase() + ":" + "gt.screwdriver"
-
+		
 		, IC_WRENCH             = GT_WRENCH
 		, IC_TRAMPOLINE         = MD.IC2.mID.toLowerCase() + ":" + "tools.RubberTrampoline"
 		, IC_PAINT              = MD.IC2.mID.toLowerCase() + ":" + "tools.Painter"
@@ -1992,14 +1978,14 @@ public class CS {
 		, IC_DRILL_SOFT         = MD.IC2.mID.toLowerCase() + ":" + "tools.drill.DrillSoft"
 		, IC_DRILL_HARD         = MD.IC2.mID.toLowerCase() + ":" + "tools.drill.DrillHard"
 		, IC_SCANNER            = MD.IC2.mID.toLowerCase() + ":" + "tools.ODScanner"
-
+		
 		, IC_MACHINE_OVERLOAD   = MC_EXPLODE
 		, IC_MACHINE_INTERRUPT  = MC_BREAK
 		, IC_MACHINE_KA_CHING   = MD.IC2.mID.toLowerCase() + ":" + "machines.KaChing"
-
+		
 		, MISSING = null;
 	}
-
+	
 	/** File Paths and Resource Paths */
 	public static final String
 	  TEX_DIR                   = "textures/"
@@ -2010,7 +1996,7 @@ public class CS {
 	, TEX_DIR_ARMOR             = TEX_DIR + "armor/"
 	, TEX_DIR_ENTITY            = TEX_DIR + "entity/"
 	, TEX_DIR_ASPECTS           = TEX_DIR + "aspects/"
-
+	
 	, RES_PATH                  = MD.GT.mID + ":" + TEX_DIR
 	, RES_PATH_GUI              = MD.GT.mID + ":" + TEX_DIR_GUI
 	, RES_PATH_ITEM             = MD.GT.mID + ":"
@@ -2020,7 +2006,7 @@ public class CS {
 	, RES_PATH_API_ITEM         = MD.GAPI.mID + ":"
 	, RES_PATH_API_BLOCK        = MD.GAPI.mID + ":"
 	, RES_PATH_ASPECTS          = MD.GAPI.mID + ":" + TEX_DIR_ASPECTS
-
+	
 	, RES_PATH_IC2              = MD.IC2.mID.toLowerCase() + ":"
 	;
 }

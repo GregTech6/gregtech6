@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -74,8 +74,9 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addAutoBlackListing("IngotEnrichedUranium");
 		
 		OreDictManager.INSTANCE.addAutoBlackListingForMod(MD.TFC.mID);
+		OreDictManager.INSTANCE.addAutoBlackListingForMod(MD.TFCP.mID);
 		
-
+		
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.itemTar                , "tar");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.craftingChest          , "chest");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal(OD.craftingWorkBench      , "craftingTable");

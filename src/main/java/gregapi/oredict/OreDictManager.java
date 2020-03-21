@@ -307,6 +307,9 @@ public final class OreDictManager {
 		String aRegName = ST.regName(aEvent.Ore);
 		if (UT.Code.stringInvalid(aRegName)) return;
 		
+		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
+		if ("logWood".equals(aEvent.Name)) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe("woodLog", ST.copyMeta(i, aEvent.Ore)); else registerOreSafe("woodLog", aEvent.Ore);
+		
 		if (GT != null) {
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
@@ -407,7 +410,7 @@ public final class OreDictManager {
 					if (aMaterial.contains(TD.Properties.AUTO_BLACKLIST)) addToBlacklist_(aEvent.Ore);
 					for (OreDictMaterial tReRegisteredMaterial : aMaterial.mReRegistrations) registerOreSafe(aPrefix.mNameInternal + tReRegisteredMaterial.mNameInternal, aEvent.Ore);
 					if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
-						if (MD.TFC.mLoaded && aModID.equalsIgnoreCase(MD.TFC.mID) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
+						if ((MD.TFC.mLoaded || MD.TFCP.mLoaded) && (aModID.equalsIgnoreCase(MD.TFC.mID) || aModID.equalsIgnoreCase(MD.TFCP.mID)) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
 						} else if (aPrefix == OP.gem && MD.RH.mLoaded && aModID.equalsIgnoreCase(MD.RH.mID) && (!MD.ReC.mLoaded || aMaterial == MT.FluoriteBlack || !ANY.CaF2.mToThis.contains(aMaterial))) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);

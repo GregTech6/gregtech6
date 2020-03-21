@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -130,8 +130,6 @@ public class MultiTileEntitySafeKeyLocked extends MultiTileEntitySafe implements
 		new Textures.BlockIcons.CustomIcon("machines/safes/keylocked/overlay_open/back"),
 		new Textures.BlockIcons.CustomIcon("machines/safes/keylocked/overlay_open/side"),
 	};
-	
-	@Override public boolean allowCovers(byte aSide) {return aSide != mFacing;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.safe.keylocked";}
 }

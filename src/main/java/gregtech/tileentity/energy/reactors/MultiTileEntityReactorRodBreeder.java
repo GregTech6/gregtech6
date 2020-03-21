@@ -19,16 +19,15 @@
 
 package gregtech.tileentity.energy.reactors;
 
+import static gregapi.data.CS.*;
+
+import java.util.List;
+
 import gregapi.data.LH;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import java.util.List;
-
-import static gregapi.data.CS.*;
-import static gregapi.data.CS.NBT_DURABILITY;
 
 /**
  * @author Gregorius Techneticies
@@ -76,7 +75,7 @@ public class MultiTileEntityReactorRodBreeder extends MultiTileEntityReactorRodB
 	@Override
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot] / 2;
-		mDurability -= UT.Code.roundUp((double)aReactor.oNeutronCounts[aSlot] * Math.pow(1.5d, (double)aReactor.oNeutronCounts[aSlot] / 500d));
+		mDurability -= UT.Code.roundUp(aReactor.oNeutronCounts[aSlot] * Math.pow(1.5, aReactor.oNeutronCounts[aSlot] / 500.0));
 		if (mDurability <= 0) {
 			ST.meta(aStack, mProduct);
 			ST.nbt(aStack, null);

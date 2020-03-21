@@ -19,15 +19,14 @@
 
 package gregtech.tileentity.energy.reactors;
 
+import static gregapi.data.CS.*;
+
+import java.util.List;
+
 import gregapi.data.LH;
 import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import java.util.List;
-
-import static gregapi.data.CS.*;
-import static gregapi.data.CS.NBT_VALUE;
 
 /**
  * @author Gregorius Techneticies

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,7 +50,7 @@ public class MultiTileEntitySafeMechanical extends MultiTileEntitySafe {
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		if (aNBT.hasKey(NBT_OWNER)) mOwner = UUID.fromString(aNBT.getString(NBT_OWNER));
+		if (aNBT.hasKey(NBT_OWNER) && !OWNERSHIP_RESET) mOwner = UUID.fromString(aNBT.getString(NBT_OWNER));
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public class MultiTileEntitySafeMechanical extends MultiTileEntitySafe {
 	
 	@Override
 	public boolean allowInteraction(Entity aEntity) {
-		if (mOwner == null && aEntity != null) {
+		if (mOwner == null && aEntity != null && !OWNERSHIP_RESET) {
 			mOwner = aEntity.getUniqueID();
 			updateClientData();
 		}
@@ -109,8 +109,6 @@ public class MultiTileEntitySafeMechanical extends MultiTileEntitySafe {
 		new Textures.BlockIcons.CustomIcon("machines/safes/mechanical/overlay/back"),
 		new Textures.BlockIcons.CustomIcon("machines/safes/mechanical/overlay/side"),
 	};
-	
-	@Override public boolean allowCovers(byte aSide) {return aSide != mFacing;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.safe.mechanical";}
 }

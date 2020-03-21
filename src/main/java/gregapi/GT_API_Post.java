@@ -170,7 +170,7 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.AA.mLoaded) {
 			MT.OREMATS.Barite.addOreByProducts(MT.BlackQuartz);
 		}
-
+		
 	}
 
 	@Override
@@ -422,7 +422,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 5), OP.oreVanillastone.dat(MT.Grossular));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 6), OP.oreVanillastone.dat(MT.Almandine));
 			OreDictManager.INSTANCE.setItemData(ST.make(MD.VOLTZ, "veGemOre"  , 1, 7), OP.oreVanillastone.dat(MT.Andradite));
-
+			
 			OM.data(MD.VOLTZ, "veSheetMetal"                    , 1,   0, ANY.Steel             ,  U);
 			OM.data(MD.VOLTZ, "veSheetMetal"                    , 1,   1, ANY.Steel             ,  U2);
 			OM.data(MD.VOLTZ, "veSheetMetal"                    , 1,   2, ANY.Steel             ,  U4);
