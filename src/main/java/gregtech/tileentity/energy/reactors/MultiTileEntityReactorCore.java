@@ -255,6 +255,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 				MT.HDO.mLiquid.isFluidEqual(aFluidToFill) ||
 				MT.D2O.mLiquid.isFluidEqual(aFluidToFill) ||
 				MT.T2O.mLiquid.isFluidEqual(aFluidToFill) ||
+				MT.LiCl.mLiquid.isFluidEqual(aFluidToFill) ||
 				MT.He.mGas.isFluidEqual(aFluidToFill) ||
 				MT.CO2.mGas.isFluidEqual(aFluidToFill) ? mTanks[0] : null;
 	}
@@ -279,6 +280,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 				MT.HDO.mLiquid.isFluidEqual(aFluid) ||
 				MT.D2O.mLiquid.isFluidEqual(aFluid) ||
 				MT.T2O.mLiquid.isFluidEqual(aFluid) ||
+				MT.LiCl.mLiquid.isFluidEqual(aFluid) ||
 				MT.He.mGas.isFluidEqual(aFluid) ||
 				MT.CO2.mGas.isFluidEqual(aFluid))) return 0;
 		updateInventory();

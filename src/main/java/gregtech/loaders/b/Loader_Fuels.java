@@ -177,14 +177,15 @@ public class Loader_Fuels implements Runnable {
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                 , FL.Lava_Pahoehoe.make(1), ZL_IS);
 		if (FL.Water_Hot.exists())
 		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Hot.make(1)                        , FL.Water.make(1), ZL_IS);
-		FM.Hot          .addRecipe0(T, -EU_PER_COOLANT			, 1, FL.Coolant_IC2_Hot.make(1)        	, FL.Coolant_IC2.make(1)		, ZL_IS);
-		FM.Hot			.addRecipe0(T, -EU_PER_SODIUM			, 1, FL.Hot_Molten_Sodium.make(1)		, FL.amount(MT.Na.mLiquid, 1)	, ZL_IS);
-		FM.Hot			.addRecipe0(T, -EU_PER_TIN				, 1, FL.Hot_Molten_Tin.make(1)			, FL.amount(MT.Sn.mLiquid, 1)	, ZL_IS);
-		FM.Hot			.addRecipe0(T, -EU_PER_HEAVY_WATER		, 1, FL.Hot_Heavy_Water.make(1)			, FL.amount(MT.D2O.mLiquid, 1), ZL_IS);
-		FM.Hot			.addRecipe0(T, -EU_PER_SEMI_HEAVY_WATER	, 1, FL.Hot_Semi_Heavy_Water.make(1)	, FL.amount(MT.HDO.mLiquid, 1), ZL_IS);
-		FM.Hot			.addRecipe0(T, -EU_PER_TRITIATED_WATER	, 1, FL.Hot_Tritiated_Water.make(1)		, FL.amount(MT.T2O.mLiquid, 1), ZL_IS);
-		FM.Hot			.addRecipe0(T, -EU_PER_CO2				, 1, FL.Hot_Carbon_Dioxide.make(1)		, FL.amount(MT.CO2.mGas, 1)	, ZL_IS);
-		FM.Hot			.addRecipe0(T, -EU_PER_HELIUM			, 1, FL.Hot_Helium.make(1)				, FL.amount(MT.He.mGas, 1)	, ZL_IS);
+		FM.Hot          .addRecipe0(T, -EU_PER_COOLANT			, 1, FL.Coolant_IC2_Hot.make(1)        	, FL.Coolant_IC2.make(1)			, ZL_IS);
+		FM.Hot			.addRecipe0(T, -EU_PER_SODIUM			, 1, FL.Hot_Molten_Sodium.make(1)		, FL.amount(MT.Na.mLiquid, 1)		, ZL_IS);
+		FM.Hot			.addRecipe0(T, -EU_PER_TIN				, 1, FL.Hot_Molten_Tin.make(1)			, FL.amount(MT.Sn.mLiquid, 1)		, ZL_IS);
+		FM.Hot			.addRecipe0(T, -EU_PER_HEAVY_WATER		, 1, FL.Hot_Heavy_Water.make(1)			, FL.amount(MT.D2O.mLiquid, 1)	, ZL_IS);
+		FM.Hot			.addRecipe0(T, -EU_PER_SEMI_HEAVY_WATER	, 1, FL.Hot_Semi_Heavy_Water.make(1)	, FL.amount(MT.HDO.mLiquid, 1)	, ZL_IS);
+		FM.Hot			.addRecipe0(T, -EU_PER_TRITIATED_WATER	, 1, FL.Hot_Tritiated_Water.make(1)		, FL.amount(MT.T2O.mLiquid, 1)	, ZL_IS);
+		FM.Hot			.addRecipe0(T, -EU_PER_CO2				, 1, FL.Hot_Carbon_Dioxide.make(1)		, FL.amount(MT.CO2.mGas, 1)		, ZL_IS);
+		FM.Hot			.addRecipe0(T, -EU_PER_HELIUM			, 1, FL.Hot_Helium.make(1)				, FL.amount(MT.He.mGas, 1)		, ZL_IS);
+		FM.Hot			.addRecipe0(T, -EU_PER_LICL				, 1, FL.Hot_Molten_LiCl.make(1)			, FL.amount(MT.LiCl.mLiquid, 1)	, ZL_IS);
 
 		FM.Turbine      .addRecipe0(T, - 16,  5, FL.Steam.make(160)                          , FL.DistW.make(1), ZL_IS);
 //      FM.Turbine      .addRecipe0(T, - 10,  5, FL.Steam_IC2.make(100)                      , FL.DistW.make(1), ZL_IS);

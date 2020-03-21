@@ -94,6 +94,7 @@ public enum FL {
 	, Hot_Heavy_Water			("hotheavywater"											, SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Hot_Semi_Heavy_Water		("hotsemiheavywater"										, SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Hot_Tritiated_Water		("hottritiatedwater"										, SIMPLE, LIQUID, POWER_CONDUCTING)
+	, Hot_Molten_LiCl			("hotmoltenlicl"											, SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Hot_Carbon_Dioxide		("hotcarbondioxide"											, SIMPLE, GAS, POWER_CONDUCTING)
 	, Hot_Helium				("hothelium"												, SIMPLE, GAS, POWER_CONDUCTING)
 	, Lava                      ("lava"                                                     , SIMPLE, LIQUID)

@@ -378,6 +378,11 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Tritiated_Water.make(tEnergy))) {
 						mEnergy -= EU_PER_TRITIATED_WATER * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
+				} else if (MT.LiCl.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_LICL;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Molten_LiCl.make(tEnergy))) {
+						mEnergy -= EU_PER_LICL * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
 				} else if (MT.CO2.mGas.isFluidEqual(mTanks[0].getFluid())) {
 					tEnergy = mEnergy / EU_PER_CO2;
 					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Carbon_Dioxide.make(tEnergy))) {
