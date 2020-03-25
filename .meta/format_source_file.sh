@@ -17,7 +17,7 @@ else
 	echo "$(tput bold)Formatting: $1$(tput sgr0)"
 	# Start with license
 	cp "$SOURCE_DIR/LICENSE.header" "$1.tmp"
-	# Add a newlin
+	# Add a newline
 	echo "" >> "$1.tmp"
 	# Remove anything above the `^package` line and append rest to tmp
 	awk '/^package/{i++}i' "$1" >> "$1.tmp"
