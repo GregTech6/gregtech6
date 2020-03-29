@@ -1162,6 +1162,9 @@ public class MT {
 	VinteumPurified         = dcmp          ( 8327, "VinteumPurified"       , SET_EMERALD           , 230, 100, 255, 255).put(G_GEM_ORES, MAGICAL, CRYSTAL, MORTAR, BRITTLE, UNBURNABLE)                                                                                .setMcfg( 0, Ma             , 1*U)                                                                                                                          .aspects(TC.ORDO, 2, TC.PRAECANTIO, 6).qual(3, 12.0, 256,  3).setLocal("Purified Vinteum"),
 	ArcaneAsh               = dust          ( 8367, "Arcane Ashes"          , SET_FINE              , 150,  50, 180, 255).put(MAGICAL, "ArcaneAsh")                                                                                                                                                                                                                                                                                 .aspects(TC.PRAECANTIO, 1, TC.IGNIS, 1),
 	ArcaneCompound          = dust          ( 8366, "Arcane Compound"       , SET_ROUGH             , 180, 140,  50, 255).put(MAGICAL, FURNACE)                                                                                                                                                                                                                                                                                     .aspects(TC.PRAECANTIO, 3).setSmelting(ArcaneAsh, U*2),
+	Moonstone               = gem           ( 8452, "Moonstone"             , SET_RUBY              , 210, 210, 255, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.ALIENIS, 1, TC.PRAECANTIO, 1, TC.VACUOS, 1),
+	Sunstone                = gem           ( 8453, "Sunstone"              , SET_RUBY              , 255, 150,   0, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.VITREUS, 1, TC.IGNIS, 3),
+	Chimerite               = gem           ( 8454, "Chimerite"             , SET_RUBY              , 255, 255, 255, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.SENSUS, 3, TC.PERMUTATIO, 1),
 	
 	
 	CrimsonMiddle           = gem           ( 8282, "Crimson Middle"        , SET_DIAMOND           , 240,  50,  50, 127).lens(DYE_INDEX_Red        ).put(GLOWING, LIGHTING, MORTAR, BRITTLE)                                                                                                                                                                                                                                       .aspects(TC.VITREUS, 2, TC.LUX, 2, TC.IGNIS         , 2),
@@ -1581,6 +1584,9 @@ public class MT {
 			Lazurite                .setOreMultiplier( 5);
 			Azurite                 .setOreMultiplier( 5);
 			Eudialyte               .setOreMultiplier( 5);
+			Moonstone               .setOreMultiplier( 2);
+			Sunstone                .setOreMultiplier( 4);
+			Chimerite               .setOreMultiplier( 3);
 			
 			Wood                    .put(MD.MC);
 			Stone                   .put(MD.MC);
@@ -1883,6 +1889,9 @@ public class MT {
 			VinteumPurified         .put(MD.ARS).visDefault();
 			ArcaneAsh               .put(MD.ARS).visDefault();
 			ArcaneCompound          .put(MD.ARS).visDefault();
+			Moonstone               .put(MD.ARS).visDefault();
+			Sunstone                .put(MD.ARS).visDefault();
+			Chimerite               .put(MD.ARS).visDefault();
 			
 			
 			Desh                    .put(MD.GC).visDefault();
@@ -2932,9 +2941,6 @@ public class MT {
 		TerrasteelAlloyStrengthened = unused        ("TerrasteelAlloyStrengthened"  ).put(G_INGOT, MAGICAL, "StrengthenedTerrasteelAlloy").setLocal("Strengthened Terrasteel Alloy"),
 		Vis                         = unused        ("Vis"                          ).put(DECOMPOSABLE).setMcfg( 0, Ma, 1*U).aspects(TC.AURAM, 2, TC.PRAECANTIO, 1),
 		Unstable                    = unused        ("Unstable"                     ).put(AUTO_BLACKLIST, "Unstableingot", MD.ExU).aspects(TC.PERDITIO, 4),
-		Moonstone                   = unused        ("Moonstone"                    ).put(G_GEM_ORES).setOreMultiplier(2).aspects(TC.ALIENIS, 1, TC.PRAECANTIO, 1, TC.VACUOS, 1).setOriginalMod(MD.ARS).visDefault(), // Light Blue like HSLA Steel
-		Sunstone                    = unused        ("Sunstone"                     ).put(G_GEM_ORES).setOreMultiplier(4).aspects(TC.VITREUS, 1, TC.IGNIS, 3).setOriginalMod(MD.ARS).visDefault(), // Bright Orange like Amber but slightly more red
-		Chimerite                   = unused        ("Chimerite"                    ).put(G_GEM_ORES).setOreMultiplier(3).aspects(TC.SENSUS, 3, TC.PERMUTATIO, 1).setOriginalMod(MD.ARS).visDefault(), // Needs to be white for Rainbow Effect
 		Voidstone                   = unused        ("Voidstone"                    ).aspects(TC.VITREUS, 1, TC.VACUOS, 1),
 		Mercassium                  = unused        ("Mercassium"                   ).qual(3,  6.0,  64,  1).put(G_INGOT_ORES),
 		Osmonium                    = unused        ("Osmonium"                     ).qual(3,  6.0,  64,  1).put(G_INGOT_ORES),

@@ -25,6 +25,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] More Reactor Test Stuffs from Erik3003.
 [ADDED] Ownership Reset Config for people who locked themselves out of Stuff like Mechanical Safes in SinglePlayer.
 [ADDED] Small Cinnabar Ore to the Nether.
+[ADDED] Ars Magica Chimerite Ore when it is installed.
 
 
 6.12.02:
