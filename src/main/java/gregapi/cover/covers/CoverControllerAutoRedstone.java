@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -61,10 +61,10 @@ public class CoverControllerAutoRedstone extends AbstractCoverAttachmentControll
 	}
 	
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return sTextureForeground;}
-	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? sTextureBackground : BlockTextureMulti.get(sTextureBackground, sTextureForeground);}
-	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureBackground;}
+	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, sTextureForeground);}
+	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	
-	public static final ITexture sTextureBackground = BlockTextureDefault.get("machines/covers/autoredstoneswitch/base"), sTextureForeground = BlockTextureDefault.get("machines/covers/autoredstoneswitch/circuit");
+	public static final ITexture sTextureForeground = BlockTextureDefault.get("machines/covers/autoredstoneswitch/circuit");
 	
 	@Override
 	public boolean getStateOnOff(byte aSide, CoverData aData) {

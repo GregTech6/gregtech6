@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Terrafirmacraft Plus not being detected as Terrafirmacraft.
 [FIXED] Clay Ore that comes from Hematite Bedrock Drilling is now processable.
 [FIXED] Some Ars Magica Unification things.
+[CHANGED] Bath Recipes that have an Output Stacksize of more than 1 now have their Outputs spread over the 6 Output Slots. This should make it easier to parallel process Ores in a Multiblock Bath. (I may or may not have slightly buffed the Outputs of some Ore Recipes too)
 [CHANGED] Blastproofness Tooltip now also mentions Strong Dynamite Proofness and doesn't stop at TNT-Proof anymore.
 [CHANGED] NEI Fuel Lists are now no longer listing the confusing and irrelevant EU/t Value.
 [CHANGED] More Reactor Test Stuffs from Erik3003.

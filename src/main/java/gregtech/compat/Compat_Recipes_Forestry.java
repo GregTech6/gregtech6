@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -356,14 +356,14 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		}});
 		}};
 		
-		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.Wax            .liquid(U*6, T), NF, IL.FR_Candle.get(24));
-		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxBee         .liquid(U*6, T), NF, IL.FR_Candle.get(24));
-		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxPlant       .liquid(U*6, T), NF, IL.FR_Candle.get(24));
-		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxParaffin    .liquid(U*6, T), NF, IL.FR_Candle.get(24));
-		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.Wax          .liquid(U*2, T), NF, IL.FR_Candle.get(6));
-		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxBee       .liquid(U*2, T), NF, IL.FR_Candle.get(6));
-		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxPlant     .liquid(U*2, T), NF, IL.FR_Candle.get(6));
-		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxParaffin  .liquid(U*2, T), NF, IL.FR_Candle.get(6));
+		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.Wax            .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
+		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxBee         .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
+		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxPlant       .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
+		RM.Bath         .addRecipe1(T,  0,  128, ST.make(Items.string, 1, W), MT.WaxParaffin    .liquid(U*6, T), NF, IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4), IL.FR_Candle.get(4));
+		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.Wax          .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
+		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxBee       .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
+		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxPlant     .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
+		RM.Bath         .addRecipe1(T,  0,  128, IL.FR_Silk.get(1), MT.WaxParaffin  .liquid(U*2, T), NF, IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1), IL.FR_Candle.get(1));
 		
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , FL.Water.make(1000), NF, IL.FR_Mulch.get(1));
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Bark, U*4)              , FL.DistW.make( 800), NF, IL.FR_Mulch.get(1));
