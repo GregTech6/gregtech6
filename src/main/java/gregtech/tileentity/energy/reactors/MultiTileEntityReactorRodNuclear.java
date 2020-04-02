@@ -75,47 +75,75 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
+		if (mModerated) aList.add(LH.Chat.DBLUE + "This Fuel is " + LH.Chat.WHITE + "Moderated");
 		aList.add(LH.Chat.CYAN + "Remaining: " + LH.Chat.WHITE + (mDurability / 120000) + LH.Chat.CYAN + " Minutes");
-		switch ((int) ((CLIENT_TIME / 200) % 5)) {
+		switch ((int) ((CLIENT_TIME / 100) % 8)) {
 			case 0:
-				aList.add(LH.Chat.CYAN + "When used with Water or liquid Metal based Coolant:");
+				aList.add(LH.Chat.CYAN + "When used with Water based Coolant:");
 				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + mNeutronOther + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + mNeutronMax + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + mNeutronDiv + LH.Chat.GRAY);
-				aList.add(LH.Chat.CYAN + "When used with Molten Tin:     " + LH.Chat.GREEN + "1/3 the Heat per Neutron");
-				aList.add(LH.Chat.CYAN + "When used with Molten Sodium: " + LH.Chat.GREEN + "1/6 the Heat per Neutron");
+				aList.add(LH.Chat.GREEN + "Fuel rods will be " + LH.Chat.WHITE + "Moderated");
 				if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
 				break;
 			case 1:
+				aList.add(LH.Chat.CYAN + "When used with molten Tin:");
+				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + mNeutronOther + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + mNeutronMax + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + mNeutronDiv + LH.Chat.GRAY);
+				aList.add(LH.Chat.GREEN + "1/3 the Heat per Neutron");
+				if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
+				break;
+			case 2:
+				aList.add(LH.Chat.CYAN + "When used with molten Sodium:");
+				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + mNeutronOther + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + mNeutronMax + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + mNeutronDiv + LH.Chat.GRAY);
+				aList.add(LH.Chat.GREEN + "1/6 the Heat per Neutron");
+				if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
+				break;
+			case 3:
 				aList.add(LH.Chat.CYAN + "When used with Industrial Coolant:");
 				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + mNeutronOther * 4 + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf * 4 + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + mNeutronMax + LH.Chat.PURPLE + " Neutrons/t");
 				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + mNeutronDiv * 2 + LH.Chat.GRAY);
-				break;
-			case 2:
-				aList.add(LH.Chat.CYAN + "When used with Molten Lithium Chloride:");
-				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + (mNeutronOther - UT.Code.divup(mNeutronOther, 2)) + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + (mNeutronSelf - UT.Code.divup(mNeutronSelf, 2)) + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + (mNeutronMax + UT.Code.divup(mNeutronMax, 2)) + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + mNeutronDiv + LH.Chat.GRAY);
-				break;
-			case 3:
-				aList.add(LH.Chat.CYAN + "When used with Carbon Dioxide:");
-				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + mNeutronOther * 3 + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf * 3 + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + (mNeutronMax - UT.Code.divup(mNeutronMax, 4)) + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + (mNeutronDiv - 1) + LH.Chat.GRAY);
-				if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
+				if (mNeutronDiv <= 2) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
 				break;
 			case 4:
-				aList.add(LH.Chat.CYAN + "When used with Helium:");
-				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + mNeutronOther * 3 + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf * 3 + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + (mNeutronMax - UT.Code.divup(mNeutronMax, 8)) + LH.Chat.PURPLE + " Neutrons/t");
-				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + (mNeutronDiv - 1) + LH.Chat.GRAY);
+				aList.add(LH.Chat.CYAN + "When used with Molten Lithium Chloride:");
+				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + (mNeutronOther - UT.Code.divup(mNeutronOther, 2)) + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + (mNeutronSelf * 5) + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + (mNeutronMax + UT.Code.divup(mNeutronMax, 2)) + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + mNeutronDiv + LH.Chat.GRAY);
 				if (mNeutronDiv <= 4) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
+				break;
+			case 5:
+				aList.add(LH.Chat.CYAN + "When used with Molten Thorium Salt:");
+				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + (mNeutronOther - UT.Code.divup(mNeutronOther, 2)) + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + (mNeutronSelf * 5) + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + (mNeutronMax + UT.Code.divup(mNeutronMax, 2)) + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + mNeutronDiv + LH.Chat.GRAY);
+				if (mNeutronDiv <= 5) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
+				break;
+			case 6:
+				aList.add(LH.Chat.CYAN + "When used with Carbon Dioxide:");
+				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + mNeutronOther + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf * 3 + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + mNeutronMax + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + (mNeutronDiv - 1) + LH.Chat.GRAY);
+				if (mNeutronDiv <= 5) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
+				break;
+			case 7:
+				aList.add(LH.Chat.CYAN + "When used with Helium:");
+				aList.add(LH.Chat.GREEN + "Emission: " + LH.Chat.WHITE + (mNeutronOther - UT.Code.divup(mNeutronOther, 2)) + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Self: " + LH.Chat.WHITE + mNeutronSelf * 4 + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.GREEN + "Maximum: " + LH.Chat.WHITE + mNeutronMax + LH.Chat.PURPLE + " Neutrons/t");
+				aList.add(LH.Chat.YELLOW + "Factor: " + LH.Chat.WHITE + "1/" + (mNeutronDiv + 1) + LH.Chat.GRAY);
+				if (mNeutronDiv <= 3) aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
 				break;
 		}
 	}
@@ -128,19 +156,24 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 			mNeutronSelf *= 4;
 			mNeutronDiv *= 2;
 		} else if (MT.CO2.mGas.isFluidEqual(aReactor.mTanks[0].getFluid())) {
-			mNeutronOther *= 3;
 			mNeutronSelf *= 3;
 			mNeutronDiv -= 1;
-			mNeutronMax -= UT.Code.divup(mNeutronMax, 4);
 		} else if (MT.He.mGas.isFluidEqual(aReactor.mTanks[0].getFluid())) {
-			mNeutronOther *= 3;
-			mNeutronSelf *= 3;
-			mNeutronDiv -= 1;
-			mNeutronMax -= UT.Code.divup(mNeutronMax, 8);
+			mNeutronOther -= UT.Code.divup(mNeutronOther, 2);
+			mNeutronSelf *= 4;
+			mNeutronDiv += 1;
 		} else if (MT.LiCl.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
 			mNeutronOther -= UT.Code.divup(mNeutronOther, 2);
-			mNeutronSelf -= UT.Code.divup(mNeutronSelf, 2);
-			mNeutronMax += UT.Code.divup(mNeutronMax, 2);;
+			mNeutronSelf *= 5;
+			mNeutronMax += UT.Code.divup(mNeutronMax, 2);
+		} else if (FL.Thorium_Salt.is(aReactor.mTanks[0])) {
+			mNeutronOther -= UT.Code.divup(mNeutronOther, 2);
+			mNeutronSelf = 0;
+			mNeutronMax *= 4;
+			mNeutronDiv -= 1;
+		} else { //If in water based reactor
+			mModerated = true;
+			oModerated = true;
 		}
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 		long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);

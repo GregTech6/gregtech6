@@ -50,6 +50,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lazurite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
+
+		RM.Injector.addRecipe1(T, 64, 32, OM.dust(MT.Th, 1*U), FL.amount(MT.LiCl.mLiquid, 10000), FL.Thorium_Salt.make(10000), ZL_IS);
 		// TODO: Just no Ender IO Compat Handler and for this small thing I wont make a new Class.
 		CR.delate(MD.EIO, "itemYetaWrench");
 		

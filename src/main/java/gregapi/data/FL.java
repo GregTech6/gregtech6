@@ -101,6 +101,7 @@ public enum FL {
 	, Lava_Pahoehoe             ("ic2pahoehoelava"                                          , SIMPLE, LIQUID)
 	, Lava_Pure                 ("purelava"                                                 , SIMPLE, LIQUID, BROKEN, INFINITE) // Lycanite Lava, Warning: Infinite like vanilla Water!
 
+	, Thorium_Salt              ("thoriumsalt"                                              , SIMPLE, LIQUID)
 	, Water                     ("water"                                                    , SIMPLE, LIQUID, FOOD, WATER)
 	, DistW                     ("ic2distilledwater"                                        , SIMPLE, LIQUID, FOOD, WATER)
 	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER)

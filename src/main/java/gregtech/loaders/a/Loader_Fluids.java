@@ -98,6 +98,7 @@ public class Loader_Fluids implements Runnable {
 
 		FL.create("hotcarbondioxide"		 , "Hot Carbon Dioxide"	, null		, 1, 1000, 950);
 		FL.create("hothelium"				 , "Hot Helium"			, null		, 1, 1000, 1150);
+		FL.create("thoriumsalt"              , "Molten Thorium Salt" 	, null                  , 1,   1000,  600);
 
 		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
 		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);

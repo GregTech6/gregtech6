@@ -250,6 +250,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		return FL.Coolant_IC2.is(aFluidToFill) ||
 				FL.distw(aFluidToFill) ||
+				FL.Thorium_Salt.is(aFluidToFill) ||
 				MT.Sn.mLiquid.isFluidEqual(aFluidToFill) ||
 				MT.Na.mLiquid.isFluidEqual(aFluidToFill) ||
 				MT.HDO.mLiquid.isFluidEqual(aFluidToFill) ||
@@ -275,6 +276,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	public int funnelFill(byte aSide, FluidStack aFluid, boolean aDoFill) {
 		if (!(FL.Coolant_IC2.is(aFluid) ||
 				FL.distw(aFluid) ||
+				FL.Thorium_Salt.is(aFluid) ||
 				MT.Sn.mLiquid.isFluidEqual(aFluid) ||
 				MT.Na.mLiquid.isFluidEqual(aFluid) ||
 				MT.HDO.mLiquid.isFluidEqual(aFluid) ||
