@@ -159,7 +159,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 						mEnergy -= EU_PER_HELIUM * mTanks[0].remove(tEnergy);
 					} else tIsExploding = T;
 				} else if (mTanks[0].isEmpty()) {
-					if (mEnergy > EU_PER_WATER) tIsExploding = T;
+					if (mEnergy > EU_PER_THORIUM_SALT) tIsExploding = T;
 				}
 
 				if (tIsExploding && !invempty()) {
