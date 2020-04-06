@@ -75,7 +75,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
-		if (mModerated) aList.add(LH.Chat.DBLUE + "This Fuel is " + LH.Chat.WHITE + "Moderated");
+		if (mModerated || oModerated) aList.add(LH.Chat.DBLUE + "This Fuel is " + LH.Chat.WHITE + "Moderated");
 		aList.add(LH.Chat.CYAN + "Remaining: " + LH.Chat.WHITE + (mDurability / 120000) + LH.Chat.CYAN + " Minutes");
 		switch ((int) ((CLIENT_TIME / 100) % 8)) {
 			case 0:
@@ -171,7 +171,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 			mNeutronSelf = 0;
 			mNeutronMax *= 4;
 			mNeutronDiv -= 1;
-		} else { //If in water based reactor
+		} else if (!(MT.Sn.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid()) || MT.Na.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid()))) { //If in water based reactor
 			mModerated = true;
 			oModerated = true;
 		}
