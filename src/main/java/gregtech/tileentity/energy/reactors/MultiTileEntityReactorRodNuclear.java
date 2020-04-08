@@ -165,7 +165,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		} else if (MT.LiCl.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid())) {
 			mNeutronOther -= UT.Code.divup(mNeutronOther, 2);
 			mNeutronSelf *= 5;
-			mNeutronMax += UT.Code.divup(mNeutronMax, 2);
+			mNeutronMax += UT.Code.divup(mNeutronMax, 4);
 		} else if (FL.Thorium_Salt.is(aReactor.mTanks[0])) {
 			mNeutronOther -= UT.Code.divup(mNeutronOther, 2);
 			mNeutronSelf = 0;

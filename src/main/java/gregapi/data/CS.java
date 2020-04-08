@@ -222,21 +222,21 @@ public class CS {
 	/** The value of how many Energy Units a Liter of Hot Coolant also known as Heatant is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
 	public static int EU_PER_COOLANT = 20;
 	/** The value of how many Energy Units a Liter of Semiheavy Water needs to turn into Hot Semiheavy Water. */
-	public static int EU_PER_SEMI_HEAVY_WATER = 30;
+	public static int EU_PER_SEMI_HEAVY_WATER = 40;
 	/** The value of how many Energy Units a Liter of Heavy Water needs to turn into Hot Heavy Water. */
-	public static int EU_PER_HEAVY_WATER = 40;
+	public static int EU_PER_HEAVY_WATER = 50;
 	/** The value of how many Energy Units a Liter of Heavy Water needs to turn into Hot Tritiated Water. */
-	public static int EU_PER_TRITIATED_WATER = 50;
+	public static int EU_PER_TRITIATED_WATER = 60;
 	/** The value of how many Energy Units a Liter of Molten Sodium needs to turn into Hot Molten Sodium. */
 	public static int EU_PER_SODIUM = 30;
 	/** The value of how many Energy Units a Liter of Molten Tin needs to turn into Hot Molten Tin. */
 	public static int EU_PER_TIN = 40;
 	/** The value of how many Energy Units a Liter of Carbon Dioxide needs to turn into Hot Carbon Dioxide. */
-	public static int EU_PER_CO2 = 10;
+	public static int EU_PER_CO2 = 20;
 	/** The value of how many Energy Units a Liter of Helium needs to turn into Hot Helium. */
-	public static int EU_PER_HELIUM = 15;
+	public static int EU_PER_HELIUM = 30;
 	/** The value of how many Energy Units a Liter of Lithium Chloride needs to turn into Hot Helium. */
-	public static int EU_PER_LICL = 60;
+	public static int EU_PER_LICL = 15;
     /** The value of how many Energy Units a Liter of Molten Thorium Salt needs to turn into Molten Salt. */
     public static int EU_PER_THORIUM_SALT = 10000;
 	/** The value of how many Energy Units a Liter of Water needs to turn into Steam. */
