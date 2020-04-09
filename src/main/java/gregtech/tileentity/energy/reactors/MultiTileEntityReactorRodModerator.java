@@ -45,8 +45,8 @@ public class MultiTileEntityReactorRodModerator extends MultiTileEntityReactorRo
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		if (aNBT.hasKey(NBT_NUCLEAR_MOD	 )) mModeration		= aNBT.getShort(NBT_NUCLEAR_MOD);
-		if (aNBT.hasKey(NBT_NUCLEAR_MOD+".o")) oModeration		= aNBT.getShort(NBT_NUCLEAR_MOD+".o");
+		if (aNBT.hasKey(NBT_NUCLEAR_MOD  )) mModeration     = aNBT.getShort(NBT_NUCLEAR_MOD);
+		if (aNBT.hasKey(NBT_NUCLEAR_MOD+".o")) oModeration      = aNBT.getShort(NBT_NUCLEAR_MOD+".o");
 	}
 
 	@Override

@@ -237,8 +237,8 @@ public class CS {
 	public static int EU_PER_HELIUM = 30;
 	/** The value of how many Energy Units a Liter of Lithium Chloride needs to turn into Hot Helium. */
 	public static int EU_PER_LICL = 15;
-    /** The value of how many Energy Units a Liter of Molten Thorium Salt needs to turn into Molten Salt. */
-    public static int EU_PER_THORIUM_SALT = 10000;
+	/** The value of how many Energy Units a Liter of Molten Thorium Salt needs to turn into Molten Salt. */
+	public static int EU_PER_THORIUM_SALT = 10000;
 	/** The value of how many Energy Units a Liter of Water needs to turn into Steam. */
 	public static int EU_PER_WATER = 80;
 	/** The value of how much Steam an Energy Unit is worth. The Standard is 2 Steam = 1 EU. */

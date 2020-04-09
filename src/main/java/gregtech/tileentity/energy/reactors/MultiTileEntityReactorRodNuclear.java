@@ -51,8 +51,8 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (aNBT.hasKey(NBT_NUCLEAR_OTHER)) mNeutronOther   = aNBT.getInteger(NBT_NUCLEAR_OTHER);
 		if (aNBT.hasKey(NBT_NUCLEAR_DIV  )) mNeutronDiv     = aNBT.getInteger(NBT_NUCLEAR_DIV  );
 		if (aNBT.hasKey(NBT_NUCLEAR_MAX  )) mNeutronMax     = aNBT.getInteger(NBT_NUCLEAR_MAX);
-		if (aNBT.hasKey(NBT_NUCLEAR_MOD	 )) mModerated		= aNBT.getBoolean(NBT_NUCLEAR_MOD);
-		if (aNBT.hasKey(NBT_NUCLEAR_MOD+".o")) oModerated		= aNBT.getBoolean(NBT_NUCLEAR_MOD+".o");
+		if (aNBT.hasKey(NBT_NUCLEAR_MOD  )) mModerated      = aNBT.getBoolean(NBT_NUCLEAR_MOD);
+		if (aNBT.hasKey(NBT_NUCLEAR_MOD+".o")) oModerated       = aNBT.getBoolean(NBT_NUCLEAR_MOD+".o");
 		if (aNBT.hasKey(NBT_VALUE        )) mDepleted       = aNBT.getShort(NBT_VALUE);
 	}
 	

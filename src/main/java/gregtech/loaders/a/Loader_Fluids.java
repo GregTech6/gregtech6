@@ -88,17 +88,17 @@ public class Loader_Fluids implements Runnable {
 		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1);
 		FL.create("ic2coolant"               , "Industrial Coolant"  , null                  , 1);
 		FL.create("ic2hotcoolant"            , "Industrial Heatant"  , null                  , 1,   1000,  1200);
-		FL.create("hotmoltensodium"			 , "Hot Molten Sodium"	, null		, 1, 1000, 1100);
-		FL.create("hotmoltentin" 			 , "Hot Molten Tin"		, null		, 1, 1000, 2800);
-		FL.create("hotmoltenlicl" 			 , "Hot Molten Lithium Chloride",	 null		, 1, 1000, 1600);
+		FL.create("hotmoltensodium"          , "Hot Molten Sodium"  , null      , 1, 1000, 1100);
+		FL.create("hotmoltentin"             , "Hot Molten Tin"     , null      , 1, 1000, 2800);
+		FL.create("hotmoltenlicl"            , "Hot Molten Lithium Chloride",    null       , 1, 1000, 1600);
 
-		FL.create("hotheavywater"			 , "Hot Heavy Water"		, null		, 1, 1000, 600);
-		FL.create("hotsemiheavywater"		 , "Hot Semiheavy Water"	, null		, 1, 1000, 550);
-		FL.create("hottritiatedwater"		 , "Hot Tritiated Water"	, null		, 1, 1000, 650);
+		FL.create("hotheavywater"            , "Hot Heavy Water"        , null      , 1, 1000, 600);
+		FL.create("hotsemiheavywater"        , "Hot Semiheavy Water"    , null      , 1, 1000, 550);
+		FL.create("hottritiatedwater"        , "Hot Tritiated Water"    , null      , 1, 1000, 650);
 
-		FL.create("hotcarbondioxide"		 , "Hot Carbon Dioxide"	, null		, 1, 1000, 950);
-		FL.create("hothelium"				 , "Hot Helium"			, null		, 1, 1000, 1150);
-		FL.create("thoriumsalt"              , "Molten Thorium Salt" 	, null                  , 1,   1000,  600);
+		FL.create("hotcarbondioxide"         , "Hot Carbon Dioxide" , null      , 1, 1000, 950);
+		FL.create("hothelium"                , "Hot Helium"         , null      , 1, 1000, 1150);
+		FL.create("thoriumsalt"              , "Molten Thorium Salt"    , null                  , 1,   1000,  600);
 
 		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
 		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
