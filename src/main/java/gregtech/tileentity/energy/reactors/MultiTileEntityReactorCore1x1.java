@@ -26,6 +26,7 @@ import java.util.List;
 
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
+import gregapi.data.MT;
 import gregapi.item.IItemReactorRod;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -58,7 +59,8 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			// It is == 19 because the Sensors react to == 0, so this is the realistic fastest a Sensor can display.
 			if (SERVER_TIME % 20 == 19) {
 				if (mStopped) {
-					//
+					// Calls isReactorRodModerated to update moderation states
+					isReactorRodModerated(0);
 				} else {
 					DelegatorTileEntity<MultiTileEntityReactorCore> tAdjacents[] = new DelegatorTileEntity[4], tAdjacent;
 					DelegatorTileEntity
@@ -66,17 +68,18 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 					tAdjacentTE = getAdjacentTileEntity(SIDE_Z_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[1] = tAdjacentTE;
 					tAdjacentTE = getAdjacentTileEntity(SIDE_X_NEG); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[2] = tAdjacentTE;
 					tAdjacentTE = getAdjacentTileEntity(SIDE_X_POS); if (tAdjacentTE.mTileEntity instanceof MultiTileEntityReactorCore && SIDES_HORIZONTAL[tAdjacentTE.mSideOfTileEntity]) tAdjacents[3] = tAdjacentTE;
-					
-					int tNeutronCount = (int)UT.Code.divup(getReactorRodNeutronEmission(0), 2);
-					if (tNeutronCount != 0) {
-						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-						tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-						tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-						tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
-						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-						tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount);
-						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount);
+
+					int tNeutronCount = (int) UT.Code.divup(getReactorRodNeutronEmission(0), 2);
+					boolean tModerated = isReactorRodModerated(0);
+					if (tNeutronCount != 0 || tModerated) {
+						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_X_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_Z_NEG-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_Z_POS-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S2103[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
+						tAdjacent = tAdjacents[SIDE_X_POS-2]; if (tAdjacent != null) mNeutronCounts[0] += tAdjacent.mTileEntity.getReactorRodNeutronReflection(S0312[tAdjacent.mSideOfTileEntity], tNeutronCount, tModerated);
 					}
 				}
 			}
@@ -86,25 +89,23 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 				mNeutronCounts[0] += mNeutronCounts[1] + mNeutronCounts[2] + mNeutronCounts[3];
 				mNeutronCounts[1] = mNeutronCounts[2] = mNeutronCounts[3] = oNeutronCounts[1] = oNeutronCounts[2] = oNeutronCounts[3] = 0;
 			}
-			
+
 			int tCalc = (int)UT.Code.divup(oNeutronCounts[0] = mNeutronCounts[0], 256);
-			
+
 			// TODO Raycasting through Lead and similar Blocks.
 			if (tCalc > 0 && SERVER_TIME % 20 == 10) for (EntityLivingBase tEntity : (ArrayList<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord-tCalc, yCoord-tCalc, zCoord-tCalc, xCoord+1+tCalc, yCoord+1+tCalc, zCoord+1+tCalc))) {
 				UT.Entities.applyRadioactivity(tEntity, (int)UT.Code.divup(tCalc, 10), tCalc);
 			}
-			
+
 			mRunning = (tCalc != 0);
-			
+
 			long tEnergy = mEnergy;
-			
+
 			if (getReactorRodNeutronReaction(0)) mRunning = T;
-			
-			
-			
-			
+
+
 			oEnergy = mEnergy - tEnergy;
-			
+
 			if (mEnergy > 0) {
 				boolean tIsExploding = F;
 				if (FL.Coolant_IC2.is(mTanks[0])) {
@@ -114,13 +115,53 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 					} else tIsExploding = T;
 				} else if (FL.distw(mTanks[0])) {
 					tEnergy = mEnergy / EU_PER_WATER;
-					if(mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Steam.make(tEnergy * STEAM_PER_WATER))) {
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Steam.make(tEnergy * STEAM_PER_WATER))) {
 						mEnergy -= mTanks[0].remove(tEnergy) * EU_PER_WATER;
 					} else tIsExploding = T;
+				} else if (MT.Sn.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_TIN;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Molten_Tin.make(tEnergy))) {
+						mEnergy -= EU_PER_TIN * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
+				} else if (MT.Na.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_SODIUM;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Molten_Sodium.make(tEnergy))) {
+						mEnergy -= EU_PER_SODIUM * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
+				} else if (MT.HDO.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_SEMI_HEAVY_WATER;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Semi_Heavy_Water.make(tEnergy))) {
+						mEnergy -= EU_PER_SEMI_HEAVY_WATER * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
+				} else if (MT.D2O.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_HEAVY_WATER;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Heavy_Water.make(tEnergy))) {
+						mEnergy -= EU_PER_HEAVY_WATER * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
+				} else if (MT.T2O.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_TRITIATED_WATER;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Tritiated_Water.make(tEnergy))) {
+						mEnergy -= EU_PER_TRITIATED_WATER * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
+				} else if (MT.LiCl.mLiquid.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_LICL;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Molten_LiCl.make(tEnergy))) {
+						mEnergy -= EU_PER_LICL * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
+				} else if (MT.CO2.mGas.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_CO2;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Carbon_Dioxide.make(tEnergy))) {
+						mEnergy -= EU_PER_CO2 * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
+				} else if (MT.He.mGas.isFluidEqual(mTanks[0].getFluid())) {
+					tEnergy = mEnergy / EU_PER_HELIUM;
+					if (mTanks[0].has(tEnergy) && mTanks[1].fillAll(FL.Hot_Helium.make(tEnergy))) {
+						mEnergy -= EU_PER_HELIUM * mTanks[0].remove(tEnergy);
+					} else tIsExploding = T;
 				} else if (mTanks[0].isEmpty()) {
-					if (mEnergy > EU_PER_WATER) tIsExploding = T;
+					if (mEnergy > EU_PER_THORIUM_SALT) tIsExploding = T;
 				}
-				
+
 				if (tIsExploding && !invempty()) {
 					// TODO proper explosion.
 					// explode( 8); // TODO Keep commented out until Reactor System has been tested well enough.
@@ -133,34 +174,45 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			}
 		}
 	}
-	
+
 	@Override
 	public int getReactorRodNeutronEmission(int aSlot) {
 		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronEmission(this, 0, slot(0));
 		mNeutronCounts[0] = 0;
 		return 0;
 	}
-	
+
 	@Override
 	public boolean getReactorRodNeutronReaction(int aSlot) {
 		if (SERVER_TIME % 20 == 18) mNeutronCounts[0] -= oNeutronCounts[0];
 		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronReaction(this, 0, slot(0));
 		return F;
 	}
-	
+
 	@Override
-	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons) {
-		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) return ((IItemReactorRod)ST.item(slot(0))).getReactorRodNeutronReflection(this, 0, slot(0), aNeutrons);
+	public int getReactorRodNeutronReflection(int aSlot, int aNeutrons, boolean aModerated) {
+		if (!mStopped && slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod)
+			return ((IItemReactorRod) ST.item(slot(0))).getReactorRodNeutronReflection(this, 0, slot(0), aNeutrons, aModerated);
 		return 0;
 	}
-	
+
+	@Override
+	public boolean isReactorRodModerated(int aSlot) {
+		if (slotHas(0) && ST.item(slot(0)) instanceof IItemReactorRod) {
+			boolean isModerated = ((IItemReactorRod) ST.item(slot(0))).isModerated(this, 0, slot(0));
+			if (mStopped) return false;
+			return isModerated;
+		}
+		return false;
+	}
+
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0) return rReturn;
-		
+
 		if (isClientSide()) return 0;
-		
+
 		if (aTool.equals(TOOL_pincers) && SIDES_TOP[aSide]) {
 			if (slotHas(0) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, slot(0), T, worldObj, xCoord+0.5, yCoord+1.5, zCoord+0.5)) {
 				slotKill(0);
@@ -178,7 +230,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide() && SIDES_TOP[aSide]) {
@@ -194,7 +246,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		}
 		return T;
 	}
-	
+
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		if (aSendAll) return getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), UT.Code.toByteS(FL.id_(mTanks[0]), 0), UT.Code.toByteS(FL.id_(mTanks[0]), 1)
@@ -202,7 +254,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		);
 		return getClientDataPacketByte(aSendAll, getVisualData());
 	}
-	
+
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		super.receiveDataByteArray(aData, aNetworkHandler);
@@ -212,9 +264,9 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		slot(0, ST.make(UT.Code.combine(aData[i++], aData[i++]), 1, UT.Code.combine(aData[i++], aData[i++])));
 		return T;
 	}
-	
+
 	public ITexture mTextures[] = new ITexture[15];
-	
+
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextures[ 0] = BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa), BlockTextureDefault.get(sOverlays[0]));
@@ -235,12 +287,12 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		}
 		return 11;
 	}
-	
+
 	@Override
 	public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {
 		return aRenderPass < 6 || (aRenderPass == 6 && slotHas(0)) || (aRenderPass == 10 && mTanks[0].has());
 	}
-	
+
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
 		switch (aRenderPass) {
@@ -250,19 +302,19 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		case SIDE_X_POS: return box(aBlock, PX_P[14], PX_P[ 0], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		case SIDE_Y_POS: return box(aBlock, PX_P[ 0], PX_P[14], PX_P[ 0], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
 		case SIDE_Z_POS: return box(aBlock, PX_P[ 0], PX_P[ 0], PX_P[14], PX_N[ 0], PX_N[ 0], PX_N[ 0]);
-		
+
 		case  6: return box(aBlock, PX_P[ 6], PX_P[ 1], PX_P[ 6], PX_N[ 6], PX_P[17], PX_N[ 6]);
-		
+
 		case 10: return box(aBlock, PX_P[ 2]+PX_OFFSET, PX_P[ 2], PX_P[ 2]+PX_OFFSET, PX_N[ 2]-PX_OFFSET, PX_N[ 2], PX_N[ 2]-PX_OFFSET);
 		}
 		return F;
 	}
-	
+
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[SIDES_VERTICAL[aSide] && aRenderPass != 10 && aRenderPass > 1 ? aRenderPass+5 : aRenderPass] : mTextures[aRenderPass < 6 && isCovered((byte)aRenderPass) ? 3 : 2];
 	}
-	
+
 	public static IIconContainer sColoreds[] = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/colored/bottom"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/colored/top"),
@@ -278,7 +330,17 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/overlay/face1"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/overlay/face2")
 	};
-	
+
+	@Override
+	public void updateInventory() {
+		super.updateInventory();
+		updateClientData();
+	}
+
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? new int[]{0} : ZL_INTEGER;}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return mStopped && aStack != null && aSlot == 0 && ST.item(aStack) instanceof IItemReactorRod && ((IItemReactorRod) ST.item_(aStack)).isReactorRod(aStack) && !slotHas(0);}
+	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return mStopped && aStack != null && aSlot == 0;}
+	@Override public int getInventoryStackLimit() {return 1;}
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core.1x1";}
 }

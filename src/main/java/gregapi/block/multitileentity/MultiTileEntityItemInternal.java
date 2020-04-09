@@ -453,6 +453,14 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).isReactorRod(aStack);
 		return F;
 	}
+
+	@Override
+	public boolean isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).isModerated(aReactor, aSlot, aStack);
+		return false;
+	}
+
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
@@ -466,9 +474,9 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		return F;
 	}
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
-		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronReflection(aReactor, aSlot, aStack, aNeutrons);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronReflection(aReactor, aSlot, aStack, aNeutrons, aModerated);
 		return 0;
 	}
 	@Override

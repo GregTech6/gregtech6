@@ -32,7 +32,7 @@ import net.minecraft.item.ItemStack;
 public class MultiTileEntityReactorRodAbsorber extends MultiTileEntityReactorRodBase {
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.CYAN + "Absorbs Neutrons and emits more Heat to Coolant");
+		aList.add(LH.Chat.CYAN + "Absorbs Neutrons and emits twice the Heat per Neutron to Coolant");
 		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
 	}
 	
@@ -48,7 +48,7 @@ public class MultiTileEntityReactorRodAbsorber extends MultiTileEntityReactorRod
 	}
 	
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
 		aReactor.mNeutronCounts[aSlot] += aNeutrons;
 		return 0;
 	}

@@ -47,7 +47,7 @@ public class MultiTileEntityReactorRodReflector extends MultiTileEntityReactorRo
 	}
 	
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
 		return aNeutrons;
 	}
 	

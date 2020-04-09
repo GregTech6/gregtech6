@@ -58,11 +58,13 @@ public class MultiTileEntityReactorRodBreeder extends MultiTileEntityReactorRodB
 
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.CYAN + "Absorbs Neutrons to breed into a new Material and emits less Heat to Coolant");
+		aList.add(LH.Chat.CYAN + "Absorbs Neutrons to breed into a new Material");
+		aList.add(LH.Chat.CYAN + "Emits half the Heat per Neutron while Breeding");
+		aList.add(LH.Chat.CYAN + "Can't breed with Neutrons from Moderated Fuel Rods");
 		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
-		aList.add(LH.Chat.CYAN   + "Needed: " + LH.Chat.WHITE + mDurability            + LH.Chat.CYAN   + " Neutrons");
-		if (mProductName.equals(""))  mProductName = ST.meta(aStack.copy(), mProduct).getDisplayName();
-		aList.add(LH.Chat.YELLOW   + "Turns into: " + LH.Chat.WHITE + mProductName);
+		aList.add(LH.Chat.CYAN + "Needed: " + LH.Chat.WHITE + mDurability + LH.Chat.CYAN + " Neutrons");
+		if (mProductName.equals("")) mProductName = ST.meta(aStack.copy(), mProduct).getDisplayName();
+		aList.add(LH.Chat.YELLOW + "Turns into: " + LH.Chat.WHITE + mProductName);
 	}
 	
 	@Override
@@ -85,8 +87,8 @@ public class MultiTileEntityReactorRodBreeder extends MultiTileEntityReactorRodB
 	}
 	
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons) {
-		aReactor.mNeutronCounts[aSlot] += aNeutrons;
+	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
+		if (!aModerated) aReactor.mNeutronCounts[aSlot] += aNeutrons;
 		return 0;
 	}
 	
