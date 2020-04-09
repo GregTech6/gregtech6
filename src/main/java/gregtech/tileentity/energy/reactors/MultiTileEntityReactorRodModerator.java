@@ -66,14 +66,16 @@ public class MultiTileEntityReactorRodModerator extends MultiTileEntityReactorRo
 
 	@Override
 	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		oModeration = mModeration;
-		mModeration = 0;
-		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return 0;
 	}
 	
 	@Override
 	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		if (SERVER_TIME % 20 == 19) {
+			oModeration = mModeration;
+			mModeration = 0;
+			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
+		}
 		return F;
 	}
 	
