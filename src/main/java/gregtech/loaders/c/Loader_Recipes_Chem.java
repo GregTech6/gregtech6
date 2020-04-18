@@ -147,7 +147,7 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,   80, tIron                              , MT.HCl            .fluid(U * 4, T)                                                            , MT.H              .gas  (U * 2, F), OM.dust(MT.FeCl2, U*3));
 		}
 
-		RM.HeatMixer		.addRecipe1(T, 16, 300, OM.dust(MT.OREMATS.Uraninite, U*1), MT.HF.gas(U*4, T), MT.H2O.liquid(U*2, T), OM.dust(MT.UNUSED.UF4, U*1));
+		RM.HeatMixer		.addRecipe1(T, 16, 300, OM.dust(MT.OREMATS.Uraninite, U*1), MT.HF.gas(U*4, T), FL.DistW.make(2000), OM.dust(MT.UNUSED.UF4, U*1));
 		RM.Mixer			.addRecipe1(T, 16, 48, OM.dust(MT.UNUSED.UF4, U*1), MT.F.gas(U*2, T), NF, MT.UNUSED.UF6.gas(U*1, T));
 		RM.Centrifuge		.addRecipe0(T, 512, 120, MT.UNUSED.UF6.gas(U*8, T), MT.UNUSED.U238F6.gas(U*5, T), MT.UNUSED.U235F6.gas(U*3, T));
 		RM.Mixer			.addRecipe0(T, 16, 48, FL.array(MT.H.gas(U*2, T), MT.UNUSED.UF6.gas(U*1, T)), MT.HF.gas(U*2, T), OM.dust(MT.UNUSED.UF4, U*1));
