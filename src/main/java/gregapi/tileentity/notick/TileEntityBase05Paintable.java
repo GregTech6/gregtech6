@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,7 +50,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public abstract class TileEntityBase05Paintable extends TileEntityBase04Covers implements IItemColorableRGB, ITileEntityDecolorable, IMTE_GetSubItems, IMTE_GetExplosionResistance, IMTE_GetBlockHardness, IMTE_SyncDataByte, IMTE_SyncDataByteArray, IMTE_GetFlammability, IMTE_GetFireSpreadSpeed, IMTE_GetLightOpacity {
 	protected boolean mIsPainted = F;
 	protected int mRGBa = UNCOLORED, mFlammability = 0;
-	protected float mHardness = 3.0F, mResistance = 3.0F;
+	protected float mHardness = 1.0F, mResistance = 3.0F;
 	protected OreDictMaterial mMaterial = MT.NULL;
 	
 	@Override

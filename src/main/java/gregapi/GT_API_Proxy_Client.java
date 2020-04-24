@@ -39,7 +39,6 @@ import gregapi.block.ToolCompat;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.prefixblock.PrefixBlockFallingEntity;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.code.ItemStackContainer;
 import gregapi.code.ObjectStack;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.ICover;
@@ -262,20 +261,20 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aBlock.getHarvestTool(aBlockMeta), "Pickaxe") + " ("+aBlock.getHarvestLevel(aBlockMeta)+")");
 			}
 		}
-
-
-		if (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aEvent.itemStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aEvent.itemStack, W))) {
+		
+		
+		if (BooksGT.BOOK_REGISTER.containsKey(aEvent.itemStack, T)) {
 			aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_SHELFABLE));
 		}
-
-
+		
+		
 		if (aItem.isBeaconPayment(aEvent.itemStack)) {
 			aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_BEACON_PAYMENT));
 		}
-
-
+		
+		
 		OreDictItemData tData = OM.anydata_(aEvent.itemStack);
-
+		
 		if (!(aItem instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
 			if (tData != null && tData.hasValidPrefixMaterialData()) {
 				if (tData.mBlackListed) {

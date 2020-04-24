@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -114,7 +114,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 				for (ItemStack tStack : tDummyInventory.mInventory) {
 					int tSlot = rng(14);
 					if (!slotHas(tSlot)) {
-						if (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack, W))) {
+						if (BooksGT.BOOK_REGISTER.containsKey(tStack, T)) {
 							slot(tSlot, ST.amount(1, tStack));
 						} else {
 							slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, Items.book));
@@ -130,7 +130,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 				for (ItemStack tStack : tDummyInventory.mInventory) {
 					int tSlot = 14+rng(14);
 					if (!slotHas(tSlot)) {
-						if (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack, W))) {
+						if (BooksGT.BOOK_REGISTER.containsKey(tStack, T)) {
 							slot(tSlot, ST.amount(1, tStack));
 						} else {
 							slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, Items.book));
@@ -233,7 +233,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 			return F;
 		}
 		ItemStack tStack = aPlayer.getCurrentEquippedItem();
-		if (tStack != null && (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(tStack, W)))) {
+		if (ST.valid(tStack) && BooksGT.BOOK_REGISTER.containsKey(tStack, T)) {
 			slot(aSlot, ST.amount(1, tStack));
 			tStack.stackSize--;
 			updateInventory();
@@ -358,7 +358,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return ACCESSIBLE_SLOTS;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return slotHas(aSlot) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !ST.equal(slot(aSlot), Blocks.lever) && !ST.equal(slot(aSlot), Blocks.stone_button) && !ST.equal(slot(aSlot), Blocks.wooden_button);}
-	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return !slotHas(aSlot) && (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aStack, W))) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.stone_button) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !ST.equal(slot(aSlot), Blocks.lever) && !ST.equal(slot(aSlot), Blocks.wooden_button);}
+	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {return !slotHas(aSlot) && BooksGT.BOOK_REGISTER.containsKey(aStack, T) && !ST.equal(slot(aSlot), Blocks.cobblestone) && !ST.equal(slot(aSlot), Blocks.stone_button) && !ST.equal(slot(aSlot), Blocks.redstone_torch) && !ST.equal(slot(aSlot), Blocks.lever) && !ST.equal(slot(aSlot), Blocks.wooden_button);}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.shelf.books";}
 }

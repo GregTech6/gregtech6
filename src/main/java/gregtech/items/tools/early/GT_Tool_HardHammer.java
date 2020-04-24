@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -87,7 +87,7 @@ public class GT_Tool_HardHammer extends ToolStats {
 	
 	@Override
 	public float getMiningSpeed(Block aBlock, byte aMetaData, float aDefault, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ) {
-		return aBlock == Blocks.mob_spawner ? aDefault * 16 : aDefault;
+		return aBlock == Blocks.mob_spawner ? aDefault * 128 : aDefault;
 	}
 	
 	@Override

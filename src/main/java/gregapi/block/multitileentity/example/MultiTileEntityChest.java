@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -81,7 +81,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	protected boolean mIsPainted = F;
 	protected int mRGBa = UNCOLORED;
 	protected byte mFacing = 3, mUsingPlayers = 0, oUsingPlayers = 0;
-	protected float mLidAngle = 0, oLidAngle = 0, mHardness = 3, mResistance = 3;
+	protected float mLidAngle = 0, oLidAngle = 0, mHardness = 6, mResistance = 3;
 	protected OreDictMaterial mMaterial = MT.NULL;
 	
 	/** Gets supplied via Default NBT. */

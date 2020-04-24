@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,6 +49,7 @@ public class Behavior_Worldgen_Debugger extends AbstractBehaviorDefault {
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
 		aList.add(LH.get("gt.behaviour.worldgendebug"));
+		aList.add("Currently deletes a 5x5 of Chunks, except for bottom most Bedrock");
 		return aList;
 	}
 }

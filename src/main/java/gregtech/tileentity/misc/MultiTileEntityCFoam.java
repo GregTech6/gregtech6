@@ -30,6 +30,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnPlaced;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
@@ -133,7 +134,8 @@ public class MultiTileEntityCFoam extends TileEntityBase07Paintable implements I
 	
 	@Override public int getLightOpacity() {return mFoamDried ? LIGHT_OPACITY_MAX : LIGHT_OPACITY_WATER;}
 	
-	@Override public float getExplosionResistance2() {return mFoamDried ? 24 : 6;}
+	@Override public float getBlockHardness()        {return (mFoamDried?BlocksGT.CFoam:BlocksGT.CFoamFresh).getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
+	@Override public float getExplosionResistance2() {return (mFoamDried?BlocksGT.CFoam:BlocksGT.CFoamFresh).getExplosionResistance(null);}
 	
 	@Override public byte getVisualData() {return (byte)((mFoamDried ? 1 : 0)|(mOwnable ? 2 : 0));}
 	@Override public void setVisualData(byte aData) {mFoamDried = ((aData & 1) != 0); mOwnable = ((aData & 2) != 0);}

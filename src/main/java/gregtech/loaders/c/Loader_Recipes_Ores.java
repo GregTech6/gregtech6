@@ -232,10 +232,6 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.Yellorite           , 9), dust.mat(MT.Al, 1), crushedCentrifuged.mat(MT.Yellorium, 1));
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.Yellorite           , 1), dust.mat(MT.Mg, 1), crushedCentrifuged.mat(MT.Yellorium, 1));
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.Yellorite           , 9), dust.mat(MT.Mg, 1), crushedCentrifuged.mat(MT.Yellorium, 1));
-		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.OREMATS.Uraninite   , 1), dust.mat(MT.Al, 1), crushedCentrifuged.mat(MT.U_238, 1));
-		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.OREMATS.Uraninite   , 9), dust.mat(MT.Al, 1), crushedCentrifuged.mat(MT.U_238, 1));
-		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.OREMATS.Uraninite   , 1), dust.mat(MT.Mg, 1), crushedCentrifuged.mat(MT.U_238, 1));
-		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.OREMATS.Uraninite   , 9), dust.mat(MT.Mg, 1), crushedCentrifuged.mat(MT.U_238, 1));
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.U_238               , 1), dust.mat(MT.Al, 1), crushedCentrifugedTiny.mat(MT.U_238, 12));
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurifiedTiny.mat(MT.U_238               , 9), dust.mat(MT.Al, 1), crushedCentrifugedTiny.mat(MT.U_238, 12));
 		RM.Mixer        .addRecipe2(T, 16,  256, crushedPurified    .mat(MT.U_238               , 1), dust.mat(MT.Mg, 1), crushedCentrifugedTiny.mat(MT.U_238, 12));

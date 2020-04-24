@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1859,12 +1859,17 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.mossy_cobblestone, 1, W)             , ANY.Stone             ,  U * 1);
 		OM.data(ST.make(Blocks.stone_button, 1, W)                  , ANY.Stone             ,  U * 1);
 		OM.data(ST.make(Blocks.stone_pressure_plate, 1, W)          , ANY.Stone             ,  U * 2);
-		OM.data(ST.make(Blocks.ladder, 1, W)                        , ANY.Wood              ,  U * 1);
+		OM.data(ST.make(Blocks.ladder, 1, W)                        , ANY.Wood              ,  3 *U7);
 		OM.data(ST.make(Blocks.wooden_button, 1, W)                 , ANY.Wood              ,  U * 1);
 		OM.data(ST.make(Blocks.wooden_pressure_plate, 1, W)         , ANY.Wood              ,  U * 2);
-		OM.data(ST.make(Blocks.fence, 1, W)                         , ANY.Wood              ,  3* U2);
+		OM.data(ST.make(Blocks.fence, 1, W)                         , ANY.Wood              ,  3 *U2);
+		OM.data(ST.make(Blocks.fence_gate, 1, W)                    , ANY.Wood              ,  U * 4);
+		OM.data(ST.make(Blocks.trapdoor, 1, W)                      , ANY.Wood              ,  U * 3);
 		OM.data(ST.make(Items.bowl, 1, W)                           , ANY.Wood              ,  U * 1);
 		OM.data(ST.make(Items.sign, 1, W)                           , ANY.Wood              ,  U * 2);
+		OM.data(ST.make(Items.painting, 1, W)                       , ANY.Wood              ,  U * 4);
+		OM.data(ST.make(Items.item_frame, 1, W)                     , ANY.Wood              ,  U * 4);
+		OM.data(ST.make(Items.boat, 1, W)                           , ANY.Wood              ,  U * 5);
 		OM.data(ST.make(Items.wooden_door, 1, W)                    , ANY.Wood              ,  U * 2);
 		OM.data(ST.make(Blocks.chest, 1, W)                         , ANY.Wood              ,  U * 8);                              OM.reg(OD.craftingChest, ST.make(Blocks.chest, 1, W));
 		OM.data(ST.make(Blocks.trapped_chest, 1, W)                 , ANY.Wood              ,  U * 9, ANY.Fe, OP.ring.mAmount * 2); OM.reg(OD.craftingChest, ST.make(Blocks.trapped_chest, 1, W));

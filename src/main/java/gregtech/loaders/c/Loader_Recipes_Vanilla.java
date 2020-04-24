@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -460,6 +460,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.sawing(16, 128, F, 100, ST.make(Blocks.trapped_chest             , 1, W), IL.Plank.get(8), ST.make(Blocks.tripwire_hook, 1, 0));
 		RM.sawing(16, 128, F, 100, ST.make(Blocks.noteblock                 , 1, W), IL.Plank.get(8), OP.dust.mat(MT.Redstone, 1));
 		RM.sawing(16, 128, F, 100, ST.make(Blocks.jukebox                   , 1, W), IL.Plank.get(8), OP.gem.mat(MT.Diamond, 1));
+		RM.sawing(16,  64, F, 100, ST.make(Items.painting                   , 1, W), ST.make(Items.stick, 8, 0));
+		RM.sawing(16,  64, F, 100, ST.make(Items.item_frame                 , 1, W), ST.make(Items.stick, 8, 0));
+		RM.sawing(16,  40, F, 100, ST.make(Blocks.ladder                    , 1, W), ST.make(Items.stick, 2, 0), OM.dust(MT.Wood, OP.stick.mAmount / 3));
 		RM.sawing(16,  16, T,  50, ST.make(Blocks.melon_block               , 1, W), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
 		
 		CR.shapeless(IL.Plank.get(1), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(Blocks.wooden_button          , 1, W)});

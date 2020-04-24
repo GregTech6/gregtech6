@@ -21,18 +21,23 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.00:
+6.13.00: (Not released yet, I need to fix quite a few Bugs still...)
+[FIXED] Seems like QwertTech might have messed up the Recipes for putting Planks in a Bathing Pot to get Treated Wood. This Issue might be fixed now for Vanilla Planks.
+[FIXED] The Axe was still slowed down on my end, when TreeCapitator was actually installed, resulting in a Double Slowdown.
+[FIXED] Failing to Load Save Files in Singleplayer when you already loaded another World before.
 [FIXED] Pam's Harvestcraft Fishtrap Bait Recipe for Mixing Bowl had a lower amount of Output than intended.
 [FIXED] Thaumcraft Golems were not chopping GT6 Logs, because it checks for the wrong OreDict String.
 [FIXED] 7 Bits are definitely not enough to store Numbers that can go up to 12 Billion. Fusion Reactor Start Energy is now properly saved when unloaded.
 [FIXED] Terrafirmacraft Plus not being detected as Terrafirmacraft.
 [FIXED] Clay Ore that comes from Hematite Bedrock Drilling is now processable.
 [FIXED] Some Ars Magica Unification things.
+[FIXED] JABBA Dollys can no longer pick up GT6 Shelves. Somehow they were still able to be picked up even though I prevented them from working on GT Blocks as a whole, ages ago.
+[CHANGED] When Machines can process multiple Items in a row in one go, they wont process more than a Minutes worth of Stuff at a time, assuming maximum Power Input. This applies to things like the Crusher, Sifter, Compressor, Squeezer, Electrolyzer and Centrifuge for example.
 [CHANGED] Bath Recipes that have an Output Stacksize of more than 1 now have their Outputs spread over the 6 Output Slots. This should make it easier to parallel process Ores in a Multiblock Bath. (I may or may not have slightly buffed the Outputs of some Ore Recipes too)
 [CHANGED] Blastproofness Tooltip now also mentions Strong Dynamite Proofness and doesn't stop at TNT-Proof anymore.
 [CHANGED] NEI Fuel Lists are now no longer listing the confusing and irrelevant EU/t Value.
 [CHANGED] More Reactor Test Stuffs from Erik3003.
-[ADDED] Uranium Hexaflouride Processing Chain by Erik3003.
+[ADDED] Uranium Hexaflouride Processing Chain by Erik3003. And fixed by Greg, because the Maths of the Recipes were "Perfectly Balanced without Exploits", except for the obvious dupes of every single Recipe added.
 [ADDED] Ownership Reset Config for people who locked themselves out of Stuff like Mechanical Safes in SinglePlayer.
 [ADDED] Small Cinnabar Ore to the Nether.
 [ADDED] Ars Magica Chimerite Ore when it is installed.

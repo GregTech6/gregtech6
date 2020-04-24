@@ -26,6 +26,7 @@ import java.util.UUID;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPlayerRelativeBlockHardness;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.IconsGT;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -180,7 +181,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		return T;
 	}
 	
-	@Override public float getExplosionResistance2() {return Math.max(mFoam && mFoamDried ? 24 : 0, super.getExplosionResistance2());}
+	@Override public float getExplosionResistance2() {return Math.max(mFoam ? (mFoamDried?BlocksGT.CFoam:BlocksGT.CFoamFresh).getExplosionResistance(null) : 0, super.getExplosionResistance2());}
 	
 	@Override
 	public byte getDirectionData() {

@@ -112,7 +112,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Centrifuge   .addRecipe1(T, 16,   16       , aEvent.mStack, NF, FL.Glue.make(500), ZL_IS);
 		}});
 		addListener(OD.record, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aEvent.mStack))) BooksGT.BOOK_REGISTER.put(new ItemStackContainer(aEvent.mStack), (byte)30);
+			if (!BooksGT.BOOK_REGISTER.containsKey(aEvent.mStack, T)) BooksGT.BOOK_REGISTER.put(new ItemStackContainer(aEvent.mStack), (byte)30);
 		}});
 		addListener(OP.treeSapling, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.sawing(16, 16, F, 1, aEvent.mStack, OP.stick.mat(MT.Wood, 1));

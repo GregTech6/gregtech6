@@ -221,9 +221,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		mSaveLocation = null;
 	}
 	
-	@SubscribeEvent public void onWorldSave(WorldEvent.Save aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
-	@SubscribeEvent public void onWorldLoad(WorldEvent.Load aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
-	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
+	@SubscribeEvent public void onWorldSave(WorldEvent.Save aEvent) {mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
+	@SubscribeEvent public void onWorldLoad(WorldEvent.Load aEvent) {mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
+	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
@@ -529,7 +529,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 			
 			if (SERVER_TIME % 20 == 1) {
-				if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();
+				mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();
 				
 				for (int i = 0; i < aEvent.world.loadedTileEntityList.size(); i++) {
 					TileEntity aTileEntity = (TileEntity)aEvent.world.loadedTileEntityList.get(i);
@@ -794,18 +794,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 //      Block aBlock = aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z);
 		TileEntity aTileEntity = aEvent.world.getTileEntity(aEvent.x, aEvent.y, aEvent.z);
 		
-		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) {
-			if (ST.valid(aStack)) {
-				if (aTileEntity instanceof ITileEntityBookShelf && ((ITileEntityBookShelf)aTileEntity).isShelfFace((byte)aEvent.face)) {
-					aEvent.useBlock = Result.ALLOW;
-					if (BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aStack)) || BooksGT.BOOK_REGISTER.containsKey(new ItemStackContainer(aStack, W))) {
-						aEvent.useItem = Result.DENY;
-					}
-					return;
-				}
-			}
-		}
-		
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
 			if (aTileEntity instanceof TileEntityJukebox) {
 				ItemStack tStack = ((TileEntityJukebox)aTileEntity).func_145856_a();
@@ -833,7 +821,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					}
 				}*/
 				if (!(aStack.getItem() instanceof IItemNoGTOverride)) {
-					// Dollies won't work on GT TileEntities, so to prevent a Crash I just disable the interaction.
+					// Dollies won't work on GT6 TileEntities, so to prevent a Crash and deleted Resources, I just disable the interaction.
 					if (IL.JABBA_Dolly.equal(aStack, T, T) || IL.JABBA_Dolly_Diamond.equal(aStack, T, T)) {
 						if (aTileEntity instanceof ITileEntitySpecificPlacementBehavior) {
 							UT.Entities.chat(aEvent.entityPlayer, CHAT_GREG + " The Code of this Dolly is not smart enough to move this TileEntity.", CHAT_GREG + "It would crash if it actually did, so be glad I prevented that mistake.");
@@ -863,6 +851,16 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 						return;
 					}
+				}
+			}
+		}
+		
+		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) {
+			if (ST.valid(aStack)) {
+				if (aTileEntity instanceof ITileEntityBookShelf && ((ITileEntityBookShelf)aTileEntity).isShelfFace((byte)aEvent.face)) {
+					aEvent.useBlock = Result.ALLOW;
+					if (BooksGT.BOOK_REGISTER.containsKey(aStack, T)) aEvent.useItem = Result.DENY;
+					return;
 				}
 			}
 		}
