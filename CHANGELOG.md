@@ -21,7 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.00: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Factorio)
+6.13.00:
 [FIXED] Pam's Harvestcraft Fishtrap Bait Recipe for Mixing Bowl had a lower amount of Output than intended.
 [FIXED] Thaumcraft Golems were not chopping GT6 Logs, because it checks for the wrong OreDict String.
 [FIXED] 7 Bits are definitely not enough to store Numbers that can go up to 12 Billion. Fusion Reactor Start Energy is now properly saved when unloaded.
@@ -32,6 +32,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Blastproofness Tooltip now also mentions Strong Dynamite Proofness and doesn't stop at TNT-Proof anymore.
 [CHANGED] NEI Fuel Lists are now no longer listing the confusing and irrelevant EU/t Value.
 [CHANGED] More Reactor Test Stuffs from Erik3003.
+[ADDED] Uranium Hexaflouride Processing Chain by Erik3003.
 [ADDED] Ownership Reset Config for people who locked themselves out of Stuff like Mechanical Safes in SinglePlayer.
 [ADDED] Small Cinnabar Ore to the Nether.
 [ADDED] Ars Magica Chimerite Ore when it is installed.
