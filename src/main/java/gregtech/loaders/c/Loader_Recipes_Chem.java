@@ -146,7 +146,17 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,   64, tIron                              , MT.Cl             .gas  (U * 3, T)                                                            , NF                                , OM.dust(MT.FeCl3, U*4));
 		RM.Mixer        .addRecipe1(T, 16,   80, tIron                              , MT.HCl            .fluid(U * 4, T)                                                            , MT.H              .gas  (U * 2, F), OM.dust(MT.FeCl2, U*3));
 		}
-		
+
+		RM.HeatMixer		.addRecipe1(T, 16, 300, OM.dust(MT.OREMATS.Uraninite, U*1), MT.HF.gas(U*4, T), FL.DistW.make(2000), OM.dust(MT.UNUSED.UF4, U*1));
+		RM.Mixer			.addRecipe1(T, 16, 48, OM.dust(MT.UNUSED.UF4, U*1), MT.F.gas(U*2, T), NF, MT.UNUSED.UF6.gas(U*1, T));
+		RM.Centrifuge		.addRecipe0(T, 512, 120, MT.UNUSED.UF6.gas(U*8, T), MT.UNUSED.U238F6.gas(U*5, T), MT.UNUSED.U235F6.gas(U*3, T));
+		RM.Mixer			.addRecipe0(T, 16, 48, FL.array(MT.H.gas(U*2, T), MT.UNUSED.UF6.gas(U*1, T)), MT.HF.gas(U*2, T), OM.dust(MT.UNUSED.UF4, U*1));
+		RM.Mixer			.addRecipe0(T, 16, 48, FL.array(MT.H.gas(U*2, T), MT.UNUSED.U238F6.gas(U*1, T)), MT.HF.gas(U*2, T), OM.dust(MT.UNUSED.U238F4, U*1));
+		RM.Mixer			.addRecipe0(T, 16, 48, FL.array(MT.H.gas(U*2, T), MT.UNUSED.U235F6.gas(U*1, T)), MT.HF.gas(U*2, T), OM.dust(MT.UNUSED.U235F4, U*1));
+		RM.Mixer			.addRecipe0(T, 16, 144, FL.array(MT.Ca.liquid(U*2, T), MT.UNUSED.UF4.liquid(U*1, T)), MT.CaF2.liquid(U*2, T), MT.U_238.liquid(U*1, T));
+		RM.Mixer			.addRecipe0(T, 16, 144, FL.array(MT.Ca.liquid(U*2, T), MT.UNUSED.U238F4.liquid(U*1, T)), MT.CaF2.liquid(U*2, T), MT.U_238.liquid(U*1, T));
+		RM.Mixer			.addRecipe0(T, 16, 144, FL.array(MT.Ca.liquid(U*2, T), MT.UNUSED.U235F4.liquid(U*1, T)), MT.CaF2.liquid(U*2, T), MT.U_235.liquid(U*1, T));
+
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.NaCl                ,U * 4), MT.CaCO3       .liquid(U* 5, T)                                                            , NF                                , OM.dust(MT.CaCl2, U*3), OM.dust(MT.Na2CO3, U*6));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.NaCl                ,U * 4), MT.MgCO3       .liquid(U* 5, T)                                                            , NF                                , OM.dust(MT.MgCl2, U*3), OM.dust(MT.Na2CO3, U*6));
 		RM.Bath         .addRecipe1(T, 0,   512, OM.dust(MT.OREMATS.Scheelite   ,U * 6), MT.HCl         .fluid(U * 4, T)                                                            , NF                                , OM.dust(MT.CaCl2, U*3), OM.dust(MT.H2WO4, U*7));
