@@ -27,7 +27,7 @@ import java.util.List;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.IL;
 import gregapi.data.LH;
-import gregapi.gui.Slot_Normal;
+import gregapi.gui.Slot_Base;
 import gregapi.gui.Slot_Whitelist;
 import gregapi.item.IItemGTHandTool;
 import gregapi.oredict.OreDictManager;
@@ -163,7 +163,7 @@ public class RecipeMapAutocrafting extends RecipeMap {
 	}
 	
 	@Override
-	public Slot_Normal getSpecialSlot(ITileEntityInventoryGUI aInventory, int aIndex, int aX, int aY) {
+	public Slot_Base getSpecialSlot(ITileEntityInventoryGUI aInventory, int aIndex, int aX, int aY) {
 		return new Slot_Whitelist(aInventory, aIndex, aX, aY, OreDictManager.getOres("gt:autocrafterblueprintitem", F).toArray(ZL_IS)).setTooltip(LH.AUTOCRAFTING_INSERT_BLUEPRINT, LH.Chat.WHITE);
 	}
 }

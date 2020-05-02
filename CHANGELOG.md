@@ -32,6 +32,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Clay Ore that comes from Hematite Bedrock Drilling is now processable.
 [FIXED] Some Ars Magica Unification things.
 [FIXED] JABBA Dollys can no longer pick up GT6 Shelves. Somehow they were still able to be picked up even though I prevented them from working on GT Blocks as a whole, ages ago.
+[FIXED] Infinite Items Glitch caused by InvTweaks making 111 Stacks and NEI keeping those at an Infinite Level, causing Infinite Item Duplication, if a Stack with higher than its custom Maximum Size enters a GT6 GUI Slot, while the GUI is being kept open. Now if that happens I will just cap the Stacksize at 64, potentially deleting Items, but that is what you get for InvTweaks being screwed up.
 [CHANGED] When Machines can process multiple Items in a row in one go, they wont process more than a Minutes worth of Stuff at a time, assuming maximum Power Input. This applies to things like the Crusher, Sifter, Compressor, Squeezer, Electrolyzer and Centrifuge for example.
 [CHANGED] Bath Recipes that have an Output Stacksize of more than 1 now have their Outputs spread over the 6 Output Slots. This should make it easier to parallel process Ores in a Multiblock Bath. (I may or may not have slightly buffed the Outputs of some Ore Recipes too)
 [CHANGED] Blastproofness Tooltip now also mentions Strong Dynamite Proofness and doesn't stop at TNT-Proof anymore.

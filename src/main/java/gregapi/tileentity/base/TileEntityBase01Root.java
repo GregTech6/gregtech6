@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,7 +38,7 @@ import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.TD;
 import gregapi.gui.ContainerCommon;
-import gregapi.gui.Slot_Normal;
+import gregapi.gui.Slot_Base;
 import gregapi.network.packets.PacketBlockError;
 import gregapi.network.packets.PacketBlockEvent;
 import gregapi.random.ExplosionGT;
@@ -487,8 +487,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override public Object getGUIClient(int aGUIID, EntityPlayer aPlayer) {return null;}
 	@Override public Object getGUIServer(int aGUIID, EntityPlayer aPlayer) {return null;}
 	
-	public boolean interceptClick(int aGUIID, Slot_Normal aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {return F;}
-	public ItemStack slotClick(int aGUIID, Slot_Normal aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {return null;}
+	public boolean interceptClick(int aGUIID, Slot_Base aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {return F;}
+	public ItemStack slotClick(int aGUIID, Slot_Base aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {return null;}
 	public void killGUIs() {for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) ((EntityPlayer)tPlayer).closeScreen();}
 	public void rebootGUIs(int aGUIID) {for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) {((EntityPlayer)tPlayer).closeScreen(); openGUI((EntityPlayer)tPlayer, aGUIID);}}
 	public long getOpenGUIs() {long rGUIs = 0; for (Object tPlayer : worldObj.playerEntities) if (tPlayer instanceof EntityPlayer && ((EntityPlayer)tPlayer).openContainer instanceof ContainerCommon && ((ContainerCommon)((EntityPlayer)tPlayer).openContainer).mTileEntity == this) rGUIs++; return rGUIs;}

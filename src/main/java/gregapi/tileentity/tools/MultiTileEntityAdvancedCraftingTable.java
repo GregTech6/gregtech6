@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -36,6 +36,7 @@ import gregapi.gui.ContainerClient;
 import gregapi.gui.ContainerClientDefault;
 import gregapi.gui.ContainerCommon;
 import gregapi.gui.ContainerCommonDefault;
+import gregapi.gui.Slot_Base;
 import gregapi.gui.Slot_Holo;
 import gregapi.gui.Slot_Normal;
 import gregapi.item.IItemGTContainerTool;
@@ -510,7 +511,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return aGUIID == 1 ?                               new ContainerCommonDefault(aPlayer.inventory, this, aGUIID, 35, 36)  : new MultiTileEntityGUICommonAdvancedCraftingTable(aPlayer.inventory, this, aGUIID);}
 	
 	@Override
-	public boolean interceptClick(int aGUIID, Slot_Normal aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
+	public boolean interceptClick(int aGUIID, Slot_Base aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
 		if (aGUIID != 0) return F;
 		slotNull(aInvSlot);
 		if (aInvSlot == 30 && !aRightclick && aShiftclick) {setBluePrint(null); return T;}
@@ -518,7 +519,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	}
 	
 	@Override
-	public ItemStack slotClick(int aGUIID, Slot_Normal aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
+	public ItemStack slotClick(int aGUIID, Slot_Base aSlot, int aSlotIndex, int aInvSlot, EntityPlayer aPlayer, boolean aShiftclick, boolean aRightclick, int aMouse, int aShift) {
 		if (aInvSlot == 31) {
 			ItemStack tCraftedStack = getCraftingOutput(), tStack;
 			if (tCraftedStack != null) {

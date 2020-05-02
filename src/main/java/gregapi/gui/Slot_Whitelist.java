@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,7 +29,7 @@ import net.minecraft.item.ItemStack;
 /**
  * @author Gregorius Techneticies
  */
-public class Slot_Whitelist extends Slot_Normal {
+public class Slot_Whitelist extends Slot_Base {
 	private ItemStackSet<ItemStackContainer> mWhiteList = new ItemStackSet<>();
 	
 	public Slot_Whitelist(ITileEntityInventoryGUI aInventory, int aIndex, int aX, int aY, ItemStack... aValidStacks) {

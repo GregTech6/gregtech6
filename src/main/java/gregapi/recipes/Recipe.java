@@ -40,7 +40,7 @@ import gregapi.data.FM;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.RM;
-import gregapi.gui.Slot_Normal;
+import gregapi.gui.Slot_Base;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.random.IHasWorldAndCoords;
@@ -387,7 +387,7 @@ public class Recipe {
 			return mRecipeMapHandlers.add(aRecipeMapHandler) && aRecipeMapHandler.onAddedToMap(this);
 		}
 		
-		public Slot_Normal getSpecialSlot(ITileEntityInventoryGUI aInventory, int aIndex, int aX, int aY) {
+		public Slot_Base getSpecialSlot(ITileEntityInventoryGUI aInventory, int aIndex, int aX, int aY) {
 			return null;
 		}
 		

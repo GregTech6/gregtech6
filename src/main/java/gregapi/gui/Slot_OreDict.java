@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,7 @@ import net.minecraft.item.ItemStack;
 /**
  * @author Gregorius Techneticies
  */
-public class Slot_OreDict extends Slot_Normal {
+public class Slot_OreDict extends Slot_Base {
 	private final String mWhiteList;
 	
 	public Slot_OreDict(ITileEntityInventoryGUI aInventory, int aIndex, int aX, int aY, String aValidOreDict) {

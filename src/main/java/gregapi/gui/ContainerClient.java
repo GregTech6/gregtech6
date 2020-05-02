@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -78,8 +78,8 @@ public class ContainerClient extends GuiContainer {
 			super.drawScreen(aX, aY, par3);
 			for (int i = 0; i < inventorySlots.inventorySlots.size(); ++i) {
 				Slot tSlot = (Slot)inventorySlots.inventorySlots.get(i);
-				if (ST.invalid(tSlot.getStack()) && isMouseOverSlot(tSlot, aX, aY) && tSlot instanceof Slot_Normal) {
-					drawHoveringText(((Slot_Normal)tSlot).getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), aX, aY, fontRendererObj);
+				if (ST.invalid(tSlot.getStack()) && isMouseOverSlot(tSlot, aX, aY) && tSlot instanceof Slot_Base) {
+					drawHoveringText(((Slot_Base)tSlot).getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), aX, aY, fontRendererObj);
 				}
 			}
 		} catch (Throwable e) {
