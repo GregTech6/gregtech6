@@ -98,7 +98,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		CODE_SERVER = T;
 		CODE_CLIENT = T;
 		CODE_UNCHECKED = F;
-
+		
 		for (int i = 0; i < 4; i++) {
 			sPosR.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Force.mRGBa[i], MT.Pyrotheum.mRGBa[i], MT.Sunnarium.mRGBa[i], MT.Glowstone.mRGBa[i], MT.Mcg.mRGBa[i], MT.Thaumium.mRGBa[i], MT.InfusedVis.mRGBa[i], MT.InfusedAir.mRGBa[i], MT.InfusedFire.mRGBa[i], MT.FierySteel.mRGBa[i], MT.Firestone.mRGBa[i], MT.ArcaneAsh.mRGBa[i]));
 			sPosG.addAll(Arrays.asList(MT.ChargedCertusQuartz.mRGBa[i], MT.Enderium.mRGBa[i], MT.Vinteum.mRGBa[i], MT.U_235.mRGBa[i], MT.Am_241.mRGBa[i], MT.Pu_241.mRGBa[i], MT.Pu_243.mRGBa[i], MT.Nq_528.mRGBa[i], MT.Nq_522.mRGBa[i], MT.InfusedOrder.mRGBa[i], MT.Force.mRGBa[i], MT.Pyrotheum.mRGBa[i], MT.Sunnarium.mRGBa[i], MT.Glowstone.mRGBa[i], MT.InfusedAir.mRGBa[i], MT.InfusedEarth.mRGBa[i]));
@@ -201,50 +201,48 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 	public void onItemTooltip(ItemTooltipEvent aEvent) {
 		if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI || ST.invalid(aEvent.itemStack)) return;
 		if (!DISPLAY_TEMP_TOOLTIP) {DISPLAY_TEMP_TOOLTIP = T; return;}
-
+		
 		if (UT.NBT.getNBT(aEvent.itemStack).getBoolean("gt.err.oredict.output")) {
 			aEvent.toolTip.clear();
-			aEvent.toolTip.add(0, "A Recipe used an OreDict Item as Output directly, without copying it before!");
-			aEvent.toolTip.add(1, "This is a typical CallByReference/CallByValue Error of the Modder doing it.");
-			aEvent.toolTip.add(2, "Please check all Recipes outputting this Item, and report the Recipes to their Owner.");
-			aEvent.toolTip.add(3, "The Owner of the RECIPE, NOT the Owner of the Item!");
+			aEvent.toolTip.add(0, LH.Chat.BLINKING_RED+"A Recipe used an OreDict Item as Output directly, without copying it before!");
+			aEvent.toolTip.add(1, LH.Chat.BLINKING_RED+"This is a typical CallByReference/CallByValue Error of the Modder doing it.");
+			aEvent.toolTip.add(2, LH.Chat.BLINKING_RED+"Please check all Recipes outputting this Item, and report the Recipes to their Owner.");
+			aEvent.toolTip.add(3, LH.Chat.BLINKING_RED+"The Owner of the RECIPE, NOT the Owner of the Item!");
 			return;
 		}
-
+		
 		String aRegName = ST.regName(aEvent.itemStack);
-		if (aRegName == null) aRegName = "ERROR: THIS ITEM HAS NOT BEEN REGISTERED!!!";
+		if (aRegName == null) {
+			aEvent.toolTip.set(0, LH.Chat.BLINKING_RED+"ERROR: THIS ITEM HAS NOT BEEN REGISTERED!!!");
+			aRegName = "ERROR: THIS ITEM HAS NOT BEEN REGISTERED!!!";
+		}
 		short aMeta = ST.meta_(aEvent.itemStack);
 		byte aBlockMeta = (byte)(UT.Code.inside(0, 15, aMeta) ? aMeta : 0);
 		Block aBlock = ST.block(aEvent.itemStack);
 		Item aItem = ST.item(aEvent.itemStack);
-
+		
 		if (aEvent.itemStack.getTagCompound() == null) {
 			if (aBlock == Blocks.dirt && aBlockMeta == 1) {
-				aEvent.toolTip.set(0, "Coarse Dirt");
+				aEvent.toolTip.set(0, "Coarse " + aEvent.toolTip.get(0));
 			}
 			if (MD.RC.mLoaded && "Railcraft:part.plate".equalsIgnoreCase(aRegName)) {
 				switch(aMeta) {
-				case 0: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Fe.getLocal()+" Plate"); break;
-				case 1: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Steel.getLocal()+" Plate"); break;
-				case 2: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.TinAlloy.getLocal()+" Plate"); break;
-				case 3: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Cu.getLocal()+" Plate"); break;
-				case 4: aEvent.toolTip.set(0, LH.Chat.WHITE+MT.Pb.getLocal()+" Plate"); break;
+				case 0: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateIron.name")); break;
+				case 1: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateSteel.name")); break;
+				case 2: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateTinAlloy.name")); break;
+				case 3: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateCopper.name")); break;
+				case 4: aEvent.toolTip.set(0, LH.Chat.WHITE+LH.get("oredict.plateLead.name")); break;
 				}
 			}
 		}
-
-
-
-
+		
 		if (ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.contains(aEvent.itemStack, T)) {
 			aEvent.toolTip.add(LH.Chat.BLINKING_RED + "Recipe has been removed in favour of the GregTech Ender Garbage Bin");
 		}
-
-
+		
 		ICover tCover = CoverRegistry.get(aEvent.itemStack);
 		if (tCover != null) tCover.addToolTips(aEvent.toolTip, aEvent.itemStack, aEvent.showAdvancedItemTooltips);
-
-
+		
 		if (aBlock != NB && aBlock != null) {
 			if (IL.TC_Warded_Glass.equal(aEvent.itemStack, F, T)) {
 				aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, 999));
@@ -262,16 +260,13 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 		}
 		
-		
 		if (BooksGT.BOOK_REGISTER.containsKey(aEvent.itemStack, T)) {
 			aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_SHELFABLE));
 		}
 		
-		
 		if (aItem.isBeaconPayment(aEvent.itemStack)) {
 			aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_BEACON_PAYMENT));
 		}
-		
 		
 		OreDictItemData tData = OM.anydata_(aEvent.itemStack);
 		
