@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -179,7 +179,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 				mTemperature = tTemperature;
 			}
 			
-			if ((mInventoryChanged || mTimer % 50 == 0 || (mBlockUpdated && mUseRedstone)) && (!mUseRedstone || hasRedstoneIncoming()) && mContent == null && mAutoPullDirections != 0) for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mAutoPullDirections]) {
+			if ((mInventoryChanged || SERVER_TIME % 50 == 5 || (mBlockUpdated && mUseRedstone)) && (!mUseRedstone || hasRedstoneIncoming()) && mContent == null && mAutoPullDirections != 0) for (byte tSide : ALL_SIDES_VALID) if (FACE_CONNECTED[tSide][mAutoPullDirections]) {
 				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 				if (tDelegator.mTileEntity instanceof ITileEntityCrucible) ((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, tSide);
 			}

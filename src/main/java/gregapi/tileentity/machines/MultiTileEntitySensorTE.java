@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -207,8 +207,8 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 				if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {if (mMode < 0) mValues = new int[(int)UT.Code.bind_(1, MAX_AVERAGING_VALUES, mValues.length + 16)]; else mValues = new int[(int)UT.Code.bind_(1, MAX_AVERAGING_VALUES, mValues.length + 10)]; playClick(); if (aChatReturn != null) aChatReturn.add("Averaging over: " + mValues.length + " Values"); return 1000;}
 			}
 			if (tCoords[1] >= PX_P[12] && tCoords[1] <= PX_P[14]) {
-				if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {mValues = new int[(int)UT.Code.bind_(1, MAX_AVERAGING_VALUES, mValues.length - 1)]; playClick(); if (aChatReturn != null) aChatReturn.add("Averaging over: " + mValues.length + " Values"); return 1000;}
-				if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {mValues = new int[(int)UT.Code.bind_(1, MAX_AVERAGING_VALUES, mValues.length + 1)]; playClick(); if (aChatReturn != null) aChatReturn.add("Averaging over: " + mValues.length + " Values"); return 1000;}
+				if (tCoords[0] >= PX_P[ 9] && tCoords[0] <= PX_P[11]) {mValues = new int[(int)UT.Code.bind_(1, MAX_AVERAGING_VALUES, mValues.length - 1)]; playClick(); if (aChatReturn != null) aChatReturn.add(mValues.length < 2 ? "Averaging Disabled" : "Averaging over: " + mValues.length + " Values"); return 1000;}
+				if (tCoords[0] >= PX_P[12] && tCoords[0] <= PX_P[14]) {mValues = new int[(int)UT.Code.bind_(1, MAX_AVERAGING_VALUES, mValues.length + 1)]; playClick(); if (aChatReturn != null) aChatReturn.add(mValues.length < 2 ? "Averaging Disabled" : "Averaging over: " + mValues.length + " Values"); return 1000;}
 			}
 			
 			

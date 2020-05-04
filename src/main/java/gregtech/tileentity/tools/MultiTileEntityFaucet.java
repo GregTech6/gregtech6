@@ -81,7 +81,7 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			if (mAutoPull ? mTimer % 50 == 0 : mBlockUpdated && hasRedstoneIncoming()) {
+			if (mAutoPull ? SERVER_TIME % 50 == 5 : mBlockUpdated && hasRedstoneIncoming()) {
 				DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
 				if (tDelegator.mTileEntity instanceof ITileEntityCrucible) {
 					((ITileEntityCrucible)tDelegator.mTileEntity).fillMoldAtSide(this, tDelegator.mSideOfTileEntity, mFacing);
