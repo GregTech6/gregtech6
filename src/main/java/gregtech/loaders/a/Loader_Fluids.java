@@ -46,9 +46,9 @@ public class Loader_Fluids implements Runnable {
 	public void run() {
 		FL.create("HeliumPlasma"             , "Helium Plasma"       , MT.He                 , 3,   1000, 10000).setLuminosity(15);
 		FL.create("NitrogenPlasma"           , "Nitrogen Plasma"     , MT.N                  , 3,   1000, 10000).setLuminosity(15);
-
+		
 		//-----
-
+		
 		FL.create("Propane"                  , "Propane"             , MT.Propane            , 2).setDensity(-1000);
 		FL.create("Butane"                   , "Butane"              , MT.Butane             , 2).setDensity(-1000);
 		FL.create("Propylene"                , "Propylene"           , MT.Propylene          , 2);
@@ -59,18 +59,19 @@ public class Loader_Fluids implements Runnable {
 		FL.create("Steam"                    , "Steam"               , MT.H2O                , 2, 160000, C+100).setDensity(-1000);
 		MT.Ice.mGas = MT.H2O.mGas;
 		MT.H2O.mGas.getFluid().setTemperature((int)(C+100)).setGaseous(T);
-
+		MT.Steam.gas(FL.Steam.make(160000));
+		
 		//-----
-
+		
 		FL.create("liquid_extra_heavy_oil"   , "Very Heavy Oil"      , null                  , 1);
 		FL.create("liquid_heavy_oil"         , "Heavy Oil"           , null                  , 1);
 		FL.create("liquid_medium_oil"        , "Raw Oil"             , null                  , 1);
 		FL.create("liquid_light_oil"         , "Light Oil"           , null                  , 1);
 		FL.create("soulsandoil"              , "Soulsand Oil"        , null                  , 1);
 		FL.create("gas_natural_gas"          , "Natural Gas"         , null                  , 2); // ~95% methane, ~5% ethane and trace amounts of propane and butane
-
+		
 		FL.create("liquidoxygen"             , "Liquid Oxygen"       , MT.O                  , 1,   1000,    85);
-
+		
 		FL.create("chargedmatter"            , "Charged Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
 		FL.create("neutralmatter"            , "Neutral Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
 		FL.create("UUAmplifier"              , "UU-Amplifier"        , MT.UUAmplifier        , 1,      1,   100);

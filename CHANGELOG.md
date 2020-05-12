@@ -43,6 +43,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Ownership Reset Config for people who locked themselves out of Stuff like Mechanical Safes in SinglePlayer.
 [ADDED] Small Cinnabar Ore to the Nether.
 [ADDED] Ars Magica Chimerite Ore when it is installed.
+[ADDED] Steam can now be put in Chem Tubes.
 [ADDED]
 Erik3003s Nuclear Reactor changes made it into this Version.
 He wrote a PDF as a Guide too, which I linked on the Downloads Page, and also here: https://gregtech.mechaenetia.com/1.7.10/gt6fission.pdf

@@ -371,30 +371,42 @@ public class Loader_OreProcessing implements Runnable {
 			}
 		}
 	}
-
+	
 	public static class OreProcessing_GlassTube implements IOreDictListenerEvent {
 		private final ICondition<OreDictMaterial> mCondition;
 		private final long mMaterialAmount;
-
+		
 		public OreProcessing_GlassTube(long aOutputMaterialAmount, ICondition<OreDictMaterial> aCondition) {
 			mCondition = aCondition;
 			mMaterialAmount = aOutputMaterialAmount;
 		}
-
+		
 		@Override
 		public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (mCondition.isTrue(aEvent.mMaterial) && aEvent.mMaterial != MT.Empty) {
+				ItemStack tStack = OM.dust(aEvent.mMaterial, mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount);
 				FluidStack tFluid = aEvent.mMaterial.fluid(DEF_ENV_TEMP, mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, F);
-				ItemStack  tStack = OM.dust(aEvent.mMaterial, mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount);
-				if (tFluid == null || tFluid.amount <= 0 || FL.Error.is(tFluid)) tFluid = null;
-				if (tStack != null || tFluid != null) {
-					RM.Canner.addRecipe1(T, 16, 16, aEvent.mStack, NF, tStack==null?tFluid:NF, aEvent.mPrefix.mat(MT.Empty, 1), tStack);
-					RM.Canner.addRecipe2(T, 16, 16, tStack, aEvent.mPrefix.mat(MT.Empty, 1), tStack==null?tFluid:NF, NF, aEvent.mStack);
+				if (tFluid == null || tFluid.amount <= 0 || FL.Error.is(tFluid)) tFluid = aEvent.mMaterial.liquid(mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, F);
+				if (tFluid == null || tFluid.amount <= 0 || FL.Error.is(tFluid)) tFluid = aEvent.mMaterial.gas   (mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, F);
+				if (tFluid == null || tFluid.amount <= 0 || FL.Error.is(tFluid)) tFluid = aEvent.mMaterial.plasma(mMaterialAmount<0?aEvent.mPrefix.mAmount:mMaterialAmount, F);
+				
+				if (tStack != null) {
+					RM.Canner.addRecipe2(T, 16, 16, tStack, aEvent.mPrefix.mat(MT.Empty, 1), aEvent.mStack);
+					if (tFluid == null || aEvent.mMaterial.mMeltingPoint > DEF_ENV_TEMP) {
+					RM.Canner.addRecipe1(T, 16, 16, aEvent.mStack, aEvent.mPrefix.mat(MT.Empty, 1), tStack);
+					}
+				}
+				
+				if (tFluid != null) {
+					RM.Canner.addRecipe1(T, 16, 16, aEvent.mPrefix.mat(MT.Empty, 1), tFluid, NF, aEvent.mStack);
+					if (tStack == null || aEvent.mMaterial.mMeltingPoint <= DEF_ENV_TEMP) {
+					RM.Canner.addRecipe1(T, 16, 16, aEvent.mStack, NF, tFluid, aEvent.mPrefix.mat(MT.Empty, 1));
+					}
 				}
 			}
 		}
 	}
-
+	
 	public static class OreProcessing_PlantSqueezing implements IOreDictListenerEvent {
 		private final ICondition<OreDictMaterial> mCondition;
 		private final long mOutputMaterialAmount;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -348,7 +348,6 @@ public class GT6_Main extends Abstract_Mod {
 	@Override
 	public void onModInit2(FMLInitializationEvent aEvent) {
 		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
-		OP.chemtube.mContainerItem = OP.chemtube.mat(MT.Empty, 1);
 
 		new Loader_Late_Items_And_Blocks().run();
 
