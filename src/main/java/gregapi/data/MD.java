@@ -88,6 +88,7 @@ public class MD {
 	, ZTONES            = new ModData(ModIDs.ZTONES             , "Ztones")
 	, CHSL              = new ModData(ModIDs.CHSL               , "Chisel")
 	
+	, NePl              = new ModData(ModIDs.NePl               , "Netherite Plus")
 	, EtFu              = new ModData(ModIDs.EtFu               , "Et Futurum")
 	, BB                = new ModData(ModIDs.BB                 , "Better Beginnings")
 	, DYNAMIC_TREES     = new ModData(ModIDs.DYNAMIC_TREES      , "Dynamic Trees")

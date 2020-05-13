@@ -398,10 +398,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.packed_ice               , 1, W), OM.dust(MT.Ice, 2*U));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.hardened_clay            , 1, W), OM.dust(MT.Clay, 2*U));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stained_hardened_clay    , 1, W), OM.dust(MT.Clay, 2*U));
-		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stained_glass            , 1, W), OM.dust(MT.Glass));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.glass                    , 1, W), OM.dust(MT.Glass));
-		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stained_glass_pane       , 1, W), OM.dust(MT.Glass, 3*U8));
+		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stained_glass            , 1, W), OM.dust(MT.Glass));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.glass_pane               , 1, W), OM.dust(MT.Glass, 3*U8));
+		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.stained_glass_pane       , 1, W), OM.dust(MT.Glass, 3*U8));
+		RM.Hammer       .addRecipe1(T, 16,  16, IL.NePl_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Hammer       .addRecipe1(T, 16,  16, ST.make(Blocks.quartz_stairs            , 1, W), OP.gem.mat(MT.NetherQuartz, 6));
@@ -419,6 +420,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Crusher      .addRecipe1(T, 16,  32, IL.Module_Stone_Generator.get(               0), ST.make(Blocks.cobblestone, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  32, ST.make(Blocks.cobblestone              , 1, 0), ST.make(Blocks.gravel, 1, 0));
 		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.sandstone                , 1, W), ST.make(Blocks.sand, 1, 0));
+		RM.Crusher      .addRecipe1(T, 16,  32, IL.NePl_Quartz_Bricks.get(                   1), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  32, ST.make(Blocks.quartz_block             , 1, W), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab        , 1, 7), OP.gem.mat(MT.NetherQuartz, 4));
 		RM.Crusher      .addRecipe1(T, 16,  48, ST.make(Blocks.quartz_stairs            , 1, W), OP.gem.mat(MT.NetherQuartz, 6));
@@ -526,8 +528,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Freezer      .addRecipe1(T, 16,  128, ST.tag(9), FL.DistW.make(1000), NF, OP.dust.mat(MT.Snow, 1));
 		
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass             , 1, W), OM.dust(MT.Glass));
-		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass     , 1, W), OM.dust(MT.Glass, 3*U8));
-		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass_pane        , 1, W), OM.dust(MT.Glass));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass     , 1, W), OM.dust(MT.Glass));
+		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass_pane        , 1, W), OM.dust(MT.Glass, 3*U8));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass_pane, 1, W), OM.dust(MT.Glass, 3*U8));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(2));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Items.blaze_rod, 1, W), ST.make(Items.blaze_powder, 2, 0));
@@ -775,6 +777,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.biomass(ST.make(Blocks.melon_block, 1, W));
 		RM.biomass(ST.make(Blocks.pumpkin, 1, W));
 		RM.biomass(ST.make(Blocks.cactus, 8, W));
+		RM.biomass(ST.make(Blocks.vine, 8, W));
 		RM.biomass(ST.make(Items.reeds, 8, W));
 		RM.biomass(ST.make(Items.melon, 9, W));
 		RM.biomass(ST.make(Items.wheat, 9, W));

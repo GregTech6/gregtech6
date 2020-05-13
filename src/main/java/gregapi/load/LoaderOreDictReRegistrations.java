@@ -219,6 +219,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockSunstone"           , "blockGemSunstone");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockMoonstone"          , "blockGemMoonstone");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockRedMeteorGem"       , "blockGemRedMeteor");
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockNetherite"          , "blockIngotNetherite");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockIron"               , "blockIngotIron");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockSteel"              , "blockIngotSteel");
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("blockBronze"             , "blockIngotBronze");
@@ -1248,7 +1249,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("livingRoot", new OreDictItemData(MT.LiveRoot, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("silicon", new OreDictItemData(MT.Si, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("glowstone", new OreDictItemData(MT.Glowstone, 4*U));
-		OreDictManager.INSTANCE.setAutomaticItemData("soulsand", new OreDictItemData(MT.SoulSand, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.soulsand, new OreDictItemData(MT.SoulSand, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedWheat", new OreDictItemData(MT.Wheat, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedRye", new OreDictItemData(MT.Rye, U9));
 		OreDictManager.INSTANCE.setAutomaticItemData("seedOats", new OreDictItemData(MT.Oat, U9));

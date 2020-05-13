@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,7 +64,7 @@ public class LoaderWoodDictionary implements Runnable {
 		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
 		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
 		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 233 is next!
+		// No Gaps in this List, so 235 is next!
 		
 		
 		// Vanilla Trees
@@ -685,6 +685,14 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.ERE, "saplingCypress"   , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logCypress"   , W), ST.make(MD.ERE, "leavesCypress"   , 1, W));
 			new SaplingEntry(ST.make(MD.ERE, "saplingSap"       , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logSap"       , W), ST.make(MD.ERE, "leavesSap"       , 1, W));
 			new SaplingEntry(ST.make(MD.ERE, "saplingMarshwood" , 1, W), WoodDictionary.WOODS.get(MD.ERE, "logMarshwood" , W), ST.make(MD.ERE, "leavesMarshwood" , 1, W));
+		}
+		// Netherite Plus Planks
+		if (MD.NePl.mLoaded) {
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.NePl, "CrimsonPlanks", 1, 0));
+			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.NePl, "WarpedPlanks" , 1, 0));
+			
+			new PlankEntry(ST.make(MD.NePl, "CrimsonPlanks", 1, W), 233);
+			new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), 234);
 		}
 		// Chisel Planks
 		if (MD.CHSL.mLoaded) {

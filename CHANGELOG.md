@@ -17,11 +17,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Factorio)
+6.13.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.13.00: (Not released yet, I need to fix quite a few Bugs still...)
+[COMPAT] Netherite Plus Mod got Compatibility now. It backports Netherite to 1.7.10. Soulfire Torch Placement by Tools, Record Shelving, Blackstone, and the two Wood Types should all work in GregTech Stuff.
 [FIXED] Seems like QwertTech might have messed up the Recipes for putting Planks in a Bathing Pot to get Treated Wood. This Issue might be fixed now for Vanilla Planks.
 [FIXED] The Axe was still slowed down on my end, when TreeCapitator was actually installed, resulting in a Double Slowdown.
 [FIXED] Failing to Load Save Files in Singleplayer when you already loaded another World before.
@@ -39,6 +40,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Blastproofness Tooltip now also mentions Strong Dynamite Proofness and doesn't stop at TNT-Proof anymore.
 [CHANGED] NEI Fuel Lists are now no longer listing the confusing and irrelevant EU/t Value.
 [CHANGED] More Reactor Test Stuffs from Erik3003.
+[ADDED] Netherite things, such as Crucibles, Burning Boxes and all the Shelf Stuff. The Crucible Tier is same as Meteoric Steel. The good Netherite Tools are made by bathing Diamond in molten Netherite. The bad Netherite Tools are, well, not that good. Ancient Debris does generate in the Nether now as rare small Ore.
 [ADDED] Uranium Hexaflouride Processing Chain by Erik3003. And fixed by Greg, because the Maths of the Recipes were "Perfectly Balanced without Exploits", except for the obvious dupes of every single Recipe added.
 [ADDED] Ownership Reset Config for people who locked themselves out of Stuff like Mechanical Safes in SinglePlayer.
 [ADDED] Small Cinnabar Ore to the Nether.

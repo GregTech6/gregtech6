@@ -700,10 +700,15 @@ public class ST {
 		return ItemsGT.DEBUG_ITEMS.contains(aStack, T);
 	}
 	
+	public static boolean torch(Block aBlock) {
+		return torch(aBlock, 1); // that 1 is totally not hacky at all. XD
+	}
+	public static boolean torch(Block aBlock, long aMeta) {
+		if (IL.NePl_Torch.equal(aBlock) || IL.GC_Torch_Glowstone.equal(aBlock) || IL.AETHER_Torch_Ambrosium.equal(aBlock) || (aMeta == 1 && IL.TC_Block_Air.equal(aBlock))) return T;
+		return aBlock instanceof BlockTorch && !(aBlock instanceof BlockRedstoneTorch);
+	}
 	public static boolean torch(ItemStack aStack) {
-		if (IL.GC_Torch_Glowstone.equal(aStack, T, T) || IL.AETHER_Torch_Ambrosium.equal(aStack, T, T) || IL.TC_Nitor.equal(aStack, F, T)) return T;
-		Block tBlock = block(aStack);
-		return tBlock instanceof BlockTorch && !(tBlock instanceof BlockRedstoneTorch);
+		return IL.TC_Nitor.equal(aStack, F, T) || torch(block(aStack), meta(aStack));
 	}
 	
 	public static boolean ammo(ItemStack aStack) {

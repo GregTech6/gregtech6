@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -207,6 +207,9 @@ public class Loader_Ores implements Runnable {
 		
 		rockset(MD.CHSL, "marble"                       , 0, "chisel.marble"        , OP.oreMarble              , MT.Marble);
 		rockset(MD.CHSL, "limestone"                    , 0, "chisel.limestone"     , OP.oreLimestone           , MT.Limestone);
+		
+		rockset(MD.NePl, "Blackstone"                   , 0, "nepl.blackstone"      , OP.oreBlackstone          , MT.Blackstone);
+		rockset(MD.NePl, "Basalt"                       , 0, "nepl.basalt"          , OP.oreBasalt              , MT.Basalt);
 		
 		rockset(MD.EtFu, "stone"                        , 1, "etfu.granite"         , OP.oreVanillagranite      , MT.Granite);
 		rockset(MD.EtFu, "stone"                        , 3, "etfu.diorite"         , OP.oreDiorite             , MT.Diorite);

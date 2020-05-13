@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -53,7 +53,7 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 	
 	public long mRedstone = 0, mLoss = 1;
 	public byte mRenderType = 0, mReceived = SIDE_UNDEFINED, mMode = 0;
-	public boolean mConnectedToNonWire = F;
+	public boolean mConnectedToNonWire = T;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {

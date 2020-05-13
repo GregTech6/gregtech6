@@ -1767,24 +1767,25 @@ public class CS {
 		, RC                = "Railcraft"
 
 		, IE                = "ImmersiveEngineering"
-
+		
 		, TE                = "ThermalExpansion"
 		, TE_FOUNDATION     = "ThermalFoundation"
 		, TE_DYNAMICS       = "ThermalDynamics"
-
+		
 		, AE                = "appliedenergistics2"
 		, MO                = "mo"
-
+		
 		, TFC               = "terrafirmacraft"
 		, TFCP              = "terrafirmacraftplus"
-
+		
 		, ZTONES            = "Ztones"
 		, CHSL              = "chisel"
-
+		
+		, NePl              = "netheriteplus"
 		, EtFu              = "etfuturum"
 		, BB                = "betterbeginnings"
 		, DYNAMIC_TREES     = "dynamictrees"
-
+		
 		, BbLC              = "BiblioCraft"
 		, CARP              = "CarpentersBlocks"
 		, BETTER_RECORDS    = "betterrecords"

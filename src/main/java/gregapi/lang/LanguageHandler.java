@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -147,6 +147,11 @@ public class LanguageHandler {
 		} else
 		if (aMaterial == MT.Stone) {
 			if (aPrefix == OP.rockGt)                                       return "Rock";
+		} else
+		if (aMaterial == MT.AncientDebris) {
+			if (aPrefix.mNameInternal.startsWith("ore"))                    return "Ancient Debris";
+			if (aPrefix.mNameInternal.startsWith("crushed"))                return aPrefix.mMaterialPre + "Ancient Debris";
+			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Netherite Scrap";
 		} else
 		if (aMaterial == MT.Netherrack) {
 			if (aPrefix == OP.rockGt)                                       return "Nether Rock";

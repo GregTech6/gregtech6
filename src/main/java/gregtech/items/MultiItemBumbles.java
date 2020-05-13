@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,23 +28,16 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.damage.DamageSources;
+import gregapi.data.*;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.ItemsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TC;
-import gregapi.data.TD;
 import gregapi.item.CreativeTab;
 import gregapi.item.bumble.IItemBumbleBee;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -306,7 +299,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 			return null;
 		case 103:
 			for (int j : tOrderY) for (int i : tOrderX) for (int k : tOrderZ) {
-				if (WD.block(aWorld, aX+i, aY+j, aZ+k, F) == Blocks.soul_sand) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
+				if (OM.is(OD.soulsand, ST.make(WD.block(aWorld, aX+i, aY+j, aZ+k, F), 1, W))) return new ChunkCoordinates(aX+i, aY+j, aZ+k);
 			}
 			return null;
 		}
