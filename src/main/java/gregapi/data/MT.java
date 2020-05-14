@@ -1117,7 +1117,7 @@ public class MT {
 	
 	
 	Sand                    = create        ( 8100, "Sand"                  , SET_SAND              , 250, 250, 200, 255).put(FURNACE, UNRECYCLABLE)                                                                                                                                                                                                                                                                                .setSmelting(Glass, U),
-	SoulSand                = create        ( 8101, "Soulsand"              , SET_SAND              , 100, 100,  80, 255)                                                                                                                                                                                                                                                                                                           ,
+	SoulSand                = dust          ( 8101, "Soulsand"              , SET_SAND              , 100, 100,  80, 255)                                                                                                                                                                                                                                                                                                           ,
 	SluiceSand              = oredust       ( 8102, "Sluice Sand"           , SET_SAND              , 165, 165, 120, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.TERRA, 1),
 	PlatinumGroupSludge     = oredust       ( 8103, "Platinum Group Sludge" , SET_SAND              ,  50,  50,  80, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.LUCRUM, 2),
 	
@@ -2486,6 +2486,7 @@ public class MT {
 			Nq                              .addOreByProducts(Nq_528                );
 			Ad                              .addOreByProducts(OREMATS.Magnetite     , Adamantine                );
 			Adamantine                      .addOreByProducts(OREMATS.Magnetite     , Ad                        );
+			AncientDebris                   .addOreByProducts(SoulSand              , NetherQuartz              );
 			OREMATS.Stibnite                .addOreByProducts(Sb                    );
 			Diamond                         .addOreByProducts(Graphite              );
 			Pyrope                          .addOreByProducts(Mg                    );

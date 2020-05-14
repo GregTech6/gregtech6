@@ -533,6 +533,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.bauxite"           , T, T,   2000, MT.OREMATS.Bauxite              , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
 		new WorldgenOresBedrock("ore.bedrock.cassiterite"       , T, T,   2000, MT.OREMATS.Cassiterite          , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
 		new WorldgenOresBedrock("ore.bedrock.chalcopyrite"      , T, T,   2000, MT.OREMATS.Chalcopyrite         , (Block)BlocksGT.FlowersA,  2, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.ancientdebris"     , T, T,   1000, MT.AncientDebris                , (Block)BlocksGT.FlowersA,  2, GEN_NETHER);
 		new WorldgenOresBedrock("ore.bedrock.naquadah"          , T, T,  10000, MT.Nq                           , (Block)BlocksGT.FlowersA,  7, GEN_MARS); // TODO Flower
 		new WorldgenOresBedrock("ore.bedrock.adamantine"        , T, T,  10000, MT.Adamantine                   , (Block)BlocksGT.FlowersA,  7, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS); // TODO Flower
 		

@@ -41,6 +41,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] NEI Fuel Lists are now no longer listing the confusing and irrelevant EU/t Value.
 [CHANGED] More Reactor Test Stuffs from Erik3003.
 [ADDED] Netherite things, such as Crucibles, Burning Boxes and all the Shelf Stuff. The Crucible Tier is same as Meteoric Steel. The good Netherite Tools are made by bathing Diamond in molten Netherite. The bad Netherite Tools are, well, not that good. Ancient Debris does generate in the Nether now as rare small Ore.
+[ADDED] Infinite Bedrock Veins for Ancient Debris in the Nether. Relatively high Probability compared to all other Bedrock Veins.
+[ADDED] Ancient Debris aka "Netherite Scraps" can now be used in the Massfabricator to make liquid Enderpearl. Which then can be used in a Replicator to make it into an actual Enderpearl. Dont ask me what sense it makes, the Massfabricator does it, not me.
+[ADDED] The HV Lightning Processor can be used to turn Blocks of Solid Netherite combined with a few other Ingredients into Netherstars.
 [ADDED] Uranium Hexaflouride Processing Chain by Erik3003. And fixed by Greg, because the Maths of the Recipes were "Perfectly Balanced without Exploits", except for the obvious dupes of every single Recipe added.
 [ADDED] Ownership Reset Config for people who locked themselves out of Stuff like Mechanical Safes in SinglePlayer.
 [ADDED] Small Cinnabar Ore to the Nether.
