@@ -1117,7 +1117,7 @@ public class MT {
 	
 	
 	Sand                    = create        ( 8100, "Sand"                  , SET_SAND              , 250, 250, 200, 255).put(FURNACE, UNRECYCLABLE)                                                                                                                                                                                                                                                                                .setSmelting(Glass, U),
-	SoulSand                = dust          ( 8101, "Soulsand"              , SET_SAND              , 100, 100,  80, 255)                                                                                                                                                                                                                                                                                                           ,
+	SoulSand                = oredust       ( 8101, "Soulsand"              , SET_SAND              , 100, 100,  80, 255)                                                                                                                                                                                                                                                                                                           ,
 	SluiceSand              = oredust       ( 8102, "Sluice Sand"           , SET_SAND              , 165, 165, 120, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.TERRA, 1),
 	PlatinumGroupSludge     = oredust       ( 8103, "Platinum Group Sludge" , SET_SAND              ,  50,  50,  80, 255)                                                                                                                                                                                                                                                                                                           .aspects(TC.LUCRUM, 2),
 	
@@ -1564,9 +1564,9 @@ public class MT {
 	Iffesal                 = oredust       ( 8743, "Iffesal"               , SET_SHINY             ,  14,  25, 171, 255).put(MAGICAL)                                                                                                                                                                                                                                                                                              .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 4),
 	
 	
-	AncientDebris           = oredust       ( 8744, "Ancient Debris"        , SET_DULL              , 110,  80,  90, 255).put(UNBURNABLE, WITHER_PROOF, VALUABLE, MELTING).qual(0, 1.0,   16,  3)                                                                                                                                                                                                                                   .aspects(TC.METALLUM, 2, TC.FABRICO, 2).heat(MeteoricIron),
-	Netherite               = alloymachine  ( 8745, "Netherite"                                     ,  80,  70,  80     ).put(UNBURNABLE, WITHER_PROOF, VALUABLE, MOLTEN).qual(2, 10.0,  500,  4)                                                                       .setMcfg( 1, Au             , 4*U, AncientDebris    , 4*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.FABRICO, 2, TC.LUCRUM, 2).alloyCentrifuge(MeteoricSteel),
-	NetherizedDiamond       = alloymachine  ( 8746, "Netherized Diamond"                            ,  90,  80,  90     ).put(UNBURNABLE, WITHER_PROOF, VALUABLE, COATED).qual(3, 12.0, 2560,  4)                                                                       .setMcfg( 4, Netherite      , 1*U, Diamond          , 4*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.FABRICO, 2, TC.LUCRUM, 2, TC.VITREUS, 2).alloyElectrolyzer(MeteoricSteel),
+	AncientDebris           = oredust       ( 8744, "Ancient Debris"        , SET_DULL              , 110,  80,  90, 255).put(       UNBURNABLE, WITHER_PROOF, VALUABLE, MELTING).qual(0, 1.0,   16,  3)                                                                                                                                                                                                                            .aspects(TC.METALLUM, 2, TC.FABRICO, 2).heat(MeteoricIron),
+	Netherite               = alloymachine  ( 8745, "Netherite"                                     ,  80,  70,  80     ).put(       UNBURNABLE, WITHER_PROOF, VALUABLE, MOLTEN).qual(2, 10.0,  500,  4)                                                                .setMcfg( 1, Au             , 4*U, AncientDebris    , 4*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.FABRICO, 2, TC.LUCRUM, 2).alloyCentrifuge(MeteoricSteel),
+	NetherizedDiamond       = alloymachine  ( 8746, "Netherized Diamond"                            ,  90,  80,  90     ).put(G_GEM, UNBURNABLE, WITHER_PROOF, VALUABLE, COATED).qual(3, 12.0, 2560,  4)                                                                .setMcfg( 4, Netherite      , 1*U, Diamond          , 4*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.FABRICO, 2, TC.LUCRUM, 2, TC.VITREUS, 2).alloyElectrolyzer(MeteoricSteel),
 	
 	
 	Desh                    = metalmachore  ( 8750, "Desh"                  , SET_DULL              ,  40,  40,  40     ).qual(3,  4.0,   1280,  3)                                                                                                                                                                                                                                                                                 .aspects(TC.METALLUM, 2, TC.ALIENIS, 1, TC.TELUM, 1).heat(Steel),
@@ -1841,6 +1841,7 @@ public class MT {
 			Signalum                .put(MD.TE);
 			Lumium                  .put(MD.TE);
 			RareEarth               .put(MD.TE);
+			Niter                   .put(MD.TE);
 			Basalz                  .put(MD.TE);
 			Blitz                   .put(MD.TE);
 			Blizz                   .put(MD.TE);
@@ -2487,6 +2488,7 @@ public class MT {
 			Ad                              .addOreByProducts(OREMATS.Magnetite     , Adamantine                );
 			Adamantine                      .addOreByProducts(OREMATS.Magnetite     , Ad                        );
 			AncientDebris                   .addOreByProducts(SoulSand              , NetherQuartz              );
+			SoulSand                        .addOreByProducts(Coal                  , NetherQuartz              , Niter                 );
 			OREMATS.Stibnite                .addOreByProducts(Sb                    );
 			Diamond                         .addOreByProducts(Graphite              );
 			Pyrope                          .addOreByProducts(Mg                    );

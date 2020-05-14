@@ -21,12 +21,15 @@ package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
+import static gregapi.util.CR.*;
 
+import gregapi.data.ANY;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.util.CR;
@@ -59,7 +62,9 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		// Too lazy to make another Compat Handler Class for this Mod ID.
 		if (MD.NePl.mLoaded) {
-			CR.delate(MD.NePl, "NetheriteIngot", "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
+			CR.delate(MD.NePl, "SoulTorch", "NetheriteIngot", "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
+			
+			CR.shaped(IL.NePl_Torch.get(4), DEF_NAC, "X", "S", 'X', OD.soulsand, 'S', OP.stick.dat(ANY.Wood));
 			
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_sword     , 1, 0), MT.Netherite.liquid(2*U4, T), NF, ST.make(MD.NePl, "ItemNetheriteSword" , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_pickaxe   , 1, 0), MT.Netherite.liquid(3*U4, T), NF, ST.make(MD.NePl, "NetheritePickaxe"   , 1, 0));
@@ -71,10 +76,10 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_leggings  , 1, 0), MT.Netherite.liquid(7*U4, T), NF, ST.make(MD.NePl, "NetheriteLegg"      , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_boots     , 1, 0), MT.Netherite.liquid(4*U4, T), NF, ST.make(MD.NePl, "NetheriteBoots"     , 1, 0));
 			
-			RM.biomass(ST.make(MD.NePl, "WarpedFungus", 8, 0));
+			RM.biomass(ST.make(MD.NePl, "WarpedFungus" , 8, 0));
 			RM.biomass(ST.make(MD.NePl, "CrimsonFungus", 8, 0));
-			RM.biomass(ST.make(MD.NePl, "CrimsonRoots", 8, 0));
-			RM.biomass(ST.make(MD.NePl, "WarpedRoots", 8, 0));
+			RM.biomass(ST.make(MD.NePl, "CrimsonRoots" , 8, 0));
+			RM.biomass(ST.make(MD.NePl, "WarpedRoots"  , 8, 0));
 			RM.biomass(ST.make(MD.NePl, "TwistingVines", 8, 0));
 		}
 		
