@@ -59,7 +59,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		// Too lazy to make another Compat Handler Class for this Mod ID.
 		if (MD.NePl.mLoaded) {
-			CR.delate(MD.NePl, "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
+			CR.delate(MD.NePl, "NetheriteIngot", "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
 			
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_sword     , 1, 0), MT.Netherite.liquid(2*U4, T), NF, ST.make(MD.NePl, "ItemNetheriteSword" , 1, 0));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(Items.diamond_pickaxe   , 1, 0), MT.Netherite.liquid(3*U4, T), NF, ST.make(MD.NePl, "NetheritePickaxe"   , 1, 0));

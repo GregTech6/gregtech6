@@ -2157,6 +2157,8 @@ public class MT {
 			Amordrine               .addEnchantmentForTools(Enchantment.fireAspect, 3);
 			MuspelheimPower         .addEnchantmentForTools(Enchantment.fireAspect, 3);
 			RedMatter               .addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Netherite               .addEnchantmentForTools(Enchantment.fireAspect, 3);
+			NetherizedDiamond       .addEnchantmentForTools(Enchantment.fireAspect, 3);
 			Infinity                .addEnchantmentForTools(Enchantment.fireAspect,10);
 			
 			Ad                      .addEnchantmentForTools(Enchantment.silkTouch, 1);
@@ -2249,6 +2251,7 @@ public class MT {
 			Ti                      .addEnchantmentForTools(Enchantment.sharpness, 3);
 			TitaniumGold            .addEnchantmentForTools(Enchantment.sharpness, 3);
 			TungstenSteel           .addEnchantmentForTools(Enchantment.sharpness, 3);
+			NetherizedDiamond       .addEnchantmentForTools(Enchantment.sharpness, 4);
 			HSSG                    .addEnchantmentForTools(Enchantment.sharpness, 4);
 			HSSE                    .addEnchantmentForTools(Enchantment.sharpness, 4);
 			HSSS                    .addEnchantmentForTools(Enchantment.sharpness, 4);
@@ -2285,6 +2288,9 @@ public class MT {
 			Vb                      .addEnchantmentForArmors(Enchantment.protection,10);
 			Ad                      .addEnchantmentForArmors(Enchantment.protection,10);
 			Infinity                .addEnchantmentForArmors(Enchantment.protection,10);
+			
+			Netherite               .addEnchantmentForArmors(Enchantment.fireProtection, 3);
+			NetherizedDiamond       .addEnchantmentForArmors(Enchantment.fireProtection, 5);
 			
 			Vyroxeres               .addEnchantmentForArmors(Enchantment.thorns, 3);
 			InfusedEntropy          .addEnchantmentForArmors(Enchantment.thorns, 3);
