@@ -244,6 +244,7 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	
 	@Override public byte getVisualData() {return (byte)(mStopped?mRunning?mMode|48:mMode|32:mRunning?mMode|16:mMode);}
 	@Override public byte getDefaultSide() {return SIDE_BOTTOM;}
+	@Override public byte getDefaultSecondSide() {return SIDE_BOTTOM;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}
 	
 	@Override

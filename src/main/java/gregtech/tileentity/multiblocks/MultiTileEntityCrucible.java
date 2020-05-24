@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -97,7 +97,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	private static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
 	private static double HEAT_RESISTANCE_BONUS = 1.10;
 	
-	protected boolean mAcidProof = F;
+	protected boolean mAcidProof = F, mMeltDown = F;
 	protected byte mDisplayedHeight = 0, mCooldown = 100;
 	protected short mDisplayedFluid = -1;
 	protected long mEnergy = 0, mTemperature = DEF_ENV_TEMP, oTemperature = 0;
@@ -114,6 +114,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperature = aNBT.getLong(NBT_TEMPERATURE);
 		if (aNBT.hasKey(NBT_TEMPERATURE+".old")) oTemperature = aNBT.getLong(NBT_TEMPERATURE+".old");
 		mContent = OreDictMaterialStack.loadList(NBT_MATERIALS, aNBT);
+		mMeltDown = (mTemperature+100 > getTemperatureMax(SIDE_ANY));
 	}
 	
 	@Override
@@ -360,6 +361,11 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			}
 			return;
 		}
+		
+		if (mMeltDown != (mTemperature+100 > getTemperatureMax(SIDE_ANY))) {
+			mMeltDown = !mMeltDown;
+			updateClientData();
+		}
 	}
 	
 	public boolean addMaterialStacks(List<OreDictMaterialStack> aList, long aTemperature) {
@@ -572,18 +578,29 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		return getClientDataPacketByteArray(T, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), mDisplayedHeight, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1));
+		return getClientDataPacketByteArray(T, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), mDisplayedHeight, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1), (byte)(mMeltDown ? 1 : 0));
 	}
 	
 	@Override
 	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
 		mDisplayedHeight = aData[5];
 		mDisplayedFluid = UT.Code.combine(aData[6], aData[7]);
+		if (aData.length >= 9) mMeltDown = (aData[8] != 0);
 		return super.receiveDataByteArray(aData, aNetworkHandler);
 	}
 	
+	public int mRenderedRGBA = UNCOLORED;
+	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
+		short[] tRGBaArray = UT.Code.getRGBaArray(mRGBa);
+		if (mMeltDown) {
+			tRGBaArray[0] = UT.Code.bind8(tRGBaArray[0]*2);
+			tRGBaArray[1] = UT.Code.bind8(tRGBaArray[1]*2);
+			tRGBaArray[2] = UT.Code.bind8(tRGBaArray[2]/2);
+		}
+		mRenderedRGBA = UT.Code.getRGBaInt(tRGBaArray);
+		
 		if (UT.Code.exists(mDisplayedFluid, OreDictMaterial.MATERIAL_ARRAY)) {
 			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedFluid];
 			if (tMaterial == MT.Lava) {
@@ -619,12 +636,12 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		switch(aRenderPass) {
-		case  0: case  2: return SIDES_AXIS_Z[aSide]||aSide==SIDE_BOTTOM?null:BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
-		case  1: case  3: return SIDES_AXIS_X[aSide]||aSide==SIDE_BOTTOM?null:BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
-		case  4: return SIDES_VERTICAL[aSide]?BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T)):null;
+		case  0: case  2: return SIDES_AXIS_Z[aSide]||aSide==SIDE_BOTTOM?null:BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRenderedRGBA, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
+		case  1: case  3: return SIDES_AXIS_X[aSide]||aSide==SIDE_BOTTOM?null:BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRenderedRGBA, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
+		case  4: return SIDES_VERTICAL[aSide]?BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRenderedRGBA, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T)):null;
 		case  5: return mDisplayedHeight != 0 && SIDES_TOP[aSide]?mTextureMolten:null;
 		}
-		return BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
+		return BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRenderedRGBA, T), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3], T));
 	}
 	
 	@Override

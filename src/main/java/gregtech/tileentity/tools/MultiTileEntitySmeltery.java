@@ -94,7 +94,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	private static long MAX_AMOUNT = 16*U, KG_PER_ENERGY = 100;
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
-	protected boolean mAcidProof = F;
+	protected boolean mAcidProof = F, mMeltDown = F;
 	protected byte mDisplayedHeight = 0, oDisplayedHeight = 0, mCooldown = 100;
 	protected short mDisplayedFluid = -1, oDisplayedFluid = -1;
 	protected long mEnergy = 0, mTemperature = DEF_ENV_TEMP, oTemperature = 0;
@@ -108,6 +108,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mTemperature = aNBT.getLong(NBT_TEMPERATURE);
 		if (aNBT.hasKey(NBT_TEMPERATURE+".old")) oTemperature = aNBT.getLong(NBT_TEMPERATURE+".old");
 		mContent = OreDictMaterialStack.loadList(NBT_MATERIALS, aNBT);
+		mMeltDown = (mTemperature+100 > getTemperatureMax(SIDE_ANY));
 	}
 	
 	@Override
@@ -306,6 +307,11 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 			for (int j = 0, k = UT.Code.bindInt(mTemperature / 25); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
 			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
 			return;
+		}
+		
+		if (mMeltDown != (mTemperature+100 > getTemperatureMax(SIDE_ANY))) {
+			mMeltDown = !mMeltDown;
+			updateClientData();
 		}
 	}
 	
@@ -525,7 +531,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 	
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		if (aSendAll) return getClientDataPacketByteArray(T, mDisplayedHeight, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa));
+		if (aSendAll) return getClientDataPacketByteArray(T, mDisplayedHeight, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1), (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), (byte)(mMeltDown ? 1 : 0));
 		if (mDisplayedFluid != oDisplayedFluid) return getClientDataPacketByteArray(F, mDisplayedHeight, UT.Code.toByteS(mDisplayedFluid, 0), UT.Code.toByteS(mDisplayedFluid, 1));
 		return getClientDataPacketByteArray(F, mDisplayedHeight);
 	}
@@ -535,12 +541,24 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 		mDisplayedHeight = aData[0];
 		if (aData.length >= 3) mDisplayedFluid = UT.Code.combine(aData[1], aData[2]);
 		if (aData.length >= 6) mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[3]), UT.Code.unsignB(aData[4]), UT.Code.unsignB(aData[5])});
+		if (aData.length >= 7) mMeltDown = (aData[6] != 0);
 		return T;
 	}
 	
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
-		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid, UT.Code.getRGBaArray(mRGBa), mMaterial.contains(TD.Properties.GLOWING));
+		short[] tRGBaArray = UT.Code.getRGBaArray(mRGBa);
+		boolean tGlow = F;
+		if (mMeltDown) {
+			tRGBaArray[0] = UT.Code.bind8(tRGBaArray[0]*2);
+			tRGBaArray[1] = UT.Code.bind8(tRGBaArray[1]*2);
+			tRGBaArray[2] = UT.Code.bind8(tRGBaArray[2]/2);
+			tGlow = T;
+		} else {
+			tGlow = mMaterial.contains(TD.Properties.GLOWING);
+		}
+		mTexture = BlockTextureDefault.get(mMaterial, OP.blockSolid, tRGBaArray, tGlow);
+		
 		if (UT.Code.exists(mDisplayedFluid, OreDictMaterial.MATERIAL_ARRAY)) {
 			OreDictMaterial tMaterial = OreDictMaterial.MATERIAL_ARRAY[mDisplayedFluid];
 			if (tMaterial == MT.Lava) {
