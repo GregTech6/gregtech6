@@ -153,7 +153,8 @@ public class LanguageHandler {
 			if (aPrefix == OP.crushed)                                      return "Recycled " + aMaterial.mNameLocal;
 			if (aPrefix == OP.crushedTiny)                                  return "Tiny Recycled " + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("crushed"))                return aPrefix.mMaterialPre + aMaterial.mNameLocal;
-			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Netherite Scrap";
+			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Netherite Scrap Powder";
+			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + "Netherite Scrap";
 		} else
 		if (aMaterial == MT.SoulSand) {
 			if (aPrefix.mNameInternal.startsWith("ore"))                    return aMaterial.mNameLocal;
