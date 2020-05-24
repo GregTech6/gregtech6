@@ -509,7 +509,7 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		// Well Netherite Plus very special with its Compat Items... This is WAY too late in the loading Cycle!
 		if (MD.NePl.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.dust, MT.AncientDebris, ST.make(MD.NePl, "AncientDust", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.dust, MT.AncientDebris, ST.make(MD.NePl, "AncientDust", 1, 0), T, T, T);
 		}
 		
 		if (MD.BoP.mLoaded) {
