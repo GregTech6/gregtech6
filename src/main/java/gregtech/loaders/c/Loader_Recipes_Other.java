@@ -826,21 +826,21 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		
 		if (FL.Ender_TE.exists()) {
-		RM.Massfab   .addRecipe2(T,  16, 144    , ST.tag(1), OP.dustDiv72.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250    ));
-		RM.Massfab   .addRecipe2(T,  16, 144*  8, ST.tag(1), OP.dustTiny .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250*  8));
-		RM.Massfab   .addRecipe2(T,  16, 144* 18, ST.tag(1), OP.dustSmall.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 18));
-		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(1), OP.dust     .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 72));
-		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(1), OP.ingot    .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 72));
-		RM.Massfab   .addRecipe2(T,  16, 144*648, ST.tag(1), OP.blockDust.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250*648));
+		RM.Massfab   .addRecipe2(T,  16, 144    , ST.tag(1), OP.dustDiv72.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250    ), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144*  8, ST.tag(1), OP.dustTiny .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250*  8), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 18, ST.tag(1), OP.dustSmall.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 18), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(1), OP.dust     .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 72), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(1), OP.ingot    .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 72), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144*648, ST.tag(1), OP.blockDust.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250*648), ZL_IS);
 		RM.Replicator.addRecipe1(T,  16, 144    , ST.tag(0), FL.Ender_TE.make(250), NF, OP.gem.mat(MT.EnderPearl, 1));
 		RM.Lightning .addRecipe1(T, 512, 512, OP.blockSolid.mat(MT.Netherite, 1), FL.array(FL.Ender_TE.make(1000), FL.Oil_Soulsand.make(5000)), ZL_FS, OP.gem.mat(MT.NetherStar, 1));
 		}
-		RM.Massfab   .addRecipe2(T,  16, 144    , ST.tag(0), OP.dustDiv72.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L    ));
-		RM.Massfab   .addRecipe2(T,  16, 144*  8, ST.tag(0), OP.dustTiny .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L*  8));
-		RM.Massfab   .addRecipe2(T,  16, 144* 18, ST.tag(0), OP.dustSmall.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 18));
-		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(0), OP.dust     .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 72));
-		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(0), OP.ingot    .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 72));
-		RM.Massfab   .addRecipe2(T,  16, 144*648, ST.tag(0), OP.blockDust.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L*648));
+		RM.Massfab   .addRecipe2(T,  16, 144    , ST.tag(0), OP.dustDiv72.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L    ), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144*  8, ST.tag(0), OP.dustTiny .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L*  8), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 18, ST.tag(0), OP.dustSmall.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 18), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(0), OP.dust     .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 72), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(0), OP.ingot    .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 72), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144*648, ST.tag(0), OP.blockDust.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L*648), ZL_IS);
 		RM.Replicator.addRecipe1(T,  16, 144    , ST.tag(0), FL.Ender.make(L), NF, OP.gem.mat(MT.EnderPearl, 1));
 		RM.Lightning .addRecipe1(T, 512, 512, OP.blockSolid.mat(MT.Netherite, 1), FL.array(FL.Ender.make(L*4), FL.Oil_Soulsand.make(5000)), ZL_FS, OP.gem.mat(MT.NetherStar, 1));
 		
