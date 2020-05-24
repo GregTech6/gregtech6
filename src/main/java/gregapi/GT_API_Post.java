@@ -367,11 +367,6 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.plate  , MT.TritaniumAlloy, ST.make(MD.MO, "tritanium_plate", 1, 0));
 		}
 		
-		// Well Netherite Plus is on the List now too, but only for this one Item...
-		if (MD.NePl.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.dust, MT.AncientDebris, ST.make(MD.NePl, "AncientDust", 1, 0));
-		}
-		
 		// ThermalExpansion gets on this ShitList too I guess...
 		if (MD.TE.mLoaded) {
 			OM.data(MD.TE, "Tank", 1, 1, ANY.Cu     ,  U * 1, MT.Glass,  U * 4);
@@ -511,6 +506,11 @@ public class GT_API_Post extends Abstract_Mod {
 		if (DISABLE_ALL_IC2_MACERATOR_RECIPES   ) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
 		if (DISABLE_ALL_IC2_OREWASHER_RECIPES   ) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
 		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES  ) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
+		
+		// Well Netherite Plus very special with its Compat Items... This is WAY too late in the loading Cycle!
+		if (MD.NePl.mLoaded) {
+			OreDictManager.INSTANCE.setTarget(OP.dust, MT.AncientDebris, ST.make(MD.NePl, "AncientDust", 1, 0));
+		}
 		
 		if (MD.BoP.mLoaded) {
 			BlocksGT.FLOWERS.add(ST.block(MD.BoP, "flowers"));
