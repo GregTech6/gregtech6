@@ -366,7 +366,12 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.ingot  , MT.TritaniumAlloy, ST.make(MD.MO, "tritanium_ingot", 1, 0));
 			OreDictManager.INSTANCE.setTarget(OP.plate  , MT.TritaniumAlloy, ST.make(MD.MO, "tritanium_plate", 1, 0));
 		}
-
+		
+		// Well Netherite Plus is on the List now too, but only for this one Item...
+		if (MD.NePl.mLoaded) {
+			OreDictManager.INSTANCE.setTarget(OP.dust, MT.AncientDebris, ST.make(MD.NePl, "AncientDust", 1, 0));
+		}
+		
 		// ThermalExpansion gets on this ShitList too I guess...
 		if (MD.TE.mLoaded) {
 			OM.data(MD.TE, "Tank", 1, 1, ANY.Cu     ,  U * 1, MT.Glass,  U * 4);
