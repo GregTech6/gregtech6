@@ -41,6 +41,7 @@ import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.item.IPrefixItem;
@@ -308,7 +309,8 @@ public final class OreDictManager {
 		if (UT.Code.stringInvalid(aRegName)) return;
 		
 		// Fixing Thaumcraft checking for the wrong OreDict when chopping Wood with Golems. Oh and it doesn't check Wildcard either, so I'm gonna need to split that too.
-		if ("logWood".equals(aEvent.Name)) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe("woodLog", ST.copyMeta(i, aEvent.Ore)); else registerOreSafe("woodLog", aEvent.Ore);
+		// Also there is a huge Issue within Thaumcraft itself that makes the whole OreDict check impossible, I fixed that in CompatTC.
+		if (aEvent.Name.equals(OD.logWood.toString()) || aEvent.Name.equals(OD.logRubber.toString())) if (ST.meta_(aEvent.Ore) == W) for (int i = 0; i < 16; i++) registerOreSafe(OD.woodLog, ST.copyMeta(i, aEvent.Ore)); else registerOreSafe(OD.woodLog, aEvent.Ore);
 		
 		if (GT != null) {
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.

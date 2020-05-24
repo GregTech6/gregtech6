@@ -89,6 +89,7 @@ public enum OD {
 	, beamWood
 	, logWood
 	, logRubber
+	, woodLog
 	, flower
 	, bamboo
 	, record

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,19 +35,19 @@ public class ItemStackContainer {
 	
 	public ItemStackContainer(Item aItem, long aStackSize, long aMetaData) {
 		mItem = aItem;
-		mBlock = Block.getBlockFromItem(mItem);
+		mBlock = ST.block(mItem);
 		mStackSize = (byte)aStackSize;
 		mMetaData = (short)aMetaData;
 	}
 	public ItemStackContainer(Block aBlock, long aStackSize, long aMetaData) {
 		mBlock = aBlock;
-		mItem = Item.getItemFromBlock(mBlock);
+		mItem = ST.item(mBlock);
 		mStackSize = (byte)aStackSize;
 		mMetaData = (short)aMetaData;
 	}
 	public ItemStackContainer(long aID, long aStackSize, long aMetaData) {
-		mItem = Item.getItemById((int)aID);
-		mBlock = Block.getBlockFromItem(mItem);
+		mItem = ST.item(aID);
+		mBlock = ST.block(mItem);
 		mStackSize = (byte)aStackSize;
 		mMetaData = (short)aMetaData;
 	}

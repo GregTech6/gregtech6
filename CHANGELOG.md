@@ -22,12 +22,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.13.00: (Not released yet, I need to fix quite a few Bugs still...)
-[COMPAT] Netherite Plus Mod got Compatibility now. It backports Netherite to 1.7.10. Soulfire Torch Placement by Tools, Record Shelving, Blackstone, and the two Wood Types should all work in GregTech Stuff.
+[COMPAT] Netherite Plus Mod got Compatibility now. It backports Netherite to 1.7.10. Soulfire Torch Placement by Tools, Record Shelving, Blackstone, Biomass, and the two Wood Types should all work in GregTech Stuff, also Netherite Ingots are made the Crucible way now instead of Crafting Debris with Gold Ingots.
+[NOTE] I got a report that Riverwater, Swampwater and Oceanwater cannot be scanned with the Thaumometer, I can not replicate that Issue though, so I guess it is either fixed or something is wrong with their Modpack.
 [FIXED] Seems like QwertTech might have messed up the Recipes for putting Planks in a Bathing Pot to get Treated Wood. This Issue might be fixed now for Vanilla Planks.
 [FIXED] The Axe was still slowed down on my end, when TreeCapitator was actually installed, resulting in a Double Slowdown.
 [FIXED] Failing to Load Save Files in Singleplayer when you already loaded another World before.
 [FIXED] Pam's Harvestcraft Fishtrap Bait Recipe for Mixing Bowl had a lower amount of Output than intended.
-[FIXED] Thaumcraft Golems were not chopping GT6 Logs, because it checks for the wrong OreDict String.
+[FIXED] Thaumcraft Golems were not chopping GT6 Logs, because it checks for the wrong OreDict String, and because it checks for Block IDs using Block Objects which is kinda screwed up, so I had to fix that too.
 [FIXED] 7 Bits are definitely not enough to store Numbers that can go up to 12 Billion. Fusion Reactor Start Energy is now properly saved when unloaded.
 [FIXED] Terrafirmacraft Plus not being detected as Terrafirmacraft.
 [FIXED] Clay Ore that comes from Hematite Bedrock Drilling is now processable.
