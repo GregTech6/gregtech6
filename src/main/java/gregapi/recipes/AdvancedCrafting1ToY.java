@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.code.ICondition;
+import gregapi.data.MT;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
@@ -49,7 +50,7 @@ public class AdvancedCrafting1ToY implements ICraftingRecipeGT {
 	public final boolean mAutoCraftable;
 	public final int mOutputCount, mEmpty;
 	
-	public AdvancedCrafting1ToY(OreDictPrefix aInput, OreDictPrefix aOutput, int aOutputCount, boolean aAutoCraftable) {this(aInput, aOutput, aOutputCount, aAutoCraftable, ICondition.TRUE);}
+	public AdvancedCrafting1ToY(OreDictPrefix aInput, OreDictPrefix aOutput, int aOutputCount, boolean aAutoCraftable) {this(aInput, aOutput, aOutputCount, aAutoCraftable, MT.NULL.NOT);}
 	public AdvancedCrafting1ToY(OreDictPrefix aInput, OreDictPrefix aOutput, int aOutputCount, boolean aAutoCraftable, ICondition aCondition) {
 		mAutoCraftable = aAutoCraftable;
 		mCondition = aCondition;
@@ -188,7 +189,7 @@ public class AdvancedCrafting1ToY implements ICraftingRecipeGT {
 	public ItemStack getCraftingResult(InventoryCrafting aGrid) {
 		for (int i = 0, j = aGrid.getSizeInventory(); i < j; i++) {
 			OreDictItemData tData = OM.anydata(aGrid.getStackInSlot(i));
-			if (tData == null || tData.mMaterial == null) continue;
+			if (tData == null || tData.mMaterial == null || !mCondition.isTrue(tData.mMaterial)) continue;
 			return mOutput.mat(tData.mMaterial.mMaterial, mOutputCount);
 		}
 		return ERROR_OUTPUT.copy();

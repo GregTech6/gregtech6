@@ -21,8 +21,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.00: (Not released yet, I need to fix quite a few Bugs still...)
-[COMPAT] Netherite Plus Mod got Compatibility now. It backports Netherite to 1.7.10. Soulfire Torch Placement by Tools, Record Shelving, Blackstone, Biomass, and the two Wood Types should all work in GregTech Stuff, also Netherite Ingots are made the Crucible way now instead of Crafting Debris with Gold Ingots.
+6.13.00: (Not released yet, coming very soon)
+[COMPAT] Netherite Plus got Compatibility now. It backports Netherite to 1.7.10. Soulfire Torch Placement by Tools, Record Shelving, Blackstone, Biomass, and the two Wood Types should all work in GregTech Stuff, also Netherite Ingots are made the Crucible way now instead of Crafting Debris with Gold Ingots. https://www.curseforge.com/minecraft/mc-mods/netheriteplus
 [NOTE] I got a report that Riverwater, Swampwater and Oceanwater cannot be scanned with the Thaumometer, I can not replicate that Issue though, so I guess it is either fixed or something is wrong with their Modpack.
 [FIXED] Seems like QwertTech might have messed up the Recipes for putting Planks in a Bathing Pot to get Treated Wood. This Issue might be fixed now for Vanilla Planks.
 [FIXED] The Axe was still slowed down on my end, when TreeCapitator was actually installed, resulting in a Double Slowdown.
@@ -43,7 +43,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] More Reactor Test Stuffs from Erik3003.
 [CHANGED] Crucibles now glow when they are within 100 Kelvin of melting down.
 [ADDED] Netherite things, such as Crucibles, Burning Boxes and all the Shelf Stuff. The Crucible Tier is same as Meteoric Steel. The good Netherite Tools are made by bathing Diamond in molten Netherite. The bad Netherite Tools are, well, not that good. Ancient Debris does generate in the Nether now as rare small Ore.
-[ADDED] Infinite Bedrock Veins for Ancient Debris in the Nether. Relatively high Probability compared to all other Bedrock Veins.
+[ADDED] Infinite Bedrock Veins for Ancient Debris in the Nether. Relatively high Probability compared to all other Bedrock Veins. Will also exist without Netherrite Plus.
 [ADDED] Ancient Debris aka "Netherite Scraps" can now be used in the Massfabricator to make liquid Enderpearl. Which then can be used in a Replicator to make it into an actual Enderpearl. Dont ask me what sense it makes, the Massfabricator does it, not me.
 [ADDED] The HV Lightning Processor can be used to turn Blocks of Solid Netherite combined with a few other Ingredients into Netherstars.
 [ADDED] Uranium Hexaflouride Processing Chain by Erik3003. And fixed by Greg, because the Maths of the Recipes were "Perfectly Balanced without Exploits", except for the obvious dupes of every single Recipe added.

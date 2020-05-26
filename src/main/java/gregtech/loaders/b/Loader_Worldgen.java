@@ -576,9 +576,9 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.iridium"           , T,  20,  40,   6, MT.Ir                           , GEN_END, GEN_ASTEROIDS, GEN_ALFHEIM, GEN_AETHER);
 		new WorldgenOresSmall("ore.small.ambrosium"         , T,  30, 120,  64, MT.Ambrosium                    , GEN_AETHER);
 		new WorldgenOresSmall("ore.small.zanite"            , T,  30, 120,  16, MT.Zanite                       , GEN_AETHER);
-		new WorldgenOresSmall("ore.small.netherquartz"      , T,  30, 120,  64, MT.NetherQuartz                 , GEN_NETHER);
+		new WorldgenOresSmall("ore.small.netherquartz"      , T,  30, 120, 128, MT.NetherQuartz                 , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.cinnabar"          , T,  30,  90,  32, MT.OREMATS.Cinnabar             , GEN_NETHER);
-		new WorldgenOresSmall("ore.small.ancientdebris"     , T,   5,  70,   4, MT.AncientDebris                , GEN_NETHER, GEN_MARS);
+		new WorldgenOresSmall("ore.small.ancientdebris"     , T,   5,  90,  16, MT.AncientDebris                , GEN_NETHER, GEN_MARS);
 		new WorldgenOresSmall("ore.small.niter"             , T,  10,  60,  16, MT.Niter                        , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.sulfur_n"          , T,  10,  60,  32, MT.S                            , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.sulfur_o"          , T,   5,  15,   8, MT.S                            , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS);

@@ -524,7 +524,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.FierySteel           , NI, T, tConditionP));
 		}
 		for (OreDictMaterial tMat : ANY.Diamond.mToThis) {
-		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , MT.Netherite      .liquid(U4, T)  ,   0, 144, NF, MT.NetherizedDiamond     , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , MT.Netherite      .liquid(U4, T)  ,   0, 144, NF, MT.NetherizedDiamond    , NI, T, tConditionP));
 		}
 		
 		tConditionP = new And(SIMPLIFIABLE, ingotHot.NOT);
