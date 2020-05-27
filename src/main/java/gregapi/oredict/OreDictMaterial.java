@@ -89,7 +89,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 * <BR>[12000:12999] EmperorHadriusIII
 	 * <BR>[13000:13999] Qwertygiy
 	 * <BR>[14000:14999] Lauren
-	 * <BR>[15000:15999] Yuesha
+	 * <BR>[15000:15999] Yuesha / GT6U
 	 * <BR>[16000:16999] the next one who asks me (do not use unless I personally tell you to use this larger Range)
 	 * <BR>[17000:17999] Free
 	 * <BR>[18000:18999] Free

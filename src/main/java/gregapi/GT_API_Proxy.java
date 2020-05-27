@@ -1059,9 +1059,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (aEvent.entity instanceof EntityItem && !aEvent.entity.worldObj.isRemote) {
 			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity.worldObj, UT.Code.roundDown(aEvent.entity.posX), UT.Code.roundDown(aEvent.entity.posY), UT.Code.roundDown(aEvent.entity.posZ));
 			if (ST.valid(aStack) && aStack.stackSize > 0) {
-				if (ST.meta(aStack) == W) ST.meta(aStack, 0);
+				if (ST.meta_(aStack) == W || ST.item_(aStack) == Items.gold_nugget) ST.meta(aStack, 0);
 				if (((EntityItem)aEvent.entity).lifespan > 1200) {
-					if (aStack.getItem() == Items.egg || aStack.getItem() == Items.feather || aStack.getItem() == Items.apple) {
+					if (ST.item_(aStack) == Items.egg || ST.item_(aStack) == Items.feather || ST.item_(aStack) == Items.apple) {
 						((EntityItem)aEvent.entity).lifespan = 1200;
 					} else {
 						if (((EntityItem)aEvent.entity).lifespan == 6000) {
