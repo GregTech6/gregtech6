@@ -50,7 +50,6 @@ public class LoaderWoodDictionary implements Runnable {
 		OUT.println("GT_API_POST: Initialize Wood Dictionary.");
 		
 		// Initializing the List of Decorative Planks
-		PlankData.PLANKS[ 43] = ST.make(MD.TCFM, "TaintPlank", 1, 0);
 		Block tBlock = ST.block(MD.MoCr, "MoCWoodPlank");
 		PlankData.PLANKS[ 44] = ST.make(tBlock, 1, 0);
 		PlankData.PLANKS[ 45] = ST.make(tBlock, 1, 1);
@@ -187,6 +186,10 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.TC, "blockCustomPlant", 1, 1), new WoodEntry(IL.TC_Silverwood_Log.get(1), new BeamEntry(ST.make(BlocksGT.Beam3, 1, 1), new PlankEntry(IL.TC_Silverwood_Planks.get(1), ST.make(MD.TC, "blockCosmeticSlabWood", 1, 1), ST.make(MD.TC, "blockStairsSilverwood", 1, 0), MT.Silverwood, 47), 2, 1800), 2, 2000), ST.make(MD.TC, "blockMagicalLeaves", 1, 1));
 			CR.shaped(IL.TC_Greatwood_Planks .get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.TC, "blockCosmeticSlabWood", 1, 0));
 			CR.shaped(IL.TC_Silverwood_Planks.get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.TC, "blockCosmeticSlabWood", 1, 1));
+		}
+		// Taint Tree
+		if (MD.TCFM.mLoaded) {
+			new SaplingEntry(ST.make(MD.TCFM, "TaintSapling", 1, 0), new WoodEntry(ST.make(MD.TCFM, "TaintLog", 1, 0), new PlankEntry(ST.make(MD.TCFM, "TaintPlank", 1, 0), 43), 0, 0), ST.make(MD.TCFM, "TaintLeaves", 1, 0));
 		}
 		// Twilight Forest Trees
 		if (MD.TF.mLoaded) {

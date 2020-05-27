@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,5 +40,8 @@ public class Compat_Recipes_ForbiddenMagic extends CompatMods {
 		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.TCFM, "UmbralBush"   , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Black], 2), ST.make(MD.TCFM, "FMResource", 2, 1));
 		RM.ic2_extractor(ST.make(MD.TCFM, "InkFlower"   , 1, W), ST.make(MD.TCFM, "FMResource", 3, 1));
 		RM.ic2_extractor(ST.make(MD.TCFM, "UmbralBush"  , 1, W), ST.make(MD.TCFM, "FMResource", 6, 1));
+		
+		RM.rem_smelting(ST.make(MD.TCFM, "TaintLog", 1, W));
+		RM.CokeOven.addRecipe1(T, 0, 3600, ST.make(MD.TCFM, "TaintLog", 1, W), NF, FL.Oil_Creosote.make(666), ST.make(MD.TCFM, "TaintCoal", 1, 0), ST.make(MD.TCFM, "TaintCoal", 1, 0));
 	}
 }

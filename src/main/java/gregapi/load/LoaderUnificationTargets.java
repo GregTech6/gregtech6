@@ -149,6 +149,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Dilithium              , ST.make(MD.VULPES, "libVulpesproductcrystal", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Manasteel              , ST.make(MD.TCFM, "FMResource", 1, 2));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.ElvenElementium        , ST.make(MD.TCFM, "FMResource", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.NetherStar             , ST.make(MD.TCFM, "StarBlock", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.FierySteel             , ST.make(MD.TF, "item.fieryIngot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Knightmetal            , ST.make(MD.TF, "item.knightMetal", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Steeleaf               , ST.make(MD.TF, "item.steeleafIngot", 1, 0));
