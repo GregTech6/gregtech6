@@ -126,10 +126,12 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 								if (mTanks[0].isEmpty()) break;
 							}
 						} else {
-							mTanks[0].setEmpty();
+							// set remaining Fluid to null, in case the Fuel Type needs to be swapped out. But only if it was inactive for 64 ticks.
+							if (mActivity.mData == 0) mTanks[0].setEmpty();
 						}
 					}
 				} else {
+					// set remaining Fluid to null, because it is not valid Fuel anymore for whatever reason. MineTweaker happens to live Modpacks too sometimes. ;)
 					mTanks[0].setEmpty();
 				}
 			}

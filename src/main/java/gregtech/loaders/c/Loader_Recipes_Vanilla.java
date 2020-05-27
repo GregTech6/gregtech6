@@ -259,6 +259,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.generify(ST.make(Items.coal, 1, 0), OP.ingot.mat(MT.Coal    , 1));
 		RM.generify(ST.make(Items.coal, 1, 1), OP.ingot.mat(MT.Charcoal, 1));
 		
+		CR.shaped(OP.gem  .mat(MT.NetherizedDiamond, 1), DEF, "  ", " X", 'X', OP.ingot.dat(MT.NetherizedDiamond));
+		CR.shaped(OP.ingot.mat(MT.NetherizedDiamond, 1), DEF, "  ", " X", 'X', OP.gem  .dat(MT.NetherizedDiamond));
+		RM.generify(OP.gem  .mat(MT.NetherizedDiamond, 1), OP.ingot.mat(MT.NetherizedDiamond, 1));
+		RM.generify(OP.ingot.mat(MT.NetherizedDiamond, 1), OP.gem  .mat(MT.NetherizedDiamond, 1));
+		
 		
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_NAC_MIR                    , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.itemGlue);
 		CR.shaped(ST.make(Items.lead                    , 1, 0), DEF_NAC_MIR                    , " SS", " GS", "S  ", 'S', OD.itemString, 'G', OD.slimeball);

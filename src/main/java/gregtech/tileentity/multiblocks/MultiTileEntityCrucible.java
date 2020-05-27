@@ -595,9 +595,9 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		short[] tRGBaArray = UT.Code.getRGBaArray(mRGBa);
 		if (mMeltDown) {
-			tRGBaArray[0] = UT.Code.bind8(tRGBaArray[0]*2);
-			tRGBaArray[1] = UT.Code.bind8(tRGBaArray[1]*2);
-			tRGBaArray[2] = UT.Code.bind8(tRGBaArray[2]/2);
+			tRGBaArray[0] = UT.Code.bind8(tRGBaArray[0]*2+50);
+			tRGBaArray[1] = UT.Code.bind8(tRGBaArray[1]*2+50);
+			tRGBaArray[2] = UT.Code.bind8(tRGBaArray[2]/2+50);
 		}
 		mRenderedRGBA = UT.Code.getRGBaInt(tRGBaArray);
 		

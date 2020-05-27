@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -141,12 +141,12 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 									if (mTanks[0].isEmpty()) break;
 								}
 							} else {
-								// set remaining Fluid to null, in case the Fuel Type needs to be swapped out.
-								mTanks[0].setEmpty();
+								// set remaining Fluid to null, in case the Fuel Type needs to be swapped out. But only if it was inactive for 64 ticks.
+								if (mActivity.mData == 0) mTanks[0].setEmpty();
 							}
 						}
 					} else {
-						// set remaining Fluid to null, in case the Fuel Type needs to be swapped out.
+						// set remaining Fluid to null, because it is not valid Fuel anymore for whatever reason. MineTweaker happens to live Modpacks too sometimes. ;)
 						mTanks[0].setEmpty();
 					}
 				}

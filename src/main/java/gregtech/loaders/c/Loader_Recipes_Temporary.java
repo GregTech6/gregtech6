@@ -81,6 +81,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.biomass(ST.make(MD.NePl, "CrimsonRoots" , 8, 0));
 			RM.biomass(ST.make(MD.NePl, "WarpedRoots"  , 8, 0));
 			RM.biomass(ST.make(MD.NePl, "TwistingVines", 8, 0));
+			
+			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
 		}
 		
 		// Too lazy to make another Compat Handler Class for this Mod ID too.
