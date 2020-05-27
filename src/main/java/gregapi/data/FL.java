@@ -66,13 +66,16 @@ public enum FL {
 	, MatterNeutral             ("neutralmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	, MatterCharged             ("chargedmatter"                                            , LIQUID, ENCHANTED_EFFECT)
 	, XP                        ("xpjuice"                                                  , SIMPLE, LIQUID)
-
+	
 	, Air                       ("air"                                                      , SIMPLE, GAS, AIR)
-	, Air_Nether                ("netherair"                                                , SIMPLE, GAS, AIR)
 	, Air_End                   ("enderair"                                                 , SIMPLE, GAS, AIR)
-	, Oxygen                    ("oxygen"                                                   , SIMPLE, GAS)
-	, Liquid_Oxygen             ("liquidoxygen"                                             , SIMPLE, LIQUID)
-
+	, Air_Nether                ("netherair"                                                , SIMPLE, GAS, AIR)
+	
+	, Oxygen                    ("oxygen"                                                   , SIMPLE, GAS, OXYGEN)
+	, Reikygen                  ("rc oxygen"                                                , SIMPLE, GAS, OXYGEN)
+	, Liquid_Oxygen             ("liquidoxygen"                                             , SIMPLE, LIQUID, LIQUID_OXYGEN)
+	, Liquid_Reikygen           ("rc liquid oxygen"                                         , SIMPLE, LIQUID, LIQUID_OXYGEN)
+	
 	, Hydrogen                  ("hydrogen"                                                 , GAS)
 	, Deuterium                 ("deuterium"                                                , GAS)
 	, Tritium                   ("tritium"                                                  , GAS)
@@ -80,15 +83,15 @@ public enum FL {
 	, Helium_3                  ("helium-3"                                                 , GAS)
 	, Neon                      ("neon"                                                     , GAS)
 	, Argon                     ("argon"                                                    , GAS)
-
+	
 	, Steam                     ("steam"                                                    , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
 	, Steam_IC2                 ("ic2steam"                                                 , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
 	, Steam_IC2_Superheated     ("ic2superheatedsteam"                                      , SIMPLE, GAS, STEAM, POWER_CONDUCTING)
-
+	
 	, Coolant_IC2               ("ic2coolant"                                               , SIMPLE, LIQUID)
 	, Coolant_IC2_Hot           ("ic2hotcoolant"                                            , SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Freezing_Ooze             ("ooze"                                                     , SIMPLE, LIQUID, BROKEN)
-
+	
 	, Hot_Molten_Sodium         ("hotmoltensodium"                                          , SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Hot_Molten_Tin            ("hotmoltentin"                                             , SIMPLE, LIQUID, POWER_CONDUCTING)
 	, Hot_Heavy_Water           ("hotheavywater"                                            , SIMPLE, LIQUID, POWER_CONDUCTING)
@@ -107,6 +110,7 @@ public enum FL {
 	, River_Water               ("riverwater"                                               , SIMPLE, LIQUID, FOOD, WATER)
 	, Water_Hot                 ("ic2hotwater"                                              , SIMPLE, LIQUID, FOOD, WATER)
 	, Ice                       ("ice"                                                      , SIMPLE, LIQUID, FOOD, WATER, THERMOS)
+	, Heavy_Reiker              ("rc heavy water"                                           , SIMPLE, LIQUID)
 	, Mineralwater              ("potion.mineralwater"                                      , SIMPLE, LIQUID, FOOD)
 	, Mineralsoda               ("mineralsoda"                                              , SIMPLE, LIQUID, FOOD)
 	, Soda                      ("soda"                                                     , SIMPLE, LIQUID, FOOD)
@@ -382,7 +386,7 @@ public enum FL {
 	, Oil_Light2                ("lightoil"                                                 , SIMPLE, LIQUID)
 	, Oil_Heavy2                ("heavyoil"                                                 , SIMPLE, LIQUID)
 	, Oil_HotCrude              ("hotcrude"                                                 , SIMPLE, LIQUID)
-
+	
 	, Gas_Natural               ("gas_natural_gas"          , "naturalgas", "gas.natural"   , SIMPLE, GAS)
 	, Methane                   ("methane"                                                  , SIMPLE, GAS)
 	, Liquid_Methane            ("liquidmethane"                                            , SIMPLE, LIQUID, THERMOS)
@@ -395,11 +399,12 @@ public enum FL {
 	, Diesel                    ("diesel"                                                   , SIMPLE, LIQUID)
 	, Kerosine                  ("kerosine"                 , "kerosene"                    , SIMPLE, LIQUID)
 	, LPG                       ("lpg"                                                      , LIQUID)
-
+	
 	, BioFuel                   ("biofuel"                                                  , SIMPLE, LIQUID)
 	, BioDiesel                 ("biodiesel"                                                , SIMPLE, LIQUID)
-	, BioEthanol                ("bioethanol"                                               , SIMPLE, LIQUID)
-
+	, BioEthanol                ("bioethanol"               , "ethanol"                     , SIMPLE, LIQUID)
+	, Reikanol                  ("rc ethanol"                                               , SIMPLE, LIQUID)
+	
 	, Glue                      ("glue"                                                     , SIMPLE, LIQUID)
 	, Latex                     ("latex"                    , "molten.latex"                , SIMPLE, LIQUID)
 	, Concrete                  ("concrete"                 , "molten.concrete"             , SIMPLE, LIQUID)
@@ -408,9 +413,9 @@ public enum FL {
 	, Sludge                    ("sludge"                                                   , SIMPLE, LIQUID)
 	, Glass                     ("glass"                    , "molten.glass"                , SIMPLE, LIQUID)
 	, Sluice                    ("sluicejuice"                                              , SIMPLE, LIQUID)
-
+	
 	, Myst_Ink                  ("myst.ink.black"                                           , SIMPLE, LIQUID, ENCHANTED_EFFECT)
-
+	
 	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryTears                ("fierytears"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
@@ -420,7 +425,7 @@ public enum FL {
 	, Redstone                  ("molten.redstone"                                          , LIQUID) // 144 per Unit
 	, Redstone_TE               ("redstone"                                                 , LIQUID) // 100 per Unit
 	, Glowstone_TE              ("glowstone"                                                , GAS) // 250 per Unit
-
+	
 	, Calcite                   ("molten.calcite"                                           , LIQUID) // 144 per Unit
 
 	, Med_Heal                  ("medicine.heal"                                            , SIMPLE, LIQUID, BATH)
@@ -947,9 +952,9 @@ public enum FL {
 		}
 		return NI;
 	}
-
-
-
+	
+	
+	
 	/** Loads a FluidStack properly. */
 	public static FluidStack load (NBTTagCompound aNBT, String aTagName) {return aNBT == null ? null : load(aNBT.getCompoundTag(aTagName));}
 	/** Loads a FluidStack properly. */
@@ -962,12 +967,12 @@ public enum FL {
 		String tName = FluidsGT.FLUID_RENAMINGS.get(aName);
 		if (Code.stringValid(tName)) aName = tName;
 		Fluid aFluid = FluidRegistry.getFluid(aName);
-		if (aFluid == null) return FL.LubRoCant.is(aName) ? FL.Lubricant.make(aNBT.getInteger("Amount")) : null;
+		if (aFluid == null) return FL.LubRoCant.is(aName) ? FL.Lubricant.make(aNBT.getInteger("Amount")) : FL.Reikanol.is(aName) ? FL.BioEthanol.make(aNBT.getInteger("Amount")) : null;
 		FluidStack rFluid = new FluidStack(aFluid, aNBT.getInteger("Amount"));
 		if (aNBT.hasKey("Tag")) rFluid.tag = aNBT.getCompoundTag("Tag");
 		return rFluid;
 	}
-
+	
 	/** Saves a FluidStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, FluidStack aFluid) {
 		if (aNBT == null) aNBT = NBT.make();

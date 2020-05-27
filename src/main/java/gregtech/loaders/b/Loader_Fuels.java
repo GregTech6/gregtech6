@@ -68,30 +68,34 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 32,  1, FL.make("hotcrude", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		if (FL.exists("lightoil"))
 		FM.Burn         .addRecipe0(T, - 24,  1, FL.make("lightoil", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
-
+		
+		if (FL.exists("rc jet fuel")) {
+		FM.Burn         .addRecipe0(T, -128,  9, FL.make("rc jet fuel", 1)                   , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, -128, 12, FL.make("rc jet fuel", 1)                   , FL.make("carbondioxide", 1), ZL_IS);
+		}
 		if (FL.exists("kerosene")) {
 		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("kerosene", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("kerosene", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("kerosine", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("kerosine", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
-
+		
 		if (FL.exists("gasoline")) {
 		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("gasoline", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("gasoline", 1)                      , FL.make("carbondioxide", 1), ZL_IS);
 		}
 		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("petrol", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("petrol", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
-
+		
 		FM.Burn         .addRecipe0(T, - 64,  5, FL.make("diesel", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64,  7, FL.make("diesel", 1)                        , FL.make("carbondioxide", 1), ZL_IS);
-
+		
 		FM.Burn         .addRecipe0(T, - 64,  6, FL.make("fuel", 1)                          , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64,  8, FL.make("fuel", 1)                          , FL.make("carbondioxide", 1), ZL_IS);
-
+		
 		FM.Burn         .addRecipe0(T, - 64,  9, FL.make("nitrofuel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 64, 12, FL.make("nitrofuel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);
-
+		
 		for (String tAlcohol : FluidsGT.RUM) if (FL.exists(tAlcohol)) {
 		FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 16,  9, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
@@ -112,10 +116,18 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 16, 12, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 16, 18, FL.make(tAlcohol, 1)                        , FL.make("carbondioxide", 1), ZL_IS);
 		}
-
+		
 		FM.Burn         .addRecipe0(T, - 16,  9, FL.make("bioethanol", 1)                    , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 16, 12, FL.make("bioethanol", 1)                    , FL.make("carbondioxide", 1), ZL_IS);
-
+		
+		
+		FM.Burn         .addRecipe0(T, - 16,  9, FL.make("ethanol", 1)                       , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16, 12, FL.make("ethanol", 1)                       , FL.make("carbondioxide", 1), ZL_IS);
+		
+		if (FL.Reikanol.exists()) {
+		FM.Burn         .addRecipe0(T, - 16,  9, FL.Reikanol.make(1)                         , FL.make("carbondioxide", 1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 16, 12, FL.Reikanol.make(1)                         , FL.make("carbondioxide", 1), ZL_IS);
+		}
 		if (FL.BioDiesel.exists()) {
 		FM.Burn         .addRecipe0(T, - 16,  9, FL.make("biodiesel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);
 		FM.Engine       .addRecipe0(T, - 16, 12, FL.make("biodiesel", 1)                     , FL.make("carbondioxide", 1), ZL_IS);

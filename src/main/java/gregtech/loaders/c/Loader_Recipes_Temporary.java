@@ -110,6 +110,13 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify(FL.Redstone                      .make(36),FL.Redstone_TE.make(25));
 		RM.generify(FL.Lubricant                     .make(1), FL.LubRoCant.make(1));
 		RM.generify(FL.LubRoCant                     .make(1), FL.Lubricant.make(1));
+		RM.generify(FL.make("ethanol"                    , 1), FL.Reikanol.make(1));
+		RM.generify(FL.BioEthanol                    .make(1), FL.Reikanol.make(1));
+		RM.generify(FL.Reikanol                      .make(1), FL.BioEthanol.make(1));
+		RM.generify(FL.Oxygen                        .make(1), FL.Reikygen.make(1));
+		RM.generify(FL.Reikygen                      .make(1), FL.Oxygen.make(1));
+		RM.generify(FL.Liquid_Oxygen                 .make(1), FL.Liquid_Reikygen.make(1));
+		RM.generify(FL.Liquid_Reikygen               .make(1), FL.Liquid_Oxygen.make(1));
 		RM.generify(FL.Oil_Canola                    .make(2), FL.lube(1));
 		RM.generify(FL.make("molten.latex"               , 1), FL.Latex.make(1));
 		RM.generify(FL.Latex                         .make(1), FL.make("molten.latex", 1));

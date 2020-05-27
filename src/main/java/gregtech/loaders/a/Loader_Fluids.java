@@ -82,6 +82,7 @@ public class Loader_Fluids implements Runnable {
 		FL.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1);
 		FL.create("oil"                      , "Oil"                 , MT.Oil                , 1);
 		FL.create("fuel"                     , "Fuel Oil"            , MT.Fuel               , 1);
+		FL.create("kerosene"                 , "Kerosene"            , MT.Kerosine           , 1);
 		FL.create("kerosine"                 , "Kerosine"            , MT.Kerosine           , 1);
 		FL.create("diesel"                   , "Diesel"              , MT.Diesel             , 1);
 		FL.create("petrol"                   , "Petrol"              , MT.Petrol             , 1);
@@ -89,35 +90,36 @@ public class Loader_Fluids implements Runnable {
 		FL.create("biomass"                  , "Biomass"             , MT.Biomass            , 1);
 		FL.create("ic2coolant"               , "Industrial Coolant"  , null                  , 1);
 		FL.create("ic2hotcoolant"            , "Industrial Heatant"  , null                  , 1,   1000,  1200);
-		FL.create("hotmoltensodium"          , "Hot Molten Sodium"  , null      , 1, 1000, 1100);
-		FL.create("hotmoltentin"             , "Hot Molten Tin"     , null      , 1, 1000, 2800);
-		FL.create("hotmoltenlicl"            , "Hot Molten Lithium Chloride",    null       , 1, 1000, 1600);
-
-		FL.create("hotheavywater"            , "Hot Heavy Water"        , null      , 1, 1000, 600);
-		FL.create("hotsemiheavywater"        , "Hot Semiheavy Water"    , null      , 1, 1000, 550);
-		FL.create("hottritiatedwater"        , "Hot Tritiated Water"    , null      , 1, 1000, 650);
-
-		FL.create("hotcarbondioxide"         , "Hot Carbon Dioxide" , null      , 1, 1000, 950);
-		FL.create("hothelium"                , "Hot Helium"         , null      , 1, 1000, 1150);
-		FL.create("thoriumsalt"              , "Molten Thorium Salt"    , null                  , 1,   1000,  600);
-
+		FL.create("hotmoltensodium"          , "Hot Molten Sodium"   , null                  , 1,   1000,  1100);
+		FL.create("hotmoltentin"             , "Hot Molten Tin"      , null                  , 1,   1000,  2800);
+		FL.create("hotmoltenlicl"            , "Hot Molten Lithium Chloride", null           , 1,   1000,  1600);
+		
+		FL.create("hotheavywater"            , "Hot Heavy Water"     , null                  , 1,   1000,   600);
+		FL.create("hotsemiheavywater"        , "Hot Semiheavy Water" , null                  , 1,   1000,   550);
+		FL.create("hottritiatedwater"        , "Hot Tritiated Water" , null                  , 1,   1000,   650);
+		
+		FL.create("hotcarbondioxide"         , "Hot Carbon Dioxide"  , null                  , 1,   1000,   950);
+		FL.create("hothelium"                , "Hot Helium"          , null                  , 1,   1000,  1150);
+		FL.create("thoriumsalt"              , "Molten Thorium Salt" , null                  , 1,   1000,   600);
+		
 		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
+		FL.create("ethanol"                  , "Ethanol"             , MT.Ethanol            , 1);
 		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
 		FL.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);
 		FL.create("hotfryingoil"             , "Hot Frying Oil"      , MT.FryingOilHot       , 1,   1000,   400);
-
+		
 		FL.create("fieryblood"               , "Fiery Blood"         , null                  , 1,      L,  1500).setLuminosity(10);
 		FL.create("fierytears"               , "Fiery Tears"         , null                  , 1,      L,  1500).setLuminosity(10);
-
+		
 		DYE_FLUIDS[0].add(FL.make(FL.create("squidink"    , "Squid Ink"       , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
 		DYE_FLUIDS[4].add(FL.make(FL.create("indigo"      , "Indigo Dye"      , null, 1, L, 300, FluidsGT.SIMPLE, FluidsGT.DYE), L));
-
+		
 		IIconContainer
 		tDyeWaterMixed  = new Textures.BlockIcons.CustomIcon("fluids/dyes.water"),
 		tDyeFlower      = new Textures.BlockIcons.CustomIcon("fluids/dyes.flower"),
 		tDyeChemical    = new Textures.BlockIcons.CustomIcon("fluids/dyes.chemical"),
 		tDyedCFoam      = new Textures.BlockIcons.CustomIcon("fluids/cfoam");
-
+		
 		for (byte i = 0; i < 16; i++) {
 			DYE_FLUIDS[i].add(DYE_FLUIDS_WATER      [i] = FL.make(FL.create("dye.watermixed." + DYE_OREDICTS_POST[i].toLowerCase(), tDyeWaterMixed    , "Water Mixed " + DYE_NAMES[i] + " Dye"    , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
 			DYE_FLUIDS[i].add(DYE_FLUIDS_FLOWER     [i] = FL.make(FL.create("dye.flower."     + DYE_OREDICTS_POST[i].toLowerCase(), tDyeFlower        , DYE_NAMES[i] + " Flower Dye"              , null, DYES[i], 1,   L, 300, NI, NI, 0, FluidsGT.SIMPLE, FluidsGT.DYE), L));
@@ -125,9 +127,9 @@ public class Loader_Fluids implements Runnable {
 			DYED_C_FOAMS                            [i] = FL.make(FL.create("cfoam."          + DYE_OREDICTS_POST[i].toLowerCase(), tDyedCFoam        , DYE_NAMES[i] + " C-Foam"                  , null, DYES[i], 1, 100, 300, NI, NI, 0), 100);
 			DYED_C_FOAMS_OWNED                      [i] = FL.make(FL.create("cfoam.owned."    + DYE_OREDICTS_POST[i].toLowerCase(), tDyedCFoam        , "Advanced " + DYE_NAMES[i] + " C-Foam"    , null, DYES[i], 1, 100, 300, NI, NI, 0), 100);
 		}
-
+		
 		//-----
-
+		
 		MT.Pyrotheum.liquid(FL.make("pyrotheum", 250));
 		MT.Cryotheum.liquid(FL.make("cryotheum", 250));
 		MT.Petrotheum.liquid(FL.make("petrotheum", 250));

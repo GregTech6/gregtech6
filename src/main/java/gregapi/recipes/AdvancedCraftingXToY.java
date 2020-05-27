@@ -220,7 +220,7 @@ public class AdvancedCraftingXToY implements ICraftingRecipeGT {
 	public ItemStack getCraftingResult(InventoryCrafting aGrid) {
 		for (int i = 0, j = aGrid.getSizeInventory(); i < j; i++) {
 			OreDictItemData tData = OM.anydata(aGrid.getStackInSlot(i));
-			if (tData == null || tData.mMaterial == null || !mCondition.isTrue(tData.mMaterial)) continue;
+			if (tData == null || tData.mMaterial == null || !mCondition.isTrue(tData.mMaterial.mMaterial)) continue;
 			return mOutput.mat(tData.mMaterial.mMaterial, mOutputCount);
 		}
 		return ERROR_OUTPUT.copy();

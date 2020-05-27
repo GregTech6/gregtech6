@@ -1385,6 +1385,8 @@ public class CS {
 		, GAS = new HashSetNoNulls<>()
 		, PLASMA = new HashSetNoNulls<>()
 		, AIR = new HashSetNoNulls<>()
+		, OXYGEN = new HashSetNoNulls<>()
+		, LIQUID_OXYGEN = new HashSetNoNulls<>()
 		, ENCHANTED_EFFECT = new HashSetNoNulls<>()
 		, NONSTANDARD = new HashSetNoNulls<>()
 		, BROKEN = new HashSetNoNulls<>()

@@ -28,6 +28,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
+import gregapi.data.CS.FluidsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -122,11 +123,13 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				}
 			}
 			
+			for (String tFluid : FluidsGT.LIQUID_OXYGEN) if (FL.exists(tFluid)) {
 			if (IL.GC_OxyTank_7.exists())
-			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_7  .wild(1)), ST.array(IL.GC_OxyTank_7  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))), ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_1  .wild(1)), ST.array(IL.GC_OxyTank_1  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units( 900, 2700, 250, T))), ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_2  .wild(1)), ST.array(IL.GC_OxyTank_2  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(1800, 2700, 250, T))), ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_3  .wild(1)), ST.array(IL.GC_OxyTank_3  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(2700, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_7  .wild(1)), ST.array(IL.GC_OxyTank_7  .get(1)), null, null, FL.array(FL.make(tFluid, UT.Code.units(4500, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_1  .wild(1)), ST.array(IL.GC_OxyTank_1  .get(1)), null, null, FL.array(FL.make(tFluid, UT.Code.units( 900, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_2  .wild(1)), ST.array(IL.GC_OxyTank_2  .get(1)), null, null, FL.array(FL.make(tFluid, UT.Code.units(1800, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_3  .wild(1)), ST.array(IL.GC_OxyTank_3  .get(1)), null, null, FL.array(FL.make(tFluid, UT.Code.units(2700, 2700, 250, T))), ZL_FS, 64, 16, 0);    
+			}
 		}
 		if (MD.GC_PLANETS.mLoaded) {
 			OUT.println("GT_Mod: Doing Galacticraft Planets Recipes.");
@@ -207,10 +210,12 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				RM.Bath.addRecipe1(T, 0, 16, ST.make(MD.GC_GALAXYSPACE, "futureglass", 1, W), FL.mul(tDye, 1, 16, T), NF, ST.make(MD.GC_GALAXYSPACE, "futureglasses", 1, i));
 			}
 			
-			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_4  .wild(1)), ST.array(IL.GC_OxyTank_4  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(3500, 2700, 250, T))), ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_5  .wild(1)), ST.array(IL.GC_OxyTank_5  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(4000, 2700, 250, T))), ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_6  .wild(1)), ST.array(IL.GC_OxyTank_6  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))), ZL_FS, 64, 16, 0);
-			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_Env.wild(1)), ST.array(IL.GC_OxyTank_Env.get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units( 500, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			for (String tFluid : FluidsGT.LIQUID_OXYGEN) if (FL.exists(tFluid)) {
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_4  .wild(1)), ST.array(IL.GC_OxyTank_4  .get(1)), null, null, FL.array(FL.make(tFluid, UT.Code.units(3500, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_5  .wild(1)), ST.array(IL.GC_OxyTank_5  .get(1)), null, null, FL.array(FL.make(tFluid, UT.Code.units(4000, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_6  .wild(1)), ST.array(IL.GC_OxyTank_6  .get(1)), null, null, FL.array(FL.make(tFluid, UT.Code.units(4500, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_Env.wild(1)), ST.array(IL.GC_OxyTank_Env.get(1)), null, null, FL.array(FL.make(tFluid, UT.Code.units( 500, 2700, 250, T))), ZL_FS, 64, 16, 0);
+			}
 		}
 	}
 }

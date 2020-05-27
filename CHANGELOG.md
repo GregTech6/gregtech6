@@ -13,12 +13,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
-Nothing (I tend to only add finished Stuff to the Changelog).
+6.13.01: (Not released yet, super soon because hotfix)
+[FIXED] a Bug that crashes every single Crafting Recipe, sorry about that lol.
 
 
 6.13.00:
