@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -79,7 +79,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	
 	@Override
 	public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float hitX, float hitY, float hitZ) {
-		for (byte tSide : ALL_SIDES_VALID) if (FL.fill(WD.te(aWorld, aX, aY, aZ, tSide, T), FL.make(FluidRegistry.getFluid(ST.meta_(aStack)), Integer.MAX_VALUE), T) > 0) return T;
+		for (byte tSide : ALL_SIDES_VALID) if (FL.fill(WD.te(aWorld, aX, aY, aZ, tSide, T), FL.make(FL.fluid(ST.meta_(aStack)), Integer.MAX_VALUE), T) > 0) return T;
 		return F;
 	}
 	
@@ -87,7 +87,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	@SuppressWarnings("unchecked")
 	public void addInformation(ItemStack aStack, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		NBTTagCompound aNBT = aStack.getTagCompound();
-		Fluid aFluid = FluidRegistry.getFluid(ST.meta_(aStack));
+		Fluid aFluid = FL.fluid(ST.meta_(aStack));
 		if (aFluid == null) {
 			aList.add(LH.Chat.BLINKING_RED + "CLIENTSIDE FLUID IS NULL!!!" + LH.Chat.GRAY);
 		} else if (FL.Error.is(aFluid)) {
@@ -257,7 +257,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack aStack, int aRenderPass) {
-		Fluid aFluid = FluidRegistry.getFluid(ST.meta_(aStack));
+		Fluid aFluid = FL.fluid(ST.meta_(aStack));
 		if (aFluid == null) return 16777215;
 		Block tBlock = aFluid.getBlock();
 		return tBlock != null && tBlock != NB ? tBlock.getRenderColor(0) : aFluid.getColor();
@@ -270,20 +270,21 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	
 	@Override
 	public String getUnlocalizedName(ItemStack aStack) {
-		if (aStack != null) return FL.name(FluidRegistry.getFluid(ST.meta_(aStack)), F);
+		if (aStack != null) return FL.name(FL.fluid(ST.meta_(aStack)), F);
 		return "";
 	}
 	
 	@Override
 	public String getItemStackDisplayName(ItemStack aStack) {
-		if (aStack != null) return FL.name(FluidRegistry.getFluid(ST.meta_(aStack)), T);
-		return "";
+		if (aStack == null) return "";
+		Fluid tFluid = FL.fluid(ST.meta_(aStack));
+		return tFluid == null ? "INVALID FLUID ID!!!" : tFluid.getName().startsWith("rc ") ? "Reika's " + FL.name(tFluid, T) : FL.name(tFluid, T);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack aStack, int aRenderPass) {
-		Fluid aFluid = FluidRegistry.getFluid(ST.meta_(aStack));
+		Fluid aFluid = FL.fluid(ST.meta_(aStack));
 		return aFluid != null && FluidsGT.ENCHANTED_EFFECT.contains(aFluid.getName());
 	}
 	
@@ -341,7 +342,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	
 	@Override
 	public FluidStack getFluid(ItemStack aStack) {
-		Fluid tFluid = FluidRegistry.getFluid(ST.meta_(aStack));
+		Fluid tFluid = FL.fluid(ST.meta_(aStack));
 		if (tFluid == null) return null;
 		FluidStack rFluid = null;
 		NBTTagCompound aNBT = aStack.getTagCompound();

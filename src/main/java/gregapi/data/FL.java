@@ -594,7 +594,7 @@ public enum FL {
 	public static String regName (FluidStack aFluid) {return aFluid == null ? null : regName_(aFluid);}
 	public static String regName_(FluidStack aFluid) {return regName(aFluid.getFluid());}
 	public static String regName (Fluid aFluid) {return aFluid == null ? null : regName_(aFluid);}
-	public static String regName_(Fluid aFluid) {return FluidRegistry.getFluidName(aFluid);}
+	public static String regName_(Fluid aFluid) {return aFluid.getName();}
 
 	public static short id (IFluidTank aTank) {return aTank == null ? -1 : id_(aTank);}
 	public static short id_(IFluidTank aTank) {return id(aTank.getFluid());}
@@ -785,44 +785,46 @@ public enum FL {
 	public static long move_(@SuppressWarnings("rawtypes") Iterable aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo) {return move_(aFrom, aTo, Integer.MAX_VALUE);}
 	public static long move (@SuppressWarnings("rawtypes") Iterable aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {return aFrom != null && aTo != null && aTo.mTileEntity instanceof IFluidHandler ? move_(aFrom, aTo, aMaxMoved) : 0;}
 	public static long move_(@SuppressWarnings("rawtypes") Iterable aFrom, @SuppressWarnings("rawtypes") DelegatorTileEntity aTo, long aMaxMoved) {if (aMaxMoved <= 0) return 0; long rAmount = 0; for (Object tFrom : aFrom) if (tFrom instanceof IFluidTank) rAmount += move_((IFluidTank)tFrom, aTo, aMaxMoved); return rAmount;}
-
-
+	
+	
 	public static String configName(FluidStack aFluid) {
 		return aFluid == null || aFluid.getFluid() == null ? "" : aFluid.getFluid().getName();
 	}
-
+	
 	public static String configNames(FluidStack... aFluids) {
 		String rString = "";
 		for (FluidStack tFluid : aFluids) rString += (tFluid == null ? "null;" : configName(tFluid) + ";");
 		return rString;
 	}
-
+	
 	public static String name(Fluid aFluid, boolean aLocalized) {
 		if (aFluid == null) return "";
 		if (!aLocalized) return aFluid.getUnlocalizedName();
 		if (aFluid instanceof FluidGT) return LH.get(aFluid.getUnlocalizedName());
 		String rName = aFluid.getLocalizedName(make(aFluid, 0));
-		if (rName.contains("fluid.") || rName.contains("tile.")) return Code.capitalise(rName.replaceAll("fluid.", "").replaceAll("tile.", ""));
+		if (rName.startsWith("fluid.") || rName.startsWith("tile.") || rName.startsWith("rc ")) {
+			return Code.capitaliseWords(rName.replaceFirst("fluid.", "").replaceFirst("tile.", "").replaceFirst("rc ", ""));
+		}
 		return rName;
 	}
-
+	
 	public static String name(FluidStack aFluid, boolean aLocalized) {
 		return aFluid == null ? "" : name(aFluid.getFluid(), aLocalized);
 	}
-
+	
 	public static String name(IFluidTank aTank, boolean aLocalized) {
 		return aTank == null ? "" : name(aTank.getFluid(), aLocalized);
 	}
-
+	
 	public static FluidStack[] copy(FluidStack... aFluids) {
 		FluidStack[] rStacks = new FluidStack[aFluids.length];
 		for (int i = 0; i < aFluids.length; i++) if (aFluids[i] != null) rStacks[i] = aFluids[i].copy();
 		return rStacks;
 	}
-
+	
 	public static final Map<ItemStackContainer, FluidContainerData> FULL_TO_DATA = new ItemStackMap<>();
 	public static final Map<ItemStackContainer, Map<String, FluidContainerData>> EMPTY_TO_FLUID_TO_DATA = new ItemStackMap<>();
-
+	
 	public static void reg(FluidStack aFluid, ItemStack aFull, ItemStack aEmpty) {
 		reg(aFluid, aFull, aEmpty, F);
 	}
