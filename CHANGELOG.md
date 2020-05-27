@@ -21,9 +21,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.00: (Not released yet, coming very soon)
-[COMPAT] Netherite Plus got Compatibility now. It backports Netherite to 1.7.10. Soulfire Torch Placement by Tools, Record Shelving, Blackstone, Biomass, and the two Wood Types should all work in GregTech Stuff, also Netherite Ingots are made the Crucible way now instead of Crafting Debris with Gold Ingots. https://www.curseforge.com/minecraft/mc-mods/netheriteplus
+6.13.00:
+[NOTE] Sorry for letting this one take so long.
 [NOTE] I got a report that Riverwater, Swampwater and Oceanwater cannot be scanned with the Thaumometer, I can not replicate that Issue though, so I guess it is either fixed or something is wrong with their Modpack.
+[COMPAT] Netherite Plus got Compatibility now. It backports Netherite to 1.7.10. Soulfire Torch Placement by Tools, Record Shelving, Blackstone, Biomass, and the two Wood Types should all work in GregTech Stuff, also Netherite Ingots are made the Crucible way now instead of Crafting Debris with Gold Ingots. https://www.curseforge.com/minecraft/mc-mods/netheriteplus
 [FIXED] Seems like QwertTech might have messed up the Recipes for putting Planks in a Bathing Pot to get Treated Wood. This Issue might be fixed now for Vanilla Planks.
 [FIXED] The GT6 Axe was still slowed down on my end, when TreeCapitator was actually installed, resulting in a Double Slowdown.
 [FIXED] Heat Exchangers and Diesel Motors were wasting Fuel in certain Situations. Typically when they were operated while constantly out of Fuel.
