@@ -17,8 +17,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.01: (Not released yet, super soon because hotfix)
+6.13.01:
 [FIXED] a Bug that crashes every single Crafting Recipe, sorry about that lol.
+[FIXED] Some Localisation Issues with Reika's Fluids, it should be fine now. It will work with all other Unlocalized Fluids too, so GT6 will display the most proper Fluid Name that it can display now.
 
 
 6.13.00:
