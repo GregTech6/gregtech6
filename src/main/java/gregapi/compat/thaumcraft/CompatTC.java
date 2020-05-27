@@ -141,23 +141,27 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	
 	@Override
 	public void onIDChanging(FMLModIdMappingEvent aEvent) {
-		// This fixes the frikkin Axe, so it can use OreDict Logs, which is broken in way too many ways... especially after the Block ID change of Vanilla MC that did not get ported properly into Thaumcraft.
-		ItemElementalAxe.oreDictLogs.clear();
-		// Wildcard Logs of this type are registered with all 16 MetaDatas so this should take care of most.
-		for (ItemStack tStack : OreDictManager.getOres(OD.woodLog, T)) {
-			Block tBlock = ST.block(tStack);
-			if (tBlock != NB) {
-				ItemElementalAxe.oreDictLogs.add(Arrays.asList(new Object[] {tBlock, Integer.valueOf(ST.meta(tStack))}));
+		try {
+			// This fixes the frikkin Axe, so it can use OreDict Logs, which is broken in way too many ways... especially after the Block ID change of Vanilla MC that did not get ported properly into Thaumcraft.
+			ItemElementalAxe.oreDictLogs.clear();
+			// Wildcard Logs of this type are registered with all 16 MetaDatas so this should take care of most.
+			for (ItemStack tStack : OreDictManager.getOres(OD.woodLog, T)) {
+				Block tBlock = ST.block(tStack);
+				if (tBlock != NB) {
+					ItemElementalAxe.oreDictLogs.add(Arrays.asList(new Object[] {tBlock, Integer.valueOf(ST.meta(tStack))}));
+				}
 			}
-		}
-		// While not taking care of most Log Rotations, this should still work and fill in some gaps.
-		for (ItemStackContainer tStack : WoodDictionary.WOODS.keySet()) if (tStack.mBlock != NB) {
-			if (tStack.mMetaData == W) {
-				for (int i = 0; i < 16; i++)
-				ItemElementalAxe.oreDictLogs.add(Arrays.asList(new Object[] {tStack.mBlock, Integer.valueOf(i)}));
-			} else {
-				ItemElementalAxe.oreDictLogs.add(Arrays.asList(new Object[] {tStack.mBlock, Integer.valueOf(tStack.mMetaData)}));
+			// While not taking care of most Log Rotations, this should still work and fill in some gaps.
+			for (ItemStackContainer tStack : WoodDictionary.WOODS.keySet()) if (tStack.mBlock != NB) {
+				if (tStack.mMetaData == W) {
+					for (int i = 0; i < 16; i++)
+					ItemElementalAxe.oreDictLogs.add(Arrays.asList(new Object[] {tStack.mBlock, Integer.valueOf(i)}));
+				} else {
+					ItemElementalAxe.oreDictLogs.add(Arrays.asList(new Object[] {tStack.mBlock, Integer.valueOf(tStack.mMetaData)}));
+				}
 			}
+		} catch (NoClassDefFoundError e) {
+			// Well, Axe doesn't exist.
 		}
 	}
 	

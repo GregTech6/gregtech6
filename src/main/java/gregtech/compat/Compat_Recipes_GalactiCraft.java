@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -122,6 +122,8 @@ public class Compat_Recipes_GalactiCraft extends CompatMods {
 				}
 			}
 			
+			if (IL.GC_OxyTank_7.exists())
+			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_7  .wild(1)), ST.array(IL.GC_OxyTank_7  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(4500, 2700, 250, T))), ZL_FS, 64, 16, 0);
 			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_1  .wild(1)), ST.array(IL.GC_OxyTank_1  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units( 900, 2700, 250, T))), ZL_FS, 64, 16, 0);
 			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_2  .wild(1)), ST.array(IL.GC_OxyTank_2  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(1800, 2700, 250, T))), ZL_FS, 64, 16, 0);
 			RM.Canner.addFakeRecipe(F, ST.array(IL.GC_OxyTank_3  .wild(1)), ST.array(IL.GC_OxyTank_3  .get(1)), null, null, FL.array(FL.Liquid_Oxygen.make(UT.Code.units(2700, 2700, 250, T))), ZL_FS, 64, 16, 0);

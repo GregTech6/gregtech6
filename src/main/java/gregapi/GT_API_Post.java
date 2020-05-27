@@ -507,9 +507,13 @@ public class GT_API_Post extends Abstract_Mod {
 		if (DISABLE_ALL_IC2_OREWASHER_RECIPES   ) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
 		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES  ) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
 		
-		// Well Netherite Plus very special with its Compat Items... This is WAY too late in the loading Cycle!
+		// Well Netherite Plus is very special with its Compat Items... This is WAY too late in the loading Cycle!
 		if (MD.NePl.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.dust, MT.AncientDebris, ST.make(MD.NePl, "AncientDust", 1, 0), T, T, T);
+			IL.GC_OxyTank_7.set(ST.make(MD.NePl, "item.oxygenTankNetheriteFull", 1, 0));
+			OreDictManager.registerOreSafe(OP.dust      .dat(MT.AncientDebris), ST.make(MD.NePl, "AncientDust"        , 1, 0));
+			OreDictManager.registerOreSafe(OP.compressed.dat(MT.Netherite    ), ST.make(MD.NePl, "CompressedNetherite", 1, 0));
+			OreDictManager.INSTANCE.setTarget(OP.dust      , MT.AncientDebris , ST.make(MD.NePl, "AncientDust"        , 1, 0), T, T, T);
+			OreDictManager.INSTANCE.setTarget(OP.compressed, MT.Netherite     , ST.make(MD.NePl, "CompressedNetherite", 1, 0), T, T, T);
 		}
 		
 		if (MD.BoP.mLoaded) {
