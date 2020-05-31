@@ -14,18 +14,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Moderated Reactor Rods now lose durability twice as fast compared to what it was before.
+[ADDED] Config to disable the nutrition System for Sugar, Fat and Dehydration. Alcohol and Caffeine stay though, since those are definitely things people intentionally consume for buffs and such.
 
 
 6.13.01:
-[FIXED] a Bug that crashes every single Crafting Recipe, sorry about that lol.
-[FIXED] Some Localisation Issues with Reika's Fluids, it should be fine now. It will work with all other Unlocalized Fluids too, so GT6 will display the most proper Fluid Name that it can display now.
-
-
-6.13.00:
 [NOTE] Sorry for letting this one take so long.
 [NOTE] I got a report that Riverwater, Swampwater and Oceanwater cannot be scanned with the Thaumometer, I can not replicate that Issue though, so I guess it is either fixed or something is wrong with their Modpack.
 [COMPAT] Netherite Plus got Compatibility now. It backports Netherite to 1.7.10. Soulfire Torch Placement by Tools, Record Shelving, Blackstone, Biomass, and the two Wood Types should all work in GregTech Stuff, also Netherite Ingots are made the Crucible way now instead of Crafting Debris with Gold Ingots. https://www.curseforge.com/minecraft/mc-mods/netheriteplus
+[FIXED] Some Localisation Issues with Reika's Fluids, it should be fine now. It will work with all other Unlocalized Fluids too, so GT6 will display the most proper Fluid Name that it can display now.
 [FIXED] Seems like QwertTech might have messed up the Recipes for putting Planks in a Bathing Pot to get Treated Wood. This Issue might be fixed now for Vanilla Planks.
 [FIXED] The GT6 Axe was still slowed down on my end, when TreeCapitator was actually installed, resulting in a Double Slowdown.
 [FIXED] Heat Exchangers and Diesel Motors were wasting Fuel in certain Situations. Typically when they were operated while constantly out of Fuel.
@@ -57,6 +54,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED]
 Erik3003s Nuclear Reactor changes made it into this Version.
 He wrote a PDF as a Guide too, which I linked on the Downloads Page, and also here: https://gregtech.mechaenetia.com/1.7.10/gt6fission.pdf
+
+
+6.13.00:
+[BROKEN] DO NOT USE!
 
 
 6.12.02:

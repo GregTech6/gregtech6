@@ -508,6 +508,7 @@ public class GT_API extends Abstract_Mod {
 		FAST_LEAF_DECAY                         = tMainConfig.get("general", "FastLeafDecay"                    , T).getBoolean(T);
 		CONSTANT_ENERGY                         = tMainConfig.get("general", "UninterruptedEnergyRequirement"   , T).getBoolean(T);
 		FOOD_OVERDOSE_DEATH                     = tMainConfig.get("general", "DeathByOverdosingCertainFoods"    , T).getBoolean(T);
+		NUTRITION_SYSTEM                        = tMainConfig.get("general", "NutritionSystem"                  , T).getBoolean(T);
 		OWNERSHIP_RESET                         = tMainConfig.get("general", "ResetPlayerOwnershipOfGT6Blocks"  , F).getBoolean(F);
 		SPAWN_ZONE_MOB_PROTECTION               = tMainConfig.get("general", "PreventMobSpawnsCloseToSpawn"     , T).getBoolean(T);
 		DISABLE_GT6_CRAFTING_RECIPES            = tMainConfig.get("general", "DisableGT6CraftingRecipesDEBUG"   , F).getBoolean(F);

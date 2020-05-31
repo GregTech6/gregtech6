@@ -41,7 +41,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	public long mDurability = 0;
 	public int mNeutronSelf = 128, mNeutronOther = 128, mNeutronDiv = 8, mNeutronMax = 128;
 	public short mDepleted = -1;
-	public boolean mModerated = false, oModerated = false;
+	public boolean mModerated = F, oModerated = F;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -172,13 +172,12 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 			mNeutronMax *= 4;
 			mNeutronDiv -= 1;
 		} else if (!(MT.Sn.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid()) || MT.Na.mLiquid.isFluidEqual(aReactor.mTanks[0].getFluid()))) { //If in water based reactor
-			mModerated = true;
-			oModerated = true;
+			mModerated = oModerated = T;
 		}
 		aReactor.mNeutronCounts[aSlot] += mNeutronSelf;
 		long tEmission = mNeutronOther + UT.Code.divup(aReactor.oNeutronCounts[aSlot]-mNeutronSelf, mNeutronDiv);
 		long tDurabilityLoss = (tEmission * 4 + mNeutronSelf) < mNeutronMax ? 2000 : UT.Code.divup(8000 * (tEmission * 4 + mNeutronSelf), mNeutronMax);
-		if (oModerated) tDurabilityLoss *= 2;
+		if (oModerated) tDurabilityLoss *= 4;
 		mDurability = tDurabilityLoss > mDurability ? -1 : mDurability - tDurabilityLoss;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return UT.Code.bindInt(tEmission);
@@ -203,7 +202,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	// Gets called every 20 Ticks.
 	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
 		if (aModerated) {
-			mModerated = true;
+			mModerated = T;
 			UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		}
 		aReactor.mNeutronCounts[aSlot] += aNeutrons;
@@ -218,7 +217,7 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 	@Override
 	public boolean isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		oModerated = mModerated;
-		mModerated = false;
+		mModerated = F;
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 		return oModerated;
 	}
