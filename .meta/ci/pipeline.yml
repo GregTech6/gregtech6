@@ -111,10 +111,12 @@ resources:
 - name: post-forum-api
   type: http-api
   source:
+    headers:
+      Api-Key: ((forum.api_key))
+      Api-Username: ((forum.api_username))
     method: POST
     ENDPOINT: ((forum.endpoint))
-    AUTH: ((forum.auth))
-    uri: "{ENDPOINT}/{API}?{AUTH}"
+    uri: "{ENDPOINT}/{API}"
     no_get: true
 
 - name: gt6-screenshot
@@ -188,7 +190,7 @@ jobs:
   plan:
   - get: git-versioned
     trigger: true
-    version: every
+    version: latest
   - get: .gradle
     params:
       unpack: true
