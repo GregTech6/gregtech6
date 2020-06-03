@@ -706,6 +706,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.OC, "item"                                       , 1,  98, MT.Paper              , U*3);
 		OM.data(MD.HQM, "quest_book"                                , 1,   W, MT.Paper              , U*3);
 		OM.data(MD.TC, "ItemResearchNotes"                          , 1,   W, MT.Paper              , U);
+		OM.data(MD.TC, "ItemResource"                               , 1,   9, MT.Paper              , U9);
 		OM.data(MD.MoCr, "scrollofsale"                             , 1,   W, MT.Paper              , U);
 		OM.data(MD.MoCr, "scrollofowner"                            , 1,   W, MT.Paper              , U);
 		OM.data(MD.MoCr, "scrolloffreedom"                          , 1,   W, MT.Paper              , U);
@@ -1610,6 +1611,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   7, MT.Au                 ,  4* U9, MT.InfusedOrder   , U4);
 		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   8, MT.Au                 ,  4* U9, MT.InfusedEntropy , U4);
 		OM.data(MD.TC, "blockCandle"                        , 1,   W, MT.Tallow             ,  2* U3);
+		OM.data(MD.TC, "ItemZombieBrain"                    , 1,   W, MT.MeatRotten         ,  U * 1);
 		OM.data(MD.TC, "ItemGolemPlacer"                    , 1,   0, MT.Wheat              ,  U * 9);
 		OM.data(MD.TC, "ItemGolemPlacer"                    , 1,   1, MT.Greatwood          ,  U * 8);
 		OM.data(MD.TC, "ItemGolemPlacer"                    , 1,   2, MT.Tallow             ,  U * 9);
@@ -1618,6 +1620,13 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.TC, "ItemGolemPlacer"                    , 1,   5, ANY.Stone             ,  U * 1);
 		OM.data(MD.TC, "ItemGolemPlacer"                    , 1,   6, ANY.Fe                ,  U * 9);
 		OM.data(MD.TC, "ItemGolemPlacer"                    , 1,   7, MT.Thaumium           ,  U * 9);
+		OM.data(MD.TC, "blockCrystal"                       , 1,   0, MT.InfusedAir         ,  U * 6);
+		OM.data(MD.TC, "blockCrystal"                       , 1,   1, MT.InfusedFire        ,  U * 6);
+		OM.data(MD.TC, "blockCrystal"                       , 1,   2, MT.InfusedWater       ,  U * 6);
+		OM.data(MD.TC, "blockCrystal"                       , 1,   3, MT.InfusedEarth       ,  U * 6);
+		OM.data(MD.TC, "blockCrystal"                       , 1,   4, MT.InfusedOrder       ,  U * 6);
+		OM.data(MD.TC, "blockCrystal"                       , 1,   5, MT.InfusedEntropy     ,  U * 6);
+		OM.data(MD.TC, "blockCrystal"                       , 1,   6, MT.InfusedAir         ,  U, MT.InfusedFire, U, MT.InfusedWater, U, MT.InfusedEarth, U, MT.InfusedOrder, U, MT.InfusedEntropy, U);
 		
 		
 		OM.data(MD.ZTONES, "minicoal"                       , 1,   W, MT.Coal               ,  U8);

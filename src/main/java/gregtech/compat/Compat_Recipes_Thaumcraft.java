@@ -95,6 +95,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		RM.compact(ST.make(tShard, 6, i), 6, ST.make(tCrystal, 1, i));
 		RM.unpack(ST.make(tCrystal, 1, i), ST.make(tShard, 6, i));
 		}
+		RM.Unboxinator.addRecipe1(T, 16, 16, ST.make(tCrystal, 1, 6), ST.make(tShard, 1, 0), ST.make(tShard, 1, 1), ST.make(tShard, 1, 2), ST.make(tShard, 1, 3), ST.make(tShard, 1, 4), ST.make(tShard, 1, 5));
 		
 		String tKey;
 		OreDictMaterial tMat;
