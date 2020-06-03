@@ -278,7 +278,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 	public String getItemStackDisplayName(ItemStack aStack) {
 		if (aStack == null) return "";
 		Fluid tFluid = FL.fluid(ST.meta_(aStack));
-		return tFluid == null ? "INVALID FLUID ID!!!" : tFluid.getName().startsWith("rc ") ? "Reika's " + FL.name(tFluid, T) : FL.name(tFluid, T);
+		return tFluid == null ? "INVALID FLUID ID!!!" : FL.name(tFluid, T);
 	}
 	
 	@Override

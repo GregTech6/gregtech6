@@ -803,9 +803,9 @@ public enum FL {
 		if (aFluid instanceof FluidGT) return LH.get(aFluid.getUnlocalizedName());
 		String rName = aFluid.getLocalizedName(make(aFluid, 0));
 		if (rName.startsWith("fluid.") || rName.startsWith("tile.") || rName.startsWith("rc ")) {
-			return Code.capitaliseWords(rName.replaceFirst("fluid.", "").replaceFirst("tile.", "").replaceFirst("rc ", ""));
+			rName = Code.capitaliseWords(rName.replaceFirst("fluid.", "").replaceFirst("tile.", "").replaceFirst("rc ", ""));
 		}
-		return rName;
+		return aFluid.getName().startsWith("rc ") ? "Reika's " + rName : rName;
 	}
 	
 	public static String name(FluidStack aFluid, boolean aLocalized) {
