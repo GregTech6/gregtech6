@@ -54,9 +54,9 @@ public class WorldgenRacks extends WorldgenObject {
 		if (aRandom.nextBoolean() || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return F;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 8; i++) {
 			int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
-			for (int tY = 40 + aRandom.nextInt(80); tY > 0; tY--) {
+			for (int tY = aRandom.nextInt(80)+40, tH = Math.max(0, tY-40); tY > tH; tY--) {
 				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
 				if (tContact.getMaterial().isLiquid()) break;
 				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
@@ -75,6 +75,10 @@ public class WorldgenRacks extends WorldgenObject {
 					case  9: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, tContact == Blocks.soul_sand    ? OP.gem   .mat(MT.NetherQuartz , 1) : ST.make(Items.flint, 1, 0)), F, T); break;
 					case 10: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, tContact == Blocks.soul_sand    ? OP.gem   .mat(MT.NetherQuartz , 1) : ST.make(Items.flint, 1, 0)), F, T); break;
 					case 11: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, tContact == Blocks.soul_sand    ? OP.gem   .mat(MT.NetherQuartz , 1) : ST.make(Items.flint, 1, 0)), F, T); break;
+					case 12: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, OP.rockGt.mat(MT.Basalt, 1)), F, T); break;
+					case 13: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, OP.rockGt.mat(MT.Basalt, 1)), F, T); break;
+					case 14: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, OP.rockGt.mat(MT.Basalt, 1)), F, T); break;
+					case 15: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, OP.rockGt.mat(MT.Basalt, 1)), F, T); break;
 					default: tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, null, F, T); break;
 					}
 				}
