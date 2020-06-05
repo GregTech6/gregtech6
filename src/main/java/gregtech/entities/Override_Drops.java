@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import java.util.List;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -512,7 +513,7 @@ public class Override_Drops {
 				}
 			}
 			
-			if (!OM.is("listAllmeatsubstitute", tStack)) {
+			if (!OD.listAllmeatsubstitute.is(tStack)) {
 				if (RNGSUS.nextInt(3) == 0 && (OM.is("listAllmeatraw", tStack) || OM.is("listAllmeatcooked", tStack))) tIntestinesAmount++;
 				if (tStack.getItem() == Items.porkchop) {
 					switch(tRandomNumber%3) {

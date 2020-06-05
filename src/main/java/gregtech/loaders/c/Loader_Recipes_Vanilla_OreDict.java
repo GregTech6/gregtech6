@@ -79,7 +79,7 @@ public class Loader_Recipes_Vanilla_OreDict extends OreDictListenerEvent_Names {
 			RM.Crusher      .addRecipe1(T, 16,  16, new long[] {10000, 1000}, aEvent.mStack, OP.dustImpure.mat(MT.Redrock, 1), OM.dust(MT.ClayBrown));
 		}});
 		addListener(OD.slimeball, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!OM.is(OD.slimeballSwet, aEvent.mStack) && !OM.is(OD.slimeballPink, aEvent.mStack) && !OM.is(OD.slimeballRice, aEvent.mStack) && !OM.is(OD.itemTar, aEvent.mStack)) {
+			if (!OD.slimeballSwet.is_(aEvent.mStack) && !OD.slimeballPink.is_(aEvent.mStack) && !OD.slimeballRice.is_(aEvent.mStack) && !OD.itemTar.is_(aEvent.mStack)) {
 			RM.Squeezer     .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Slime_Green.make(250), ZL_IS);
 			RM.Juicer       .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Slime_Green.make(125), ZL_IS);
 			RM.Centrifuge   .addRecipe1(T, 16,   64, aEvent.mStack, NF, FL.Latex.make(L/2), FL.Glue.make(250));

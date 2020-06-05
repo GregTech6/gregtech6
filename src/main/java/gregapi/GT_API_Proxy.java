@@ -1148,7 +1148,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			Short tFuelValue = ((MultiItemRandom)aFuel.getItem()).mBurnValues.get(ST.meta_(aFuel));
 			if (tFuelValue != null) rFuelValue = Math.max(rFuelValue, tFuelValue);
 		} else {
-			if (OM.is_(OD.logWood, aFuel)) return TICKS_PER_SMELT * 6;
+			if (OD.logWood.is_(aFuel)) return TICKS_PER_SMELT * 6;
 			if (IL.IC2_Resin.equal(aFuel, F, T)) return TICKS_PER_SMELT / 2;
 		}
 		NBTTagCompound tNBT = aFuel.getTagCompound();

@@ -20,6 +20,7 @@
 package gregapi.data;
 
 import gregapi.oredict.OreDictManager;
+import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
@@ -84,6 +85,7 @@ public enum OD {
 	, plankAnyWood
 	, plankWood
 	, paperEmpty
+	, paperMap
 	, stairWood
 	, slabWood
 	, beamWood
@@ -146,9 +148,17 @@ public enum OD {
 	, grainBait
 	, veggieBait
 	, fishtrapBait
+	, bookEmpty
+	, bookWritten
+	, bookWritable
+	, bookEnchanted
+	, listAllmeatsubstitute
 	;
 	
 	OD() {
 		OreDictManager.INSTANCE.addKnownName(name());
 	}
+	
+	public boolean is (ItemStack aStack) {return OreDictManager.isItemStackInstanceOf (aStack, name());}
+	public boolean is_(ItemStack aStack) {return OreDictManager.isItemStackInstanceOf_(aStack, name());}
 }

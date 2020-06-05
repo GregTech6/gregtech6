@@ -466,6 +466,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenTreeRainbowood  ("tree.rainbowood"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM, GEN_AETHER);
 		
 		new WorldgenRocks           ("rocks"             , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_ATUM);
+		new WorldgenRacks           ("nether.rocks"      , T, GEN_NETHER);
 		new WorldgenAlfheimRocks    ("alfheim.rocks"     , T, GEN_ALFHEIM);
 		new WorldgenAetherRocks     ("aether.rocks"      , T, GEN_AETHER);
 		new WorldgenErebusRocks     ("erebus.rocks"      , T, GEN_EREBUS);

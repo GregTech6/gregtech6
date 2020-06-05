@@ -39,22 +39,14 @@ import gregapi.code.ModData;
 import gregapi.code.ObjectStack;
 import gregapi.code.TagData;
 import gregapi.damage.DamageSources;
-import gregapi.data.ANY;
-import gregapi.data.CS;
+import gregapi.data.*;
 import gregapi.data.CS.ArmorsGT;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.IconsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.PotionsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.LH;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.RM;
 import gregapi.data.TC.TC_AspectStack;
-import gregapi.data.TD;
 import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.fluid.FluidGT;
 import gregapi.fluid.FluidTankGT;
@@ -2376,7 +2368,7 @@ public class UT {
 			if (aPlayer == null || ST.invalid(aStack)) return F;
 			OreDictItemData tData = OM.association_(aStack);
 			Block aBlock = ST.block(aStack);
-			if (BlocksGT.Log1 == aBlock || BlocksGT.Log1FireProof == aBlock || OM.is_("beamWood", aStack) || OM.is_("logWood", aStack) || OM.is_("logRubber", aStack)) {
+			if (BlocksGT.Log1 == aBlock || BlocksGT.Log1FireProof == aBlock || OD.woodLog.is_(aStack) || OD.beamWood.is_(aStack) || OD.logWood.is_(aStack) || OD.logRubber.is_(aStack)) {
 				aPlayer.triggerAchievement(AchievementList.openInventory);
 				aPlayer.triggerAchievement(AchievementList.mineWood);
 			}

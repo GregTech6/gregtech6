@@ -28,7 +28,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 [CHANGED] Moderated Reactor Rods now lose durability twice as fast compared to what it was before.
+[ADDED] There is now small Rocks in the Nether, some of which contain tiny amounts of Ancient Debris, and are as rare as Meteorites on the Surface. Glowstone, NetherQuartz and Flint can be found in them too.
 [ADDED] Config to disable the nutrition System for Sugar, Fat and Dehydration. Alcohol and Caffeine stay though, since those are definitely things people intentionally consume for buffs and such.
+[ADDED] Netherite Drum and Anvil. Netherite also counts as Acid Proof now due to its high Gold content.
 
 
 6.13.01:

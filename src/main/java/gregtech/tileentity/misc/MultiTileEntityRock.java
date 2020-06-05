@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -99,7 +99,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 			if (mRock == null) {
 				if (worldObj.provider.dimensionId == -1)         {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rack"); return 1;}
 				if (worldObj.provider.dimensionId ==  0)         {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rock"); return 1;}
-				if (worldObj.provider.dimensionId == +1)         {aChatReturn.add(LH.Chat.GRAY + "This is definitely an End"); return 1;}
+				if (worldObj.provider.dimensionId == +1)         {aChatReturn.add(LH.Chat.GRAY + "There is definitely an End"); return 1;}
 				if (WD.dimAETHER(worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Holy $#!T, it's a Rock!"); return 1;}
 				if (WD.dimALF   (worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Wait that Rock is alive?!"); return 1;}
 				if (WD.dimTROPIC(worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Seems to be a Chunk o'Head"); return 1;}
@@ -109,14 +109,14 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 				aChatReturn.add(LH.Chat.GRAY + "This definitely is a Rock");
 				return 1;
 			}
-			if (OM.is_(OD.itemFlint, mRock)) {aChatReturn.add(LH.Chat.GRAY + "It's a Flint"); return 1;}
+			if (OD.itemFlint.is_(mRock)) {aChatReturn.add(LH.Chat.GRAY + "It's a Flint"); return 1;}
 			OreDictItemData tData = OM.anydata_(mRock);
 			if (tData != null && tData.hasValidMaterialData()) {
 				if (tData.mMaterial.mMaterial == MT.MeteoricIron || tData.mMaterial.mMaterial == MT.Meteorite) {
-					aChatReturn.add(LH.Chat.YELLOW + "Looks like it fell from the Sky!"); return 1;
+					aChatReturn.add(LH.Chat.ORANGE + "Looks like it fell from the Sky!"); return 1;
 				}
-				if (tData.mMaterial.mMaterial == MT.Ambrosium) {
-					aChatReturn.add(LH.Chat.YELLOW + "Glows a little"); return 1;
+				if (tData.mMaterial.mMaterial == MT.AncientDebris) {
+					aChatReturn.add(LH.Chat.PINK + "Looks quite old and broken"); return 1;
 				}
 				if (tData.mMaterial.mMaterial == MT.Stone) {
 					aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rock"); return 1;
@@ -125,7 +125,10 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 					aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rack"); return 1;
 				}
 				if (tData.mMaterial.mMaterial == MT.Endstone) {
-					aChatReturn.add(LH.Chat.GRAY + "This is definitely an End"); return 1;
+					aChatReturn.add(LH.Chat.GRAY + "There is definitely an End"); return 1;
+				}
+				if (tData.mMaterial.mMaterial.contains(TD.Properties.GLOWING)) {
+					aChatReturn.add(LH.Chat.YELLOW + "Glows a little"); return 1;
 				}
 				if (tData.mMaterial.mMaterial.contains(TD.Properties.STONE)) {
 					aChatReturn.add(LH.Chat.GRAY + "This Rock consists out of " + LH.Chat.WHITE + tData.mMaterial.mMaterial.getLocal()); return 1;
@@ -184,8 +187,20 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 			mTexture = BlockTextureCopied.get(Blocks.stone, SIDE_ANY, 0, 0x806040, F, F, F);
 			return 1;
 		}
-		if (tBlock instanceof BlockStones) {
+		if (tBlock instanceof BlockStones || tBlock == Blocks.stone || tBlock == Blocks.end_stone || tBlock == Blocks.obsidian) {
 			mTexture = BlockTextureCopied.get(tBlock, SIDE_ANY, 0);
+			return 1;
+		}
+		if (tBlock == Blocks.netherrack || tBlock == Blocks.nether_brick || tBlock == Blocks.soul_sand) {
+			mTexture = BlockTextureCopied.get(Blocks.netherrack, SIDE_ANY, 0);
+			return 1;
+		}
+		if (tBlock == Blocks.sandstone || tBlock == Blocks.sand) {
+			mTexture = BlockTextureCopied.get(Blocks.sandstone, SIDE_FRONT, 0);
+			return 1;
+		}
+		if (tBlock == Blocks.cobblestone || tBlock == Blocks.gravel) {
+			mTexture = BlockTextureCopied.get(Blocks.cobblestone, SIDE_ANY, 0);
 			return 1;
 		}
 		if (worldObj.provider.dimensionId == -1) {

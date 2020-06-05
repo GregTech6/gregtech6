@@ -136,7 +136,7 @@ public class ToolCompat {
 					rReturn = F;
 				} else if (IL.TF_Log_Trans.equal(aBlock) && (aMeta & 1) == 1) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, (aMeta&12)|((aMeta & 2) == 0 ? 0 : 1), 3);
-				} else if (OM.is(OD.logWood, ST.make(aBlock, 1, aMeta))) {
+				} else if (OD.logWood.is(ST.make(aBlock, 1, aMeta))) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam2, (aMeta&12)|3, 3);
 				}
 			}

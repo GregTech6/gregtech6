@@ -27,6 +27,7 @@ import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
+import gregapi.data.OD;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
@@ -110,7 +111,7 @@ public class RecipeMapScannerVisuals extends RecipeMap {
 						}
 						return rRecipe;
 					}
-					if ((tScanned.getItem() == ItemsGT.BOOKS || OM.is_("bookWritten", tScanned) || IL.Paper_Printed_Pages.equal(tScanned, F, T) || IL.Paper_Printed_Pages_Many.equal(tScanned, F, T)) && UT.Code.stringValid(UT.NBT.getBookTitle(tScanned))) {
+					if ((tScanned.getItem() == ItemsGT.BOOKS || OD.bookWritten.is_(tScanned) || IL.Paper_Printed_Pages.equal(tScanned, F, T) || IL.Paper_Printed_Pages_Many.equal(tScanned, F, T)) && UT.Code.stringValid(UT.NBT.getBookTitle(tScanned))) {
 						rRecipe = new Recipe(F, F, F, ST.array(ST.amount(1, tScanned), ST.amount(1, tUSB)), ST.array(ST.amount(1, tUSB), ST.amount(1, tScanned)), null, null, null, null, 512, 16, 0);
 						if (!rRecipe.mOutputs[0].hasTagCompound()) rRecipe.mOutputs[0].setTagCompound(UT.NBT.make());
 						rRecipe.mOutputs[0].getTagCompound().setTag(NBT_USB_DATA, tScanned.getTagCompound().copy());

@@ -293,7 +293,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "veggiebaitItem", 4));
 		}});
 		addListener("listAllfishraw", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (ST.container(aEvent.mStack, T) == null && !OM.is_("listAllmeatsubstitute", aEvent.mStack))
+			if (ST.container(aEvent.mStack, T) == null && !OD.listAllmeatsubstitute.is_(aEvent.mStack))
 			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fishtrapbaitItem", 8));
 		}});
 		addListener("listAllfruit", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -301,14 +301,14 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fruitbaitItem", 4));
 		}});
 		addListener("listAllegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (ST.container(aEvent.mStack, T) == null && !OM.is_("listAllmeatsubstitute", aEvent.mStack)) {
+			if (ST.container(aEvent.mStack, T) == null && !OD.listAllmeatsubstitute.is_(aEvent.mStack)) {
 			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack), FL.Milk   .make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
 			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack), FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
 			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack), FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
 			}
 		}});
 		addListener("foodBaconcooked", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (ST.container(aEvent.mStack, T) == null && !OM.is_("listAllmeatsubstitute", aEvent.mStack)) {
+			if (ST.container(aEvent.mStack, T) == null && !OD.listAllmeatsubstitute.is_(aEvent.mStack)) {
 			RM.Bath     .addRecipe1(T,  0,   16, aEvent.mStack, MT.Chocolate.liquid(U4, T), NF, ST.make(MD.HaC, "chocolatebaconItem", 1));
 			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.make("maplesyrup", 50), NF, ST.make(MD.HaC, "maplecandiedbaconItem", 1));
 			RM.Mixer    .addRecipe1(T, 16,   16, aEvent.mStack, FL.make("rainbowsap", 50), NF, ST.make(MD.HaC, "epicbaconItem", 1));

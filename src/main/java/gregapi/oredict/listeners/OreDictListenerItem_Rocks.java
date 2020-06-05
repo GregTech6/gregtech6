@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,6 +38,6 @@ public class OreDictListenerItem_Rocks extends OreDictListenerItem {
 	
 	@Override
 	public String getListenerToolTip(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
-		return aMaterial == MT.MeteoricIron ? null : LanguageHandler.translate("gt.behaviour.rocks", "Indicates occurence of ") + (aMaterial.contains(TD.Properties.STONE)?LH.Chat.WHITE:LH.Chat.YELLOW) + aMaterial.mNameLocal;
+		return aMaterial == MT.MeteoricIron || aMaterial == MT.Meteorite || aMaterial == MT.AncientDebris || aMaterial == MT.Ambrosium || aMaterial == MT.Glowstone ? null : LanguageHandler.translate("gt.behaviour.rocks", "Indicates occurence of ") + (aMaterial.contains(TD.Properties.STONE)?LH.Chat.WHITE:LH.Chat.YELLOW) + aMaterial.mNameLocal;
 	}
 }

@@ -149,17 +149,21 @@ public class LanguageHandler {
 			if (aPrefix == OP.rockGt)                                       return "Rock";
 		} else
 		if (aMaterial == MT.AncientDebris) {
-			if (aPrefix.mNameInternal.startsWith("ore"))                    return aMaterial.mNameLocal;
+			if (aPrefix == OP.rockGt)                                       return "Ancient Debris";
 			if (aPrefix == OP.crushed)                                      return "Recycled " + aMaterial.mNameLocal;
 			if (aPrefix == OP.crushedTiny)                                  return "Tiny Recycled " + aMaterial.mNameLocal;
+			if (aPrefix == OP.nugget)                                       return "Tiny Piece of Netherite Scrap";
+			if (aPrefix == OP.chunkGt)                                      return "Small Piece of Netherite Scrap";
+			if (aPrefix == OP.scrap)                                        return "Scrap Piece of Netherite Scrap";
+			if (aPrefix.mNameInternal.startsWith("ore"))                    return aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("crushed"))                return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Netherite Scrap Powder";
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + "Netherite Scrap";
 		} else
 		if (aMaterial == MT.SoulSand) {
-			if (aPrefix.mNameInternal.startsWith("ore"))                    return aMaterial.mNameLocal;
 			if (aPrefix == OP.crushed)                                      return "Ground " + aMaterial.mNameLocal;
 			if (aPrefix == OP.crushedTiny)                                  return "Tiny Ground " + aMaterial.mNameLocal;
+			if (aPrefix.mNameInternal.startsWith("ore"))                    return aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("crushed"))                return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + "Fine " + aMaterial.mNameLocal;
 		} else
@@ -261,14 +265,14 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("bolt"))                   return "Short Treated Stick";
 			if (aPrefix.mNameInternal.startsWith("stick"))                  return aPrefix.mMaterialPre + "Treated Stick";
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pulp";
-			if (aPrefix.mNameInternal.startsWith("nugget"))                 return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
+			if (aPrefix == OP.nugget)                                       return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
 			if (aPrefix.mNameInternal.startsWith("plate"))                  return aPrefix.mMaterialPre + "Treated Plank";
 		} else
 		if (aMaterial == MT.Plastic || aMaterial == MT.Rubber) {
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pulp";
 			if (aPrefix.mNameInternal.startsWith("plate"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Sheet";
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bar";
-			if (aPrefix.mNameInternal.startsWith("nugget"))                 return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
+			if (aPrefix == OP.nugget)                                       return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
 			if (aPrefix.mNameInternal.startsWith("foil"))                   return "Thin " + aMaterial.mNameLocal + " Sheet";
 		} else
 		if (aMaterial == MT.FierySteel) {
@@ -371,8 +375,8 @@ public class LanguageHandler {
 		} else
 		if (aMaterial == MT.Lignite || aMaterial == MT.LigniteCoke || aMaterial == MT.Charcoal || aMaterial == MT.Coal || aMaterial == MT.CoalCoke || aMaterial == MT.Anthracite || aMaterial == MT.Prismane || aMaterial == MT.Lonsdaleite || aMaterial == MT.PetCoke || aMaterial == MT.HydratedCoal) {
 			if (aPrefix.mNameInternal.startsWith("ingot"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Brick";
-			if (aPrefix.mNameInternal.startsWith("chunkGt"))                return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chunk";
-			if (aPrefix.mNameInternal.startsWith("nugget"))                 return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pellet";
+			if (aPrefix == OP.chunkGt)                                      return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chunk";
+			if (aPrefix == OP.nugget)                                       return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pellet";
 		} else
 		if (aMaterial == MT.Sugar) {
 			if (aPrefix == OP.gemChipped)                                   return "Sugar Cubes";
@@ -401,7 +405,7 @@ public class LanguageHandler {
 			if (aPrefix.mNameInternal.startsWith("bolt"))                   return "Short " + aMaterial.mNameLocal + " Stick";
 			if (aPrefix.mNameInternal.startsWith("stick"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Stick";
 			if (aPrefix.mNameInternal.startsWith("dust"))                   return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pulp";
-			if (aPrefix.mNameInternal.startsWith("nugget"))                 return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
+			if (aPrefix == OP.nugget)                                       return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Chip";
 			if (aPrefix.mNameInternal.startsWith("plate"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Plank";
 		}
 		if (aMaterial.contains(TD.Properties.STONE)) {
