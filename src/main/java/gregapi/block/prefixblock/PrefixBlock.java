@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -32,7 +32,6 @@ import gregapi.block.IBlockToolable;
 import gregapi.block.IPrefixBlock;
 import gregapi.block.ToolCompat;
 import gregapi.block.behaviors.Drops;
-import gregapi.code.ItemStackContainer;
 import gregapi.code.ModData;
 import gregapi.data.CS.SFX;
 import gregapi.data.IL;
@@ -217,7 +216,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		
 		GameRegistry.registerBlock(this, aItemClass==null?PrefixBlockItem.class:aItemClass, mNameInternal);
 		
-		mPrefix.mRegisteredItems.add(new ItemStackContainer(this, 1, W)); // this optimizes some processes by decreasing the size of the Set.
+		mPrefix.mRegisteredItems.add(this); // this optimizes some processes by decreasing the size of the Set.
 		
 		if (COMPAT_IC2 != null) {
 			COMPAT_IC2.addToExplosionWhitelist(this);

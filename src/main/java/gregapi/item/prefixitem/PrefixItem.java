@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,7 +26,6 @@ import java.util.List;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import gregapi.code.ItemStackContainer;
 import gregapi.code.ModData;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
@@ -92,7 +91,7 @@ public class PrefixItem extends Item implements Runnable, IItemUpdatable, IPrefi
 		mPrefix.addTextureSet(aModIDTextures, T);
 		LH.add("oredict." + mPrefix.dat(MT.Empty).toString() + ".name", getLocalName(mPrefix, MT.Empty));
 		LH.add(mNameInternal+"."+W+".name", "Any Sub-Item of this one"); // Local Name for the WildcardItem Variant.
-		mPrefix.mRegisteredItems.add(new ItemStackContainer(this, 1, W)); // this optimizes some processes by decreasing the size of the Set.
+		mPrefix.mRegisteredItems.add(this); // this optimizes some processes by decreasing the size of the Set.
 		
 		if (SHOW_HIDDEN_PREFIXES || !mPrefix.contains(TD.Creative.HIDDEN)) {
 			if (mPrefix.mCreativeTab == null) mPrefix.mCreativeTab = new CreativeTab(mPrefix.mNameInternal, mPrefix.mNameCategory, this, W);

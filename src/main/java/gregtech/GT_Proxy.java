@@ -52,6 +52,7 @@ import gregapi.data.CS.ToolsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
+import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
@@ -357,15 +358,31 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	@SubscribeEvent
 	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
 		if (aEvent.entity != null && !aEvent.entity.worldObj.isRemote) {
-			if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && !OP.arrowGtWood.mRegisteredItems.isEmpty() && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
+			if (mSkeletonsShootGTArrows > 0 && aEvent.entity.getClass() == EntityArrow.class && RNGSUS.nextInt(mSkeletonsShootGTArrows) == 0) {
 				if (((EntityArrow)aEvent.entity).shootingEntity instanceof EntitySkeleton) {
-					aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, new ArrayListNoNulls<>(OP.arrowGtWood.mRegisteredItems).get(RNGSUS).toStack()));
-					aEvent.entity.setDead();
+					OreDictMaterial tMaterial = MT.Craponite; // Just default to Anti-Bear989Sr Arrows
+					switch(RNGSUS.nextInt(10)) {
+					case 0: tMaterial = MT.Steel; break; // Sharpness 2
+					case 1: tMaterial = MT.AnnealedCopper; break; // Dissolving 5
+					case 2: tMaterial = MT.AstralSilver; break; // Disjunction 5 and Werebane 5
+					case 3: tMaterial = MT.BismuthBronze; break; // Bane of Arthropods 4
+					case 4: tMaterial = MT.Pt; break; // Smite 5
+					case 5: tMaterial = MT.Netherite; break; // Fire Aspect 3
+					case 6: tMaterial = MT.Thaumium; break; // Fortune/Looting 2
+					case 7: tMaterial = MT.Rubber; break; // Knockback 2
+					case 8: tMaterial = MT.DamascusSteel; break; // Sharpness 5
+					case 9: tMaterial = MT.Craponite; break; // Werebane 10
+					}
+					ItemStack tArrow = OP.arrowGtWood.mat(tMaterial, 1);
+					if (ST.valid(tArrow)) {
+						aEvent.entity.worldObj.spawnEntityInWorld(new EntityArrow_Material((EntityArrow)aEvent.entity, tArrow));
+						aEvent.entity.setDead();
+					}
 				}
 			}
 		}
 	}
-
+	
 // Not gonna do that one due to exploitiness.
 //  @SubscribeEvent
 //  public void onItemExpireEvent(ItemExpireEvent aEvent) {

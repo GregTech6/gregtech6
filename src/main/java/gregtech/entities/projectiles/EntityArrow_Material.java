@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -223,8 +223,8 @@ public class EntityArrow_Material extends EntityProjectile {
 									if (tKnockbackDivider > 0.0F) tHitLivingEntity.addVelocity(motionX * tKnockback * 0.6000000238418579D / tKnockbackDivider, 0.1D, motionZ * tKnockback * 0.6000000238418579D / tKnockbackDivider);
 								}
 								
-								Enchantments.applyBullshitA(tHitLivingEntity                                                                    , tShootingEntity==null?this:tShootingEntity    , mArrow);
-								Enchantments.applyBullshitB(tShootingEntity instanceof EntityLivingBase?(EntityLivingBase)tShootingEntity:null  , tHitLivingEntity                              , mArrow);
+								Enchantments.applyBullshitA(tHitLivingEntity                                                                  , tShootingEntity==null?this:tShootingEntity, mArrow);
+								Enchantments.applyBullshitB(tShootingEntity instanceof EntityLivingBase?(EntityLivingBase)tShootingEntity:null, tHitLivingEntity                          , mArrow);
 								
 								if (tShootingEntity != null && tHitLivingEntity != tShootingEntity && tHitLivingEntity instanceof EntityPlayer && tShootingEntity instanceof EntityPlayerMP) {
 									((EntityPlayerMP)tShootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
@@ -267,7 +267,7 @@ public class EntityArrow_Material extends EntityProjectile {
 					
 					if (mHitBlock.getMaterial() != Material.air) mHitBlock.onEntityCollidedWithBlock(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, this);
 					
-					if (!worldObj.isRemote && EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow) > 2) WD.burn(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, true, false);
+					if (!worldObj.isRemote && EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, mArrow) > 2) WD.burn(worldObj, mHitBlockX, mHitBlockY, mHitBlockZ, T, F);
 					
 					if (breaksOnImpact()) setDead();
 				}
