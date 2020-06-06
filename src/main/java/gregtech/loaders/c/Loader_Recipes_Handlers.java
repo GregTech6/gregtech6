@@ -576,7 +576,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		for (OreDictMaterial tMaterial : ANY.Si.mToThis) if (tMaterial != MT.Si)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Si                   , NI, T, tConditionP));
 		
-		for (OreDictPrefix tInput : OreDictPrefix.VALUES) if (tInput.contains(TD.Prefix.EXTRUDER_FODDER)) {
+		// Since Gems and Ingots are sometimes mutually exclusive, I made sure that those are always possible Extruder Fodder.
+		for (OreDictPrefix tInput : OreDictPrefix.VALUES) if (tInput.containsAny(TD.Prefix.EXTRUDER_FODDER, TD.Prefix.INGOT_BASED, TD.Prefix.GEM_BASED)) {
 			addExtruderRecipe(tInput, ingot                     , T, IL.Shape_Extruder_Ingot            .get(0));
 			addExtruderRecipe(tInput, plate                     , T, IL.Shape_Extruder_Plate            .get(0));
 			addExtruderRecipe(tInput, plateCurved               , T, IL.Shape_Extruder_Plate_Curved     .get(0));
@@ -605,7 +606,10 @@ public class Loader_Recipes_Handlers implements Runnable {
 			addExtruderRecipe(tInput, capcellcon                , T, IL.Shape_Extruder_CCC              .get(0));
 			addExtruderRecipe(tInput, plateTiny                 , T, IL.Shape_Extruder_Plate_Tiny       .get(0));
 			addExtruderRecipe(tInput, foil                      , T, IL.Shape_Extruder_Foil             .get(0), SMITHABLE.NOT);
-			
+		}
+		// Making sure that simple Stuff like Plastic can still be extruded using Dust even if Dusts are lacking the EXTRUDER_FODDER Tag, since there is absolutely no other way to process these Materials losslessly other than Dust in Extruder.
+		// Yes I know this special case is exclusively using the Simple Extruder Shapes not the normal ones. Makes it easier to code on my end, and people who wanna use Dusts will end up having to use the Simple Shapes, but only in the event that Dusts no longer count as general Extruder Fodder for whatever reason at all. ;D
+		for (OreDictPrefix tInput : OreDictPrefix.VALUES) if (tInput.containsAny(TD.Prefix.EXTRUDER_FODDER, TD.Prefix.INGOT_BASED, TD.Prefix.GEM_BASED, TD.Prefix.DUST_BASED)) {
 			addExtruderRecipe(tInput, ingot                     , F, IL.Shape_SimpleEx_Ingot            .get(0));
 			addExtruderRecipe(tInput, plate                     , F, IL.Shape_SimpleEx_Plate            .get(0));
 			addExtruderRecipe(tInput, plateCurved               , F, IL.Shape_SimpleEx_Plate_Curved     .get(0));
@@ -635,8 +639,6 @@ public class Loader_Recipes_Handlers implements Runnable {
 			addExtruderRecipe(tInput, plateTiny                 , F, IL.Shape_SimpleEx_Plate_Tiny       .get(0));
 			addExtruderRecipe(tInput, foil                      , F, IL.Shape_SimpleEx_Foil             .get(0), SMITHABLE.NOT);
 		}
-		
-		sExtruderNormal = sExtruderSimple = null;
 	}
 	
 	@SuppressWarnings({"unchecked", "rawtypes"})
@@ -649,8 +651,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		if (tInputAmount > 64 || tOutputAmount < 1) return;
 		if (tOutputAmount > 64) tOutputAmount = 64;
 		if (aHot)
-		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 96, 0                                                       , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, sExtruderNormal));
-		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)  , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, sExtruderSimple));
+		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 96, 0                                                       , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot || aInput == OP.gem, F, F, sExtruderNormal));
+		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)  , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot || aInput == OP.gem, F, F, sExtruderSimple));
 	}
 	
 	@SuppressWarnings({"unchecked", "rawtypes"})
@@ -661,7 +663,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		if (tInputAmount > 64 || tOutputAmount < 1) return;
 		if (tOutputAmount > 64) tOutputAmount = 64;
 		if (aHot)
-		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 96, 0                                                       , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And(aCondition, sExtruderNormal)));
-		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)  , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot, F, F, new And(aCondition, sExtruderSimple)));
+		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 96, 0                                                       , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot || aInput == OP.gem, F, F, new And(aCondition, sExtruderNormal)));
+		RM.Extruder.add(new RecipeMapHandlerPrefixForging(aInput, tInputAmount, NF, 16, UT.Code.units(aOutput.mAmount*tOutputAmount, U, 64, T)  , 0, NF, aOutput, tOutputAmount, aShape, NI, aInput == OP.dust || aInput == OP.ingot || aInput == OP.gem, F, F, new And(aCondition, sExtruderSimple)));
 	}
 }
