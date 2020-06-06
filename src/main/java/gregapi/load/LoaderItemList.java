@@ -465,8 +465,10 @@ public class LoaderItemList implements Runnable {
 		
 		IL.CHSL_Present                         .set(ST.make(MD.CHSL, "present"                             , 1, W), new OreDictItemData(ANY.Wood, 8*U), OD.craftingChest);
 		
-		IL.BOTA_Ender_Air_Bottle                .set(ST.make(MD.BOTA, "manaResource"                        , 1,15));
 		IL.BOTA_Paintslinger                    .set(ST.make(MD.BOTA, "lens"                                , 1,14));
+		IL.BOTA_Red_String                      .set(ST.make(MD.BOTA, "manaResource"                        , 1,12), null, OD.itemString);
+		IL.BOTA_Ender_Air_Bottle                .set(ST.make(MD.BOTA, "manaResource"                        , 1,15));
+		IL.BOTA_Mana_String                     .set(ST.make(MD.BOTA, "manaResource"                        , 1,16), null, OD.itemString);
 		
 		IL.ALF_LivingCobble                     .set(ST.make(MD.ALF, "LivingCobble"                         , 1, 0), new OreDictItemData(MT.Livingrock, U), OP.cobblestone);
 		IL.ALF_DreamWood                        .set(ST.make(MD.ALF, "DreamLog"                             , 1, 0), new OreDictItemData(MT.Dreamwood, U * 8, MT.Bark, U), OD.logWood);
@@ -755,19 +757,23 @@ public class LoaderItemList implements Runnable {
 		IL.CHSL_Diorite_Smooth                  .set(ST.make(MD.CHSL, "diorite"                             , 1, 1));
 		IL.CHSL_Andesite_Smooth                 .set(ST.make(MD.CHSL, "andesite"                            , 1, 1));
 		
-		IL.BOTA_Livingrock                      .set(ST.make(MD.BOTA, "livingrock"                          , 1, 0));
-		IL.BOTA_Granite                         .set(ST.make(MD.BOTA, "stone"                               , 1, 3));
-		IL.BOTA_Diorite                         .set(ST.make(MD.BOTA, "stone"                               , 1, 2));
-		IL.BOTA_Andesite                        .set(ST.make(MD.BOTA, "stone"                               , 1, 0));
-		IL.BOTA_Granite_Smooth                  .set(ST.make(MD.BOTA, "stone"                               , 1, 7));
-		IL.BOTA_Diorite_Smooth                  .set(ST.make(MD.BOTA, "stone"                               , 1, 6));
-		IL.BOTA_Andesite_Smooth                 .set(ST.make(MD.BOTA, "stone"                               , 1, 4));
-		IL.BOTA_Granite_Bricks                  .set(ST.make(MD.BOTA, "stone"                               , 1,11));
-		IL.BOTA_Diorite_Bricks                  .set(ST.make(MD.BOTA, "stone"                               , 1,10));
-		IL.BOTA_Andesite_Bricks                 .set(ST.make(MD.BOTA, "stone"                               , 1, 8));
-		IL.BOTA_Granite_Chiseled                .set(ST.make(MD.BOTA, "stone"                               , 1,15));
-		IL.BOTA_Diorite_Chiseled                .set(ST.make(MD.BOTA, "stone"                               , 1,14));
-		IL.BOTA_Andesite_Chiseled               .set(ST.make(MD.BOTA, "stone"                               , 1,12));
+		IL.BOTA_Andesite                        .set(ST.make(MD.BOTA, "stone"                               , 1, 0), new OreDictItemData(MT.Andesite, U), OP.stone.dat(MT.Andesite));
+		IL.BOTA_Basalt                          .set(ST.make(MD.BOTA, "stone"                               , 1, 1), new OreDictItemData(MT.Basalt  , U), OP.stone.dat(MT.Basalt  ));
+		IL.BOTA_Diorite                         .set(ST.make(MD.BOTA, "stone"                               , 1, 2), new OreDictItemData(MT.Diorite , U), OP.stone.dat(MT.Diorite ));
+		IL.BOTA_Granite                         .set(ST.make(MD.BOTA, "stone"                               , 1, 3), new OreDictItemData(MT.Granite , U), OP.stone.dat(MT.Granite ));
+		IL.BOTA_Andesite_Smooth                 .set(ST.make(MD.BOTA, "stone"                               , 1, 4), new OreDictItemData(MT.Andesite, U), OP.stone.dat(MT.Andesite));
+		IL.BOTA_Basalt_Smooth                   .set(ST.make(MD.BOTA, "stone"                               , 1, 5), new OreDictItemData(MT.Basalt  , U), OP.stone.dat(MT.Basalt  ));
+		IL.BOTA_Diorite_Smooth                  .set(ST.make(MD.BOTA, "stone"                               , 1, 6), new OreDictItemData(MT.Diorite , U), OP.stone.dat(MT.Diorite ));
+		IL.BOTA_Granite_Smooth                  .set(ST.make(MD.BOTA, "stone"                               , 1, 7), new OreDictItemData(MT.Granite , U), OP.stone.dat(MT.Granite ));
+		IL.BOTA_Andesite_Bricks                 .set(ST.make(MD.BOTA, "stone"                               , 1, 8), new OreDictItemData(MT.Andesite, U), OP.stone.dat(MT.Andesite));
+		IL.BOTA_Basalt_Bricks                   .set(ST.make(MD.BOTA, "stone"                               , 1, 9), new OreDictItemData(MT.Basalt  , U), OP.stone.dat(MT.Basalt  ));
+		IL.BOTA_Diorite_Bricks                  .set(ST.make(MD.BOTA, "stone"                               , 1,10), new OreDictItemData(MT.Diorite , U), OP.stone.dat(MT.Diorite ));
+		IL.BOTA_Granite_Bricks                  .set(ST.make(MD.BOTA, "stone"                               , 1,11), new OreDictItemData(MT.Granite , U), OP.stone.dat(MT.Granite ));
+		IL.BOTA_Andesite_Chiseled               .set(ST.make(MD.BOTA, "stone"                               , 1,12), new OreDictItemData(MT.Andesite, U), OP.stone.dat(MT.Andesite));
+		IL.BOTA_Basalt_Chiseled                 .set(ST.make(MD.BOTA, "stone"                               , 1,13), new OreDictItemData(MT.Basalt  , U), OP.stone.dat(MT.Basalt  ));
+		IL.BOTA_Diorite_Chiseled                .set(ST.make(MD.BOTA, "stone"                               , 1,14), new OreDictItemData(MT.Diorite , U), OP.stone.dat(MT.Diorite ));
+		IL.BOTA_Granite_Chiseled                .set(ST.make(MD.BOTA, "stone"                               , 1,15), new OreDictItemData(MT.Granite , U), OP.stone.dat(MT.Granite ));
+		IL.BOTA_Livingrock                      .set(ST.make(MD.BOTA, "livingrock"                          , 1, 0), new OreDictItemData(MT.Livingrock, U), OP.stone.dat(MT.Livingrock));
 		IL.BOTA_Prismarine                      .set(ST.make(MD.BOTA, "prismarine"                          , 1, 0));
 		IL.BOTA_Prismarine_Bricks               .set(ST.make(MD.BOTA, "prismarine"                          , 1, 1));
 		IL.BOTA_Prismarine_Dark                 .set(ST.make(MD.BOTA, "prismarine"                          , 1, 2));

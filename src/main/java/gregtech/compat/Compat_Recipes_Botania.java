@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,6 +20,7 @@
 package gregtech.compat;
 
 import static gregapi.data.CS.*;
+import static gregapi.util.CR.*;
 
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
@@ -35,6 +36,8 @@ import gregapi.data.RM;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
 
 public class Compat_Recipes_Botania extends CompatMods {
@@ -42,39 +45,33 @@ public class Compat_Recipes_Botania extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {
 		OUT.println("GT_Mod: Doing Botania Recipes.");
-		CR.delate(IL.BOTA_Granite.get(1));
-		CR.delate(IL.BOTA_Diorite.get(1));
-		CR.delate(IL.BOTA_Andesite.get(1));
-		CR.delate(IL.BOTA_Granite_Smooth.get(1));
-		CR.delate(IL.BOTA_Diorite_Smooth.get(1));
-		CR.delate(IL.BOTA_Andesite_Smooth.get(1));
-		CR.delate(IL.BOTA_Granite_Bricks.get(1));
-		CR.delate(IL.BOTA_Diorite_Bricks.get(1));
-		CR.delate(IL.BOTA_Andesite_Bricks.get(1));
-		CR.delate(IL.BOTA_Granite_Chiseled.get(1));
-		CR.delate(IL.BOTA_Diorite_Chiseled.get(1));
-		CR.delate(IL.BOTA_Andesite_Chiseled.get(1));
+		for (int i = 0; i < 16; i++) if ((i & 3) != 1) CR.delate(ST.make(MD.BOTA, "stone", 1, i));
+		
+		CR.shaped(ST.make(MD.BOTA, "openBucket", 1, 0), DEF_REV | DEL_OTHER_SHAPED_RECIPES, "XhX", " Y ", 'Y', OP.plate.dat(MT.ElvenElementium), 'X', OP.plateCurved.dat(MT.ElvenElementium));
 		
 		if (MD.ALF.mLoaded) {
-		RM.Hammer       .addRecipe1(T, 16,  16, IL.ALF_Ice.get(1), OM.dust(MT.Ice, U));
-		RM.Squeezer     .addRecipe1(T, 16, 128, IL.ALF_Ice.get(1), NF, FL.Ice.make(1000), NI);
-		RM.Juicer       .addRecipe1(T, 16, 128, IL.ALF_Ice.get(1), NF, FL.Ice.make(1000), NI);
+		RM.Hammer  .addRecipe1(T, 16,  16, IL.ALF_Ice.get(1), OM.dust(MT.Ice, U));
+		RM.Squeezer.addRecipe1(T, 16, 128, IL.ALF_Ice.get(1), NF, FL.Ice.make(1000), NI);
+		RM.Juicer  .addRecipe1(T, 16, 128, IL.ALF_Ice.get(1), NF, FL.Ice.make(1000), NI);
 		}
 		
 		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, FL.make("mushroomsoup", 500), ZL_IS);
-		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, FL.make("mushroomsoup", 500), ZL_IS);
+		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.BOTA, "mushroom", 1, W), NF, FL.make("mushroomsoup", 500), ZL_IS);
 		for (int i = 0; i < 16; i++) {
-		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "petal", 1, i), NF, DYE_FLUIDS_FLOWER[15-i], ST.make(MD.BOTA, "dye", 1, i));
-		RM.Juicer.addRecipe1(T, 16, 16, ST.make(MD.BOTA, "petal", 1, i), NF, DYE_FLUIDS_FLOWER[15-i], ST.make(MD.BOTA, "dye", 1, i));
-		RM.ic2_extractor(ST.make(MD.BOTA, "petal", 1, i), ST.make(MD.BOTA, "dye", 1, i));
+		ItemStack tPetal = ST.make(MD.BOTA, "petal", 1, i), tDye = ST.make(MD.BOTA, "dye", 1, i);
+		RM.Shredder.addRecipe1(T, 16, 16, tPetal, tDye);
+		RM.Squeezer.addRecipe1(T, 16, 16, tPetal, NF, DYE_FLUIDS_FLOWER[15-i], tDye);
+		RM.Juicer  .addRecipe1(T, 16, 16, tPetal, NF, DYE_FLUIDS_FLOWER[15-i], tDye);
+		RM.ic2_extractor(tPetal, tDye);
+		RM.pulverizing  (tPetal, tDye);
 		}
 		
+		RM.packunpack(ST.make(Items.blaze_rod, 9, 0), ST.make(MD.BOTA, "blazeBlock", 1, 0));
+		
 		try {
-		BotaniaAPI.registerManaInfusionRecipe(OP.ingot.mat(MT.Manasteel, 1), OP.ingot.dat(ANY.Iron ).toString(), 3000);
+		BotaniaAPI.registerManaInfusionRecipe(OP.ingot.mat(MT.Manasteel, 1), OP.ingot.dat(ANY.Fe   ).toString(), 3000);
 		BotaniaAPI.registerManaInfusionRecipe(OP.ingot.mat(MT.Manasteel, 1), OP.ingot.dat(ANY.Steel).toString(), 1500);
 		} catch(Throwable e) {e.printStackTrace(ERR);}
-		
-		for (int i = 0; i < 16; i++) if ((i & 3) != 1) CR.delate(ST.make(MD.BOTA, "stone", 1, i));
 		
 		RM.Hammer       .addRecipe1(T, 16,   16     , ST.make(MD.BOTA, "quartzSlabManaHalf"         , 1, W), OP.gem.mat(MT.ManaQuartz, 2));
 		RM.Hammer       .addRecipe1(T, 16,   16     , ST.make(MD.BOTA, "quartzSlabManaFull"         , 1, W), OP.gem.mat(MT.ManaQuartz, 4));
