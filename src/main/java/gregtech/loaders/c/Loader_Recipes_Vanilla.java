@@ -277,7 +277,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.comparator              , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , " T ", "TQT", "SSS", 'S', OP.stoneSmooth, 'T', OD.craftingRedstoneTorch, 'Q', OD.craftingQuartz);
 		CR.shaped(ST.make(Blocks.piston                 , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , "WWW", "CBC", "CRC", 'W', OD.plankAnyWood, 'C', OP.stoneCobble, 'B', OD.craftingPistonIngot, 'R', OD.itemRedstone);
 		CR.shaped(ST.make(Blocks.sticky_piston          , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES ,  "G" ,  "P"        , 'G', OD.craftingPistonGlue, 'P', Blocks.piston);
-		CR.shaped(ST.make(Items.bow                     , 1, 0), DEF_MIR                        , " WS", "W S", " WS", 'S', OD.itemString, 'W', OP.stick.dat(ANY.Wood));
+		CR.shaped(ST.make(Items.bow                     , 1, 0), DEF_MIR                        , " WS", "WkS", " WS", 'S', OD.itemString, 'W', OP.stick.dat(ANY.Wood));
 		CR.shaped(ST.make(Blocks.dropper                , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , "CCC", "C C", "CRC", 'C', OP.stoneCobble, 'R', OD.itemRedstone);
 		CR.shaped(ST.make(Blocks.dispenser              , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , "CCC", "CBC", "CRC", 'C', OP.stoneCobble, 'R', OD.itemRedstone, 'B', ST.make(Items.bow, 1, 0));
 		CR.shaped(ST.make(Blocks.dispenser              , 1, 0), DEF_MIR                        , " WS", "WDS", " WS", 'S', OD.itemString, 'W', OP.stick.dat(ANY.Wood), 'D', Blocks.dropper);
