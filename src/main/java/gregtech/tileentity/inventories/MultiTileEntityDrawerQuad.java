@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -115,6 +115,7 @@ public class MultiTileEntityDrawerQuad extends TileEntityBase09FacingSingle impl
 	@Override public boolean canDrop(int aSlot) {return T;}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[144];}
 	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return SLOTS[mSidedAccess ? FACING_ROTATIONS[mFacing][aSide] : SIDE_ANY];}
+	@Override public boolean allowCovers(byte aSide) {return aSide != mFacing;}
 	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return T;}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return T;}
 	
