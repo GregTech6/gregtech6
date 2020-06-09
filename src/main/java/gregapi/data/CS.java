@@ -1714,6 +1714,7 @@ public class CS {
 		CLIENT = null,
 		SPECIAL = null,
 		RECIPES = null,
+		GREGTECH = null,
 		MACHINES = null,
 		WORLDGEN = null,
 		MATERIAL = null,

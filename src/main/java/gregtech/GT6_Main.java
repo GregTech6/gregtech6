@@ -22,7 +22,6 @@ package gregtech;
 import static gregapi.data.CS.*;
 import static gregapi.util.CR.*;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -53,7 +52,7 @@ import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
-import gregapi.data.CS.DirectoriesGT;
+import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.CS.ModIDs;
@@ -104,7 +103,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -139,17 +137,14 @@ public class GT6_Main extends Abstract_Mod {
 		} catch(Throwable e) {
 			if (D1) e.printStackTrace(ERR);
 		}
-
-		File tFile = new File(DirectoriesGT.CONFIG_GT, "GregTech.cfg");
-		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "gregtech.cfg");
-		Configuration tMainConfig = new Configuration(tFile);
-
-		gt_proxy.mSkeletonsShootGTArrows = tMainConfig.get("general", "SkeletonsShootGTArrows", 16).getInt(16);
-		gt_proxy.mFlintChance            = tMainConfig.get("general", "FlintAndSteelChance"   , 30).getInt(30);
-		gt_proxy.mDisableVanillaOres     = tMainConfig.get("general", "DisableVanillaOres"    , T).getBoolean(T);
-		mDisableIC2Ores                  = tMainConfig.get("general", "DisableIC2Ores"        , T).getBoolean(T);
-
-		if (tMainConfig.get("general", "IncreaseDungeonLoot", T).getBoolean(T)) {
+		
+		gt_proxy.mSkeletonsShootGTArrows = ConfigsGT.GREGTECH.get("general", "SkeletonsShootGTArrows", 16);
+		gt_proxy.mFlintChance            = ConfigsGT.GREGTECH.get("general", "FlintAndSteelChance"   , 30);
+		gt_proxy.mDisableVanillaOres     = ConfigsGT.GREGTECH.get("general", "DisableVanillaOres"    , T);
+		mDisableIC2Ores                  = ConfigsGT.GREGTECH.get("general", "DisableIC2Ores"        , T);
+		BlockOcean.SPREAD_TO_AIR         = ConfigsGT.GREGTECH.get("general", "OceanBlocksSpreadToAir", T);
+		
+		if (ConfigsGT.GREGTECH.get("general", "IncreaseDungeonLoot", T)) {
 			OUT.println(getModNameForLog() + ": Increasing general amount of Loot in Dungeon Chests and alike");
 			ChestGenHooks tChest;
 			tChest = ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST                ); tChest.setMax(tChest.getMax()+ 8); tChest.setMin(tChest.getMin()+ 4);
@@ -163,7 +158,7 @@ public class GT6_Main extends Abstract_Mod {
 			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR        ); tChest.setMax(tChest.getMax()+ 6); tChest.setMin(tChest.getMin()+ 3);
 			tChest = ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY         ); tChest.setMax(tChest.getMax()+16); tChest.setMin(tChest.getMin()+ 8);
 		}
-		if (tMainConfig.get("general", "SmallerVanillaToolDurability", T).getBoolean(T)) {
+		if (ConfigsGT.GREGTECH.get("general", "SmallerVanillaToolDurability", T)) {
 			OUT.println(getModNameForLog() + ": Nerfing Vanilla Tool Durability");
 			Items.wooden_sword   .setMaxDamage(  4);
 			Items.wooden_pickaxe .setMaxDamage(  4);
@@ -191,12 +186,7 @@ public class GT6_Main extends Abstract_Mod {
 			Items.diamond_axe    .setMaxDamage(240);
 			Items.diamond_hoe    .setMaxDamage(240);
 		}
-
-
-		BlockOcean.SPREAD_TO_AIR                        = tMainConfig.get("general", "OceanBlocksSpreadToAir"       , T).getBoolean(T);
-
-		tMainConfig.save();
-
+		
 		if (COMPAT_IC2 != null && !MD.IC2C.mLoaded) {
 			OUT.println(getModNameForLog() + ": Removing all original Scrapbox Drops.");
 			try {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -37,48 +37,54 @@ import net.minecraftforge.common.config.Property;
  * @author Gregorius Techneticies
  */
 public class Config implements Runnable {
-	public static Configuration sConfigFileIDs;
-	private static boolean sIDConfigNeedsSaving = F;
 	private boolean mUsesDefaultsInNames = T;
 	public boolean mSaveOnEdit = T;
-	
-	public static int addIDConfig(Object aCategory, String aName, int aDefault) {
-		if (UT.Code.stringInvalid(aName)) return aDefault;
-		Property tProperty = sConfigFileIDs.get(aCategory.toString().replaceAll("\\|", "."), aName.replaceAll("\\|", "."), aDefault);
-		int rResult = tProperty.getInt(aDefault);
-		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && !tProperty.wasRead()) sConfigFileIDs.save(); else sIDConfigNeedsSaving = T;
-		return rResult;
-	}
 	
 	public final Configuration mConfig;
 	
 	public Config(String aFileName) {this(DirectoriesGT.CONFIG_GT, aFileName);}
-	public Config(String aPath, String aFileName) {this(new File(aPath), aFileName);}
-	public Config(File aPath, String aFileName) {
-		File tPath = new File(aPath, aFileName);
-		if (!tPath.exists()) tPath = new File(aPath, aFileName.toLowerCase());
-		mConfig = new Configuration(tPath);
+	public Config(String aDirPath, String aFileName) {this(new File(aDirPath), aFileName);}
+	public Config(File aDirPath, String aFileName) {
+		File tPathUppercase = new File(aDirPath, aFileName), tPathLowercase = new File(aDirPath, aFileName.toLowerCase()), tPathUsed = tPathUppercase;
+		
+		try {
+			// Try to properly enforce migration to Lowercase Config Files.
+			if (aFileName.equals(aFileName.toLowerCase())) {
+				// Just in case Windows fucked up or someone copied weirdly capitalized Configs.
+				// Try to rename the File if possible, otherwise just leave it be.
+				tPathUsed.renameTo(tPathLowercase);
+			} else {
+				if (tPathUppercase.exists()) {
+					if (tPathLowercase.exists() && !tPathUppercase.equals(tPathLowercase)) {
+						// This is likely on Unix Systems.
+						// There is two identical Config Files in this Folder, choose the Lowercase one.
+						tPathUsed = tPathLowercase;
+						// Try to kill the invalid Config File if possible, otherwise just leave it be.
+						tPathUppercase.delete();
+					} else {
+						// This is likely on Windows Systems. And in that case it would also happen regardless if the Name is already Lowercased or not.
+						// Try to rename the File if possible, otherwise just leave it be.
+						tPathUsed.renameTo(tPathLowercase);
+					}
+				} else {
+					// Nothing to actually do here, the File either doesn't exist at all due to being a new install, or the File was already correct.
+					// If there is no File with Uppercase containing Name, then just choose Lowercase right away.
+					tPathUsed = tPathLowercase;
+				}
+			}
+		} catch(Throwable e) {/* Not like that would change anything, if there was a File System related Error. */}
+		
+		mConfig = new Configuration(tPathUsed);
 		mConfig.load();
 		mConfig.save();
 		Abstract_Mod.sConfigs.add(this);
 	}
 	
-	public Config(File aConfig) {this(new Configuration(aConfig));}
-	public Config(Configuration aConfig) {mConfig = aConfig; mConfig.load(); mConfig.save(); Abstract_Mod.sConfigs.add(this);}
+	@Deprecated public Config(File aConfig) {this(new Configuration(aConfig));}
+	@Deprecated public Config(Configuration aConfig) {mConfig = aConfig; mConfig.load(); mConfig.save(); Abstract_Mod.sConfigs.add(this);}
 	
-	@Override
-	public void run() {
-		mConfig.save();
-		if (sIDConfigNeedsSaving) {
-			sConfigFileIDs.save();
-			sIDConfigNeedsSaving = F;
-		}
-	}
-	
-	public Config setUseDefaultInNames(boolean aUsesDefaultsInNames) {
-		mUsesDefaultsInNames = aUsesDefaultsInNames;
-		return this;
-	}
+	public Config setUseDefaultInNames(boolean aUsesDefaultsInNames) {mUsesDefaultsInNames = aUsesDefaultsInNames; return this;}
+	public Config setSaveOnEdit(boolean aSaveOnEdit) {mSaveOnEdit = aSaveOnEdit; return this;}
 	
 	public boolean get(Object aCategory, ItemStack aStack, boolean aDefault) {
 		return get(aCategory, ST.configName(aStack), aDefault);
@@ -137,5 +143,25 @@ public class Config implements Runnable {
 		return rResult;
 	}
 	
-	@Override public String toString() {return "Config File";}
+	@Override public String toString() {return "Config File: " + mConfig.getConfigFile().getAbsolutePath();}
+	
+	@Override
+	public void run() {
+		mConfig.save();
+		if (sIDConfigNeedsSaving) {
+			sConfigFileIDs.save();
+			sIDConfigNeedsSaving = F;
+		}
+	}
+	
+	public static Configuration sConfigFileIDs;
+	private static boolean sIDConfigNeedsSaving = F;
+	
+	public static int addIDConfig(Object aCategory, String aName, int aDefault) {
+		if (UT.Code.stringInvalid(aName)) return aDefault;
+		Property tProperty = sConfigFileIDs.get(aCategory.toString().replaceAll("\\|", "."), aName.replaceAll("\\|", "."), aDefault);
+		int rResult = tProperty.getInt(aDefault);
+		if (Abstract_Mod.sFinalized >= Abstract_Mod.sModCountUsingGTAPI && !tProperty.wasRead()) sConfigFileIDs.save(); else sIDConfigNeedsSaving = T;
+		return rResult;
+	}
 }
