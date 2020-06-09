@@ -52,19 +52,19 @@ public class Config implements Runnable {
 			if (aFileName.equals(aFileName.toLowerCase())) {
 				// Just in case Windows fucked up or someone copied weirdly capitalized Configs.
 				// Try to rename the File if possible, otherwise just leave it be.
-				tPathUsed.renameTo(tPathLowercase);
+				if (tPathUsed.renameTo(tPathLowercase)) tPathUsed = tPathLowercase;
 			} else {
 				if (tPathUppercase.exists()) {
 					if (tPathLowercase.exists() && !tPathUppercase.equals(tPathLowercase)) {
 						// This is likely on Unix Systems.
-						// There is two identical Config Files in this Folder, choose the Lowercase one.
+						// There is two matching Config Files in this Folder, choose the Lowercase one.
 						tPathUsed = tPathLowercase;
-						// Try to kill the invalid Config File if possible, otherwise just leave it be.
+						// Try to kill the invalid one if possible, otherwise just leave it be.
 						tPathUppercase.delete();
 					} else {
 						// This is likely on Windows Systems. And in that case it would also happen regardless if the Name is already Lowercased or not.
 						// Try to rename the File if possible, otherwise just leave it be.
-						tPathUsed.renameTo(tPathLowercase);
+						if (tPathUsed.renameTo(tPathLowercase)) tPathUsed = tPathLowercase;
 					}
 				} else {
 					// Nothing to actually do here, the File either doesn't exist at all due to being a new install, or the File was already correct.

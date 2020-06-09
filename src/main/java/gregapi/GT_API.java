@@ -326,7 +326,7 @@ public class GT_API extends Abstract_Mod {
 		if (!tFile.exists()) tFile = new File(DirectoriesGT.CONFIG_GT, "ids.cfg");
 		Config.sConfigFileIDs = new Configuration(tFile); Config.sConfigFileIDs.save();
 		
-		ConfigsGT.GREGTECH      = new Config("GregTech.cfg");
+		ConfigsGT.GREGTECH      = new Config("GregTech.cfg").setUseDefaultInNames(F);
 		ConfigsGT.RECIPES       = new Config("Recipes.cfg");
 		ConfigsGT.WORLDGEN      = new Config("WorldGenerationNew.cfg");
 		ConfigsGT.MATERIAL      = new Config("Materials.cfg");
@@ -398,11 +398,11 @@ public class GT_API extends Abstract_Mod {
 		
 		ConfigsGT.CLIENT = new Config(DirectoriesGT.MINECRAFT, "GregTech.cfg");
 		
-		D1 = ConfigsGT.CLIENT.get("debug" , "logs"    , F);
-		D2 = ConfigsGT.CLIENT.get("debug" , "oredict" , F);
-		D3 = ConfigsGT.CLIENT.get("debug" , "misc"    , F);
+		D1 = ConfigsGT.CLIENT.get("debug" , "logs"   , F);
+		D2 = ConfigsGT.CLIENT.get("debug" , "oredict", F);
+		D3 = ConfigsGT.CLIENT.get("debug" , "misc"   , F);
 		CLIENT_BLOCKUPDATE_SOUNDS = ConfigsGT.CLIENT.get("debug" , "block_update_sounds", F);
-		if ( ConfigsGT.CLIENT.get("debug" , "april"   , F)) APRIL_FOOLS = T;
+		if ( ConfigsGT.CLIENT.get("debug" , "april"  , F)) APRIL_FOOLS = T;
 		
 		if (APRIL_FOOLS && CODE_CLIENT) {
 			MT.W.setLocal("Wolframium");
@@ -490,9 +490,9 @@ public class GT_API extends Abstract_Mod {
 		}
 		
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) if (!tPrefix.contains(TD.Prefix.PREFIX_UNUSED)) {
-			int tDefault = ConfigsGT.GREGTECH.get("stacksizes", tPrefix.mNameInternal+"_"+tPrefix.mDefaultStackSize, tPrefix.mDefaultStackSize);
-			tPrefix.setConfigStacksize(tStackConfig.get("stacksizes", tPrefix.mNameInternal+"_"+tDefault, tDefault).getInt());
+			tPrefix.setConfigStacksize(tStackConfig.get("stacksizes", tPrefix.mNameInternal+"_"+tPrefix.mDefaultStackSize, tPrefix.mDefaultStackSize).getInt());
 		}
+		tStackConfig.save();
 		
 		SURVIVAL_INTO_ADVENTURE_MODE            = ConfigsGT.GREGTECH.get("general", "forceAdventureMode"               , F);
 		ADVENTURE_MODE_KIT                      = ConfigsGT.GREGTECH.get("general", "AdventureModeStartingKit"         , !MD.GT.mLoaded);
@@ -597,8 +597,6 @@ public class GT_API extends Abstract_Mod {
 		if (ConfigsGT.GREGTECH.get("compat", "ComputerCraft"       , T)) ICompat.COMPAT_CLASSES.add(COMPAT_CC        = (ICompatCC        )UT.Reflection.callConstructor("gregapi.compat.computercraft.CompatCC"          , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "Forestry"            , T)) ICompat.COMPAT_CLASSES.add(COMPAT_FR        = (ICompatFR        )UT.Reflection.callConstructor("gregapi.compat.forestry.CompatFR"               , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "GalactiCraft"        , T)) ICompat.COMPAT_CLASSES.add(COMPAT_GC        = (ICompatGC        )UT.Reflection.callConstructor("gregapi.compat.galacticraft.CompatGC"           , 0, null, D2));
-		
-		tStackConfig.save();
 		
 		SHOW_HIDDEN_ITEMS                   = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTItems"           , F);
 		SHOW_HIDDEN_MATERIALS               = ConfigsGT.CLIENT.get(ConfigCategories.visibility, "HiddenGTMaterials"       , F);
@@ -803,7 +801,16 @@ public class GT_API extends Abstract_Mod {
 		
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onPostLoad(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 		
-		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && !tMaterial.contains(TD.Properties.INVALID_MATERIAL)) MAT_LOG.println(tMaterial.mNameInternal);
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && !tMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
+			if (tMaterial.mID < 10000) MAT_LOG.print(" ");
+			if (tMaterial.mID <  1000) MAT_LOG.print(" ");
+			if (tMaterial.mID <   100) MAT_LOG.print(" ");
+			if (tMaterial.mID <    10) MAT_LOG.print(" ");
+			MAT_LOG.print(tMaterial.mID);
+			MAT_LOG.print(": ");
+			MAT_LOG.print(tMaterial.mNameInternal);
+			MAT_LOG.println();
+		}
 	}
 	
 	@Override

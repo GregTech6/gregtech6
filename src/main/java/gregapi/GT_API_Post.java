@@ -170,7 +170,6 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.AA.mLoaded) {
 			MT.OREMATS.Barite.addOreByProducts(MT.BlackQuartz);
 		}
-		
 	}
 
 	@Override
