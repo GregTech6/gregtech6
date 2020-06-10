@@ -144,7 +144,7 @@ public class Loader_Recipes_Other implements Runnable {
 		addListener(rockGt.dat(MT.Netherrack), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {RM.add_smelting(aEvent.mStack, rockGt.mat(MT.NetherBrick, 1));}});
 		
 		
-		addListener(new Object[] {OD.itemRubber, "ingotIron", "oreCoal", "oreIron", "oreHematite", "oreMagnetite", "oreBogIron", "oreSiderite", "oreTaconite", "oreGold", "oreRedstone", "oreLapis", "oreDiamond", "oreEmerald", "oreBauxite", "oreAluminium", "oreTitanium", "oreTungsten", "oreSulfur", "oreSaltpeter", "oreNiter", "oreNitre"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(new Object[] {OD.itemRubber, "gemHexorium", "ingotIron", "oreCoal", "oreIron", "oreHematite", "oreMagnetite", "oreBogIron", "oreSiderite", "oreTaconite", "oreGold", "oreRedstone", "oreLapis", "oreDiamond", "oreEmerald", "oreBauxite", "oreAluminium", "oreTitanium", "oreTungsten", "oreSulfur", "oreSaltpeter", "oreNiter", "oreNitre"}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.rem_smelting(aEvent.mStack);
 		}});
 		addListener(OD.itemResin, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

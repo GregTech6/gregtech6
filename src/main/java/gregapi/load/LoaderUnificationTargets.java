@@ -333,6 +333,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.HexoriumBlue           , ST.make(MD.HEX, "itemHexoriumCrystalBlue"    , 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.HexoriumBlack          , ST.make(MD.HEX, "itemHexoriumCrystalBlack"   , 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.HexoriumWhite          , ST.make(MD.HEX, "itemHexoriumCrystalWhite"   , 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.plateGem       , MT.HexoriumBlack          , ST.make(MD.HEX, "itemBlackHexoriumWafer"     , 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.plateGem       , MT.HexoriumWhite          , ST.make(MD.HEX, "itemWhiteHexoriumWafer"     , 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.HexoriumRed            , ST.make(MD.HEX, "blockOfHexoriumCrystalRed"  , 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.HexoriumGreen          , ST.make(MD.HEX, "blockOfHexoriumCrystalGreen", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.HexoriumBlue           , ST.make(MD.HEX, "blockOfHexoriumCrystalBlue" , 1, 0));
