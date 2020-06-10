@@ -365,6 +365,11 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ReC, "reactorcraft_block_ore"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ElC, "electricraft_block_ore"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.AA, "blockMisc"                        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreRed"             , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreGreen"           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreBlue"            , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreBlack"           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HEX, "blockHexoriumOreWhite"           , null));
 		
 		
 		IL.Bottle_Empty                         .set(ST.make(Items.glass_bottle, 1, 0));
