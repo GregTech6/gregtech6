@@ -27,6 +27,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
+[COMPAT] HEXCrafts Hexorium is now in my Material List.
 [FIXED] Skeletons were not shooting the right GT Arrows since a long time. Now I made an actual List of Arrows to shoot, instead of grabbing any of the existing Arrows. This also means no Radiation Arrows anymore.
 [FIXED] Made Config Files always migrate to Lowercase File Names so random Garbage with Windows and older Config Files wont happen again.
 [CHANGED] The Capsule and Cell Extruder Recipes were not really well coded, so I fixed them up. Should make it easier to work with for the GT6U Team too.

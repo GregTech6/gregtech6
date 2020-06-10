@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -187,6 +187,7 @@ public class TextureSet {
 	public static final TextureSet[]
 	  SET_NONE                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "NONE")          , addTextureSet(MD.GT.mID, T, "NONE")          }
 	, SET_DULL                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "DULL")          , addTextureSet(MD.GT.mID, T, "DULL")          }
+	, SET_HEX                       = new TextureSet[] {addTextureSet(MD.GT.mID, F, "HEX")           , addTextureSet(MD.GT.mID, T, "HEX")           }
 	, SET_RUBY                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "RUBY")          , addTextureSet(MD.GT.mID, T, "RUBY")          }
 	, SET_OPAL                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "OPAL")          , addTextureSet(MD.GT.mID, T, "OPAL")          }
 	, SET_LEAF                      = new TextureSet[] {addTextureSet(MD.GT.mID, F, "LEAF")          , addTextureSet(MD.GT.mID, T, "LEAF")          }

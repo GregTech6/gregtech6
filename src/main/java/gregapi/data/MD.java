@@ -177,6 +177,7 @@ public class MD {
 	, SmAc              = new ModData(ModIDs.SmAc               , "Simple Achievements")
 	, HQM               = new ModData(ModIDs.HQM                , "Hardcore Questing Mode")
 	
+	, HEX               = new ModData(ModIDs.HEX                , "HEXCraft")
 	, DE                = new ModData(ModIDs.DE                 , "Draconic Evolution")
 	, AV                = new ModData(ModIDs.AV                 , "Avaritia")
 	

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,6 +64,7 @@ public class ANY {
 	Quartz          = any("Any Quartz"          ),
 	W               = any("Any Tungsten"        ),
 	ThaumCrystal    = any("Any Thaumic Crystal" ),
+	Hexorium        = any("Hexorium"            ),
 	Wood            = any("Any Wood"            ),
 	WoodDefault     = any("Any Default Wood"    ),
 	WoodNormal      = any("Any Normal Wood"     ),
@@ -107,6 +108,7 @@ public class ANY {
 		Quartz          .stealLooks(MT.MilkyQuartz    ).steal(MT.MilkyQuartz    ).setLocal("Quartz"             ).setAllToTheOutputOf(MT.SiO2           ).put(BRITTLE, MELTING, QUARTZ               ).addReRegistrationToThis(MT.Quartzite);
 		W               .stealLooks(MT.W              ).steal(MT.W              ).setLocal("Tungsten"           ).setAllToTheOutputOf(MT.W              ).put(SMITHABLE, MELTING                     ).addReRegistrationToThis(MT.W, MT.TungstenSintered);
 		ThaumCrystal    .stealLooks(MT.InfusedBalance ).steal(MT.InfusedDull                                                                            ).put(DONT_SHOW_THIS_COMPONENT               );
+		Hexorium        .stealLooks(MT.HexoriumWhite  ).steal(MT.HexoriumWhite                                                                          ).put(DONT_SHOW_THIS_COMPONENT               );
 		WoodDefault     .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Normal Wood"        ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                        ).addReRegistrationToThis(MT.Wood, MT.Peanutwood).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
 		WoodNormal      .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Normal Wood"        ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                        ).addReRegistrationToThis(ANY.WoodDefault.mToThis.toArray(ZL_MT)).addReRegistrationToThis(MT.Weedwood, MT.Skyroot, MT.Bamboo).setFurnaceBurnTime(TICKS_PER_SMELT/ 2);
 		WoodMagical     .stealLooks(MT.Greatwood      ).steal(MT.Wood           ).setLocal("Magical Wood"       ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE, MAGICAL               ).addReRegistrationToThis(MT.Greatwood, MT.Silverwood, MT.Livingwood, MT.Dreamwood, MT.Shimmerwood).setFurnaceBurnTime(TICKS_PER_SMELT* 2);

@@ -172,7 +172,7 @@ public class MT {
 	static OreDictMaterial orefood      (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    )  {return oredust         (aID, aNameOreDict, SET_FINE        , aR, aG, aB, aA).put(FOOD, MORTAR);}
 	static OreDictMaterial dustfood     (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    )  {return dust            (aID, aNameOreDict, SET_FINE        , aR, aG, aB, aA).put(FOOD, MORTAR);}
 	static OreDictMaterial mixfood      (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    )  {return mixdust         (aID, aNameOreDict, SET_FINE        , aR, aG, aB, aA).put(FOOD, MORTAR);}
-	static OreDictMaterial dye          (int aID, String aNameOreDict                    , long aR, long aG, long aB             )  {return dust            (aID, aNameOreDict, SET_FOOD        , aR, aG, aB, 255).aspects(TC.SENSUS, 1).put(DONT_SHOW_THIS_COMPONENT);}
+	static OreDictMaterial dye          (int aID, String aNameOreDict                    , long aR, long aG, long aB             )  {return dust            (aID, aNameOreDict, SET_FOOD        , aR, aG, aB,255).aspects(TC.SENSUS, 1).put(DONT_SHOW_THIS_COMPONENT);}
 	static OreDictMaterial quartz       (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    )  {return create          (aID, aNameOreDict, SET_QUARTZ      , aR, aG, aB, aA).put(G_QUARTZ_ORES, MORTAR, BRITTLE, QUARTZ, BLACKLISTED_SMELTER).addReRegistrations(ANY.Quartz, ANY.SiO2).setSmelting(SiO2, U).setPriorityPrefix(1);}
 	static OreDictMaterial gem          (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return create          (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(G_GEM_ORES).setPriorityPrefix(1);}
 	static OreDictMaterial gemdcmp      (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return gem             (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(DECOMPOSABLE);}
@@ -187,10 +187,11 @@ public class MT {
 	static OreDictMaterial stonecent    (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    )  {return stonedcmp       (aID, aNameOreDict, SET_STONE       , aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial stoneelec    (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    )  {return stonedcmp       (aID, aNameOreDict, SET_STONE       , aR, aG, aB, aA).put(ELECTROLYSER);}
 	static OreDictMaterial crystal      (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return create          (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(G_GEM_ORES_TRANSPARENT, CRYSTAL).setPriorityPrefix(1);}
-	static OreDictMaterial crystal_tc   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return crystal         (aID, aNameOreDict, SET_SHARDS      , aR, aG, aB, 255).lens(aColor).put(MAGICAL, UNBURNABLE, MD.TC).addReRegistrations(ANY.ThaumCrystal).setOreMultiplier(2).visDefault();}
 	static OreDictMaterial crystaldcmp  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystal         (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(DECOMPOSABLE);}
 	static OreDictMaterial crystalcent  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial crystalelec  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(ELECTROLYSER);}
+	static OreDictMaterial crystal_tc   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return crystal         (aID, aNameOreDict, SET_SHARDS      , aR, aG, aB,255).lens(aColor).put(MAGICAL, UNBURNABLE, MD.TC).addReRegistrations(ANY.ThaumCrystal).setOreMultiplier(2).visDefault();}
+	static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127).lens(aColor).put(MD.HEX, MORTAR, CRYSTALLISABLE).addReRegistrations(ANY.Hexorium).setOreMultiplier(4).setLocal(DYE_NAMES[aColor] + " Hexorium").visDefault();}
 	static OreDictMaterial valgem       (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return gem             (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(G_GEM_ORES_TRANSPARENT, CRYSTAL, VALUABLE);}
 	static OreDictMaterial valgemdcmp   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgem          (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(DECOMPOSABLE).setSmelting(null, 0);}
 	static OreDictMaterial valgemcent   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgemdcmp      (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
@@ -1348,6 +1349,24 @@ public class MT {
 	InfusedEntropy          = crystal_tc    ( 8356, "Infused Entropy"                               ,  62,  62,  62, DYE_INDEX_Black       ).put(GLOWING)                                                                                                                                                                                                                                                                           .aspects(TC.PRAECANTIO, 1, TC.PERDITIO  , 2).qual(3, 32.0,   64,  4),
 	InfusedOrder            = crystal_tc    ( 8357, "Infused Order"                                 , 252, 252, 252, DYE_INDEX_White       ).put(GLOWING)                                                                                                                                                                                                                                                                           .aspects(TC.PRAECANTIO, 1, TC.ORDO      , 2).qual(3,  8.0,   64,  3),
 	InfusedBalance          = crystal_tc    (-8358, "Infused Balance"                               , 252, 252, 252, DYE_INDEX_LightGray   ).put(GLOWING)                                                                                                                                                                                                                                                                           .aspects(TC.PRAECANTIO, 1, TC.ORDO, 1, TC.PERDITIO, 1, TC.IGNIS, 1, TC.AER, 1, TC.AQUA, 1, TC.TERRA, 1).qual(3, 32.0,  256,  4),
+	
+	
+	HexoriumBlack           = hexorium      ( 9224,  32,  32,  32, DYE_INDEX_Black    ),
+	HexoriumRed             = hexorium      ( 9225, 255,   0,   0, DYE_INDEX_Red      ),
+	HexoriumGreen           = hexorium      ( 9226,   0, 255,   0, DYE_INDEX_Green    ),
+//  HexoriumBrown           = hexorium      ( 9227,  96,  64,   0, DYE_INDEX_Brown    ),
+	HexoriumBlue            = hexorium      ( 9228,   0,   0, 255, DYE_INDEX_Blue     ),
+//  HexoriumPurple          = hexorium      ( 9229, 128,   0, 128, DYE_INDEX_Purple   ),
+//  HexoriumCyan            = hexorium      ( 9230,   0, 255, 255, DYE_INDEX_Cyan     ),
+//  HexoriumLightGray       = hexorium      ( 9231, 192, 192, 192, DYE_INDEX_LightGray),
+//  HexoriumGray            = hexorium      ( 9232, 128, 128, 128, DYE_INDEX_Gray     ),
+//  HexoriumPink            = hexorium      ( 9233, 255, 192, 192, DYE_INDEX_Pink     ),
+//  HexoriumLime            = hexorium      ( 9234, 128, 255, 128, DYE_INDEX_Lime     ),
+//  HexoriumYellow          = hexorium      ( 9235, 255, 255,   0, DYE_INDEX_Yellow   ),
+//  HexoriumLightBlue       = hexorium      ( 9236, 128, 128, 255, DYE_INDEX_LightBlue),
+//  HexoriumMagenta         = hexorium      ( 9237, 255,   0, 255, DYE_INDEX_Magenta  ),
+//  HexoriumOrange          = hexorium      ( 9238, 255, 128,   0, DYE_INDEX_Orange   ),
+	HexoriumWhite           = hexorium      ( 9239, 255, 255, 255, DYE_INDEX_White    ),
 	
 	
 	Petrotheum              = mixdust       ( 8245, "Petrotheum"            , SET_DULL              ,  86,  76,  82, 255).put(CONTAINERS, MELTING, MORTAR)                                                                                                              .setMcfg( 2, Clay           , 1*U, Obsidian         , 1*U, Redstone         , 1*U, Basalz           , 1*U)                                                  .aspects(TC.PRAECANTIO, 2, TC.POTENTIA, 1).heat(400, 2000),

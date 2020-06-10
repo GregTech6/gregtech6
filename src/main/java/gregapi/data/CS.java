@@ -1868,28 +1868,29 @@ public class CS {
 		, GrC_Hops          = "Growthcraft|Hops"
 		, GrC_Milk          = "Growthcraft|Milk"
 		, GrC_Rice          = "Growthcraft|Rice"
-
+		
 		, CrGu              = "craftguide"
 		, SmAc              = "SimpleAchievements"
 		, HQM               = "HardcoreQuesting"
-
+		
+		, HEX               = "hexcraft"
 		, DE                = "DraconicEvolution"
 		, AV                = "Avaritia"
-
+		
 		, EB                = "enhancedbiomes"
 		, EBXL              = "ExtrabiomesXL"
 		, BoP               = "BiomesOPlenty"
 		, HiL               = "Highlands"
-
+		
 		, ATG               = "ATG"
 		, RTG               = "RTG"
 		, RWG               = "RWG"
-
+		
 		, GaSu              = "ganyssurface"
 		, GaNe              = "ganysnether"
 		, GaEn              = "ganysend"
 		, WdSt              = "woodstuff"
-
+		
 		, LycM              = "lycanitesmobs"
 		, LycM_Fresh        = "freshwatermobs"
 		, LycM_Salt         = "saltwatermobs"
