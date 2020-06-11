@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 import static gregapi.data.OP.*;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictItemData;
@@ -47,8 +48,19 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	public boolean addRecipesUsing(RecipeMap aMap, ItemStack aInput, OreDictItemData aData) {
 		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.contains(TD.Prefix.DUST_ORE) || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER)) return F;
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
-		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreMultiplier * aData.mMaterial.mMaterial.mOreProcessingMultiplier;
+		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreProcessingMultiplier;
 		
+		if (aData.mPrefix == oreNetherrack || aData.mPrefix == oreNether || aData.mPrefix == oreBasalt) {
+			if (aData.mMaterial.mMaterial == MT.HexoriumBlack || aData.mMaterial.mMaterial == MT.HexoriumWhite) {
+				aMultiplier *= (aData.mMaterial.mMaterial.mOreMultiplier + 1);
+			} else if (aData.mMaterial.mMaterial == MT.HexoriumRed || aData.mMaterial.mMaterial == MT.HexoriumGreen || aData.mMaterial.mMaterial == MT.HexoriumBlue) {
+				aMultiplier *= (aData.mMaterial.mMaterial.mOreMultiplier - 1);
+			} else {
+				aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier;
+			}
+		} else {
+				aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier;
+		}
 		if (aData.mPrefix == orePoor) {
 			ItemStack tOutput = OP.crushedTiny          .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F)));
 			if (tOutput == null) tOutput = OP.dustTiny  .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F)));

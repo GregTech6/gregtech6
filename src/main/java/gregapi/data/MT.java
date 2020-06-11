@@ -191,7 +191,7 @@ public class MT {
 	static OreDictMaterial crystalcent  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial crystalelec  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(ELECTROLYSER);}
 	static OreDictMaterial crystal_tc   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return crystal         (aID, aNameOreDict, SET_SHARDS      , aR, aG, aB,255).lens(aColor).put(MAGICAL, UNBURNABLE, MD.TC).addReRegistrations(ANY.ThaumCrystal).setOreMultiplier(2).visDefault();}
-	static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127).lens(aColor).put(MD.HEX, MORTAR, MELTING, MOLTEN, GLOWING, CRYSTALLISABLE).addReRegistrations(ANY.Hexorium).setOreMultiplier(4).setLocal(DYE_NAMES[aColor] + " Hexorium").visDefault();}
+	static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127).lens(aColor).put(MD.HEX, MORTAR, GLOWING, CRYSTALLISABLE).addReRegistrations(ANY.Hexorium).setOreMultiplier(aColor == DYE_INDEX_Black || aColor == DYE_INDEX_White ? 3 : 4).setLocal(DYE_NAMES[aColor] + " Hexorium").visDefault();}
 	static OreDictMaterial valgem       (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return gem             (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(G_GEM_ORES_TRANSPARENT, CRYSTAL, VALUABLE);}
 	static OreDictMaterial valgemdcmp   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgem          (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(DECOMPOSABLE).setSmelting(null, 0);}
 	static OreDictMaterial valgemcent   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgemdcmp      (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
@@ -1351,22 +1351,22 @@ public class MT {
 	InfusedBalance          = crystal_tc    (-8358, "Infused Balance"                               , 252, 252, 252, DYE_INDEX_LightGray   ).put(GLOWING)                                                                                                                                                                                                                                                                           .aspects(TC.PRAECANTIO, 1, TC.ORDO, 1, TC.PERDITIO, 1, TC.IGNIS, 1, TC.AER, 1, TC.AQUA, 1, TC.TERRA, 1).qual(3, 32.0,  256,  4),
 	
 	
-	HexoriumBlack           = hexorium      ( 9224,  32,  32,  32, DYE_INDEX_Black    ),
-	HexoriumRed             = hexorium      ( 9225, 255,   0,   0, DYE_INDEX_Red      ),
-	HexoriumGreen           = hexorium      ( 9226,   0, 255,   0, DYE_INDEX_Green    ),
-//  HexoriumBrown           = hexorium      ( 9227,  96,  64,   0, DYE_INDEX_Brown    ),
-	HexoriumBlue            = hexorium      ( 9228,   0,   0, 255, DYE_INDEX_Blue     ),
-//  HexoriumPurple          = hexorium      ( 9229, 128,   0, 128, DYE_INDEX_Purple   ),
-//  HexoriumCyan            = hexorium      ( 9230,   0, 255, 255, DYE_INDEX_Cyan     ),
-//  HexoriumLightGray       = hexorium      ( 9231, 192, 192, 192, DYE_INDEX_LightGray),
-//  HexoriumGray            = hexorium      ( 9232, 128, 128, 128, DYE_INDEX_Gray     ),
-//  HexoriumPink            = hexorium      ( 9233, 255, 192, 192, DYE_INDEX_Pink     ),
-//  HexoriumLime            = hexorium      ( 9234, 128, 255, 128, DYE_INDEX_Lime     ),
-//  HexoriumYellow          = hexorium      ( 9235, 255, 255,   0, DYE_INDEX_Yellow   ),
-//  HexoriumLightBlue       = hexorium      ( 9236, 128, 128, 255, DYE_INDEX_LightBlue),
-//  HexoriumMagenta         = hexorium      ( 9237, 255,   0, 255, DYE_INDEX_Magenta  ),
-//  HexoriumOrange          = hexorium      ( 9238, 255, 128,   0, DYE_INDEX_Orange   ),
-	HexoriumWhite           = hexorium      ( 9239, 255, 255, 255, DYE_INDEX_White    ),
+	HexoriumBlack           = hexorium      ( 9224,  16,  16,  16, DYE_INDEX_Black    ),
+	HexoriumRed             = hexorium      ( 9225, 128,   0,   0, DYE_INDEX_Red      ),
+	HexoriumGreen           = hexorium      ( 9226,   0, 128,   0, DYE_INDEX_Green    ),
+//  HexoriumBrown           = hexorium      ( 9227,  48,  32,   0, DYE_INDEX_Brown    ),
+	HexoriumBlue            = hexorium      ( 9228,   0,   0, 128, DYE_INDEX_Blue     ),
+//  HexoriumPurple          = hexorium      ( 9229,  64,   0,  64, DYE_INDEX_Purple   ),
+//  HexoriumCyan            = hexorium      ( 9230,   0, 128, 128, DYE_INDEX_Cyan     ),
+//  HexoriumLightGray       = hexorium      ( 9231,  96,  96,  96, DYE_INDEX_LightGray),
+//  HexoriumGray            = hexorium      ( 9232,  64,  64,  64, DYE_INDEX_Gray     ),
+//  HexoriumPink            = hexorium      ( 9233, 128,  96,  96, DYE_INDEX_Pink     ),
+//  HexoriumLime            = hexorium      ( 9234,  64, 128,  64, DYE_INDEX_Lime     ),
+//  HexoriumYellow          = hexorium      ( 9235, 128, 128,   0, DYE_INDEX_Yellow   ),
+//  HexoriumLightBlue       = hexorium      ( 9236,  64,  64, 128, DYE_INDEX_LightBlue),
+//  HexoriumMagenta         = hexorium      ( 9237, 128,   0, 128, DYE_INDEX_Magenta  ),
+//  HexoriumOrange          = hexorium      ( 9238, 128,  64,   0, DYE_INDEX_Orange   ),
+	HexoriumWhite           = hexorium      ( 9239, 128, 128, 128, DYE_INDEX_White    ),
 	
 	
 	Petrotheum              = mixdust       ( 8245, "Petrotheum"            , SET_DULL              ,  86,  76,  82, 255).put(CONTAINERS, MELTING, MORTAR)                                                                                                              .setMcfg( 2, Clay           , 1*U, Obsidian         , 1*U, Redstone         , 1*U, Basalz           , 1*U)                                                  .aspects(TC.PRAECANTIO, 2, TC.POTENTIA, 1).heat(400, 2000),
@@ -2400,18 +2400,21 @@ public class MT {
 			GreenSapphire                   .addOreByProducts(BlueSapphire          , OrangeSapphire            , YellowSapphire        );
 			YellowSapphire                  .addOreByProducts(BlueSapphire          , OrangeSapphire            , GreenSapphire         );
 			OrangeSapphire                  .addOreByProducts(BlueSapphire          , YellowSapphire            , GreenSapphire         );
+			HexoriumRed                     .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
+			HexoriumGreen                   .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
+			HexoriumBlue                    .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
+			HexoriumBlack                   .addOreByProducts(HexoriumRed           , HexoriumGreen             , HexoriumBlue          );
+			HexoriumWhite                   .addOreByProducts(HexoriumRed           , HexoriumGreen             , HexoriumBlue          );
 			OREMATS.Kaolinite               .addOreByProducts(OREMATS.Bauxite       , ClayBrown                 , Al2O3                 );
 			OREMATS.Barite                  .addOreByProducts(CertusQuartz          , Quartzite                 );
 			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz          , Quartzite                 , OREMATS.Barite        );
 			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                 , Mg                        , MnO2                  );
-			
 			BlackQuartz                     .addOreByProducts(OREMATS.Barite        );
 			NetherQuartz                    .addOreByProducts(Netherrack            , OREMATS.Barite            );
 			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , Fe2O3);
 			MilkyQuartz                     .addOreByProducts(CertusQuartz          , OREMATS.Barite            );
 			CertusQuartz                    .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
-			
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar      , RareEarth                 , Glowstone             );
 			Os                              .addOreByProducts(Ir                    , Pt                        , Ru                    );
 			Ir                              .addOreByProducts(Pt                    , Os                        , Rh                    );

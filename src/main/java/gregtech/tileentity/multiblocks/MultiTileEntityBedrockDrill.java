@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import java.util.List;
 
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
+import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.FluidsGT;
 import gregapi.data.IL;
@@ -148,6 +149,15 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 				int tSelector = rng(128);
 				if (tSelector < mList.size()) {
 					OreDictMaterial tMaterial = (rng(32) == 0 ? UT.Code.select(mList.get(tSelector), mList.get(tSelector).mByProducts) : mList.get(tSelector));
+					if (ANY.Hexorium.mToThis.contains(tMaterial)) {
+						switch (rng(20)) {
+						case  0: case  1: case  2: case  3: case  4: case  5: case  6: case  7: case  8: case  9: tMaterial = MT.HexoriumWhite; break;
+						case 10: case 11: case 12: case 13: case 14: case 15: case 16: tMaterial = MT.HexoriumBlack; break;
+						case 17: tMaterial = MT.HexoriumRed; break;
+						case 18: tMaterial = MT.HexoriumGreen; break;
+						case 19: tMaterial = MT.HexoriumBlue; break;
+						}
+					}
 					if (worldObj.provider.dimensionId == DIM_NETHER) {
 						slot(0, ST.make((Block)BlocksGT.oreBrokenNetherrack, 1, tMaterial.mID));
 // TODO             } else if (WD.dimERE(worldObj)) {

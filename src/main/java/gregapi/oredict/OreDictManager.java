@@ -411,6 +411,9 @@ public final class OreDictManager {
 					if (aMaterial.contains(TD.Properties.AUTO_BLACKLIST)) addToBlacklist_(aEvent.Ore);
 					for (OreDictMaterial tReRegisteredMaterial : aMaterial.mReRegistrations) registerOreSafe(aPrefix.mNameInternal + tReRegisteredMaterial.mNameInternal, aEvent.Ore);
 					if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
+						if (aPrefix != OP.ore && aPrefix.contains(TD.Prefix.STANDARD_ORE) && ANY.Hexorium.mToThis.contains(aMaterial)) {
+							registerOreSafe(OP.ore.mNameInternal + aMaterial.mNameInternal, aEvent.Ore);
+						}
 						if ((MD.TFC.mLoaded || MD.TFCP.mLoaded) && (aModID.equalsIgnoreCase(MD.TFC.mID) || aModID.equalsIgnoreCase(MD.TFCP.mID)) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);
 						} else if (aPrefix == OP.gem && MD.RH.mLoaded && aModID.equalsIgnoreCase(MD.RH.mID) && (!MD.ReC.mLoaded || aMaterial == MT.FluoriteBlack || !ANY.CaF2.mToThis.contains(aMaterial))) {
