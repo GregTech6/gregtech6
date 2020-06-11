@@ -1351,6 +1351,7 @@ public class MT {
 	InfusedBalance          = crystal_tc    (-8358, "Infused Balance"                               , 252, 252, 252, DYE_INDEX_LightGray   ).put(GLOWING)                                                                                                                                                                                                                                                                           .aspects(TC.PRAECANTIO, 1, TC.ORDO, 1, TC.PERDITIO, 1, TC.IGNIS, 1, TC.AER, 1, TC.AQUA, 1, TC.TERRA, 1).qual(3, 32.0,  256,  4),
 	
 	
+	
 	HexoriumBlack           = hexorium      ( 9224,  32,  32,  32, DYE_INDEX_Black    ),
 	HexoriumRed             = hexorium      ( 9225, 128,   0,   0, DYE_INDEX_Red      ),
 	HexoriumGreen           = hexorium      ( 9226,   0, 128,   0, DYE_INDEX_Green    ),
@@ -1367,6 +1368,7 @@ public class MT {
 //  HexoriumMagenta         = hexorium      ( 9237, 128,   0, 128, DYE_INDEX_Magenta  ),
 //  HexoriumOrange          = hexorium      ( 9238, 128,  64,   0, DYE_INDEX_Orange   ),
 	HexoriumWhite           = hexorium      ( 9239, 224, 224, 224, DYE_INDEX_White    ),
+	
 	
 	
 	Petrotheum              = mixdust       ( 8245, "Petrotheum"            , SET_DULL              ,  86,  76,  82, 255).put(CONTAINERS, MELTING, MORTAR)                                                                                                              .setMcfg( 2, Clay           , 1*U, Obsidian         , 1*U, Redstone         , 1*U, Basalz           , 1*U)                                                  .aspects(TC.PRAECANTIO, 2, TC.POTENTIA, 1).heat(400, 2000),
