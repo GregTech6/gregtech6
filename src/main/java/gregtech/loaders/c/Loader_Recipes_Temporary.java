@@ -32,6 +32,8 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
+import gregapi.oredict.event.IOreDictListenerEvent;
+import gregapi.oredict.event.OreDictListenerEvent_Names;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -60,7 +62,36 @@ public class Loader_Recipes_Temporary implements Runnable {
 		CR.delate(MD.EIO, "itemYetaWrench");
 		
 		
-		// Too lazy to make another Compat Handler Class for this Mod ID.
+		if (MD.HEX.mLoaded) {
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithRed"           , 1, 0), OP.plateGem.mat(MT.HexoriumRed  , 16));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithGreen"         , 1, 0), OP.plateGem.mat(MT.HexoriumGreen, 16));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithBlue"          , 1, 0), OP.plateGem.mat(MT.HexoriumBlue , 16));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumMonolithBlack"         , 1, 0), OP.plateGem.mat(MT.HexoriumBlack, 12));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumMonolithWhite"         , 1, 0), OP.plateGem.mat(MT.HexoriumWhite, 12));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithRed"     , 1, 0), OP.plateGem.mat(MT.HexoriumRed  , 12));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithGreen"   , 1, 0), OP.plateGem.mat(MT.HexoriumGreen, 12));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithBlue"    , 1, 0), OP.plateGem.mat(MT.HexoriumBlue , 12));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumNetherMonolithBlack"   , 1, 0), OP.plateGem.mat(MT.HexoriumBlack, 16));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumNetherMonolithWhite"   , 1, 0), OP.plateGem.mat(MT.HexoriumWhite, 16));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithRed"  , 1, 0), OP.plateGem.mat(MT.HexoriumRed  ,  8));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithGreen", 1, 0), OP.plateGem.mat(MT.HexoriumGreen,  8));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithBlue" , 1, 0), OP.plateGem.mat(MT.HexoriumBlue ,  8));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithBlack", 1, 0), OP.plateGem.mat(MT.HexoriumBlack,  8));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithWhite", 1, 0), OP.plateGem.mat(MT.HexoriumWhite,  8));
+			
+			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
+			addListener(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+				if (ST.container(aEvent.mStack, T) == null)
+				RM.Mixer.addRecipe2(T, 16, 16, aEvent.mStack, OP.dust.mat(MT.HexoriumBlack, 1), ST.make(MD.HEX, "itemHexoriumDye", 16, 0));
+			}});
+			addListener(DYE_OREDICTS_MIXABLE[DYE_INDEX_White], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+				if (ST.container(aEvent.mStack, T) == null)
+				RM.Mixer.addRecipe2(T, 16, 16, aEvent.mStack, OP.dust.mat(MT.HexoriumWhite, 1), ST.make(MD.HEX, "itemHexoriumDyeWhite", 16, 0));
+			}});
+			}};
+		}
+		
+		
 		if (MD.NePl.mLoaded) {
 			CR.delate(MD.NePl, "SoulTorch", "NetheriteIngot", "ItemNetheriteSword", "NetheritePickaxe", "ItemNetheriteShovel", "ItemNetheriteAxe", "ItemNetheriteHoe", "NetheriteHelm", "NetheriteChest", "NetheriteLegg", "NetheriteBoots");
 			
@@ -85,7 +116,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.Boxinator.addRecipe2(T, 16, 16, ST.make(Items.netherbrick, 2, 0), ST.make(Items.nether_wart, 2, 0), ST.make(MD.NePl, "RedBricks", 1, 0));
 		}
 		
-		// Too lazy to make another Compat Handler Class for this Mod ID too.
+		
 		if (MD.RH.mLoaded) {
 			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {5000, 5000}, IL.RH_Sand_Olivine.get(1), OP.gem.mat(MT.Olivine, 1), OP.dust.mat(MT.Olivine, 1));
 			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9000, 1000}, IL.RH_Sand_Gypsum .get(1), OP.dust.mat(MT.OREMATS.Gypsum, 1), OP.dust.mat(MT.S, 1));

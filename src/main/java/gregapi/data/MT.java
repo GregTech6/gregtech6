@@ -191,7 +191,7 @@ public class MT {
 	static OreDictMaterial crystalcent  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial crystalelec  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(ELECTROLYSER);}
 	static OreDictMaterial crystal_tc   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return crystal         (aID, aNameOreDict, SET_SHARDS      , aR, aG, aB,255).lens(aColor).put(MAGICAL, UNBURNABLE, MD.TC).addReRegistrations(ANY.ThaumCrystal).setOreMultiplier(2).visDefault();}
-	static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127).lens(aColor).put(MD.HEX, MORTAR, GLOWING, CRYSTALLISABLE).addReRegistrations(ANY.Hexorium).setOreMultiplier(aColor == DYE_INDEX_Black || aColor == DYE_INDEX_White ? 3 : 4).setLocal(DYE_NAMES[aColor] + " Hexorium").visDefault();}
+	static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127).lens(aColor).put(MD.HEX, MORTAR, GLOWING, CRYSTALLISABLE, BLACKLISTED_SMELTER).addReRegistrations(ANY.Hexorium).setSmelting(null, 0).setOreMultiplier(aColor == DYE_INDEX_Black || aColor == DYE_INDEX_White ? 3 : 4).setLocal(DYE_NAMES[aColor] + " Hexorium").visDefault();}
 	static OreDictMaterial valgem       (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return gem             (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(G_GEM_ORES_TRANSPARENT, CRYSTAL, VALUABLE);}
 	static OreDictMaterial valgemdcmp   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgem          (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(DECOMPOSABLE).setSmelting(null, 0);}
 	static OreDictMaterial valgemcent   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgemdcmp      (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
@@ -1351,7 +1351,6 @@ public class MT {
 	InfusedBalance          = crystal_tc    (-8358, "Infused Balance"                               , 252, 252, 252, DYE_INDEX_LightGray   ).put(GLOWING)                                                                                                                                                                                                                                                                           .aspects(TC.PRAECANTIO, 1, TC.ORDO, 1, TC.PERDITIO, 1, TC.IGNIS, 1, TC.AER, 1, TC.AQUA, 1, TC.TERRA, 1).qual(3, 32.0,  256,  4),
 	
 	
-	
 	HexoriumBlack           = hexorium      ( 9224,  32,  32,  32, DYE_INDEX_Black    ),
 	HexoriumRed             = hexorium      ( 9225, 128,   0,   0, DYE_INDEX_Red      ),
 	HexoriumGreen           = hexorium      ( 9226,   0, 128,   0, DYE_INDEX_Green    ),
@@ -1368,7 +1367,6 @@ public class MT {
 //  HexoriumMagenta         = hexorium      ( 9237, 128,   0, 128, DYE_INDEX_Magenta  ),
 //  HexoriumOrange          = hexorium      ( 9238, 128,  64,   0, DYE_INDEX_Orange   ),
 	HexoriumWhite           = hexorium      ( 9239, 224, 224, 224, DYE_INDEX_White    ),
-	
 	
 	
 	Petrotheum              = mixdust       ( 8245, "Petrotheum"            , SET_DULL              ,  86,  76,  82, 255).put(CONTAINERS, MELTING, MORTAR)                                                                                                              .setMcfg( 2, Clay           , 1*U, Obsidian         , 1*U, Redstone         , 1*U, Basalz           , 1*U)                                                  .aspects(TC.PRAECANTIO, 2, TC.POTENTIA, 1).heat(400, 2000),
