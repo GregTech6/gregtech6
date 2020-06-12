@@ -139,7 +139,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 		
 		if (WD.bedrock(aWorld, aMinX+8, 0, aMinZ+8)) {
 			CAN_GENERATE_BEDROCK_ORE = F;
-			int tHeight = WD.dimTF(aWorld) ? 30 : 62;
+			int tHeight = WD.waterLevel(aWorld);
 			if ((mIndicatorRocks || mIndicatorFlowers) && (!(GENERATE_STREETS && aWorld.provider.dimensionId == 0) || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) {
 				ItemStack tRock = OP.rockGt.mat(mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, (OreDictMaterial[])ANY.Hexorium.mToThis.toArray()) : mMaterial, 1);
 				if (ST.valid(tRock)) {

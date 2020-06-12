@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -54,7 +54,7 @@ public class WorldgenSwamp extends WorldgenObject {
 		boolean temp = T;
 		for (String tName : aBiomeNames) if (BIOMES_SWAMP.contains(tName)) {temp = F; break;}
 		if (temp) return F;
-		int tHeight = WD.dimTF(aWorld) ? 31 : mHeight;
+		int tHeight = WD.waterLevel(aWorld, mHeight);
 		final ExtendedBlockStorage[] tStorages = aChunk.getBlockStorageArray();
 		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {
 			boolean tPlacedNone = T;

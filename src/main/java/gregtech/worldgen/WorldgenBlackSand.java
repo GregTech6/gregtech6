@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -52,7 +52,7 @@ public class WorldgenBlackSand extends WorldgenObject {
 		for (String tName : aBiomeNames) if (BIOMES_RIVER.contains(tName)) {temp = F; break;}
 		if (temp) return F;
 		
-		int tX = aMinX - 16, tZ = aMinZ -16, tUpperBound = WD.dimTF(aWorld) ? 31 : 63, tLowerBound = WD.dimTF(aWorld) ? 24 : 48;
+		int tX = aMinX - 16, tZ = aMinZ -16, tUpperBound = WD.waterLevel(aWorld)+1, tLowerBound = WD.waterLevel(aWorld)-12;
 		for (int i = 0; i < 48; i++) for (int j = 0; j < 48; j++) if (WorldgenPit.SHAPE[i][j]) {
 			Block tBlock = NB, tLastBlock = aWorld.getBlock(tX+i, 64, tZ+j);
 			for (int tY = tUpperBound, tGenerated = 0; tY > tLowerBound && tGenerated < 2; tY--, tLastBlock = tBlock) {

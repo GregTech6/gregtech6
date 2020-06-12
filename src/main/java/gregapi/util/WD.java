@@ -327,11 +327,30 @@ public class WD {
 	public static long envTemp(World aWorld, int aX, int aY, int aZ) {
 		return envTemp(aWorld.getBiomeGenForCoords(aX, aZ), aX, aY, aZ);
 	}
+	/** @return the regular Environment Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */
 	public static long envTemp(BiomeGenBase aBiome, int aX, int aY, int aZ) {
 		return Math.max(1, aBiome == null ? DEF_ENV_TEMP : (long)(C - 3 + aBiome.getFloatTemperature(aX, aY, aZ) * 20));
 	}
+	/** @return the regular Environment Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */
 	public static long envTemp(BiomeGenBase aBiome) {
 		return Math.max(1, aBiome == null ? DEF_ENV_TEMP : (long)(C - 3 + aBiome.temperature * 20));
+	}
+	
+	/** @return the Height of the Water Level that should probably be in this World. */
+	public static int waterLevel(World aWorld) {
+		return waterLevel(aWorld.provider, 62);
+	}
+	/** @return the Height of the Water Level that should probably be in this World. */
+	public static int waterLevel(WorldProvider aProvider) {
+		return waterLevel(aProvider, 62);
+	}
+	/** @return the Height of the Water Level that should probably be in this World. */
+	public static int waterLevel(World aWorld, int aDefaultOverworld) {
+		return waterLevel(aWorld.provider, aDefaultOverworld);
+	}
+	/** @return the Height of the Water Level that should probably be in this World. */
+	public static int waterLevel(WorldProvider aProvider, int aDefaultOverworld) {
+		return aProvider.dimensionId == DIM_OVERWORLD ? aDefaultOverworld : dimTF(aProvider) ? 31 : 62;
 	}
 	
 	/** @return the regular Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */
