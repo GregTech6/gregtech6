@@ -60,6 +60,12 @@ public class Slot_Base extends Slot {
 		return rList;
 	}
 	
+	@Override
+	public ItemStack getStack() {
+		ItemStack rStack = mInventory.getStackInSlotGUI(mIndex);
+		return ST.meta(rStack) != W || ST.isGT(rStack) ? rStack : ST.name(ST.copyMeta(0, rStack), ST.regName(rStack) + ":Wildcard");
+	}
+	
 	public Slot_Base setCanTake(boolean aCanTake) {
 		mCanTake = aCanTake;
 		return this;
@@ -86,7 +92,6 @@ public class Slot_Base extends Slot {
 	@Override public boolean canTakeStack(EntityPlayer aPlayer) {return mInventory.canTakeOutOfSlotGUI(mIndex) && (UT.Entities.isCreative(aPlayer) || (mCanTake && !ST.debug(getStack())));}
 	@Override public boolean isSlotInInventory(IInventory aInventory, int aIndex) {return aInventory == mInventory && aIndex == mIndex;}
 	@Override public int getSlotStackLimit() {return mInventory.getInventoryStackLimitGUI(mIndex);}
-	@Override public ItemStack getStack() {return mInventory.getStackInSlotGUI(mIndex);}
 	@Override public void putStack(ItemStack aStack) {if (ST.size(aStack) > 64) ST.size_(64, aStack); mInventory.setInventorySlotContentsGUI(mIndex, aStack); onSlotChanged();}
 	@Override public ItemStack decrStackSize(int aAmount) {return mInventory.decrStackSizeGUI(mIndex, aAmount);}
 	@Override public void onSlotChanged() {mInventory.markDirtyGUI();}
