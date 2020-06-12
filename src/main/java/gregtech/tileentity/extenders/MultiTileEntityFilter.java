@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -286,7 +286,8 @@ public class MultiTileEntityFilter extends MultiTileEntityExtender implements IT
 							} else {
 								if (tStack.hasTagCompound()) {
 									tStack.setTagCompound(null);
-								} else if (ST.isGT_(tStack) || !ST.item_(tStack).getHasSubtypes()) {
+									if (ST.meta_(tStack) == W) ST.meta_(tStack, 0);
+								} else {
 									tStack.setItemDamage(W);
 								}
 							}

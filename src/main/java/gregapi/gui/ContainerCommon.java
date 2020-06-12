@@ -521,6 +521,8 @@ public class ContainerCommon extends Container {
 	
 	@Override
 	protected boolean mergeItemStack(ItemStack aStack, int aStartIndex, int aSlotCount, boolean aReverse) {
+		if (ST.meta(aStack) == W) return F;
+		
 		boolean rSuccess = F;
 		int tIndex = aReverse?aSlotCount-1:aStartIndex;
 		
@@ -531,7 +533,7 @@ public class ContainerCommon extends Container {
 				Slot tSlot = (Slot)inventorySlots.get(tIndex);
 				int tLimit = Math.min(aStack.getMaxStackSize(), tSlot.getSlotStackLimit());
 				ItemStack tStack = tSlot.getStack();
-				if (!(tSlot instanceof Slot_Holo) && tSlot.isItemValid(aStack) && ST.equal(aStack, tStack)) {
+				if (!(tSlot instanceof Slot_Holo) && tSlot.isItemValid(aStack) && ST.meta(tStack) != W && ST.equal(aStack, tStack)) {
 					int tSize = tStack.stackSize + aStack.stackSize;
 					if (tSize <= tLimit) {
 						aStack.stackSize = 0;
@@ -553,9 +555,8 @@ public class ContainerCommon extends Container {
 			while (aReverse ? tIndex >= aStartIndex : tIndex < aSlotCount) {
 				Slot tSlot = (Slot)inventorySlots.get(tIndex);
 				if (!(tSlot instanceof Slot_Holo) && tSlot.isItemValid(aStack)) {
-					ItemStack tStack = tSlot.getStack();
-					if (tStack == null) {
-						tStack = ST.amount(Math.min(aStack.stackSize, Math.min(aStack.getMaxStackSize(), tSlot.getSlotStackLimit())), aStack);
+					if (tSlot.getStack() == null) {
+						ItemStack tStack = ST.amount(Math.min(aStack.stackSize, Math.min(aStack.getMaxStackSize(), tSlot.getSlotStackLimit())), aStack);
 						tSlot.putStack(tStack);
 						tSlot.onSlotChanged();
 						aStack.stackSize -= tStack.stackSize;
