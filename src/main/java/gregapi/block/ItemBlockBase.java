@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,8 +25,10 @@ import java.util.List;
 
 import gregapi.data.LH;
 import gregapi.data.MD;
+import gregapi.render.ITexture;
 import gregapi.util.ST;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -53,7 +55,22 @@ public class ItemBlockBase extends ItemBlock {
 		mPlaceable.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
 		if (field_150939_a.getCollisionBoundingBoxFromPool(aPlayer.worldObj, 0, 0, 0) != null) {
 			if (mPlaceable.doesWalkSpeed(aMeta)) aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_WALKSPEED));
-			if (!mPlaceable.canCreatureSpawn(aMeta)) aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_SPAWNPROOF));
+			if (mPlaceable.canCreatureSpawn(aMeta)) {
+				if (ITexture.Util.OPTIFINE_LOADED && aMeta != 0 && !mPlaceable.canCreatureSpawn(0) && Minecraft.getMinecraft().isSingleplayer()) {
+					// Mobs cannot, but should Spawn on this Block, because Optifine is breaking MetaData Support
+					aList.add(LH.Chat.BLINKING_RED + LH.get(LH.TOOLTIP_SPAWNPROOF_BUG));
+				} else {
+					// Mobs can spawn like on every other qualifying Block.
+				}
+			} else {
+				if (ITexture.Util.OPTIFINE_LOADED && aMeta != 0 &&  mPlaceable.canCreatureSpawn(0) && Minecraft.getMinecraft().isSingleplayer()) {
+					// Mobs can, but shouldn't Spawn on this Block, because Optifine is breaking MetaData Support
+					aList.add(LH.Chat.BLINKING_RED + LH.get(LH.TOOLTIP_SPAWNPROOF_BROKEN));
+				} else {
+					// Mobs cannot Spawn on this Block
+					aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_SPAWNPROOF));
+				}
+			}
 			if (MD.GC.mLoaded) {
 				byte tCount = 0;
 				for (byte tSide : ALL_SIDES_VALID) if (mPlaceable.isSealable(aMeta, tSide)) tCount++;

@@ -175,6 +175,8 @@ public class LH {
 	, TOOLTIP_SEALABLE_BUGGED = "gt.lang.sealable.bug"
 	, TOOLTIP_PISTONPUSHABLE = "gt.lang.pistonpush"
 	, TOOLTIP_SPAWNPROOF = "gt.lang.spawnproof"
+	, TOOLTIP_SPAWNPROOF_BUG = "gt.lang.spawnproof.bug"
+	, TOOLTIP_SPAWNPROOF_BROKEN = "gt.lang.spawnproof.broken"
 	, TOOLTIP_BLASTPOWER = "gt.lang.blastpower"
 	, TOOLTIP_BLASTRANGE = "gt.lang.blastrange"
 	, TOOLTIP_BLASTFORTUNE = "gt.lang.blastfortune"
@@ -440,6 +442,8 @@ public class LH {
 		add(TOOLTIP_SEALABLE_BUGGED                     , "Shouldn't seal Air, but sometimes does because opaque");
 		add(TOOLTIP_PISTONPUSHABLE                      , "Pistons can push this Block");
 		add(TOOLTIP_SPAWNPROOF                          , "Mobs cannot Spawn on this Block");
+		add(TOOLTIP_SPAWNPROOF_BUG                      , "Mobs cannot, but should Spawn on this Block, because Optifine is breaking MetaData Support");
+		add(TOOLTIP_SPAWNPROOF_BROKEN                   , "Mobs can, but shouldn't Spawn on this Block, because Optifine is breaking MetaData Support");
 		add(TOOLTIP_BLASTPOWER                          , "Blast Power: ");
 		add(TOOLTIP_BLASTRANGE                          , "Blast Range: ");
 		add(TOOLTIP_BLASTFORTUNE                        , "Blast Fortune Level: ");

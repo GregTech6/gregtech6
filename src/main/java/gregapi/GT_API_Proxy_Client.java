@@ -136,7 +136,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		FluidRegistry.renderIdFluid = RendererBlockFluid.RENDER_ID;
 		// Check if OptiFine is loaded in order to disable some GT Render Hooks to fix Glitches.
 		ITexture.Util.OPTIFINE_LOADED = FMLClientHandler.instance().hasOptifine();
-
+		
 		switch (new Date().getMonth()) {// Not going to use Calendar, because it fucking crashes with Missing Resource Exception...
 		case  8:
 			Textures.BlockIcons.LEAVES[1] = Textures.BlockIcons.LEAVES_MAPLE_YELLOW;

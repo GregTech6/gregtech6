@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,7 +28,7 @@ public interface ITileEntityUnloadable {
 	 * Implementing this Function properly is very important, and should be required for every TileEntity.
 	 * That is why I made it a separate Interface and forced it as super Interface to all my other Interfaces.
 	 * 
-	 * To do it properly just add a true Boolean Flag to your Member Variables ("mIsDead=true" for example) and set it to false when "onChunkUnload" is called. Then return the following:
+	 * To do it properly just add a true Boolean Flag to your Member Variables ("mIsDead=false" for example) and set it to true when "onChunkUnload" is called. Then return the following:
 	 * 
 	 * @return mIsDead || isInvalid()
 	 */

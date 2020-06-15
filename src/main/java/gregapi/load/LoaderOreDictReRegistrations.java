@@ -423,6 +423,8 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("seedIndustrialHemp"              , "seedHemp");
 		OreDictManager.INSTANCE.addReRegistration("ingotMercury"                    , "quicksilver");
 		OreDictManager.INSTANCE.addReRegistration("gemMercury"                      , "quicksilver");
+		OreDictManager.INSTANCE.addReRegistration("gemPinkDiamond"                  , "gemDiamond");
+		OreDictManager.INSTANCE.addReRegistration("gemDiamondIndustrial"            , "gemDiamond");
 		OreDictManager.INSTANCE.addReRegistration("gemDiamond"                      , "diamond");
 		OreDictManager.INSTANCE.addReRegistration("gemFlawlessRedstone"             , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("gemRedstone"                     , OD.itemRedstone);
