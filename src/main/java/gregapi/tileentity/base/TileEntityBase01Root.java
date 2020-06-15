@@ -427,7 +427,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 		worldObj.notifyBlocksOfNeighborChange(xCoord, yCoord, zCoord, tBlock);
 		if (this instanceof IMTE_IsProvidingStrongPower) for (byte tSide : ALL_SIDES_VALID) {
 			if (getBlockAtSide(tSide).isNormalCube(worldObj, xCoord+OFFSETS_X[tSide], yCoord+OFFSETS_Y[tSide], zCoord+OFFSETS_Z[tSide])) {
-				worldObj.notifyBlocksOfNeighborChange(xCoord+OFFSETS_X[tSide], yCoord+OFFSETS_Y[tSide], zCoord+OFFSETS_Z[tSide], tBlock, tSide);
+				worldObj.notifyBlocksOfNeighborChange(xCoord+OFFSETS_X[tSide], yCoord+OFFSETS_Y[tSide], zCoord+OFFSETS_Z[tSide], tBlock, OPPOSITES[tSide]);
 			}
 		}
 		mDoesBlockUpdate = F;
