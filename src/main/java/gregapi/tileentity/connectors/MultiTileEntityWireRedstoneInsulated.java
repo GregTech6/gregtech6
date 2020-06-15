@@ -52,8 +52,8 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 	public static final int REDSTONE_ID = -1;
 	
 	public long mRedstone = 0, mLoss = 1;
-	public byte mRenderType = 0, mReceived = SIDE_UNDEFINED, mMode = 0;
-	public boolean mConnectedToNonWire = T, mCheckedSides[] = {F,F,F,F,F,F,T};
+	public byte mRenderType = 0, mReceived = SIDE_UNDEFINED, mMode = 0, mVanillaSides[] = {-1,-1,-1,-1,-1,-1,-1};
+	public boolean mConnectedToNonWire = T;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -98,7 +98,7 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 		super.onTick2(aTimer, aIsServerSide);
 		
 		if (aIsServerSide) {
-			for (int i : ALL_SIDES_VALID) mCheckedSides[i] = F;
+			for (int i : ALL_SIDES) mVanillaSides[i] = -1;
 			if (mBlockUpdated) updateConnectionStatus();
 			if (updateRedstone(REDSTONE_ID)) ITileEntityRedstoneWire.Util.doRedstoneUpdate(this, REDSTONE_ID);
 		}
@@ -108,9 +108,9 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 		if (SIDES_INVALID[aSide]) return 0;
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
 		if (tDelegator.mTileEntity instanceof ITileEntityRedstoneWire) return canAcceptRedstoneFromWire(aSide, REDSTONE_ID) && ((ITileEntityRedstoneWire)tDelegator.mTileEntity).canEmitRedstoneToWire(tDelegator.mSideOfTileEntity, REDSTONE_ID) ? ((ITileEntityRedstoneWire)tDelegator.mTileEntity).getRedstoneMinusLoss(tDelegator.mSideOfTileEntity, REDSTONE_ID) : 0;
-		if (mCheckedSides[aSide]) return 0;
-		mCheckedSides[aSide] = T;
-		return canAcceptRedstoneFromVanilla(aSide) ? MAX_RANGE * getRedstoneIncoming(aSide) - mLoss : 0;
+		if (!canAcceptRedstoneFromVanilla(aSide)) return 0;
+		if (mVanillaSides[aSide] < 0) mVanillaSides[aSide] = getRedstoneIncoming(aSide);
+		return MAX_RANGE * mVanillaSides[aSide] - mLoss;
 	}
 	
 	@Override
