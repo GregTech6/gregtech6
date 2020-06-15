@@ -105,10 +105,10 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 	}
 	
 	public long getRedstoneAtSide(byte aSide) {
-		// Also checks if the passed Side is Invalid, even though that is technically not needed. But hey, it's safer this way.
-		if (mCheckedSides[aSide]) return 0;
+		if (SIDES_INVALID[aSide]) return 0;
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
 		if (tDelegator.mTileEntity instanceof ITileEntityRedstoneWire) return canAcceptRedstoneFromWire(aSide, REDSTONE_ID) && ((ITileEntityRedstoneWire)tDelegator.mTileEntity).canEmitRedstoneToWire(tDelegator.mSideOfTileEntity, REDSTONE_ID) ? ((ITileEntityRedstoneWire)tDelegator.mTileEntity).getRedstoneMinusLoss(tDelegator.mSideOfTileEntity, REDSTONE_ID) : 0;
+		if (mCheckedSides[aSide]) return 0;
 		mCheckedSides[aSide] = T;
 		return canAcceptRedstoneFromVanilla(aSide) ? MAX_RANGE * getRedstoneIncoming(aSide) - mLoss : 0;
 	}
