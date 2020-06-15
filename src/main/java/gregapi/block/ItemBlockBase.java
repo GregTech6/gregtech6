@@ -56,18 +56,15 @@ public class ItemBlockBase extends ItemBlock {
 		if (field_150939_a.getCollisionBoundingBoxFromPool(aPlayer.worldObj, 0, 0, 0) != null) {
 			if (mPlaceable.doesWalkSpeed(aMeta)) aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_WALKSPEED));
 			if (mPlaceable.canCreatureSpawn(aMeta)) {
-				if (ITexture.Util.OPTIFINE_LOADED && aMeta != 0 && !mPlaceable.canCreatureSpawn(0) && Minecraft.getMinecraft().isSingleplayer()) {
-					// Mobs cannot, but should Spawn on this Block, because Optifine is breaking MetaData Support
-					aList.add(LH.Chat.BLINKING_RED + LH.get(LH.TOOLTIP_SPAWNPROOF_BUG));
-				} else {
-					// Mobs can spawn like on every other qualifying Block.
+				if (ITexture.Util.OPTIFINE_LOADED && aMeta != 0 && !mPlaceable.canCreatureSpawn(0)) {
+					aList.add(LH.Chat.BLINKING_RED + LH.get(Minecraft.getMinecraft().isSingleplayer() ? LH.TOOLTIP_SPAWNPROOF_SP_BUG    : LH.TOOLTIP_SPAWNPROOF_MP_BUG   ));
+					aList.add(LH.Chat.BLINKING_RED + LH.get(LH.TOOLTIP_SPAWNPROOF_OPTIFINE));
 				}
 			} else {
-				if (ITexture.Util.OPTIFINE_LOADED && aMeta != 0 &&  mPlaceable.canCreatureSpawn(0) && Minecraft.getMinecraft().isSingleplayer()) {
-					// Mobs can, but shouldn't Spawn on this Block, because Optifine is breaking MetaData Support
-					aList.add(LH.Chat.BLINKING_RED + LH.get(LH.TOOLTIP_SPAWNPROOF_BROKEN));
+				if (ITexture.Util.OPTIFINE_LOADED && aMeta != 0 &&  mPlaceable.canCreatureSpawn(0)) {
+					aList.add(LH.Chat.BLINKING_RED + LH.get(Minecraft.getMinecraft().isSingleplayer() ? LH.TOOLTIP_SPAWNPROOF_SP_BROKEN : LH.TOOLTIP_SPAWNPROOF_MP_BROKEN));
+					aList.add(LH.Chat.BLINKING_RED + LH.get(LH.TOOLTIP_SPAWNPROOF_OPTIFINE));
 				} else {
-					// Mobs cannot Spawn on this Block
 					aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_SPAWNPROOF));
 				}
 			}
