@@ -53,7 +53,7 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 	
 	public long mRedstone = 0, mLoss = 1;
 	public byte mRenderType = 0, mReceived = SIDE_UNDEFINED, mMode = 0;
-	public boolean mConnectedToNonWire = T;
+	public boolean mConnectedToNonWire = T, mCheckedSides[] = {F,F,F,F,F,F,T};
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -98,28 +98,32 @@ public class MultiTileEntityWireRedstoneInsulated extends TileEntityBase10Connec
 		super.onTick2(aTimer, aIsServerSide);
 		
 		if (aIsServerSide) {
+			for (int i : ALL_SIDES_VALID) mCheckedSides[i] = F;
 			if (mBlockUpdated) updateConnectionStatus();
 			if (updateRedstone(REDSTONE_ID)) ITileEntityRedstoneWire.Util.doRedstoneUpdate(this, REDSTONE_ID);
 		}
 	}
 	
 	public long getRedstoneAtSide(byte aSide) {
-		if (SIDES_INVALID[aSide]) return 0;
+		// Also checks if the passed Side is Invalid, even though that is technically not needed. But hey, it's safer this way.
+		if (mCheckedSides[aSide]) return 0;
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aSide);
-		return tDelegator.mTileEntity instanceof ITileEntityRedstoneWire ? canAcceptRedstoneFromWire(aSide, REDSTONE_ID) && ((ITileEntityRedstoneWire)tDelegator.mTileEntity).canEmitRedstoneToWire(tDelegator.mSideOfTileEntity, REDSTONE_ID) ? ((ITileEntityRedstoneWire)tDelegator.mTileEntity).getRedstoneMinusLoss(tDelegator.mSideOfTileEntity, REDSTONE_ID) : 0 : canAcceptRedstoneFromVanilla(aSide) ? MAX_RANGE * getRedstoneIncoming(aSide) - mLoss : 0;
+		if (tDelegator.mTileEntity instanceof ITileEntityRedstoneWire) return canAcceptRedstoneFromWire(aSide, REDSTONE_ID) && ((ITileEntityRedstoneWire)tDelegator.mTileEntity).canEmitRedstoneToWire(tDelegator.mSideOfTileEntity, REDSTONE_ID) ? ((ITileEntityRedstoneWire)tDelegator.mTileEntity).getRedstoneMinusLoss(tDelegator.mSideOfTileEntity, REDSTONE_ID) : 0;
+		mCheckedSides[aSide] = T;
+		return canAcceptRedstoneFromVanilla(aSide) ? MAX_RANGE * getRedstoneIncoming(aSide) - mLoss : 0;
 	}
 	
 	@Override
 	public boolean updateRedstone(int aRedstoneID) {
 		if (aRedstoneID != REDSTONE_ID) return F;
-		long tRedstoneOld = mRedstone, tRedstone = mMode * MAX_RANGE - mLoss;
-		byte tReceivedOld = mReceived;
-		if ((mRedstone = getRedstoneAtSide(tReceivedOld)) <= tRedstone) {
+		long oRedstone = mRedstone, tRedstone = mMode * MAX_RANGE - mLoss;
+		byte oReceived = mReceived;
+		if ((mRedstone = getRedstoneAtSide(oReceived)) <= tRedstone) {
 			mRedstone = tRedstone;
 			mReceived = SIDE_UNDEFINED;
 		}
-		for (byte tSide : ALL_SIDES_VALID_BUT[tReceivedOld]) if ((tRedstone = getRedstoneAtSide(tSide)) > mRedstone) {mRedstone = tRedstone; mReceived = tSide;}
-		if (mRedstone != tRedstoneOld) {if (mConnectedToNonWire) causeBlockUpdate(); return T;}
+		for (byte tSide : ALL_SIDES_VALID_BUT[oReceived]) if ((tRedstone = getRedstoneAtSide(tSide)) > mRedstone) {mRedstone = tRedstone; mReceived = tSide;}
+		if (mRedstone != oRedstone) {if (mConnectedToNonWire) causeBlockUpdate(); return T;}
 		return F;
 	}
 	

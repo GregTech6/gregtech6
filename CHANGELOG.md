@@ -28,6 +28,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 [COMPAT] HEXCrafts Hexorium Ore is generated in all possible ways when installed, with RGB ones closer to Surface and Black and White ones closer to Bedrock. Also some Hexorium related Recipes added.
+[FIXED] GT6 Redstone Wiring sometimes checked multiple/infinite times per tick for Vanilla signals. This was leading to Game Freezes with Thermal Expansion.
 [FIXED] Some Biomes from Enhanced Biomes were not counted as River for my Worldgen.
 [FIXED] Skeletons were not shooting the right GT Arrows since a long time. Now I made an actual List of Arrows to shoot, instead of grabbing any of the existing Arrows. This also means no Radiation Arrow shooting Skeletons anymore.
 [FIXED] Made Config Files always migrate to Lowercase File Names so random Garbage with Windows and older Config Files wont happen again.
