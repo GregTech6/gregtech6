@@ -426,6 +426,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("gemPinkDiamond"                  , "gemDiamond");
 		OreDictManager.INSTANCE.addReRegistration("gemDiamondIndustrial"            , "gemDiamond");
 		OreDictManager.INSTANCE.addReRegistration("gemDiamond"                      , "diamond");
+		OreDictManager.INSTANCE.addReRegistration("dustAnyGlowstone"                , "dustGlowstone");
 		OreDictManager.INSTANCE.addReRegistration("gemFlawlessRedstone"             , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("gemRedstone"                     , OD.itemRedstone);
 		OreDictManager.INSTANCE.addReRegistration("dustRedstone"                    , OD.itemRedstone);

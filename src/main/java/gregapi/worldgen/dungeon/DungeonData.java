@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -185,14 +185,6 @@ public class DungeonData extends WorldAndCoords {
 		return set(aX, aY, aZ, BlocksGT.FLOWER_TILES[tIndex], BlocksGT.FLOWER_METAS[tIndex], 2);
 	}
 	
-	public boolean pot(int aX, int aY, int aZ) {
-		int tIndex = mRandom.nextInt(BlocksGT.POT_FLOWER_TILES.length);
-		set(aX, aY, aZ, Blocks.flower_pot, 0, 2);
-		TileEntity tTileEntity = mWorld.getTileEntity(mX+aX, mY+aY, mZ+aZ);
-		if (tTileEntity instanceof TileEntityFlowerPot) ((TileEntityFlowerPot)tTileEntity).func_145964_a(Item.getItemFromBlock(BlocksGT.POT_FLOWER_TILES[tIndex]), BlocksGT.POT_FLOWER_METAS[tIndex]);
-		return T;
-	}
-	
 	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing) {
 		return set(aX, aY, aZ, aMeta, UT.NBT.make(NBT_FACING, aFacing));
 	}
@@ -229,12 +221,43 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public boolean cup(int aX, int aY, int aZ, FL aFluid) {
-		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, aFluid.make(250)));
+		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, aFluid == null ? null : aFluid.make(250)));
 	}
 	public boolean cup(int aX, int aY, int aZ, Fluid aFluid) {
 		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, FL.make(aFluid, 250)));
 	}
+	public boolean cup(int aX, int aY, int aZ, FL aFluid, Block aBlock, int aMeta) {
+		if (aBlock != NB && aBlock != null && mRandom.nextBoolean()) return set(aX, aY, aZ, aBlock, aMeta, 2);
+		return cup(aX, aY, aZ, aFluid);
+	}
+	public boolean cup(int aX, int aY, int aZ, Fluid aFluid, Block aBlock, int aMeta) {
+		if (aBlock != NB && aBlock != null && mRandom.nextBoolean()) return set(aX, aY, aZ, aBlock, aMeta, 2);
+		return cup(aX, aY, aZ, aFluid);
+	}
 	
+	public boolean pot(int aX, int aY, int aZ) {
+		int tIndex = mRandom.nextInt(BlocksGT.POT_FLOWER_TILES.length);
+		set(aX, aY, aZ, Blocks.flower_pot, 0, 2);
+		TileEntity tTileEntity = mWorld.getTileEntity(mX+aX, mY+aY, mZ+aZ);
+		if (tTileEntity instanceof TileEntityFlowerPot) ((TileEntityFlowerPot)tTileEntity).func_145964_a(Item.getItemFromBlock(BlocksGT.POT_FLOWER_TILES[tIndex]), BlocksGT.POT_FLOWER_METAS[tIndex]);
+		return T;
+	}
+	public boolean pot(int aX, int aY, int aZ, Block aBlock, int aMeta) {
+		if (aBlock != NB && aBlock != null && mRandom.nextBoolean()) return set(aX, aY, aZ, aBlock, aMeta, 2);
+		return pot(aX, aY, aZ);
+	}
+	
+	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2) {
+		return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, 2);
+	}
+	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, int aFlags) {
+		if (aBlock1 != NB && aBlock1 != null) {
+			if (aBlock2 != NB && aBlock2 != null) return mRandom.nextBoolean() ? set(aX, aY, aZ, aBlock1, aMeta1, aFlags) : set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
+			return set(aX, aY, aZ, aBlock1, aMeta1, aFlags);
+		}
+		if (aBlock2 != NB && aBlock2 != null) return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
+		return F;
+	}
 	public boolean set(int aX, int aY, int aZ, Block aBlock) {
 		return mWorld.setBlock(mX+aX, mY+aY, mZ+aZ, aBlock, 0, 2);
 	}

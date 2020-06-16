@@ -63,21 +63,21 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		
 		if (MD.HEX.mLoaded) {
-			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithRed"           , 1, 0), OP.plateGem.mat(MT.HexoriumRed  , 16));
-			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithGreen"         , 1, 0), OP.plateGem.mat(MT.HexoriumGreen, 16));
-			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithBlue"          , 1, 0), OP.plateGem.mat(MT.HexoriumBlue , 16));
-			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumMonolithBlack"         , 1, 0), OP.plateGem.mat(MT.HexoriumBlack, 12));
-			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumMonolithWhite"         , 1, 0), OP.plateGem.mat(MT.HexoriumWhite, 12));
-			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithRed"     , 1, 0), OP.plateGem.mat(MT.HexoriumRed  , 12));
-			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithGreen"   , 1, 0), OP.plateGem.mat(MT.HexoriumGreen, 12));
-			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithBlue"    , 1, 0), OP.plateGem.mat(MT.HexoriumBlue , 12));
-			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumNetherMonolithBlack"   , 1, 0), OP.plateGem.mat(MT.HexoriumBlack, 16));
-			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumNetherMonolithWhite"   , 1, 0), OP.plateGem.mat(MT.HexoriumWhite, 16));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithRed"  , 1, 0), OP.plateGem.mat(MT.HexoriumRed  ,  8));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithGreen", 1, 0), OP.plateGem.mat(MT.HexoriumGreen,  8));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithBlue" , 1, 0), OP.plateGem.mat(MT.HexoriumBlue ,  8));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithBlack", 1, 0), OP.plateGem.mat(MT.HexoriumBlack,  8));
-			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithWhite", 1, 0), OP.plateGem.mat(MT.HexoriumWhite,  8));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithRed"           , 1, W), OP.plateGem.mat(MT.HexoriumRed  , 16));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithGreen"         , 1, W), OP.plateGem.mat(MT.HexoriumGreen, 16));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumMonolithBlue"          , 1, W), OP.plateGem.mat(MT.HexoriumBlue , 16));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumMonolithBlack"         , 1, W), OP.plateGem.mat(MT.HexoriumBlack, 12));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumMonolithWhite"         , 1, W), OP.plateGem.mat(MT.HexoriumWhite, 12));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithRed"     , 1, W), OP.plateGem.mat(MT.HexoriumRed  , 12));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithGreen"   , 1, W), OP.plateGem.mat(MT.HexoriumGreen, 12));
+			RM.sawing(32, 432, F, 144, ST.make(MD.HEX, "blockHexoriumNetherMonolithBlue"    , 1, W), OP.plateGem.mat(MT.HexoriumBlue , 12));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumNetherMonolithBlack"   , 1, W), OP.plateGem.mat(MT.HexoriumBlack, 16));
+			RM.sawing(32, 576, F, 192, ST.make(MD.HEX, "blockHexoriumNetherMonolithWhite"   , 1, W), OP.plateGem.mat(MT.HexoriumWhite, 16));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithRed"  , 1, W), OP.plateGem.mat(MT.HexoriumRed  ,  8));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithGreen", 1, W), OP.plateGem.mat(MT.HexoriumGreen,  8));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithBlue" , 1, W), OP.plateGem.mat(MT.HexoriumBlue ,  8));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithBlack", 1, W), OP.plateGem.mat(MT.HexoriumBlack,  8));
+			RM.sawing(32, 288, F,  96, ST.make(MD.HEX, "blockEnergizedHexoriumMonolithWhite", 1, W), OP.plateGem.mat(MT.HexoriumWhite,  8));
 			
 			new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 			addListener(DYE_OREDICTS_MIXABLE[DYE_INDEX_Black], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {

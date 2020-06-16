@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,10 +24,13 @@ import static gregapi.data.CS.*;
 import gregapi.block.IPrefixBlock;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.fluid.FluidTankGT;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.block.Block;
 import net.minecraftforge.fluids.FluidStack;
 
 /**
@@ -37,6 +40,10 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 	@Override
 	public boolean generate(DungeonData aData) {
 		if (!super.generate(aData)) return F;
+		
+		Block
+		tHexoriumColor  = ST.block(MD.HEX, UT.Code.select(aData.mColor, "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS)),
+		tHexoriumRandom = ST.block(MD.HEX, UT.Code.select(              "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS));
 		
 		OreDictMaterial[] tGeneratedMaterials = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel};
 		IPrefixBlock[] tGeneratedCrates = {BlocksGT.crateGtDust, BlocksGT.crateGtPlate, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtDust, BlocksGT.crateGtPlate, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGt64Dust, BlocksGT.crateGt64Plate, BlocksGT.crateGt64Ingot, BlocksGT.crateGt64Ingot};
@@ -139,6 +146,15 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+		} else if (aData.mRandom.nextBoolean()) {
+			if (aData.mRandom.nextBoolean()) aData.set( 1, 1,  1, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 2, 1,  2, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 1, 1,  1, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 2, 1,  2, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 3, 1,  3, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 1, 1,  1, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 2, 1,  2, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 3, 1,  3, tHexoriumColor, 0, tHexoriumRandom, 0);
 		}
 		if (aData.mRandom.nextBoolean()) {
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
@@ -163,6 +179,15 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4,  1, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4,  2, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+		} else if (aData.mRandom.nextBoolean()) {
+			if (aData.mRandom.nextBoolean()) aData.set(12, 1,  1, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(12, 1,  2, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(13, 1,  1, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(13, 1,  2, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(13, 1,  3, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(14, 1,  1, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(14, 1,  2, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(14, 1,  3, tHexoriumColor, 0, tHexoriumRandom, 0);
 		}
 		if (aData.mRandom.nextBoolean()) {
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 2, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
@@ -187,6 +212,15 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  1, 4, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)],  2, 4, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+		} else if (aData.mRandom.nextBoolean()) {
+			if (aData.mRandom.nextBoolean()) aData.set( 1, 1, 12, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 2, 1, 12, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 1, 1, 13, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 2, 1, 13, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 3, 1, 13, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 1, 1, 14, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 2, 1, 14, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set( 3, 1, 14, tHexoriumColor, 0, tHexoriumRandom, 0);
 		}
 		if (aData.mRandom.nextBoolean()) {
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 12, 2, 12, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
@@ -211,6 +245,15 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 13, 4, 13, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
 			if (aData.mRandom.nextBoolean()) aData.set(tGeneratedCrates[aData.mRandom.nextInt(tGeneratedCrates.length)], 14, 4, 14, tGeneratedMaterials[aData.mRandom.nextInt(tGeneratedMaterials.length)].mID);
+		} else if (aData.mRandom.nextBoolean()) {
+			if (aData.mRandom.nextBoolean()) aData.set(12, 1, 12, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(12, 1, 12, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(13, 1, 13, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(13, 1, 13, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(13, 1, 13, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(14, 1, 14, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(14, 1, 14, tHexoriumColor, 0, tHexoriumRandom, 0);
+			if (aData.mRandom.nextBoolean()) aData.set(14, 1, 14, tHexoriumColor, 0, tHexoriumRandom, 0);
 		}
 		return T;
 	}

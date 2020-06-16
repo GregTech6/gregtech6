@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -204,14 +204,14 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 				aData.smooth( 4, tY, 13);
 				aData.smooth( 4, tY, 12);
 				aData.smooth( 5, tY, 11);
-				if (tY >= 3) {                                  
+				if (tY >= 3) {
 				aData.smooth( 6, tY, 11);
-				if (tY >= 4) {                                  
+				if (tY >= 4) {
 				aData.smooth( 7, tY, 11);
 				aData.smooth( 8, tY, 11);
-				}                                                
+				}
 				aData.smooth( 9, tY, 11);
-				}                                                
+				}
 				aData.smooth(10, tY, 11);
 				aData.smooth(11, tY, 12);
 				aData.smooth(11, tY, 13);
@@ -284,14 +284,14 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 				aData.smooth( 4, tY,  2);
 				aData.smooth( 4, tY,  3);
 				aData.smooth( 5, tY,  4);
-				if (tY >= 3) {                                  
+				if (tY >= 3) {
 				aData.smooth( 6, tY,  4);
-				if (tY >= 4) {                                  
+				if (tY >= 4) {
 				aData.smooth( 7, tY,  4);
 				aData.smooth( 8, tY,  4);
-				}                                                
+				}
 				aData.smooth( 9, tY,  4);
-				}                                                
+				}
 				aData.smooth(10, tY,  4);
 				aData.smooth(11, tY,  1);
 				aData.smooth(11, tY,  2);
