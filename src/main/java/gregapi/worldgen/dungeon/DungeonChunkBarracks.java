@@ -100,10 +100,10 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 		tHexoriumColor  = ST.block(MD.HEX, UT.Code.select(aData.mColor, "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS)),
 		tHexoriumRandom = ST.block(MD.HEX, UT.Code.select(              "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS));
 		
-		aData.cup( 1, 2,  4, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 8);
-		aData.cup( 1, 2, 11, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 8);
-		aData.cup(14, 2,  4, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 8);
-		aData.cup(14, 2, 11, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 8);
+		aData.cup( 1, 2,  4, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
+		aData.cup( 1, 2, 11, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
+		aData.cup(14, 2,  4, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
+		aData.cup(14, 2, 11, UT.Code.select(null, tDrinks), aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
 		
 		
 		String[] tLoots = new String[] {ChestGenHooks.STRONGHOLD_LIBRARY, ChestGenHooks.STRONGHOLD_CORRIDOR, ChestGenHooks.STRONGHOLD_CROSSING, ChestGenHooks.PYRAMID_DESERT_CHEST, ChestGenHooks.PYRAMID_JUNGLE_CHEST, ChestGenHooks.VILLAGE_BLACKSMITH, ChestGenHooks.MINESHAFT_CORRIDOR, ChestGenHooks.DUNGEON_CHEST, ChestGenHooks.BONUS_CHEST};
