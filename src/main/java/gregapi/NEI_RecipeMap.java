@@ -71,25 +71,25 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class NEI_RecipeMap extends TemplateRecipeHandler {
 	protected final RecipeMap mRecipeMap;
-
+	
 	public static final int sOffsetX = 5, sOffsetY = 11;
-
+	
 	public NEI_RecipeMap(RecipeMap aRecipeMap) {
 		mRecipeMap = aRecipeMap;
 		transferRects.add(new RecipeTransferRect(new Rectangle(70-sOffsetX, 24-sOffsetY, 36, 18), getOverlayIdentifier()));
-
+		
 		if (!NEI_GT_API_Config.ADDED) {
 			FMLInterModComms.sendRuntimeMessage(GAPI, "NEIPlugins", "register-crafting-handler", MD.GAPI.mID+"@"+getRecipeName()+"@"+getOverlayIdentifier());
 			GuiCraftingRecipe.craftinghandlers.add(this);
 			GuiUsageRecipe.usagehandlers.add(this);
 		}
 	}
-
+	
 	@Override
 	public TemplateRecipeHandler newInstance() {
 		return new NEI_RecipeMap(mRecipeMap);
 	}
-
+	
 	public class FixedPositionedStack extends PositionedStack {
 		public boolean permutated = F;
 		public final int mChance, mMaxChance;
@@ -133,25 +133,25 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 
 	public class CachedDefaultRecipe extends CachedRecipe {
 		public final Recipe mRecipe;
-
-		public final List<PositionedStack>  mOutputs    = new ArrayListNoNulls<>();
-		public final List<PositionedStack>  mInputs     = new ArrayListNoNulls<>();
-
+		
+		public final List<PositionedStack> mOutputs = new ArrayListNoNulls<>();
+		public final List<PositionedStack> mInputs  = new ArrayListNoNulls<>();
+		
 		@Override
 		public List<PositionedStack> getIngredients() {
-			return getCycledIngredients(cycleticks / 10, this.mInputs);
+			return getCycledIngredients(cycleticks / 10, mInputs);
 		}
-
+		
 		@Override
 		public PositionedStack getResult() {
 			return null;
 		}
-
+		
 		@Override
 		public List<PositionedStack> getOtherStacks() {
 			return mOutputs;
 		}
-
+		
 		public CachedDefaultRecipe(Recipe aRecipe) {
 			mRecipe = aRecipe;
 
@@ -518,17 +518,17 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		if (ST.invalid(aResult)) return;
 		try {
 			OreDictItemData tPrefixMaterial = OM.association_(aResult);
-
+			
 			ArrayList<ItemStack> tResults = new ArrayListNoNulls<>();
 			tResults.add(aResult);
 			tResults.add(OM.get_(aResult));
-
+			
 			ArrayList<ItemStack>
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aResult));
 			if (tRedirects != null) tResults.addAll(tRedirects);
 			tRedirects = ItemsGT.sNEIRedirects.get(new ItemStackContainer(aResult, W));
 			if (tRedirects != null) tResults.addAll(tRedirects);
-
+			
 			if (tPrefixMaterial != null && !tPrefixMaterial.mBlackListed) {
 				if (tPrefixMaterial.mMaterial.mMaterial.mID > 0 && BlocksGT.ore != null && BlocksGT.oreBroken != null && tPrefixMaterial.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
 					tResults.add(ST.make((Block)BlocksGT.ore, 1, tPrefixMaterial.mMaterial.mMaterial.mID));
@@ -538,7 +538,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 					tResults.add(tPrefix.mat(tPrefixMaterial.mMaterial.mMaterial, 1));
 				}
 			}
-
+			
 			if (!ItemsGT.NEI_DONT_SHOW_FLUIDS.contains(aResult, T)) {
 				FluidStack tFluid = FL.getFluid(aResult, T);
 				if (tFluid != null) {
@@ -548,7 +548,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 					}
 				}
 			}
-
+			
 			ArrayList<Recipe> tRecipes = new ArrayListNoNulls<>();
 			for (Recipe tRecipe : mRecipeMap.getNEIRecipes(tResults.toArray(ZL_IS))) if (!tRecipes.contains(tRecipe)) tRecipes.add(tRecipe);
 			for (Recipe tRecipe : tRecipes) arecipes.add(new CachedDefaultRecipe(tRecipe));
@@ -616,22 +616,22 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	public static void drawText(int aX, int aY, String aString, int aColor) {
 		Minecraft.getMinecraft().fontRenderer.drawString(aString, aX, aY, aColor);
 	}
-
+	
 	@Override
 	public int recipiesPerPage() {
 		return 1;
 	}
-
+	
 	@Override
 	public String getRecipeName() {
 		return LanguageHandler.translate(mRecipeMap.mNameInternal, mRecipeMap.mNameInternal);
 	}
-
+	
 	@Override
 	public String getGuiTexture() {
 		return UT.Code.stringValid(mRecipeMap.mGUIPath) ? mRecipeMap.mGUIPath : RES_PATH_GUI + mRecipeMap.mNameInternal + ".png";
 	}
-
+	
 	@Override
 	public List<String> handleItemTooltip(GuiRecipe gui, ItemStack aStack, List<String> currenttip, int aRecipeIndex) {
 		CachedRecipe tObject = arecipes.get(aRecipeIndex);

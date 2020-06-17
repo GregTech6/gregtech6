@@ -436,6 +436,8 @@ public class TD {
 		public static final TagData HAS_TOOL_STATS                          = TagData.createTagData("PROPERTIES.HAS_TOOL_STATS", "Has Tool Stats");
 		/** If this Material has a Color. */
 		public static final TagData HAS_COLOR                               = TagData.createTagData("PROPERTIES.HAS_COLOR", "Has Color");
+		/** If this Material is typically used by Mods or Vanilla Minecraft, and where the "ore" Prefix is important. */
+		public static final TagData COMMON_ORE                              = TagData.createTagData("PROPERTIES.COMMON_ORE", "Common Ore");
 		/** If this Material is only Unificatable in Recipes (for example Wood, which has many variations depending on from which Tree it comes from) */
 		public static final TagData AUTO_BLACKLIST                          = TagData.createTagData("PROPERTIES.AUTO_BLACKLIST", "Auto Blacklist");
 		/** If this Material is not a valid Material Name and therefore doesn't get unificated at all. This mainly gets used for technical Materials. */

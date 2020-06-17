@@ -190,8 +190,8 @@ public class MT {
 	static OreDictMaterial crystaldcmp  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystal         (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(DECOMPOSABLE);}
 	static OreDictMaterial crystalcent  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial crystalelec  (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return crystaldcmp     (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(ELECTROLYSER);}
-	static OreDictMaterial crystal_tc   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return crystal         (aID, aNameOreDict, SET_SHARDS      , aR, aG, aB,255).lens(aColor).put(MAGICAL, UNBURNABLE, MD.TC).addReRegistrations(ANY.ThaumCrystal).setOreMultiplier(2).visDefault();}
-	static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127).lens(aColor).put(MD.HEX, MORTAR, GLOWING, CRYSTALLISABLE, BLACKLISTED_SMELTER).addReRegistrations(ANY.Hexorium).setSmelting(null, 0).setOreMultiplier(aColor == DYE_INDEX_Black || aColor == DYE_INDEX_White ? 3 : 4).setLocal(DYE_NAMES[aColor] + " Hexorium").visDefault();}
+	static OreDictMaterial crystal_tc   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return crystal         (aID, aNameOreDict, SET_SHARDS      , aR, aG, aB,255).lens(aColor).put(MD.TC, MAGICAL, UNBURNABLE, COMMON_ORE).addReRegistrations(ANY.ThaumCrystal).setOreMultiplier(2).visDefault();}
+	static OreDictMaterial hexorium     (int aID                                         , long aR, long aG, long aB, byte aColor)  {return crystal(aID, "Hexorium"+DYE_NAMES[aColor], SET_HEX  , aR, aG, aB,127).lens(aColor).put(MD.HEX, MORTAR, GLOWING, CRYSTALLISABLE, BLACKLISTED_SMELTER, COMMON_ORE).addReRegistrations(ANY.Hexorium).setSmelting(null, 0).setOreMultiplier(aColor == DYE_INDEX_Black || aColor == DYE_INDEX_White ? 3 : 4).aspects(TC.VITREUS, 3, aColor == DYE_INDEX_Black ? TC.TENEBRAE : aColor == DYE_INDEX_White ? TC.LUX : TC.SENSUS, 4).setLocal(DYE_NAMES[aColor] + " Hexorium").visDefault();}
 	static OreDictMaterial valgem       (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return gem             (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(G_GEM_ORES_TRANSPARENT, CRYSTAL, VALUABLE);}
 	static OreDictMaterial valgemdcmp   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgem          (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(DECOMPOSABLE).setSmelting(null, 0);}
 	static OreDictMaterial valgemcent   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgemdcmp      (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
@@ -1319,9 +1319,9 @@ public class MT {
 	NetherQuartz            = quartz        ( 8346, "Nether Quartz"                                 , 230, 210, 210, 255).put(CRYSTALLISABLE, "Quartz")                                                                                                                 .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS                     , 1).qual(1, 2.5, 32, 1),
 	BlackQuartz             = quartz        ( 8374, "QuartzBlack"                                   ,  20,  20,  20, 255).put(CRYSTALLISABLE, DECOMPOSABLE, CENTRIFUGE)                                                                                                 .uumMcfg( 1, SiO2           , 1*U, C                , 1*U)                                                                                                  .aspects(TC.POTENTIA, 1, TC.VITREUS, 1, TC.TENEBRAE     , 1).qual(1, 2.5, 32, 1).setLocal("Black Quartz"),
 	MilkyQuartz             = quartz        ( 8445, "Milky Quartz"                                  , 210, 210, 210, 255).put(CRYSTALLISABLE)                                                                                                                           .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS                     , 1).qual(1, 2.5, 32, 1),
-	CertusQuartz            = quartz        ( 8347, "Certus Quartz"                                 , 210, 210, 230, 255).put(CRYSTALLISABLE, MD.AE)                                                                                                                    .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS                     , 1).qual(1, 5.0, 32, 1),
-	ChargedCertusQuartz     = quartz        ( 8348, "Charged Certus Quartz"                         , 210, 210, 230, 255).put(GLOWING, MD.AE)                                                                                                                           .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 2, TC.VITREUS                     , 1).steal(CertusQuartz).setPulver(CertusQuartz, U),
-	Fluix                   = quartz        ( 8389, "Fluix"                                         , 120,  70, 140, 255).put(CRYSTALLISABLE, MD.AE)                                                                                                                    .uumMcfg( 2, SiO2           , 2*U, Redstone         , 1*U)                                                                                                  .aspects(TC.POTENTIA, 2, TC.VITREUS, 1, TC.LUX          , 1),
+	CertusQuartz            = quartz        ( 8347, "Certus Quartz"                                 , 210, 210, 230, 255).put(CRYSTALLISABLE)                                                                                                                           .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 1, TC.VITREUS                     , 1).qual(1, 5.0, 32, 1),
+	ChargedCertusQuartz     = quartz        ( 8348, "Charged Certus Quartz"                         , 210, 210, 230, 255).put(GLOWING)                                                                                                                                  .uumMcfg( 0, SiO2           , 1*U)                                                                                                                          .aspects(TC.POTENTIA, 2, TC.VITREUS                     , 1).steal(CertusQuartz).setPulver(CertusQuartz, U),
+	Fluix                   = quartz        ( 8389, "Fluix"                                         , 120,  70, 140, 255).put(CRYSTALLISABLE)                                                                                                                           .uumMcfg( 2, SiO2           , 2*U, Redstone         , 1*U)                                                                                                  .aspects(TC.POTENTIA, 2, TC.VITREUS, 1, TC.LUX          , 1),
 	
 	
 	Redstonia               = gem_aa        ( 8375, "Redstonia"             , SET_EMERALD           , 255,   0,   0, 127, Redstone)                                                                                                                                                                                                                                                                                                 .aspects(TC.VITREUS, 2, TC.MACHINA  , 2).qual(3,  6.0,  300,  2),
@@ -1691,10 +1691,16 @@ public class MT {
 			
 			Wood                    .put(MD.MC);
 			Stone                   .put(MD.MC);
-			Fe                      .put(MD.MC);
-			Au                      .put(MD.MC);
-			Diamond                 .put(MD.MC);
-			Emerald                 .put(MD.MC);
+			Fe                      .put(MD.MC, COMMON_ORE);
+			Au                      .put(MD.MC, COMMON_ORE);
+			Diamond                 .put(MD.MC, COMMON_ORE);
+			Emerald                 .put(MD.MC, COMMON_ORE);
+			NetherQuartz            .put(MD.MC, COMMON_ORE);
+			Lapis                   .put(MD.MC, COMMON_ORE);
+			Redstone                .put(MD.MC, COMMON_ORE);
+			Glowstone               .put(MD.MC, COMMON_ORE);
+			Coal                    .put(MD.MC, COMMON_ORE);
+			Charcoal                .put(MD.MC);
 			EnderPearl              .put(MD.MC);
 			EnderEye                .put(MD.MC);
 			Blaze                   .put(MD.MC);
@@ -1703,12 +1709,6 @@ public class MT {
 			Cocoa                   .put(MD.MC);
 			Milk                    .put(MD.MC);
 			Paper                   .put(MD.MC);
-			Coal                    .put(MD.MC);
-			Charcoal                .put(MD.MC);
-			NetherQuartz            .put(MD.MC);
-			Lapis                   .put(MD.MC);
-			Redstone                .put(MD.MC);
-			Glowstone               .put(MD.MC);
 			Clay                    .put(MD.MC);
 			Netherrack              .put(MD.MC);
 			NetherBrick             .put(MD.MC);
@@ -1757,12 +1757,17 @@ public class MT {
 			PrismarineDark          .put(MD.EtFu);
 			
 			
+			NaCl                    .put(MD.HaC, COMMON_ORE);
+			
+			
 			Basalt                  .put(MD.NePl);
-			Netherite               .put(MD.NePl);
+			Netherite               .put(MD.NePl, COMMON_ORE);
 			NetherizedDiamond       .put(MD.NePl);
-			AncientDebris           .put(MD.NePl);
+			AncientDebris           .put(MD.NePl, COMMON_ORE);
 			
 			
+			Al                      .put(MD.GT, COMMON_ORE);
+			Zn                      .put(MD.GT, COMMON_ORE);
 			Craponite               .put(MD.GT);
 			NitroCarbon             .put(MD.GT);
 			NitroFuel               .put(MD.GT);
@@ -1791,14 +1796,14 @@ public class MT {
 			PlatinumGroupSludge     .put(MD.GT5U);
 			
 			
-			Os                      .setOriginalMod("gravisuite", "Gravisuite (Old IC2 Addon)");
+			Os                      .put(COMMON_ORE).setOriginalMod("gravisuite", "Gravisuite (Old IC2 Addon)");
 			
 			
-			Cu                      .put(MD.IC2);
-			Sn                      .put(MD.IC2);
+			Cu                      .put(MD.IC2, COMMON_ORE);
+			Sn                      .put(MD.IC2, COMMON_ORE);
 			Bronze                  .put(MD.IC2);
 			RefinedIron             .put(MD.IC2);
-			Ir                      .put(MD.IC2);
+			Ir                      .put(MD.IC2, COMMON_ORE);
 			U_238                   .put(MD.IC2);
 			U_235                   .put(MD.IC2);
 			Pu                      .put(MD.IC2);
@@ -1827,7 +1832,7 @@ public class MT {
 			Porcelain               .put(MD.IHL);
 			
 			
-			Bi                      .put(MD.TFC);
+			Bi                      .put(MD.TFC, COMMON_ORE);
 			Jasper                  .put(MD.TFC);
 			WroughtIron             .put(MD.TFC);
 			RoseGold                .put(MD.TFC);
@@ -1840,9 +1845,9 @@ public class MT {
 			DamascusSteel           .put(MD.TFC);
 			
 			
-			S                       .put(MD.RC);
-			KNO3                    .put(MD.RC);
-			Firestone               .put(MD.RC).visDefault();
+			S                       .put(MD.RC, COMMON_ORE);
+			KNO3                    .put(MD.RC, COMMON_ORE);
+			Firestone               .put(MD.RC, COMMON_ORE).visDefault();
 			Creosote                .put(MD.RC);
 			TinAlloy                .put(MD.RC);
 			Steel                   .put(MD.RC);
@@ -1852,15 +1857,15 @@ public class MT {
 			Constantan              .put(MD.IE);
 			
 			
-			Ni                      .put(MD.TE);
-			Pt                      .put(MD.TE);
+			Ni                      .put(MD.TE, COMMON_ORE);
+			Pt                      .put(MD.TE, COMMON_ORE);
 			Invar                   .put(MD.TE);
 			Electrum                .put(MD.TE);
 			Enderium                .put(MD.TE);
 			Signalum                .put(MD.TE);
 			Lumium                  .put(MD.TE);
-			RareEarth               .put(MD.TE);
-			Niter                   .put(MD.TE);
+			RareEarth               .put(MD.TE, COMMON_ORE);
+			Niter                   .put(MD.TE, COMMON_ORE);
 			Basalz                  .put(MD.TE);
 			Blitz                   .put(MD.TE);
 			Blizz                   .put(MD.TE);
@@ -1870,11 +1875,16 @@ public class MT {
 			Cryotheum               .put(MD.TE);
 			
 			
+			CertusQuartz            .put(MD.AE, COMMON_ORE);
+			ChargedCertusQuartz     .put(MD.AE, COMMON_ORE);
+			Fluix                   .put(MD.AE, COMMON_ORE);
+			
+			
 			IronCompressed          .put(MD.PnC).visDefault();
 			
 			
-			Co                      .put(MD.TiC);
-			Ardite                  .put(MD.TiC).visDefault();
+			Co                      .put(MD.TiC, COMMON_ORE);
+			Ardite                  .put(MD.TiC, COMMON_ORE).visDefault();
 			Alumite                 .put(MD.TiC);
 			Manyullyn               .put(MD.TiC).visDefault(Ardite);
 			AluminiumBrass          .put(MD.TiC);
@@ -1903,7 +1913,7 @@ public class MT {
 			
 			RefinedGlowstone        .put(MD.Mek).visDefault();
 			RefinedObsidian         .put(MD.Mek).visDefault();
-			FakeOsmium              .put(MD.Mek).visDefault();
+			FakeOsmium              .put(MD.Mek, COMMON_ORE).visDefault();
 			
 			
 			Silverwood              .put(MD.TC).visDefault();
@@ -1911,8 +1921,8 @@ public class MT {
 			Thaumium                .put(MD.TC).visDefault();
 			VoidMetal               .put(MD.TC).visDefault();
 			Tallow                  .put(MD.TC).visDefault();
-			Amber                   .put(MD.TC);
-			Hg                      .put(MD.TC);
+			Amber                   .put(MD.TC, COMMON_ORE);
+			Hg                      .put(MD.TC, COMMON_ORE);
 			
 			
 			DarkThaumium            .put(MD.TCFM).visDefault();
@@ -1948,7 +1958,7 @@ public class MT {
 			TitaniumAluminide       .put(MD.GC_ADV_ROCKETRY);
 			
 			
-			Anthracite              .put(MD.RoC).visDefault();
+			Anthracite              .put(MD.RoC, COMMON_ORE).visDefault();
 			Prismane                .put(MD.RoC).visDefault();
 			Lonsdaleite             .put(MD.RoC).visDefault();
 			
@@ -1971,7 +1981,7 @@ public class MT {
 			AmberDominican          .put(MD.Fossil).visDefault();
 			
 			
-			Draconium               .put(MD.DE).visDefault();
+			Draconium               .put(MD.DE, COMMON_ORE).visDefault();
 			DraconiumAwakened       .put(MD.DE).visDefault();
 			
 			
@@ -1983,26 +1993,30 @@ public class MT {
 			RedMatter               .put(MD.PE).visDefault();
 			
 			
-			EnderAmethyst           .put(MD.BoP).visDefault();
+			EnderAmethyst           .put(MD.BoP, COMMON_ORE).visDefault();
 			
 			
-			Meteorite               .put(MD.FM).visDefault();
+			Meteorite               .put(MD.FM, COMMON_ORE).visDefault();
 			FrozenIron              .put(MD.FM).visDefault();
 			Kreknorite              .put(MD.FM).visDefault();
 			RedMeteor               .put(MD.FM).visDefault();
 			Frezarite               .put(MD.FM).visDefault();
 			
 			
-			Vinteum                 .put(MD.ARS).visDefault();
+			Ti                      .put(MD.MaCu, COMMON_ORE).visDefault();
+			OREMATS.Rutile          .put(MD.MaCu, COMMON_ORE).visDefault();
+			
+			
+			Vinteum                 .put(MD.ARS, COMMON_ORE).visDefault();
 			VinteumPurified         .put(MD.ARS).visDefault();
 			ArcaneAsh               .put(MD.ARS).visDefault();
 			ArcaneCompound          .put(MD.ARS).visDefault();
-			Moonstone               .put(MD.ARS).visDefault();
-			Sunstone                .put(MD.ARS).visDefault();
-			Chimerite               .put(MD.ARS).visDefault();
+			Moonstone               .put(MD.ARS, COMMON_ORE).visDefault();
+			Sunstone                .put(MD.ARS, COMMON_ORE).visDefault();
+			Chimerite               .put(MD.ARS, COMMON_ORE).visDefault();
 			
 			
-			Desh                    .put(MD.GC).visDefault();
+			Desh                    .put(MD.GC, COMMON_ORE).visDefault();
 			MoonTurf                .put(MD.GC).visDefault();
 			MoonRock                .put(MD.GC).visDefault();
 			MarsSand                .put(MD.GC).visDefault();
@@ -2010,9 +2024,9 @@ public class MT {
 			SpaceRock               .put(MD.GC).visDefault();
 			
 			
-			Duralumin               .put(MD.GC_GALAXYSPACE);
-			Oriharukon              .put(MD.GC_GALAXYSPACE).visDefault();
-			Adamantite              .put(MD.GC_GALAXYSPACE).visDefault();
+			Duralumin               .put(MD.GC_GALAXYSPACE, COMMON_ORE);
+			Oriharukon              .put(MD.GC_GALAXYSPACE, COMMON_ORE).visDefault();
+			Adamantite              .put(MD.GC_GALAXYSPACE, COMMON_ORE).visDefault();
 			GlowstoneCeres          .put(MD.GC_GALAXYSPACE).visDefault();
 			GlowstoneIo             .put(MD.GC_GALAXYSPACE).visDefault();
 			GlowstoneEnceladus      .put(MD.GC_GALAXYSPACE).visDefault();
@@ -2036,54 +2050,55 @@ public class MT {
 			Betweenstone            .put(MD.BTL, BETWEENLANDS).visDefault();
 			Pitstone                .put(MD.BTL, BETWEENLANDS).visDefault();
 			Weedwood                .put(MD.BTL, BETWEENLANDS).visDefault();
-			Syrmorite               .put(MD.BTL, BETWEENLANDS).visDefault();
-			Octine                  .put(MD.BTL, BETWEENLANDS).visDefault();
+			Syrmorite               .put(MD.BTL, BETWEENLANDS, COMMON_ORE).visDefault();
+			Octine                  .put(MD.BTL, BETWEENLANDS, COMMON_ORE).visDefault();
 			
 			
 			Skyroot                 .put(MD.AETHER).visDefault();
 			Holystone               .put(MD.AETHER).visDefault();
-			Zanite                  .put(MD.AETHER).visDefault();
-			Ambrosium               .put(MD.AETHER).visDefault();
-			Gravitite               .put(MD.AETHER).visDefault();
-			Continuum               .put(MD.AETHER).visDefault();
+			Zanite                  .put(MD.AETHER, COMMON_ORE).visDefault();
+			Ambrosium               .put(MD.AETHER, COMMON_ORE).visDefault();
+			Gravitite               .put(MD.AETHER, COMMON_ORE).visDefault();
+			Continuum               .put(MD.AETHER, COMMON_ORE).visDefault();
 			
 			
-			W                       .put(MD.RP);
-			Ag                      .put(MD.RP);
+			W                       .put(MD.RP, COMMON_ORE);
+			Ag                      .put(MD.RP, COMMON_ORE);
 			Indigo                  .put(MD.RP);
-			Sapphire                .put(MD.RP);
-			GreenSapphire           .put(MD.RP);
-			BlueSapphire            .put(MD.RP);
-			Ruby                    .put(MD.RP);
+			Sapphire                .put(MD.RP, COMMON_ORE);
+			GreenSapphire           .put(MD.RP, COMMON_ORE);
+			BlueSapphire            .put(MD.RP, COMMON_ORE);
+			Ruby                    .put(MD.RP, COMMON_ORE);
 			BalasRuby               .put(MD.RP);
 			Marble                  .put(MD.RP);
 			Brass                   .put(MD.RP);
 			RedAlloy                .put(MD.RP);
-			Nikolite                .put(MD.RP).visDefault();
+			Nikolite                .put(MD.RP, COMMON_ORE).visDefault();
 			NikolineAlloy           .put(MD.RP).visDefault(Nikolite);
 			BlueAlloy               .put(MD.RP).visDefault(Nikolite, Teslatite);
 			
 			
-			Electrotine             .put(MD.PR).visDefault();
+			Electrotine             .put(MD.PR, COMMON_ORE).visDefault();
 			ElectrotineAlloy        .put(MD.PR).visDefault(Electrotine);
 			
 			
-			Teslatite               .put(MD.BP).visDefault();
+			Teslatite               .put(MD.BP, COMMON_ORE).visDefault();
 			TeslatineAlloy          .put(MD.BP).visDefault(Teslatite);
 			PurpleAlloy             .put(MD.BP).visDefault(Teslatite, Nikolite);
 			
 			
-			Pb                      .put(MD.FZ);
+			Pb                      .put(MD.FZ, COMMON_ORE);
+			OREMATS.Galena          .put(MD.FZ, COMMON_ORE);
 			H2SO4                   .put(MD.FZ);
 			AquaRegia               .put(MD.FZ);
 			DarkIron                .put(MD.FZ).visDefault();
 			
 			
-			Yellorium               .put(MD.BR).visDefault();
-			Blutonium               .put(MD.BR).visDefault();
-			Cyanite                 .put(MD.BR).visDefault();
-			Ludicrite               .put(MD.BR).visDefault();
-			Yellorite               .put(MD.BR).visDefault();
+			Yellorium               .put(MD.BR, COMMON_ORE).visDefault();
+			Blutonium               .put(MD.BR, COMMON_ORE).visDefault();
+			Cyanite                 .put(MD.BR, COMMON_ORE).visDefault();
+			Ludicrite               .put(MD.BR, COMMON_ORE).visDefault();
+			Yellorite               .put(MD.BR, COMMON_ORE).visDefault();
 			
 			
 			Angmallen               .put(MD.MET);
@@ -2120,9 +2135,9 @@ public class MT {
 			Amordrine               .put(MD.MET).visDefault();
 			
 			
-			Force                   .visDefault();
-			Forcicium               .visDefault();
-			Forcillium              .visDefault();
+			Force                   .put(COMMON_ORE).visDefault();
+			Forcicium               .put(COMMON_ORE).visDefault();
+			Forcillium              .put(COMMON_ORE).visDefault();
 			
 			
 			Plastic                 .addEnchantmentForTools(Enchantment.knockback, 1);
@@ -3042,7 +3057,7 @@ public class MT {
 		QuartzSand              = oredustcent   ( 9006, "Quartz Sand"               , SET_SAND              , 200, 200, 200, 255).put(MORTAR, BLACKLISTED_SMELTER, QUARTZ                                       ).setSmelting(SiO2, U3)     .setMcfg( 0, CertusQuartz   , 1*U, MilkyQuartz      , 1*U)                                                                                                  ;
 	}
 	
-	/** The "I don't care" Section, everything I don't want to do anything with right now, is right here. Just to make the Material Finder shut up about them. But I do see potential uses in some of these Materials. */
+	/** The "I don't care" Section, everything I don't want to do anything with right now. Just to make the Material Finder shut up about them. But I do see potential uses in some of these Materials. */
 	public static class UNUSED {
 		public static final OreDictMaterial
 		OsmiumTetroxide             = unused        ("Osmium Tetroxide"             ).setMcfg( 0, Os, 1*U, O, 4*U),
