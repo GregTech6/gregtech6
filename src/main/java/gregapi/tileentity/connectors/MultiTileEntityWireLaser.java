@@ -46,7 +46,7 @@ import net.minecraft.tileentity.TileEntity;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityWireLaser extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor {
-	public long mTransferredLast = 0;
+	public long mTransferred = 0, mTransferredLast = 0;
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
@@ -57,7 +57,10 @@ public class MultiTileEntityWireLaser extends TileEntityBase10ConnectorRendered 
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
-		if (aIsServerSide) mTransferredLast = 0;
+		if (aIsServerSide) {
+			mTransferredLast = mTransferred;
+			mTransferred = 0;
+		}
 	}
 	
 	public long transferLaser(byte aSide, long aFrequency, long aStrength, long aChannel, HashSetNoNulls<TileEntity> aAlreadyPassed) {
@@ -77,7 +80,7 @@ public class MultiTileEntityWireLaser extends TileEntityBase10ConnectorRendered 
 			}
 		}
 		
-		mTransferredLast += Math.abs(aFrequency * rUsedStrength);
+		mTransferred += Math.abs(aFrequency * rUsedStrength);
 		
 		return rUsedStrength;
 	}
