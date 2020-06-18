@@ -49,6 +49,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 	@Override public void run() {
 		// TODO: Graphite Electrodes are made from petroleum coke after it is mixed with coal tar pitch. They are then extruded and shaped, baked to carbonize the binder (pitch) and finally graphitized by heating it to temperatures approaching 3273K.
 		RM.Extruder.addRecipe2(T, 512, 512, OP.dust.mat(MT.Graphite, 1), IL.Shape_Extruder_Rod.get(0), OP.stick.mat(MT.Graphite, 1));
+		
+		
 		// TODO: Better Coolant Item than Lapis.
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 1*U), FL.DistW.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Lapis   , 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
@@ -58,8 +60,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.Injector.addRecipe1(T, 16, 16, OM.dust(MT.Sodalite, 2*U), FL.Water.make(1000), FL.Coolant_IC2.make(1000), ZL_IS);
 		
 		RM.Injector.addRecipe1(T, 64, 32, OM.dust(MT.Th, 1*U), FL.amount(MT.LiCl.mLiquid, 10000), FL.Thorium_Salt.make(10000), ZL_IS);
+		
+		
 		// TODO: Just no Ender IO Compat Handler and for this small thing I wont make a new Class.
 		CR.delate(MD.EIO, "itemYetaWrench");
+		
 		
 		
 		if (MD.HEX.mLoaded) {
@@ -87,6 +92,12 @@ public class Loader_Recipes_Temporary implements Runnable {
 			addListener(DYE_OREDICTS_MIXABLE[DYE_INDEX_White], new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 				if (ST.container(aEvent.mStack, T) == null)
 				RM.Mixer.addRecipe2(T, 16, 16, aEvent.mStack, OP.dust.mat(MT.HexoriumWhite, 1), ST.make(MD.HEX, "itemHexoriumDyeWhite", 16, 0));
+			}});
+			addListener(OP.plateGem.dat(MT.HexoriumBlack), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+				RM.add_smelting(aEvent.mStack, ST.make(MD.HEX, "itemBlackHexoriumWafer", 1, 0));
+			}});
+			addListener(OP.plateGem.dat(MT.HexoriumWhite), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+				RM.add_smelting(aEvent.mStack, ST.make(MD.HEX, "itemWhiteHexoriumWafer", 1, 0));
 			}});
 			}};
 		}

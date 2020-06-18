@@ -196,14 +196,14 @@ public class MT {
 	static OreDictMaterial valgemdcmp   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgem          (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(DECOMPOSABLE).setSmelting(null, 0);}
 	static OreDictMaterial valgemcent   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgemdcmp      (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial valgemelec   (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return valgemdcmp      (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(ELECTROLYSER);}
-	static OreDictMaterial diamond      (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemdcmp      (aID, aNameOreDict, SET_DIAMOND     , aR, aG, aB,127).lens(aColor).steal(C    ).aspects(TC.VITREUS, 3, TC.LUCRUM , 4                ).qual(3, 8.0,1280, 3).addReRegistrations(ANY.Diamond   ).setSmelting(C    , 2*U  ).setBurning(Ash, U);}
-	static OreDictMaterial sapphire     (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemcent      (aID, aNameOreDict, SET_GEM_VERTICAL, aR, aG, aB,127).lens(aColor).put(MELTING).aspects(TC.VITREUS, 3, TC.LUCRUM , 4                ).qual(3, 7.0, 512, 3).addReRegistrations(ANY.Sapphire  ).setSmelting(Al2O3, 3*U4 );}
-	static OreDictMaterial emerald      (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_EMERALD     , aR, aG, aB,127).lens(aColor).put(MELTING).aspects(TC.VITREUS, 3, TC.LUCRUM , 3                ).qual(3, 9.0, 128, 2).addReRegistrations(ANY.Emerald   ).setSmelting(Be   ,   U36);}
-	static OreDictMaterial garnet       (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,127).lens(aColor).put(MD.GT  ).aspects(TC.VITREUS, 3, TC.LUCRUM , 1                ).qual(3, 7.0, 128, 2).addReRegistrations(ANY.Garnet    );}
-	static OreDictMaterial jasper       (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,150).lens(aColor).put(MD.RH  ).aspects(TC.VITREUS, 2, TC.LUCRUM , 2, TC.METALLUM, 1).qual(3, 7.0, 256, 2).addReRegistrations(ANY.Jasper    ).uumMcfg( 0, SiO2, 2*U, Fe, 1*U);}
-	static OreDictMaterial tigereye     (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200).lens(aColor).put(MD.RH  ).aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.TERRA   , 1).qual(3, 7.0, 256, 2).addReRegistrations(ANY.TigerEye  ).uumMcfg( 0, SiO2, 1*U);}
-	static OreDictMaterial aventurine   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200).lens(aColor).put(MD.RH  ).aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.POTENTIA, 1).qual(3, 7.0, 256, 2).addReRegistrations(ANY.Aventurine).uumMcfg( 0, SiO2, 1*U);}
-	static OreDictMaterial fluorite     (int aID, String aNameOreDict                    , long aR, long aG, long aB             )  {return gem             (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,255)             .put(MD.ReC ).aspects(TC.VITREUS, 2, TC.VENENUM, 2                )                     .addReRegistrations(ANY.CaF2      ).uumMcfg( 0, Ca, 1*U, F, 2*U).heat(1633).put(DECOMPOSABLE, ACID, MELTING, MOLTEN, MORTAR, INGOTS, BRITTLE, CRYSTALLISABLE);}
+	static OreDictMaterial diamond      (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemdcmp      (aID, aNameOreDict, SET_DIAMOND     , aR, aG, aB,127).lens(aColor).put(COMMON_ORE).steal(C).aspects(TC.VITREUS, 3, TC.LUCRUM , 4                ).qual(3, 8.0,1280, 3).addReRegistrations(ANY.Diamond   ).setSmelting(C    , 2*U  ).setBurning(Ash, U);}
+	static OreDictMaterial sapphire     (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemcent      (aID, aNameOreDict, SET_GEM_VERTICAL, aR, aG, aB,127).lens(aColor).put(COMMON_ORE, MELTING).aspects(TC.VITREUS, 3, TC.LUCRUM , 4                ).qual(3, 7.0, 512, 3).addReRegistrations(ANY.Sapphire  ).setSmelting(Al2O3, 3*U4 );}
+	static OreDictMaterial emerald      (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_EMERALD     , aR, aG, aB,127).lens(aColor).put(COMMON_ORE, MELTING).aspects(TC.VITREUS, 3, TC.LUCRUM , 3                ).qual(3, 9.0, 128, 2).addReRegistrations(ANY.Emerald   ).setSmelting(Be   ,   U36);}
+	static OreDictMaterial garnet       (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,127).lens(aColor).put(MD.GT              ).aspects(TC.VITREUS, 3, TC.LUCRUM , 1                ).qual(3, 7.0, 128, 2).addReRegistrations(ANY.Garnet    );}
+	static OreDictMaterial jasper       (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,150).lens(aColor).put(MD.RH              ).aspects(TC.VITREUS, 2, TC.LUCRUM , 2, TC.METALLUM, 1).qual(3, 7.0, 256, 2).addReRegistrations(ANY.Jasper    ).uumMcfg( 0, SiO2, 2*U, Fe, 1*U);}
+	static OreDictMaterial tigereye     (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200).lens(aColor).put(MD.RH              ).aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.TERRA   , 1).qual(3, 7.0, 256, 2).addReRegistrations(ANY.TigerEye  ).uumMcfg( 0, SiO2, 1*U);}
+	static OreDictMaterial aventurine   (int aID, String aNameOreDict                    , long aR, long aG, long aB, byte aColor)  {return valgemelec      (aID, aNameOreDict, SET_GLASS       , aR, aG, aB,200).lens(aColor).put(MD.RH              ).aspects(TC.VITREUS, 2, TC.LUCRUM , 1, TC.POTENTIA, 1).qual(3, 7.0, 256, 2).addReRegistrations(ANY.Aventurine).uumMcfg( 0, SiO2, 1*U);}
+	static OreDictMaterial fluorite     (int aID, String aNameOreDict                    , long aR, long aG, long aB             )  {return gem             (aID, aNameOreDict, SET_RUBY        , aR, aG, aB,255)             .put(COMMON_ORE, MD.ReC ).aspects(TC.VITREUS, 2, TC.VENENUM, 2                )                     .addReRegistrations(ANY.CaF2      ).uumMcfg( 0, Ca, 1*U, F, 2*U).heat(1633).put(DECOMPOSABLE, ACID, MELTING, MOLTEN, MORTAR, INGOTS, BRITTLE, CRYSTALLISABLE);}
 	static OreDictMaterial mix          (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return dcmp            (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(CENTRIFUGE);}
 	static OreDictMaterial mixdust      (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return dustcent        (aID, aNameOreDict, aSets           , aR, aG, aB, aA);}
 	static OreDictMaterial oredust      (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    )  {return create          (aID, aNameOreDict, aSets           , aR, aG, aB, aA).put(G_DUST_ORES);}
@@ -1963,22 +1963,23 @@ public class MT {
 			Lonsdaleite             .put(MD.RoC).visDefault();
 			
 			
-			Endium                  .put(MD.GaEn);
+			Endium                  .put(MD.GaEn, COMMON_ORE);
 			
 			
 			FishCooked              .put(MD.MaCu);
 			FishRaw                 .put(MD.MaCu);
 			FishRotten              .put(MD.MaCu);
-			TiO2                    .put(MD.MaCu);
+			TiO2                    .put(MD.MaCu, COMMON_ORE);
+			Ti                      .put(MD.MaCu, COMMON_ORE).visDefault();
 			
 			
-			An                      .put(MD.ABYSSAL).visDefault();
-			Cor                     .put(MD.ABYSSAL).visDefault();
-			Dr                      .put(MD.ABYSSAL).visDefault();
-			Etx                     .put(MD.ABYSSAL).visDefault();
+			An                      .put(MD.ABYSSAL, COMMON_ORE).visDefault();
+			Cor                     .put(MD.ABYSSAL, COMMON_ORE).visDefault();
+			Dr                      .put(MD.ABYSSAL, COMMON_ORE).visDefault();
+			Etx                     .put(MD.ABYSSAL, COMMON_ORE).visDefault();
 			
 			
-			AmberDominican          .put(MD.Fossil).visDefault();
+			AmberDominican          .put(MD.Fossil, COMMON_ORE).visDefault();
 			
 			
 			Draconium               .put(MD.DE, COMMON_ORE).visDefault();
@@ -1993,6 +1994,9 @@ public class MT {
 			RedMatter               .put(MD.PE).visDefault();
 			
 			
+			Topaz                   .put(MD.BoP, COMMON_ORE);
+			Olivine                 .put(MD.BoP, COMMON_ORE);
+			Amethyst                .put(MD.BoP, COMMON_ORE);
 			EnderAmethyst           .put(MD.BoP, COMMON_ORE).visDefault();
 			
 			
@@ -2003,10 +2007,6 @@ public class MT {
 			Frezarite               .put(MD.FM).visDefault();
 			
 			
-			Ti                      .put(MD.MaCu, COMMON_ORE).visDefault();
-			OREMATS.Rutile          .put(MD.MaCu, COMMON_ORE).visDefault();
-			
-			
 			Vinteum                 .put(MD.ARS, COMMON_ORE).visDefault();
 			VinteumPurified         .put(MD.ARS).visDefault();
 			ArcaneAsh               .put(MD.ARS).visDefault();
@@ -2014,6 +2014,7 @@ public class MT {
 			Moonstone               .put(MD.ARS, COMMON_ORE).visDefault();
 			Sunstone                .put(MD.ARS, COMMON_ORE).visDefault();
 			Chimerite               .put(MD.ARS, COMMON_ORE).visDefault();
+			BlueTopaz               .put(MD.ARS, COMMON_ORE);
 			
 			
 			Desh                    .put(MD.GC, COMMON_ORE).visDefault();
@@ -2065,10 +2066,10 @@ public class MT {
 			W                       .put(MD.RP, COMMON_ORE);
 			Ag                      .put(MD.RP, COMMON_ORE);
 			Indigo                  .put(MD.RP);
-			Sapphire                .put(MD.RP, COMMON_ORE);
-			GreenSapphire           .put(MD.RP, COMMON_ORE);
-			BlueSapphire            .put(MD.RP, COMMON_ORE);
-			Ruby                    .put(MD.RP, COMMON_ORE);
+			Sapphire                .put(MD.RP);
+			GreenSapphire           .put(MD.RP);
+			BlueSapphire            .put(MD.RP);
+			Ruby                    .put(MD.RP);
 			BalasRuby               .put(MD.RP);
 			Marble                  .put(MD.RP);
 			Brass                   .put(MD.RP);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,30 +46,40 @@ import net.minecraft.tileentity.TileEntity;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityWireLaser extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor {
+	public long mTransferredLast = 0;
+	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN + LH.get(LH.WIRE_STATS_LOSSLESS) + " (" + TD.Energy.LU.getChatFormat()+TD.Energy.LU.getLocalisedNameShort()+Chat.CYAN + ")");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
-	public long transferLaser(byte aSide, long aVoltage, long aAmperage, long aChannel, HashSetNoNulls<TileEntity> aAlreadyPassed) {
-		long rUsedAmperes = 0;
+	@Override
+	public void onTick2(long aTimer, boolean aIsServerSide) {
+		super.onTick2(aTimer, aIsServerSide);
+		if (aIsServerSide) mTransferredLast = 0;
+	}
+	
+	public long transferLaser(byte aSide, long aFrequency, long aStrength, long aChannel, HashSetNoNulls<TileEntity> aAlreadyPassed) {
+		long rUsedStrength = 0;
 		
 		for (byte tSide : ALL_SIDES_VALID_BUT[aSide]) if (canEmitEnergyTo(tSide)) {
-			if (aAmperage <= rUsedAmperes) break;
+			if (aStrength <= rUsedStrength) break;
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide);
 			if (aAlreadyPassed.add(tDelegator.mTileEntity)) {
 				if (tDelegator.mTileEntity instanceof MultiTileEntityWireLaser) {
 					if (((MultiTileEntityWireLaser)tDelegator.mTileEntity).isEnergyAcceptingFrom(TD.Energy.LU, tDelegator.mSideOfTileEntity, F)) {
-						rUsedAmperes += ((MultiTileEntityWireLaser)tDelegator.mTileEntity).transferLaser(tDelegator.mSideOfTileEntity, aVoltage, aAmperage-rUsedAmperes, aChannel, aAlreadyPassed);
+						rUsedStrength += ((MultiTileEntityWireLaser)tDelegator.mTileEntity).transferLaser(tDelegator.mSideOfTileEntity, aFrequency, aStrength-rUsedStrength, aChannel, aAlreadyPassed);
 					}
 				} else {
-					rUsedAmperes += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.LU, aVoltage, aAmperage-rUsedAmperes, this, tDelegator);
+					rUsedStrength += ITileEntityEnergy.Util.insertEnergyInto(TD.Energy.LU, aFrequency, aStrength-rUsedStrength, this, tDelegator);
 				}
 			}
 		}
 		
-		return rUsedAmperes;
+		mTransferredLast += Math.abs(aFrequency * rUsedStrength);
+		
+		return rUsedStrength;
 	}
 	
 	@Override

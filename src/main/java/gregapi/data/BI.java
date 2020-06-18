@@ -110,6 +110,7 @@ public class BI {
 	, CHAR_TON = new Icon("overlays/characters/ton")
 	, CHAR_KILOTON = new Icon("overlays/characters/kiloton")
 	, CHAR_EU = new Icon("overlays/characters/eu")
+	, CHAR_LU = new Icon("overlays/characters/lu")
 	, CHAR_RU = new Icon("overlays/characters/ru")
 	, CHAR_NEUTRON = new Icon("overlays/characters/neutron")
 	
