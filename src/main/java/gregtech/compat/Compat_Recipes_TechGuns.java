@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -66,7 +66,7 @@ public class Compat_Recipes_TechGuns extends CompatMods {
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(MT.Pb));
 		CR.shaped(ST.make(MD.TG, "TechgunsAmmo", 1, 88), CR.DEF_NCC, "XX", "XX", 'X', OP.bulletGtMedium.dat(ANY.Iron));
 		
-		RM.pack(ST.make(MD.TG, "TechgunsAmmo", 4, 7), 4, ST.make(MD.TG, "TechgunsAmmo", 1, 88));
+		RM.pack(ST.make(MD.TG, "TechgunsAmmo", 4, 7), ST.make(MD.TG, "TechgunsAmmo", 1, 88));
 		RM.unpack(ST.make(MD.TG, "TechgunsAmmo", 1, 88), ST.make(MD.TG, "TechgunsAmmo", 4, 7));
 		
 		RM.box(ST.make(MD.TG, "TechgunsAmmo", 1, 18), ST.make(MD.TG, "TechgunsAmmo", 1, 17), OP.bulletGtLarge   .mat(MT.Pb, 2));

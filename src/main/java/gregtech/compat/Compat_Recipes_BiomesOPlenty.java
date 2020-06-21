@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -48,11 +48,11 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		RM.generify(IL.Mud_Ball.get(1), IL.BoP_Mud_Ball.get(1));
 		RM.generify(IL.BoP_Mud_Ball.get(1), IL.Mud_Ball.get(1));
 		
-		RM.compact(IL.BoP_Celestial.get(1), 4, IL.BoP_Celestial_Block.get(1));
-		RM.compact(IL.BoP_Flesh.get(1), 4, IL.BoP_Flesh_Block.get(1));
-		RM.compact(IL.BoP_Mud_Brick.get(1), 4, IL.BoP_Mud_Bricks.get(1));
-		RM.compact(IL.BoP_Mud_Ball.get(1), 4, IL.BoP_Mud.get(1));
-		RM.compact(IL.BoP_Ashes.get(1), 4, IL.BoP_Ashes_Block.get(1));
+		RM.compact(IL.BoP_Celestial.get(4), IL.BoP_Celestial_Block.get(1));
+		RM.compact(IL.BoP_Flesh    .get(4), IL.BoP_Flesh_Block.get(1));
+		RM.compact(IL.BoP_Mud_Brick.get(4), IL.BoP_Mud_Bricks.get(1));
+		RM.compact(IL.BoP_Mud_Ball .get(4), IL.BoP_Mud.get(1));
+		RM.compact(IL.BoP_Ashes    .get(4), IL.BoP_Ashes_Block.get(1));
 		
 		RM.biomass(ST.make(MD.BoP, "flowers", 16, W));
 		RM.biomass(ST.make(MD.BoP, "flowers2", 16, W));

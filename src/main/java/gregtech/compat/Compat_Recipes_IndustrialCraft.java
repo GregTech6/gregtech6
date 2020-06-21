@@ -151,7 +151,7 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		RM.ic2_compressor(OP.blockPlate     .mat(MT.AnnealedCopper, 1), OP.plateDense.mat(MT.Cu, 1));
 		RM.ic2_compressor(OP.blockSolid     .mat(MT.AnnealedCopper, 1), OP.plateDense.mat(MT.Cu, 1));
 		
-		RM.compact(ST.make(MD.IC2, "blockMachine2", 1, 2), 3, ST.make(MD.IC2, "blockMachine2", 1, 15));
+		RM.compact(ST.make(MD.IC2, "blockMachine2", 3, 2), ST.make(MD.IC2, "blockMachine2", 1, 15));
 		
 		CR.shaped(IL.IC2_Machine.get(1), CR.DEF, "III", "I I", "III", 'I', OP.ingot.dat(MT.TECH.RefinedIron));
 		CR.remove(IL.IC2_Machine.get(1));

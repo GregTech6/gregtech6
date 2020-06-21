@@ -457,7 +457,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			
 			doWork(aTimer);
 			
-			if (mTimer % 600 == 5) doDefaultStructuralChecks();
+			if (mTimer % 600 == 5 && mRunning) doDefaultStructuralChecks();
 			
 			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i                       , FL.display(mTanksInput [i], T, T));
 			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length  , FL.display(mTanksOutput[i], T, T));

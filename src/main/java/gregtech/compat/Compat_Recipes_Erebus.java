@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -72,7 +72,7 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.pack(rockGt.mat(MT.Umber     , 4), ST.make(MD.ERE, "umberstone", 1, 1));
 		RM.pack(rockGt.mat(MT.Gneiss    , 4), ST.make(MD.ERE, "gneiss", 1, 0));
 		
-		RM.pack(ST.make(Items.string, 9, 0), 9, ST.make(MD.ERE, "blockSilk", 1, 0));
+		RM.pack(ST.make(Items.string, 9, 0), ST.make(MD.ERE, "blockSilk", 1, 0));
 		RM.unpack(ST.make(MD.ERE, "blockSilk", 1, 0), ST.make(Items.string, 9, 0));
 		
 		CR.shaped(ST.make(MD.ERE, "umberstone"  , 1, 1), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.Umber));

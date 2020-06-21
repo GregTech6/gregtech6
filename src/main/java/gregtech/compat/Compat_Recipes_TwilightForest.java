@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -51,10 +51,10 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		
 		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "X", "S", 'X', IL.TF_Torchberries, 'S', OP.stick.dat(ANY.Wood));
 		
-		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   ,  4, W),  4, ST.make(MD.TF, "item.charmOfKeeping2" , 1, 0));
-		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   , 16, W), 16, ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
-		RM.pack(ST.make(MD.TF, "item.charmOfKeeping2"   ,  4, W),  4, ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
-		RM.pack(ST.make(MD.TF, "item.charmOfLife1"      ,  4, W),  4, ST.make(MD.TF, "item.charmOfLife2"    , 1, 0));
+		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   ,  4, W), ST.make(MD.TF, "item.charmOfKeeping2" , 1, 0));
+		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   , 16, W), ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
+		RM.pack(ST.make(MD.TF, "item.charmOfKeeping2"   ,  4, W), ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
+		RM.pack(ST.make(MD.TF, "item.charmOfLife1"      ,  4, W), ST.make(MD.TF, "item.charmOfLife2"    , 1, 0));
 		
 		RM.unpack(ST.make(MD.TF, "item.charmOfKeeping2" , 1, W), ST.make(MD.TF, "item.charmOfKeeping1"  , 4, 0));
 		RM.unpack(ST.make(MD.TF, "item.charmOfKeeping3" , 1, W), ST.make(MD.TF, "item.charmOfKeeping2"  , 4, 0));

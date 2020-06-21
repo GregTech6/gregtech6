@@ -1584,6 +1584,26 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.HEX, "blockEnergizedHexoriumMagenta"          , 1,   W, MT.HexoriumBlue       ,  U * 4, MT.HexoriumRed        ,  U * 4);
 		OM.data(MD.HEX, "blockEnergizedHexoriumPink"             , 1,   W, MT.HexoriumBlue       ,  U * 2, MT.HexoriumRed        ,  U * 6);
 		OM.data(MD.HEX, "blockEnergizedHexoriumRainbow"          , 1,   W, MT.HexoriumWhite      ,  U * 2, MT.HexoriumRed        ,  U * 2, MT.HexoriumGreen      ,  U * 2, MT.HexoriumBlue       ,  U * 2);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumRed"          , 1,   W, MT.HexoriumRed        ,  U8* 8);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumGreen"        , 1,   W, MT.HexoriumGreen      ,  U8* 8);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumBlue"         , 1,   W, MT.HexoriumBlue       ,  U8* 8);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumBlack"        , 1,   W, MT.HexoriumBlack      ,  U8* 8);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumWhite"        , 1,   W, MT.HexoriumWhite      ,  U8* 8);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumDarkGray"     , 1,   W, MT.HexoriumBlack      ,  U8* 6, MT.HexoriumWhite      ,  U8* 2);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumGray"         , 1,   W, MT.HexoriumBlack      ,  U8* 4, MT.HexoriumWhite      ,  U8* 4);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumLightGray"    , 1,   W, MT.HexoriumBlack      ,  U8* 2, MT.HexoriumWhite      ,  U8* 6);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumOrange"       , 1,   W, MT.HexoriumRed        ,  U8* 6, MT.HexoriumGreen      ,  U8* 2);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumYellow"       , 1,   W, MT.HexoriumRed        ,  U8* 4, MT.HexoriumGreen      ,  U8* 4);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumLime"         , 1,   W, MT.HexoriumRed        ,  U8* 2, MT.HexoriumGreen      ,  U8* 6);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumTurquoise"    , 1,   W, MT.HexoriumGreen      ,  U8* 6, MT.HexoriumBlue       ,  U8* 2);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumCyan"         , 1,   W, MT.HexoriumGreen      ,  U8* 4, MT.HexoriumBlue       ,  U8* 4);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumSkyBlue"      , 1,   W, MT.HexoriumGreen      ,  U8* 2, MT.HexoriumBlue       ,  U8* 6);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumPurple"       , 1,   W, MT.HexoriumBlue       ,  U8* 6, MT.HexoriumRed        ,  U8* 2);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumMagenta"      , 1,   W, MT.HexoriumBlue       ,  U8* 4, MT.HexoriumRed        ,  U8* 4);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumPink"         , 1,   W, MT.HexoriumBlue       ,  U8* 2, MT.HexoriumRed        ,  U8* 6);
+		OM.data(MD.HEX, "blockMiniEnergizedHexoriumRainbow"      , 1,   W, MT.HexoriumWhite      ,  U8* 2, MT.HexoriumRed        ,  U8* 2, MT.HexoriumGreen      ,  U8* 2, MT.HexoriumBlue       ,  U8* 2);
+		
+		
 		
 		
 		OM.data(MD.BOTA, "quartzSlabManaHalf"               , 1,   W, MT.ManaQuartz         ,  U * 2);

@@ -92,7 +92,7 @@ import net.minecraftforge.event.ForgeEventFactory;
  */
 public class PrefixBlock extends Block implements Runnable, ITileEntityProvider, IBlockSyncData, IRenderedBlock, IBlockToolable, IPrefixBlock {
 	public Drops mDrops;
-	public boolean mRegisterToOreDict = T;
+	public boolean mRegisterToOreDict = T, mHidden = F;
 	
 	public final float mMinX, mMinY, mMinZ, mMaxX, mMaxY, mMaxZ;
 	public final int mHarvestLevelOffset, mHarvestLevelMinimum, mHarvestLevelMaximum;
@@ -664,6 +664,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override public boolean usesRenderPass(int aRenderPass, ItemStack aStack) {return T;}
 	@Override public boolean usesRenderPass(int aRenderPass, IBlockAccess aWorld, int aX, int aY, int aZ, boolean[] aShouldSideBeRendered) {return T;}
 	@Override public Block getBlock() {return this;}
+	
+	public PrefixBlock setHidden(boolean aHidden) {mHidden = aHidden; return this;}
 	
 	/** @return the Local Name for this Block depending on Prefix and Material. */
 	public String getLocalName(OreDictPrefix aPrefix, OreDictMaterial aMaterial) {

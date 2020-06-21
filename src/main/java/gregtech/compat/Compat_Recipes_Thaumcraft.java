@@ -76,7 +76,7 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Chicken  .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
 		RM.Mixer.addRecipeX(T, 16, 16, ST.array(OP.gemChipped.mat(MT.Sugar, 4)  , IL.TC_Nugget_Fish     .wild(1), IL.TC_Nugget_Beef.wild(1), IL.TC_Nugget_Pork.wild(1)), IL.TC_Triple_Meat_Treat.get(1));
 		
-		RM.compact(ST.make(Items.rotten_flesh, 9, W), 9, IL.TC_Block_Flesh.get(1));
+		RM.compact(ST.make(Items.rotten_flesh, 9, W), IL.TC_Block_Flesh.get(1));
 		RM.unpack(IL.TC_Block_Flesh.get(1), ST.make(Items.rotten_flesh, 9, 0));
 		
 		RM.compact(IL.TC_Tallow.get(9), 9, IL.TC_Block_Tallow.get(1));

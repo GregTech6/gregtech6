@@ -183,6 +183,14 @@ public class RM {
 		return T;
 	}
 	
+	public static boolean compact(ItemStack aContent, ItemStack aFull) {
+		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
+		Boxinator.addRecipe2(T, 16, 16, aContent, ST.tag(aContent.stackSize), aFull);
+		Compressor.addRecipe1(T, 16, 16, aContent, aFull);
+		ic2_compressor(aContent, aFull);
+		return T;
+	}
+	
 	public static boolean compact(ItemStack aContent, long aAmount, ItemStack aFull) {
 		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
 		Boxinator.addRecipe2(T, 16, 16, ST.amount(aAmount, aContent), ST.tag(aAmount), aFull);
