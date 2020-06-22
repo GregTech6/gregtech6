@@ -250,6 +250,7 @@ dependencies {
 	//compileOnly "com.builtbroken:MilitaryBaseDecor:1.7.10-0.1.0b203:deobf"
 	//compileOnly "com.builtbroken:VoltzEngine:1.7.10-1.11.0b466:deobf"
 	//compileOnly "com.carpentersblocks:CarpentersBlocks:3.3.8.2:dev"
+	//compileOnly "com.celestek.hexcraft:HEXCraft:1.7.10-0.13.1:dev" // Or grab whatever the latest version is as it is still developed
 	//compileOnly "com.chocolate.chocolateQuest:chocolateQuest:1.7.10-1.1d" // Hack
 	//compileOnly "com.creativemd:craftingmanager:0.7.6:dev"
 	//compileOnly "com.creativemd:creativecore:1.3.24:dev"
