@@ -309,12 +309,12 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		}
 		return F;
 	}
-
+	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		return aRenderPass < 6 && !ALONG_AXIS[aRenderPass][aSide] ? null : aRenderPass == mFacing ? mTextures[4] : aRenderPass == mSecondFacing ? mTextures[5] : aRenderPass >= 6 || aRenderPass < 2 ? mTextures[SIDES_VERTICAL[aSide] && aRenderPass != 10 && aRenderPass > 1 ? aRenderPass+5 : aRenderPass] : mTextures[aRenderPass < 6 && isCovered((byte)aRenderPass) ? 3 : 2];
 	}
-
+	
 	public static IIconContainer sColoreds[] = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/colored/bottom"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/colored/top"),
@@ -330,17 +330,16 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/overlay/face1"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_1x1/overlay/face2")
 	};
-
+	
 	@Override
 	public void updateInventory() {
 		super.updateInventory();
 		updateClientData();
 	}
-
+	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[1];}
-	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? new int[]{0} : ZL_INTEGER;}
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return mStopped && aStack != null && aSlot == 0 && ST.item(aStack) instanceof IItemReactorRod && ((IItemReactorRod) ST.item_(aStack)).isReactorRod(aStack) && !slotHas(0);}
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? UT.Code.getAscendingArray(1) : ZL_INTEGER;}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return mStopped && aStack != null && aSlot == 0 && !slotHas(aSlot) && ST.item(aStack) instanceof IItemReactorRod && ((IItemReactorRod)ST.item_(aStack)).isReactorRod(aStack);}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return mStopped && aStack != null && aSlot == 0;}
-	@Override public int getInventoryStackLimit() {return 1;}
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core.1x1";}
 }

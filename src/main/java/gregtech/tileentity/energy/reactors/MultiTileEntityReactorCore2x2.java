@@ -389,17 +389,16 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_2x2/overlay/face1"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_core_2x2/overlay/face2")
 	};
-
+	
 	@Override
 	public void updateInventory() {
 		super.updateInventory();
 		updateClientData();
 	}
-
+	
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[4];}
-	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? new int[]{0,1,2,3} : ZL_INTEGER;}
-	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return (mStopped || (mMode & B[aSlot]) != 0) && aStack != null && ST.item(aStack) instanceof IItemReactorRod && ((IItemReactorRod) ST.item_(aStack)).isReactorRod(aStack) && !slotHas(aSlot);}
+	@Override public int[] getAccessibleSlotsFromSide2(byte aSide) {return aSide == SIDE_DOWN || aSide == SIDE_TOP ? UT.Code.getAscendingArray(4) : ZL_INTEGER;}
+	@Override public boolean canInsertItem2 (int aSlot, ItemStack aStack, byte aSide) {return (mStopped || (mMode & B[aSlot]) != 0) && aStack != null && !slotHas(aSlot) && ST.item(aStack) instanceof IItemReactorRod && ((IItemReactorRod)ST.item_(aStack)).isReactorRod(aStack);}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return (mStopped || (mMode & B[aSlot]) != 0) && aStack != null;}
-	@Override public int getInventoryStackLimit() {return 1;}
-	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core";} // Yeah Namign Convention doesnt work on the first one I added, just imagine a ".2x2" at the end of this String.
+	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core";} // Yeah Naming Convention doesn't work on the first one I added, just imagine a ".2x2" at the end of this String.
 }

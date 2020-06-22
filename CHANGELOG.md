@@ -28,6 +28,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 [COMPAT] HEXCrafts Hexorium Ore is generated in all possible ways when installed, with RGB ones closer to Surface and Black and White ones closer to Bedrock. Also some Hexorium related Recipes added. Its Energized Monoliths can also be found as Decoration in GT Dungeons.
+[FIXED] A weird Interaction with Robot Arms and Extenders that resulted in Extenders sometimes choosing the secondary Facing as destination for Items, even though the Items did not come from the promary Facing, including targetting things like GT6 Red Alloy Wires that dont even have Slots to put shit into, resulting in a Crash of the Block that has the Robot Arm.
 [FIXED] Tooltips for Mob Spawn Proofing will now show it whenever Optifine breaks the mechanic in Singleplayer, because clearly removing Metadata support from World functions is a good Idea and "totally fixable" on my end...
 [FIXED] GT6 Redstone Wiring sometimes checked multiple/infinite times per tick for Vanilla signals. This was leading to Game Freezes with Thermal Expansion.
 [FIXED] Some Biomes from Enhanced Biomes were not counted as River for my Worldgen.
