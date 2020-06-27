@@ -21,11 +21,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.13.03: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Dwarf Fortress for the detriment of all other activities...)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on Stuff)
+6.13.02: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm actually working on some Stuff)
 [NOTE] This one automatically triggers the outdated Major Version Notification to nonupdated Users (once it is released), because ofcourse the first one or two of a Major Version tend to be buggy.
 [COMPAT] HEXCrafts Hexorium Ore is generated in all possible ways when installed, with RGB ones closer to Surface and Black and White ones closer to Bedrock. Also some Hexorium related Recipes added. Its Energized Monoliths can also be found as Decoration in GT Dungeons.
 [FIXED] A weird Interaction with Robot Arms and Extenders that resulted in Extenders sometimes choosing the secondary Facing as destination for Items, even though the Items did not come from the promary Facing, including targetting things like GT6 Red Alloy Wires that dont even have Slots to put shit into, resulting in a Crash of the Block that has the Robot Arm.

@@ -11,7 +11,7 @@ derivative of it are licensed under the
 
 # Support
 
-You can use the Issue Tracker, or you can just use the Forums. Since you should need a Forum Account to log into this anyways, I would recommend you to go for the Forums if you have an Issue.
+You can use the Issue Tracker, or you can just use the [Forums](https://forum.mechaenetia.com/). Both ways will notify Greg at the very same time.
 
 # Dev Environment Setup
 
