@@ -1599,7 +1599,7 @@ public class CS {
 		//   0 = null
 		//   1 = Book/Written Book/Writable Book/Default
 		//   2 = Enchanted Book
-		//   3 = Black, 4 = White, 5 = Red, 6 = Green, 7 = Blue, 8 = Cyan, 9 = Magenta, 10 = Yellow, 48 = Orange, 49 = Purple
+		//   3 = Black, 4 = White, 5 = Red, 6 = Green, 7 = Blue, 8 = Cyan, 9 = Magenta, 10 = Yellow, 48 = Orange, 49 = Purple, 53 = Dusty
 		//  11 = Material Dictionary
 		//  12 = GT Book
 		//  13 = Thaumonomicon
@@ -1614,7 +1614,7 @@ public class CS {
 		//  22 = Brewing
 		//  23 = Vampires
 		//  24 = Reika
-		//  25 = Default Folder, 26 = Red Folder, 27 = Green Folder, 28 = Blue Folder
+		//  25 = Default Black Folder, 26 = Red Folder, 27 = Green Folder, 28 = Blue Folder
 		//  29 = Clipboard
 		//  30 = Records
 		//  31 = Printing Plates

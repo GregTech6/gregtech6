@@ -103,6 +103,7 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.FR, "frameImpregnated"                     ,   W, (byte) 34);
 			BooksGT.BOOK_REGISTER.put(MD.FR, "frameProven"                          ,   W, (byte) 34);
 			BooksGT.BOOK_REGISTER.put(MD.FR, "researchNote"                         ,   W, (byte) 25);
+			BooksGT.BOOK_REGISTER.put(MD.FR, "stamps"                               ,   W, (byte) 26);
 		}
 		if (MD.BINNIE_BEE.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.BINNIE_BEE, "hiveFrame.clay"               ,   W, (byte) 34);
@@ -363,6 +364,11 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.padlock"                        ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.padlock_reinforced"             ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.padlock_unbreakable"            ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.polaroid"                       ,   W, (byte) 34);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.flame_pony"                     ,   W, (byte) 26);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.flame_opinion"                  ,   W, (byte) 26);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.flame_politics"                 ,   W, (byte) 26);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.flame_conspiracy"               ,   W, (byte) 26);
 		}
 		if (MD.GC.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.GC, "item.key"                             ,   W, (byte)  1);
