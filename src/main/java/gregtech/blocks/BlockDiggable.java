@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -67,7 +67,7 @@ public class BlockDiggable extends BlockBaseMeta implements IBlockOnWalkOver {
 	public boolean canSustainPlant(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide, IPlantable aPlant) {
 		if (aWorld.getBlockMetadata(aX, aY, aZ) == 1) return F;
 		if (aPlant == Blocks.reeds || aPlant instanceof BlockBush) return T;
-		EnumPlantType tType = aPlant.getPlantType(aWorld, aX, aY+1, aZ);
+		EnumPlantType tType = aPlant.getPlantType(aWorld, aX+aSide.offsetX, aY+aSide.offsetY, aZ+aSide.offsetZ);
 		return tType == EnumPlantType.Plains || tType == EnumPlantType.Water || tType == EnumPlantType.Desert || tType == EnumPlantType.Beach;
 	}
 	

@@ -347,11 +347,13 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.template_folder"                ,   W, (byte) 17);
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.assembly_template"              ,   W, (byte) 28);
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.chemistry_template"             ,   W, (byte) 28);
-			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_materials"             ,   W, (byte)  1);// TODO
-			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_machines"              ,   W, (byte)  1);// TODO
-			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_weapons"               ,   W, (byte)  1);// TODO
-			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_tools"                 ,   W, (byte)  1);// TODO
-			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_hidden"                ,   W, (byte) 49);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.fluid_identifier"               ,   W, (byte) 27);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.siren_track"                    ,   W, (byte) 36);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_materials"             ,   W, (byte) 48); // Technically Beige instead of Orange
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_machines"              ,   W, (byte)  5);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_weapons"               ,   W, (byte)  3); // Technically Gray instead of Black
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_tools"                 ,   W, (byte)  6);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_hidden"                ,   W, (byte)  9);
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.key"                            ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.key_red"                        ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.key_kit"                        ,   W, (byte)  1);
