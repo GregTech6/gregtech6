@@ -490,15 +490,15 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	}
 	
 	static {
-		LH.add("gt.tooltip.stone.mushroom.yes", "Mushrooms will spread to this Stone");
-		LH.add("gt.tooltip.stone.mushroom.no", "Mushrooms wont spread to this Stone!");
+		LH.add("gt.tooltip.stone.mushroom.yes", "Mushrooms can spread to this rough Stone");
+		LH.add("gt.tooltip.stone.mushroom.no", "Mushrooms cant spread to smooth Stones!");
 	}
 	
 	@Override
 	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		super.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
 		if (PLANTABLE[UT.Code.bind4(aMeta)]) {
-			aList.add(LH.Chat.CYAN + LH.get("gt.tooltip.stone.mushroom.yes"));
+			aList.add(LH.Chat.GREEN + LH.get("gt.tooltip.stone.mushroom.yes"));
 		} else {
 			aList.add(LH.Chat.ORANGE + LH.get("gt.tooltip.stone.mushroom.no"));
 		}
