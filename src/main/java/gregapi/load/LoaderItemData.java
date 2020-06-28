@@ -613,6 +613,10 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.dustSmall.dat(MT.Cyanite)         , ST.make(MD.BINNIE_BEE, "misc", 1,29));
 		
 		
+		OM.reg(OD.record                            , ST.make(MD.HBM, "item.record_lc", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.HBM, "item.record_ss", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.HBM, "item.record_vc", 1, 0));
+		OM.reg(OD.record                            , ST.make(MD.HBM, "item.record_glass", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.NePl, "PigStep", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.MFR, "record.blank", 1, 0));
 		OM.reg(OD.record                            , ST.make(MD.RoC, "rotarycraft_item_disk", 1, 0));

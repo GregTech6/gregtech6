@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -314,6 +314,53 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.FM, "MeteorTimeDet"                        ,   W, (byte) 43);
 			BooksGT.BOOK_REGISTER.put(MD.FM, "MeteorProxDet"                        ,   W, (byte) 43);
 			BooksGT.BOOK_REGISTER.put(MD.FM, "MeteorCrashDet"                       ,   W, (byte) 44);
+		}
+		if (MD.HBM.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_stone_flat"               ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_stone_plate"              ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_stone_wire"               ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_stone_circuit"            ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_iron_flat"                ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_iron_plate"               ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_iron_wire"                ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_iron_circuit"             ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_steel_flat"               ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_steel_plate"              ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_steel_wire"               ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_steel_circuit"            ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_titanium_flat"            ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_titanium_plate"           ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_titanium_wire"            ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_titanium_circuit"         ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_obsidian_flat"            ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_obsidian_plate"           ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_obsidian_wire"            ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_obsidian_circuit"         ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_schrabidium_flat"         ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_schrabidium_plate"        ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_schrabidium_wire"         ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_schrabidium_circuit"      ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_357"                      ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_44"                       ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_9"                        ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.stamp_50"                       ,   W, (byte) 55);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.template_folder"                ,   W, (byte) 17);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.assembly_template"              ,   W, (byte) 28);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.chemistry_template"             ,   W, (byte) 28);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_materials"             ,   W, (byte)  1);// TODO
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_machines"              ,   W, (byte)  1);// TODO
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_weapons"               ,   W, (byte)  1);// TODO
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_tools"                 ,   W, (byte)  1);// TODO
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.bobmazon_hidden"                ,   W, (byte) 49);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.key"                            ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.key_red"                        ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.key_kit"                        ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.key_fake"                       ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.pin"                            ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.padlock_rusty"                  ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.padlock"                        ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.padlock_reinforced"             ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.HBM, "item.padlock_unbreakable"            ,   W, (byte)  1);
 		}
 		if (MD.GC.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.GC, "item.key"                             ,   W, (byte)  1);
