@@ -1766,7 +1766,6 @@ public class MT {
 			AncientDebris           .put(MD.NePl, COMMON_ORE);
 			
 			
-			Al                      .put(MD.GT, COMMON_ORE);
 			Zn                      .put(MD.GT, COMMON_ORE);
 			Craponite               .put(MD.GT);
 			NitroCarbon             .put(MD.GT);
@@ -1883,6 +1882,7 @@ public class MT {
 			IronCompressed          .put(MD.PnC).visDefault();
 			
 			
+			Al                      .put(MD.TiC);
 			Co                      .put(MD.TiC, COMMON_ORE);
 			Ardite                  .put(MD.TiC, COMMON_ORE).visDefault();
 			Alumite                 .put(MD.TiC);
@@ -1970,7 +1970,7 @@ public class MT {
 			FishRaw                 .put(MD.MaCu);
 			FishRotten              .put(MD.MaCu);
 			TiO2                    .put(MD.MaCu, COMMON_ORE);
-			Ti                      .put(MD.MaCu, COMMON_ORE).visDefault();
+			Ti                      .put(MD.MaCu).visDefault();
 			
 			
 			An                      .put(MD.ABYSSAL, COMMON_ORE).visDefault();
@@ -2063,7 +2063,7 @@ public class MT {
 			Continuum               .put(MD.AETHER, COMMON_ORE).visDefault();
 			
 			
-			W                       .put(MD.RP, COMMON_ORE);
+			W                       .put(MD.RP);
 			Ag                      .put(MD.RP, COMMON_ORE);
 			Indigo                  .put(MD.RP);
 			Sapphire                .put(MD.RP);
