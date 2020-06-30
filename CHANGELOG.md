@@ -39,7 +39,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Moderated Reactor Rods now lose durability twice as fast compared to what it was before.
 [ADDED] There is now small Rocks in the Nether, some of which contain tiny amounts of Ancient Debris, and are as rare as Meteorites on the Surface. Glowstone, NetherQuartz and Flint can be found in them too.
 [ADDED] Config to disable the nutrition System for Sugar, Fat and Dehydration. Alcohol and Caffeine stay though, since those are definitely things people intentionally consume for buffs and such.
-[ADDED] Netherite Drum and Anvil. Netherite also counts as Acid Proof now, due to its high Gold content.
+[ADDED] Netherite Drum, Fluid Pipes/Capsules and Anvil. Netherite also counts as Acid Proof now, due to its high Gold content. Also added Gold Fluid Pipes/Capsules while I was at it.
 [ADDED] Laser-O-Meter Sensor for Laser Fiber Wires.
 
 
