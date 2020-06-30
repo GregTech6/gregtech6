@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -139,6 +139,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 				if (mPartialUnits > 0) {
 					OreDictItemData tData = OM.data(slot(1));
 					if (tData != null && tData.hasValidPrefixData()) ST.drop(worldObj, getCoords(), tData.mPrefix.contains(TD.Prefix.INGOT_BASED) ? OM.ingot(tData.mMaterial.mMaterial, mPartialUnits) : OM.dust(tData.mMaterial.mMaterial, mPartialUnits));
+					mPartialUnits = 0;
 				}
 				if (slot(1).stackSize > 0) {
 					if (slot(1).stackSize <= Math.max(1, slot(1).getMaxStackSize())) {
@@ -525,6 +526,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (isServerSide() && mPartialUnits > 0) {
 			OreDictItemData tData = OM.data(slot(1));
 			if (tData != null && tData.hasValidPrefixData()) ST.drop(worldObj, getCoords(), tData.mPrefix.contains(TD.Prefix.INGOT_BASED) ? OM.ingot(tData.mMaterial.mMaterial, mPartialUnits) : OM.dust(tData.mMaterial.mMaterial, mPartialUnits));
+			mPartialUnits = 0;
 		}
 		return super.breakBlock();
 	}
