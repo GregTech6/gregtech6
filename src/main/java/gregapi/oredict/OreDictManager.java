@@ -316,7 +316,7 @@ public final class OreDictManager {
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
 			if (MD.TC .mLoaded && aModID.equals(MD.TC .mID) && aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
 			// This Red/Redstone Alloy is violating two OreDict Materials at the same time with its Name and Composition, so I'm gonna keep it out of my System.
-			if (MD.HBM.mLoaded && aModID.equals(MD.HBM.mID) && (aEvent.Name.toLowerCase().endsWith("RedAlloy") || aEvent.Name.toLowerCase().endsWith("RedstoneAlloy"))) return;
+			if (MD.HBM.mLoaded && aModID.equals(MD.HBM.mID) && (aEvent.Name.toLowerCase().endsWith("redalloy") || aEvent.Name.toLowerCase().endsWith("redstonealloy"))) return;
 			// OreDictPrefix Conflict caused by Galacticraft fixing its OreDict Registrations a little bit late to use Plates instead of Compressed Stuff now.
 			// Note: This can be removed in later MC Versions too, since Galacticraft either does not update or since it has already fixed itself by now.
 			if (aRegName.length() >= 26 && aRegName.startsWith("Gala") && aEvent.Name.startsWith("plate")) {
