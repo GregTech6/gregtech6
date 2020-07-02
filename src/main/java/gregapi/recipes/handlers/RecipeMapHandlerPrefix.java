@@ -209,7 +209,7 @@ public class RecipeMapHandlerPrefix extends RecipeMapHandler {
 		if (mOutputPulverizedRemains) tOutputs[mOutputPrefixes.length] = OM.pulverize(aMaterial, mUnitsInputted-mUnitsOutputted);
 		if (ST.valid(mAdditionalOutput)) tOutputs[tOutputs.length-1] = mAdditionalOutput;
 		
-		return aMap.addRecipeX(F,T,F,F,T, mEUt, mDuration<=0?Math.max(1, getCosts(aMaterial)):mDuration, mChances, tInputs, mFlatFluidCosts ? mFluidInputPerUnit : FL.mul(mFluidInputPerUnit, aMaterial.mToolQuality+1), mFlatFluidCosts ? mFluidOutputPerUnit : FL.mul(mFluidOutputPerUnit, aMaterial.mToolQuality+1), tOutputs) != null;
+		return aMap.addRecipeX(F,T,F,F, !aMaterial.contains(TD.Properties.UNUSED_MATERIAL), mEUt, mDuration<=0?Math.max(1, getCosts(aMaterial)):mDuration, mChances, tInputs, mFlatFluidCosts ? mFluidInputPerUnit : FL.mul(mFluidInputPerUnit, aMaterial.mToolQuality+1), mFlatFluidCosts ? mFluidOutputPerUnit : FL.mul(mFluidOutputPerUnit, aMaterial.mToolQuality+1), tOutputs) != null;
 	}
 	
 	public OreDictMaterial getOutputMaterial(OreDictMaterial aMaterial) {
