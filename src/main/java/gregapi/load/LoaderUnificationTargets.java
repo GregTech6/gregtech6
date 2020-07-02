@@ -237,6 +237,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedEarth           , ST.make(MD.TC, "ItemShard", 1, 3));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedOrder           , ST.make(MD.TC, "ItemShard", 1, 4));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedEntropy         , ST.make(MD.TC, "ItemShard", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedBalance         , ST.make(MD.TC, "ItemShard", 1, 6));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Hg                     , ST.make(MD.TC, "ItemNugget", 1, 5));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Thaumium               , ST.make(MD.TC, "ItemNugget", 1, 6));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.VoidMetal              , ST.make(MD.TC, "ItemNugget", 1, 7));

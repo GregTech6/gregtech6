@@ -1198,6 +1198,10 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 				setFurnaceBurnTime(((Number)aObject).longValue());
 				continue;
 			}
+			if (aObject instanceof OreDictMaterial) {
+				addReRegistrations((OreDictMaterial)aObject);
+				continue;
+			}
 			if (aObject instanceof Achievement) {
 				mAchievementsForCreation.add((Achievement)aObject);
 				continue;
