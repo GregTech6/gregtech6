@@ -1586,6 +1586,14 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_plate"                    , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_legs"                     , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_boots"                    , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_helmet_red"               , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_plate_red"                , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_legs_red"                 , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_boots_red"                , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_helmet_grey"              , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_plate_grey"               , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_legs_grey"                , 1, W));
+		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_boots_grey"               , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_paa_helmet"               , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_paa_plate"                , 1, W));
 		ArmorsGT.HAZMATS_RADIOACTIVE            .add(ST.make(MD.HBM, "item.hazmat_paa_legs"                 , 1, W));
