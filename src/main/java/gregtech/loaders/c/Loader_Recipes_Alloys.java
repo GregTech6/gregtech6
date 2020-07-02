@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -62,6 +62,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix("molten.silicon"        ,  1, "molten.nikolite"       ,  1                                                            , "molten.nikolinealloy"    ,  1);
 		mix("molten.silicon"        ,  1, "molten.teslatite"      ,  1                                                            , "molten.teslatinealloy"   ,  1);
 		mix("molten.chromium"       ,  1, "molten.nickel"         ,  4                                                            , "molten.nichrome"         ,  5);
+		mix("molten.gold"           ,  4, "molten.ancientdebris"  ,  4                                                            , "molten.netherite"        ,  1);
 		mix("molten.gold"           ,  1, "molten.titanium"       ,  3                                                            , "molten.titaniumgold"     ,  4);
 		mix("molten.gold"           ,  1, "molten.bronze"         ,  1                                                            , "molten.hepatizon"        ,  2);
 		mix("molten.gold"           ,  1, "molten.silver"         ,  1                                                            , "molten.electrum"         ,  2);
@@ -81,12 +82,12 @@ public class Loader_Recipes_Alloys implements Runnable {
 	}
 	
 	private static void mix(String aInput1, int aIn1Amount, String aInput2, int aIn2Amount, String aOutput, int aOutAmount) {
-		RM.Mixer.addRecipe1(T, 16, aOutAmount, ST.tag(2), FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
+		RM.Mixer.addRecipe1(T, 16, Math.max(aOutAmount, aIn1Amount+aIn2Amount), ST.tag(2), FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
 	}
 	private static void mix(String aInput1, int aIn1Amount, String aInput2, int aIn2Amount, String aInput3, int aIn3Amount, String aOutput, int aOutAmount) {
-		RM.Mixer.addRecipe1(T, 16, aOutAmount, ST.tag(3), FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount), FL.make_(aInput3, aIn3Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
+		RM.Mixer.addRecipe1(T, 16, Math.max(aOutAmount, aIn1Amount+aIn2Amount+aIn3Amount), ST.tag(3), FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount), FL.make_(aInput3, aIn3Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
 	}
 	private static void mix(String aInput1, int aIn1Amount, String aInput2, int aIn2Amount, String aInput3, int aIn3Amount, String aInput4, int aIn4Amount, String aOutput, int aOutAmount) {
-		RM.Mixer.addRecipe1(T, 16, aOutAmount, ST.tag(4), FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount), FL.make_(aInput3, aIn3Amount), FL.make_(aInput4, aIn4Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
+		RM.Mixer.addRecipe1(T, 16, Math.max(aOutAmount, aIn1Amount+aIn2Amount+aIn3Amount+aIn4Amount), ST.tag(4), FL.array(FL.make_(aInput1, aIn1Amount), FL.make_(aInput2, aIn2Amount), FL.make_(aInput3, aIn3Amount), FL.make_(aInput4, aIn4Amount)), FL.make_(aOutput, aOutAmount), ZL_IS);
 	}
 }
