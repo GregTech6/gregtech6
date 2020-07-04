@@ -504,12 +504,11 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ag                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.AstralSilver         , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Au                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Midasium             , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pt                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Mithril              , NI, T, tConditionP));
-		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , FL.Mana_TE        .make(  50)     ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ni                     , FL.Mana_TE        .make(  50)     ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MilkyQuartz            , FL.Mana_TE        .make(  50)     ,   0, 144, NF, MT.NetherQuartz         , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.NetherQuartz           , FL.Mana_TE        .make(  50)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
 		}
-		
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , MT.Midasium       .liquid(U4, T)  ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
 		for (OreDictMaterial tMat : ANY.Fe.mToThis) {
 		RM.Freezer      .add(new RecipeMapHandlerMaterial(tMat                      , NF                                , 128, 144, NF, MT.FrozenIron           , NI, T, tConditionP));
 		RM.Polarizer    .add(new RecipeMapHandlerMaterial(tMat                      , NF                                ,  16, 144, NF, MT.IronMagnetic         , NI, T, tConditionP));

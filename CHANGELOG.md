@@ -37,6 +37,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Made Config Files always migrate to Lowercase File Names so random Garbage with Windows and older Config Files wont happen again.
 [CHANGED] The Capsule and Cell Extruder Recipes were not really well coded, so I fixed them up. Should make it easier to work with for the GT6U Team too.
 [CHANGED] Moderated Reactor Rods now lose durability twice as fast compared to what it was before.
+[CHANGED] Molten Midasium is now able to turn Lead into Gold at a ratio of 1 Midasium + 4 Lead = 4 Gold. This is better than using a Generifier on Midasium to directly make it into Gold 1:1.
 [ADDED] There is now small Rocks in the Nether, some of which contain tiny amounts of Ancient Debris, and are as rare as Meteorites on the Surface. Glowstone, NetherQuartz and Flint can be found in them too.
 [ADDED] Config to disable the nutrition System for Sugar, Fat and Dehydration. Alcohol and Caffeine stay though, since those are definitely things people intentionally consume for buffs and such.
 [ADDED] Netherite Drum, Fluid Pipes/Capsules and Anvil. Netherite also counts as Acid Proof now, due to its high Gold content. Also added Gold Fluid Pipes/Capsules while I was at it.

@@ -38,7 +38,7 @@ public class MultiTileEntityReactorRodModerator extends MultiTileEntityReactorRo
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + "Reflects neutrons back times the number of fuel rods touching when active");
 		aList.add(LH.Chat.CYAN + "Touching Fuel Rods become moderated and moderate touching Fuel Rods");
-		aList.add(LH.Chat.CYAN + "Moderated Fuel Rods can't be used for Breeding and only last half as long");
+		aList.add(LH.Chat.CYAN + "Moderated Fuel Rods can't be used for Breeding and only last a quarter as long");
 		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
 	}
 

@@ -1484,6 +1484,15 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.HaC, "venisoncookedItem"                 , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone,  U9);
 		
 		
+		OM.data(MD.HBM, "item.apple_lead"                   , 1,   0, MT.Pb                 ,  OP.nugget.mAmount * 8);
+		OM.data(MD.HBM, "item.apple_lead"                   , 1,   1, MT.Pb                 ,  OP.ingot.mAmount * 8);
+		OM.data(MD.HBM, "item.apple_lead"                   , 1,   2, MT.Pb                 ,  OP.blockIngot.mAmount * 8);
+		OM.data(MD.HBM, "item.apple_schrabidium"            , 1,   0, MT.UNUSED.Schrabidium ,  OP.nugget.mAmount * 8);
+		OM.data(MD.HBM, "item.apple_schrabidium"            , 1,   1, MT.UNUSED.Schrabidium ,  OP.ingot.mAmount * 8);
+		OM.data(MD.HBM, "item.apple_schrabidium"            , 1,   2, MT.UNUSED.Schrabidium ,  OP.blockIngot.mAmount * 8);
+		OM.data(MD.HBM, "item.apple_euphemium"              , 1,   0, MT.UNUSED.Euphemium   ,  OP.nugget.mAmount * 8);
+		
+		
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  25, ANY.Stone             ,  U * 6);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  27, ANY.Iron              ,  U * 6);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  30, ANY.Iron              ,  U * 1, MT.Flint,  U2);

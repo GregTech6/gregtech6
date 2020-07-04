@@ -582,6 +582,11 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.FakeOsmium             , ST.make(MD.Mek, "OreBlock", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Cu                     , ST.make(MD.Mek, "OreBlock", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , ST.make(MD.Mek, "OreBlock", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.wireFine       , MT.Au                     , ST.make(MD.HBM, "item.wire_gold", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.wireFine       , MT.Cu                     , ST.make(MD.HBM, "item.wire_copper", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.wireFine       , MT.Al                     , ST.make(MD.HBM, "item.wire_aluminium", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.wireFine       , MT.W                      , ST.make(MD.HBM, "item.wire_tungsten", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Asbestos               , ST.make(MD.HBM, "tile.ore_asbestos", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.WaxBee                 , ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Eudialyte              , ST.make(MD.TROPIC, "tile.oreEudialyte", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Zircon                 , ST.make(MD.TROPIC, "tile.oreZircon", 1, 0));
