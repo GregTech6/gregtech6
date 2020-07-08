@@ -127,6 +127,9 @@ public class GT_Client extends GT_Proxy {
 		BooksGT.BOOK_TEXTURES_BACK[54] = BlockTextureDefault.get("books/HARD_DRIVE_BACK");
 		BooksGT.BOOK_TEXTURES_BACK[55] = BlockTextureDefault.get("books/EXTRUDER_SIMPLE_SHAPE_BACK");
 		BooksGT.BOOK_TEXTURES_BACK[56] = BlockTextureDefault.get("books/THAUMOMETER_BACK");
+		BooksGT.BOOK_TEXTURES_BACK[57] = BlockTextureDefault.get("books/TAPE_WHITE_BACK");
+		BooksGT.BOOK_TEXTURES_BACK[58] = BlockTextureDefault.get("books/TAPE_GRAY_BACK");
+		BooksGT.BOOK_TEXTURES_BACK[59] = BlockTextureDefault.get("books/TAPE_BLACK_BACK");
 		
 		BooksGT.BOOK_TEXTURES_SIDE[ 1] = BlockTextureDefault.get("books/BOOK_VANILLA_SIDE");
 		BooksGT.BOOK_TEXTURES_SIDE[ 2] = BlockTextureDefault.get("books/BOOK_ENCHANTED_SIDE");
@@ -184,6 +187,9 @@ public class GT_Client extends GT_Proxy {
 		BooksGT.BOOK_TEXTURES_SIDE[54] = BlockTextureDefault.get("books/HARD_DRIVE_SIDE");
 		BooksGT.BOOK_TEXTURES_SIDE[55] = BlockTextureDefault.get("books/EXTRUDER_SIMPLE_SHAPE_SIDE");
 		BooksGT.BOOK_TEXTURES_SIDE[56] = BlockTextureDefault.get("books/THAUMOMETER_SIDE");
+		BooksGT.BOOK_TEXTURES_SIDE[57] = BlockTextureDefault.get("books/TAPE_WHITE_SIDE");
+		BooksGT.BOOK_TEXTURES_SIDE[58] = BlockTextureDefault.get("books/TAPE_GRAY_SIDE");
+		BooksGT.BOOK_TEXTURES_SIDE[59] = BlockTextureDefault.get("books/TAPE_BLACK_SIDE");
 	}
 	
 	private boolean FIRST_CLIENT_PLAYER_TICK = T;

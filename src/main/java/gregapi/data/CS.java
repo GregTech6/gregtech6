@@ -1641,10 +1641,13 @@ public class CS {
 		//  54 = Hard Drives
 		//  55 = Simple Extruder Shapes
 		//  56 = Thaumometer
+		//  57 = Tape_White
+		//  58 = Tape_Gray
+		//  59 = Tape_Black
 		// 255 = Stone (this one is supposed to just fill the Shelf)
 		public static final ITexture[] BOOK_TEXTURES_BACK = new ITexture[256];
 		public static final ITexture[] BOOK_TEXTURES_SIDE = new ITexture[256];
-
+		
 		public static final ItemStackMap<ItemStackContainer, Byte> BOOK_REGISTER = new ItemStackMap<>();
 	}
 

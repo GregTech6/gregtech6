@@ -23,7 +23,6 @@ import static gregapi.data.CS.*;
 
 import gregapi.GT_API;
 import gregapi.code.IItemContainer;
-import gregapi.code.ItemStackContainer;
 import gregapi.cover.covers.CoverTextureCanvas;
 import gregapi.data.*;
 import gregapi.data.CS.BlocksGT;
@@ -281,15 +280,15 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		IL.Paper_Printed_Pages.set(             addItem(tLastID =  7002, "Printed Pages"                    , ""                                                            , Behavior_PrintedPages.INSTANCE, new OreDictItemData(MT.Paper, U*3), TC.stack(TC.COGNITO, 3)));
 		IL.Paper_Printed_Pages_Many.set(        addItem(tLastID =  7003, "Many Printed Pages"               , ""                                                            , Behavior_PrintedPages.INSTANCE, new OreDictItemData(MT.Paper, U*6), TC.stack(TC.COGNITO, 6)));
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Paper_Printed_Pages.get(1)), (byte)26);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Paper_Printed_Pages_Many.get(1)), (byte)26);
+		BooksGT.BOOK_REGISTER.put(IL.Paper_Printed_Pages, (byte)26);
+		BooksGT.BOOK_REGISTER.put(IL.Paper_Printed_Pages_Many, (byte)26);
 		
 		IL.Paper_Blueprint_Empty.set(           addItem(tLastID =  7010, "Empty Blueprint"                  , "Place in Blueprint Slot and Shiftclick it, to assign Recipe" , new OreDictItemData(MT.Paper, U), TC.stack(TC.COGNITO, 1)));
 		IL.Paper_Blueprint_Used.set(            addItem(tLastID =  7011, "Blueprint"                        , "Blueprint containing a Crafting Recipe"                      , new OreDictItemData(MT.Paper, U), TC.stack(TC.COGNITO, 2), "gt:autocrafterblueprintitem"));
 		for (FluidStack tDye : DYE_FLUIDS[DYE_INDEX_Blue])
 		RM.Bath.addRecipe1(T, 0, 16, ST.make(Items.paper, 1, W), tDye, NF, IL.Paper_Blueprint_Empty.get(1));
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Paper_Blueprint_Empty.get(1)), (byte)25);
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(IL.Paper_Blueprint_Used.get(1)), (byte)28);
+		BooksGT.BOOK_REGISTER.put(IL.Paper_Blueprint_Empty, (byte)25);
+		BooksGT.BOOK_REGISTER.put(IL.Paper_Blueprint_Used, (byte)28);
 		ItemsGT.addNEIRedirects(IL.Paper_Blueprint_Empty.get(1), IL.Paper_Blueprint_Used.get(1));
 		
 		
@@ -299,7 +298,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		for (int i = 0; i < 16; i++) if (i != DYE_INDEX_White) for (FluidStack tDye : DYE_FLUIDS[i])
 		RM.Bath.addRecipe1(T, 0, 16, ST.make(this, 1, 7030+DYE_INDEX_White), tDye, NF, ST.make(this, 1, 7030+i));
 		for (int i = 0; i < 16; i++)
-		BooksGT.BOOK_REGISTER.put(new ItemStackContainer(ST.make(this, 1, 7030+i)), (byte)27);
+		BooksGT.BOOK_REGISTER.put(this, 7030+i, (byte)27);
 		
 		IL.Robot_Tip_Wrench.set(                addItem(tLastID =  8000, "Robot Arm Wrench Tip"         , "Infinitely usable inside an Autocrafter", OreDictToolNames.wrench                                , "gt:autocrafterinfinite", TC.stack(TC.INSTRUMENTUM, 4)));
 		IL.Robot_Tip_Screwdriver.set(           addItem(tLastID =  8001, "Robot Arm Screwdriver Tip"    , "Infinitely usable inside an Autocrafter", OreDictToolNames.screwdriver                           , "gt:autocrafterinfinite", TC.stack(TC.INSTRUMENTUM, 4)));
@@ -327,10 +326,10 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tool_Cheat.set(                      addItem(tLastID =  9001, "Debug Scanner"            , "", Behavior_Cropnalyzer.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, new Behavior_Scanner(Integer.MAX_VALUE), EnergyStatDebug.INSTANCE, TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
 		IL.Tool_Scanner.set(                    addItem(tLastID =  9002, "Portable Scanner"         , "", Behavior_Cropnalyzer.INSTANCE, new Behavior_Scanner(2), EnergyStat.makeTool(TD.Energy.EU, V[3]*8000, V[3], 2, ST.make(this, 1, tLastID)), TC.stack(TC.SENSUS,10), TC.stack(TC.INSTRUMENTUM,10)));
 		IL.Tool_Cropnalyzer.set(                addItem(tLastID =  9003, "Portable Cropnalyzer"     , "", Behavior_Cropnalyzer.INSTANCE, EnergyStat.makeTool(TD.Energy.EU, V[2]*8000, V[2], 2, ST.make(this, 1, tLastID)), TC.stack(TC.SENSUS, 5), TC.stack(TC.INSTRUMENTUM, 5), TC.stack(TC.HERBA, 5)));
-		
 		IL.Tool_Worldgen_Debugger.set(          addItem(tLastID =  9999, "Worldgen Debug Wand"      , "", Behavior_Worldgen_Debugger.INSTANCE, ItemsGT.DEBUG_ITEMS, ItemsGT.ILLEGAL_DROPS, GarbageGT.BLACKLIST, TC.stack(TC.TERRA,10), TC.stack(TC.PRAECANTIO,10), TC.stack(TC.INSTRUMENTUM,10)));
 		
 		CR.shaped(IL.Tool_Remote_Activator      .get(1), CR.DEF_REV, "TPE", "BCd", "xPT", 'P', OP.plate.dat(MT.Cr), 'T', OP.screw.dat(MT.Cr), 'C', OD_CIRCUITS[4], 'E', IL.EMITTERS[4], 'B', ST.make(Blocks.stone_button, 1, W));
+		BooksGT.BOOK_REGISTER.put(IL.Tool_Remote_Activator, (byte)1);
 //      Moved to the Battery Section of the MTE Loader.
 //      CR.shaped(IL.Tool_Scanner               .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_HV, 'X', OP.plate.dat(MT.Cr), 'U', OD_USB_STICKS[3], 'C', OD_USB_CABLES[3], 'E', IL.EMITTERS[4], 'R', IL.SENSORS[4], 'P', IL.Processor_Crystal_Sapphire);
 //      CR.shaped(IL.Tool_Cropnalyzer           .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_MV, 'X', OP.plate.dat(MT.Al), 'U', OD_USB_STICKS[1], 'C', OD_USB_CABLES[1], 'E', IL.EMITTERS[2], 'R', IL.SENSORS[2], 'P', OD_CIRCUITS[6]);
@@ -361,6 +360,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Tape_Used.set(                       addItem(tLastID = 12001, "Tape", "Used Roll", TC.stack(TC.PANNUS, 1), TC.stack(TC.LIMUS, 1)));
 		CR.shaped(IL.Tape.get(1), CR.DEF, "PPP", " G ", 'P', OD.paperEmpty, 'G', OD.itemGlue);
 		tBehaviour = new Behavior_Duct_Tape(null, IL.Tape_Used.get(1), IL.Tape.get(1), 0, 10000);
+		ItemsGT.addNEIRedirects(IL.Tape.get(1), IL.Tape_Used.get(1));
+		BooksGT.BOOK_REGISTER.put(IL.Tape           , (byte)57);
+		BooksGT.BOOK_REGISTER.put(IL.Tape_Used      , (byte)57);
 		addItemBehavior(12000, tBehaviour);
 		addItemBehavior(12001, tBehaviour);
 		
@@ -368,6 +370,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Duct_Tape_Used.set(                  addItem(tLastID = 12003, "Duct Tape", "Used Roll", TC.stack(TC.FABRICO, 1), TC.stack(TC.LIMUS, 1)));
 		CR.shaped(IL.Duct_Tape.get(1), CR.DEF, "PPP", " G ", 'P', OP.foil.dat(MT.Plastic), 'G', OD.itemGlue);
 		tBehaviour = new Behavior_Duct_Tape(null, IL.Duct_Tape_Used.get(1), IL.Duct_Tape.get(1), 1, 100000);
+		ItemsGT.addNEIRedirects(IL.Duct_Tape.get(1), IL.Duct_Tape_Used.get(1));
+		BooksGT.BOOK_REGISTER.put(IL.Duct_Tape      , (byte)58);
+		BooksGT.BOOK_REGISTER.put(IL.Duct_Tape_Used , (byte)58);
 		addItemBehavior(12002, tBehaviour);
 		addItemBehavior(12003, tBehaviour);
 		
@@ -375,6 +380,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Brain_Tape_Used.set(                 addItem(tLastID = 12009, "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84", "Used Roll", TC.stack(TC.TUTAMEN, 1), TC.stack(TC.LIMUS, 1), OD.craftingDuctTape));
 		CR.shaped(IL.Brain_Tape.get(1), CR.DEF, "PPP", " G ", 'P', OP.foil.dat(ANY.W), 'G', OD.itemGlue);
 		tBehaviour = new Behavior_Duct_Tape(null, IL.Brain_Tape_Used.get(1), IL.Brain_Tape.get(1), 2, 10000000);
+		ItemsGT.addNEIRedirects(IL.Brain_Tape.get(1), IL.Brain_Tape_Used.get(1));
+		BooksGT.BOOK_REGISTER.put(IL.Brain_Tape     , (byte)59);
+		BooksGT.BOOK_REGISTER.put(IL.Brain_Tape_Used, (byte)59);
 		addItemBehavior(12008, tBehaviour);
 		addItemBehavior(12009, tBehaviour);
 		
@@ -392,7 +400,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Key_Plastic.set(                     addItem(tLastID = 30009, "Plastic Key" , "", OD.itemKey, new OreDictItemData(MT.Plastic, U4), Behavior_Key.INSTANCE, TC.stack(TC.MACHINA, 1))); CR.shaped(IL.Key_Plastic .get(3), CR.DEF_NCC, "fPx", 'P', OP.plate.dat(MT.Plastic));
 		
 		// In order to be able to hide Keys inside Bookshelves
-		for (IItemContainer tContainer : IL.KEYS) BooksGT.BOOK_REGISTER.put(new ItemStackContainer(tContainer.get(1)), (byte)1);
+		for (IItemContainer tContainer : IL.KEYS) BooksGT.BOOK_REGISTER.put(tContainer, (byte)1);
 	}
 	
 	@Override public int getRenderPasses(int aMetaData) {return UT.Code.inside(11000, 11004, aMetaData) ? 2 : 1;}

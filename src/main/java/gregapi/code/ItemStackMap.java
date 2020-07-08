@@ -71,6 +71,9 @@ public class ItemStackMap<K extends ItemStackContainer, V> extends HashMap<ItemS
 		return aMod.mLoaded ? get(new ItemStackContainer(ST.make(aMod, aName, 1, aMeta))) : null;
 	}
 	
+	public V put(IItemContainer aKey, V aValue) {
+		return put(aKey.get(1), aValue);
+	}
 	public V put(ItemStack aKey, V aValue) {
 		return put(new ItemStackContainer(aKey), aValue);
 	}
