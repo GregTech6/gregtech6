@@ -1027,24 +1027,24 @@ public enum FL {
 		Fluid rFluid = new FluidGT(aName, aTexture, aRGBa == null ? UNCOLOURED : aRGBa, aTemperatureK, aState == 2 || aState == 3);
 		LH.add(rFluid.getUnlocalizedName(), aLocalized==null?aName:aLocalized);
 		LH.add(rFluid.getUnlocalizedName()+".name", aLocalized==null?aName:aLocalized);
-
+		
 		for (Set<String> tSet : aFluidList) tSet.add(aName);
-
+		
 		switch (aState) {
-		case STATE_SOLID:           rFluid.setViscosity(10000); break;
-		case STATE_LIQUID:          rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
-		case STATE_GASEOUS:         rFluid.setViscosity(  200); rFluid.setDensity(   -100); FluidsGT.GAS.add(aName); break;
-		case STATE_PLASMA:          rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
-		case 4:                     rFluid.setViscosity( 1000); break;
+		case STATE_SOLID:   rFluid.setViscosity(10000); break;
+		case STATE_LIQUID:  rFluid.setViscosity( 1000); FluidsGT.LIQUID.add(aName); break;
+		case STATE_GASEOUS: rFluid.setViscosity(  200); rFluid.setDensity(   -100); FluidsGT.GAS.add(aName); break;
+		case STATE_PLASMA:  rFluid.setViscosity(   10); rFluid.setDensity(-100000); rFluid.setLuminosity(15); FluidsGT.PLASMA.add(aName); break;
+		case 4:             rFluid.setViscosity( 1000); break;
 		}
-
+		
 		if (!FluidRegistry.registerFluid(rFluid)) {
 			rFluid = FluidRegistry.getFluid(aName);
 			LH.add(rFluid.getUnlocalizedName(), aLocalized==null?aName:aLocalized);
 			if (rFluid.getTemperature() == new Fluid("test").getTemperature() || rFluid.getTemperature() <= 0) rFluid.setTemperature(UT.Code.bindInt(aTemperatureK));
 			rFluid.setGaseous(aState == 2 || aState == 3);
 		}
-
+		
 		if (aMaterial != null) {
 			if (aMaterial.contains(TD.Properties.ACID    )) FluidsGT.ACID.add(aName);
 			if (aMaterial.contains(TD.Properties.GLOWING )) rFluid.setLuminosity(Math.max(rFluid.getLuminosity(), 5));
@@ -1065,7 +1065,7 @@ public enum FL {
 				}
 			}
 		}
-
+		
 		if (aFullContainer != null && aEmptyContainer != null && !FluidContainerRegistry.registerFluidContainer(make(rFluid, aFluidAmount), aFullContainer, aEmptyContainer)) {
 			RM.Canner.addRecipe1(T, 16, Math.max(aFluidAmount / 64, 16), aFullContainer, NF, make(rFluid, aFluidAmount), ST.container(aFullContainer, F));
 		}

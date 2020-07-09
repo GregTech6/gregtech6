@@ -162,7 +162,7 @@ public class Loader_Fluids implements Runnable {
 			tFluid.getFluid().setTemperature((int)MT.Glowstone.mBoilingPoint);
 			MT.Glowstone.gas(tFluid);
 		}
-
+		
 		FL.create("plastic"                  , "Molten Plastic"      , MT.Plastic        , 1, 1000,   423);
 		FL.create("glass"                    , "Molten Glass"        , MT.Glass          , 1, 1000,  1200);
 		FL.create("molten.enderpearl"        , "Molten Enderpearls"  , MT.EnderPearl     , 1,    L,  2723).setLuminosity( 5);
@@ -171,7 +171,7 @@ public class Loader_Fluids implements Runnable {
 		FL.create("concrete"                 , "Wet Concrete"        , MT.Concrete       , 1,    L,   300);
 		FL.create("molten.latex"             , "Latex"               , MT.Latex          , 1,    L, DEF_ENV_TEMP);
 		FL.create("latex"                    , "Latex"               , MT.Latex          , 1,    L, DEF_ENV_TEMP);
-
+		
 		FL.createMolten(MT.Chocolate         , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
 		FL.createMolten(MT.Cheese            , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
 		FL.createMolten(MT.Sugar             , TextureSet.SET_FLUID[0].mList.get(IconsGT.INDEX_BLOCK_MOLTEN), FluidsGT.SIMPLE);
@@ -588,30 +588,26 @@ public class Loader_Fluids implements Runnable {
 		new FoodStatDrink(FL.create("tea"                                        , "Tea"                                     , null                  , 1, 1000, 300)                                                                                         , "Perfectly Balanced With No Exploits"                             ,  2, 0.2F  ,  20, C+39,  0.50F,  0, 30,  0,  0,  0, EnumAction.drink, F, F, F);
 		new FoodStatDrink(FL.create("sweettea"                                   , "Sweet Tea"                               , null                  , 1, 1000, 300)                                                                                         , "How about an actual Tea Party? In Boston?"                       ,  2, 0.2F  ,  20, C+39,  0.50F,  0, 30,  0, 30,  0, EnumAction.drink, F, F, F);
 		new FoodStatDrink(FL.create("icetea"                                     , "Ice Tea"                                 , null                  , 1, 1000, 255)                                                                                         , "Ice 'T'"                                                         ,  6, 0.4F  ,  30, C+35,  0.50F,  0, 10,  0, 30,  0, EnumAction.drink, F, F, F);
-
-
+		
+		
 		new FoodStatDrink(FL.create("medicine.heal"                              , "Medicine"                                , null                  , 1, 1000, 300)                                                                                         , "Heals up to 20 Hearts"                                           ,  0, 0.0F  ,   0, C+37,  0.00F,  0,  0,  0,  0,  0, EnumAction.drink, T, F, F, Potion.regeneration             .id, 120, 4, 100);
 		new FoodStatDrink(FL.create("medicine.laxative"                          , "Laxative"                                , null                  , 1, 1000, 300)                                                                                         , "Removes 10 Hunger/Saturation"                                    ,  0, 0.0F  ,   0, C+37,  0.00F,  0,  0,  0,  0,  0, EnumAction.drink, T, F, F, Potion.hunger                   .id, 300,10, 100);
-
-
+		
+		
 		DYE_FLUIDS[4].add(FL.make("blueberryjuice", 250));
-
+		
 		for (OreDictMaterial tMaterial : MT.ALL_MATERIALS_REGISTERED_HERE) {
-			if (tMaterial.mLiquid == null) {
-				if (tMaterial.contains(TD.ItemGenerator.LIQUID)) FL.createLiquid(tMaterial); else if (tMaterial.contains(TD.ItemGenerator.MOLTEN)) FL.createMolten(tMaterial);
-			}
-			if (tMaterial.mGas == null) {
-				if (tMaterial.contains(TD.ItemGenerator.GASSES)) FL.createGas(tMaterial); else if (tMaterial.contains(TD.ItemGenerator.VAPORS)) FL.createVapour(tMaterial);
-			}
-			if (tMaterial.mPlasma == null) {
-				if (tMaterial.contains(TD.ItemGenerator.PLASMA)) FL.createPlasma(tMaterial);
-			}
+			if (tMaterial.contains(TD.ItemGenerator.LIQUID)) FL.createLiquid(tMaterial);
+			if (tMaterial.contains(TD.ItemGenerator.MOLTEN)) FL.createMolten(tMaterial);
+			if (tMaterial.contains(TD.ItemGenerator.GASSES)) FL.createGas(tMaterial);
+			if (tMaterial.contains(TD.ItemGenerator.VAPORS)) FL.createVapour(tMaterial);
+			if (tMaterial.contains(TD.ItemGenerator.PLASMA)) FL.createPlasma(tMaterial);
 		}
-
+		
 		FL.Air       .fluid().setDensity(0);
 		FL.Air_Nether.fluid().setDensity(0);
 		FL.Air_End   .fluid().setDensity(0);
-
+		
 		FL.reg(FL.Air            .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
 		FL.reg(FL.Air_Nether     .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
 		FL.reg(FL.Air_End        .make(1000), IL.Cell_Air              .get(1), IL.Cell_Empty.get(1));
@@ -624,7 +620,7 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Honey          .make(1000), IL.GrC_Honey_Jar         .get(1), ST.make(Items.flower_pot, 1, 0));
 		FL.reg(FL.Honey          .make( 500), IL.BoP_Jar_Honey         .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
 		FL.reg(FL.Potion_Poison_2.make( 500), IL.BoP_Jar_Poison        .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
-
+		
 		/* TODO
 		FL.registerFluidContainer(FL.make("potion.poison"        , 125), IL.Arrow_Head_Glass_Poison          .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
 		FL.registerFluidContainer(FL.make("potion.poison.long"   , 125), IL.Arrow_Head_Glass_Poison_Long     .get(1), IL.Arrow_Head_Glass_Emtpy.get(1));
