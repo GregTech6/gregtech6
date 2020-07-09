@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,10 +38,10 @@ public class BlockTreeBeamBFireProof extends BlockBaseBeam {
 		LH.add(getUnlocalizedName()+ ".9.name", "Cinnamon Beam (Fireproof)");
 		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Beam (Fireproof)");
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Palm Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", "Palm Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", "Palm Beam (Fireproof)");
-		LH.add(getUnlocalizedName()+".14.name", "Palm Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".2.name", "Coconut Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".10.name", "Coconut Beam (Fireproof)");
+		LH.add(getUnlocalizedName()+".14.name", "Coconut Beam (Fireproof)");
 		
 		LH.add(getUnlocalizedName()+ ".3.name", "Rainbowood Beam (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Beam (Fireproof)");

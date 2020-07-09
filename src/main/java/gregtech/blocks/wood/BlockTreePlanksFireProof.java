@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,7 +39,7 @@ public class BlockTreePlanksFireProof extends BlockBasePlanks {
 		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Planks (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", "Palm Planks (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".8.name", "Compressed Wood Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+ ".9.name", "Wood Planks (Fireproof)");

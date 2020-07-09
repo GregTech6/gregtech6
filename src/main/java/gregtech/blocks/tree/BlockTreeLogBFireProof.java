@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,10 +64,10 @@ public class BlockTreeLogBFireProof extends BlockBaseLog implements IBlockToolab
 		OM.reg(ST.make(this, 1, 9), "logWood");
 		OM.reg(ST.make(this, 1,13), "logWood");
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Log (Fireproof)");
-		LH.add(getUnlocalizedName()+ ".6.name", "Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".10.name", "Log (Fireproof)");
-		LH.add(getUnlocalizedName()+".14.name", "Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".2.name", "Coconut Log (Fireproof)");
+		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".10.name", "Coconut Log (Fireproof)");
+		LH.add(getUnlocalizedName()+".14.name", "Coconut Log (Fireproof)");
 		OM.reg(ST.make(this, 1, 2), "logWood");
 		OM.reg(ST.make(this, 1, 6), "logWood");
 		OM.reg(ST.make(this, 1,10), "logWood");

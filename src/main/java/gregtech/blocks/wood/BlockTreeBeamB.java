@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,10 +38,10 @@ public class BlockTreeBeamB extends BlockBaseBeamFlammable {
 		LH.add(getUnlocalizedName()+ ".9.name", "Cinnamon Beam");
 		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Beam");
 		
-		LH.add(getUnlocalizedName()+ ".2.name", "Palm Beam");
-		LH.add(getUnlocalizedName()+ ".6.name", "Palm Beam");
-		LH.add(getUnlocalizedName()+".10.name", "Palm Beam");
-		LH.add(getUnlocalizedName()+".14.name", "Palm Beam");
+		LH.add(getUnlocalizedName()+ ".2.name", "Coconut Beam");
+		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Beam");
+		LH.add(getUnlocalizedName()+".10.name", "Coconut Beam");
+		LH.add(getUnlocalizedName()+".14.name", "Coconut Beam");
 		
 		LH.add(getUnlocalizedName()+ ".3.name", "Rainbowood Beam");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Beam");

@@ -44,7 +44,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Sapling");
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Sapling");
 		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Sapling");
-		LH.add(getUnlocalizedName()+ ".6.name", "Palm Sapling (TODO)");
+		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Sapling (TODO)");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Sapling");
 		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Sapling");
 		LH.add(getUnlocalizedName()+ ".9.name", "Maple Sapling");
@@ -52,7 +52,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Sapling");
 		LH.add(getUnlocalizedName()+".12.name", "Hazel Sapling");
 		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Sapling");
-		LH.add(getUnlocalizedName()+".14.name", "Palm Sapling (TODO)");
+		LH.add(getUnlocalizedName()+".14.name", "Coconut Sapling (TODO)");
 		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Sapling");
 		
 		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.treeSapling);

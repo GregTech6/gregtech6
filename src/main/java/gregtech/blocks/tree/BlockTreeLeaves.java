@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,7 +50,7 @@ public class BlockTreeLeaves extends BlockBaseLeaves {
 		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Leaves");
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Leaves");
 		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Leaves");
-		LH.add(getUnlocalizedName()+ ".6.name", "Palm Leaves");
+		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Leaves");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbow Leaves");
 		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Leaves");
 		LH.add(getUnlocalizedName()+ ".9.name", "Maple Leaves");
@@ -58,7 +58,7 @@ public class BlockTreeLeaves extends BlockBaseLeaves {
 		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Leaves");
 		LH.add(getUnlocalizedName()+".12.name", "Hazel Leaves");
 		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Leaves");
-		LH.add(getUnlocalizedName()+".14.name", "Palm Leaves");
+		LH.add(getUnlocalizedName()+".14.name", "Coconut Leaves");
 		LH.add(getUnlocalizedName()+".15.name", "Rainbow Leaves");
 		
 		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.treeLeaves);
