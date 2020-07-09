@@ -551,14 +551,14 @@ public enum FL {
 		FluidsGT.FLUID_RENAMINGS.put(aOldName2, mName);
 		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName); aFluidSet.add(aOldName1); aFluidSet.add(aOldName2);}
 	}
-
-
-
-
+	
+	
+	
+	
 	public static FluidStack lube(long aAmount) {return LubRoCant.make(aAmount, Lubricant);}
-
-
-
+	
+	
+	
 	public int id() {return FluidRegistry.getFluidID(mName);}
 	public Fluid fluid() {return FluidRegistry.getFluid(mName);}
 	public boolean exists() {return FluidRegistry.getFluid(mName) != null;}
@@ -957,6 +957,7 @@ public enum FL {
 	
 	
 	
+	
 	/** Loads a FluidStack properly. */
 	public static FluidStack load (NBTTagCompound aNBT, String aTagName) {return aNBT == null ? null : load(aNBT.getCompoundTag(aTagName));}
 	/** Loads a FluidStack properly. */
@@ -967,9 +968,19 @@ public enum FL {
 		String aName = aNBT.getString("FluidName");
 		if (Code.stringInvalid(aName)) return null;
 		String tName = FluidsGT.FLUID_RENAMINGS.get(aName);
-		if (Code.stringValid(tName)) aName = tName;
-		Fluid aFluid = FluidRegistry.getFluid(aName);
-		if (aFluid == null) return FL.LubRoCant.is(aName) ? FL.Lubricant.make(aNBT.getInteger("Amount")) : FL.Reikanol.is(aName) ? FL.BioEthanol.make(aNBT.getInteger("Amount")) : null;
+		Fluid aFluid;
+		if (Code.stringValid(tName) && (aFluid = FluidRegistry.getFluid(tName)) != null) {
+			aName = tName;
+		} else {
+			aFluid = FluidRegistry.getFluid(aName);
+		}
+		if (aFluid == null) {
+			if (FL.LubRoCant      .is(aName)) return FL.Lubricant    .make(aNBT.getInteger("Amount"));
+			if (FL.Reikanol       .is(aName)) return FL.BioEthanol   .make(aNBT.getInteger("Amount"));
+			if (FL.Liquid_Reikygen.is(aName)) return FL.Oxygen       .make(aNBT.getInteger("Amount"));
+			if (FL.Reikygen       .is(aName)) return FL.Liquid_Oxygen.make(aNBT.getInteger("Amount"));
+			return null;
+		}
 		FluidStack rFluid = new FluidStack(aFluid, aNBT.getInteger("Amount"));
 		if (aNBT.hasKey("Tag")) rFluid.tag = aNBT.getCompoundTag("Tag");
 		return rFluid;

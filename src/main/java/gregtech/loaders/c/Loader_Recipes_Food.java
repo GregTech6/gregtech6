@@ -544,14 +544,14 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Coagulator       .addRecipe0(T,  0, 1024, FL.MilkSoy.make(250), NF, OM.dust(MT.Tofu));
 		
 		
-		RM.Smelter          .addRecipe0(T, 16,   16, FL.Oil_Sunflower   .make(20), FL.Oil_Frying.make(20), ZL_IS);
-		RM.Smelter          .addRecipe0(T, 16,   16, FL.Oil_Olive       .make(20), FL.Oil_Frying.make(20), ZL_IS);
-		RM.Smelter          .addRecipe0(T, 16,   16, FL.Oil_Nut         .make(20), FL.Oil_Frying.make(20), ZL_IS);
-		RM.Smelter          .addRecipe0(T, 16,   16, FL.Oil_Hemp        .make(20), FL.Oil_Frying.make(20), ZL_IS);
-		RM.Smelter          .addRecipe0(T, 16,   16, FL.Oil_Lin         .make(20), FL.Oil_Frying.make(20), ZL_IS);
-		RM.Smelter          .addRecipe0(T, 16,   16, FL.Oil_Seed        .make(20), FL.Oil_Frying.make(20), ZL_IS);
-		RM.Smelter          .addRecipe0(T, 16,   16, FL.Oil_Fish        .make(20), FL.Oil_Frying.make(20), ZL_IS);
-		RM.Smelter          .addRecipe0(T, 16,   16, FL.Ice             .make(20), FL.Water.make(20), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Sunflower.make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Olive    .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Nut      .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Hemp     .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Lin      .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Seed     .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Fish     .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Smelter          .addRecipe0(T, 16,    1, FL.Ice          .make(1), FL.Water     .make(1), ZL_IS);
 		
 		for (OreDictMaterial tMat : ANY.FlourGrains.mToThis) {
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(tMat), OM.dust(MT.MeatRaw), OM.ingot(MT.MeatRaw));

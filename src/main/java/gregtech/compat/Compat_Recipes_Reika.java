@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -68,11 +68,21 @@ public class Compat_Recipes_Reika extends CompatMods {
 			RM.Bath             .addRecipe1(T,  0,   64, IL.Circuit_Board_Power_Module.get(1), FL.mul(tRedstone, 2, 9, T), NF, ST.make(MD.RoC, "rotarycraft_item_misccraft", 1, 2));
 			}
 			
-			RM.Centrifuge       .addRecipe1(T, 16,   64,  8000, IL.RoC_Comb_Slippery        .get(1), NF, FL.lube( 50), IL.RoC_Propolis_Slippery.get(1));
-			RM.Centrifuge       .addRecipe1(T, 16,   64       , IL.RoC_Propolis_Slippery    .get(1), NF, FL.lube(150), ZL_IS);
+			RM.Centrifuge       .addRecipe1(T, 16,   64,  8000, IL.RoC_Comb_Slippery    .get(1), NF, FL.lube( 50), IL.RoC_Propolis_Slippery.get(1));
+			RM.Centrifuge       .addRecipe1(T, 16,   64       , IL.RoC_Propolis_Slippery.get(1), NF, FL.lube(150), ZL_IS);
+			
+			if (FL.exists("rc co2"))
+			RM.Freezer          .addRecipe1(T, 64,   64, ST.tag(0), FL.make("rc co2" ,  200), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 11));
+			RM.Freezer          .addRecipe1(T, 64,   64, ST.tag(0), MT.CO2       .gas(U , T), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 11));
+			RM.Freezer          .addRecipe1(T, 16,   16, ST.tag(0), FL.BioEthanol.make(1000), NF, ST.make(MD.RoC, "rotarycraft_item_ethanol", 1,  0));
+			RM.Freezer          .addRecipe1(T, 16,   16, ST.tag(0), FL.Reikanol  .make(1000), NF, ST.make(MD.RoC, "rotarycraft_item_ethanol", 1,  0));
+			RM.Freezer          .addRecipe1(T, 64,  128, ST.tag(0), MT.N         .gas(U , T), FL.make("rc liquid nitrogen", 1000), ZL_IS);
+			
+			RM.Freezer          .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 16), ST.make(MD.RoC, "rotarycraft_item_ethanol", 1,  0));
 			
 			
-			RM.Freezer          .addRecipe1(T, 16,  256, ST.tag(0), MT.CO2.gas(U*3, T), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 11));
+			RM.Smelter          .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_ethanol", 1,  0), NF, FL.Reikanol.make(1000), ZL_IS);
+			RM.Smelter          .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 16), NF, FL.Reikanol.make(1000), ZL_IS);
 			
 			
 			CR.delate(MD.RoC, "rotarycraft_item_powders", 6, 7);

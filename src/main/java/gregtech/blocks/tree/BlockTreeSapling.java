@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,7 +44,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Sapling");
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Sapling");
 		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Sapling");
-		LH.add(getUnlocalizedName()+ ".6.name", "Palm Sapling (coming soon)");
+		LH.add(getUnlocalizedName()+ ".6.name", "Palm Sapling (TODO)");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Sapling");
 		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Sapling");
 		LH.add(getUnlocalizedName()+ ".9.name", "Maple Sapling");
@@ -52,7 +52,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Sapling");
 		LH.add(getUnlocalizedName()+".12.name", "Hazel Sapling");
 		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Sapling");
-		LH.add(getUnlocalizedName()+".14.name", "Palm Sapling (coming soon)");
+		LH.add(getUnlocalizedName()+".14.name", "Palm Sapling (TODO)");
 		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Sapling");
 		
 		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.treeSapling);
@@ -66,8 +66,8 @@ public class BlockTreeSapling extends BlockBaseSapling {
 			tMaxHeight = getMaxHeight(aWorld, aX, aY, aZ, 9);
 			if (tMaxHeight < 7) return F;
 			tMaxHeight = aY+7+aRandom.nextInt(tMaxHeight-6);
-			
 			for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-5, aZ+j)) return F;
+			if (aWorld.isRemote) return T;
 			
 			boolean tCanPlaceResinHole = T;
 			
@@ -104,6 +104,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 			if (tMaxHeight < 9) return F;
 			tMaxHeight = aY+9+aRandom.nextInt(tMaxHeight-8);
 			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-4, aZ+j)) return F;
+			if (aWorld.isRemote) return T;
 			
 			for (int tY = aY; tY < tMaxHeight; tY++) placeTree(aWorld, aX, tY, aZ, BlocksGT.LogA, 1);
 			
@@ -134,6 +135,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 			if (tMaxHeight < 5) return F;
 			tMaxHeight = aY+5+aRandom.nextInt(tMaxHeight-4);
 			for (int i = -3; i <= 3; i++) for (int j = -3; j <= 3; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-2, aZ+j)) return F;
+			if (aWorld.isRemote) return T;
 			
 			for (int tY = aY; tY < tMaxHeight; tY++) placeTree(aWorld, aX, tY, aZ, BlocksGT.LogA, 2);
 			
@@ -165,6 +167,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 			if (tMaxHeight < 4) return F;
 			tMaxHeight = aY+4+aRandom.nextInt(tMaxHeight-3);
 			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-2, aZ+j)) return F;
+			if (aWorld.isRemote) return T;
 			
 			for (int tY = aY; tY < tMaxHeight; tY++) placeTree(aWorld, aX, tY, aZ, BlocksGT.LogA, 3);
 			
@@ -183,6 +186,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		case 4:
 			if (getMaxHeight(aWorld, aX, aY, aZ, 4) < 4) return F;
 			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, aY+2, aZ+j)) return F;
+			if (aWorld.isRemote) return T;
 			
 			placeTree(aWorld, aX, aY  , aZ, BlocksGT.LogB, 0);
 			placeTree(aWorld, aX, aY+1, aZ, BlocksGT.LogB, 0);
@@ -203,8 +207,8 @@ public class BlockTreeSapling extends BlockBaseSapling {
 			tMaxHeight = getMaxHeight(aWorld, aX, aY, aZ, 8);
 			if (tMaxHeight < 6) return F;
 			tMaxHeight = aY+6+aRandom.nextInt(tMaxHeight-5);
-			
 			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-4, aZ+j)) return F;
+			if (aWorld.isRemote) return T;
 			
 			for (int tY = aY; tY < tMaxHeight; tY++) placeTree(aWorld, aX, tY, aZ, BlocksGT.LogB, 1);
 			
@@ -226,13 +230,14 @@ public class BlockTreeSapling extends BlockBaseSapling {
 			}
 			return T;
 		case 6:
+			// TODO: Should be a Palm Tree of sorts.
 			return F;
 		case 7:
 			tMaxHeight = getMaxHeight(aWorld, aX, aY, aZ, 9);
 			if (tMaxHeight < 7) return F;
 			tMaxHeight = aY+7+aRandom.nextInt(tMaxHeight-6);
-			
 			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (i != 0 || j != 0) if (!canPlaceTree(aWorld, aX+i, tMaxHeight-4, aZ+j)) return F;
+			if (aWorld.isRemote) return T;
 			
 			for (int tY = aY; tY < tMaxHeight; tY++) placeTree(aWorld, aX, tY, aZ, BlocksGT.LogB, 3);
 			

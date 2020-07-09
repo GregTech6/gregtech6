@@ -70,6 +70,8 @@ public class Loader_Fluids implements Runnable {
 		FL.create("soulsandoil"              , "Soulsand Oil"        , null                  , 1);
 		FL.create("gas_natural_gas"          , "Natural Gas"         , null                  , 2); // ~95% methane, ~5% ethane and trace amounts of propane and butane
 		
+		MT.O.gas(FL.Reikygen.make(1000));
+		MT.O.liquid(FL.Liquid_Reikygen.make(1000));
 		FL.create("liquidoxygen"             , "Liquid Oxygen"       , MT.O                  , 1,   1000,    85);
 		
 		FL.create("chargedmatter"            , "Charged Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
@@ -79,7 +81,6 @@ public class Loader_Fluids implements Runnable {
 		FL.create("ic2constructionfoam"      , "Construction Foam"   , MT.ConstructionFoam   , 1,    100,   300);
 		FL.create("ic2distilledwater"        , "Distilled Water"     , MT.DistWater          , 1);
 		FL.create("NitroFuel"                , "Nitro Fuel"          , MT.NitroFuel          , 1);
-		FL.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1);
 		FL.create("oil"                      , "Oil"                 , MT.Oil                , 1);
 		FL.create("fuel"                     , "Fuel Oil"            , MT.Fuel               , 1);
 		FL.create("kerosene"                 , "Kerosene"            , MT.Kerosine           , 1);
@@ -103,8 +104,14 @@ public class Loader_Fluids implements Runnable {
 		FL.create("thoriumsalt"              , "Molten Thorium Salt" , null                  , 1,   1000,   600);
 		
 		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
+		
+		MT.Lubricant.liquid(FL.LubRoCant.make(1000));
+		FL.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1);
+		
+		MT.Ethanol.liquid(FL.Reikanol.make(1000));
 		FL.create("ethanol"                  , "Ethanol"             , MT.Ethanol            , 1);
 		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
+		
 		FL.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);
 		FL.create("hotfryingoil"             , "Hot Frying Oil"      , MT.FryingOilHot       , 1,   1000,   400);
 		
@@ -578,8 +585,8 @@ public class Loader_Fluids implements Runnable {
 		new FoodStatDrink(FL.create("potion.laitaucafe"                          , "Lait au cafe"                            , null                  , 1, 1000, 300, FluidsGT.SIMPLE, FluidsGT.FOOD, FluidsGT.THERMOS)                                       , "You want Coffee to your Sugar?"                                  ,  4, 0.4F  ,   5, C+39,  0.50F,  0, 30, 15, 40,  0, EnumAction.drink, F, F, F);
 		new FoodStatDrink(FL.create("potion.darkchocolatemilk"                   , "Bitter Chocolate Milk"                   , null                  , 1, 1000, 300, FluidsGT.SIMPLE, FluidsGT.FOOD)                                                         , "A bit bitter, better add a bit Sugar"                            ,  4, 0.4F  ,  10, C+37,  0.50F,  0,  0,  0, 30,  0, EnumAction.drink, F, F, F);
 		new FoodStatDrink(FL.create("chocolatemilk"                              , "Chocolate Milk"                          , null                  , 1, 1000, 300)                                                                                         , "Sweet Goodness"                                                  ,  4, 0.4F  ,  10, C+37,  0.50F,  0,  0,  0, 40,  0, EnumAction.drink, F, F, F);
-		new FoodStatDrink(FL.create("tea"                                        , "Tea"                                     , null                  , 1, 1000, 300)                                                                                         , "Keep calm and carry on"                                          ,  2, 0.2F  ,  20, C+39,  0.50F,  0, 30,  0,  0,  0, EnumAction.drink, F, F, F);
-		new FoodStatDrink(FL.create("sweettea"                                   , "Sweet Tea"                               , null                  , 1, 1000, 300)                                                                                         , "How about a Tea Party? In Boston?"                               ,  2, 0.2F  ,  20, C+39,  0.50F,  0, 30,  0, 30,  0, EnumAction.drink, F, F, F);
+		new FoodStatDrink(FL.create("tea"                                        , "Tea"                                     , null                  , 1, 1000, 300)                                                                                         , "Perfectly Balanced With No Exploits"                             ,  2, 0.2F  ,  20, C+39,  0.50F,  0, 30,  0,  0,  0, EnumAction.drink, F, F, F);
+		new FoodStatDrink(FL.create("sweettea"                                   , "Sweet Tea"                               , null                  , 1, 1000, 300)                                                                                         , "How about an actual Tea Party? In Boston?"                       ,  2, 0.2F  ,  20, C+39,  0.50F,  0, 30,  0, 30,  0, EnumAction.drink, F, F, F);
 		new FoodStatDrink(FL.create("icetea"                                     , "Ice Tea"                                 , null                  , 1, 1000, 255)                                                                                         , "Ice 'T'"                                                         ,  6, 0.4F  ,  30, C+35,  0.50F,  0, 10,  0, 30,  0, EnumAction.drink, F, F, F);
 
 

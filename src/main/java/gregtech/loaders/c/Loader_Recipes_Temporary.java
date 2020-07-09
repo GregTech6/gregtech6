@@ -208,6 +208,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.generify(FL.make("molten.meteoriciron"         , 1), FL.make("molten.iron", 1));
 		RM.generify(FL.make("molten.wroughtiron"          , 1), FL.make("molten.iron", 1));
 		RM.generify(FL.make("molten.osmiumelemental"      , 1), FL.make("molten.osmium", 1));
+		RM.generify(FL.make("deuterium"                   , 1), FL.make("rc deuterium", 1));
+		RM.generify(FL.make("tritium"                     , 1), FL.make("rc tritium", 1));
+		RM.generify(FL.make("carbondioxide"               , 5), FL.make("rc co2", 1));
+		RM.generify(FL.make("chlorine"                    , 1), FL.make("rc chlorine", 1));
+		RM.generify(FL.make("heavywater"                  , 1), FL.Heavy_Reiker.make(1));
 		RM.generify(FL.Redstone_TE                   .make(25), FL.Redstone.make(36));
 		RM.generify(FL.Redstone                      .make(36), FL.Redstone_TE.make(25));
 		RM.generify(FL.Lubricant                     .make( 1), FL.LubRoCant.make(1));

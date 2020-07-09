@@ -1378,13 +1378,13 @@ public class CS {
 
 	public static class FluidsGT {
 		public static Map<String, String> FLUID_RENAMINGS = new HashMap<>();
-
+		
 		public static Set<String>
 		  SIMPLE = new HashSetNoNulls<>(F, "sewage", "poison")
 		, ACID = new HashSetNoNulls<>(F, "acid", "creeper_acid", "sulfuricacid", "nitricacid", "aquaregia", "hydrochloricacid", "mutagen", "liquiddna", "binnie.dna.raw", "binnie.bacteriavector", "binnie.bacteriapoly", "binnie.bacteria")
 		, LIQUID = new HashSetNoNulls<>(F, "poison", "liquidnitrogen", "liquiddna")
 		, GAS = new HashSetNoNulls<>()
-		, PLASMA = new HashSetNoNulls<>()
+		, PLASMA = new HashSetNoNulls<>(F, "rc fusion plasma")
 		, AIR = new HashSetNoNulls<>()
 		, OXYGEN = new HashSetNoNulls<>()
 		, LIQUID_OXYGEN = new HashSetNoNulls<>()
@@ -1396,7 +1396,7 @@ public class CS {
 		, DYE = new HashSetNoNulls<>()
 
 		, STEAM = new HashSetNoNulls<>()
-		, POWER_CONDUCTING = new HashSetNoNulls<>()
+		, POWER_CONDUCTING = new HashSetNoNulls<>(F, "rc fusion plasma")
 		, LUBRICANT = new HashSetNoNulls<>()
 		, THERMOS = new HashSetNoNulls<>(F, "coffee")
 		, POTION = new HashSetNoNulls<>()
