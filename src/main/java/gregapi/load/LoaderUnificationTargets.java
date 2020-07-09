@@ -549,8 +549,14 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.CoalCoke               , ST.make(MD.RoC, "rotarycraft_block_deco", 1, 5));
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Stone                  , ST.make(MD.RoC, "rotarycraft_item_borecraft", 1, 13));
 		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Diamond                , ST.make(MD.RoC, "rotarycraft_item_borecraft", 1, 14));
-//      OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingwood             , ST.make(MD.RoC, "rotarycraft_item_modinterface", 1, 17));
-//      OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingrock             , ST.make(MD.RoC, "rotarycraft_item_modinterface", 1, 18));
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingwood             , ST.make(MD.RoC, "rotarycraft_item_modinterface", 1, 17));
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingrock             , ST.make(MD.RoC, "rotarycraft_item_modinterface", 1, 18));
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.HSLA                   , ST.make(MD.RoC, "rotarycraft_item_gearcraft", 1,  0));
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Wood                   , ST.make(MD.RoC, "rotarycraft_item_gearcraft", 1, 16));
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Stone                  , ST.make(MD.RoC, "rotarycraft_item_gearcraft", 1, 32));
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Diamond                , ST.make(MD.RoC, "rotarycraft_item_gearcraft", 1, 48)); // 64 would be the Tungsten Alloy
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingwood             , ST.make(MD.RoC, "rotarycraft_item_gearcraft", 1, 80));
+		OreDictManager.INSTANCE.setTarget(OP.stickLong      , MT.Livingrock             , ST.make(MD.RoC, "rotarycraft_item_gearcraft", 1, 96));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Nutmeg                 , ST.make(MD.HaC, "groundnutmegItem", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cinnamon               , ST.make(MD.HaC, "groundcinnamonItem", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Cocoa                  , ST.make(MD.HaC, "cocoapowderItem", 1, 0));
