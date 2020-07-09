@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -455,12 +455,16 @@ public class Loader_Books implements Runnable {
 		  "This Manual covers Extenders as well as Filters. It will explain the usage of those Devices in Detail, so that you can use them easily. "
 		, "First a Declaration of Faces any Filter and Extender have. The Main Facing is the Facing you can set using the Wrench and which has 4 Dots around the center Pipe."
 		, "The Secondary Facing is the one with the outwards pointing Arrows, that is set using the Monkey Wrench. And the other Sides of the Extender/Filter are the Neutral Facings."
-		, "Now that this is clear, we can go for the Functionality. Basically ANYTHING that accesses the Extender through a Neutral or Secondary Facing will get redirected to the Block at the Main Facing."
-		, "This means that the Main Facing is usually the Output Side, if you want to insert Stuff through the Neutral Facings or the Secondary one. So attach the Main Facing to the Block you want to extend or have filtering for."
-		, "Now to the Secondary Facing: As you know the 5 Facings redirect their Block access to the Main Facing, but the Main Facing itself can redirect all the Block accesses on its Side to the Block on the secondary Facing too."
-		, "This means that if you have Input and Output on the same Side of the Block you attach it to, that you can redirect the Output into one Direction using the Secondary Facing, while the Neutral Facings fill the Block on the Main Facing"
-		, "The redirect from Main->Secondary is NOT filtered, only the Neutral&Secondary->Main interactions are filtered! I hope this explanation is good enough for you, to actually use the Filters properly."
+		, "Now that this is clear, we can go for the Functionality. Basically ANYTHING that 'interacts' (* explained later) with the Extender through a Neutral or Secondary Facing will get redirected to the TileEntity at the Main Facing."
+		, "This means that the Main Facing is usually (but not always!) the Output Side, if you want to insert Stuff through the Neutral Facings or the Secondary one. So attach the Main Facing to the TileEntity you want to extend or have filtering for."
+		, "Now to the Secondary Facing: As you know the 5 Facings redirect their TileEntity access to the Main Facing, but the Main Facing itself can redirect all the TileEntity accesses on its Side to the TileEntity on the secondary Facing too."
+		, "This means that if you have Input and Output on the same Side of the TileEntity you attach it to, that you can redirect the Output into one Direction using the Secondary Facing, while the Neutral Facings fill the TileEntity on the Main Facing."
+		, "The redirect from Main->Secondary is NOT filtered, only the Neutral&Secondary->Main interactions are filtered! I hope this explanation is good enough to actually use the Filters properly."
 		, "Extenders and Filters cannot be used adjacent to each other in the sense of 'chained together', this means you have to have something, like a Pipe, between an Extender/Filter and another Extender/Filter, unless they are parallel ofcourse."
+		, "Now to explain what 'interact' actually means. A Hopper pulls Items from everything it 'interacts' with above, and pushes things to everything it 'interacts' with below. This means the direction an Item travels is irrelevant to the Extender."
+		, "So if you put a Hopper below an Extender, the Hopper will pull Items from whichever TileEntity the Extender is connected to. And if you put the Hopper above the Extender, it will push into the TileEntity the Extender is attached to."
+		, "Extenders are basically a both-way Detour Sign for anything that tries to interact with them in some way shape or form, as if the TileEntity you attached them to is now two Blocks in Size instead of one."
+		, "They do NOT do anything by themselves at all, they just sit there pretending to be whatever TileEntity you attached them to. So do not expect them to pull or push Items around or something dumb like that."
 		});
 		
 		//-----
@@ -468,12 +472,12 @@ public class Loader_Books implements Runnable {
 		for (int i = 1; i < OreDictMaterial.MATERIAL_ARRAY.length; i++) if (OreDictMaterial.MATERIAL_ARRAY[i] != null && (!OreDictMaterial.MATERIAL_ARRAY[i].mHidden || OreDictMaterial.MATERIAL_ARRAY[i].mDescription != null)) {
 			ItemStack tStack = UT.Books.createMaterialDictionary(OreDictMaterial.MATERIAL_ARRAY[i], NI, NI);
 			
-			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.gem.dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.dust.dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.ingot.dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.gem               .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.dust              .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.ingot             .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
 			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.crushedCentrifuged.dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.bucket.dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.chemtube.dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.bucket            .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+			CR.shaped(tStack, CR.DEF_NAC_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.chemtube          .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
 		}
 	}
 }

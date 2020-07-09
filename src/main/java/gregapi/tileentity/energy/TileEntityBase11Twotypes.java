@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import java.util.List;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.tileentity.behavior.TE_Behavior_Energy_Stats;
 import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
@@ -40,6 +41,12 @@ public abstract class TileEntityBase11Twotypes extends TileEntityBase10EnergyCon
 	public void readEnergyBehavior(NBTTagCompound aNBT) {
 		super.readEnergyBehavior(aNBT);
 		mEnergyOUT2 = new TE_Behavior_Energy_Stats(this, aNBT, aNBT.hasKey(NBT_ENERGY_EMITTED_2) ? TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED_2)) : TD.Energy.QU, mStorage, aNBT.getLong(NBT_OUTPUT) / 2, aNBT.getLong(NBT_OUTPUT), aNBT.getLong(NBT_OUTPUT) * 2);
+	}
+	
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		super.addToolTips(aList, aStack, aF3_H);
+		aList.add(Chat.BLINKING_GRAY + LH.get(LH.TOOLTIP_REMINDER_EXTENDERS));
 	}
 	
 	@Override

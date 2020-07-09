@@ -438,33 +438,33 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				}
 				mNeedsToHideMicroblocks = F;
 			}
-
+			
 			switch((int)(CLIENT_TIME % 10)) {
-			case   0: LH.Chat.RAINBOW_FAST = LH.Chat.RED; LH.Chat.BLINKING_CYAN = LH.Chat.CYAN; LH.Chat.BLINKING_RED = LH.Chat.RED; break;
+			case   0: LH.Chat.RAINBOW_FAST = LH.Chat.RED; LH.Chat.BLINKING_CYAN = LH.Chat.CYAN; LH.Chat.BLINKING_RED = LH.Chat.RED; LH.Chat.BLINKING_ORANGE = LH.Chat.ORANGE; break;
 			case   1: LH.Chat.RAINBOW_FAST = LH.Chat.ORANGE; break;
 			case   2: LH.Chat.RAINBOW_FAST = LH.Chat.YELLOW; break;
 			case   3: LH.Chat.RAINBOW_FAST = LH.Chat.GREEN; break;
 			case   4: LH.Chat.RAINBOW_FAST = LH.Chat.CYAN; break;
-			case   5: LH.Chat.RAINBOW_FAST = LH.Chat.DCYAN; LH.Chat.BLINKING_CYAN = LH.Chat.WHITE; LH.Chat.BLINKING_RED = LH.Chat.WHITE; break;
+			case   5: LH.Chat.RAINBOW_FAST = LH.Chat.DCYAN; LH.Chat.BLINKING_CYAN = LH.Chat.WHITE; LH.Chat.BLINKING_RED = LH.Chat.WHITE; LH.Chat.BLINKING_ORANGE = LH.Chat.YELLOW; break;
 			case   6: LH.Chat.RAINBOW_FAST = LH.Chat.DBLUE; break;
 			case   7: LH.Chat.RAINBOW_FAST = LH.Chat.BLUE; break;
 			case   8: LH.Chat.RAINBOW_FAST = LH.Chat.PURPLE; break;
 			case   9: LH.Chat.RAINBOW_FAST = LH.Chat.PINK; break;
 			}
-
+			
 			switch((int)(CLIENT_TIME % 50)) {
-			case   0: LH.Chat.RAINBOW = LH.Chat.RED; break;
+			case   0: LH.Chat.RAINBOW = LH.Chat.RED; LH.Chat.BLINKING_GRAY = LH.Chat.GRAY; break;
 			case   5: LH.Chat.RAINBOW = LH.Chat.ORANGE; break;
 			case  10: LH.Chat.RAINBOW = LH.Chat.YELLOW; break;
 			case  15: LH.Chat.RAINBOW = LH.Chat.GREEN; break;
 			case  20: LH.Chat.RAINBOW = LH.Chat.CYAN; break;
-			case  25: LH.Chat.RAINBOW = LH.Chat.DCYAN; break;
+			case  25: LH.Chat.RAINBOW = LH.Chat.DCYAN; LH.Chat.BLINKING_GRAY = LH.Chat.DGRAY; break;
 			case  30: LH.Chat.RAINBOW = LH.Chat.DBLUE; break;
 			case  35: LH.Chat.RAINBOW = LH.Chat.BLUE; break;
 			case  40: LH.Chat.RAINBOW = LH.Chat.PURPLE; break;
 			case  45: LH.Chat.RAINBOW = LH.Chat.PINK; break;
 			}
-
+			
 			switch((int)(CLIENT_TIME % 250)) {
 			case   0: LH.Chat.RAINBOW_SLOW = LH.Chat.RED; break;
 			case  25: LH.Chat.RAINBOW_SLOW = LH.Chat.ORANGE; break;
@@ -477,7 +477,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			case 200: LH.Chat.RAINBOW_SLOW = LH.Chat.PURPLE; break;
 			case 225: LH.Chat.RAINBOW_SLOW = LH.Chat.PINK; break;
 			}
-
+			
 			int tDirection = (CLIENT_TIME % 100 < 50 ? +1 : -1);
 			for (short[] tArray : sPosR) tArray[0] = UT.Code.bind8(tArray[0]+tDirection);
 			for (short[] tArray : sPosG) tArray[1] = UT.Code.bind8(tArray[1]+tDirection);
@@ -487,11 +487,11 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			for (short[] tArray : sNegG) tArray[1] = UT.Code.bind8(tArray[1]-tDirection);
 			for (short[] tArray : sNegB) tArray[2] = UT.Code.bind8(tArray[2]-tDirection);
 			for (short[] tArray : sNegA) tArray[3] = UT.Code.bind8(tArray[3]-tDirection);
-
+			
 			boolean
 			tNR = UT.Code.inside(  0,  99, (CLIENT_TIME/2) % 300), tNG = UT.Code.inside( 50, 149, (CLIENT_TIME/2) % 300), tNB = UT.Code.inside(100, 199, (CLIENT_TIME/2) % 300),
 			tPR = UT.Code.inside(100, 199, (CLIENT_TIME/2) % 300), tPG = UT.Code.inside(150, 249, (CLIENT_TIME/2) % 300), tPB = UT.Code.inside(200, 299, (CLIENT_TIME/2) % 300);
-
+			
 			for (short[] tArray : sRainbow) {
 			if (tPR) tArray[0] = UT.Code.bind8(tArray[0] + 1);
 			if (tPG) tArray[1] = UT.Code.bind8(tArray[1] + 1);
@@ -500,7 +500,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			if (tNG) tArray[1] = UT.Code.bind8(tArray[1] - 1);
 			if (tNB) tArray[2] = UT.Code.bind8(tArray[2] - 1);
 			}
-
+			
 			CLIENT_TIME++;
 		}
 	}

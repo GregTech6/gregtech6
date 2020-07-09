@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,12 +24,19 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 
 public abstract class TileEntityBase11Bipolar extends TileEntityBase10EnergyConverter implements ITileEntityAdjacentOnOff {
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		super.addToolTips(aList, aStack, aF3_H);
+		aList.add(Chat.BLINKING_GRAY + LH.get(LH.TOOLTIP_REMINDER_EXTENDERS));
+	}
+	
 	@Override
 	public void addToolTipsEfficiency(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (TD.Energy.ALL_EU.contains(mConverter.mEnergyIN.mType)) {

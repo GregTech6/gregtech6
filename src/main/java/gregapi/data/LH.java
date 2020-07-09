@@ -170,6 +170,7 @@ public class LH {
 	, TOOLTIP_LIQUIDPROOF = "gt.lang.proof.liquid"
 	, TOOLTIP_PLASMAPROOF = "gt.lang.proof.plasma"
 	, TOOLTIP_HEATPROOF = "gt.lang.proof.heat"
+	, TOOLTIP_REMINDER_EXTENDERS = "gt.lang.reminder.extenders"
 	, TOOLTIP_SEALABLE_ANY = "gt.lang.sealable.any"
 	, TOOLTIP_SEALABLE_SOME = "gt.lang.sealable.some"
 	, TOOLTIP_SEALABLE_BUGGED = "gt.lang.sealable.bug"
@@ -440,6 +441,7 @@ public class LH {
 		add(TOOLTIP_LIQUIDPROOF                         , "Can handle Liquids");
 		add(TOOLTIP_PLASMAPROOF                         , "Can handle Plasma");
 		add(TOOLTIP_HEATPROOF                           , "Can handle Temperatures up to: ");
+		add(TOOLTIP_REMINDER_EXTENDERS                  , "Remember to use Universal Extenders if you need to literally cut Corners");
 		add(TOOLTIP_SEALABLE_ANY                        , "This Block can seal Air at any Side");
 		add(TOOLTIP_SEALABLE_SOME                       , "This Block can seal Air at some Sides");
 		add(TOOLTIP_SEALABLE_BUGGED                     , "Shouldn't seal Air, but sometimes does because opaque");
@@ -540,6 +542,8 @@ public class LH {
 		, RAINBOW_SLOW = BLACK
 		, BLINKING_CYAN = CYAN
 		, BLINKING_RED = RED
+		, BLINKING_ORANGE = ORANGE
+		, BLINKING_GRAY = GRAY
 		;
 	}
 }
