@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -230,7 +230,8 @@ public class Loader_Recipes_Replace implements Runnable {
 			ST.meta_(INGT, ST.meta_(tMat));
 			RecipeReplacer[] tReplacer = sRecipesMat;
 			if (aRecipe.mRod != null) {
-				ItemStack tRod = OP.stick.mat(aRecipe.mRod, 1);
+				if (aRecipe.mRod == MT.Wood) aRecipe.mRod = ANY.Wood;
+				ItemStack tRod = (aRecipe.mRod == ANY.Wood ? ST.make(Items.stick, 1, 0) : OP.stick.mat(aRecipe.mRod, 1));
 				if (tRod == null) continue;
 				STCK.func_150996_a(tRod.getItem());
 				STCK.stackSize = 1;
@@ -251,9 +252,9 @@ public class Loader_Recipes_Replace implements Runnable {
 				if (!tRecipeList.remove(aRecipe.mRecipe)) continue;
 				
 				switch (aReplacer.mShape.length) {
-				case  1: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0]                                          , PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod == MT.Wood ? ANY.Wood : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
-				case  2: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0], aReplacer.mShape[1]                     , PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod == MT.Wood ? ANY.Wood : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
-				default: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0], aReplacer.mShape[1], aReplacer.mShape[2], PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod == MT.Wood ? ANY.Wood : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
+				case  1: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0]                                          , PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
+				case  2: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0], aReplacer.mShape[1]                     , PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
+				default: CR.shaped(tCrafted, CR.DEF, new Object[] {aReplacer.mShape[0], aReplacer.mShape[1], aReplacer.mShape[2], PLT.charAt(0), OP.plate.dat(aRecipe.mMat), CRV.charAt(0), OP.plateCurved.dat(aRecipe.mMat), ROD.charAt(0), OP.stick.dat(aRecipe.mRod == null ? aRecipe.mMat : aRecipe.mRod), NGT.charAt(0), OP.ingot.dat(aRecipe.mMat)}); break;
 				}
 			}
 		}
@@ -277,7 +278,7 @@ public class Loader_Recipes_Replace implements Runnable {
 	public static class RecipeReplacement {
 		public final IRecipe mRecipe;
 		public final OreDictPrefix mPrefix;
-		public final OreDictMaterial mMat, mRod;
+		public OreDictMaterial mMat, mRod;
 		public RecipeReplacement(IRecipe aRecipe, OreDictPrefix aPrefix, OreDictMaterial aMat, OreDictMaterial aRod) {mRecipe = aRecipe; mPrefix = aPrefix; mMat = aMat; mRod = aRod;}
 	}
 	
@@ -362,6 +363,14 @@ public class Loader_Recipes_Replace implements Runnable {
 				, FIL+PLT+HAM
 				, ___+ROD+___)
 		, new RecipeReplacer(ST.array
+				(INGT, null, null
+				,INGT, null, null
+				,STCK, null, null)
+				, "Sword"
+				, ___+PLT+___
+				, FIL+PLT+HAM
+				, ___+ROD+___)
+		, new RecipeReplacer(ST.array
 				(INGT, INGT, INGT
 				,null, STCK, null
 				,null, STCK, null)
@@ -397,6 +406,14 @@ public class Loader_Recipes_Replace implements Runnable {
 				(INGT, INGT, null
 				,null, STCK, null
 				,null, STCK, null)
+				, "Hoe"
+				, PLT+NGT+HAM
+				, FIL+ROD+___
+				, ___+ROD+___)
+		, new RecipeReplacer(ST.array
+				(INGT, INGT, null
+				,STCK, null, null
+				,STCK, null, null)
 				, "Hoe"
 				, PLT+NGT+HAM
 				, FIL+ROD+___
