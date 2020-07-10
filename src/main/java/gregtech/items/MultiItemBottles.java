@@ -33,6 +33,7 @@ import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.food.FoodStatFluid;
+import gregapi.oredict.OreDictItemData;
 import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
@@ -312,7 +313,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem(tLastID = 32764, "Lubricant Bottle"             , "", OP.bottle.dat(MT.Lubricant), FL.LubRoCant.make(250), FL.Lubricant.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 2), FoodStatFluid.INSTANCE));
 		
 		IL.Bottle_Mercury.set(
-		addItem(tLastID = 32765, "Mercury Bottle", "To obtain, use Bottle on a Crucible with Mercury", OP.bottle.dat(MT.Hg), MT.Hg.liquid( U, T), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM, 2), FoodStatFluid.INSTANCE));
+		addItem(tLastID = 32765, "Mercury Bottle", "To obtain, use Bottle on a Crucible with Mercury", new OreDictItemData(MT.Hg, U, MT.Glass, U), OP.bottle.dat(MT.Hg).toString() /* <- yes that toString() is needed. */, MT.Hg.liquid( U, T), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM, 2), FoodStatFluid.INSTANCE));
 		
 		IL.Bottle_Glue.set(
 		addItem(tLastID = 32766, "Glue Bottle"                  , "", OP.bottle.dat(MT.Glue), FL.Glue.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 2), FoodStatFluid.INSTANCE));

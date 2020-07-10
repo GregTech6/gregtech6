@@ -106,7 +106,8 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			sNegR.addAll(Arrays.asList(MT.InfusedEntropy.mRGBa[i], MT.NetherStar.mRGBa[i]));
 			sNegG.addAll(Arrays.asList(MT.InfusedEntropy.mRGBa[i], MT.NetherStar.mRGBa[i]));
 			sNegB.addAll(Arrays.asList(MT.InfusedEntropy.mRGBa[i], MT.NetherStar.mRGBa[i]));
-			sRainbow.addAll(Arrays.asList(MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.Infinity.mRGBa[i], MT.InfusedBalance.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.Shimmerwood.mRGBa[i], MT.Shimmerwood.mRGBa[i], MT.Chimerite.mRGBa[i]));
+			sRainbow.addAll(Arrays.asList(MT.GaiaSpirit.mRGBa[i], MT.GaiaSpirit.mRGBa[i], MT.Shimmerwood.mRGBa[i], MT.Shimmerwood.mRGBa[i], MT.Chimerite.mRGBa[i]));
+			sRainbowFast.addAll(Arrays.asList(MT.Infinity.mRGBa[i], MT.InfusedBalance.mRGBa[i]));
 		}
 	}
 	
@@ -179,7 +180,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		}
 	}
 
-	public static final List<short[]> sRainbow = new ArrayListNoNulls<>(), sPosR = new ArrayListNoNulls<>(), sPosG = new ArrayListNoNulls<>(), sPosB = new ArrayListNoNulls<>(), sPosA = new ArrayListNoNulls<>(), sNegR = new ArrayListNoNulls<>(), sNegG = new ArrayListNoNulls<>(), sNegB = new ArrayListNoNulls<>(), sNegA = new ArrayListNoNulls<>();
+	public static final List<short[]> sRainbow = new ArrayListNoNulls<>(), sRainbowFast = new ArrayListNoNulls<>(), sPosR = new ArrayListNoNulls<>(), sPosG = new ArrayListNoNulls<>(), sPosB = new ArrayListNoNulls<>(), sPosA = new ArrayListNoNulls<>(), sNegR = new ArrayListNoNulls<>(), sNegG = new ArrayListNoNulls<>(), sNegB = new ArrayListNoNulls<>(), sNegA = new ArrayListNoNulls<>();
 
 	@SubscribeEvent
 	public void onTextureStitchedPre(TextureStitchEvent.Pre aEvent) {
@@ -499,6 +500,19 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			if (tNR) tArray[0] = UT.Code.bind8(tArray[0] - 1);
 			if (tNG) tArray[1] = UT.Code.bind8(tArray[1] - 1);
 			if (tNB) tArray[2] = UT.Code.bind8(tArray[2] - 1);
+			}
+			
+			
+			tNR = UT.Code.inside( 0,  9, (CLIENT_TIME/2) % 30); tNG = UT.Code.inside( 5, 14, (CLIENT_TIME/2) % 30); tNB = UT.Code.inside(10, 19, (CLIENT_TIME/2) % 30);
+			tPR = UT.Code.inside(10, 19, (CLIENT_TIME/2) % 30); tPG = UT.Code.inside(15, 24, (CLIENT_TIME/2) % 30); tPB = UT.Code.inside(20, 29, (CLIENT_TIME/2) % 30);
+			
+			for (short[] tArray : sRainbowFast) {
+			if (tPR) tArray[0] = UT.Code.bind8(tArray[0] + 10);
+			if (tPG) tArray[1] = UT.Code.bind8(tArray[1] + 10);
+			if (tPB) tArray[2] = UT.Code.bind8(tArray[2] + 10);
+			if (tNR) tArray[0] = UT.Code.bind8(tArray[0] - 10);
+			if (tNG) tArray[1] = UT.Code.bind8(tArray[1] - 10);
+			if (tNB) tArray[2] = UT.Code.bind8(tArray[2] - 10);
 			}
 			
 			CLIENT_TIME++;

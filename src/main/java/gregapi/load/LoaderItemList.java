@@ -1101,7 +1101,7 @@ public class LoaderItemList implements Runnable {
 		IL.AA_Dye_Black                         .set(ST.make(MD.AA, "itemMisc"                              , 1,17), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
 		
 		
-		IL.HBM_Mercury_Bottle                   .set(ST.make(MD.HBM, "item.bottle_mercury"                  , 1, 0), new OreDictItemData(MT.Hg, U ), OP.bottle.dat(MT.Hg));
+		IL.HBM_Mercury_Bottle                   .set(ST.make(MD.HBM, "item.bottle_mercury"                  , 1, 0), new OreDictItemData(MT.Hg, U, MT.Glass, U), OP.bottle.dat(MT.Hg));
 		IL.HBM_Mercury_Drop                     .set(ST.make(MD.HBM, "item.nugget_mercury"                  , 1, 0), new OreDictItemData(MT.Hg, U8));
 		
 		
