@@ -24,6 +24,8 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
+import gregtech.asm.transformers.CoFHCore_CrashFix;
+
 import java.io.File;
 import java.util.Map;
 
@@ -43,7 +45,7 @@ public class GT6_ASM_Main implements IFMLLoadingPlugin {
                 // These are run in the order specified.
                 // Put the full class names of the transformers to run, can just `getName` on the classname if it can be
                 // classloaded inline (doesn't require really anything else but ASM calls) such as:
-                // MyTransformer.class.getName()
+                CoFHCore_CrashFix.class.getName()
         };
     }
 
