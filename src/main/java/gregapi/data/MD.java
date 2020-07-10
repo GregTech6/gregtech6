@@ -233,8 +233,9 @@ public class MD {
 	, WR_CBE_A          = new ModData(ModIDs.WR_CBE_A           , "Wireless Redstone Chickenbones Edition")
 	, WR_CBE_L          = new ModData(ModIDs.WR_CBE_L           , "Wireless Redstone Chickenbones Edition")
 	
-	, COFH_API          = new ModData(ModIDs.COFH_API           , "CoFHAPI")
-	, COFH_API_ENERGY   = new ModData(ModIDs.COFH_API_ENERGY    , "CoFHAPI Energy")
+	, COFH_API          = new ModData(ModIDs.COFH_API           , "CoFH-API")
+	, COFH_API_ENERGY   = new ModData(ModIDs.COFH_API_ENERGY    , "CoFH-API Energy")
+	, COFH_CORE         = new ModData(ModIDs.COFH_CORE          , "CoFH-Core")
 	
 	, OB                = new ModData(ModIDs.OB                 , "Open Blocks")
 	, MNTL              = new ModData(ModIDs.MNTL               , "Mantle")

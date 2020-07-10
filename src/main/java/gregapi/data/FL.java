@@ -419,6 +419,10 @@ public enum FL {
 	, Blaze                     ("blaze"                    , "molten.blaze"                , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryBlood                ("fieryblood"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, FieryTears                ("fierytears"                                               , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
+	, Pyrotheum                 ("pyrotheum"                                                , LIQUID) // 250 per Unit
+	, Cryotheum                 ("cryotheum"                                                , LIQUID) // 250 per Unit
+	, Petrotheum                ("petrotheum"                                               , LIQUID) // 250 per Unit
+	, Aerotheum                 ("aerotheum"                                                , GAS) // 250 per Unit
 	, Mana_TE                   ("mana"                                                     , LIQUID, ENCHANTED_EFFECT) // 250 per Unit
 	, Ender                     ("molten.enderpearl"                                        , LIQUID, ENCHANTED_EFFECT) // 144 per Unit
 	, Ender_TE                  ("ender"                                                    , LIQUID, ENCHANTED_EFFECT) // 250 per Unit

@@ -560,11 +560,11 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone       ), OM.dust(MT.Blizz), OM.dust(MT.Snow,  U4), OM.dust(MT.Niter)), OM.dust(MT.Cryotheum, 2*U));
 		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), ST.make(Blocks.snow, 1, W), OM.dust(MT.Niter, U*4)), OM.dust(MT.Cryotheum, 8*U));
 		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Redstone   ,U*4), OM.dust(MT.Blizz, U*4), OM.dust(MT.Snow), OM.dust(MT.Niter, U*4)), OM.dust(MT.Cryotheum, 8*U));
-		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Fe             ), OM.dust(MT.LiveRoot), OM.dust(MT.Au,  U9)), OM.dust(MT.IronWood, U*2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.GildedIron          ), OM.dust(MT.LiveRoot  ), OM.dust(MT.IronWood,   U*2));
-		RM.Mixer            .addRecipe2(T, 16,   64, OM.dust(MT.Bi                  ), OM.dust(MT.Brass, 4*U  ), OM.dust(MT.BismuthBronze, 5*U2));
-		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.Bi              , U4), OM.dust(MT.Brass,   U  ), OM.dust(MT.BismuthBronze, 5*U8));
-		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.Bi              , U9), OM.dust(MT.Brass, 4* U9), OM.dust(MT.BismuthBronze, 5*U18));
+		if (FL.Pyrotheum.exists() && FL.Cryotheum.exists() && FL.Petrotheum.exists() && FL.Aerotheum.exists() && FL.Mana_TE.exists())
+		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Pyrotheum.make(1), FL.Cryotheum.make(1), FL.Petrotheum.make(1), FL.Aerotheum.make(1)), FL.array(FL.Mana_TE.make(1)), ZL_IS);
+		
+		RM.Mixer            .addRecipeX(T, 16,   32, ST.array(OM.dust(MT.Fe), OM.dust(MT.LiveRoot), OM.dust(MT.Au,  U9)), OM.dust(MT.IronWood, U*2));
+		RM.Mixer            .addRecipe2(T, 16,   32, OM.dust(MT.GildedIron ), OM.dust(MT.LiveRoot), OM.dust(MT.IronWood, U*2));
 		
 		// Dyes
 		for (FluidStack[] tDyes : new FluidStack[][] {DYE_FLUIDS_WATER, DYE_FLUIDS_FLOWER, DYE_FLUIDS_CHEMICAL}) {

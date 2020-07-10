@@ -146,6 +146,11 @@ public class Loader_Recipes_Temporary implements Runnable {
 		if (MD.HBM.mLoaded) {
 			CR.delate(MD.HBM, "item.apple_lead", "item.apple_schrabidium", "item.apple_euphemium");
 			
+			CR.shapeless(IL.HBM_Mercury_Drop.get(8), CR.DEF_NAC_NCC, new Object[] {IL.Bottle_Mercury});
+			RM.generify(IL.HBM_Mercury_Bottle.get(1), IL.Bottle_Mercury.get(1));
+			RM.generify(IL.Bottle_Mercury.get(1), IL.HBM_Mercury_Bottle.get(1));
+			
+			
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(MD.HBM, "item.apple_lead", 1, 0), MT.Pb.liquid(64*U9, T), NF, ST.make(MD.HBM, "item.apple_lead", 1, 1));
 			RM.Bath.addRecipe1(T, 0, 128, ST.make(MD.HBM, "item.apple_lead", 1, 1), MT.Pb.liquid(64*U , T), NF, ST.make(MD.HBM, "item.apple_lead", 1, 2));
 			

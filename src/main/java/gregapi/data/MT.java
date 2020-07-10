@@ -327,22 +327,22 @@ public class MT {
 	}
 	
 	/** Technical Material describing a Nullpointer */
-	public static final OreDictMaterial NULL = create(-1, "NULL").setStatsElement(0,0,0,0,0).setTextures(SET_NONE).put(INVALID_MATERIAL, DONT_SHOW_THIS_COMPONENT);
+	public static final OreDictMaterial NULL = create(-1, "NULL").setStatsElement(0,0,0,0,0).put(INVALID_MATERIAL, DONT_SHOW_THIS_COMPONENT);
 	
 	/** Material for empty Containers. */
-	public static final OreDictMaterial Empty = create(0, "Empty").setStatsElement(0,0,0,0,0).setTextures(SET_NONE).put(EMPTY, AUTO_BLACKLIST, DONT_SHOW_THIS_COMPONENT);
+	public static final OreDictMaterial Empty = create(0, "Empty").setStatsElement(0,0,0,0,0).put(EMPTY, AUTO_BLACKLIST, DONT_SHOW_THIS_COMPONENT);
 	
 	/** Some subatomic Particles and, this might be useful if Projectile Materials have to be determined and you shoot a Laser (Photons in that case) or something Radioactive. */
 	public static final OreDictMaterial
-	y       , Photon                    =   y       = create(   1, "Photon"     ).setStatsElement(0,0,0,0,0).heat(0,0,0).setRGBa(255, 255, 255, 255).setTextures(SET_NONE).put(PARTICLE).setTooltip("y").hide(),
-	v       , Neutrino                  =   v       = create(   2, "Neutrino"   ).setStatsElement(0,0,0,0,0).heat(0,0,0).setRGBa(180, 180, 180,   0).setTextures(SET_NONE).put(PARTICLE).setTooltip("v").hide(),
-	n       , Neutron                   =   n       = create(   3, "Neutron"    ).setStatsElement(0,0,1,0,0).heat(0,0,0).setRGBa(128, 128, 128,   0).setTextures(SET_NONE).put(PARTICLE).setTooltip("n").hide(),
-	p       , Proton                    =   p       = create(   4, "Proton"     ).setStatsElement(1,0,0,0,0).heat(0,0,0).setRGBa(255,   0,   0,   0).setTextures(SET_NONE).put(PARTICLE).setTooltip("p").hide(),
-	e       , Electron                  =   e       = create(   5, "Electron"   ).setStatsElement(0,1,0,0,0).heat(0,0,0).setRGBa(  0,   0, 255,   0).setTextures(SET_NONE).put(PARTICLE).setTooltip("e").hide();
+	y       , Photon                    =   y       = create(   1, "Photon"     ).setStatsElement( 0, 0, 0, 0, 0).heat(0,0,0).setRGBa(255, 255, 255, 255).put(PARTICLE).setTooltip("y").hide(),
+	v       , Neutrino                  =   v       = create(   2, "Neutrino"   ).setStatsElement( 0, 0, 0, 0, 0).heat(0,0,0).setRGBa(180, 180, 180,   0).put(PARTICLE).setTooltip("v").hide(),
+	n       , Neutron                   =   n       = create(   3, "Neutron"    ).setStatsElement( 0, 0, 1, 0, 0).heat(0,0,0).setRGBa(128, 128, 128,   0).put(PARTICLE).setTooltip("n").hide(),
+	p       , Proton                    =   p       = create(   4, "Proton"     ).setStatsElement( 1, 0, 0, 0, 0).heat(0,0,0).setRGBa(255,   0,   0,   0).put(PARTICLE).setTooltip("p").hide(),
+	e       , Electron                  =   e       = create(   5, "Electron"   ).setStatsElement( 0, 1, 0, 0, 0).heat(0,0,0).setRGBa(  0,   0, 255,   0).put(PARTICLE).setTooltip("e").hide();
 	
 	/** Yes, I consider Magic as some kind of Element. I placed it at the Spot of "Anti-Empty", since Slot 0 is for the "Empty" Material, and "Anti-Empty" = "Magically-Full", or some crazy shit like that. Also Magic has negative Mass. */
 	public static final OreDictMaterial
-	Ma      , Magic                     =   Ma      = create( 4000, "Magic"     ).setStatsElement(0,0,0,-1,0).heat(0,0,0).setTextures(SET_SHINY).put(ELEMENT, MAGICAL, UNBURNABLE).setTooltip("Ma").hide().qual(3, 10.0, 5120, 5);
+	Ma      , Magic                     =   Ma      = create( 4000, "Magic"     ).setStatsElement( 0, 0, 0,-1, 0).heat(0,0,0).setRGBa(255,   0, 255,   0).setTextures(SET_SHINY).put(ELEMENT, MAGICAL, UNBURNABLE).setTooltip("Ma").hide().qual(3, 10.0, 5120, 5);
 	
 	/**
 	 * All the Elements and a few of their Isotopes.
@@ -1599,7 +1599,7 @@ public class MT {
 	Iffesal                 = oredust       ( 8743, "Iffesal"               , SET_SHINY             ,  14,  25, 171, 255).put(MAGICAL)                                                                                                                                                                                                                                                                                              .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 4),
 	
 	
-	AncientDebris           = metalore      ( 8744, "Ancient Debris"        , SET_SPACE             , 110,  80,  90, 255).put("Ancient", UNBURNABLE, WITHER_PROOF, VALUABLE, MOLTEN, MELTING).qual(0, 1.0,   16,  3)                                                                                                                                                                                                                .aspects(TC.METALLUM, 2, TC.ALIENIS, 2).heat(MeteoricIron),
+	AncientDebris           = metalore      ( 8744, "Ancient Debris"        , SET_SPACE             , 110,  80,  90, 255).put("Ancient", UNBURNABLE, WITHER_PROOF, VALUABLE, MOLTEN, MELTING, WASHING_MERCURY).qual(0, 1.0,   16,  3)                                                                                                                                                                                               .aspects(TC.METALLUM, 2, TC.ALIENIS, 2).heat(MeteoricIron),
 	Netherite               = alloymachine  ( 8745, "Netherite"                                     ,  80,  70,  80     ).put(           UNBURNABLE, WITHER_PROOF, VALUABLE, MOLTEN).qual(2, 10.0,  500,  4)                                                            .setMcfg( 1, Au             , 4*U, AncientDebris    , 4*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.ALIENIS, 2, TC.LUCRUM, 2).alloyCentrifuge(MeteoricSteel),
 	NetherizedDiamond       = alloymachine  ( 8746, "Netherized Diamond"    , SET_DIAMOND           ,  90,  80,  90, 255).put(G_GEM    , UNBURNABLE, WITHER_PROOF, VALUABLE, COATED).qual(3, 12.0, 2560,  4)                                                            .setMcfg( 4, Netherite      , 1*U, Diamond          , 4*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.ALIENIS, 2, TC.LUCRUM, 2, TC.VITREUS, 2).heat(MeteoricSteel),
 	
