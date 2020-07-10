@@ -204,6 +204,7 @@ dependencies {
 	compileOnly "mods.railcraft:Railcraft_1.7.10:9.12.3.0:dev"
 	compileOnly "twilightforest:twilightforest:1.7.10-2.3.8dev:dev"
 	compileOnly "appeng:appliedenergistics2:rv3-beta-6:dev"
+	compileOnly "cofh:CoFHCore:1.7.10R3.0.4:dev"
 	compileOnly "cofh:CoFHLib:1.7.10R3.0.3:dev"
 	compileOnly "applecore:AppleCore:1.7.10-3.1.1:deobf"
 	compileOnly "li.cil.oc:OpenComputers:MC1.7.10-1.7.2.1204:dev"

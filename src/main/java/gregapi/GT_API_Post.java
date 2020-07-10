@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -63,6 +64,7 @@ import gregapi.wooddict.WoodDictionary;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * @author Gregorius Techneticies
@@ -606,14 +608,24 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		new LoaderBookList().run();
 		
-		/** Diatomic Elements get a Subscript 2 appended to their ToolTip after PostInit. That way the ToolTip Calculation works properly until PostInit happens. */
+		// Diatomic Elements get a Subscript 2 appended to their ToolTip after PostInit. That way the ToolTip Calculation works properly until PostInit happens.
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (tMaterial.contains(TD.Atomic.DIATOMIC_NONMETAL)) tMaterial.mTooltipChemical += "\u2082";
 		
 		MT.P.mTooltipChemical += "\u2084";
 		MT.S.mTooltipChemical += "\u2088";
 		MT.Se.mTooltipChemical += "\u2088";
+		
+		// And now to stop CoFH-Core from fucking crashing and lagging the Game in Singleplayer with the FMLProxyPacket race condition Bug.
+		// I hate having to do this, but there is no other way to actually fix this Issue...
+		if (CODE_CLIENT) try {
+			MinecraftForge.EVENT_BUS.unregister(cofh.CoFHCore.instance);
+			FMLCommonHandler.instance().bus().unregister(cofh.core.util.FMLEventHandler.instance);
+		} catch (Throwable e) {
+			// CoFH-Core is probably just not installed.
+			e.printStackTrace(DEB); // TODO: This Debug Line will be removed once I tested the damn thing.
+		}
 	}
-
+	
 	@Override
 	public void onModServerStarting2(FMLServerStartingEvent aEvent) {
 		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES  ) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
