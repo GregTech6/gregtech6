@@ -836,7 +836,35 @@ public class GT_API extends Abstract_Mod {
 	
 	@Mod.EventHandler
 	public void onIDChangingEvent(FMLModIdMappingEvent aEvent) {
+		// Fixing missing Blocks caused by DragonAPI. The Issue is more complicated but it should fix some part of it.
+		if (Block.blockRegistry.getObjectById( 26) == null) Block.blockRegistry.addObject( 26, "bed", Blocks.bed);
+		if (Block.blockRegistry.getObjectById( 34) == null) Block.blockRegistry.addObject( 34, "piston_head", Blocks.piston_head);
+		if (Block.blockRegistry.getObjectById( 55) == null) Block.blockRegistry.addObject( 55, "redstone_wire", Blocks.redstone_wire);
+		if (Block.blockRegistry.getObjectById( 59) == null) Block.blockRegistry.addObject( 59, "wheat", Blocks.wheat);
+		if (Block.blockRegistry.getObjectById( 63) == null) Block.blockRegistry.addObject( 63, "standing_sign", Blocks.standing_sign);
+		if (Block.blockRegistry.getObjectById( 64) == null) Block.blockRegistry.addObject( 64, "wooden_door", Blocks.wooden_door);
+		if (Block.blockRegistry.getObjectById( 68) == null) Block.blockRegistry.addObject( 68, "wall_sign", Blocks.wall_sign);
+		if (Block.blockRegistry.getObjectById( 71) == null) Block.blockRegistry.addObject( 71, "iron_door", Blocks.iron_door);
+		if (Block.blockRegistry.getObjectById( 74) == null) Block.blockRegistry.addObject( 74, "lit_redstone_ore", Blocks.lit_redstone_ore);
+		if (Block.blockRegistry.getObjectById( 75) == null) Block.blockRegistry.addObject( 75, "unlit_redstone_torch", Blocks.unlit_redstone_torch);
+		if (Block.blockRegistry.getObjectById( 83) == null) Block.blockRegistry.addObject( 83, "reeds", Blocks.reeds);
+		if (Block.blockRegistry.getObjectById( 92) == null) Block.blockRegistry.addObject( 92, "cake", Blocks.cake);
+		if (Block.blockRegistry.getObjectById( 93) == null) Block.blockRegistry.addObject( 93, "unpowered_repeater", Blocks.unpowered_repeater);
+		if (Block.blockRegistry.getObjectById( 94) == null) Block.blockRegistry.addObject( 94, "powered_repeater", Blocks.powered_repeater);
+		if (Block.blockRegistry.getObjectById(104) == null) Block.blockRegistry.addObject(104, "pumpkin_stem", Blocks.pumpkin_stem);
+		if (Block.blockRegistry.getObjectById(105) == null) Block.blockRegistry.addObject(105, "melon_stem", Blocks.melon_stem);
+		if (Block.blockRegistry.getObjectById(115) == null) Block.blockRegistry.addObject(115, "nether_wart", Blocks.nether_wart);
+		if (Block.blockRegistry.getObjectById(117) == null) Block.blockRegistry.addObject(117, "brewing_stand", Blocks.brewing_stand);
+		if (Block.blockRegistry.getObjectById(118) == null) Block.blockRegistry.addObject(118, "cauldron", Blocks.cauldron);
+		if (Block.blockRegistry.getObjectById(124) == null) Block.blockRegistry.addObject(124, "lit_redstone_lamp", Blocks.lit_redstone_lamp);
+		if (Block.blockRegistry.getObjectById(132) == null) Block.blockRegistry.addObject(132, "tripwire", Blocks.tripwire);
+		if (Block.blockRegistry.getObjectById(140) == null) Block.blockRegistry.addObject(140, "flower_pot", Blocks.flower_pot);
+		if (Block.blockRegistry.getObjectById(144) == null) Block.blockRegistry.addObject(144, "skull", Blocks.skull);
+		if (Block.blockRegistry.getObjectById(149) == null) Block.blockRegistry.addObject(149, "unpowered_comparator", Blocks.unpowered_comparator);
+		if (Block.blockRegistry.getObjectById(150) == null) Block.blockRegistry.addObject(150, "powered_comparator", Blocks.powered_comparator);
+		
 		OUT.println(getModNameForLog() + ": Remapping ItemStackMaps due to ID Map change. Those damn Items should have a consistent Hashcode, but noooo, ofcourse they break Basic Code Conventions! Thanks Forge and Mojang!");
+		
 		for (Map<ItemStackContainer, ?> tMap : STACKMAPS) UT.Code.reMap(tMap);
 		for (ICompat tCompat : ICompat.COMPAT_CLASSES) try {tCompat.onIDChanging(aEvent);} catch(Throwable e) {if (D1) e.printStackTrace(ERR);}
 	}
