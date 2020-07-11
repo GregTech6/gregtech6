@@ -61,28 +61,28 @@ public class RecipeMapHandlerMaterial extends RecipeMapHandler {
 	}
 	
 	@Override
-	public boolean addRecipesUsing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
-		if (ST.equal(aStack, mAdditionalInput)) return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		if (aNEI && ST.equal(aStack, mAdditionalInput)) return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
 		return aData != null && aData.hasValidPrefixMaterialData() && aData.mMaterial.mMaterial == mInputMaterial && addRecipeForPrefix(aMap, aData.mPrefix);
 	}
 	
 	@Override
-	public boolean addRecipesProducing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
 		return aData != null && aData.hasValidPrefixMaterialData() && aData.mMaterial.mMaterial == mOutputMaterial && addRecipeForPrefix(aMap, aData.mPrefix);
 	}
 	
 	@Override
-	public boolean addRecipesUsing(RecipeMap aMap, Fluid aFluid) {
+	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, Fluid aFluid) {
 		if (isDone()) return F;
-		return mFluidInputPerUnit != null && mFluidInputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		return aNEI && mFluidInputPerUnit != null && mFluidInputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
 	}
 	
 	@Override
-	public boolean addRecipesProducing(RecipeMap aMap, Fluid aFluid) {
+	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, Fluid aFluid) {
 		if (isDone()) return F;
-		return mFluidOutputPerUnit != null && mFluidOutputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		return aNEI && mFluidOutputPerUnit != null && mFluidOutputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
 	}
 	
 	@Override

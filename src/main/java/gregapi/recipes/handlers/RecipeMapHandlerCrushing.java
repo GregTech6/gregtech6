@@ -45,7 +45,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	public RecipeMapHandlerCrushing() {/**/}
 	
 	@Override
-	public boolean addRecipesUsing(RecipeMap aMap, ItemStack aInput, OreDictItemData aData) {
+	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, ItemStack aInput, OreDictItemData aData) {
 		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.contains(TD.Prefix.DUST_ORE) || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER)) return F;
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
 		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreProcessingMultiplier;
@@ -93,11 +93,11 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	}
 	
 	@Override
-	public boolean addRecipesProducing(RecipeMap aMap, ItemStack aStack, OreDictItemData aData) {
+	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (BlocksGT.ore != null && aData != null && aData.hasValidPrefixMaterialData() && (aData.mPrefix == OP.crushed || aData.mPrefix == OP.dust || aData.mPrefix == OP.gem)) {
 			boolean temp = F;
 			for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mTargetCrushing.mMaterial == aData.mMaterial.mMaterial && OP.oreVanillastone.isGeneratingItem(aData.mMaterial.mMaterial)) {
-				if (addRecipesUsing(aMap, ST.make((Block)BlocksGT.ore, 1, aData.mMaterial.mMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;
+				if (addRecipesUsing(aMap, aNEI, ST.make((Block)BlocksGT.ore, 1, aData.mMaterial.mMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;
 			}
 			return temp;
 		}

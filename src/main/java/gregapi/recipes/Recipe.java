@@ -514,10 +514,10 @@ public class Recipe {
 					aLoop = F;
 					for (ItemStack tInput : aInputs) if (ST.valid(tInput)) {
 						OreDictItemData tData = OM.data_(tInput);
-						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, tInput, tData)) aLoop = T;
+						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, F, tInput, tData)) aLoop = T;
 					}
 					for (FluidStack tInput : aFluids) if (tInput != null) {
-						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, tInput.getFluid())) aLoop = T;
+						for (IRecipeMapHandler tHandler : mRecipeMapHandlers) if (tHandler.addRecipesUsing(this, F, tInput.getFluid())) aLoop = T;
 					}
 					if (aLoop) return findRecipeInternal(aTileEntity, aRecipe, F, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 				}
@@ -544,10 +544,10 @@ public class Recipe {
 			for (ItemStack aOutput : aOutputs) if (ST.valid(aOutput)) {
 				if (IL.Display_Fluid.equal(aOutput, T, T)) {
 					Fluid tFluid = FL.fluid(ST.meta_(aOutput));
-					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, tFluid);
+					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, T, tFluid);
 				} else {
 					OreDictItemData tData = OM.data_(aOutput);
-					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, aOutput, tData);
+					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesProducing(this, T, aOutput, tData);
 				}
 			}
 			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls<>();
@@ -577,10 +577,10 @@ public class Recipe {
 			for (ItemStack aInput : aInputs) if (ST.valid(aInput)) {
 				if (IL.Display_Fluid.equal(aInput, T, T)) {
 					Fluid tFluid = FL.fluid(ST.meta_(aInput));
-					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, tFluid);
+					if (tFluid != null) for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, T, tFluid);
 				} else {
 					OreDictItemData tData = OM.data_(aInput);
-					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, aInput, tData);
+					for (IRecipeMapHandler tHandler : mRecipeMapHandlers) tHandler.addRecipesUsing(this, T, aInput, tData);
 				}
 			}
 			ArrayListNoNulls<Recipe> rList = new ArrayListNoNulls<>();
