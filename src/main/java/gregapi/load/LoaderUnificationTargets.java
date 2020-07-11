@@ -592,6 +592,9 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.wireFine       , MT.Cu                     , ST.make(MD.HBM, "item.wire_copper", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.wireFine       , MT.Al                     , ST.make(MD.HBM, "item.wire_aluminium", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.wireFine       , MT.W                      , ST.make(MD.HBM, "item.wire_tungsten", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.scrapGt        , MT.MeteoricIron           , ST.make(MD.HBM, "item.fragment_meteorite", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.dustTiny       , MT.MeteoricIron           , ST.make(MD.HBM, "item.powder_meteorite_tiny", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.MeteoricIron           , ST.make(MD.HBM, "item.powder_meteorite", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Asbestos               , ST.make(MD.HBM, "tile.ore_asbestos", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.WaxBee                 , ST.make(MD.GrC_Bees, "grcbees.BeesWax", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Eudialyte              , ST.make(MD.TROPIC, "tile.oreEudialyte", 1, 0));
