@@ -441,7 +441,7 @@ jar {
 		attributes(
 			'FMLAT': 'gregtech_at.cfg',
 			'FMLCorePluginContainsFMLMod': 'true',
-			'FMLCorePlugin': 'gregtech.asm.GT6_ASM_Main'
+			'FMLCorePlugin': 'gregtech.asm.GT_ASM'
 		)
 	}
 	configurations.shade.each { dep ->
@@ -463,7 +463,7 @@ task devJar(type: Jar) {
 		attributes(
 			'FMLAT': 'gregtech_at.cfg',
 			'FMLCorePluginContainsFMLMod': 'true',
-			'FMLCorePlugin': 'gregtech.asm.GT6_ASM_Main'
+			'FMLCorePlugin': 'gregtech.asm.GT_ASM'
 		)
 	}
 	configurations.shade.each { dep ->
@@ -481,7 +481,7 @@ task devJar(type: Jar) {
 //		attributes(
 //			'FMLAT': 'gregtech_at.cfg',
 //			'FMLCorePluginContainsFMLMod': 'true',
-//			'FMLCorePlugin': 'gregtech.asm.GT6_ASM_Main'
+//			'FMLCorePlugin': 'gregtech.asm.GT_ASM'
 //		)
 //	}
 //	classifier = 'core'

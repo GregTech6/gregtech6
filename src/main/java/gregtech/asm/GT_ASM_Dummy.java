@@ -19,32 +19,34 @@
 
 package gregtech.asm;
 
+import java.util.Arrays;
+
 import com.google.common.eventbus.EventBus;
+
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.ModMetadata;
 
-import java.util.Arrays;
-
 // ASM Mods will get loaded before all other mods, regardless of any ordering specified.
-public class GT6_ASM_Mod extends DummyModContainer {
-    public GT6_ASM_Mod() {
-        super(new ModMetadata());
-        ModMetadata meta = this.getMetadata();
-        meta.modId = "GT6_ASM_Mod";
-        meta.name = "GT6_ASM_Mod";
-        meta.version = "6.13.02";
-        meta.credits = "";
-        meta.authorList = Arrays.asList("GregoriusTechneticies", "OvermindDL1");
-        meta.description = "";
-        meta.url = "";
-        meta.updateUrl = "";
-        meta.screenshots = new String[0];
-        meta.logoFile = "";
-    }
-
-    public boolean registerBus(EventBus bus, LoadController controller) {
-        bus.register(this);
-        return true;
-    }
+public class GT_ASM_Dummy extends DummyModContainer {
+	public GT_ASM_Dummy() {
+		super(new ModMetadata());
+		ModMetadata meta = this.getMetadata();
+		meta.modId = "GT_ASM";
+		meta.name = "Greg-ASM®";
+		meta.version = "6.13.03";
+		meta.credits = "";
+		meta.authorList = Arrays.asList("GregoriusTechneticies", "OvermindDL1");
+		meta.description = "";
+		meta.url = "";
+		meta.updateUrl = "";
+		meta.screenshots = new String[0];
+		meta.logoFile = "";
+	}
+	
+	@Override
+	public boolean registerBus(EventBus bus, LoadController controller) {
+		bus.register(this);
+		return true;
+	}
 }

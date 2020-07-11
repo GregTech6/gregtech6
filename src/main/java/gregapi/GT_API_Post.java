@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -38,10 +37,8 @@ import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
-import gregapi.config.ConfigCategories;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.ModIDs;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -66,7 +63,6 @@ import gregapi.wooddict.WoodDictionary;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
 
 /**
  * @author Gregorius Techneticies
@@ -621,13 +617,14 @@ public class GT_API_Post extends Abstract_Mod {
 		// I hate having to do this, but there is no other proper way to actually fix this Issue...
 		// It would be so much easier to just say to not use this Mod, but ofcourse a lot of Stuff depends on it "existing" for no good reasons.
 		// This Bug has caused many people way too much wasted time to just leave it alone. So Baseball Bat instead of Surgical Precision it is!
-		// TODO: P.S. If someone were to help me with an ASM based Solution that just kills "OreDictionaryArbiter.initialize()", and does so only AFTER the PostInit Phase is done, that would be very much appreciated.
-		if (CODE_CLIENT && MD.COFH_CORE.mLoaded && ConfigsGT.CLIENT.get(ConfigCategories.general, "BrutallyFixCoFHCoreInSinglePlayer", T)) try {
-			MinecraftForge.EVENT_BUS.unregister(cofh.CoFHCore.instance);
-			FMLCommonHandler.instance().bus().unregister(cofh.core.util.FMLEventHandler.instance);
-		} catch (Throwable e) {
-			e.printStackTrace(ERR);
-		}
+		
+		// Replaced by ASM Stuff.
+		//if (CODE_CLIENT && MD.COFH_CORE.mLoaded && ConfigsGT.CLIENT.get(ConfigCategories.general, "BrutallyFixCoFHCoreInSinglePlayer", T)) try {
+		//  MinecraftForge.EVENT_BUS.unregister(cofh.CoFHCore.instance);
+		//  FMLCommonHandler.instance().bus().unregister(cofh.core.util.FMLEventHandler.instance);
+		//} catch (Throwable e) {
+		//  e.printStackTrace(ERR);
+		//}
 	}
 	
 	@Override
