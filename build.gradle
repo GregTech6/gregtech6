@@ -438,7 +438,11 @@ task wrapper(type: Wrapper) {
 
 jar {
 	manifest {
-		attributes 'FMLAT': 'gregtech_at.cfg'
+		attributes(
+			'FMLAT': 'gregtech_at.cfg',
+			'FMLCorePluginContainsFMLMod': 'true',
+			'FMLCorePlugin': 'gregtech.asm.GT6_ASM_Main'
+		)
 	}
 	configurations.shade.each { dep ->
 		from(project.zipTree(dep)) {
@@ -456,7 +460,11 @@ task sourceJar(type: Jar) {
 
 task devJar(type: Jar) {
 	manifest {
-		attributes 'FMLAT': 'gregtech_at.cfg'
+		attributes(
+			'FMLAT': 'gregtech_at.cfg',
+			'FMLCorePluginContainsFMLMod': 'true',
+			'FMLCorePlugin': 'gregtech.asm.GT6_ASM_Main'
+		)
 	}
 	configurations.shade.each { dep ->
 		from(project.zipTree(dep)) {
@@ -470,7 +478,11 @@ task devJar(type: Jar) {
 //task coreJar(type: Jar) {
 //	dependsOn jar
 //	manifest {
-//		attributes 'FMLAT': 'gregtech_at.cfg'
+//		attributes(
+//			'FMLAT': 'gregtech_at.cfg',
+//			'FMLCorePluginContainsFMLMod': 'true',
+//			'FMLCorePlugin': 'gregtech.asm.GT6_ASM_Main'
+//		)
 //	}
 //	classifier = 'core'
 //	from sourceSets.main.output
