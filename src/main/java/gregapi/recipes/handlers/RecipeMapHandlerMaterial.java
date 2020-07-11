@@ -63,7 +63,7 @@ public class RecipeMapHandlerMaterial extends RecipeMapHandler {
 	@Override
 	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
-		if (aNEI && ST.equal(aStack, mAdditionalInput)) return mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		if (ST.equal(aStack, mAdditionalInput)) return aNEI && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
 		return aData != null && aData.hasValidPrefixMaterialData() && aData.mMaterial.mMaterial == mInputMaterial && addRecipeForPrefix(aMap, aData.mPrefix);
 	}
 	
@@ -76,13 +76,13 @@ public class RecipeMapHandlerMaterial extends RecipeMapHandler {
 	@Override
 	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, Fluid aFluid) {
 		if (isDone()) return F;
-		return aNEI && mFluidInputPerUnit != null && mFluidInputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		return aNEI && mAllowToGenerateAllRecipesAtOnce && mFluidInputPerUnit != null && mFluidInputPerUnit.getFluid() == aFluid && addAllRecipesInternal(aMap);
 	}
 	
 	@Override
 	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, Fluid aFluid) {
 		if (isDone()) return F;
-		return aNEI && mFluidOutputPerUnit != null && mFluidOutputPerUnit.getFluid() == aFluid && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
+		return aNEI && mAllowToGenerateAllRecipesAtOnce && mFluidOutputPerUnit != null && mFluidOutputPerUnit.getFluid() == aFluid && addAllRecipesInternal(aMap);
 	}
 	
 	@Override
