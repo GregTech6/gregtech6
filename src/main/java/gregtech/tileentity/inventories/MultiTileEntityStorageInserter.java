@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -108,6 +108,7 @@ public class MultiTileEntityStorageInserter extends TileEntityBase07Paintable im
 	}
 	
 	@Override public boolean canDrop(int aSlot) {return T;}
+	@Override public boolean allowCovers(byte aSide) {return F;}
 	
 	// Icons
 	public static IIconContainer

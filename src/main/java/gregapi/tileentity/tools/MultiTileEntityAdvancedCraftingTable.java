@@ -440,7 +440,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 	@Override public boolean canDrop(int aInventorySlot) {return aInventorySlot < 31 || aInventorySlot > 32;}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {return new ItemStack[71];}
 	@Override public int getInventoryStackLimitGUI(int aSlot) {return aSlot == 30 ? 1 : 64;}
-	@Override public boolean allowCovers(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
+	@Override public boolean allowCovers(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide] && !ALONG_AXIS[aSide][mFacing];}
 	@Override public boolean isItemValidForSlotGUI(int aSlot, ItemStack aStack) {return aSlot != 30 || IL.Paper_Blueprint_Empty.equal(aStack, F, T) || IL.Paper_Blueprint_Used.equal(aStack, F, T);}
 	
 	@Override

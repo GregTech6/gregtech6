@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -99,6 +99,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		if (mTank.has() && (mMode & B[1]) != 0) aList.add(Chat.CYAN + "Sealed (" + mSealedTime + ")");
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
+		if (onlySimple()) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ONLY_SIMPLE));
 		if (mGasProof   ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
 		if (mAcidProof  ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
 		if (mPlasmaProof) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_PLASMAPROOF));
@@ -221,7 +222,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	}
 
 	public boolean allowFluid(FluidStack aFluid) {
-		return !FL.powerconducting(aFluid) && FL.temperature(aFluid) < mMeltingPoint;
+		return !FL.powerconducting(aFluid) && FL.temperature(aFluid) < mMeltingPoint && (!onlySimple() || FL.simple(aFluid));
 	}
 
 	@Override
@@ -266,6 +267,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	@Override public long getProgressMax(byte aSide) {return mMaxSealedTime;}
 	@Override public boolean canDrop(int aSlot) {return F;}
 	
+	public boolean onlySimple() {return F;}
 	public boolean canBeSealed() {return T;}
 	public boolean keepsFilter() {return F;}
 	public int getLogisticsPriorityFluid() {return mTank.isEmpty() ? 1 : 2;}

@@ -170,6 +170,7 @@ public class LH {
 	, TOOLTIP_LIQUIDPROOF = "gt.lang.proof.liquid"
 	, TOOLTIP_PLASMAPROOF = "gt.lang.proof.plasma"
 	, TOOLTIP_HEATPROOF = "gt.lang.proof.heat"
+	, TOOLTIP_ONLY_SIMPLE = "gt.lang.only.simple"
 	, TOOLTIP_REMINDER_EXTENDERS = "gt.lang.reminder.extenders"
 	, TOOLTIP_SEALABLE_ANY = "gt.lang.sealable.any"
 	, TOOLTIP_SEALABLE_SOME = "gt.lang.sealable.some"
@@ -441,6 +442,7 @@ public class LH {
 		add(TOOLTIP_LIQUIDPROOF                         , "Can handle Liquids");
 		add(TOOLTIP_PLASMAPROOF                         , "Can handle Plasma");
 		add(TOOLTIP_HEATPROOF                           , "Can handle Temperatures up to: ");
+		add(TOOLTIP_ONLY_SIMPLE                         , "Only accepts simple Fluids!");
 		add(TOOLTIP_REMINDER_EXTENDERS                  , "Remember to use Universal Extenders if you need to literally cut Corners");
 		add(TOOLTIP_SEALABLE_ANY                        , "This Block can seal Air at any Side");
 		add(TOOLTIP_SEALABLE_SOME                       , "This Block can seal Air at some Sides");
