@@ -235,25 +235,25 @@ public class WorldgenTesting extends WorldgenObject {
 			, ST.make(Items.iron_pickaxe, 1, 0)
 			, ST.make(Items.diamond_pickaxe, 1, 0)
 			
+			, IL.Thermometer_Quicksilver.get(1)
 			, IL.Tool_Worldgen_Debugger.get(1)
 			, IL.Tool_Cheat.get(1)
 			, IL.IC2_Debug.get(1)
-			, IL.Thermometer_Quicksilver.get(1)
-			, ST.tag(0)
-			, ST.tag(1)
-			, ST.tag(2)
 			, IL.Brain_Tape.get(64)
 			, IL.Pill_Cure_All.get(64)
+			, IL.Circuit_Selector.getWithDamage(1, 0)
+			, IL.Circuit_Selector.getWithDamage(1, 1)
+			, IL.Circuit_Selector.getWithDamage(1, 2)
 			
 			, IL.TC_Thaumometer.get(1)
 			, IL.TC_Crimson_Rites.get(1)
 			, IL.TC_Thaumonomicon.get(1)
 			, ST.make(MD.TC, "ItemThaumonomicon", 1, 42)
-			, NI
-			, NI
-			, NI
-			, NI
-			, NI
+			, ST.make(Items.bucket, 1, 0)
+			, ST.make(Items.water_bucket, 1, 0)
+			, ST.make(Items.lava_bucket, 1, 0)
+			, ST.make(Items.milk_bucket, 1, 0)
+			, ST.make(Items.item_frame, 1, 0)
 			
 			, ST.make(Blocks.stone_button, 1, 0)
 			, ST.make(Blocks.lever, 1, 0)
