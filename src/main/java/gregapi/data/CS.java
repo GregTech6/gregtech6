@@ -846,13 +846,14 @@ public class CS {
 	, DIM_LASTMILLENIUM = -112
 	, DIM_TROPICS = -127
 	;
-
+	
 	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
 	public static final List<WorldgenObject>
 	  GEN_OVERWORLD     = new ArrayListNoNulls<>()
 	, GEN_GT            = new ArrayListNoNulls<>()
 	, GEN_PFAA          = new ArrayListNoNulls<>()
+	, GEN_TFC           = new ArrayListNoNulls<>()
 	, GEN_NETHER        = new ArrayListNoNulls<>()
 	, GEN_AETHER        = new ArrayListNoNulls<>()
 	, GEN_END           = new ArrayListNoNulls<>()
@@ -869,15 +870,16 @@ public class CS {
 	, GEN_ALFHEIM       = new ArrayListNoNulls<>()
 	, GEN_TROPICS       = new ArrayListNoNulls<>()
 	, GEN_CANDY         = new ArrayListNoNulls<>()
-	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY}
-	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
+	, GEN_FLOOR[]       = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY}
+	, GEN_ALL[]         = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_MARS, GEN_TWILIGHT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ENVM, GEN_ALFHEIM, GEN_DEEPDARK, GEN_TROPICS, GEN_CANDY, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
 	;
-
+	
 	/** Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
 	public static final List<WorldgenObject>
 	  ORE_OVERWORLD     = new ArrayListNoNulls<>()
 	, ORE_PFAA          = new ArrayListNoNulls<>()
+	, ORE_TFC           = new ArrayListNoNulls<>()
 	, ORE_NETHER        = new ArrayListNoNulls<>()
 	, ORE_AETHER        = new ArrayListNoNulls<>()
 	, ORE_END           = new ArrayListNoNulls<>()
@@ -894,10 +896,10 @@ public class CS {
 	, ORE_ALFHEIM       = new ArrayListNoNulls<>()
 	, ORE_TROPICS       = new ArrayListNoNulls<>()
 	, ORE_CANDY         = new ArrayListNoNulls<>()
-	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY}
-	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
+	, ORE_FLOOR[]       = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY}
+	, ORE_ALL[]         = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ENVM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
 	;
-
+	
 	/** For Internal Usage. Even though after 2 years I still don't use this one... */
 	public static INetworkHandler NW_GT;
 

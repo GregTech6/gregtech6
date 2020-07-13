@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -103,17 +103,17 @@ public class GT6WorldGenerator {
 	
 	private static final List<Runnable> LIST = new ArrayListNoNulls<>();
 	private static boolean LOCK = F;
-	public static boolean PFAA = F;
+	public static boolean PFAA = F, TFC = F;
 	
 	public static void generate(World aWorld, int aX, int aZ, boolean aGalactiCraft) {
 		switch(aWorld.provider.dimensionId) {
 		case -2147483648  : return;
-		case DIM_OVERWORLD: generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD , aWorld, aX, aZ)); return;
+		case DIM_OVERWORLD: generate(new WorldGenContainer(TFC ? GEN_TFC : PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, TFC ? ORE_TFC : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD , aWorld, aX, aZ)); return;
 		case DIM_NETHER   : generate(new WorldGenContainer(GEN_NETHER                                               , ORE_NETHER                                             , DIM_NETHER    , aWorld, aX, aZ)); return;
 		case DIM_END      : generate(new WorldGenContainer(GEN_END                                                  , ORE_END                                                , DIM_END       , aWorld, aX, aZ)); return;
 		}
 		
-		if (WD.dimMYST  (aWorld.provider)) {generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD , aWorld, aX, aZ)); return;}
+		if (WD.dimMYST  (aWorld.provider)) {generate(new WorldGenContainer(TFC ? GEN_TFC : PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, TFC ? ORE_TFC : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD , aWorld, aX, aZ)); return;}
 		if (WD.dimTF    (aWorld.provider)) {generate(new WorldGenContainer(GEN_TWILIGHT    , ORE_TWILIGHT    , DIM_TWILIGHT    , aWorld, aX, aZ)); return;}
 		if (WD.dimAETHER(aWorld.provider)) {generate(new WorldGenContainer(GEN_AETHER      , ORE_AETHER      , DIM_AETHER      , aWorld, aX, aZ)); return;}
 		if (WD.dimERE   (aWorld.provider)) {generate(new WorldGenContainer(GEN_EREBUS      , ORE_EREBUS      , DIM_EREBUS      , aWorld, aX, aZ)); return;}

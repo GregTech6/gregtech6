@@ -23,10 +23,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.14.00: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Dwarf Fortress for the detriment of all other activities...)
 [COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
+[IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
 [FIXED] Some things I saw GT6U has fixed too.
 [FIXED] Whoops, I made Titanium Invisible by accident.
 [FIXED] There was ~5 second long Lag Spikes when certain Recipes were asked for by the On-Demand Recipe System. Specifically Recipes with Selector Tags, Extruder Shapes or Fluids (Sawmill), aswell as Recipes with Empty Slots in the Anvil (Item Casings).
-[IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
+[CHANGED] Certain Worldgen Features will no longer be present in the Overworld when TerraFirmaCraft is loaded.
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
 [ADDED] The Shelf in Workshops in GT6 Dungeons now contains two Rolls of Duct Tape, which is always enough to haul both of the Stone Mass Storages and then some.
 

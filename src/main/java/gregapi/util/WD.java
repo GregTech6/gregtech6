@@ -350,10 +350,18 @@ public class WD {
 	}
 	/** @return the Height of the Water Level that should probably be in this World. */
 	public static int waterLevel(WorldProvider aProvider, int aDefaultOverworld) {
-		return aProvider.dimensionId == DIM_OVERWORLD ? aDefaultOverworld : dimTF(aProvider) ? 31 : 62;
+		return aProvider.dimensionId == DIM_OVERWORLD ? waterLevel(aDefaultOverworld) : dimTF(aProvider) ? 31 : 62;
+	}
+	/** @return the Height of the Water Level that should probably be in this World. */
+	public static int waterLevel(int aDefaultOverworld) {
+		return MD.TFC.mLoaded || MD.TFCP.mLoaded? 126 : aDefaultOverworld; // TODO This 126 is just a random guess!
+	}
+	/** @return the Height of the Water Level that should probably be in this World. */
+	public static int waterLevel() {
+		return MD.TFC.mLoaded || MD.TFCP.mLoaded? 126 : 62; // TODO This 126 is just a random guess!
 	}
 	
-	/** @return the regular Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */
+	/** @return the regular Temperature of the World at this Location according to Gregs calculations. In Kelvin, ofcourse. */
 	public static long temperature(World aWorld, int aX, int aY, int aZ) {
 		long rTemperature = envTemp(aWorld, aX, aY, aZ);
 		if (burning(aWorld, aX, aY, aZ)) rTemperature = Math.max(rTemperature, C + 200);

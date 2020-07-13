@@ -610,6 +610,7 @@ public class GT_API extends Abstract_Mod {
 		ITexture.Util.MC_ALPHA_BLENDING     = ConfigsGT.CLIENT.get(ConfigCategories.general, "useMCAlphaBlending"      , ITexture.Util.MC_ALPHA_BLENDING);
 		
 		GT6WorldGenerator.PFAA = (ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AutoDetectPFAA", T) && MD.PFAA.mLoaded);
+		GT6WorldGenerator.TFC  = (ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AutoDetectPFAA", T) && (MD.TFC.mLoaded || MD.TFCP.mLoaded));
 		
 		// Register Crafting Recipe Classes.
 		RecipeSorter.register("gregtech:shaped"         , AdvancedCraftingShaped.class              , net.minecraftforge.oredict.RecipeSorter.Category.SHAPED       , "after:minecraft:shaped before:minecraft:shapeless");
