@@ -808,6 +808,8 @@ public class CS {
 	public static double CONFIG_HARDNESS_MULTIPLIER_SAND = 1.0, CONFIG_HARDNESS_MULTIPLIER_ROCK = 1.0, CONFIG_HARDNESS_MULTIPLIER_ORES = 1.0;
 	/** Tree Growth Time Multiplier. */
 	public static int TREE_GROWTH_TIME = 1;
+	/** TFC Damage Multiplier. */
+	public static int TFC_DAMAGE_MULTIPLIER = 80;
 	/** Entity Cramming */
 	public static int ENTITY_CRAMMING = 3;
 	/** Item Related */
