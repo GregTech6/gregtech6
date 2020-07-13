@@ -1987,7 +1987,7 @@ public class MT {
 			FishRaw                 .put(MD.MaCu);
 			FishRotten              .put(MD.MaCu);
 			TiO2                    .put(MD.MaCu, COMMON_ORE);
-			Ti                      .put(MD.MaCu).visDefault();
+			Ti                      .put(MD.MaCu);
 			
 			
 			An                      .put(MD.ABYSSAL, COMMON_ORE).visDefault();
