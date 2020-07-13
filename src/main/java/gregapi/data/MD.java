@@ -124,6 +124,7 @@ public class MD {
 	, EIO               = new ModData(ModIDs.EIO                , "Ender IO")
 	, RT                = new ModData(ModIDs.RT                 , "Random Things")
 	, AA                = new ModData(ModIDs.AA                 , "Actually Additions")
+	, SD                = new ModData(ModIDs.SD                 , "Storage Drawers")
 	, JABBA             = new ModData(ModIDs.JABBA              , "JABBA")
 	
 	, MgC               = new ModData(ModIDs.MgC                , "Magneticraft")

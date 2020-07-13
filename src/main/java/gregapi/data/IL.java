@@ -41,7 +41,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public enum IL implements IItemContainer {
 	Display_Fluid,    // <-- Display Fluid for Tank Slots
-	Circuit_Selector, // <-- this is the Circuit that has the adjustable Numbers on it
+	Circuit_Selector, // <-- this is the Circuit that has the adjustable Numbers on it, renamed to Selector Tag later on.
 	Empty_Slot,       // <-- Marker for Slots to be left Empty
 	
 	TE_Slag, TE_Slag_Rich, TE_Cinnabar,

@@ -1572,11 +1572,11 @@ public class CS {
 		, POCKET_MULTITOOL = 1000, POCKET_KNIFE = 1002, POCKET_SAW = 1004, POCKET_FILE = 1006, POCKET_SCREWDRIVER = 1008, POCKET_WIRECUTTER = 1010, POCKET_SCISSORS = 1012, POCKET_CHISEL = 1014
 		, PISTOL = 5000
 		;
-
+		
 		public static MultiItemTool sMetaTool;
-
+		
 		// If you plan do use this to detect Crafting Items, DON'T! Use OreDict for detecting Crafting Items being Tools!
-
+		
 		private static final ItemStackSet<ItemStackContainer> TOOL_LIST = new ItemStackSet<>();
 		private static final Map<String, ItemStackSet<ItemStackContainer>> TOOL_LISTS = new HashMap<>();
 		private static ItemStackSet<ItemStackContainer> get(String aToolType) {ItemStackSet<ItemStackContainer> rSet = TOOL_LISTS.get(aToolType); if (rSet == null) TOOL_LISTS.put(aToolType, rSet = new ItemStackSet<>()); return rSet;}
@@ -1828,8 +1828,9 @@ public class CS {
 		, EIO               = "EnderIO"
 		, RT                = "RandomThings"
 		, AA                = "ActuallyAdditions"
+		, SD                = "StorageDrawers"
 		, JABBA             = "JABBA"
-
+		
 		, MgC               = "Magneticraft"
 		, BR                = "BigReactors"
 		, HBM               = "hbm"

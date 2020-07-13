@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,6 +23,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.data.CS.ItemsGT;
 import gregapi.data.MD;
 import gregapi.old.Textures;
 import gregapi.util.ST;
@@ -37,6 +38,7 @@ import net.minecraft.util.IIcon;
 public class ItemEmptySlot extends ItemBase {
 	public ItemEmptySlot(String aUnlocalized) {
 		super(MD.GAPI.mID, aUnlocalized, "Empty Slot", "This Slot has to be left Empty");
+		ItemsGT.ILLEGAL_DROPS.add(this);
 		ST.hide(this);
 	}
 	

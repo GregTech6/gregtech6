@@ -225,6 +225,12 @@ public class LoaderBookList implements Runnable {
 		if (MD.AA.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.AA, "itemBooklet"                          ,   W, (byte)  7);
 		}
+		if (MD.SD.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.SD, "shroudKey"                            ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.SD, "upgradeLock"                          ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.SD, "personalKey"                          ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER.put(MD.SD, "tape"                                 ,   W, (byte) 57);
+		}
 		if (MD.RC.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.RC, "routing.table"                        ,   W, (byte) 19);
 			BooksGT.BOOK_REGISTER.put(MD.RC, "routing.ticket"                       ,   W, (byte) 26);

@@ -46,11 +46,18 @@ public class PlayerModelRenderer extends RenderPlayer {
 	
 	private ResourceLocation getResource(String aPlayer) {
 		aPlayer = aPlayer.toLowerCase();
+		// GT6 Team
 		if (aPlayer.equalsIgnoreCase("GregoriusT"))     return mResources[3];
 		if (aPlayer.equalsIgnoreCase("OvermindDL1"))    return mResources[3];
-		if (aPlayer.equalsIgnoreCase("Mine_Sasha"))     return mResources[4];
+		// GT6U Team
+		if (aPlayer.equalsIgnoreCase("jihuayu123"))     return mResources[3];
+		if (aPlayer.equalsIgnoreCase("Yuesha_Kev14"))   return mResources[3];
+		if (aPlayer.equalsIgnoreCase("Evanvenir"))      return mResources[3];
+		// People who helped back in ancient GT Versions.
 		if (aPlayer.equalsIgnoreCase("Mr_Brain"))       return mResources[2];
 		if (aPlayer.equalsIgnoreCase("Friedi4321"))     return mResources[0];
+		// Supporter Lists
+		//if (aPlayer.equalsIgnoreCase("Mine_Sasha"))   return mResources[4]; // Already in the Supporter Lists. TODO: Remove this Line
 		if (mSupporterListGold.contains(aPlayer))       return mResources[4];
 		if (mSupporterListSilver.contains(aPlayer))     return mResources[1];
 		return null;

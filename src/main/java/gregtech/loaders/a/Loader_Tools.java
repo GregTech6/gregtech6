@@ -237,7 +237,7 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', gem.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Au, MT.As, MT.Co, MT.Co_60, MT.Ni, MT.Thaumium, MT.DamascusSteel}) {
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Au, MT.As, MT.Co, MT.Co_60, MT.Ni, MT.Thaumium, MT.DamascusSteel, MT.Netherite, MT.NetherizedDiamond}) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', nugget.dat(tMaterial));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
@@ -249,7 +249,7 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.FLINT_AND_TINDER   , tMaterial                 , MT.Flint  ), CR.DEF_MIR   , "T ", " F", 'F', OD.itemFlint, 'T', rockGt.dat(tMaterial));
 		}
 		
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Syrmorite, MT.Plastic, MT.Al, MT.Cr, MT.StainlessSteel})
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Plastic, MT.Syrmorite, MT.Au, MT.Al, MT.Cr, MT.StainlessSteel, MT.Netherite, MT.NetherizedDiamond})
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN        , tMaterial         , tMaterial         ), CR.DEF_MIR   , "  S", " I ", "S f", 'I', ingot.dat(tMaterial), 'S', stick.dat(tMaterial));
 		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) if (tMaterial != MT.Wood) {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.ROLLING_PIN        , tMaterial         , tMaterial         ), CR.DEF_MIR   , "  S", " I ", "S f", 'I', plank.dat(tMaterial), 'S', stick.dat(tMaterial));
@@ -296,6 +296,8 @@ public class Loader_Tools implements Runnable {
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.CLUB               , tRock             , (OreDictMaterial)tHandle[0]   ), CR.DEF_MIR   , " FF", "FFF", "SF ", 'S', tHandle[1], 'F', rockGt.dat(tRock));
 		CR.shaped(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER         , tRock             , (OreDictMaterial)tHandle[0]   ), CR.DEF_MIR   , "FF ", "FFS", "FF ", 'S', tHandle[1], 'F', rockGt.dat(tRock));
 		}
+		
+		// End of Tool Handle Loop
 		}
 		
 		final String tCategory = ConfigCategories.Recipes.gregtechtools + ".";
