@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -124,7 +124,7 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		
 		RM.Mortar   .addRecipe1(T, 16, 16, 6000, IL.BTL_Portal_Bark.get(1), IL.BTL_Bark.get(9));
 		RM.Mortar   .addRecipe1(T, 16, 16, 5000, IL.BTL_Weedwood_Bark.get(1), IL.BTL_Bark.get(9));
-		RM.Mortar   .addRecipe1(T, 16, 16, 1000, IL.BTL_Weedwood_RottenBark.get(1), IL.FR_Mulch.exists()?IL.FR_Mulch.get(9):OP.dust.mat(MT.Wood, 9));
+		RM.Mortar   .addRecipe1(T, 16, 16, 1000, IL.BTL_Weedwood_RottenBark.get(1), IL.FR_Mulch.exists()?IL.FR_Mulch.get(9):OP.dust.mat(MT.Weedwood, 9));
 		
 		CR.shaped(OP.stick.mat(MT.Weedwood, 2), DEF, "s", "X", 'X', ST.make(MD.BTL, "deadWeedwoodBush", 1, 0));
 		CR.shaped(OP.stick.mat(MT.Weedwood, 2), DEF, "k", "X", 'X', ST.make(MD.BTL, "deadWeedwoodBush", 1, 0));

@@ -22,8 +22,8 @@ package gregtech.blocks.wood;
 import gregapi.block.metatype.BlockBasePlanksFlammable;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
+import gregapi.data.ANY;
 import gregapi.data.LH;
-import gregapi.data.MT;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
@@ -34,7 +34,7 @@ import net.minecraft.world.World;
 
 public class BlockTreePlanks extends BlockBasePlanksFlammable {
 	public BlockTreePlanks(String aName) {
-		super(ItemBlockMetaType.class, Material.wood, soundTypeWood, aName, "", MT.Wood, 1, 1, 0, 16, Textures.BlockIcons.PLANKS);
+		super(ItemBlockMetaType.class, Material.wood, soundTypeWood, aName, "", ANY.Wood, 1, 1, 0, 16, Textures.BlockIcons.PLANKS);
 		LH.add(getUnlocalizedName()+ ".0.name", "Rubberwood Planks");
 		LH.add(getUnlocalizedName()+ ".1.name", "Maple Planks");
 		LH.add(getUnlocalizedName()+ ".2.name", "Willow Planks");

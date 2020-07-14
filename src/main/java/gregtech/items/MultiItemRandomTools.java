@@ -195,10 +195,12 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		IL.Tool_Matches.set(                    addItem(tLastID =  5000, "Match"                            , ""                                            , new Behavior_Lighter(9000), TC.stack(TC.IGNIS, 1), TC.stack(TC.VACUOS, 1), OD.craftingFirestarter));
-		RM.Assembler.addRecipe2(T, 16, 16, OP.bolt.mat(MT.Wood, 1), OP.dustSmall.mat(MT.P           , 1), IL.Tool_Matches.get(1));
-		RM.Assembler.addRecipe2(T, 16, 16, OP.bolt.mat(MT.Wood, 1), OP.dustSmall.mat(MT.Phosphorus  , 1), IL.Tool_Matches.get(1));
-		RM.Assembler.addRecipe2(T, 16, 64, OP.bolt.mat(MT.Wood, 4), OP.dust     .mat(MT.P           , 1), IL.Tool_Matches.get(4));
-		RM.Assembler.addRecipe2(T, 16, 64, OP.bolt.mat(MT.Wood, 4), OP.dust     .mat(MT.Phosphorus  , 1), IL.Tool_Matches.get(4));
+		for (OreDictMaterial tWood : ANY.Wood.mToThis) {
+		RM.Assembler.addRecipe2(T, 16, 16, OP.bolt.mat(tWood, 1), OP.dustSmall.mat(MT.P           , 1), IL.Tool_Matches.get(1));
+		RM.Assembler.addRecipe2(T, 16, 16, OP.bolt.mat(tWood, 1), OP.dustSmall.mat(MT.Phosphorus  , 1), IL.Tool_Matches.get(1));
+		RM.Assembler.addRecipe2(T, 16, 64, OP.bolt.mat(tWood, 4), OP.dust     .mat(MT.P           , 1), IL.Tool_Matches.get(4));
+		RM.Assembler.addRecipe2(T, 16, 64, OP.bolt.mat(tWood, 4), OP.dust     .mat(MT.Phosphorus  , 1), IL.Tool_Matches.get(4));
+		}
 		CR.shaped(IL.Tool_Matches.get(1), CR.DEF, "P", "S", 'P', OP.dustSmall.dat(MT.P                  ), 'S', OP.bolt.dat(ANY.Wood));
 		CR.shaped(IL.Tool_Matches.get(1), CR.DEF, "P", "S", 'P', OP.dustSmall.dat(MT.Phosphorus         ), 'S', OP.bolt.dat(ANY.Wood));
 		CR.shaped(IL.Tool_Matches.get(4), CR.DEF, " S ", "SPS", " S ", 'P', OP.dust.dat(MT.P            ), 'S', OP.bolt.dat(ANY.Wood));
@@ -248,14 +250,14 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		
-		IL.Tool_Fire_Starter.set(               addItem(tLastID =  5014, "Fire Starter"                     , "(Made with Dry Grass)"                       , new OreDictItemData(MT.Wood, U), new Behavior_Lighter(5000), TC.stack(TC.IGNIS, 1), TC.stack(TC.ARBOR, 1), TC.stack(TC.HERBA, 1), OD.craftingFirestarter));
+		IL.Tool_Fire_Starter.set(               addItem(tLastID =  5014, "Fire Starter"                     , "(Made with Dry Grass)"                       , new OreDictItemData(ANY.Wood, U), new Behavior_Lighter(5000), TC.stack(TC.IGNIS, 1), TC.stack(TC.ARBOR, 1), TC.stack(TC.HERBA, 1), OD.craftingFirestarter));
 		CR.shaped(IL.Tool_Fire_Starter.get(1)       , CR.DEF_NAC_NCC_MIR, "S ", "GS", 'S', OP.stick.dat(ANY.Wood), 'G', OD.itemGrassDry);
 		
-		IL.Tool_Fire_Starter_Bark.set(          addItem(tLastID =  5015, "Fire Starter"                     , "(Made with Dry Tree Bark)"                   , new OreDictItemData(MT.Wood, U), new Behavior_Lighter(5500), TC.stack(TC.IGNIS, 1), TC.stack(TC.ARBOR, 2), OD.craftingFirestarter));
+		IL.Tool_Fire_Starter_Bark.set(          addItem(tLastID =  5015, "Fire Starter"                     , "(Made with Dry Tree Bark)"                   , new OreDictItemData(ANY.Wood, U), new Behavior_Lighter(5500), TC.stack(TC.IGNIS, 1), TC.stack(TC.ARBOR, 2), OD.craftingFirestarter));
 		CR.shaped(IL.Tool_Fire_Starter_Bark.get(1)  , CR.DEF_NAC_NCC_MIR, "S ", "GS", 'S', OP.stick.dat(ANY.Wood), 'G', OD.itemBarkDry);
 		
 		
-		IL.Pellet_Wood.set(                     addItem(tLastID =  5999, "Wood Pellet"                      , ""                                            , new OreDictItemData(MT.Wood, U), TICKS_PER_SMELT, TC.stack(TC.POTENTIA, 1)));
+		IL.Pellet_Wood.set(                     addItem(tLastID =  5999, "Wood Pellet"                      , ""                                            , new OreDictItemData(ANY.Wood, U), TICKS_PER_SMELT, TC.stack(TC.POTENTIA, 1)));
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.LiveRoot      , U2), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));
 		RM.Mixer.addRecipe1(T, 16, 32, OM.dust(MT.LiveRoot          ), FL.Glue.make(250), NF, IL.Pellet_Wood.get(2));
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Livingwood    , U2), FL.Glue.make(125), NF, IL.Pellet_Wood.get(1));

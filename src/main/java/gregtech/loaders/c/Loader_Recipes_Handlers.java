@@ -483,7 +483,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		ICondition tConditionP = new Nor(PREFIX_UNUSED, PLANT_DROP, IS_CONTAINER, DUST_BASED, ORE, ORE_PROCESSING_BASED, scrapGt, ingotHot);
 		
 		
-		RM.Polarizer    .add(new RecipeMapHandlerMaterial(MT.Nd                     , NF                                , 128, 144, NF, MT.NeodymiumMagnetic    , NI, T, tConditionP));
+		RM.Polarizer    .add(new RecipeMapHandlerMaterial(MT.Nd, NF, 128, 144, NF, MT.NeodymiumMagnetic, NI, T, tConditionP));
 		
 		for (OreDictMaterial tMaterial : ANY.WoodUntreated.mToThis) {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Seed        .make( 100),   0, 144, NF, MT.WoodSealed    , NI, T, tConditionP));

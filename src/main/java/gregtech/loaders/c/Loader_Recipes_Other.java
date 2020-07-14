@@ -31,7 +31,6 @@ import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OD;
-import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterial;
@@ -385,21 +384,21 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		//----------------------------------------------------------------------------
 		
-		CR.shaped(stick         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC   , "X" , "X" , 'X', rockGt.dat(MT.PetrifiedWood));
-		CR.shaped(plate         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC   , "XX", "XX", 'X', rockGt.dat(MT.PetrifiedWood));
-		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC   , "b ", " X", 'X', plate.dat(MT.Paper));
-		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC   , "q ", " X", 'X', plate.dat(MT.Paper));
+		CR.shaped(stick         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC, "X" , "X" , 'X', rockGt.dat(MT.PetrifiedWood));
+		CR.shaped(plate         .mat(MT.PetrifiedWood   ,  1), CR.DEF_NAC, "XX", "XX", 'X', rockGt.dat(MT.PetrifiedWood));
+		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC, "b ", " X", 'X', plate.dat(MT.Paper));
+		CR.shaped(plateTiny     .mat(MT.Paper           ,  9), CR.DEF_NAC, "q ", " X", 'X', plate.dat(MT.Paper));
 		for (OreDictMaterial tWax : ANY.Wax.mToThis) {
-		CR.shaped(ring          .mat(tWax               ,  1), CR.DEF_NAC   , "k", "X", 'X', plate.dat(tWax));
-		CR.shaped(casingSmall   .mat(tWax               ,  1), CR.DEF_NAC   , "X", "k", 'X', plate.dat(tWax));
+		CR.shaped(ring          .mat(tWax               ,  1), CR.DEF_NAC, "k", "X", 'X', plate.dat(tWax));
+		CR.shaped(casingSmall   .mat(tWax               ,  1), CR.DEF_NAC, "X", "k", 'X', plate.dat(tWax));
 		}
-		CR.shaped(ring          .mat(MT.Rubber          ,  1), CR.DEF_NAC   , "k", "X", 'X', plate.dat(MT.Rubber));
-		CR.shaped(casingSmall   .mat(MT.Rubber          ,  1), CR.DEF_NAC   , "X", "k", 'X', plate.dat(MT.Rubber));
-		CR.shaped(gearGt        .mat(MT.Wood            ,  1), CR.DEF_NAC   , "SPS", "PsP", "SPS", 'P', OD.plankWood, 'S', ST.make(Blocks.wooden_button, 1, W));
-		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC   , "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', ST.make(Blocks.stone_button, 1, W));
-		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC   , "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', rockGt.dat(MT.Stone));
-		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC   , "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', stick.dat(MT.Stone));
-		CR.shaped(gearGtSmall   .mat(MT.Stone           ,  1), CR.DEF_NAC   , "P ", " f", 'P', stoneSmooth);
+		CR.shaped(ring          .mat(MT.Rubber          ,  1), CR.DEF_NAC, "k", "X", 'X', plate.dat(MT.Rubber));
+		CR.shaped(casingSmall   .mat(MT.Rubber          ,  1), CR.DEF_NAC, "X", "k", 'X', plate.dat(MT.Rubber));
+		CR.shaped(gearGt        .mat(MT.Wood            ,  1), CR.DEF_NAC, "SPS", "PsP", "SPS", 'P', OD.plankWood, 'S', ST.make(Blocks.wooden_button, 1, W));
+		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', ST.make(Blocks.stone_button, 1, W));
+		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', rockGt.dat(MT.Stone));
+		CR.shaped(gearGt        .mat(MT.Stone           ,  1), CR.DEF_NAC, "SPS", "PfP", "SPS", 'P', stoneSmooth, 'S', stick.dat(MT.Stone));
+		CR.shaped(gearGtSmall   .mat(MT.Stone           ,  1), CR.DEF_NAC, "P ", " f", 'P', stoneSmooth);
 		
 		for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_MAP.values()) if (!tMat.containsAny(TD.Properties.INVALID_MATERIAL, TD.Compounds.COATED) && tMat.mTargetRegistration == tMat)
 		CR.shaped(gearGtSmall.mat(tMat, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "P ", tMat.contains(TD.Properties.WOOD)?" s":tMat.contains(TD.Properties.STONE)?" f":" h", 'P', plate.dat(tMat));
@@ -826,65 +825,65 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		
 		if (FL.Ender_TE.exists()) {
-		RM.Massfab   .addRecipe2(T,  16, 144    , ST.tag(1), OP.dustDiv72.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250    ), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144*  8, ST.tag(1), OP.dustTiny .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250*  8), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144* 18, ST.tag(1), OP.dustSmall.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 18), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(1), OP.dust     .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 72), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(1), OP.ingot    .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 72), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144*648, ST.tag(1), OP.blockDust.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250*648), ZL_IS);
-		RM.Replicator.addRecipe1(T,  16, 144    , ST.tag(0), FL.Ender_TE.make(250), NF, OP.gem.mat(MT.EnderPearl, 1));
-		RM.Lightning .addRecipe1(T, 512, 512, OP.blockSolid.mat(MT.Netherite, 1), FL.array(FL.Ender_TE.make(1000), FL.Oil_Soulsand.make(5000)), ZL_FS, OP.gem.mat(MT.NetherStar, 1));
+		RM.Massfab   .addRecipe2(T,  16, 144    , ST.tag(1), dustDiv72.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250    ), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144*  8, ST.tag(1), dustTiny .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250*  8), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 18, ST.tag(1), dustSmall.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 18), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(1), dust     .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 72), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(1), ingot    .mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250* 72), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144*648, ST.tag(1), blockDust.mat(MT.AncientDebris, 1), NF, FL.Ender_TE.make(250*648), ZL_IS);
+		RM.Replicator.addRecipe1(T,  16, 144    , ST.tag(0), FL.Ender_TE.make(250), NF, gem.mat(MT.EnderPearl, 1));
+		RM.Lightning .addRecipe1(T, 512, 512, blockSolid.mat(MT.Netherite, 1), FL.array(FL.Ender_TE.make(1000), FL.Oil_Soulsand.make(5000)), ZL_FS, gem.mat(MT.NetherStar, 1));
 		}
-		RM.Massfab   .addRecipe2(T,  16, 144    , ST.tag(0), OP.dustDiv72.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L    ), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144*  8, ST.tag(0), OP.dustTiny .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L*  8), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144* 18, ST.tag(0), OP.dustSmall.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 18), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(0), OP.dust     .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 72), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(0), OP.ingot    .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 72), ZL_IS);
-		RM.Massfab   .addRecipe2(T,  16, 144*648, ST.tag(0), OP.blockDust.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L*648), ZL_IS);
-		RM.Replicator.addRecipe1(T,  16, 144    , ST.tag(0), FL.Ender.make(L), NF, OP.gem.mat(MT.EnderPearl, 1));
-		RM.Lightning .addRecipe1(T, 512, 512, OP.blockSolid.mat(MT.Netherite, 1), FL.array(FL.Ender.make(L*4), FL.Oil_Soulsand.make(5000)), ZL_FS, OP.gem.mat(MT.NetherStar, 1));
+		RM.Massfab   .addRecipe2(T,  16, 144    , ST.tag(0), dustDiv72.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L    ), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144*  8, ST.tag(0), dustTiny .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L*  8), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 18, ST.tag(0), dustSmall.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 18), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(0), dust     .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 72), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144* 72, ST.tag(0), ingot    .mat(MT.AncientDebris, 1), NF, FL.Ender.make(L* 72), ZL_IS);
+		RM.Massfab   .addRecipe2(T,  16, 144*648, ST.tag(0), blockDust.mat(MT.AncientDebris, 1), NF, FL.Ender.make(L*648), ZL_IS);
+		RM.Replicator.addRecipe1(T,  16, 144    , ST.tag(0), FL.Ender.make(L), NF, gem.mat(MT.EnderPearl, 1));
+		RM.Lightning .addRecipe1(T, 512, 512, blockSolid.mat(MT.Netherite, 1), FL.array(FL.Ender.make(L*4), FL.Oil_Soulsand.make(5000)), ZL_FS, gem.mat(MT.NetherStar, 1));
 		
 		
 		
 		
-		RM.Fusion.addRecipe1(F, -8192,  730, ST.tag(1), FL.array(MT.D     .gas   (U*2, T)                        ), FL.array(MT.He_3  .gas   (  U2, F), MT.T     .gas   (  U2, F)                                                      ), ZL_IS                ).setSpecialNumber(  730L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 1130, ST.tag(1), FL.array(MT.T     .gas   (U*2, T)                        ), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 1130L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 1290, ST.tag(1), FL.array(MT.He_3  .gas   (U*2, T)                        ), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 1290L*8192L*16L);
-		RM.Fusion.addRecipe1(F,     0, 1890, ST.tag(1), FL.array(MT.He    .gas   (U*2, T)                        ), FL.array(MT.Be_8  .liquid(  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 1890L*8192L*16L);
-		RM.Fusion.addRecipe1(F,     0, 3214, ST.tag(1), FL.array(MT.Be_8  .liquid(U*2, T)                        ), FL.array(MT.O     .gas   (  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 3214L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192,  546, ST.tag(2), FL.array(MT.H     .gas   (U  , T), MT.B_11.liquid(U  , T)), FL.array(MT.He    .gas   (3*U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 8469L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192,  315, ST.tag(2), FL.array(MT.H     .gas   (U  , T), MT.C   .liquid(U  , T)), FL.array(MT.C_13  .liquid(  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber(  315L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192,  754, ST.tag(2), FL.array(MT.H     .gas   (U  , T), MT.C_13.liquid(U  , T)), FL.array(MT.N     .gas   (  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber(  754L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 1404, ST.tag(2), FL.array(MT.H     .gas   (U*2, T), MT.N   .gas   (U  , T)), FL.array(MT.He    .gas   (  U2, F), MT.C     .liquid(  U2, F), MT.O     .gas   (  U2, F)                           ), ZL_IS                ).setSpecialNumber( 1404L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192,  455, ST.tag(2), FL.array(MT.H     .gas   (U*2, T), MT.O   .gas   (U  , T)), FL.array(MT.He    .gas   (  U2, F), MT.F     .gas   (  U2, F), MT.N     .gas   (  U2, F)                           ), ZL_IS                ).setSpecialNumber(  455L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 1760, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.T   .gas   (U  , T)), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 1760L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 1830, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.He_3.gas   (U  , T)), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 1830L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 2640, ST.tag(2), FL.array(MT.T     .gas   (U  , T), MT.He_3.gas   (U  , T)), FL.array(MT.He    .gas   (3*U4, F), MT.D     .gas   (  U4, F)                                                      ), ZL_IS                ).setSpecialNumber( 2640L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 3336, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (3*U8, F), MT.He_3  .gas   (  U8, F), MT.Li    .liquid(  U8, F), MT.Be_7  .liquid(  U8, F)), ZL_IS                ).setSpecialNumber( 3336L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 1690, ST.tag(2), FL.array(MT.He_3  .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (2*U , F)                                                                                 ), ZL_IS                ).setSpecialNumber( 1690L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192,  736, ST.tag(2), FL.array(MT.He    .gas   (U  , T), MT.Be_8.liquid(U  , T)), FL.array(MT.C     .liquid(  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber(  736L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192,  716, ST.tag(2), FL.array(MT.He    .gas   (U  , T), MT.C   .liquid(U  , T)), FL.array(MT.O     .gas   (  U , F)                                                                                 ), ZL_IS                ).setSpecialNumber(  716L*8192L*16L);
-		RM.Fusion.addRecipe1(F, -8192, 1956, ST.tag(2), FL.array(MT.Ad    .liquid(U  , T), MT.Be_7.liquid(U  , T)), FL.array(MT.W     .liquid(  U , F), MT.He    .gas   (16*U, F), MT.He_3  .gas   (24*U, F), MT.T     .gas   (24*U, F)), OP.dust.mat(MT.Vb, 1)).setSpecialNumber(94956L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192,  730, ST.tag(1), FL.array(MT.D     .gas   (U*2, T)                        ), FL.array(MT.He_3  .gas   (  U2, F), MT.T     .gas   (  U2, F)                                                      ), ZL_IS             ).setSpecialNumber(  730L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 1130, ST.tag(1), FL.array(MT.T     .gas   (U*2, T)                        ), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber( 1130L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 1290, ST.tag(1), FL.array(MT.He_3  .gas   (U*2, T)                        ), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber( 1290L*8192L*16L);
+		RM.Fusion.addRecipe1(F,     0, 1890, ST.tag(1), FL.array(MT.He    .gas   (U*2, T)                        ), FL.array(MT.Be_8  .liquid(  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber( 1890L*8192L*16L);
+		RM.Fusion.addRecipe1(F,     0, 3214, ST.tag(1), FL.array(MT.Be_8  .liquid(U*2, T)                        ), FL.array(MT.O     .gas   (  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber( 3214L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192,  546, ST.tag(2), FL.array(MT.H     .gas   (U  , T), MT.B_11.liquid(U  , T)), FL.array(MT.He    .gas   (3*U , F)                                                                                 ), ZL_IS             ).setSpecialNumber( 8469L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192,  315, ST.tag(2), FL.array(MT.H     .gas   (U  , T), MT.C   .liquid(U  , T)), FL.array(MT.C_13  .liquid(  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber(  315L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192,  754, ST.tag(2), FL.array(MT.H     .gas   (U  , T), MT.C_13.liquid(U  , T)), FL.array(MT.N     .gas   (  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber(  754L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 1404, ST.tag(2), FL.array(MT.H     .gas   (U*2, T), MT.N   .gas   (U  , T)), FL.array(MT.He    .gas   (  U2, F), MT.C     .liquid(  U2, F), MT.O     .gas   (  U2, F)                           ), ZL_IS             ).setSpecialNumber( 1404L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192,  455, ST.tag(2), FL.array(MT.H     .gas   (U*2, T), MT.O   .gas   (U  , T)), FL.array(MT.He    .gas   (  U2, F), MT.F     .gas   (  U2, F), MT.N     .gas   (  U2, F)                           ), ZL_IS             ).setSpecialNumber(  455L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 1760, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.T   .gas   (U  , T)), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber( 1760L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 1830, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.He_3.gas   (U  , T)), FL.array(MT.He    .gas   (  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber( 1830L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 2640, ST.tag(2), FL.array(MT.T     .gas   (U  , T), MT.He_3.gas   (U  , T)), FL.array(MT.He    .gas   (3*U4, F), MT.D     .gas   (  U4, F)                                                      ), ZL_IS             ).setSpecialNumber( 2640L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 3336, ST.tag(2), FL.array(MT.D     .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (3*U8, F), MT.He_3  .gas   (  U8, F), MT.Li    .liquid(  U8, F), MT.Be_7  .liquid(  U8, F)), ZL_IS             ).setSpecialNumber( 3336L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 1690, ST.tag(2), FL.array(MT.He_3  .gas   (U  , T), MT.Li_6.liquid(U  , T)), FL.array(MT.He    .gas   (2*U , F)                                                                                 ), ZL_IS             ).setSpecialNumber( 1690L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192,  736, ST.tag(2), FL.array(MT.He    .gas   (U  , T), MT.Be_8.liquid(U  , T)), FL.array(MT.C     .liquid(  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber(  736L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192,  716, ST.tag(2), FL.array(MT.He    .gas   (U  , T), MT.C   .liquid(U  , T)), FL.array(MT.O     .gas   (  U , F)                                                                                 ), ZL_IS             ).setSpecialNumber(  716L*8192L*16L);
+		RM.Fusion.addRecipe1(F, -8192, 1956, ST.tag(2), FL.array(MT.Ad    .liquid(U  , T), MT.Be_7.liquid(U  , T)), FL.array(MT.W     .liquid(  U , F), MT.He    .gas   (16*U, F), MT.He_3  .gas   (24*U, F), MT.T     .gas   (24*U, F)), dust.mat(MT.Vb, 1)).setSpecialNumber(94956L*8192L*16L);
 		
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mNeutrons+tMaterial.mProtons > 0 && tMaterial.contains(TD.Atomic.ELEMENT) && !tMaterial.contains(TD.Atomic.ANTIMATTER)) {
 			ItemStack
-			tInput = OP.dust.mat(tMaterial, 1);          if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
-			tInput = OP.ingot.mat(tMaterial, 1);         if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
-			tInput = OP.plate.mat(tMaterial, 1);         if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
-			tInput = OP.plateGem.mat(tMaterial, 1);      if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
-			tInput = OP.gem.mat(tMaterial, 1);           if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = dust.mat(tMaterial, 1);          if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = ingot.mat(tMaterial, 1);         if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = plate.mat(tMaterial, 1);         if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = plateGem.mat(tMaterial, 1);      if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tInput = gem.mat(tMaterial, 1);           if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
 			
-			tInput = OP.blockDust.mat(tMaterial, 1);     if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
-			tInput = OP.blockIngot.mat(tMaterial, 1);    if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
-			tInput = OP.blockPlate.mat(tMaterial, 1);    if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
-			tInput = OP.blockPlateGem.mat(tMaterial, 1); if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
-			tInput = OP.blockGem.mat(tMaterial, 1);      if (tInput != null)       RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = blockDust.mat(tMaterial, 1);     if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = blockIngot.mat(tMaterial, 1);    if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = blockPlate.mat(tMaterial, 1);    if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = blockPlateGem.mat(tMaterial, 1); if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
+			tInput = blockGem.mat(tMaterial, 1);      if (tInput != null) RM.Massfab.addRecipe1(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072*9, tInput, NF, tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons*9), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons*9));
 			
 			FluidStack
-			tFluid = tMaterial.liquid(U, T);             if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
-			tFluid = tMaterial.gas(U, T);                if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
-			tFluid = tMaterial.plasma(U, T);             if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tFluid = tMaterial.liquid(U, T); if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tFluid = tMaterial.gas(U, T);    if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
+			tFluid = tMaterial.plasma(U, T); if (!FL.Error.is(tFluid)) RM.Massfab.addRecipe0(T, 1, (tMaterial.mNeutrons+tMaterial.mProtons)*131072  , tFluid,     tMaterial.mProtons<1?NF:FL.MatterCharged.make(tMaterial.mProtons  ), tMaterial.mNeutrons<1?NF:FL.MatterNeutral.make(tMaterial.mNeutrons  ));
 		}
 	}
 }

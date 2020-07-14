@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -110,6 +110,7 @@ public class Loader_Woods implements Runnable {
 		COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.BeamBFireProof   , 1, W), F, TC.stack(TC.ARBOR, 4), TC.stack(TC.GELUM, 1));
 		}
 		
+		// Those typically get overridden, but in case of a fuck up it is at least worth some Wood.
 		OM.data(ST.make(BlocksGT.Log1           , 1, W), ANY.Wood, U*4);
 		OM.data(ST.make(BlocksGT.Log1FireProof  , 1, W), ANY.Wood, U*4);
 		OM.data(ST.make(BlocksGT.Beam1          , 1, W), ANY.Wood, U*8);

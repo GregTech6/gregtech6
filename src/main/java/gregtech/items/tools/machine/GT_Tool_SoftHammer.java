@@ -117,12 +117,12 @@ public class GT_Tool_SoftHammer extends ToolStats {
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Rubber).mTextureSetsItems.get(OP.toolHeadHammer.mIconIndexItem) : MultiItemTool.getSecondaryMaterial(aStack, MT.Wood).mTextureSetsItems.get(OP.stick.mIconIndexItem);
+		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Rubber).mTextureSetsItems.get(OP.toolHeadHammer.mIconIndexItem) : MultiItemTool.getSecondaryMaterial(aStack, MT.WOODS.Spruce).mTextureSetsItems.get(OP.stick.mIconIndexItem);
 	}
 	
 	@Override
 	public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
-		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Rubber).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.Wood).mRGBaSolid;
+		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Rubber).mRGBaSolid : MultiItemTool.getSecondaryMaterial(aStack, MT.WOODS.Spruce).mRGBaSolid;
 	}
 	
 	@Override

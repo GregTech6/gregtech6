@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -154,7 +154,7 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addAssemblerRecipe(ST.make(Blocks.stone_slab, 3, 7), IL.RC_Rebar.get(1), IL.RC_Tie_Stone.get(1), 128, 8);
 		RA.addAssemblerRecipe(OM.get(OP.wireGt01, MT.Cu, 9), OM.get(OP.plate, MT.Pb, 2), NF, IL.RC_ShuntingWire.get(4), 1600, 4);
 		RA.addAssemblerRecipe(OM.get(OP.wireGt01, MT.AnnealedCopper, 9), OM.get(OP.plate, MT.Pb, 2), NF, IL.RC_ShuntingWire.get(4), 1600, 4);
-
+		
 		for (ItemStack tRail : ST.array(IL.RC_Rail_Standard.get(6), IL.RC_Rail_Adv.get(6), IL.RC_Rail_Reinforced.get(6), IL.RC_Rail_Electric.get(6), IL.RC_Rail_HS.get(6), IL.RC_Rail_Wooden.get(6))) {
 			for (ItemStack tBed : ST.array(IL.RC_Bed_Wood.get(1), IL.RC_Bed_Stone.get(1))) {
 				RA.addAssemblerRecipe(tBed, tRail, CR.get(tRail, NI, tRail, tRail, tBed, tRail, tRail, NI, tRail), 400, 4);
@@ -162,7 +162,7 @@ public class Loader_MachineRecipes implements Runnable {
 //              RA.addAssemblerRecipe(tBed, tRail, MT.Redstone.getMolten(L*2), CR.getOutput(ST.array(tRail, OM.get(OP.dust, MT.Redstone, 1), tRail, tRail, tBed, tRail, tRail, OM.get(OP.dust, MT.Redstone, 1), tRail}), 400, 4);
 			}
 		}
-
+		
 		RA.addAssemblerRecipe(ST.mkic("carbonFiber", 2), ST.tag(2), ST.mkic("carbonMesh", 1), 800, 2);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Al, 4), ST.mkic("generator", 1), ST.mkic("waterMill", 2), 6400, 8);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Fe, 5), ST.make(Blocks.chest, 1, W), ST.make(Blocks.hopper, 1, 0), 800, 2);

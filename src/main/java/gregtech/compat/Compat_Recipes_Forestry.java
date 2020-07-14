@@ -138,8 +138,8 @@ public class Compat_Recipes_Forestry extends CompatMods {
 		RM.Laminator    .addRecipe2(T, 16,   64, OP.foil.mat(MT.WaxRefractory,  8), tFenceA, tFenceB);
 		}
 		
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logs"          , 1, 22), NF, FL.make("maplesap", 25), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logsFireproof" , 1, 22), NF, FL.make("maplesap", 25), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logs"          , 1, 22), NF, FL.make("maplesap", 25), OM.dust(MT.WOODS.Maple));
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(MD.FR, "logsFireproof" , 1, 22), NF, FL.make("maplesap", 25), OM.dust(MT.WOODS.Maple));
 		
 		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Sn                             , 1), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Tin      .get(1));
 		RM.Press        .addRecipe2(T, 16,   64, OP.plate.mat(MT.Bronze                         , 3), OM.dust(MT.Redstone, U*6), IL.FR_Chipset_Bronze   .get(1));

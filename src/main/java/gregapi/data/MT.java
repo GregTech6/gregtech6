@@ -281,10 +281,10 @@ public class MT {
 	
 	public static OreDictMaterial woodnormal(int aID, String aNameOreDict, String aLocal, long aR, long aG, long aB) {
 		OreDictMaterial rMaterial = create(aID, aNameOreDict, SET_WOOD, aR, aG, aB, 255).put(G_WOOD, ANY.Wood, ANY.WoodPlastic, ANY.WoodNormal, ANY.WoodDefault, ANY.WoodUntreated, WOOD, MORTAR, TICKS_PER_SMELT/2, FLAMMABLE, APPROXIMATE).setLocal(aLocal).uumMcfg( 0, C, 6*U, H2O,15*U).aspects(TC.ARBOR, 1).setBurning(Ash, U9).setSmelting(Ash, U4).qual(1, 2.0, 16, 0).heat(400, 500);
-		String tPlank = "plank"+rMaterial.mNameInternal;
+		String tPlank = "plank"+rMaterial.mNameInternal, tStick = "stick"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.addAutoBlackListing(tPlank);
+		OreDictManager.INSTANCE.addReRegistration(tStick, "stickWood");
 		OreDictManager.INSTANCE.addReRegistration(tPlank, OD.plankWood);
-		OreDictManager.INSTANCE.addReRegistration(tPlank, OD.plankAnyWood);
 		OreDictManager.INSTANCE.setAutomaticItemData(tPlank, new OreDictItemData(rMaterial, U));
 		OreDictManager.INSTANCE.addReRegistrationWithReversal("plate"+rMaterial.mNameInternal, tPlank);
 		return rMaterial;
@@ -1666,6 +1666,8 @@ public class MT {
 		// Making sure shit is statically loaded, damn it.
 		TECH.Brick.getClass();
 		DATA.Dye_Materials.getClass();
+		WOODS.Oak.getClass();
+		OREMATS.Magnetite.getClass();
 	}
 	
 	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL or Tinkers Gregworks, I got a few of them here. */
@@ -1686,6 +1688,7 @@ public class MT {
 		
 		static {
 			OreDictMaterial.MATERIAL_ARRAY[9142] = MT.Asbestos;
+			
 			
 			Ad                      .visDefault(Adamantine);
 			
@@ -3094,12 +3097,12 @@ public class MT {
 		Birch               = woodnormal( 9301, "Birch"                   , "Birch"               , 215, 204, 142).put(MD.MC),
 		Spruce              = woodnormal( 9302, "Spruce"                  , "Spruce"              , 102,  79,  47).put(MD.MC),
 		Jungle              = woodnormal( 9303, "Junglewood"              , "Junglewood"          , 177, 128,  92).put(MD.MC),
-		DarkOak             = woodnormal( 9304, "DarkOak"                 , "Dark Oak"            ,  70,  45,  21).put(MD.MC),
-		Acacia              = woodnormal( 9305, "Acacia"                  , "Acacia"              , 186, 104,  59).put(MD.MC),
+		Acacia              = woodnormal( 9304, "Acacia"                  , "Acacia"              , 186, 104,  59).put(MD.MC),
+		DarkOak             = woodnormal( 9305, "DarkOak"                 , "Dark Oak"            ,  70,  45,  21).put(MD.MC),
 		Crimson             = woodnormal( 9306, "Crimsonwood"             , "Crimsonwood"         , 180,  90, 106).put(MD.NePl),
 		Warped              = woodnormal( 9307, "Warpedwood"              , "Warped Wood"         ,  90, 180,  72).put(MD.NePl),
 		
-		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25).put(MD.GT),
+		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25).put(MD.GT).setPulver(MT.Wood, U),
 		Dead                = woodnormal( 9309, "WoodDead"                , "Dead Wood"           , 116, 108,  63).put(MD.BoP),
 		Rotten              = woodnormal( 9310, "WoodRotten"              , "Rotten Wood"         ,  22,  44,  15).put(MD.GT),
 		Mossy               = woodnormal( 9311, "WoodMossy"               , "Mossy Wood"          ,  29, 127,   0).put(MD.GT),

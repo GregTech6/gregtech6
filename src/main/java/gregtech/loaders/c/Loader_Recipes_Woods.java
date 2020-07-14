@@ -20,6 +20,7 @@
 package gregtech.loaders.c;
 
 import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
 
 import java.util.Arrays;
 
@@ -37,7 +38,6 @@ import gregapi.wooddict.BeamEntry;
 import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 public class Loader_Recipes_Woods implements Runnable {
@@ -85,10 +85,10 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves, 1, 8), NF, FL.Latex.make(L/72), NI);
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 0), NF, FL.Latex.make(L/4), NI);
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 8), NF, FL.Latex.make(L/4), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, OM.dust(MT.WoodRubber), NF, FL.Latex.make(L/9), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(Blocks.log, 1, 1), NF, FL.Resin_Spruce.make(50, FL.Resin), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.LogA, 1, 1), NF, FL.Sap_Maple.make(50), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.LogB, 1, 3), NF, FL.Sap_Rainbow.make(50), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WoodRubber      ), NF, FL.Latex       .make(L/9)        , OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Spruce    ), NF, FL.Resin_Spruce.make(5, FL.Resin), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple     ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Rainbowood), NF, FL.Sap_Rainbow .make(5)          , OM.dust(MT.Wood));
 		
 		
 		if (IL.RC_Tie_Wood.exists()) {
@@ -146,6 +146,8 @@ public class Loader_Recipes_Woods implements Runnable {
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			RM.generify(aEntry.mPlank, IL.Plank.get(1));
 			RM.pulverizing(aEntry.mPlank, OP.dust.mat(aEntry.mMaterialPlank, 1));
+			CR.shaped(gearGt     .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', aPlank, 'S', OP.stick.dat(aEntry.mMaterialPlank));
+			CR.shaped(gearGtSmall.mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "P ", " s", 'P', aPlank);
 			if (ST.valid(aEntry.mStick)) {
 				RM.lathing(16, 16, aEntry.mPlank, ST.validMeta_(aEntry.mStickCountLathe, aEntry.mStick));
 				CR.remove(aPlank, NI, NI, aPlank);

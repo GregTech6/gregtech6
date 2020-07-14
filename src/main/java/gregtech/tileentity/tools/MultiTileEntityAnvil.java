@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -153,8 +153,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					if (mMaterialA <= 0) mMaterialA = MT.Steel.mID;
 					mShapeA = 8;
 				} else if (ToolsGT.contains(TOOL_hammer, slot(1))) {
-					mMaterialA = MultiItemTool.getSecondaryMaterial(slot(1), MT.Wood).mID;
-					if (mMaterialA <= 0) mMaterialA = MT.Wood.mID;
+					mMaterialA = MultiItemTool.getSecondaryMaterial(slot(1), MT.WOODS.Spruce).mID;
+					if (mMaterialA <= 0) mMaterialA = MT.WOODS.Spruce.mID;
 					mShapeA = 9;
 				} else if (slotHas(0)) {
 					mMaterialA = MT.Fe.mID;
@@ -186,8 +186,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					if (mMaterialB <= 0) mMaterialB = MT.Steel.mID;
 					mShapeB = 8;
 				} else if (ToolsGT.contains(TOOL_hammer, slot(0))) {
-					mMaterialB = MultiItemTool.getSecondaryMaterial(slot(0), MT.Steel).mID;
-					if (mMaterialB <= 0) mMaterialB = MT.Wood.mID;
+					mMaterialB = MultiItemTool.getSecondaryMaterial(slot(0), MT.WOODS.Spruce).mID;
+					if (mMaterialB <= 0) mMaterialB = MT.WOODS.Spruce.mID;
 					mShapeB = 9;
 				} else if (slotHas(1)) {
 					mMaterialB = MT.Fe.mID;

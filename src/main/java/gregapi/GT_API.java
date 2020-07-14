@@ -184,8 +184,6 @@ public class GT_API extends Abstract_Mod {
 		// A bunch of Code that is there to statically initialize the Database in the right order and without crashes.
 		BI.BAROMETER.toString();
 		MT.NULL.toString();
-		MT.WOODS.Oak.toString();
-		MT.OREMATS.Magnetite.toString();
 		AM.Hydrogen.toString();
 		OP.ore.toString();
 		

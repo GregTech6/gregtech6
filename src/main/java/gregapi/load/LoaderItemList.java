@@ -685,14 +685,14 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Mushgloom                         .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 9), new OreDictItemData(ANY.Glowstone, U4), OD.listAllmushroom);
 		IL.TF_Tall_Grass                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,10), null, OD.itemGrassTall);
 		IL.TF_Dry_Bush                          .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,11));
-		IL.TF_Log_Oak                           .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 0), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
-		IL.TF_Log_Canopy                        .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 1), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
-		IL.TF_Log_Mangrove                      .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 2), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
-		IL.TF_Log_Darkwood                      .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 3), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
-		IL.TF_Log_Time                          .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 0), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
-		IL.TF_Log_Trans                         .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 1), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
-		IL.TF_Log_Mine                          .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 2), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
-		IL.TF_Log_Sorting                       .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 3), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Oak                           .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Canopy                        .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 1), new OreDictItemData(MT.WOODS.Spruce   , U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Mangrove                      .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 2), new OreDictItemData(MT.WOODS.Birch    , U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Darkwood                      .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 3), new OreDictItemData(MT.WOODS.Towerwood, U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Time                          .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 0), new OreDictItemData(MT.WOODS.Spruce   , U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Trans                         .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 1), new OreDictItemData(MT.WOODS.Acacia   , U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Mine                          .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 2), new OreDictItemData(MT.WOODS.Birch    , U*8, MT.Bark, U), OD.logWood);
+		IL.TF_Log_Sorting                       .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 3), new OreDictItemData(MT.WOODS.DarkOak  , U*8, MT.Bark, U), OD.logWood);
 		
 		if (IL.TF_Vial_FieryBlood.item() != null) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.item() != null) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
@@ -709,8 +709,8 @@ public class LoaderItemList implements Runnable {
 		IL.TROPIC_Sand_Black                    .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 2), new OreDictItemData(MT.OREMATS.Magnetite, U));
 		IL.TROPIC_Sand_Mineral                  .set(ST.make(MD.TROPIC, "tile.mineralSand"                  , 1, 3), new OreDictItemData(MT.OREMATS.Cassiterite, U));
 		IL.TROPIC_Sand_Pure                     .set(ST.make(MD.TROPIC, "tile.purifiedSand"                 , 1, 0), new OreDictItemData(MT.Sand, U));
-		IL.TROPIC_Log_Palm                      .set(ST.make(MD.TROPIC, "tile.log"                          , 1, 0), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
-		IL.TROPIC_Log_Mahogany                  .set(ST.make(MD.TROPIC, "tile.log"                          , 1, 1), new OreDictItemData(MT.Wood, U*8, MT.Bark, U), OD.logWood);
+		IL.TROPIC_Log_Palm                      .set(ST.make(MD.TROPIC, "tile.log"                          , 1, 0), new OreDictItemData(MT.WOODS.Palm    , U*8, MT.Bark, U), OD.logWood);
+		IL.TROPIC_Log_Mahogany                  .set(ST.make(MD.TROPIC, "tile.log"                          , 1, 1), new OreDictItemData(MT.WOODS.Mahogany, U*8, MT.Bark, U), OD.logWood);
 		IL.TROPIC_Bamboo                        .set(ST.make(MD.TROPIC, "bambooChute"                       , 1, 0), new OreDictItemData(MT.Bamboo, U), OD.bamboo);
 		IL.TROPIC_Stick                         .set(ST.make(MD.TROPIC, "bambooStick"                       , 1, 0), OP.stick.dat(MT.Bamboo), OD.bamboo);
 		IL.TROPIC_Chest                         .set(ST.make(MD.TROPIC, "tile.bambooChest"                  , 1, 0), new OreDictItemData(MT.Bamboo, 8*U), OD.craftingChest);
