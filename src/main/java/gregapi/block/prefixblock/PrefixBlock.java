@@ -543,7 +543,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			return 1;
 		}
 		if (!aWorld.isRemote && aTool.equals(TOOL_prospector) && mPrefix.contains(TD.Prefix.ORE)) {
-			if (aChatReturn != null) aChatReturn.add(aMaterial.getLocal() + " Ore!");
+			if (aChatReturn != null) aChatReturn.add(getLocalName(OP.ore, aMaterial)+"!");
 			return 100;
 		}
 		// Proceed with the regular onToolClick of the ToolCompat Class, because it has important Code in it.

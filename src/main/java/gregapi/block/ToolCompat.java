@@ -35,6 +35,7 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.RM;
 import gregapi.data.TD;
+import gregapi.lang.LanguageHandler;
 import gregapi.oredict.OreDictItemData;
 import gregapi.recipes.Recipe;
 import gregapi.util.OM;
@@ -242,7 +243,7 @@ public class ToolCompat {
 		}
 		if (aTool.equals(TOOL_prospector)) {
 			if (prospectOre(aBlock, aMeta, aChatReturn, aWorld, aX, aY, aZ)) return 100;
-			if (aBlock != Blocks.obsidian && aBlock != BlocksGT.RockOres && (aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) || WD.stone(aBlock, aMeta))) {
+			if (aBlock != Blocks.obsidian && (aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack) || aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) || WD.stone(aBlock, aMeta))) {
 				if (prospectStone(aBlock, aMeta, aQuality, aChatReturn, aWorld, aSide, aX, aY, aZ)) return 10000;
 			}
 			return 0;
@@ -327,7 +328,7 @@ public class ToolCompat {
 	public static boolean prospectOre(Block aBlock, byte aMeta, List<String> aChatReturn, World aWorld, int aX, int aY, int aZ) {
 		OreDictItemData tAssotiation = OM.anyassociation(ST.make(aBlock, 1, aWorld.getBlockMetadata(aX, aY, aZ)));
 		if (tAssotiation != null && tAssotiation.mPrefix.contains(TD.Prefix.ORE)) {
-			if (aChatReturn != null) aChatReturn.add(tAssotiation.mMaterial.mMaterial.getLocal() + " Ore!");
+			if (aChatReturn != null) aChatReturn.add(LanguageHandler.getLocalName(tAssotiation.mPrefix, tAssotiation.mMaterial.mMaterial)+"!");
 			return T;
 		}
 		return F;
@@ -343,19 +344,19 @@ public class ToolCompat {
 			
 			tBlock = aWorld.getBlock(tX, tY, tZ);
 			if (tBlock == Blocks.lava || tBlock == Blocks.flowing_lava) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LAVA, "There is Lava behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LAVA));
 				break;
 			}
 			if (tBlock instanceof BlockLiquid || tBlock instanceof IFluidBlock) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LIQUID, "There is a Liquid behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_LIQUID));
 				break;
 			}
 			if (tBlock == Blocks.monster_egg || !WD.hasCollide(aWorld, tX, tY, tZ, tBlock)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_AIR, "There is an Air Pocket behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_AIR));
 				break;
 			}
 			if (i < 4) if (tBlock != aBlock || aMeta != aWorld.getBlockMetadata(tX, tY, tZ)) {
-				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_CHANGE, "Material is changing behind this Rock."));
+				if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_CHANGE));
 				break;
 			}
 		}
@@ -370,12 +371,12 @@ public class ToolCompat {
 			if (tBlock != NB && tBlock != Blocks.obsidian && tBlock != BlocksGT.RockOres) {
 				OreDictItemData tAssotiation = OM.anyassociation((tBlock instanceof IBlockRetrievable ? ((IBlockRetrievable)tBlock).getItemStackFromBlock(aWorld, tX, tY, tZ, SIDE_INVALID) : ST.make(tBlock, 1, aWorld.getBlockMetadata(tX, tY, tZ))));
 				if (tAssotiation != null && tAssotiation.mPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DENSE_ORE)) {
-					if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES, "Found traces of ") + tAssotiation.mMaterial.mMaterial.getLocal() + " Ore.");
+					if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES) + tAssotiation.mMaterial.mMaterial.getLocal() + " Ore.");
 					return T;
 				}
 			}
 		}
-		if (aChatReturn != null && aChatReturn.isEmpty()) aChatReturn.add(LH.get(LH.PROSPECTING_NOTHING, "No traces of Ore found."));
+		if (aChatReturn != null && aChatReturn.isEmpty()) aChatReturn.add(LH.get(LH.PROSPECTING_NOTHING));
 		return T;
 	}
 }
