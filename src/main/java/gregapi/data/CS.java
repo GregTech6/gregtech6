@@ -1945,6 +1945,7 @@ public class CS {
 		, OB                = "OpenBlocks"
 		, MNTL              = "Mantle"
 		, TiC               = "TConstruct"
+		, Natura            = "Natura"
 		, MF2               = "minefantasy2"
 		, FZ                = "factorization"
 		, BWM               = "weaponmod"

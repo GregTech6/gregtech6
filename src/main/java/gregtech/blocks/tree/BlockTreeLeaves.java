@@ -41,7 +41,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockTreeLeaves extends BlockBaseLeaves {
+public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
 	public BlockTreeLeaves(String aUnlocalised, Block aSaplings) {
 		super(null, aUnlocalised, Material.leaves, soundTypeGrass, 8, Textures.BlockIcons.LEAVES, aSaplings, new Block[] {BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogA, BlocksGT.LogB, BlocksGT.LogB, BlocksGT.LogB, BlocksGT.LogB}, new byte[] {0, 1, 2, 3, 0, 1, 2, 3});
 		LH.add(getUnlocalizedName()+ ".0.name", "Rubber Leaves");
@@ -63,7 +63,17 @@ public class BlockTreeLeaves extends BlockBaseLeaves {
 		
 		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.treeLeaves);
 		
-		if (COMPAT_FR != null) COMPAT_FR.addWindfall(OP.stick.mat(MT.Wood, 1));
+		GAPI.mAfterPostInit.add(this);
+	}
+	
+	@Override
+	public void run() {
+		if (COMPAT_FR != null) {
+			COMPAT_FR.addWindfall(OP.stick.mat(MT.Wood, 1));
+			COMPAT_FR.addWindfall(OP.stick.mat(MT.WOODS.Willow   , 1));
+			COMPAT_FR.addWindfall(OP.stick.mat(MT.WOODS.BlueMahoe, 1));
+			COMPAT_FR.addWindfall(OP.stick.mat(MT.WOODS.Hazel    , 1));
+		}
 	}
 	
 	@Override
@@ -109,7 +119,11 @@ public class BlockTreeLeaves extends BlockBaseLeaves {
 		if (RNGSUS.nextInt(tChance) == 0) {
 			rDrops.add(ST.make(getItemDropped(aMeta, RNGSUS, aFortune), 1, damageDropped(aMeta)));
 		} else {
-			switch(aMeta & 7) {case 2: case 3: case 4: if (RNGSUS.nextInt(tChance) < 2) rDrops.add(OP.stick.mat(MT.Wood, 1));}
+			switch(aMeta & 7) {
+			case 2: if (RNGSUS.nextInt(tChance) < 2) rDrops.add(OP.stick.mat(MT.WOODS.Willow   , 1)); break;
+			case 3: if (RNGSUS.nextInt(tChance) < 2) rDrops.add(OP.stick.mat(MT.WOODS.BlueMahoe, 1)); break;
+			case 4: if (RNGSUS.nextInt(tChance) < 2) rDrops.add(OP.stick.mat(MT.WOODS.Hazel    , 1)); break;
+			}
 		}
 		if ((aMeta & 7) == 4 && RNGSUS.nextInt(tChance) < 2) rDrops.add(IL.Food_Hazelnut.get(1));
 		return rDrops;

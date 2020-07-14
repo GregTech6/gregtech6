@@ -1319,14 +1319,14 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("itemCoke", new OreDictItemData(MT.CoalCoke, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("coke", new OreDictItemData(MT.CoalCoke, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("crystalCinnabar", new OreDictItemData(MT.OREMATS.Cinnabar, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("plankWood", new OreDictItemData(ANY.Wood, U));
 		OreDictManager.INSTANCE.setAutomaticItemData("slabAnyWood", new OreDictItemData(ANY.Wood, U2));
 		OreDictManager.INSTANCE.setAutomaticItemData("slabWood", new OreDictItemData(ANY.Wood, U2));
 		OreDictManager.INSTANCE.setAutomaticItemData("stairAnyWood", new OreDictItemData(ANY.Wood, 3*U4));
 		OreDictManager.INSTANCE.setAutomaticItemData("stairWood", new OreDictItemData(ANY.Wood, 3*U4));
 		OreDictManager.INSTANCE.setAutomaticItemData("logAnyWood", new OreDictItemData(ANY.Wood, U*8, MT.Bark, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("logWood", new OreDictItemData(ANY.Wood, U*8, MT.Bark, U));
-		OreDictManager.INSTANCE.setAutomaticItemData("logRubber", new OreDictItemData(MT.WoodRubber, U*8, MT.Bark, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.logWood, new OreDictItemData(ANY.Wood, U*8, MT.Bark, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.logRubber, new OreDictItemData(MT.WoodRubber, U*8, MT.Bark, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.plankWood, new OreDictItemData(ANY.Wood, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.craftingChest, new OreDictItemData(ANY.Wood, U * 5));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.craftingPiston, new OreDictItemData(MT.Stone, U * 4, ANY.Wood, U * 3));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.craftingFurnace, new OreDictItemData(MT.Stone, U * 8));

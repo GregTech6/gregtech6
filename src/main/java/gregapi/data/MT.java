@@ -279,6 +279,17 @@ public class MT {
 		return rMaterial;
 	}
 	
+	public static OreDictMaterial woodnormal(int aID, String aNameOreDict, String aLocal, long aR, long aG, long aB) {
+		OreDictMaterial rMaterial = create(aID, aNameOreDict, SET_WOOD, aR, aG, aB, 255).put(G_WOOD, ANY.Wood, ANY.WoodPlastic, ANY.WoodNormal, ANY.WoodDefault, ANY.WoodUntreated, WOOD, MORTAR, TICKS_PER_SMELT/2, FLAMMABLE, APPROXIMATE).setLocal(aLocal).uumMcfg( 0, C, 6*U, H2O,15*U).aspects(TC.ARBOR, 1).setBurning(Ash, U9).setSmelting(Ash, U4).qual(1, 2.0, 16, 0).heat(400, 500);
+		String tPlank = "plank"+rMaterial.mNameInternal;
+		OreDictManager.INSTANCE.addAutoBlackListing(tPlank);
+		OreDictManager.INSTANCE.addReRegistration(tPlank, OD.plankWood);
+		OreDictManager.INSTANCE.addReRegistration(tPlank, OD.plankAnyWood);
+		OreDictManager.INSTANCE.setAutomaticItemData(tPlank, new OreDictItemData(rMaterial, U));
+		OreDictManager.INSTANCE.addReRegistrationWithReversal("plate"+rMaterial.mNameInternal, tPlank);
+		return rMaterial;
+	}
+	
 	static OreDictMaterial gem_aa(int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA, OreDictMaterial aCopy) {
 		return dcmp(aID, aNameOreDict, aSets, aR, aG, aB, aA).put(G_GEM_TRANSPARENT, CRYSTAL, BRITTLE, MD.AA).uumMcfg(0, aCopy, U).steal(aCopy).setAllToTheOutputOf(aCopy).visDefault();
 	}
@@ -3075,6 +3086,123 @@ public class MT {
 		QuartzSand              = oredustcent   ( 9006, "Quartz Sand"               , SET_SAND              , 200, 200, 200, 255).put(MORTAR, BLACKLISTED_SMELTER, QUARTZ                                       ).setSmelting(SiO2, U3)     .setMcfg( 0, CertusQuartz   , 1*U, MilkyQuartz      , 1*U)                                                                                                  ;
 	}
 	
+	/** Taking over Wood Materials from QwerTech, with major changes because damn that shit was broken. */
+	public static class WOODS {
+		@SuppressWarnings("hiding")
+		public static final OreDictMaterial
+		Oak                 = woodnormal( 9300, "Oak"                     , "Oak"                 , 180, 144,  90).put(MD.MC),
+		Birch               = woodnormal( 9301, "Birch"                   , "Birch"               , 215, 204, 142).put(MD.MC),
+		Spruce              = woodnormal( 9302, "Spruce"                  , "Spruce"              , 102,  79,  47).put(MD.MC),
+		Jungle              = woodnormal( 9303, "Junglewood"              , "Junglewood"          , 177, 128,  92).put(MD.MC),
+		DarkOak             = woodnormal( 9304, "DarkOak"                 , "Dark Oak"            ,  70,  45,  21).put(MD.MC),
+		Acacia              = woodnormal( 9305, "Acacia"                  , "Acacia"              , 186, 104,  59).put(MD.MC),
+		Crimson             = woodnormal( 9306, "Crimsonwood"             , "Crimsonwood"         , 180,  90, 106).put(MD.NePl),
+		Warped              = woodnormal( 9307, "Warpedwood"              , "Warped Wood"         ,  90, 180,  72).put(MD.NePl),
+		
+		Compressed          = woodnormal( 9308, "WoodCompressed"          , "Compressed Wood"     ,  94,  60,  25).put(MD.GT),
+		Dead                = woodnormal( 9309, "WoodDead"                , "Dead Wood"           , 116, 108,  63).put(MD.BoP),
+		Rotten              = woodnormal( 9310, "WoodRotten"              , "Rotten Wood"         ,  22,  44,  15).put(MD.GT),
+		Mossy               = woodnormal( 9311, "WoodMossy"               , "Mossy Wood"          ,  29, 127,   0).put(MD.GT),
+		Frozen              = woodnormal( 9312, "WoodFrozen"              , "Frozen Wood"         ,  84, 125, 125).put(MD.GT),
+		
+		Maple               = woodnormal( 9313, "Maple"                   , "Maple"               , 151,  26,  26).put(MD.GT),
+		Willow              = woodnormal( 9314, "Willow"                  , "Willow"              ,  37, 150,   0).put(MD.GT),
+		BlueMahoe           = woodnormal( 9315, "BlueMahoe"               , "Blue Mahoe"          ,  15, 103, 254).put(MD.GT),
+		Hazel               = woodnormal( 9316, "Hazel"                   , "Hazel"               , 228, 175, 175).put(MD.GT),
+		Cinnamon            = woodnormal( 9317, "Cinnamonwood"            , "Cinnamon"            ,  65, 192, 192).put(MD.HaC),
+		Coconut             = woodnormal( 9318, "Coconutwood"             , "Coconut"             , 255, 170,   0).put(MD.TROPIC),
+		Rainbowood          = woodnormal( 9319, "Rainbowood"              , "Rainbow Wood"        , 200,  64, 245).put(MD.GT),
+		
+		Towerwood           = woodnormal( 9320, "Towerwood"               , "Towerwood"           , 166, 101,  58).put(MD.TF),
+		Witchwood           = woodnormal( 9321, "Witchwood"               , "Witchwood"           , 118, 112, 142).put(MD.ARS),
+		Ogre                = woodnormal( 9322, "Ogrewood"                , "Ogrewood"            , 180,  90, 106).put(MD.MoCr),
+		Wyvern              = woodnormal( 9323, "Wyvernwood"              , "Wyvernwood"          ,  90, 180,  72).put(MD.MoCr),
+		Aspen               = woodnormal( 9324, "Aspen"                   , "Aspen"               ,  68,  65,  50).put(MD.TFC),
+		DouglasFir          = woodnormal( 9325, "DouglasFir"              , "Douglas Fir"         , 249, 197, 154).put(MD.TFC),
+		Sycamore            = woodnormal( 9326, "Sycamore"                , "Sycamore"            , 214, 155,  69).put(MD.TFC),
+		WhiteCedar          = woodnormal( 9327, "WhiteCedar"              , "White Cedar"         , 219, 219, 205).put(MD.TFC),
+		WhiteElm            = woodnormal( 9328, "WhiteElm"                , "White Elm"           , 162, 167, 103).put(MD.TFC),
+		Thorntree           = woodnormal( 9329, "Thorntree"               , "Thorntree"           , 180, 144,  90).put(MD.EB),
+		SilverPine          = woodnormal( 9330, "SilverPine"              , "Silver Pine"         ,  32,   7,  70).put(MD.EB),
+		Alder               = woodnormal( 9331, "Alder"                   , "Alder"               , 177,  95,  87).put(MD.WTCH),
+		Hawthorn            = woodnormal( 9332, "Hawthorn"                , "Hawthorn"            , 188, 182, 178).put(MD.WTCH),
+		Rowan               = woodnormal( 9333, "Rowan"                   , "Rowan"               , 205, 172,  87).put(MD.WTCH),
+		
+		Autumn              = woodnormal( 9334, "Autumnwood"              , "Autumn Wood"         , 191,  64,  35).put(MD.EBXL),
+		BaldCypress         = woodnormal( 9335, "BaldCypress"             , "Bald Cypress"        , 195, 183, 171).put(MD.EBXL),
+		Cypress             = woodnormal( 9336, "Cypress"                 , "Cypress"             , 185, 187, 181).put(MD.EBXL),
+		Fir                 = woodnormal( 9337, "Fir"                     , "Fir"                 , 110, 106,  63).put(MD.EBXL),
+		JapaneseMaple       = woodnormal( 9338, "JapaneseMaple"           , "Japanese Maple"      , 152,  76,  86).put(MD.EBXL),
+		RainbowEucalyptus   = woodnormal( 9339, "RainbowEucalyptus"       , "Rainbow Eucalyptus"  , 116, 141, 198).put(MD.EBXL),
+		Redwood             = woodnormal( 9340, "Redwood"                 , "Redwood"             , 163, 115,  70).put(MD.EBXL),
+		Sakura              = woodnormal( 9341, "Sakura"                  , "Sakura"              , 250, 161, 122).put(MD.EBXL),
+		
+		Balsa               = woodnormal( 9342, "Balsa"                   , "Balsa"               , 165, 158, 151).put(MD.FR),
+		Baobab              = woodnormal( 9343, "Baobab"                  , "Baobab"              , 136, 145,  95).put(MD.FR),
+		Cherry              = woodnormal( 9344, "Cherrywood"              , "Cherrywood"          , 173, 124,  50).put(MD.FR),
+		Chestnut            = woodnormal( 9345, "Chestnutwood"            , "Chestnutwood"        , 179, 162,  85).put(MD.FR),
+		Citrus              = woodnormal( 9346, "Citruswood"              , "Citruswood"          , 152, 163,  28).put(MD.FR),
+		Cocobolo            = woodnormal( 9347, "Cocobolowood"            , "Cocobolowood"        , 121,  18,   2).put(MD.FR),
+		Ebony               = woodnormal( 9348, "Ebony"                   , "Ebony"               ,  58,  52,  46).put(MD.FR),
+		Giganteum           = woodnormal( 9349, "Giganteumwood"           , "Giganteumwood"       , 102,  47,  39).put(MD.FR),
+		Greenheart          = woodnormal( 9350, "Greenheart"              , "Greenheart"          ,  76, 118,  88).put(MD.FR),
+		Ipe                 = woodnormal( 9351, "Ipe"                     , "Ipe"                 , 101,  58,  39).put(MD.FR),
+		Kapok               = woodnormal( 9352, "Kapok"                   , "Kapok"               , 116, 108,  52).put(MD.FR),
+		Larch               = woodnormal( 9353, "Larch"                   , "Larch"               , 215, 151, 133).put(MD.FR),
+		Lime                = woodnormal( 9354, "Limewood"                , "Limewood"            , 206, 154, 104).put(MD.FR),
+		Mahoe               = woodnormal( 9355, "Mahoe"                   , "Mahoe"               , 121, 147, 166).put(MD.FR),
+		Mahogany            = woodnormal( 9356, "Mahogany"                , "Mahogany"            , 111,  61,  55).put(MD.FR),
+		Padauk              = woodnormal( 9357, "Padauk"                  , "Padauk"              , 179,  99,  59).put(MD.FR, "Paduak"),
+		Palm                = woodnormal( 9358, "Palm"                    , "Palm"                , 201, 124,  69).put(MD.FR),
+		Papaya              = woodnormal( 9359, "Papayawood"              , "Papayawood"          , 218, 200, 109).put(MD.FR),
+		Plum                = woodnormal( 9360, "Plumwood"                , "Plumwood"            , 171,  99, 123).put(MD.FR),
+		Poplar              = woodnormal( 9361, "Poplar"                  , "Poplar"              , 204, 204, 123).put(MD.FR),
+		Sequoia             = woodnormal( 9362, "Sequoia"                 , "Sequoia"             , 142,  87,  84).put(MD.FR),
+		Teak                = woodnormal( 9363, "Teak"                    , "Teak"                , 123, 115,  95).put(MD.FR),
+		Walnut              = woodnormal( 9364, "Walnutwood"              , "Walnutwood"          ,  98,  78,  64).put(MD.FR),
+		Wenge               = woodnormal( 9365, "Wenge"                   , "Wenge"               ,  88,  81,  70).put(MD.FR),
+		Zebrawood           = woodnormal( 9366, "Zebrawood"               , "Zebrawood"           , 172, 139,  86).put(MD.FR),
+		
+		Darkwood            = woodnormal( 9367, "Darkwood"                , "Darkwood"            ,  51,  45,  54).put(MD.BoP),
+		Ethereal            = woodnormal( 9368, "Etherealwood"            , "Etherealwood"        ,  76, 150, 115).put(MD.BoP),
+		Gold                = woodnormal( 9369, "Goldwood"                , "Goldwood"            , 210, 187, 151).put(MD.BoP),
+		HellBark            = woodnormal( 9370, "Hellbark"                , "Hellbark"            , 200, 150, 100).put(MD.BoP),
+		Jacaranda           = woodnormal( 9371, "Jacaranda"               , "Jacaranda"           , 201, 171, 162).put(MD.BoP),
+		Mangrove            = woodnormal( 9372, "Mangrove"                , "Mangrove"            , 236, 228, 217).put(MD.BoP),
+		SacredOak           = woodnormal( 9373, "SacredOak"               , "Sacred Oak"          , 159, 132,  77).put(MD.BoP),
+		Magic               = woodnormal( 9374, "Magicwood"               , "Magicwood"           ,  90, 105, 180).put(MD.BoP),
+		
+		Apple               = woodnormal( 9375, "Applewood"               , "Applewood"           ,  97,  49,  36).put(MD.BINNIE_TREE),
+		Ash                 = woodnormal( 9376, "Ashwood"                 , "Ashwood"             , 244, 190,  90).put(MD.BINNIE_TREE),
+		Beech               = woodnormal( 9377, "Beech"                   , "Beech"               , 226, 144,  68).put(MD.BINNIE_TREE),
+		Box                 = woodnormal( 9378, "WoodBox"                 , "Box"                 , 253, 237, 192).put(MD.BINNIE_TREE),
+		Brazilwood          = woodnormal( 9379, "Brazilwood"              , "Brazilwood"          , 112,  55,  84).put(MD.BINNIE_TREE),
+		Butternut           = woodnormal( 9380, "Butternutwood"           , "Butternutwood"       , 237, 163, 112).put(MD.BINNIE_TREE),
+		Cedar               = woodnormal( 9381, "Cedar"                   , "Cedar"               , 217,  88,  37).put(MD.BINNIE_TREE),
+		Elder               = woodnormal( 9382, "Elderwood"               , "Elderwood"           , 189, 141, 115).put(MD.BINNIE_TREE),
+		Elm                 = woodnormal( 9383, "Elm"                     , "Elm"                 , 243, 163,  90).put(MD.BINNIE_TREE),
+		Eucalyptus          = woodnormal( 9384, "Eucalyptus"              , "Eucalyptus"          , 245, 164, 130).put(MD.BINNIE_TREE),
+		Fig                 = woodnormal( 9385, "Figwood"                 , "Figwood"             , 202, 126,  27).put(MD.BINNIE_TREE),
+		Gingko              = woodnormal( 9386, "Gingko"                  , "Gingko"              , 243, 226, 173).put(MD.BINNIE_TREE),
+		Hemlock             = woodnormal( 9387, "Hemlock"                 , "Hemlock"             , 196, 174,  96).put(MD.BINNIE_TREE),
+		Hickory             = woodnormal( 9388, "Hickory"                 , "Hickory"             , 218, 174, 134).put(MD.BINNIE_TREE),
+		Holly               = woodnormal( 9389, "Holly"                   , "Holly"               , 248, 242, 226).put(MD.BINNIE_TREE),
+		Hornbeam            = woodnormal( 9390, "Hornbeam"                , "Hornbeam"            , 195, 147,  87).put(MD.BINNIE_TREE),
+		Iroko               = woodnormal( 9391, "Iroko"                   , "Iroko"               , 117,  47,   0).put(MD.BINNIE_TREE),
+		Locust              = woodnormal( 9392, "Locust"                  , "Locust"              , 195, 140,  87).put(MD.BINNIE_TREE),
+		Logwood             = woodnormal( 9393, "Logwood"                 , "Logwood"             , 166,  44,  34).put(MD.BINNIE_TREE),
+		Maclura             = woodnormal( 9394, "Maclura"                 , "Maclura"             , 242, 168,  29).put(MD.BINNIE_TREE),
+		Olive               = woodnormal( 9395, "Olivewood"               , "Olivewood"           , 174, 169, 129).put(MD.BINNIE_TREE),
+		Pear                = woodnormal( 9396, "Pearwood"                , "Pearwood"            , 180, 127,  97).put(MD.BINNIE_TREE),
+		PinkIvory           = woodnormal( 9397, "PinkIvory"               , "Pink Ivory"          , 234, 125, 148).put(MD.BINNIE_TREE),
+		Purpleheart         = woodnormal( 9398, "Purpleheart"             , "Purpleheart"         ,  91,  22,  45).put(MD.BINNIE_TREE),
+		Rosewood            = woodnormal( 9399, "Rosewood"                , "Rosewood"            , 128,  12,   0).put(MD.BINNIE_TREE),
+		Sweetgum            = woodnormal( 9400, "Sweetgum"                , "Sweetgum"            , 215, 140,  74).put(MD.BINNIE_TREE),
+		Syzgium             = woodnormal( 9401, "Syzgium"                 , "Syzgium"             , 221, 184, 183).put(MD.BINNIE_TREE),
+		Whitebeam           = woodnormal( 9402, "Whitebeam"               , "Whitebeam"           , 192, 183, 174).put(MD.BINNIE_TREE),
+		Yew                 = woodnormal( 9403, "Yew"                     , "Yew"                 , 226, 160, 114).put(MD.BINNIE_TREE);
+	}
+		
 	/** The "I don't care" Section, everything I don't want to do anything with right now. Just to make the Material Finder shut up about them. But I do see potential uses in some of these Materials. */
 	public static class UNUSED {
 		public static final OreDictMaterial
