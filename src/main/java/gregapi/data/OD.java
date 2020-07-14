@@ -84,6 +84,8 @@ public enum OD {
 	, plankWeedwood
 	, plankAnyWood
 	, plankWood
+	, stickAnyWood
+	, stickWood
 	, paperEmpty
 	, paperMap
 	, stairWood

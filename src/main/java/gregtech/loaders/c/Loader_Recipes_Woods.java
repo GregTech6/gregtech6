@@ -29,6 +29,7 @@ import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.util.CR;
@@ -38,6 +39,8 @@ import gregapi.wooddict.BeamEntry;
 import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class Loader_Recipes_Woods implements Runnable {
@@ -90,6 +93,8 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple     ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Rainbowood), NF, FL.Sap_Rainbow .make(5)          , OM.dust(MT.Wood));
 		
+		CR.shaped(ST.make(Items.stick, 1, 0), CR.DEF_NAC_NCC, "  ", " S", 'S', OD.stickWood);
+		CR.shaped(gearGt.mat(MT.Wood   ,  1), CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', OD.plankWood, 'S', ST.make(Blocks.wooden_button, 1, W));
 		
 		if (IL.RC_Tie_Wood.exists()) {
 			if (IL.IE_Treated_Slab.exists())
@@ -105,7 +110,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		for (WoodEntry aEntry : WoodDictionary.WOODS.values()) {
 			if (aEntry.mBeamEntry != null)
 			RM.debarking(                      aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
-			RM.pulverizing(                    aEntry.mLog, OP.dust.mat(aEntry.mMaterialWood, aEntry.mPlankCountBuzz), aEntry.mBark, 50, F);
+			RM.pulverizing(                    aEntry.mLog, OM.dust(aEntry.mMaterialWood.mTargetPulver, aEntry.mPlankCountBuzz, 1), aEntry.mBark, 50, F);
 			RM.sawing(16, 128, F, 4,           aEntry.mLog, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), aEntry.mBark);
 			RM.lathing(16, 80,                 aEntry.mLog, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialWood));
 			if (IL.RC_Creosote_Wood.exists())
@@ -126,7 +131,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		
 		for (BeamEntry aEntry : WoodDictionary.BEAMS.values()) {
 			RM.generify(                       aEntry.mBeam, IL.Beam.get(1));
-			RM.pulverizing(                    aEntry.mBeam, OP.dust.mat(aEntry.mMaterialBeam, aEntry.mPlankCountBuzz));
+			RM.pulverizing(                    aEntry.mBeam, OM.dust(aEntry.mMaterialBeam.mTargetPulver, aEntry.mPlankCountBuzz, 1));
 			RM.sawing(16, 128, F, 4,           aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
 			RM.lathing(16, 80,                 aEntry.mBeam, ST.validMeta(aEntry.mStickCountLathe, aEntry.mStick), OM.dust(aEntry.mMaterialBeam));
 			
@@ -145,9 +150,10 @@ public class Loader_Recipes_Woods implements Runnable {
 		for (PlankEntry aEntry : WoodDictionary.PLANKS.values()) {
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			RM.generify(aEntry.mPlank, IL.Plank.get(1));
-			RM.pulverizing(aEntry.mPlank, OP.dust.mat(aEntry.mMaterialPlank, 1));
+			RM.pulverizing(aEntry.mPlank, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 1));
 			CR.shaped(gearGt     .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', aPlank, 'S', OP.stick.dat(aEntry.mMaterialPlank));
 			CR.shaped(gearGtSmall.mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "P ", " s", 'P', aPlank);
+			CR.shaped(plateTiny  .mat(aEntry.mMaterialPlank, 8), CR.ONLY_IF_HAS_RESULT | CR.DEF_NAC_NCC, "s ", " P", 'P', aPlank);
 			if (ST.valid(aEntry.mStick)) {
 				RM.lathing(16, 16, aEntry.mPlank, ST.validMeta_(aEntry.mStickCountLathe, aEntry.mStick));
 				CR.remove(aPlank, NI, NI, aPlank);
@@ -155,10 +161,10 @@ public class Loader_Recipes_Woods implements Runnable {
 				CR.shaped(ST.validMeta_( NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe , aEntry.mStick), CR.DEF_NAC_NCC, "s", "P", 'P', aEntry.mPlank);
 			}
 			if (!IL.Crate.equal(aEntry.mPlank, F, T) && !IL.Crate_Fireproof.equal(aEntry.mPlank, F, T)) {
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.amount(16, aEntry.mPlank), IL.Crate.get(1), OP.crateGtPlate.mat(aEntry.mMaterialPlank, 1));
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.amount(16, aEntry.mPlank), IL.Crate_Fireproof.get(1), OP.crateGtPlate.mat(aEntry.mMaterialPlank, 1));
+			RM.boxunbox(IL.Crate          .get(1), OP.crateGt64Plate.mat(aEntry.mMaterialPlank, 1), ST.amount(64, aEntry.mPlank));
+			RM.box     (IL.Crate_Fireproof.get(1), OP.crateGt64Plate.mat(aEntry.mMaterialPlank, 1), ST.amount(64, aEntry.mPlank));
 			}
-			RM.Boxinator.addRecipe2(T, 16, 16, ST.amount( 9, aEntry.mPlank), ST.tag(9), OP.blockPlate.mat(aEntry.mMaterialPlank, 1));
+			RM.packunpack(ST.amount( 9, aEntry.mPlank), OP.blockPlate.mat(aEntry.mMaterialPlank, 1));
 //          RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), NI, OP.gearGt.mat(aEntry.mMaterialPlank, 1));
 			
 			if (ST.valid(aEntry.mStair)) {
@@ -174,7 +180,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		
 		for (PlankEntry aEntry : WoodDictionary.STAIRS.values()) {
 			RM.generify(aEntry.mStair, IL.Plank_Stairs.get(1));
-			RM.pulverizing(aEntry.mStair, OP.dustSmall.mat(aEntry.mMaterialPlank, 3));
+			RM.pulverizing(aEntry.mStair, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 3, 4));
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			CR.remove(NI, NI, aPlank, NI, aPlank, aPlank, aPlank, aPlank, aPlank);
 			CR.remove(aPlank, NI, NI, aPlank, aPlank, NI, aPlank, aPlank, aPlank);
@@ -188,7 +194,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		
 		for (PlankEntry aEntry : WoodDictionary.SLABS.values()) {
 			RM.generify(aEntry.mSlab, IL.Plank_Slab.get(1));
-			RM.pulverizing(aEntry.mSlab, OP.dustSmall.mat(aEntry.mMaterialPlank, 2));
+			RM.pulverizing(aEntry.mSlab, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 2));
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			CR.remove(aPlank, aPlank, aPlank);
 			

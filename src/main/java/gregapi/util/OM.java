@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -340,6 +340,10 @@ public class OM {
 	
 	public static ItemStack dust(OreDictMaterialStack aMaterial) {
 		return aMaterial==null?null:dust(aMaterial.mMaterial, aMaterial.mAmount);
+	}
+	
+	public static ItemStack dust(OreDictMaterialStack aMaterial, long aMultiplier, long aDivider) {
+		return aMaterial==null?null:dust(aMaterial.mMaterial, (aMaterial.mAmount * aMultiplier) / aDivider);
 	}
 	
 	public static ItemStack dust(OreDictMaterial aMaterial, OreDictPrefix aPrefix) {

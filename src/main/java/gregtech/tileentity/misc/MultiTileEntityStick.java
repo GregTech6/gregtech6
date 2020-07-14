@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -91,15 +91,24 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	}
 	
 	public ItemStack getDefaultStick(int aAmount) {
-		return WD.dimAETHER(worldObj) ? OP.stick.mat(MT.Skyroot, aAmount) : WD.dimBTL(worldObj) ? OP.stick.mat(MT.Weedwood, aAmount) : (WD.dimALF(worldObj) && rng(8) == 0) ? OP.stick.mat(MT.Dreamwood, aAmount) : ST.make(Items.stick, aAmount, 0);
+		if (WD.dimAETHER(worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Skyroot       : MT.WOODS.Dead   , aAmount);
+		if (WD.dimBTL   (worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Weedwood      : MT.WOODS.Rotten , aAmount);
+		if (WD.dimERE   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.WOODS.Dead    : MT.PetrifiedWood, aAmount);
+		if (WD.dimALF   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.Livingwood    : MT.Dreamwood    , aAmount);
+		switch(rng(16)) {
+		case  0: return OP.stick.mat(MT.WOODS.Dead  , aAmount);
+		case  1: return OP.stick.mat(MT.WOODS.Mossy , aAmount);
+		case  2: return OP.stick.mat(MT.WOODS.Rotten, aAmount);
+		default: return ST.make(Items.stick, aAmount, 0);
+		}
 	}
 	
 	@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] || SIDES_TOP_HORIZONTAL[aSide] ? mTexture : null;}
 	
 	@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 1;}
-	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock,    mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ); return T;}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,                                             mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(                                            mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ);}
+	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock, mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ); return T;}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,                                          mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(                                         mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return null;}
 	
 	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}
