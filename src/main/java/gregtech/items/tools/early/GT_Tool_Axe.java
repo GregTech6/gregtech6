@@ -93,7 +93,7 @@ public class GT_Tool_Axe extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMeta) {
 		String tTool = aBlock.getHarvestTool(aMeta);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_axe)) || aBlock.getMaterial() == Material.wood || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.gourd;
+		return (tTool != null && tTool.equalsIgnoreCase(TOOL_axe)) || aBlock.getMaterial() == Material.wood || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.gourd || aBlock.getMaterial() == Material.coral;
 	}
 	
 	private static boolean LOCK = T;

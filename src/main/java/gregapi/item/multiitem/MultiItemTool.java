@@ -433,7 +433,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public final boolean canHarvestBlock(Block aBlock, ItemStack aStack) {
-		return IL.TC_Block_Air.equal(aBlock) || ST.ownedBy(MD.CARP, aBlock) || getDigSpeed(aStack, aBlock, (byte)0) > 0;
+		return IL.TC_Block_Air.equal(aBlock) || MD.CARP.owns(aBlock) || getDigSpeed(aStack, aBlock, (byte)0) > 0;
 	}
 	
 	@Override

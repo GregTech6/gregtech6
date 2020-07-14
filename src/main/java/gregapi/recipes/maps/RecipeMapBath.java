@@ -63,7 +63,7 @@ public class RecipeMapBath extends RecipeMap {
 		if (aInputs == null || aInputs.length < 1 || aInputs[0] == null || aFluids.length < 1 || aFluids[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		if (rRecipe == null) for (ItemStack aInput : aInputs) if (aInput != null) {
 			PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(ST.item(aInput), ST.meta(aInput));
-			if (aEntry != null && (ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank) || ST.ownedBy(MD.MC, aInput))) {
+			if (aEntry != null && (ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank) || MD.MC.owns(aInput))) {
 				if (ST.valid(aEntry.mPlank)) {
 					if (IL.MaCu_Polished_Planks.exists())
 					addRecipe1(F, 0, 144, aEntry.mPlank, FL.Oil_Fish.make(1000), NF, IL.MaCu_Polished_Planks.get(1));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -97,7 +97,7 @@ public class GT_Tool_Spade extends ToolStats {
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		if (BlocksGT.harvestableSpade.contains(aBlock)) return T;
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_shovel) && aBlock.getMaterial() != Material.sand && aBlock.getMaterial() != Material.snow && aBlock.getMaterial() != Material.craftedSnow) || aBlock.getMaterial() == Material.grass || aBlock.getMaterial() == Material.ground || aBlock.getMaterial() == Material.clay;
+		return (tTool != null && tTool.equalsIgnoreCase(TOOL_shovel) && aBlock.getMaterial() != Material.sand && aBlock.getMaterial() != Material.snow && aBlock.getMaterial() != Material.craftedSnow) || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.grass || aBlock.getMaterial() == Material.ground || aBlock.getMaterial() == Material.clay;
 	}
 	
 	@Override

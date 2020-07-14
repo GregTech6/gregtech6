@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -62,7 +62,7 @@ public class GT_Tool_Plow extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && tTool.equalsIgnoreCase(TOOL_plow)) || aBlock.getMaterial() == Material.snow || aBlock.getMaterial() == Material.craftedSnow;
+		return (tTool != null && tTool.equalsIgnoreCase(TOOL_plow)) || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.snow || aBlock.getMaterial() == Material.craftedSnow;
 	}
 	
 	@Override

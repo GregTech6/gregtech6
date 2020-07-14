@@ -314,9 +314,9 @@ public final class OreDictManager {
 		if (GT != null) {
 			// In order to fix a ThaumCraft Bug I have to ignore this registration under all circumstances. I registered it under the proper Name manually.
 			// Note: This has been fixed on TC Side, so it can be removed in later MC versions.
-			if (MD.TC .mLoaded && aModID.equals(MD.TC .mID) && aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
+			if (MD.TC .owns(aRegName) &&  aEvent.Name.toLowerCase().endsWith("uicksilver")) return;
 			// This Red/Redstone Alloy is violating two OreDict Materials at the same time with its Name and Composition, so I'm gonna keep it out of my System.
-			if (MD.HBM.mLoaded && aModID.equals(MD.HBM.mID) && (aEvent.Name.toLowerCase().endsWith("redalloy") || aEvent.Name.toLowerCase().endsWith("redstonealloy"))) return;
+			if (MD.HBM.owns(aRegName) && (aEvent.Name.toLowerCase().endsWith("redalloy") || aEvent.Name.toLowerCase().endsWith("redstonealloy"))) return;
 			// OreDictPrefix Conflict caused by Galacticraft fixing its OreDict Registrations a little bit late to use Plates instead of Compressed Stuff now.
 			// Note: This can be removed in later MC Versions too, since Galacticraft either does not update or since it has already fixed itself by now.
 			if (aRegName.length() >= 26 && aRegName.startsWith("Gala") && aEvent.Name.startsWith("plate")) {
@@ -328,9 +328,9 @@ public final class OreDictManager {
 			// Needed to fix a RotaryCraft value thing. Those are actually small piles of Dust.
 			// I had to do this instead of convincing Reika, because it is only a GT balance Issue, that wouldn't exist without GT.
 			// Basically those two things are outputted 4 times too much (1 Plank = 1 Pulp and not 4) and therefore would be small Piles of Dust and not regular ones.
-			if (MD.RoC.mLoaded && aModID.equals(MD.RoC.mID) && (aEvent.Name.equalsIgnoreCase("pulpWood") || aEvent.Name.equalsIgnoreCase("dustWood") || aEvent.Name.equalsIgnoreCase("dustWheat"))) {
+			if (MD.RoC.owns(aRegName) && (aEvent.Name.equalsIgnoreCase("pulpWood") || aEvent.Name.equalsIgnoreCase("dustWood") || aEvent.Name.equalsIgnoreCase("dustWheat"))) {
 				ItemStack tTargetStack = null, tFoundStack = null;
-				// This iteration works btw only because RotaryCraft registers Stuff in PostInit instead of PreInit like it would be supposed to.
+				// This iteration works btw only because RotaryCraft registers Stuff in PostInit instead of PreInit like it is supposed to.
 				for (ItemStack tStack : OreDictionary.getOres(aEvent.Name, F)) if (ST.equal(tStack, aEvent.Ore)) tFoundStack = tStack; else tTargetStack = tStack;
 				if (tTargetStack != null) {
 					ST.set(tFoundStack, tTargetStack);

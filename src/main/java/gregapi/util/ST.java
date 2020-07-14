@@ -710,7 +710,7 @@ public class ST {
 	}
 	
 	public static boolean torch(Block aBlock) {
-		return torch(aBlock, 1); // that 1 is totally not hacky at all. XD
+		return torch(aBlock, 1); // that "1" is totally not hacky at all. XD
 	}
 	public static boolean torch(Block aBlock, long aMeta) {
 		if (IL.NePl_Torch.equal(aBlock) || IL.GC_Torch_Glowstone.equal(aBlock) || IL.AETHER_Torch_Ambrosium.equal(aBlock) || (aMeta == 1 && IL.TC_Block_Air.equal(aBlock))) return T;

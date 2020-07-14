@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -102,7 +102,7 @@ public class GT_Tool_Crowbar extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		if (aBlock instanceof BlockRailBase || aBlock.getMaterial() == Material.circuits || IL.TG_Ore_Cluster_1.equal(aBlock) || IL.TG_Ore_Cluster_2.equal(aBlock)) return T;
+		if (aBlock instanceof BlockRailBase || aBlock.getMaterial() == Material.circuits || IL.TG_Ore_Cluster_1.equal(aBlock) || IL.TG_Ore_Cluster_2.equal(aBlock) || IL.TC_Block_Air.equal(aBlock)) return T;
 		String tTool = aBlock.getHarvestTool(aMetaData);
 		if (UT.Code.stringValid(tTool)) return TOOL_crowbar.equalsIgnoreCase(tTool);
 		for (IToolStats tStat : ToolsGT.sMetaTool.mToolStats.values()) if (!(tStat instanceof GT_Tool_Crowbar) && tStat.isMinableBlock(aBlock, aMetaData)) return F;
