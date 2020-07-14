@@ -599,7 +599,7 @@ public class Loader_Fluids implements Runnable {
 		for (OreDictMaterial tMaterial : MT.ALL_MATERIALS_REGISTERED_HERE) {
 			if (tMaterial.contains(TD.ItemGenerator.LIQUID)) FL.createLiquid(tMaterial);
 			if (tMaterial.contains(TD.ItemGenerator.MOLTEN)) FL.createMolten(tMaterial);
-			if (tMaterial.contains(TD.ItemGenerator.GASSES)) FL.createGas(tMaterial);
+			if (tMaterial.contains(TD.ItemGenerator.GASSES)) FL.createGas   (tMaterial);
 			if (tMaterial.contains(TD.ItemGenerator.VAPORS)) FL.createVapour(tMaterial);
 			if (tMaterial.contains(TD.ItemGenerator.PLASMA)) FL.createPlasma(tMaterial);
 		}
@@ -614,6 +614,7 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Air_End        .make(1000), IL.BOTA_Ender_Air_Bottle .get(1), IL.Bottle_Empty.get(1));
 		FL.reg(FL.FieryTears     .make(   L), IL.TF_Vial_FieryTears    .get(1), IL.Bottle_Empty.get(1));
 		FL.reg(FL.FieryBlood     .make(   L), IL.TF_Vial_FieryBlood    .get(1), IL.Bottle_Empty.get(1));
+		FL.reg(MT.Hg           .liquid(U, T), IL.HBM_Mercury_Bottle    .get(1), IL.Bottle_Empty.get(1));
 		FL.reg(FL.Gas_Natural    .make(1000), ST.make(MD.MaCu, "fluids", 1,27), IL.Bottle_Empty.get(1), F, T, T);
 		FL.reg(FL.Gas_Natural    .make(2000), ST.make(MD.MaCu, "fluids", 1, 2), ST.make(MD.MaCu, "fluids", 1, 20), F, T, T);
 		FL.reg(FL.Ambrosia       .make(1000), IL.FR_Ambrosia           .get(1), IL.FR_WaxCapsule.get(1), T, F, F);

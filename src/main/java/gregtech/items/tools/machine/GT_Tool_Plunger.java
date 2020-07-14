@@ -84,7 +84,7 @@ public class GT_Tool_Plunger extends ToolStats {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_plunger, SFX.IC_TRAMPOLINE, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_plunger, SFX.IC_TRAMPOLINE, 100, !canBlock(), T));
 		aItem.addItemBehavior(aID, new Behavior_Plunger_Item(getToolDamagePerDropConversion()));
 		aItem.addItemBehavior(aID, new Behavior_Plunger_Fluid(getToolDamagePerDropConversion()));
 		try {

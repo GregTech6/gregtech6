@@ -334,9 +334,9 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 //      CR.shaped(IL.Tool_Scanner               .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_HV, 'X', OP.plate.dat(MT.Cr), 'U', OD_USB_STICKS[3], 'C', OD_USB_CABLES[3], 'E', IL.EMITTERS[4], 'R', IL.SENSORS[4], 'P', IL.Processor_Crystal_Sapphire);
 //      CR.shaped(IL.Tool_Cropnalyzer           .get(1), CR.DEF_REV, "EXR", "CPU", "BXB", 'B', IL.Battery_Alkaline_MV, 'X', OP.plate.dat(MT.Al), 'U', OD_USB_STICKS[1], 'C', OD_USB_CABLES[1], 'E', IL.EMITTERS[2], 'R', IL.SENSORS[2], 'P', OD_CIRCUITS[6]);
 		
-		IL.Thermometer_Quicksilver.set(         addItem(tLastID = 10000, "Quicksilver Thermometer"  , "", new Behavior_Tool(TOOL_thermometer  , null, 0, T), TC.stack(TC.VENENUM, 1), TC.stack(TC.VITREUS, 1)));
-		IL.Geiger_Counter_Empty.set(            addItem(tLastID = 10001, "Geiger Counter (Empty)"   , "Fill with proper inert Gas"                         , TC.stack(TC.SENSUS, 1), TC.stack(TC.RADIO, 1)));
-		IL.Geiger_Counter.set(                  addItem(tLastID = 10002, "Geiger Counter"           , "", new Behavior_Tool(TOOL_geigercounter, null, 0, T), TC.stack(TC.SENSUS, 5), TC.stack(TC.RADIO, 5)));
+		IL.Thermometer_Quicksilver.set(         addItem(tLastID = 10000, "Quicksilver Thermometer"  , "", new Behavior_Tool(TOOL_thermometer  ), TC.stack(TC.VENENUM, 1), TC.stack(TC.VITREUS, 1)));
+		IL.Geiger_Counter_Empty.set(            addItem(tLastID = 10001, "Geiger Counter (Empty)"   , "Fill with proper inert Gas"             , TC.stack(TC.SENSUS, 1), TC.stack(TC.RADIO, 1)));
+		IL.Geiger_Counter.set(                  addItem(tLastID = 10002, "Geiger Counter"           , "", new Behavior_Tool(TOOL_geigercounter), TC.stack(TC.SENSUS, 5), TC.stack(TC.RADIO, 5)));
 		
 		RM.Canner.addRecipe1(T, 16, 64, IL.Geiger_Counter_Empty.get(1), FL.Helium.make(1000), NF, IL.Geiger_Counter.get(1));
 		RM.Canner.addRecipe1(T, 16, 64, IL.Geiger_Counter_Empty.get(1), FL.Neon  .make(1000), NF, IL.Geiger_Counter.get(1));

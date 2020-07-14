@@ -126,7 +126,7 @@ public class GT_Tool_Crowbar extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_crowbar, SFX.MC_BREAK, 100, !canBlock()));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_crowbar, SFX.MC_BREAK, 100, !canBlock(), T));
 	}
 	
 	@Override

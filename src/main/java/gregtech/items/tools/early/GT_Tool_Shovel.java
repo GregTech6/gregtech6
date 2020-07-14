@@ -96,7 +96,7 @@ public class GT_Tool_Shovel extends ToolStats {
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
 		aItem.addItemBehavior(aID, new Behavior_Place_Path(50));
 		aItem.addItemBehavior(aID, new Behavior_Place_Paddy(50));
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_shovel, SFX.MC_DIG_GRAVEL, 100, F));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_shovel, SFX.MC_DIG_GRAVEL, 100, F, T));
 		aItem.addItemBehavior(aID, Behavior_Place_Torch.INSTANCE);
 	}
 	
