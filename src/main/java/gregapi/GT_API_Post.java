@@ -602,8 +602,8 @@ public class GT_API_Post extends Abstract_Mod {
 		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mSlab
 		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mStair
 		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mPlank
-		, tTree.mWoodEntry.mPlankEntry == null ? NI : ST.validMeta_(NERFED_WOOD ? tTree.mWoodEntry.mPlankEntry.mStickCountSaw : tTree.mWoodEntry.mPlankEntry.mStickCountLathe, tTree.mWoodEntry.mPlankEntry.mStick)
-		, tTree.mWoodEntry.mBeamEntry  == null ? NI : ST.validMeta_(NERFED_WOOD ? tTree.mWoodEntry.mBeamEntry .mStickCountSaw : tTree.mWoodEntry.mBeamEntry .mStickCountLathe, tTree.mWoodEntry.mBeamEntry .mStick)
+		, tTree.mWoodEntry.mPlankEntry == null ? NI : ST.validMeta_(tTree.mWoodEntry.mPlankEntry.mStickCountLathe, tTree.mWoodEntry.mPlankEntry.mStick)
+		, tTree.mWoodEntry.mBeamEntry  == null ? NI : ST.validMeta_(tTree.mWoodEntry.mBeamEntry .mStickCountLathe, tTree.mWoodEntry.mBeamEntry .mStick)
 		, tTree.mWoodEntry.mPlankEntry == null ? NI : OP.crateGt64Plate.mat(tTree.mWoodEntry.mPlankEntry.mMaterialPlank, 1)
 		, OM.dust(tTree.mWoodEntry.mMaterialWood.mTargetPulver, tTree.mWoodEntry.mPlankCountBuzz+2, 1)
 		, tTree.mWoodEntry.mBark

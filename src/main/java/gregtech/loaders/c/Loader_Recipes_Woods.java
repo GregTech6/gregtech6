@@ -25,6 +25,7 @@ import static gregapi.data.OP.*;
 import java.util.Arrays;
 
 import gregapi.block.metatype.BlockMetaType;
+import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
@@ -93,8 +94,8 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple     ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Rainbowood), NF, FL.Sap_Rainbow .make(5)          , OM.dust(MT.Wood));
 		
-		CR.shaped(ST.make(Items.stick, 1, 0), CR.DEF_NAC_NCC, "  ", " S", 'S', OD.stickWood);
-		CR.shaped(gearGt.mat(MT.Wood   ,  1), CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', OD.plankWood, 'S', ST.make(Blocks.wooden_button, 1, W));
+		CR.shaped(ST.make(Items.stick, 1, 0), CR.DEF_NAC_NCC, "  ", " S", 'S', OP.stick.dat(ANY.WoodDefault));
+		CR.shaped(gearGt.mat(MT.Wood   ,  1), CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', OD.plankAnyWood, 'S', ST.make(Blocks.wooden_button, 1, W));
 		
 		if (IL.RC_Tie_Wood.exists()) {
 			if (IL.IE_Treated_Slab.exists())
