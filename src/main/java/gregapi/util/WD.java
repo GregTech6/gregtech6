@@ -354,11 +354,11 @@ public class WD {
 	}
 	/** @return the Height of the Water Level that should probably be in this World. */
 	public static int waterLevel(int aDefaultOverworld) {
-		return MD.TFC.mLoaded || MD.TFCP.mLoaded? 126 : aDefaultOverworld; // TODO This 126 is just a random guess!
+		return MD.TFC.mLoaded || MD.TFCP.mLoaded? 143 : aDefaultOverworld;
 	}
 	/** @return the Height of the Water Level that should probably be in this World. */
 	public static int waterLevel() {
-		return MD.TFC.mLoaded || MD.TFCP.mLoaded? 126 : 62; // TODO This 126 is just a random guess!
+		return waterLevel(62);
 	}
 	
 	/** @return the regular Temperature of the World at this Location according to Gregs calculations. In Kelvin, ofcourse. */

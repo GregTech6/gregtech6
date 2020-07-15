@@ -492,7 +492,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenBeacon          ("center.beacon"     , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		new WorldgenTesting         ("center.testing"    , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		
-		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		
 		new WorldgenFluidSpring("overworld.fluid.oil.extraheavy", T, BlocksGT.OilExtraHeavy,  7,  1, 50,200,   0,  16, null, F, tInfiniteOil ? FL.Oil_ExtraHeavy.make( 6000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		new WorldgenFluidSpring("overworld.fluid.oil.heavy"     , T, BlocksGT.OilHeavy     ,  7,  1, 60,150,   0,  16, null, F, tInfiniteOil ? FL.Oil_Heavy     .make( 6000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
