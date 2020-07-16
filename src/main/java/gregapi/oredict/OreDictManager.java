@@ -41,6 +41,7 @@ import gregapi.data.ANY;
 import gregapi.data.FL;
 import gregapi.data.MD;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.item.IPrefixItem;
@@ -402,7 +403,7 @@ public final class OreDictManager {
 				// This is a vanilla Forge Rule. I just make sure it gets applied. All Dyes no matter of which Colour have to be registered under the Name "dye" too.
 				if (aPrefix == OP.dye) registerOreSafe("dye", aEvent.Ore);
 				if (aPrefix == OP.flower) registerOreSafe("flower", aEvent.Ore);
-				if (aPrefix == OP.plantGtFiber) registerOreSafe("itemString", aEvent.Ore);
+				if (aPrefix == OP.plantGtFiber) registerOreSafe(OD.itemString, aEvent.Ore);
 				
 				if (aMaterial == null) aMaterial = OreDictMaterial.MATERIAL_MAP.get(tName);
 				
@@ -413,6 +414,7 @@ public final class OreDictManager {
 					if (aMaterial.contains(TD.Properties.AUTO_BLACKLIST)) addToBlacklist_(aEvent.Ore);
 					for (OreDictMaterial tReRegisteredMaterial : aMaterial.mReRegistrations) registerOreSafe(aPrefix.mNameInternal + tReRegisteredMaterial.mNameInternal, aEvent.Ore);
 					if (!aMaterial.contains(TD.Properties.INVALID_MATERIAL)) {
+						if (aPrefix == OP.rockGt && aMaterial.contains(TD.Properties.STONE)) registerOreSafe(OD.itemRock, aEvent.Ore);
 						if (aPrefix != OP.ore && aPrefix.contains(TD.Prefix.STANDARD_ORE) && aMaterial.contains(TD.Properties.COMMON_ORE)) registerOreSafe(OP.ore.mNameInternal + aMaterial.mNameInternal, aEvent.Ore);
 						if ((MD.TFC.mLoaded || MD.TFCP.mLoaded) && (aModID.equalsIgnoreCase(MD.TFC.mID) || aModID.equalsIgnoreCase(MD.TFCP.mID)) && aPrefix.contains(TD.Prefix.UNIFICATABLE)) {
 							setTarget_(aPrefix, aMaterial, aEvent.Ore, T, T);

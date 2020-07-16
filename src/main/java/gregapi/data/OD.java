@@ -126,6 +126,7 @@ public enum OD {
 	, itemResin
 	, itemRubber
 	, itemSalt
+	, itemRock
 	, itemFlint
 	, itemPearl
 	, itemString
