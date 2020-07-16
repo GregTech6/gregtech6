@@ -100,7 +100,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 				int tType = aData.next(tIDs.length);
 				for (int i = 0; i < 4; i++) for (int j = 0; j < 3; j++) {
 					if (aData.next1in2()) for (int k = 0; k < 4; k++) {
-						aData.set(7+i, 1+k, 12+j, SIDE_UNKNOWN, tIDs[tType], new FluidTankGT(UT.Code.select(NF, tFluids[tType])).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
+						aData.set(6+i, 1+k, 12+j, SIDE_UNKNOWN, tIDs[tType], new FluidTankGT(UT.Code.select(NF, tFluids[tType])).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
 						if (aData.next1in2()) break;
 					} else if (aData.next1in2()) {
 						if (aData.next1in2()) {
@@ -117,7 +117,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 				int tType = aData.next(tIDs.length);
 				for (int i = 0; i < 4; i++) for (int j = 0; j < 3; j++) {
 					if (aData.next1in2()) for (int k = 0; k < 4; k++) {
-						aData.set(7+i, 1+k, 1+j, SIDE_UNKNOWN, tIDs[tType], new FluidTankGT(UT.Code.select(NF, tFluids[tType])).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
+						aData.set(6+i, 1+k, 1+j, SIDE_UNKNOWN, tIDs[tType], new FluidTankGT(UT.Code.select(NF, tFluids[tType])).writeToNBT(UT.NBT.make(), NBT_TANK), T, T);
 						if (aData.next1in2()) break;
 					} else if (aData.next1in2()) {
 						if (aData.next1in2()) {

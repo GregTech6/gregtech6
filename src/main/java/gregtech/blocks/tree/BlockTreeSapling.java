@@ -67,6 +67,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		Block tBlock = aWorld.getBlock(aX, aY-1, aZ);
 		if (tBlock.canSustainPlant(aWorld, aX, aY-1, aZ, ForgeDirection.UP, (IPlantable)Blocks.sapling)) return T;
 		// Coconut Trees should be able to grow on Sand, not because realism, but because it makes it easier to plant them in Deserts and Beaches.
+		// Weirdly this Line of Code does not work, so maybe such a Hybrid Plant is not possible thanks to Forge fuckery.
 		return (tBlock == Blocks.sand || tBlock.canSustainPlant(aWorld, aX, aY-1, aZ, ForgeDirection.UP, (IPlantable)Blocks.cactus)) && (aWorld.getBlockMetadata(aX, aY, aZ) & 7) == 6;
 	}
 	

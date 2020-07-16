@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -77,6 +77,11 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, new DungeonChunkRoomWorkshop()
 	, new DungeonChunkRoomLibrary()
 	, new DungeonChunkRoomPool()
+	, new DungeonChunkRoomStorage()
+	);
+	
+	public static final List<IDungeonChunk> DEAD_END = new ArrayListNoNulls<IDungeonChunk>(F
+	, new DungeonChunkRoomStorage()
 	, new DungeonChunkRoomStorage()
 	, new DungeonChunkRoomPortalNether()
 	, new DungeonChunkRoomPortalEnd()
@@ -226,7 +231,16 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			
 			switch(tRoomLayout[i][j]) {
 			case ROOM_ID_COUNT:
-				// Generate a random Room
+				if (aData.mConnectionCount == 1) {
+					// Generate a random Dead End
+					List<IDungeonChunk> tList = new ArrayListNoNulls<>(DEAD_END);
+					while (T) {
+						if (tList.remove(aRandom.nextInt(tList.size())).generate(aData)) break;
+						if (tList.isEmpty()) {ROOM_EMPTY.generate(aData); break;}
+					}
+					break;
+				}
+				// Generate a random Normal Room
 				List<IDungeonChunk> tList = new ArrayListNoNulls<>(ROOMS);
 				while (T) {
 					if (tList.remove(aRandom.nextInt(tList.size())).generate(aData)) break;

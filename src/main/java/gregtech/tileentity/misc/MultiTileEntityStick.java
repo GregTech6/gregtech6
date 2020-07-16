@@ -91,6 +91,7 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	}
 	
 	public ItemStack getDefaultStick(int aAmount) {
+		if (isClientSide()) return IL.Stick.get(aAmount);
 		if (WD.dimAETHER(worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Skyroot       : MT.WOODS.Dead   , aAmount);
 		if (WD.dimBTL   (worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Weedwood      : MT.WOODS.Rotten , aAmount);
 		if (WD.dimERE   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.WOODS.Dead    : MT.PetrifiedWood, aAmount);
