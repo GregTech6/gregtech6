@@ -32,8 +32,12 @@ import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockTreeSapling extends BlockBaseSapling {
 	public BlockTreeSapling(String aUnlocalised) {
@@ -44,7 +48,7 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		LH.add(getUnlocalizedName()+ ".3.name", "Blue Mahoe Sapling");
 		LH.add(getUnlocalizedName()+ ".4.name", "Hazel Sapling");
 		LH.add(getUnlocalizedName()+ ".5.name", "Cinnamon Sapling");
-		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Sapling (TODO)");
+		LH.add(getUnlocalizedName()+ ".6.name", "Coconut Sapling");
 		LH.add(getUnlocalizedName()+ ".7.name", "Rainbowood Sapling");
 		LH.add(getUnlocalizedName()+ ".8.name", "Rubber Sapling");
 		LH.add(getUnlocalizedName()+ ".9.name", "Maple Sapling");
@@ -52,10 +56,18 @@ public class BlockTreeSapling extends BlockBaseSapling {
 		LH.add(getUnlocalizedName()+".11.name", "Blue Mahoe Sapling");
 		LH.add(getUnlocalizedName()+".12.name", "Hazel Sapling");
 		LH.add(getUnlocalizedName()+".13.name", "Cinnamon Sapling");
-		LH.add(getUnlocalizedName()+".14.name", "Coconut Sapling (TODO)");
+		LH.add(getUnlocalizedName()+".14.name", "Coconut Sapling");
 		LH.add(getUnlocalizedName()+".15.name", "Rainbowood Sapling");
 		
 		for (int i = 0; i < 16; i++) OM.reg(ST.make(this, 1, i), OP.treeSapling);
+	}
+	
+	@Override
+	public boolean canBlockStay(World aWorld, int aX, int aY, int aZ) {
+		Block tBlock = aWorld.getBlock(aX, aY-1, aZ);
+		if (tBlock.canSustainPlant(aWorld, aX, aY-1, aZ, ForgeDirection.UP, (IPlantable)Blocks.sapling)) return T;
+		// Coconut Trees should be able to grow on Sand, not because realism, but because it makes it easier to plant them in Deserts and Beaches.
+		return (tBlock == Blocks.sand || tBlock.canSustainPlant(aWorld, aX, aY-1, aZ, ForgeDirection.UP, (IPlantable)Blocks.cactus)) && (aWorld.getBlockMetadata(aX, aY, aZ) & 7) == 6;
 	}
 	
 	@Override

@@ -97,10 +97,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 	}
 	
 	public boolean tryGrow(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		if (!aWorld.isRemote && !WD.oxygen(aWorld, aX, aY, aZ)) {
-			aWorld.setBlock(aX, aY, aZ, Blocks.deadbush, 0, 3);
-			return F;
-		}
+		if (!aWorld.isRemote && !WD.oxygen(aWorld, aX, aY, aZ)) {aWorld.setBlock(aX, aY, aZ, Blocks.deadbush, 0, 3); return F;}
 		if (TREE_GROWTH_TIME > 1 && RNGSUS.nextInt(TREE_GROWTH_TIME) > 0) return F;
 		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
 		if (aMeta < 8) {

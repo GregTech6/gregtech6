@@ -62,6 +62,7 @@ import gregapi.render.ITexture;
 import gregapi.render.IconContainerCopied;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.wooddict.PlankEntry;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -1587,17 +1588,18 @@ public class CS {
 		public static boolean add(String aToolType, ItemStack aStack) {if (TOOL_LIST.add(aStack)) return get(aToolType).add(aStack); return F;}
 		public static boolean add(ItemStack aStack, String aToolType) {if (TOOL_LIST.add(aStack)) return get(aToolType).add(aStack); return F;}
 	}
-
+	
 	public static class PlankData {
-		public static ItemStack[] PLANKS = new ItemStack[300];
-		public static IIconContainer[] PLANK_ICONS = new IIconContainer[300];
-
+		public static ItemStack      PLANKS       [] = new ItemStack     [300];
+		public static IIconContainer PLANK_ICONS  [] = new IIconContainer[300];
+		public static PlankEntry     PLANK_ENTRIES[] = new PlankEntry    [300];
+		
 		static {
 			PLANKS[0] = ST.make(Blocks.planks, 1, 0);
 			Arrays.fill(PLANK_ICONS, new IconContainerCopied(Blocks.planks, 0, 0));
 		}
 	}
-
+	
 	/** Contains the IDs for my Book Shelf Stuff. */
 	public static class BooksGT {
 		//   0 = null

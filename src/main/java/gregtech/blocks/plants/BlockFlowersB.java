@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,6 +25,7 @@ import java.util.List;
 
 import gregapi.block.misc.BlockBaseFlower;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.RM;
@@ -35,7 +36,6 @@ import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -86,13 +86,13 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
 		
-		CR.shaped(ST.make(Items.stick, 2, 0), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 0));
-		CR.shaped(ST.make(Items.stick, 2, 0), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 0));
-		CR.shaped(ST.make(Items.stick, 2, 0), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 1));
-		CR.shaped(ST.make(Items.stick, 2, 0), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 1));
+		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 0));
+		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 0));
+		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 1));
+		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 1));
 		
-		CR.shapeless(ST.make(Items.stick, 1, 0), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
-		CR.shapeless(ST.make(Items.stick, 1, 0), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});
+		CR.shapeless(IL.Stick.get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
+		CR.shapeless(IL.Stick.get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 2)});
 		CR.shapeless(OM.dust(MT.Pink), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 3)});
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 4)});
@@ -101,8 +101,8 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		RM.biomass(ST.make(this, 8, W));
 		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
-		RM.ic2_extractor(ST.make(this, 1, 0), ST.make(Items.stick, 2, 0));
-		RM.ic2_extractor(ST.make(this, 1, 1), ST.make(Items.stick, 2, 0));
+		RM.ic2_extractor(ST.make(this, 1, 0), IL.Stick.get(2));
+		RM.ic2_extractor(ST.make(this, 1, 1), IL.Stick.get(2));
 		RM.ic2_extractor(ST.make(this, 1, 2), OM.dust(MT.Yellow, U * 2));
 		RM.ic2_extractor(ST.make(this, 1, 3), OM.dust(MT.Pink, U * 2));
 		RM.ic2_extractor(ST.make(this, 1, 4), OM.dust(MT.Yellow, U * 2));

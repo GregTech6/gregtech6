@@ -505,6 +505,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.craftingWorkBench                 , ST.make(MD.BC_FACTORY, "autoWorkbenchBlock", 1, 0));
 		OM.reg(OD.craftingRedstoneTorch             , ST.make(Blocks.redstone_torch, 1, W));
 		OM.reg(OD.craftingRedstoneTorch             , ST.make(Blocks.unlit_redstone_torch, 1, W));
+		OM.reg(OD.blockTorch                        , ST.make(Blocks.torch, 1, W));
 		OM.reg(OD.craftingPiston                    , ST.make(Blocks.piston, 1, W));
 		OM.reg(OD.craftingPiston                    , ST.make(Blocks.sticky_piston, 1, W));
 		OM.reg(OD.craftingAnvil                     , ST.make(Blocks.anvil, 1, 0));
@@ -2014,6 +2015,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.mossy_cobblestone, 1, W)             , ANY.Stone             ,  U * 1);
 		OM.data(ST.make(Blocks.stone_button, 1, W)                  , ANY.Stone             ,  U * 1);
 		OM.data(ST.make(Blocks.stone_pressure_plate, 1, W)          , ANY.Stone             ,  U * 2);
+		OM.data(ST.make(Blocks.deadbush, 1, W)                      , MT.WOODS.Dead         ,  U * 1);
+		OM.data(ST.make(Blocks.tallgrass, 1, 0)                     , MT.WOODS.Dead         ,  U * 1);
 		OM.data(ST.make(Blocks.ladder, 1, W)                        , ANY.Wood              ,  3 *U7);
 		OM.data(ST.make(Blocks.wooden_button, 1, W)                 , ANY.Wood              ,  U * 1);
 		OM.data(ST.make(Blocks.wooden_pressure_plate, 1, W)         , ANY.Wood              ,  U * 2);

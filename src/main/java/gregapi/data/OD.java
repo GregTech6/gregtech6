@@ -150,6 +150,7 @@ public enum OD {
 	, grainBait
 	, veggieBait
 	, fishtrapBait
+	, blockTorch
 	, bookEmpty
 	, bookWritten
 	, bookWritable

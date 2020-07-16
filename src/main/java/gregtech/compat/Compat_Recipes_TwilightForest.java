@@ -46,10 +46,10 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		CR.delate(MD.TF, "tile.TFUncraftingTable");
 		CR.delate(IL.TF_Carminite.get(1));
 		
-		CR.shaped(ST.make(Items.stick, 2, 0), DEF, "s", "X", 'X', IL.TF_Dry_Bush);
-		CR.shaped(ST.make(Items.stick, 2, 0), DEF, "k", "X", 'X', IL.TF_Dry_Bush);
+		CR.shaped(IL.Stick.get(2), DEF, "s", "X", 'X', IL.TF_Dry_Bush);
+		CR.shaped(IL.Stick.get(2), DEF, "k", "X", 'X', IL.TF_Dry_Bush);
 		
-		CR.shaped(ST.make(Blocks.torch, 6, 0), DEF_NAC, "X", "S", 'X', IL.TF_Torchberries, 'S', OP.stick.dat(ANY.Wood));
+		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'X', IL.TF_Torchberries, 'S', OP.stick.dat(ANY.Wood));
 		
 		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   ,  4, W), ST.make(MD.TF, "item.charmOfKeeping2" , 1, 0));
 		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   , 16, W), ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
@@ -63,8 +63,8 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		ItemsGT.addNEIRedirects(ST.make(MD.TF, "item.charmOfKeeping1", 1, W), ST.make(MD.TF, "item.charmOfKeeping2", 1, W), ST.make(MD.TF, "item.charmOfKeeping3", 1, W));
 		ItemsGT.addNEIRedirects(ST.make(MD.TF, "item.charmOfLife1", 1, W), ST.make(MD.TF, "item.charmOfLife2", 1, W));
 		
-		RM.sawing(16, 16, F,  2, ST.make(MD.TF, "tile.TFRoots", 1, 0), ST.make(Items.stick, 6, 0));
-		RM.sawing(16, 16, F,  6, ST.make(MD.TF, "tile.TFRoots", 1, 1), IL.TF_LiveRoot.get(2), ST.make(Items.stick, 2, 0));
+		RM.sawing(16, 16, F,  2, ST.make(MD.TF, "tile.TFRoots", 1, 0), IL.Stick.get(6));
+		RM.sawing(16, 16, F,  6, ST.make(MD.TF, "tile.TFRoots", 1, 1), IL.TF_LiveRoot.get(2), IL.Stick.get(2));
 		
 		CR.remove(ST.make(MD.TF, "tile.GiantLog"        , 1, 0));
 		CR.remove(ST.make(MD.TF, "tile.GiantCobble"     , 1, 0));

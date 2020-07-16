@@ -310,7 +310,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						}
 						return;
 					}
-				} else if (aStack.getItem() == Items.stick) {
+				} else if (aStack.getItem() == Items.stick || IL.Stick.equal(aStack)) {
 					if (!aEvent.world.isRemote && aEvent.entityPlayer.isSneaking() && MultiTileEntityRegistry.getRegistry("gt.multitileentity").getItem(32073).tryPlaceItemIntoWorld(aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.face, 0.5F, 0.5F, 0.5F)) {
 						ST.use(aEvent.entityPlayer, aStack);
 						aEvent.setCanceled(T);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,13 @@
 
 package gregtech.tileentity.misc;
 
-import gregapi.util.ST;
-import net.minecraft.init.Items;
+import gregapi.data.IL;
 import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityStickPlaced extends MultiTileEntityStick {
-	@Override public ItemStack getDefaultStick(int aAmount) {return ST.make(Items.stick, 1, 0);}
+	@Override public ItemStack getDefaultStick(int aAmount) {return IL.Stick.get(1);}
 	@Override public String getTileEntityName() {return "gt.multitileentity.stick.placed";}
 }

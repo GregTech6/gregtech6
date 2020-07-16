@@ -698,6 +698,14 @@ public class LoaderItemList implements Runnable {
 		if (IL.TF_Vial_FieryTears.item() != null) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
 		
 		
+		IL.TFC_Torch                            .set(ST.make(MD.TFCP.mLoaded?MD.TFCP:MD.TFC, "Torch"        , 1, 0), null, OD.blockTorch);
+		IL.TFC_Stick                            .set(ST.make(MD.TFCP.mLoaded?MD.TFCP:MD.TFC, "item.stick"   , 1, 0));
+		
+		
+		IL.Torch                                .set(IL.TFC_Torch.get(1, ST.make(Blocks.torch, 1, 0)));
+		IL.Stick                                .set(IL.TFC_Stick.get(1, ST.make(Items.stick, 1, 0)));
+		
+		
 		IL.RH_Sand_Magnetite                    .set(ST.make(MD.RH, "globbypotato_rockhounding_beachSands"  , 1, 0), new OreDictItemData(MT.OREMATS.Magnetite, U));
 		IL.RH_Sand_Olivine                      .set(ST.make(MD.RH, "globbypotato_rockhounding_beachSands"  , 1, 1), new OreDictItemData(MT.Olivine, U));
 		IL.RH_Sand_Coral                        .set(ST.make(MD.RH, "globbypotato_rockhounding_beachSands"  , 1, 2), new OreDictItemData(MT.Sand, U));
@@ -798,7 +806,7 @@ public class LoaderItemList implements Runnable {
 		IL.AETHER_Skyroot_Log                   .set(ST.make(MD.AETHER, "aetherLog"                         , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U));
 		IL.AETHER_Skyroot_Log_Gold              .set(ST.make(MD.AETHER, "aetherLog"                         , 1, 2), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log.wild(1), OD.logWood);
 		IL.AETHER_Skyroot_Log_Small             .set(ST.make(MD.AETHER, "skyrootLogWall"                    , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log_Small.wild(1), OD.logWood);
-		IL.AETHER_Torch_Ambrosium               .set(ST.make(MD.AETHER, "ambrosiumTorch"                    , 1, 0), new OreDictItemData(MT.Ambrosium, U8, MT.Skyroot, U16));
+		IL.AETHER_Torch_Ambrosium               .set(ST.make(MD.AETHER, "ambrosiumTorch"                    , 1, 0), new OreDictItemData(MT.Ambrosium, U8, MT.Skyroot, U16), OD.blockTorch);
 		IL.AETHER_Apple                         .set(ST.make(MD.AETHER, "whiteApple"                        , 1, 0), null, "cropAppleWhite");
 		IL.AETHER_Tall_Grass                    .set(ST.make(MD.AETHER, "tallAetherGrass"                   , 1, 0), null, OD.itemGrassTall);
 		IL.AETHER_Dirt                          .set(ST.make(MD.AETHER, "aetherDirt"                        , 1, 0));
@@ -881,7 +889,7 @@ public class LoaderItemList implements Runnable {
 		IL.ENVM_Bottle_Water_Salty              .set(ST.make(MD.ENVM, "saltWaterBottle"                     , 1, 0));
 		
 		
-		IL.NePl_Torch                           .set(ST.make(MD.NePl, "SoulTorch"                           , 1, 0));
+		IL.NePl_Torch                           .set(ST.make(MD.NePl, "SoulTorch"                           , 1, 0), null, OD.blockTorch);
 		IL.NePl_Blackstone                      .set(ST.make(MD.NePl, "Blackstone"                          , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Blackstone_Bricks               .set(ST.make(MD.NePl, "PolishedBlackstoneBricks"            , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Blackstone_Polished             .set(ST.make(MD.NePl, "PolishedBlackstone"                  , 1, 0), OP.stone.dat(MT.Blackstone));
@@ -1064,7 +1072,7 @@ public class LoaderItemList implements Runnable {
 		
 		IL.GC_Infinite_Oxygen                   .set(ST.make(MD.GC, "item.infiniteOxygen"                   , 1, 0)); ItemsGT.DEBUG_ITEMS.add(IL.GC_Infinite_Oxygen.wild(1)); ItemsGT.ILLEGAL_DROPS.add(IL.GC_Infinite_Oxygen.wild(1));
 		IL.GC_Infinite_Battery                  .set(ST.make(MD.GC, "item.infiniteBattery"                  , 1, 0)); ItemsGT.DEBUG_ITEMS.add(IL.GC_Infinite_Battery.wild(1)); ItemsGT.ILLEGAL_DROPS.add(IL.GC_Infinite_Battery.wild(1));
-		IL.GC_Torch_Glowstone                   .set(ST.make(MD.GC, "tile.glowstoneTorch"                   , 1, 0), new OreDictItemData(ANY.Glowstone, U4, ANY.Wood, U8));
+		IL.GC_Torch_Glowstone                   .set(ST.make(MD.GC, "tile.glowstoneTorch"                   , 1, 0), new OreDictItemData(ANY.Glowstone, U4, ANY.Wood, U8), OD.blockTorch);
 		IL.GC_Canister                          .set(ST.make(MD.GC, "item.oilCanisterPartial"               , 1, 1001));
 		IL.GC_OxyTank_1                         .set(ST.make(MD.GC, "item.oxygenTankLightFull"              , 1, 0));
 		IL.GC_OxyTank_2                         .set(ST.make(MD.GC, "item.oxygenTankMedFull"                , 1, 0));

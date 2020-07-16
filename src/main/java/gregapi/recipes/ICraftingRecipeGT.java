@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,7 +29,7 @@ import net.minecraft.item.crafting.IRecipe;
  */
 public interface ICraftingRecipeGT extends IRecipe {
 	/** Used for Recipes as an Error Indicator. */
-	public static final ItemStack ERROR_OUTPUT = ST.make(Items.stick, 0, 0, "Error: Please Report used Ingredients to GregTech!");
+	public static final ItemStack ERROR_OUTPUT = ST.make(Items.egg, 0, 0, "Error: Please Report used Ingredients to GregTech!");
 	/** this is basically just needed so I don't accidentally remove my own Recipes. */
 	public boolean isRemovableByGT();
 	/** return false to make GT Autocrafting Tables not produce this Recipe. */

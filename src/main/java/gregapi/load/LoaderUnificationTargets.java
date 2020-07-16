@@ -743,5 +743,6 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.casingSmall    , MT.Bronze                 , ST.mkic("casingbronze", 1));
 		OreDictManager.INSTANCE.setTarget(OP.casingSmall    , MT.Steel                  , ST.mkic("casingadviron", 1));
 		}
+		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Wood                   , ST.make(MD.TFCP.mLoaded?MD.TFCP:MD.TFC, "item.stick", 1, 0));
 	}
 }

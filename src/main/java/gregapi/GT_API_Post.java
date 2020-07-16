@@ -616,8 +616,8 @@ public class GT_API_Post extends Abstract_Mod {
 		// Diatomic Elements get a Subscript 2 appended to their ToolTip after PostInit. That way the ToolTip Calculation works properly until PostInit happens.
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) if (tMaterial.contains(TD.Atomic.DIATOMIC_NONMETAL)) tMaterial.mTooltipChemical += "\u2082";
 		
-		MT.P.mTooltipChemical += "\u2084";
-		MT.S.mTooltipChemical += "\u2088";
+		MT.P .mTooltipChemical += "\u2084";
+		MT.S .mTooltipChemical += "\u2088";
 		MT.Se.mTooltipChemical += "\u2088";
 		
 		// And now to stop CoFH-Core from crashing and lagging the Game in Singleplayer with the FMLProxyPacket race condition Bug.

@@ -25,6 +25,7 @@ import java.util.Random;
 
 import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.render.BlockTextureCopied;
@@ -39,7 +40,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -99,7 +99,7 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 		case  0: return OP.stick.mat(MT.WOODS.Dead  , aAmount);
 		case  1: return OP.stick.mat(MT.WOODS.Mossy , aAmount);
 		case  2: return OP.stick.mat(MT.WOODS.Rotten, aAmount);
-		default: return ST.make(Items.stick, aAmount, 0);
+		default: return IL.Stick.get(aAmount);
 		}
 	}
 	

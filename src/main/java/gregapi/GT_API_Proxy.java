@@ -565,7 +565,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							UT.Entities.chat(aEvent.player, "We know you could have chosen any other Kit.");
 							UT.Entities.chat(aEvent.player, "And are proud that you chose ours as the best.");
 							ST.drop(aEvent.player, ST.make(Items.flint, 12, 0));
-							ST.drop(aEvent.player, ST.make(Items.stick,  8, 0));
+							ST.drop(aEvent.player, IL.Stick.get(16));
 							ST.drop(aEvent.player, IL.Grass_Dry.get(8));
 							ST.drop(aEvent.player, IL.Bottle_Purple_Drink.get(6));
 							switch (RNGSUS.nextInt(4)) {

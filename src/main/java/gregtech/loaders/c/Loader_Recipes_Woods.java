@@ -41,7 +41,6 @@ import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class Loader_Recipes_Woods implements Runnable {
@@ -94,8 +93,8 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple     ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));
 		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Rainbowood), NF, FL.Sap_Rainbow .make(5)          , OM.dust(MT.Wood));
 		
-		CR.shaped(ST.make(Items.stick, 1, 0), CR.DEF_NAC_NCC, "  ", " S", 'S', OP.stick.dat(ANY.WoodDefault));
-		CR.shaped(gearGt.mat(MT.Wood   ,  1), CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', OD.plankAnyWood, 'S', ST.make(Blocks.wooden_button, 1, W));
+		CR.shaped(IL.Stick      .get(1), CR.DEF_NAC_NCC, "  ", " S", 'S', OP.stick.dat(ANY.WoodDefault));
+		CR.shaped(gearGt.mat(MT.Wood,1), CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', OD.plankAnyWood, 'S', ST.make(Blocks.wooden_button, 1, W));
 		
 		if (IL.RC_Tie_Wood.exists()) {
 			if (IL.IE_Treated_Slab.exists())

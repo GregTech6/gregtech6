@@ -3107,6 +3107,8 @@ public class MT {
 		Rotten              = woodnormal( 9310, "WoodRotten"              , "Rotten Wood"         ,  22,  44,  15).put(MD.GT),
 		Mossy               = woodnormal( 9311, "WoodMossy"               , "Mossy Wood"          ,  29, 127,   0).put(MD.GT),
 		Frozen              = woodnormal( 9312, "WoodFrozen"              , "Frozen Wood"         ,  84, 125, 125).put(MD.GT),
+		Scorched            = woodnormal( 9404, "WoodScorched"            , "Scorched Wood"       ,  44,  44,  44).put(MD.ERE),
+		Varnished           = woodnormal( 9405, "WoodVarnished"           , "Varnished Wood"      , 166,  11,  11).put(MD.ERE),
 		
 		Maple               = woodnormal( 9313, "Maple"                   , "Maple"               , 151,  26,  26).put(MD.GT),
 		Willow              = woodnormal( 9314, "Willow"                  , "Willow"              ,  37, 150,   0).put(MD.GT),

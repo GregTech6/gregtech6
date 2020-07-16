@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -43,7 +43,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.stats.StatList;
@@ -171,26 +170,26 @@ public abstract class ToolStats implements IToolStats {
 	public boolean harvestStick(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
 		if (aBlock == Blocks.tallgrass) {
 			switch(aMetaData) {
-			case 0: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
+			case 0: aDrops.add(OP.stick.mat(MT.WOODS.Dead, 1+RNGSUS.nextInt(2+aFortune))); return T;
 			}
 			return F;
 		}
 		if (IL.TF_Tall_Grass.equal(aBlock)) {
 			switch(aMetaData) {
-			case 11: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
+			case 11: aDrops.add(IL.Stick.get(1+RNGSUS.nextInt(2+aFortune))); return T;
 			}
 			return F;
 		}
 		if (aBlock == Blocks.deadbush) {
-			aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0));
+			aDrops.add(OP.stick.mat(MT.WOODS.Dead, 1+RNGSUS.nextInt(2+aFortune)));
 			return T;
 		}
 		if (MD.BoP.mLoaded) {
 			if (aBlock == ST.block(MD.BoP, "foliage")) {
 				switch(aMetaData) {
-				case  4: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
-				case  8: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
-				case  9: aDrops.add(ST.make(Items.stick, 1+RNGSUS.nextInt(2+aFortune), 0)); return T;
+				case  4: aDrops.add(IL.Stick.get(1+RNGSUS.nextInt(2+aFortune))); return T;
+				case  8: aDrops.add(IL.Stick.get(1+RNGSUS.nextInt(2+aFortune))); return T;
+				case  9: aDrops.add(IL.Stick.get(1+RNGSUS.nextInt(2+aFortune))); return T;
 				}
 				return F;
 			}

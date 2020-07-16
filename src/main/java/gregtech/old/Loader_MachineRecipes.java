@@ -119,7 +119,7 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addVacuumFreezerRecipe(ST.mkic("reactorCoolantSix"   , 1, W), ST.mkic("reactorCoolantSix"   , 1), 600);
 
 		if (!ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", F))
-		RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood          , 1), ST.make(Items.coal, 1, W), ST.make(Blocks.torch, 4, 0), 400, 1);
+		RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood          , 1), ST.make(Items.coal, 1, W), IL.Torch.get(4), 400, 1);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Au            , 2), ST.tag(2), ST.make(Blocks.light_weighted_pressure_plate, 1, 0), 200, 4);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Fe            , 2), ST.tag(2), ST.make(Blocks.heavy_weighted_pressure_plate, 1, 0), 200, 4);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Fe            , 6), ST.tag(6), ST.make(Items.iron_door, 1, 0), 600, 4);

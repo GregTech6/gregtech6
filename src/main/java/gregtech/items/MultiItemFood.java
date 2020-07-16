@@ -573,7 +573,7 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		RM.Unboxinator.addRecipe1(T, 16, 16, IL.Food_ChiliChips_Packaged.get(1), IL.Food_ChiliChips.get(1), OP.scrapGt.mat(MT.Al, 2));
 
 
-		IL.Food_Chum_On_Stick.set(                  addItem(tLastID = 10010, "Chum on a Stick"                          , "Don't forget to try our Chum-balaya"                         , new FoodStat( 5, 1.600F,   0, C+37,  0.10F,   0,   0,  20,   0,   0, EnumAction.eat, ST.make(Items.stick, 1, 0)       , T, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1), new OreDictItemData(ANY.Wood, U2)));
+		IL.Food_Chum_On_Stick.set(                  addItem(tLastID = 10010, "Chum on a Stick"                          , "Don't forget to try our Chum-balaya"                         , new FoodStat( 5, 1.600F,   0, C+37,  0.10F,   0,   0,  20,   0,   0, EnumAction.eat, IL.Stick.get(1)                      , T, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.FAMES, 1), TC.stack(TC.CORPUS, 1), new OreDictItemData(ANY.Wood, U2)));
 		CR.shapeless(IL.Food_Chum_On_Stick.get(1), CR.DEF_NAC_NCC, new Object[] {OP.stick.dat(ANY.Wood), "foodChum"});
 
 
@@ -712,8 +712,8 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Food_Butter_Salted.set(                  addItem(tLastID = 32119, "Salted Butter"                            , "As if it wasn't unhealthy already"   , OP.ingot.dat(MT.ButterSalted) , new FoodStat( 1, 4.000F,   0, C+37,  0.10F,   0,   0,  40,   0,  80, EnumAction.eat, null                         , F, T, F, T), TC.stack(TC.FAMES, 3))); OreDictManager.INSTANCE.setTarget_(OP.ingot, MT.ButterSalted, ST.make(this, 1, tLastID));
 
 
-		IL.Food_Potato_On_Stick.set(                addItem(tLastID = 32700, "Potato on a Stick"                        , "Totally looks like a Crab Claw"      , new OreDictItemData(MT.Potato, U, ANY.Wood, U2), new FoodStat( 1, 0.600F,   0, C+37,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, ST.make(Items.stick, 1, 0)       , F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.ARBOR, 1)));
-		IL.Food_Potato_On_Stick_Roasted.set(        addItem(tLastID = 32701, "Roasted Potato on a Stick"                , "Still looks like a Crab Claw"        , new OreDictItemData(MT.Potato, U, ANY.Wood, U2), new FoodStat( 5, 1.200F,   0, C+38,  0.50F,   0,   0,   0,   4,   0, EnumAction.eat, ST.make(Items.stick, 1, 0)       , F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.ARBOR, 1), TC.stack(TC.IGNIS, 1)));
+		IL.Food_Potato_On_Stick.set(                addItem(tLastID = 32700, "Potato on a Stick"                        , "Totally looks like a Crab Claw"      , new OreDictItemData(MT.Potato, U, ANY.Wood, U2), new FoodStat( 1, 0.600F,   0, C+37,  0.30F,   0,   0,   0,   4,   0, EnumAction.eat, IL.Stick.get(1), F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.ARBOR, 1)));
+		IL.Food_Potato_On_Stick_Roasted.set(        addItem(tLastID = 32701, "Roasted Potato on a Stick"                , "Still looks like a Crab Claw"        , new OreDictItemData(MT.Potato, U, ANY.Wood, U2), new FoodStat( 5, 1.200F,   0, C+38,  0.50F,   0,   0,   0,   4,   0, EnumAction.eat, IL.Stick.get(1), F, T, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.MESSIS, 1), TC.stack(TC.ARBOR, 1), TC.stack(TC.IGNIS, 1)));
 		RM.add_smelting(IL.Food_Potato_On_Stick.get(1), IL.Food_Potato_On_Stick_Roasted.get(1));
 		CR.shapeless(IL.Food_Potato_On_Stick.get(1), CR.DEF, new Object[] {OP.stick.dat(ANY.Wood), "cropPotato"});
 		CR.shapeless(IL.Food_Potato_On_Stick_Roasted.get(1), CR.DEF, new Object[] {OP.stick.dat(ANY.Wood), IL.Food_Potato_Baked});

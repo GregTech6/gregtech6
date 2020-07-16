@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.PlankData;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -47,24 +46,8 @@ import net.minecraftforge.oredict.OreDictionary;
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
+		// 235 is next! There is no Gaps in this List!
 		OUT.println("GT_API_POST: Initialize Wood Dictionary.");
-		
-		// Initializing the List of Decorative Planks
-		Block tBlock = ST.block(MD.MoCr, "MoCWoodPlank");
-		PlankData.PLANKS[ 44] = ST.make(tBlock, 1, 0);
-		PlankData.PLANKS[ 45] = ST.make(tBlock, 1, 1);
-		PlankData.PLANKS[ 46] = ST.make(tBlock, 1, 2);
-		PlankData.PLANKS[ 96] = ST.make(MD.RC, "cube", 1, 8);
-		PlankData.PLANKS[104] = ST.make(MD.BTL, "rubberTreePlanks", 1, 0);
-		PlankData.PLANKS[106] = IL.BTL_Portal_Bark.get(1);
-		PlankData.PLANKS[107] = IL.BTL_Weedwood_Bark.get(1);
-		PlankData.PLANKS[108] = IL.BTL_Weedwood_RottenBark.get(1);
-		PlankData.PLANKS[120] = ST.make(MD.ERE, "petrifiedWoodPlanks", 1, 0);
-		PlankData.PLANKS[121] = ST.make(MD.ERE, "planks_scorched", 1, 0);
-		PlankData.PLANKS[122] = ST.make(MD.ERE, "planks_varnished", 1, 0);
-		PlankData.PLANKS[125] = IL.MaCu_Polished_Planks.get(1);
-		// No Gaps in this List, so 235 is next!
-		
 		
 		// Vanilla Trees
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 0));
@@ -214,6 +197,11 @@ public class LoaderWoodDictionary implements Runnable {
 		// Betweenlands Trees
 		if (MD.BTL.mLoaded) {
 			new SaplingEntry(IL.BTL_Weedwood_Sapling.wild(1), new WoodEntry(IL.BTL_Weedwood_Log.wild(1), new BeamEntry(IL.BTL_Weedwood_Beam.wild(1), new PlankEntry(IL.BTL_Weedwood_Planks.get(1), ST.make(MD.BTL, "Weedwood Planks Slab", 1, 0), ST.make(MD.BTL, "weedwoodPlankStairs", 1, 0), MT.Weedwood, 105), 2, 400), 2, 500, IL.BTL_Bark.get(1), MT.Bark), IL.BTL_Weedwood_Leaves.get(1));
+			new PlankEntry(ST.make(MD.BTL, "rubberTreePlanks", 1, 0), MT.WoodRubber  , 104);
+			new PlankEntry(IL.BTL_Portal_Bark.get(1)                , MT.Bark        , 106);
+			new PlankEntry(IL.BTL_Weedwood_Bark.get(1)              , MT.Bark        , 107);
+			new PlankEntry(IL.BTL_Weedwood_RottenBark.get(1)        , MT.WOODS.Rotten, 108);
+			
 			CR.shaped(IL.BTL_Weedwood_Planks.get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.BTL, "Weedwood Planks Slab", 1, 0));
 		}
 		// Aether Trees
@@ -661,6 +649,9 @@ public class LoaderWoodDictionary implements Runnable {
 			new PlankEntry(ST.make(tPlank, 1, 8), ST.make(MD.ERE, "slabPlanksBamboo"    , 1, 0), ST.make(MD.ERE, "plankStairBamboo"    , 1, 0), MT.Bamboo          , 117);
 			new PlankEntry(ST.make(tPlank, 1, 9), ST.make(MD.ERE, "slabPlanksRotten"    , 1, 0), ST.make(MD.ERE, "plankStairRotten"    , 1, 0), MT.WOODS.Rotten    , 118);
 			new PlankEntry(ST.make(tPlank, 1,10), ST.make(MD.ERE, "slabPlanksMarshwood" , 1, 0), ST.make(MD.ERE, "plankStairMarshwood" , 1, 0), MT.Wood            , 119);
+			new PlankEntry(ST.make(MD.ERE, "petrifiedWoodPlanks", 1, 0), MT.PetrifiedWood  , 120);
+			new PlankEntry(ST.make(MD.ERE, "planks_scorched", 1, 0)    , MT.WOODS.Scorched , 121);
+			new PlankEntry(ST.make(MD.ERE, "planks_varnished", 1, 0)   , MT.WOODS.Varnished, 122);
 			
 			CR.shaped(ST.make(tPlank, 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksBaobab"    , 1, 0));
 			CR.shaped(ST.make(tPlank, 1, 1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ERE, "slabPlanksEucalyptus", 1, 0));
@@ -720,6 +711,15 @@ public class LoaderWoodDictionary implements Runnable {
 			new PlankEntry(ST.make(MD.CHSL, "dark_oak_planks"   , 1, i), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs  , 1, 0), MT.WOODS.DarkOak);
 			}
 		}
+		// Mo'Creatures Logs and Planks
+		if (MD.MoCr.mLoaded) {
+			new WoodEntry(ST.make(MD.MoCr, "MoCLog", 1, 0), new PlankEntry(ST.make(MD.MoCr, "MoCWoodPlank", 1, 0), MT.WOODS.Wyvern,  44));
+			new WoodEntry(ST.make(MD.MoCr, "MoCLog", 1, 1), new PlankEntry(ST.make(MD.MoCr, "MoCWoodPlank", 1, 1), MT.WOODS.Ogre  ,  45));
+			new LeafEntry(ST.make(MD.MoCr, "MoCLeaves", 1, 0));
+			new LeafEntry(ST.make(MD.MoCr, "MoCLeaves", 1, 1));
+			OM.reg(ST.make(MD.MoCr, "MoCLeaves", 1, 0), OP.treeLeaves);
+			OM.reg(ST.make(MD.MoCr, "MoCLeaves", 1, 1), OP.treeLeaves);
+		}
 		// Mariculture Polished Logs and Planks
 		if (MD.MaCu.mLoaded) {
 			new WoodEntry(IL.MaCu_Polished_Logs.get(1), 1, 300, 0, 0, 0, NI, MT.WoodPolished, MT.Bark, OP.stickLong.mat(MT.Wood, 1));
@@ -731,6 +731,10 @@ public class LoaderWoodDictionary implements Runnable {
 			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 1), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs1", 1, 0), MT.WoodSealed, 41, OP.stick.mat(MT.Wood, 1));
 			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 2), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs2", 1, 0), MT.WoodSealed, 42, OP.stick.mat(MT.Wood, 1));
 			CR.shaped(ST.make(MD.IE, "treatedWood", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.IE, "woodenDecoration", 1, 2));
+		}
+		// Railcraft Planks
+		if (MD.RC.mLoaded) {
+			new PlankEntry(ST.make(MD.RC, "cube", 1, 8), MT.WoodSealed, 96);
 		}
 	}
 }

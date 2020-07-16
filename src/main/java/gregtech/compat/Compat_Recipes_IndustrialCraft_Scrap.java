@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,7 +49,7 @@ public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 			COMPAT_IC2.scrapbox(2.00F, ST.make(Items.wooden_shovel, 1, 0));
 			COMPAT_IC2.scrapbox(2.00F, ST.make(Items.wooden_pickaxe, 1, 0));
 			COMPAT_IC2.scrapbox(2.00F, ST.make(Items.sign, 1, 0));
-			COMPAT_IC2.scrapbox(9.50F, ST.make(Items.stick, 1, 0));
+			COMPAT_IC2.scrapbox(9.50F, IL.Stick.get(1));
 			COMPAT_IC2.scrapbox(5.00F, ST.make(Blocks.dirt, 1, 0));
 			COMPAT_IC2.scrapbox(3.00F, ST.make(Blocks.grass, 1, 0));
 			COMPAT_IC2.scrapbox(3.00F, ST.make(Blocks.gravel, 1, 0));
