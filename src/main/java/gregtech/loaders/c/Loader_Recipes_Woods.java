@@ -107,7 +107,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		}
 		
 		
-		for (WoodEntry aEntry : WoodDictionary.WOODS.values()) {
+		for (WoodEntry aEntry : WoodDictionary.LIST_WOODS) {
 			if (aEntry.mBeamEntry != null)
 			RM.debarking(                      aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
 			RM.pulverizing(                    aEntry.mLog, OM.dust(aEntry.mMaterialWood.mTargetPulver, aEntry.mPlankCountBuzz, 1), aEntry.mBark, 50, F);
@@ -129,7 +129,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		}
 		
 		
-		for (BeamEntry aEntry : WoodDictionary.BEAMS.values()) {
+		for (BeamEntry aEntry : WoodDictionary.LIST_BEAMS) {
 			RM.generify(                       aEntry.mBeam, IL.Beam.get(1));
 			RM.pulverizing(                    aEntry.mBeam, OM.dust(aEntry.mMaterialBeam.mTargetPulver, aEntry.mPlankCountBuzz, 1));
 			RM.sawing(16, 128, F, 4,           aEntry.mBeam, ST.validMeta(aEntry.mPlankCountBuzz, aEntry.mPlankEntry.mPlank), OM.dust(aEntry.mMaterialBeam));
@@ -147,7 +147,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		}
 		
 		
-		for (PlankEntry aEntry : WoodDictionary.PLANKS.values()) {
+		for (PlankEntry aEntry : WoodDictionary.LIST_PLANKS) {
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			RM.generify(aEntry.mPlank, IL.Plank.get(1));
 			RM.pulverizing(aEntry.mPlank, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 1));
@@ -178,7 +178,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		}
 		
 		
-		for (PlankEntry aEntry : WoodDictionary.STAIRS.values()) {
+		for (PlankEntry aEntry : WoodDictionary.LIST_STAIRS) {
 			RM.generify(aEntry.mStair, IL.Plank_Stairs.get(1));
 			RM.pulverizing(aEntry.mStair, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 3, 4));
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
@@ -192,7 +192,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		}
 		
 		
-		for (PlankEntry aEntry : WoodDictionary.SLABS.values()) {
+		for (PlankEntry aEntry : WoodDictionary.LIST_SLABS) {
 			RM.generify(aEntry.mSlab, IL.Plank_Slab.get(1));
 			RM.pulverizing(aEntry.mSlab, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 2));
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);

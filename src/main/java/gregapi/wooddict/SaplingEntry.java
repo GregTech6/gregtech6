@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,6 +44,7 @@ public class SaplingEntry {
 		}
 		
 		WoodDictionary.SAPLINGS.put(mSapling, this);
+		WoodDictionary.LIST_SAPLINGS.add(this);
 	}
 	public SaplingEntry(ItemStack aSapling, WoodEntry aWood, ItemStack aLeaf) {
 		if (ST.invalid(aSapling) || ST.invalid(aLeaf)) return;
@@ -58,6 +59,7 @@ public class SaplingEntry {
 		}
 		
 		WoodDictionary.SAPLINGS.put(mSapling, this);
+		WoodDictionary.LIST_SAPLINGS.add(this);
 	}
 	public SaplingEntry(ItemStack aSapling, WoodEntry aWood, LeafEntry aLeaf) {
 		if (ST.invalid(aSapling)) return;
@@ -72,5 +74,6 @@ public class SaplingEntry {
 		}
 		
 		WoodDictionary.SAPLINGS.put(mSapling, this);
+		WoodDictionary.LIST_SAPLINGS.add(this);
 	}
 }

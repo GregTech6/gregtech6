@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,10 @@
 
 package gregapi.wooddict;
 
+import java.util.List;
 import java.util.Set;
 
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackMap;
@@ -31,18 +33,28 @@ import net.minecraft.item.Item;
  */
 public class WoodDictionary {
 	/** Contains all Planks, Stairs and Slabs */
-	public static final ItemStackMap<ItemStackContainer, PlankEntry> PLANKS_ANY = new ItemStackMap<>();
-	public static final ItemStackMap<ItemStackContainer, PlankEntry> PLANKS = new ItemStackMap<>();
-	public static final ItemStackMap<ItemStackContainer, PlankEntry> STAIRS = new ItemStackMap<>();
-	public static final ItemStackMap<ItemStackContainer, PlankEntry> SLABS = new ItemStackMap<>();
-	public static final ItemStackMap<ItemStackContainer, BeamEntry> BEAMS = new ItemStackMap<>();
-	public static final ItemStackMap<ItemStackContainer, WoodEntry> WOODS = new ItemStackMap<>();
-	public static final ItemStackMap<ItemStackContainer, SaplingEntry> SAPLINGS = new ItemStackMap<>();
-	public static final ItemStackMap<ItemStackContainer, LeafEntry> LEAVES = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, PlankEntry  > PLANKS_ANY = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, PlankEntry  > PLANKS     = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, PlankEntry  > STAIRS     = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, PlankEntry  > SLABS      = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, BeamEntry   > BEAMS      = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, WoodEntry   > WOODS      = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, SaplingEntry> SAPLINGS   = new ItemStackMap<>();
+	public static final ItemStackMap<ItemStackContainer, LeafEntry   > LEAVES     = new ItemStackMap<>();
+	
+	/** Contains all Planks, Stairs and Slabs */
+	public static final List<PlankEntry  > LIST_PLANKS_ANY = new ArrayListNoNulls<>();
+	public static final List<PlankEntry  > LIST_PLANKS     = new ArrayListNoNulls<>();
+	public static final List<PlankEntry  > LIST_STAIRS     = new ArrayListNoNulls<>();
+	public static final List<PlankEntry  > LIST_SLABS      = new ArrayListNoNulls<>();
+	public static final List<BeamEntry   > LIST_BEAMS      = new ArrayListNoNulls<>();
+	public static final List<WoodEntry   > LIST_WOODS      = new ArrayListNoNulls<>();
+	public static final List<SaplingEntry> LIST_SAPLINGS   = new ArrayListNoNulls<>();
+	public static final List<LeafEntry   > LIST_LEAVES     = new ArrayListNoNulls<>();
 	
 	/** To prevent the OreDict from messing up Recipes. */
 	public static final Set<Item> IGNORED_OREDICT_REGISTRATIONS = new HashSetNoNulls<>();
 	
-	public static BeamEntry DEFAULT_BEAM;
+	public static BeamEntry  DEFAULT_BEAM;
 	public static PlankEntry DEFAULT_PLANK;
 }

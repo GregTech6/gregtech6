@@ -118,18 +118,24 @@ public class PlankEntry {
 			if (OM.materialcontained(mPlank, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mPlank, new OreDictItemData(mMaterialPlank, U));
 			WoodDictionary.PLANKS_ANY.put(mPlank, this);
 			WoodDictionary.PLANKS.put(mPlank, this);
+			WoodDictionary.LIST_PLANKS_ANY.add(this);
+			WoodDictionary.LIST_PLANKS.add(this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mPlank));
 		}
 		if (ST.valid(mStair) && !WoodDictionary.STAIRS.containsKey(new ItemStackContainer(mStair))) {
 			if (OM.materialcontained(mStair, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mStair, new OreDictItemData(mMaterialPlank, U4*3));
 			WoodDictionary.PLANKS_ANY.put(mStair, this);
 			WoodDictionary.STAIRS.put(mStair, this);
+			WoodDictionary.LIST_PLANKS_ANY.add(this);
+			WoodDictionary.LIST_STAIRS.add(this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mStair));
 		}
 		if (ST.valid(mSlab) && !WoodDictionary.SLABS.containsKey(new ItemStackContainer(mSlab))) {
 			if (OM.materialcontained(mSlab , ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mSlab , new OreDictItemData(mMaterialPlank, U2));
 			WoodDictionary.PLANKS_ANY.put(mSlab, this);
 			WoodDictionary.SLABS.put(mSlab, this);
+			WoodDictionary.LIST_PLANKS_ANY.add(this);
+			WoodDictionary.LIST_SLABS.add(this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mSlab));
 		}
 	}

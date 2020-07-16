@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.00: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Dwarf Fortress for the detriment of all other activities...)
+[NOTE] Bugs that might have happened to a few things, that I might have overlooked could exist, such as: "GT6 TileEntity Blocks changing their default Color, because I added one more Defaultable Parameter to save space", "Recipes for certain wooden Items being uncraftable, because of the general Wood Type overhaul"
 [COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
 [COMPAT] TerraFirmaCraft(Plus) Stuff should work slightly better now. TFC Sticks and Torches are now being accounted for when doing Recipe Outputs.
 [IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
@@ -38,6 +39,7 @@ Dedicated Wood Materials for most Types of Wood.
 This will influence basically every common Wood ITEM. Ofcourse the Generifier works on all of them.
 Sticks generated on the ground in the World can have different Materials like Rotten, Mossy or Dead Wood. They can be used like normal Sticks.
 The NEI Tree Family GUI also got 6 more Slots now to display which amounts of Sticks/Pulp/Bark/Charcoal you can get from each Type of Tree.
+Many Crates that contain Wood Planks now have this variety too.
 
 
 6.13.02:

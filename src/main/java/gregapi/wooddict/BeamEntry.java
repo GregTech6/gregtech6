@@ -79,6 +79,7 @@ public class BeamEntry {
 		if (ST.valid(mBeam) && !WoodDictionary.WOODS.containsKey(new ItemStackContainer(mBeam))) {
 			if (OM.materialcontained(mBeam, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mBeam, new OreDictItemData(mMaterialBeam, (mPlankCountBuzz+1)*U));
 			WoodDictionary.BEAMS.put(mBeam, this);
+			WoodDictionary.LIST_BEAMS.add(this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mBeam));
 		}
 	}

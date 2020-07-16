@@ -594,7 +594,7 @@ public class GT_API_Post extends Abstract_Mod {
 			}
 		}
 		
-		for (SaplingEntry tTree : WoodDictionary.SAPLINGS.values()) {
+		for (SaplingEntry tTree : WoodDictionary.LIST_SAPLINGS) {
 		RM.Trees.addFakeRecipe(F, ST.array(tTree.mSapling, tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf), tTree.mWoodEntry == null ? tTree.mLeafEntry == null ? ZL_IS : ST.array(tTree.mLeafEntry.mLeaf) : ST.array(
 		  tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf
 		, tTree.mWoodEntry.mLog

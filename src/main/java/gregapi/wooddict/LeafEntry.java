@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -38,5 +38,6 @@ public class LeafEntry {
 		mLeaf = ST.amount(1, aLeaf);
 		
 		WoodDictionary.LEAVES.put(mLeaf, this);
+		WoodDictionary.LIST_LEAVES.add(this);
 	}
 }

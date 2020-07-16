@@ -173,6 +173,7 @@ public class WoodEntry {
 		if (ST.valid(mLog) && !WoodDictionary.WOODS.containsKey(new ItemStackContainer(mLog))) {
 			if (OM.materialcontained(mLog, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mLog, mMaterialBark == mMaterialWood ? new OreDictItemData(mMaterialWood, (mPlankCountBuzz+3)*U) : new OreDictItemData(mMaterialWood, (mPlankCountBuzz+2)*U, mMaterialBark, U));
 			WoodDictionary.WOODS.put(mLog, this);
+			WoodDictionary.LIST_WOODS.add(this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mLog));
 		}
 	}
