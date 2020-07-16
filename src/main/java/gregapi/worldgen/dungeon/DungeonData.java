@@ -89,6 +89,11 @@ public class DungeonData extends WorldAndCoords {
 	public boolean next1in2() {return mRandom.nextBoolean();}
 	public boolean next1in3() {return next(3)<1;}
 	public boolean next1in4() {return next(4)<1;}
+	public boolean next1in5() {return next(5)<1;}
+	public boolean next1in6() {return next(6)<1;}
+	public boolean next1in7() {return next(7)<1;}
+	public boolean next1in8() {return next(8)<1;}
+	public boolean next1in9() {return next(9)<1;}
 	public boolean next2in3() {return next(3)<2;}
 	public boolean next2in5() {return next(5)<2;}
 	public boolean next2in7() {return next(7)<2;}
