@@ -56,7 +56,7 @@ Many Crates that contain Wood Planks now have this variety too. Some of these Cr
 [CHANGED] Molten Midasium is now able to turn Lead into Gold at a ratio of 1 Midasium + 4 Lead = 4 Gold. This is better than using a Generifier on Midasium to directly make it into Gold 1:1.
 [ADDED] There is now small Rocks in the Nether, some of which contain tiny amounts of Ancient Debris, and are as rare as Meteorites on the Surface. Glowstone, NetherQuartz and Flint can be found in them too.
 [ADDED] Config to disable the nutrition System for Sugar, Fat and Dehydration. Alcohol and Caffeine stay though, since those are definitely things people intentionally consume for buffs and such.
-[ADDED] Netherite Drum, Fluid Pipes/Capsules and Anvil. Netherite also counts as Acid Proof now, due to its high Gold content. Also added Gold Fluid Pipes/Capsules while I was at it.
+[ADDED] Netherite Drum, Fluid Pipes/Capsules and Anvil. Netherite also counts as Acid Proof now, due to its high Gold content. Also added Gold Fluid Pipes/Capsules while I was at it, and yes due to the code they CAN handle Aqua Regia.
 [ADDED] Laser-O-Meter Sensor for Laser Fiber Wires.
 
 

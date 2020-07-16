@@ -37,6 +37,12 @@ import net.minecraftforge.fluids.FluidStack;
  * @author Gregorius Techneticies
  */
 public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
+	public static OreDictMaterial[]
+	  sHexoriums = {MT.HexoriumRed, MT.HexoriumGreen, MT.HexoriumBlue, MT.HexoriumWhite, MT.HexoriumBlack}
+	, sWoods     = {MT.WOODS.Oak, MT.WOODS.Birch, MT.WOODS.Spruce, MT.WOODS.Jungle, MT.WOODS.Acacia, MT.WOODS.DarkOak, MT.WOODS.Compressed, MT.WoodRubber, MT.WOODS.Maple, MT.WOODS.Willow, MT.WOODS.BlueMahoe, MT.WOODS.Hazel, MT.WOODS.Cinnamon, MT.WOODS.Coconut, MT.WOODS.Rainbowood}
+	, sMetals    = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel}
+	;
+	
 	@Override
 	public boolean generate(DungeonData aData) {
 		if (!super.generate(aData)) return F;
@@ -45,8 +51,6 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 		tHexoriumColor  = ST.block(MD.HEX, UT.Code.select(aData.mColor, "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS)),
 		tHexoriumRandom = ST.block(MD.HEX, UT.Code.select(              "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS));
 		
-		OreDictMaterial[] tWoods = {MT.WOODS.Oak, MT.WOODS.Birch, MT.WOODS.Spruce, MT.WOODS.Jungle, MT.WOODS.Acacia, MT.WOODS.DarkOak, MT.WOODS.Compressed, MT.WoodRubber, MT.WOODS.Maple, MT.WOODS.Willow, MT.WOODS.BlueMahoe, MT.WOODS.Hazel, MT.WOODS.Cinnamon, MT.WOODS.Coconut, MT.WOODS.Rainbowood};
-		OreDictMaterial[] tMetals = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel};
 		IPrefixBlock[] tMetalCrates = {BlocksGT.crateGtDust, BlocksGT.crateGtDust, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtPlate, BlocksGT.crateGtPlate, BlocksGT.crateGt64Dust, BlocksGT.crateGt64Plate, BlocksGT.crateGt64Ingot, BlocksGT.crateGt64Ingot};
 		FluidStack[][] tFluids = {
 		  {FL.Oil_Creosote.make(16000), FL.Oil_Seed.make(16000), FL.lube(16000), FL.Glue.make(16000), FL.Latex.make(16000), FL.Holywater.make(16000), FL.Purple_Drink.make(16000)}
@@ -127,62 +131,91 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 		
 		switch(aData.next(4)) {
 		case  0:
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 2,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 2,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 2,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 2,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  3, 2,  3, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 2,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 2,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  3, 2,  3, tMetals);
-			
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 3,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 3,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 3,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 3,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  3, 3,  3, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 3,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 3,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  3, 3,  3, tMetals);
-			
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 4,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 4,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 4,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 4,  2, tMetals);
+			for (int i = 1; i <= 3; i++) for (int j = 1; j <= 3; j++) {
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 2, j, sMetals);
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 3, j, sMetals);
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 4, j, sMetals);
+			}
 			break;
 		case  1:
-			if (aData.next1in2()) aData.set( 1, 1,  1, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 2, 1,  2, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 1, 1,  1, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 2, 1,  2, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 3, 1,  3, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 1, 1,  1, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 2, 1,  2, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 3, 1,  3, tHexoriumColor, 1, tHexoriumRandom, 1);
+			if (MD.HEX.mLoaded) for (int i = 1; i <= 3; i++) for (int j = 1; j <= 3; j++) {
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sHexoriums);
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sHexoriums);
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sHexoriums);
+						if (aData.next1in2()) aData.set(i, 4, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 3, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 2, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 1, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+			}
 			break;
 		case  2:
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 2,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 2,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 2,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 2,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  3, 2,  3, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 2,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 2,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  3, 2,  3, tWoods);
-			
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 3,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 3,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 3,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 3,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  3, 3,  3, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 3,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 3,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  3, 3,  3, tWoods);
-			
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 4,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 4,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 4,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 4,  2, tWoods);
+			for (int i = 1; i <= 3; i++) for (int j = 1; j <= 3; j++) {
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 4, j, sWoods);
+			}
+			break;
+		default:
+			// Nothing
+			break;
+		}
+		
+		switch(aData.next(4)) {
+		case  0:
+			for (int i = 12; i <= 14; i++) for (int j = 1; j <= 3; j++) {
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 2, j, sMetals);
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 3, j, sMetals);
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 4, j, sMetals);
+			}
+			break;
+		case  1:
+			if (MD.HEX.mLoaded) for (int i = 12; i <= 14; i++) for (int j = 1; j <= 3; j++) {
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sHexoriums);
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sHexoriums);
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sHexoriums);
+						if (aData.next1in2()) aData.set(i, 4, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 3, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 2, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 1, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+			}
+			break;
+		case  2:
+			for (int i = 12; i <= 14; i++) for (int j = 1; j <= 3; j++) {
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 4, j, sWoods);
+			}
+			break;
+		default:
+			// Nothing
+			break;
+		}
+		
+		switch(aData.next(4)) {
+		case  0:
+			for (int i = 1; i <= 3; i++) for (int j = 12; j <= 14; j++) {
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 2, j, sMetals);
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 3, j, sMetals);
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 4, j, sMetals);
+			}
+			break;
+		case  1:
+			if (MD.HEX.mLoaded) for (int i = 1; i <= 3; i++) for (int j = 12; j <= 14; j++) {
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sHexoriums);
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sHexoriums);
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sHexoriums);
+						if (aData.next1in2()) aData.set(i, 4, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 3, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 2, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 1, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+			}
+			break;
+		case  2:
+			for (int i = 1; i <= 3; i++) for (int j = 12; j <= 14; j++) {
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 4, j, sWoods);
+			}
 			break;
 		default:
 			// Nothing
@@ -193,194 +226,29 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 		
 		switch(aData.next(4)) {
 		case  0:
-			if (aData.next1in2()) aData.set(tMetalCrates, 12, 2,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 12, 2,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 2,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 2,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 2,  3, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 2,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 2,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 2,  3, tMetals);
-			
-			if (aData.next1in2()) aData.set(tMetalCrates, 12, 3,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 12, 3,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 3,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 3,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 3,  3, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 3,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 3,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 3,  3, tMetals);
-			
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 4,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 4,  2, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 4,  1, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 4,  2, tMetals);
+			for (int i = 12; i <= 14; i++) for (int j = 12; j <= 14; j++) {
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 2, j, sMetals);
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 3, j, sMetals);
+				if (aData.next1in2()) aData.set(tMetalCrates, i, 4, j, sMetals);
+			}
 			break;
 		case  1:
-			if (aData.next1in2()) aData.set(12, 1,  1, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(12, 1,  2, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(13, 1,  1, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(13, 1,  2, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(13, 1,  3, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(14, 1,  1, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(14, 1,  2, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(14, 1,  3, tHexoriumColor, 1, tHexoriumRandom, 1);
+			if (MD.HEX.mLoaded) for (int i = 12; i <= 14; i++) for (int j = 12; j <= 14; j++) {
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sHexoriums);
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sHexoriums);
+				if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sHexoriums);
+						if (aData.next1in2()) aData.set(i, 4, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 3, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 2, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+				} else  if (aData.next1in2()) aData.set(i, 1, j, tHexoriumColor, 1, tHexoriumRandom, 1);
+			}
 			break;
 		case  2:
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 12, 2,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 12, 2,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 2,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 2,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 2,  3, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 2,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 2,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 2,  3, tWoods);
-			
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 12, 3,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 12, 3,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 3,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 3,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 3,  3, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 3,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 3,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 3,  3, tWoods);
-			
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 4,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 4,  2, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 4,  1, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 4,  2, tWoods);
-			break;
-		default:
-			// Nothing
-			break;
-		}
-		
-		
-		
-		switch(aData.next(4)) {
-		case  0:
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 2, 12, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 2, 12, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 2, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 2, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  3, 2, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 2, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 2, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  3, 2, 14, tMetals);
-			
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 3, 12, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 3, 12, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 3, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 3, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  3, 3, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 3, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 3, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  3, 3, 14, tMetals);
-			
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 4, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 4, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  1, 4, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates,  2, 4, 14, tMetals);
-			break;
-		case  1:
-			if (aData.next1in2()) aData.set( 1, 1, 12, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 2, 1, 12, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 1, 1, 13, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 2, 1, 13, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 3, 1, 13, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 1, 1, 14, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 2, 1, 14, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set( 3, 1, 14, tHexoriumColor, 1, tHexoriumRandom, 1);
-			break;
-		case  2:
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 2, 12, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 2, 12, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 2, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 2, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  3, 2, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 2, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 2, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  3, 2, 14, tWoods);
-			
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 3, 12, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 3, 12, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 3, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 3, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  3, 3, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 3, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 3, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  3, 3, 14, tWoods);
-			
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 4, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 4, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  1, 4, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate,  2, 4, 14, tWoods);
-			break;
-		default:
-			// Nothing
-			break;
-		}
-		
-		
-		
-		switch(aData.next(4)) {
-		case  0:
-			if (aData.next1in2()) aData.set(tMetalCrates, 12, 2, 12, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 12, 2, 12, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 2, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 2, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 2, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 2, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 2, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 2, 14, tMetals);
-			
-			if (aData.next1in2()) aData.set(tMetalCrates, 12, 3, 12, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 12, 3, 12, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 3, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 3, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 3, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 3, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 3, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 3, 14, tMetals);
-			
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 4, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 13, 4, 13, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 4, 14, tMetals);
-			if (aData.next1in2()) aData.set(tMetalCrates, 14, 4, 14, tMetals);
-			break;
-		case  1:
-			if (aData.next1in2()) aData.set(12, 1, 12, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(12, 1, 12, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(13, 1, 13, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(13, 1, 13, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(13, 1, 13, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(14, 1, 14, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(14, 1, 14, tHexoriumColor, 1, tHexoriumRandom, 1);
-			if (aData.next1in2()) aData.set(14, 1, 14, tHexoriumColor, 1, tHexoriumRandom, 1);
-			break;
-		case  2:
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 12, 2, 12, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 12, 2, 12, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 2, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 2, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 2, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 2, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 2, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 2, 14, tWoods);
-			
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 12, 3, 12, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 12, 3, 12, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 3, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 3, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 3, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 3, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 3, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 3, 14, tWoods);
-			
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 4, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 13, 4, 13, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 4, 14, tWoods);
-			if (aData.next2in3()) aData.set(BlocksGT.crateGt64Plate, 14, 4, 14, tWoods);
+			for (int i = 12; i <= 14; i++) for (int j = 12; j <= 14; j++) {
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
+				if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 4, j, sWoods);
+			}
 			break;
 		default:
 			// Nothing
