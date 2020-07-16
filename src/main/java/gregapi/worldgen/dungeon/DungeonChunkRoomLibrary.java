@@ -39,7 +39,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
 		super.generate(aData);
-		int tPlank = aData.mRandom.nextInt(6), tSlab = tPlank + 8, tShelf = 7000 + tPlank;
+		int tPlank = aData.next(6), tSlab = tPlank + 8, tShelf = 7000 + tPlank;
 		
 		String[] tLoots = new String[] {ChestGenHooks.STRONGHOLD_LIBRARY, ChestGenHooks.STRONGHOLD_CORRIDOR, ChestGenHooks.STRONGHOLD_CROSSING, ChestGenHooks.PYRAMID_DESERT_CHEST, ChestGenHooks.PYRAMID_JUNGLE_CHEST, ChestGenHooks.VILLAGE_BLACKSMITH, ChestGenHooks.MINESHAFT_CORRIDOR, ChestGenHooks.DUNGEON_CHEST, ChestGenHooks.BONUS_CHEST};
 		
@@ -118,12 +118,12 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.set( 1, tY, 12, Blocks.planks, tPlank);
 				aData.set( 1, tY, 13, Blocks.planks, tPlank);
 			} else {
-				int tIndex = aData.mRandom.nextInt(24), tKeyIndex = aData.mRandom.nextInt(aData.mGeneratedKeys.length * 2);
+				int tIndex = aData.next(24), tKeyIndex = aData.next(aData.mGeneratedKeys.length * 2);
 				NBTTagList tList = null;
 				if (tKeyIndex < aData.mGeneratedKeys.length) {
 					aData.mGeneratedKeys[tKeyIndex] = T;
 					tList = new NBTTagList();
-					tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[tKeyIndex]), "s", (short)aData.mRandom.nextInt(14)));
+					tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[tKeyIndex]), "s", (short)aData.next(14)));
 				}
 				
 				aData.shelf( 2, tY,  1, tShelf, SIDE_Z_POS, tLoots, tIndex--==0?tList:null);
@@ -161,7 +161,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 		tHexoriumRandom = ST.block(MD.HEX, UT.Code.select(              "blockEnergizedHexoriumMonolithRainbow", HEXORIUM_MONOLITHS));
 		
 		boolean tDidntGenerateSpecial = T, tDidntGenerateZPM = T;
-		switch (aData.mRandom.nextInt(3)) {
+		switch (aData.next(3)) {
 		case 0:
 			if (!MD.TC.mLoaded) break;
 			tDidntGenerateSpecial = F;
@@ -174,11 +174,11 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.shelf(14, 1,  9, 7046, SIDE_X_NEG, ChestGenHooks.STRONGHOLD_LIBRARY);
 				aData.set  (14, 1, 10, tThaumcraftTable, 1);
 				
-				if (aData.mRandom.nextInt(4)==0) aData.coins(14, 2,  5);
-												 aData.set  (14, 2,  6, tThaumcraftCandle, aData.mColorInversed, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-												 aData.cup  (14, 2,  7+aData.mRandom.nextInt(2), FL.Potion_NightVision_1L);
-												 aData.set  (14, 2,  9, tThaumcraftCandle, aData.mColorInversed, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-				if (aData.mRandom.nextInt(4)==0) aData.coins(14, 2, 10);
+				if (aData.next1in4())   aData.coins(14, 2,  5);
+										aData.set  (14, 2,  6, tThaumcraftCandle, aData.mColorInversed, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+										aData.cup  (14, 2,  7+aData.next(2), FL.Potion_NightVision_1L);
+										aData.set  (14, 2,  9, tThaumcraftCandle, aData.mColorInversed, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+				if (aData.next1in4())   aData.coins(14, 2, 10);
 			}
 			if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
 				aData.set  ( 1, 1,  5, tThaumcraftTable, 1);
@@ -188,11 +188,11 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.shelf( 1, 1,  9, 7046, SIDE_X_POS, ChestGenHooks.STRONGHOLD_LIBRARY);
 				aData.set  ( 1, 1, 10, tThaumcraftTable, 1);
 				
-				if (aData.mRandom.nextInt(4)==0) aData.coins( 1, 2,  5);
-												 aData.set  ( 1, 2,  6, tThaumcraftCandle, aData.mColorInversed, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-												 aData.cup  ( 1, 2,  7+aData.mRandom.nextInt(2), FL.Potion_NightVision_1L);
-												 aData.set  ( 1, 2,  9, tThaumcraftCandle, aData.mColorInversed, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-				if (aData.mRandom.nextInt(4)==0) aData.coins( 1, 2, 10);
+				if (aData.next1in4())   aData.coins( 1, 2,  5);
+										aData.set  ( 1, 2,  6, tThaumcraftCandle, aData.mColorInversed, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+										aData.cup  ( 1, 2,  7+aData.next(2), FL.Potion_NightVision_1L);
+										aData.set  ( 1, 2,  9, tThaumcraftCandle, aData.mColorInversed, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+				if (aData.next1in4())   aData.coins( 1, 2, 10);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
 				aData.set  ( 5, 1, 14, tThaumcraftTable);
@@ -202,11 +202,11 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.shelf( 9, 1, 14, 7046, SIDE_Z_NEG, ChestGenHooks.STRONGHOLD_LIBRARY);
 				aData.set  (10, 1, 14, tThaumcraftTable);
 				
-				if (aData.mRandom.nextInt(4)==0) aData.coins( 5, 2, 14);
-												 aData.set  ( 6, 2, 14, tThaumcraftCandle, aData.mColorInversed, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-												 aData.cup  ( 7+aData.mRandom.nextInt(2), 2, 14, FL.Potion_NightVision_1L);
-												 aData.set  ( 9, 2, 14, tThaumcraftCandle, aData.mColorInversed, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-				if (aData.mRandom.nextInt(4)==0) aData.coins(10, 2, 14);
+				if (aData.next1in4())   aData.coins( 5, 2, 14);
+										aData.set  ( 6, 2, 14, tThaumcraftCandle, aData.mColorInversed, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+										aData.cup  ( 7+aData.next(2), 2, 14, FL.Potion_NightVision_1L);
+										aData.set  ( 9, 2, 14, tThaumcraftCandle, aData.mColorInversed, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+				if (aData.next1in4())   aData.coins(10, 2, 14);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
 				aData.set  ( 5, 1,  1, tThaumcraftTable);
@@ -216,11 +216,11 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.shelf( 9, 1,  1, 7046, SIDE_Z_POS, ChestGenHooks.STRONGHOLD_LIBRARY);
 				aData.set  (10, 1,  1, tThaumcraftTable);
 				
-				if (aData.mRandom.nextInt(4)==0) aData.coins( 5, 2,  1);
-												 aData.set  ( 6, 2,  1, tThaumcraftCandle, aData.mColorInversed, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-												 aData.cup  ( 7+aData.mRandom.nextInt(2), 2,  1, FL.Potion_NightVision_1L);
-												 aData.set  ( 9, 2,  1, tThaumcraftCandle, aData.mColorInversed, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, 9);
-				if (aData.mRandom.nextInt(4)==0) aData.coins(10, 2,  1);
+				if (aData.next1in4())   aData.coins( 5, 2,  1);
+										aData.set  ( 6, 2,  1, tThaumcraftCandle, aData.mColorInversed, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+										aData.cup  ( 7+aData.next(2), 2,  1, FL.Potion_NightVision_1L);
+										aData.set  ( 9, 2,  1, tThaumcraftCandle, aData.mColorInversed, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, 9);
+				if (aData.next1in4())   aData.coins(10, 2,  1);
 			}
 			break;
 		case 1:
@@ -232,7 +232,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				if (temp) {
 					temp = F;
 					aData.set  (14, 1,  5, tInkMixer    , 0, 2, 1);
-					aData.set  (14, 1,  6, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.mRandom.nextInt(8))));
+					aData.set  (14, 1,  6, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.next(8))));
 					aData.set  (14, 1,  7, tWritingTable, 0);
 					aData.set  (14, 1,  8, tWritingTable, 8);
 					aData.shelf(14, 1,  9, tShelf, SIDE_X_NEG, ChestGenHooks.STRONGHOLD_LIBRARY);
@@ -260,7 +260,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 					aData.shelf( 1, 1,  6, tShelf, SIDE_X_POS, ChestGenHooks.STRONGHOLD_LIBRARY);
 					aData.set  ( 1, 1,  7, tWritingTable,10);
 					aData.set  ( 1, 1,  8, tWritingTable, 2);
-					aData.set  ( 1, 1,  9, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.mRandom.nextInt(8))));
+					aData.set  ( 1, 1,  9, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.next(8))));
 					aData.set  ( 1, 1, 10, tInkMixer    , 0, 2, 3);
 					
 					aData.set  ( 1, 2,  6, tLectern     , 0, 2, 3);
@@ -285,7 +285,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 					aData.shelf( 6, 1, 14, tShelf, SIDE_Z_NEG, ChestGenHooks.STRONGHOLD_LIBRARY);
 					aData.set  ( 7, 1, 14, tWritingTable, 9);
 					aData.set  ( 8, 1, 14, tWritingTable, 1);
-					aData.set  ( 9, 1, 14, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.mRandom.nextInt(8))));
+					aData.set  ( 9, 1, 14, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.next(8))));
 					aData.set  (10, 1, 14, tInkMixer    , 0, 2, 2);
 					
 					aData.set  ( 6, 2, 14, tLectern     , 0, 2, 2);
@@ -307,7 +307,7 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				if (temp) {
 					temp = F;
 					aData.set  ( 5, 1,  1, tInkMixer    , 0, 2, 0);
-					aData.set  ( 6, 1,  1, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.mRandom.nextInt(8))));
+					aData.set  ( 6, 1,  1, 32705, FluidTankGT.writeToNBT(NBT_TANK+".out.0", FL.Myst_Ink.make(1000+1000*aData.next(8))));
 					aData.set  ( 7, 1,  1, tWritingTable, 3);
 					aData.set  ( 8, 1,  1, tWritingTable,11);
 					aData.shelf( 9, 1,  1, tShelf, SIDE_Z_POS, ChestGenHooks.STRONGHOLD_LIBRARY);
@@ -342,11 +342,11 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.shelf(14, 1,  9, tShelf, SIDE_X_NEG, ChestGenHooks.STRONGHOLD_LIBRARY);
 				aData.set  (14, 1, 10, Blocks.wooden_slab, tSlab);
 				
-				if (aData.mRandom.nextInt(4)==0) aData.coins(14, 2,  5);
-				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.zpm(14, 2,  6)) tDidntGenerateZPM = F; else aData.pot(14, 2,  6, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
-				aData.cup(14, 2,  7+aData.mRandom.nextInt(2), FL.Potion_NightVision_1L);
-				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.zpm(14, 2,  9)) tDidntGenerateZPM = F; else aData.pot(14, 2,  9, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
-				if (aData.mRandom.nextInt(4)==0) aData.coins(14, 2, 10);
+				if (aData.next1in4()) aData.coins(14, 2,  5);
+				if (tDidntGenerateZPM && aData.next(16)==0 && aData.zpm(14, 2,  6)) tDidntGenerateZPM = F; else aData.pot(14, 2,  6, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
+				aData.cup(14, 2,  7+aData.next(2), FL.Potion_NightVision_1L);
+				if (tDidntGenerateZPM && aData.next(16)==0 && aData.zpm(14, 2,  9)) tDidntGenerateZPM = F; else aData.pot(14, 2,  9, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
+				if (aData.next1in4()) aData.coins(14, 2, 10);
 			}
 			if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
 				aData.set  ( 1, 1,  5, Blocks.wooden_slab, tSlab);
@@ -356,11 +356,11 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.shelf( 1, 1,  9, tShelf, SIDE_X_POS, ChestGenHooks.STRONGHOLD_LIBRARY);
 				aData.set  ( 1, 1, 10, Blocks.wooden_slab, tSlab);
 				
-				if (aData.mRandom.nextInt(4)==0) aData.coins( 1, 2,  5);
-				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.zpm( 1, 2,  6)) tDidntGenerateZPM = F; else aData.pot( 1, 2,  6, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
-				aData.cup( 1, 2,  7+aData.mRandom.nextInt(2), FL.Potion_NightVision_1L);
-				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.zpm( 1, 2,  9)) tDidntGenerateZPM = F; else aData.pot( 1, 2,  9, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
-				if (aData.mRandom.nextInt(4)==0) aData.coins( 1, 2, 10);
+				if (aData.next1in4()) aData.coins( 1, 2,  5);
+				if (tDidntGenerateZPM && aData.next(16)==0 && aData.zpm( 1, 2,  6)) tDidntGenerateZPM = F; else aData.pot( 1, 2,  6, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
+				aData.cup( 1, 2,  7+aData.next(2), FL.Potion_NightVision_1L);
+				if (tDidntGenerateZPM && aData.next(16)==0 && aData.zpm( 1, 2,  9)) tDidntGenerateZPM = F; else aData.pot( 1, 2,  9, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
+				if (aData.next1in4()) aData.coins( 1, 2, 10);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
 				aData.set  ( 5, 1, 14, Blocks.wooden_slab, tSlab);
@@ -370,11 +370,11 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.shelf( 9, 1, 14, tShelf, SIDE_Z_NEG, ChestGenHooks.STRONGHOLD_LIBRARY);
 				aData.set  (10, 1, 14, Blocks.wooden_slab, tSlab);
 				
-				if (aData.mRandom.nextInt(4)==0) aData.coins( 5, 2, 14);
-				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.zpm( 6, 2, 14)) tDidntGenerateZPM = F; else aData.pot( 6, 2, 14, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
-				aData.cup( 7+aData.mRandom.nextInt(2), 2, 14, FL.Potion_NightVision_1L);
-				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.zpm( 9, 2, 14)) tDidntGenerateZPM = F; else aData.pot( 9, 2, 14, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
-				if (aData.mRandom.nextInt(4)==0) aData.coins(10, 2, 14);
+				if (aData.next1in4()) aData.coins( 5, 2, 14);
+				if (tDidntGenerateZPM && aData.next(16)==0 && aData.zpm( 6, 2, 14)) tDidntGenerateZPM = F; else aData.pot( 6, 2, 14, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
+				aData.cup( 7+aData.next(2), 2, 14, FL.Potion_NightVision_1L);
+				if (tDidntGenerateZPM && aData.next(16)==0 && aData.zpm( 9, 2, 14)) tDidntGenerateZPM = F; else aData.pot( 9, 2, 14, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
+				if (aData.next1in4()) aData.coins(10, 2, 14);
 			}
 			if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
 				aData.set  ( 5, 1,  1, Blocks.wooden_slab, tSlab);
@@ -384,42 +384,42 @@ public class DungeonChunkRoomLibrary extends DungeonChunkRoomEmpty {
 				aData.shelf( 9, 1,  1, tShelf, SIDE_Z_POS, ChestGenHooks.STRONGHOLD_LIBRARY);
 				aData.set  (10, 1,  1, Blocks.wooden_slab, tSlab);
 				
-				if (aData.mRandom.nextInt(4)==0) aData.coins( 5, 2,  1);
-				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.zpm( 6, 2,  1)) tDidntGenerateZPM = F; else aData.pot( 6, 2,  1, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
-				aData.cup( 7+aData.mRandom.nextInt(2), 2,  1, FL.Potion_NightVision_1L);
-				if (tDidntGenerateZPM && aData.mRandom.nextInt(16)==0 && aData.zpm( 9, 2,  1)) tDidntGenerateZPM = F; else aData.pot( 9, 2,  1, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
-				if (aData.mRandom.nextInt(4)==0) aData.coins(10, 2,  1);
+				if (aData.next1in4()) aData.coins( 5, 2,  1);
+				if (tDidntGenerateZPM && aData.next(16)==0 && aData.zpm( 6, 2,  1)) tDidntGenerateZPM = F; else aData.pot( 6, 2,  1, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
+				aData.cup( 7+aData.next(2), 2,  1, FL.Potion_NightVision_1L);
+				if (tDidntGenerateZPM && aData.next(16)==0 && aData.zpm( 9, 2,  1)) tDidntGenerateZPM = F; else aData.pot( 9, 2,  1, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
+				if (aData.next1in4()) aData.coins(10, 2,  1);
 			}
 		}
 		
-		switch(aData.mRandom.nextInt(4)) {
+		switch(aData.next(4)) {
 		case 0:
 			aData.set( 3, 1,  3, Blocks.enchanting_table);
 			aData.set( 3, 1, 12, Blocks.crafting_table);
 			aData.set(12, 1,  3, Blocks.jukebox);
 			aData.set(12, 1, 12, Blocks.ender_chest);
-			aData.cup( 3, 2, 12, FL.Potion_NightVision_1L, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
+			aData.cup( 3, 2, 12, FL.Potion_NightVision_1L, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
 			break;
 		case 1:
 			aData.set( 3, 1,  3, Blocks.ender_chest);
 			aData.set( 3, 1, 12, Blocks.enchanting_table);
 			aData.set(12, 1,  3, Blocks.crafting_table);
 			aData.set(12, 1, 12, Blocks.jukebox);
-			aData.cup(12, 2,  3, FL.Potion_NightVision_1L, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
+			aData.cup(12, 2,  3, FL.Potion_NightVision_1L, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
 			break;
 		case 2:
 			aData.set( 3, 1,  3, Blocks.jukebox);
 			aData.set( 3, 1, 12, Blocks.ender_chest);
 			aData.set(12, 1,  3, Blocks.enchanting_table);
 			aData.set(12, 1, 12, Blocks.crafting_table);
-			aData.cup(12, 2, 12, FL.Potion_NightVision_1L, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
+			aData.cup(12, 2, 12, FL.Potion_NightVision_1L, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
 			break;
 		case 3:
 			aData.set( 3, 1,  3, Blocks.crafting_table);
 			aData.set( 3, 1, 12, Blocks.jukebox);
 			aData.set(12, 1,  3, Blocks.ender_chest);
 			aData.set(12, 1, 12, Blocks.enchanting_table);
-			aData.cup( 3, 2,  3, FL.Potion_NightVision_1L, aData.mRandom.nextBoolean() ? tHexoriumColor : tHexoriumRandom, aData.mRandom.nextBoolean() ? 1 : 9);
+			aData.cup( 3, 2,  3, FL.Potion_NightVision_1L, aData.next1in2() ? tHexoriumColor : tHexoriumRandom, aData.next1in2() ? 1 : 9);
 			break;
 		}
 		return T;

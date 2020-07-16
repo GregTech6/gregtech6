@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,16 +45,16 @@ public class DungeonChunkRoomPool extends DungeonChunkRoomEmpty {
 				aData.colored(tX, -2, tZ);
 				aData.set(tX,  0, tZ, Blocks.water, 0, 2);
 				aData.set(tX, -1, tZ, Blocks.water, 0, 2);
-				if (aData.mRandom.nextBoolean()) aData.set(tX, 1, tZ, BlocksGT.Glowtus, aData.mRandom.nextInt(16), 0);
+				if (aData.next1in2()) aData.set(tX, 1, tZ, BlocksGT.Glowtus, aData.next(16), 0);
 			}
 		}
 		
-		short tChestType = (short)((aData.mRandom.nextInt(2)==0?508:8)+aData.mRandom.nextInt(3));
+		short tChestType = (short)((aData.next1in2()?508:8)+aData.next(3));
 		
-		if (aData.mRandom.nextBoolean()) aData.set( 1, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_POS), T, T);
-		if (aData.mRandom.nextBoolean()) aData.set(14, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_NEG), T, T);
-		if (aData.mRandom.nextBoolean()) aData.set( 1, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_POS), T, T);
-		if (aData.mRandom.nextBoolean()) aData.set(14, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_NEG), T, T);
+		if (aData.next1in2()) aData.set( 1, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_POS), T, T);
+		if (aData.next1in2()) aData.set(14, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_NEG), T, T);
+		if (aData.next1in2()) aData.set( 1, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_POS), T, T);
+		if (aData.next1in2()) aData.set(14, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_NEG), T, T);
 		return T;
 	}
 }

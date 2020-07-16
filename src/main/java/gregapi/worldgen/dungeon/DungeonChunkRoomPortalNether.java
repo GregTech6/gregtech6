@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,9 +50,9 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			
 			for (int i = 1; i < 15; i++) {
 				aData.set( i, 1,  1, Blocks.soul_sand, 0, 2);
-				aData.set( i, 2,  1, Blocks.nether_wart, aData.mRandom.nextInt(4), 2);
+				aData.set( i, 2,  1, Blocks.nether_wart, aData.next(4), 2);
 				aData.set( i, 1, 14, Blocks.soul_sand, 0, 2);
-				aData.set( i, 2, 14, Blocks.nether_wart, aData.mRandom.nextInt(4), 2);
+				aData.set( i, 2, 14, Blocks.nether_wart, aData.next(4), 2);
 				aData.bricks( i, 1,  2, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 				aData.bricks( i, 1, 13, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			}
@@ -77,9 +77,9 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			
 			for (int i = 1; i < 15; i++) {
 				aData.set( i, 1,  1, Blocks.soul_sand, 0, 2);
-				aData.set( i, 2,  1, Blocks.nether_wart, aData.mRandom.nextInt(4), 2);
+				aData.set( i, 2,  1, Blocks.nether_wart, aData.next(4), 2);
 				aData.set( i, 1, 14, Blocks.soul_sand, 0, 2);
-				aData.set( i, 2, 14, Blocks.nether_wart, aData.mRandom.nextInt(4), 2);
+				aData.set( i, 2, 14, Blocks.nether_wart, aData.next(4), 2);
 				aData.bricks( i, 1,  2, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 				aData.bricks( i, 1, 13, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			}
@@ -104,9 +104,9 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			
 			for (int i = 1; i < 15; i++) {
 				aData.set( 1, 1,  i, Blocks.soul_sand, 0, 2);
-				aData.set( 1, 2,  i, Blocks.nether_wart, aData.mRandom.nextInt(4), 2);
+				aData.set( 1, 2,  i, Blocks.nether_wart, aData.next(4), 2);
 				aData.set(14, 1,  i, Blocks.soul_sand, 0, 2);
-				aData.set(14, 2,  i, Blocks.nether_wart, aData.mRandom.nextInt(4), 2);
+				aData.set(14, 2,  i, Blocks.nether_wart, aData.next(4), 2);
 				aData.bricks( 2, 1,  i, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
 				aData.bricks(13, 1,  i, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			}
@@ -131,9 +131,9 @@ public class DungeonChunkRoomPortalNether extends DungeonChunkRoomPortal {
 			
 			for (int i = 1; i < 15; i++) {
 				aData.set( 1, 1,  i, Blocks.soul_sand, 0, 2);
-				aData.set( 1, 2,  i, Blocks.nether_wart, aData.mRandom.nextInt(4), 2);
+				aData.set( 1, 2,  i, Blocks.nether_wart, aData.next(4), 2);
 				aData.set(14, 1,  i, Blocks.soul_sand, 0, 2);
-				aData.set(14, 2,  i, Blocks.nether_wart, aData.mRandom.nextInt(4), 2);
+				aData.set(14, 2,  i, Blocks.nether_wart, aData.next(4), 2);
 				aData.bricks( 2, 1,  i, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
 				aData.bricks(13, 1,  i, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			}

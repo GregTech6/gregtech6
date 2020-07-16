@@ -39,7 +39,7 @@ Dedicated Wood Materials for most Types of Wood.
 This will influence basically every common Wood ITEM. Ofcourse the Generifier works on all of them.
 Sticks generated on the ground in the World can have different Materials like Rotten, Mossy or Dead Wood. They can be used like normal Sticks.
 The NEI Tree Family GUI also got 6 more Slots now to display which amounts of Sticks/Pulp/Bark/Charcoal you can get from each Type of Tree.
-Many Crates that contain Wood Planks now have this variety too.
+Many Crates that contain Wood Planks now have this variety too. Some of these Crates can also be found in GT6 Dungeons in a new Pile that isn't the Metal Crates.
 
 
 6.13.02:

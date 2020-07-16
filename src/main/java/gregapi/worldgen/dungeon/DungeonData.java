@@ -31,6 +31,7 @@ import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.fluid.FluidTankGT;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.random.WorldAndCoords;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -84,7 +85,31 @@ public class DungeonData extends WorldAndCoords {
 		mRandom = aRandom;
 	}
 	
-	public boolean bricks     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, 3+mRandom.nextInt(3), 2);}
+	public int next(int aNumber) {return mRandom.nextInt(aNumber);}
+	public boolean next1in2() {return mRandom.nextBoolean();}
+	public boolean next1in3() {return next(3)<1;}
+	public boolean next1in4() {return next(4)<1;}
+	public boolean next2in3() {return next(3)<2;}
+	public boolean next2in5() {return next(5)<2;}
+	public boolean next2in7() {return next(7)<2;}
+	public boolean next2in9() {return next(9)<2;}
+	public boolean next3in4() {return next(4)<3;}
+	public boolean next3in5() {return next(5)<3;}
+	public boolean next3in7() {return next(7)<3;}
+	public boolean next3in8() {return next(8)<3;}
+	public boolean next4in5() {return next(5)<4;}
+	public boolean next4in7() {return next(7)<4;}
+	public boolean next4in9() {return next(9)<4;}
+	public boolean next5in6() {return next(6)<5;}
+	public boolean next5in7() {return next(7)<5;}
+	public boolean next5in8() {return next(8)<5;}
+	public boolean next5in9() {return next(9)<5;}
+	public boolean next6in7() {return next(7)<6;}
+	public boolean next7in8() {return next(8)<7;}
+	public boolean next7in9() {return next(9)<7;}
+	public boolean next8in9() {return next(9)<8;}
+	
+	public boolean bricks     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, 3+next(3), 2);}
 	public boolean brick      (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.BRICK, 2);}
 	public boolean redstoned  (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.RSTBR, 3);}
 	public boolean cracked    (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.CRACK, 2);}
@@ -96,7 +121,7 @@ public class DungeonData extends WorldAndCoords {
 	public boolean smooth     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.SMOTH, 2);}
 	public boolean setAirBlock(int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, NB, 0, 2);}
 	
-	public boolean bricks     (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, 3+mRandom.nextInt(3), 2);}
+	public boolean bricks     (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, 3+next(3), 2);}
 	public boolean brick      (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.BRICK, 2);}
 	public boolean redstoned  (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.RSTBR, 3);}
 	public boolean cracked    (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.CRACK, 2);}
@@ -125,8 +150,8 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public boolean coins(int aX, int aY, int aZ) {
-		for (int i = 0; i < 16; i++) mCoin.setByte("gt.coin.stacksize."+i, (byte)(mRandom.nextInt(3) == 0 ? mRandom.nextInt(8) : 0));
-		mCoin.setByte("gt.coin.stacksize."+mRandom.nextInt(16), (byte)(1+mRandom.nextInt(8)));
+		for (int i = 0; i < 16; i++) mCoin.setByte("gt.coin.stacksize."+i, (byte)(next(3) == 0 ? next(8) : 0));
+		mCoin.setByte("gt.coin.stacksize."+next(16), (byte)(1+next(8)));
 		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)32700, mCoin, T, T);
 	}
 	
@@ -155,6 +180,18 @@ public class DungeonData extends WorldAndCoords {
 		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, aSide, (short)aMeta, aNBT, aCauseBlockUpdates, aForcePlacement);
 	}
 	
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, long[] aMetas) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMetas[next(aMetas.length)], null, T, T);
+	}
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, OreDictMaterial[] aMaterials) {
+		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, aMaterials[next(aMaterials.length)].mID, null, T, T);
+	}
+	public boolean set(IBlockPlacable[] aBlocks, int aX, int aY, int aZ, long[] aMetas) {
+		return aBlocks[next(aBlocks.length)].placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMetas[next(aMetas.length)], null, T, T);
+	}
+	public boolean set(IBlockPlacable[] aBlocks, int aX, int aY, int aZ, OreDictMaterial[] aMaterials) {
+		return aBlocks[next(aBlocks.length)].placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, aMaterials[next(aMaterials.length)].mID, null, T, T);
+	}
 	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, long aMeta) {
 		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMeta, null, T, T);
 	}
@@ -181,7 +218,7 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public boolean flower(int aX, int aY, int aZ) {
-		int tIndex = mRandom.nextInt(BlocksGT.FLOWER_TILES.length);
+		int tIndex = next(BlocksGT.FLOWER_TILES.length);
 		return set(aX, aY, aZ, BlocksGT.FLOWER_TILES[tIndex], BlocksGT.FLOWER_METAS[tIndex], 2);
 	}
 	
@@ -214,7 +251,7 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public boolean zpm(int aX, int aY, int aZ) {
-		return mStructure.mZPM && set(aX, aY, aZ, 14999, UT.NBT.make(NBT_ACTIVE_ENERGY, mRandom.nextBoolean()));
+		return zpm(aX, aY, aZ, next2in3());
 	}
 	public boolean zpm(int aX, int aY, int aZ, boolean aActive) {
 		return mStructure.mZPM && set(aX, aY, aZ, 14999, UT.NBT.make(NBT_ACTIVE_ENERGY, aActive));
@@ -227,23 +264,23 @@ public class DungeonData extends WorldAndCoords {
 		return set(aX, aY, aZ, 32739, FluidTankGT.writeToNBT(UT.NBT.make(NBT_COLOR, DYES_INT[mColor], NBT_PAINTED, T), NBT_TANK, FL.make(aFluid, 250)));
 	}
 	public boolean cup(int aX, int aY, int aZ, FL aFluid, Block aBlock, int aMeta) {
-		if (aBlock != NB && aBlock != null && mRandom.nextBoolean()) return set(aX, aY, aZ, aBlock, aMeta, 2);
+		if (aBlock != NB && aBlock != null && next1in2()) return set(aX, aY, aZ, aBlock, aMeta, 2);
 		return cup(aX, aY, aZ, aFluid);
 	}
 	public boolean cup(int aX, int aY, int aZ, Fluid aFluid, Block aBlock, int aMeta) {
-		if (aBlock != NB && aBlock != null && mRandom.nextBoolean()) return set(aX, aY, aZ, aBlock, aMeta, 2);
+		if (aBlock != NB && aBlock != null && next1in2()) return set(aX, aY, aZ, aBlock, aMeta, 2);
 		return cup(aX, aY, aZ, aFluid);
 	}
 	
 	public boolean pot(int aX, int aY, int aZ) {
-		int tIndex = mRandom.nextInt(BlocksGT.POT_FLOWER_TILES.length);
+		int tIndex = next(BlocksGT.POT_FLOWER_TILES.length);
 		set(aX, aY, aZ, Blocks.flower_pot, 0, 2);
 		TileEntity tTileEntity = mWorld.getTileEntity(mX+aX, mY+aY, mZ+aZ);
 		if (tTileEntity instanceof TileEntityFlowerPot) ((TileEntityFlowerPot)tTileEntity).func_145964_a(Item.getItemFromBlock(BlocksGT.POT_FLOWER_TILES[tIndex]), BlocksGT.POT_FLOWER_METAS[tIndex]);
 		return T;
 	}
 	public boolean pot(int aX, int aY, int aZ, Block aBlock, int aMeta) {
-		if (aBlock != NB && aBlock != null && mRandom.nextBoolean()) return set(aX, aY, aZ, aBlock, aMeta, 2);
+		if (aBlock != NB && aBlock != null && next1in2()) return set(aX, aY, aZ, aBlock, aMeta, 2);
 		return pot(aX, aY, aZ);
 	}
 	
@@ -252,7 +289,7 @@ public class DungeonData extends WorldAndCoords {
 	}
 	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, int aFlags) {
 		if (aBlock1 != NB && aBlock1 != null) {
-			if (aBlock2 != NB && aBlock2 != null) return mRandom.nextBoolean() ? set(aX, aY, aZ, aBlock1, aMeta1, aFlags) : set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
+			if (aBlock2 != NB && aBlock2 != null) return next1in2() ? set(aX, aY, aZ, aBlock1, aMeta1, aFlags) : set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
 			return set(aX, aY, aZ, aBlock1, aMeta1, aFlags);
 		}
 		if (aBlock2 != NB && aBlock2 != null) return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
