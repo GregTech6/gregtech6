@@ -3109,6 +3109,7 @@ public class MT {
 		Frozen              = woodnormal( 9312, "WoodFrozen"              , "Frozen Wood"         ,  84, 125, 125).put(MD.GT),
 		Scorched            = woodnormal( 9404, "WoodScorched"            , "Scorched Wood"       ,  44,  44,  44).put(MD.ERE),
 		Varnished           = woodnormal( 9405, "WoodVarnished"           , "Varnished Wood"      , 166,  11,  11).put(MD.ERE),
+		Tainted             = woodnormal( 9406, "WoodTainted"             , "Tainted Wood"        ,  90,  23, 231).put(MD.TCFM),
 		
 		Maple               = woodnormal( 9313, "Maple"                   , "Maple"               , 151,  26,  26).put(MD.GT),
 		Willow              = woodnormal( 9314, "Willow"                  , "Willow"              ,  37, 150,   0).put(MD.GT),
@@ -3121,7 +3122,7 @@ public class MT {
 		Towerwood           = woodnormal( 9320, "Towerwood"               , "Towerwood"           , 166, 101,  58).put(MD.TF),
 		Witchwood           = woodnormal( 9321, "Witchwood"               , "Witchwood"           , 118, 112, 142).put(MD.ARS),
 		Ogre                = woodnormal( 9322, "Ogrewood"                , "Ogrewood"            , 180,  90, 106).put(MD.MoCr),
-		Wyvern              = woodnormal( 9323, "Wyvernwood"              , "Wyvernwood"          ,  90, 180,  72).put(MD.MoCr),
+		Wyvern              = woodnormal( 9323, "Wyvernwood"              , "Wyvernwood"          ,  77, 159, 158).put(MD.MoCr),
 		Aspen               = woodnormal( 9324, "Aspen"                   , "Aspen"               ,  68,  65,  50).put(MD.TFC),
 		DouglasFir          = woodnormal( 9325, "DouglasFir"              , "Douglas Fir"         , 249, 197, 154).put(MD.TFC),
 		Sycamore            = woodnormal( 9326, "Sycamore"                , "Sycamore"            , 214, 155,  69).put(MD.TFC),

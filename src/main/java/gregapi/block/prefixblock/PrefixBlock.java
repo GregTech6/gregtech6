@@ -38,6 +38,7 @@ import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OP;
+import gregapi.data.RM;
 import gregapi.data.TD;
 import gregapi.lang.LanguageHandler;
 import gregapi.network.INetworkHandler;
@@ -46,6 +47,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.OreDictPrefix;
 import gregapi.random.ExplosionGT;
+import gregapi.recipes.Recipe;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IRenderedBlock;
@@ -464,12 +466,15 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
-		// TODO: I directly inserted the Crate Drop Code here, instead of making a special registry. And I did not fix it when adding the 5 better Crates.
-		OreDictMaterial aMaterial = getMetaMaterial(aWorld, aX, aY, aZ);
+		// TODO: I directly inserted the Crate Drop Code here, instead of making a special registry. And I did not fix it when adding the 5 better Crates, nor when doing the Unboxinator Recipe lookup. XD
+		short aMeta = getMetaDataValue(aWorld, aX, aY, aZ);
+		OreDictMaterial aMaterial = getMetaMaterial(aMeta);
 		if (!aWorld.isRemote && (aTool.equals(TOOL_screwdriver) || aTool.equals(TOOL_crowbar))) {
 			if (mPrefix == OP.crateGt64Gem) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.gem.mat(aMaterial, 64));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -477,6 +482,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGt64Dust) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.dust.mat(aMaterial, 64));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -484,6 +491,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGt64Ingot) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.ingot.mat(aMaterial, 64));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -491,6 +500,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGt64Plate) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plate.mat(aMaterial, 64));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -498,6 +509,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGt64PlateGem) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plateGem.mat(aMaterial, 64));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -505,6 +518,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGtGem) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.gem.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -512,6 +527,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGtDust) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.dust.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -519,6 +536,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGtIngot) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.ingot.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -526,6 +545,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGtPlate) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plate.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;
@@ -533,6 +554,8 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 			if (mPrefix == OP.crateGtPlateGem) {
 				UT.Sounds.send(aWorld, SFX.MC_DIG_WOOD, 1.0F, 1.0F, aX, aY, aZ);
 				aWorld.setBlockToAir(aX, aY, aZ);
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, 64, NI, ZL_FS, ST.make(this, 1, aMeta));
+				if (tRecipe != null) {for (ItemStack tDrop : tRecipe.getOutputs()) ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, tDrop); return 2000;}
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, OP.plateGem.mat(aMaterial, 16));
 				ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, IL.Crate.get(1));
 				return 2000;

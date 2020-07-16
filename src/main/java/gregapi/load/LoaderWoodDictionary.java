@@ -175,7 +175,7 @@ public class LoaderWoodDictionary implements Runnable {
 		}
 		// Taint Tree
 		if (MD.TCFM.mLoaded) {
-			new SaplingEntry(ST.make(MD.TCFM, "TaintSapling", 1, 0), new WoodEntry(ST.make(MD.TCFM, "TaintLog", 1, 0), new PlankEntry(ST.make(MD.TCFM, "TaintPlank", 1, 0), 43), 0, 0), ST.make(MD.TCFM, "TaintLeaves", 1, 0));
+			new SaplingEntry(ST.make(MD.TCFM, "TaintSapling", 1, 0), new WoodEntry(ST.make(MD.TCFM, "TaintLog", 1, 0), new PlankEntry(ST.make(MD.TCFM, "TaintPlank", 1, 0), MT.WOODS.Tainted, 43), 0, 0), ST.make(MD.TCFM, "TaintLeaves", 1, 0));
 		}
 		// Twilight Forest Trees
 		if (MD.TF.mLoaded) {
