@@ -451,7 +451,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenRiver           ("river.riverwater"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT); // IT IS IMPORTANT THAT RIVER COMES AFTER OCEAN AND BEFORE SWAMP!!!
 		new WorldgenSwamp           ("swamp.dirtywater"  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_EREBUS); // IT IS IMPORTANT THAT SWAMP COMES AFTER RIVER AND OCEAN!!!
 		
-		new WorldgenDeepOcean       ("ocean.prismacorals", T, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenDeepOcean       ("ocean.prismacorals", T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		
 		new WorldgenPit             ("pit.clay.vanilla"  , T, Blocks.clay       , 0, 1, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		new WorldgenPit             ("pit.clay.brown"    , T, BlocksGT.Diggables, 1, 3, 256, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);

@@ -82,7 +82,6 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	
 	public static final List<IDungeonChunk> DEAD_END = new ArrayListNoNulls<IDungeonChunk>(F
 	, new DungeonChunkRoomStorage()
-	, new DungeonChunkRoomStorage()
 	, new DungeonChunkRoomPortalNether()
 	, new DungeonChunkRoomPortalEnd()
 	, new DungeonChunkRoomPortalTwilight()
