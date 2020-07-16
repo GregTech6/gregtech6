@@ -25,6 +25,7 @@ import java.util.Set;
 
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.ItemStackContainer;
+import gregapi.data.ANY;
 import gregapi.data.CS.PlankData;
 import gregapi.data.IL;
 import gregapi.data.MT;
@@ -33,6 +34,7 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IconContainerCopied;
+import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -113,19 +115,19 @@ public class PlankEntry {
 		}
 		
 		if (ST.valid(mPlank) && !WoodDictionary.PLANKS.containsKey(new ItemStackContainer(mPlank))) {
-			OreDictManager.INSTANCE.setItemData_(mPlank, new OreDictItemData(mMaterialPlank, U));
+			if (OM.materialcontained(mPlank, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mPlank, new OreDictItemData(mMaterialPlank, U));
 			WoodDictionary.PLANKS_ANY.put(mPlank, this);
 			WoodDictionary.PLANKS.put(mPlank, this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mPlank));
 		}
 		if (ST.valid(mStair) && !WoodDictionary.STAIRS.containsKey(new ItemStackContainer(mStair))) {
-			OreDictManager.INSTANCE.setItemData_(mStair, new OreDictItemData(mMaterialPlank, U4*3));
+			if (OM.materialcontained(mStair, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mStair, new OreDictItemData(mMaterialPlank, U4*3));
 			WoodDictionary.PLANKS_ANY.put(mStair, this);
 			WoodDictionary.STAIRS.put(mStair, this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mStair));
 		}
 		if (ST.valid(mSlab) && !WoodDictionary.SLABS.containsKey(new ItemStackContainer(mSlab))) {
-			OreDictManager.INSTANCE.setItemData_(mSlab , new OreDictItemData(mMaterialPlank, U2));
+			if (OM.materialcontained(mSlab , ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mSlab , new OreDictItemData(mMaterialPlank, U2));
 			WoodDictionary.PLANKS_ANY.put(mSlab, this);
 			WoodDictionary.SLABS.put(mSlab, this);
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mSlab));
