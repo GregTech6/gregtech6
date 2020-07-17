@@ -157,7 +157,27 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			if (tRoomLayout[i][j] == 0) {tRoomLayout[i][j] = (byte)k--;}
 		}
 		
-		for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] == 0) if (aRandom.nextInt(mRoomChance) == 0) tRoomLayout[i][j] = (byte)(1+aRandom.nextInt(ROOM_ID_COUNT));
+		boolean tMadeNoRoom = T;
+		for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] == 0) if (aRandom.nextInt(mRoomChance) == 0) {tRoomLayout[i][j] = (byte)(1+aRandom.nextInt(ROOM_ID_COUNT)); tMadeNoRoom = F;}
+		
+		if (tMadeNoRoom)
+		for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] ==-1) while (tMadeNoRoom) {
+			if (tRoomLayout[i+1][j+1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i+1][j+1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i+1][j  ] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i+1][j  ] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i+1][j-1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i+1][j-1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i  ][j+1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i  ][j+1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i  ][j-1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i  ][j-1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i-1][j+1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i-1][j+1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i-1][j  ] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i-1][j  ] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i-1][j-1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i-1][j-1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			
+			// TODO: Remove once I checked shit works.
+			if (!tMadeNoRoom) {
+				DEB.println("ADDED ROOMS FOR:");
+				DEB.println("Max X = " + aMaxX + " - Max Z = " + aMaxZ);
+				DEB.println("Max X = " + aMaxX + " - Max Z = " + aMaxZ);
+			}
+		}
 		
 		for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] != 0) {
 			int a = i, b = j;
