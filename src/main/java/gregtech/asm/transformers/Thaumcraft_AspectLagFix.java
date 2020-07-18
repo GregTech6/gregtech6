@@ -19,23 +19,31 @@
 
 package gregtech.asm.transformers;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IntHashMap;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.*;
-
-import net.minecraft.launchwrapper.IClassTransformer;
-import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.AspectList;
-
 import java.util.Arrays;
 import java.util.HashMap;
 
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.JumpInsnNode;
+import org.objectweb.asm.tree.LabelNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.VarInsnNode;
+
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.launchwrapper.IClassTransformer;
+import net.minecraft.util.IntHashMap;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.AspectList;
+
 public class Thaumcraft_AspectLagFix implements IClassTransformer {
 	// TODO:  Probably do same thing to thaumcraft.common.lib.crafting.ThaumcraftCraftingManager.getObjectTags?
+	// TODO:  Thaumometer still lags despite these changes.
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (name.equals("thaumcraft.common.lib.research.ScanManager")) {

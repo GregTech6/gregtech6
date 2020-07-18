@@ -42,13 +42,11 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 			aData.set(tX, 1, tZ, Blocks.carpet, aData.mColorInversed, 2);
 		}
 		for (int tY = 1; tY <=  6; tY++) {
-			for (int tX = 1; tX <= 14; tX++) if (tX <= 3 || tX >= 12) {
-				aData.bricks(tX, tY,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
-				aData.bricks(tX, tY, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
-			}
-			for (int tZ = 1; tZ <= 14; tZ++) if (tZ <= 3 || tZ >= 12) {
-				aData.bricks( 5, tY, tZ, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
-				aData.bricks(10, tY, tZ, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
+			for (int tCoord = 1; tCoord <= 14; tCoord++) if (tCoord <= 3 || tCoord >= 12) {
+				aData.bricks(tCoord, tY,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
+				aData.bricks(tCoord, tY, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
+				aData.bricks( 5, tY, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
+				aData.bricks(10, tY, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			}
 			
 			aData.smooth( 4, tY,  5);

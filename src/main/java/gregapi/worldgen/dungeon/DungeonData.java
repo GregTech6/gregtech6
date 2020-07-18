@@ -86,6 +86,10 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public int next(int aNumber) {return mRandom.nextInt(aNumber);}
+	/** Gives a random MetaData but biased towards the Dungeons Color. */
+	public int nextMetaA() {return next1in3() ? mColor         : next(16);}
+	/** Gives a random MetaData but biased towards the Dungeons Inverse Color. */
+	public int nextMetaB() {return next1in3() ? mColorInversed : next(16);}
 	public boolean next1in2() {return mRandom.nextBoolean();}
 	public boolean next1in3() {return next(3)<1;}
 	public boolean next1in4() {return next(4)<1;}

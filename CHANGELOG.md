@@ -22,6 +22,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.00: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Dwarf Fortress for the detriment of all other activities...)
+[NOTE] The Aspect Lag Fix by Chocohead is no longer needed nor compatible! We have our own Version of it now, which also works with more than just ~3 specific Mods... He really fucked up that one...
 [NOTE] Bugs that might have happened to a few things, that I might have overlooked could exist, such as: "GT6 TileEntity Blocks changing their default Color, because I added one more Defaultable Parameter to save space", "Recipes for certain wooden Items being uncraftable, because of the general Wood Type overhaul"
 [COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
 [COMPAT] TerraFirmaCraft(Plus) Stuff should work slightly better now. TFC Sticks and Torches are now being accounted for when doing Recipe Outputs.
@@ -34,6 +35,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Technically speaking, Shovels/Spades/Plows and such should be able to break Fire now, BUT due to the nature of how you click Fire to break it, that wont directly work. This is just a special case in case a Mod adds a Block that uses the Material "Fire", so that it can be harvested somehow.
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
 [ADDED] The Shelf in Workshops in GT6 Dungeons now contains two Rolls of Duct Tape, which is always enough to haul both of the Stone Mass Storages and then some.
+[ADDED] Farming themed Room to GT6 Dungeons.
 [ADDED]
 Dedicated Wood Materials for most Types of Wood.
 This will influence basically every common Wood ITEM. Ofcourse the Generifier works on all of them.

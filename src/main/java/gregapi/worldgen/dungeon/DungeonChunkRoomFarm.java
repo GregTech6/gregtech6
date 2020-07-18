@@ -22,9 +22,8 @@ package gregapi.worldgen.dungeon;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.BlocksGT;
-import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.init.Blocks;
-import net.minecraftforge.common.ChestGenHooks;
 
 /**
  * @author Gregorius Techneticies
@@ -32,33 +31,47 @@ import net.minecraftforge.common.ChestGenHooks;
 public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
-		if (aData.mConnectionCount != 2) return F;
 		super.generate(aData);
 		
+		for (int tCoord = 1; tCoord <= 14; tCoord++) if (tCoord <= 3 || tCoord >= 12) {
+			aData.bricks(tCoord,  1,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
+			aData.bricks(tCoord,  1, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
+			aData.bricks( 5,  1, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
+			aData.bricks(10,  1, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
+		}
 		
-		// TODO: WIP
-		
-		
-		for (int tX = 3; tX <= 12; tX++) for (int tZ = 3; tZ <= 12; tZ++) {
-			if ((tX == 3 || tX == 12 || tZ == 3 || tZ == 12)) {
-				aData.colored(tX,  0, tZ);
-				aData.colored(tX, -1, tZ);
-				aData.bricks (tX, -2, tZ);
+		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) if ((tX <= 4 || tX >= 11) && (tZ <= 4 || tZ >= 11)) {
+			aData.set(tX, 1, tZ, Blocks.farmland, 15, 2);
+			
+			if ((tX >= 4 || tX <= 11) && (tZ >= 4 || tZ <= 11)) {
+				aData.set(tX, 1, tZ, Blocks.water, 0, 2);
+				aData.set(tX, 2, tZ, BlocksGT.Glowtus, aData.nextMetaA(), 2);
 			} else {
-				aData.bricks (tX, -3, tZ);
-				aData.colored(tX, -2, tZ);
-				aData.set(tX,  0, tZ, Blocks.water, 0, 2);
-				aData.set(tX, -1, tZ, Blocks.water, 0, 2);
-				if (aData.next1in2()) aData.set(tX, 1, tZ, BlocksGT.Glowtus, aData.next(16), 0);
+				if (tX >= 8) {
+					if (tZ >= 8) {
+						if (WD.even(tX, 2, tZ)) {
+							aData.set(tX, 2, tZ, aData.next1in2() ? Blocks.melon_stem : Blocks.pumpkin_stem, aData.next(8), 2);
+						} else {
+							aData.set(tX, 2, tZ, aData.next1in2() ? Blocks.melon_block : Blocks.pumpkin, aData.next(8), 2);
+						}
+					} else {
+						aData.set(tX, 2, tZ, aData.next1in2() ? Blocks.carrots : Blocks.potatoes, aData.next(8), 2);
+					}
+				} else {
+					if (tZ >= 8) {
+						aData.set(tX, 2, tZ, Blocks.wheat, aData.next(8), 2);
+					} else {
+						aData.set(tX, 2, tZ, Blocks.wheat, aData.next(8), 2);
+					}
+				}
 			}
 		}
 		
-		short tChestType = (short)((aData.next1in2()?508:8)+aData.next(3));
+		aData.set( 5,  1,  5, 32065); aData.set( 5,  2,  5, Blocks.reeds); aData.set( 5,  3,  5, Blocks.reeds); aData.set( 5,  4,  5, Blocks.reeds);
+		aData.set( 5,  1, 10, 32065); aData.set( 5,  2, 10, Blocks.reeds); aData.set( 5,  3, 10, Blocks.reeds); aData.set( 5,  4, 10, Blocks.reeds);
+		aData.set(10,  1,  5, 32065); aData.set(10,  2,  5, Blocks.reeds); aData.set(10,  3,  5, Blocks.reeds); aData.set(10,  4,  5, Blocks.reeds);
+		aData.set(10,  1, 10, 32065); aData.set(10,  2, 10, Blocks.reeds); aData.set(10,  3, 10, Blocks.reeds); aData.set(10,  4, 10, Blocks.reeds);
 		
-		if (aData.next1in2()) aData.set( 1, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_POS), T, T);
-		if (aData.next1in2()) aData.set(14, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_NEG), T, T);
-		if (aData.next1in2()) aData.set( 1, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_POS), T, T);
-		if (aData.next1in2()) aData.set(14, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_NEG), T, T);
 		return T;
 	}
 }
