@@ -33,7 +33,7 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 	public boolean generate(DungeonData aData) {
 		super.generate(aData);
 		
-		for (int tCoord = 1; tCoord <= 14; tCoord++) if (tCoord <= 3 || tCoord >= 12) {
+		for (int tCoord = 1; tCoord <= 14; tCoord++) if (tCoord <= 4 || tCoord >= 11) {
 			aData.bricks(tCoord,  1,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 			aData.bricks(tCoord,  1, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			aData.bricks( 5,  1, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
@@ -43,7 +43,7 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) if ((tX <= 4 || tX >= 11) && (tZ <= 4 || tZ >= 11)) {
 			aData.set(tX, 1, tZ, Blocks.farmland, 15, 2);
 			
-			if ((tX >= 4 || tX <= 11) && (tZ >= 4 || tZ <= 11)) {
+			if (tX >= 4 && tX <= 11 && tZ >= 4 && tZ <= 11) {
 				aData.set(tX, 1, tZ, Blocks.water, 0, 2);
 				aData.set(tX, 2, tZ, BlocksGT.Glowtus, aData.nextMetaA(), 2);
 			} else {

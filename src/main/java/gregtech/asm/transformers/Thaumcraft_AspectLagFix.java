@@ -43,7 +43,6 @@ import thaumcraft.api.aspects.AspectList;
 
 public class Thaumcraft_AspectLagFix implements IClassTransformer {
 	// TODO:  Probably do same thing to thaumcraft.common.lib.crafting.ThaumcraftCraftingManager.getObjectTags?
-	// TODO:  Thaumometer still lags despite these changes.
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
 		if (name.equals("thaumcraft.common.lib.research.ScanManager")) {

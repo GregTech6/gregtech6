@@ -102,13 +102,13 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.set    (12, 4,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    (12, 4,  8, Blocks.redstone_wire, 0, 2);
 			aData.set    (13, 4,  5, Blocks.redstone_wire, 0, 2);
-			aData.set    (13, 4,  6, Blocks.redstone_torch, 4, 2);
-			aData.set    (13, 4,  9, Blocks.redstone_torch, 3, 2);
 			aData.set    (13, 4, 10, Blocks.redstone_wire, 0, 2);
 			aData.set    (14, 4,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    (14, 4,  8, Blocks.redstone_wire, 0, 2);
 			aData.set    (13, 5,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    (13, 5,  8, Blocks.redstone_wire, 0, 2);
+			aData.set    (13, 4,  6, Blocks.redstone_torch, 4, 3);
+			aData.set    (13, 4,  9, Blocks.redstone_torch, 3, 3);
 		}
 		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) {
 			aData.smooth( 0, 3,  6);
@@ -182,13 +182,13 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.set    ( 3, 4,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 3, 4,  8, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 2, 4,  5, Blocks.redstone_wire, 0, 2);
-			aData.set    ( 2, 4,  6, Blocks.redstone_torch, 4, 2);
-			aData.set    ( 2, 4,  9, Blocks.redstone_torch, 3, 2);
 			aData.set    ( 2, 4, 10, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 1, 4,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 1, 4,  8, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 2, 5,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 2, 5,  8, Blocks.redstone_wire, 0, 2);
+			aData.set    ( 2, 4,  6, Blocks.redstone_torch, 4, 3);
+			aData.set    ( 2, 4,  9, Blocks.redstone_torch, 3, 3);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0) {
 			aData.smooth( 6, 3, 15);
@@ -262,13 +262,13 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.set    ( 7, 4, 12, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 4, 12, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 5, 4, 13, Blocks.redstone_wire, 0, 2);
-			aData.set    ( 6, 4, 13, Blocks.redstone_torch, 2, 2);
-			aData.set    ( 9, 4, 13, Blocks.redstone_torch, 1, 2);
 			aData.set    (10, 4, 13, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 7, 4, 14, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 4, 14, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 7, 5, 13, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 5, 13, Blocks.redstone_wire, 0, 2);
+			aData.set    ( 6, 4, 13, Blocks.redstone_torch, 2, 3);
+			aData.set    ( 9, 4, 13, Blocks.redstone_torch, 1, 3);
 		}
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0) {
 			aData.smooth( 6, 3,  0);
@@ -342,13 +342,13 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.set    ( 7, 4,  3, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 4,  3, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 5, 4,  2, Blocks.redstone_wire, 0, 2);
-			aData.set    ( 6, 4,  2, Blocks.redstone_torch, 2, 2);
-			aData.set    ( 9, 4,  2, Blocks.redstone_torch, 1, 2);
 			aData.set    (10, 4,  2, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 7, 4,  1, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 4,  1, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 7, 5,  2, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 5,  2, Blocks.redstone_wire, 0, 2);
+			aData.set    ( 6, 4,  2, Blocks.redstone_torch, 2, 3);
+			aData.set    ( 9, 4,  2, Blocks.redstone_torch, 1, 3);
 		}
 		return T;
 	}
