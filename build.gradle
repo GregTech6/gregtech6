@@ -596,3 +596,4 @@ task checkTodos {
 		if(foundTodos > 0) throw new GradleException(foundTodos + " pending TODO's found")
 	}
 }
+check.dependsOn checkTodos
