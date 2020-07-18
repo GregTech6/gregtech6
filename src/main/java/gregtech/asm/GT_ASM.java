@@ -19,15 +19,18 @@
 
 package gregtech.asm;
 
-import java.io.File;
+import java.io.*;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
+import cpw.mods.fml.relauncher.FMLRelaunchLog;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 import gregtech.asm.transformers.*;
+import net.minecraft.launchwrapper.LaunchClassLoader;
 
 @Name("Greg-ASM®")
 @MCVersion("1.7.10")
@@ -37,20 +40,101 @@ public class GT_ASM implements IFMLLoadingPlugin {
 	public static File location; // Useful to get the path to the coremod to grab other files if needed
 	
 	public GT_ASM() {}
-	
-	@Override
-	public String[] getASMTransformerClass() {
-		return new String[]{
-			// These are run in the order specified.
-			// Put the full class names of the transformers to run, can just `getName` on the classname if it can be
-			// classloaded inline (doesn't require really anything else but ASM calls) such as:
-			CoFHCore_CrashFix.class.getName(),
-			Technomancy_ExtremelySlowLoadFix.class.getName(),
-		};
+
+	@Override public void injectData(Map<String, Object> data) {
+		location = (File)data.get("coremodLocation"); // Location of the gt6 jar
+		ASMConfig config = new ASMConfig((File)data.get("mcLocation"));
+		// If it's not LaunchClassLoader then a lot of other things will already be dying too
+		final LaunchClassLoader classLoader = (LaunchClassLoader)Thread.currentThread().getContextClassLoader();
+
+		for (Map.Entry<String, Boolean> entry : config.transformers.entrySet()) {
+			if (entry.getValue()) {
+				String transformer = entry.getKey();
+				FMLRelaunchLog.finer("Registering transformer %s", transformer);
+				classLoader.registerTransformer(transformer);
+			}
+		}
 	}
 	
+	@Override public String[] getASMTransformerClass() {return null;}
 	@Override public String getModContainerClass() {return GT_ASM_Dummy.class.getName();}
 	@Override public String getSetupClass() {return null;}
-	@Override public void injectData(Map<String, Object> data) {location = (File)data.get("coremodLocation");}
 	@Override public String getAccessTransformerClass() {return null;}
+
+	private static class ASMConfig {
+		private boolean dirty;
+		public LinkedHashMap<String, Boolean> transformers = new LinkedHashMap<>(); // To keep insertion order
+
+		public ASMConfig(File mclocation) {
+			dirty = false;
+			// Shouldn't happen, but sanity, and Java can't enforce this unlike decent programming languages...
+			if (mclocation == null) throw new RuntimeException("Failed to acquire `location` in GT6 CoreMod");
+
+			transformers.put(CoFHCore_CrashFix.class.getName(), true);
+			transformers.put(Technomancy_ExtremelySlowLoadFix.class.getName(), true);
+
+			mclocation = new File(mclocation, "/config/gregtech");
+			mclocation.mkdirs();
+			mclocation = new File(mclocation, "/asm.ini");
+			if (!mclocation.exists()) {
+				try {
+					PrintWriter out = new PrintWriter(mclocation);
+					outputConfig(out);
+					out.close();
+				} catch (FileNotFoundException e) {
+					throw new RuntimeException("Unable to write GT6 ASM config file at: " + mclocation, e);
+				} catch (IOException e) {
+					throw new RuntimeException("Unable to write to GT6 ASM config file at: " + mclocation, e);
+				}
+			} else {
+				try {
+					BufferedReader in = new BufferedReader(new FileReader(mclocation));
+					loadConfig(in);
+					in.close();
+					if (dirty) {
+						PrintWriter out = new PrintWriter(mclocation);
+						outputConfig(out);
+						out.close();
+					}
+				} catch (IOException e) {
+					throw new RuntimeException("Error reading GT6 ASM config file at: " + mclocation, e);
+				}
+			}
+		}
+
+		private void outputConfig(Writer out) throws IOException {
+			out.write("# ASM Transformers, `true` to enable, `false` to disable\n");
+			for (Map.Entry<String, Boolean> entry : transformers.entrySet()) {
+				out.write("transformer:" + entry.getKey() + " = " + entry.getValue() + "\n");
+			}
+		}
+
+		private void loadConfig(BufferedReader in) throws IOException {
+			int lineno = 0;
+			int comments = 0;
+			String line;
+			while ( (line = in.readLine()) != null) {
+				lineno += 1;
+				if (line.startsWith("transformer:")) {
+					String kw = line.substring(12);
+					String[] kwa = kw.split("=");
+					if (kwa.length != 2) throw new RuntimeException("Invalid Configuration entry in GT6 ASM configuration file, line " + lineno + ": " + line);
+					String classname = kwa[0].trim();
+					boolean enabled = kwa[1].trim() != "false";
+					if (transformers.containsKey(classname)) {
+						transformers.put(classname, enabled);
+					} else {
+						FMLRelaunchLog.warning("Invalid configuration entry classname of %s at line %s", classname, Integer.toString(lineno));
+						dirty = true;
+					}
+				} else if (line.startsWith("#")) {
+					// skip
+				} else if (line.trim().equals("")) {
+					// skip
+				} else {
+					dirty = true;
+				}
+			}
+		}
+	}
 }
