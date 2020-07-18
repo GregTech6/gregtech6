@@ -111,9 +111,10 @@ public class GT_ASM implements IFMLLoadingPlugin {
 
 		private void loadConfig(BufferedReader in) throws IOException {
 			int lineno = 0;
-			int comments = 0;
+			int transformersInserted = 0;
 			String line;
 			while ( (line = in.readLine()) != null) {
+				line = line.trim();
 				lineno += 1;
 				if (line.startsWith("transformer:")) {
 					String kw = line.substring(12);
@@ -123,6 +124,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 					boolean enabled = kwa[1].trim() != "false";
 					if (transformers.containsKey(classname)) {
 						transformers.put(classname, enabled);
+						transformersInserted += 1;
 					} else {
 						FMLRelaunchLog.warning("Invalid configuration entry classname of %s at line %s", classname, Integer.toString(lineno));
 						dirty = true;
@@ -135,6 +137,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 					dirty = true;
 				}
 			}
+			if (transformersInserted != transformers.size()) dirty = true;
 		}
 	}
 }
