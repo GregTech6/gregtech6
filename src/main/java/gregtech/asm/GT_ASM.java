@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
-import gregtech.asm.transformers.CoFHCore_CrashFix;
+import gregtech.asm.transformers.*;
 
 @Name("Greg-ASM®")
 @MCVersion("1.7.10")
@@ -44,7 +44,8 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			// These are run in the order specified.
 			// Put the full class names of the transformers to run, can just `getName` on the classname if it can be
 			// classloaded inline (doesn't require really anything else but ASM calls) such as:
-			CoFHCore_CrashFix.class.getName()
+			CoFHCore_CrashFix.class.getName(),
+			Technomancy_ExtremelySlowLoadFix.class.getName(),
 		};
 	}
 	
