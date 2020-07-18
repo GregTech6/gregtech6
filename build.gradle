@@ -587,7 +587,7 @@ task checkTodos {
 					Arrays.fill(colrepeat, 0, tabs, '\t' as char)
 					Arrays.fill(colrepeat, tabs, column, ' ' as char)
 					String todoMsg = line.substring((column + 5 < line.length()) ? column + 5 : line.length()).trim()
-					logger.warn(file.toString() + ':' + lineNumber + ':' + column + ': TODO found: ' + todoMsg + '\n' + line + '\n' + colrepeat + '^')
+					logger.warn(file.toString() + ':' + lineNumber + ': TODO: ' + todoMsg + '\n' + line + '\n' + colrepeat + '^')
 				}
 				line = reader.readLine()
 			}
