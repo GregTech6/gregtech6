@@ -77,6 +77,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, new DungeonChunkRoomWorkshop()
 	, new DungeonChunkRoomLibrary()
 	, new DungeonChunkRoomPool()
+	, new DungeonChunkRoomFarm()
 	, new DungeonChunkRoomStorage()
 	);
 	
@@ -162,21 +163,15 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		
 		if (tMadeNoRoom)
 		for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] ==-1) while (tMadeNoRoom) {
+			// Rooms at the Corners should be more likely, so that more Corridors generate.
 			if (tRoomLayout[i+1][j+1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i+1][j+1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
-			if (tRoomLayout[i+1][j  ] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i+1][j  ] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i+1][j  ] == 0 && aRandom.nextInt(6) == 0) {tRoomLayout[i+1][j  ] = ROOM_ID_COUNT; tMadeNoRoom = F;}
 			if (tRoomLayout[i+1][j-1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i+1][j-1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
-			if (tRoomLayout[i  ][j+1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i  ][j+1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
-			if (tRoomLayout[i  ][j-1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i  ][j-1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i  ][j+1] == 0 && aRandom.nextInt(6) == 0) {tRoomLayout[i  ][j+1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i  ][j-1] == 0 && aRandom.nextInt(6) == 0) {tRoomLayout[i  ][j-1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
 			if (tRoomLayout[i-1][j+1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i-1][j+1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
-			if (tRoomLayout[i-1][j  ] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i-1][j  ] = ROOM_ID_COUNT; tMadeNoRoom = F;}
+			if (tRoomLayout[i-1][j  ] == 0 && aRandom.nextInt(6) == 0) {tRoomLayout[i-1][j  ] = ROOM_ID_COUNT; tMadeNoRoom = F;}
 			if (tRoomLayout[i-1][j-1] == 0 && aRandom.nextInt(4) == 0) {tRoomLayout[i-1][j-1] = ROOM_ID_COUNT; tMadeNoRoom = F;}
-			
-			// TODO: Remove once I checked shit works.
-			if (!tMadeNoRoom) {
-				DEB.println("ADDED ROOMS FOR:");
-				DEB.println("Max X = " + aMaxX + " - Max Z = " + aMaxZ);
-				DEB.println("Max X = " + aMaxX + " - Max Z = " + aMaxZ);
-			}
 		}
 		
 		for (int i = 1; i < tRoomLayout.length-1; i++) for (int j = 1; j < tRoomLayout[i].length-1; j++) if (tRoomLayout[i][j] != 0) {
@@ -245,7 +240,6 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			int tConnectionCount = 0;
 			for (byte tSide : ALL_SIDES_HORIZONTAL) if (tRoomLayout[i+OFFSETS_X[tSide]][j+OFFSETS_Z[tSide]] != 0) tConnectionCount++;
 			
-			
 			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tTags, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
 			switch(tRoomLayout[i][j]) {
@@ -254,16 +248,16 @@ public class WorldgenDungeonGT extends WorldgenObject {
 					// Generate a random Dead End
 					List<IDungeonChunk> tList = new ArrayListNoNulls<>(DEAD_END);
 					while (T) {
-						if (tList.remove(aRandom.nextInt(tList.size())).generate(aData)) break;
-						if (tList.isEmpty()) {ROOM_EMPTY.generate(aData); break;}
+						try {if (tList.remove(aRandom.nextInt(tList.size())).generate(aData)) break;} catch(Throwable e) {e.printStackTrace(ERR);}
+						try {if (tList.isEmpty() && ROOM_EMPTY              .generate(aData)) break;} catch(Throwable e) {e.printStackTrace(ERR);}
 					}
 					break;
 				}
 				// Generate a random Normal Room
 				List<IDungeonChunk> tList = new ArrayListNoNulls<>(ROOMS);
 				while (T) {
-					if (tList.remove(aRandom.nextInt(tList.size())).generate(aData)) break;
-					if (tList.isEmpty()) {ROOM_EMPTY.generate(aData); break;}
+					try {if (tList.remove(aRandom.nextInt(tList.size())).generate(aData)) break;} catch(Throwable e) {e.printStackTrace(ERR);}
+					try {if (tList.isEmpty() && ROOM_EMPTY              .generate(aData)) break;} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
 				break;
 			}
@@ -279,18 +273,9 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			DungeonData aData = new DungeonData(aWorld, aMinX+i*16, tOffsetY, aMinZ+j*16, this, tPrimaryBlock, tSecondaryBlock, tRegistry, tLightUpdateCoords, tTags, tKeyIDs, tKeyStacks, tGeneratedKeys, tRoomLayout, i, j, tConnectionCount, tColor, aRandom, tCoin);
 			
 			switch(tRoomLayout[i][j]) {
-			case -128:
-				// Corridors, very important, to connect Stuff
-				CORRIDOR.generate(aData);
-				break;
-			case -2:
-				// Always have an Entrance
-				ENTRANCE.generate(aData);
-				break;
-			case -1:
-				// Always have a Sleeping Room
-				BARRACKS.generate(aData);
-				break;
+			case -128: try {CORRIDOR.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} break;
+			case   -2: try {ENTRANCE.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} break;
+			case   -1: try {BARRACKS.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} break;
 			}
 			
 			aWorld.getChunkFromChunkCoords((aMinX >> 4) + i, (aMinZ >> 4) + j).setChunkModified();
@@ -299,7 +284,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 			aWorld.setLightValue(EnumSkyBlock.Block, tCoords.posX, tCoords.posY, tCoords.posZ, 15);
 			for (byte tSide : ALL_SIDES_MIDDLE) {
 				aWorld.func_147451_t(tCoords.posX+OFFSETS_X[tSide], tCoords.posY+OFFSETS_Y[tSide], tCoords.posZ+OFFSETS_Z[tSide]);
-				WD.update(aWorld, tCoords.posX+OFFSETS_X[tSide], tCoords.posY+OFFSETS_Y[tSide], tCoords.posZ+OFFSETS_Z[tSide]);
+				WD.update(   aWorld, tCoords.posX+OFFSETS_X[tSide], tCoords.posY+OFFSETS_Y[tSide], tCoords.posZ+OFFSETS_Z[tSide]);
 			}
 		}
 		return T;

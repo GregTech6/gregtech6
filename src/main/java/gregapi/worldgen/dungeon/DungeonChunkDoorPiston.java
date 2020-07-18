@@ -82,18 +82,18 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 
 			aData.lamp   (15, 4,  7, +1);
 			aData.lamp   (15, 4,  8, +1);
+			aData.colored(13, 1,  7);
+			aData.colored(13, 1,  8);
+			aData.colored(13, 2,  7);
+			aData.colored(13, 2,  8);
 			
 			aData.set    (12, 2,  7, Blocks.stone_button, 3, 2);
 			aData.set    (12, 2,  8, Blocks.stone_button, 4, 2);
 			aData.set    (14, 2,  7, Blocks.stone_button, 3, 2);
 			aData.set    (14, 2,  8, Blocks.stone_button, 4, 2);
 			aData.set    (13, 1,  5, Blocks.sticky_piston, 3, 2);
-			aData.colored(13, 1,  7);
-			aData.colored(13, 1,  8);
 			aData.set    (13, 1, 10, Blocks.sticky_piston, 2, 2);
 			aData.set    (13, 2,  5, Blocks.sticky_piston, 3, 2);
-			aData.colored(13, 2,  7);
-			aData.colored(13, 2,  8);
 			aData.set    (13, 2, 10, Blocks.sticky_piston, 2, 2);
 			aData.set    (12, 3,  6, Blocks.redstone_wire, 0, 2);
 			aData.set    (12, 3,  9, Blocks.redstone_wire, 0, 2);
@@ -102,8 +102,8 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.set    (12, 4,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    (12, 4,  8, Blocks.redstone_wire, 0, 2);
 			aData.set    (13, 4,  5, Blocks.redstone_wire, 0, 2);
-			aData.set    (13, 4,  6, Blocks.redstone_torch, 4, 3);
-			aData.set    (13, 4,  9, Blocks.redstone_torch, 3, 3);
+			aData.set    (13, 4,  6, Blocks.redstone_torch, 4, 2);
+			aData.set    (13, 4,  9, Blocks.redstone_torch, 3, 2);
 			aData.set    (13, 4, 10, Blocks.redstone_wire, 0, 2);
 			aData.set    (14, 4,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    (14, 4,  8, Blocks.redstone_wire, 0, 2);
@@ -162,18 +162,18 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 
 			aData.lamp   ( 0, 4,  7, +1);
 			aData.lamp   ( 0, 4,  8, +1);
+			aData.colored( 2, 1,  7);
+			aData.colored( 2, 1,  8);
+			aData.colored( 2, 2,  7);
+			aData.colored( 2, 2,  8);
 			
 			aData.set    ( 1, 2,  7, Blocks.stone_button, 3, 2);
 			aData.set    ( 1, 2,  8, Blocks.stone_button, 4, 2);
 			aData.set    ( 3, 2,  7, Blocks.stone_button, 3, 2);
 			aData.set    ( 3, 2,  8, Blocks.stone_button, 4, 2);
 			aData.set    ( 2, 1,  5, Blocks.sticky_piston, 3, 2);
-			aData.colored( 2, 1,  7);
-			aData.colored( 2, 1,  8);
 			aData.set    ( 2, 1, 10, Blocks.sticky_piston, 2, 2);
 			aData.set    ( 2, 2,  5, Blocks.sticky_piston, 3, 2);
-			aData.colored( 2, 2,  7);
-			aData.colored( 2, 2,  8);
 			aData.set    ( 2, 2, 10, Blocks.sticky_piston, 2, 2);
 			aData.set    ( 3, 3,  6, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 3, 3,  9, Blocks.redstone_wire, 0, 2);
@@ -182,8 +182,8 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.set    ( 3, 4,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 3, 4,  8, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 2, 4,  5, Blocks.redstone_wire, 0, 2);
-			aData.set    ( 2, 4,  6, Blocks.redstone_torch, 4, 3);
-			aData.set    ( 2, 4,  9, Blocks.redstone_torch, 3, 3);
+			aData.set    ( 2, 4,  6, Blocks.redstone_torch, 4, 2);
+			aData.set    ( 2, 4,  9, Blocks.redstone_torch, 3, 2);
 			aData.set    ( 2, 4, 10, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 1, 4,  7, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 1, 4,  8, Blocks.redstone_wire, 0, 2);
@@ -242,18 +242,18 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			
 			aData.lamp   ( 7, 4, 15, +1);
 			aData.lamp   ( 8, 4, 15, +1);
+			aData.colored( 7, 1, 13);
+			aData.colored( 8, 1, 13);
+			aData.colored( 7, 2, 13);
+			aData.colored( 8, 2, 13);
 			
 			aData.set    ( 7, 2, 12, Blocks.stone_button, 1, 2);
 			aData.set    ( 8, 2, 12, Blocks.stone_button, 2, 2);
 			aData.set    ( 7, 2, 14, Blocks.stone_button, 1, 2);
 			aData.set    ( 8, 2, 14, Blocks.stone_button, 2, 2);
 			aData.set    ( 5, 1, 13, Blocks.sticky_piston, 5, 2);
-			aData.colored( 7, 1, 13);
-			aData.colored( 8, 1, 13);
 			aData.set    (10, 1, 13, Blocks.sticky_piston, 4, 2);
 			aData.set    ( 5, 2, 13, Blocks.sticky_piston, 5, 2);
-			aData.colored( 7, 2, 13);
-			aData.colored( 8, 2, 13);
 			aData.set    (10, 2, 13, Blocks.sticky_piston, 4, 2);
 			aData.set    ( 6, 3, 12, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 9, 3, 12, Blocks.redstone_wire, 0, 2);
@@ -262,8 +262,8 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.set    ( 7, 4, 12, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 4, 12, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 5, 4, 13, Blocks.redstone_wire, 0, 2);
-			aData.set    ( 6, 4, 13, Blocks.redstone_torch, 2, 3);
-			aData.set    ( 9, 4, 13, Blocks.redstone_torch, 1, 3);
+			aData.set    ( 6, 4, 13, Blocks.redstone_torch, 2, 2);
+			aData.set    ( 9, 4, 13, Blocks.redstone_torch, 1, 2);
 			aData.set    (10, 4, 13, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 7, 4, 14, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 4, 14, Blocks.redstone_wire, 0, 2);
@@ -322,18 +322,18 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			
 			aData.lamp   ( 7, 4,  0, +1);
 			aData.lamp   ( 8, 4,  0, +1);
+			aData.colored( 7, 1,  2);
+			aData.colored( 8, 1,  2);
+			aData.colored( 7, 2,  2);
+			aData.colored( 8, 2,  2);
 			
 			aData.set    ( 7, 2,  1, Blocks.stone_button, 1, 2);
 			aData.set    ( 8, 2,  1, Blocks.stone_button, 2, 2);
 			aData.set    ( 7, 2,  3, Blocks.stone_button, 1, 2);
 			aData.set    ( 8, 2,  3, Blocks.stone_button, 2, 2);
 			aData.set    ( 5, 1,  2, Blocks.sticky_piston, 5, 2);
-			aData.colored( 7, 1,  2);
-			aData.colored( 8, 1,  2);
 			aData.set    (10, 1,  2, Blocks.sticky_piston, 4, 2);
 			aData.set    ( 5, 2,  2, Blocks.sticky_piston, 5, 2);
-			aData.colored( 7, 2,  2);
-			aData.colored( 8, 2,  2);
 			aData.set    (10, 2,  2, Blocks.sticky_piston, 4, 2);
 			aData.set    ( 6, 3,  3, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 9, 3,  3, Blocks.redstone_wire, 0, 2);
@@ -342,8 +342,8 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.set    ( 7, 4,  3, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 4,  3, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 5, 4,  2, Blocks.redstone_wire, 0, 2);
-			aData.set    ( 6, 4,  2, Blocks.redstone_torch, 2, 3);
-			aData.set    ( 9, 4,  2, Blocks.redstone_torch, 1, 3);
+			aData.set    ( 6, 4,  2, Blocks.redstone_torch, 2, 2);
+			aData.set    ( 9, 4,  2, Blocks.redstone_torch, 1, 2);
 			aData.set    (10, 4,  2, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 7, 4,  1, Blocks.redstone_wire, 0, 2);
 			aData.set    ( 8, 4,  1, Blocks.redstone_wire, 0, 2);

@@ -92,6 +92,7 @@ public class MultiItemBottles extends MultiItemRandom implements IItemRottable {
 		addItem(tLastID =   401, "Rum"                          , "", "foodRum"                         , FL.Rum_White              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.LUCRUM    , 1), FoodStatFluid.INSTANCE);
 		addItem(tLastID =   402, "Pirate Brew"                  , "", "foodRum"                         , FL.Rum_Dark               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.LUCRUM    , 2), FoodStatFluid.INSTANCE, TD.Creative.HIDDEN);
 		addItem(tLastID =   403, "Cane Vinegar"                 , "", "foodVinegar"                     , FL.Vinegar_Cane           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 2), TC.stack(TC.LUCRUM    , 1), FoodStatFluid.INSTANCE);
+		addItem(tLastID =   404, "Piña Colada"                  , ""                                    , FL.Pina_Colada            .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENENUM        , 1), TC.stack(TC.HERBA     , 2), FoodStatFluid.INSTANCE);
 		
 		
 		addItem(tLastID =   500, "Hops Mash"                    , ""                                    , FL.Mash_Hops              .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.MESSIS    , 1), FoodStatFluid.INSTANCE);

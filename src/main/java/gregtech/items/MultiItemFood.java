@@ -276,23 +276,26 @@ public class MultiItemFood extends MultiItemRandom implements IItemRottable {
 		IL.Food_Apple_DarkRed_Sliced.set(           addItem(tLastID =   241, "Apple Slice"      , ""                                                                                    , new FoodStat( 1, 0.400F,   5, C+37,  0.30F,   0,   0,   0,   3,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1)));
 		IL.Food_Apple_DarkRed_Core.set(             addItem(tLastID =   242, "Apple Core"       , "Not to be confused with the Mod"                     , "itemPlantRemains"            , TICKS_PER_SMELT / 4, TC.stack(TC.HERBA, 1), Behavior_FeedPig.INSTANCE));
 		CR.shaped(IL.Food_Apple_DarkRed_Sliced  .get(4), CR.DEF_NAC_NCC, "kX", 'X', "cropAppleDarkRed");
-
-
+		
+		
 		IL.Food_Peanut.set(                         addItem(tLastID =   250, "Peanut"           , "Deez Nutz"                                           , "cropPeanut"                  , new FoodStat( 2, 0.300F,   0, C+37,  0.10F,   0,   0,   0,   0,  16, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.GRANUM, 1), TC.stack(TC.COGNITO, 1)));
-
-
+		
+		// Couldn't resist to put Lyrics from the Donkey Kong Rap there.
+		IL.Food_Coconut.set(                        addItem(tLastID =   251, "Coconut"          , "His Coconut Gun can fire in spurts. If he shoots ya, it's gonna hurt!", "cropCoconut", new FoodStat( 2, 0.300F,   0, C+37,  0.10F,   0,   0,   0,   8,   8, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.GRANUM, 1), TC.stack(TC.TUTAMEN, 1)));
+		if (COMPAT_FR != null) COMPAT_FR.addWindfall(IL.Food_Coconut.get(1));
+		
 		IL.Food_Hazelnut.set(                       addItem(tLastID =   260, "Hazelnut"         , ""                                                    , "cropHazelnut"                , new FoodStat( 2, 0.300F,   0, C+37,  0.10F,   0,   0,   0,   0,  16, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.GRANUM, 1), TC.stack(TC.PERFODIO, 1)));
 		if (COMPAT_FR != null) COMPAT_FR.addWindfall(IL.Food_Hazelnut.get(1));
-
-
+		
+		
 		IL.Food_Ananas.set(                         addItem(tLastID =   270, "Ananas"           , "Who lives in a Pineapple under the the Sea?"         , "cropAnanas"                  , new FoodStat( 4, 0.300F,  10, C+36,  0.30F,   0,   0,   0,   8,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.MESSIS, 1), TC.stack(TC.ARBOR, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Ananas_Sliced.set(                  addItem(tLastID =   271, "Ananas Slice"     , "Did Ted ever find out about the Mystery Pineapple?"                                  , new FoodStat( 1, 0.300F,  10, C+36,  0.30F,   0,   0,   0,   2,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.ARBOR, 1)));
 		CR.shaped(IL.Food_Ananas_Sliced.get(4), CR.DEF_NAC_NCC, "kX", 'X', "cropAnanas");
-
-
+		
+		
 		IL.Food_Cinnamon.set(                       addItem(tLastID =   280, "Cinnamon Bark"    , "Don't let anyone Challenge you!"                     , "cropCinnamon"                , new FoodStat( 2, 0.300F,   0, C+37,  0.10F,   0,   0,   0,   0,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.ARBOR, 1), TC.stack(TC.FAMES, 1)));
-
-
+		
+		
 		IL.Food_Cheese.set(                         addItem(tLastID =  1000, "Cheese"           , "Click the Cheese"                                    , "foodCheese"                  , new FoodStat( 2, 1.200F,   0, C+37,  0.10F,   0,   0,   8,   0,   8, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 2)));
 		IL.Food_Cheese_Sliced.set(                  addItem(tLastID =  1001, "Cheese Slice"     , "ALIEN ATTACK!!!, throw the CHEEEEESE!!!"                                             , new FoodStat( 1, 0.600F,   0, C+37,  0.10F,   0,   0,   2,   0,   2, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.FAMES, 1), new OreDictItemData(MT.Cheese, U4)));
 		CR.shaped(IL.Food_Cheese_Sliced.get(4), CR.DEF_NAC_NCC, "kX", 'X', "foodCheese");

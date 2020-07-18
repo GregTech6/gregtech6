@@ -126,6 +126,7 @@ public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
 			}
 		}
 		if ((aMeta & 7) == 4 && RNGSUS.nextInt(tChance) < 2) rDrops.add(IL.Food_Hazelnut.get(1));
+		if ((aMeta & 7) == 6 && RNGSUS.nextInt(tChance) < 2) rDrops.add(IL.Food_Coconut.get(1));
 		return rDrops;
 	}
 	

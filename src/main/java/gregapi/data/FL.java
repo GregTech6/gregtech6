@@ -358,6 +358,7 @@ public enum FL {
 
 	, Rum_White                 ("binnie.rumwhite"          , "potion.rum", "rum"           , SIMPLE, LIQUID, FOOD, ALCOHOLIC, RUM)
 	, Rum_Dark                  ("binnie.rumdark"           , "potion.piratebrew"           , SIMPLE, LIQUID, FOOD, ALCOHOLIC, RUM)
+	, Pina_Colada               ("pina.colada"                                              , SIMPLE, LIQUID, FOOD, ALCOHOLIC, RUM)
 
 	, Vodka                     ("binnie.vodka"             , "potion.vodka", "vodka"       , SIMPLE, LIQUID, FOOD, ALCOHOLIC)
 	, Leninade                  ("potion.leninade"                                          , SIMPLE, LIQUID, FOOD, ALCOHOLIC)

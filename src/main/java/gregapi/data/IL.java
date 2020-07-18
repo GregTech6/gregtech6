@@ -318,7 +318,7 @@ public enum IL implements IItemContainer {
 	Food_Cranberry,
 	Food_Candleberry,
 	Food_Currants_Red, Food_Currants_Black, Food_Currants_White,
-	Food_Peanut, Food_Hazelnut,
+	Food_Peanut, Food_Hazelnut, Food_Coconut,
 	Food_Apple_Green, Food_Apple_Yellow, Food_Apple_Red, Food_Apple_DarkRed,
 	Food_Apple_Green_Sliced, Food_Apple_Yellow_Sliced, Food_Apple_Red_Sliced, Food_Apple_DarkRed_Sliced,
 	Food_Apple_Green_Core, Food_Apple_Yellow_Core, Food_Apple_Red_Core, Food_Apple_DarkRed_Core,

@@ -36,9 +36,9 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 	@Override
 	public boolean generate(DungeonData aData) {
 		if ((aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0 || aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] != 0) && (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] != 0 || aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] != 0)) {
-			super.generate(aData);
+			try {super.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} // The Pillar is not important enough to fail the entire Corridor.
 		}
-
+		
 		if (aData.mConnectionCount == 4) {
 			for (int tX =  2; tX <= 13; tX++) for (int tZ =  2; tZ <= 13; tZ++) for (int tY = 0; tY <= 6; tY++) {
 				if (tX == 2 || tX == 13 || tZ == 2 || tZ == 13 || tY == 0 || tY == 6) {
@@ -168,13 +168,13 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 			aData.lamp     (13, 4, 7, 0);
 			aData.lamp     (13, 4, 8, 0);
 			aData.redstoned(13, 4, 9);
-		} else if (aData.mConnectionCount == 3 && aData.next(2) == 0) {
+		} else if (aData.mConnectionCount == 3 && aData.next1in2()) {
 			for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.smooth(11, tY, tZ);
 			for (int tY =  1; tY <= 3; tY++) for (int tZ =  6; tZ <=  9; tZ++) aData.air   (10, tY, tZ);
 
 			aData.smooth   (10, 1, 6);
 			aData.set      (10, 1, 7, Blocks.crafting_table, 0, 2);
-			aData.set      (10, 1, 8, SIDE_UNKNOWN, (short)((aData.next(2)==0?508:8)+aData.next(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_NEG), T, T);
+			aData.set      (10, 1, 8, SIDE_UNKNOWN, (short)((aData.next1in2()?508:8)+aData.next(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_NEG), T, T);
 			aData.smooth   (10, 1, 9);
 
 			aData.coins    (10, 2, 6);
@@ -204,12 +204,12 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 			aData.lamp     (2, 4, 7, 0);
 			aData.lamp     (2, 4, 8, 0);
 			aData.redstoned(2, 4, 9);
-		} else if (aData.mConnectionCount == 3 && aData.next(2) == 0) {
+		} else if (aData.mConnectionCount == 3 && aData.next1in2()) {
 			for (int tY =  0; tY <= 4; tY++) for (int tZ =  5; tZ <= 10; tZ++) aData.smooth(4, tY, tZ);
 			for (int tY =  1; tY <= 3; tY++) for (int tZ =  6; tZ <=  9; tZ++) aData.air   (5, tY, tZ);
 
 			aData.smooth   (5, 1, 6);
-			aData.set      (5, 1, 7, SIDE_UNKNOWN, (short)((aData.next(2)==0?508:8)+aData.next(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_POS), T, T);
+			aData.set      (5, 1, 7, SIDE_UNKNOWN, (short)((aData.next1in2()?508:8)+aData.next(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_X_POS), T, T);
 			aData.set      (5, 1, 8, Blocks.crafting_table, 0, 2);
 			aData.smooth   (5, 1, 9);
 
@@ -240,13 +240,13 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 			aData.lamp     (7, 4, 13, 0);
 			aData.lamp     (8, 4, 13, 0);
 			aData.redstoned(9, 4, 13);
-		} else if (aData.mConnectionCount == 3 && aData.next(2) == 0) {
+		} else if (aData.mConnectionCount == 3 && aData.next1in2()) {
 			for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.smooth(tX, tY, 11);
 			for (int tY =  1; tY <= 3; tY++) for (int tX =  6; tX <=  9; tX++) aData.air   (tX, tY, 10);
 
 			aData.smooth   (6, 1, 10);
 			aData.set      (7, 1, 10, Blocks.crafting_table, 0, 2);
-			aData.set      (8, 1, 10, SIDE_UNKNOWN, (short)((aData.next(2)==0?508:8)+aData.next(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_NEG), T, T);
+			aData.set      (8, 1, 10, SIDE_UNKNOWN, (short)((aData.next1in2()?508:8)+aData.next(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_NEG), T, T);
 			aData.smooth   (9, 1, 10);
 
 			aData.coins    (6, 2, 10);
@@ -276,12 +276,12 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 			aData.lamp     (7, 4, 2, 0);
 			aData.lamp     (8, 4, 2, 0);
 			aData.redstoned(9, 4, 2);
-		} else if (aData.mConnectionCount == 3 && aData.next(2) == 0) {
+		} else if (aData.mConnectionCount == 3 && aData.next1in2()) {
 			for (int tY =  0; tY <= 4; tY++) for (int tX =  5; tX <= 10; tX++) aData.smooth(tX, tY, 4);
 			for (int tY =  1; tY <= 3; tY++) for (int tX =  6; tX <=  9; tX++) aData.air   (tX, tY, 5);
 
 			aData.smooth   (6, 1, 5);
-			aData.set      (7, 1, 5, SIDE_UNKNOWN, (short)((aData.next(2)==0?508:8)+aData.next(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_POS), T, T);
+			aData.set      (7, 1, 5, SIDE_UNKNOWN, (short)((aData.next1in2()?508:8)+aData.next(3)), UT.NBT.make("gt.dungeonloot", ChestGenHooks.STRONGHOLD_CORRIDOR, NBT_FACING, SIDE_Z_POS), T, T);
 			aData.set      (8, 1, 5, Blocks.crafting_table, 0, 2);
 			aData.smooth   (9, 1, 5);
 

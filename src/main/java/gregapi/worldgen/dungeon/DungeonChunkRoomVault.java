@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,7 +29,7 @@ public class DungeonChunkRoomVault extends DungeonChunkRoomEmpty {
 	public boolean generate(DungeonData aData) {
 		if (aData.mConnectionCount != 1) return F;
 		super.generate(aData);
-		WorldgenDungeonGT.DOOR_PISTON.generate(aData);
+		try {WorldgenDungeonGT.DOOR_PISTON.generate(aData);} catch(Throwable e) {e.printStackTrace(ERR);} // The Vault Door is not important enough to fail the entire Room.
 		return T;
 	}
 }

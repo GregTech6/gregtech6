@@ -29,11 +29,15 @@ import net.minecraftforge.common.ChestGenHooks;
 /**
  * @author Gregorius Techneticies
  */
-public class DungeonChunkRoomPool extends DungeonChunkRoomEmpty {
+public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 	@Override
 	public boolean generate(DungeonData aData) {
 		if (aData.mConnectionCount != 2) return F;
 		super.generate(aData);
+		
+		
+		// TODO: WIP
+		
 		
 		for (int tX = 3; tX <= 12; tX++) for (int tZ = 3; tZ <= 12; tZ++) {
 			if ((tX == 3 || tX == 12 || tZ == 3 || tZ == 12)) {

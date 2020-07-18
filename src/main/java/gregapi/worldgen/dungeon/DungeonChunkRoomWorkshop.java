@@ -150,7 +150,7 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		
 		//-----
 		
-		int tAmount = (aData.next(3) == 0 ? 32000 : 16000);
+		int tAmount = (aData.next1in3() ? 32000 : 16000);
 		short tID = (short)(tAmount > 16000 ? 32734 : 32714);
 		FluidStack[] tDrinks = FL.array(FL.Purple_Drink.make(tAmount), FL.Purple_Drink.make(tAmount), FL.Purple_Drink.make(tAmount), FL.Vodka.make(tAmount), FL.Mead.make(tAmount), FL.Whiskey_GlenMcKenner.make(tAmount), FL.Wine_Grape_Purple.make(tAmount));
 		

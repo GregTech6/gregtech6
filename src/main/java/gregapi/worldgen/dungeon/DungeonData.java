@@ -155,7 +155,7 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public boolean coins(int aX, int aY, int aZ) {
-		for (int i = 0; i < 16; i++) mCoin.setByte("gt.coin.stacksize."+i, (byte)(next(3) == 0 ? next(8) : 0));
+		for (int i = 0; i < 16; i++) mCoin.setByte("gt.coin.stacksize."+i, (byte)(next1in3() ? next(8) : 0));
 		mCoin.setByte("gt.coin.stacksize."+next(16), (byte)(1+next(8)));
 		return mMTERegistryGT.mBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)32700, mCoin, T, T);
 	}

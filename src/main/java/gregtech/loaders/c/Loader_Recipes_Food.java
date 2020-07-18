@@ -569,6 +569,7 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.Sugar           , U9), OM.dust(MT.Cocoa, U9), OM.dust(MT.Chocolate, 2*U9));
 		
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Lemonade.make(125), FL.Vodka.make(125)), FL.Leninade.make(250), ZL_IS);
+		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Juice_Ananas.make(150), FL.Cream_Coconut.make(50), FL.Rum_White.make(50)), FL.Pina_Colada.make(250), ZL_IS);
 		
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.make("potion.darkcoffee", 125), FL.Milk   .make(125)), FL.make("potion.coffee", 250), ZL_IS);
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.make("potion.darkcoffee", 125), FL.MilkGrC.make(125)), FL.make("potion.coffee", 250), ZL_IS);

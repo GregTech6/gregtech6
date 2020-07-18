@@ -141,7 +141,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 					if (aData.next1in2()) aData.set(tMetalCrates, i, 4, j, sMetals);
 				}
 				break;
-			case  1: case  6:
+			case  1: case  5:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
 					if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
 					if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
