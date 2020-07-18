@@ -72,6 +72,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
 			transformers.put(Technomancy_ExtremelySlowLoadFix.class.getName(), true);
+			transformers.put(Thaumcraft_AspectLagFix.class.getName(), true);
 
 			mclocation = new File(mclocation, "/config/gregtech");
 			mclocation.mkdirs();
