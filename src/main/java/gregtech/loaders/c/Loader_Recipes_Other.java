@@ -185,8 +185,10 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		//----------------------------------------------------------------------------
 		
-		if (FL.Resin        .exists()) RM.Distillery.addRecipe1(T,T,F,F,F, 16, 16, ST.tag(0), FL.Resin          .make(10), FL.make("turpentine", 6), FL.DistW.make(3));
-		if (FL.Resin_Spruce .exists()) RM.Distillery.addRecipe1(T,T,F,F,F, 16, 16, ST.tag(0), FL.Resin_Spruce   .make(10), FL.make("turpentine", 6), FL.DistW.make(3));
+		if (FL.Turpentine.exists()) {
+			if (FL.Resin       .exists()) RM.Distillery.addRecipe1(T, 16, 16, ST.tag(0), FL.Resin       .make(10), FL.Turpentine.make(6), FL.DistW.make(3));
+			if (FL.Resin_Spruce.exists()) RM.Distillery.addRecipe1(T, 16, 16, ST.tag(0), FL.Resin_Spruce.make(10), FL.Turpentine.make(6), FL.DistW.make(3));
+		}
 		
 		for (FluidStack tWater : FL.array(FL.Water.make(1000), FL.DistW.make(1000))) {
 		RM.Bath         .addRecipe1(T,  0,   16, OM.dust(MT.Coal)                                   , FL.mul(tWater, 1, 8, T), NF, OM.dust(MT.HydratedCoal));

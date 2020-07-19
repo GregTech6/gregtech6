@@ -26,6 +26,7 @@ import java.util.Map.Entry;
 
 import appeng.api.AEApi;
 import cpw.mods.fml.common.event.FMLInterModComms;
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.IItemContainer;
 import gregapi.config.ConfigCategories;
 import gregapi.data.CS.ConfigsGT;
@@ -144,7 +145,16 @@ public class RM {
 	;
 	
 	// For Compatibility with old API Stuff.
-	static {RecipeMap.sFurnaceRecipes=Furnace;RecipeMap.sMicrowaveRecipes=Microwave;RecipeMap.sFurnaceFuel=FM.Furnace;RecipeMap.sByProductList=ByProductList;RecipeMap.sCrucibleSmelting=CrucibleSmelting;RecipeMap.sCrucibleAlloying=CrucibleAlloying;RecipeMap.sGenerifierRecipes=Generifier;RecipeMap.sSharpeningRecipes=Sharpening;RecipeMap.sSifterRecipes=Sifting;RecipeMap.sHammerRecipes=Hammer;RecipeMap.sChiselRecipes=Chisel;RecipeMap.sShredderRecipes=Shredder;RecipeMap.sCrusherRecipes=Crusher;RecipeMap.sLatheRecipes=Lathe;RecipeMap.sCutterRecipes=Cutter;RecipeMap.sCoagulatorRecipes=Coagulator;RecipeMap.sSqueezerRecipes=Squeezer;RecipeMap.sJuicerRecipes=Juicer;RecipeMap.sMortarRecipes=Mortar;RecipeMap.sCompressorRecipes=Compressor;RecipeMap.sCentrifugeRecipes=Centrifuge;RecipeMap.sElectrolyzerRecipes=Electrolyzer;RecipeMap.sRollingMillRecipes=RollingMill;RecipeMap.sRollBenderRecipes=RollBender;RecipeMap.sRollFormerRecipes=RollFormer;RecipeMap.sClusterMillRecipes=ClusterMill;RecipeMap.sWiremillRecipes=Wiremill;RecipeMap.sMixerRecipes=Mixer;RecipeMap.sCannerRecipes=Canner;RecipeMap.sInjectorRecipes=Injector;RecipeMap.sRoastingRecipes=Roasting;RecipeMap.sDryingRecipes=Drying;RecipeMap.sFermenterRecipes=Fermenter;RecipeMap.sDistilleryRecipes=Distillery;RecipeMap.sExtruderRecipes=Extruder;RecipeMap.sPolarizerRecipes=Polarizer;RecipeMap.sLoomRecipes=Loom;RecipeMap.sCookingRecipes=Cooking;RecipeMap.sPressRecipes=Press;RecipeMap.sBathRecipes=Bath;RecipeMap.sSmelterRecipes=Smelter;RecipeMap.sLaserEngraverRecipes=LaserEngraver;RecipeMap.sWelderRecipes=Welder;RecipeMap.sCrystallisationCrucibleRecipes=CrystallisationCrucible;RecipeMap.sScannerVisualsRecipes=ScannerVisuals;RecipeMap.sPrinterRecipes=Printer;RecipeMap.sSluiceRecipes=Sluice;RecipeMap.sMagneticSeparatorRecipes=MagneticSeparator;RecipeMap.sAutocrafterRecipes=Autocrafter;RecipeMap.sMassfabRecipes=Massfab;RecipeMap.sScannerMolecularRecipes=ScannerMolecular;RecipeMap.sReplicatorRecipes=Replicator;RecipeMap.sSlicerRecipes=Slicer;RecipeMap.sCokeOvenRecipes=CokeOven;RecipeMap.sDistillationTowerRecipes=DistillationTower;RecipeMap.sAutoclaveRecipes=Autoclave;RecipeMap.sBoxinatorRecipes=Boxinator;RecipeMap.sUnboxinatorRecipes=Unboxinator;RecipeMap.sFusionRecipes=Fusion;RecipeMap.sBlastRecipes=BlastFurnace;RecipeMap.sImplosionRecipes=ImplosionCompressor;RecipeMap.sVacuumRecipes=VacuumFreezer;RecipeMap.sAssemblerRecipes=Assembler;RecipeMap.sCNCRecipes=CNC;RecipeMap.sFuelsBurn=FM.Burn;RecipeMap.sFuelsGas=FM.Gas;RecipeMap.sFuelsHot=FM.Hot;RecipeMap.sFuelsPlasma=FM.Plasma;RecipeMap.sFuelsEngine=FM.Engine;RecipeMap.sFuelsTurbine=FM.Turbine;RecipeMap.sFuelsMagic=FM.Magic;}
+	static {
+		RecipeMap.sFurnaceRecipes=Furnace;RecipeMap.sMicrowaveRecipes=Microwave;RecipeMap.sFurnaceFuel=FM.Furnace;RecipeMap.sByProductList=ByProductList;RecipeMap.sCrucibleSmelting=CrucibleSmelting;RecipeMap.sCrucibleAlloying=CrucibleAlloying;RecipeMap.sGenerifierRecipes=Generifier;RecipeMap.sSharpeningRecipes=Sharpening;RecipeMap.sSifterRecipes=Sifting;
+		RecipeMap.sHammerRecipes=Hammer;RecipeMap.sChiselRecipes=Chisel;RecipeMap.sShredderRecipes=Shredder;RecipeMap.sCrusherRecipes=Crusher;RecipeMap.sLatheRecipes=Lathe;RecipeMap.sCutterRecipes=Cutter;RecipeMap.sCoagulatorRecipes=Coagulator;RecipeMap.sSqueezerRecipes=Squeezer;RecipeMap.sJuicerRecipes=Juicer;RecipeMap.sMortarRecipes=Mortar;
+		RecipeMap.sCompressorRecipes=Compressor;RecipeMap.sCentrifugeRecipes=Centrifuge;RecipeMap.sElectrolyzerRecipes=Electrolyzer;RecipeMap.sRollingMillRecipes=RollingMill;RecipeMap.sRollBenderRecipes=RollBender;RecipeMap.sRollFormerRecipes=RollFormer;RecipeMap.sClusterMillRecipes=ClusterMill;RecipeMap.sWiremillRecipes=Wiremill;
+		RecipeMap.sMixerRecipes=Mixer;RecipeMap.sCannerRecipes=Canner;RecipeMap.sInjectorRecipes=Injector;RecipeMap.sRoastingRecipes=Roasting;RecipeMap.sDryingRecipes=Drying;RecipeMap.sFermenterRecipes=Fermenter;RecipeMap.sDistilleryRecipes=Distillery;RecipeMap.sExtruderRecipes=Extruder;RecipeMap.sPolarizerRecipes=Polarizer;RecipeMap.sLoomRecipes=Loom;
+		RecipeMap.sCookingRecipes=Cooking;RecipeMap.sPressRecipes=Press;RecipeMap.sBathRecipes=Bath;RecipeMap.sSmelterRecipes=Smelter;RecipeMap.sLaserEngraverRecipes=LaserEngraver;RecipeMap.sWelderRecipes=Welder;RecipeMap.sCrystallisationCrucibleRecipes=CrystallisationCrucible;RecipeMap.sScannerVisualsRecipes=ScannerVisuals;RecipeMap.sPrinterRecipes=Printer;
+		RecipeMap.sSluiceRecipes=Sluice;RecipeMap.sMagneticSeparatorRecipes=MagneticSeparator;RecipeMap.sAutocrafterRecipes=Autocrafter;RecipeMap.sMassfabRecipes=Massfab;RecipeMap.sScannerMolecularRecipes=ScannerMolecular;RecipeMap.sReplicatorRecipes=Replicator;RecipeMap.sSlicerRecipes=Slicer;RecipeMap.sCokeOvenRecipes=CokeOven;
+		RecipeMap.sDistillationTowerRecipes=DistillationTower;RecipeMap.sAutoclaveRecipes=Autoclave;RecipeMap.sBoxinatorRecipes=Boxinator;RecipeMap.sUnboxinatorRecipes=Unboxinator;RecipeMap.sFusionRecipes=Fusion;RecipeMap.sBlastRecipes=BlastFurnace;RecipeMap.sImplosionRecipes=ImplosionCompressor;RecipeMap.sVacuumRecipes=VacuumFreezer;
+		RecipeMap.sAssemblerRecipes=Assembler;RecipeMap.sCNCRecipes=CNC;RecipeMap.sFuelsBurn=FM.Burn;RecipeMap.sFuelsGas=FM.Gas;RecipeMap.sFuelsHot=FM.Hot;RecipeMap.sFuelsPlasma=FM.Plasma;RecipeMap.sFuelsEngine=FM.Engine;RecipeMap.sFuelsTurbine=FM.Turbine;RecipeMap.sFuelsMagic=FM.Magic;
+	}
 	
 	public static boolean generify(ItemStack aStack1, ItemStack aStack2) {
 		return RM.Generifier.addRecipe1(F, T, F, F, F, 0, 1, aStack1, aStack2) != null;
@@ -152,6 +162,14 @@ public class RM {
 	
 	public static boolean generify(FluidStack aFluid1, FluidStack aFluid2) {
 		return RM.Generifier.addRecipe0(F, T, F, F, F, 0, 1, aFluid1, aFluid2, ZL_IS) != null;
+	}
+	
+	public static boolean genericycle(FluidStack... aFluids) {
+		ArrayListNoNulls<FluidStack> aFluidList = new ArrayListNoNulls<>(F, aFluids);
+		for (int i = 0; i < aFluidList.size(); i++) if (FL.Error.is(aFluidList.get(i))) aFluidList.remove(i--);
+		if (aFluidList.size() < 2) return F;
+		for (int i = 0; i < aFluidList.size(); i++) RM.Generifier.addRecipe0(F, T, F, F, F, 0, 1, aFluidList.get(i), aFluidList.get((i+1) % aFluidList.size()), ZL_IS);
+		return T;
 	}
 	
 	public static boolean box(ItemStack aEmpty, ItemStack aFull, ItemStack aContent) {

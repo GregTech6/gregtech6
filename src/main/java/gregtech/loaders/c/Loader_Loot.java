@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -83,6 +83,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST             ,  60, 8,16, IL.Bottle_Purple_Drink.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST             ,  10, 8,16, IL.Bottle_Glue.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST             ,  20, 8,16, IL.Bottle_Lubricant.get(1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST             ,   6, 2, 6, OP.dust.mat(MT.OREMATS.Zeolite, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST             ,  24, 1, 6, OP.dust.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST             ,   6, 1, 6, OP.dust.mat(MT.Pb, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST             ,  12, 1, 6, OP.dust.mat(MT.Steel, 1));
