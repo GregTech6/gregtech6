@@ -33,6 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Certain Worldgen Features will no longer be present in the Overworld when TerraFirmaCraft is loaded.
 [CHANGED] Made Pincers and the Plunger the right Tool to harvest the Dragon Egg.
 [CHANGED] Technically speaking, Shovels/Spades/Plows and such should be able to break Fire now, BUT due to the nature of how you click Fire to break it, that wont directly work. This is just a special case in case a Mod adds a Block that uses the Material "Fire", so that it can be harvested somehow.
+[CHANGED] Crates now use Crowbar Harvesting to drop their Contents instead of Rightclicking with Crowbar. Also works with the Universal Spade.
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
 [ADDED] The Shelf in Workshops in GT6 Dungeons now contains two Rolls of Duct Tape, which is always enough to haul both of the Stone Mass Storages and then some.
 [ADDED] Farming themed Room to GT6 Dungeons.

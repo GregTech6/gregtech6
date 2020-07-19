@@ -104,7 +104,7 @@ public class GT_Tool_HardHammer extends ToolStats {
 					aDrops.remove(i--);
 					if (tRecipe.mOutputs.length > 0) for (byte j = 0; j < tStackSize; j++) {
 						ItemStack[] tHammeringOutput = tRecipe.getOutputs();
-						for (int k = 0; k < tHammeringOutput.length; k++) if (tHammeringOutput[k] != null) tDrops.add(tHammeringOutput[k]);
+						for (int k = 0; k < tHammeringOutput.length; k++) tDrops.add(tHammeringOutput[k]);
 					}
 				}
 			}

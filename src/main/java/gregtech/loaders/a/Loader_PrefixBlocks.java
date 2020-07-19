@@ -62,5 +62,23 @@ public class Loader_PrefixBlocks implements Runnable {
 		BlocksGT.crateGt64Ingot             = new PrefixBlock_(MD.GT, "gt.meta.crate.64.ingot"      , OP.crateGt64Ingot         , OM.stack(MT.Wood, U), null, null, BlockTextureDefault.get(Textures.BlockIcons.CRATE), Material.wood , Block.soundTypeWood   , TOOL_crowbar  , 1.0F, 0.2F,   0,   0,   0, 0,0,0,1,1,1, T,F,F,F,T,T,F,T,T,T,b,F,F,T, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.crateGt64Plate             = new PrefixBlock_(MD.GT, "gt.meta.crate.64.plate"      , OP.crateGt64Plate         , OM.stack(MT.Wood, U), null, null, BlockTextureDefault.get(Textures.BlockIcons.CRATE), Material.wood , Block.soundTypeWood   , TOOL_crowbar  , 1.0F, 0.2F,   0,   0,   0, 0,0,0,1,1,1, T,F,F,F,T,T,F,T,T,T,b,F,F,T, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.crateGt64PlateGem          = new PrefixBlock_(MD.GT, "gt.meta.crate.64.plateGem"   , OP.crateGt64PlateGem      , OM.stack(MT.Wood, U), null, null, BlockTextureDefault.get(Textures.BlockIcons.CRATE), Material.wood , Block.soundTypeWood   , TOOL_crowbar  , 1.0F, 0.2F,   0,   0,   0, 0,0,0,1,1,1, T,F,F,F,T,T,F,T,T,T,b,F,F,T, OreDictMaterial.MATERIAL_ARRAY);
+		
+		BlocksGT.crowbarOpenable.add(BlocksGT.blockGem         );
+		BlocksGT.crowbarOpenable.add(BlocksGT.blockDust        );
+		BlocksGT.crowbarOpenable.add(BlocksGT.blockIngot       );
+		BlocksGT.crowbarOpenable.add(BlocksGT.blockPlate       );
+		BlocksGT.crowbarOpenable.add(BlocksGT.blockPlateGem    );
+		
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGtGem       );
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGtDust      );
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGtIngot     );
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGtPlate     );
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGtPlateGem  );
+		
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGt64Gem     );
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGt64Dust    );
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGt64Ingot   );
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGt64Plate   );
+		BlocksGT.crowbarOpenable.add(BlocksGT.crateGt64PlateGem);
 	}
 }

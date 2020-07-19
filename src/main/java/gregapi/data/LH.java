@@ -394,7 +394,7 @@ public class LH {
 		add(TOOL_TO_TOGGLE_SCREWDRIVER                  , "Use Screwdriver to toggle Modes");
 		add(TOOL_TO_TOGGLE_MONKEY_WRENCH                , "Use Monkey Wrench to toggle Modes");
 		add(TOOL_TO_TOGGLE_CUTTER                       , "Use Cutter to toggle Modes");
-		add(TOOL_TO_OPEN_CROWBAR                        , "Use Crowbar to open this");
+		add(TOOL_TO_OPEN_CROWBAR                        , "Use Crowbar to open this by harvesting");
 		add(TOOL_TO_UNCOVER_CROWBAR                     , "Use Crowbar to remove Covers");
 		add(TOOL_TO_DECALCIFY_CHISEL                    , "Use Chisel to decalcify");
 		add(TOOL_TO_DETAIL_MAGNIFYINGGLASS              , "Use Magnifying Glass to see Details");
