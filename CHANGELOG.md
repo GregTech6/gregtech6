@@ -35,6 +35,7 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
 [FIXED] Some things I saw GT6U has fixed too, like TFC Damage Multipliers for Heat and Frost Damage.
 [FIXED] Whoops, I made Titanium Invisible by accident.
+[FIXED] Crash with IC2 when High Level Radiation Effects are applied, like the ones from Neutronium.
 [FIXED] There was ~5 second long Lag Spikes, when certain Recipes were asked for, by the On-Demand Recipe System. Specifically Recipes with Selector Tags, Extruder Shapes or Fluids (Sawmill), aswell as Recipes with Empty Slots in the Anvil (Item Casings).
 [CHANGED] Certain Worldgen Features will no longer be present in the Overworld when TerraFirmaCraft is loaded.
 [CHANGED] Made Pincers and the Plunger the right Tool to harvest the Dragon Egg and Dragon-Egg-like Mod Blocks.
