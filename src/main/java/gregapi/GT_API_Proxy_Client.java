@@ -260,7 +260,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				}
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aBlock.getHarvestTool(aBlockMeta), "Pickaxe") + " ("+aBlock.getHarvestLevel(aBlockMeta)+")");
 			}
-			if (BlocksGT.crowbarOpenable.contains(aBlock)) {
+			if (BlocksGT.openableCrowbar.contains(aBlock)) {
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_OPEN_CROWBAR));
 			}
 		}

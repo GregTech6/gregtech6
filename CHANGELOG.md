@@ -22,23 +22,29 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.00: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Dwarf Fortress for the detriment of all other activities...)
-[NOTE] The Aspect Lag Fix by Chocohead is no longer needed nor compatible! We have our own Version of it now, which also works with more than just ~3 specific Mods... He really fucked up that one...
-[NOTE] Bugs that might have happened to a few things, that I might have overlooked could exist, such as: "GT6 TileEntity Blocks changing their default Color, because I added one more Defaultable Parameter to save space", "Recipes for certain wooden Items being uncraftable, because of the general Wood Type overhaul"
+[NOTE]
+The Thaumic Fixer Mod by Chocohead is no longer needed nor compatible!
+We have our own Version of it now, which also works with more than just ~3 specific Mods... He really fucked up that one...
+[NOTE]
+Bugs that might have happened to a few things, that I might have overlooked could exist, such as:
+"GT6 TileEntity Blocks changing their default Color, because I added one more Defaultable Color Parameter to save space"
+"Recipes for certain wooden Items being uncraftable, because of the general Wood Type overhaul"
+"Something Crashes when updating from 6.13 to 6.14 because the ASM Code is not tested with ALL the Mods"
 [COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
 [COMPAT] TerraFirmaCraft(Plus) Stuff should work slightly better now. TFC Sticks and Torches are now being accounted for when doing Recipe Outputs.
 [IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
-[FIXED] Some things I saw GT6U has fixed too.
+[FIXED] Some things I saw GT6U has fixed too, like TFC Damage Multipliers for Heat and Frost Damage.
 [FIXED] Whoops, I made Titanium Invisible by accident.
-[FIXED] There was ~5 second long Lag Spikes when certain Recipes were asked for by the On-Demand Recipe System. Specifically Recipes with Selector Tags, Extruder Shapes or Fluids (Sawmill), aswell as Recipes with Empty Slots in the Anvil (Item Casings).
+[FIXED] There was ~5 second long Lag Spikes, when certain Recipes were asked for, by the On-Demand Recipe System. Specifically Recipes with Selector Tags, Extruder Shapes or Fluids (Sawmill), aswell as Recipes with Empty Slots in the Anvil (Item Casings).
 [CHANGED] Certain Worldgen Features will no longer be present in the Overworld when TerraFirmaCraft is loaded.
-[CHANGED] Made Pincers and the Plunger the right Tool to harvest the Dragon Egg.
+[CHANGED] Made Pincers and the Plunger the right Tool to harvest the Dragon Egg and Dragon-Egg-like Mod Blocks.
 [CHANGED] Technically speaking, Shovels/Spades/Plows and such should be able to break Fire now, BUT due to the nature of how you click Fire to break it, that wont directly work. This is just a special case in case a Mod adds a Block that uses the Material "Fire", so that it can be harvested somehow.
 [CHANGED] Crates now use Crowbar Harvesting to drop their Contents instead of Rightclicking with Crowbar. Also works with the Universal Spade.
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
-[ADDED] The Shelf in Workshops in GT6 Dungeons now contains two Rolls of Duct Tape, which is always enough to haul both of the Stone Mass Storages and then some.
-[ADDED] Farming themed Room to GT6 Dungeons.
+[ADDED] The Shelf in Workshops in GT6 Dungeons now contains two Rolls of Tape, which is always enough to haul both of the Stone Mass Storages and then some.
+[ADDED] Farming themed Room to GT6 Dungeons to showcase the Universal Flower Pot and a good use for Glowtus as Covering for the Water Hole in Farms.
 [ADDED]
-Dedicated Wood Materials for most Types of Wood.
+Dedicated Wood Materials for many Types of Wood.
 This will influence basically every common Wood ITEM. Ofcourse the Generifier works on all of them.
 Sticks generated on the ground in the World can have different Materials like Rotten, Mossy or Dead Wood. They can be used like normal Sticks.
 The NEI Tree Family GUI also got 6 more Slots now to display which amounts of Sticks/Pulp/Bark/Charcoal you can get from each Type of Tree.

@@ -110,7 +110,7 @@ public class GT_Tool_Crowbar extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
-		if (aBlock instanceof BlockRailBase || aBlock.getMaterial() == Material.circuits || IL.TC_Block_Air.equal(aBlock) || IL.TG_Ore_Cluster_1.equal(aBlock) || IL.TG_Ore_Cluster_2.equal(aBlock) || BlocksGT.crowbarOpenable.contains(aBlock)) return T;
+		if (aBlock instanceof BlockRailBase || aBlock.getMaterial() == Material.circuits || IL.TC_Block_Air.equal(aBlock) || IL.TG_Ore_Cluster_1.equal(aBlock) || IL.TG_Ore_Cluster_2.equal(aBlock) || BlocksGT.openableCrowbar.contains(aBlock)) return T;
 		String tTool = aBlock.getHarvestTool(aMetaData);
 		if (UT.Code.stringValid(tTool)) return TOOL_crowbar.equalsIgnoreCase(tTool);
 		for (IToolStats tStat : ToolsGT.sMetaTool.mToolStats.values()) if (!(tStat instanceof GT_Tool_Crowbar) && tStat.isMinableBlock(aBlock, aMetaData)) return F;
@@ -124,7 +124,7 @@ public class GT_Tool_Crowbar extends ToolStats {
 	
 	@Override
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
-		if (BlocksGT.crowbarOpenable.contains(aBlock)) {
+		if (BlocksGT.openableCrowbar.contains(aBlock)) {
 			List<ItemStack> tDrops = new ArrayListNoNulls<>();
 			for (int i = 0; i < aDrops.size(); i++) {
 				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, Integer.MAX_VALUE, NI, ZL_FS, ST.amount(1, aDrops.get(i)));

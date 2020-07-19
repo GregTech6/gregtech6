@@ -111,7 +111,7 @@ public class GT_Tool_UniversalSpade extends ToolStats {
 	
 	@Override
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
-		if (BlocksGT.crowbarOpenable.contains(aBlock)) {
+		if (BlocksGT.openableCrowbar.contains(aBlock)) {
 			List<ItemStack> tDrops = new ArrayListNoNulls<>();
 			for (int i = 0; i < aDrops.size(); i++) {
 				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, Integer.MAX_VALUE, NI, ZL_FS, ST.amount(1, aDrops.get(i)));
