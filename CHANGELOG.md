@@ -29,7 +29,7 @@ We have our own Version of it now, which also works with more than just ~3 speci
 Bugs that might have happened to a few things, that I might have overlooked could exist, such as:
 "GT6 TileEntity Blocks changing their default Color, because I added one more Defaultable Color Parameter to save space"
 "Recipes for certain wooden Items being uncraftable, because of the general Wood Type overhaul"
-"Something Crashes when updating from 6.13 to 6.14 because the ASM Code is not tested with ALL the Mods"
+"Something Crashes when updating from 6.13 to 6.14 because the ASM Code is not tested with ALL the Mods" (I am confident this wont happen)
 [COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
 [COMPAT] TerraFirmaCraft(Plus) Stuff should work slightly better now. TFC Sticks and Torches are now being accounted for when doing Recipe Outputs.
 [IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
