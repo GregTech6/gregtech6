@@ -35,7 +35,7 @@ public class Minecraft_LavaFlammableFix implements IClassTransformer  {
 		classReader.accept(classNode, 0);
 
 		for (MethodNode m: classNode.methods) {
-			if (m.name.equals("func_149817_o") || m.name.equals("isFlammable")) {
+			if (m.name.equals("isFlammable")) {
 				m.instructions.clear();
 				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load world
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 2)); // Load x
@@ -43,7 +43,7 @@ public class Minecraft_LavaFlammableFix implements IClassTransformer  {
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 4)); // Load z
 				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "BlockStaticLiquid_isFlammable", "(Lnet/minecraft/world/World;III)Z", false));
 				m.instructions.add(new InsnNode(Opcodes.IRETURN));
-			} else if (m.name.equals("func_149817_o") || m.name.equals("isFlammable")) {
+			} else if (m.name.equals("updateTick")) {
 				m.instructions.clear();
 				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load this
 				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load world
