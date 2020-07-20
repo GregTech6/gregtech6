@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -89,7 +89,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public boolean canSustainPlant(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide, IPlantable aPlant) {return F;}
 	@Override public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess aWorld, int aX, int aY, int aZ) {int aMeta = aWorld.getBlockMetadata(aX, aY, aZ); return canCreatureSpawn(aMeta) && isSideSolid(aMeta, SIDE_TOP);}
 	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
-	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
+	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return getFlammability(aWorld, aX, aY, aZ, aSide) > 0;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return 0;}
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return 0;}
 	@Override public Material getMaterial() {return GAPI_POST.mFinishedServerStarted > 0 && blockMaterial.getCanBurn() && !isFlammable(null, 0, 0, 0, FORGE_DIR[SIDE_ANY]) && BlockStaticLiquid.class.getName().equalsIgnoreCase(new Throwable().getStackTrace()[2].getClassName()) ? Material.iron : blockMaterial;}

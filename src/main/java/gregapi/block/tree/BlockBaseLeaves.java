@@ -70,7 +70,6 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 	}
 	
 	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
-	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return T;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return 30;}
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return 60;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_sword;}

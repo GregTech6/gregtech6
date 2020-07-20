@@ -61,9 +61,9 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 				if (tX >= 8) {
 					if (tZ >= 8) {
 						if (WD.even(tX, 2, tZ)) {
-							aData.set(tX, 2, tZ, aData.next1in2() ? Blocks.melon_stem : Blocks.pumpkin_stem, aData.next(8), 2);
+							aData.set(tX, 2, tZ, aData.next1in2() ? Blocks.melon_stem  : Blocks.pumpkin_stem, aData.next(8), 2);
 						} else {
-							aData.set(tX, 2, tZ, aData.next1in2() ? Blocks.melon_block : Blocks.pumpkin, aData.next(8), 2);
+							aData.set(tX, 2, tZ, aData.next1in2() ? Blocks.melon_block : Blocks.pumpkin     , aData.next(8), 2);
 						}
 					} else {
 						aData.set(tX, 2, tZ, aData.next1in2() ? Blocks.carrots : Blocks.potatoes, aData.next(8), 2);
