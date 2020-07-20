@@ -33,6 +33,7 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
 [COMPAT] TerraFirmaCraft(Plus) Stuff should work slightly better now. TFC Sticks and Torches are now being accounted for when doing Recipe Outputs.
 [IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
+[FIXED] Lava Blocks should no longer set NON-flammable things on Fire, just because they are made of Wood. (Forestry Fireproof Wood and GT Fireproof Wood for example)
 [FIXED] Some things I saw GT6U has fixed too, like TFC Damage Multipliers for Heat and Frost Damage.
 [FIXED] Whoops, I made Titanium Invisible by accident.
 [FIXED] Crash with IC2 when High Level Radiation Effects are applied, like the ones from Neutronium.

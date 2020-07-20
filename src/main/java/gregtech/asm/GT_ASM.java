@@ -36,6 +36,7 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 import gregtech.asm.transformers.CoFHCore_CrashFix;
+import gregtech.asm.transformers.Minecraft_LavaFlammableFix;
 import gregtech.asm.transformers.Technomancy_ExtremelySlowLoadFix;
 import gregtech.asm.transformers.Thaumcraft_AspectLagFix;
 import net.minecraft.launchwrapper.LaunchClassLoader;
