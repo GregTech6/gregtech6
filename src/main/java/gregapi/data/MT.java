@@ -3168,7 +3168,7 @@ public class MT {
 		Walnut              = woodnormal( 9364, "Walnutwood"              , "Walnutwood"          ,  98,  78,  64).put(MD.FR),
 		Wenge               = woodnormal( 9365, "Wenge"                   , "Wenge"               ,  88,  81,  70).put(MD.FR),
 		Zebrawood           = woodnormal( 9366, "Zebrawood"               , "Zebrawood"           , 172, 139,  86).put(MD.FR),
-		Pine                = woodnormal( 9407, "Pine"                    , "Pine"                , 102,  79,  47).put(MD.FR),
+		Pine                = woodnormal( 9407, "Pine"                    , "Pine"                , 187, 151,  77).put(MD.FR),
 		
 		Darkwood            = woodnormal( 9367, "Darkwood"                , "Darkwood"            ,  51,  45,  54).put(MD.BoP),
 		Ethereal            = woodnormal( 9368, "Etherealwood"            , "Etherealwood"        ,  76, 150, 115).put(MD.BoP),
