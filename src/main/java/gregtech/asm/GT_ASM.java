@@ -19,7 +19,13 @@
 
 package gregtech.asm;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -29,7 +35,10 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
-import gregtech.asm.transformers.*;
+import gregtech.asm.transformers.CoFHCore_CrashFix;
+import gregtech.asm.transformers.Minecraft_LavaFlammableFix;
+import gregtech.asm.transformers.Technomancy_ExtremelySlowLoadFix;
+import gregtech.asm.transformers.Thaumcraft_AspectLagFix;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 
 @Name("Greg-ASM®")
@@ -40,13 +49,14 @@ public class GT_ASM implements IFMLLoadingPlugin {
 	public static File location; // Useful to get the path to the coremod to grab other files if needed
 	
 	public GT_ASM() {}
-
-	@Override public void injectData(Map<String, Object> data) {
+	
+	@Override @SuppressWarnings("resource")
+	public void injectData(Map<String, Object> data) {
 		location = (File)data.get("coremodLocation"); // Location of the gt6 jar
 		ASMConfig config = new ASMConfig((File)data.get("mcLocation"));
 		// If it's not LaunchClassLoader then a lot of other things will already be dying too
 		final LaunchClassLoader classLoader = (LaunchClassLoader)Thread.currentThread().getContextClassLoader();
-
+		
 		for (Map.Entry<String, Boolean> entry : config.transformers.entrySet()) {
 			if (entry.getValue()) {
 				String transformer = entry.getKey();
