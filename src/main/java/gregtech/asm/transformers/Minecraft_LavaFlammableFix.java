@@ -50,8 +50,9 @@ public class Minecraft_LavaFlammableFix implements IClassTransformer  {
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 2)); // Load x
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 3)); // Load y
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 4)); // Load z
-				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "BBlockStaticLiquid_updateTick", "(Lnet/minecraft/block/BlockStaticLiquid;Lnet/minecraft/world/World;III)", false));
-				m.instructions.add(new InsnNode(Opcodes.IRETURN));
+				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 5)); // Load Random
+				m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "gregtech/asm/transformers/minecraft/Replacements", "BlockStaticLiquid_updateTick", "(Lnet/minecraft/block/BlockStaticLiquid;Lnet/minecraft/world/World;IIILjava/util/Random;)V", false));
+				m.instructions.add(new InsnNode(Opcodes.RETURN));
 			}
 		}
 

@@ -19,6 +19,49 @@
 
 package gregtech.asm.transformers;
 
-public class Minecraft_IceHarvestMissingHookFix {
-	//
+import net.minecraft.launchwrapper.IClassTransformer;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.*;
+
+public class Minecraft_IceHarvestMissingHookFix implements IClassTransformer  {
+	@Override
+	public byte[] transform(String name, String transformedName, byte[] basicClass) {
+		if (!name.equals("alp") && !name.equals("net.minecraft.block.BlockIce")) return basicClass;
+
+		ClassNode classNode = new ClassNode();
+		ClassReader classReader = new ClassReader(basicClass);
+		classReader.accept(classNode, 0);
+
+		for (MethodNode m: classNode.methods) {
+			if (m.name.equals("harvestBlock")) {
+				AbstractInsnNode end = m.instructions.getLast();
+				while(end.getOpcode() != Opcodes.ACONST_NULL) end = end.getPrevious();
+				end = end.getNext(); // Include the actual harvesters.set(null) call
+
+				AbstractInsnNode start = end.getPrevious();
+				while(!(start instanceof FieldInsnNode && ((FieldInsnNode)start).name.equals("harvesters"))) start = start.getPrevious();
+				start = start.getPrevious(); // Skip the second harvesters call to get the first one
+				while(!(start instanceof FieldInsnNode && ((FieldInsnNode)start).name.equals("harvesters"))) start = start.getPrevious();
+				start = start.getPrevious(); // Include the player argument passed to the harvesters.set(...) call
+
+				AbstractInsnNode label = m.instructions.getLast().getPrevious(); // Skip last-most LabelNode
+				while(!(label instanceof LabelNode)) label = label.getPrevious();
+
+				while(start != end) {
+					AbstractInsnNode next = start.getNext();
+					m.instructions.remove(start);
+					m.instructions.insertBefore(label, start);
+					start = next;
+				}
+				m.instructions.remove(end);
+				m.instructions.insertBefore(label, end);
+			}
+		}
+
+		ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
+		classNode.accept(writer);
+		return writer.toByteArray();
+	}
 }
