@@ -32,8 +32,8 @@ import java.util.Random;
    we can miss out on the transformations.  Not an issue when accessing MC classes while transforming other mods though.
  */
 public class Replacements {
-	public static void BlockStaticLiquid_updateTick(BlockStaticLiquid liquid, World world, int x, int y, int z, Random rand) {
-		if (liquid.getMaterial() == Material.lava)
+	public static void BlockStaticLiquid_updateTick(BlockStaticLiquid self, World world, int x, int y, int z, Random rand) {
+		if (self.getMaterial() == Material.lava)
 		{
 			int l = rand.nextInt(3);
 			int i1;
