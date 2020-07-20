@@ -45,7 +45,7 @@ public class Minecraft_LavaFlammableFix implements IClassTransformer  {
 				m.instructions.add(new InsnNode(Opcodes.IRETURN));
 			} else if (m.name.equals("updateTick")) {
 				m.instructions.clear();
-				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load this
+				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load this
 				m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1)); // Load world
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 2)); // Load x
 				m.instructions.add(new VarInsnNode(Opcodes.ILOAD, 3)); // Load y
