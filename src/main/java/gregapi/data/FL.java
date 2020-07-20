@@ -76,6 +76,9 @@ public enum FL {
 	, Liquid_Oxygen             ("liquidoxygen"                                             , SIMPLE, LIQUID, LIQUID_OXYGEN)
 	, Liquid_Reikygen           ("rc liquid oxygen"                                         , SIMPLE, LIQUID, LIQUID_OXYGEN)
 	
+	, Nitrogen                  ("nitrogen"                                                 , GAS)
+	, Liquid_Nitrogen           ("liquidnitrogen"                                           , LIQUID)
+	
 	, Hydrogen                  ("hydrogen"                                                 , GAS)
 	, Deuterium                 ("deuterium"                                                , GAS)
 	, Tritium                   ("tritium"                                                  , GAS)
@@ -235,7 +238,9 @@ public enum FL {
 	, Resin                     ("resin"                                                    , SIMPLE, LIQUID)
 	, Resin_Spruce              ("spruceresin"                                              , SIMPLE, LIQUID)
 	, Resin_Rubber              ("fluidrubbertreesap"                                       , SIMPLE, LIQUID)
-
+	
+	, Turpentine                ("turpentine"                                               , SIMPLE, LIQUID)
+	
 	, Sap                       ("sap"                                                      , SIMPLE, LIQUID, FOOD)
 	, Sap_Rainbow               ("rainbowsap"                                               , SIMPLE, LIQUID, FOOD)
 	, Sap_Maple                 ("maplesap"                                                 , SIMPLE, LIQUID, FOOD)

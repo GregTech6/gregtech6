@@ -2791,7 +2791,7 @@ public class UT {
 				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.weakness.id     , aLevel * 150 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.weakness                             ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7)));
 				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(Potion.hunger.id       , aLevel * 130 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.hunger                               ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7)));
 				if (PotionsGT.ID_RADIATION > 0)
-				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(PotionsGT.ID_RADIATION , aLevel * 180 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.potionTypes[PotionsGT.ID_RADIATION]  ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 5, (5*aLevel) / 7)));
+				((EntityLivingBase)aEntity).addPotionEffect(new PotionEffect(PotionsGT.ID_RADIATION , aLevel * 180 * aAmountOfItems + Math.max(0, ((tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(Potion.potionTypes[PotionsGT.ID_RADIATION]  ))==null?0:tEffect.getDuration())), (int)UT.Code.bind(0, 4, (5*aLevel) / 7))); // can only be between 0 and 4, or else IC2 WILL crash!!!
 				return T;
 			}
 			return F;

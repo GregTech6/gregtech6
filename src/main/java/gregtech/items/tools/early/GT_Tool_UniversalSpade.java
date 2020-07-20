@@ -21,22 +21,30 @@ package gregtech.items.tools.early;
 
 import static gregapi.data.CS.*;
 
+import java.util.List;
+
+import gregapi.code.ArrayListNoNulls;
+import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.SFX;
 import gregapi.data.MT;
 import gregapi.data.OP;
+import gregapi.data.RM;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Paddy;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Path;
 import gregapi.item.multiitem.behaviors.Behavior_Place_Torch;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
+import gregapi.recipes.Recipe;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.AchievementList;
+import net.minecraftforge.event.world.BlockEvent;
 
 public class GT_Tool_UniversalSpade extends ToolStats {
 	@Override
@@ -99,6 +107,26 @@ public class GT_Tool_UniversalSpade extends ToolStats {
 		if (aBlock instanceof BlockRailBase) return T;
 		String tTool = aBlock.getHarvestTool(aMetaData);
 		return (tTool != null && (tTool.equalsIgnoreCase(TOOL_shovel) || tTool.equalsIgnoreCase(TOOL_axe) || tTool.equalsIgnoreCase(TOOL_saw) || tTool.equalsIgnoreCase(TOOL_sword) || tTool.equalsIgnoreCase(TOOL_crowbar))) || aBlock.getMaterial() == Material.sand || aBlock.getMaterial() == Material.grass || aBlock.getMaterial() == Material.ground || aBlock.getMaterial() == Material.snow || aBlock.getMaterial() == Material.craftedSnow || aBlock.getMaterial() == Material.clay  || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.wood || aBlock.getMaterial() == Material.cactus || aBlock.getMaterial() == Material.circuits || aBlock.getMaterial() == Material.gourd || aBlock.getMaterial() == Material.web || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.cake || aBlock.getMaterial() == Material.tnt || aBlock.getMaterial() == Material.fire || aBlock.getMaterial() == Material.sponge;
+	}
+	
+	@Override
+	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
+		if (BlocksGT.openableCrowbar.contains(aBlock)) {
+			List<ItemStack> tDrops = new ArrayListNoNulls<>();
+			for (int i = 0; i < aDrops.size(); i++) {
+				Recipe tRecipe = RM.Unboxinator.findRecipe(null, null, T, Integer.MAX_VALUE, NI, ZL_FS, ST.amount(1, aDrops.get(i)));
+				if (tRecipe != null) {
+					int tStackSize = aDrops.get(i).stackSize;
+					aDrops.remove(i--);
+					if (tRecipe.mOutputs.length > 0) for (int j = 0; j < tStackSize; j++) {
+						ItemStack[] tOutput = tRecipe.getOutputs();
+						for (int k = 0; k < tOutput.length; k++) tDrops.add(tOutput[k]);
+					}
+				}
+			}
+			aDrops.addAll(tDrops);
+		}
+		return 0;
 	}
 	
 	@Override

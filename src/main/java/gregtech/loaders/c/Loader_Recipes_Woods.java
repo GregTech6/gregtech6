@@ -29,6 +29,7 @@ import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
@@ -40,6 +41,7 @@ import gregapi.wooddict.BeamEntry;
 import gregapi.wooddict.PlankEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
@@ -74,24 +76,44 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,  192, ST.make(BlocksGT.BeamB, 1, i), FL.Potion_FireResistance_1L.make(300), NF, ST.make(BlocksGT.BeamBFireProof, 1, i));
 		}
 		for (int i = 0; i < 16; i++) {
-		RM.Laminator    .addRecipe2(T, 16,   32, OP.plate.mat(MT.WaxRefractory, 1), ST.make(BlocksGT.Planks                             , 1, i), ST.make(BlocksGT.PlanksFireProof                           , 1, i));
-		RM.Laminator    .addRecipe2(T, 16,   32, OP.plate.mat(MT.WaxRefractory, 1), ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0]  , 2, i), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 2, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, OP.plate.mat(MT.WaxRefractory,  1), ST.make(BlocksGT.Planks                           , 1, i), ST.make(BlocksGT.PlanksFireProof                           , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, OP.plate.mat(MT.WaxRefractory,  1), ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 2, i), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 2, i));
 		
-		RM.Laminator    .addRecipe2(T, 16,   32, OP.foil.mat(MT.WaxRefractory,  4), ST.make(BlocksGT.Planks                             , 1, i), ST.make(BlocksGT.PlanksFireProof                           , 1, i));
-		RM.Laminator    .addRecipe2(T, 16,   16, OP.foil.mat(MT.WaxRefractory,  2), ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0]  , 1, i), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, OP.foil .mat(MT.WaxRefractory,  4), ST.make(BlocksGT.Planks                           , 1, i), ST.make(BlocksGT.PlanksFireProof                           , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   16, OP.foil .mat(MT.WaxRefractory,  2), ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, i), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 1, i));
 		
-		RM.Bath         .addRecipe1(T,  0,   32, ST.make(BlocksGT.Planks                            , 1, i), FL.Potion_FireResistance_1L.make(50), NF, ST.make(BlocksGT.PlanksFireProof                             , 1, i));
-		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0] , 1, i), FL.Potion_FireResistance_1L.make(25), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0]  , 1, i));
+		RM.Bath         .addRecipe1(T,  0,   32, ST.make(BlocksGT.Planks                           , 1, i), FL.Potion_FireResistance_1L.make(50), NF, ST.make(BlocksGT.PlanksFireProof                           , 1, i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, i), FL.Potion_FireResistance_1L.make(25), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 1, i));
 		}
 		
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves, 1, 0), NF, FL.Latex.make(L/72), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves, 1, 8), NF, FL.Latex.make(L/72), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 0), NF, FL.Latex.make(L/4), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 8), NF, FL.Latex.make(L/4), NI);
-		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WoodRubber      ), NF, FL.Latex       .make(L/9)        , OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Spruce    ), NF, FL.Resin_Spruce.make(5, FL.Resin), OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple     ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));
-		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Rainbowood), NF, FL.Sap_Rainbow .make(5)          , OM.dust(MT.Wood));
+		if (MD.FR.mLoaded) {
+		Block tPlank1 = ST.block(MD.FR, "planks"), tLog1 = ST.block(MD.FR, "logs"), tSlab1 = ST.block(MD.FR, "slabs"), tStair1 = ST.block(MD.FR, "stairs"), tPlank2 = ST.block(MD.FR, "planksFireproof"), tLog2 = ST.block(MD.FR, "logsFireproof"), tSlab2 = ST.block(MD.FR, "slabsFireproof"), tStair2 = ST.block(MD.FR, "stairsFireproof");
+		for (int i = 0; i < 29; i++) {
+		RM.Laminator    .addRecipe2(T, 16,  192, OP.plate.mat(MT.WaxRefractory,  6), ST.make(tLog1  , 1, i), ST.make(tLog2  , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, OP.plate.mat(MT.WaxRefractory,  1), ST.make(tPlank1, 1, i), ST.make(tPlank2, 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, OP.plate.mat(MT.WaxRefractory,  1), ST.make(tStair1, 1, i), ST.make(tStair2, 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, OP.plate.mat(MT.WaxRefractory,  1), ST.make(tSlab1 , 2, i), ST.make(tSlab2 , 2, i));
+		
+		RM.Laminator    .addRecipe2(T, 16,  192, OP.foil .mat(MT.WaxRefractory, 24), ST.make(tLog1  , 1, i), ST.make(tLog2  , 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   32, OP.foil .mat(MT.WaxRefractory,  4), ST.make(tPlank1, 1, i), ST.make(tPlank2, 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   24, OP.foil .mat(MT.WaxRefractory,  3), ST.make(tStair1, 1, i), ST.make(tStair2, 1, i));
+		RM.Laminator    .addRecipe2(T, 16,   16, OP.foil .mat(MT.WaxRefractory,  2), ST.make(tSlab1 , 1, i), ST.make(tSlab2 , 1, i));
+		
+		RM.Bath         .addRecipe1(T,  0,  192, ST.make(tLog1  , 1, i), FL.Potion_FireResistance_1L.make(300), NF, ST.make(tLog2  , 1, i));
+		RM.Bath         .addRecipe1(T,  0,   32, ST.make(tPlank1, 1, i), FL.Potion_FireResistance_1L.make( 50), NF, ST.make(tPlank2, 1, i));
+		RM.Bath         .addRecipe1(T,  0,   24, ST.make(tStair1, 1, i), FL.Potion_FireResistance_1L.make( 38), NF, ST.make(tStair2, 1, i));
+		RM.Bath         .addRecipe1(T,  0,   16, ST.make(tSlab1 , 1, i), FL.Potion_FireResistance_1L.make( 25), NF, ST.make(tSlab2 , 1, i));
+		}
+		}
+		
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves , 1, 0), NF, FL.Latex.make(L/72), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves , 1, 8), NF, FL.Latex.make(L/72), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 0), NF, FL.Latex.make(L/ 4), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 8), NF, FL.Latex.make(L/ 4), NI);
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WoodRubber         ), NF, FL.Latex       .make(L/9)        , OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Spruce       ), NF, FL.Resin_Spruce.make(5, FL.Resin), OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Maple        ), NF, FL.Sap_Maple   .make(5)          , OM.dust(MT.Wood));
+		RM.Squeezer     .addRecipe1(T, 16,   16, OM.dust(MT.WOODS.Rainbowood   ), NF, FL.Sap_Rainbow .make(5)          , OM.dust(MT.Wood));
 		
 		CR.shaped(IL.Stick      .get(1), CR.DEF_NAC_NCC, "  ", " S", 'S', OP.stick.dat(ANY.WoodDefault));
 		CR.shaped(gearGt.mat(MT.Wood,1), CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', OD.plankAnyWood, 'S', ST.make(Blocks.wooden_button, 1, W));

@@ -34,20 +34,20 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 		super.generate(aData);
 		
 		for (int tCoord = 1; tCoord <= 14; tCoord++) if (tCoord <= 4 || tCoord >= 11) {
-			aData.bricks(tCoord,  1,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
-			aData.bricks(tCoord,  1, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
-			aData.bricks( 5,  1, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
-			aData.bricks(10,  1, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
+			aData.smooth(tCoord,  1,      5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
+			aData.smooth(tCoord,  1,     10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
+			aData.smooth(     5,  1, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
+			aData.smooth(    10,  1, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			
-			aData.bricks(tCoord,  5,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
-			aData.bricks(tCoord,  5, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
-			aData.bricks( 5,  5, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
-			aData.bricks(10,  5, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
+			aData.smooth(tCoord,  5,      5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
+			aData.smooth(tCoord,  5,     10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
+			aData.smooth(     5,  5, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
+			aData.smooth(    10,  5, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			
-			aData.bricks(tCoord,  6,  5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
-			aData.bricks(tCoord,  6, 10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
-			aData.bricks( 5,  6, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
-			aData.bricks(10,  6, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
+			aData.smooth(tCoord,  6,      5, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
+			aData.smooth(tCoord,  6,     10, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
+			aData.smooth(     5,  6, tCoord, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
+			aData.smooth(    10,  6, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 		}
 		
 		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) if ((tX <= 4 || tX >= 11) && (tZ <= 4 || tZ >= 11)) {
@@ -70,18 +70,22 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 					}
 				} else {
 					if (tZ >= 8) {
+						// TODO: Et Futurums Beetroot Seeds next to the Wheat, like how Carrots and Potatoes are?
 						aData.set(tX, 2, tZ, Blocks.wheat, aData.next(8), 2);
 					} else {
+						// TODO: Any random Mod Seeds. Maybe use the Village Worldgen Hooks for that to prevent OP Crops.
 						aData.set(tX, 2, tZ, Blocks.wheat, aData.next(8), 2);
 					}
 				}
 			}
 		}
 		
-		aData.set( 5,  1,  5, 32065); aData.set( 5,  2,  5, Blocks.reeds); aData.set( 5,  3,  5, Blocks.reeds); aData.set( 5,  4,  5, Blocks.reeds);
-		aData.set( 5,  1, 10, 32065); aData.set( 5,  2, 10, Blocks.reeds); aData.set( 5,  3, 10, Blocks.reeds); aData.set( 5,  4, 10, Blocks.reeds);
-		aData.set(10,  1,  5, 32065); aData.set(10,  2,  5, Blocks.reeds); aData.set(10,  3,  5, Blocks.reeds); aData.set(10,  4,  5, Blocks.reeds);
-		aData.set(10,  1, 10, 32065); aData.set(10,  2, 10, Blocks.reeds); aData.set(10,  3, 10, Blocks.reeds); aData.set(10,  4, 10, Blocks.reeds);
+		aData.set( 5,  1,  5, 32065); aData.set( 5,  2,  5, Blocks.reeds ); aData.set( 5,  3,  5, Blocks.reeds ); aData.set( 5,  4,  5, Blocks.reeds );
+		aData.set( 5,  1, 10, 32065); aData.set( 5,  2, 10, Blocks.cactus); aData.set( 5,  3, 10, Blocks.cactus); aData.set( 5,  4, 10, Blocks.cactus);
+		aData.set(10,  1,  5, 32065); aData.set(10,  2,  5, Blocks.cactus); aData.set(10,  3,  5, Blocks.cactus); aData.set(10,  4,  5, Blocks.cactus);
+		aData.set(10,  1, 10, 32065); aData.set(10,  2, 10, Blocks.reeds ); aData.set(10,  3, 10, Blocks.reeds ); aData.set(10,  4, 10, Blocks.reeds );
+		
+		// TODO: Put Jungle Logs with Cocoa Beans, and Shelves with Pots of Saplings and Tall Flowers on the Side Walls.
 		
 		return T;
 	}

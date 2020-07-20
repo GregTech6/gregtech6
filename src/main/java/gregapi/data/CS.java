@@ -1484,30 +1484,30 @@ public class CS {
 		blockGem, blockDust, blockIngot, blockSolid, blockPlate, blockPlateGem,
 		crateGtGem, crateGtDust, crateGtIngot, crateGtPlate, crateGtPlateGem,
 		crateGt64Gem, crateGt64Dust, crateGt64Ingot, crateGt64Plate, crateGt64PlateGem;
-
+		
 		/** Ore Blocks */
 		public static IPrefixBlock
 		ore         , oreSandstone          , oreNetherrack         , oreEndstone       , oreAtumLimestone          , oreAtumSand, oreGravel, oreMud, oreSand, oreRedSand, oreBedrock,
 		oreBroken   , oreBrokenSandstone    , oreBrokenNetherrack   , oreBrokenEndstone , oreBrokenAtumLimestone    ,
 		oreSmall    , oreSmallSandstone     , oreSmallNetherrack    , oreSmallEndstone  , oreSmallAtumLimestone     , oreSmallAtumSand, oreSmallGravel, oreSmallMud, oreSmallSand, oreSmallRedSand, oreSmallBedrock;
-
+		
 		public static BlockBaseFluid OilLight, OilMedium, OilHeavy, OilExtraHeavy, GasNatural;
 		public static BlockFluidClassic Ocean, Swamp, River;
-
+		
 		public static BlockBase Sands, Diggables, Grass, Paths, RockOres;
-
+		
 		public static IBlockBase FlowersA, FlowersB;
 		public static BlockBase Glowtus, Sapling, Leaves, BalesGrass, BalesCrop;
 		public static BlockBase Log1, Log1FireProof, LogA, LogAFireProof, LogB, LogBFireProof, BeamA, BeamAFireProof, BeamB, BeamBFireProof, Beam1, Beam1FireProof, Beam2, Beam2FireProof, Beam3, Beam3FireProof, Planks, PlanksFireProof;
-
+		
 		public static BlockBase CFoam, CFoamFresh, Concrete, ConcreteReinforced, Asphalt, Glass, GlowGlass, Bars_Wood, Bars_Steel, Bars_Titanium, Bars_TungstenSteel, Bars_Adamantium, Spikes_Sharp, Spikes_Super, Spikes_Metal, Spikes_Fancy;
 		public static BlockBase LongDistWire01, LongDistPipe01;
-
+		
 		public static IBlockBase
 		RailAluminium, RailBronze, RailStainlessSteel, RailSteel, RailTitanium, RailTungsten, RailTungstenCarbide, RailTungstenSteel,
 		RailAluminiumBooster, RailBronzeBooster, RailStainlessSteelBooster, RailSteelBooster, RailTitaniumBooster, RailTungstenBooster, RailTungstenCarbideBooster, RailTungstenSteelBooster,
 		RailAluminiumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenCarbideDetector, RailTungstenSteelDetector;
-
+		
 		/** GT6 Stone Type. */
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark;
 		/** Contains all GT6 Stone Types. */
@@ -1515,29 +1515,30 @@ public class CS {
 		public static BlockBase[] stones = {GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark};
 		/** Contains the Ore Blocks for all the GT6 Type Stones, corresponding to the Array above. */
 		public static IPrefixBlock[] ores_normal = new IPrefixBlock[stones.length], ores_broken = new IPrefixBlock[stones.length], ores_small = new IPrefixBlock[stones.length];
-
+		
 		/** Mappings for Stones to their correspondent Ores. No WildCard allowed! Register all 16 MetaData Values here instead. */
 		public static Map<ItemStackContainer, IBlockPlacable>
 		  stoneToNormalOres = new ItemStackMap<>()
 		, stoneToBrokenOres = new ItemStackMap<>()
 		, stoneToSmallOres  = new ItemStackMap<>()
 		;
-
+		
 		public static final Set<Object> stoneOverridable = new HashSetNoNulls<>(F);
 		public static final Set<Object> breakableGlass   = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
+		public static final Set<Object> openableCrowbar  = new HashSetNoNulls<Object>(F, Blocks.iron_block, Blocks.gold_block, Blocks.lapis_block, Blocks.diamond_block, Blocks.emerald_block, Blocks.redstone_block, Blocks.coal_block);
 		public static final Set<Object> harvestableSpade = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow);
 		public static final Set<Object> plantableGreens  = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.farmland);
 		public static final Set<Object> plantableTrees   = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt);
 		public static final Set<Object> plantableGrass   = new HashSetNoNulls<Object>(F, Blocks.grass);
-
+		
 		/** Blocks to not generate Ores in. */
 		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = new ItemStackSet<>();
-
+		
 		public static final Set<Object> FLOWERS = new HashSetNoNulls<Object>(F, Blocks.yellow_flower, Blocks.red_flower);
-
+		
 		public static final Block[] POT_FLOWER_TILES = {Blocks.cactus, Blocks.brown_mushroom, Blocks.red_mushroom, Blocks.yellow_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower};
 		public static final byte [] POT_FLOWER_METAS = {0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
-
+		
 		public static final Block[] FLOWER_TILES = {Blocks.yellow_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower, Blocks.red_flower};
 		public static final byte [] FLOWER_METAS = {0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
 	}

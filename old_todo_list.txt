@@ -30,8 +30,7 @@ Silicon to SiO2 use Steam instead of Water
 
 Strength and Resistance Potion Buff whenever you respawn
 
-Palm Tree with Coconuts. (please note that the work is already partially done since Palm Planks already exist)
-Pams alike Hazelnuts and Coconuts.
+Pams alike Hazelnuts and Coconuts hanging fro mthe Tree Leaves.
 
 Axle/Gearbox -> Rotate Entities standing on it
 Axle -> Move Entities standing on it Sideways
