@@ -565,35 +565,3 @@ if ( !project.buildInfo.tag.contains("-dirty") && (System.getenv().ONLY_RELEASES
 		}
 	}
 }
-
-//def todoPattern = ~"//[\\t\\s]*TODO(.*)"
-//def tabPattern = ~"\t"
-//task checkTodos {
-//	doLast {
-//		int foundTodos = 0
-//		println('')
-//		sourceSets.main.allSource.each { file ->
-//			if(!file.getName().endsWith('java')) return;
-//			BufferedReader reader = new BufferedReader(new FileReader(file))
-//			int lineNumber = 0
-//			String line = reader.readLine()
-//			while (line != null) {
-//				lineNumber += 1
-//				if (todoPattern.matcher(line).find()) {
-//					foundTodos += 1
-//					int column = line.indexOf("TODO", line.indexOf("//"))
-//					int tabs = (line =~ tabPattern).count
-//					char[] colrepeat = new char[column]
-//					Arrays.fill(colrepeat, 0, tabs, '\t' as char)
-//					Arrays.fill(colrepeat, tabs, column, ' ' as char)
-//					String todoMsg = line.substring((column + 5 < line.length()) ? column + 5 : line.length()).trim()
-//					logger.warn(file.toString() + ':' + lineNumber + ': TODO: ' + todoMsg + '\n' + line + '\n' + colrepeat + '^')
-//				}
-//				line = reader.readLine()
-//			}
-//			reader.close()
-//		}
-//		if(foundTodos > 0) throw new GradleException(foundTodos + " pending TODO's found")
-//	}
-//}
-//check.dependsOn checkTodos
