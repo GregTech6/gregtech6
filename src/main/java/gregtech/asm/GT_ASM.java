@@ -36,7 +36,6 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 import gregtech.asm.transformers.CoFHCore_CrashFix;
-import gregtech.asm.transformers.Minecraft_IceHarvestMissingHookFix;
 import gregtech.asm.transformers.Minecraft_LavaFlammableFix;
 import gregtech.asm.transformers.Technomancy_ExtremelySlowLoadFix;
 import gregtech.asm.transformers.Thaumcraft_AspectLagFix;
@@ -82,7 +81,7 @@ public class GT_ASM implements IFMLLoadingPlugin {
 			if (mclocation == null) throw new RuntimeException("Failed to acquire `location` in GT6 CoreMod");
 
 			transformers.put(CoFHCore_CrashFix.class.getName(), true);
-			transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
+//          transformers.put(Minecraft_IceHarvestMissingHookFix.class.getName(), true);
 			transformers.put(Minecraft_LavaFlammableFix.class.getName(), true);
 			transformers.put(Technomancy_ExtremelySlowLoadFix.class.getName(), true);
 			transformers.put(Thaumcraft_AspectLagFix.class.getName(), true);

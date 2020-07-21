@@ -147,7 +147,6 @@ public class GT_Tool_Saw extends ToolStats {
 		}
 		if ((aBlock.getMaterial() == Material.ice || aBlock.getMaterial() == Material.packedIce) && aDrops.isEmpty()) {
 			aDrops.add(ST.make(aBlock, 1, aMetaData));
-			aPlayer.worldObj.setBlockToAir(aX, aY, aZ);
 			aEvent.dropChance = 1.0F;
 			return 0;
 		}

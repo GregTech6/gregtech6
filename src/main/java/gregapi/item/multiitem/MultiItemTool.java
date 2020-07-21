@@ -186,6 +186,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		IToolStats tStats = getToolStats(aStack);
 		if (isItemStackUsable(aStack) && getDigSpeed(aStack, aBlock, aMeta) > 0) {
 			int tDamage = tStats.convertBlockDrops(aDrops, aStack, aPlayer, aBlock, (getToolMaxDamage(aStack) - getToolDamage(aStack)) / tStats.getToolDamagePerDropConversion(), aX, aY, aZ, aMeta, aFortune, aSilkTouch, aEvent);
+			if (aBlock == Blocks.ice && !aDrops.isEmpty()) aPlayer.worldObj.setBlockToAir(aX, aY, aZ);
 			if (WD.dimBTL(aPlayer.worldObj) && !getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
 			if (!UT.Entities.hasInfiniteItems(aPlayer)) doDamage(aStack, tDamage * tStats.getToolDamagePerDropConversion(), aPlayer);
 		}

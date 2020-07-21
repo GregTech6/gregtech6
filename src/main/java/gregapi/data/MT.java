@@ -1871,7 +1871,6 @@ public class MT {
 			BlackSteel              .put(MD.TFC);
 			RedSteel                .put(MD.TFC);
 			BlueSteel               .put(MD.TFC);
-			DamascusSteel           .put(MD.TFC);
 			
 			
 			S                       .put(MD.RC, COMMON_ORE);
@@ -2154,6 +2153,7 @@ public class MT {
 			Vulcanite               .put(MD.MET).visDefault();
 			DeepIron                .put(MD.MET).visDefault();
 			ShadowIron              .put(MD.MET).visDefault();
+			DamascusSteel           .put(MD.MET);
 			Adamantine              .put(MD.MET);
 			AstralSilver            .put(MD.MET);
 			Midasium                .put(MD.MET);
