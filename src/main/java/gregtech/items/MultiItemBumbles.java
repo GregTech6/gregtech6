@@ -499,8 +499,8 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		}
 	}
 
-	@Override public ItemStack bumbleScan(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta_(rStack); if (aMeta % 10 < 5) ST.meta_(rStack, aMeta + 5); return rStack;}
-	@Override public ItemStack bumbleKill(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta_(rStack); if (aMeta % 5 != 4) ST.meta_(rStack, (aMeta / 5) * 5 + 4); return rStack;}
+	@Override public ItemStack bumbleScan (ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta_(rStack); if (aMeta % 10 < 5) ST.meta_(rStack, aMeta + 5); return rStack;}
+	@Override public ItemStack bumbleKill (ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta_(rStack); if (aMeta % 5 != 4) ST.meta_(rStack, (aMeta / 5) * 5 + 4); return rStack;}
 	@Override public ItemStack bumbleCrown(ItemStack aBumbleBee) {ItemStack rStack = ST.copy(aBumbleBee); short aMeta = ST.meta_(rStack); if (aMeta % 5 != 2) ST.meta_(rStack, (aMeta / 5) * 5 + 2); return rStack;}
 	@Override public boolean bumbleEqual(ItemStack aBumbleBeeA, short aMetaDataA, ItemStack aBumbleBeeB, short aMetaDataB) {return aBumbleBeeA.getItem() == aBumbleBeeB.getItem() && aMetaDataA / 10 == aMetaDataB / 10;}
 	@Override public byte bumbleType(ItemStack aBumbleBee) {return (byte)(ST.meta_(aBumbleBee) % 10);}

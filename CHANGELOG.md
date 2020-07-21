@@ -38,6 +38,7 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [FIXED] Whoops, I made Titanium Invisible by accident.
 [FIXED] Crash with IC2 when High Level Radiation Effects are applied, like the ones from Neutronium.
 [FIXED] There was ~5 second long Lag Spikes, when certain Recipes were asked for, by the On-Demand Recipe System. Specifically Recipes with Selector Tags, Extruder Shapes or Fluids (Sawmill), aswell as Recipes with Empty Slots in the Anvil (Item Casings).
+[FIXED] Drones just vanished instead of dieing during the Bumblebee Breeding Process in a Bumbliary. Now there actually is Corpses for the dead breeding Drones too.
 [CHANGED] Certain Worldgen Features will no longer be present in the Overworld when TerraFirmaCraft is loaded.
 [CHANGED] Made Pincers and the Plunger the right Tool to harvest the Dragon Egg and Dragon-Egg-like Mod Blocks.
 [CHANGED] Technically speaking, Shovels/Spades/Plows and such should be able to break Fire now, BUT due to the nature of how you click Fire to break it, that wont directly work. This is just a special case in case a Mod adds a Block that uses the Material "Fire", so that it can be harvested somehow.
