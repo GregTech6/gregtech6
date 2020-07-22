@@ -310,6 +310,8 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 
 			if (tData.hasValidMaterialData()) {
 				boolean tShowMaterialToolInfo = tData.mMaterial.mMaterial.mToolTypes > 0 && (tData.mPrefix != null || (aEvent.itemStack.getMaxStackSize() > 1 && tData.mByProducts.length == 0 && tData.mMaterial.mAmount <= U));
+				boolean tIsTool = (tData.mPrefix != null && tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE));
+				
 				if (tShowMaterialToolInfo) {
 					aEvent.toolTip.add(LH.Chat.BLUE + "Q: " + tData.mMaterial.mMaterial.mToolQuality + " - S: " + tData.mMaterial.mMaterial.mToolSpeed + " - D: " + tData.mMaterial.mMaterial.mToolDurability);
 				}
@@ -319,7 +321,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				if (tData.hasValidPrefixData()) {
 					if (tData.mPrefix.contains(TD.Prefix.NEEDS_SHARPENING   )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_SHARPENING));
 					if (tData.mPrefix.contains(TD.Prefix.NEEDS_HANDLE       )) aEvent.toolTip.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_NEEDS_HANDLE) + LH.Chat.WHITE + tData.mMaterial.mMaterial.mHandleMaterial.getLocal());
-
+					
 					ArrayListNoNulls<Integer> tShapelessAmounts = new ArrayListNoNulls<>();
 					for (AdvancedCrafting1ToY tHandler : tData.mPrefix.mShapelessManagersSingle ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(1);
 					for (AdvancedCraftingXToY tHandler : tData.mPrefix.mShapelessManagers       ) if (tHandler.hasOutputFor(tData.mMaterial.mMaterial)) tShapelessAmounts.add(tHandler.mInputCount);
@@ -329,7 +331,6 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					}
 				}
 				if (tShowMaterialToolInfo && tData.mMaterial.mMaterial.mEnchantmentTools.size() + tData.mMaterial.mMaterial.mEnchantmentArmors.size() > 0) {
-					boolean tIsTool = (tData.mPrefix != null && tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE));
 					switch(tIsTool ? Math.min(1, tData.mMaterial.mMaterial.mEnchantmentTools.size()) : tData.mMaterial.mMaterial.mEnchantmentTools.size()) {
 					case 0:
 						break;
@@ -341,7 +342,11 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 							} else if (tEnchantment.mObject == Enchantment.knockback) {
 								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.knockback .getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.punch   .getTranslatedName((int)tEnchantment.mAmount));
 							} else if (tEnchantment.mObject == Enchantment.fireAspect) {
+								if (tEnchantment.mAmount >= 3) {
+								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame   .getTranslatedName((int)tEnchantment.mAmount) + " / Auto Smelt I");
+								} else {
 								aEvent.toolTip.add(LH.Chat.PINK + Enchantment.fireAspect.getTranslatedName((int)tEnchantment.mAmount) + " / " + Enchantment.flame   .getTranslatedName((int)tEnchantment.mAmount));
+								}
 							} else {
 								aEvent.toolTip.add(LH.Chat.PINK + tEnchantment.mObject.getTranslatedName((int)tEnchantment.mAmount));
 							}
@@ -372,8 +377,8 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
 						aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
 					}
-					if (MD.TF .mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
-						aEvent.toolTip.add(LH.Chat.CYAN  + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
+					if (!tIsTool && IL.TF_Mazestone.exists() && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
+						aEvent.toolTip.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
 					}
 					if (!(aBlock instanceof MultiTileEntityBlockInternal)) {
 						if (tData.mMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)) {
