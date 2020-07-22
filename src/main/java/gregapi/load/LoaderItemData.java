@@ -1449,16 +1449,18 @@ public class LoaderItemData implements Runnable {
 		OM.dat2(MD.NePl, "NetheriteBoots"                   , 1,   W, MT.NetherizedDiamond  ,  U * 4);
 		
 		
-		OM.dat2(MD.TF, "item.giantPick"                     , 1,   0, ANY.Stone             ,  U*192, ANY.Wood, U*128);
-		OM.dat2(MD.TF, "item.giantSword"                    , 1,   0, ANY.Stone             ,  U*128, ANY.Wood, U* 64);
-		OM.data(MD.TF, "tile.GiantLog"                      , 1,   W, ANY.Wood              ,  U *128, MT.Bark, U* 16);
-		OM.data(MD.TF, "tile.GiantCobble"                   , 1,   W, ANY.Stone             ,  U *64);
-		OM.data(MD.TF, "tile.GiantObsidian"                 , 1,   W, MT.Obsidian           ,  U *576);
-		OM.dat2(MD.TF, "item.minotaurAxe"                   , 1,   0, ANY.Diamond           ,  U * 4, ANY.Wood, OP.stick.mAmount * 2);
+		OM.dat2(MD.TF, "item.giantPick"                     , 1,   0, MT.Stone              ,  U*192, MT.WOODS.Oak, U*1024);
+		OM.dat2(MD.TF, "item.giantSword"                    , 1,   0, MT.Stone              ,  U*128, MT.WOODS.Oak, U*512);
+		OM.data(MD.TF, "tile.GiantLog"                      , 1,   W, MT.WOODS.Oak          ,  U*512, MT.Bark, U*64);
+		OM.data(MD.TF, "tile.GiantCobble"                   , 1,   W, MT.Stone              ,  U *64);
+		OM.data(MD.TF, "tile.GiantObsidian"                 , 1,   W, MT.Obsidian           ,  U*576);
+		OM.dat2(MD.TF, "item.minotaurAxe"                   , 1,   0, MT.Diamond            ,  U * 4, ANY.Wood, OP.stick.mAmount * 2);
 		OM.data(MD.TF, "item.armorShards"                   , 1,   0, MT.Knightmetal        ,  U9);
 		OM.data(MD.TF, "item.shardCluster"                  , 1,   0, MT.Knightmetal        ,  U);
 		OM.data(MD.TF, "item.knightmetalRing"               , 1,   0, MT.Knightmetal        ,  U * 4);
 		OM.dat2(MD.TF, "item.chainBlock"                    , 1,   0, MT.Knightmetal        ,  U *16);
+		OM.data(MD.TF, "tile.TFNagastone"                   , 1,   W, ANY.Stone             ,  U);
+		OM.data(MD.TF, "tile.TFMazestone"                   , 1,   W, ANY.Stone             ,  U);
 		
 		
 		OM.data(MD.ERE, "fireBloom"                         , 1,   W, MT.Blaze              ,  U9);

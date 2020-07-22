@@ -1046,7 +1046,7 @@ public class MT {
 	Silverwood              = wood          ( 8297, "Silverwood"                                    , 234, 222, 210, 255).put(TICKS_PER_SMELT* 4, FLAMMABLE, APPROXIMATE)                                                                                               .setMcfg( 0, C              , 6*U, H2O              ,15*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.PRAECANTIO , 1).setBurning(Ash,  0).setSmelting(Ash,  0).qual(1, 8.0,128, 1).heat(450, 650),
 	Peanutwood              = wood          ( 8227, "Peanut Wood"                                   , 120,  60,   0, 255).put(TICKS_PER_SMELT/ 2, FLAMMABLE, "Peanutwood")                                                                                              .setMcfg( 0, Wood           , 1*U)                                                                                                                          .aspects(TC.ARBOR, 1                   ).steal(Wood).heat(350, 450),
 	Marshmallow             = wood          ( 9715, "Marshmallow"           , SET_FINE              , 255, 220, 220, 255).put(FOOD, MD.CANDY)                                                                                                                                                                                                                                                                                       .aspects(TC.FAMES, 1                   ).qual(1, 3.0, 24, 0),
-	LiveRoot                = dustcent      ( 8223, "LiveRoot"              , SET_WOOD              , 220, 200,   0, 255).put(TICKS_PER_SMELT   , WOOD, MORTAR, MAGICAL, MORTAR, MD.TF)                                                                                 .setMcfg( 3, Wood           , 3*U, Ma               , 1*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.VICTUS     , 1).setLocal("Liveroot").setBurning(Ash, U9).heat(1178, 2465),
+	LiveRoot                = dustcent      ( 8223, "LiveRoot"              , SET_WOOD              , 220, 200,   0, 255).put(TICKS_PER_SMELT   , WOOD, MORTAR, MAGICAL, MORTAR)                                                                                        .setMcfg( 3, Wood           , 3*U, Ma               , 1*U)                                                                                                  .aspects(TC.ARBOR, 1, TC.VICTUS     , 1).setLocal("Liveroot").setBurning(Ash, U9).heat(1178, 2465),
 	PetrifiedWood           = create        ( 8277, "Petrified Wood"        , SET_WOOD              , 110,  50,  35, 255).put(TICKS_PER_SMELT/ 4, G_STONE, STONE, WOOD, MORTAR, FLAMMABLE, MD.ERE)                                                                      .setMcfg( 0, Wood           , 1*U)                                                                                                                          .aspects(TC.ARBOR, 1, TC.TERRA      , 1).qual(1, 2.0, 24, 1).heat(350, 450),
 	
 	
@@ -1550,10 +1550,10 @@ public class MT {
 	TinAlloy                = alloymachine  ( 8667, "Tin Alloy"                                     , 200, 200, 200     ).put(MORTAR, MOLTEN, FURNACE, EXTRUDER_SIMPLE).qual(3,  6.5,    96,  2)                                                                        .uumMcfg( 0, Sn             , 1*U, WroughtIron      , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.FABRICO, 1).alloyCentrifuge(),
 	BatteryAlloy            = alloy         ( 8668, "Battery Alloy"         , SET_DULL              , 156, 124, 160     ).put(MORTAR, MOLTEN, FURNACE, EXTRUDER_SIMPLE)                                                                                                 .uumMcfg( 0, Pb             , 4*U, Sb               , 1*U)                                                                                                  .alloyCentrifuge(),
 	SolderingAlloy          = alloy         ( 8669, "Soldering Alloy"       , SET_DULL              , 220, 220, 230     ).put(MORTAR, MOLTEN, BRITTLE, SOLDERING_MATERIAL, SOLDERING_MATERIAL_GOOD, WIRES)                                                              .uumMcfg( 0, Sn             , 9*U, Sb               , 1*U)                                                                                                  .alloyCentrifuge(),
-	IronWood                = alloymachine  ( 8672, "IronWood"              , SET_WOOD              , 150, 140, 110     ).put(MAGICAL, WOOD, FURNACE, EXTRUDER_SIMPLE, MORTAR, MAGNETIC_PASSIVE, MOLTEN, MD.TF).qual(2, 6.0,  384,  2).setLocal("Ironwood")             .setMcfg(18, WroughtIron    , 8*U, LiveRoot         , 9*U, Angmallen        , 2*U)                                                                          .aspects(TC.METALLUM, 2, TC.ARBOR, 1, TC.PRAECANTIO, 1).alloyCentrifuge(),
-	Steeleaf                = alloymachine  ( 8673, "Steeleaf"              , SET_LEAF              ,  50, 127,  50     ).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, WOOD, MORTAR, MD.TF).qual(2, 8.0,  768,  3).setSmelting(Steel, U4)                                 .setMcfg( 1, Steel          , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.HERBA, 1, TC.PRAECANTIO, 1),
-	Knightmetal             = alloymachine  ( 8674, "Knightmetal"                                   , 210, 240, 200     ).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, MORTAR, "KnightMetal", MD.TF).qual(3,  8.0, 1024,  3)                                      .setMcfg( 2, Steel          , 2*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TELUM, 1, TC.PRAECANTIO, 1).heat(Steel.mMeltingPoint+100, Steel.mBoilingPoint+100).visDefault(),
-	FierySteel              = alloymachine  ( 8675, "Fiery Steel"           , SET_FIERY             ,  64,   0,   0     ).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, UNBURNABLE, BURNING, GLOWING, MD.TF).qual(3,  8.0, 1024,  3)                               .setMcfg( 1, Steel          , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1).heat(Steel.mBoilingPoint-200, Steel.mBoilingPoint+500).visDefault(),
+	IronWood                = alloymachine  ( 8672, "IronWood"              , SET_WOOD              , 150, 140, 110     ).put(MAGICAL, WOOD, FURNACE, EXTRUDER_SIMPLE, MORTAR, MAGNETIC_PASSIVE, MOLTEN).qual(2, 6.0,  384,  2).setLocal("Ironwood")                    .setMcfg(18, WroughtIron    , 8*U, LiveRoot         , 9*U, Angmallen        , 2*U)                                                                          .aspects(TC.METALLUM, 2, TC.ARBOR, 1, TC.PRAECANTIO, 1).alloyCentrifuge(),
+	Steeleaf                = alloymachine  ( 8673, "Steeleaf"              , SET_LEAF              ,  50, 127,  50     ).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, WOOD, MORTAR).qual(2, 8.0,  768,  3).setSmelting(Steel, U4)                                        .setMcfg( 1, Steel          , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.HERBA, 1, TC.PRAECANTIO, 1),
+	Knightmetal             = alloymachine  ( 8674, "Knightmetal"                                   , 210, 240, 200     ).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, MORTAR, "KnightMetal").qual(3,  8.0, 1024,  3)                                             .setMcfg( 2, Steel          , 2*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TELUM, 1, TC.PRAECANTIO, 1).heat(Steel.mMeltingPoint+100, Steel.mBoilingPoint+100).visDefault(),
+	FierySteel              = alloymachine  ( 8675, "Fiery Steel"           , SET_FIERY             ,  64,   0,   0     ).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, UNBURNABLE, BURNING, GLOWING).qual(3,  8.0, 1024,  3)                                      .setMcfg( 1, Steel          , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1).heat(Steel.mBoilingPoint-200, Steel.mBoilingPoint+500).visDefault(),
 	Thaumium                = alloymachine  ( 8679, "Thaumium"                                      , 150, 100, 200     ).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN).qual(3, 12.0,   256,  3)                                                                   .setMcfg( 1, Fe             , 1*U, Ma               , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.PRAECANTIO, 1).heat(Fe.mMeltingPoint+500, Fe.mBoilingPoint+1000),
 	DarkThaumium            = alloymachine  ( 8680, "Dark Thaumium"                                 , 100,  75,  75     ).put(MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN).qual(3, 12.0,   512,  3)                                                                                                                                                                                                                               ,
 	VoidMetal               = alloymachine  ( 8681, "Void Metal"                                    ,  30,  10,  30, 100).put(MAGICAL, CENTRIFUGE, MOLTEN, "Void").qual(3, 12.0,    2048,  4)                                                                                                                                                                                                                                       .aspects(TC.METALLUM, 7, TC.TENEBRAE, 8, TC.VACUOS, 8, TC.ALIENIS, 2, TC.HERBA, 1).heat(3000, 5000),
@@ -1873,6 +1873,13 @@ public class MT {
 			BlueSteel               .put(MD.TFC);
 			
 			
+			LiveRoot                .put(MD.TF);
+			IronWood                .put(MD.TF);
+			Steeleaf                .put(MD.TF);
+			Knightmetal             .put(MD.TF, MAZEBREAKER);
+			FierySteel              .put(MD.TF, MAZEBREAKER);
+			
+			
 			S                       .put(MD.RC, COMMON_ORE);
 			KNO3                    .put(MD.RC, COMMON_ORE);
 			Firestone               .put(MD.RC, COMMON_ORE).visDefault();
@@ -2013,11 +2020,11 @@ public class MT {
 			
 			
 			Draconium               .put(MD.DE, COMMON_ORE).visDefault();
-			DraconiumAwakened       .put(MD.DE).visDefault();
+			DraconiumAwakened       .put(MD.DE, BETWEENLANDS, MAZEBREAKER).visDefault();
 			
 			
 			CosmicNeutronium        .put(MD.AV).visDefault();
-			Infinity                .put(MD.AV).visDefault();
+			Infinity                .put(MD.AV, BETWEENLANDS, MAZEBREAKER).visDefault();
 			
 			
 			DarkMatter              .put(MD.PE).visDefault();
@@ -2069,7 +2076,7 @@ public class MT {
 			Ectoplasm               .put(MD.RT);
 			
 			
-			Bedrockium              .put(MD.ExU).visDefault();
+			Bedrockium              .put(MD.ExU, BETWEENLANDS).visDefault();
 			
 			
 			CrimsonMiddle           .put(MD.BTL, BETWEENLANDS).visDefault();
