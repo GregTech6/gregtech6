@@ -67,7 +67,6 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		if (aNBT.hasKey(NBT_FOAMED)) mFoam = aNBT.getBoolean(NBT_FOAMED);
 		if (aNBT.hasKey(NBT_OWNABLE)) mOwnable = aNBT.getBoolean(NBT_OWNABLE);
 		if (aNBT.hasKey(NBT_OWNER) && !OWNERSHIP_RESET) mOwner = UUID.fromString(aNBT.getString(NBT_OWNER));
-		if (aNBT.hasKey(NBT_WRENCHHOLD)) mWrenchHold = aNBT.getBoolean(NBT_WRENCHHOLD);
 		mIsGlowing = mMaterial.contains(TD.Properties.GLOWING);
 	}
 	
@@ -77,7 +76,6 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		UT.NBT.setBoolean(aNBT, NBT_FOAMED, mFoam);
 		UT.NBT.setBoolean(aNBT, NBT_FOAMDRIED, mFoamDried);
 		UT.NBT.setBoolean(aNBT, NBT_OWNABLE, mOwnable);
-		UT.NBT.setBoolean(aNBT, NBT_WRENCHHOLD, mWrenchHold);
 		if (mOwner != null) aNBT.setString(NBT_OWNER, mOwner.toString());
 	}
 	
@@ -87,7 +85,6 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		UT.NBT.setBoolean(aNBT, NBT_FOAMED, mFoam);
 		UT.NBT.setBoolean(aNBT, NBT_FOAMDRIED, mFoamDried);
 		UT.NBT.setBoolean(aNBT, NBT_OWNABLE, mOwnable);
-		UT.NBT.setBoolean(aNBT, NBT_WRENCHHOLD, mWrenchHold);
 		return aNBT;
 	}
 	
@@ -225,7 +222,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	@Override public AxisAlignedBB  getSelectedBoundingBoxFromPool () {return box(overAllAABB());}
 
 	private double[] overAllAABB(){
-		if (!mWrenchHold) {
+		if (!mWrenchHold || isServerSide()) {
 			List<AxisAlignedBB> aList = new ArrayList<>();
 			AxisAlignedBB aAABB = box(PX_P[2], PX_P[2], PX_P[2], PX_N[2], PX_N[2], PX_N[2]);
 			if (!addDefaultCollisionBoxToList()) {
