@@ -21,9 +21,11 @@ package gregapi.tileentity.connectors;
 
 import static gregapi.data.CS.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPlayerRelativeBlockHardness;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.data.CS.BlocksGT;
@@ -51,9 +53,9 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09Connector implements ITileEntityFoamable, IMTE_GetPlayerRelativeBlockHardness {
+public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09Connector implements ITileEntityFoamable, IMTE_GetPlayerRelativeBlockHardness, IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool, IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState {
 	public float mDiameter = 1.0F;
-	public boolean mTransparent = F, mIsGlowing = F, mContactDamage = F, mFoam = F, mFoamDried = F, mOwnable = F;
+	public boolean mTransparent = F, mIsGlowing = F, mContactDamage = F, mFoam = F, mFoamDried = F, mOwnable = F, mWrenchHold = F;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -65,6 +67,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		if (aNBT.hasKey(NBT_FOAMED)) mFoam = aNBT.getBoolean(NBT_FOAMED);
 		if (aNBT.hasKey(NBT_OWNABLE)) mOwnable = aNBT.getBoolean(NBT_OWNABLE);
 		if (aNBT.hasKey(NBT_OWNER) && !OWNERSHIP_RESET) mOwner = UUID.fromString(aNBT.getString(NBT_OWNER));
+		if (aNBT.hasKey(NBT_WRENCHHOLD)) mWrenchHold = aNBT.getBoolean(NBT_WRENCHHOLD);
 		mIsGlowing = mMaterial.contains(TD.Properties.GLOWING);
 	}
 	
@@ -74,6 +77,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		UT.NBT.setBoolean(aNBT, NBT_FOAMED, mFoam);
 		UT.NBT.setBoolean(aNBT, NBT_FOAMDRIED, mFoamDried);
 		UT.NBT.setBoolean(aNBT, NBT_OWNABLE, mOwnable);
+		UT.NBT.setBoolean(aNBT, NBT_WRENCHHOLD, mWrenchHold);
 		if (mOwner != null) aNBT.setString(NBT_OWNER, mOwner.toString());
 	}
 	
@@ -83,6 +87,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 		UT.NBT.setBoolean(aNBT, NBT_FOAMED, mFoam);
 		UT.NBT.setBoolean(aNBT, NBT_FOAMDRIED, mFoamDried);
 		UT.NBT.setBoolean(aNBT, NBT_OWNABLE, mOwnable);
+		UT.NBT.setBoolean(aNBT, NBT_WRENCHHOLD, mWrenchHold);
 		return aNBT;
 	}
 	
@@ -214,7 +219,40 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	@Override public boolean ownedFoam              (byte aSide) {return mFoam && mOwnable;}
 	@Override public boolean addDefaultCollisionBoxToList() {return mDiameter >= 1.0F || mFoamDried;}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return mContactDamage && !mFoamDried ? box(PX_P[2], PX_P[2], PX_P[2], PX_N[2], PX_N[2], PX_N[2]) : super.getCollisionBoundingBoxFromPool();}
-	
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {
+		box(aBlock, overAllAABB());
+	}
+	@Override public AxisAlignedBB  getSelectedBoundingBoxFromPool () {return box(overAllAABB());}
+
+	private double[] overAllAABB(){
+		if (!mWrenchHold) {
+			List<AxisAlignedBB> aList = new ArrayList<>();
+			AxisAlignedBB aAABB = box(PX_P[2], PX_P[2], PX_P[2], PX_N[2], PX_N[2], PX_N[2]);
+			if (!addDefaultCollisionBoxToList()) {
+				byte tSide; 																																																				box(aAABB, aList, (1.0F - mDiameter) / 2.0F, (1.0F - mDiameter) / 2.0F, (1.0F - mDiameter) / 2.0F, 1 - (1.0F - mDiameter) / 2.0F, 1 - (1.0F - mDiameter) / 2.0F, 1 - (1.0F - mDiameter) / 2.0F);
+				if (connected(tSide = SIDE_X_NEG)) { DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[0] : 0; 	box(aAABB, aList, 0 - tLength, (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F); }
+				if (connected(tSide = SIDE_Y_NEG)) { DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[0] : 0; 	box(aAABB, aList, (1.0F - tDiameter) / 2.0F, 0 - tLength, (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F); }
+				if (connected(tSide = SIDE_Z_NEG)) { DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[0] : 0; 	box(aAABB, aList, (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F, 0 - tLength, 1 - (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F);  }
+				if (connected(tSide = SIDE_X_POS)) { DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[0] : 0; 	box(aAABB, aList, 1 - (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F, 1 + tLength, 1 - (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F); }
+				if (connected(tSide = SIDE_Y_POS)) { DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[0] : 0; 	box(aAABB, aList, (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F, 1 + tLength, 1 - (1.0F - tDiameter) / 2.0F); }
+				if (connected(tSide = SIDE_Z_POS)) { DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(tSide, F, F); float tDiameter = getConnectorDiameter(tSide, tDelegator), tLength = mContactDamage ? -PX_P[0] : 0; 	box(aAABB, aList, (1.0F - tDiameter) / 2.0F, (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F, 1 - (1.0F - tDiameter) / 2.0F, 1 + tLength); }
+			}
+			if (aList.size() > 0) {
+				double[] coords = new double[]{aList.get(0).minX - xCoord, aList.get(0).minY - yCoord, aList.get(0).minZ - zCoord, aList.get(0).maxX - xCoord, aList.get(0).maxY - yCoord, aList.get(0).maxZ - zCoord};
+				for (AxisAlignedBB a : aList) {
+					coords[0] = Math.min(a.minX - xCoord, coords[0]);
+					coords[1] = Math.min(a.minY - yCoord, coords[1]);
+					coords[2] = Math.min(a.minZ - zCoord, coords[2]);
+					coords[3] = Math.max(a.maxX - xCoord, coords[3]);
+					coords[4] = Math.max(a.maxY - yCoord, coords[4]);
+					coords[5] = Math.max(a.maxZ - zCoord, coords[5]);
+				}
+				return coords;
+			}
+		}
+		return new double[]{PX_P[0], PX_P[0], PX_P[0], PX_N[0], PX_N[0], PX_N[0]};
+	}
+
 	@Override
 	public void addCollisionBoxesToList2(AxisAlignedBB aAABB, List<AxisAlignedBB> aList, Entity aEntity) {
 		if (!addDefaultCollisionBoxToList()) {

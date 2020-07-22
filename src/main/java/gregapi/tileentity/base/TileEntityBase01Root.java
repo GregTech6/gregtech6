@@ -47,6 +47,7 @@ import gregapi.render.IRenderedBlockObject.ErrorRenderer;
 import gregapi.render.RenderHelper;
 import gregapi.tileentity.ITileEntity;
 import gregapi.tileentity.ITileEntityGUI;
+import gregapi.tileentity.connectors.TileEntityBase10ConnectorRendered;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityCanDelegate;
@@ -772,6 +773,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean isSurfaceSolid           (byte aSide) {return isSurfaceOpaque(aSide);}
 	public boolean isSurfaceOpaque          (byte aSide) {return T;}
 	public boolean isSealable               (byte aSide) {return F;}
+	public AxisAlignedBB  getSelectedBoundingBoxFromPool () {return box();}
 	public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box();}
 	/** Old Coordinate containing Variant of onCoordinateChange, use only if you really need the Coordinates, as there is also a No-Parameter variant in use for some TileEntity Types! */
 	public void onCoordinateChange(World aWorld, int aOldX, int aOldY, int aOldZ) {onCoordinateChange();}
@@ -919,11 +921,15 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean onDrawBlockHighlight2(DrawBlockHighlightEvent aEvent) {return F;}
 	
 	public final boolean onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
+		TileEntityBase01Root tileEntity = (TileEntityBase01Root) getTileEntity(aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ);
 		if (!SIDES_VALID[aEvent.target.sideHit] || onDrawBlockHighlight2(aEvent)) return T;
 		byte tConnections = 0; for (byte i = 0; i < 6; i++) if (isConnectedWrenchingOverlay(aEvent.currentItem, i)) tConnections |= (1 << i);
 		if (ST.valid(aEvent.currentItem) && isUsingWrenchingOverlay(aEvent.currentItem, (byte)aEvent.target.sideHit)) {
+			if (tileEntity instanceof TileEntityBase10ConnectorRendered) { ((TileEntityBase10ConnectorRendered) tileEntity).mWrenchHold = true; }
 			RenderHelper.drawWrenchOverlay(aEvent.player, aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ, tConnections, (byte)aEvent.target.sideHit, aEvent.partialTicks);
 			return T;
+		} else {
+			if (tileEntity instanceof TileEntityBase10ConnectorRendered) { ((TileEntityBase10ConnectorRendered) tileEntity).mWrenchHold = false; }
 		}
 		return T;
 	}
