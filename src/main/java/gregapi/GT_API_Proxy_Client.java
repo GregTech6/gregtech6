@@ -372,6 +372,9 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
 						aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
 					}
+					if (MD.TF .mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
+						aEvent.toolTip.add(LH.Chat.CYAN  + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
+					}
 					if (!(aBlock instanceof MultiTileEntityBlockInternal)) {
 						if (tData.mMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)) {
 							if (tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {

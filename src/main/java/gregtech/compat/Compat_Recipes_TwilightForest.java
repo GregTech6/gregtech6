@@ -71,7 +71,7 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		CR.remove(ST.make(MD.TF, "tile.GiantObsidian"   , 1, 0));
 		CR.remove(ST.make(MD.TF, "tile.GiantLeaves"     , 1, 0));
 		
-		RM.sawing(64, 64, F, 50, ST.make(MD.TF, "tile.GiantLog"         , 1, 0), ST.make(Blocks.log, 16, 0));
+		RM.sawing(64, 64, F, 50, ST.make(MD.TF, "tile.GiantLog"         , 1, 0), ST.make(Blocks.log, 64, 0));
 		RM.sawing(64,256, F, 50, ST.make(MD.TF, "tile.GiantCobble"      , 1, 0), ST.make(Blocks.cobblestone, 64, 0));
 		RM.sawing(64,512, F, 50, ST.make(MD.TF, "tile.GiantObsidian"    , 1, 0), ST.make(Blocks.obsidian, 64, 0));
 		RM.sawing(64, 16, F, 50, ST.make(MD.TF, "tile.GiantLeaves"      , 1, 0), ST.make(Blocks.leaves, 64, 0));
