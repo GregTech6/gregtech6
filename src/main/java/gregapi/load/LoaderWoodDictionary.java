@@ -267,7 +267,7 @@ public class LoaderWoodDictionary implements Runnable {
 			new PlankEntry(ST.make(tPlank, 1, 4), ST.make(tSlab                 , 1, 4), ST.make(MD.EBXL, "stairs.japanesemaple"        , 1, 0), MT.WOODS.JapaneseMaple    , 91);
 			new PlankEntry(ST.make(tPlank, 1, 5), ST.make(tSlab                 , 1, 5), ST.make(MD.EBXL, "stairs.rainboweucalyptus"    , 1, 0), MT.WOODS.RainbowEucalyptus, 92);
 			new PlankEntry(ST.make(tPlank, 1, 6), ST.make(tSlab                 , 1, 6), ST.make(MD.EBXL, "stairs.autumn"               , 1, 0), MT.WOODS.Autumn           , 93);
-			new PlankEntry(ST.make(tPlank, 1, 7), ST.make(tSlab                 , 1, 7), ST.make(MD.EBXL, "stairs.baldcypress"          , 1, 0), MT.WOODS.BaldCypress      , 94);
+			new PlankEntry(ST.make(tPlank, 1, 7), ST.make(tSlab                 , 1, 7), ST.make(MD.EBXL, "stairs.baldcypress"          , 1, 0), MT.WOODS.Cypress          , 94);
 			new PlankEntry(ST.make(tPlank, 1, 8), ST.make(MD.EBXL, "woodslab2"  , 1, 0), ST.make(MD.EBXL, "stairs.sakurablossom"        , 1, 0), MT.WOODS.Sakura           , 95);
 			
 			for (int i = 0; i < 8; i++)

@@ -53,7 +53,7 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [ADDED]
 Dedicated Wood Materials for many Types of Wood.
 This will influence basically every common Wood ITEM. Ofcourse the Generifier works on all of them.
-Sticks generated on the ground in the World can have different Materials like Rotten, Mossy or Dead Wood. They can be used like normal Sticks.
+Sticks generated on the ground in the World can have different Materials like Rotten, Mossy or Dead Wood aswell as Biome specific Variants (Birch Forest Biome = Birch Sticks). They can be used like normal Sticks.
 The NEI Tree Family GUI also got 6 more Slots now to display which amounts of Sticks/Pulp/Bark/Charcoal you can get from each Type of Tree.
 Many Crates that contain Wood Planks now have this variety too. Some of these Crates can also be found in GT6 Dungeons in a new Pile that isn't the Metal Crates.
 Forestry Stuff can now be Fire Proofed like the GT6 and Vanilla Logs/Beams/Planks. (Forgot to add those Recipes to my Stuff initially)
@@ -247,7 +247,7 @@ Like look at all this crap I got done this week. I actually did things, instead 
 [CHANGED] Some Glass alike Gems now use a Slimeball alike Pearly Texture.
 [ADDED] Coal, Charcoal, Coke etc. Bricks. They are Ingots, meaning Nuggets and Chunks also exist for them (meaning better Fuel regulation). Vanilla Coal and Charcoal can easily be handcrafted and generified to the more shapely Bricks and vice versa.
 [ADDED] Ingots, Plates and Gem Plates can now be placed in World.
-[ADDED] The 9 Colors of Fluorite as well as the 6 Colors of Aventurine as small Ores.
+[ADDED] The 9 Colors of Fluorite aswell as the 6 Colors of Aventurine as small Ores.
 [ADDED] Milky Quartz Rock Layer. Purpose being a Surface Level Quartz Ore so you dont need to go to the Nether. Totally not because Rockhounding has that Quartz Type and I did not add a Surface Quartz yet. (Quartzite does not count)
 
 
@@ -752,7 +752,7 @@ But GT6 Wood Buckets, Jugs, Measuring Pots and similar, aswell as Vanilla Glass 
 [ADDED] Warning Sign Cover with currently 19 different possible Designs containing things to warn about.
 [ADDED]
 Gas Turbine Multiblock.
-It turns Gaseous Fuels into Rotational Energy with 66.66% Efficiency, so it works just as well as a Boiler and a Steam Turbine, but only for specific Gasses ofcourse.
+It turns Gaseous Fuels into Rotational Energy with 66.66% Efficiency, so it works just aswell as a Boiler and a Steam Turbine, but only for specific Gasses ofcourse.
 But in addition to that, the Fuel is usually slightly more potent when used in a Gas Turbine, than when used in a Burning Box, so it works better overall while being cheaper too.
 The Structure of the Multiblock is identical to the Steam Turbine, in fact you can upgrade the Steam Turbine Controller to be a Gas Turbine Controller with a few additional Items.
 You have to get rid of the Exhaust Gasses and Liquids when running the Turbine, how you extract them is up to you. I used Pump Covers placed on Drums to do it in the Screenshot.
@@ -1961,7 +1961,7 @@ Most Quartz alike substances can be crystallised with it, this also includes Amb
 [ADDED]
 Burner Mixer.
 This is the Fireproof Variant of the Mixer. It is used to burn the mixed result as quickly as possible.
-It requires an Igniter to start this Mixer, as well as the usual Motor/Turbine below.
+It requires an Igniter to start this Mixer, aswell as the usual Motor/Turbine below.
 Some Chemical Recipes that were i nthe regular Mixer got moved to this one.
 Some will also be moved to this one later once I notice that I forgot to move them.
 Notify me if you find Recipes that need to usually be burned to output something. (Heating Up does NOT Count as Burning!)
@@ -2218,7 +2218,7 @@ It has a left to right configuration in regards of Input and Output like the Saw
 [REMOVED] The Supporter Lists are now no longer attempting to connect to Dropbox, if the normal connection to the GT Website fails (what never happened so far, but hey I'm paranoid), since the Dropbox Links are invalid anyways, because Dropbox sucks.
 [CHANGED] Doubled the amount of Samples in the Prospecting Behavior of Hammers. Note that Sample Count has nothing to do with the Range! The Range is still the same (as in dependant on the Tool Quality).
 [CHANGED] Ice Cream Recipe to require Cream instead of Milk. Also added Honey Ice Cream.
-[IMPROVED] The Nether portal Room now contains a Chest with matches and some Nether related Items, as well as a Netherwart Farm on the Walls to left and right.
+[IMPROVED] The Nether portal Room now contains a Chest with matches and some Nether related Items, aswell as a Netherwart Farm on the Walls to left and right.
 [IMPROVED] The Workshop Room now has a Bookshelf that is guaranteed to contain all the Main GregTech Manuals.
 [ADDED] Fat Stat to the now five Food Stats a Player can have (it's about Blood Fat, not Body Fat :P), which will cause a Heart attack if it gets too high (like if you eat 2 Bars of Butter in a row or something stupid like that).
 [ADDED] Twilight Forest Portal Room to the GT6 Dungeons (the Portal is not lit, but it is ready to just throw the Diamond in to activate it). It can only spawn if there is a Nether Portal or End Portal already and Twilight Forest is installed. There is also a Chest containing a Diamond, 16 Liveroots and a Twilight Forest Portal Manual (for people who dont know how to throw a Diamond into that Water Pool).

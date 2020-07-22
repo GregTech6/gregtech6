@@ -96,12 +96,56 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 		if (WD.dimBTL   (worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Weedwood      : MT.WOODS.Rotten , aAmount);
 		if (WD.dimERE   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.WOODS.Dead    : MT.PetrifiedWood, aAmount);
 		if (WD.dimALF   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.Livingwood    : MT.Dreamwood    , aAmount);
+		String tBiome = worldObj.getBiomeGenForCoords(xCoord, zCoord).biomeName.toLowerCase();
+		// The order of checks matters because things like Ice Deserts are a thing.
+		if (tBiome.contains("rainforest" )) return getStick(NI, aAmount);
+		if (tBiome.contains("firefly"    )) return getStick(NI, aAmount);
+		if (tBiome.contains("dark forest")) return getStick(OP.stick.mat(MT.WOODS.Towerwood , aAmount), aAmount);
+		if (tBiome.contains("silver pine")) return getStick(OP.stick.mat(MT.WOODS.SilverPine, aAmount), aAmount);
+		if (tBiome.contains("redwood"    )) return getStick(OP.stick.mat(MT.WOODS.Redwood   , aAmount), aAmount);
+		if (tBiome.contains("cypress"    )) return getStick(OP.stick.mat(MT.WOODS.Cypress   , aAmount), aAmount);
+		if (tBiome.contains("maple"      )) return getStick(OP.stick.mat(MT.WOODS.Maple     , aAmount), aAmount);
+		if (tBiome.contains("aspen"      )) return getStick(OP.stick.mat(MT.WOODS.Aspen     , aAmount), aAmount);
+		if (tBiome.contains("autumn"     )) return getStick(OP.stick.mat(MT.WOODS.Autumn    , aAmount), aAmount);
+		if (tBiome.contains("spruce"     )) return getStick(OP.stick.mat(MT.WOODS.Spruce    , aAmount), aAmount);
+		if (tBiome.contains("taiga"      )) return getStick(OP.stick.mat(MT.WOODS.Spruce    , aAmount), aAmount);
+		if (tBiome.contains("boreal"     )) return getStick(OP.stick.mat(MT.WOODS.Spruce    , aAmount), aAmount);
+		if (tBiome.contains("birch"      )) return getStick(OP.stick.mat(MT.WOODS.Birch     , aAmount), aAmount);
+		if (tBiome.contains("jungle"     )) return getStick(OP.stick.mat(MT.WOODS.Jungle    , aAmount), aAmount);
+		if (tBiome.contains("savann"     )) return getStick(OP.stick.mat(MT.WOODS.Acacia    , aAmount), aAmount);
+		if (tBiome.contains("roofed"     )) return getStick(OP.stick.mat(MT.WOODS.DarkOak   , aAmount), aAmount);
+		if (tBiome.contains("dark oak"   )) return getStick(OP.stick.mat(MT.WOODS.DarkOak   , aAmount), aAmount);
+		if (tBiome.contains("oak"        )) return getStick(OP.stick.mat(MT.WOODS.Oak       , aAmount), aAmount);
+		if (tBiome.contains("alpine"     )) return          OP.stick.mat(MT.WOODS.Frozen    , aAmount);
+		if (tBiome.contains("pine"       )) return getStick(OP.stick.mat(MT.WOODS.Pine      , aAmount), aAmount);
+		if (tBiome.contains("fire"       )) return          OP.stick.mat(MT.WOODS.Scorched  , aAmount);
+		if (tBiome.contains("fir"        )) return getStick(OP.stick.mat(MT.WOODS.Fir       , aAmount), aAmount);
+		if (tBiome.contains("volcan"     )) return          OP.stick.mat(MT.WOODS.Scorched  , aAmount);
+		if (tBiome.contains("glacier"    )) return          OP.stick.mat(MT.WOODS.Frozen    , aAmount);
+		if (tBiome.contains("ice"        )) return          OP.stick.mat(MT.WOODS.Frozen    , aAmount);
+		if (tBiome.contains("cold"       )) return          OP.stick.mat(MT.WOODS.Frozen    , aAmount);
+		if (tBiome.contains("snow"       )) return          OP.stick.mat(MT.WOODS.Frozen    , aAmount);
+		if (tBiome.contains("frost"      )) return          OP.stick.mat(MT.WOODS.Frozen    , aAmount);
+		if (tBiome.contains("polar"      )) return          OP.stick.mat(MT.WOODS.Frozen    , aAmount);
+		if (tBiome.contains("swamp"      )) return          OP.stick.mat(MT.WOODS.Mossy     , aAmount);
+		if (tBiome.contains("marsh"      )) return          OP.stick.mat(MT.WOODS.Mossy     , aAmount);
+		if (tBiome.contains("moor"       )) return          OP.stick.mat(MT.WOODS.Mossy     , aAmount);
+		if (tBiome.contains("mire"       )) return          OP.stick.mat(MT.WOODS.Mossy     , aAmount);
+		if (tBiome.contains("bog"        )) return          OP.stick.mat(MT.WOODS.Mossy     , aAmount);
+		if (tBiome.contains("mesa"       )) return          OP.stick.mat(MT.WOODS.Dead      , aAmount);
+		if (tBiome.contains("desert"     )) return          OP.stick.mat(MT.WOODS.Dead      , aAmount);
+		if (tBiome.contains("sahara"     )) return          OP.stick.mat(MT.WOODS.Dead      , aAmount);
+		if (tBiome.contains("waste"      )) return          OP.stick.mat(MT.WOODS.Dead      , aAmount);
+		return getStick(NI, aAmount);
+	}
+	
+	public ItemStack getStick(ItemStack aStack, int aAmount) {
 		switch(rng(16)) {
 		case  0: return OP.stick.mat(MT.WOODS.Dead  , aAmount);
 		case  1: return OP.stick.mat(MT.WOODS.Mossy , aAmount);
 		case  2: return OP.stick.mat(MT.WOODS.Rotten, aAmount);
-		default: return IL.Stick.get(aAmount);
 		}
+		return ST.valid(aStack) ? ST.amount(aAmount, aStack) : IL.Stick.get(aAmount);
 	}
 	
 	@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] || SIDES_TOP_HORIZONTAL[aSide] ? mTexture : null;}

@@ -3144,7 +3144,6 @@ public class MT {
 		Palm                = woodnormal( 9358, "Palm"                    , "Palm"                , 201, 124,  69).put(MD.TROPIC),
 		
 		Autumn              = woodnormal( 9334, "Autumnwood"              , "Autumn Wood"         , 191,  64,  35).put(MD.EBXL),
-		BaldCypress         = woodnormal( 9335, "BaldCypress"             , "Bald Cypress"        , 195, 183, 171).put(MD.EBXL),
 		Cypress             = woodnormal( 9336, "Cypress"                 , "Cypress"             , 185, 187, 181).put(MD.EBXL),
 		Fir                 = woodnormal( 9337, "Fir"                     , "Fir"                 , 110, 106,  63).put(MD.EBXL),
 		JapaneseMaple       = woodnormal( 9338, "JapaneseMaple"           , "Japanese Maple"      , 152,  76,  86).put(MD.EBXL),
@@ -3175,7 +3174,7 @@ public class MT {
 		Walnut              = woodnormal( 9364, "Walnutwood"              , "Walnutwood"          ,  98,  78,  64).put(MD.FR),
 		Wenge               = woodnormal( 9365, "Wenge"                   , "Wenge"               ,  88,  81,  70).put(MD.FR),
 		Zebrawood           = woodnormal( 9366, "Zebrawood"               , "Zebrawood"           , 172, 139,  86).put(MD.FR),
-		Pine                = woodnormal( 9407, "Pine"                    , "Pine"                , 187, 151,  77).put(MD.FR),
+		Pine                = woodnormal( 9335, "Pine"                    , "Pine"                , 187, 151,  77).put(MD.FR),
 		
 		Darkwood            = woodnormal( 9367, "Darkwood"                , "Darkwood"            ,  51,  45,  54).put(MD.BoP),
 		Ethereal            = woodnormal( 9368, "Etherealwood"            , "Etherealwood"        ,  76, 150, 115).put(MD.BoP),
