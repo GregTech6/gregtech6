@@ -134,7 +134,7 @@ public class WD {
 		aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
 		TileEntity tTileEntity = te(aWorld, aX, aY, aZ, T);
 		if (tTileEntity != null) {
-			if (tTileEntity instanceof ITileEntityQuickObstructionCheck) return ((ITileEntityQuickObstructionCheck)tTileEntity).isObstructingBlockAt(OPPOSITES[aSide]);
+			if (tTileEntity instanceof ITileEntityQuickObstructionCheck) return F;
 			if (MD.TC.mLoaded && tTileEntity instanceof INode) return F;
 		}
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);

@@ -153,8 +153,14 @@ public abstract class TileEntityBase04MultiTileEntities extends TileEntityBase03
 	
 	@Override
 	public final boolean onBlockActivated(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		//try {
+		//	return allowRightclick(aPlayer) && (checkObstruction(aPlayer, aSide, aHitX, aHitY, aHitZ) || onBlockActivated2(aPlayer, aSide, aHitX, aHitY, aHitZ));
+		//} catch(Throwable e) {
+		//	e.printStackTrace(ERR);
+		//	return T;
+		//}
 		try {
-			return allowRightclick(aPlayer) && (checkObstruction(aPlayer, aSide, aHitX, aHitY, aHitZ) || onBlockActivated2(aPlayer, aSide, aHitX, aHitY, aHitZ));
+			return allowRightclick(aPlayer) && (onBlockActivated2(aPlayer, aSide, aHitX, aHitY, aHitZ));
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 			return T;
