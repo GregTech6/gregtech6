@@ -49,6 +49,7 @@ public class MD {
 	
 	, TC                = new ModData(ModIDs.TC                 , "Thaumcraft")
 	, TCFM              = new ModData(ModIDs.TCFM               , "Forbidden Magic")
+	, TECHNOM           = new ModData(ModIDs.TECHNOM            , "Technomancy")
 	, BOTA              = new ModData(ModIDs.BOTA               , "Botania")
 	, ALF               = new ModData(ModIDs.ALF                , "Alfheim")
 	, PE                = new ModData(ModIDs.PE                 , "Project E")

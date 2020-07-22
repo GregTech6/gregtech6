@@ -1760,6 +1760,7 @@ public class CS {
 
 		, TC                = "Thaumcraft"
 		, TCFM              = "ForbiddenMagic"
+		, TECHNOM           = "technom"
 		, BOTA              = "Botania"
 		, ALF               = "alfheim"
 		, PE                = "ProjectE"

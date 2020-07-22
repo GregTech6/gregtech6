@@ -162,6 +162,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER.put(MD.TC, "ItemResource"                         ,   9, (byte) 25);
 			BooksGT.BOOK_REGISTER.put(MD.TC, "ArcaneDoorKey"                        ,   W, (byte)  1);
 		}
+		if (MD.TECHNOM.mLoaded) {
+			BooksGT.BOOK_REGISTER.put(MD.TECHNOM, "ritualTome"                      ,   W, (byte) 10);
+		}
 		if (MD.PE.mLoaded) {
 			BooksGT.BOOK_REGISTER.put(MD.PE, "item.pe_manual"                       ,   W, (byte)  3);
 			BooksGT.BOOK_REGISTER.put(MD.PE, "item.pe_tome"                         ,   W, (byte)  6);
