@@ -400,6 +400,8 @@ public class TD {
 		public static final TagData MAGICAL                                 = TagData.createTagData("PROPERTIES.MAGICAL", "Magical");
 		/** If this Material is useable in the Betweenlands */
 		public static final TagData BETWEENLANDS                            = TagData.createTagData("PROPERTIES.BETWEENLANDS", "Betweenlands");
+		/** If this Material can break Twilight Mazes */
+		public static final TagData MAZEBREAKER                             = TagData.createTagData("PROPERTIES.MAZEBREAKER", "Maze Breaker");
 		/** If this Material is having a constantly burning Aura (like Blaze Rods) */
 		public static final TagData BURNING                                 = TagData.createTagData("PROPERTIES.BURNING", "Burning Aura");
 		/** If this Material is some kind of flammable */

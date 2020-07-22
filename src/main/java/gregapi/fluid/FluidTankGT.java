@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -202,7 +202,7 @@ public class FluidTankGT implements IFluidTank {
 		return F;
 	}
 	
-	public boolean fillAll(FluidStack aFluid, int aMultiplier) {
+	public boolean fillAll(FluidStack aFluid, long aMultiplier) {
 		if (aMultiplier <= 0) return T;
 		if (aMultiplier == 1) return fillAll(aFluid);
 		if (aFluid == null || aFluid.amount <= 0) return T;
@@ -232,7 +232,7 @@ public class FluidTankGT implements IFluidTank {
 	public FluidTankGT setEmpty() {mFluid = null; mChangedFluids = T; mAmount = 0; return this;}
 	public FluidTankGT setFluid(FluidStack aFluid) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aFluid.amount); return this;}
 	public FluidTankGT setFluid(FluidStack aFluid, long aAmount) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aAmount); return this;}
-	public FluidTankGT setCapacity(long aCapacity) {mCapacity = UT.Code.bindInt(aCapacity); return this;}
+	public FluidTankGT setCapacity(long aCapacity) {mCapacity = aCapacity; return this;}
 	public FluidTankGT setPreventDraining() {return setPreventDraining(T);}
 	public FluidTankGT setPreventDraining(boolean aPrevent) {mPreventDraining = aPrevent; return this;}
 	public FluidTankGT setVoidExcess() {return setVoidExcess(T);}

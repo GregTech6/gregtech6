@@ -33,6 +33,7 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
 [COMPAT] TerraFirmaCraft(Plus) Stuff should work slightly better now. TFC Sticks and Torches are now being accounted for when doing Recipe Outputs.
 [IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
+[FIXED] Fluid Tanks/Pipes with huge Capacities should no longer be limited to Integer.MAX_VALUE anymore.
 [FIXED] Lava Blocks should no longer set NON-flammable things on Fire, just because they are made of Wood. (Forestry Fireproof Wood and GT Fireproof Wood for example)
 [FIXED] Some things I saw GT6U has fixed too, like TFC Damage Multipliers for Heat and Frost Damage.
 [FIXED] Whoops, I made Titanium Invisible by accident.
@@ -43,7 +44,9 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [CHANGED] Made Pincers and the Plunger the right Tool to harvest the Dragon Egg and Dragon-Egg-like Mod Blocks.
 [CHANGED] Technically speaking, Shovels/Spades/Plows and such should be able to break Fire now, BUT due to the nature of how you click Fire to break it, that wont directly work. This is just a special case in case a Mod adds a Block that uses the Material "Fire", so that it can be harvested somehow.
 [CHANGED] Crates now use Crowbar Harvesting to drop their Contents instead of Rightclicking with Crowbar. Also works with the Universal Spade.
+[CHANGED] Crates can now be made with Wooden and Plastic Screws too. Iron based Screws were maybe a little bit of a too difficult requirement for this kind of thing.
 [ADDED] Zeolite to Dungeon Loot Chests just to make sure people can find it by accident.
+[ADDED] Pickaxes and Drills made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Walls about 40 times faster. The Construction Pickaxe is faster than the regular Pickaxe in this case, since the Maze Bricks dont count as natural.
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
 [ADDED] The Shelf in Workshops in GT6 Dungeons now contains two Rolls of Tape, which is always enough to haul both of the Stone Mass Storages and then some.
 [ADDED] Farming themed Room to GT6 Dungeons to showcase the Universal Flower Pot and a good use for Glowtus as Covering for the Water Hole in Farms.

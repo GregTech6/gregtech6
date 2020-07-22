@@ -210,6 +210,7 @@ public class LH {
 	, TOOLTIP_BLAST_RESISTANCE_DYNAMITE = "gt.lang.blast.resist.dynamite.proof"
 	, TOOLTIP_BLAST_RESISTANCE_NOT_NUKE = "gt.lang.blast.resist.nuke.not"
 	, TOOLTIP_BETWEENLANDS_RESISTANCE = "gt.lang.betweenlands.resist"
+	, TOOLTIP_TWILIGHT_MAZE_BREAKING = "gt.lang.twilightforest.mazebreaking"
 	, PROSPECTING_LAVA = "gt.lang.prospecting.lava"
 	, PROSPECTING_LIQUID = "gt.lang.prospecting.liquid"
 	, PROSPECTING_AIR = "gt.lang.prospecting.air"
@@ -482,12 +483,13 @@ public class LH {
 		add(TOOLTIP_BLAST_RESISTANCE_DYNAMITE           , "(Strong Dynamite Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes still go right through!)");
 		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the Effects of the Betweenlands");
-		add(PROSPECTING_LAVA                            , "There is Lava behind this Rock.");
-		add(PROSPECTING_LIQUID                          , "There is a Liquid behind this Rock.");
-		add(PROSPECTING_AIR                             , "There is an Air Pocket behind this Rock.");
-		add(PROSPECTING_CHANGE                          , "Material is changing behind this Rock.");
+		add(TOOLTIP_TWILIGHT_MAZE_BREAKING              , "Can break Twilight Forest Maze Blocks");
+		add(PROSPECTING_LAVA                            , "There is Lava behind this Rock");
+		add(PROSPECTING_LIQUID                          , "There is a Liquid behind this Rock");
+		add(PROSPECTING_AIR                             , "There is an Air Pocket behind this Rock");
+		add(PROSPECTING_CHANGE                          , "Material is changing behind this Rock");
 		add(PROSPECTING_TRACES                          , "Found traces of ");
-		add(PROSPECTING_NOTHING                         , "No traces of Ore found.");
+		add(PROSPECTING_NOTHING                         , "No traces of Ore found");
 		add(AUTOCRAFTING_INSERT_BLUEPRINT               , "Insert an autocraftable Blueprint here");
 		add(ADVCRAFTING_INSERT_BLUEPRINT                , "Insert a Blueprint here");
 		add(ADVCRAFTING_PUT_TO_STORAGE                  , "Move Crafting Grid content to Storage Slots");
