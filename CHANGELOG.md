@@ -45,7 +45,7 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [CHANGED] Technically speaking, Shovels/Spades/Plows and such should be able to break Fire now, BUT due to the nature of how you click Fire to break it, that wont directly work. This is just a special case in case a Mod adds a Block that uses the Material "Fire", so that it can be harvested somehow.
 [CHANGED] Crates now use Crowbar Harvesting to drop their Contents instead of Rightclicking with Crowbar. Also works with the Universal Spade.
 [CHANGED] Crates can now be made with Wooden and Plastic Screws too. Iron based Screws were maybe a little bit of a too difficult requirement for this kind of thing.
-[CHANGED] Pipe/Wire Selection Boxes.
+[CHANGED] Pipe/Wire Selection Boxes and placement Behavior.
 [ADDED] Zeolite to Dungeon Loot Chests just to make sure people can find it by accident.
 [ADDED] Pickaxes and Drills made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Walls about 40 times faster. The Construction Pickaxe is faster than the regular Pickaxe in this case, since the Maze Bricks dont count as natural.
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
@@ -2643,7 +2643,7 @@ Coats Wires with Rubber, Pistons with Resin/Slimeballs, Leather with Wax (Harves
 [CHANGED] Silicon Dioxide => Silicon now requires Carbon in the Crucible instead of the Electrolyzer.
 [CHANGED] Hydrochloric Acid is needed to process Borax now. Electrolyzing it directly is no longer possible.
 [CHANGED] The Asphalt Block Recipe to require molten Asphalt and Stone in a Mixer, similar to the Recipe of C-Foam Fluid, including the pre-dyed variants.
-[CHANGED] Glass Bottle Behaviour regarding Ocean Water, and also made the Glass Bottles consume the regular Water Block when rightclicking with them (you get up to 3 Bottles at once from that).
+[CHANGED] Glass Bottle Behavior regarding Ocean Water, and also made the Glass Bottles consume the regular Water Block when rightclicking with them (you get up to 3 Bottles at once from that).
 [ADDED] The Drain now no longer deletes the Water Blocks when pointing into a River Biome.
 [ADDED]
 Ocean Water Blocks, I call them Seawater sometimes.
@@ -3648,7 +3648,7 @@ You can attach them to any of the 6 Sides. See it like some kind of "Upgrade Slo
 
 6.01.00:
 [API] Restructured the API in a way that probably crashes a lot of compat things of other Mods, that is why the secondary version number finally got bumped. The gregapi.tileentitiy package got a bit too full, so I made subpackages and also renamed some TEs to sort things out properly. I did keep a deprecated Version of ITileEntityEnergy at its old place however, because that one is already too widely used.
-[FIXED] Pipes and Wires not displaying Color upon being painted. (Paint does NOT influence connection behaviour due to the new wrenching/wirecutting based connection system)
+[FIXED] Pipes and Wires not displaying Color upon being painted. (Paint does NOT influence connection behavior due to the new wrenching/wirecutting based connection system)
 [ADDED] Tooltips to things that can damage you when touching them. Lack of said Tooltip automatically indicates that the thing is safe to touch. And yes there are Fluid Pipes that ARE Safe to touch (as of this Version).
 [ADDED]
 Basic Covers back. Currently only the Plates and Foils are available as Covers.
@@ -3659,7 +3659,7 @@ Plates as Covers can change Design by chiseling them.
 [ADDED]
 Electric Wires, similar to the good old GT5 Wires with a few Bug fixes and slightly different stats and Voltages that are also between Tiers.
 They behave like every other connecting Block does, just with the difference of using Cutter instead of Wrench.
-Also now accept IC² Stuff as Energy Input, because the new connection behaviour for GT6 things makes it more efficient than the old Transformer solution.
+Also now accept IC² Stuff as Energy Input, because the new connection behavior for GT6 things makes it more efficient than the old Transformer solution.
 The Electric Meter Sensor does work on those Wires and it displays the total EU transmitted after substracting loss.
 The displayed Number is the amount of EU the adjacent stuff receives, so if it displays 31 then the adjacent receiver will receive exactly 31 EU.
 
@@ -3717,7 +3717,7 @@ If you place a Chest or something to the left of it, it will automatically suck 
 6.00.59:
 [COMPAT] Updated Forestry Compat. Finally Forestry has actual Recipe Managers!
 [COMPAT] Another Forestry Compat Update for some of my Cutter Recipes. Some Idiot (I'm not going to look up the person who commited that shit) decided to use NBT instead of MetaData to store Sub-IDs of wooden things. Seriously, there are 32766 different possible Sub-IDs in ItemStacks, no need for putting Wood IDs into an NBT, making every comparison Method highly inefficient.
-[FIXED] All the sided Behaviours of rotated Basic Machines.
+[FIXED] All the sided Behaviors of rotated Basic Machines.
 [FIXED] Fluid Handling of Basic Machines.
 [FIXED] Vanilla Jukeboxes making dupes on stacked Music Discs, also made Music Discs stackable, because why not.
 [ADDED] The Electrolyzer and Centrifuge Recipe generators. This doesn't mean that all Recipes are there, but there are a lot of them. Also changed some Recipes and ofcourse made all 6 Fluid Outputs possible if the Melting/Boiling/Plasma Point is right, and if there is a suitable Fluid.
@@ -4298,7 +4298,7 @@ Use distilled Water if possible or you risk calcification and therefore decrease
 
 
 6.00.20:
-[FIXED] tTool.equals("equalsIgnoreCase") inside the Wrench Behaviour... How the hell did I get that one in...
+[FIXED] tTool.equals("equalsIgnoreCase") inside the Wrench Behavior... How the hell did I get that one in...
 [FIXED] Forgetting to add the first 6 people to the hardcoded Gold Cape List for Patreon.
 [FIXED] Left/Right-Texture-Disorder in Burning Boxes, when they face North or South (Only Texture Pack Users could have seen that).
 [FIXED] Forgetting to set hasComparatorOverride to true in the MTE Blocks.

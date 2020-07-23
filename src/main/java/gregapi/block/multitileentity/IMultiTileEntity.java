@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -304,6 +304,11 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_OnlyPlaceableWhenSneaking extends IMultiTileEntity {
 		/** Return true to prevent placing this Block without Sneaking. */
 		public boolean onlyPlaceableWhenSneaking();
+	}
+	
+	public static interface IMTE_IgnorePlayerCollisionWhenPlacing extends IMultiTileEntity {
+		/** Return true to ignore the Player standing in the way of placing this Block. */
+		public boolean ignorePlayerCollisionWhenPlacing();
 	}
 	
 	public static interface IMTE_OnItemRightClick extends IMultiTileEntity {

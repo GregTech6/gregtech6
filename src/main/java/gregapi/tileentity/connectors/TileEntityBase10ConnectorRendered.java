@@ -26,6 +26,7 @@ import java.util.UUID;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetPlayerRelativeBlockHardness;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.data.CS.BlocksGT;
@@ -53,7 +54,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09Connector implements ITileEntityFoamable, IMTE_GetPlayerRelativeBlockHardness, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
+public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09Connector implements ITileEntityFoamable, IMTE_GetPlayerRelativeBlockHardness, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
 	public float mDiameter = 1.0F;
 	public boolean mTransparent = F, mIsGlowing = F, mContactDamage = F, mFoam = F, mFoamDried = F, mOwnable = F;
 	
@@ -144,6 +145,7 @@ public abstract class TileEntityBase10ConnectorRendered extends TileEntityBase09
 	@Override public boolean usesRenderPass2(int aRenderPass, boolean[] aShouldSideBeRendered) {return aRenderPass == 0 || aRenderPass == 7 || connected((byte)(aRenderPass-1));}
 	
 	@Override public int getLightOpacity() {return mFoamDried ? LIGHT_OPACITY_MAX : mTransparent ? mDiameter >= 1.0F ? LIGHT_OPACITY_WATER : mDiameter > 0.5F ? LIGHT_OPACITY_LEAVES : LIGHT_OPACITY_NONE : mDiameter >= 1.0F ? LIGHT_OPACITY_MAX : mDiameter > 0.5F ? LIGHT_OPACITY_WATER : LIGHT_OPACITY_LEAVES;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return !mFoam && mDiameter < 1.0F && !hasCovers();}
 	
 	@Override
 	public boolean onPlaced(ItemStack aStack, EntityPlayer aPlayer, MultiTileEntityContainer aMTEContainer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
