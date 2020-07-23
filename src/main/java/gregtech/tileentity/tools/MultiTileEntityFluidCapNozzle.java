@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
@@ -49,7 +50,7 @@ import net.minecraftforge.fluids.IFluidContainerItem;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityFluidCapNozzle extends TileEntityBase10Attachment {
+public class MultiTileEntityFluidCapNozzle extends TileEntityBase10Attachment implements IMTE_IgnorePlayerCollisionWhenPlacing {
 	public boolean mAcidProof = F;
 	
 	@Override
@@ -154,6 +155,7 @@ public class MultiTileEntityFluidCapNozzle extends TileEntityBase10Attachment {
 	}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.capnozzle";}
 }

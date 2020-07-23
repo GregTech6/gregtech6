@@ -48,7 +48,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities implements ITileEntityQuickObstructionCheck, IMTE_CanEntityDestroy, IMTE_OnNeighborBlockChange, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetFlammability, IMTE_GetFireSpreadSpeed {
+public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities implements ITileEntityQuickObstructionCheck, IMTE_CanEntityDestroy, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnNeighborBlockChange, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetFlammability, IMTE_GetFireSpreadSpeed {
 	public static final ITexture mTexture = BlockTextureCopied.get(Blocks.log, SIDE_FRONT, 0);
 	public float mMinX = PX_P[2], mMinZ = PX_P[7], mMaxX = PX_N[2], mMaxZ = PX_N[7];
 	
@@ -163,6 +163,7 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public boolean canEntityDestroy(Entity aEntity) {return !(aEntity instanceof EntityDragon);}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public float getExplosionResistance2() {return 0;}

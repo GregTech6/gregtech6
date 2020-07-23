@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,6 +25,7 @@ import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
@@ -51,7 +52,7 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, ITileEntityRemoteActivateable, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, ITileEntityRemoteActivateable, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	public boolean mActive = F, oActive = F, mInverted = F, mGlowInverted = F, mLampMode = F, mDoUnclickSound = F;
 	public byte mStrength = 15, mType = 0, mIndex = 0;
 	public long mLength = 0, mMaxLength = 20;
@@ -291,6 +292,7 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 	@Override public boolean checkObstruction(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {return F;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public byte getVisualData() {return (byte)((mActive?1:0)|(mInverted?2:0)|(mGlowInverted?4:0)|(mLampMode?8:0));}
 	@Override public void setVisualData(byte aData) {mActive=((aData&1)!=0); mInverted=((aData&2)!=0); mGlowInverted=((aData&4)!=0); mLampMode=((aData&8)!=0);}

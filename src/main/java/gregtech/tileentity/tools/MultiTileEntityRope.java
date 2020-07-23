@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,6 +25,7 @@ import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsLadder;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnBlockHarvested;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
@@ -51,7 +52,7 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IsLadder, IMTE_OnBlockHarvested, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_IsLadder, IMTE_OnBlockHarvested, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -199,6 +200,7 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 	@Override public byte getDefaultSide() {return SIDE_Y_NEG;}
 	@Override public boolean[] getValidSides() {return SIDES_VALID;}
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.rope";}
 }

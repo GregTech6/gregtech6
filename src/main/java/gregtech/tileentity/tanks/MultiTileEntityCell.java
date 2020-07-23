@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,7 @@ package gregtech.tileentity.tanks;
 
 import static gregapi.data.CS.*;
 
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureFluid;
@@ -35,7 +36,7 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCell extends TileEntityBase10FluidContainerSyncSmall {
+public class MultiTileEntityCell extends TileEntityBase10FluidContainerSyncSmall implements IMTE_IgnorePlayerCollisionWhenPlacing {
 	public ITexture[] mTextures = new ITexture[3];
 	
 	@Override
@@ -75,6 +76,8 @@ public class MultiTileEntityCell extends TileEntityBase10FluidContainerSyncSmall
 	@Override public float getSurfaceDistance(byte aSide) {return SIDES_VERTICAL[aSide]?0.0F:PX_P[ 5];}
 	
 	@Override public byte getMaxStackSize(ItemStack aStack, byte aDefault) {return aDefault;}
+	
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.cell";}
 }

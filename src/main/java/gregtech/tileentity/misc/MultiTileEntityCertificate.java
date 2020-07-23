@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import java.util.List;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLifeSpan;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnDespawn;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnServerLoad;
@@ -56,7 +57,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle implements IMTE_OnRegistration, IMTE_OnDespawn, IMTE_GetLifeSpan, IMTE_OnServerLoad, IMTE_OnServerSave, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
+public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle implements IMTE_OnRegistration, IMTE_OnDespawn, IMTE_GetLifeSpan, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnServerLoad, IMTE_OnServerSave, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	public static final ArrayListNoNulls<String> ALREADY_RECEIVED = new ArrayListNoNulls<>();
 	
 	@Override
@@ -169,6 +170,7 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 	@Override public boolean isSurfaceOpaque2       (byte aSide) {return F;}
 	@Override public boolean isSideSolid2           (byte aSide) {return F;}
 	@Override public boolean allowCovers            (byte aSide) {return F;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	

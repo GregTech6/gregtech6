@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
@@ -52,7 +53,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements ITileEntityMold {
+public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements ITileEntityMold, IMTE_IgnorePlayerCollisionWhenPlacing {
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	protected boolean mAcidProof = F, mAutoPull = F;
@@ -215,6 +216,7 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 	}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.smeltery.drain";}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
@@ -42,7 +43,7 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMeasuringPot extends TileEntityBase10FluidContainerSyncSmall {
+public class MultiTileEntityMeasuringPot extends TileEntityBase10FluidContainerSyncSmall implements IMTE_IgnorePlayerCollisionWhenPlacing {
 	public long mCapacity = 1000;
 	
 	@Override
@@ -143,6 +144,7 @@ public class MultiTileEntityMeasuringPot extends TileEntityBase10FluidContainerS
 	@Override public boolean canWaterCrops() {return T;}
 	@Override public boolean canPickUpFluids() {return T;}
 	@Override public boolean canFillWithRain() {return T;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.measuring.pot";}
 }

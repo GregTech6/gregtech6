@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetFoodValues;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetItemUseAction;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxItemUseDuration;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEaten;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -38,7 +39,7 @@ import net.minecraft.util.AxisAlignedBB;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCup extends TileEntityBase10FluidContainerSyncSmall implements IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration {
+public class MultiTileEntityCup extends TileEntityBase10FluidContainerSyncSmall implements IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_GetFoodValues, IMTE_OnEaten, IMTE_GetItemUseAction, IMTE_GetMaxItemUseDuration {
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		return mTank.has() ? 6 : 5;
@@ -88,6 +89,7 @@ public class MultiTileEntityCup extends TileEntityBase10FluidContainerSyncSmall 
 	
 	@Override public boolean canFillWithRain() {return T;}
 	@Override public boolean canDrinkFromSide(byte aSide) {return T;}
+	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.cup";}
 }

@@ -73,6 +73,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
@@ -174,13 +175,14 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 			}
 			Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
 			
+			if (!tReplacedBlock.isReplaceable(aWorld, aX, aY, aZ) || !mBlock.canReplace(aWorld, aX, aY, aZ, aSide, aStack)) return F;
 			if (aStack.stackSize == 0 || (aPlayer != null && !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack))) return F;
 			
 			MultiTileEntityContainer aMTEContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aWorld, aX, aY, aZ, aStack);
 			
 			if (aMTEContainer != null
 			&& (aPlayer == null || aPlayer.isSneaking() || !(aMTEContainer.mTileEntity instanceof IMTE_OnlyPlaceableWhenSneaking) || !((IMTE_OnlyPlaceableWhenSneaking)aMTEContainer.mTileEntity).onlyPlaceableWhenSneaking())
-			&& ((aMTEContainer.mTileEntity instanceof IMTE_IgnorePlayerCollisionWhenPlacing && ((IMTE_IgnorePlayerCollisionWhenPlacing)aMTEContainer.mTileEntity).ignorePlayerCollisionWhenPlacing()) || aWorld.canPlaceEntityOnSide(aMTEContainer.mBlock, aX, aY, aZ, F, aSide, aPlayer, aStack))
+			&& ((aMTEContainer.mTileEntity instanceof IMTE_IgnorePlayerCollisionWhenPlacing && ((IMTE_IgnorePlayerCollisionWhenPlacing)aMTEContainer.mTileEntity).ignorePlayerCollisionWhenPlacing()) || aWorld.checkNoEntityCollision(AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1)))
 			&& (!(aMTEContainer.mTileEntity instanceof IMTE_CanPlace) || ((IMTE_CanPlace)aMTEContainer.mTileEntity).canPlace(aStack, aPlayer, aWorld, aX, aY, aZ, (byte)aSide, aHitX, aHitY, aHitZ))
 			&& aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
 				
