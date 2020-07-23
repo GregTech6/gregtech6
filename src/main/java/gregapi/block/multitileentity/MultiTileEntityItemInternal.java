@@ -178,13 +178,18 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 			
 			MultiTileEntityContainer aMTEContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aWorld, aX, aY, aZ, aStack);
 			
-			if (aMTEContainer != null && (aPlayer == null || aPlayer.isSneaking() || !(aMTEContainer.mTileEntity instanceof IMTE_OnlyPlaceableWhenSneaking) || !((IMTE_OnlyPlaceableWhenSneaking)aMTEContainer.mTileEntity).onlyPlaceableWhenSneaking()) && ((aMTEContainer.mTileEntity instanceof IMTE_IgnorePlayerCollisionWhenPlacing && ((IMTE_IgnorePlayerCollisionWhenPlacing)aMTEContainer.mTileEntity).ignorePlayerCollisionWhenPlacing()) || aWorld.canPlaceEntityOnSide(aMTEContainer.mBlock, aX, aY, aZ, F, aSide, aPlayer, aStack)) && (!(aMTEContainer.mTileEntity instanceof IMTE_CanPlace) || ((IMTE_CanPlace)aMTEContainer.mTileEntity).canPlace(aStack, aPlayer, aWorld, aX, aY, aZ, (byte)aSide, aHitX, aHitY, aHitZ)) && aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
-				// That is some complicated Bullshit I have to do to make my MTEs work right. 
+			if (aMTEContainer != null
+			&& (aPlayer == null || aPlayer.isSneaking() || !(aMTEContainer.mTileEntity instanceof IMTE_OnlyPlaceableWhenSneaking) || !((IMTE_OnlyPlaceableWhenSneaking)aMTEContainer.mTileEntity).onlyPlaceableWhenSneaking())
+			//&& ((aMTEContainer.mTileEntity instanceof IMTE_IgnorePlayerCollisionWhenPlacing && ((IMTE_IgnorePlayerCollisionWhenPlacing)aMTEContainer.mTileEntity).ignorePlayerCollisionWhenPlacing()) || aWorld.canPlaceEntityOnSide(aMTEContainer.mBlock, aX, aY, aZ, F, aSide, aPlayer, aStack))
+			&& (!(aMTEContainer.mTileEntity instanceof IMTE_CanPlace) || ((IMTE_CanPlace)aMTEContainer.mTileEntity).canPlace(aStack, aPlayer, aWorld, aX, aY, aZ, (byte)aSide, aHitX, aHitY, aHitZ))
+			&& aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
+				
+				// That is some complicated Bullshit I have to do to make my MTEs work right.
 				((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(F);
-				WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
+				WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
 				WD.set(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, 0, F);
 				((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
-				WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, T);
+				WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, T);
 				
 				try {
 					if (!(aMTEContainer.mTileEntity instanceof IMTE_OnPlaced) || ((IMTE_OnPlaced)aMTEContainer.mTileEntity).onPlaced(aStack, aPlayer, aMTEContainer, aWorld, aX, aY, aZ, (byte)aSide, aHitX, aHitY, aHitZ)) {

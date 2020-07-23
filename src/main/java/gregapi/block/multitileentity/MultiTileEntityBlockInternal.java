@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -86,11 +86,14 @@ public class MultiTileEntityBlockInternal extends Block implements IRenderedBloc
 		Block tReplacedBlock = aWorld.getBlock(aX, aY, aZ);
 		MultiTileEntityContainer aMTEContainer = mMultiTileEntityRegistry.getNewTileEntityContainer(aWorld, aX, aY, aZ, aMetaData, aNBT);
 		if (aMTEContainer != null && aWorld.setBlock(aX, aY, aZ, aMTEContainer.mBlock, 15-aMTEContainer.mBlockMetaData, 2)) {
+			
+			// That is some complicated Bullshit I have to do to make my MTEs work right.
 			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(F);
-			WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
+			WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, F);
 			WD.set(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, 0, F);
 			((IMultiTileEntity)aMTEContainer.mTileEntity).setShouldRefresh(T);
-			WD.te(aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
+			WD.te (aWorld, aX, aY, aZ, aMTEContainer.mTileEntity, aCauseBlockUpdates);
+			
 			try {
 				if (aMTEContainer.mTileEntity instanceof IMTE_HasMultiBlockMachineRelevantData) {
 					if (((IMTE_HasMultiBlockMachineRelevantData)aMTEContainer.mTileEntity).hasMultiBlockMachineRelevantData()) ITileEntityMachineBlockUpdateable.Util.causeMachineUpdate(aWorld, aX, aY, aZ, aMTEContainer.mBlock, aMTEContainer.mBlockMetaData, F);
