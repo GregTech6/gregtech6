@@ -50,7 +50,7 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
 [ADDED] The Shelf in Workshops in GT6 Dungeons now contains two Rolls of Tape, which is always enough to haul both of the Stone Mass Storages and then some.
 [ADDED] Farming themed Room to GT6 Dungeons to showcase the Universal Flower Pot and a good use for Glowtus as Covering for the Water Hole in Farms.
-[ADDED] The Coconut Tree from GT6U got Backported. ^^
+[ADDED] The Coconut Tree from GT6U got Backported, and has been given proper development. No longer a tall Hazel Tree Ripoff.
 [ADDED]
 Dedicated Wood Materials for many Types of Wood.
 This will influence basically every common Wood ITEM. Ofcourse the Generifier works on all of them.

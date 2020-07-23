@@ -470,6 +470,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenTreeBlueMahoe   ("tree.bluemahoe"    , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
 		new WorldgenTreeHazel       ("tree.hazel"        , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM);
 		new WorldgenTreeCinnamon    ("tree.cinnamon"     , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_EREBUS, GEN_TROPICS);
+		new WorldgenTreeCoconut     ("tree.coconut"      , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_ATUM, GEN_TROPICS);
 		new WorldgenTreeRainbowood  ("tree.rainbowood"   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_EREBUS, GEN_ALFHEIM, GEN_AETHER);
 		
 		new WorldgenRocks           ("rocks"             , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ATUM);

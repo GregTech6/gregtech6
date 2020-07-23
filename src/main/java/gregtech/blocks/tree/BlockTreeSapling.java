@@ -251,7 +251,18 @@ public class BlockTreeSapling extends BlockBaseSapling {
 			
 			for (int tY = aY; tY < tMaxHeight; tY++) placeTree(aWorld, aX, tY, aZ, BlocksGT.LogB, 2);
 			
-			for (int i = -4; i <= 4; i++) for (int j = -4; j <= 4; j++) if (i == 0 || j == 0 || i == j || i == -j) {
+			for (int i = -3; i <= 3; i++) for (int j = -3; j <= 3; j++) if (i == j || i == -j) {
+				if (Math.abs(i) == 3 || Math.abs(j) == 3) {
+					placeTree(aWorld, aX+i, tMaxHeight-1, aZ+j, BlocksGT.Leaves, 14);
+					placeTree(aWorld, aX+i, tMaxHeight-2, aZ+j, BlocksGT.Leaves, 14);
+				} else if (Math.abs(i) == 2 || Math.abs(j) == 2) {
+					placeTree(aWorld, aX+i, tMaxHeight  , aZ+j, BlocksGT.Leaves, 14);
+					placeTree(aWorld, aX+i, tMaxHeight-1, aZ+j, BlocksGT.Leaves, 14);
+				} else {
+					placeTree(aWorld, aX+i, tMaxHeight  , aZ+j, BlocksGT.Leaves, 14);
+				}
+			}
+			for (int i = -4; i <= 4; i++) for (int j = -4; j <= 4; j++) if (i == 0 || j == 0) {
 				if (Math.abs(i) == 4 || Math.abs(j) == 4) {
 					placeTree(aWorld, aX+i, tMaxHeight-1, aZ+j, BlocksGT.Leaves, 14);
 					placeTree(aWorld, aX+i, tMaxHeight-2, aZ+j, BlocksGT.Leaves, 14);
