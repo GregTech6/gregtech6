@@ -79,7 +79,7 @@ public class Loader_OreProcessing implements Runnable {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void run() {
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
-
+		
 		final ITexture[] tStoneTextures = new ITexture[] {
 		  BlockTextureCopied.get(Blocks.stone, 0)
 		, BlockTextureCopied.get(Blocks.cobblestone, 0)
@@ -92,7 +92,7 @@ public class Loader_OreProcessing implements Runnable {
 		, BlockTextureCopied.get(Blocks.double_stone_slab, SIDE_FRONT, 0)
 		};
 		addListener(OP.plate.dat(MT.Stone).toString(), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			CoverRegistry.put(aEvent.mStack, new CoverTextureMulti(T, SFX.MC_DIG_ROCK, tStoneTextures));
+			CoverRegistry.put(aEvent.mStack, new CoverTextureMulti(T, F, SFX.MC_DIG_ROCK, tStoneTextures));
 		}});
 		addListener(OP.plate.dat(MT.Netherrack).toString(), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(BlockTextureCopied.get(Blocks.netherrack, 0), SFX.MC_DIG_ROCK));
@@ -106,17 +106,17 @@ public class Loader_OreProcessing implements Runnable {
 		addListener(OP.plate.dat(MT.Obsidian).toString(), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			CoverRegistry.put(aEvent.mStack, new CoverTextureSimple(BlockTextureCopied.get(Blocks.obsidian, 0), SFX.MC_DIG_ROCK));
 		}});
-
+		
 		for (BlockBase tBlock : BlocksGT.stones) {
 		final BlockStones tStone = (BlockStones)tBlock;
 		final ITexture[] tTextures = new ITexture[16];
 		for (int i = 0; i < tTextures.length; i++) tTextures[i] = BlockTextureDefault.get(tStone.mIcons[i]);
-
+		
 		addListener(OP.plate.dat(tStone.mMaterial).toString(), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			CoverRegistry.put(aEvent.mStack, new CoverTextureMulti(T, SFX.MC_DIG_ROCK, tTextures));
+			CoverRegistry.put(aEvent.mStack, new CoverTextureMulti(T, F, SFX.MC_DIG_ROCK, tTextures));
 		}});
 		}
-
+		
 		}};
 
 		plate                       .addListener(new OreProcessing_CoversMulti((ICondition<OreDictMaterial>)ICondition.TRUE, blockSolid, blockPlate, blockIngot, casingMachine, blockDust));
@@ -238,7 +238,7 @@ public class Loader_OreProcessing implements Runnable {
 			if (mCondition.isTrue(aEvent.mMaterial) && ST.block(aEvent.mStack) == NB && CoverRegistry.get(aEvent.mStack) == null) {
 				ITexture[] tTextures = new ITexture[mTargetPrefixes.length];
 				for (int i = 0; i < tTextures.length; i++) tTextures[i] = BlockTextureDefault.get(aEvent.mMaterial, mTargetPrefixes[i]);
-				CoverRegistry.put(aEvent.mStack, new CoverTextureMulti(aEvent.mMaterial != MT.Paper, tTextures));
+				CoverRegistry.put(aEvent.mStack, new CoverTextureMulti(aEvent.mMaterial != MT.Paper, F, tTextures));
 			}
 		}
 	}

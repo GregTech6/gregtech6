@@ -110,7 +110,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean mIsAddedToEnet = F, mDoEnetCheck = T;
 	
 	/** This Variable is for forcing the Selection Box to be full. */
-	public boolean mForceFullSelectionBox = F;
+	public static boolean FORCE_FULL_SELECTION_BOXES = F;
 	
 	/** If this TileEntity is ticking at all */
 	public final boolean mIsTicking;
@@ -776,8 +776,8 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean isSurfaceOpaque          (byte aSide) {return T;}
 	public boolean isSealable               (byte aSide) {return F;}
 	public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box();}
-	public AxisAlignedBB getSelectedBoundingBoxFromPool () {if (mForceFullSelectionBox) return box(); return box(shrunkBox());}
-	public void setBlockBoundsBasedOnState(Block aBlock) {if (mForceFullSelectionBox) box(aBlock); else box(aBlock, shrunkBox());}
+	public AxisAlignedBB getSelectedBoundingBoxFromPool () {if (FORCE_FULL_SELECTION_BOXES) return box(); return box(shrunkBox());}
+	public void setBlockBoundsBasedOnState(Block aBlock) {if (FORCE_FULL_SELECTION_BOXES) box(aBlock); else box(aBlock, shrunkBox());}
 	/** Old Coordinate containing Variant of onCoordinateChange, use only if you really need the Coordinates, as there is also a No-Parameter variant in use for some TileEntity Types! */
 	public void onCoordinateChange(World aWorld, int aOldX, int aOldY, int aOldZ) {onCoordinateChange();}
 	public void onCoordinateChange() {/**/}
@@ -927,10 +927,10 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean onDrawBlockHighlight2(DrawBlockHighlightEvent aEvent) {return F;}
 	
 	public final boolean onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
-		mForceFullSelectionBox = F;
+		FORCE_FULL_SELECTION_BOXES = F;
 		if (!SIDES_VALID[aEvent.target.sideHit] || onDrawBlockHighlight2(aEvent)) return T;
 		if (ST.valid(aEvent.currentItem) && isUsingWrenchingOverlay(aEvent.currentItem, (byte)aEvent.target.sideHit)) {
-			mForceFullSelectionBox = T;
+			FORCE_FULL_SELECTION_BOXES = T;
 			byte tConnections = 0; for (byte i = 0; i < 6; i++) if (isConnectedWrenchingOverlay(aEvent.currentItem, i)) tConnections |= (1 << i);
 			RenderHelper.drawWrenchOverlay(aEvent.player, aEvent.target.blockX, aEvent.target.blockY, aEvent.target.blockZ, tConnections, (byte)aEvent.target.sideHit, aEvent.partialTicks);
 			return T;

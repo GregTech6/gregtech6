@@ -45,6 +45,7 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [CHANGED] Technically speaking, Shovels/Spades/Plows and such should be able to break Fire now, BUT due to the nature of how you click Fire to break it, that wont directly work. This is just a special case in case a Mod adds a Block that uses the Material "Fire", so that it can be harvested somehow.
 [CHANGED] Crates now use Crowbar Harvesting to drop their Contents instead of Rightclicking with Crowbar. Also works with the Universal Spade.
 [CHANGED] Crates can now be made with Wooden and Plastic Screws too. Iron based Screws were maybe a little bit of a too difficult requirement for this kind of thing.
+[CHANGED] Pipe/Wire Selection Boxes.
 [ADDED] Zeolite to Dungeon Loot Chests just to make sure people can find it by accident.
 [ADDED] Pickaxes and Drills made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Walls about 40 times faster. The Construction Pickaxe is faster than the regular Pickaxe in this case, since the Maze Bricks dont count as natural.
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
