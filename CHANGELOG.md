@@ -29,7 +29,7 @@ We have our own Version of it now, which also works with more than just ~3 speci
 Bugs that might have happened to a few things, that I might have overlooked could exist, such as:
 "GT6 TileEntity Blocks changing their default Color, because I added one more Defaultable Color Parameter to save space"
 "Recipes for certain wooden Items being uncraftable, because of the general Wood Type overhaul"
-"Some random thing might Crash when updating from 6.13 to 6.14 because the ASM Code is not tested with ALL the Mods" (I am confident this wont happen)
+"Some random thing might Crash when updating from 6.13 to 6.14 because the ASM Code is not tested with ALL the Mods" (I am very confident this wont happen though, just not confident enough to not mention it at the very least)
 [COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
 [COMPAT] TerraFirmaCraft(Plus) Stuff should work slightly better now. TFC Sticks and Torches are now being accounted for when doing Recipe Outputs.
 [IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
@@ -50,7 +50,12 @@ Bugs that might have happened to a few things, that I might have overlooked coul
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.
 [ADDED] The Shelf in Workshops in GT6 Dungeons now contains two Rolls of Tape, which is always enough to haul both of the Stone Mass Storages and then some.
 [ADDED] Farming themed Room to GT6 Dungeons to showcase the Universal Flower Pot and a good use for Glowtus as Covering for the Water Hole in Farms.
-[ADDED] The Coconut Tree from GT6U got Backported, and has been given proper development. No longer a tall Hazel Tree Ripoff.
+[ADDED]
+The Coconut Tree from GT6U got Backported, and has been given proper development. No longer a tall Hazel Tree Ripoff.
+These Trees will grow at Beach Biomes, aswell as most Tropical and Oasis Biomes.
+Due to the lower amount of Leaves, they have a higher Sapling rate than any other GT6 Tree to compensate.
+You might have found those "Work in Progress" Saplings in random Chests in Dungeons and such, now they are all growable.
+The dropped Coconuts behave just like other Mods Coconuts in GT6 Recipes, and if you didn't have such Mods, you can make Coconut Milk, Coconut Cream and similar now.
 [ADDED]
 Dedicated Wood Materials for many Types of Wood.
 This will influence basically every common Wood ITEM. Ofcourse the Generifier works on all of them.
