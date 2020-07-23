@@ -85,7 +85,7 @@ public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
 		case 3: return 3;
 		case 4: return 3;
 		case 5: return 3;
-		case 6: return 3;
+		case 6: return 4;
 		case 7: return 3;
 		}
 		return 3;
@@ -100,7 +100,7 @@ public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
 		case 3: return 4;
 		case 4: return 2;
 		case 5: return 3;
-		case 6: return 3;
+		case 6: return 1;
 		case 7: return 3;
 		}
 		return 2;
