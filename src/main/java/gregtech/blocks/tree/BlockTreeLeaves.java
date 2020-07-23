@@ -116,7 +116,7 @@ public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
 			tChance -= 5 << aFortune;
 			if (tChance < 5) tChance = 5;
 		}
-		if (RNGSUS.nextInt(tChance) == 0) {
+		if (RNGSUS.nextInt(tChance) < ((aMeta & 7) == 6 ? 2 : 1)) {
 			rDrops.add(ST.make(getItemDropped(aMeta, RNGSUS, aFortune), 1, damageDropped(aMeta)));
 		} else {
 			switch(aMeta & 7) {

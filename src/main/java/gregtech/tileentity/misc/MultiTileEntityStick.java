@@ -105,6 +105,7 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 		if (tBiome.contains("redwood"    )) return getStick(OP.stick.mat(MT.WOODS.Redwood   , aAmount), aAmount);
 		if (tBiome.contains("cypress"    )) return getStick(OP.stick.mat(MT.WOODS.Cypress   , aAmount), aAmount);
 		if (tBiome.contains("maple"      )) return getStick(OP.stick.mat(MT.WOODS.Maple     , aAmount), aAmount);
+		if (tBiome.contains("tropic"     )) return getStick(OP.stick.mat(MT.WOODS.Coconut   , aAmount), aAmount);
 		if (tBiome.contains("aspen"      )) return getStick(OP.stick.mat(MT.WOODS.Aspen     , aAmount), aAmount);
 		if (tBiome.contains("autumn"     )) return getStick(OP.stick.mat(MT.WOODS.Autumn    , aAmount), aAmount);
 		if (tBiome.contains("spruce"     )) return getStick(OP.stick.mat(MT.WOODS.Spruce    , aAmount), aAmount);
