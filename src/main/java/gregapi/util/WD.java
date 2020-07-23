@@ -131,6 +131,7 @@ public class WD {
 	}
 	
 	public static boolean obstructed(World aWorld, int aX, int aY, int aZ, byte aSide) {
+		if (!OBSTRUCTION_CHECKS) return F;
 		aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
 		TileEntity tTileEntity = te(aWorld, aX, aY, aZ, T);
 		if (tTileEntity != null) {
