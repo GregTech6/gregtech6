@@ -308,7 +308,7 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	
 	public static interface IMTE_IgnorePlayerCollisionWhenPlacing extends IMultiTileEntity {
 		/** Return true to ignore the Player standing in the way of placing this Block. */
-		public boolean ignorePlayerCollisionWhenPlacing();
+		public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ);
 	}
 	
 	public static interface IMTE_OnItemRightClick extends IMultiTileEntity {

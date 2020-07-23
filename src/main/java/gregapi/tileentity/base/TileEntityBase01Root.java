@@ -778,6 +778,9 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box();}
 	public AxisAlignedBB getSelectedBoundingBoxFromPool () {if (FORCE_FULL_SELECTION_BOXES) return box(); return box(shrunkBox());}
 	public void setBlockBoundsBasedOnState(Block aBlock) {if (FORCE_FULL_SELECTION_BOXES) box(aBlock); else box(aBlock, shrunkBox());}
+	public boolean ignorePlayerCollisionWhenPlacing(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {return ignorePlayerCollisionWhenPlacing();}
+	public boolean ignorePlayerCollisionWhenPlacing() {return F;}
+	
 	/** Old Coordinate containing Variant of onCoordinateChange, use only if you really need the Coordinates, as there is also a No-Parameter variant in use for some TileEntity Types! */
 	public void onCoordinateChange(World aWorld, int aOldX, int aOldY, int aOldZ) {onCoordinateChange();}
 	public void onCoordinateChange() {/**/}

@@ -43,6 +43,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
@@ -151,7 +152,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];
 		}
 		
-		if (!aWorld.getBlock(aX, aY, aZ).isReplaceable(aWorld, aX, aY, aZ) || !canReplace(aWorld, aX, aY, aZ, aSide, aStack)) return F;
+		if (!aWorld.getBlock(aX, aY, aZ).isReplaceable(aWorld, aX, aY, aZ) || !canReplace(aWorld, aX, aY, aZ, aSide, aStack) || !aWorld.checkNoEntityCollision(AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1))) return F;
 		if (!aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack) || (aY == 255 && getMaterial().isSolid()) || !aWorld.canPlaceEntityOnSide(this, aX, aY, aZ, F, aSide, aPlayer, aStack)) return F;
 		
 		if (aItem.placeBlockAt(aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, onBlockPlaced(aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ, aItem.getMetadata(aStack.getItemDamage())))) {
