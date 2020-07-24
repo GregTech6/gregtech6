@@ -22,6 +22,7 @@ package gregapi.config;
 import static gregapi.data.CS.*;
 
 import java.io.File;
+import java.nio.file.Files;
 
 import gregapi.api.Abstract_Mod;
 import gregapi.data.CS.DirectoriesGT;
@@ -55,12 +56,12 @@ public class Config implements Runnable {
 				if (tPathUsed.renameTo(tPathLowercase)) tPathUsed = tPathLowercase;
 			} else {
 				if (tPathUppercase.exists()) {
-					if (tPathLowercase.exists() && !tPathUppercase.equals(tPathLowercase)) {
+					if (tPathLowercase.exists() && !Files.isSameFile(tPathLowercase.toPath(), tPathUppercase.toPath())) {
 						// This is likely on Unix Systems.
 						// There is two matching Config Files in this Folder, choose the Lowercase one.
 						tPathUsed = tPathLowercase;
 						// Try to kill the invalid one if possible, otherwise just leave it be.
-					//  tPathUppercase.delete();
+						tPathUppercase.delete();
 					} else {
 						// This is likely on Windows Systems. And in that case it would also happen regardless if the Name is already Lowercased or not.
 						// Try to rename the File if possible, otherwise just leave it be.
