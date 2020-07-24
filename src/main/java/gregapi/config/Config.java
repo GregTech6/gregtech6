@@ -22,6 +22,7 @@ package gregapi.config;
 import static gregapi.data.CS.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 
 import gregapi.api.Abstract_Mod;
@@ -73,8 +74,15 @@ public class Config implements Runnable {
 					tPathUsed = tPathLowercase;
 				}
 			}
+		} catch(IOException e) {
+			// Not like I could change anything if there was an IO-Error.
+			ERR.println("IO EXCEPTION WHEN ACCESSING CONFIG: " + tPathLowercase);
+		} catch(SecurityException e) {
+			// Well, guess we are READ ONLY here.
+			ERR.println("SECURITY EXCEPTION WHEN ACCESSING CONFIG: " + tPathLowercase);
 		} catch(Throwable e) {
-			// Not like that would change anything, if there was a File System related Error.
+			// WTF?
+			ERR.println("RANDOM EXCEPTION WHEN ACCESSING CONFIG: " + tPathLowercase);
 			e.printStackTrace(ERR);
 		}
 		
