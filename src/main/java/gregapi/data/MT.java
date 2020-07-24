@@ -3116,6 +3116,7 @@ public class MT {
 		Frozen              = woodnormal( 9312, "WoodFrozen"              , "Frozen Wood"         ,  84, 125, 125).put(MD.GT),
 		Scorched            = woodnormal( 9404, "WoodScorched"            , "Scorched Wood"       ,  44,  44,  44).put(MD.ERE),
 		Varnished           = woodnormal( 9405, "WoodVarnished"           , "Varnished Wood"      , 166,  11,  11).put(MD.ERE),
+		Bleached            = woodnormal( 9407, "WoodBleached"            , "Bleached Wood"       , 255, 255, 255).put(MD.ERE),
 		Tainted             = woodnormal( 9406, "WoodTainted"             , "Tainted Wood"        ,  90,  23, 231).put(MD.TCFM),
 		
 		Maple               = woodnormal( 9313, "Maple"                   , "Maple"               , 151,  26,  26).put(MD.FR),

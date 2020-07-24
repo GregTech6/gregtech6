@@ -25,28 +25,28 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [NOTE]
 The Thaumic Fixer Mod by Chocohead is no longer needed nor compatible!
 We have our own Version of it now, which also works with more than just ~3 specific Mods... He really fucked up that one...
+This Version of the hack is also compatible with Reikas Mods, unlike Chocoheads.
 [NOTE]
 Bugs that might have happened to a few things, that I might have overlooked could exist, such as:
-"GT6 TileEntity Blocks changing their default Color, because I added one more Defaultable Color Parameter to save space"
 "Recipes for certain wooden Items being uncraftable, because of the general Wood Type overhaul"
 "Some random thing might Crash when updating from 6.13 to 6.14 because the ASM Code is not tested with ALL the Mods" (I am very confident this wont happen though, just not confident enough to not mention it at the very least)
-[COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it so my original brutal way isn't needed anymore.
+[COMPAT] CoFH-Core should now much less likely crash SinglePlayer Worlds on Startup with the FMLProxyPacket Race Condition. OvermindDL1 made an ASM® thingy to fix it, so my original brutal way isn't needed anymore.
 [COMPAT] TerraFirmaCraft(Plus) Stuff should work slightly better now. TFC Sticks and Torches are now being accounted for when doing Recipe Outputs.
-[IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Peltier Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
+[IMPROVED] The Extender Manual now has a few more Lines to explain what Extenders are actually doing. I also added a Tooltip to Two-Faced Energy Converters (such as the Thermoelectric Cooler) to remind people that Universal Extenders do exist and can be used to literally cut Corners, when there is no "Thermal Conductor Wires" or similar available.
 [FIXED] An Issue reading Configs on Apple based File Systems (certain Config Files were deleted). I did not think Apple could do a mix of the Windows way and the Linux way of handling Case Sensitivity in File Names to the point of causing this.
 [FIXED] Fluid Tanks/Pipes with huge Capacities should no longer be limited to Integer.MAX_VALUE anymore.
-[FIXED] Lava Blocks should no longer set NON-flammable things on Fire, just because they are made of Wood. (Forestry Fireproof Wood and GT Fireproof Wood for example)
+[FIXED] Lava Blocks should no longer set NON-flammable things on Fire, just because they are made of Wood. (GT Fireproof Wood for example, Forestry Fireproof Wood is wrongly implemented sadly)
 [FIXED] Some things I saw GT6U has fixed too, like TFC Damage Multipliers for Heat and Frost Damage.
 [FIXED] Whoops, I made Titanium Invisible by accident.
 [FIXED] Crash with IC2 when High Level Radiation Effects are applied, like the ones from Neutronium.
 [FIXED] There was ~5 second long Lag Spikes, when certain Recipes were asked for, by the On-Demand Recipe System. Specifically Recipes with Selector Tags, Extruder Shapes or Fluids (Sawmill), aswell as Recipes with Empty Slots in the Anvil (Item Casings).
 [FIXED] Drones just vanished instead of dieing during the Bumblebee Breeding Process in a Bumbliary. Now there actually is Corpses for the dead breeding Drones too.
 [CHANGED] Certain Worldgen Features will no longer be present in the Overworld when TerraFirmaCraft is loaded.
-[CHANGED] Made Pincers and the Plunger the right Tool to harvest the Dragon Egg and Dragon-Egg-like Mod Blocks.
+[CHANGED] Made Pincers and the Plunger the right Tool to harvest the Dragon Egg and Dragon-Egg-like Mod Blocks. The Vanilla Dragon Egg still teleports though!
 [CHANGED] Technically speaking, Shovels/Spades/Plows and such should be able to break Fire now, BUT due to the nature of how you click Fire to break it, that wont directly work. This is just a special case in case a Mod adds a Block that uses the Material "Fire", so that it can be harvested somehow.
 [CHANGED] Crates now use Crowbar Harvesting to drop their Contents instead of Rightclicking with Crowbar. Also works with the Universal Spade.
 [CHANGED] Crates can now be made with Wooden and Plastic Screws too. Iron based Screws were maybe a little bit of a too difficult requirement for this kind of thing.
-[CHANGED] Pipe/Wire Selection Boxes and placement Behavior.
+[CHANGED] Pipe/Wire Selection Boxes and placement Behavior for the better.
 [ADDED] Zeolite to Dungeon Loot Chests just to make sure people can find it by accident.
 [ADDED] Pickaxes and Drills made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Walls about 40 times faster. The Construction Pickaxe is faster than the regular Pickaxe in this case, since the Maze Bricks dont count as natural.
 [ADDED] Tapes can now be put in Shelves. Remote Activators can also be put in Shelves now, but are hidden as a Book like most things you might not want people to notice, such as Levers or Keys.

@@ -203,7 +203,7 @@ public class RM {
 	
 	public static boolean compact(ItemStack aContent, ItemStack aFull) {
 		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
-		Boxinator.addRecipe2(T, 16, 16, aContent, ST.tag(aContent.stackSize), aFull);
+		Boxinator .addRecipe2(T, 16, 16, aContent, ST.tag(aContent.stackSize), aFull);
 		Compressor.addRecipe1(T, 16, 16, aContent, aFull);
 		ic2_compressor(aContent, aFull);
 		return T;
@@ -211,21 +211,24 @@ public class RM {
 	
 	public static boolean compact(ItemStack aContent, long aAmount, ItemStack aFull) {
 		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
-		Boxinator.addRecipe2(T, 16, 16, ST.amount(aAmount, aContent), ST.tag(aAmount), aFull);
+		Boxinator .addRecipe2(T, 16, 16, ST.amount(aAmount, aContent), ST.tag(aAmount), aFull);
 		Compressor.addRecipe1(T, 16, 16, ST.amount(aAmount, aContent), aFull);
 		ic2_compressor(ST.amount(aAmount, aContent), aFull);
 		return T;
 	}
 	
-	public static boolean unpack(ItemStack aFull, ItemStack aContent) {
+	public static boolean unpack (ItemStack aFull, ItemStack aContent) {
 		if (ST.invalid(aFull) || ST.invalid(aContent)) return F;
 		Unboxinator.addRecipe1(T, 16, 16, aFull, aContent);
 		ic2_extractor(aFull, aContent);
 		return T;
 	}
 	
-	public static boolean packunpack(ItemStack aContent, ItemStack aFull) {
+	public static boolean packunpack (ItemStack aContent, ItemStack aFull) {
 		return pack(aContent, aFull) && unpack(aFull, aContent);
+	}
+	public static boolean packunpack (ItemStack aContent, long aAmount, ItemStack aFull) {
+		return pack(aContent, 9, aFull) && unpack(aFull, ST.amount(aAmount, aContent));
 	}
 	
 	public static boolean biomass(ItemStack aBiomass) {return biomass(aBiomass, 64);}
