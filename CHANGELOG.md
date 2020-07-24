@@ -17,11 +17,11 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on my Game)
+6.14.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.00: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm playing Dwarf Fortress for the detriment of all other activities...)
+6.14.00:
 [NOTE]
 The Thaumic Fixer Mod by Chocohead is no longer needed nor compatible!
 We have our own Version of it now, which also works with more than just ~3 specific Mods... He really fucked up that one...
