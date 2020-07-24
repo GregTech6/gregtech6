@@ -60,7 +60,7 @@ public class Config implements Runnable {
 						// There is two matching Config Files in this Folder, choose the Lowercase one.
 						tPathUsed = tPathLowercase;
 						// Try to kill the invalid one if possible, otherwise just leave it be.
-						tPathUppercase.delete();
+					//  tPathUppercase.delete();
 					} else {
 						// This is likely on Windows Systems. And in that case it would also happen regardless if the Name is already Lowercased or not.
 						// Try to rename the File if possible, otherwise just leave it be.
@@ -72,7 +72,10 @@ public class Config implements Runnable {
 					tPathUsed = tPathLowercase;
 				}
 			}
-		} catch(Throwable e) {/* Not like that would change anything, if there was a File System related Error. */}
+		} catch(Throwable e) {
+			// Not like that would change anything, if there was a File System related Error.
+			e.printStackTrace(ERR);
+		}
 		
 		mConfig = new Configuration(tPathUsed);
 		mConfig.load();
