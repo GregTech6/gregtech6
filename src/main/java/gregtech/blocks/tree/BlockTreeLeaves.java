@@ -69,7 +69,7 @@ public class BlockTreeLeaves extends BlockBaseLeaves implements Runnable {
 	@Override
 	public void run() {
 		if (COMPAT_FR != null) {
-			COMPAT_FR.addWindfall(OP.stick.mat(MT.Wood, 1));
+			COMPAT_FR.addWindfall(IL.Stick.get(1));
 			COMPAT_FR.addWindfall(OP.stick.mat(MT.WOODS.Willow   , 1));
 			COMPAT_FR.addWindfall(OP.stick.mat(MT.WOODS.BlueMahoe, 1));
 			COMPAT_FR.addWindfall(OP.stick.mat(MT.WOODS.Hazel    , 1));

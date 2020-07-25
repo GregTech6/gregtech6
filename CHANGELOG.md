@@ -32,6 +32,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.14.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when IC2 is installed. This should reduce the occurences of it quite a bit, at least with GT6 TileEntities adjacent to the Transformer.
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.
+[FIXED] Some Wood Material Data for Erebus, Chisel and Netherite Plus.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
 
 

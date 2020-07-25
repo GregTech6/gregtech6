@@ -612,7 +612,7 @@ public final class OreDictManager {
 	}
 	public boolean setItemData_(ItemStack aStack, OreDictItemData aData) {
 		OreDictItemData tData = getAssociation_(aStack, F);
-		if (tData != null && (tData.mPrefix != OP.plate || tData.mMaterial.mMaterial != MT.Wood)) return F;
+		if (tData != null && (tData.mPrefix != OP.plate || (tData.mMaterial.mMaterial != MT.Wood && tData.mMaterial.mMaterial != ANY.Wood))) return F;
 		if (aStack.stackSize > 1) {
 			if (aData.mMaterial != null) aData.mMaterial.mAmount /= aStack.stackSize;
 			for (OreDictMaterialStack tMaterial : aData.mByProducts) tMaterial.mAmount /= aStack.stackSize;

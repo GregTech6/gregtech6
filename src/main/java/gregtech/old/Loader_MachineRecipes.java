@@ -119,7 +119,11 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addVacuumFreezerRecipe(ST.mkic("reactorCoolantSix"   , 1, W), ST.mkic("reactorCoolantSix"   , 1), 600);
 
 		if (!ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", F))
-		RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood          , 1), ST.make(Items.coal, 1, W), IL.Torch.get(4), 400, 1);
+		RA.addAssemblerRecipe(IL.Stick.get(1), ST.make(Items.coal, 1, W), IL.Torch.get(4), 400, 1);
+		RA.addAssemblerRecipe(IL.Stick.get(3), ST.tag(3), ST.make(Blocks.fence, 1, 0), 300, 4);
+		RA.addAssemblerRecipe(IL.Stick.get(2), OM.get(OP.ring, MT.Fe, 2), ST.make(Blocks.tripwire_hook, 1, 0), 400, 4);
+		RA.addAssemblerRecipe(IL.Stick.get(2), OM.get(OP.ring, MT.WroughtIron, 2), ST.make(Blocks.tripwire_hook, 1, 0), 400, 4);
+		RA.addAssemblerRecipe(IL.Stick.get(3), ST.make(Items.string, 3, W), ST.make(Items.bow, 1, 0), 400, 4);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Au            , 2), ST.tag(2), ST.make(Blocks.light_weighted_pressure_plate, 1, 0), 200, 4);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Fe            , 2), ST.tag(2), ST.make(Blocks.heavy_weighted_pressure_plate, 1, 0), 200, 4);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Fe            , 6), ST.tag(6), ST.make(Items.iron_door, 1, 0), 600, 4);
@@ -131,10 +135,6 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.WroughtIron   , 7), ST.tag(7), ST.make(Items.cauldron, 1, 0), 700, 4);
 		RA.addAssemblerRecipe(OM.get(OP.stick, MT.WroughtIron   , 1), ST.tag(1), ST.mkic("ironFence", 1), 100, 4);
 		RA.addAssemblerRecipe(OM.get(OP.stick, MT.WroughtIron   , 3), ST.tag(3), ST.make(Blocks.iron_bars, 4, 0), 300, 4);
-		RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood          , 3), ST.tag(3), ST.make(Blocks.fence, 1, 0), 300, 4);
-		RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood          , 2), OM.get(OP.ring, MT.Fe, 2), ST.make(Blocks.tripwire_hook, 1, 0), 400, 4);
-		RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood          , 2), OM.get(OP.ring, MT.WroughtIron, 2), ST.make(Blocks.tripwire_hook, 1, 0), 400, 4);
-		RA.addAssemblerRecipe(OM.get(OP.stick, MT.Wood          , 3), ST.make(Items.string, 3, W), ST.make(Items.bow, 1, 0), 400, 4);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Fe            , 3), OM.get(OP.minecartWheels, MT.Fe           , 2), ST.make(Items.minecart, 1, 0), 500, 2);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.WroughtIron   , 3), OM.get(OP.minecartWheels, MT.WroughtIron  , 2), ST.make(Items.minecart, 1, 0), 400, 2);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Steel         , 3), OM.get(OP.minecartWheels, MT.Steel        , 2), ST.make(Items.minecart, 1, 0), 300, 2);
@@ -169,7 +169,7 @@ public class Loader_MachineRecipes implements Runnable {
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.Fe, 5), ST.make(Blocks.trapped_chest, 1, W), ST.make(Blocks.hopper, 1, 0), 800, 2);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.WroughtIron, 5), ST.make(Blocks.chest, 1, W), ST.make(Blocks.hopper, 1, 0), 800, 2);
 		RA.addAssemblerRecipe(OM.get(OP.plate, MT.WroughtIron, 5), ST.make(Blocks.trapped_chest, 1, W), ST.make(Blocks.hopper, 1, 0), 800, 2);
-		RA.addAssemblerRecipe(OM.get(OP.dust, MT.Redstone, 1), OM.get(OP.stick, MT.Wood, 1), ST.make(Blocks.redstone_torch, 1, 0), 400, 1);
+		RA.addAssemblerRecipe(OM.get(OP.dust, MT.Redstone, 1), IL.Stick.get(1), ST.make(Blocks.redstone_torch, 1, 0), 400, 1);
 		RA.addAssemblerRecipe(OM.get(OP.dust, MT.Redstone, 1), OM.get(OP.plate, MT.Fe, 4), ST.make(Items.compass, 1, 0), 400, 4);
 		RA.addAssemblerRecipe(OM.get(OP.dust, MT.Redstone, 1), OM.get(OP.plate, MT.WroughtIron, 4), ST.make(Items.compass, 1, 0), 400, 4);
 		RA.addAssemblerRecipe(OM.get(OP.dust, MT.Redstone, 1), OM.get(OP.plate, MT.Au, 4), ST.make(Items.clock, 1, 0), 400, 4);

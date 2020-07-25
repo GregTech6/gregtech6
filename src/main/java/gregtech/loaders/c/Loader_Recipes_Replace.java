@@ -231,7 +231,7 @@ public class Loader_Recipes_Replace implements Runnable {
 			RecipeReplacer[] tReplacer = sRecipesMat;
 			if (aRecipe.mRod != null) {
 				if (aRecipe.mRod == MT.Wood) aRecipe.mRod = ANY.Wood;
-				ItemStack tRod = (aRecipe.mRod == ANY.Wood ? ST.make(Items.stick, 1, 0) : OP.stick.mat(aRecipe.mRod, 1));
+				ItemStack tRod = (aRecipe.mRod == ANY.Wood ? IL.Stick.get(1) : OP.stick.mat(aRecipe.mRod, 1));
 				if (tRod == null) continue;
 				STCK.func_150996_a(tRod.getItem());
 				STCK.stackSize = 1;
