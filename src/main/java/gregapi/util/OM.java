@@ -273,20 +273,28 @@ public class OM {
 	public static boolean materialcontains_(ItemStack aStack, TagData... aTags) {
 		return materialcontains(anydata_(aStack), aTags);
 	}
-	
 	public static boolean materialcontains(OreDictItemData aData, TagData... aTags) {
 		return aData != null && aData.mMaterial != null && aData.mMaterial.mMaterial.containsAll(aTags);
 	}
 	
 	public static boolean materialcontained(ItemStack aStack, OreDictMaterial... aMaterials) {
-		return materialcontained(anydata(aStack), aMaterials);
+		return materialcontained(anydata(aStack), F, aMaterials);
 	}
 	public static boolean materialcontained_(ItemStack aStack, OreDictMaterial... aMaterials) {
-		return materialcontained(anydata_(aStack), aMaterials);
+		return materialcontained(anydata_(aStack), F, aMaterials);
 	}
-	
 	public static boolean materialcontained(OreDictItemData aData, OreDictMaterial... aMaterials) {
-		if (aData != null) for (OreDictMaterial aMaterial : aMaterials) for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) if (aMaterial == tMaterial.mMaterial) return T; return F;
+		return materialcontained(aData, F, aMaterials);
+	}
+	public static boolean materialcontained(ItemStack aStack, boolean aReturnWhenNoData, OreDictMaterial... aMaterials) {
+		return materialcontained(anydata(aStack), aReturnWhenNoData, aMaterials);
+	}
+	public static boolean materialcontained_(ItemStack aStack, boolean aReturnWhenNoData, OreDictMaterial... aMaterials) {
+		return materialcontained(anydata_(aStack), aReturnWhenNoData, aMaterials);
+	}
+	public static boolean materialcontained(OreDictItemData aData, boolean aReturnWhenNoData, OreDictMaterial... aMaterials) {
+		if (aData == null) return aReturnWhenNoData;
+		for (OreDictMaterial aMaterial : aMaterials) for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) if (aMaterial == tMaterial.mMaterial) return T; return F;
 	}
 	
 	public static void blacklist(ItemStack aStack) {

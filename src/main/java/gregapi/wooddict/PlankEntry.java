@@ -115,10 +115,10 @@ public class PlankEntry {
 		}
 		
 		if (ST.valid(mPlank) && !WoodDictionary.PLANKS.containsKey(new ItemStackContainer(mPlank))) {
-			if (OM.materialcontained(mPlank, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mPlank, new OreDictItemData(mMaterialPlank, U));
+			if (OM.materialcontained(mPlank, T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mPlank, new OreDictItemData(mMaterialPlank, U));
 			if (ST.meta(mPlank) == W) for (int i = 0; i < 16; i++) {
 			ItemStack tPlank = ST.copyMeta(i, mPlank);
-			if (OM.materialcontained(tPlank, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tPlank, new OreDictItemData(mMaterialPlank, U));
+			if (OM.materialcontained(tPlank, T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tPlank, new OreDictItemData(mMaterialPlank, U));
 			}
 			WoodDictionary.PLANKS_ANY.put(mPlank, this);
 			WoodDictionary.PLANKS.put(mPlank, this);
@@ -127,10 +127,10 @@ public class PlankEntry {
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mPlank));
 		}
 		if (ST.valid(mStair) && !WoodDictionary.STAIRS.containsKey(new ItemStackContainer(mStair))) {
-			if (OM.materialcontained(mStair, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mStair, new OreDictItemData(mMaterialPlank, U4*3));
+			if (OM.materialcontained(mStair, T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mStair, new OreDictItemData(mMaterialPlank, U4*3));
 			if (ST.meta(mStair) == W) for (int i = 0; i < 16; i++) {
 			ItemStack tStair = ST.copyMeta(i, mStair);
-			if (OM.materialcontained(tStair, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tStair, new OreDictItemData(mMaterialPlank, U4*3));
+			if (OM.materialcontained(tStair, T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tStair, new OreDictItemData(mMaterialPlank, U4*3));
 			}
 			WoodDictionary.PLANKS_ANY.put(mStair, this);
 			WoodDictionary.STAIRS.put(mStair, this);
@@ -139,10 +139,10 @@ public class PlankEntry {
 			WoodDictionary.IGNORED_OREDICT_REGISTRATIONS.add(ST.item_(mStair));
 		}
 		if (ST.valid(mSlab) && !WoodDictionary.SLABS.containsKey(new ItemStackContainer(mSlab))) {
-			if (OM.materialcontained(mSlab , MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mSlab , new OreDictItemData(mMaterialPlank, U2));
+			if (OM.materialcontained(mSlab , T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mSlab , new OreDictItemData(mMaterialPlank, U2));
 			if (ST.meta(mSlab ) == W) for (int i = 0; i < 16; i++) {
 			ItemStack tSlab  = ST.copyMeta(i, mSlab );
-			if (OM.materialcontained(tSlab , MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tSlab , new OreDictItemData(mMaterialPlank, U2));
+			if (OM.materialcontained(tSlab , T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tSlab , new OreDictItemData(mMaterialPlank, U2));
 			}
 			WoodDictionary.PLANKS_ANY.put(mSlab, this);
 			WoodDictionary.SLABS.put(mSlab, this);

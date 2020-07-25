@@ -77,10 +77,10 @@ public class BeamEntry {
 		mPlankEntry.mBeamEntries.add(this);
 		
 		if (ST.valid(mBeam) && !WoodDictionary.WOODS.containsKey(new ItemStackContainer(mBeam))) {
-			if (OM.materialcontained(mBeam, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mBeam, new OreDictItemData(mMaterialBeam, (mPlankCountBuzz+1)*U));
+			if (OM.materialcontained(mBeam, T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(mBeam, new OreDictItemData(mMaterialBeam, (mPlankCountBuzz+1)*U));
 			if (ST.meta(mBeam) == W) for (int i = 0; i < 16; i++) {
 			ItemStack tBeam = ST.copyMeta(i, mBeam);
-			if (OM.materialcontained(tBeam, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tBeam, new OreDictItemData(mMaterialBeam, (mPlankCountBuzz+1)*U));
+			if (OM.materialcontained(tBeam, T, MT.Wood, ANY.Wood)) OreDictManager.INSTANCE.setItemData_(tBeam, new OreDictItemData(mMaterialBeam, (mPlankCountBuzz+1)*U));
 			}
 			WoodDictionary.BEAMS.put(mBeam, this);
 			WoodDictionary.LIST_BEAMS.add(this);

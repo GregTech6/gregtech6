@@ -57,12 +57,12 @@ public class LoaderWoodDictionary implements Runnable {
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 3));
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 4));
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 5));
-		new SaplingEntry(ST.make(Blocks.sapling, 1, 0), new WoodEntry(ST.make(Blocks.log , 1, 0), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 0), new PlankEntry(ST.make(Blocks.planks, 1, 0), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs     , 1, 0), MT.WOODS.Oak    , 0))), ST.make(Blocks.leaves , 1, 0));
-		new SaplingEntry(ST.make(Blocks.sapling, 1, 1), new WoodEntry(ST.make(Blocks.log , 1, 1), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 1), new PlankEntry(ST.make(Blocks.planks, 1, 1), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs  , 1, 0), MT.WOODS.Spruce , 1))), ST.make(Blocks.leaves , 1, 1));
-		new SaplingEntry(ST.make(Blocks.sapling, 1, 2), new WoodEntry(ST.make(Blocks.log , 1, 2), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 2), new PlankEntry(ST.make(Blocks.planks, 1, 2), ST.make(Blocks.wooden_slab, 1, 2), ST.make(Blocks.birch_stairs   , 1, 0), MT.WOODS.Birch  , 2))), ST.make(Blocks.leaves , 1, 2));
-		new SaplingEntry(ST.make(Blocks.sapling, 1, 3), new WoodEntry(ST.make(Blocks.log , 1, 3), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 3), new PlankEntry(ST.make(Blocks.planks, 1, 3), ST.make(Blocks.wooden_slab, 1, 3), ST.make(Blocks.jungle_stairs  , 1, 0), MT.WOODS.Jungle , 3))), ST.make(Blocks.leaves , 1, 3));
-		new SaplingEntry(ST.make(Blocks.sapling, 1, 4), new WoodEntry(ST.make(Blocks.log2, 1, 0), new BeamEntry(ST.make(BlocksGT.Beam2, 1, 0), new PlankEntry(ST.make(Blocks.planks, 1, 4), ST.make(Blocks.wooden_slab, 1, 4), ST.make(Blocks.acacia_stairs  , 1, 0), MT.WOODS.Acacia , 4))), ST.make(Blocks.leaves2, 1, 0));
-		new SaplingEntry(ST.make(Blocks.sapling, 1, 5), new WoodEntry(ST.make(Blocks.log2, 1, 1), new BeamEntry(ST.make(BlocksGT.Beam2, 1, 1), new PlankEntry(ST.make(Blocks.planks, 1, 5), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), MT.WOODS.DarkOak, 5))), ST.make(Blocks.leaves2, 1, 1));
+		new SaplingEntry(ST.make(Blocks.sapling, 1, 0), new WoodEntry(ST.make(Blocks.log , 1, 0), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 0), new PlankEntry(ST.make(Blocks.planks, 1, 0), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs     , 1, W), MT.WOODS.Oak    , 0))), ST.make(Blocks.leaves , 1, 0));
+		new SaplingEntry(ST.make(Blocks.sapling, 1, 1), new WoodEntry(ST.make(Blocks.log , 1, 1), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 1), new PlankEntry(ST.make(Blocks.planks, 1, 1), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs  , 1, W), MT.WOODS.Spruce , 1))), ST.make(Blocks.leaves , 1, 1));
+		new SaplingEntry(ST.make(Blocks.sapling, 1, 2), new WoodEntry(ST.make(Blocks.log , 1, 2), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 2), new PlankEntry(ST.make(Blocks.planks, 1, 2), ST.make(Blocks.wooden_slab, 1, 2), ST.make(Blocks.birch_stairs   , 1, W), MT.WOODS.Birch  , 2))), ST.make(Blocks.leaves , 1, 2));
+		new SaplingEntry(ST.make(Blocks.sapling, 1, 3), new WoodEntry(ST.make(Blocks.log , 1, 3), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 3), new PlankEntry(ST.make(Blocks.planks, 1, 3), ST.make(Blocks.wooden_slab, 1, 3), ST.make(Blocks.jungle_stairs  , 1, W), MT.WOODS.Jungle , 3))), ST.make(Blocks.leaves , 1, 3));
+		new SaplingEntry(ST.make(Blocks.sapling, 1, 4), new WoodEntry(ST.make(Blocks.log2, 1, 0), new BeamEntry(ST.make(BlocksGT.Beam2, 1, 0), new PlankEntry(ST.make(Blocks.planks, 1, 4), ST.make(Blocks.wooden_slab, 1, 4), ST.make(Blocks.acacia_stairs  , 1, W), MT.WOODS.Acacia , 4))), ST.make(Blocks.leaves2, 1, 0));
+		new SaplingEntry(ST.make(Blocks.sapling, 1, 5), new WoodEntry(ST.make(Blocks.log2, 1, 1), new BeamEntry(ST.make(BlocksGT.Beam2, 1, 1), new PlankEntry(ST.make(Blocks.planks, 1, 5), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, W), MT.WOODS.DarkOak, 5))), ST.make(Blocks.leaves2, 1, 1));
 		new BeamEntry(ST.make(BlocksGT.Beam1FireProof, 1, 0), WoodDictionary.PLANKS.get(Blocks.planks, 0));
 		new BeamEntry(ST.make(BlocksGT.Beam1FireProof, 1, 1), WoodDictionary.PLANKS.get(Blocks.planks, 1));
 		new BeamEntry(ST.make(BlocksGT.Beam1FireProof, 1, 2), WoodDictionary.PLANKS.get(Blocks.planks, 2));
@@ -708,7 +708,7 @@ public class LoaderWoodDictionary implements Runnable {
 			new WoodEntry(ST.make(MD.ERE, "saplessLog"  , 1, W), WoodDictionary.PLANKS.get(tPlank, 6));
 			new PlankEntry(ST.make(tPlank, 1, 7), ST.make(MD.ERE, "slabPlanksWhite" , 1, W), ST.make(MD.ERE, "plankStairWhite" , 1, W), MT.Wood  , 116);
 			new PlankEntry(ST.make(tPlank, 1, 8), ST.make(MD.ERE, "slabPlanksBamboo", 1, W), ST.make(MD.ERE, "plankStairBamboo", 1, W), MT.Bamboo, 117);
-			new PlankEntry(ST.make(MD.ERE, "petrifiedWoodPlanks", 1, W), ST.make(MD.ERE, "slab-petrifiedWoodPlanks0", 1, W), ST.make(MD.ERE, "petrifiedWoodStairs", 1, 0), MT.PetrifiedWood, 120);
+			new PlankEntry(ST.make(MD.ERE, "petrifiedWoodPlanks", 1, W), ST.make(MD.ERE, "slab-petrifiedWoodPlanks0", 1, W), ST.make(MD.ERE, "petrifiedWoodStairs", 1, W), MT.PetrifiedWood, 120);
 			new PlankEntry(ST.make(MD.ERE, "planks_varnished", 1, W), MT.WOODS.Varnished, 122);
 			
 			CR.shaped(ST.make(tPlank, 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.ERE, "slabPlanksBaobab"    ));
@@ -741,12 +741,12 @@ public class LoaderWoodDictionary implements Runnable {
 			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "acacia_planks"  , 1, i));
 			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.CHSL, "dark_oak_planks", 1, i));
 			
-			new PlankEntry(ST.make(MD.CHSL, "oak_planks"     , 1, i), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs     , 1, 0), MT.WOODS.Oak);
-			new PlankEntry(ST.make(MD.CHSL, "spruce_planks"  , 1, i), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs  , 1, 0), MT.WOODS.Spruce);
-			new PlankEntry(ST.make(MD.CHSL, "birch_planks"   , 1, i), ST.make(Blocks.wooden_slab, 1, 2), ST.make(Blocks.birch_stairs   , 1, 0), MT.WOODS.Birch);
-			new PlankEntry(ST.make(MD.CHSL, "jungle_planks"  , 1, i), ST.make(Blocks.wooden_slab, 1, 3), ST.make(Blocks.jungle_stairs  , 1, 0), MT.WOODS.Jungle);
-			new PlankEntry(ST.make(MD.CHSL, "acacia_planks"  , 1, i), ST.make(Blocks.wooden_slab, 1, 4), ST.make(Blocks.acacia_stairs  , 1, 0), MT.WOODS.Acacia);
-			new PlankEntry(ST.make(MD.CHSL, "dark_oak_planks", 1, i), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), MT.WOODS.DarkOak);
+			new PlankEntry(ST.make(MD.CHSL, "oak_planks"     , 1, i), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs     , 1, W), MT.WOODS.Oak);
+			new PlankEntry(ST.make(MD.CHSL, "spruce_planks"  , 1, i), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs  , 1, W), MT.WOODS.Spruce);
+			new PlankEntry(ST.make(MD.CHSL, "birch_planks"   , 1, i), ST.make(Blocks.wooden_slab, 1, 2), ST.make(Blocks.birch_stairs   , 1, W), MT.WOODS.Birch);
+			new PlankEntry(ST.make(MD.CHSL, "jungle_planks"  , 1, i), ST.make(Blocks.wooden_slab, 1, 3), ST.make(Blocks.jungle_stairs  , 1, W), MT.WOODS.Jungle);
+			new PlankEntry(ST.make(MD.CHSL, "acacia_planks"  , 1, i), ST.make(Blocks.wooden_slab, 1, 4), ST.make(Blocks.acacia_stairs  , 1, W), MT.WOODS.Acacia);
+			new PlankEntry(ST.make(MD.CHSL, "dark_oak_planks", 1, i), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, W), MT.WOODS.DarkOak);
 			}
 		}
 		// Mo'Creatures Logs and Planks
