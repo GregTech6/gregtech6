@@ -44,7 +44,7 @@ import net.minecraftforge.common.config.Property;
 public class LanguageHandler {
 	public static Configuration sLangFile;
 	
-	private static final HashMap<String, String> TEMPMAP = new HashMap<>(), BUFFERMAP = new HashMap<>();
+	private static final HashMap<String, String> TEMPMAP = new HashMap<>(), BUFFERMAP = new HashMap<>(), BACKUPMAP = new HashMap<>();
 	private static boolean mWritingEnabled = F, mUseFile = F;
 	
 	public static void save() {
@@ -58,6 +58,7 @@ public class LanguageHandler {
 		if (aKey == null) return;
 		aKey = aKey.trim();
 		if (aKey.length() <= 0) return;
+		BACKUPMAP.put(aKey, aEnglish);
 		if (sLangFile == null) {
 			BUFFERMAP.put(aKey, aEnglish);
 		} else {
@@ -99,12 +100,12 @@ public class LanguageHandler {
 		if (UT.Code.stringValid(rTranslation) && !aKey.equals(rTranslation)) return rTranslation;
 		if (aKey.endsWith(".name")) {
 			rTranslation = StatCollector.translateToLocal(aKey = aKey.substring(0, aKey.length() - 5));
-			if (UT.Code.stringInvalid(rTranslation) || aKey.equals(rTranslation)) return aDefault;
-			return rTranslation;
+			if (UT.Code.stringInvalid(rTranslation) || aKey.equals(rTranslation)) rTranslation = BACKUPMAP.get(aKey);
+			return rTranslation == null ? aDefault : rTranslation;
 		}
 		rTranslation = StatCollector.translateToLocal(aKey = aKey + ".name");
-		if (UT.Code.stringInvalid(rTranslation) || (aKey).equals(rTranslation)) return aDefault;
-		return rTranslation;
+		if (UT.Code.stringInvalid(rTranslation) || aKey.equals(rTranslation)) rTranslation = BACKUPMAP.get(aKey);
+		return rTranslation == null ? aDefault : rTranslation;
 	}
 	
 	public static String separate(String aKey, String aSeparator) {

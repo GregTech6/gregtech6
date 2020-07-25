@@ -371,7 +371,7 @@ public class ToolCompat {
 			if (tBlock != NB && tBlock != Blocks.obsidian && tBlock != BlocksGT.RockOres) {
 				OreDictItemData tAssotiation = OM.anyassociation((tBlock instanceof IBlockRetrievable ? ((IBlockRetrievable)tBlock).getItemStackFromBlock(aWorld, tX, tY, tZ, SIDE_INVALID) : ST.make(tBlock, 1, aWorld.getBlockMetadata(tX, tY, tZ))));
 				if (tAssotiation != null && tAssotiation.mPrefix.containsAny(TD.Prefix.STANDARD_ORE, TD.Prefix.DENSE_ORE)) {
-					if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES) + tAssotiation.mMaterial.mMaterial.getLocal() + " Ore.");
+					if (aChatReturn != null) aChatReturn.add(LH.get(LH.PROSPECTING_TRACES) + tAssotiation.mMaterial.mMaterial.getLocal());
 					return T;
 				}
 			}
