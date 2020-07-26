@@ -76,6 +76,8 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey(NBT_DURABILITY)) mDurability = aNBT.getLong(NBT_DURABILITY);
+		// To make onTick actually update the Visual Data once.
+		updateInventory();
 	}
 	
 	@Override

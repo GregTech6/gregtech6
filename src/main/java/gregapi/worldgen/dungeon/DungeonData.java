@@ -196,13 +196,13 @@ public class DungeonData extends WorldAndCoords {
 	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, long[] aMetas) {
 		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMetas[next(aMetas.length)], null, T, T);
 	}
-	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, OreDictMaterial[] aMaterials) {
+	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, OreDictMaterial... aMaterials) {
 		return aBlock.placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, aMaterials[next(aMaterials.length)].mID, null, T, T);
 	}
 	public boolean set(IBlockPlacable[] aBlocks, int aX, int aY, int aZ, long[] aMetas) {
 		return aBlocks[next(aBlocks.length)].placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, (short)aMetas[next(aMetas.length)], null, T, T);
 	}
-	public boolean set(IBlockPlacable[] aBlocks, int aX, int aY, int aZ, OreDictMaterial[] aMaterials) {
+	public boolean set(IBlockPlacable[] aBlocks, int aX, int aY, int aZ, OreDictMaterial... aMaterials) {
 		return aBlocks[next(aBlocks.length)].placeBlock(mWorld, mX+aX, mY+aY, mZ+aZ, SIDE_UNKNOWN, aMaterials[next(aMaterials.length)].mID, null, T, T);
 	}
 	public boolean set(IBlockPlacable aBlock, int aX, int aY, int aZ, long aMeta) {
@@ -235,21 +235,21 @@ public class DungeonData extends WorldAndCoords {
 		return set(aX, aY, aZ, BlocksGT.FLOWER_TILES[tIndex], BlocksGT.FLOWER_METAS[tIndex], 2);
 	}
 	
-	public boolean ingots_or_plates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial[] aMaterials) {
+	public boolean ingots_or_plates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial... aMaterials) {
 		ItemStack aIngot = OP.ingot.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
 		ItemStack aPlate = OP.plate.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
 		if (ST.valid(aIngot)) return ST.valid(aPlate) && next1in2() ? set(aX, aY, aZ, 32085, ST.save(null, NBT_VALUE, aPlate)) : set(aX, aY, aZ, 32084, ST.save(null, NBT_VALUE, aIngot));
 		return ST.valid(aPlate) && set(aX, aY, aZ, 32085, ST.save(null, NBT_VALUE, aPlate));
 	}
-	public boolean ingots(int aX, int aY, int aZ, long aStackSize, OreDictMaterial[] aMaterials) {
+	public boolean ingots(int aX, int aY, int aZ, long aStackSize, OreDictMaterial... aMaterials) {
 		ItemStack aStack = OP.ingot.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
 		return ST.valid(aStack) && set(aX, aY, aZ, 32084, ST.save(null, NBT_VALUE, aStack));
 	}
-	public boolean plates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial[] aMaterials) {
+	public boolean plates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial... aMaterials) {
 		ItemStack aStack = OP.plate.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
 		return ST.valid(aStack) && set(aX, aY, aZ, 32085, ST.save(null, NBT_VALUE, aStack));
 	}
-	public boolean gemplates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial[] aMaterials) {
+	public boolean gemplates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial... aMaterials) {
 		ItemStack aStack = OP.plateGem.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
 		return ST.valid(aStack) && set(aX, aY, aZ, 32086, ST.save(null, NBT_VALUE, aStack));
 	}

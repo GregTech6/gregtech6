@@ -137,9 +137,9 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 			switch(aData.next(6 + (MD.HEX.mLoaded ? 1 : 0) + (MD.TC.mLoaded ? 1 : 0))) {
 			case  0:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next3in4()) {aData.set(tMetalCrates, i, 2, j, sMetals);
-					if (aData.next2in3()) {aData.set(tMetalCrates, i, 3, j, sMetals);
-					if (aData.next1in2()) {aData.set(tMetalCrates, i, 4, j, sMetals);
+					if (aData.next3in4()) {aData.set(tMetalCrates, i, 1, j, sMetals);
+					if (aData.next2in3()) {aData.set(tMetalCrates, i, 2, j, sMetals);
+					if (aData.next1in2()) {aData.set(tMetalCrates, i, 3, j, sMetals);
 							if (aData.next1in3()) aData.ingots_or_plates(i, 4, j, 0, sMetals);
 					} else  if (aData.next1in3()) aData.ingots_or_plates(i, 3, j, 0, sMetals);
 					} else  if (aData.next1in3()) aData.ingots_or_plates(i, 2, j, 0, sMetals);
@@ -148,17 +148,17 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 				break;
 			case  1: case  2:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next3in4()) {aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
-					if (aData.next2in3()) {aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
-					if (aData.next1in2()) {aData.set(BlocksGT.crateGt64Plate, i, 4, j, sWoods);
+					if (aData.next3in4()) {aData.set(BlocksGT.crateGt64Plate, i, 1, j, sWoods);
+					if (aData.next2in3()) {aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
+					if (aData.next1in2()) {aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
 					}}}
 				}
 				break;
 			case  3:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next3in4()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sGems);
-					if (aData.next2in3()) {aData.set(aData.next1in6() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sGems);
-					if (aData.next1in2()) {aData.set(aData.next1in8() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 4, j, sGems);
+					if (aData.next3in4()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sGems);
+					if (aData.next2in3()) {aData.set(aData.next1in6() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sGems);
+					if (aData.next1in2()) {aData.set(aData.next1in8() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sGems);
 					}}}
 				}
 				break;
