@@ -132,7 +132,6 @@ public class DungeonData extends WorldAndCoords {
 	public boolean smalltiles (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.STILE, 2);}
 	public boolean smallbricks(int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.SBRIK, 2);}
 	public boolean smooth     (int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, aY == 2 ? aSecondary : aPrimary, BlockStones.SMOTH, 2);}
-	public boolean setAirBlock(int aX, int aY, int aZ, Block aPrimary, Block aSecondary) {return set(aX, aY, aZ, NB, 0, 2);}
 	
 	public boolean bricks     (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, 3+next(3), 2);}
 	public boolean brick      (int aX, int aY, int aZ) {return set(aX, aY, aZ, aY == 2 ? mSecondary : mPrimary, BlockStones.BRICK, 2);}
@@ -320,10 +319,7 @@ public class DungeonData extends WorldAndCoords {
 		return set(aX, aY, aZ, aBlock1, aMeta1, aBlock2, aMeta2, 2);
 	}
 	public boolean set(int aX, int aY, int aZ, Block aBlock1, int aMeta1, Block aBlock2, int aMeta2, int aFlags) {
-		if (aBlock1 != NB && aBlock1 != null) {
-			if (aBlock2 != NB && aBlock2 != null) return next1in2() ? set(aX, aY, aZ, aBlock1, aMeta1, aFlags) : set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
-			return set(aX, aY, aZ, aBlock1, aMeta1, aFlags);
-		}
+		if (aBlock1 != NB && aBlock1 != null) return aBlock2 != NB && aBlock2 != null && next1in2() ? set(aX, aY, aZ, aBlock1, aMeta1, aFlags) : set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
 		if (aBlock2 != NB && aBlock2 != null) return set(aX, aY, aZ, aBlock2, aMeta2, aFlags);
 		return F;
 	}
