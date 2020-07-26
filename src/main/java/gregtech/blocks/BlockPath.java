@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -106,7 +106,7 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	@Override
 	public ITexture getTexture(int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered, IBlockAccess aWorld, int aX, int aY, int aZ) {
 		if (SIDES_TOP[aSide]) return BlockTextureDefault.get(Textures.BlockIcons.PATH_TOP);
-		ITexture tDirt = BlockTextureDefault.get(mIcons[aWorld.getBlockMetadata(aX, aY, aZ) % 16]);
+		ITexture tDirt = BlockTextureDefault.get(mIcons[WD.meta(aWorld, aX, aY, aZ) % 16]);
 		return SIDES_BOTTOM[aSide]?tDirt:BlockTextureMulti.get(tDirt, BlockTextureDefault.get(Textures.BlockIcons.PATH_SIDE));
 	}
 	
@@ -123,15 +123,15 @@ public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRende
 	@Override public IIcon getIcon(int aSide, int aMeta) {return (SIDES_TOP[aSide]?Textures.BlockIcons.PATH_TOP:Textures.BlockIcons.DIRTS[aMeta % 16]).getIcon(0);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1);}
 	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool (World aWorld, int aX, int aY, int aZ) {return AxisAlignedBB.getBoundingBox(aX, aY, aZ, aX+1, aY+1, aZ+1);}
-	@Override public boolean doesWalkSpeed(short aMeta) {return T;}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
-	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
+	@Override public boolean doesWalkSpeed(byte aMeta) {return T;}
+	@Override public boolean doesPistonPush(byte aMeta) {return T;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
 	@Override public boolean canSilkHarvest() {return F;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_shovel;}
 	@Override public int getHarvestLevel(int aMeta) {return 0;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.grass.getBlockHardness(aWorld, aX, aY, aZ) * 2;}
-	@Override public float getExplosionResistance(int aMeta) {return Blocks.grass.getExplosionResistance(null) * 1.5F;}
+	@Override public float getExplosionResistance(byte aMeta) {return Blocks.grass.getExplosionResistance(null) * 1.5F;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
 	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
 	@Override public boolean isNormalCube() {return F;}

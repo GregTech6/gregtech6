@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -33,6 +33,7 @@ import gregapi.data.CS.ModIDs;
 import gregapi.data.LH;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -86,14 +87,14 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, @SuppressWarnings("rawtypes") List aList, boolean aF3_H) {
 		aList.add(LH.Chat.CYAN + LH.get(LH.TOOLTIP_RAILSPEED) + LH.Chat.GREEN + (mSpeed/0.4F) + "x");
 	}
 	
 	@Override public float getRailMaxSpeed(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {return mSpeed;}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
-	@Override public String name(int aMeta) {return mNameInternal;}
+	@Override public String name(byte aMeta) {return mNameInternal;}
 	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal+ ".name");}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.rail.getBlockHardness(aWorld, aX, aY, aZ);}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return mExplosionResistance;}
@@ -113,19 +114,21 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public Item getItemDropped(int par1, Random par2Random, int par3) {return Item.getItemFromBlock(this);}
 	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(this);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
-	@Override public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess aWorld, int aX, int aY, int aZ) {return canCreatureSpawn(aWorld.getBlockMetadata(aX, aY, aZ));}
+	@Override public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess aWorld, int aX, int aY, int aZ) {return canCreatureSpawn(WD.meta(aWorld, aX, aY, aZ));}
 	@SuppressWarnings("unchecked") @Override public void getSubBlocks(Item aItem, CreativeTabs par2CreativeTabs, @SuppressWarnings("rawtypes") List aList) {aList.add(ST.make(aItem, 1, 0));}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return ((mPowerRail||mDetectorRail?(aMeta&8)!=0:aMeta>=6)?mIconSecondary:mIconPrimary).getIcon(0);}
 	@Override public boolean isSealed(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}
 	@Override public Block getBlock() {return this;}
 	
-	@Override public float getExplosionResistance(int aMeta) {return mExplosionResistance;}
-	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public float getExplosionResistance(byte aMeta) {return mExplosionResistance;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return 64;}
-	@Override public boolean useGravity(int aMeta) {return F;}
-	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
+	@Override public boolean useGravity(byte aMeta) {return F;}
+	@Override public boolean doesWalkSpeed(byte aMeta) {return F;}
+	@Override public boolean doesPistonPush(byte aMeta) {return T;}
+	@Override public int getFlammability(byte aMeta) {return 0;}
+	@Override public int getFireSpreadSpeed(byte aMeta) {return 0;}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}
 	
 	protected boolean func_150058_a(World aWorld, int aX, int aY, int aZ, int p_150058_5_, boolean p_150058_6_, int p_150058_7_) {
@@ -145,7 +148,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	protected boolean func_150057_a(World aWorld, int aX, int aY, int aZ, boolean p_150057_5_, int p_150057_6_, int p_150057_7_) {
 		if (aWorld.getBlock(aX, aY, aZ) == this) {
-			int j1 = aWorld.getBlockMetadata(aX, aY, aZ);
+			int j1 = WD.meta(aWorld, aX, aY, aZ);
 			int k1 = j1 & 7;
 			
 			if (p_150057_7_ == 1 && (k1 == 0 || k1 == 4 || k1 == 5)) return F;
@@ -187,7 +190,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override
 	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {
 		if (mDetectorRail && !aWorld.isRemote) {
-			int l = aWorld.getBlockMetadata(aX, aY, aZ);
+			int l = WD.meta(aWorld, aX, aY, aZ);
 			if ((l & 8) == 0) func_150054_a(aWorld, aX, aY, aZ, l);
 		}
 	}
@@ -195,13 +198,13 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override
 	public void updateTick(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		if (mDetectorRail && !aWorld.isRemote) {
-			int l = aWorld.getBlockMetadata(aX, aY, aZ);
+			int l = WD.meta(aWorld, aX, aY, aZ);
 			if ((l & 8) != 0) func_150054_a(aWorld, aX, aY, aZ, l);
 		}
 	}
 	
-	@Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (aWorld.getBlockMetadata(aX, aY, aZ) & 8) != 0 ? 15 : 0 : 0;}
-	@Override public int isProvidingStrongPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (aWorld.getBlockMetadata(aX, aY, aZ) & 8) == 0 ? 0 : (aSide == 1 ? 15 : 0) : 0;}
+	@Override public int isProvidingWeakPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (WD.meta(aWorld, aX, aY, aZ) & 8) != 0 ? 15 : 0 : 0;}
+	@Override public int isProvidingStrongPower(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return mDetectorRail ? (WD.meta(aWorld, aX, aY, aZ) & 8) == 0 ? 0 : (aSide == 1 ? 15 : 0) : 0;}
 	
 	private void func_150054_a(World aWorld, int aX, int aY, int aZ, int aMetaData) {
 		boolean flag = (aMetaData & 8) != 0;
@@ -236,7 +239,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	@Override
 	public int getComparatorInputOverride(World aWorld, int aX, int aY, int aZ, int aSide) {
-		if (mDetectorRail && (aWorld.getBlockMetadata(aX, aY, aZ) & 8) > 0) {
+		if (mDetectorRail && (WD.meta(aWorld, aX, aY, aZ) & 8) > 0) {
 			@SuppressWarnings("unchecked")
 			List<EntityMinecartCommandBlock> list = aWorld.getEntitiesWithinAABB(EntityMinecartCommandBlock.class, AxisAlignedBB.getBoundingBox(aX + 0.125, aY, aZ + 0.125, aX + 0.875, aY + 0.875, aZ + 0.875));
 			if (list.size() > 0) return list.get(0).func_145822_e().func_145760_g();
@@ -250,7 +253,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override
 	public void onMinecartPass(World aWorld, EntityMinecart aCart, int aX, int aY, int aZ) {
 		if (mPowerRail) {
-			int tRailMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+			byte tRailMeta = WD.meta(aWorld, aX, aY, aZ);
 			double tMotion = Math.sqrt(aCart.motionX * aCart.motionX + aCart.motionZ * aCart.motionZ);
 			if ((tRailMeta & 8) != 0) {
 				if (tMotion > 0.01) {
@@ -287,7 +290,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		if (aStack.stackSize == 0) return F;
 		
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		if (tBlock == Blocks.snow_layer && (aWorld.getBlockMetadata(aX, aY, aZ) & 7) < 1) {
+		if (tBlock == Blocks.snow_layer && (WD.meta(aWorld, aX, aY, aZ) & 7) < 1) {
 			aSide = SIDE_UP;
 		} else if (tBlock != Blocks.vine && tBlock != Blocks.tallgrass && tBlock != Blocks.deadbush && !tBlock.isReplaceable(aWorld, aX, aY, aZ)) {
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -85,13 +85,13 @@ public class BlockBaleGrass extends BlockBaseBale {
 	
 	@Override
 	public void onBlockAdded2(World aWorld, int aX, int aY, int aZ) {
-		if ((aWorld.getBlockMetadata(aX, aY, aZ) & 1) == 1) return;
+		if ((WD.meta(aWorld, aX, aY, aZ) & 1) == 1) return;
 		aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 2400 + RNGSUS.nextInt(2400));
 	}
 	
 	@Override
 	public void updateTick2(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		int aMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
 		if ((aMeta & 1) == 1) return;
 		aWorld.scheduleBlockUpdate(aX, aY, aZ, this, 1100 + RNGSUS.nextInt(200));
 		if (aRandom.nextInt(3) > 0) return;
@@ -126,7 +126,7 @@ public class BlockBaleGrass extends BlockBaseBale {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		super.addInformation(aStack, aMeta, aPlayer, aList, aF3_H);
 		if ((aMeta & 3) == 0) {
 			aList.add(LH.Chat.CYAN + LH.get("gt.tooltip.bale"));

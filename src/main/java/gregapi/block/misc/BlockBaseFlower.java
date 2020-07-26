@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -76,7 +76,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
-	@Override public String name(int aMeta) {return mNameInternal + "." + aMeta;}
+	@Override public String name(byte aMeta) {return mNameInternal + "." + aMeta;}
 	@Override public String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal+ ".name");}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 0;}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return 0;}
@@ -89,7 +89,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public boolean isSideSolid(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}
 	@Override public int damageDropped(int aMeta) {return aMeta;}
 	@Override public int quantityDropped(Random par1Random) {return 1;}
-	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ);}
+	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return WD.meta(aWorld, aX, aY, aZ);}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public Item getItemDropped(int par1, Random aRandom, int par3) {return Item.getItemFromBlock(this);}
 	@Override public Item getItem(World aWorld, int aX, int aY, int aZ) {return Item.getItemFromBlock(this);}
@@ -102,25 +102,27 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public void onOxygenAdded(World aWorld, int aX, int aY, int aZ) {/**/}
 	@Override public void onOxygenRemoved(World aWorld, int aX, int aY, int aZ) {if (!aWorld.isRemote && !WD.oxygen(aWorld, aX, aY, aZ)) {aWorld.setBlock(aX, aY, aZ, NB, 0, 3); return;}}
 	
-	@Override public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {/**/}
-	@Override public float getExplosionResistance(int aMeta) {return 0;}
-	@Override public boolean useGravity(int aMeta) {return F;}
-	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
-	@Override public boolean doesPistonPush(short aMeta) {return F;}
-	@Override public boolean canCreatureSpawn(int aMeta) {return F;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {/**/}
+	@Override public float getExplosionResistance(byte aMeta) {return 0;}
+	@Override public boolean useGravity(byte aMeta) {return F;}
+	@Override public boolean doesWalkSpeed(byte aMeta) {return F;}
+	@Override public boolean doesPistonPush(byte aMeta) {return F;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
+	@Override public int getFlammability(byte aMeta) {return 0;}
+	@Override public int getFireSpreadSpeed(byte aMeta) {return 0;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return 64;}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}
 	
 	@Override public EnumPlantType getPlantType(IBlockAccess aWorld, int aX, int aY, int aZ) {return EnumPlantType.Plains;}
 	@Override public Block getPlant(IBlockAccess aWorld, int aX, int aY, int aZ) {return this;}
-	@Override public int getPlantMetadata(IBlockAccess aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ);}
+	@Override public int getPlantMetadata(IBlockAccess aWorld, int aX, int aY, int aZ) {return WD.meta(aWorld, aX, aY, aZ);}
 	@Override public boolean canBlockStay(World aWorld, int aX, int aY, int aZ) {return WD.oxygen(aWorld, aX, aY, aZ) && aWorld.getBlock(aX, aY - 1, aZ).canSustainPlant(aWorld, aX, aY - 1, aZ, ForgeDirection.UP, Blocks.yellow_flower);}
 	
 	@Override
 	public void checkAndDropBlock(World aWorld, int aX, int aY, int aZ) {
 		if (canBlockStay(aWorld, aX, aY, aZ)) return;
-		dropBlockAsItem(aWorld, aX, aY, aZ, aWorld.getBlockMetadata(aX, aY, aZ), 0);
+		dropBlockAsItem(aWorld, aX, aY, aZ, WD.meta(aWorld, aX, aY, aZ), 0);
 		aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
 	}
 	
@@ -131,7 +133,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 		if (aStack.stackSize == 0) return F;
 		
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		if (tBlock == Blocks.snow_layer && (aWorld.getBlockMetadata(aX, aY, aZ) & 7) < 1) {
+		if (tBlock == Blocks.snow_layer && (WD.meta(aWorld, aX, aY, aZ) & 7) < 1) {
 			aSide = SIDE_UP;
 		} else if (tBlock != Blocks.vine && tBlock != Blocks.tallgrass && tBlock != Blocks.deadbush && !tBlock.isReplaceable(aWorld, aX, aY, aZ)) {
 			aX += OFFSETS_X[aSide]; aY += OFFSETS_Y[aSide]; aZ += OFFSETS_Z[aSide];

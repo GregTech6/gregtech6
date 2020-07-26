@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import gregapi.data.ANY;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -59,7 +60,7 @@ public class BlockSpikeMetal extends BlockBaseSpike {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		if (aMeta < 8) {
 			aList.add(LH.Chat.ORANGE + "Deals huge Damage to any Slime touching it!");
 			aList.add(LH.Chat.ORANGE + "Does very low Damage to anything else!");
@@ -76,7 +77,7 @@ public class BlockSpikeMetal extends BlockBaseSpike {
 	
 	@Override
 	public void onEntityCollidedWithBlock(World aWorld, int aX, int aY, int aZ, Entity aEntity) {
-		int aMeta = aWorld.getBlockMetadata(aX, aY, aZ);
+		int aMeta = WD.meta(aWorld, aX, aY, aZ);
 		if (aEntity instanceof EntityLivingBase) {
 			if (aMeta < 8) {
 				if (UT.Entities.isSlimeCreature((EntityLivingBase)aEntity))

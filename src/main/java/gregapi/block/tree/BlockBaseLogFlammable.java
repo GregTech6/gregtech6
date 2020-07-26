@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -37,6 +36,6 @@ public abstract class BlockBaseLogFlammable extends BlockBaseLog {
 	}
 	
 	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
-	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return 5;}
-	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return 5;}
+	@Override public int getFlammability(byte aMeta) {return 5;}
+	@Override public int getFireSpreadSpeed(byte aMeta) {return 5;}
 }

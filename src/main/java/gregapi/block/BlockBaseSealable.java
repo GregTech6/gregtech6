@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,6 +21,7 @@ package gregapi.block;
 
 import gregapi.compat.galacticraft.IBlockSealable;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.world.World;
@@ -34,5 +35,5 @@ public abstract class BlockBaseSealable extends BlockBase implements IBlockSeala
 		super(aItemClass, aNameInternal, aMaterial, aSoundType);
 	}
 	
-	@Override public boolean isSealed(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return isSealable(aWorld.getBlockMetadata(aX, aY, aZ), (byte)(UT.Code.side(aDirection) ^ 1));}
+	@Override public boolean isSealed(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return isSealable(WD.meta(aWorld, aX, aY, aZ), (byte)(UT.Code.side(aDirection) ^ 1));}
 }

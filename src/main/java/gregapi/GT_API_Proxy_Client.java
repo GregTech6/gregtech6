@@ -35,6 +35,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import gregapi.api.Abstract_Mod;
+import gregapi.block.IBlockBase;
 import gregapi.block.ToolCompat;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
 import gregapi.block.prefixblock.PrefixBlockFallingEntity;
@@ -380,7 +381,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (!tIsTool && IL.TF_Mazestone.exists() && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
 						aEvent.toolTip.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
 					}
-					if (!(aBlock instanceof MultiTileEntityBlockInternal)) {
+					if (!(aBlock instanceof MultiTileEntityBlockInternal || aBlock instanceof IBlockBase)) {
 						if (tData.mMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)) {
 							if (tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
 								aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE_AND_EXPLOSIVE));

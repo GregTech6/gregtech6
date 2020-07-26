@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,9 +41,9 @@ public class BlockLongDistPipe extends BlockBaseMachineUpdate {
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_wrench;}
 	@Override public int getHarvestLevel(int aMeta) {return 3;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return T;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return T;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.iron_block.getBlockHardness(aWorld, aX, aY, aZ);}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return 20;}
 	@Override public float getExplosionResistance(Entity aEntity) {return 20;}
-	@Override public float getExplosionResistance(int aMeta) {return 20;}
+	@Override public float getExplosionResistance(byte aMeta) {return 20;}
 }

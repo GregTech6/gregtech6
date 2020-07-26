@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -57,7 +57,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	}
 	
 	@Override
-	public void addInformation(ItemStack aStack, int aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
+	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		switch(aMeta) {
 		case  0: aList.add("Indicates presence of a Gold Deposit nearby"); break;
 		case  1: aList.add("Indicates presence of a Silver Deposit nearby"); break;

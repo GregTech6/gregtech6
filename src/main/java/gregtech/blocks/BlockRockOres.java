@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,12 +28,11 @@ import gregapi.data.OP;
 import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
+import gregapi.util.WD;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockRockOres extends BlockBaseMeta {
 	public static byte[] HARVEST_LEVELS = {0, 0, 1, 1, 2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -70,15 +69,15 @@ public class BlockRockOres extends BlockBaseMeta {
 		StoneLayer.LAYERS.add(new StoneLayer(this, 7, MT.MilkyQuartz));
 	}
 	
-	@Override public boolean useGravity(int aMeta) {return F;}
-	@Override public boolean doesWalkSpeed(short aMeta) {return F;}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
-	@Override public boolean canCreatureSpawn(int aMeta) {return T;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public boolean useGravity(byte aMeta) {return F;}
+	@Override public boolean doesWalkSpeed(byte aMeta) {return F;}
+	@Override public boolean doesPistonPush(byte aMeta) {return T;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return T;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return HARVEST_LEVELS[aMeta];}
-	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return BURN_LEVELS[aWorld.getBlockMetadata(aX, aY, aZ)];}
-	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return BURN_LEVELS[aWorld.getBlockMetadata(aX, aY, aZ)];}
-	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * HARDNESS_LEVELS[aWorld.getBlockMetadata(aX, aY, aZ)];}
-	@Override public float getExplosionResistance(int aMeta) {return Blocks.stone.getExplosionResistance(null);}
+	@Override public int getFlammability(byte aMeta) {return BURN_LEVELS[aMeta];}
+	@Override public int getFireSpreadSpeed(byte aMeta) {return BURN_LEVELS[aMeta];}
+	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * HARDNESS_LEVELS[WD.meta(aWorld, aX, aY, aZ)];}
+	@Override public float getExplosionResistance(byte aMeta) {return Blocks.stone.getExplosionResistance(null);}
 }

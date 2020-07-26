@@ -116,7 +116,7 @@ public class ToolCompat {
 			if (!rReturn && BlocksGT.BeamB != null) {
 				if (IL.HaC_Log_Cinnamon.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamB, 1, 3);
-					if (rReturn) tBark = IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon)));
+					if (rReturn) tBark = IL.HaC_Cinnamon.get(2, IL.Food_Cinnamon.get(2, OM.dust(MT.Cinnamon, U*2)));
 				}
 			}
 			if (!rReturn && BlocksGT.Beam1 != null) {

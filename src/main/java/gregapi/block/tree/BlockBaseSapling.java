@@ -66,14 +66,14 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_sword;}
 	@Override public int damageDropped(int aMeta) {return aMeta & 7;}
-	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ) & 7;}
+	@Override public int getDamageValue(World aWorld, int aX, int aY, int aZ) {return WD.meta(aWorld, aX, aY, aZ) & 7;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.sapling.getBlockHardness(aWorld, aX, aY, aZ);}
-	@Override public float getExplosionResistance(int aMeta) {return Blocks.sapling.getExplosionResistance(null);}
+	@Override public float getExplosionResistance(byte aMeta) {return Blocks.sapling.getExplosionResistance(null);}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return T;}
 	@Override public boolean renderAsNormalBlock() {return F;}
 	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
 	@Override public boolean isOpaqueCube() {return F;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return F;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_LEAVES;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.treeSapling.mDefaultStackSize);}
@@ -99,7 +99,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 	public boolean tryGrow(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		if (!aWorld.isRemote && !WD.oxygen(aWorld, aX, aY, aZ)) {aWorld.setBlock(aX, aY, aZ, Blocks.deadbush, 0, 3); return F;}
 		if (TREE_GROWTH_TIME > 1 && RNGSUS.nextInt(TREE_GROWTH_TIME) > 0) return F;
-		byte aMeta = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
 		if (aMeta < 8) {
 			aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMeta | 8, 2);
 			return F;
@@ -132,14 +132,14 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 	
 	public boolean checkAndDropBlock(World aWorld, int aX, int aY, int aZ) {
 		if (canBlockStay(aWorld, aX, aY, aZ)) return F;
-		dropBlockAsItem(aWorld, aX, aY, aZ, aWorld.getBlockMetadata(aX, aY, aZ), 0);
+		dropBlockAsItem(aWorld, aX, aY, aZ, WD.meta(aWorld, aX, aY, aZ), 0);
 		aWorld.setBlock(aX, aY, aZ, NB, 0, 2);
 		return T;
 	}
 	
 	@Override public EnumPlantType getPlantType(IBlockAccess aWorld, int aX, int aY, int aZ) {return Plains;}
 	@Override public Block getPlant(IBlockAccess aWorld, int aX, int aY, int aZ) {return this;}
-	@Override public int getPlantMetadata(IBlockAccess aWorld, int aX, int aY, int aZ) {return aWorld.getBlockMetadata(aX, aY, aZ);}
+	@Override public int getPlantMetadata(IBlockAccess aWorld, int aX, int aY, int aZ) {return WD.meta(aWorld, aX, aY, aZ);}
 	@Override public boolean func_149851_a(World aWorld, int aX, int aY, int aZ, boolean aIsRemote) {return T;}
 	@Override public boolean func_149852_a(World aWorld, Random aRandom, int aX, int aY, int aZ) {return aRandom.nextFloat() < 0.45;}
 	@Override public void func_149853_b(World aWorld, Random aRandom, int aX, int aY, int aZ) {tryGrow(aWorld, aX, aY, aZ, aRandom);}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,12 +39,12 @@ public class BlockSands extends BlockBaseMeta {
 		OM.data(ST.make(this, 1, 0), MT.OREMATS.Magnetite, U);
 	}
 	
-	@Override public boolean useGravity(int aMeta) {return T;}
-	@Override public boolean canCreatureSpawn(int aMeta) {return T;}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return F;}
+	@Override public boolean useGravity(byte aMeta) {return T;}
+	@Override public boolean canCreatureSpawn(byte aMeta) {return T;}
+	@Override public boolean doesPistonPush(byte aMeta) {return T;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_shovel;}
 	@Override public int getHarvestLevel(int aMeta) {return 0;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.sand.getBlockHardness(aWorld, aX, aY, aZ);}
-	@Override public float getExplosionResistance(int aMeta) {return Blocks.sand.getExplosionResistance(null);}
+	@Override public float getExplosionResistance(byte aMeta) {return Blocks.sand.getExplosionResistance(null);}
 }

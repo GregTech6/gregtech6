@@ -34,6 +34,7 @@ import gregapi.render.IIconContainer;
 import gregapi.util.CR;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -123,7 +124,7 @@ public class BlockMetaType extends BlockBaseMeta {
 	public boolean onBlockActivated(World aWorld, int aX, int aY, int aZ, EntityPlayer aPlayer, int aSide, float aHitX, float aHitY, float aHitZ) {
 		if (mBlock == this || aSide != OPPOSITES[mSide] || (mBlock.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ) != null && !aWorld.checkNoEntityCollision(mBlock.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ)))) return F;
 		ItemStack aStack = aPlayer.getCurrentEquippedItem();
-		byte aMetaData = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
+		byte aMetaData = WD.meta(aWorld, aX, aY, aZ);
 		if (ST.equal(aStack, mBlock.mSlabs[0], aMetaData)) {
 			aWorld.setBlock(aX, aY, aZ, mBlock, aMetaData, 3);
 			aWorld.playSoundEffect(aX + 0.5F, aY + 0.5F, aZ + 0.5F, mBlock.stepSound.func_150496_b(), (mBlock.stepSound.getVolume() + 1.0F) / 2.0F, mBlock.stepSound.getPitch() * 0.8F);
@@ -147,13 +148,13 @@ public class BlockMetaType extends BlockBaseMeta {
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return mHarvestLevel;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return Blocks.stone.getBlockHardness(aWorld, aX, aY, aZ) * mHardnessMultiplier;}
-	@Override public float getExplosionResistance(int aMeta) {return Blocks.stone.getExplosionResistance(null) * mResistanceMultiplier;}
+	@Override public float getExplosionResistance(byte aMeta) {return Blocks.stone.getExplosionResistance(null) * mResistanceMultiplier;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return mBlock == this || mSide == aSide;}
 	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return mBlock == this;}
 	@Override public boolean isNormalCube() {return mBlock == this;}
 	@Override public boolean isOpaqueCube() {return mBlock == this;}
 	@Override public boolean renderAsNormalBlock() {return mBlock == this;}
-	@Override public boolean doesPistonPush(short aMeta) {return T;}
+	@Override public boolean doesPistonPush(byte aMeta) {return T;}
 	@Override public int getLightOpacity() {return mBlock == this ? LIGHT_OPACITY_MAX : LIGHT_OPACITY_WATER;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return UT.Code.bindStack(OP.stone.mDefaultStackSize * (mBlock.mBlock == mBlock ? 1 : 2));}
 	@Override public Item getItemDropped(int par1, Random par2Random, int par3) {return Item.getItemFromBlock(mBlock == this ? mBlock : mBlock.mSlabs[0]);}

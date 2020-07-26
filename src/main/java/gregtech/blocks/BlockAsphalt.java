@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -56,5 +56,5 @@ public class BlockAsphalt extends BlockColored implements IBlockOnWalkOver {
 		}
 	}
 	
-	@Override public boolean doesWalkSpeed(short aMeta) {return T;}
+	@Override public boolean doesWalkSpeed(byte aMeta) {return T;}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,6 +35,7 @@ import gregapi.data.OP;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -62,7 +63,7 @@ public class BlockGlassClear extends BlockColored {
 	@Override public int getRenderBlockPass() {return 1;}
 	@Override public boolean isOpaqueCube() {return F;}
 	@Override public boolean renderAsNormalBlock() {return F;}
-	@Override public boolean isSealable(int aMeta, byte aSide) {return mBlock == this || mSide == aSide;}
+	@Override public boolean isSealable(byte aMeta, byte aSide) {return mBlock == this || mSide == aSide;}
 	@Override public boolean isBlockSolid(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {return F;}
 	@Override public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {return new ArrayListNoNulls<>(F, OP.scrapGt.mat(MT.Glass, mBlock == this ? 9 : 4));}
 	
@@ -71,6 +72,6 @@ public class BlockGlassClear extends BlockColored {
 	public boolean shouldSideBeRendered(IBlockAccess aWorld, int aX, int aY, int aZ, int aSide) {
 		if (aSide == OPPOSITES[mSide]) return T;
 		Block aBlock = aWorld.getBlock(aX, aY, aZ);
-		return aBlock instanceof BlockMetaType && ((BlockMetaType)aBlock).mBlock == mBlock ? aWorld.getBlockMetadata(aX, aY, aZ) != aWorld.getBlockMetadata(aX - OFFSETS_X[aSide], aY - OFFSETS_Y[aSide], aZ - OFFSETS_Z[aSide]) || ((((BlockMetaType)aBlock).mSide != mSide || aSide == mSide) && ((BlockMetaType)aBlock).mSide != OPPOSITES[aSide] && ((BlockMetaType)aBlock).mSide != SIDE_ANY) : super.shouldSideBeRendered(aWorld, aX, aY, aZ, aSide);
+		return aBlock instanceof BlockMetaType && ((BlockMetaType)aBlock).mBlock == mBlock ? WD.meta(aWorld, aX, aY, aZ) != aWorld.getBlockMetadata(aX - OFFSETS_X[aSide], aY - OFFSETS_Y[aSide], aZ - OFFSETS_Z[aSide]) || ((((BlockMetaType)aBlock).mSide != mSide || aSide == mSide) && ((BlockMetaType)aBlock).mSide != OPPOSITES[aSide] && ((BlockMetaType)aBlock).mSide != SIDE_ANY) : super.shouldSideBeRendered(aWorld, aX, aY, aZ, aSide);
 	}
 }
