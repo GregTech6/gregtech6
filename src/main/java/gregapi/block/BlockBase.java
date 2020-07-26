@@ -32,7 +32,6 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
-import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -93,7 +92,6 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return getFlammability(aWorld, aX, aY, aZ, aSide) > 0;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return getFlammability(WD.meta(aWorld, aX, aY, aZ));}
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return getFireSpreadSpeed(WD.meta(aWorld, aX, aY, aZ));}
-	@Override public Material getMaterial() {return GAPI_POST.mFinishedServerStarted > 0 && blockMaterial.getCanBurn() && !isFlammable(null, 0, 0, 0, FORGE_DIR[SIDE_ANY]) && BlockStaticLiquid.class.getName().equalsIgnoreCase(new Throwable().getStackTrace()[2].getClassName()) ? Material.iron : blockMaterial;}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return getExplosionResistance(WD.meta(aWorld, aX, aY, aZ));}
 	@Override public float getExplosionResistance(Entity aEntity) {return getExplosionResistance((byte)0);}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 1;}

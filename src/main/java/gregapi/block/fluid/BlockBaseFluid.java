@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -81,7 +81,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 	@Override
 	public FluidStack drain(World aWorld, int aX, int aY, int aZ, boolean aDoDrain) {
 		// Forge royally fucked up again. You check for MetaData FIRST and do the set Block to Air SECOND, like I demonstrate here!!!
-		FluidStack rFluid = FL.make(getFluid(), (aWorld.getBlockMetadata(aX, aY, aZ) + 1) * 125);
+		FluidStack rFluid = FL.make(getFluid(), (WD.meta(aWorld, aX, aY, aZ) + 1) * 125);
 		if (aDoDrain) {
 			aWorld.setBlockToAir(aX, aY, aZ);
 			updateFluidBlocks(aWorld, aX, aY, aZ);
@@ -109,7 +109,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		}
 		
 		boolean changed = F;
-		int tRemainingQuanta = aWorld.getBlockMetadata(aX, aY, aZ)+1, oRemainingQuanta = tRemainingQuanta;
+		int tRemainingQuanta = WD.meta(aWorld, aX, aY, aZ)+1, oRemainingQuanta = tRemainingQuanta;
 		
 		tRemainingQuanta = tryToFlowVerticallyInto(aWorld, aX, aY, aZ, tRemainingQuanta);
 		
