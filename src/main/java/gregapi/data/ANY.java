@@ -115,7 +115,7 @@ public class ANY {
 		WoodTreated     .stealLooks(MT.WoodSealed     ).steal(MT.Wood           ).setLocal("Treated Wood"       ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                        ).addReRegistrationToThis(MT.WoodSealed, MT.WoodPolished).setFurnaceBurnTime(TICKS_PER_SMELT/2);
 		WoodUntreated   .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Untreated Wood"     ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                        ).addReRegistrationToThis(ANY.WoodMagical.mToThis.toArray(ZL_MT)).addReRegistrationToThis(ANY.WoodNormal.mToThis.toArray(ZL_MT)).setFurnaceBurnTime(TICKS_PER_SMELT/2);
 		Wood            .stealLooks(MT.Wood           ).steal(MT.Wood           ).setLocal("Wood"               ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                        ).setFurnaceBurnTime(TICKS_PER_SMELT/2);
-		WoodPlastic     .stealLooks(MT.Wood           ).steal(MT.Wood                                                                                   ).put(DONT_SHOW_THIS_COMPONENT               ).addReRegistrationToThis(MT.Plastic);
+		WoodPlastic     .stealLooks(MT.Wood           ).steal(MT.Wood                                                                                   ).put(DONT_SHOW_THIS_COMPONENT               ).addReRegistrationToThis(MT.Plastic, MT.PetrifiedWood);
 		
 		_Steel          .stealLooks(MT.Steel          ).put(DONT_SHOW_THIS_COMPONENT);
 		_Bronze         .stealLooks(MT.Bronze         ).put(DONT_SHOW_THIS_COMPONENT);

@@ -41,6 +41,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 	  sHexoriums = {MT.HexoriumRed, MT.HexoriumGreen, MT.HexoriumBlue, MT.HexoriumWhite, MT.HexoriumBlack}
 	, sInfused   = {MT.InfusedFire, MT.InfusedAir, MT.InfusedWater, MT.InfusedEarth, MT.InfusedEntropy, MT.InfusedOrder}
 	, sWoods     = {MT.WOODS.Oak, MT.WOODS.Birch, MT.WOODS.Spruce, MT.WOODS.Jungle, MT.WOODS.Acacia, MT.WOODS.DarkOak, MT.WOODS.Compressed, MT.WoodRubber, MT.WOODS.Maple, MT.WOODS.Willow, MT.WOODS.BlueMahoe, MT.WOODS.Hazel, MT.WOODS.Cinnamon, MT.WOODS.Coconut, MT.WOODS.Rainbowood}
+	, sGems      = {MT.Diamond, MT.DiamondPink, MT.Emerald, MT.Aquamarine, MT.Ruby, MT.GreenSapphire, MT.BlueSapphire, MT.Amethyst, MT.Craponite, MT.Amber, MT.NetherQuartz, MT.NetherQuartz, MT.Lapis, MT.Lapis, MT.Redstone, MT.Redstone, MT.Glowstone, MT.Glowstone, MT.Apatite, MT.Apatite, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite}
 	, sMetals    = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel}
 	;
 	
@@ -133,37 +134,50 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 		IPrefixBlock[] tMetalCrates = {BlocksGT.crateGtDust, BlocksGT.crateGtDust, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtIngot, BlocksGT.crateGtPlate, BlocksGT.crateGtPlate, BlocksGT.crateGt64Dust, BlocksGT.crateGt64Plate, BlocksGT.crateGt64Ingot, BlocksGT.crateGt64Ingot};
 		int[] tStart = {1, 12}, tEnd = {3, 14};
 		for (int a = 0; a < 2; a++) for (int b = 0; b < 2; b++) {
-			switch(aData.next(5 + (MD.HEX.mLoaded ? 1 : 0) + (MD.TC.mLoaded ? 1 : 0))) {
+			switch(aData.next(6 + (MD.HEX.mLoaded ? 1 : 0) + (MD.TC.mLoaded ? 1 : 0))) {
 			case  0:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next1in2()) aData.set(tMetalCrates, i, 2, j, sMetals);
-					if (aData.next1in2()) aData.set(tMetalCrates, i, 3, j, sMetals);
-					if (aData.next1in2()) aData.set(tMetalCrates, i, 4, j, sMetals);
+					if (aData.next3in4()) {aData.set(tMetalCrates, i, 2, j, sMetals);
+					if (aData.next2in3()) {aData.set(tMetalCrates, i, 3, j, sMetals);
+					if (aData.next1in2()) {aData.set(tMetalCrates, i, 4, j, sMetals);
+							if (aData.next1in3()) aData.ingots_or_plates(i, 4, j, 0, sMetals);
+					} else  if (aData.next1in3()) aData.ingots_or_plates(i, 3, j, 0, sMetals);
+					} else  if (aData.next1in3()) aData.ingots_or_plates(i, 2, j, 0, sMetals);
+					} else  if (aData.next1in3()) aData.ingots_or_plates(i, 1, j, 0, sMetals);
 				}
 				break;
-			case  1: case  5:
+			case  1: case  2:
 				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
-					if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
-					if (aData.next1in2()) aData.set(BlocksGT.crateGt64Plate, i, 4, j, sWoods);
+					if (aData.next3in4()) {aData.set(BlocksGT.crateGt64Plate, i, 2, j, sWoods);
+					if (aData.next2in3()) {aData.set(BlocksGT.crateGt64Plate, i, 3, j, sWoods);
+					if (aData.next1in2()) {aData.set(BlocksGT.crateGt64Plate, i, 4, j, sWoods);
+					}}}
 				}
 				break;
-			case  2:
+			case  3:
+				for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
+					if (aData.next3in4()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sGems);
+					if (aData.next2in3()) {aData.set(aData.next1in6() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sGems);
+					if (aData.next1in2()) {aData.set(aData.next1in8() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 4, j, sGems);
+					}}}
+				}
+				break;
+			case  4:
 				if (MD.HEX.mLoaded) for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sHexoriums);
+					if (aData.next1in2()) {aData.set(aData.next1in2() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sHexoriums);
 					if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sHexoriums);
-					if (aData.next1in2()) {aData.set(aData.next1in3() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sHexoriums);
+					if (aData.next1in2()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sHexoriums);
 							if (aData.next1in2()) aData.set(i, 4, j, tHexoriumColor, 1, tHexoriumRandom, 1);
 					} else  if (aData.next1in2()) aData.set(i, 3, j, tHexoriumColor, 1, tHexoriumRandom, 1);
 					} else  if (aData.next1in2()) aData.set(i, 2, j, tHexoriumColor, 1, tHexoriumRandom, 1);
 					} else  if (aData.next1in2()) aData.set(i, 1, j, tHexoriumColor, 1, tHexoriumRandom, 1);
 				}
 				break;
-			case  3:
+			case  5:
 				if (MD.TC.mLoaded) for (int i = tStart[a]; i <= tEnd[a]; i++) for (int j = tStart[b]; j <= tEnd[b]; j++) {
-					if (aData.next1in2()) {aData.set(aData.next1in5() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sInfused);
-					if (aData.next1in2()) {aData.set(aData.next1in5() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sInfused);
-					if (aData.next1in2()) {aData.set(aData.next1in5() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sInfused);
+					if (aData.next1in2()) {aData.set(aData.next1in4() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 1, j, sInfused);
+					if (aData.next1in2()) {aData.set(aData.next1in6() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 2, j, sInfused);
+					if (aData.next1in2()) {aData.set(aData.next1in8() ? BlocksGT.crateGt64Gem : BlocksGT.crateGtGem, i, 3, j, sInfused);
 							if (aData.next1in2()) aData.set(i, 4, j, tInfusedCrystal, aData.next(7));
 					} else  if (aData.next1in2()) aData.set(i, 3, j, tInfusedCrystal, aData.next(7));
 					} else  if (aData.next1in2()) aData.set(i, 2, j, tInfusedCrystal, aData.next(7));

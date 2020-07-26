@@ -30,9 +30,11 @@ import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.FL;
+import gregapi.data.OP;
 import gregapi.fluid.FluidTankGT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.random.WorldAndCoords;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -86,6 +88,8 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public int next(int aNumber) {return mRandom.nextInt(aNumber);}
+	/** Gives a random positive StackSize */
+	public int nextStack() {return 1+mRandom.nextInt(64);}
 	/** Gives a random MetaData but biased towards the Dungeons Color. */
 	public int nextMetaA() {return next1in3() ? mColor         : next(16);}
 	/** Gives a random MetaData but biased towards the Dungeons Inverse Color. */
@@ -229,6 +233,25 @@ public class DungeonData extends WorldAndCoords {
 	public boolean flower(int aX, int aY, int aZ) {
 		int tIndex = next(BlocksGT.FLOWER_TILES.length);
 		return set(aX, aY, aZ, BlocksGT.FLOWER_TILES[tIndex], BlocksGT.FLOWER_METAS[tIndex], 2);
+	}
+	
+	public boolean ingots_or_plates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial[] aMaterials) {
+		ItemStack aIngot = OP.ingot.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
+		ItemStack aPlate = OP.plate.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
+		if (ST.valid(aIngot)) return ST.valid(aPlate) && next1in2() ? set(aX, aY, aZ, 32085, ST.save(null, NBT_VALUE, aPlate)) : set(aX, aY, aZ, 32084, ST.save(null, NBT_VALUE, aIngot));
+		return ST.valid(aPlate) && set(aX, aY, aZ, 32085, ST.save(null, NBT_VALUE, aPlate));
+	}
+	public boolean ingots(int aX, int aY, int aZ, long aStackSize, OreDictMaterial[] aMaterials) {
+		ItemStack aStack = OP.ingot.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
+		return ST.valid(aStack) && set(aX, aY, aZ, 32084, ST.save(null, NBT_VALUE, aStack));
+	}
+	public boolean plates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial[] aMaterials) {
+		ItemStack aStack = OP.plate.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
+		return ST.valid(aStack) && set(aX, aY, aZ, 32085, ST.save(null, NBT_VALUE, aStack));
+	}
+	public boolean gemplates(int aX, int aY, int aZ, long aStackSize, OreDictMaterial[] aMaterials) {
+		ItemStack aStack = OP.plateGem.mat(aMaterials[next(aMaterials.length)], aStackSize <= 0 ? nextStack() : UT.Code.bindStack(aStackSize));
+		return ST.valid(aStack) && set(aX, aY, aZ, 32086, ST.save(null, NBT_VALUE, aStack));
 	}
 	
 	public boolean shelf(int aX, int aY, int aZ, long aMeta, byte aFacing) {
