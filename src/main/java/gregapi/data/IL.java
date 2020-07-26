@@ -116,6 +116,7 @@ public enum IL implements IItemContainer {
 	TF_Log_Oak, TF_Log_Canopy, TF_Log_Mangrove, TF_Log_Darkwood, TF_Log_Time, TF_Log_Trans, TF_Log_Mine, TF_Log_Sorting,
 	TF_Mazestone, TF_Nagastone,
 	HiL_Ironwood,
+	HaC_Cinnamon, HaC_Maple, HaC_Paperbark,
 	ABYSSAL_Crate, ABYSSAL_Lava,
 	ATUM_Scarab, ATUM_Limestone, ATUM_Limecobble,
 	RH_Sand_Magnetite, RH_Sand_Olivine, RH_Sand_Coral, RH_Sand_Gypsum,

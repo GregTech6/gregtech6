@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -34,6 +34,7 @@ import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -60,7 +61,7 @@ public class WorldgenRocks extends WorldgenObject {
 			int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
 			for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
 				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
-				if (tContact.getMaterial().isLiquid()) break;
+				if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
 				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
 				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) continue;
 				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, tRockCount == 1 || aRandom.nextInt(tRockCount) == 0 ? ST.save(UT.NBT.make(), NBT_VALUE, aRandom.nextInt(12)==0?OP.rockGt.mat(MT.MeteoricIron, 1):ST.make(Items.flint, 1, 0)) : null, F, T);

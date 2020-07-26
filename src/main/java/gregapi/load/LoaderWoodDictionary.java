@@ -723,6 +723,46 @@ public class LoaderWoodDictionary implements Runnable {
 			CR.shaped(ST.make(tPlank, 1, 9), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.ERE, "slabPlanksRotten"    ));
 			CR.shaped(ST.make(tPlank, 1,10), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.ERE, "slabPlanksMarshwood" ));
 		}
+		// Harvestcraft Trees
+		if (MD.HaC.mLoaded) {
+			new SaplingEntry(ST.make(MD.HaC, "pamcinnamonSapling"   , 1, W), new WoodEntry(IL.HaC_Cinnamon .wild(1), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 1)), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pammapleSapling"      , 1, W), new WoodEntry(IL.HaC_Maple    .wild(1), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1)), WoodDictionary.LEAVES.get(Blocks.leaves, 1));
+			new SaplingEntry(ST.make(MD.HaC, "pampaperbarkSapling"  , 1, W), new WoodEntry(IL.HaC_Paperbark.wild(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 3)), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			
+			new SaplingEntry(ST.make(MD.HaC, "pamappleSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pamavocadoSapling"    , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pamcherrySapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pamchestnutSapling"   , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pamgooseberrySapling" , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pamnutmegSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pampearSapling"       , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pamplumSapling"       , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pamwalnutSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
+			new SaplingEntry(ST.make(MD.HaC, "pamalmondSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamapricotSapling"    , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pambananaSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamcashewSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamcoconutSapling"    , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamdateSapling"       , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamdragonfruitSapling", 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamdurianSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamfigSapling"        , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamgrapefruitSapling" , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamlemonSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamlimeSapling"       , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pammangoSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamoliveSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamorangeSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pampapayaSapling"     , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pampeachSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pampecanSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pampeppercornSapling" , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pampersimmonSapling"  , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pampistachioSapling"  , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pampomegranateSapling", 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamstarfruitSapling"  , 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamvanillabeanSapling", 1, W), WoodDictionary.WOODS.get(Blocks.log, 3), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+		}
 		// Netherite Plus Planks
 		if (MD.NePl.mLoaded) {
 			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.NePl, "CrimsonPlanks", 1, W));

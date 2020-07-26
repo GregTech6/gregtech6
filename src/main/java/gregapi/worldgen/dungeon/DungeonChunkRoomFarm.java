@@ -21,10 +21,12 @@ package gregapi.worldgen.dungeon;
 
 import static gregapi.data.CS.*;
 
+import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.MD;
 import gregapi.util.ST;
 import gregapi.util.WD;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
 /**
@@ -52,6 +54,74 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 			aData.smooth(    10,  6, tCoord, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 		}
 		
+		// All these Crops grow in 8 MetaData Stages. The "null" Parameter in the Mod Blocks is REQUIRED!
+		ArrayListNoNulls<Block> tCrops = new ArrayListNoNulls<>(F
+		, Blocks.carrots
+		, Blocks.potatoes
+		, Blocks.wheat
+		, ST.block(MD.EtFu, "beetroots", null)
+		, ST.block(MD.HaC, "pamartichokeCrop", null)
+		, ST.block(MD.HaC, "pamasparagusCrop", null)
+		, ST.block(MD.HaC, "pambambooshootCrop", null)
+		, ST.block(MD.HaC, "pambarleyCrop", null)
+		, ST.block(MD.HaC, "pambeanCrop", null)
+		, ST.block(MD.HaC, "pambeetCrop", null)
+		, ST.block(MD.HaC, "pambellpepperCrop", null)
+		, ST.block(MD.HaC, "pamblackberryCrop", null)
+		, ST.block(MD.HaC, "pamblueberryCrop", null)
+		, ST.block(MD.HaC, "pambroccoliCrop", null)
+		, ST.block(MD.HaC, "pambrusselsproutCrop", null)
+		, ST.block(MD.HaC, "pamcabbageCrop", null)
+//      , ST.block(MD.HaC, "pamcactusfruitCrop", null) // Does not grow on Farmland
+		, ST.block(MD.HaC, "pamcandleberryCrop", null)
+		, ST.block(MD.HaC, "pamcantaloupeCrop", null)
+		, ST.block(MD.HaC, "pamcauliflowerCrop", null)
+		, ST.block(MD.HaC, "pamceleryCrop", null)
+		, ST.block(MD.HaC, "pamchilipepperCrop", null)
+		, ST.block(MD.HaC, "pamcoffeebeanCrop", null)
+		, ST.block(MD.HaC, "pamcornCrop", null)
+		, ST.block(MD.HaC, "pamcottonCrop", null)
+		, ST.block(MD.HaC, "pamcranberryCrop", null)
+		, ST.block(MD.HaC, "pamcucumberCrop", null)
+		, ST.block(MD.HaC, "pamcurryleafCrop", null)
+		, ST.block(MD.HaC, "pameggplantCrop", null)
+		, ST.block(MD.HaC, "pamgarlicCrop", null)
+		, ST.block(MD.HaC, "pamgingerCrop", null)
+		, ST.block(MD.HaC, "pamgrapeCrop", null)
+		, ST.block(MD.HaC, "pamkiwiCrop", null)
+		, ST.block(MD.HaC, "pamleekCrop", null)
+		, ST.block(MD.HaC, "pamlettuceCrop", null)
+		, ST.block(MD.HaC, "pammustardseedsCrop", null)
+		, ST.block(MD.HaC, "pamoatsCrop", null)
+		, ST.block(MD.HaC, "pamokraCrop", null)
+		, ST.block(MD.HaC, "pamonionCrop", null)
+		, ST.block(MD.HaC, "pamparsnipCrop", null)
+		, ST.block(MD.HaC, "pampeanutCrop", null)
+		, ST.block(MD.HaC, "pampeasCrop", null)
+		, ST.block(MD.HaC, "pampineappleCrop", null)
+		, ST.block(MD.HaC, "pamradishCrop", null)
+		, ST.block(MD.HaC, "pamraspberryCrop", null)
+		, ST.block(MD.HaC, "pamrhubarbCrop", null)
+		, ST.block(MD.HaC, "pamriceCrop", null)
+		, ST.block(MD.HaC, "pamrutabagaCrop", null)
+		, ST.block(MD.HaC, "pamryeCrop", null)
+		, ST.block(MD.HaC, "pamscallionCrop", null)
+//      , ST.block(MD.HaC, "pamseaweedCrop", null) // Does not grow on Farmland
+		, ST.block(MD.HaC, "pamsesameseedsCrop", null)
+		, ST.block(MD.HaC, "pamsoybeanCrop", null)
+		, ST.block(MD.HaC, "pamspiceleafCrop", null)
+		, ST.block(MD.HaC, "pamspinachCrop", null)
+		, ST.block(MD.HaC, "pamstrawberryCrop", null)
+		, ST.block(MD.HaC, "pamsweetpotatoCrop", null)
+		, ST.block(MD.HaC, "pamtealeafCrop", null)
+		, ST.block(MD.HaC, "pamtomatoCrop", null)
+		, ST.block(MD.HaC, "pamturnipCrop", null)
+		, ST.block(MD.HaC, "pamwaterchestnutCrop", null)
+		, ST.block(MD.HaC, "pamwhitemushroomCrop", null)
+		, ST.block(MD.HaC, "pamwintersquashCrop", null)
+		, ST.block(MD.HaC, "pamzucchiniCrop", null)
+		);
+		
 		for (int tX = 1; tX <= 14; tX++) for (int tZ = 1; tZ <= 14; tZ++) if ((tX <= 4 || tX >= 11) && (tZ <= 4 || tZ >= 11)) {
 			aData.lamp(tX, 5, tZ, +1);
 			
@@ -60,23 +130,14 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 				aData.set(tX, 2, tZ, BlocksGT.Glowtus, aData.nextMetaA(), 2);
 			} else {
 				aData.set(tX, 1, tZ, Blocks.farmland, 15, 2);
-				if (tX >= 8) {
-					if (tZ >= 8) {
-						if (WD.even(tX, 2, tZ)) {
-							aData.set(tX, 2, tZ, Blocks.melon_stem, aData.next(8), Blocks.pumpkin_stem, aData.next(8), 2);
-						} else {
-							aData.set(tX, 2, tZ, Blocks.melon_block, 0, Blocks.pumpkin, 0, 2);
-						}
+				if (tX >= 8 && tZ >= 8) {
+					if (WD.even(tX, 2, tZ)) {
+						aData.set(tX, 2, tZ, Blocks.melon_stem, aData.next(8), Blocks.pumpkin_stem, aData.next(8), 2);
 					} else {
-						aData.set(tX, 2, tZ, Blocks.carrots, aData.next(8), Blocks.potatoes, aData.next(8), 2);
+						aData.set(tX, 2, tZ, Blocks.melon_block, 0, Blocks.pumpkin, 0, 2);
 					}
 				} else {
-					if (tZ >= 8) {
-						aData.set(tX, 2, tZ, ST.block(MD.EtFu, "beetroots"), aData.next(8), Blocks.wheat, aData.next(8), 2);
-					} else {
-						// TODO: Any random Mod Seeds. Maybe use the Village Worldgen Hooks for that to prevent OP Crops.
-						aData.set(tX, 2, tZ, Blocks.wheat, aData.next(8), 2);
-					}
+					aData.set(tX, 2, tZ, tCrops.get(aData.next(tCrops.size())), aData.next(8), 2);
 				}
 			}
 		}

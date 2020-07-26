@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -63,7 +63,7 @@ public class WorldgenBushes extends WorldgenObject {
 			Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
 			if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) {temp = T; continue;}
 			if (!BlocksGT.plantableGreens.contains(tContact)) {temp = F; continue;}
-			if (!temp || !WD.easyRep(aWorld, tX, tY+1, tZ)) return F;
+			if (!temp || !WD.easyRep(aWorld, tX, tY+1, tZ) || tContact == Blocks.farmland) return F;
 			if (tContact == Blocks.grass) WD.set(aChunk, tX-aMinX, tY, tZ-aMinZ, Blocks.dirt, 0);
 			
 			int tStage = aRandom.nextInt(4);

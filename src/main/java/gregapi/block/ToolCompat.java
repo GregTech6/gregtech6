@@ -106,13 +106,25 @@ public class ToolCompat {
 		
 		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
 			boolean rReturn = F;
-			if (BlocksGT.Beam1 != null) {
+			if (!rReturn && BlocksGT.BeamA != null) {
+				if (IL.HaC_Maple.equal(aBlock)) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamA, 1, 3);
+				}
+			}
+			if (!rReturn && BlocksGT.BeamB != null) {
+				if (IL.HaC_Cinnamon.equal(aBlock)) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamB, 1, 3);
+				}
+			}
+			if (!rReturn && BlocksGT.Beam1 != null) {
 				if (aBlock == Blocks.log) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
 				} else if (IL.TF_Log_Darkwood.equal(aBlock) && (aMeta & 3) != 3) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
 				} else if (IL.TF_Log_Time.equal(aBlock) && (aMeta & 1) == 0) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, (aMeta&12)|((aMeta & 2) == 0 ? 1 : 2), 3);
+				} else if (IL.HaC_Paperbark.equal(aBlock)) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, 3, 3);
 				}
 			}
 			if (!rReturn && BlocksGT.Beam3 != null) {

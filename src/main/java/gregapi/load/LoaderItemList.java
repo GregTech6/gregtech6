@@ -1065,6 +1065,11 @@ public class LoaderItemList implements Runnable {
 		IL.HiL_Ironwood                         .set(ST.make(MD.HiL, "tile.hl_ironwoodWood"                 , 1, 0), new OreDictItemData(ANY.Wood, U*8, MT.LiveRoot, U4), OD.logWood);
 		
 		
+		IL.HaC_Cinnamon                         .set(ST.make(MD.HaC, "pamCinnamon"                          , 1, 0), null, OD.logWood);
+		IL.HaC_Maple                            .set(ST.make(MD.HaC, "pamMaple"                             , 1, 0), null, OD.logWood);
+		IL.HaC_Paperbark                        .set(ST.make(MD.HaC, "pamPaperbark"                         , 1, 0), null, OD.logWood);
+		
+		
 		IL.RoC_Comb_Slippery                    .set(ST.make(MD.RoC, "rotarycraft_item_modinterface"        , 1, 0), null, OD.beeComb);
 		IL.RoC_Propolis_Slippery                .set(ST.make(MD.RoC, "rotarycraft_item_modinterface"        , 1, 1), null, OD.listAllpropolis);
 		
