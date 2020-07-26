@@ -132,6 +132,7 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		aData.set             (14, 1,  3, SIDE_UNKNOWN, (1102+tCrucibleType), UT.NBT.make(NBT_FACING, SIDE_X_NEG), T, T);
 		aData.smooth          (14, 1,  4);
 		aData.ingots_or_plates(14, 1,  5, 0, sMetals);
+		aData.ingots_or_plates(10, 1,  1, 0, sMetals);
 		aData.set             (11, 1,  1, Blocks.anvil, 3 | (aData.next(3) << 2), 0);
 		aData.set             (12, 1,  1, SIDE_UNKNOWN, 32703, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_STATE, 1+aData.next(4)), T, T);
 		aData.set             (11, 1,  4, SIDE_UNKNOWN,(32034+aData.next(4)), UT.NBT.make(NBT_INV_LIST, UT.NBT.makeInv(ToolsGT.sMetaTool.getToolWithStats(ToolsGT.HARDHAMMER, MT.VanadiumSteel, MT.WOODS.Spruce))), T, T);
