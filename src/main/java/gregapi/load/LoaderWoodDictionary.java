@@ -91,8 +91,8 @@ public class LoaderWoodDictionary implements Runnable {
 			
 			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 0), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 0), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 4), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 4), MT.WOODS.Hazel     , 39)));
 			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 0), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 0), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 4), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 4), MT.WOODS.Hazel     ,  0)));
-			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 1), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 5), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 5), MT.WOODS.Cinnamon  , 97)), ST.make(MD.HaC, "cinnamonItem", 1, 0, IL.Food_Cinnamon), MT.Cinnamon);
-			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 1), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 1), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 5), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 5), MT.WOODS.Cinnamon  ,  0)), ST.make(MD.HaC, "cinnamonItem", 1, 0, IL.Food_Cinnamon), MT.Cinnamon);
+			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 1), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 1), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 5), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 5), MT.WOODS.Cinnamon  , 97)), IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon))), MT.Cinnamon);
+			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 1), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 1), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 5), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 5), MT.WOODS.Cinnamon  ,  0)), IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon))), MT.Cinnamon);
 			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 2), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 2), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 6), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 6), MT.WOODS.Coconut   , 98)));
 			new WoodEntry(ST.make(BlocksGT.LogBFireProof, 1, 2), new BeamEntry(ST.make(BlocksGT.BeamBFireProof  , 1, 2), new PlankEntry(ST.make(BlocksGT.PlanksFireProof, 1, 6), ST.make(((BlockMetaType)BlocksGT.PlanksFireProof   ).mSlabs[0], 1, 6), MT.WOODS.Coconut   ,  0)));
 			new WoodEntry(ST.make(BlocksGT.LogB         , 1, 3), new BeamEntry(ST.make(BlocksGT.BeamB           , 1, 3), new PlankEntry(ST.make(BlocksGT.Planks         , 1, 7), ST.make(((BlockMetaType)BlocksGT.Planks            ).mSlabs[0], 1, 7), MT.WOODS.Rainbowood, 99), 1, 400), 1, 500);
@@ -559,7 +559,7 @@ public class LoaderWoodDictionary implements Runnable {
 			new WoodEntry(ST.make(tLog, 1, 35), WoodDictionary.PLANKS.get(tPlank,  9));
 			new WoodEntry(ST.make(tLog, 1, 36), WoodDictionary.PLANKS.get(tPlank, 21));
 			new WoodEntry(ST.make(tLog, 1, 37), WoodDictionary.PLANKS.get(tPlank, 26));
-			new WoodEntry(ST.make(tLog, 1, 38), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 1), ST.make(MD.HaC, "cinnamonItem", 1, 0, IL.Food_Cinnamon), MT.Cinnamon);
+			new WoodEntry(ST.make(tLog, 1, 38), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 1), IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon))), MT.Cinnamon);
 			new WoodEntry(ST.make(tLog, 1, 39), WoodDictionary.PLANKS.get(tPlank, 34));
 		}
 		
@@ -725,9 +725,9 @@ public class LoaderWoodDictionary implements Runnable {
 		}
 		// Harvestcraft Trees
 		if (MD.HaC.mLoaded) {
-			new SaplingEntry(ST.make(MD.HaC, "pamcinnamonSapling"   , 1, W), new WoodEntry(IL.HaC_Cinnamon .wild(1), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 1)), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
-			new SaplingEntry(ST.make(MD.HaC, "pammapleSapling"      , 1, W), new WoodEntry(IL.HaC_Maple    .wild(1), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1)), WoodDictionary.LEAVES.get(Blocks.leaves, 1));
-			new SaplingEntry(ST.make(MD.HaC, "pampaperbarkSapling"  , 1, W), new WoodEntry(IL.HaC_Paperbark.wild(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 3)), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pamcinnamonSapling"   , 1, W), new WoodEntry(IL.HaC_Log_Cinnamon .wild(1), WoodDictionary.BEAMS.get(BlocksGT.BeamB, 1), IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon))), MT.Cinnamon), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
+			new SaplingEntry(ST.make(MD.HaC, "pammapleSapling"      , 1, W), new WoodEntry(IL.HaC_Log_Maple    .wild(1), WoodDictionary.BEAMS.get(BlocksGT.BeamA, 1)), WoodDictionary.LEAVES.get(Blocks.leaves, 1));
+			new SaplingEntry(ST.make(MD.HaC, "pampaperbarkSapling"  , 1, W), new WoodEntry(IL.HaC_Log_Paperbark.wild(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 3)), WoodDictionary.LEAVES.get(Blocks.leaves, 3));
 			
 			new SaplingEntry(ST.make(MD.HaC, "pamappleSapling"      , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));
 			new SaplingEntry(ST.make(MD.HaC, "pamavocadoSapling"    , 1, W), WoodDictionary.WOODS.get(Blocks.log, 0), WoodDictionary.LEAVES.get(Blocks.leaves, 0));

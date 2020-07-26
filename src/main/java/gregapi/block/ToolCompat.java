@@ -106,14 +106,17 @@ public class ToolCompat {
 		
 		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
 			boolean rReturn = F;
+			ItemStack tBark = OM.dust(MT.Bark);
+			
 			if (!rReturn && BlocksGT.BeamA != null) {
-				if (IL.HaC_Maple.equal(aBlock)) {
+				if (IL.HaC_Log_Maple.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamA, 1, 3);
 				}
 			}
 			if (!rReturn && BlocksGT.BeamB != null) {
-				if (IL.HaC_Cinnamon.equal(aBlock)) {
+				if (IL.HaC_Log_Cinnamon.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamB, 1, 3);
+					if (rReturn) tBark = IL.HaC_Cinnamon.get(1, IL.Food_Cinnamon.get(1, OM.dust(MT.Cinnamon)));
 				}
 			}
 			if (!rReturn && BlocksGT.Beam1 != null) {
@@ -123,7 +126,7 @@ public class ToolCompat {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, aMeta, 3);
 				} else if (IL.TF_Log_Time.equal(aBlock) && (aMeta & 1) == 0) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, (aMeta&12)|((aMeta & 2) == 0 ? 1 : 2), 3);
-				} else if (IL.HaC_Paperbark.equal(aBlock)) {
+				} else if (IL.HaC_Log_Paperbark.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam1, 3, 3);
 				}
 			}
@@ -155,7 +158,7 @@ public class ToolCompat {
 			}
 			if (rReturn) {
 				if (FAST_LEAF_DECAY) WD.leafdecay(aWorld, aX, aY, aZ, null);
-				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, OM.dust(MT.Bark), aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
+				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, tBark, aWorld, aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide]);
 				return aTool.equals(TOOL_axe) ? 500 : 1000;
 			}
 			return 0;

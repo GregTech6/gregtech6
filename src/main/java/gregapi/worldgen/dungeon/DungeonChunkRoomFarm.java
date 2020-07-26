@@ -102,7 +102,7 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 		, ST.block(MD.HaC, "pamradishCrop", null)
 		, ST.block(MD.HaC, "pamraspberryCrop", null)
 		, ST.block(MD.HaC, "pamrhubarbCrop", null)
-		, ST.block(MD.HaC, "pamriceCrop", null)
+//      , ST.block(MD.HaC, "pamriceCrop", null) // Does not grow on Farmland
 		, ST.block(MD.HaC, "pamrutabagaCrop", null)
 		, ST.block(MD.HaC, "pamryeCrop", null)
 		, ST.block(MD.HaC, "pamscallionCrop", null)
