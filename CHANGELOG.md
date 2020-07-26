@@ -33,6 +33,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when IC2 is installed. This should reduce the occurences of it quite a bit, at least with GT6 TileEntities adjacent to the Transformer.
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.
 [FIXED] Some Wood Material Data for Erebus, Chisel and Netherite Plus.
+[FIXED] The wrong Types of Honey and Milk were outputted by some Recipes.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
 
 

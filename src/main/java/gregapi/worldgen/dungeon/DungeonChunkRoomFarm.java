@@ -22,7 +22,10 @@ package gregapi.worldgen.dungeon;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.MD;
+import gregapi.util.ST;
 import gregapi.util.WD;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
 /**
@@ -70,8 +73,9 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 					}
 				} else {
 					if (tZ >= 8) {
+						Block tBlock = ST.block(MD.EtFu, "");
 						// TODO: Et Futurums Beetroot Seeds next to the Wheat, like how Carrots and Potatoes are?
-						aData.set(tX, 2, tZ, Blocks.wheat, aData.next(8), 2);
+						aData.set(tX, 2, tZ, tBlock, aData.next(8), Blocks.wheat, aData.next(8), 2);
 					} else {
 						// TODO: Any random Mod Seeds. Maybe use the Village Worldgen Hooks for that to prevent OP Crops.
 						aData.set(tX, 2, tZ, Blocks.wheat, aData.next(8), 2);

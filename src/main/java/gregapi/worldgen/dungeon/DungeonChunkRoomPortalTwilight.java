@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,10 +40,10 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 		NBTTagList tInventory = new NBTTagList();
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.book("Manual_Portal_TF")), "s", (short)22));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.make(Items.diamond, 1, 0)), "s", (short)31));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(4)), "s", (short)12));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(4)), "s", (short)39));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(4)), "s", (short)14));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(4)), "s", (short)41));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(8)), "s", (short)12));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(8)), "s", (short)39));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(8)), "s", (short)14));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.TF_LiveRoot.get(8)), "s", (short)41));
 		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] != 0) {
 			aData.set( 1, 2,  5, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
