@@ -68,10 +68,10 @@ public class DungeonChunkRoomPool extends DungeonChunkRoomEmpty {
 			aData.set( 9,  0,  9, tFishTrap);
 			
 			TileEntity
-			tTileEntity = WD.te(aData.mWorld, aData.mX+6, aData.mY, aData.mZ+6, T); if (tTileEntity instanceof IInventory) ((IInventory)tTileEntity).setInventorySlotContents(0, ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()));
-			tTileEntity = WD.te(aData.mWorld, aData.mX+6, aData.mY, aData.mZ+9, T); if (tTileEntity instanceof IInventory) ((IInventory)tTileEntity).setInventorySlotContents(0, ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()));
-			tTileEntity = WD.te(aData.mWorld, aData.mX+9, aData.mY, aData.mZ+6, T); if (tTileEntity instanceof IInventory) ((IInventory)tTileEntity).setInventorySlotContents(0, ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()));
-			tTileEntity = WD.te(aData.mWorld, aData.mX+9, aData.mY, aData.mZ+9, T); if (tTileEntity instanceof IInventory) ((IInventory)tTileEntity).setInventorySlotContents(0, ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()));
+			tTileEntity = WD.te(aData.mWorld, aData.mX+6, aData.mY, aData.mZ+6, T); if (tTileEntity instanceof IInventory) ((IInventory)tTileEntity).setInventorySlotContents(18, ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()));
+			tTileEntity = WD.te(aData.mWorld, aData.mX+6, aData.mY, aData.mZ+9, T); if (tTileEntity instanceof IInventory) ((IInventory)tTileEntity).setInventorySlotContents(18, ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()));
+			tTileEntity = WD.te(aData.mWorld, aData.mX+9, aData.mY, aData.mZ+6, T); if (tTileEntity instanceof IInventory) ((IInventory)tTileEntity).setInventorySlotContents(18, ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()));
+			tTileEntity = WD.te(aData.mWorld, aData.mX+9, aData.mY, aData.mZ+9, T); if (tTileEntity instanceof IInventory) ((IInventory)tTileEntity).setInventorySlotContents(18, ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()));
 		}
 		
 		if (aData.next1in2()) aData.set( 1, 1,  1, SIDE_UNKNOWN, 508+aData.next(3), UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_POS), T, T);

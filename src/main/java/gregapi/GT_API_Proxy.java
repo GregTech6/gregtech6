@@ -221,9 +221,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		mSaveLocation = null;
 	}
 	
-	@SubscribeEvent public void onWorldSave(WorldEvent.Save aEvent) {mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
-	@SubscribeEvent public void onWorldLoad(WorldEvent.Load aEvent) {mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
-	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
+	@SubscribeEvent public void onWorldSave  (WorldEvent.Save   aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
+	@SubscribeEvent public void onWorldLoad  (WorldEvent.Load   aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
+	@SubscribeEvent public void onWorldUnload(WorldEvent.Unload aEvent) {if (mSaveLocation == null) mSaveLocation = aEvent.world.getSaveHandler().getWorldDirectory();}
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
