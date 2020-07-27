@@ -74,8 +74,8 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		IL.Compound_Brass.set(                  addItem(tLastID =     1, "Brass Compound"               , "Put in Furnace to smelt it"      , new OreDictItemData(MT.Brass        , U9), TC.stack(TC.METALLUM, 1)));
 		IL.Compound_BismuthBronze.set(          addItem(tLastID =     2, "Bismuth Bronze Compound"      , "Put in Furnace to smelt it"      , new OreDictItemData(MT.BismuthBronze, U9), TC.stack(TC.METALLUM, 1)));
 		
-		RM.add_smelting(IL.Compound_Bronze       .get(1), OP.nugget.mat(MT.Bronze, 1));
-		RM.add_smelting(IL.Compound_Brass        .get(1), OP.nugget.mat(MT.Brass, 1));
+		RM.add_smelting(IL.Compound_Bronze       .get(1), OP.nugget.mat(MT.Bronze       , 1));
+		RM.add_smelting(IL.Compound_Brass        .get(1), OP.nugget.mat(MT.Brass        , 1));
 		RM.add_smelting(IL.Compound_BismuthBronze.get(1), OP.nugget.mat(MT.BismuthBronze, 1));
 		
 		IL.Ceramic_Jug_Raw.set(                 addItem(tLastID =   996, "Raw Clay Jug"                 , "Put in Furnace to harden it"     , new OreDictItemData(MT.Clay, U*6), TC.stack(TC.VACUOS, 1), TC.stack(TC.TERRA, 2)));
@@ -161,7 +161,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 		
 		
 		
-		OreDictMaterial[] tBucketMaterials = new OreDictMaterial[] {MT.Cu, MT.Sn, MT.Zn, MT.Pb, MT.Bi, MT.Brass, MT.Bronze, MT.BismuthBronze};
+		OreDictMaterial[] tBucketMaterials = new OreDictMaterial[] {ANY.Cu, MT.Sn, MT.Zn, MT.Pb, MT.Bi, MT.Brass, MT.Bronze, MT.BismuthBronze};
 		for (int i = 0; i < 8; i++) {
 			OreDictItemData tData = new OreDictItemData(ANY.Wood, U*3, OM.stack(tBucketMaterials[i], U*1));
 			ItemStack tBucket = addItem(tLastID = 2000 + i*100, "Wooden Bucket", "Empty", TC.stack(TC.ARBOR, 2), TC.stack(TC.VACUOS, 2), Behavior_Bucket_Simple.INSTANCE, tData);
@@ -169,7 +169,7 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 			ItemsGT.addNEIRedirects(tBucket
 			, addItem(++tLastID, "Wooden Bucket", "Water"                                   , TC.stack(TC.ARBOR, 2), TC.stack(TC.AQUA       , 2), new Behavior_Bucket_Simple(ST.make(Items.water_bucket, 1, 0))                       , tData.copy(), FL.Water.make(1000), FL.DistW.make(1000), FL.River_Water.make(1000)     , OD.container1000water)
 			, addItem(++tLastID, "Wooden Bucket", "Milk (you cannot drink out of Buckets!)" , TC.stack(TC.ARBOR, 2), TC.stack(TC.SANO       , 2), new Behavior_Bucket_Simple(ST.make(Items.milk_bucket, 1, 0))                        , tData.copy(), FL.Milk.make(1000), FL.MilkGrC.make(1000)                               , OD.container1000milk)
-			, addItem(++tLastID, "Wooden Bucket", "Latex"                                   , TC.stack(TC.ARBOR, 2), TC.stack(TC.LIMUS      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Latex.make(1000), FL.make("molten.latex", 1000)               , OD.container1000latex)
+			, addItem(++tLastID, "Wooden Bucket", "Latex"                                   , TC.stack(TC.ARBOR, 2), TC.stack(TC.LIMUS      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Latex.make(1000), FL.make("molten.latex", 1000)                      , OD.container1000latex)
 			, addItem(++tLastID, "Wooden Bucket", "Creosote Oil"                            , TC.stack(TC.ARBOR, 2), TC.stack(TC.IGNIS      , 2), new Behavior_Bucket_Simple(IL.RC_Creosote_Bucket.get(1))                            , tData.copy(), FL.Oil_Creosote.make(1000)                                              , OD.container1000creosote)
 			, addItem(++tLastID, "Wooden Bucket", "Sea Water (you cannot place this!)"      , TC.stack(TC.ARBOR, 2), TC.stack(TC.TEMPESTAS  , 2), new Behavior_Switch_Metadata(2000 + i*100)                                          , tData.copy(), FL.Ocean.make(1000), FL.OceanGrC.make(1000), FL.Tropics_Water.make(1000))
 			, addItem(++tLastID, "Wooden Bucket", "Rubber Tree Sap"                         , TC.stack(TC.ARBOR, 2), TC.stack(TC.LIMUS      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Resin_Rubber.make(1000)                                              , OD.container1000rubbertreesap)
@@ -180,6 +180,8 @@ public class MultiItemRandomTools extends MultiItemRandom implements IItemRottab
 			, addItem(++tLastID, "Wooden Bucket", "Milk (you cannot drink out of Buckets!)" , TC.stack(TC.ARBOR, 2), TC.stack(TC.VENENUM    , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Milk_Spoiled.make(1000)                                              )
 			, addItem(++tLastID, "Wooden Bucket", "Maple Sap"                               , TC.stack(TC.ARBOR, 2), TC.stack(TC.FAMES      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Sap_Maple.make(1000)                                                 , OD.container1000maplesap)
 			, addItem(++tLastID, "Wooden Bucket", "Rainbow Sap"                             , TC.stack(TC.ARBOR, 2), TC.stack(TC.AURAM      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Sap_Rainbow.make(1000)                                               , OD.container1000rainbowsap)
+			, addItem(++tLastID, "Wooden Bucket", "Soy Milk"                                , TC.stack(TC.ARBOR, 2), TC.stack(TC.HERBA      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.MilkSoy.make(1000)                                                   , OD.container1000soymilk)
+			, addItem(++tLastID, "Wooden Bucket", "Glue"                                    , TC.stack(TC.ARBOR, 2), TC.stack(TC.LIMUS      , 2), Behavior_Bucket_Simple.INSTANCE                                                     , tData.copy(), FL.Glue.make(1000)                                                      , OD.container1000glue)
 			);
 		}
 		

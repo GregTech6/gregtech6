@@ -206,7 +206,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.Plastic;          aRegistry.add("Plastic Storage Box (256)" , "Storage",  6994, 32751, MultiTileEntityMassStorageBox.class   , aMat.mToolQuality, 16, aWooden   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 4.0F, NBT_CAPACITY,   256                        ), "TPT", "PCP", "dPT", 'C', OD.craftingChest, 'P', OP.plate.dat(aMat), 'T', OP.screw.dat(aMat));
 		aMat = MT.Plastic;          aRegistry.add("Plastic Storage Box (128)" , "Storage",  6993, 32751, MultiTileEntityMassStorageBox.class   , aMat.mToolQuality, 16, aWooden   , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 4.0F, NBT_CAPACITY,   128                        ), "TPT", "PCP", "TPd", 'C', OD.craftingChest, 'P', OP.plate.dat(aMat), 'T', OP.screw.dat(aMat));
 		
-		// 6982 is next
+		// 6982 and lower are next
 		
 		CR.shapeless(aRegistry.getItem(6996), CR.DEF_NCC, new Object[] {aRegistry.getItem(6995)});
 		CR.shapeless(aRegistry.getItem(6995), CR.DEF_NCC, new Object[] {aRegistry.getItem(6994)});

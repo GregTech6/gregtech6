@@ -37,6 +37,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
 [ADDED] The 36 Trees from Harvestcraft to the Wood Dictionary. Yes I know they mostly use Vanilla Leaves and Logs. Maple and Cinnamon will have the GT Version of their Beams/Planks assigned.
 [ADDED] Harvestcraft Crops to the List of things that can randomly spawn in the Farming Room in GT6 Dungeons.
+[ADDED] Wooden Buckets for Soy Milk and Glue.
 
 
 6.14.00:

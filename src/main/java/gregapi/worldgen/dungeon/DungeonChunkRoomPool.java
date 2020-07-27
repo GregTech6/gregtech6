@@ -22,7 +22,10 @@ package gregapi.worldgen.dungeon;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.MD;
+import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.ChestGenHooks;
 
@@ -49,12 +52,23 @@ public class DungeonChunkRoomPool extends DungeonChunkRoomEmpty {
 			}
 		}
 		
-		short tChestType = (short)((aData.next1in2()?508:8)+aData.next(3));
+		Block tFishTrap = ST.block(MD.HaC, "fishtrap", null);
+		if (tFishTrap != null) {
+			aData.air( 5, 1,  5);
+			aData.air( 5, 1, 10);
+			aData.air(10, 1,  5);
+			aData.air(10, 1, 10);
+			
+			aData.set( 5, 0,  5, tFishTrap);
+			aData.set( 5, 0, 10, tFishTrap);
+			aData.set(10, 0,  5, tFishTrap);
+			aData.set(10, 0, 10, tFishTrap);
+		}
 		
-		if (aData.next1in2()) aData.set( 1, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_POS), T, T);
-		if (aData.next1in2()) aData.set(14, 1,  1, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_NEG), T, T);
-		if (aData.next1in2()) aData.set( 1, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_POS), T, T);
-		if (aData.next1in2()) aData.set(14, 1, 14, SIDE_UNKNOWN, tChestType, UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_NEG), T, T);
+		if (aData.next1in2()) aData.set( 1, 1,  1, SIDE_UNKNOWN, 508+aData.next(3), UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, UT.NBT.makeInv(NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,ST.make(MD.HaC, "fruitbaitItem"   , aData.nextStack()))), T, T);
+		if (aData.next1in2()) aData.set(14, 1,  1, SIDE_UNKNOWN, 508+aData.next(3), UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, UT.NBT.makeInv(NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,ST.make(MD.HaC, "veggiebaitItem"  , aData.nextStack()))), T, T);
+		if (aData.next1in2()) aData.set( 1, 1, 14, SIDE_UNKNOWN, 508+aData.next(3), UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_X_POS, NBT_INV_LIST, UT.NBT.makeInv(NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,ST.make(MD.HaC, "grainbaitItem"   , aData.nextStack()))), T, T);
+		if (aData.next1in2()) aData.set(14, 1, 14, SIDE_UNKNOWN, 508+aData.next(3), UT.NBT.make("gt.dungeonloot", ChestGenHooks.BONUS_CHEST, NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, UT.NBT.makeInv(NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,NI,ST.make(MD.HaC, "fishtrapbaitItem", aData.nextStack()))), T, T);
 		return T;
 	}
 }

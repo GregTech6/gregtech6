@@ -110,17 +110,17 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		RM.Press    .addRecipe2(T, 16,   32, OM.dust(MT.Chili, U3), OP.ingot.mat(MT.Chocolate, 1), ST.make(MD.HaC, "chilichocolateItem", 1));
 		RM.Press    .addRecipe2(T, 16,  128, OM.dust(MT.Chili, U ), OP.ingot.mat(MT.Chocolate, 4), ST.make(MD.HaC, "chilichocolateItem", 4));
 		
-		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Fruit      .get(3), ST.make(MD.HaC, "fruitbaitItem", 4));
-		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Veggie     .get(3), ST.make(MD.HaC, "veggiebaitItem", 4));
-		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Nut        .get(3), ST.make(MD.HaC, "grainbaitItem", 4));
-		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), OM.dust(MT.FishRaw    ,  U*3), ST.make(MD.HaC, "fishtrapbaitItem", 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Fruit  .get(3), ST.make(MD.HaC, "fruitbaitItem"   , 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Veggie .get(3), ST.make(MD.HaC, "veggiebaitItem"  , 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), IL.Remains_Nut    .get(3), ST.make(MD.HaC, "grainbaitItem"   , 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), OM.dust(MT.FishRaw,  U*3), ST.make(MD.HaC, "fishtrapbaitItem", 4));
 		
-		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.beef         , 1, W), OM.dust(MT.NaCl, U4), ST.make(MD.HaC, "beefjerkyItem"      , 1));
-		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.rotten_flesh , 1, W), OM.dust(MT.NaCl, U4), ST.make(MD.HaC, "zombiejerkyItem"    , 1));
-		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.beef         , 1, W), OM.dust(MT.NaCl, U3), ST.make(MD.HaC, "beefjerkyItem"      , 1));
-		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.rotten_flesh , 1, W), OM.dust(MT.NaCl, U3), ST.make(MD.HaC, "zombiejerkyItem"    , 1));
-		RM.Mixer    .addRecipe2(T, 16,   64, ST.make(Items.beef         , 4, W), OM.dust(MT.NaCl, U ), ST.make(MD.HaC, "beefjerkyItem"      , 4));
-		RM.Mixer    .addRecipe2(T, 16,   64, ST.make(Items.rotten_flesh , 4, W), OM.dust(MT.NaCl, U ), ST.make(MD.HaC, "zombiejerkyItem"    , 4));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.beef        , 1, W), OM.dust(MT.NaCl, U4), ST.make(MD.HaC, "beefjerkyItem"  , 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.rotten_flesh, 1, W), OM.dust(MT.NaCl, U4), ST.make(MD.HaC, "zombiejerkyItem", 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.beef        , 1, W), OM.dust(MT.NaCl, U3), ST.make(MD.HaC, "beefjerkyItem"  , 1));
+		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.rotten_flesh, 1, W), OM.dust(MT.NaCl, U3), ST.make(MD.HaC, "zombiejerkyItem", 1));
+		RM.Mixer    .addRecipe2(T, 16,   64, ST.make(Items.beef        , 4, W), OM.dust(MT.NaCl, U ), ST.make(MD.HaC, "beefjerkyItem"  , 4));
+		RM.Mixer    .addRecipe2(T, 16,   64, ST.make(Items.rotten_flesh, 4, W), OM.dust(MT.NaCl, U ), ST.make(MD.HaC, "zombiejerkyItem", 4));
 		
 		RM.Mixer    .addRecipe1(T,  0,   16, OM.dust(MT.Mint, U9), MT.Sugar.liquid(  U4, T), NF, ST.make(MD.HaC, "peppermintItem", 1));
 		RM.Mixer    .addRecipe1(T,  0,   32, OM.dust(MT.Mint, U4), MT.Sugar.liquid(  U2, T), NF, ST.make(MD.HaC, "peppermintItem", 2));
@@ -129,14 +129,14 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.Water.make(1000), NF, IL.Food_Dough.get(1));
 		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "flourItem", 1), FL.DistW.make(1000), NF, IL.Food_Dough.get(1));
 		
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4) , FL.RoyalJelly.make(10), NF, ST.make(MD.HaC, "marzipanItem", 1));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond)     , FL.RoyalJelly.make(40), NF, ST.make(MD.HaC, "marzipanItem", 4));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4) , FL.Honey    .make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond)     , FL.Honey    .make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4) , FL.HoneyGrC .make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond)     , FL.HoneyGrC .make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4) , FL.HoneyBoP .make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
-		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond)     , FL.HoneyBoP .make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4), FL.RoyalJelly.make(10), NF, ST.make(MD.HaC, "marzipanItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond    ), FL.RoyalJelly.make(40), NF, ST.make(MD.HaC, "marzipanItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4), FL.Honey    .make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond    ), FL.Honey    .make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4), FL.HoneyGrC .make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond    ), FL.HoneyGrC .make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond, U4), FL.HoneyBoP .make(100), NF, ST.make(MD.HaC, "marzipanItem", 1));
+		RM.Mixer    .addRecipe1(T, 16,   16, OM.dust(MT.Almond    ), FL.HoneyBoP .make(400), NF, ST.make(MD.HaC, "marzipanItem", 4));
 		
 		RM.Mixer    .addRecipe1(T, 16,   16, ST.make(MD.HaC, "chiliItem", 1), FL.Sauce_Chili.make(100), NF, ST.make(MD.HaC, "extremechiliItem", 1));
 		RM.Mixer    .addRecipe2(T, 16,   16, ST.make(MD.HaC, "chiliItem", 1), OM.dust(MT.Chili), ST.make(MD.HaC, "extremechiliItem", 1));

@@ -110,13 +110,13 @@ public class Compat_Recipes_Erebus extends CompatMods {
 		RM.Squeezer     .addRecipe1(T, 16, 16,  ST.make(MD.ERE, "materials"     , 1,22), NF, FL.Potion_Poison_2.make(750), ZL_IS);
 		RM.Juicer       .addRecipe1(T, 16, 16,  ST.make(MD.ERE, "materials"     , 1,22), NF, FL.Potion_Poison_2.make(750), ZL_IS);
 		
-		FL.set(new FluidContainerData(FL.Honey     .make(1000), ST.make(MD.ERE, "bucketHoney"      , 1, 0), ST.make(Items.bucket       , 1, 0), F), F, F);
+		FL.set(new FluidContainerData(FL.Honey     .make(1000), ST.make(MD.ERE, "bucketHoney"      , 1, 0), ST.make(Items.bucket       , 1, 0), F), F, T);
 		FL.set(new FluidContainerData(FL.HoneyBoP  .make(1000), ST.make(MD.ERE, "bucketHoney"      , 1, 0), ST.make(Items.bucket       , 1, 0), F), F, F);
 		FL.set(new FluidContainerData(FL.HoneyGrC  .make(1000), ST.make(MD.ERE, "bucketHoney"      , 1, 0), ST.make(Items.bucket       , 1, 0), F), F, F);
-		FL.set(new FluidContainerData(FL.Honey     .make(1000), ST.make(MD.ERE, "bambucketHoney"   , 1, 0), ST.make(MD.ERE, "bambucket", 1, 0), F), T, F);
+		FL.set(new FluidContainerData(FL.Honey     .make(1000), ST.make(MD.ERE, "bambucketHoney"   , 1, 0), ST.make(MD.ERE, "bambucket", 1, 0), F), T, T);
 		FL.set(new FluidContainerData(FL.HoneyBoP  .make(1000), ST.make(MD.ERE, "bambucketHoney"   , 1, 0), ST.make(MD.ERE, "bambucket", 1, 0), F), T, F);
 		FL.set(new FluidContainerData(FL.HoneyGrC  .make(1000), ST.make(MD.ERE, "bambucketHoney"   , 1, 0), ST.make(MD.ERE, "bambucket", 1, 0), F), T, F);
-		FL.set(new FluidContainerData(FL.Milk      .make(1000), ST.make(MD.ERE, "bambucketMilk"    , 1, 0), ST.make(MD.ERE, "bambucket", 1, 0), F), T, F);
+		FL.set(new FluidContainerData(FL.Milk      .make(1000), ST.make(MD.ERE, "bambucketMilk"    , 1, 0), ST.make(MD.ERE, "bambucket", 1, 0), F), T, T);
 		FL.set(new FluidContainerData(FL.MilkGrC   .make(1000), ST.make(MD.ERE, "bambucketMilk"    , 1, 0), ST.make(MD.ERE, "bambucket", 1, 0), F), T, F);
 		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {

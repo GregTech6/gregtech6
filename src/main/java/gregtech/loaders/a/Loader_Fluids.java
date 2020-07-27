@@ -110,7 +110,7 @@ public class Loader_Fluids implements Runnable {
 		
 		MT.Ethanol.liquid(FL.Reikanol.make(1000));
 		FL.create("ethanol"                  , "Ethanol"             , MT.Ethanol            , 1);
-		FL.create("bioethanol"               , "Bio Ethanol"         , MT.Ethanol            , 1);
+		FL.create("bioethanol"               , "Ethanol"             , MT.Ethanol            , 1);
 		
 		FL.create("mcguffium"                , "Mc Guffium 239"      , MT.Mcg                , 1,      L,   300);
 		FL.create("hotfryingoil"             , "Hot Frying Oil"      , MT.FryingOilHot       , 1,   1000,   400);
@@ -137,10 +137,10 @@ public class Loader_Fluids implements Runnable {
 		
 		//-----
 		
-		MT.Pyrotheum.liquid(FL.make("pyrotheum", 250));
-		MT.Cryotheum.liquid(FL.make("cryotheum", 250));
+		MT.Pyrotheum .liquid(FL.make("pyrotheum" , 250));
+		MT.Cryotheum .liquid(FL.make("cryotheum" , 250));
 		MT.Petrotheum.liquid(FL.make("petrotheum", 250));
-		MT.Aerotheum.gas(FL.make("aerotheum", 250));
+		MT.Aerotheum .gas   (FL.make("aerotheum" , 250));
 
 		FluidStack
 		tFluid = FL.make("mana", 250);
@@ -321,6 +321,8 @@ public class Loader_Fluids implements Runnable {
 		new FoodStatDrink(FL.create("ice"                                        , "Near Frozen Water"                       , MT.Ice                , 1, 1000,   C)                                                                                                , "Almost frozen H2O"                                               ,  0, 0.0F  ,  40, C+30,  0.50F,  0,  0,  0,  0,  0, EnumAction.drink, T, F, F, Potion.moveSlowdown             .id, 400, 1,  40, Potion.digSlowdown        .id, 400, 1,  40, PotionsGT.ID_FROSTBITE       , 400, 1,  10);
 		new FoodStatDrink("waterdirty"                                                                                                                                                                                                                              , "Dirty"                                                           ,  0, 0.0F  ,  10, C+37,  0.50F,  0,  0,  5,  0,  0, EnumAction.drink, F, F, F, Potion.hunger                   .id, 200, 1,  80, Potion.poison             .id, 200, 0,  30);
 		new FoodStatDrink("seawater"                                                                                                                                                                                                                                , "Salty"                                                           ,  0, 0.0F  ,  10, C+35,  0.50F,  0,  0, 30,  0,  0, EnumAction.drink, F, F, F, Potion.hunger                   .id, 400, 2,  95, PotionsGT.ID_DEHYDRATION     , 400, 1, 100);
+		new FoodStatDrink("grccore.saltwater"                                                                                                                                                                                                                       , "Salty"                                                           ,  0, 0.0F  ,  10, C+35,  0.50F,  0,  0, 30,  0,  0, EnumAction.drink, F, F, F, Potion.hunger                   .id, 400, 2,  95, PotionsGT.ID_DEHYDRATION     , 400, 1, 100);
+		new FoodStatDrink("tropicswater"                                                                                                                                                                                                                            , "Tropical"                                                        ,  0, 0.0F  ,  10, C+37,  0.50F,  0,  0, 30,  0,  0, EnumAction.drink, F, F, F, Potion.hunger                   .id, 400, 2,  95, PotionsGT.ID_DEHYDRATION     , 400, 1, 100);
 		new FoodStatDrink("saltwater"                                                                                                                                                                                                                               , "Saltier than the seven Seas"                                     ,  1, 0.0F  ,  10, C+35,  0.50F,  0,  0, 90,  0,  0, EnumAction.drink, F, F, F, Potion.hunger                   .id, 800, 2, 100, PotionsGT.ID_DEHYDRATION     , 800, 2, 100);
 		new FoodStatDrink(FL.create("soda"                                       , "Soda"                                    , null                  , 1, 1000, 300)                                                                                                , "Simply carbonated Water"                                         ,  1, 0.1F  ,  50, C+35,  0.50F,  0,  0,  0,  0,  0, EnumAction.drink, F, F, F);
 		new FoodStatDrink(FL.create("potion.mineralwater"                        , "Mineral Water"                           , null                  , 1, 1000, 300)                                                                                                , "Stay hydrated!"                                                  ,  1, 0.1F  ,  40, C+35,  0.50F,  0,  0,  0,  0,  0, EnumAction.drink, F, F, F, Potion.regeneration             .id, 100, 1,  10);
