@@ -34,6 +34,7 @@ import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
+import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -47,6 +48,7 @@ import net.minecraft.item.ItemStack;
 
 public class Loader_Recipes_Woods implements Runnable {
 	@Override public void run() {
+		// Fire proofing Recipes
 		for (int i = 0; i <  4; i++) {
 		RM.Laminator    .addRecipe2(T, 16,  192, OP.plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.Log1 , 1, i), ST.make(BlocksGT.Log1FireProof , 1, i));
 		RM.Laminator    .addRecipe2(T, 16,  192, OP.plate.mat(MT.WaxRefractory, 6), ST.make(BlocksGT.LogA , 1, i), ST.make(BlocksGT.LogAFireProof , 1, i));
@@ -85,7 +87,6 @@ public class Loader_Recipes_Woods implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,   32, ST.make(BlocksGT.Planks                           , 1, i), FL.Potion_FireResistance_1L.make(20), NF, ST.make(BlocksGT.PlanksFireProof                           , 1, i));
 		RM.Bath         .addRecipe1(T,  0,   16, ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, i), FL.Potion_FireResistance_1L.make(10), NF, ST.make(((BlockMetaType)BlocksGT.PlanksFireProof).mSlabs[0], 1, i));
 		}
-		
 		if (MD.FR.mLoaded) {
 		Block tPlank1 = ST.block(MD.FR, "planks"), tLog1 = ST.block(MD.FR, "logs"), tSlab1 = ST.block(MD.FR, "slabs"), tStair1 = ST.block(MD.FR, "stairs"), tPlank2 = ST.block(MD.FR, "planksFireproof"), tLog2 = ST.block(MD.FR, "logsFireproof"), tSlab2 = ST.block(MD.FR, "slabsFireproof"), tStair2 = ST.block(MD.FR, "stairsFireproof");
 		for (int i = 0; i < 29; i++) {
@@ -106,6 +107,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		}
 		}
 		
+		// Other Recipes
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves , 1, 0), NF, FL.Latex.make(L/72), NI);
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Leaves , 1, 8), NF, FL.Latex.make(L/72), NI);
 		RM.Squeezer     .addRecipe1(T, 16,   64, ST.make(BlocksGT.Sapling, 1, 0), NF, FL.Latex.make(L/ 4), NI);
@@ -118,6 +120,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		CR.shaped(IL.Stick      .get(1), CR.DEF_NAC_NCC, "  ", " S", 'S', OP.stick.dat(ANY.WoodDefault));
 		CR.shaped(gearGt.mat(MT.Wood,1), CR.DEF_NAC_NCC, "SPS", "PsP", "SPS", 'P', OD.plankAnyWood, 'S', ST.make(Blocks.wooden_button, 1, W));
 		
+		// Railcraft related Recipes
 		if (IL.RC_Tie_Wood.exists()) {
 			if (IL.IE_Treated_Slab.exists())
 			RM.Bath.addRecipe1(T, 0, 16, IL.IE_Treated_Slab    .get(1), FL.Oil_Creosote.make(250), NF, IL.RC_Tie_Wood.get(1));
@@ -128,7 +131,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shapeless(IL.Plank.get(NERFED_WOOD?2:4), CR.DEF_NAC_NCC, new Object[] {IL.RC_Creosote_Wood});
 		}
 		
-		
+		// Log related Recipes
 		for (WoodEntry aEntry : WoodDictionary.LIST_WOODS) {
 			if (aEntry.mBeamEntry != null)
 			RM.debarking(                      aEntry.mLog, ST.validMeta(1, aEntry.mBeamEntry.mBeam), aEntry.mBark);
@@ -150,7 +153,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shapeless(ST.validMeta(NERFED_WOOD?aEntry.mPlankCountHand:aEntry.mPlankCountSaw  , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, new Object[] {aEntry.mLog});
 		}
 		
-		
+		// Beam related Recipes
 		for (BeamEntry aEntry : WoodDictionary.LIST_BEAMS) {
 			RM.generify(                       aEntry.mBeam, IL.Beam.get(1));
 			RM.pulverizing(                    aEntry.mBeam, OM.dust(aEntry.mMaterialBeam.mTargetPulver, aEntry.mPlankCountBuzz, 1));
@@ -168,7 +171,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shapeless(ST.validMeta(NERFED_WOOD?aEntry.mPlankCountHand:aEntry.mPlankCountSaw  , aEntry.mPlankEntry.mPlank), CR.DEF_NAC_NCC, new Object[] {aEntry.mBeam});
 		}
 		
-		
+		// Plank related Recipes
 		for (PlankEntry aEntry : WoodDictionary.LIST_PLANKS) {
 			ItemStack aPlank = ST.validMeta_(1, aEntry.mPlank);
 			RM.generify(aEntry.mPlank, IL.Plank.get(1));
@@ -183,8 +186,10 @@ public class Loader_Recipes_Woods implements Runnable {
 				CR.shaped(ST.validMeta_( NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe , aEntry.mStick), CR.DEF_NAC_NCC, "s", "P", 'P', aEntry.mPlank);
 			}
 			if (!IL.Crate.equal(aEntry.mPlank, F, T) && !IL.Crate_Fireproof.equal(aEntry.mPlank, F, T)) {
+				RM.unbox   (IL.Crate          .get(1), OP.crateGtPlate  .mat(aEntry.mMaterialPlank, 1), ST.amount(16, aEntry.mPlank));
 				RM.boxunbox(IL.Crate          .get(1), OP.crateGt64Plate.mat(aEntry.mMaterialPlank, 1), ST.amount(64, aEntry.mPlank));
 				RM.box     (IL.Crate_Fireproof.get(1), OP.crateGt64Plate.mat(aEntry.mMaterialPlank, 1), ST.amount(64, aEntry.mPlank));
+				
 				if (aEntry.mMaterialPlank == MT.Wood || aEntry.mMaterialPlank == ANY.Wood) {
 					RM.pack      (aEntry.mPlank, 9, OP.blockPlate.mat(aEntry.mMaterialPlank, 1));
 					RM.unpack    (OP.blockPlate.mat(aEntry.mMaterialPlank, 1), IL.Plank.get(9));
@@ -193,7 +198,7 @@ public class Loader_Recipes_Woods implements Runnable {
 				}
 			}
 			
-//          RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), NI, OP.gearGt.mat(aEntry.mMaterialPlank, 1));
+			RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), ST.tag(0), OP.gearGt.mat(aEntry.mMaterialPlank, 1));
 			
 			if (ST.valid(aEntry.mStair)) {
 				CR.shaped(ST.validMeta_(4, aEntry.mStair), CR.DEF_NCC_MIR, "vP", "PP", 'P', aEntry.mPlank);
@@ -205,7 +210,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			}
 		}
 		
-		
+		// Stair related Recipes
 		for (PlankEntry aEntry : WoodDictionary.LIST_STAIRS) {
 			RM.generify(aEntry.mStair, IL.Plank_Stairs.get(1));
 			RM.pulverizing(aEntry.mStair, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 3, 4));
@@ -219,7 +224,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			}
 		}
 		
-		
+		// Slab related Recipes
 		for (PlankEntry aEntry : WoodDictionary.LIST_SLABS) {
 			RM.generify(aEntry.mSlab, IL.Plank_Slab.get(1));
 			RM.pulverizing(aEntry.mSlab, OM.dust(aEntry.mMaterialPlank.mTargetPulver, 1, 2));
@@ -230,5 +235,10 @@ public class Loader_Recipes_Woods implements Runnable {
 				CR.shaped(ST.validMeta_(2, aEntry.mStair), CR.DEF_NCC_MIR, "vP", "PP", 'P', aEntry.mSlab);
 			}
 		}
+		
+		// Making sure that all normal Wood Crates/Blocks have at least some Output.
+		for (ItemStack tCrate : OreDictManager.getOres(OP.crateGtPlate  .dat(ANY.WoodUntreated), F)) RM.unbox(IL.Crate.get(1), tCrate, IL.Plank.get(16));
+		for (ItemStack tCrate : OreDictManager.getOres(OP.crateGt64Plate.dat(ANY.WoodUntreated), F)) RM.unbox(IL.Crate.get(1), tCrate, IL.Plank.get(64));
+		for (ItemStack tBlock : OreDictManager.getOres(OP.blockPlate    .dat(ANY.WoodUntreated), F)) RM.unpack(tBlock, IL.Plank.get(9));
 	}
 }

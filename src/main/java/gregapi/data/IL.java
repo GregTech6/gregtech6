@@ -83,7 +83,7 @@ public enum IL implements IItemContainer {
 	EB_Dirt_Alfisol, EB_Dirt_Andisol, EB_Dirt_Gelisol, EB_Dirt_Histosol, EB_Dirt_Inceptisol, EB_Dirt_Mollisol, EB_Dirt_Oxisol,
 	EB_Grass_Alfisol, EB_Grass_Andisol, EB_Grass_Gelisol, EB_Grass_Histosol, EB_Grass_Inceptisol, EB_Grass_Mollisol, EB_Grass_Oxisol,
 	ENVM_Spoiled_Milk_Bucket, ENVM_Rotten_Food, ENVM_Bottle_Water_Dirty, ENVM_Bottle_Water_Cold, ENVM_Bottle_Water_Salty,
-	NePl_Torch, NePl_Blackstone, NePl_Blackstone_Bricks, NePl_Blackstone_Polished, NePl_Basalt, NePl_Basalt_Polished, NePl_SoulSoil, NePl_Quartz_Bricks,
+	NePl_Torch, NePl_Obsidian, NePl_Blackstone, NePl_Blackstone_Bricks, NePl_Blackstone_Chiseled, NePl_Blackstone_Cracked, NePl_Blackstone_Polished, NePl_Basalt, NePl_Basalt_Polished, NePl_SoulSoil, NePl_Quartz_Bricks,
 	EtFu_Chorus_Fruit, EtFu_Chorus_Popped, EtFu_Rabbit_Foot, EtFu_Beet_Seeds, EtFu_Dragon_Breath, EtFu_Path, EtFu_Dirt, EtFu_Gravel,
 	EtFu_Granite, EtFu_Diorite, EtFu_Andesite, EtFu_Granite_Smooth, EtFu_Diorite_Smooth, EtFu_Andesite_Smooth,
 	GaSu_Granite, GaSu_Diorite, GaSu_Andesite, GaSu_Granite_Smooth, GaSu_Diorite_Smooth, GaSu_Andesite_Smooth, GaSu_Basalt, GaSu_Basalt_Smooth, GaSu_Beet_Seeds,

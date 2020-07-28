@@ -768,8 +768,9 @@ public class LoaderWoodDictionary implements Runnable {
 			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.NePl, "CrimsonPlanks", 1, W));
 			OreDictionary.registerOre(OD.plankWood.toString(), ST.make(MD.NePl, "WarpedPlanks" , 1, W));
 			
-			new PlankEntry(ST.make(MD.NePl, "CrimsonPlanks", 1, W), MT.WOODS.Crimson, 233);
-			new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), MT.WOODS.Warped , 234);
+			new SaplingEntry(ST.make(MD.NePl, "CrimsonFungus", 1, W), new WoodEntry(ST.make(MD.NePl, "CrimsonStem", 1, W), new PlankEntry(ST.make(MD.NePl, "CrimsonPlanks", 1, W), MT.WOODS.Crimson, 233)));
+			new SaplingEntry(ST.make(MD.NePl, "WarpedFungus" , 1, W), new WoodEntry(ST.make(MD.NePl, "WarpedStem" , 1, W), new PlankEntry(ST.make(MD.NePl, "WarpedPlanks" , 1, W), MT.WOODS.Warped , 234)));
+			new WoodEntry(ST.make(MD.NePl, "CrimsonHyphae", 1, W), WoodDictionary.PLANKS.get(MD.NePl, "CrimsonPlanks", W));
 		}
 		// Chisel Planks
 		if (MD.CHSL.mLoaded) {

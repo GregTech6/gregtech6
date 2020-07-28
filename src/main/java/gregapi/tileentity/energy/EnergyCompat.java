@@ -204,6 +204,9 @@ public class EnergyCompat {
 					return rUsedAmount;
 				}
 			}
+			
+			// No need to check the rest since this isn't RF.
+			return 0;
 		}
 		
 		if (RF_ENERGY && aSize > 0) {
@@ -212,7 +215,7 @@ public class EnergyCompat {
 			if (aEnergyType == TD.Energy.KU) tSizeToReceive = aSize * RF_PER_EU; else
 			// MJ auto-convert to RF too. And yes I do know that BuildCraft and other Mods moved away from MJ to use RF.
 			if (aEnergyType == TD.Energy.MJ) tSizeToReceive = aSize * RF_PER_MJ; else
-			// RF is RF and therefore doesn't really need to be converted, therefore 1:1 Ratio
+			// RF is RF and therefore doesn't really need to be converted, meaning a 1:1 Ratio
 			if (aEnergyType == TD.Energy.RF) tSizeToReceive = aSize;
 			
 			if (tSizeToReceive > 0) {

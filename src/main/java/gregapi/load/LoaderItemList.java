@@ -893,9 +893,12 @@ public class LoaderItemList implements Runnable {
 		
 		
 		IL.NePl_Torch                           .set(ST.make(MD.NePl, "SoulTorch"                           , 1, 0), null, OD.blockTorch);
+		IL.NePl_Obsidian                        .set(ST.make(MD.NePl, "CryingObsidian"                      , 1, 0), new OreDictItemData(MT.Obsidian, U));
 		IL.NePl_Blackstone                      .set(ST.make(MD.NePl, "Blackstone"                          , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Blackstone_Bricks               .set(ST.make(MD.NePl, "PolishedBlackstoneBricks"            , 1, 0), OP.stone.dat(MT.Blackstone));
+		IL.NePl_Blackstone_Cracked              .set(ST.make(MD.NePl, "CrackedPolishedBlackstoneBricks"     , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Blackstone_Polished             .set(ST.make(MD.NePl, "PolishedBlackstone"                  , 1, 0), OP.stone.dat(MT.Blackstone));
+		IL.NePl_Blackstone_Chiseled             .set(ST.make(MD.NePl, "ChiseledPolishedBlackstone"          , 1, 0), OP.stone.dat(MT.Blackstone));
 		IL.NePl_Basalt                          .set(ST.make(MD.NePl, "Basalt"                              , 1, 0), OP.stone.dat(MT.Basalt));
 		IL.NePl_Basalt_Polished                 .set(ST.make(MD.NePl, "PolishedBasalt"                      , 1, 0), OP.stone.dat(MT.Basalt));
 		IL.NePl_SoulSoil                        .set(ST.make(MD.NePl, "SoulSoil"                            , 1, 0), null, OD.soulsand);

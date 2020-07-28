@@ -1383,8 +1383,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.MaCu, "tanks"                            , 1,   0, ANY.Cu                ,  U * 4, ANY.Wood              ,  U * 4, MT.Glass              ,  U * 1);
 		OM.data(MD.MaCu, "tanks"                            , 1,   1, MT.Al                 ,  U * 4, MT.Glass              ,  U * 4);
 		OM.data(MD.MaCu, "tanks"                            , 1,   5, MT.Al                 ,  U * 4, ANY.Stone             ,  U * 4);
-		OM.data(MD.MaCu, "tanks"                            , 1,   6, MT.Ti                 ,  U * 4, MT.NetherQuartz       ,  U *16);
-		OM.data(MD.MaCu, "tanks"                            , 1,   7, MT.Ti                 ,  U * 8, MT.Al                 ,  U *54, ANY.Fe                ,  U * 4, MT.NetherQuartz   ,  U *18);
+		OM.data(MD.MaCu, "tanks"                            , 1,   6, MT.Ti                 ,  U * 4, ANY.Quartz            ,  U *16);
+		OM.data(MD.MaCu, "tanks"                            , 1,   7, MT.Ti                 ,  U * 8, MT.Al                 ,  U *54, ANY.Fe                ,  U * 4, ANY.Quartz        ,  U *18);
 		
 		
 		OM.data(MD.MFR, "upgrade.radius"                    , 1,   0, MT.Lapis              ,  U * 3, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2, MT.Au             ,  U9);
@@ -1394,7 +1394,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.MFR, "upgrade.radius"                    , 1,   4, MT.Bronze             ,  U * 3, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2, MT.Au             ,  U9);
 		OM.data(MD.MFR, "upgrade.radius"                    , 1,   5, MT.Ag                 ,  U * 3, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2, MT.Au             ,  U9);
 		OM.data(MD.MFR, "upgrade.radius"                    , 1,   6, MT.Au                 , 28* U9, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2);
-		OM.data(MD.MFR, "upgrade.radius"                    , 1,   7, MT.NetherQuartz       ,  U * 3, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2, MT.Au             ,  U9);
+		OM.data(MD.MFR, "upgrade.radius"                    , 1,   7, ANY.Quartz            ,  U * 3, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2, MT.Au             ,  U9);
 		OM.data(MD.MFR, "upgrade.radius"                    , 1,   8, ANY.Diamond           ,  U * 3, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2, MT.Au             ,  U9);
 		OM.data(MD.MFR, "upgrade.radius"                    , 1,   9, MT.Pt                 ,  U * 3, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2, MT.Au             ,  U9);
 		OM.data(MD.MFR, "upgrade.radius"                    , 1,  10, ANY.Emerald           ,  U * 3, MT.Plastic            ,  U * 3, MT.Redstone           ,  U * 2, MT.Au             ,  U9);
@@ -1587,10 +1587,10 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  27, ANY.Iron              ,  U * 6);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  30, ANY.Iron              ,  U * 1, MT.Flint,  U2);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  33, MT.ObsidianSteel      ,  U * 6);
-		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  34, MT.ObsidianSteel      ,  U * 1, MT.NetherQuartz,  U * 1);
+		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  34, MT.ObsidianSteel      ,  U * 1, ANY.Quartz,  U * 1);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  37, MT.C                  ,  U2   , MT.Blaze,  U2);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  61, MT.C                  ,  U * 1);
-		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  99, MT.NetherQuartz       ,  U * 3);
+		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  99, ANY.Quartz            ,  U * 3);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  57, ANY.Cu                ,  U4);
 		OM.data(MD.TG, "TechgunsAmmo"                       , 1,  86, MT.Au                 ,  U);
 		
