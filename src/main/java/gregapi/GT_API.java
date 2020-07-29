@@ -455,6 +455,16 @@ public class GT_API extends Abstract_Mod {
 			MT.FierySteel.setLocal("Fury Style");
 			MT.Thaumium.setLocal("Thaumanominum");
 			MT.DarkThaumium.setLocal("Dank Thaumanominum");
+			MT.Coal.setLocal("Cool");
+			MT.Charcoal.setLocal("Charred Cole");
+			MT.Lapis.setLocal("Le Piss");
+			MT.Redstone.setLocal("Blingstone");
+			MT.Glowstone.setLocal("Klostein");
+			MT.Emerald.setLocal("Chaos Emerald");
+			MT.Bedrock.setLocal("Sofarock");
+			MT.Plastic.setLocal("LEGO");
+			MT.Asbestos.setLocal("Bestos");
+			MT.AncientDebris.setLocal("Cinnabun");
 			MT.Rb.setLocal("Ruby");
 			MT.Ruby.setLocal("Red Sapphire");
 			MT.KNO3.setLocal("Niter");
@@ -474,6 +484,7 @@ public class GT_API extends Abstract_Mod {
 			MT.BlackBronze.setLocal("Afroamerican Tinkerers Alloy");
 			MT.Constantan.setLocal("Cupronickel");
 			MT.FakeOsmium.setLocal("Platinum");
+			MT.NetherQuartz.setLocal("Weather Quartz");
 			MT.MilkyQuartz.setLocal("Milk Quartz");
 			MT.CertusQuartz.setLocal("Citrus Quartz");
 			MT.ChargedCertusQuartz.setLocal("Charged Citrus Quartz");

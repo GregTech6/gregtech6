@@ -62,7 +62,7 @@ public class RecipeMapBath extends RecipeMap {
 		Recipe rRecipe = super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 		if (aInputs == null || aInputs.length < 1 || aInputs[0] == null || aFluids.length < 1 || aFluids[0] == null || GAPI_POST.mFinishedServerStarted <= 0) return rRecipe;
 		if (rRecipe == null) for (ItemStack aInput : aInputs) if (aInput != null) {
-			PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(ST.item(aInput), ST.meta(aInput));
+			PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(aInput);
 			if (aEntry != null && (ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank) || MD.MC.owns(aInput))) {
 				if (ST.valid(aEntry.mPlank)) {
 					if (IL.MaCu_Polished_Planks.exists())
@@ -177,7 +177,7 @@ public class RecipeMapBath extends RecipeMap {
 	
 	@Override
 	public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {
-		PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(ST.item(aStack), ST.meta(aStack));
+		PlankEntry aEntry = WoodDictionary.PLANKS_ANY.get(aStack);
 		return (aEntry != null && ANY.WoodUntreated.mToThis.contains(aEntry.mMaterialPlank)) || (aStack != null && (aStack.getItem() instanceof ItemArmor || (aStack.getItem() instanceof IItemColorableRGB && (((IItemColorableRGB)aStack.getItem()).canRecolorItem(aStack) || ((IItemColorableRGB)aStack.getItem()).canDecolorItem(aStack))))) || (ST.food(aStack) > 0 && FL.getFluid(aStack, T) == null) || super.containsInput(aStack, aTileEntity, aSpecialSlot);
 	}
 	@Override public boolean containsInput(FluidStack aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return aFluid != null && aFluid.getFluid() != null && (super.containsInput(aFluid, aTileEntity, aSpecialSlot) || FluidsGT.BATH.contains(aFluid.getFluid().getName()));}

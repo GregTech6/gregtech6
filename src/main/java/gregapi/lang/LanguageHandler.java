@@ -150,7 +150,7 @@ public class LanguageHandler {
 			if (aPrefix == OP.rockGt)                                       return "Rock";
 		} else
 		if (aMaterial == MT.AncientDebris) {
-			if (aPrefix == OP.rockGt)                                       return "Ancient Debris";
+			if (aPrefix == OP.rockGt)                                       return aMaterial.mNameLocal;
 			if (aPrefix == OP.crushed)                                      return "Recycled " + aMaterial.mNameLocal;
 			if (aPrefix == OP.crushedTiny)                                  return "Tiny Recycled " + aMaterial.mNameLocal;
 			if (aPrefix == OP.nugget)                                       return "Tiny Piece of Netherite Scrap";
@@ -212,12 +212,12 @@ public class LanguageHandler {
 			if (aPrefix == OP.rockGt)                                       return "Gneiss";
 		} else
 		if (aMaterial == MT.Glass) {
-			if (aPrefix == OP.scrapGt)                                      return "Glass Shards";
-			if (aPrefix == OP.round)                                        return "Glass Marble";
-			if (aPrefix == OP.plateGem)                                     return "Cast Glass Pane";
-			if (aPrefix == OP.plateGemTiny)                                 return "Tiny Cast Glass Pane";
-			if (aPrefix.mNameInternal.startsWith("gem"))                    return aPrefix.mMaterialPre + "Glass Crystal";
-			if (aPrefix.mNameInternal.startsWith("plate"))                  return aPrefix.mMaterialPre + "Glass Pane";
+			if (aPrefix == OP.scrapGt)                                      return aMaterial.mNameLocal + " Shards";
+			if (aPrefix == OP.round)                                        return aMaterial.mNameLocal + " Marble";
+			if (aPrefix == OP.plateGem)                                     return "Cast " + aMaterial.mNameLocal + " Pane";
+			if (aPrefix == OP.plateGemTiny)                                 return "Tiny Cast " + aMaterial.mNameLocal + " Pane";
+			if (aPrefix.mNameInternal.startsWith("gem"))                    return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Crystal";
+			if (aPrefix.mNameInternal.startsWith("plate"))                  return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Pane";
 		} else
 		if (aMaterial == MT.PrismarineLight || aMaterial == MT.PrismarineDark) {
 			if (aPrefix == OP.rockGt)                                       return aMaterial.mNameLocal + " Shard";

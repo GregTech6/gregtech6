@@ -154,7 +154,7 @@ public class RecipeMapScannerVisuals extends RecipeMap {
 						return rRecipe;
 					}
 					
-					ItemStack tMapping = mMappings.get(tScanned.getItem(), ST.meta_(tScanned));
+					ItemStack tMapping = mMappings.get(tScanned);
 					if (tMapping == null) tMapping = mMappings.get(tScanned.getItem(), W);
 					Block tBlock = ST.block_(tMapping==null?tScanned:tMapping);
 					if (tBlock != null && tBlock != NB) {

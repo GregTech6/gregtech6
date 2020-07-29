@@ -27,6 +27,7 @@ import java.util.Arrays;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.FluidsGT;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -45,6 +46,7 @@ import gregapi.wooddict.WoodEntry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class Loader_Recipes_Woods implements Runnable {
 	@Override public void run() {
@@ -198,7 +200,10 @@ public class Loader_Recipes_Woods implements Runnable {
 				}
 			}
 			
-			RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), ST.tag(0), OP.gearGt.mat(aEntry.mMaterialPlank, 1));
+			for (String tFluidName : FluidsGT.LUBRICANT) if (FL.exists(tFluidName)) {
+				FluidStack tFluid = FL.make(tFluidName, 1);
+				RM.CNC.addRecipe2(T, 16, 64, ST.amount(4, aEntry.mPlank), ST.tag(0), tFluid, NF, OP.gearGt.mat(aEntry.mMaterialPlank, 1));
+			}
 			
 			if (ST.valid(aEntry.mStair)) {
 				CR.shaped(ST.validMeta_(4, aEntry.mStair), CR.DEF_NCC_MIR, "vP", "PP", 'P', aEntry.mPlank);

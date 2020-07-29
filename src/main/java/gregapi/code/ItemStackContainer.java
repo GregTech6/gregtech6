@@ -19,6 +19,8 @@
 
 package gregapi.code;
 
+import static gregapi.data.CS.*;
+
 import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -51,10 +53,48 @@ public class ItemStackContainer {
 		mStackSize = (byte)aStackSize;
 		mMetaData = (short)aMetaData;
 	}
-	public ItemStackContainer(ItemStack aStack) {this(ST.item(aStack), ST.size(aStack), ST.meta(aStack));}
-	public ItemStackContainer(ItemStack aStack, long aMetaData) {this(ST.item(aStack), ST.size(aStack), aMetaData);}
-	public ItemStackContainer(ItemStack aStack, long aStackSize, long aMetaData) {this(ST.item(aStack), aStackSize, aMetaData);}
-	public ItemStackContainer(int aHashCode) {this(ST.toItem(aHashCode), 0, ST.toMeta(aHashCode));}
+	public ItemStackContainer(ItemStack aStack) {
+		if (aStack == null) {
+			mItem = null;
+			mBlock = NB;
+			mStackSize = 0;
+			mMetaData = 0;
+		} else {
+			mItem = ST.item_(aStack);
+			mBlock = ST.block_(mItem);
+			mStackSize = (byte)aStack.stackSize;
+			mMetaData = ST.meta_(aStack);
+		}
+	}
+	public ItemStackContainer(ItemStack aStack, long aMetaData) {
+		if (aStack == null) {
+			mItem = null;
+			mBlock = NB;
+			mStackSize = 0;
+			mMetaData = 0;
+		} else {
+			mItem = ST.item_(aStack);
+			mBlock = ST.block_(mItem);
+			mStackSize = (byte)aStack.stackSize;
+			mMetaData = (short)aMetaData;
+		}
+	}
+	public ItemStackContainer(ItemStack aStack, long aStackSize, long aMetaData) {
+		if (aStack == null) {
+			mItem = null;
+			mBlock = NB;
+			mStackSize = 0;
+			mMetaData = 0;
+		} else {
+			mItem = ST.item_(aStack);
+			mBlock = ST.block_(mItem);
+			mStackSize = (byte)aStackSize;
+			mMetaData = (short)aMetaData;
+		}
+	}
+	public ItemStackContainer(int aHashCode) {
+		this(ST.toItem(aHashCode), 0, ST.toMeta(aHashCode));
+	}
 	
 	public ItemStack toStack() {return mItem == null ? null : ST.make(mItem, 1, mMetaData);}
 	public boolean isStackEqual(ItemStack aStack) {return ST.equal(aStack, mItem, mMetaData);}
