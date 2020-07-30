@@ -461,6 +461,9 @@ public class GT_API extends Abstract_Mod {
 			MT.Redstone.setLocal("Blingstone");
 			MT.Glowstone.setLocal("Klostein");
 			MT.Emerald.setLocal("Chaos Emerald");
+			MT.Craponite.setLocal("Pink Diamond");
+			MT.Diamond.setLocal("Sapphire");
+			MT.DiamondPink.setLocal("Craponite");
 			MT.Bedrock.setLocal("Sofarock");
 			MT.Plastic.setLocal("LEGO");
 			MT.Asbestos.setLocal("Bestos");

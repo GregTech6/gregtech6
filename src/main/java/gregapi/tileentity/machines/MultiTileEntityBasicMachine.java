@@ -968,10 +968,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void doOutputFluids() {
-		for (IFluidTank tCheck : mTanksOutput) {
-			FluidStack tFluid = tCheck.getFluid();
-			if (tFluid != null && tFluid.getFluid() != null) {if (FL.move(mTanksOutput, getFluidOutputTarget(FACING_TO_SIDE[mFacing][mFluidAutoOutput], tFluid.getFluid())) > 0) updateInventory(); return;}
-		}
+		for (FluidTankGT tCheck : mTanksOutput) if (tCheck.has()) {if (FL.move(tCheck, getFluidOutputTarget(FACING_TO_SIDE[mFacing][mFluidAutoOutput], tCheck.fluid())) > 0) updateInventory();}
 	}
 	
 	public void doOutputEnergy() {

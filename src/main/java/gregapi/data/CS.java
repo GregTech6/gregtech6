@@ -1264,7 +1264,7 @@ public class CS {
 		public static ItemStackMap<ItemStackContainer, ItemStack> GARBAGE_MAP_ITEMS = new ItemStackMap<>();
 		public static ArrayListNoNulls<ItemStack> GARBAGE_ITEMS = new ArrayListNoNulls<>();
 		public static ArrayListNoNulls<FluidTankGT> GARBAGE_FLUIDS = new ArrayListNoNulls<>();
-
+		
 		public static int trash(ItemStack aStack) {
 			if (ST.invalid(aStack) || aStack.stackSize <= 0 || BLACKLIST.contains(aStack, T)) return 0;
 			if (aStack.hasTagCompound()) {
@@ -1364,7 +1364,7 @@ public class CS {
 					GARBAGE_ITEMS.add(aStack);
 				}
 			}
-
+			
 			GARBAGE_FLUIDS.clear();
 			aTargetFile = new File(new File(aSaveLocation, "gregtech"), "endergarbage.fluids.dat");
 			if (aTargetFile.exists()) {

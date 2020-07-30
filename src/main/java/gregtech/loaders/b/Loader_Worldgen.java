@@ -504,7 +504,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenFluidSpring("overworld.fluid.lava"          , T, Blocks.lava           ,  0,  1, 50, 50,   0,  16, null, F, FL.Lava.make(1000), 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
 		new WorldgenFluidSpring("nether.fluid.lava"             , T, Blocks.lava           ,  0,  1, 90, 25,   0,  16, null, F, FL.Lava.make(1), 10, GEN_NETHER);
 		
-		for (BlockBase tStone : BlocksGT.stones) {
+		for (BlockBase tStone : BlocksGT.stones) if (tStone != BlocksGT.PrismarineDark && tStone != BlocksGT.PrismarineLight) {
 		new WorldgenStone("overworld.stone."+ ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 100, 0, 120, null, F, GEN_OVERWORLD, GEN_PFAA, GEN_TFC);
 		new WorldgenStone("nether.stone."   + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 200, 0, 120, null, F, GEN_NETHER);
 		new WorldgenStone("twilight.stone." + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), T, tStone,  0,  1, 100, 200, 0,  40, null, F, GEN_TWILIGHT);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -94,7 +94,7 @@ public class MultiTileEntityEnderGarbageDump extends TileEntityBase07Paintable i
 	
 	@Override
 	protected IFluidTank[] getFluidTanks2(byte aSide) {
-		return GarbageGT.GARBAGE_FLUIDS.isEmpty() ? new IFluidTank[] {new FluidTankGT(Integer.MAX_VALUE)} : GarbageGT.GARBAGE_FLUIDS.toArray(new IFluidTank[GarbageGT.GARBAGE_FLUIDS.size()]);
+		return GarbageGT.GARBAGE_FLUIDS.isEmpty() ? new FluidTankGT(Long.MAX_VALUE).AS_ARRAY : GarbageGT.GARBAGE_FLUIDS.toArray(ZL_FT);
 	}
 	
 	@Override

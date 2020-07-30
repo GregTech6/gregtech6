@@ -31,7 +31,7 @@ import net.minecraftforge.fluids.IFluidTank;
 
 public class FluidTankGT implements IFluidTank {
 	private FluidStack mFluid;
-	private long mCapacity, mAmount = 0;
+	private long mCapacity = 0, mAmount = 0;
 	private boolean mPreventDraining = F, mVoidExcess = F, mChangedFluids = F;
 	public final FluidTankGT[] AS_ARRAY = new FluidTankGT[] {this};
 	
@@ -229,13 +229,21 @@ public class FluidTankGT implements IFluidTank {
 		return F;
 	}
 	
+	/** Resets the Tank Contents entirely */
 	public FluidTankGT setEmpty() {mFluid = null; mChangedFluids = T; mAmount = 0; return this;}
+	/** Sets Fluid Content, taking Amount from the Fluid Parameter  */
 	public FluidTankGT setFluid(FluidStack aFluid) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aFluid.amount); return this;}
+	/** Sets Fluid Content and Amount */
 	public FluidTankGT setFluid(FluidStack aFluid, long aAmount) {mFluid = aFluid; mChangedFluids = T; mAmount = (aFluid == null ? 0 : aAmount); return this;}
-	public FluidTankGT setCapacity(long aCapacity) {mCapacity = aCapacity; return this;}
+	/** Sets the Capacity, and yes it accepts 63 Bit Numbers */
+	public FluidTankGT setCapacity(long aCapacity) {if (aCapacity >= 0) mCapacity = aCapacity; return this;}
+	/** Always keeps at least 0 Liters of Fluid instead of setting it to null */
 	public FluidTankGT setPreventDraining() {return setPreventDraining(T);}
+	/** Always keeps at least 0 Liters of Fluid instead of setting it to null */
 	public FluidTankGT setPreventDraining(boolean aPrevent) {mPreventDraining = aPrevent; return this;}
+	/** Voids any Overlow */
 	public FluidTankGT setVoidExcess() {return setVoidExcess(T);}
+	/** Voids any Overlow */
 	public FluidTankGT setVoidExcess(boolean aVoidExcess) {mVoidExcess = aVoidExcess; return this;}
 	
 	public boolean isEmpty() {return mFluid == null;}
@@ -261,7 +269,7 @@ public class FluidTankGT implements IFluidTank {
 	public String name(boolean aLocalised) {return FL.name(mFluid, aLocalised);}
 	
 	public String content() {return content("Empty");}
-	public String content(String aEmptyMessage) {return mFluid == null ? aEmptyMessage : amount() + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
+	public String content(String aEmptyMessage) {return  mFluid == null ? aEmptyMessage : amount() + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + ")";}
 	public String contentcap() {return mFluid == null ? "Capacity: " + mCapacity + " L" : amount() + " L of " + name(T) + " (" + (FL.gas(mFluid) ? "Gaseous" : "Liquid") + "); Max: "+mCapacity+" L)";}
 	
 	public Fluid fluid() {return mFluid == null ? null : mFluid.getFluid();}

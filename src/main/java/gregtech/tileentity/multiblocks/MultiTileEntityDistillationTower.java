@@ -27,6 +27,7 @@ import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
+import gregapi.fluid.FluidTankGT;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
@@ -39,9 +40,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
 
 /**
  * @author Gregorius Techneticies
@@ -144,9 +143,9 @@ public class MultiTileEntityDistillationTower extends TileEntityBase10MultiBlock
 	
 	@Override
 	public void doOutputFluids() {
-		for (IFluidTank tTank : mTanksOutput) {
-			FluidStack tFluid = tTank.getFluid();
-			if (tFluid != null && tFluid.amount > 0) {
+		for (FluidTankGT tTank : mTanksOutput) {
+			Fluid tFluid = tTank.fluid();
+			if (tFluid != null && tTank.has()) {
 				DelegatorTileEntity<TileEntity> tDelegator = null;
 				if (FL.is(tFluid, "propane", "methane")) {
 					tDelegator = WD.te(worldObj, getOffsetXN(mFacing, 3), yCoord+7, getOffsetZN(mFacing, 3), mFacing, F);
