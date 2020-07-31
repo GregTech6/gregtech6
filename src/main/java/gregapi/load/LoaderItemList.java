@@ -1076,6 +1076,8 @@ public class LoaderItemList implements Runnable {
 		
 		IL.RoC_Comb_Slippery                    .set(ST.make(MD.RoC, "rotarycraft_item_modinterface"        , 1, 0), null, OD.beeComb);
 		IL.RoC_Propolis_Slippery                .set(ST.make(MD.RoC, "rotarycraft_item_modinterface"        , 1, 1), null, OD.listAllpropolis);
+		IL.RoC_Ethanol_Extract                  .set(ST.make(MD.RoC, "rotarycraft_item_powders"             , 1,16), new OreDictItemData(MT.Ethanol, U));
+		IL.RoC_Ethanol_Crystal                  .set(ST.make(MD.RoC, "rotarycraft_item_ethanol"             , 1, 0), new OreDictItemData(MT.Ethanol, U));
 		
 		
 		IL.JABBA_Dolly                          .set(ST.make(MD.JABBA, "mover"                              , 1, 0));

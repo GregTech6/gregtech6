@@ -74,15 +74,15 @@ public class Compat_Recipes_Reika extends CompatMods {
 			if (FL.exists("rc co2"))
 			RM.Freezer          .addRecipe1(T, 64,   64, ST.tag(0), FL.make("rc co2" ,  200), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 11));
 			RM.Freezer          .addRecipe1(T, 64,   64, ST.tag(0), MT.CO2       .gas(U , T), NF, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 11));
-			RM.Freezer          .addRecipe1(T, 16,   16, ST.tag(0), FL.BioEthanol.make(1000), NF, ST.make(MD.RoC, "rotarycraft_item_ethanol", 1,  0));
-			RM.Freezer          .addRecipe1(T, 16,   16, ST.tag(0), FL.Reikanol  .make(1000), NF, ST.make(MD.RoC, "rotarycraft_item_ethanol", 1,  0));
+			RM.Freezer          .addRecipe1(T, 16,   16, ST.tag(0), FL.BioEthanol.make(1000), NF, IL.RoC_Ethanol_Crystal.get(1));
+			RM.Freezer          .addRecipe1(T, 16,   16, ST.tag(0), FL.Reikanol  .make(1000), NF, IL.RoC_Ethanol_Crystal.get(1));
 			RM.Freezer          .addRecipe1(T, 64,  128, ST.tag(0), MT.N         .gas(U , T), FL.make("rc liquid nitrogen", 1000), ZL_IS);
 			
-			RM.Freezer          .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 16), ST.make(MD.RoC, "rotarycraft_item_ethanol", 1,  0));
+			RM.Freezer          .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Extract.get(1), IL.RoC_Ethanol_Crystal.get(1));
 			
 			
-			RM.Smelter          .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_ethanol", 1,  0), NF, FL.Reikanol.make(1000), ZL_IS);
-			RM.Smelter          .addRecipe1(T, 16,   16, ST.make(MD.RoC, "rotarycraft_item_powders", 1, 16), NF, FL.Reikanol.make(1000), ZL_IS);
+			RM.Smelter          .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Extract.get(1), NF, FL.Reikanol.make(1000), ZL_IS);
+			RM.Smelter          .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Crystal.get(1), NF, FL.Reikanol.make(1000), ZL_IS);
 			
 			
 			CR.delate(MD.RoC, "rotarycraft_item_powders", 6, 7);

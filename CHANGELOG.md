@@ -34,8 +34,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.
 [FIXED] Some Wood Material Data for Erebus, Chisel and Netherite Plus.
 [FIXED] The wrong Types of Honey and Milk were outputted by some Recipes.
+[FIXED] Basic Machines were not outputting all their Fluids into Quadruple/Nonuple Pipes if one of the Fluids got Stuck.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
-[ADDED] The 36 Trees from Harvestcraft to the Wood Dictionary. Yes I know they mostly use Vanilla Leaves and Logs. Maple and Cinnamon will have the GT Version of their Beams/Planks assigned.
+[ADDED] The 36 Trees from Harvestcraft to the Wood Dictionary. Yes I know they mostly use Vanilla Leaves and Logs. Maple and Cinnamon will have their GT6 Counterpart of Beams and Planks assigned.
 [ADDED] Harvestcraft Crops to the List of things that can randomly spawn in the Farming Room in GT6 Dungeons.
 [ADDED] Wooden Buckets for Soy Milk and Glue.
 

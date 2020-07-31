@@ -94,6 +94,7 @@ public enum IL implements IItemContainer {
 	MFR_Log_Rubber, MFR_Leaves_Rubber, MFR_Leaves_Rubber_Dry, MFR_Sapling_Rubber, MFR_Sapling_Rubber_Sacred, MFR_Sapling_Rubber_Mega, MFR_Sapling_Rubber_Sacred_Mega,
 	RoC_Propolis_Slippery,
 	RoC_Comb_Slippery,
+	RoC_Ethanol_Extract, RoC_Ethanol_Crystal,
 	JABBA_Dolly, JABBA_Dolly_Diamond,
 	LOOTBAGS_Bag_0, LOOTBAGS_Bag_1, LOOTBAGS_Bag_2, LOOTBAGS_Bag_3, LOOTBAGS_Bag_4,
 	Myst_Desk_Block, Myst_Desk_Item, Myst_Bookstand, Myst_Lectern, Myst_Crystal, Myst_Receptacle, Myst_Ink_Mixer, Myst_Book_Binder, Myst_Ink_Vial,
