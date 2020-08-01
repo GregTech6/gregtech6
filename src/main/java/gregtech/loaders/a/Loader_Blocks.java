@@ -86,6 +86,7 @@ public class Loader_Blocks implements Runnable {
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Paths, 1, W), F, TC.stack(TC.TERRA, 2));
 		
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.RockOres                            = new BlockRockOres             ("gt.block.rockores"));
+		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.VanillaOresA                        = new BlockVanillaOresA         ("gt.block.vanillaores.a"));
 		
 		VISUALLY_OPAQUE_BLOCKS.add(BlocksGT.Sands                               = new BlockSands                ("gt.block.sands"));
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.Sands, 1, W), F, TC.stack(TC.TERRA, 1));
