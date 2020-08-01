@@ -110,7 +110,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public boolean mIsAddedToEnet = F, mDoEnetCheck = T;
 	
 	/** This Variable is for forcing the Selection Box to be full. */
-	public static boolean FORCE_FULL_SELECTION_BOXES = F;
+	public boolean FORCE_FULL_SELECTION_BOXES = F;
 	
 	/** If this TileEntity is ticking at all */
 	public final boolean mIsTicking;

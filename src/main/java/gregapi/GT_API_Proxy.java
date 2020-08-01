@@ -281,6 +281,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					
 					for (ItemStack tOutput : tStacks) {
 						if (OreDictManager.INSTANCE.isOreDictItem(tOutput)) {
+							ERR.println("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
 							FMLLog.severe("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
 							if (CS.CODE_CLIENT) {
 								FMLLog.severe("A Recipe used an OreDict Item as Output directly, without copying it before!!! This is a typical CallByReference/CallByValue Error");
@@ -561,13 +562,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					aEvent.player.capabilities.allowEdit = F;
 					if (ADVENTURE_MODE_KIT) {
 						if (MD.GT.mLoaded) {
-							UT.Entities.chat(aEvent.player, "Thanks for choosing our Adventure Mode Starter Kit.");
-							UT.Entities.chat(aEvent.player, "We know you could have chosen any other Kit.");
-							UT.Entities.chat(aEvent.player, "And are proud that you chose ours as the best.");
-							ST.drop(aEvent.player, ST.make(Items.flint, 12, 0));
-							ST.drop(aEvent.player, IL.Stick.get(16));
-							ST.drop(aEvent.player, IL.Grass_Dry.get(8));
+							UT.Entities.chat(aEvent.player, CHAT_GREG + " Thank you for choosing the GregTech-6 Adventure Mode Starter Kit.");
 							ST.drop(aEvent.player, IL.Bottle_Purple_Drink.get(6));
+							ST.drop(aEvent.player, IL.Grass_Dry.get(8));
+							ST.drop(aEvent.player, IL.Stick.get(16));
+							ST.drop(aEvent.player, Items.flint, 12, 0);
+							ST.drop(aEvent.player, Blocks.dirt, 16, 0);
+							ST.drop(aEvent.player, Blocks.sapling, 4, 0);
 							switch (RNGSUS.nextInt(4)) {
 							case 0: ST.drop(aEvent.player, IL.Food_Large_Sandwich_Veggie.get(1)); break;
 							case 1: ST.drop(aEvent.player, IL.Food_Large_Sandwich_Cheese.get(1)); break;
@@ -575,8 +576,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							case 3: ST.drop(aEvent.player, IL.Food_Large_Sandwich_Bacon .get(1)); break;
 							}
 						} else {
-							UT.Entities.chat(aEvent.player, "It's dangerous to go alone! Take this.");
-							ST.drop(aEvent.player, ST.make(Items.stone_axe, 1, 0));
+							UT.Entities.chat(aEvent.player, CHAT_GREG + " It's dangerous to go alone! Take this.");
+							ST.drop(aEvent.player, Items.stone_axe, 1, 0);
 						}
 					}
 				}
@@ -655,7 +656,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " I'm not trying to tell you what to do, but please don't hurt Bear."));
 									}
 								} else if ("GregoriusT".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, ST.update(OP.arrowGtWood.mat(MT.Tc, 1), aEvent.player), F);
+									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, ST.update(OP.arrowGtPlastic.mat(MT.Tc, 1), aEvent.player), F);
 									UT.Entities.chat(tPlayer, new ChatComponentText(LH.Chat.BOLD + "You have received an Arrow"));
 								} else if ("Ilirith".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Could you tell Bear989Sr very gently, that his Inventory is a fucking mess again?"));
@@ -791,29 +792,37 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		PLAYER_LAST_CLICKED.put(aEvent.entityPlayer, new ChunkCoordinates(aEvent.x, aEvent.y, aEvent.z));
 		
 		ItemStack aStack = aEvent.entityPlayer.inventory.getCurrentItem();
-//      Block aBlock = aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z);
+		Block aBlock = aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z);
 		TileEntity aTileEntity = aEvent.world.getTileEntity(aEvent.x, aEvent.y, aEvent.z);
 		
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
+			// Fixing a Vanilla Dupe Bug with stacked Music Discs and the Jukebox.
 			if (aTileEntity instanceof TileEntityJukebox) {
 				ItemStack tStack = ((TileEntityJukebox)aTileEntity).func_145856_a();
 				if (tStack != null) tStack.stackSize = 1;
 				return;
 			}
+			// You can easily recycle most things in GT6 anyways, so this should not be needed.
+			if (IL.TF_Uncrafting.equal(aBlock)) {
+				UT.Entities.chat(aEvent.entityPlayer, CHAT_GREG + " No cheating! ;)");
+				aEvent.setCanceled(T);
+				return;
+			}
 			if (ST.valid(aStack)) {
+				// Preventing a Railcraft Crash with Fluid Container Items.
 				if (aStack.getItem() instanceof IFluidContainerItem && !aEvent.entityPlayer.isSneaking() && aTileEntity != null && aTileEntity.getClass().getName().startsWith("mods.railcraft.common")) {
 					aEvent.setCanceled(T);
 					return;
 				}
-				/*
+				/* I think this was for fixing some Adventure Mode related thing. Probably placing Scaffolds with Leftclick was broken, but I ended up fixing it another way.
 				if (MD.IC2.mLoaded && SIDES_HORIZONTAL[aEvent.face] && !aEvent.entityPlayer.isSneaking() && !aEvent.entityPlayer.capabilities.allowEdit && !aEvent.world.canPlaceEntityOnSide(aBlock, aEvent.x+OFFSETS_X[aEvent.face], aEvent.y, aEvent.z+OFFSETS_Z[aEvent.face], F, aEvent.face, aEvent.entityPlayer, aStack)) {
-					if (IL.IC2_Scaffold.exists() && aBlock == IL.IC2_Scaffold.block() && IL.IC2_Scaffold.equal(aStack, F, T)) {
+					if (IL.IC2_Scaffold.equal(aBlock) && IL.IC2_Scaffold.equal(aStack, F, T)) {
 						aBlock.onBlockClicked(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aEvent.entityPlayer);
 						aEvent.entityPlayer.swingItem();
 						aEvent.setCanceled(T);
 						return;
 					}
-					if (IL.IC2_Scaffold_Iron.exists() && aBlock == IL.IC2_Scaffold_Iron.block() && IL.IC2_Scaffold_Iron.equal(aStack, F, T)) {
+					if (IL.IC2_Scaffold_Iron.equal(aBlock) && IL.IC2_Scaffold_Iron.equal(aStack, F, T)) {
 						aBlock.onBlockClicked(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aEvent.entityPlayer);
 						aEvent.entityPlayer.swingItem();
 						aEvent.setCanceled(T);
@@ -829,6 +838,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 						return;
 					}
+					// Make Railcrafts Crowbars work on GT6 Stuff.
 					if (IL.RC_Crowbar_Iron.equal(aStack, T, T) || IL.RC_Crowbar_Steel.equal(aStack, T, T) || IL.RC_Crowbar_Thaumium.equal(aStack, T, T) || IL.RC_Crowbar_Voidmetal.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
 						long tDamage = IBlockToolable.Util.onToolClick(TOOL_crowbar, Long.MAX_VALUE, 2, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
@@ -840,6 +850,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 						return;
 					}
+					// Make Forestry Scoops work on GT6 Stuff.
 					if (IL.FR_Scoop.equal(aStack, T, T)) {
 						List<String> tChatReturn = new ArrayListNoNulls<>();
 						long tDamage = IBlockToolable.Util.onToolClick(TOOL_scoop, Long.MAX_VALUE, 0, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
@@ -855,6 +866,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 		}
 		
+		// Make sure that shelvable Items don't do a Rightclick Action instead of being shelved.
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) {
 			if (ST.valid(aStack)) {
 				if (aTileEntity instanceof ITileEntityBookShelf && ((ITileEntityBookShelf)aTileEntity).isShelfFace((byte)aEvent.face)) {

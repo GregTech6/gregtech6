@@ -75,9 +75,6 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.NON_AUTO_INSERT_ITEMS.add(ST.make(MD.CANDY, "I100"              , 1, W));
 		
 		
-		
-		
-		
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge"                   , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge_incendiary"        , 1, W));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.HBM, "ammo_12gauge_shrapnel"          , 1, W));
@@ -274,6 +271,7 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.TG, "TechgunsAmmo"                    , 1,106));
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.TG, "TechgunsAmmo"                    , 1,107));
 		
+		
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.dirt                         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.grass                        , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.mycelium                     , 1, W));
@@ -339,6 +337,8 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.ICBM, "icbmCGlass"               , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.ICBM, "icbmCCamouflage"          , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.ELN, "Eln.Ore"                   , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFNagastone"           , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFMazestone"           , 1, W));
 		
 		
 		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"  , null));
@@ -365,6 +365,7 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.harvestableSpade.add(ST.block(MD.ABYSSAL, "darkgrass"              , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.ABYSSAL, "dreadgrass"             , null));
 		
+		
 		BlocksGT.plantableGreens.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"   , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"  , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.BoP, "mud"                         , null));
@@ -384,6 +385,7 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "enchantedAetherGrass"     , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "enchantedGrass"           , null));
 		
+		
 		BlocksGT.plantableGrass.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"   , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.BoP, "originGrass"                  , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.BoP, "longGrass"                    , null));
@@ -396,6 +398,7 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedAetherGrass"      , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedGrass"            , null));
 		
+		
 		BlocksGT.plantableTrees.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"   , null));
 		BlocksGT.plantableTrees.add(ST.block(MD.BoP, "originGrass"                  , null));
 		BlocksGT.plantableTrees.add(ST.block(MD.BoP, "longGrass"                    , null));
@@ -407,6 +410,7 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "aetherGrass"               , null));
 		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "enchantedAetherGrass"      , null));
 		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "enchantedGrass"            , null));
+		
 		
 		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "glass_pane"                  , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_pane_brown"    , null));
@@ -688,6 +692,7 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Dry_Bush                          .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,11));
 		IL.TF_Nagastone                         .set(ST.make(MD.TF, "tile.TFNagastone"                      , 1, 0));
 		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0));
+		IL.TF_Uncrafting                        .set(ST.make(MD.TF, "tile.TFUncraftingTable"                , 1, 0));
 		IL.TF_Log_Oak                           .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Log_Canopy                        .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 1), new OreDictItemData(MT.WOODS.Spruce   , U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Log_Mangrove                      .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 2), new OreDictItemData(MT.WOODS.Birch    , U*8, MT.Bark, U), OD.logWood);
@@ -696,6 +701,8 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Log_Trans                         .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 1), new OreDictItemData(MT.WOODS.Acacia   , U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Log_Mine                          .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 2), new OreDictItemData(MT.WOODS.Birch    , U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Log_Sorting                       .set(ST.make(MD.TF, "tile.TFMagicLog"                       , 1, 3), new OreDictItemData(MT.WOODS.DarkOak  , U*8, MT.Bark, U), OD.logWood);
+		
+		
 		
 		if (IL.TF_Vial_FieryBlood.item() != null) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.item() != null) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
