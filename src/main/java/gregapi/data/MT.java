@@ -369,7 +369,7 @@ public class MT {
 	/**
 	 * All the Elements and a few of their Isotopes.
 	 * 
-	 * in setStatsEnergetic I guessed some of the Values, because they were not listed in Wikipedia at that time.
+	 * I guessed some of the Values for Melting and Boiling Points, because they were not listed in Wikipedia at that time.
 	 * Those guessed Values are postfixed with an empty Space.
 	 */
 	public static final OreDictMaterial
@@ -843,14 +843,14 @@ public class MT {
 	Air                     = gas           ( 9830, "Air"                                           , 169, 208, 245,  15, TRANSPARENT, GASSES)                                                                                                                      .uumMcfg( 0, N              ,40*U, O                ,11*U, Ar               , 1*U)                                                                          .heat( 100,  200).setDensity(WEIGHT_AIR_G_PER_CUBIC_CENTIMETER),
 	
 	
-	CO                      = gaschemelec   ( 9838, "Carbon Monoxide"                               ,  10,  10,  10, 255, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 1*U)                                                                                                  .heat( 100,  200),
-	CO2                     = gaschemelec   ( 9836, "Carbon Dioxide"                                ,  40,  40,  40, 255, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
-	CO3                     = gaschemelec   ( 9843, "Carbon Trioxide"                               ,  45,  45,  45, 255, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 3*U)                                                                                                  .heat( 100,  200),
-	NO                      = gaschemelec   ( 9837, "Nitrogen Monoxide"                             , 100, 175, 255, 255, GASSES)                                                                                                                                   .uumMcfg( 0, N              , 1*U, O                , 1*U)                                                                                                  .heat( 100,  200),
-	NO2                     = gaschemelec   ( 9831, "Nitrogen Dioxide"                              , 120, 190, 255, 255, GASSES)                                                                                                                                   .uumMcfg( 0, N              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
-	SO2                     = gaschemdcmp   ( 9834, "Sulfur Dioxide"                                , 255, 200,   0, 255, GASSES, "SulphurDioxide")                                                                                                                 .uumMcfg( 0, S              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
-	SO3                     = gaschemdcmp   ( 9835, "Sulfur Trioxide"                               , 255, 220,   0, 255, GASSES, "SulphurTrioxide")                                                                                                                .uumMcfg( 0, S              , 1*U, O                , 3*U)                                                                                                  .heat( 100,  200),
-	CH4                     = gaschemelec   ( 9832, "Methane"                                       , 250, 200, 250, 255, GASSES, FLAMMABLE)                                                                                                                        .uumMcfg( 0, C              , 1*U, H                , 4*U)                                                                                                  .heat( 100,  200),
+	CO                      = gaschemelec   ( 9838, "Carbon Monoxide"                               ,  10,  10,  10,  15, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 1*U)                                                                                                  .heat( 100,  200),
+	CO2                     = gaschemelec   ( 9836, "Carbon Dioxide"                                ,  40,  40,  40,  15, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
+	CO3                     = gaschemelec   ( 9843, "Carbon Trioxide"                               ,  45,  45,  45,  15, GASSES)                                                                                                                                   .uumMcfg( 0, C              , 1*U, O                , 3*U)                                                                                                  .heat( 100,  200),
+	NO                      = gaschemelec   ( 9837, "Nitrogen Monoxide"                             , 100, 175, 255,  15, GASSES)                                                                                                                                   .uumMcfg( 0, N              , 1*U, O                , 1*U)                                                                                                  .heat( 100,  200),
+	NO2                     = gaschemelec   ( 9831, "Nitrogen Dioxide"                              , 120, 190, 255,  15, GASSES)                                                                                                                                   .uumMcfg( 0, N              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
+	SO2                     = gaschemdcmp   ( 9834, "Sulfur Dioxide"                                , 255, 200,   0, 120, GASSES, "SulphurDioxide")                                                                                                                 .uumMcfg( 0, S              , 1*U, O                , 2*U)                                                                                                  .heat( 100,  200),
+	SO3                     = gaschemdcmp   ( 9835, "Sulfur Trioxide"                               , 255, 220,   0, 120, GASSES, "SulphurTrioxide")                                                                                                                .uumMcfg( 0, S              , 1*U, O                , 3*U)                                                                                                  .heat( 100,  200),
+	CH4                     = gaschemelec   ( 9832, "Methane"                                       , 250, 200, 250,  15, GASSES, FLAMMABLE)                                                                                                                        .uumMcfg( 0, C              , 1*U, H                , 4*U)                                                                                                  .heat( 100,  200),
 	HCl                     = gasaciddcmp   ( 9826, "Hydrochloric Acid"                             ,   0, 255, 128, 255, GASSES)                                                                                                                                   .uumMcfg( 0, H              , 1*U, Cl               , 1*U)                                                                                                  .heat( 100,  200),
 	H2S                     = gasaciddcmp   ( 8024, "Hydrosulfuric Acid"                            , 241, 188, 133, 255, GASSES, FLAMMABLE)                                                                                                                        .uumMcfg( 0, H              , 2*U, S                , 1*U)                                                                                                  .heat( 191,  213),
 	HF                      = gasaciddcmp   ( 9829, "Hydrogen Fluoride"                             ,   0, 240, 240, 255, GASSES)                                                                                                                                   .uumMcfg( 0, H              , 1*U, F                , 1*U)                                                                                                  .heat( 189,  292),
@@ -2422,7 +2422,7 @@ public class MT {
 			Se                              .addOreByProducts(Pyrite                , OREMATS.Galena            , OREMATS.Sphalerite    , In                    , Ga                    , Cd                    );
 			OREMATS.Chalcopyrite            .addOreByProducts(Pyrite                , Co                        , Cd                    , Au                    , OREMATS.Sperrylite    , OREMATS.Stannite      , In                    );
 			OREMATS.Sperrylite              .addOreByProducts(Sb                    , Cu                        , Fe2O3                 , Rh                    , Pt                    );
-			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                 , S                         , Co                    , OREMATS.Sperrylite    );
+			OREMATS.Pentlandite             .addOreByProducts(Fe2O3                 , S                         , Co                    , OREMATS.Sperrylite    , OREMATS.Gypsum        );
 			OREMATS.Sphalerite              .addOreByProducts(Cd                    , Ga                        , Zn                    , OREMATS.Kesterite     , Se                    , In                    );
 			OREMATS.Tetrahedrite            .addOreByProducts(Cu                    , Sb                        , Zn                    , OREMATS.Kesterite     );
 			Pyrite                          .addOreByProducts(S                     , Phosphorus                , Fe2O3                 , OREMATS.Stannite      , Se                    );
@@ -2460,11 +2460,13 @@ public class MT {
 			Asbestos                        .addOreByProducts(Asbestos              , SiO2                      , Mg                    );
 			Phosphorus                      .addOreByProducts(Phosphorite           , Apatite                   , CaF2                  , PO4                   );
 			Apatite                         .addOreByProducts(Phosphorite           , Phosphorus                , CaF2                  , PO4                   );
-			Sapphire                        .addOreByProducts(OrangeSapphire        , YellowSapphire            , GreenSapphire         );
-			BlueSapphire                    .addOreByProducts(OrangeSapphire        , YellowSapphire            , GreenSapphire         );
-			GreenSapphire                   .addOreByProducts(BlueSapphire          , OrangeSapphire            , YellowSapphire        );
-			YellowSapphire                  .addOreByProducts(BlueSapphire          , OrangeSapphire            , GreenSapphire         );
-			OrangeSapphire                  .addOreByProducts(BlueSapphire          , YellowSapphire            , GreenSapphire         );
+			Sapphire                        .addOreByProducts(Ruby                  , PurpleSapphire            , GreenSapphire         );
+			BlueSapphire                    .addOreByProducts(Ruby                  , PurpleSapphire            , GreenSapphire         );
+			GreenSapphire                   .addOreByProducts(Ruby                  , BlueSapphire              , YellowSapphire        );
+			YellowSapphire                  .addOreByProducts(Ruby                  , BlueSapphire              , GreenSapphire         );
+			OrangeSapphire                  .addOreByProducts(Ruby                  , BlueSapphire              , GreenSapphire         );
+			PurpleSapphire                  .addOreByProducts(Ruby                  , BlueSapphire              , GreenSapphire         );
+			Ruby                            .addOreByProducts(OrangeSapphire        , BlueSapphire              , GreenSapphire         );
 			HexoriumRed                     .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
 			HexoriumGreen                   .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
 			HexoriumBlue                    .addOreByProducts(HexoriumWhite         , HexoriumBlack             );
@@ -2481,6 +2483,9 @@ public class MT {
 			CertusQuartz                    .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			ChargedCertusQuartz             .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			Redstone                        .addOreByProducts(OREMATS.Cinnabar      , RareEarth                 , Glowstone             );
+			Nikolite                        .addOreByProducts(Cu                    , RareEarth                 );
+			Teslatite                       .addOreByProducts(Cu                    , RareEarth                 );
+			Electrotine                     .addOreByProducts(Cu                    , RareEarth                 );
 			Os                              .addOreByProducts(Ir                    , Pt                        , Ru                    );
 			Ir                              .addOreByProducts(Pt                    , Os                        , Rh                    );
 			Pt                              .addOreByProducts(Ni                    , Ir                        , Pd                    );
@@ -2504,7 +2509,7 @@ public class MT {
 			OREMATS.Pinalite                .addOreByProducts(OREMATS.Tungstate     , Pb                        );
 			OREMATS.BrownLimonite           .addOreByProducts(OREMATS.Malachite     , OREMATS.YellowLimonite    );
 			OREMATS.Garnierite              .addOreByProducts(Ni                    , OREMATS.Sperrylite        );
-			OREMATS.Bastnasite              .addOreByProducts(Nd                    , RareEarth                 );
+			OREMATS.Bastnasite              .addOreByProducts(Monazite              , RareEarth                 , Nd                    );
 			Nd                              .addOreByProducts(Monazite              , RareEarth                 );
 			NaCl                            .addOreByProducts(KCl                   , KIO3                      );
 			KCl                             .addOreByProducts(KIO3                  , NaCl                      );
@@ -2584,11 +2589,7 @@ public class MT {
 			Andradite                       .addOreByProducts(Fe2O3                 );
 			Grossular                       .addOreByProducts(Ca                    );
 			Uvarovite                       .addOreByProducts(Cr                    );
-			Ruby                            .addOreByProducts(Cr                    );
 			Olivine                         .addOreByProducts(Mg                    );
-			Nikolite                        .addOreByProducts(Cu                    );
-			Teslatite                       .addOreByProducts(Cu                    );
-			Electrotine                     .addOreByProducts(Cu                    );
 			OREMATS.Magnesite               .addOreByProducts(Mg                    );
 			PigIron                         .addOreByProducts(Fe2O3                 );
 			DarkIron                        .addOreByProducts(Fe2O3                 );
@@ -2596,7 +2597,7 @@ public class MT {
 			MeteoricSteel                   .addOreByProducts(Fe2O3                 );
 			Graphite                        .addOreByProducts(C                     );
 			CaCO3                           .addOreByProducts(OREMATS.Malachite     );
-			OREMATS.Gypsum                  .addOreByProducts(S                     );
+			OREMATS.Gypsum                  .addOreByProducts(S                     , Asbestos                  , Soapstone             , Talc);
 			OREMATS.Borax                   .addOreByProducts(B                     );
 			Netherrack                      .addOreByProducts(S                     );
 			Flint                           .addOreByProducts(Obsidian              );

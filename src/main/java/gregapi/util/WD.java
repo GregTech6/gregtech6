@@ -539,8 +539,8 @@ public class WD {
 	public static boolean easyRep(World aWorld, int aX, int aY, int aZ) {return easyRep(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
 	public static boolean easyRep(World aWorld, int aX, int aY, int aZ, Block aBlock) {return air(aWorld, aX, aY, aZ, aBlock) || aBlock instanceof BlockBush || aBlock.isLeaves(aWorld, aX, aY, aZ) || aBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);}
 	
-	public static boolean infiniteWater(World aWorld, int aX, int aY, int aZ) {return (MD.TF.mLoaded && aWorld.provider.dimensionId == TwilightForestMod.dimensionID ? UT.Code.inside(21, 31, aY) : UT.Code.inside(52, 62, aY)) && BIOMES_RIVER_LAKE.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName);}
-	public static boolean infiniteWater(World aWorld, int aX, int aY, int aZ, Block aBlock) {return waterstream(aBlock) || ((aBlock == Blocks.water || aBlock == Blocks.flowing_water) && (MD.TF.mLoaded && aWorld.provider.dimensionId == TwilightForestMod.dimensionID ? UT.Code.inside(21, 31, aY) : UT.Code.inside(52, 62, aY)) && BIOMES_RIVER_LAKE.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName));}
+	public static boolean infiniteWater(World aWorld, int aX, int aY, int aZ              ) {int tLevel = waterLevel(aWorld); return                                                                                       UT.Code.inside(tLevel-15, tLevel, aY) && BIOMES_RIVER_LAKE.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName);}
+	public static boolean infiniteWater(World aWorld, int aX, int aY, int aZ, Block aBlock) {int tLevel = waterLevel(aWorld); return waterstream(aBlock) || ((aBlock == Blocks.water || aBlock == Blocks.flowing_water) && UT.Code.inside(tLevel-15, tLevel, aY) && BIOMES_RIVER_LAKE.contains(aWorld.getBiomeGenForCoords(aX, aZ).biomeName));}
 	
 	public static boolean hasCollide(World aWorld, int aX, int aY, int aZ) {return hasCollide(aWorld, aX, aY, aZ, aWorld.getBlock(aX, aY, aZ));}
 	public static boolean hasCollide(World aWorld, int aX, int aY, int aZ, Block aBlock) {return aBlock.isOpaqueCube() || aBlock.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ) != null;}

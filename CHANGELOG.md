@@ -39,6 +39,13 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] The 36 Trees from Harvestcraft to the Wood Dictionary. Yes I know they mostly use Vanilla Leaves and Logs. Maple and Cinnamon will have their GT6 Counterpart of Beams and Planks assigned.
 [ADDED] Harvestcraft Crops to the List of things that can randomly spawn in the Farming Room in GT6 Dungeons.
 [ADDED] Wooden Buckets for Soy Milk and Glue.
+[ADDED]
+Way better Ore generation for Twilight Forest, and also allowing actual Vanilla Ores there.
+In case the Ores look familiar to you, I grabbed and sometimes modified some Textures from previous GT Versions for this.
+The 16 Ores that got added are what I think is the minimum viable amount of Ore Types that a GT6 World requires, if we account for the Byproducts.
+I also added the 8 Rock-Layer-Ores in Blob form to there.
+Some Ores only generate above Y=40, meaning you have to find a Hollow Hill or similar for them.
+This also means that the GT5 Style Ore Generation is now completely gone from Twilight Forest.
 
 
 6.14.00:

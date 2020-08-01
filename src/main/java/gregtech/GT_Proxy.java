@@ -167,7 +167,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	
 	@SubscribeEvent
 	public void onOreGenEvent(GenerateMinable aEvent) {
-		if (mDisableVanillaOres && aEvent.generator instanceof WorldGenMinable && PREVENTED_ORES.contains(aEvent.type)) aEvent.setResult(Result.DENY);
+		if (mDisableVanillaOres && aEvent.generator instanceof WorldGenMinable && !WD.dimTF(aEvent.world) && PREVENTED_ORES.contains(aEvent.type)) aEvent.setResult(Result.DENY);
 	}
 	@SubscribeEvent
 	public void onTerrainGenEvent(DecorateBiomeEvent.Decorate aEvent) {

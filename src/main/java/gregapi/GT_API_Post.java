@@ -152,6 +152,15 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.TiC.mLoaded) {
 			MT.Co.addOreByProducts(MT.Ardite);
 		}
+		if (MD.RP.mLoaded) {
+			MT.OREMATS.Bastnasite.addOreByProducts(MT.Nikolite);
+		}
+		if (MD.PR.mLoaded) {
+			MT.OREMATS.Bastnasite.addOreByProducts(MT.Electrotine);
+		}
+		if (MD.BP.mLoaded) {
+			MT.OREMATS.Bastnasite.addOreByProducts(MT.Teslatite);
+		}
 		if (MD.BR.mLoaded) {
 			MT.Th.addOreByProducts(MT.Cyanite);
 			MT.Monazite.addOreByProducts(MT.Cyanite);
@@ -169,6 +178,7 @@ public class GT_API_Post extends Abstract_Mod {
 		}
 		if (MD.AA.mLoaded) {
 			MT.OREMATS.Barite.addOreByProducts(MT.BlackQuartz);
+			MT.MilkyQuartz.addOreByProducts(MT.BlackQuartz);
 		}
 	}
 
