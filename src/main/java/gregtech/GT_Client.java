@@ -232,9 +232,10 @@ public class GT_Client extends GT_Proxy {
 					if (MD.TC.mLoaded) {
 						try {
 							if (Class.forName("com.chocohead.patcher.ThaumicFixer") != null) {
-								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! Chocoheads ThaumicFixer needs to be uninstalled, as it has been replaced!"));
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! Chocoheads ThaumicFixer needs to be uninstalled!"));
 								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "Not uninstalling it can lead to crashes when viewing Aspects."));
-								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "The Lag has been fixed with a better Version of the ASM Code, that doesn't obliterate the Thaumcraft API for no reason."));
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "Lag is already fixed with a better Version of the ASM Code,"));
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "that doesn't obliterate the Thaumcraft API for no reason."));
 							}
 						} catch(Throwable e) {/**/}
 					}
