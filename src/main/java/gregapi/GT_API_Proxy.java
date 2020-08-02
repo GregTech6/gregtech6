@@ -879,6 +879,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	}
 	
 	@SubscribeEvent
+	public void onUseHoeEvent(net.minecraftforge.event.entity.player.UseHoeEvent aEvent) {
+		if (aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z) == Blocks.dirt && aEvent.world.getBlockMetadata(aEvent.x, aEvent.y, aEvent.z) != 0) aEvent.setCanceled(T);
+	}
+	
+	@SubscribeEvent
 	@SuppressWarnings("unlikely-arg-type")
 	public void onBlockBreakSpeedEvent(PlayerEvent.BreakSpeed aEvent) {
 		if (aEvent.newSpeed > 0) {
@@ -918,11 +923,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	}
 	
 	@SubscribeEvent
-	public void onUseHoeEvent(net.minecraftforge.event.entity.player.UseHoeEvent aEvent) {
-		if (aEvent.world.getBlock(aEvent.x, aEvent.y, aEvent.z) == Blocks.dirt && aEvent.world.getBlockMetadata(aEvent.x, aEvent.y, aEvent.z) != 0) aEvent.setCanceled(T);
-	}
-	
-	@SubscribeEvent
 	public void onBlockHarvestingEvent(BlockEvent.HarvestDropsEvent aEvent) {
 		Iterator<ItemStack> aDrops = aEvent.drops.iterator();
 		while (aDrops.hasNext()) {
@@ -943,11 +943,17 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				if (aStack.getItem() instanceof MultiItemTool) {
 					((MultiItemTool)aStack.getItem()).onHarvestBlockEvent(aEvent.drops, aStack, aEvent.harvester, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.blockMetadata, aEvent.fortuneLevel, aEvent.isSilkTouching, aEvent);
 				}
-				if (tFireAspect) for (ItemStack tDrop : aEvent.drops) {
-					ItemStack tSmeltingOutput = RM.get_smelting(tDrop, F, null);
-					if (tSmeltingOutput != null) {
-						tDrop.stackSize *= tSmeltingOutput.stackSize;
-						ST.set(tDrop, tSmeltingOutput, F, T);
+				if (tFireAspect) {
+					if (aEvent.world.isRemote) for (int i = 0; i < 4; i++) {
+						double tX = RNGSUS.nextGaussian()/50, tY = RNGSUS.nextGaussian()/50, tZ = RNGSUS.nextGaussian()/50;
+						aEvent.world.spawnParticle("flame", aEvent.x+0.5+tX*20, aEvent.y+0.5+tY*20, aEvent.z+0.5+tZ*20,-tX,-tY,-tZ);
+					}
+					for (ItemStack tDrop : aEvent.drops) {
+						ItemStack tSmeltingOutput = RM.get_smelting(tDrop, F, null);
+						if (tSmeltingOutput != null) {
+							tDrop.stackSize *= tSmeltingOutput.stackSize;
+							ST.set(tDrop, tSmeltingOutput, F, T);
+						}
 					}
 				}
 				
@@ -955,36 +961,36 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					OM.set(tDrop);
 					// TODO HASHMAP
 					if (MD.GT.mLoaded) {
-					if (IL.CHSL_Granite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.EtFu_Granite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.GaSu_Granite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.BOTA_Granite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.CHSL_Granite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
-					if (IL.EtFu_Granite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
-					if (IL.GaSu_Granite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
-					if (IL.BOTA_Granite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
-					if (IL.BOTA_Granite_Bricks      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 3), F, F); else
-					if (IL.BOTA_Granite_Chiseled    .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 6), F, F); else
-					if (IL.CHSL_Diorite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.EtFu_Diorite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.GaSu_Diorite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.BOTA_Diorite             .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.CHSL_Diorite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
-					if (IL.EtFu_Diorite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
-					if (IL.GaSu_Diorite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
-					if (IL.BOTA_Diorite_Smooth      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
-					if (IL.BOTA_Diorite_Bricks      .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 3), F, F); else
-					if (IL.BOTA_Diorite_Chiseled    .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 6), F, F); else
-					if (IL.CHSL_Andesite            .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.EtFu_Andesite            .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.GaSu_Andesite            .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.BOTA_Andesite            .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
-					if (IL.CHSL_Andesite_Smooth     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
-					if (IL.EtFu_Andesite_Smooth     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
-					if (IL.GaSu_Andesite_Smooth     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
-					if (IL.BOTA_Andesite_Smooth     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
-					if (IL.BOTA_Andesite_Bricks     .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 3), F, F); else
-					if (IL.BOTA_Andesite_Chiseled   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 6), F, F);
+					if (IL.CHSL_Granite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.EtFu_Granite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.GaSu_Granite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.BOTA_Granite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.CHSL_Granite_Smooth   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
+					if (IL.EtFu_Granite_Smooth   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
+					if (IL.GaSu_Granite_Smooth   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
+					if (IL.BOTA_Granite_Smooth   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 7), F, F); else
+					if (IL.BOTA_Granite_Bricks   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 3), F, F); else
+					if (IL.BOTA_Granite_Chiseled .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Granite , 1, 6), F, F); else
+					if (IL.CHSL_Diorite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.EtFu_Diorite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.GaSu_Diorite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.BOTA_Diorite          .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.CHSL_Diorite_Smooth   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
+					if (IL.EtFu_Diorite_Smooth   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
+					if (IL.GaSu_Diorite_Smooth   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
+					if (IL.BOTA_Diorite_Smooth   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 7), F, F); else
+					if (IL.BOTA_Diorite_Bricks   .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 3), F, F); else
+					if (IL.BOTA_Diorite_Chiseled .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Diorite , 1, 6), F, F); else
+					if (IL.CHSL_Andesite         .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.EtFu_Andesite         .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.GaSu_Andesite         .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.BOTA_Andesite         .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, aEvent.isSilkTouching ? 0 : 1), F, F); else
+					if (IL.CHSL_Andesite_Smooth  .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
+					if (IL.EtFu_Andesite_Smooth  .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
+					if (IL.GaSu_Andesite_Smooth  .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
+					if (IL.BOTA_Andesite_Smooth  .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 7), F, F); else
+					if (IL.BOTA_Andesite_Bricks  .equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 3), F, F); else
+					if (IL.BOTA_Andesite_Chiseled.equal(tDrop, F, T)) ST.set(tDrop, ST.make(BlocksGT.Andesite, 1, 6), F, F);
 					}
 				}
 				
@@ -1006,11 +1012,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent
 	public void onLoginEvent(cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent aEvent) {
-		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES  ) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
-		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES   ) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
-		if (DISABLE_ALL_IC2_MACERATOR_RECIPES   ) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
-		if (DISABLE_ALL_IC2_OREWASHER_RECIPES   ) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
-		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES  ) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
+		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
+		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES ) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
+		if (DISABLE_ALL_IC2_MACERATOR_RECIPES ) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
+		if (DISABLE_ALL_IC2_OREWASHER_RECIPES ) ic2.api.recipe.Recipes.oreWashing.getRecipes().clear();
+		if (DISABLE_ALL_IC2_CENTRIFUGE_RECIPES) ic2.api.recipe.Recipes.centrifuge.getRecipes().clear();
 		
 		if (aEvent.player.worldObj.isRemote) return;
 		if (aEvent.player instanceof EntityPlayerMP) mNewPlayers.add((EntityPlayerMP)aEvent.player);

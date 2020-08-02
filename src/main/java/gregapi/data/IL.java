@@ -116,7 +116,7 @@ public enum IL implements IItemContainer {
 	TF_Hydrachop_Raw, TF_Meef_Raw, TF_Meef_Cooked, TF_Venison_Raw, TF_Venison_Cooked,
 	TF_Log_Oak, TF_Log_Canopy, TF_Log_Mangrove, TF_Log_Darkwood, TF_Log_Time, TF_Log_Trans, TF_Log_Mine, TF_Log_Sorting,
 	TF_Mazestone, TF_Nagastone,
-	TF_Uncrafting,
+	TF_Uncrafting, TF_Pick_Giant, TF_Sword_Giant,
 	HiL_Ironwood,
 	HaC_Log_Cinnamon, HaC_Log_Maple, HaC_Log_Paperbark,
 	HaC_Cinnamon,

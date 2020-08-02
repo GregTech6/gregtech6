@@ -125,7 +125,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		}
 		return null;
 	}
-
+	
 	/**
 	 * This Function gets an ItemStack Version of this Tool
 	 * @param aToolID the ID of the Tool Class
@@ -256,11 +256,6 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	@Override
-	public final int getMaxItemUseDuration(ItemStack aStack) {
-		return 72000;
-	}
-	
-	@Override
 	public final EnumAction getItemUseAction(ItemStack aStack) {
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats != null && tStats.canBlock()) return EnumAction.block;
@@ -281,14 +276,14 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	@Override
 	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		long tMaxDamage = getToolMaxDamage(aStack), tDamage = getToolDamage(aStack);
-		OreDictMaterial tMaterial = getPrimaryMaterial(aStack, MT.NULL);
+		OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
 		IToolStats tStats = getToolStats(aStack);
 		if (tMaxDamage > 0 && tStats != null) {
 			aList.add(LH.Chat.WHITE + "Durability: " + LH.Chat.GREEN + (tMaxDamage - tDamage) + " / " + tMaxDamage + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + tMaterial.getLocal() + LH.Chat.YELLOW + " lvl " + getHarvestLevel(aStack, "") + LH.Chat.GRAY);
 			float tCombat = getToolCombatDamage(aStack);
 			aList.add(LH.Chat.WHITE + "Attack Damage: " + LH.Chat.BLUE + "+" + (((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? tCombat * TFC_DAMAGE_MULTIPLIER : tCombat) + LH.Chat.RED + " (= " + ((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)"))  + LH.Chat.GRAY);
-			aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * getPrimaryMaterial(aStack, MT.NULL).mToolSpeed) + LH.Chat.GRAY);
+			aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * getPrimaryMaterial(aStack).mToolSpeed) + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + "Crafting Uses: " + LH.Chat.GREEN + UT.Code.divup(getEnergyStats(aStack) == null ? tMaxDamage - tDamage : getEnergyStored(TD.Energy.EU, aStack), tStats.getToolDamagePerContainerCraft()) + LH.Chat.GRAY);
 			if (MD.BTL.mLoaded && tMaterial.contains(TD.Properties.BETWEENLANDS)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
 			if (IL.TF_Mazestone.exists() && tMaterial.contains(TD.Properties.MAZEBREAKER) && canHarvestBlock(IL.TF_Mazestone.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
@@ -296,6 +291,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		}
 	}
 	
+	public static final OreDictMaterial getPrimaryMaterial(ItemStack aStack) {return getPrimaryMaterial(aStack, MT.NULL);}
 	public static final OreDictMaterial getPrimaryMaterial(ItemStack aStack, OreDictMaterial aDefault) {
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null) {
@@ -303,16 +299,12 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			if (aNBT != null) {
 				if (aNBT.hasKey("a")) return OreDictMaterial.MATERIAL_ARRAY[aNBT.getShort("a")];
 				if (aNBT.hasKey("b")) return OreDictMaterial.get(aNBT.getString("b"));
-				return OreDictMaterial.get(aNBT.getString("PrimaryMaterial"));
 			}
 		}
 		return aDefault;
 	}
 	
-	public static final OreDictMaterial getPrimaryMaterial(ItemStack aStack) {
-		return getPrimaryMaterial(aStack, MT.NULL);
-	}
-	
+	public static final OreDictMaterial getSecondaryMaterial(ItemStack aStack) {return getSecondaryMaterial(aStack, MT.NULL);}
 	public static final OreDictMaterial getSecondaryMaterial(ItemStack aStack, OreDictMaterial aDefault) {
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null) {
@@ -320,14 +312,9 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			if (aNBT != null) {
 				if (aNBT.hasKey("c")) return OreDictMaterial.MATERIAL_ARRAY[aNBT.getShort("c")];
 				if (aNBT.hasKey("d")) return OreDictMaterial.get(aNBT.getString("d"));
-				return OreDictMaterial.get(aNBT.getString("SecondaryMaterial"));
 			}
 		}
 		return aDefault;
-	}
-	
-	public static final OreDictMaterial getSecondaryMaterial(ItemStack aStack) {
-		return getSecondaryMaterial(aStack, MT.NULL);
 	}
 	
 	@Override
@@ -345,7 +332,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	public float getToolCombatDamage(ItemStack aStack) {
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats == null) return 0;
-		return tStats.getBaseDamage() + getPrimaryMaterial(aStack, MT.NULL).mToolQuality;
+		return tStats.getBaseDamage() + getPrimaryMaterial(aStack).mToolQuality;
 	}
 	
 	public static final long getToolMaxDamage(ItemStack aStack) {
@@ -357,7 +344,6 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		}
 		return 1;
 	}
-	
 	public static final long getToolDamage(ItemStack aStack) {
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null) {
@@ -367,7 +353,6 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		}
 		return 0;
 	}
-	
 	public static final boolean setToolDamage(ItemStack aStack, long aDamage) {
 		NBTTagCompound aNBT = aStack.getTagCompound();
 		if (aNBT != null) {
@@ -377,14 +362,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		return F;
 	}
 	
-	public final boolean doDamage(ItemStack aStack, long aAmount) {
-		return doDamage(aStack, aAmount, null);
-	}
-	
-	public final boolean doDamage(ItemStack aStack, long aAmount, EntityLivingBase aPlayer) {
+	public boolean doDamage(ItemStack aStack, long aAmount) {return doDamage(aStack, aAmount, null);}
+	public boolean doDamage(ItemStack aStack, long aAmount, EntityLivingBase aPlayer) {
 		if (!isItemStackUsable(aStack)) return F;
 		IItemEnergy tElectric = getEnergyStats(aStack);
-		if (tElectric == null || RNGSUS.nextInt(Math.max(5, getPrimaryMaterial(aStack, MT.NULL).mToolQuality * 25)) == 0) {
+		if (tElectric == null || RNGSUS.nextInt(Math.max(5, getPrimaryMaterial(aStack).mToolQuality * 25)) == 0) {
 			long tNewDamage = getToolDamage(aStack) + aAmount;
 			setToolDamage(aStack, tNewDamage);
 			if (tNewDamage >= getToolMaxDamage(aStack)) {
@@ -429,10 +411,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (ST.torch(aBlock, aMeta)) return 10;
 		if (!isItemStackUsable(aStack)) return 0;
 		float tMultiplier = 1.0F;
-		if (IL.TF_Mazestone.equal(aBlock) && getPrimaryMaterial(aStack).contains(TD.Properties.MAZEBREAKER)) tMultiplier *= 40;
+		OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
+		if (IL.TF_Mazestone.equal(aBlock) && tMaterial.contains(TD.Properties.MAZEBREAKER)) tMultiplier *= 40;
 		IToolStats tStats = getToolStats(aStack);
-		if (tStats == null || Math.max(0, getHarvestLevel(aStack, "")) < aBlock.getHarvestLevel(aMeta)) return 0;
-		return tStats.getMiningSpeed(aBlock, (byte)aMeta) * Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * tMultiplier * getPrimaryMaterial(aStack, MT.Steel).mToolSpeed);
+		if (tStats == null || tStats.getBaseQuality() + tMaterial.mToolQuality < aBlock.getHarvestLevel(aMeta)) return 0;
+		return tStats.getMiningSpeed(aBlock, (byte)aMeta) * Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * tMultiplier * tMaterial.mToolSpeed);
 	}
 	
 	@Override
@@ -443,7 +426,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	@Override
 	public final int getHarvestLevel(ItemStack aStack, String aToolClass) {
 		IToolStats tStats = getToolStats(aStack);
-		return tStats == null ? -1 : tStats.getBaseQuality() + getPrimaryMaterial(aStack, MT.NULL).mToolQuality; 
+		return tStats == null ? -1 : tStats.getBaseQuality() + getPrimaryMaterial(aStack).mToolQuality; 
 	}
 	
 	@Override
@@ -456,8 +439,9 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		boolean rReturn = (getDigSpeed(aStack, aBlock, aWorld.getBlockMetadata(aX, aY, aZ)) > 0);
 		if (!UT.Entities.hasInfiniteItems(aPlayer)) {
 			double tDamage = Math.max(1, tStats.getToolDamagePerBlockBreak() * aBlock.getBlockHardness(aWorld, aX, aY, aZ));
-			if (WD.dimBTL(aWorld) && !getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
-			if (IL.TF_Mazestone.equal(aBlock) && getPrimaryMaterial(aStack).contains(TD.Properties.MAZEBREAKER)) tDamage /= 40;
+			OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
+			if (WD.dimBTL(aWorld) && tMaterial.contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
+			if (IL.TF_Mazestone.equal(aBlock)) if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
 			doDamage(aStack, (int)tDamage, aPlayer);
 		}
 		return rReturn;
@@ -485,39 +469,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		return aStack.stackSize > 0;
 	}
 	
-	public IToolStats getToolStats(ItemStack aStack) {
-		isItemStackUsable(aStack);
-		return getToolStatsInternal(aStack);
-	}
-	
-	private IToolStats getToolStatsInternal(ItemStack aStack) {
-		return aStack == null ? null : getToolStatsInternal(ST.meta_(aStack));
-	}
-	
-	private IToolStats getToolStatsInternal(int aDamage) {
-		return mToolStats.get((short)aDamage);
-	}
-	
 	@Override
 	public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats != null && aPlayer != null) tStats.onToolCrafted(aStack, aPlayer);
 		super.onCreated(aStack, aWorld, aPlayer);
-	}
-	
-	@Override
-	public final boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {
-		return F;
-	}
-	
-	@Override
-	public final int getItemStackLimit(ItemStack aStack) {
-		return 1;
-	}
-	
-	@Override
-	public boolean isFull3D() {
-		return T;
 	}
 	
 	@Override
@@ -529,13 +485,13 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			if (aNBT != null) aNBT.removeTag("ench");
 			return F;
 		}
-		OreDictMaterial aMaterial = getPrimaryMaterial(aStack, MT.NULL);
+		OreDictMaterial aMaterial = getPrimaryMaterial(aStack);
 		HashMap<Integer, Integer> tMap = new HashMap<>(), tResult = new HashMap<>();
 		for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentTools) {
 			tMap.put(tEnchantment.mObject.effectId, tEnchantment.amountInt());
-			if (tEnchantment.mObject == Enchantment.fortune) tMap.put(Enchantment.looting.effectId, tEnchantment.amountInt());
-			if (tEnchantment.mObject == Enchantment.knockback) tMap.put(Enchantment.punch.effectId, tEnchantment.amountInt());
-			if (tEnchantment.mObject == Enchantment.fireAspect) tMap.put(Enchantment.flame.effectId, tEnchantment.amountInt());
+			if (tEnchantment.mObject == Enchantment.fortune   ) tMap.put(Enchantment.looting.effectId, tEnchantment.amountInt());
+			if (tEnchantment.mObject == Enchantment.knockback ) tMap.put(Enchantment.punch  .effectId, tEnchantment.amountInt());
+			if (tEnchantment.mObject == Enchantment.fireAspect) tMap.put(Enchantment.flame  .effectId, tEnchantment.amountInt());
 		}
 		Enchantment[] tEnchants = tStats.getEnchantments(aStack, aMaterial);
 		int[] tLevels = tStats.getEnchantmentLevels(aStack);
@@ -548,24 +504,17 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			if ("enchantment.railcraft.crowbar.implosion".equalsIgnoreCase(Enchantment.enchantmentsList[tEntry.getKey()].getName())) {
 				if (tStats.isWeapon()) tResult.put(tEntry.getKey(), tEntry.getValue());
 			} else switch(Enchantment.enchantmentsList[tEntry.getKey()].type) {
-			case weapon:
-				if (tStats.isWeapon()) tResult.put(tEntry.getKey(), tEntry.getValue());
-				break;
-			case all:
-				tResult.put(tEntry.getKey(), tEntry.getValue());
-				break;
-			case armor: case armor_feet: case armor_head: case armor_legs: case armor_torso:
-				break;
-			case bow:
-				if (tStats.isRangedWeapon()) tResult.put(tEntry.getKey(), tEntry.getValue());
-				break;
-			case breakable:
-				break;
-			case fishing_rod:
-				break;
-			case digger:
-				if (tStats.isMiningTool()) tResult.put(tEntry.getKey(), tEntry.getValue());
-				break;
+			case all        :                              tResult.put(tEntry.getKey(), tEntry.getValue()); break;
+			case weapon     : if (tStats.isWeapon      ()) tResult.put(tEntry.getKey(), tEntry.getValue()); break;
+			case bow        : if (tStats.isRangedWeapon()) tResult.put(tEntry.getKey(), tEntry.getValue()); break;
+			case digger     : if (tStats.isMiningTool  ()) tResult.put(tEntry.getKey(), tEntry.getValue()); break;
+			case armor      : break;
+			case armor_feet : break;
+			case armor_head : break;
+			case armor_legs : break;
+			case armor_torso: break;
+			case breakable  : break;
+			case fishing_rod: break;
 			}
 		}
 		EnchantmentHelper.setEnchantments(tResult, aStack);
@@ -582,31 +531,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		return (short)(ST.meta_(aStack)+1-(ST.meta_(aStack) % 2));
 	}
 	
-	@Override public int getItemEnchantability() {return 0;}
-	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}
-	@Override public boolean getIsRepairable(ItemStack aStack, ItemStack aMaterial) {return F;}
-	
 	@Override
 	public int getRenderPasses(int aMetaData) {
 		IToolStats tStats = getToolStatsInternal(aMetaData);
 		if (tStats != null) return tStats.getRenderPasses()+2;
 		return 2;
-	}
-	
-	@Override
-	public boolean requiresMultipleRenderPasses() {
-		return T;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister aIconRegister) {
-		//
-	}
-	
-	@Override
-	public int getSpriteNumber() {
-		return 1;
 	}
 	
 	@Override
@@ -616,23 +545,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		return 16777215;
 	}
 	
-	@Override
-	public IIcon getIconIndex(ItemStack aStack) {
-		return getIcon(aStack, 0);
-	}
-	
-	@Override
-	public IIcon getIconFromDamage(int aMetaData) {
-		return getIconIndex(ST.make(this, 1, aMetaData));
-	}
-	
-	@Override
-	public IIcon getIcon(ItemStack aStack, int aRenderPass) {
-		return getIcon(aStack, aRenderPass, null, null, 0);
-	}
-	
-	@Override
-	public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {
+	@Override public IIcon getIconIndex(ItemStack aStack) {return getIcon(aStack, 0);}
+	@Override public IIcon getIconFromDamageForRenderPass(int aMetaData, int aRenderPass) {return getIconFromDamage(aMetaData);}
+	@Override public IIcon getIconFromDamage(int aMetaData) {return getIconIndex(ST.make(this, 1, aMetaData));}
+	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIcon(aStack, aRenderPass, null, null, 0);}
+	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {
 		IToolStats tStats = getToolStatsInternal(aStack);
 		if (tStats == null) return Textures.ItemIcons.VOID.getIcon(0);
 		if (aRenderPass < tStats.getRenderPasses()) {
@@ -661,24 +578,20 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		return Textures.ItemIcons.VOID.getIcon(0);
 	}
 	
-	@Override
-	public IIcon getIconFromDamageForRenderPass(int aMetaData, int aRenderPass) {
-		return getIconFromDamage(aMetaData);
-	}
-	
-	@Override
-	@SuppressWarnings("deprecation")
-	public boolean hasEffect(ItemStack aStack) {
-		return F;
-	}
-	
-	@Override
-	public boolean hasEffect(ItemStack aStack, int aRenderPass) {
-		return F;
-	}
-	
-	@Override
-	public Long[] getFluidContainerStats(ItemStack aStack) {
-		return null;
-	}
+	public IToolStats getToolStats(ItemStack aStack) {isItemStackUsable(aStack); return getToolStatsInternal(aStack);}
+	public IToolStats getToolStatsInternal(ItemStack aStack) {return aStack == null ? null : getToolStatsInternal(ST.meta_(aStack));}
+	public IToolStats getToolStatsInternal(int aDamage) {return mToolStats.get((short)aDamage);}
+	@Override public final int getMaxItemUseDuration(ItemStack aStack) {return 72000;}
+	@Override public final boolean doesContainerItemLeaveCraftingGrid(ItemStack aStack) {return F;}
+	@Override public final int getItemStackLimit(ItemStack aStack) {return 1;}
+	@Override public boolean isFull3D() {return T;}
+	@Override public int getSpriteNumber() {return 1;}
+	@Override public boolean requiresMultipleRenderPasses() {return T;}
+	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister aIconRegister) {/**/}
+	@Override @SuppressWarnings("deprecation") public boolean hasEffect(ItemStack aStack) {return F;}
+	@Override public boolean hasEffect(ItemStack aStack, int aRenderPass) {return F;}
+	@Override public int getItemEnchantability() {return 0;}
+	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}
+	@Override public boolean getIsRepairable(ItemStack aStack, ItemStack aMaterial) {return F;}
+	@Override public Long[] getFluidContainerStats(ItemStack aStack) {return null;}
 }

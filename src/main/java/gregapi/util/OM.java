@@ -102,17 +102,17 @@ public class OM {
 	public static void data(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, long aByProductAmount, OreDictMaterial aByProduct2, long aByProduct2Amount, OreDictMaterial aByProduct3, long aByProduct3Amount, OreDictMaterial aByProduct4, long aByProduct4Amount, OreDictMaterial aByProduct5, long aByProduct5Amount, OreDictMaterial aByProduct6, long aByProduct6Amount, OreDictMaterial aByProduct7, long aByProduct7Amount, OreDictMaterial aByProduct8, long aByProduct8Amount) {
 		data(ST.make(aModID, aModItemName, aStackSize, aMetaData), new OreDictItemData(aMaterial, aAmount, OM.stack(aByProduct, aByProductAmount), OM.stack(aByProduct2, aByProduct2Amount), OM.stack(aByProduct3, aByProduct3Amount), OM.stack(aByProduct4, aByProduct4Amount), OM.stack(aByProduct5, aByProduct5Amount), OM.stack(aByProduct6, aByProduct6Amount), OM.stack(aByProduct7, aByProduct7Amount), OM.stack(aByProduct8, aByProduct8Amount)));
 	}
-	public static void dat2(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictItemData aData) {
-		dat2(ST.make(aModID, aModItemName, aStackSize, aMetaData), aData);
+	public static void dat2(ModData aModID, String aModItemName, int aStackSize, OreDictItemData aData) {
+		dat2(ST.make(aModID, aModItemName, aStackSize), aData);
 	}
-	public static void dat2(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictMaterialStack aMaterial, OreDictMaterialStack... aByProducts) {
-		dat2(ST.make(aModID, aModItemName, aStackSize, aMetaData), aMaterial, aByProducts);
+	public static void dat2(ModData aModID, String aModItemName, int aStackSize, OreDictMaterialStack aMaterial, OreDictMaterialStack... aByProducts) {
+		dat2(ST.make(aModID, aModItemName, aStackSize), aMaterial, aByProducts);
 	}
-	public static void dat2(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictMaterial aMaterial, long aAmount, OreDictMaterialStack... aByProducts) {
-		dat2(ST.make(aModID, aModItemName, aStackSize, aMetaData), aMaterial, aAmount, aByProducts);
+	public static void dat2(ModData aModID, String aModItemName, int aStackSize, OreDictMaterial aMaterial, long aAmount, OreDictMaterialStack... aByProducts) {
+		dat2(ST.make(aModID, aModItemName, aStackSize), aMaterial, aAmount, aByProducts);
 	}
-	public static void dat2(ModData aModID, String aModItemName, int aStackSize, int aMetaData, OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, long aByProductAmount) {
-		dat2(ST.make(aModID, aModItemName, aStackSize, aMetaData), aMaterial, aAmount, aByProduct, aByProductAmount);
+	public static void dat2(ModData aModID, String aModItemName, int aStackSize, OreDictMaterial aMaterial, long aAmount, OreDictMaterial aByProduct, long aByProductAmount) {
+		dat2(ST.make(aModID, aModItemName, aStackSize), aMaterial, aAmount, aByProduct, aByProductAmount);
 	}
 	public static void data(ItemStack aStack, OreDictItemData aData) {
 		if (ST.valid(aStack)) OreDictManager.INSTANCE.addItemData_(aStack, aData);
