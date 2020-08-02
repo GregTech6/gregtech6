@@ -44,6 +44,8 @@ import gregtech.blocks.fluids.BlockSwamp;
 import gregtech.blocks.plants.BlockFlowersA;
 import gregtech.blocks.plants.BlockFlowersB;
 import gregtech.blocks.plants.BlockGlowtus;
+import gregtech.blocks.stone.BlockRockOres;
+import gregtech.blocks.stone.BlockVanillaOresA;
 import gregtech.blocks.tool.*;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagList;

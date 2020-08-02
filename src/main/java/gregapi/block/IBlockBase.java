@@ -33,6 +33,7 @@ public interface IBlockBase extends IBlock {
 	public boolean useGravity(byte aMeta);
 	public boolean doesWalkSpeed(byte aMeta);
 	public boolean doesPistonPush(byte aMeta);
+	public boolean canSilkHarvest(byte aMeta);
 	public boolean canCreatureSpawn(byte aMeta);
 	public boolean isSealable(byte aMeta, byte aSide);
 	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H);

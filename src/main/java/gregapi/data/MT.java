@@ -1712,6 +1712,7 @@ public class MT {
 			Zircon                  .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);
 			OREMATS.Cassiterite     .setOreMultiplier( 2);
+			OREMATS.Bastnasite      .setOreMultiplier( 3);
 			NetherQuartz            .setOreMultiplier( 2);
 			CertusQuartz            .setOreMultiplier( 2);
 			ChargedCertusQuartz     .setOreMultiplier( 2);

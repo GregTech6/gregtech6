@@ -231,6 +231,14 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Endium                 , ST.make(MD.GaEn, "endiumIngot", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Endium                 , ST.make(MD.GaEn, "endiumIngot", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Endium                 , ST.make(MD.GaEn, "endiumBlock", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Cinnabar       , ST.make(MD.TC, "blockCustomOre", 1, 0));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.InfusedAir             , ST.make(MD.TC, "blockCustomOre", 1, 1));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.InfusedFire            , ST.make(MD.TC, "blockCustomOre", 1, 2));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.InfusedWater           , ST.make(MD.TC, "blockCustomOre", 1, 3));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.InfusedEarth           , ST.make(MD.TC, "blockCustomOre", 1, 4));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.InfusedOrder           , ST.make(MD.TC, "blockCustomOre", 1, 5));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.InfusedEntropy         , ST.make(MD.TC, "blockCustomOre", 1, 6));
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Amber                  , ST.make(MD.TC, "blockCustomOre", 1, 7));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedAir             , ST.make(MD.TC, "ItemShard", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedFire            , ST.make(MD.TC, "ItemShard", 1, 1));
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedWater           , ST.make(MD.TC, "ItemShard", 1, 2));

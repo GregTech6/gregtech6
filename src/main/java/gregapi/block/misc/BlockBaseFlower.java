@@ -83,6 +83,8 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public float getExplosionResistance(Entity aEntity) {return 0;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_sword;}
 	@Override public int getHarvestLevel(int aMeta) {return 0;}
+	@Override public boolean canSilkHarvest() {return canSilkHarvest((byte)0);}
+	@Override public boolean canSilkHarvest(World aWorld, EntityPlayer aPlayer, int aX, int aY, int aZ, int aMeta) {return canSilkHarvest(UT.Code.bind4(aMeta));}
 	@Override public boolean isToolEffective(String aType, int aMeta) {return T;}
 	@Override public boolean canBeReplacedByLeaves(IBlockAccess aWorld, int aX, int aY, int aZ) {return T;}
 	@Override public boolean isNormalCube(IBlockAccess aWorld, int aX, int aY, int aZ)  {return F;}
@@ -107,6 +109,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public boolean useGravity(byte aMeta) {return F;}
 	@Override public boolean doesWalkSpeed(byte aMeta) {return F;}
 	@Override public boolean doesPistonPush(byte aMeta) {return F;}
+	@Override public boolean canSilkHarvest(byte aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
 	@Override public int getFlammability(byte aMeta) {return 0;}

@@ -39,12 +39,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] The 36 Trees from Harvestcraft to the Wood Dictionary. Yes I know they mostly use Vanilla Leaves and Logs. Maple and Cinnamon will have their GT6 Counterpart of Beams and Planks assigned.
 [ADDED] Harvestcraft Crops to the List of things that can randomly spawn in the Farming Room in GT6 Dungeons.
 [ADDED] Wooden Buckets for Soy Milk and Glue.
+[ADDED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists.
+[ADDED] Amethyst Mortar, because there is Situations where Amethysts/Ender-Amethysts are actually more common than Diamonds and Sapphires.
 [ADDED]
 Way better Ore generation for Twilight Forest, and also allowing actual Vanilla Ores there.
 In case the Ores look familiar to you, I grabbed and sometimes modified some Textures from previous GT Versions for this.
 The 16 Ores that got added are what I think is the minimum viable amount of Ore Types that a GT6 World requires, if we account for the Byproducts.
 I also added the 8 Rock-Layer-Ores in Blob form to there.
-Some Ores only generate above Y=40, meaning you have to find a Hollow Hill or similar for them, and a few are also Biome dependent in order for them to not be spammed everywhere.
+Some Ores only generate above Y=40, meaning you have to find a Hollow Hill or the Troll Caves for them, and some are also Biome dependent in order for them to not be spammed everywhere.
+Thaumcraft and Ars Magica will have their Ores generate in the Enchanted Forest Biome when installed, even if their own Worldgen is disabled.
 And those particular Ores are also not TileEntity based so the Ore Magnet should work on those.
 This also means that the GT5 Style Ore Generation is now completely gone from Twilight Forest.
 

@@ -17,28 +17,34 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.blocks;
+package gregtech.blocks.stone;
 
 import static gregapi.data.CS.*;
 
+import java.util.ArrayList;
+
 import gregapi.block.BlockBaseMeta;
+import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.old.Textures;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class BlockVanillaOresA extends BlockBaseMeta {
 	public static byte[] HARVEST_LEVELS = {0, 0, 2, 1, 2, 1, 1, 1, 2, 1, 2, 2, 2, 0, 3, 0};
 	public static int[] BURN_LEVELS = {100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0};
 	public static float[] HARDNESS_LEVELS = {0.5F, 0.5F, 1.5F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.5F, 1.0F, 1.5F, 1.5F, 1.5F, 0.5F, 2.0F, 0.5F};
+	public static OreDictMaterial[] ORE_MATERIALS = {MT.S, MT.Apatite, MT.Ruby, MT.Amber, MT.Amethyst, MT.OREMATS.Galena, MT.OREMATS.Tetrahedrite, MT.OREMATS.Cassiterite, MT.OREMATS.Cooperite, MT.OREMATS.Pentlandite, MT.OREMATS.Scheelite, MT.TiO2, MT.OREMATS.Bastnasite, MT.Graphite, MT.OREMATS.Pitchblende, MT.OREMATS.Borax};
 	
-	// Vanilla Style GT6 Stone Ores, mainly for Twilight Forest.
+	// Vanilla Style GT6 Stone Ores, mainly used for Twilight Forest, so the Ore Magnet doesn't draw too many breaking Ores.
 	public BlockVanillaOresA(String aUnlocalised) {
 		super(null, aUnlocalised, Material.rock, soundTypeStone, 16, Textures.BlockIcons.VANILLA_ORES_A);
 		LH.add(getUnlocalizedName()+  ".0.name", "Sulfur Ore");
@@ -58,27 +64,30 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 		LH.add(getUnlocalizedName()+ ".14.name", "Pitchblende Ore");
 		LH.add(getUnlocalizedName()+ ".15.name", "Borax Ore");
 		
-		OM.reg(ST.make(this, 1, 0), OP.oreVanillastone.dat(MT.S));
-		OM.reg(ST.make(this, 1, 1), OP.oreVanillastone.dat(MT.Apatite));
-		OM.reg(ST.make(this, 1, 2), OP.oreVanillastone.dat(MT.Ruby));
-		OM.reg(ST.make(this, 1, 3), OP.oreVanillastone.dat(MT.Amber));
-		OM.reg(ST.make(this, 1, 4), OP.oreVanillastone.dat(MT.Amethyst));
-		OM.reg(ST.make(this, 1, 5), OP.oreVanillastone.dat(MT.OREMATS.Galena));
-		OM.reg(ST.make(this, 1, 6), OP.oreVanillastone.dat(MT.OREMATS.Tetrahedrite));
-		OM.reg(ST.make(this, 1, 7), OP.oreVanillastone.dat(MT.OREMATS.Cassiterite));
-		OM.reg(ST.make(this, 1, 8), OP.oreVanillastone.dat(MT.OREMATS.Cooperite));
-		OM.reg(ST.make(this, 1, 9), OP.oreVanillastone.dat(MT.OREMATS.Pentlandite));
-		OM.reg(ST.make(this, 1,10), OP.oreVanillastone.dat(MT.OREMATS.Scheelite));
-		OM.reg(ST.make(this, 1,11), OP.oreVanillastone.dat(MT.TiO2));
-		OM.reg(ST.make(this, 1,12), OP.oreVanillastone.dat(MT.OREMATS.Bastnasite));
-		OM.reg(ST.make(this, 1,13), OP.oreVanillastone.dat(MT.Graphite));
-		OM.reg(ST.make(this, 1,14), OP.oreVanillastone.dat(MT.OREMATS.Pitchblende));
-		OM.reg(ST.make(this, 1,15), OP.oreVanillastone.dat(MT.OREMATS.Borax));
+		for (int i = 0; i < ORE_MATERIALS.length; i++) OM.reg(ST.make(this, 1, i), OP.oreVanillastone.dat(ORE_MATERIALS[i]));
+	}
+	
+	@Override
+	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
+		ArrayListNoNulls<ItemStack> rDrops = new ArrayListNoNulls<>();
+		switch(aMeta) {
+		case  1: case  2: case  3: case  4:
+			rDrops.add(OP.gem .mat(ORE_MATERIALS[aMeta], ORE_MATERIALS[aMeta].mOreMultiplier + (aFortune>0?(RNGSUS.nextInt((1+aFortune)*ORE_MATERIALS[aMeta].mOreMultiplier)):0)));
+			break;
+		case  0: case 12: case 13: case 15:
+			rDrops.add(OP.dust.mat(ORE_MATERIALS[aMeta], ORE_MATERIALS[aMeta].mOreMultiplier + (aFortune>0?(RNGSUS.nextInt((1+aFortune)*ORE_MATERIALS[aMeta].mOreMultiplier)):0)));
+			break;
+		default:
+			rDrops.add(ST.make(this, 1, aMeta));
+			break;
+		}
+		return rDrops;
 	}
 	
 	@Override public boolean useGravity(byte aMeta) {return F;}
 	@Override public boolean doesWalkSpeed(byte aMeta) {return F;}
 	@Override public boolean doesPistonPush(byte aMeta) {return T;}
+	@Override public boolean canSilkHarvest(byte aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(byte aMeta) {return T;}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}

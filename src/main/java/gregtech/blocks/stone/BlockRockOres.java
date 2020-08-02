@@ -17,7 +17,7 @@
  * along with GregTech. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gregtech.blocks;
+package gregtech.blocks.stone;
 
 import static gregapi.data.CS.*;
 
