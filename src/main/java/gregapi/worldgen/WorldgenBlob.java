@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.ConfigsGT;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -55,13 +54,18 @@ public abstract class WorldgenBlob extends WorldgenObject {
 		mSize           = ConfigsGT.WORLDGEN.get(mCategory, "Size"          , aSize);
 		mMinY           = ConfigsGT.WORLDGEN.get(mCategory, "MinHeight"     , aMinY);
 		mMaxY           = ConfigsGT.WORLDGEN.get(mCategory, "MaxHeight"     , aMaxY);
-		if (aBiomeList == null) mBiomeList = new ArrayListNoNulls<>(); else mBiomeList = aBiomeList;
+		mBiomeList = aBiomeList;
 		mAllowToGenerateinVoid = aAllowToGenerateinVoid;
 	}
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if ((mBiomeList.isEmpty() || mBiomeList.contains(aBiomes[7][7].toString())) && (mProbability <= 1 || aRandom.nextInt(mProbability) == 0)) {
+		if (mBiomeList != null) {
+			boolean temp = T;
+			for (String tName : aBiomeNames) if (mBiomeList.contains(tName)) {temp = F; break;}
+			if (temp) return F;
+		}
+		if (mProbability <= 1 || aRandom.nextInt(mProbability) == 0) {
 			for (int i = 0; i < mAmount; i++) {
 				int tX = aMinX + aRandom.nextInt(16), tY = mMinY + aRandom.nextInt(mMaxY - mMinY), tZ = aMinZ + aRandom.nextInt(16);
 				if (mAllowToGenerateinVoid || !aWorld.getBlock(tX, tY, tZ).isAir(aWorld, tX, tY, tZ)) {

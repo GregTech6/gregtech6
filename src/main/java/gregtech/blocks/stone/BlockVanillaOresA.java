@@ -71,10 +71,10 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 	public ArrayList<ItemStack> getDrops(World aWorld, int aX, int aY, int aZ, int aMeta, int aFortune) {
 		ArrayListNoNulls<ItemStack> rDrops = new ArrayListNoNulls<>();
 		switch(aMeta) {
-		case  1: case  2: case  3: case  4:
+		case  0: case  1: case  2: case  3: case  4:
 			rDrops.add(OP.gem .mat(ORE_MATERIALS[aMeta], ORE_MATERIALS[aMeta].mOreMultiplier + (aFortune>0?(RNGSUS.nextInt((1+aFortune)*ORE_MATERIALS[aMeta].mOreMultiplier)):0)));
 			break;
-		case  0: case 12: case 13: case 15:
+		case 13: case 15:
 			rDrops.add(OP.dust.mat(ORE_MATERIALS[aMeta], ORE_MATERIALS[aMeta].mOreMultiplier + (aFortune>0?(RNGSUS.nextInt((1+aFortune)*ORE_MATERIALS[aMeta].mOreMultiplier)):0)));
 			break;
 		default:

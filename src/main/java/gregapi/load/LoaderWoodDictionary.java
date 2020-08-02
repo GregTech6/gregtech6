@@ -22,7 +22,6 @@ package gregapi.load;
 import static gregapi.data.CS.*;
 
 import gregapi.block.metatype.BlockMetaType;
-import gregapi.code.ItemStackContainer;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -185,12 +184,12 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 2), new WoodEntry(IL.TF_Log_Mangrove              .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 2)), ST.make(MD.TF, "tile.TFLeaves", 1, 2));
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 3), new WoodEntry(IL.TF_Log_Darkwood              .get(1), new BeamEntry(ST.make(BlocksGT.Beam3, 1, 3), new PlankEntry(ST.make(MD.TF, "tile.TFTowerStone", 1, 0), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), MT.WOODS.Towerwood, 68))), ST.make(MD.TF, "tile.DarkLeaves", 1, 0));
 			new BeamEntry(ST.make(BlocksGT.Beam3FireProof, 1, 3), WoodDictionary.PLANKS.get(MD.TF, "tile.TFTowerStone", 0));
-			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 4), WoodDictionary.WOODS.get(new ItemStackContainer(IL.TF_Log_Oak.get(1))), WoodDictionary.LEAVES.get(MD.TF, "tile.TFLeaves", 0));
+			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 4), WoodDictionary.WOODS.get(IL.TF_Log_Oak), WoodDictionary.LEAVES.get(MD.TF, "tile.TFLeaves", 0));
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 5), new WoodEntry(IL.TF_Log_Time                  .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 1)), ST.make(MD.TF, "tile.TFMagicLeaves", 1, 0));
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 6), new WoodEntry(IL.TF_Log_Trans                 .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam2, 0)), ST.make(MD.TF, "tile.TFMagicLeaves", 1, 1));
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 7), new WoodEntry(IL.TF_Log_Mine                  .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 2)), ST.make(MD.TF, "tile.TFMagicLeaves", 1, 2));
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 8), new WoodEntry(IL.TF_Log_Sorting               .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam2, 1)), ST.make(MD.TF, "tile.TFMagicLeaves", 1, 3));
-			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 9), WoodDictionary.WOODS.get(Blocks.log, 0), ST.make(MD.TF, "tile.TFLeaves", 1, 3));
+			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 9), WoodDictionary.WOODS.get(IL.TF_Log_Oak), ST.make(MD.TF, "tile.TFLeaves", 1, 3));
 			new PlankEntry(ST.make(MD.TF, "tile.TFTowerStone", 1, 1), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), 69);
 			new PlankEntry(ST.make(MD.TF, "tile.TFTowerStone", 1, 2), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), 70);
 			new PlankEntry(ST.make(MD.TF, "tile.TFTowerStone", 1, 3), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), 71);
@@ -438,7 +437,7 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(IL.CANDY_Sapling_Chocolate.get(1), new WoodEntry(IL.CANDY_Log      .get(1), new PlankEntry(IL.CANDY_Plank      .get(1), ST.make(MD.CANDY, "CandyHalfSlab" , 1, W), ST.make(MD.CANDY, "X1"  , 1, W), MT.Marshmallow, 182), 1, 0, OP.dust.mat(MT.Marshmallow, 1), MT.Marshmallow), IL.CANDY_Leaves_Chocolate.get(1));
 			new SaplingEntry(IL.CANDY_Sapling_Caramel  .get(1), new WoodEntry(IL.CANDY_Log_Dark .get(1), new PlankEntry(IL.CANDY_Plank_Dark .get(1), ST.make(MD.CANDY, "CandyHalfSlab2", 1, W), ST.make(MD.CANDY, "XX1" , 1, W), MT.Marshmallow, 183), 1, 0, OP.dust.mat(MT.Marshmallow, 1), MT.Marshmallow), IL.CANDY_Leaves_Caramel  .get(1));
 			new SaplingEntry(IL.CANDY_Sapling_White    .get(1), new WoodEntry(IL.CANDY_Log_Light.get(1), new PlankEntry(IL.CANDY_Plank_Light.get(1), ST.make(MD.CANDY, "CandyHalfSlab3", 1, W), ST.make(MD.CANDY, "XXX1", 1, W), MT.Marshmallow, 184), 1, 0, OP.dust.mat(MT.Marshmallow, 1), MT.Marshmallow), IL.CANDY_Leaves_White    .get(1));
-			new SaplingEntry(IL.CANDY_Sapling_Cherry   .get(1), WoodDictionary.WOODS.get(new ItemStackContainer(IL.CANDY_Log.get(1))), IL.CANDY_Leaves_Cherry   .get(1));
+			new SaplingEntry(IL.CANDY_Sapling_Cherry   .get(1), WoodDictionary.WOODS.get(IL.CANDY_Log), IL.CANDY_Leaves_Cherry   .get(1));
 			
 			CR.shaped(IL.CANDY_Plank      .get(1), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.CANDY, "CandyHalfSlab" ));
 			CR.shaped(IL.CANDY_Plank_Dark .get(1), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.CANDY, "CandyHalfSlab2"));
