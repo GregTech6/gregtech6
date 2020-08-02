@@ -229,6 +229,15 @@ public class GT_Client extends GT_Proxy {
 							}
 						} catch(Throwable e) {/**/}
 					}
+					if (MD.TC.mLoaded) {
+						try {
+							if (Class.forName("com.chocohead.patcher.ThaumicFixer") != null) {
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! Chocoheads ThaumicFixer needs to be uninstalled, as it has been replaced!"));
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "Not uninstalling it can lead to crashes when viewing Aspects."));
+								aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "The Lag has been fixed with a better Version of the ASM Code, that doesn't obliterate the Thaumcraft API for no reason."));
+							}
+						} catch(Throwable e) {/**/}
+					}
 					if (MD.COG.mLoaded && !MD.PFAA.mLoaded && ConfigsGT.CLIENT.get(ConfigCategories.general, "warnings_customoregen", T)) {
 						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.RED + "Warning! CustomOreGen will screw up all GregTech Worldgen with its Default Configs!"));
 						aEvent.player.addChatComponentMessage(new ChatComponentText(LH.Chat.ORANGE + "If you don't even use CustomOreGen, I would highly recommend you to remove it."));
