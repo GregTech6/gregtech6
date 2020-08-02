@@ -294,9 +294,12 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta);
 			}
 		}
-
+		
 		if (tData != null) {
-			if (tData.mPrefix != null) {
+			if (tData.mPrefix == null) {
+				if (IL.TF_Pick_Giant .equal(aEvent.itemStack)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Knightmetal Ingots on the Anvil");
+				if (IL.TF_Sword_Giant.equal(aEvent.itemStack)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Ironwood Ingots on the Anvil");
+			} else {
 				for (IOreDictListenerItem tListener : tData.mPrefix.mListenersItem) {
 					String tToolTip = tListener.getListenerToolTip(tData.mPrefix, tData.mMaterial.mMaterial, aEvent.itemStack);
 					if (tToolTip != null) aEvent.toolTip.add(tToolTip);
@@ -308,7 +311,6 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (tToolTip != null) aEvent.toolTip.add(tToolTip);
 				}
 			}
-
 			if (tData.hasValidMaterialData()) {
 				boolean tShowMaterialToolInfo = tData.mMaterial.mMaterial.mToolTypes > 0 && (tData.mPrefix != null || (aEvent.itemStack.getMaxStackSize() > 1 && tData.mByProducts.length == 0 && tData.mMaterial.mAmount <= U));
 				boolean tIsTool = (tData.mPrefix != null && tData.mPrefix.containsAny(TD.Prefix.TOOL_HEAD, TD.Prefix.WEAPON_ALIKE, TD.Prefix.AMMO_ALIKE, TD.Prefix.TOOL_ALIKE));
@@ -404,19 +406,19 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					StringBuilder tString = new StringBuilder(128);
 					double aWeight = tMaterial.weight();
 					long tWeight = ((long)(aWeight*1000))%1000;
-					tString.append(LH.Chat.WHITE    ).append(UT.Code.displayUnits(tMaterial.mAmount)).append(" ");
-					tString.append(LH.Chat.YELLOW   ).append(tMaterial.mMaterial.getLocal());
-					tString.append(LH.Chat.WHITE    ).append(" (");
-					tString.append(LH.Chat.CYAN     ).append("M: ");
-					tString.append(LH.Chat.WHITE    ).append(tMaterial.mMaterial.mMeltingPoint);
-					tString.append(LH.Chat.RED      ).append("K ");
-					tString.append(LH.Chat.CYAN     ).append(" B: ");
-					tString.append(LH.Chat.WHITE    ).append(tMaterial.mMaterial.mBoilingPoint);
-					tString.append(LH.Chat.RED      ).append("K ");
-					tString.append(LH.Chat.CYAN     ).append(" W: ");
-					tString.append(LH.Chat.WHITE    ).append((long)aWeight).append(".").append(tWeight<1?"000":tWeight<10?"00"+tWeight:tWeight<100?"0"+tWeight:tWeight);
-					tString.append(LH.Chat.YELLOW   ).append("kg");
-					tString.append(LH.Chat.WHITE    ).append(")");
+					tString.append(LH.Chat.WHITE ).append(UT.Code.displayUnits(tMaterial.mAmount)).append(" ");
+					tString.append(LH.Chat.YELLOW).append(tMaterial.mMaterial.getLocal());
+					tString.append(LH.Chat.WHITE ).append(" (");
+					tString.append(LH.Chat.CYAN  ).append("M: ");
+					tString.append(LH.Chat.WHITE ).append(tMaterial.mMaterial.mMeltingPoint);
+					tString.append(LH.Chat.RED   ).append("K ");
+					tString.append(LH.Chat.CYAN  ).append(" B: ");
+					tString.append(LH.Chat.WHITE ).append(tMaterial.mMaterial.mBoilingPoint);
+					tString.append(LH.Chat.RED   ).append("K ");
+					tString.append(LH.Chat.CYAN  ).append(" W: ");
+					tString.append(LH.Chat.WHITE ).append((long)aWeight).append(".").append(tWeight<1?"000":tWeight<10?"00"+tWeight:tWeight<100?"0"+tWeight:tWeight);
+					tString.append(LH.Chat.YELLOW).append("kg");
+					tString.append(LH.Chat.WHITE ).append(")");
 					aEvent.toolTip.add(tString.toString());
 				}
 			} else {
