@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -59,7 +59,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 	protected Recipe mLastRecipe = null;
 	public byte mStyle = 0;
 	
-	public static final OreDictMaterial MORTAR_MATERIALS[] = {ANY.Steel, ANY.Sapphire, ANY.Diamond};
+	public static final OreDictMaterial MORTAR_MATERIALS[] = {ANY.Steel, ANY.Sapphire, ANY.Diamond, ANY.Amethyst};
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {

@@ -38,6 +38,7 @@ public class ANY {
 	Diamond         = any("Any Diamond"         ),
 	Sapphire        = any("Any Sapphire"        ),
 	Emerald         = any("Any Emerald"         ),
+	Amethyst        = any("Any Amethyst"        ),
 	Garnet          = any("Any Garnet"          ),
 	Jasper          = any("Any Jasper"          ),
 	TigerEye        = any("Any Tiger Eye"       ),
@@ -82,6 +83,7 @@ public class ANY {
 		Diamond         .stealLooks(MT.Diamond        ).steal(MT.Diamond        ).setLocal("Diamond"            ).setAllToTheOutputOf(MT.Diamond        ).put(CRYSTAL, VALUABLE                      ).addReRegistrationToThis(MT.Diamantine);
 		Sapphire        .stealLooks(MT.BlueSapphire   ).steal(MT.Sapphire       ).setLocal("Sapphire"           ).setAllToTheOutputOf(MT.Sapphire       ).put(CRYSTAL, VALUABLE                      );
 		Emerald         .stealLooks(MT.Emerald        ).steal(MT.Emerald        ).setLocal("Emerald"            ).setAllToTheOutputOf(MT.Emerald        ).put(CRYSTAL, VALUABLE                      ).addReRegistrationToThis(MT.Emeradic);
+		Amethyst        .stealLooks(MT.Amethyst       ).steal(MT.Amethyst       ).setLocal("Amethyst"           ).setAllToTheOutputOf(MT.Amethyst       ).put(CRYSTAL, VALUABLE                      ).addReRegistrationToThis(MT.Amethyst, MT.EnderAmethyst);
 		Garnet          .stealLooks(MT.Spessartine    ).steal(MT.Spessartine    ).setLocal("Garnet"                                                     ).put(CRYSTAL, VALUABLE                      );
 		Jasper          .stealLooks(MT.Jasper         ).steal(MT.Jasper         ).setLocal("Jasper"                                                     ).put(CRYSTAL, VALUABLE                      );
 		TigerEye        .stealLooks(MT.TigerEyeYellow ).steal(MT.TigerEyeYellow ).setLocal("Tiger Eye"                                                  ).put(CRYSTAL, VALUABLE                      );

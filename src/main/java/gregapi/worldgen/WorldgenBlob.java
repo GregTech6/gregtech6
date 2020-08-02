@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -89,7 +89,7 @@ public abstract class WorldgenBlob extends WorldgenObject {
 						bMaxZ = Math.max(bMaxZ, UT.Code.roundDown(bZ + b));
 					}
 					
-					boolean[][][] tCheck = new boolean[bMaxX-bMinX+1][bMaxY-bMinY+1][bMaxZ-bMinZ+1];
+					boolean[][][] tCheck = new boolean[Math.max(4, bMaxX-bMinX+1)][Math.max(4, bMaxY-bMinY+1)][Math.max(4, bMaxZ-bMinZ+1)];
 					
 					for (int j = 0; j <= mSize; ++j) {
 						double bX = aX1 + (aX2 - aX1) * j / mSize, bY = aY1 + (aY2 - aY1) * j / mSize, bZ = aZ1 + (aZ2 - aZ1) * j / mSize, b = ((MathHelper.sin(j * (float)Math.PI / mSize) + 1) * tRandoms[j] + 1) / 2;
