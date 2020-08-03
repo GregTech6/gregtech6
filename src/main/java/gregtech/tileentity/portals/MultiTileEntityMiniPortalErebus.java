@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,9 +41,12 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMiniPortalErebus extends MultiTileEntityMiniPortal {
-	public static List<MultiTileEntityMiniPortalErebus>
+	public static List<MultiTileEntityMiniPortal>
 	sListErebusSide = new ArrayListNoNulls<>(),
 	sListWorldSide  = new ArrayListNoNulls<>();
+	
+	@Override public List<MultiTileEntityMiniPortal> getPortalListA() {return sListWorldSide;}
+	@Override public List<MultiTileEntityMiniPortal> getPortalListB() {return sListErebusSide;}
 	
 	static {
 		LH.add("gt.tileentity.portal.erebus.tooltip.1", "Only works between the Erebus and the Overworld!");
@@ -64,7 +67,7 @@ public class MultiTileEntityMiniPortalErebus extends MultiTileEntityMiniPortal {
 		if (MD.ERE.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalErebus tTarget : sListErebusSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListErebusSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -76,7 +79,7 @@ public class MultiTileEntityMiniPortalErebus extends MultiTileEntityMiniPortal {
 				}
 			} else if (WD.dimERE(worldObj)) {
 				long tShortestDistance = 128*128;
-				for (MultiTileEntityMiniPortalErebus tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -95,22 +98,16 @@ public class MultiTileEntityMiniPortalErebus extends MultiTileEntityMiniPortal {
 		if (MD.ERE.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-				for (MultiTileEntityMiniPortalErebus tPortal : sListErebusSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListErebusSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else if (WD.dimERE(worldObj)) {
 				if (!sListErebusSide.contains(this)) sListErebusSide.add(this);
-				for (MultiTileEntityMiniPortalErebus tPortal : sListWorldSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListWorldSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else {
 				setPortalInactive();
 			}
 		}
-	}
-	
-	@Override
-	public void removeThisPortalFromLists() {
-		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListErebusSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		if (sListErebusSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 	}
 	
 	@Override

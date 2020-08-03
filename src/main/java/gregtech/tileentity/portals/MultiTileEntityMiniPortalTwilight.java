@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -42,9 +42,12 @@ import net.minecraft.item.ItemStack;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal {
-	public static List<MultiTileEntityMiniPortalTwilight>
+	public static List<MultiTileEntityMiniPortal>
 	sListTwilightSide = new ArrayListNoNulls<>(),
 	sListWorldSide  = new ArrayListNoNulls<>();
+	
+	@Override public List<MultiTileEntityMiniPortal> getPortalListA() {return sListWorldSide;}
+	@Override public List<MultiTileEntityMiniPortal> getPortalListB() {return sListTwilightSide;}
 	
 	static {
 		LH.add("gt.tileentity.portal.twilight.tooltip.1", "Only works between the Twilight Forest and the Overworld!");
@@ -65,7 +68,7 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 		if (MD.TF.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 512*512;
-				for (MultiTileEntityMiniPortalTwilight tTarget : sListTwilightSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListTwilightSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = xCoord-tTarget.xCoord, tZDifference = zCoord-tTarget.zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -77,7 +80,7 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 				}
 			} else if (WD.dimTF(worldObj)) {
 				long tShortestDistance = 512*512;
-				for (MultiTileEntityMiniPortalTwilight tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
+				for (MultiTileEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isDead()) {
 					long tXDifference = tTarget.xCoord-xCoord, tZDifference = tTarget.zCoord-zCoord;
 					long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
 					if (tTempDist < tShortestDistance) {
@@ -96,22 +99,16 @@ public class MultiTileEntityMiniPortalTwilight extends MultiTileEntityMiniPortal
 		if (MD.TF.mLoaded && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-				for (MultiTileEntityMiniPortalTwilight tPortal : sListTwilightSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListTwilightSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else if (WD.dimTF(worldObj)) {
 				if (!sListTwilightSide.contains(this)) sListTwilightSide.add(this);
-				for (MultiTileEntityMiniPortalTwilight tPortal : sListWorldSide) tPortal.findTargetPortal();
+				for (MultiTileEntityMiniPortal tPortal : sListWorldSide) tPortal.findTargetPortal();
 				findTargetPortal();
 			} else {
 				setPortalInactive();
 			}
 		}
-	}
-	
-	@Override
-	public void removeThisPortalFromLists() {
-		if (sListWorldSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListTwilightSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
-		if (sListTwilightSide.remove(this)) for (MultiTileEntityMiniPortal tPortal : sListWorldSide) if (tPortal.mTarget == this) tPortal.findTargetPortal();
 	}
 	
 	@Override

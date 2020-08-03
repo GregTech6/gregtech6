@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Random;
 
 import gregapi.code.ArrayListNoNulls;
-import gregapi.code.HashSetNoNulls;
+import gregapi.code.BiomeNameSet;
 import gregapi.util.WD;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.AxisAlignedBB;
@@ -60,7 +60,7 @@ public class GT6WorldGenerator {
 				Chunk tChunk = mWorld.getChunkFromBlockCoords(mMinX+7, mMinZ+7);
 				if (tChunk == null) return;
 				BiomeGenBase[][] tBiomes = new BiomeGenBase[16][16];
-				HashSetNoNulls<String> tBiomeNames = new HashSetNoNulls<>();
+				BiomeNameSet tBiomeNames = new BiomeNameSet();
 				for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
 					tBiomes[i][j] = tChunk.getBiomeGenForWorldCoords(i, j, mWorld.provider.worldChunkMgr);
 					if (tBiomes[i][j] == null) {
