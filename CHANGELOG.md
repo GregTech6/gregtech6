@@ -42,7 +42,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists.
 [ADDED] Amethyst Mortar, because there is Situations where Amethysts/Ender-Amethysts are actually more common than Diamonds and Sapphires.
 [ADDED]
-Way better Ore generation for Twilight Forest, and also allowing actual Vanilla Ores there.
+Way better Ore Generation for Twilight Forest, and also allowing actual Vanilla Ores there.
 In case the Ores look familiar to you, I grabbed and sometimes modified some Textures from previous GT Versions for this.
 The 16 Ores that got added are what I think is the minimum viable amount of Ore Types that a GT6 World requires, if we account for the Byproducts.
 I also added the 8 Rock-Layer-Ores in Blob form to there.
@@ -50,6 +50,7 @@ Some Ores only generate above Y=40, meaning you have to find a Hollow Hill, Hydr
 Thaumcraft and Ars Magica will have their Ores generate in the Enchanted Forest Biome when installed, even if their own Worldgen is disabled.
 And those particular Ores are also not TileEntity based so the Ore Magnet should work on those.
 This also means that the GT5 Style Ore Generation is now completely gone from Twilight Forest.
+But this does not apply to the Bedrock Ores, those still exist in the Twilight Forest. I even fixed that the Indicator Flowers and Rocks were not generating all that often, due to the giant Leaf Canopy blocking the Sky-Ray-Trace.
 
 
 6.14.00:

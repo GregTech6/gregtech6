@@ -944,10 +944,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					((MultiItemTool)aStack.getItem()).onHarvestBlockEvent(aEvent.drops, aStack, aEvent.harvester, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.blockMetadata, aEvent.fortuneLevel, aEvent.isSilkTouching, aEvent);
 				}
 				if (tFireAspect) {
-					if (aEvent.world.isRemote) for (int i = 0; i < 4; i++) {
-						double tX = RNGSUS.nextGaussian()/50, tY = RNGSUS.nextGaussian()/50, tZ = RNGSUS.nextGaussian()/50;
-						aEvent.world.spawnParticle("flame", aEvent.x+0.5+tX*20, aEvent.y+0.5+tY*20, aEvent.z+0.5+tZ*20,-tX,-tY,-tZ);
-					}
+				//  if (aEvent.world.isRemote) for (int i = 0; i < 4; i++) {
+				//      double tX = RNGSUS.nextGaussian()/50, tY = RNGSUS.nextGaussian()/50, tZ = RNGSUS.nextGaussian()/50;
+				//      aEvent.world.spawnParticle("flame", aEvent.x+0.5+tX*20, aEvent.y+0.5+tY*20, aEvent.z+0.5+tZ*20,-tX,-tY,-tZ);
+				//  }
 					for (ItemStack tDrop : aEvent.drops) {
 						ItemStack tSmeltingOutput = RM.get_smelting(tDrop, F, null);
 						if (tSmeltingOutput != null) {

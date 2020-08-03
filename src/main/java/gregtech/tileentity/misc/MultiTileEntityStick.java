@@ -91,11 +91,16 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	}
 	
 	public ItemStack getDefaultStick(int aAmount) {
-		if (isClientSide()) return IL.Stick.get(aAmount);
-		if (WD.dimAETHER(worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Skyroot       : MT.WOODS.Dead   , aAmount);
-		if (WD.dimBTL   (worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Weedwood      : MT.WOODS.Rotten , aAmount);
-		if (WD.dimERE   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.WOODS.Dead    : MT.PetrifiedWood, aAmount);
-		if (WD.dimALF   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.Livingwood    : MT.Dreamwood    , aAmount);
+		// Tell WAILA and the NEI Overlay that this is a normal Stick.
+		if (worldObj == null || isClientSide()) return IL.Stick.get(aAmount);
+		// Dimension specific Drops.
+		if (WD.dimAETHER(worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Skyroot       : MT.WOODS.Dead    , aAmount);
+		if (WD.dimERE   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.WOODS.Dead    : MT.PetrifiedWood , aAmount);
+		if (WD.dimBTL   (worldObj)) return OP.stick.mat(rng(3) > 0 ? MT.Weedwood      : MT.WOODS.Rotten  , aAmount);
+		if (WD.dimATUM  (worldObj)) return OP.stick.mat(rng(4) > 0 ? MT.WOODS.Coconut : MT.WOODS.Dead    , aAmount);
+		if (WD.dimTROPIC(worldObj)) return OP.stick.mat(rng(2) > 0 ? MT.WOODS.Coconut : MT.WOODS.Mahogany, aAmount);
+		if (WD.dimALF   (worldObj)) return OP.stick.mat(rng(8) > 0 ? MT.Livingwood    : MT.Dreamwood     , aAmount);
+		if (WD.dimTF    (worldObj)) return rng(16) > 0 ? IL.Stick.get(aAmount) : IL.TF_LiveRoot.get(aAmount);
 		String tBiome = worldObj.getBiomeGenForCoords(xCoord, zCoord).biomeName.toLowerCase();
 		// The order of checks matters because things like Ice Deserts are a thing.
 		if (tBiome.contains("rainforest" )) return getStick(NI, aAmount);

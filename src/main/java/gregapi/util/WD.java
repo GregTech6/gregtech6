@@ -27,7 +27,6 @@ import java.util.Random;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import gregapi.GT_API;
-import gregapi.block.BlockBase;
 import gregapi.block.IBlockDebugable;
 import gregapi.block.IBlockExtendedMetaData;
 import gregapi.block.IBlockPlacable;
@@ -357,7 +356,7 @@ public class WD {
 	public static int waterLevel(int aDefaultOverworld) {
 		return MD.TFC.mLoaded || MD.TFCP.mLoaded? 143 : aDefaultOverworld;
 	}
-	/** @return the Height of the Water Level that should probably be in this World. */
+	/** @return the Height of the Water Level that should probably be in the Overworld. */
 	public static int waterLevel() {
 		return waterLevel(62);
 	}
@@ -467,10 +466,10 @@ public class WD {
 	}
 	
 	public static boolean leafdecay(World aWorld, int aX, int aY, int aZ, Block aBlock) {
-		if (aBlock == null || (!(aBlock instanceof BlockBase) && aBlock.canSustainLeaves(aWorld, aX, aY, aZ))) {
+		if (aBlock == null || aBlock.canSustainLeaves(aWorld, aX, aY, aZ)) {
 			for (int i = -7; i <= 7; ++i) for (int j = -7; j <= 7; ++j) for (int k = -7; k <= 7; ++k) {
 				Block tBlock = aWorld.getBlock(aX+i, aY+j, aZ+k);
-				if (!(tBlock instanceof BlockBase) && tBlock.isLeaves(aWorld, aX+i, aY+j, aZ+k)) {
+				if (tBlock.isLeaves(aWorld, aX+i, aY+j, aZ+k)) {
 					aWorld.scheduleBlockUpdate(aX+i, aY+j, aZ+k, tBlock, 1+RNGSUS.nextInt(100));
 				}
 			}

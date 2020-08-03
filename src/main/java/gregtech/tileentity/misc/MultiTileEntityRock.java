@@ -100,7 +100,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 				if (worldObj.provider.dimensionId == -1)         {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rack"); return 1;}
 				if (worldObj.provider.dimensionId ==  0)         {aChatReturn.add(LH.Chat.GRAY + "This is definitely a Rock"); return 1;}
 				if (worldObj.provider.dimensionId == +1)         {aChatReturn.add(LH.Chat.GRAY + "There is definitely an End"); return 1;}
-				if (WD.dimAETHER(worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Holy $#!T, it's a Rock!"); return 1;}
+				if (WD.dimAETHER(worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Holy $#!T, it's a Rock.."); return 1;}
 				if (WD.dimALF   (worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Wait that Rock is alive?!"); return 1;}
 				if (WD.dimTROPIC(worldObj))                      {aChatReturn.add(LH.Chat.GRAY + "Seems to be a Chunk o'Head"); return 1;}
 				if (BIOMES_MOON.contains(getBiome().biomeName))  {aChatReturn.add(LH.Chat.GRAY + "This is definitely not made of Cheese"); return 1;}
@@ -158,18 +158,21 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	}
 	
 	public ItemStack getDefaultRock(int aAmount) {
-		if (worldObj == null) return OP.rockGt.mat(MT.Stone, aAmount);
+		// Tell WAILA and the NEI Overlay that this is a normal Rock.
+		if (worldObj == null || isClientSide()) return OP.rockGt.mat(MT.Stone, aAmount);
+		// Dimension and Biome specific Drops.
 		if (worldObj.provider.dimensionId == -1) return OP.rockGt.mat(MT.Netherrack, aAmount);
 		if (worldObj.provider.dimensionId ==  0) return OP.rockGt.mat(MT.Stone, aAmount);
 		if (worldObj.provider.dimensionId == +1) return OP.rockGt.mat(MT.Endstone, aAmount);
 		if (WD.dimAETHER(worldObj)) return OP.rockGt.mat(MT.Holystone, aAmount);
-		if (WD.dimERE(worldObj)) return OP.rockGt.mat(MT.Umber, aAmount);
-		if (WD.dimBTL(worldObj)) return OP.rockGt.mat(MT.Betweenstone, aAmount);
-		if (WD.dimATUM(worldObj)) return OP.rockGt.mat(MT.Limestone, aAmount);
-		if (WD.dimALF(worldObj)) return OP.rockGt.mat(MT.Livingrock, aAmount);
+		if (WD.dimERE   (worldObj)) return OP.rockGt.mat(MT.Umber, aAmount);
+		if (WD.dimBTL   (worldObj)) return OP.rockGt.mat(MT.Betweenstone, aAmount);
+		if (WD.dimATUM  (worldObj)) return OP.rockGt.mat(MT.Limestone, aAmount);
 		if (WD.dimTROPIC(worldObj)) return OP.rockGt.mat(MT.Basalt, aAmount);
-		if (BIOMES_MOON.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MoonRock, aAmount);
-		if (BIOMES_MARS.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MarsRock, aAmount);
+		if (WD.dimALF   (worldObj)) return OP.rockGt.mat(MT.Livingrock, aAmount);
+		if (WD.dimTF    (worldObj)) return OP.rockGt.mat(MT.Stone, aAmount);
+		if (BIOMES_MOON .contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MoonRock, aAmount);
+		if (BIOMES_MARS .contains(getBiome().biomeName)) return OP.rockGt.mat(MT.MarsRock, aAmount);
 		if (BIOMES_SPACE.contains(getBiome().biomeName)) return OP.rockGt.mat(MT.SpaceRock, aAmount);
 		return OP.rockGt.mat(MT.Stone, aAmount);
 	}

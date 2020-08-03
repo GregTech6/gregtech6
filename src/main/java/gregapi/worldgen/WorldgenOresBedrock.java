@@ -139,18 +139,20 @@ public class WorldgenOresBedrock extends WorldgenObject {
 		
 		if (WD.bedrock(aWorld, aMinX+8, 0, aMinZ+8)) {
 			CAN_GENERATE_BEDROCK_ORE = F;
-			int tHeight = WD.waterLevel(aWorld);
 			if ((mIndicatorRocks || mIndicatorFlowers) && (!(GENERATE_STREETS && aWorld.provider.dimensionId == 0) || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) {
 				ItemStack tRock = OP.rockGt.mat(mMaterial == ANY.Hexorium ? UT.Code.select(MT.HexoriumBlack, ANY.Hexorium.mToThis.toArray(ZL_MATERIAL)) : mMaterial, 1);
 				if (ST.valid(tRock)) {
 					MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 					if (tRegistry != null) {
+						int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld))
+						,   tMaxHeight = Math.min(aWorld.getHeight()-1, tMinHeight * 2 + 16);
 						for (int i = 0; i < 32; i++) {
 							int tX = aMinX+aRandom.nextInt(32)-8, tZ = aMinZ+aRandom.nextInt(32)-8;
-							for (int tY = 127; tY > tHeight; tY--) {
+							for (int tY = tMaxHeight; tY > tMinHeight; tY--) {
 								Block tContact = aWorld.getBlock(tX, tY, tZ);
 								if (tContact.getMaterial().isLiquid()) break;
 								if (!tContact.isOpaqueCube()) continue;
+								if (tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
 								if (!WD.easyRep(aWorld, tX, tY+1, tZ)) break;
 								if (mIndicatorFlowers && (tContact != Blocks.dirt || !BIOMES_WASTELANDS.contains(aBiomes[8][8].biomeName)) && (!mIndicatorRocks || aRandom.nextInt(4) > 0)) {
 									WD.set(aWorld, tX, tY+1, tZ, mFlower, mFlowerMeta, 0);
