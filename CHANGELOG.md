@@ -30,6 +30,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.14.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
+[COMPAT] Twilight Forest
+Way better Ore Generation, and allowing Vanilla Ores again in there. GT5 Style Ore Generation is now completely gone from Twilight Forest.
+In case the Ores look familiar to you, I grabbed and sometimes modified some Textures from previous GT Versions for this.
+The 16 Vanilla-ish Ores that got added are what I think is the minimum viable amount of Ore Types that a GT6 World requires, if we account for the Byproducts.
+I also added the 8 Rock-Layer-Ores in Blob form to there, getting the total count of new Ores up to 24.
+Those specific 24 Ores are also not TileEntity based so the Ore Magnet and the Miner Tree work on those just fine.
+Some Ores only generate above Y=40, meaning you have to find a Hollow Hill, Hydra Cave or the Twilight Highlands for them, and some unimportant ones are also Biome dependent in order for them to not be spammed everywhere.
+Thaumcraft and Ars Magica will have their important Ores generate in the Enchanted Forest Biome when installed, even if their own Worldgen is disabled.
+Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator Flowers and Rocks were not generating all that often, due to the giant Leaf Canopy blocking the Generation-Ray-Trace from the Sky (which now ignores specifically Logs and Leaves).
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when IC2 is installed. This should reduce the occurences of it quite a bit, at least with GT6 TileEntities adjacent to the Transformer.
 [FIXED] A very minor Localisation Bug with Prospecting on Servers.
 [FIXED] Some Wood Material Data for Erebus, Chisel and Netherite Plus.
@@ -40,17 +49,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Harvestcraft Crops to the List of things that can randomly spawn in the Farming Room in GT6 Dungeons.
 [ADDED] Wooden Buckets for Soy Milk and Glue.
 [ADDED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists.
-[ADDED] Amethyst Mortar, because there is Situations where Amethysts/Ender-Amethysts are actually more common than Diamonds and Sapphires.
-[ADDED]
-Way better Ore Generation for Twilight Forest, and also allowing actual Vanilla Ores there.
-In case the Ores look familiar to you, I grabbed and sometimes modified some Textures from previous GT Versions for this.
-The 16 Ores that got added are what I think is the minimum viable amount of Ore Types that a GT6 World requires, if we account for the Byproducts.
-I also added the 8 Rock-Layer-Ores in Blob form to there.
-Some Ores only generate above Y=40, meaning you have to find a Hollow Hill, Hydra Cave or the Twilight Highlands for them, and some unimportant ones are also Biome dependent in order for them to not be spammed everywhere.
-Thaumcraft and Ars Magica will have their Ores generate in the Enchanted Forest Biome when installed, even if their own Worldgen is disabled.
-And those particular Ores are also not TileEntity based so the Ore Magnet should work on those.
-This also means that the GT5 Style Ore Generation is now completely gone from Twilight Forest.
-But this does not apply to the Bedrock Ores, those still exist in the Twilight Forest. I even fixed that the Indicator Flowers and Rocks were not generating all that often, due to the giant Leaf Canopy blocking the Sky-Ray-Trace.
+[ADDED] Amethyst Mortar, because there is Situations where Amethysts/Ender-Amethysts are actually more common than Diamonds, Rubies and Sapphires.
 
 
 6.14.00:
