@@ -43,7 +43,7 @@ public class WorldgenTreeRainbowood extends WorldgenObject {
 	
 	@Override
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(aBiomeNames.contains("Enchanted Forest") ? 4 : 32768) == 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
+		if (aRandom.nextInt(aBiomeNames.contains("Enchanted Forest") ? 4 : 32768) != 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
 		int tX = aRandom.nextInt(16), tZ = aRandom.nextInt(16);
 		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) if (BlocksGT.plantableTrees.contains(aChunk.getBlock(tX, tY, tZ))) return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aMinX + tX, tY+1, aMinZ + tZ, (byte)7, aRandom);
 		return F;
