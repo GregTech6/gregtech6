@@ -439,12 +439,23 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats == null) return F;
 		if (TOOL_SOUNDS) UT.Sounds.play(tStats.getMiningSound(), 5, 1, aX, aY, aZ);
-		boolean rReturn = (getDigSpeed(aStack, aBlock, aWorld.getBlockMetadata(aX, aY, aZ)) > 0);
+		byte aMeta = WD.meta(aWorld, aX, aY, aZ);
+		boolean rReturn = (getDigSpeed(aStack, aBlock, aMeta) > 0);
 		if (!UT.Entities.hasInfiniteItems(aPlayer)) {
 			double tDamage = Math.max(1, tStats.getToolDamagePerBlockBreak() * aBlock.getBlockHardness(aWorld, aX, aY, aZ));
 			OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
 			if (WD.dimBTL(aWorld) && tMaterial.contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
-			if (IL.TF_Mazestone.equal(aBlock) || IL.TF_Mazehedge.equal(aBlock)) if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
+			if (IL.TF_Mazestone.equal(aBlock)) if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
+			if (IL.TF_Mazehedge.equal(aBlock)) {
+				if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.silkTouch.effectId, aStack) <= 0) {
+					if (aPlayer instanceof EntityPlayer && canCollectDropsDirectly(aStack, aBlock, aMeta)) {
+						UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, IL.TF_Mazehedge.get(1), aWorld, aX, aY, aZ);
+					} else {
+						ST.drop(aWorld, aX, aY, aZ, IL.TF_Mazehedge.get(1));
+					}
+				}
+			}
 			doDamage(aStack, (int)tDamage, aPlayer);
 		}
 		return rReturn;

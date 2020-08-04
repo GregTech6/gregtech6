@@ -190,6 +190,10 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 7), new WoodEntry(IL.TF_Log_Mine                  .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 2)), ST.make(MD.TF, "tile.TFMagicLeaves", 1, 2));
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 8), new WoodEntry(IL.TF_Log_Sorting               .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam2, 1)), ST.make(MD.TF, "tile.TFMagicLeaves", 1, 3));
 			new SaplingEntry(ST.make(MD.TF, "tile.TFSapling", 1, 9), WoodDictionary.WOODS.get(IL.TF_Log_Oak), ST.make(MD.TF, "tile.TFLeaves", 1, 3));
+			new WoodEntry(IL.TF_Core_Time   .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 1));
+			new WoodEntry(IL.TF_Core_Trans  .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam2, 0));
+			new WoodEntry(IL.TF_Core_Mine   .get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 2));
+			new WoodEntry(IL.TF_Core_Sorting.get(1), WoodDictionary.BEAMS.get(BlocksGT.Beam2, 1));
 			new PlankEntry(ST.make(MD.TF, "tile.TFTowerStone", 1, 1), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), 69);
 			new PlankEntry(ST.make(MD.TF, "tile.TFTowerStone", 1, 2), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), 70);
 			new PlankEntry(ST.make(MD.TF, "tile.TFTowerStone", 1, 3), ST.make(Blocks.wooden_slab, 1, 5), ST.make(Blocks.dark_oak_stairs, 1, 0), 71);
