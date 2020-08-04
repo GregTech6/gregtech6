@@ -247,7 +247,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		ICover tCover = CoverRegistry.get(aEvent.itemStack);
 		if (tCover != null) tCover.addToolTips(aEvent.toolTip, aEvent.itemStack, aEvent.showAdvancedItemTooltips);
 		
-		if (aBlock != NB && aBlock != null) {
+		if (aBlock != NB) {
 			if (IL.TC_Warded_Glass.equal(aEvent.itemStack, F, T)) {
 				aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, 999));
 			} else if (ItemsGT.SHOW_RESISTANCE.contains(aEvent.itemStack, T)) {
@@ -401,7 +401,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (!tIsTool && IL.TF_Mazestone.exists() && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
 						aEvent.toolTip.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
 					}
-					if (!(aBlock instanceof MultiTileEntityBlockInternal || aBlock instanceof IBlockBase)) {
+					if (aBlock == NB || !(aBlock instanceof MultiTileEntityBlockInternal || aBlock instanceof IBlockBase)) {
 						if (tData.mMaterial.mMaterial.contains(TD.Properties.FLAMMABLE)) {
 							if (tData.mMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
 								aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE_AND_EXPLOSIVE));

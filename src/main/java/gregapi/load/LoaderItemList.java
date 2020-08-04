@@ -272,6 +272,15 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.AMMO_ITEMS.add(ST.make(MD.TG, "TechgunsAmmo"                    , 1,107));
 		
 		
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.coal_ore                     , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.diamond_ore                  , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.emerald_ore                  , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.gold_ore                     , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.iron_ore                     , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.lapis_ore                    , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.lit_redstone_ore             , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.redstone_ore                 , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.quartz_ore                   , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.dirt                         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.grass                        , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.mycelium                     , 1, W));
@@ -285,6 +294,7 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.packed_ice                   , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.glowstone                    , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.redstone_lamp                , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.lit_redstone_lamp            , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.quartz_block                 , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.wool                         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(Blocks.glass                        , 1, W));
