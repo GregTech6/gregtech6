@@ -22,6 +22,7 @@ package gregtech.items.tools.early;
 import static gregapi.data.CS.*;
 
 import gregapi.data.CS.SFX;
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Shears;
@@ -80,7 +81,7 @@ public class GT_Tool_Scissors extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && (tTool.equalsIgnoreCase(TOOL_scissors) || tTool.equalsIgnoreCase(TOOL_shears))) || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.web;
+		return (tTool != null && (tTool.equalsIgnoreCase(TOOL_scissors) || tTool.equalsIgnoreCase(TOOL_shears))) || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.web || IL.TF_Mazehedge.equal(aBlock);
 	}
 	
 	@Override

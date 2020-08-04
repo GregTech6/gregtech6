@@ -286,7 +286,10 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * getPrimaryMaterial(aStack).mToolSpeed) + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + "Crafting Uses: " + LH.Chat.GREEN + UT.Code.divup(getEnergyStats(aStack) == null ? tMaxDamage - tDamage : getEnergyStored(TD.Energy.EU, aStack), tStats.getToolDamagePerContainerCraft()) + LH.Chat.GRAY);
 			if (MD.BTL.mLoaded && tMaterial.contains(TD.Properties.BETWEENLANDS)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
-			if (IL.TF_Mazestone.exists() && tMaterial.contains(TD.Properties.MAZEBREAKER) && canHarvestBlock(IL.TF_Mazestone.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
+			if ((IL.TF_Mazestone.exists() || IL.TF_Mazehedge.exists()) && tMaterial.contains(TD.Properties.MAZEBREAKER)) {
+				if (canHarvestBlock(IL.TF_Mazestone.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING));
+				if (canHarvestBlock(IL.TF_Mazehedge.block(), aStack)) aList.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING));
+			}
 			if (tStats.canCollect() || getPrimaryMaterial(aStack).contains(TD.Properties.MAGNETIC_ACTIVE)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
 		}
 	}
@@ -407,12 +410,12 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public float getDigSpeed(ItemStack aStack, Block aBlock, int aMeta) {
-		if (aBlock == NB || aBlock == Blocks.bedrock) return 0;
+		if (aBlock == NB || aBlock == Blocks.bedrock || IL.BTL_Bedrock.equal(aBlock)) return 0;
 		if (ST.torch(aBlock, aMeta)) return 10;
 		if (!isItemStackUsable(aStack)) return 0;
 		float tMultiplier = 1.0F;
 		OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
-		if (IL.TF_Mazestone.equal(aBlock) && tMaterial.contains(TD.Properties.MAZEBREAKER)) tMultiplier *= 40;
+		if ((IL.TF_Mazestone.equal(aBlock) || IL.TF_Mazehedge.equal(aBlock)) && tMaterial.contains(TD.Properties.MAZEBREAKER)) tMultiplier *= 40;
 		IToolStats tStats = getToolStats(aStack);
 		if (tStats == null || tStats.getBaseQuality() + tMaterial.mToolQuality < aBlock.getHarvestLevel(aMeta)) return 0;
 		return tStats.getMiningSpeed(aBlock, (byte)aMeta) * Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * tMultiplier * tMaterial.mToolSpeed);
@@ -441,7 +444,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			double tDamage = Math.max(1, tStats.getToolDamagePerBlockBreak() * aBlock.getBlockHardness(aWorld, aX, aY, aZ));
 			OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
 			if (WD.dimBTL(aWorld) && tMaterial.contains(TD.Properties.BETWEENLANDS)) tDamage *= 4;
-			if (IL.TF_Mazestone.equal(aBlock)) if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
+			if (IL.TF_Mazestone.equal(aBlock) || IL.TF_Mazehedge.equal(aBlock)) if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
 			doDamage(aStack, (int)tDamage, aPlayer);
 		}
 		return rReturn;

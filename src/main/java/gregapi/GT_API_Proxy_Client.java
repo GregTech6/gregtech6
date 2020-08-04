@@ -402,7 +402,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (MD.BTL.mLoaded && tData.mMaterial.mMaterial.contains(TD.Properties.BETWEENLANDS)) {
 						aEvent.toolTip.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_BETWEENLANDS_RESISTANCE));
 					}
-					if (!tIsTool && IL.TF_Mazestone.exists() && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
+					if (!tIsTool && (IL.TF_Mazestone.exists() || IL.TF_Mazehedge.exists()) && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
 						aEvent.toolTip.add(LH.Chat.PINK + LH.get(LH.TOOLTIP_TWILIGHT_MAZE_BREAKING));
 					}
 					if (aBlock == NB || !(aBlock instanceof MultiTileEntityBlockInternal || aBlock instanceof IBlockBase)) {

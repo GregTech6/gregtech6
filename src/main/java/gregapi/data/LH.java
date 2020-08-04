@@ -211,6 +211,8 @@ public class LH {
 	, TOOLTIP_BLAST_RESISTANCE_NOT_NUKE = "gt.lang.blast.resist.nuke.not"
 	, TOOLTIP_BETWEENLANDS_RESISTANCE = "gt.lang.betweenlands.resist"
 	, TOOLTIP_TWILIGHT_MAZE_BREAKING = "gt.lang.twilightforest.mazebreaking"
+	, TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING = "gt.lang.twilightforest.mazehedgebreaking"
+	, TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING = "gt.lang.twilightforest.mazestonebreaking"
 	, PROSPECTING_LAVA = "gt.lang.prospecting.lava"
 	, PROSPECTING_LIQUID = "gt.lang.prospecting.liquid"
 	, PROSPECTING_AIR = "gt.lang.prospecting.air"
@@ -483,7 +485,9 @@ public class LH {
 		add(TOOLTIP_BLAST_RESISTANCE_DYNAMITE           , "(Strong Dynamite Proof)");
 		add(TOOLTIP_BLAST_RESISTANCE_NOT_NUKE           , "(IC2 Nukes still go right through!)");
 		add(TOOLTIP_BETWEENLANDS_RESISTANCE             , "Resistant to the Effects of the Betweenlands");
-		add(TOOLTIP_TWILIGHT_MAZE_BREAKING              , "Can break Twilight Forest Maze Blocks");
+		add(TOOLTIP_TWILIGHT_MAZE_BREAKING              , "Tools made of this can break Twilight Forest Mazes");
+		add(TOOLTIP_TWILIGHT_MAZE_HEDGE_BREAKING        , "Can break Twilight Forest Maze Hedges");
+		add(TOOLTIP_TWILIGHT_MAZE_STONE_BREAKING        , "Can break Twilight Forest Mazestone");
 		add(PROSPECTING_LAVA                            , "There is Lava behind this Rock");
 		add(PROSPECTING_LIQUID                          , "There is a Liquid behind this Rock");
 		add(PROSPECTING_AIR                             , "There is an Air Pocket behind this Rock");
