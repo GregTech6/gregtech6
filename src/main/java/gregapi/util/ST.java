@@ -887,13 +887,17 @@ public class ST {
 	/** Loads an ItemStack properly. */
 	public static ItemStack load(NBTTagCompound aNBT, ItemStack aDefault) {
 		if (aNBT == null || aNBT.hasNoTags()) return null;
-		ItemStack rStack = make(Item.getItemById(aNBT.getShort("id")), aNBT.getInteger("Count"), aNBT.getShort("Damage"), aNBT.hasKey("tag", 10)?aNBT.getCompoundTag("tag"):null);
+		ItemStack rStack = make(Item.getItemById(aNBT.getShort("id")), aNBT.getInteger("Count"), aNBT.getShort("Damage"));
 		if (rStack == null) if (aNBT.hasKey("od")) {
 			rStack = OreDictManager.INSTANCE.getStack(aNBT.getString("od"), aNBT.getInteger("Count"));
 			if (rStack == null) return aDefault == null ? null : update_(OM.get_(aDefault));
 		} else return aDefault == null ? null : update_(OM.get_(aDefault));
+		// Has to use setTagCompound instead of putting it into make()
+		// because it would delete certain Tags on load, making stuff like unscanned Forestry Bees unstackable.
+		// But update_() will still delete a completely empty NBT later on.
+		rStack.setTagCompound(aNBT.hasKey("tag", 10)?aNBT.getCompoundTag("tag"):null);
 		// Does anyone even migrate IC2exp Items anymore? This is only used when updating from IC2-Non-Exp to IC2-Exp.
-		if (item_(rStack).getClass().getName().startsWith("ic2.core.migration")) item_(rStack).onUpdate(rStack, DW, null, 0, F);
+	//  if (item_(rStack).getClass().getName().startsWith("ic2.core.migration")) item_(rStack).onUpdate(rStack, DW, null, 0, F); // I do not think this could possibly happen anymore
 		return update_(OM.get_(rStack));
 	}
 	
