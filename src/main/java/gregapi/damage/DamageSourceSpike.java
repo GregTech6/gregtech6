@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,6 +19,8 @@
 
 package gregapi.damage;
 
+import static gregapi.data.CS.*;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
@@ -35,6 +37,6 @@ public class DamageSourceSpike extends DamageSource {
 	
 	@Override
 	public IChatComponent func_151519_b(EntityLivingBase aTarget) {
-		return new ChatComponentText(EnumChatFormatting.RED+aTarget.getCommandSenderName()+EnumChatFormatting.WHITE + " was impaled by a Spike!");
+		return new ChatComponentText(EnumChatFormatting.RED+aTarget.getCommandSenderName()+EnumChatFormatting.WHITE + (APRIL_FOOLS ? " stepped on a LEGO!" : " was impaled by a Spike!"));
 	}
 }
