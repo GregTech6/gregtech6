@@ -448,7 +448,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			if (IL.TF_Mazestone.equal(aBlock)) if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
 			if (IL.TF_Mazehedge.equal(aBlock)) {
 				if (tMaterial.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
-				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.silkTouch.effectId, aStack) <= 0) {
+				if (!aWorld.isRemote && EnchantmentHelper.getEnchantmentLevel(Enchantment.silkTouch.effectId, aStack) <= 0) {
 					if (aPlayer instanceof EntityPlayer && canCollectDropsDirectly(aStack, aBlock, aMeta)) {
 						UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, IL.TF_Mazehedge.get(1), aWorld, aX, aY, aZ);
 					} else {
