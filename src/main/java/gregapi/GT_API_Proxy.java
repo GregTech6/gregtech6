@@ -941,8 +941,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			if (aStack != null) {
 				boolean tFireAspect = (EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, aStack) >= 3), tCanCollect = (aStack.getItem() instanceof MultiItemTool && ((MultiItemTool)aStack.getItem()).canCollectDropsDirectly(aStack, aEvent.block, (byte)aEvent.blockMetadata));
 				if (aStack.getItem() instanceof MultiItemTool) {
+					if (aEvent.drops.isEmpty() && IL.TF_Mazehedge.equal(aEvent.block)) aEvent.drops.add(IL.TF_Mazehedge.get(1));
 					((MultiItemTool)aStack.getItem()).onHarvestBlockEvent(aEvent.drops, aStack, aEvent.harvester, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.blockMetadata, aEvent.fortuneLevel, aEvent.isSilkTouching, aEvent);
 				}
+				
 				if (tFireAspect) {
 				//  if (aEvent.world.isRemote) for (int i = 0; i < 4; i++) {
 				//      double tX = RNGSUS.nextGaussian()/50, tY = RNGSUS.nextGaussian()/50, tZ = RNGSUS.nextGaussian()/50;
