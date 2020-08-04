@@ -74,6 +74,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderFallingBlock;
 import net.minecraft.creativetab.CreativeTabs;
@@ -220,7 +221,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			aRegName = "ERROR: THIS ITEM HAS NOT BEEN REGISTERED!!!";
 		}
 		short aMeta = ST.meta_(aEvent.itemStack);
-		byte aBlockMeta = (byte)(UT.Code.inside(0, 15, aMeta) ? aMeta : 0);
+		byte aBlockMeta = UT.Code.bind4(aMeta);
 		Block aBlock = ST.block(aEvent.itemStack);
 		Item aItem = ST.item(aEvent.itemStack);
 		
@@ -259,7 +260,24 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				} else {
 					aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, aBlock.getExplosionResistance(null)));
 				}
-				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aBlock.getHarvestTool(aBlockMeta), "Pickaxe") + " ("+aBlock.getHarvestLevel(aBlockMeta)+")");
+				
+				int tHarvestLevel = Math.max(0, aBlock.getHarvestLevel(aBlockMeta));
+				String tHarvestTool = aBlock.getHarvestTool(aBlockMeta); 
+				if (UT.Code.stringValid(tHarvestTool)) {
+					aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + tHarvestTool, UT.Code.capitalise(tHarvestTool)) + " ("+tHarvestLevel+")");
+				} else {
+					if (aBlock.getMaterial() == Material.rock && aBlock.getMaterial() == Material.iron && aBlock.getMaterial() == Material.anvil && aBlock.getMaterial() == Material.glass) {
+						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "pickaxe") + "? ("+0+")");
+					} else if (aBlock.getMaterial() == Material.craftedSnow && aBlock.getMaterial() == Material.snow && aBlock.getMaterial() == Material.sand && aBlock.getMaterial() == Material.grass && aBlock.getMaterial() == Material.ground && aBlock.getMaterial() == Material.clay) {
+						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "shovel") + "? ("+0+")");
+					} else if (aBlock.getMaterial() == Material.wood && aBlock.getMaterial() == Material.plants && aBlock.getMaterial() == Material.vine && aBlock.getMaterial() == Material.gourd && aBlock.getMaterial() == Material.cactus) {
+						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "axe") + "? ("+0+")");
+					} else if (aBlock.getMaterial() == Material.leaves && aBlock.getMaterial() == Material.cloth && aBlock.getMaterial() == Material.carpet && aBlock.getMaterial() == Material.web) {
+						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "sword") + "? ("+0+")");
+					} else {
+						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + "Unknown");
+					}
+				}
 			}
 			if (BlocksGT.openableCrowbar.contains(aBlock)) {
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_OPEN_CROWBAR));
