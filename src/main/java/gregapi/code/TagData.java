@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,7 +25,6 @@ import java.util.Collections;
 import java.util.List;
 
 import gregapi.data.LH;
-import gregapi.lang.LanguageHandler;
 import gregapi.oredict.OreDictMaterial;
 
 /**
@@ -83,7 +82,7 @@ public final class TagData implements ICondition<ITagDataContainer> {
 	}
 	
 	public String getLocalisedNameLong() {
-		return LanguageHandler.translate(getTranslatableNameLong(), mName);
+		return LH.get(getTranslatableNameLong(), mName);
 	}
 	
 	public String getTranslatableNameShort() {
@@ -91,7 +90,7 @@ public final class TagData implements ICondition<ITagDataContainer> {
 	}
 	
 	public String getLocalisedNameShort() {
-		return LanguageHandler.translate(getTranslatableNameShort(), mName);
+		return LH.get(getTranslatableNameShort(), mName);
 	}
 	
 	public String getChatFormat() {
