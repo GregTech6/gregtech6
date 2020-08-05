@@ -51,7 +51,7 @@ Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator
 [ADDED] Wooden Buckets for Soy Milk and Glue.
 [ADDED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists.
 [ADDED] Amethyst Mortar, because there is Situations where Amethysts/Ender-Amethysts are actually more common than Diamonds, Rubies and Sapphires.
-[ADDED] Swords, Saws and Axes made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Hedges about 40 times faster too. But be sure to wear something protecting you from the 1.5 Hearts of "Cactus" Damage per broken Hedge.
+[ADDED] Swords, Saws and Axes made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Hedges about 40 times faster too. But be sure to wear something protecting you from the 1.5 Hearts of "Cactus" Damage per broken Hedge. Also the Saw should be optimal for this since it autocollects Drops, or the Sense/Scythe due to the Area of Effect.
 
 
 6.14.00:

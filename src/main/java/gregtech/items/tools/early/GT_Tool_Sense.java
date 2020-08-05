@@ -23,6 +23,7 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -52,7 +53,7 @@ public class GT_Tool_Sense extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null &&( tTool.equalsIgnoreCase(TOOL_sense) || tTool.equalsIgnoreCase(TOOL_scythe))) || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine;
+		return (tTool != null &&( tTool.equalsIgnoreCase(TOOL_sense) || tTool.equalsIgnoreCase(TOOL_scythe))) || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || IL.TF_Mazehedge.equal(aBlock);
 	}
 	
 	@Override
