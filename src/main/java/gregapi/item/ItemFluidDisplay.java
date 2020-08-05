@@ -141,11 +141,11 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			
 			float tDensity = aFluid.getDensity(tFluid);
 			if (tDensity > 0) {
-				aList.add(LH.Chat.GREEN + "Heavier than Air (moves down)" + LH.Chat.GRAY);
+				aList.add(LH.Chat.GREEN + "Heavier than Air (typically moves down)" + LH.Chat.GRAY);
 			} else if (tDensity < 0) {
-				aList.add(LH.Chat.GREEN + "Lighter than Air (moves up)" + LH.Chat.GRAY);
+				aList.add(LH.Chat.GREEN + "Lighter than Air (typically moves up)" + LH.Chat.GRAY);
 			} else {
-				aList.add(LH.Chat.GREEN + "As dense as Air (still moves down)" + LH.Chat.GRAY);
+				aList.add(LH.Chat.GREEN + "As dense as Air (typically still moves down)" + LH.Chat.GRAY);
 			}
 			
 			if (FL.powerconducting(aFluid)) {

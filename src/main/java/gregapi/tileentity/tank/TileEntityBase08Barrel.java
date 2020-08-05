@@ -134,7 +134,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		}
 		if (aTool.equals(TOOL_wrench) || aTool.equals(TOOL_monkeywrench)) {
 			mMode ^= B[0];
-			aChatReturn.add((mMode & B[0]) == 0 ? "Won't fill adjacent Tanks" : "Will fill adjacent Tanks");
+			aChatReturn.add((mMode & B[0]) == 0 ? "Won't fill vertically adjacent Tanks" : "Will fill vertically adjacent Tanks (depending on Gravity and State of Matter)");
 			updateClientData();
 			updateInventory();
 			return 10000;
