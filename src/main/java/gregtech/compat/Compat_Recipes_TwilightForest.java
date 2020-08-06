@@ -27,6 +27,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.data.ANY;
+import gregapi.data.CS.ConfigsGT;
 import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
@@ -38,6 +39,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import twilightforest.item.TFItems;
 
 public class Compat_Recipes_TwilightForest extends CompatMods {
 	public Compat_Recipes_TwilightForest(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -83,18 +85,26 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(6), ST.make(MD.TF, "item.arcticFur", 7), ST.make(MD.TF, "item.arcticLegs", 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(7), ST.make(MD.TF, "item.arcticFur", 4), ST.make(MD.TF, "item.arcticBoots", 1));
 		
+		// Those things are quite rare, so their low Durability is making them a tad bit too useless.
+		if (ConfigsGT.GREGTECH.get("general", "BetterTwilightDurability", T)) try {
+			TFItems.crumbleHorn.setMaxDamage(10000);
+			TFItems.peacockFan .setMaxDamage(10000);
+			TFItems.oreMagnet  .setMaxDamage(10000); // Okay 12 is definitely ridiculous, that is sometimes even less than ONE Ore Vein!
+			TFItems.giantPick  .setMaxDamage(10000); // Makes way more sense to actually have some Durability due to using 64 per harvest.
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		
 //      Doesnt work right, stuff will miss the enchants.
-//      RM.Bath.addRecipe1(T, 0, 5*144, ST.make(Items.iron_helmet       , 1, 0), FL.FieryBlood.make(5*L), NF, ST.make(MD.TF, "item.fieryHelm", 1));
-//      RM.Bath.addRecipe1(T, 0, 5*144, ST.make(Items.iron_helmet       , 1, 0), FL.FieryTears.make(5*L), NF, ST.make(MD.TF, "item.fieryHelm", 1));
+//      RM.Bath.addRecipe1(T, 0, 5*144, ST.make(Items.iron_helmet       , 1, 0), FL.FieryBlood.make(5*L), NF, ST.make(MD.TF, "item.fieryHelm" , 1));
+//      RM.Bath.addRecipe1(T, 0, 5*144, ST.make(Items.iron_helmet       , 1, 0), FL.FieryTears.make(5*L), NF, ST.make(MD.TF, "item.fieryHelm" , 1));
 //      RM.Bath.addRecipe1(T, 0, 8*144, ST.make(Items.iron_chestplate   , 1, 0), FL.FieryBlood.make(8*L), NF, ST.make(MD.TF, "item.fieryPlate", 1));
 //      RM.Bath.addRecipe1(T, 0, 8*144, ST.make(Items.iron_chestplate   , 1, 0), FL.FieryTears.make(8*L), NF, ST.make(MD.TF, "item.fieryPlate", 1));
-//      RM.Bath.addRecipe1(T, 0, 7*144, ST.make(Items.iron_leggings     , 1, 0), FL.FieryBlood.make(7*L), NF, ST.make(MD.TF, "item.fieryLegs", 1));
-//      RM.Bath.addRecipe1(T, 0, 7*144, ST.make(Items.iron_leggings     , 1, 0), FL.FieryTears.make(7*L), NF, ST.make(MD.TF, "item.fieryLegs", 1));
+//      RM.Bath.addRecipe1(T, 0, 7*144, ST.make(Items.iron_leggings     , 1, 0), FL.FieryBlood.make(7*L), NF, ST.make(MD.TF, "item.fieryLegs" , 1));
+//      RM.Bath.addRecipe1(T, 0, 7*144, ST.make(Items.iron_leggings     , 1, 0), FL.FieryTears.make(7*L), NF, ST.make(MD.TF, "item.fieryLegs" , 1));
 //      RM.Bath.addRecipe1(T, 0, 4*144, ST.make(Items.iron_boots        , 1, 0), FL.FieryBlood.make(4*L), NF, ST.make(MD.TF, "item.fieryBoots", 1));
 //      RM.Bath.addRecipe1(T, 0, 4*144, ST.make(Items.iron_boots        , 1, 0), FL.FieryTears.make(4*L), NF, ST.make(MD.TF, "item.fieryBoots", 1));
 //      RM.Bath.addRecipe1(T, 0, 2*144, ST.make(Items.iron_sword        , 1, 0), FL.FieryBlood.make(2*L), NF, ST.make(MD.TF, "item.fierySword", 1));
 //      RM.Bath.addRecipe1(T, 0, 2*144, ST.make(Items.iron_sword        , 1, 0), FL.FieryTears.make(2*L), NF, ST.make(MD.TF, "item.fierySword", 1));
-//      RM.Bath.addRecipe1(T, 0, 3*144, ST.make(Items.iron_pickaxe      , 1, 0), FL.FieryBlood.make(3*L), NF, ST.make(MD.TF, "item.fieryPick", 1));
-//      RM.Bath.addRecipe1(T, 0, 3*144, ST.make(Items.iron_pickaxe      , 1, 0), FL.FieryTears.make(3*L), NF, ST.make(MD.TF, "item.fieryPick", 1));
+//      RM.Bath.addRecipe1(T, 0, 3*144, ST.make(Items.iron_pickaxe      , 1, 0), FL.FieryBlood.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
+//      RM.Bath.addRecipe1(T, 0, 3*144, ST.make(Items.iron_pickaxe      , 1, 0), FL.FieryTears.make(3*L), NF, ST.make(MD.TF, "item.fieryPick" , 1));
 	}
 }

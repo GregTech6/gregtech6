@@ -319,8 +319,9 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		
 		if (tData != null) {
 			if (tData.mPrefix == null) {
-				if (IL.TF_Pick_Giant .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Knightmetal Ingots on the Anvil"); else
-				if (IL.TF_Sword_Giant.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Ironwood Ingots on the Anvil");
+				if (IL.TF_Pick_Giant     .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Knightmetal Ingots on the Anvil"); else
+				if (IL.TF_Sword_Giant    .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Ironwood Ingots on the Anvil"); else
+				if (IL.TF_Lamp_of_Cinders.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be used as a Lighter for GT6 things and TNT");
 			} else {
 				for (IOreDictListenerItem tListener : tData.mPrefix.mListenersItem) {
 					String tToolTip = tListener.getListenerToolTip(tData.mPrefix, tData.mMaterial.mMaterial, aEvent.itemStack);

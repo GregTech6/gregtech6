@@ -724,9 +724,9 @@ public class GT_API extends Abstract_Mod {
 		// Initialises the Fluid Display Item.
 		IL.Display_Fluid.set(new ItemFluidDisplay());
 		// Initialises the Integrated Circuit Item.
-		IL.Circuit_Selector.set(new ItemIntegratedCircuit("gt.integrated_circuit"));
+		IL.Circuit_Selector.set(new ItemIntegratedCircuit());
 		// Initialises the Empty Slot Marker Item.
-		IL.Empty_Slot.set(new ItemEmptySlot("gt.empty_slot"));
+		IL.Empty_Slot.set(new ItemEmptySlot());
 		// Register the GUI Handler.
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, api_proxy);
 		// Fixing vanilla Oak Plank Slab Recipe.

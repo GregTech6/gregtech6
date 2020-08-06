@@ -721,13 +721,10 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Core_Mine                         .set(ST.make(MD.TF, "tile.TFMagicLogSpecial"                , 1, 2), new OreDictItemData(MT.WOODS.Birch    , U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Core_Sorting                      .set(ST.make(MD.TF, "tile.TFMagicLogSpecial"                , 1, 3), new OreDictItemData(MT.WOODS.DarkOak  , U*8, MT.Bark, U), OD.logWood);
 		
-		// Makes way more sense to actually have some Durability due to using 64 per harvest.
-		if (IL.TF_Pick_Giant     .exists()) IL.TF_Pick_Giant     .item().setMaxDamage(32000);
-		if (IL.TF_Sword_Giant    .exists()) IL.TF_Sword_Giant    .item().setMaxDamage(32000);
 		// These Bottles should actually have an empty Variant.
 		if (IL.TF_Vial_FieryBlood.exists()) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.exists()) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
-		// Make this work as infinite Lighter in Crafting Recipes.
+		// Make this work as infinite Lighter in Crafting Recipes. It is absolutely useless otherwise since the Final Castle isn't finished.
 		if (IL.TF_Lamp_of_Cinders.exists()) IL.TF_Lamp_of_Cinders.item().setContainerItem(IL.TF_Lamp_of_Cinders.getItem());
 		
 		

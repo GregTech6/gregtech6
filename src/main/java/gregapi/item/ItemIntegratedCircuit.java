@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -45,8 +45,8 @@ import net.minecraft.util.IIcon;
  * @author Gregorius Techneticies
  */
 public class ItemIntegratedCircuit extends ItemBase {
-	public ItemIntegratedCircuit(String aUnlocalized) {
-		super(MD.GAPI.mID, aUnlocalized, "Selector Tag", "");
+	public ItemIntegratedCircuit() {
+		super(MD.GAPI.mID, "gt.integrated_circuit", "Selector Tag", "");
 		setHasSubtypes(T);
 		setMaxDamage(0);
 		
