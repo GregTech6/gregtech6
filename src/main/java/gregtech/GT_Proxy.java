@@ -221,7 +221,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 				if (!MultiTileEntityCertificate.ALREADY_RECEIVED.contains(aNameLowercase)) {
 					if (UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, MultiTileEntityCertificate.getCertificate(1, aName), F)) {
 						MultiTileEntityCertificate.ALREADY_RECEIVED.add(aNameLowercase);
-						UT.Entities.sendchat(aEvent.entityPlayer, CHAT_GREG + " Thank you, " + aName + ", for Supporting GregTech! Here, have a Certificate. ;)");
+						UT.Entities.sendchat(aEvent.entityPlayer, CHAT_GREG + "Thank you, " + aName + ", for Supporting GregTech! Here, have a Certificate. ;)");
 					}
 				}
 			}

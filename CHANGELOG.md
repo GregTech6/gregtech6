@@ -36,7 +36,7 @@ In case the Ores look familiar to you, I grabbed and sometimes modified some Tex
 The 16 Vanilla-ish Ores that got added are what I think is the minimum viable amount of Ore Types that a GT6 World requires, if we account for the Byproducts.
 I also added the 8 Rock-Layer-Ores in Blob form to there, getting the total count of new Ores up to 24.
 Those specific 24 Ores are also not TileEntity based so the Ore Magnet and the Miner Tree work on those just fine.
-Some Ores only generate above Y=40, meaning you have to find a Hollow Hill, Hydra Cave or the Twilight Highlands for them, and some unimportant ones are also Biome dependent in order for them to not be spammed everywhere.
+Some Ores only generate above Y=40, meaning you have to find a Hollow Hill, Hydra Cave, Yeti Cave or the Twilight Highlands for them, and some unimportant ones are also Biome dependent in order for them to not be spammed everywhere.
 Thaumcraft and Ars Magica will have their important Ores generate in the Enchanted Forest Biome when installed, even if their own Worldgen is disabled.
 Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator Flowers and Rocks were not generating all that often, due to the giant Leaf Canopy blocking the Generation-Ray-Trace from the Sky (which now ignores specifically Logs and Leaves).
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when IC2 is installed. This should reduce the occurences of it quite a bit, at least with GT6 TileEntities adjacent to the Transformer.

@@ -410,7 +410,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	
 	@Override
 	public float getDigSpeed(ItemStack aStack, Block aBlock, int aMeta) {
-		if (aBlock == NB || aBlock == Blocks.bedrock || IL.BTL_Bedrock.equal(aBlock)) return 0;
+		if (aBlock == NB || WD.bedrock(aBlock)) return 0;
 		if (ST.torch(aBlock, aMeta)) return 10;
 		if (!isItemStackUsable(aStack)) return 0;
 		float tMultiplier = 1.0F;

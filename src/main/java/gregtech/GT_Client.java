@@ -247,7 +247,7 @@ public class GT_Client extends GT_Proxy {
 						aEvent.player.addChatComponentMessage(tLink);
 					}
 					if (APRIL_FOOLS) {
-						aEvent.player.addChatComponentMessage(new ChatComponentText(CHAT_GREG + " Watch your Calendar!"));
+						aEvent.player.addChatComponentMessage(new ChatComponentText(CHAT_GREG + "Watch your Calendar!"));
 					}
 				}
 			}

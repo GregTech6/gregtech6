@@ -562,7 +562,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					aEvent.player.capabilities.allowEdit = F;
 					if (ADVENTURE_MODE_KIT) {
 						if (MD.GT.mLoaded) {
-							UT.Entities.chat(aEvent.player, CHAT_GREG + " Thank you for choosing the GregTech-6 Adventure Mode Starter Kit.");
+							UT.Entities.chat(aEvent.player, CHAT_GREG + "Thank you for choosing the GregTech-6 Adventure Mode Starter Kit.");
 							ST.drop(aEvent.player, IL.Bottle_Purple_Drink.get(6));
 							ST.drop(aEvent.player, IL.Grass_Dry.get(8));
 							ST.drop(aEvent.player, IL.Stick.get(16));
@@ -576,7 +576,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							case 3: ST.drop(aEvent.player, IL.Food_Large_Sandwich_Bacon .get(1)); break;
 							}
 						} else {
-							UT.Entities.chat(aEvent.player, CHAT_GREG + " It's dangerous to go alone! Take this.");
+							UT.Entities.chat(aEvent.player, CHAT_GREG + "It's dangerous to go alone! Take this.");
 							ST.drop(aEvent.player, Items.stone_axe, 1, 0);
 						}
 					}
@@ -635,37 +635,37 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								if (tPlayer == null) continue;
 								if ("Bear989Sr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									if (tPlayer.posY < 20) {
-										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Stop making Holes in the Ground, Bear!"));
+										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Stop making Holes in the Ground, Bear!"));
 									} else {
 										switch(tEmptySlots) {
-										case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You are full of shit, Bear!!!")); break;
-										case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Your Inventory is almost full, Bear!!")); break;
-										case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " You should clean up your Inventory, Bear!")); break;
-										case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Bear, your Inventory starts to get full.")); break;
+										case 0: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "You are full of shit, Bear!!!")); break;
+										case 1: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Your Inventory is almost full, Bear!!")); break;
+										case 2: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "You should clean up your Inventory, Bear!")); break;
+										case 3: UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Bear, your Inventory starts to get full.")); break;
 										}
 									}
 								} else if ("Bear989jr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, UT.NBT.addEnchantment(ST.make(Items.cookie, 1, 0, "Jr. Cookie"), Enchantment_WerewolfDamage.INSTANCE, 1), F);
-									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Have a Jr. Cookie. Please tell Fatass to clean his Inventory, or smack him with it."));
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Have a Jr. Cookie. Please tell Fatass to clean his Inventory, or smack him with it."));
 								} else if ("CrazyJ1984".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									ItemStack tArrow = ST.update(OP.arrowGtWood.mat(MT.Craponite, 1), aEvent.player);
 									if (ST.valid(tArrow)) {
 										UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, tArrow, F);
-										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " I'm not trying to tell you what to do, but please don't hurt Bear with this."));
+										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "I'm not trying to tell you what to do, but please don't hurt Bear with this."));
 									} else {
-										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " I'm not trying to tell you what to do, but please don't hurt Bear."));
+										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "I'm not trying to tell you what to do, but please don't hurt Bear."));
 									}
 								} else if ("GregoriusT".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, ST.update(OP.arrowGtPlastic.mat(MT.Tc, 1), aEvent.player), F);
 									UT.Entities.chat(tPlayer, new ChatComponentText(LH.Chat.BOLD + "You have received an Arrow"));
 								} else if ("Ilirith".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Could you tell Bear989Sr very gently, that his Inventory is a fucking mess again?"));
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Could you tell Bear989Sr very gently, that his Inventory is a fucking mess again?"));
 								} else if ("Shadowkn1ght18".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " Here is your special Message to make you tell Bear989Sr to clean his Inventory."));
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Here is your special Message to make you tell Bear989Sr to clean his Inventory."));
 								} else if ("e99999".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									UT.Entities.chat(tPlayer, new ChatComponentText(LH.Chat.DGRAY + "You get the sneaking suspicion that Bears Inventory may or may not be full right now."));
 								} else {
-									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + " There is this fella called Bear-Nine-Eight-Nine, needing be reminded of his Inventory being a major Pine."));
+									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "There is this fella called Bear-Nine-Eight-Nine, needing be reminded of his Inventory being a major Pine."));
 								}
 							}
 						}
@@ -804,7 +804,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 			// You can easily recycle most things in GT6 anyways, so this should not be needed.
 			if (IL.TF_Uncrafting.equal(aBlock)) {
-				UT.Entities.chat(aEvent.entityPlayer, CHAT_GREG + " No cheating! ;)");
+				UT.Entities.chat(aEvent.entityPlayer, CHAT_GREG + "No cheating! ;)");
 				aEvent.setCanceled(T);
 				return;
 			}
@@ -833,7 +833,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					// Dollies won't work on GT6 TileEntities, so to prevent a Crash and deleted Resources, I just disable the interaction.
 					if (IL.JABBA_Dolly.equal(aStack, T, T) || IL.JABBA_Dolly_Diamond.equal(aStack, T, T)) {
 						if (aTileEntity instanceof ITileEntitySpecificPlacementBehavior) {
-							UT.Entities.chat(aEvent.entityPlayer, CHAT_GREG + " The Code of this Dolly is not smart enough to move this TileEntity.", CHAT_GREG + "It would crash if it actually did, so be glad I prevented that mistake.");
+							UT.Entities.chat(aEvent.entityPlayer, CHAT_GREG + "The Code of this Dolly is not smart enough to move this TileEntity.", CHAT_GREG + "It would crash if it actually did, so be glad I prevented that mistake.");
 							aEvent.setCanceled(T);
 						}
 						return;
@@ -860,6 +860,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
 							aEvent.setCanceled(T);
 						}
+						return;
+					}
+					// Make Twilight Forests Lamp of Cinders work as infinite Flint and Steel on TNT and GT6 Machines
+					if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
+						List<String> tChatReturn = new ArrayListNoNulls<>();
+						long tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, Long.MAX_VALUE, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), aStack, aEvent.entityPlayer.worldObj, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
+						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
+						if (tDamage > 0) aEvent.setCanceled(T);
 						return;
 					}
 				}

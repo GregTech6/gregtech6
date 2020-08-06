@@ -187,10 +187,12 @@ public class ToolCompat {
 				aWorld.setBlockToAir(aX, aY, aZ);
 				return 10000;
 			}
-			if (aEntityPlayer == null || aEntityPlayer.canPlayerEdit(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], aSide, aStack)) {
-				if (aWorld.isAirBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide])) {
-					if (WD.oxygen(aWorld, aX, aY, aZ)) aWorld.setBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], Blocks.fire);
-					return 10000;
+			if (!IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
+				if (aEntityPlayer == null || aEntityPlayer.canPlayerEdit(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], aSide, aStack)) {
+					if (aWorld.isAirBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide])) {
+						if (WD.oxygen(aWorld, aX, aY, aZ)) aWorld.setBlock(aX+OFFSETS_X[aSide], aY+OFFSETS_Y[aSide], aZ+OFFSETS_Z[aSide], Blocks.fire);
+						return 10000;
+					}
 				}
 			}
 		}

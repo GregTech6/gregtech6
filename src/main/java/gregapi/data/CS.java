@@ -301,15 +301,15 @@ public class CS {
 	public static long SERVER_TIME = 0;
 	/** Current Time on the Client. Used for Animations. */
 	public static long CLIENT_TIME = 0;
-
+	
 	/** If I ever need to talk in Chat. XD */
-	public static final String CHAT_GREG = LH.Chat.WHITE+"<"+LH.Chat.BLUE+"GregoriusT"+LH.Chat.WHITE+">";
+	public static final String CHAT_GREG = LH.Chat.WHITE+"<"+LH.Chat.BLUE+"GregoriusT"+LH.Chat.WHITE+"> ";
 	/** The Colour White as RGB Short Array. */
 	public static final short[] UNCOLOURED = {255, 255, 255, 255};
 	/** The Colour White as simple Integer (0x00ffffff). */
 	public static final int UNCOLORED = 16777215;
 	public static final int ALL_NON_ALPHA_COLOR = 0x00ffffff;
-
+	
 	public static final int[] RAINBOW_ARRAY = {
 		0xff0000,
 		0xff4000,
