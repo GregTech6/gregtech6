@@ -46,12 +46,13 @@ Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator
 [FIXED] The wrong Types of Honey and Milk were outputted by some Recipes.
 [FIXED] Basic Machines were not outputting all their Fluids into Quadruple/Nonuple Pipes if one of the Fluids got Stuck.
 [CHANGED] Battery Boxes now only charge/discharge once per second instead of once per tick. Internal Capacity of the Boxes themselves has been adjusted for this change of Rate.
+[CHANGED] Twilight Forests Lamp of Cinders works as infinite Flint and Tinder on GT6 Machines and TNT, but it will not spawn Fire Blocks. Can also be used in the modified vanilla Furnace Recipe without being deleted.
+[CHANGED] Swords, Saws, Axes and similar made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Hedges about 40 times faster too. But be sure to wear something protecting you from the 1.5 Hearts of "Cactus" Damage per broken Hedge. Also the Saw should be optimal for this since it autocollects Drops, or the Sense/Scythe due to the Area of Effect.
+[CHANGED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists. It also has an Ore Drop Factor of x3 now.
 [ADDED] The 36 Trees from Harvestcraft to the Wood Dictionary. Yes I know they mostly use Vanilla Leaves and Logs. Maple and Cinnamon will have their GT6 Counterpart of Beams and Planks assigned.
 [ADDED] Harvestcraft Crops to the List of things that can randomly spawn in the Farming Room in GT6 Dungeons.
-[ADDED] Wooden Buckets for Soy Milk and Glue.
-[ADDED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists.
 [ADDED] Amethyst Mortar, because there is Situations where Amethysts/Ender-Amethysts are actually more common than Diamonds, Rubies and Sapphires.
-[ADDED] Swords, Saws and Axes made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Hedges about 40 times faster too. But be sure to wear something protecting you from the 1.5 Hearts of "Cactus" Damage per broken Hedge. Also the Saw should be optimal for this since it autocollects Drops, or the Sense/Scythe due to the Area of Effect.
+[ADDED] Wooden Buckets for Soy Milk and Glue.
 
 
 6.14.00:

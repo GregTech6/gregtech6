@@ -71,6 +71,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 		mIcons = aIcons;
 		setStepSound(soundTypeGrass);
 		setBlockName(mNameInternal = aNameInternal);
+		setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(this, aItemClass == null ? ItemBlockBase.class : aItemClass, getUnlocalizedName());
 		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
 	}

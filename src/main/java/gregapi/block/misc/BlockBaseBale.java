@@ -26,6 +26,7 @@ import gregapi.render.IIconContainer;
 import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -39,6 +40,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 public abstract class BlockBaseBale extends BlockBaseMeta {
 	public BlockBaseBale(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, Math.min(4, aMaxMeta), aIcons);
+		setCreativeTab(CreativeTabs.tabDecorations);
 		
 	}
 	

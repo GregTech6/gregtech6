@@ -74,6 +74,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	public BlockBaseRail(Class<? extends ItemBlockBase> aItemClass, String aNameInternal, String aLocalName, boolean aPowerRail, boolean aDetectorRail, float aSpeed, float aExplosionResistance, int aHarvestLevel, IIconContainer aIconPrimary, IIconContainer aIconSecondary) {
 		super(aPowerRail || aDetectorRail);
 		setBlockName(mNameInternal = aNameInternal);
+		setCreativeTab(CreativeTabs.tabTransport);
 		GameRegistry.registerBlock(this, aItemClass == null ? ItemBlockBase.class : aItemClass, getUnlocalizedName());
 		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
 		LH.add(mNameInternal+".name", aLocalName);

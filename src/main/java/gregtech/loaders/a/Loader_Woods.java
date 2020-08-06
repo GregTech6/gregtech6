@@ -73,10 +73,10 @@ public class Loader_Woods implements Runnable {
 		IL.Plank_Slab         .set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 9));
 		IL.Plank              .set(ST.make(BlocksGT.Planks, 1,  9));
 		IL.Treated_Planks_Slab.set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 10));
-		IL.Treated_Planks     .set(ST.make(BlocksGT.Planks, 1,  10));
-		IL.Beam .set(ST.make(BlocksGT.Beam2 , 1,  3));
-		IL.Crate.set(ST.make(BlocksGT.Planks, 1, 11));
-		IL.Crate_Fireproof.set(ST.make(BlocksGT.PlanksFireProof, 1, 11));
+		IL.Treated_Planks     .set(ST.make(BlocksGT.Planks, 1, 10));
+		IL.Beam               .set(ST.make(BlocksGT.Beam2 , 1,  3));
+		IL.Crate              .set(ST.make(BlocksGT.Planks, 1, 11));
+		IL.Crate_Fireproof    .set(ST.make(BlocksGT.PlanksFireProof, 1, 11));
 		
 		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(ANY.Iron));
 		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(ANY.WoodPlastic));

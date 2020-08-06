@@ -39,6 +39,7 @@ import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -50,6 +51,7 @@ import net.minecraft.world.World;
 public class BlockPath extends BlockBaseMeta implements IBlockOnWalkOver, IRenderedBlock {
 	public BlockPath(String aUnlocalised) {
 		super(null, aUnlocalised, Material.grass, soundTypeGrass, 12, Textures.BlockIcons.DIRTS);
+		setCreativeTab(CreativeTabs.tabTransport);
 		LH.add(getUnlocalizedName()+  ".0.name", "Grass Path");
 		LH.add(getUnlocalizedName()+  ".1.name", "Aether Grass Path");
 		LH.add(getUnlocalizedName()+  ".2.name", "Loamy Grass Path");

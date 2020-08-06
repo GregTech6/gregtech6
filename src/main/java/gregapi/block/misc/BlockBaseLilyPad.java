@@ -38,6 +38,7 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,6 +57,7 @@ public class BlockBaseLilyPad extends BlockBaseMeta implements IPlantable, IRend
 	public BlockBaseLilyPad(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons) {
 		super(ItemBlockBase.class, aNameInternal, Material.plants, soundTypeGrass, aMaxMeta, aIcons);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.015625F, 1.0F);
+		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_sword;}

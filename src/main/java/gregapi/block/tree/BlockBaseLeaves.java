@@ -38,6 +38,7 @@ import gregapi.util.WD;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -63,6 +64,7 @@ public abstract class BlockBaseLeaves extends BlockBaseTree implements IShearabl
 	
 	public BlockBaseLeaves(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType, long aMaxMeta, IIconContainer[] aIcons, Block aSaplings, Block[] aLogs, byte[] aLogMetas) {
 		super(aItemClass, aNameInternal, aMaterial, aSoundType, Math.min(8, aMaxMeta), aIcons);
+		setCreativeTab(CreativeTabs.tabDecorations);
 		mSaplings = aSaplings;
 		mLogMetas = aLogMetas;
 		mLogs = aLogs;

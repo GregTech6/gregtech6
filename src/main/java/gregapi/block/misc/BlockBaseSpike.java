@@ -64,6 +64,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	
 	public BlockBaseSpike(String aNameInternal, OreDictMaterial aMat1, OreDictMaterial aMat2) {
 		super(null, aNameInternal, Material.iron, Block.soundTypeMetal);
+		setCreativeTab(CreativeTabs.tabRedstone);
 		mMat1 = aMat1; mMat2 = aMat2;
 		
 		CR.shaped(ST.make(this, 1, 0), CR.DEF_NCC, "BTB", "TPT", "BTB", 'B', OP.toolHeadSword.dat(mMat1), 'P', OP.plate.dat(mMat1), 'T', OP.screw.dat(mMat1));

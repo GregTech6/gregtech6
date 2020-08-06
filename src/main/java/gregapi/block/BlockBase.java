@@ -34,6 +34,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.item.EntityFallingBlock;
@@ -59,6 +60,7 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	public BlockBase(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType) {
 		super(aMaterial);
 		setStepSound(aSoundType);
+		setCreativeTab(CreativeTabs.tabBlock);
 		setBlockName(mNameInternal = aNameInternal);
 		GameRegistry.registerBlock(this, aItemClass == null ? ItemBlockBase.class : aItemClass, getUnlocalizedName());
 		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);

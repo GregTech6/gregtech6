@@ -30,7 +30,6 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -45,7 +44,7 @@ public class ItemBlockBase extends ItemBlock {
 		mPlaceable = (IBlockBase)aBlock;
 		setMaxDamage(0);
 		setHasSubtypes(T);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(aBlock.getCreativeTabToDisplayOn());
 	}
 	
 	@Override
