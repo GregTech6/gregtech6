@@ -77,12 +77,12 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 	@Override
 	public void run() {
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
-		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
+		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink  ], OM.dust(MT.Pink  ));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
 		
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
-		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink], OM.dust(MT.Pink));
+		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink  ], OM.dust(MT.Pink  ));
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Juicer   .addRecipe1(T, 16, 16, ST.make(this, 1, 5), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], OM.dust(MT.Purple));
 		
@@ -91,10 +91,10 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 1));
 		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 1));
 		
-		CR.shapeless(IL.Stick.get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
-		CR.shapeless(IL.Stick.get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});
+		CR.shapeless(IL.Stick   .get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
+		CR.shapeless(IL.Stick   .get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 2)});
-		CR.shapeless(OM.dust(MT.Pink), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 3)});
+		CR.shapeless(OM.dust(MT.Pink  ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 3)});
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 4)});
 		CR.shapeless(OM.dust(MT.Purple), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 5)});
 		
@@ -104,7 +104,7 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		RM.ic2_extractor(ST.make(this, 1, 0), IL.Stick.get(2));
 		RM.ic2_extractor(ST.make(this, 1, 1), IL.Stick.get(2));
 		RM.ic2_extractor(ST.make(this, 1, 2), OM.dust(MT.Yellow, U * 2));
-		RM.ic2_extractor(ST.make(this, 1, 3), OM.dust(MT.Pink, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 3), OM.dust(MT.Pink  , U * 2));
 		RM.ic2_extractor(ST.make(this, 1, 4), OM.dust(MT.Yellow, U * 2));
 		RM.ic2_extractor(ST.make(this, 1, 5), OM.dust(MT.Purple, U * 2));
 		}

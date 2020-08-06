@@ -54,7 +54,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(OP.dust.mat(MT.White, 1), DEF_NAC, new Object[] {ST.make(Items.bone, 1, W)});
 		CR.shapeless(ST.make(Items.blaze_powder, 1, 0), DEF_NAC, new Object[] {ST.make(Items.blaze_rod, 1, W)});
 		CR.shaped(ST.make(Items.paper, 1, 0), DEF_NAC, "XXX", 'X', ST.make(Items.reeds, 1, 0));
-		CR.shapeless(ST.make(Items.book, 1, 0), DEF, new Object[] {OD.craftingLeather, "paperEmpty", "paperEmpty", "paperEmpty"});
+		CR.shapeless(ST.make(Items.book, 1, 0), DEF, new Object[] {OD.craftingLeather, OD.paperEmpty, OD.paperEmpty, OD.paperEmpty});
 		
 		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', OP.cobblestone, 'F', OD.craftingFirestarter);
 		

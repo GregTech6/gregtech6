@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -52,7 +52,7 @@ public class Compat_Recipes_ActuallyAdditions extends CompatMods {
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1,  5), CR.DEF_REM_NCC, new Object[] {IL.Food_Fries});
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 20), CR.DEF_REM_NCC, new Object[] {IL.Food_Bacon_Cooked});
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 19), CR.DEF_REM_NCC, new Object[] {ST.make(MD.AA, "itemFood", 1, 10), "foodChocolatecream"});
-		CR.shapeless(ST.make(MD.AA, "itemFood", 1,  6), CR.DEF_REM_NCC, new Object[] {ST.make(Items.bowl, 1, W)                         , ST.make(MD.AA, "itemFood", 1, 7), ST.make(MD.AA, "itemFood", 1, 7), ST.make(MD.AA, "itemFood", 1, 7), "foodKetchup", OP.dust.dat(MT.MeatCooked)});
+		CR.shapeless(ST.make(MD.AA, "itemFood", 1,  6), CR.DEF_REM_NCC, new Object[] {Items.bowl                                        , ST.make(MD.AA, "itemFood", 1, 7), ST.make(MD.AA, "itemFood", 1, 7), ST.make(MD.AA, "itemFood", 1, 7), "foodKetchup", OP.dust.dat(MT.MeatCooked)});
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 14), CR.DEF_REM_NCC, new Object[] {IL.Food_Dough_Flat_Ketchup                        , "listAllfishcooked", "listAllmushroom", IL.Food_Carrot_Sliced, IL.Food_Carrot_Sliced, IL.Food_Carrot_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced});
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 13), CR.DEF_REM_NCC, new Object[] {IL.Food_Buns_Sliced                               , "listAllbeefcooked", IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cucumber_Sliced, IL.Food_Tomato_Sliced, IL.Food_Onion_Sliced});
 		CR.shapeless(ST.make(MD.AA, "itemFood", 1, 13), CR.DEF_REM_NCC, new Object[] {IL.Food_Bun_Sliced, IL.Food_Bun_Sliced            , "listAllbeefcooked", IL.Food_Cheese_Sliced, IL.Food_Cheese_Sliced, IL.Food_Cucumber_Sliced, IL.Food_Tomato_Sliced, IL.Food_Onion_Sliced});

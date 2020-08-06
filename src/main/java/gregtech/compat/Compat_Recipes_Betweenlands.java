@@ -58,18 +58,18 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		RM.sawing(16, 128, F, 100, ST.make(MD.BTL, "weedwoodChest"                  , 1, W), IL.BTL_Weedwood_Planks.get(8));
 		RM.sawing(16, 128, F, 100, ST.make(MD.BTL, "weedwoodJukebox"                , 1, W), IL.BTL_Weedwood_Planks.get(8), OP.gem.mat(MT.Valonite, 1));
 		
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(1), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "walkway"                       , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(1), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodPlanksButton"          , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodPlanksPressurePlate"   , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodSign"                  , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodPlanksFenceGate"       , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "mossBedItem"                   , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodTrapDoor"              , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(4), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodCraftingTable"         , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(5), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodRowboat"               , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(6), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "door_weedwood"                 , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodChest"                 , 1, W)});
-		CR.shapeless(IL.BTL_Weedwood_Planks.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.make(MD.BTL, "weedwoodJukebox"               , 1, W)});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(1), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "walkway"                    )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(1), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodPlanksButton"       )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodPlanksPressurePlate")});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodSign"               )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(2), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodPlanksFenceGate"    )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "mossBedItem"                )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(3), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodTrapDoor"           )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(4), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodCraftingTable"      )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(5), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodRowboat"            )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(6), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "door_weedwood"              )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodChest"              )});
+		CR.shapeless(IL.BTL_Weedwood_Planks.get(8), CR.DEF_NAC_NCC, new Object[] {OreDictToolNames.saw, ST.item(MD.BTL, "weedwoodJukebox"            )});
 		
 		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(MD.BTL, "plantDrop"              , 1, 0), ST.make(MD.BTL, "groundStuff", 1, 0));
 		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(MD.BTL, "plantDrop"              , 1,13), ST.make(MD.BTL, "groundStuff", 1, 1));

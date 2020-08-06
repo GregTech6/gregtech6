@@ -1485,9 +1485,6 @@ public class LoaderItemData implements Runnable {
 		OM.dat2(MD.NePl, "NetheriteBoots"                   , 1     , MT.NetherizedDiamond  ,  U * 4);
 		
 		
-		OM.data(MD.TF, "tile.GiantLog"                      , 1,   W, MT.WOODS.Oak          ,  U*512, MT.Bark, U*64);
-		OM.data(MD.TF, "tile.GiantCobble"                   , 1,   W, MT.Stone              ,  U *64);
-		OM.data(MD.TF, "tile.GiantObsidian"                 , 1,   W, MT.Obsidian           ,  U*576);
 		OM.dat2(MD.TF, "item.minotaurAxe"                   , 1     , MT.Diamond            ,  U * 4, ANY.Wood, OP.stick.mAmount * 2);
 		OM.data(MD.TF, "item.armorShards"                   , 1,   0, MT.Knightmetal        ,  U9);
 		OM.data(MD.TF, "item.shardCluster"                  , 1,   0, MT.Knightmetal        ,  U);

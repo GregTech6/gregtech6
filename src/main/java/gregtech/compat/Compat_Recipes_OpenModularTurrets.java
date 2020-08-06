@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,11 +64,11 @@ public class Compat_Recipes_OpenModularTurrets extends CompatMods {
 		RM.generify (ST.make(MD.OMT, "hardWallTierFour"         , 1, W), ST.make(BlocksGT.ConcreteReinforced    , 1, 7));
 		RM.generify (ST.make(MD.OMT, "hardWallTierFive"         , 1, W), ST.make(BlocksGT.ConcreteReinforced    , 1, 7));
 		
-		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierOne"   , 1, W)});
-		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierTwo"   , 1, W)});
-		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierThree" , 1, W)});
-		CR.shapeless(ST.make(BlocksGT.ConcreteReinforced        , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierFour"  , 1, W)});
-		CR.shapeless(ST.make(BlocksGT.ConcreteReinforced        , 1, 7), CR.DEF_NCC        , new Object[] {ST.make(MD.OMT, "hardWallTierFive"  , 1, W)});
+		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierOne"  )});
+		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierTwo"  )});
+		CR.shapeless(ST.make(BlocksGT.Concrete                  , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierThree")});
+		CR.shapeless(ST.make(BlocksGT.ConcreteReinforced        , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierFour" )});
+		CR.shapeless(ST.make(BlocksGT.ConcreteReinforced        , 1, 7), CR.DEF_NCC        , new Object[] {ST.item(MD.OMT, "hardWallTierFive" )});
 		
 		OM.data             (MD.OMT, "hardWallTierOne"          , 1, 0, MT.Concrete, U);
 		CR.shapeless(ST.make(MD.OMT, "hardWallTierOne"          , 1, 0), CR.DEF_NCC        , new Object[] {ST.make(BlocksGT.Concrete, 1, W)});

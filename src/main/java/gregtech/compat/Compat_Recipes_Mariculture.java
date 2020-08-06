@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,7 +46,7 @@ public class Compat_Recipes_Mariculture extends CompatMods {
 		CR.remove(IL.MaCu_Polished_Planks.get(1), null, null, IL.MaCu_Polished_Planks.get(1));
 		
 		RM.generify(ST.make(ItemsGT.BUMBLEBEES, 1, W), IL.MaCu_Bait_Bee.get(1));
-		CR.shapeless(IL.MaCu_Bait_Bee.get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(ItemsGT.BUMBLEBEES, 1, W)});
+		CR.shapeless(IL.MaCu_Bait_Bee.get(1), CR.DEF_NAC_NCC, new Object[] {ItemsGT.BUMBLEBEES});
 		
 		CR.shaped(ST.make(MD.MaCu, "crafting", 1,19), CR.DEF_NAC_REV_NCC, "h R", " R ", "R f", 'R', OP.stickLong.dat(MT.Ti));
 		

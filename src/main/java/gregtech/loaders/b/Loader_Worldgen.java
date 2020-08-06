@@ -523,16 +523,16 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresVanilla("twilight.ore.milkyquartz"  , T, BlocksGT.RockOres    ,  7,  1, 50, 100, 16, 32, null              , F, GEN_TWILIGHT);
 		
 		new WorldgenOresVanilla("twilight.ore.sulfur"       , T, BlocksGT.VanillaOresA,  0,  1, 16,   1,  0,  8, null              , F, GEN_TWILIGHT);
-		new WorldgenOresVanilla("twilight.ore.apatite"      , T, BlocksGT.VanillaOresA,  1,  1, 16,   1, 24, 32, null              , F, GEN_TWILIGHT);
+		new WorldgenOresVanilla("twilight.ore.apatite"      , T, BlocksGT.VanillaOresA,  1,  1, 16,   2, 24, 32, null              , F, GEN_TWILIGHT);
 		new WorldgenOresVanilla("twilight.ore.ruby"         , T, BlocksGT.VanillaOresA,  2,  1, 12,   1, 40, 52, null              , F, GEN_TWILIGHT);
 		new WorldgenOresVanilla("twilight.ore.amber"        , T, BlocksGT.VanillaOresA,  3,  1, 12,   1, 40, 52, null              , F, GEN_TWILIGHT);
 		new WorldgenOresVanilla("twilight.ore.amethyst"     , T, BlocksGT.VanillaOresA,  4,  1, 12,   1, 40, 52, null              , F, GEN_TWILIGHT);
-		new WorldgenOresVanilla("twilight.ore.galena"       , T, BlocksGT.VanillaOresA,  5,  1, 24,   2,  8, 32, null              , F, GEN_TWILIGHT);
-		new WorldgenOresVanilla("twilight.ore.tetrahedrite" , T, BlocksGT.VanillaOresA,  6,  1, 24,   2,  8, 32, null              , F, GEN_TWILIGHT);
-		new WorldgenOresVanilla("twilight.ore.cassiterite"  , T, BlocksGT.VanillaOresA,  7,  1, 24,   2,  8, 32, null              , F, GEN_TWILIGHT);
+		new WorldgenOresVanilla("twilight.ore.galena"       , T, BlocksGT.VanillaOresA,  5,  1, 24,   4,  8, 32, null              , F, GEN_TWILIGHT);
+		new WorldgenOresVanilla("twilight.ore.tetrahedrite" , T, BlocksGT.VanillaOresA,  6,  1, 24,   4,  8, 32, null              , F, GEN_TWILIGHT);
+		new WorldgenOresVanilla("twilight.ore.cassiterite"  , T, BlocksGT.VanillaOresA,  7,  1, 24,   4,  8, 32, null              , F, GEN_TWILIGHT);
 		new WorldgenOresVanilla("twilight.ore.cooperite"    , T, BlocksGT.VanillaOresA,  8,  1,  6,   1, 40, 52, null              , F, GEN_TWILIGHT);
-		new WorldgenOresVanilla("twilight.ore.pentlandite"  , T, BlocksGT.VanillaOresA,  9,  1, 16,   2,  8, 24, null              , F, GEN_TWILIGHT);
-		new WorldgenOresVanilla("twilight.ore.scheelite"    , T, BlocksGT.VanillaOresA, 10,  1, 12,   2,  8, 24, null              , F, GEN_TWILIGHT);
+		new WorldgenOresVanilla("twilight.ore.pentlandite"  , T, BlocksGT.VanillaOresA,  9,  1, 16,   4,  8, 24, null              , F, GEN_TWILIGHT);
+		new WorldgenOresVanilla("twilight.ore.scheelite"    , T, BlocksGT.VanillaOresA, 10,  1, 12,   4,  8, 24, null              , F, GEN_TWILIGHT);
 		new WorldgenOresVanilla("twilight.ore.rutile"       , T, BlocksGT.VanillaOresA, 11,  1,  6,   1,  8, 24, null              , F, GEN_TWILIGHT);
 		new WorldgenOresVanilla("twilight.ore.bastnasite"   , T, BlocksGT.VanillaOresA, 12,  1, 16,   1, 40, 52, null              , F, GEN_TWILIGHT);
 		new WorldgenOresVanilla("twilight.ore.graphite"     , T, BlocksGT.VanillaOresA, 13,  1,  6,   2,  0,  8, null              , F, GEN_TWILIGHT);

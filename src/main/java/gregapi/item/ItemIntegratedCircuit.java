@@ -51,7 +51,7 @@ public class ItemIntegratedCircuit extends ItemBase {
 		setMaxDamage(0);
 		
 		CR.shaped(ST.make(this, 1, 0), CR.DEF_REV_NCC, "GhG", "SSS", "GwG", 'G', OP.gearGtSmall.dat(ANY.Iron), 'S', OP.stick.dat(ANY.Iron));
-		CR.shapeless(ST.make(this, 1, 0), CR.DEF, new Object[] {ST.make(this, 1, W)});
+		CR.shapeless(ST.make(this, 1, 0), CR.DEF, new Object[] {this});
 		
 		CR.shaped(ST.make(this, 1, 1), CR.DEF, "d  ", " P ", "   ", 'P', ST.make(this, 1, W));
 		CR.shaped(ST.make(this, 1, 2), CR.DEF, " d ", " P ", "   ", 'P', ST.make(this, 1, W));

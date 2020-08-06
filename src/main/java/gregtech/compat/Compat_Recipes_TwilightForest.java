@@ -53,36 +53,39 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		
 		CR.shaped(IL.Torch.get(6), DEF_NAC, "X", "S", 'X', IL.TF_Torchberries, 'S', OP.stick.dat(ANY.Wood));
 		
-		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   ,  4, W), ST.make(MD.TF, "item.charmOfKeeping2" , 1, 0));
-		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   , 16, W), ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
-		RM.pack(ST.make(MD.TF, "item.charmOfKeeping2"   ,  4, W), ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
-		RM.pack(ST.make(MD.TF, "item.charmOfLife1"      ,  4, W), ST.make(MD.TF, "item.charmOfLife2"    , 1, 0));
+		// Since the Cube gives all Progress related TF Achievements with GT6, it is not that bad that you use up the 5 Trophies in Multiplayer.
+		CR.shapeless(IL.TF_Cube_of_Annihilation.get(1), new Object[] {IL.TF_Lamp_of_Cinders, ST.make(MD.TF, "tile.TFTowerDevice", 1, 12), IL.TF_Transformation_Powder, IL.TF_Giant_Obsidian, IL.TF_Trophy_Naga, IL.TF_Trophy_Lich, IL.TF_Trophy_Hydra, IL.TF_Trophy_Urghast, IL.TF_Trophy_Snowqueen});
 		
-		RM.unpack(ST.make(MD.TF, "item.charmOfKeeping2" , 1, W), ST.make(MD.TF, "item.charmOfKeeping1"  , 4, 0));
-		RM.unpack(ST.make(MD.TF, "item.charmOfKeeping3" , 1, W), ST.make(MD.TF, "item.charmOfKeeping2"  , 4, 0));
-		RM.unpack(ST.make(MD.TF, "item.charmOfLife2"    , 1, W), ST.make(MD.TF, "item.charmOfLife1"     , 4, 0));
+		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   , 4, W), ST.make(MD.TF, "item.charmOfKeeping2" , 1, 0));
+		RM.pack(ST.make(MD.TF, "item.charmOfKeeping1"   ,16, W), ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
+		RM.pack(ST.make(MD.TF, "item.charmOfKeeping2"   , 4, W), ST.make(MD.TF, "item.charmOfKeeping3" , 1, 0));
+		RM.pack(ST.make(MD.TF, "item.charmOfLife1"      , 4, W), ST.make(MD.TF, "item.charmOfLife2"    , 1, 0));
+		
+		RM.unpack(ST.make(MD.TF, "item.charmOfKeeping2" , 1, W), ST.make(MD.TF, "item.charmOfKeeping1" , 4, 0));
+		RM.unpack(ST.make(MD.TF, "item.charmOfKeeping3" , 1, W), ST.make(MD.TF, "item.charmOfKeeping2" , 4, 0));
+		RM.unpack(ST.make(MD.TF, "item.charmOfLife2"    , 1, W), ST.make(MD.TF, "item.charmOfLife1"    , 4, 0));
 		
 		ItemsGT.addNEIRedirects(ST.make(MD.TF, "item.charmOfKeeping1", 1, W), ST.make(MD.TF, "item.charmOfKeeping2", 1, W), ST.make(MD.TF, "item.charmOfKeeping3", 1, W));
-		ItemsGT.addNEIRedirects(ST.make(MD.TF, "item.charmOfLife1", 1, W), ST.make(MD.TF, "item.charmOfLife2", 1, W));
+		ItemsGT.addNEIRedirects(ST.make(MD.TF, "item.charmOfLife1"   , 1, W), ST.make(MD.TF, "item.charmOfLife2"   , 1, W));
 		
 		RM.sawing(16, 16, F,  2, ST.make(MD.TF, "tile.TFRoots", 1, 0), IL.Stick.get(6));
 		RM.sawing(16, 16, F,  6, ST.make(MD.TF, "tile.TFRoots", 1, 1), IL.TF_LiveRoot.get(2), IL.Stick.get(2));
 		
-		CR.remove(ST.make(MD.TF, "tile.GiantLog"        , 1, 0));
-		CR.remove(ST.make(MD.TF, "tile.GiantCobble"     , 1, 0));
-		CR.remove(ST.make(MD.TF, "tile.GiantObsidian"   , 1, 0));
-		CR.remove(ST.make(MD.TF, "tile.GiantLeaves"     , 1, 0));
+		CR.remove(ST.make(MD.TF, "tile.GiantLog"     , 1, 0));
+		CR.remove(ST.make(MD.TF, "tile.GiantCobble"  , 1, 0));
+		CR.remove(ST.make(MD.TF, "tile.GiantObsidian", 1, 0));
+		CR.remove(ST.make(MD.TF, "tile.GiantLeaves"  , 1, 0));
 		
-		RM.sawing(64, 64, F, 50, ST.make(MD.TF, "tile.GiantLog"         , 1, 0), ST.make(Blocks.log, 64, 0));
-		RM.sawing(64,256, F, 50, ST.make(MD.TF, "tile.GiantCobble"      , 1, 0), ST.make(Blocks.cobblestone, 64, 0));
-		RM.sawing(64,512, F, 50, ST.make(MD.TF, "tile.GiantObsidian"    , 1, 0), ST.make(Blocks.obsidian, 64, 0));
-		RM.sawing(64, 16, F, 50, ST.make(MD.TF, "tile.GiantLeaves"      , 1, 0), ST.make(Blocks.leaves, 64, 0));
+		RM.sawing(64, 64, F, 50, ST.make(MD.TF, "tile.GiantLog"     , 1, 0), ST.make(Blocks.log, 64, 0));
+		RM.sawing(64,256, F, 50, ST.make(MD.TF, "tile.GiantCobble"  , 1, 0), ST.make(Blocks.cobblestone, 64, 0));
+		RM.sawing(64,512, F, 50, ST.make(MD.TF, "tile.GiantObsidian", 1, 0), ST.make(Blocks.obsidian, 64, 0));
+		RM.sawing(64, 16, F, 50, ST.make(MD.TF, "tile.GiantLeaves"  , 1, 0), ST.make(Blocks.leaves, 64, 0));
 		
 		RM.Mixer.addRecipeX(T, 16, 64, ST.array(OM.dust(MT.Redstone, 4*U), IL.TF_BorerEssence.get(4), ST.make(Items.ghast_tear, 1, W)), IL.TF_Carminite.get(1));
 		
-		RM.Loom.addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.TF, "item.arcticFur", 5), ST.make(MD.TF, "item.arcticHelm", 1));
+		RM.Loom.addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.TF, "item.arcticFur", 5), ST.make(MD.TF, "item.arcticHelm" , 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(5), ST.make(MD.TF, "item.arcticFur", 8), ST.make(MD.TF, "item.arcticPlate", 1));
-		RM.Loom.addRecipe2(T, 16,  128, ST.tag(6), ST.make(MD.TF, "item.arcticFur", 7), ST.make(MD.TF, "item.arcticLegs", 1));
+		RM.Loom.addRecipe2(T, 16,  128, ST.tag(6), ST.make(MD.TF, "item.arcticFur", 7), ST.make(MD.TF, "item.arcticLegs" , 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(7), ST.make(MD.TF, "item.arcticFur", 4), ST.make(MD.TF, "item.arcticBoots", 1));
 		
 		// Those things are quite rare, so their low Durability is making them a tad bit too useless.
