@@ -86,14 +86,22 @@ public enum OD {
 	, plankWood
 	, stickAnyWood
 	, stickWood
-	, paperEmpty
 	, paperMap
+	, paperEmpty
+	, paperWritten
+	, paperWritable
+	, paperEnchanted
+	, bookEmpty
+	, bookWritten
+	, bookWritable
+	, bookEnchanted
 	, stairWood
 	, slabWood
 	, beamWood
 	, logWood
 	, logRubber
 	, woodLog
+	, woodRubber
 	, flower
 	, bamboo
 	, record
@@ -152,10 +160,6 @@ public enum OD {
 	, veggieBait
 	, fishtrapBait
 	, blockTorch
-	, bookEmpty
-	, bookWritten
-	, bookWritable
-	, bookEnchanted
 	, listAllmeatsubstitute
 	;
 	

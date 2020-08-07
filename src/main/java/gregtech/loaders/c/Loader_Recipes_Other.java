@@ -240,7 +240,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer.addRecipeX(T, 16,  256, ST.array(OM.dust(tRock, U* 6), ST.make(Blocks.sand ,  2, W), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Gray], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T, 16,  256, ST.array(OM.dust(tRock, U*24), ST.make(Blocks.sand ,  8, W), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Gray], 40), ZL_IS);
 		}
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Andesite, MT.Dacite, MT.Greywacke, MT.MoonRock, MT.MoonTurf}) {
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Andesite, MT.Dacite, MT.Deadrock, MT.Greywacke, MT.MoonRock, MT.MoonTurf}) {
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
 		RM.Mixer.addRecipeX(T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tMat        , U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightGray], 10), ZL_IS);
 		RM.Mixer.addRecipeX(T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tMat        , U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightGray], 40), ZL_IS);
@@ -342,7 +342,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Black));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Migmatite, MT.Eclogite, MT.SpaceRock})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_Gray));
-		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Andesite, MT.Dacite, MT.Greywacke, MT.MoonRock, MT.MoonTurf})
+		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Andesite, MT.Dacite, MT.Deadrock, MT.Greywacke, MT.MoonRock, MT.MoonTurf})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_LightGray));
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Blueschist})
 		RM.Mixer            .addRecipe1(T, 16,   16, OM.dust(tRock), MT.Asphalt.liquid(U, T), NF, ST.make(BlocksGT.Asphalt, 1, DYE_INDEX_LightBlue));

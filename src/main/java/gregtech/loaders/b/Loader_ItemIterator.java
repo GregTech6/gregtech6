@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,10 +25,10 @@ import java.util.Iterator;
 
 import gregapi.data.IL;
 import gregapi.data.MT;
+import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.oredict.OreDictItemData;
-import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -46,7 +46,7 @@ public class Loader_ItemIterator implements Runnable {
 		OM.data(CR.get(tStack = OP.ingot.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
 		OM.data(CR.get(tStack = OP.plate.mat(MT.Bronze, 1), tStack, tStack, tStack, null, tStack, tStack, tStack, tStack), new OreDictItemData(MT.Bronze, 8*U));
 		
-		OUT.println("GT_Mod: Scanning Food for the Canning Machine, and Wrenches/Crowbars for the Config.");
+		OUT.println("GT_Mod: Scanning Food for the Canning Machine.");
 		
 		boolean tCheckCans = (IL.IC2_Food_Can_Empty.exists() && IL.IC2_Food_Can_Filled.exists());
 		
@@ -75,18 +75,15 @@ public class Loader_ItemIterator implements Runnable {
 				// TODO: Gah, too lazy to install those Mods again to do it proper, and those are not Registry Names, that I could just plop in somewhere else, so welp...
 				
 				if (tName.equals("item.ItemSensorLocationCard") || tName.equals("item.ItemEnergySensorLocationCard") || tName.equals("item.ItemEnergyArrayLocationCard") || tName.equals("item.ItemTextCard")) {
-					RM.Assembler.addRecipe1(T, 16, 400, ST.make(tItem, 1, W), IL.Circuit_Basic.get(2));
+					RM.unpack(ST.make(tItem, 1, W), IL.Circuit_Basic.get(2));
 				}
 				if (tName.equals("item.ItemTimeCard")) {
-					RM.Assembler.addRecipe1(T, 16, 200, ST.make(tItem, 1, W), IL.Circuit_Basic.get(1));
-				}
-				if (tName.equals("tile.ArsMagica:ore_vinteum")) {
-					OreDictManager.INSTANCE.setTarget_(OP.oreVanillastone, MT.Vinteum, ST.make(tItem, 1, 0));
+					RM.unpack(ST.make(tItem, 1, W), IL.Circuit_Basic.get(1));
 				}
 				if (tName.equals("item.ccprintout")) {
-					OM.reg_("paperWritten", ST.make(tItem, 1, 0));
-					OM.reg_("paperWritten", ST.make(tItem, 1, 1));
-					OM.reg_("bookWritten", ST.make(tItem, 1, 2));
+					OM.reg_(OD.paperWritten, ST.make(tItem, 1, 0));
+					OM.reg_(OD.paperWritten, ST.make(tItem, 1, 1));
+					OM.reg_(OD.bookWritten , ST.make(tItem, 1, 2));
 				}
 			}
 		}

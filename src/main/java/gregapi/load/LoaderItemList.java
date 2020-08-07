@@ -361,7 +361,6 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.CastleBrick"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.CastleMagic"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.ForceField"            , 1, W));
-		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFShield"              , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantLeaves"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantCobble"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantObsidian"         , 1, W));
@@ -726,8 +725,12 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Dry_Bush                          .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,11));
 		IL.TF_Roots                             .set(ST.make(MD.TF, "tile.TFRoots"                          , 1, 0), new OreDictItemData(MT.Wood, U*3));
 		IL.TF_Liveroots                         .set(ST.make(MD.TF, "tile.TFRoots"                          , 1, 1), new OreDictItemData(MT.LiveRoot, U*2, MT.Wood, U));
-		IL.TF_Nagastone                         .set(ST.make(MD.TF, "tile.TFNagastone"                      , 1, 0));
-		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0));
+		IL.TF_Deadrock_Weathered                .set(ST.make(MD.TF, "tile.TFDeadrock"                       , 1, 0), OP.stone.dat(MT.Deadrock));
+		IL.TF_Deadrock_Cracked                  .set(ST.make(MD.TF, "tile.TFDeadrock"                       , 1, 1), OP.stone.dat(MT.Deadrock));
+		IL.TF_Deadrock                          .set(ST.make(MD.TF, "tile.TFDeadrock"                       , 1, 2), OP.stone.dat(MT.Deadrock));
+		IL.TF_Trollsteinn                       .set(ST.make(MD.TF, "tile.TrollSteinn"                      , 1, 0), OP.stone.dat(MT.Stone));
+		IL.TF_Nagastone                         .set(ST.make(MD.TF, "tile.TFNagastone"                      , 1, 0), OP.stone.dat(MT.Stone));
+		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0), OP.stone.dat(MT.Stone));
 		IL.TF_Mazehedge                         .set(ST.make(MD.TF, "tile.TFHedge"                          , 1, 0));
 		IL.TF_Uncrafting                        .set(ST.make(MD.TF, "tile.TFUncraftingTable"                , 1, 0));
 		IL.TF_Giant_Leaves                      .set(ST.make(MD.TF, "tile.GiantLeaves"                      , 1, 0));
