@@ -475,14 +475,18 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenTreeCoconut     ("tree.coconut"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_ATUM, GEN_TROPICS);
 		new WorldgenTreeRainbowood  ("tree.rainbowood"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_ALFHEIM, GEN_AETHER);
 		
-		new WorldgenRocks           ("rocks"                   , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS, GEN_ATUM);
+		new WorldgenRocks           ("overworld.rocks"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		new WorldgenRacks           ("nether.rocks"            , T, GEN_NETHER);
+		new WorldgenErebusRocks     ("erebus.rocks"            , T, GEN_EREBUS);
+		new WorldgenRocks           ("twilight.rocks"          , T, GEN_TWILIGHT);
+		new WorldgenRocks           ("tropics.rocks"           , T, GEN_TROPICS);
 		new WorldgenAlfheimRocks    ("alfheim.rocks"           , T, GEN_ALFHEIM);
 		new WorldgenAetherRocks     ("aether.rocks"            , T, GEN_AETHER);
-		new WorldgenErebusRocks     ("erebus.rocks"            , T, GEN_EREBUS);
+		new WorldgenRocks           ("atum.rocks"              , T, GEN_ATUM);
 		new WorldgenMoonRocks       ("moon.rocks"              , T, GEN_MOON);
 		new WorldgenMarsRocks       ("mars.rocks"              , T, GEN_MARS);
 		new WorldgenPlanetRocks     ("planet.rocks"            , T, GEN_PLANETS);
+		
 		new WorldgenSticks          ("sticks"                  , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM);
 		
 		new WorldgenGlowtus         ("plant.glowtus"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
