@@ -322,9 +322,9 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.OMT, "hardWallTierThree"         , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.OMT, "hardWallTierFour"          , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.OMT, "hardWallTierFive"          , 1, W));
-		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("reinforcedGlass"                   , 1));
-		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("reinforcedStone"                   , 1));
-		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("constructionFoamWall"              , 1));
+		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("reinforcedGlass"                   , 1   ));
+		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("reinforcedStone"                   , 1   ));
+		ItemsGT.SHOW_RESISTANCE.add(ST.mkic("constructionFoamWall"              , 1   ));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "container"                  , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "metalpanel"                 , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TG, "metalpanel2"                , 1, W));
@@ -350,10 +350,27 @@ public class LoaderItemList implements Runnable {
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.ELN, "Eln.Ore"                   , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFNagastone"           , 1, W));
 		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFMazestone"           , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFHedge"               , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFRoots"               , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFTowerStone"          , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFUnderBrick"          , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.AuroraBrick"           , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.AuroraPillar"          , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TrollSteinn"           , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFDeadrock"            , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.CastleBrick"           , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.CastleMagic"           , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.ForceField"            , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.TFShield"              , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantLeaves"           , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantCobble"           , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantObsidian"         , 1, W));
+		ItemsGT.SHOW_RESISTANCE.add(ST.make(MD.TF, "tile.GiantLog"              , 1, W));
 		
 		
 		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"  , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB" , null));
+		BlocksGT.harvestableSpade.add(ST.block(MD.TF, "tile.UberousSoil"            , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BoP, "mud"                        , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BoP, "driedDirt"                  , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BoP, "originGrass"                , null));
@@ -379,6 +396,7 @@ public class LoaderItemList implements Runnable {
 		
 		BlocksGT.plantableGreens.add(ST.block(MD.EB, "enhancedbiomes.tile.dirtEB"   , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.EB, "enhancedbiomes.tile.grassEB"  , null));
+		BlocksGT.plantableGreens.add(ST.block(MD.TF, "tile.UberousSoil"             , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.BoP, "mud"                         , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.BoP, "originGrass"                 , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.BoP, "longGrass"                   , null));
@@ -706,13 +724,15 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Mushgloom                         .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 9), new OreDictItemData(ANY.Glowstone, U4), OD.listAllmushroom);
 		IL.TF_Tall_Grass                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,10), null, OD.itemGrassTall);
 		IL.TF_Dry_Bush                          .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,11));
+		IL.TF_Roots                             .set(ST.make(MD.TF, "tile.TFRoots"                          , 1, 0), new OreDictItemData(MT.Wood, U*3));
+		IL.TF_Liveroots                         .set(ST.make(MD.TF, "tile.TFRoots"                          , 1, 1), new OreDictItemData(MT.LiveRoot, U*2, MT.Wood, U));
 		IL.TF_Nagastone                         .set(ST.make(MD.TF, "tile.TFNagastone"                      , 1, 0));
 		IL.TF_Mazestone                         .set(ST.make(MD.TF, "tile.TFMazestone"                      , 1, 0));
 		IL.TF_Mazehedge                         .set(ST.make(MD.TF, "tile.TFHedge"                          , 1, 0));
 		IL.TF_Uncrafting                        .set(ST.make(MD.TF, "tile.TFUncraftingTable"                , 1, 0));
 		IL.TF_Giant_Leaves                      .set(ST.make(MD.TF, "tile.GiantLeaves"                      , 1, 0));
-		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantObsidian"                    , 1, 0), new OreDictItemData(MT.Stone          , U *64));
-		IL.TF_Giant_Obsidian                    .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Obsidian       , U*576));
+		IL.TF_Giant_Cobble                      .set(ST.make(MD.TF, "tile.GiantCobble"                      , 1, 0), new OreDictItemData(MT.Stone          , U *64));
+		IL.TF_Giant_Obsidian                    .set(ST.make(MD.TF, "tile.GiantObsidian"                    , 1, 0), new OreDictItemData(MT.Obsidian       , U*576));
 		IL.TF_Giant_Log                         .set(ST.make(MD.TF, "tile.GiantLog"                         , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*512, MT.Bark, U*64));
 		IL.TF_Log_Oak                           .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 0), new OreDictItemData(MT.WOODS.Oak      , U*8, MT.Bark, U), OD.logWood);
 		IL.TF_Log_Canopy                        .set(ST.make(MD.TF, "tile.TFLog"                            , 1, 1), new OreDictItemData(MT.WOODS.Spruce   , U*8, MT.Bark, U), OD.logWood);
@@ -732,6 +752,8 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Trophy_Urghast                    .set(ST.make(MD.TF, "item.trophy"                           , 1, 3));
 		IL.TF_Trophy_Snowqueen                  .set(ST.make(MD.TF, "item.trophy"                           , 1, 4));
 		
+		// Those are bugged, so I gotta fix them ofcourse.
+		if (IL.TF_Liveroots      .exists()) IL.TF_Liveroots.item().setHasSubtypes(T);
 		// These Bottles should actually have an empty Variant.
 		if (IL.TF_Vial_FieryBlood.exists()) IL.TF_Vial_FieryBlood.item().setContainerItem(Items.glass_bottle);
 		if (IL.TF_Vial_FieryTears.exists()) IL.TF_Vial_FieryTears.item().setContainerItem(Items.glass_bottle);
