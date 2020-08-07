@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.FL;
@@ -62,8 +61,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		mFluid = aFluid;
 		setResistance(30);
 		setBlockName(aName);
-		GameRegistry.registerBlock(this, ItemBlock.class, aName);
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		ST.register(this, aName, ItemBlock.class);
 		LH.add(getLocalizedName()+".name", getLocalizedName()); // WAILA is retarded...
 		LH.add(getUnlocalizedName()+".name", getLocalizedName());
 		LH.add(getUnlocalizedName(), getLocalizedName());

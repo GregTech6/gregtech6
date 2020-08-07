@@ -30,6 +30,7 @@ import gregapi.tileentity.behavior.TE_Behavior_Energy_Stats;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
@@ -245,10 +246,31 @@ public class LH {
 	public static final String get(String aKey) {return LanguageHandler.translate(aKey);}
 	public static final String get(String aKey, String aDefault) {return LanguageHandler.translate(aKey, aDefault);}
 	
-	
 	public static final String percent(long aNumber) {return (aNumber/100) + ((aNumber%100)>9?"."+aNumber%100:".0"+(aNumber%100));}
 	
 	public static final String getToolTipBlastResistance(Block aBlock, double aResistance) {return Chat.WHITE + get(LH.TOOLTIP_BLASTRESISTANCE) + Chat.ORANGE + ((int)aResistance) + "." + (((int)(aResistance * 10)) % 10) + (aResistance < 4 ? Chat.BLINKING_RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TERRIBLE) : aResistance < 12 ? Chat.RED + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_GHAST) : aResistance < 16 ? Chat.YELLOW + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_CREEPER) : aResistance <= 40 ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_TNT) : aResistance < 3330 || (aBlock != NB && aBlock != null && COMPAT_IC2 != null && COMPAT_IC2.isExplosionWhitelisted(aBlock)) ? Chat.GREEN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_DYNAMITE) : Chat.BLINKING_CYAN + " " + get(LH.TOOLTIP_BLAST_RESISTANCE_NOT_NUKE));}
+	
+	public static final String getToolTipHarvest(Material aMaterial, String aHarvestTool, int aHarvestLevel) {
+		if (aMaterial.isAdventureModeExempt()) {
+			if (UT.Code.stringValid(aHarvestTool))
+			return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + "Hand-Harvestable, but " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + LH.Chat.DGRAY + " is faster";
+			return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + "Hand-Harvestable";
+		}
+		if (UT.Code.stringValid(aHarvestTool)) {
+			if (aHarvestLevel > 0)
+			return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool)) + " ("+aHarvestLevel+")";
+			return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + aHarvestTool, UT.Code.capitalise(aHarvestTool));
+		}
+		if (aMaterial == Material.rock || aMaterial == Material.iron || aMaterial == Material.anvil || aMaterial == Material.glass)
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "pickaxe") + "?";
+		if (aMaterial == Material.craftedSnow || aMaterial == Material.snow || aMaterial == Material.sand || aMaterial == Material.grass || aMaterial == Material.ground || aMaterial == Material.clay)
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "shovel") + "?";
+		if (aMaterial == Material.wood || aMaterial == Material.plants || aMaterial == Material.vine || aMaterial == Material.gourd || aMaterial == Material.cactus)
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "axe") + "?";
+		if (aMaterial == Material.leaves || aMaterial == Material.cloth || aMaterial == Material.carpet || aMaterial == Material.web)
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "sword") + "?";
+		return LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + "Unknown";
+	}
 	
 	public static final String getToolTipEfficiency(long aEfficiency) {aEfficiency = Math.abs(aEfficiency); return Chat.YELLOW + get(EFFICIENCY) + ": " + Chat.WHITE + percent(aEfficiency) + "%";}
 	

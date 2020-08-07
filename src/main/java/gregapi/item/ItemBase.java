@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,7 +23,6 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.TagData;
@@ -64,7 +63,7 @@ public class ItemBase extends Item implements IItemProjectile, IItemUpdatable, I
 		mModID = aModID;
 		LH.add(mName + ".name", aEnglish);
 		if (UT.Code.stringValid(aEnglishTooltip)) LH.add(mTooltip = mName + ".tooltip_main", aEnglishTooltip); else mTooltip = null;
-		GameRegistry.registerItem(this, mName);
+		ST.register(this, mName);
 		BlockDispenser.dispenseBehaviorRegistry.putObject(this, new GT_Item_Dispense());
 	}
 	

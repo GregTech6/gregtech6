@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Random;
 
 import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.IBlockBase;
 import gregapi.block.ItemBlockBase;
 import gregapi.compat.galacticraft.IBlockSealable;
@@ -72,8 +71,7 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 		setStepSound(soundTypeGrass);
 		setBlockName(mNameInternal = aNameInternal);
 		setCreativeTab(CreativeTabs.tabDecorations);
-		GameRegistry.registerBlock(this, aItemClass == null ? ItemBlockBase.class : aItemClass, getUnlocalizedName());
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		ST.register(this, mNameInternal, aItemClass);
 	}
 	
 	@Override public final String getUnlocalizedName() {return mNameInternal;}

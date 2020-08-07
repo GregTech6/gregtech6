@@ -23,6 +23,8 @@ import static gregapi.data.CS.*;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.render.ITexture;
@@ -30,6 +32,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -44,7 +47,6 @@ public class ItemBlockBase extends ItemBlock {
 		mPlaceable = (IBlockBase)aBlock;
 		setMaxDamage(0);
 		setHasSubtypes(T);
-		setCreativeTab(aBlock.getCreativeTabToDisplayOn());
 	}
 	
 	@Override
@@ -84,10 +86,11 @@ public class ItemBlockBase extends ItemBlock {
 		if (mPlaceable.doesPistonPush(aMeta)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_PISTONPUSHABLE));
 		if (mPlaceable.getFlammability(aMeta) > 0) aList.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE));
 		float tResistance = mPlaceable.getExplosionResistance(aMeta);
-		if (tResistance > 0) aList.add(LH.getToolTipBlastResistance(field_150939_a, tResistance));
-		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + field_150939_a.getHarvestTool(aMeta), "Unknown") + " (" + field_150939_a.getHarvestLevel(aMeta) + ")");
+		if (tResistance >= 4) aList.add(LH.getToolTipBlastResistance(field_150939_a, tResistance));
+		aList.add(LH.getToolTipHarvest(field_150939_a.getMaterial(), field_150939_a.getHarvestTool(aMeta), field_150939_a.getHarvestLevel(aMeta)));
 	}
 	
+	@Override @SideOnly(Side.CLIENT) public CreativeTabs getCreativeTab() {return field_150939_a.getCreativeTabToDisplayOn();}
 	@Override public boolean func_150936_a(World aWorld, int aX, int aY, int aZ, int aSide, EntityPlayer aPlayer, ItemStack aStack) {return T;}
 	@Override public boolean onItemUseFirst(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {return mPlaceable.onItemUseFirst(this, aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ);}
 	@Override public boolean onItemUse(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ) {return mPlaceable.onItemUse(this, aStack, aPlayer, aWorld, aX, aY, aZ, aSide, aHitX, aHitY, aHitZ);}

@@ -122,13 +122,7 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 			float tResistance = ((IMTE_GetExplosionResistance)tTileEntityContainer.mTileEntity).getExplosionResistance();
 			if (tResistance >= 4) aList.add(LH.getToolTipBlastResistance(mBlock, tResistance));
 		}
-		int tHarvestLevel = tTileEntityContainer.mBlock.getHarvestLevel(tTileEntityContainer.mBlockMetaData);
-		String tHarvestTool = tTileEntityContainer.mBlock.getHarvestTool(tTileEntityContainer.mBlockMetaData);
-		if (tHarvestLevel == 0 && tTileEntityContainer.mBlock.getMaterial().isAdventureModeExempt()) {
-			aList.add(LH.Chat.DGRAY + "Hand-Harvestable, but " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + tHarvestTool, "Unknown") + LH.Chat.DGRAY + " is faster");
-		} else {
-			aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + tHarvestTool, "Unknown") + " (" + tHarvestLevel + ")");
-		}
+		aList.add(LH.getToolTipHarvest(tTileEntityContainer.mBlock.getMaterial(), tTileEntityContainer.mBlock.getHarvestTool(tTileEntityContainer.mBlockMetaData), tTileEntityContainer.mBlock.getHarvestLevel(tTileEntityContainer.mBlockMetaData)));
 		// Remove all Nulls and fix eventual Formatting mistakes.
 		for (int i = 0, j = aList.size(); i < j; i++) if (aList.get(i) == null) {aList.remove(i--); j--;} else aList.set(i, LH.Chat.GRAY + aList.get(i) + LH.Chat.RESET);
 	}

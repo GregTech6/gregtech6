@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.GT_API_Proxy;
 import gregapi.block.IBlockSyncData;
 import gregapi.block.IBlockToolable;
@@ -212,14 +211,11 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 		opaque = mOpaque;
 		lightOpacity = mOpaque ? 255 : 0;
 		
-		GameRegistry.registerBlock(this, aItemClass==null?PrefixBlockItem.class:aItemClass, mNameInternal);
+		ST.register(this, mNameInternal, aItemClass==null?PrefixBlockItem.class:aItemClass);
 		
 		mPrefix.mRegisteredItems.add(this); // this optimizes some processes by decreasing the size of the Set.
 		
-		if (COMPAT_IC2 != null) {
-			COMPAT_IC2.addToExplosionWhitelist(this);
-			if (mPrefix.contains(TD.Prefix.ORE)) for (byte i = 0; i < 16; i++) COMPAT_IC2.valuable(this, i, 3);
-		}
+		if (COMPAT_IC2 != null && mPrefix.contains(TD.Prefix.ORE) && mBaseHardness >= 0) for (byte i = 0; i < 16; i++) COMPAT_IC2.valuable(this, i, 3);
 		
 		if (mOpaque) VISUALLY_OPAQUE_BLOCKS.add(this);
 		mDrops = aDrops==null?new Drops(this, this):aDrops;

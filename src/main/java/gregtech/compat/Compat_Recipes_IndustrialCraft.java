@@ -96,6 +96,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		CR.remove(ST.make(Items.lava_bucket, 1, 0), IL.Cell_Empty.get(1));
 		CR.remove(ST.make(Items.water_bucket, 1, 0), IL.Cell_Empty.get(1));
 		
+		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(Blocks.bedrock);
+		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis) {
 			ItemStack tStack = OP.casingMachine.mat(tMat, 1);
 			if (ST.valid(tStack)) RM.generify(tStack, IL.IC2_Machine.get(1));

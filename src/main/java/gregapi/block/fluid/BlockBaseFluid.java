@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.IBlockOnHeadInside;
@@ -34,6 +33,7 @@ import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -71,8 +71,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		setResistance(30);
 		mFlammability = aFlammability;
 		setBlockName(mNameInternal = aNameInternal);
-		GameRegistry.registerBlock(this, ItemBlock.class, mNameInternal);
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		ST.register(this, mNameInternal, ItemBlock.class);
 		LH.add(getLocalizedName()+".name", getLocalizedName()); // WAILA is retarded...
 		// Speaking of retarded, only allowing one type of Block per Fluid is retarded too! So I guess I gotta override all pre-existing Fluids with my Version to make sure shit works.
 		UT.Reflection.setField(Fluid.class, aFluid, "block", this);

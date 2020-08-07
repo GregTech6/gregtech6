@@ -441,7 +441,6 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Plastic                , ST.make(MD.TG, "TechgunsAmmo", 1, 72));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Plastic                , ST.make(MD.TG, "TechgunsAmmo", 1, 71));
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.U_235                  , ST.make(MD.TG, "TechgunsAmmo", 1,102));
-		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Stone                  , ST.make(MD.FMB, "stoneRod", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Bark                   , ST.make(MD.BINNIE_TREE, "misc", 1, 2));
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Ash                    , ST.make(MD.BINNIE_BOTANY, "misc", 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.dustSmall      , MT.Wood                   , ST.make(MD.BINNIE_BOTANY, "misc", 1, 1));

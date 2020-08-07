@@ -366,7 +366,10 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.WR_CBE_C.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.stick  , MT.Obsidian      , ST.make(MD.WR_CBE_C, "obsidianStick", 1, 0));
 		}
-
+		if (MD.FMB.mLoaded) {
+			OreDictManager.INSTANCE.setTarget(OP.stick  , MT.Stone         , ST.make(MD.FMB, "stoneRod", 1, 0));
+		}
+		
 		// Oh look, Matter Overdrive does this shit too...
 		if (MD.MO.mLoaded) {
 			OreDictManager.INSTANCE.setTarget(OP.gem    , MT.Dilithium     , ST.make(MD.MO, "dilithium_crystal", 1, 0));

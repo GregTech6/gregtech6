@@ -27,6 +27,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import gregapi.block.ItemBlockBase;
 import gregapi.code.IItemContainer;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
@@ -216,6 +217,15 @@ public class ST {
 	public static boolean ownedBy (String  aMod, Item         aItem                         ) {return ownedBy(aMod, regName(aItem));}
 	public static boolean ownedBy (String  aMod, String       aRegName                      ) {return aRegName != null && aMod != null && ownedBy_(aMod, aRegName);}
 	public static boolean ownedBy_(String  aMod, String       aRegName                      ) {return aRegName.startsWith(aMod);}
+	
+	public static void register(Item aItem, String aRegistryName) {
+		GameRegistry.registerItem(aItem, aRegistryName);
+	}
+	public static void register(Block aBlock, String aRegistryName) {register(aBlock, aRegistryName, null);}
+	public static void register(Block aBlock, String aRegistryName, Class<? extends ItemBlock> aItemClass) {
+		GameRegistry.registerBlock(aBlock, aItemClass == null ? ItemBlockBase.class : aItemClass, aRegistryName);
+		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(aBlock);
+	}
 	
 	public static ItemStack set(ItemStack aSetStack, ItemStack aToStack) {
 		return set(aSetStack, aToStack, T, T);
@@ -856,12 +866,14 @@ public class ST {
 	}
 	
 	public static void hide(Item aItem) {
+		for (int i = 0; i < 16; i++) hide(aItem, i);
 		hide(aItem, W);
 	}
 	public static void hide(Item aItem, long aMeta) {
 		hide(make(aItem, 1, aMeta));
 	}
 	public static void hide(Block aBlock) {
+		for (int i = 0; i < 16; i++) hide(aBlock, i);
 		hide(aBlock, W);
 	}
 	public static void hide(Block aBlock, long aMeta) {

@@ -56,6 +56,12 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		// Since the Cube gives all Progress related TF Achievements with GT6, it is not that bad that you use up the 5 Trophies in co-op Multiplayer. Oh and yes I know the Lamp of Cinders has itself as Container Item, that is intended as you just need to "have" it.
 		CR.shapeless(IL.TF_Cube_of_Annihilation.get(1), new Object[] {IL.TF_Lamp_of_Cinders, ST.make(MD.TF, "tile.TFTowerDevice", 1, 12), IL.TF_Transformation_Powder, IL.TF_Giant_Obsidian, IL.TF_Trophy_Hydra, IL.TF_Trophy_Urghast, IL.TF_Trophy_Naga, IL.TF_Trophy_Lich, IL.TF_Trophy_Snowqueen});
 		
+		if (COMPAT_IC2 != null) {
+			COMPAT_IC2.addToExplosionWhitelist(ST.block(MD.TF, "tile.GiantObsidian"));
+			COMPAT_IC2.addToExplosionWhitelist(ST.block(MD.TF, "tile.TFDeadrock"));
+			COMPAT_IC2.addToExplosionWhitelist(ST.block(MD.TF, "tile.TFShield"));
+		}
+		
 		ItemsGT.addNEIRedirects(ST.make(MD.TF, "item.charmOfKeeping1", 1, W), ST.make(MD.TF, "item.charmOfKeeping2", 1, W), ST.make(MD.TF, "item.charmOfKeeping3", 1, W));
 		ItemsGT.addNEIRedirects(ST.make(MD.TF, "item.charmOfLife1"   , 1, W), ST.make(MD.TF, "item.charmOfLife2"   , 1, W));
 		

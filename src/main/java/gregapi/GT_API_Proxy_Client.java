@@ -74,7 +74,6 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderFallingBlock;
 import net.minecraft.creativetab.CreativeTabs;
@@ -260,28 +259,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				} else {
 					aEvent.toolTip.add(LH.getToolTipBlastResistance(aBlock, aBlock.getExplosionResistance(null)));
 				}
-				
-				int tHarvestLevel = Math.max(0, aBlock.getHarvestLevel(aBlockMeta));
-				String tHarvestTool = aBlock.getHarvestTool(aBlockMeta); 
-				if (UT.Code.stringValid(tHarvestTool)) {
-					if (tHarvestLevel > 0) {
-						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + tHarvestTool, UT.Code.capitalise(tHarvestTool)) + " ("+tHarvestLevel+")");
-					} else {
-						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + tHarvestTool, UT.Code.capitalise(tHarvestTool)));
-					}
-				} else {
-					if (aBlock.getMaterial() == Material.rock || aBlock.getMaterial() == Material.iron || aBlock.getMaterial() == Material.anvil || aBlock.getMaterial() == Material.glass) {
-						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "pickaxe") + "?");
-					} else if (aBlock.getMaterial() == Material.craftedSnow || aBlock.getMaterial() == Material.snow || aBlock.getMaterial() == Material.sand || aBlock.getMaterial() == Material.grass || aBlock.getMaterial() == Material.ground || aBlock.getMaterial() == Material.clay) {
-						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "shovel") + "?");
-					} else if (aBlock.getMaterial() == Material.wood || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.vine || aBlock.getMaterial() == Material.gourd || aBlock.getMaterial() == Material.cactus) {
-						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "axe") + "?");
-					} else if (aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.carpet || aBlock.getMaterial() == Material.web) {
-						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + LH.get(TOOL_LOCALISER_PREFIX + "sword") + "?");
-					} else {
-						aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_HARVEST) + ": " + LH.Chat.WHITE + "Unknown");
-					}
-				}
+				aEvent.toolTip.add(LH.getToolTipHarvest(aBlock.getMaterial(), aBlock.getHarvestTool(aBlockMeta), aBlock.getHarvestLevel(aBlockMeta)));
 			}
 			if (BlocksGT.openableCrowbar.contains(aBlock)) {
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_OPEN_CROWBAR));
@@ -468,11 +446,10 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		if (aEvent.phase == Phase.END) {
 			// Now for hiding stuff from NEI that should have never been there in the first place.
 			if (mNeedsToHideMicroblocks) {
-				if (!SHOW_MICROBLOCKS && NEI) for (ItemStack aStack : ST.array(ST.make(MD.FMB, "microblock", 1, W), ST.make(MD.ExU, "microblocks", 1, W), ST.make(MD.AE, "item.ItemFacade", 1, W))) if (ST.valid(aStack)) {
-					ST.hide(aStack);
-
+				if (!SHOW_MICROBLOCKS && NEI) for (Item aItem : new Item[] {ST.item(MD.FMB, "microblock"), ST.item(MD.ExU, "microblocks"), ST.item(MD.AE, "item.ItemFacade")}) if (aItem != null) {
+					ST.hide(aItem);
 					List<ItemStack> tList = new ArrayListNoNulls<>();
-					aStack.getItem().getSubItems(aStack.getItem(), CreativeTabs.tabAllSearch, tList);
+					aItem.getSubItems(aItem, CreativeTabs.tabAllSearch, tList);
 					for (ItemStack tStack : tList) ST.hide(tStack);
 				}
 				mNeedsToHideMicroblocks = F;

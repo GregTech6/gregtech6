@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -147,12 +147,12 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 	
 	@Override
 	public boolean isExplosionWhitelisted(Block aBlock) {
-		return ic2.api.tile.ExplosionWhitelist.isBlockWhitelisted(aBlock);
+		return aBlock != null && aBlock != NB ? ic2.api.tile.ExplosionWhitelist.isBlockWhitelisted(aBlock) : F;
 	}
 	
 	@Override
 	public void addToExplosionWhitelist(Block aBlock) {
-		ic2.api.tile.ExplosionWhitelist.addWhitelistedBlock(aBlock);
+		if (aBlock != null && aBlock != NB) ic2.api.tile.ExplosionWhitelist.addWhitelistedBlock(aBlock);
 	}
 	
 	@Override public Object makeInput(ItemStack aStack) {return new RecipeInputItemStack(ST.copy(aStack), aStack.stackSize);}

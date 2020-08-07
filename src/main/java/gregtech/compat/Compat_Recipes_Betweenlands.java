@@ -45,6 +45,8 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		// Weedwood Bowl
 		CR.shaped(ST.make(MD.BTL, "unknownGeneric", 1, 25), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankWeedwood);
 		
+		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(IL.BTL_Bedrock.block());
+		
 		RM.sawing(16,  16, F, 100, ST.make(MD.BTL, "walkway"                        , 1, W), IL.BTL_Weedwood_Planks.get(1), OM.dust(MT.Weedwood, U3));
 		RM.sawing(16,  16, F, 100, ST.make(MD.BTL, "weedwoodPlanksButton"           , 1, W), IL.BTL_Weedwood_Planks.get(1));
 		RM.sawing(16,  32, F, 100, ST.make(MD.BTL, "weedwoodPlanksPressurePlate"    , 1, W), IL.BTL_Weedwood_Planks.get(2));

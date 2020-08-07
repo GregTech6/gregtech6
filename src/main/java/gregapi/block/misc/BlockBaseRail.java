@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Random;
 
 import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.IBlockBase;
 import gregapi.block.ItemBlockBase;
 import gregapi.compat.galacticraft.IBlockSealable;
@@ -75,8 +74,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 		super(aPowerRail || aDetectorRail);
 		setBlockName(mNameInternal = aNameInternal);
 		setCreativeTab(CreativeTabs.tabTransport);
-		GameRegistry.registerBlock(this, aItemClass == null ? ItemBlockBase.class : aItemClass, getUnlocalizedName());
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		ST.register(this, mNameInternal, aItemClass);
 		LH.add(mNameInternal+".name", aLocalName);
 		mExplosionResistance = aExplosionResistance;
 		mHarvestLevel = aHarvestLevel;

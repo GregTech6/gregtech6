@@ -24,7 +24,6 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.data.LH;
 import gregapi.data.OP;
 import gregapi.util.ST;
@@ -60,10 +59,9 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	public BlockBase(Class<? extends ItemBlock> aItemClass, String aNameInternal, Material aMaterial, SoundType aSoundType) {
 		super(aMaterial);
 		setStepSound(aSoundType);
-		setCreativeTab(CreativeTabs.tabBlock);
 		setBlockName(mNameInternal = aNameInternal);
-		GameRegistry.registerBlock(this, aItemClass == null ? ItemBlockBase.class : aItemClass, getUnlocalizedName());
-		if (COMPAT_IC2 != null) COMPAT_IC2.addToExplosionWhitelist(this);
+		setCreativeTab(CreativeTabs.tabBlock);
+		ST.register(this, mNameInternal, aItemClass);
 		LH.add(mNameInternal+"."+W+".name", "Any Sub-Block of this one");
 	}
 	
