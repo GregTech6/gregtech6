@@ -150,9 +150,8 @@ public class WorldgenOresBedrock extends WorldgenObject {
 							int tX = aMinX+aRandom.nextInt(32)-8, tZ = aMinZ+aRandom.nextInt(32)-8;
 							for (int tY = tMaxHeight; tY > tMinHeight; tY--) {
 								Block tContact = aWorld.getBlock(tX, tY, tZ);
-								if (tContact.getMaterial().isLiquid()) break;
-								if (!tContact.isOpaqueCube()) continue;
-								if (tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
+								if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
+								if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
 								if (!WD.easyRep(aWorld, tX, tY+1, tZ)) break;
 								if (mIndicatorFlowers && (tContact != Blocks.dirt || !BIOMES_WASTELANDS.contains(aBiomes[8][8].biomeName)) && (!mIndicatorRocks || aRandom.nextInt(4) > 0)) {
 									WD.set(aWorld, tX, tY+1, tZ, mFlower, mFlowerMeta, 0);

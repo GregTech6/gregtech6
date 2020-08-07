@@ -147,7 +147,7 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 	
 	@Override
 	public boolean isExplosionWhitelisted(Block aBlock) {
-		return aBlock != null && aBlock != NB ? ic2.api.tile.ExplosionWhitelist.isBlockWhitelisted(aBlock) : F;
+		return aBlock != null && aBlock != NB && ic2.api.tile.ExplosionWhitelist.isBlockWhitelisted(aBlock);
 	}
 	
 	@Override

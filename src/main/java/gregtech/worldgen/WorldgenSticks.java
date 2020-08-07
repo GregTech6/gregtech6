@@ -61,8 +61,8 @@ public class WorldgenSticks extends WorldgenObject {
 			for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
 				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
 				if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
-				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
-				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground) continue;
+				if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
+				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground) break;
 				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32756, null, F, T);
 				break;
 			}

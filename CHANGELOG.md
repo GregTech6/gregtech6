@@ -29,7 +29,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.14.01: (Not released yet, happens whenever a Bugfix needs to be released, Bear is still testing GT6, while I'm working on GT6 again for some dumb reason)
+6.14.01: (Not released yet, I am still working on a ton of Twilight Forest Compat)
 [COMPAT] Twilight Forest
 Way better Ore Generation, and allowing Vanilla Ores again in there. GT5 Style Ore Generation is now completely gone from Twilight Forest.
 In case the Ores look familiar to you, I grabbed and sometimes modified some Textures from previous GT Versions for this.
@@ -38,6 +38,7 @@ I also added the 8 Rock-Layer-Ores in Blob form to there, getting the total coun
 Those specific 24 Ores are also not TileEntity based so the Ore Magnet and the Miner Tree work on those just fine.
 Some Ores only generate above Y=40, meaning you have to find a Hollow Hill, Hydra Cave, Yeti Cave or the Twilight Highlands for them, and some unimportant ones are also Biome dependent in order for them to not be spammed everywhere.
 Thaumcraft and Ars Magica will have their important Ores generate in the Enchanted Forest Biome when installed, even if their own Worldgen is disabled.
+Netherite Plus will have its Ancient Debris spawn in the Deadrock near the final Twilight Castle, so you don't have to go to the Nether for it.
 Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator Flowers and Rocks were not generating all that often, due to the giant Leaf Canopy blocking the Generation-Ray-Trace from the Sky (which now ignores specifically Logs and Leaves).
 [FIXED] Minor Serverside Lag of GT6 Electric Transformers when IC2 is installed. This should reduce the occurences of it quite a bit, at least with GT6 TileEntities adjacent to the Transformer.
 [FIXED] Unscanned Forestry Bees (and some other things) randomly became not properly stackable, whenever a GT6 thing storing them got unloaded and reloaded. (this wont fix any already done problems to the stackability)

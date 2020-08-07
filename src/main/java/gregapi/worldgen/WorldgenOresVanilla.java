@@ -25,6 +25,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
+import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -33,15 +35,20 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public class WorldgenOresVanilla extends WorldgenBlob {
+	public final Block mReplaceBlock;
+	public final byte mReplaceMeta;
+	
 	@SafeVarargs
-	public WorldgenOresVanilla(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List<WorldgenObject>... aLists) {
+	public WorldgenOresVanilla(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Block aReplaceBlock, int aReplaceMeta, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aBlock, aBlockMeta, aAmount, aSize, aProbability, aMinY, aMaxY, aBiomeList, aAllowToGenerateinVoid, aLists);
+		mReplaceBlock = aReplaceBlock;
+		mReplaceMeta  = UT.Code.bind4(aReplaceMeta);
 	}
 	
 	@Override
 	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom) {
 		Block tTargetedBlock = aWorld.getBlock(aX, aY, aZ);
 		if (tTargetedBlock == NB || tTargetedBlock.isAir(aWorld, aX, aY, aZ)) return mAllowToGenerateinVoid && aWorld.setBlock(aX, aY, aZ, mBlock, mBlockMeta, 0);
-		return tTargetedBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) && aWorld.setBlock(aX, aY, aZ, mBlock, mBlockMeta, 0);
+		return (mReplaceBlock == null ? tTargetedBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone) : tTargetedBlock == mReplaceBlock && WD.meta(aWorld, aX, aY, aZ) == mReplaceMeta) && aWorld.setBlock(aX, aY, aZ, mBlock, mBlockMeta, 0);
 	}
 }

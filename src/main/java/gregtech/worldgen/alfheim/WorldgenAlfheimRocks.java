@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -32,6 +32,7 @@ import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -54,9 +55,9 @@ public class WorldgenAlfheimRocks extends WorldgenObject {
 			int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
 			for (int tY = 80+aRandom.nextInt(80); tY > 60; tY--) {
 				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
-				if (tContact.getMaterial().isLiquid()) break;
-				if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
-				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) continue;
+				if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
+				if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
+				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) break;
 				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)==0?ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)):null, F, T);
 				break;
 			}

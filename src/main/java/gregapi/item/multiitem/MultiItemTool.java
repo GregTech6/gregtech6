@@ -280,7 +280,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		IToolStats tStats = getToolStats(aStack);
 		if (tMaxDamage > 0 && tStats != null) {
 			aList.add(LH.Chat.WHITE + "Durability: " + LH.Chat.GREEN + (tMaxDamage - tDamage) + " / " + tMaxDamage + LH.Chat.GRAY);
-			aList.add(LH.Chat.WHITE + tMaterial.getLocal() + LH.Chat.YELLOW + " lvl " + getHarvestLevel(aStack, "") + LH.Chat.GRAY);
+			aList.add(LH.Chat.WHITE + tMaterial.getLocal() + LH.Chat.YELLOW + " lvl " + (tStats.getBaseQuality() + tMaterial.mToolQuality) + LH.Chat.GRAY);
 			float tCombat = getToolCombatDamage(aStack);
 			aList.add(LH.Chat.WHITE + "Attack Damage: " + LH.Chat.BLUE + "+" + (((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? tCombat * TFC_DAMAGE_MULTIPLIER : tCombat) + LH.Chat.RED + " (= " + ((MD.TFC.mLoaded || MD.TFCP.mLoaded) ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)"))  + LH.Chat.GRAY);
 			aList.add(LH.Chat.WHITE + "Mining Speed: " + LH.Chat.PINK + Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * getPrimaryMaterial(aStack).mToolSpeed) + LH.Chat.GRAY);
@@ -417,7 +417,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
 		if ((IL.TF_Mazestone.equal(aBlock) || IL.TF_Mazehedge.equal(aBlock)) && tMaterial.contains(TD.Properties.MAZEBREAKER)) tMultiplier *= 40;
 		IToolStats tStats = getToolStats(aStack);
-		if (tStats == null || tStats.getBaseQuality() + tMaterial.mToolQuality < aBlock.getHarvestLevel(aMeta)) return 0;
+		if (tStats == null || tStats.getBaseQuality() + tMaterial.mToolQuality < UT.Code.bind4(aBlock.getHarvestLevel(aMeta))) return 0;
 		return tStats.getMiningSpeed(aBlock, (byte)aMeta) * Math.max(Float.MIN_NORMAL, tStats.getSpeedMultiplier() * tMultiplier * tMaterial.mToolSpeed);
 	}
 	
@@ -429,7 +429,9 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	@Override
 	public final int getHarvestLevel(ItemStack aStack, String aToolClass) {
 		IToolStats tStats = getToolStats(aStack);
-		return tStats == null ? -1 : tStats.getBaseQuality() + getPrimaryMaterial(aStack).mToolQuality; 
+		if (tStats == null) return -1;
+		int rValue = tStats.getBaseQuality() + getPrimaryMaterial(aStack).mToolQuality;
+		return rValue < 15 ? rValue : Integer.MAX_VALUE; 
 	}
 	
 	@Override
