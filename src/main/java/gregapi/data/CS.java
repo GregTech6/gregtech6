@@ -2031,7 +2031,63 @@ public class CS {
 
 		, MISSING = null;
 	}
-
+	
+	public static final Map<String, String> TRANSFORMATION_POWDER_SPAWNER_MAP = new HashMap<>();
+	
+	static {
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Minotaur"          , "PigZombie"    );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Wild Deer"         , "Cow"          );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Bighorn Sheep"     , "Sheep"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Wild Boar"         , "Pig"          );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Forest Raven"      , "Bat"          );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Hostile Wolf"      , "Wolf"         );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Glacier Penguin"   , "Chicken"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Hedge Spider"      , "Spider"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Swarm Spider"      , "CaveSpider"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Twilight Wraith"   , "Blaze"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Redcap"            , "Zombie"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Skeleton Druid"    , "Witch"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Tower Termite"     , "Silverfish"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Redcap Sapper"     , "Creeper"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Mini Ghast"        , "Ghast"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Mist Wolf"         , "Enderman"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.King Spider"       , "Skeleton"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Slime Beetle"      , "Slime"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Fire Beetle"       , "LavaSlime"    );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Tower Golem"       , "VillagerGolem");
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Firefly"           , "Squid"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Redscale Broodling", "MushroomCow"  );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Pinch Beetle"      , "EntityHorse"  );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Forest Squirrel"   , "Ozelot"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("TwilightForest.Forest Bunny"      , "SnowMan"      );
+		
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("PigZombie"    , "TwilightForest.Minotaur"          );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Cow"          , "TwilightForest.Wild Deer"         );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Sheep"        , "TwilightForest.Bighorn Sheep"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Pig"          , "TwilightForest.Wild Boar"         );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Bat"          , "TwilightForest.Forest Raven"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Wolf"         , "TwilightForest.Hostile Wolf"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Chicken"      , "TwilightForest.Glacier Penguin"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Spider"       , "TwilightForest.Hedge Spider"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("CaveSpider"   , "TwilightForest.Swarm Spider"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Blaze"        , "TwilightForest.Twilight Wraith"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Zombie"       , "TwilightForest.Redcap"            );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Witch"        , "TwilightForest.Skeleton Druid"    );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Silverfish"   , "TwilightForest.Tower Termite"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Creeper"      , "TwilightForest.Redcap Sapper"     );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Ghast"        , "TwilightForest.Mini Ghast"        );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Enderman"     , "TwilightForest.Mist Wolf"         );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Skeleton"     , "TwilightForest.King Spider"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Slime"        , "TwilightForest.Slime Beetle"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("LavaSlime"    , "TwilightForest.Fire Beetle"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("VillagerGolem", "TwilightForest.Tower Golem"       );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Squid"        , "TwilightForest.Firefly"           );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("MushroomCow"  , "TwilightForest.Redscale Broodling");
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("EntityHorse"  , "TwilightForest.Pinch Beetle"      );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("Ozelot"       , "TwilightForest.Forest Squirrel"   );
+		TRANSFORMATION_POWDER_SPAWNER_MAP.put("SnowMan"      , "TwilightForest.Forest Bunny"      );
+	}
+	
 	/** File Paths and Resource Paths */
 	public static final String
 	  TEX_DIR                   = "textures/"

@@ -123,7 +123,9 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.MobSpawnerBaseLogic;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
@@ -869,6 +871,26 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.chat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) aEvent.setCanceled(T);
 						return;
+					}
+					if (IL.TF_Transformation_Powder.equal(aStack, T, T)) {
+						// Make Twilight Forests Transformation Powder work on Mob Spawners
+						if (aTileEntity instanceof TileEntityMobSpawner) {
+							MobSpawnerBaseLogic tSpawner = ((TileEntityMobSpawner)aTileEntity).func_145881_a();
+							String tResult = TRANSFORMATION_POWDER_SPAWNER_MAP.get(tSpawner.getEntityNameToSpawn());
+							if (UT.Code.stringValid(tResult)) {
+								if (ST.use(aEvent.entityPlayer, aStack, 16)) {
+									tSpawner.setEntityName(tResult);
+									// I hope this works sync the new Mob Data over.
+									aEvent.entityPlayer.worldObj.markBlockForUpdate(aEvent.x, aEvent.y, aEvent.z);
+								} else {
+									UT.Entities.chat(aEvent.entityPlayer, "You need 16 Bags of Transformation Powder to convert this!");
+								}
+							} else {
+								UT.Entities.chat(aEvent.entityPlayer, "This Spawner does not have a Counterpart to convert into!");
+							}
+							aEvent.setCanceled(T);
+							return;
+						}
 					}
 				}
 			}
