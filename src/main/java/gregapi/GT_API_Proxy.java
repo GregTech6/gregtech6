@@ -875,6 +875,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					if (IL.TF_Transformation_Powder.equal(aStack, T, T)) {
 						// Make Twilight Forests Transformation Powder work on Mob Spawners
 						if (aTileEntity instanceof TileEntityMobSpawner) {
+							if (aEvent.entityPlayer.worldObj.isRemote) return;
 							MobSpawnerBaseLogic tSpawner = ((TileEntityMobSpawner)aTileEntity).func_145881_a();
 							String tResult = TRANSFORMATION_POWDER_SPAWNER_MAP.get(tSpawner.getEntityNameToSpawn());
 							if (UT.Code.stringValid(tResult)) {
@@ -883,10 +884,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 									// I hope this works sync the new Mob Data over.
 									aEvent.entityPlayer.worldObj.markBlockForUpdate(aEvent.x, aEvent.y, aEvent.z);
 								} else {
-									UT.Entities.chat(aEvent.entityPlayer, "You need 16 Bags of Transformation Powder to convert this!");
+									UT.Entities.sendchat(aEvent.entityPlayer, "You need 16 Bags of Transformation Powder to convert this!");
 								}
 							} else {
-								UT.Entities.chat(aEvent.entityPlayer, "This Spawner does not have a Counterpart to convert into!");
+								UT.Entities.sendchat(aEvent.entityPlayer, "This Spawner does not have a Counterpart to convert into!");
 							}
 							aEvent.setCanceled(T);
 							return;
