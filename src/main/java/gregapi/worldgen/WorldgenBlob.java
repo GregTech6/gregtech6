@@ -48,7 +48,7 @@ public abstract class WorldgenBlob extends WorldgenObject {
 	public WorldgenBlob(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mBlock          = aBlock==null?Blocks.cobblestone:aBlock;
-		mBlockMeta      = Math.min(Math.max(aBlockMeta, 0), 15);
+		mBlockMeta      = UT.Code.bind4(aBlockMeta);
 		mProbability    = ConfigsGT.WORLDGEN.get(mCategory, "Probability"   , aProbability);
 		mAmount         = ConfigsGT.WORLDGEN.get(mCategory, "Amount"        , aAmount);
 		mSize           = ConfigsGT.WORLDGEN.get(mCategory, "Size"          , aSize);

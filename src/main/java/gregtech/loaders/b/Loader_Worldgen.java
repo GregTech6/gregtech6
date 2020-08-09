@@ -34,6 +34,7 @@ import gregapi.data.MT;
 import gregapi.util.ST;
 import gregapi.worldgen.StoneLayer;
 import gregapi.worldgen.StoneLayerOres;
+import gregapi.worldgen.WorldgenFlowers;
 import gregapi.worldgen.WorldgenOresBedrock;
 import gregapi.worldgen.WorldgenOresLarge;
 import gregapi.worldgen.WorldgenOresSmall;
@@ -578,6 +579,14 @@ public class Loader_Worldgen implements Runnable {
 		tBlock = ST.block(MD.NePl, "AncientDebris", null);
 		if (tBlock != null) {
 		new WorldgenOresVanilla("twilight.ore.netherite"    , T, tBlock,  0,  8,  8,   1,  8, 80, IL.TF_Deadrock.block(), 2, BIOMES_MOUNTAINS   , F, GEN_TWILIGHT);
+		}
+		tBlock = ST.block(MD.TC, "blockCustomPlant", null);
+		if (tBlock != null) {
+		new WorldgenFlowers    ("twilight.greatwood"        , T, tBlock,  0,  1,  8, BIOMES_MAGICAL_GOOD, GEN_TWILIGHT);
+		new WorldgenFlowers    ("twilight.silverwood"       , T, tBlock,  1,  1, 16, BIOMES_MAGICAL_GOOD, GEN_TWILIGHT);
+		new WorldgenFlowers    ("twilight.shimmerleaf"      , T, tBlock,  2,  2,  4, BIOMES_MAGICAL_GOOD, GEN_TWILIGHT);
+		new WorldgenFlowers    ("twilight.cinderpearl"      , T, tBlock,  3,  4,  2, BIOMES_SAVANNA     , GEN_TWILIGHT);
+		new WorldgenFlowers    ("twilight.vishroom"         , T, tBlock,  5,  1,  4, BIOMES_MAGICAL_GOOD, GEN_TWILIGHT);
 		}
 		
 		
