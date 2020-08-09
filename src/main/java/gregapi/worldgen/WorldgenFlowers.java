@@ -19,8 +19,6 @@
 
 package gregapi.worldgen;
 
-import static gregapi.data.CS.*;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -60,7 +58,6 @@ public class WorldgenFlowers extends WorldgenOnSurface {
 	
 	@Override
 	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
-		if (!WD.easyRep(aWorld, aX, aY+1, aZ) || !mBlock.canBlockStay(aWorld, aX, aY, aZ)) return F;
-		return WD.set(aWorld, aX, aY, aZ, mBlock, mBlockMeta, 2);
+		return WD.easyRep(aWorld, aX, aY+1, aZ) && mBlock.canBlockStay(aWorld, aX, aY+1, aZ) && WD.set(aWorld, aX, aY+1, aZ, mBlock, mBlockMeta, 2);
 	}
 }

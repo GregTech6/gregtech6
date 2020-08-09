@@ -58,7 +58,7 @@ public abstract class WorldgenOnSurface extends WorldgenObject {
 		boolean tTargets[][] = new boolean[16][16], rResult = F;
 		for (int i = 0; i < aAmount; i++) tTargets[aRandom.nextInt(16)][aRandom.nextInt(16)] = T;
 		// Go over all Target Positions.
-		for (int i = 0; i < 16; i++) for (int j = 0; i < 16; j++) if (tTargets[i][j]) if (aRandom.nextInt(mProbability) == 0) {
+		for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) if (tTargets[i][j]) if (aRandom.nextInt(mProbability) == 0) {
 			int tX = aMinX+i, tZ = aMinZ+j;
 			for (int tY = tMaxHeight; tY >= tMinHeight; tY--) {
 				// Efficiently grab the Block at that Position.
