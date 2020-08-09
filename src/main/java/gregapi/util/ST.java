@@ -60,6 +60,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemFood;
@@ -68,6 +69,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -433,8 +436,10 @@ public class ST {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static int move(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		aFrom = getPotentialDoubleChest(aFrom);
 		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aFilter, aIgnoreSideFrom, aInvertFilter, aEjectItems, aMaxMove, aMinMove);
+		aTo = getPotentialDoubleChest(aTo);
 		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
 		
 		for (int aSlotFrom : aSlotsFrom) {
@@ -457,8 +462,10 @@ public class ST {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static int moveAll(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		aFrom = getPotentialDoubleChest(aFrom);
 		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aFilter, aIgnoreSideFrom, aInvertFilter, aEjectItems, aMaxMove, aMinMove);
+		aTo = getPotentialDoubleChest(aTo);
 		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
 		
 		int rMoved = 0;
@@ -485,8 +492,10 @@ public class ST {
 	public static int moveFrom(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (aSlotFrom < 0) return 0;
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		aFrom = getPotentialDoubleChest(aFrom);
 		if (aSlotFrom >= ((IInventory)aFrom.mTileEntity).getSizeInventory()) return 0;
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, new int[] {aSlotFrom}, aTo, aFilter, aIgnoreSideFrom, aInvertFilter, aEjectItems, aMaxMove, aMinMove);
+		aTo = getPotentialDoubleChest(aTo);
 		int[] aSlotsTo   = (!aIgnoreSideTo   && aTo  .mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aTo  .mTileEntity).getAccessibleSlotsFromSide(aTo  .mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aTo  .mTileEntity).getSizeInventory()));
 		
 		ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
@@ -507,8 +516,10 @@ public class ST {
 	public static int moveTo(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (aSlotTo < 0) return 0;
 		if (!(aFrom.mTileEntity instanceof IInventory)) return 0;
+		aFrom = getPotentialDoubleChest(aFrom);
 		int[] aSlotsFrom = (!aIgnoreSideFrom && aFrom.mTileEntity instanceof ISidedInventory ? ((ISidedInventory)aFrom.mTileEntity).getAccessibleSlotsFromSide(aFrom.mSideOfTileEntity) : UT.Code.getAscendingArray(((IInventory)aFrom.mTileEntity).getSizeInventory()));
 		if (!(aTo.mTileEntity instanceof IInventory)) return put(aFrom, aSlotsFrom, aTo, aFilter, aIgnoreSideFrom, aInvertFilter, aEjectItems, aMaxMove, aMinMove);
+		aTo = getPotentialDoubleChest(aTo);
 		if (aSlotTo >= ((IInventory)aTo.mTileEntity).getSizeInventory()) return 0;
 		
 		for (int aSlotFrom : aSlotsFrom) {
@@ -529,8 +540,10 @@ public class ST {
 	public static int move(DelegatorTileEntity aFrom, DelegatorTileEntity aTo, int aSlotFrom, int aSlotTo, ItemStackSet<ItemStackContainer> aFilter, boolean aIgnoreSideFrom, boolean aIgnoreSideTo, boolean aInvertFilter, boolean aEjectItems, int aMaxSize, int aMinSize, int aMaxMove, int aMinMove) {
 		if (aSlotFrom < 0 || aSlotTo < 0) return 0;
 		if (aFrom.mTileEntity instanceof IInventory) {
+			aFrom = getPotentialDoubleChest(aFrom);
 			if (aSlotFrom >= ((IInventory)aFrom.mTileEntity).getSizeInventory()) return 0;
 			if (aTo.mTileEntity instanceof IInventory) {
+				aTo = getPotentialDoubleChest(aTo);
 				if (aSlotTo >= ((IInventory)aTo.mTileEntity).getSizeInventory()) return 0;
 				ItemStack aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
 				if (aStackFrom == null || aStackFrom.stackSize < aMinMove || (aFilter != null && aFilter.contains(aStackFrom, T) == aInvertFilter) || !canTake((IInventory)aFrom.mTileEntity, aIgnoreSideFrom ? SIDE_ANY : aFrom.mSideOfTileEntity, aFrom.mSideOfTileEntity, aSlotFrom, aStackFrom)) return 0;
@@ -576,6 +589,7 @@ public class ST {
 		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aFrom, aTo, aStackFrom, aStackTo, aSlotFrom, aSlotTo, aCount) : 0;
 	}
 	public static int move_(IInventory aFrom, IInventory aTo, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+		if (aStackFrom == aStackTo) return 0;
 		if (aFrom == aTo && aSlotFrom == aSlotTo) return 0;
 		ItemStack tStack = aFrom.decrStackSize(aSlotFrom, aCount);
 		if (tStack == null || tStack.stackSize <= 0) return 0;
@@ -584,6 +598,30 @@ public class ST {
 		aFrom.markDirty();
 		aTo.markDirty();
 		return aCount;
+	}
+	
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static DelegatorTileEntity getPotentialDoubleChest(DelegatorTileEntity aPotentialChest) {
+		if (aPotentialChest.mTileEntity instanceof TileEntityChest) {
+			Block aChestBlock = aPotentialChest.getBlock();
+			if (aPotentialChest.getBlockAtSide(SIDE_X_NEG) == aChestBlock) {
+				TileEntity tAdjacentChest = aPotentialChest.getTileEntityAtSideAndDistance(SIDE_X_NEG, 1);
+				if (tAdjacentChest instanceof TileEntityChest) return new DelegatorTileEntity(new InventoryLargeChest("fucking mojang hax", (IInventory)tAdjacentChest, (IInventory)aPotentialChest.mTileEntity), aPotentialChest);
+			}
+			if (aPotentialChest.getBlockAtSide(SIDE_X_POS) == aChestBlock) {
+				TileEntity tAdjacentChest = aPotentialChest.getTileEntityAtSideAndDistance(SIDE_X_POS, 1);
+				if (tAdjacentChest instanceof TileEntityChest) return new DelegatorTileEntity(new InventoryLargeChest("fucking mojang hax", (IInventory)aPotentialChest.mTileEntity, (IInventory)tAdjacentChest), aPotentialChest);
+			}
+			if (aPotentialChest.getBlockAtSide(SIDE_Z_NEG) == aChestBlock) {
+				TileEntity tAdjacentChest = aPotentialChest.getTileEntityAtSideAndDistance(SIDE_Z_NEG, 1);
+				if (tAdjacentChest instanceof TileEntityChest) return new DelegatorTileEntity(new InventoryLargeChest("fucking mojang hax", (IInventory)tAdjacentChest, (IInventory)aPotentialChest.mTileEntity), aPotentialChest);
+			}
+			if (aPotentialChest.getBlockAtSide(SIDE_Z_POS) == aChestBlock) {
+				TileEntity tAdjacentChest = aPotentialChest.getTileEntityAtSideAndDistance(SIDE_Z_POS, 1);
+				if (tAdjacentChest instanceof TileEntityChest) return new DelegatorTileEntity(new InventoryLargeChest("fucking mojang hax", (IInventory)aPotentialChest.mTileEntity, (IInventory)tAdjacentChest), aPotentialChest);
+			}
+		}
+		return aPotentialChest;
 	}
 	
 	public static boolean canConnect(@SuppressWarnings("rawtypes") DelegatorTileEntity aDelegator) {
