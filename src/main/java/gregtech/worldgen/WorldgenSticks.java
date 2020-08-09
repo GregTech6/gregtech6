@@ -51,7 +51,7 @@ public class WorldgenSticks extends WorldgenOnSurface {
 		int tCount = 0;
 		for (String tName : aBiomeNames) {
 			if (BIOMES_WOODS.contains(tName) || BIOMES_SWAMP.contains(tName)) {return mAmount * 3;}
-			if (tCount < 2) if (BIOMES_RIVER.contains(tName) || BIOMES_PLAINS.contains(tName) || BIOMES_SAVANNA.contains(tName) || "Wasteland Forest".equals(tName)) {tCount = 2; continue;}
+			if (tCount < 2) if (BIOMES_RIVER.contains(tName) || BIOMES_PLAINS.contains(tName) || BIOMES_SAVANNA.contains(tName) || "Wasteland Forest".equalsIgnoreCase(tName)) {tCount = 2; continue;}
 			if (tCount < 1) if (BIOMES_TAIGA.contains(tName) || BIOMES_MESA.contains(tName) || BIOMES_WASTELANDS.contains(tName)) {tCount = 1; continue;}
 		}
 		return mAmount * tCount;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,11 +46,13 @@ public class WorldgenGlowtus extends WorldgenObject {
 	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (aRandom.nextInt(2) != 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
 		boolean temp = T;
-		for (String tName : aBiomeNames) if (BIOMES_JUNGLE.contains(tName)) {temp = F; break;}
+		for (String tName : aBiomeNames) if (BIOMES_JUNGLE.contains(tName) || "Fire Swamp".equalsIgnoreCase(tName)) {temp = F; break;}
 		if (temp) return F;
+		
+		int tWaterLevel = WD.waterLevel(aWorld);
 		for (int i = 0; i < 16; i++) {
 			int tX = aRandom.nextInt(16), tZ = aRandom.nextInt(16);
-			for (int tY = 70; tY > 0; tY--) if (aChunk.getBlock(tX, tY, tZ).getMaterial() == Material.water) {
+			for (int tY = tWaterLevel+16; tY > tWaterLevel-16 && tY > 0; tY--) if (aChunk.getBlock(tX, tY, tZ).getMaterial() == Material.water) {
 				WD.set(aChunk, tX, tY+1, tZ, BlocksGT.Glowtus, i);
 				break;
 			}
