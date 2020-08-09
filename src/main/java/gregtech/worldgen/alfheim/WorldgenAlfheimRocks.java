@@ -30,9 +30,9 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregapi.worldgen.WorldgenOnSurface;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -41,27 +41,24 @@ import net.minecraft.world.chunk.Chunk;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenAlfheimRocks extends WorldgenObject {
+public class WorldgenAlfheimRocks extends WorldgenOnSurface {
 	@SafeVarargs
-	public WorldgenAlfheimRocks(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
-		super(aName, aDefault, aLists);
+	public WorldgenAlfheimRocks(String aName, boolean aDefault, int aAmount, int aProbability, List<WorldgenObject>... aLists) {
+		super(aName, aDefault, aAmount, aProbability, aLists);
 	}
 	
 	@Override
-	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
+		return mAmount;
+	}
+	
+	@Override
+	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
+		if (aContact.getMaterial() != Material.grass && aContact.getMaterial() != Material.ground && aContact.getMaterial() != Material.sand) return F;
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return F;
-		for (int i = 0, j = 1+aRandom.nextInt(2); i < j; i++) {
-			int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
-			for (int tY = 80+aRandom.nextInt(80); tY > 60; tY--) {
-				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
-				if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
-				if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
-				if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand) break;
-				if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)==0?ST.save(UT.NBT.make(), NBT_VALUE, ST.make(Items.flint, 1, 0)):null, F, T);
-				break;
-			}
-		}
-		return T;
+		if (WD.easyRep(aWorld, aX, aY+1, aZ)) return tRegistry.mBlock.placeBlock(aWorld, aX, aY+1, aZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(5)==0?ST.save(UT.NBT.make(), NBT_VALUE, Items.flint):null, F, T);
+		return F;
 	}
 }

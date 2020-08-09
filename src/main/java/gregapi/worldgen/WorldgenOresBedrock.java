@@ -144,7 +144,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 				if (ST.valid(tRock)) {
 					MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 					if (tRegistry != null) {
-						int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld))
+						int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld)-1)
 						,   tMaxHeight = Math.min(aWorld.getHeight()-1, tMinHeight * 2 + 16);
 						for (int i = 0; i < 32; i++) {
 							int tX = aMinX+aRandom.nextInt(32)-8, tZ = aMinZ+aRandom.nextInt(32)-8;
