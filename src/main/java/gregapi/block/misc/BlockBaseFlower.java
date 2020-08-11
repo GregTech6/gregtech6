@@ -36,6 +36,7 @@ import gregapi.util.WD;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
+import net.minecraft.block.IGrowable;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -57,7 +58,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 @Optional.InterfaceList(value = {
 	@Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock", modid = ModIDs.GC)
 })
-public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase, IBlockSealable, IOxygenReliantBlock {
+public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase, IBlockSealable, IOxygenReliantBlock, IGrowable {
 	public final String mNameInternal;
 	public IIconContainer[] mIcons;
 	/** For Creative Subsets, not actually important. */
@@ -120,6 +121,9 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public Block getPlant(IBlockAccess aWorld, int aX, int aY, int aZ) {return this;}
 	@Override public int getPlantMetadata(IBlockAccess aWorld, int aX, int aY, int aZ) {return WD.meta(aWorld, aX, aY, aZ);}
 	@Override public boolean canBlockStay(World aWorld, int aX, int aY, int aZ) {return WD.oxygen(aWorld, aX, aY, aZ) && aWorld.getBlock(aX, aY - 1, aZ).canSustainPlant(aWorld, aX, aY - 1, aZ, ForgeDirection.UP, Blocks.yellow_flower);}
+	@Override public boolean func_149851_a(World aWorld, int aX, int aY, int aZ, boolean aIsRemote) {return T;}
+	@Override public boolean func_149852_a(World aWorld, Random aRandom, int aX, int aY, int aZ) {return T;}
+	@Override public void func_149853_b(World aWorld, Random aRandom, int aX, int aY, int aZ) {ST.drop(aWorld, aX+0.5, aY+0.5, aZ+0.5, this, 1, WD.meta(aWorld, aX, aY, aZ));}
 	
 	@Override
 	public void checkAndDropBlock(World aWorld, int aX, int aY, int aZ) {

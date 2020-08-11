@@ -63,8 +63,8 @@ public abstract class WorldgenOnSurface extends WorldgenObject {
 			for (int tY = tMaxHeight; tY >= tMinHeight; tY--) {
 				// Efficiently grab the Block at that Position.
 				Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
-				// Don't put shit in Fluids or Farmland, that usually looks ugly as heck.
-				if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
+				// Don't put shit on Farmland, that usually looks ugly as heck.
+				if (tContact == Blocks.farmland) break;
 				// Lets ignore all non-full Blocks and Trees on the way down.
 				if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
 				// Try to place the Stuff into the World.

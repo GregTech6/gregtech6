@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,7 +27,10 @@ import java.util.Set;
 
 import gregapi.block.tree.BlockBaseSapling;
 import gregapi.data.CS.BlocksGT;
+import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregapi.worldgen.WorldgenOnSurface;
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -35,20 +38,23 @@ import net.minecraft.world.chunk.Chunk;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenTreeHazel extends WorldgenObject {
+public class WorldgenTreeHazel extends WorldgenOnSurface {
 	@SafeVarargs
-	public WorldgenTreeHazel(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
-		super(aName, aDefault, aLists);
+	public WorldgenTreeHazel(String aName, boolean aDefault, int aAmount, int aProbability, List<WorldgenObject>... aLists) {
+		super(aName, aDefault, aAmount, aProbability, aLists);
 	}
 	
 	@Override
-	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(32) != 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
-		boolean temp = T;
-		for (String tName : aBiomeNames) if (BIOMES_HAZEL.contains(tName)) {temp = F; break;}
-		if (temp) return F;
-		int tX = aRandom.nextInt(16), tZ = aRandom.nextInt(16);
-		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) if (BlocksGT.plantableTrees.contains(aChunk.getBlock(tX, tY, tZ))) return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aMinX + tX, tY+1, aMinZ + tZ, (byte)4, aRandom);
-		return F;
+	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
+		for (String tName : aBiomeNames) if (BIOMES_HAZEL.contains(tName)) return mAmount;
+		return 0;
+	}
+	
+	@Override
+	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
+		if (!BlocksGT.plantableTrees.contains(aContact)) return F;
+		if (!WD.air(aWorld, aX, aY+1, aZ)) return F;
+		return ((BlockBaseSapling)BlocksGT.Sapling).grow(aWorld, aX, aY+1, aZ, (byte)4, aRandom);
 	}
 }

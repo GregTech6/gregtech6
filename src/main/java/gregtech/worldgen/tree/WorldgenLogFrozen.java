@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,6 +28,7 @@ import java.util.Set;
 import gregapi.data.CS.BlocksGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregapi.worldgen.WorldgenOnSurface;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -37,48 +38,46 @@ import net.minecraft.world.chunk.Chunk;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenLogFrozen extends WorldgenObject {
+public class WorldgenLogFrozen extends WorldgenOnSurface {
 	@SafeVarargs
-	public WorldgenLogFrozen(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
-		super(aName, aDefault, aLists);
+	public WorldgenLogFrozen(String aName, boolean aDefault, int aAmount, int aProbability, List<WorldgenObject>... aLists) {
+		super(aName, aDefault, aAmount, aProbability, aLists);
 	}
 	
 	@Override
-	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(8) != 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
-		boolean temp = T;
-		for (String tName : aBiomeNames) if (BIOMES_FROZEN.contains(tName)) {temp = F; break;}
-		if (temp) return F;
-		int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
-		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
-			Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
-			if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) {temp = T; continue;}
-			if (!BlocksGT.plantableGreens.contains(tContact) && tContact != Blocks.snow) {temp = F; continue;}
-			if (!temp && aChunk.getBlock(tX&15, tY+1, tZ&15) != Blocks.snow_layer) return F;
-			switch(aRandom.nextInt(3)) {
-			case 0:
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY-1, tZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
-											WD.set(aWorld, tX  , tY  , tZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
-											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
-											WD.set(aWorld, tX  , tY+2, tZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
-				return T;
-			case 1:
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX-2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[3], 2);
-											WD.set(aWorld, tX-1, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[3], 2);
-											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_X[3], 2);
-											WD.set(aWorld, tX+1, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[3], 2);
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX+2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[3], 2);
-				return T;
-			case 2:
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+1, tZ-2, BlocksGT.Log1, PILLARS_Z[3], 2);
-											WD.set(aWorld, tX  , tY+1, tZ-1, BlocksGT.Log1, PILLARS_Z[3], 2);
-											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Z[3], 2);
-											WD.set(aWorld, tX  , tY+1, tZ+1, BlocksGT.Log1, PILLARS_Z[3], 2);
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+1, tZ+2, BlocksGT.Log1, PILLARS_Z[3], 2);
-				return T;
-			}
+	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
+		for (String tName : aBiomeNames) if (BIOMES_FROZEN.contains(tName)) return mAmount;
+		return 0;
+	}
+	
+	@Override
+	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
+		if (!BlocksGT.plantableGreens.contains(aContact) && aContact != Blocks.snow) return F;
+		if (WD.block(aWorld, aX, aY+1, aZ) != Blocks.snow_layer) return F;
+		switch(aRandom.nextInt(3)) {
+		case 0:
+			if (aRandom.nextBoolean())  WD.set(aWorld, aX  , aY-1, aZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
+										WD.set(aWorld, aX  , aY  , aZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
+										WD.set(aWorld, aX  , aY+1, aZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
+										WD.set(aWorld, aX  , aY+2, aZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
+			if (aRandom.nextBoolean())  WD.set(aWorld, aX  , aY+3, aZ  , BlocksGT.Log1, PILLARS_Y[3], 2);
+			return T;
+		case 1:
+			if (aRandom.nextBoolean())  WD.set(aWorld, aX-2, aY+1, aZ  , BlocksGT.Log1, PILLARS_X[3], 2);
+										WD.set(aWorld, aX-1, aY+1, aZ  , BlocksGT.Log1, PILLARS_X[3], 2);
+										WD.set(aWorld, aX  , aY+1, aZ  , BlocksGT.Log1, PILLARS_X[3], 2);
+										WD.set(aWorld, aX+1, aY+1, aZ  , BlocksGT.Log1, PILLARS_X[3], 2);
+			if (aRandom.nextBoolean())  WD.set(aWorld, aX+2, aY+1, aZ  , BlocksGT.Log1, PILLARS_X[3], 2);
+			return T;
+		case 2:
+			if (aRandom.nextBoolean())  WD.set(aWorld, aX  , aY+1, aZ-2, BlocksGT.Log1, PILLARS_Z[3], 2);
+										WD.set(aWorld, aX  , aY+1, aZ-1, BlocksGT.Log1, PILLARS_Z[3], 2);
+										WD.set(aWorld, aX  , aY+1, aZ  , BlocksGT.Log1, PILLARS_Z[3], 2);
+										WD.set(aWorld, aX  , aY+1, aZ+1, BlocksGT.Log1, PILLARS_Z[3], 2);
+			if (aRandom.nextBoolean())  WD.set(aWorld, aX  , aY+1, aZ+2, BlocksGT.Log1, PILLARS_Z[3], 2);
+			return T;
 		}
-		return T;
+		return F;
 	}
 }

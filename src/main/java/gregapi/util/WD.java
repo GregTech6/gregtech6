@@ -350,9 +350,9 @@ public class WD {
 	}
 	/** @return the Height of the Water Level that should probably be in this World. */
 	public static int waterLevel(WorldProvider aProvider, int aDefaultOverworld) {
-		return aProvider.dimensionId == DIM_OVERWORLD ? waterLevel(aDefaultOverworld) : dimTF(aProvider) ? 31 : 62;
+		return aProvider.dimensionId == DIM_OVERWORLD ? waterLevel(aDefaultOverworld) : aProvider.hasNoSky || dimTF(aProvider) ? 31 : 62;
 	}
-	/** @return the Height of the Water Level that should probably be in this World. */
+	/** @return the Height of the Water Level that should probably be in the Overworld. */
 	public static int waterLevel(int aDefaultOverworld) {
 		return MD.TFC.mLoaded || MD.TFCP.mLoaded? 143 : aDefaultOverworld;
 	}

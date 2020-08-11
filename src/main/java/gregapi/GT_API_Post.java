@@ -151,14 +151,18 @@ public class GT_API_Post extends Abstract_Mod {
 		}
 		if (MD.TiC.mLoaded) {
 			MT.Co.addOreByProducts(MT.Ardite);
+			MT.OREMATS.Cobaltite.addOreByProducts(MT.Ardite);
 		}
 		if (MD.RP.mLoaded) {
+			MT.Monazite.addOreByProducts(MT.Nikolite);
 			MT.OREMATS.Bastnasite.addOreByProducts(MT.Nikolite);
 		}
 		if (MD.PR.mLoaded) {
+			MT.Monazite.addOreByProducts(MT.Electrotine);
 			MT.OREMATS.Bastnasite.addOreByProducts(MT.Electrotine);
 		}
 		if (MD.BP.mLoaded) {
+			MT.Monazite.addOreByProducts(MT.Teslatite);
 			MT.OREMATS.Bastnasite.addOreByProducts(MT.Teslatite);
 		}
 		if (MD.BR.mLoaded) {
@@ -173,8 +177,8 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.Am.addOreByProducts(MT.Blutonium);
 		}
 		if (MD.AE.mLoaded) {
-			OP.gem  .disableItemGeneration(MT.CertusQuartz, MT.Fluix);
-			OP.dust .disableItemGeneration(MT.CertusQuartz, MT.Fluix);
+			OP.gem .disableItemGeneration(MT.CertusQuartz, MT.Fluix);
+			OP.dust.disableItemGeneration(MT.CertusQuartz, MT.Fluix);
 		}
 		if (MD.AA.mLoaded) {
 			MT.OREMATS.Barite.addOreByProducts(MT.BlackQuartz);

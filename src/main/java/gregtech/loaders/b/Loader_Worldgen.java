@@ -462,19 +462,19 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenBlackSand       ("river.magnetite"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT, GEN_TROPICS);
 		new WorldgenTurf            ("swamp.turf"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT);
 		
-		new WorldgenLogDry          ("log.dry"                 , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenLogRotten       ("log.rotten"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
-		new WorldgenLogMossy        ("log.mossy"               , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
-		new WorldgenLogFrozen       ("log.frozen"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT);
+		new WorldgenLogDry          ("log.dry"                 , T, 1, 8, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenLogRotten       ("log.rotten"              , T, 1, 3, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
+		new WorldgenLogMossy        ("log.mossy"               , T, 1, 8, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
+		new WorldgenLogFrozen       ("log.frozen"              , T, 1, 8, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT);
 		
-		new WorldgenTreeRubber      ("tree.rubber"             , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT);
-		new WorldgenTreeMaple       ("tree.maple"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT);
-		new WorldgenTreeWillow      ("tree.willow"             , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT);
-		new WorldgenTreeBlueMahoe   ("tree.bluemahoe"          , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TROPICS);
-		new WorldgenTreeHazel       ("tree.hazel"              , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_ALFHEIM);
-		new WorldgenTreeCinnamon    ("tree.cinnamon"           , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TROPICS);
-		new WorldgenTreeCoconut     ("tree.coconut"            , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_ATUM, GEN_TROPICS);
-		new WorldgenTreeRainbowood  ("tree.rainbowood"         , T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_ALFHEIM, GEN_AETHER);
+		new WorldgenTreeRubber      ("tree.rubber"             , T, 1, 5, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_TWILIGHT);
+		new WorldgenTreeMaple       ("tree.maple"              , T, 1, 5, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT);
+		new WorldgenTreeWillow      ("tree.willow"             , T, 1, 4, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT);
+		new WorldgenTreeBlueMahoe   ("tree.bluemahoe"          , T, 1, 3, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TROPICS);
+		new WorldgenTreeHazel       ("tree.hazel"              , T, 1,32, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_ALFHEIM);
+		new WorldgenTreeCinnamon    ("tree.cinnamon"           , T, 1, 3, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TROPICS);
+		new WorldgenTreeCoconut     ("tree.coconut"            , T, 1, 1, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_ATUM, GEN_TROPICS);
+		new WorldgenTreeRainbowood  ("tree.rainbowood"         , T, 1, 4, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_ALFHEIM, GEN_AETHER);
 		
 		new WorldgenRocks           (   "overworld.rocks"      , T, 2, 3, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		new WorldgenRacks           (      "nether.rocks"      , T      , GEN_NETHER);
@@ -490,7 +490,7 @@ public class Loader_Worldgen implements Runnable {
 		
 		new WorldgenSticks          ("sticks"                  , T, 2, 2, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TWILIGHT, GEN_TROPICS, GEN_EREBUS, GEN_ALFHEIM, GEN_BETWEENLANDS, GEN_AETHER, GEN_ENVM);
 		
-		new WorldgenGlowtus         ("plant.glowtus"           , T      , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
+		new WorldgenGlowtus         ("plant.glowtus"           , T,16, 2, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
 		new WorldgenBushes          ("plant.bush"              , T, 1, 4, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		
 		new WorldgenHives           (   "overworld.bumblehives", T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC, GEN_ENVM);
@@ -517,9 +517,9 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenFluidSpring("overworld.fluid.oil.medium"    , T, BlocksGT.OilMedium    ,  7,  1, 70,100, 0, 16, null, F, tInfiniteOil ? FL.Oil_Medium    .make( 6000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		new WorldgenFluidSpring("overworld.fluid.oil.light"     , T, BlocksGT.OilLight     ,  7,  1, 80, 50, 0, 16, null, F, tInfiniteOil ? FL.Oil_Light     .make( 6000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		new WorldgenFluidSpring("overworld.fluid.gas.natural"   , T, BlocksGT.GasNatural   ,  7,  1, 80, 25, 0, 16, null, F, tInfiniteGas ? FL.Gas_Natural   .make( 3000) : NF, 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
-		new WorldgenFluidSpring("overworld.fluid.water"         , T, Blocks.water          ,  0,  1, 50, 50, 0, 16, null, F, FL.Water.make(1), 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
-		new WorldgenFluidSpring("overworld.fluid.lava"          , T, Blocks.lava           ,  0,  1, 50, 50, 0, 16, null, F, FL.Lava.make(1000), 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
-		new WorldgenFluidSpring("nether.fluid.lava"             , T, Blocks.lava           ,  0,  1, 90, 25, 0, 16, null, F, FL.Lava.make(1), 10, GEN_NETHER);
+		new WorldgenFluidSpring("overworld.fluid.water"         , T, Blocks.water          ,  0,  1, 50, 50, 0, 16, null, F, FL.Water.make(   1), 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
+		new WorldgenFluidSpring("overworld.fluid.lava"          , T, Blocks.lava           ,  0,  1, 50, 50, 0, 16, null, F, FL.Lava .make(1000), 10, GEN_OVERWORLD, GEN_GT, GEN_PFAA);
+		new WorldgenFluidSpring("nether.fluid.lava"             , T, Blocks.lava           ,  0,  1, 90, 25, 0, 16, null, F, FL.Lava .make(   1), 10, GEN_NETHER);
 		
 		for (BlockBase tStone : BlocksGT.stones) if (tStone != BlocksGT.PrismarineDark && tStone != BlocksGT.PrismarineLight) {
 		new WorldgenStone("overworld.stone."+ ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 100, 0, 120, null, F, GEN_OVERWORLD, GEN_PFAA, GEN_TFC, GEN_ENVM);
@@ -590,75 +590,76 @@ public class Loader_Worldgen implements Runnable {
 		}
 		
 		
-		new WorldgenOresBedrock("ore.bedrock.tungstate"         , T, T,  96000, MT.OREMATS.Tungstate            , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.ferberite"         , T, T,  96000, MT.OREMATS.Ferberite            , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.wolframite"        , T, T,  96000, MT.OREMATS.Wolframite           , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.stolzite"          , T, T,  96000, MT.OREMATS.Stolzite             , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.scheelite"         , T, T,  96000, MT.OREMATS.Scheelite            , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.huebnerite"        , T, T,  96000, MT.OREMATS.Huebnerite           , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.russelite"         , T, T,  96000, MT.OREMATS.Russellite           , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.pinalite"          , T, T,  96000, MT.OREMATS.Pinalite             , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.uraninite"         , T, T,  60000, MT.OREMATS.Uraninite            , (Block)BlocksGT.FlowersA,  5, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.pitchblende"       , T, T,  60000, MT.OREMATS.Pitchblende          , (Block)BlocksGT.FlowersB,  5, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.cooperite"         , T, T,  16000, MT.OREMATS.Cooperite            , (Block)BlocksGT.FlowersA,  6, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.copper"            , T, T,  16000, MT.Cu                           , (Block)BlocksGT.FlowersB,  3, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.gold.a"            , T, T,  32000, MT.Au                           , (Block)BlocksGT.FlowersA,  0, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.gold.b"            , T, T,  32000, MT.Au                           , (Block)BlocksGT.FlowersB,  2, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.monazite"          , T, T,  16000, MT.Monazite                     , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.powellite"         , T, T,  14000, MT.OREMATS.Powellite            , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.stibnite"          , T, T,   8000, MT.OREMATS.Arsenopyrite         , (Block)BlocksGT.FlowersB,  0, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.redstone"          , T, T,   7000, MT.Redstone                     , (Block)BlocksGT.FlowersB,  4, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.vanadium"          , T, T,   6000, MT.V2O5                         , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.galena"            , T, T,   6000, MT.OREMATS.Galena               , (Block)BlocksGT.FlowersA,  1, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.graphite"          , T, T,   5000, MT.Graphite                     , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.stibnite"          , T, T,   4000, MT.OREMATS.Stibnite             , (Block)BlocksGT.FlowersB,  1, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.hematite"          , T, T,   4000, MT.Fe2O3                        , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.sphalerite"        , T, T,   3000, MT.OREMATS.Sphalerite           , (Block)BlocksGT.FlowersA,  3, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.smithsonite"       , T, T,   3000, MT.OREMATS.Smithsonite          , (Block)BlocksGT.FlowersA,  3, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.pentlandite"       , T, T,   3000, MT.OREMATS.Pentlandite          , (Block)BlocksGT.FlowersA,  4, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.saltpeter"         , T, T,   3000, MT.Niter                        , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.bauxite"           , T, T,   2000, MT.OREMATS.Bauxite              , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.cassiterite"       , T, T,   2000, MT.OREMATS.Cassiterite          , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.chalcopyrite"      , T, T,   2000, MT.OREMATS.Chalcopyrite         , (Block)BlocksGT.FlowersA,  2, GEN_FLOOR);
-		new WorldgenOresBedrock("ore.bedrock.ancientdebris"     , T, T,   1000, MT.AncientDebris                , (Block)BlocksGT.FlowersA,  2, GEN_NETHER);
-		new WorldgenOresBedrock("ore.bedrock.naquadah"          , T, T,  10000, MT.Nq                           , (Block)BlocksGT.FlowersA,  7, GEN_MARS); // TODO Flower
-		new WorldgenOresBedrock("ore.bedrock.adamantine"        , T, T,  10000, MT.Adamantine                   , (Block)BlocksGT.FlowersA,  7, GEN_MARS, GEN_EREBUS, GEN_BETWEENLANDS); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.tungstate"         , T, T,  96000, MT.OREMATS.Tungstate     , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.ferberite"         , T, T,  96000, MT.OREMATS.Ferberite     , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.wolframite"        , T, T,  96000, MT.OREMATS.Wolframite    , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.stolzite"          , T, T,  96000, MT.OREMATS.Stolzite      , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.scheelite"         , T, T,  96000, MT.OREMATS.Scheelite     , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.huebnerite"        , T, T,  96000, MT.OREMATS.Huebnerite    , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.russelite"         , T, T,  96000, MT.OREMATS.Russellite    , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.pinalite"          , T, T,  96000, MT.OREMATS.Pinalite      , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.uraninite"         , T, T,  60000, MT.OREMATS.Uraninite     , BlocksGT.FlowersA,  5, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.pitchblende"       , T, T,  60000, MT.OREMATS.Pitchblende   , BlocksGT.FlowersB,  5, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.cooperite"         , T, T,  16000, MT.OREMATS.Cooperite     , BlocksGT.FlowersA,  6, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.copper"            , T, T,  16000, MT.Cu                    , BlocksGT.FlowersB,  3, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.gold.a"            , T, T,  32000, MT.Au                    , BlocksGT.FlowersA,  0, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.gold.b"            , T, T,  32000, MT.Au                    , BlocksGT.FlowersB,  2, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.monazite"          , T, T,  16000, MT.Monazite              , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.powellite"         , T, T,  14000, MT.OREMATS.Powellite     , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.bastnasite"        , T, T,   8000, MT.OREMATS.Bastnasite    , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.stibnite"          , T, T,   8000, MT.OREMATS.Arsenopyrite  , BlocksGT.FlowersB,  0, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.redstone"          , T, T,   7000, MT.Redstone              , BlocksGT.FlowersB,  4, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.vanadium"          , T, T,   6000, MT.V2O5                  , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.galena"            , T, T,   6000, MT.OREMATS.Galena        , BlocksGT.FlowersA,  1, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.graphite"          , T, T,   5000, MT.Graphite              , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.stibnite"          , T, T,   4000, MT.OREMATS.Stibnite      , BlocksGT.FlowersB,  1, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.hematite"          , T, T,   4000, MT.Fe2O3                 , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.sphalerite"        , T, T,   3000, MT.OREMATS.Sphalerite    , BlocksGT.FlowersA,  3, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.smithsonite"       , T, T,   3000, MT.OREMATS.Smithsonite   , BlocksGT.FlowersA,  3, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.pentlandite"       , T, T,   3000, MT.OREMATS.Pentlandite   , BlocksGT.FlowersA,  4, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.saltpeter"         , T, T,   3000, MT.Niter                 , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.bauxite"           , T, T,   2000, MT.OREMATS.Bauxite       , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.cassiterite"       , T, T,   2000, MT.OREMATS.Cassiterite   , BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.chalcopyrite"      , T, T,   2000, MT.OREMATS.Chalcopyrite  , BlocksGT.FlowersA,  2, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.ancientdebris"     , T, T,   1000, MT.AncientDebris         , BlocksGT.FlowersA,  2, GEN_NETHER);
+		new WorldgenOresBedrock("ore.bedrock.naquadah"          , T, T,  10000, MT.Nq                    , BlocksGT.FlowersA,  7, GEN_MARS); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.adamantine"        , T, T,  10000, MT.Adamantine            , BlocksGT.FlowersA,  7, GEN_MARS, GEN_EREBUS, GEN_BETWEENLANDS); // TODO Flower
 		
-		new WorldgenOresBedrock("ore.bedrock.hexorium"          , MD.HEX.mLoaded, T,   3000, ANY.Hexorium       , (Block)BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.hexorium"          , MD.HEX.mLoaded, T,   3000, ANY.Hexorium, BlocksGT.FlowersA,  7, GEN_FLOOR); // TODO Flower
 		
 		for (int i = 0, j = ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AmountOfCustomBedrockOreSlots", 0); i < j; i++) {
-		new WorldgenOresBedrock("ore.bedrock.custom" + (i<10?"0":"") + i, F, T, 100000, MT.NULL, (Block)BlocksGT.FlowersA, 7, GEN_FLOOR);
+		new WorldgenOresBedrock("ore.bedrock.custom" + (i<10?"0":"") + i, F, T, 100000, MT.NULL, BlocksGT.FlowersA, 7, GEN_FLOOR);
 		}
 		
-		new WorldgenOresSmall("ore.small.chalcopyrite"      , T,  60, 120,  16, MT.OREMATS.Chalcopyrite         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.cassiterite"       , T,  60, 120,  16, MT.OREMATS.Cassiterite          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.copper"            , T,  60, 120,  16, MT.Cu                           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS, GEN_END);
-		new WorldgenOresSmall("ore.small.tin"               , T,  60, 120,  16, MT.Sn                           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS, GEN_END);
-		new WorldgenOresSmall("ore.small.bismuth"           , T,  80, 120,   8, MT.Bi                           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
-		new WorldgenOresSmall("ore.small.coal"              , T,  60, 100,  24, MT.Coal                         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
-		new WorldgenOresSmall("ore.small.hematite"          , T,  40,  80,  24, MT.Fe2O3                        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.salt"              , T,  40,  80,   6, MT.NaCl                         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END, GEN_PFAA);
-		new WorldgenOresSmall("ore.small.rocksalt"          , T,  40,  80,   6, MT.KCl                          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END, GEN_PFAA);
-		new WorldgenOresSmall("ore.small.sphalerite"        , T,  30,  60,  12, MT.OREMATS.Sphalerite           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.zinc"              , T,  40,  70,   4, MT.Zn                           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
-		new WorldgenOresSmall("ore.small.smithsonite"       , T,  30,  60,   2, MT.OREMATS.Smithsonite          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.galena"            , T,  40,  80,  16, MT.OREMATS.Galena               , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.lead"              , T,  40,  80,  16, MT.Pb                           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
-		new WorldgenOresSmall("ore.small.gold"              , T,  20,  40,   4, MT.Au                           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
-		new WorldgenOresSmall("ore.small.pyrite"            , T,  20,  40,   4, MT.Pyrite                       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_NETHER, GEN_END, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
-		new WorldgenOresSmall("ore.small.silver"            , T,  20,  40,   4, MT.Ag                           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
-		new WorldgenOresSmall("ore.small.pyrolusite"        , T,  20,  40,   4, MT.MnO2                         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END, GEN_MOON, GEN_PLANETS);
-		new WorldgenOresSmall("ore.small.garnierite"        , T,  20,  40,   4, MT.OREMATS.Garnierite           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.pentlandite"       , T,  20,  40,   4, MT.OREMATS.Pentlandite          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.stibnite"          , T,  20,  40,   2, MT.OREMATS.Stibnite             , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.asbestos"          , T,  20,  40,   8, MT.Asbestos                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
-		new WorldgenOresSmall("ore.small.eudialyte"         , T,  20,  40,   4, MT.Eudialyte                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM);
-		new WorldgenOresSmall("ore.small.azurite"           , T,  20,  40,   4, MT.Azurite                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM);
-		new WorldgenOresSmall("ore.small.zeolite"           , T,   1, 250,   1, MT.OREMATS.Zeolite              , GEN_OVERWORLD, GEN_GT, GEN_ENVM);
-		new WorldgenOresSmall("ore.small.lapis"             , T,  20,  40,   4, MT.Lapis                        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER);
-		new WorldgenOresSmall("ore.small.redstone"          , T,   5,  20,   8, MT.Redstone                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_NETHER);
-		new WorldgenOresSmall("ore.small.graphite"          , T,   5,  10,   2, MT.Graphite                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_ASTEROIDS, GEN_NETHER);
-		new WorldgenOresSmall("ore.small.scheelite"         , T,   5,  50,   1, MT.OREMATS.Scheelite            , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_ASTEROIDS, GEN_MOON, GEN_END);
+		new WorldgenOresSmall("ore.small.chalcopyrite"      , T,  60, 120,  16, MT.OREMATS.Chalcopyrite         , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                         , GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.cassiterite"       , T,  60, 120,  16, MT.OREMATS.Cassiterite          , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.copper"            , T,  60, 120,  16, MT.Cu                           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.tin"               , T,  60, 120,  16, MT.Sn                           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.bismuth"           , T,  80, 120,   8, MT.Bi                           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER         , GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.coal"              , T,  60, 100,  24, MT.Coal                         , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.hematite"          , T,  40,  80,  24, MT.Fe2O3                        , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.salt"              , T,  40,  80,   6, MT.NaCl                         , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.rocksalt"          , T,  40,  80,   6, MT.KCl                          , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.sphalerite"        , T,  30,  60,  12, MT.OREMATS.Sphalerite           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                         , GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.zinc"              , T,  40,  70,   4, MT.Zn                           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.smithsonite"       , T,  30,  60,   2, MT.OREMATS.Smithsonite          , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.galena"            , T,  40,  80,  16, MT.OREMATS.Galena               , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                         , GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.lead"              , T,  40,  80,  16, MT.Pb                           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.gold"              , T,  20,  40,   4, MT.Au                           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.pyrite"            , T,  20,  40,   4, MT.Pyrite                       , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                         , GEN_NETHER, GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.silver"            , T,  20,  40,   4, MT.Ag                           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.pyrolusite"        , T,  20,  40,   4, MT.MnO2                         , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS               , GEN_MOON, GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.garnierite"        , T,  20,  40,   4, MT.OREMATS.Garnierite           , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.pentlandite"       , T,  20,  40,   4, MT.OREMATS.Pentlandite          , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                         , GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.stibnite"          , T,  20,  40,   2, MT.OREMATS.Stibnite             , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM                         , GEN_NETHER, GEN_END, GEN_MARS);
+		new WorldgenOresSmall("ore.small.asbestos"          , T,  20,  40,   8, MT.Asbestos                     , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
+		new WorldgenOresSmall("ore.small.eudialyte"         , T,  20,  40,   4, MT.Eudialyte                    , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM);
+		new WorldgenOresSmall("ore.small.azurite"           , T,  20,  40,   4, MT.Azurite                      , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM);
+		new WorldgenOresSmall("ore.small.zeolite"           , T,   1, 250,   1, MT.OREMATS.Zeolite              , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM);
+		new WorldgenOresSmall("ore.small.lapis"             , T,  20,  40,   4, MT.Lapis                        , GEN_OVERWORLD, GEN_GT          , GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER);
+		new WorldgenOresSmall("ore.small.redstone"          , T,   5,  20,   8, MT.Redstone                     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER         , GEN_MARS                         , GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.graphite"          , T,   5,  10,   2, MT.Graphite                     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER, GEN_NETHER         , GEN_MARS, GEN_ASTEROIDS          , GEN_PLANETS);
+		new WorldgenOresSmall("ore.small.scheelite"         , T,   5,  50,   1, MT.OREMATS.Scheelite            , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_ALFHEIM, GEN_AETHER            , GEN_END, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS);
 		new WorldgenOresSmall("ore.small.cooperite"         , T,  20,  40,   4, MT.OREMATS.Cooperite            , GEN_END, GEN_ASTEROIDS);
 		new WorldgenOresSmall("ore.small.sperrylite"        , T,  20,  40,   4, MT.OREMATS.Sperrylite           , GEN_END, GEN_ASTEROIDS, GEN_ALFHEIM, GEN_AETHER);
 		new WorldgenOresSmall("ore.small.platinum"          , T,  20,  40,   6, MT.Pt                           , GEN_END, GEN_ASTEROIDS, GEN_ALFHEIM, GEN_AETHER);

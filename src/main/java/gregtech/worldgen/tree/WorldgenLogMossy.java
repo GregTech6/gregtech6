@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -30,6 +30,7 @@ import gregapi.data.MD;
 import gregapi.util.ST;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
+import gregapi.worldgen.WorldgenOnSurface;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -39,57 +40,55 @@ import net.minecraft.world.chunk.Chunk;
 /**
  * @author Gregorius Techneticies
  */
-public class WorldgenLogMossy extends WorldgenObject {
+public class WorldgenLogMossy extends WorldgenOnSurface {
 	@SafeVarargs
-	public WorldgenLogMossy(String aName, boolean aDefault, List<WorldgenObject>... aLists) {
-		super(aName, aDefault, aLists);
+	public WorldgenLogMossy(String aName, boolean aDefault, int aAmount, int aProbability, List<WorldgenObject>... aLists) {
+		super(aName, aDefault, aAmount, aProbability, aLists);
 	}
 	
 	@Override
-	public boolean generate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
-		if (aRandom.nextInt(8) != 0 || checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return F;
-		boolean temp = T;
-		for (String tName : aBiomeNames) if (BIOMES_PLAINS.contains(tName) || BIOMES_WOODS.contains(tName) || BIOMES_SWAMP.contains(tName)) {temp = F; break;}
-		if (temp) return F;
-		int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
-		for (int tY = aWorld.provider.hasNoSky ? 80 : aWorld.getHeight()-50; tY > 0; tY--) {
-			Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
-			if (tContact == NB || tContact.isAir(aWorld, tX, tY, tZ)) continue;
-			if (!BlocksGT.plantableTrees.contains(tContact)) continue;
-			if (!aChunk.getBlock(tX&15, tY+1, tZ&15).isAir(aWorld, tX, tY+1, tZ)) return F;
-			switch(aRandom.nextInt(3)) {
-			case 0:
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY-1, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
-											WD.set(aWorld, tX  , tY  , tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
-											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
-											WD.set(aWorld, tX  , tY+2, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+3, tZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
-				return T;
-			case 1:
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX-2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
-											WD.set(aWorld, tX-1, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
-											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
-											WD.set(aWorld, tX+1, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX+2, tY+1, tZ  , BlocksGT.Log1, PILLARS_X[2], 2);
-				
-				if (aRandom.nextBoolean())  setMushroom(aWorld, tX-1, tY+2, tZ  , aRandom);
-				if (aRandom.nextBoolean())  setMushroom(aWorld, tX  , tY+2, tZ  , aRandom);
-				if (aRandom.nextBoolean())  setMushroom(aWorld, tX+1, tY+2, tZ  , aRandom);
-				return T;
-			case 2:
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+1, tZ-2, BlocksGT.Log1, PILLARS_Z[2], 2);
-											WD.set(aWorld, tX  , tY+1, tZ-1, BlocksGT.Log1, PILLARS_Z[2], 2);
-											WD.set(aWorld, tX  , tY+1, tZ  , BlocksGT.Log1, PILLARS_Z[2], 2);
-											WD.set(aWorld, tX  , tY+1, tZ+1, BlocksGT.Log1, PILLARS_Z[2], 2);
-				if (aRandom.nextBoolean())  WD.set(aWorld, tX  , tY+1, tZ+2, BlocksGT.Log1, PILLARS_Z[2], 2);
-				
-				if (aRandom.nextBoolean())  setMushroom(aWorld, tX  , tY+2, tZ-1, aRandom);
-				if (aRandom.nextBoolean())  setMushroom(aWorld, tX  , tY+2, tZ  , aRandom);
-				if (aRandom.nextBoolean())  setMushroom(aWorld, tX  , tY+2, tZ+1, aRandom);
-				return T;
-			}
+	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
+		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
+		for (String tName : aBiomeNames) if (BIOMES_PLAINS.contains(tName) || BIOMES_WOODS.contains(tName) || BIOMES_SWAMP.contains(tName)) return mAmount;
+		return 0;
+	}
+	
+	@Override
+	public boolean tryPlaceStuff(World aWorld, int aX, int aY, int aZ, Random aRandom, Block aContact) {
+		if (!BlocksGT.plantableTrees.contains(aContact) && aContact != Blocks.sand) return F;
+		if (!WD.air(aWorld, aX, aY+1, aZ)) return F;
+		switch(aRandom.nextInt(3)) {
+		case 0:
+			if (aRandom.nextBoolean())  WD.set     (aWorld, aX  , aY-1, aZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
+										WD.set     (aWorld, aX  , aY  , aZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
+										WD.set     (aWorld, aX  , aY+1, aZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
+										WD.set     (aWorld, aX  , aY+2, aZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
+			if (aRandom.nextBoolean())  WD.set     (aWorld, aX  , aY+3, aZ  , BlocksGT.Log1, PILLARS_Y[2], 2);
+			return T;
+		case 1:
+			if (aRandom.nextBoolean())  WD.set     (aWorld, aX-2, aY+1, aZ  , BlocksGT.Log1, PILLARS_X[2], 2);
+										WD.set     (aWorld, aX-1, aY+1, aZ  , BlocksGT.Log1, PILLARS_X[2], 2);
+										WD.set     (aWorld, aX  , aY+1, aZ  , BlocksGT.Log1, PILLARS_X[2], 2);
+										WD.set     (aWorld, aX+1, aY+1, aZ  , BlocksGT.Log1, PILLARS_X[2], 2);
+			if (aRandom.nextBoolean())  WD.set     (aWorld, aX+2, aY+1, aZ  , BlocksGT.Log1, PILLARS_X[2], 2);
+			
+			if (aRandom.nextBoolean())  setMushroom(aWorld, aX-1, aY+2, aZ  , aRandom);
+			if (aRandom.nextBoolean())  setMushroom(aWorld, aX  , aY+2, aZ  , aRandom);
+			if (aRandom.nextBoolean())  setMushroom(aWorld, aX+1, aY+2, aZ  , aRandom);
+			return T;
+		case 2:
+			if (aRandom.nextBoolean())  WD.set     (aWorld, aX  , aY+1, aZ-2, BlocksGT.Log1, PILLARS_Z[2], 2);
+										WD.set     (aWorld, aX  , aY+1, aZ-1, BlocksGT.Log1, PILLARS_Z[2], 2);
+										WD.set     (aWorld, aX  , aY+1, aZ  , BlocksGT.Log1, PILLARS_Z[2], 2);
+										WD.set     (aWorld, aX  , aY+1, aZ+1, BlocksGT.Log1, PILLARS_Z[2], 2);
+			if (aRandom.nextBoolean())  WD.set     (aWorld, aX  , aY+1, aZ+2, BlocksGT.Log1, PILLARS_Z[2], 2);
+			
+			if (aRandom.nextBoolean())  setMushroom(aWorld, aX  , aY+2, aZ-1, aRandom);
+			if (aRandom.nextBoolean())  setMushroom(aWorld, aX  , aY+2, aZ  , aRandom);
+			if (aRandom.nextBoolean())  setMushroom(aWorld, aX  , aY+2, aZ+1, aRandom);
+			return T;
 		}
-		return T;
+		return F;
 	}
 	
 	public boolean setMushroom(World aWorld, int aX, int aY, int aZ, Random aRandom) {

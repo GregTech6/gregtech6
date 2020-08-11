@@ -161,8 +161,8 @@ public class MT {
 	protected static OreDictMaterial dustdcmp     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dust            (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(DECOMPOSABLE);}
 	protected static OreDictMaterial dustcent     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dustdcmp        (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(CENTRIFUGE);}
 	protected static OreDictMaterial dustelec     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dustdcmp        (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(ELECTROLYSER);}
-	protected static OreDictMaterial glowstone    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return oredustcent     (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(PLATES, STICKS, MORTAR, BRITTLE, UNBURNABLE, MELTING, CRYSTAL, G_GEM_ORES_TRANSPARENT, ANY.Glowstone, GLOWING, LIGHTING).setPriorityPrefix(2).setOreMultiplier(4);}
-	protected static OreDictMaterial redstone     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return oredustcent     (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(PLATES, STICKS, MORTAR, BRITTLE, UNBURNABLE, MELTING, CRYSTAL, G_GEM_ORES_TRANSPARENT).setPriorityPrefix(2).setOreMultiplier(4);}
+	protected static OreDictMaterial glowstone    (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return oredustcent     (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(PLATES, STICKS, MORTAR, BRITTLE, UNBURNABLE, MELTING, CRYSTAL, CRYSTALLISABLE, G_GEM_ORES_TRANSPARENT, ANY.Glowstone, GLOWING, LIGHTING).setPriorityPrefix(2).setOreMultiplier(4);}
+	protected static OreDictMaterial redstone     (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return oredustcent     (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(PLATES, STICKS, MORTAR, BRITTLE, UNBURNABLE, MELTING, CRYSTAL, CRYSTALLISABLE, G_GEM_ORES_TRANSPARENT).setPriorityPrefix(2).setOreMultiplier(4);}
 	protected static OreDictMaterial coal         (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA    , Object... aRandomData)  {return elec            (aID, aNameOreDict, aSets           , aR, aG, aB, aA, aRandomData).put(G_GEM_ORES, BRITTLE, FLAMMABLE, MORTAR, INGOTS, COAL).setPriorityPrefix(1);}
 	protected static OreDictMaterial wax          (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dust            (aID, aNameOreDict, SET_FOOD        , aR, aG, aB, aA, aRandomData).put(ANY.Wax, FOILS, PLATES, INGOTS, PARTS, FURNACE, MELTING, BRITTLE, MORTAR, EXTRUDER, EXTRUDER_SIMPLE);}
 	protected static OreDictMaterial meat         (int aID, String aNameOreDict                    , long aR, long aG, long aB, long aA    , Object... aRandomData)  {return dustfood        (aID, aNameOreDict, SET_FINE        , aR, aG, aB, aA, aRandomData).put(MEAT, INGOTS, MELTING, EXTRUDER, EXTRUDER_SIMPLE);}
@@ -1713,11 +1713,11 @@ public class MT {
 			Zircon                  .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);
 			OREMATS.Cassiterite     .setOreMultiplier( 2);
-			OREMATS.Bastnasite      .setOreMultiplier( 3);
 			NetherQuartz            .setOreMultiplier( 2);
 			CertusQuartz            .setOreMultiplier( 2);
 			ChargedCertusQuartz     .setOreMultiplier( 2);
 			Monazite                .setOreMultiplier( 2);
+			OREMATS.Bastnasite      .setOreMultiplier( 3);
 			Scabyst                 .setOreMultiplier( 2);
 			Phosphorus              .setOreMultiplier( 3);
 			NaNO3                   .setOreMultiplier( 3);
@@ -2479,7 +2479,7 @@ public class MT {
 			OREMATS.Barite                  .addOreByProducts(CertusQuartz          , Quartzite                 );
 			OREMATS.QuartzSand              .addOreByProducts(CertusQuartz          , Quartzite                 , OREMATS.Barite        );
 			OREMATS.Wollastonite            .addOreByProducts(Fe2O3                 , Mg                        , MnO2                  );
-			BlackQuartz                     .addOreByProducts(OREMATS.Barite        );
+			BlackQuartz                     .addOreByProducts(MilkyQuartz           , OREMATS.Barite            );
 			NetherQuartz                    .addOreByProducts(Netherrack            , OREMATS.Barite            );
 			Quartzite                       .addOreByProducts(CertusQuartz          , OREMATS.Barite            , Fe2O3);
 			MilkyQuartz                     .addOreByProducts(CertusQuartz          , OREMATS.Barite            );

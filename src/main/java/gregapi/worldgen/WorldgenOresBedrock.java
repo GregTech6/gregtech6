@@ -63,21 +63,22 @@ public class WorldgenOresBedrock extends WorldgenObject {
 	}
 	@SafeVarargs
 	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, List<WorldgenObject>... aLists) {
-		this(aName, aDefault, aIndicatorRocks, aProbability, aPrimary, null, 0, aLists);
+		this(aName, aDefault, aIndicatorRocks, aProbability, aPrimary, NB, 0, aLists);
 	}
 	@SafeVarargs
-	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, Block aFlower, long aFlowerMeta, List<WorldgenObject>... aLists) {
+	public WorldgenOresBedrock(String aName, boolean aDefault, boolean aIndicatorRocks, int aProbability, OreDictMaterial aPrimary, Object aFlower, long aFlowerMeta, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mProbability        = Math.max(1,           ConfigsGT.WORLDGEN.get(mCategory, "Probability"         , aProbability));
-		mMaterial           = OreDictMaterial.get(  ConfigsGT.WORLDGEN.get(mCategory, "Ore"                 , aPrimary.mNameInternal));
-		mIndicatorRocks     =                       ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"      , aIndicatorRocks);
-		mIndicatorFlowers   =                       ConfigsGT.WORLDGEN.get(mCategory, "IndicatorFlowers"    , aFlower != null && aFlower != NB);
+		aFlower             = aFlower instanceof Block ? (Block)aFlower : NB;
+		mProbability        = Math.max(1,         ConfigsGT.WORLDGEN.get(mCategory, "Probability"     , aProbability));
+		mMaterial           = OreDictMaterial.get(ConfigsGT.WORLDGEN.get(mCategory, "Ore"             , aPrimary.mNameInternal));
+		mIndicatorRocks     =                     ConfigsGT.WORLDGEN.get(mCategory, "IndicatorRocks"  , aIndicatorRocks);
+		mIndicatorFlowers   =                     ConfigsGT.WORLDGEN.get(mCategory, "IndicatorFlowers", aFlower != NB);
 		
-		if (mIndicatorFlowers && (aFlower == null || aFlower == NB)) {
+		if (mIndicatorFlowers && aFlower == NB) {
 			mFlower = Blocks.yellow_flower;
 			mFlowerMeta = 0;
 		} else {
-			mFlower = aFlower;
+			mFlower = (Block)aFlower;
 			mFlowerMeta = UT.Code.bind4(aFlowerMeta);
 		}
 		
