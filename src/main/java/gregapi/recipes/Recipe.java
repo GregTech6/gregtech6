@@ -616,10 +616,9 @@ public class Recipe {
 			return aRecipe;
 		}
 		
-		public boolean openNEI() {
-			try {codechicken.nei.recipe.GuiCraftingRecipe.openRecipeGui(mNameNEI, new Object[0]); return T;} catch(Throwable e) {/**/}
-			return F;
-		}
+		public boolean openNEI   (                  ) {try {codechicken.nei.recipe.GuiCraftingRecipe.openRecipeGui(mNameNEI          ); return T;} catch(Throwable e) {/**/} return F;}
+		public boolean guiRecipes(Object... aOutputs) {try {codechicken.nei.recipe.GuiCraftingRecipe.openRecipeGui(mNameNEI, aOutputs); return T;} catch(Throwable e) {/**/} return F;}
+		public boolean guiUsesNEI(Object... aInputs ) {try {codechicken.nei.recipe.GuiUsageRecipe   .openRecipeGui(mNameNEI, aInputs ); return T;} catch(Throwable e) {/**/} return F;}
 		
 		/** Old position for the Recipe Maps, please refer to gregapi.data.RM and gregapi.data.FM in the future. */
 		@Deprecated public static RecipeMap sMaceratorRecipes = new RecipeMap(), sFurnaceRecipes = RM.Furnace, sMicrowaveRecipes = RM.Microwave, sFurnaceFuel = FM.Furnace, sByProductList = RM.ByProductList, sCrucibleSmelting = RM.CrucibleSmelting,

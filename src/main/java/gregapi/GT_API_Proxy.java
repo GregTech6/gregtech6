@@ -53,6 +53,7 @@ import gregapi.block.metatype.BlockBasePlanks;
 import gregapi.block.misc.BlockBaseBale;
 import gregapi.block.multitileentity.MultiTileEntityItemInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
+import gregapi.block.prefixblock.PrefixBlockTileEntity;
 import gregapi.block.tree.BlockBaseBeam;
 import gregapi.block.tree.BlockBaseLog;
 import gregapi.block.tree.BlockBaseSapling;
@@ -809,6 +810,15 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				UT.Entities.chat(aEvent.entityPlayer, CHAT_GREG + "No cheating! ;)");
 				aEvent.setCanceled(T);
 				return;
+			}
+			// Some Clientside Only Stuff.
+			if (aEvent.entityPlayer.worldObj.isRemote && !aEvent.entityPlayer.isSneaking()) {
+				if (aTileEntity instanceof PrefixBlockTileEntity) {
+					// Show uses for Bedrock Ore when clicking it.
+					if (aBlock == BlocksGT.oreBedrock || aBlock == BlocksGT.oreSmallBedrock) {
+						RM.BedrockOreList.guiUsesNEI(ST.make((Block)BlocksGT.oreBedrock, 1, ((PrefixBlockTileEntity)aTileEntity).mMetaData));
+					}
+				}
 			}
 			if (ST.valid(aStack)) {
 				// Preventing a Railcraft Crash with Fluid Container Items.

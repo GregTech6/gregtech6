@@ -412,7 +412,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		}
 
 		private boolean transferRect(GuiContainer gui, boolean usage) {
-			return canHandle(gui) && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1])) && (usage ? GuiUsageRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]) : GuiCraftingRecipe.openRecipeGui(((ContainerClient)gui).mNEI, new Object[0]));
+			return canHandle(gui) && new Rectangle(65, 13, 36, 18).contains(new Point(GuiDraw.getMousePosition().x - ((ContainerClient)gui).getLeft() - RecipeInfo.getGuiOffset(gui)[0], GuiDraw.getMousePosition().y - ((ContainerClient)gui).getTop() - RecipeInfo.getGuiOffset(gui)[1])) && (usage ? GuiUsageRecipe.openRecipeGui(((ContainerClient)gui).mNEI) : GuiCraftingRecipe.openRecipeGui(((ContainerClient)gui).mNEI));
 		}
 
 		@Override
@@ -504,12 +504,12 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	}
 	
 	@Override
-	public void loadCraftingRecipes(String outputId, Object... results) {
-		if (outputId.equals(getOverlayIdentifier())) {
+	public void loadCraftingRecipes(String aID, Object... aResults) {
+		if (aID.equals(getOverlayIdentifier())) {
 			for (Recipe tRecipe : mRecipeMap.getNEIAllRecipes()) arecipes.add(new CachedDefaultRecipe(tRecipe));
 			sortRecipes();
 		} else {
-			super.loadCraftingRecipes(outputId, results);
+			super.loadCraftingRecipes(aID, aResults);
 		}
 	}
 
