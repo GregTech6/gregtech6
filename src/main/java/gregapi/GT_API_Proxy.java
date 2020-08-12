@@ -816,7 +816,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				if (aTileEntity instanceof PrefixBlockTileEntity) {
 					// Show uses for Bedrock Ore when clicking it.
 					if (aBlock == BlocksGT.oreBedrock || aBlock == BlocksGT.oreSmallBedrock) {
-						RM.BedrockOreList.guiUsesNEI(ST.make((Block)BlocksGT.oreBedrock, 1, ((PrefixBlockTileEntity)aTileEntity).mMetaData));
+						RM.BedrockOreList.openNEI();
+					//  RM.BedrockOreList.guiUsesNEI(ST.make((Block)BlocksGT.oreBedrock, 1, ((PrefixBlockTileEntity)aTileEntity).mMetaData));
 					}
 				}
 			}
