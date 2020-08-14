@@ -37,7 +37,7 @@ import net.minecraft.item.ItemStack;
 
 public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	public BlockFlowersA(String aUnlocalised) {
-		super(null, aUnlocalised, 8, Textures.BlockIcons.FLOWERS_A);
+		super(null, aUnlocalised, 18, Textures.BlockIcons.FLOWERS_A);
 		LH.add(getUnlocalizedName()+ ".0.name", "Altered Andesite Buckwheat"); // Gold, Silver
 		LH.add(getUnlocalizedName()+ ".1.name", "Crosby Buckwheat"); // Gold, Silver, Sulfur
 		LH.add(getUnlocalizedName()+ ".2.name", "Alpine Catchfly"); // Copper
@@ -46,7 +46,16 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		LH.add(getUnlocalizedName()+ ".5.name", "Tufted Evening Primrose"); // Uranium
 		LH.add(getUnlocalizedName()+ ".6.name", "Narcissus Sheldonia"); // Cooperite
 		LH.add(getUnlocalizedName()+ ".7.name", "Orechid"); // Any Random Ore that doesn't have a specific Flower
-		
+		LH.add(getUnlocalizedName()+ ".8.name", "Sandbank Flower"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".9.name", "Light Blue Flower"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".10.name", "Mana Bing"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".11.name", "Orange Grass"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".12.name", "Pink Rattan"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".13.name", "Purp Death Bush"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".14.name", "Purp Handle"); // Any Random Ore that doesn't have a specific Flower
+		LH.add(getUnlocalizedName()+ ".15.name", "Sky Blue grass"); // Any Random Ore that doesn't have a specific Flower
+
+
 		GT.mAfterInit.add(this);
 		BlocksGT.FLOWERS.add(this);
 		
@@ -108,7 +117,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		RM.pulverizing(ST.make(this, 1, 0), OM.dust(MT.Wheat));
 		RM.pulverizing(ST.make(this, 1, 1), OM.dust(MT.Wheat));
 		
-		RM.biomass(ST.make(this, 8, W));
+		RM.biomass(ST.make(this, 18, W));
 		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(this, 1, 0), OM.dust(MT.Yellow   ));
