@@ -231,9 +231,18 @@ public class DungeonData extends WorldAndCoords {
 	}
 	
 	public boolean flower(int aX, int aY, int aZ) {
-		if (BlocksGT.FlowersA != null && BlocksGT.FlowersB != null) switch (next(3)) {
-		case 0: return set(aX, aY, aZ, (Block)BlocksGT.FlowersA, next(((BlockBaseFlower)BlocksGT.FlowersA).mMaxMeta), 2);
-		case 1: return set(aX, aY, aZ, (Block)BlocksGT.FlowersB, next(((BlockBaseFlower)BlocksGT.FlowersB).mMaxMeta), 2);
+		return flower(aX, aY, aZ, F, F);
+	}
+	public boolean flower(int aX, int aY, int aZ, boolean aGrassOnly, boolean aVanillaOnly) {
+		if (BlocksGT.FlowersA != null) {
+			if (aGrassOnly || BlocksGT.FlowersB == null) {
+				if (next1in2()) return set(aX, aY, aZ, (Block)BlocksGT.FlowersA, next(((BlockBaseFlower)BlocksGT.FlowersA).mMaxMeta), 2);
+			} else {
+				switch (next(3)) {
+				case 0: return set(aX, aY, aZ, (Block)BlocksGT.FlowersA, next(((BlockBaseFlower)BlocksGT.FlowersA).mMaxMeta), 2);
+				case 1: return set(aX, aY, aZ, (Block)BlocksGT.FlowersB, next(((BlockBaseFlower)BlocksGT.FlowersB).mMaxMeta), 2);
+				}
+			}
 		}
 		int tIndex = next(BlocksGT.FLOWER_TILES.length);
 		return set(aX, aY, aZ, BlocksGT.FLOWER_TILES[tIndex], BlocksGT.FLOWER_METAS[tIndex], 2);

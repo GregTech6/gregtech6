@@ -53,32 +53,32 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.set( 1, 2,  5, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( i, 1,  1, BlocksGT.Grass, i % 2, 2);
+				aData.set   ( i, 1,  1, BlocksGT.Grass, i % 4, 2);
 				aData.set   ( i, 2,  1, tMushgloom, 9, 2);
 				aData.smooth( i, 3,  1, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   ( i, 1, 14, BlocksGT.Grass, i % 2, 2);
+				aData.set   ( i, 1, 14, BlocksGT.Grass, i % 4, 2);
 				aData.set   ( i, 2, 14, tMushgloom, 9, 2);
 				aData.smooth( i, 3, 14, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( i, 1,  2, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 				aData.smooth( i, 1, 13, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			}
 			
-			aData.set( 2, 1,  6, Blocks.grass, 0, 2);
-			aData.set( 2, 1,  7, Blocks.grass, 0, 2);
-			aData.set( 2, 1,  8, Blocks.grass, 0, 2);
-			aData.set( 2, 1,  9, Blocks.grass, 0, 2);
-			aData.set( 3, 1,  6, Blocks.grass, 0, 2);
+			aData.set( 2, 1,  6, BlocksGT.Diggables, 0, 2);
+			aData.set( 2, 1,  7, BlocksGT.Diggables, 0, 2);
+			aData.set( 2, 1,  8, BlocksGT.Diggables, 0, 2);
+			aData.set( 2, 1,  9, BlocksGT.Diggables, 0, 2);
+			aData.set( 3, 1,  6, BlocksGT.Diggables, 0, 2);
 			aData.set( 3, 1,  7, Blocks.water, 0, 2);
 			aData.set( 3, 1,  8, Blocks.water, 0, 2);
-			aData.set( 3, 1,  9, Blocks.grass, 0, 2);
-			aData.set( 4, 1,  6, Blocks.grass, 0, 2);
+			aData.set( 3, 1,  9, BlocksGT.Diggables, 0, 2);
+			aData.set( 4, 1,  6, BlocksGT.Diggables, 0, 2);
 			aData.set( 4, 1,  7, Blocks.water, 0, 2);
 			aData.set( 4, 1,  8, Blocks.water, 0, 2);
-			aData.set( 4, 1,  9, Blocks.grass, 0, 2);
-			aData.set( 5, 1,  6, Blocks.grass, 0, 2);
-			aData.set( 5, 1,  7, Blocks.grass, 0, 2);
-			aData.set( 5, 1,  8, Blocks.grass, 0, 2);
-			aData.set( 5, 1,  9, Blocks.grass, 0, 2);
+			aData.set( 4, 1,  9, BlocksGT.Diggables, 0, 2);
+			aData.set( 5, 1,  6, BlocksGT.Diggables, 0, 2);
+			aData.set( 5, 1,  7, BlocksGT.Diggables, 0, 2);
+			aData.set( 5, 1,  8, BlocksGT.Diggables, 0, 2);
+			aData.set( 5, 1,  9, BlocksGT.Diggables, 0, 2);
 			
 			aData.flower( 2, 2,  6);
 			aData.flower( 2, 2,  7);
@@ -97,32 +97,32 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.set(14, 2, 10, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( i, 1,  1, BlocksGT.Grass, i % 2, 2);
+				aData.set   ( i, 1,  1, BlocksGT.Grass, i % 4, 2);
 				aData.set   ( i, 2,  1, tMushgloom, 9, 2);
 				aData.smooth( i, 3,  1, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   ( i, 1, 14, BlocksGT.Grass, i % 2, 2);
+				aData.set   ( i, 1, 14, BlocksGT.Grass, i % 4, 2);
 				aData.set   ( i, 2, 14, tMushgloom, 9, 2);
 				aData.smooth( i, 3, 14, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( i, 1,  2, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
 				aData.smooth( i, 1, 13, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			}
 			
-			aData.set(10, 1,  6, Blocks.grass, 0, 2);
-			aData.set(10, 1,  7, Blocks.grass, 0, 2);
-			aData.set(10, 1,  8, Blocks.grass, 0, 2);
-			aData.set(10, 1,  9, Blocks.grass, 0, 2);
-			aData.set(11, 1,  6, Blocks.grass, 0, 2);
+			aData.set(10, 1,  6, BlocksGT.Diggables, 0, 2);
+			aData.set(10, 1,  7, BlocksGT.Diggables, 0, 2);
+			aData.set(10, 1,  8, BlocksGT.Diggables, 0, 2);
+			aData.set(10, 1,  9, BlocksGT.Diggables, 0, 2);
+			aData.set(11, 1,  6, BlocksGT.Diggables, 0, 2);
 			aData.set(11, 1,  7, Blocks.water, 0, 2);
 			aData.set(11, 1,  8, Blocks.water, 0, 2);
-			aData.set(11, 1,  9, Blocks.grass, 0, 2);
-			aData.set(12, 1,  6, Blocks.grass, 0, 2);
+			aData.set(11, 1,  9, BlocksGT.Diggables, 0, 2);
+			aData.set(12, 1,  6, BlocksGT.Diggables, 0, 2);
 			aData.set(12, 1,  7, Blocks.water, 0, 2);
 			aData.set(12, 1,  8, Blocks.water, 0, 2);
-			aData.set(12, 1,  9, Blocks.grass, 0, 2);
-			aData.set(13, 1,  6, Blocks.grass, 0, 2);
-			aData.set(13, 1,  7, Blocks.grass, 0, 2);
-			aData.set(13, 1,  8, Blocks.grass, 0, 2);
-			aData.set(13, 1,  9, Blocks.grass, 0, 2);
+			aData.set(12, 1,  9, BlocksGT.Diggables, 0, 2);
+			aData.set(13, 1,  6, BlocksGT.Diggables, 0, 2);
+			aData.set(13, 1,  7, BlocksGT.Diggables, 0, 2);
+			aData.set(13, 1,  8, BlocksGT.Diggables, 0, 2);
+			aData.set(13, 1,  9, BlocksGT.Diggables, 0, 2);
 			
 			aData.flower(10, 2,  6);
 			aData.flower(10, 2,  7);
@@ -141,32 +141,32 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.set( 5, 2,  1, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( 1, 1,  i, BlocksGT.Grass, i % 2, 2);
+				aData.set   ( 1, 1,  i, BlocksGT.Grass, i % 4, 2);
 				aData.set   ( 1, 2,  i, tMushgloom, 9, 2);
 				aData.smooth( 1, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   (14, 1,  i, BlocksGT.Grass, i % 2, 2);
+				aData.set   (14, 1,  i, BlocksGT.Grass, i % 4, 2);
 				aData.set   (14, 2,  i, tMushgloom, 9, 2);
 				aData.smooth(14, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( 2, 1,  i, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
 				aData.smooth(13, 1,  i, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			}
 			
-			aData.set( 6, 1,  2, Blocks.grass, 0, 2);
-			aData.set( 7, 1,  2, Blocks.grass, 0, 2);
-			aData.set( 8, 1,  2, Blocks.grass, 0, 2);
-			aData.set( 9, 1,  2, Blocks.grass, 0, 2);
-			aData.set( 6, 1,  3, Blocks.grass, 0, 2);
+			aData.set( 6, 1,  2, BlocksGT.Diggables, 0, 2);
+			aData.set( 7, 1,  2, BlocksGT.Diggables, 0, 2);
+			aData.set( 8, 1,  2, BlocksGT.Diggables, 0, 2);
+			aData.set( 9, 1,  2, BlocksGT.Diggables, 0, 2);
+			aData.set( 6, 1,  3, BlocksGT.Diggables, 0, 2);
 			aData.set( 7, 1,  3, Blocks.water, 0, 2);
 			aData.set( 8, 1,  3, Blocks.water, 0, 2);
-			aData.set( 9, 1,  3, Blocks.grass, 0, 2);
-			aData.set( 6, 1,  4, Blocks.grass, 0, 2);
+			aData.set( 9, 1,  3, BlocksGT.Diggables, 0, 2);
+			aData.set( 6, 1,  4, BlocksGT.Diggables, 0, 2);
 			aData.set( 7, 1,  4, Blocks.water, 0, 2);
 			aData.set( 8, 1,  4, Blocks.water, 0, 2);
-			aData.set( 9, 1,  4, Blocks.grass, 0, 2);
-			aData.set( 6, 1,  5, Blocks.grass, 0, 2);
-			aData.set( 7, 1,  5, Blocks.grass, 0, 2);
-			aData.set( 8, 1,  5, Blocks.grass, 0, 2);
-			aData.set( 9, 1,  5, Blocks.grass, 0, 2);
+			aData.set( 9, 1,  4, BlocksGT.Diggables, 0, 2);
+			aData.set( 6, 1,  5, BlocksGT.Diggables, 0, 2);
+			aData.set( 7, 1,  5, BlocksGT.Diggables, 0, 2);
+			aData.set( 8, 1,  5, BlocksGT.Diggables, 0, 2);
+			aData.set( 9, 1,  5, BlocksGT.Diggables, 0, 2);
 			
 			aData.flower( 6, 2,  2);
 			aData.flower( 7, 2,  2);
@@ -185,32 +185,32 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.set(10, 2, 14, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( 1, 1,  i, BlocksGT.Grass, i % 2, 2);
+				aData.set   ( 1, 1,  i, BlocksGT.Grass, i % 4, 2);
 				aData.set   ( 1, 2,  i, tMushgloom, 9, 2);
 				aData.smooth( 1, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   (14, 1,  i, BlocksGT.Grass, i % 2, 2);
+				aData.set   (14, 1,  i, BlocksGT.Grass, i % 4, 2);
 				aData.set   (14, 2,  i, tMushgloom, 9, 2);
 				aData.smooth(14, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( 2, 1,  i, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
 				aData.smooth(13, 1,  i, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			}
 			
-			aData.set( 6, 1, 10, Blocks.grass, 0, 2);
-			aData.set( 7, 1, 10, Blocks.grass, 0, 2);
-			aData.set( 8, 1, 10, Blocks.grass, 0, 2);
-			aData.set( 9, 1, 10, Blocks.grass, 0, 2);
-			aData.set( 6, 1, 11, Blocks.grass, 0, 2);
+			aData.set( 6, 1, 10, BlocksGT.Diggables, 0, 2);
+			aData.set( 7, 1, 10, BlocksGT.Diggables, 0, 2);
+			aData.set( 8, 1, 10, BlocksGT.Diggables, 0, 2);
+			aData.set( 9, 1, 10, BlocksGT.Diggables, 0, 2);
+			aData.set( 6, 1, 11, BlocksGT.Diggables, 0, 2);
 			aData.set( 7, 1, 11, Blocks.water, 0, 2);
 			aData.set( 8, 1, 11, Blocks.water, 0, 2);
-			aData.set( 9, 1, 11, Blocks.grass, 0, 2);
-			aData.set( 6, 1, 12, Blocks.grass, 0, 2);
+			aData.set( 9, 1, 11, BlocksGT.Diggables, 0, 2);
+			aData.set( 6, 1, 12, BlocksGT.Diggables, 0, 2);
 			aData.set( 7, 1, 12, Blocks.water, 0, 2);
 			aData.set( 8, 1, 12, Blocks.water, 0, 2);
-			aData.set( 9, 1, 12, Blocks.grass, 0, 2);
-			aData.set( 6, 1, 13, Blocks.grass, 0, 2);
-			aData.set( 7, 1, 13, Blocks.grass, 0, 2);
-			aData.set( 8, 1, 13, Blocks.grass, 0, 2);
-			aData.set( 9, 1, 13, Blocks.grass, 0, 2);
+			aData.set( 9, 1, 12, BlocksGT.Diggables, 0, 2);
+			aData.set( 6, 1, 13, BlocksGT.Diggables, 0, 2);
+			aData.set( 7, 1, 13, BlocksGT.Diggables, 0, 2);
+			aData.set( 8, 1, 13, BlocksGT.Diggables, 0, 2);
+			aData.set( 9, 1, 13, BlocksGT.Diggables, 0, 2);
 			
 			aData.flower( 6, 2, 10);
 			aData.flower( 7, 2, 10);
