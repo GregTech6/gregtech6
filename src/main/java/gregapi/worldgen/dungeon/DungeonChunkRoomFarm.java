@@ -147,6 +147,7 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 		aData.set(10,  1,  5, 32065); aData.set(10,  2,  5, Blocks.cactus); aData.set(10,  3,  5, Blocks.cactus); aData.set(10,  4,  5, Blocks.cactus);
 		aData.set(10,  1, 10, 32065); aData.set(10,  2, 10, Blocks.reeds ); aData.set(10,  3, 10, Blocks.reeds ); aData.set(10,  4, 10, Blocks.reeds );
 		
+		
 		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
 			aData.smooth(14,  3,  5, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			aData.set   (14,  3,  6, Blocks.log, 11); aData.set(13,  3,  6, Blocks.cocoa, COMPASS_FROM_SIDE[SIDE_X_NEG]+aData.next(3)*4);
@@ -165,6 +166,7 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 			aData.set   (14,  4,  8, 32065); aData.flower(14,  5,  8);
 			aData.set   (14,  4,  9, 32065); aData.flower(14,  5,  9);
 		}
+		
 		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
 			aData.smooth( 1,  3,  5, aData.mPrimary.mSlabs[SIDE_Z_POS], aData.mSecondary.mSlabs[SIDE_Z_POS]);
 			aData.set   ( 1,  3,  6, Blocks.log, 11); aData.set( 2,  3,  6, Blocks.cocoa, COMPASS_FROM_SIDE[SIDE_X_POS]+aData.next(3)*4);
@@ -183,6 +185,7 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 			aData.set   ( 1,  4,  8, 32065); aData.set   ( 1,  5,  8, Blocks.double_plant, 0); aData.set( 1,  6,  8, Blocks.double_plant, 9);
 			aData.set   ( 1,  4,  9, 32065); aData.flower( 1,  5,  9);
 		}
+		
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
 			aData.smooth( 5,  3, 14, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			aData.set   ( 6,  3, 14, Blocks.log,  7); aData.set( 6,  3, 13, Blocks.cocoa, COMPASS_FROM_SIDE[SIDE_Z_NEG]+aData.next(3)*4);
@@ -201,6 +204,7 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 			aData.set   ( 8,  4, 14, 32065); aData.flower( 8,  5, 14);
 			aData.set   ( 9,  4, 14, 32065); aData.flower( 9,  5, 14);
 		}
+		
 		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
 			aData.smooth( 5,  3,  1, aData.mPrimary.mSlabs[SIDE_X_POS], aData.mSecondary.mSlabs[SIDE_X_POS]);
 			aData.set   ( 6,  3,  1, Blocks.log,  7); aData.set( 6,  3,  2, Blocks.cocoa, COMPASS_FROM_SIDE[SIDE_Z_POS]+aData.next(3)*4);
