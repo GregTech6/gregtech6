@@ -36,6 +36,8 @@ import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockVanillaOresA extends BlockBaseMeta {
@@ -82,6 +84,16 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 			break;
 		}
 		return rDrops;
+	}
+	
+	@Override
+	public int getExpDrop(IBlockAccess aWorld, int aMeta, int aFortune) {
+		switch(aMeta) {
+		case  0: case  1:          return MathHelper.getRandomIntegerInRange(RNGSUS, 0, 2);
+		case 13: case 15:          return MathHelper.getRandomIntegerInRange(RNGSUS, 2, 5);
+		case  2: case  3: case  4: return MathHelper.getRandomIntegerInRange(RNGSUS, 3, 7);
+		default: return 0;
+		}
 	}
 	
 	@Override public boolean useGravity(byte aMeta) {return F;}

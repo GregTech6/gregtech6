@@ -625,7 +625,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresBedrock("ore.bedrock.naquadah"          , T, T,  10000, MT.Nq                    , BlocksGT.FlowersA, 7, GEN_MARS); // TODO Flower
 		new WorldgenOresBedrock("ore.bedrock.adamantine"        , T, T,  10000, MT.Adamantine            , BlocksGT.FlowersA, 7, GEN_MARS, GEN_EREBUS, GEN_BETWEENLANDS); // TODO Flower
 		
-		new WorldgenOresBedrock("ore.bedrock.hexorium"          , MD.HEX.mLoaded, T,   3000, ANY.Hexorium, BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Flower
+		new WorldgenOresBedrock("ore.bedrock.hexorium"          , MD.HEX.mLoaded, T,   8000, ANY.Hexorium, BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Flower
 		
 		for (int i = 0, j = ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AmountOfCustomBedrockOreSlots", 0); i < j; i++) {
 		new WorldgenOresBedrock("ore.bedrock.custom" + (i<10?"0":"") + i, F, T, 100000, MT.NULL, BlocksGT.FlowersA, 7, GEN_FLOOR);
@@ -700,58 +700,58 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.trona"             , MD.IHL .mLoaded,  40,  80,   1, MT.OREMATS.Trona       , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		
 		
-		new WorldgenOresSmall("ore.small.diamond"           , T,   5,  10,   2, MT.Diamond                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_PLANETS, GEN_ASTEROIDS, GEN_MOON, GEN_NETHER);
-		new WorldgenOresSmall("ore.small.emerald"           , T,   5, 250,   1, MT.Emerald                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.aquamarine"        , T,   5, 250,   1, MT.Aquamarine                   , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.morganite"         , T,   5, 250,   1, MT.Morganite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.heliodor"          , T,   5, 250,   1, MT.Heliodor                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.goshenite"         , T,   5, 250,   1, MT.Goshenite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.bixbite"           , T,   5, 250,   1, MT.Bixbite                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.maxixe"            , T,   5, 250,   1, MT.Maxixe                       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.dioptase"          , T,   5, 250,   1, MT.Dioptase                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.ruby"              , T,   5, 250,   1, MT.Ruby                         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.bluesapphire"      , T,   5, 250,   1, MT.BlueSapphire                 , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.greensapphire"     , T,   5, 250,   1, MT.GreenSapphire                , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.yellowsapphire"    , T,   5, 250,   1, MT.YellowSapphire               , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.orangesapphire"    , T,   5, 250,   1, MT.OrangeSapphire               , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.purplesapphire"    , T,   5, 250,   1, MT.PurpleSapphire               , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.olivine"           , T,   5, 250,   1, MT.Olivine                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.craponite"         , T,   5, 250,   1, MT.Craponite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
-		new WorldgenOresSmall("ore.small.topaz"             , T,   5, 250,   1, MT.Topaz                        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.tanzanite"         , T,   5, 250,   1, MT.Tanzanite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.amethyst"          , T,   5, 250,   1, MT.Amethyst                     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.alexandrite"       , T,   5, 250,   1, MT.Alexandrite                  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.opal"              , T,   5, 250,   1, MT.Opal                         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.jasper"            , T,   5, 250,   1, MT.Jasper                       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.aventurinegreen"   , T,   5, 250,   1, MT.AventurineGreen              , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.aventurineblue"    , T,   5, 250,   1, MT.AventurineBlue               , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.aventurineblack"   , T,   5, 250,   1, MT.AventurineBlack              , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.aventurinebrown"   , T,   5, 250,   1, MT.AventurineBrown              , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.aventurinered"     , T,   5, 250,   1, MT.AventurineRed                , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.aventurineyellow"  , T,   5, 250,   1, MT.AventurineYellow             , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.bluetopaz"         , T,   5, 250,   1, MT.BlueTopaz                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.balasruby"         , T,   5, 250,   1, MT.BalasRuby                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.spinel"            , T,   5, 250,   1, MT.Spinel                       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.pyrope"            , T,   5, 250,   1, MT.Pyrope                       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.almandine"         , T,   5, 250,   1, MT.Almandine                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.spessartine"       , T,   5, 250,   1, MT.Spessartine                  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.andradite"         , T,   5, 250,   1, MT.Andradite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.grossular"         , T,   5, 250,   1, MT.Grossular                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.uvarovite"         , T,   5, 250,   1, MT.Uvarovite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.jade"              , T,   5, 250,   1, MT.Jade                         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.amazonite"         , T,   5, 250,   1, MT.Amazonite                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.redonyx"           , T,   5, 250,   1, MT.OnyxRed                      , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.blackonyx"         , T,   5, 250,   1, MT.OnyxBlack                    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoritered"       , T,   5, 250,   1, MT.FluoriteRed                  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoritepink"      , T,   5, 250,   1, MT.FluoritePink                 , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoriteblue"      , T,   5, 250,   1, MT.FluoriteBlue                 , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoritegreen"     , T,   5, 250,   1, MT.FluoriteGreen                , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoriteblack"     , T,   5, 250,   1, MT.FluoriteBlack                , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoritewhite"     , T,   5, 250,   1, MT.FluoriteWhite                , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoriteyellow"    , T,   5, 250,   1, MT.FluoriteYellow               , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoriteorange"    , T,   5, 250,   1, MT.FluoriteOrange               , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.fluoritemagenta"   , T,   5, 250,   1, MT.FluoriteMagenta              , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
-		new WorldgenOresSmall("ore.small.amber"             , T,   5, 250,   1, MT.Amber                        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA);
+		new WorldgenOresSmall("ore.small.craponite"         , T,   5, 250,   1, MT.Craponite       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS, GEN_NETHER, GEN_END, GEN_ALFHEIM);
+		new WorldgenOresSmall("ore.small.diamond"           , T,   5,  10,   2, MT.Diamond         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS, GEN_ASTEROIDS, GEN_MOON, GEN_PLANETS, GEN_NETHER);
+		new WorldgenOresSmall("ore.small.emerald"           , T,   5, 250,   1, MT.Emerald         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.aquamarine"        , T,   5, 250,   1, MT.Aquamarine      , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.morganite"         , T,   5, 250,   1, MT.Morganite       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.heliodor"          , T,   5, 250,   1, MT.Heliodor        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.goshenite"         , T,   5, 250,   1, MT.Goshenite       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.bixbite"           , T,   5, 250,   1, MT.Bixbite         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.maxixe"            , T,   5, 250,   1, MT.Maxixe          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.dioptase"          , T,   5, 250,   1, MT.Dioptase        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.ruby"              , T,   5, 250,   1, MT.Ruby            , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.bluesapphire"      , T,   5, 250,   1, MT.BlueSapphire    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.greensapphire"     , T,   5, 250,   1, MT.GreenSapphire   , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.yellowsapphire"    , T,   5, 250,   1, MT.YellowSapphire  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.orangesapphire"    , T,   5, 250,   1, MT.OrangeSapphire  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.purplesapphire"    , T,   5, 250,   1, MT.PurpleSapphire  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.olivine"           , T,   5, 250,   1, MT.Olivine         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.topaz"             , T,   5, 250,   1, MT.Topaz           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.tanzanite"         , T,   5, 250,   1, MT.Tanzanite       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.amethyst"          , T,   5, 250,   1, MT.Amethyst        , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.alexandrite"       , T,   5, 250,   1, MT.Alexandrite     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.opal"              , T,   5, 250,   1, MT.Opal            , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.jasper"            , T,   5, 250,   1, MT.Jasper          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.aventurinegreen"   , T,   5, 250,   1, MT.AventurineGreen , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.aventurineblue"    , T,   5, 250,   1, MT.AventurineBlue  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.aventurineblack"   , T,   5, 250,   1, MT.AventurineBlack , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.aventurinebrown"   , T,   5, 250,   1, MT.AventurineBrown , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.aventurinered"     , T,   5, 250,   1, MT.AventurineRed   , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.aventurineyellow"  , T,   5, 250,   1, MT.AventurineYellow, GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.bluetopaz"         , T,   5, 250,   1, MT.BlueTopaz       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.balasruby"         , T,   5, 250,   1, MT.BalasRuby       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.spinel"            , T,   5, 250,   1, MT.Spinel          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.pyrope"            , T,   5, 250,   1, MT.Pyrope          , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.almandine"         , T,   5, 250,   1, MT.Almandine       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.spessartine"       , T,   5, 250,   1, MT.Spessartine     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.andradite"         , T,   5, 250,   1, MT.Andradite       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.grossular"         , T,   5, 250,   1, MT.Grossular       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.uvarovite"         , T,   5, 250,   1, MT.Uvarovite       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.jade"              , T,   5, 250,   1, MT.Jade            , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.amazonite"         , T,   5, 250,   1, MT.Amazonite       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.redonyx"           , T,   5, 250,   1, MT.OnyxRed         , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.blackonyx"         , T,   5, 250,   1, MT.OnyxBlack       , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoritered"       , T,   5, 250,   1, MT.FluoriteRed     , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoritepink"      , T,   5, 250,   1, MT.FluoritePink    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoriteblue"      , T,   5, 250,   1, MT.FluoriteBlue    , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoritegreen"     , T,   5, 250,   1, MT.FluoriteGreen   , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoriteblack"     , T,   5, 250,   1, MT.FluoriteBlack   , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoritewhite"     , T,   5, 250,   1, MT.FluoriteWhite   , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoriteyellow"    , T,   5, 250,   1, MT.FluoriteYellow  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoriteorange"    , T,   5, 250,   1, MT.FluoriteOrange  , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.fluoritemagenta"   , T,   5, 250,   1, MT.FluoriteMagenta , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA, GEN_MARS);
+		new WorldgenOresSmall("ore.small.amber"             , T,   5, 250,   1, MT.Amber           , GEN_OVERWORLD, GEN_GT, GEN_ENVM, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_PFAA);
 		
 		for (int i = 0, j = ConfigsGT.WORLDGEN.get(ConfigCategories.general, "AmountOfCustomSmallOreSlots", 0); i < j; i++) {
 		new WorldgenOresSmall("ore.small.custom" + (i<10?"0":"") + i, F, 0, 0, 0, MT.NULL, GEN_ALL);

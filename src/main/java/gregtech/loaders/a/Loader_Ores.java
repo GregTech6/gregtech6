@@ -125,9 +125,9 @@ public class Loader_Ores implements Runnable {
 		BlocksGT.oreMud                     = new PrefixBlock_(MD.GT, "gt.meta.ore.normal.mud"              , OP.oreMud                 , null                                  , BlockTextureCopied.get(BlocksGT.Diggables     , 0), Material.ground,Block.soundTypeGravel , TOOL_shovel   , 0.30F, 0.50F,   0,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		BlocksGT.oreSmallMud                = new PrefixBlock_(MD.GT, "gt.meta.ore.small.mud"               , OP.oreSmall               , new Drops_SmallOre(null)              , BlockTextureCopied.get(BlocksGT.Diggables     , 0), Material.ground,Block.soundTypeGravel , TOOL_shovel   , 0.30F, 0.50F,  -1,   0, T,F, OreDictMaterial.MATERIAL_ARRAY);
 		
-		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.Diggables    , 1, 0), BlocksGT.oreMud                );
-		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.Diggables    , 1, 0), BlocksGT.oreMud                );
-		BlocksGT.stoneToSmallOres.put(new ItemStackContainer(BlocksGT.Diggables     , 1, 0), BlocksGT.oreSmallMud           );
+		BlocksGT.stoneToNormalOres.put(new ItemStackContainer(BlocksGT.Diggables, 1, 0), BlocksGT.oreMud     );
+		BlocksGT.stoneToBrokenOres.put(new ItemStackContainer(BlocksGT.Diggables, 1, 0), BlocksGT.oreMud     );
+		BlocksGT.stoneToSmallOres .put(new ItemStackContainer(BlocksGT.Diggables, 1, 0), BlocksGT.oreSmallMud);
 		
 		//====================================================================================================//
 		

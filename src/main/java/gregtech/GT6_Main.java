@@ -338,11 +338,11 @@ public class GT6_Main extends Abstract_Mod {
 	@Override
 	public void onModInit2(FMLInitializationEvent aEvent) {
 		for (FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) if (tData.filledContainer.getItem() == Items.potionitem && ST.meta_(tData.filledContainer) == 0) {tData.fluid.amount = 0; break;}
-
+		
 		new Loader_Late_Items_And_Blocks().run();
-
+		
 		if (MD.IC2C.mLoaded) for (int i = 0; i <= 6; i++) FMLInterModComms.sendMessage(MD.IC2C.mID, "generatorDrop", ST.save(UT.NBT.makeInt("Key", i), "Value", IL.IC2_Machine.get(1)));
-
+		
 		ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
 			new Loader_MultiTileEntities(),
 			new Loader_Books(),

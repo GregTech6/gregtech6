@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.List;
 
 import gregapi.block.misc.BlockBaseFlower;
+import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -56,8 +57,8 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		GT.mAfterInit.add(this);
 		BlocksGT.FLOWERS.add(this);
 		
-		OM.data(ST.make(this, 1, 0), MT.Wood, U);
-		OM.data(ST.make(this, 1, 1), MT.Wood, U);
+		OM.data(ST.make(this, 1, 0), ANY.Wood, U);
+		OM.data(ST.make(this, 1, 1), ANY.Wood, U);
 		
 		for (int i = 2; i < mMaxMeta; i++) OM.reg(ST.make(this, 1, i), "flower");
 	}

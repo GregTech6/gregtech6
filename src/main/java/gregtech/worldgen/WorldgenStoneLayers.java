@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -31,7 +31,6 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import gregapi.worldgen.StoneLayer;
 import gregapi.worldgen.StoneLayerOres;
@@ -90,7 +89,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					tCanPlaceRocks = T;
 				// Place Rock if on Opaque Surface.
 				} else if (aBlock == NB) {
-					if (tCanPlaceRocks && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
+					if (tCanPlaceRocks && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
 					tLastOre = null;
 					tCanPlaceRocks = F;
 				// Stone and Ore Generation in vanilla Stone.
@@ -166,7 +165,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 					tCanPlaceRocks = (aStorage.getExtBlockMetadata(i, tY & 15, j) < 3);
 				// Place Rock if on Opaque Surface.
 				} else if (WD.easyRep(aWorld, tX, tY, tZ, aBlock)) {
-					if (tCanPlaceRocks && !aBlock.getMaterial().isLiquid() && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(UT.NBT.make(), NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
+					if (tCanPlaceRocks && !aBlock.getMaterial().isLiquid() && aRandom.nextInt(128) == 0) tRegistry.mBlock.placeBlock(aWorld, tX, tY, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, OP.rockGt.mat(aRandom.nextBoolean()&&tLastOre!=null?tLastOre:tLastRock, 1)), F, T);
 					tLastOre = null;
 					tCanPlaceRocks = F;
 				// Just check if the last Block was Opaque and of the right kind of Material.

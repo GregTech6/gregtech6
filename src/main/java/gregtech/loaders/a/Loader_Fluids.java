@@ -49,10 +49,10 @@ public class Loader_Fluids implements Runnable {
 		
 		//-----
 		
-		FL.create("Propane"                  , "Propane"             , MT.Propane            , 2).setDensity(-1000);
-		FL.create("Butane"                   , "Butane"              , MT.Butane             , 2).setDensity(-1000);
-		FL.create("Propylene"                , "Propylene"           , MT.Propylene          , 2);
-		FL.create("Ethylene"                 , "Ethylene"            , MT.Ethylene           , 2);
+		FL.create("Propane"                  , null                  , MT.Propane            , 2).setDensity(-1000);
+		FL.create("Butane"                   , null                  , MT.Butane             , 2).setDensity(-1000);
+		FL.create("Propylene"                , null                  , MT.Propylene          , 2);
+		FL.create("Ethylene"                 , null                  , MT.Ethylene           , 2);
 		FL.create("dragonbreath"             , "Dragon's Breath"     , null                  , 2,   1000,   300, IL.EtFu_Dragon_Breath.get(1), IL.Bottle_Empty.get(1), 250).setDensity(100).setLuminosity(5);
 		FL.create("netherair"                , "Nether Air"          , null                  , 2,   1000,   370).setDensity(0);
 		FL.create("enderair"                 , "Ender Air"           , null                  , 2,   1000,   280).setDensity(0);
@@ -76,9 +76,9 @@ public class Loader_Fluids implements Runnable {
 		
 		FL.create("chargedmatter"            , "Charged Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
 		FL.create("neutralmatter"            , "Neutral Matter"      , null                  , 1,      1,     1).setDensity(-5000).setLuminosity(15);
-		FL.create("UUAmplifier"              , "UU-Amplifier"        , MT.UUAmplifier        , 1,      1,   100);
-		FL.create("ic2uumatter"              , "UU-Matter"           , MT.UUMatter           , 1,      1,   100);
-		FL.create("ic2constructionfoam"      , "Construction Foam"   , MT.ConstructionFoam   , 1,    100,   300);
+		FL.create("UUAmplifier"              , null                  , MT.UUAmplifier        , 1,      1,   100);
+		FL.create("ic2uumatter"              , null                  , MT.UUMatter           , 1,      1,   100);
+		FL.create("ic2constructionfoam"      , null                  , MT.ConstructionFoam   , 1,    100,   300);
 		FL.create("ic2distilledwater"        , "Distilled Water"     , MT.DistWater          , 1);
 		FL.create("NitroFuel"                , "Nitro Fuel"          , MT.NitroFuel          , 1);
 		FL.create("oil"                      , "Oil"                 , MT.Oil                , 1);
@@ -106,7 +106,7 @@ public class Loader_Fluids implements Runnable {
 		FL.create("ic2pahoehoelava"          , "Pahoehoe Lava"       , null                  , 1,   1000,  1200).setLuminosity(10).setDensity(50000).setViscosity(250000);
 		
 		MT.Lubricant.liquid(FL.LubRoCant.make(1000));
-		FL.create("lubricant"                , "Lubricant"           , MT.Lubricant          , 1);
+		FL.create("Lubricant"                , null                  , MT.Lubricant          , 1);
 		
 		MT.Ethanol.liquid(FL.Reikanol.make(1000));
 		FL.create("ethanol"                  , "Ethanol"             , MT.Ethanol            , 1);

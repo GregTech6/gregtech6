@@ -78,11 +78,11 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	
 	@Override
 	public boolean canDrain(World aWorld, int aX, int aY, int aZ) {
-		return aWorld.getBlockMetadata(aX, aY, aZ) == 0;
+		return WD.meta(aWorld, aX, aY, aZ) == 0;
 	}
 	
 	public void updateFlow(World aWorld, int aX, int aY, int aZ, Random aRandom) {
-		int quantaRemaining = quantaPerBlock - aWorld.getBlockMetadata(aX, aY, aZ);
+		int quantaRemaining = quantaPerBlock - WD.meta(aWorld, aX, aY, aZ);
 		int expQuanta = -101;
 		// check adjacent block levels if non-source
 		if (quantaRemaining < quantaPerBlock) {

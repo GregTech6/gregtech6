@@ -160,7 +160,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 									WD.set(aWorld, tX, tY+1, tZ, NB, 0, 0);
 								}
 								if (mIndicatorRocks && (tContact.getMaterial() == Material.grass || tContact.getMaterial() == Material.ground || tContact.getMaterial() == Material.sand || tContact.getMaterial() == Material.rock)) {
-									tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(3)!=0?ST.save(UT.NBT.make(), NBT_VALUE, tRock):UT.NBT.make(), F, T);
+									tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, ST.save(NBT_VALUE, tRock), F, T);
 									break;
 								}
 								break;

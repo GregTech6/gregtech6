@@ -54,6 +54,7 @@ Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator
 [CHANGED] Swords, Saws, Axes and similar made of Knightmetal or Fiery Steel can now be used to break Twilight Maze Hedges about 40 times faster too. But be sure to wear something protecting you from the 1.5 Hearts of "Cactus" Damage per broken Hedge. Also the Saw should be optimal for this since it autocollects Drops, or the Sense/Scythe due to the Area of Effect.
 [CHANGED] Bastnasite now has Nikolite/Teslatite/Electrotine as a Byproduct if the corresponding Mod exists. It also has an Ore Drop Factor of x3 now.
 [CHANGED] Bumblebees in Twilight Forest now have the same variety that the Overworld ones have.
+[CHANGED] If you non-sneak rightclick Bedrock Ores you will get the overall Bedrock Drill Recipe List in NEI, making it easier to discover what their use is. (Does not apply to Bedrock Fluid Springs, obviously)
 [ADDED] Thaumcraft Flowers and Saplings should now generate in certain Biomes in the Twilight Forest.
 [ADDED] Transformation Powder can now be used to turn Mob Spawners into their Twilight Forest Variant and back. You will need 16 Powder at a time for it to work though. I also added some additional Mappings for Spawners just in case.
 [ADDED] The Cube of Annihilation of Twilight Forest is now craftable using a bunch of different Trophies and Loot Items.

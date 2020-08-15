@@ -147,7 +147,70 @@ public class DungeonChunkRoomFarm extends DungeonChunkRoomEmpty {
 		aData.set(10,  1,  5, 32065); aData.set(10,  2,  5, Blocks.cactus); aData.set(10,  3,  5, Blocks.cactus); aData.set(10,  4,  5, Blocks.cactus);
 		aData.set(10,  1, 10, 32065); aData.set(10,  2, 10, Blocks.reeds ); aData.set(10,  3, 10, Blocks.reeds ); aData.set(10,  4, 10, Blocks.reeds );
 		
-		// TODO: Put Jungle Logs with Cocoa Beans, and Shelves with Pots of Saplings and Tall Flowers on the Side Walls.
+		if (aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ] == 0) {
+			aData.set(14,  3,  6, Blocks.log, 11); aData.set(13,  3,  6, Blocks.cocoa, 3+aData.next(3)*4);
+			aData.set(14,  3,  7, Blocks.log, 11); aData.set(13,  3,  7, Blocks.cocoa, 3+aData.next(3)*4);
+			aData.set(14,  3,  8, Blocks.log, 11); aData.set(13,  3,  8, Blocks.cocoa, 3+aData.next(3)*4);
+			aData.set(14,  3,  9, Blocks.log, 11); aData.set(13,  3,  9, Blocks.cocoa, 3+aData.next(3)*4);
+			
+			aData.set(14,  1,  6, 32065); aData.set(14,  2,  6, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set(14,  1,  7, 32065); aData.set(14,  2,  7, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set(14,  1,  8, 32065); aData.set(14,  2,  8, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set(14,  1,  9, 32065); aData.set(14,  2,  9, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			
+			aData.set(14,  4,  6, 32065); aData.flower(14,  5,  6);
+			aData.set(14,  4,  7, 32065); aData.set   (14,  5,  7, Blocks.double_plant, 1); aData.set(14,  6,  7, Blocks.double_plant, 9);
+			aData.set(14,  4,  8, 32065); aData.flower(14,  5,  8);
+			aData.set(14,  4,  9, 32065); aData.flower(14,  5,  9);
+		}
+		if (aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ] == 0) {
+			aData.set( 1,  3,  6, Blocks.log, 11); aData.set( 2,  3,  6, Blocks.cocoa, 1+aData.next(3)*4);
+			aData.set( 1,  3,  7, Blocks.log, 11); aData.set( 2,  3,  7, Blocks.cocoa, 1+aData.next(3)*4);
+			aData.set( 1,  3,  8, Blocks.log, 11); aData.set( 2,  3,  8, Blocks.cocoa, 1+aData.next(3)*4);
+			aData.set( 1,  3,  9, Blocks.log, 11); aData.set( 2,  3,  9, Blocks.cocoa, 1+aData.next(3)*4);
+			
+			aData.set( 1,  1,  6, 32065); aData.set( 1,  2,  6, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 1,  1,  7, 32065); aData.set( 1,  2,  7, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 1,  1,  8, 32065); aData.set( 1,  2,  8, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 1,  1,  9, 32065); aData.set( 1,  2,  9, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			
+			aData.set( 1,  4,  6, 32065); aData.flower( 1,  5,  6);
+			aData.set( 1,  4,  7, 32065); aData.flower( 1,  5,  7);
+			aData.set( 1,  4,  8, 32065); aData.set   ( 1,  5,  8, Blocks.double_plant, 0); aData.set( 1,  6,  8, Blocks.double_plant, 9);
+			aData.set( 1,  4,  9, 32065); aData.flower( 1,  5,  9);
+		}
+		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ+1] == 0) {
+			aData.set( 6,  3, 14, Blocks.log,  7); aData.set( 6,  3, 13, Blocks.cocoa, 2+aData.next(3)*4);
+			aData.set( 7,  3, 14, Blocks.log,  7); aData.set( 7,  3, 13, Blocks.cocoa, 2+aData.next(3)*4);
+			aData.set( 8,  3, 14, Blocks.log,  7); aData.set( 8,  3, 13, Blocks.cocoa, 2+aData.next(3)*4);
+			aData.set( 9,  3, 14, Blocks.log,  7); aData.set( 9,  3, 13, Blocks.cocoa, 2+aData.next(3)*4);
+			
+			aData.set( 6,  1, 14, 32065); aData.set( 6,  2, 14, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 7,  1, 14, 32065); aData.set( 7,  2, 14, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 8,  1, 14, 32065); aData.set( 8,  2, 14, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 9,  1, 14, 32065); aData.set( 9,  2, 14, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			
+			aData.set( 6,  4, 14, 32065); aData.flower( 6,  5, 14);
+			aData.set( 7,  4, 14, 32065); aData.set   ( 7,  5, 14, Blocks.double_plant, 4); aData.set( 7,  6, 14, Blocks.double_plant, 9);
+			aData.set( 8,  4, 14, 32065); aData.flower( 8,  5, 14);
+			aData.set( 9,  4, 14, 32065); aData.flower( 9,  5, 14);
+		}
+		if (aData.mRoomLayout[aData.mRoomX][aData.mRoomZ-1] == 0) {
+			aData.set( 6,  3,  1, Blocks.log,  7); aData.set( 6,  3,  2, Blocks.cocoa, 0+aData.next(3)*4);
+			aData.set( 7,  3,  1, Blocks.log,  7); aData.set( 7,  3,  2, Blocks.cocoa, 0+aData.next(3)*4);
+			aData.set( 8,  3,  1, Blocks.log,  7); aData.set( 8,  3,  2, Blocks.cocoa, 0+aData.next(3)*4);
+			aData.set( 9,  3,  1, Blocks.log,  7); aData.set( 9,  3,  2, Blocks.cocoa, 0+aData.next(3)*4);
+			
+			aData.set( 6,  1,  1, 32065); aData.set( 6,  2,  1, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 7,  1,  1, 32065); aData.set( 7,  2,  1, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 8,  1,  1, 32065); aData.set( 8,  2,  1, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			aData.set( 9,  1,  1, 32065); aData.set( 9,  2,  1, BlocksGT.Sapling, aData.next(8), Blocks.sapling, aData.next(6));
+			
+			aData.set( 6,  4,  1, 32065); aData.flower( 6,  5,  1);
+			aData.set( 7,  4,  1, 32065); aData.flower( 7,  5,  1);
+			aData.set( 8,  4,  1, 32065); aData.set   ( 8,  5,  1, Blocks.double_plant, 5); aData.set( 8,  6,  1, Blocks.double_plant, 9);
+			aData.set( 9,  4,  1, 32065); aData.flower( 9,  5,  1);
+		}
 		
 		return T;
 	}

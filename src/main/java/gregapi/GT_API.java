@@ -474,6 +474,7 @@ public class GT_API extends Abstract_Mod {
 			MT.NaNO3.setLocal("Nitre");
 			MT.Glyceryl.setLocal("Nitro");
 			MT.Gunpowder.setLocal("Boompowder");
+			MT.Lubricant.setLocal("Lube");
 			MT.H2SO4.setLocal("Sulphuric Acid");
 			MT.H2S2O7.setLocal("Disulphuric Acid");
 			MT.Greenschist.setLocal("Green Shit");
@@ -491,6 +492,8 @@ public class GT_API extends Abstract_Mod {
 			MT.MilkyQuartz.setLocal("Milk Quartz");
 			MT.CertusQuartz.setLocal("Citrus Quartz");
 			MT.ChargedCertusQuartz.setLocal("Charged Citrus Quartz");
+			MT.UUMatter.setLocal("UwU-Matter");
+			MT.UUAmplifier.setLocal("UwU-Amplifier");
 			MT.OREMATS.Galena.setLocal("Silverlead");
 			MT.OREMATS.Huebnerite.setLocal("Boobnerite");
 			MT.OREMATS.Bromargyrite.setLocal("Bromagnerite");

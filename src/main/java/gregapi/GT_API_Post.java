@@ -152,6 +152,7 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.TiC.mLoaded) {
 			MT.Co.addOreByProducts(MT.Ardite);
 			MT.OREMATS.Cobaltite.addOreByProducts(MT.Ardite);
+			MT.FakeOsmium.addOreByProducts(MT.Ardite);
 		}
 		if (MD.RP.mLoaded) {
 			MT.Monazite.addOreByProducts(MT.Nikolite);
