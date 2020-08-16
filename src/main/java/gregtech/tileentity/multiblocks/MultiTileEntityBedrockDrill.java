@@ -95,7 +95,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 				OreDictMaterialStack tMaterial = BlocksGT.oreBedrock.getMaterialAtSide(worldObj, xCoord+i, yCoord-5, zCoord+j, SIDE_TOP);
 				mList.add(tMaterial.mMaterial); mList.add(tMaterial.mMaterial);
 			} else if (tBlock == BlocksGT.oreSmallBedrock) {
-				OreDictMaterialStack tMaterial = BlocksGT.oreBedrock.getMaterialAtSide(worldObj, xCoord+i, yCoord-5, zCoord+j, SIDE_TOP);
+				OreDictMaterialStack tMaterial = BlocksGT.oreSmallBedrock.getMaterialAtSide(worldObj, xCoord+i, yCoord-5, zCoord+j, SIDE_TOP);
 				mList.add(tMaterial.mMaterial);
 			} else if (!WD.bedrock(tBlock)) {
 				tBedrock = F;
@@ -145,11 +145,14 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 			}
 			if (mEnergy >= 32768 && !slotHas(0) && checkStructure(F) && mTank.drainAll(100)) {
 				mEnergy -= 32768;
+				// Switch Stone Type randomly.
 				if (rng(1000) == 0) mType = rng(BlocksGT.stones.length+1);
+				// a 0-18 of 128 Chance to be an Ore.
 				int tSelector = rng(128);
 				if (tSelector < mList.size()) {
+					// Select an Ore Material.
 					OreDictMaterial tMaterial = (rng(32) == 0 ? UT.Code.select(mList.get(tSelector), mList.get(tSelector).mByProducts) : mList.get(tSelector));
-					if (ANY.Hexorium.mToThis.contains(tMaterial)) {
+					if (tMaterial == ANY.Hexorium || ANY.Hexorium.mToThis.contains(tMaterial)) {
 						switch (rng(20)) {
 						case  0: case  1: case  2: case  3: case  4: case  5: case  6: case  7: case  8: case  9: tMaterial = MT.HexoriumWhite; break;
 						case 10: case 11: case 12: case 13: case 14: case 15: case 16: tMaterial = MT.HexoriumBlack; break;
@@ -158,33 +161,48 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 						case 19: tMaterial = MT.HexoriumBlue; break;
 						}
 					}
+					// Create an Ore Block fitting to the Stone Types of this Dimension.
 					if (worldObj.provider.dimensionId == DIM_NETHER) {
+						// Netherrack Ore.
 						slot(0, ST.make((Block)BlocksGT.oreBrokenNetherrack, 1, tMaterial.mID));
-// TODO             } else if (WD.dimERE(worldObj)) {
-// TODO                 slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
+					} else if (WD.dimERE(worldObj)) {
+						// Erebus Umberstone Ore.
+						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID)); // TODO actually get the right Ore Block.
 					} else if (WD.dimATUM(worldObj)) {
+						// Atum Limestone Ore.
 						slot(0, ST.make((Block)BlocksGT.oreBrokenAtumLimestone, 1, tMaterial.mID));
-// TODO             } else if (WD.dimBTL(worldObj)) {
-// TODO                 slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
+					} else if (WD.dimBTL(worldObj)) {
+						// Betweenlands Stone Ores.
+						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID)); // TODO actually get the right Ore Block.
 					} else if (mType <= 0 || mType > BlocksGT.stones.length) {
+						// Index is 0 or there is a Boundary Error for some reason? Well use Vanilla Stone Ore in that case. 
 						slot(0, ST.make((Block)BlocksGT.oreBroken, 1, tMaterial.mID));
 					} else {
+						// This might be the Overworld or some Overworld alike Dimension.
 						slot(0, ST.make((Block)BlocksGT.ores_broken[mType-1], 1, tMaterial.mID));
 					}
 				} else {
+					// Select a Stone to generate.
 					if (rng(1000) == 0) {
+						// 0.1% Chance to get Bedrock Dust. Only really useful for the Byproducts it has, and Rotarycraft.
 						slot(0, OP.dustImpure.mat(MT.Bedrock, 1));
 					} else if (worldObj.provider.dimensionId == DIM_NETHER) {
+						// Netherrack.
 						slot(0, ST.make(Blocks.netherrack, 1, 0));
 					} else if (WD.dimERE(worldObj)) {
+						// Erebus Umberstone.
 						slot(0, IL.ERE_Umbercobble.get(1));
 					} else if (WD.dimATUM(worldObj)) {
+						// Yep, it makes GT6 Limestone, not Atums.
 						slot(0, ST.make(BlocksGT.Limestone, 1, 1));
 					} else if (WD.dimBTL(worldObj)) {
+						// Betweenlands Stones.
 						slot(0, (mType%2==0?IL.BTL_Pitstone:IL.BTL_Betweenstone).get(1));
 					} else if (mType <= 0 || mType > BlocksGT.stones.length) {
+						// Index is 0 or there is a Boundary Error for some reason? Well use Vanilla Stone in that case. 
 						slot(0, ST.make(Blocks.cobblestone, 1, 0));
 					} else {
+						// This might be the Overworld or some Overworld alike Dimension.
 						slot(0, ST.make(BlocksGT.stones[mType-1], 1, 1));
 					}
 				}

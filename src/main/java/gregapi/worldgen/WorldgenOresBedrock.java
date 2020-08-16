@@ -29,6 +29,7 @@ import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.ANY;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.ConfigsGT;
+import gregapi.data.FL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -101,11 +102,11 @@ public class WorldgenOresBedrock extends WorldgenObject {
 			tChances[4] =  500;
 			tChances[5] =   10;
 			
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumWhite.mID)), tOres, null, tChances, null, null, 0, 0, 0);
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlack.mID)), tOres, null, tChances, null, null, 0, 0, 0);
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumRed  .mID)), tOres, null, tChances, null, null, 0, 0, 0);
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumGreen.mID)), tOres, null, tChances, null, null, 0, 0, 0);
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlue .mID)), tOres, null, tChances, null, null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumWhite.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlack.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumRed  .mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumGreen.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, MT.HexoriumBlue .mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
 		} else if (mMaterial.mID <= 0) {
 			ERR.println("The Material is not valid for Ores: " + mMaterial);
 			mInvalid = T;
@@ -124,7 +125,7 @@ public class WorldgenOresBedrock extends WorldgenObject {
 				tChances[i+1] = UT.Code.divup(10000, (32 * (tChances.length - 2)));
 			}
 			
-			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, mMaterial.mID)), tOres, null, tChances, null, null, 0, 0, 0);
+			RM.BedrockOreList.addFakeRecipe(F, ST.array(ST.make((Block)BlocksGT.oreBedrock, 1, mMaterial.mID)), tOres, null, tChances, FL.array(FL.lube(100)), null, 0, 0, 0);
 		}
 	}
 	
