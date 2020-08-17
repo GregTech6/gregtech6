@@ -36,7 +36,6 @@ import gregapi.oredict.configurations.OreDictConfigurationComponent;
 import gregapi.render.TextureSet;
 import gregapi.util.OM;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.stats.AchievementList;
 
 /**
  * @author Gregorius Techneticies
@@ -54,7 +53,7 @@ public class MT {
 	protected static OreDictMaterial unused       (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT);}
 	protected static OreDictMaterial depricated   (String aNameOreDict) {return create(-1, aNameOreDict).put(UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT);}
 	protected static OreDictMaterial invalid      (String aNameOreDict) {return unused(aNameOreDict).put(INVALID_MATERIAL);}
-	protected static OreDictMaterial create       (int aID, String aNameOreDict) {if (aID >= 10000) return null; OreDictMaterial rMaterial = OreDictMaterial.createMaterial(aID, aNameOreDict, aNameOreDict); ALL_MATERIALS_REGISTERED_HERE.add(rMaterial); return rMaterial;}
+	protected static OreDictMaterial create       (int aID, String aNameOreDict) {if (aID >= 10000) return null; OreDictMaterial rMaterial = OreDictMaterial.createMaterial(aID, aNameOreDict, aNameOreDict); ALL_MATERIALS_REGISTERED_HERE.add(rMaterial); rMaterial.mHandleMaterial = ANY.WoodPlastic; if (aID > 0) rMaterial.setOriginalMod(MD.GAPI); return rMaterial;}
 	protected static OreDictMaterial create       (int aID, String aNameOreDict, TextureSet[] aSets) {return create(aID, aNameOreDict).setTextures(aSets);}
 	protected static OreDictMaterial create       (int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData) {return create(aID, aNameOreDict, aSets).setRGBa(aR, aG, aB, aA).put(aRandomData, aR==256?UNUSED_MATERIAL:null).hide(aR==256);}
 	
@@ -2585,7 +2584,10 @@ public class MT {
 			AncientDebris                   .addOreByProducts(SoulSand              , NetherQuartz              );
 			SoulSand                        .addOreByProducts(Coal                  , NetherQuartz              , Niter                 );
 			OREMATS.Stibnite                .addOreByProducts(Sb                    );
-			Diamond                         .addOreByProducts(Graphite              );
+			Diamond                         .addOreByProducts(Graphite              , DiamondPink               );
+			DiamondPink                     .addOreByProducts(Graphite              , Diamond                   );
+			ManaDiamond                     .addOreByProducts(Graphite              , Diamond                   );
+			ElvenDragonstone                .addOreByProducts(Graphite              );
 			Pyrope                          .addOreByProducts(Mg                    );
 			Almandine                       .addOreByProducts(Al2O3                 );
 			Spessartine                     .addOreByProducts(MnO2                  );
@@ -2816,7 +2818,7 @@ public class MT {
 			, tMakeSteel
 			};
 			
-			Diamond.mDescription = DiamondIndustrial.mDescription = new String[] {
+			Diamond.mDescription = DiamondPink.mDescription = DiamondIndustrial.mDescription = new String[] {
 			// ========================================================================================================================================================================================================
 			  "Diamonds, the shiny Stuff every Minecrafter looks for. Some people may even create living Horses made of Diamonds."
 			, tMakeSteel
@@ -2887,14 +2889,6 @@ public class MT {
 			, "Gamma Bombs which are exploding far enough away from a Naquadah Vein, or just a strong enough Gamma Ray, can also trigger a Chain Reaction turing Naquadah into Naquadria."
 			, "However most of the time a Gamma Ray hits a Naquadah Vein, it just explodes, what is the main Factor of Naquadria being very rare. Also Naquadria turns back into Naquadah after a few thousand years."
 			};
-			
-			for (OreDictMaterial tMaterial : ALL_MATERIALS_REGISTERED_HERE) {
-				tMaterial.mHandleMaterial = ANY.WoodPlastic;
-				if (tMaterial.mOriginalMod == null && !tMaterial.contains(INVALID_MATERIAL)) tMaterial.setOriginalMod(MD.GAPI);
-			}
-			
-			Diamond.put(AchievementList.openInventory, AchievementList.mineWood, AchievementList.buildWorkBench, AchievementList.buildPickaxe, AchievementList.buildFurnace, AchievementList.acquireIron, AchievementList.diamonds);
-			ManaDiamond.put(AchievementList.openInventory, AchievementList.mineWood, AchievementList.buildWorkBench, AchievementList.buildPickaxe, AchievementList.buildFurnace, AchievementList.acquireIron, AchievementList.diamonds);
 			
 			Mauftrium.mHandleMaterial = Elvorium.mHandleMaterial = MuspelheimPower.mHandleMaterial = NiflheimPower.mHandleMaterial = ElvenElementium.mHandleMaterial = ElvenDragonstone.mHandleMaterial = Manasteel.mHandleMaterial = Terrasteel.mHandleMaterial = ManaDiamond.mHandleMaterial = DarkThaumium.mHandleMaterial = Thaumium.mHandleMaterial = VoidMetal.mHandleMaterial = InfusedAir.mHandleMaterial = InfusedBalance.mHandleMaterial = InfusedDull.mHandleMaterial = InfusedEarth.mHandleMaterial = InfusedEntropy.mHandleMaterial = InfusedFire.mHandleMaterial = InfusedOrder.mHandleMaterial = InfusedVis.mHandleMaterial = InfusedWater.mHandleMaterial = ANY.WoodMagical;
 			GaiaSpirit.mHandleMaterial = MT.ElvenElementium;

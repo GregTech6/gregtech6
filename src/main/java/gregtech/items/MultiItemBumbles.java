@@ -551,7 +551,7 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 
 		RM.BumbleQueens.addFakeRecipe(F, ST.array(ST.make(this, 1, aSpeciesID+2), ST.make(this, 1, aSpeciesID+7)), tOutputs, null, tChances, null, null, 0, 0, 0);
 	}
-
+	
 	private static boolean checkFlowers(World aWorld, int aX, int aY, int aZ) {
 		Block aBlock = WD.block(aWorld, aX, aY, aZ, F);
 		if (aBlock == NB) return F;
@@ -582,16 +582,16 @@ public class MultiItemBumbles extends MultiItemRandom implements IItemBumbleBee 
 		}
 		return F;
 	}
-
+	
 	public IIcon PRINCESS, QUEEN, SCANNED, DEAD;
-
+	
 	@Override public IIcon getIconIndex(ItemStack aStack) {return mIconList[(ST.meta_(aStack)/10)*10][0];}
 	@Override public IIcon getIconFromDamage(int aMetaData) {aMetaData /= 10; aMetaData *= 10; return UT.Code.exists(aMetaData, mIconList) ? mIconList[aMetaData][0] : Textures.ItemIcons.RENDERING_ERROR.getIcon(0);}
 	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {return getIcon(aStack, aRenderPass);}
 	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIconFromDamageForRenderPass(ST.meta_(aStack), aRenderPass);}
-
+	
 	@Override public boolean requiresMultipleRenderPasses() {return T;}
-
+	
 	@Override
 	public int getRenderPasses(int aMetaData) {
 		switch(aMetaData % 10) {

@@ -53,7 +53,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		OM.data(ST.make(this, 1, 0), MT.Wheat, U);
 		OM.data(ST.make(this, 1, 1), MT.Wheat, U);
 		
-		for (int i = 0; i < mMaxMeta; i++) OM.reg(ST.make(this, 1, i), "flower");
+		for (int i = 0; i < maxMeta(); i++) OM.reg(ST.make(this, 1, i), "flower");
 	}
 	
 	@Override
@@ -67,16 +67,29 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		case  5: aList.add("Indicates presence of an Uranium Deposit nearby"); break;
 		case  6: aList.add("Indicates presence of a Cooperite Deposit nearby"); break;
 		case  7: aList.add("Indicates presence of an Ore Deposit nearby"); break;
+		case  8: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case  9: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 10: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 11: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 12: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 13: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 14: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 15: aList.add("Indicates presence of some Ore Deposit nearby"); break;
 		}
 	}
 	
 	@Override
 	public void run() {
+		RM.biomass(ST.make(this, 8, W));
+		
 		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wheat));
 		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wheat));
 		
 		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wheat));
 		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wheat));
+		
+		RM.pulverizing(ST.make(this, 1, 0), OM.dust(MT.Wheat));
+		RM.pulverizing(ST.make(this, 1, 1), OM.dust(MT.Wheat));
 		
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 0), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], OM.dust(MT.Wheat));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 1), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow   ], OM.dust(MT.Wheat));
@@ -104,11 +117,6 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		CR.shapeless(OM.dust(MT.White    ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 5)});
 		CR.shapeless(OM.dust(MT.LightBlue), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 6)});
 		CR.shapeless(OM.dust(MT.Brown    ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 7)});
-		
-		RM.pulverizing(ST.make(this, 1, 0), OM.dust(MT.Wheat));
-		RM.pulverizing(ST.make(this, 1, 1), OM.dust(MT.Wheat));
-		
-		RM.biomass(ST.make(this, 8, W));
 		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(this, 1, 0), OM.dust(MT.Yellow   ));

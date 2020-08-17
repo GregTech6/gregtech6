@@ -29,6 +29,8 @@ import net.minecraft.world.World;
  * @author Gregorius Techneticies
  */
 public interface IBlockBase extends IBlock {
+	/** @returns A number between 1 and 16, the Maximum Metadata for this Block in Item form for things like Creative Tabs. Pillar Blocks like Logs and Beams should return 4. */
+	public byte maxMeta();
 	public String name(byte aMeta);
 	public boolean useGravity(byte aMeta);
 	public boolean doesWalkSpeed(byte aMeta);

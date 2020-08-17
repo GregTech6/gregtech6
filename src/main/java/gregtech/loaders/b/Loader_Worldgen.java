@@ -590,6 +590,7 @@ public class Loader_Worldgen implements Runnable {
 		}
 		
 		
+		new WorldgenOresBedrock("ore.bedrock.diamond"           , T, T, 128000, MT.Diamond               , BlocksGT.FlowersB, 6, GEN_FLOOR);
 		new WorldgenOresBedrock("ore.bedrock.tungstate"         , T, T,  96000, MT.OREMATS.Tungstate     , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Tungsten Flower
 		new WorldgenOresBedrock("ore.bedrock.ferberite"         , T, T,  96000, MT.OREMATS.Ferberite     , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Tungsten Flower
 		new WorldgenOresBedrock("ore.bedrock.wolframite"        , T, T,  96000, MT.OREMATS.Wolframite    , BlocksGT.FlowersA, 7, GEN_FLOOR); // TODO Tungsten Flower

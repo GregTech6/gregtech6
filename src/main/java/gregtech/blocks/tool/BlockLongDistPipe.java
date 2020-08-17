@@ -36,7 +36,7 @@ public class BlockLongDistPipe extends BlockBaseMachineUpdate {
 		super(null, aUnlocalised, MaterialMachines.instance, soundTypeMetal, 5, aIcons, ~0);
 		mTemperatures = aTemperatures;
 		LH.add(aUnlocalised+".0.name" , "Long Distance Item Pipeline");
-		for (int i = 1; i < mMaxMeta; i++) LH.add(aUnlocalised+"."+i+".name" , "Long Distance Fluid Pipeline ("+mTemperatures[i]+" K)");
+		for (int i = 1; i < maxMeta(); i++) LH.add(aUnlocalised+"."+i+".name" , "Long Distance Fluid Pipeline ("+mTemperatures[i]+" K)");
 	}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_wrench;}

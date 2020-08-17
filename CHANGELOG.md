@@ -62,6 +62,7 @@ Bedrock Ores still exist in the Twilight Forest. I even fixed that the Indicator
 [ADDED] Harvestcraft Crops to the List of things that can randomly spawn in the Farming Room in GT6 Dungeons.
 [ADDED] Amethyst Mortar, because there is Situations where Amethysts/Ender-Amethysts are actually more common than Diamonds, Rubies and Sapphires.
 [ADDED] Wooden Buckets for Soy Milk and Glue.
+[ADDED] Bedrock Diamond Ore. About half as rare as Bedrock Gold Ore. Also Pink Diamond is now a Byproduct of regular Diamond.
 
 
 6.14.00:

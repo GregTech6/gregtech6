@@ -24,7 +24,6 @@ import static gregapi.data.TD.Processing.*;
 import static gregapi.data.TD.Properties.*;
 
 import gregapi.oredict.OreDictMaterial;
-import net.minecraft.stats.AchievementList;
 
 /**
  * @author Gregorius Techneticies
@@ -122,7 +121,5 @@ public class ANY {
 		_Steel          .stealLooks(MT.Steel          ).put(DONT_SHOW_THIS_COMPONENT);
 		_Bronze         .stealLooks(MT.Bronze         ).put(DONT_SHOW_THIS_COMPONENT);
 		_Metal          .stealLooks(MT.Fe             ).put(DONT_SHOW_THIS_COMPONENT);
-		
-		for (OreDictMaterial tMaterial : ANY.Iron.mToThis) tMaterial.put(AchievementList.openInventory, AchievementList.mineWood, AchievementList.buildWorkBench, AchievementList.buildPickaxe, AchievementList.buildFurnace, AchievementList.acquireIron);
 	}
 }

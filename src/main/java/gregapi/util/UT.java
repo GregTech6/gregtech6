@@ -2561,6 +2561,14 @@ public class UT {
 					aPlayer.triggerAchievement(AchievementList.acquireIron);
 					aPlayer.triggerAchievement(AchievementList.diamonds);
 				}
+				if (ANY.Iron.mToThis.contains(tData.mMaterial.mMaterial)) {
+					aPlayer.triggerAchievement(AchievementList.openInventory);
+					aPlayer.triggerAchievement(AchievementList.mineWood);
+					aPlayer.triggerAchievement(AchievementList.buildWorkBench);
+					aPlayer.triggerAchievement(AchievementList.buildPickaxe);
+					aPlayer.triggerAchievement(AchievementList.buildFurnace);
+					aPlayer.triggerAchievement(AchievementList.acquireIron);
+				}
 			}
 			return T;
 		}

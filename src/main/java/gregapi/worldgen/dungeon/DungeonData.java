@@ -25,7 +25,6 @@ import java.util.Random;
 
 import gregapi.block.IBlockPlacable;
 import gregapi.block.metatype.BlockStones;
-import gregapi.block.misc.BlockBaseFlower;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
@@ -236,11 +235,11 @@ public class DungeonData extends WorldAndCoords {
 	public boolean flower(int aX, int aY, int aZ, boolean aGrassOnly, boolean aVanillaOnly) {
 		if (BlocksGT.FlowersA != null) {
 			if (aGrassOnly || BlocksGT.FlowersB == null) {
-				if (next1in2()) return set(aX, aY, aZ, (Block)BlocksGT.FlowersA, next(((BlockBaseFlower)BlocksGT.FlowersA).mMaxMeta), 2);
+				if (next1in2()) return set(aX, aY, aZ, (Block)BlocksGT.FlowersA, next(BlocksGT.FlowersA.maxMeta()), 2);
 			} else {
 				switch (next(3)) {
-				case 0: return set(aX, aY, aZ, (Block)BlocksGT.FlowersA, next(((BlockBaseFlower)BlocksGT.FlowersA).mMaxMeta), 2);
-				case 1: return set(aX, aY, aZ, (Block)BlocksGT.FlowersB, next(((BlockBaseFlower)BlocksGT.FlowersB).mMaxMeta), 2);
+				case 0: return set(aX, aY, aZ, (Block)BlocksGT.FlowersA, next(BlocksGT.FlowersA.maxMeta()), 2);
+				case 1: return set(aX, aY, aZ, (Block)BlocksGT.FlowersB, next(BlocksGT.FlowersB.maxMeta()), 2);
 				}
 			}
 		}

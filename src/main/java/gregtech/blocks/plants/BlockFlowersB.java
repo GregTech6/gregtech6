@@ -46,21 +46,23 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 	public BlockFlowersB(String aUnlocalised) {
-		super(null, aUnlocalised, 6, Textures.BlockIcons.FLOWERS_B);
-		LH.add(getUnlocalizedName()+ ".0.name", "Big Sagebrush"); // Gold, Antimony, Arsenic
-		LH.add(getUnlocalizedName()+ ".1.name", "Four Wing Saltbush"); // Gold, Antimony, Arsenic
+		super(null, aUnlocalised, 7, Textures.BlockIcons.FLOWERS_B);
+		LH.add(getUnlocalizedName()+ ".0.name", "Artemisia Tridentata"); // Gold, Antimony, Arsenic
+		LH.add(getUnlocalizedName()+ ".1.name", "Atriplex Canescens"); // Gold, Antimony, Arsenic
 		LH.add(getUnlocalizedName()+ ".2.name", "Desert Trumpet"); // Gold, color might vary depending on other Minerals close by
-		LH.add(getUnlocalizedName()+ ".3.name", "Copper Flower Plant"); // Copper, Nickel
+		LH.add(getUnlocalizedName()+ ".3.name", "Becium Homblei"); // Copper, Nickel
 		LH.add(getUnlocalizedName()+ ".4.name", "Prince's Plume"); // Selenium
 		LH.add(getUnlocalizedName()+ ".5.name", "Thompsons Locoweed"); // Uranium
+		LH.add(getUnlocalizedName()+ ".6.name", "Pandanus Candelabrum"); // Diamond
 		
 		GT.mAfterInit.add(this);
 		BlocksGT.FLOWERS.add(this);
 		
 		OM.data(ST.make(this, 1, 0), ANY.Wood, U);
 		OM.data(ST.make(this, 1, 1), ANY.Wood, U);
+		OM.data(ST.make(this, 1, 6), MT.WOODS.Palm, U);
 		
-		for (int i = 2; i < mMaxMeta; i++) OM.reg(ST.make(this, 1, i), "flower");
+		for (int i = 2; i < maxMeta(); i++) if (i != 6) OM.reg(ST.make(this, 1, i), "flower");
 	}
 	
 	@Override
@@ -72,11 +74,31 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		case  3: aList.add("Indicates presence of a Copper Deposit nearby"); break;
 		case  4: aList.add("Indicates presence of a Redstone Deposit nearby"); break;
 		case  5: aList.add("Indicates presence of an Uranium Deposit nearby"); break;
+		case  6: aList.add("Indicates presence of a Diamond Deposit nearby"); break;
+		case  7: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case  8: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case  9: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 10: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 11: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 12: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 13: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 14: aList.add("Indicates presence of some Ore Deposit nearby"); break;
+		case 15: aList.add("Indicates presence of some Ore Deposit nearby"); break;
 		}
 	}
 	
 	@Override
 	public void run() {
+		RM.biomass(ST.make(this, 8, W));
+		
+		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wood));
+		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wood));
+		RM.Mortar   .addRecipe1(T, 16, 16, ST.make(this, 1, 6), OM.dust(MT.WOODS.Palm));
+		
+		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 0), OM.dust(MT.Wood));
+		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 1), OM.dust(MT.Wood));
+		RM.Shredder .addRecipe1(T, 16, 16, ST.make(this, 1, 6), OM.dust(MT.WOODS.Palm));
+		
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 2), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 3), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Pink  ], OM.dust(MT.Pink  ));
 		RM.Squeezer .addRecipe1(T, 16, 16, ST.make(this, 1, 4), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Yellow], OM.dust(MT.Yellow));
@@ -91,6 +113,8 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 0));
 		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 1));
 		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 1));
+		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "s", "X", 'X', ST.make(this, 1, 6));
+		CR.shaped(IL.Stick.get(2), CR.DEF_NAC_NCC, "k", "X", 'X', ST.make(this, 1, 6));
 		
 		CR.shapeless(IL.Stick   .get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 0)});
 		CR.shapeless(IL.Stick   .get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 1)});
@@ -98,8 +122,7 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		CR.shapeless(OM.dust(MT.Pink  ), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 3)});
 		CR.shapeless(OM.dust(MT.Yellow), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 4)});
 		CR.shapeless(OM.dust(MT.Purple), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 5)});
-		
-		RM.biomass(ST.make(this, 8, W));
+		CR.shapeless(IL.Stick   .get(1), CR.DEF_NAC_NCC, new Object[] {ST.make(this, 1, 6)});
 		
 		if (ENABLE_ADDING_IC2_EXTRACTOR_RECIPES) {
 		RM.ic2_extractor(ST.make(this, 1, 0), IL.Stick.get(2));
@@ -108,6 +131,7 @@ public class BlockFlowersB extends BlockBaseFlower implements Runnable {
 		RM.ic2_extractor(ST.make(this, 1, 3), OM.dust(MT.Pink  , U * 2));
 		RM.ic2_extractor(ST.make(this, 1, 4), OM.dust(MT.Yellow, U * 2));
 		RM.ic2_extractor(ST.make(this, 1, 5), OM.dust(MT.Purple, U * 2));
+		RM.ic2_extractor(ST.make(this, 1, 6), IL.Stick.get(2));
 		}
 	}
 	

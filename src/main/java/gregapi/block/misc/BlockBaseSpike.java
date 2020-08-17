@@ -111,6 +111,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	@Override public int getHarvestLevel(int aMeta) {return aMeta < 8 ? mMat1.mToolQuality : mMat2.mToolQuality;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
 	@Override public int damageDropped(int aMeta) {return (aMeta & 7) < 6 ? aMeta & 8 : aMeta;}
+	@Override public byte maxMeta() {return 16;}
 	@Override public float getBlockHardness(World aWorld, int aX, int aY, int aZ) {return 30;}
 	@Override public float getExplosionResistance(byte aMeta) {return 5;}
 	@Override public boolean isSideSolid(int aMeta, byte aSide) {return (aMeta & 7) < 6 && aMeta == aSide;}

@@ -153,7 +153,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		OM.reg_(OP.cobblestone  , ST.make(this, 1, COBBL));
 		OM.reg_(OP.stone        , ST.make(this, 1, STONE));
 		
-		for (int i = 0; i < mMaxMeta; i++) mEqualBlocks[i].add(ST.make(this, 1, i));
+		for (int i = 0; i < maxMeta(); i++) mEqualBlocks[i].add(ST.make(this, 1, i));
 	}
 	
 	@Override
@@ -200,7 +200,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		OM.data(ST.make(this, 1, WINDB), new OreDictItemData(mMaterial, U2));
 		OM.data(ST.make(this, 1, QBRIK), new OreDictItemData(mMaterial, U2));
 		
-		for (int i = 0; i < mMaxMeta; i++) mEqualBlocks[i].add(ST.make(this, 1, i));
+		for (int i = 0; i < maxMeta(); i++) mEqualBlocks[i].add(ST.make(this, 1, i));
 	}
 	
 	@Override

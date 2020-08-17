@@ -21,7 +21,6 @@ package gregapi.worldgen.dungeon;
 
 import static gregapi.data.CS.*;
 
-import gregapi.block.BlockBaseMeta;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.util.ST;
@@ -54,10 +53,10 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.set( 1, 2,  5, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( i, 1,  1, BlocksGT.Grass, i % ((BlockBaseMeta)BlocksGT.Grass).mMaxMeta, 2);
+				aData.set   ( i, 1,  1, BlocksGT.Grass, i % BlocksGT.Grass.maxMeta(), 2);
 				aData.set   ( i, 2,  1, tMushgloom, 9, 2);
 				aData.smooth( i, 3,  1, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   ( i, 1, 14, BlocksGT.Grass, i % ((BlockBaseMeta)BlocksGT.Grass).mMaxMeta, 2);
+				aData.set   ( i, 1, 14, BlocksGT.Grass, i % BlocksGT.Grass.maxMeta(), 2);
 				aData.set   ( i, 2, 14, tMushgloom, 9, 2);
 				aData.smooth( i, 3, 14, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( i, 1,  2, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
@@ -98,10 +97,10 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.set(14, 2, 10, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( i, 1,  1, BlocksGT.Grass, i % ((BlockBaseMeta)BlocksGT.Grass).mMaxMeta, 2);
+				aData.set   ( i, 1,  1, BlocksGT.Grass, i % BlocksGT.Grass.maxMeta(), 2);
 				aData.set   ( i, 2,  1, tMushgloom, 9, 2);
 				aData.smooth( i, 3,  1, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   ( i, 1, 14, BlocksGT.Grass, i % ((BlockBaseMeta)BlocksGT.Grass).mMaxMeta, 2);
+				aData.set   ( i, 1, 14, BlocksGT.Grass, i % BlocksGT.Grass.maxMeta(), 2);
 				aData.set   ( i, 2, 14, tMushgloom, 9, 2);
 				aData.smooth( i, 3, 14, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( i, 1,  2, aData.mPrimary.mSlabs[SIDE_Z_NEG], aData.mSecondary.mSlabs[SIDE_Z_NEG]);
@@ -142,10 +141,10 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.set( 5, 2,  1, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( 1, 1,  i, BlocksGT.Grass, i % ((BlockBaseMeta)BlocksGT.Grass).mMaxMeta, 2);
+				aData.set   ( 1, 1,  i, BlocksGT.Grass, i % BlocksGT.Grass.maxMeta(), 2);
 				aData.set   ( 1, 2,  i, tMushgloom, 9, 2);
 				aData.smooth( 1, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   (14, 1,  i, BlocksGT.Grass, i % ((BlockBaseMeta)BlocksGT.Grass).mMaxMeta, 2);
+				aData.set   (14, 1,  i, BlocksGT.Grass, i % BlocksGT.Grass.maxMeta(), 2);
 				aData.set   (14, 2,  i, tMushgloom, 9, 2);
 				aData.smooth(14, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( 2, 1,  i, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);
@@ -186,10 +185,10 @@ public class DungeonChunkRoomPortalTwilight extends DungeonChunkRoomPortal {
 			aData.set(10, 2, 14, SIDE_UNKNOWN, (short)502, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tInventory), T, T);
 			
 			for (int i = 1; i < 15; i++) {
-				aData.set   ( 1, 1,  i, BlocksGT.Grass, i % ((BlockBaseMeta)BlocksGT.Grass).mMaxMeta, 2);
+				aData.set   ( 1, 1,  i, BlocksGT.Grass, i % BlocksGT.Grass.maxMeta(), 2);
 				aData.set   ( 1, 2,  i, tMushgloom, 9, 2);
 				aData.smooth( 1, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
-				aData.set   (14, 1,  i, BlocksGT.Grass, i % ((BlockBaseMeta)BlocksGT.Grass).mMaxMeta, 2);
+				aData.set   (14, 1,  i, BlocksGT.Grass, i % BlocksGT.Grass.maxMeta(), 2);
 				aData.set   (14, 2,  i, tMushgloom, 9, 2);
 				aData.smooth(14, 3,  i, aData.mPrimary.mSlabs[SIDE_Y_POS], aData.mSecondary.mSlabs[SIDE_Y_POS]);
 				aData.smooth( 2, 1,  i, aData.mPrimary.mSlabs[SIDE_X_NEG], aData.mSecondary.mSlabs[SIDE_X_NEG]);

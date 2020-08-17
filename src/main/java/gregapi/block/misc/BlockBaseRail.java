@@ -121,6 +121,7 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public IIcon getIcon(int aSide, int aMeta) {return ((mPowerRail||mDetectorRail?(aMeta&8)!=0:aMeta>=6)?mIconSecondary:mIconPrimary).getIcon(0);}
 	@Override public boolean isSealed(World aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return F;}
 	@Override public Block getBlock() {return this;}
+	@Override public byte maxMeta() {return 1;}
 	
 	@Override public float getExplosionResistance(byte aMeta) {return mExplosionResistance;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return 64;}
