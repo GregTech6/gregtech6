@@ -24,11 +24,11 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.Optional;
 import gregapi.block.IBlockBase;
+import gregapi.block.IBlockToolable;
 import gregapi.block.ItemBlockBase;
+import gregapi.block.ToolCompat;
 import gregapi.compat.galacticraft.IBlockSealable;
-import gregapi.data.CS.ModIDs;
 import gregapi.data.LH;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
@@ -59,10 +59,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 /**
  * @author Gregorius Techneticies
  */
-@Optional.InterfaceList(value = {
-	@Optional.Interface(iface = "micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock", modid = ModIDs.GC)
-})
-public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSealable {
+public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSealable, IBlockToolable {
 	public final String mNameInternal;
 	public final float mSpeed, mExplosionResistance;
 	public final IIconContainer mIconPrimary, mIconSecondary;
@@ -134,6 +131,24 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public int getFlammability(byte aMeta) {return 0;}
 	@Override public int getFireSpreadSpeed(byte aMeta) {return 0;}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}
+	
+	@Override
+	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
+		if (aTool.equals(TOOL_softhammer) && mPowerRail) {
+			aWorld.isRemote = T;
+			boolean tResult = aWorld.setBlock(aX, aY, aZ, this, (WD.meta(aWorld, aX, aY, aZ) + 8) % 16, 0);
+			aWorld.isRemote = F;
+			return tResult?10000:0;
+		}
+		if (aTool.equals(TOOL_crowbar)) {
+			byte aMeta = WD.meta(aWorld, aX, aY, aZ);
+			aWorld.isRemote = T;
+			boolean tResult = aWorld.setBlock(aX, aY, aZ, this, isPowered() ? (aMeta+1) % 10 : ((aMeta/8) * 8) + (((aMeta%8)+1) % 6), 0);
+			aWorld.isRemote = F;
+			return tResult?10000:0;
+		}
+		return ToolCompat.onToolClick(this, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
+	}
 	
 	protected boolean func_150058_a(World aWorld, int aX, int aY, int aZ, int p_150058_5_, boolean p_150058_6_, int p_150058_7_) {
 		if (p_150058_7_ >= 8) return F;

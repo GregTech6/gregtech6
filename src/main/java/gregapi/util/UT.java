@@ -2194,6 +2194,9 @@ public class UT {
 	}
 	
 	public static class Reflection {
+		public static String getClassName(Object aObject) {
+			return aObject == null ? "" : aObject.getClass().getName().substring(aObject.getClass().getName().lastIndexOf(".")+1);
+		}
 		public static String getLowercaseClass(Object aObject) {
 			return aObject == null ? "" : aObject.getClass().getName().substring(aObject.getClass().getName().lastIndexOf(".")+1).toLowerCase();
 		}
@@ -2342,11 +2345,6 @@ public class UT {
 				}
 			}
 			return aReplacementObject;
-		}
-		
-		public static String getClassName(Object aObject) {
-			if (aObject == null) return "null";
-			return aObject.getClass().getName().substring(aObject.getClass().getName().lastIndexOf(".")+1);
 		}
 	}
 	

@@ -24,10 +24,12 @@ import static gregapi.data.CS.*;
 import java.util.List;
 import java.util.Random;
 
+import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.item.IItemGT;
 import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
@@ -53,7 +55,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class BlockWaterlike extends BlockFluidClassic implements IBlockOnHeadInside {
+public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock, IItemGT, IBlockOnHeadInside {
 	public final Fluid mFluid;
 	
 	public BlockWaterlike(String aName, Fluid aFluid) {
@@ -187,6 +189,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	}
 	
 	@Override public boolean isSourceBlock(IBlockAccess aWorld, int aX, int aY, int aZ) {return aWorld.getBlock(aX, aY, aZ) instanceof BlockWaterlike && aWorld.getBlockMetadata(aX, aY, aZ) == 0;}
+	@Override public Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return FL.name(mFluid, F);}
 	@Override public String getLocalizedName() {return FL.name(mFluid, T);}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}

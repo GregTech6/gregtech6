@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2020 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,6 +28,7 @@ package gregapi.item;
  * It shows the Mod that a Material based GT Item originally came from.
  * The Item Iteration Loading Step skips over Items with this Interface.
  * Items with this Interface do not trigger visibility of Materials when registered to the OreDict.
+ * Blocks can have this marker Interface too, since it is just an empty marker.
  */
 public interface IItemGT {
 	/**/

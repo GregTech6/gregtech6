@@ -574,11 +574,11 @@ public class WD {
 		byte aMetaData = (byte)aWorld.getBlockMetadata(aX, aY, aZ);
 		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
 		if (BlocksGT.stoneToNormalOres.containsKey(new ItemStackContainer(aBlock, 1, aMetaData))) return T;
-		if (Blocks.stone        != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone        )) return T;
-		if (Blocks.gravel       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel       )) return T;
-		if (Blocks.sand         != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand         )) return T;
-		if (Blocks.netherrack   != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack   )) return T;
-		if (Blocks.end_stone    != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone    )) return T;
+		if (Blocks.stone      != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone     )) return T;
+		if (Blocks.gravel     != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel    )) return T;
+		if (Blocks.sand       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand      )) return T;
+		if (Blocks.netherrack != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack)) return T;
+		if (Blocks.end_stone  != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone )) return T;
 		return F;
 	}
 	
@@ -594,11 +594,11 @@ public class WD {
 		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
 		IBlockPlacable tBlock = BlocksGT.stoneToNormalOres.get(new ItemStackContainer(aBlock, 1, aMetaData));
 		if (tBlock == null) {
-		if (Blocks.stone        != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone        )) tBlock = BlocksGT.ore; else
-		if (Blocks.gravel       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel       )) tBlock = BlocksGT.oreGravel; else
-		if (Blocks.sand         != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand         )) tBlock = BlocksGT.oreSand; else
-		if (Blocks.netherrack   != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack   )) tBlock = BlocksGT.oreNetherrack; else
-		if (Blocks.end_stone    != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone    )) tBlock = BlocksGT.oreEndstone;
+		if (Blocks.stone      != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone     )) tBlock = BlocksGT.ore; else
+		if (Blocks.gravel     != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel    )) tBlock = BlocksGT.oreGravel; else
+		if (Blocks.sand       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand      )) tBlock = BlocksGT.oreSand; else
+		if (Blocks.netherrack != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack)) tBlock = BlocksGT.oreNetherrack; else
+		if (Blocks.end_stone  != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone )) tBlock = BlocksGT.oreEndstone;
 		}
 		return tBlock != null && tBlock.placeBlock(aWorld, aX, aY, aZ, (byte)6, aID, null, F, T);
 	}
@@ -615,11 +615,11 @@ public class WD {
 		if (BlocksGT.sDontGenerateOresIn.contains(new ItemStackContainer(aBlock, 1, aMetaData))) return F;
 		IBlockPlacable tBlock = BlocksGT.stoneToSmallOres.get(new ItemStackContainer(aBlock, 1, aMetaData));
 		if (tBlock == null) {
-		if (Blocks.stone        != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone        )) tBlock = BlocksGT.oreSmall; else
-		if (Blocks.gravel       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel       )) tBlock = BlocksGT.oreSmallGravel; else
-		if (Blocks.sand         != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand         )) tBlock = BlocksGT.oreSmallSand; else
-		if (Blocks.netherrack   != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack   )) tBlock = BlocksGT.oreSmallNetherrack; else
-		if (Blocks.end_stone    != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone    )) tBlock = BlocksGT.oreSmallEndstone;
+		if (Blocks.stone      != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.stone     )) tBlock = BlocksGT.oreSmall; else
+		if (Blocks.gravel     != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.gravel    )) tBlock = BlocksGT.oreSmallGravel; else
+		if (Blocks.sand       != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.sand      )) tBlock = BlocksGT.oreSmallSand; else
+		if (Blocks.netherrack != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.netherrack)) tBlock = BlocksGT.oreSmallNetherrack; else
+		if (Blocks.end_stone  != aBlock && aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone )) tBlock = BlocksGT.oreSmallEndstone;
 		}
 		return tBlock != null && tBlock.placeBlock(aWorld, aX, aY, aZ, (byte)6, aID, null, F, T);
 	}

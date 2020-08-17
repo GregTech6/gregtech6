@@ -26,11 +26,13 @@ import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.MaterialGas;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.FL;
 import gregapi.data.LH;
+import gregapi.item.IItemGT;
 import gregapi.render.RendererBlockFluid;
 import gregapi.tileentity.data.ITileEntitySurface;
 import gregapi.util.ST;
@@ -56,7 +58,7 @@ import net.minecraftforge.fluids.FluidStack;
 /**
  * @author Gregorius Techneticies
  */
-public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInside {
+public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT, IBlockOnHeadInside {
 	public final String mNameInternal;
 	public final int mFlammability;
 	public final Fluid mFluid;
@@ -260,6 +262,7 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlockOnHeadInsi
 		return !(tTileEntity instanceof ITileEntitySurface && !((ITileEntitySurface)tTileEntity).isSurfaceOpaque(OPPOSITES[aSide]));
 	}
 	
+	@Override public Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return mFluid.getUnlocalizedName();}
 	@Override public String getLocalizedName() {return LH.get(mFluid.getUnlocalizedName());}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}

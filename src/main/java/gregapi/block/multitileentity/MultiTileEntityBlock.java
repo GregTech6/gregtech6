@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Random;
 
 import cpw.mods.fml.common.Optional;
+import gregapi.block.IBlock;
 import gregapi.block.IBlockDebugable;
 import gregapi.block.IBlockErrorable;
 import gregapi.block.IBlockMaterial;
@@ -40,6 +41,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.compat.galacticraft.IBlockSealable;
 import gregapi.data.CS.ModIDs;
 import gregapi.data.IL;
+import gregapi.item.IItemGT;
 import gregapi.network.INetworkHandler;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterialStack;
@@ -97,7 +99,7 @@ import vazkii.botania.api.mana.IManaTrigger;
 , @Optional.Interface(iface = "vazkii.botania.api.mana.IManaTrigger", modid = ModIDs.BOTA)
 })
 @SuppressWarnings("deprecation")
-public class MultiTileEntityBlock extends Block implements IBlockDebugable, IBlockErrorable, IBlockOnWalkOver, IBlockSealable, IOxygenReliantBlock, IPaintableBlock, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial, IManaTrigger {
+public class MultiTileEntityBlock extends Block implements IBlock, IItemGT, IBlockDebugable, IBlockErrorable, IBlockOnWalkOver, IBlockSealable, IOxygenReliantBlock, IPaintableBlock, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial, IManaTrigger {
 	private static final Map<String, MultiTileEntityBlock> MULTITILEENTITYBLOCKMAP = new HashMap<>();
 	
 	private final int mHarvestLevelOffset, mHarvestLevelMinimum, mHarvestLevelMaximum;
@@ -289,6 +291,7 @@ public class MultiTileEntityBlock extends Block implements IBlockDebugable, IBlo
 	@Override public final boolean renderAsNormalBlock() {return mOpaque || mNormalCube;}
 	@Override public final boolean isNormalCube()  {return mNormalCube;}
 	@Override public final boolean canProvidePower() {return !mNormalCube;}
+	@Override public final Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return mNameInternal;}
 	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mNameInternal + ".name");}
 	@Override public final String getHarvestTool(int aMeta) {return mTool;}

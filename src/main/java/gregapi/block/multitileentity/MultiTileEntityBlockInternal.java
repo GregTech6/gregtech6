@@ -21,9 +21,11 @@ package gregapi.block.multitileentity;
 
 import static gregapi.data.CS.*;
 
+import gregapi.block.IBlock;
 import gregapi.block.IBlockPlacable;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_HasMultiBlockMachineRelevantData;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RegisterIcons;
+import gregapi.item.IItemGT;
 import gregapi.render.IRenderedBlock;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.ITexture;
@@ -44,7 +46,7 @@ import net.minecraft.world.World;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityBlockInternal extends Block implements IRenderedBlock, IBlockPlacable {
+public class MultiTileEntityBlockInternal extends Block implements IBlock, IItemGT, IRenderedBlock, IBlockPlacable {
 	public MultiTileEntityRegistry mMultiTileEntityRegistry;
 	
 	public MultiTileEntityBlockInternal() {
@@ -78,6 +80,7 @@ public class MultiTileEntityBlockInternal extends Block implements IRenderedBloc
 	
 	@Override public final int getRenderBlockPass() {return ITexture.Util.MC_ALPHA_BLENDING?1:0;}
 	@Override public final int getRenderType() {return RendererBlockTextured.INSTANCE==null?super.getRenderType():RendererBlockTextured.INSTANCE.mRenderID;}
+	@Override public final Block getBlock() {return this;}
 	@Override public final String getUnlocalizedName() {return mMultiTileEntityRegistry.mNameInternal;}
 	@Override public final String getLocalizedName() {return StatCollector.translateToLocal(mMultiTileEntityRegistry.mNameInternal + ".name");}
 	
