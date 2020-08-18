@@ -92,7 +92,7 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 			if (tData != null && tData.mBehaviours[aEvent.side] instanceof CoverTextureCanvas) {
 				if (tData.mNBTs[aEvent.side] == null) tData.mNBTs[aEvent.side] = UT.NBT.make();
 				tData.mNBTs[aEvent.side].setInteger(NBT_CANVAS_BLOCK, Block.getIdFromBlock(aEvent.referencedBlock));
-				tData.mNBTs[aEvent.side].setInteger(NBT_CANVAS_META, aEvent.referencedMeta);
+				tData.mNBTs[aEvent.side].setInteger(NBT_CANVAS_META , aEvent.referencedMeta);
 				tData.mBehaviours[aEvent.side].onCoverPlaced((byte)aEvent.side, tData, null, tData.getCoverItem((byte)aEvent.side));
 				aEvent.applied = T;
 			}
@@ -101,14 +101,13 @@ public class CompatIC2 extends CompatBase implements ICompatIC2 {
 	
 	@Override
 	public boolean valuable(Block aBlock, int aMeta, int aValue) {
-		if (aValue <= 0 || aBlock == null || aBlock == NB) return F;
-		ic2.core.IC2.addValuableOre((IRecipeInput)makeInput(ST.make(aBlock, 1, aMeta)), aValue);
+		if (aBlock == null || aBlock == NB) return F;
+		ic2.core.IC2.addValuableOre((IRecipeInput)makeInput(ST.make(aBlock, 1, UT.Code.bind4(aMeta))), Math.max(1, aValue));
 		return T;
 	}
-	
 	@Override
 	public boolean valuable(Block aBlock, int aValue) {
-		if (aValue <= 0 || aBlock == null || aBlock == NB) return F;
+		if (aBlock == null || aBlock == NB) return F;
 		for (byte i = 0; i < 16; i++) valuable(aBlock, i, aValue);
 		return T;
 	}

@@ -174,7 +174,6 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		
 		mOutputFluids = new FluidStack[mRecipes.mOutputFluidCount];
 		for (int i = 0; i < mOutputFluids.length; i++) mOutputFluids[i] = FL.load(aNBT, NBT_TANK_OUT+"."+i);
-		
 		mOutputItems = new ItemStack[mRecipes.mOutputItemsCount];
 		for (int i = 0; i < mOutputItems.length; i++) mOutputItems[i] = ST.load(aNBT, NBT_INV_OUT+"."+i);
 		
@@ -355,8 +354,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (isClientSide()) return 0;
 		
 		if (aTool.equals(TOOL_screwdriver)) {
-			mMode = (byte)((mMode + 1) % 2);
+			mMode = (byte)((mMode + 1) % 4);
+			aChatReturn.add("========================================");
 			aChatReturn.add((mMode & 1) != 0 ?"Only produce when Output is completely empty":"Produce whenever there is space");
+			aChatReturn.add((mMode & 2) != 0 ?"Only accept Input on empty Input Slots":"Accept Input on all Input Slots");
 			updateInventory();
 			return 10000;
 		}
@@ -414,7 +415,9 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void onMagnifyingGlass(List<String> aChatReturn) {
+		aChatReturn.add("========================================");
 		aChatReturn.add((mMode & 1) != 0 ?"Only produce when Output is completely empty":"Produce whenever there is space");
+		aChatReturn.add((mMode & 2) != 0 ?"Only accept Input on empty Input Slots":"Accept Input on all Input Slots");
 		if (SIDES_VALID[mItemAutoInput  ]) aChatReturn.add(mDisabledItemInput  ?"Auto Item Input Disabled"  :"Auto Item Input Enabled"  );
 		if (SIDES_VALID[mItemAutoOutput ]) aChatReturn.add(mDisabledItemOutput ?"Auto Item Output Disabled" :"Auto Item Output Enabled" );
 		if (SIDES_VALID[mFluidAutoInput ]) aChatReturn.add(mDisabledFluidInput ?"Auto Fluid Input Disabled" :"Auto Fluid Input Enabled" );
@@ -545,6 +548,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override
 	public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {
 		if (aSlot >= mRecipes.mInputItemsCount) return F;
+		if ((mMode & 2) != 0 && slotHas(aSlot)) return F;
 		for (int i = 0; i < mRecipes.mInputItemsCount; i++) if (ST.equal(aStack, slot(i), T)) return i == aSlot;
 		return mRecipes.containsInput(aStack, this, slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount));
 	}

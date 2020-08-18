@@ -49,24 +49,43 @@ public class BlockVanillaOresA extends BlockBaseMeta {
 	// Vanilla Style GT6 Stone Ores, mainly used for Twilight Forest, so the Ore Magnet doesn't draw too many breaking Ores.
 	public BlockVanillaOresA(String aUnlocalised) {
 		super(null, aUnlocalised, Material.rock, soundTypeStone, 16, Textures.BlockIcons.VANILLA_ORES_A);
-		LH.add(getUnlocalizedName()+  ".0.name", "Sulfur Ore");
-		LH.add(getUnlocalizedName()+  ".1.name", "Apatite Ore");
-		LH.add(getUnlocalizedName()+  ".2.name", "Ruby Ore");
-		LH.add(getUnlocalizedName()+  ".3.name", "Amber Ore");
-		LH.add(getUnlocalizedName()+  ".4.name", "Amethyst Ore");
-		LH.add(getUnlocalizedName()+  ".5.name", "Galena Ore");
+		LH.add(getUnlocalizedName()+  ".0.name", "Sulfur Ore"      );
+		LH.add(getUnlocalizedName()+  ".1.name", "Apatite Ore"     );
+		LH.add(getUnlocalizedName()+  ".2.name", "Ruby Ore"        );
+		LH.add(getUnlocalizedName()+  ".3.name", "Amber Ore"       );
+		LH.add(getUnlocalizedName()+  ".4.name", "Amethyst Ore"    );
+		LH.add(getUnlocalizedName()+  ".5.name", "Galena Ore"      );
 		LH.add(getUnlocalizedName()+  ".6.name", "Tetrahedrite Ore");
-		LH.add(getUnlocalizedName()+  ".7.name", "Cassiterite Ore");
-		LH.add(getUnlocalizedName()+  ".8.name", "Sheldonite Ore");
-		LH.add(getUnlocalizedName()+  ".9.name", "Pentlandite Ore");
-		LH.add(getUnlocalizedName()+ ".10.name", "Scheelite Ore");
-		LH.add(getUnlocalizedName()+ ".11.name", "Rutile Ore");
-		LH.add(getUnlocalizedName()+ ".12.name", "Bastnasite Ore");
-		LH.add(getUnlocalizedName()+ ".13.name", "Graphite Ore");
-		LH.add(getUnlocalizedName()+ ".14.name", "Pitchblende Ore");
-		LH.add(getUnlocalizedName()+ ".15.name", "Borax Ore");
+		LH.add(getUnlocalizedName()+  ".7.name", "Cassiterite Ore" );
+		LH.add(getUnlocalizedName()+  ".8.name", "Sheldonite Ore"  );
+		LH.add(getUnlocalizedName()+  ".9.name", "Pentlandite Ore" );
+		LH.add(getUnlocalizedName()+ ".10.name", "Scheelite Ore"   );
+		LH.add(getUnlocalizedName()+ ".11.name", "Rutile Ore"      );
+		LH.add(getUnlocalizedName()+ ".12.name", "Bastnasite Ore"  );
+		LH.add(getUnlocalizedName()+ ".13.name", "Graphite Ore"    );
+		LH.add(getUnlocalizedName()+ ".14.name", "Pitchblende Ore" );
+		LH.add(getUnlocalizedName()+ ".15.name", "Borax Ore"       );
 		
 		for (int i = 0; i < ORE_MATERIALS.length; i++) OM.reg(ST.make(this, 1, i), OP.oreVanillastone.dat(ORE_MATERIALS[i]));
+		
+		if (COMPAT_IC2 != null) {
+		COMPAT_IC2.valuable(this,  0, 1);
+		COMPAT_IC2.valuable(this,  1, 1);
+		COMPAT_IC2.valuable(this,  2, 4);
+		COMPAT_IC2.valuable(this,  3, 4);
+		COMPAT_IC2.valuable(this,  4, 4);
+		COMPAT_IC2.valuable(this,  5, 2);
+		COMPAT_IC2.valuable(this,  6, 2);
+		COMPAT_IC2.valuable(this,  7, 2);
+		COMPAT_IC2.valuable(this,  8, 5);
+		COMPAT_IC2.valuable(this,  9, 3);
+		COMPAT_IC2.valuable(this, 10, 3);
+		COMPAT_IC2.valuable(this, 11, 3);
+		COMPAT_IC2.valuable(this, 12, 3);
+		COMPAT_IC2.valuable(this, 13, 2);
+		COMPAT_IC2.valuable(this, 14, 5);
+		COMPAT_IC2.valuable(this, 15, 1);
+		}
 	}
 	
 	@Override

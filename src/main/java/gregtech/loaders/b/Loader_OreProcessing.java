@@ -51,7 +51,7 @@ import gregapi.data.OD;
 import gregapi.data.OP;
 import gregapi.data.RM;
 import gregapi.data.TD;
-import gregapi.item.IPrefixItem;
+import gregapi.item.IItemGT;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
@@ -312,7 +312,7 @@ public class Loader_OreProcessing implements Runnable {
 
 		private boolean registerStandardOreRecipes(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aOreStack, int aMultiplier) {
 			if (aOreStack == null || aMaterial == null) return F;
-			if (COMPAT_IC2 != null && !(aOreStack.getItem() instanceof IPrefixItem)) COMPAT_IC2.valuable(ST.block(aOreStack), ST.meta_(aOreStack), 3);
+			if (COMPAT_IC2 != null && !(aOreStack.getItem() instanceof IItemGT)) COMPAT_IC2.valuable(ST.block(aOreStack), ST.meta_(aOreStack), 2);
 			aMaterial = aMaterial.mTargetCrushing.mMaterial;
 			if (aMaterial == null) return F;
 			aOreStack = ST.amount(1, aOreStack);

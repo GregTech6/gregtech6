@@ -59,6 +59,25 @@ public class BlockRockOres extends BlockBaseMeta {
 		OM.reg(ST.make(this, 1, 6), OP.oreDense.dat(MT.OREMATS.Gypsum));
 		OM.reg(ST.make(this, 1, 7), OP.oreDense.dat(MT.MilkyQuartz));
 		
+		if (COMPAT_IC2 != null) {
+		COMPAT_IC2.valuable(this,  0, 1);
+		COMPAT_IC2.valuable(this,  1, 1);
+		COMPAT_IC2.valuable(this,  2, 1);
+		COMPAT_IC2.valuable(this,  3, 1);
+		COMPAT_IC2.valuable(this,  4, 2);
+		COMPAT_IC2.valuable(this,  5, 2);
+		COMPAT_IC2.valuable(this,  6, 1);
+		COMPAT_IC2.valuable(this,  7, 2);
+		COMPAT_IC2.valuable(this,  8, 0);
+		COMPAT_IC2.valuable(this,  9, 0);
+		COMPAT_IC2.valuable(this, 10, 0);
+		COMPAT_IC2.valuable(this, 11, 0);
+		COMPAT_IC2.valuable(this, 12, 0);
+		COMPAT_IC2.valuable(this, 13, 0);
+		COMPAT_IC2.valuable(this, 14, 0);
+		COMPAT_IC2.valuable(this, 15, 0);
+		}
+		
 		StoneLayer.LAYERS.add(new StoneLayer(this, 0, MT.Coal));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 1, MT.Lignite));
 		StoneLayer.LAYERS.add(new StoneLayer(this, 2, MT.NaCl));
