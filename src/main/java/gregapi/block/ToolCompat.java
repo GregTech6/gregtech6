@@ -232,7 +232,7 @@ public class ToolCompat {
 				// Why the fuck are the two Coordinate Parameters in isFlexibleRail switched? And then it is used like x y z instead of using the broken namings.
 				boolean tResult = aWorld.setBlock(aX, aY, aZ, aBlock, ((BlockRailBase)aBlock).isFlexibleRail(aWorld, aX, aY, aZ) ? (aMeta+1) % 10 : ((aMeta/8) * 8) + (((aMeta%8)+1) % 6), 0);
 				aWorld.isRemote = F;
-				return tResult?10000:0;
+				return tResult?2000:0;
 			}
 		}
 		if (aTool.equals(TOOL_softhammer)) {

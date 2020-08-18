@@ -134,18 +134,20 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, World aWorld, byte aSide, int aX, int aY, int aZ, float aHitX, float aHitY, float aHitZ) {
-		if (aTool.equals(TOOL_softhammer) && mPowerRail) {
-			aWorld.isRemote = T;
-			boolean tResult = aWorld.setBlock(aX, aY, aZ, this, (WD.meta(aWorld, aX, aY, aZ) + 8) % 16, 0);
-			aWorld.isRemote = F;
-			return tResult?10000:0;
-		}
-		if (aTool.equals(TOOL_crowbar)) {
-			byte aMeta = WD.meta(aWorld, aX, aY, aZ);
-			aWorld.isRemote = T;
-			boolean tResult = aWorld.setBlock(aX, aY, aZ, this, isPowered() ? (aMeta+1) % 10 : ((aMeta/8) * 8) + (((aMeta%8)+1) % 6), 0);
-			aWorld.isRemote = F;
-			return tResult?10000:0;
+		if (!aWorld.isRemote) {
+			if (aTool.equals(TOOL_softhammer) && mPowerRail) {
+				aWorld.isRemote = T;
+				boolean tResult = aWorld.setBlock(aX, aY, aZ, this, (WD.meta(aWorld, aX, aY, aZ) + 8) % 16, 0);
+				aWorld.isRemote = F;
+				return tResult?10000:0;
+			}
+			if (aTool.equals(TOOL_crowbar)) {
+				byte aMeta = WD.meta(aWorld, aX, aY, aZ);
+				aWorld.isRemote = T;
+				boolean tResult = aWorld.setBlock(aX, aY, aZ, this, isPowered() ? (aMeta+1) % 10 : ((aMeta/8) * 8) + (((aMeta%8)+1) % 6), 0);
+				aWorld.isRemote = F;
+				return tResult?2000:0;
+			}
 		}
 		return ToolCompat.onToolClick(this, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);
 	}
